@@ -1,0 +1,11 @@
+{
+  "$schema": "state-manifest/v1",
+  "status": "seed",
+  "authoritative": false,
+  "subgraph": "todos",
+  "note": "Seeded from main for the owner's 2026-10-02 ruling: \"go with cat/cat-harness/todos and cat/cat-harness/beans as their own named sub-graph branches\". One special branch per named subgraph of cat-harness (like cat/cat-harness/fsh-guts and cat/cat-harness/qa-reports), superseding the shared cat/cat-harness/state for this subgraph. main remains the source of truth until arc fs43 (issue #1850) migrates every reader and writer; until then this branch is a verified copy, not the store.",
+  "source": { "ref": "main", "sha": "128b2ec4408a7ce9d4f7f0c6492da84d4aad25dd" },
+  "seededAt": "2026-10-02T22:30:30Z",
+  "keyedBy": "tip",
+  "graphs": [ { "path": "todos", "tree": "e10f5b90722f4fc9b0aab470caa75c25acee9027", "files": 11 } ]
+}
