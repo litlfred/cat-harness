@@ -6,9 +6,10 @@ cat/cat-harness/todos and cat/cat-harness/beans as their own named sub-graph
 branches"*. Siblings: `cat/cat-harness/fsh-guts`, `cat/cat-harness/qa-reports`.
 Arc `fs43` (issue #1850). Proposal: `cat-harness/docs/proposals/state-branch-2026-10-02.md`.
 
-**Status: SEED, not authoritative.** Copied from `main@128b2ec4408a`. Until fs43
-migrates every reader and writer, `main` is the source of truth, and edits
-made here are read by nothing. See `manifest.json`.
+**Status: SEED, not authoritative.** Seeded 2026-10-02 from
+`main@128b2ec4408a`, refreshed 2026-10-03 from `main@3484f1d27ea9`. Until
+fs43 migrates every reader and writer, `main` is the source of truth, and
+edits made here are read by nothing. See `manifest.json`.
 
 Paths mirror the checkout exactly: `beans/…` here is `beans/…` on `main`.
 Writes splice onto the tip and never force-push.
