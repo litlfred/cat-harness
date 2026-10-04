@@ -6,7 +6,7 @@
   "note": "Seeded from main for the owner's 2026-10-02 ruling: \"go with cat/cat-harness/todos and cat/cat-harness/beans as their own named sub-graph branches\". One special branch per named subgraph of cat-harness (like cat/cat-harness/fsh-guts and cat/cat-harness/qa-reports), superseding the shared cat/cat-harness/state for this subgraph. main remains the source of truth until arc fs43 (issue #1850) migrates every reader and writer; until then this branch is a verified copy, not the store.",
   "source": {
     "ref": "main",
-    "sha": "abbc21c90f34ca97ac90a52a27175fba71a0f3a1"
+    "sha": "756a3a0122027b1f1179ecbcb103eba5fc5cc56a"
   },
   "seededAt": "2026-10-02T22:30:30Z",
   "keyedBy": "tip",
@@ -17,5 +17,5 @@
       "files": 11
     }
   ],
-  "refreshedAt": "2026-10-04T06:20:12Z"
+  "refreshedAt": "2026-10-04T06:55:10Z"
 }
