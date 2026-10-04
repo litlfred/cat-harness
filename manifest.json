@@ -3,19 +3,10 @@
   "status": "seed",
   "authoritative": false,
   "subgraph": "beans",
-  "note": "Seeded from main for the owner's 2026-10-02 ruling: \"go with cat/cat-harness/todos and cat/cat-harness/beans as their own named sub-graph branches\". One special branch per named subgraph of cat-harness (like cat/cat-harness/fsh-guts and cat/cat-harness/qa-reports), superseding the shared cat/cat-harness/state for this subgraph. main remains the source of truth until arc fs43 (issue #1850) migrates every reader and writer; until then this branch is a verified copy, not the store.",
-  "source": {
-    "ref": "main",
-    "sha": "7092673c1a0ee13a40ef7d8d76778cacbfa1e6e8"
-  },
+  "note": "Seeded from main for the owner's 2026-10-02 ruling: \"go with cat/cat-harness/todos and cat/cat-harness/beans as their own named sub-graph branches\". One special branch per named subgraph of cat-harness (like cat/cat-harness/fsh-guts and cat/cat-harness/qa-reports), superseding the shared cat/cat-harness/state for this subgraph. REFRESHED 2026-10-04 as the mandatory precondition of the p3ny cutover (owner's go: \"do bean cutover now\"): the prior seed was 24 files behind main - 22 bean defs and 2 bean notes - and `bun run state:drift` refuses a cutover from a stale seed, because the cutover commit replaces the whole subtree at once, so it would resurrect what the seed held and lose what landed since, with no diff to read. STILL `seed` AND `authoritative: false` ON PURPOSE: this branch becomes the store at the instant main stops tracking beans/, which is PR #2072, and a manifest that claimed otherwise before that merge would be false for as long as the PR is open. cat/cat-harness/fsh-guts is the counter-example to avoid - its manifest still reads `status: seed` while special-branches.json on main records it as authoritative since the 9c7h cutover, so the two disagree. History is not rewritten onto this branch: it stays on main, reachable from source.sha.",
+  "source": { "ref": "main", "sha": "63ec4fffc4bf0c38ed6f49b09a590c09eb5255a0" },
   "seededAt": "2026-10-02T22:31:02Z",
-  "refreshedAt": "2026-10-04T07:12:03Z",
+  "refreshedAt": "2026-10-04T13:32:06Z",
   "keyedBy": "tip",
-  "graphs": [
-    {
-      "path": "beans",
-      "tree": "6fe4e0a584f1b393f3cafa7c5ca77899dd5fad47",
-      "files": 1457
-    }
-  ]
+  "graphs": [ { "path": "beans", "tree": "6a3cb2330675027aaeb9b1cfee73d908116197f9", "files": 1481 } ]
 }
