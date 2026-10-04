@@ -3,19 +3,19 @@
   "status": "seed",
   "authoritative": false,
   "subgraph": "beans",
-  "note": "Seeded from main for the owner's 2026-10-02 ruling: \"go with cat/cat-harness/todos and cat/cat-harness/beans as their own named sub-graph branches\". One special branch per named subgraph of cat-harness, superseding the shared cat/cat-harness/state for this subgraph. REFRESHED 2026-10-04 to the EXACT TREE THE p3ny CUTOVER REMOVES, not to main's tip. That distinction is the whole safety property: beans change on main continuously, because every merged PR carries a claim, a note or a new def, so a seed refreshed from main's tip is stale within minutes and `bun run state:drift` then refuses the cutover - correctly, since a cutover commit replaces the subtree wholesale and would resurrect what the seed held while losing what landed since, with no diff for a reviewer to read. Measured: the prior seed was 24 files behind, and a refresh from the tip was already 3 behind by the time it was verified. So this tree is the cutover branch's own merged beans/ tree, which makes \"what is removed\" and \"what the seed holds\" the same object by construction rather than by timing. STILL `seed` AND `authoritative: false` ON PURPOSE: this branch becomes the store at the instant main stops tracking beans/, which is PR #2072; a manifest claiming otherwise while that PR is open would be false for as long as it is open. cat/cat-harness/fsh-guts is the counter-example - its manifest still reads `status: seed` while special-branches.json on main records it authoritative since the 9c7h cutover, so the two disagree and a reader trusting the manifest gets the stale answer. History is not rewritten onto this branch: it stays on main, reachable from source.sha.",
+  "note": "Seeded from main for the owner's 2026-10-02 ruling: \"go with cat/cat-harness/todos and cat/cat-harness/beans as their own named sub-graph branches\". One special branch per named subgraph of cat-harness, superseding the shared cat/cat-harness/state for this subgraph. REFRESHED 2026-10-04 to the EXACT TREE THE p3ny CUTOVER REMOVES, not to main's tip. That distinction is the whole safety property: beans change on main continuously, because every merged PR carries a claim, a note or a new def, so a seed refreshed from main's tip is stale within minutes and `bun run state:drift` then refuses the cutover - correctly, since a cutover commit replaces the subtree wholesale and would resurrect what the seed held while losing what landed since, with no diff for a reviewer to read. Measured: the prior seed was 24 files behind, and a refresh from the tip was already 3 behind by the time it was verified. So this tree is the cutover branch's own merged beans/ tree, which makes \"what is removed\" and \"what the seed holds\" the same object by construction rather than by timing. STILL `seed` AND `authoritative: false` ON PURPOSE: this branch becomes the store at the instant main stops tracking beans/, which is PR #2072; a manifest claiming otherwise while that PR is open would be false for as long as it is open. cat/cat-harness/fsh-guts is the counter-example - its manifest still reads `status: seed` while special-branches.json on main records it authoritative since the 9c7h cutover, so the two disagree and a reader trusting the manifest gets the stale answer. History is not rewritten onto this branch: it stays on main, reachable from source.sha. THIRD REFRESH 2026-10-04, and the reason is the finding: in the ~20 minutes between the second refresh and the cutover's merge of main, main gained two bean notes (5hox and 70zt, Merge Manager ACKs from claude/gracious-mendel-du6nn8) plus their generated index entries. Each refresh is stale again within minutes, because every merged PR carries a claim, a note or a def. THE CONSEQUENCE FOR WHOEVER MERGES PR #2072: the seed refresh must be re-run IMMEDIATELY BEFORE the merge, from the merge's own base. A pull request cannot carry it - it does not know its merge time - so a bot that merges #2072 without refreshing loses every bean that landed in the window, and loses it silently, because the cutover replaces the subtree wholesale and there is no deletion to read. That is bean i8wf.",
   "source": {
     "ref": "main",
-    "sha": "47ac43a1601f6a6884f0e94519243e440a7b0c70"
+    "sha": "09a2fa64b604a951f0186aa17c9c63b40570517c"
   },
   "seededAt": "2026-10-02T22:31:02Z",
-  "refreshedAt": "2026-10-04T13:34:21Z",
+  "refreshedAt": "2026-10-04T13:46:06Z",
   "keyedBy": "tip",
   "graphs": [
     {
       "path": "beans",
-      "tree": "2dc2bc54a0b593f7eb345031959002deb6e4131a",
-      "files": 1482
+      "tree": "23e15565a21dbb1c12cc680b93e159f8e8492c03",
+      "files": 1506
     }
   ]
 }
