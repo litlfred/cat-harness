@@ -1,11 +1,11 @@
 ---
 # folio-assistant-06e3
 title: 'docs-auto: a handler at cat-harness/docs-auto/<auto-doc-type>/<path> that derives documentation for a sub-graph — and the authoring rule that the author must summarise what it indexes'
-status: todo
+status: in-progress
 type: task
 priority: normal
 created_at: 2026-09-20T20:54:07Z
-updated_at: 2026-10-03T11:41:35Z
+updated_at: 2026-10-04T06:09:36Z
 parent: folio-assistant-0lmb
 ---
 
@@ -564,9 +564,25 @@ not the globs. Worth recording because the first reading looked like
 
 ### Still open
 
-- [ ] `toc` stays OUT (this bean is the only record of that withdrawal)
-- [ ] the authoring-rule half is a SKILL, untouched by the move
-- [ ] `who-iris/docs` is the named first exercise, end to end
+**Withdrawn 2026-10-03 — this was a SHADOW CHECKLIST and two of its three items
+were false.** It restated the canonical `## Done when` in a planning section, and
+once the canonical items were ticked it went on claiming work was outstanding:
+
+| it said | the canonical list says |
+|---|---|
+| `[ ] toc stays OUT` | `[x] the handler exists and is declared … and **no** toc` |
+| `[ ] the authoring-rule half is a SKILL` | `[x] the authoring rule lives in a skill with the reuse-not-restate clause` |
+| `[ ] who-iris/docs is the named first exercise` | `[ ]` — the one genuinely open item, and already there |
+
+So: **see `## Done when` above.** Nothing is tracked here.
+
+`check:bean-bodies` rejects a *ticked* restatement beside an open canonical item,
+for the stated reason that *"the section a reader and every tool consult says this
+is not done"*. This was the INVERSE — an *unticked* restatement beside a ticked
+canonical item — and the gate is green across it, measured on `main` 2026-10-03.
+That direction is worse, not better: a stale "still open" sends the next agent to
+redo finished work, where a stale "done" at least leaves them reading the real
+list. Reported rather than fixed in the gate, which is its own change.
 
 
 ## CORRECTION, 2026-10-03 — two claims in the plan above are wrong
@@ -860,3 +876,5 @@ Two things that do follow from the measurement:
 shrug. The owner picked §4(b) of these three; §4(a) is done above because (b)
 grades it. §4(c) is reported with its premise measured so the next agent does
 not repeat the investigation.
+
+_2026-10-04T06:09:36Z_ — Claimed by claude/who-iris-docs-end-to-end-06e3 — pushed to main so sibling sessions see it before this branch has a PR (bean 35nj).
