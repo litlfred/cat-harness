@@ -1,11 +1,11 @@
 ---
 # folio-assistant-lvk9
 title: 'EXTRACTION: list items and blockquotes are extracted PER LINE, so a msgid depends on the author''s hard wrap — translators get sentences in halves'
-status: in-progress
+status: completed
 type: bug
 priority: normal
 created_at: 2026-09-26T09:20:19Z
-updated_at: 2026-09-27T05:08:36Z
+updated_at: 2026-10-06T19:30:00Z
 parent: folio-assistant-bzyu
 blocked_by:
     - folio-assistant-wlyg
@@ -105,7 +105,7 @@ line each with a measured effect in both directions, and this is a parser change
       changes NO msgid — the property that makes a catalogue survive an edit
 - [x] the msgids this merges away are obsoleted in the existing `.po` files with
       tooling, not dropped. **41, not 3785** — see the measurement below; the
-      tooling is `bun run translation:obsolete`, gated by
+      tooling is `bun run cat translation:obsolete`, gated by
       `translation:obsolete:check`.
 - [x] `7x8o` re-measured afterwards; expect 8 pairs or fewer to remain
 - [x] checked against a folio other than this one — extraction is shared.
@@ -318,3 +318,9 @@ of 2026-09-27 is to do both in order — this obsoletion now, the re-derive afte
 That `9rnf` exists at all is the same blind spot a third time: attempts 1 and 2
 above, and the shipped discovery in #1411, all treated "the pages" as the ones
 visible without recursing.
+
+## Summary of Changes
+
+Closed 2026-10-06 by claude/sep-bookkeeping-s1-s3 (7x5n sweep of in-progress beans whose work has landed). Every Done-when box was already ticked by its holder. That was NOT taken as the evidence: the measurement below was re-run on main at 24b221415 (2026-10-06), and no open PR names this bean.
+
+- `bun run cat translation:obsolete:check` → exit 0: every comparable catalogue's msgids are still in its source (box 5's tooling and gate).

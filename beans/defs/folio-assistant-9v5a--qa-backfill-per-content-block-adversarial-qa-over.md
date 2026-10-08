@@ -5,7 +5,8 @@ status: todo
 type: epic
 priority: normal
 created_at: 2026-10-02T22:27:08Z
-updated_at: 2026-10-02T22:27:08Z
+updated_at: 2026-10-04T15:12:21Z
+parent: folio-assistant-rwmf
 ---
 
 Owner, 2026-10-02: *"Split into TWO epics: gates, and QA backfill"*. This is the
@@ -55,9 +56,9 @@ decomposition, and that is a smaller change than the question implied.
 
 - [ ] `lvlv` re-parented here and its scope stated as corpus-sweep, not gate
 - [ ] best practice for agentic adversarial QA researched, with sources named
-- [ ] the methodology documented as a skill, registered via `bun run skill:register`
+- [ ] the methodology documented as a skill, registered via `bun run cat skill:register`
 - [ ] open-access literature listed for upload to `library/`
 - [ ] a coverage measurement exists BEFORE any sweep runs, so the backfill's progress
-      is a delta and not an assertion — `bun run audit:coverage` is the existing
+      is a delta and not an assertion — `bun run cat audit:coverage` is the existing
       instrument and already answers "which audits reach which KIND of node"
 - [ ] the owner agrees what coverage level finishes this

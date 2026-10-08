@@ -1,11 +1,11 @@
 ---
 # folio-assistant-rjug
 title: 'SCHEMA PROPOSAL: metadata indexes, binary releases and QA reports as declared graph kinds — options, not a single answer'
-status: in-progress
+status: completed
 type: feature
 priority: normal
 created_at: 2026-09-22T19:07:23Z
-updated_at: 2026-09-30T10:30:00Z
+updated_at: 2026-10-06T19:30:00Z
 parent: folio-assistant-uhkv
 ---
 
@@ -121,13 +121,13 @@ registered for them. Their options stand as written above.
 
 ## Claim released 2026-09-29
 
-Released `in-progress` → `todo` on the owner's instruction (review session https://claude.ai/code/session_014Qj8wncQhqV52QGN1yZDnj). No git change to this bean since before 2026-09-26, no holder recorded, and no open branch touches it; the sessions that held theme D (content folios, SMART/FHIR stack, ingest) work stopped on the 2026-09-25 weekly usage limit. Nothing in the body was changed: re-claim with `bun run beans:claim <id>`.
+Released `in-progress` → `todo` on the owner's instruction (review session https://claude.ai/code/session_014Qj8wncQhqV52QGN1yZDnj). No git change to this bean since before 2026-09-26, no holder recorded, and no open branch touches it; the sessions that held theme D (content folios, SMART/FHIR stack, ingest) work stopped on the 2026-09-25 weekly usage limit. Nothing in the body was changed: re-claim with `bun run cat beans:claim <id>`.
 
 _2026-09-30T10:09:58Z_ — Claimed by claude/zhg2-direction-sidecar — pushed to main so sibling sessions see it before this branch has a PR (bean 35nj).
 
 ## Claimed 2026-09-30 — by `claude/rjug-two-kinds`, and the holder note on `main` names the wrong branch
 
-`bun run beans:claim folio-assistant-rjug` was run once from the WRONG
+`bun run cat beans:claim folio-assistant-rjug` was run once from the WRONG
 checkout. `cat-harness/scripts/claim-bean.ts` resolves its store from
 `process.cwd()` and reads the holder branch from `git rev-parse --abbrev-ref
 HEAD` in that same directory, so the claim landed correctly on `main`
@@ -256,3 +256,8 @@ All three Done-when boxes are now ticked and all three sections are ruled and
 implemented. **Left `in-progress` rather than closed**: #1571 is not merged, and
 a bean closes on evidence that the work has landed.
 
+## Summary of Changes
+
+Closed 2026-10-06 by claude/sep-bookkeeping-s1-s3 (7x5n sweep of in-progress beans whose work has landed). Every Done-when box was already ticked by its holder. That was NOT taken as the evidence: the measurement below was re-run on main at 24b221415 (2026-10-06), and no open PR names this bean.
+
+- The holder left this open only because #1571 had not merged. **#1571 merged 2026-09-30T13:54:33Z** ("rjug §1 and §2: `ig-metadata-index` (derived) and `binary-release` (state) registered"), which discharges that reason.

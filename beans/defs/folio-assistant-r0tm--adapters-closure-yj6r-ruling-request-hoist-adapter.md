@@ -337,7 +337,7 @@ the `include` edit in the same commit as the move rather than as a follow-up.
 | `check:code-accounting` | shifts between instances; green today, no threshold crossed | same |
 | `root-scan-census` | **instance-scoped.** cat-harness loses rows it will not regain, and core/sci run no equivalent census, so those rows are counted **nowhere** | same |
 | `check:reference-direction` | **already exits 1 on `main`**, unrelated to this. Its prose-occurrence count will rise, because the move must write the destination instance's name into `cat-harness/` files to say where the code went | same |
-| `readme:sync:check`, `bun run readme:subgraphs` | regenerate — the subgraph READMEs enumerate files under their directory | same |
+| `readme:sync:check`, `bun run cat readme:subgraphs` | regenerate — the subgraph READMEs enumerate files under their directory | same |
 
 The `root-scan-census` row is the same coverage loss the ingest/materialisation
 tranche reported at 68 → 67 and the last-four tranche at 66 → 65. **Three times
@@ -388,7 +388,7 @@ Reported as undetermined, not as clean.
    `bootstrap-tools`. If those are legal, something treats the two as one layer,
    and I did not find what. If they are not, this axis reads 22, not 2. Out of
    scope for this ruling; flagged because it would change the headline number.
-4. **I did not run `bun run gates`.** This is a plan-only session with no source
+4. **I did not run `bun run cat gates`.** This is a plan-only session with no source
    change to gate. Every gate verdict in the table above is derived from reading
    the gate's scope, not from running it against a performed move.
 5. **Whether the 6 tests belong beside their subjects or in a core `test/`
@@ -452,3 +452,38 @@ whose last unticked box this would earn.
 **Status is `draft` deliberately** — nothing is claimed and no work is in
 flight. It becomes `todo` when the owner picks A, B or C, and `scrapped` with
 the reason recorded if they pick D.
+
+
+## RULED, CARRIED OUT, and the status deliberately NOT changed (2026-10-04)
+
+The owner ruled **option A** and both steps landed:
+
+    step 1  adapters/paper/    -> folio-assistant-sci     bean y5si, 880b707f1da
+    step 2  adapters/document/ -> folio-assistant-core    bean ybp4, PR #1687
+
+Both beans read `completed`, and the axis this request existed to unblock reads
+**0** — re-measured 2026-10-04 on `origin/main` @ `63ec4fffc4bf` with
+`bun run cat check:import-direction --all`: 0 wrong-direction across 14 declared
+instances, 12 GATED, exit 0. So §6's recommendation was taken, in the order it
+recommended, and the two things it said must ship in the same commit as each
+move did.
+
+Also settled, against §5's own list of what it could not determine:
+
+- §5.1 — *whether `folio-assistant-sci` can host executable TypeScript* — it
+  does: that instance now reads **29 code files** in the same measurement, and
+  the gated form passes over it.
+- §5.3 — *whether `cat-harness -> bootstrap-tools` is itself an escape* — it is
+  not, and the reason is a declaration rather than a convention:
+  `cat-harness/cat-harness.json` declares `needs: ["bootstrap",
+  "bootstrap-tools"]` (bean `0lj4`). The axis reads 0, not 22.
+
+**Status stays `draft` on purpose, and that is a report rather than a
+decision.** Bean `3432` is in-progress, is not this session's, and uses this
+bean's `status: draft` as the single live instance of the marker the check it
+proposes keys on — `3432` measured `status: draft` at 0 of 518 beans otherwise,
+which is why it had to argue for the marker at all. Flipping this bean to
+`completed` would take that check back to `0 of 0` and remove its worked
+example, so the choice belongs to whoever holds `3432`. Named here so that a
+reader who finds a `draft` ruling request whose ruling has shipped does not
+read it as neglect.

@@ -1,11 +1,11 @@
 ---
 # folio-assistant-tlj9
 title: 'PARENT INTEGRITY: a bean''s body names a parent its front matter does not carry (4ccr), so a goal''s open count is wrong'
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-30T11:33:55Z
-updated_at: 2026-09-30T15:07:40Z
+updated_at: 2026-10-06T19:30:00Z
 parent: folio-assistant-ahvw
 ---
 
@@ -193,7 +193,7 @@ others. The figure moves with main; 49 is what it is on this head.
 
 ## 2026-09-30 — Done-when #2 and #3 delivered, and the check found a defect I had just created
 
-`bun run check:bean-parent-prose`, wired as `check:bean-parent-prose:check`.
+`bun run cat check:bean-parent-prose`, wired as `check:bean-parent-prose:check`.
 
 ### The scope is a MEASUREMENT, not a preference
 
@@ -271,3 +271,10 @@ about the domain and not about the store.
 - [x] a check fails on a bean whose body names a parent its front matter does
       not carry, scoped to one phrasing family with the ratio to justify it
 - [x] falsified before shipping — four directions, above
+
+## Summary of Changes
+
+Closed 2026-10-06 by claude/sep-bookkeeping-s1-s3 (7x5n sweep of in-progress beans whose work has landed). Every Done-when box was already ticked by its holder. That was NOT taken as the evidence: the measurement below was re-run on main at 24b221415 (2026-10-06), and no open PR names this bean.
+
+- `bun run cat check:bean-parent-prose` → exit 0 (the check that box 2 names).
+- Box 1's parent ruling merged as #1623 (2026-09-30T15:06:27Z).

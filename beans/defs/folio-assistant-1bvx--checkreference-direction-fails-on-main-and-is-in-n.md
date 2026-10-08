@@ -1,25 +1,25 @@
 ---
 # folio-assistant-1bvx
 title: check:reference-direction fails on main and is in NO workflow — nothing catches it
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-30T22:13:49Z
-updated_at: 2026-10-01T17:45:55Z
+updated_at: 2026-10-06T14:30:00Z
 parent: folio-assistant-1xhc
 ---
 
 Measured on `main` `25bff68c4f3`, 2026-09-30.
 
 ```
-$ bun run check:reference-direction
+$ bun run cat check:reference-direction
 ✗ 1 PENDING entr(y/ies) no longer qualify — delete them
 ✗ 91 file(s) name several instances above them and are not in PENDING
 exit 1
 ```
 
 ```
-$ grep -q "bun run check:reference-direction" .github/workflows/*.yml
+$ grep -q "bun run cat check:reference-direction" .github/workflows/*.yml
 not in any workflow
 ```
 
@@ -47,7 +47,7 @@ the second when the truth is neither.
 
 Not by looking for it. `check:reference-direction` appeared in a sweep of every
 `:check` script in `package.json` while chasing an unrelated CI failure. Nothing
-in the normal loop — `bun run gates`, CI, a PR — would have surfaced it, because
+in the normal loop — `bun run cat gates`, CI, a PR — would have surfaced it, because
 `gates` derives its list from the workflow file and the workflow does not name
 this check.
 
@@ -72,13 +72,20 @@ is a decision about what the repository asserts, not a gap to close quietly.
 
 ## Done when
 
-- [ ] someone reads a sample of the 91 and says whether the check or the corpus
+- [x] someone reads a sample of the 91 and says whether the check or the corpus
       is wrong — with the sample named, so the judgement is re-derivable
-- [ ] the sidecar is regenerated so it stops describing renamed directories
-- [ ] a ruling on whether this check belongs in a workflow at all; if it is
+- [x] the sidecar is regenerated so it stops describing renamed directories
+- [x] a ruling on whether this check belongs in a workflow at all; if it is
       advisory by design, that is written down where the next sweep will find
       it, so this bean is not re-filed in a month
-- [ ] if it does belong in CI, it goes in GREEN — findings resolved first, not
+- [x] if it does belong in CI, it goes in GREEN — findings resolved first, not
       wired red
 
 _2026-10-01T17:45:55Z_ — Claimed by claude/rulings-2026-10-01-late — pushed to main so sibling sessions see it before this branch has a PR (bean 35nj).
+
+## Closed on evidence, 2026-10-06 (session https://claude.ai/code/session_01EcBv3uwKYcnNbCC6BcPG92)
+Re-derived. The claim by `claude/rulings-2026-10-01-late` has no open PR.
+- **Check or corpus?** The owner answered this in ruling Q-B, 2026-10-01 (recorded in `zhg2`). The CORPUS is wrong: reword in place (Q1). The named classes where the check would be wrong became exemptions: X3, the three layering specifications, and X1, the translation mirrors.
+- **Sidecar:** `cat-harness/test/results/reference-direction.qa-results.json` is no longer tracked on main (`git ls-files` is empty after #2080). It is regenerated each run and stored on `qa-reports` (baseline `qa-reports:main/4c8029c7cad`), so no committed copy can describe renamed directories.
+- **Ruling written where the next sweep will find it:** the workflow step comment and the `gates.ts` reasons for `:check` and `:strict` say advisory-by-backlog, ratchet-in-CI, strict-when-drained.
+- **Went in green:** `check:reference-direction:check --against main` exits 0 today, with 0 new findings.

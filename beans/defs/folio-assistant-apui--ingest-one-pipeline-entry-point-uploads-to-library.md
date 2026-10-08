@@ -1,11 +1,11 @@
 ---
 # folio-assistant-apui
 title: 'INGEST: one pipeline entry point — uploads/ to library/ through a single documented path'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-16T06:43:50Z
-updated_at: 2026-09-29T20:03:12Z
+updated_at: 2026-10-07T17:18:00Z
 parent: folio-assistant-slw1
 ---
 
@@ -60,7 +60,7 @@ So the bean's ORIGINAL description was closer to right than my correction: the s
 
 That makes apui tractable and small after all: ONE entry point that sequences these four with the decision rules made mechanical, and the rules written down as a skill rather than carried in an agent's head. Point 3 of the previous note stands (all four uploads have library slugs; the risk is real, the instance is not).
 
-_2026-09-19T12:31:11Z_ — DONE (first cut). One entry point: bun run ingest uploads/FILE.pdf [--dry-run].
+_2026-09-19T12:31:11Z_ — DONE (first cut). One entry point: bun run cat ingest uploads/FILE.pdf [--dry-run].
 
 It CHOOSES a rung and runs it; it re-implements nothing. The rule is read off the four entries already in library/, not invented:
   toc_source: outline                       -> pdf-structure
@@ -150,7 +150,7 @@ entry point is real and verified, but it is not yet the whole path.
 `uploads/` → `library/` in two commands, and the done-when above is met.
 
 ```
-bun run ingest "uploads/Skills in OpenAI API.pdf" --library ../agent-skills/library
+bun run cat ingest "uploads/Skills in OpenAI API.pdf" --library ../agent-skills/library
 bun run cat-harness/scripts/ingest-document.ts "uploads/..." --library ... --promote
 ```
 
@@ -184,10 +184,10 @@ the corpus-level generators that read the result.
 So the full path today is **three commands, not two**:
 
 ```
-bun run ingest <pdf> --library <lib>          # rung + images + blocks/manifest
+bun run cat ingest <pdf> --library <lib>          # rung + images + blocks/manifest
 … --promote                                   # crosses into library/
 bun run cat-harness/content/pipeline/gen-library-jsonld.ts   # the siblings
-bun run check:l1-complete -- --write          # the committed verdict
+bun run cat check:l1-complete -- --write          # the committed verdict
 ```
 
 The last two are **not** folded into `--promote` here, deliberately: both are
@@ -233,4 +233,29 @@ than gates.
 
 ## Claim released 2026-09-29
 
-Released `in-progress` → `todo` on the owner's instruction (review session https://claude.ai/code/session_014Qj8wncQhqV52QGN1yZDnj). No git change to this bean since before 2026-09-26, no holder recorded, and no open branch touches it; the sessions that held theme D (content folios, SMART/FHIR stack, ingest) work stopped on the 2026-09-25 weekly usage limit. Nothing in the body was changed: re-claim with `bun run beans:claim <id>`.
+Released `in-progress` → `todo` on the owner's instruction (review session https://claude.ai/code/session_014Qj8wncQhqV52QGN1yZDnj). No git change to this bean since before 2026-09-26, no holder recorded, and no open branch touches it; the sessions that held theme D (content folios, SMART/FHIR stack, ingest) work stopped on the 2026-09-25 weekly usage limit. Nothing in the body was changed: re-claim with `bun run cat beans:claim <id>`.
+
+_2026-10-06T06:00:26Z_ — Claimed by claude/goal5-ingest-spine — pushed to main so sibling sessions see it before this branch has a PR (bean 35nj).
+
+## 2026-10-06 — the promotion half closed (issue #2253, branch claude/goal5-ingest-spine)
+
+Re-measured by running it: staged + promoted uploads/2609.07340v1.pdf into folio-assistant-sci/library. Two defects, both fixed:
+- The printed Next line was `../uploads/X.pdf` (not there from the repo root) with no `--library`. It now echoes the caller's own argv plus `--promote` (`promoteCommand`).
+- The promoted entry failed `gen-library-jsonld --check` (37 nodes), with a manifest @id naming cat-harness. The instance and the title catalogue are read off the entry's LOCATION, and staging is not the destination. `buildEntryNodes(docId, dir, locatedAt)` now mints for the destination, and `--promote` builds the nodes before the copy (refusing if they can't be built) and writes them after.
+
+After the fix: the printed Next line, run verbatim, promoted the entry; `--check` reported 37 nodes up to date, and the @id names folio-assistant-sci. Mutation (revert to libraryInstanceOf(dir)) caught by the new test. `check:l1-complete --write` is no longer a step: verdicts live on qa-reports (0dav).
+
+The whole path is two commands. The test entry was removed afterwards; promoting uploads into a library is the owner's call.
+
+Remaining, NOT in this change: l1-blocks.ts and gen-library-jsonld both write manifest.jsonld + blocks/ (two writers, the first a weaker copy). Promotion now overwrites the staging copy, so the defect is masked rather than removed.
+
+
+
+## Handover 2026-10-06 — PAUSED until the repo separation lands (Session F, GOAL 5)
+
+Owner ruling, relayed by the coordinating session (session_012qoycyCSGidZqW245vXhze): repo separation is the primary goal, content authoring/review/publication goes to folio-assistant-core while cat-harness keeps the methods, and that 'needs to be done before F'. This bean resumes AFTER the split. **The code it touches may have moved to folio-assistant-core by then — re-locate it before editing, and re-measure.** Open questions on it are being put to the owner by the coordinating session, one at a time; the answer will be recorded here, not assumed.
+
+State at the pause: the promotion half landed on branch claude/goal5-ingest-spine (issue #2253). The path is TWO invocations of one command — stage, then --promote — with JSON-LD minted for the destination. The done-when is met once that PR merges. What is still open is listed in the 2026-09-23 notes (archive/tabular get no derived arms; seven staged browser prints un-promoted — owner's call), plus l1-blocks.ts as a second, weaker writer of manifest.jsonld + blocks/ that promotion now overwrites (masked, not removed).
+
+## Completed on landed evidence
+Landed on main in PR #495 (pn6j: refuse to promote — an unmet document never reaches library/).

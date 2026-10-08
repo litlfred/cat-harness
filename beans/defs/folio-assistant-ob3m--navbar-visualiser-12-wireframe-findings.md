@@ -1,7 +1,7 @@
 ---
 # folio-assistant-ob3m
 title: 'navbar visualiser: 12 wireframe findings'
-status: in-progress
+status: completed
 type: task
 priority: normal
 tags:
@@ -9,7 +9,7 @@ tags:
     - ui
     - visualiser-navbar
 created_at: 2026-09-23T10:36:15Z
-updated_at: 2026-10-01T18:55:06Z
+updated_at: 2026-10-06T05:55:41Z
 parent: folio-assistant-4ccr
 ---
 
@@ -30,9 +30,9 @@ Findings from the as-is wireframe `cat-harness/docs/wireframes/navbar/` (intent.
 
 Related: `folio-assistant-603s`, `folio-assistant-1le7`, `folio-assistant-z1ug`
 
-When fixed, re-draw `cat-harness/docs/wireframes/navbar/` and re-run `bun run wireframe:check` and `bun run check:wireframes`.
+When fixed, re-draw `cat-harness/docs/wireframes/navbar/` and re-run `bun run cat wireframe:check` and `bun run cat check:wireframes`.
 
-**New notes on this bean go in [`beans/notes/`](../notes/README.md), not here** (bean `m61r`, issue #1853): `bun run beans:note folio-assistant-ob3m --title "…"` writes one file per pull request, so sibling pull requests stop conflicting on this file. The dated sections below were appended before that convention and stay where they are.
+**New notes on this bean go in [`beans/notes/`](../notes/README.md), not here** (bean `m61r`, issue #1853): `bun run cat beans:note folio-assistant-ob3m --title "…"` writes one file per pull request, so sibling pull requests stop conflicting on this file. The dated sections below were appended before that convention and stay where they are.
 
 ## Re-verified 2026-09-29 on `main` 35402147f
 
@@ -82,7 +82,7 @@ The render's 20 includes tiles derived from pages rather than from
 cannot see the rendered panel, so the rendered count still needs an e2e
 assertion — NOT done here, and named as outstanding below.
 
-### What is gated now — `bun run check:navbar-consistency`
+### What is gated now — `bun run cat check:navbar-consistency`
 
 New: `cat-harness/scripts/check-navbar-consistency.ts`, wired into
 `code-quality-gates.yml` as `check:navbar-consistency:check` (`:check` and not
@@ -156,7 +156,7 @@ Each finding re-measured on a local build of that commit (`preview-site.sh`, ser
 - **STILL-PRESENT** — 12. Two unrelated 'Settings': The glass ⚙ Settings panel ('Folio settings — theme, avatars, opacity') holds Theme/Avatars/Opacity/Blur/Harnesses/Tidy, and no text matches /discard|fish/ or points to the page settings. ▦ More actions → 'Settings' is still a separate panel. (nav9.mjs, nav8.mjs)
 
 
-_2026-09-30T23:0Xz_ — **Holder recorded, retroactively, by the session that already held it.** `bun run beans:claim folio-assistant-ob3m` REFUSED this bean: *"already in-progress on the default branch, and NOBODY RECORDED A HOLDER — so this cannot tell a sibling working it right now from a claim somebody abandoned."* That is bean `c3d7`, and the unrecorded holder was **this session**: the declaration half of finding 11 and `check:navbar-consistency` landed from `claude/cool-fermi-htir5p` in PR #1687, which set the status without writing a holder note.
+_2026-09-30T23:0Xz_ — **Holder recorded, retroactively, by the session that already held it.** `bun run cat beans:claim folio-assistant-ob3m` REFUSED this bean: *"already in-progress on the default branch, and NOBODY RECORDED A HOLDER — so this cannot tell a sibling working it right now from a claim somebody abandoned."* That is bean `c3d7`, and the unrecorded holder was **this session**: the declaration half of finding 11 and `check:navbar-consistency` landed from `claude/cool-fermi-htir5p` in PR #1687, which set the status without writing a holder note.
 
 Checked before writing, as the refusal instructs: 14 open PRs, none claims this bean. #1709 matches on "navbar" but is about the Folio handle's scroll band, and #1633 matches "glyph" incidentally. So it was free, and it was free because *I* left it looking taken.
 
@@ -443,3 +443,15 @@ Branch `claude/quirky-hypatia-k3aoh4-strip-pinned`, which is stacked on #1762. S
 - **Scope addition (owner, 2026-10-01): "have folio bottom strip tiles default to hidden away when folio first opened".** With no stored choice, the strip now starts slid away. Its tab reads "Show tiles (N)", carries `aria-expanded`, and toggles both ways (`l4zi`). The choice is remembered in this browser as `1`/`0`, and storage that cannot be read falls back to hidden. Test: `glass-strip-default-hidden.e2e.ts`, 7 specs at 1280×800 and 390×844. All 7 fail against #1762 head.
 
 _2026-10-02_ — **Merge of main (#1810) into the strip branch.** The strip pins the chrome tile by id `glass-settings`, so it now shows #1810's caption **Glass settings**. "Folio settings" in the 390×844 measurement above is the caption at the time of that measurement.
+
+## Summary of Changes — closed on evidence, 2026-10-06
+All 12 findings have a ruling implemented on main (#1762, #1804, #1805, #1807, #1808, #1819; see the dated sections and notes). Re-measured on gh-pages sha f4f5910 rendered in Chromium at 1280x800 and 390x844, session https://claude.ai/code/session_01EcBv3uwKYcnNbCC6BcPG92:
+- 1: the row at rest shows Todos 3, Beans 540, fsh-guts 82 with count badges, and ▦ Harnesses is a disclosure in the strip.
+- 7: one scroll region in the theme sidebar (.fa-nav-middle is the only overflowing scroller).
+- 9: the handle reads ▴ when the glass is up.
+- 10: the strip is hidden until asked ('Show tiles (18)'), and at 390 shows Todos, Glass settings, Library 42, Processes and '+14 more'.
+- 11: the strip tiles have distinct glyphs.
+- 12: 'Page settings' and 'Glass settings — theme, avatars, opacity, blur' are now two distinct names.
+- 3: the sticky half was left as authored on purpose (see the 4–5 note).
+`check:wireframes`: 50/50. `wireframe:check` on navbar/as-is.html: all pass.
+The one remaining step, re-drawing the wireframe (its intent.md still describes the pre-#1762 navbar), is split out as  rather than left as a reason to keep this bean open.

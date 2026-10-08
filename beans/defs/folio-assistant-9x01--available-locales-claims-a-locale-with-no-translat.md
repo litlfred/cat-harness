@@ -15,7 +15,7 @@ work.
 
 ## The contradiction
 
-`cat-harness/docs/crdm-methodology.md` declares
+`cat-harness/docs/process/crdm-methodology.md` declares
 
     available_locales: ["en","fr"]
 
@@ -150,7 +150,7 @@ source pages, because it tested only the FIRST path segment for a locale.
    `available_locales` is a SECOND SYMPTOM of that one cause, which is worth
    knowing before anybody "fixes" the field.
 4. **Every generated page names a command that does not exist.** The banner says
-   *"`docs:pages:check` fails on the difference"*; `bun run docs:pages:check`
+   *"`docs:pages:check` fails on the difference"*; `bun run cat docs:pages:check`
    exits with `Script not found`. The real invocation is
    `bun run cat-harness/scripts/gen-docs-pages.ts --check`, which CI does run
    (`code-quality-gates.yml:1377`). A reader who tries the documented command

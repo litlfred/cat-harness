@@ -1,11 +1,11 @@
 ---
 # folio-assistant-tbdg
 title: 'main is RED on translation-drift: #1374 published 27 translated pages with no .po catalogue, and the backlog list is not the fix'
-status: in-progress
+status: completed
 type: bug
 priority: normal
 created_at: 2026-09-26T04:22:55Z
-updated_at: 2026-09-29T20:52:41Z
+updated_at: 2026-10-06T05:55:27Z
 parent: folio-assistant-bzyu
 ---
 
@@ -108,7 +108,7 @@ Recorded and left `todo`. The session that found it was fixing the unrelated
 [chromium] cat-harness/test/nav-locale.e2e.ts:228
   the navbar shows the selected locale > a page with no translation falls back
   to the source language
-    waiting for locator('.site-nav a[href="/getting-started.html"]')
+    waiting for locator('.site-nav a[href="/start/getting-started.html"]')
     Error: element(s) not found
   698 passed, 1 failed
 ```
@@ -274,7 +274,7 @@ _2026-09-26T08:50:20Z_ — Claimed by claude/wonderful-gauss-7frcrw — pushed t
 
 ## CI found two defects in my own work that local runs could not — both about time
 
-`bun run gates` was green on these because it runs ONE tree. CI runs the PR
+`bun run cat gates` was green on these because it runs ONE tree. CI runs the PR
 **merged with `main` as it is now**, and `main` here moves every few minutes.
 
 ### 1. I pinned a measurement in a test, and an unrelated edit falsified it
@@ -451,7 +451,7 @@ today: **36 over eight** — `agentic-harness`, `architecture`, `beans-and-todos
 `getting-started` in `zh` alone. Four of the original five now have catalogues.
 
 So the set both GREW and SHRANK, and neither number should be quoted: derive it
-with `bun run translation:pot -- --json`, which reads the drift gate's own
+with `bun run cat translation:pot -- --json`, which reads the drift gate's own
 findings. A count in a bean is a claim that goes stale, and this one did within a
 day.
 
@@ -470,3 +470,12 @@ makes that hard to see.
 
 
 _2026-09-29_ — **Re-parented `1xhc` → `bzyu`** by subject, per todo-manager §"WHICH parent" (owner choice '1 2 3' on the LSI epic-filing proposal, bean ansc). main is red BECAUSE translated pages shipped without catalogues; the fix is translation work.
+
+## Summary of Changes — closed on evidence, 2026-10-06
+
+Re-measured on origin/main f0bd0c78c (this session, not quoted from a note):
+- `bun test cat-harness/content/pipeline/translation-drift.test.ts`: 18 pass, 0 fail, including 'the real corpus — and the gate can actually fail' (so the gate was not widened to pass).
+- `bun run cat translation:drift:check`: 75 translations compared, 0 NEWLY drifted, 0 unreadable, 8 uncatalogued-and-recorded. Each of the 8 carries a reason about the translation itself (count-differs, msgid-conflict needing msgctxt) and a date. None says 'to unblock CI'. 118 .po catalogues now exist, against 19 when this bean was opened.
+- Code-quality gates on main at f0bd0c78c: success (run 37418808408).
+- e2e fallback fixture (cat-harness/test/nav-locale.e2e.ts): now DERIVED from the translation index instead of a named page, so translating one more page cannot turn it red.
+The author's decision this bean waited on is recorded in code: the derive-po catalogues plus dated, translation-specific UNCATALOGED entries.

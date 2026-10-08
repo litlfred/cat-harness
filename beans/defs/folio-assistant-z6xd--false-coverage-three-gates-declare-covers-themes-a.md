@@ -1,23 +1,23 @@
 ---
 # folio-assistant-z6xd
 title: 'FALSE COVERAGE: three gates declare @covers themes and none reads the themes graph — the kind reads covered over ground nothing reaches'
-status: in-progress
+status: completed
 type: bug
 priority: normal
 created_at: 2026-09-30T11:28:43Z
-updated_at: 2026-09-30T19:49:54Z
+updated_at: 2026-10-06T19:30:00Z
 parent: folio-assistant-1swy
 ---
 
 Found 2026-09-30 during a goal review, and confirmed independently before
 being written down.
 
-`bun run audit:coverage` reports the `themes` graph kind as:
+`bun run cat audit:coverage` reports the `themes` graph kind as:
 
 ```json
 {"kind": "themes", "state": "covered", "directories": ["who-iris/themes"],
- "criteria": [], "gates": ["bun run check:theme-art:check",
- "bun run theme:page:check", "bun run themes:css:check"],
+ "criteria": [], "gates": ["bun run cat check:theme-art:check",
+ "bun run cat theme:page:check", "bun run cat themes:css:check"],
  "typed": true, "hasFiles": true}
 ```
 
@@ -100,7 +100,7 @@ state was a finding, exactly as this bean predicted, and a data-only fix would
 have reddened CI. `typed-only` is still a finding: typing a node is not judging
 it.
 
-### The gate — `bun run check:instance-themes`
+### The gate — `bun run cat check:instance-themes`
 
 `cat-harness/scripts/check-instance-themes.ts`, wired as
 `check:instance-themes:check`. For every instance declaring a `themes` graph:
@@ -207,3 +207,11 @@ test that says so.
       narrow.** The general checker is not to be built, and the reason is
       recorded here and in `audit-coverage.md` so it is not rediscovered as an
       improvement.
+
+## Summary of Changes
+
+Closed 2026-10-06 by claude/sep-bookkeeping-s1-s3 (7x5n sweep of in-progress beans whose work has landed). Every Done-when box was already ticked by its holder. That was NOT taken as the evidence: the measurement below was re-run on main at 24b221415 (2026-10-06), and no open PR names this bean.
+
+- #1623 merged 2026-09-30T15:06:27Z ("one gate now truly covers it").
+- On main, `check:instance-themes` reaches the graph through `instanceThemes` (`cat-harness/schemas/theme-by-ref.ts`). The three former false claimants (`gen-themes-css`, `render-theme-sheet`, `check-theme-art`) now carry `@covers none` with a reason (items 1–2).
+- Item 3 was put to the owner and ruled 2026-09-30: "keep it narrow", with no general checker. Recorded above and in `audit-coverage.md`.

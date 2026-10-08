@@ -1,11 +1,11 @@
 ---
 # folio-assistant-a8wy
 title: 'VECTOR FIGURE ARM: extract positioned labels from vector-only figures — 69 of 87 caption pages'
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-24T18:04:22Z
-updated_at: 2026-09-30T00:48:55Z
+updated_at: 2026-10-06T19:30:00Z
 parent: folio-assistant-2yyh
 ---
 
@@ -101,7 +101,7 @@ appends a sentence to `image-descriptions`' detail and nothing more.
 
 ## Claim released 2026-09-29
 
-Released `in-progress` → `todo` on the owner's instruction (review session https://claude.ai/code/session_014Qj8wncQhqV52QGN1yZDnj). No git change to this bean since before 2026-09-26, no holder recorded, and no open branch touches it; the sessions that held theme D (content folios, SMART/FHIR stack, ingest) work stopped on the 2026-09-25 weekly usage limit. Nothing in the body was changed: re-claim with `bun run beans:claim <id>`.
+Released `in-progress` → `todo` on the owner's instruction (review session https://claude.ai/code/session_014Qj8wncQhqV52QGN1yZDnj). No git change to this bean since before 2026-09-26, no holder recorded, and no open branch touches it; the sessions that held theme D (content folios, SMART/FHIR stack, ingest) work stopped on the 2026-09-25 weekly usage limit. Nothing in the body was changed: re-claim with `bun run cat beans:claim <id>`.
 
 _2026-09-30T00:48:51Z_ — Claimed by claude/magical-dijkstra-19yvml — pushed to main so sibling sessions see it before this branch has a PR (bean 35nj).
 
@@ -187,3 +187,9 @@ is the finding rather than a draft to be tidied away.
 
 `NarrativeSchema` is reused unchanged: an agent writes `draft`, only a human
 confirms, and `confirmed_by.kind` must be `"human"` structurally.
+
+## Summary of Changes
+
+Closed 2026-10-06 by claude/sep-bookkeeping-s1-s3 (7x5n sweep of in-progress beans whose work has landed). Every Done-when box was already ticked by its holder. That was NOT taken as the evidence: the measurement below was re-run on main at 24b221415 (2026-10-06), and no open PR names this bean.
+
+- `bun test cat-harness/scripts/tests/figure-description.test.ts` → pass. `cat-harness/schemas/figure-description.ts` (`folio-figure-descriptions/v1`) and its registry entry in `graph-typology-registry.ts` are on main (the owner's 2026-09-30 third-sidecar ruling).

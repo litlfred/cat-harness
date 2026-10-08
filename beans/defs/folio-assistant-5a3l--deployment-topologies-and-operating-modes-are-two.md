@@ -5,7 +5,8 @@ status: in-progress
 type: epic
 priority: high
 created_at: 2026-09-19T08:52:35Z
-updated_at: 2026-09-22T21:05:00Z
+updated_at: 2026-10-04T15:12:14Z
+parent: folio-assistant-rwmf
 ---
 
 Opened 2026-09-19 from [issue #363](https://github.com/litlfred/folio-assistant/issues/363),
@@ -195,7 +196,7 @@ itself is corrected.
 
 ## Re-checked 2026-09-25 — stays open. An epic's boxes are not its children
 
-Reported by `bun run health` as *"`in-progress` with all 4 of its Done-when
+Reported by `bun run cat health` as *"`in-progress` with all 4 of its Done-when
 boxes ticked"*. The boxes are ticked. The epic is not done.
 
 **Measured on a clean checkout identical to `origin/main` at `d8c450b9a2`:**
@@ -218,4 +219,3 @@ person's job is to decide — which is what it did.
 **Expiry**: re-check when fewer than three children remain open, or on
 **2026-12-25**. Not sooner — fifteen open children is not a state that turns
 over in a month.
-
