@@ -70,11 +70,13 @@ import { movedRoots } from "./qa-verify-moved.ts";
 import { workingCopyState } from "./qa-working-copy.ts";
 
 import {
+  attributeChanges,
   diffReadings,
   formatMutations,
   formatUndetermined,
   readTree,
   type GateMutation,
+  type GateWindow,
 } from "./gate-tree-guard.js";
 import { jobsFromArgv, orderedEmitter, runCaptured, runPool } from "./task-pool.ts";
 import { gateReadsOnly, pairIO } from "./task-io.ts";
@@ -253,16 +255,6 @@ const OWN_STEP_EXEMPTIONS: StepExemption[] = [
     reason:
       "a BUILD step, not a check: it writes the derived artefacts that cannot be committed because an input is " +
       "kept on a branch; check:derived-from and each writer's own :check (fsh-guts:viz:check) are its verdict",
-  },
-  {
-    // Bean `hupw`: the IG instances are remote mounts of their forks, which
-    // do not commit the pages this checkout generates for them, so the
-    // publish builds write them.
-    match: "bun run smart:pages:publish",
-    kind: "covered-by",
-    reason:
-      "a BUILD step, not a check: it writes the mounted IG instances' docs/ and OpenAPI pages at publish; the gate " +
-      "`smart:pages` (code-quality-gates) runs the same docs generator over the mounts",
   },
   {
     // Bean `q8ar`. The deploy-time BUILD of each SQLite slice (beans, todos,
@@ -2023,6 +2015,10 @@ if (import.meta.main) {
   let seen: ReadonlyMap<string, string> | undefined = baseline.ok ? baseline.entries : undefined;
   const undetermined: string[] = baseline.ok ? [] : formatUndetermined(baseline.why);
   const mutations: GateMutation[] = [];
+  // When each gate ran, so a changed path's mtime can say who was running
+  // when it was written — the only thing that tells a pooled gate's write
+  // from its batch-mates', or from an edit made between gates (bean `v3nf`).
+  const windows: GateWindow[] = [];
 
   // ── Read-only gates run in a pool (bean `xpcu`) ────────────────────────
   //
@@ -2038,6 +2034,9 @@ if (import.meta.main) {
   // so attribution is as exact as it was. A read-only batch that changed the
   // tree is attributed to the batch, named in full: that is a declaration that
   // turned out false, and `--jobs 1` re-runs everything one at a time to pin it.
+  // Each changed path also carries the gates that were RUNNING when it was
+  // written (its mtime against each gate's window), which usually pins it
+  // without the re-run, and names a write made while no gate ran as outside.
   const segments = gateSegments(gates, (g) => gateReadsOnly(g.command));
   const failed: { gate: Gate; why: string[] }[] = [];
   const t0 = performance.now();
@@ -2085,7 +2084,9 @@ if (import.meta.main) {
         const [cmd, ...args] = g.command.split(/\s+/);
         const started = performance.now();
         const trace = t.script !== undefined ? openTrace(ROOT) : undefined;
+        const wStart = Date.now();
         const r = await runTee(cmd!, args, trace?.env);
+        windows.push({ gate: g.command, start: wStart, end: Date.now() });
         // Timed like the parallel lines, so a slow serial gate is visible in
         // the log rather than inferred from the total.
         process.stdout.write(`  ↳ ${((performance.now() - started) / 1000).toFixed(1)}s, exit ${r.code}: ${g.command}\n`);
@@ -2111,7 +2112,14 @@ if (import.meta.main) {
       run.map(({ gate: g }, i) => ({
         id: g.command,
         outputs: [],
-        run: () => runCaptured(g.command.split(/\s+/), ROOT, traces[i]?.env),
+        run: async () => {
+          const start = Date.now();
+          try {
+            return await runCaptured(g.command.split(/\s+/), ROOT, traces[i]?.env);
+          } finally {
+            windows.push({ gate: g.command, start, end: Date.now() });
+          }
+        },
       })),
       jobs,
       (i, r) => emitter.push(i, r),
@@ -2149,7 +2157,7 @@ if (import.meta.main) {
       return undefined;
     }
     const changes = diffReadings(prev, now.entries);
-    if (changes.length > 0) mutations.push({ gate: who, changes });
+    if (changes.length > 0) mutations.push({ gate: who, changes, attribution: attributeChanges(ROOT, changes, windows) });
     return now.entries;
   }
 
