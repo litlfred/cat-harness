@@ -302,14 +302,18 @@ function resolveClosure(opts: RemoteMountOptions, trees: Map<string, RemoteTree>
       const q = queue.shift()!;
       const was = seen.get(q.name);
       if (was) {
-        if (was.repository !== q.repository || was.sha !== q.sha) {
-          plan.outcomes.push({
-            instance: q.name,
-            state: "could-not-determine",
-            detail: `reached at two pins — ${was.repository}@${was.sha.slice(0, 12)} and ${q.repository}@${q.sha.slice(0, 12)}; one instance cannot be mounted twice, so pin one with an override`,
-          });
+        if (was.repository === "(skipped)") {
+          seen.set(q.name, { repository: q.repository, sha: q.sha });
+        } else {
+          if (was.repository !== q.repository || was.sha !== q.sha) {
+            plan.outcomes.push({
+              instance: q.name,
+              state: "could-not-determine",
+              detail: `reached at two pins — ${was.repository}@${was.sha.slice(0, 12)} and ${q.repository}@${q.sha.slice(0, 12)}; one instance cannot be mounted twice, so pin one with an override`,
+            });
+          }
+          continue;
         }
-        continue;
       }
       seen.set(q.name, { repository: q.repository, sha: q.sha });
       if (local.has(q.name) && q.name !== m.harness) {
