@@ -124,10 +124,10 @@ export const packTarballTool = defineTool({
 
 ### Step 5: Test the Tool
 
-Author fast unit tests in `cat-harness-tools/test/` or `cat-harness-tools/scripts/tests/`:
+Author fast unit tests in `cat-harness-tools/test/` or whole-checkout integration tests in `cat-harness-tools/test/coordinator/`:
 - Test valid arguments and expected outputs.
 - Test invalid inputs and error handling.
-- Verify with `bun test cat-harness-tools/test/<tool>.test.ts`.
+- Verify with `bun test cat-harness-tools/test/<tool>.test.ts` or `bun test cat-harness-tools/test/coordinator/<test>.test.ts`.
 
 ### Step 6: Validate Reachability and Skill Coverage
 

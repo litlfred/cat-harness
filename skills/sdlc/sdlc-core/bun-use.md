@@ -108,19 +108,26 @@ To prevent boundary leakage and cross-repository compiler errors:
 
 ---
 
-## 5. Monorepo Coordinator vs Standalone Execution
+## 5. Declarative Coordinator vs Standalone Execution
 
-The top-level repository (`folio-assistant-backup`) and downstream subgraphs have
+The top-level repository (`folio-assistant`) and downstream subgraphs have
 distinct roles:
 
-1. **Top-Level Coordinator**:
-   - The top-level `package.json` is **private** (`"private": true`) and acts solely
-     as a workspace coordinator. It does not publish code or tools directly.
-   - Its `tsconfig.json` is narrowed strictly to integration tests (`test/**/*.ts`)
-     and shared types, preventing monorepo bloat from masking subgraph issues.
+1. **Top-Level Declarative Coordinator**:
+   - The coordinator repository is **purely declarative**: it holds no root `package.json`,
+     `tsconfig.json`, `bunfig.toml`, or `bun.lock`.
+   - All instance compositions are declared in `index.config.json` and locked with their
+     pinned SHAs and tree digests in `index.lock.json`.
+   - Subgraphs and remote instances are mounted from the lock via `bun cat-harness/scripts/mount-from-lock.ts`.
+   - Whole-checkout integration tests live under `cat-harness-tools/test/coordinator/`.
+   - Working state subgraphs (`beans/`, `fsh-guts/`) are branch-mounted subgraphs kept at branch
+     tips (`cat/cat-harness/beans`, `cat/cat-harness/fsh-guts`) and mounted via
+     `bun cat-harness/scripts/state-mount.ts`.
 2. **Standalone Subgraphs**:
+   - Each code repository (`cat-harness-tools`, `cat-harness`, `bootstrap-tools`, etc.) maintains
+     its own standalone `package.json`, `tsconfig.json`, and `bunfig.toml`.
    - Each subgraph can be cloned, typechecked, and tested independently:
      ```sh
-     cd cat-harness-tools && bun test && bun run typecheck
+     bun test cat-harness-tools/test
      ```
-   - CI workflows in upstream repositories run independently of the monorepo coordinator.
+   - CI workflows in upstream repositories run independently of the coordinator.
