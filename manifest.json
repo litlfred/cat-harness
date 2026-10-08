@@ -1,11 +1,21 @@
 {
   "$schema": "state-manifest/v1",
-  "status": "seed",
-  "authoritative": false,
+  "status": "active",
+  "authoritative": true,
   "subgraph": "fsh-guts",
-  "note": "Seeded from main for bean folio-assistant-9c7h. Owner, 2026-10-02: \"fsh-guts content gets its own named branch, cat/cat-harness/fsh-guts and the contents of fsh-guts/ dir goes there\"; push confirmed by the owner 2026-10-03. Laid out like cat/cat-harness/beans and cat/cat-harness/todos, so scripts/branch-store.ts (bean 2h76) reads all three the same way. main remains the source of truth until 9c7h retargets every reader and writer and the owner confirms removing fsh-guts/ from main; until then this branch is a verified copy, not the store. History is not rewritten onto this branch: it stays on main, reachable from source.sha.",
-  "source": { "ref": "main", "sha": "53ba9f5547a75e3aebbcdd349cbb15d25f9535fa" },
+  "note": "Authoritative branch store for fsh-guts/ cutover from main.",
+  "source": {
+    "ref": "main",
+    "sha": "3d4caf6e0f1c322b7a976150fe1f237bf36c927f"
+  },
   "seededAt": "2026-10-03T01:05:44Z",
   "keyedBy": "tip",
-  "graphs": [ { "path": "fsh-guts", "tree": "929703e0c8529704ba4791d4cfba571a8b800c56", "files": 140 } ]
+  "graphs": [
+    {
+      "path": "fsh-guts",
+      "tree": "5bb7a28535f08ca1c41b69eca30c9bddb3375c0b",
+      "files": 182
+    }
+  ],
+  "refreshedAt": "2026-10-08T21:08:59.757Z"
 }
