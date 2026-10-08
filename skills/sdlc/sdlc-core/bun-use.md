@@ -1,0 +1,126 @@
+---
+name: bun-use
+description: >-
+  How Bun is used as the JavaScript/TypeScript execution runtime, test runner,
+  package manager, and tarball packager across separated repositories: standalone
+  subgraph configuration (bunfig.toml, package.json, tsconfig.json), test preloads,
+  dependency resolution without rootDir pitfalls, packaging with bun pm pack,
+  and coordinator vs standalone execution models.
+governs:
+  - cat-harness-tools
+  - cat-harness
+---
+
+# Bun Runtime, Toolchain, and Multi-Repo Conventions
+
+> Skill id: `bun-use` · Package: `sdlc-core`
+> Related: [`package-release`](package-release.md), [`npm-kg-distribution`](../../kg/kg-core/npm-kg-distribution.md), [`tool-authoring`](../../folio-core/tool-authoring.md)
+
+**Bun is the primary JavaScript/TypeScript runtime, test runner, and package
+manager across the platform.** In the separated repository architecture, each
+repository maintains standalone toolchain autonomy while the top-level
+checkout coordinates them.
+
+---
+
+## 1. Per-Repository Toolchain Autonomy
+
+Every separated repository (`cat-harness`, `cat-harness-tools`, `bootstrap-tools`,
+`smart-base`, etc.) MUST maintain its own standalone configuration files:
+
+| file | purpose in each repository |
+|---|---|
+| `package.json` | Declares package identity (`name`), dependencies, scripts (`test`, `typecheck`), export map (`exports`), and tarball whitelist (`files`). |
+| `tsconfig.json` | Standalone TypeScript compiler settings tailored for Bun and isolated from other repositories. |
+| `bunfig.toml` | Per-repository test runners, test preloads, and runtime flags. |
+
+---
+
+## 2. TypeScript Compiler Rules with Bun
+
+To prevent boundary leakage and cross-repository compiler errors:
+
+1. **Avoid `rootDir` and `outDir` in Multi-Repo Layouts**:
+   - In subgraphs that import cross-directory utilities (e.g., schemas or tests),
+     specifying `"rootDir": "."` or `"outDir": "dist"` causes TypeScript to fail
+     with:
+     ```
+     error TS6059: File '...' is not under 'rootDir' '...'. 'rootDir' is expected to contain all source files.
+     ```
+   - **Rule**: Set `"noEmit": true` and omit `rootDir` and `outDir` in
+     `tsconfig.json`. This allows TypeScript to typecheck cleanly across repository
+     boundaries.
+2. **Compiler Flags**:
+   - Standard flags for all subgraphs:
+     ```json
+     {
+       "compilerOptions": {
+         "target": "ESNext",
+         "module": "ESNext",
+         "moduleResolution": "bundler",
+         "types": ["bun"],
+         "strict": true,
+         "skipLibCheck": true,
+         "noEmit": true
+       }
+     }
+     ```
+3. **Ambient Type Definitions**:
+   - Include ambient declarations in `"include"`:
+     ```json
+     "include": ["src/**/*.ts", "test/**/*.ts", "types/**/*.d.ts"]
+     ```
+
+---
+
+## 3. Test Execution and Preloads (`bunfig.toml`)
+
+1. **Test Runner**:
+   - Run tests directly with `bun test`.
+   - Run targeted tests for fast verification:
+     ```sh
+     bun test test/my-check.test.ts
+     ```
+2. **Preloading Test Environments**:
+   - If test suites rely on global setups, ambient matchers, or test-specific
+     mocks, declare them in `bunfig.toml` under `[test]`:
+     ```toml
+     [test]
+     preload = ["./schemas/test-preload.ts", "./schemas/test-fixture-preload.ts"]
+     ```
+   - Do not rely on command-line flags (`bun test --preload ...`) in CI scripts;
+     the declaration in `bunfig.toml` ensures consistent behavior locally and in CI.
+
+---
+
+## 4. Packaging and Publishing with Bun
+
+1. **Tarball Packaging (`bun pm pack`)**:
+   - Use `bun pm pack` to build deterministic npm tarballs (`.tgz`).
+   - The files included in the tarball are controlled strictly by the `"files"`
+     whitelist in `package.json`.
+2. **Authoring the Package Manifest**:
+   - Declare `"private": false` on publishable packages.
+   - Whitelist only published artifacts and compiled sources. Exclude test
+     fixtures, scratch scripts, and ephemeral directories.
+   - In Knowledge Graphs, declare `package.json` under `assets` in `<instance>.json`
+     (see [`npm-kg-distribution`](../../kg/kg-core/npm-kg-distribution.md)).
+
+---
+
+## 5. Monorepo Coordinator vs Standalone Execution
+
+The top-level repository (`folio-assistant-backup`) and downstream subgraphs have
+distinct roles:
+
+1. **Top-Level Coordinator**:
+   - The top-level `package.json` is **private** (`"private": true`) and acts solely
+     as a workspace coordinator. It does not publish code or tools directly.
+   - Its `tsconfig.json` is narrowed strictly to integration tests (`test/**/*.ts`)
+     and shared types, preventing monorepo bloat from masking subgraph issues.
+2. **Standalone Subgraphs**:
+   - Each subgraph can be cloned, typechecked, and tested independently:
+     ```sh
+     cd cat-harness-tools && bun test && bun run typecheck
+     ```
+   - CI workflows in upstream repositories run independently of the monorepo coordinator.

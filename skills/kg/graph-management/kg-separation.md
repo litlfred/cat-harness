@@ -317,6 +317,10 @@ The owner ruled on 2026-10-06 (bean `0mpw`, `remote-mount.md`): **no git submodu
 8. **Fan-Out Recursion Guard in `declaringInstances`**: When a mounted dependency carries its own nested `remoteMounts`, consumer remote fan-out resolution must not recursively mount sub-instances into roots that are already locked mounts of the parent checkout. Without filtering (`!lockedMountPaths(checkout).has(rel)`), `remoteFanOut` re-mounts nested dependencies directly into the child checkout's directory, mutating its pristine checkout tree, inflating its file count, and causing `treeDigest` verification to fail.
 9. **Relative Directory Symlink Handling in Staging & Tarball Scripts**: In repositories containing internal symlinked directory trees (such as FHIR Implementation Guides with test structure links), recursive directory copy utilities (like `cpSync(..., { recursive: true })`) can trigger infinite self-copy recursion loops. Staging, site compilation, and packaging scripts must copy symlinks with `{ dereference: false }` or use archive utilities (such as `tar` or `rsync -a`) that preserve symlink references rather than traversing into directory cycles.
 10. **Purely Declarative Ontologies vs. Companion Toolsets (FR-7)**: Purely declarative base repositories (such as `litlfred/bootstrap`) must contain zero runtime execution code, zero test suites, and zero `package.json` manifests by architectural contract (FR-7). All graph compilation (JSON-LD export, BPMN diagram rendering, site staging, and schema validation) is executed by the companion tooling repository (`bootstrap-tools`). The declarative repository explicitly marks its render exemption (`renderExemption: true`) in its root manifest, and tooling scripts accept an explicit target repository argument (`--repo <dir>`) rather than expecting co-located execution.
+11. **Toolchain Decentralization (`package.json`, `tsconfig.json`, `bunfig.toml`)**: Tools and harness subgraphs must possess full standalone toolchain autonomy. `package.json` must be a standalone package manifest (e.g. `@litlfred/cat-harness-tools`), `bunfig.toml` defines test preloads per instance, and `tsconfig.json` must set `"noEmit": true` and omit `rootDir`/`outDir` to prevent `error TS6059: File is not under rootDir` when cross-subgraph schemas or utilities are imported. See [`bun-use`](../../sdlc/sdlc-core/bun-use.md).
+12. **Monorepo Coordinator Demotion**: Once tools and code are extracted to their respective packages, the root `package.json` is demoted to a private coordinator (`"private": true`) with narrowed `tsconfig.json` (`test/**/*.ts`). The root platform coordinates development workspaces, mounts, and integration tests, but never directly exports or publishes tool implementations.
+13. **Ephemeral File Purging and Root Hygiene**: Ephemeral generated directories (`_kg/`, `build/`, `test-results/`) must NEVER be committed to the root repository or left unignored. Build outputs belong to the tool that produces them.
+14. **Instance Memory Preservation**: Root directories `beans/`, `todos/`, and `fsh-guts/` are the instance's own durable working memory (the agent's plan, the user's todo queue, and the archival store). They are never overlaid across instances, never extracted to downstream packages, and stay at root by design.
 
 ## Rollback
 
@@ -326,8 +330,9 @@ worth reverting, and since the copy is ARCHIVED in the parent's fsh-guts
 rather than deleted, the archive restores the exact tree that was removed. After a release, a tagged version is never reused: roll back
 with a new patch release and move the parent's pin back.
 
-## Worked example — bootstrap + bootstrap-tools
+## Worked examples
 
+### 1. bootstrap + bootstrap-tools
 - Stages 1–5: bean `r3gy` groups A–E (#1486, #1503) — wrong facts, folio-only
   names, root-relative paths, graph typologies and `$schema` tags and QA out, IRIs
   under `https://litlfred.github.io/bootstrap/` with semver.
@@ -338,4 +343,7 @@ with a new patch release and move the parent's pin back.
 - Next: the README and diagram writers join bootstrap-tools; the publication
   plan; the standalone rehearsal; then the owner's authorisation.
 
-cat-harness + cat-harness-tools follows the same stages.
+### 2. cat-harness + cat-harness-tools (completed 2026-10-08)
+- `cat-harness` (`litlfred/cat-harness`): owns the knowledge graph, declarative schemas, content adapters, and BPMN/DMN processes.
+- `cat-harness-tools` (`litlfred/cat-harness-tools`): owns the MCP server (`src/server.ts`), concrete tool implementations (`src/tools/`), ambient moddle type definitions (`types/`), standalone `package.json`, `tsconfig.json`, and `bunfig.toml`.
+- Decoupled from monorepo root via `index.config.json` remote mount and locked via `index.lock.json`.

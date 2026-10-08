@@ -11,6 +11,7 @@
     "before-after-preview",
     "blocked-build-dependencies",
     "branch-archaeology",
+    "bun-use",
     "ci-health",
     "continual-progress",
     "coordinate",

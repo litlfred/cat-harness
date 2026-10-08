@@ -390,6 +390,11 @@ reference the shared vocabulary in `schemas/tool-types.ts` by absolute IRI —
 never a hand-written string, because a reference nothing checks is a reference
 that is eventually wrong.
 
+For the end-to-end guide on authoring, implementing, packaging, and registering
+concrete tools across separated repositories, see [`tool-authoring`](tool-authoring.md).
+For runtime conventions, test preloading, and TypeScript configuration, see
+[`bun-use`](../sdlc/sdlc-core/bun-use.md).
+
 ## Covered is not reachable — see its own skill
 
 A skill can be satisfied by the **neighbours** of its mechanism while the
