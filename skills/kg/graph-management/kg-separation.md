@@ -301,12 +301,19 @@ The owner ruled on 2026-10-06 (bean `0mpw`, `remote-mount.md`): **no git submodu
 | **Package import** | published tools | The parent imports the tools' Zod schemas and pipeline writers as an npm package dependency. |
 | **Upstream pins** | maintenance | `upstream-pins.json`, maintained by `upstream-version-adoption.bpmn`. |
 
-### Four separation lessons learned (2026-10-08)
+### Seven separation lessons learned (2026-10-08)
 
 1. **Downstream Gitignore Contract**: When remote mounts populate an instance directory in the consumer repository, the consumer's `.gitignore` must ignore the mounted paths. Otherwise, git treats external files as uncommitted local files. `index.config.json` automatically includes all `remoteMounts` paths in the generated `.gitignore`.
 2. **Folded Layer Aliases**: When an instance or subgraph is folded into another (e.g. `cat-openapi` folded into `cat-harness` as named subgraph `openapi`), existing external forks or historical dependencies may still carry `needs: ["cat-openapi"]`. `schemas/harness-config.ts` maintains `FOLDED_INSTANCE_ALIASES` to resolve these transparently without breaking dependency graphs.
 3. **Asset Permission & License Validation**: Pre-separation audits must verify `library/withheld.json` and copyright gates. Materializing or mounting a separated catalogue without verified asset clearance causes 404s and broken links on published documentation.
 4. **NPM Manifest in the KG**: `package.json` is an authored pre-packaging asset in the Knowledge Graph (`role: "package-manifest"`), and `.tgz` release tarballs are tracked as `folio-binary-release/v1` state documents with SHA-256 integrity digests.
+5. **No Relative Directory Climbing Across Repositories**: In a monorepo, files routinely import siblings via `../../cat-harness/` or `../../bootstrap-tools/`. Once separated into standalone checkouts, climbing two or three levels (`../..` or `../../..`) escapes the repository boundary into `.claude/worktrees/` or the parent filesystem, immediately causing `Cannot find module` errors and test suite failures. All cross-repository imports MUST be authored as package imports (e.g. `@litlfred/cat-harness/...` or via package `exports`), or resolved through package specifiers / tsconfig paths, NEVER through escaping filesystem `../..` traversals.
+6. **No Fixed-Depth Repository Root Assumptions (`REPO`)**: Scripts in separated repositories often inherit `const REPO = resolve(import.meta.dir, "..", "..")`. In the monorepo, `scripts/../..` was the checkout root; in standalone repositories, `scripts/..` is the root, so `scripts/../..` escapes into parent worktrees. This causes scripts to either fail to locate `<instance>.json` or inadvertently scan sibling worktrees. Repository root resolution must be dynamic—searching upward for `<instance>.json`, `index.config.json`, or `.git`—rather than assuming a hardcoded directory depth.
+7. **Clean Standalone Manifest (`package.json`) and Tooling Scaffolding**: When extracting an instance to an upstream repository, `package.json` must be normalized:
+   - Operational commands must live under `"scripts"`, not leftover monorepo `"checkoutScripts"`.
+   - Script definitions must NOT hardcode monorepo subdirectory paths (e.g. `"bun run cat-harness-tools/scripts/..."` -> `"bun run scripts/..."`).
+   - A standalone `tsconfig.json` must be present to prevent `tsc` from walking up to the monorepo root.
+   - Explicit `dependencies` and `devDependencies` must be declared.
 
 ## Rollback
 
