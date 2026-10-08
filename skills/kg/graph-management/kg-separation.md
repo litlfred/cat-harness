@@ -301,7 +301,7 @@ The owner ruled on 2026-10-06 (bean `0mpw`, `remote-mount.md`): **no git submodu
 | **Package import** | published tools | The parent imports the tools' Zod schemas and pipeline writers as an npm package dependency. |
 | **Upstream pins** | maintenance | `upstream-pins.json`, maintained by `upstream-version-adoption.bpmn`. |
 
-### Seven separation lessons learned (2026-10-08)
+### Ten separation lessons learned (2026-10-08)
 
 1. **Downstream Gitignore Contract**: When remote mounts populate an instance directory in the consumer repository, the consumer's `.gitignore` must ignore the mounted paths. Otherwise, git treats external files as uncommitted local files. `index.config.json` automatically includes all `remoteMounts` paths in the generated `.gitignore`.
 2. **Folded Layer Aliases**: When an instance or subgraph is folded into another (e.g. `cat-openapi` folded into `cat-harness` as named subgraph `openapi`), existing external forks or historical dependencies may still carry `needs: ["cat-openapi"]`. `schemas/harness-config.ts` maintains `FOLDED_INSTANCE_ALIASES` to resolve these transparently without breaking dependency graphs.
@@ -314,6 +314,9 @@ The owner ruled on 2026-10-06 (bean `0mpw`, `remote-mount.md`): **no git submodu
    - Script definitions must NOT hardcode monorepo subdirectory paths (e.g. `"bun run cat-harness-tools/scripts/..."` -> `"bun run scripts/..."`).
    - A standalone `tsconfig.json` must be present to prevent `tsc` from walking up to the monorepo root.
    - Explicit `dependencies` and `devDependencies` must be declared.
+8. **Fan-Out Recursion Guard in `declaringInstances`**: When a mounted dependency carries its own nested `remoteMounts`, consumer remote fan-out resolution must not recursively mount sub-instances into roots that are already locked mounts of the parent checkout. Without filtering (`!lockedMountPaths(checkout).has(rel)`), `remoteFanOut` re-mounts nested dependencies directly into the child checkout's directory, mutating its pristine checkout tree, inflating its file count, and causing `treeDigest` verification to fail.
+9. **Relative Directory Symlink Handling in Staging & Tarball Scripts**: In repositories containing internal symlinked directory trees (such as FHIR Implementation Guides with test structure links), recursive directory copy utilities (like `cpSync(..., { recursive: true })`) can trigger infinite self-copy recursion loops. Staging, site compilation, and packaging scripts must copy symlinks with `{ dereference: false }` or use archive utilities (such as `tar` or `rsync -a`) that preserve symlink references rather than traversing into directory cycles.
+10. **Purely Declarative Ontologies vs. Companion Toolsets (FR-7)**: Purely declarative base repositories (such as `litlfred/bootstrap`) must contain zero runtime execution code, zero test suites, and zero `package.json` manifests by architectural contract (FR-7). All graph compilation (JSON-LD export, BPMN diagram rendering, site staging, and schema validation) is executed by the companion tooling repository (`bootstrap-tools`). The declarative repository explicitly marks its render exemption (`renderExemption: true`) in its root manifest, and tooling scripts accept an explicit target repository argument (`--repo <dir>`) rather than expecting co-located execution.
 
 ## Rollback
 
