@@ -1,8 +1,21 @@
 {
   "name": "@litlfred/cat-harness",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "type": "module",
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "oxigraph": "^0.5.11",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "bun-types": "latest",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
+    "typescript7": "npm:typescript@^7.0.2"
+  },
   "checkoutScripts": {
     "agent-memory": "bun run cat-harness/scripts/agent-memory.ts",
     "agent-memory:check": "bun run cat-harness/scripts/agent-memory.ts --check",
