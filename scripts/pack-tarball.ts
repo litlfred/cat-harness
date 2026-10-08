@@ -13,7 +13,17 @@
  */
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import {
+  copyFileSync,
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  renameSync,
+  statSync,
+  unlinkSync,
+  writeFileSync,
+} from "node:fs";
 import { basename, dirname, join, resolve } from "node:path";
 
 import {
@@ -22,6 +32,19 @@ import {
   type BinaryRelease,
 } from "../schemas/binary-release.js";
 import { readDeclaration } from "../schemas/cat-harness.js";
+
+export const BINARY_ASSET_IGNORE_PATTERNS = [
+  "library/**/*.png",
+  "library/**/*.jpg",
+  "library/**/*.jpeg",
+  "library/**/*.webp",
+  "library/**/*.pdf",
+  "uploads/**/*.png",
+  "uploads/**/*.jpg",
+  "uploads/**/*.jpeg",
+  "uploads/**/*.webp",
+  "uploads/**/*.pdf",
+];
 
 export interface PackTarballOptions {
   /** Target directory containing package.json (default: process.cwd()). */
@@ -34,6 +57,12 @@ export interface PackTarballOptions {
   repository?: string;
   /** Public release URL or base URL for fetchedFrom. */
   releaseUrl?: string;
+  /**
+   * Whether to build the hydrated package (including binary media assets).
+   * When false (default), binary assets in library/ and uploads/ are excluded
+   * to produce a lean unhydrated source Knowledge Graph package.
+   */
+  hydrated?: boolean;
   /** Print JSON output to stdout. */
   json?: boolean;
 }
@@ -74,36 +103,96 @@ export function packTarball(opts: PackTarballOptions = {}): PackResult {
     existsSync(destination) ? readdirSync(destination).filter((f) => f.endsWith(".tgz")) : []
   );
 
-  // Run `bun pm pack --destination <dest>`
-  const proc = spawnSync("bun", ["pm", "pack", "--destination", destination], {
-    cwd: root,
-    encoding: "utf-8",
-  });
-
-  if (proc.status !== 0) {
-    throw new Error(`bun pm pack failed: ${proc.stderr || proc.stdout || proc.status}`);
-  }
-
-  // Find the created tarball in destination
-  const afterFiles = readdirSync(destination).filter((f) => f.endsWith(".tgz"));
-  const newFiles = afterFiles.filter((f) => !beforeFiles.has(f));
+  // Manage .npmignore to exclude binary assets from unhydrated package
+  const npmignorePath = join(root, ".npmignore");
+  const npmignoreBackup = join(root, ".npmignore.unhydrated-tmp-bak");
+  let modifiedNpmignore = false;
+  let hadBackup = false;
 
   let tarballName: string;
-  if (newFiles.length === 1) {
-    tarballName = newFiles[0]!;
-  } else {
-    // Expected tarball filename pattern in bun/npm:
-    // e.g. "package-1.0.0.tgz" or "@scope/package" -> "scope-package-1.0.0.tgz"
-    const normalizedName = name.replace(/^@/, "").replace("/", "-");
-    const expected = `${normalizedName}-${version}.tgz`;
-    if (afterFiles.includes(expected)) {
-      tarballName = expected;
-    } else {
-      const candidate = afterFiles.find((f) => f.includes(version));
-      if (!candidate) {
-        throw new Error(`Could not identify created tarball in ${destination}. Files: ${afterFiles.join(", ")}`);
+  try {
+    if (opts.hydrated) {
+      // Hydrated package: ensure binary assets are NOT ignored
+      if (existsSync(npmignorePath)) {
+        copyFileSync(npmignorePath, npmignoreBackup);
+        hadBackup = true;
+        const current = readFileSync(npmignorePath, "utf-8");
+        const filtered = current
+          .split("\n")
+          .filter((line) => !BINARY_ASSET_IGNORE_PATTERNS.some((pat) => line.trim() === pat))
+          .join("\n");
+        writeFileSync(npmignorePath, filtered);
+        modifiedNpmignore = true;
       }
-      tarballName = candidate;
+    } else {
+      // Unhydrated package: ensure binary assets ARE ignored
+      const current = existsSync(npmignorePath) ? readFileSync(npmignorePath, "utf-8") : "";
+      const missing = BINARY_ASSET_IGNORE_PATTERNS.filter((pat) => !current.includes(pat));
+      if (missing.length > 0) {
+        if (existsSync(npmignorePath)) {
+          copyFileSync(npmignorePath, npmignoreBackup);
+          hadBackup = true;
+        }
+        const appended =
+          current +
+          (current.endsWith("\n") || current.length === 0 ? "" : "\n") +
+          "# Binary media assets (belong only in hydrated package)\n" +
+          missing.join("\n") +
+          "\n";
+        writeFileSync(npmignorePath, appended);
+        modifiedNpmignore = true;
+      }
+    }
+
+    // Run `bun pm pack --destination <dest>`
+    const proc = spawnSync("bun", ["pm", "pack", "--destination", destination], {
+      cwd: root,
+      encoding: "utf-8",
+    });
+
+    if (proc.status !== 0) {
+      throw new Error(`bun pm pack failed: ${proc.stderr || proc.stdout || proc.status}`);
+    }
+
+    // Find the created tarball in destination
+    const afterFiles = readdirSync(destination).filter((f) => f.endsWith(".tgz"));
+    const newFiles = afterFiles.filter((f) => !beforeFiles.has(f));
+
+    if (newFiles.length === 1) {
+      tarballName = newFiles[0]!;
+    } else {
+      // Expected tarball filename pattern in bun/npm:
+      // e.g. "package-1.0.0.tgz" or "@scope/package" -> "scope-package-1.0.0.tgz"
+      const normalizedName = name.replace(/^@/, "").replace("/", "-");
+      const expected = `${normalizedName}-${version}.tgz`;
+      if (afterFiles.includes(expected)) {
+        tarballName = expected;
+      } else {
+        const candidate = afterFiles.find((f) => f.includes(version));
+        if (!candidate) {
+          throw new Error(`Could not identify created tarball in ${destination}. Files: ${afterFiles.join(", ")}`);
+        }
+        tarballName = candidate;
+      }
+    }
+
+    // If hydrated package, rename tarball to <name>-<version>.hydrated.tgz
+    if (opts.hydrated) {
+      const hydratedName = tarballName.replace(/\.tgz$/, ".hydrated.tgz");
+      const origTarballPath = join(destination, tarballName);
+      const hydratedTarballPath = join(destination, hydratedName);
+      renameSync(origTarballPath, hydratedTarballPath);
+      tarballName = hydratedName;
+    }
+  } finally {
+    if (modifiedNpmignore) {
+      if (hadBackup && existsSync(npmignoreBackup)) {
+        renameSync(npmignoreBackup, npmignorePath);
+      } else {
+        try {
+          unlinkSync(npmignorePath);
+        } catch {}
+      }
     }
   }
 
@@ -136,7 +225,9 @@ export function packTarball(opts: PackTarballOptions = {}): PackResult {
     ? `https://github.com/${repository}/releases/download/v${version}/${tarballName}`
     : `https://registry.npmjs.org/${name}/-/${tarballName}`;
 
-  const releaseId = `${name.replace(/^@/, "").replace("/", "-")}-v${version}`;
+  const releaseId = opts.hydrated
+    ? `${name.replace(/^@/, "").replace("/", "-")}-v${version}-hydrated`
+    : `${name.replace(/^@/, "").replace("/", "-")}-v${version}`;
   const tag = `v${version}`;
   const now = new Date().toISOString();
 
@@ -198,6 +289,7 @@ if (import.meta.main) {
   const outIndex = argv.indexOf("--out");
   const repoIndex = argv.indexOf("--repository");
   const urlIndex = argv.indexOf("--release-url");
+  const hydrated = argv.includes("--hydrated");
   const json = argv.includes("--json");
 
   const root = rootIndex >= 0 && argv[rootIndex + 1] ? argv[rootIndex + 1] : process.cwd();
@@ -207,7 +299,7 @@ if (import.meta.main) {
   const releaseUrl = urlIndex >= 0 && argv[urlIndex + 1] ? argv[urlIndex + 1] : undefined;
 
   try {
-    const res = packTarball({ root, destination, out, repository, releaseUrl, json });
+    const res = packTarball({ root, destination, out, repository, releaseUrl, hydrated, json });
     if (json) {
       console.log(JSON.stringify(res.releaseRecord, null, 2));
     } else {

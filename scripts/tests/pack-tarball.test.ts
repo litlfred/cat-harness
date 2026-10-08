@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -131,6 +132,60 @@ describe("pack-tarball and kg-retrieve-npm tooling", () => {
         release: relFile,
       })
     ).toThrow();
+
+    rmSync(tmp, { recursive: true, force: true });
+  });
+
+  test("unhydrated pack excludes library PNGs while hydrated pack includes them", () => {
+    const tmp = mkdtempSync(join(tmpdir(), "pack-hydrated-test-"));
+    const pkgDir = join(tmp, "kg-with-png");
+    mkdirSync(pkgDir, { recursive: true });
+
+    writeFileSync(
+      join(pkgDir, "package.json"),
+      JSON.stringify(
+        {
+          name: "@test-scope/kg-with-png",
+          version: "2.0.0",
+        },
+        null,
+        2
+      )
+    );
+
+    mkdirSync(join(pkgDir, "skills"), { recursive: true });
+    writeFileSync(join(pkgDir, "skills", "doc.md"), "# Knowledge\n");
+
+    mkdirSync(join(pkgDir, "library", "img"), { recursive: true });
+    writeFileSync(join(pkgDir, "library", "img", "figure.png"), "FAKE_PNG_BINARY_BYTES");
+
+    const outDir = join(tmp, "dist");
+
+    // 1. Pack unhydrated (default)
+    const unhydrated = packTarball({
+      root: pkgDir,
+      destination: outDir,
+      repository: "test/kg-with-png",
+    });
+
+    expect(unhydrated.tarballName).toBe("test-scope-kg-with-png-2.0.0.tgz");
+    const unhydratedList = spawnSync("tar", ["-ztf", unhydrated.tarballPath], { encoding: "utf-8" }).stdout;
+    expect(unhydratedList).toContain("skills/doc.md");
+    expect(unhydratedList).not.toContain("library/img/figure.png");
+
+    // 2. Pack hydrated
+    const hydrated = packTarball({
+      root: pkgDir,
+      destination: outDir,
+      repository: "test/kg-with-png",
+      hydrated: true,
+    });
+
+    expect(hydrated.tarballName).toBe("test-scope-kg-with-png-2.0.0.hydrated.tgz");
+    expect(hydrated.releaseRecord.release.id).toBe("test-scope-kg-with-png-v2.0.0-hydrated");
+    const hydratedList = spawnSync("tar", ["-ztf", hydrated.tarballPath], { encoding: "utf-8" }).stdout;
+    expect(hydratedList).toContain("skills/doc.md");
+    expect(hydratedList).toContain("library/img/figure.png");
 
     rmSync(tmp, { recursive: true, force: true });
   });

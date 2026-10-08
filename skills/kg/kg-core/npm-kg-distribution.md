@@ -166,15 +166,20 @@ The authored source files as they exist in the repository:
 - `package.json` pre-packaging manifest.
 - `<instance>.json` instance declaration.
 - Authored source directories: `skills/` (markdown instructions), `schemas/` (Zod/TS definitions),
-  `processes/` (BPMN diagrams), `library/`, `uploads/`.
+  `processes/` (BPMN diagrams), `methodologies/`, text-based metadata.
+- **Binary media assets excluded**: PNGs, JPGs, PDFs and figures under `library/` and `uploads/`
+  are excluded via `.npmignore` during unhydrated packaging, keeping the base package compact (~2-5 MB).
+- Packaged as `<package>-<version>.tgz`.
 - Ideal for agents and developers authoring new knowledge, extending skills, or compiling
   the graph locally.
 
 #### 2. Hydrated materialized graph view
-The pre-compiled, materialized Knowledge Graph artifacts:
+The complete, materialized Knowledge Graph artifacts and binary assets:
+- **Binary media assets included**: Losslessly optimized library PNGs, figures, and covers.
 - Named subgraph JSON-LD (`docs/subgraph/<instance>/<path>/index.jsonld`).
 - Fully dereferenced hydrated JSON-LD (`index.hydrated.jsonld`).
 - Metadata indexes, RDF N-Quads, and pre-computed search indices.
+- Packaged via `pack-tarball --hydrated` as `<package>-<version>.hydrated.tgz`.
 - Ideal for read-only consumers, visualizers, semantic search engines, and portal
   deployments that require immediate access without installing compilation toolchains
   or running offline export pipelines.
