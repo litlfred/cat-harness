@@ -49,7 +49,7 @@
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import { appendFileSync, cpSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
 
 import { z } from "zod";
 
@@ -860,7 +860,9 @@ export function reportOutcomes(title: string, state: CheckResult["state"], reaso
 export function declaringInstances(checkout: string): { roots: string[]; unreadable: Array<{ root: string; why: string }> } {
   const roots: string[] = [];
   const unreadable: Array<{ root: string; why: string }> = [];
+  const mounted = new Set(lockedMountPaths(checkout));
   for (const root of instanceRootsIn(checkout)) {
+    if (root !== checkout && mounted.has(relative(checkout, root))) continue;
     try {
       if (readDeclaredMounts(root).mounts.length > 0) roots.push(root);
     } catch (e) {
