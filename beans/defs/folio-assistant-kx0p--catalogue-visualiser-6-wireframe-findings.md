@@ -9,7 +9,7 @@ tags:
     - ui
     - visualiser-catalogue
 created_at: 2026-09-23T10:36:14Z
-updated_at: 2026-10-09T19:00:00Z
+updated_at: 2026-10-09T19:05:00Z
 parent: folio-assistant-4ccr
 ---
 
@@ -59,3 +59,7 @@ Re-measured on a local build (Routine steps 3–7):
 - 6 — **fixed**: each count inside its pill, labelled ("permitted: 3 of 6").
 - cat-harness `6ff2f1b3`: a `kindRouteRedirect` whose kind has no viewer in this build is "not owed" (printed) instead of failing the mount — it stopped who-iris's publish.
 - Remaining: sortable/filterable; re-draw `cat-harness/docs/wireframes/catalogue/` and re-run `wireframe:check`; who-iris's site has no library viewer at all (task: build-instance-site).
+
+## 2026-10-09 — live on who-iris's own site
+
+Published: gh-pages `9255288` carries `cat-harness/catalogue/who-iris/index.html` (held rows first, labelled gate counts, no dead library-viewer links; Pages run 37977615950 success). Still open: sortable/filterable columns; re-draw `cat-harness/docs/wireframes/catalogue/` and re-run `wireframe:check`; a library viewer for who-iris's own site.

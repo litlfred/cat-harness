@@ -1,10 +1,10 @@
 ---
 # folio-assistant-mw5z
 title: who-iris's two AUTHORED docs pages render as raw markdown and nothing links them
-status: in-progress
+status: completed
 type: bug
 created_at: 2026-10-04T06:25:33Z
-updated_at: 2026-10-09T19:00:00Z
+updated_at: 2026-10-09T19:05:00Z
 parent: folio-assistant-0lmb
 ---
 
@@ -79,3 +79,15 @@ stop claiming a complete list it does not have.
 - **who-iris** (`14ff17d`): the docs landing's "Pages" list is read off `docs/*.md` (option 3's clause: it no longer under-reports); two links that still climbed to the monorepo root are fixed.
 - Measured on a local build of who-iris's site (the Routine's steps 3–7, isolated tree): `/docs/who-iris/style-guide.html` renders (screenshot), all four authored pages are linked from the landing, and a whole-site link check finds **0** unresolved hrefs.
 - Remaining: merge both, then move who-iris's cat-harness pin (owner consent, H8) and publish.
+
+## Completed 2026-10-09 — measured on the LIVE site (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
+
+Two sessions worked this bean the same day; both halves landed and coexist:
+- the owner ruled **option 1** in session_01BJNRo4kh8U15HZVFDhYNJL: who-iris pre-renders its authored pages in `gen-iris-pages` (litlfred/who-iris #20, #21);
+- litlfred/who-iris #22 made those pages' links to files outside `docs/` cite the repository (6 had been published dead) and fixed two links that climbed to the monorepo root;
+- litlfred/cat-harness #65 renders any OTHER mounted `.md` (an instance without a generator); it never overwrites an existing `.html`, so for who-iris the generator's pages win.
+
+Done-when, on gh-pages `9255288` (who-iris `2e127e7`, Pages run https://github.com/litlfred/who-iris/actions/runs/37977615950 — success):
+- [x] the authored pages are reachable as RENDERED pages: `docs/who-iris/style-guide.html`, `style-guide-agents.html`, `oxigraph-pipeline-requirements.html` are on gh-pages (screenshot of the style guide checked on the local build);
+- [x] `docs/who-iris/index.html`'s Pages section lists the authored pages;
+- [x] linked from a page, measured on the BUILT site: the docs landing links each, and a whole-site link check over 1,420 files finds 0 unresolved hrefs.

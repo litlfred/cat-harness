@@ -5,7 +5,7 @@ status: in-progress
 type: task
 priority: normal
 created_at: 2026-10-07T21:46:20Z
-updated_at: 2026-10-09T19:00:00Z
+updated_at: 2026-10-09T19:05:00Z
 parent: folio-assistant-7x5n
 ---
 
@@ -54,3 +54,7 @@ open this bean and tell the separation session.
 - **who-iris** (`c211186`): `folio/` declared (surgical splice) and `folio/who-iris.json` written by that tool; `landing:sticky[:check]` scripts. Declaring `folio` changes no mount route (checked).
 - Done-when 2 and 3 (landing reads every instance's folio, mounted ones arrive with the mount) hold through `stickyPathForContribution`; 4 (`/cat-harness/folio/` shows cat-harness's own) is cat-harness's site, untouched.
 - Remaining: merge, then the who-iris pin move.
+
+## 2026-10-09 — who-iris's half is LIVE; the bean is not done (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
+
+who-iris declares `folio/` and holds `folio/who-iris.json` (litlfred/who-iris #22), and its site is published from it (gh-pages `9255288`, Pages run 37977615950 success; `landing:sticky:check` exits 0 in the build). Still open: done-when 1 covers EVERY instance that renders a landing — `ensure-landing-sticky --check` run from who-iris's checkout reported folio-assistant-core's card (`folios/folio-assist-core.json`) and bootstrap's (`folio/bootstrap.json`) missing in their own trees; those land in their repositories. Done-when 4 (`/cat-harness/folio/` on cat-harness's site) not re-measured.
