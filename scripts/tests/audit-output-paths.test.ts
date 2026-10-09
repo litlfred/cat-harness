@@ -1,5 +1,6 @@
 /**
- * Machine-generated audit output must not land in `beans/` or `todos/`.
+ * Machine-generated audit output must not land in `beans/` or `todos/`,
+ * and benchmark runners must not write into declared graph directories.
  *
  * `AGENTS.md` is explicit about both:
  *
@@ -17,12 +18,24 @@
  * `build/` is gitignored in every folio layout, including what `folio_init`
  * scaffolds — `todos/` was not, which is why the docstring claiming otherwise
  * was wrong outside the `qou` repo it was written in.
+ *
+ * Benchmark runners (issue #363, bean folio-assistant-wp49):
+ * Benchmarking output is a report about model performance across configurations,
+ * and is deliberately excluded from declared KG graphs. Runners default output
+ * to `build/benchmarks/` and are guarded against writing to any declared graph.
  */
 import { describe, test, expect } from "bun:test";
 import { readFileSync } from "fs";
 import { join } from "path";
+import { spawnSync } from "child_process";
+import {
+  assertBenchmarkOutputPath,
+  isDeclaredGraphPath,
+  getDeclaredGraphDirectories,
+} from "../benchmark-guard";
 
 const PIPELINE = join(import.meta.dir, "../../content/pipeline");
+const SCRIPTS = join(import.meta.dir, "..");
 
 /** Scripts that write a machine-generated worklist or report. */
 const WRITERS = [
@@ -30,6 +43,12 @@ const WRITERS = [
   "extract-status-sections.ts",
   "qa-agent-drain-queue.ts",
   "qa-section-title-audit.ts",
+];
+
+/** Benchmark runners that score model performance across tasks. */
+const BENCHMARK_RUNNERS = [
+  "toc-benchmark.py",
+  "page-label-benchmark.py",
 ];
 
 describe("audit output paths", () => {
@@ -53,5 +72,70 @@ describe("audit output paths", () => {
     // It was the only one with a hardcoded path and no way to redirect it.
     const src = readFileSync(join(PIPELINE, "qa-section-title-audit.ts"), "utf-8");
     expect(src).toContain('indexOf("--out")');
+  });
+});
+
+describe("benchmark runner output paths and graph isolation (folio-assistant-wp49)", () => {
+  const declaredGraphDirs = getDeclaredGraphDirectories(SCRIPTS);
+
+  for (const runner of BENCHMARK_RUNNERS) {
+    const src = readFileSync(join(SCRIPTS, runner), "utf-8");
+
+    test(`${runner} does not default into beans/ or todos/`, () => {
+      expect(src).not.toMatch(/default=["'][.]?[\/\\]?beans[\/\\]/);
+      expect(src).not.toMatch(/default=["'][.]?[\/\\]?todos[\/\\]/);
+    });
+
+    test(`${runner} does not default into any declared graph directory`, () => {
+      for (const gDir of declaredGraphDirs) {
+        const pattern = new RegExp(`default=["'][.]?[\\/\\\\]?${gDir.replace("/", "[\\/\\\\]")}[\\/\\\\]`);
+        expect(src).not.toMatch(pattern);
+      }
+    });
+
+    test(`${runner} defaults its output into build/benchmarks/`, () => {
+      expect(src).toMatch(/default=["']build\/benchmarks\/[\w-]+\.json["']/);
+    });
+  }
+
+  test("isDeclaredGraphPath detects all declared graph paths", () => {
+    expect(isDeclaredGraphPath("beans/test.json").isGraph).toBeTrue();
+    expect(isDeclaredGraphPath("todos/items.json").isGraph).toBeTrue();
+    expect(isDeclaredGraphPath("test/results/qa.json").isGraph).toBeTrue();
+    expect(isDeclaredGraphPath("test/attestations/att.json").isGraph).toBeTrue();
+    expect(isDeclaredGraphPath("library/item.json").isGraph).toBeTrue();
+    expect(isDeclaredGraphPath("schemas/node.json").isGraph).toBeTrue();
+    expect(isDeclaredGraphPath("skills/sdlc/test.json").isGraph).toBeTrue();
+  });
+
+  test("isDeclaredGraphPath allows non-graph report paths", () => {
+    expect(isDeclaredGraphPath("build/benchmarks/toc.json").isGraph).toBeFalse();
+    expect(isDeclaredGraphPath("build/results.json").isGraph).toBeFalse();
+    expect(isDeclaredGraphPath("reports/benchmark-report.json").isGraph).toBeFalse();
+  });
+
+  test("assertBenchmarkOutputPath throws for graph destinations and allows reports", () => {
+    expect(() => assertBenchmarkOutputPath("beans/output.json")).toThrow(/declared graph directory "beans"/);
+    expect(() => assertBenchmarkOutputPath("test/results/benchmark.json")).toThrow(/declared graph directory "test\/results"/);
+    expect(() => assertBenchmarkOutputPath("todos/bench.json")).toThrow(/declared graph directory "todos"/);
+
+    // Non-graph paths do not throw
+    expect(() => assertBenchmarkOutputPath("build/benchmarks/toc.json")).not.toThrow();
+    expect(() => assertBenchmarkOutputPath("reports/toc-synthesis.json")).not.toThrow();
+  });
+
+  test("Python benchmark guard rejects graph paths and allows build/benchmarks/", () => {
+    const pyGuard = join(SCRIPTS, "_benchmark_guard.py");
+
+    const okRun = spawnSync("python3", [pyGuard, "build/benchmarks/run.json"], { encoding: "utf-8" });
+    expect(okRun.status).toBe(0);
+
+    const beansRun = spawnSync("python3", [pyGuard, "beans/run.json"], { encoding: "utf-8" });
+    expect(beansRun.status).toBe(1);
+    expect(beansRun.stderr).toContain("resolves inside declared graph directory 'beans'");
+
+    const qaRun = spawnSync("python3", [pyGuard, "test/results/run.json"], { encoding: "utf-8" });
+    expect(qaRun.status).toBe(1);
+    expect(qaRun.stderr).toContain("resolves inside declared graph directory 'test/results'");
   });
 });

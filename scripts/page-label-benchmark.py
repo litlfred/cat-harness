@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import argparse
 import glob
+import json
 import os
 import sys
 
@@ -34,6 +35,7 @@ sys.path.insert(0, HERE)
 
 import _pdf_headings as H  # noqa: E402
 import _pdf_page_labels as P  # noqa: E402
+from _benchmark_guard import assert_not_declared_graph_path  # noqa: E402
 
 
 def corpus(root: str) -> list[str]:
@@ -78,6 +80,9 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("pdfs", nargs="*")
     ap.add_argument("--root", default=os.path.abspath(os.path.join(HERE, "..", "..")))
+    ap.add_argument("--json", default="build/benchmarks/page-label-benchmark.json",
+                    help="write benchmark results JSON here (default: build/benchmarks/page-label-benchmark.json)")
+    ap.add_argument("--no-json", action="store_true", help="do not write JSON output")
     a = ap.parse_args()
     all_rows = [score(p) for p in (a.pdfs or corpus(a.root))]
     rows = [r for r in all_rows if not r["trivial"]]
@@ -95,6 +100,11 @@ def main() -> int:
     for r in rows:
         if r["wrong"]:
             print(f"  wrong in {r['doc']}: {r['wrong']}", file=sys.stderr)
+    if a.json and not a.no_json:
+        assert_not_declared_graph_path(a.json, a.root)
+        os.makedirs(os.path.dirname(os.path.abspath(a.json)), exist_ok=True)
+        with open(a.json, "w") as f:
+            json.dump(all_rows, f, indent=1)
     return 0
 
 
