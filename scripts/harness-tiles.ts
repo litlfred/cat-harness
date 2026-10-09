@@ -65,7 +65,7 @@ import { isAbsolute, join, relative, resolve, sep } from "node:path";
 import { GENERIC, avatarFor, hasAvatar } from "../schemas/avatars.js";
 import { hexHue, resolveThemeBackdrop } from "../schemas/theme.js";
 import { PLATFORM_THEME_OWNER, themeByRef } from "../schemas/theme-by-ref.js";
-import { instanceConfigFilename } from "../schemas/harness-config.js";
+import { instanceConfigFilename, instantiatedHarnessNames } from "../schemas/harness-config.js";
 import { flattenDependencies } from "../schemas/dependency-order.js";
 import {
   type CatHarnessDeclaration,
@@ -1208,7 +1208,12 @@ function tileFor(
   // so one page was called "Bootstrap" on the harness row and "processes" one
   // row below it. The landing renders a section for every instantiated
   // harness (`_includes/harness_details.html`), so the anchor always resolves.
-  const instantiated = existsSync(join(repoRoot, instanceConfigFilename(decl.name)));
+  // The CHECKOUT's answer, index included (cat-harness#21's rule): an index
+  // lists its instances in `index.config.json` and none has a root
+  // `<name>.config.json`, so the file test made every harness uninstantiated
+  // and the landing listed none of them (`harness-row-alignment`,
+  // `rail-tips`, 2026-10-09).
+  const instantiated = instantiatedHarnessNames(repoRoot).includes(decl.name);
   const section = rooted === undefined && instantiated ? `/#harness-${decl.name}` : undefined;
   const href = rooted ?? section ?? firstViewer ?? handled;
   // A VIEWER AT THE INSTANCE'S OWN ROOT is the harness's page again, and
