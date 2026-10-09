@@ -25,10 +25,12 @@
  *     2.5.3), and the words still carry the meaning without the colour (SC
  *     1.4.1, the `j66n` rule: a hue never removes the second channel).
  *
- * A kind with no registered avatar falls back to its initial, exactly as
- * before — the glyph is an improvement where one exists, never a new gap.
+ * A kind with no registered avatar falls back to the themed blank mark,
+ * rather than its initial — owner ruling 2026-09-20: *"there is always an
+ * avatar, even when there is none (always have default blank/themecolor if no
+ * avatar. etc)"*.
  */
-import { avatarFor, hasAvatar } from "../../schemas/avatars.js";
+import { BLANK_AVATAR, avatarFor, hasAvatar } from "../../schemas/avatars.js";
 import { defaultGraphTypologies } from "../../schemas/cat-harness.js";
 
 /**
@@ -50,21 +52,23 @@ export interface GraphTypologyRowDecor {
   icon?: string;
   glyphPath?: string;
   tone?: number;
+  blank?: boolean;
   description?: string;
 }
 
 /**
  * The mark and accessible description for one kind's row.
  *
- * @param kind     the declared graph typology — also the row's visible label
- * @param instance the instance whose graph the row opens, named in the
- *                 description so two harnesses' `library` rows are told apart
+ * @param kind      the declared graph typology — also the row's visible label
+ * @param instance  the instance whose graph the row opens, named in the
+ *                  description so two harnesses' `library` rows are told apart
+ * @param themeTone optional hue angle (0–359) for fallback when kind has no declared avatar
  */
-export function graphTypologyRowDecor(kind: string, instance?: string): GraphTypologyRowDecor {
+export function graphTypologyRowDecor(kind: string, instance?: string, themeTone?: number): GraphTypologyRowDecor {
   const head = kindSummaryHead(kind);
   const description = [head, instance].filter((x): x is string => Boolean(x)).join(", ");
   const mark: Omit<GraphTypologyRowDecor, "kind"> = hasAvatar(kind)
     ? { glyphPath: avatarFor(kind).glyph, tone: avatarFor(kind).tone }
-    : { icon: kind.slice(0, 1).toUpperCase() };
+    : { glyphPath: BLANK_AVATAR.glyph, tone: themeTone ?? BLANK_AVATAR.tone, blank: true };
   return { kind: true, ...mark, ...(description ? { description } : {}) };
 }

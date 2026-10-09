@@ -630,6 +630,43 @@ export const GENERIC: Avatar = {
 };
 
 /**
+ * What an instance, role or kind with no declared avatar gets.
+ *
+ * Owner ruling, 2026-09-20: *"there is always an avatar, even when there is none
+ * (always have default blank/themecolor if no avatar. etc)"*.
+ *
+ * Absence of an avatar is not absence of a mark: an instance, role or kind
+ * with no declared avatar gets a BLANK one drawn in its theme's colour,
+ * rather than a gap or generic question mark fallback.
+ *
+ * Distinct from {@link GENERIC}, which is the question mark for undetermined kinds.
+ */
+export const BLANK_AVATAR: Avatar = {
+  glyph: "M3 3h18v18H3z",
+  tone: 0,
+  reads: "a blank mark — no avatar declared; rendered in theme colour",
+};
+
+/**
+ * Build a themed blank mark with the resolved theme tone (hue angle, 0–359).
+ */
+export function blankAvatar(tone: number = 0): Avatar {
+  return {
+    glyph: BLANK_AVATAR.glyph,
+    tone,
+    reads: BLANK_AVATAR.reads,
+  };
+}
+
+/**
+ * The avatar for a kind or an instance, falling back to a themed blank when
+ * none is declared.
+ */
+export function avatarOrBlank(kind: string, themeTone: number = 0): Avatar {
+  return hasAvatar(kind) ? avatarFor(kind) : blankAvatar(themeTone);
+}
+
+/**
  * A kind DECLARED as a node (bean dmx1) carries its own avatar, so this table
  * is not a second central registry for kinds it does not list.
  */

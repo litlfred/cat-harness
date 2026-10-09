@@ -52,6 +52,7 @@
  * @module scripts/lib/navbar
  */
 
+import { BLANK_AVATAR } from "../../schemas/avatars.js";
 import {
   NAV_COLLAPSED_PX,
   NAV_MARK_PX as NAV_GLYPH_PX,
@@ -119,6 +120,10 @@ export interface NavItem {
   avatar?: { src: string; title?: string; region?: { x: number; y: number; w: number; h: number } };
   /** A hue for the item's mark, 0–360. `603s`'s `tone`. */
   tone?: number;
+  /**
+   * Whether this item has no declared avatar and renders as a themed blank mark.
+   */
+  blank?: boolean;
   /** True for the route the current page belongs to. */
   current?: boolean;
   /**
@@ -448,6 +453,7 @@ export function navbarCss(): string {
     // control they cannot see is focused.
     `.fa-nav:has(.fa-nav-open:focus-visible) .fa-nav-head{outline:2px solid #58a6ff;outline-offset:-2px}`,
     `.fa-nav-glyph{flex:0 0 ${NAV_GLYPH_PX}px;text-align:center;font-size:16px}`,
+    `.fa-nav-glyph.fa-nav-blank{height:${NAV_GLYPH_PX}px;display:inline-block}`,
     `.fa-nav-glyph img{width:${NAV_GLYPH_PX}px;height:${NAV_GLYPH_PX}px;display:block}`,
     // A kind's SVG glyph (bean `yag0`): drawn in the ink colour on its tone.
     `.fa-nav-glyph svg{width:${NAV_GLYPH_PX}px;height:${NAV_GLYPH_PX}px;display:block;padding:4px;box-sizing:border-box}`,
@@ -623,6 +629,12 @@ function mark(i: NavItem, c: Ctx): string {
       `width:${pct(1 / r.w)};height:${pct(1 / r.h)};` +
       `left:${pct(-r.x / r.w)};top:${pct(-r.y / r.h)}"></span>`
     );
+  }
+  // Themed blank mark: an instance or kind with no declared avatar draws a blank
+  // in its theme's colour rather than an initial letter or generic question mark.
+  if (i.blank || i.glyphPath === BLANK_AVATAR.glyph) {
+    const blankTone = typeof i.tone === "number" ? ` style="background:hsl(${i.tone} 45% 28%)"` : "";
+    return `<span class="fa-nav-glyph fa-nav-tone fa-nav-blank"${blankTone} aria-hidden="true"></span>`;
   }
   // An initial, not a question mark. `603s` reports "no avatar declared" as a
   // FINDING elsewhere; a navbar is not the place to render a gap as a glyph.

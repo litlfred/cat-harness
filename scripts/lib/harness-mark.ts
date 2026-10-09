@@ -42,6 +42,7 @@ export interface HarnessMark {
   title: string;
   region?: MarkRegion;
   crop?: { width: number; height: number; left: number; top: number };
+  blank?: boolean;
 }
 
 /**
@@ -57,7 +58,7 @@ export function navMarkFields(
   mark: HarnessMark | null | undefined,
   tone: number | undefined,
   rebase: (src: string) => string = (s) => s,
-): Pick<NavItem, "avatar" | "glyphPath" | "tone"> {
+): Pick<NavItem, "avatar" | "glyphPath" | "tone" | "blank"> {
   const toneField = typeof tone === "number" ? { tone } : {};
   if (mark?.src) {
     return {
@@ -66,6 +67,13 @@ export function navMarkFields(
         ...(mark.title ? { title: mark.title } : {}),
         ...(mark.region ? { region: mark.region } : {}),
       },
+      ...toneField,
+    };
+  }
+  if (mark?.blank) {
+    return {
+      blank: true,
+      ...(mark.glyph ? { glyphPath: mark.glyph } : {}),
       ...toneField,
     };
   }
