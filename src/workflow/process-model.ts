@@ -1138,7 +1138,7 @@ function processIndex(dir: string): Map<string, string> {
   // `processes/process/`, …), so a caller and its callee in one instance can
   // sit in sibling subdirectories. A flat read here turned every cross-group
   // call opaque — no descent, and no `checkAcceptedCodes` — exactly the
-  // silent failure `dependencyProcessHome` was written to stop one level out.
+  // silent failure `dependencyProcessIndex` was written to stop one level out.
   // Files directly in `dir` are read first so they win a duplicate id.
   const walk = (d: string): void => {
     const entries = readdirSync(d, { withFileTypes: true });
@@ -1161,22 +1161,26 @@ function processIndex(dir: string): Map<string, string> {
  * file beside it defines it: that instance's declared `processes` directories,
  * walked recursively. Bean `63wl` — once diagrams are grouped by concern, the
  * sibling directory is one group, not the instance.
+ *
+ * Every process id at once, keyed by id, the directories merged in
+ * declaration order with the first definition winning — the answer a per-id
+ * walk gave, built once per load instead of once per call activity.
  */
-function ownInstanceProcessHome(dir: string, processId: string): string | undefined {
+function ownInstanceProcessIndex(dir: string): Map<string, string> {
+  const out = new Map<string, string>();
   let dirs: string[];
   try {
     const own = findInstanceRoot(dir);
-    if (own === undefined || own === null) return undefined;
+    if (own === undefined || own === null) return out;
     dirs = directoriesForGraph(own, "processes");
   } catch {
-    return undefined;
+    return out;
   }
   for (const d of dirs) {
     if (!existsSync(d)) continue;
-    const home = processIndex(d).get(processId);
-    if (home !== undefined) return home;
+    for (const [id, home] of processIndex(d)) if (!out.has(id)) out.set(id, home);
   }
-  return undefined;
+  return out;
 }
 
 /**
@@ -1198,17 +1202,19 @@ function ownInstanceProcessHome(dir: string, processId: string): string | undefi
  * Only DEPENDENCIES are searched, never dependents, so a lower layer's
  * diagram cannot descend into a process defined above it — the same arrow
  * `kg:detangle:direction` grades. Any failure to resolve the instance or its
- * dependencies returns `undefined`, which keeps the pre-existing behaviour
- * (the call stays an opaque single step) rather than inventing an answer.
+ * dependencies yields no entry, which keeps the pre-existing behaviour (the
+ * call stays an opaque single step) rather than inventing an answer. Built
+ * once per load for every id, like {@link ownInstanceProcessIndex}.
  */
-function dependencyProcessHome(dir: string, processId: string): string | undefined {
+function dependencyProcessIndex(dir: string): Map<string, string> {
+  const out = new Map<string, string>();
   let roots: string[];
   try {
     const own = findInstanceRoot(dir);
-    if (own === undefined || own === null) return undefined;
+    if (own === undefined || own === null) return out;
     roots = orderedDependencies(own).map((d) => d.rootPath).reverse();
   } catch {
-    return undefined;
+    return out;
   }
   for (const root of roots) {
     let dirs: string[];
@@ -1219,11 +1225,10 @@ function dependencyProcessHome(dir: string, processId: string): string | undefin
     }
     for (const d of dirs) {
       if (!existsSync(d)) continue;
-      const home = processIndex(d).get(processId);
-      if (home !== undefined) return home;
+      for (const [id, home] of processIndex(d)) if (!out.has(id)) out.set(id, home);
     }
   }
-  return undefined;
+  return out;
 }
 
 /**
@@ -1310,6 +1315,13 @@ export async function loadProcessModel(
   bpmnPath: string,
   /** Process ids already on the load path, so a call-activity cycle is refused. */
   seen: readonly string[] = [],
+  /**
+   * The fallback process indexes already built during THIS load, by the
+   * calling diagram's directory, so a descent into the same instance does not
+   * rebuild them. Created fresh by every top-level call: nothing outlives a
+   * load, so a test that rewrites a fixture still sees its own disk.
+   */
+  homes: Map<string, { own?: Map<string, string>; dep?: Map<string, string> }> = new Map(),
 ): Promise<ProcessModel> {
   const moddle = new BpmnModdle();
   const { rootElement, warnings } = await moddle.fromXML(readFileSync(bpmnPath, "utf-8"));
@@ -1671,6 +1683,8 @@ export async function loadProcessModel(
   // an interpreter that enters A → B → A settles forever.
   const children = new Map<string, ProcessModel>();
   const index = processIndex(dirname(bpmnPath));
+  const here = homes.get(dirname(bpmnPath)) ?? {};
+  homes.set(dirname(bpmnPath), here);
   const path = [...seen, proc.id];
   for (const node of nodes.values()) {
     if (!node.calledElement) continue;
@@ -1680,12 +1694,18 @@ export async function loadProcessModel(
           `on the call path (${path.join(" → ")}). A process cannot contain itself.`,
       );
     }
+    // The two fallback indexes are built at most ONCE per directory per
+    // top-level load (`homes`), and only when a call misses the sibling index. Resolving the instance and its
+    // dependencies per call activity re-read every declaration in the
+    // checkout each time; in the index checkout, which composes eleven
+    // instances, that put the corpus load past the 5 s test budget
+    // (measured 2026-10-09: content-lifecycle.bpmn 700 ms a load).
     const home =
       index.get(node.calledElement) ??
-      ownInstanceProcessHome(dirname(bpmnPath), node.calledElement) ??
-      dependencyProcessHome(dirname(bpmnPath), node.calledElement);
+      (here.own ??= ownInstanceProcessIndex(dirname(bpmnPath))).get(node.calledElement) ??
+      (here.dep ??= dependencyProcessIndex(dirname(bpmnPath))).get(node.calledElement);
     if (!home) continue;
-    const child = await loadProcessModel(home, path);
+    const child = await loadProcessModel(home, path, homes);
     children.set(node.id, child);
     checkAcceptedCodes(node, child, bpmnPath);
   }
