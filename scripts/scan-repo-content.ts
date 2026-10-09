@@ -28,6 +28,22 @@
  * any row in one word. A classifier whose reasoning cannot be stated in a
  * sentence cannot be corrected by the person it is wrong about.
  *
+ * ## Outside-content mathematical evidence & refutations (folio-assistant-qdai)
+ *
+ * In repositories with mathematical and scientific content (e.g. qou, issue #2106),
+ * crucial evidence often lives OUTSIDE the primary content tree:
+ *   - formal proofs (.lean, .v, .thy) under `docs/audits/`, `math/`, `scripts/`
+ *   - computation scripts (.py, .sage, .ipynb) under `docs/audits/`, `computations/`
+ *   - TeX macros and tables (`macros.tex`, `tables/*.tex`, `preamble.tex`)
+ *   - audit refutations (e.g. `docs/audits/skein-mass-relation-is-false.lean`)
+ *   - derivation notes under `docs/notes/`, `notes/`, `derivations/`
+ *
+ * A conversion that carries only the content tree drops the evidence that some claims
+ * are false. The scanner surfaces these artifacts as read-only candidates, classified
+ * into 5 categories (`math_proof`, `computation_script`, `macro_definition`,
+ * `audit_refutation`, `derivation_note`) with source location, rationale, and link status
+ * (identifying orphaned evidence unlinked to any block in the content tree).
+ *
  * ## It never writes
  *
  * No moves, no mkdir, no git. Ingestion is a separate process with its own
@@ -44,10 +60,41 @@ import { spawnSync } from "node:child_process";
 import { LEGACY_HARNESS_CONFIG } from "../schemas/harness-config";
 import { gitCorpus } from "../schemas/git-corpus";
 import { CONFIG_SUFFIX, isReservedIndexFile } from "../schemas/instance-roots";
-import { existsSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { extname, join, relative, resolve, sep } from "node:path";
 
 export type Bucket = "library" | "content" | "unclassified";
+
+export type MathCandidateClassification =
+  | "math_proof"
+  | "computation_script"
+  | "macro_definition"
+  | "audit_refutation"
+  | "derivation_note";
+
+export type LinkStatus = "linked" | "unlinked";
+
+export interface MathCandidate {
+  /** Path relative to the scanned root, with `/` separators. */
+  path: string;
+  /** Candidate classification for the math/computational artifact. */
+  classification: MathCandidateClassification;
+  /** Alias for classification (for callers querying `candidate.kind`). */
+  kind: MathCandidateClassification;
+  /** Alias for path (for callers querying `candidate.location`). */
+  location: string;
+  /** Rationale for why this file was classified into this candidate category. */
+  rationale: string;
+  /**
+   * Link status relative to the content tree:
+   * 'linked' if referenced by any block/manifest/file in the content tree,
+   * 'unlinked' if orphaned (not referenced by any content block).
+   */
+  linkStatus: LinkStatus;
+  /** Which files in the content tree link to this artifact, if any. */
+  linkedBy?: string[];
+  bytes: number;
+}
 
 export interface ScanEntry {
   /** Path relative to the scanned root, with `/` separators. */
@@ -79,6 +126,8 @@ export interface ScanResult {
   totals: Record<Bucket, { files: number; bytes: number }>;
   /** Paths skipped as folio scaffolding or VCS bookkeeping, counted only. */
   skipped: number;
+  /** Mathematical and computational artifacts detected outside the content tree. */
+  mathCandidates: MathCandidate[];
 }
 
 /** Extensions that are source material whoever authored them. */
@@ -209,6 +258,201 @@ function listFiles(root: string): { files: string[]; source: "git" | "filesystem
   return { files: out, source: "filesystem" };
 }
 
+/**
+ * Classify a file outside the content tree as a mathematical/computational candidate.
+ * Returns null if the file is not a recognized math artifact.
+ */
+export function classifyMathCandidate(
+  rel: string,
+  absRoot?: string,
+): { classification: MathCandidateClassification; kind: MathCandidateClassification; rationale: string } | null {
+  const parts = rel.split("/");
+  const dirs = parts.slice(0, -1).map((d) => d.toLowerCase());
+  const base = parts[parts.length - 1]!.toLowerCase();
+  const ext = extname(rel).toLowerCase();
+  const nameWithoutExt = ext ? base.slice(0, -ext.length) : base;
+
+  // Read content snippet if file is available on disk (up to 4KB for quick regex check)
+  let contentSnippet = "";
+  if (absRoot) {
+    try {
+      const full = join(absRoot, rel);
+      if (existsSync(full)) {
+        const buf = readFileSync(full, { encoding: "utf-8" });
+        contentSnippet = buf.slice(0, 4096);
+      }
+    } catch {
+      // Unreadable or virtual file
+    }
+  }
+
+  // 1. Audit Refutations: files that refute, falsify, or audit claims/theorems/conjectures
+  const isAuditDir = dirs.some((d) => d === "audits" || d === "audit" || d === "verification" || d === "checks");
+  const hasRefutationName = /(is[-_]false|false|refut|counterexample|disproof|mismatch|defect|contradiction|invalid|bug)/i.test(nameWithoutExt);
+  const hasRefutationContent = /(theorem.*is_false|lemma.*is_false|refut|is[-_]false|counterexample|disproof|contradiction|falsif|does not hold|claim.*false|false claim)/i.test(contentSnippet);
+
+  if (hasRefutationName || (isAuditDir && hasRefutationContent)) {
+    const rationale = hasRefutationName
+      ? `Audit refutation of mathematical claim (named refutation/counterexample: ${parts[parts.length - 1]})`
+      : `Audit refutation or verification defect under ${dirs.join("/")}`;
+    return { classification: "audit_refutation", kind: "audit_refutation", rationale };
+  }
+
+  // 2. Math Proofs: Formal proofs (Lean, Coq, Isabelle)
+  if (ext === ".lean" || ext === ".v" || ext === ".thy") {
+    const lang = ext === ".lean" ? "Lean" : ext === ".v" ? "Coq" : "Isabelle";
+    return {
+      classification: "math_proof",
+      kind: "math_proof",
+      rationale: `Formal ${lang} proof or theorem outside content tree (${ext})`,
+    };
+  }
+
+  // 3. Computation Scripts: Python, Sage, Julia, Notebooks, Octave/Matlab
+  const isCompExt = ext === ".py" || ext === ".sage" || ext === ".spyx" || ext === ".ipynb" || ext === ".jl" || ext === ".m";
+  if (isCompExt) {
+    const isCompDir = dirs.some((d) =>
+      ["computations", "computation", "calc", "calculations", "simulations", "simulation", "simulators", "math", "analysis", "audits", "audit"].includes(d),
+    );
+    const hasCompName = /(compute|calc|verify|simulat|orbit|spectrum|mass|integral|matrix|eigen|solve|numerical|formula|model|check)/i.test(nameWithoutExt);
+    const hasMathImports = /(import numpy|import scipy|import sympy|import mpmath|import math|from sympy|from scipy|from math|cvxpy|clarabel|sage)/i.test(contentSnippet);
+
+    if (isCompDir || hasCompName || hasMathImports) {
+      const why = isCompDir ? `under ${dirs.join("/")}/` : hasCompName ? `computational naming (${parts[parts.length - 1]})` : "contains scientific/math imports";
+      return {
+        classification: "computation_script",
+        kind: "computation_script",
+        rationale: `Mathematical computation or numerical verification script outside content tree (${why})`,
+      };
+    }
+  }
+
+  // 4. Macro Definitions: TeX macros, custom commands, environments, or math tables
+  if (ext === ".tex" || ext === ".sty" || ext === ".cls") {
+    const isMacroDir = dirs.some((d) => ["macros", "tables", "preamble", "defs"].includes(d));
+    const hasMacroName = /(macro|preamble|def|defs|command|symbol|table)/i.test(nameWithoutExt);
+    const hasMacroContent = /\\(newcommand|renewcommand|def|DeclareMathOperator|begin\{tabular\}|begin\{table\})/i.test(contentSnippet);
+
+    if (isMacroDir || hasMacroName || hasMacroContent) {
+      const why = isMacroDir ? `under ${dirs.join("/")}/` : hasMacroName ? `macro/table naming (${parts[parts.length - 1]})` : "contains macro or table definitions";
+      return {
+        classification: "macro_definition",
+        kind: "macro_definition",
+        rationale: `TeX macro definitions, preamble commands, or standalone table fragments (${why})`,
+      };
+    }
+  }
+
+  // 5. Derivation Notes: Informal math derivations, working notes, scratchpads
+  const isNoteExt = ext === ".md" || ext === ".markdown" || ext === ".txt" || ext === ".rst" || ext === ".org" || ext === ".tex";
+  if (isNoteExt) {
+    const isNoteDir = dirs.some((d) => ["notes", "derivations", "derivation", "working-notes", "scratch", "audits", "audit"].includes(d));
+    const hasNoteName = /(derivation|scratchpad|working[-_]notes|proof[-_]notes|calc[-_]notes|math[-_]notes)/i.test(nameWithoutExt);
+    const hasMathCues = /(\$.*?\$|\\\[.*?\\\]|\\begin\{equation\}|derivation|proof of|equation)/i.test(contentSnippet);
+
+    if (isNoteDir || hasNoteName || (hasMathCues && (dirs.includes("docs") || dirs.length === 0))) {
+      const why = isNoteDir ? `under ${dirs.join("/")}/` : hasNoteName ? `derivation naming (${parts[parts.length - 1]})` : "contains mathematical derivation cues";
+      return {
+        classification: "derivation_note",
+        kind: "derivation_note",
+        rationale: `Mathematical derivation note or scratchpad outside content tree (${why})`,
+      };
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Scan for mathematical and computational artifacts outside the content tree.
+ *
+ * Checks files outside `content/` (or `folio/`, etc.) for proofs, computation scripts,
+ * TeX macros/tables, audit refutations, and derivation notes, reporting their rationale
+ * and whether they are linked by any content block in the primary content tree.
+ */
+export function scanMathCandidates(root: string, files?: string[]): MathCandidate[] {
+  const abs = resolve(root);
+  const fileList = files ?? listFiles(abs).files;
+
+  // Identify primary content tree directories if present in this repository
+  const PRIMARY_CONTENT_DIRS = ["content", "folio", "manuscript", "paper", "chapters", "sections"];
+  const presentContentRoots = new Set<string>();
+  for (const dir of PRIMARY_CONTENT_DIRS) {
+    if (fileList.some((f) => f.startsWith(`${dir}/`)) || existsSync(join(abs, dir))) {
+      presentContentRoots.add(dir);
+    }
+  }
+
+  const contentFiles: string[] = [];
+  const outsideFiles: string[] = [];
+
+  for (const rel of fileList) {
+    if (isSkipped(rel)) continue;
+    const firstSegment = rel.split("/")[0];
+    if (presentContentRoots.size > 0 && presentContentRoots.has(firstSegment)) {
+      contentFiles.push(rel);
+    } else {
+      outsideFiles.push(rel);
+    }
+  }
+
+  // Load content tree text files to determine link status
+  const contentContents: Array<{ path: string; text: string }> = [];
+  const TEXT_EXTS = new Set([".md", ".markdown", ".json", ".yaml", ".yml", ".tex", ".lean", ".rst", ".txt", ".ts"]);
+  for (const cf of contentFiles) {
+    const ext = extname(cf).toLowerCase();
+    if (!TEXT_EXTS.has(ext)) continue;
+    try {
+      const text = readFileSync(join(abs, cf), "utf-8");
+      contentContents.push({ path: cf, text });
+    } catch {
+      // Unreadable or virtual file
+    }
+  }
+
+  const candidates: MathCandidate[] = [];
+
+  for (const rel of outsideFiles) {
+    const classified = classifyMathCandidate(rel, abs);
+    if (!classified) continue;
+
+    let bytes = 0;
+    try {
+      bytes = statSync(join(abs, rel)).size;
+    } catch {
+      // Unreadable or virtual file
+    }
+
+    const base = rel.split("/").pop()!;
+    const linkedBy: string[] = [];
+
+    for (const { path: cPath, text } of contentContents) {
+      if (
+        text.includes(rel) ||
+        text.includes(`/${rel}`) ||
+        text.includes(base)
+      ) {
+        linkedBy.push(cPath);
+      }
+    }
+
+    const linkStatus: LinkStatus = linkedBy.length > 0 ? "linked" : "unlinked";
+
+    candidates.push({
+      path: rel,
+      classification: classified.classification,
+      kind: classified.kind,
+      location: rel,
+      rationale: classified.rationale,
+      linkStatus,
+      ...(linkedBy.length > 0 ? { linkedBy } : {}),
+      bytes,
+    });
+  }
+
+  return candidates.sort((a, b) => a.path.localeCompare(b.path));
+}
+
 export function scanRepo(root: string): ScanResult {
   const abs = resolve(root);
   const { files, source } = listFiles(abs);
@@ -266,7 +510,9 @@ export function scanRepo(root: string): ScanResult {
     (a, b) => b.files - a.files || a.dir.localeCompare(b.dir),
   );
 
-  return { root: abs, source, entries, groups, totals, skipped };
+  const mathCandidates = scanMathCandidates(abs, files);
+
+  return { root: abs, source, entries, groups, totals, skipped, mathCandidates };
 }
 
 const human = (n: number): string => {
@@ -322,6 +568,30 @@ export function formatScan(r: ScanResult): string {
     );
   }
   out.push("");
+
+  if (r.mathCandidates && r.mathCandidates.length > 0) {
+    const unlinkedCount = r.mathCandidates.filter((c) => c.linkStatus === "unlinked").length;
+    out.push(
+      `Outside-content mathematical candidates (${r.mathCandidates.length} artifact(s), ${unlinkedCount} unlinked):`,
+    );
+    out.push(
+      "  WARNING: These files live OUTSIDE the content tree. A conversion carrying only the",
+    );
+    out.push(
+      "  content tree drops them — including refutations showing claims that are false.",
+    );
+    out.push("");
+    for (const c of r.mathCandidates) {
+      const linkText =
+        c.linkStatus === "linked"
+          ? `linked by ${(c.linkedBy ?? []).join(", ")}`
+          : "UNLINKED (danger of dropping!)";
+      out.push(`   [${c.classification}] ${c.path} — ${human(c.bytes)}  [${linkText}]`);
+      out.push(`      Rationale: ${c.rationale}`);
+    }
+    out.push("");
+  }
+
   out.push("This scan wrote nothing. Next: skills/conduct/conduct-core/repo-conversion.md §2 — three");
   out.push("questions (import or not; library or content; leave in place or reorganise).");
   return out.join("\n");

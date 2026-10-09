@@ -1,6 +1,6 @@
 ---
 name: repo-conversion
-description: Lay folio-assistant over a repository that already exists, without losing or silently moving what is in it. Scans the tree read-only, classifies candidate files into library (external source) and content (authored here) with an explicit third bucket for what it cannot classify, puts the three questions the scan cannot answer to the author as selections, and hands ingestion to one agent or a small swarm. Use when a user wants an existing repo converted to a folio, asks to import what is already there, or asks whether their PDFs/notes/drafts can come along.
+description: Lay folio-assistant over a repository that already exists, without losing or silently moving what is in it. Scans the tree read-only, classifies candidate files into library (external source) and content (authored here) with an explicit third bucket for what it cannot classify, scans outside the content tree for mathematical evidence and refutations, puts the three questions the scan cannot answer to the author as selections, and hands ingestion to one agent or a small swarm. Use when a user wants an existing repo converted to a folio, asks to import what is already there, or asks whether their PDFs/notes/drafts can come along.
 user_invocable: true
 ---
 
@@ -47,6 +47,41 @@ The classification is by **path convention and extension only**. It does not
 read file contents, does not call a model, and is not trying to be clever —
 it is trying to be *fast, explicable and reversible*, so the author can
 disagree with any row of it in one word.
+
+### Outside-content math scanning — preserving evidence and refutations
+
+In repositories with mathematical and scientific content, crucial mathematical evidence
+often lives **outside** the content tree (`content/` or `folio/`).
+
+Recorded from the `qou` orphaned-content census (2026-10-04, session `01NdDGeP1SyShmoUssLuRZ91`, issue #2106):
+- 30 `docs/audits/*.lean` files (several are refutations of paper claims, e.g. `skein-mass-relation-is-false.lean`),
+- 68 `docs/audits/*.py` computations, and
+- 272 derivation notes
+lived outside `folio/` and were linked by no block.
+
+**A conversion that carries only the content tree drops the evidence that some claims are false.**
+
+The scanner scans outside the content tree and classifies these artifacts into **candidate classifications**, read-only, reporting source location, rationale, and link status:
+
+| classification | description | examples |
+|---|---|---|
+| `math_proof` | Formal proof or theorem outside content tree | `docs/audits/*.lean`, `math/*.lean`, Coq `.v`, Isabelle `.thy` |
+| `computation_script` | Numerical or symbolic calculation / verification script | `docs/audits/*.py`, `computations/*.py`, `.sage`, `.ipynb`, `.jl` |
+| `macro_definition` | TeX macros, custom commands, environments, or math tables | `macros.tex`, `tables/*.tex`, `preamble.tex`, `defs.tex` |
+| `audit_refutation` | Audit refutation or counterexample falsifying a claim | `docs/audits/*is-false*.lean`, `audits/counterexample.py` |
+| `derivation_note` | Informal mathematical derivation note or scratchpad | `docs/notes/derivation*.md`, `derivations/*.md`, `scratchpad.md` |
+
+#### Link status — detecting orphaned evidence
+
+Each candidate carries a `linkStatus`:
+- **`linked`**: Referenced by at least one block/manifest in the content tree (`linkedBy`).
+- **`unlinked`**: Orphaned evidence — not linked by any content block.
+
+An `unlinked` candidate is at immediate risk: if the conversion only imports blocks in `content/` or `folio/`, the unlinked evidence or refutation is left behind and lost to readers.
+
+#### Read-only candidate discipline
+
+Like the general scan, outside-content math candidate scanning **never writes, moves, or modifies files**. It presents the candidates to the author and agent so decisions can be made about linking, ingesting, or maintaining sidecars during the conversion.
 
 ## 2. Show, then ask — three questions, all as selections
 
@@ -178,3 +213,7 @@ original plan skipped.
    a separate process with its own diagram and its own gate.
 7. **Switching Pages on before `gh-pages` exists, or choosing "GitHub
    Actions" for a workflow that pushes `gh-pages`.** See §5.
+8. **Dropping outside-content math artifacts or unlinked audit refutations.**
+   Carrying only the primary content tree (`content/` or `folio/`) drops outside proofs,
+   computations, and refutations showing that some paper claims are false. See §1.
+
