@@ -19,7 +19,7 @@ import { join } from "node:path";
 import { itemState, viewerHtml } from "../gen-uploads-viz.ts";
 import { unscopedSelectors } from "../lib/themed-page.ts";
 import { readLibraryGraph } from "../library-graph.ts";
-import { instanceRootsIn, repoRootFor } from "../../schemas/cat-harness.ts";
+import { checkoutRootFor, instanceRootsIn, repoRootFor } from "../../schemas/cat-harness.ts";
 import type { UploadItem } from "../library-graph.ts";
 
 const item = (over: Partial<UploadItem> = {}): UploadItem => ({
@@ -140,7 +140,7 @@ describe("a sidecar is not a queued document", () => {
   // that got it wrong. Found by rendering the page: five `.extraction.json`
   // files stood in the table as units "waiting to be ingested", 0 KB each,
   // inflating the headline from 20 to 27 — the one number the page exists for.
-  const root = repoRootFor(join(import.meta.dir, "..", ".."));
+  const root = checkoutRootFor(join(import.meta.dir, "..", ".."));
   const g = readLibraryGraph(instanceRootsIn(root), root);
 
   test("the corpus is readable, so the assertions below are not vacuous", () => {
