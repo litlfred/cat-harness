@@ -307,6 +307,33 @@ const escHtml = (s: string): string =>
  *
  * @param platformName what the platform calls itself — its own config's `title`.
  */
+/**
+ * The landing stickies (`_data/stickies.json`), scoped to a folio's site: a
+ * sticky link that is a path on the PLATFORM's site (`/docs/cat-harness/…`) is
+ * re-based onto it with {@link siteHref}, and marked `external`, because the
+ * landing template applies `relative_url` only to a non-external link and
+ * doing that to an absolute URL breaks it. A link inside the folio's own root
+ * stays the folio's. Found on who-iris's own site (2026-10-09): the platform's
+ * sticky linked `/docs/cat-harness/concepts/…` under the folio's baseurl, where
+ * no such page is.
+ */
+export function scopeStickies(data: Json, scope: Pick<ForeignScope, "instance" | "platformBase">): Json {
+  const stickies = Array.isArray(data.stickies) ? data.stickies : undefined;
+  if (!stickies) return data;
+  return {
+    ...data,
+    stickies: stickies.map((st) => {
+      if (!st || typeof st !== "object" || !Array.isArray((st as Json).links)) return st;
+      const links = ((st as Json).links as Json[]).map((l) => {
+        if (!l || typeof l !== "object" || l.external === true || typeof l.href !== "string") return l;
+        const href = siteHref(l.href, scope);
+        return href === l.href ? l : { ...l, href, external: isAbsoluteUrl(href) };
+      });
+      return { ...(st as Json), links };
+    }),
+  };
+}
+
 export function foreignFooterContent(scope: Pick<ForeignScope, "instance" | "title" | "platformBase">, platformName: string): string {
   const who = scope.title ?? scope.instance;
   const link = `<a href="${escHtml(`${scope.platformBase}/`)}">${escHtml(platformName)}</a>`;

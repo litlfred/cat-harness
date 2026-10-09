@@ -84,6 +84,25 @@ function landingRoot(): string {
 
 const ROOT = landingRoot();
 
+/**
+ * The docs directory a sticky's links were AUTHORED against: its contributor's,
+ * not the landing's. A link is written as the page's source location
+ * (`/concepts/agentic-harness.html`) and `publishedHref` maps it to where
+ * Jekyll publishes it (`/docs/cat-harness/…`) by reading that directory. While
+ * cat-harness was the landing the two were one directory; on a site whose
+ * landing is another instance (who-iris's own site, 2026-10-09) the landing's
+ * docs hold none of those pages, so every link was left at its source spelling
+ * and 404'd. An unknown contributor keeps the old answer, the landing's.
+ */
+function contributorSiteDir(contributor: string | undefined): string {
+  if (contributor) {
+    const checkout = checkoutRootFor(instanceRootFor(import.meta.dir));
+    const root = instanceRootNamed(checkout, contributor) ?? mountedInstanceRoots(checkout).get(contributor);
+    if (root !== undefined) return join(root, siteDirFor(root));
+  }
+  return join(ROOT, siteDirFor(ROOT));
+}
+
 /** The forge this checkout points at, or `undefined` when it has none. */
 const REPO_URL = detectRepoUrl(repoRootFor(ROOT));
 
@@ -259,7 +278,7 @@ const stickies = readLandingStickies(ROOT).map((st) => {
       // A link authored as the page's SOURCE location, rewritten to where
       // Jekyll publishes it (bean `kc7k`: docs-folder pages live under
       // `/docs/cat-harness/`). Not a page here → unchanged.
-      href: isExternalLink(l) ? l.href : publishedHref(join(ROOT, siteDirFor(ROOT)), l.href),
+      href: isExternalLink(l) ? l.href : publishedHref(contributorSiteDir(st.contributedBy), l.href),
       note: l.note ?? "",
       external: isExternalLink(l),
     })),
