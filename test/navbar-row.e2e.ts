@@ -78,6 +78,7 @@ type NavbarRow = {
 };
 const HARNESS = JSON.parse(readFileSync(join(ROOT, SITE, "_data/harness.json"), "utf8")) as {
   navbar: NavbarRow | null;
+  harnesses: { name: string; visualisations?: { kind: string; within?: string }[] }[];
 };
 const LIVE = HARNESS.navbar;
 if (LIVE === null) {
@@ -336,7 +337,11 @@ test.describe("the icon row — line 2 of the fixed top", () => {
       // ...and prefixed ONCE. Running the base over an already-composed value
       // is the failure in the other direction, which is why the action tiles
       // do NOT prefix inside the shared `tileLink`.
-      expect(h.indexOf(BASEURL, 1)).toBe(-1);
+      // `BASEURL + "/"`, not the bare base: since the separation an instance
+      // is NAMED `folio-assistant-core`, and its auto-docs href
+      // `…/docs/folio-assistant-core-docs/` contains the bare string without
+      // repeating the prefix. A doubled prefix is `/folio-assistant/folio-assistant/`.
+      expect(h.indexOf(BASEURL + "/", 1)).toBe(-1);
     }
   });
 
@@ -1099,7 +1104,12 @@ test.describe("a sub-graph is drawn INSIDE its parent's row, folded — issue #1
   });
 
   test("the LIVE data nests proposals and requirements under docs", () => {
-    const f = (LIVE?.folders ?? []);
+    // Asked of the harness that DECLARES them. Until the separation the
+    // landing row was cat-harness's own; since the owner set the landing to
+    // folio-assistant-core (3d4caf6), the navbar row is core's and correctly
+    // lists core's folders, which have no proposals. The property is unchanged:
+    // a sub-graph carries `within` its parent, read where it is declared.
+    const f = HARNESS.harnesses.find((h) => h.name === "cat-harness")?.visualisations ?? [];
     expect(f.find((x) => x.kind === "proposals")?.within).toBe("docs");
     expect(f.find((x) => x.kind === "requirements")?.within).toBe("docs");
   });
