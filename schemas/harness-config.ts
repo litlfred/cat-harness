@@ -169,15 +169,6 @@ export interface HarnessConfig {
   /** Path to the adapter module. */
   adapterModule?: string;
 
-  /**
-   * Module this instance contributes from when it is loaded as a DEPENDENCY.
-   *
-   * Resolved relative to this folio's own root. Its default export is called
-   * with no arguments and returns a contribution object (or a promise of
-   * one). Read only for dependencies — a root folio's own `contributes` is
-   * ignored, because the root already *is* everything it would contribute.
-   */
-  contributes?: string;
 
   /** Translation pipeline configuration. */
   translation?: TranslationConfig;
@@ -362,7 +353,6 @@ export const HarnessConfigSchema = z.object({
   interactivity: z.string().optional(),
   adapter: z.string().optional(),
   adapterModule: z.string().optional(),
-  contributes: z.string().optional(),
   harness: HarnessDirsSchema.optional(),
   translation: TranslationConfigSchema.optional(),
   dependencies: HarnessConfigDependenciesSchema.optional(),
@@ -2009,22 +1999,15 @@ export function resolveTranslationDirs(folioRoot: string): string[] {
 /**
  * Walk the dependency tree and collect every dependency's contributions.
  *
- * Load-time registration: each dependency naming a `contributes` module has
- * that module imported and its default export called, and the result handed
- * to the registry. Order is depth-first, deepest dependency first — the same
- * order {@link resolveSkillDirs} overlays in, so a reader only has to learn
- * one traversal.
+ * Each dependency declares its block kinds, QA checkers, pipeline plugins and
+ * content adapters as knowledge-graph nodes (bean riit), registered depth-first,
+ * deepest dependency first — the same order {@link resolveSkillDirs} overlays
+ * in, so a reader only has to learn one traversal.
  *
  * **Order is significant, and collisions still do not resolve by it.** That is
  * the deliberate shape of this mechanism: registration is cheap and familiar,
  * but a kind claimed twice throws rather than letting whoever loaded last
  * win. See `schemas/contributions.ts` for why last-writer-wins was refused.
- *
- * A dependency that declares no `contributes` module contributes nothing;
- * that is the normal case and not an error. A dependency whose `contributes`
- * module is missing or does not export a callable default **is** an error —
- * it is a stated intention that silently did nothing, which is the failure
- * mode `AGENTS.md` records under "move wiring and script together".
  *
  * @param folioRoot - Absolute path to the ROOT folio.
  * @param registry - Optional existing registry to accumulate into.
@@ -2047,11 +2030,6 @@ export async function loadContributions<C extends { name: string }, S extends Co
   registry: S,
 ): Promise<S> {
   registerDeclaredContributions<C>(folioRoot, registry);
-  for (const { dep, modulePath } of contributingDependencies(folioRoot)) {
-    // input-site: imports */contributes.ts #c73b53ce — a dependency's declared `contributes` module; input-sites.test.ts holds every declaration to this glob
-    const fn = contributeFunction(dep, modulePath, await import(modulePath));
-    registerPinned(registry, dep, await (fn as () => C | Promise<C>)());
-  }
   return registry;
 }
 
@@ -2067,35 +2045,12 @@ export async function loadContributions<C extends { name: string }, S extends Co
  * registry through every one of them would change the checker signatures the
  * dispatch tables are keyed on. Bun's `require` loads a `.ts` module
  * synchronously — the same property `schemas/theme-by-ref.ts` relies on.
- *
- * It shares {@link contributingDependencies}, {@link contributeFunction} and
- * {@link registerPinned} with the async loader, so the two differ only in how
- * a module is loaded and cannot drift on which dependencies contribute, what
- * counts as a broken contribution, or which fields are pinned.
- *
- * A contributor whose default export returns a Promise is refused here rather
- * than awaited: a synchronous caller cannot wait for it, and silently skipping
- * it would be the "appears wired and is not" failure the async loader refuses.
  */
 export function loadContributionsSync<C extends { name: string }, S extends ContributionSink<C>>(
   folioRoot: string,
   registry: S,
 ): S {
   registerDeclaredContributions<C>(folioRoot, registry);
-  for (const { dep, modulePath } of contributingDependencies(folioRoot)) {
-    // input-site: imports */contributes.ts #4875e70d — a dependency's declared `contributes` module; input-sites.test.ts holds every declaration to this glob
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const fn = contributeFunction(dep, modulePath, require(modulePath));
-    const contribution = (fn as () => C | Promise<C>)();
-    if (contribution instanceof Promise) {
-      throw new Error(
-        `folio dependency "${dep.dependency.name}" contributes module ` +
-          `${modulePath} returns a Promise, so it cannot be loaded synchronously. ` +
-          `Return the contribution directly.`,
-      );
-    }
-    registerPinned(registry, dep, contribution);
-  }
   return registry;
 }
 
@@ -2103,9 +2058,9 @@ export function loadContributionsSync<C extends { name: string }, S extends Cont
  * The CONTRIBUTED block kinds each dependency declares as `folio-block-kind/v1`
  * nodes in its `block-kinds/` graph (bean riit, step 3), registered as that
  * dependency's contribution. Owner, 2026-10-04: a folio sees the nodes of the
- * instances it depends on (option 1 of 3) — so this walks the SAME
- * `orderedDependencies` the `contributes` modules are found by, and a kind
- * reaches exactly the folios a `blockKinds` array returned from code used to.
+ * instances it depends on (option 1 of 3) — so this walks `orderedDependencies`,
+ * and a kind reaches exactly the folios a `blockKinds` array returned from code
+ * used to.
  *
  * A built-in adapter's nodes (the paper adapter's, in core and sci) are
  * skipped when the sink says so ({@link ContributionSink.acceptsDeclaredKind}):
@@ -2150,8 +2105,9 @@ function registerDeclaredContributions<C extends { name: string }>(folioRoot: st
     }
 
     if (blockKinds.length + qaCheckers.length + pipelinePlugins.length > 0) {
-      registerPinned(registry, dep, {
+      registry.register({
         name: dep.dependency.name,
+        root: dep.rootPath,
         ...(blockKinds.length ? { blockKinds } : {}),
         ...(qaCheckers.length ? { qaCheckers } : {}),
         ...(pipelinePlugins.length ? { pipelinePlugins } : {}),
@@ -2168,8 +2124,9 @@ function registerDeclaredContributions<C extends { name: string }>(folioRoot: st
       if (!parsed.success) throw new Error(`${file} is not a folio-content-adapter/v1 node: ${parsed.error.message}`);
       const n = parsed.data;
       if (n.typed || (registry.acceptsDeclaredKind && !registry.acceptsDeclaredKind(n.adapter))) continue;
-      registerPinned(registry, dep, {
+      registry.register({
         name: dep.dependency.name,
+        root: dep.rootPath,
         adapter: { name: n.adapter, module: n.vocabulary ?? "", companionRoles: n.companionRoles },
       } as unknown as C);
     }
@@ -2214,68 +2171,6 @@ function tableEntry(dep: ResolvedDependency, nodeFile: string, ref: string, key:
   return entry;
 }
 
-/** Every dependency declaring a `contributes` module, with its resolved path. */
-export function contributingDependencies(
-  folioRoot: string,
-): Array<{ dep: ResolvedDependency; modulePath: string }> {
-  const out: Array<{ dep: ResolvedDependency; modulePath: string }> = [];
-  for (const dep of orderedDependencies(folioRoot)) {
-    const spec = dep.config?.contributes;
-    if (!spec) continue;
-
-    const modulePath = resolve(dep.rootPath, spec);
-    if (!existsSync(modulePath)) {
-      throw new Error(
-        `folio dependency "${dep.dependency.name}" declares contributes: ` +
-          `"${spec}", but ${modulePath} does not exist. A declared ` +
-          `contribution that cannot load must fail loudly — silently ` +
-          `contributing nothing is how a dependency appears wired and is not.`,
-      );
-    }
-    out.push({ dep, modulePath });
-  }
-  return out;
-}
-
-/** The module's callable default export, or a loud error naming the dependency. */
-function contributeFunction(dep: ResolvedDependency, modulePath: string, mod: unknown): unknown {
-  const fn = (mod as { default?: unknown }).default;
-  if (typeof fn !== "function") {
-    throw new Error(
-      `folio dependency "${dep.dependency.name}" contributes module ` +
-        `${modulePath} has no callable default export.`,
-    );
-  }
-  return fn;
-}
-
-/** Hand one contribution to the registry with `name` and `root` pinned. */
-function registerPinned<C extends { name: string }>(
-  registry: ContributionSink<C>,
-  dep: ResolvedDependency,
-  contribution: C,
-): void {
-  // The dependency entry's name is authoritative over whatever the module
-  // says about itself: the root declared the name, and a contributor that
-  // could rename itself could impersonate another contributor's namespace
-  // and turn a collision into a silent merge.
-  //
-  // `root` is pinned here for the same reason and is not the same field as
-  // `name`: it is where the contributor's FILES are, and a contributed QA
-  // checker's source file is resolved against it in order to be
-  // freshness-hashed. A contributor that could name its own root could point
-  // the sweep at bytes it does not own, and the resulting `script_hash`
-  // would be computed over a file the contribution never mentions.
-  //
-  // The spread widens `C` to `C & { name: string; root: string }`, which is
-  // C's own shape with two fields pinned; the cast states that rather than
-  // loosening the parameter.
-  registry.register({
-    ...contribution,
-    name: dep.dependency.name,
-    root: dep.rootPath,
-  } as C);
-}
 
 // ── What a repository IS, closed under the dependency tree ──────────
 

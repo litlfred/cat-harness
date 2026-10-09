@@ -54,15 +54,6 @@ describe.skipIf(!HAS_IGS)("importClosure, on this checkout", () => {
     expect(c.files.has("fhir-harness/scripts/gen-ig-pages.ts")).toBe(true);
     expect(c.files.has("fhir-harness/schemas/ig-chrome.ts")).toBe(true);
   });
-  it("resolves harness-config's computed import through the declared contributes modules", () => {
-    // No instance in this checkout declares a `contributes` module any more:
-    // smart-base's (the `dak` adapter) and sci's (the `lean_formal_edges`
-    // tool) became nodes in bean riit, steps 5 and 3c. The computed import
-    // still resolves — to the declared set, which is empty — rather than
-    // reading as an import nobody could follow.
-    expect(c.computed).toBeUndefined();
-    expect([...c.files].filter((f) => f.endsWith("/contributions.ts") && !f.startsWith("cat-harness/"))).toEqual([]);
-  });
   it("a missing entry is a doubt, never an empty closure read as clean", () => {
     expect(importClosure("no/such.ts", REPO).doubt).toContain("does not exist");
   });

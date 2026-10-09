@@ -26,7 +26,7 @@ import {
   type FolioContribution,
 } from "../../schemas/contributions";
 import { loadContributionsSync } from "../../schemas/harness-config";
-import { writeInstanceConfig } from "../../test/support/instance-fixture.js";
+import { writeDeclaration, writeInstanceConfig } from "../../test/support/instance-fixture.js";
 import {
   UnregisteredPipelinePluginError,
   optionalPipelinePlugin,
@@ -40,12 +40,38 @@ import {
 // checkout, and under `bun test --parallel` those run at the same time.
 const TMP = mkdtempSync(join(tmpdir(), "test_pipeline_plugins-"));
 
-/** A fixture dependency whose contributes module fills `lean-lexer`. */
-function writeDep(name: string, body: string): string {
+/** A fixture dependency declaring a pipeline-plugins node that fills `lean-lexer`. */
+function writeDep(name: string): string {
   const dir = join(TMP, name);
-  mkdirSync(dir, { recursive: true });
-  writeFileSync(join(dir, "contributions.ts"), body, "utf-8");
-  writeInstanceConfig(dir, JSON.stringify({ contributes: "./contributions.ts" }));
+  const pluginsDir = join(dir, "pipeline-plugins");
+  mkdirSync(pluginsDir, { recursive: true });
+  writeFileSync(
+    join(pluginsDir, "lexer.json"),
+    JSON.stringify({
+      $schema: "folio-pipeline-plugin/v1",
+      slot: "lean-lexer",
+      implementation: "plugins.ts#PLUGINS",
+    }),
+    "utf-8",
+  );
+  writeFileSync(
+    join(dir, "plugins.ts"),
+    `export const PLUGINS = {
+  "lean-lexer": {
+    stripLeanComments: (s: string) => "stripped:" + s,
+    declarationStarts: () => [{ name: "fixture", at: 0 }],
+  },
+};
+`,
+    "utf-8",
+  );
+  writeDeclaration(dir, {
+    name,
+    directories: [
+      { id: "pipeline-plugins", path: "pipeline-plugins/", graphTypologies: ["pipeline-plugins"] },
+    ],
+  });
+  writeInstanceConfig(dir, JSON.stringify({}));
   return dir;
 }
 
@@ -56,33 +82,17 @@ function writeRoot(name: string, deps: Array<{ name: string; path: string }>): s
   return dir;
 }
 
-const LEXER_DEP = `export default function () {
-  return {
-    name: "claimed-by-module",
-    pipelinePlugins: [{
-      kind: "lean-lexer",
-      implementation: {
-        stripLeanComments: (s) => "stripped:" + s,
-        declarationStarts: () => [{ name: "fixture", at: 0 }],
-      },
-    }],
-  };
-}`;
-
 let lexerRoot: string;
 let collidingRoot: string;
-let asyncRoot: string;
 
 beforeAll(() => {
-  const a = writeDep("dep-a", LEXER_DEP);
-  const b = writeDep("dep-b", LEXER_DEP);
-  const p = writeDep("dep-promise", `export default async function () { return { name: "p" }; }`);
+  const a = writeDep("dep-a");
+  const b = writeDep("dep-b");
   lexerRoot = writeRoot("root-lexer", [{ name: "dep-a", path: a }]);
   collidingRoot = writeRoot("root-colliding", [
     { name: "dep-a", path: a },
     { name: "dep-b", path: b },
   ]);
-  asyncRoot = writeRoot("root-async", [{ name: "dep-promise", path: p }]);
 });
 
 afterEach(() => usePipelinePluginRegistry(undefined));
@@ -114,7 +124,7 @@ describe("registration", () => {
     const reg = loadContributionsSync<FolioContribution, ContributionRegistry>(lexerRoot, new ContributionRegistry());
     usePipelinePluginRegistry(reg);
     expect(pipelinePlugin("lean-lexer").stripLeanComments("z")).toBe("stripped:z");
-    // The module said "claimed-by-module"; the dependency entry says dep-a.
+    // Pinned from dependency entry
     expect(reg.contributedPipelinePlugins()[0]?.contributor).toBe("dep-a");
   });
 
@@ -122,12 +132,6 @@ describe("registration", () => {
     const reg = new ContributionRegistry();
     reg.register(lexer("dep-a"));
     expect(() => reg.register(lexer("dep-a"))).not.toThrow();
-  });
-
-  it("the sync loader refuses a contributor that returns a Promise rather than skipping it", () => {
-    expect(() =>
-      loadContributionsSync<FolioContribution, ContributionRegistry>(asyncRoot, new ContributionRegistry()),
-    ).toThrow(/returns a Promise/);
   });
 });
 
