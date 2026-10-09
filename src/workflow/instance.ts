@@ -525,6 +525,10 @@ export function complete(
     model?: ModelConfig;
     /** Role graph for looking up lane/role capability requirements. */
     roles?: RoleGraph;
+    /** Dynamic decision table override for computed gateways (e.g. per-plan exit criteria). */
+    decisionTable?: import("./decision-table.js").DecisionTable | null;
+    /** If dynamic decision table was unresolvable, the failure explanation. */
+    decisionTableError?: string;
   } = {},
 ): InstanceState {
   if (state.status !== "running") {
@@ -591,40 +595,55 @@ export function complete(
 
   let chosen: string | undefined;
   let computedNote: string | undefined;
-  const table = model.decisions.get(nodeId);
-  if (node.kind === "exclusive" && table) {
-    // Computed, not chosen. Accepting a hand-supplied outcome here would let the
-    // caller assert the very thing the table exists to derive.
-    if (opts.outcome) {
-      throw new WorkflowError(
-        `${nodeId} ("${node.name}") is computed by ${table.id}, not chosen. ` +
-          `Pass facts (${table.inputs.map((i) => i.expression).join(", ")}) ` +
-          `instead of outcome.`,
-      );
+  const defaultTable = model.decisions.get(nodeId);
+  const hasDynamicTable = opts.decisionTable !== undefined || opts.decisionTableError !== undefined;
+  if (node.kind === "exclusive" && (defaultTable || hasDynamicTable)) {
+    if (opts.decisionTable === null || opts.decisionTableError) {
+      // Dynamic decision table was unresolvable: route to undetermined, NEVER fall back to default
+      const outcomes = outcomesOf(model, node);
+      const idx = outcomes.findIndex((o) => o.toLowerCase() === "undetermined");
+      if (idx === -1) {
+        throw new WorkflowError(
+          `${nodeId} ("${node.name}"): dynamic decision table unresolvable (${opts.decisionTableError ?? "unknown"}), but gateway has no undetermined branch`,
+        );
+      }
+      chosen = node.outgoing[idx];
+      computedNote = `dynamic decision table unresolvable (${opts.decisionTableError ?? "unknown"}) → undetermined`;
+    } else {
+      const table = opts.decisionTable ?? defaultTable!;
+      // Computed, not chosen. Accepting a hand-supplied outcome here would let the
+      // caller assert the very thing the table exists to derive.
+      if (opts.outcome) {
+        throw new WorkflowError(
+          `${nodeId} ("${node.name}") is computed by ${table.id}, not chosen. ` +
+            `Pass facts (${table.inputs.map((i) => i.expression).join(", ")}) ` +
+            `instead of outcome.`,
+        );
+      }
+      if (!opts.facts) {
+        throw new WorkflowError(
+          `${nodeId} ("${node.name}") is computed by ${table.id}. Supply facts: ` +
+            table.inputs
+              .map((i) => `${i.expression}${i.label ? ` (${i.label})` : ""}`)
+              .join(", "),
+        );
+      }
+      const result = evaluate(table, opts.facts);
+      const outcomes = outcomesOf(model, node);
+      const idx = outcomes.findIndex((o) => o === String(result.outcome));
+      if (idx === -1) {
+        // Unreachable while loadProcessModel's check holds; kept so a future
+        // loosening of that check cannot turn into a silent mis-route.
+        throw new WorkflowError(
+          `${table.id} returned "${result.outcome}", which is not a branch of ${nodeId} ` +
+            `(${outcomes.join(", ")})`,
+        );
+      }
+      chosen = node.outgoing[idx];
+      computedNote =
+        `${table.id} → ${result.outcome} by ${result.rule}` +
+        (result.ruleDescription ? ` (${result.ruleDescription})` : "");
     }
-    if (!opts.facts) {
-      throw new WorkflowError(
-        `${nodeId} ("${node.name}") is computed by ${table.id}. Supply facts: ` +
-          table.inputs
-            .map((i) => `${i.expression}${i.label ? ` (${i.label})` : ""}`)
-            .join(", "),
-      );
-    }
-    const result = evaluate(table, opts.facts);
-    const outcomes = outcomesOf(model, node);
-    const idx = outcomes.findIndex((o) => o === String(result.outcome));
-    if (idx === -1) {
-      // Unreachable while loadProcessModel's check holds; kept so a future
-      // loosening of that check cannot turn into a silent mis-route.
-      throw new WorkflowError(
-        `${table.id} returned "${result.outcome}", which is not a branch of ${nodeId} ` +
-          `(${outcomes.join(", ")})`,
-      );
-    }
-    chosen = node.outgoing[idx];
-    computedNote =
-      `${table.id} → ${result.outcome} by ${result.rule}` +
-      (result.ruleDescription ? ` (${result.ruleDescription})` : "");
   } else if (node.kind === "exclusive") {
     const outcomes = outcomesOf(model, node);
     if (!opts.outcome) {

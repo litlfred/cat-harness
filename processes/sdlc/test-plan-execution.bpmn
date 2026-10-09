@@ -171,7 +171,7 @@ The run, the report and the certification are three records, and they point back
     </bpmn:task>
 
     <bpmn:exclusiveGateway id="GW_ExitCriteria" name="Exit criteria met?">
-      <bpmn:documentation>Computed from six facts read off the records — report status, data hash known, unexecuted cases, the checker's agreement, failed and passed cases — by the table the plan's `exitCriteria` names. Supplying the branch by hand is refused.</bpmn:documentation>
+      <bpmn:documentation>Computed from six facts read off the records — report status, data hash known, unexecuted cases, the checker's agreement, failed and passed cases — by the table the plan's `exitCriteria` names (resolved dynamically; if unresolvable, routes to undetermined and never silently falls back to default). Supplying the branch by hand is refused.</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:decision ref="decisions/test-certification.dmn#Decision_TestCertification" />
       </bpmn:extensionElements>

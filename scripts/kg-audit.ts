@@ -53,7 +53,7 @@ import { parse as parseYaml } from "yaml";
 import { defaultGraphTypologies } from "../schemas/graph-typology-registry.js";
 import { contractFile, contractRefProblem, skillContracts } from "./skill-contracts.js";
 import { checkTestRuns, testRunFiles } from "./test-run-conformance.js";
-import { auditTestPlans, jsonFilesUnder } from "./test-plan-audit.js";
+import { auditTestPlans, jsonFilesUnder, auditTestPlanExitCriteria } from "./test-plan-audit.js";
 import { processArrowFindings, schemaArrowFindings } from "./arrow-direction.js";
 import { contentCodeFindings, contentInstanceCode } from "./content-holds-code.js";
 import { orphanSubjectResolves } from "./orphan-detector.js";
@@ -1853,15 +1853,23 @@ function testRunCriteria(skills: Set<string>): Record<string, KgCriterionEntry> 
  * rules live in the schemas; `test-plan-audit.ts` follows the files.
  */
 function testPlanCriteria(actors: LoadedActor[]): Record<string, KgCriterionEntry> {
-  return auditTestPlans({
-    root,
-    dmnBases: [WORKFLOW_DIR],
-    plans: jsonFilesUnder(instanceDirectoriesForGraph(root, "test-plan")),
-    // declared-path-literal: the conventional fallback when no declaration names the directory
-    runs: testRunFiles(ownDirectoryById(root, "qa", "test/results")),
-    reports: jsonFilesUnder(instanceDirectoriesForGraph(root, "test-report")),
-    actors,
-  });
+  const planFiles = jsonFilesUnder(instanceDirectoriesForGraph(root, "test-plan"));
+  return {
+    ...auditTestPlans({
+      root,
+      dmnBases: [WORKFLOW_DIR],
+      plans: planFiles,
+      // declared-path-literal: the conventional fallback when no declaration names the directory
+      runs: testRunFiles(ownDirectoryById(root, "qa", "test/results")),
+      reports: jsonFilesUnder(instanceDirectoriesForGraph(root, "test-report")),
+      actors,
+    }),
+    "test-plan-exit-criteria-resolves": auditTestPlanExitCriteria({
+      root,
+      plans: planFiles,
+      dmnBases: [WORKFLOW_DIR],
+    }),
+  };
 }
 
 /** One declared `satisfies` ref, and who declared it. */
