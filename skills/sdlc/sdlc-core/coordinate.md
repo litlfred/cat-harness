@@ -524,3 +524,10 @@ goal. Apply when you hold the flag.
    working; never re-diagnose it as a code problem or pause the cluster
    for it.
 
+## SDLC multi-agent landscape & coverage
+
+For systematic evaluation of multi-agent SDLC workflows (comparing Waterfall, Agile, and dynamic process models against this repository's 69 BPMN processes) and the architectural gap checklist, see:
+- Methodology: [`methodologies/sdlc-agentic-landscape.md`](../../../methodologies/sdlc-agentic-landscape.md) (derived from arXiv:2404.04834v4, He, Treude, and Lo)
+- Architectural analysis: [`docs/architecture/sdlc-agentic-coverage.md`](../../../docs/architecture/sdlc-agentic-coverage.md)
+
+
