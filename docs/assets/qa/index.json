@@ -1,12 +1,12 @@
 {
   "tile": {
     "qa": {
-      "count": 1138,
+      "count": 1132,
       "unit": "documents"
     }
   },
   "$schema": "folio-qa-graph/v1",
-  "files": 1138,
+  "files": 1132,
   "families": [
     {
       "schema": "kg-qa/v1",
@@ -21,13 +21,13 @@
     },
     {
       "schema": "qa-witness/v1",
-      "files": 195,
+      "files": 189,
       "rollUpField": "counts",
       "buckets": {
-        "fail": 41,
+        "fail": 35,
         "warn": 59,
-        "pass": 3771,
-        "na": 6569,
+        "pass": 3686,
+        "na": 6510,
         "unknown": 34
       }
     },

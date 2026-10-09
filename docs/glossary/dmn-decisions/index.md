@@ -40,7 +40,7 @@ Are the plan's exit criteria met? <span class="fa-gloss-status">candidate, extra
 </dt>
 <dd>
 <p><em>The asset carries no description.</em></p>
-<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/sdlc/decisions/test-certification.dmn"><code>cat-harness/processes/sdlc/decisions/test-certification.dmn#Decision_TestCertification</code></a></p>
+<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/decisions/test-certification.dmn"><code>cat-harness/processes/sdlc/decisions/test-certification.dmn#Decision_TestCertification</code></a></p>
 </dd>
 </dl>
 
@@ -62,21 +62,21 @@ Declared in place? <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p><em>The asset carries no description.</em></p>
-<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/kg/decisions/subgraph-declared-gate.dmn"><code>cat-harness/processes/kg/decisions/subgraph-declared-gate.dmn#Decision_SubgraphDeclaredGate</code></a></p>
+<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/decisions/subgraph-declared-gate.dmn"><code>cat-harness/processes/kg/decisions/subgraph-declared-gate.dmn#Decision_SubgraphDeclaredGate</code></a></p>
 </dd>
 <dt id="cat-harness--kg-dmn-decisions--decision_detanglementgate" data-fa-state="extracted" data-fa-gloss="">
 Detangled? <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p><em>The asset carries no description.</em></p>
-<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/kg/decisions/detanglement-gate.dmn"><code>cat-harness/processes/kg/decisions/detanglement-gate.dmn#Decision_DetanglementGate</code></a></p>
+<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/decisions/detanglement-gate.dmn"><code>cat-harness/processes/kg/decisions/detanglement-gate.dmn#Decision_DetanglementGate</code></a></p>
 </dd>
 <dt id="folio-assistant-core--kg-dmn-decisions--decision_draftqagate" data-fa-state="extracted" data-fa-gloss="">
 Draft QA green? <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p><em>The asset carries no description.</em></p>
-<p class="fa-gloss-meta">DMN decisions of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/decisions/draft-qa-gate.dmn"><code>folio-assistant-core/processes/content/decisions/draft-qa-gate.dmn#Decision_DraftQaGate</code></a></p>
+<p class="fa-gloss-meta">DMN decisions of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/decisions/draft-qa-gate.dmn"><code>folio-assistant-core/processes/content/decisions/draft-qa-gate.dmn#Decision_DraftQaGate</code></a></p>
 </dd>
 </dl>
 
@@ -87,7 +87,7 @@ Every changed block and rendered page reviewed? <span class="fa-gloss-status">ca
 </dt>
 <dd>
 <p><em>The asset carries no description.</em></p>
-<p class="fa-gloss-meta">DMN decisions of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/decisions/review-coverage-gate.dmn"><code>folio-assistant-core/processes/content/decisions/review-coverage-gate.dmn#Decision_ReviewCoverageGate</code></a></p>
+<p class="fa-gloss-meta">DMN decisions of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/decisions/review-coverage-gate.dmn"><code>folio-assistant-core/processes/content/decisions/review-coverage-gate.dmn#Decision_ReviewCoverageGate</code></a></p>
 </dd>
 </dl>
 
@@ -98,14 +98,14 @@ Is the published site answering? <span class="fa-gloss-status">candidate, extrac
 </dt>
 <dd>
 <p><em>The asset carries no description.</em></p>
-<p class="fa-gloss-meta">DMN decisions of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/conduct/decisions/pages-live-gate.dmn"><code>folio-assistant-core/processes/conduct/decisions/pages-live-gate.dmn#Decision_PagesLive</code></a></p>
+<p class="fa-gloss-meta">DMN decisions of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/conduct/decisions/pages-live-gate.dmn"><code>folio-assistant-core/processes/conduct/decisions/pages-live-gate.dmn#Decision_PagesLive</code></a></p>
 </dd>
 <dt id="cat-harness--kg-dmn-decisions--decision_requirementsignoffrecorded" data-fa-state="extracted" data-fa-gloss="">
 Is the sign-off recorded, and does it let the work proceed? <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p><em>The asset carries no description.</em></p>
-<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/process/decisions/requirement-signoff-recorded.dmn"><code>cat-harness/processes/process/decisions/requirement-signoff-recorded.dmn#Decision_RequirementSignoffRecorded</code></a></p>
+<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/decisions/requirement-signoff-recorded.dmn"><code>cat-harness/processes/process/decisions/requirement-signoff-recorded.dmn#Decision_RequirementSignoffRecorded</code></a></p>
 </dd>
 </dl>
 
@@ -116,7 +116,7 @@ Ready to seed? <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p><em>The asset carries no description.</em></p>
-<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/kg/decisions/seed-readiness-gate.dmn"><code>cat-harness/processes/kg/decisions/seed-readiness-gate.dmn#Decision_SeedReadiness</code></a></p>
+<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/decisions/seed-readiness-gate.dmn"><code>cat-harness/processes/kg/decisions/seed-readiness-gate.dmn#Decision_SeedReadiness</code></a></p>
 </dd>
 </dl>
 
@@ -127,7 +127,7 @@ Stands alone? <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p><em>The asset carries no description.</em></p>
-<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/kg/decisions/isolation-gate.dmn"><code>cat-harness/processes/kg/decisions/isolation-gate.dmn#Decision_IsolationGate</code></a></p>
+<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/decisions/isolation-gate.dmn"><code>cat-harness/processes/kg/decisions/isolation-gate.dmn#Decision_IsolationGate</code></a></p>
 </dd>
 </dl>
 
@@ -138,21 +138,21 @@ What is the user asking for? <span class="fa-gloss-status">candidate, extracted<
 </dt>
 <dd>
 <p><em>The asset carries no description.</em></p>
-<p class="fa-gloss-meta">DMN decisions of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/conduct/decisions/folio-intent.dmn"><code>folio-assistant-core/processes/conduct/decisions/folio-intent.dmn#Decision_FolioIntent</code></a></p>
+<p class="fa-gloss-meta">DMN decisions of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/conduct/decisions/folio-intent.dmn"><code>folio-assistant-core/processes/conduct/decisions/folio-intent.dmn#Decision_FolioIntent</code></a></p>
 </dd>
 <dt id="cat-harness--kg-dmn-decisions--decision_mergepriority" data-fa-state="extracted" data-fa-gloss="">
 Where does this PR go? <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p><em>The asset carries no description.</em></p>
-<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/sdlc/decisions/merge-priority.dmn"><code>cat-harness/processes/sdlc/decisions/merge-priority.dmn#Decision_MergePriority</code></a></p>
+<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/decisions/merge-priority.dmn"><code>cat-harness/processes/sdlc/decisions/merge-priority.dmn#Decision_MergePriority</code></a></p>
 </dd>
 <dt id="cat-harness--kg-dmn-decisions--decision_signingroute" data-fa-state="extracted" data-fa-gloss="">
 Which signing route? <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p><em>The asset carries no description.</em></p>
-<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/sdlc/decisions/signing-route.dmn"><code>cat-harness/processes/sdlc/decisions/signing-route.dmn#Decision_SigningRoute</code></a></p>
+<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/decisions/signing-route.dmn"><code>cat-harness/processes/sdlc/decisions/signing-route.dmn#Decision_SigningRoute</code></a></p>
 </dd>
 </dl>
 
