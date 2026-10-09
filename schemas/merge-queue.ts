@@ -559,3 +559,228 @@ export const TrainMemberEvidenceSchema = z
   })
   .strict();
 export type TrainMemberEvidence = z.infer<typeof TrainMemberEvidenceSchema>;
+
+/**
+ * The tag every would-have-blocked record carries.
+ */
+export const WOULD_HAVE_BLOCKED_TAG = "folio-would-have-blocked/v1";
+
+/**
+ * Adjudication verdict given by a human for an agentic review warning.
+ *
+ * "unknown" is strictly kept as a third state — never folded into true positive
+ * (which would artificially deflate FPR) or false positive (which would
+ * artificially inflate FPR).
+ */
+export const HUMAN_VERDICTS = ["true_positive", "false_positive", "unknown"] as const;
+export const HumanVerdictSchema = z.enum(HUMAN_VERDICTS);
+export type HumanVerdict = (typeof HUMAN_VERDICTS)[number];
+
+/**
+ * An individual finding from an agentic reviewer evaluated under the
+ * warn-only pre-merge review regime.
+ */
+export const WouldHaveBlockedFindingSchema = z
+  .object({
+    id: NonBlank,
+    rule: NonBlank,
+    severity: z.literal("blocking"),
+    explanation: NonBlank,
+    humanVerdict: HumanVerdictSchema.optional(),
+  })
+  .strict();
+export type WouldHaveBlockedFinding = z.infer<typeof WouldHaveBlockedFindingSchema>;
+
+/**
+ * Summary metrics of would-have-blocked findings on an evaluated PR.
+ *
+ * `empiricalFpr` is undefined if no findings have received a conclusive
+ * human adjudication (i.e. confirmedTruePositives + confirmedFalsePositives === 0).
+ */
+export const WouldHaveBlockedMetricsSchema = z
+  .object({
+    warnedFindings: z.number().int().nonnegative(),
+    confirmedTruePositives: z.number().int().nonnegative(),
+    confirmedFalsePositives: z.number().int().nonnegative(),
+    unknownCount: z.number().int().nonnegative(),
+    empiricalFpr: z.number().min(0).max(1).optional(),
+  })
+  .strict();
+export type WouldHaveBlockedMetrics = z.infer<typeof WouldHaveBlockedMetricsSchema>;
+
+/**
+ * An ISO date or date-time string validator that accepts standard ISO strings.
+ */
+const IsoDateString = z.string().refine((s) => {
+  if (typeof s !== "string" || s.trim().length === 0) return false;
+  return !isNaN(Date.parse(s));
+}, "must be a valid ISO date or date-time string");
+
+/**
+ * A `would-have-blocked` record per warned PR, bound to the head SHA.
+ *
+ * Bean `h1uq`. Owner ruled agentic merge review warn-only on 2026-10-02/03.
+ * Promotion to a hard gate requires an empirical false-positive rate (FPR),
+ * which no published paper reports and only a counterfactual warn-only phase
+ * can observe.
+ */
+export const WouldHaveBlockedRecordSchema = z
+  .object({
+    $schema: z.literal(WOULD_HAVE_BLOCKED_TAG).optional(),
+    headSha: ObjectName,
+    prNumber: z.number().int().positive(),
+    evaluatedAt: IsoDateString,
+    findings: z.array(WouldHaveBlockedFindingSchema),
+    metrics: WouldHaveBlockedMetricsSchema,
+  })
+  .strict();
+export type WouldHaveBlockedRecord = z.infer<typeof WouldHaveBlockedRecordSchema>;
+
+/**
+ * Criteria required to promote an agentic reviewer from warn-only to a blocking gate.
+ *
+ * Must be registered BEFORE data collection to prevent choosing thresholds to fit data.
+ */
+export const AgenticPromotionCriteriaSchema = z
+  .object({
+    /** Minimum number of PRs evaluated under warn-only mode (default 50). */
+    minimumPrWindow: z.number().int().positive(),
+    /** Maximum allowed empirical false-positive rate (default 0.05 / 5%). */
+    maximumFalsePositiveRate: z.number().min(0).max(1),
+    /** Minimum share of findings with conclusive (non-unknown) human adjudication (default 0.80 / 80%). */
+    minimumReviewCoverage: z.number().min(0).max(1),
+  })
+  .strict();
+export type AgenticPromotionCriteria = z.infer<typeof AgenticPromotionCriteriaSchema>;
+
+/** Default pre-registered promotion criteria: 50 PR window, <= 5% FPR, >= 80% coverage. */
+export const DEFAULT_AGENTIC_PROMOTION_CRITERIA: AgenticPromotionCriteria = {
+  minimumPrWindow: 50,
+  maximumFalsePositiveRate: 0.05,
+  minimumReviewCoverage: 0.8,
+};
+
+/**
+ * Compute would-have-blocked metrics from a list of findings.
+ * Strictly maintains "unknown" as a third state without folding into true or false positive.
+ */
+export function calculateWouldHaveBlockedMetrics(
+  findings: readonly WouldHaveBlockedFinding[],
+): WouldHaveBlockedMetrics {
+  const warnedFindings = findings.length;
+  let confirmedTruePositives = 0;
+  let confirmedFalsePositives = 0;
+  let unknownCount = 0;
+
+  for (const f of findings) {
+    if (f.humanVerdict === "true_positive") {
+      confirmedTruePositives++;
+    } else if (f.humanVerdict === "false_positive") {
+      confirmedFalsePositives++;
+    } else {
+      unknownCount++;
+    }
+  }
+
+  const adjudicatedCount = confirmedTruePositives + confirmedFalsePositives;
+  const empiricalFpr = adjudicatedCount > 0 ? confirmedFalsePositives / adjudicatedCount : undefined;
+
+  return {
+    warnedFindings,
+    confirmedTruePositives,
+    confirmedFalsePositives,
+    unknownCount,
+    ...(empiricalFpr !== undefined ? { empiricalFpr } : {}),
+  };
+}
+
+export interface PromotionEvaluationResult {
+  decision: "promote_to_block" | "remain_warn_only";
+  promoted: boolean;
+  metrics: {
+    prCount: number;
+    totalWarnedFindings: number;
+    totalConfirmedTruePositives: number;
+    totalConfirmedFalsePositives: number;
+    totalUnknownCount: number;
+    reviewCoverage: number;
+    empiricalFpr?: number;
+  };
+  checks: {
+    prWindowMet: boolean;
+    reviewCoverageMet: boolean;
+    falsePositiveRateMet: boolean;
+  };
+  reasons: string[];
+}
+
+/**
+ * Evaluates whether a set of would-have-blocked records satisfies the criteria
+ * for promoting the agentic review gate from warn-only to blocking.
+ */
+export function evaluateAgenticPromotion(
+  records: readonly WouldHaveBlockedRecord[],
+  criteria: AgenticPromotionCriteria = DEFAULT_AGENTIC_PROMOTION_CRITERIA,
+): PromotionEvaluationResult {
+  const prCount = records.length;
+  const totalWarnedFindings = records.reduce((acc, r) => acc + r.metrics.warnedFindings, 0);
+  const totalConfirmedTruePositives = records.reduce((acc, r) => acc + r.metrics.confirmedTruePositives, 0);
+  const totalConfirmedFalsePositives = records.reduce((acc, r) => acc + r.metrics.confirmedFalsePositives, 0);
+  const totalUnknownCount = records.reduce((acc, r) => acc + r.metrics.unknownCount, 0);
+
+  const totalAdjudicated = totalConfirmedTruePositives + totalConfirmedFalsePositives;
+  const reviewCoverage = totalWarnedFindings > 0 ? totalAdjudicated / totalWarnedFindings : 1.0;
+  const empiricalFpr = totalAdjudicated > 0 ? totalConfirmedFalsePositives / totalAdjudicated : undefined;
+
+  const prWindowMet = prCount >= criteria.minimumPrWindow;
+  const reviewCoverageMet = reviewCoverage >= criteria.minimumReviewCoverage;
+  const falsePositiveRateMet = empiricalFpr !== undefined && empiricalFpr <= criteria.maximumFalsePositiveRate;
+
+  const promoted = prWindowMet && reviewCoverageMet && falsePositiveRateMet;
+  const reasons: string[] = [];
+
+  if (!prWindowMet) {
+    reasons.push(
+      `PR window not met: evaluated ${prCount} PRs, minimum required is ${criteria.minimumPrWindow}.`,
+    );
+  }
+  if (!reviewCoverageMet) {
+    reasons.push(
+      `Review coverage not met: ${(reviewCoverage * 100).toFixed(1)}% adjudicated (${totalAdjudicated}/${totalWarnedFindings}), minimum required is ${(criteria.minimumReviewCoverage * 100).toFixed(1)}%.`,
+    );
+  }
+  if (empiricalFpr === undefined) {
+    reasons.push("No adjudicated findings available to calculate empirical false-positive rate.");
+  } else if (!falsePositiveRateMet) {
+    reasons.push(
+      `Empirical false-positive rate not met: ${(empiricalFpr * 100).toFixed(1)}% (${totalConfirmedFalsePositives}/${totalAdjudicated}) exceeds maximum threshold of ${(criteria.maximumFalsePositiveRate * 100).toFixed(1)}%.`,
+    );
+  }
+
+  if (promoted) {
+    reasons.push(
+      `All criteria met: PR window (${prCount} >= ${criteria.minimumPrWindow}), review coverage (${(reviewCoverage * 100).toFixed(1)}% >= ${(criteria.minimumReviewCoverage * 100).toFixed(1)}%), and empirical FPR (${(empiricalFpr! * 100).toFixed(1)}% <= ${(criteria.maximumFalsePositiveRate * 100).toFixed(1)}%).`,
+    );
+  }
+
+  return {
+    decision: promoted ? "promote_to_block" : "remain_warn_only",
+    promoted,
+    metrics: {
+      prCount,
+      totalWarnedFindings,
+      totalConfirmedTruePositives,
+      totalConfirmedFalsePositives,
+      totalUnknownCount,
+      reviewCoverage,
+      ...(empiricalFpr !== undefined ? { empiricalFpr } : {}),
+    },
+    checks: {
+      prWindowMet,
+      reviewCoverageMet,
+      falsePositiveRateMet,
+    },
+    reasons,
+  };
+}
+
