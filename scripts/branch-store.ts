@@ -251,6 +251,10 @@ function keptAt(inst: string, repoRoot: string, d: ResolvedDirectory): { branch:
     // or push. `remote-mount.ts` puts it on disk and checks it against its lock.
     case "remote":
       return undefined;
+    // An NPM package (source kind `npm`, kg-retrieve-npm) is likewise another
+    // tree at a pinned version — retrieved by its Tool, kept on no branch here.
+    case "npm":
+      return undefined;
     default: {
       const unknown: never = src;
       throw new BranchStoreUsageError(`directory ${d.id} has a source kind this store does not know: ${JSON.stringify(unknown)}`);

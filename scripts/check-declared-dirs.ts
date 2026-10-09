@@ -119,7 +119,8 @@ import { spawnSync } from "node:child_process";
 import { existsSync, statSync } from "node:fs";
 import { basename, join, relative, resolve, sep } from "node:path";
 
-import { DEFAULT_DIRECTORIES, instanceRootsIn, nestedDirectories, readDeclaration } from "../schemas/cat-harness.js";
+import { DEFAULT_DIRECTORIES, instanceRootsIn, nestedDirectories, readDeclaration, rootForScope } from "../schemas/cat-harness.js";
+import type { DeclarationScope } from "../schemas/kg-node.js";
 import { defaultGraphTypologies } from "../schemas/graph-typology-registry.js";
 import {
   contentIsOffCheckout,
@@ -640,9 +641,23 @@ export function auditNested(
   const byId = new Map<string, { path: string; graphTypologies: readonly string[] }>();
   for (const d of decl?.directories ?? []) byId.set(d.id, { path: d.path, graphTypologies: d.graphTypologies ?? [] });
   for (const n of nested) byId.set(n.id, { path: n.path, graphTypologies: n.graphTypologies });
+  // A nested entry's path is relative to the same root its TOP-LEVEL ancestor
+  // resolves against — `nestedDirectories` reads the nested declaration from
+  // there (`rootForScope`), so judging the entry anywhere else reports a
+  // directory as absent that is on disk. It mattered once a non-root instance
+  // could declare a `scope: "repository"` graph: cat-harness declares the
+  // index checkout's `beans/` and `todos/`, and their nested `defs/`, `items/`
+  // and the rest were looked for under `cat-harness/`.
+  const parentOf = new Map(nested.map((n) => [n.id, n.parentId] as const));
+  const topScope = new Map((decl?.directories ?? []).map((d) => [d.id, (d as { scope?: DeclarationScope }).scope] as const));
+  const baseFor = (id: string): string => {
+    let at = id;
+    for (let guard = 0; parentOf.has(at) && guard < 64; guard++) at = parentOf.get(at)!;
+    return rootForScope(instanceRoot, topScope.get(at));
+  };
   for (const n of nested) {
     const e = n as typeof n & { absent?: { reason: string }; storage?: { branch: string }; source?: SubgraphSource };
-    const abs = join(instanceRoot, n.path);
+    const abs = join(baseFor(n.id), n.path);
     if (contentIsOffCheckout(e)) {
       // The same answers a top-level entry gets, from the same function — but
       // keyed on the id the MOUNT uses, which for a from-within entry is its

@@ -202,6 +202,7 @@ describe("a remote source tool option and npm package source (skills npm-kg-dist
         kind: "npm",
         package: "@litlfred/cat-harness",
         version: "0.1.0",
+        tool: "npm",
       },
     });
     expect(contentSourceJsonLd(r)).toMatchObject({

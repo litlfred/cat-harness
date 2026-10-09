@@ -1752,6 +1752,30 @@ export function declaredSubgraph(start: string, id: string): DeclaredSubgraph | 
 export function repositoryMirrors(start: string): string[] {
   const root = checkoutRootFor(start);
   const out: string[] = [];
+  // THE INDEX CHECKOUT declares no instance of its own: it composes the ones
+  // `index.config.json` lists, so THEY declare its checkout-level state —
+  // cat-harness declares `beans/`, `fsh-guts/`, `todos/` and `issue-marks/`
+  // since the state cutover (folio-assistant 8f55441e5). There a
+  // repository-scoped entry is no mirror; two instances claiming the SAME
+  // repository path is, and that is what is reported.
+  if (safeDeclaration(root) === undefined) {
+    const byPath = new Map<string, string[]>();
+    for (const inst of instanceRootsIn(root)) {
+      let decl: ReturnType<typeof readDeclaration>;
+      try {
+        decl = readDeclaration(inst);
+      } catch {
+        continue;
+      }
+      for (const d of decl?.directories ?? []) {
+        if (d.scope !== "repository") continue;
+        const key = d.path.replace(/\/+$/, "");
+        byPath.set(key, [...(byPath.get(key) ?? []), `${decl!.name}#${d.id}`]);
+      }
+    }
+    for (const claims of byPath.values()) if (claims.length > 1) out.push(...claims);
+    return out.sort();
+  }
   for (const inst of instanceRootsIn(root)) {
     if (resolve(inst) === root) continue;
     let decl: ReturnType<typeof readDeclaration>;
