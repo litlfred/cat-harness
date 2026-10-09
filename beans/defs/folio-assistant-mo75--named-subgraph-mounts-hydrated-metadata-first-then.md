@@ -1,0 +1,30 @@
+---
+# folio-assistant-mo75
+title: 'NAMED SUBGRAPH MOUNTS: hydrated metadata first, then a chosen set (nested ids, node sets, concern names) — the nn8e follow-up'
+status: todo
+type: feature
+priority: normal
+created_at: 2026-10-09T11:22:06Z
+updated_at: 2026-10-09T11:22:06Z
+parent: folio-assistant-0mpw
+---
+
+Filed 2026-10-09 on the owner's instruction ("nn8e yes"). `nn8e`'s done-when names it as a follow-up — "remote BRANCH mount of other repos' named subgraphs, hydrated vs not" — and no bean carried it until now.
+
+Proposal: `cat-harness/docs/proposals/semantic-subgraphs-2026-10-09.md`, Option C (ruled "C y", 2026-10-09). The owner's workflow, verbatim: *"load the tools/skills metadata, review the skills description and then materialize a set of Tools"*.
+
+## Measured 2026-10-09 (cat-harness main 6ea9242)
+- Metadata of a NESTED subgraph exists for a SUBSCRIPTION only: `kg:materialize --nodes <sub> <path>` fetches `index.hydrated.jsonld` (bean `c1m4`, completed).
+- `remote-mount.ts` builds `byId` from the raw top-level `directories` (`:358`) and refuses any other id at plan time (`:379–387`); it never calls `resolveDirectories`/`promoteFromWithin`.
+- `kg:materialize <sub> <subgraph>` copies a whole top-level declared directory (`declaredDirectories` reads the raw top level).
+- `tools/` has no hydrated index: `gen-subgraph-jsonld` exports `kgDirectories(instance)` only (skills, scenarios, processes).
+
+## Done when
+- [ ] G1: Tool nodes exported as a named subgraph with `index.jsonld` + `index.hydrated.jsonld` (`subgraph:jsonld:check`)
+- [ ] G2: a mount entry or override can ask for `hydrated: true` — the named subgraph's `index.hydrated.jsonld` at the pin, no files
+- [ ] G3: `overrides.<instance>.directories` and `kg:materialize` accept NESTED subgraph ids and NODE ids, resolved through `resolveDirectories` / the hydrated index; code nodes bring their import closure (`check:tools-closure`)
+- [ ] concern names: `"sdlc"` at the top level expands to its kind-first members (`docs/sdlc`, `skills/sdlc`, `processes/sdlc`, `scripts/sdlc`), derived from the `concern-groups/v1` declarations, checked by `check:concern-groups`
+- [ ] the CHOICE made in review is written back to the mount entry (the choice, never the state), so a fresh clone replays it; `index.lock.json` records what it resolved to
+- [ ] end to end: "load tools metadata, review, materialize three Tools" from a downstream checkout
+
+Related: `whlc` (KG publication, named subgraphs), `fnx4` (subscriptions), `9umr` (concern groups).
