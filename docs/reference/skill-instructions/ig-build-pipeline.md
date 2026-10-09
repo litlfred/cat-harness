@@ -198,6 +198,23 @@ On yes:
    workflow**, on the branch to publish. The site lands at the repository's
    own Pages URL, since the template reads the base path from the repository
    name rather than assuming it.
+4. If the IG has sibling sites (other IGs on the same platform) or depends
+   on another IG with its own site, set the two repository **variables** the
+   template reads, so no copy is edited per repository:
+   `FOLIO_SITE_SIBLINGS` (site URLs) and `FOLIO_SITE_DEPENDENCIES`
+   (`owner/repo@ref`). The run then reports each sibling built with a
+   different platform, and re-runs the dependencies' `folio site` after a
+   publish. The re-run needs a `FOLIO_SITE_DISPATCH_TOKEN` secret. Without it
+   the run summary says what was not rebuilt, and nothing fails.
+
+   Why: built by hand, the sites drift. Each one shows the harness chrome of
+   the platform it was last built with, and in bean `48a6` the owner found
+   that by looking. Every build writes `folio-build.json` at its site root
+   (`scripts/site-build-stamp.ts`), so a deployed site can be compared
+   without rebuilding it. A sibling whose stamp cannot be read is reported as
+   **not checked**, never as matching. The report is a message, not a gate,
+   and the dependency rebuild is the owner's interim step (2026-10-09:
+   *"1, but rebuild dependency for now"*).
 
 ### 4. Say what the pull request will fire
 
@@ -276,8 +293,7 @@ They belong here, and since 2026-10-04 they are here: byte-identical copies in
 [`scripts/library-strip/`](https://github.com/litlfred/folio-assistant/blob/main/fhir-harness/scripts/library-strip/README.md), with their
 upstream commit, licence and hashes recorded, and a test that runs them on a
 non-WHO IG's output. Recorded because this is the layering rule
-([`smart-stack-layering`](https://github.com/litlfred/folio-assistant/blob/main/smart-base/skills/content/authoring-who-smart-guidelines/smart-stack-layering.md))
-producing a result its own step names contradicted — which is the only kind of
+([`AGENTS.md`](https://github.com/litlfred/folio-assistant/blob/main/fhir-harness/AGENTS.md) §"The one rule") producing a result its own step names contradicted — which is the only kind of
 evidence that a split is doing work.
 
 **Three more followed, on the owner's ruling of 2026-10-03:**

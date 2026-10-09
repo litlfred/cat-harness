@@ -1,22 +1,22 @@
 {
   "tile": {
     "qa": {
-      "count": 1151,
+      "count": 1152,
       "unit": "documents"
     }
   },
   "$schema": "folio-qa-graph/v1",
-  "files": 1151,
+  "files": 1152,
   "families": [
     {
       "schema": "kg-qa/v1",
-      "files": 544,
+      "files": 545,
       "rollUpField": "totals",
       "buckets": {
-        "pass": 3092,
+        "pass": 3096,
         "fail": 232,
-        "n/a": 1699,
-        "unknown": 253
+        "n/a": 1701,
+        "unknown": 254
       }
     },
     {

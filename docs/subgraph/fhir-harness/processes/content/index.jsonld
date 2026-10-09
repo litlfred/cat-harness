@@ -428,10 +428,6 @@
       "@type": "bootstrap:SequenceFlow"
     },
     {
-      "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/fhir-harness.jsonld#process/Process_L3Fhir/flow/C02",
-      "@type": "bootstrap:SequenceFlow"
-    },
-    {
       "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/fhir-harness.jsonld#process/Process_L3Fhir/flow/C03",
       "@type": "bootstrap:SequenceFlow"
     },
@@ -520,9 +516,9 @@
       "name": "FHIR valid?"
     },
     {
-      "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/fhir-harness.jsonld#process/Process_L3Fhir/node/StartEvent_L2Ready",
+      "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/fhir-harness.jsonld#process/Process_L3Fhir/node/StartEvent_ModelReady",
       "@type": "bootstrap:ProcessNode",
-      "name": "L2 DAK ready"
+      "name": "Source model ready"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/fhir-harness.jsonld#process/Process_L3Fhir/node/Task_AuthorFsh",
@@ -533,11 +529,6 @@
       "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/fhir-harness.jsonld#process/Process_L3Fhir/node/Task_IgPublisher",
       "@type": "bootstrap:ProcessNode",
       "name": "IG Publisher build"
-    },
-    {
-      "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/fhir-harness.jsonld#process/Process_L3Fhir/node/Task_MapL2",
-      "@type": "bootstrap:ProcessNode",
-      "name": "Map L2 → L3"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/fhir-harness.jsonld#process/Process_L3Fhir/node/Task_PublishIg",
