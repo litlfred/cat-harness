@@ -18,6 +18,7 @@ import { readBeanFiles, readBeanStore } from "../bean-store-read.ts";
 import { fallbackStoreDir, listBeans, readStoreConfig } from "../beans-fallback.ts";
 import { beanDefsDir, readBeans, resolveBeanDefs } from "../beans.ts";
 import { graphReadPath, mustReadGraph } from "../graph-read.ts";
+import { notApplicableAlone } from "../../test/support/checkout.ts";
 
 const made: string[] = [];
 afterAll(() => {
@@ -353,7 +354,13 @@ describe("todos, issue-marks and the claim writer resolve by declared ID", () =>
     expect(() => seenPath(cut, "o", "r", 7)).toThrow(/cannot resolve the issue-marks graph/);
   });
 
-  test("todos: `TODO_ROOT` still resolves to the checkout's real todos directory (inert today)", async () => {
+  // The checkout's REAL todo graph is the composed checkout's, kept on its
+  // state branch: standing alone there is none to resolve to, so this one is
+  // not applicable there. The three branch states are fixtures above and run
+  // everywhere.
+  test.skipIf(
+    notApplicableAlone("the todo graph (`todos/`, kept on its state branch and mounted only in a composed checkout)"),
+  )("todos: `TODO_ROOT` still resolves to the checkout's real todos directory (inert today)", async () => {
     const { TODO_ROOT } = await import("../todos.ts");
     // `TODO_ROOT` is bound to this checkout rather than a fixture, so what is
     // asserted here is that the relocation left today's answer alone. The

@@ -141,7 +141,7 @@ import { readDeclaration, repoRootFor, siteDirFor } from "../schemas/cat-harness
 import { LibraryEntrySchema, LibraryIndexSchema } from "../schemas/site-indexes.ts";
 import { PAYLOAD_MEDIA_TYPES, PAYLOAD_PATH, type PayloadLink } from "../schemas/subgraph-manifest.ts";
 import { TodoIndexSchema } from "../schemas/todo-index.ts";
-import { beanDefsDir, declaredBlockEdges, readBeans, type BeanNode } from "./beans.ts";
+import { declaredBlockEdges, readBeans, resolveBeanDefs, type BeanNode } from "./beans.ts";
 import { auditPayloadTree, payloadOutDir, planPayloads, renderPayloadFiles, type PayloadEntry, type PayloadPlan } from "./gen-subgraph-jsonld.ts";
 
 const INSTANCE_ROOT = resolve(import.meta.dir, "..");
@@ -570,12 +570,29 @@ export function beansData(beans: BeanNode[], root: string = REPO_ROOT, baseUrl =
   };
 }
 
-/** The bean store, read from its declaration (`beans/beans.json`), never spelled. */
-const BEAN_DEFS = beanDefsDir(REPO_ROOT);
+/**
+ * The bean store, read from its declaration (`beans/beans.json`), never spelled
+ * — for the slice's `source` LABEL only.
+ *
+ * Asked without throwing, so that importing this module for another slice
+ * (todos, library, kg), or for its pure functions, does not need the store
+ * mounted: an import-time throw made every one of those fail wherever the
+ * bean branch is not mounted, including cat-harness standing alone. The
+ * refusal is not lost — reading the store still goes through `readBeans`,
+ * which throws with the remedy when the store is unreachable.
+ */
+const BEAN_DEFS = resolveBeanDefs(REPO_ROOT);
 
 export const BEANS_SLICE: SliceDef = {
   slice: "beans",
-  source: { graph: "bean-defs", path: BEAN_DEFS ? `${posix(relative(REPO_ROOT, BEAN_DEFS))}/` : "(no bean-defs declared)" },
+  source: {
+    graph: "bean-defs",
+    path: BEAN_DEFS.dir
+      ? `${posix(relative(REPO_ROOT, BEAN_DEFS.dir))}/`
+      : BEAN_DEFS.unreachable
+        ? "(bean store not mounted)"
+        : "(no bean-defs declared)",
+  },
   ddl: [
     // A rowid table, because FTS5 addresses rows by rowid; rows go in (id, file) order.
     `CREATE TABLE beans (

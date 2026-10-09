@@ -29,20 +29,25 @@
  *
  * @module cat-harness/scripts/tests/staging-only-publish.test
  *
- * The tests here that read the aggregate repository's own root (the
- * root-declared `fsh-guts` trashcan and
- * `.github/workflows/feature-staging.yml`) live in
- * `test/staging-only-publish-repo-root.test.ts`
- * (bean `ho66`): standing alone, cat-harness has no such root to read.
+ * The tests that read the real declaration and compose the real tree live in
+ * `cat-harness-tools/test/coordinator/staging-only-publish-repo-root.test.ts`
+ * (bean `ho66`). The ones that read the index repository's own
+ * `.github/workflows/` — that the preview composes with `--staging` and the
+ * canonical publisher without it — live in that repository's
+ * `test/workflows/staging-only-publish.test.ts` (owner's ruling 2026-10-09,
+ * litlfred/folio-assistant#2521, ruling 1(c)). The ones that read the
+ * `fsh-guts` trashcan, kept on a state branch only a composed checkout
+ * mounts, report themselves not applicable standing alone.
  */
 import { beforeAll, describe, expect, it } from "bun:test";
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
 import { compose, isWithheld, withheldFromCanonical, withheldPathFor } from "../compose-docs.js";
 import { gutsDir, gutsFiles, page } from "../gen-fsh-guts-viz.js";
+import { notApplicableAlone } from "../../test/support/checkout.js";
 
 const REPO = resolve(import.meta.dir, "..", "..", "..");
 
@@ -150,55 +155,43 @@ describe("composing honours the default, which is the restrictive one", () => {
   });
 });
 
-describe("the workflows sit on the right side of the default", () => {
-  /**
-   * Read from the REAL workflow files, the way `gates.ts` derives its list
-   * from the gate workflow rather than from a copy of it. A test restating
-   * what the workflow should say is a second place for it to be wrong.
-   */
-  const staging = readFileSync(join(REPO, ".github/workflows/feature-staging.yml"), "utf-8");
-  const canonical = readFileSync(join(REPO, ".github/workflows/docs-site.yml"), "utf-8");
+// The page's corpus is the `fsh-guts` trashcan's content, kept on a state
+// branch that only a composed checkout mounts: standing alone these are not
+// applicable. Composed, they run, and an unmounted trashcan fails them.
+const NO_TRASHCAN = notApplicableAlone(
+  "the `fsh-guts` trashcan's content (kept on its state branch, mounted only in a composed checkout)",
+);
 
-  const composeLines = (yml: string): string[] =>
-    yml.split("\n").filter((l) => l.includes("compose-docs.ts") && !l.trimStart().startsWith("#"));
-
-  it("the preview composes with --staging", () => {
-    const lines = composeLines(staging);
-    expect(lines.length).toBeGreaterThan(0);
-    for (const l of lines) expect(l).toContain("--staging");
-  });
-
-  it("the canonical publisher composes WITHOUT it", () => {
-    const lines = composeLines(canonical);
-    expect(lines.length).toBeGreaterThan(0);
-    for (const l of lines) expect(l).not.toContain("--staging");
-  });
-});
-
-describe("the fsh-guts page reports the declaration gap rather than hiding it", () => {
-  const dir = gutsDir(REPO);
-  const files = dir ? gutsFiles(dir) : [];
+describe.skipIf(NO_TRASHCAN)("the fsh-guts page reports the declaration gap rather than hiding it", () => {
+  // Read inside the tests: `describe.skipIf` still runs this body, and
+  // standing alone the scan throws on the absent directory.
+  let read: ReturnType<typeof gutsFiles> | undefined;
+  const corpus = (): ReturnType<typeof gutsFiles> => {
+    if (read) return read;
+    const dir = gutsDir(REPO);
+    return (read = dir ? gutsFiles(dir) : []);
+  };
 
   it("classifies every file into exactly one of the three states", () => {
-    for (const f of files) expect(["declared", "sidecar", "undeclared"]).toContain(f.state);
+    for (const f of corpus()) expect(["declared", "sidecar", "undeclared"]).toContain(f.state);
   });
 
   it("the page names the undeclared count rather than only the total", () => {
-    const n = files.filter((f) => f.state === "undeclared").length;
-    const html = page(files, "https://example.invalid");
+    const n = corpus().filter((f) => f.state === "undeclared").length;
+    const html = page(corpus(), "https://example.invalid");
     expect(html).toContain(`| ${n} |`);
     if (n > 0) expect(html).toContain("undeclared");
   });
 
   it("every file in the corpus appears on the page", () => {
-    const html = page(files, "https://example.invalid");
-    for (const f of files) {
+    const html = page(corpus(), "https://example.invalid");
+    for (const f of corpus()) {
       const name = f.rel.slice(f.group === "." ? 0 : f.group.length + 1);
       expect(html).toContain(name);
     }
   });
 
   it("the page says it is not published, since that is not obvious from it", () => {
-    expect(page(files, "https://example.invalid")).toContain("not on the published site");
+    expect(page(corpus(), "https://example.invalid")).toContain("not on the published site");
   });
 });

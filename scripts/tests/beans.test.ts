@@ -16,6 +16,7 @@ import { join } from "node:path";
 
 import { repoRootFor } from "../../schemas/cat-harness.ts";
 import { beanDefsDir, beanFindings, blockEdges, blockedBy, blocksOf, hasExpiry, isOpen, readBeans } from "../beans.ts";
+import { notApplicableAlone } from "../../test/support/checkout.ts";
 
 /** A repository-shaped temp dir with a bean store in it. */
 function store(beans: Record<string, string>): string {
@@ -230,48 +231,65 @@ describe("ONE edge set over `blocking:` and `blocked_by:` (bean vhqq)", () => {
   });
 });
 
-describe("the REAL corpus: the edge set is exactly the union of both declarations", () => {
+// The bean store is the COMPOSED checkout's, mounted from its state branch:
+// cat-harness standing alone has none, so these are not applicable there and
+// say so. In the composed checkout they run, and an unmounted store fails them.
+const NO_BEAN_STORE = notApplicableAlone(
+  "the bean store (`beans/`, kept on its state branch and mounted only in a composed checkout)",
+);
+
+describe.skipIf(NO_BEAN_STORE)("the REAL corpus: the edge set is exactly the union of both declarations", () => {
   // Computed WITHOUT readBeans: the front matter is parsed here by its own
   // line walk, so a reader that drops one key cannot agree with itself.
+  // Lazily, inside the tests: `describe.skipIf` still runs this body, and an
+  // unreadable store must fail a test by name rather than the whole file.
   const repo = repoRootFor(join(import.meta.dir, "../.."));
-  const dir = beanDefsDir(repo)!;
-  const union = new Set<string>();
   let declaredBlocking = 0;
   let declaredBlockedBy = 0;
-  for (const name of readdirSync(dir)) {
-    if (!name.endsWith(".md")) continue;
-    const text = readFileSync(join(dir, name), "utf-8");
-    const fm = /^---\n([\s\S]*?)\n---/.exec(text)?.[1];
-    if (fm === undefined) continue;
-    const id = /^#\s*(\S+)/m.exec(fm)?.[1] ?? name.replace(/\.md$/, "");
-    const lines = fm.split("\n");
-    const list = (key: string): string[] => {
-      const at = lines.findIndex((l) => l.startsWith(`${key}:`));
-      if (at < 0) return [];
-      const out: string[] = [];
-      for (const l of lines.slice(at + 1)) {
-        const m = /^\s+-\s*['"]?([^'"\s]+)['"]?\s*$/.exec(l);
-        if (!m) break;
-        out.push(m[1]!);
+  let read: Set<string> | undefined;
+  const corpus = (): Set<string> => (read ??= unionOfDeclarations());
+
+  function unionOfDeclarations(): Set<string> {
+    const dir = beanDefsDir(repo)!;
+    const union = new Set<string>();
+    for (const name of readdirSync(dir)) {
+      if (!name.endsWith(".md")) continue;
+      const text = readFileSync(join(dir, name), "utf-8");
+      const fm = /^---\n([\s\S]*?)\n---/.exec(text)?.[1];
+      if (fm === undefined) continue;
+      const id = /^#\s*(\S+)/m.exec(fm)?.[1] ?? name.replace(/\.md$/, "");
+      const lines = fm.split("\n");
+      const list = (key: string): string[] => {
+        const at = lines.findIndex((l) => l.startsWith(`${key}:`));
+        if (at < 0) return [];
+        const out: string[] = [];
+        for (const l of lines.slice(at + 1)) {
+          const m = /^\s+-\s*['"]?([^'"\s]+)['"]?\s*$/.exec(l);
+          if (!m) break;
+          out.push(m[1]!);
+        }
+        return out;
+      };
+      for (const t of list("blocking")) {
+        union.add(`${id}>${t}`);
+        declaredBlocking++;
       }
-      return out;
-    };
-    for (const t of list("blocking")) {
-      union.add(`${id}>${t}`);
-      declaredBlocking++;
+      for (const f of list("blocked_by")) {
+        union.add(`${f}>${id}`);
+        declaredBlockedBy++;
+      }
     }
-    for (const f of list("blocked_by")) {
-      union.add(`${f}>${id}`);
-      declaredBlockedBy++;
-    }
+    return union;
   }
 
   test("the corpus declares edges from both ends (else this test proves nothing)", () => {
+    corpus();
     expect(declaredBlocking).toBeGreaterThan(0);
     expect(declaredBlockedBy).toBeGreaterThan(0);
   });
 
   test("blockEdges(readBeans) has exactly the union's edges", () => {
+    const union = corpus();
     const { edges } = blockEdges(readBeans(repo)!);
     expect(edges.length).toBe(union.size);
     expect(new Set(edges.map((e) => `${e.blocker}>${e.blocked}`))).toEqual(union);

@@ -762,7 +762,7 @@ const OWN_STEP_EXEMPTIONS: StepExemption[] = [
       "`bun run cat gates`, to observe a number `retry.test.ts` already covers at the source — " +
       "`waitFor` is the only arithmetic here and this script does not repeat it (bean `06kg`). " +
       "That it is reached from every retry loop, rather than each loop computing its own wait, " +
-      "is covered by `retry-backoff-in-workflows.test.ts` in `bun test`, which is a gate",
+      "is covered by the index repository's `test/workflows/retry-backoff-in-workflows.test.ts` in its `bun test`, which is a gate",
   },
   {
     // The ChangeSet step of `folio-staging.yml`, the reusable workflow folios
