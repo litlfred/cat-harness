@@ -86,8 +86,8 @@
       "files": 1,
       "rollUpField": "totals",
       "buckets": {
-        "pages": 5,
-        "railed": 5,
+        "pages": 0,
+        "railed": 0,
         "declined": 0,
         "linked": 0,
         "missing": 0,

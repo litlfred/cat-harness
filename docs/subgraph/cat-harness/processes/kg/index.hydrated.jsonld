@@ -18,6 +18,7 @@
       "name": "Code node review",
       "nodeCount": 8,
       "sourcePath": "processes/kg/review-code.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/review-code.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CodeReview/node/Start_CodeNodes",
       "summary": "Judging changed CODE NODES — Tool definitions and schema definition nodes — on whether they are correct NODES, not merely correct code."
     },
@@ -244,6 +245,7 @@
       "name": "A sub-graph wants to leave",
       "nodeCount": 15,
       "sourcePath": "processes/kg/graph-detanglement.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/graph-detanglement.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_GraphDetanglement/node/Start_Wants",
       "summary": "Part of a repository wants to leave, for size or a semantic reason: four gated stages measure it out of the graph before anything moves, and an administrator authorises the extraction."
     },
@@ -696,6 +698,7 @@
       "name": "A knowledge graph leaves for its own repositories",
       "nodeCount": 28,
       "sourcePath": "processes/kg/kg-separation.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/kg-separation.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_KgSeparation/node/Start_Trigger",
       "summary": "Move part of a knowledge graph into repositories of its own: the content and the tools that write and check it separate as a pair, into two repositories, not one."
     },
@@ -1499,6 +1502,7 @@
       "name": "KG to public portal",
       "nodeCount": 18,
       "sourcePath": "processes/kg/kg-to-portal.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/kg-to-portal.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_KgToPortal/node/Start_Graph",
       "summary": "How a knowledge graph reaches a public portal this repository does not run: select, serialize, package, sign, distribute, and verify on the portal's side."
     },
@@ -1993,6 +1997,7 @@
       "name": "Remote-mount a dependency",
       "nodeCount": 9,
       "sourcePath": "processes/kg/mount-dependency.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/mount-dependency.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MountDependency/node/Start_LayerNeeded",
       "summary": "Laying a harness — and every instance it needs — down from another repository at a pinned commit, as declared directories, with a lock that says exactly what arrived."
     },
@@ -2238,6 +2243,7 @@
       "name": "Mount a declared subgraph",
       "nodeCount": 11,
       "sourcePath": "processes/kg/mount-subgraph.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/mount-subgraph.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MountSubgraph/node/Start_SubgraphWanted",
       "summary": "Making a declared subgraph's content available at its declared path, whatever its content source."
     },
@@ -2552,6 +2558,7 @@
       "name": "Package and distribute partitioned W3C N-Quads and named queries",
       "nodeCount": 13,
       "sourcePath": "processes/kg/nquads-distribution.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/nquads-distribution.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_NQuadsDistribution/node/Start_Dataset",
       "summary": "Extract, partition, package, and distribute knowledge graph datasets as W3C RDF 1.1 N-Quads with pre-compiled named SPARQL queries."
     },
@@ -2894,6 +2901,7 @@
       "name": "Execute audited named queries over partitioned W3C N-Quads distributions",
       "nodeCount": 14,
       "sourcePath": "processes/kg/named-query-execution.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/named-query-execution.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_NamedQueryExecution/node/Start_QueryRequest",
       "summary": "Universal execution of audited named SPARQL queries against W3C RDF 1.1 N-Quads distributions across CLI, MCP, and Web runtimes."
     },
@@ -3271,6 +3279,7 @@
       "name": "Build and publish a per-slice SQLite file",
       "nodeCount": 13,
       "sourcePath": "processes/kg/slice-sqlite-publish.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/slice-sqlite-publish.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SliceSqlitePublish/node/Start_Need",
       "summary": "Build one named slice of a knowledge graph as a SQLite file a browser mounts without parsing, and publish it beside its manifest and its payloads."
     },
@@ -3614,6 +3623,7 @@
       "name": "A sub-KG is staged in place, then leaves for its own repository",
       "nodeCount": 28,
       "sourcePath": "processes/kg/sub-kg-lifecycle.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/sub-kg-lifecycle.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SubKgLifecycle/node/Start_Wanted",
       "summary": "Create a knowledge graph inside a harnessed repository as an instance of its own, grow it there, and when it should leave, stage it for separation and move it whole into a new repository."
     },

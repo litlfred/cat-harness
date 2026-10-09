@@ -428,9 +428,9 @@
       "@type": "bootstrap:Asset",
       "name": "agent-instructions",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f692235c5099b29910455c8d684a1f89aa91748c8002e3a32f59b0b07f12ef82",
-        "bytes": 3988,
-        "sha256": "f692235c5099b29910455c8d684a1f89aa91748c8002e3a32f59b0b07f12ef82"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/16df82f49cf1c627365908fefb61b0e18008aae24d359a7280dff2a107317a07",
+        "bytes": 17397,
+        "sha256": "16df82f49cf1c627365908fefb61b0e18008aae24d359a7280dff2a107317a07"
       },
       "title": "AGENTS.md — cat-harness"
     },
@@ -450,9 +450,9 @@
       "@type": "bootstrap:Asset",
       "name": "instance-readme",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f98b2de919842797d92ab44da32107a247b72748d23c7c717792dee549c08907",
-        "bytes": 3000,
-        "sha256": "f98b2de919842797d92ab44da32107a247b72748d23c7c717792dee549c08907"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/01a1632c34070b13dfebb8577c71a1cf770ab4227cf789ce46d747828beb3dac",
+        "bytes": 14597,
+        "sha256": "01a1632c34070b13dfebb8577c71a1cf770ab4227cf789ce46d747828beb3dac"
       },
       "title": "cat-harness"
     },
@@ -461,9 +461,9 @@
       "@type": "bootstrap:Asset",
       "name": "npm-manifest",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5f143edf708c4e22ceb3189cbfbe8b14d3089e9019525574bbf74fe6425ba94e",
-        "bytes": 23567,
-        "sha256": "5f143edf708c4e22ceb3189cbfbe8b14d3089e9019525574bbf74fe6425ba94e"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4bdb16124d903dad31819e4e22b1d256b5068de30e388bee170bfdceaee5ed92",
+        "bytes": 23715,
+        "sha256": "4bdb16124d903dad31819e4e22b1d256b5068de30e388bee170bfdceaee5ed92"
       },
       "title": "package.json"
     },

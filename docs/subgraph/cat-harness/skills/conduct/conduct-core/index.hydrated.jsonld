@@ -37,13 +37,13 @@
       "hasInstructions": true,
       "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/conduct-core",
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-      "instructionLines": 195,
+      "instructionLines": 196,
       "instructionsPath": "skills/conduct/conduct-core/agent-memory.md",
       "name": "agent-memory",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b933a9dcdd440324d4f634ff111cf94ff4f2d3111986b4c4ae34b569a1c736fa",
-        "bytes": 10414,
-        "sha256": "b933a9dcdd440324d4f634ff111cf94ff4f2d3111986b4c4ae34b569a1c736fa"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7d2bd3ecb84a333866bd2e2f7b78ccdbc4234aec6057fc6dac085b453fffe3ac",
+        "bytes": 10512,
+        "sha256": "7d2bd3ecb84a333866bd2e2f7b78ccdbc4234aec6057fc6dac085b453fffe3ac"
       },
       "title": "Subagent memory — what a durable entry may claim"
     },

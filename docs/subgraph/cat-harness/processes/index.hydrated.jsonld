@@ -41,6 +41,7 @@
           "name": "Narrative review",
           "nodeCount": 9,
           "sourcePath": "processes/content/review-narrative.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/content/review-narrative.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_NarrativeReview/node/Start_ProseChanged",
           "summary": "Judging changed PROSE: read what the mechanical checkers flagged, decide which findings are real, then look at the two things no checker can judge — whether the editorial dependencies still hold and whether a translation still says what the source does."
         },
@@ -290,6 +291,7 @@
           "name": "Review task",
           "nodeCount": 10,
           "sourcePath": "processes/content/review-task.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/content/review-task.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_Review/node/Start_ChangeToReview",
           "summary": "The generic review position: classify what changed, descend into the review that fits it, consolidate what comes back, and accept or send back."
         },
@@ -577,6 +579,7 @@
           "name": "Voice overlay review",
           "nodeCount": 12,
           "sourcePath": "processes/content/voice-review.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/content/voice-review.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_VoiceReview/node/Start_BaseVoiceDone",
           "summary": "The voice axis: load whichever editorial voices are active, run each rule's mechanical half, and decide — for each finding — whether the prose is wrong, the rule does not apply to this content, or this block is a stated exception."
         },
@@ -927,6 +930,7 @@
           "name": "Code node review",
           "nodeCount": 8,
           "sourcePath": "processes/kg/review-code.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/review-code.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CodeReview/node/Start_CodeNodes",
           "summary": "Judging changed CODE NODES — Tool definitions and schema definition nodes — on whether they are correct NODES, not merely correct code."
         },
@@ -1153,6 +1157,7 @@
           "name": "A sub-graph wants to leave",
           "nodeCount": 15,
           "sourcePath": "processes/kg/graph-detanglement.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/graph-detanglement.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_GraphDetanglement/node/Start_Wants",
           "summary": "Part of a repository wants to leave, for size or a semantic reason: four gated stages measure it out of the graph before anything moves, and an administrator authorises the extraction."
         },
@@ -1605,6 +1610,7 @@
           "name": "A knowledge graph leaves for its own repositories",
           "nodeCount": 28,
           "sourcePath": "processes/kg/kg-separation.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/kg-separation.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_KgSeparation/node/Start_Trigger",
           "summary": "Move part of a knowledge graph into repositories of its own: the content and the tools that write and check it separate as a pair, into two repositories, not one."
         },
@@ -2408,6 +2414,7 @@
           "name": "KG to public portal",
           "nodeCount": 18,
           "sourcePath": "processes/kg/kg-to-portal.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/kg-to-portal.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_KgToPortal/node/Start_Graph",
           "summary": "How a knowledge graph reaches a public portal this repository does not run: select, serialize, package, sign, distribute, and verify on the portal's side."
         },
@@ -2902,6 +2909,7 @@
           "name": "Remote-mount a dependency",
           "nodeCount": 9,
           "sourcePath": "processes/kg/mount-dependency.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/mount-dependency.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MountDependency/node/Start_LayerNeeded",
           "summary": "Laying a harness — and every instance it needs — down from another repository at a pinned commit, as declared directories, with a lock that says exactly what arrived."
         },
@@ -3147,6 +3155,7 @@
           "name": "Mount a declared subgraph",
           "nodeCount": 11,
           "sourcePath": "processes/kg/mount-subgraph.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/mount-subgraph.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MountSubgraph/node/Start_SubgraphWanted",
           "summary": "Making a declared subgraph's content available at its declared path, whatever its content source."
         },
@@ -3461,6 +3470,7 @@
           "name": "Package and distribute partitioned W3C N-Quads and named queries",
           "nodeCount": 13,
           "sourcePath": "processes/kg/nquads-distribution.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/nquads-distribution.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_NQuadsDistribution/node/Start_Dataset",
           "summary": "Extract, partition, package, and distribute knowledge graph datasets as W3C RDF 1.1 N-Quads with pre-compiled named SPARQL queries."
         },
@@ -3803,6 +3813,7 @@
           "name": "Execute audited named queries over partitioned W3C N-Quads distributions",
           "nodeCount": 14,
           "sourcePath": "processes/kg/named-query-execution.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/named-query-execution.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_NamedQueryExecution/node/Start_QueryRequest",
           "summary": "Universal execution of audited named SPARQL queries against W3C RDF 1.1 N-Quads distributions across CLI, MCP, and Web runtimes."
         },
@@ -4180,6 +4191,7 @@
           "name": "Build and publish a per-slice SQLite file",
           "nodeCount": 13,
           "sourcePath": "processes/kg/slice-sqlite-publish.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/slice-sqlite-publish.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SliceSqlitePublish/node/Start_Need",
           "summary": "Build one named slice of a knowledge graph as a SQLite file a browser mounts without parsing, and publish it beside its manifest and its payloads."
         },
@@ -4523,6 +4535,7 @@
           "name": "A sub-KG is staged in place, then leaves for its own repository",
           "nodeCount": 28,
           "sourcePath": "processes/kg/sub-kg-lifecycle.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/kg/sub-kg-lifecycle.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SubKgLifecycle/node/Start_Wanted",
           "summary": "Create a knowledge graph inside a harnessed repository as an instance of its own, grow it there, and when it should leave, stage it for separation and move it whole into a new repository."
         },
@@ -5377,6 +5390,7 @@
           "name": "Content acquisition",
           "nodeCount": 9,
           "sourcePath": "processes/library/content-acquisition.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/content-acquisition.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_ContentAcquisition/node/Start_Acquire",
           "summary": "How a resource gets into the graph in the first place."
         },
@@ -5631,6 +5645,7 @@
           "name": "Copy out materialized content — to work on somebody else's bytes",
           "nodeCount": 9,
           "sourcePath": "processes/library/copy-out-materialized.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/copy-out-materialized.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CopyOutMaterialized/node/StartEvent_WantToEdit",
           "summary": "Somebody wants to change content this repository holds a read-only materialized copy of: copy it into their own `folio/`, recording which original it came out of."
         },
@@ -5888,6 +5903,7 @@
           "name": "Human Translation Workflow",
           "nodeCount": 20,
           "sourcePath": "processes/library/human-translation-workflow.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/human-translation-workflow.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_HumanTranslation/node/Start_TranslationNeeded",
           "summary": "The human half of translation: a coordinator assigns a locale to a qualified translator, the translator works in their own tool, a subject-matter expert judges accuracy, and only then is the result official."
         },
@@ -6435,6 +6451,7 @@
           "name": "Basic ingestion — an upload to an asset catalogued in library/",
           "nodeCount": 7,
           "sourcePath": "processes/library/document-ingestion.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/document-ingestion.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_Ingestion/node/StartEvent_Dropped",
           "summary": "Accepts an upload, records its extracted metadata in the knowledge graph, and catalogues the asset in `library/` — held if materialized, referenced if not."
         },
@@ -6641,6 +6658,7 @@
           "name": "Materialize remote content — the shared subprocess",
           "nodeCount": 14,
           "sourcePath": "processes/library/materialize-remote.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/materialize-remote.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MaterializeRemote/node/StartEvent_Asked",
           "summary": "One process, called wherever remote content is landed locally."
         },
@@ -7011,6 +7029,7 @@
           "name": "Adopt a methodology from a source document",
           "nodeCount": 12,
           "sourcePath": "processes/library/methodology-from-source.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/methodology-from-source.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MethodologyFromSource/node/Start_MFS",
           "summary": "Adopt the method of a shared paper, book or standard: origin and licence, ingestion, what is adopted and refused, placement by ownership, integration by calling existing processes, and the owner's review."
         },
@@ -7335,6 +7354,7 @@
           "name": "Refresh materialized remote content",
           "nodeCount": 14,
           "sourcePath": "processes/library/refresh-materialized.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/refresh-materialized.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_RefreshMaterialized/node/StartEvent_Due",
           "summary": "Keep a materialized copy of remote content current: what changed upstream, what changed locally, and what to do when both did — an archival copy is never re-fetched and gets a fixity check instead."
         },
@@ -7763,6 +7783,7 @@
           "name": "Sample import into a structured data store",
           "nodeCount": 16,
           "sourcePath": "processes/library/sample-import.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/sample-import.bpmn",
           "startNode": [
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SampleImport/node/StartEvent_Proposed",
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SampleImport/node/StartEvent_Upstream"
@@ -8198,6 +8219,7 @@
           "name": "Subscribe to an external knowledge graph",
           "nodeCount": 20,
           "sourcePath": "processes/library/subscribe-kg.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/subscribe-kg.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SubscribeKg/node/StartEvent_Wanted",
           "summary": "Subscribe a folio or harness to an external knowledge graph pinned to a full commit SHA, then take each chosen part from referenced to materialized through `materialize-remote` and instantiate each chosen harness once its needs are held."
         },
@@ -8796,6 +8818,7 @@
           "name": "Translation Workflow",
           "nodeCount": 16,
           "sourcePath": "processes/library/translation-workflow.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/translation-workflow.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_Translation/node/Start_ContentAuthored",
           "summary": "The machine half of translation, end to end: extract the translatable strings, inject a catalogue back, check the result by back-translating it, and track whether the source has moved since."
         },
@@ -9270,6 +9293,7 @@
           "name": "Actor and role administration",
           "nodeCount": 11,
           "sourcePath": "processes/process/actor-role-administration.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/process/actor-role-administration.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_ActorRoleAdministration/node/Start_AdminRequest",
           "summary": "Changing who can do what: adding an actor, opening or closing a role to one, granting or revoking a permission — and auditing the graph afterwards, because the declaration and the graph are two things that can disagree."
         },
@@ -9614,6 +9638,7 @@
           "name": "CRDM requirements",
           "nodeCount": 13,
           "sourcePath": "processes/process/crdm-requirements.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM/node/Start_BA",
           "summary": "A feature request turned into agreed, signed-off requirements and delivered, with one call activity per CRDM phase from issue linking to close-out."
         },
@@ -9957,6 +9982,7 @@
           "name": "CRDM close-out",
           "nodeCount": 8,
           "sourcePath": "processes/process/crdm-close.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-close.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Close/node/Start_Process_CRDM_Close",
           "summary": "The stakeholders sign off, the BA confirms every criterion is met, and only then does the agent close the issue."
         },
@@ -10197,6 +10223,7 @@
           "name": "CRDM data model",
           "nodeCount": 8,
           "sourcePath": "processes/process/crdm-data-model.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-data-model.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_DataModel/node/Start_Process_CRDM_DataModel",
           "summary": "Draft the data model from the BPA and the requirements, have the BA confirm the entities and the stakeholders confirm the cardinalities, and loop until both."
         },
@@ -10434,6 +10461,7 @@
           "name": "CRDM Phase 6 — implement, MVP, acceptance",
           "nodeCount": 14,
           "sourcePath": "processes/process/crdm-deliver.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-deliver.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Deliver/node/Start_Process_CRDM_Deliver",
           "summary": "One phase and not three, because the loops say so: an increment the BA rejects, an MVP that is not ready, and stakeholder findings all route back into implementation."
         },
@@ -10841,6 +10869,7 @@
           "name": "CRDM — link the work to an issue",
           "nodeCount": 7,
           "sourcePath": "processes/process/crdm-issue-linking.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-issue-linking.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Issue/node/Start_Process_CRDM_Issue",
           "summary": "Scan for a GitHub issue matching the feature work, then link it or ask — an issue is never created without the BA's permission."
         },
@@ -11038,6 +11067,7 @@
           "name": "CRDM Phase 1 — needs",
           "nodeCount": 7,
           "sourcePath": "processes/process/crdm-needs.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-needs.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Needs/node/Start_Process_CRDM_Needs",
           "summary": "Identify the stakeholders, synthesise a needs statement from the sources, and loop until the BA and the stakeholders both recognise it."
         },
@@ -11250,6 +11280,7 @@
           "name": "CRDM Phases 2–4 — BPA and requirements",
           "nodeCount": 8,
           "sourcePath": "processes/process/crdm-requirements-definition.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements-definition.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Requirements/node/Start_Process_CRDM_Requirements",
           "summary": "Map the current workflow, then define the requirements and the impact they carry, and loop until approved."
         },
@@ -11489,6 +11520,7 @@
           "name": "CRDM Phase 5 — beans and sign-off",
           "nodeCount": 12,
           "sourcePath": "processes/process/crdm-signoff.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-signoff.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Signoff/node/Start_Process_CRDM_Signoff",
           "summary": "The approved requirements become work-plan items, the BA signs off, and the branch is announced on the issue."
         },
@@ -11838,6 +11870,7 @@
           "name": "Render a Knowledge Graph to a CDN",
           "nodeCount": 8,
           "sourcePath": "processes/process/render-kg-to-cdn.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/process/render-kg-to-cdn.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_RenderKgToCdn/node/Start_Render",
           "summary": "Render a Knowledge Graph — the whole of it, or a list of its Subgraphs — for publication to a CDN at a publication root URL, and report a STATUS and a MESSAGE."
         },
@@ -12061,6 +12094,7 @@
           "name": "Session state machine",
           "nodeCount": 11,
           "sourcePath": "processes/process/session-state-machine.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/process/session-state-machine.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SessionStateMachine/node/Start_Session",
           "summary": "The shape of a session from the outside: establish who is acting, open a record for them, take each turn in, and write down only what actually changed."
         },
@@ -12395,6 +12429,7 @@
           "name": "SWOT situation analysis",
           "nodeCount": 11,
           "sourcePath": "processes/process/swot-analysis.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/process/swot-analysis.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SwotAnalysis/node/Start_Process_SwotAnalysis",
           "summary": "Situation analysis over two axes — internal/external and helpful/harmful — producing the raw material a decision is made from, and NEVER the decision."
         },
@@ -12717,6 +12752,7 @@
           "name": "Agent activity log",
           "nodeCount": 15,
           "sourcePath": "processes/sdlc/activity-log.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/activity-log.bpmn",
           "startNode": [
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_ActivityLog/node/Start_Task",
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_ActivityLog/node/Start_Sweep",
@@ -13153,6 +13189,7 @@
           "name": "Adjudication",
           "nodeCount": 7,
           "sourcePath": "processes/sdlc/adjudication.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/adjudication.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_Adjudication/node/Start_Disagreement",
           "summary": "A criterion's reviewer entries disagree and no mechanism can settle them: this is the judgement that does, and the record it must leave."
         },
@@ -13345,6 +13382,7 @@
           "name": "Agent bean lifecycle",
           "nodeCount": 14,
           "sourcePath": "processes/sdlc/bean-lifecycle.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/bean-lifecycle.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_BeanLifecycle/node/Start_DurableWork",
           "summary": "The whole life of a work-plan item, and the rules that make one agent's bean legible to another: check before you create, claim before you work, keep the body current as you go, and end it in a state that says why."
         },
@@ -13750,6 +13788,7 @@
           "name": "Is CI actually working on the default branch?",
           "nodeCount": 10,
           "sourcePath": "processes/sdlc/ci-health-watch.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/ci-health-watch.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CiHealth/node/Start_Sweep",
           "summary": "Is CI actually working on the default branch: record each workflow's state on one tracking issue, and fail the job only when the state could not be determined."
         },
@@ -14008,6 +14047,7 @@
           "name": "Code change and review",
           "nodeCount": 15,
           "sourcePath": "processes/sdlc/code-change-review.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/code-change-review.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CodeChangeReview/node/Start_Change",
           "summary": "Getting a change to the PLATFORM from \"this is needed\" to merged: claim the work, branch and announce it, make the change, prove it against the platform's own gates, and carry it through review to a merge somebody else is not left holding."
         },
@@ -14431,6 +14471,7 @@
           "name": "The gates a change must pass before it can merge",
           "nodeCount": 17,
           "sourcePath": "processes/sdlc/code-quality-gates.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/code-quality-gates.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CodeQualityGates/node/Start_Change",
           "summary": "The gates a change must pass before it can merge: the jobs of the code-quality workflow, each marked hard, warn-only or not a gate, joined by one question — did every hard one pass."
         },
@@ -14910,6 +14951,7 @@
           "name": "Criterion adjudication",
           "nodeCount": 7,
           "sourcePath": "processes/sdlc/criterion-adjudication.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/criterion-adjudication.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CriterionAdjudication/node/Start_CriterionDisagreement",
           "summary": "Two reviewer entries for ONE QA criterion disagree: ask the adjudication, then do the one of three things that a criterion disagreement admits."
         },
@@ -15119,6 +15161,7 @@
           "name": "Publishing the docs site, and keeping the previews alive",
           "nodeCount": 17,
           "sourcePath": "processes/sdlc/docs-site-publish.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/docs-site-publish.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_DocsSite/node/Start_Push",
           "summary": "Publish the docs site to `gh-pages`, verify the export before the deploy, and keep the open pull requests' previews alive across a deploy that replaces the whole branch."
         },
@@ -15596,6 +15639,7 @@
           "name": "Staging a feature branch preview, and taking it down",
           "nodeCount": 22,
           "sourcePath": "processes/sdlc/feature-staging.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/feature-staging.bpmn",
           "startNode": [
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_FeatureStaging/node/Start_PR",
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_FeatureStaging/node/Start_Closed",
@@ -16131,6 +16175,7 @@
           "name": "Are the .jsonld siblings still in sync with their .ts manifests?",
           "nodeCount": 5,
           "sourcePath": "processes/sdlc/jsonld-drift-check.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/jsonld-drift-check.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_JsonLdDrift/node/Start_Change",
           "summary": "Check that the committed `.jsonld` siblings are still in sync with the `.ts` manifests they are generated from."
         },
@@ -16266,6 +16311,7 @@
           "name": "Merge the base branch in",
           "nodeCount": 18,
           "sourcePath": "processes/sdlc/merge-base.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/merge-base.bpmn",
           "startNode": [
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeBase/node/Start_Merge",
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeBase/node/Start_Report"
@@ -16745,6 +16791,7 @@
           "name": "A refused merge-train member",
           "nodeCount": 18,
           "sourcePath": "processes/sdlc/merge-refusal.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/merge-refusal.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeRefusal/node/Start_Refused",
           "summary": "What a merge steward does with a PR it dropped from a merge train: its merge (`merge-base.bpmn`, run with `--no-regen`) refused an authored or undeclared conflict, or the train's combined result failed a gate."
         },
@@ -17258,6 +17305,7 @@
           "name": "A merge train",
           "nodeCount": 29,
           "sourcePath": "processes/sdlc/merge-train.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/merge-train.bpmn",
           "startNode": [
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Start_Train",
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Start_Override"
@@ -18094,6 +18142,7 @@
           "name": "Prose and the code it describes",
           "nodeCount": 10,
           "sourcePath": "processes/sdlc/narrative-code-review.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/narrative-code-review.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_NarrativeCodeReview/node/Start_PairChanged",
           "summary": "Judging whether the prose side of a declared prose/code pair still says what the code does, once the machine has done what it can."
         },
@@ -18376,6 +18425,7 @@
           "name": "Options analysis",
           "nodeCount": 9,
           "sourcePath": "processes/sdlc/options-analysis.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/options-analysis.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_OptionsAnalysis/node/Start_Process_OptionsAnalysis",
           "summary": "A decision reached by a NAMED methodology, with its rejected options recorded."
         },
@@ -18609,6 +18659,7 @@
           "name": "Which open pull requests have no CI run on their head?",
           "nodeCount": 11,
           "sourcePath": "processes/sdlc/pr-checks-present.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/pr-checks-present.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_PrChecksPresent/node/Start_Sweep",
           "summary": "Find the open pull requests whose head has no CI run, past an age gate, and say so on one tracking issue and once per head on the pull request."
         },
@@ -18891,6 +18942,7 @@
           "name": "Alert the publication manager",
           "nodeCount": 7,
           "sourcePath": "processes/sdlc/publish-alert.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/publish-alert.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_PublishAlert/node/Start_Failed",
           "summary": "One alert for every failure after the publish button — an incomplete export, a failed verification, a failed deploy, a lost preview — kept as a single tracking issue for the publication manager and closed by the next clean publish."
         },
@@ -19093,6 +19145,7 @@
           "name": "Verify the export before it is deployed",
           "nodeCount": 7,
           "sourcePath": "processes/sdlc/publish-verification.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/publish-verification.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_PublishVerification/node/Start_Exported",
           "summary": "Run the verifier set over the built tree between the export and the deploy, blocking it: pass, fail or could-not-tell, and the caller deploys only on a pass."
         },
@@ -19279,6 +19332,7 @@
           "name": "Publish and keep QA results on qa-reports",
           "nodeCount": 17,
           "sourcePath": "processes/sdlc/qa-publish.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/qa-publish.bpmn",
           "startNode": [
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_QaPublish/node/Start_GatesDone",
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_QaPublish/node/Start_Daily"
@@ -19711,6 +19765,7 @@
           "name": "QA report signing",
           "nodeCount": 10,
           "sourcePath": "processes/sdlc/qa-report-signing.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/qa-report-signing.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_QaReportSigning/node/Start_ReportReady",
           "summary": "Attesting a QA report: build the test run, work out what the performer can actually reach, and sign — over the API where that is available, or as release authority where it is not."
         },
@@ -20001,6 +20056,7 @@
           "name": "Related work: find, sort, summarize, ask to coordinate",
           "nodeCount": 7,
           "sourcePath": "processes/sdlc/related-work.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/related-work.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_RelatedWork/node/Start_RW",
           "summary": "Before new work takes shape, find the work it touches."
         },
@@ -20190,6 +20246,7 @@
           "name": "Is the repository itself healthy?",
           "nodeCount": 10,
           "sourcePath": "processes/sdlc/repository-health-watch.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/repository-health-watch.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_RepoHealth/node/Start_Sweep",
           "summary": "Is the repository itself healthy — what the review previews cost the publish branch, what a clone costs, whether the work plan holds duplicates or unhonoured claims — reported in one tracking issue and never acted on."
         },
@@ -20448,6 +20505,7 @@
           "name": "Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route",
           "nodeCount": 8,
           "sourcePath": "processes/sdlc/stalled-agent-triage.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/stalled-agent-triage.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_StalledAgentTriage/node/Start_SAT",
           "summary": "When agents stall (context exhausted, container lost, session timed out) their work is spread over PRs, branches, beans and process runs."
         },
@@ -20669,6 +20727,7 @@
           "name": "Test-plan execution",
           "nodeCount": 16,
           "sourcePath": "processes/sdlc/test-plan-execution.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/test-plan-execution.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_TestPlanExecution/node/Start_Request",
           "summary": "Executing a `test-plan/v1` against a system under test and taking the result to a certification decision: requested by (or for) the system, run by a tester, re-executed in sample by an untainted checker, decided by a certifier through the plan's exit-criteria…"
         },
@@ -21121,6 +21180,7 @@
           "name": "Adopting an upstream version bump",
           "nodeCount": 14,
           "sourcePath": "processes/sdlc/upstream-version-adoption.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/upstream-version-adoption.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_UpstreamAdoption/node/Start_Adopt",
           "summary": "A REUSABLE SUBPROCESS, entered once per pinned upstream dependency that has fallen behind a release."
         },
@@ -21529,6 +21589,7 @@
           "name": "Watching a pinned upstream dependency",
           "nodeCount": 12,
           "sourcePath": "processes/sdlc/upstream-pin-watch.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/upstream-pin-watch.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_UpstreamPinWatch/node/Start_Sweep",
           "summary": "Has a pinned upstream dependency fallen behind a release: check each pin, keep one tracking issue, and enter the adoption subprocess for each dependency that is behind."
         },
@@ -21896,6 +21957,7 @@
           "name": "Ingestion subprocess — ingest a theme",
           "nodeCount": 10,
           "sourcePath": "processes/ui/ingest-theme.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/ui/ingest-theme.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_IngestTheme/node/StartEvent_Source",
           "summary": "Decide whether an ingested artefact is a theme source and, when it is, extract its palette roles and layouts and send them to theme and UI review."
         },
@@ -22168,6 +22230,7 @@
           "name": "Render log — the publish branch keeps its own history",
           "nodeCount": 10,
           "sourcePath": "processes/ui/staging-render-log.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/ui/staging-render-log.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_RenderLog/node/Start_Process_RenderLog",
           "summary": "Every change to the publish branch appends an entry to `_render-log/<day>.jsonl`."
         },
@@ -22461,6 +22524,7 @@
           "name": "Theme and UI review — at ingestion",
           "nodeCount": 9,
           "sourcePath": "processes/ui/theme-ui-review.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/ui/theme-ui-review.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_ThemeUIReview/node/Start_TUR",
           "summary": "Reviewing GRAPHICAL ASSETS AS THEY ARE INGESTED — accessibility, branding, languages — in the context of the website or app design they are for, to determine what the graphical assets and the UI are going to be."
         },
@@ -22713,6 +22777,7 @@
           "name": "Wireframe design review",
           "nodeCount": 11,
           "sourcePath": "processes/ui/wireframe-design-review.bpmn",
+          "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/ui/wireframe-design-review.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_WireframeDesignReview/node/Start_WDR",
           "summary": "WireGen (methodologies/wiregen) made executable: a written design intent, at least two mid-fidelity candidates each with a web AND a mobile layout, mechanical checks, a blind per-criterion review, adjudication where reviewers disagree, and a recorded choice."
         },

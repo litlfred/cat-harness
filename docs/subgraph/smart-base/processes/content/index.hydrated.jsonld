@@ -14,6 +14,7 @@
       "name": "L2 DAK authoring",
       "nodeCount": 17,
       "sourcePath": "processes/content/l2-dak-authoring.bpmn",
+      "sourceUrl": "https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/l2-dak-authoring.bpmn",
       "startNode": "http://smart.who.int/base/smart-base.jsonld#process/Process_L2Dak/node/StartEvent_Guideline",
       "summary": "How a WHO SMART Guidelines L2 Digital Adaptation Kit is authored by a business analyst, a terminologist and a clinical SME under a programme manager."
     },
