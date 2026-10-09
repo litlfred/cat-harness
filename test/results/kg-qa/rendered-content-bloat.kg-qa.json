@@ -1,0 +1,86 @@
+{
+  "$schema": "kg-qa/v1",
+  "subject": {
+    "kind": "graph",
+    "id": "rendered-content-bloat",
+    "path": null
+  },
+  "source_hash": null,
+  "criteria": {
+    "redundant-rendered-content-audit": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "table#da-index in cat-harness/auto-docs/uml/index.html, cat-harness/auto-docs/uml/uml/index.html",
+          "detail": "Large redundant content (65107 bytes, 2 page(s)) classified as `move`: Heavy tabular data (65107 bytes) should be loaded dynamically from the KG client-side to reduce HTML bloat while preserving a lightweight skeleton."
+        },
+        {
+          "where": "section#smart-base-dth.kind in cat-harness/document-kinds/index.html, cat-harness/document-kinds/smart-base/index.html",
+          "detail": "Large redundant content (30339 bytes, 2 page(s)) classified as `move`: Large redundant markup block (30339 bytes repeated across 2 pages) produces significant HTML bloat; can be dynamically loaded."
+        },
+        {
+          "where": "div.clip in cat-harness/document-kinds/index.html, cat-harness/document-kinds/smart-base/index.html",
+          "detail": "Large redundant content (28736 bytes, 2 page(s)) classified as `move`: Large redundant markup block (28736 bytes repeated across 2 pages) produces significant HTML bloat; can be dynamically loaded."
+        },
+        {
+          "where": "table.sec in cat-harness/document-kinds/index.html, cat-harness/document-kinds/smart-base/index.html",
+          "detail": "Large redundant content (28712 bytes, 2 page(s)) classified as `move`: Heavy tabular data (28712 bytes) should be loaded dynamically from the KG client-side to reduce HTML bloat while preserving a lightweight skeleton."
+        },
+        {
+          "where": "table#da-index in cat-harness/auto-docs/index/roles/index.html, cat-harness/auto-docs/index/roles/scenarios/index.html",
+          "detail": "Large redundant content (20468 bytes, 2 page(s)) classified as `move`: Heavy tabular data (20468 bytes) should be loaded dynamically from the KG client-side to reduce HTML bloat while preserving a lightweight skeleton."
+        },
+        {
+          "where": "section#smart-base-l1-guideline.kind in cat-harness/document-kinds/index.html, cat-harness/document-kinds/smart-base/index.html",
+          "detail": "Large redundant content (19402 bytes, 2 page(s)) classified as `move`: Large redundant markup block (19402 bytes repeated across 2 pages) produces significant HTML bloat; can be dynamically loaded."
+        },
+        {
+          "where": "div.clip in cat-harness/document-kinds/index.html, cat-harness/document-kinds/smart-base/index.html",
+          "detail": "Large redundant content (18330 bytes, 2 page(s)) classified as `move`: Large redundant markup block (18330 bytes repeated across 2 pages) produces significant HTML bloat; can be dynamically loaded."
+        },
+        {
+          "where": "table.sec in cat-harness/document-kinds/index.html, cat-harness/document-kinds/smart-base/index.html",
+          "detail": "Large redundant content (18306 bytes, 2 page(s)) classified as `move`: Heavy tabular data (18306 bytes) should be loaded dynamically from the KG client-side to reduce HTML bloat while preserving a lightweight skeleton."
+        },
+        {
+          "where": "section#smart-base-dak.kind in cat-harness/document-kinds/index.html, cat-harness/document-kinds/smart-base/index.html",
+          "detail": "Large redundant content (10433 bytes, 2 page(s)) classified as `move`: Large redundant markup block (10433 bytes repeated across 2 pages) produces significant HTML bloat; can be dynamically loaded."
+        },
+        {
+          "where": "section#smart-base-l1.kind in cat-harness/document-kinds/index.html, cat-harness/document-kinds/smart-base/index.html",
+          "detail": "Large redundant content (6934 bytes, 2 page(s)) classified as `move`: Large redundant markup block (6934 bytes repeated across 2 pages) produces significant HTML bloat; can be dynamically loaded."
+        },
+        {
+          "where": "div.clip in cat-harness/document-kinds/index.html, cat-harness/document-kinds/smart-base/index.html",
+          "detail": "Large redundant content (5688 bytes, 2 page(s)) classified as `move`: Large redundant markup block (5688 bytes repeated across 2 pages) produces significant HTML bloat; can be dynamically loaded."
+        },
+        {
+          "where": "table.cov in cat-harness/document-kinds/index.html, cat-harness/document-kinds/smart-base/index.html",
+          "detail": "Large redundant content (5664 bytes, 2 page(s)) classified as `move`: Heavy tabular data (5664 bytes) should be loaded dynamically from the KG client-side to reduce HTML bloat while preserving a lightweight skeleton."
+        },
+        {
+          "where": "div.clip in cat-harness/document-kinds/index.html, cat-harness/document-kinds/smart-base/index.html",
+          "detail": "Large redundant content (5436 bytes, 2 page(s)) classified as `move`: Large redundant markup block (5436 bytes repeated across 2 pages) produces significant HTML bloat; can be dynamically loaded."
+        },
+        {
+          "where": "table.sec in cat-harness/document-kinds/index.html, cat-harness/document-kinds/smart-base/index.html",
+          "detail": "Large redundant content (5412 bytes, 2 page(s)) classified as `move`: Heavy tabular data (5412 bytes) should be loaded dynamically from the KG client-side to reduce HTML bloat while preserving a lightweight skeleton."
+        },
+        {
+          "where": "div.clip in cat-harness/document-kinds/index.html, cat-harness/document-kinds/smart-base/index.html, wireframes/document-kinds/as-is.html",
+          "detail": "Large redundant content (3322 bytes, 3 page(s)) classified as `move`: Large redundant markup block (3322 bytes repeated across 3 pages) produces significant HTML bloat; can be dynamically loaded."
+        },
+        {
+          "where": "table.sec in cat-harness/document-kinds/index.html, cat-harness/document-kinds/smart-base/index.html, wireframes/document-kinds/as-is.html",
+          "detail": "Large redundant content (3298 bytes, 3 page(s)) classified as `move`: Heavy tabular data (3298 bytes) should be loaded dynamically from the KG client-side to reduce HTML bloat while preserving a lightweight skeleton."
+        }
+      ]
+    }
+  },
+  "totals": {
+    "pass": 0,
+    "fail": 1,
+    "n/a": 0,
+    "unknown": 0
+  }
+}

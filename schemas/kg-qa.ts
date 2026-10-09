@@ -1595,6 +1595,16 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
       "declared tools instance `supports`) holds code. A content repository holds no code (kg-separation, " +
       "bootstrap FR-7); each file is named, and belongs in the platform or a `<name>-tools` repository.",
   },
+  {
+    id: "redundant-rendered-content-audit",
+    applies: ["graph"],
+    scope: "repo",
+    scopeBasis:
+      "Rendered HTML output across the built site or documentation tree is evaluated at the repository level against committed repository-level knowledge graph nodes, so an instance run cannot evaluate whole-site bloat in isolation. MEASURED across assembled sites.",
+    severity: "minor",
+    summary:
+      "Rendered HTML pages carry large redundant markup blocks repeated across pages or duplicated from committed KG JSON/JSON-LD files that could be dynamically loaded client-side.",
+  },
 ] as const;
 
 export const KG_CRITERIA_BY_ID: Readonly<Record<string, KgCriterionDefinition>> = Object.fromEntries(
