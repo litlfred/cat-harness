@@ -337,7 +337,7 @@ describe("mount:remote over fixture repositories", () => {
     expect(readFileSync(join(root, "doc/README.md"), "utf-8")).toBe("# doc\n");
     expect(existsSync(join(root, "doc/stray.ts"))).toBe(false); // undeclared: never mounted
     expect(existsSync(join(root, "ROOT.md"))).toBe(false); // climbs out: never mounted
-    const lock = MountLockSchema.parse(JSON.parse(readFileSync(join(root, "down.mount-lock.json"), "utf-8")));
+    const lock = MountLockSchema.parse(JSON.parse(readFileSync(r.lockFile, "utf-8")));
     expect(lock.instances[0]!.assets?.map((a) => a.src)).toEqual(["README.md"]);
     expect(checkRemote({ instanceRoot: root }).state).toBe("mounted");
     write(root, { "doc/README.md": "# edited\n" });

@@ -220,10 +220,12 @@ function findInstance(tree: RemoteTree, name: string): { root: string; file: str
 function downstreamOf(opts: RemoteMountOptions): { instanceRoot: string; name: string; mounts: RemoteMount[]; approvers?: string[] } {
   const instanceRoot = resolve(opts.instanceRoot ?? checkoutRootFor(process.cwd()));
   const decl = readDeclaration(instanceRoot);
-  if (!decl) throw new Error(`${instanceRoot} holds no instance declaration`);
+  const idx = readIndexConfig(instanceRoot);
+  if (!decl && idx.state !== "ok") throw new Error(`${instanceRoot} holds no instance declaration or index.config.json`);
   // `index.config.json` when the checkout has one, else the declaration's
   // `remoteMounts` — and BOTH is an error, never a pick (schemas/index-config.ts).
-  return { instanceRoot, name: decl.name, mounts: readDeclaredMounts(instanceRoot).mounts, approvers: decl.mountApprovers };
+  const name = decl?.name ?? (idx.state === "ok" ? idx.config.site?.landing ?? "coordinator" : "downstream");
+  return { instanceRoot, name, mounts: readDeclaredMounts(instanceRoot).mounts, approvers: decl?.mountApprovers };
 }
 
 /**
@@ -861,7 +863,8 @@ export function declaringInstances(checkout: string): { roots: string[]; unreada
   const roots: string[] = [];
   const unreadable: Array<{ root: string; why: string }> = [];
   const mounted = new Set(lockedMountPaths(checkout));
-  for (const root of instanceRootsIn(checkout)) {
+  const candidates = [...new Set([checkout, ...instanceRootsIn(checkout)])];
+  for (const root of candidates) {
     if (root !== checkout && mounted.has(relative(checkout, root))) continue;
     try {
       if (readDeclaredMounts(root).mounts.length > 0) roots.push(root);

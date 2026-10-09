@@ -2894,8 +2894,8 @@ export function exportIdentity(opts: ExportOptions = {}): {
   // `package.json` is the REPOSITORY's and is the fallback stub for an
   // instance that declares nothing, so it is read from the repo root rather
   // than from `instance` — a nested instance has none, and reading one from
-  // there would throw on exactly the instances this parameter exists for.
-  const pkg = JSON.parse(readFileSync(join(repoRootFor(ROOT), "package.json"), "utf-8")) as { name?: string };
+  const pkgPath = join(repoRootFor(ROOT), "package.json");
+  const pkg = existsSync(pkgPath) ? (JSON.parse(readFileSync(pkgPath, "utf-8")) as { name?: string }) : {};
   const stub = decl ? artefactStub(decl) : (pkg.name ?? "instance");
   // The publication base belongs to the SITE DOING THE PUBLISHING, not to the
   // instance whose graph is being exported — so a foreign instance that
