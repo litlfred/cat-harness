@@ -1364,6 +1364,615 @@
         "saw": "Figure 4 diagram on page 13 showing the research agenda for LLM-based multi-agent systems in software engineering across Phase 1 and Phase 2",
         "draft": "Figure 4 outlines the research agenda for LLM-based multi-agent systems in software engineering, divided into Phase 1 (Enhancing Individual Agent Capabilities: refining role-playing capabilities, designing robust and adaptable prompting frameworks) and Phase 2 (Optimizing Agent Synergy: human-agent collaboration, benchmarking, scaling up for complex projects, leveraging industry principles, dynamic adaptation of agents and resources, secure and responsible data management)."
       }
+    },
+    "arxiv-2507.23348v1": {
+      "vfig-p003": {
+        "role": "figure",
+        "shows": [
+          "1"
+        ],
+        "saw": "Figure 1 on page 3: Motivating example comparing Individual Exploration vs Competitive Debate on Django-11999.",
+        "draft": "Figure 1: Motivating example comparing Individual Exploration vs Competitive Debate on Django issue 11999. Under Individual Exploration, the agent focuses on django/db/models/base.py:_get_FIELD_display (lines 939-944) attempting runtime fallback display logic (marked \"Wrong place!\"). Under Competitive Debate, the debate identifies and modifies db/models/fields/__init__.py:Field.contribute_to_class (lines 765-767) to check for an existing method before attaching default implementation, exactly matching the Golden Patch (marked \"Correct place!\")."
+      },
+      "vfig-p004": {
+        "role": "figure",
+        "shows": [
+          "2"
+        ],
+        "saw": "Figure 2 on page 4: Overview of the three-stage SWE-Debate framework.",
+        "draft": "Figure 2: Overview of the SWE-Debate framework showing three interconnected stages: (1) Fault Propagation Traces Proposal, which extracts initial entities from the issue description (e.g., get_foo_bar_display, FooBar, get_FIELD_display) and traverses the static dependency graph along Contain, Inherit, Import, and Invoke edges to generate localization chains 1..N; (2) Multi-Agent Debate, consisting of Round 1 Localization Chain Selection via competitive ranking/voting to choose the Best Chain, Round 2 Modification Plan Proposal & Competitive Refinement where N=5 agents debate alternative strategies, and Round 3 Synthesizing a concrete <plan> via a discriminator; and (3) Patch Generation via Monte Carlo Tree Search (MCTS), where Search, Plan, and Edit actions navigate repository states to produce the final patch."
+      },
+      "vfig-p009": {
+        "role": "figure",
+        "shows": [
+          "4"
+        ],
+        "saw": "Figure 4 on page 9: Case study of SWE-Debate resolving sympy-13974 (powers of TensorProduct).",
+        "draft": "Figure 4: Case study of SWE-Debate resolving SymPy issue 13974 regarding powers of TensorProduct expressions. Five localization chains are evaluated; Chain 2 correctly identifies physics/quantum/tensorproduct.py. The debate synthesizes a 4-stage modification plan: (1) update tensor_product_simp, (2) update tensor_product_simp_Mul, (3) extend _eval_expand_tensorproduct, and (4) add _eval_power to TensorProduct. The patch diff in sympy/physics/quantum/tensorproduct.py shows adding _eval_power (distributing exponent over args) and handling Pow in tensor_product_simp."
+      },
+      "img-p003-1": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-1 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-2": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-2 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-3": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-3 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-4": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-4 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-5": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-5 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-6": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-6 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-7": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-7 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-8": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-8 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-10": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-10 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-11": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-11 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-12": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-12 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-13": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-13 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-14": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-14 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-15": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-15 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-25": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-25 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-35": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-35 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-36": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-36 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-37": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-37 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-38": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-38 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-39": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-39 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-40": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-40 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-41": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-41 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-42": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-42 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-45": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-45 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-46": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-46 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-47": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-47 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-48": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-48 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-51": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-51 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-54": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-54 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-56": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-56 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-57": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-57 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-59": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-59 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-61": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-61 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-71": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-71 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-81": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-81 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-91": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-91 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p003-101": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
+        "draft": "Decorative diagram element img-p003-101 in Figure 1 illustrating code structure and debate workflow."
+      },
+      "img-p004-1": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-1 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-2": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-2 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-5": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-5 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-8": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-8 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-9": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-9 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-10": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-10 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-13": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-13 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-14": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-14 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-17": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-17 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-25": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-25 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-33": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-33 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-34": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-34 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-35": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-35 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-36": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-36 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-37": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-37 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-38": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-38 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-39": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-39 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-40": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-40 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-42": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-42 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-50": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-50 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-58": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-58 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-61": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-61 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-69": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-69 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-71": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-71 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-74": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-74 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-77": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-77 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-85": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-85 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-93": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-93 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-94": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-94 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-95": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-95 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-96": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-96 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-97": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-97 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-98": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-98 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-99": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-99 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-100": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-100 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-101": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-101 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-102": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-102 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-103": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-103 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-104": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-104 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-105": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-105 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-106": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-106 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-107": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-107 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-108": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-108 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-109": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-109 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-110": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-110 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-113": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-113 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-114": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-114 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-115": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-115 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-116": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-116 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-117": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-117 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-118": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-118 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-119": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-119 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-120": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-120 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-121": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-121 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-122": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-122 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-125": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-125 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-127": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-127 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-128": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-128 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-129": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-129 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-130": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-130 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-131": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-131 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-132": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-132 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-134": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-134 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-137": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-137 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p004-139": {
+        "role": "decorative",
+        "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
+        "draft": "Decorative diagram element img-p004-139 in Figure 2 illustrating graph traversal and debate stages."
+      },
+      "img-p006-1": {
+        "role": "decorative",
+        "saw": "Marker / chart element inside Figure 3 on page 6 (impact of chain depth on Acc@1).",
+        "draft": "Decorative chart element img-p006-1 in Figure 3 illustrating localization accuracy."
+      },
+      "img-p006-8": {
+        "role": "decorative",
+        "saw": "Marker / chart element inside Figure 3 on page 6 (impact of chain depth on Acc@1).",
+        "draft": "Decorative chart element img-p006-8 in Figure 3 illustrating localization accuracy."
+      },
+      "img-p009-1": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
+        "draft": "Decorative diagram element img-p009-1 in Figure 4 illustrating tensor product modification flow."
+      },
+      "img-p009-2": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
+        "draft": "Decorative diagram element img-p009-2 in Figure 4 illustrating tensor product modification flow."
+      },
+      "img-p009-4": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
+        "draft": "Decorative diagram element img-p009-4 in Figure 4 illustrating tensor product modification flow."
+      },
+      "img-p009-7": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
+        "draft": "Decorative diagram element img-p009-7 in Figure 4 illustrating tensor product modification flow."
+      },
+      "img-p009-8": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
+        "draft": "Decorative diagram element img-p009-8 in Figure 4 illustrating tensor product modification flow."
+      },
+      "img-p009-9": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
+        "draft": "Decorative diagram element img-p009-9 in Figure 4 illustrating tensor product modification flow."
+      },
+      "img-p009-10": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
+        "draft": "Decorative diagram element img-p009-10 in Figure 4 illustrating tensor product modification flow."
+      },
+      "img-p009-13": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
+        "draft": "Decorative diagram element img-p009-13 in Figure 4 illustrating tensor product modification flow."
+      },
+      "img-p009-14": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
+        "draft": "Decorative diagram element img-p009-14 in Figure 4 illustrating tensor product modification flow."
+      },
+      "img-p009-15": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
+        "draft": "Decorative diagram element img-p009-15 in Figure 4 illustrating tensor product modification flow."
+      },
+      "img-p009-16": {
+        "role": "decorative",
+        "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
+        "draft": "Decorative diagram element img-p009-16 in Figure 4 illustrating tensor product modification flow."
+      },
+      "vfig-p008": {
+        "role": "figure",
+        "shows": [
+          "3"
+        ],
+        "saw": "Figure 3 on page 8: Line chart of file localization accuracy Acc@1(File) across reasoning chain depths 1, 3, 5, and 7.",
+        "draft": "Figure 3: Impact of Chain Depth on file-level localization accuracy Acc@1(File) evaluated on SWE-Bench-Verified-S (75 instances). Acc@1(File) increases from 70.7% at depth 1, to 72.0% at depth 3, peaking at 86.7% at depth 5, before declining to 82.7% at depth 7 due to extraneous noise in excessively long dependency chains."
+      }
     }
   },
   "attribution": {
@@ -1432,6 +2041,14 @@
         "kind": "agent",
         "id": "antigravity",
         "model": "gemini-1.5-pro"
+      },
+      "inspected_at": "2026-10-09"
+    },
+    "arxiv-2507.23348v1": {
+      "inspected_by": {
+        "kind": "agent",
+        "id": "claude",
+        "model": "claude-opus-5"
       },
       "inspected_at": "2026-10-09"
     }
