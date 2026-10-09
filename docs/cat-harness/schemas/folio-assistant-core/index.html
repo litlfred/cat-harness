@@ -1,9 +1,9 @@
 ---
 layout: default
-title: "Schema graph — bootstrap-tools"
+title: "Schema graph — folio-assistant-core"
 nav_exclude: true
 renders:
-  - bootstrap-tools/schemas
+  - folio-assistant-core/schemas
 rendered-by: schemas-viewer
 ---
 <!--
@@ -135,7 +135,7 @@ rendered-by: schemas-viewer
 <div class="sc-page">
 <div class="sc-head">
   <h1 id="sc-title">Schema graph</h1>
-  <nav class="sc-page-subjects" aria-label="Instances"><ul><li><a href="../">All instances</a></li><li><a href="../bootstrap/">bootstrap</a></li><li><span aria-current="page">bootstrap-tools</span></li><li><a href="../cat-harness/">cat-harness</a></li><li><a href="../fhir-harness/">fhir-harness</a></li><li><a href="../folio-assistant-core/">folio-assistant-core</a></li></ul></nav>
+  <nav class="sc-page-subjects" aria-label="Instances"><ul><li><a href="../">All instances</a></li><li><a href="../bootstrap/">bootstrap</a></li><li><a href="../bootstrap-tools/">bootstrap-tools</a></li><li><a href="../cat-harness/">cat-harness</a></li><li><a href="../fhir-harness/">fhir-harness</a></li><li><span aria-current="page">folio-assistant-core</span></li></ul></nav>
   <p class="counts" id="counts">loading…</p>
   <p class="counts" style="margin-top:4px">Diagrams show <strong>containment</strong> and
     <strong>generalisation</strong>. A reference carried as a string id is not drawn &mdash; it is
@@ -177,7 +177,7 @@ var DATA_HREF = "../../../assets/schemas/index.json";
 /* The SUBJECT this page is scoped to, or "" for the handler's whole view.
    One projection serves every page — a second JSON per subject would be the
    same facts written N+1 times, free to disagree once one is regenerated. */
-var SCOPE = "bootstrap-tools";
+var SCOPE = "folio-assistant-core";
 /* The site root, relative to this page: where a node kind's own page is. */
 var SITE_HREF = "../../../";
 function inScope(d){ return !SCOPE || d.instance === SCOPE; }
