@@ -72,11 +72,10 @@
 
 import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
-import { basename, join, resolve } from "node:path";
-
+import { join, resolve } from "node:path";
 
 import { checkoutRootFor } from "../schemas/cat-harness.js";
-import { resolveHarnessConfigPath } from "../schemas/harness-config.js";
+import { readEffectiveConfig } from "../schemas/harness-config.js";
 
 export type Probe = "ok" | "not-found" | "error" | "unchecked";
 export type PagesOutcome = "live" | "not-yet" | "unknown" | "unprovisioned";
@@ -176,17 +175,16 @@ function gitRemote(root: string): string | undefined {
  * author with a custom domain has said something the remote cannot tell us.
  */
 export function derivePagesUrl(root: string): Pick<PagesReport, "url" | "urlSource" | "owner" | "repo"> {
-  const found = resolveHarnessConfigPath(root);
-  if (found) {
-    const cfgPath = found.path;
+  const found = readEffectiveConfig(root);
+  if (found.state === "ok") {
     try {
-      const cfg = JSON.parse(readFileSync(cfgPath, "utf-8")) as {
+      const cfg = found.config as {
         readme?: { pagesBaseUrl?: string };
         pagesBaseUrl?: string;
       };
       const base = cfg.readme?.pagesBaseUrl ?? cfg.pagesBaseUrl;
       if (typeof base === "string" && base.startsWith("http")) {
-        return { url: base.replace(/\/+$/, "") + "/", urlSource: basename(cfgPath) };
+        return { url: base.replace(/\/+$/, "") + "/", urlSource: found.from };
       }
     } catch {
       // Unparseable config is not a reason to guess. Fall through to the remote,

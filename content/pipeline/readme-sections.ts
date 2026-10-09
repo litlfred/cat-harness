@@ -64,25 +64,11 @@ export function isForeignRoot(dir: string): boolean {
   return isSubmoduleRoot(dir) || mountScopeFor(dir) !== undefined;
 }
 
-import {
-  discoverPapers,
-  injectSection,
-  loadReadmeConfig,
-  renderToc,
-  type ReadmeTocConfig,
-} from "./readme-toc";
+import { discoverPapers, injectSection, loadReadmeConfig, renderToc, type ReadmeTocConfig } from "./readme-toc";
 import { findContentRepoRoot } from "./repo-root";
 import { optionalPipelinePlugin } from "./pipeline-plugins";
-import { expectedInstanceConfigPath } from "../../schemas/harness-config";
-import {
-  AGENT_INSTRUCTIONS_ROLE,
-  assetRolePurpose,
-  INSTANCE_README_ROLE,
-  declaredAssetPath,
-  instanceRootsIn,
-  readDeclaration,
-  workPlanGraphsIn,
-} from "../../schemas/cat-harness";
+import { readEffectiveConfig } from "../../schemas/harness-config";
+import { AGENT_INSTRUCTIONS_ROLE, assetRolePurpose, INSTANCE_README_ROLE, declaredAssetPath, instanceRootsIn, readDeclaration, workPlanGraphsIn } from "../../schemas/cat-harness";
 import { generatedBanner } from "../../../bootstrap-tools/scripts/generated-by.ts";
 import { filesSection, processesSection, rolesSection } from "../../../bootstrap-tools/scripts/readme-graph-sections.ts";
 
@@ -349,11 +335,11 @@ const simulatorsSection: ReadmeSection = {
     // default naming the platform is how they came to live in the platform in
     // the first place.
     let dir = "simulators";
-    const configPath = expectedInstanceConfigPath(root);
-    // `undefined` = nothing declares an instance here; nothing to read.
-    if (configPath !== undefined && existsSync(configPath)) {
+    const eff = readEffectiveConfig(root);
+    // The index entry when one lists the instance, else `<name>.config.json`.
+    if (eff.state === "ok") {
       try {
-        const parsed = JSON.parse(readFileSync(configPath, "utf-8")) as {
+        const parsed = eff.config as {
           simulators?: { dir?: string };
         };
         if (parsed.simulators?.dir) dir = parsed.simulators.dir;
@@ -369,7 +355,7 @@ const simulatorsSection: ReadmeSection = {
       // partial checkout, or a folio that has not declared its directory.
       return undetermined(
         `simulators directory '${dir}' is not present in this checkout ` +
-          `(is it declared in ${configPath === undefined ? "this instance's config" : basename(configPath)}, ` +
+          `(is it declared in ${eff.from ?? "this instance's config"}, ` +
           "and is the checkout complete?)",
       );
     }

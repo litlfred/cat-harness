@@ -380,7 +380,7 @@ export const HarnessConfigSchema = z.object({
 // ── Dependency resolution ───────────────────────────────────────
 
 import { existsSync, readFileSync, readdirSync } from "node:fs";
-import { dirname, join, resolve, sep } from "node:path";
+import { basename, dirname, join, resolve, sep } from "node:path";
 import { flattenDependencies as flattenSteps } from "./dependency-order";
 import { mountScopeFor, mountedInstanceRoots } from "./remote-mount";
 import { BlockKindNodeSchema, builderOf } from "./block-kind-node";
@@ -392,7 +392,7 @@ import {
   type ContentTypeMembership,
   type ContentTypeRegistry,
 } from "./content-type";
-import { LEGACY_HARNESS_CONFIG, rootConfigStems } from "./instance-roots";
+import { INDEX_CONFIG_FILENAME, LEGACY_HARNESS_CONFIG, rootConfigStems } from "./instance-roots";
 import {
   HUB_LANDING,
   importedConfigFilename,
@@ -621,6 +621,59 @@ export function expectedInstanceConfigPath(dir: string): string | undefined {
 }
 
 /**
+ * What a reader of an instance's config gets: the config as written, where it
+ * came from, or one of the two ways of not having one.
+ *
+ * `via: "index"` is an instance an `index.config.json` lists — its config is
+ * the entry's import overlaid by the entry's own fields
+ * ({@link effectiveInstanceConfig}), exactly as {@link readHarnessConfig}
+ * reads it. `via: "file"` is `<name>.config.json`.
+ */
+export type EffectiveConfigRead =
+  | { state: "ok"; via: "index" | "file"; from: string; config: Record<string, unknown> }
+  /** `from` absent: nothing declares an instance here, so there is no file to be absent. */
+  | { state: "absent"; via?: "index" | "file"; from?: string }
+  | { state: "unreadable"; via: "index" | "file"; from: string; why: string };
+
+/**
+ * The ONE raw read of an instance's config, index first.
+ *
+ * Nine readers opened `<name>.config.json` themselves (profile, voices,
+ * README sections and TOC, publish targets, Pages URL, QA axes, translations,
+ * Drive folder). In the index checkout no instance has that file — the index
+ * entry IS its config — so every one of them reported "no config" for an
+ * instance whose entry said `contentType: "document"` (measured 2026-10-09,
+ * `repo-config-agreement`, `voice-gate-checkout`). Raw rather than parsed:
+ * the readers read keys `HarnessConfigSchema` does not name.
+ */
+export function readEffectiveConfig(dir: string): EffectiveConfigRead {
+  let indexed: ReturnType<typeof indexedInstanceFor>;
+  try {
+    indexed = indexedInstanceFor(dir);
+  } catch (e) {
+    return { state: "unreadable", via: "index", from: INDEX_CONFIG_FILENAME, why: (e as Error).message };
+  }
+  if (indexed !== undefined) {
+    const from = `${INDEX_CONFIG_FILENAME} entry "${indexed.name}"`;
+    try {
+      const config = effectiveInstanceConfig(indexed.root, indexed.name);
+      return config === null ? { state: "absent", via: "index", from } : { state: "ok", via: "index", from, config: config as Record<string, unknown> };
+    } catch (e) {
+      return { state: "unreadable", via: "index", from, why: (e as Error).message };
+    }
+  }
+  const p = expectedInstanceConfigPath(dir);
+  if (p === undefined) return { state: "absent" };
+  const from = basename(p);
+  if (!existsSync(p)) return { state: "absent", via: "file", from };
+  try {
+    return { state: "ok", via: "file", from, config: JSON.parse(readFileSync(p, "utf-8")) as Record<string, unknown> };
+  } catch (e) {
+    return { state: "unreadable", via: "file", from, why: (e as Error).message };
+  }
+}
+
+/**
  * Read and parse the harness config from a directory.
  */
 export function readHarnessConfig(dir: string): HarnessConfig | null {
@@ -669,7 +722,13 @@ export function indexedInstanceFor(dir: string): { root: string; name: string; e
   const inst = instanceConfigFor(dir);
   if (inst === undefined) return undefined;
   const own = instanceConfigFilename(inst.name);
-  let d = resolve(inst.root);
+  // A MOUNTED instance is configured by the index that mounted it, so the
+  // walk starts at the mount's scope. Starting at the instance root found the
+  // instance's OWN `index.config.json` first — the file it uses standing
+  // alone, carried into the mount with the rest of its tree — and read
+  // cat-harness's config from that instead of from the checkout composing it
+  // (measured 2026-10-09: `contentType` lost, `repo-config-agreement`).
+  let d = resolve(mountScopeFor(inst.root) ?? inst.root);
   for (let i = 0; i < 12; i++) {
     const idx = readIndexConfig(d);
     if (idx.state === "unreadable") throw new Error(`${idx.file} is ${idx.why}`);

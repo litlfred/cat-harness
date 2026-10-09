@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "fs";
+
 import { findContentRepoRoot } from "./repo-root";
 import { voiceCriteriaFor } from "./voice-criteria.ts";
 /**
@@ -56,7 +56,7 @@ import { voiceCriteriaFor } from "./voice-criteria.ts";
  */
 
 import type { QaCriterionDefinition } from "../../schemas/block-qa";
-import { expectedInstanceConfigPath } from "../../schemas/harness-config";
+import { readEffectiveConfig } from "../../schemas/harness-config";
 
 // ── Domain: voice ───────────────────────────────────────────────
 
@@ -2228,7 +2228,6 @@ const EXPO: QaCriterionDefinition[] = [
   },
 ];
 
-
 // ── Folio-optional axes ─────────────────────────────────────────
 //
 // Some criterion families encode a specific folio's subject matter
@@ -2257,9 +2256,10 @@ export function folioOptionalAxes(): string[] {
     // filename, so no axes. Same answer as an absent config and for the same
     // reason: a folio that has not asked for an axis is not audited against
     // it, and neither is a directory that is not a folio.
-    const cfgPath = expectedInstanceConfigPath(findContentRepoRoot());
-    if (cfgPath !== undefined && existsSync(cfgPath)) {
-      const cfg = JSON.parse(readFileSync(cfgPath, "utf-8"));
+    // The index entry when one lists the instance, else `<name>.config.json`.
+    const eff = readEffectiveConfig(findContentRepoRoot());
+    if (eff.state === "ok") {
+      const cfg = eff.config as { qaAxes?: unknown };
       if (Array.isArray(cfg.qaAxes)) {
         axes.push(
           ...cfg.qaAxes.filter((a: unknown): a is string => typeof a === "string"),
@@ -2308,7 +2308,6 @@ const RENDER: QaCriterionDefinition[] = [
 ];
 
 // ── Exported registry ───────────────────────────────────────────
-
 
 // ── Domain: dak ─────────────────────────────────────────────────
 

@@ -48,17 +48,11 @@ import { existsSync, readFileSync } from "fs";
 import { join } from "path";
 
 import { findPapers } from "./repo-root";
-import { expectedInstanceConfigPath } from "../../schemas/harness-config";
+import { readEffectiveConfig } from "../../schemas/harness-config";
 // The git facts and the publish targets are generic and live in harness
 // (bean `cp3l`). Re-exported because this module's callers have always got
 // them from here, and moving a file should not break a folio's tooling.
-import {
-  DEFAULT_PUBLISH_REF,
-  detectRepoUrl,
-  ownerRepo,
-  publishTargets,
-  publishedPaths,
-} from "../../src/core/git-refs";
+import { DEFAULT_PUBLISH_REF, detectRepoUrl, ownerRepo, publishTargets, publishedPaths } from "../../src/core/git-refs";
 export { detectRepoUrl, publishedPaths } from "../../src/core/git-refs";
 
 // ── Configuration ───────────────────────────────────────────────────────────
@@ -123,12 +117,12 @@ const DEFAULT_CONFIG: ReadmeTocConfig = {
  * whether or not the repository is public.
  */
 export function loadReadmeConfig(root: string): ReadmeTocConfig {
-  const configPath = expectedInstanceConfigPath(root);
+  const eff = readEffectiveConfig(root);
   let fromFile: Partial<ReadmeTocConfig> = {};
-  // `undefined` = nothing declares an instance here; nothing to read.
-  if (configPath !== undefined && existsSync(configPath)) {
+  // The index entry when one lists the instance, else `<name>.config.json`.
+  if (eff.state === "ok") {
     try {
-      const parsed = JSON.parse(readFileSync(configPath, "utf-8")) as {
+      const parsed = eff.config as {
         readme?: Partial<ReadmeTocConfig>;
       };
       fromFile = parsed.readme ?? {};
