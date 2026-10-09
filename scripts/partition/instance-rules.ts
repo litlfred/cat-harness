@@ -385,6 +385,7 @@ export const RULES: Rule[] = [
       // per-slice SQLite contract is a kg-export one (bean `q8ar`).
       "scripts/gen-slice-sqlite.ts",         // a named slice → one SQLite file a browser mounts
       "scripts/vendor-sqlite-wasm.ts",       // ...and the SQLite WASM build that mounts it, vendored
+      "scripts/vendor-graphviz-wasm.ts",     // Graphviz in WASM for the KG subgraph viewer, vendored
       "scripts/glossary-export.ts",          // the instance's swimlane personas → SKOS
       "scripts/kg-locale-export.ts",         // that graph again, once per locale
       "scripts/publish-instance-files.ts",   // an instance's own files, .md also as .html (bean `iwtn`)

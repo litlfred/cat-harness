@@ -1323,7 +1323,7 @@ Translation status viewer <span class="fa-gloss-status">candidate, extracted</sp
 UML overview per named sub-graph <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Draw one UML class diagram per harness and one per named sub-graph it declares, as PlantUML and Mermaid from one model, with every class read from the graph typology's node schema, and render the PlantUML to the SVG each page shows (needs Java; the check does not). A kind with none is drawn as could-not-determine, never as an empty box.</p>
+<p>Draw one UML class diagram per harness and one per named sub-graph it declares, as PlantUML, Mermaid and Graphviz DOT from one model, with every class read from the graph typology's node schema, and render the PlantUML to the SVG each page shows (needs Java; the check does not). The DOT is the page's Interactive view, laid out in the reader's browser by the site's vendored Graphviz WASM with draggable nodes. A kind with none is drawn as could-not-determine, never as an empty box.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#uml-overview</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--uploads-viewer" data-fa-state="extracted" data-fa-gloss="">

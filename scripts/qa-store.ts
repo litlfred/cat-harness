@@ -258,18 +258,23 @@ export function resolveQaLocation(repoRoot: string = gitTopLevel()): QaLocation 
   const directories: QaDirectory[] = [];
   const seen = new Set<string>();
   for (const inst of instanceRootsIn(repoRoot)) {
-    for (const d of resolveDirectories([{ name: "(local)", root: inst, own: true }])) {
-      if (!d.graphTypologies.includes("qa" as never) || seen.has(d.absPath)) continue;
-      seen.add(d.absPath);
-      const storage = d.storage;
-      directories.push({
-        instance: inst,
-        id: d.id,
-        path: relative(repoRoot, d.absPath).split("\\").join("/").replace(/\/+$/, ""),
-        absPath: d.absPath,
-        present: existsSync(d.absPath) && statSync(d.absPath).isDirectory(),
-        ...(storage ? { storage } : {}),
-      });
+    try {
+      for (const d of resolveDirectories([{ name: "(local)", root: inst, own: true }])) {
+        if (!d.graphTypologies.includes("qa" as never) || seen.has(d.absPath)) continue;
+        seen.add(d.absPath);
+        const storage = d.storage;
+        directories.push({
+          instance: inst,
+          id: d.id,
+          path: relative(repoRoot, d.absPath).split("\\").join("/").replace(/\/+$/, ""),
+          absPath: d.absPath,
+          present: existsSync(d.absPath) && statSync(d.absPath).isDirectory(),
+          ...(storage ? { storage } : {}),
+        });
+      }
+    } catch {
+      // An instance in the checkout might declare typologies from unimported packages (e.g. smart-base needing fhir-harness)
+      continue;
     }
   }
   directories.sort((a, b) => a.path.localeCompare(b.path));

@@ -5,7 +5,7 @@
     "id": "graph-rendering",
     "path": "skills/kg/graph-management/graph-rendering.md"
   },
-  "source_hash": "eab87eba224a",
+  "source_hash": "2645cbe63ee0",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

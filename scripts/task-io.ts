@@ -319,6 +319,7 @@ const OWN_TASK_IO: Readonly<Record<string, ScriptIO>> = {
   "node-kind:pages:check": READ_ONLY, //           its one `rmSync` is in the not-`check` arm
   "qa:attestations:migrate:check": TREE_READER, //   `--check` passes `dryRun` to the kg trees and `check` to criteria
   "slice:sqlite:vendor:check": TREE_READER,
+  "kg-graph:vendor:check": TREE_READER, //         the same byte comparison, for the vendored Graphviz WASM
   // NO `inputs` for these five, read rather than assumed (bean `8qyc`): four
   // build through `kg-export.ts`'s `buildExport`, which stamps the document
   // with `stagingFields(process.env)` (`staging-stamp.ts`), and `kg:export`

@@ -22,6 +22,13 @@ Third-party components redistributed in this repository under their own terms:
     docs/assets/js/vendor/qrcode.js, qrcode_UTF8.js
     Full licence text: docs/assets/js/vendor/qrcode.LICENSE.txt
 
+  * @hpcc-js/wasm-graphviz 1.6.1 by HPCC Systems — Apache License 2.0, with
+    Graphviz 12.1.2 compiled into its WebAssembly under the Eclipse Public
+    License 1.0 (source: https://gitlab.com/graphviz/graphviz). Unmodified,
+    copied from the pinned devDependency by scripts/vendor-graphviz-wasm.ts:
+    docs/assets/js/vendor/wasm-graphviz/index.js
+    Licence and notice: docs/assets/js/vendor/wasm-graphviz/LICENSE.txt
+
   * claude-scientific-skills by K-Dense Inc. — MIT licence.
     Synced, pinned and unmodified (issue #556), one package per skill:
     folio-assistant-sci/skills/content/hypothesis-generation/

@@ -82,26 +82,43 @@ export function landscapeOf(text: string): string {
  * buttons and CSS (`uml.css`, `.fa-uml-views`), no script: the switch works
  * before docs-ui.js loads and without it. Each view is its own
  * `bpmn-figure`, so each gets the BPMN zoom and full-width controls.
+ *
+ * With `interactive`, a third choice, **Interactive**: the same model as
+ * Graphviz DOT, laid out in the reader's browser by `assets/js/kg-graph.js`
+ * (skill `kg-subgraph-layout`), with draggable nodes. Portrait stays the
+ * default, so a page without script still shows its picture; the
+ * interactive view's own text says it needs script and links the DOT.
  */
-export function views(svg: string, alt: string): string[] {
+export function views(svg: string, alt: string, interactive?: { dot: string; label: string }): string[] {
   const id = safeId(svg.replace(/^.*\/uml\//, "").replace(/\.svg$/, ""));
-  const pick = (o: Orientation, label: string, checked: boolean) =>
+  const pick = (o: Orientation | "interactive", label: string, checked: boolean) =>
     `    <input type="radio" name="fa-uml-${id}" id="fa-uml-${id}-${o}" class="fa-uml-pick-${o}"${checked ? " checked" : ""}><label for="fa-uml-${id}-${o}">${label}</label>`;
   const fig = (o: Orientation, src: string) => [
     `  <figure class="bpmn-figure fa-uml-${o}">`,
     `    <img src="{{ '${src}' | relative_url }}" alt="${alt} ${o === "portrait" ? "Portrait" : "Landscape"} layout.">`,
     "  </figure>",
   ];
+  const live = interactive
+    ? [
+        // `fa-figure-scope`: docs-ui.js leaves this alone; the viewer has its own pan and zoom.
+        `  <div class="kg-graph fa-uml-interactive fa-figure-scope" id="kg-${id}" data-dot-src="{{ '${interactive.dot}' | relative_url }}" data-label="${interactive.label.replace(/"/g, "&quot;")}">`,
+        `    <p class="kg-graph-status">The interactive view lays this diagram out in your browser with Graphviz, and needs JavaScript. Without it, pick Portrait or Landscape, or read <a href="{{ '${interactive.dot}' | relative_url }}">the DOT source</a>.</p>`,
+        "  </div>",
+      ]
+    : [];
   return [
     `<div class="fa-uml-views">`,
     `  <fieldset class="fa-uml-view-pick">`,
     "    <legend>Layout</legend>",
     pick("portrait", "Portrait", true),
     pick("landscape", "Landscape", false),
+    ...(interactive ? [pick("interactive", "Interactive", false)] : []),
     "  </fieldset>",
     ...fig("portrait", svg),
     ...fig("landscape", svg.replace(/\.svg$/, ".landscape.svg")),
+    ...live,
     "</div>",
+    ...(interactive ? [`<script type="module" src="{{ '/assets/js/kg-graph.js' | relative_url }}"></script>`] : []),
   ];
 }
 

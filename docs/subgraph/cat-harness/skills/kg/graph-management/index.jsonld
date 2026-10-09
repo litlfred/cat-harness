@@ -46,9 +46,9 @@
       "@type": "bootstrap:Skill",
       "name": "graph-rendering",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/eab87eba224a4ee1316735cdeafc9f9d72617f1351f9ef82ee79cb07d5fda1cf",
-        "bytes": 11400,
-        "sha256": "eab87eba224a4ee1316735cdeafc9f9d72617f1351f9ef82ee79cb07d5fda1cf"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2645cbe63ee09551f605da78bc7b04c43d770f7a613ec287cb0381ea02181a24",
+        "bytes": 12132,
+        "sha256": "2645cbe63ee09551f605da78bc7b04c43d770f7a613ec287cb0381ea02181a24"
       },
       "title": "Graph rendering: one set of rules for every drawn graph"
     },
@@ -62,6 +62,17 @@
         "sha256": "af63ebef5071b740f37b945722f143705f836a043178f4b33f0cef96fcfb85d0"
       },
       "title": "Knowledge Graph separation — the method"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/kg-subgraph-layout",
+      "@type": "bootstrap:Skill",
+      "name": "kg-subgraph-layout",
+      "payload": {
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/55a3a44b0fb445876832d72ffc57db9119a79f1801cbefe9cf8c2016afd5f9c9",
+        "bytes": 8992,
+        "sha256": "55a3a44b0fb445876832d72ffc57db9119a79f1801cbefe9cf8c2016afd5f9c9"
+      },
+      "title": "KG subgraph layout: one diagram per declared sub-graph, laid out in the browser"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/lsi-indexing",

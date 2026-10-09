@@ -60,6 +60,15 @@ empty shape. Close it by registering a node schema, not by editing the diagram.
   otherwise lays unconnected packages in one row. Owner, 2026-09-23: "make the
   UML more condensed, more like the original one … need controls like in bpmn
   diagrams".
+- `docs/assets/img/uml/overview/…dot`: the same model as Graphviz DOT,
+  written by `dot()` from the same sections as the `.puml` and `.mmd`, and
+  published beside the SVG because the reader's browser fetches it. Each page
+  offers it as a third view, **Interactive**, beside Portrait and Landscape:
+  `assets/js/kg-graph.js` lays it out with the site's vendored Graphviz WASM,
+  and the reader can pan, zoom, find and drag nodes. Owner, 2026-10-09:
+  *"could use the wasm-graphviz to make the graph visualizers overview more
+  dynamic. also allow users to drag nodes around"*. The convention and the
+  viewer are [`kg-subgraph-layout`](kg-subgraph-layout.md).
 - `docs/uml/overview/…`: the pages. Each shows the SVG, then a table of its
   sub-graphs, then the same model drawn by Mermaid, and links both source
   files. The table carries each sub-graph's detangle numbers (nodes,
@@ -93,12 +102,15 @@ colour onto each class, read from that stylesheet by `scripts/uml-palette.ts`,
 because PlantUML's SVG has no CSS hooks and ELK drops package colours. To
 recolour a kind, edit `uml.css`, never a diagram.
 
-## Portrait and landscape views
+## Portrait, landscape and interactive views
 
 Every figure is rendered twice, and the page has a **Portrait / Landscape**
 switch above it: radio buttons and CSS in `uml.css`, no script, with portrait
 as the default. Owner, 2026-09-23: "can we have portrait and landscape
-views?".
+views?". A third choice, **Interactive**, shows the DOT laid out in the
+browser ([`kg-subgraph-layout`](kg-subgraph-layout.md));
+without script it says so and links the DOT, and the portrait SVG is still
+the default.
 
 - **The committed `.puml` is the portrait view.** The landscape view is
   derived from it by `landscapeOf` in `scripts/plantuml-render.ts`, shared with
