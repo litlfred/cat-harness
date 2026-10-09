@@ -42,6 +42,7 @@
 
 import { folioDir } from "../../schemas/cat-harness.js";
 import { mountScopeFor } from "../../schemas/remote-mount.js";
+import { spawnSync } from "child_process";
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "fs";
 import { basename, join, relative, resolve } from "path";
 
@@ -159,6 +160,13 @@ export interface ReadmeSection {
 }
 
 /** Escape the cell separator so a title containing `|` cannot break a table. */
+
+/** Does the checkout at `repo` track anything under `rel`? Independent of what is mounted. */
+function trackedByCheckout(repo: string, rel: string): boolean {
+  const r = spawnSync("git", ["ls-files", "--", rel], { cwd: repo, encoding: "utf-8" });
+  return r.status === 0 && r.stdout.trim() !== "";
+}
+
 function cell(text: string): string {
   return text.replace(/\|/g, "\\|");
 }
@@ -682,11 +690,15 @@ const coldStartSection: ReadmeSection = {
       : `**This repository is a STATIC knowledge graph.** No instance declares a graph that records work ` +
         `(beans, todos, a BPMN instance mid-flight), so there is nothing here to pick up — it is here to be read.`;
 
-    // The work plan is LINKED only where it is on disk. In an index checkout
-    // it is kept on its state branch and mounted by the session-start hook,
-    // so a fresh clone has no `beans/` and the link was dead in the one
-    // section an arriving agent reads first.
-    const workPlan = existsSync(join(repo, "beans"))
+    // The work plan is LINKED only where the checkout TRACKS it. In an index
+    // checkout it is kept on its state branch and mounted by the
+    // session-start hook, so a fresh clone has no `beans/` and the link was
+    // dead in the one section an arriving agent reads first. Asked of git,
+    // not of the disk: "is it on disk" changes with whether `state:mount` ran,
+    // so the generated README differed between a session and CI (whose job
+    // mounts state first) and `index:render:check` could not hold in both
+    // (measured 2026-10-09).
+    const workPlan = trackedByCheckout(repo, "beans")
       ? "[`beans/`](beans/)"
       : "`beans/` (kept on its state branch: `bun run cat state:mount` puts it on disk)";
 
