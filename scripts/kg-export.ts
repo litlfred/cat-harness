@@ -2509,6 +2509,7 @@ function collectDeclaration(doc: string, problems: string[], root: string = ROOT
  */
 export function committedFileCount(dir: string): number | undefined {
   if (!existsSync(dir)) return undefined;
+  // input-site: tree #f295b07d — git ls-files count of committed files under dir
   const r = spawnSync("git", ["ls-files", "-z", "--cached", "--", "."], { cwd: dir, encoding: "utf-8", maxBuffer: 64 * 1024 * 1024 });
   if (r.error !== undefined || r.status !== 0) return undefined;
   return r.stdout.split("\0").filter(Boolean).length;
@@ -2794,6 +2795,7 @@ export interface SourceProvenance {
  */
 export function readSourceProvenance(root: string = ROOT): SourceProvenance {
   const git = (args: string[]): string | undefined => {
+    // input-site: tree; head #952da9d7 — HEAD commit, status, and remote origin for source provenance
     const r = spawnSync("git", args, { cwd: root, encoding: "utf-8" });
     if (r.status !== 0 || r.error) return undefined;
     return r.stdout.trim();
@@ -3386,6 +3388,7 @@ export async function buildExport(opts: ExportOptions = {}): Promise<Export> {
     ...(isPreview && canonicalIri !== undefined ? { canonicalDocument: canonicalIri } : {}),
     repository: stub,
     ...(omitted !== undefined ? { omitted } : {}),
+    // input-site: inert #b5aa0ca3 — export timestamp; ignored by check and judge
     generatedAt: new Date().toISOString(),
     ...commitFields,
     ...dependsOnFields,
@@ -3490,6 +3493,7 @@ if (import.meta.main && process.argv.includes("--judge")) {
     return i !== -1 ? argv[i + 1] : undefined;
   };
   try {
+    // input-site: env KG_BASE_URL #fa804f2f — base URL override for export IRI resolution
     const baseUrl = arg("--base-url") ?? process.env.KG_BASE_URL;
     const instanceRoot = arg("--instance");
     const scope = scopeFlag(arg("--scope"));
@@ -3591,6 +3595,7 @@ export function sidecarSubjects(
 
 async function sidecarMode(mode: "check" | "write", baseUrl: string | undefined): Promise<number> {
   const { subjects, orphans } = sidecarSubjects();
+  // input-site: inert #b05195b2 — scratch directory for sidecar export, removed in finally
   const tmp = mkdtempSync(join(tmpdir(), "kg-export-sidecars-"));
   let bad = 0;
   try {
@@ -3602,6 +3607,7 @@ async function sidecarMode(mode: "check" | "write", baseUrl: string | undefined)
       if (s.instance) args.push("--instance", s.instance);
       else args.push("--scope", "instance");
       if (baseUrl) args.push("--base-url", baseUrl);
+      // input-site: runs */scripts/kg-export.ts,scripts/kg-export.ts #393d449f — spawns export of each declared instance graph
       spawnSync("bun", args, { cwd: repoRootFor(ROOT), encoding: "utf-8" });
       const fresh = readQaResult(qaResultPath(out, s.stem));
       const label = `${s.stem}.qa-results.json`;
@@ -3646,6 +3652,7 @@ if (import.meta.main) {
     const i = process.argv.indexOf(flag);
     return i !== -1 ? process.argv[i + 1] : undefined;
   };
+  // input-site: env KG_BASE_URL #fa804f2f — base URL override for export IRI resolution
   const baseUrl = arg("--base-url") ?? process.env.KG_BASE_URL;
   // `--instance <root>` exports ANOTHER declared instance's graph — its
   // identity and its generic collectors, never this one's content under its
@@ -3702,7 +3709,8 @@ if (import.meta.main) {
   // default started writing `cat-harness/_kg/` while every reader still looked
   // one level up — and the stale pre-move copy at the old path made it look
   // fine locally.
-const out = arg("--out") ?? join(repoRootFor(ROOT), "_kg", `${stub}.jsonld`);
+  // input-site: inert #1d8aaee1 — default export destination, an output path this script writes, never reads
+  const out = arg("--out") ?? join(repoRootFor(ROOT), "_kg", `${stub}.jsonld`);
   const data = await buildExport({ baseUrl, instanceRoot, scope });
 
   mkdirSync(dirname(out), { recursive: true });
