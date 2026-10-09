@@ -1459,10 +1459,13 @@ function checkoutGraph(root: string): CheckoutGraph {
     // back to its root alone rather than taking every corpus-wide tool down.
     flat = [];
   }
+  // Set when `flat` below is DISCOVERED rather than declared — see `direct`.
+  let discovered = false;
   if (flat.length === 0 && readDeclaration(root) === undefined) {
     // Aggregate / coordinator checkout with no root declaration:
     // walk orderedDependencies from each instantiated/mounted instance so
     // that dependents and implementers across sibling instances resolve.
+    discovered = true;
     const seen = new Set<string>();
     for (const inst of instanceRootsIn(root)) {
       if (resolve(inst) === resolve(root)) continue;
@@ -1498,7 +1501,17 @@ function checkoutGraph(root: string): CheckoutGraph {
   }
   const order = [...new Set([...flat.map((d) => resolve(d.rootPath)), root])];
   const direct = new Map(flat.map((d) => [resolve(d.rootPath), d.needs.map((n) => resolve(n))]));
-  direct.set(root, flat.map((d) => resolve(d.rootPath)));
+  // The root needs what it DECLARES: every instance its own chain or its
+  // index names. A discovered walk (above) relates the instances to EACH
+  // OTHER; it is not a declaration by the root, which declares nothing. Made a
+  // dependent of everything it merely contains, a bare aggregate became a
+  // stacked-on member of every inherited subgraph: an instance declaring a
+  // kg at `sibling` had `<aggregate>/sibling` attributed to it, so
+  // `resolveSkillDirs` served a directory nobody declared (measured
+  // 2026-10-09, folio-assistant#2518; `skill-overlay.test.ts`). An INDEX
+  // root is unaffected: `index.config.json` names its instances, so its
+  // `flat` is declared and it needs every one of them.
+  direct.set(root, discovered ? [] : flat.map((d) => resolve(d.rootPath)));
   const deps = new Map<string, Set<string>>();
   const close = (a: string, path: Set<string>): Set<string> => {
     const known = deps.get(a);

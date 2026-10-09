@@ -84,8 +84,8 @@ const LINK_REPO = (() => {
   return d?.livesAt?.repository ?? d?.repository;
 })();
 
-/** The projection. Everything the reader found; it is already small. */
-function projection(
+/** The projection. Everything the reader found; it is already small. Exported for the fixture test of {@link entryBlocks}. */
+export function projection(
   g: LibraryGraph,
   /** Per-page counts, `directory id -> [count, unit]`. Empty is normal. */
   scoped: Readonly<Record<string, readonly [number, string]>>,
@@ -1122,6 +1122,40 @@ export function entryView(
   return hit ?? `/${entryPage}/`;
 }
 
+/**
+ * Each entry's block file, as the viewer publishes it — and its summary
+ * counts, set on the entry because the index carries them.
+ *
+ * A withheld entry (bean `cw35`) publishes no verbatim text: its blocks are
+ * read with `verbatim: false`. A function rather than a loop in the writer so
+ * a test can run a DECLARED fixture through the very derivation the writer
+ * uses (owner ruling 2026-10-09, folio-assistant#2521 option b): the real
+ * withheld list is empty by the owner's choice, and a check over the committed
+ * data alone then proves nothing.
+ */
+export function entryBlocks(g: LibraryGraph, repoRoot: string): Map<string, LibraryBlock[]> {
+  const blocksOf = new Map<string, LibraryBlock[]>();
+  for (const e of g.entries) {
+    const blocks = readEntryBlocks(join(repoRoot, e.dir), { verbatim: !e.withheld });
+    blocksOf.set(e.id, blocks);
+    e.summaries = tally(blocks.flatMap((b) => (b.summary ? [b.summary] : [])));
+  }
+  return blocksOf;
+}
+
+/**
+ * Every avatar copy the writer makes, `site path -> source path`, both
+ * absolute. An entry without an avatar — a withheld one has none
+ * (`library-graph.ts`) — gets no copy, and the orphan sweep removes any copy
+ * left from before it was withheld. Exported for the same fixture test as
+ * {@link entryBlocks}.
+ */
+export function avatarCopies(g: LibraryGraph, site: string, repoRoot: string): Map<string, string> {
+  return new Map(
+    g.entries.flatMap((e) => (e.avatar ? [[join(site, e.avatar.href.slice(1)), join(repoRoot, e.avatar.src)] as const] : [])),
+  );
+}
+
 let stale = 0;
 /**
  * The one writer, for pages and data alike: it writes what it is given.
@@ -1316,13 +1350,7 @@ if (import.meta.main) {
   // "slowly drain") and those are a fact about the blocks. The per-entry
   // files below reuse the same reading, so the count on the index and the
   // rows a reader opens cannot disagree.
-  const blocksOf = new Map<string, LibraryBlock[]>();
-  for (const e of g.entries) {
-    // A withheld entry (bean `cw35`) publishes no verbatim text.
-    const blocks = readEntryBlocks(join(repoRoot, e.dir), { verbatim: !e.withheld });
-    blocksOf.set(e.id, blocks);
-    e.summaries = tally(blocks.flatMap((b) => (b.summary ? [b.summary] : [])));
-  }
+  const blocksOf = entryBlocks(g, repoRoot);
 
   // ── EACH ENTRY'S RENDERING, DERIVED (owner, 2026-10-02, #1881) ────────
   //
@@ -1391,10 +1419,8 @@ if (import.meta.main) {
   // committed tree is served — the instance mount exists only on the built
   // site. `--check` compares BYTES, so a cover regenerated upstream and not
   // re-copied here is stale, never silently old.
-  for (const e of g.entries) {
-    if (!e.avatar) continue;
-    emitBytes(join(site, e.avatar.href.slice(1)), readFileSync(join(repoRoot, e.avatar.src)));
-  }
+  const copies = avatarCopies(g, site, repoRoot);
+  for (const [dest, src] of copies) emitBytes(dest, readFileSync(src));
   // AVATAR ORPHANS (bean `cw35`). A copy the graph no longer names stays
   // committed AND published — the 2026-09-24 audit found both refused covers
   // still served from here after their entries were withheld. This directory
@@ -1402,7 +1428,7 @@ if (import.meta.main) {
   // is its own stale output: pruned on a write, a finding under `--check`.
   {
     const avatarRoot = join(site, "assets", "library", "avatars");
-    const wanted = new Set(g.entries.flatMap((e) => (e.avatar ? [join(site, e.avatar.href.slice(1))] : [])));
+    const wanted = new Set(copies.keys());
     for (const abs of orphanAvatars(avatarRoot, wanted)) {
       if (check) {
         console.error(`  ✗ ${abs} is an orphan avatar — no entry names it`);

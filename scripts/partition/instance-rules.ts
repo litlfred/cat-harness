@@ -235,6 +235,14 @@ export const RULES: Rule[] = [
       // only the declarations (bean `4ak5`).
       "scripts/instance-exports.ts",
       "scripts/root-index.ts",
+      // HARNESS beside `root-index.ts`, by the same `dh4f` question: it writes
+      // an INDEX checkout's root `AGENTS.md`/`README.md` from
+      // `index.config.json` and the instances' declared assets (owner
+      // 2026-10-09, `index:render`) — the platform's entry files, no folio's
+      // content. Its one core import, `readme-sections` (the marker splice),
+      // is not a wrong-direction edge: it is a command (shebang), so a
+      // composition root, and `isCompositionRoot` exempts it by rule.
+      "scripts/index-render.ts",
       // The two halves this tool was split into, 2026-09-20. Both HARNESS,
       // and the target-before-importer test says why: `engine.ts` imports
       // nothing but `fs` and `path`, and this file imports one TYPE from
