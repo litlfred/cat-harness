@@ -49,7 +49,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join, relative, resolve, sep } from "node:path";
 
-import { findDeclarationFile, instanceRootsIn, readDeclaration, siblingScopeFor } from "../schemas/cat-harness.js";
+import { findDeclarationFile, instanceDirectories, instanceRootsIn, readDeclaration, siblingScopeFor } from "../schemas/cat-harness.js";
 import { gitCorpus } from "../schemas/git-corpus.js";
 import type { KgFinding } from "../schemas/kg-qa.js";
 
@@ -83,8 +83,7 @@ export function contentBasis(instanceRoot: string, siblings: readonly string[]):
 
 /** Instance-relative directories whose declared kinds make their `.ts` files content. */
 function manifestDirs(instanceRoot: string): string[] {
-  const decl = readDeclaration(instanceRoot);
-  return (decl?.directories ?? [])
+  return instanceDirectories(instanceRoot)
     .filter((d) => d.graphTypologies.some((k) => CONTENT_MANIFEST_KINDS.includes(k)))
     .map((d) => d.path.replace(/\/+$/, ""));
 }

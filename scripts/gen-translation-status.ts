@@ -51,7 +51,7 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
-import { readDeclaration, repoRootFor, siteDirFor } from "../schemas/cat-harness.js";
+import { instanceDirectories, readDeclaration, repoRootFor, siteDirFor } from "../schemas/cat-harness.js";
 import { tileCounts } from "../schemas/tile-count.js";
 import { renderedPath, withRendersFrontMatter } from "./viewer-declarations.js";
 import { themedPage } from "./lib/themed-page.ts";
@@ -180,8 +180,7 @@ function filesUnder(dir: string, exts: readonly string[]): string[] {
  * than treated as an empty one.
  */
 export function translationsDirOf(root: string): string | undefined {
-  const decl = readDeclaration(root);
-  const entry = decl?.directories?.find((d) => (d.graphTypologies ?? []).includes("translation-sources"));
+  const entry = instanceDirectories(root).find((d) => (d.graphTypologies ?? []).includes("translation-sources"));
   return entry === undefined ? undefined : join(root, entry.path);
 }
 

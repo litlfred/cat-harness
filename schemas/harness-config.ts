@@ -409,6 +409,7 @@ import {
   isKgOnlyDirectory,
   materialiseDirectories,
   ownDirectories,
+  instanceDirectories,
   instanceRootsIn,
   readDeclaration,
   siblingScopeFor,
@@ -1778,8 +1779,7 @@ export function declaredSubgraph(start: string, id: string): DeclaredSubgraph | 
   const owners: string[] = [];
   const candidates = [here, ...graph.order.filter((r) => r !== here)];
   for (const root of candidates) {
-    const decl = readDeclaration(root);
-    if (decl?.directories.some((d) => d.id === id)) owners.push(root);
+    if (instanceDirectories(root).some((d) => d.id === id)) owners.push(root);
     if (root === here && owners.length > 0) break;
   }
   if (owners.length === 0) return undefined;

@@ -107,7 +107,7 @@ import { basename, dirname, extname, join, relative, resolve, sep } from "node:p
 import jsonld from "jsonld";
 import { buildContext, buildExport, graphTypologyId } from "./kg-export.js";
 import { corpusScopeFor, kgDirectories, workflowFiles } from "./known-skills.js";
-import { checkoutRootFor, findInstanceRoot, instanceRootsIn, readDeclaration } from "../schemas/cat-harness.js";
+import { checkoutRootFor, findInstanceRoot, instanceDirectories, instanceRootsIn, readDeclaration } from "../schemas/cat-harness.js";
 import { readKnowledgeGraphDeclaration } from "../../bootstrap-tools/schemas/declaration.ts";
 import { publicationBase } from "../../bootstrap-tools/scripts/subgraph-jsonld.ts";
 import { gitCorpus } from "../schemas/git-corpus.js";
@@ -503,7 +503,7 @@ export function planSubgraphs(
       return [];
     }
     const decl = declarationOf(inst);
-    const entry = decl?.directories.find((x) => x.id === d.id);
+    const entry = instanceDirectories(inst).find((x) => x.id === d.id);
     return [{ ...d, inst: resolve(inst), harness: decl?.name ?? basename(inst), graphTypologies: entry?.graphTypologies ?? [], title: entry?.title, instTitle: decl?.title }];
   });
   // De-duplicated by directory: one directory reached twice is one subgraph.
