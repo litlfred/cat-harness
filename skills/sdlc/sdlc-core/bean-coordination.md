@@ -877,9 +877,55 @@ downstream repo syncs from**, and the generated mirror under the docs site
 follows it automatically. On landing a coordination change that affects a
 downstream repo, update that repo's ownership note and close the tracking beans.
 
+## Issues are a third todo source — queryable `issue:` link
+
+`beans/` (agent work plan) and `todos/` (human items and feedback) are the two
+stores declared in the repository. **GitHub issues are a third source**,
+carrying external tracking, stakeholder adjudication, cross-repo visibility,
+and human decisions.
+
+A bean can link directly to its corresponding GitHub issue via the front-matter
+`issue:` field:
+
+```yaml
+---
+# folio-assistant-xeer
+title: 'ISSUES ARE A THIRD TODO SOURCE: queryable bean-issue link'
+status: in-progress
+type: feature
+issue: 730
+---
+```
+
+The `issue:` field is typed as `z.union([z.number().int().positive(), z.string().min(1)]).optional()`,
+supporting numeric issue numbers (`issue: 730`), issue shorthand (`issue: "#730"`),
+or fully-qualified issue URLs (`issue: "https://github.com/litlfred/folio-assistant/issues/730"`).
+
+### When an issue is owed
+
+Not every internal task needs an external issue, but beans representing
+substantive roadmap scope or human adjudication **owe an issue**:
+
+1. **Features (`type: feature`)**: features deliver user-facing capabilities or
+   major roadmap changes, so they require an external tracking issue for
+   stakeholder visibility and acceptance.
+2. **Stakeholder adjudication**: any work item requiring human adjudication,
+   policy rulings, or cross-team consensus (flagged via `issue-required` or
+   `needs-issue` tags, or explicit adjudication requirements in the body) owes
+   an issue link so the discussion and ruling remain discoverable.
+
+The check **`bun run cat check:bean-issues`** audits the bean store to verify
+that beans owing an issue provide either an `issue:` front-matter link or an
+issue reference in the bean body (`#<number>`, `issue #<number>`, or issue URL).
+It reports compliant beans alongside findings for unlinked items under 3-state
+reporting (0 = pass, 1 = finding, 2 = could not determine).
+
 ## Disambiguation (do not conflate)
 
 - **beans** = the agent's *session work-plan* (`beans/`, this skill).
+- **todos** = the human *work-plan items* (`todos/`).
+- **issues** = the *third todo source* (`issue:` front-matter field), carrying
+  human/stakeholder adjudication and external tracking.
 - **sidecars** (`*.qa.json`, `*.witness.json`) = *content state tracking*.
   Beans ≠ sidecars. Do **not** convert QA / witness queue items into individual
   beans (see todo-manager.md disambiguation block).

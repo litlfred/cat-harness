@@ -130,6 +130,38 @@ export const BeanGraphSchema = z.object({
 export type BeanGraph = z.infer<typeof BeanGraphSchema>;
 
 /**
+ * Schema for front matter of a bean definition file (`beans/defs/*.md`).
+ *
+ * Beans are authored by people and agents and managed by the `beans` CLI.
+ * Unknown keys are allowed via `.passthrough()` so that new fields from `beans`
+ * do not break parsing.
+ *
+ * A bean can name its linked GitHub issue in front matter as a queryable field
+ * (`issue:`), representing the human adjudication / issue-tracker link.
+ */
+export const BeanFrontMatterSchema = z
+  .object({
+    title: z.string().optional(),
+    status: z.string().optional(),
+    type: z.string().optional(),
+    priority: z.string().optional(),
+    parent: z.string().optional(),
+    blocking: z.array(z.string()).optional(),
+    blocked_by: z.array(z.string()).optional(),
+    created_at: z.string().optional(),
+    updated_at: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    /**
+     * GitHub issue number or reference (e.g. 730, "#730", or issue URL).
+     * Queryable field linking a bean to its external human adjudication/tracking issue.
+     */
+    issue: z.union([z.number().int().positive(), z.string().min(1)]).optional(),
+  })
+  .passthrough();
+
+export type BeanFrontMatter = z.infer<typeof BeanFrontMatterSchema>;
+
+/**
  * The graph file's name inside its root directory.
  *
  * DERIVED from the `beans` kind rather than written here, so the name exists

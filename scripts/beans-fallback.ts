@@ -67,6 +67,7 @@ export interface Bean {
   updatedAt?: string;
   path: string;
   body: string;
+  issue?: number | string;
 }
 
 /**
@@ -118,6 +119,10 @@ function parseBean(path: string): Bean | undefined {
   const id =
     /^#\s*(\S+)\s*$/m.exec(front!)?.[1] ??
     path.split("/").pop()!.split("--")[0];
+  const rawIssue = field("issue");
+  const issue = rawIssue
+    ? (/^\d+$/.test(rawIssue) ? Number.parseInt(rawIssue, 10) : rawIssue)
+    : undefined;
   return {
     id: id!,
     title: field("title") ?? "(untitled)",
@@ -128,6 +133,7 @@ function parseBean(path: string): Bean | undefined {
     updatedAt: field("updated_at"),
     path,
     body: body ?? "",
+    ...(issue !== undefined ? { issue } : {}),
   };
 }
 
@@ -214,6 +220,7 @@ export interface CreateOptions {
   type?: string;
   status?: string;
   priority?: string;
+  issue?: number | string;
   body?: string;
   /** Allow a duplicate title. Has to be asked for. */
   force?: boolean;
@@ -245,6 +252,7 @@ export function createBean(root: string, opts: CreateOptions): { bean: Bean; dup
     `status: ${opts.status ?? cfg.defaultStatus}`,
     `type: ${opts.type ?? cfg.defaultType}`,
     `priority: ${opts.priority ?? "normal"}`,
+    ...(opts.issue !== undefined ? [`issue: ${opts.issue}`] : []),
     `created_at: ${stamp}`,
     `updated_at: ${stamp}`,
     "---",
@@ -370,6 +378,7 @@ if (import.meta.main) {
           type: flag("type"),
           status: flag("status"),
           priority: flag("priority"),
+          issue: flag("issue"),
           body: flag("body"),
           force: argv.includes("--force"),
         });
@@ -391,11 +400,11 @@ if (import.meta.main) {
       }
       case "update": {
         const fields: Record<string, string> = {};
-        for (const k of ["status", "priority", "type"]) {
+        for (const k of ["status", "priority", "type", "issue"]) {
           const v = flag(k);
           if (v) fields[k] = v;
         }
-        if (!Object.keys(fields).length) throw new Error("update needs at least --status, --priority or --type.");
+        if (!Object.keys(fields).length) throw new Error("update needs at least --status, --priority, --type or --issue.");
         const b = updateBean(root, rest[0] ?? "", fields);
         emit(b, `${b.id} → ${Object.entries(fields).map(([k, v]) => `${k}=${v}`).join(" ")}`);
         break;
