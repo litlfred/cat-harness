@@ -25,9 +25,69 @@
  * here rather than in a reader's browser.
  *
  * @module scripts/tests/external-schemas-viz.test
- *
- * The tests of this file that read the whole checkout (reads the
- * external-schema registry and the declarations of every content instance that
- * uses it) live in `test/external-schemas-viz-checkout.test.ts` (bean `7zz1`):
- * standing alone, cat-harness has none of it.
  */
+
+import { describe, expect, it } from "bun:test";
+import {
+  jsonLdNamespacesInUse,
+  loadSpecs,
+  namespaceMentions,
+  namespacesInUse,
+} from "../external-schemas.js";
+import { declaredUsers, page } from "../gen-external-schemas-viz.js";
+import { contrast } from "../render-theme-sheet.js";
+
+describe("external-schemas visualiser wireframe findings (folio-assistant-7x7g)", () => {
+  const specs = loadSpecs();
+  const users = declaredUsers(specs);
+  const bpmnInUse = namespacesInUse();
+  const jsonLd = jsonLdNamespacesInUse();
+  const combined = [...new Set([...bpmnInUse, ...jsonLd.keys()])].sort();
+  const mentioned = namespaceMentions(combined);
+  const inUse = [...new Set([...combined, ...mentioned])].sort();
+  const rendered = page(specs, users, inUse);
+
+  it("adds scroll-margin-top to section headings to prevent handle overlap (Finding 5)", () => {
+    expect(rendered).toMatch(/h[23][^}]*scroll-margin-top:\s*2rem/);
+  });
+
+  it("adds mobile scroll cue and table-wrapper scroll mask (Finding 7)", () => {
+    expect(rendered).toContain('class="xs-scroll-cue"');
+    expect(rendered).toMatch(/\.table-wrapper\s*\{[^}]*mask-image:\s*linear-gradient/);
+  });
+
+  it("ensures state tag colors satisfy the 4.5:1 contrast floor on dark backgrounds (Finding 6)", () => {
+    const darkBg = "#27262b";
+    expect(rendered).toContain("prefers-color-scheme: dark");
+    expect(contrast("#34d399", darkBg)).toBeGreaterThanOrEqual(4.5);
+    expect(contrast("#a1a1aa", darkBg)).toBeGreaterThanOrEqual(4.5);
+    expect(contrast("#f87171", darkBg)).toBeGreaterThanOrEqual(4.5);
+  });
+
+  it("converts all-caps notes blocks to clean sentence-case paragraphs (Finding 8)", () => {
+    expect(rendered).not.toContain("THE TRANSCRIPTION CAME FIRST AND THAT WAS THE DEFECT");
+    expect(rendered).not.toContain("NO XSD IS HELD");
+    expect(rendered).toContain("The transcription came first, which was the defect");
+    expect(rendered).toContain("No XSD is held and none is fetched");
+  });
+
+  it("accounts for broader namespace usages and does not falsely claim DCMI/SKOS are unused (Finding 3)", () => {
+    const unusedSection = rendered.match(/## Namespaces[\s\S]*?(?=## Each specification|$)/)?.[0] ?? "";
+    expect(unusedSection).not.toContain("http://purl.org/dc/elements/1.1/");
+    expect(unusedSection).not.toContain("http://purl.org/dc/terms/");
+    expect(unusedSection).not.toContain("http://www.w3.org/2004/02/skos/core#");
+  });
+
+  it("qualifies operative terms and avoids repeating identical placeholder sentences (Finding 1)", () => {
+    expect(rendered).toMatch(/operative terms in graph \(\d+ described/);
+    expect(rendered).not.toContain("derived from the corpus; what this repository does with it is not yet described");
+  });
+
+  it("ensures every specification links to an existing section anchor", () => {
+    for (const s of specs) {
+      expect(rendered).toContain(`](#${s.id})`);
+      expect(rendered).toContain(`{#${s.id}}`);
+    }
+  });
+});
+
