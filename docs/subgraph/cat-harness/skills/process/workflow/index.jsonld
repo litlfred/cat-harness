@@ -13,9 +13,9 @@
       "@type": "bootstrap:Skill",
       "name": "bpmn-authoring",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/3b97f3ec93d09f177822976054326885e33f7ec3fd7d1df02a45529ef1afd5f6",
-        "bytes": 4729,
-        "sha256": "3b97f3ec93d09f177822976054326885e33f7ec3fd7d1df02a45529ef1afd5f6"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/edd7b3a2089a177fe64626b8ab6af17a5c23a6a9f6b524f9e19f9b735578a7fe",
+        "bytes": 4844,
+        "sha256": "edd7b3a2089a177fe64626b8ab6af17a5c23a6a9f6b524f9e19f9b735578a7fe"
       },
       "title": "bpmn-authoring"
     },
@@ -68,9 +68,9 @@
       "@type": "bootstrap:Skill",
       "name": "dmn-authoring",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0f20f1335b549319471ec73cd9cc42a8d4a2b16d3f55c521224f96c42d133e3f",
-        "bytes": 2930,
-        "sha256": "0f20f1335b549319471ec73cd9cc42a8d4a2b16d3f55c521224f96c42d133e3f"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/17d03459c9318a86b77fcb8c9157058cd8d225448bda0ea1824df22156e9cd68",
+        "bytes": 3010,
+        "sha256": "17d03459c9318a86b77fcb8c9157058cd8d225448bda0ea1824df22156e9cd68"
       },
       "title": "dmn-authoring"
     },

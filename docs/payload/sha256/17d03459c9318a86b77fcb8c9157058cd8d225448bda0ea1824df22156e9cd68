@@ -61,9 +61,10 @@ Say it explicitly. `FIRST` is the usual choice here and is what
 `folio-intent.dmn` uses — rules are ordered, the first match wins, and the
 ordering is then part of the logic and must be reviewed as such.
 
-## For a DAK
+## When a layer above transforms it
 
-`smart-base`'s `dmn2html` renders decision tables for human review, and
-`dmn_questionnaire_generator` derives questionnaires from them. The DMN is a
-**source artefact**, not documentation of one; `smart-base-tools` has the
-mechanics and the caveats.
+A layer built on this one may render decision tables for human review or
+derive other artefacts (questionnaires, for instance) from them. Then the DMN
+is a **source artefact**, not documentation of one; that layer's own tooling
+skill has the mechanics and the caveats, and this one names no layer above
+it.

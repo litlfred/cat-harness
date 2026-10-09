@@ -86,9 +86,11 @@ naming a domain worked example is ordinary; two skills that must be read
 together to author one diagram are not. If a second content type ever needs
 its own section here, that is the moment to reconsider — not before.
 
-## For a DAK
+## When a layer above transforms it
 
-`smart-base`'s `bpmn2fsh` transform turns an authored business process into
-FHIR Shorthand, so the BPMN is a **source artefact** rather than documentation
-of one. Author it knowing it will be transformed: names and ids you choose here
-appear in generated FSH. `smart-base-tools` has the mechanics.
+A layer built on this one may transform an authored business process into
+another artefact — FHIR Shorthand, for instance — and then the BPMN is a
+**source artefact** rather than documentation of one. Author it knowing it
+will be transformed: names and ids you choose here appear in what is
+generated. That layer's own tooling skill has the mechanics; this one names
+no layer above it.

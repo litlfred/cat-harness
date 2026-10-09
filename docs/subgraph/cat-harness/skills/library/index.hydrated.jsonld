@@ -315,13 +315,13 @@
           "hasInstructions": true,
           "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/library-core",
           "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-          "instructionLines": 720,
+          "instructionLines": 715,
           "instructionsPath": "skills/library/library-core/translation-manager.md",
           "name": "translation-manager",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2e382f8542401d26f7fa7fa98b5692854cd9c66d910aff9a81bf9b9d9338e719",
-            "bytes": 32899,
-            "sha256": "2e382f8542401d26f7fa7fa98b5692854cd9c66d910aff9a81bf9b9d9338e719"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5bdd851ea665808eed37b1812affb06ad8dd6ac72759cab591016c424388300a",
+            "bytes": 32820,
+            "sha256": "5bdd851ea665808eed37b1812affb06ad8dd6ac72759cab591016c424388300a"
           },
           "title": "Translation manager"
         },
