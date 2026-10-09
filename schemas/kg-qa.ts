@@ -1440,6 +1440,19 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
       "An entry in the actor registry carries `inherits` — it is modelling a role lattice, not an actor. Migration debt.",
   },
   {
+    id: "actor-fact-has-consumer",
+    applies: ["graph"],
+    scope: "repo",
+    scopeBasis:
+      "Actor facts (capabilities and permissions) are declared on actors, which are repository-level " +
+      "(`cat-harness/scenarios/actors/` resolved through `repoRootFor`), and evaluated against the repository's " +
+      "processes, gateways, and rules. Evaluating per instance would report false findings for repository-wide " +
+      "actors whose consumers live in sibling instances.",
+    severity: "minor",
+    summary:
+      "A declared actor fact (capability or permission) has no consuming process, gateway, task, or rule in the KG.",
+  },
+  {
     id: "satisfies-resolves",
     applies: ["graph"],
     scope: "instance",
