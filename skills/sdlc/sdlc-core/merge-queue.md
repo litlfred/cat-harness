@@ -738,6 +738,74 @@ siblign)"*. So on every sweep the steward lists the PRs opened since the
 release, and puts them to the owner in one question, with the table's verdict
 on each. One answer ("approve all 6") may cover the whole batch.
 
+## Post-merge asymmetry: why main needs its own regeneration pipeline (bean ey1c)
+
+`.github/workflows/merge-main.yml` runs `bun run cat merge:main` on an opted-in
+**PR branch** when `main` moves, resolving declared conflicts and regenerating.
+There is a structural asymmetry in the other direction: **after a PR merges into
+`main`, nothing in that workflow regenerates `main`.**
+
+So any merge changing an enumerated or counted directory can leave `main` red on a
+hard gate, even when the PR merged cleanly with zero git conflicts. The only reason
+it usually does not is an accident: the PR branch happened to regenerate against a
+base that had not moved yet. When that accident does not hold, `main` goes red and
+stays red until somebody notices.
+
+### The accidental-repair pattern (observed 3 times in 2 hours)
+
+On 2026-10-03 on `main`'s own runs, step 65 ("Every declared directory's README is
+current", `readme:subgraphs:check`) demonstrated this pattern:
+
+    5187a4df361  after #1936                               green
+    8688288494a  after #1938 (arXiv licences → uploads/)   RED
+    268c0911a06                                            RED
+    ea1d8b10593  after #1940                               green
+    70882785607  "Add files via upload" (web UI)           RED
+
+PR #1938 added PDFs to `uploads/` without updating the generated table in
+`uploads/README.md`. It broke `main`. Then PR #1940's branch happened to carry a
+regenerated README, which repaired `main` **incidentally**; then a web-UI upload
+broke it again with no generator run at all.
+
+**The trap:** A green on a derived gate must NOT be read as "was never broken" or
+"the commit before it was clean". Unrelated PR branches that happen to carry
+regenerated files incidentally repair `main`, creating untrustworthy gate
+histories.
+
+**Why this halts development:** While `main` is red on a hard gate, every open PR
+inherits that red, so no PR can show green, and nothing can be merged on green CI.
+PR sessions start debugging their own diffs for failures that belong to `main`.
+
+### The automated post-merge repair pipeline
+
+To resolve this asymmetry, `.github/workflows/post-merge-regen.yml` triggers on
+push to `main` and runs `bun run cat post-merge:regen --create-pr`.
+
+1. **Detected and ACTED on:** It audits verify/write pairs on the post-merge tree.
+   If derived artefacts are stale, it does not merely fail silently or log red; it
+   acts by running the generators and generating a reviewable repair.
+2. **Reviewable PR, never a direct push to `main`:** The repair is pushed to an
+   `automation/post-merge-regen-<sha>` branch and opened as a PR targeting
+   `main`. This ensures the repair cannot bypass gates, full PR CI runs on it, and
+   it remains auditable and reviewable.
+3. **NEGATIVE CONTROL:** A merge that changes nothing counted triggers 0 repairs
+   and opens NO PR (`status: "clean"`, exit 0), preventing churn (bean `do70`).
+
+### Merge steward procedure: post-merge verification
+
+**Decision on merge steward role vs automation:**
+- **Automation handles post-merge verification:** The steward does not manually run
+  regen sweeps after every landing. Automation via `post-merge-regen.yml` executes on
+  push to `main` across all types of landings (steward trains, direct pushes, web
+  uploads).
+- **Steward triage when main goes red on a derived gate:** If `main` turns red on a
+  verify/write check (e.g. `readme:subgraphs:check`, `check:prov-qaqc`), the
+  steward checks whether an automated repair PR (`automation/post-merge-regen-...`)
+  has already been opened before dispatching unblockers or opening duplicate PRs.
+- **Priority admission for repair PRs:** When the automated repair PR passes CI,
+  the steward admits and lands it with priority under `merge-priority.dmn` as an
+  unblock-main repair.
+
 ## ACK every PR that enters the queue, on its bean (STRICT)
 
 Owner, 2026-10-04: *"as part of merge manager skill you need to ACK a new PR
