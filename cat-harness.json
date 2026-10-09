@@ -878,6 +878,19 @@
     },
     {
       "id": "fsh-guts",
+      "_coverage_comment": "RESTORED 2026-10-09. This declaration moved here from the deleted root folio-assistant.json at the state cutover (8f55441e5) without its coverage, and gen-fsh-guts-viz.ts refuses to write a page it has no declared visualiser for: the ref IS what compose-docs withholds from a canonical build (publish: staging-only), so a derived page would publish the very graph the owner ruled kept-but-unpublished (2026-09-21). The ref is checkout-relative, like the rest of the wireframe index.",
+      "coverage": {
+        "visualiser": [
+          {
+            "ref": "cat-harness/docs/fsh-guts/index.md",
+            "title": "fsh-guts",
+            "publish": "staging-only",
+            "writer": [
+              "cat-harness/scripts/gen-fsh-guts-viz.ts"
+            ]
+          }
+        ]
+      },
       "path": "fsh-guts/",
       "scope": "repository",
       "description": "The workspace for FSH guts, scratch space, retired configs, and separated archives. REPOSITORY-scoped: it sits at the top of the checkout, not inside this instance, and it is deliberately never overlaid by a dependency.",

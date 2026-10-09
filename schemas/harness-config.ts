@@ -981,7 +981,20 @@ export function dependenciesFromNeeds(instanceRoot: string): {
   const abs = resolve(instanceRoot);
   let needs: string[] = [];
   try {
-    needs = readDeclaration(abs)?.needs ?? [];
+    const decl = readDeclaration(abs);
+    needs = decl?.needs ?? [];
+    // THE INDEX CHECKOUT: a root that declares no instance of its own but
+    // carries `index.config.json` composes every instance that file lists —
+    // the file exists to say exactly that ("one root file declares the
+    // instantiated harnesses"). Without this, a root with no declaration
+    // needed nothing, the checkout graph held the root alone, and every
+    // corpus-wide reader saw only the default directories: fsh-guts and the
+    // rest of what the mounted instances declare went unseen (2026-10-09,
+    // after folio-assistant.json was retired in favour of the index).
+    if (decl === undefined) {
+      const idx = readIndexConfig(abs);
+      if (idx.state === "ok") needs = idx.config.instances.map((i) => i.name).filter((n) => n !== undefined);
+    }
   } catch {
     // A declaration that cannot be read is not this function's to diagnose;
     // `readDeclaration`'s own callers throw on it. Here it means no derivation.
@@ -1270,6 +1283,15 @@ export function checkoutRootFor(start: string): string {
  *
  * @param start any instance root in the checkout, or the checkout root
  */
+/** `readDeclaration`, with an unreadable declaration read as "declares something" so it is never mistaken for an index root. */
+function safeDeclaration(root: string): unknown {
+  try {
+    return readDeclaration(root);
+  } catch {
+    return {};
+  }
+}
+
 export function checkoutDirectories(start: string, opts: { stackedOn?: string } = {}): ResolvedDirectory[] {
   const root = checkoutRootFor(start);
   const base = opts.stackedOn === undefined ? undefined : resolve(opts.stackedOn);
@@ -1283,7 +1305,12 @@ export function checkoutDirectories(start: string, opts: { stackedOn?: string } 
   // dependencies are its own overlay (`orderedDependencies`), already read by
   // every caller that resolves downward, and counting them again here would
   // re-attribute bootstrap's skills to the platform.
-  if (base !== undefined) {
+  // The index checkout's root declares no instance, so nothing is stacked on
+  // it: it is the COMPOSITION, and the corpus it serves is every instance it
+  // composes (`dependenciesFromNeeds` reads them from `index.config.json`).
+  // Filtering to "stacked on the root" there kept the root alone.
+  const indexRoot = base !== undefined && base === root && safeDeclaration(root) === undefined;
+  if (base !== undefined && !indexRoot) {
     const above = new Set(checkoutDependentsOf(base).map((d) => d.root));
     instances = instances.filter((i) => i === base || above.has(i));
     if (!instances.includes(base)) instances.unshift(base);
