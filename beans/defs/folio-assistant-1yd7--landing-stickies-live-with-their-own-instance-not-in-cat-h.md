@@ -49,8 +49,8 @@ open this bean and tell the separation session.
 
 ## 2026-10-09 — the who-iris half (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
 
-\`54826e6e\` emptied \`cat-harness/folio/\` of other instances' cards; who-iris never took its own. Two defects, both fixed:
-- **cat-harness** (\`ensure-landing-sticky\`, branch \`claude/mount-render-md\`): run from a separated instance's repository the script resolved its root from its own location — the REMOTE MOUNT — so it wrote cards into gitignored mounts and never declared a folio graph in who-iris. It now takes an instance directory, and a mounted layer's card is reported \`mounted\`: never written, not counted by \`--check\`. Tests watched red on the old script.
-- **who-iris** (\`c211186\`): \`folio/\` declared (surgical splice) and \`folio/who-iris.json\` written by that tool; \`landing:sticky[:check]\` scripts. Declaring \`folio\` changes no mount route (checked).
-- Done-when 2 and 3 (landing reads every instance's folio, mounted ones arrive with the mount) hold through \`stickyPathForContribution\`; 4 (\`/cat-harness/folio/\` shows cat-harness's own) is cat-harness's site, untouched.
+`54826e6e` emptied `cat-harness/folio/` of other instances' cards; who-iris never took its own. Two defects, both fixed:
+- **cat-harness** (`ensure-landing-sticky`, branch `claude/mount-render-md`): run from a separated instance's repository the script resolved its root from its own location — the REMOTE MOUNT — so it wrote cards into gitignored mounts and never declared a folio graph in who-iris. It now takes an instance directory, and a mounted layer's card is reported `mounted`: never written, not counted by `--check`. Tests watched red on the old script.
+- **who-iris** (`c211186`): `folio/` declared (surgical splice) and `folio/who-iris.json` written by that tool; `landing:sticky[:check]` scripts. Declaring `folio` changes no mount route (checked).
+- Done-when 2 and 3 (landing reads every instance's folio, mounted ones arrive with the mount) hold through `stickyPathForContribution`; 4 (`/cat-harness/folio/` shows cat-harness's own) is cat-harness's site, untouched.
 - Remaining: merge, then the who-iris pin move.

@@ -49,7 +49,7 @@ Each finding re-measured on a local build of that commit (`preview-site.sh`, ser
 
 ## 2026-10-09 — re-measured on who-iris's OWN site, three fixed (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
 
-First finding of the day: **who-iris's own site published no catalogue page at all** — the harness is a remote mount there, so the generator (rightly) wrote nothing into it, and nothing else wrote it. who-iris \`76ea282\` adds \`gen-iris-pages --catalogue-into <site-source>\`, which writes only that page into the Jekyll source the site build composes, at the conventional route.
+First finding of the day: **who-iris's own site published no catalogue page at all** — the harness is a remote mount there, so the generator (rightly) wrote nothing into it, and nothing else wrote it. who-iris `76ea282` adds `gen-iris-pages --catalogue-into <site-source>`, which writes only that page into the Jekyll source the site build composes, at the conventional route.
 
 Re-measured on a local build (Routine steps 3–7):
 - 1 (phone scroll) — fixed earlier.
@@ -57,5 +57,5 @@ Re-measured on a local build (Routine steps 3–7):
 - 3 (rows lead nowhere) — node titles link the replica pages; "held as" opens the library viewer only where the site builds one (who-iris's does not; it would have been a dead link).
 - 4 — **fixed for order** (materialized, referenced, unknown); **not done: sortable/filterable** columns.
 - 6 — **fixed**: each count inside its pill, labelled ("permitted: 3 of 6").
-- cat-harness \`6ff2f1b3\`: a \`kindRouteRedirect\` whose kind has no viewer in this build is "not owed" (printed) instead of failing the mount — it stopped who-iris's publish.
-- Remaining: sortable/filterable; re-draw \`cat-harness/docs/wireframes/catalogue/\` and re-run \`wireframe:check\`; who-iris's site has no library viewer at all (task: build-instance-site).
+- cat-harness `6ff2f1b3`: a `kindRouteRedirect` whose kind has no viewer in this build is "not owed" (printed) instead of failing the mount — it stopped who-iris's publish.
+- Remaining: sortable/filterable; re-draw `cat-harness/docs/wireframes/catalogue/` and re-run `wireframe:check`; who-iris's site has no library viewer at all (task: build-instance-site).
