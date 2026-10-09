@@ -169,6 +169,9 @@ export const PAYLOAD_MEDIA_TYPES: Readonly<Record<string, string>> = {
   jpeg: "image/jpeg",
   webp: "image/webp",
   pdf: "application/pdf",
+  // `package.json` is an Asset since npm packaging was declared (role
+  // `package-manifest`); its payload is the manifest itself, as JSON.
+  json: "application/json",
 };
 
 /** A member as the INDEX carries it: enough to find it, label it, type it, and reach its payload. */
