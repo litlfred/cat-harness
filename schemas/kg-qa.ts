@@ -1595,6 +1595,15 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
       "declared tools instance `supports`) holds code. A content repository holds no code (kg-separation, " +
       "bootstrap FR-7); each file is named, and belongs in the platform or a `<name>-tools` repository.",
   },
+  {
+    id: "lake-target-lean-resolution",
+    applies: ["graph"],
+    scope: "instance",
+    // `minor` advisory QA warning (folio-assistant-tntp). Vacuity-guarded: if 0 blocks/refs checked -> unknown.
+    severity: "minor",
+    summary:
+      "A block's lean.ref resolves to an uncompiled chapter-dir sibling (.lean) only or dangles without landing in a Lake target CI builds.",
+  },
 ] as const;
 
 export const KG_CRITERIA_BY_ID: Readonly<Record<string, KgCriterionDefinition>> = Object.fromEntries(
