@@ -56,7 +56,7 @@
  *
  * @module scripts/ingest-document
  */
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -492,6 +492,41 @@ export function usableOutlineEntries(
  * Ask the PDF directly. Returns nulls rather than guesses when the backend is
  * unavailable -- "could not probe" is a third state, not "no outline".
  */
+/**
+ * A vector arm that ANSWERED "undetermined" rather than failed — bean `turh`.
+ *
+ * `pdf-vector-labels.py` and `pdf-vector-figures.py` exit 2 when they cannot
+ * say anything about the pages (a scan has no text layer to read a caption
+ * from), and they WRITE their sidecar saying so first. That is an answer the
+ * library should keep, and the OCR rung always produces it: before this, every
+ * scanned document stopped at the labels arm, so a scan could not be
+ * re-ingested at all.
+ *
+ * Exit 2 is ALSO what Python gives for a helper it cannot open (the seven loud
+ * failures noted above), so the code alone proves nothing. The sidecar does:
+ * it counts as an answer only when this step wrote it, after the step began.
+ * Returns the sidecar's path, or `undefined` for a real failure.
+ */
+export function recordedUndetermined(step: readonly string[], exitCode: number, startedMs: number): string | undefined {
+  if (exitCode !== 2) return undefined;
+  const sidecar = VECTOR_ARM_SIDECARS[basename(step[1] ?? "")];
+  const o = step.indexOf("-o");
+  if (sidecar === undefined || o < 0 || step[o + 1] === undefined) return undefined;
+  const root = step[o + 1]!;
+  if (!existsSync(root)) return undefined;
+  for (const doc of readdirSync(root)) {
+    const f = join(root, doc, sidecar);
+    if (existsSync(f) && statSync(f).mtimeMs >= startedMs - 1000) return f;
+  }
+  return undefined;
+}
+
+/** The vector arms whose exit 2 may be an answer, and the sidecar each writes. */
+const VECTOR_ARM_SIDECARS: Record<string, string> = {
+  "pdf-vector-labels.py": "vector-labels.json",
+  "pdf-vector-figures.py": "vector-figures.json",
+};
+
 export function probe(pdf: string): Probe {
   // `pymupdf`, NOT `fitz`. The legacy alias still imports, and that is the
   // trap: it prints a deprecation warning TO STDOUT before anything else, so
@@ -724,7 +759,12 @@ function planForPdf(pdf: string, p: Probe, lib: string): Plan {
   if (p.error || p.outline === null || p.chars === null) {
     return {
       rung: "undetermined",
-      why: p.error ?? "the PDF could not be probed",
+      why:
+        p.error === undefined
+          ? "the PDF could not be probed"
+          : p.error.startsWith("no PDF backend")
+            ? `${p.error} — get it: bun run cat software:ensure pymupdf (skill finding-software)`
+            : p.error,
       steps: [],
     };
   }
@@ -1039,8 +1079,14 @@ if (import.meta.main) {
   }
   for (const s of ingestMode(argv) === "promote" ? [] : plan.steps) {
     console.log(`\n$ ${s.join(" ")}`);
+    const started = Date.now();
     const r = Bun.spawnSync(s, { stdout: "inherit", stderr: "inherit" });
     if (r.exitCode !== 0) {
+      const recorded = recordedUndetermined(s, r.exitCode, started);
+      if (recorded !== undefined) {
+        console.log(`  ${basename(s[1] ?? "")}: UNDETERMINED, recorded in ${recorded} — continuing`);
+        continue;
+      }
       console.error(`\n${s[1]} failed (exit ${r.exitCode}) — stopping.`);
       process.exit(1);
     }
