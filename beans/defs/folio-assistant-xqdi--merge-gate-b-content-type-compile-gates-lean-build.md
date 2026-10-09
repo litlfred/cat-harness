@@ -1,11 +1,11 @@
 ---
 # folio-assistant-xqdi
 title: 'MERGE GATE (b): content-type compile gates - Lean builds, SUSHI/IG AST compiles, JSON-LD + schema validate; site renders advisory'
-status: todo
+status: in-progress
 type: task
 priority: normal
 created_at: 2026-10-02T16:29:16Z
-updated_at: 2026-10-03T08:11:59Z
+updated_at: 2026-10-09T16:41:41Z
 parent: folio-assistant-nok9
 ---
 
@@ -23,3 +23,5 @@ Downstream renders (just-the-docs, the Pages site, PDF) are **advisory**, by own
 - [ ] each gate has a test that fails it on purpose
 - [ ] an `unknown` (toolchain absent, or cache cold and timed out) blocks; it is never reported as green
 - [ ] each gate runs on the merge-train result, not only on each PR head
+
+_2026-10-09T16:41:41Z_ — Claimed by claude/xqdi-content-compile-gates — pushed to cat/cat-harness/beans so sibling sessions see it before this branch has a PR (bean 35nj).
