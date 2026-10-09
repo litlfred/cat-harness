@@ -18,6 +18,7 @@
       "name": "Narrative review",
       "nodeCount": 9,
       "sourcePath": "processes/content/review-narrative.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/content/review-narrative.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_NarrativeReview/node/Start_ProseChanged",
       "summary": "Judging changed PROSE: read what the mechanical checkers flagged, decide which findings are real, then look at the two things no checker can judge — whether the editorial dependencies still hold and whether a translation still says what the source does."
     },
@@ -267,6 +268,7 @@
       "name": "Review task",
       "nodeCount": 10,
       "sourcePath": "processes/content/review-task.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/content/review-task.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_Review/node/Start_ChangeToReview",
       "summary": "The generic review position: classify what changed, descend into the review that fits it, consolidate what comes back, and accept or send back."
     },
@@ -554,6 +556,7 @@
       "name": "Voice overlay review",
       "nodeCount": 12,
       "sourcePath": "processes/content/voice-review.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/content/voice-review.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_VoiceReview/node/Start_BaseVoiceDone",
       "summary": "The voice axis: load whichever editorial voices are active, run each rule's mechanical half, and decide — for each finding — whether the prose is wrong, the rule does not apply to this content, or this block is a stated exception."
     },

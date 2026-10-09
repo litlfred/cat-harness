@@ -18,6 +18,7 @@
       "name": "Content acquisition",
       "nodeCount": 9,
       "sourcePath": "processes/library/content-acquisition.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/content-acquisition.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_ContentAcquisition/node/Start_Acquire",
       "summary": "How a resource gets into the graph in the first place."
     },
@@ -272,6 +273,7 @@
       "name": "Copy out materialized content — to work on somebody else's bytes",
       "nodeCount": 9,
       "sourcePath": "processes/library/copy-out-materialized.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/copy-out-materialized.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CopyOutMaterialized/node/StartEvent_WantToEdit",
       "summary": "Somebody wants to change content this repository holds a read-only materialized copy of: copy it into their own `folio/`, recording which original it came out of."
     },
@@ -529,6 +531,7 @@
       "name": "Human Translation Workflow",
       "nodeCount": 20,
       "sourcePath": "processes/library/human-translation-workflow.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/human-translation-workflow.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_HumanTranslation/node/Start_TranslationNeeded",
       "summary": "The human half of translation: a coordinator assigns a locale to a qualified translator, the translator works in their own tool, a subject-matter expert judges accuracy, and only then is the result official."
     },
@@ -1076,6 +1079,7 @@
       "name": "Basic ingestion — an upload to an asset catalogued in library/",
       "nodeCount": 7,
       "sourcePath": "processes/library/document-ingestion.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/document-ingestion.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_Ingestion/node/StartEvent_Dropped",
       "summary": "Accepts an upload, records its extracted metadata in the knowledge graph, and catalogues the asset in `library/` — held if materialized, referenced if not."
     },
@@ -1282,6 +1286,7 @@
       "name": "Materialize remote content — the shared subprocess",
       "nodeCount": 14,
       "sourcePath": "processes/library/materialize-remote.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/materialize-remote.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MaterializeRemote/node/StartEvent_Asked",
       "summary": "One process, called wherever remote content is landed locally."
     },
@@ -1652,6 +1657,7 @@
       "name": "Adopt a methodology from a source document",
       "nodeCount": 12,
       "sourcePath": "processes/library/methodology-from-source.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/methodology-from-source.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MethodologyFromSource/node/Start_MFS",
       "summary": "Adopt the method of a shared paper, book or standard: origin and licence, ingestion, what is adopted and refused, placement by ownership, integration by calling existing processes, and the owner's review."
     },
@@ -1976,6 +1982,7 @@
       "name": "Refresh materialized remote content",
       "nodeCount": 14,
       "sourcePath": "processes/library/refresh-materialized.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/refresh-materialized.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_RefreshMaterialized/node/StartEvent_Due",
       "summary": "Keep a materialized copy of remote content current: what changed upstream, what changed locally, and what to do when both did — an archival copy is never re-fetched and gets a fixity check instead."
     },
@@ -2404,6 +2411,7 @@
       "name": "Sample import into a structured data store",
       "nodeCount": 16,
       "sourcePath": "processes/library/sample-import.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/sample-import.bpmn",
       "startNode": [
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SampleImport/node/StartEvent_Proposed",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SampleImport/node/StartEvent_Upstream"
@@ -2839,6 +2847,7 @@
       "name": "Subscribe to an external knowledge graph",
       "nodeCount": 20,
       "sourcePath": "processes/library/subscribe-kg.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/subscribe-kg.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SubscribeKg/node/StartEvent_Wanted",
       "summary": "Subscribe a folio or harness to an external knowledge graph pinned to a full commit SHA, then take each chosen part from referenced to materialized through `materialize-remote` and instantiate each chosen harness once its needs are held."
     },
@@ -3437,6 +3446,7 @@
       "name": "Translation Workflow",
       "nodeCount": 16,
       "sourcePath": "processes/library/translation-workflow.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/library/translation-workflow.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_Translation/node/Start_ContentAuthored",
       "summary": "The machine half of translation, end to end: extract the translatable strings, inject a catalogue back, check the result by back-translating it, and track whether the source has moved since."
     },

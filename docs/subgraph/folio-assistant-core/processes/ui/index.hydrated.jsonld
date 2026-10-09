@@ -14,6 +14,7 @@
       "name": "Board: open and close content",
       "nodeCount": 10,
       "sourcePath": "processes/ui/board-open-close.bpmn",
+      "sourceUrl": "https://github.com/litlfred/folio-assistant-core/blob/main/processes/ui/board-open-close.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_BoardOpenClose/node/Start_Board",
       "summary": "What a reader does to a board and what the renderer does back: every card rests as its avatar, a window opens onto the one the reader chose, and it closes back to where it came from."
     },
@@ -326,6 +327,7 @@
       "name": "Board: place a note",
       "nodeCount": 6,
       "sourcePath": "processes/ui/board-place-note.bpmn",
+      "sourceUrl": "https://github.com/litlfred/folio-assistant-core/blob/main/processes/ui/board-place-note.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_BoardPlaceNote/node/Start_Place",
       "summary": "Putting a note at a spot on a board: write the note into the folio, record where it was drawn on THIS board, and sweep any position whose note has gone."
     },
@@ -503,6 +505,7 @@
       "name": "Board: relocate content to the trashcan",
       "nodeCount": 9,
       "sourcePath": "processes/ui/board-relocate.bpmn",
+      "sourceUrl": "https://github.com/litlfred/folio-assistant-core/blob/main/processes/ui/board-relocate.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_BoardRelocate/node/Start_Fishbone",
       "summary": "Moving open content to the trashcan from the board, with the reader's confirmation in front of the move and not behind it."
     },

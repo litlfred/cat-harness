@@ -18786,6 +18786,44 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/index-config.indexconfigschema.description",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "IndexConfigSchema.description"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "One paragraph under that title, saying what the checkout is for."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/index-config.ts#IndexConfigSchema.description",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/index-config.indexconfigschema.title",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "IndexConfigSchema.title"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "What this CHECKOUT is called. The index declares no instance of its own (owner, 2026-10-08), so nothing else names it; `index:render` titles the root `README.md` and `AGENTS.md` with it (owner, 2026-10-09: those two are rendered files). Absent, they are titled generically."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/index-config.ts#IndexConfigSchema.title",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/index-config.indexmigration.moved",
       "@type": "skos:Concept",
       "skos:inScheme": {
