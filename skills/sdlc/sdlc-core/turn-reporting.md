@@ -115,34 +115,68 @@ below it, which is what a scope written as a section heading buys you. The
 author's reply was *"what is 5o3a?"*, which is the round-trip the whole rule
 exists to remove.
 
-**2. Asking for review means linking the artefact — deep, not the root.** If a
+**2. Asking for review means linking the artefact — deep, not the root, and naming the host.** If a
 turn ends with "please look at this", it must carry the **PR link** and a
-**direct link to every page that changed**, not the staging root.
+**direct link to every page that changed**, not the staging root. It must also
+**explicitly state which host rendered it**, drawn from declared architecture /
+[`deployment-awareness`](../../ui/ui-core/deployment-awareness.md) (e.g. `GitHub Pages`,
+`local server`, `chat discussion only`, or `could not determine`).
 
-> ✗ `https://…/STAGING/claude-my-branch/`
+> ✗ `https://…/STAGING/claude-my-branch/` *(root only, host unstated)*
 >
-> ✓ **Staging:**
+> ✗ `https://owner.github.io/repo/STAGING/claude-my-branch/page.html` *(assumed github.io on private repo)*
+>
+> ✓ **Staging (GitHub Pages):**
 > - [Swarm management](https://…/STAGING/claude-my-branch/swarm-management.html) — new page
 > - [process-state](https://…/STAGING/claude-my-branch/reference/skill-instructions/process-state.html) — new skill
 > - [Architecture](https://…/STAGING/claude-my-branch/architecture.html) — nav entry added
+>
+> ✓ **Staging (local server at http://127.0.0.1:4000):**
+> - [Swarm management](http://127.0.0.1:4000/STAGING/claude-my-branch/swarm-management.html) — new page
+>
+> ✓ **Review (chat discussion only — no web surface):**
+> - `docs/concepts/architecture/swarm-management.md` — new page (outline provided in chat)
+>
+> ✓ **Review (could not determine staging host):**
+> - `docs/concepts/architecture/swarm-management.md` — repo-relative path for review
 
 Handing over the root makes the reader navigate a site to find what you
 changed. You already know which pages those are — you wrote them — so the
 lookup is yours to do, not theirs. Say what each link *is*, too: a bare URL
 does not tell a reader whether it is new, changed, or just context.
 
+**Never assume `github.io` or compose a URL from a git remote.** On a private
+repository there is no public Pages; on a local-git-only topology there is no
+forge at all. In both cases an agent that guesses hands over a URL that
+**does not resolve**, costing the author — who types with difficulty — an
+expensive round trip finding that out. The staging host is an architectural fact,
+not an inference from a remote name.
+
 `AGENTS.md` records the underlying rule (PR #178, 2026-09-16): a human cannot
 assess a rendered artefact from a description, and withholding it makes
 assessment harder rather than safer. **A root-only link is a partial
 withholding** — the artefact is technically reachable and practically hidden.
 
-**Where to get the links.** The staging workflow deploys to
-`…/STAGING/<branch-slug>/`, and Jekyll rewrites `baseurl` so paths mirror
-`docs/`. A page at `docs/concepts/architecture/foo.md` is at
-`…/STAGING/<slug>/architecture/foo.html`; a skill at
-`skills/<pkg>/bar.md` is at
-`…/STAGING/<slug>/reference/skill-instructions/bar.html`. Derive one per
-changed file rather than guessing which the reader wants.
+**Where to get the links.** Look to the declared topology and configuration
+([`deployment-awareness`](../../ui/ui-core/deployment-awareness.md)), never a
+guess:
+1. **GitHub Pages (static host):** When Pages is configured (e.g. `pagesBaseUrl`
+   is declared in `<name>.config.json`), the staging workflow deploys to
+   `…/STAGING/<branch-slug>/`, and Jekyll rewrites `baseurl` so paths mirror
+   `docs/`. A page at `docs/concepts/architecture/foo.md` is at
+   `…/STAGING/<slug>/architecture/foo.html`; a skill at
+   `skills/<pkg>/bar.md` is at
+   `…/STAGING/<slug>/reference/skill-instructions/bar.html`. Derive one per
+   changed file rather than guessing which the reader wants.
+2. **Local server (dynamic host):** When running a local preview (e.g. Bun
+   `serve:rendering`), report the local loopback host and port.
+3. **Chat discussion only:** When no web server or UI canvas is active,
+   degrade gracefully to chat: list the modified file paths and provide an
+   outline or structured summary in chat.
+4. **The third state ("could not determine"):** If the host or staging URL
+   cannot be determined from declared configuration, explicitly state
+   **"could not determine"** and provide the repo-relative file paths (or
+   commit permalinks under Rule 8) for review instead of guessing a broken URL.
 
 **3. Say what to review, not just that it is green.** "Green on all three
 workflows" says the PR is not broken. It does not say what the change **does**,
