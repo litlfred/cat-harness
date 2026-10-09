@@ -1606,6 +1606,21 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
       "A content block's relative links, computation.script path, or {{...}} macro templates do not resolve against " +
       "the instance's declared directories. Guarded by vacuity and undetermined states; report-only warning.",
   },
+  {
+    id: "orphan-subject-resolves",
+    applies: ["graph"],
+    scope: "repo",
+    scopeBasis:
+      "Artefacts across declared graph kinds (beans, qa-sidecars, attestations) are resolved at the " +
+      "repository root via `repoRootFor(root)`. Re-asking per instance would judge repository-level " +
+      "stores like `beans/` repeatedly or report false orphans against an instance-local subset.",
+    // Non-blocking `minor` severity with vacuity guard (bean folio-assistant-9mmu).
+    severity: "minor",
+    summary:
+      "An artefact across declared graph kinds references an orphan target or subject that does not exist in the " +
+      "graph (e.g. beans referencing nonexistent parents, sidecars whose subject file is missing, etc.). " +
+      "Vacuity-guarded: empty candidate set returns `unknown`, never a false pass.",
+  },
 ] as const;
 
 export const KG_CRITERIA_BY_ID: Readonly<Record<string, KgCriterionDefinition>> = Object.fromEntries(
