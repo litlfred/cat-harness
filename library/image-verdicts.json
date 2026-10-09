@@ -2001,6 +2001,871 @@
         "saw": "Figure 2 on page 4: Cost-vs.-resolved routing curves on SWE-Bench Verified comparing SWE-Router against baselines and random assignment reference",
         "draft": "Figure 2: Cost-vs.-resolved routing curves on held-out SWE-Bench Verified across two (weak, strong) model pairs. SWE-Router (K=3, green) sits above the random-assignment gray band and prompt-only embedding baselines across the cost spectrum, achieving a Pareto frontier that retains the majority of frontier model performance at a fraction of inference cost."
       }
+    },
+    "arxiv-2601.04544v1": {
+      "img-p001-1": {
+        "role": "logo",
+        "saw": "TCAndon running header placed in the top margin across pages 1 to 16",
+        "draft": "The TCAndon running header mark: 'TCAndon' text placed in the upper page margin as running header furniture across all pages of the paper."
+      },
+      "img-p002-2": {
+        "role": "figure",
+        "saw": "Figure 1: (a) performance router and (b) task router architectures",
+        "draft": "Figure 1: Comparison between (a) performance router which routes queries to different sized models (Small LLM vs Large LLM) to balance cost and latency, and (b) task router which routes queries to domain-specific expert agents (ELB Agent, CDN Agent, DNS Agent) to improve accuracy."
+      },
+      "img-p005-2": {
+        "role": "figure",
+        "saw": "Figure 2: (a) Solo Agent vs (b) Refining Agent execution pipelines",
+        "draft": "Figure 2: Execution pipeline architectures. (a) Solo Agent: the router selects a single solver agent to respond directly to the query. (b) Refining Agent: the router selects candidate solver agents (Solver Agent A, B, C) running in parallel, and a downstream Refining Agent aggregates and reconciles partial responses into a unified Final Answer."
+      },
+      "vfig-p008": {
+        "role": "figure",
+        "saw": "Figure 3: Refining Agent win rate comparing Consultation (27.0%) vs Troubleshooting (63.0%)",
+        "draft": "Figure 3: Horizontal bar chart showing Refining Agent human preference win rate in candidate agent conflict scenarios: 27.0% for consultation queries and 63.0% for troubleshooting queries, demonstrating superior multi-agent aggregation for complex troubleshooting tasks.",
+        "shows": [
+          "3"
+        ]
+      },
+      "vfig-p009": {
+        "role": "figure",
+        "saw": "Figure 4: RL Reward (a) and RL Entropy (b) comparing SFT-Only vs SFT+Slerp training curves",
+        "draft": "Figure 4: Training curves across 1750 RL steps comparing SFT-Only and SFT+Slerp initialization. (a) RL Reward shows both approaches converging to ~0.9. (b) RL Entropy shows SFT+Slerp maintaining higher entropy (~0.6 vs ~0.5), indicating enhanced exploration and resistance to entropy collapse.",
+        "shows": [
+          "4"
+        ]
+      }
+    },
+    "arxiv-2402.02172v5": {
+      "img-p001-1": {
+        "role": "logo",
+        "saw": "CodeAgent project mascot/logo icon placed beside the title on page 1",
+        "draft": "The CodeAgent project logo: a cartoon mascot of a coding agent with headphones beside the paper title 'CodeAgent: Autonomous Communicative Agents for Code Review'."
+      },
+      "img-p003-1": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-3": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-5": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-7": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-37": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-38": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-42": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-44": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-59": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-61": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-62": {
+        "role": "decorative",
+        "saw": "review output panel text rasterized inside Figure 1 pipeline diagram",
+        "draft": "Sample review comment panel inside Figure 1, illustrating four analysis categories: Semantic Consistency Analysis, Security Analysis, Format Analysis, and Code Alignment/Revision Suggestions."
+      },
+      "img-p003-63": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-65": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-69": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-76": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-82": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-88": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-97": {
+        "role": "decorative",
+        "saw": "code revision suggestion box inside Figure 1 pipeline diagram",
+        "draft": "Code revision suggestion box inside Figure 1 showing a proposed modification to the assertEquals method using java.util.Objects.equals."
+      },
+      "img-p003-98": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p003-99": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
+        "draft": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram."
+      },
+      "img-p004-1": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-5": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-7": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-19": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-29": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-32": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-34": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-36": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-38": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-40": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-41": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-42": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-43": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-58": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-70": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-80": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-83": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-86": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-90": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p004-105": {
+        "role": "decorative",
+        "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
+        "draft": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow."
+      },
+      "img-p016-1": {
+        "role": "decorative",
+        "saw": "character avatar illustration inside Figure 5",
+        "draft": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5."
+      },
+      "img-p016-2": {
+        "role": "decorative",
+        "saw": "character avatar illustration inside Figure 5",
+        "draft": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5."
+      },
+      "img-p016-3": {
+        "role": "decorative",
+        "saw": "character avatar illustration inside Figure 5",
+        "draft": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5."
+      },
+      "img-p016-4": {
+        "role": "decorative",
+        "saw": "character avatar illustration inside Figure 5",
+        "draft": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5."
+      },
+      "img-p016-5": {
+        "role": "decorative",
+        "saw": "character avatar illustration inside Figure 5",
+        "draft": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5."
+      },
+      "img-p016-6": {
+        "role": "decorative",
+        "saw": "character avatar illustration inside Figure 5",
+        "draft": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5."
+      },
+      "img-p016-7": {
+        "role": "decorative",
+        "saw": "character avatar illustration inside Figure 5",
+        "draft": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5."
+      },
+      "img-p025-1": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue."
+      },
+      "img-p025-4": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue."
+      },
+      "img-p025-7": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue."
+      },
+      "img-p025-9": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue."
+      },
+      "img-p025-10": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue."
+      },
+      "img-p025-11": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue."
+      },
+      "img-p025-14": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue."
+      },
+      "img-p025-15": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue."
+      },
+      "img-p025-18": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue."
+      },
+      "img-p025-21": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue."
+      },
+      "img-p026-1": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue."
+      },
+      "img-p026-4": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue."
+      },
+      "img-p026-6": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue."
+      },
+      "img-p026-7": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue."
+      },
+      "img-p026-8": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue."
+      },
+      "img-p026-11": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue."
+      },
+      "img-p026-12": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue."
+      },
+      "img-p026-15": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue."
+      },
+      "img-p026-18": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue."
+      },
+      "img-p026-21": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue."
+      },
+      "img-p027-1": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue."
+      },
+      "img-p027-4": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue."
+      },
+      "img-p027-6": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue."
+      },
+      "img-p027-7": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue."
+      },
+      "img-p027-8": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue."
+      },
+      "img-p027-11": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue."
+      },
+      "img-p027-14": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue."
+      },
+      "img-p027-17": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue."
+      },
+      "img-p027-18": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue."
+      },
+      "img-p027-21": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue."
+      },
+      "img-p028-1": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue."
+      },
+      "img-p028-4": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue."
+      },
+      "img-p028-6": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue."
+      },
+      "img-p028-7": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue."
+      },
+      "img-p028-8": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue."
+      },
+      "img-p028-12": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue."
+      },
+      "img-p028-15": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue."
+      },
+      "img-p028-19": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue."
+      },
+      "img-p028-22": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue."
+      },
+      "img-p028-25": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue."
+      },
+      "img-p029-1": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue."
+      },
+      "img-p029-4": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue."
+      },
+      "img-p029-6": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue."
+      },
+      "img-p029-7": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue."
+      },
+      "img-p029-8": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue."
+      },
+      "img-p029-11": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue."
+      },
+      "img-p029-14": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue."
+      },
+      "img-p029-15": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue."
+      },
+      "img-p029-18": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue."
+      },
+      "img-p029-21": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue."
+      },
+      "img-p030-1": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue."
+      },
+      "img-p030-4": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue."
+      },
+      "img-p030-6": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue."
+      },
+      "img-p030-7": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue."
+      },
+      "img-p030-8": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue."
+      },
+      "img-p030-11": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue."
+      },
+      "img-p030-14": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue."
+      },
+      "img-p030-15": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue."
+      },
+      "img-p030-18": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue."
+      },
+      "img-p030-21": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue."
+      },
+      "img-p031-1": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue."
+      },
+      "img-p031-4": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue."
+      },
+      "img-p031-6": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue."
+      },
+      "img-p031-7": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue."
+      },
+      "img-p031-8": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue."
+      },
+      "img-p031-11": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue."
+      },
+      "img-p031-14": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue."
+      },
+      "img-p031-17": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue."
+      },
+      "img-p031-18": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue."
+      },
+      "img-p031-21": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue."
+      },
+      "img-p032-1": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue."
+      },
+      "img-p032-4": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue."
+      },
+      "img-p032-6": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue."
+      },
+      "img-p032-7": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue."
+      },
+      "img-p032-8": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue."
+      },
+      "img-p032-11": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue."
+      },
+      "img-p032-14": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue."
+      },
+      "img-p032-17": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue."
+      },
+      "img-p032-18": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue."
+      },
+      "img-p032-21": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue."
+      },
+      "img-p034-1": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 34 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue."
+      },
+      "img-p034-2": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 34 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue."
+      },
+      "img-p034-5": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 34 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue."
+      },
+      "img-p034-7": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 34 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue."
+      },
+      "img-p034-10": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 34 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue."
+      },
+      "img-p034-12": {
+        "role": "decorative",
+        "saw": "speaker avatar icon on page 34 in case study dialogue transcripts",
+        "draft": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue."
+      },
+      "img-p035-1": {
+        "role": "figure",
+        "saw": "Figure 23, screenshot of the CodeAgent website interface at https://code-agent-new.vercel.app/index.html",
+        "draft": "Figure 23, website of CodeAgent. The interface provides a web-based code review portal with input panels for code changes (diffs), commit messages, and repository context, alongside response panels presenting multi-agent review outputs categorized into semantic consistency, vulnerability detection, code style validation, and code revision suggestions."
+      },
+      "vfig-p003": {
+        "role": "figure",
+        "shows": [
+          "1"
+        ],
+        "saw": "Figure 1 on page 3: overview of the CodeAgent pipeline and role data cards",
+        "draft": "Figure 1: A Schematic diagram of role data cards of simulated code review team and their conversations within CodeAgent."
+      },
+      "vfig-p004": {
+        "role": "figure",
+        "shows": [
+          "2",
+          "3"
+        ],
+        "saw": "Figures 2 and 3 on page 4: conversation scenario and QA-Checker architecture",
+        "draft": "Figure 2: CodeAgent pipeline scenario across review roles, and Figure 3: Architecture of the Self-Improving Chain-of-Thought with QA-Checker."
+      },
+      "vfig-p007": {
+        "role": "figure",
+        "shows": [
+          "4"
+        ],
+        "saw": "Figure 4 on page 7: Venn diagram of vulnerability detection overlap",
+        "draft": "Figure 4: Overlap of vulnerability detection among CodeBERT, GPT-3.5, GPT-4.0, and CodeAgent."
+      },
+      "vfig-p016": {
+        "role": "figure",
+        "shows": [
+          "5"
+        ],
+        "saw": "Figure 5 on page 16: specialization of six main characters",
+        "draft": "Figure 5: Specialization of the six main character agent personas in CodeAgent."
+      },
+      "vfig-p017": {
+        "role": "figure",
+        "shows": [
+          "6"
+        ],
+        "saw": "Figure 6 on page 17: execution time across languages",
+        "draft": "Figure 6: Execution time of CodeAgent across different programming languages."
+      },
+      "vfig-p019": {
+        "role": "figure",
+        "shows": [
+          "7",
+          "8"
+        ],
+        "saw": "Figures 7 and 8 on page 19: dataset distributions across languages",
+        "draft": "Figures 7 and 8: Distribution of merged and closed code review dataset samples across 9 programming languages."
+      },
+      "vfig-p022": {
+        "role": "figure",
+        "shows": [
+          "9"
+        ],
+        "saw": "Figure 9 on page 22: model comparison on merged data for CA task",
+        "draft": "Figure 9: Comparison of models on merged data across 9 languages on the Consistency Analysis (CA) task."
+      },
+      "vfig-p023": {
+        "role": "figure",
+        "shows": [
+          "10",
+          "11"
+        ],
+        "saw": "Figures 10 and 11 on page 23: model comparisons on CA (closed) and FA (merged)",
+        "draft": "Figures 10 and 11: Comparison of models on closed data for Consistency Analysis and on merged data for Format Analysis."
+      },
+      "vfig-p024": {
+        "role": "figure",
+        "shows": [
+          "12"
+        ],
+        "saw": "Figure 12 on page 24: model comparison on closed data for FA task",
+        "draft": "Figure 12: Comparison of models on closed data across 9 languages on the Format Analysis (FA) task."
+      },
+      "vfig-p025": {
+        "role": "figure",
+        "shows": [
+          "13"
+        ],
+        "saw": "Figure 13 on page 25: Python case study",
+        "draft": "Figure 13: Example code review dialogue in a Python project commit (sha: 0d3b94bbd7528ed8649cdab4370a62e508bad82c)."
+      },
+      "vfig-p026": {
+        "role": "figure",
+        "shows": [
+          "14"
+        ],
+        "saw": "Figure 14 on page 26: Java case study",
+        "draft": "Figure 14: Example code review dialogue in a Java project commit (sha: 6e3c6d17d943f5ac70b421653eb167e0c34b119f)."
+      },
+      "vfig-p027": {
+        "role": "figure",
+        "shows": [
+          "15"
+        ],
+        "saw": "Figure 15 on page 27: Go case study",
+        "draft": "Figure 15: Example code review dialogue in a Go project commit (sha: a6b00b097b1a8140bd8b60177247dc830374c8ed)."
+      },
+      "vfig-p028": {
+        "role": "figure",
+        "shows": [
+          "16"
+        ],
+        "saw": "Figure 16 on page 28: C++ case study",
+        "draft": "Figure 16: Example code review dialogue in a C++ project commit (sha: 09e88c7c20347cdf513323fa8c616aba0a1b9ea7)."
+      },
+      "vfig-p029": {
+        "role": "figure",
+        "shows": [
+          "17"
+        ],
+        "saw": "Figure 17 on page 29: JavaScript case study",
+        "draft": "Figure 17: Example code review dialogue in a JavaScript project commit (sha: 6e9a80d93b470aef4978677ed0b7c9996fddbe20)."
+      },
+      "vfig-p030": {
+        "role": "figure",
+        "shows": [
+          "18"
+        ],
+        "saw": "Figure 18 on page 30: C case study",
+        "draft": "Figure 18: Example code review dialogue in a C project commit (sha: 5f93cf43dd6f809d7927abb79884285ad77e8a58)."
+      },
+      "vfig-p031": {
+        "role": "figure",
+        "shows": [
+          "19"
+        ],
+        "saw": "Figure 19 on page 31: C# case study",
+        "draft": "Figure 19: Example code review dialogue in a C# project commit (sha: 0e231c7a81b318e9eade972f7b877e66128ed67d)."
+      },
+      "vfig-p032": {
+        "role": "figure",
+        "shows": [
+          "20"
+        ],
+        "saw": "Figure 20 on page 32: PHP case study",
+        "draft": "Figure 20: Example code review dialogue in a PHP project commit (sha: 6679f059b9a0972a90df198471188da652f5c547)."
+      },
+      "vfig-p033": {
+        "role": "figure",
+        "shows": [
+          "21"
+        ],
+        "saw": "Figure 21 on page 33: Ruby case study",
+        "draft": "Figure 21: Example code review dialogue in a Ruby project commit (sha: 584f72e7f4c65066ccbd2183af76bf380b6eb974)."
+      },
+      "vfig-p034": {
+        "role": "figure",
+        "shows": [
+          "22"
+        ],
+        "saw": "Figure 22 on page 34: Comparison of CodeAgent-3.5 and CodeAgent-4.0",
+        "draft": "Figure 22: Comparison of review dialogue between CodeAgent-3.5 and CodeAgent-4.0 on a Java project commit."
+      }
     }
   },
   "attribution": {
@@ -2085,6 +2950,22 @@
         "kind": "agent",
         "id": "claude",
         "model": "claude-opus-5"
+      },
+      "inspected_at": "2026-10-09"
+    },
+    "arxiv-2601.04544v1": {
+      "inspected_by": {
+        "kind": "agent",
+        "id": "claude",
+        "model": "claude-opus-5"
+      },
+      "inspected_at": "2026-10-09"
+    },
+    "arxiv-2402.02172v5": {
+      "inspected_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
       },
       "inspected_at": "2026-10-09"
     }

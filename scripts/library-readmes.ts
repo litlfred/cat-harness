@@ -30,10 +30,10 @@ import { basename, join, relative, resolve } from "node:path";
 import { Liquid } from "liquidjs";
 
 import { splice } from "@litlfred/bootstrap-tools/scripts/subgraph-readmes.ts";
-import { directoriesForGraph, instanceRootsIn, repoRootFor } from "../schemas/cat-harness.ts";
+import { checkoutRootFor, directoriesForGraph, instanceRootsIn, readDeclaration, repoRootFor } from "../schemas/cat-harness.ts";
 
 const ROOT = resolve(import.meta.dir, "..");
-const REPO = repoRootFor(ROOT);
+const REPO = instanceRootsIn(repoRootFor(ROOT)).length ? repoRootFor(ROOT) : checkoutRootFor(ROOT);
 const TEMPLATES = join(import.meta.dir, "templates", "readme");
 
 /** What one item's README says, all of it read from the item. */
@@ -107,10 +107,11 @@ export async function plan(repo = REPO): Promise<{ writes: Map<string, string>; 
         if (!statSync(dir).isDirectory()) continue;
         const item = itemFacts(dir);
         if (item === undefined) continue;
+        const libId = repo === instance ? join(readDeclaration(instance)?.name ?? "", relative(repo, lib)) : relative(repo, lib);
         const region = await liquid.renderFile("library-item", {
           item,
           counts: { sections: countIn(dir, "sections"), blocks: countIn(dir, "blocks"), images: countIn(dir, "images") },
-          library: { id: relative(repo, lib), readme: existsSync(join(lib, "README.md")) ? "../README.md" : "../" },
+          library: { id: libId, readme: existsSync(join(lib, "README.md")) ? "../README.md" : "../" },
         });
         const out = join(dir, "README.md");
         const existing = existsSync(out) ? readFileSync(out, "utf-8") : undefined;
