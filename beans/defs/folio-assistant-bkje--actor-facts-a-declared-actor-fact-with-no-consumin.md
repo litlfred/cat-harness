@@ -1,10 +1,10 @@
 ---
 # folio-assistant-bkje
 title: 'ACTOR FACTS: a declared actor fact with no consuming process'
-status: todo
+status: in-progress
 type: task
 created_at: 2026-09-20T03:12:36Z
-updated_at: 2026-09-20T03:12:36Z
+updated_at: 2026-10-09T16:41:16Z
 parent: folio-assistant-ahvw
 ---
 
@@ -42,3 +42,5 @@ a field ends an ambiguity; it does not create a consumer.**
 - [ ] `actor-fact-has-consumer` exists as a `kg:audit` criterion, reporting
       before it gates, with a vacuity guard
 - [ ] the count it reports is recorded, so later runs can be compared
+
+_2026-10-09T16:41:16Z_ — Claimed by claude/bkje-actor-fact-consumer — pushed to cat/cat-harness/beans so sibling sessions see it before this branch has a PR (bean 35nj).
