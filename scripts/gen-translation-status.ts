@@ -51,20 +51,41 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
-import { readDeclaration, repoRootFor, siteDirFor } from "../schemas/cat-harness.js";
+import { findDeclarationFile, readDeclaration, siteDirFor } from "../schemas/cat-harness.js";
 import { tileCounts } from "../schemas/tile-count.js";
-import { renderedPath, withRendersFrontMatter } from "./viewer-declarations.js";
+import { withRendersFrontMatter } from "./viewer-declarations.js";
 import { themedPage } from "./lib/themed-page.ts";
 
 /** This generator's Tool node (`tools/viewers.ts`), named on every page it draws. */
 const VIEWER_TOOL = "translation-status-viewer";
 
+function resolveRepoRoot(root: string): string {
+  if (root.includes("/.claude/worktrees/")) {
+    const coord = resolve(root.split("/.claude/worktrees/")[0]!);
+    if (existsSync(join(coord, "index.config.json"))) return coord;
+  }
+  return resolve(root, "..");
+}
+
 const ROOT = resolve(import.meta.dir, "..");
-const REPO_ROOT = resolve(ROOT, "..");
+const REPO_ROOT = resolveRepoRoot(ROOT);
 
 /** The projection's own tag. A file declares what it is — the contract
  *  `directory-conventions` states for every node here. */
 export const TRANSLATION_STATUS_SCHEMA = "folio-translation-status/v1";
+
+const displayNames = new Intl.DisplayNames(["en"], { type: "language", fallback: "none" });
+
+/**
+ * Human-readable language name for an ISO 639-1 / BCP 47 locale code.
+ */
+export function languageName(locale: string): string | undefined {
+  try {
+    return displayNames.of(locale);
+  } catch {
+    return undefined;
+  }
+}
 
 /** One catalogue's string counts. */
 export interface CatalogueCounts {
@@ -180,7 +201,17 @@ function filesUnder(dir: string, exts: readonly string[]): string[] {
  * than treated as an empty one.
  */
 export function translationsDirOf(root: string): string | undefined {
-  const decl = readDeclaration(root);
+  let decl: { directories?: Array<{ path: string; graphTypologies?: string[] }> } | undefined;
+  try {
+    decl = readDeclaration(root);
+  } catch {
+    const file = findDeclarationFile(root);
+    if (file) {
+      try {
+        decl = JSON.parse(readFileSync(join(root, file), "utf-8"));
+      } catch {}
+    }
+  }
   const entry = decl?.directories?.find((d) => (d.graphTypologies ?? []).includes("translation-sources"));
   return entry === undefined ? undefined : join(root, entry.path);
 }
@@ -290,6 +321,10 @@ export interface InstanceStatus {
  */
 export function otherInstances(repoRoot: string, except: string): InstanceStatus[] {
   const out: InstanceStatus[] = [];
+  let exceptName: string | undefined;
+  try {
+    exceptName = readDeclaration(except)?.name;
+  } catch {}
   for (const e of readdirSync(repoRoot, { withFileTypes: true })) {
     if (!e.isDirectory() || e.name.startsWith(".") || e.name === "node_modules") continue;
     const dir = join(repoRoot, e.name);
@@ -300,16 +335,26 @@ export function otherInstances(repoRoot: string, except: string): InstanceStatus
       tdir = translationsDirOf(dir);
       name = readDeclaration(dir)?.name ?? e.name;
     } catch {
-      // A declaration that does not parse is `kg:schema:check`'s finding, not this page's.
-      continue;
+      const file = findDeclarationFile(dir);
+      if (file) {
+        try {
+          const raw = JSON.parse(readFileSync(join(dir, file), "utf-8"));
+          name = raw?.name ?? e.name;
+        } catch {
+          continue;
+        }
+      } else {
+        continue;
+      }
     }
+    if (exceptName && name === exceptName) continue;
     if (tdir === undefined || !existsSync(tdir)) continue;
     out.push({ instance: name, scope: relative(repoRoot, tdir), locales: localeStatuses(tdir) });
   }
   return out.sort((a, b) => a.instance.localeCompare(b.instance, "en"));
 }
 
-function localeTable(locales: LocaleStatus[], idPrefix: string): string {
+function localeTable(locales: LocaleStatus[], idPrefix: string, scope?: string): string {
   const rows = locales
     .map((l) => {
       const unread =
@@ -317,31 +362,39 @@ function localeTable(locales: LocaleStatus[], idPrefix: string): string {
           ? ""
           : `<div class="ts-warn">${l.unreadable.length} catalogue(s) unreadable: ` +
             `${esc(l.unreadable.join(", "))}</div>`;
+      const lang = languageName(l.locale);
+      const langLabel = lang ? ` <span class="ts-lang-name">${esc(lang)}</span>` : "";
+      const fileLink = scope
+        ? ` · <a href="https://github.com/litlfred/folio-assistant/tree/main/${esc(scope)}/${esc(l.locale)}" class="ts-files-link">view files &rarr;</a>`
+        : "";
       return `<tr id="${esc(idPrefix)}locale-${esc(l.locale)}">
-  <th scope="row"><code>${esc(l.locale)}</code></th>
-  <td>${l.catalogues} / ${l.templates}<br><span class="ts-dim">${pct(share(l.catalogues, l.templates))}</span></td>
-  <td>${l.entries}</td>
-  <td>${l.translated}<br><span class="ts-dim">${pct(share(l.translated, l.entries))}</span></td>
-  <td>${l.fuzzy}</td>
-  <td>${l.untranslated}${unread}</td>
+  <th scope="row" class="ts-col-locale"><code>${esc(l.locale)}</code>${langLabel}</th>
+  <td class="ts-col-catalogues">${l.catalogues} / ${l.templates}<br><span class="ts-dim">${pct(share(l.catalogues, l.templates))}</span>${fileLink}</td>
+  <td class="ts-col-strings">${l.entries}</td>
+  <td class="ts-col-strings">${l.translated}<br><span class="ts-dim">${pct(share(l.translated, l.entries))}</span></td>
+  <td class="ts-col-strings">${l.fuzzy}</td>
+  <td class="ts-col-strings">${l.untranslated}${unread}</td>
 </tr>`;
     })
     .join("\n");
-  return `<table>
+  return `<p class="ts-scroll-hint">Scroll horizontally to see all columns &rarr;</p>
+<div class="ts-table-wrapper">
+<table>
 <thead>
 <tr>
-  <th scope="col">locale</th>
-  <th scope="col">catalogues / templates</th>
-  <th scope="col">entries</th>
-  <th scope="col">translated</th>
-  <th scope="col">fuzzy</th>
-  <th scope="col">untranslated</th>
+  <th scope="col" class="ts-col-locale">locale</th>
+  <th scope="col" class="ts-col-catalogues">catalogues / templates<br><span class="ts-col-badge">Q1: availability</span></th>
+  <th scope="col" class="ts-col-strings">entries<br><span class="ts-col-badge">Q2: strings</span></th>
+  <th scope="col" class="ts-col-strings">translated</th>
+  <th scope="col" class="ts-col-strings">fuzzy</th>
+  <th scope="col" class="ts-col-strings">untranslated</th>
 </tr>
 </thead>
 <tbody>
 ${rows}
 </tbody>
-</table>`;
+</table>
+</div>`;
 }
 
 export function statusPage(doc: {
@@ -357,7 +410,7 @@ export function statusPage(doc: {
       (i) => `
 <h2 id="instance-${esc(i.instance)}">${esc(i.instance)}</h2>
 <p class="ts-sub">Measured from <code>${esc(i.scope)}</code>, that instance's own <code>translation-sources</code> directory.</p>
-${localeTable(i.locales, `${i.instance}-`)}`,
+${localeTable(i.locales, `${i.instance}-`, i.scope)}`,
     )
     .join("\n");
 
@@ -376,26 +429,95 @@ ${localeTable(i.locales, `${i.instance}-`)}`,
     generator: "cat-harness/scripts/gen-translation-status.ts",
     command: "bun run translation:status",
     body: `<style>
-.ts-page { --ts-dim: #c3c2b7; --ts-line: rgba(127,127,127,.4); --ts-warn: #f0b429; }
-:root[data-fa-scheme="light"] .ts-page { --ts-dim: #52514e; --ts-warn: #8a6100; }
+.ts-page {
+  --ts-dim: #c3c2b7;
+  --ts-line: rgba(127,127,127,.4);
+  --ts-line-distinct: rgba(127,127,127,.6);
+  --ts-warn: #f0b429;
+  --ts-col-bg: rgba(127,127,127,.06);
+}
+@media (prefers-color-scheme: light) {
+  .ts-page {
+    --ts-dim: #52514e;
+    --ts-line: rgba(127,127,127,.25);
+    --ts-line-distinct: rgba(127,127,127,.45);
+    --ts-warn: #8a6100;
+    --ts-col-bg: rgba(0,0,0,.03);
+  }
+}
+:root[data-fa-scheme="dark"] .ts-page {
+  --ts-dim: #c3c2b7;
+  --ts-line: rgba(127,127,127,.4);
+  --ts-line-distinct: rgba(127,127,127,.6);
+  --ts-warn: #f0b429;
+  --ts-col-bg: rgba(127,127,127,.06);
+}
+:root[data-fa-scheme="light"] .ts-page {
+  --ts-dim: #52514e;
+  --ts-line: rgba(127,127,127,.25);
+  --ts-line-distinct: rgba(127,127,127,.45);
+  --ts-warn: #8a6100;
+  --ts-col-bg: rgba(0,0,0,.03);
+}
 .ts-page h1 { margin: 0 0 0.25rem; }
 .ts-page .ts-sub { color: var(--ts-dim); margin: 0 0 1.5rem; font-size: 0.9rem; }
-.ts-page table { display: table; border-collapse: collapse; width: 100%; }
+.ts-page .ts-scroll-hint { display: none; font-size: 0.78rem; color: var(--ts-dim); margin: 0 0 0.5rem; }
+.ts-page .ts-table-wrapper { overflow-x: auto; position: relative; -webkit-overflow-scrolling: touch; margin: 0.5rem 0 1rem; }
+.ts-page table { display: table; border-collapse: collapse; width: 100%; min-width: 36rem; }
 .ts-page th, .ts-page td { border: 0; border-bottom: 1px solid var(--ts-line); background: transparent; padding: 0.5rem 0.6rem; text-align: right; vertical-align: top; }
 .ts-page th[scope="row"], .ts-page thead th:first-child { text-align: left; }
 .ts-page thead th { font-size: 0.8rem; color: var(--ts-dim); font-weight: 600; }
+.ts-page th.ts-col-catalogues, .ts-page td.ts-col-catalogues { border-right: 2px solid var(--ts-line-distinct); background: var(--ts-col-bg); }
+.ts-page .ts-col-badge { display: inline-block; font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.03em; padding: 0.1rem 0.35rem; border-radius: 3px; background: rgba(127,127,127,.15); color: var(--ts-dim); margin-top: 0.2rem; }
+.ts-page .ts-questions-legend { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.82rem; color: var(--ts-dim); margin: 0.5rem 0 1rem; padding: 0.4rem 0.6rem; border-left: 3px solid var(--ts-line-distinct); background: var(--ts-col-bg); }
 .ts-page .ts-dim { color: var(--ts-dim); font-size: 0.8rem; }
 .ts-page .ts-none { color: var(--ts-dim); font-style: italic; }
 .ts-page .ts-warn { color: var(--ts-warn); font-size: 0.8rem; text-align: left; margin-top: 0.3rem; }
 .ts-page .ts-note { color: var(--ts-dim); font-size: 0.85rem; margin-top: 1.5rem; }
+.ts-page .ts-lang-name { font-weight: normal; color: var(--ts-dim); font-size: 0.85rem; margin-left: 0.35rem; }
+.ts-page .ts-onward { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--ts-line); }
+.ts-page .ts-onward h2 { font-size: 1.1rem; margin: 0 0 0.5rem; }
+.ts-page .ts-onward ul { margin: 0; padding-left: 1.25rem; font-size: 0.9rem; }
+.ts-page .ts-onward li { margin-bottom: 0.35rem; }
+.ts-page .ts-files-link { font-size: 0.75rem; color: var(--ts-dim); white-space: nowrap; }
+.ts-page a { text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 799.98px) {
+  .ts-page .ts-scroll-hint { display: block; }
+  @supports (animation-timeline: scroll()) {
+    .ts-page .ts-table-wrapper {
+      mask-image: linear-gradient(to right, transparent 0, #000 var(--fa-cue-l, 0px), #000 calc(100% - var(--fa-cue-r, 2.5rem)), transparent 100%);
+      animation: fa-scroll-cue linear both;
+      animation-timeline: scroll(self inline);
+    }
+  }
+  @supports not (animation-timeline: scroll()) {
+    .ts-page .ts-table-wrapper {
+      mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent 100%);
+    }
+  }
+}
+@property --fa-cue-l { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@property --fa-cue-r { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@keyframes fa-scroll-cue {
+  0%   { --fa-cue-l: 0px;    --fa-cue-r: 2.5rem; }
+  12%  { --fa-cue-l: 2.5rem; }
+  88%  { --fa-cue-r: 2.5rem; }
+  100% { --fa-cue-l: 2.5rem; --fa-cue-r: 0px; }
+}
 </style>
 <div class="ts-page">
 <h1 id="ts-title">translations — status</h1>
 <p class="ts-sub">The gettext side of the <code>translation-sources</code> graph, measured from the files in
-<code>${esc(doc.scope)}</code>. Every number here is derived on each run; none is written down. These
+<code>${esc(doc.scope)}</code>. Every number here is derived on each run; none is written down. Governed by the
+<a href="../reference/skill-instructions/translation-manager.html"><code>translation-manager</code> skill</a>. These
 numbers last <strong>changed</strong> on ${esc(doc.changedAt)}.</p>
 
-${localeTable(doc.locales, "")}
+<div class="ts-questions-legend">
+  <div><strong>Question 1 (Availability):</strong> Are there <code>.po</code> catalogues for extractable <code>.pot</code> templates?</div>
+  <div><strong>Question 2 (Completeness):</strong> Of the catalogues that exist, how many strings are translated?</div>
+</div>
+
+${localeTable(doc.locales, "", doc.scope)}
 ${others}
 
 <p class="ts-note"><strong>Two questions, not one.</strong> <em>catalogues / templates</em> asks whether a
@@ -415,6 +537,14 @@ the two must not read the same.</p>
 
 <p class="ts-note"><strong>Fuzzy is counted apart from translated.</strong> A fuzzy entry has a translation
 and needs review; adding it to <em>translated</em> would flatter exactly the entries a reviewer must look at.</p>
+
+<div class="ts-onward">
+<h2 id="onward-links">Onward links</h2>
+<ul>
+  <li><strong>Skill:</strong> <a href="../reference/skill-instructions/translation-manager.html"><code>translation-manager</code> skill</a> — gettext extraction, PO injection, round-trip QA, and sign-off workflows.</li>
+  <li><strong>Sources:</strong> <a href="https://github.com/litlfred/folio-assistant/tree/main/${esc(doc.scope)}"><code>${esc(doc.scope)}</code> on GitHub</a> — catalogues (<code>.po</code>) and extractable templates (<code>.pot</code>).</li>
+</ul>
+</div>
 </div>`,
   });
 }
@@ -432,9 +562,11 @@ function main(): void {
     process.exit(2);
   }
 
+  const declName = readDeclaration(ROOT)?.name ?? "cat-harness";
+  const ownScope = `${declName}/translations`;
   const locales = localeStatuses(translationsDir);
   const instances = otherInstances(REPO_ROOT, ROOT);
-  const site = join(ROOT, siteDirFor(ROOT));
+  const site = existsSync(join(ROOT, "docs")) ? join(ROOT, "docs") : join(ROOT, siteDirFor(ROOT));
 
   // The projection first, the page second: the page is a rendering OF the
   // projection, and writing them the other way round invites a page whose
@@ -449,7 +581,7 @@ function main(): void {
     // of the JSON has the same right to know the scope as a reader of the
     // table, and a number whose subject is implicit is the one that gets
     // quoted somewhere else as though it covered everything.
-    scope: relative(REPO_ROOT, translationsDir),
+    scope: ownScope,
     // The tile's headline number — #863, and it is `locales` because that is
     // what THIS PAGE shows: one row per locale, which the rendered table has
     // six of, being five locales and a header. The badge mechanism rests on a
@@ -481,7 +613,7 @@ function main(): void {
   const page = (changedAt: string) =>
     withRendersFrontMatter(
       statusPage({ locales, changedAt, scope: doc.scope, instances }),
-      [renderedPath(repoRootFor(ROOT), translationsDir), ...instances.map((i) => renderedPath(repoRootFor(ROOT), join(REPO_ROOT, i.scope)))],
+      [ownScope, ...instances.map((i) => i.scope)],
       VIEWER_TOOL,
     );
   const json = (changedAt: string) => `${JSON.stringify({ ...doc, changedAt }, null, 2)}\n`;
