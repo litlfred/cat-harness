@@ -373,6 +373,9 @@ package "who-iris/qa" as pkg_who_iris_qa <<qa>> {
     total [1] : number
   }
 }
+package "who-iris/folio" as pkg_who_iris_folio <<folio>> {
+  note "folio: no node schema declared\n(no validator registered: could not determine)" as n_who_iris_folio_folio
+}
 package "who-iris/voices" as pkg_who_iris_voices <<voices>> {
   class "Source" as who_iris_voices_Source <<json: VoiceProfileSchema>> #e8f0ee {
     title [1] : string
@@ -445,7 +448,7 @@ who_iris_voices_VoiceProfile *-- "1..*" who_iris_voices_Source : sources
 who_iris_voices_Rule *-- "0..*" who_iris_voices_Pattern : patterns
 who_iris_voices_Rule *-- "0..*" who_iris_voices_Terminology : terminology
 who_iris_voices_VoiceProfile *-- "1..*" who_iris_voices_Rule : rules
-' grid: portrait, 3 column(s) — pkg_who_iris_who_iris_translations pkg_who_iris_library pkg_who_iris_who_iris_site pkg_who_iris_who_iris_catalogue pkg_who_iris_who_iris_uploads pkg_who_iris_who_iris_skills pkg_who_iris_glossary pkg_who_iris_who_iris_themes pkg_who_iris_who_iris_docs pkg_who_iris_who_iris_scripts pkg_who_iris_who_iris_sources pkg_who_iris_id_lookup pkg_who_iris_qa pkg_who_iris_voices
+' grid: portrait, 3 column(s) — pkg_who_iris_who_iris_translations pkg_who_iris_library pkg_who_iris_who_iris_site pkg_who_iris_who_iris_catalogue pkg_who_iris_who_iris_uploads pkg_who_iris_who_iris_skills pkg_who_iris_glossary pkg_who_iris_who_iris_themes pkg_who_iris_who_iris_docs pkg_who_iris_who_iris_scripts pkg_who_iris_who_iris_sources pkg_who_iris_id_lookup pkg_who_iris_qa pkg_who_iris_folio pkg_who_iris_voices
 pkg_who_iris_who_iris_translations -[hidden]down- pkg_who_iris_who_iris_catalogue
 pkg_who_iris_library -[hidden]down- pkg_who_iris_who_iris_uploads
 pkg_who_iris_who_iris_site -[hidden]down- pkg_who_iris_who_iris_skills
@@ -456,5 +459,6 @@ pkg_who_iris_glossary -[hidden]down- pkg_who_iris_who_iris_scripts
 pkg_who_iris_who_iris_themes -[hidden]down- pkg_who_iris_who_iris_sources
 pkg_who_iris_who_iris_docs -[hidden]down- pkg_who_iris_id_lookup
 pkg_who_iris_who_iris_scripts -[hidden]down- pkg_who_iris_qa
-pkg_who_iris_who_iris_sources -[hidden]down- pkg_who_iris_voices
+pkg_who_iris_who_iris_sources -[hidden]down- pkg_who_iris_folio
+pkg_who_iris_id_lookup -[hidden]down- pkg_who_iris_voices
 @enduml

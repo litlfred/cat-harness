@@ -70,6 +70,7 @@ it, drawn from the evidence that build fetched.
 | `smart-base/smart-base-skills` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `smart-immunizations/smart-immunizations-docs` | **yes** |
 | `smart-trust/smart-trust-docs` | **yes** |
+| `who-iris/folio` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `who-iris/glossary` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `who-iris/library` | **yes** |
 | `who-iris/who-iris-docs` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
