@@ -2,7 +2,7 @@
   "$schema": "qa-results/v1",
   "producer": {
     "script": "cat-harness/scripts/audit-coverage.ts",
-    "script_hash": "a961c55f59da"
+    "script_hash": "353a43ed3d0c"
   },
   "subject": {
     "kind": "audit-coverage",

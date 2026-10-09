@@ -59,7 +59,7 @@
  */
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { spawnSync } from "node:child_process";
-import { join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
 
 import { checkoutRootFor, readDeclaration, repoRootFor } from "../schemas/cat-harness.js";
 import { instanceRootsIn } from "../schemas/instance-roots.ts";
@@ -100,20 +100,34 @@ import { openTrace } from "./input-trace.ts";
 import { inputSiteReached } from "./input-trace.ts";
 import { scriptsOf } from "../schemas/script-table.ts";
 
-// The REPOSITORY root. `GATES_WORKFLOW` is `.github/workflows/…`, which
-// belongs to the repository rather than to this instance, and the gates
-// themselves are npm scripts run from the repository root. This arrived from
-// `main` as `resolve(import.meta.dir, "..")` — correct there, because the
-// instance and the repository were one directory; after the move (bean
-// `wggr`) it named `cat-harness/.github/`, which does not exist, and
-// `loadGates` would have thrown `NoGatesFound` on a workflow that is fine.
-const ROOT = repoRootFor(resolve(import.meta.dir, ".."));
-
 /** The workflow that defines the FAST set. One place, declared. */
 export const GATES_WORKFLOW = join(".github", "workflows", "code-quality-gates.yml");
 
 /** Where every workflow lives. `--all` reads all of them, not just the one. */
 export const WORKFLOW_DIR = join(".github", "workflows");
+
+/**
+ * Resolve the root directory that contains the gates workflow.
+ * Climbs upward from startDir so worktrees in .claude/worktrees/ resolve
+ * to the checkout containing .github/workflows/code-quality-gates.yml.
+ */
+export function findGatesWorkflowRoot(startDir: string): string {
+  let curr = resolve(startDir);
+  while (true) {
+    if (existsSync(join(curr, GATES_WORKFLOW))) {
+      return curr;
+    }
+    const parent = dirname(curr);
+    if (parent === curr) break;
+    curr = parent;
+  }
+  return repoRootFor(resolve(startDir));
+}
+
+// The REPOSITORY root. `GATES_WORKFLOW` is `.github/workflows/…`, which
+// belongs to the repository rather than to this instance, and the gates
+// themselves are npm scripts run from the repository root.
+export const ROOT = findGatesWorkflowRoot(resolve(import.meta.dir, ".."));
 
 /**
  * Why a step CI runs is not in the local set.
@@ -1203,6 +1217,13 @@ export function loadGates(root: string, opts: { all?: boolean } = {}): Gate[] {
   const gates = runnableGatesFrom(readFileSync(path, "utf-8"), { ...opts, skipPublishers: true }).filter(
     (g) => !PRECONDITION_STEPS.includes(g.command),
   );
+  if (!gates.some((g) => g.command.includes("check:qa-witness-hashes"))) {
+    gates.push({
+      job: "typescript",
+      step: "QA witnesses and results record current script hashes",
+      command: "bun run cat check:qa-witness-hashes",
+    });
+  }
   if (gates.length === 0) throw new NoGatesFound(GATES_WORKFLOW);
   if (!opts.all) return gates;
 

@@ -197,6 +197,7 @@ const OWN_TASK_IO: Readonly<Record<string, ScriptIO>> = {
   "check:published-refs": TREE_READER,
   "check:python-deps": READ_ONLY,
   "check:qa-reviewer-permission": READ_ONLY,
+  "check:qa-witness-hashes": READ_ONLY,
   "check:raci": TREE_READER,
   "check:read-only-graphs": TREE_READER,
   "check:ready-to-close": TREE_READER,

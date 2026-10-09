@@ -2,7 +2,7 @@
   "$schema": "qa-results/v1",
   "producer": {
     "script": "scripts/subgraph-readmes.ts",
-    "script_hash": "70e73aa1f74b"
+    "script_hash": "bec022fb2334"
   },
   "subject": {
     "kind": "graph",

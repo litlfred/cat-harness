@@ -2,7 +2,7 @@
   "$schema": "qa-results/v1",
   "producer": {
     "script": "scripts/check-avatar-coverage.ts",
-    "script_hash": "unknown"
+    "script_hash": "9e73099ef940"
   },
   "subject": {
     "kind": "avatars",

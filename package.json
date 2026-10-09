@@ -16,6 +16,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
+    "check:qa-witness-hashes": "bun run scripts/check-qa-witness-hashes.ts",
     "test": "bun test",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
@@ -107,6 +108,7 @@
     "check:methodology-evidence": "bun run cat-harness/scripts/check-methodology-evidence.ts",
     "check:methodology-evidence:check": "bun run cat-harness/scripts/check-methodology-evidence.ts --check",
     "check:orphan-verdicts": "bun run cat-harness/content/pipeline/orphan-verdict-sweep.ts",
+    "check:qa-witness-hashes": "bun run cat-harness/scripts/check-qa-witness-hashes.ts",
     "check:partition": "bun run cat-harness/scripts/repo-partition.ts",
     "check:import-direction": "bun run cat-harness/scripts/check-import-direction.ts",
     "check:derived-from": "bun run cat-harness/scripts/check-derived-from.ts",

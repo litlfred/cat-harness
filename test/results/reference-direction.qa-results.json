@@ -2,7 +2,7 @@
   "$schema": "qa-results/v1",
   "producer": {
     "script": "cat-harness-tools/scripts/check-reference-direction.ts",
-    "script_hash": "2d61d2506120"
+    "script_hash": "75b3028c7b14"
   },
   "subject": {
     "kind": "reference-direction",
