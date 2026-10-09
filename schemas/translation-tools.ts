@@ -43,7 +43,7 @@ import {
   type ContentTypeTranslation,
   type TranslatableFormat,
 } from "./cat-harness.ts";
-import { declarationChain } from "./harness-config.ts";
+import { declarationChain, resolveImplementingPath } from "./harness-config.ts";
 import { instanceRootsIn } from "./instance-roots.ts";
 
 // The two profile schemas live with the declaration that carries them
@@ -103,6 +103,11 @@ export function resolveTranslationPath(ct: DeclaredContentTypeTranslation, rel: 
   for (const root of chain) {
     const abs = join(root, rel);
     if (existsSync(abs)) return abs;
+  }
+  // The code moved to the layer that implements the declaring instance (bean 70lx).
+  for (const root of chain) {
+    const r = resolveImplementingPath(root, rel);
+    if (r.state === "found") return join(r.root, rel);
   }
   return undefined;
 }

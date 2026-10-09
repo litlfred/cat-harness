@@ -795,60 +795,6 @@
       ]
     },
     {
-      "id": "cat-harness-scripts",
-      "path": "scripts/",
-      "description": "The platform's executable surface -- generators, checkers and the gate runner. THE LARGEST UNDECLARED DIRECTORY IN THE REPOSITORY until 2026-09-22 (bean `ylj7`): it holds more code than every declared directory here put together, and nothing declared it, so every consumer fanning out over declared directories skipped it and reported a clean run. Declared where it is rather than moved: these are ENTRY POINTS, named by path in `package.json` and in the CI workflows, which `check:ci-invocations` and `check:command-paths` exist to guard -- so a relocation is a large invocation surface for nothing the declaration does not already buy.",
-      "graphTypologies": [
-        "code"
-      ]
-    },
-    {
-      "id": "cat-harness-src",
-      "path": "src/",
-      "description": "The harness runtime that is not the server: the content vocabulary (`content-types.ts`), blocks, the workflow engine, CRDM, logging, the git/cache/feedback/safe-path helpers under `core/`, and the built-in adapter table. The MCP and HTTP server itself moved to `cat-harness-tools/src/` (bean `70lx`, B1). `src/` is the name a new instance should use for its code by convention; it is a minority of the code HERE, which is the measurement that stopped `<stub>/src` from being adopted as a destination for everything.",
-      "graphTypologies": [
-        "code"
-      ]
-    },
-    {
-      "id": "cat-harness-adapters",
-      "path": "adapters/",
-      "description": "The content-type adapters -- `DocumentContentAdapter` and the `PaperContentAdapter` that extends it. Code rather than schema: they are the behaviour the profiles select between, and `content-profiles` is the skill that says which axis they sit on.",
-      "graphTypologies": [
-        "code"
-      ]
-    },
-    {
-      "id": "cat-harness-tests",
-      "path": "test/",
-      "description": "The platform's own tests, EXCLUDING the results they write -- `test/results/` is declared `qa` and `test/health/results/` is declared `health`, and they keep those kinds. A directory is a place to look and may hold more than one part of a graph, which is exactly this case: the tests are authored code, their outputs are state, and the two are told apart by what the files declare themselves to be. Also holds `test-server.mjs`, the static server `playwright.config.ts` starts as its `webServer` (`node cat-harness/test/test-server.mjs`): it serves the REPOSITORY root on 8080 for every e2e spec here. It sat at the repository root until 2026-10-06 and moved beside the specs it serves (bean `ar1s`, phase 3).",
-      "graphTypologies": [
-        "code"
-      ]
-    },
-    {
-      "id": "folio-templates",
-      "path": "templates/",
-      "description": "Files `folio_init` WRITES INTO a new folio, kept as real files so they can be read, diffed and parsed rather than living as strings inside `scripts/init-folio.ts`. One subdirectory per content profile, mirroring the folio's own layout under it: `document/` is written into every folio and `paper/` additionally into a paper folio (profiles nest, as `content-profiles` says), and a `github/` segment lands as the folio's `.github/`, because a dot-prefixed directory is the one place this repository's own conventions refuse. `public-comment/` is the one set that is NOT a profile: a folio running a public review opts in with `public-comment-changesets.ts install` (issue #2183), so `folio_init` never writes it. Bean `52dz`, owner 2026-09-24: the generic QA workflows (`qa-sweep`, `qa-sweep-nightly`, `section-title-audit`) and the Lean workflows (`blueprint`, `lean-build`, `lean-build-sidecar`, `lean_ci`) moved here from `.github/workflows/`, where they could never run and counted as workflows that do not. `{{assistant}}`, `{{folio}}`, `{{platform_git}}` and `{{platform_repo}}` are substituted at write time; `${{ … }}` is GitHub's and is left alone. Declared `code` rather than a kind of its own: these are executable sources whose target is another repository, and nothing here reads them as graph nodes. `dependents: skip` -- a dependent inherits them through `folio_init`, not by owning a copy.",
-      "graphTypologies": [
-        "code"
-      ],
-      "coverage": {
-        "skill": "where-does-this-go"
-      }
-    },
-    {
-      "id": "cat-harness-deploy",
-      "path": "deploy/",
-      "description": "How a folio-assistant host is stood up and kept current: `provision.sh`, `deploy.sh`, `self-update.sh`, `docker-compose.yml`, `Caddyfile.template` and `GOOGLE_OAUTH_SETUP.md`. Reached from outside the graph today -- the `deploy-access` capability detects on `cat-harness/deploy/.env` -- which is exactly the shape of a directory no declaration-walking consumer could see. Its governing skill is `deployment-auth`, whose architecture diagram is of these files.",
-      "graphTypologies": [
-        "code"
-      ],
-      "coverage": {
-        "skill": "deployment-auth"
-      }
-    },
-    {
       "id": "cat-harness-upstream",
       "path": "upstream/",
       "description": "The pinned-upstream registry, `upstream-pins.json` (`\"$schema\": \"folio-upstream-pins/v1\"`): one row per upstream dependency the build pins — the just-the-docs theme, the Bun runtime, the pdf.js viewer — naming the file the pin is READ from (`pinnedIn`, resolved against this instance's root), the pattern that reads it, what of ours binds to the dependency and the MVP that must pass before it moves. It deliberately holds no version: that lives in the file the build reads. Read by `bun run cat check:upstream-pins` (weekly, `.github/workflows/upstream-pins.yml`) and worked by the `upstream-pin-watch` / `upstream-version-adoption` processes and skill this instance owns. Moved here from the repository root on 2026-10-06 (bean `ar1s`, phase 3: tooling leaves the root before the repo split). HERE rather than in the tool layer because this instance's processes, skills and scripts name it, and a harness file naming a file in the layer above is a wrong-direction reference (`check:reference-direction`). `code`: the checker's input table, authored beside the processes that read it, not content any reader renders.",

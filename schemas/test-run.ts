@@ -87,7 +87,7 @@ import { SkillNameSchema } from "./tool-types";
 
 import { RequirementRefSchema } from "@litlfred/bootstrap-tools/schemas/requirement.ts";
 import { NETWORK_REACHES, REACH_UNKNOWN } from "./actor-reach";
-import { inputSiteReached } from "../scripts/input-trace.ts";
+import { inputSiteReached } from "./input-trace.ts";
 
 /** The `$schema` tag every test run carries. */
 export const TEST_RUN_SCHEMA_ID = "folio-test-run/v1";
