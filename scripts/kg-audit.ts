@@ -303,6 +303,7 @@ const REQUIREMENT_DIR = join(KG_ROOT, "requirements");
 // nodes are authored in TypeScript, several to a module, so there is no
 // per-node file to sit a sidecar beside and `sidecarPath` falls back to here.
 const TOOLS_DIR = ownDirectoryById(root, "tools", "tools");
+const SCHEMAS_DIR = ownDirectoryById(root, "schemas", "schemas");
 
 const sha256 = (s: string) => `sha256:${createHash("sha256").update(s).digest("hex")}`;
 
@@ -2475,6 +2476,7 @@ function sidecarPath(r: KgQaReport): string {
     skill: KG_ROOT,
     graph: SCENARIO_DIR,
     tool: TOOLS_DIR,
+    schema: SCHEMAS_DIR,
   };
   const stem = r.subject.path ? basename(r.subject.path).replace(/\.(bpmn|dmn|json|md)$/, "") : r.subject.id;
   const name = r.subject.kind === "role" || r.subject.kind === "requirement" ? r.subject.id : stem;

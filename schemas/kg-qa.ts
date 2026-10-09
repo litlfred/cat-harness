@@ -425,7 +425,7 @@ export function sweepOrphans(
  * decided something `check-tools` does not would be the drift this note exists
  * to prevent.
  */
-export const KG_SUBJECT_KINDS = ["process", "decision", "role", "requirement", "skill", "graph", "tool"] as const;
+export const KG_SUBJECT_KINDS = ["process", "decision", "role", "requirement", "skill", "graph", "tool", "schema"] as const;
 export type KgSubjectKind = (typeof KG_SUBJECT_KINDS)[number];
 
 /**
@@ -476,6 +476,7 @@ export const KG_SUBJECT_GRAPH_TYPOLOGIES: Readonly<Record<KgSubjectKind, string>
   // kg graph itself rather than the directory its sidecar happens to sit in.
   graph: KG_GRAPH_TYPOLOGY,
   tool: "tools",
+  schema: "schemas",
 };
 
 /** Outcome of one criterion. `unknown` is never a pass. */

@@ -53,6 +53,7 @@ import { ValidatorNodeSchema, type ValidatorNode } from "./validator-node";
 import { namespaceForLayer } from "./namespaces";
 import type { NewInstanceSource } from "./subgraph-source";
 import { BOOTSTRAP_GRAPH_TYPOLOGIES } from "../../bootstrap-tools/schemas/graph";
+import { repoRootFor } from "./instance-roots";
 
 
 // ── Graph typologies ─────────────────────────────────────────────────
@@ -3004,7 +3005,7 @@ function describeValidator(n: ValidatorNode): string {
  */
 export const defaultGraphTypologies = new GraphTypologyRegistry(
   BASE_GRAPH_TYPOLOGIES,
-  resolve(dirname(fileURLToPath(import.meta.url)), "..", ".."),
+  repoRootFor(resolve(dirname(fileURLToPath(import.meta.url)), "..")),
 );
 
 /**

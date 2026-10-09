@@ -3543,7 +3543,12 @@ export function siteDir(_d: Pick<CatHarnessDeclaration, "name" | "stub">): strin
  * tools that had nothing to do with the question.
  */
 export function repoRootFor(instanceRoot: string): string {
-  return join(instanceRoot, "..");
+  const abs = resolve(instanceRoot);
+  const parent = join(abs, "..");
+  if (basename(parent) === "worktrees" && basename(join(parent, "..")) === ".claude") {
+    return resolve(parent, "../..");
+  }
+  return parent;
 }
 
 /**
