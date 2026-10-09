@@ -53,6 +53,7 @@ import { ValidatorNodeSchema, type ValidatorNode } from "./validator-node";
 import { namespaceForLayer } from "./namespaces";
 import type { NewInstanceSource } from "./subgraph-source";
 import { BOOTSTRAP_GRAPH_TYPOLOGIES } from "../../bootstrap-tools/schemas/graph";
+import { instanceRootsIn } from "./instance-roots";
 
 
 // ── Graph typologies ─────────────────────────────────────────────────
@@ -3002,9 +3003,12 @@ function describeValidator(n: ValidatorNode): string {
  * instances of THIS checkout declare in their `typologies/` graphs (bean dmx1),
  * loaded on first use. Core registers `folio` into it at load.
  */
+const here = dirname(fileURLToPath(import.meta.url));
+const up2 = resolve(here, "..", "..");
+const up1 = resolve(here, "..");
 export const defaultGraphTypologies = new GraphTypologyRegistry(
   BASE_GRAPH_TYPOLOGIES,
-  resolve(dirname(fileURLToPath(import.meta.url)), "..", ".."),
+  instanceRootsIn(up2).length > 0 ? up2 : up1,
 );
 
 /**
