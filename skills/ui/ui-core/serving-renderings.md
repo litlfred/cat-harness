@@ -94,6 +94,11 @@ the honest handling is the one this repository applies everywhere else:
   from "enforced wrongly". Same rule as `readme-sections`' third state,
   `ci-health`'s "could not check" and `resolveTodoTags`' `not-checked`.
 
+The architectural boundary between what a static host and a local dynamic server
+can enforce is part of deployment awareness — see [`deployment-awareness`](deployment-awareness.md)
+for the four deployment surfaces, their constraints on tool usage, and why render-time
+escaping is the required line of defence on static hosts (bean `81vy`).
+
 ## Consequences a consumer must expect
 
 A client fetching `<stub>.jsonld` from Pages **will** receive the wrong

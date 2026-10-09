@@ -323,6 +323,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [auto-docs](auto-docs.html) | `auto-docs` | — | `<base>/<handler>/auto-docs/<auto-doc-type>/<sub-graph>/` is an index of what |
 | [Relationship first, visualisation later](board-diagram-interchange.html) | `board-diagram-interchange` | — | **One sentence, and it is the owner's:** |
 | [Start in the avatar, open into a window](board-windows.html) | `board-windows` | — | The owner, 2026-09-20 and 2026-09-21: |
+| [Deployment awareness](deployment-awareness.html) | `deployment-awareness` | — | The owner, 2026-09-20: |
 | [Documentation Generation](docs-generation.html) | `docs-generation` | — | cd content && bun run pipeline/build.ts \ |
 | [A tile is the harness's, not the node's](harness-tiles.html) | `harness-tiles` | — | The owner, 2026-09-20, correcting the question rather than answering it: |
 | [HTML Rendering QC](html-rendering-qc.html) | `html-rendering-qc` | — | grep -rn '\\operatorname' content/**/*.md |

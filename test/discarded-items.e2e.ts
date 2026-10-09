@@ -221,9 +221,12 @@ test.describe("selecting an item displays it", () => {
     //
     // The DEPLOY TARGET is the second half of that reasoning: this ships to
     // gh-pages, a STATIC host with no request-time sanitiser and no server to
-    // reject a payload before it reaches a browser. "No sanitiser to get
-    // wrong" is a virtue here precisely because there could not have been one
-    // anyway — the topology forbids it (bean `81vy`, epic `5a3l`).
+    // reject a payload before it reaches a browser. Because gh-pages has no
+    // request-time sanitisation, escaping at render is the required line of
+    // defence against XSS — content must reach the DOM as text, never raw
+    // unescaped markup. "No sanitiser to get wrong" is a virtue here
+    // precisely because there could not have been one anyway — the static-host
+    // topology forbids it (bean `81vy`, epic `5a3l`).
     await stub(page, {
       "@graph": [{ name: "Hostile", nodeKind: "note",
                    body: "<img src=x onerror=alert(1)> and <b>bold</b>" }],
