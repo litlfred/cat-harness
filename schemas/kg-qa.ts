@@ -1653,6 +1653,15 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
       "Audit work traceability between declared beans, content blocks, and Lean declarations. " +
       "Flags unassociated blocks, beans with no targets, and broken target references. Vacuity-guarded when no beans or blocks exist.",
   },
+  {
+    id: "lake-target-lean-resolution",
+    applies: ["graph"],
+    scope: "instance",
+    // `minor` advisory QA warning (folio-assistant-tntp). Vacuity-guarded: if 0 blocks/refs checked -> unknown.
+    severity: "minor",
+    summary:
+      "A block's lean.ref resolves to an uncompiled chapter-dir sibling (.lean) only or dangles without landing in a Lake target CI builds.",
+  },
 ] as const;
 
 export const KG_CRITERIA_BY_ID: Readonly<Record<string, KgCriterionDefinition>> = Object.fromEntries(
