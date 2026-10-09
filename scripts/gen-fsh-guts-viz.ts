@@ -203,8 +203,15 @@ function trackedRels(dir: string, repo = REPO): string[] {
  */
 export function gutsFiles(dir: string, repo = REPO): GutsFile[] {
   const rels = trackedRels(dir, repo);
+  // Only a file that can CARRY a node is opened: markdown front matter or a
+  // top-level JSON `$schema` (`readFshGutsNode`). Since the separation the
+  // trashcan holds each separated instance's in-tree copy as a `.tar.gz`
+  // (272 MB with the uploaded PDFs), and decoding every byte of it to search
+  // for the tag took ~6 s a run — past the 5 s budget of the test that runs
+  // this writer. Same rule as `titleOf` above, for the same reason.
   const tagged = new Set(
     withoutFrozenSubtrees(dir, rels).live.filter((r) => {
+      if (!/\.(?:md|json)$/i.test(r)) return false;
       try {
         return readFileSync(join(dir, r), "utf-8").includes(TAG);
       } catch {
