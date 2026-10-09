@@ -4,7 +4,7 @@
  *
  * @module scripts/check-agents-claims
  * @covers code — its subject is the CODE a prose claim asserts about — the symbols and paths it
- *   names. `AGENTS.md` itself sits at the repository root and is a node of no declared graph
+ *   names. The `AGENTS.md` it reads is this instance's declared `agent-instructions` asset
  *
  * Bean `77ex`. Two checks already cover `AGENTS.md` and neither covers this:
  * `check:agents-xref` verifies citations INTO it, `check:agent-entry-links`
@@ -53,14 +53,36 @@
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
-import { repoRootFor } from "../schemas/cat-harness.js";
+import { AGENT_INSTRUCTIONS_ROLE, declaredAssetPath, repoRootFor } from "../schemas/cat-harness.js";
 import { gitFiles } from "../schemas/git-corpus.ts";
 
 const HERE = resolve(import.meta.dir, "..");
 const REPO = repoRootFor(HERE);
 
-/** Roots a cited module path may be written relative to. */
-const BASES = ["", "cat-harness", "cat-harness/src"];
+/**
+ * The file whose claims are checked: THIS instance's declared
+ * `agent-instructions`.
+ *
+ * It was the checkout root's `AGENTS.md` until 2026-10-09. The root of an
+ * index checkout declares no instance, and its `AGENTS.md` became a RENDERED
+ * file (`scripts/index-render.ts`) — an index of the instances, carrying no
+ * claim about code. The pointers it held, claims included, moved to this
+ * instance's own `AGENTS.md`, so that is where they are checked; and it works
+ * the same in a checkout of this layer standing alone, where there is no root
+ * file to read.
+ */
+export function agentsFile(instanceRoot: string = HERE): string {
+  return declaredAssetPath(instanceRoot, AGENT_INSTRUCTIONS_ROLE) ?? join(instanceRoot, "AGENTS.md");
+}
+
+/**
+ * Roots a cited module path may be written relative to: the checkout, this
+ * instance, and this instance's `src/`. The instance is located rather than
+ * spelled — it was the literal `cat-harness`, which named nothing in a clone
+ * of this layer under any other directory name.
+ */
+const HERE_IN_REPO = relative(REPO, HERE).split("\\").join("/");
+const BASES = ["", HERE_IN_REPO, `${HERE_IN_REPO}/src`];
 
 export interface Claim {
   kind: "location" | "absence";
@@ -255,16 +277,16 @@ export function checkClaims(repo: string, md: string): { claims: Claim[]; findin
 }
 
 if (import.meta.main) {
-  const file = join(REPO, "AGENTS.md");
+  const file = agentsFile();
   if (!existsSync(file)) {
-    console.error(`✗ no AGENTS.md at ${REPO}`);
+    console.error(`✗ no AGENTS.md at ${file}`);
     process.exit(2);
   }
   const { claims, findings } = checkClaims(REPO, readFileSync(file, "utf-8"));
   const loc = claims.filter((c) => c.kind === "location").length;
   const abs = claims.filter((c) => c.kind === "absence").length;
 
-  console.log(`AGENTS.md claims about code — ${loc} location, ${abs} absence\n`);
+  console.log(`${relative(REPO, file)} claims about code — ${loc} location, ${abs} absence\n`);
 
   // A green run over zero parsed claims is not a green run. The file is
   // thousands of words of prose about this codebase; parsing none of it means

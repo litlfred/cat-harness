@@ -165,10 +165,11 @@ spliced into a prompt, so it pays a budget — `MEMORY.md`'s first 200 lines,
 *with the overflow dropped silently*. A file is opened, so nothing truncates
 it. That is why `AGENTS.md` may be long and an entry here may not, and why a
 fact that must arrive unasked belongs here rather than there. It is asserted
-rather than stated: `asset-roles.test.ts` measures this repository's own
-`AGENTS.md` past the 200-line budget, which is legal *only* because its
-delivery is `file` — switch the role to `injected` and the test says so before
-a reader finds out by losing half the file.
+rather than stated: `asset-roles.test.ts` measures the longest declared
+`AGENTS.md` in the checkout — this layer's own, since the root file became a
+rendered index (2026-10-09) — past the 200-line budget, which is legal *only*
+because its delivery is `file` — switch the role to `injected` and the test
+says so before a reader finds out by losing half the file.
 
 **`AGENTS.md` augments the README; it never restates it.**
 

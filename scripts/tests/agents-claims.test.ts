@@ -24,6 +24,7 @@ import { join, resolve } from "node:path";
 
 import {
   absenceClaims,
+  agentsFile,
   callersOf,
   checkClaims,
   declares,
@@ -197,7 +198,11 @@ describe("the two exclusions, each of which would invert a true claim", () => {
 });
 
 describe("this repository, right now", () => {
-  const MD = readFileSync(join(REPO, "AGENTS.md"), "utf-8");
+  // THIS instance's declared `agent-instructions`, not the checkout root's:
+  // the root `AGENTS.md` of an index checkout is a rendered index of the
+  // instances and carries no claim about code (owner, 2026-10-09). The
+  // pointers it held, claims included, moved to this instance's own file.
+  const MD = readFileSync(agentsFile(), "utf-8");
 
   test("every claim AGENTS.md makes about code holds", () => {
     const { findings } = checkClaims(REPO, MD);

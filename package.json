@@ -328,6 +328,8 @@
     "mount:lock": "bun run cat-harness/scripts/mount-from-lock.ts",
     "mount:lock:check": "bun run cat-harness/scripts/mount-from-lock.ts --check",
     "index-config:migrate": "bun run cat-harness/scripts/index-config-migrate.ts",
-    "index-config:migrate:check": "bun run cat-harness/scripts/index-config-migrate.ts --check"
+    "index-config:migrate:check": "bun run cat-harness/scripts/index-config-migrate.ts --check",
+    "index:render": "bun run cat-harness/scripts/index-render.ts",
+    "index:render:check": "bun run cat-harness/scripts/index-render.ts --check"
   }
 }

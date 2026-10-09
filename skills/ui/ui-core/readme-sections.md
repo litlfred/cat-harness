@@ -135,6 +135,16 @@ so the difference could not show. Use the pair:
 | `readme:sync:root` · `readme:audit:root` | the REPOSITORY's README |
 | `readme:sync:all` | EVERY instance's README, each against its own declaration |
 
+**In an index checkout the root README is not authored at all.** Its root
+declares no instance (owner, 2026-10-08), so nothing could own the file, and
+the owner ruled on 2026-10-09 that it and the root `AGENTS.md` are rendered:
+`bun run cat index:render` writes both — with the `CLAUDE.md` and `GEMINI.md`
+stubs — from `index.config.json`, each instance's declared `agent-instructions`
+and `instance-readme` assets, bootstrap's `AGENTS.md`, and the sections above,
+and `index:render:check` fails when any of the four is not its current output.
+`readme:sync:root` still agrees with it, because the renderer fills the same
+marker regions through the same registry.
+
 Both are gated in `code-quality-gates.yml`, and that is not belt and braces:
 when the split landed, the bare `readme:audit` silently narrowed to
 cat-harness's and took the root README's 41 links out of the gate **without
