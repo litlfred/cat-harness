@@ -51,22 +51,6 @@
   ],
   "tiles": [
     {
-      "id": "beans",
-      "directory": "beans",
-      "title": "Beans",
-      "ref": "cat-harness/docs/beans/index.html",
-      "surfaces": [
-        "navbar",
-        "board",
-        "glass"
-      ],
-      "href": "/beans/",
-      "hidden": false,
-      "icon": "beans",
-      "count": 297,
-      "unit": "open beans"
-    },
-    {
       "id": "core-library",
       "directory": "core-library",
       "title": "Library",
@@ -184,6 +168,256 @@
   },
   "harnesses": [
     {
+      "name": "smart-trust",
+      "title": "smart-trust",
+      "label": "smart-trust",
+      "description": "WHO SMART Trust (smart.who.int.trust) v1.8.0 — the published IG's artefact index, reconstructed: 674 artefacts known, 19 materialized.",
+      "footer": false,
+      "needs": [
+        "smart-base"
+      ],
+      "icon": null,
+      "mark": {
+        "glyph": "M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6zM12 9.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM12 12.5v3",
+        "title": "a shield with a keyhole — the trust framework, in WHO blue"
+      },
+      "tone": 199,
+      "toneFrom": "avatar",
+      "reads": "a shield with a keyhole — the trust framework, in WHO blue",
+      "genericAvatar": false,
+      "instantiated": true,
+      "href": "/smart-trust/",
+      "hrefKind": "folio",
+      "stats": [
+        {
+          "id": "directories",
+          "label": "declared directories",
+          "value": 7
+        },
+        {
+          "id": "kinds",
+          "label": "declared graph typologies",
+          "value": 7
+        },
+        {
+          "id": "views",
+          "label": "visualisations you can open",
+          "value": 3
+        }
+      ],
+      "visualisations": [
+        {
+          "kind": "code",
+          "note": "no viewer yet",
+          "label": "Code"
+        },
+        {
+          "kind": "docs",
+          "path": "/cat-harness/auto-docs/index/docs/smart-trust-docs/",
+          "label": "Docs"
+        },
+        {
+          "kind": "fhir-artifact-index",
+          "path": "/smart-trust/artifacts.html",
+          "readOnly": true,
+          "label": "FHIR artefact index"
+        },
+        {
+          "kind": "ig-ast",
+          "note": "no viewer yet",
+          "label": "IG AST"
+        },
+        {
+          "kind": "ig-pages",
+          "path": "/cat-harness/auto-docs/index/docs/smart-trust-docs/",
+          "label": "Docs",
+          "sameAs": "docs"
+        },
+        {
+          "kind": "openapi",
+          "readOnly": true,
+          "note": "no viewer yet",
+          "label": "Openapi"
+        },
+        {
+          "kind": "qa",
+          "note": "no viewer yet",
+          "label": "QA"
+        }
+      ],
+      "subgraphs": [
+        {
+          "id": "smart-trust-ast",
+          "kinds": [
+            "ig-ast"
+          ],
+          "where": "local",
+          "path": "smart-trust/fhir-ast/"
+        },
+        {
+          "id": "smart-trust-artifact-index",
+          "kinds": [
+            "fhir-artifact-index"
+          ],
+          "where": "local",
+          "path": "smart-trust/fhir-artifact-index/"
+        },
+        {
+          "id": "smart-trust-openapi",
+          "kinds": [
+            "openapi"
+          ],
+          "where": "local",
+          "path": "smart-trust/openapi/"
+        },
+        {
+          "id": "smart-trust-docs",
+          "kinds": [
+            "docs",
+            "ig-pages"
+          ],
+          "where": "local",
+          "path": "smart-trust/docs/"
+        },
+        {
+          "id": "smart-trust-scripts",
+          "kinds": [
+            "code"
+          ],
+          "where": "local",
+          "path": "smart-trust/scripts/"
+        },
+        {
+          "id": "qa",
+          "kinds": [
+            "qa"
+          ],
+          "where": "local",
+          "path": "smart-trust/test/results/"
+        },
+        {
+          "id": "smart-trust-platform",
+          "kinds": [
+            "code"
+          ],
+          "where": "local",
+          "path": "smart-trust/platform/"
+        }
+      ],
+      "findings": [
+        "smart-trust: declares 4 graph(s) with no published viewer — code, ig-ast, openapi, qa. Declared and not rendered is a gap, not a dead link.",
+        "smart-trust: 2 graph(s) hold materialized content and are READ-ONLY — fhir-artifact-index, openapi. Readable, not editable here: copy one out to your own folio/ to work on it. Separate from whether a viewer is published."
+      ],
+      "navbarIcons": [
+        "close",
+        "todos",
+        "beans",
+        "fsh-guts",
+        "launcher"
+      ]
+    },
+    {
+      "name": "smart-immunizations",
+      "title": "smart-immunizations",
+      "label": "smart-immunizations",
+      "description": "WHO SMART Immunizations (smart.who.int.immunizations) v0.2.0, FHIR 4.0.1 — the published IG's artefact index, reconstructed: 748 artefacts known, 200 materialized.",
+      "footer": false,
+      "needs": [
+        "smart-base"
+      ],
+      "icon": null,
+      "mark": {
+        "glyph": "M18 3l3 3M16 5l3 3M17.5 6.5L9 15l-3 1 1-3 8.5-8.5M10 10l4 4M6 18l-3 3",
+        "title": "a syringe — the immunization guide"
+      },
+      "tone": 352,
+      "toneFrom": "avatar",
+      "reads": "a syringe — the immunization guide",
+      "genericAvatar": false,
+      "instantiated": true,
+      "href": "/smart-immunizations/",
+      "hrefKind": "folio",
+      "stats": [
+        {
+          "id": "directories",
+          "label": "declared directories",
+          "value": 3
+        },
+        {
+          "id": "kinds",
+          "label": "declared graph typologies",
+          "value": 4
+        },
+        {
+          "id": "views",
+          "label": "visualisations you can open",
+          "value": 3
+        }
+      ],
+      "visualisations": [
+        {
+          "kind": "docs",
+          "path": "/cat-harness/auto-docs/index/docs/smart-immunizations-docs/",
+          "label": "Docs"
+        },
+        {
+          "kind": "fhir-artifact-index",
+          "path": "/smart-immunizations/artifacts.html",
+          "readOnly": true,
+          "label": "FHIR artefact index"
+        },
+        {
+          "kind": "ig-pages",
+          "path": "/cat-harness/auto-docs/index/docs/smart-immunizations-docs/",
+          "label": "Docs",
+          "sameAs": "docs"
+        },
+        {
+          "kind": "qa",
+          "note": "no viewer yet",
+          "label": "QA"
+        }
+      ],
+      "subgraphs": [
+        {
+          "id": "smart-immunizations-artifact-index",
+          "kinds": [
+            "fhir-artifact-index"
+          ],
+          "where": "local",
+          "path": "smart-immunizations/fhir-artifact-index/"
+        },
+        {
+          "id": "smart-immunizations-docs",
+          "kinds": [
+            "docs",
+            "ig-pages"
+          ],
+          "where": "local",
+          "path": "smart-immunizations/docs/"
+        },
+        {
+          "id": "qa",
+          "kinds": [
+            "qa"
+          ],
+          "where": "local",
+          "path": "smart-immunizations/test/results/"
+        }
+      ],
+      "findings": [
+        "smart-immunizations: declares 1 graph(s) with no published viewer — qa. Declared and not rendered is a gap, not a dead link.",
+        "smart-immunizations: 1 graph(s) hold materialized content and are READ-ONLY — fhir-artifact-index. Readable, not editable here: copy one out to your own folio/ to work on it. Separate from whether a viewer is published."
+      ],
+      "navbarIcons": [
+        "close",
+        "todos",
+        "beans",
+        "fsh-guts",
+        "launcher"
+      ]
+    },
+    {
       "name": "smart-base",
       "title": "SMART Base",
       "label": "SMART Base",
@@ -201,9 +435,9 @@
       "toneFrom": "avatar",
       "reads": "a broad base under narrowing courses — the layer the SMART stack rests on, in WHO blue",
       "genericAvatar": false,
-      "instantiated": false,
-      "href": "/cat-harness/auto-docs/index/docs/smart-base-docs/",
-      "hrefKind": "viewer",
+      "instantiated": true,
+      "href": "/smart-base/",
+      "hrefKind": "folio",
       "stats": [
         {
           "id": "directories",
@@ -218,7 +452,7 @@
         {
           "id": "views",
           "label": "visualisations you can open",
-          "value": 9
+          "value": 10
         }
       ],
       "visualisations": [
@@ -254,8 +488,8 @@
         },
         {
           "kind": "fhir-artifact-index",
+          "path": "/smart-base/artifacts.html",
           "readOnly": true,
-          "note": "no viewer yet",
           "label": "FHIR artefact index"
         },
         {
@@ -508,9 +742,8 @@
         }
       ],
       "findings": [
-        "smart-base: declares 10 graph(s) with no published viewer — block-kinds, code, content-adapters, external-schema, fhir-artifact-index, qa, qa-checkers, scenarios, themes, tools. Declared and not rendered is a gap, not a dead link.",
-        "smart-base: 1 graph(s) hold materialized content and are READ-ONLY — fhir-artifact-index. Readable, not editable here: copy one out to your own folio/ to work on it. Separate from whether a viewer is published.",
-        "smart-base: has no docs/ of its own, so the tile opens a kind handler's viewer (/cat-harness/auto-docs/index/docs/smart-base-docs/) rather than the instance's own themed root."
+        "smart-base: declares 9 graph(s) with no published viewer — block-kinds, code, content-adapters, external-schema, qa, qa-checkers, scenarios, themes, tools. Declared and not rendered is a gap, not a dead link.",
+        "smart-base: 1 graph(s) hold materialized content and are READ-ONLY — fhir-artifact-index. Readable, not editable here: copy one out to your own folio/ to work on it. Separate from whether a viewer is published."
       ],
       "navbarIcons": [
         "close",
@@ -559,7 +792,7 @@
       "toneFrom": "theme",
       "reads": "an open book — a repository of published documents, in WHO blue",
       "genericAvatar": false,
-      "instantiated": false,
+      "instantiated": true,
       "href": "/who-iris/",
       "hrefKind": "folio",
       "stats": [
@@ -787,9 +1020,9 @@
       "toneFrom": "avatar",
       "reads": "a laboratory flask — folios that are scientific papers",
       "genericAvatar": false,
-      "instantiated": false,
-      "href": "/cat-harness/library/folio-assistant-sci/",
-      "hrefKind": "viewer",
+      "instantiated": true,
+      "href": "/#harness-folio-assistant-sci",
+      "hrefKind": "section",
       "stats": [
         {
           "id": "directories",
@@ -1046,7 +1279,7 @@
       ],
       "findings": [
         "folio-assistant-sci: declares 10 graph(s) with no published viewer — attestations, block-kinds, code, content-adapters, pipeline-plugins, qa, qa-checkers, schemas, tools, typologies. Declared and not rendered is a gap, not a dead link.",
-        "folio-assistant-sci: has no docs/ of its own, so the tile opens a kind handler's viewer (/cat-harness/library/folio-assistant-sci/) rather than the instance's own themed root."
+        "folio-assistant-sci: has no docs/ of its own, so the tile opens its section of the landing (/#harness-folio-assistant-sci) rather than the instance's own themed root."
       ],
       "navbarIcons": [
         "close",
@@ -1074,9 +1307,9 @@
       "toneFrom": "avatar",
       "reads": "a flame — the FHIR implementation-guide harness",
       "genericAvatar": false,
-      "instantiated": false,
-      "href": "/cat-harness/library/fhir-harness/",
-      "hrefKind": "viewer",
+      "instantiated": true,
+      "href": "/#harness-fhir-harness",
+      "hrefKind": "section",
       "stats": [
         {
           "id": "directories",
@@ -1217,7 +1450,7 @@
       ],
       "findings": [
         "fhir-harness: declares 5 graph(s) with no published viewer — code, qa, tools, typologies, validators. Declared and not rendered is a gap, not a dead link.",
-        "fhir-harness: has no docs/ of its own, so the tile opens a kind handler's viewer (/cat-harness/library/fhir-harness/) rather than the instance's own themed root."
+        "fhir-harness: has no docs/ of its own, so the tile opens its section of the landing (/#harness-fhir-harness) rather than the instance's own themed root."
       ],
       "navbarIcons": [
         "close",
@@ -1274,30 +1507,40 @@
       "toneFrom": "avatar",
       "reads": "a leaf of paper with lines — the folio itself",
       "genericAvatar": false,
-      "instantiated": false,
+      "instantiated": true,
       "href": "/folio-assistant-core/",
       "hrefKind": "folio",
       "stats": [
         {
           "id": "directories",
           "label": "declared directories",
-          "value": 20
+          "value": 23
         },
         {
           "id": "kinds",
           "label": "declared graph typologies",
-          "value": 19
+          "value": 22
         },
         {
           "id": "views",
           "label": "visualisations you can open",
-          "value": 9
+          "value": 8
         }
       ],
       "visualisations": [
         {
+          "kind": "bean-defs",
+          "note": "no viewer yet",
+          "label": "Bean definitions"
+        },
+        {
+          "kind": "bean-notes",
+          "note": "no viewer yet",
+          "label": "Bean notes"
+        },
+        {
           "kind": "beans",
-          "path": "/beans/",
+          "note": "no viewer yet",
           "label": "Beans"
         },
         {
@@ -1389,6 +1632,11 @@
           "kind": "voices",
           "path": "/cat-harness/voices/folio-assistant-core/",
           "label": "Voices"
+        },
+        {
+          "kind": "workflow-state",
+          "note": "no viewer yet",
+          "label": "Workflow state"
         }
       ],
       "subgraphs": [
@@ -1552,10 +1800,34 @@
           ],
           "where": "local",
           "path": "folio-assistant-core/skills/voices/"
+        },
+        {
+          "id": "defs",
+          "kinds": [
+            "bean-defs"
+          ],
+          "where": "local",
+          "path": "folio-assistant-core/beans/defs/"
+        },
+        {
+          "id": "notes",
+          "kinds": [
+            "bean-notes"
+          ],
+          "where": "local",
+          "path": "folio-assistant-core/beans/notes/"
+        },
+        {
+          "id": "workflows",
+          "kinds": [
+            "workflow-state"
+          ],
+          "where": "local",
+          "path": "folio-assistant-core/beans/workflows/"
         }
       ],
       "findings": [
-        "folio-assistant-core: declares 10 graph(s) with no published viewer — block-kinds, cat-harness, code, folio, memory, qa, schemas, tools, typologies, validators. Declared and not rendered is a gap, not a dead link."
+        "folio-assistant-core: declares 14 graph(s) with no published viewer — bean-defs, bean-notes, beans, block-kinds, cat-harness, code, folio, memory, qa, schemas, tools, typologies, validators, workflow-state. Declared and not rendered is a gap, not a dead link."
       ],
       "navbarIcons": [
         "close",
@@ -1584,36 +1856,51 @@
       "toneFrom": "avatar",
       "reads": "a wrench, in cat-harness's colour — the code that implements its tools",
       "genericAvatar": false,
-      "instantiated": false,
-      "href": "/beans/",
-      "hrefKind": "viewer",
+      "instantiated": true,
+      "href": "/#harness-cat-harness-tools",
+      "hrefKind": "section",
       "stats": [
         {
           "id": "directories",
           "label": "declared directories",
-          "value": 8
+          "value": 11
         },
         {
           "id": "kinds",
           "label": "declared graph typologies",
-          "value": 2
+          "value": 5
         },
         {
           "id": "views",
           "label": "visualisations you can open",
-          "value": 1
+          "value": 0
         }
       ],
       "visualisations": [
         {
+          "kind": "bean-defs",
+          "note": "no viewer yet",
+          "label": "Bean definitions"
+        },
+        {
+          "kind": "bean-notes",
+          "note": "no viewer yet",
+          "label": "Bean notes"
+        },
+        {
           "kind": "beans",
-          "path": "/beans/",
+          "note": "no viewer yet",
           "label": "Beans"
         },
         {
           "kind": "code",
           "note": "no viewer yet",
           "label": "Code"
+        },
+        {
+          "kind": "workflow-state",
+          "note": "no viewer yet",
+          "label": "Workflow state"
         }
       ],
       "subgraphs": [
@@ -1680,11 +1967,35 @@
           ],
           "where": "local",
           "path": "cat-harness-tools/beans/"
+        },
+        {
+          "id": "defs",
+          "kinds": [
+            "bean-defs"
+          ],
+          "where": "local",
+          "path": "cat-harness-tools/beans/defs/"
+        },
+        {
+          "id": "notes",
+          "kinds": [
+            "bean-notes"
+          ],
+          "where": "local",
+          "path": "cat-harness-tools/beans/notes/"
+        },
+        {
+          "id": "workflows",
+          "kinds": [
+            "workflow-state"
+          ],
+          "where": "local",
+          "path": "cat-harness-tools/beans/workflows/"
         }
       ],
       "findings": [
-        "cat-harness-tools: declares 1 graph(s) with no published viewer — code. Declared and not rendered is a gap, not a dead link.",
-        "cat-harness-tools: has no docs/ of its own, so the tile opens a kind handler's viewer (/beans/) rather than the instance's own themed root."
+        "cat-harness-tools: declares 5 graph(s) with no published viewer — bean-defs, bean-notes, beans, code, workflow-state. Declared and not rendered is a gap, not a dead link.",
+        "cat-harness-tools: has no docs/ of its own, so the tile opens its section of the landing (/#harness-cat-harness-tools) rather than the instance's own themed root."
       ],
       "navbarIcons": [
         "close",
@@ -1751,24 +2062,24 @@
       "toneFrom": "avatar",
       "reads": "a framed face with ears — the harness the instance is held in",
       "genericAvatar": false,
-      "instantiated": false,
+      "instantiated": true,
       "href": "/#harness-cat-harness",
       "hrefKind": "folio",
       "stats": [
         {
           "id": "directories",
           "label": "declared directories",
-          "value": 73
+          "value": 86
         },
         {
           "id": "kinds",
           "label": "declared graph typologies",
-          "value": 38
+          "value": 49
         },
         {
           "id": "views",
           "label": "visualisations you can open",
-          "value": 20
+          "value": 22
         }
       ],
       "visualisations": [
@@ -1789,14 +2100,35 @@
           "label": "Basic CDN site"
         },
         {
+          "kind": "bean-defs",
+          "note": "no viewer yet",
+          "label": "Bean definitions"
+        },
+        {
+          "kind": "bean-notes",
+          "note": "no viewer yet",
+          "label": "Bean notes"
+        },
+        {
           "kind": "beans",
           "path": "/beans/",
           "label": "Beans"
         },
         {
-          "kind": "cat-harness",
+          "kind": "board-positions",
           "note": "no viewer yet",
-          "label": "Harness graph"
+          "label": "Board positions"
+        },
+        {
+          "kind": "boards",
+          "note": "no viewer yet",
+          "label": "Boards"
+        },
+        {
+          "kind": "cat-harness",
+          "path": "/cat-harness/schemas/cat-harness/",
+          "label": "Schemas",
+          "sameAs": "schemas"
         },
         {
           "kind": "code",
@@ -1826,12 +2158,13 @@
         },
         {
           "kind": "folio",
-          "path": "/cat-harness/folio/",
+          "note": "no viewer yet",
           "label": "Folio"
         },
         {
           "kind": "fsh-guts",
           "path": "/fsh-guts/",
+          "stagingOnly": true,
           "label": "FSH guts"
         },
         {
@@ -1845,6 +2178,11 @@
           "label": "Interaction"
         },
         {
+          "kind": "issue-marks",
+          "path": "/issue-marks/",
+          "label": "Issue marks"
+        },
+        {
           "kind": "library",
           "path": "/cat-harness/library/cat-harness/",
           "label": "Library"
@@ -1853,6 +2191,11 @@
           "kind": "memory",
           "note": "no viewer yet",
           "label": "Memory"
+        },
+        {
+          "kind": "merge-queue",
+          "note": "no viewer yet",
+          "label": "Merge queue"
         },
         {
           "kind": "methodology",
@@ -1897,6 +2240,11 @@
           "label": "Schemas"
         },
         {
+          "kind": "session-survey",
+          "note": "no viewer yet",
+          "label": "Session surveys"
+        },
+        {
           "kind": "skills",
           "path": "/cat-harness/auto-docs/index/skills/skills/",
           "readOnly": false,
@@ -1911,6 +2259,21 @@
           "kind": "swimlane-glossary",
           "path": "/swimlane-glossary/",
           "label": "Swimlane glossary"
+        },
+        {
+          "kind": "todo-feedback",
+          "note": "no viewer yet",
+          "label": "Todo feedback"
+        },
+        {
+          "kind": "todo-items",
+          "note": "no viewer yet",
+          "label": "Todo items"
+        },
+        {
+          "kind": "todos",
+          "path": "/todos/",
+          "label": "Todos"
         },
         {
           "kind": "tool-release",
@@ -1967,6 +2330,11 @@
           "kind": "waiver",
           "note": "no viewer yet",
           "label": "Waivers"
+        },
+        {
+          "kind": "workflow-state",
+          "note": "no viewer yet",
+          "label": "Workflow state"
         }
       ],
       "subgraphs": [
@@ -2252,6 +2620,30 @@
           ],
           "where": "local",
           "path": "cat-harness/beans/"
+        },
+        {
+          "id": "todos",
+          "kinds": [
+            "todos"
+          ],
+          "where": "local",
+          "path": "cat-harness/todos/"
+        },
+        {
+          "id": "checkout-uploads",
+          "kinds": [
+            "uploads"
+          ],
+          "where": "local",
+          "path": "cat-harness/uploads/"
+        },
+        {
+          "id": "issue-marks",
+          "kinds": [
+            "issue-marks"
+          ],
+          "where": "local",
+          "path": "cat-harness/issue-marks/"
         },
         {
           "id": "docs/proposals",
@@ -2556,10 +2948,90 @@
           ],
           "where": "local",
           "path": "cat-harness/openapi/scripts/"
+        },
+        {
+          "id": "defs",
+          "kinds": [
+            "bean-defs"
+          ],
+          "where": "local",
+          "path": "cat-harness/beans/defs/"
+        },
+        {
+          "id": "archive",
+          "kinds": [
+            "bean-defs"
+          ],
+          "where": "local",
+          "path": "cat-harness/beans/defs/archive/"
+        },
+        {
+          "id": "notes",
+          "kinds": [
+            "bean-notes"
+          ],
+          "where": "local",
+          "path": "cat-harness/beans/notes/"
+        },
+        {
+          "id": "workflows",
+          "kinds": [
+            "workflow-state"
+          ],
+          "where": "local",
+          "path": "cat-harness/beans/workflows/"
+        },
+        {
+          "id": "queue",
+          "kinds": [
+            "merge-queue"
+          ],
+          "where": "local",
+          "path": "cat-harness/beans/queue/"
+        },
+        {
+          "id": "surveys",
+          "kinds": [
+            "session-survey"
+          ],
+          "where": "local",
+          "path": "cat-harness/beans/surveys/"
+        },
+        {
+          "id": "items",
+          "kinds": [
+            "todo-items"
+          ],
+          "where": "local",
+          "path": "cat-harness/todos/items/"
+        },
+        {
+          "id": "feedback",
+          "kinds": [
+            "todo-feedback"
+          ],
+          "where": "local",
+          "path": "cat-harness/todos/feedback/"
+        },
+        {
+          "id": "boards",
+          "kinds": [
+            "boards"
+          ],
+          "where": "local",
+          "path": "cat-harness/todos/boards/"
+        },
+        {
+          "id": "positions",
+          "kinds": [
+            "board-positions"
+          ],
+          "where": "local",
+          "path": "cat-harness/todos/boards/"
         }
       ],
       "findings": [
-        "cat-harness: declares 18 graph(s) with no published viewer — auto-docs, basic-cdn-site, cat-harness, code, code-list, doc-group, interaction, memory, policies, scenarios, substrate-snapshot, tool-release, typologies, uml, validators, vocab-mapping, voice-vendors, waiver. Declared and not rendered is a gap, not a dead link."
+        "cat-harness: declares 27 graph(s) with no published viewer — auto-docs, basic-cdn-site, bean-defs, bean-notes, board-positions, boards, code, code-list, doc-group, folio, interaction, memory, merge-queue, policies, scenarios, session-survey, substrate-snapshot, todo-feedback, todo-items, tool-release, typologies, uml, validators, vocab-mapping, voice-vendors, waiver, workflow-state. Declared and not rendered is a gap, not a dead link."
       ],
       "navbarIcons": [
         "close",
@@ -2587,9 +3059,9 @@
       "toneFrom": "avatar",
       "reads": "a trowel, in bootstrap's colour — the code that implements bootstrap's tools",
       "genericAvatar": false,
-      "instantiated": false,
-      "href": "/processes/",
-      "hrefKind": "viewer",
+      "instantiated": true,
+      "href": "/#harness-bootstrap-tools",
+      "hrefKind": "section",
       "stats": [
         {
           "id": "directories",
@@ -2678,262 +3150,7 @@
       ],
       "findings": [
         "bootstrap-tools: declares 3 graph(s) with no published viewer — code, scenarios, skills. Declared and not rendered is a gap, not a dead link.",
-        "bootstrap-tools: has no docs/ of its own, so the tile opens a kind handler's viewer (/processes/) rather than the instance's own themed root."
-      ],
-      "navbarIcons": [
-        "close",
-        "todos",
-        "beans",
-        "fsh-guts",
-        "launcher"
-      ]
-    },
-    {
-      "name": "smart-trust",
-      "title": "smart-trust",
-      "label": "smart-trust",
-      "description": "WHO SMART Trust (smart.who.int.trust) v1.8.0 — the published IG's artefact index, reconstructed: 674 artefacts known, 19 materialized.",
-      "footer": false,
-      "needs": [
-        "smart-ig",
-        "cat-openapi"
-      ],
-      "icon": null,
-      "mark": {
-        "glyph": "M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6zM12 9.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM12 12.5v3",
-        "title": "a shield with a keyhole — the trust framework, in WHO blue"
-      },
-      "tone": 199,
-      "toneFrom": "avatar",
-      "reads": "a shield with a keyhole — the trust framework, in WHO blue",
-      "genericAvatar": false,
-      "instantiated": false,
-      "href": "/cat-harness/auto-docs/index/docs/smart-trust-docs/",
-      "hrefKind": "viewer",
-      "stats": [
-        {
-          "id": "directories",
-          "label": "declared directories",
-          "value": 7
-        },
-        {
-          "id": "kinds",
-          "label": "declared graph typologies",
-          "value": 7
-        },
-        {
-          "id": "views",
-          "label": "visualisations you can open",
-          "value": 2
-        }
-      ],
-      "visualisations": [
-        {
-          "kind": "code",
-          "note": "no viewer yet",
-          "label": "Code"
-        },
-        {
-          "kind": "docs",
-          "path": "/cat-harness/auto-docs/index/docs/smart-trust-docs/",
-          "label": "Docs"
-        },
-        {
-          "kind": "fhir-artifact-index",
-          "readOnly": true,
-          "note": "no viewer yet",
-          "label": "FHIR artefact index"
-        },
-        {
-          "kind": "ig-ast",
-          "note": "no viewer yet",
-          "label": "IG AST"
-        },
-        {
-          "kind": "ig-pages",
-          "path": "/cat-harness/auto-docs/index/docs/smart-trust-docs/",
-          "label": "Docs",
-          "sameAs": "docs"
-        },
-        {
-          "kind": "openapi",
-          "readOnly": true,
-          "note": "no viewer yet",
-          "label": "Openapi"
-        },
-        {
-          "kind": "qa",
-          "note": "no viewer yet",
-          "label": "QA"
-        }
-      ],
-      "subgraphs": [
-        {
-          "id": "smart-trust-ast",
-          "kinds": [
-            "ig-ast"
-          ],
-          "where": "local",
-          "path": "smart-trust/fhir-ast/"
-        },
-        {
-          "id": "smart-trust-artifact-index",
-          "kinds": [
-            "fhir-artifact-index"
-          ],
-          "where": "local",
-          "path": "smart-trust/fhir-artifact-index/"
-        },
-        {
-          "id": "smart-trust-openapi",
-          "kinds": [
-            "openapi"
-          ],
-          "where": "local",
-          "path": "smart-trust/openapi/"
-        },
-        {
-          "id": "smart-trust-docs",
-          "kinds": [
-            "docs",
-            "ig-pages"
-          ],
-          "where": "local",
-          "path": "smart-trust/docs/"
-        },
-        {
-          "id": "smart-trust-scripts",
-          "kinds": [
-            "code"
-          ],
-          "where": "local",
-          "path": "smart-trust/scripts/"
-        },
-        {
-          "id": "qa",
-          "kinds": [
-            "qa"
-          ],
-          "where": "local",
-          "path": "smart-trust/test/results/"
-        },
-        {
-          "id": "smart-trust-platform",
-          "kinds": [
-            "code"
-          ],
-          "where": "local",
-          "path": "smart-trust/platform/"
-        }
-      ],
-      "findings": [
-        "smart-trust: declares 5 graph(s) with no published viewer — code, fhir-artifact-index, ig-ast, openapi, qa. Declared and not rendered is a gap, not a dead link.",
-        "smart-trust: 2 graph(s) hold materialized content and are READ-ONLY — fhir-artifact-index, openapi. Readable, not editable here: copy one out to your own folio/ to work on it. Separate from whether a viewer is published.",
-        "smart-trust: has no docs/ of its own, so the tile opens a kind handler's viewer (/cat-harness/auto-docs/index/docs/smart-trust-docs/) rather than the instance's own themed root.",
-        "smart-trust: needs \"smart-ig\", which names no instance in this tree.",
-        "smart-trust: needs \"cat-openapi\", which names no instance in this tree."
-      ],
-      "navbarIcons": [
-        "close",
-        "todos",
-        "beans",
-        "fsh-guts",
-        "launcher"
-      ]
-    },
-    {
-      "name": "smart-immunizations",
-      "title": "smart-immunizations",
-      "label": "smart-immunizations",
-      "description": "WHO SMART Immunizations (smart.who.int.immunizations) v0.2.0, FHIR 4.0.1 — the published IG's artefact index, reconstructed: 748 artefacts known, 200 materialized.",
-      "footer": false,
-      "needs": [
-        "smart-ig"
-      ],
-      "icon": null,
-      "mark": {
-        "glyph": "M18 3l3 3M16 5l3 3M17.5 6.5L9 15l-3 1 1-3 8.5-8.5M10 10l4 4M6 18l-3 3",
-        "title": "a syringe — the immunization guide"
-      },
-      "tone": 352,
-      "toneFrom": "avatar",
-      "reads": "a syringe — the immunization guide",
-      "genericAvatar": false,
-      "instantiated": false,
-      "href": "/smart-immunizations/",
-      "hrefKind": "folio",
-      "stats": [
-        {
-          "id": "directories",
-          "label": "declared directories",
-          "value": 3
-        },
-        {
-          "id": "kinds",
-          "label": "declared graph typologies",
-          "value": 4
-        },
-        {
-          "id": "views",
-          "label": "visualisations you can open",
-          "value": 3
-        }
-      ],
-      "visualisations": [
-        {
-          "kind": "docs",
-          "path": "/cat-harness/auto-docs/index/docs/smart-immunizations-docs/",
-          "label": "Docs"
-        },
-        {
-          "kind": "fhir-artifact-index",
-          "path": "/smart-immunizations/artifacts.html",
-          "readOnly": true,
-          "label": "FHIR artefact index"
-        },
-        {
-          "kind": "ig-pages",
-          "path": "/cat-harness/auto-docs/index/docs/smart-immunizations-docs/",
-          "label": "Docs",
-          "sameAs": "docs"
-        },
-        {
-          "kind": "qa",
-          "note": "no viewer yet",
-          "label": "QA"
-        }
-      ],
-      "subgraphs": [
-        {
-          "id": "smart-immunizations-artifact-index",
-          "kinds": [
-            "fhir-artifact-index"
-          ],
-          "where": "local",
-          "path": "smart-immunizations/fhir-artifact-index/"
-        },
-        {
-          "id": "smart-immunizations-docs",
-          "kinds": [
-            "docs",
-            "ig-pages"
-          ],
-          "where": "local",
-          "path": "smart-immunizations/docs/"
-        },
-        {
-          "id": "qa",
-          "kinds": [
-            "qa"
-          ],
-          "where": "local",
-          "path": "smart-immunizations/test/results/"
-        }
-      ],
-      "findings": [
-        "smart-immunizations: declares 1 graph(s) with no published viewer — qa. Declared and not rendered is a gap, not a dead link.",
-        "smart-immunizations: 1 graph(s) hold materialized content and are READ-ONLY — fhir-artifact-index. Readable, not editable here: copy one out to your own folio/ to work on it. Separate from whether a viewer is published.",
-        "smart-immunizations: needs \"smart-ig\", which names no instance in this tree."
+        "bootstrap-tools: has no docs/ of its own, so the tile opens its section of the landing (/#harness-bootstrap-tools) rather than the instance's own themed root."
       ],
       "navbarIcons": [
         "close",
@@ -2987,9 +3204,9 @@
       "toneFrom": "avatar",
       "reads": "a seed germinating — the first thing, before anything else is known",
       "genericAvatar": false,
-      "instantiated": false,
-      "href": "/processes/",
-      "hrefKind": "viewer",
+      "instantiated": true,
+      "href": "/#harness-bootstrap",
+      "hrefKind": "section",
       "stats": [
         {
           "id": "directories",
@@ -3078,7 +3295,7 @@
       ],
       "findings": [
         "bootstrap: 3 graph(s) render no viewer — models, scenarios, skills — under a declared `renderExemption`. Not a gap: it owes Its own Knowledge Graph, written out as `.jsonld` with a `.json` copy and published at `<base>/bootstrap/bootstrap.jsonld`, the exact address its `@id` names. Governed by `skills/bootstrap-graph-emission.md` and `skills/bootstrap-graph-publication.md`.",
-        "bootstrap: has no docs/ of its own, so the tile opens a kind handler's viewer (/processes/) rather than the instance's own themed root."
+        "bootstrap: has no docs/ of its own, so the tile opens its section of the landing (/#harness-bootstrap) rather than the instance's own themed root."
       ],
       "navbarIcons": [
         "close",
@@ -3098,14 +3315,26 @@
       "launcher"
     ],
     "hrefs": {
-      "beans": "/beans/"
+      "todos": "/todos/",
+      "beans": "/beans/",
+      "fsh-guts": "/fsh-guts/"
     },
     "notes": {},
     "folders": [
       {
+        "kind": "bean-defs",
+        "label": "Bean definitions",
+        "note": "no viewer yet"
+      },
+      {
+        "kind": "bean-notes",
+        "label": "Bean notes",
+        "note": "no viewer yet"
+      },
+      {
         "kind": "beans",
         "label": "Beans",
-        "path": "/beans/"
+        "note": "no viewer yet"
       },
       {
         "kind": "block-kinds",
@@ -3196,6 +3425,11 @@
         "kind": "voices",
         "label": "Voices",
         "path": "/cat-harness/voices/folio-assistant-core/"
+      },
+      {
+        "kind": "workflow-state",
+        "label": "Workflow state",
+        "note": "no viewer yet"
       }
     ]
   },
@@ -3206,9 +3440,19 @@
       "href": "/folio-assistant-core/",
       "folders": [
         {
+          "kind": "bean-defs",
+          "label": "Bean definitions",
+          "note": "no viewer yet"
+        },
+        {
+          "kind": "bean-notes",
+          "label": "Bean notes",
+          "note": "no viewer yet"
+        },
+        {
           "kind": "beans",
           "label": "Beans",
-          "path": "/beans/"
+          "note": "no viewer yet"
         },
         {
           "kind": "block-kinds",
@@ -3299,6 +3543,11 @@
           "kind": "voices",
           "label": "Voices",
           "path": "/cat-harness/voices/folio-assistant-core/"
+        },
+        {
+          "kind": "workflow-state",
+          "label": "Workflow state",
+          "note": "no viewer yet"
         }
       ]
     },
@@ -3321,6 +3570,140 @@
           "kind": "qa",
           "label": "QA",
           "note": "no viewer yet"
+        }
+      ]
+    },
+    {
+      "name": "smart-trust",
+      "title": "smart-trust",
+      "href": "/smart-trust/",
+      "folders": [
+        {
+          "kind": "code",
+          "label": "Code",
+          "note": "no viewer yet"
+        },
+        {
+          "kind": "docs",
+          "label": "Docs",
+          "path": "/cat-harness/auto-docs/index/docs/smart-trust-docs/"
+        },
+        {
+          "kind": "fhir-artifact-index",
+          "label": "FHIR artefact index",
+          "path": "/smart-trust/artifacts.html"
+        },
+        {
+          "kind": "ig-ast",
+          "label": "IG AST",
+          "note": "no viewer yet"
+        },
+        {
+          "kind": "openapi",
+          "label": "Openapi",
+          "note": "no viewer yet"
+        },
+        {
+          "kind": "qa",
+          "label": "QA",
+          "note": "no viewer yet"
+        }
+      ]
+    },
+    {
+      "name": "smart-base",
+      "title": "SMART Base",
+      "href": "/smart-base/",
+      "folders": [
+        {
+          "kind": "block-kinds",
+          "label": "Block kinds",
+          "note": "no viewer yet"
+        },
+        {
+          "kind": "code",
+          "label": "Code",
+          "note": "no viewer yet"
+        },
+        {
+          "kind": "content-adapters",
+          "label": "Content adapters",
+          "note": "no viewer yet"
+        },
+        {
+          "kind": "docs",
+          "label": "Docs",
+          "path": "/cat-harness/auto-docs/index/docs/smart-base-docs/"
+        },
+        {
+          "kind": "document-kinds",
+          "label": "Document kinds",
+          "path": "/cat-harness/document-kinds/smart-base/"
+        },
+        {
+          "kind": "external-schema",
+          "label": "External schemas",
+          "note": "no viewer yet"
+        },
+        {
+          "kind": "fhir-artifact-index",
+          "label": "FHIR artefact index",
+          "path": "/smart-base/artifacts.html"
+        },
+        {
+          "kind": "library",
+          "label": "Library",
+          "path": "/cat-harness/library/smart-base/"
+        },
+        {
+          "kind": "methodology",
+          "label": "Methodologies",
+          "path": "/methodologies/"
+        },
+        {
+          "kind": "processes",
+          "label": "Processes",
+          "path": "/processes/"
+        },
+        {
+          "kind": "qa",
+          "label": "QA",
+          "note": "no viewer yet"
+        },
+        {
+          "kind": "qa-checkers",
+          "label": "QA checkers",
+          "note": "no viewer yet"
+        },
+        {
+          "kind": "scenarios",
+          "label": "Scenarios",
+          "note": "no viewer yet"
+        },
+        {
+          "kind": "skills",
+          "label": "Skills",
+          "path": "/cat-harness/auto-docs/index/skills/smart-base-skills/"
+        },
+        {
+          "kind": "themes",
+          "label": "Themes",
+          "note": "no viewer yet"
+        },
+        {
+          "kind": "tools",
+          "label": "Tools",
+          "note": "no viewer yet"
+        },
+        {
+          "kind": "translation-sources",
+          "label": "Translation sources",
+          "path": "/translation-status/"
+        },
+        {
+          "kind": "voices",
+          "label": "Voices",
+          "path": "/cat-harness/voices/smart-base/"
         }
       ]
     },
@@ -3455,9 +3838,9 @@
     },
     "who-iris": {
       "version": "0.1.0",
-      "major": null,
-      "agent": "",
-      "human": ""
+      "major": 0,
+      "agent": "https://litlfred.github.io/who-iris/0.1.0/",
+      "human": "https://litlfred.github.io/who-iris/v0/"
     }
   },
   "config": {
@@ -3877,9 +4260,113 @@
     ],
     "harnesses": [
       {
+        "name": "smart-trust",
+        "title": "smart-trust",
+        "group": "instantiated",
+        "declaredIn": "smart-trust/smart-trust.json",
+        "viewHref": "https://github.com/litlfred/smart-trust/blob/main/smart-base/smart-trust.json",
+        "editHref": "https://github.com/litlfred/smart-trust/edit/main/smart-base/smart-trust.json",
+        "declared": [
+          {
+            "key": "name",
+            "summary": "smart-trust"
+          },
+          {
+            "key": "description",
+            "summary": "WHO SMART Trust (smart.who.int.trust) v1.8.0 — the published IG's artefact index, reconst…"
+          },
+          {
+            "key": "avatar",
+            "summary": "{ glyph, tone, reads }"
+          },
+          {
+            "key": "assets",
+            "summary": "3: agent-instructions, instance-readme, checkout-scripts"
+          },
+          {
+            "key": "repository",
+            "summary": "litlfred/smart-trust"
+          },
+          {
+            "key": "livesAt",
+            "summary": "{ repository, path }"
+          },
+          {
+            "key": "directories",
+            "summary": "7: smart-trust-ast, smart-trust-artifact-index, smart-trust-openapi, smart-trust-docs, smart…"
+          },
+          {
+            "key": "needs",
+            "summary": "smart-base"
+          },
+          {
+            "key": "taskIo",
+            "summary": "{ smart-trust:pages:check, smart-trust:openapi:check, smart-trust:openapi:pages:check }"
+          },
+          {
+            "key": "version",
+            "summary": "0.1.0"
+          }
+        ]
+      },
+      {
+        "name": "smart-immunizations",
+        "title": "smart-immunizations",
+        "group": "instantiated",
+        "declaredIn": "smart-immunizations/smart-immunizations.json",
+        "viewHref": "https://github.com/litlfred/smart-immunizations/blob/main/smart-base/smart-immunizations.json",
+        "editHref": "https://github.com/litlfred/smart-immunizations/edit/main/smart-base/smart-immunizations.json",
+        "declared": [
+          {
+            "key": "name",
+            "summary": "smart-immunizations"
+          },
+          {
+            "key": "description",
+            "summary": "WHO SMART Immunizations (smart.who.int.immunizations) v0.2.0, FHIR 4.0.1 — the published …"
+          },
+          {
+            "key": "avatar",
+            "summary": "{ glyph, tone, reads }"
+          },
+          {
+            "key": "assets",
+            "summary": "3: agent-instructions, instance-readme, checkout-scripts"
+          },
+          {
+            "key": "repository",
+            "summary": "litlfred/smart-immunizations"
+          },
+          {
+            "key": "livesAt",
+            "summary": "{ repository, path }"
+          },
+          {
+            "key": "source",
+            "summary": "{ kind, repository, ref }"
+          },
+          {
+            "key": "directories",
+            "summary": "3: smart-immunizations-artifact-index, smart-immunizations-docs, qa"
+          },
+          {
+            "key": "needs",
+            "summary": "smart-base"
+          },
+          {
+            "key": "taskIo",
+            "summary": "{ smart-immunizations:pages:check }"
+          },
+          {
+            "key": "version",
+            "summary": "0.1.0"
+          }
+        ]
+      },
+      {
         "name": "smart-base",
         "title": "SMART Base",
-        "group": "checkout",
+        "group": "instantiated",
         "declaredIn": "smart-base/smart-base.json",
         "viewHref": "https://github.com/litlfred/smart-base/blob/main/smart-base/smart-base.json",
         "editHref": "https://github.com/litlfred/smart-base/edit/main/smart-base/smart-base.json",
@@ -3941,7 +4428,7 @@
       {
         "name": "who-iris",
         "title": "WHO IRIS",
-        "group": "checkout",
+        "group": "instantiated",
         "declaredIn": "who-iris/who-iris.json",
         "viewHref": "https://github.com/litlfred/who-iris/blob/main/who-iris.json",
         "editHref": "https://github.com/litlfred/who-iris/edit/main/who-iris.json",
@@ -3979,12 +4466,12 @@
             "summary": "litlfred/who-iris"
           },
           {
-            "key": "livesAt",
-            "summary": "{ repository, path }"
-          },
-          {
             "key": "separation",
             "summary": "content"
+          },
+          {
+            "key": "iriBase",
+            "summary": "https://litlfred.github.io/who-iris/"
           },
           {
             "key": "directories",
@@ -4011,7 +4498,7 @@
       {
         "name": "folio-assistant-sci",
         "title": "folio-assistant-sci",
-        "group": "checkout",
+        "group": "instantiated",
         "declaredIn": "folio-assistant-sci/folio-assistant-sci.json",
         "viewHref": "https://github.com/litlfred/folio-assistant-sci/blob/main/folio-assistant-sci.json",
         "editHref": "https://github.com/litlfred/folio-assistant-sci/edit/main/folio-assistant-sci.json",
@@ -4035,10 +4522,6 @@
           {
             "key": "repository",
             "summary": "litlfred/folio-assistant-sci"
-          },
-          {
-            "key": "livesAt",
-            "summary": "{ repository, path }"
           },
           {
             "key": "directories",
@@ -4065,7 +4548,7 @@
       {
         "name": "fhir-harness",
         "title": "FHIR IG Harness",
-        "group": "checkout",
+        "group": "instantiated",
         "declaredIn": "fhir-harness/fhir-harness.json",
         "viewHref": "https://github.com/litlfred/fhir-harness/blob/main/fhir-harness.json",
         "editHref": "https://github.com/litlfred/fhir-harness/edit/main/fhir-harness.json",
@@ -4093,10 +4576,6 @@
           {
             "key": "repository",
             "summary": "litlfred/fhir-harness"
-          },
-          {
-            "key": "livesAt",
-            "summary": "{ repository, path }"
           },
           {
             "key": "canonicalUrl",
@@ -4135,7 +4614,7 @@
       {
         "name": "folio-assistant-core",
         "title": "Folio Assistant Core",
-        "group": "checkout",
+        "group": "instantiated",
         "declaredIn": "folio-assistant-core/folio-assistant-core.json",
         "viewHref": "https://github.com/litlfred/folio-assistant-core/blob/main/folio-assistant-core.json",
         "editHref": "https://github.com/litlfred/folio-assistant-core/edit/main/folio-assistant-core.json",
@@ -4163,10 +4642,6 @@
           {
             "key": "repository",
             "summary": "litlfred/folio-assistant-core"
-          },
-          {
-            "key": "livesAt",
-            "summary": "{ repository, path }"
           },
           {
             "key": "iriBase",
@@ -4205,7 +4680,7 @@
       {
         "name": "cat-harness-tools",
         "title": "C@T Harness Tools",
-        "group": "checkout",
+        "group": "instantiated",
         "declaredIn": "cat-harness-tools/cat-harness-tools.json",
         "viewHref": "https://github.com/litlfred/cat-harness-tools/blob/main/cat-harness-tools.json",
         "editHref": "https://github.com/litlfred/cat-harness-tools/edit/main/cat-harness-tools.json",
@@ -4263,7 +4738,7 @@
       {
         "name": "cat-harness",
         "title": "C@T Harness",
-        "group": "checkout",
+        "group": "instantiated",
         "declaredIn": "cat-harness/cat-harness.json",
         "viewHref": "https://github.com/litlfred/cat-harness/blob/main/cat-harness.json",
         "editHref": "https://github.com/litlfred/cat-harness/edit/main/cat-harness.json",
@@ -4330,7 +4805,7 @@
           },
           {
             "key": "directories",
-            "summary": "35: cat-harness-validators, tools, external-schemas, subscriptions, code-lists, vocab-mapping…"
+            "summary": "38: cat-harness-validators, tools, external-schemas, subscriptions, code-lists, vocab-mapping…"
           },
           {
             "key": "associatedHarnesses",
@@ -4365,7 +4840,7 @@
       {
         "name": "bootstrap-tools",
         "title": "Bootstrap tools",
-        "group": "checkout",
+        "group": "instantiated",
         "declaredIn": "bootstrap-tools/bootstrap-tools.json",
         "viewHref": "https://github.com/litlfred/bootstrap-tools/blob/main/bootstrap-tools.json",
         "editHref": "https://github.com/litlfred/bootstrap-tools/edit/main/bootstrap-tools.json",
@@ -4405,109 +4880,9 @@
         ]
       },
       {
-        "name": "smart-trust",
-        "title": "smart-trust",
-        "group": "checkout",
-        "declaredIn": "smart-trust/smart-trust.json",
-        "viewHref": "https://github.com/litlfred/smart-trust/blob/main/smart-base/smart-trust.json",
-        "editHref": "https://github.com/litlfred/smart-trust/edit/main/smart-base/smart-trust.json",
-        "declared": [
-          {
-            "key": "name",
-            "summary": "smart-trust"
-          },
-          {
-            "key": "description",
-            "summary": "WHO SMART Trust (smart.who.int.trust) v1.8.0 — the published IG's artefact index, reconst…"
-          },
-          {
-            "key": "avatar",
-            "summary": "{ glyph, tone, reads }"
-          },
-          {
-            "key": "assets",
-            "summary": "2: agent-instructions, instance-readme"
-          },
-          {
-            "key": "repository",
-            "summary": "litlfred/smart-trust"
-          },
-          {
-            "key": "livesAt",
-            "summary": "{ repository, path }"
-          },
-          {
-            "key": "directories",
-            "summary": "7: smart-trust-ast, smart-trust-artifact-index, smart-trust-openapi, smart-trust-docs, smart…"
-          },
-          {
-            "key": "needs",
-            "summary": "smart-ig, cat-openapi"
-          },
-          {
-            "key": "taskIo",
-            "summary": "{ smart-trust:pages:check, smart-trust:openapi:check, smart-trust:openapi:pages:check }"
-          },
-          {
-            "key": "version",
-            "summary": "0.1.0"
-          }
-        ]
-      },
-      {
-        "name": "smart-immunizations",
-        "title": "smart-immunizations",
-        "group": "checkout",
-        "declaredIn": "smart-immunizations/smart-immunizations.json",
-        "viewHref": "https://github.com/litlfred/smart-immunizations/blob/main/smart-base/smart-immunizations.json",
-        "editHref": "https://github.com/litlfred/smart-immunizations/edit/main/smart-base/smart-immunizations.json",
-        "declared": [
-          {
-            "key": "name",
-            "summary": "smart-immunizations"
-          },
-          {
-            "key": "description",
-            "summary": "WHO SMART Immunizations (smart.who.int.immunizations) v0.2.0, FHIR 4.0.1 — the published …"
-          },
-          {
-            "key": "avatar",
-            "summary": "{ glyph, tone, reads }"
-          },
-          {
-            "key": "assets",
-            "summary": "2: agent-instructions, instance-readme"
-          },
-          {
-            "key": "repository",
-            "summary": "litlfred/smart-immunizations"
-          },
-          {
-            "key": "livesAt",
-            "summary": "{ repository, path }"
-          },
-          {
-            "key": "directories",
-            "summary": "3: smart-immunizations-artifact-index, smart-immunizations-docs, qa"
-          },
-          {
-            "key": "needs",
-            "summary": "smart-ig"
-          },
-          {
-            "key": "taskIo",
-            "summary": "{ smart-immunizations:pages:check }"
-          },
-          {
-            "key": "version",
-            "summary": "0.1.0"
-          }
-        ]
-      },
-      {
         "name": "bootstrap",
         "title": "Bootstrap",
-        "group": "checkout",
+        "group": "instantiated",
         "declaredIn": "bootstrap/bootstrap.json",
         "viewHref": "https://github.com/litlfred/bootstrap/blob/main/bootstrap.json",
         "editHref": "https://github.com/litlfred/bootstrap/edit/main/bootstrap.json",

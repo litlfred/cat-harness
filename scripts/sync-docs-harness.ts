@@ -43,7 +43,7 @@ import { harnessPanel, skillPageIn } from "./harness-panel.js";
 import { siteLinks } from "./site-links.js";
 import { siteDirectories, withViewers } from "./viewer-declarations.js";
 import { harnessTitle } from "./lib/nav-label.js";
-import { resolveLandingInstance } from "../schemas/harness-config.js";
+import { checkoutDirectories, resolveLandingInstance } from "../schemas/harness-config.js";
 
 
 const ROOT = resolve(import.meta.dir, "..");
@@ -336,6 +336,24 @@ const config = harnessPanel(
  * declared visualisations, and `siteLinks` -- and a join inlined in an object
  * literal is a join nobody can test.
  */
+/**
+ * The instance that holds this checkout's shared graphs (`beans`, `todos`):
+ * the checkout root's own instance when it declares one, else the instance
+ * that declares the repository-scoped directories. In the index checkout the
+ * root declares nothing (owner, 2026-10-08) and cat-harness declares them
+ * (decision (b)); asking only the root left the navbar's Todos and Beans
+ * icons with no destination (`rail-icon-row.e2e.ts`, 2026-10-09).
+ */
+function checkoutGraphOwner(root: string): string | undefined {
+  const own = readDeclaration(root)?.name;
+  if (own !== undefined) return own;
+  try {
+    return checkoutDirectories(root).find((d) => d.scope === "repository" && d.own)?.declaredBy;
+  } catch {
+    return undefined; // an unreadable declaration is `check:harness-dirs`'s to report
+  }
+}
+
 function navbarRow(
   harnesses: readonly {
     name: string;
@@ -367,8 +385,16 @@ function navbarRow(
   // and rendered both inert, "reason not recorded" (caught by
   // `navbar-row.e2e.ts`). Its own tile still wins for a kind it does hold.
   const root = checkout !== undefined && checkout !== self ? harnesses.find((h) => h.name === checkout) : undefined;
-  const ownKinds = new Set((mine.visualisations ?? []).map((v) => v.kind));
-  const vis = [...(mine.visualisations ?? []), ...(root?.visualisations ?? []).filter((v) => !ownKinds.has(v.kind))];
+  // An own tile wins only when it GOES somewhere. core's own `beans`
+  // directory has no viewer ("no viewer yet"), and letting that inert tile
+  // shadow the checkout owner's working one left the Beans icon dead
+  // (2026-10-09). The kinds with a destination are this harness's answer;
+  // the rest fall through to the checkout's.
+  const ownKinds = new Set((mine.visualisations ?? []).filter((v) => v.path).map((v) => v.kind));
+  const vis = [
+    ...(mine.visualisations ?? []).filter((v) => v.path || !(root?.visualisations ?? []).some((r) => r.kind === v.kind && r.path)),
+    ...(root?.visualisations ?? []).filter((v) => !ownKinds.has(v.kind)),
+  ];
   const byKind = new Map(vis.map((v) => [v.kind, v.path ?? undefined]));
   const noteByKind = new Map(vis.flatMap((v) => (v.note ? [[v.kind, v.note] as const] : [])));
   const hrefs: Record<string, string> = {};
@@ -641,7 +667,7 @@ const payload = {
    * the page rather than going anywhere, and giving them one would make them
    * look like navigation.
    */
-  navbar: navbarRow(allHarnesses, decl?.name, links, readDeclaration(REPO_ROOT)?.name),
+  navbar: navbarRow(allHarnesses, decl?.name, links, checkoutGraphOwner(REPO_ROOT)),
   /** The instances a page can be inside, for the rail's PAGES and FOLDERS (#1902). See {@link railScopes}. */
   railScopes: railScopes(allHarnesses),
   /**
