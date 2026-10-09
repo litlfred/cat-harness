@@ -1,0 +1,17 @@
+{
+  "@context": [
+    "https://litlfred.github.io/folio-assistant/ns/content/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/"
+    }
+  ],
+  "@id": "library/arxiv-2404.04834v4/blocks/prose-sec-016",
+  "kind": "prose",
+  "title": "Phase Two: Optimizing Agent Synergy",
+  "pageStart": 17,
+  "pageEnd": 22,
+  "text": "../sections/sec-016-52-phase-two-optimizing-agent-synergy.md",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness-8107/arxiv-2404.04834v4/manifest.jsonld",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness-8107/arxiv-2404.04834v4/manifest.jsonld",
+  "provenance": "ingested"
+}
