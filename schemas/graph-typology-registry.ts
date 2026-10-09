@@ -1146,6 +1146,18 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "Distinct from `docs` itself by the one question that settles the layer: a docs page is re-authored, " +
       "an index is regenerated.",
   },
+  notes: {
+    description:
+      "a folio's derivation notes, cheat sheets, scoping docs and recorded refutations — declared context read by agents and never written by a process, not rendered content. Distinct from `docs` by not being renderable, and from `todos` by holding context rather than outstanding work. Downstream math and derivation notes from qou (migration S-REST-1, qou-pjfi).",
+    title: "Notes",
+    perInstance: true,
+    renderable: false,
+    holds: "context",
+    validatorNotApplicable:
+      "its nodes are markdown and LaTeX derivation notes, scoping docs, cheat sheets and ledgers with no fixed JSON schema; read as context by agents and never written by a process.",
+    summary:
+      "A folio's derivation notes, scoping docs and ledgers as declared context, not rendered content.",
+  },
   "external-schema": {
     description:
       "the specifications this instance depends on (`external-schemas/`) — one record per specification, pinning the EDITION in use, with the operative terms DERIVED from the corpus rather than hand-listed. `content`, and the call goes against the obvious reading: a process DOES write these files (`external-schemas.ts --write` refreshes `terms[]`), which sounds like `state`, but the axis asks what the graph IS and the subject matter here is a DECISION — which specifications we depend on, at which edition, and what each term operatively means. `derived` would be destructive: it says \"regenerate it\", and regenerating a deleted record recovers neither the authored edition, nor the `usedBy` blast radius, nor a line of the `operative` prose. UNDECLARED until 2026-09-22, which is `dh4f` inverted — a held directory nothing declares, so every consumer fanning out over declared directories skipped a registry pinning four external namespaces. Governed by [`vocabulary-authority`](vocabulary-authority.md) and [`schema-management`](schema-management.md).",
