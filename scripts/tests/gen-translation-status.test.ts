@@ -15,7 +15,7 @@ import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import { countCatalogue, otherInstances, share, statusPage } from "../gen-translation-status.ts";
+import { countCatalogue, languageName, otherInstances, share, statusPage } from "../gen-translation-status.ts";
 import { unscopedSelectors } from "../lib/themed-page.ts";
 
 /** A minimal catalogue header — every real `.po` opens with one. */
@@ -255,5 +255,70 @@ describe("another instance's catalogues are measured, in their own table — iss
     expect(html).toContain(`id="locale-fr"`);
     expect(html).toContain(`id="who-iris-locale-fr"`);
     expect(html).toContain("<code>who-iris/translations</code>");
+  });
+});
+
+describe("translation status visualiser wireframe findings (bgrz)", () => {
+  const sampleLocales = [
+    { locale: "ar", templates: 63, catalogues: 4, entries: 168, translated: 124, fuzzy: 0, untranslated: 44, unreadable: [] },
+    { locale: "es", templates: 63, catalogues: 3, entries: 85, translated: 41, fuzzy: 0, untranslated: 44, unreadable: [] },
+    { locale: "fr", templates: 66, catalogues: 5, entries: 171, translated: 60, fuzzy: 0, untranslated: 111, unreadable: [] },
+  ];
+
+  test("finding 1: table has horizontal scroll wrapper, scroll hint, and mobile breathing room", () => {
+    const html = statusPage({ locales: sampleLocales, changedAt: "2026-10-09", scope: "cat-harness/translations" });
+    expect(html).toContain('class="ts-table-wrapper"');
+    expect(html).toContain('class="ts-scroll-hint"');
+    expect(html).toContain("overflow-x: auto");
+    expect(html).toContain("min-width: 36rem");
+    expect(html).toContain("fa-scroll-cue");
+  });
+
+  test("finding 2: styles support prefers-color-scheme: light without overriding explicit dark theme", () => {
+    const html = statusPage({ locales: sampleLocales, changedAt: "2026-10-09", scope: "cat-harness/translations" });
+    expect(html).toContain("@media (prefers-color-scheme: light)");
+    expect(html).toContain(':root[data-fa-scheme="dark"]');
+    expect(html).toContain(':root[data-fa-scheme="light"]');
+  });
+
+  test("finding 3: languageName renders human-readable language names alongside locale codes", () => {
+    expect(languageName("ar")).toBe("Arabic");
+    expect(languageName("es")).toBe("Spanish");
+    expect(languageName("fr")).toBe("French");
+    expect(languageName("ru")).toBe("Russian");
+    expect(languageName("zh")).toBe("Chinese");
+    expect(languageName("xyz-unknown-locale")).toBeUndefined();
+
+    const html = statusPage({ locales: sampleLocales, changedAt: "2026-10-09", scope: "cat-harness/translations" });
+    expect(html).toContain('<code>ar</code> <span class="ts-lang-name">Arabic</span>');
+    expect(html).toContain('<code>es</code> <span class="ts-lang-name">Spanish</span>');
+    expect(html).toContain('<code>fr</code> <span class="ts-lang-name">French</span>');
+  });
+
+  test("finding 4: visual separation between catalogue availability (Q1) and string metrics (Q2)", () => {
+    const html = statusPage({ locales: sampleLocales, changedAt: "2026-10-09", scope: "cat-harness/translations" });
+    expect(html).toContain('class="ts-questions-legend"');
+    expect(html).toContain("Question 1 (Availability)");
+    expect(html).toContain("Question 2 (Completeness)");
+    expect(html).toContain('class="ts-col-catalogues"');
+    expect(html).toContain('class="ts-col-strings"');
+    expect(html).toContain("Q1: availability");
+    expect(html).toContain("Q2: strings");
+  });
+
+  test("finding 5: onward links to translation-manager skill and source files", () => {
+    const html = statusPage({ locales: sampleLocales, changedAt: "2026-10-09", scope: "cat-harness/translations" });
+    expect(html).toContain('href="../reference/skill-instructions/translation-manager.html"');
+    expect(html).toContain('id="onward-links"');
+    expect(html).toContain("https://github.com/litlfred/folio-assistant/tree/main/cat-harness/translations");
+    expect(html).toContain("https://github.com/litlfred/folio-assistant/tree/main/cat-harness/translations/fr");
+  });
+
+  test("finding 6: accessibility markup is preserved (th scope=col and th scope=row)", () => {
+    const html = statusPage({ locales: sampleLocales, changedAt: "2026-10-09", scope: "cat-harness/translations" });
+    const colHeaders = html.match(/<th\s+scope="col"[^>]*>/g) ?? [];
+    const rowHeaders = html.match(/<th\s+scope="row"[^>]*>/g) ?? [];
+    expect(colHeaders.length).toBe(6);
+    expect(rowHeaders.length).toBe(sampleLocales.length);
   });
 });
