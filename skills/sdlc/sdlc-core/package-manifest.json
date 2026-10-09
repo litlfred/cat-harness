@@ -10,6 +10,7 @@
     "bean-coordination",
     "before-after-preview",
     "blocked-build-dependencies",
+    "finding-software",
     "branch-archaeology",
     "bun-use",
     "ci-health",

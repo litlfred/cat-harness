@@ -724,7 +724,12 @@ function planForPdf(pdf: string, p: Probe, lib: string): Plan {
   if (p.error || p.outline === null || p.chars === null) {
     return {
       rung: "undetermined",
-      why: p.error ?? "the PDF could not be probed",
+      why:
+        p.error === undefined
+          ? "the PDF could not be probed"
+          : p.error.startsWith("no PDF backend")
+            ? `${p.error} — get it: bun run cat software:ensure pymupdf (skill finding-software)`
+            : p.error,
       steps: [],
     };
   }

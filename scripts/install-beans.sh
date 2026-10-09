@@ -27,11 +27,10 @@ if command -v beans >/dev/null 2>&1 && [ "$FORCE" != "--force" ] && [ "$BEANS_VE
 fi
 
 if ! command -v go >/dev/null 2>&1; then
-  echo "ERROR: 'go' not found on PATH." >&2
-  echo "Install Go >= 1.21, or download a prebuilt binary from" >&2
-  echo "  https://github.com/hmans/beans/releases" >&2
-  echo "and place it on your PATH." >&2
-  exit 1
+  # No Go: the pinned, checksummed release binary (scripts/software.json,
+  # skill finding-software) rather than a stop.
+  echo "'go' not found on PATH — installing the pinned release binary instead." >&2
+  exec bun run "$(dirname "$0")/ensure-software.ts" beans
 fi
 
 # Pick a bin dir that is on PATH *and* writable (fall back to ~/.local/bin).

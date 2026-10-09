@@ -65,9 +65,10 @@ it, because the policy is the environment's and can change:
 - **`huggingface.co`: denied (403 on CONNECT).** Model weights live there
   (Nougat, most transformer checkpoints). The code installs from PyPI; the
   weights do not.
-- **github.com release assets and `codeload.github.com` archives: denied.**
-  `git clone` over HTTPS **works**, so build from source rather than download a
-  release.
+- **`codeload.github.com` archives: denied.** github.com **release assets**
+  were denied on 2026-10-06 and answered **200** on 2026-10-09 — re-check, and
+  prefer [`finding-software`](finding-software.md)'s pinned, checksummed
+  release rung when it is open. `git clone` over HTTPS **works** either way.
 - **PyPI and npm: open.**
 
 A change to the environment's network settings may not reach a container that

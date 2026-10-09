@@ -208,9 +208,10 @@ def main() -> int:
 
     missing = [t for t, p in tools.items() if not p]
     if missing:
+        # Get it rather than route around it (skill `finding-software`): the
+        # command installs exactly what this script declares it needs.
         sys.exit(f"pdf-ocr: needs {', '.join(missing)} — "
-                 "apt-get install -y --no-install-recommends "
-                 "tesseract-ocr tesseract-ocr-eng poppler-utils poppler-data")
+                 "bun run cat software:ensure --for scripts/pdf-ocr.py")
 
     for pdf in args.pdfs:
         root = args.outdir or os.path.dirname(os.path.abspath(pdf))
