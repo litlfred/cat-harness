@@ -1,10 +1,10 @@
 ---
 # folio-assistant-mw5z
 title: who-iris's two AUTHORED docs pages render as raw markdown and nothing links them
-status: todo
+status: in-progress
 type: bug
 created_at: 2026-10-04T06:25:33Z
-updated_at: 2026-10-04T06:25:33Z
+updated_at: 2026-10-09T19:00:00Z
 parent: folio-assistant-0lmb
 ---
 
@@ -71,3 +71,11 @@ stop claiming a complete list it does not have.
       own directory
 - [ ] at least one page links them — measured by grepping the BUILT site, not
       the source
+
+
+## 2026-10-09 — fixed in two halves, waiting on the pin (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
+
+- **cat-harness** (branch \`claude/mount-render-md\`, lands after pxtk and the docs-source move): \`mount-instance-docs\` renders each mounted \`x.md\` that has no \`x.html\` (\`renderMountedMarkdown\`, sharing \`publish-instance-files\`' renderer). Links are resolved for where the page is PUBLISHED: one leaving the mounted directory, or naming a directory with no page, becomes \`https://github.com/<repository>/{blob,tree}/HEAD/<path>\` from the declaration's \`repository\`; one climbing out of the instance fails the mount. Front-matter (Jekyll) pages are left alone.
+- **who-iris** (\`14ff17d\`): the docs landing's "Pages" list is read off \`docs/*.md\` (option 3's clause: it no longer under-reports); two links that still climbed to the monorepo root are fixed.
+- Measured on a local build of who-iris's site (the Routine's steps 3–7, isolated tree): \`/docs/who-iris/style-guide.html\` renders (screenshot), all four authored pages are linked from the landing, and a whole-site link check finds **0** unresolved hrefs.
+- Remaining: merge both, then move who-iris's cat-harness pin (owner consent, H8) and publish.

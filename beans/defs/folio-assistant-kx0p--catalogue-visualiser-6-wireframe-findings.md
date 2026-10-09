@@ -1,7 +1,7 @@
 ---
 # folio-assistant-kx0p
 title: 'catalogue visualiser: 6 wireframe findings'
-status: todo
+status: in-progress
 type: task
 priority: normal
 tags:
@@ -9,7 +9,7 @@ tags:
     - ui
     - visualiser-catalogue
 created_at: 2026-09-23T10:36:14Z
-updated_at: 2026-09-30T16:12:47Z
+updated_at: 2026-10-09T19:00:00Z
 parent: folio-assistant-4ccr
 ---
 
@@ -45,3 +45,17 @@ Each finding re-measured on a local build of that commit (`preview-site.sh`, ser
 - **STILL-PRESENT** — The node list is not filterable or sortable, and puts referenced ahead of materialized: There is no input/select/button in the tables and no th[aria-sort]. The #1592 filter is not on this page. The rows are still 10 REFERENCED then 3 MATERIALIZED. The first materialized row is at y=1889 at 1280 and y=4217 at 390. (rv-cat.mjs, filt.mjs)
 - **STILL-PRESENT** — About the first 280 px is replica chrome before the h1: The h1 'The catalogue, as a graph' still starts at y=319 at 1280 and y=615 at 390. (rv-cat.mjs)
 - **STILL-PRESENT** — The gate verdict counts have no label: The gates rows still read 'copyright PERMITTED 2 REFUSED 4', 'restrictions PERMITTED 2 REFUSED 4', 'retention PERMITTED 6', as bare numbers after state spans. (rv-cat.mjs)
+
+
+## 2026-10-09 — re-measured on who-iris's OWN site, three fixed (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
+
+First finding of the day: **who-iris's own site published no catalogue page at all** — the harness is a remote mount there, so the generator (rightly) wrote nothing into it, and nothing else wrote it. who-iris \`76ea282\` adds \`gen-iris-pages --catalogue-into <site-source>\`, which writes only that page into the Jekyll source the site build composes, at the conventional route.
+
+Re-measured on a local build (Routine steps 3–7):
+- 1 (phone scroll) — fixed earlier.
+- 2 (inert menu/crumb), 5 (replica chrome before h1) — **gone**: the page wears the site layout since 2026-10-07.
+- 3 (rows lead nowhere) — node titles link the replica pages; "held as" opens the library viewer only where the site builds one (who-iris's does not; it would have been a dead link).
+- 4 — **fixed for order** (materialized, referenced, unknown); **not done: sortable/filterable** columns.
+- 6 — **fixed**: each count inside its pill, labelled ("permitted: 3 of 6").
+- cat-harness \`6ff2f1b3\`: a \`kindRouteRedirect\` whose kind has no viewer in this build is "not owed" (printed) instead of failing the mount — it stopped who-iris's publish.
+- Remaining: sortable/filterable; re-draw \`cat-harness/docs/wireframes/catalogue/\` and re-run \`wireframe:check\`; who-iris's site has no library viewer at all (task: build-instance-site).
