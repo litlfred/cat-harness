@@ -471,5 +471,5 @@ has no staleness check.
 
 | process | step(s) that name it |
 |---|---|
-| [Content Change and Review](../../processes/content-change-review.html) | Assess downstream impact |
+| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Assess downstream impact |
 

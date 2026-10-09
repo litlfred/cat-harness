@@ -252,6 +252,6 @@ When an agent emits `⟦DONE⟧` (or the harness notifies completion):
 
 | process | step(s) that name it |
 |---|---|
-| [A refused merge-train member](../../processes/merge-refusal.html) | Dispatch one agent, recorded on the bean |
-| [Getting started](../../processes/getting-started.html) | Import what, where, and who does it |
+| [A refused merge-train member](../../cat-harness/processes/merge-refusal.html) | Dispatch one agent, recorded on the bean |
+| [Getting started](../../cat-harness/processes/getting-started.html) | Import what, where, and who does it |
 

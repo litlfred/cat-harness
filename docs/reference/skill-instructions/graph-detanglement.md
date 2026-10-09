@@ -355,13 +355,13 @@ auto-dischargeable — they rename things and ripple through every reference.
 
 ## Processes that run this skill
 
-This skill has its own process: **[A sub-graph wants to leave](../../processes/graph-detanglement.html)**.
+This skill has its own process: **[A sub-graph wants to leave](../../cat-harness/processes/graph-detanglement.html)**.
 
 <img src="../../assets/img/workflows/graph-detanglement.svg" alt="BPMN diagram: A sub-graph wants to leave" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [A sub-graph wants to leave](../../processes/graph-detanglement.html) | 1 · Declare in place (nothing moves); 2a · Measure — unassigned column FIRST; 2b · Prune, merge, factor — or the classification is wrong; 3 · Isolate — own declaration, namespace, artefact; 4 · Extract — a directory move, not a file-by-file sift |
-| [A knowledge graph leaves for its own repositories](../../processes/kg-separation.html) | 1–3 · Declare, detangle, isolate |
-| [A sub-KG is staged in place, then leaves for its own repository](../../processes/sub-kg-lifecycle.html) | 3 · Push generic down first |
+| [A sub-graph wants to leave](../../cat-harness/processes/graph-detanglement.html) | 1 · Declare in place (nothing moves); 2a · Measure — unassigned column FIRST; 2b · Prune, merge, factor — or the classification is wrong; 3 · Isolate — own declaration, namespace, artefact; 4 · Extract — a directory move, not a file-by-file sift |
+| [A knowledge graph leaves for its own repositories](../../cat-harness/processes/kg-separation.html) | 1–3 · Declare, detangle, isolate |
+| [A sub-KG is staged in place, then leaves for its own repository](../../cat-harness/processes/sub-kg-lifecycle.html) | 3 · Push generic down first |
 

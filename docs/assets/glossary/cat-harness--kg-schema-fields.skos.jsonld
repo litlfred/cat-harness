@@ -8310,7 +8310,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Graph typologies it covers across the corpus stacked on this harness."
+          "@value": "Graph typologies it covers, over every declared directory of them in the checkout."
         }
       ],
       "dcterms:source": "cat-harness/schemas/cat-harness.ts#HarnessVisualiserSchema.coversKinds",

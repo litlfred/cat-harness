@@ -137,6 +137,7 @@
     "folio:viz": "bun run cat-harness/scripts/gen-folio-viz.ts",
     "folio:viz:check": "bun run cat-harness/scripts/gen-folio-viz.ts --check",
     "fsh-guts:viz": "bun run cat-harness/scripts/gen-fsh-guts-viz.ts",
+    "staging-graph:viz": "bun run cat-harness/scripts/gen-fsh-guts-viz.ts",
     "fsh-guts:viz:check": "bun run cat-harness/scripts/gen-fsh-guts-viz.ts --check",
     "gates": "bun run cat-harness/scripts/gates.ts",
     "gates:list": "bun run cat-harness/scripts/gates.ts --list",

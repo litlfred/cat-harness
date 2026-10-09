@@ -175,7 +175,7 @@ export function checkVisualiserRoutes(repoRoot: string): RouteReport {
     const decl = declOf(v.harnessRoot) as { directories?: { id: string; graphTypologies?: string[]; graphs?: string[] }[] } | undefined;
     const renders = new Set(t.renders ?? []);
     // A Tool node is published; it cannot name an unpublished kind without
-    // linking to it, so the gate does not ask that of it (`fsh-guts-viewer`).
+    // linking to it, so the gate does not ask that of it (`staging-graph-viewer`).
     const owed = (kinds: readonly string[]): string[] => kinds.filter((k) => isPublishedGraphTypology(k));
     // `coversKinds`: every published kind is one the Tool renders.
     const missingKinds = owed(v.coversKinds ?? []).filter((k) => !renders.has(k));

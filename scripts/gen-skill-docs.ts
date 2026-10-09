@@ -26,7 +26,7 @@
 import { markdownEditLink, repoOf } from "../src/core/edit-links.js";
 import { detectRepoUrl } from "../src/core/git-refs.js";
 import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from "fs";
-import { join, resolve, basename, relative, isAbsolute, sep } from "path";
+import { join, resolve, basename, dirname, relative, isAbsolute, sep } from "path";
 
 import { isSkillMd, kgDirectories, corpusScopeFor } from "./known-skills.js";
 import { packageDirsIn } from "./skill-topics.js";
@@ -35,6 +35,7 @@ import { siteDirFor, repoRootFor } from "../schemas/cat-harness.ts";
 import { stripInlineCode } from "../schemas/inline-code.ts";
 import { wrapRaw } from "./lib/liquid-raw.ts";
 import { publishedPagePath } from "./lib/jekyll-permalink.ts";
+import { visualiserSitePath } from "./viewer-declarations.ts";
 
 /** The repository the edit links name: this checkout's origin, else folio-assistant (bean v433). */
 const SKILL_DOCS_REPO = repoOf(detectRepoUrl(process.cwd()));
@@ -67,6 +68,18 @@ export function repoRelative(abs: string, repoRoot: string = REPO_ROOT): string 
 // every reader's download; one character is not.
 const EDIT_GLYPH = "\u270E";
 
+/**
+ * Where the process pages are: the route of the visualiser cat-harness
+ * DECLARES rendered by `processes-viewer` (owner, 2026-10-09:
+ * `<base>/<harness>/<visualizer>`), read rather than spelled.
+ */
+const PROCESSES_ROUTE = ((): string => {
+  try {
+    return dirname(visualiserSitePath(INSTANCE_ROOT, "processes-viewer").rel);
+  } catch {
+    return "cat-harness/processes";
+  }
+})();
 const OUT_DIR = join(INSTANCE_ROOT, siteDirFor(INSTANCE_ROOT), "reference", "skill-instructions");
 
 /**
@@ -855,7 +868,7 @@ function publishedLocation(
   //    identity ("basenames collide across instances"). Matching the absolute
   //    path fixes both.
   const stem = processPages.get(abs);
-  if (stem !== undefined) return `../../processes/${stem}.html`;
+  if (stem !== undefined) return `../../${PROCESSES_ROUTE}/${stem}.html`;
 
   // 3. A page already inside the site tree — address it site-relatively.
   //    `.md` only: an asset under the site tree is served at its own path.
@@ -941,7 +954,7 @@ function processesSection(name: string, rows: readonly ProcessRow[]): string[] {
   if (!own && runners.length === 0) return [];
   const out: string[] = ["", "## Processes that run this skill", ""];
   if (own) {
-    out.push(`This skill has its own process: **[${own.name}](../../processes/${own.stem}.html)**.`);
+    out.push(`This skill has its own process: **[${own.name}](../../${PROCESSES_ROUTE}/${own.stem}.html)**.`);
     out.push("");
     if (own.svg) {
       out.push(`<img src="../../assets/img/workflows/${own.stem}.svg" alt="BPMN diagram: ${own.name.replace(/"/g, "&quot;")}" style="max-width:100%">`);
@@ -953,7 +966,7 @@ function processesSection(name: string, rows: readonly ProcessRow[]): string[] {
     out.push("|---|---|");
     for (const { r, steps } of runners) {
       const names = steps.map((st) => (st.calledElement ? `${st.name} (calls a sub-process)` : st.name));
-      out.push(`| [${escapePipes(r.name)}](../../processes/${r.stem}.html) | ${escapePipes(names.join("; "))} |`);
+      out.push(`| [${escapePipes(r.name)}](../../${PROCESSES_ROUTE}/${r.stem}.html) | ${escapePipes(names.join("; "))} |`);
     }
     out.push("");
   }

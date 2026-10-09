@@ -13,7 +13,7 @@ parent: Skill instructions
 {% raw %}
 # /getting-started — what did they actually ask for?
 
-Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../processes/getting-started.html).
+Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../cat-harness/processes/getting-started.html).
 Decision table: [`decisions/folio-intent.dmn`](https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/conduct/decisions/folio-intent.dmn).
 
 ## The landing page is the instance's own description
@@ -222,7 +222,7 @@ the owner's confirmation.
 2. **Provision `gh-pages` — before Pages is switched on.** This is
    `Task_ProvisionGhPages` in the process, and it carries the semantics of
    `A_Provision` in bootstrap-tools'
-   [`render-kg-to-github-pages.bpmn`](../../processes/render-kg-to-github-pages.html)
+   [`render-kg-to-github-pages.bpmn`](../../cat-harness/processes/render-kg-to-github-pages.html)
    (the `gh-pages` Tool's subprocess —
    [`render-kg-to-cdn`](render-kg-to-cdn.md)):
    **a `gh-pages` branch must exist before Pages can be switched on** to serve
@@ -284,11 +284,11 @@ the owner's confirmation.
 
 ## Processes that run this skill
 
-This skill has its own process: **[Getting started](../../processes/getting-started.html)**.
+This skill has its own process: **[Getting started](../../cat-harness/processes/getting-started.html)**.
 
 <img src="../../assets/img/workflows/getting-started.svg" alt="BPMN diagram: Getting started" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Getting started](../../processes/getting-started.html) | Read the repository facts; Choose from the offered options; Scaffold the folio (folio_init); Provision gh-pages; Start the Pages build and derive the URL; Hand over the live link; Say where it will be; Say it could not be confirmed |
+| [Getting started](../../cat-harness/processes/getting-started.html) | Read the repository facts; Choose from the offered options; Scaffold the folio (folio_init); Provision gh-pages; Start the Pages build and derive the URL; Hand over the live link; Say where it will be; Say it could not be confirmed |
 

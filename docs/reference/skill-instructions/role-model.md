@@ -627,7 +627,7 @@ group of something else is a one-line addition.
 The role graph is the substrate every diagram's lanes bind to. Changing it —
 adding an actor, opening a role, granting a permission, retiring a
 participant — is therefore a process like any other, and it is drawn:
-[`actor-role-administration.bpmn`](../../processes/actor-role-administration.html),
+[`actor-role-administration.bpmn`](../../cat-harness/processes/actor-role-administration.html),
 in the `administrator` lane.
 
 **That was a question, not a deduction.** Until the owner answered it, there
@@ -713,5 +713,5 @@ README can show (`kg:roles`, written by bootstrap-tools).
 
 | process | step(s) that name it |
 |---|---|
-| [Actor and role administration](../../processes/actor-role-administration.html) | Add an actor, and declare its kind; Open or close a role to an actor; Grant or revoke a permission; Retire an actor — never delete one; Audit the graph [kg:audit] |
+| [Actor and role administration](../../cat-harness/processes/actor-role-administration.html) | Add an actor, and declare its kind; Open or close a role to an actor; Grant or revoke a permission; Retire an actor — never delete one; Audit the graph [kg:audit] |
 

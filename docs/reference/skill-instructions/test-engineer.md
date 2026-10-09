@@ -184,5 +184,5 @@ can extract just the tests relevant to it.
 
 | process | step(s) that name it |
 |---|---|
-| [Test-plan execution](../../processes/test-plan-execution.html) | Execute every case, or skip it with a reason |
+| [Test-plan execution](../../cat-harness/processes/test-plan-execution.html) | Execute every case, or skip it with a reason |
 

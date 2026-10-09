@@ -13,7 +13,7 @@ parent: Skill instructions
 {% raw %}
 # /repo-conversion — folio-assistant over a repo that already has a life
 
-Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../processes/getting-started.html),
+Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../cat-harness/processes/getting-started.html),
 `Task_ScanRepo` and `Task_ConfirmImport` (non-relaxable).
 Scanner: `bun run cat-harness/scripts/scan-repo-content.ts`.
 
@@ -134,10 +134,10 @@ itself, so this section repeats the one step a publishing route cannot skip:
 2026-10-07: *"need to create gh-pages before can deploy"* (issue #2417).
 
 The step is `Task_ProvisionGhPages` ("Provision gh-pages") in
-[`getting-started.bpmn`](../../processes/getting-started.html),
+[`getting-started.bpmn`](../../cat-harness/processes/getting-started.html),
 on the shared path after scaffolding and before the Pages build, and it
 carries the semantics of `A_Provision` in bootstrap-tools'
-[`render-kg-to-github-pages.bpmn`](../../processes/render-kg-to-github-pages.html).
+[`render-kg-to-github-pages.bpmn`](../../cat-harness/processes/render-kg-to-github-pages.html).
 The tool is `pages-bootstrap`:
 
 ```sh
@@ -191,5 +191,5 @@ original plan skipped.
 
 | process | step(s) that name it |
 |---|---|
-| [Getting started](../../processes/getting-started.html) | Scan the repo for content worth importing; Import what, where, and who does it; Create the repository |
+| [Getting started](../../cat-harness/processes/getting-started.html) | Scan the repo for content worth importing; Import what, where, and who does it; Create the repository |
 

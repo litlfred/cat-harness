@@ -114,5 +114,5 @@ are in the right repository at all.
 
 | process | step(s) that name it |
 |---|---|
-| [Evidence for a recommendation](../../processes/evidence-retrieval.html) | Appraise and grade the body of evidence |
+| [Evidence for a recommendation](../../cat-harness/processes/evidence-retrieval.html) | Appraise and grade the body of evidence |
 

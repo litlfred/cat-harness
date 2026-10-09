@@ -627,12 +627,12 @@ harness git instructions). Do not include the model identifier in the PR.
 
 | process | step(s) that name it |
 |---|---|
-| [Actor and role administration](../../processes/actor-role-administration.html) | Branch, gates, PR and review (calls a sub-process) |
-| [CRDM Phase 6 — implement, MVP, acceptance](../../processes/crdm-deliver.html) | Phase 6: Implement (feature branch + PR) |
-| [Code change and review](../../processes/code-change-review.html) | Prepare the merge, and watch it through (calls a sub-process) |
-| [Merge the base branch in](../../processes/merge-base.html) | Merge the base in, without committing; Regenerate, asking every CI gate; Resolve by hand, then regenerate |
-| [A refused merge-train member](../../processes/merge-refusal.html) | Fix the PR, report on the PR |
-| [A merge train](../../processes/merge-train.html) | Merge each member onto the base (calls a sub-process); Land the train at the tested SHA |
-| [Adopting an upstream version bump](../../processes/upstream-version-adoption.html) | Move the pin and open the PR |
-| [Content Change and Review](../../processes/content-change-review.html) | Merge, on explicit confirmation |
+| [Actor and role administration](../../cat-harness/processes/actor-role-administration.html) | Branch, gates, PR and review (calls a sub-process) |
+| [CRDM Phase 6 — implement, MVP, acceptance](../../cat-harness/processes/crdm-deliver.html) | Phase 6: Implement (feature branch + PR) |
+| [Code change and review](../../cat-harness/processes/code-change-review.html) | Prepare the merge, and watch it through (calls a sub-process) |
+| [Merge the base branch in](../../cat-harness/processes/merge-base.html) | Merge the base in, without committing; Regenerate, asking every CI gate; Resolve by hand, then regenerate |
+| [A refused merge-train member](../../cat-harness/processes/merge-refusal.html) | Fix the PR, report on the PR |
+| [A merge train](../../cat-harness/processes/merge-train.html) | Merge each member onto the base (calls a sub-process); Land the train at the tested SHA |
+| [Adopting an upstream version bump](../../cat-harness/processes/upstream-version-adoption.html) | Move the pin and open the PR |
+| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Merge, on explicit confirmation |
 

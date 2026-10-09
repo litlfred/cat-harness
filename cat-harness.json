@@ -878,7 +878,7 @@
     },
     {
       "id": "fsh-guts",
-      "_coverage_comment": "RESTORED 2026-10-09, then MOVED the same day to this instance's `visualisers` (owner: \"Why renders: [fsh-guts] in visualizer? … Need harness to declare visualizer is renderedBy\"). The visualiser is declared there as `fsh-guts`, rendered by the `fsh-guts-viewer` Tool, `publish: staging-only` with its `writer`, so compose-docs still withholds it from a canonical build and gen-fsh-guts-viz.ts still refuses to draw a page nobody declared.",
+      "_coverage_comment": "RESTORED 2026-10-09, then MOVED the same day to this instance's `visualisers` (owner: \"Why renders: [fsh-guts] in visualizer? … Need harness to declare visualizer is renderedBy\"). The visualiser is declared there as `fsh-guts`, rendered by the `staging-graph-viewer` Tool, `publish: staging-only` with its `writer`, so compose-docs still withholds it from a canonical build and gen-fsh-guts-viz.ts still refuses to draw a page nobody declared.",
       "path": "fsh-guts/",
       "scope": "repository",
       "description": "The workspace for FSH guts, scratch space, retired configs, and separated archives. REPOSITORY-scoped: it sits at the top of the checkout, not inside this instance, and it is deliberately never overlaid by a dependency.",
@@ -965,7 +965,7 @@
     {"id": "attestations", "renderedBy": "state-viewer", "covers": ["attestations"], "alias": "attestations"},
     {"id": "swimlane-glossary", "renderedBy": "state-viewer", "covers": ["swimlane-glossary"], "alias": "swimlane-glossary"},
     {"id": "uploads-queue", "renderedBy": "state-viewer", "covers": ["uploads"], "title": "Uploads queue", "alias": "uploads"},
-    {"id": "fsh-guts", "renderedBy": "fsh-guts-viewer", "covers": ["fsh-guts"], "title": "fsh-guts", "publish": "staging-only", "writer": ["scripts/gen-fsh-guts-viz.ts"]}
+    {"id": "fsh-guts", "renderedBy": "staging-graph-viewer", "covers": ["fsh-guts"], "title": "fsh-guts", "publish": "staging-only", "writer": ["scripts/gen-fsh-guts-viz.ts"]}
   ],
   "_needs_comment": "The layer this instance sits on. Owner, 2026-09-20: \"So bootsteap, cat harness, fa-core, f-a, from bottom to top.\" Declared rather than hardcoded in the navbar, so the ordering is a fact of the repository and not of whichever consumer needed it first. `bootstrap-tools` added 2026-09-30 (bean `0lj4`, owner's ruling): bean `xsqm` moved that code OUT of this instance into its own, and this list was not updated with it, so 20 imports under `cat-harness/` reached an instance this file did not name. `allowedFromNeeds` gives a layer `{layer} U ancestors(layer)`, and `bootstrap-tools` is a SIBLING of `cat-harness` rather than an ancestor, so every one of those 20 was `wrong-direction` by the declared rule while four separate checks reported clean. The reverse arrow stays forbidden and is guarded by `check:tools-closure`.",
   "needs": [

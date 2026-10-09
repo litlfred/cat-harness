@@ -130,7 +130,7 @@ describe("satisfies links what resolves (qgjh)", () => {
 
   it("links a skill whose page exists, relative to the page it sits on", () => {
     expect(line(page(rows, new Set([s]), new Set([s]), TOOLS_PAGE))).toContain(
-      `[\`${s}\`](../reference/skill-instructions/${s}.html)`,
+      `[\`${s}\`](../../reference/skill-instructions/${s}.html)`,
     );
   });
 

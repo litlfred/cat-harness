@@ -25,12 +25,15 @@
  * Tool lists here — so `renders` stays, as the capability the declaration is
  * checked against rather than as a way to find pages.
  *
- * **`fsh-guts-viewer` declares no `renders`.** Tool nodes are published in
- * the tools graph, and the owner's rule is that no published artefact links
- * to fsh-guts (`UNPUBLISHED_GRAPH_TYPOLOGIES`): a `renders` naming the kind
- * would be that edge. It exists so cat-harness's staging-only `fsh-guts`
- * visualiser has a Tool to be `renderedBy`, which is what the owner asked for
- * by name; the gate does not ask an unpublished kind of a Tool's `renders`.
+ * **`staging-graph-viewer` names nothing unpublished.** Tool nodes are
+ * published in the tools graph, and the owner's rule is that no published
+ * artefact mentions fsh-guts (`UNPUBLISHED_GRAPH_TYPOLOGIES`, and the export
+ * tests that grep for the string). So its id, description and command — the
+ * `staging-graph:viz` alias of `fsh-guts:viz` — say only "staging graph", and
+ * it declares no `renders`: naming the kind would be the edge. It exists so
+ * cat-harness's staging-only `fsh-guts` visualiser has a Tool to be
+ * `renderedBy`, which is what the owner asked for by name; the gate does not
+ * ask an unpublished kind of a Tool's `renders`.
  *
  * @module tools/viewers
  */
@@ -155,10 +158,10 @@ const VIEWERS: Viewer[] = [
     renders: ["skills", "docs", "swimlane-glossary"],
   },
   {
-    id: "fsh-guts-viewer",
+    id: "staging-graph-viewer",
     title: "Staging-only graph viewer",
-    description: "Render the kept-but-unpublished workspace graph as one page, for a local build or a staging preview only; a canonical deploy withholds it.",
-    script: "fsh-guts:viz",
+    description: "Render a kept-but-unpublished workspace graph as one page, for a local build or a staging preview only; a canonical deploy withholds it.",
+    script: "staging-graph:viz",
   },
 ];
 

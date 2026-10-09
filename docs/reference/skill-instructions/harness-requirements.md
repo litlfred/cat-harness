@@ -25,7 +25,7 @@ how to read it and what to do before adding to it.
 
 | obligation | declared as | the question it answers |
 |---|---|---|
-| **visualiser** | by the PAGE: a viewer Tool (`renders:` its kinds) writes into each page the directories it draws (`<meta name="renders">`); the directory keeps only its `tile:` look (#1168 B7a) | can a person LOOK at this? |
+| **visualiser** | by the HARNESS: an entry in its `<instance>.json` `visualisers` — `covers` (its directory ids) or `coversKinds`, `renderedBy` a Tool whose `renders` lists the kind — published at `<base>/<harness>/<id>/` (owner, 2026-10-09); the directory keeps only its `tile:` look | can a person LOOK at this? |
 | **docs** | by the PAGE: `documents:` in its front matter (or its manifest, or `<meta name="documents">` in generated HTML) names the kind or `<instance>/<id>` (#1168 B7c) | can a person READ ABOUT this? |
 | **skill** | by the SKILL: `graph-typologies:` names the kind, or `governs: [<instance>/<id>]` the one directory (#1168 B7b) | is an agent handed something that GOVERNS this? |
 | **serialisations** | `coverage.serialisations` | is each node ADDRESSABLE as json, jsonld and schema.json? |
@@ -115,7 +115,16 @@ Rendered content is addressed by the three cases on bean `o7eq`:
 |---|---|---|
 | 1 | `<base>/` | the ROOT's rendering — its `docs/` is installed by cat-harness, so no segment |
 | 2 | `<base>/<instance>/` | the instance presented **as itself**, on its own theme |
-| 3 | `<base>/<owner>/<kind>/<subject>/` | a viewer of one instance's assets, rendered by another's machinery |
+| 3 | `<base>/<harness>/<visualiser>/<sub-graph>/` | a visualiser the harness DECLARES, over the full KG it covers or one sub-graph of it |
+
+Case 3 is the owner's rule of 2026-10-09: *"`<base URL>/<harness>/<visualizer>`
+(which is for the full KG) and `<base URL>/<harness>/<visualizer>/<sub-graph>`,
+`<base URL>/<harness>/<visualizer>/<sub-graph>/<path to asset>`"*. The
+segments come from the harness's `visualisers` declaration and are computed by
+`visualiserRoute` (`schemas/visualiser-route.ts`) — never composed by a
+generator, never claimed by a page. Two declarations on one route are a
+declaration error, refused by `check:visualiser-routes`; see
+[`harness-tiles`](../../ui/ui-core/harness-tiles.md) §"Where a tile goes".
 
 Case 3 is why `docs/` has two roles at once — the owner, asked which it was,
 answered **"both are right"**. It is a directory cat-harness instantiates AND a

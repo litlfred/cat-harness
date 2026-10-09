@@ -192,5 +192,5 @@ After merge:
 
 | process | step(s) that name it |
 |---|---|
-| [Content Change and Review](../../processes/content-change-review.html) | Commit, push, update PR |
+| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Commit, push, update PR |
 

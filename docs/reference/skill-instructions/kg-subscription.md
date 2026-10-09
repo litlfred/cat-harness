@@ -27,7 +27,7 @@ one of them disagree, that one wins.
 
 | | where |
 |---|---|
-| the process | [`subscribe-kg.bpmn`](../../processes/subscribe-kg.html) |
+| the process | [`subscribe-kg.bpmn`](../../cat-harness/processes/subscribe-kg.html) |
 | the entry | `SubscriptionSchema` in `cat-harness/schemas/cat-harness.ts` |
 | the held-bytes record | the `folio-materialization/v1` record (`MaterializationSchema`, owned by the content layer) |
 | the gates | [`materialize-remote`](materialize-remote.md) and its process |
@@ -218,5 +218,5 @@ its tool is missing — least of all the gates.
 
 | process | step(s) that name it |
 |---|---|
-| [Subscribe to an external knowledge graph](../../processes/subscribe-kg.html) | Name the substrate, pin a full commit SHA; Fetch the root declaration at the pin, and validate it; Record why it is not a substrate; write no entry; Write the entry and cache the declaration; Move the entry's ref and re-cache the declaration; Review what the substrate offers; Choose subgraphs, the asset policy, harnesses; Instantiate the harness: write its config; Record how the walk ended, part by part |
+| [Subscribe to an external knowledge graph](../../cat-harness/processes/subscribe-kg.html) | Name the substrate, pin a full commit SHA; Fetch the root declaration at the pin, and validate it; Record why it is not a substrate; write no entry; Write the entry and cache the declaration; Move the entry's ref and re-cache the declaration; Review what the substrate offers; Choose subgraphs, the asset policy, harnesses; Instantiate the harness: write its config; Record how the walk ended, part by part |
 

@@ -19,7 +19,7 @@ From: cat-harness 143 (<a href="{{ '/assets/glossary/cat-harness--kg-tools.skos.
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>185</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>185</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>190</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>190</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -1157,12 +1157,12 @@ Stage one IG as its own just-the-docs Jekyll site <span class="fa-gloss-status">
 <p>Turn an IG source repository into ONE Jekyll source for just-the-docs, as the IG Publisher builds one IG per site: <code>input/pagecontent</code> pages with title, parent and order from <code>sushi-config.yaml</code> <code>pages:</code>, the files the Publisher resolves <code>&#123;% include %}</code> against, images, <code>_data/fhir.json</code> from <a href="#fhir-harness--kg-tools--ig-site-data"><code>ig-site-data</code></a>, and a <code>_config.yml</code>. The pages render unchanged, <code>&#123;&#123; site.data.fhir.* }}</code> included (bean <code>bamf</code>, owner's choice of one site per IG). With the IG's menu, the layout is the one every IG site wears (bean <code>mftp</code>): the IG's own top bar, the IG's TOC declared as the folio-assistant navbar's section (added by <code>rail-standalone-pages</code>), no sidebar of its own, an edit link per page, and per heading a source-line link and a pre-filled feedback issue.</p>
 <p class="fa-gloss-meta">Tools of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/tools/index.ts"><code>fhir-harness/tools/index.ts#build-ig-site</code></a></p>
 </dd>
-<dt id="cat-harness--kg-tools--fsh-guts-viewer" data-fa-state="extracted" data-fa-gloss="">
+<dt id="cat-harness--kg-tools--staging-graph-viewer" data-fa-state="extracted" data-fa-gloss="">
 Staging-only graph viewer <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Render the kept-but-unpublished workspace graph as one page, for a local build or a staging preview only; a canonical deploy withholds it.</p>
-<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/viewers.ts"><code>cat-harness/tools/viewers.ts#fsh-guts-viewer</code></a></p>
+<p>Render a kept-but-unpublished workspace graph as one page, for a local build or a staging preview only; a canonical deploy withholds it.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/viewers.ts"><code>cat-harness/tools/viewers.ts#staging-graph-viewer</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--stakeholder-map" data-fa-state="extracted" data-fa-gloss="">
 Stakeholder map <span class="fa-gloss-status">candidate, extracted</span>

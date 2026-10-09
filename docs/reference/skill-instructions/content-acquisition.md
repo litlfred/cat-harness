@@ -109,11 +109,11 @@ ingestion unchanged.
 
 ## Processes that run this skill
 
-This skill has its own process: **[Content acquisition](../../processes/content-acquisition.html)**.
+This skill has its own process: **[Content acquisition](../../cat-harness/processes/content-acquisition.html)**.
 
 <img src="../../assets/img/workflows/content-acquisition.svg" alt="BPMN diagram: Content acquisition" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Content acquisition](../../processes/content-acquisition.html) | Say what is needed, and ask for a link OR a description; Point at the upload target [scripts/upload-url.ts]; Accept it, and record where it came from |
+| [Content acquisition](../../cat-harness/processes/content-acquisition.html) | Say what is needed, and ask for a link OR a description; Point at the upload target [scripts/upload-url.ts]; Accept it, and record where it came from |
 

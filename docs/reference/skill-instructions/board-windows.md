@@ -370,6 +370,6 @@ out of a folio is `deletion-requires-confirmation`, applied by
 
 | process | step(s) that name it |
 |---|---|
-| [Board: open and close content](../../processes/board-open-close.html) | Render every card as its avatar; Project a window onto the board; Raise the window the reader selected; Close the window back to its avatar; Leave a reachable way back; Resolve the kind's zoom threshold; Swap cards below the threshold; leave open windows alone |
-| [Board: relocate content to the trashcan](../../processes/board-relocate.html) | Leave the content exactly where it is |
+| [Board: open and close content](../../cat-harness/processes/board-open-close.html) | Render every card as its avatar; Project a window onto the board; Raise the window the reader selected; Close the window back to its avatar; Leave a reachable way back; Resolve the kind's zoom threshold; Swap cards below the threshold; leave open windows alone |
+| [Board: relocate content to the trashcan](../../cat-harness/processes/board-relocate.html) | Leave the content exactly where it is |
 

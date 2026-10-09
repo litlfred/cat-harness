@@ -333,6 +333,6 @@ Match user-accessibility note in AGENTS.md:
 
 | process | step(s) that name it |
 |---|---|
-| [Code change and review](../../processes/code-change-review.html) | Address the review |
-| [Content Change and Review](../../processes/content-change-review.html) | Open the branch-watch bean; Note the main-branch watch |
+| [Code change and review](../../cat-harness/processes/code-change-review.html) | Address the review |
+| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Open the branch-watch bean; Note the main-branch watch |
 

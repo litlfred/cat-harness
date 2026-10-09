@@ -71,6 +71,10 @@ export const PROPERTY_SKILLS = {
     gap: "no skill edits `topology` yet: its axes are documented only in the schema (cat-harness.ts, TopologySchema)",
   },
   directories: { skills: ["directory-conventions", "schema-management"] },
+  // Owner, 2026-10-09: the harness declares each visualiser, at
+  // `<base>/<harness>/<visualiser>/`. `harness-tiles` carries the route and
+  // collision rules; `harness-requirements` the obligation it meets.
+  visualisers: { skills: ["harness-tiles", "harness-requirements"] },
   remoteGraphs: { skills: ["library-ingestion", "materialize-remote"] },
   associatedHarnesses: { skills: ["associate-harness"] },
   // Issue #1719. Both name a large-datasets skill, as `remoteGraphs` already

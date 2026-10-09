@@ -191,5 +191,5 @@ file's `localPath`, which exists only once somebody asked for it.
 
 | process | step(s) that name it |
 |---|---|
-| [Basic ingestion — an upload to an asset catalogued in library/](../../processes/document-ingestion.html) | Extract its metadata into the KG |
+| [Basic ingestion — an upload to an asset catalogued in library/](../../cat-harness/processes/document-ingestion.html) | Extract its metadata into the KG |
 

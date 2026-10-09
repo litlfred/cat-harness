@@ -1029,6 +1029,6 @@ publish.
 
 | process | step(s) that name it |
 |---|---|
-| [KG to public portal](../../processes/kg-to-portal.html) | Serialize to JSON-LD |
-| [Build and publish a per-slice SQLite file](../../processes/slice-sqlite-publish.html) | Write the slice definition; Build it locally and measure the file; Report the measurement; ship nothing; Wire it: gate, deploy line, search, tests; Gate every slice: slice:sqlite:check; Build each slice into _site at deploy |
+| [KG to public portal](../../cat-harness/processes/kg-to-portal.html) | Serialize to JSON-LD |
+| [Build and publish a per-slice SQLite file](../../cat-harness/processes/slice-sqlite-publish.html) | Write the slice definition; Build it locally and measure the file; Report the measurement; ship nothing; Wire it: gate, deploy line, search, tests; Gate every slice: slice:sqlite:check; Build each slice into _site at deploy |
 

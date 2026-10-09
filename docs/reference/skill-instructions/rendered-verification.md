@@ -362,5 +362,5 @@ skipped is the one that shipped the defect.
 
 | process | step(s) that name it |
 |---|---|
-| [Build and publish a per-slice SQLite file](../../processes/slice-sqlite-publish.html) | Search the published slice in a browser |
+| [Build and publish a per-slice SQLite file](../../cat-harness/processes/slice-sqlite-publish.html) | Search the published slice in a browser |
 

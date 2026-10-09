@@ -112,8 +112,8 @@ skills point here.
   `foaf:page`, no viewer URL in its JSON-LD. Renderings change with every
   visualiser; the asset would have to be rewritten each time.
 - **A rendering's IRI is DERIVED from the declared visualiser** for the graph
-  kind (`coverage.visualiser` in the instance declaration), never authored into
-  the asset. If an index of renderings is useful, generate it; never store it in
+  kind (the harness's `visualisers`, at `<base>/<harness>/<visualiser>/`
+  computed by `visualiserRoute`), never authored into the asset. If an index of renderings is useful, generate it; never store it in
   the asset. The library does exactly this: each entry in the GENERATED
   projection (`assets/library/index.json`) carries `view` — the site-root path
   of the page that renders it (another instance's declared root route for an

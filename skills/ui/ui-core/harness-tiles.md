@@ -43,7 +43,7 @@ So each visualiser is ONE declaration in the harness that owns it:
 "visualisers": [
   { "id": "library", "renderedBy": "library-viewer", "coversKinds": ["library"], "subgraphs": "instance" },
   { "id": "todos", "renderedBy": "state-viewer", "covers": ["todos"], "alias": "todos" },
-  { "id": "fsh-guts", "renderedBy": "fsh-guts-viewer", "covers": ["fsh-guts"], "publish": "staging-only", "writer": ["scripts/gen-fsh-guts-viz.ts"] }
+  { "id": "fsh-guts", "renderedBy": "staging-graph-viewer", "covers": ["fsh-guts"], "publish": "staging-only", "writer": ["scripts/gen-fsh-guts-viz.ts"] }
 ]
 ```
 

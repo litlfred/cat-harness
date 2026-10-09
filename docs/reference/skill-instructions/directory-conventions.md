@@ -1217,11 +1217,17 @@ one is argued.
    **Where its content comes from** is `source` — omit it for the checkout
    directory; a branch source names its branch on the entry itself
    (§"Where a subgraph gets its content").
-5. **`coverage`** — the `skill` that governs it, the `docs` that say what it is
-   for, the `visualiser` that renders it; an opt-out carries its reason
-   (`SubgraphCoverageSchema`). Without a skill the directory is unreachable
-   by an agent even where a person can read it. The visualiser is where a
-   node's RENDERING IRIs are derived from; the node never names them —
+5. **`coverage`** — the `skill` that governs it and the `docs` that say what it
+   is for; an opt-out carries its reason (`SubgraphCoverageSchema`). Without a
+   skill the directory is unreachable by an agent even where a person can read
+   it. **The visualiser is NOT declared here**: the harness declares it, at its
+   own level, in `visualisers` — `covers` this directory's id (or
+   `coversKinds` its kind), `renderedBy` a Tool — and it is published at
+   `<base>/<harness>/<visualiser>/[<sub-graph>/]`, computed by
+   `visualiserRoute` (owner, 2026-10-09; `harness-tiles` §"Where a tile goes").
+   A directory never names its page, and a page never claims a directory; two
+   declarations on one route fail `check:visualiser-routes`. The visualiser is
+   where a node's RENDERING IRIs are derived from; the node never names them —
    `kg-viewer` §"The asset and its rendering are two resources with two IRIs".
 6. **The files inside declare what they are** — front matter, a `$schema`, a
    leading comment — never an extension or a location

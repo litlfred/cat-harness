@@ -107,12 +107,12 @@ mis-extracted page, and it is cheapest to mark now.
 
 ## Where to LOOK at an index
 
-`bun run cat lsi:viz` writes one page, `/lsi/` ("Latent semantic indexes"): every
-stored index with its dimensions as two poles, its findings, and the
-need-an-index verdicts. The page names what it draws in its own front matter —
-`renders:` the `qa` directory, `rendered-by: lsi-viewer` — which since #1168
-B7a-2b is how a directory's viewer is found (the directory no longer points at
-the page; its `tile:` carries only the title). So it appears on the navbar, the
+`bun run cat lsi:viz` writes one page, `/cat-harness/lsi/` ("Latent semantic
+indexes"; `/lsi/` is its declared alias): every stored index with its
+dimensions as two poles, its findings, and the need-an-index verdicts.
+cat-harness DECLARES it — `visualisers` entry `lsi`, `covers: ["qa"]`,
+`renderedBy: lsi-viewer` — which since 2026-10-09 is how a directory's viewer
+is found; the page carries only `rendered-by: lsi-viewer` as provenance. So it appears on the navbar, the
 board and the central **Published graphs** page (`/cat-harness/`, §"Every
 declared viewer") with no further wiring. `lsi:viz:check` fails in CI when the page is stale — so after
 `lsi index`, run `lsi:viz` too. The page is excluded from every index's units:

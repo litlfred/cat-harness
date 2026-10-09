@@ -252,7 +252,7 @@ describe("the skill → run-by table links what resolves (qgjh)", () => {
 
   it("links a skill that has a page, and each diagram to its process page", () => {
     const line = tableRow(page(rows, new Set([skill])));
-    expect(line).toContain(`[\`${skill}\`](../reference/skill-instructions/${skill}.html)`);
+    expect(line).toContain(`[\`${skill}\`](../../reference/skill-instructions/${skill}.html)`);
     const stem = ok.find((r) => r.file === files[0])!.stem;
     expect(line).toContain(`](${stem}.html)`);
   });

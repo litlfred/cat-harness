@@ -47,11 +47,11 @@ Package, version, and publish approved content.
 
 | process | step(s) that name it |
 |---|---|
-| [Incremental IG build](../../processes/ig-incremental-build.html) | Deploy the preview site; Deploy the site [content-publish] |
-| [L3 FHIR IG pipeline](../../processes/l3-fhir-pipeline.html) | Publish the IG site |
-| [Authoring a document](../../processes/authoring-a-document.html) | 9 · Publish |
-| [Content Change and Review](../../processes/content-change-review.html) | Rebuild main site |
-| [Content lifecycle](../../processes/content-lifecycle.html) | Draft, review and publish (calls a sub-process) |
-| [Draft, review and publish](../../processes/draft-to-publication.html) | Build the draft publication; Authorise the release; Version, tag and publish |
-| [Authoring a paper](../../processes/authoring-a-paper.html) | 9 · Publish |
+| [Incremental IG build](../../cat-harness/processes/ig-incremental-build.html) | Deploy the preview site; Deploy the site [content-publish] |
+| [L3 FHIR IG pipeline](../../cat-harness/processes/l3-fhir-pipeline.html) | Publish the IG site |
+| [Authoring a document](../../cat-harness/processes/authoring-a-document.html) | 9 · Publish |
+| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Rebuild main site |
+| [Content lifecycle](../../cat-harness/processes/content-lifecycle.html) | Draft, review and publish (calls a sub-process) |
+| [Draft, review and publish](../../cat-harness/processes/draft-to-publication.html) | Build the draft publication; Authorise the release; Version, tag and publish |
+| [Authoring a paper](../../cat-harness/processes/authoring-a-paper.html) | 9 · Publish |
 

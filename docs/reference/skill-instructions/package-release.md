@@ -101,5 +101,5 @@ them with `tool_list` rather than relying on this list.
 
 | process | step(s) that name it |
 |---|---|
-| [A knowledge graph leaves for its own repositories](../../processes/kg-separation.html) | 12 · First release |
+| [A knowledge graph leaves for its own repositories](../../cat-harness/processes/kg-separation.html) | 12 · First release |
 

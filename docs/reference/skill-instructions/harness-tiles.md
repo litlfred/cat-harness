@@ -21,10 +21,66 @@ The owner, 2026-09-20, correcting the question rather than answering it:
 > declare >= 1 visualiztion (which then has a title)
 
 **So the tile set is not a new registry — it is the visualiser obligation made
-reachable.** `SubgraphCoverageSchema.visualiser` is where an instance says what
-renders a directory, and `kg:audit` already reports which directories owe one.
-A graph that owes a visualiser owes a tile, and the audit that already says so
-needs no second list free to disagree with it.
+reachable.** A harness declares its visualisers at its own level, in its
+`<instance>.json` `visualisers` (`HarnessVisualiserSchema`), and `kg:audit`
+already reports which directories owe one. A graph that owes a visualiser owes
+a tile, and the audit that already says so needs no second list free to
+disagree with it.
+
+## Where a tile goes — the declared route, and nothing else
+
+The owner, 2026-10-09:
+
+> I still want the harness to be where specific visualizers/pages are declared
+> for the harness at the level. And that they are all compliant of
+> `<base URL>/<harness>/<visualizer>` (which is for the full KG) and
+> `<base URL>/<harness>/<visualizer>/<sub-graph>`,
+> `<base URL>/<harness>/<visualizer>/<sub-graph>/<path to asset>` rules. Why
+> `renders: [fsh-guts]` in visualizer? Could have multiple visualizers
+> contending for same url... so not good. Need harness to declare visualizer
+> is renderedBy ....
+
+So each visualiser is ONE declaration in the harness that owns it:
+
+```json
+"visualisers": [
+  { "id": "library", "renderedBy": "library-viewer", "coversKinds": ["library"], "subgraphs": "instance" },
+  { "id": "todos", "renderedBy": "state-viewer", "covers": ["todos"], "alias": "todos" },
+  { "id": "fsh-guts", "renderedBy": "staging-graph-viewer", "covers": ["fsh-guts"], "publish": "staging-only", "writer": ["scripts/gen-fsh-guts-viz.ts"] }
+]
+```
+
+- **`id`** is the URL segment; **`renderedBy`** names a Tool node (the
+  implementation may live anywhere); **`covers`** names this harness's own
+  directory ids, **`coversKinds`** graph typologies, over every declared
+  directory of them in the checkout. A harness never names another instance's directory — that
+  would be a lower layer naming a higher one.
+- **The URL is computed, never chosen.** `visualiserRoute` in
+  `schemas/visualiser-route.ts` is the ONE function every generator and reader
+  uses: `<harness>/<id>/` for the full KG, `<harness>/<id>/<sub-graph>/` for
+  one sub-graph (`subgraphs: "instance"` — one per covered instance — or
+  `"directory"`, nested under `subgraphUnder[kind]` where the visualiser
+  declares one), and an asset path below either. Every page is written to
+  that route under the site's docs layer, so the file and the URL cannot
+  disagree. A tile opens the sub-graph view when it exists, else the full one.
+- **A page claims nothing.** `renders:` / `<meta name="renders">` are retired;
+  a page carries only `rendered-by: <Tool>`, as provenance. So is
+  `coverage.visualiser` on a directory: `withViewers` fills it IN MEMORY from
+  the declarations, for the readers written against it, and never from disk.
+- **Collisions are declaration errors.** `bun run cat check:visualiser-routes`
+  refuses two declarations resolving to one route (or one inside another's
+  subtree), a page drawn by a Tool outside every route that Tool is declared
+  to render, a page under a route that names a different Tool, a visualiser
+  covering a kind its Tool does not `renders`, and any `renders:` or
+  `coverage.visualiser` left on disk.
+- **The short URL is an opt-in alias** (bean `t4xb`). `alias: "todos"` makes
+  `<base>/todos/` a redirect to `<base>/cat-harness/todos/`, composed by
+  `compose-docs.ts` for every page under the route. An alias that names
+  another alias, a harness, or anything the site already carries at its top
+  level is refused by the gate before a build and by the composer during one.
+  A tile always links the canonical route.
+- **`publish: "staging-only"` is unchanged**: `compose-docs` withholds the
+  route (and its alias) from a canonical deploy.
 
 ## Instantiated is a different fact from declared
 
@@ -248,7 +304,7 @@ appropriate**"*. When is a thing on the folio a tile, and when its own avatar?
 
 | the thing | renders as | because |
 |---|---|---|
-| a declared visualiser (`SubgraphCoverageSchema.visualiser`) — a directory or sub-graph | **tile**, *functional* | the harness declares it; §"A tile is the harness's" above |
+| a declared visualiser (the harness's `visualisers`) — over a directory or sub-graph | **tile**, *functional* | the harness declares it; §"A tile is the harness's" above |
 | a set of schema instances — `todos` | **tile**, *content* | the harness declares the set; the instances are the folio's |
 | a note, a document, a materialised asset in the folio's `reproduce` directories (`library/`, `uploads/`) | **avatar** | the folio holds it; it is the reader's, not the harness's |
 

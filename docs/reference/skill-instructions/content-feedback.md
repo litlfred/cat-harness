@@ -45,9 +45,9 @@ Gather and triage feedback on published content for future iterations.
 
 | process | step(s) that name it |
 |---|---|
-| [Narrative review](../../processes/review-narrative.html) | Record findings as advice |
-| [Adjudication](../../processes/adjudication.html) | State the finding and what it read |
-| [Prose and the code it describes](../../processes/narrative-code-review.html) | Raise a finding against the wrong side |
-| [Content lifecycle](../../processes/content-lifecycle.html) | Triage published feedback; File feedback as beans |
-| [Draft, review and publish](../../processes/draft-to-publication.html) | Open beans for the change requests |
+| [Narrative review](../../cat-harness/processes/review-narrative.html) | Record findings as advice |
+| [Adjudication](../../cat-harness/processes/adjudication.html) | State the finding and what it read |
+| [Prose and the code it describes](../../cat-harness/processes/narrative-code-review.html) | Raise a finding against the wrong side |
+| [Content lifecycle](../../cat-harness/processes/content-lifecycle.html) | Triage published feedback; File feedback as beans |
+| [Draft, review and publish](../../cat-harness/processes/draft-to-publication.html) | Open beans for the change requests |
 

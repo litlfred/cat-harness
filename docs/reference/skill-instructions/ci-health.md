@@ -275,11 +275,11 @@ audit/baseline-reachability branch, the step name in the workflow must cover bot
 
 | process | step(s) that name it |
 |---|---|
-| [Remote-mount a dependency](../../processes/mount-dependency.html) | Check disk against lock against declaration |
-| [Is CI actually working on the default branch?](../../processes/ci-health-watch.html) | Run check:ci-health, WRITING the report file; Ensure the tracking label exists; Close the tracking issue; Open or EDIT the one tracking issue |
-| [Code change and review](../../processes/code-change-review.html) | Root-cause the failure |
-| [Merge the base branch in](../../processes/merge-base.html) | Report what the run found, once |
-| [A merge train](../../processes/merge-train.html) | Find members with no CI on their head (calls a sub-process); Retry a declared-flaky gate once |
-| [Which open pull requests have no CI run on their head?](../../processes/pr-checks-present.html) | Ask, per open PR, whether its HEAD has a run — skipping heads younger than 15 min; Ensure the tracking label exists; Close the tracking issue; Open or EDIT the one tracking issue |
-| [Is the repository itself healthy?](../../processes/repository-health-watch.html) | Ensure the tracking label exists; Close the tracking issue; Open or EDIT the one tracking issue |
+| [Remote-mount a dependency](../../cat-harness/processes/mount-dependency.html) | Check disk against lock against declaration |
+| [Is CI actually working on the default branch?](../../cat-harness/processes/ci-health-watch.html) | Run check:ci-health, WRITING the report file; Ensure the tracking label exists; Close the tracking issue; Open or EDIT the one tracking issue |
+| [Code change and review](../../cat-harness/processes/code-change-review.html) | Root-cause the failure |
+| [Merge the base branch in](../../cat-harness/processes/merge-base.html) | Report what the run found, once |
+| [A merge train](../../cat-harness/processes/merge-train.html) | Find members with no CI on their head (calls a sub-process); Retry a declared-flaky gate once |
+| [Which open pull requests have no CI run on their head?](../../cat-harness/processes/pr-checks-present.html) | Ask, per open PR, whether its HEAD has a run — skipping heads younger than 15 min; Ensure the tracking label exists; Close the tracking issue; Open or EDIT the one tracking issue |
+| [Is the repository itself healthy?](../../cat-harness/processes/repository-health-watch.html) | Ensure the tracking label exists; Close the tracking issue; Open or EDIT the one tracking issue |
 

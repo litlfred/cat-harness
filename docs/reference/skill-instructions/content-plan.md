@@ -43,8 +43,8 @@ Plan content development by defining scope, team, timeline, and sprint cadence.
 
 | process | step(s) that name it |
 |---|---|
-| [Authoring a document](../../processes/authoring-a-document.html) | 1 · Plan the document |
-| [Content lifecycle](../../processes/content-lifecycle.html) | Plan scope, team, artifacts |
-| [Authoring a paper](../../processes/authoring-a-paper.html) | 1 · Plan the paper; 3 · Scaffold the folio repo |
-| [L2 DAK authoring](../../processes/l2-dak-authoring.html) | Scope the DAK |
+| [Authoring a document](../../cat-harness/processes/authoring-a-document.html) | 1 · Plan the document |
+| [Content lifecycle](../../cat-harness/processes/content-lifecycle.html) | Plan scope, team, artifacts |
+| [Authoring a paper](../../cat-harness/processes/authoring-a-paper.html) | 1 · Plan the paper; 3 · Scaffold the folio repo |
+| [L2 DAK authoring](../../cat-harness/processes/l2-dak-authoring.html) | Scope the DAK |
 

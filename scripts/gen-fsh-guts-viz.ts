@@ -60,7 +60,7 @@ import { publishPlan } from "./derive-at-publish.js";
 import { visualiserSitePath } from "./viewer-declarations.js";
 
 /** This generator's Tool node (`tools/viewers.ts`), which cat-harness declares its `fsh-guts` visualiser `renderedBy`. */
-const VIEWER_TOOL = "fsh-guts-viewer";
+const VIEWER_TOOL = "staging-graph-viewer";
 
 const REPO = resolve(import.meta.dir, "..", "..");
 const TAG = "folio-fsh-guts/v1";
@@ -102,7 +102,7 @@ export function gutsDir(repo = REPO): string | undefined {
 /** The declarations that may hold the trashcan: the checkout's root instance, then the platform. */
 /**
  * Where the page goes: the route cat-harness DECLARES for its `fsh-guts`
- * visualiser, rendered by this generator's Tool (`fsh-guts-viewer`) —
+ * visualiser, rendered by this generator's Tool (`staging-graph-viewer`) —
  * `cat-harness/fsh-guts/index.md` under the base docs layer.
  *
  * READ FROM THE SAME DECLARATION that withholds it: `compose-docs.ts`
