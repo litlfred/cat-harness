@@ -485,13 +485,13 @@
       "hasInstructions": true,
       "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/kg-core",
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-      "instructionLines": 178,
+      "instructionLines": 190,
       "instructionsPath": "skills/kg/kg-core/uml-overview.md",
       "name": "uml-overview",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0074d69a60ccea58149b7107e8204d11560adae241ee0ea48a6e1d5233186141",
-        "bytes": 10077,
-        "sha256": "0074d69a60ccea58149b7107e8204d11560adae241ee0ea48a6e1d5233186141"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/779974440a8039d556435db5b9fe49f7d1a85d354aac57fea3e7ad82236e1faa",
+        "bytes": 11002,
+        "sha256": "779974440a8039d556435db5b9fe49f7d1a85d354aac57fea3e7ad82236e1faa"
       },
       "title": "UML overview: generated from declarations and schemas, never drawn"
     },

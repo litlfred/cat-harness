@@ -1612,16 +1612,16 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       id: "uml-overview",
       title: "UML overview per named sub-graph",
       description:
-        "Draw one UML class diagram per harness and one per named sub-graph it declares, as PlantUML and Mermaid from one model, with every class read from the graph typology's node schema, and render the PlantUML to the SVG each page shows (needs Java; the check does not). A kind with none is drawn as could-not-determine, never as an empty box.",
+        "Draw one UML class diagram per harness and one per named sub-graph it declares, as PlantUML, Mermaid and Graphviz DOT from one model, with every class read from the graph typology's node schema, and render the PlantUML to the SVG each page shows (needs Java; the check does not). The DOT is the page's Interactive view, laid out in the reader's browser by the site's vendored Graphviz WASM with draggable nodes. A kind with none is drawn as could-not-determine, never as an empty box.",
       install: { none: true },
       invoke: { shell: "bun run cat uml:overview" },
       io: {
         inputs: [
           { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Fail if any diagram, SVG or page is stale or orphaned, instead of writing." },
         ],
-        outputs: [{ name: "diagrams", schema: t("RepoPath"), description: "uml/overview/ (.puml and .mmd), their SVG renderings, and the docs/uml/overview/ pages that show them." }],
+        outputs: [{ name: "diagrams", schema: t("RepoPath"), description: "uml/overview/ (.puml and .mmd), their SVG renderings and Graphviz DOT beside them, and the docs/uml/overview/ pages that show them." }],
       },
-      satisfies: ["uml-overview"],
+      satisfies: ["uml-overview", "kg-subgraph-layout"],
       requires: { runtime: ["bun"], network: false },
     }),
 

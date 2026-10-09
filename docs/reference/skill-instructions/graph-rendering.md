@@ -136,12 +136,13 @@ a different graph.
 | **Graphviz dot, left to right, polyline edges** | the landscape view of a connected graph | it can route a long edge across a box, which is why ELK stays the portrait default. Use `nodesep 70`, `ranksep 160`. |
 | Graphviz with **orthogonal** edges | avoid | it places edge labels away from their edges and runs lines through boxes. The owner: *"make wider, its messy"*. |
 | Mermaid (dagre) | a secondary view where CSS classes on nodes matter | the same model came out three times taller than ELK's |
+| **Graphviz dot in the browser** (WASM, `unflatten` then `dot`) | the interactive view a reader rearranges by dragging nodes ([`kg-subgraph-layout`](kg-subgraph-layout.md)) | like ELK it sets unconnected clusters, and unconnected nodes in one cluster, on one rank: fold both into grids with invisible, marked anchors |
 
 ## Applying it
 
 | graph | source | groups | edge kinds | renderer today | owes |
 |---|---|---|---|---|---|
-| **schemas** | graph-typology registry, Zod schemas | `<instance>/<sub-graph>` | composition; field-carried vs declared elsewhere | `gen-uml-overview.ts`, `gen-object-model-uml.ts` | meets all ten |
+| **schemas** | graph-typology registry, Zod schemas | `<instance>/<sub-graph>` | composition; field-carried vs declared elsewhere | `gen-uml-overview.ts` (PlantUML, Mermaid and the DOT of the Interactive view), `gen-object-model-uml.ts` | meets all ten |
 | **processes** | `.bpmn` files | pools and lanes | sequence, message, call | `render-bpmn.ts` (stored layout) | rule 6 (orientation) does not apply: the author placed it |
 | **paper blocks** and **Lean proofs** | `buildContentGraph` in `content/pipeline/content-graph.ts`; status from `proof-objects.json` | chapters | `editorial` (`uses[]`, `interprets`), solid, vs `formal` (Lean `type` / `value`), dashed purple | `gen-content-graph-uml.ts` (Tool `content-graph-uml`), run from a folio | meets rules 1 to 8. Rule 9 waits on a folio page to show it; rule 10 on detangle scanning a paper |
 | **detangle partition** | the sidecars under `detangleResultsDir` | detangle groups | enforced / recorded / prose | numbers only; the UML pages show them (rule 10) | a drawing of the cross-group edges themselves |
@@ -177,4 +178,9 @@ the drawing keeps them apart.
   these rules were first learned.
 - [`kg-viewer`](kg-viewer.md): the shared rule for an HTML
   viewer that fetches its projection by a path relative to itself.
+- [`kg-subgraph-layout`](kg-subgraph-layout.md): one declared sub-graph as one
+  Graphviz diagram in the i2ce Form Documentor's convention, laid out in the
+  browser with draggable nodes. Its viewer is the one exception to rule 9's
+  "one viewer", because it re-lays and moves a graph rather than zooming a
+  picture, and it keeps the same keyboard floor.
 {% endraw %}

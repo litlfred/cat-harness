@@ -16,6 +16,7 @@
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/graph-detanglement",
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/graph-rendering",
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/kg-separation",
+            "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/kg-subgraph-layout",
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/lsi-indexing",
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/named-query-execution",
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/nquads-distribution",
@@ -94,13 +95,13 @@
           "hasInstructions": true,
           "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/graph-management",
           "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-          "instructionLines": 176,
+          "instructionLines": 182,
           "instructionsPath": "skills/kg/graph-management/graph-rendering.md",
           "name": "graph-rendering",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/eab87eba224a4ee1316735cdeafc9f9d72617f1351f9ef82ee79cb07d5fda1cf",
-            "bytes": 11400,
-            "sha256": "eab87eba224a4ee1316735cdeafc9f9d72617f1351f9ef82ee79cb07d5fda1cf"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2645cbe63ee09551f605da78bc7b04c43d770f7a613ec287cb0381ea02181a24",
+            "bytes": 12132,
+            "sha256": "2645cbe63ee09551f605da78bc7b04c43d770f7a613ec287cb0381ea02181a24"
           },
           "title": "Graph rendering: one set of rules for every drawn graph"
         },
@@ -122,6 +123,25 @@
             "sha256": "a0ff94a66ee2019260d4c6221b10bec20c38edd3dc25c6b78aecccd5669d1bea"
           },
           "title": "Knowledge Graph separation — the method"
+        },
+        {
+          "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/kg-subgraph-layout",
+          "@type": "bootstrap:Skill",
+          "ambiguous": false,
+          "description": "Lay out one declared sub-graph of a knowledge graph (a harness's schema overview, one named sub-graph, a declaration's kinds) as a single Graphviz diagram in the i2ce Form Documentor's convention, and show it on the site laid out in the reader's browser by Graphviz in WebAssembly, with pan, zoom, find, keyboard control and draggable nodes. The DOT is a third rendering of the model the PlantUML and Mermaid already draw, coloured from the same stylesheet. Tool `uml-overview`.",
+          "hasIOContract": false,
+          "hasInstructions": true,
+          "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/graph-management",
+          "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
+          "instructionLines": 161,
+          "instructionsPath": "skills/kg/graph-management/kg-subgraph-layout.md",
+          "name": "kg-subgraph-layout",
+          "payload": {
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/55a3a44b0fb445876832d72ffc57db9119a79f1801cbefe9cf8c2016afd5f9c9",
+            "bytes": 8992,
+            "sha256": "55a3a44b0fb445876832d72ffc57db9119a79f1801cbefe9cf8c2016afd5f9c9"
+          },
+          "title": "KG subgraph layout: one diagram per declared sub-graph, laid out in the browser"
         },
         {
           "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/lsi-indexing",
@@ -692,13 +712,13 @@
           "hasInstructions": true,
           "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/kg-core",
           "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-          "instructionLines": 178,
+          "instructionLines": 190,
           "instructionsPath": "skills/kg/kg-core/uml-overview.md",
           "name": "uml-overview",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0074d69a60ccea58149b7107e8204d11560adae241ee0ea48a6e1d5233186141",
-            "bytes": 10077,
-            "sha256": "0074d69a60ccea58149b7107e8204d11560adae241ee0ea48a6e1d5233186141"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/779974440a8039d556435db5b9fe49f7d1a85d354aac57fea3e7ad82236e1faa",
+            "bytes": 11002,
+            "sha256": "779974440a8039d556435db5b9fe49f7d1a85d354aac57fea3e7ad82236e1faa"
           },
           "title": "UML overview: generated from declarations and schemas, never drawn"
         },

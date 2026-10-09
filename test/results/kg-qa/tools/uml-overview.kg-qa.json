@@ -5,7 +5,7 @@
     "id": "uml-overview",
     "path": null
   },
-  "source_hash": "374e34c29d4c",
+  "source_hash": "0d1231c05831",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

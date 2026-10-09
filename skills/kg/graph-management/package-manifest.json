@@ -8,6 +8,7 @@
     "graph-detanglement",
     "graph-rendering",
     "kg-separation",
+    "kg-subgraph-layout",
     "lsi-indexing",
     "named-query-execution",
     "nquads-distribution",
