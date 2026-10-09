@@ -47,6 +47,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync
 import { dirname, join, relative, resolve } from "node:path";
 import { DOCS_SITE_BASE } from "../../schemas/jsonld.ts";
 import { escHtml, thinPageConfigOf, thinPageHtml } from "../../scripts/thin-page.ts";
+import { visualiserNavDeclaration, type VisualiserNavEntry } from "../../scripts/lib/navbar.ts";
 import { findDeclarationFile } from "../../schemas/cat-harness.ts";
 import { readArchimate, type ArchimateModel } from "../schemas/archimate.ts";
 import { renderViewSvg, typeLabel } from "./render-view.ts";
@@ -131,9 +132,17 @@ export function pagesFor(instanceRoot: string, opts: { requireServed?: boolean }
       "schema:hasPart": model.views.map((v) => ({ "@id": viewIri(v.id), "@type": "archimate:Diagram", "schema:name": v.name })),
     });
     files.push({ path: `${m}/model.json`, content: `${JSON.stringify(normalisedFor(model, cm.file))}\n` });
+    // The rail's left-hand section for this model's pages: the model, then its
+    // views (`visualiserNavDeclaration`, the one writer of the format the
+    // navbar pass reads). Relative to the page, so it holds in a preview.
+    const nav = (toModel: string): string =>
+      visualiserNavDeclaration([
+        { label: title, href: toModel, items: model.views.map((v) => ({ label: v.name || "(unnamed view)", href: `${toModel}views/${v.id}/` })) },
+        { label: "ArchiMate models", href: `${toModel}../` },
+      ]);
     files.push(page(`${m}/index.html`, 1, title, `../${m}.jsonld`, { kind: "model", node: `../${m}.jsonld`, model: "./model.json" },
       `<main class="am"><p class="am-up"><a href="../">← ArchiMate models</a></p><h1>${escHtml(title)}</h1>` +
-        `<div class="am-body" aria-live="polite"><p>Loading the model…</p></div></main>`));
+        `<div class="am-body" aria-live="polite"><p>Loading the model…</p></div></main>`, nav("./")));
 
     for (const v of model.views) {
       const shown = [...new Set(v.nodes.filter((n) => n.kind === "element" && n.ref && elements.has(n.ref)).map((n) => n.ref!))];
@@ -162,7 +171,7 @@ export function pagesFor(instanceRoot: string, opts: { requireServed?: boolean }
       files.push(page(`${m}/views/${v.id}/index.html`, 3, `${v.name} — ${title}`, `../${v.id}.jsonld`,
         { kind: "view", node: `../${v.id}.jsonld`, model: "../../model.json", id: v.id, svg: `../${v.id}.svg` },
         `<main class="am am-wide"><p class="am-up"><a href="../../">← ${escHtml(title)}</a></p><h1>${escHtml(v.name)}</h1>` +
-          `<p class="am-kind">View</p><div class="am-body" aria-live="polite"><p>Loading the view…</p></div></main>`));
+          `<p class="am-kind">View</p><div class="am-body" aria-live="polite"><p>Loading the view…</p></div></main>`, nav("../../")));
     }
 
     for (const e of model.elements) {
@@ -209,7 +218,9 @@ export function pagesFor(instanceRoot: string, opts: { requireServed?: boolean }
       `<title>ArchiMate models — ${escHtml(decl.name)}</title><link rel="stylesheet" href="${STYLE}"></head>\n<body><main class="am">` +
       `<h1>ArchiMate models</h1><ul>` +
       listed.map((l) => `<li><a href="${encodeURI(l.id)}/">${escHtml(l.title)}</a> <code>${escHtml(l.id)}</code> — ${l.views} view(s), ${l.elements} element(s)</li>`).join("") +
-      `</ul></main>\n</body></html>\n`,
+      `</ul></main>\n` +
+      visualiserNavDeclaration([{ label: "ArchiMate models", href: "./", items: listed.map((l): VisualiserNavEntry => ({ label: l.title, href: `${encodeURI(l.id)}/` })) }]) +
+      `\n</body></html>\n`,
   });
   files.push(
     { path: LOADER, content: readFileSync(join(TEMPLATES, "archimate.js"), "utf8") },
@@ -218,8 +229,8 @@ export function pagesFor(instanceRoot: string, opts: { requireServed?: boolean }
   return { graphPath, files };
 }
 
-/** A thin page `depth` directories below the graph's root. */
-function page(path: string, depth: number, title: string, jsonld: string, config: Record<string, unknown>, body: string): Written {
+/** A thin page `depth` directories below the graph's root; `tail`, a declaration after its script. */
+function page(path: string, depth: number, title: string, jsonld: string, config: Record<string, unknown>, body: string, tail?: string): Written {
   const up = "../".repeat(depth);
   return {
     path,
@@ -232,6 +243,7 @@ function page(path: string, depth: number, title: string, jsonld: string, config
       config,
       body,
       noscriptLead: `The page for ${escHtml(title)}`,
+      ...(tail !== undefined ? { tail } : {}),
     }),
   };
 }
