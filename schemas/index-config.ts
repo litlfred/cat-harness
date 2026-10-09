@@ -70,9 +70,26 @@ import {
   lockFilesIn,
   rootConfigStems,
 } from "./instance-roots";
-import { RemoteMountSchema, RemoteMountsSchema, type RemoteMount } from "./remote-mount";
+import {
+  RemoteMountSchema,
+  RemoteMountsSchema,
+  type RemoteMount,
+  RESERVED_ROOT_AND_ROUTE_NAMES,
+  isReservedRootOrRouteName,
+  checkMountPathCollisions,
+  effectiveMountPathOf,
+  type MountCollisionFinding,
+} from "./remote-mount";
 
-export { INDEX_CONFIG_FILENAME };
+export {
+  INDEX_CONFIG_FILENAME,
+  RESERVED_ROOT_AND_ROUTE_NAMES,
+  isReservedRootOrRouteName,
+  checkMountPathCollisions,
+  effectiveMountPathOf,
+  type MountCollisionFinding,
+};
+
 
 export const INDEX_CONFIG_SCHEMA = "folio-index-config/v1";
 

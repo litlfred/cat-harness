@@ -844,7 +844,10 @@ beside a directory concept. Bean `l4ay`; schema `schemas/subgraph-source.ts`.
   repository's tree at a full 40-character pin, laid down and locked by
   `mount:remote` and never written back (the [`remote-mount`](remote-mount.md)
   skill, bean `0mpw`); a kind with no flow is refused with its own exit code
-  rather than read as an empty directory.
+  rather than read as an empty directory. A remote mount's effective path must
+  not collide with downstream declared directories, reserved root/route names
+  (`RESERVED_ROOT_AND_ROUTE_NAMES`), or sibling mounts (`checkMountPathCollisions`,
+  bean `t4xb`, [`remote-mount`](remote-mount.md)).
 - **The KG export publishes the resolved source** on the Subgraph node, as
   `contentSource` — `dcterms:source`, with `kind` (`dcterms:type`), `branch`
   (`dcterms:identifier`), `keyedBy` and `declaredIn` scoped inside it. A

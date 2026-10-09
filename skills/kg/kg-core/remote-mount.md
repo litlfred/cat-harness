@@ -153,16 +153,31 @@ reported as missing, never patched locally, because a local exclude is
 invisible to every other clone. A folio with no index keeps the old behaviour:
 a path its rules do not ignore goes into the worktree's `info/exclude`.
 
-**Mind the mount path.** A mount with no `path` override lands at `<name>/` in
-the downstream root, beside the downstream's own directories, and its site
-routes sit beside the site-wide ones. A harness name can therefore collide on
-disk or as a route. Today `mountRemote` refuses tracked bytes and unlocked
-directories, so a disk collision fails loudly. Nothing yet checks a name
-against the downstream's declared and reserved paths before the mount is
-declared: that check, and the opt-in `<base>/<visualizer>/` alias, are bean
-`t4xb`. Until it lands, set an override `path` when a name could collide. The
-route rule itself is in [`schema-management`](schema-management.md)
-§"Where a viewer publishes".
+**Mount path and route collisions (bean folio-assistant-t4xb).** A mount with no `path`
+override lands at `<name>/` in the downstream root, beside the downstream's own
+directories, and its site routes sit beside the site-wide ones. To prevent collisions on disk
+and in route space:
+
+1. **Reserved names:** `RESERVED_ROOT_AND_ROUTE_NAMES` in `schemas/remote-mount.ts` declares
+   the one authoritative list of reserved root directories and site route names:
+   `["skills", "tools", "docs", "assets", "glossary", "api", "payload", "STAGING", "beans", "todos", "fsh-guts", "uploads", "test", "build", "_site", "_docs", "_kg"]`.
+2. **Mount path check:** `checkMountPathCollisions` (run during planning in `mount:remote`
+   and by `bun run cat check:mount-collisions`) rejects any remote mount whose effective path
+   (`path` or `<name>/`) collides with:
+   - a directory the downstream declares in its own configuration;
+   - a reserved root or site route name;
+   - another mount's path.
+   When a collision occurs, the error clearly states how to fix it: "set `path`" (on the
+   instance's `overrides.<name>.path` in `index.config.json` or `source.remote.overrides`).
+3. **Route rules:**
+   - **Canonical:** every visualiser is reachable at `<base>/<harness>/<visualizer>/`.
+     Every generated link uses that form unless an alias is declared.
+   - **Alias:** `<base>/<visualizer>/` exists only when a declaration opts in via `alias: true`
+     or `alias: "<alias>"` in its `Visualisation` declaration (`coverage.visualiser`). The site build
+     refuses an alias that collides with another alias, a harness route, or a reserved site route,
+     and names both claimants.
+   - The route rule itself is in [`schema-management`](schema-management.md)
+     §"Where a viewer publishes".
 
 Every instance ends in exactly one state:
 

@@ -68,7 +68,37 @@ import { isAbsolute, join, relative, resolve, basename } from "node:path";
 import { z } from "zod";
 import { RepoFullNameSchema, type RepoFullName } from "./repo-full-name.js";
 import { SubscriptionKindSchema, type SubscriptionKind } from "./substrate-snapshot.js";
-import { MountDefaultsSchema, RemoteMountsSchema, readMountLock, type MountDefaults, type RemoteMount } from "./remote-mount.js";
+import {
+  MountDefaultsSchema,
+  RemoteMountsSchema,
+  readMountLock,
+  type MountDefaults,
+  type RemoteMount,
+  RESERVED_ROOT_AND_ROUTE_NAMES,
+  isReservedRootOrRouteName,
+  checkMountPathCollisions,
+  canonicalVisualizerRoute,
+  visualizerAliasRoute,
+  visualizerUrl,
+  checkVisualizerRouteCollisions,
+  type MountCollisionFinding,
+  type RouteCollisionFinding,
+  type ReservedRootAndRouteName,
+} from "./remote-mount.js";
+
+export {
+  RESERVED_ROOT_AND_ROUTE_NAMES,
+  isReservedRootOrRouteName,
+  checkMountPathCollisions,
+  canonicalVisualizerRoute,
+  visualizerAliasRoute,
+  visualizerUrl,
+  checkVisualizerRouteCollisions,
+  type MountCollisionFinding,
+  type RouteCollisionFinding,
+  type ReservedRootAndRouteName,
+};
+
 
 import {
   KgAssetSchema,
@@ -1270,6 +1300,13 @@ export const VisualisationSchema = z.object({
     .min(1)
     .refine((ps) => new Set(ps).size === ps.length, { message: "writer names a path twice" })
     .optional(),
+  /**
+   * Opt-in top-level route alias: `<base>/<alias>/` (bean folio-assistant-t4xb).
+   * Canonical route is always `<base>/<harness>/<visualizer>/`.
+   * When true, uses the visualizer's name as the alias; when string, uses the specified alias.
+   * Refused if it collides with another alias, a harness route, or a reserved site route.
+   */
+  alias: z.union([z.string().min(1), z.boolean()]).optional(),
 });
 export type Visualisation = z.infer<typeof VisualisationSchema>;
 

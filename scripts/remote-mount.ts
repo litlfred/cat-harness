@@ -67,6 +67,7 @@ import {
   type MountLock,
   type RemoteMount,
   WHOLE_INSTANCE_ID,
+  checkMountPathCollisions,
 } from "../schemas/remote-mount.js";
 import { contentIsOffCheckout, type SubgraphSource } from "../schemas/subgraph-source.js";
 import { treeDigest, treeEntries } from "./kg-parts.ts";
@@ -355,6 +356,24 @@ function resolveClosure(opts: RemoteMountOptions, trees: Map<string, RemoteTree>
         plan.outcomes.push({ instance: q.name, state: "could-not-determine", detail: `mount path \`${path}\` is not a repository-relative directory` });
         continue;
       }
+      const dsDecl = readDeclaration(ds.instanceRoot);
+      const declaredDirs = [
+        ...(dsDecl?.directories ?? []).map((d) => d.path),
+        ...[...local.entries()].map(([n, r]) => relative(ds.instanceRoot, r) || n).filter((p) => p && p !== "."),
+      ];
+      const otherMounts = plan.instances.map((i) => ({ harness: i.instance, path: i.path }));
+      const collisions = checkMountPathCollisions([{ harness: q.name, path }, ...otherMounts], { declaredDirs });
+      const myCollision = collisions.find((c) => c.harness === q.name);
+      if (myCollision) {
+        plan.outcomes.push({
+          instance: q.name,
+          state: "could-not-determine",
+          path,
+          detail: myCollision.message,
+        });
+        continue;
+      }
+
       const byId = new Map(decl.directories.map((d) => [d.id, d]));
       const whole = override?.whole ?? decl.mountDefaults?.whole === true;
       if (whole) {
