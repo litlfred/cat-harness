@@ -19,6 +19,7 @@ import {
   buildTabularNodes,
   tabularShapeOf,
 } from "./tabular-nodes.ts";
+import { blockRefIn } from "./gen-library-jsonld.ts";
 
 const iri = (rest: string) => `library/x/${rest}`;
 const build = (shape: Parameters<typeof buildTabularNodes>[0]) =>
@@ -191,5 +192,122 @@ describe("the title comes from the record, or from nowhere", () => {
       tables: [{ url: "coverage.csv", tableSchema: { columns: [{ name: "iso3" }] } }],
     });
     expect(shape?.title).toBeUndefined();
+  });
+});
+
+describe("a consumer walking `contains` handles both workbook and CSV structures", () => {
+  /**
+   * Resolves all table blocks by following `contains` relationships from the manifest.
+   * Handles depth 1 (manifest -> table block, CSV) and depth 2 (manifest -> sheet -> table block, workbook).
+   */
+  function resolveContainedTableBlocks(
+    nodes: Record<string, Record<string, unknown>>,
+  ): Array<{ id: string; label: string; headers: string[] }> {
+    const manifest = nodes["manifest.jsonld"];
+    if (!manifest) return [];
+
+    const byIri = new Map<string, Record<string, unknown>>();
+    for (const doc of Object.values(nodes)) {
+      if (typeof doc["@id"] === "string") {
+        byIri.set(doc["@id"], doc);
+      }
+    }
+
+    const blocks: Array<{ id: string; label: string; headers: string[] }> = [];
+    const queue = Array.isArray(manifest.contains) ? [...(manifest.contains as string[])] : [];
+    const seen = new Set<string>();
+
+    while (queue.length > 0) {
+      const ref = queue.shift()!;
+      if (seen.has(ref)) continue;
+      seen.add(ref);
+
+      const target = byIri.get(ref);
+      if (!target) continue;
+
+      if (target.kind === "table") {
+        blocks.push({
+          id: String(target["@id"] ?? ""),
+          label: String(target.label ?? ""),
+          headers: Array.isArray(target.headers) ? (target.headers as string[]) : [],
+        });
+      } else if (Array.isArray(target.contains)) {
+        queue.push(...(target.contains as string[]));
+      }
+    }
+
+    return blocks;
+  }
+
+  test("a consumer walking `contains` resolves table blocks directly from manifest (CSV shape)", () => {
+    const nodes = build({
+      hasSheets: false,
+      sheets: [{ name: "coverage", headers: ["country", "iso3"] }],
+    });
+
+    const blocks = resolveContainedTableBlocks(nodes);
+    expect(blocks).toEqual([
+      {
+        id: "library/x/blocks/table-001",
+        label: "coverage",
+        headers: ["country", "iso3"],
+      },
+    ]);
+  });
+
+  test("a consumer walking `contains` resolves table blocks through sheets (workbook shape)", () => {
+    const nodes = build({
+      hasSheets: true,
+      sheets: [
+        { name: "Coverage", headers: ["country"] },
+        { name: "Notes", headers: ["note"] },
+      ],
+    });
+
+    const blocks = resolveContainedTableBlocks(nodes);
+    expect(blocks).toEqual([
+      {
+        id: "library/x/blocks/table-001",
+        label: "Coverage",
+        headers: ["country"],
+      },
+      {
+        id: "library/x/blocks/table-002",
+        label: "Notes",
+        headers: ["note"],
+      },
+    ]);
+  });
+
+  test("a pointer-scanning consumer (like orphanedBlocks) collects all referenced block IDs from both shapes", () => {
+    // Both shapes: CSV (manifest.contains direct reference) and workbook (sheets/*.jsonld contains)
+    const csvNodes = build({
+      hasSheets: false,
+      sheets: [{ name: "coverage", headers: ["a", "b"] }],
+    });
+    const xlsxNodes = build({
+      hasSheets: true,
+      sheets: [
+        { name: "Sheet1", headers: ["x"] },
+        { name: "Sheet2", headers: ["y"] },
+      ],
+    });
+
+    const collectReferencedBlocks = (nodeMap: Record<string, Record<string, unknown>>) => {
+      const referenced = new Set<string>();
+      for (const [path, doc] of Object.entries(nodeMap)) {
+        if (path === "manifest.jsonld" || path.startsWith("sheets/")) {
+          const contains = Array.isArray(doc.contains) ? (doc.contains as string[]) : [];
+          for (const c of contains) {
+            const id = blockRefIn(c);
+            if (id) referenced.add(id);
+          }
+        }
+      }
+      return referenced;
+    };
+
+    expect(collectReferencedBlocks(csvNodes)).toEqual(new Set(["table-001"]));
+    expect(collectReferencedBlocks(xlsxNodes)).toEqual(new Set(["table-001", "table-002"]));
   });
 });
