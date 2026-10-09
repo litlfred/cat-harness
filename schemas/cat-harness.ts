@@ -2225,34 +2225,51 @@ export const MODEL_PROVENANCES = ["open-weight-local", "hosted", "mixed"] as con
 export type ModelProvenance = (typeof MODEL_PROVENANCES)[number];
 
 /**
+ * The **compute** axis — whose hardware runs the harness.
+ * §1 axis 4.
+ */
+export const COMPUTES = ["workstation", "vendor-cloud", "jurisdiction-cloud", "own-infrastructure"] as const;
+export type Compute = (typeof COMPUTES)[number];
+
+/**
+ * The **tool surface** axis — how capabilities are invoked.
+ * §1 axis 6.
+ */
+export const TOOL_SURFACES = ["mcp", "cli", "both"] as const;
+export type ToolSurface = (typeof TOOL_SURFACES)[number];
+
+/**
+ * The **model cardinality** axis — one model for every workflow, or a stack.
+ * §1 axis 7.
+ */
+export const MODEL_CARDINALITIES = ["single", "stack"] as const;
+export type ModelCardinality = (typeof MODEL_CARDINALITIES)[number];
+
+/**
+ * The **data stores** axis — what live external systems exist beside the deployment.
+ * §1 axis 9.
+ */
+export const DATA_STORES = ["none", "hapi-fhir", "national-portal", "emr", "wallet"] as const;
+export type DataStore = (typeof DATA_STORES)[number];
+
+/**
+ * The **repository visibility** axis — who can reach the repository.
+ * §1 axis 2.
+ */
+export const VISIBILITIES = ["public", "private", "internal"] as const;
+export type Visibility = (typeof VISIBILITIES)[number];
+
+/**
  * The topology axes an instance declares about ITSELF.
  *
- * ## Why only four of the ten
+ * ## The ten axes from deployment-topologies.md
  *
- * `deployment-topologies.md` names ten axes. Four are declared here, and the
- * choice is not arbitrary: these are exactly the axes that
- * {@link topologyConflicts} reads. Declaring the other six would add
- * vocabulary nothing consumes — the `dh4f` defect pointing the other way,
- * where a declaration exists and no code is behind it. They land when a check
- * or a tool needs them.
+ * Ten axes model WHERE the instance and its artefacts live. Each field is
+ * optional, and absent means "has not said", never a default.
  *
- * ## Every field is optional, and absent is a THIRD STATE
- *
- * Absent means *this deployment has not said*, never a default. That is not
- * politeness, it is what makes the check safe to add: no instance in
- * existence declares any of these, so a rule that treated absent as a value
- * would refuse every one of them on the day it shipped.
- *
- * The owner's rule, 2026-09-19: **"dont encode rules against a working
- * setup."** A missing constraint fails visibly at the point of use with the
- * real error; a wrong constraint refuses a good deployment at the gate with a
- * confident message, and nobody investigates a settled question.
- *
- * **`publication.host` is axis 3 and is NOT here** — it lives on
- * {@link Publication}, where it already was, because it answers a publication
- * question and has two other fields it must be told apart from. The axes are
- * therefore read from two places, and {@link topologyConflicts} is the single
- * place that joins them rather than a second home for the vocabulary.
+ * **`publication.host` is axis 3 and lives on {@link Publication}** rather than
+ * here, because it answers a publication question and has two other fields
+ * it must be told apart from.
  */
 export interface Topology {
   forge?: Forge;
@@ -2260,6 +2277,11 @@ export interface Topology {
   modelProvenance?: ModelProvenance;
   /** Whether the deployment serves people outside the operator. §1 axis 10. */
   outwardFacing?: boolean;
+  compute?: Compute;
+  toolSurface?: ToolSurface;
+  modelCardinality?: ModelCardinality;
+  dataStores?: DataStore[];
+  visibility?: Visibility;
 }
 
 export const TopologySchema = z.object({
@@ -2267,7 +2289,53 @@ export const TopologySchema = z.object({
   network: z.enum(NETWORK_REACHES).optional(),
   modelProvenance: z.enum(MODEL_PROVENANCES).optional(),
   outwardFacing: z.boolean().optional(),
+  compute: z.enum(COMPUTES).optional(),
+  toolSurface: z.enum(TOOL_SURFACES).optional(),
+  modelCardinality: z.enum(MODEL_CARDINALITIES).optional(),
+  dataStores: z.array(z.enum(DATA_STORES)).optional(),
+  visibility: z.enum(VISIBILITIES).optional(),
 });
+
+/**
+ * A named deployment profile representing a point in the topology product.
+ */
+export interface DeploymentProfile {
+  name: string;
+  description: string;
+  topology: Topology;
+  publicationHost?: PublicationHost;
+}
+
+/**
+ * Developer mode topology point in the product (bean `folio-assistant-2ngl`):
+ * - forge: none (local git only)
+ * - publication host: local-server
+ * - compute: workstation (the developer's own machine)
+ * - tool surface: cli
+ * - model cardinality: single (one model, every workflow)
+ * - data stores: [none]
+ * - outward facing: false
+ */
+export const DEVELOPER_MODE_TOPOLOGY: Topology = {
+  forge: "none",
+  compute: "workstation",
+  toolSurface: "cli",
+  modelCardinality: "single",
+  dataStores: ["none"],
+  outwardFacing: false,
+};
+
+export const DEVELOPER_MODE_PROFILE: DeploymentProfile = {
+  name: "developer",
+  description:
+    "Developer workstation mode: local git repository, local HTTP server, single model supply, CLI tool surface, workstation compute, no external data stores.",
+  topology: DEVELOPER_MODE_TOPOLOGY,
+  publicationHost: "local-server",
+};
+
+export const DEPLOYMENT_PROFILES: Record<string, DeploymentProfile> = {
+  developer: DEVELOPER_MODE_PROFILE,
+};
 
 /** One refused combination, with the reason a reader can argue with. */
 export interface TopologyConflict {

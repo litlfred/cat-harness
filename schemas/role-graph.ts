@@ -107,6 +107,7 @@ import { ACTOR_KINDS, SUT_ACTOR_KINDS, SystemUnderTestFacetSchema, type ActorKin
 import { NETWORK_REACHES, directoryForGraph, type NetworkReach } from "./cat-harness";
 import { instanceRootNamed } from "./instance-roots";
 import { SkillNameSchema } from "./tool-types";
+import { ModelCapabilitiesSchema, type ModelCapabilities } from "./model-capabilities.js";
 
 /** Directory, relative to the `kg` graph root, holding the role declaration. */
 export const ROLE_GRAPH_DIR = "roles";
@@ -346,6 +347,11 @@ export interface RoleDef {
    * ones instead of staying advisory for ever.
    */
   judgementOnly?: boolean;
+  /**
+   * Minimum model capabilities required by this role when performed by an agent/model.
+   * If a single model lacks these capabilities, the workflow refuses rather than degrades.
+   */
+  requiredCapabilities?: ModelCapabilities;
 }
 
 /** The declared role graph. */
@@ -453,6 +459,7 @@ export const RoleDefSchema = z.object({
   inherits: z.array(z.string()).optional(),
   actedUpon: z.boolean().optional(),
   judgementOnly: z.boolean().optional(),
+  requiredCapabilities: ModelCapabilitiesSchema.optional(),
   // STRICT: an unknown key is an ERROR, not something to drop quietly.
   //
   // `readRoleGraph` already refuses a bad `actorKinds` and a dangling
