@@ -7,7 +7,12 @@ import {
   loadDeclaredSpecTemplate,
   validateSpec,
 } from "../../schemas/spec-template.ts";
-import { DEFAULT_TEMPLATE_PATH } from "../check-spec.ts";
+import {
+  DEFAULT_TEMPLATE_PATH,
+  checkSpecBeforeCode,
+  parseBeanDefinition,
+  type FetchResult,
+} from "../check-spec.ts";
 
 describe("spec-template — declared artefact and section extraction", () => {
   test("loadDeclaredSpecTemplate loads mandatory sections from declared template markdown", () => {
@@ -222,5 +227,204 @@ describe("isStatusAdjudicated", () => {
     expect(isStatusAdjudicated("WIP")).toBe(false);
     expect(isStatusAdjudicated("Under Review")).toBe(false);
     expect(isStatusAdjudicated(undefined)).toBe(false);
+  });
+});
+
+describe("checkSpecBeforeCode — spec-before-code gate (Child 3 / issue #753)", () => {
+  const validSpecText = `
+# Feature Specification: Test Feature
+
+**Feature Branch**: \`claude/test\`
+**Created**: 2026-10-09
+**Status**: Draft
+**Issue**: #730
+
+## User Scenarios & Testing *(mandatory)*
+Given a feature request, When spec-before-code runs, Then it verifies the spec.
+
+## Requirements *(mandatory)*
+- FR-001: Spec must exist before code.
+
+## Success Criteria *(mandatory)*
+- SC-001: 100% of feature beans have valid spec comments.
+`;
+
+  const invalidSpecTextMissingReq = `
+# Feature Specification: Test Feature
+
+**Feature Branch**: \`claude/test\`
+**Created**: 2026-10-09
+**Status**: Draft
+
+## User Scenarios & Testing *(mandatory)*
+Scenario.
+
+## Success Criteria *(mandatory)*
+- SC-001: Pass.
+`;
+
+  test("passing case: returns state pass when referenced issue carries a valid spec comment", () => {
+    const mockFetch = (issueNum: number): FetchResult => ({
+      state: "ok",
+      content: validSpecText,
+    });
+
+    const res = checkSpecBeforeCode(730, { fetchComments: mockFetch });
+    expect(res.state).toBe("pass");
+    expect(res.findings).toEqual([]);
+    expect(res.issueNumber).toBe(730);
+    expect(res.specResult?.state).toBe("pass");
+  });
+
+  test("failing case: missing spec comment on issue reports a finding, not silence (exit 1)", () => {
+    const mockFetch = (issueNum: number): FetchResult => ({
+      state: "ok",
+      content: undefined,
+    });
+
+    const res = checkSpecBeforeCode(730, { fetchComments: mockFetch });
+    expect(res.state).toBe("finding");
+    expect(res.findings.length).toBeGreaterThan(0);
+    expect(res.findings[0]).toContain("carries no reachable spec comment");
+  });
+
+  test("failing case: invalid spec comment (missing mandatory section) reports a finding (exit 1)", () => {
+    const mockFetch = (issueNum: number): FetchResult => ({
+      state: "ok",
+      content: invalidSpecTextMissingReq,
+    });
+
+    const res = checkSpecBeforeCode(730, { fetchComments: mockFetch });
+    expect(res.state).toBe("finding");
+    expect(res.findings.length).toBeGreaterThan(0);
+    expect(res.findings.some((f) => f.includes('missing mandatory section: "Requirements"'))).toBe(true);
+  });
+
+  test("failing case: spec with unresolved [NEEDS CLARIFICATION] when requireAdjudicated reports a finding", () => {
+    const specWithClarification = `
+# Feature Specification: Test Feature
+
+**Status**: Draft
+
+## User Scenarios & Testing *(mandatory)*
+Journey.
+
+## Requirements *(mandatory)*
+FR-001: Do work [NEEDS CLARIFICATION: exact behavior].
+
+## Success Criteria *(mandatory)*
+SC-001: Done.
+`;
+    const mockFetch = (): FetchResult => ({
+      state: "ok",
+      content: specWithClarification,
+    });
+
+    const res = checkSpecBeforeCode(730, {
+      fetchComments: mockFetch,
+      requireAdjudicated: true,
+    });
+    expect(res.state).toBe("finding");
+    expect(res.findings.some((f) => f.includes("unresolved [NEEDS CLARIFICATION] marker(s)"))).toBe(true);
+  });
+
+  test("could-not-determine case: unreachable issue reports unknown (exit 2)", () => {
+    const mockFetch = (issueNum: number): FetchResult => ({
+      state: "unknown",
+      reason: "API rate limit exceeded or network down",
+    });
+
+    const res = checkSpecBeforeCode(730, { fetchComments: mockFetch });
+    expect(res.state).toBe("unknown");
+    expect(res.reason).toContain("could not determine");
+    expect(res.reason).toContain("failed to fetch comments for issue #730");
+  });
+
+  test("feature bean with referenced issue carrying a valid spec passes", () => {
+    const beanContent = `---
+# folio-assistant-4kq7
+title: 'Feature test'
+type: feature
+status: todo
+---
+
+Issue: https://github.com/litlfred/folio-assistant/issues/730
+`;
+    const mockFetch = (issueNum: number): FetchResult => ({
+      state: "ok",
+      content: validSpecText,
+    });
+
+    const res = checkSpecBeforeCode({
+      beanPath: beanContent,
+      fetchComments: mockFetch,
+    });
+    expect(res.state).toBe("pass");
+    expect(res.issueNumber).toBe(730);
+    expect(res.beanInfo?.type).toBe("feature");
+    expect(res.beanInfo?.id).toBe("folio-assistant-4kq7");
+  });
+
+  test("feature bean with NO referenced issue reports a finding (breach is not silent)", () => {
+    const beanContentNoIssue = `---
+# folio-assistant-9999
+title: 'Unlinked feature'
+type: feature
+status: in-progress
+---
+
+Some description without any issue link.
+`;
+    const res = checkSpecBeforeCode({ beanPath: beanContentNoIssue });
+    expect(res.state).toBe("finding");
+    expect(res.findings.length).toBeGreaterThan(0);
+    expect(res.findings[0]).toContain("carries no reference to a governing issue");
+  });
+
+  test("non-feature bean (type: task) passes without requiring a spec", () => {
+    const taskBean = `---
+# folio-assistant-1234
+title: 'Maintenance task'
+type: task
+status: todo
+---
+
+Just a chore.
+`;
+    const res = checkSpecBeforeCode({ beanPath: taskBean });
+    expect(res.state).toBe("pass");
+    expect(res.reason).toContain("type 'task'");
+  });
+});
+
+describe("parseBeanDefinition — bean metadata & issue extraction", () => {
+  test("extracts issue from body github url", () => {
+    const raw = `---
+# folio-assistant-4kq7
+title: 'Adopt spec-kit'
+type: feature
+---
+
+Issue: https://github.com/litlfred/folio-assistant/issues/730
+`;
+    const info = parseBeanDefinition(raw);
+    expect(info.id).toBe("folio-assistant-4kq7");
+    expect(info.type).toBe("feature");
+    expect(info.issueNumber).toBe(730);
+    expect(info.repo).toBe("litlfred/folio-assistant");
+  });
+
+  test("extracts issue from front matter", () => {
+    const raw = `---
+id: my-bean
+type: feature
+issue: 755
+---
+Body text
+`;
+    const info = parseBeanDefinition(raw);
+    expect(info.id).toBe("my-bean");
+    expect(info.type).toBe("feature");
+    expect(info.issueNumber).toBe(755);
   });
 });
