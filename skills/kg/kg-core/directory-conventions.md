@@ -743,9 +743,9 @@ declaration.** It is a node inside the first subdirectory naming the fourteen.
 lives at `docs/source/`, inside the docs graph it renders, and is declared FROM
 WITHIN by the docs graph's own node, `docs/docs.json` (entry `docs-source`) —
 the ruled half above, applied. Readers ask `docsSourceDirFor(root)` rather than
-spelling the path. **The open half stays open:** that entry carries the `docs`
-kind, used positionally, as a provisional choice made so the move could land;
-which kind the node should carry is still the owner's to rule.
+spelling the path. **The kind is ruled too:** that entry carries the existing
+`docs` kind (owner, 2026-10-09: *"docs kind is fine"*), so the source node is
+an existing kind used positionally rather than a new one.
 
 ### What the owner left open, and it is NOT an agent's to settle
 
@@ -763,7 +763,7 @@ and knows which part is ruled and which is open:
 |---|---|
 | **ruled** | nesting is described from within, by a node in the first subdirectory, naming the others present there; and that structure is inherited |
 | **ruled** | a root declaration reaching down a multi-level path is not allowed |
-| **open** | the node's kind and name — `SubKGraph`, a reused kind, or something else |
+| **open** | the node's kind and name in general — `SubKGraph`, a reused kind, or something else. One case is ruled: `docs/docs.json`'s `docs-source` reuses the `docs` kind (owner, 2026-10-09) |
 | **open** | whether existing multi-level declarations are grandfathered or must migrate |
 
 ## Making a field REQUIRED is a change other branches pay for
