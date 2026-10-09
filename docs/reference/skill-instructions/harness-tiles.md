@@ -94,9 +94,9 @@ rule this corpus states everywhere and keeps paying for — *a count in prose is
 a claim nothing checks* — caught here only because the merge that broke it
 happened to land in the same session. Ask the filesystem.
 
-Sense 2 is not loose talk. `smart-stack-layering` says *"the DAK harness every
-smart-\* DAK repo instantiates"*; `fhir-harness`'s own description says *"what
-a non-WHO implementation guide instantiates"*; the owner's bean titles use it —
+Sense 2 is not loose talk. `fhir-harness`'s own description says *"what
+a non-WHO implementation guide instantiates"*, and the WHO layer describes its
+own base harness the same way; the owner's bean titles use it —
 `2yyh` **SMART-BASE HARNESS**, `wm63` **FHIR-HARNESS**.
 
 **So a thing can carry the word and not satisfy this page's rule, and be

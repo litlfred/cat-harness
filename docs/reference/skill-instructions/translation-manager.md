@@ -620,17 +620,12 @@ pinned; when bootstrap is its own repository they stay here, since a
 template is the harness's work over bootstrap's text, not part of it
 ([`kg-separation`](kg-separation.md) §"The pair").
 
-## WHO smart-base integration
+## A layer that defines its own translator
 
-The WHO `smart-base` repository defines the formal actor
-`SGAuthoring.Persona.Translator` with skill requirements
-`SGAuthoring.Skills.TranslateContent` and
-`SGAuthoring.Skills.ReviewTranslations`.
-
-Follow the principle in
-`smart-base-tools.md` (smart-base):
-**load it; never vendor it.** The translation subsystem is invoked from the
-smart-base checkout, not copied.
+A layer built on this one may define its own translator actor and translation
+subsystem. Then the rule is **load it; never vendor it**: the subsystem is
+invoked from that layer's checkout, not copied here, and that layer's skills
+say how. This skill names no layer above it.
 
 ## IG Publisher i18n
 
