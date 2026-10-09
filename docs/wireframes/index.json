@@ -96,9 +96,10 @@
     },
     "schemas": {
       "covers": [
-        "cat-harness/docs/cat-harness/schemas/index.html",
+        "cat-harness/docs/cat-harness/schemas/bootstrap-tools/index.html",
+        "cat-harness/docs/cat-harness/schemas/bootstrap/index.html",
         "cat-harness/docs/cat-harness/schemas/cat-harness/index.html",
-        "cat-harness/docs/cat-harness/schemas/folio-assistant-core/index.html"
+        "cat-harness/docs/cat-harness/schemas/openapi/index.html"
       ]
     },
     "skills-index": {
@@ -131,7 +132,6 @@
     "uploads": {
       "covers": [
         "cat-harness/docs/cat-harness/uploads/cat-harness/index.html",
-        "cat-harness/docs/cat-harness/uploads/folio-assistant/index.html",
         "cat-harness/docs/cat-harness/uploads/who-iris/index.html"
       ]
     },

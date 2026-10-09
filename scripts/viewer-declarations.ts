@@ -242,7 +242,19 @@ function index(repoRoot: string): NonNullable<typeof cache> {
   const kindsByTool = new Map(
     tools().flatMap((t) => (t.renders && t.renders.length > 0 ? [[t.id, t.renders] as const] : [])),
   );
-  cache = { repoRoot, pages: viewerPages(repoRoot, files), kindsByTool };
+  // A page inside a REMOTE MOUNT was generated in its own repository, so its
+  // `renders` paths are relative to THAT repository: cat-harness's schemas
+  // viewer says `schemas`, which in this checkout is `cat-harness/schemas`.
+  // Each such entry is read both ways, so the same page resolves standalone
+  // (its repository is the checkout) and composed (it is a mount in one).
+  const mountRels = [...mountedInstanceRoots(repoRoot).values()]
+    .map((r) => relative(repoRoot, r).split(sep).join("/"))
+    .filter((r) => r !== "" && !r.startsWith(".."));
+  const pages = viewerPages(repoRoot, files).map((p) => {
+    const own = mountRels.find((m) => p.page.startsWith(`${m}/`));
+    return own === undefined ? p : { ...p, renders: [...new Set([...p.renders, ...p.renders.map((e) => `${own}/${e}`)])] };
+  });
+  cache = { repoRoot, pages, kindsByTool };
   return cache;
 }
 
