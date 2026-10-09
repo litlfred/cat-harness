@@ -466,7 +466,11 @@ describe("the scaffolded folio actually builds", () => {
     const { checkFolioProfile } = await import("../../content/pipeline/profile-check");
     const r = checkFolioProfile(d);
     expect(r.profile).toBe("document");
-    expect(r.declaredBy).toContain(SCAFFOLD_CONFIG);
+    // Through the scaffold's OWN index entry: an instance an
+    // `index.config.json` lists is configured by its entry (cd041e2b), and
+    // init-folio writes that index naming the scaffold, so the profile is
+    // declared there rather than read from `<slug>.config.json` alone.
+    expect(r.declaredBy).toContain(`index.config.json entry "${SLUG}"`);
     expect(r.blocksChecked).toBe(1);
     expect(r.violations).toEqual([]);
   });
