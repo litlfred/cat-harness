@@ -213,6 +213,22 @@ describe("an instance", () => {
     }
   });
 
+  it("declares the rail's left-hand section: the model's views, relative to each page", () => {
+    const root = make(config);
+    try {
+      const files = pagesFor(root).files;
+      const navOf = (path: string) => {
+        const m = /<script type="application\/json" data-fa-visualiser-nav>(.*?)<\/script>/.exec(files.find((f) => f.path === path)!.content);
+        return JSON.parse(m![1]!);
+      };
+      expect(navOf("1.0.0/index.html")[0].items).toEqual([{ label: "Overview", href: "./views/id-v1/" }]);
+      expect(navOf("1.0.0/views/id-v1/index.html")[0]).toMatchObject({ href: "../../", items: [{ href: "../../views/id-v1/" }] });
+      expect(navOf("index.html")[0].items).toEqual([{ label: "Tiny <RA>", href: "1.0.0/" }]);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
   it("refuses to write pages into a graph that is not served", () => {
     const root = make(config);
     try {
