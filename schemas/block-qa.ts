@@ -620,8 +620,16 @@ export interface QaCriterionEntry {
   /** What rebuts the objection, or "none — survived because …".
    *  For scope:"structural" this must name the proved invariant. */
   rebuttal?: string;
-  /** Block-level rollup verdict. Set ONLY on da-referee-verdict entries. */
-  verdict?: "clean" | "survivable-objection" | "open-objection";
+  /**
+   * Block-level rollup verdict. Set ONLY on da-referee-verdict entries.
+   *
+   * - `clean-rebutted`: >=1 objection was raised and every one was rebutted.
+   * - `no-objection-raised`: zero objections were raised (does not satisfy sidecar skip).
+   * - `clean`: legacy synonym for `clean-rebutted` (historical sidecars).
+   * - `survivable-objection`: >=1 partial objection, none surviving.
+   * - `open-objection`: >=1 surviving objection.
+   */
+  verdict?: "clean-rebutted" | "no-objection-raised" | "clean" | "survivable-objection" | "open-objection";
 
   /** Reviewer identity + provenance. */
   reviewer: QaReviewer;

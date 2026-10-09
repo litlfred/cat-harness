@@ -205,7 +205,7 @@
           "then": { "properties": { "result": { "const": "warn" } } }
         },
         {
-          "if": { "required": ["verdict"], "properties": { "verdict": { "const": "clean" } } },
+          "if": { "required": ["verdict"], "properties": { "verdict": { "enum": ["clean", "clean-rebutted"] } } },
           "then": { "properties": { "result": { "const": "pass" } } }
         },
         {
@@ -242,8 +242,8 @@
     },
     "daVerdict": {
       "type": "string",
-      "enum": ["clean", "survivable-objection", "open-objection"],
-      "description": "Block-level rollup (criterion id da-referee-verdict). clean = all objections rebutted; survivable-objection = >=1 partial, 0 surviving; open-objection = >=1 surviving."
+      "enum": ["clean-rebutted", "no-objection-raised", "clean", "survivable-objection", "open-objection"],
+      "description": "Block-level rollup (criterion id da-referee-verdict). clean-rebutted = >=1 objection raised and all rebutted; no-objection-raised = 0 objections raised (does not satisfy sidecar skip); clean = legacy synonym for clean-rebutted; survivable-objection = >=1 partial, 0 surviving; open-objection = >=1 surviving."
     }
   }
 }

@@ -91,7 +91,7 @@ export type DaScope = z.infer<typeof DaScope>;
 export const DaRuling = z.enum(["surviving", "rebutted", "partial"]);
 export type DaRuling = z.infer<typeof DaRuling>;
 
-export const DaVerdict = z.enum(["clean", "survivable-objection", "open-objection"]);
+export const DaVerdict = z.enum(["clean-rebutted", "no-objection-raised", "clean", "survivable-objection", "open-objection"]);
 export type DaVerdict = z.infer<typeof DaVerdict>;
 
 export const QaCriterionEntry = z
@@ -127,7 +127,7 @@ export const QaCriterionEntry = z
   .refine(val => !(val.ruling === "rebutted" && val.result !== "pass"), { message: "result must agree with ruling on finding entries.", path: ["result"] })
   .refine(val => !(val.verdict === "open-objection" && val.result !== "fail"), { message: "result must agree with verdict on the rollup entry.", path: ["result"] })
   .refine(val => !(val.verdict === "survivable-objection" && val.result !== "warn"), { message: "result must agree with verdict on the rollup entry.", path: ["result"] })
-  .refine(val => !(val.verdict === "clean" && val.result !== "pass"), { message: "result must agree with verdict on the rollup entry.", path: ["result"] })
+  .refine(val => !((val.verdict === "clean" || val.verdict === "clean-rebutted") && val.result !== "pass"), { message: "result must agree with verdict on the rollup entry.", path: ["result"] })
   .refine(val => !(val.scope === "structural" && (!val.rebuttal || !val.referee_argument)), { message: "structural scope requires a non-empty rebuttal naming the invariant.", path: ["rebuttal"] });
 
 export type QaCriterionEntry = z.infer<typeof QaCriterionEntry>;

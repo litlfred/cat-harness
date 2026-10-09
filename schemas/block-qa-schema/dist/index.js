@@ -74,7 +74,7 @@ var QaEvidenceItem = import_zod.z.object({
 }).passthrough();
 var DaScope = import_zod.z.enum(["limited", "structural"]);
 var DaRuling = import_zod.z.enum(["surviving", "rebutted", "partial"]);
-var DaVerdict = import_zod.z.enum(["clean", "survivable-objection", "open-objection"]);
+var DaVerdict = import_zod.z.enum(["clean-rebutted", "no-objection-raised", "clean", "survivable-objection", "open-objection"]);
 var QaCriterionEntry = import_zod.z.object({
   field_hash: QaFieldHash,
   result: import_zod.z.enum(["pass", "fail", "warn", "n/a"]),
@@ -98,7 +98,7 @@ var QaCriterionEntry = import_zod.z.object({
   // (pre-2026-06) omit it, so it is optional here.
   reviewed_sha: import_zod.z.string().optional(),
   notes: import_zod.z.string().optional()
-}).passthrough().refine((val) => !(val.ruling === "surviving" && val.result !== "fail"), { message: "result must agree with ruling on finding entries.", path: ["result"] }).refine((val) => !(val.ruling === "partial" && val.result !== "warn"), { message: "result must agree with ruling on finding entries.", path: ["result"] }).refine((val) => !(val.ruling === "rebutted" && val.result !== "pass"), { message: "result must agree with ruling on finding entries.", path: ["result"] }).refine((val) => !(val.verdict === "open-objection" && val.result !== "fail"), { message: "result must agree with verdict on the rollup entry.", path: ["result"] }).refine((val) => !(val.verdict === "survivable-objection" && val.result !== "warn"), { message: "result must agree with verdict on the rollup entry.", path: ["result"] }).refine((val) => !(val.verdict === "clean" && val.result !== "pass"), { message: "result must agree with verdict on the rollup entry.", path: ["result"] }).refine((val) => !(val.scope === "structural" && (!val.rebuttal || !val.referee_argument)), { message: "structural scope requires a non-empty rebuttal naming the invariant.", path: ["rebuttal"] });
+}).passthrough().refine((val) => !(val.ruling === "surviving" && val.result !== "fail"), { message: "result must agree with ruling on finding entries.", path: ["result"] }).refine((val) => !(val.ruling === "partial" && val.result !== "warn"), { message: "result must agree with ruling on finding entries.", path: ["result"] }).refine((val) => !(val.ruling === "rebutted" && val.result !== "pass"), { message: "result must agree with ruling on finding entries.", path: ["result"] }).refine((val) => !(val.verdict === "open-objection" && val.result !== "fail"), { message: "result must agree with verdict on the rollup entry.", path: ["result"] }).refine((val) => !(val.verdict === "survivable-objection" && val.result !== "warn"), { message: "result must agree with verdict on the rollup entry.", path: ["result"] }).refine((val) => !((val.verdict === "clean" || val.verdict === "clean-rebutted") && val.result !== "pass"), { message: "result must agree with verdict on the rollup entry.", path: ["result"] }).refine((val) => !(val.scope === "structural" && (!val.rebuttal || !val.referee_argument)), { message: "structural scope requires a non-empty rebuttal naming the invariant.", path: ["rebuttal"] });
 var BlockQaReport = import_zod.z.object({
   $schema: import_zod.z.literal("block-qa/v1"),
   label: import_zod.z.string(),
