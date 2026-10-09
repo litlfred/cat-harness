@@ -102,7 +102,8 @@ export interface SchemaExportOptions {
 
 export function buildDeclarationSchema(opts: SchemaExportOptions = {}): Record<string, unknown> {
   const decl = readDeclaration(ROOT);
-  const pkg = JSON.parse(readFileSync(join(repoRootFor(ROOT), "package.json"), "utf-8")) as { name?: string };
+  const pkgPath = existsSync(join(ROOT, "package.json")) ? join(ROOT, "package.json") : join(repoRootFor(ROOT), "package.json");
+  const pkg = existsSync(pkgPath) ? (JSON.parse(readFileSync(pkgPath, "utf-8")) as { name?: string }) : {};
   const stub = decl ? artefactStub(decl) : (pkg.name ?? "instance");
   const base = (opts.baseUrl ?? decl?.canonicalUrl ?? "").replace(/\/+$/, "");
 
@@ -814,7 +815,8 @@ if (import.meta.main) {
   };
   const baseUrl = arg("--base-url") ?? process.env.KG_BASE_URL;
   const decl = readDeclaration(ROOT);
-  const pkg = JSON.parse(readFileSync(join(repoRootFor(ROOT), "package.json"), "utf-8")) as { name?: string };
+  const pkgPath = existsSync(join(ROOT, "package.json")) ? join(ROOT, "package.json") : join(repoRootFor(ROOT), "package.json");
+  const pkg = existsSync(pkgPath) ? (JSON.parse(readFileSync(pkgPath, "utf-8")) as { name?: string }) : {};
   const stub = decl ? artefactStub(decl) : (pkg.name ?? "instance");
 
   // `--check` VERIFIES AND WRITES NOTHING.

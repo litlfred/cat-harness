@@ -995,10 +995,33 @@ force here, because the temptation is strongest when the failure is not real.
 
 - The agent first reported "exactly one failure" from a partial log, then the
   run finished at 14. A count read before the run ends is not a count.
-- It read the run's exit code as 0 — but `echo` and `tail` were chained after
-  the test command in the same invocation, so **the 0 was `tail`'s**. A
-  compound command's exit status is the last command's, and a test runner's
+- A compound command's exit status is the last command's, and a test runner's
   status has to be captured before anything else runs.
+
+## Tool-integrated agentic pre-merge review (CodeAgent / 2402.02172v5)
+
+Evaluated under bean `gs0u` and codified in [`methodologies/agentic-pre-merge-review.md`](../../../../methodologies/agentic-pre-merge-review.md).
+
+Multi-agent tool-integrated code review architectures (Tang et al., arXiv:2402.02172v5)
+structure automated pre-merge evaluation into specialized roles (Reviewer, Coder,
+QA-Checker, Consistency, Security) across four sequential phases.
+
+Three operational rules govern its integration into this repository's merge queue:
+
+1. **The Deterministic vs. Judged Boundary (Owner ruling 2026-10-02/10-03, bean `nok9`)**:
+   Deterministic compile gates (Lean formal proofs, SUSHI/FHIR IG AST, JSON-LD schema renders,
+   linter and test suites) answer questions with one computable truth — **these MUST BLOCK**.
+   LLM-mediated agentic code reviews answer questions with uncalibrated error rates — **these
+   MUST WARN ("would have blocked")**, exiting 0 and logging structured finding sidecars.
+2. **The 49% False-Positive Guard**: Standalone LLMs exhibit up to 48.58% false-positive
+   rates in code vulnerability detection (arXiv:2402.02172v5, Table 2). An automated review gate
+   must never block merge on unverified LLM assertions, which induce severe alert fatigue.
+   Promotion from warn to block requires measured calibration against recorded repository
+   defects (`plj1`, `dh4f`, `w4tq`, `7u3g`).
+3. **Bounded Dialogue Budgets**: Conversational QA-Checker loops must cap at a maximum of 2
+   adjustment iterations to avoid latency explosions (CodeAgent measured 5 min / $0.122 per review)
+   and context window exhaustion. Deterministic formatters and linters must run directly in CLI
+   gates (`bun run cat gates`) rather than consuming multi-turn LLM reasoning.
 
 ## What this does not do yet
 
