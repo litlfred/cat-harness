@@ -1,11 +1,11 @@
 ---
 # folio-assistant-lvlv
 title: 'MERGE GATE (d): per-content-block adversarial QA for tools, schemas, skills and processes, and the backfill'
-status: todo
+status: in-progress
 type: feature
 priority: normal
 created_at: 2026-10-02T16:29:16Z
-updated_at: 2026-10-02T22:27:13Z
+updated_at: 2026-10-09T15:33:36Z
 parent: folio-assistant-9v5a
 ---
 
@@ -19,3 +19,5 @@ Run the same adversarial review per **content block** (not per diff) so the exis
 - [ ] the backfill order is risk-ranked (fan-in, gate-adjacency, last-changed), not file order
 - [ ] one batch has been run and its sidecars are committed, with the cost per node measured
 - [ ] the backfill does not create a bean per finding (beans are not sidecars)
+
+_2026-10-09T15:33:36Z_ — Claimed by claude/lvlv-content-block-adversarial-qa — pushed to cat/cat-harness/beans so sibling sessions see it before this branch has a PR (bean 35nj).
