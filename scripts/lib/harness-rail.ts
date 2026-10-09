@@ -75,6 +75,15 @@ export interface RailOptions {
    */
   assetRoot?: string;
   /**
+   * Where the icon row's SITE-ROOT hrefs and counts resolve (`data-fa-root`),
+   * when that is not {@link assetRoot}. On a folio's own site the row's code is
+   * the platform's, but after `scopeNavbarRow` every root-relative href left in
+   * the row is the FOLIO's own (`/beans/`), and so is the `count.json` beside
+   * it: composed against the platform, the folio's beans icon opened, and
+   * counted, the platform's work plan (issue #46, gap 2). Default `assetRoot`.
+   */
+  rowRoot?: string;
+  /**
    * The row's script and stylesheet, to be INLINED rather than linked — for a
    * standalone viewer page that fetches nothing (`withViewerNav`), as its
    * narrow-viewport rules already are. Bean `lhvt`.
@@ -228,7 +237,7 @@ export function injectRail(html: string, o: RailOptions): string | undefined {
   const root = o.assetRoot ?? o.toRoot;
   if (o.emitRailData) {
     const railed = withSharedRail(html, o, root, documentIndex);
-    return railed === undefined ? undefined : withNavbarRow(railed, o.navbarRow, { root });
+    return railed === undefined ? undefined : withNavbarRow(railed, o.navbarRow, { root, ...(o.rowRoot ? { dataRoot: o.rowRoot } : {}) });
   }
   // A page that asked for LINKED assets gets them linked, whatever the caller
   // would otherwise inline: the page's declaration is the decision.
@@ -240,7 +249,11 @@ export function injectRail(html: string, o: RailOptions): string | undefined {
   );
   return railed === undefined
     ? undefined
-    : withNavbarRow(railed, o.navbarRow, { root, ...(o.inlineRowAssets && !linked ? { inline: o.inlineRowAssets } : {}) });
+    : withNavbarRow(railed, o.navbarRow, {
+        root,
+        ...(o.rowRoot ? { dataRoot: o.rowRoot } : {}),
+        ...(o.inlineRowAssets && !linked ? { inline: o.inlineRowAssets } : {}),
+      });
 }
 
 /** The id `docs-ui.js`'s `readNavbarRow` looks for — the same one `head_custom.html` writes. */
@@ -269,7 +282,7 @@ export const NAVBAR_ROW_INLINE = "data-fa-navbar-row-inline";
 export function withNavbarRow(
   html: string,
   row: unknown,
-  at?: { root: string; inline?: { js: string; css: string } },
+  at?: { root: string; dataRoot?: string; inline?: { js: string; css: string } },
 ): string {
   if (row === undefined) return html;
   let out = html;
@@ -280,8 +293,9 @@ export function withNavbarRow(
     const json = JSON.stringify(row).replace(/</g, "\\u003c");
     // `data-fa-root` — the site root the row's site-root hrefs (`/beans/`) are
     // composed against. A railed page carries no `fa-baseurl` meta, and an
-    // INLINED script has no address of its own to derive one from.
-    const root = at ? ` data-fa-root="${at.root.replace(/"/g, "&quot;")}"` : "";
+    // INLINED script has no address of its own to derive one from. `dataRoot`
+    // when the row's own paths live on a different site from its code.
+    const root = at ? ` data-fa-root="${(at.dataRoot ?? at.root).replace(/"/g, "&quot;")}"` : "";
     out = out.slice(0, pos) + `<script type="application/json" id="${NAVBAR_ROW_ID}"${root}>${json}</script>` + out.slice(pos);
   }
   if (at === undefined || out.includes(NAVBAR_ROW_JS) || out.includes(NAVBAR_ROW_INLINE)) return out;

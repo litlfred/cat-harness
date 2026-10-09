@@ -468,6 +468,7 @@ once, for both passes (`compose-docs --shell --instance`, and
 | the link points at | on a folio's site it | count |
 |---|---|---|
 | the folio's own root (`/<instance>/…`) | resolves inside the folio's baseurl | kept |
+| a page the folio's declaration publishes at its site's root (`/beans/`), when the folio IS the checkout's root (`rootOwnPages`) | stays root-relative, on the folio's own site | kept |
 | another instance's **`state`** graph (beans, todos, QA, health, uploads …) | **is not linked**; the icon says why in words | **none** |
 | a platform content, context or derived graph (skills, processes, tools, schemas, docs …) | is re-based, absolute, onto `DOCS_SITE_BASE`, with its qualifier shown | **none** |
 | a kind nothing classifies | is treated as state | none |
@@ -515,6 +516,29 @@ the words for when it carries nothing. The two `_data/` files are named in
 `HOST_DATA_PROJECTIONS` rather than recognised by shape, since neither
 declares what it describes. `foreign-site-scope.test.ts` fails on a shell
 that carries a `_data/` file nobody has classified as chrome or projection.
+
+**A folio that IS the root of its own site** (issue #46, found on
+litlfred/ihris, whose site is generated rather than a Jekyll tree) needs four
+more things, and each is the platform's answer, not a folio's bridge:
+
+- **Its declared pages are its own.** Its visualisers under its own site
+  directory publish at the site root, by the same `ownsSite || isRepoRoot`
+  rule `siteDirMount` gives its icon (`harness-tiles.ts`), and the scope keeps
+  them (`ForeignScope.ownPages`), so they are not read as *"not published on
+  this site"*.
+- **The icon row's own paths and counts resolve on the folio's site.** After
+  scoping, every root-relative href left in the row is the folio's, and so is
+  the `count.json` its badge fetches. `rail-standalone-pages --foreign-site`
+  writes the row's `data-fa-root` as the page's own site root (`rowRoot`),
+  while its script and style still load from the platform (`assetRoot`).
+  Composed against the platform, the folio's beans icon opened, and counted,
+  the platform's work plan.
+- **Its mark loads from its own site** (`ownsCheckout`), not the platform's
+  address, where it 404'd.
+- **An image mark can sit on the rail itself.** The rail draws the instance's
+  tone square behind every avatar, which a card-art crop covers and a
+  transparent logo does not. A declared image with `ground: "none"`
+  (`KgImageSchema`) is drawn with no tone.
 
 **The pinned rail reserves its width.** On the same page the open rail covered
 the IG's breadcrumb, menu bar and heading (*"…s Requirements"*). Hover and

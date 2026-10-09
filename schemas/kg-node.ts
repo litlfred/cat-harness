@@ -190,6 +190,13 @@ export interface KgImage extends KgNodeLabels {
    * fine".
    */
   avatarRegion?: ImageRegion;
+  /**
+   * What the navbar draws BEHIND this image when it is an avatar: `tone` (the
+   * default), the instance's hue square, which a card-art crop covers; or
+   * `none`, the image on the rail itself, for a mark that is transparent
+   * around its shape (issue #46, gap 5).
+   */
+  ground?: "tone" | "none";
 }
 
 /**
@@ -250,6 +257,8 @@ export const KgImageSchema = z
     height: z.number().int().positive().optional(),
     textRegion: ImageRegionSchema.optional(),
     avatarRegion: ImageRegionSchema.optional(),
+    /** {@link KgImage.ground}. */
+    ground: z.enum(["tone", "none"]).optional(),
     ...kgNodeLabelShape,
   })
   // THE AVATAR BOX IS SQUARE IN PIXELS, checked here rather than on

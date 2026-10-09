@@ -599,6 +599,24 @@ describe("a DECLARED visualiser is a viewer — the other half of `flh4`", () =>
     expect(who.findings.join(" ")).toContain("no published viewer");
   });
 
+  test("the checkout ROOT's own site directory is served at the site root, as its icon is (issue #46, gap 3)", () => {
+    // A folio that generates its own site and is the checkout's root declares
+    // its pages under its own site directory. Only the SITE OWNER's directory
+    // counted, so they read "no viewer yet" while its icon, under the same
+    // directory, resolved (`siteDirMount`).
+    const f = fixture({ host: host(), "": { name: "folio", directories: [] } });
+    const site = siteDirFor(f.repo);
+    mkdirSync(join(f.repo, site, "schemas"), { recursive: true });
+    writeFileSync(join(f.repo, site, "schemas", "index.html"), "<!doctype html>");
+    const ref = join(site, "schemas", "index.html");
+    writeDeclaration(
+      f.repo,
+      JSON.stringify(decorate({ name: "folio", directories: [{ id: "sch", path: "schemas/", graphTypologies: ["schemas"], coverage: { visualiser: ref } }] }), null, 2),
+    );
+    const folio = tilesOf(f).find((t) => t.name === "folio")!;
+    expect(folio.visualisations.find((v) => v.kind === "schemas")?.path).toBe("/schemas/");
+  });
+
   test("a page that resolves OUTSIDE the site directory is NOT linked — and is named as built", () => {
     // Two halves, and they were written by two branches that met in a merge.
     //

@@ -105,7 +105,7 @@ import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, realpathSync,
 import { dirname, isAbsolute, join, posix, relative, resolve, sep } from "path";
 
 import { WITHHELD_FILE, withheldFilter, withheldPaths } from "./lib/withheld.js";
-import { instanceDirectories, declarationPathIn, visualisationsOf } from "../schemas/cat-harness.js";
+import { instanceDirectories, declarationPathIn, readDeclaration, visualisationsOf } from "../schemas/cat-harness.js";
 import { declinesNavbar, injectRail, type NavItem } from "./lib/harness-rail.js";
 import { foreignScopeFor, scopeNavbarRow } from "./lib/foreign-site-scope.ts";
 import { navMarkFields, type HarnessMark } from "./lib/harness-mark.js";
@@ -1002,7 +1002,14 @@ export interface ForeignSiteRail {
  * `linkRoot`. A harness with no page is listed without a link rather than
  * dropped. Undefined when `harness.json` cannot be read.
  */
-export function instanceHarnesses(built: string, instance: string, linkRoot: string, ownHref: string): NavItem[] | undefined {
+export function instanceHarnesses(
+  built: string,
+  instance: string,
+  linkRoot: string,
+  ownHref: string,
+  /** Where the instance's OWN mark resolves; default `linkRoot`. See {@link ownsCheckout}. */
+  ownMarkRoot: string = linkRoot,
+): NavItem[] | undefined {
   const prefix = publishedDocsPrefix(REPO, built);
   if (prefix === undefined) return undefined;
   const data = join(REPO, prefix, "_data", "harness.json");
@@ -1029,8 +1036,23 @@ export function instanceHarnesses(built: string, instance: string, linkRoot: str
     .map((h) => {
       const label = h.label ?? h.title ?? h.name ?? "?";
       const href = h.name === instance ? ownHref : h.href ? `${linkRoot}${h.href}` : undefined;
-      return { label, ...(href ? { href } : {}), ...navMarkFields(h.mark, h.tone, (src) => `${linkRoot}${src}`) };
+      const markRoot = h.name === instance ? ownMarkRoot : linkRoot;
+      return { label, ...(href ? { href } : {}), ...navMarkFields(h.mark, h.tone, (src) => `${markRoot}${src}`) };
     });
+}
+
+/**
+ * Is `instance` the root of the checkout this rail is built from — the folio
+ * whose OWN site this is, with its harness data generated from it?
+ *
+ * Then its mark is a path on its own site, not the platform's (issue #46, gap
+ * 4): `harness-tiles.ts` places the root instance's declared icon at `/` +
+ * its path under its site directory (`siteDirMount`), and composed against
+ * the platform's address it 404'd on the folio's site. The same rule
+ * `rootOwnPages` applies to the folio's pages.
+ */
+export function ownsCheckout(instance: string | undefined): boolean {
+  return instance !== undefined && readDeclaration(REPO)?.name === instance;
 }
 
 export function railStandalonePages(
@@ -1093,15 +1115,21 @@ export function railStandalonePages(
       // The platform's links resolve against the platform's site; only home is this site's.
       const linkRoot = foreign?.platformBase ?? toRoot;
       const links = declaredGraphs(owner, new Map(), publishedGraphs(built, owner, linkRoot), named.harness);
-      const harnesses = foreign?.instance ? instanceHarnesses(built, foreign.instance, linkRoot, `${toRoot}/`) : instantiatedHarnesses(built, linkRoot);
-      const mark = instanceMark(built, owner, linkRoot);
+      // The folio's OWN mark is on its own site when it is the checkout's root (gap 4).
+      const markRoot = foreign && ownsCheckout(foreign.instance) ? toRoot : linkRoot;
+      const harnesses = foreign?.instance
+        ? instanceHarnesses(built, foreign.instance, linkRoot, `${toRoot}/`, markRoot)
+        : instantiatedHarnesses(built, linkRoot);
+      const mark = instanceMark(built, owner, foreign?.instance === owner ? markRoot : linkRoot);
       const homeLabel = foreign ? foreign.homeLabel : named.site;
       const after = injectRail(before, {
         instance: named.harness ?? owner,
         ...(homeLabel ? { homeLabel } : {}),
         toRoot,
-        // The row's files and its site-root hrefs are the PLATFORM's (bean `lhvt`).
+        // The row's files are the PLATFORM's (bean `lhvt`). On a folio's site its
+        // remaining site-root hrefs and counts are the FOLIO's (issue #46, gap 2).
         assetRoot: linkRoot,
+        ...(foreign ? { rowRoot: toRoot } : {}),
         ...(mark ? { mark } : {}),
         links,
         ...(harnesses ? { harnesses } : {}),

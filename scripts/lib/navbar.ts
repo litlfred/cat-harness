@@ -116,7 +116,7 @@ export interface NavItem {
    * marks are already a mark — an icon that fills its own frame needs no crop,
    * and cropping one would be inventing a box nobody measured.
    */
-  avatar?: { src: string; title?: string; region?: { x: number; y: number; w: number; h: number } };
+  avatar?: { src: string; title?: string; region?: { x: number; y: number; w: number; h: number }; ground?: "tone" | "none" };
   /** A hue for the item's mark, 0–360. `603s`'s `tone`. */
   tone?: number;
   /** True for the route the current page belongs to. */
@@ -596,7 +596,8 @@ function railTipCss(): string[] {
 
 /** An item's mark: its avatar when it has one, its glyph otherwise. */
 function mark(i: NavItem, c: Ctx): string {
-  const tone = i.tone ? ` style="background:hsl(${i.tone} 45% 28%)"` : "";
+  // No tone behind an image that declares its ground `none` (issue #46, gap 5).
+  const tone = i.tone && i.avatar?.ground !== "none" ? ` style="background:hsl(${i.tone} 45% 28%)"` : "";
   if (i.avatar) {
     const t = i.avatar.title ? ` title="${esc(i.avatar.title)}"` : "";
     const r = i.avatar.region;
