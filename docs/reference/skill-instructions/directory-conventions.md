@@ -183,6 +183,7 @@ decides it.
 | `folio` | **core** | authored content an AUTHOR creates using the graph — a note, a visualization, a paper. The who-iris catalogue is `library/`; a note about it is a `folio`; the page explaining how ingestion works is `docs`. | **yes** — just-the-docs renders it to a website |
 | `glossary` | **core**, and any layer | Terms and what they mean, as W3C SKOS (`folio-glossary/v1`, `folio-assistant-core/schemas/glossary.ts`): local terms, each `authored`, `candidate` or `could-not-extract`, linked to external SKOS concepts by `exactMatch`/`closeMatch`, and external concepts listed as `members` without being copied. A whole external scheme is a `remoteGraphs` entry with `graphTypologies: ["glossary"]`. The `glossary` kind is `perInstance`, so every folio built on core gets one. Rendered on the site's `glossary/` page with SKOS JSON-LD beside it; the swimlane ledger is one more source. Read with the [`glossary-terms`](glossary-terms.md) skill; gated by `check:glossary`. | no |
 | `openapi` | **cat-harness/openapi** (`typologies/openapi.json`) | OpenAPI 3 documents an instance holds, each verbatim beside a provenance node naming the repository, path and commit it was ingested from (cat-harness's `openapi` subgraph). Every operation in a document is a node of its own: a page and an IRI under the instance's docs. | no |
+| `archimate` | **cat-harness/archimate** (`typologies/archimate.json`) | ArchiMate models an instance holds, as Archi `.archimate` files named by `cat-archimate.config.json` (cat-harness's `archimate` subgraph). Every view, element and relationship in a model is a node of its own: a page and an IRI, keyed by Archi's own id; every view is drawn as SVG. | no |
 | `fhir-artifact-index` | **fhir-harness** (`typologies/fhir-artifact-index.json`) | The artefact index of a published FHIR Implementation Guide, reconstructed from its published output — every artefact by canonical URL and published representation, with the DAK API's JSON Schema / JSON-LD sidecars as an overlay where the IG publishes one. No IG publishes such an index itself, so every field records which file it came out of. | no |
 | `ig-ast` | **fhir-harness** (`typologies/ig-ast.json`) | The IG Publisher's abstract syntax tree of a FHIR Implementation Guide (its resources, their dependency edges and the build plan), ingested into the folio that uses the IG. One branch per IG package id; the IG's own source need not be materialised. | no |
 | `ig-metadata-index` | **fhir-harness** (`typologies/ig-metadata-index.json`) | The IG Publisher's own metadata exports for one published IG, harvested verbatim — ValueSet→CodeSystem edges, CodeSystem `uses`, and extension/profile usage paths. Each export declares whether it was present, absent or never looked for, and a `uses` field that upstream declared and left empty is recorded as exactly that. | no |
@@ -748,6 +749,14 @@ two, because the clean run is over content that is really there.
 **The fix under this ruling is not to add `content/docs/` to the root
 declaration.** It is a node inside the first subdirectory naming the fourteen.
 
+**Moved 2026-10-09** (owner: *"move content/docs into docs/"*). The source now
+lives at `docs/source/`, inside the docs graph it renders, and is declared FROM
+WITHIN by the docs graph's own node, `docs/docs.json` (entry `docs-source`) —
+the ruled half above, applied. Readers ask `docsSourceDirFor(root)` rather than
+spelling the path. **The kind is ruled too:** that entry carries the existing
+`docs` kind (owner, 2026-10-09: *"docs kind is fine"*), so the source node is
+an existing kind used positionally rather than a new one.
+
 ### What the owner left open, and it is NOT an agent's to settle
 
 The ruling says *"(Sub?)KGraph node"* — with the question mark. **What that node
@@ -764,7 +773,7 @@ and knows which part is ruled and which is open:
 |---|---|
 | **ruled** | nesting is described from within, by a node in the first subdirectory, naming the others present there; and that structure is inherited |
 | **ruled** | a root declaration reaching down a multi-level path is not allowed |
-| **open** | the node's kind and name — `SubKGraph`, a reused kind, or something else |
+| **open** | the node's kind and name in general — `SubKGraph`, a reused kind, or something else. One case is ruled: `docs/docs.json`'s `docs-source` reuses the `docs` kind (owner, 2026-10-09) |
 | **open** | whether existing multi-level declarations are grandfathered or must migrate |
 
 ## Making a field REQUIRED is a change other branches pay for

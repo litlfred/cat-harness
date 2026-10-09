@@ -320,6 +320,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 
 | Skill | Id | Schema | Summary |
 |-------|----|--------|---------|
+| [ArchiMate models](archimate-models.html) | `archimate-models` | — | > Skill id: `archimate-models` · Package: `ui-core` · Subgraph: |
 | [auto-docs](auto-docs.html) | `auto-docs` | — | `<base>/<handler>/auto-docs/<auto-doc-type>/<sub-graph>/` is an index of what |
 | [Relationship first, visualisation later](board-diagram-interchange.html) | `board-diagram-interchange` | — | **One sentence, and it is the owner's:** |
 | [Start in the avatar, open into a window](board-windows.html) | `board-windows` | — | The owner, 2026-09-20 and 2026-09-21: |

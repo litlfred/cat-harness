@@ -13,9 +13,9 @@
       "@type": "bootstrap:Skill",
       "name": "artefact-reachability",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/df7f9a7564467735fb23794a42d64883e63214e43d36b21b27de34259e65254b",
-        "bytes": 16065,
-        "sha256": "df7f9a7564467735fb23794a42d64883e63214e43d36b21b27de34259e65254b"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7a19c67d8cdf8690565a0a2166560188ffe14613eac2f095a0596772a950be34",
+        "bytes": 16064,
+        "sha256": "7a19c67d8cdf8690565a0a2166560188ffe14613eac2f095a0596772a950be34"
       },
       "title": "Artefact reachability — load is not evaluability, and a test is not a caller"
     },
@@ -90,9 +90,9 @@
       "@type": "bootstrap:Skill",
       "name": "directory-conventions",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d6c14ce24d1fdc3099d5198c627e87c6b375017c8498c78c487b7b2c167c3b8f",
-        "bytes": 132063,
-        "sha256": "d6c14ce24d1fdc3099d5198c627e87c6b375017c8498c78c487b7b2c167c3b8f"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9091979597dce6534219a26fddfafbe36f5eedf50032e4d2352151b11b34d3d9",
+        "bytes": 133066,
+        "sha256": "9091979597dce6534219a26fddfafbe36f5eedf50032e4d2352151b11b34d3d9"
       },
       "title": "Directory conventions — what an instance declares it scans"
     },

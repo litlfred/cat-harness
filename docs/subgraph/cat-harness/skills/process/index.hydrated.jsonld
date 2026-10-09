@@ -152,9 +152,9 @@
           "instructionsPath": "skills/process/process-core/task-authorization.md",
           "name": "task-authorization",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b7cf2e4dcf7094bd391bc27031cb0c7e4b7bd4b50fb6f6e75b9cff69c3d460e5",
-            "bytes": 18323,
-            "sha256": "b7cf2e4dcf7094bd391bc27031cb0c7e4b7bd4b50fb6f6e75b9cff69c3d460e5"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/87af43f7879e718b236728d962201ccd8609b1afea52413b293500d899367408",
+            "bytes": 18322,
+            "sha256": "87af43f7879e718b236728d962201ccd8609b1afea52413b293500d899367408"
           },
           "title": "Task authorization — four questions before every task"
         }

@@ -545,9 +545,9 @@
       "instructionsPath": "skills/authoring/authoring-core/voice-editorial-review.md",
       "name": "voice-editorial-review",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/de87b1be69713c1fadd1d5803515d6b8be1af4904e18ab7e6a693fb427197e68",
-        "bytes": 5518,
-        "sha256": "de87b1be69713c1fadd1d5803515d6b8be1af4904e18ab7e6a693fb427197e68"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/79367f483c263326b9fdf7748eb431b26da7cfd16ba26300455c56bda2461ad3",
+        "bytes": 5515,
+        "sha256": "79367f483c263326b9fdf7748eb431b26da7cfd16ba26300455c56bda2461ad3"
       },
       "title": "Voice editorial review"
     },

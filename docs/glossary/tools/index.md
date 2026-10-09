@@ -12,14 +12,14 @@ permalink: /glossary/tools/
 
 Candidate terms extracted from every Tool node: `title` as the label, `description` as the definition, the Tool id as the code. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/glossary/' | relative_url }}">glossary index</a>.
 
-From: cat-harness 142 (<a href="{{ '/assets/glossary/cat-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 25 (<a href="{{ '/assets/glossary/fhir-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 8 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 5 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 7 (<a href="{{ '/assets/glossary/smart-base--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>).
+From: cat-harness 145 (<a href="{{ '/assets/glossary/cat-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 25 (<a href="{{ '/assets/glossary/fhir-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 8 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 5 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 7 (<a href="{{ '/assets/glossary/smart-base--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>).
 
-**Size:** this page holds 187 terms and is 134 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 190 terms and is 137 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>187</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>187</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>190</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>190</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -29,7 +29,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">187</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">190</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-A">A</a> <a href="#letter-B">B</a> <a href="#letter-C">C</a> <a href="#letter-D">D</a> <a href="#letter-E">E</a> <a href="#letter-F">F</a> <a href="#letter-G">G</a> <a href="#letter-H">H</a> <a href="#letter-I">I</a> <a href="#letter-J">J</a> <a href="#letter-K">K</a> <a href="#letter-L">L</a> <a href="#letter-M">M</a> <a href="#letter-N">N</a> <a href="#letter-O">O</a> <a href="#letter-P">P</a> <a href="#letter-Q">Q</a> <a href="#letter-R">R</a> <a href="#letter-S">S</a> <a href="#letter-T">T</a> <a href="#letter-U">U</a> <a href="#letter-V">V</a> <a href="#letter-W">W</a></nav>
 
@@ -134,6 +134,13 @@ Build the Latent Semantic Indexing index of a prose graph <span class="fa-gloss-
 
 <h2 id="letter-C">C</h2>
 <dl class="fa-gloss">
+<dt id="cat-harness--kg-tools--archimate-check" data-fa-state="extracted" data-fa-gloss="">
+Check an instance's ArchiMate models against its config <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The gate for the <code>archimate</code> graph typology: every model <code>cat-archimate.config.json</code> names is held, parses (Archi's native XML or its zipped archive), and resolves — every box in every view draws an element the model holds, every relationship's ends are in the model — and no <code>.archimate</code> file is held that the config does not name.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#archimate-check</code></a></p>
+</dd>
 <dt id="folio-assistant-sci--kg-tools--latex-image" data-fa-state="extracted" data-fa-gloss="">
 Compile LaTeX in a container <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -422,6 +429,13 @@ GitHub Pages publish <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>Push a built directory to the <a href="#cat-harness--kg-tools--gh-pages"><code>gh-pages</code></a> branch, where it is served. How the knowledge graph and its schema reach a URL.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#pages-publish</code></a></p>
+</dd>
+<dt id="cat-harness--kg-tools--archimate-pages" data-fa-state="extracted" data-fa-gloss="">
+Give every ArchiMate view, element and relationship a page and an IRI, and draw every view <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Write a JSON-LD node and a thin page for each model an instance's <code>cat-archimate.config.json</code> names and for every view, element and relationship in it — keyed by Archi's own ids — plus the normalised model the pages' one loader draws from, and every view drawn as SVG from the model's own bounds and bendpoints in ArchiMate's notation, each box a link to its element. <code>--out</code> writes into a site being built at the graph's path; without it the files go into the graph and <code>--check</code> gates them.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#archimate-pages</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--rail-standalone-pages" data-fa-state="extracted" data-fa-gloss="">
 Give every page Jekyll did not lay out the folio-assistant navbar <span class="fa-gloss-status">candidate, extracted</span>
@@ -998,6 +1012,13 @@ Replace inline Library content with URL references <span class="fa-gloss-status"
 <dd>
 <p>Replace inline CQL/ELM in <code>Library</code> resources with a URL reference to the published copy.</p>
 <p class="fa-gloss-meta">Tools of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/tools/index.ts"><code>fhir-harness/tools/index.ts#strip-library-content</code></a></p>
+</dd>
+<dt id="cat-harness--kg-tools--mount-from-lock" data-fa-state="extracted" data-fa-gloss="">
+Replay a committed mount lock with nothing but Node <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Lay down every remote mount <code>index.lock.json</code> records — each instance fetched at the lock's full SHA (sparse, blob-filtered), each directory verified against its <code>treeDigest</code>, a mismatch undone and reported — importing only <code>node:*</code>, so it runs on a fresh clone before any layer is present. It never decides what to mount: <a href="#cat-harness--kg-tools--remote-mount"><code>remote-mount</code></a> writes the lock (and checks trust); this only replays it. Refuses to write over a path with tracked files or bytes that no longer hash to the lock. Exit 0 mounted/current, 1 missing, 2 could-not-determine.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#mount-from-lock</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--subgraph-resolve" data-fa-state="extracted" data-fa-gloss="">
 Resolve a declared subgraph's content source <span class="fa-gloss-status">candidate, extracted</span>

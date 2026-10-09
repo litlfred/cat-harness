@@ -142,7 +142,7 @@ For each requirement:
 4. **Consumer burden** — see below. A requirement that shifts work onto the
    consumer is not done.
 5. **Cross-references** — link to related documentation pages under
-   `content/docs/`, existing skills, existing workflows
+   `docs/source/`, existing skills, existing workflows
 
 ### Consumer burden is a requirement, not a nicety (STRICT)
 

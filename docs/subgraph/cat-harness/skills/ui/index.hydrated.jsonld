@@ -194,6 +194,7 @@
           "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/ui-core",
           "@type": "cat-harness:SkillPackage",
           "declaresSkill": [
+            "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/archimate-models",
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/auto-docs",
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/board-diagram-interchange",
             "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/board-windows",
@@ -220,6 +221,25 @@
           "name": "ui-core",
           "path": "skills/ui/ui-core",
           "version": "0.1.0"
+        },
+        {
+          "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/archimate-models",
+          "@type": "bootstrap:Skill",
+          "ambiguous": false,
+          "description": "ArchiMate models as knowledge-graph content: how an instance declares the Archi models it holds, what the `archimate` subgraph gives every model, view, element and relationship (an IRI, a thin page, and every view drawn as SVG from the model's own diagram), how to version the models, how to wire them into a folio's staging build and navbar, and why no Java, no Archi CLI and no Archi HTML report is ever part of the pipeline. Read before adding, publishing or rendering an `.archimate` file, before citing an ArchiMate element from prose, and before reaching for Archi's own tooling in CI.",
+          "hasIOContract": false,
+          "hasInstructions": true,
+          "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/ui-core",
+          "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
+          "instructionLines": 130,
+          "instructionsPath": "skills/ui/ui-core/archimate-models.md",
+          "name": "archimate-models",
+          "payload": {
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f0ba9b5acf1034f894d5e9950cbdc9bc572bddb4537b2991e197f4196c910f7d",
+            "bytes": 6673,
+            "sha256": "f0ba9b5acf1034f894d5e9950cbdc9bc572bddb4537b2991e197f4196c910f7d"
+          },
+          "title": "ArchiMate models — every view, element and relationship a node"
         },
         {
           "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/auto-docs",
