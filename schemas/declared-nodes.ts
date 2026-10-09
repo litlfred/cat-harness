@@ -32,7 +32,9 @@ const FIXTURE_ENV = "FOLIO_FIXTURE_CHECKOUT";
 export function declaredDirectories(repoRoot: string, graphTypology: string): string[] {
   // input-site: env-unset FOLIO_FIXTURE_CHECKOUT #d3ac43d3 — a test-only override naming a checkout OUTSIDE the tree
   const fixture = process.env[FIXTURE_ENV];
-  const roots = [...instanceRootsIn(repoRoot), ...(fixture ? instanceRootsIn(fixture) : [])];
+  const ownRoots = instanceRootsIn(repoRoot);
+  const hasOwn = ownRoots.some((r) => ownDeclaredDirectories(r, graphTypology, repoRoot).length > 0);
+  const roots = hasOwn || !fixture ? ownRoots : [...ownRoots, ...instanceRootsIn(fixture)];
   return roots.flatMap((root) => ownDeclaredDirectories(root, graphTypology, repoRoot));
 }
 
