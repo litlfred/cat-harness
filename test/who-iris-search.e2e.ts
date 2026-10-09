@@ -81,6 +81,27 @@ test.describe("WHO-IRIS search & faceted exploration", () => {
   test("complex boolean filtering combines community, access rights, and year", async ({ page }) => {
     await page.goto("/who-iris/site/index.html");
 
+    // THE FIXTURE, declared here rather than assumed of the catalogue. This
+    // step used to rely on Headquarters' PDFs being refused by their copyright
+    // gate; the owner cleared every who-iris entry on 2026-10-08 ("special
+    // development authorization for WHO staff in development environment",
+    // recorded on each bitstream's gates), so the catalogue no longer holds a
+    // refused PDF and the open-access filter had nothing to exclude. The
+    // filter is what is under test, so the refusal is put into the page's
+    // own index — the array `update` reads — before any filter is applied.
+    const refused = await page.evaluate(() => {
+      const g = window as unknown as { __irisSearch?: { index: Array<{ community?: string; hasPdf?: boolean; copyrightGate?: string }> } };
+      let n = 0;
+      for (const e of g.__irisSearch?.index ?? []) {
+        if (e.hasPdf && e.community?.includes("Headquarters")) {
+          e.copyrightGate = "refused";
+          n++;
+        }
+      }
+      return n;
+    });
+    expect(refused).toBeGreaterThanOrEqual(2);
+
     // Open advanced filter details
     await page.locator("#iris-adv-filters summary").click();
 
