@@ -139,7 +139,12 @@ export function locationMismatch(entry: InstanceRepository, checkoutRoot: string
   if (entry.livesAt === undefined && ownWorkTreeRoot(entry.root)) return undefined;
   // ...and so does one a REMOTE MOUNT laid down (the submodule's successor,
   // bean `nn8e`, #2462): no `.git` of its own, but a lock that put it there.
-  if (entry.livesAt === undefined && mountScopeFor(entry.root) !== undefined) return undefined;
+  // WITH a `livesAt` too: a mounted instance's `livesAt` describes where it
+  // sits in its OWN repository (`smart-trust` at `smart-base/` of
+  // litlfred/smart-trust), while where it sits HERE is the lock's to say.
+  // Comparing the two failed every correct post-split declaration, and passed
+  // only the stale ones that still named the monorepo (measured 2026-10-09).
+  if (mountScopeFor(entry.root) !== undefined) return undefined;
   const actual = relative(resolve(checkoutRoot), entry.root).split("\\").join("/");
   const declared = entry.livesAt?.path ?? "";
   if (actual === declared) return undefined;
