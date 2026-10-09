@@ -99,6 +99,30 @@ import {
 import { openTrace } from "./input-trace.ts";
 import { inputSiteReached } from "./input-trace.ts";
 import { scriptsOf } from "../schemas/script-table.ts";
+import {
+  CONTENT_COMPILE_GATES,
+  compileGatesForPaths,
+  evaluateCompileGates,
+  type ContentCompileGate,
+  type CompileGateId,
+  type GateEvaluation,
+  type GateStatus,
+} from "./content-compile-gates.ts";
+
+export {
+  CONTENT_COMPILE_GATES,
+  compileGatesForPaths,
+  evaluateCompileGates,
+  type ContentCompileGate,
+  type CompileGateId,
+  type GateEvaluation,
+  type GateStatus,
+};
+
+/** Compile gates for given paths, reading the declared CONTENT_COMPILE_GATES data map. */
+export function contentCompileGates(paths: readonly string[]): ContentCompileGate[] {
+  return compileGatesForPaths(paths);
+}
 
 // The REPOSITORY root. `GATES_WORKFLOW` is `.github/workflows/…`, which
 // belongs to the repository rather than to this instance, and the gates
@@ -1878,6 +1902,29 @@ export function salientFailures(output: string, cap = 6): string[] {
 }
 
 if (import.meta.main) {
+  // Compile-gates query / run
+  if (process.argv.includes("--compile-gates-list")) {
+    console.log("Declared Content Compile Gates:");
+    for (const g of CONTENT_COMPILE_GATES) {
+      console.log(`  [${g.id}] ${g.name} (${g.blocking ? "BLOCKING" : "advisory"}) — ${g.description}`);
+    }
+    process.exit(0);
+  }
+  if (process.argv.includes("--compile-gates")) {
+    const rawPaths = process.argv.slice(2).filter((a) => !a.startsWith("--"));
+    const triggered = compileGatesForPaths(rawPaths);
+    console.log(`Triggered ${triggered.length} compile gate(s) for ${rawPaths.length} path(s):`);
+    for (const g of triggered) {
+      console.log(`  [${g.id}] ${g.name} (${g.blocking ? "BLOCKING" : "advisory"})`);
+    }
+    const evalResult = await evaluateCompileGates(rawPaths);
+    for (const ev of evalResult.evaluations) {
+      const icon = ev.status === "pass" ? "✓" : ev.blocked ? "✗" : "⚠️";
+      console.log(`${icon} [${ev.gateId}] ${ev.name}: ${ev.summary}`);
+    }
+    process.exit(evalResult.blocked ? 1 : 0);
+  }
+
   // `await` below — the gate loop tees each child's output (bean `ucb9`).
   const all = process.argv.includes("--all");
   const listOnly = process.argv.includes("--list");
