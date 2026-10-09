@@ -74,7 +74,7 @@ import { KEYWORDS_FILE } from "../schemas/library-keywords.ts";
 import { entryDirs, entryItems, sidecarDefects, tally } from "./summaries.ts";
 import { againstOrUsage, buildQaResult, qaResultPath, qaResultState, writeQaResult, type QaResultState } from "./qa-results.ts";
 import { REFERENCED_SOURCE_SCHEMA_ID, ReferencedSourceSchema } from "../schemas/referenced-source.ts";
-import { corpusDirectoriesForGraph } from "../schemas/harness-config.js";
+import { corpusDirectoriesForGraph, instanceConfigFor } from "../schemas/harness-config.js";
 
 export type State = "met" | "unmet" | "not-derivable";
 
@@ -1390,9 +1390,25 @@ export function sidecarDocument(report: EntryReport) {
   return result;
 }
 
-/** {@link sidecarDocument}, written under the declared `qa` tree. */
+/** {@link sidecarDocument}, written under the declared `qa` tree of the instance that owns the entry. */
 export function sidecarFor(root: string, report: EntryReport): string {
-  return writeQaResult(root, join("library-qa", report.slug), sidecarDocument(report));
+  return writeQaResult(sidecarRootFor(root, report.slug), join("library-qa", report.slug), sidecarDocument(report));
+}
+
+/**
+ * The instance whose `qa` tree holds an entry's verdict: the one that owns the
+ * library the entry sits in. In a standalone instance that is `root` itself.
+ * In the index checkout `root` declares no instance (owner, 2026-10-08), and
+ * writing under it put 79 sidecars in an undeclared `<index>/test/results/`
+ * while the libraries sat in `who-iris/` and the others (measured 2026-10-09).
+ * An entry no declared library holds stays at `root`, as before.
+ */
+export function sidecarRootFor(root: string, slug: string): string {
+  for (const lib of corpusDirectoriesForGraph(root, "library")) {
+    const entry = join(lib, slug);
+    if (existsSync(entry)) return instanceConfigFor(entry)?.root ?? root;
+  }
+  return root;
 }
 
 /**
@@ -1415,7 +1431,7 @@ export function sidecarStates(
 ): { slug: string; state: QaResultState }[] {
   return reports.map((r) => ({
     slug: r.slug,
-    state: qaResultState(qaResultPath(root, join("library-qa", r.slug)), sidecarDocument(r), { against }),
+    state: qaResultState(qaResultPath(sidecarRootFor(root, r.slug), join("library-qa", r.slug)), sidecarDocument(r), { against }),
   }));
 }
 
