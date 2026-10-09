@@ -5,7 +5,7 @@ status: todo
 type: feature
 priority: normal
 created_at: 2026-10-09T11:22:06Z
-updated_at: 2026-10-09T11:22:06Z
+updated_at: 2026-10-09T15:34:50Z
 parent: folio-assistant-0mpw
 ---
 
@@ -28,3 +28,11 @@ Proposal: `cat-harness/docs/proposals/semantic-subgraphs-2026-10-09.md`, Option 
 - [ ] end to end: "load tools metadata, review, materialize three Tools" from a downstream checkout
 
 Related: `whlc` (KG publication, named subgraphs), `fnx4` (subscriptions), `9umr` (concern groups).
+
+## Builds on — measured against the beans, 2026-10-09 (owner: "check with beans related to mounting sub-sub graphs ... (materializing subgraphs)")
+- **l4ay** (completed): a declared subgraph declares its SOURCE (`directory | branch | future`), resolved once (`resolveSubgraphSource`). A HYDRATED mount is that "future" variant — metadata only, from the published `index.hydrated.jsonld` at the pin — so G2 adds a source kind, it does not invent a second mechanism.
+- **2j2r** (todo): ~44 readers of `decl.directories` miss entries declared FROM WITHIN. `remote-mount.ts` is one more (`byId` from the raw top level, `:358`), so G3's nested ids are 2j2r applied to the mount tool: read through `instanceDirectories` / `resolveDirectories`.
+- **j9cs** (completed): a directory's `storage` names the TOOL that mounts it (`storage.tool`), no central mounter. A hydrated mount is declared the same way, never hard-wired into remote-mount.
+- **54rk** (completed): the cache for on-demand subgraph materialization. G3's "materialize a chosen set" after review reuses it, and the five gates of `materialize-remote`.
+- **1g4s** (completed): nested entries carry `subgraph: true` and inherit as named members — those are the mountable units G3 names.
+- **c1m4** (completed): the `index.jsonld` / `index.hydrated.jsonld` pair per subgraph — what G1 must publish for `tools/`.
