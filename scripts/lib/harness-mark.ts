@@ -44,6 +44,7 @@ export interface HarnessMark {
   crop?: { width: number; height: number; left: number; top: number };
   /** The image's declared `ground` (`KgImageSchema`): `none` draws no tone behind it. */
   ground?: "tone" | "none";
+  blank?: boolean;
 }
 
 /**
@@ -59,7 +60,7 @@ export function navMarkFields(
   mark: HarnessMark | null | undefined,
   tone: number | undefined,
   rebase: (src: string) => string = (s) => s,
-): Pick<NavItem, "avatar" | "glyphPath" | "tone"> {
+): Pick<NavItem, "avatar" | "glyphPath" | "tone" | "blank"> {
   const toneField = typeof tone === "number" ? { tone } : {};
   if (mark?.src) {
     return {
@@ -69,6 +70,13 @@ export function navMarkFields(
         ...(mark.region ? { region: mark.region } : {}),
         ...(mark.ground ? { ground: mark.ground } : {}),
       },
+      ...toneField,
+    };
+  }
+  if (mark?.blank) {
+    return {
+      blank: true,
+      ...(mark.glyph ? { glyphPath: mark.glyph } : {}),
       ...toneField,
     };
   }

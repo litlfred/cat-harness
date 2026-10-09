@@ -62,7 +62,7 @@
 import { existsSync, readdirSync } from "node:fs";
 import { isAbsolute, join, relative, resolve, sep } from "node:path";
 
-import { GENERIC, avatarFor, hasAvatar } from "../schemas/avatars.js";
+import { BLANK_AVATAR, GENERIC, avatarFor, hasAvatar } from "../schemas/avatars.js";
 import { hexHue, resolveThemeBackdrop } from "../schemas/theme.js";
 import { PLATFORM_THEME_OWNER, themeByRef } from "../schemas/theme-by-ref.js";
 import { instantiatedHarnessNames } from "../schemas/harness-config.js";
@@ -996,7 +996,7 @@ function tileFor(
   const own = decl.avatar !== undefined || hasAvatar(decl.name);
   const avatar = decl.avatar ?? (own ? avatarFor(decl.name) : GENERIC);
   if (!own) {
-    findings.push(`${decl.name}: no avatar declared for this instance — showing the generic mark.`);
+    findings.push(`${decl.name}: no avatar declared for this instance — showing the blank mark.`);
   }
 
   const icon = decl.images?.find((i) => i.id === decl.icon);
@@ -1131,6 +1131,17 @@ function tileFor(
   // for. A grey accent has no hue, and then the avatar's tone stands.
   const ownTheme = found?.ok === true && found.owner !== undefined && found.owner !== PLATFORM_THEME_OWNER;
   const themeTone = theme && ownTheme ? hexHue(theme.palette.accent) : undefined;
+
+  // Resolved theme for blank fallback: when an instance has no avatar, its blank
+  // mark takes the colour from the resolved theme (including parent/owner theme).
+  const ownerContributed = owner?.decl.stickies ?? [];
+  const ownerExact = owner ? ownerContributed.find((st) => st.id === owner.decl.name) : undefined;
+  const ownerSticky = ownerExact ?? (ownerContributed.length === 1 ? ownerContributed[0] : undefined);
+  const ownerThemeFound =
+    owner && ownerSticky?.theme !== undefined ? themeByRef(ownerSticky.theme, repoRoot, owner.decl.name) : undefined;
+  const inheritedTheme = ownerThemeFound?.ok ? ownerThemeFound.theme : undefined;
+  const resolvedTheme = theme ?? inheritedTheme;
+  const resolvedTone = resolvedTheme ? hexHue(resolvedTheme.palette.accent) : undefined;
   // OWN IMAGES FIRST, THE SITE OWNER'S SECOND — the overlay order this
   // repository uses everywhere else, and the one the theme docs describe: *"an
   // instance declaring its own `landing` images gets its own backdrop"*, with
@@ -1203,7 +1214,11 @@ function tileFor(
   // The registry glyph is the THIRD candidate, not a separate mechanism: an
   // instance with its own avatar entry (never the generic one, which is a
   // fallback rather than a mark) still has a mark when it declares no image.
-  const glyphMark: HarnessMark | undefined = own ? { glyph: avatar.glyph, title: avatar.reads } : undefined;
+  // When an instance has no declared avatar (own === false), it renders the
+  // themed blank mark (owner ruling 2026-09-20: "there is always an avatar,
+  // even when there is none (always have default blank/themecolor if no avatar. etc)").
+  const blankMark: HarnessMark = { glyph: BLANK_AVATAR.glyph, title: BLANK_AVATAR.reads, blank: true };
+  const glyphMark: HarnessMark | undefined = own ? { glyph: avatar.glyph, title: avatar.reads } : blankMark;
   // The order is the owner's (*"use theme avatar not the purply thing"*,
   // 2026-09-22) and the Jekyll `.site-title` follows it too
   // (`_includes/title.html`), so every surface draws the same mark.
@@ -1310,9 +1325,9 @@ function tileFor(
      * nothing.
      */
     ...(navMark ? { mark: navMark } : {}),
-    tone: themeTone ?? avatar.tone,
-    toneFrom: themeTone !== undefined ? ("theme" as const) : ("avatar" as const),
-    reads: avatar.reads,
+    tone: own ? (themeTone ?? avatar.tone) : (resolvedTone ?? themeTone ?? avatar.tone),
+    toneFrom: (themeTone !== undefined || (!own && resolvedTone !== undefined)) ? ("theme" as const) : ("avatar" as const),
+    reads: own ? avatar.reads : BLANK_AVATAR.reads,
     genericAvatar: !own,
     instantiated,
     ...(href === undefined
