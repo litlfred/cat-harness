@@ -7,9 +7,10 @@ summary: >-
 
 # Semantic subgraphs: site chrome, themes, and concern groups a downstream can mount
 
-**Status: proposal.** Slices 1 and 2 (chrome and themes) are ruled by the
-owner, 2026-10-09; their *shape* below is still open to argument. Slice 3
-(concern groups through docs and code) is options only. Nothing is built.
+**Status: proposal, ruled 2026-10-09.** Slices 1 and 2 (chrome and themes),
+Option A + C for slice 3, the concern names, and D1–D4 are all decided (the
+two answer tables below). The `nn8e` follow-up is filed as bean `mo75` (G1–G3 and the concern names). Building
+starts with stage 1.
 
 > ## Rulings, owner, 2026-10-09
 >
@@ -25,8 +26,8 @@ owner, 2026-10-09; their *shape* below is still open to argument. Slice 3
 > |---|---|---|
 > | **Option A** | *"extend the current kind-first layout into docs/ and scripts/"* | ruled: `docs/<group>/` and `scripts/<group>/` join `skills/<group>/` and `processes/<group>/` |
 > | **Option B** | *"n.... but should be able to name "sdcl" at top level to be list of ["docs/sdlc", "skills/sdlc"] or so..."* | concern-first DIRECTORIES are refused; a concern NAME at the top level, standing for the list of its kind-first members, is wanted (§4, "A concern is a name for a list") |
-> | **Option C** | *"not sure what you mean"* | re-explained in plain terms below its heading; open |
-> | **D1** | *"explain more"* | re-explained in §6; open |
+> | **Option C** | *"not sure what you mean"*, then after the plain-terms explanation: *"C y"* | ruled: the two-phase mount (hydrated metadata, review, a chosen set); G1–G3 are the work |
+> | **D1** | *"explain more"*, then: *"parse-equal"* | ruled: the composed `_config.yml` must parse to the same settings; every other composed file stays byte-identical |
 > | **D2** | *"y (or better a docs/ css package)"* | the harness pages' own JS/CSS stay in `docs/`, preferably as a declared package there rather than loose files in `assets/` |
 > | **D3** | *"y"* | the base light/dark + high-contrast pair live in `site-chrome/` |
 > | **D4** | *"ninth group"* | `publication` becomes the ninth concern group, a `9umr` amendment (§4, "The ninth group") |
@@ -274,7 +275,7 @@ So the owner's workflow is three gaps, not a new mechanism:
   what `gen-subgraph-jsonld` exports).
 - **G2** — remote mount, phase 1: `hydrated: true` on a mount entry or
   override fetches a named subgraph's `index.hydrated.jsonld` at the pin
-  instead of files (the `nn8e` follow-up; file it as its own bean).
+  instead of files (the `nn8e` follow-up, filed as bean `mo75`).
 - **G3** — materialize a chosen set: nested subgraph ids and node ids resolve
   through `resolveDirectories`/the hydrated index rather than the raw top
   level, in both `remote-mount` and `kg:materialize`, with the code closure
@@ -371,7 +372,7 @@ hides it inside the directory.
 | 3 | G3 for top-level and nested subgraph ids in `remote-mount` | a downstream naming `site-chrome` + `themes` + code mounts and builds |
 | 4 | who-iris publishes its own site from `site-chrome` + its own `themes/` (kg-separation stages 7 and 12 for who-iris) | the site at `litlfred.github.io/who-iris/` builds and every replica link resolves |
 | 5 | G1: `tools/` exported as a named subgraph with `index.hydrated.jsonld` | `subgraph:jsonld:check`; the Tools' descriptions appear in the hydrated file |
-| 6 | G2: hydrated mounts (the unfiled `nn8e` follow-up, filed first) | a downstream reads `tools/` metadata at a pin with no code mounted |
+| 6 | G2: hydrated mounts (bean `mo75`) | a downstream reads `tools/` metadata at a pin with no code mounted |
 | 7 | G3 for node sets, with the code closure; then `concerns:` shorthand | "load tools metadata, review, materialize three Tools" runs end to end; `check:tools-closure` |
 | 8+ | docs and scripts into their concern groups, one group per PR | `check:concern-groups` |
 
