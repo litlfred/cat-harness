@@ -33,6 +33,11 @@ import {
 } from "../schemas/binary-release.js";
 import { readDeclaration } from "../schemas/cat-harness.js";
 
+// declared-path-literal: the pack-time exclusions for the binary assets a
+// PACKAGED instance may hold, written into that package's ignore list. They
+// name the conventional `library/` and `uploads/` trees of whatever instance
+// is packed, not a directory of this checkout, so no declaration here
+// answers them.
 export const BINARY_ASSET_IGNORE_PATTERNS = [
   "library/**/*.png",
   "library/**/*.jpg",

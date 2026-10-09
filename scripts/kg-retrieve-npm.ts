@@ -205,6 +205,9 @@ export function retrieveNpmKg(opts: RetrieveNpmOptions): RetrievalResult {
       f.includes("subgraph/")
   );
 
+  // declared-path-literal: counts by top-level directory inside a FETCHED
+  // package, whose declaration may be absent (a hydrated view carries none),
+  // so these name the package's conventional layout, not this checkout's.
   const skillsCount = allFiles.filter((f) => f.startsWith("skills/") && f.endsWith(".md")).length;
   const schemasCount = allFiles.filter((f) => f.startsWith("schemas/") && (f.endsWith(".ts") || f.endsWith(".json"))).length;
   const processesCount = allFiles.filter((f) => f.startsWith("processes/") && f.endsWith(".bpmn")).length;
