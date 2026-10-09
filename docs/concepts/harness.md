@@ -166,7 +166,7 @@ why two of them are ranked differently.
 | obligation | declared as | the question it answers |
 |---|---|---|
 | **serialisations** | `coverage.serialisations` | is each node addressable as `json`, `jsonld` and `schema.json`? |
-| **visualiser** | `coverage.visualiser` | can a person LOOK at this? |
+| **visualiser** | the harness's `visualisers` (`covers` / `coversKinds`, `renderedBy`), at `<base>/<harness>/<visualiser>/` | can a person LOOK at this? |
 | **docs** | `coverage.docs` | can a person READ ABOUT this? |
 | **skill** | `coverage.skill` | is an agent handed something that GOVERNS this? |
 

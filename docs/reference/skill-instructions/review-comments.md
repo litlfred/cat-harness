@@ -343,5 +343,5 @@ of change goes:
 
 | process | step(s) that name it |
 |---|---|
-| [Content Change and Review](../../processes/content-change-review.html) | Ingest tagged review comments; Review each slice (calls a sub-process); Withdraw a review comment |
+| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Ingest tagged review comments; Review each slice (calls a sub-process); Withdraw a review comment |
 

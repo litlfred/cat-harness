@@ -14,7 +14,7 @@ parent: Skill instructions
 # Sub-KG lifecycle — staged here, separated later
 
 > Skill id: `sub-kg-lifecycle` · Package: `graph-management`
-> Process: [`sub-kg-lifecycle.bpmn`](../../processes/sub-kg-lifecycle.html)
+> Process: [`sub-kg-lifecycle.bpmn`](../../cat-harness/processes/sub-kg-lifecycle.html)
 
 Owner, 2026-10-06: *"if user creates it in a folio/, then it can move it to
 another repo later (this is essentially the create a sub-KG process and skills
@@ -324,12 +324,12 @@ directory. The page shows it as one row in the `via sidecar` state.
 
 ## Processes that run this skill
 
-This skill has its own process: **[A sub-KG is staged in place, then leaves for its own repository](../../processes/sub-kg-lifecycle.html)**.
+This skill has its own process: **[A sub-KG is staged in place, then leaves for its own repository](../../cat-harness/processes/sub-kg-lifecycle.html)**.
 
 <img src="../../assets/img/workflows/sub-kg-lifecycle.svg" alt="BPMN diagram: A sub-KG is staged in place, then leaves for its own repository" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Mount a declared subgraph](../../processes/mount-subgraph.html) | Resolve the subgraph's content source; Use the checkout path in place; Mount the branch tip at the declared path; Refuse: no flow for this source kind |
-| [A sub-KG is staged in place, then leaves for its own repository](../../processes/sub-kg-lifecycle.html) | 1 · Declare it in place, with its seam; 2 · Grow it in place; Should it leave now?; 4 · Route every climb through platform.ts; 5 · Rehearse self-contained; 8 · Create the repository; 9 · Copy the staged contents in, with history; 10 · Re-point: livesAt, seam, submodule or subscription; 11 · Verify on a fresh clone |
+| [Mount a declared subgraph](../../cat-harness/processes/mount-subgraph.html) | Resolve the subgraph's content source; Use the checkout path in place; Mount the branch tip at the declared path; Refuse: no flow for this source kind |
+| [A sub-KG is staged in place, then leaves for its own repository](../../cat-harness/processes/sub-kg-lifecycle.html) | 1 · Declare it in place, with its seam; 2 · Grow it in place; Should it leave now?; 4 · Route every climb through platform.ts; 5 · Rehearse self-contained; 8 · Create the repository; 9 · Copy the staged contents in, with history; 10 · Re-point: livesAt, seam, submodule or subscription; 11 · Verify on a fresh clone |
 

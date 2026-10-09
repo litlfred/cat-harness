@@ -82,5 +82,5 @@ it.
 
 | process | step(s) that name it |
 |---|---|
-| [L2 DAK authoring](../../processes/l2-dak-authoring.html) | Decision logic · DMN tables |
+| [L2 DAK authoring](../../cat-harness/processes/l2-dak-authoring.html) | Decision logic · DMN tables |
 

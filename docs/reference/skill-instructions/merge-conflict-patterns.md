@@ -940,7 +940,7 @@ item 4).
 
 | process | step(s) that name it |
 |---|---|
-| [Merge the base branch in](../../processes/merge-base.html) | Classify every conflicted path against the declared patterns; Resolve each by its declared strategy; Abort, restore the tree, list what was refused |
-| [A refused merge-train member](../../processes/merge-refusal.html) | Record the refusal on the bean; Comment on the PR once, linking the bean; Hand back, with a fail condition; Merge main in, regenerate, fix mechanical gates; Re-enter a train on the new head |
-| [A merge train](../../processes/merge-train.html) | Hand it back (calls a sub-process); Hand the culprit back (calls a sub-process) |
+| [Merge the base branch in](../../cat-harness/processes/merge-base.html) | Classify every conflicted path against the declared patterns; Resolve each by its declared strategy; Abort, restore the tree, list what was refused |
+| [A refused merge-train member](../../cat-harness/processes/merge-refusal.html) | Record the refusal on the bean; Comment on the PR once, linking the bean; Hand back, with a fail condition; Merge main in, regenerate, fix mechanical gates; Re-enter a train on the new head |
+| [A merge train](../../cat-harness/processes/merge-train.html) | Hand it back (calls a sub-process); Hand the culprit back (calls a sub-process) |
 

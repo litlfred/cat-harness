@@ -69,7 +69,7 @@ import { itemState } from "./gen-uploads-viz.ts";
 import { makeEmit } from "./viewer-page.ts";
 import { themedPage } from "./lib/themed-page.ts";
 import { escHtml, thinPageConfigOf } from "./thin-page.ts";
-import { renderedPath, withRendersFrontMatter, withViewers } from "./viewer-declarations.js";
+import { declaredRoute, withRenderedByFrontMatter, withViewers } from "./viewer-declarations.js";
 import { corpusDirectoriesForGraph } from "../schemas/harness-config.js";
 
 /** This generator's Tool node (`tools/viewers.ts`), named on every page it draws. */
@@ -1284,7 +1284,16 @@ if (import.meta.main) {
     console.log("  · this instance declares no name — no handler segment to publish under");
     process.exit(0);
   }
-  const { pageDir, dataDir, dataHref } = viewerPlacement(site, `${handler}/${seg}`, seg);
+
+  // THE ROUTE IS DECLARED (owner, 2026-10-09): `<harness>/<id>/`, from the
+  // visualiser this harness declares `renderedBy` this Tool — never composed
+  // here from the directory's name.
+  const route = declaredRoute(ROOT, VIEWER_TOOL);
+  if (route === undefined) {
+    console.log(`  · no visualiser declared rendered by ${VIEWER_TOOL} — nothing to publish`);
+    process.exit(0);
+  }
+  const { pageDir, dataDir, dataHref } = viewerPlacement(site, route, seg);
 
   // NO FOLIO MOUNT since 2026-10-07: the pages are on the theme's layout,
   // which loads docs-ui.js and docs-ui.css itself (`libraryPageHtml`).
@@ -1337,10 +1346,10 @@ if (import.meta.main) {
   // that makes a careful reader trust the number less.
   const entries = (n: number): readonly [number, string] =>
     [n, n === 1 ? "entry" : "entries"];
-  const wholeId = byRef.get(refOf(`${handler}/${seg}`));
+  const wholeId = byRef.get(refOf(route));
   if (wholeId !== undefined) scoped[wholeId] = entries(g.entries.length);
   for (const subject of subjects) {
-    const id = byRef.get(refOf(`${handler}/${seg}/${subject}`));
+    const id = byRef.get(refOf(`${route}/${subject}`));
     if (id === undefined) continue;
     scoped[id] = entries(g.entries.filter((e) => e.instance === subject).length);
   }
@@ -1439,18 +1448,6 @@ if (import.meta.main) {
       console.log(`  ✗ pruned orphan avatar ${abs}`);
     }
   }
-  // Each page says which directories it draws (#1168 B7a-2): the library
-  // directories and upload queues whose entries it shows — every one on the
-  // whole page, the subject's own on a subject page.
-  // A queue carries its instance; a library directory's is its first path
-  // segment, since no instance keeps a library at the repository root.
-  const drawn = (subject?: string): string[] =>
-    [
-      ...libDirs.map((d) => renderedPath(repoRoot, d)).map((p) => [p, p.split("/")[0]!] as const),
-      ...g.queues.map((q) => [q.dir, q.instance] as const),
-    ]
-      .filter(([, instance]) => subject === undefined || instance === subject)
-      .map(([p]) => p);
   // ── THE SHARED VIEWER ASSETS (#1881) ──────────────────────────────────
   //
   // Published ONCE beside the projection and referenced by every page, so a
@@ -1459,13 +1456,13 @@ if (import.meta.main) {
   emit(join(dataDir, "viewer.css"), VIEWER_CSS);
   emit(join(dataDir, "viewer.js"), VIEWER_JS);
 
-  emit(join(pageDir, "index.html"), withRendersFrontMatter(viewerHtml(dataHref, "", "./"), drawn(), VIEWER_TOOL));
+  emit(join(pageDir, "index.html"), withRenderedByFrontMatter(viewerHtml(dataHref, "", "./"), VIEWER_TOOL));
   const wantedJsonld = new Set<string>();
   for (const subject of subjects) {
-    const sub = viewerPlacement(site, `${handler}/${seg}/${subject}`, seg);
+    const sub = viewerPlacement(site, `${route}/${subject}`, seg);
     emit(
       join(sub.pageDir, "index.html"),
-      withRendersFrontMatter(viewerHtml(sub.dataHref, subject, "../"), drawn(subject), VIEWER_TOOL),
+      withRenderedByFrontMatter(viewerHtml(sub.dataHref, subject, "../"), VIEWER_TOOL),
     );
 
     // ── EVERY ENTRY'S OWN IRI, MATERIALIZED (owner, 2026-10-02, #1881) ──

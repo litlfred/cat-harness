@@ -92,5 +92,5 @@ change which is both "goes through both". Found while designing this stage.
 
 | process | step(s) that name it |
 |---|---|
-| [Prose and the code it describes](../../processes/narrative-code-review.html) | Read the pair checks' findings; Re-read the prose against the code; Attest the pair, with a reason |
+| [Prose and the code it describes](../../cat-harness/processes/narrative-code-review.html) | Read the pair checks' findings; Re-read the prose against the code; Attest the pair, with a reason |
 

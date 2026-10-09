@@ -212,7 +212,7 @@ is on the publish branch belongs where its subject's absence can be seen.
 
 | | |
 |---|---|
-| the process | [`staging-render-log.bpmn`](../../processes/staging-render-log.html) |
+| the process | [`staging-render-log.bpmn`](../../cat-harness/processes/staging-render-log.html) |
 | the entry shape it specialises | `schemas/log-entry.ts`, `skills/sdlc/sdlc-core/activity-log.md` |
 | why the publish branch loses things | bean `plj1`, `scripts/restore-staging.ts` |
 | why a closed PR is not an abandoned branch | bean `w2g5` |
@@ -223,6 +223,6 @@ is on the publish branch belongs where its subject's absence can be seen.
 
 | process | step(s) that name it |
 |---|---|
-| [Staging a feature branch preview, and taking it down](../../processes/feature-staging.html) | Append `rendered` to the render log; Append `retained`, with why it stays |
-| [Render log — the publish branch keeps its own history](../../processes/staging-render-log.html) | Append `rendered`; Preflight: is the preview live?; Append `retained` with the reason; Append `removed` with the reason; Remove the artefact; Append `restored` |
+| [Staging a feature branch preview, and taking it down](../../cat-harness/processes/feature-staging.html) | Append `rendered` to the render log; Append `retained`, with why it stays |
+| [Render log — the publish branch keeps its own history](../../cat-harness/processes/staging-render-log.html) | Append `rendered`; Preflight: is the preview live?; Append `retained` with the reason; Append `removed` with the reason; Remove the artefact; Append `restored` |
 

@@ -135,7 +135,7 @@ it is enforced.** Not the writer's discipline, not a review, not a convention
 
 ## Processes that run this skill
 
-This skill has its own process: **[Session state machine](../../processes/session-state-machine.html)**.
+This skill has its own process: **[Session state machine](../../cat-harness/processes/session-state-machine.html)**.
 
 <img src="../../assets/img/workflows/session-state-machine.svg" alt="BPMN diagram: Session state machine" style="max-width:100%">
 

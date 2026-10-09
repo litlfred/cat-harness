@@ -59,7 +59,7 @@ import {
   unusedNamespaces,
   type ExternalSchema,
 } from "../schemas/external-schema.js";
-import { conventionalPage, handledDirectories, withRendersFrontMatter } from "./viewer-declarations.js";
+import { visualiserSitePath, withRenderedByFrontMatter } from "./viewer-declarations.js";
 import { sourceLinks } from "../schemas/cat-harness.ts";
 import { detectRepoUrl } from "../src/core/git-refs.js";
 import { darkRules } from "./lib/scheme-css.js";
@@ -107,8 +107,14 @@ export function declaredUsers(specs: readonly ExternalSchema[], repoRoot = REPO)
  * `conventionalPage`). Never a literal — `site-dir-single-answer` refuses one.
  */
 export function pageRelPath(repo = REPO): string | undefined {
-  const handlerRoot = existsSync(join(repo, "cat-harness")) ? join(repo, "cat-harness") : INSTANCE_ROOT;
-  return conventionalPage(handlerRoot, KIND);
+  // The route cat-harness DECLARES for this Tool's visualiser (owner,
+  // 2026-10-09): `<harness>/<id>/index.md`, never chosen here.
+  try {
+    const handlerRoot = existsSync(join(repo, "cat-harness")) ? join(repo, "cat-harness") : INSTANCE_ROOT;
+    return visualiserSitePath(handlerRoot, VIEWER_TOOL).rel;
+  } catch {
+    return undefined;
+  }
 }
 
 /** The base docs layer — the same answer `compose-docs.ts` uses. */
@@ -423,7 +429,6 @@ if (import.meta.main) {
     const abs = join(targetRoot, repoPath);
     return existsSync(abs) && statSync(abs).isFile() ? sourceLinks(repoUrl, repoPath, "main")?.viewHref : undefined;
   };
-
   const bpmnInUse = namespacesInUse();
   const jsonLd = jsonLdNamespacesInUse();
   const externalBpmn = bpmnInUse.filter((ns) => !(OWN_XML_NAMESPACES as readonly string[]).includes(ns));
@@ -432,9 +437,8 @@ if (import.meta.main) {
   const mentioned = namespaceMentions(unreg);
   const inUse = [...new Set([...combined, ...mentioned])].sort();
 
-  const rendered = withRendersFrontMatter(
+  const rendered = withRenderedByFrontMatter(
     page(specs, users, inUse, fileHref),
-    handledDirectories(REPO, INSTANCE_ROOT, KIND),
     VIEWER_TOOL,
   );
   const docsBase = existsSync(join(INSTANCE_ROOT, "docs"))

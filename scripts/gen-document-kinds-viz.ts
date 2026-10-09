@@ -42,7 +42,7 @@ import {
 import { directoriesForGraph, instanceRootsIn, readDeclaration, repoRootFor, siteDirFor } from "../schemas/cat-harness.ts";
 import { orphanSubjectPages, viewerPlacement } from "./gen-schema-viz.ts";
 import { makeEmit } from "./viewer-page.ts";
-import { withRendersFrontMatter } from "./viewer-declarations.js";
+import { declaredRoute, withRenderedByFrontMatter } from "./viewer-declarations.js";
 import { subjectNav, subjectNavCss, themedPage } from "./lib/themed-page.ts";
 
 /** This generator's Tool node (`tools/viewers.ts`), named on every page it draws. */
@@ -227,31 +227,34 @@ let stale = 0;
 
 if (import.meta.main) {
   const repoRoot = repoRootFor(ROOT);
-  const { kinds, dirs } = readDocumentKinds(repoRoot);
+  const { kinds } = readDocumentKinds(repoRoot);
   const handler = readDeclaration(ROOT)?.name;
   if (!handler) {
     console.log("  · this instance declares no name — no handler segment to publish under");
     process.exit(0);
   }
+
+  // THE ROUTE IS DECLARED (owner, 2026-10-09): `<harness>/<id>/`, from the
+  // visualiser this harness declares `renderedBy` this Tool — never composed
+  // here from the directory's name.
+  const route = declaredRoute(ROOT, VIEWER_TOOL);
+  if (route === undefined) {
+    console.log(`  · no visualiser declared rendered by ${VIEWER_TOOL} — nothing to publish`);
+    process.exit(0);
+  }
   const site = join(ROOT, siteDirFor(ROOT));
-  const { pageDir } = viewerPlacement(site, `${handler}/${GRAPH}`, GRAPH);
+  const { pageDir } = viewerPlacement(site, route, GRAPH);
   // No `nav`: these pages are themed, so the theme's sidebar is their
   // navigation and there is no rail to inject.
   const emitPage = makeEmit({ check, onStale: () => { stale++; } });
-  const present = (subject?: string): string[] =>
-    // Repo-relative, as every viewer's `renders` is: an absolute path names this
-    // machine's checkout, and no page or test can match it anywhere else.
-    dirs
-      .filter((d) => existsSync(d.dir) && (subject === undefined || d.instance === subject))
-      .map((d) => relative(repoRoot, d.dir).split(sep).join("/"));
 
   const subjects = [...new Set(kinds.map((k) => k.instance))].sort();
-  emitPage(join(pageDir, "index.html"), withRendersFrontMatter(pageHtml(kinds, undefined, subjects), present(), VIEWER_TOOL));
+  emitPage(join(pageDir, "index.html"), withRenderedByFrontMatter(pageHtml(kinds, undefined, subjects), VIEWER_TOOL));
   for (const subject of subjects) {
-    const sub = viewerPlacement(site, `${handler}/${GRAPH}/${subject}`, GRAPH);
+    const sub = viewerPlacement(site, `${route}/${subject}`, GRAPH);
     emitPage(
       join(sub.pageDir, "index.html"),
-      withRendersFrontMatter(pageHtml(kinds.filter((k) => k.instance === subject), subject, subjects), present(subject), VIEWER_TOOL),
+      withRenderedByFrontMatter(pageHtml(kinds.filter((k) => k.instance === subject), subject, subjects), VIEWER_TOOL),
     );
   }
   const { owned, foreign } = orphanSubjectPages(pageDir, subjects);

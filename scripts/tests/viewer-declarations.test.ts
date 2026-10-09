@@ -1,13 +1,12 @@
 /**
- * Which viewer page renders a directory is read from the pages (#1168 B7a-2).
+ * Which visualiser renders a directory is read from the HARNESS declarations
+ * (owner, 2026-10-09), never from the pages.
  *
- * Two halves: the reader and writer functions, on fixtures; and the corpus
- * grounding — while `coverage.visualiser` still exists, every page it names
- * that exists must be one the generators say draws that directory.
- *
- * The tests of this file that read the whole checkout (reads every instance's
- * declared viewers) live in `test/viewer-declarations-checkout.test.ts` (bean
- * `7zz1`): standing alone, cat-harness has none of it.
+ * Two halves: provenance (`rendered-by`) on fixtures, and the reader —
+ * `declaredVisualisers` / `viewersOf` — over a fixture checkout of two
+ * instances, one declaring a corpus-wide visualiser over the other's
+ * directory. The tests of this file that read the whole checkout live in
+ * `cat-harness-tools/test/coordinator/viewer-declarations-checkout.test.ts`.
  */
 import { describe, expect, test } from "bun:test";
 import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
@@ -15,90 +14,134 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 
 import {
-  metaRenders,
-  pagesRendering,
+  carriesRenders,
+  clearDeclaredVisualisers,
+  declaredRoute,
+  declaredVisualisers,
+  renderedByOf,
   renderedPath,
-  viewerPageFor,
-  viewerPages,
-  withRenders,
-  withRendersFrontMatter,
+  viewersOf,
+  withRenderedBy,
+  withRenderedByFrontMatter,
 } from "../viewer-declarations.js";
+import { declarationFindings } from "../check-visualiser-routes.js";
 
-describe("writing and reading the declaration", () => {
-  test("HTML: inserted after <head>, replaced not duplicated, sorted and deduplicated", () => {
-    const once = withRenders("<html><head><title>t</title></head></html>", ["b/x", "a/y", "b/x"], "t");
-    expect(metaRenders(once)).toEqual(["a/y", "b/x"]);
-    const twice = withRenders(once, ["c/z"], "t");
-    expect(metaRenders(twice)).toEqual(["c/z"]);
-    expect(twice.match(/name="renders"/g)).toHaveLength(1);
+describe("provenance: a page names the Tool that drew it, and nothing else", () => {
+  test("HTML: inserted after <head>, replaced not duplicated, and any `renders` meta removed", () => {
+    const legacy = '<html><head>\n<meta name="renders" content="a/b">\n<meta name="rendered-by" content="old"><title>t</title></head></html>';
+    const once = withRenderedBy(legacy, "t");
+    expect(renderedByOf(once)).toBe("t");
+    expect(carriesRenders(once)).toBe(false);
+    expect(withRenderedBy(once, "u").match(/name="rendered-by"/g)).toHaveLength(1);
   });
 
-  test("HTML: an empty list writes nothing, and removes an earlier one", () => {
-    const html = "<html><head></head></html>";
-    expect(withRenders(html, [], "t")).toBe(html);
-    expect(metaRenders(withRenders(withRenders(html, ["a"], "t"), [], "t"))).toEqual([]);
-  });
-
-  test("markdown: into the front matter, replaced not duplicated", () => {
-    const md = "---\ntitle: T\n---\nbody\n";
-    const once = withRendersFrontMatter(md, ["a/b"], "t");
-    expect(once).toBe("---\ntitle: T\nrenders:\n  - a/b\nrendered-by: t\n---\nbody\n");
-    expect(withRendersFrontMatter(once, ["c"], "u")).toBe("---\ntitle: T\nrenders:\n  - c\nrendered-by: u\n---\nbody\n");
-    expect(withRendersFrontMatter("no front matter", ["a"], "t")).toBe("no front matter");
+  test("markdown: into the front matter, `renders:` list removed", () => {
+    const md = "---\ntitle: T\nrenders:\n  - a/b\nrendered-by: x\n---\nbody\n";
+    expect(carriesRenders(md)).toBe(true);
+    const out = withRenderedByFrontMatter(md, "t");
+    expect(out).toBe("---\ntitle: T\nrendered-by: t\n---\nbody\n");
+    expect(renderedByOf(out)).toBe("t");
+    expect(carriesRenders(out)).toBe(false);
+    expect(withRenderedByFrontMatter("no front matter", "t")).toBe("no front matter");
   });
 
   test("a directory is named repository-relative, with no trailing slash", () => {
     expect(renderedPath("/r", "/r/who-iris/library/")).toBe("who-iris/library");
   });
+});
 
-  test("pages are found by the directory they declare", () => {
-    const root = mkdtempSync(join(tmpdir(), "viewer-decl-"));
-    const files: Record<string, string> = {
-      "site/lib/index.html": withRenders("<html><head></head></html>", ["x/library", "y/library"], "library-viewer"),
-      "site/tools/index.md": withRendersFrontMatter("---\ntitle: T\n---\n", ["x/tools"], "tools-viewer"),
-      "site/plain/index.html": "<html><head></head></html>",
-    };
-    for (const [f, body] of Object.entries(files)) {
-      mkdirSync(join(root, dirname(f)), { recursive: true });
-      writeFileSync(join(root, f), body);
-    }
-    const pages = viewerPages(root, Object.keys(files));
-    expect(pages.map((p) => p.page).sort()).toEqual(["site/lib/index.html", "site/tools/index.md"]);
-    expect(pages.map((p) => p.renderedBy).sort()).toEqual(["library-viewer", "tools-viewer"]);
-    expect(pagesRendering("y/library/", pages)).toEqual(["site/lib/index.html"]);
-    expect(pagesRendering("x/tools", pages)).toEqual(["site/tools/index.md"]);
-    expect(pagesRendering("z", pages)).toEqual([]);
+/** A checkout: `base` (the site owner, named cat-harness) declares visualisers; `top` needs it. */
+function fixture(): string {
+  const repo = mkdtempSync(join(tmpdir(), "viewer-decl-"));
+  const files: Record<string, unknown> = {
+    "base/cat-harness.json": {
+      name: "cat-harness",
+      directories: [
+        { id: "library", path: "library/", graphTypologies: ["library"] },
+        { id: "todos", path: "todos/", graphTypologies: ["todos"], tile: { icon: "todo" } },
+      ],
+      visualisers: [
+        { id: "library", renderedBy: "library-viewer", coversKinds: ["library"], subgraphs: "instance" },
+        { id: "todos", renderedBy: "state-viewer", covers: ["todos"], title: "Todos", alias: "todos" },
+      ],
+    },
+    "top/top.json": {
+      name: "top",
+      needs: ["cat-harness"],
+      directories: [{ id: "top-library", path: "library/", graphTypologies: ["library"] }],
+    },
+  };
+  for (const [f, body] of Object.entries(files)) {
+    mkdirSync(join(repo, dirname(f)), { recursive: true });
+    writeFileSync(join(repo, f), JSON.stringify(body));
+  }
+  for (const d of ["base/library", "base/todos", "top/library", "base/docs/cat-harness/library/top", "base/docs/cat-harness/todos"]) {
+    mkdirSync(join(repo, d), { recursive: true });
+  }
+  writeFileSync(join(repo, "base/docs/cat-harness/library/top/index.html"), "<html><head></head></html>");
+  writeFileSync(join(repo, "base/docs/cat-harness/todos/index.html"), "<html><head></head></html>");
+  clearDeclaredVisualisers();
+  return repo;
+}
+
+describe("the declaration is the only source of a visualiser and its route", () => {
+  test("every instance's `visualisers`, with the harness that declares them", () => {
+    const repo = fixture();
+    const v = declaredVisualisers(repo);
+    expect(v.map((x) => `${x.harness}/${x.id}:${x.renderedBy}`).sort()).toEqual([
+      "cat-harness/library:library-viewer",
+      "cat-harness/todos:state-viewer",
+    ]);
+    expect(declaredRoute(join(repo, "base"), "library-viewer")).toBe("cat-harness/library");
+    expect(declaredRoute(join(repo, "base"), "no-such-tool")).toBeUndefined();
+  });
+
+  test("`covers`: the harness's own directory, at the full view", () => {
+    const repo = fixture();
+    const got = viewersOf({ id: "todos", path: "todos/", graphTypologies: ["todos"], tile: { icon: "todo" } }, join(repo, "base"), repo);
+    expect(got.map((g) => g.ref)).toEqual(["base/docs/cat-harness/todos/index.html"]);
+    expect(got[0]!.title).toBe("Todos");
+    expect(got[0]!.icon).toBe("todo");
+  });
+
+  test("`coversKinds` + `subgraphs: instance`: another instance's directory opens its sub-graph view", () => {
+    const repo = fixture();
+    const got = viewersOf({ id: "top-library", path: "library/", graphTypologies: ["library"] }, join(repo, "top"), repo);
+    expect(got.map((g) => g.ref)).toEqual(["base/docs/cat-harness/library/top/index.html"]);
+  });
+
+  test("a directory nothing covers has no viewer — no page can claim one", () => {
+    const repo = fixture();
+    expect(viewersOf({ id: "x", path: "x/", graphTypologies: ["voices"] }, join(repo, "top"), repo)).toEqual([]);
   });
 });
 
-describe("choosing the page a directory's tile opens", () => {
-  const kinds = new Map<string, readonly string[]>([
-    ["library-viewer", ["library"]],
-    ["auto-docs-viewer", ["skills"]],
-  ]);
-  const pages = [
-    { page: "site/library/index.html", renders: ["a/library", "b/library"], renderedBy: "library-viewer" },
-    { page: "site/library/a/index.html", renders: ["a/library"], renderedBy: "library-viewer" },
-    { page: "site/index/library/a/index.html", renders: ["a/library"], renderedBy: "auto-docs-viewer" },
-    { page: "site/unsigned/index.html", renders: ["a/library"] },
-  ];
-
-  test("the most specific page drawn by a Tool that renders the directory's kind", () => {
-    expect(viewerPageFor("a/library", ["library"], pages, kinds)).toBe("site/library/a/index.html");
-    expect(viewerPageFor("b/library", ["library"], pages, kinds)).toBe("site/library/index.html");
+describe("collisions are declaration errors", () => {
+  const v = (harness: string, id: string, alias?: string) => ({
+    harness,
+    harnessRoot: `/r/${harness}`,
+    id,
+    renderedBy: "t",
+    covers: ["d"] as [string, ...string[]],
+    ...(alias ? { alias } : {}),
   });
 
-  test("a page by a Tool that does not render the kind, or by no Tool, is not the viewer", () => {
-    expect(viewerPageFor("a/library", ["voices"], pages, kinds)).toBeUndefined();
-    expect(viewerPageFor("a/library", ["skills"], pages, kinds)).toBe("site/index/library/a/index.html");
-    expect(viewerPageFor("c/library", ["library"], pages, kinds)).toBeUndefined();
+  test("two declarations of one route", () => {
+    const f = declarationFindings([v("a", "x"), v("a", "x")], [], ["a"]);
+    expect(f.map((x) => x.kind)).toEqual(["route-collision"]);
+    expect(f[0]!.subject).toBe("a/x/");
   });
 
-  test("on a tie in specificity, the deeper page", () => {
-    const tie = [
-      { page: "site/g/index.html", renders: ["g"], renderedBy: "library-viewer" },
-      { page: "site/g/g/index.html", renders: ["g"], renderedBy: "library-viewer" },
-    ];
-    expect(viewerPageFor("g", ["library"], tie, kinds)).toBe("site/g/g/index.html");
+  test("an alias naming another alias, a harness, or something the site already carries", () => {
+    const f = declarationFindings([v("a", "x", "x"), v("a", "y", "x"), v("a", "z", "b"), v("a", "w", "guides")], ["guides"], ["a", "b"]);
+    expect(f.map((x) => `${x.kind}:${x.subject}`).sort()).toEqual([
+      "alias-collision:b/",
+      "alias-collision:guides/",
+      "alias-collision:x/",
+    ]);
+  });
+
+  test("distinct routes and free aliases are clean", () => {
+    expect(declarationFindings([v("a", "x", "x"), v("b", "x")], ["guides"], ["a", "b"])).toEqual([]);
   });
 });

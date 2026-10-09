@@ -215,12 +215,17 @@ describe("fhir-artifact-index — a viewer inside a COMPOSED directory is linked
    * the IG site's own `artifacts` page, and the committed `docs/artifacts.md`
    * that carries the viewer declaration is laid onto it at build time.
    */
+  // Since 2026-10-09 the tile opens the visualiser smart-base DECLARES over
+  // the kind, per instance — `/smart-base/artifact-index/<instance>/`, a
+  // route page that opens the IG site's own `artifacts` page. The IG keeps
+  // its URL; the tile links the declared route (owner: "<base URL>/<harness>/
+  // <visualizer>/<sub-graph>").
   for (const name of ["smart-trust", "smart-base", "smart-immunizations"]) {
-    it(`${name}'s fhir-artifact-index tile links its IG site's artifacts page`, () => {
+    it(`${name}'s fhir-artifact-index tile links its declared route, which opens its IG site's artifacts page`, () => {
       const h = harnesses.find((x) => x.name === name);
       expect(h, `${name} is not in the report`).toBeDefined();
       const v = (h!.visualisations ?? []).find((x) => x.kind === "fhir-artifact-index");
-      expect(v?.path).toBe(`/${name}/artifacts.html`);
+      expect(v?.path).toBe(`/smart-base/artifact-index/${name}/`);
     });
   }
 });

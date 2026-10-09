@@ -96,7 +96,7 @@ import {
   siteDirFor,
 } from "../schemas/cat-harness.ts";
 import { makeEmit } from "./viewer-page.ts";
-import { withRendersFrontMatter } from "./viewer-declarations.js";
+import { declaredRoute, withRenderedByFrontMatter } from "./viewer-declarations.js";
 import { subjectNav, subjectNavCss, themedPage } from "./lib/themed-page.ts";
 
 /** This generator's Tool node (`tools/viewers.ts`), named on every page it draws. */
@@ -404,23 +404,28 @@ if (import.meta.main) {
     process.exit(0);
   }
 
+  // THE ROUTE IS DECLARED (owner, 2026-10-09): `<harness>/<id>/`, from the
+  // visualiser this harness declares `renderedBy` this Tool — never composed
+  // here from the directory's name.
+  const route = declaredRoute(ROOT, VIEWER_TOOL);
+  if (route === undefined) {
+    console.log(`  · no visualiser declared rendered by ${VIEWER_TOOL} — nothing to publish`);
+    process.exit(0);
+  }
+
   // `kind` is `library`, NOT `seg`. That is what makes the href point at the
   // ONE dataset rather than minting a second — see the header. The PAGE still
   // sits on the uploads route, so the tile opens a queue view.
-  const { pageDir, dataHref } = viewerPlacement(site, `${handler}/${seg}`, "library");
-  // Each page says which directories it draws (#1168 B7a-2): the upload
-  // queues it shows — every one here, the subject's own on a subject page.
-  const drawn = (subject?: string): string[] =>
-    g.queues.filter((q) => subject === undefined || q.instance === subject).map((q) => q.dir);
+  const { pageDir, dataHref } = viewerPlacement(site, route, "library");
   const subjects = [...new Set(g.queues.map((q) => q.instance))].sort();
-  emitPage(join(pageDir, "index.html"), withRendersFrontMatter(viewerHtml(dataHref, "", subjects), drawn(), VIEWER_TOOL));
+  emitPage(join(pageDir, "index.html"), withRenderedByFrontMatter(viewerHtml(dataHref, "", subjects), VIEWER_TOOL));
 
   // One page per SUBJECT — read from the QUEUES rather than from the declared
   // directory list, so a declared-but-empty uploads directory gets no page
   // claiming to show it. `dh4f`, one layer along.
   for (const subject of subjects) {
-    const sub = viewerPlacement(site, `${handler}/${seg}/${subject}`, "library");
-    emitPage(join(sub.pageDir, "index.html"), withRendersFrontMatter(viewerHtml(sub.dataHref, subject, subjects), drawn(subject), VIEWER_TOOL));
+    const sub = viewerPlacement(site, `${route}/${subject}`, "library");
+    emitPage(join(sub.pageDir, "index.html"), withRenderedByFrontMatter(viewerHtml(sub.dataHref, subject, subjects), VIEWER_TOOL));
   }
 
   if (!check) {

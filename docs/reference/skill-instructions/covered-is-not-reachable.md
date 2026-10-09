@@ -282,5 +282,5 @@ not to quiet the finding. Same move as the three-way split of `todo-manager`.
 
 | process | step(s) that name it |
 |---|---|
-| [Code node review](../../processes/review-code.html) | Review the Tool node |
+| [Code node review](../../cat-harness/processes/review-code.html) | Review the Tool node |
 

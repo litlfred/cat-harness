@@ -124,5 +124,5 @@ full" means. The rest get a number, never a row from a table they cannot see.
 
 | process | step(s) that name it |
 |---|---|
-| [CRDM Phases 2–4 — BPA and requirements](../../processes/crdm-requirements-definition.html) | Phase 4a: Compare the viable options |
+| [CRDM Phases 2–4 — BPA and requirements](../../cat-harness/processes/crdm-requirements-definition.html) | Phase 4a: Compare the viable options |
 

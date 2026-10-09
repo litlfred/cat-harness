@@ -49,11 +49,11 @@
  * tests in this session hardcoding it.
  */
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
-import { join, relative, resolve } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
 
-import { findDeclarationFile, instanceDirectories, readDeclaration, repoRootFor, siteDirFor } from "../schemas/cat-harness.js";
+import { findDeclarationFile, instanceDirectories, readDeclaration, siteDirFor } from "../schemas/cat-harness.js";
 import { tileCounts } from "../schemas/tile-count.js";
-import { withRendersFrontMatter } from "./viewer-declarations.js";
+import { visualiserSitePath, withRenderedByFrontMatter } from "./viewer-declarations.js";
 import { themedPage } from "./lib/themed-page.ts";
 
 /** This generator's Tool node (`tools/viewers.ts`), named on every page it draws. */
@@ -605,7 +605,9 @@ function main(): void {
   };
 
   const assetDir = join(site, "assets", "translation-status");
-  const pageDir = join(site, "translation-status");
+  // The route cat-harness DECLARES for this Tool's visualiser — never chosen
+  // here (owner, 2026-10-09: `<base>/<harness>/<visualizer>`).
+  const pageDir = join(site, dirname(visualiserSitePath(ROOT, VIEWER_TOOL).rel));
   const assetPath = join(assetDir, "index.json");
   const pagePath = join(pageDir, "index.html");
 
@@ -613,11 +615,7 @@ function main(): void {
   // navigation. The page says which directory it draws (#1168 B7a-2), in its
   // front matter.
   const page = (changedAt: string) =>
-    withRendersFrontMatter(
-      statusPage({ locales, changedAt, scope: doc.scope, instances }),
-      [ownScope, ...instances.map((i) => i.scope)],
-      VIEWER_TOOL,
-    );
+    withRenderedByFrontMatter(statusPage({ locales, changedAt, scope: doc.scope, instances }), VIEWER_TOOL);
   const json = (changedAt: string) => `${JSON.stringify({ ...doc, changedAt }, null, 2)}\n`;
 
   // The date the NUMBERS last changed is the projection's to say. When the

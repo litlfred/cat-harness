@@ -14,7 +14,7 @@ parent: Skill instructions
 # Knowledge Graph separation — the method
 
 > Skill id: `kg-separation` · Package: `graph-management`
-> Process: [`kg-separation.bpmn`](../../processes/kg-separation.html)
+> Process: [`kg-separation.bpmn`](../../cat-harness/processes/kg-separation.html)
 
 Owner, 2026-09-29: *"need replicable process for when KG gets too large to
 handle and skills"*, and on cat-harness: *"follow same methodology/house
@@ -355,12 +355,12 @@ with a new patch release and move the parent's pin back.
 
 ## Processes that run this skill
 
-This skill has its own process: **[A knowledge graph leaves for its own repositories](../../processes/kg-separation.html)**.
+This skill has its own process: **[A knowledge graph leaves for its own repositories](../../cat-harness/processes/kg-separation.html)**.
 
 <img src="../../assets/img/workflows/kg-separation.svg" alt="BPMN diagram: A knowledge graph leaves for its own repositories" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [A knowledge graph leaves for its own repositories](../../processes/kg-separation.html) | Measure the signals; Separate this graph?; 4 · Identity: version, iriBase, nodeSchemas; 5 · Move harness output about it to the host; 6 · Split content from tools; 8 · Rehearse standalone; Create the repositories; Drain: land, close or re-target the open PRs; 10 · Seed both repositories |
-| [A sub-KG is staged in place, then leaves for its own repository](../../processes/sub-kg-lifecycle.html) | Drain: land, close or re-target the open PRs |
+| [A knowledge graph leaves for its own repositories](../../cat-harness/processes/kg-separation.html) | Measure the signals; Separate this graph?; 4 · Identity: version, iriBase, nodeSchemas; 5 · Move harness output about it to the host; 6 · Split content from tools; 8 · Rehearse standalone; Create the repositories; Drain: land, close or re-target the open PRs; 10 · Seed both repositories |
+| [A sub-KG is staged in place, then leaves for its own repository](../../cat-harness/processes/sub-kg-lifecycle.html) | Drain: land, close or re-target the open PRs |
 

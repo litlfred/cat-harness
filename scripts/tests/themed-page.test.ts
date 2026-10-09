@@ -7,7 +7,7 @@
 import { describe, expect, test } from "bun:test";
 
 import { subjectNav, subjectNavCss, themedBody, themedPage, unscopedSelectors, yamlQuoted } from "../lib/themed-page.ts";
-import { withRendersFrontMatter } from "../viewer-declarations.js";
+import { withRenderedByFrontMatter } from "../viewer-declarations.js";
 import { isStandalonePage } from "../viewer-page.ts";
 
 const page = (body: string, title = "A page") =>
@@ -33,9 +33,12 @@ describe("themedPage", () => {
     expect(out).toContain('{% endraw %}{{ "{" }}{% raw %}% endraw %}');
   });
 
-  test("renders / rendered-by go into the same front matter", () => {
-    const out = withRendersFrontMatter(page("<p>x</p>"), ["a/b"], "x-viewer");
-    expect(out).toMatch(/^---\n[\s\S]*renders:\n {2}- a\/b\nrendered-by: x-viewer\n---\n/);
+  test("rendered-by goes into the same front matter, and no `renders` list does", () => {
+    // Owner, 2026-10-09: the harness declares each visualiser; a page names
+    // only the Tool that drew it.
+    const out = withRenderedByFrontMatter(page("<p>x</p>"), "x-viewer");
+    expect(out).toMatch(/^---\n[\s\S]*\nrendered-by: x-viewer\n---\n/);
+    expect(out).not.toMatch(/^renders:/m);
   });
 
   test("themedBody recovers the body a layout stand-in serves", () => {

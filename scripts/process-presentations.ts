@@ -21,11 +21,12 @@
  * @module scripts/process-presentations
  */
 import { existsSync, readdirSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { inputSiteReached } from "./input-trace.ts";
 
 import { docsSourceDirFor, siteDirFor } from "../schemas/cat-harness.js";
 import { publishedPagePath } from "./lib/jekyll-permalink.ts";
+import { visualiserSitePath } from "./viewer-declarations.ts";
 
 /**
  * The part of a `WebPage` manifest this reads, declared here rather than
@@ -107,5 +108,22 @@ export function processTarget(home: string, presentations: readonly Presentation
     const p = presentations[0]!;
     return `${p.href}#${p.node}`;
   }
-  return `processes/${home}.html`;
+  return `${processesRoute()}/${home}.html`;
+}
+
+let route: string | undefined;
+/**
+ * Where the process pages are: the route of the visualiser cat-harness
+ * DECLARES rendered by `processes-viewer` — `cat-harness/processes` (owner,
+ * 2026-10-09: `<base>/<harness>/<visualizer>`). Read once, never spelled.
+ */
+function processesRoute(): string {
+  if (route !== undefined) return route;
+  const harness = join(import.meta.dir, "..");
+  try {
+    route = dirname(visualiserSitePath(harness, "processes-viewer").rel);
+  } catch {
+    route = "cat-harness/processes";
+  }
+  return route;
 }

@@ -136,5 +136,5 @@ next to the site. The review page reads `../visual-diff.json`.
 
 | process | step(s) that name it |
 |---|---|
-| [Content Change and Review](../../processes/content-change-review.html) | Compare main vs staging |
+| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Compare main vs staging |
 

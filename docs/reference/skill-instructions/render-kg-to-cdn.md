@@ -18,7 +18,7 @@ publication to a CDN at a given publication root URL … independent of staging
 vs publication … just rendering … output is status of push to CDN +
 message"*, and *"gh-pages is one specific tool of general 'publish to CDN'"*.
 
-Drawn as [`render-kg-to-cdn.bpmn`](../../processes/render-kg-to-cdn.html).
+Drawn as [`render-kg-to-cdn.bpmn`](../../cat-harness/processes/render-kg-to-cdn.html).
 
 ## Inputs and output
 
@@ -78,14 +78,14 @@ whether the push landed.
 
 ## Processes that run this skill
 
-This skill has its own process: **[Render a Knowledge Graph to a CDN](../../processes/render-kg-to-cdn.html)**.
+This skill has its own process: **[Render a Knowledge Graph to a CDN](../../cat-harness/processes/render-kg-to-cdn.html)**.
 
 <img src="../../assets/img/workflows/render-kg-to-cdn.svg" alt="BPMN diagram: Render a Knowledge Graph to a CDN" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Render a Knowledge Graph to a CDN](../../processes/render-kg-to-cdn.html) | Resolve the Subgraphs, the root URL and the target's Tool; Render and push with the target's Tool [its own subprocess]; Report the push: status and message |
-| [Publishing the docs site, and keeping the previews alive](../../processes/docs-site-publish.html) | Push to the CDN [render-kg-to-cdn] gh-pages, FULL REPLACE (calls a sub-process) |
-| [Staging a feature branch preview, and taking it down](../../processes/feature-staging.html) | Push to the CDN at STAGING/&lt;slug&gt;/ (calls a sub-process) |
-| [Draft, review and publish](../../processes/draft-to-publication.html) | Version, tag and publish |
+| [Render a Knowledge Graph to a CDN](../../cat-harness/processes/render-kg-to-cdn.html) | Resolve the Subgraphs, the root URL and the target's Tool; Render and push with the target's Tool [its own subprocess]; Report the push: status and message |
+| [Publishing the docs site, and keeping the previews alive](../../cat-harness/processes/docs-site-publish.html) | Push to the CDN [render-kg-to-cdn] gh-pages, FULL REPLACE (calls a sub-process) |
+| [Staging a feature branch preview, and taking it down](../../cat-harness/processes/feature-staging.html) | Push to the CDN at STAGING/&lt;slug&gt;/ (calls a sub-process) |
+| [Draft, review and publish](../../cat-harness/processes/draft-to-publication.html) | Version, tag and publish |
 

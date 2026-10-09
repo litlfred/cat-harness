@@ -101,7 +101,7 @@ import {
 } from "./lsi.ts";
 import { readQaTree } from "./qa-store.ts";
 import { JUDGEMENT_EXIT } from "./qa-results.ts";
-import { handledDirectories, withRendersFrontMatter } from "./viewer-declarations.ts";
+import { withRenderedByFrontMatter } from "./viewer-declarations.ts";
 
 /** This generator's Tool node (`tools/viewers.ts`), named on every page it draws. */
 const VIEWER_TOOL = "lsi-viewer";
@@ -324,8 +324,7 @@ function draw(read?: Extract<IndexesRead, { state: "hit" }>): string {
   // B7a-2b): the `qa` tree the sidecars live in, read from the declaration
   // rather than spelled here. The directory no longer names this page; a
   // reader derives the viewer from these two lines.
-  const drawn = handledDirectories(REPO, join(REPO, "cat-harness"), "qa");
-  return withRendersFrontMatter(L.join("\n") + "\n", drawn, VIEWER_TOOL);
+  return withRenderedByFrontMatter(L.join("\n") + "\n", VIEWER_TOOL);
 }
 
 if (import.meta.main) {

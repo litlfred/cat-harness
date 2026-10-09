@@ -67,8 +67,8 @@ import {
   type MethodologyNode,
 } from "./check-methodology-evidence.js";
 import { libraryResolver, type LibraryResolver } from "./lib/library-links.ts";
-import { conventionalPage, handledDirectories, withRendersFrontMatter } from "./viewer-declarations.js";
 import { readDeclaration } from "../schemas/cat-harness.js";
+import { visualiserSitePath, withRenderedByFrontMatter } from "./viewer-declarations.js";
 
 /** This generator's Tool node (`tools/viewers.ts`), named on every page it draws. */
 const VIEWER_TOOL = "methodologies-viewer";
@@ -175,12 +175,14 @@ export function methodologyRows(
  * `conventionalPage`). Never a literal — `site-dir-single-answer` refuses one.
  */
 export function pageRelPath(repo = REPO): string | undefined {
-  const catRoot = existsSync(join(repo, "cat-harness.json"))
-    ? repo
-    : existsSync(join(repo, "cat-harness"))
-      ? join(repo, "cat-harness")
-      : repo;
-  return conventionalPage(catRoot, KIND);
+  // The route cat-harness DECLARES for this Tool's visualiser (owner,
+  // 2026-10-09): `<harness>/<id>/index.md`, never chosen here.
+  try {
+    const cat = existsSync(join(repo, "cat-harness")) ? join(repo, "cat-harness") : repo;
+    return visualiserSitePath(cat, VIEWER_TOOL).rel;
+  } catch {
+    return undefined;
+  }
 }
 
 /** The base docs layer — the same answer `compose-docs.ts` uses. */
@@ -448,19 +450,8 @@ if (import.meta.main) {
     process.exit(1);
   }
 
-  // The page says which directories it draws (#1168 B7a-2).
-  const declName = readDeclaration(INSTANCE_ROOT)?.name ?? "cat-harness";
-  const bName = basename(INSTANCE_ROOT);
-  const handled = handledDirectories(REPO, INSTANCE_ROOT, KIND, "corpus").map((p) => {
-    if (declName && (p === bName || p.startsWith(bName + "/"))) {
-      return declName + p.slice(bName.length);
-    }
-    return p;
-  });
-
-  const rendered = withRendersFrontMatter(
+  const rendered = withRenderedByFrontMatter(
     page(rows, report, libraryResolver(REPO, INSTANCE_ROOT), PAGE),
-    handled,
     VIEWER_TOOL,
   );
   const docsBase = existsSync(join(INSTANCE_ROOT, "docs"))

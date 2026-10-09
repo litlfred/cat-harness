@@ -72,9 +72,9 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [A confirmation can be waived](confirmation-waiver.html) | `confirmation-waiver` | — | Several rules here stop an agent and hand a decision back: merging to `main`, |
 | [The comparison goes BEFORE the question, not inside the options](decision-comparison.html) | `decision-comparison` | — | [`interaction-modality`](interaction-modality.md) §4.1 fixes the *order* — |
 | [Deletion requires explicit confirmation](deletion-requires-confirmation.html) | `deletion-requires-confirmation` | — | **One rule, and it has no exceptions worth the word:** |
-| [/getting-started](getting-started.html) | `getting-started` | — | Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../processes/getting-sta |
-| [/interaction-modality](interaction-modality.html) | `interaction-modality` | — | Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../processes/getting-sta |
-| [/repo-conversion](repo-conversion.html) | `repo-conversion` | — | Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../processes/getting-sta |
+| [/getting-started](getting-started.html) | `getting-started` | — | Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../cat-harness/processes/getting-sta |
+| [/interaction-modality](interaction-modality.html) | `interaction-modality` | — | Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../cat-harness/processes/getting-sta |
+| [/repo-conversion](repo-conversion.html) | `repo-conversion` | — | Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../cat-harness/processes/getting-sta |
 | [A falling-off retry rate, on every error](retry-backoff.html) | `retry-backoff` | — | Owner, 2026-09-20: **"as rule, use logarithmic fall-off on all errors. core |
 | [symbiotic-interaction](symbiotic-interaction.html) | `symbiotic-interaction` | — |  |
 | [Untrusted input](untrusted-input.html) | `untrusted-input` | — | One defect, three substrates. In every case something **substitutes a value |

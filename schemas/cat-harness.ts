@@ -763,6 +763,8 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
   topology?: Topology;
   /** Directories this instance scans, before inheritance. */
   directories: ContentDirectory[];
+  /** The visualisers this harness declares, each at `<base>/<name>/<id>/` — {@link HarnessVisualiser}. Owner, 2026-10-09. */
+  visualisers?: HarnessVisualiser[];
   /** Graphs known but not held — {@link RemoteGraph}. */
   remoteGraphs?: RemoteGraph[];
   /** Harnesses this one is associated with and does not hold — {@link AssociatedHarness}. Issue #1146. */
@@ -1550,6 +1552,90 @@ export type VisualiserKind = (typeof VISUALISER_KINDS)[number];
  */
 export const TileSchema = VisualisationSchema.omit({ ref: true });
 export type Tile = z.infer<typeof TileSchema>;
+
+/**
+ * ONE VISUALISER, declared by the HARNESS at its own level — the only place a
+ * visualiser is declared.
+ *
+ * The owner, 2026-10-09: *"I still want the harness to be where specific
+ * visualizers/pages are declared for the harness at the level … Why
+ * `renders: [fsh-guts]` in visualizer? Could have multiple visualizers
+ * contending for same url... so not good. Need harness to declare visualizer
+ * is renderedBy ...."*
+ *
+ * It replaces BOTH earlier answers: the directory naming its page
+ * (`coverage.visualiser`, until #1168 B7a-2b) and the page naming the
+ * directories it drew (`renders:` / `<meta name="renders">`, since). Neither
+ * could stop two pages answering at one URL, because neither said where the
+ * URL came from. Here it comes from the declaration and nothing else:
+ * `visualiserRoute({ harness: <this instance's name>, visualiser: id })`
+ * (`schemas/visualiser-route.ts`), so two claims on one URL are two
+ * declarations of one `(harness, id)` pair — refused by
+ * `check:visualiser-routes` before anything is drawn.
+ *
+ * ## What it covers
+ *
+ * - `covers` — directory ids THIS instance declares. A harness names its own
+ *   directories, never another instance's: that would be a lower layer naming
+ *   a higher one.
+ * - `coversKinds` — graph typologies, over every declared directory of those
+ *   kinds in the checkout: the "full KG" a corpus-wide viewer draws. That is
+ *   how cat-harness's library viewer covers who-iris's library without
+ *   naming it — a kind is vocabulary, not another instance's directory.
+ *
+ * At least one is required: a visualiser covering nothing is a page nothing
+ * can open.
+ *
+ * ## `subgraphs` — what `<visualiser>/<sub-graph>/` names
+ *
+ * `instance` — one page per covered instance (`cat-harness/library/who-iris/`);
+ * `directory` — one per covered directory id. Absent: the visualiser draws
+ * the full view only. Readers use it to send a directory's tile to its
+ * sub-graph page rather than the full one.
+ *
+ * ## `renderedBy` — a Tool node, by id
+ *
+ * The Tool is a KG node (`tools/`); its implementation may live anywhere.
+ * `check:visualiser-routes` resolves the id against every declared `tools`
+ * graph and checks that every kind the visualiser covers is one the Tool
+ * declares it `renders`.
+ *
+ * ## `alias` — bean `t4xb`, opt-in
+ *
+ * `<base>/<alias>/` redirects to the canonical route. Never where the page is
+ * drawn, and refused when it collides with another alias, a harness name or
+ * anything the site already carries at its top level.
+ *
+ * The rest — title, icon, surfaces, hidden, theme, publish, writer — is the
+ * tile and publishing vocabulary every visualisation already had
+ * ({@link TileSchema}), so `publish: "staging-only"` keeps working unchanged.
+ */
+export const HarnessVisualiserSchema = TileSchema.extend({
+  /** The URL segment under `<base>/<harness>/`, unique within this harness. */
+  id: z.string().regex(/^[a-z0-9][a-z0-9-]*$/, "a URL segment: lower-case letters, digits, hyphens"),
+  /** The Tool node that draws it. */
+  renderedBy: z.string().regex(/^[a-z0-9][a-z0-9-]*$/, "a Tool node id"),
+  /** This instance's directory ids it covers. */
+  covers: z.array(z.string().min(1)).nonempty().optional(),
+  /** Graph typologies it covers, over every declared directory of them in the checkout. */
+  coversKinds: z.array(z.string().min(1)).nonempty().optional(),
+  /** What a `<sub-graph>` segment names, when the visualiser draws per-sub-graph views. */
+  subgraphs: z.enum(["instance", "directory"]).optional(),
+  /**
+   * For `subgraphs: "directory"`: the sub-graph PATH a covered kind's
+   * directories sit under, by kind — `{ "skills": "index/skills" }` puts the
+   * `core-skills` directory's view at `<harness>/<id>/index/skills/core-skills/`.
+   * Absent for a kind: the directory id alone. Declared because the nesting is
+   * the visualiser's own declared structure (auto-docs' `auto-docs.json`), not
+   * something a reader may infer from the pages.
+   */
+  subgraphUnder: z.record(z.string().min(1), z.string().regex(/^[a-z0-9][a-z0-9-]*(?:\/[a-z0-9][a-z0-9-]*)*$/, "a /-separated path of URL segments")).optional(),
+  /** Opt-in `<base>/<alias>/` redirect to the canonical route (bean `t4xb`). */
+  alias: z.string().regex(/^[a-z0-9][a-z0-9-]*$/, "a URL segment").optional(),
+}).refine((v) => v.covers !== undefined || v.coversKinds !== undefined, {
+  message: "a visualiser covers something: declare `covers` (directory ids) or `coversKinds` (graph typologies)",
+});
+export type HarnessVisualiser = z.infer<typeof HarnessVisualiserSchema>;
 
 /**
  * A directory whose contents live on a BRANCH — one tree per commit, or one
@@ -3282,6 +3368,13 @@ export const CatHarnessDeclarationSchema = z.object({
   topology: TopologySchema.optional(),
   directories: z.array(ContentDirectorySchema).default([]),
   /**
+   * The visualisers this harness declares — see {@link HarnessVisualiserSchema}.
+   * Each is published at `<base>/<name>/<id>/` and nowhere else; ids are unique
+   * and every `covers` entry names a directory declared above (refined below).
+   * `.optional()`: absent means this instance declares none.
+   */
+  visualisers: z.array(HarnessVisualiserSchema).optional(),
+  /**
    * Graphs this instance knows about and does not hold — see {@link RemoteGraph}.
    * A SEPARATE array from `directories`, not a variant of one, because a remote
    * graph has no directory.
@@ -3486,6 +3579,32 @@ export const CatHarnessDeclarationSchema = z.object({
    * somebody could relax.
    */
   .superRefine((d, ctx) => {
+    // The owner, 2026-10-09: one route per `(harness, visualiser)`. Two
+    // entries with one id would be two pages contending for one URL, which is
+    // the defect the harness-level declaration exists to make impossible; and
+    // `covers` names THIS instance's directories, so an id it does not
+    // declare points at nothing.
+    const visIds = new Set<string>();
+    const dirIds = new Set((d.directories ?? []).map((x) => x.id));
+    (d.visualisers ?? []).forEach((v, i) => {
+      if (visIds.has(v.id)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["visualisers", i, "id"],
+          message: `visualiser \`${v.id}\` is declared twice: two pages would contend for <base>/${d.name}/${v.id}/`,
+        });
+      }
+      visIds.add(v.id);
+      (v.covers ?? []).forEach((c, j) => {
+        if (!dirIds.has(c)) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ["visualisers", i, "covers", j],
+            message: `visualiser \`${v.id}\` covers \`${c}\`, which this instance does not declare as a directory`,
+          });
+        }
+      });
+    });
     // Issue #1146: an associated harness is referenced, never held. A name that
     // is also in `needs` would make it both, and the overlay would load it.
     const needs = new Set(d.needs ?? []);

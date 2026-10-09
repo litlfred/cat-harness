@@ -13,7 +13,7 @@ parent: Skill instructions
 {% raw %}
 # /interaction-modality — ask in a form the person can answer
 
-Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../processes/getting-started.html),
+Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../cat-harness/processes/getting-started.html),
 `Task_DetectModality` and `Task_AskIntent`.
 Preferences: `cat-harness/memory/interaction.json` (committed, read at session start).
 
@@ -580,8 +580,8 @@ reader's font choice silently reconfiguring how an agent talks to the author.
 
 | process | step(s) that name it |
 |---|---|
-| [Session state machine](../../processes/session-state-machine.html) | Ask who is acting |
-| [A refused merge-train member](../../processes/merge-refusal.html) | Ask the owner on the PR, both sides quoted |
-| [A merge train](../../processes/merge-train.html) | Release the merge to main; Place it by hand, with a reason |
-| [Getting started](../../processes/getting-started.html) | Detect the interaction modality; Choose from the offered options |
+| [Session state machine](../../cat-harness/processes/session-state-machine.html) | Ask who is acting |
+| [A refused merge-train member](../../cat-harness/processes/merge-refusal.html) | Ask the owner on the PR, both sides quoted |
+| [A merge train](../../cat-harness/processes/merge-train.html) | Release the merge to main; Place it by hand, with a reason |
+| [Getting started](../../cat-harness/processes/getting-started.html) | Detect the interaction modality; Choose from the offered options |
 

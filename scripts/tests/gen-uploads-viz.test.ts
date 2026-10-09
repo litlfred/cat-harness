@@ -53,7 +53,7 @@ describe("ONE dataset — this harness publishes no projection of its own", () =
     // `viewerPlacement(..., "library")` is what makes the href resolve to the
     // one dataset. Passing the uploads segment instead would mint a second.
     const src = readFileSync(join(import.meta.dir, "..", "gen-uploads-viz.ts"), "utf8");
-    expect(src).toContain('viewerPlacement(site, `${handler}/${seg}`, "library")');
+    expect(src).toContain('viewerPlacement(site, route, "library")');
   });
 });
 

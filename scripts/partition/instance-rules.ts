@@ -1107,6 +1107,7 @@ export const RULES: Rule[] = [
       // block-kind and contribution node schemas, and the declared-node scan.
       // Harness for the same reason as their importers.
       "schemas/instance-roots.ts",
+      "schemas/visualiser-route.ts",        // the ONE route every declared visualiser is published at (owner, 2026-10-09): imported by the declaration reader and the tiles
       "schemas/script-table.ts",            // the checkout's script table, by layer (bean `ar1s` P4): read from the declared instances, as instance-roots finds them
       "scripts/run-script.ts",              // `bun run cat <name>`: runs a script from that table
       "scripts/mount-from-lock.ts",              // `bun run cat mount:lock`: replays the remote-mount lock (bean nn8e)
@@ -1377,6 +1378,7 @@ export const RULES: Rule[] = [
       //    declaration, a role, a graph typology or the gate set; none reads a
       //    folio's content model.
       "scripts/check-declared-dirs.ts",     // the same declaration, its DIRECTORIES
+      "scripts/check-visualiser-routes.ts", // the same declaration, its VISUALISERS: one route each, no collision (owner, 2026-10-09)
       "scripts/check-fallback-roles.ts",    // reads role-graph
       // HARNESS, although what it reads is core's glossary — the test is the
       // module's imports, not the data's home. It reaches only
@@ -1398,7 +1400,7 @@ export const RULES: Rule[] = [
       // makes it a different answer rather than an inconsistent one.
       "scripts/skill-governance.ts",        // which skill governs a directory, read from the skills (#1168 B7b)
       "scripts/docs-declarations.ts",       // which page documents a directory, read from the pages (#1168 B7c)
-      "scripts/viewer-declarations.ts",     // which viewer page draws a directory, read from the pages (#1168 B7a-2)
+      "scripts/viewer-declarations.ts",     // which declared visualiser draws a directory, read from the harness declarations (owner, 2026-10-09)
       "scripts/governing-process.ts",       // which BPMN process governs a directory, read from `coverage.process`
       "scripts/render-pipeline.ts",         // WHICH renders run and in what order, read from the declarations
       "scripts/render-selection.ts",        // WHICH of them must re-run against a seed, and why (bean `9c34`). Harness machinery: it computes a decision and writes no page, so it belongs beside the pipeline rather than with the renderers

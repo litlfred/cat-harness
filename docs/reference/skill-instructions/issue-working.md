@@ -177,6 +177,6 @@ about manufacturing an issue for every bean.
 
 | process | step(s) that name it |
 |---|---|
-| [Code change and review](../../processes/code-change-review.html) | Branch, and announce it |
-| [Which open pull requests have no CI run on their head?](../../processes/pr-checks-present.html) | Comment ONCE per (PR, head sha) |
+| [Code change and review](../../cat-harness/processes/code-change-review.html) | Branch, and announce it |
+| [Which open pull requests have no CI run on their head?](../../cat-harness/processes/pr-checks-present.html) | Comment ONCE per (PR, head sha) |
 

@@ -59,7 +59,8 @@ import { spawnSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
-import { graphLayer, readDeclaration, visualisationsOf } from "../schemas/cat-harness.ts";
+import { graphLayer, readDeclaration } from "../schemas/cat-harness.ts";
+import { viewersOf } from "./viewer-declarations.ts";
 import { ancestorsOf, flattenDependencies } from "../schemas/dependency-order.js";
 import { allowedFromNeeds } from "../schemas/layer-direction.js";
 import { readInstances } from "./check-import-direction.ts";
@@ -292,7 +293,14 @@ export function readTree(repoRoot = REPO_ROOT): Inst[] {
         path: `${relative(repoRoot, join(i.root, d.path)).replace(/\/$/, "")}/`,
         ...(d.writer ? { writer: d.writer } : {}),
         onBranch: (d.source !== undefined && d.source.kind !== "directory") || d.storage !== undefined,
-        visualisers: visualisationsOf(d.coverage, d.id).map((v) => ({ ref: v.ref, ...(v.writer ? { writer: v.writer } : {}) })),
+        // The harness-declared visualisers that BUILD AT PUBLISH — those
+        // declaring a `writer` (bean 0b8c). A visualiser without one is a
+        // committed page held current by its own `:check`, and its bytes are
+        // the generator's, not the branch's (owner, 2026-10-09: the harness
+        // declares each visualiser; a page no longer claims a directory).
+        visualisers: viewersOf(d, i.root, repoRoot)
+          .filter((v) => v.writer !== undefined)
+          .map((v) => ({ ref: v.ref, writer: v.writer! })),
       })),
     };
   });

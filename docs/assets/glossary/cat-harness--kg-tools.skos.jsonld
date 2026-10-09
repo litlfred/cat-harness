@@ -2094,6 +2094,26 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/staging-graph-viewer",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Staging-only graph viewer"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Render a kept-but-unpublished workspace graph as one page, for a local build or a staging preview only; a canonical deploy withholds it."
+        }
+      ],
+      "skos:notation": "staging-graph-viewer",
+      "dcterms:source": "cat-harness/tools/viewers.ts#staging-graph-viewer",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/stakeholder-map",
       "@type": "skos:Concept",
       "skos:inScheme": {

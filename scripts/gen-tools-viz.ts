@@ -52,7 +52,7 @@ import { declarationPathIn } from "../schemas/cat-harness.js";
 import { baseDocsDir } from "./compose-docs.js";
 import { kgRoots } from "./known-skills.js";
 import { skillPageHref, skillPagesOf } from "./lib/skill-pages.ts";
-import { conventionalPage, handledDirectories, withRendersFrontMatter } from "./viewer-declarations.js";
+import { visualiserSitePath, withRenderedByFrontMatter } from "./viewer-declarations.js";
 
 /** This generator's Tool node (`tools/viewers.ts`), named on every page it draws. */
 const VIEWER_TOOL = "tools-viewer";
@@ -179,7 +179,13 @@ function instanceDeclarations(repo: string): string[] {
  * `conventionalPage`). Never a literal — `site-dir-single-answer` refuses one.
  */
 export function pageRelPath(repo = REPO): string | undefined {
-  return conventionalPage(join(repo, "cat-harness"), KIND);
+  // The route cat-harness DECLARES for this Tool's visualiser (owner,
+  // 2026-10-09): `<harness>/<id>/index.md`, never chosen here.
+  try {
+    return visualiserSitePath(join(repo, "cat-harness"), VIEWER_TOOL).rel;
+  } catch {
+    return undefined;
+  }
 }
 
 /** The base docs layer — the same answer `compose-docs.ts` uses. */
@@ -376,9 +382,8 @@ export function publishedPage(rows: Parameters<typeof page>[0], known: Parameter
   // guess a location.
   const rel = pageRelPath(repo);
   const skillPages = rel === undefined ? new Set<string>() : skillPagesOf(repo);
-  return withRendersFrontMatter(
+  return withRenderedByFrontMatter(
     page(rows, known, skillPages, rel ?? ""),
-    handledDirectories(repo, join(repo, "cat-harness"), KIND),
     VIEWER_TOOL,
   );
 }

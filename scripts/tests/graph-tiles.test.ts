@@ -92,7 +92,7 @@ describe("a tile is derived from the DECLARATION", () => {
   test("the tile carries the ref EXACTLY as declared — it opens the existing viewer", () => {
     // "those should open their exisiting visualzaiton". Nothing here builds a
     // viewer, and a tile that recomposed the path could reach a different one.
-    const ref = "cat-harness/docs/beans/index.html";
+    const ref = "cat-harness/docs/cat-harness/beans/index.html";
     expect(graphTiles([dir("beans", { visualiser: ref })])[0]?.ref).toBe(ref);
   });
 });
@@ -187,7 +187,7 @@ describe("a declared path is NOT a published URL — `prc5` one layer down", () 
     // The mistake already paid for: a tile carrying `docs/assets/…` 404'd for
     // every reader, because the build copies the site directory's CONTENTS to
     // the mount and the declared prefix is exactly what a URL does not carry.
-    expect(publishedHref(SITE, "cat-harness/docs/beans/index.html")).toBe("/beans/");
+    expect(publishedHref(SITE, "cat-harness/docs/cat-harness/beans/index.html")).toBe("/cat-harness/beans/");
     expect(publishedHref(SITE, "cat-harness/docs/cat-harness/schemas/x/index.html")).toBe(
       "/cat-harness/schemas/x/",
     );
@@ -214,8 +214,8 @@ describe("a declared path is NOT a published URL — `prc5` one layer down", () 
     // `index.md` must reach `/x/`, not `/x/index.html`: two spellings of one
     // page are two entries in a reader's history, which is why the directory
     // rewrite exists at all. The `.md` mapping must not undo it.
-    expect(publishedHref(SITE, "cat-harness/docs/processes/index.md")).toBe("/processes/");
-    expect(publishedHref(SITE, "cat-harness/docs/tools/index.md")).toBe("/tools/");
+    expect(publishedHref(SITE, "cat-harness/docs/cat-harness/processes/index.md")).toBe("/cat-harness/processes/");
+    expect(publishedHref(SITE, "cat-harness/docs/cat-harness/tools/index.md")).toBe("/cat-harness/tools/");
   });
 
   test("a ref OUTSIDE the site gets no href rather than a guessed one", () => {
@@ -227,9 +227,9 @@ describe("a declared path is NOT a published URL — `prc5` one layer down", () 
   });
 
   test("tiles carry the href only when a site directory is supplied", () => {
-    const dirs = [dir("beans", { visualiser: "cat-harness/docs/beans/index.html" })];
+    const dirs = [dir("beans", { visualiser: "cat-harness/docs/cat-harness/beans/index.html" })];
     expect(graphTiles(dirs)[0]?.href).toBeUndefined();
-    expect(graphTiles(dirs, SITE)[0]?.href).toBe("/beans/");
+    expect(graphTiles(dirs, SITE)[0]?.href).toBe("/cat-harness/beans/");
   });
 
   test("an unservable ref leaves the tile unlinked but still present", () => {
@@ -255,7 +255,7 @@ describe("a declared path is NOT a published URL — `prc5` one layer down", () 
 describe("a tile's count is attached, never derived", () => {
   const tiles = (): GraphTile[] =>
     graphTiles(
-      [dir("beans", { visualiser: "docs/beans/index.html" }),
+      [dir("beans", { visualiser: "docs/cat-harness/beans/index.html" }),
        dir("fsh-guts", { visualiser: "docs/fsh-guts/index.html" })],
       "docs",
     );
@@ -312,7 +312,7 @@ describe("a tile's count is attached, never derived", () => {
     // badge the first and leave the rest looking uncounted.
     const many = graphTiles(
       [dir("beans", {
-        visualiser: [{ ref: "docs/beans/index.html" }, { ref: "docs/beans/alt.html" }],
+        visualiser: [{ ref: "docs/cat-harness/beans/index.html" }, { ref: "docs/cat-harness/beans/alt.html" }],
       })],
       "docs",
     );
@@ -331,11 +331,11 @@ describe("a tile's count is attached, never derived", () => {
 describe("a page's declared ref names the directory that declared it", () => {
   test("the ref resolves to its directory id", () => {
     const got = directoryByVisualisationRef([
-      dir("beans", { visualiser: "docs/beans/index.html" }),
-      dir("todos", { visualiser: "docs/todos/index.html" }),
+      dir("beans", { visualiser: "docs/cat-harness/beans/index.html" }),
+      dir("todos", { visualiser: "docs/cat-harness/todos/index.html" }),
     ]);
-    expect(got.get("docs/beans/index.html")).toBe("beans");
-    expect(got.get("docs/todos/index.html")).toBe("todos");
+    expect(got.get("docs/cat-harness/beans/index.html")).toBe("beans");
+    expect(got.get("docs/cat-harness/todos/index.html")).toBe("todos");
   });
 
   test("a ref nobody declared is ABSENT, not a guess", () => {
@@ -343,7 +343,7 @@ describe("a page's declared ref names the directory that declared it", () => {
     // at all. A page no declaration names has no tile, so there is nothing to
     // badge; inventing an id here would mint a count for a directory nobody
     // declared.
-    const got = directoryByVisualisationRef([dir("beans", { visualiser: "docs/beans/index.html" })]);
+    const got = directoryByVisualisationRef([dir("beans", { visualiser: "docs/cat-harness/beans/index.html" })]);
     expect(got.get("docs/nobody/index.html")).toBeUndefined();
   });
 
@@ -398,12 +398,12 @@ describe("a page's declared ref names the directory that declared it", () => {
 describe("one tile per page (#1168 B7a-2b)", () => {
   // Viewers are read from the pages, and one page may draw several
   // directories. The tile goes to the instance's own directory first.
-  const shared = "docs/processes/index.md";
+  const shared = "docs/cat-harness/processes/index.md";
   const tiles = graphTiles([
     { id: "smart-base-processes", scope: "repository", coverage: { visualiser: shared } },
     { id: "processes", coverage: { visualiser: shared } },
     { id: "core-processes", scope: "repository", coverage: { visualiser: shared } },
-    { id: "tools", coverage: { visualiser: "docs/tools/index.md" } },
+    { id: "tools", coverage: { visualiser: "docs/cat-harness/tools/index.md" } },
   ]);
 
   test("a page shared by several directories gets one tile", () => {

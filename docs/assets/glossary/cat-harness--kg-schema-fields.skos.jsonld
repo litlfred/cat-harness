@@ -7120,6 +7120,25 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/cat-harness.catharnessdeclaration.visualisers",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "CatHarnessDeclaration.visualisers"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The visualisers this harness declares, each at `<base>/<name>/<id>/` — {@link HarnessVisualiser}. Owner, 2026-10-09."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/cat-harness.ts#CatHarnessDeclaration.visualisers",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/cat-harness.catharnessdeclarationschema.alsowritten",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -7573,6 +7592,25 @@
         }
       ],
       "dcterms:source": "cat-harness/schemas/cat-harness.ts#CatHarnessDeclarationSchema.version",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/cat-harness.catharnessdeclarationschema.visualisers",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "CatHarnessDeclarationSchema.visualisers"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The visualisers this harness declares — see {@link HarnessVisualiserSchema}. Each is published at `<base>/<name>/<id>/` and nowhere else; ids are unique and every `covers` entry names a directory declared above (refined below). `.optional()`: absent means this instance declares none."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/cat-harness.ts#CatHarnessDeclarationSchema.visualisers",
       "skos:note": "candidate"
     },
     {
@@ -8561,6 +8599,139 @@
         }
       ],
       "dcterms:source": "cat-harness/schemas/cat-harness.ts#GraphNodeDirectoryShape.subgraph",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/cat-harness.harnessvisualiserschema.alias",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "HarnessVisualiserSchema.alias"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Opt-in `<base>/<alias>/` redirect to the canonical route (bean `t4xb`)."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/cat-harness.ts#HarnessVisualiserSchema.alias",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/cat-harness.harnessvisualiserschema.covers",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "HarnessVisualiserSchema.covers"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "This instance's directory ids it covers."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/cat-harness.ts#HarnessVisualiserSchema.covers",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/cat-harness.harnessvisualiserschema.coverskinds",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "HarnessVisualiserSchema.coversKinds"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Graph typologies it covers, over every declared directory of them in the checkout."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/cat-harness.ts#HarnessVisualiserSchema.coversKinds",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/cat-harness.harnessvisualiserschema.id",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "HarnessVisualiserSchema.id"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The URL segment under `<base>/<harness>/`, unique within this harness."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/cat-harness.ts#HarnessVisualiserSchema.id",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/cat-harness.harnessvisualiserschema.renderedby",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "HarnessVisualiserSchema.renderedBy"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The Tool node that draws it."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/cat-harness.ts#HarnessVisualiserSchema.renderedBy",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/cat-harness.harnessvisualiserschema.subgraphs",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "HarnessVisualiserSchema.subgraphs"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "What a `<sub-graph>` segment names, when the visualiser draws per-sub-graph views."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/cat-harness.ts#HarnessVisualiserSchema.subgraphs",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/cat-harness.harnessvisualiserschema.subgraphunder",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "HarnessVisualiserSchema.subgraphUnder"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "For `subgraphs: \"directory\"`: the sub-graph PATH a covered kind's directories sit under, by kind — `{ \"skills\": \"index/skills\" }` puts the `core-skills` directory's view at `<harness>/<id>/index/skills/core-skills/`. Absent for a kind: the directory id alone. Declared because the nesting is the visualiser's own declared structure (auto-docs' `auto-docs.json`), not something a reader may infer from the pages."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/cat-harness.ts#HarnessVisualiserSchema.subgraphUnder",
       "skos:note": "candidate"
     },
     {
@@ -36738,6 +36909,139 @@
         }
       ],
       "dcterms:source": "cat-harness/schemas/viewer-nav-qa.ts#ViewerNavQaSchema.root",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/visualiser-route.routeclaim.by",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "RouteClaim.by"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Who claims it, for the message: `cat-harness.visualisers[library]`, `alias of …`, `site: processes/`."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/visualiser-route.ts#RouteClaim.by",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/visualiser-route.routeclaim.route",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "RouteClaim.route"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Site-relative route, trailing slash for a directory."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/visualiser-route.ts#RouteClaim.route",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/visualiser-route.routecollision.kind",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "RouteCollision.kind"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "`same` — one route claimed twice; `nested` — a claim inside another's subtree."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/visualiser-route.ts#RouteCollision.kind",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/visualiser-route.visualiserrouteparts.asset",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "VisualiserRouteParts.asset"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "A path below the (sub-graph's) view, `/`-separated, no leading slash."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/visualiser-route.ts#VisualiserRouteParts.asset",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/visualiser-route.visualiserrouteparts.harness",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "VisualiserRouteParts.harness"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The declaring harness's `name`."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/visualiser-route.ts#VisualiserRouteParts.harness",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/visualiser-route.visualiserrouteparts.subgraph",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "VisualiserRouteParts.subgraph"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "A sub-graph of what the visualiser covers — absent for the full KG. One segment, or a `/`-separated path of segments when the visualiser declares its sub-graphs nested (auto-docs' `index/skills/core-skills`, owner 2026-10-03: *\"auto-docs is one declared subgraph, with declared sub-sub-graphs per writer\"*)."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/visualiser-route.ts#VisualiserRouteParts.subgraph",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/visualiser-route.visualiserrouteparts.visualiser",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "VisualiserRouteParts.visualiser"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The visualiser's declared `id`."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/visualiser-route.ts#VisualiserRouteParts.visualiser",
       "skos:note": "candidate"
     },
     {

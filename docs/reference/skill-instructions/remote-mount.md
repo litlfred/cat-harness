@@ -29,7 +29,7 @@ built on:
 
 | | where |
 |---|---|
-| the process | [`mount-dependency.bpmn`](../../processes/mount-dependency.html); the per-subgraph view is the `remote` and `npm` flows of [`mount-subgraph.bpmn`](../../processes/mount-subgraph.html) |
+| the process | [`mount-dependency.bpmn`](../../cat-harness/processes/mount-dependency.html); the per-subgraph view is the `remote` and `npm` flows of [`mount-subgraph.bpmn`](../../cat-harness/processes/mount-subgraph.html) |
 | the schema | `cat-harness/schemas/remote-mount.ts`, plus the `remote` and `npm` members of `SubgraphSource` (`schemas/subgraph-source.ts`) |
 | the tool | `bun run cat mount:remote` (`--plan` to resolve without writing), and `bun run cat mount:remote:check` (offline) |
 | the entry point | `bun run cat state:mount`, which the session-start hook already runs |
@@ -205,7 +205,7 @@ on"*; repeated 2026-10-07: *"need to create gh-pages before can deploy"*
 The step is `Task_ProvisionGhPages` ("Provision gh-pages") in the
 getting-started process ([`getting-started`](getting-started.md)
 §5), with the semantics of `A_Provision` in bootstrap-tools'
-[`render-kg-to-github-pages.bpmn`](../../processes/render-kg-to-github-pages.html).
+[`render-kg-to-github-pages.bpmn`](../../cat-harness/processes/render-kg-to-github-pages.html).
 Run `bun run cat-harness/scripts/pages-bootstrap.ts --provision` (idempotent,
 never forced; without the flag it only reports `unprovisioned` and the exact
 command), then set Pages to **"Deploy from a branch: gh-pages, / (root)"**.
@@ -239,6 +239,6 @@ These are tracked on bean `0mpw`:
 
 | process | step(s) that name it |
 |---|---|
-| [Remote-mount a dependency](../../processes/mount-dependency.html) | Declare the mount: harness, repository, pin; Resolve the closure at the pin; Mount each instance at its declared path; Write the lock; Check disk against lock against declaration |
-| [Mount a declared subgraph](../../processes/mount-subgraph.html) | Mount the remote tree at its pin |
+| [Remote-mount a dependency](../../cat-harness/processes/mount-dependency.html) | Declare the mount: harness, repository, pin; Resolve the closure at the pin; Mount each instance at its declared path; Write the lock; Check disk against lock against declaration |
+| [Mount a declared subgraph](../../cat-harness/processes/mount-subgraph.html) | Mount the remote tree at its pin |
 

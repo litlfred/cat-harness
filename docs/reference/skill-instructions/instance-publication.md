@@ -561,5 +561,5 @@ way there. It waits for the process, which is somebody's work and not a field.
 
 | process | step(s) that name it |
 |---|---|
-| [A knowledge graph leaves for its own repositories](../../processes/kg-separation.html) | 7 · Plan publication |
+| [A knowledge graph leaves for its own repositories](../../cat-harness/processes/kg-separation.html) | 7 · Plan publication |
 

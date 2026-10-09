@@ -116,6 +116,8 @@ import { coneForCheckout, type ConeDecision } from "./staging-cone.ts";
 import { DOCS_SITE_BASE } from "../schemas/jsonld.js";
 import { foreignScopeFor, isHostProjection, scopeHarnessData, scopeSiteConfig, scopeStickies } from "./lib/foreign-site-scope.ts";
 import { subscribedTrees } from "./subscribed-trees.ts";
+import { aliasRoute, visualiserRoute } from "../schemas/visualiser-route.ts";
+import { declaredVisualisers } from "./viewer-declarations.ts";
 
 const REPO = resolve(import.meta.dir, "..", "..");
 
@@ -416,8 +418,9 @@ export function instanceStub(c: ComposedInstance): string {
 /**
  * Composed-tree paths a CANONICAL deploy must not carry.
  *
- * Read from `coverage.visualiser[].publish === "staging-only"` across every
- * declaration in the checkout, never from a list here — a list would be the
+ * Read from every harness's declared `visualisers` with
+ * `publish: "staging-only"` (owner, 2026-10-09: the harness declares each
+ * visualiser), never from a list here — a list would be the
  * `check:declared-assets` defect again, and this one fails by PUBLISHING
  * something somebody chose not to publish.
  *
@@ -457,53 +460,71 @@ export function withheldPathFor(rel: string): string {
 }
 
 export function withheldFromCanonical(repo = REPO): string[] {
-  const roots = docsLayers(repo).layers.map((l) => l.dir);
   const out = new Set<string>();
-
-  const consider = (ref: string): void => {
-    const abs = resolve(repo, ref);
-    for (const root of roots) {
-      const rel = relative(root, abs);
-      // Outside this layer, or escaping it via `..` — not ours to withhold.
-      if (rel.startsWith("..") || rel === "") continue;
-      out.add(withheldPathFor(rel));
-      return;
-    }
-  };
-
-  for (const declPath of declarationsIn(repo)) {
-    let d: { directories?: { coverage?: { visualiser?: unknown } }[] };
-    try {
-      d = JSON.parse(readFileSync(declPath, "utf-8"));
-    } catch {
-      // `kg:schema:check` owns an unparseable declaration; a second voice on
-      // it here would report the same defect twice under different names.
-      continue;
-    }
-    for (const entry of d.directories ?? []) {
-      const v = entry.coverage?.visualiser;
-      if (v === undefined) continue;
-      for (const one of Array.isArray(v) ? v : [v]) {
-        if (typeof one !== "object" || one === null) continue;
-        const o = one as { ref?: string; publish?: string };
-        if (o.publish === "staging-only" && o.ref) consider(o.ref);
-      }
-    }
+  // A visualiser's page is at its ROUTE in the base docs layer, which is the
+  // composed tree's own path for it: `cat-harness/fsh-guts/`. Withheld as a
+  // DIRECTORY, because a viewer is a page plus whatever it loads.
+  for (const v of declaredVisualisers(repo)) {
+    if (v.publish !== "staging-only") continue;
+    out.add(visualiserRoute({ harness: v.harness, visualiser: v.id }));
+    // Its alias redirect too: a redirect to a withheld page is the page's
+    // address published on a deploy that withholds it.
+    if (v.alias !== undefined) out.add(aliasRoute(v.alias));
   }
   return [...out].sort();
 }
 
-/** Every `<name>.json` declaration in the checkout — root and one level down. */
-function declarationsIn(repo: string): string[] {
-  const out: string[] = [];
-  const at = declarationPathIn(repo);
-  if (at && existsSync(at)) out.push(at);
-  for (const e of readdirSync(repo, { withFileTypes: true })) {
-    if (!e.isDirectory() || e.name.startsWith(".") || e.name === "node_modules") continue;
-    const p = declarationPathIn(join(repo, e.name));
-    if (p && existsSync(p)) out.push(p);
+/**
+ * The opt-in `<base>/<alias>/` redirects (bean `t4xb`): for every page under
+ * a visualiser's canonical route, a one-file redirect at the same path under
+ * its alias.
+ *
+ * Written AFTER every layer and composed instance, and REFUSED over anything
+ * already in the tree: an alias that would replace a page is a collision, and
+ * the declaration is what has to change — never the page, silently. The gate
+ * `check:visualiser-routes` refuses the same collision before a build;
+ * this is the build refusing to publish one it was not told about.
+ */
+export function writeAliasRedirects(
+  out: string,
+  repo = REPO,
+  withheld: readonly string[] = [],
+): { written: string[]; collisions: string[] } {
+  const written: string[] = [];
+  const collisions: string[] = [];
+  for (const v of declaredVisualisers(repo)) {
+    if (v.alias === undefined) continue;
+    const route = visualiserRoute({ harness: v.harness, visualiser: v.id });
+    const alias = aliasRoute(v.alias);
+    if (isWithheld(alias, withheld)) continue;
+    const from = join(out, route);
+    if (!existsSync(from)) continue;
+    for (const rel of filesUnder(from)) {
+      if (!/\.(md|html)$/.test(rel)) continue;
+      const htmlRel = rel.replace(/\.md$/, ".html");
+      const stubRel = `${alias}${htmlRel}`;
+      const dest = join(out, stubRel);
+      if (existsSync(dest) || existsSync(dest.replace(/\.html$/, ".md"))) {
+        collisions.push(`${stubRel} — alias of ${v.harness}.visualisers[${v.id}] would replace a page the site already carries`);
+        continue;
+      }
+      const target = relative(join(out, alias, htmlRel, ".."), join(out, route, htmlRel)).split(sep).join("/").replace(/(^|\/)index\.html$/, "$1");
+      mkdirSync(join(dest, ".."), { recursive: true });
+      writeFileSync(dest, redirectStub(target || "./"));
+      written.push(stubRel);
+    }
   }
-  return out;
+  return { written: written.sort(), collisions: collisions.sort() };
+}
+
+/** A redirect page: no layout, no front matter, so Jekyll copies it verbatim. */
+export function redirectStub(target: string): string {
+  const t = target.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+  return (
+    `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><title>Redirecting…</title>\n` +
+    `<link rel="canonical" href="${t}"><meta http-equiv="refresh" content="0; url=${t}"><meta name="robots" content="noindex">\n` +
+    `</head><body><p>This page is at <a href="${t}">${t}</a>.</p></body></html>\n`
+  );
 }
 
 /** Whether `rel` falls under one of the withheld paths (file, or `dir/`). */
@@ -582,6 +603,8 @@ export interface ComposeReport {
    * instance from an absent one.
    */
   readonly carried: CarryDecision[];
+  /** The `<alias>/` redirect stubs written (bean `t4xb`), and every one refused over an existing page. */
+  readonly aliases: { written: string[]; collisions: string[] };
 }
 
 /**
@@ -854,6 +877,10 @@ export function compose(out: string, repo = REPO, opts: ComposeOptions = {}): Co
     }
   }
 
+  // THE ALIASES, last, over the finished tree — so a collision with any page,
+  // from any layer or instance, is seen. Not on a shell: it carries no page.
+  const aliases = opts.shell ? { written: [], collisions: [] } : writeAliasRedirects(out, repo, withheld);
+
   // DEDUPED. A path present in two layers is withheld once per layer, and a
   // report listing it twice made `withheld.length` stop meaning "files this
   // tree does not carry" — which is the only thing a reader would use it for.
@@ -868,6 +895,7 @@ export function compose(out: string, repo = REPO, opts: ComposeOptions = {}): Co
     withheld: [...new Set(withheldFiles)].sort(),
     composed: composedInst,
     carried: carry,
+    aliases,
     ...(scoped ? { scoped } : {}),
   };
 }
@@ -979,7 +1007,10 @@ if (import.meta.main) {
     console.log(`  ${d.carry ? "CARRIED " : "STUBBED "} ${d.instance.under} — ${d.why}`);
   }
 
-  if (r.missing.length > 0) process.exit(1);
+  console.log(`  ${r.aliases.written.length} alias redirect(s) written`);
+  for (const c of r.aliases.collisions) console.error(`::error::compose-docs: alias collision: ${c}`);
+
+  if (r.missing.length > 0 || r.aliases.collisions.length > 0) process.exit(1);
   if (argv.includes("--check")) {
     if (!existsSync(out) || !statSync(out).isDirectory()) process.exit(2);
   }

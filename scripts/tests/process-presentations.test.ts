@@ -36,13 +36,13 @@ describe("processTarget — where a subprocess box lands", () => {
     expect(processTarget("x", [p("guides/who-smart-ig", "the-l3-pipeline")])).toBe("guides/who-smart-ig.html#the-l3-pipeline");
   });
 
-  test("none → the process's own generated page", () => {
-    expect(processTarget("options-analysis", undefined)).toBe("processes/options-analysis.html");
-    expect(processTarget("options-analysis", [])).toBe("processes/options-analysis.html");
+  test("none → the process's own generated page, at the DECLARED route (2026-10-09)", () => {
+    expect(processTarget("options-analysis", undefined)).toBe("cat-harness/processes/options-analysis.html");
+    expect(processTarget("options-analysis", [])).toBe("cat-harness/processes/options-analysis.html");
   });
 
   test("MORE than one → the process page, which lists them all — never a silent pick", () => {
-    expect(processTarget("content-lifecycle", [p("a", "x"), p("b", "y")])).toBe("processes/content-lifecycle.html");
+    expect(processTarget("content-lifecycle", [p("a", "x"), p("b", "y")])).toBe("cat-harness/processes/content-lifecycle.html");
   });
 });
 

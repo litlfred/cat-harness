@@ -53,11 +53,15 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
-import { declarationPathIn, instanceRootFor } from "../schemas/cat-harness.js";
+import { instanceRootFor } from "../schemas/cat-harness.js";
 import { frozenSubtreeNote, fshGutsDirectory, withoutFrozenSubtrees } from "../schemas/fsh-guts.js";
 import { BranchStoreUsageError, exitUnlessMounted, readMarker } from "./branch-store.js";
 import { baseDocsDir } from "./compose-docs.js";
 import { publishPlan } from "./derive-at-publish.js";
+import { visualiserSitePath } from "./viewer-declarations.js";
+
+/** This generator's Tool node (`tools/viewers.ts`), which cat-harness declares its `fsh-guts` visualiser `renderedBy`. */
+const VIEWER_TOOL = "staging-graph-viewer";
 
 function resolveRepoRoot(): string {
   const dir = import.meta.dir;
@@ -106,48 +110,13 @@ export function gutsDir(repo = REPO): string | undefined {
 }
 
 /** The declarations that may hold the trashcan: the checkout's root instance, then the platform. */
-function declarers(repo: string): string[] {
-  const inst = instanceRootFor(import.meta.dir);
-  return [repo, join(repo, "cat-harness"), inst];
-}
-
-/**
- * Where the page goes, READ FROM THE SAME DECLARATION that renders it.
- *
- * The visualiser ref IS the page's location — `compose-docs.ts` withholds
- * exactly that path on a canonical build — so a literal here would let the
- * generator write one file while the withholding protected another. The two
- * would disagree silently and the failure mode is publishing the page this
- * whole change exists to withhold.
- *
- * Returned relative to the base docs layer, which is where a generated page
- * belongs and what the ref is expressed against.
- */
 export function pageRelPath(repo = REPO): string | undefined {
-  const entries = declarers(repo).flatMap((root) => {
-    const declPath = declarationPathIn(root);
-    if (!declPath || !existsSync(declPath)) return [];
-    return (
-      JSON.parse(readFileSync(declPath, "utf-8")) as {
-        directories?: { graphTypologies?: string[]; coverage?: { visualiser?: unknown } }[];
-      }
-    ).directories ?? [];
-  });
-  for (const e of entries) {
-    if (!(e.graphTypologies ?? []).includes(KIND)) continue;
-    const v = e.coverage?.visualiser;
-    for (const one of Array.isArray(v) ? v : [v]) {
-      const ref = typeof one === "string" ? one : (one as { ref?: string } | undefined)?.ref;
-      if (!ref) continue;
-      const m = /^(?:cat-harness\/)?docs\/(.+)$/.exec(ref);
-      if (m) return m[1];
-      const rel = relative(baseDocsDir(repo), resolve(repo, ref));
-      // Outside the base docs layer is not a page this generator may write.
-      if (rel.startsWith("..") || rel === "") return undefined;
-      return rel;
-    }
+  try {
+    const cat = existsSync(join(repo, "cat-harness")) ? join(repo, "cat-harness") : repo;
+    return visualiserSitePath(cat, VIEWER_TOOL).rel;
+  } catch {
+    return undefined;
   }
-  return undefined;
 }
 
 /** Every file under `dir`, relative, sorted, dotfiles skipped. */

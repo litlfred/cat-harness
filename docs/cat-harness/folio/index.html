@@ -2,8 +2,6 @@
 layout: default
 title: "folio — the graph"
 nav_exclude: true
-renders:
-  - cat-harness-upstream/folio
 rendered-by: folio-viewer
 ---
 <!--
@@ -17,21 +15,16 @@ rendered-by: folio-viewer
            --warn:#f0c27a; --warn-edge:#8a6420; --warn-bg:rgba(236,148,51,.16); }
 :root[data-fa-scheme="light"] .fo-page { --warn:#7a4a10; --warn-edge:#ec9433; --warn-bg:#fdf4e8; }
 .fo-page h1 { margin:0 0 .2rem; }
-.fo-page h2 { font-size:1.15rem; margin:1.5rem 0 .5rem; font-weight:600; }
 .fo-page .lede { opacity:.9; margin:0 0 1.2rem; }
 .fo-page .badge { display:inline-block; border:1px solid var(--edge); background:var(--box);
          border-radius:0; padding:.2rem .5rem; margin:0 .4rem .4rem 0; font-size:.85rem; }
 .fo-page table { display:table; width:100%; border-collapse:collapse; margin:1rem 0; font-size:.95rem; }
-.fo-page caption { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 .fo-page th, .fo-page td { text-align:left; padding:.5rem .55rem; border:0; border-bottom:1px solid var(--edge); vertical-align:top; background:transparent; }
 .fo-page th { font-weight:600; white-space:nowrap; }
 .fo-page .muted { opacity:.9; }
 .fo-page .pill { display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.04em;
         text-transform:uppercase; padding:.12rem .45rem; border:1px solid var(--edge); }
 .fo-page .pill.warn { color:var(--warn); border-color:var(--warn-edge); background:var(--warn-bg); }
-.fo-page .links { display:flex; flex-wrap:wrap; gap:.25rem .35rem; max-height:4.8rem; overflow-y:auto; padding-right:.2rem; }
-.fo-page .link-pill { display:inline-block; font-size:.8rem; line-height:1.25; padding:.1rem .4rem; border:1px solid var(--edge); background:var(--box); border-radius:2px; word-break:break-word; text-decoration:none; }
-.fo-page a.link-pill:hover { border-color:currentColor; text-decoration:underline; }
 .fo-page .empty { opacity:.9; }
 </style>
 <div class="fo-page">
@@ -69,10 +62,7 @@ fetch(DATA_HREF).then(function(r){ if(!r.ok) throw new Error(r.status + " " + r.
 
   /* A DECLARED-BUT-ABSENT DIRECTORY GETS A ROW. Omitting it is the dh4f
      shape: a consumer scans nothing and reports a clean run over it. */
-  $("dirs").innerHTML = '<h2 id="fo-dirs-head">Declared folio directories</h2>' +
-    '<table aria-label="Declared folio directories" aria-labelledby="fo-dirs-head">' +
-    '<caption>Declared folio directories</caption>' +
-    '<thead><tr><th>declared directory</th><th>state</th><th>stickies</th></tr></thead><tbody>' +
+  $("dirs").innerHTML = "<table><thead><tr><th>declared directory</th><th>state</th><th>stickies</th></tr></thead><tbody>" +
     G.directories.map(function(d){
       return "<tr><td><code>" + esc(d.dir) + "</code></td><td>" +
         (d.present ? "present" : '<span class="pill warn">declared, absent</span>') +
@@ -80,16 +70,12 @@ fetch(DATA_HREF).then(function(r){ if(!r.ok) throw new Error(r.status + " " + r.
     }).join("") + "</tbody></table>";
 
   if (G.nodes.length === 0) {
-    $("nodes").innerHTML = '<h2 id="fo-nodes-head">Folio nodes</h2>' +
-      '<p class="empty">No stickies. That is a folio graph with no nodes, ' +
+    $("nodes").innerHTML = '<p class="empty">No stickies. That is a folio graph with no nodes, ' +
       "not a graph that could not be read \u2014 the directories above say which were found.</p>";
     return;
   }
 
-  $("nodes").innerHTML = '<h2 id="fo-nodes-head">Folio nodes</h2>' +
-    '<table aria-label="Folio nodes" aria-labelledby="fo-nodes-head">' +
-    '<caption>Folio nodes</caption>' +
-    '<thead><tr><th>id</th><th>summary</th><th>anchor</th>' +
+  $("nodes").innerHTML = "<table><thead><tr><th>id</th><th>summary</th><th>anchor</th>" +
     "<th>theme</th><th>declared in</th><th>links</th><th>prose</th></tr></thead><tbody>" +
     G.nodes.map(function(n){
       return "<tr>" +
@@ -98,13 +84,12 @@ fetch(DATA_HREF).then(function(r){ if(!r.ok) throw new Error(r.status + " " + r.
         "<td>" + (n.anchor ? "<code>" + esc(n.anchor) + "</code>"
                            : '<span class="muted">none</span>') + "</td>" +
         "<td>" + (n.theme ? esc(n.theme) : '<span class="muted">none</span>') + "</td>" +
-        '<td><code class="muted">' + esc(n.declaredIn || "\u2014") + "</code></td>" +
+        "<td><code class=\"muted\">" + esc(n.declaredIn || "\u2014") + "</code></td>" +
         "<td>" + (n.links.length
-          ? '<div class="links">' + n.links.map(function(l){
+          ? n.links.map(function(l){
               var h = linkHref(l.href);
-              return h ? '<a class="link-pill" href="' + esc(h) + '">' + esc(l.label) + "</a>"
-                       : '<span class="link-pill muted">' + esc(l.label) + "</span>";
-            }).join("") + "</div>"
+              return h ? '<a href="' + esc(h) + '">' + esc(l.label) + "</a>" : esc(l.label);
+            }).join("<br>")
           : '<span class="muted">none</span>') + "</td>" +
         '<td class="muted">' + n.chars.toLocaleString() + " chars</td>" +
       "</tr>";

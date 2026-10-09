@@ -1015,5 +1015,5 @@ until it lands.
 
 | process | step(s) that name it |
 |---|---|
-| [A merge train](../../processes/merge-train.html) | Read each queued PR's live facts; Take the next PR in queue order; Admit it to the train, record the train id; Attribute the failure: each member's own CI first; Bisect the train; Eject the culprit, record why |
+| [A merge train](../../cat-harness/processes/merge-train.html) | Read each queued PR's live facts; Take the next PR in queue order; Admit it to the train, record the train id; Attribute the failure: each member's own CI first; Bisect the train; Eject the culprit, record why |
 

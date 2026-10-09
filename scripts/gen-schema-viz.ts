@@ -371,7 +371,7 @@ export function viewerPlacement(
  * to ask an ownership question. */
 import { orphanSubjectPages } from "./orphan-pages.ts";
 import { makeEmit } from "./viewer-page.ts";
-import { withRendersFrontMatter, withViewers } from "./viewer-declarations.js";
+import { declaredRoute, withRenderedBy, withViewers } from "./viewer-declarations.js";
 import { subjectNav, subjectNavCss, themedPage } from "./lib/themed-page.ts";
 
 /** This generator's Tool node (`tools/viewers.ts`), named on every page it draws. */
@@ -1419,6 +1419,15 @@ if (import.meta.main) {
     process.exit(0);
   }
 
+  // THE ROUTE IS DECLARED (owner, 2026-10-09): `<harness>/<id>/`, from the
+  // visualiser this harness declares `renderedBy` this Tool — never composed
+  // here from the directory's name.
+  const route = declaredRoute(ROOT, VIEWER_TOOL);
+  if (route === undefined) {
+    console.log(`  · no visualiser declared rendered by ${VIEWER_TOOL} — nothing to publish`);
+    process.exit(0);
+  }
+
   // One page per SUBJECT — read from the modules actually found, so a
   // declared-but-empty directory gets no page claiming to show it.
   const subjects = [...new Set(g.modules.map((m) => m.instance))].sort();
@@ -1466,12 +1475,12 @@ if (import.meta.main) {
   // owner's to apply, and a tile reading "1 modules" undermines the number.
   const modules = (n: number): readonly [number, string] =>
     [n, n === 1 ? "module" : "modules"];
-  const wholeId = byRef.get(refOf(`${handler}/${seg}`));
+  const wholeId = byRef.get(refOf(route));
   if (wholeId !== undefined) scoped[wholeId] = modules(g.modules.length);
 
   // Then each SUBJECT page, counted over that subject alone.
   for (const subject of subjects) {
-    const id = byRef.get(refOf(`${handler}/${seg}/${subject}`));
+    const id = byRef.get(refOf(`${route}/${subject}`));
     if (id === undefined) continue;
     scoped[id] = modules(g.modules.filter((m) => m.instance === subject).length);
   }
@@ -1490,22 +1499,15 @@ if (import.meta.main) {
   // Rule 2, `<base>/<instance>/`, is the instance presenting ITSELF, and a
   // subject page must never be published there: it would squat on that
   // instance's own site.
-  const { pageDir, dataDir, dataHref } = viewerPlacement(site, `${handler}/${seg}`, seg);
+  const { pageDir, dataDir, dataHref } = viewerPlacement(site, route, seg);
   emit(join(dataDir, "index.json"), data);
   /** The site root relative to a page, with a trailing slash: where node-kind pages hang. */
   const siteHrefFrom = (dir: string): string => `${relative(dir, site).split(sep).join("/")}/`;
-  // Each page says which directories it draws (#1168 B7a-2): the schema
-  // directories read — every one here, those holding the subject's modules on
-  // a subject page.
-  const drawn = (subject?: string): string[] =>
-    g.roots.filter((r) =>
-      subject === undefined || g.modules.some((m) => m.instance === subject && m.module.startsWith(`${r}/`)),
-    );
-  emit(join(pageDir, "index.html"), withRendersFrontMatter(viewerHtml(dataHref, "", subjects, siteHrefFrom(pageDir)), drawn(), VIEWER_TOOL));
+  emit(join(pageDir, "index.html"), withRenderedBy(viewerHtml(dataHref, "", subjects, siteHrefFrom(pageDir)), VIEWER_TOOL));
 
   for (const subject of subjects) {
-    const sub = viewerPlacement(site, `${handler}/${seg}/${subject}`, seg);
-    emit(join(sub.pageDir, "index.html"), withRendersFrontMatter(viewerHtml(sub.dataHref, subject, subjects, siteHrefFrom(sub.pageDir)), drawn(subject), VIEWER_TOOL));
+    const sub = viewerPlacement(site, `${route}/${subject}`, seg);
+    emit(join(sub.pageDir, "index.html"), withRenderedBy(viewerHtml(sub.dataHref, subject, subjects, siteHrefFrom(sub.pageDir)), VIEWER_TOOL));
   }
 
 

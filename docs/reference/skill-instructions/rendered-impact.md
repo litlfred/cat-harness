@@ -142,5 +142,5 @@ names none above it.
 
 | process | step(s) that name it |
 |---|---|
-| [Content Change and Review](../../processes/content-change-review.html) | Compare main vs staging; Slice the change and assign reviewers; Comment staging URL on PR |
+| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Compare main vs staging; Slice the change and assign reviewers; Comment staging URL on PR |
 

@@ -238,12 +238,17 @@ works."* So:
   site-wide route (`skills/`, `tools/`, `docs/`, `assets/`, …), and a
   collision names both claimants.
 
-The alias declaration (`alias: true` or `alias: "<alias>"` on `VisualisationSchema`),
-the collision checks (`checkVisualizerRouteCollisions`), and the one declared list of reserved
-names (`RESERVED_ROOT_AND_ROUTE_NAMES` in `schemas/remote-mount.ts`) are built under bean
-`t4xb`. When an alias is declared and clean, links address the alias; otherwise every link uses
-the canonical `<base>/<harness>/<visualizer>/` form. The disk half — a remote mount landing at
-`<name>/` — is documented in [`remote-mount`](remote-mount.md).
+**Built 2026-10-09** (owner: *"Need harness to declare visualizer is
+renderedBy"*): a visualiser is declared by its harness in `visualisers`, and
+its `alias` is the opt-in. `compose-docs.ts` writes the alias as a redirect
+for every page under the canonical route, and refuses one that would replace a
+page; `bun run cat check:visualiser-routes` refuses, before any build, an
+alias that names another alias, a harness, or anything the site already
+publishes at its top level — naming both claimants. The reserved set is READ
+from the site tree and the instance names rather than kept as a literal, so a
+new site-wide route is reserved the day it exists. Link to the canonical form;
+an alias is for a person typing a URL. The disk side of bean `t4xb` — a remote
+mount landing at `<name>/` — is still open, in [`remote-mount`](remote-mount.md).
 
 ### When the two collide — the handler wins
 

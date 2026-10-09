@@ -120,5 +120,5 @@ it counts.
 
 | process | step(s) that name it |
 |---|---|
-| [Content Change and Review](../../processes/content-change-review.html) | Slice the change and assign reviewers |
+| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Slice the change and assign reviewers |
 

@@ -27,15 +27,27 @@ import { instanceRootFor, siteDirFor } from "../../schemas/cat-harness.ts";
 const ROOT = instanceRootFor(import.meta.dir);
 const SITE = join(ROOT, siteDirFor(ROOT));
 
+/**
+ * The visualiser id cat-harness declares for a state graph — its URL segment
+ * under `<site>/cat-harness/` (owner, 2026-10-09). `uploads` is the uploads
+ * viewer's route, so its dashboard is `uploads-queue`.
+ */
+const VIS: Record<string, string> = { uploads: "uploads-queue" };
+const visOf = (graph: string) => VIS[graph] ?? graph;
+/** Where a dashboard is drawn: the declared route, `<site>/cat-harness/<vis>/`. */
+const pageDir = (graph: string) => join(SITE, "cat-harness", visOf(graph));
 /** A dashboard's committed page. */
 const read = (graph: string) =>
-  readFileSync(join(SITE, graph, "index.html"), "utf-8");
-const has = (graph: string) => existsSync(join(SITE, graph, "index.html"));
+  readFileSync(join(pageDir(graph), "index.html"), "utf-8");
+const has = (graph: string) => existsSync(join(pageDir(graph), "index.html"));
 
 describe("the route is the policy, not this generator's choice", () => {
-  test("the visualiser is AT the directory's own URL, one per declared state graph", () => {
+  test("the visualiser is AT its declared route, `<harness>/<visualiser>/`, one per declared visualiser", () => {
     for (const id of ["beans", "todos", "qa", "health", "issue-marks", "uploads"]) {
       expect(has(id)).toBe(true);
+      // Never at the site root any more: `<base>/<visualiser>/` is an opt-in
+      // ALIAS (bean `t4xb`), composed as a redirect, never drawn here.
+      expect(existsSync(join(SITE, id, "index.html"))).toBe(false);
     }
   });
 
@@ -50,7 +62,7 @@ describe("the route is the policy, not this generator's choice", () => {
     // And no segment BENEATH the directory either. `harness-requirements`
     // names `<base-url>/beans` as the obligation, so a page one level deeper
     // leaves that URL a 404 and does not meet it.
-    expect(existsSync(join(SITE, "beans", "dashboard"))).toBe(false);
+    expect(existsSync(join(pageDir("beans"), "dashboard"))).toBe(false);
   });
 
   test("the segment is the declared ID, because two paths basename alike", () => {
@@ -60,7 +72,7 @@ describe("the route is the policy, not this generator's choice", () => {
     // would silently overwrite the other.
     expect(has("qa")).toBe(true);
     expect(has("health")).toBe(true);
-    expect(existsSync(join(SITE, "results", "index.html"))).toBe(false);
+    expect(existsSync(join(SITE, "cat-harness", "results", "index.html"))).toBe(false);
   });
 });
 
@@ -69,7 +81,8 @@ describe("each page reads the projection that already exists", () => {
     // `beans` is a THEMED page (#2418): `fa-beans-src` is the layout's own,
     // through `relative_url`. The no-JS fallback still links the projection,
     // relative to the page.
-    expect(read("beans")).toContain('href="../assets/beans/index.json"');
+    // Two levels down now, `<harness>/<visualiser>/`, so two `../`.
+    expect(read("beans")).toContain('href="../../assets/beans/index.json"');
     // `todos` is a THEMED page (#1906): its `fa-todo-src` is the site's own,
     // written by `head_custom.html` through `relative_url`, so the page
     // carries no path of its own to get wrong.
@@ -185,8 +198,9 @@ describe("what a page may claim", () => {
     // And no clutter: neither the registry nor the plain-text by-node list.
     expect(html).not.toContain("State graphs this harness declares");
     expect(html).not.toContain("Todos by the node they are attached to");
-    // The renders declaration moved into the front matter with the page.
-    expect(html).toMatch(/^renders:\n {2}- todos$/m);
+    // A page no longer says what it renders — the harness declares it — and
+    // names only the Tool that drew it.
+    expect(html).not.toMatch(/^renders:/m);
     expect(html).toContain("rendered-by: state-viewer");
   });
 
@@ -226,7 +240,7 @@ describe("no projection here is not the same as nothing renders this", () => {
     const html = read("uploads");
     const href = /rendered elsewhere[\s\S]*?href="([^"]+)"/.exec(html)?.[1];
     expect(href).toBeTruthy();
-    const target = join(SITE, "uploads", href!);
+    const target = join(pageDir("uploads"), href!);
     expect(existsSync(join(target, "index.html"))).toBe(true);
   });
 
@@ -243,7 +257,7 @@ describe("no projection here is not the same as nothing renders this", () => {
     // Falsification the other way: if the target stopped carrying queue data,
     // "rendered elsewhere" would be a link to a page that does not render it.
     const href = /rendered elsewhere[\s\S]*?href="([^"]+)"/.exec(read("uploads"))![1]!;
-    const target = readFileSync(join(SITE, "uploads", href, "index.html"), "utf-8");
+    const target = readFileSync(join(pageDir("uploads"), href, "index.html"), "utf-8");
     expect(target).toContain("uningested");
   });
 
@@ -446,9 +460,11 @@ describe("orphan dashboards — a page that answers to no declaration", () => {
     // The strongest statement available: ask for the worst case — nothing is
     // wanted — and assert the answer is exactly this generator's own pages,
     // never one of the site's other directories.
-    const ours = ["beans", "todos", "qa", "attestations", "health", "issue-marks", "uploads", "swimlane-glossary"];
-    const selected = prunableDashboards(SITE, []);
+    const ours = ["beans", "todos", "qa", "attestations", "health", "issue-marks", "uploads", "swimlane-glossary"].map(visOf);
+    const selected = prunableDashboards(join(SITE, "cat-harness"), []);
     expect(selected.sort()).toEqual(ours.map((g) => join(g, "index.html")).sort());
+    // And the site root holds none: every dashboard moved to its route.
+    expect(prunableDashboards(SITE, [])).toEqual([]);
   });
 });
 

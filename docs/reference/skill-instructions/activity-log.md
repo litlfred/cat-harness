@@ -244,11 +244,11 @@ them.
 
 ## Processes that run this skill
 
-This skill has its own process: **[Agent activity log](../../processes/activity-log.html)**.
+This skill has its own process: **[Agent activity log](../../cat-harness/processes/activity-log.html)**.
 
 <img src="../../assets/img/workflows/activity-log.svg" alt="BPMN diagram: Agent activity log" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Agent activity log](../../processes/activity-log.html) | Log task-start; Log a message or an error; Log task-end; Persist the log to the data store; Report the capture state; Discard one entry by id; Discard all entries, or a whole session |
+| [Agent activity log](../../cat-harness/processes/activity-log.html) | Log task-start; Log a message or an error; Log task-end; Persist the log to the data store; Report the capture state; Discard one entry by id; Discard all entries, or a whole session |
 

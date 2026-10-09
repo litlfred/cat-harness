@@ -61,9 +61,21 @@ function giveOwnSite(repo: string, name: string): void {
   mkdirSync(join(repo, name, siteDirFor(join(repo, name))), { recursive: true });
 }
 
+/**
+ * The site owner's VISUALISERS (owner, 2026-10-09: the harness declares each
+ * one, at `<base>/<harness>/<visualiser>/`). By kind, so an instance stacked
+ * on `host` (`needs: ["host"]`) is covered and one that is not, is not.
+ */
+const HOST_VISUALISERS = [
+  { id: "library", renderedBy: "library-viewer", coversKinds: ["library"], subgraphs: "instance" },
+  { id: "schemas", renderedBy: "schemas-viewer", coversKinds: ["schemas"], subgraphs: "instance" },
+  { id: "beans", renderedBy: "state-viewer", coversKinds: ["beans"], alias: "beans" },
+];
+
 const host = (extra: Record<string, unknown> = {}) => ({
   name: "host",
   directories: [{ id: "beans", path: "beans/", graphTypologies: ["beans"] }],
+  visualisers: HOST_VISUALISERS,
   ...extra,
 });
 
@@ -163,7 +175,7 @@ describe("the ORDER is the declared dependency stack, bottom to top", () => {
 describe("a link is DECLARATION-driven and PRESENCE-checked", () => {
   test("a declared graph with a published page becomes a link", () => {
     const f = fixture(
-      { host: host(), who: { name: "who", directories: [{ id: "lib", path: "library/", graphTypologies: ["library"] }] } },
+      { host: host(), who: { name: "who", needs: ["host"], directories: [{ id: "lib", path: "library/", graphTypologies: ["library"] }] } },
       ["host/library/who"],
     );
     const who = tilesOf(f).find((t) => t.name === "who")!;
@@ -176,7 +188,7 @@ describe("a link is DECLARATION-driven and PRESENCE-checked", () => {
     // satisfy "not linked" and hide the gap.
     const f = fixture({
       host: host(),
-      who: { name: "who", directories: [{ id: "lib", path: "library/", graphTypologies: ["library"] }] },
+      who: { name: "who", needs: ["host"], directories: [{ id: "lib", path: "library/", graphTypologies: ["library"] }] },
     });
     const who = tilesOf(f).find((t) => t.name === "who")!;
     expect(who.visualisations).toEqual([{ kind: "library", label: "Library", note: "no viewer yet" }]);
@@ -187,24 +199,32 @@ describe("a link is DECLARATION-driven and PRESENCE-checked", () => {
     // `flh4`'s other half. The declaration decides what a tile claims to show,
     // so this cannot become a link — but silence would hide a working viewer
     // behind a rule, and the remedy is one line in a declaration.
-    const f = fixture({ host: host(), who: { name: "who", directories: [] } }, ["host/library/who"]);
+    const f = fixture({ host: host(), who: { name: "who", needs: ["host"], directories: [] } }, ["host/library/who"]);
     const who = tilesOf(f).find((t) => t.name === "who")!;
     expect(who.visualisations).toEqual([]);
-    expect(who.findings.join(" ")).toContain("does not declare");
+    expect(who.findings.join(" ")).toContain("covers none of this instance's directories");
   });
 
-  test("the site-owning instance elides its own name, as state-visualizer does", () => {
-    const f = fixture({ host: host() }, ["beans"]);
-    expect(tilesOf(f)[0]!.visualisations).toEqual([{ kind: "beans", label: "Beans", path: "/beans/" }]);
+  test("the site owner's own state graph is at its DECLARED route — the short URL is only an alias", () => {
+    // Until 2026-10-09 the site owner elided its own name (`/beans/`). The
+    // owner's rule is `<base>/<harness>/<visualizer>`; `/beans/` survives as
+    // a declared alias, composed as a redirect, and is never what a tile links.
+    const f = fixture({ host: host() }, ["host/beans"]);
+    expect(tilesOf(f)[0]!.visualisations).toEqual([{ kind: "beans", label: "Beans", path: "/host/beans/" }]);
+    const stale = fixture({ host: host() }, ["beans"]);
+    expect(tilesOf(stale)[0]!.visualisations).toEqual([{ kind: "beans", label: "Beans", note: "no viewer yet" }]);
   });
 
-  test("a sibling gets NO page at the elided path — that namespace is the owner's", () => {
-    // `/beans/` is the host's. A sibling declaring a `beans` graph must not
-    // pick up the host's page as though it were its own.
+  test("there is no elided namespace to squat: a sibling's graph opens the visualiser DECLARED over it", () => {
+    // `/beans/` was the host's by convention, and a sibling had to be kept out
+    // of it. Now a page is reached only through a declaration: `host` declares
+    // its `beans` visualiser over the KIND, so the sibling's beans graph opens
+    // that route — and the bare `/beans/` page links nobody.
     const f = fixture({ host: host(), who: { name: "who", directories: [{ id: "b", path: "b/", graphTypologies: ["beans"] }] } }, [
+      "host/beans",
       "beans",
     ]);
-    expect(tilesOf(f).find((t) => t.name === "who")!.visualisations).toEqual([{ kind: "beans", label: "Beans", note: "no viewer yet" }]);
+    expect(tilesOf(f).find((t) => t.name === "who")!.visualisations).toEqual([{ kind: "beans", label: "Beans", path: "/host/beans/" }]);
   });
 });
 
@@ -250,7 +270,7 @@ describe("the stats are DERIVED, so they cannot disagree with the tile", () => {
 
 describe("an instance with no avatar says so rather than rendering blank", () => {
   test("a name with no declared avatar takes the generic one and is reported", () => {
-    const f = fixture({ host: host(), who: { name: "who", directories: [] } });
+    const f = fixture({ host: host(), who: { name: "who", needs: ["host"], directories: [] } });
     const who = tilesOf(f).find((t) => t.name === "who")!;
     expect(who.genericAvatar).toBe(true);
     expect(who.findings.join(" ")).toContain("no avatar declared");
@@ -274,7 +294,7 @@ describe("the published paths are the OTHER generators' rules, read rather than 
     expect(subjectPage("cat-harness", "library", "who-iris")).toBe("/cat-harness/library/who-iris/");
   });
 
-  test("the owner's own state graph elides the name", () => {
+  test("an alias is the bare segment, and only that", () => {
     expect(ownStatePage("beans")).toBe("/beans/");
   });
 });
@@ -297,7 +317,7 @@ describe("the tile opens the INSTANCE, not a kind handler's view of it", () => {
     // Owner, 2026-09-21: "cliking shoud go to folio view, not the schema
     // viweer", and `mount-instance-docs`: "who-iris themed at `/who-iris/`".
     const f = fixture(
-      { host: host(), who: { name: "who", directories: [{ id: "s", path: "s/", graphTypologies: ["schemas"] }] } },
+      { host: host(), who: { name: "who", needs: ["host"], directories: [{ id: "s", path: "s/", graphTypologies: ["schemas"] }] } },
       ["host/schemas/who"],
     );
     giveOwnSite(f.repo, "who");
@@ -307,7 +327,7 @@ describe("the tile opens the INSTANCE, not a kind handler's view of it", () => {
 
   test("an instance WITHOUT its own docs/ falls back to a viewer, and says so", () => {
     const f = fixture(
-      { host: host(), who: { name: "who", directories: [{ id: "s", path: "s/", graphTypologies: ["schemas"] }] } },
+      { host: host(), who: { name: "who", needs: ["host"], directories: [{ id: "s", path: "s/", graphTypologies: ["schemas"] }] } },
       ["host/schemas/who"],
     );
     const who = tilesOf(f).find((t) => t.name === "who")!;
@@ -318,7 +338,7 @@ describe("the tile opens the INSTANCE, not a kind handler's view of it", () => {
   test("an instance with neither is NOT a link", () => {
     // `pb04`: a dead link invites a click and then reads as "this site is
     // broken". No target is a better answer than a guessed one.
-    const f = fixture({ host: host(), who: { name: "who", directories: [] } });
+    const f = fixture({ host: host(), who: { name: "who", needs: ["host"], directories: [] } });
     const who = tilesOf(f).find((t) => t.name === "who")!;
     expect(who.href).toBeUndefined();
     expect(who.hrefKind).toBeUndefined();
@@ -328,7 +348,7 @@ describe("the tile opens the INSTANCE, not a kind handler's view of it", () => {
     // The defect the owner reported: the first version took whichever viewer
     // sorted first, which for a schemas-only instance is the schema viewer.
     const f = fixture(
-      { host: host(), who: { name: "who", directories: [{ id: "s", path: "s/", graphTypologies: ["schemas"] }] } },
+      { host: host(), who: { name: "who", needs: ["host"], directories: [{ id: "s", path: "s/", graphTypologies: ["schemas"] }] } },
       ["host/schemas/who"],
     );
     giveOwnSite(f.repo, "who");
@@ -577,7 +597,7 @@ describe("a DECLARED visualiser is a viewer — the other half of `flh4`", () =>
     // read `coverage.visualiser` and linked it, while `visualisations` two
     // lines away reported the same kind as having no viewer. One question,
     // two answers — and the wrong one is the one a finding counted.
-    const f = fixture({ host: host(), who: { name: "who", directories: [] } });
+    const f = fixture({ host: host(), who: { name: "who", needs: ["host"], directories: [] } });
     const ref = publishAt(f.repo, "translation-status");
     writeDeclaration(join(f.repo, "who"), JSON.stringify(decorate(withViewer(ref)), null, 2));
     const who = tilesOf(f).find((t) => t.name === "who")!;
@@ -590,7 +610,7 @@ describe("a DECLARED visualiser is a viewer — the other half of `flh4`", () =>
     // wrong" and "nobody built it". Both leave the kind unlinked, and a
     // generator that linked the declared path regardless would put a 404
     // behind the tab — `pb04`.
-    const f = fixture({ host: host(), who: { name: "who", directories: [] } });
+    const f = fixture({ host: host(), who: { name: "who", needs: ["host"], directories: [] } });
     const ref = join("host", hostSite(f.repo), "nowhere", "index.html");
     writeDeclaration(join(f.repo, "who"), JSON.stringify(decorate(withViewer(ref)), null, 2));
     const who = tilesOf(f).find((t) => t.name === "who")!;
@@ -629,7 +649,7 @@ describe("a DECLARED visualiser is a viewer — the other half of `flh4`", () =>
     // viewer" would assert something false about a page that exists; the
     // `undiscovered` finding says exactly what is true — built, and no tile
     // reaches it — which is what tells the next reader which gap to close.
-    const f = fixture({ host: host(), who: { name: "who", directories: [] } });
+    const f = fixture({ host: host(), who: { name: "who", needs: ["host"], directories: [] } });
     mkdirSync(join(f.repo, "who", "elsewhere"), { recursive: true });
     writeFileSync(join(f.repo, "who", "elsewhere", "index.html"), "<!doctype html>");
     const ref = join("who", "elsewhere", "index.html");
@@ -650,7 +670,7 @@ describe("a DECLARED visualiser is a viewer — the other half of `flh4`", () =>
     // The order is observable, so it is a decision. Preferring the
     // declaration would repoint a link that already works; preferring the
     // convention fills only the gaps, which is all this is for.
-    const f = fixture({ host: host(), who: { name: "who", directories: [] } }, ["host/library/who"]);
+    const f = fixture({ host: host(), who: { name: "who", needs: ["host"], directories: [] } }, ["host/library/who"]);
     const ref = publishAt(f.repo, "somewhere-else");
     writeDeclaration(join(f.repo, "who"), JSON.stringify(decorate(withViewer(ref)), null, 2));
     const who = tilesOf(f).find((t) => t.name === "who")!;
@@ -661,7 +681,7 @@ describe("a DECLARED visualiser is a viewer — the other half of `flh4`", () =>
     // The map is keyed by the kinds the DECLARING directory lists. A viewer
     // for `library` saying nothing about `uploads` is the point: a tile that
     // borrowed it would claim a page that renders another graph.
-    const f = fixture({ host: host(), who: { name: "who", directories: [] } });
+    const f = fixture({ host: host(), who: { name: "who", needs: ["host"], directories: [] } });
     const ref = publishAt(f.repo, "lib-view");
     writeDeclaration(
       join(f.repo, "who"),
@@ -740,7 +760,7 @@ describe("a render-exempt instance is not missing what it was excused from", () 
   test("an instance with NO exemption is unaffected", () => {
     const f = fixture({
       host: host(),
-      who: { name: "who", directories: [{ id: "lib", path: "library/", graphTypologies: ["library"] }] },
+      who: { name: "who", needs: ["host"], directories: [{ id: "lib", path: "library/", graphTypologies: ["library"] }] },
     });
     const who = tilesOf(f).find((t) => t.name === "who")!;
     expect(who.findings.join(" ")).toContain("no published viewer");
@@ -784,10 +804,10 @@ describe("an icon's URL is the SITE DIRECTORY's mount, not the instance's front 
   test("...and the kind is the DECLARATION's, not the string `docs`", () => {
     // The whole point: who-iris's bare route is taken by `library`, so a rule
     // that assumed `docs` would be right by luck here and wrong there.
-    const f = fixture({ host: host({ needs: [] }), guest: withIcon("guest", "catalogue") });
+    const f = fixture({ host: host({ needs: [] }), guest: withIcon("guest", "library") });
     giveOwnSite(f.repo, "guest");
     const guest = tilesOf(f).find((t) => t.name === "guest")!;
-    expect(guest.icon?.src).toBe("/catalogue/guest/assets/m.svg");
+    expect(guest.icon?.src).toBe("/library/guest/assets/m.svg");
   });
 
   test("the site OWNER keeps the root — its docs are built in place, not mounted", () => {
@@ -895,24 +915,29 @@ describe("one name per destination (bean `ob3m` finding 6)", () => {
     const f = fixture(
       {
         host: host(),
-        who: { name: "who", directories: [{ id: "s", path: "schemas/", graphTypologies: ["schemas", "cat-harness"] }] },
+        who: { name: "who", needs: ["host"], directories: [{ id: "s", path: "schemas/", graphTypologies: ["schemas", "cat-harness"] }] },
       },
-      ["host/schemas/who", "host/cat-harness/who"],
+      ["host/schemas/who"],
     );
     const who = tilesOf(f).find((t) => t.name === "who")!;
-    // Both kinds resolve their own conventional page here, so neither is
-    // marked: two pages, two rows, each named for its kind. The shared-page
-    // case is `labelVisualisations`'s, pinned in `nav-label.test.ts`.
+    // ONE directory holding two kinds is drawn by ONE declared visualiser, so
+    // both rows open the same page, and the second says it is the same page
+    // rather than inventing a second name for it. A page at a conventional
+    // `/host/cat-harness/who/` would be reached by nothing: nothing declares it.
     expect(who.visualisations.map((v) => [v.kind, v.label, v.sameAs])).toEqual([
-      ["cat-harness", "Harness graph", undefined],
+      ["cat-harness", "Schemas", "schemas"],
       ["schemas", "Schemas", undefined],
     ]);
   });
 
   test("an INSTANTIATED harness with no folio opens its landing section, not a graph's viewer", () => {
+    // `host` declares a processes visualiser drawing one view per instance.
     // Bootstrap's row linked `/processes/` and named that page "Bootstrap".
     const f = fixture(
-      { host: host(), who: { name: "who", directories: [{ id: "p", path: "processes/", graphTypologies: ["processes"] }] } },
+      {
+        host: host({ visualisers: [...HOST_VISUALISERS, { id: "processes", renderedBy: "processes-viewer", coversKinds: ["processes"], subgraphs: "instance" }] }),
+        who: { name: "who", needs: ["host"], directories: [{ id: "p", path: "processes/", graphTypologies: ["processes"] }] },
+      },
       ["host/processes/who"],
     );
     writeFileSync(join(f.repo, "who.config.json"), "{}");
@@ -975,8 +1000,12 @@ describe("every harness's navbar MARK is resolved once — bean `2vpn`", () => {
     expect(sb.mark?.src).toBeUndefined();
   });
 
-  test("the generic fallback is NOT a mark: an unknown instance has none, and the navbar draws its letter", () => {
-    const f = fixture({ host: host(), who: { name: "who", directories: [] } });
-    expect(tilesOf(f).find((t) => t.name === "who")!.mark).toBeUndefined();
+  test("the generic fallback is a blank mark when an instance has none declared", () => {
+    const f = fixture({ host: host(), who: { name: "who", needs: ["host"], directories: [] } });
+    expect(tilesOf(f).find((t) => t.name === "who")!.mark).toEqual({
+      glyph: "M3 3h18v18H3z",
+      title: "a blank mark — no avatar declared; rendered in theme colour",
+      blank: true,
+    });
   });
 });

@@ -82,5 +82,5 @@ wrong.
 
 | process | step(s) that name it |
 |---|---|
-| [Publishing the docs site, and keeping the previews alive](../../processes/docs-site-publish.html) | Run the release security gate [security:gate] |
+| [Publishing the docs site, and keeping the previews alive](../../cat-harness/processes/docs-site-publish.html) | Run the release security gate [security:gate] |
 
