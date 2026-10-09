@@ -484,6 +484,7 @@ const instancesSection: ReadmeSection = {
     const rows: string[] = [];
     let mute = 0;
     let undocumented = 0;
+    let notOnDisk = 0;
 
     for (const root of roots) {
       const rel = relative(repo, root);
@@ -518,10 +519,23 @@ const instancesSection: ReadmeSection = {
       // A directory link is any directory this instance declares as holding
       // that graph typology. Several is possible and all of them are rendered:
       // picking one would be this file choosing on the instance's behalf.
+      //
+      // A declared directory that is NOT ON DISK is not linked, and is
+      // counted instead. An index checkout lays an instance down as a remote
+      // mount, and a mount may take only some of its directories
+      // (`overrides.<name>.directories`) — smart-base's `docs/` is declared and
+      // not mounted. Linking it rendered a dead link in a generated row, which
+      // asserts the entry exists; dropping it silently would hide the gap.
       const dirs = (kind: string): Array<{ path: string; scope?: string }> =>
         (decl.directories ?? [])
           .filter((d) => (d.graphTypologies ?? []).includes(kind))
-          .map((d) => ({ path: d.path, scope: d.scope }));
+          .map((d) => ({ path: d.path, scope: d.scope }))
+          .filter((d) => {
+            const base = d.scope === "repository" ? repo : root;
+            if (existsSync(join(base, d.path))) return true;
+            notOnDisk += 1;
+            return false;
+          });
 
       const agents = asset(AGENT_INSTRUCTIONS_ROLE);
       const readme = asset(INSTANCE_README_ROLE);
@@ -529,7 +543,9 @@ const instancesSection: ReadmeSection = {
       const docs = dirs("docs");
 
       if (agents === undefined) mute += 1;
-      if (docs.length === 0) undocumented += 1;
+      // DECLARES no `docs` graph — not "has none on disk", which the count
+      // above reports separately.
+      if (!(decl.directories ?? []).some((d) => (d.graphTypologies ?? []).includes("docs"))) undocumented += 1;
 
       const agentCell = [
         agents === undefined ? undefined : link("AGENTS.md", agents.src, agents.scope),
@@ -567,6 +583,14 @@ const instancesSection: ReadmeSection = {
       gaps.push(
         `**${undocumented} of ${rows.length}** declare no \`docs\` graph of their own; their reader-facing ` +
           "documentation is the harness layer's site.",
+      );
+    }
+
+    if (notOnDisk > 0) {
+      gaps.push(
+        `**${notOnDisk}** declared \`memory\` or \`docs\` director${notOnDisk === 1 ? "y is" : "ies are"} not on disk in this ` +
+          "checkout — a mount that lays down only some of an instance's directories — so " +
+          `${notOnDisk === 1 ? "it is" : "they are"} not linked.`,
       );
     }
 
@@ -658,6 +682,14 @@ const coldStartSection: ReadmeSection = {
       : `**This repository is a STATIC knowledge graph.** No instance declares a graph that records work ` +
         `(beans, todos, a BPMN instance mid-flight), so there is nothing here to pick up — it is here to be read.`;
 
+    // The work plan is LINKED only where it is on disk. In an index checkout
+    // it is kept on its state branch and mounted by the session-start hook,
+    // so a fresh clone has no `beans/` and the link was dead in the one
+    // section an arriving agent reads first.
+    const workPlan = existsSync(join(repo, "beans"))
+      ? "[`beans/`](beans/)"
+      : "`beans/` (kept on its state branch: `bun run cat state:mount` puts it on disk)";
+
     const lines = [
       "**Read this before you do anything else.**",
       "",
@@ -669,7 +701,9 @@ const coldStartSection: ReadmeSection = {
       "| **2. How to find the graph, and the skills in it** | [`kg-navigation`](cat-harness/skills/kg/kg-navigation/kg-navigation.md). **Ask for the skill list; never read one from here** — `skill_list` for what exists, `skill_fetch` to load one. No MCP? Resolve the `kg` graph from `<name>.json` and read the directory it names. |",
       "| **3. Whether this graph is active or static** | The verdict above is computed, not asserted: an instance is ACTIVE when it declares a graph typology whose `recordsWork` is true. Static? Then determine your context instead — [`process-state`](cat-harness/skills/process/workflow/process-state.md). |",
       active
-        ? "| **4. It is active, so** | Work out your role, process and task from the BPMN under [`processes/`](cat-harness/processes/) — the diagrams are executable, not illustrations. Then read the work plan in [`beans/`](beans/), prioritise it, and **ask which items to work on**. That last step is an interaction rule, not a formality. |"
+        ? "| **4. It is active, so** | Work out your role, process and task from the BPMN under [`processes/`](cat-harness/processes/) — the diagrams are executable, not illustrations. Then read the work plan in " +
+          workPlan +
+          ", prioritise it, and **ask which items to work on**. That last step is an interaction rule, not a formality. |"
         : "| **4. It is static, so** | There is no work plan to prioritise and no process to resume. Determine your context from [`process-state`](cat-harness/skills/process/workflow/process-state.md) and work from what you were asked to do. |",
       "",
       "*Why no list of skills: a README is the one file no check reads, so a list in it is wrong the day a skill is added and nothing says so. The two calls above ask the graph instead.*",

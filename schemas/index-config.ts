@@ -27,6 +27,7 @@
  * | where each one comes from | `instances[].source` — `local.at`, or `remote` (a `remoteMounts` entry without its `harness`) |
  * | each one's configuration | the imported `<name>.config.json` (when it exists), overlaid by the entry's inline fields |
  * | which one is `/` | `site.landing` — an instance name, or `"hub"` |
+ * | what the checkout is called | `title` and `description`, which `index:render` writes into the root `README.md` and `AGENTS.md` |
  *
  * Without it every reader falls back to today's behaviour unchanged, which is
  * what a folio that has not migrated must get.
@@ -144,6 +145,15 @@ export const IndexConfigSchema = z
   .object({
     $schema: z.literal(INDEX_CONFIG_SCHEMA),
     _comment: z.string().optional(),
+    /**
+     * What this CHECKOUT is called. The index declares no instance of its own
+     * (owner, 2026-10-08), so nothing else names it; `index:render` titles the
+     * root `README.md` and `AGENTS.md` with it (owner, 2026-10-09: those two
+     * are rendered files). Absent, they are titled generically.
+     */
+    title: z.string().min(1).optional(),
+    /** One paragraph under that title, saying what the checkout is for. */
+    description: z.string().min(1).optional(),
     instances: z
       .array(IndexInstanceSchema)
       .refine((xs) => new Set(xs.map((x) => x.name)).size === xs.length, { message: "instances: a name appears twice" })
@@ -333,10 +343,12 @@ export function addIndexInstance(root: string, entry: IndexInstance): boolean {
 
 /** The canonical text of an index: two-space JSON, `$schema` first, a trailing newline. */
 export function formatIndexConfig(config: IndexConfig): string {
-  const { $schema, _comment, instances, site } = config;
+  const { $schema, _comment, title, description, instances, site } = config;
   const ordered = {
     $schema,
     ...(_comment !== undefined ? { _comment } : {}),
+    ...(title !== undefined ? { title } : {}),
+    ...(description !== undefined ? { description } : {}),
     instances: instances.map((e) => {
       const { name, _comment: c, import: imp, source, ...rest } = e as IndexInstance & Record<string, unknown>;
       return { name, ...(c !== undefined ? { _comment: c } : {}), ...(imp !== undefined ? { import: imp } : {}), ...(source !== undefined ? { source } : {}), ...rest };
