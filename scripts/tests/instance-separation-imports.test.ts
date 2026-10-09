@@ -103,12 +103,14 @@ function climbsOutOf(instance: string): string[] {
 /**
  * Staged instances that are platform, not content: other instances build on
  * them, and they import each other by design (see the module doc).
+ *
+ * Empty since the platform cutovers of 2026-10-09: cat-harness,
+ * cat-harness-tools and folio-assistant-core are now remote mounts of their
+ * own repositories, which `stagedInstances` leaves out, so naming them here
+ * exempted nothing — the stale-name failure the first test exists for. The
+ * set stays, like the two maps below, for the next staged platform layer.
  */
-const PLATFORM_LAYERS = new Set([
-  "cat-harness",
-  "cat-harness-tools",
-  "folio-assistant-core",
-]);
+const PLATFORM_LAYERS = new Set<string>([]);
 
 /**
  * Covered instances that still climb without a shim, each with its measured
