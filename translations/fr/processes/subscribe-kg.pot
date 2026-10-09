@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: subscribe-kg\n"
-"POT-Creation-Date: 2026-10-06T23:51:56.154Z\n"
+"POT-Creation-Date: 2026-10-09T13:19:39.669Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -114,7 +114,7 @@ msgstr ""
 msgid "Move the entry's ref and re-cache the declaration"
 msgstr ""
 
-#: processes/library/subscribe-kg.bpmn:253
+#: processes/library/subscribe-kg.bpmn:254
 #. Diagram label
 msgid "moving a held pin"
 msgstr ""
@@ -124,7 +124,7 @@ msgstr ""
 msgid "Name the substrate, pin a full commit SHA"
 msgstr ""
 
-#: processes/library/subscribe-kg.bpmn:252
+#: processes/library/subscribe-kg.bpmn:253
 #. Diagram label
 msgid "new"
 msgstr ""
@@ -134,7 +134,7 @@ msgstr ""
 msgid "New subscription, or moving a held pin?"
 msgstr ""
 
-#: processes/library/subscribe-kg.bpmn:261
+#: processes/library/subscribe-kg.bpmn:262
 #. Diagram label
 msgid "no — choose again"
 msgstr ""
@@ -144,22 +144,22 @@ msgstr ""
 msgid "No subscription entry is written for a repository that is not a substrate. What is recorded is the reason (non-conforming, no harness, or unreachable) and the pin it was asked at, so a later attempt at a different commit starts from what failed."
 msgstr ""
 
-#: processes/library/subscribe-kg.bpmn:257
+#: processes/library/subscribe-kg.bpmn:258
 #. Diagram label
 msgid "no, all refreshed"
 msgstr ""
 
-#: processes/library/subscribe-kg.bpmn:268
+#: processes/library/subscribe-kg.bpmn:269
 #. Diagram label
 msgid "no, every harness walked"
 msgstr ""
 
-#: processes/library/subscribe-kg.bpmn:265
+#: processes/library/subscribe-kg.bpmn:266
 #. Diagram label
 msgid "no, every part walked"
 msgstr ""
 
-#: processes/library/subscribe-kg.bpmn:249
+#: processes/library/subscribe-kg.bpmn:250
 #. Diagram label
 msgid "no, or could not tell"
 msgstr ""
@@ -169,7 +169,7 @@ msgstr ""
 msgid "Not subscribed, and the record says why"
 msgstr ""
 
-#: processes/library/subscribe-kg.bpmn:234
+#: processes/library/subscribe-kg.bpmn:235
 #. Diagram element documentation
 msgid "One line per offered part: materialised, referenced by choice, or referenced because a gate refused (and which). Nothing new is decided here; it is the account the visualizer and the next refresh read, written once rather than reconstructed from the loop."
 msgstr ""
@@ -184,7 +184,7 @@ msgstr ""
 msgid "Only after every held part has been through the refresh. Moving the ref first would make the records of parts not yet refreshed describe a commit the entry no longer names. The cached declaration is replaced so the review that follows shows what the NEW pin offers, including subgraphs that did not exist at the old one."
 msgstr ""
 
-#: processes/library/subscribe-kg.bpmn:232
+#: processes/library/subscribe-kg.bpmn:233
 #. Diagram label
 msgid "Record how the walk ended, part by part"
 msgstr ""
@@ -214,7 +214,7 @@ msgstr ""
 msgid "Subscribe to an external knowledge graph"
 msgstr ""
 
-#: processes/library/subscribe-kg.bpmn:242
+#: processes/library/subscribe-kg.bpmn:243
 #. Diagram label
 msgid "Subscribed, every part in a recorded state"
 msgstr ""
@@ -266,7 +266,7 @@ msgstr ""
 
 #: processes/library/subscribe-kg.bpmn:224
 #. Diagram element documentation
-msgid "Write `<harness>.config.json` at the repository root, plus the state directories the harness declares. That file is what harness-tiles reads as INSTANTIATED, and it is what puts the harness in the navbar's bottom region. check:instance-render must be green on the result; a config that renders nothing is an entry pointing nowhere."
+msgid "Write `<harness>.config.json` at the repository root, plus the state directories the harness declares, and — where the checkout has a root `index.config.json` — add the harness to its `instances[]` (kg:instantiate does both), because the index, not the file, is then what reads as INSTANTIATED (index-config skill); a root config the index does not list fails check:landing-instance. That instantiation is what puts the harness in the navbar's bottom region. check:instance-render must be green on the result; a config that renders nothing is an entry pointing nowhere."
 msgstr ""
 
 #: processes/library/subscribe-kg.bpmn:127
@@ -279,7 +279,7 @@ msgstr ""
 msgid "Written to the entry as `subgraphs`, `assets.policy` (none, on-demand or all) and `harnesses`. Choosing is not holding: a chosen subgraph is still referenced until the gates below let it through. Choosing nothing is legitimate — a subscription with no parts chosen is a pinned reference, the case associatedHarnesses covers today."
 msgstr ""
 
-#: processes/library/subscribe-kg.bpmn:250
+#: processes/library/subscribe-kg.bpmn:251
 #. Diagram label
 msgid "yes"
 msgstr ""
