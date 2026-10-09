@@ -939,6 +939,16 @@
       "description": "A PERSON's outstanding items — the human half of memory, as against `beans/`, which is the agent's workflow management. `todos/todos.json` declares its nodes (`items`, `feedback`, `boards`, `positions`). REPOSITORY-scoped: it sits at the top of the checkout and is never overlaid by a dependency."
     },
     {
+      "id": "checkout-uploads",
+      "_scope_comment": "Owner, 2026-10-09: \"uploads/ is a dir-subgraph\". The CHECKOUT's ingestion queue at the root of the index checkout — distinct from this instance's own `uploads` above, which is cat-harness's queue. Declared here, REPOSITORY-scoped, for the reason `beans` and `todos` are: the index root declares no instance (owner, 2026-10-08), so the instance that owns the harness owns the checkout-level graphs. Unlike those two it is a DIRECTORY source: its content is tracked in the checkout, not kept on a branch.",
+      "path": "uploads/",
+      "scope": "repository",
+      "graphTypologies": [
+        "uploads"
+      ],
+      "description": "The checkout's incoming queue for document ingestion — raw files as dropped, before ingestion into a library. NOT L1 and NOT greppable as corpus."
+    },
+    {
       "id": "issue-marks",
       "_source_comment": "MOUNTED, owner 2026-10-09 (\"Mount them like beans\"). Retired from main on 2026-10-08 (cd8293fdf) to a state branch that nothing declared, so nothing mounted it and the checks that judge it reported could-not-determine on every run. Declared here like `beans`: repository-scoped, kept on its own per-graph branch (owner, 2026-10-03, bean laqs).",
       "path": "issue-marks/",
