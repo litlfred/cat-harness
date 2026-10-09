@@ -2,165 +2,10 @@
   "$schema": "folio-schema-graph/v1",
   "tile": {},
   "roots": [
-    "bootstrap-tools/schemas",
-    "bootstrap/schemas",
     "openapi/schemas",
     "schemas"
   ],
   "modules": [
-    {
-      "module": "bootstrap-tools/schemas/declaration.ts",
-      "instance": "bootstrap-tools",
-      "name": "declaration",
-      "graphNode": "undeclared",
-      "summary": "Read a Knowledge Graph Declaration with nothing but bootstrap's own shape.",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap-tools/schemas/declared-order.ts",
-      "instance": "bootstrap-tools",
-      "name": "declared-order",
-      "graphNode": "undeclared",
-      "summary": "Check an order someone WROTE, rather than compute one.",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap-tools/schemas/discussion.test.ts",
-      "instance": "bootstrap-tools",
-      "name": "discussion.test",
-      "graphNode": "none",
-      "reason": "a test",
-      "summary": "The generated bootstrap schemas, against the contract they replace.",
-      "isTest": true
-    },
-    {
-      "module": "bootstrap-tools/schemas/discussion.ts",
-      "instance": "bootstrap-tools",
-      "name": "discussion",
-      "graphNode": "schema",
-      "summary": "The two documents the `discussion` process carries, as Zod.",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap-tools/schemas/graph-export.ts",
-      "instance": "bootstrap-tools",
-      "name": "graph-export",
-      "graphNode": "undeclared",
-      "summary": "The shape of `bootstrap.jsonld`, the graph bootstrap owes in place of a",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap-tools/schemas/graph.test.ts",
-      "instance": "bootstrap-tools",
-      "name": "graph.test",
-      "graphNode": "undeclared",
-      "summary": "bootstrap defines its own terms, and nothing in it points above it",
-      "isTest": true
-    },
-    {
-      "module": "bootstrap-tools/schemas/graph.ts",
-      "instance": "bootstrap-tools",
-      "name": "graph",
-      "graphNode": "schema",
-      "summary": "bootstrap's own terms, and the shape of the file that declares a Knowledge",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap-tools/schemas/model-registry.ts",
-      "instance": "bootstrap-tools",
-      "name": "model-registry",
-      "graphNode": "schema",
-      "summary": "Which languages a MODEL is good at, and whether anybody checked.",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap-tools/schemas/release-iri.test.ts",
-      "instance": "bootstrap-tools",
-      "name": "release-iri.test",
-      "graphNode": "undeclared",
-      "summary": "An instance's release addresses, and the sync that keeps literal copies of",
-      "isTest": true
-    },
-    {
-      "module": "bootstrap-tools/schemas/release-iri.ts",
-      "instance": "bootstrap-tools",
-      "name": "release-iri",
-      "graphNode": "schema",
-      "summary": "An instance's release addresses: where its identifiers live at the version",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "instance": "bootstrap-tools",
-      "name": "requirement-set",
-      "graphNode": "schema",
-      "summary": "A REQUIREMENT SET — the requirements document: a set of requirement",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "instance": "bootstrap-tools",
-      "name": "requirement",
-      "graphNode": "schema",
-      "summary": "A REQUIREMENT — what a harness, or something built with one, must do, said so it",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap-tools/schemas/subgraph-export.ts",
-      "instance": "bootstrap-tools",
-      "name": "subgraph-export",
-      "graphNode": "undeclared",
-      "summary": "The files a NAMED SUBGRAPH publishes, as `scripts/subgraph-jsonld.ts` writes",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap/schemas/discussion.input.schema.json",
-      "instance": "bootstrap",
-      "name": "discussion.input",
-      "graphNode": "schema",
-      "summary": "The occasion for asking: what the agent already knows, and which unknown is still open. Deliberately small — a Bootstrapping Agent has read one README and can look nothing up, so an input it cannot populate is an input that stops the process.",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap/schemas/discussion.output.schema.json",
-      "instance": "bootstrap",
-      "name": "discussion.output",
-      "graphNode": "schema",
-      "summary": "What the exchange determined: which harness, which repositories, on whose word, and by what means. This document existing and conforming is what finishes the task — not that a conversation took place.",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap/schemas/graph.schema.json",
-      "instance": "bootstrap",
-      "name": "graph",
-      "graphNode": "schema",
-      "summary": "A Declaration. Any field not listed here is an Extension: A field of a Declaration, or of one of its entries, that is not defined here. A reader that does not recognise the field ignores it, and the rest of the Declaration keeps its meaning.",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap/schemas/model-registry.schema.json",
-      "instance": "bootstrap",
-      "name": "model-registry",
-      "graphNode": "schema",
-      "summary": "Which languages a model is good at, and whether a person checked. Only `human-validated` is ever acted on, and only a person can grant it.",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap/schemas/requirement-set.schema.json",
-      "instance": "bootstrap",
-      "name": "requirement-set",
-      "graphNode": "schema",
-      "summary": "A requirements document: a set of requirement statements (by `req:` reference, each with its own decision) at one stage of its life — draft, proposed, approved, planned, in-progress, delivered, accepted, or rejected, cancelled, superseded — with its work plan and the sign-offs that moved it there. A sign-off is a recorded decision: who (kind, id, actor), when, about what, the outcome (approve, ame",
-      "isTest": false
-    },
-    {
-      "module": "bootstrap/schemas/requirement.schema.json",
-      "instance": "bootstrap",
-      "name": "requirement",
-      "graphNode": "schema",
-      "summary": "What a harness, or something built with one, must do, said so it can be checked: a titled set of numbered statements, each with a level (SHALL, SHOULD, MAY, SHALL NOT), one sentence, and — optional for now, required once existing statements are migrated — at least one success criterion saying how it is judged met (test, inspection, review or analysis). A test run points at a statement as `req:<slu",
-      "isTest": false
-    },
     {
       "module": "openapi/schemas/openapi.ts",
       "instance": "openapi",
@@ -1138,6 +983,14 @@
       "name": "note-anchor",
       "graphNode": "schema",
       "summary": "Where a note is attached, as a three-state answer.",
+      "isTest": false
+    },
+    {
+      "module": "schemas/nquads-distribution.ts",
+      "instance": "cat-harness",
+      "name": "nquads-distribution",
+      "graphNode": "schema",
+      "summary": "Partitioned RDF N-Quads Dataset Distribution & Named Query Manifest Schema.",
       "isTest": false
     },
     {
@@ -2211,2883 +2064,6 @@
     }
   ],
   "decls": [
-    {
-      "id": "bootstrap-tools/schemas/declaration.ts#KnowledgeGraphDeclaration",
-      "name": "KnowledgeGraphDeclaration",
-      "module": "bootstrap-tools/schemas/declaration.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/declared-order.ts#OrderViolation",
-      "name": "OrderViolation",
-      "module": "bootstrap-tools/schemas/declared-order.ts",
-      "kind": "interface",
-      "doc": "One way an AUTHORED order breaks its own promise: an item uses one that",
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "uses",
-          "type": "string",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "kind",
-          "type": "\"forward\" | \"self\" | \"missing\"",
-          "optional": false,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/discussion.ts#DiscussionInput",
-      "name": "DiscussionInput",
-      "module": "bootstrap-tools/schemas/discussion.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/discussion.ts#DiscussionInputSchema",
-      "name": "DiscussionInputSchema",
-      "module": "bootstrap-tools/schemas/discussion.ts",
-      "kind": "zod-object",
-      "doc": "The occasion for asking: what the agent already knows, and which unknown is",
-      "fields": [
-        {
-          "name": "open",
-          "type": "z .array(z.enum(OPEN_QUESTIONS)) .min(1) .describe(\"Which unknowns this exchange is to settle. At least one, or there i…",
-          "optional": false,
-          "array": true
-        },
-        {
-          "name": "askedOf",
-          "type": "ParticipantSchema.describe( \"Who is being asked. The two participant kinds are symmetric — the same skill serves human-…",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "candidates",
-          "type": "z .array(z.string()) .optional() .describe( \"Harnesses the agent has already narrowed to from context — a repository wh…",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "knownRepositories",
-          "type": "z .array(RepositoryRefSchema) .optional() .describe( \"Repositories already evident from the checkout, each with the par…",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "context",
-          "type": "z .string() .optional() .describe( \"What the agent read to get this far, in one or two sentences. Lets the participant …",
-          "optional": true,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/discussion.ts#ParticipantSchema",
-        "bootstrap-tools/schemas/discussion.ts#RepositoryRefSchema"
-      ],
-      "unresolved": [],
-      "external": [
-        "OPEN_QUESTIONS",
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/discussion.ts#DiscussionOutput",
-      "name": "DiscussionOutput",
-      "module": "bootstrap-tools/schemas/discussion.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/discussion.ts#DiscussionOutputObjectSchema",
-      "name": "DiscussionOutputObjectSchema",
-      "module": "bootstrap-tools/schemas/discussion.ts",
-      "kind": "zod-object",
-      "doc": "The output document's shape, before the two conditional rules.",
-      "fields": [
-        {
-          "name": "outcome",
-          "type": "z .enum([\"settled\", \"unsettled\"]) .describe( \"`unsettled` is a real outcome, not an error: a participant may decline, a…",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "harness",
-          "type": "z .string() .optional() .describe( \"The harness this repository is to become — `bootstrap`, or any Harness built on it.…",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "repositories",
-          "type": "z .array(RepositoryRefSchema) .optional() .describe( \"The repositories involved, each with the part it plays. Recorded …",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "determinedBy",
-          "type": "z .enum([\"asked\", \"assumed\"]) .optional() .describe( \"`asked` means a participant said so. `assumed` is permitted only …",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "assumption",
-          "type": "z .string() .optional() .describe( \"Required when `determinedBy` is `assumed`: the documented default relied on, and wh…",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "answeredBy",
-          "type": "ParticipantSchema.describe( \"Who settled it. An answer from a sibling agent is evidence of a different weight from the …",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "exchange",
-          "type": "z .array(ExchangeEntrySchema) .min(1) .describe( \"What was actually put and what came back, in order. One entry is the …",
-          "optional": false,
-          "array": true
-        },
-        {
-          "name": "stillOpen",
-          "type": "z .array(z.enum(OPEN_QUESTIONS)) .optional() .describe( \"Required in substance when `outcome` is `unsettled`: what rema…",
-          "optional": true,
-          "array": true
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/discussion.ts#ExchangeEntrySchema",
-        "bootstrap-tools/schemas/discussion.ts#ParticipantSchema",
-        "bootstrap-tools/schemas/discussion.ts#RepositoryRefSchema"
-      ],
-      "unresolved": [],
-      "external": [
-        "OPEN_QUESTIONS",
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/discussion.ts#DiscussionOutputSchema",
-      "name": "DiscussionOutputSchema",
-      "module": "bootstrap-tools/schemas/discussion.ts",
-      "kind": "zod-object",
-      "doc": "What the exchange determined: which harness, which repositories, on whose",
-      "fields": [],
-      "extendsNames": [
-        "DiscussionOutputObjectSchema"
-      ],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/discussion.ts#DiscussionOutputObjectSchema"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/discussion.ts#ExchangeEntry",
-      "name": "ExchangeEntry",
-      "module": "bootstrap-tools/schemas/discussion.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/discussion.ts#ExchangeEntrySchema",
-      "name": "ExchangeEntrySchema",
-      "module": "bootstrap-tools/schemas/discussion.ts",
-      "kind": "zod-object",
-      "doc": "One question put, and what came back.",
-      "fields": [
-        {
-          "name": "asked",
-          "type": "z .string() .describe( \"The question as put, with its candidates named. A question a reader must go and research is not…",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "answered",
-          "type": "z .string() .optional() .describe( \"The reply as received. Absent means the question was put and nothing came back, whi…",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "at",
-          "type": "z.string().datetime().optional()",
-          "optional": true,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/discussion.ts#Participant",
-      "name": "Participant",
-      "module": "bootstrap-tools/schemas/discussion.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/discussion.ts#ParticipantSchema",
-      "name": "ParticipantSchema",
-      "module": "bootstrap-tools/schemas/discussion.ts",
-      "kind": "zod-object",
-      "doc": "Who is being asked, or who answered.",
-      "fields": [
-        {
-          "name": "kind",
-          "type": "z.enum([\"person\", \"agent\"])",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "id",
-          "type": "z .string() .optional() .describe(\"Session id, handle or name, where one is known. Absent is normal for a person.\")",
-          "optional": true,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/discussion.ts#RepositoryRef",
-      "name": "RepositoryRef",
-      "module": "bootstrap-tools/schemas/discussion.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/discussion.ts#RepositoryRefSchema",
-      "name": "RepositoryRefSchema",
-      "module": "bootstrap-tools/schemas/discussion.ts",
-      "kind": "zod-object",
-      "doc": "A repository and the part it plays.",
-      "fields": [
-        {
-          "name": "url",
-          "type": "z .string() .describe( \"Clone URL or path. Not required to be reachable — a Bootstrapping Agent may have been told abou…",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "role",
-          "type": "z .enum([\"read-from\", \"written-to\"]) .describe( \"Which part this repository plays. A flat list loses the distinction, a…",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "note",
-          "type": "z.string().optional()",
-          "optional": true,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/graph-export.ts#GraphExport",
-      "name": "GraphExport",
-      "module": "bootstrap-tools/schemas/graph-export.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/graph-export.ts#GraphExportNodeSchema",
-      "name": "GraphExportNodeSchema",
-      "module": "bootstrap-tools/schemas/graph-export.ts",
-      "kind": "zod-object",
-      "fields": [
-        {
-          "name": "@id",
-          "type": "z.string().url()",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "@type",
-          "type": "z.string().regex(/^bootstrap:[A-Z][A-Za-z]*$/, \"a bootstrap class, e.g. bootstrap:Skill\")",
-          "optional": false,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/graph-export.ts#GraphExportSchema",
-      "name": "GraphExportSchema",
-      "module": "bootstrap-tools/schemas/graph-export.ts",
-      "kind": "zod-object",
-      "fields": [
-        {
-          "name": "@context",
-          "type": "z.record(z.string(), z.unknown())",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "@id",
-          "type": "z.string().url()",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "@type",
-          "type": "z.array(z.string()).refine((t) => t.includes(\"bootstrap:KnowledgeGraph\"), \"is a bootstrap:KnowledgeGraph\")",
-          "optional": false,
-          "array": true
-        },
-        {
-          "name": "label",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "comment",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false,
-          "doc": "Says it is generated, and by what (owner, 2026-09-30)."
-        },
-        {
-          "name": "wasAttributedTo",
-          "type": "z.string().url()",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "versionInfo",
-          "type": "z.string()",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "generatedAtTime",
-          "type": "z.string().optional()",
-          "optional": true,
-          "array": false,
-          "doc": "PROV, only when built with `--provenance`: the publish build, never the tests."
-        },
-        {
-          "name": "wasDerivedFrom",
-          "type": "z.string().optional()",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "@graph",
-          "type": "z.array(GraphExportNodeSchema)",
-          "optional": false,
-          "array": true
-        },
-        {
-          "name": "omitted",
-          "type": "z.array(z.string().min(1))",
-          "optional": false,
-          "array": true,
-          "doc": "Subgraphs declared but whose contents were not read — never an unexplained empty."
-        },
-        {
-          "name": "counts",
-          "type": "z.record(z.string(), z.number().int().nonnegative())",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "problems",
-          "type": "z.array(z.string())",
-          "optional": false,
-          "array": true
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/graph-export.ts#GraphExportNodeSchema"
-      ],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/graph.ts#AssetSchema",
-      "name": "AssetSchema",
-      "module": "bootstrap-tools/schemas/graph.ts",
-      "kind": "zod-object",
-      "fields": [
-        {
-          "name": "id",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "src",
-          "type": "z.string().min(1).describe(\"The file, relative to the declaration.\")",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "role",
-          "type": "z.string().min(1).describe(\"The part the file plays, such as `instance-readme`.\")",
-          "optional": false,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/graph.ts#BootstrapGraphTypology",
-      "name": "BootstrapGraphTypology",
-      "module": "bootstrap-tools/schemas/graph.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/graph.ts#BootstrapTerm",
-      "name": "BootstrapTerm",
-      "module": "bootstrap-tools/schemas/graph.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/graph.ts#DependencySchema",
-      "name": "DependencySchema",
-      "module": "bootstrap-tools/schemas/graph.ts",
-      "kind": "zod-scalar",
-      "doc": "A `needs` entry: the other Knowledge Graph's name.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/graph.ts#GraphTypologySchema",
-      "name": "GraphTypologySchema",
-      "module": "bootstrap-tools/schemas/graph.ts",
-      "kind": "zod-union",
-      "doc": "One entry of a Subgraph's `graphTypologies`: one of bootstrap's, or an Extension.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/graph.ts#KnowledgeGraphDeclarationSchema",
-      "name": "KnowledgeGraphDeclarationSchema",
-      "module": "bootstrap-tools/schemas/graph.ts",
-      "kind": "zod-object",
-      "doc": "The shape every `<name>.json` shares. Loose on purpose: a Harness above bootstrap adds fields.",
-      "fields": [
-        {
-          "name": "name",
-          "type": "z.string().min(1).describe(\"The Knowledge Graph's name. The declaration file is `<name>.json`.\")",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "version",
-          "type": "z .string() .regex(/^\\d+\\.\\d+\\.\\d+$/) .optional() .describe(\"Its version, as MAJOR.MINOR.PATCH (semantic versioning).\")",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "iriBase",
-          "type": "z .string() .url() .optional() .describe( \"The address its IRIs are minted under, before the version. An identifier a p…",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "title",
-          "type": "z.string().optional()",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "description",
-          "type": "z.string().optional()",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "directories",
-          "type": "z.array(SubgraphSchema).optional().describe(\"Its Subgraphs: zero or more.\")",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "needs",
-          "type": "z.array(DependencySchema).optional().describe(\"Its Dependencies: the Knowledge Graphs it may refer into.\")",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "nodeSchemas",
-          "type": "z .record(z.string().min(1), z.string().min(1)) .optional() .describe( \"Its Node Kinds: each `$schema` value its Node I…",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "assets",
-          "type": "z.array(AssetSchema).optional()",
-          "optional": true,
-          "array": true
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/graph.ts#AssetSchema",
-        "bootstrap-tools/schemas/graph.ts#DependencySchema",
-        "bootstrap-tools/schemas/graph.ts#SubgraphSchema"
-      ],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/graph.ts#SubgraphSchema",
-      "name": "SubgraphSchema",
-      "module": "bootstrap-tools/schemas/graph.ts",
-      "kind": "zod-object",
-      "fields": [
-        {
-          "name": "id",
-          "type": "z.string().min(1).describe(\"The Subgraph's name, unique within its Knowledge Graph.\")",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "path",
-          "type": "z.string().min(1).describe(\"The directory, relative to the declaration.\")",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "graphTypologies",
-          "type": "z.array(GraphTypologySchema).min(1).describe(\"The Graph Typologies it holds.\")",
-          "optional": false,
-          "array": true
-        },
-        {
-          "name": "title",
-          "type": "z.string().optional().describe(\"A short name for people, shown as its README's heading.\")",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "description",
-          "type": "z.string().optional().describe(\"What it holds, in a sentence or two, shown under that heading.\")",
-          "optional": true,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/graph.ts#GraphTypologySchema"
-      ],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/model-registry.ts#ModelEntry",
-      "name": "ModelEntry",
-      "module": "bootstrap-tools/schemas/model-registry.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/model-registry.ts#ModelEntrySchema",
-      "name": "ModelEntrySchema",
-      "module": "bootstrap-tools/schemas/model-registry.ts",
-      "kind": "zod-object",
-      "fields": [
-        {
-          "name": "id",
-          "type": "ModelIdSchema",
-          "optional": false,
-          "array": false,
-          "doc": "The model identifier, exactly as the runtime reports it."
-        },
-        {
-          "name": "title",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false,
-          "doc": "Human-readable name, for a report a person reads."
-        },
-        {
-          "name": "preferredLanguages",
-          "type": "z.array(z.string().min(2)).optional()",
-          "optional": true,
-          "array": true,
-          "doc": "BCP 47 tags, best first."
-        },
-        {
-          "name": "validation",
-          "type": "z.enum(VALIDATION_STATES)",
-          "optional": false,
-          "array": false,
-          "doc": "How the list above came to be believed. Required — see the header."
-        },
-        {
-          "name": "validatedBy",
-          "type": "z.string().optional()",
-          "optional": true,
-          "array": false,
-          "doc": "Who checked, when `validation` is `human-validated`."
-        },
-        {
-          "name": "validatedOn",
-          "type": "z.string().optional()",
-          "optional": true,
-          "array": false,
-          "doc": "ISO date of that check. A validation with no date cannot go stale."
-        },
-        {
-          "name": "note",
-          "type": "z.string().optional()",
-          "optional": true,
-          "array": false,
-          "doc": "Anything a reader needs that the fields above cannot carry."
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/model-registry.ts#ModelIdSchema"
-      ],
-      "unresolved": [],
-      "external": [
-        "VALIDATION_STATES",
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/model-registry.ts#ModelId",
-      "name": "ModelId",
-      "module": "bootstrap-tools/schemas/model-registry.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/model-registry.ts#ModelIdSchema",
-      "name": "ModelIdSchema",
-      "module": "bootstrap-tools/schemas/model-registry.ts",
-      "kind": "zod-scalar",
-      "doc": "A model identifier as a record carries it: exactly as the runtime reports",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/model-registry.ts#ModelRegistry",
-      "name": "ModelRegistry",
-      "module": "bootstrap-tools/schemas/model-registry.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/model-registry.ts#ModelRegistrySchema",
-      "name": "ModelRegistrySchema",
-      "module": "bootstrap-tools/schemas/model-registry.ts",
-      "kind": "zod-object",
-      "fields": [
-        {
-          "name": "$schema",
-          "type": "z.literal(MODEL_REGISTRY_SCHEMA)",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "models",
-          "type": "z.array(ModelEntrySchema)",
-          "optional": false,
-          "array": true
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/model-registry.ts#ModelEntrySchema"
-      ],
-      "unresolved": [],
-      "external": [
-        "MODEL_REGISTRY_SCHEMA",
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/model-registry.ts#ValidationState",
-      "name": "ValidationState",
-      "module": "bootstrap-tools/schemas/model-registry.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/release-iri.ts#ReleaseIris",
-      "name": "ReleaseIris",
-      "module": "bootstrap-tools/schemas/release-iri.ts",
-      "kind": "interface",
-      "doc": "An instance's release, as both audiences address it.",
-      "fields": [
-        {
-          "name": "iriBase",
-          "type": "string",
-          "optional": false,
-          "array": false,
-          "doc": "The declared `iriBase`, ending in `/`."
-        },
-        {
-          "name": "version",
-          "type": "string",
-          "optional": false,
-          "array": false,
-          "doc": "The declared version, `MAJOR.MINOR.PATCH`."
-        },
-        {
-          "name": "major",
-          "type": "number",
-          "optional": false,
-          "array": false,
-          "doc": "`MAJOR` alone, as a number."
-        },
-        {
-          "name": "agent",
-          "type": "string",
-          "optional": false,
-          "array": false,
-          "doc": "`<iriBase><version>/` — what a program reads."
-        },
-        {
-          "name": "human",
-          "type": "string",
-          "optional": false,
-          "array": false,
-          "doc": "`<iriBase>v<major>/` — what a person reads."
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#MemberDecisionSchema",
-      "name": "MemberDecisionSchema",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "zod-enum",
-      "doc": "What one member's sign-off decided about it.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [
-        "approved",
-        "amended",
-        "rejected",
-        "deferred"
-      ],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#RequirementSet",
-      "name": "RequirementSet",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetFields",
-      "name": "RequirementSetFields",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "zod-object",
-      "doc": "The set's FIELDS, before its refinement — for a harness to extend.",
-      "fields": [
-        {
-          "name": "id",
-          "type": "RequirementSetIdSchema",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "title",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "methodology",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false,
-          "doc": "The requirements methodology that governs it, by the harness's own name for it."
-        },
-        {
-          "name": "issue",
-          "type": "z.string().regex(/^https:\\/\\/\\S+$/).optional()",
-          "optional": true,
-          "array": false,
-          "doc": "The issue (or other review surface) the set is decided on."
-        },
-        {
-          "name": "stage",
-          "type": "RequirementSetStageSchema",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "members",
-          "type": "z.array(RequirementSetMemberSchema).min(1)",
-          "optional": false,
-          "array": true
-        },
-        {
-          "name": "workPlan",
-          "type": "z.array(z.string().min(1)).optional()",
-          "optional": true,
-          "array": true,
-          "doc": "The work plan: work-item ids, one or more per member."
-        },
-        {
-          "name": "signOffs",
-          "type": "z.array(SignOffSchema).optional()",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "document",
-          "type": "z.string().min(1).optional()",
-          "optional": true,
-          "array": false,
-          "doc": "Where the document is, as a path or a link."
-        },
-        {
-          "name": "supersededBy",
-          "type": "RequirementSetIdSchema.optional()",
-          "optional": true,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/requirement-set.ts#RequirementSetIdSchema",
-        "bootstrap-tools/schemas/requirement-set.ts#RequirementSetMemberSchema",
-        "bootstrap-tools/schemas/requirement-set.ts#RequirementSetStageSchema",
-        "bootstrap-tools/schemas/requirement-set.ts#SignOffSchema"
-      ],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetIdSchema",
-      "name": "RequirementSetIdSchema",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "zod-scalar",
-      "doc": "`reqset:<slug>`.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetMemberSchema",
-      "name": "RequirementSetMemberSchema",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "zod-object",
-      "fields": [
-        {
-          "name": "ref",
-          "type": "RequirementRefSchema",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "decision",
-          "type": "MemberDecisionSchema.optional()",
-          "optional": true,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/requirement-set.ts#MemberDecisionSchema",
-        "bootstrap-tools/schemas/requirement.ts#RequirementRefSchema"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetSchema",
-      "name": "RequirementSetSchema",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "zod-object",
-      "fields": [],
-      "extendsNames": [
-        "RequirementSetFields"
-      ],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/requirement-set.ts#RequirementSetFields"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetStage",
-      "name": "RequirementSetStage",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetStageSchema",
-      "name": "RequirementSetStageSchema",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "zod-enum",
-      "doc": "Where a requirements document is in its life.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [
-        "draft",
-        "proposed",
-        "approved",
-        "planned",
-        "in-progress",
-        "delivered",
-        "accepted",
-        "rejected",
-        "cancelled",
-        "superseded"
-      ],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#SetLike",
-      "name": "SetLike",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "type-alias",
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "stage",
-          "type": "RequirementSetStage",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "workPlan",
-          "type": "string[]",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "signOffs",
-          "type": "SignOff[]",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "supersededBy",
-          "type": "string",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "members",
-          "type": "{ ref: string }[]",
-          "optional": false,
-          "array": true
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/requirement-set.ts#RequirementSetStage",
-        "bootstrap-tools/schemas/requirement-set.ts#SignOff"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": false
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#SignerKindSchema",
-      "name": "SignerKindSchema",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "zod-enum",
-      "doc": "Who signed: a deterministic program, an agent, or a person.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [
-        "script",
-        "agent",
-        "human"
-      ],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#SignOff",
-      "name": "SignOff",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#SignOffOutcome",
-      "name": "SignOffOutcome",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#SignOffOutcomeSchema",
-      "name": "SignOffOutcomeSchema",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "zod-enum",
-      "doc": "What a sign-off decided — the closed list an adjudicator answers from.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [
-        "approve",
-        "amend",
-        "reject",
-        "defer",
-        "cancel"
-      ],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#SignOffSchema",
-      "name": "SignOffSchema",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "zod-object",
-      "doc": "One recorded decision about a set, or about one of its members.",
-      "fields": [
-        {
-          "name": "kind",
-          "type": "SignerKindSchema",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "id",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false,
-          "doc": "Stable identifier — a login, an agent's name, a script path."
-        },
-        {
-          "name": "actor",
-          "type": "z.string().min(1).optional()",
-          "optional": true,
-          "array": false,
-          "doc": "The declared actor this signer acted as, when the harness declares actors."
-        },
-        {
-          "name": "at",
-          "type": "WhenSchema",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "scope",
-          "type": "z.string().regex(/^(reqset:[a-z0-9][a-z0-9-]*|req:[a-z0-9][a-z0-9-]*(#[A-Za-z0-9][A-Za-z0-9_.-]*)?)$/, \"a sign-off's sc…",
-          "optional": false,
-          "array": false,
-          "doc": "The set's id, or a member's reference."
-        },
-        {
-          "name": "outcome",
-          "type": "SignOffOutcomeSchema",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "stage",
-          "type": "RequirementSetStageSchema.optional()",
-          "optional": true,
-          "array": false,
-          "doc": "The stage this sign-off moves the set to, when its scope is the set."
-        },
-        {
-          "name": "reason",
-          "type": "z.string().min(1).optional()",
-          "optional": true,
-          "array": false,
-          "doc": "Why — the dispensation, in the signer's words or quoting them."
-        },
-        {
-          "name": "evidence",
-          "type": "z.string().regex(/^https:\\/\\/\\S+$/, \"evidence is an https link to where the decision was made\")",
-          "optional": false,
-          "array": false,
-          "doc": "Where the decision can be read: a link to the comment it was made in."
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/requirement-set.ts#RequirementSetStageSchema",
-        "bootstrap-tools/schemas/requirement-set.ts#SignOffOutcomeSchema",
-        "bootstrap-tools/schemas/requirement-set.ts#SignerKindSchema",
-        "bootstrap-tools/schemas/requirement-set.ts#WhenSchema"
-      ],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement-set.ts#WhenSchema",
-      "name": "WhenSchema",
-      "module": "bootstrap-tools/schemas/requirement-set.ts",
-      "kind": "zod-scalar",
-      "doc": "A date, or a date-time with an offset.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": false
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#Requirement",
-      "name": "Requirement",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#RequirementFields",
-      "name": "RequirementFields",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "zod-object",
-      "doc": "The requirement's FIELDS, before its refinement — for a harness to extend.",
-      "fields": [
-        {
-          "name": "id",
-          "type": "z.string().regex(/^req:[a-z0-9][a-z0-9-]*$/, \"a requirement id is `req:<lowercase-slug>`\")",
-          "optional": false,
-          "array": false,
-          "doc": "`req:<slug>`."
-        },
-        {
-          "name": "title",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "description",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "status",
-          "type": "RequirementStatusSchema.optional()",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "derivedFrom",
-          "type": "z.array(z.string().min(1)).optional()",
-          "optional": true,
-          "array": true,
-          "doc": "Broader requirements this one specialises, by id."
-        },
-        {
-          "name": "actors",
-          "type": "z.array(z.string().min(1))",
-          "optional": false,
-          "array": true
-        },
-        {
-          "name": "statements",
-          "type": "z.array(RequirementStatementSchema).min(1)",
-          "optional": false,
-          "array": true
-        },
-        {
-          "name": "tags",
-          "type": "z.array(z.string().min(1)).optional()",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "proposedIn",
-          "type": "z.string().min(1).optional()",
-          "optional": true,
-          "array": false,
-          "doc": "WHERE IT CAME FROM — the proposal it was filed from, as a path, when it"
-        },
-        {
-          "name": "supersededBy",
-          "type": "z.string().min(1).optional()",
-          "optional": true,
-          "array": false,
-          "doc": "When `superseded`: what replaced it."
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/requirement.ts#RequirementStatementSchema",
-        "bootstrap-tools/schemas/requirement.ts#RequirementStatusSchema"
-      ],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#RequirementLevel",
-      "name": "RequirementLevel",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#RequirementLevelSchema",
-      "name": "RequirementLevelSchema",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "zod-enum",
-      "doc": "How strongly a statement binds.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [
-        "SHALL",
-        "SHOULD",
-        "MAY",
-        "SHALL NOT"
-      ],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#RequirementRef",
-      "name": "RequirementRef",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#RequirementRefSchema",
-      "name": "RequirementRefSchema",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "zod-scalar",
-      "doc": "The address of a requirement, one of its statements, or one success",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#RequirementSchema",
-      "name": "RequirementSchema",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "zod-object",
-      "fields": [],
-      "extendsNames": [
-        "RequirementFields"
-      ],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/requirement.ts#RequirementFields"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#RequirementStatement",
-      "name": "RequirementStatement",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#RequirementStatementFields",
-      "name": "RequirementStatementFields",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "zod-object",
-      "doc": "The statement's FIELDS, before the kind-consistency refinement — exported so",
-      "fields": [
-        {
-          "name": "key",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false,
-          "doc": "Unique within its requirement; with the requirement's id it is the statement's address."
-        },
-        {
-          "name": "label",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "conformance",
-          "type": "RequirementLevelSchema",
-          "optional": false,
-          "array": false,
-          "doc": "How strongly it binds. Named `conformance` — the word the harness's"
-        },
-        {
-          "name": "requirement",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false,
-          "doc": "The statement itself, as one sentence a reviewer can say yes or no to."
-        },
-        {
-          "name": "kind",
-          "type": "StatementKindSchema.optional()",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "activity",
-          "type": "z.string().min(1).optional()",
-          "optional": true,
-          "array": false,
-          "doc": "FUNCTIONAL — the activity the statement is part of."
-        },
-        {
-          "name": "capability",
-          "type": "z.string().min(1).optional()",
-          "optional": true,
-          "array": false,
-          "doc": "FUNCTIONAL — what the actor wants to be able to do (\"I want …\")."
-        },
-        {
-          "name": "benefit",
-          "type": "z.string().min(1).optional()",
-          "optional": true,
-          "array": false,
-          "doc": "FUNCTIONAL — why (\"so that …\")."
-        },
-        {
-          "name": "category",
-          "type": "z.string().min(1).optional()",
-          "optional": true,
-          "array": false,
-          "doc": "NON-FUNCTIONAL — which quality it constrains."
-        },
-        {
-          "name": "actors",
-          "type": "z.array(z.string().min(1)).optional()",
-          "optional": true,
-          "array": true,
-          "doc": "The roles it is about, by id in the harness's own role registry."
-        },
-        {
-          "name": "dependsOn",
-          "type": "z.array(z.string().min(1)).optional()",
-          "optional": true,
-          "array": true,
-          "doc": "Other statements this one presupposes, by {@link requirementRef}."
-        },
-        {
-          "name": "successCriteria",
-          "type": "z.array(SuccessCriterionSchema).min(1).optional()",
-          "optional": true,
-          "array": true,
-          "doc": "How it will be judged met — at least one {@link SuccessCriterionSchema}"
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/requirement.ts#RequirementLevelSchema",
-        "bootstrap-tools/schemas/requirement.ts#StatementKindSchema",
-        "bootstrap-tools/schemas/requirement.ts#SuccessCriterionSchema"
-      ],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#RequirementStatementSchema",
-      "name": "RequirementStatementSchema",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "zod-object",
-      "fields": [],
-      "extendsNames": [
-        "RequirementStatementFields"
-      ],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/requirement.ts#RequirementStatementFields"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#RequirementStatus",
-      "name": "RequirementStatus",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#RequirementStatusSchema",
-      "name": "RequirementStatusSchema",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "zod-enum",
-      "doc": "Where a feature's requirement is in its life. A proposal is `proposed`; a",
-      "fields": [],
-      "extendsNames": [],
-      "values": [
-        "proposed",
-        "in-force",
-        "superseded",
-        "retired"
-      ],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#StatementKind",
-      "name": "StatementKind",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#StatementKindSchema",
-      "name": "StatementKindSchema",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "zod-enum",
-      "doc": "What a statement is about: something someone can do, or how well it is done.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [
-        "functional",
-        "non-functional"
-      ],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#SuccessCriterion",
-      "name": "SuccessCriterion",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#SuccessCriterionSchema",
-      "name": "SuccessCriterionSchema",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "zod-object",
-      "doc": "ONE WAY OF TELLING THAT A STATEMENT IS MET — said before the work starts, so",
-      "fields": [
-        {
-          "name": "key",
-          "type": "z.string().regex(/^[A-Za-z0-9][A-Za-z0-9_.-]*$/, \"a criterion key is letters, digits, `_`, `.` or `-`\")",
-          "optional": false,
-          "array": false,
-          "doc": "Unique within its statement; `req:<id>#<statement>/<key>` is its address."
-        },
-        {
-          "name": "criterion",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false,
-          "doc": "One sentence a reviewer can say yes or no to, without asking what it means."
-        },
-        {
-          "name": "verification",
-          "type": "VerificationMethodSchema",
-          "optional": false,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/requirement.ts#VerificationMethodSchema"
-      ],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#VerificationMethod",
-      "name": "VerificationMethod",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/requirement.ts#VerificationMethodSchema",
-      "name": "VerificationMethodSchema",
-      "module": "bootstrap-tools/schemas/requirement.ts",
-      "kind": "zod-enum",
-      "doc": "HOW a success criterion is judged met. Four ways, because they are four",
-      "fields": [],
-      "extendsNames": [],
-      "values": [
-        "test",
-        "inspection",
-        "review",
-        "analysis"
-      ],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphHydrated",
-      "name": "SubgraphHydrated",
-      "module": "bootstrap-tools/schemas/subgraph-export.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphHydratedNode",
-      "name": "SubgraphHydratedNode",
-      "module": "bootstrap-tools/schemas/subgraph-export.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphHydratedNodeSchema",
-      "name": "SubgraphHydratedNodeSchema",
-      "module": "bootstrap-tools/schemas/subgraph-export.ts",
-      "kind": "zod-scalar",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphHydratedSchema",
-      "name": "SubgraphHydratedSchema",
-      "module": "bootstrap-tools/schemas/subgraph-export.ts",
-      "kind": "zod-object",
-      "fields": [
-        {
-          "name": "@context",
-          "type": "z.string().url()",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "hasMember",
-          "type": "z.array(SubgraphMemberSchema).optional()",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "hasSubgraph",
-          "type": "z.array(SubgraphHydratedNodeSchema).optional()",
-          "optional": true,
-          "array": true
-        }
-      ],
-      "extendsNames": [
-        "SubgraphNodeBase"
-      ],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/subgraph-export.ts#SubgraphHydratedNodeSchema",
-        "bootstrap-tools/schemas/subgraph-export.ts#SubgraphMemberSchema",
-        "bootstrap-tools/schemas/subgraph-export.ts#SubgraphNodeBase"
-      ],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphIndex",
-      "name": "SubgraphIndex",
-      "module": "bootstrap-tools/schemas/subgraph-export.ts",
-      "kind": "type-alias",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphIndexSchema",
-      "name": "SubgraphIndexSchema",
-      "module": "bootstrap-tools/schemas/subgraph-export.ts",
-      "kind": "zod-object",
-      "fields": [
-        {
-          "name": "@context",
-          "type": "z.string().url()",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "hasMember",
-          "type": "z.array(SubgraphPointerSchema).optional()",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "hasSubgraph",
-          "type": "z.array(SubgraphIriSchema).optional()",
-          "optional": true,
-          "array": true
-        }
-      ],
-      "extendsNames": [
-        "SubgraphNodeBase"
-      ],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/subgraph-export.ts#SubgraphIriSchema",
-        "bootstrap-tools/schemas/subgraph-export.ts#SubgraphNodeBase",
-        "bootstrap-tools/schemas/subgraph-export.ts#SubgraphPointerSchema"
-      ],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphIriSchema",
-      "name": "SubgraphIriSchema",
-      "module": "bootstrap-tools/schemas/subgraph-export.ts",
-      "kind": "zod-scalar",
-      "doc": "`<BASE_URL>subgraph/`, `<BASE_URL>subgraph/<HARNESS>/` or `<BASE_URL>subgraph/<HARNESS>/<PATH>/` — always a directory.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphMemberSchema",
-      "name": "SubgraphMemberSchema",
-      "module": "bootstrap-tools/schemas/subgraph-export.ts",
-      "kind": "zod-object",
-      "doc": "A member as the hydrated file carries it: the whole node.",
-      "fields": [
-        {
-          "name": "@id",
-          "type": "z.string().url()",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "@type",
-          "type": "z.string().regex(/^bootstrap:[A-Z][A-Za-z]*$/)",
-          "optional": false,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphNodeBase",
-      "name": "SubgraphNodeBase",
-      "module": "bootstrap-tools/schemas/subgraph-export.ts",
-      "kind": "zod-object",
-      "fields": [
-        {
-          "name": "@id",
-          "type": "SubgraphIriSchema",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "@type",
-          "type": "z.literal(\"bootstrap:Subgraph\")",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "name",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false,
-          "doc": "The repository's or harness's name at the two top levels; the instance-relative path below them."
-        },
-        {
-          "name": "path",
-          "type": "z.string().min(1)",
-          "optional": false,
-          "array": false,
-          "doc": "Instance-relative, ending in `/`; `./` at the two top levels."
-        },
-        {
-          "name": "title",
-          "type": "z.string().optional()",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "description",
-          "type": "z.string().optional()",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "holdsGraph",
-          "type": "z.array(z.string().regex(/^bootstrap:graphTypology\\/[a-z][a-z0-9-]*$/)).optional()",
-          "optional": true,
-          "array": true,
-          "doc": "The graph typologies it holds, as bootstrap's graph-typology individuals."
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap-tools/schemas/subgraph-export.ts#SubgraphIriSchema"
-      ],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": false
-    },
-    {
-      "id": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphPointerSchema",
-      "name": "SubgraphPointerSchema",
-      "module": "bootstrap-tools/schemas/subgraph-export.ts",
-      "kind": "zod-object",
-      "doc": "A member as the index carries it: enough to find it, type it and label it.",
-      "fields": [
-        {
-          "name": "@id",
-          "type": "z.string().url()",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "@type",
-          "type": "z.string().regex(/^bootstrap:[A-Z][A-Za-z]*$/)",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "name",
-          "type": "z.string().optional()",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "title",
-          "type": "z.string().optional()",
-          "optional": true,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [
-        "z"
-      ],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/discussion.input.schema.json#DiscussionInput",
-      "name": "DiscussionInput",
-      "module": "bootstrap/schemas/discussion.input.schema.json",
-      "kind": "json-schema",
-      "doc": "The occasion for asking: what the agent already knows, and which unknown is still open. Deliberately small — a Bootstrapping Agent has read one README and can look nothing up, so an input it cannot populate is an input that stops the process.",
-      "fields": [
-        {
-          "name": "open",
-          "type": "\"harness\" | \"repositories\"[]",
-          "optional": false,
-          "array": true,
-          "doc": "Which unknowns this exchange is to settle. At least one, or there is nothing to ask."
-        },
-        {
-          "name": "askedOf",
-          "type": "object",
-          "optional": false,
-          "array": false,
-          "doc": "Who is being asked. The two participant kinds are symmetric — the same skill serves human-to-agent and agent-to-agent — but the answer's weight differs, so the kind is recorded rather than inferred."
-        },
-        {
-          "name": "candidates",
-          "type": "string[]",
-          "optional": true,
-          "array": true,
-          "doc": "Harnesses the agent has already narrowed to from context — a repository whose root already holds a declaration, `<name>.json`, is not a blank slate. Narrowing first is what keeps this to one question."
-        },
-        {
-          "name": "knownRepositories",
-          "type": "object[]",
-          "optional": true,
-          "array": true,
-          "doc": "Repositories already evident from the checkout, each with the part it is known to play. Offered so the participant confirms or corrects rather than recites."
-        },
-        {
-          "name": "context",
-          "type": "string",
-          "optional": true,
-          "array": false,
-          "doc": "What the agent read to get this far, in one or two sentences. Lets the participant answer without re-establishing the situation."
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/discussion.output.schema.json#DiscussionOutput",
-      "name": "DiscussionOutput",
-      "module": "bootstrap/schemas/discussion.output.schema.json",
-      "kind": "json-schema",
-      "doc": "What the exchange determined: which harness, which repositories, on whose word, and by what means. This document existing and conforming is what finishes the task — not that a conversation took place.",
-      "fields": [
-        {
-          "name": "outcome",
-          "type": "\"settled\" | \"unsettled\"",
-          "optional": false,
-          "array": false,
-          "doc": "`unsettled` is a real outcome, not an error: a participant may decline, and the process has an end for it. What an `unsettled` result must never contain is a guess."
-        },
-        {
-          "name": "harness",
-          "type": "string",
-          "optional": true,
-          "array": false,
-          "doc": "The harness this repository is to become — `bootstrap`, or any Harness built on it. Required when `outcome` is `settled` and `harness` was open."
-        },
-        {
-          "name": "repositories",
-          "type": "object[]",
-          "optional": true,
-          "array": true,
-          "doc": "The repositories involved, each with the part it plays. Recorded as pairs rather than a flat list: read-from and written-to may be one repository or two, and which is which is the answer."
-        },
-        {
-          "name": "determinedBy",
-          "type": "\"asked\" | \"assumed\"",
-          "optional": true,
-          "array": false,
-          "doc": "`asked` means a participant said so. `assumed` is permitted only for a default the README itself states, and then `assumption` must say which. An agent that reaches for `assumed` because nobody answered has produced an `unsettled` result, not an assumed one."
-        },
-        {
-          "name": "assumption",
-          "type": "string",
-          "optional": true,
-          "array": false,
-          "doc": "Required when `determinedBy` is `assumed`: the documented default relied on, and where it is stated."
-        },
-        {
-          "name": "answeredBy",
-          "type": "object",
-          "optional": false,
-          "array": false,
-          "doc": "Who settled it. An answer from a sibling agent is evidence of a different weight from the person who wants the harness — both are admissible, neither is conflated with the other."
-        },
-        {
-          "name": "exchange",
-          "type": "object[]",
-          "optional": false,
-          "array": true,
-          "doc": "What was actually put and what came back, in order. One entry is the expected case — the skill's rule is to ask the fewest questions that settle it."
-        },
-        {
-          "name": "stillOpen",
-          "type": "\"harness\" | \"repositories\"[]",
-          "optional": true,
-          "array": true,
-          "doc": "Required in substance when `outcome` is `unsettled`: what remains undetermined, so the next actor resumes rather than restarts."
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Actor",
-      "name": "Actor",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A person, an agent or a program that can carry out Tasks.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#Task"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Asset",
-      "name": "Asset",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A file entry of a Declaration: one file about the repository itself, whose `role` field says what it is for.",
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "src",
-          "type": "string",
-          "optional": false,
-          "array": false,
-          "doc": "The file, relative to the declaration."
-        },
-        {
-          "name": "role",
-          "type": "string",
-          "optional": false,
-          "array": false,
-          "doc": "The part the file plays, such as `instance-readme`."
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#Declaration"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Content",
-      "name": "Content",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "Node Instances that describe the subject matter of a Knowledge Graph, such as records, documents, catalogues and their terms, rather than how to work with it.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#KnowledgeGraph",
-        "bootstrap/schemas/graph.schema.json#NodeInstance"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Declaration",
-      "name": "Declaration",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A JSON document, `<name>.json`, that gives a name and lists directory entries and file entries.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Dependency",
-      "name": "Dependency",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A Declaration's `needs` entry naming another Knowledge Graph. References may point from this graph's Node Instances into the named one, never back.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#Declaration",
-        "bootstrap/schemas/graph.schema.json#KnowledgeGraph",
-        "bootstrap/schemas/graph.schema.json#NodeInstance",
-        "bootstrap/schemas/graph.schema.json#Reference"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Extension",
-      "name": "Extension",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A field of a Declaration, or of one of its entries, that is not defined here. A reader that does not recognise the field ignores it, and the rest of the Declaration keeps its meaning.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#Declaration"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#GraphTypology",
-      "name": "GraphTypology",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A named set of Node Kinds.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#NodeKind"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Harness",
-      "name": "Harness",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A Knowledge Graph whose Subgraphs hold Skills, Roles or Processes: what an Actor uses to work with a Knowledge Graph, including itself.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#Actor",
-        "bootstrap/schemas/graph.schema.json#KnowledgeGraph",
-        "bootstrap/schemas/graph.schema.json#Process",
-        "bootstrap/schemas/graph.schema.json#Role",
-        "bootstrap/schemas/graph.schema.json#Skill",
-        "bootstrap/schemas/graph.schema.json#Subgraph"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#KnowledgeGraph",
-      "name": "KnowledgeGraph",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "The Node Schemas, Node Instances and Assets one Declaration lists, as of one version of the repository. Published as JSON-LD, the statements of each Subgraph's Node Instances form one named graph.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#Asset",
-        "bootstrap/schemas/graph.schema.json#Declaration",
-        "bootstrap/schemas/graph.schema.json#NodeInstance",
-        "bootstrap/schemas/graph.schema.json#NodeSchema",
-        "bootstrap/schemas/graph.schema.json#Subgraph"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#KnowledgeGraphDeclaration",
-      "name": "KnowledgeGraphDeclaration",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A Declaration. Any field not listed here is an Extension: A field of a Declaration, or of one of its entries, that is not defined here. A reader that does not recognise the field ignores it, and the rest of the Declaration keeps its meaning.",
-      "fields": [
-        {
-          "name": "name",
-          "type": "string",
-          "optional": false,
-          "array": false,
-          "doc": "The Knowledge Graph's name. The declaration file is `<name>.json`."
-        },
-        {
-          "name": "version",
-          "type": "string",
-          "optional": true,
-          "array": false,
-          "doc": "Its version, as MAJOR.MINOR.PATCH (semantic versioning)."
-        },
-        {
-          "name": "iriBase",
-          "type": "string",
-          "optional": true,
-          "array": false,
-          "doc": "The address its IRIs are minted under, before the version. An identifier a program reads is `<iriBase><version>/…`; a page meant for a person is `<iriBase>v<major>/…`."
-        },
-        {
-          "name": "title",
-          "type": "string",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "description",
-          "type": "string",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "directories",
-          "type": "object[]",
-          "optional": true,
-          "array": true,
-          "doc": "Its Subgraphs: zero or more."
-        },
-        {
-          "name": "needs",
-          "type": "string[]",
-          "optional": true,
-          "array": true,
-          "doc": "Its Dependencies: the Knowledge Graphs it may refer into."
-        },
-        {
-          "name": "nodeSchemas",
-          "type": "object",
-          "optional": true,
-          "array": false,
-          "doc": "Its Node Kinds: each `$schema` value its Node Instances may carry, paired with the Node Schema that defines it — an IRI, or a path relative to this Declaration."
-        },
-        {
-          "name": "assets",
-          "type": "object[]",
-          "optional": true,
-          "array": true
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Node",
-      "name": "Node",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "One file, or one part of a file addressable by an IRI fragment, named by an IRI.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#NodeInstance",
-      "name": "NodeInstance",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A Node that names its Node Kind, in `$schema` or front matter, and satisfies that kind's Node Schema.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#Node",
-        "bootstrap/schemas/graph.schema.json#NodeKind",
-        "bootstrap/schemas/graph.schema.json#NodeSchema"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#NodeKind",
-      "name": "NodeKind",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A name paired with a Node Schema.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#NodeSchema"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#NodeSchema",
-      "name": "NodeSchema",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A schema a Node can be checked against: a JSON Schema, or a published external schema such as BPMN's.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#Node"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Process",
-      "name": "Process",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A Node Instance holding a BPMN process that coordinates Tasks: its Process Nodes, joined by Sequence Flows, sit in lanes that each name a Role.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#NodeInstance",
-        "bootstrap/schemas/graph.schema.json#ProcessNode",
-        "bootstrap/schemas/graph.schema.json#Role",
-        "bootstrap/schemas/graph.schema.json#SequenceFlow",
-        "bootstrap/schemas/graph.schema.json#Task"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#ProcessNode",
-      "name": "ProcessNode",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A BPMN flow node: an activity (a task or call activity), a gateway, or an event.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Reference",
-      "name": "Reference",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A Node's naming of another Node by its IRI.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#Node"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Role",
-      "name": "Role",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A Node Instance naming a part an Actor takes on to carry out Tasks, and listing the Skills that part needs.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#Actor",
-        "bootstrap/schemas/graph.schema.json#NodeInstance",
-        "bootstrap/schemas/graph.schema.json#Skill",
-        "bootstrap/schemas/graph.schema.json#Task"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#SequenceFlow",
-      "name": "SequenceFlow",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A directed connection in a BPMN process from one Process Node to the next.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#ProcessNode"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Skill",
-      "name": "Skill",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A Node Instance holding natural-language instructions an Actor follows to carry out a Task.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#Actor",
-        "bootstrap/schemas/graph.schema.json#NodeInstance",
-        "bootstrap/schemas/graph.schema.json#Task"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Subgraph",
-      "name": "Subgraph",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A directory entry of a Declaration: an id, a directory, and the Graph Typologies its Node Instances' kinds belong to.",
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "optional": false,
-          "array": false,
-          "doc": "The Subgraph's name, unique within its Knowledge Graph."
-        },
-        {
-          "name": "path",
-          "type": "string",
-          "optional": false,
-          "array": false,
-          "doc": "The directory, relative to the declaration."
-        },
-        {
-          "name": "graphTypologies",
-          "type": "\"skills\" | \"schemas\" | \"scenarios\" | \"processes\" | \"models\" | string[]",
-          "optional": false,
-          "array": true,
-          "doc": "The Graph Typologies it holds."
-        },
-        {
-          "name": "title",
-          "type": "string",
-          "optional": true,
-          "array": false,
-          "doc": "A short name for people, shown as its README's heading."
-        },
-        {
-          "name": "description",
-          "type": "string",
-          "optional": true,
-          "array": false,
-          "doc": "What it holds, in a sentence or two, shown under that heading."
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#Declaration",
-        "bootstrap/schemas/graph.schema.json#GraphTypology",
-        "bootstrap/schemas/graph.schema.json#NodeInstance"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Subkind",
-      "name": "Subkind",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A Node Kind whose Node Schema requires everything another Node Kind's does, so every Node that satisfies it satisfies the other too.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [
-        "bootstrap/schemas/graph.schema.json#Node",
-        "bootstrap/schemas/graph.schema.json#NodeKind",
-        "bootstrap/schemas/graph.schema.json#NodeSchema"
-      ],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/graph.schema.json#Task",
-      "name": "Task",
-      "module": "bootstrap/schemas/graph.schema.json",
-      "kind": "json-schema",
-      "doc": "A unit of work, stated by what it needs to begin and what it produces.",
-      "fields": [],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/model-registry.schema.json#ModelRegistry",
-      "name": "ModelRegistry",
-      "module": "bootstrap/schemas/model-registry.schema.json",
-      "kind": "json-schema",
-      "doc": "Which languages a model is good at, and whether a person checked. Only `human-validated` is ever acted on, and only a person can grant it.",
-      "fields": [
-        {
-          "name": "$schema",
-          "type": "\"model-registry/1.0.0\"",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "models",
-          "type": "object[]",
-          "optional": false,
-          "array": true
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/requirement-set.schema.json#RequirementSet",
-      "name": "RequirementSet",
-      "module": "bootstrap/schemas/requirement-set.schema.json",
-      "kind": "json-schema",
-      "doc": "A requirements document: a set of requirement statements (by `req:` reference, each with its own decision) at one stage of its life — draft, proposed, approved, planned, in-progress, delivered, accepted, or rejected, cancelled, superseded — with its work plan and the sign-offs that moved it there. A sign-off is a recorded decision: who (kind, id, actor), when, about what, the outcome (approve, ame",
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "title",
-          "type": "string",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "methodology",
-          "type": "string",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "issue",
-          "type": "string",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "stage",
-          "type": "\"draft\" | \"proposed\" | \"approved\" | \"planned\" | \"in-progress\" | \"delivered\" | \"accepted\" | \"rejected\" | \"cancelled\" | \"superseded\"",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "members",
-          "type": "object[]",
-          "optional": false,
-          "array": true
-        },
-        {
-          "name": "workPlan",
-          "type": "string[]",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "signOffs",
-          "type": "object[]",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "document",
-          "type": "string",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "supersededBy",
-          "type": "string",
-          "optional": true,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
-    {
-      "id": "bootstrap/schemas/requirement.schema.json#Requirement",
-      "name": "Requirement",
-      "module": "bootstrap/schemas/requirement.schema.json",
-      "kind": "json-schema",
-      "doc": "What a harness, or something built with one, must do, said so it can be checked: a titled set of numbered statements, each with a level (SHALL, SHOULD, MAY, SHALL NOT), one sentence, and — optional for now, required once existing statements are migrated — at least one success criterion saying how it is judged met (test, inspection, review or analysis). A test run points at a statement as `req:<slu",
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "title",
-          "type": "string",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "description",
-          "type": "string",
-          "optional": false,
-          "array": false
-        },
-        {
-          "name": "status",
-          "type": "\"proposed\" | \"in-force\" | \"superseded\" | \"retired\"",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "derivedFrom",
-          "type": "string[]",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "actors",
-          "type": "string[]",
-          "optional": false,
-          "array": true
-        },
-        {
-          "name": "statements",
-          "type": "object[]",
-          "optional": false,
-          "array": true
-        },
-        {
-          "name": "tags",
-          "type": "string[]",
-          "optional": true,
-          "array": true
-        },
-        {
-          "name": "proposedIn",
-          "type": "string",
-          "optional": true,
-          "array": false
-        },
-        {
-          "name": "supersededBy",
-          "type": "string",
-          "optional": true,
-          "array": false
-        }
-      ],
-      "extendsNames": [],
-      "values": [],
-      "refs": [],
-      "unresolved": [],
-      "external": [],
-      "exported": true
-    },
     {
       "id": "openapi/schemas/openapi.ts#OpenApiConfig",
       "name": "OpenApiConfig",
@@ -23147,6 +20123,20 @@
       "exported": true
     },
     {
+      "id": "schemas/harness-config.ts#EffectiveConfigRead",
+      "name": "EffectiveConfigRead",
+      "module": "schemas/harness-config.ts",
+      "kind": "type-alias",
+      "doc": "What a reader of an instance's config gets: the config as written, where it",
+      "fields": [],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "exported": true
+    },
+    {
       "id": "schemas/harness-config.ts#FolioAssistantDependency",
       "name": "FolioAssistantDependency",
       "module": "schemas/harness-config.ts",
@@ -24868,6 +21858,87 @@
       "exported": true
     },
     {
+      "id": "schemas/intake.ts#IntakeClassification",
+      "name": "IntakeClassification",
+      "module": "schemas/intake.ts",
+      "kind": "type-alias",
+      "fields": [],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "exported": true
+    },
+    {
+      "id": "schemas/intake.ts#IntakeClassificationSchema",
+      "name": "IntakeClassificationSchema",
+      "module": "schemas/intake.ts",
+      "kind": "zod-object",
+      "doc": "One judgement that the captured item is, or is not, a member of a class in",
+      "fields": [
+        {
+          "name": "scheme",
+          "type": "z.string().min(1)",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "code",
+          "type": "z.string().min(1)",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "member",
+          "type": "z.boolean()",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "properties",
+          "type": "z.record(z.string(), z.string()).optional()",
+          "optional": true,
+          "array": false,
+          "doc": "Qualifiers the scheme defines, e.g. `{ publicationType: \"implementation-guidance\" }`."
+        },
+        {
+          "name": "source",
+          "type": "z.enum(CLASSIFICATION_SOURCES)",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "basis",
+          "type": "z.string().min(1)",
+          "optional": false,
+          "array": false,
+          "doc": "Why — the rule, the person's words, or the process step. Required: an unexplained classification is a guess."
+        },
+        {
+          "name": "by",
+          "type": "z.string().min(1).optional()",
+          "optional": true,
+          "array": false
+        },
+        {
+          "name": "at",
+          "type": "z.string().regex(/^\\d{4}-\\d{2}-\\d{2}/, \"an ISO 8601 date\").optional()",
+          "optional": true,
+          "array": false
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [
+        "CLASSIFICATION_SOURCES",
+        "z"
+      ],
+      "exported": true
+    },
+    {
       "id": "schemas/intake.ts#IntakeFileSchema",
       "name": "IntakeFileSchema",
       "module": "schemas/intake.ts",
@@ -24973,11 +22044,19 @@
           "optional": true,
           "array": false,
           "doc": "The licence the uploader established, as the SAME record a library"
+        },
+        {
+          "name": "classifications",
+          "type": "z.array(IntakeClassificationSchema).optional()",
+          "optional": true,
+          "array": true,
+          "doc": "Classifications of the captured item ({@link IntakeClassificationSchema})."
         }
       ],
       "extendsNames": [],
       "values": [],
       "refs": [
+        "schemas/intake.ts#IntakeClassificationSchema",
         "schemas/intake.ts#IntakeFileSchema",
         "schemas/intake.ts#IntakeSourceSchema",
         "schemas/source-licence.ts#SourceLicenceSchema"
@@ -28973,6 +26052,444 @@
       "refs": [],
       "unresolved": [],
       "external": [],
+      "exported": true
+    },
+    {
+      "id": "schemas/nquads-distribution.ts#NamedQueryDef",
+      "name": "NamedQueryDef",
+      "module": "schemas/nquads-distribution.ts",
+      "kind": "type-alias",
+      "fields": [],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "exported": true
+    },
+    {
+      "id": "schemas/nquads-distribution.ts#NamedQueryDefSchema",
+      "name": "NamedQueryDefSchema",
+      "module": "schemas/nquads-distribution.ts",
+      "kind": "zod-object",
+      "doc": "Pre-compiled, audited named SPARQL 1.1 query.",
+      "fields": [
+        {
+          "name": "id",
+          "type": "z.string().regex(/^[a-z0-9_-]+$/)",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "description",
+          "type": "z.string().min(1)",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "sparql",
+          "type": "z.string().min(1)",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "requiredSubgraphs",
+          "type": "z.array(z.string()).default([]).describe( \"List of subgraph partition IDs that must be resident in the store before exe…",
+          "optional": true,
+          "array": true
+        },
+        {
+          "name": "parameters",
+          "type": "z.array(QueryParameterDefSchema).default([])",
+          "optional": true,
+          "array": true
+        },
+        {
+          "name": "outputVariables",
+          "type": "z.array(z.string()).default([])",
+          "optional": true,
+          "array": true
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [
+        "schemas/nquads-distribution.ts#QueryParameterDefSchema"
+      ],
+      "unresolved": [],
+      "external": [
+        "z"
+      ],
+      "exported": true
+    },
+    {
+      "id": "schemas/nquads-distribution.ts#NamedQueryRequest",
+      "name": "NamedQueryRequest",
+      "module": "schemas/nquads-distribution.ts",
+      "kind": "type-alias",
+      "fields": [],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "exported": true
+    },
+    {
+      "id": "schemas/nquads-distribution.ts#NamedQueryRequestSchema",
+      "name": "NamedQueryRequestSchema",
+      "module": "schemas/nquads-distribution.ts",
+      "kind": "zod-object",
+      "doc": "Standard I/O Contract: Request to execute a named query",
+      "fields": [
+        {
+          "name": "dataset",
+          "type": "z.string().describe(\"Dataset manifest file path, distribution directory, or HTTP URL\")",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "queryName",
+          "type": "z.string().min(1).describe(\"Identifier of the pre-compiled named query to execute\")",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "bindings",
+          "type": "z.record(z.string(), z.union([z.string(), z.number(), z.boolean()])).default({})",
+          "optional": true,
+          "array": false
+        },
+        {
+          "name": "format",
+          "type": "z.enum([\"table\", \"json\", \"ids\"]).default(\"table\")",
+          "optional": true,
+          "array": false
+        },
+        {
+          "name": "limit",
+          "type": "z.number().int().positive().optional()",
+          "optional": true,
+          "array": false
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [
+        "z"
+      ],
+      "exported": true
+    },
+    {
+      "id": "schemas/nquads-distribution.ts#NamedQueryResponse",
+      "name": "NamedQueryResponse",
+      "module": "schemas/nquads-distribution.ts",
+      "kind": "type-alias",
+      "fields": [],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "exported": true
+    },
+    {
+      "id": "schemas/nquads-distribution.ts#NamedQueryResponseSchema",
+      "name": "NamedQueryResponseSchema",
+      "module": "schemas/nquads-distribution.ts",
+      "kind": "zod-object",
+      "doc": "Standard I/O Contract: Result of executing a named query",
+      "fields": [
+        {
+          "name": "queryName",
+          "type": "z.string()",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "datasetIri",
+          "type": "z.string()",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "quadsLoaded",
+          "type": "z.number().int().nonnegative()",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "loadTimeMs",
+          "type": "z.number().nonnegative()",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "executionTimeMs",
+          "type": "z.number().nonnegative()",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "totalRows",
+          "type": "z.number().int().nonnegative()",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "rows",
+          "type": "z.array(z.record(z.string(), z.string()))",
+          "optional": false,
+          "array": true
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [
+        "z"
+      ],
+      "exported": true
+    },
+    {
+      "id": "schemas/nquads-distribution.ts#NQuadsDistributionManifest",
+      "name": "NQuadsDistributionManifest",
+      "module": "schemas/nquads-distribution.ts",
+      "kind": "type-alias",
+      "fields": [],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "exported": true
+    },
+    {
+      "id": "schemas/nquads-distribution.ts#NQuadsDistributionManifestSchema",
+      "name": "NQuadsDistributionManifestSchema",
+      "module": "schemas/nquads-distribution.ts",
+      "kind": "zod-object",
+      "doc": "Top-level Topology Manifest (`subgraph-manifest.json`).",
+      "fields": [
+        {
+          "name": "$schema",
+          "type": "z.literal(NQUADS_DISTRIBUTION_SCHEMA_TAG)",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "version",
+          "type": "z.string().min(1)",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "generatedAt",
+          "type": "z.string().datetime()",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "datasetIri",
+          "type": "z.string().url().describe(\"Root dataset IRI identifier\")",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "servedRoute",
+          "type": "z.string().min(1).describe(\"Base relative route where files are served, e.g. 'dataset/dist/oxigraph'\")",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "tiers",
+          "type": "z.object({ spine: NQuadsPartitionSchema.describe(\"Primary routing backbone graph loaded on bootstrap\"), subgraphs: z.re…",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "queriesFile",
+          "type": "z.string().endsWith(\".json\").default(\"queries.json\")",
+          "optional": true,
+          "array": false
+        },
+        {
+          "name": "namedQueries",
+          "type": "z.record(z.string(), NamedQueryDefSchema).default({})",
+          "optional": true,
+          "array": false
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [
+        "schemas/nquads-distribution.ts#NQuadsPartitionSchema",
+        "schemas/nquads-distribution.ts#NamedQueryDefSchema"
+      ],
+      "unresolved": [],
+      "external": [
+        "NQUADS_DISTRIBUTION_SCHEMA_TAG",
+        "z"
+      ],
+      "exported": true
+    },
+    {
+      "id": "schemas/nquads-distribution.ts#NQuadsPartition",
+      "name": "NQuadsPartition",
+      "module": "schemas/nquads-distribution.ts",
+      "kind": "type-alias",
+      "fields": [],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "exported": true
+    },
+    {
+      "id": "schemas/nquads-distribution.ts#NQuadsPartitionSchema",
+      "name": "NQuadsPartitionSchema",
+      "module": "schemas/nquads-distribution.ts",
+      "kind": "zod-object",
+      "doc": "Individual N-Quads graph partition.",
+      "fields": [
+        {
+          "name": "id",
+          "type": "z.string().min(1).describe(\"Partition identifier, e.g. 'spine' or community/subgraph id\")",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "name",
+          "type": "z.string().min(1).describe(\"Human-readable title for the partition\")",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "graphIri",
+          "type": "z.string().url().describe(\"Target named graph IRI serialized in the N-Quads\")",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "fileNq",
+          "type": "z.string().endsWith(\".nq\").describe(\"Relative filename of uncompressed W3C N-Quads\")",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "fileGz",
+          "type": "z.string().endsWith(\".nq.gz\").describe(\"Relative filename of gzipped W3C N-Quads\")",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "mediaType",
+          "type": "z.literal(\"application/n-quads\").default(\"application/n-quads\")",
+          "optional": true,
+          "array": false
+        },
+        {
+          "name": "compressFormat",
+          "type": "z.literal(\"application/gzip\").default(\"application/gzip\")",
+          "optional": true,
+          "array": false
+        },
+        {
+          "name": "quadCount",
+          "type": "z.number().int().nonnegative()",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "itemCount",
+          "type": "z.number().int().nonnegative()",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "byteSize",
+          "type": "z.number().int().positive().optional()",
+          "optional": true,
+          "array": false
+        },
+        {
+          "name": "sha256",
+          "type": "z.string().length(64).optional()",
+          "optional": true,
+          "array": false
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [
+        "z"
+      ],
+      "exported": true
+    },
+    {
+      "id": "schemas/nquads-distribution.ts#QueryParameterDef",
+      "name": "QueryParameterDef",
+      "module": "schemas/nquads-distribution.ts",
+      "kind": "type-alias",
+      "fields": [],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "exported": true
+    },
+    {
+      "id": "schemas/nquads-distribution.ts#QueryParameterDefSchema",
+      "name": "QueryParameterDefSchema",
+      "module": "schemas/nquads-distribution.ts",
+      "kind": "zod-object",
+      "doc": "Parameter definition for safe, injection-proof SPARQL queries",
+      "fields": [
+        {
+          "name": "name",
+          "type": "z.string().regex(/^[a-zA-Z0-9_]+$/)",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "type",
+          "type": "z.enum([\"string\", \"iri\", \"integer\", \"boolean\"])",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "required",
+          "type": "z.boolean().default(false)",
+          "optional": true,
+          "array": false
+        },
+        {
+          "name": "defaultValue",
+          "type": "z.union([z.string(), z.number(), z.boolean()]).optional()",
+          "optional": true,
+          "array": false
+        },
+        {
+          "name": "description",
+          "type": "z.string().optional()",
+          "optional": true,
+          "array": false
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [
+        "z"
+      ],
       "exported": true
     },
     {
@@ -40979,6 +38496,13 @@
           "doc": "The declaration this contribution came from, RELATIVE TO THE REPOSITORY —"
         },
         {
+          "name": "instanceRoot",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "doc": "The declaring instance's root path on disk, when known."
+        },
+        {
           "name": "description",
           "type": "string",
           "optional": true,
@@ -42072,6 +39596,77 @@
       "exported": true
     },
     {
+      "id": "schemas/subgraph-source.ts#NpmSource",
+      "name": "NpmSource",
+      "module": "schemas/subgraph-source.ts",
+      "kind": "type-alias",
+      "fields": [],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "exported": true
+    },
+    {
+      "id": "schemas/subgraph-source.ts#NpmSourceSchema",
+      "name": "NpmSourceSchema",
+      "module": "schemas/subgraph-source.ts",
+      "kind": "zod-object",
+      "doc": "The content is an NPM PACKAGE or tarball (.tgz) retrieved from npm or GitHub Packages",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "z.literal(\"npm\")",
+          "optional": false,
+          "array": false
+        },
+        {
+          "name": "package",
+          "type": "z.string().regex(/^(@[a-z0-9-~][a-z0-9-._~]*\\/)?[a-z0-9-~][a-z0-9-._~]*$/, \"an npm package name\")",
+          "optional": false,
+          "array": false,
+          "doc": "Scoped or unscoped package name (e.g. `@litlfred/cat-harness`)."
+        },
+        {
+          "name": "version",
+          "type": "z.string().regex(/^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.-]+)?$/, \"exact semver version triple (no ranges)\")",
+          "optional": false,
+          "array": false,
+          "doc": "Exact semver version triple (no ranges)."
+        },
+        {
+          "name": "integrity",
+          "type": "z.string().optional()",
+          "optional": true,
+          "array": false,
+          "doc": "Integrity SRI string (sha256 or sha512) for fixity verification."
+        },
+        {
+          "name": "upstreamPath",
+          "type": "z .string() .regex(/^[A-Za-z0-9_-][A-Za-z0-9._-]*(?:\\/[A-Za-z0-9_-][A-Za-z0-9._-]*)*\\/?$/, \"a package-relative path, no…",
+          "optional": true,
+          "array": false,
+          "doc": "Upstream path inside the extracted package tarball."
+        },
+        {
+          "name": "tool",
+          "type": "z.string().regex(/^[a-z0-9][a-z0-9-]*$/, \"a Tool node id\").default(\"npm\")",
+          "optional": true,
+          "array": false,
+          "doc": "Declared Tool that retrieves/mounts the package. Default: 'npm'."
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [
+        "z"
+      ],
+      "exported": true
+    },
+    {
       "id": "schemas/subgraph-source.ts#RemoteSourceSchema",
       "name": "RemoteSourceSchema",
       "module": "schemas/subgraph-source.ts",
@@ -42099,6 +39694,12 @@
         {
           "name": "upstreamPath",
           "type": "z .string() .regex(/^[A-Za-z0-9_-][A-Za-z0-9._-]*(?:\\/[A-Za-z0-9_-][A-Za-z0-9._-]*)*\\/?$/, \"a repository-relative path,…",
+          "optional": true,
+          "array": false
+        },
+        {
+          "name": "tool",
+          "type": "z.string().regex(/^[a-z0-9][a-z0-9-]*$/, \"a Tool node id\").optional()",
           "optional": true,
           "array": false
         }
@@ -54897,710 +52498,6 @@
   ],
   "edges": [
     {
-      "from": "bootstrap-tools/schemas/discussion.ts#DiscussionInputSchema",
-      "to": "bootstrap-tools/schemas/discussion.ts#ParticipantSchema",
-      "via": "askedOf",
-      "kind": "field",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/discussion.ts#DiscussionInputSchema",
-      "to": "bootstrap-tools/schemas/discussion.ts#RepositoryRefSchema",
-      "via": "knownRepositories",
-      "kind": "field",
-      "optional": true,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/discussion.ts#DiscussionOutputObjectSchema",
-      "to": "bootstrap-tools/schemas/discussion.ts#ExchangeEntrySchema",
-      "via": "exchange",
-      "kind": "field",
-      "optional": false,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/discussion.ts#DiscussionOutputObjectSchema",
-      "to": "bootstrap-tools/schemas/discussion.ts#ParticipantSchema",
-      "via": "answeredBy",
-      "kind": "field",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/discussion.ts#DiscussionOutputObjectSchema",
-      "to": "bootstrap-tools/schemas/discussion.ts#RepositoryRefSchema",
-      "via": "repositories",
-      "kind": "field",
-      "optional": true,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/discussion.ts#DiscussionOutputSchema",
-      "to": "bootstrap-tools/schemas/discussion.ts#DiscussionOutputObjectSchema",
-      "via": "",
-      "kind": "extends",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/graph-export.ts#GraphExportSchema",
-      "to": "bootstrap-tools/schemas/graph-export.ts#GraphExportNodeSchema",
-      "via": "@graph",
-      "kind": "field",
-      "optional": false,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/graph.ts#KnowledgeGraphDeclarationSchema",
-      "to": "bootstrap-tools/schemas/graph.ts#AssetSchema",
-      "via": "assets",
-      "kind": "field",
-      "optional": true,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/graph.ts#KnowledgeGraphDeclarationSchema",
-      "to": "bootstrap-tools/schemas/graph.ts#DependencySchema",
-      "via": "needs",
-      "kind": "field",
-      "optional": true,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/graph.ts#KnowledgeGraphDeclarationSchema",
-      "to": "bootstrap-tools/schemas/graph.ts#SubgraphSchema",
-      "via": "directories",
-      "kind": "field",
-      "optional": true,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/graph.ts#SubgraphSchema",
-      "to": "bootstrap-tools/schemas/graph.ts#GraphTypologySchema",
-      "via": "graphTypologies",
-      "kind": "field",
-      "optional": false,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/model-registry.ts#ModelEntrySchema",
-      "to": "bootstrap-tools/schemas/model-registry.ts#ModelIdSchema",
-      "via": "id",
-      "kind": "field",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/model-registry.ts#ModelRegistrySchema",
-      "to": "bootstrap-tools/schemas/model-registry.ts#ModelEntrySchema",
-      "via": "models",
-      "kind": "field",
-      "optional": false,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetFields",
-      "to": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetIdSchema",
-      "via": "id",
-      "kind": "field",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetFields",
-      "to": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetIdSchema",
-      "via": "supersededBy",
-      "kind": "field",
-      "optional": true,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetFields",
-      "to": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetMemberSchema",
-      "via": "members",
-      "kind": "field",
-      "optional": false,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetFields",
-      "to": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetStageSchema",
-      "via": "stage",
-      "kind": "field",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetFields",
-      "to": "bootstrap-tools/schemas/requirement-set.ts#SignOffSchema",
-      "via": "signOffs",
-      "kind": "field",
-      "optional": true,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetMemberSchema",
-      "to": "bootstrap-tools/schemas/requirement-set.ts#MemberDecisionSchema",
-      "via": "decision",
-      "kind": "field",
-      "optional": true,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetMemberSchema",
-      "to": "bootstrap-tools/schemas/requirement.ts#RequirementRefSchema",
-      "via": "ref",
-      "kind": "field",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetSchema",
-      "to": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetFields",
-      "via": "",
-      "kind": "extends",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement-set.ts#SetLike",
-      "to": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetStage",
-      "via": "stage",
-      "kind": "field",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement-set.ts#SetLike",
-      "to": "bootstrap-tools/schemas/requirement-set.ts#SignOff",
-      "via": "signOffs",
-      "kind": "field",
-      "optional": true,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement-set.ts#SignOffSchema",
-      "to": "bootstrap-tools/schemas/requirement-set.ts#RequirementSetStageSchema",
-      "via": "stage",
-      "kind": "field",
-      "optional": true,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement-set.ts#SignOffSchema",
-      "to": "bootstrap-tools/schemas/requirement-set.ts#SignerKindSchema",
-      "via": "kind",
-      "kind": "field",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement-set.ts#SignOffSchema",
-      "to": "bootstrap-tools/schemas/requirement-set.ts#SignOffOutcomeSchema",
-      "via": "outcome",
-      "kind": "field",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement-set.ts#SignOffSchema",
-      "to": "bootstrap-tools/schemas/requirement-set.ts#WhenSchema",
-      "via": "at",
-      "kind": "field",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement.ts#RequirementFields",
-      "to": "bootstrap-tools/schemas/requirement.ts#RequirementStatementSchema",
-      "via": "statements",
-      "kind": "field",
-      "optional": false,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement.ts#RequirementFields",
-      "to": "bootstrap-tools/schemas/requirement.ts#RequirementStatusSchema",
-      "via": "status",
-      "kind": "field",
-      "optional": true,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement.ts#RequirementSchema",
-      "to": "bootstrap-tools/schemas/requirement.ts#RequirementFields",
-      "via": "",
-      "kind": "extends",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement.ts#RequirementStatementFields",
-      "to": "bootstrap-tools/schemas/requirement.ts#RequirementLevelSchema",
-      "via": "conformance",
-      "kind": "field",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement.ts#RequirementStatementFields",
-      "to": "bootstrap-tools/schemas/requirement.ts#StatementKindSchema",
-      "via": "kind",
-      "kind": "field",
-      "optional": true,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement.ts#RequirementStatementFields",
-      "to": "bootstrap-tools/schemas/requirement.ts#SuccessCriterionSchema",
-      "via": "successCriteria",
-      "kind": "field",
-      "optional": true,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement.ts#RequirementStatementSchema",
-      "to": "bootstrap-tools/schemas/requirement.ts#RequirementStatementFields",
-      "via": "",
-      "kind": "extends",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/requirement.ts#SuccessCriterionSchema",
-      "to": "bootstrap-tools/schemas/requirement.ts#VerificationMethodSchema",
-      "via": "verification",
-      "kind": "field",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphHydratedSchema",
-      "to": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphHydratedNodeSchema",
-      "via": "hasSubgraph",
-      "kind": "field",
-      "optional": true,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphHydratedSchema",
-      "to": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphMemberSchema",
-      "via": "hasMember",
-      "kind": "field",
-      "optional": true,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphHydratedSchema",
-      "to": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphNodeBase",
-      "via": "",
-      "kind": "extends",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphIndexSchema",
-      "to": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphIriSchema",
-      "via": "hasSubgraph",
-      "kind": "field",
-      "optional": true,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphIndexSchema",
-      "to": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphNodeBase",
-      "via": "",
-      "kind": "extends",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphIndexSchema",
-      "to": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphPointerSchema",
-      "via": "hasMember",
-      "kind": "field",
-      "optional": true,
-      "array": true
-    },
-    {
-      "from": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphNodeBase",
-      "to": "bootstrap-tools/schemas/subgraph-export.ts#SubgraphIriSchema",
-      "via": "@id",
-      "kind": "field",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Actor",
-      "to": "bootstrap/schemas/graph.schema.json#Task",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Asset",
-      "to": "bootstrap/schemas/graph.schema.json#Declaration",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Content",
-      "to": "bootstrap/schemas/graph.schema.json#KnowledgeGraph",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Content",
-      "to": "bootstrap/schemas/graph.schema.json#NodeInstance",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Dependency",
-      "to": "bootstrap/schemas/graph.schema.json#Declaration",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Dependency",
-      "to": "bootstrap/schemas/graph.schema.json#KnowledgeGraph",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Dependency",
-      "to": "bootstrap/schemas/graph.schema.json#NodeInstance",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Dependency",
-      "to": "bootstrap/schemas/graph.schema.json#Reference",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Extension",
-      "to": "bootstrap/schemas/graph.schema.json#Declaration",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#GraphTypology",
-      "to": "bootstrap/schemas/graph.schema.json#NodeKind",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Harness",
-      "to": "bootstrap/schemas/graph.schema.json#Actor",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Harness",
-      "to": "bootstrap/schemas/graph.schema.json#KnowledgeGraph",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Harness",
-      "to": "bootstrap/schemas/graph.schema.json#Process",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Harness",
-      "to": "bootstrap/schemas/graph.schema.json#Role",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Harness",
-      "to": "bootstrap/schemas/graph.schema.json#Skill",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Harness",
-      "to": "bootstrap/schemas/graph.schema.json#Subgraph",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#KnowledgeGraph",
-      "to": "bootstrap/schemas/graph.schema.json#Asset",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#KnowledgeGraph",
-      "to": "bootstrap/schemas/graph.schema.json#Declaration",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#KnowledgeGraph",
-      "to": "bootstrap/schemas/graph.schema.json#NodeInstance",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#KnowledgeGraph",
-      "to": "bootstrap/schemas/graph.schema.json#NodeSchema",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#KnowledgeGraph",
-      "to": "bootstrap/schemas/graph.schema.json#Subgraph",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#NodeInstance",
-      "to": "bootstrap/schemas/graph.schema.json#Node",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#NodeInstance",
-      "to": "bootstrap/schemas/graph.schema.json#NodeKind",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#NodeInstance",
-      "to": "bootstrap/schemas/graph.schema.json#NodeSchema",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#NodeKind",
-      "to": "bootstrap/schemas/graph.schema.json#NodeSchema",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#NodeSchema",
-      "to": "bootstrap/schemas/graph.schema.json#Node",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Process",
-      "to": "bootstrap/schemas/graph.schema.json#NodeInstance",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Process",
-      "to": "bootstrap/schemas/graph.schema.json#ProcessNode",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Process",
-      "to": "bootstrap/schemas/graph.schema.json#Role",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Process",
-      "to": "bootstrap/schemas/graph.schema.json#SequenceFlow",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Process",
-      "to": "bootstrap/schemas/graph.schema.json#Task",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Reference",
-      "to": "bootstrap/schemas/graph.schema.json#Node",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Role",
-      "to": "bootstrap/schemas/graph.schema.json#Actor",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Role",
-      "to": "bootstrap/schemas/graph.schema.json#NodeInstance",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Role",
-      "to": "bootstrap/schemas/graph.schema.json#Skill",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Role",
-      "to": "bootstrap/schemas/graph.schema.json#Task",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#SequenceFlow",
-      "to": "bootstrap/schemas/graph.schema.json#ProcessNode",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Skill",
-      "to": "bootstrap/schemas/graph.schema.json#Actor",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Skill",
-      "to": "bootstrap/schemas/graph.schema.json#NodeInstance",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Skill",
-      "to": "bootstrap/schemas/graph.schema.json#Task",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Subgraph",
-      "to": "bootstrap/schemas/graph.schema.json#Declaration",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Subgraph",
-      "to": "bootstrap/schemas/graph.schema.json#GraphTypology",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Subgraph",
-      "to": "bootstrap/schemas/graph.schema.json#NodeInstance",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Subkind",
-      "to": "bootstrap/schemas/graph.schema.json#Node",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Subkind",
-      "to": "bootstrap/schemas/graph.schema.json#NodeKind",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
-      "from": "bootstrap/schemas/graph.schema.json#Subkind",
-      "to": "bootstrap/schemas/graph.schema.json#NodeSchema",
-      "via": "uses",
-      "kind": "id-ref",
-      "optional": false,
-      "array": false
-    },
-    {
       "from": "openapi/schemas/openapi.ts#OpenApiConfigDocumentSchema",
       "to": "openapi/schemas/openapi.ts#OpenApiSourceSchema",
       "via": "source",
@@ -58906,6 +55803,14 @@
     },
     {
       "from": "schemas/intake.ts#IntakeSchema",
+      "to": "schemas/intake.ts#IntakeClassificationSchema",
+      "via": "classifications",
+      "kind": "field",
+      "optional": true,
+      "array": true
+    },
+    {
+      "from": "schemas/intake.ts#IntakeSchema",
       "to": "schemas/intake.ts#IntakeFileSchema",
       "via": "files",
       "kind": "field",
@@ -59518,6 +56423,30 @@
       "via": "anchor",
       "kind": "field",
       "optional": true,
+      "array": false
+    },
+    {
+      "from": "schemas/nquads-distribution.ts#NamedQueryDefSchema",
+      "to": "schemas/nquads-distribution.ts#QueryParameterDefSchema",
+      "via": "parameters",
+      "kind": "field",
+      "optional": true,
+      "array": true
+    },
+    {
+      "from": "schemas/nquads-distribution.ts#NQuadsDistributionManifestSchema",
+      "to": "schemas/nquads-distribution.ts#NamedQueryDefSchema",
+      "via": "namedQueries",
+      "kind": "field",
+      "optional": true,
+      "array": false
+    },
+    {
+      "from": "schemas/nquads-distribution.ts#NQuadsDistributionManifestSchema",
+      "to": "schemas/nquads-distribution.ts#NQuadsPartitionSchema",
+      "via": "tiers",
+      "kind": "field",
+      "optional": false,
       "array": false
     },
     {
@@ -64351,19 +61280,12 @@
       "note": "no validator is named for it, so no schema defines it"
     },
     {
-      "id": "model-registry/1.0.0",
-      "source": "family",
-      "instance": "bootstrap",
-      "decl": "bootstrap/schemas/model-registry.schema.json#ModelRegistry",
-      "typologies": []
-    },
-    {
       "id": "models",
       "source": "typology",
-      "instance": "cat-harness-upstream",
       "typologies": [
         "models"
-      ]
+      ],
+      "note": "its validator bootstrap-tools:schemas/model-registry.ts#ModelRegistrySchema could not be resolved"
     },
     {
       "id": "node-kind-index/1.0.0",

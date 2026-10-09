@@ -436,6 +436,9 @@ input, select, button {
 }
 input { flex: 1 1 180px; min-width: 0; }
 ul { list-style: none; margin: 0; padding: 0 0 24px; max-height: 70vh; overflow: auto; }
+@media (max-width: 640px) {
+  #items { max-height: 35vh; }
+}
 li > button {
   display: block; width: 100%; text-align: left; border: 0; border-radius: 0;
   border-bottom: 1px solid var(--line); background: transparent; padding: 9px 16px; cursor: pointer;
@@ -449,12 +452,15 @@ li > button[aria-current="true"] { background: var(--accent-soft); }
   border: 1px solid var(--line); color: var(--muted); margin-left: 6px; vertical-align: 1px;
 }
 .tag.warn { color: var(--warn); background: var(--warn-soft); border-color: var(--warn); }
-#detail { padding: 16px; min-width: 0; }
+#detail { padding: 16px; min-width: 0; overflow-x: auto; }
+#detail:focus { outline: none; }
 #detail h2 { font-size: 1rem; margin: 0 0 2px; font-family: ui-monospace, Menlo, monospace; }
 table { border-collapse: collapse; width: 100%; font-size: .86rem; margin: 8px 0 16px; }
 th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
 th { color: var(--muted); font-weight: 600; font-size: .76rem; text-transform: uppercase; letter-spacing: .04em; }
-td code { font-family: ui-monospace, Menlo, monospace; font-size: .82rem; word-break: break-word; }
+td code { font-family: ui-monospace, Menlo, monospace; font-size: .82rem; word-break: normal; overflow-wrap: anywhere; }
+#detail table td code { word-break: normal; overflow-wrap: anywhere; }
+#detail table td:first-child code { white-space: nowrap; }
 .opt { color: var(--muted); }
 a { color: var(--accent); }
 svg { max-width: 100%; height: auto; display: block; margin: 8px 0 16px; }
@@ -480,6 +486,7 @@ svg { max-width: 100%; height: auto; display: block; margin: 8px 0 16px; }
 .ov-body { padding: 0 16px 14px; }
 .ov-cap { color: var(--muted); font-size: .8rem; margin: 0 0 8px; }
 #ov-svg { width: 100%; height: auto; display: block; max-height: 78vh; }
+#ov-svg:empty { display: none; }
 .dia-e { fill: none; stroke-width: 1.6; }
 .dia-field { stroke: var(--accent); }
 .dia-gen { stroke: var(--fg); }
@@ -552,7 +559,7 @@ svg { max-width: 100%; height: auto; display: block; margin: 8px 0 16px; }
     </div>
     <ul id="items"></ul>
   </section>
-  <section id="detail" aria-live="polite"><p class="empty">Select a declaration.</p></section>
+  <section id="detail" tabindex="-1" aria-live="polite"><p class="empty">Select a declaration.</p></section>
 </main>
 <script>
 "use strict";
@@ -588,6 +595,8 @@ function byId(id) { return G.declIndex[id]; }
    Built as SVG text so the page keeps its no-dependency rule. */
 function uml(d) {
   var CH = 7.0, PAD = 10, LH = 15, HEAD = 22;
+  var maxChars = (typeof window !== "undefined" && window.innerWidth < 640) ? 42 : 76;
+  var maxTypeChars = (typeof window !== "undefined" && window.innerWidth < 640) ? 28 : 64;
   function box(x, y, title, fields, sel) {
     // Truncation is STATED, not silent. A box showing 8 of 24 fields with no
     // mark reads as a type with 8 fields, which is a wrong diagram rather than
@@ -596,15 +605,15 @@ function uml(d) {
     if (fields.length > rows.length) rows = rows.concat(["… " + (fields.length - rows.length) + " more"]);
     var w = Math.max(title.length, 8);
     rows.forEach(function (r) { w = Math.max(w, r.length); });
-    w = Math.min(w, 42) * CH + PAD * 2;
+    w = Math.min(w, maxChars) * CH + PAD * 2;
     var h = HEAD + (rows.length ? rows.length * LH + 6 : 0);
     var g = '<g><rect class="uml-box' + (sel ? " sel" : "") + '" x="' + x + '" y="' + y +
       '" width="' + w + '" height="' + h + '" rx="4"/>' +
-      '<text class="uml-t" x="' + (x + PAD) + '" y="' + (y + 15) + '">' + esc(title.slice(0, 42)) + "</text>";
+      '<text class="uml-t" x="' + (x + PAD) + '" y="' + (y + 15) + '">' + esc(title.slice(0, maxChars)) + "</text>";
     if (rows.length) {
       g += '<line class="uml-e" x1="' + x + '" y1="' + (y + HEAD) + '" x2="' + (x + w) + '" y2="' + (y + HEAD) + '"/>';
       rows.forEach(function (r, i) {
-        g += '<text class="uml-f" x="' + (x + PAD) + '" y="' + (y + HEAD + 14 + i * LH) + '">' + esc(r.slice(0, 42)) + "</text>";
+        g += '<text class="uml-f" x="' + (x + PAD) + '" y="' + (y + HEAD + 14 + i * LH) + '">' + esc(r.slice(0, maxChars)) + "</text>";
       });
     }
     return { svg: g + "</g>", w: w, h: h };
@@ -623,7 +632,7 @@ function uml(d) {
   });
   refs = refs.slice(0, 6);
   var selFields = (d.fields || []).map(function (f) {
-    return f.name + (f.optional ? "?" : "") + ": " + f.type.replace(/^z\\./, "").slice(0, 28);
+    return f.name + (f.optional ? "?" : "") + ": " + f.type.replace(/^z\\./, "").slice(0, maxTypeChars);
   });
 
   var W = 0, parts = [], y = 0;
@@ -960,7 +969,7 @@ function diagram() {
        the SUBJECT for what a filter did, and a reader who typed a word that
        matches nothing is told the page is empty. */
     var why = m.filtered
-      ? "No declaration matches the filters above, so there is nothing to draw. Clear the search or the kind to get the picture back."
+      ? "No declaration matches the filters below, so there is nothing to draw. Clear the search or the kind to get the picture back."
       : "Nothing in scope to draw.";
     cap.textContent = why;
     svg.innerHTML = ""; key.innerHTML = "";
@@ -972,7 +981,7 @@ function diagram() {
     svg.innerHTML = ""; key.innerHTML = "";
     cap.innerHTML = "<b>" + m.decls.length + "</b> declarations in scope — too many to draw as a relationship diagram " +
       "(the limit is <b>" + DIA_MAX + "</b>, above which labelled boxes stop being readable). " +
-      "Pick a <b>module</b> in the filter above and the diagram for it appears here.";
+      "Pick a <b>module</b> in the filter below and the diagram for it appears here.";
     return;
   }
 
@@ -1203,6 +1212,11 @@ function select(id) {
   }
   render();
   detail(d);
+  var dt = $("detail");
+  if (dt && (window.innerWidth <= 640 || dt.getBoundingClientRect().top > window.innerHeight / 2)) {
+    try { dt.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) { dt.scrollIntoView(); }
+    dt.focus();
+  }
 }
 
 fetch(DATA_HREF).then(function (r) {

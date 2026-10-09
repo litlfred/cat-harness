@@ -3,7 +3,7 @@
 <head>
 <script data-folio-saved-scheme>try{var s=localStorage.getItem("fa-color-scheme");if(s==="light"||s==="dark")document.documentElement.setAttribute("data-fa-scheme",s)}catch(e){}</script>
 
-<meta name="renders" content="bootstrap-tools/schemas bootstrap/schemas openapi/schemas schemas">
+<meta name="renders" content="openapi/schemas schemas">
 <meta name="rendered-by" content="schemas-viewer">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,6 +50,9 @@ input, select, button {
 }
 input { flex: 1 1 180px; min-width: 0; }
 ul { list-style: none; margin: 0; padding: 0 0 24px; max-height: 70vh; overflow: auto; }
+@media (max-width: 640px) {
+  #items { max-height: 35vh; }
+}
 li > button {
   display: block; width: 100%; text-align: left; border: 0; border-radius: 0;
   border-bottom: 1px solid var(--line); background: transparent; padding: 9px 16px; cursor: pointer;
@@ -63,12 +66,15 @@ li > button[aria-current="true"] { background: var(--accent-soft); }
   border: 1px solid var(--line); color: var(--muted); margin-left: 6px; vertical-align: 1px;
 }
 .tag.warn { color: var(--warn); background: var(--warn-soft); border-color: var(--warn); }
-#detail { padding: 16px; min-width: 0; }
+#detail { padding: 16px; min-width: 0; overflow-x: auto; }
+#detail:focus { outline: none; }
 #detail h2 { font-size: 1rem; margin: 0 0 2px; font-family: ui-monospace, Menlo, monospace; }
 table { border-collapse: collapse; width: 100%; font-size: .86rem; margin: 8px 0 16px; }
 th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
 th { color: var(--muted); font-weight: 600; font-size: .76rem; text-transform: uppercase; letter-spacing: .04em; }
-td code { font-family: ui-monospace, Menlo, monospace; font-size: .82rem; word-break: break-word; }
+td code { font-family: ui-monospace, Menlo, monospace; font-size: .82rem; word-break: normal; overflow-wrap: anywhere; }
+#detail table td code { word-break: normal; overflow-wrap: anywhere; }
+#detail table td:first-child code { white-space: nowrap; }
 .opt { color: var(--muted); }
 a { color: var(--accent); }
 svg { max-width: 100%; height: auto; display: block; margin: 8px 0 16px; }
@@ -94,6 +100,7 @@ svg { max-width: 100%; height: auto; display: block; margin: 8px 0 16px; }
 .ov-body { padding: 0 16px 14px; }
 .ov-cap { color: var(--muted); font-size: .8rem; margin: 0 0 8px; }
 #ov-svg { width: 100%; height: auto; display: block; max-height: 78vh; }
+#ov-svg:empty { display: none; }
 .dia-e { fill: none; stroke-width: 1.6; }
 .dia-field { stroke: var(--accent); }
 .dia-gen { stroke: var(--fg); }
@@ -131,7 +138,7 @@ svg { max-width: 100%; height: auto; display: block; margin: 8px 0 16px; }
 #nk-table button { border: 0; background: none; padding: 0; color: var(--accent); cursor: pointer; text-decoration: underline; font: inherit; }
 .tag.nk { color: var(--accent); border-color: var(--accent); }
 </style>
-<link rel="stylesheet" href="../../assets/css/navbar.css"><script src="../../assets/navbar/rail-2fqff7os7g7.js" defer></script><script src="../../assets/js/navbar.js" defer></script><link rel="stylesheet" href="../../assets/css/navbar-row.css"><script src="../../assets/js/navbar-row.js" defer></script><style data-folio-narrow-viewport>
+<link rel="stylesheet" href="../../assets/css/navbar.css"><script src="../../assets/navbar/rail-20kplc5sdkp.js" defer></script><script src="../../assets/js/navbar.js" defer></script><link rel="stylesheet" href="../../assets/css/navbar-row.css"><script src="../../assets/js/navbar-row.js" defer></script><style data-folio-narrow-viewport>
 /* Narrow viewports: nothing may widen the PAGE — bean `2r2n`.
  *
  * At 390 px, 105 of 249 built pages scrolled sideways (measured 2026-09-24).
@@ -210,7 +217,7 @@ svg { max-width: 100%; height: auto; display: block; margin: 8px 0 16px; }
 
 </style>
 </head>
-<body><script type="application/json" id="fa-navbar-row" data-fa-root="../..">{"icons":["close","todos","beans","fsh-guts","launcher"],"hrefs":{"todos":"/todos/","beans":"/beans/","fsh-guts":"/fsh-guts/"},"notes":{},"folders":[{"kind":"attestations","label":"Attestations","path":"/attestations/"},{"kind":"auto-docs","label":"Auto docs","within":"docs","note":"no viewer yet"},{"kind":"basic-cdn-site","label":"Basic CDN site","note":"no viewer yet"},{"kind":"code","label":"Code","note":"no viewer yet"},{"kind":"code-list","label":"Code lists","note":"no viewer yet"},{"kind":"doc-group","label":"Doc group","within":"docs","note":"no viewer yet"},{"kind":"docs","label":"Docs","path":"/cat-harness/auto-docs/index/docs/docs/"},{"kind":"external-schema","label":"External schemas","path":"/external-schemas/"},{"kind":"folio","label":"Folio","path":"/cat-harness/folio/"},{"kind":"health","label":"Health","path":"/health/"},{"kind":"interaction","label":"Interaction","note":"no viewer yet"},{"kind":"library","label":"Library","path":"/cat-harness/library/cat-harness/"},{"kind":"memory","label":"Memory","note":"no viewer yet"},{"kind":"methodology","label":"Methodologies","path":"/methodologies/"},{"kind":"policies","label":"Policies","note":"no viewer yet"},{"kind":"processes","label":"Processes","path":"/processes/"},{"kind":"proposals","label":"Proposals","within":"docs","path":"/proposals/"},{"kind":"qa","label":"QA","path":"/qa/"},{"kind":"requirements","label":"Requirements","within":"docs","path":"/requirements/"},{"kind":"scenarios","label":"Scenarios","note":"no viewer yet"},{"kind":"schemas","label":"Schemas","path":"/cat-harness/schemas/cat-harness/"},{"kind":"skills","label":"Skills","path":"/cat-harness/auto-docs/index/skills/skills/"},{"kind":"substrate-snapshot","label":"Substrate snapshots","note":"no viewer yet"},{"kind":"swimlane-glossary","label":"Swimlane glossary","path":"/swimlane-glossary/"},{"kind":"tool-release","label":"Tool releases","note":"no viewer yet"},{"kind":"tools","label":"Tools","path":"/tools/"},{"kind":"translation-sources","label":"Translation sources","path":"/translation-status/"},{"kind":"typologies","label":"Graph typologies","note":"no viewer yet"},{"kind":"uml","label":"UML","note":"no viewer yet"},{"kind":"uploads","label":"Uploads","path":"/uploads/"},{"kind":"validators","label":"Validators","note":"no viewer yet"},{"kind":"vocab-mapping","label":"Vocab mapping","note":"no viewer yet"},{"kind":"voice-vendors","label":"Voice vendors","within":"voices","note":"no viewer yet"},{"kind":"voices","label":"Voices","path":"/cat-harness/voices/cat-harness/"},{"kind":"waiver","label":"Waivers","note":"no viewer yet"}]}</script><script type="application/json" id="fa-rail" data-fa-root="../.." data-fa-to-root="../..">{"data":"rail-2fqff7os7g7","here":"/cat-harness/schemas/","documentIndex":{"label":"schemas","icon":"§","items":[{"label":"Schemas","icon":"▸"},{"label":"Overview","icon":"·","href":"#overview","depth":1},{"label":"Node kinds","icon":"·","href":"#kinds","depth":1},{"label":"Declarations","icon":"·","href":"#list","depth":1},{"label":"Detail","icon":"·","href":"#detail","depth":1},{"label":"Schemas","qualifier":"bootstrap","icon":"▸","href":"bootstrap/"},{"label":"Schemas","qualifier":"bootstrap-tools","icon":"▸","href":"bootstrap-tools/"},{"label":"Schemas","qualifier":"C@T Harness","icon":"▸","href":"cat-harness/"},{"label":"Schemas","qualifier":"openapi","icon":"▸","href":"openapi/"}],"collapsible":true,"open":true}}</script><nav class="fa-nav" aria-label="folio-assistant" data-fa-rail="pending"><a href="../../">C@T Harness</a></nav><script type="application/json" data-fa-visualiser-nav>[{"label":"Schemas","items":[{"label":"Overview","href":"#overview"},{"label":"Node kinds","href":"#kinds"},{"label":"Declarations","href":"#list"},{"label":"Detail","href":"#detail"}]},{"label":"Schemas","qualifier":"bootstrap","href":"bootstrap/"},{"label":"Schemas","qualifier":"bootstrap-tools","href":"bootstrap-tools/"},{"label":"Schemas","qualifier":"C@T Harness","href":"cat-harness/"},{"label":"Schemas","qualifier":"openapi","href":"openapi/"}]</script>
+<body><script type="application/json" id="fa-navbar-row" data-fa-root="../..">{"icons":["close","todos","beans","fsh-guts","launcher"],"hrefs":{"beans":"/beans/"},"notes":{},"folders":[{"kind":"beans","label":"Beans","path":"/beans/"},{"kind":"block-kinds","label":"Block kinds","note":"no viewer yet"},{"kind":"cat-harness","label":"Harness graph","note":"no viewer yet"},{"kind":"code","label":"Code","note":"no viewer yet"},{"kind":"docs","label":"Docs","path":"/cat-harness/auto-docs/index/docs/folio-assistant-core-docs/"},{"kind":"folio","label":"Folio","note":"no viewer yet"},{"kind":"glossary","label":"Glossary","path":"/glossary/"},{"kind":"library","label":"Library","path":"/cat-harness/library/folio-assistant-core/"},{"kind":"memory","label":"Memory","note":"no viewer yet"},{"kind":"methodology","label":"Methodologies","path":"/methodologies/"},{"kind":"processes","label":"Processes","path":"/processes/"},{"kind":"qa","label":"QA","note":"no viewer yet"},{"kind":"schemas","label":"Schemas","note":"no viewer yet"},{"kind":"skills","label":"Skills","path":"/cat-harness/auto-docs/index/skills/core-skills/"},{"kind":"tools","label":"Tools","note":"no viewer yet"},{"kind":"translation-sources","label":"Translation sources","path":"/translation-status/"},{"kind":"typologies","label":"Graph typologies","note":"no viewer yet"},{"kind":"validators","label":"Validators","note":"no viewer yet"},{"kind":"voices","label":"Voices","path":"/cat-harness/voices/folio-assistant-core/"}]}</script><script type="application/json" id="fa-rail" data-fa-root="../.." data-fa-to-root="../..">{"data":"rail-20kplc5sdkp","here":"/cat-harness/schemas/","documentIndex":{"label":"schemas","icon":"§","items":[{"label":"Schemas","icon":"▸"},{"label":"Overview","icon":"·","href":"#overview","depth":1},{"label":"Node kinds","icon":"·","href":"#kinds","depth":1},{"label":"Declarations","icon":"·","href":"#list","depth":1},{"label":"Detail","icon":"·","href":"#detail","depth":1},{"label":"Schemas","qualifier":"C@T Harness","icon":"▸","href":"cat-harness/"},{"label":"Schemas","qualifier":"openapi","icon":"▸","href":"openapi/"}],"collapsible":true,"open":true}}</script><nav class="fa-nav" aria-label="folio-assistant" data-fa-rail="pending"><a href="../../">Folio Assistant Core</a></nav><script type="application/json" data-fa-visualiser-nav>[{"label":"Schemas","items":[{"label":"Overview","href":"#overview"},{"label":"Node kinds","href":"#kinds"},{"label":"Declarations","href":"#list"},{"label":"Detail","href":"#detail"}]},{"label":"Schemas","qualifier":"C@T Harness","href":"cat-harness/"},{"label":"Schemas","qualifier":"openapi","href":"openapi/"}]</script>
 <header>
   <h1>Schema graph</h1>
   <p class="counts" id="counts">loading…</p>
@@ -244,7 +251,7 @@ svg { max-width: 100%; height: auto; display: block; margin: 8px 0 16px; }
     </div>
     <ul id="items"></ul>
   </section>
-  <section id="detail" aria-live="polite"><p class="empty">Select a declaration.</p></section>
+  <section id="detail" tabindex="-1" aria-live="polite"><p class="empty">Select a declaration.</p></section>
 </main>
 <script>
 "use strict";
@@ -280,6 +287,8 @@ function byId(id) { return G.declIndex[id]; }
    Built as SVG text so the page keeps its no-dependency rule. */
 function uml(d) {
   var CH = 7.0, PAD = 10, LH = 15, HEAD = 22;
+  var maxChars = (typeof window !== "undefined" && window.innerWidth < 640) ? 42 : 76;
+  var maxTypeChars = (typeof window !== "undefined" && window.innerWidth < 640) ? 28 : 64;
   function box(x, y, title, fields, sel) {
     // Truncation is STATED, not silent. A box showing 8 of 24 fields with no
     // mark reads as a type with 8 fields, which is a wrong diagram rather than
@@ -288,15 +297,15 @@ function uml(d) {
     if (fields.length > rows.length) rows = rows.concat(["… " + (fields.length - rows.length) + " more"]);
     var w = Math.max(title.length, 8);
     rows.forEach(function (r) { w = Math.max(w, r.length); });
-    w = Math.min(w, 42) * CH + PAD * 2;
+    w = Math.min(w, maxChars) * CH + PAD * 2;
     var h = HEAD + (rows.length ? rows.length * LH + 6 : 0);
     var g = '<g><rect class="uml-box' + (sel ? " sel" : "") + '" x="' + x + '" y="' + y +
       '" width="' + w + '" height="' + h + '" rx="4"/>' +
-      '<text class="uml-t" x="' + (x + PAD) + '" y="' + (y + 15) + '">' + esc(title.slice(0, 42)) + "</text>";
+      '<text class="uml-t" x="' + (x + PAD) + '" y="' + (y + 15) + '">' + esc(title.slice(0, maxChars)) + "</text>";
     if (rows.length) {
       g += '<line class="uml-e" x1="' + x + '" y1="' + (y + HEAD) + '" x2="' + (x + w) + '" y2="' + (y + HEAD) + '"/>';
       rows.forEach(function (r, i) {
-        g += '<text class="uml-f" x="' + (x + PAD) + '" y="' + (y + HEAD + 14 + i * LH) + '">' + esc(r.slice(0, 42)) + "</text>";
+        g += '<text class="uml-f" x="' + (x + PAD) + '" y="' + (y + HEAD + 14 + i * LH) + '">' + esc(r.slice(0, maxChars)) + "</text>";
       });
     }
     return { svg: g + "</g>", w: w, h: h };
@@ -315,7 +324,7 @@ function uml(d) {
   });
   refs = refs.slice(0, 6);
   var selFields = (d.fields || []).map(function (f) {
-    return f.name + (f.optional ? "?" : "") + ": " + f.type.replace(/^z\./, "").slice(0, 28);
+    return f.name + (f.optional ? "?" : "") + ": " + f.type.replace(/^z\./, "").slice(0, maxTypeChars);
   });
 
   var W = 0, parts = [], y = 0;
@@ -652,7 +661,7 @@ function diagram() {
        the SUBJECT for what a filter did, and a reader who typed a word that
        matches nothing is told the page is empty. */
     var why = m.filtered
-      ? "No declaration matches the filters above, so there is nothing to draw. Clear the search or the kind to get the picture back."
+      ? "No declaration matches the filters below, so there is nothing to draw. Clear the search or the kind to get the picture back."
       : "Nothing in scope to draw.";
     cap.textContent = why;
     svg.innerHTML = ""; key.innerHTML = "";
@@ -664,7 +673,7 @@ function diagram() {
     svg.innerHTML = ""; key.innerHTML = "";
     cap.innerHTML = "<b>" + m.decls.length + "</b> declarations in scope — too many to draw as a relationship diagram " +
       "(the limit is <b>" + DIA_MAX + "</b>, above which labelled boxes stop being readable). " +
-      "Pick a <b>module</b> in the filter above and the diagram for it appears here.";
+      "Pick a <b>module</b> in the filter below and the diagram for it appears here.";
     return;
   }
 
@@ -895,6 +904,11 @@ function select(id) {
   }
   render();
   detail(d);
+  var dt = $("detail");
+  if (dt && (window.innerWidth <= 640 || dt.getBoundingClientRect().top > window.innerHeight / 2)) {
+    try { dt.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) { dt.scrollIntoView(); }
+    dt.focus();
+  }
 }
 
 fetch(DATA_HREF).then(function (r) {
