@@ -132,6 +132,13 @@ in [`kg-export`](../../kg/kg-core/kg-export.md) §"`fsh-guts` NEVER reaches a pu
    advisories (240 of 240 third-party actions unpinned, dependency
    advisories) are reported in the PR and are not cleared by a green gate.
 
+   **Check the adversarial review verdict with `bun run cat check:adversarial-review`.**
+   On any branch with agent provenance (trailers, `claude/*` branch, bot committer),
+   verifies that an independent adversarial review verdict exists, binds to the
+   head SHA, and covers the full diff without silent truncation. Under the 2026-10-03
+   owner ruling, findings are warn-only ("would have blocked"), recording data for
+   gate promotion without holding the merge.
+
    **Know what the target covered.** Green is a claim about the files the build
    compiled, which is usually fewer than the files on disk — build targets
    default to a root plus its transitive imports. Confirm the files *you
