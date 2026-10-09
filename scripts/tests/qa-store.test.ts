@@ -36,6 +36,7 @@ import {
   readQaTree,
   type QaStoreOptions,
 } from "../qa-store.js";
+import { readBaseline } from "../qa-results.js";
 
 const SCRIPT = join(import.meta.dir, "..", "qa-store.ts");
 const NOGPG = ["-c", "commit.gpgsign=false", "-c", "user.name=t", "-c", "user.email=t@t"];
@@ -291,7 +292,7 @@ describe("writing", () => {
     const seedTip = git(f.bare, "rev-parse", "refs/heads/cat/cat-harness/qa-reports").trim();
     let raced = false;
     const a = publishQa(
-      { ref: `main/${SHA_A}`, roots: [RESULTS] },
+      { ref: `main/${SHA_A}`, roots: [RESULTS], force: true },
       f.container("writer-a", {
         // Between A's fetch and A's push, B lands on the branch: the race is
         // made certain rather than lucky, as in spike step 3.
@@ -327,7 +328,7 @@ describe("writing", () => {
     const f = fixture();
     const env = { ...process.env, QA_STORE_REMOTE: f.url };
     const run = (sha: string, store: string) =>
-      Bun.spawn(["bun", SCRIPT, "publish", "--ref", `main/${sha}`, "--root", RESULTS, "--branch", "cat/cat-harness/qa-reports", "--store", join(f.base, store)], {
+      Bun.spawn(["bun", SCRIPT, "publish", "--ref", `main/${sha}`, "--root", RESULTS, "--branch", "cat/cat-harness/qa-reports", "--store", join(f.base, store), "--force"], {
         cwd: f.work,
         env,
         stdout: "pipe",
@@ -415,9 +416,9 @@ describe("prune", () => {
   test("dry run changes nothing; --apply commits on the tip (no history rewrite) and keeps the rest", () => {
     const f = fixture();
     publishQa({ ref: `main/${SHA_A}`, roots: [RESULTS], writtenAt: daysAgo(120, 2) }, f.container("ci"));
-    publishQa({ ref: `main/${SHA_B}`, roots: [RESULTS], writtenAt: daysAgo(120, 1) }, f.container("ci"));
-    publishQa({ ref: `main/${SHA_C}`, roots: [RESULTS], writtenAt: daysAgo(1) }, f.container("ci"));
-    publishQa({ ref: `pr/7/${SHA_A}`, roots: [RESULTS], writtenAt: daysAgo(30) }, f.container("ci"));
+    publishQa({ ref: `main/${SHA_B}`, roots: [RESULTS], writtenAt: daysAgo(120, 1), force: true }, f.container("ci"));
+    publishQa({ ref: `main/${SHA_C}`, roots: [RESULTS], writtenAt: daysAgo(1), force: true }, f.container("ci"));
+    publishQa({ ref: `pr/7/${SHA_A}`, roots: [RESULTS], writtenAt: daysAgo(30), force: true }, f.container("ci"));
     const before = git(f.bare, "rev-parse", "refs/heads/cat/cat-harness/qa-reports").trim();
     const prState = (pr: number) => (pr === 7 ? ({ state: "closed", closedAt: daysAgo(10) } as const) : ({ state: "unknown" } as const));
 
@@ -471,7 +472,7 @@ describe("every branch name (bean zlq9; renames 32f6, tlk2)", () => {
       const r = readQa(`main/${SHA_A}`, `${RESULTS}/kg-qa/skills/a.kg-qa.json`, f.container(`r-${branch}`, { branch }));
       expect(r.state).toBe("hit");
     }
-    expect(publishQa({ ref: `main/${SHA_B}`, roots: [RESULTS] }, f.container("ci")).state).toBe("published");
+    expect(publishQa({ ref: `main/${SHA_B}`, roots: [RESULTS], force: true }, f.container("ci")).state).toBe("published");
     expect(heads(f)).toEqual(["qa-reports"]);
     expect(git(f.bare, "ls-tree", "--name-only", "qa-reports:main").trim().split("\n").sort()).toEqual([SHA_A, SHA_B]);
   }, T);
@@ -489,8 +490,167 @@ describe("every branch name (bean zlq9; renames 32f6, tlk2)", () => {
     // SHA_A lives only on the legacy branch: a reader that falls back would hit it.
     expect(readQa(`main/${SHA_A}`, `${RESULTS}/kg-qa/skills/a.kg-qa.json`, f.container("r1")).state).toBe("miss");
     expect(readQa(`main/${SHA_B}`, `${RESULTS}/kg-qa/skills/a.kg-qa.json`, f.container("r2")).state).toBe("hit");
-    expect(publishQa({ ref: `main/${SHA_C}`, roots: [RESULTS] }, f.container("ci")).state).toBe("published");
+    expect(publishQa({ ref: `main/${SHA_C}`, roots: [RESULTS], force: true }, f.container("ci")).state).toBe("published");
     expect(git(f.bare, "rev-parse", "refs/heads/qa-reports").trim()).toBe(legacyTip);
     expect(git(f.bare, "ls-tree", "--name-only", "cat/cat-harness/qa-reports:main").trim().split("\n").sort()).toEqual([SHA_B, SHA_C]);
   }, T);
 });
+
+describe("skipping unchanged QA results (folio-assistant-he8h)", () => {
+  const SHA_D = "d".repeat(40);
+
+  test("publishing an unchanged QA result skips writing duplicate payload trees", () => {
+    const f = fixture();
+    const p1 = publishQa({ ref: `main/${SHA_A}`, roots: [RESULTS] }, f.container("ci"));
+    expect(p1.state).toBe("published");
+    const p2 = publishQa({ ref: `main/${SHA_B}`, roots: [RESULTS] }, f.container("ci"));
+    expect(p2.state).toBe("skipped");
+    expect(p2.reason).toContain(`unchanged from main/${SHA_A}`);
+
+    // Verify remote branch contains only SHA_A payload tree under main/
+    const mainEntries = git(f.bare, "ls-tree", "--name-only", "cat/cat-harness/qa-reports:main").trim().split("\n");
+    expect(mainEntries).toEqual([SHA_A]);
+
+    // Verify index.json records SHA_B as skipped pointing to SHA_A, and updates main.sha
+    const idx = JSON.parse(git(f.bare, "show", "cat/cat-harness/qa-reports:index.json"));
+    expect(idx.main?.sha).toBe(SHA_B);
+    expect(idx.skipped?.[SHA_B]).toBe(SHA_A);
+    expect(idx.skipped?.[`main/${SHA_B}`]).toBe(`main/${SHA_A}`);
+  }, T);
+
+  test("reading at the skipped commit SHA falls back to prior entry and returns hit", () => {
+    const f = fixture();
+    publishQa({ ref: `main/${SHA_A}`, roots: [RESULTS] }, f.container("ci"));
+    publishQa({ ref: `main/${SHA_B}`, roots: [RESULTS] }, f.container("ci"));
+
+    const reader = f.container("reader");
+
+    // readQa at skipped SHA_B resolves to SHA_A
+    const qa = readQa(`main/${SHA_B}`, `${RESULTS}/kg-qa/skills/a.kg-qa.json`, reader);
+    expect(qa.state).toBe("hit");
+    if (qa.state === "hit") {
+      expect(qa.key).toBe(`main/${SHA_A}`);
+      expect(qa.text).toBe('{"verdict":"pass"}\n');
+    }
+
+    // readQaManifest at skipped SHA_B
+    const manifest = readQaManifest(`main/${SHA_B}`, reader);
+    expect(manifest.state).toBe("hit");
+    if (manifest.state === "hit") {
+      expect(manifest.key).toBe(`main/${SHA_A}`);
+    }
+
+    // readQaTree at skipped SHA_B
+    const tree = readQaTree(`main/${SHA_B}`, RESULTS, reader);
+    expect(tree.state).toBe("hit");
+    if (tree.state === "hit") {
+      expect(tree.key).toBe(`main/${SHA_A}`);
+      expect(tree.files.size).toBeGreaterThan(0);
+    }
+
+    // readBaseline at skipped SHA_B
+    const base = readBaseline(join(f.work, `${RESULTS}/kg-qa/skills/a.kg-qa.json`), {
+      against: `main/${SHA_B}`,
+      store: reader,
+    });
+    expect(base.state).toBe("hit");
+    if (base.state === "hit") {
+      expect(base.from).toBe(`qa-reports:main/${SHA_A}`);
+      expect(base.text).toBe('{"verdict":"pass"}\n');
+    }
+
+    // readQa on "main" (which points to skipped SHA_B) also resolves to SHA_A
+    const latest = readQa("main", `${RESULTS}/kg-qa/skills/a.kg-qa.json`, reader);
+    expect(latest.state).toBe("hit");
+    if (latest.state === "hit") {
+      expect(latest.key).toBe(`main/${SHA_A}`);
+    }
+  }, T);
+
+  test("publishing a changed result records a new entry", () => {
+    const f = fixture();
+    publishQa({ ref: `main/${SHA_A}`, roots: [RESULTS] }, f.container("ci"));
+    publishQa({ ref: `main/${SHA_B}`, roots: [RESULTS] }, f.container("ci"));
+
+    // Modify a result file
+    f.write(`${RESULTS}/kg-qa/skills/a.kg-qa.json`, '{"verdict":"fail"}\n');
+
+    const p3 = publishQa({ ref: `main/${SHA_C}`, roots: [RESULTS] }, f.container("ci"));
+    expect(p3.state).toBe("published");
+
+    const mainEntries = git(f.bare, "ls-tree", "--name-only", "cat/cat-harness/qa-reports:main").trim().split("\n").sort();
+    expect(mainEntries).toEqual([SHA_A, SHA_C]);
+
+    const reader = f.container("reader");
+    const qa = readQa(`main/${SHA_C}`, `${RESULTS}/kg-qa/skills/a.kg-qa.json`, reader);
+    expect(qa.state).toBe("hit");
+    if (qa.state === "hit") {
+      expect(qa.key).toBe(`main/${SHA_C}`);
+      expect(qa.text).toBe('{"verdict":"fail"}\n');
+    }
+  }, T);
+
+  test("an unrecorded, unskipped commit still returns miss", () => {
+    const f = fixture();
+    publishQa({ ref: `main/${SHA_A}`, roots: [RESULTS] }, f.container("ci"));
+
+    const reader = f.container("reader");
+    expect(readQa(`main/${SHA_D}`, `${RESULTS}/kg-qa/skills/a.kg-qa.json`, reader).state).toBe("miss");
+    expect(readQaManifest(`main/${SHA_D}`, reader).state).toBe("miss");
+    expect(readQaTree(`main/${SHA_D}`, RESULTS, reader).state).toBe("miss");
+  }, T);
+
+  test("PR publishing skips unchanged results and resolves fallback", () => {
+    const f = fixture();
+    const p1 = publishQa({ ref: `pr/42/${SHA_A}`, roots: [RESULTS] }, f.container("ci"));
+    expect(p1.state).toBe("published");
+
+    const p2 = publishQa({ ref: `pr/42/${SHA_B}`, roots: [RESULTS] }, f.container("ci"));
+    expect(p2.state).toBe("skipped");
+    expect(p2.reason).toContain(`unchanged from pr/42/${SHA_A}`);
+
+    const prEntries = git(f.bare, "ls-tree", "--name-only", "cat/cat-harness/qa-reports:pr/42").trim().split("\n");
+    expect(prEntries).toEqual([SHA_A]);
+
+    const reader = f.container("reader");
+    const qa = readQa(`pr/42/${SHA_B}`, `${RESULTS}/kg-qa/skills/a.kg-qa.json`, reader);
+    expect(qa.state).toBe("hit");
+    if (qa.state === "hit") {
+      expect(qa.key).toBe(`pr/42/${SHA_A}`);
+    }
+
+    const latestPr = readQa("pr/42", `${RESULTS}/kg-qa/skills/a.kg-qa.json`, reader);
+    expect(latestPr.state).toBe("hit");
+    if (latestPr.state === "hit") {
+      expect(latestPr.key).toBe(`pr/42/${SHA_A}`);
+    }
+  }, T);
+
+  test("force: true forces publish even if content is unchanged", () => {
+    const f = fixture();
+    publishQa({ ref: `main/${SHA_A}`, roots: [RESULTS] }, f.container("ci"));
+    const p2 = publishQa({ ref: `main/${SHA_B}`, roots: [RESULTS], force: true }, f.container("ci"));
+    expect(p2.state).toBe("published");
+
+    const mainEntries = git(f.bare, "ls-tree", "--name-only", "cat/cat-harness/qa-reports:main").trim().split("\n").sort();
+    expect(mainEntries).toEqual([SHA_A, SHA_B]);
+  }, T);
+
+  test("CLI publish exit code is 0 when skipped and outputs SKIPPED", () => {
+    const f = fixture();
+    git(f.work, "add", "-A");
+    git(f.work, "commit", "-qm", "seed");
+
+    const p1 = publishQa({ ref: `main/${SHA_A}`, roots: [RESULTS] }, f.container("ci"));
+    expect(p1.state).toBe("published");
+
+    const r = spawnSync("bun", [SCRIPT, "publish", "--ref", `main/${SHA_B}`, "--root", RESULTS, "--branch", "cat/cat-harness/qa-reports", "--store", join(f.base, "cli.git")], {
+      cwd: f.work,
+      encoding: "utf-8",
+      env: { ...process.env, QA_STORE_REMOTE: f.url },
+    });
+    expect(r.status).toBe(0);
+    expect(r.stdout).toContain(`qa:publish SKIPPED main/${SHA_B}: unchanged from main/${SHA_A}`);
+  }, T);
+});
+

@@ -166,6 +166,7 @@ export interface QaIndex {
   $schema: typeof INDEX_SCHEMA;
   main?: { sha: string; written_at: string };
   pr?: Record<string, { sha: string; written_at: string }>;
+  skipped?: Record<string, string>;
 }
 
 export interface QaStoreOptions {
@@ -440,19 +441,112 @@ function readIndex(store: Store, rootTree: string): { state: "ok"; index?: QaInd
   }
 }
 
+/**
+ * Find a fallback entry on `rootTree` when `sha` was skipped or not recorded.
+ * Checks `index.json`'s `skipped` mapping first, then falls back to git history
+ * via `repoRoot` to find the most recent recorded commit on that branch.
+ */
+function findSkippedTarget(
+  store: Store,
+  rootTree: string,
+  parent: string,
+  sha: string,
+  repoRoot?: string,
+): string | undefined {
+  const idx = readIndex(store, rootTree);
+  if (idx.state === "ok" && idx.index?.skipped) {
+    const key = `${parent}/${sha}`;
+    const target = idx.index.skipped[key] ?? idx.index.skipped[sha];
+    if (target) {
+      const targetKey = target.startsWith(`${parent}/`) ? target : `${parent}/${target}`;
+      if (store.lookup(rootTree, targetKey)) return targetKey;
+    }
+  }
+
+  if (repoRoot && existsSync(repoRoot)) {
+    try {
+      const r = spawnSync("git", ["rev-list", "-n", "50", sha], { cwd: repoRoot, encoding: "utf-8" });
+      if (r.status === 0 && r.stdout.trim()) {
+        const commits = r.stdout.trim().split("\n").map((c) => c.trim()).filter(Boolean);
+        for (let i = 1; i < commits.length; i++) {
+          const ancestor = commits[i]!;
+          const targetKey = `${parent}/${ancestor}`;
+          if (store.lookup(rootTree, targetKey)) return targetKey;
+          if (idx.state === "ok" && idx.index?.skipped) {
+            const mapped = idx.index.skipped[targetKey] ?? idx.index.skipped[ancestor];
+            if (mapped) {
+              const mappedKey = mapped.startsWith(`${parent}/`) ? mapped : `${parent}/${mapped}`;
+              if (store.lookup(rootTree, mappedKey)) return mappedKey;
+            }
+          }
+        }
+      }
+    } catch {
+      // ignore git rev-list failure
+    }
+  }
+
+  return undefined;
+}
+
+function findSkippedTargetForPrefix(
+  store: Store,
+  rootTree: string,
+  parent: string,
+  prefix: string,
+  repoRoot?: string,
+): string | undefined {
+  const idx = readIndex(store, rootTree);
+  if (idx.state === "ok" && idx.index?.skipped) {
+    const matches: string[] = [];
+    for (const [k, v] of Object.entries(idx.index.skipped)) {
+      const kSha = k.startsWith(`${parent}/`) ? k.slice(parent.length + 1) : k;
+      if (kSha.startsWith(prefix)) {
+        const targetKey = v.startsWith(`${parent}/`) ? v : `${parent}/${v}`;
+        if (store.lookup(rootTree, targetKey) && !matches.includes(targetKey)) {
+          matches.push(targetKey);
+        }
+      }
+    }
+    if (matches.length === 1) return matches[0];
+    if (matches.length > 1) {
+      throw new QaUsageError(`ambiguous sha prefix ${prefix}: ${matches.length} skipped entries match`);
+    }
+  }
+
+  if (repoRoot && existsSync(repoRoot)) {
+    try {
+      const r = spawnSync("git", ["rev-parse", "--verify", `${prefix}^{commit}`], { cwd: repoRoot, encoding: "utf-8" });
+      if (r.status === 0 && r.stdout.trim()) {
+        const fullSha = r.stdout.trim();
+        return findSkippedTarget(store, rootTree, parent, fullSha, repoRoot);
+      }
+    } catch {
+      // ignore
+    }
+  }
+
+  return undefined;
+}
+
 /** Resolve a spec to a key path on `rootTree`. */
-function resolveSpec(store: Store, rootTree: string, spec: QaRefSpec): { state: "ok"; key: string } | QaNotHit {
+function resolveSpec(store: Store, rootTree: string, spec: QaRefSpec, repoRoot?: string): { state: "ok"; key: string } | QaNotHit {
   if (spec.kind === "main" || spec.kind === "pr") {
     const parent = spec.kind === "main" ? "main" : `pr/${spec.pr}`;
     if (FULL_SHA.test(spec.sha)) {
       const key = `${parent}/${spec.sha}`;
-      return store.lookup(rootTree, key) ? { state: "ok", key } : { state: "miss", reason: `no entry ${key}` };
+      if (store.lookup(rootTree, key)) return { state: "ok", key };
+      const fallback = findSkippedTarget(store, rootTree, parent, spec.sha, repoRoot);
+      if (fallback) return { state: "ok", key: fallback };
+      return { state: "miss", reason: `no entry ${key}` };
     }
     const dir = store.lookup(rootTree, parent);
     const names = dir?.type === "tree" ? store.lsTree(dir.sha).map((e) => e.name).filter((n) => n.startsWith(spec.sha)) : [];
-    if (names.length === 0) return { state: "miss", reason: `no entry ${parent}/${spec.sha}…` };
+    if (names.length === 1) return { state: "ok", key: `${parent}/${names[0]}` };
     if (names.length > 1) throw new QaUsageError(`ambiguous sha prefix ${spec.sha}: ${names.length} entries under ${parent}/`);
-    return { state: "ok", key: `${parent}/${names[0]}` };
+    const fallback = findSkippedTargetForPrefix(store, rootTree, parent, spec.sha, repoRoot);
+    if (fallback) return { state: "ok", key: fallback };
+    return { state: "miss", reason: `no entry ${parent}/${spec.sha}…` };
   }
   const idx = readIndex(store, rootTree);
   if (idx.state !== "ok") return idx;
@@ -465,9 +559,10 @@ function resolveSpec(store: Store, rootTree: string, spec: QaRefSpec): { state: 
       : { state: "miss", reason: `no entry under ${parent}/` };
   }
   const key = `${parent}/${latest.sha}`;
-  return store.lookup(rootTree, key)
-    ? { state: "ok", key }
-    : { state: "corrupt", reason: `${INDEX_FILE} names ${key}, which is not on the branch` };
+  if (store.lookup(rootTree, key)) return { state: "ok", key };
+  const fallback = findSkippedTarget(store, rootTree, parent, latest.sha, repoRoot);
+  if (fallback) return { state: "ok", key: fallback };
+  return { state: "corrupt", reason: `${INDEX_FILE} names ${key}, which is not on the branch` };
 }
 
 /** Verify an entry: a manifest of our schema whose `payloadTree` is the entry minus itself. */
@@ -506,13 +601,13 @@ function snapshot(ref: string, opts: QaStoreOptions): SnapshotResult {
 
 function snapshotUntraced(ref: string, opts: QaStoreOptions): SnapshotResult {
   const spec = parseQaRef(ref);
-  const { store } = openStore(opts);
+  const { store, repoRoot } = openStore(opts);
   const memo = `${store.dir}|${store.remote}|${store.candidates.join(",")}|${ref}`;
   const hit = snapshots.get(memo);
   if (hit) return hit;
   let result: SnapshotResult;
   try {
-    result = buildSnapshot(store, spec);
+    result = buildSnapshot(store, spec, repoRoot);
   } catch (e) {
     if (e instanceof QaUsageError) throw e;
     result = { state: "unknown", reason: (e as Error).message };
@@ -522,12 +617,12 @@ function snapshotUntraced(ref: string, opts: QaStoreOptions): SnapshotResult {
   return result;
 }
 
-function buildSnapshot(store: Store, spec: QaRefSpec): SnapshotResult {
+function buildSnapshot(store: Store, spec: QaRefSpec, repoRoot?: string): SnapshotResult {
   const t = store.fetchTip();
   if (t.state === "absent") return { state: "miss", reason: `branch ${store.branch} does not exist on the remote` };
   if (t.state === "unknown") return t;
   const rootTree = store.must(["rev-parse", `${t.tip}^{tree}`]).trim();
-  const r = resolveSpec(store, rootTree, spec);
+  const r = resolveSpec(store, rootTree, spec, repoRoot);
   if (r.state !== "ok") return r;
   const entry = store.lookup(rootTree, r.key)!;
   if (entry.type !== "tree") return { state: "corrupt", reason: `${r.key} is a ${entry.type}, not a tree` };
@@ -697,7 +792,7 @@ export function fetchQa(args: { ref: string; into?: string; prefix?: string }, o
 
 // ── Writing ──────────────────────────────────────────────────────────────
 
-export type QaPublishState = "published" | "present" | "empty" | "incomplete" | "failed";
+export type QaPublishState = "published" | "present" | "skipped" | "empty" | "incomplete" | "failed";
 
 export interface QaPublishResult {
   state: QaPublishState;
@@ -787,12 +882,108 @@ function nextIndex(store: Store, base: string | undefined, key: QaKey, writtenAt
  * prune). This is the helper `check:workflows`' `qa-reports-unretried`
  * requires every push to go through.
  */
+function stripVolatile(obj: unknown): unknown {
+  if (obj === null || typeof obj !== "object") return obj;
+  if (Array.isArray(obj)) return obj.map(stripVolatile);
+  const out: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(obj as Record<string, unknown>)) {
+    if (k === "updated_at" || k === "written_at" || k === "timestamp" || k === "date") continue;
+    out[k] = stripVolatile(v);
+  }
+  return out;
+}
+
+function sortKeys(obj: unknown): unknown {
+  if (obj === null || typeof obj !== "object") return obj;
+  if (Array.isArray(obj)) return obj.map(sortKeys);
+  const out: Record<string, unknown> = {};
+  for (const k of Object.keys(obj as Record<string, unknown>).sort()) {
+    out[k] = sortKeys((obj as Record<string, unknown>)[k]);
+  }
+  return out;
+}
+
+function canonicalJson(obj: unknown): string {
+  return JSON.stringify(sortKeys(obj));
+}
+
+/** Compare two QA result file texts for semantic equivalence, ignoring volatile timestamps. */
+export function isQaFileEquivalent(aText: string, bText: string): boolean {
+  if (aText === bText) return true;
+  try {
+    const a = JSON.parse(aText);
+    const b = JSON.parse(bText);
+    return canonicalJson(stripVolatile(a)) === canonicalJson(stripVolatile(b));
+  } catch {
+    return aText === bText;
+  }
+}
+
+function getPayloadTreeSha(store: Store, entryTreeSha: string): string | undefined {
+  const entries = store.lsTree(entryTreeSha);
+  const payloadEntries = entries.filter((e) => e.name !== MANIFEST_FILE);
+  return payloadEntries.length > 0 ? store.mktree(payloadEntries) : undefined;
+}
+
+/** Check if candidate payload is identical or semantically equivalent to prior entry's payload. */
+function isSnapshotUnchanged(
+  store: Store,
+  rootTree: string,
+  candidatePayloadSha: string,
+  priorEntrySha: string,
+): boolean {
+  const priorPayloadSha = getPayloadTreeSha(store, priorEntrySha);
+  if (!priorPayloadSha) return false;
+  if (candidatePayloadSha === priorPayloadSha) return true;
+
+  const candidateListing = store.must(["ls-tree", "-r", "-z", candidatePayloadSha]);
+  const priorListing = store.must(["ls-tree", "-r", "-z", priorPayloadSha]);
+
+  const candidateFiles = new Map<string, string>();
+  for (const l of candidateListing.split("\0").filter(Boolean)) {
+    const tab = l.indexOf("\t");
+    const [, type, sha] = l.slice(0, tab).split(" ");
+    const path = l.slice(tab + 1);
+    if (type === "blob") candidateFiles.set(path, sha!);
+  }
+
+  const priorFiles = new Map<string, string>();
+  for (const l of priorListing.split("\0").filter(Boolean)) {
+    const tab = l.indexOf("\t");
+    const [, type, sha] = l.slice(0, tab).split(" ");
+    const path = l.slice(tab + 1);
+    if (type === "blob") priorFiles.set(path, sha!);
+  }
+
+  if (candidateFiles.size !== priorFiles.size) return false;
+  for (const [path, cSha] of candidateFiles) {
+    const pSha = priorFiles.get(path);
+    if (!pSha) return false;
+    if (cSha === pSha) continue;
+    store.ensureBlobs(rootTree, [pSha]);
+    const cText = store.blobText(cSha);
+    const pText = store.blobText(pSha);
+    if (!isQaFileEquivalent(cText, pText)) return false;
+  }
+
+  return true;
+}
+
+/**
+ * The write loop every change to the branch goes through: fetch the tip,
+ * `build(tip)` a new root tree on it, `commit-tree -p tip`, push WITHOUT `-f`,
+ * and on rejection back off and rebuild on the new tip.
+ *
+ * `build` returns `done` to stop without pushing (already present, nothing to
+ * prune). This is the helper `check:workflows`' `qa-reports-unretried`
+ * requires every push to go through.
+ */
 function writeLoop(
   store: Store,
   opts: QaStoreOptions,
   message: string,
-  build: (tip: string | undefined, base: string | undefined) => { tree: string } | { done: string },
-): { state: "pushed" | "done" | "failed"; reason: string; commit?: string; attempts: number } {
+  build: (tip: string | undefined, base: string | undefined) => { tree: string; skipped?: boolean; priorKp?: string } | { done: string },
+): { state: "pushed" | "done" | "failed"; reason: string; commit?: string; attempts: number; skipped?: boolean; priorKp?: string } {
   const sleep = opts.sleep ?? defaultSleep;
   let lastReason = "";
   for (let attempt = 1; attempt <= PUBLISH_ATTEMPTS; attempt++) {
@@ -804,17 +995,31 @@ function writeLoop(
       const base = tip ? store.must(["rev-parse", `${tip}^{tree}`]).trim() : undefined;
       const b = build(tip, base);
       if ("done" in b) return { state: "done", reason: b.done, attempts: attempt };
+      const skipped = "skipped" in b && Boolean(b.skipped);
+      const priorKp = "priorKp" in b ? b.priorKp : undefined;
+      const commitMsg = skipped
+        ? `qa-reports: ${priorKp ? `(skipped: unchanged from ${priorKp})` : "skipped"}`
+        : message;
       // --no-gpg-sign: the branch is written as folio-qa-bot, and a contributor's
       // `commit.gpgSign` must not put their key on the bot's commit.
       const parent = tip ? ["-p", tip] : [];
-      const commit = store.must(["commit-tree", "--no-gpg-sign", b.tree, ...parent, "-m", message]).trim();
+      const commit = store.must(["commit-tree", "--no-gpg-sign", b.tree, ...parent, "-m", commitMsg]).trim();
       opts.beforePush?.(attempt);
       // NO -f (spike finding 4): a non-fast-forward is rejected by the
       // server's ref lock and we rebuild on what landed. The exit code is the
       // verdict; `push negotiation failed; proceeding anyway` on stderr is a
       // proxy artefact and is not (spike finding 5).
       const push = store.git(["-c", "pack.useSparse=false", "push", "-q", "origin", `${commit}:refs/heads/${store.branch}`]);
-      if (push.status === 0) return { state: "pushed", reason: `pushed on attempt ${attempt}`, commit, attempts: attempt };
+      if (push.status === 0) {
+        return {
+          state: "pushed",
+          reason: skipped ? `skipped on attempt ${attempt}: unchanged from ${priorKp}` : `pushed on attempt ${attempt}`,
+          commit,
+          attempts: attempt,
+          skipped,
+          priorKp,
+        };
+      }
       lastReason = push.stderr
         .split("\n")
         .filter((l) => l.trim() && !/push negotiation failed|expected 'acknowledgments'/.test(l))
@@ -851,6 +1056,8 @@ export function publishQa(
      * publish is not the tree that was judged complete.
      */
     completeness?: QaManifest["completeness"];
+    force?: boolean;
+    skipUnchanged?: boolean;
   },
   opts: QaStoreOptions = {},
 ): QaPublishResult {
@@ -902,12 +1109,65 @@ export function publishQa(
             : `${kp} is already on ${store.branch} with different content (${existing.sha}); the first write stands`,
       };
     }
+
+    const idxResult = base ? readIndex(store, base) : undefined;
+    const currentIndex = idxResult?.state === "ok" ? idxResult.index : undefined;
+    if (currentIndex?.skipped?.[key.sha] || currentIndex?.skipped?.[kp]) {
+      const prior = currentIndex.skipped[key.sha] ?? currentIndex.skipped[kp];
+      return { done: `${kp} was already skipped; unchanged from ${prior}` };
+    }
+
+    // Check if candidate entry is unchanged from newest recorded entry
+    if (!args.force && (args.skipUnchanged ?? true) && base && currentIndex) {
+      const priorSha = key.kind === "main"
+        ? currentIndex.main?.sha
+        : (currentIndex.pr?.[String(key.pr)]?.sha ?? currentIndex.main?.sha);
+      if (priorSha && priorSha !== key.sha) {
+        const priorKp = (key.kind === "pr" && currentIndex.pr?.[String(key.pr)]?.sha)
+          ? `pr/${key.pr}/${priorSha}`
+          : `main/${priorSha}`;
+        const priorLookup = store.lookup(base, priorKp);
+        if (priorLookup && priorLookup.type === "tree") {
+          const isUnchanged = isSnapshotUnchanged(store, base, built.manifest.payloadTree, priorLookup.sha);
+          if (isUnchanged) {
+            const nextIdx: QaIndex = {
+              ...currentIndex,
+              $schema: INDEX_SCHEMA,
+              ...(key.kind === "main"
+                ? { main: { sha: key.sha, written_at: writtenAt } }
+                : { pr: { ...(currentIndex.pr ?? {}), [String(key.pr)]: { sha: key.sha, written_at: writtenAt } } }),
+              skipped: {
+                ...(currentIndex.skipped ?? {}),
+                [key.sha]: priorSha,
+                [kp]: priorKp,
+              },
+            };
+            const idxBlob = store.hashBlob(JSON.stringify(nextIdx, null, 2) + "\n");
+            const newTree = store.setPath(base, [INDEX_FILE], { mode: "100644", type: "blob", sha: idxBlob, name: "" })!;
+            return { tree: newTree, skipped: true, priorKp };
+          }
+        }
+      }
+    }
+
     const withEntry = store.setPath(base, kp.split("/"), { mode: "040000", type: "tree", sha: built.entry, name: "" })!;
     const idx = nextIndex(store, base, key, writtenAt);
     return { tree: store.setPath(withEntry, [INDEX_FILE], { mode: "100644", type: "blob", sha: idx, name: "" })! };
   });
   clearSnapshotsFor(store);
-  if (r.state === "pushed") return { state: "published", key: kp, reason: r.reason, commit: r.commit, attempts: r.attempts, entry: built.entry };
+  if (r.state === "pushed") {
+    if (r.skipped) {
+      return {
+        state: "skipped",
+        key: kp,
+        reason: `unchanged from ${r.priorKp}; skipped duplicate entry`,
+        commit: r.commit,
+        attempts: r.attempts,
+        entry: built.entry,
+      };
+    }
+    return { state: "published", key: kp, reason: r.reason, commit: r.commit, attempts: r.attempts, entry: built.entry };
+  }
   if (r.state === "done") return { state: "present", key: kp, reason: r.reason, attempts: r.attempts, entry: built.entry };
   return { state: "failed", key: kp, reason: r.reason, attempts: r.attempts, entry: built.entry };
 }
@@ -1106,11 +1366,33 @@ export function pruneQa(
     let tree: string | undefined = base;
     for (const p of plan.remove) tree = store.setPath(tree, p.split("/"), undefined);
     const idx = readIndex(store, base);
-    if (idx.state === "ok" && idx.index?.pr) {
-      const pr = { ...idx.index.pr };
-      for (const p of plan.remove) if (p.startsWith("pr/")) delete pr[p.slice(3)];
-      const blob = store.hashBlob(JSON.stringify({ ...idx.index, pr }, null, 2) + "\n");
-      tree = store.setPath(tree, [INDEX_FILE], { mode: "100644", type: "blob", sha: blob, name: "" });
+    if (idx.state === "ok") {
+      let changed = false;
+      const pr = idx.index?.pr ? { ...idx.index.pr } : undefined;
+      const skipped = idx.index?.skipped ? { ...idx.index.skipped } : undefined;
+      if (pr) {
+        for (const p of plan.remove) {
+          if (p.startsWith("pr/")) {
+            delete pr[p.slice(3)];
+            changed = true;
+          }
+        }
+      }
+      if (skipped) {
+        for (const p of plan.remove) {
+          const removedSha = p.split("/").pop();
+          for (const [k, v] of Object.entries(skipped)) {
+            if (k === p || k === removedSha || v === p || v === removedSha || (p.startsWith("pr/") && k.startsWith(p))) {
+              delete skipped[k];
+              changed = true;
+            }
+          }
+        }
+      }
+      if (changed) {
+        const blob = store.hashBlob(JSON.stringify({ ...idx.index, ...(pr ? { pr } : {}), ...(skipped ? { skipped } : {}) }, null, 2) + "\n");
+        tree = store.setPath(tree, [INDEX_FILE], { mode: "100644", type: "blob", sha: blob, name: "" });
+      }
     }
     return { tree: tree ?? store.mktree([]) };
   });
@@ -1244,12 +1526,22 @@ export function main(argv: string[]): number {
       // input-site: store #f79bad10 — configures or performs a qa-reports store read; every by-ref read is reported by snapshot(), every other git call by TreeStore.git()
       const run = process.env.GITHUB_RUN_ID ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}` : undefined;
       const gates = f.one("gates-result");
+      const force = f.has("force");
+      const skipUnchanged = !force;
       const r = publishQa(
-        { ref, roots, checkout, ...(run || gates ? { producer: { ...(run ? { run } : {}), ...(gates ? { gates } : {}) } } : {}), ...(completeness ? { completeness } : {}) },
+        {
+          ref,
+          roots,
+          checkout,
+          force,
+          skipUnchanged,
+          ...(run || gates ? { producer: { ...(run ? { run } : {}), ...(gates ? { gates } : {}) } } : {}),
+          ...(completeness ? { completeness } : {}),
+        },
         { ...opts, repoRoot },
       );
       say(r, `qa:publish ${r.state.toUpperCase()} ${r.key}: ${r.reason}${r.commit ? ` (${r.commit})` : ""}`);
-      return r.state === "published" || r.state === "present" ? 0 : r.state === "empty" ? QA_EXIT.miss : QA_EXIT.unknown;
+      return r.state === "published" || r.state === "present" || r.state === "skipped" ? 0 : r.state === "empty" ? QA_EXIT.miss : QA_EXIT.unknown;
     }
     case "prune": {
       // input-site: store #ec29a4c5 — configures or performs a qa-reports store read; every by-ref read is reported by snapshot(), every other git call by TreeStore.git()
