@@ -25,6 +25,17 @@
       "title": "AGENTS.md — folio-assistant-core"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#asset/npm-manifest",
+      "@type": "bootstrap:Asset",
+      "name": "npm-manifest",
+      "payload": {
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7079b917b3b38f65b1c5be8eb0f9e5c7974c468a6ee86cac09c700a3be41b886",
+        "bytes": 2194,
+        "sha256": "7079b917b3b38f65b1c5be8eb0f9e5c7974c468a6ee86cac09c700a3be41b886"
+      },
+      "title": "package.json"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#asset/readme",
       "@type": "bootstrap:Asset",
       "name": "readme",
@@ -34,6 +45,11 @@
         "sha256": "e7498d40db05d0ae4328c23838615b9ed7a997c73ef8e1c14f892cf03978d577"
       },
       "title": "folio-assistant-core"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/beans",
+      "@type": "bootstrap:Subgraph",
+      "name": "beans"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/core-adapters",

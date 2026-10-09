@@ -97,6 +97,17 @@
       "title": "Branch archaeology: what each branch holds that main does not"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/bun-use",
+      "@type": "bootstrap:Skill",
+      "name": "bun-use",
+      "payload": {
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d875c3ad0589ef0bea59ac24236d362338ead549105557d0dcf87ef49ff02e42",
+        "bytes": 5427,
+        "sha256": "d875c3ad0589ef0bea59ac24236d362338ead549105557d0dcf87ef49ff02e42"
+      },
+      "title": "Bun Runtime, Toolchain, and Multi-Repo Conventions"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/ci-health",
       "@type": "bootstrap:Skill",
       "name": "ci-health",
@@ -354,9 +365,9 @@
       "@type": "bootstrap:Skill",
       "name": "package-release",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/c84ceb8dd402041b2b39f012a3a4baba4bdf187a3dd5af8b50ed774db242fd5b",
-        "bytes": 4808,
-        "sha256": "c84ceb8dd402041b2b39f012a3a4baba4bdf187a3dd5af8b50ed774db242fd5b"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2fc961e97bcb51f7227185747030cfee4549b6b9902a56d906a570f2bfb6f337",
+        "bytes": 5495,
+        "sha256": "2fc961e97bcb51f7227185747030cfee4549b6b9902a56d906a570f2bfb6f337"
       },
       "title": "Cutting a package release"
     },

@@ -102,5 +102,5 @@
     }
   ],
   "source": "https://github.com/litlfred/folio-assistant/blob/main/todos/items/subagent-roles-for-the-two-judgement-agents.md",
-  "inSubgraph": "https://litlfred.github.io/folio-assistant/folio-assistant/folio-assistant.jsonld#directory/todos"
+  "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/todos"
 }

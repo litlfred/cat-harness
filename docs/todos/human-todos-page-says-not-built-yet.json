@@ -104,5 +104,5 @@
     }
   ],
   "source": "https://github.com/litlfred/folio-assistant/blob/main/todos/items/human-todos-page-says-not-built-yet.md",
-  "inSubgraph": "https://litlfred.github.io/folio-assistant/folio-assistant/folio-assistant.jsonld#directory/todos"
+  "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/todos"
 }

@@ -307,19 +307,6 @@ classDiagram
       operations [1] integer
       materialization [1] object
     }
-    class smart_trust_smart_trust_openapi_cat_openapi_config_v1_Document["Document"] {
-      <<json: OpenApiConfigSchema>>
-      id [1] string
-      title [0..1] string
-      description [0..1] string
-      source [1] object
-    }
-    class smart_trust_smart_trust_openapi_cat_openapi_config_v1_cat_openapi_config_v1["cat-openapi-config/v1"] {
-      <<json: OpenApiConfigSchema>>
-      $schema [1] 'cat-openapi-config/v1'
-      directory [1] string
-      documents [1..*] Document[]
-    }
   }
   namespace smart_trust__smart_trust_docs {
     class n_smart_trust_smart_trust_docs_docs["docs: no node schema"] {
@@ -335,21 +322,6 @@ classDiagram
     }
   }
   namespace smart_trust__qa {
-    class smart_trust_qa_kg_qa_v1_kg_qa_v1["kg-qa/v1"] {
-      <<json: KgQaReportSchema>>
-      $schema [1] 'kg-qa/v1'
-      subject [1] object
-      source_hash [1] string | null
-      criteria [1] map~object~
-      totals [1] map~number~
-      pair_attestations [0..1] any
-      voice_reviews [0..1] any
-    }
-    class smart_trust_qa_kg_qa_manifest_v1_kg_qa_manifest_v1["kg-qa-manifest/v1"] {
-      <<json: KgQaManifestSchema>>
-      $schema [1] 'kg-qa-manifest/v1'
-      auditor [1] object
-    }
     class smart_trust_qa_qa_results_v1["qa-results/v1"] {
       <<ts: QaResult>>
       $schema [1] 'qa-results/v1'
@@ -417,18 +389,13 @@ classDiagram
   cssClass "smart_trust_smart_trust_artifact_index_dak_ValueSet_Transactions_schema_json_WHO_GDHCN_Transaction_Codes_Schema" fa_uml_kind_fhir_artifact_index
   cssClass "smart_trust_smart_trust_artifact_index_dak_ValueSet_WHORegionalOffices_displays_json_WHO_Regional_Offices_Display_Values" fa_uml_kind_fhir_artifact_index
   cssClass "smart_trust_smart_trust_artifact_index_dak_ValueSet_WHORegionalOffices_schema_json_WHO_Regional_Offices_Schema" fa_uml_kind_fhir_artifact_index
-  smart_trust_smart_trust_openapi_cat_openapi_config_v1_cat_openapi_config_v1 *-- "1..*" smart_trust_smart_trust_openapi_cat_openapi_config_v1_Document : documents
   cssClass "smart_trust_smart_trust_openapi_folio_openapi_source_v1_folio_openapi_source_v1" fa_uml_kind_openapi
-  cssClass "smart_trust_smart_trust_openapi_cat_openapi_config_v1_Document" fa_uml_kind_openapi
-  cssClass "smart_trust_smart_trust_openapi_cat_openapi_config_v1_cat_openapi_config_v1" fa_uml_kind_openapi
   cssClass "n_smart_trust_smart_trust_docs_docs" fa_uml_kind_docs
   cssClass "n_smart_trust_smart_trust_docs_docs" fa_uml_undetermined
   cssClass "n_smart_trust_smart_trust_docs_ig_pages" fa_uml_kind_ig_pages
   cssClass "n_smart_trust_smart_trust_docs_ig_pages" fa_uml_undetermined
   cssClass "n_smart_trust_smart_trust_scripts_code" fa_uml_kind_code
   cssClass "n_smart_trust_smart_trust_scripts_code" fa_uml_undetermined
-  cssClass "smart_trust_qa_kg_qa_v1_kg_qa_v1" fa_uml_kind_qa
-  cssClass "smart_trust_qa_kg_qa_manifest_v1_kg_qa_manifest_v1" fa_uml_kind_qa
   cssClass "smart_trust_qa_qa_results_v1" fa_uml_kind_qa
   cssClass "n_smart_trust_smart_trust_platform_code" fa_uml_kind_code
   cssClass "n_smart_trust_smart_trust_platform_code" fa_uml_undetermined

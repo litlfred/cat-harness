@@ -15,6 +15,7 @@
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/before-after-preview",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/blocked-build-dependencies",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/branch-archaeology",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/bun-use",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/ci-health",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/continual-progress",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/coordinate",
@@ -226,6 +227,25 @@
         "sha256": "ca21d7159742008e156e46e1e8e72bb1510b186fbb7041a542f1b5b185703f50"
       },
       "title": "Branch archaeology: what each branch holds that main does not"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/bun-use",
+      "@type": "bootstrap:Skill",
+      "ambiguous": false,
+      "description": "How Bun is used as the JavaScript/TypeScript execution runtime, test runner, package manager, and tarball packager across separated repositories: standalone subgraph configuration (bunfig.toml, package.json, tsconfig.json), test preloads, dependency resolution without rootDir pitfalls, packaging with bun pm pack, and coordinator vs standalone execution models.",
+      "hasIOContract": false,
+      "hasInstructions": true,
+      "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/sdlc-core",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
+      "instructionLines": 134,
+      "instructionsPath": "skills/sdlc/sdlc-core/bun-use.md",
+      "name": "bun-use",
+      "payload": {
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d875c3ad0589ef0bea59ac24236d362338ead549105557d0dcf87ef49ff02e42",
+        "bytes": 5427,
+        "sha256": "d875c3ad0589ef0bea59ac24236d362338ead549105557d0dcf87ef49ff02e42"
+      },
+      "title": "Bun Runtime, Toolchain, and Multi-Repo Conventions"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/ci-health",
@@ -672,13 +692,13 @@
       "hasInstructions": true,
       "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/sdlc-core",
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-      "instructionLines": 96,
+      "instructionLines": 105,
       "instructionsPath": "skills/sdlc/sdlc-core/package-release.md",
       "name": "package-release",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/c84ceb8dd402041b2b39f012a3a4baba4bdf187a3dd5af8b50ed774db242fd5b",
-        "bytes": 4808,
-        "sha256": "c84ceb8dd402041b2b39f012a3a4baba4bdf187a3dd5af8b50ed774db242fd5b"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2fc961e97bcb51f7227185747030cfee4549b6b9902a56d906a570f2bfb6f337",
+        "bytes": 5495,
+        "sha256": "2fc961e97bcb51f7227185747030cfee4549b6b9902a56d906a570f2bfb6f337"
       },
       "title": "Cutting a package release"
     },

@@ -90,9 +90,9 @@
       "@type": "bootstrap:Skill",
       "name": "directory-conventions",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/8833e33edfcc5b6800f526c4856cc56a6af7059a652a1ef37c01082dbf2d4b1c",
-        "bytes": 131717,
-        "sha256": "8833e33edfcc5b6800f526c4856cc56a6af7059a652a1ef37c01082dbf2d4b1c"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d6c14ce24d1fdc3099d5198c627e87c6b375017c8498c78c487b7b2c167c3b8f",
+        "bytes": 132063,
+        "sha256": "d6c14ce24d1fdc3099d5198c627e87c6b375017c8498c78c487b7b2c167c3b8f"
       },
       "title": "Directory conventions — what an instance declares it scans"
     },
@@ -112,9 +112,9 @@
       "@type": "bootstrap:Skill",
       "name": "harness-requirements",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e3bc9fedfa65d5c6f63477a7f8646a38c95aec2f93f7aa8c3cfb43d22eaca6cb",
-        "bytes": 14341,
-        "sha256": "e3bc9fedfa65d5c6f63477a7f8646a38c95aec2f93f7aa8c3cfb43d22eaca6cb"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e1bd4e044901e1927640fc10a4cf3f7c6bf2a421aa1b9921026d3be0a9d7579b",
+        "bytes": 14569,
+        "sha256": "e1bd4e044901e1927640fc10a4cf3f7c6bf2a421aa1b9921026d3be0a9d7579b"
       },
       "title": "Harness requirements — what an instance owes for what it declares"
     },
@@ -185,6 +185,17 @@
       "title": "KG → package → distribution → portal"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/npm-kg-distribution",
+      "@type": "bootstrap:Skill",
+      "name": "npm-kg-distribution",
+      "payload": {
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2d68655e8938c175dd7981bad0ed80b9b551e7f982431f235d47a9917a4629c8",
+        "bytes": 9440,
+        "sha256": "2d68655e8938c175dd7981bad0ed80b9b551e7f982431f235d47a9917a4629c8"
+      },
+      "title": "NPM Knowledge Graph Distribution"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/placement",
       "@type": "bootstrap:Skill",
       "name": "placement",
@@ -200,9 +211,9 @@
       "@type": "bootstrap:Skill",
       "name": "remote-mount",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2dbbc184f49ba4af5d3a017944f4613820b4c56852c66ff944f1949c9dfede5a",
-        "bytes": 9532,
-        "sha256": "2dbbc184f49ba4af5d3a017944f4613820b4c56852c66ff944f1949c9dfede5a"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/75a028f54382867e9b5b79e4525d45a27af940b9d619190e9505f2add6bbca0c",
+        "bytes": 12356,
+        "sha256": "75a028f54382867e9b5b79e4525d45a27af940b9d619190e9505f2add6bbca0c"
       },
       "title": "Remote-mount a harness"
     },
@@ -211,9 +222,9 @@
       "@type": "bootstrap:Skill",
       "name": "schema-management",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/55b04ce52d30779e75d51f11dcea7c50278f51a15f7803a40cec509050db5459",
-        "bytes": 22830,
-        "sha256": "55b04ce52d30779e75d51f11dcea7c50278f51a15f7803a40cec509050db5459"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/55cc1b80b87f450a2c041238a81d3a5d8c8392f1f5de5a699d7ebf0251333bbe",
+        "bytes": 23921,
+        "sha256": "55cc1b80b87f450a2c041238a81d3a5d8c8392f1f5de5a699d7ebf0251333bbe"
       },
       "title": "Managing a schema — the graph, the viewer, and the three answers that are not \"fine\""
     },

@@ -11,7 +11,7 @@
         "kind": "directory"
       },
       "description": "The skills core owns. `skills/voices/` is declared separately above as the `voices` kind: a voice partitions how prose READS and is a different graph from an instruction body, so the nesting is two kinds in one place rather than one kind declared twice.",
-      "fileCount": 86,
+      "fileCount": 0,
       "holdsGraph": [
         "bootstrap:graphTypology/skills"
       ],

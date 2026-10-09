@@ -14,7 +14,6 @@
       "name": "Ingestion subprocess — build the L1 knowledge graph",
       "nodeCount": 7,
       "sourcePath": "processes/library/ingest-build-l1-kg.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/library/ingest-build-l1-kg.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_BuildL1Kg/node/StartEvent_Derived2",
       "summary": "Build the L1 knowledge graph from what ingestion derived: Dublin Core, the manifest, the assets, their binding and their links."
     },
@@ -201,7 +200,6 @@
       "name": "Deep document research",
       "nodeCount": 9,
       "sourcePath": "processes/library/deep-document-research.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/library/deep-document-research.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_DeepDocumentResearch/node/Start_Question",
       "summary": "Answer a question from a corpus this folio ALREADY HOLDS, iteratively, stopping on a stated condition."
     },
@@ -458,7 +456,6 @@
       "name": "Ingestion subprocess — derive content from the assets",
       "nodeCount": 10,
       "sourcePath": "processes/library/ingest-derive-content.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/library/ingest-derive-content.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_DeriveContent/node/StartEvent_Assets",
       "summary": "Derive content from an ingested source's assets: the archive, technical metadata, images, audio, tabular data and provenance."
     },
@@ -751,7 +748,6 @@
       "name": "Ingestion subprocess — extract structure",
       "nodeCount": 8,
       "sourcePath": "processes/library/ingest-extract-structure.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/library/ingest-extract-structure.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_ExtractStructure/node/StartEvent_Binary",
       "summary": "Extract the structure of an uploaded source: its text layer, OCR where it has none, sections, structure and claim candidates."
     },
@@ -969,7 +965,6 @@
       "name": "L1 document ingestion — a document to the L1 source knowledge graph",
       "nodeCount": 16,
       "sourcePath": "processes/library/l1-document-ingestion.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/library/l1-document-ingestion.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_L1DocumentIngestion/node/StartEvent_Document",
       "summary": "folio-assistant — L1 document ingestion — a document to the L1 source knowledge graph."
     },
@@ -1415,7 +1410,6 @@
       "name": "Ingestion subprocess — the L1 completeness gate",
       "nodeCount": 8,
       "sourcePath": "processes/library/ingest-l1-completeness-gate.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/library/ingest-l1-completeness-gate.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_L1Gate/node/StartEvent_KgBuilt",
       "summary": "Decide whether the derived content is complete enough to promote to the L1 graph, and who says so."
     },

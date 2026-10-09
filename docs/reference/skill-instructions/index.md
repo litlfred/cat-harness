@@ -99,6 +99,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [MCP contract](mcp-contract.html) | `mcp-contract` | — | [`mcp-projection`](mcp-projection.md) emits a server. This checks the emitted |
 | [MCP projection](mcp-projection.html) | `mcp-projection` | — | **The harness does not require MCP. It knows how to emit it.** That distinction |
 | [Skills and Tools](skills-and-tools.html) | `skills-and-tools` | — | **A skill is a capability stated generically. A Tool content node is one |
+| [Tool Authoring](tool-authoring.html) | `tool-authoring` | — | > Skill id: `tool-authoring` · Package: `folio-core` |
 
 ## Graph management (graph-management)
 
@@ -110,6 +111,8 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [Graph rendering: one set of rules for every drawn graph](graph-rendering.html) | `graph-rendering` | — | > Skill id: `graph-rendering` · Package: `graph-management` |
 | [Knowledge Graph separation](kg-separation.html) | `kg-separation` | — | > Skill id: `kg-separation` · Package: `graph-management` |
 | [LSI indexing](lsi-indexing.html) | `lsi-indexing` | — | **The method is the node, not this file.** [`lsi`](https://github.com/litlfred/folio-assistant/blob/ |
+| [Named Query Execution across CLI, MCP, and Web](named-query-execution.html) | `named-query-execution` | — | This skill governs the execution of audited SPARQL 1.1 named queries against partitioned W3C N-Quads |
+| [W3C N-Quads Dataset Packaging & Subgraph Distribution](nquads-distribution.html) | `nquads-distribution` | — | This skill governs the compilation, subgraph partitioning, packaging, and distribution of RDF datase |
 | [Sub-KG lifecycle](sub-kg-lifecycle.html) | `sub-kg-lifecycle` | — | > Skill id: `sub-kg-lifecycle` · Package: `graph-management` |
 
 ## Knowledge graph — declaration, placement, export, audit (kg-core)
@@ -133,6 +136,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [Offering the knowledge graph](kg-contribution-offer.html) | `kg-contribution-offer` | — | Owner, 2026-09-20: *"update CRDM process that when a user is done with |
 | [KG export](kg-export.html) | `kg-export` | — | **`agentic-harness` has no renderer.** `folio` is the only `renderable` graph |
 | [KG → package → distribution → portal](kg-to-portal.html) | `kg-to-portal` | — | A knowledge graph is in a repository. A portal — a Moodle site, a ministry's |
+| [NPM Knowledge Graph Distribution](npm-kg-distribution.html) | `npm-kg-distribution` | — | Knowledge Graphs in the folio ecosystem can be distributed and consumed as |
 | [Placement](placement.html) | `placement` | — | **One question, answered before the first file exists:** |
 | [Remote-mount a harness](remote-mount.html) | `remote-mount` | — | The owner, 2026-10-06, ruled on how a downstream folio gets the layers it is |
 | [Managing a schema](schema-management.html) | `schema-management` | — | **This skill does not restate where schemas live or how they are laid out.** |
@@ -236,6 +240,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [/before-after-preview](before-after-preview.html) | `before-after-preview` | — | > Skill id: `before-after-preview` · Package: `sdlc-core` · Issue: #1710 · |
 | [Blocked build dependencies](blocked-build-dependencies.html) | `blocked-build-dependencies` | — | Outbound HTTPS from an agent container goes through a proxy. A failed download |
 | [Branch archaeology: what each branch holds that main does not](branch-archaeology.html) | `branch-archaeology` | — | The question sounds like `git branch -r --no-merged`, and that command answers |
+| [Bun Runtime, Toolchain, and Multi-Repo Conventions](bun-use.html) | `bun-use` | — | > Skill id: `bun-use` · Package: `sdlc-core` |
 | [CI health](ci-health.html) | `ci-health` | — | **A workflow's outcome is invisible from the working tree.** Nothing in a |
 | [/continual-progress](continual-progress.html) | `continual-progress` | — | Sibling agents and the author can only coordinate with work they can |
 | [/coordinate](coordinate.html) | `coordinate` | — | When several Claude branches are converging on the same long-term goal |

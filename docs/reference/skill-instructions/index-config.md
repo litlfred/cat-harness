@@ -222,3 +222,11 @@ standalone clone of any separated repository.
   index already holds identically is dropped from the declaration. An entry
   the index holds differently **throws**, and you reconcile it by hand.
 {% endraw %}
+
+## Processes that run this skill
+
+| process | step(s) that name it |
+|---|---|
+| [Remote-mount a dependency](../../processes/mount-dependency.html) | Declare the mount: harness, repository, pin |
+| [Subscribe to an external knowledge graph](../../processes/subscribe-kg.html) | Instantiate the harness: write its config |
+

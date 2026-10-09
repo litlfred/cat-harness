@@ -41,6 +41,8 @@ it, drawn from the evidence that build fetched.
 |---|---|
 | `bootstrap-tools/bootstrap-tools-skills` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `bootstrap/skills` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
+| `cat-harness-tools/beans` | <span class="lv-na">state graph — indexed on demand, never committed</span> |
+| `cat-harness/beans` | <span class="lv-na">state graph — indexed on demand, never committed</span> |
 | `cat-harness/docs` | **yes** |
 | `cat-harness/folio` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `cat-harness/library` | **yes** |
@@ -50,6 +52,7 @@ it, drawn from the evidence that build fetched.
 | `cat-harness/skills` | **yes** |
 | `fhir-harness/fhir-ig-skills` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `fhir-harness/library` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
+| `folio-assistant-core/beans` | <span class="lv-na">state graph — indexed on demand, never committed</span> |
 | `folio-assistant-core/core-library` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `folio-assistant-core/core-methodologies` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `folio-assistant-core/core-skills` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
@@ -60,7 +63,6 @@ it, drawn from the evidence that build fetched.
 | `folio-assistant-sci/library` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `folio-assistant-sci/sci-methodologies` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `folio-assistant-sci/skills` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
-| `folio-assistant/beans` | <span class="lv-na">state graph — indexed on demand, never committed</span> |
 | `smart-base/library` | **yes** |
 | `smart-base/methodologies` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `smart-base/smart-base-docs` | **yes** |

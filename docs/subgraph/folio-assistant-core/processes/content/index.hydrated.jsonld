@@ -14,7 +14,6 @@
       "name": "Content Change and Review",
       "nodeCount": 45,
       "sourcePath": "processes/content/content-change-review.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/content-change-review.bpmn",
       "startNode": [
         "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_ContentChangeReview/node/Start_Author",
         "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_ContentChangeReview/node/Start_Agent",
@@ -1246,7 +1245,6 @@
       "name": "Authoring a document",
       "nodeCount": 13,
       "sourcePath": "processes/content/authoring-a-document.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/authoring-a-document.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_DocumentAuthoring/node/StartEvent_NewDocument",
       "summary": "How a document folio — structured prose and policy guidance, with no Lean and no required TeX — is authored, built and reviewed end to end."
     },
@@ -1633,7 +1631,6 @@
       "name": "Editing and HCI validation",
       "nodeCount": 26,
       "sourcePath": "processes/content/editing-hci-validation.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/editing-hci-validation.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_Editing/node/StartEvent_EditRequested",
       "summary": "What happens to one proposed change to one content block: drafted, validated mechanically and by review, shown to the editor, and committed to the corpus only if accepted."
     },
@@ -2385,7 +2382,6 @@
       "name": "Evidence for a recommendation",
       "nodeCount": 17,
       "sourcePath": "processes/content/evidence-retrieval.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/evidence-retrieval.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_EvidenceRetrieval/node/StartEvent_Recommendation",
       "summary": "Frame a question for a recommendation, retrieve and appraise evidence from trusted sources, and either attach it or record the gap."
     },
@@ -2868,7 +2864,6 @@
       "name": "Content lifecycle",
       "nodeCount": 11,
       "sourcePath": "processes/content/content-lifecycle.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/content-lifecycle.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_Lifecycle/node/StartEvent_Initiative",
       "summary": "One cycle of a folio from plan to retirement, calling editing and the draft-to-publication path as call activities."
     },
@@ -3212,7 +3207,6 @@
       "name": "Public comment on a review draft",
       "nodeCount": 20,
       "sourcePath": "processes/content/public-comment.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/public-comment.bpmn",
       "startNode": [
         "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_PublicComment/node/StartEvent_CommentsReturned",
         "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_PublicComment/node/StartEvent_BlockFeedback",
@@ -3763,7 +3757,6 @@
       "name": "Draft, review and publish",
       "nodeCount": 19,
       "sourcePath": "processes/content/draft-to-publication.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/draft-to-publication.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_Publication/node/StartEvent_CorpusUpdated",
       "summary": "How the corpus becomes an officially published folio: a draft publication, its review, and the release authority's decision."
     },

@@ -40,9 +40,9 @@
           "instructionsPath": "skills/ui/theming/create-sticky-note.md",
           "name": "create-sticky-note",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/84455ffdf868d9dc1d50c109d6c8dd51adf162d9bc662b83e517aae67b9060cf",
-            "bytes": 7589,
-            "sha256": "84455ffdf868d9dc1d50c109d6c8dd51adf162d9bc662b83e517aae67b9060cf"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/51bb6c277b2569f91454a0b827941e24af68f6b97de10b10cfdc24370f306063",
+            "bytes": 7869,
+            "sha256": "51bb6c277b2569f91454a0b827941e24af68f6b97de10b10cfdc24370f306063"
           },
           "title": "Create a sticky note"
         },
@@ -287,13 +287,13 @@
           "hasInstructions": true,
           "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/ui-core",
           "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-          "instructionLines": 185,
+          "instructionLines": 193,
           "instructionsPath": "skills/ui/ui-core/docs-generation.md",
           "name": "docs-generation",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ef3754d751602f65be850b05c8e85e3c92e658c27883a3f3921883ceaaaa101c",
-            "bytes": 6631,
-            "sha256": "ef3754d751602f65be850b05c8e85e3c92e658c27883a3f3921883ceaaaa101c"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e91f55ea56052809882b1a9b74305a74bae88409514708f62d1f341aa4d5fa5c",
+            "bytes": 7074,
+            "sha256": "e91f55ea56052809882b1a9b74305a74bae88409514708f62d1f341aa4d5fa5c"
           },
           "title": "Documentation Generation Skill"
         },
@@ -306,13 +306,13 @@
           "hasInstructions": true,
           "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/ui-core",
           "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-          "instructionLines": 618,
+          "instructionLines": 607,
           "instructionsPath": "skills/ui/ui-core/harness-tiles.md",
           "name": "harness-tiles",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/38fcde788a47a04b883b40e4e3667760bf6a8eff81ca53900fc3c036c42a3dd5",
-            "bytes": 35678,
-            "sha256": "38fcde788a47a04b883b40e4e3667760bf6a8eff81ca53900fc3c036c42a3dd5"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/eec40f18c68743ea6c9d3b0d59a4f4b32a562959db283c6b44604f032cfabe65",
+            "bytes": 35098,
+            "sha256": "eec40f18c68743ea6c9d3b0d59a4f4b32a562959db283c6b44604f032cfabe65"
           },
           "title": "A tile is the harness's, not the node's"
         },

@@ -87,6 +87,15 @@ them with `tool_list` rather than relying on this list.
   and `instance-versioning.md` §3.1 must say which instances are publishable.
 - **By hand** — `git tag`, a CHANGELOG entry and the host's release form. The
   same four steps and the same rules; slower, and nothing to misconfigure.
+- **`pack-tarball`** (`bun run cat-harness/scripts/pack-tarball.ts`) — packages an
+  instance into an npm `.tgz` tarball using `bun pm pack`, computing size and
+  SHA-256 digest into a `folio-binary-release/v1` release record. See the
+  [`npm-kg-distribution`](npm-kg-distribution.md) skill.
+- **`package-release-workflow`** (`gh workflow run release-npm.yml`) — dispatches
+  the release workflow across any repository (`--repo <owner/repo>`) via GitHub
+  Actions. Automates tarball building, tagging, GitHub Release asset upload, and
+  publishing to GitHub Packages / npm registries. Satisfies `package-release`,
+  `npm-kg-distribution`, and `document-publishing`.
 
 ## What this skill does not do
 

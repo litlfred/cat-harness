@@ -291,14 +291,36 @@ versions of the content."*
 
 ## How the parent consumes the pair
 
-| mechanism | when |
-|---|---|
-| git submodule at a SHA, at the same path | staging — the parent reads the content's files |
-| a package at an exact version | published — the parent imports the tools' Zod and writers |
-| an `upstream-pins.json` entry, moved by `upstream-version-adoption.bpmn` | every new release |
+The owner ruled on 2026-10-06 (bean `0mpw`, `remote-mount.md`): **no git submodules, ever**.
 
-The parent's own literal copies of the content's identifiers are kept in step
-against the **pinned** version, not the latest.
+| mechanism | when | details |
+|---|---|---|
+| **Remote mount** (`remoteMounts`) | staging & development | A declared directory fetched at a pinned 40-character SHA with a committed lock (`folio-assistant.mount-lock.json`) and consent record. Downstream checkout `.gitignore` automatically ignores mounted directory trees. |
+| **NPM KG retrieval** (`kg-retrieve-npm`) | packaged distribution | `package.json` declared in `<instance>.json` (`role: "package-manifest"`). Tarball packed via `pack-tarball` with a `folio-binary-release/v1` integrity record, downloadable via npm install or GitHub binary releases (unhydrated source vs hydrated store). |
+| **Package import** | published tools | The parent imports the tools' Zod schemas and pipeline writers as an npm package dependency. |
+| **Upstream pins** | maintenance | `upstream-pins.json`, maintained by `upstream-version-adoption.bpmn`. |
+
+### Separation lessons learned (2026-10-08, extended 2026-10-09)
+
+1. **Downstream Gitignore Contract**: When remote mounts populate an instance directory in the consumer repository, the consumer's `.gitignore` must ignore the mounted paths. Otherwise, git treats external files as uncommitted local files. `index.config.json` automatically includes all `remoteMounts` paths in the generated `.gitignore`.
+2. **Folded Layer Aliases**: When an instance or subgraph is folded into another (e.g. `cat-openapi` folded into `cat-harness` as named subgraph `openapi`), existing external forks or historical dependencies may still carry `needs: ["cat-openapi"]`. `schemas/harness-config.ts` maintains `FOLDED_INSTANCE_ALIASES` to resolve these transparently without breaking dependency graphs.
+3. **Asset Permission & License Validation**: Pre-separation audits must verify `library/withheld.json` and copyright gates. Materializing or mounting a separated catalogue without verified asset clearance causes 404s and broken links on published documentation.
+4. **NPM Manifest in the KG**: `package.json` is an authored pre-packaging asset in the Knowledge Graph (`role: "package-manifest"`), and `.tgz` release tarballs are tracked as `folio-binary-release/v1` state documents with SHA-256 integrity digests.
+5. **No Relative Directory Climbing Across Repositories**: In a monorepo, files routinely import siblings via `../../cat-harness/` or `../../bootstrap-tools/`. Once separated into standalone checkouts, climbing two or three levels (`../..` or `../../..`) escapes the repository boundary into `.claude/worktrees/` or the parent filesystem, immediately causing `Cannot find module` errors and test suite failures. All cross-repository imports MUST be authored as package imports (e.g. `@litlfred/cat-harness/...` or via package `exports`), or resolved through package specifiers / tsconfig paths, NEVER through escaping filesystem `../..` traversals.
+6. **No Fixed-Depth Repository Root Assumptions (`REPO`)**: Scripts in separated repositories often inherit `const REPO = resolve(import.meta.dir, "..", "..")`. In the monorepo, `scripts/../..` was the checkout root; in standalone repositories, `scripts/..` is the root, so `scripts/../..` escapes into parent worktrees. This causes scripts to either fail to locate `<instance>.json` or inadvertently scan sibling worktrees. Repository root resolution must be dynamic—searching upward for `<instance>.json`, `index.config.json`, or `.git`—rather than assuming a hardcoded directory depth.
+7. **Clean Standalone Manifest (`package.json`) and Tooling Scaffolding**: When extracting an instance to an upstream repository, `package.json` must be normalized:
+   - Operational commands must live under `"scripts"`, not leftover monorepo `"checkoutScripts"`.
+   - Script definitions must NOT hardcode monorepo subdirectory paths (e.g. `"bun run cat-harness-tools/scripts/..."` -> `"bun run scripts/..."`).
+   - A standalone `tsconfig.json` must be present to prevent `tsc` from walking up to the monorepo root.
+   - Explicit `dependencies` and `devDependencies` must be declared.
+8. **Fan-Out Recursion Guard in `declaringInstances`**: When a mounted dependency carries its own nested `remoteMounts`, consumer remote fan-out resolution must not recursively mount sub-instances into roots that are already locked mounts of the parent checkout. Without filtering (`!lockedMountPaths(checkout).has(rel)`), `remoteFanOut` re-mounts nested dependencies directly into the child checkout's directory, mutating its pristine checkout tree, inflating its file count, and causing `treeDigest` verification to fail.
+9. **Relative Directory Symlink Handling in Staging & Tarball Scripts**: In repositories containing internal symlinked directory trees (such as FHIR Implementation Guides with test structure links), recursive directory copy utilities (like `cpSync(..., { recursive: true })`) can trigger infinite self-copy recursion loops. Staging, site compilation, and packaging scripts must copy symlinks with `{ dereference: false }` or use archive utilities (such as `tar` or `rsync -a`) that preserve symlink references rather than traversing into directory cycles.
+10. **Purely Declarative Ontologies vs. Companion Toolsets (FR-7)**: Purely declarative base repositories (such as `litlfred/bootstrap`) must contain zero runtime execution code, zero test suites, and zero `package.json` manifests by architectural contract (FR-7). All graph compilation (JSON-LD export, BPMN diagram rendering, site staging, and schema validation) is executed by the companion tooling repository (`bootstrap-tools`). The declarative repository explicitly marks its render exemption (`renderExemption: true`) in its root manifest, and tooling scripts accept an explicit target repository argument (`--repo <dir>`) rather than expecting co-located execution.
+11. **Toolchain Decentralization (`package.json`, `tsconfig.json`, `bunfig.toml`)**: Tools and harness subgraphs must possess full standalone toolchain autonomy. `package.json` must be a standalone package manifest (e.g. `@litlfred/cat-harness-tools`), `bunfig.toml` defines test preloads per instance, and `tsconfig.json` must set `"noEmit": true` and omit `rootDir`/`outDir` to prevent `error TS6059: File is not under rootDir` when cross-subgraph schemas or utilities are imported. See [`bun-use`](bun-use.md).
+12. **Monorepo Coordinator Demotion**: Once tools and code are extracted to their respective packages, the root `package.json` is demoted to a private coordinator (`"private": true`) with narrowed `tsconfig.json` (`test/**/*.ts`). The root platform coordinates development workspaces, mounts, and integration tests, but never directly exports or publishes tool implementations.
+13. **Ephemeral File Purging and Root Hygiene**: Ephemeral generated directories (`_kg/`, `build/`, `test-results/`) must NEVER be committed to the root repository or left unignored. Build outputs belong to the tool that produces them.
+14. **Instance Memory Preservation**: Root directories `beans/`, `todos/`, and `fsh-guts/` are the instance's own durable working memory (the agent's plan, the user's todo queue, and the archival store). They are never overlaid across instances, never extracted to downstream packages, and stay at root by design.
+15. **A cutover is not done until the instance has re-pointed and can publish itself (who-iris, 2026-10-09)**: folio-assistant consumed `litlfred/who-iris` remotely while who-iris still declared `livesAt: { repository: "litlfred/folio-assistant", path: "who-iris" }`, had no `iriBase`, and had never had stage 7 or 12. `livesAt` is not a comment: `remote-mount.ts` takes `livesAt.path` as the mount path and `seed-ready` reads it as "still staged". And `/who-iris/` had only ever been a mount inside the parent's site build, so `litlfred.github.io/who-iris/` served nothing. The generated pages also kept absolute links to the parent's paths (`folio-assistant/.../who-iris-approval/uploads/...`), which 404 once the bytes moved. Before stage 13: `livesAt` is gone, `iriBase` is declared, and the instance's own site builds from its own repository. Building that site exposed the next gap, that a downstream cannot compose a site without the harness's entire `docs/` graph, which is [Semantic subgraphs](../../proposals/semantic-subgraphs-2026-10-09.html).
 
 ## Rollback
 
@@ -308,8 +330,9 @@ worth reverting, and since the copy is ARCHIVED in the parent's fsh-guts
 rather than deleted, the archive restores the exact tree that was removed. After a release, a tagged version is never reused: roll back
 with a new patch release and move the parent's pin back.
 
-## Worked example — bootstrap + bootstrap-tools
+## Worked examples
 
+### 1. bootstrap + bootstrap-tools
 - Stages 1–5: bean `r3gy` groups A–E (#1486, #1503) — wrong facts, folio-only
   names, root-relative paths, graph typologies and `$schema` tags and QA out, IRIs
   under `https://litlfred.github.io/bootstrap/` with semver.
@@ -320,7 +343,10 @@ with a new patch release and move the parent's pin back.
 - Next: the README and diagram writers join bootstrap-tools; the publication
   plan; the standalone rehearsal; then the owner's authorisation.
 
-cat-harness + cat-harness-tools follows the same stages.
+### 2. cat-harness + cat-harness-tools (completed 2026-10-08)
+- `cat-harness` (`litlfred/cat-harness`): owns the knowledge graph, declarative schemas, content adapters, and BPMN/DMN processes.
+- `cat-harness-tools` (`litlfred/cat-harness-tools`): owns the MCP server (`src/server.ts`), concrete tool implementations (`src/tools/`), ambient moddle type definitions (`types/`), standalone `package.json`, `tsconfig.json`, and `bunfig.toml`.
+- Decoupled from monorepo root via `index.config.json` remote mount and locked via `index.lock.json`.
 {% endraw %}
 
 ## Processes that run this skill
