@@ -61,9 +61,9 @@
               "name": "quality-control",
               "outputSchema": "https://litlfred.github.io/folio-assistant/folio-assistant-core/schema/skills/quality-control/output.schema.json",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/c25ecf4890b57d837d923297a3c80852e0c5e461a0e2f89d89f8bc3a232179c7",
-                "bytes": 3039,
-                "sha256": "c25ecf4890b57d837d923297a3c80852e0c5e461a0e2f89d89f8bc3a232179c7"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/1ea49f8b5a06d24b0966860bbbe9103f2a0b26b768ade92213a5f80990fec18d",
+                "bytes": 3023,
+                "sha256": "1ea49f8b5a06d24b0966860bbbe9103f2a0b26b768ade92213a5f80990fec18d"
               },
               "title": "quality-control"
             }
