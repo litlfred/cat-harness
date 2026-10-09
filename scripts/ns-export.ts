@@ -50,11 +50,15 @@ import { dirname, join, resolve } from "node:path";
 import { defaultGraphTypologies, graphTypologyLayer, isPublishedGraphTypology, repoRootFor } from "../schemas/cat-harness.js";
 import "../schemas/folio-graph-typology.js";
 import "../schemas/glossary-graph-typology.js";
-import { LEGACY_FOLIO_NS, NS_PREFIXES, namespaceForLayer, prefixForLayer, replacementIri, termIri } from "../schemas/namespaces.js";
+import { LEGACY_FOLIO_NS, NS_PREFIXES, namespaceForLayer, prefixForLayer, replacementIri, stubOfNamespace, termIri } from "../schemas/namespaces.js";
 import { REGISTRY_GROUPS } from "../schemas/kg-node.js";
 import { gitFiles } from "../schemas/git-corpus.ts";
 import { siteDirFor } from "../schemas/cat-harness.js";
 import { publishedHref } from "./lib/jekyll-permalink.ts";
+import { discoverBlockKinds } from "../schemas/block-kinds.js";
+import { defaultInstancePrefixes } from "../schemas/content-context.js";
+import { findDeclarationFile, instanceRootsIn } from "../schemas/instance-roots.js";
+import { ownDeclaredDirectories } from "../schemas/declared-nodes.js";
 import {
   CLASS_GLOSSES,
   PROPERTY_GLOSSES,
@@ -109,6 +113,32 @@ export function vocabularyIri(): string {
   return `${LEGACY_FOLIO_NS.replace(/ns#$/, "")}ns/vocabulary.jsonld`;
 }
 
+/** Find the platform or repository root holding sibling instances. */
+export function findPlatformRoot(start: string = ROOT): string {
+  let curr = resolve(start);
+  while (curr !== dirname(curr)) {
+    if (existsSync(join(curr, "folio-assistant-core"))) return curr;
+    curr = dirname(curr);
+  }
+  return repoRootFor(start);
+}
+
+/** The namespace a layer or instance's terms hang off. */
+export function namespaceForPrefixOrLayer(target: string): string {
+  if (target === "bootstrap") return namespaceForLayer("bootstrap");
+  if (target === "harness" || target === "cat-harness") return namespaceForLayer("harness");
+  if (target === "core" || target === "folio-assistant-core") return namespaceForLayer("core");
+  const prefixes = defaultInstancePrefixes();
+  const ns = prefixes.get(target);
+  if (ns) return ns;
+  return `${LEGACY_FOLIO_NS.replace(/ns#$/, "")}${target}/ns#`;
+}
+
+/** The concept scheme IRI for a layer or instance. */
+export function conceptSchemeIriFor(target: string): string {
+  return namespaceForPrefixOrLayer(target).replace(/#$/, "");
+}
+
 /**
  * The `skos:ConceptScheme` a layer's terms belong to — and it is the layer's
  * OWN namespace document, not a fourth IRI invented to hold them.
@@ -124,7 +154,31 @@ export function vocabularyIri(): string {
  * rather than a duplicate `@id` appearing in its own `@graph`.
  */
 function conceptSchemeIri(layer: TermLayer): string {
-  return namespaceForLayer(layer).replace(/#$/, "");
+  return conceptSchemeIriFor(layer);
+}
+
+/** Instances that publish an ns document (have vocabulary terms or declare block-kinds). */
+export function instancesPublishingNs(root = ROOT): string[] {
+  const instances = new Set<string>();
+  instances.add("cat-harness");
+  const platform = findPlatformRoot(root);
+  const fixture = process.env.FOLIO_FIXTURE_CHECKOUT;
+  const roots = [...instanceRootsIn(platform), ...(fixture ? instanceRootsIn(fixture) : [])];
+  for (const instRoot of roots) {
+    if (ownDeclaredDirectories(instRoot, "block-kinds", platform).length > 0) {
+      const declFile = findDeclarationFile(instRoot);
+      if (declFile) {
+        try {
+          const decl = JSON.parse(readFileSync(join(instRoot, declFile), "utf-8")) as { name?: string; stub?: string };
+          const prefix = decl.stub ?? decl.name;
+          if (prefix) instances.add(prefix);
+        } catch {
+          // Ignore unreadable declaration here
+        }
+      }
+    }
+  }
+  return [...instances].sort();
 }
 
 /**
@@ -213,16 +267,16 @@ export function bootstrapVocabulary(root = ROOT): { "@graph": Record<string, unk
 export function buildVocabulary(
   root = ROOT,
   /**
-   * Emit only this layer and the ones BELOW it, or the whole vocabulary.
+   * Emit only this layer or instance and the ones BELOW it, or the whole vocabulary.
    *
    * "And below" rather than "only this": a harness consumer meets bootstrap's
    * terms constantly, so a harness slice that omitted them would document a
    * vocabulary nobody actually uses. Bootstrap's slice is the interesting one
    * and it is genuinely minimal — it is the bottom of the stack.
    */
-  layer?: TermLayer,
+  target?: TermLayer | string,
   /**
-   * EXACTLY this layer, rather than it and everything below.
+   * EXACTLY this layer or instance, rather than it and everything below.
    *
    * The two modes answer different questions and conflating them would publish
    * a lie. `--layer harness` is what a HARNESS CONSUMER wants: it meets
@@ -241,9 +295,20 @@ export function buildVocabulary(
   // The declared order, not a local one. `TERM_LAYERS` states that its order
   // IS the direction rule, which is exactly what these index comparisons read.
   const ORDER: readonly TermLayer[] = TERM_LAYERS;
-  const cutoff = layer ? ORDER.indexOf(layer) : ORDER.length - 1;
+  const isTargetLayer = target !== undefined && (ORDER as readonly string[]).includes(target);
+  const targetLayer: TermLayer | undefined = isTargetLayer
+    ? (target as TermLayer)
+    : target === "cat-harness"
+      ? "harness"
+      : target === "folio-assistant-core"
+        ? "core"
+        : undefined;
+
+  const cutoff = targetLayer ? ORDER.indexOf(targetLayer) : ORDER.length - 1;
   const inSlice = (g: TermGloss): boolean => {
-    const i = ORDER.indexOf(g.layer ?? "harness");
+    if (target !== undefined && !targetLayer) return false;
+    const l = g.layer ?? "harness";
+    const i = ORDER.indexOf(l);
     return exact ? i === cutoff : i <= cutoff;
   };
 
@@ -282,12 +347,12 @@ export function buildVocabulary(
       // because the prefix carries the layer. A `notation` somebody has to
       // type is a `notation` that goes missing; this one cannot.
       notation: `${prefixForLayer(l)}:${name}`,
-      inScheme: conceptSchemeIri(l),
+      inScheme: conceptSchemeIriFor(l),
       // The term's OWN layer document — the one its IRI dereferences to. It
       // pointed at the all-layers union until 2026-09-30, a convenience copy
       // claiming to define terms that live elsewhere; the union is retired
       // (owner, bean `xsqm`), and a definition has one home per layer.
-      isDefinedBy: conceptSchemeIri(l),
+      isDefinedBy: conceptSchemeIriFor(l),
       layer: l,
       // `seeAlso` is authored as the page's SOURCE location; where Jekyll
       // publishes it differs for the docs-folder pages (bean `kc7k`).
@@ -315,12 +380,62 @@ export function buildVocabulary(
       prefLabel: k.name,
       definition: k.gloss,
       notation: id,
-      inScheme: conceptSchemeIri(k.layer),
-      isDefinedBy: conceptSchemeIri(k.layer),
+      inScheme: conceptSchemeIriFor(k.layer),
+      isDefinedBy: conceptSchemeIriFor(k.layer),
       layer: k.layer,
     });
   }
   for (const [name, g] of Object.entries(PROPERTY_GLOSSES)) emit(name, "property", g);
+
+  // Block kind classes: each instance generates its own ns document for the block-kind
+  // classes it mints (folio-assistant-2osx).
+  const platform = findPlatformRoot(root);
+  const blockKinds = discoverBlockKinds(platform);
+  const publishingInstances = new Set(instancesPublishingNs(root));
+
+  for (const bk of blockKinds) {
+    const prefix = bk.folioType.split(":")[0];
+    if (!prefix) continue;
+
+    let inBlockSlice = false;
+    if (target === undefined) {
+      inBlockSlice = publishingInstances.has(prefix);
+    } else if (target === prefix || (target === "core" && prefix === "folio-assistant-core")) {
+      inBlockSlice = true;
+    } else if (!exact) {
+      if ((targetLayer === "core" || target === "core") && prefix === "folio-assistant-core") {
+        inBlockSlice = true;
+      }
+    }
+
+    if (!inBlockSlice) continue;
+
+    const className = bk.folioType.split(":")[1] ?? bk.kind;
+    const heading = (bk.heading !== undefined && bk.heading.trim().length > 0) ? bk.heading : undefined;
+    const label = heading ?? className ?? bk.kind;
+    const definition = (bk.rationale !== undefined && bk.rationale.trim().length > 0)
+      ? bk.rationale
+      : (heading ?? className ?? bk.kind);
+
+    defined.add(className);
+    defined.add(bk.folioType);
+
+    const scheme = conceptSchemeIriFor(prefix);
+    const bkLayer = prefix === "folio-assistant-core" ? "core" : prefix;
+
+    nodes.push({
+      "@id": bk.folioType,
+      "@type": ["rdfs:Class", "skos:Concept"],
+      label,
+      comment: definition,
+      prefLabel: label,
+      definition,
+      notation: bk.folioType,
+      inScheme: scheme,
+      isDefinedBy: scheme,
+      layer: bkLayer,
+    });
+  }
 
   // bootstrap's layer: ONE source. Its vocabulary is `bootstrap/ns.jsonld`,
   // written by bootstrap-tools from bootstrap's own terms (owner, 2026-09-30,
@@ -329,7 +444,7 @@ export function buildVocabulary(
   // and a copy of the one file cannot say anything the file does not. An
   // absent file is refused rather than rebuilt from glosses: rebuilding is
   // the second source this replaces.
-  if (ORDER.indexOf("bootstrap") <= cutoff && (!exact || layer === "bootstrap")) {
+  if ((target === undefined || target === "bootstrap" || (targetLayer !== undefined && !exact)) && ORDER.indexOf("bootstrap") <= cutoff) {
     for (const n of bootstrapVocabulary(root)["@graph"]) {
       nodes.push({ ...n, layer: "bootstrap" });
       defined.add(String(n["@id"]).replace(/^bootstrap:/, ""));
@@ -340,26 +455,38 @@ export function buildVocabulary(
   // three layers that exist. A scheme with no concepts is `dh4f` in miniature:
   // a consumer follows `inScheme`, finds an empty set, and reports a clean
   // run over nothing. `--layer bootstrap` legitimately emits one scheme.
-  const docIri = exact && layer ? conceptSchemeIri(layer) : vocabularyIri();
-  const schemeLayers = [...new Set(nodes.map((n) => n.layer as TermLayer))].sort(
-    (a, b) => ORDER.indexOf(a) - ORDER.indexOf(b),
-  );
-  const schemeNodes = schemeLayers
+  const docIri = exact && target ? conceptSchemeIriFor(target) : vocabularyIri();
+
+  const conceptSchemes = [...new Set(nodes.map((n) => n.inScheme as string))].sort();
+
+  const schemeNodes = conceptSchemes
     // In `--exact` mode the DOCUMENT is the scheme, so it gains the type below
     // instead of appearing a second time inside its own `@graph`.
-    .filter((l) => conceptSchemeIri(l) !== docIri)
+    .filter((iri) => iri !== docIri)
     // bootstrap's scheme is described by bootstrap's own file, just below —
     // a title written here would be a second description of it.
-    .filter((l) => l !== "bootstrap")
-    .map((l) => ({
-      "@id": conceptSchemeIri(l),
-      "@type": "skos:ConceptScheme",
-      prefLabel: `folio-assistant ${l} vocabulary`,
-      title: `folio-assistant ${l} vocabulary`,
-      definition: `Every class and property the ${l} layer mints, one concept each.`,
-    }));
+    .filter((iri) => iri !== conceptSchemeIriFor("bootstrap"))
+    .map((iri) => {
+      let name = "vocabulary";
+      for (const inst of instancesPublishingNs(root)) {
+        if (conceptSchemeIriFor(inst) === iri) {
+          name = inst;
+          break;
+        }
+      }
+      if (name === "cat-harness") name = "harness";
+      if (name === "folio-assistant-core") name = "core";
+      return {
+        "@id": iri,
+        "@type": "skos:ConceptScheme",
+        prefLabel: `folio-assistant ${name} vocabulary`,
+        title: `folio-assistant ${name} vocabulary`,
+        definition: `Every class and property the ${name} ${name === "harness" || name === "core" ? "layer" : "instance"} mints, one concept each.`,
+      };
+    });
   nodes.push(...schemeNodes);
-  if (schemeLayers.includes("bootstrap") && conceptSchemeIri("bootstrap") !== docIri) {
+
+  if (conceptSchemes.includes(conceptSchemeIriFor("bootstrap")) && conceptSchemeIriFor("bootstrap") !== docIri) {
     const b = bootstrapVocabulary(root) as Record<string, unknown>;
     nodes.push({ "@id": b["@id"], "@type": b["@type"], label: b["label"], prefLabel: b["label"], definition: b["definition"] });
   }
@@ -372,22 +499,23 @@ export function buildVocabulary(
     ...Object.keys(CLASS_GLOSSES),
     ...Object.keys(PROPERTY_GLOSSES),
   ]);
-  // THE UNION THIS FILE HAS DOCUMENTED SINCE IT WAS WRITTEN, now performed.
-  //
-  // `mintedTermsFromSource` scans for `termIri("Name")` literals, and says in
-  // its own doc comment that it "is not complete on its own" because
-  // `kg-export` mints `` `${FOLIO_NS}${type}` `` from a registry group name —
-  // so those classes appear in the exported graph and in NO literal anywhere.
-  // It names `Actor` and `Capability` as the cases. Both happened to be
-  // defined, so the gap never showed, and the caller was written to filter the
-  // scan ALONE. A promise kept only in prose is not kept.
-  //
-  // Bean `3190` collected the bill: `Convention` was projected onto two real
-  // nodes whose `@type` dereferenced to nothing while this check reported
-  // `0 undefined` — a clean run over a set it never looked at. `Requirement`
-  // was in the same state and had been for longer.
   const minted = new Set<string>([...mintedTermsFromSource(root), ...Object.values(REGISTRY_GROUPS)]);
-  const undefinedTerms = layer === undefined ? [...minted].filter((t) => !everything.has(t)).sort() : [];
+  const undefinedSourceTerms = [...minted].filter((t) => !everything.has(t));
+
+  const undefinedBlockKinds: string[] = [];
+  for (const bk of blockKinds) {
+    const prefix = bk.folioType.split(":")[0];
+    if (!prefix || !publishingInstances.has(prefix)) {
+      undefinedBlockKinds.push(bk.folioType);
+    }
+  }
+
+  const undefinedTerms = target === undefined ? [...undefinedSourceTerms, ...undefinedBlockKinds].sort() : [];
+
+  const extraPrefixes: Record<string, string> = {};
+  for (const inst of instancesPublishingNs(root)) {
+    extraPrefixes[inst] = namespaceForPrefixOrLayer(inst);
+  }
 
   const doc = {
     "@context": {
@@ -397,6 +525,7 @@ export function buildVocabulary(
       skos: SKOS,
       dcterms: DCTERMS,
       ...NS_PREFIXES,
+      ...extraPrefixes,
       label: "rdfs:label",
       comment: "rdfs:comment",
       isDefinedBy: { "@id": "rdfs:isDefinedBy", "@type": "@id" },
@@ -418,12 +547,12 @@ export function buildVocabulary(
     // In `--exact` mode this document IS the layer's concept scheme (see
     // `conceptSchemeIri`), so it carries both types rather than pointing at a
     // scheme node that would share its `@id`.
-    "@type": exact && layer ? ["owl:Ontology", "skos:ConceptScheme"] : "owl:Ontology",
-    label: !layer
+    "@type": exact && target ? ["owl:Ontology", "skos:ConceptScheme"] : "owl:Ontology",
+    label: !target
       ? "folio-assistant vocabulary"
       : exact
-        ? `folio-assistant vocabulary (${layer} only)`
-        : `folio-assistant vocabulary (${layer} and below)`,
+        ? `folio-assistant vocabulary (${target} only)`
+        : `folio-assistant vocabulary (${target} and below)`,
     comment:
       "Every class and property the folio knowledge graph projects, one node each. " +
       "Generated by scripts/ns-export.ts; graph-typology definitions are read from the " +
@@ -464,7 +593,25 @@ export function layerArgError(value: string): string | undefined {
 
 if (import.meta.main) {
   const argv = process.argv.slice(2);
+  if (argv.includes("--list-instances") || argv.includes("--list")) {
+    for (const inst of instancesPublishingNs(ROOT)) {
+      console.log(inst);
+    }
+    process.exit(0);
+  }
+
   const check = argv.includes("--check");
+
+  const instanceIdx = argv.indexOf("--instance");
+  const instance = instanceIdx >= 0 ? argv[instanceIdx + 1] : undefined;
+  if (instance !== undefined) {
+    const valid = instancesPublishingNs(ROOT);
+    if (!valid.includes(instance)) {
+      console.error(`--instance must be one of: ${valid.join(", ")} (got ${instance})`);
+      process.exit(2);
+    }
+  }
+
   const layerIdx = argv.indexOf("--layer");
   const layer = layerIdx >= 0 ? (argv[layerIdx + 1] as TermLayer) : undefined;
   if (layer !== undefined) {
@@ -474,6 +621,13 @@ if (import.meta.main) {
       process.exit(2);
     }
   }
+
+  const target = instance ?? layer;
+  const exact = argv.includes("--exact");
+
+  const outDirIdx = argv.indexOf("--out-dir");
+  const outDir = outDirIdx >= 0 ? argv[outDirIdx + 1] : undefined;
+
   const outIdx = argv.indexOf("--out");
   // `repoRootFor`: `_kg/` is a repository build output, not an instance one.
   // Spelled `_kg/ns.jsonld` as ONE segment rather than `"_kg", "ns.jsonld"`,
@@ -482,10 +636,12 @@ if (import.meta.main) {
   const out =
     outIdx >= 0
       ? argv[outIdx + 1]
-      // input-site: inert #d1a0656a — an OUTPUT path this script writes, never reads
-      : join(repoRootFor(ROOT), layer ? `_kg/ns-${layer}.jsonld` : "_kg/ns.jsonld");
+      : outDir
+        ? join(outDir, "ns.jsonld")
+        // input-site: inert #d1a0656a — an OUTPUT path this script writes, never reads
+        : join(repoRootFor(ROOT), target ? `_kg/ns-${target}.jsonld` : "_kg/ns.jsonld");
 
-  const { doc, report } = buildVocabulary(ROOT, layer, argv.includes("--exact"));
+  const { doc, report } = buildVocabulary(ROOT, target, exact);
 
   for (const t of report.doublyDefined) {
     console.error(`  DOUBLY DEFINED: ${t} — glossed in vocabulary.ts AND summarised in the graph-typology registry.`);
@@ -503,6 +659,10 @@ if (import.meta.main) {
 
   mkdirSync(dirname(out!), { recursive: true });
   writeFileSync(out!, `${JSON.stringify(doc, null, 2)}\n`);
+  if (outDir) {
+    writeFileSync(join(outDir, "ns"), `${JSON.stringify(doc, null, 2)}\n`);
+    writeFileSync(join(outDir, "ns.json"), `${JSON.stringify(doc, null, 2)}\n`);
+  }
   console.log(`ns vocabulary → ${out}`);
   console.log(`  @id  ${(doc as { "@id": string })["@id"]}`);
   console.log(`  ${report.defined.length} term(s) defined, ${report.undefinedTerms.length} undefined`);
