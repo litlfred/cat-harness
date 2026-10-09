@@ -12,6 +12,9 @@
   </bpmn:collaboration>
   <bpmn:process id="Process_StalledAgentTriage" name="Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route" isExecutable="false">
     <bpmn:documentation>When agents stall (context exhausted, container lost, session timed out) their work is spread over PRs, branches, beans and process runs. Collect each agent's handover report, or reconstruct one, group the work into 2-4 themes, recommend how to pick each up, let the user decide, then record it and re-route open PRs through the merge steward. Owner, 2026-10-02: 'an incoming stalled agent triage process which needs to look at stalled agents (named or over a given time window from active PRs, branches, discussions, beans etc), try to get as many handover reports as possible, if many then consolidate the various workstreams into 2-4 themes, give recommendation on how to pick up the work as part of current/new workplan; if open PRs etc, coordinate with relevant agents (e.g. the Merge Manager)'. Operating skills: stalled-agent-triage, handover-report.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="strict"/>
+    </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_StalledAgentTriage">
       <bpmn:lane id="Lane_Triage" name="Triage agent">
         <bpmn:documentation>Reads the footprint the stalled agents left, collects or reconstructs a handover report per agent, groups the work into 2-4 themes, and recommends. It never finishes, closes or deletes another agent's work.</bpmn:documentation>

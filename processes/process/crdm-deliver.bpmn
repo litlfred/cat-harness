@@ -12,6 +12,9 @@
   </bpmn:collaboration>
   <bpmn:process id="Process_CRDM_Deliver" name="CRDM Phase 6 — implement, MVP, acceptance" isExecutable="false">
     <bpmn:documentation>One phase and not three, because the loops say so: an increment the BA rejects, an MVP that is not ready, and stakeholder findings all route back into implementation. A subprocess has one exit and cannot be re-entered once finished, so splitting this region would have changed what the diagram says.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="strict"/>
+    </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_CRDM_Deliver">
       <bpmn:lane id="Lane_BA" name="BA / Feature Requestor">
         <bpmn:documentation>Every signal that can send the loop back to A_Implement is filtered through this lane first: BA_ReviewIncrement judges behaviour rather than code, GW_MVPReady decides whether accumulated increments are worth showing stakeholders at all, and BA_TranslateFeedback is the only step that turns S_TestMVP's raw findings into direction the agent can act on. Nothing stakeholder-facing reaches Lane_Agent without passing through here.</bpmn:documentation>

@@ -12,6 +12,9 @@
   </bpmn:collaboration>
   <bpmn:process id="Process_ContentAcquisition" name="Content acquisition" isExecutable="false">
     <bpmn:documentation>How a resource gets into the graph in the first place. `document-ingestion.bpmn` begins at "a file lands in uploads/" and calls that its only entry point — true of ingestion, and silent on how the file got there. This is the step before it. The channels are plural and the set is open: uploads/ is one, the conversation is another.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="advisory"/>
+    </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_ContentAcquisition">
       <bpmn:lane id="Lane_Person" name="Contributor">
         <bpmn:documentation>Both of this lane's tasks are optional by design, not merely possible: P_Respond's 'or neither' is a real, accepted outcome rather than a stall, and A_Ask already states what happens if nothing comes back — so this lane can contribute nothing at all and the process still proceeds, which is not true of the sign-off lanes elsewhere in this corpus.</bpmn:documentation>

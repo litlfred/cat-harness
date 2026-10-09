@@ -4,6 +4,7 @@
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
                   xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
+                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_CRDM_Issue" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
   <bpmn:collaboration id="Collaboration_Process_CRDM_Issue">
@@ -11,6 +12,9 @@
   </bpmn:collaboration>
   <bpmn:process id="Process_CRDM_Issue" name="CRDM — link the work to an issue" isExecutable="false">
     <bpmn:documentation>Scan for a GitHub issue matching the feature work, then link it or ask — an issue is never created without the BA's permission. Feature work must be linked to a GitHub issue. First find the related work (beans, issues, open PRs) and ask whether to coordinate; then scan before creating, and never create one without the BA's permission — an issue is the stakeholder's record, not the agent's scratchpad.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="strict"/>
+    </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_CRDM_Issue">
       <bpmn:lane id="Lane_Agent" name="Agent">
         <bpmn:documentation>The only CRDM sub-diagram in this slice where the BA has no lane of its own: A_AskCreate is still an Agent-lane activity, so the permission this process exists to enforce is obtained out of band rather than modelled as a cross-lane handoff, unlike crdm-requirements-definition.bpmn and crdm-close.bpmn elsewhere in the same methodology.</bpmn:documentation>

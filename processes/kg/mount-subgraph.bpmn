@@ -4,6 +4,7 @@
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
                   xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
+                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_MountSubgraph"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows">
 
@@ -28,6 +29,9 @@
 You are in this process whenever a step is about to read or write the contents of a declared subgraph — beans, todos, fsh-guts, or any directory a declaration names. The source is resolved once, by `declaredSubgraph` (`schemas/harness-config.ts`) through `resolveSubgraphSource` (`schemas/subgraph-source.ts`): the instance config's `subgraphSources` override by id, then the entry's `source`, then a legacy `storage`, then the `directory` default.
 
 The gateway is on the source KIND, and its flows are the only places the kinds differ. A `directory` subgraph is already where its path says, and writing it is an ordinary commit. A `branch` subgraph is mounted from the declared branch's tip into its path, and written back by splicing onto the tip without force. A `remote` subgraph is another repository's tree at a pinned commit, laid down by `Process_MountDependency` and read-only here. An `npm` subgraph is an npm package or tarball retrieved via `kg-retrieve-npm` or `npm`. A kind with no flow here is refused.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="strict"/>
+    </bpmn:extensionElements>
 
     <bpmn:laneSet id="LaneSet_MountSubgraph">
       <bpmn:lane id="Lane_MountPipeline" name="Build pipeline">

@@ -18,6 +18,9 @@ WHEN IT APPLIES: the trigger is `opening-brief`'s — IRREVERSIBILITY AND SURPRI
 WHY IT IS ONE SUBPROCESS AND NOT A BRANCH PER METHODOLOGY: the methodologies are parallel tracks selected by context, and the selection is a judgement made inside A_Select rather than a gateway. A gateway per methodology would assert the choice is computable from data, which is the claim `dmn` says to make only when the criteria recur.
 
 WHAT IT DOES NOT DO: it does not decide. It produces the options, their trade-offs and a recommendation; the decision and its authorisation belong to whoever owns the calling step.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="strict"/>
+    </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_OptionsAnalysis">
       <bpmn:lane id="Lane_BusinessAnalyst" name="Business analyst">
         <bpmn:documentation>This lane's deliverable is the recommendation together with the rejected options — a rejected option with no record is a dead end the next agent walks back into — but it never authorises anything; A_Record hands both to whoever called the subprocess, and the decision stays theirs. Answering GW_Trigger `no` is not a skipped step either: End_TriggerNotMet is recorded as a distinct outcome from a completed comparison, because a caller unable to tell "not needed" from "we chose X" cannot audit either one.</bpmn:documentation>

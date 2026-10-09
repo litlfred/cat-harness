@@ -4,6 +4,7 @@
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
                   xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
+                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_CodeReview"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows">
 
@@ -32,6 +33,9 @@
 You are in this process when what changed is a node that happens to be TypeScript. The distinction is the whole reason it is separate from ordinary code review: a file can compile, pass its tests, and still declare the wrong thing, name a skill that does not exist, or advertise a mechanism the pipeline does not actually invoke.
 
 The gateway picks by node KIND because the questions differ. A Tool is judged on whether its mechanism is the one that runs; a schema definition node on whether it says what it is and its references resolve.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="advisory"/>
+    </bpmn:extensionElements>
 
     <bpmn:laneSet id="LaneSet_CodeReview">
       <bpmn:lane id="Lane_CodeReviewer" name="Code reviewer">

@@ -12,6 +12,9 @@
   </bpmn:collaboration>
   <bpmn:process id="Process_RelatedWork" name="Related work: find, sort, summarize, ask to coordinate" isExecutable="false">
     <bpmn:documentation>Before new work takes shape, find the work it touches. When a requirement is initiated or updated through a human-agent chat (CRDM), or a method is adopted from a source, search the beans and the repository's issues and open PRs for relevance. Categorize and summarize every hit, then ask the user whether and how to coordinate. Judgement decides the categories and the recommendation; the user decides the coordination. Owner, 2026-09-23 (issue #1023): 'existing beans need to be searched for relevance and categorized (and summarized), same for issues (e.g. github). ask user if they want to coordinate. judgement is used to determine how'. Operating skill: related-work-coordination.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="strict"/>
+    </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_RelatedWork">
       <bpmn:lane id="Lane_Agent" name="Agent">
         <bpmn:documentation>Searches, sorts and summarizes, and recommends. It never links, blocks, merges or comments on another piece of work before the user has answered, because coordinating is a commitment on behalf of the work's owners.</bpmn:documentation>
