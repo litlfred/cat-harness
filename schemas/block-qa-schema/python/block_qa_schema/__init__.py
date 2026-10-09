@@ -37,7 +37,7 @@ QaSeverity = Literal["critical", "major", "minor"]
 
 DaScope = Literal["limited", "structural"]
 DaRuling = Literal["surviving", "rebutted", "partial"]
-DaVerdict = Literal["clean", "survivable-objection", "open-objection"]
+DaVerdict = Literal["clean-rebutted", "no-objection-raised", "clean", "survivable-objection", "open-objection"]
 
 
 class QaReviewer(BaseModel):
@@ -193,8 +193,8 @@ class QaCriterionEntry(BaseModel):
             raise ValueError("result must be 'fail' when verdict is 'open-objection'")
         if self.verdict == "survivable-objection" and self.result != "warn":
             raise ValueError("result must be 'warn' when verdict is 'survivable-objection'")
-        if self.verdict == "clean" and self.result != "pass":
-            raise ValueError("result must be 'pass' when verdict is 'clean'")
+        if self.verdict in ("clean", "clean-rebutted") and self.result != "pass":
+            raise ValueError("result must be 'pass' when verdict is 'clean' or 'clean-rebutted'")
             
         if self.scope == "structural":
             if not self.rebuttal:

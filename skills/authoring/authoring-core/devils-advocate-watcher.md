@@ -147,16 +147,30 @@ partial`.
 
 Dispatch rules (inherit parent §4b sidecar-aware dispatch):
 
-- **Sidecar skip.** Before dispatching, read `<block>.qa.json`. If a
-  `da-referee-verdict` entry exists with a `field_hash` matching the
-  current `.md`/`.ts`/formal hashes → skip (already adjudicated at this
-  content). Re-audit on hash drift or a prior `surviving` verdict.
+- **Sidecar skip.** Before dispatching, read `<block>.qa.json`. The skip rule
+  honours **only** `clean-rebutted` and `survivable-objection` verdicts where
+  the entry's `field_hash` matches current `.md`/`.ts`/formal hashes (and
+  legacy `clean` for backward compatibility). A `no-objection-raised` verdict
+  (where zero objections were raised by any lens) does **NOT** satisfy the
+  sidecar skip; it represents the unknown state ("unattacked") rather than an
+  attack that was defeated, so it must not make the absence of audit sticky.
+  Re-audit on hash drift, a prior `open-objection` (`surviving`) verdict, or
+  a prior `no-objection-raised` verdict.
 - **Lens selection.** Always run L1. Run L2/L3/L4 only when their "When
   to run" column matches — most remark/prose blocks get L1+L3 only;
   empirical/measured blocks get all four.
 - **One adversarial agent per lens per block** (parent §5m parallelism
   cap applies; default 4 in flight). The four lenses on one block are
   independent → batch them in a single response.
+- **Lens independence and model provenance.** Agreement among lenses that
+  share the same model family (e.g. all Opus or all DeepSeek) is much weaker
+  corroboration than agreement across independent model families, because
+  models of the same lineage share blind spots, training biases, and failure
+  modes. As established in
+  [`cat-harness/methodologies/consensus-grounded-subject-evaluation.md`](../../../methodologies/consensus-grounded-subject-evaluation.md),
+  a genuine consensus requires independent evaluators, and same-family agreement
+  is not independent corroboration. Every lens and referee entry should record
+  `reviewer.agent_model` so model lineage is auditable.
 - Cap each lens report at ~350 words; the adjudicator at ~250.
 
 **Adversarial-lens prompt skeleton** (every lens agent):
@@ -181,10 +195,13 @@ Dispatch rules (inherit parent §4b sidecar-aware dispatch):
 > `structural` objection without a cited proved invariant is downgraded
 > to `limited`. Rule each `surviving | rebutted | partial` with one
 > sentence of reasoning + the rebutting artifact (if any). Then assign
-> the block a `da-referee-verdict`: `clean` (all rebutted),
-> `survivable-objection` (≥1 partial, none surviving), or
-> `open-objection` (≥1 surviving). Be fair: a surviving objection must
-> be one you genuinely could not rebut, not one you declined to.
+> the block a `da-referee-verdict`: `clean-rebutted` (≥1 objection was
+> raised and all rebutted with cited artifacts), `no-objection-raised`
+> (zero objections were raised by any lens — not a clearance, does not
+> satisfy the sidecar skip), `survivable-objection` (≥1 partial, none
+> surviving), or `open-objection` (≥1 surviving). Be fair: a surviving
+> objection must be one you genuinely could not rebut, not one you
+> declined to.
 
 ## Slot D — §4c finding taxonomy (the `da-*` criteria family)
 
@@ -205,7 +222,7 @@ criterion that fired; the `da-referee-verdict` is the rollup.
 | `da-empirical-fragility` | A numerical match lives inside fit noise, relies on cherry-picked precision, hides a swing, or is stale against the current pinned input. |
 | `da-domain-implausibility` | A domain claim an expert rejects: wrong units, a broken conservation/consistency law, or contradiction with an established measurement. |
 | `da-reproducibility` | The compute/witness backing a number is irreproducible, stale (`scriptHash`/`scriptCommitSha` drift), or its value contradicts the prose `≈`. |
-| `da-referee-verdict` | Rollup: `clean` / `survivable-objection` / `open-objection` + the strongest objection's one-line referee argument. |
+| `da-referee-verdict` | Rollup: `clean-rebutted` / `no-objection-raised` / `survivable-objection` / `open-objection` (`clean` retained as legacy synonym) + the strongest objection's one-line referee argument. |
 
 ### Sidecar schema (pre-adopted)
 
@@ -215,10 +232,20 @@ Each `da-*` entry is a standard `block-qa/v1` `QaCriterionEntry`
 fields: `scope` (`limited`|`structural`), `ruling`
 (`surviving`|`rebutted`|`partial`), `referee_argument`, `rebuttal`, and
 — on the `da-referee-verdict` rollup only — `verdict`
-(`clean`|`survivable-objection`|`open-objection`). `result` is derived
+(`clean-rebutted`|`no-objection-raised`|`clean`|`survivable-objection`|`open-objection`). `result` is derived
 from `ruling`/`verdict` (surviving/open→`fail`, partial/survivable→`warn`,
-rebutted/clean→`pass`); a `structural` scope requires a non-empty
+rebutted/clean/clean-rebutted→`pass`); a `structural` scope requires a non-empty
 `rebuttal` + `referee_argument` naming the proved invariant.
+
+### Rollup evaluation and independence
+
+The `da-referee-verdict` aggregates objections across all activated lenses:
+- `clean-rebutted`: ≥1 objection was raised by the adversarial lenses, and every one was rebutted with cited artifacts.
+- `no-objection-raised`: Zero objections were raised across all lenses. This is an unattacked/unverified state, not a clearance, and does NOT qualify for the sidecar skip.
+- `survivable-objection`: ≥1 partial objection survived, but none fully surviving (`warn`).
+- `open-objection`: ≥1 objection survived rebuttal (`fail`).
+
+When multiple lenses agree that no objection exists or agree on an evaluation, note that **same-family agreement is not corroboration**. Per [`cat-harness/methodologies/consensus-grounded-subject-evaluation.md`](../../../methodologies/consensus-grounded-subject-evaluation.md), consensus must be grounded in independent judges, disagreement must be retained rather than smoothed over, and unanimous agreement among copies of the same model family provides weak epistemic backing.
 
 The producing types are owned by the folio-assistant platform's
 `schemas/block-qa.ts`; the watcher emits the structured fields now so
@@ -314,7 +341,7 @@ Rank the backlog by *blast radius × headline-proximity × novelty*:
 3. **Provable kinds before definitions before conjectures** — a
    `theorem` carries a truth claim a referee can falsify; a `conjecture`
    already admits it is unproved (lower adversarial yield).
-4. **Never-audited before stale before previously-clean.**
+4. **Never-audited before stale or no-objection-raised before previously-clean-rebutted.**
 5. Alphabetical tie-break.
 
 High-yield seed targets are the project's load-bearing, most-attackable

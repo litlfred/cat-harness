@@ -83,6 +83,8 @@ export declare const DaRuling: z.ZodEnum<{
 export type DaRuling = z.infer<typeof DaRuling>;
 export declare const DaVerdict: z.ZodEnum<{
     clean: "clean";
+    "clean-rebutted": "clean-rebutted";
+    "no-objection-raised": "no-objection-raised";
     "open-objection": "open-objection";
     "survivable-objection": "survivable-objection";
 }>;
@@ -132,6 +134,8 @@ export declare const QaCriterionEntry: z.ZodObject<{
     rebuttal: z.ZodOptional<z.ZodString>;
     verdict: z.ZodOptional<z.ZodEnum<{
         clean: "clean";
+        "clean-rebutted": "clean-rebutted";
+        "no-objection-raised": "no-objection-raised";
         "open-objection": "open-objection";
         "survivable-objection": "survivable-objection";
     }>>;
@@ -220,6 +224,8 @@ export declare const BlockQaReport: z.ZodObject<{
         rebuttal: z.ZodOptional<z.ZodString>;
         verdict: z.ZodOptional<z.ZodEnum<{
             clean: "clean";
+            "clean-rebutted": "clean-rebutted";
+            "no-objection-raised": "no-objection-raised";
             "open-objection": "open-objection";
             "survivable-objection": "survivable-objection";
         }>>;
