@@ -157,9 +157,14 @@ export const TranslationStatusSchema = z
 
 // ── folio-schema-graph/v1 — scripts/gen-schema-viz.ts ──
 
-const DECL_KINDS = [
+// The kinds `schema-graph.ts` emits as `DeclKind`. `json-schema` (a
+// bootstrap `.schema.json` declaration, read since the separation) was
+// missing here, so every projection carrying one failed its own validator
+// — `check:kind-validators`, folio-assistant#2518. Kept equal to `DeclKind`
+// by `scripts/tests/schema-graph-kinds.test.ts` rather than by memory.
+export const DECL_KINDS = [
   "zod-object", "zod-union", "zod-enum", "zod-array", "zod-record", "zod-scalar",
-  "interface", "type-alias", "undetermined",
+  "interface", "type-alias", "json-schema", "undetermined",
 ] as const;
 
 export const SchemaGraphIndexSchema = z
@@ -220,6 +225,29 @@ export const SchemaGraphIndexSchema = z
         })
         .strict(),
     ),
+    // `NodeKindRow` in `scripts/gen-schema-viz.ts` (issue #2278): every node
+    // kind, `$schema` family and whole-typology validator, joined to the
+    // declaration that defines it. The generator has written it since #2278;
+    // this strict schema never learned it, so every projection failed with
+    // `Unrecognized key: "nodeKinds"` (folio-assistant#2518, 2026-10-09).
+    nodeKinds: z
+      .array(
+        z
+          .object({
+            id: z.string(),
+            source: z.enum(["node-kind", "family", "typology"]),
+            instance: z.string().optional(),
+            decl: z.string().optional(),
+            tag: z.string().optional(),
+            parents: StringList.optional(),
+            subclasses: StringList.optional(),
+            typologies: StringList,
+            page: z.string().optional(),
+            note: z.string().optional(),
+          })
+          .strict(),
+      )
+      .optional(),
   })
   .strict();
 
