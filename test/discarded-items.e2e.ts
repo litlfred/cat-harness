@@ -237,6 +237,34 @@ test.describe("selecting an item displays it", () => {
     await expect(detail.locator("img")).toHaveCount(0);
     await expect(detail.locator("b")).toHaveCount(0);
   });
+
+  test("raw markdown backticks in names are stripped cleanly (folio-assistant-oi3h)", async ({ page }) => {
+    await stub(page, {
+      "@graph": [{ name: "`SkillDefinition.roles` — retired", nodeKind: "note", description: "The `roles:` field" }],
+    });
+    await page.setContent(harness(DOC_URL));
+    await openSettings(page);
+    await page.locator(".fa-discarded-open").click();
+    const item = page.locator(".fa-discarded-item-name");
+    await expect(item).toHaveText("SkillDefinition.roles — retired");
+    await item.click();
+    await expect(page.locator(".fa-discarded-title")).toHaveText("SkillDefinition.roles — retired");
+    await expect(page.locator(".fa-discarded-summary")).toHaveText("The roles: field");
+  });
+
+  test("back controls are singular when viewing detail (folio-assistant-oi3h)", async ({ page }) => {
+    await stub(page, DOCUMENT);
+    await page.setContent(harness(DOC_URL));
+    await openSettings(page);
+    await page.locator(".fa-discarded-open").click();
+    await page.locator(".fa-discarded-item").first().click();
+    // Only "‹ All discarded items" is visible; "‹ All actions" is hidden in detail view
+    await expect(page.locator(".fa-discarded-back")).toBeVisible();
+    await expect(page.locator(".fa-tiles-back")).toBeHidden();
+    // Returning to the list restores the header back button
+    await page.locator(".fa-discarded-back").click();
+    await expect(page.locator(".fa-tiles-back")).toBeVisible();
+  });
 });
 
 test.describe("operable without a mouse", () => {

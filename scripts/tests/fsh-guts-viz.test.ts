@@ -21,7 +21,7 @@ import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import { gutsFiles } from "../gen-fsh-guts-viz.ts";
+import { gutsFiles, page } from "../gen-fsh-guts-viz.ts";
 
 const TAG = "$schema: folio-fsh-guts/v1";
 const sidecar = (title: string) => `---\n${TAG}\ntitle: "${title}"\nkind: source\n---\n\n# ${title}\n`;
@@ -105,3 +105,30 @@ describe("a title is read from markdown only", () => {
     }
   });
 });
+
+describe("page lede and links (folio-assistant-oi3h)", () => {
+  test("lede explains count relationship with interactive viewer", () => {
+    const rendered = page(
+      [
+        { rel: "retired/a.md", group: "retired", state: "declared", title: "A" },
+        { rel: "scripts/b.py", group: "scripts", state: "undeclared" },
+      ],
+      "https://github.com/litlfred/folio-assistant/blob/main/fsh-guts",
+    );
+    expect(rendered).toContain("Count relationship:");
+    expect(rendered).toContain("interactive viewer");
+    expect(rendered).toContain("Settings → Discarded");
+  });
+
+  test("file links are marked as external links to GitHub", () => {
+    const rendered = page(
+      [{ rel: "retired/a.md", group: "retired", state: "declared", title: "A" }],
+      "https://github.com/litlfred/folio-assistant/blob/main/fsh-guts",
+    );
+    expect(rendered).toContain('target="_blank"');
+    expect(rendered).toContain('rel="noopener noreferrer"');
+    expect(rendered).toContain('title="View on GitHub"');
+    expect(rendered).toContain("↗");
+  });
+});
+

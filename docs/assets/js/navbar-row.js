@@ -400,7 +400,8 @@
         // The launcher proxies `docs-ui.js`'s actions panel. With no panel on
         // the page the slot is LEFT OUT (owner, 2026-10-05).
         if (typeof hooks.launcher !== "function") continue;
-        var proxy = el("button", { type: "button", class: "fa-nav-icon", "aria-label": LABELS.launcher, "data-fa-tip": LABELS.launcher });
+        var tip = LABELS.launcher + " — settings, discarded items";
+        var proxy = el("button", { type: "button", class: "fa-nav-icon", "aria-label": LABELS.launcher, title: tip, "data-fa-tip": tip });
         proxy.innerHTML = rowGlyph("launcher");
         proxy.addEventListener("click", hooks.launcher);
         host.appendChild(proxy);
