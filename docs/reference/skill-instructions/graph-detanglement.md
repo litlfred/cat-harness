@@ -124,10 +124,10 @@ nested declaration (`beans/beans.json`, `todos/todos.json`) whose paths resolve
 against its own directory, **so the whole graph relocates by moving one
 folder**.
 
-The worked example is in the tree and belongs to a repository that does not
-exist yet: `smart-base/methodologies/diig.md`, declared at repository scope in
-`cat-harness/cat-harness.json` so that the directory lifts out whole with
-`smart-base`. (The example was `smart-kg/methodologies/grade.md` until
+The worked example was a `methodologies/` graph in the WHO base harness,
+declared at repository scope in `cat-harness/cat-harness.json` while it still
+sat in this tree, so that the directory lifted out whole when that harness
+became its own repository (2026-10) — which is the claim, demonstrated. (The example was `smart-kg/methodologies/grade.md` until
 2026-09-24, when GRADE became a skill plus code lists — bean `wg7r`.)
 
 **Declaring is cheap and extracting is expensive, which is the point.** The
