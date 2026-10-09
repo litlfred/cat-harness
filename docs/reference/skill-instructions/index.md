@@ -250,6 +250,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [Diff](diff.html) | `diff` | — | Show what changed at the content-block level, with viewer links and |
 | [/dispatch-agent](dispatch-agent.html) | `dispatch-agent` | — | The expensive failure mode of multi-agent dispatch is **going dark**: you |
 | [Feature-branch staging](feature-staging.html) | `feature-staging` | — |  |
+| [Finding software](finding-software.html) | `finding-software` | — | Owner, 2026-10-09, after an ingest stopped at a missing `tesseract` and the |
 | ["NOT clean" is a verdict about the RUN, not about your diff](gate-tree-mutation.html) | `gate-tree-mutation` | — | `bun run cat gates` snapshots the tree before the first gate and after every one, so |
 | [Generalise the fix, then attack the generalisation](generalise-the-fix.html) | `generalise-the-fix` | — | A fix that repairs one instance and leaves its siblings is half a fix. A fix |
 | [Reading GitHub state](github-state-inspection.html) | `github-state-inspection` | — | > Skill id: `github-state-inspection` · Package: `sdlc-core` |

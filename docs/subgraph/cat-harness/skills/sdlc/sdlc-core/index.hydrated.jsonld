@@ -25,6 +25,7 @@
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/diff",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/dispatch-agent",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/feature-staging",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/finding-software",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/gate-tree-mutation",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/generalise-the-fix",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/github-state-inspection",
@@ -199,13 +200,13 @@
       "hasInstructions": true,
       "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/sdlc-core",
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-      "instructionLines": 89,
+      "instructionLines": 90,
       "instructionsPath": "skills/sdlc/sdlc-core/blocked-build-dependencies.md",
       "name": "blocked-build-dependencies",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5b11d5494517e5d174c3007cf68afaf103bf79b62519f52305e50b4691ec8fc9",
-        "bytes": 4366,
-        "sha256": "5b11d5494517e5d174c3007cf68afaf103bf79b62519f52305e50b4691ec8fc9"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/1187934598901ad3fb4bd21212ed4e5bd1acefeeb4ceb8d8bdd6e234549d770c",
+        "bytes": 4506,
+        "sha256": "1187934598901ad3fb4bd21212ed4e5bd1acefeeb4ceb8d8bdd6e234549d770c"
       },
       "title": "Blocked build dependencies — read the refusal before you work around it"
     },
@@ -416,6 +417,25 @@
         "sha256": "636d194aa972833d53fd521a573bfc891681bd9ae069ed5d443c52aabc7d564a"
       },
       "title": "Feature-branch staging"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/finding-software",
+      "@type": "bootstrap:Skill",
+      "ambiguous": false,
+      "description": "A script needs a program or module the container does not have (tesseract, pdftoppm, PyMuPDF, a CLI from a GitHub release). Get it: `bun run cat software:ensure`, which tries apt, pip, then a pinned and checksummed GitHub release, from the declared table `scripts/software.json`. Do not route around a missing tool with a cache, a weaker backend or a skipped step, and do not report \"not installed\" as if it were a finding about the work.",
+      "hasIOContract": false,
+      "hasInstructions": true,
+      "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/sdlc-core",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
+      "instructionLines": 85,
+      "instructionsPath": "skills/sdlc/sdlc-core/finding-software.md",
+      "name": "finding-software",
+      "payload": {
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5661ebbf9937100e10d5bbf18dc9305a51894062cb99df5bd546c239733b2ad0",
+        "bytes": 4322,
+        "sha256": "5661ebbf9937100e10d5bbf18dc9305a51894062cb99df5bd546c239733b2ad0"
+      },
+      "title": "Finding software — get it, do not route around it"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/gate-tree-mutation",
