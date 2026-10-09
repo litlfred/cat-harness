@@ -215,3 +215,11 @@ must sign it off, tied to WHO/IG subject matter → `crdm`.
   the marker becomes a way of appearing to ask without having asked.
 - **Never cite spec-kit for the spec-before-code gate.** It is this platform's
   addition, stated above.
+
+## Related
+
+- [`specification-management`](../sdlc-core/specification-management.md) —
+  specification and requirements governance across spec-kit and CRDM
+- [`requirements-standards-assessment`](../../methodologies/requirements-standards-assessment.md) —
+  assessment of open requirements standards (EARS, ISO 29148, ReqIF)
+

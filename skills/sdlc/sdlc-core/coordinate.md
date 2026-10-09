@@ -477,6 +477,8 @@ What happened instead:
   pending work (todos, intent, queue assignments).
 - `prepare-merge-auto` — autonomous merge pipeline (uses
   this skill's sibling-coord pattern).
+- `specification-management` — governance of specification requirements,
+  linking CRDM and spec-kit to the bootstrap Requirement definition.
 
 `/coordinate` complements them: it is the **active** cross-PR
 protocol — including handling of code-review comments on your own
