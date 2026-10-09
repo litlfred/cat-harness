@@ -74,6 +74,27 @@ ${body}
 
 
 /**
+ * One `.md` file as a standalone `.html` page: front matter dropped, GitHub
+ * flavoured, links to `.md` pointed at their renderings, titled by the first
+ * heading. Shared with `mount-instance-docs.ts`, which renders the `.md` files
+ * of a mounted directory the same way (bean `mw5z`).
+ */
+export async function renderMarkdownPage(
+  source: string,
+  fallbackTitle: string,
+  /** Re-points a link before `.md` → `.html`; `undefined` leaves it alone. */
+  linkFor?: (href: string) => string | undefined,
+): Promise<string> {
+  const markdown = source.replace(/^---\n[\s\S]*?\n---\n/, "");
+  let html = String(await remark().use(remarkGfm).use(remarkHtml, { sanitize: false }).process(markdown));
+  if (linkFor) html = html.replace(/href="([^"]*)"/g, (m, href: string) => {
+    const to = linkFor(href);
+    return to === undefined ? m : `href="${to}"`;
+  });
+  return page(titleOf(markdown, fallbackTitle), rewriteMdLinks(html));
+}
+
+/**
  * Copy every file of `instanceDir` into `outDir`, and render each `.md`.
  *
  * NEVER OVERWRITES. The site build writes other files at the same address
@@ -102,9 +123,7 @@ export async function publishInstanceFiles(
   for (const file of filesIn(instanceDir)) {
     const rel = relative(instanceDir, file);
     if (!rel.endsWith(".md")) continue;
-    const markdown = readFileSync(file, "utf-8").replace(/^---\n[\s\S]*?\n---\n/, "");
-    const body = rewriteMdLinks(String(await remark().use(remarkGfm).use(remarkHtml, { sanitize: false }).process(markdown)));
-    const html = page(titleOf(markdown, rel), body);
+    const html = await renderMarkdownPage(readFileSync(file, "utf-8"), rel);
     write(rel.replace(/\.md$/, ".html"), html);
     if (rel === "README.md") write("index.html", html);
   }

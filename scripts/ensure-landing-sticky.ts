@@ -248,6 +248,12 @@ export interface StickyReport {
   id: string;
   path: string;
   state: "already" | "written" | "updated";
+  /**
+   * The card belongs to a REMOTE-MOUNTED layer: it arrives with the mount
+   * (bean `1yd7`), so this run never writes it and `--check` never counts it.
+   * The mount is gitignored; a card written into it would be committed nowhere.
+   */
+  mounted?: true;
 }
 
 /** Everything a run did or found, so the caller reports rather than guesses. */
@@ -668,7 +674,14 @@ export function ensureLandingSticky(
     const currentText = existsSync(abs) ? readFileSync(abs, "utf8") : undefined;
     const state: StickyReport["state"] =
       currentText === wantedText ? "already" : currentText === undefined ? "written" : "updated";
-    return { abs, wantedText, currentText, isMounted, instRoot, report: { id: w.id, path: rel, state } };
+    return {
+      abs,
+      wantedText,
+      currentText,
+      isMounted,
+      instRoot,
+      report: { id: w.id, path: rel, state, ...(isMounted ? { mounted: true as const } : {}) },
+    };
   });
 
   const ownWantedIds = planned.filter((p) => p.instRoot === own).map((p) => p.report.id);
@@ -724,7 +737,18 @@ if (import.meta.main) {
   // `instanceRootFor` rather than cwd: the instance root and the repository root
   // stopped being the same directory in bean `wggr`, and a gate invoked from the
   // repository root would look for `harness.json` one level up from where it is.
-  const root = instanceRootFor(import.meta.dir);
+  //
+  // An instance directory given as an argument wins (bean `1yd7`). Run from a
+  // separated instance's own repository, this script sits in the REMOTE-MOUNTED
+  // cat-harness, so its own root is the mount: the mounted layers were then not
+  // recognised as mounts and were written into, and the instance actually being
+  // composed — who-iris — never had its `folio` graph declared.
+  const positional = process.argv.slice(2).find((a, i, all) => !a.startsWith("--") && !["--begin", "--complete"].includes(all[i - 1] ?? ""));
+  const root = positional === undefined ? instanceRootFor(import.meta.dir) : resolve(positional);
+  if (positional !== undefined && declarationPathIn(root) === undefined) {
+    console.error(`${positional} holds no instance declaration`);
+    process.exit(2);
+  }
   // `--begin <harness>` at the START of that harness's initiation, `--complete
   // <harness>` at the end. Without the pair, a crashed initiation and one that
   // never ran look identical — both are a card that is simply not there, and
@@ -744,7 +768,7 @@ if (import.meta.main) {
       report.declaredFolio === "added" ? "no folio graph is declared" : undefined,
       report.createdDir ? `${report.folioDir} does not exist` : undefined,
       ...report.stickies
-        .filter((st) => st.state !== "already")
+        .filter((st) => st.state !== "already" && !st.mounted)
         .map((st) => `${st.path} is ${st.state === "written" ? "missing" : "stale"}`),
       ...report.pruned.map((f) => `${join(report.folioDir, f)} is declared by no layer`),
       ...readerTextProblems(root),
@@ -760,7 +784,7 @@ if (import.meta.main) {
 
   console.log(
     `folio graph ${report.declaredFolio === "added" ? "DECLARED" : "already declared"} at ${report.folioDir}; ` +
-      report.stickies.map((st) => `${st.id} ${st.state}`).join(", ") +
+      report.stickies.map((st) => `${st.id} ${st.mounted ? "mounted" : st.state}`).join(", ") +
       (report.pruned.length > 0 ? `; pruned ${report.pruned.join(", ")}` : ""),
   );
   if (initiation) {

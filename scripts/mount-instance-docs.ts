@@ -116,6 +116,7 @@ import { viewersOf } from "./viewer-declarations.js";
 import { translationMetaBlock, withTranslationMeta } from "./lib/translation-meta.ts";
 import { layoutSubscribedInstances, subscribedTrees } from "./subscribed-trees.ts";
 import { mountedInstanceRoots } from "../schemas/remote-mount.ts";
+import { renderMarkdownPage } from "./publish-instance-files.ts";
 
 const REPO = resolve(import.meta.dir, "..", "..");
 
@@ -1636,9 +1637,15 @@ export function redirectHtml(route: string, target: string): string {
  * The collision with a mount route and with a file already in the site are
  * checked by the caller, which holds the mount table and the site.
  */
-export function kindRouteRedirects(docsPrefix: string | undefined): { redirects: KindRouteRedirect[]; problems: string[] } {
+export function kindRouteRedirects(docsPrefix: string | undefined): {
+  redirects: KindRouteRedirect[];
+  problems: string[];
+  /** Declared redirects this site owes nobody, each with why — printed, never silent. */
+  notOwed: string[];
+} {
   const redirects: KindRouteRedirect[] = [];
   const problems: string[] = [];
+  const notOwed: string[] = [];
   for (const x of declaredEntries()) {
     if (x.entry.kindRouteRedirect !== true) continue;
     const where = `${relative(REPO, x.abs).split(sep).join("/")}`;
@@ -1647,16 +1654,26 @@ export function kindRouteRedirects(docsPrefix: string | undefined): { redirects:
       continue;
     }
     const viewer = viewerOf(x);
-    const target = viewer !== undefined && docsPrefix !== undefined ? visualiserHref(viewer, docsPrefix) : undefined;
+    // NO VIEWER FOR THE KIND IN THIS BUILD AT ALL: the site never published the
+    // kind route, so there is no old URL here to keep alive (bean `kx0p`).
+    // who-iris's own site is the case: `/library/who-iris/` was a URL of the
+    // folio-assistant site, where the redirect still applies, and who-iris's
+    // site builds no library viewer. A viewer that IS declared but is not
+    // published stays a refusal below — that is the defect the check exists for.
+    if (viewer === undefined) {
+      notOwed.push(`${where} declares kindRouteRedirect, and no viewer for its kind is built here — no old route to keep`);
+      continue;
+    }
+    const target = docsPrefix !== undefined ? visualiserHref(viewer, docsPrefix) : undefined;
     if (target === undefined) {
       problems.push(
-        `${where} declares kindRouteRedirect but ${viewer === undefined ? "no viewer" : `its viewer ${viewer} is not published`}`,
+        `${where} declares kindRouteRedirect but its viewer ${viewer} is not published`,
       );
       continue;
     }
     for (const kind of x.entry.graphTypologies ?? []) redirects.push({ route: `${kind}/${x.name}`, target });
   }
-  return { redirects: redirects.sort((a, b) => a.route.localeCompare(b.route)), problems };
+  return { redirects: redirects.sort((a, b) => a.route.localeCompare(b.route)), problems, notOwed };
 }
 
 
@@ -1671,6 +1688,102 @@ export function kindRouteRedirects(docsPrefix: string | undefined): { redirects:
 // What a mounted directory must not publish — one reader, shared with the
 // library viewer, so the two surfaces cannot disagree (bean `cw35`).
 export { WITHHELD_FILE, withheldFilter, withheldPaths } from "./lib/withheld.js";
+
+/**
+ * Render the `.md` pages a mount published, beside themselves — bean `mw5z`.
+ *
+ * A mounted directory is copied AFTER Jekyll, so nothing renders what it
+ * holds: measured on who-iris's published site, `style-guide.md` answered as
+ * raw markdown and `style-guide.html` was a 404 — the instance's only
+ * hand-written pages, reachable only as source. Each `x.md` under `dest` with
+ * no `x.html` beside it gets one, rendered as `publish-instance-files.ts`
+ * renders an instance's own files; `README.md` also becomes `index.html` when
+ * the directory has none. The `.md` stays, so a link to it keeps working.
+ *
+ * NOT rendered: a file with front matter. That is a Jekyll page (who-iris's
+ * `site-home.md` is the site's landing, built from Liquid includes), and
+ * rendering it here would publish its `{% include %}` tags as text. Nor is a
+ * generated `.html` ever overwritten: the generator's page wins over a
+ * rendering of its source.
+ *
+ * **A link that leaves the mounted directory** resolves nowhere on the site —
+ * the rest of the instance is not published beside it. Given `source`, such a
+ * link that stays inside the instance becomes a repository URL,
+ * `https://github.com/<repository>/blob/HEAD/<path>`, the form bean `vj2p`
+ * gives prose that cites outside its directory; `<repository>` is the
+ * declaration's own `repository`, so nothing names an owner. One that climbs
+ * OUT of the instance is returned in `unresolved` rather than published as a
+ * dead link: it is a source defect, and the caller fails on it.
+ */
+export async function renderMountedMarkdown(
+  dest: string,
+  source?: { dir: string; instanceDir: string; repository?: string },
+): Promise<{ rendered: string[]; unresolved: string[] }> {
+  const rendered: string[] = [];
+  const unresolved: string[] = [];
+  const mountRel = source ? relative(source.instanceDir, source.dir).split(sep).join("/") : "";
+  const walk = async (dir: string): Promise<void> => {
+    for (const e of readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+      const abs = join(dir, e.name);
+      if (e.isDirectory()) {
+        await walk(abs);
+        continue;
+      }
+      if (!e.isFile() || !e.name.endsWith(".md")) continue;
+      const text = readFileSync(abs, "utf-8");
+      if (/^---\r?\n/.test(text)) continue;
+      const rel = relative(dest, abs).split(sep).join("/");
+      // Where this file sits in the INSTANCE, so a relative link can be resolved there.
+      const fileDir = posix.dirname(posix.join(mountRel, rel));
+      const linkFor = source
+        ? (href: string): string | undefined => {
+            if (/^([a-z][a-z0-9+.-]*:|#|\/)/i.test(href)) return undefined;
+            const [path, hash] = href.split("#", 2) as [string, string | undefined];
+            if (!path) return undefined;
+            const target = posix.normalize(posix.join(fileDir, path)).replace(/\/+$/, "");
+            const inMount = mountRel === "" || target === mountRel || target.startsWith(`${mountRel}/`);
+            // Inside the mount, a link resolves on the site unless it names a
+            // DIRECTORY with no page of its own: a forge lists one, a static
+            // host 404s (who-iris's README linking `assets/`). That one is
+            // cited by repository like a link leaving the mount.
+            const abs = join(source.instanceDir, target);
+            const bareDir =
+              existsSync(abs) && statSync(abs).isDirectory() && !existsSync(join(abs, "index.html")) && !existsSync(join(abs, "README.md"));
+            if (inMount && !bareDir) return undefined;
+            if (target === ".." || target.startsWith("../") || !source.repository) {
+              unresolved.push(`${rel}: "${href}" ${source.repository ? "climbs out of the instance" : "leaves the mount, and the declaration names no repository"}`);
+              return undefined;
+            }
+            const kind = path.endsWith("/") || target === "." || bareDir ? "tree" : "blob";
+            const at = target === "." ? "" : `/${target}${path.endsWith("/") ? "/" : ""}`;
+            return `https://github.com/${source.repository}/${kind}/HEAD${at}${hash !== undefined ? `#${hash}` : ""}`;
+          }
+        : undefined;
+      const html = await renderMarkdownPage(text, rel, linkFor);
+      const targets = [abs.replace(/\.md$/, ".html")];
+      if (e.name === "README.md") targets.push(join(dir, "index.html"));
+      for (const t of targets) {
+        if (existsSync(t)) continue;
+        writeFileSync(t, html);
+        rendered.push(relative(dest, t).split(sep).join("/"));
+      }
+    }
+  };
+  if (existsSync(dest)) await walk(dest);
+  return { rendered, unresolved };
+}
+
+/** The `repository` an instance's declaration names (`owner/name`), if any. */
+function repositoryOf(instanceDir: string): string | undefined {
+  const p = declarationPathIn(instanceDir);
+  if (!p || !existsSync(p)) return undefined;
+  try {
+    const r = (JSON.parse(readFileSync(p, "utf-8")) as { repository?: unknown }).repository;
+    return typeof r === "string" && /^[\w.-]+\/[\w.-]+$/.test(r) ? r : undefined;
+  } catch {
+    return undefined;
+  }
+}
 
 export function resolve_<T extends { route: string }>(
   candidates: T[],
@@ -1701,7 +1814,7 @@ export function resolve_<T extends { route: string }>(
   return { mounts, refused };
 }
 
-function main(): number {
+async function main(): Promise<number> {
   const site = arg("site");
   if (!site) {
     console.error("usage: mount-instance-docs.ts --site <dir> [--built <instance-name>]");
@@ -1752,6 +1865,7 @@ function main(): number {
   }
 
   const { mounts, refused } = resolve_(candidates);
+  const markdownProblems: string[] = [];
 
   for (const m of mounts) {
     const withheld = withheldPaths(m.dir);
@@ -1761,6 +1875,13 @@ function main(): number {
     if (withheld.length) {
       console.log(`  /${m.route}/: withheld ${withheld.length} path(s) named by its ${WITHHELD_FILE}: ${withheld.join(", ")}`);
     }
+    // Before the rail goes on, so a rendered page gets the harness's navigation like any other.
+    const md = await renderMountedMarkdown(
+      join(siteAbs, m.route),
+      m.instanceDir === undefined ? undefined : { dir: src, instanceDir: realpathSync(m.instanceDir), repository: repositoryOf(m.instanceDir) },
+    );
+    if (md.rendered.length) console.log(`  /${m.route}/: rendered ${md.rendered.length} markdown page(s): ${md.rendered.join(", ")}`);
+    for (const u of md.unresolved) markdownProblems.push(`/${m.route}/${u}`);
   }
 
   // EMBEDDED ASSETS FROM OUTSIDE THE MOUNT — bean `2b5s`. Published per
@@ -1849,8 +1970,9 @@ function main(): number {
   // KIND ROUTES WHOSE DIRECTORY IS NOT MOUNTED — bean `2b5s`. After the
   // mounts, so a redirect can be refused against the routes they own.
   const redirectProblems: string[] = [];
-  const { redirects, problems: declaredRedirectProblems } = kindRouteRedirects(docsPrefix);
+  const { redirects, problems: declaredRedirectProblems, notOwed } = kindRouteRedirects(docsPrefix);
   redirectProblems.push(...declaredRedirectProblems);
+  for (const n of notOwed) console.log(`  redirect not owed: ${n}`);
   const written: KindRouteRedirect[] = [];
   for (const r of redirects) {
     const owner = mounts.find((m) => r.route === m.route || r.route.startsWith(`${m.route}/`));
@@ -1917,6 +2039,11 @@ function main(): number {
     console.error(`\n${assetProblems.length} embedded reference(s) NOT published:`);
     for (const p of assetProblems) console.error(`  ${p}`);
   }
+  if (markdownProblems.length) {
+    failed = true;
+    console.error(`\n${markdownProblems.length} link(s) in rendered markdown resolve nowhere — fix the source:`);
+    for (const p of markdownProblems) console.error(`  ${p}`);
+  }
   if (servedProblems.length) failed = true;
   if (subscribedRead.problems.length) failed = true;
   if (redirectProblems.length) {
@@ -1940,4 +2067,4 @@ function main(): number {
   return failed ? 1 : 0;
 }
 
-if (import.meta.main) process.exit(main());
+if (import.meta.main) process.exit(await main());
