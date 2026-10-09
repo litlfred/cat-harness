@@ -267,6 +267,37 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       requires: { runtime: ["bun", "git"], network: true },
       remedies: [{ host: "github.com", none: "A remote mount IS a fetch of another repository at a pin; offline there is nothing to mount. `--check` still reports the lock without the network." }],
     }),
+    // `mount-from-lock.ts` had no Tool node, so the one step every CI job and
+    // every folio's staging build runs FIRST was invisible to an agent looking
+    // for tooling — and when the cat-harness cutover (2026-10-09) took it out
+    // of the parent's tree, every job failed at that step with nothing to say
+    // what the step was (skill `kg-separation`, lessons 16–17).
+    defineTool({
+      id: "mount-from-lock",
+      title: "Replay a committed mount lock with nothing but Node",
+      description:
+        "Lay down every remote mount `index.lock.json` records — each instance fetched at the lock's full SHA (sparse, blob-filtered), each directory verified against its `treeDigest`, a mismatch undone and reported — importing only `node:*`, so it runs on a fresh clone before any layer is present. It never decides what to mount: `remote-mount` writes the lock (and checks trust); this only replays it. Refuses to write over a path with tracked files or bytes that no longer hash to the lock. Exit 0 mounted/current, 1 missing, 2 could-not-determine.",
+      install: { none: true },
+      invoke: { shell: "bun run cat-harness/scripts/mount-from-lock.ts" },
+      io: {
+        inputs: [
+          { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The instance root whose lock is replayed. Default: the working directory." },
+          { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "No network: is every locked mount on disk and intact?" },
+        ],
+        outputs: [
+          { name: "outcomes", schema: t("Count"), description: "Per instance: mounted, current, missing or could-not-determine." },
+        ],
+      },
+      satisfies: ["remote-mount", "kg-separation"],
+      selection: {
+        when: "First step of a CI job or session on a checkout whose layers arrive by remote mount, after the lock is committed.",
+        limits:
+          "It lives in cat-harness, which is itself a mounted layer once separated, so it cannot bootstrap a checkout that does not already hold cat-harness. The parent must carry its own dependency-free entry point that fetches this script at the pin (folio-assistant's `.github/mount-from-lock.sh`, #2518) — never call this path directly from a workflow in a repository that mounts cat-harness.",
+        cost: "One shallow, blob-filtered fetch per locked instance; a few seconds each. `--check` needs no network.",
+      },
+      requires: { runtime: ["bun", "git"], network: true },
+      remedies: [{ host: "github.com", none: "Replaying a lock IS fetching the pinned repositories; offline, `--check` still reports what is on disk." }],
+    }),
     // Owner, 2026-10-07: "go ahead and start the migration NOW to
     // index.config.json". The converter is kept rather than run once, because
     // each separated repository needs the same conversion. It writes mounts, so
@@ -387,6 +418,60 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       remedies: [
         { host: "api.github.com", tool: "package-release-manual" },
       ],
+    }),
+    // ── The archimate subgraph's two Tools (skill `archimate-models`).
+    //
+    // Owner, 2026-10-09: "do not do java 200mb... that's not usable for
+    // webclients and is too heavy." Neither needs Archi, a JVM or a display:
+    // the model is read and every view drawn in TypeScript.
+    defineTool({
+      id: "archimate-check",
+      title: "Check an instance's ArchiMate models against its config",
+      description:
+        "The gate for the `archimate` graph typology: every model `cat-archimate.config.json` names is held, parses (Archi's native XML or its zipped archive), and resolves — every box in every view draws an element the model holds, every relationship's ends are in the model — and no `.archimate` file is held that the config does not name.",
+      install: { none: true },
+      invoke: { shell: "bun run cat-harness/archimate/scripts/check-archimate.ts" },
+      io: {
+        inputs: [
+          { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root whose `archimate` directory is checked." },
+        ],
+        outputs: [
+          { name: "problems", schema: t("Text"), description: "One line per problem on stderr, exit 1; or one ✓ line, exit 0." },
+        ],
+      },
+      satisfies: ["archimate-models"],
+      selection: {
+        when: "Before publishing an instance's ArchiMate models, and in its CI: a model that will not parse, draws an element it does not hold, or is held without being configured.",
+        limits: "Archi's native format only; the Open Group exchange format is not read yet.",
+        cost: "One parse per model. No network, no JVM.",
+      },
+      requires: { runtime: ["bun"], network: false },
+    }),
+    defineTool({
+      id: "archimate-pages",
+      title: "Give every ArchiMate view, element and relationship a page and an IRI, and draw every view",
+      description:
+        "Write a JSON-LD node and a thin page for each model an instance's `cat-archimate.config.json` names and for every view, element and relationship in it — keyed by Archi's own ids — plus the normalised model the pages' one loader draws from, and every view drawn as SVG from the model's own bounds and bendpoints in ArchiMate's notation, each box a link to its element. `--out` writes into a site being built at the graph's path; without it the files go into the graph and `--check` gates them.",
+      install: { none: true },
+      invoke: { shell: "bun run cat-harness/archimate/scripts/gen-archimate-pages.ts" },
+      io: {
+        inputs: [
+          { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root." },
+          { name: "out", schema: t("RepoPath"), required: false, arg: { flag: "--out" }, description: "A site being built: the pages land at `<out>/<graph path>/`. Absent, they are written into the graph, which must be `served: true`." },
+          { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Without `--out`: fail if a committed page is missing, stale or orphaned; write nothing." },
+        ],
+        outputs: [
+          { name: "pages", schema: t("Count"), description: "Pages and view drawings written (or found current)." },
+        ],
+      },
+      satisfies: ["archimate-models"],
+      renders: ["archimate"],
+      selection: {
+        when: "A folio's staging or publish build should show its ArchiMate models: run after the document site is built and before the navbar pass.",
+        limits: "Draws the notation, not Archi's icons, custom images or fonts; sketch and canvas views are skipped. Never replaced by Archi's CLI report (skill `archimate-models`).",
+        cost: "Milliseconds per view; smart-ra's four models are 5,809 pages and 131 drawings (~24 MB) in about 1.5 s. No network, no JVM.",
+      },
+      requires: { runtime: ["bun"], network: false },
     }),
     defineTool({
       id: "rail-standalone-pages",

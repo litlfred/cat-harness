@@ -867,6 +867,14 @@
       ]
     },
     {
+      "id": "archimate",
+      "path": "archimate/",
+      "description": "The ArchiMate subgraph — a NAMED SUBGRAPH of the harness, on the `openapi` subgraph's pattern (owner, 2026-10-09: *\"need new specialixed harness (like openapi) for archimate content in the KG\"*). It holds the machinery for ArchiMate models rather than models: the graph typology `archimate` an instance declares to hold them, the validator for the instance's `cat-archimate.config.json`, the reader for Archi's native format, and the rendering sub-pipeline that gives every view, element and relationship a page and an IRI and draws every view as SVG from the model's own diagram — no Archi install. Of graph typology `cat-harness` because it holds MORE THAN ONE of the harness's parts; the four graphs inside it — `archimate-validators`, `archimate-typologies`, `archimate-schemas`, `archimate-scripts` — are declared FROM WITHIN, in `archimate/graph.json` (#980). First instance: smart-ra's DPI-H reference architecture models.",
+      "graphTypologies": [
+        "cat-harness"
+      ]
+    },
+    {
       "id": "memory",
       "path": "memory/",
       "description": "Agent memory for the platform: durable lessons an agent carries between sessions, one `\"$schema\": \"folio-memory/v1\"` node each, assembled into `.claude/agent-memory/<agent>/MEMORY.md` by `scripts/agent-memory.ts`, which reads EVERY instance's declared `memory` directory. `context`: read during a process, never written by one; it changes when a person directs an authoring agent. Also holds the `interaction` node (how each person wants to be asked, read at session start) and any `folio-waiver/v1` confirmation waivers, told apart by their `$schema` tag. Moved from the repository root on the owner's ruling of 2026-10-06 (bean `ar1s`): memory belongs to the harness its lesson is about, so lessons about content authoring live in the content harness's own `memory/`.",

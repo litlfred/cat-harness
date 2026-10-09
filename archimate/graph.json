@@ -1,0 +1,42 @@
+{
+  "_comment": "The graphs inside cat-harness's `archimate` subgraph, declared FROM WITHIN (#980), as `openapi/graph.json` declares its own: the `archimate` entry of `cat-harness.json` names this directory, and this node names what it holds. Each entry is `subgraph: true` — a directory of the INSTANCE (cat-harness), listed by `resolveDirectories` as if `cat-harness.json` had declared it, with `within: \"archimate\"`. Paths are relative to THIS directory.",
+  "name": "archimate",
+  "directories": [
+    {
+      "id": "archimate-validators",
+      "path": "validators/",
+      "subgraph": true,
+      "description": "The validators the archimate subgraph's code provides, one folio-validator/v1 node each naming the graph typology and $schema family it checks — today one, for `cat-archimate-config/v1`.",
+      "graphTypologies": [
+        "validators"
+      ]
+    },
+    {
+      "id": "archimate-typologies",
+      "path": "typologies/",
+      "subgraph": true,
+      "description": "The graph typologies the archimate subgraph owns, one folio-graph-typology/v1 node per file — today one, `archimate`.",
+      "graphTypologies": [
+        "typologies"
+      ]
+    },
+    {
+      "id": "archimate-schemas",
+      "path": "schemas/",
+      "subgraph": true,
+      "description": "The subgraph's shapes: `cat-archimate.config.json` (what an instance names), the reader for Archi's native format (plain XML or zipped archive), and the normalised model — elements by layer, relationships, and views with absolute bounds — every page and drawing is made from.",
+      "graphTypologies": [
+        "schemas"
+      ]
+    },
+    {
+      "id": "archimate-scripts",
+      "path": "scripts/",
+      "subgraph": true,
+      "description": "The rendering sub-pipeline: `check-archimate.ts` checks the committed models against the config; `render-view.ts` draws a view as SVG from the model's diagram; `gen-archimate-pages.ts` writes a JSON-LD node and a thin page per model, view, element and relationship; `templates/` holds the one shared loader that draws the pages in the browser.",
+      "graphTypologies": [
+        "code"
+      ]
+    }
+  ]
+}
