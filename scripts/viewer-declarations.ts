@@ -1,29 +1,37 @@
 /**
- * Which viewer page renders a declared directory — read from the PAGES.
+ * Which visualiser renders a declared directory — read from the HARNESS
+ * declarations, never from the pages.
  *
- * #1168 B7a-2, owner 2026-09-24 (*"page derived"*). Until then each directory
- * named its viewer page (`coverage.visualiser`): the directory pointing at
- * what depends on it. Now the generator that draws a page writes into it the
- * directories it drew, the same move B7c made for documentation pages
- * (`docs-declarations.ts`):
+ * The owner, 2026-10-09: *"I still want the harness to be where specific
+ * visualizers/pages are declared for the harness at the level. And that they
+ * are all compliant of `<base URL>/<harness>/<visualizer>` … Why
+ * `renders: [fsh-guts]` in visualizer? Could have multiple visualizers
+ * contending for same url... so not good. Need harness to declare visualizer
+ * is renderedBy …"*
  *
- * | page | where it says so |
- * |---|---|
- * | generated HTML | `<meta name="renders" content="…">` |
- * | generated markdown | a `renders:` front-matter list |
+ * ## What this replaced
  *
- * Each entry is a directory's REPOSITORY-relative path, without a trailing
- * slash. A path and not a `<instance>/<id>`, because a page renders a
- * directory, and two instances may declare the same directory under two ids
- * (`cat-harness/who-iris-library` and `who-iris/library` are one directory).
+ * Since #1168 B7a-2b (owner, 2026-09-24, *"page derived"*) a generated page
+ * carried `renders:` (front matter) or `<meta name="renders">`, and this module
+ * read every tracked page to learn which page drew which directory. That made
+ * the page the declaration: a page could be written anywhere and claim any
+ * directory, two pages could claim one, and a remote mount's pages had to be
+ * re-read with every `renders` entry prefixed by the mount path to be found at
+ * all. None of that survives. A visualiser is declared in `<instance>.json`
+ * (`visualisers`, `HarnessVisualiserSchema`), its URL is
+ * `visualiserRoute({ harness, visualiser })` (`schemas/visualiser-route.ts`),
+ * and a page is found because the declaration says where it is.
  *
- * The generator writes it because the generator is the one party that KNOWS
- * which directories fed a page. Inferring it from the page's path would be a
- * second answer, free to disagree.
+ * ## What a page still carries
+ *
+ * `rendered-by` — `<meta name="rendered-by">` or the front-matter scalar —
+ * names the Tool that drew it. Provenance only: nothing resolves a directory
+ * through it. `check:visualiser-routes` uses it to refuse a generator that
+ * wrote OUTSIDE the routes its Tool is declared to render.
  *
  * @module scripts/viewer-declarations
  */
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { basename, join, relative, resolve, sep } from "node:path";
 
 import {
@@ -31,134 +39,230 @@ import {
   directoriesForGraph,
   instanceDirectoryForGraph,
   repoRootFor,
+  siteDirFor,
   visualisationsOf,
+  type HarnessVisualiser,
   type Tile,
   type Visualisation,
 } from "../schemas/cat-harness.js";
 import { corpusDirectoriesForGraph } from "../schemas/harness-config.js";
+import { instanceRootsIn } from "../schemas/instance-roots.js";
 import { mountedInstanceRoots } from "../schemas/remote-mount.js";
-import { tools } from "../tools/discover.js";
-import { frontMatterList } from "./skill-governance.js";
+import { siteRootFrom, visualiserRoute, type VisualiserRouteParts } from "../schemas/visualiser-route.js";
 
-/** One viewer page and the directories it declares it renders. */
-export interface ViewerPage {
-  /** Repository-relative path of the page. */
-  page: string;
-  /** Repository-relative directory paths, no trailing slash. */
-  renders: string[];
-  /**
-   * The Tool that drew it, when the page says. Which page a directory's tile
-   * opens is chosen among pages drawn by a Tool that renders the directory's
-   * KIND — a generated index that merely lists the directory is not its viewer.
-   */
-  renderedBy?: string;
-}
+// ── Provenance: which Tool drew a page ────────────────────────────────────
 
-const META = /<meta\s+name="renders"\s+content="([^"]*)"\s*\/?>/;
+const RENDERS_META = /<meta\s+name="renders"\s+content="([^"]*)"\s*\/?>/;
 const BY_META = /<meta\s+name="rendered-by"\s+content="([^"]*)"\s*\/?>/;
 
-/** A directory as a page names it: repository-relative, `/`-separated, no trailing slash. */
+/** A directory as a repository-relative, `/`-separated path with no trailing slash. */
 export function renderedPath(repoRoot: string, absDir: string): string {
   return relative(repoRoot, absDir).split(sep).join("/").replace(/\/+$/, "");
 }
 
-/** The `<meta name="renders">` element for these directories. */
-export function rendersMeta(paths: readonly string[]): string {
-  return `<meta name="renders" content="${[...new Set(paths)].sort().join(" ")}">`;
-}
-
-/** The `content` of `<meta name="renders">`, split on whitespace. */
-export function metaRenders(html: string): string[] {
-  const m = META.exec(html);
-  return m ? m[1]!.split(/\s+/).filter(Boolean) : [];
+/**
+ * Put `<meta name="rendered-by">` into a page's `<head>`, replacing any
+ * earlier one — and REMOVING any `<meta name="renders">`, the page-derived
+ * declaration this module no longer reads. A page with no `<head>` is
+ * returned unchanged.
+ */
+export function withRenderedBy(html: string, tool: string): string {
+  const stripped = html.replace(new RegExp(`\\s*${RENDERS_META.source}`), "").replace(new RegExp(`\\s*${BY_META.source}`), "");
+  return stripped.replace(/<head([^>]*)>/i, (h) => `${h}\n<meta name="rendered-by" content="${tool}">`);
 }
 
 /**
- * Put the declaration into a page's `<head>`, replacing any earlier one.
- *
- * Placed straight after `<head>` so it does not depend on what else the page
- * carries. A page with no `<head>` is returned unchanged: it is not a
- * standalone document, and the audit that reads declarations will say so.
+ * The same for a generated markdown or themed page: `rendered-by:` in its
+ * front matter, any `renders:` list removed. A page with no front matter is
+ * returned unchanged.
  */
-export function withRenders(html: string, paths: readonly string[], tool: string): string {
-  const stripped = html.replace(new RegExp(`\\s*${META.source}`), "").replace(new RegExp(`\\s*${BY_META.source}`), "");
-  if (paths.length === 0) return stripped;
-  return stripped.replace(
-    /<head([^>]*)>/i,
-    (h) => `${h}\n${rendersMeta(paths)}\n<meta name="rendered-by" content="${tool}">`,
-  );
-}
-
-/** The `content` of `<meta name="rendered-by">`, when present. */
-export function metaRenderedBy(html: string): string | undefined {
-  return BY_META.exec(html)?.[1] || undefined;
-}
-
-/** The front-matter lines declaring these directories, for a generated markdown page. */
-export function rendersFrontMatter(paths: readonly string[]): string[] {
-  return ["renders:", ...[...new Set(paths)].sort().map((p) => `  - ${p}`)];
-}
-
-/** One scalar front-matter value, when present. */
-function frontMatterScalar(text: string, key: string): string | undefined {
-  const fm = /^---\n([\s\S]*?)\n---/.exec(text)?.[1];
-  const m = fm ? new RegExp(`^${key}:\\s*(.+)$`, "m").exec(fm) : null;
-  return m ? m[1]!.trim() : undefined;
-}
-
-/** Every page, from the tracked `.md` and `.html` files, that declares `renders`. */
-export function viewerPages(repoRoot: string, files: readonly string[]): ViewerPage[] {
-  const out: ViewerPage[] = [];
-  for (const f of files) {
-    const md = f.endsWith(".md");
-    if (!md && !f.endsWith(".html")) continue;
-    let text: string;
-    try {
-      text = readFileSync(join(repoRoot, f), "utf-8");
-    } catch {
-      continue;
-    }
-    // A THEMED `.html` page (Jekyll front matter, no `<head>` of its own —
-    // `/todos/`, #1906) declares in its front matter, the same as markdown.
-    // Asked of the content: the extension says nothing about which it is.
-    const fm = md || text.startsWith("---\n");
-    const renders = fm ? frontMatterList(text, "renders") : metaRenders(text);
-    const renderedBy = fm ? frontMatterScalar(text, "rendered-by") : metaRenderedBy(text);
-    if (renders.length > 0) out.push({ page: f, renders, ...(renderedBy ? { renderedBy } : {}) });
-  }
-  return out;
-}
-
-/** The pages rendering one directory, given its repository-relative path. */
-export function pagesRendering(dirPath: string, pages: readonly ViewerPage[]): string[] {
-  const want = dirPath.replace(/\/+$/, "");
-  return pages.filter((p) => p.renders.includes(want)).map((p) => p.page).sort();
-}
-
-/**
- * Put the declaration into a generated markdown page's front matter, replacing
- * any earlier one. A page with no front matter is returned unchanged.
- */
-export function withRendersFrontMatter(md: string, paths: readonly string[], tool: string): string {
+export function withRenderedByFrontMatter(md: string, tool: string): string {
   const m = /^---\n([\s\S]*?)\n---\n/.exec(md);
   if (!m) return md;
   const kept = m[1]!
     .replace(/^renders:\n(?:\s+-\s.*\n?)*/m, "")
     .replace(/^rendered-by:.*\n?/m, "")
     .replace(/\n+$/, "");
-  const lines = paths.length === 0 ? [] : [...rendersFrontMatter(paths), `rendered-by: ${tool}`];
-  return `---\n${[kept, ...lines].join("\n")}\n---\n${md.slice(m[0].length)}`;
+  return `---\n${[kept, `rendered-by: ${tool}`].filter(Boolean).join("\n")}\n---\n${md.slice(m[0].length)}`;
+}
+
+/**
+ * @deprecated The page no longer declares what it renders. Kept, ignoring
+ * `paths`, so a generator in another repository keeps compiling until it moves
+ * to {@link withRenderedBy}; it writes provenance only.
+ */
+export function withRenders(html: string, _paths: readonly string[], tool: string): string {
+  return withRenderedBy(html, tool);
+}
+
+/** @deprecated See {@link withRenders}; use {@link withRenderedByFrontMatter}. */
+export function withRendersFrontMatter(md: string, _paths: readonly string[], tool: string): string {
+  return withRenderedByFrontMatter(md, tool);
+}
+
+/** @deprecated A page declares no `renders:` list any more; this returns none. */
+export function rendersFrontMatter(_paths: readonly string[]): string[] {
+  return [];
+}
+
+/** Which Tool drew a page, from its `<meta name="rendered-by">` or front matter. `undefined` when it does not say. */
+export function renderedByOf(text: string): string | undefined {
+  if (text.startsWith("---\n")) {
+    const fm = /^---\n([\s\S]*?)\n---/.exec(text)?.[1] ?? "";
+    const m = /^rendered-by:\s*(.+)$/m.exec(fm);
+    return m ? m[1]!.trim() : undefined;
+  }
+  return BY_META.exec(text)?.[1] || undefined;
+}
+
+/** Whether a page still carries the retired page-derived declaration (`renders:` or `<meta name="renders">`). */
+export function carriesRenders(text: string): boolean {
+  if (text.startsWith("---\n")) {
+    const fm = /^---\n([\s\S]*?)\n---/.exec(text)?.[1] ?? "";
+    return /^renders:/m.test(fm);
+  }
+  return RENDERS_META.test(text);
+}
+
+// ── The declarations ──────────────────────────────────────────────────────
+
+/** One declared visualiser, with the harness that declares it. */
+export interface DeclaredVisualiser extends HarnessVisualiser {
+  /** The declaring instance's `name` — the `<harness>` route segment. */
+  harness: string;
+  /** Its root, absolute. */
+  harnessRoot: string;
+}
+
+/** A declaration read raw: generators must not throw on an instance whose other fields a newer schema refuses. */
+interface RawDecl {
+  name?: string;
+  visualisers?: HarnessVisualiser[];
+  directories?: { id: string; path?: string; graphTypologies?: string[] }[];
+}
+
+function readRaw(root: string): RawDecl | undefined {
+  const p = declarationPathIn(root);
+  if (p === undefined || !existsSync(p)) return undefined;
+  try {
+    return JSON.parse(readFileSync(p, "utf-8")) as RawDecl;
+  } catch {
+    return undefined;
+  }
+}
+
+/** Every instance root in the checkout: top level, and every remote mount wherever it landed. */
+export function checkoutInstanceRoots(repoRoot: string): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const r of [...instanceRootsIn(repoRoot), ...mountedInstanceRoots(repoRoot).values()]) {
+    const abs = resolve(r);
+    if (seen.has(abs)) continue;
+    seen.add(abs);
+    out.push(abs);
+  }
+  return out;
+}
+
+const declaredCache = new Map<string, DeclaredVisualiser[]>();
+
+/**
+ * Every visualiser every instance in the checkout declares, in instance order.
+ *
+ * Read from the declarations as written — the `visualisers` array of each
+ * `<instance>.json` — so this answers the same in a standalone repository and
+ * in the composed checkout, with no mount-path rewriting: a route is
+ * `<harness>/<id>/` wherever the harness's files happen to sit.
+ */
+export function declaredVisualisers(repoRoot: string): DeclaredVisualiser[] {
+  const key = resolve(repoRoot);
+  const hit = declaredCache.get(key);
+  if (hit !== undefined) return hit;
+  const out: DeclaredVisualiser[] = [];
+  for (const root of checkoutInstanceRoots(repoRoot)) {
+    const d = readRaw(root);
+    if (d?.name === undefined) continue;
+    for (const v of d.visualisers ?? []) out.push({ ...v, harness: d.name, harnessRoot: root });
+  }
+  declaredCache.set(key, out);
+  return out;
+}
+
+/** Forget what {@link declaredVisualisers} read — for a test that rewrites a declaration mid-process. */
+export function clearDeclaredVisualisers(): void {
+  declaredCache.clear();
+}
+
+/** The visualisers one Tool is declared to draw. */
+export function visualisersRenderedBy(repoRoot: string, tool: string): DeclaredVisualiser[] {
+  return declaredVisualisers(repoRoot).filter((v) => v.renderedBy === tool);
+}
+
+/**
+ * The ONE visualiser a Tool draws for one harness — what a generator that
+ * writes a single page per harness asks. Throws when the harness declares
+ * none or several for that Tool, rather than taking the first: a generator
+ * writing to a route nobody declared is the defect this module exists to end.
+ */
+export function visualiserFor(harnessRoot: string, tool: string, repoRoot: string = repoRootFor(harnessRoot)): DeclaredVisualiser {
+  const mine = visualisersRenderedBy(repoRoot, tool).filter((v) => resolve(v.harnessRoot) === resolve(harnessRoot));
+  if (mine.length === 0) {
+    // The harness may not be under `repoRoot` (a standalone repository): read it directly.
+    const d = readRaw(harnessRoot);
+    const own = (d?.visualisers ?? []).filter((v) => v.renderedBy === tool);
+    if (d?.name !== undefined && own.length === 1) return { ...own[0]!, harness: d.name, harnessRoot: resolve(harnessRoot) };
+    throw new Error(
+      `${harnessRoot}: declares ${own.length === 0 ? "no" : own.length} visualiser(s) rendered by \`${tool}\` — ` +
+        "declare exactly one in its `visualisers` (cat-harness/schemas/cat-harness.ts, HarnessVisualiserSchema)",
+    );
+  }
+  if (mine.length > 1) {
+    throw new Error(`${harnessRoot}: declares ${mine.length} visualisers rendered by \`${tool}\` (${mine.map((v) => v.id).join(", ")}); ask by covered directory instead`);
+  }
+  return mine[0]!;
+}
+
+/**
+ * The SITE directory every visualiser page is written into: the docs layer
+ * of the instance that owns the site — cat-harness's, the Jekyll source
+ * every deploy builds (`compose-docs.ts`'s base layer). A page of ANY
+ * harness lives at `<site>/<harness>/<visualiser>/…`, which is the route, so
+ * the file and the URL cannot disagree.
+ */
+export function siteOwnerDir(repoRoot: string): string {
+  const owner = checkoutInstanceRoots(repoRoot).find((r) => readRaw(r)?.name === "cat-harness");
+  // A checkout with no cat-harness instance is a folio standing alone: its own
+  // root's site directory is the site.
+  const root = owner ?? resolve(repoRoot);
+  try {
+    return join(root, siteDirFor(root));
+  } catch {
+    // No declaration there at all (a fixture, a bare directory): the
+    // conventional answer `siteDir` gives every instance.
+    return join(root, "docs");
+  }
+}
+
+/** The absolute directory a visualiser view is written into: `<site>/<route>`. */
+export function visualiserPageDir(site: string, parts: VisualiserRouteParts): string {
+  return join(site, ...visualiserRoute(parts).split("/").filter(Boolean));
+}
+
+/**
+ * The page file of a view, REPOSITORY-relative — `index.html`, or `index.md`
+ * when that is what is on disk (Jekyll builds both to the same URL).
+ * `index.html` when neither is there, which is what a publish-time page
+ * (`writer`, bean `0b8c`) will be.
+ */
+export function visualiserPageRef(repoRoot: string, parts: VisualiserRouteParts, site: string = siteOwnerDir(repoRoot)): string {
+  const dir = visualiserPageDir(site, parts);
+  const file = existsSync(join(dir, "index.md")) && !existsSync(join(dir, "index.html")) ? "index.md" : "index.html";
+  return renderedPath(repoRoot, join(dir, file));
 }
 
 /**
  * The directories of a kind the handler instance declares, as a page names
- * them. For a generator drawing ONE page per kind: it renders what its
- * instance handles, which is what its declaration says.
- *
- * `corpus`: the handler AND every instance stacked on it (placement PR0, bean
- * `ejye`) — for a page that drew its dependents' directories through the
- * platform's `scope: "repository"` mirrors (the methodology viewer), and now
- * asks the checkout for them instead. Default is the handler alone.
+ * them. `corpus`: the handler AND every instance stacked on it.
  */
 export function handledDirectories(
   repoRoot: string,
@@ -171,28 +275,47 @@ export function handledDirectories(
 }
 
 /**
- * The page a directory's tile opens, derived from the pages (#1168 B7a-2b).
- *
- * Only pages drawn by a Tool that renders one of the directory's KINDS count:
- * a generated index that lists the directory among others is not its viewer.
- * Among those, the most specific — the page naming the fewest directories,
- * then the deepest path — so a subject page wins over the page for every
- * subject. `undefined` when no such page exists.
- *
- * @param kindsByTool each viewer Tool's `renders` list, by Tool id
+ * The directory a one-page viewer writes into, for the visualiser `tool`
+ * draws for this harness: `<site>/<harness>/<id>/`. Replaces the old
+ * `conventionalPage`, which composed `<directory basename>/index.md` from the
+ * handled directory — a URL the generator chose rather than the declaration.
  */
-export function viewerPageFor(
-  dirPath: string,
-  graphTypologies: readonly string[],
-  pages: readonly ViewerPage[],
-  kindsByTool: ReadonlyMap<string, readonly string[]>,
-): string | undefined {
-  const want = dirPath.replace(/\/+$/, "");
-  const depth = (p: string): number => p.split("/").length;
-  return pages
-    .filter((p) => p.renders.includes(want))
-    .filter((p) => p.renderedBy !== undefined && (kindsByTool.get(p.renderedBy) ?? []).some((k) => graphTypologies.includes(k)))
-    .sort((a, b) => a.renders.length - b.renders.length || depth(b.page) - depth(a.page) || a.page.localeCompare(b.page))[0]?.page;
+export function visualiserPageFor(harnessRoot: string, tool: string, site: string): { dir: string; visualiser: DeclaredVisualiser } {
+  const v = visualiserFor(harnessRoot, tool);
+  return { dir: visualiserPageDir(site, { harness: v.harness, visualiser: v.id }), visualiser: v };
+}
+
+/**
+ * Where a one-page viewer writes, RELATIVE TO THE SITE DIRECTORY, and the
+ * relative path back to the site root from there: the visualiser `tool`
+ * draws for the harness at `harnessRoot`, at `<harness>/<id>/<file>`.
+ */
+export function visualiserSitePath(harnessRoot: string, tool: string, file = "index.md"): { rel: string; up: string; visualiser: DeclaredVisualiser } {
+  const v = visualiserFor(harnessRoot, tool);
+  const parts = { harness: v.harness, visualiser: v.id };
+  return { rel: visualiserRoute({ ...parts, asset: file }), up: siteRootFrom(parts), visualiser: v };
+}
+
+/**
+ * The SITE-RELATIVE route prefix, `<harness>/<id>`, of the visualiser `tool`
+ * draws for the harness at `harnessRoot` — for a generator that places a full
+ * view and per-sub-graph views beneath it (`viewerPlacement(site, route)`,
+ * `${route}/${subject}`). `undefined` when the harness declares none: a
+ * generator then writes nothing, because no declaration means no route.
+ */
+export function declaredRoute(harnessRoot: string, tool: string): string | undefined {
+  try {
+    const v = visualiserFor(harnessRoot, tool);
+    return visualiserRoute({ harness: v.harness, visualiser: v.id }).replace(/\/$/, "");
+  } catch {
+    return undefined;
+  }
+}
+
+/** @deprecated Retained for one release: the kind's declared directory basename. Use {@link visualiserSitePath}. */
+export function conventionalPage(handlerRoot: string, kind: string): string | undefined {
+  const dir = instanceDirectoryForGraph(handlerRoot, kind);
+  return dir === undefined ? undefined : `${basename(dir)}/index.md`;
 }
 
 // ── Reading a directory's viewers ─────────────────────────────────────────
@@ -207,65 +330,37 @@ export interface ViewedDirectory {
   tile?: Tile;
 }
 
-let cache: { repoRoot: string; pages: ViewerPage[]; kindsByTool: Map<string, readonly string[]> } | undefined;
-
 /**
- * The viewer pages and each viewer Tool's kinds, read once per repository.
+ * Does visualiser `v` cover directory `d` of the instance named `owner`
+ * rooted at `ownerRoot`?
  *
- * Tracked pages only, plus those of a remote-mounted instance: an untracked
- * page is not something a published site carries, and counting one would
- * make a result depend on a working tree. A mounted instance's pages are the
- * exception the declaration makes: the publish build writes them over the
- * mount (`smart:pages:publish`), so the site does carry them.
+ * - `covers`: only the declaring harness's own directories, by id;
+ * - `coversKinds`: any directory of those kinds in the corpus stacked on the
+ *   declaring harness (`corpusDirectoriesForGraph`).
  */
-function index(repoRoot: string): NonNullable<typeof cache> {
-  if (cache?.repoRoot === repoRoot) return cache;
-  // input-site: tree #866bc4e1 — ls-files: the index
-  const files = Bun.spawnSync(["git", "ls-files", "*.md", "*.html"], { cwd: repoRoot })
-    .stdout.toString().split("\n").filter(Boolean);
-  // ...and the pages of every REMOTE-MOUNTED instance (bean `hupw`). Those
-  // instances are another repository's bytes, never tracked here, and the
-  // pages their viewers draw are built at publish (`smart:pages`), so the
-  // site carries them while git does not. A mount is declared, so this is
-  // the declaration answering, not the working tree.
-  for (const root of mountedInstanceRoots(repoRoot).values()) {
-    const walk = (d: string): void => {
-      for (const e of existsSync(d) ? readdirSync(d, { withFileTypes: true }) : []) {
-        if (e.name === "node_modules" || e.name.startsWith(".")) continue;
-        const p = join(d, e.name);
-        if (e.isDirectory()) walk(p);
-        else if (/\.(md|html)$/.test(e.name)) files.push(relative(repoRoot, p).split(sep).join("/"));
-      }
-    };
-    walk(root);
-  }
-  const kindsByTool = new Map(
-    tools().flatMap((t) => (t.renders && t.renders.length > 0 ? [[t.id, t.renders] as const] : [])),
-  );
-  // A page inside a REMOTE MOUNT was generated in its own repository, so its
-  // `renders` paths are relative to THAT repository: cat-harness's schemas
-  // viewer says `schemas`, which in this checkout is `cat-harness/schemas`.
-  // Each such entry is read both ways, so the same page resolves standalone
-  // (its repository is the checkout) and composed (it is a mount in one).
-  const mountRels = [...mountedInstanceRoots(repoRoot).values()]
-    .map((r) => relative(repoRoot, r).split(sep).join("/"))
-    .filter((r) => r !== "" && !r.startsWith(".."));
-  const pages = viewerPages(repoRoot, files).map((p) => {
-    const own = mountRels.find((m) => p.page.startsWith(`${m}/`));
-    return own === undefined ? p : { ...p, renders: [...new Set([...p.renders, ...p.renders.map((e) => `${own}/${e}`)])] };
+export function covers(v: DeclaredVisualiser, d: ViewedDirectory, owner: string, absDir: string): boolean {
+  if (v.harness === owner && (v.covers ?? []).includes(d.id)) return true;
+  const kinds = (v.coversKinds ?? []).filter((k) => (d.graphTypologies ?? []).includes(k));
+  if (kinds.length === 0) return false;
+  const want = resolve(absDir);
+  return kinds.some((k) => {
+    try {
+      return corpusDirectoriesForGraph(v.harnessRoot, k).some((p) => resolve(p) === want);
+    } catch {
+      return false;
+    }
   });
-  cache = { repoRoot, pages, kindsByTool };
-  return cache;
 }
 
 /**
- * Every visualisation of a declared directory, normalised.
+ * Every visualisation of a declared directory, normalised: one per declared
+ * visualiser that covers it, the page being that visualiser's route.
  *
- * The page is DERIVED — {@link viewerPageFor} over the pages that say they draw
- * this directory — and dressed in the directory's own {@link Tile}. A directory
- * whose viewer no platform generator draws (fsh-guts, a folio's own
- * generator) still declares it in `coverage.visualiser`, and that is returned
- * as declared. `[]` when neither exists.
+ * The page a tile opens is the SUB-GRAPH view when the visualiser draws
+ * per-sub-graph pages (`subgraphs: "instance" | "directory"`) and that page
+ * exists, else the full view. Dressed in the visualiser's tile fields, then
+ * the directory's own {@link Tile} — a directory's presentation is its own
+ * business. `[]` when nothing covers it.
  *
  * @param instanceRoot the root of the instance whose declaration `d` is from
  */
@@ -274,23 +369,39 @@ export function viewersOf(
   instanceRoot: string,
   repoRoot: string = repoRootFor(instanceRoot),
 ): Array<Visualisation & { title: string }> {
-  const declared = visualisationsOf(d.coverage, d.id);
-  if (declared.length > 0) return declared;
-  const { pages, kindsByTool } = index(repoRoot);
-  const dirPath = renderedPath(repoRoot, join(d.scope === "repository" ? repoRoot : instanceRoot, d.path));
-  const page = viewerPageFor(dirPath, d.graphTypologies ?? [], pages, kindsByTool);
-  if (page === undefined) return [];
-  return [{ ...d.tile, ref: page, title: d.tile?.title ?? d.id }];
+  // The OWNER is the instance whose declaration carries the entry: this one,
+  // or — for an entry `siteDirectories` presented from the checkout root —
+  // the root. A `repository`-scoped path resolves from the checkout either way.
+  const own = readRaw(instanceRoot);
+  const owner = (own?.directories ?? []).some((x) => x.id === d.id) ? own?.name : (readRaw(repoRoot)?.name ?? own?.name);
+  if (owner === undefined) return [];
+  const absDir = join(d.scope === "repository" ? repoRoot : instanceRoot, d.path);
+  let site: string | undefined;
+  const out: Array<Visualisation & { title: string }> = [];
+  for (const v of declaredVisualisers(repoRoot)) {
+    if (!covers(v, d, owner, absDir)) continue;
+    site ??= siteOwnerDir(repoRoot);
+    const full = { harness: v.harness, visualiser: v.id };
+    const under = (d.graphTypologies ?? []).map((k) => v.subgraphUnder?.[k]).find((u) => u !== undefined);
+    const sub = v.subgraphs === "instance" ? owner : v.subgraphs === "directory" ? (under ? `${under}/${d.id}` : d.id) : undefined;
+    const subRef = sub === undefined ? undefined : visualiserPageRef(repoRoot, { ...full, subgraph: sub }, site);
+    const ref = subRef !== undefined && existsSync(join(repoRoot, subRef)) ? subRef : visualiserPageRef(repoRoot, full, site);
+    const { id: _id, renderedBy: _by, covers: _c, coversKinds: _k, subgraphs: _s, subgraphUnder: _u, alias: _a, harness: _h, harnessRoot: _r, ...tile } = v;
+    // `writer` is declared relative to the HARNESS (its own scripts), and read
+    // repository-relative like `ref`, so a mount path is never written down.
+    const writer = v.writer?.map((w) => renderedPath(repoRoot, join(v.harnessRoot, w)));
+    // The directory's tile is the DEFAULT dress; what the visualiser declares
+    // about itself wins, since a directory drawn twice needs two names.
+    out.push({ ...d.tile, ...tile, ...(writer ? { writer } : {}), ref, title: v.title ?? d.tile?.title ?? d.id });
+  }
+  return out;
 }
 
 /**
  * Declared directories with their viewers RESOLVED — `coverage.visualiser`
- * filled in from {@link viewersOf}, in memory.
- *
- * For the readers that were written against the declared field and stay pure
- * (`graph-tiles.ts`, `harness-tiles.ts`): the directory list is resolved where
- * it is read from disk, and everything downstream keeps asking
- * `visualisationsOf` exactly as before. The declaration on disk is untouched.
+ * filled in from {@link viewersOf}, in memory, for the readers written
+ * against that field (`graph-tiles.ts`, `harness-tiles.ts`). The declaration
+ * on disk is untouched, and carries no such field.
  */
 export function siteDirectories<T extends ViewedDirectory>(
   own: readonly T[],
@@ -300,11 +411,9 @@ export function siteDirectories<T extends ViewedDirectory>(
   // The site this instance builds draws the CHECKOUT, and since placement PR0
   // (bean `ejye`) the checkout's own directories — `beans/`, `todos/`,
   // `fsh-guts/`, `memory/`, the root docs overlay — are declared by the
-  // checkout's ROOT instance rather than mirrored here with
-  // `scope: "repository"`. They are read from there and presented exactly as
-  // they were: repository-scoped entries of this site, with their ids
-  // unchanged, so a tile, an icon and a dashboard keep their address. An id
-  // this instance already declares wins (its own `docs`, `uploads`).
+  // checkout's ROOT instance. They are read from there and presented as
+  // repository-scoped entries of this site, ids unchanged. An id this
+  // instance already declares wins.
   if (resolve(repoRoot) === resolve(instanceRoot)) return [...own];
   const p = declarationPathIn(repoRoot);
   if (p === undefined) return [...own];
@@ -329,23 +438,4 @@ export function withViewers<T extends ViewedDirectory>(
     if (v.length === 0) return d;
     return { ...d, coverage: { ...d.coverage, visualiser: v as [Visualisation, ...Visualisation[]] } };
   });
-}
-
-/**
- * Where a one-page viewer writes: `<the declared directory's own name>/index.md`
- * under the base docs layer.
- *
- * Until #1168 B7a-2b these generators read their output path from the
- * directory's `coverage.visualiser` — the directory naming its viewer. The
- * rule now is the one `gen-schema-viz.ts` already followed: the published
- * segment is the DECLARED directory's own name, read rather than written down,
- * so a rename moves the source and the URL together.
- *
- * `undefined` when the handler declares no directory of the kind.
- */
-export function conventionalPage(handlerRoot: string, kind: string): string | undefined {
-  // THE one at the handler's own root — `instanceDirectoryForGraph` refuses
-  // rather than silently taking the first of several (bean `no-silent-first`).
-  const dir = instanceDirectoryForGraph(handlerRoot, kind);
-  return dir === undefined ? undefined : `${basename(dir)}/index.md`;
 }

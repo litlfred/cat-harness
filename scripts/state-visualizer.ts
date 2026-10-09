@@ -150,8 +150,9 @@ import { withViewerNav } from "./viewer-page.ts";
 import {
   renderedPath,
   siteDirectories,
-  withRenders,
-  withRendersFrontMatter,
+  visualiserPageDir,
+  withRenderedBy,
+  withRenderedByFrontMatter,
   withViewers,
 } from "./viewer-declarations.js";
 
@@ -172,6 +173,17 @@ const SITE = join(ROOT, siteDirFor(ROOT));
 const REPO_ROOT = repoRootFor(ROOT);
 
 const check = process.argv.slice(2).includes("--check");
+
+let harnessName: string | undefined;
+/**
+ * Where a dashboard is drawn: `<site>/<harness>/<vis>/`, the declared route
+ * (`visualiserRoute`, owner 2026-10-09). The harness segment is this
+ * instance's declared `name`, read once.
+ */
+function pageDirOf(vis: string): string {
+  harnessName ??= readDeclaration(ROOT)?.name ?? basename(ROOT);
+  return visualiserPageDir(SITE, { harness: harnessName, visualiser: vis });
+}
 
 /*
  * No renderer is inlined any more (#2418). Every dashboard is a THEMED page on
@@ -243,8 +255,14 @@ const RESERVED_IDS = new Set(["assets"]);
 type GraphState = "live" | "elsewhere" | "declared" | "unresolved";
 
 interface StateGraph {
-  /** The declared entry's id — the URL segment. See the module note. */
+  /** The declared entry's id — which names its projection, `assets/<id>/`. */
   id: string;
+  /**
+   * The id of the VISUALISER this harness declares for it — the URL segment,
+   * `<base>/<harness>/<vis>/` (owner, 2026-10-09). Usually the directory id;
+   * `uploads-queue` for `uploads`, whose id is the uploads viewer's route.
+   */
+  vis: string;
   /** Its path, relative to the instance root, as declared. */
   path: string;
   /** The graph typologies in it that are `state`. */
@@ -334,9 +352,10 @@ function projectionFor(id: string): string | null {
 export function declaredVisualiserFor(
   id: string,
   cov: string | undefined,
-  roots: { site: string; repoRoot: string } = { site: SITE, repoRoot: REPO_ROOT },
+  roots: { site: string; repoRoot: string; pageDir?: string } = { site: SITE, repoRoot: REPO_ROOT },
 ): Pick<StateGraph, "state" | "declaredVisualiser" | "href"> {
   const { site: SITE, repoRoot: REPO_ROOT } = roots;
+  const pageDir = roots.pageDir ?? join(SITE, id);
   if (!cov) return { state: "declared" };
   // REPO-root relative — see `REPO_ROOT`. This is the line that would silently
   // report all 27 as missing if it used `ROOT`.
@@ -350,7 +369,7 @@ export function declaredVisualiserFor(
   return {
     state: "elsewhere",
     declaredVisualiser: cov,
-    ...(inSite ? { href: relative(join(SITE, id), target) } : {}),
+    ...(inSite ? { href: relative(pageDir, target).split(sep).join("/") } : {}),
   };
 }
 
@@ -361,13 +380,18 @@ export function declaredVisualiserFor(
  * name the URL this instance publishes at, which is the same trap
  * `gen-schema-viz.ts` documents on `schemaRoots`.
  */
-function stateGraphsOf(decl: CatHarnessDeclaration): StateGraph[] {
+function stateGraphsOf(decl: CatHarnessDeclaration, visOf: ReadonlyMap<string, string>, ownRefs: ReadonlySet<string>): StateGraph[] {
   const out: StateGraph[] = [];
   for (const d of decl.directories ?? []) {
     const kinds = (d.graphTypologies ?? []).filter((g) => STATE_KINDS.has(g) && isStateGraph(g));
     if (kinds.length === 0) continue;
+    // DRAWN ONLY WHERE THE HARNESS DECLARES IT (owner, 2026-10-09): a state
+    // graph with no `visualisers` entry rendered by this Tool gets no page.
+    const vis = visOf.get(d.id);
+    if (vis === undefined) continue;
     out.push({
       id: d.id,
+      vis,
       path: d.path,
       kinds,
       ...(projectionFor(d.id) === null
@@ -377,7 +401,13 @@ function stateGraphsOf(decl: CatHarnessDeclaration): StateGraph[] {
           // that — `harness-tiles.ts` checks every ref and is where a broken
           // second viewer surfaces. Passing the whole list here would need a
           // state per visualisation, which is a different page.
-          declaredVisualiserFor(d.id, visualisationsOf(d.coverage, d.id)[0]?.ref)
+          // ANOTHER visualiser of the graph — this generator's own page is
+          // not "elsewhere".
+          declaredVisualiserFor(d.id, visualisationsOf(d.coverage, d.id).find((v) => !ownRefs.has(v.ref))?.ref, {
+            site: SITE,
+            repoRoot: REPO_ROOT,
+            pageDir: pageDirOf(vis),
+          })
         : { state: "live" as const }),
       // The declaration's own words, clipped to its first sentence. Restating
       // what a directory is for, here, would be a second description free to
@@ -550,9 +580,10 @@ const SV_CSS = `.sv-page a:not(.fa-workplan a) { color: inherit; text-decoration
 function registry(graphs: StateGraph[], current: string): string {
   const rows = graphs.map((g) => {
     const here = g.id === current;
+    // Siblings share the harness segment, so `../<vis>/` is the sibling route.
     const name = here
       ? `<span class="sv-here">${esc(g.id)}</span>`
-      : `<a href="../${esc(g.id)}/">${esc(g.id)}</a>`;
+      : `<a href="../${esc(g.vis)}/">${esc(g.id)}</a>`;
     return `  <li class="sv-item${here ? " is-here" : ""}">
     <h2>${name}<span class="sv-tag is-${g.state}">${g.state}</span></h2>
     <p>${g.description ? describe(g.description) : esc(g.path)}</p>
@@ -571,8 +602,8 @@ ${rows}
  * — resolved rather than string-trimmed, so it stays correct if a dashboard
  * ever sits at a depth other than one.
  */
-function siteUrlOf(href: string, fromId: string): string {
-  const abs = relative(SITE, join(SITE, fromId, href));
+function siteUrlOf(href: string, fromVis: string): string {
+  const abs = relative(SITE, join(pageDirOf(fromVis), href));
   return `/${abs.split(sep).join("/")}`;
 }
 
@@ -592,7 +623,7 @@ function notDrawnHere(g: StateGraph): string {
     // against the disk and the wrong thing to show somebody in a browser.
     const dir = (h: string) => h.replace(/(^|\/)index\.html$/, "$1");
     const where = g.href
-      ? `<a href="${esc(dir(g.href))}">${esc(dir(siteUrlOf(g.href, g.id)))}</a>`
+      ? `<a href="${esc(dir(g.href))}">${esc(dir(siteUrlOf(g.href, g.vis)))}</a>`
       : `<code>${esc(g.declaredVisualiser ?? "")}</code> (not published by this site)`;
     return (
       `<p class="sv-sub">This graph is <strong>rendered elsewhere</strong>. Nothing ` +
@@ -639,9 +670,9 @@ function dashboardPage(g: StateGraph, graphs: StateGraph[]): string {
     });
   }
 
-  // `../../assets/<id>/index.json` — the projection `gen-docs-pages.ts`
-  // already publishes, read relative to this page rather than composed.
-  const src = `../assets/${esc(g.id)}/index.json`;
+  // The projection `gen-docs-pages.ts` already publishes, read relative to
+  // this page rather than composed — the page sits at `<harness>/<vis>/`.
+  const src = esc(relative(pageDirOf(g.vis), join(SITE, "assets", g.id, "index.json")).split(sep).join("/"));
 
   // WHICH renderer, asked of the projection's own `$schema` rather than of the
   // graph's id.
@@ -929,10 +960,22 @@ const rootRead = resolve(REPO_ROOT) === resolve(ROOT) ? undefined : readDeclarat
 const rootDirs = rootRead ? withViewers(rootRead.directories ?? [], REPO_ROOT, REPO_ROOT) : [];
 const ownIds = new Set((decl.directories ?? []).map((d) => d.id));
 const checkoutDirs = rootDirs.filter((d) => !ownIds.has(d.id));
-const all = [...stateGraphsOf(decl), ...stateGraphsOf({ ...decl, directories: checkoutDirs })].sort((a, b) =>
-  a.id.localeCompare(b.id),
-);
-const taken = all.filter((g) => RESERVED_IDS.has(g.id) || g.id.startsWith("_"));
+// THE DECLARED VISUALISERS this Tool draws for this harness — the only pages
+// it writes, each at `<harness>/<id>/` (owner, 2026-10-09).
+const mine = (declRead?.visualisers ?? []).filter((v) => v.renderedBy === VIEWER_TOOL);
+const visOf = new Map<string, string>();
+for (const v of mine) for (const c of v.covers ?? []) if (!visOf.has(c)) visOf.set(c, v.id);
+const ownRefs = new Set(mine.map((v) => renderedPath(REPO_ROOT, join(pageDirOf(v.id), "index.html"))));
+const all = [
+  ...stateGraphsOf(decl, visOf, ownRefs),
+  ...stateGraphsOf({ ...decl, directories: checkoutDirs }, visOf, ownRefs),
+].sort((a, b) => a.id.localeCompare(b.id));
+for (const v of mine) {
+  if (!all.some((g) => g.vis === v.id)) {
+    console.error(`  ! visualiser \`${v.id}\` covers no declared state graph (${(v.covers ?? []).join(", ") || "no covers"}) — nothing drawn`);
+  }
+}
+const taken = all.filter((g) => RESERVED_IDS.has(g.vis) || g.vis.startsWith("_"));
 for (const g of taken) {
   console.error(
     `  ! declared directory \`${g.id}\` collides with a route this site already uses — ` +
@@ -950,7 +993,7 @@ for (const g of taken) {
 //
 // Same shape as `portable-path.ts`'s device names — encoding does not rescue
 // every id, and saying so beats mangling one.
-const unportable = all.filter((g) => !taken.includes(g) && unportableSegment(g.id));
+const unportable = all.filter((g) => !taken.includes(g) && unportableSegment(g.vis));
 for (const g of unportable) {
   console.error(
     `  ! declared directory \`${g.id}\` cannot be a directory or a route on every platform ` +
@@ -959,29 +1002,25 @@ for (const g of unportable) {
 }
 const graphs = all.filter((g) => !taken.includes(g) && !unportable.includes(g));
 
-// Each dashboard says which directory it draws (#1168 B7a-2), resolved the
-// way the declaration resolves it: a `repository`-scoped path from the
-// repository root, any other from this instance's.
-const drawnDir = (g: StateGraph): string => {
-  const entry = decl.directories?.find((d) => d.id === g.id);
-  // An entry the checkout root declares resolves against the root, which is
-  // where a `repository`-scoped entry of this instance resolved too.
-  const base = entry === undefined || entry.scope === "repository" ? REPO_ROOT : ROOT;
-  return renderedPath(REPO_ROOT, join(base, g.path));
-};
 for (const g of graphs) {
-  // A themed page (front matter: `todos`) declares what it renders in its
-  // front matter; a standalone one in its `<head>`. Asked of the page.
+  // A themed page (front matter: `todos`) names its Tool in its front matter;
+  // a standalone one in its `<head>`. Provenance only — the route is declared.
   const html = dashboardPage(g, graphs);
-  const declare = html.startsWith("---\n") ? withRendersFrontMatter : withRenders;
-  emit(join(SITE, g.id, "index.html"), declare(html, [drawnDir(g)], VIEWER_TOOL));
+  const html2 = html.startsWith("---\n") ? withRenderedByFrontMatter(html, VIEWER_TOOL) : withRenderedBy(html, VIEWER_TOOL);
+  emit(join(pageDirOf(g.vis), "index.html"), html2);
 }
 
 // Orphans, AFTER the writes so the keep-set is what this run actually wanted.
 // Reported by name rather than counted: a deletion nobody is told about is the
 // shape `deletion-requires-confirmation` exists to stop, and a bare number
 // would not let a reader check the tool picked the right files.
-const orphans = prunableDashboards(SITE, graphs.map((g) => g.id));
+// Under the harness's own segment, and — once, for the move of 2026-10-09 —
+// at the site root, where every dashboard was drawn before. Both are safe for
+// the same reason: only a page carrying GENERATED_BY is ever a candidate.
+const orphans = [
+  ...prunableDashboards(join(SITE, harnessName ?? basename(ROOT)), graphs.map((g) => g.vis)).map((o) => join(harnessName ?? basename(ROOT), o)),
+  ...prunableDashboards(SITE, []),
+].sort();
 for (const o of orphans) {
   console.error(`  ${check ? "!" : "-"} orphan dashboard ${check ? "" : "removed "}${o}`);
 }

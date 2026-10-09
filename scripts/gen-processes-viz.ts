@@ -88,7 +88,7 @@ import {
 } from "../schemas/role-graph.js";
 import { ownElementPattern } from "../schemas/namespaces.js";
 import { processPresentations, type Presentation } from "./process-presentations.js";
-import { conventionalPage, handledDirectories, withRendersFrontMatter } from "./viewer-declarations.js";
+import { visualiserSitePath, withRenderedByFrontMatter } from "./viewer-declarations.js";
 
 /** This generator's Tool node (`tools/viewers.ts`), named on every page it draws. */
 const VIEWER_TOOL = "processes-viewer";
@@ -535,7 +535,7 @@ export function page(rows: readonly ProcessRow[], skillPages: ReadonlySet<string
   // loaded row publishes no page, so it stays code.
   const pageOf = new Map(ok.map((r) => [r.file, r.stem]));
   const skillCell = (s: string): string =>
-    skillPages.has(s) ? `[\`${esc(s)}\`](../reference/skill-instructions/${s}.html)` : `\`${esc(s)}\``;
+    skillPages.has(s) ? `[\`${esc(s)}\`](${up()}reference/skill-instructions/${s}.html)` : `\`${esc(s)}\``;
   const runBy = (f: string): string => {
     const stem = pageOf.get(f);
     return stem === undefined ? `\`${esc(basename(f))}\`` : `[\`${esc(basename(f))}\`](${stem}.html)`;
@@ -678,7 +678,7 @@ export function processPage(
 ): string {
   const byId = new Map(rows.map((r) => [r.id, r]));
   const skill = (s: string): string =>
-    skillPages.has(s) ? `[\`${s}\`](../reference/skill-instructions/${s}.html)` : `\`${s}\``;
+    skillPages.has(s) ? `[\`${s}\`](${up()}reference/skill-instructions/${s}.html)` : `\`${s}\``;
   const proc = (r: ProcessRow): string => `[${esc(r.name)}](${r.stem}.html)`;
   /**
    * A `<bpmn:documentation>` body inside a MARKDOWN TABLE CELL.
@@ -727,7 +727,7 @@ export function processPage(
   L.push(row.documentation ?? "_This process carries no `<bpmn:documentation>`._");
   L.push("");
   if (row.svg) {
-    L.push(`<img src="../assets/img/workflows/${row.stem}.svg" alt="BPMN diagram: ${esc(row.name).replace(/"/g, "&quot;")}" style="max-width:100%">`);
+    L.push(`<img src="${up()}assets/img/workflows/${row.stem}.svg" alt="BPMN diagram: ${esc(row.name).replace(/"/g, "&quot;")}" style="max-width:100%">`);
   } else {
     L.push("_No rendered diagram — run `bun run cat render:bpmn`._");
   }
@@ -749,7 +749,7 @@ export function processPage(
     `- **Presented on:** ${
       presentedOn.length
         ? presentedOn
-            .map((p) => `[${esc(p.pageTitle)}${p.title ? ` — ${esc(p.title)}` : ""}](../${p.href}#${p.node})`)
+            .map((p) => `[${esc(p.pageTitle)}${p.title ? ` — ${esc(p.title)}` : ""}](${up()}${p.href}#${p.node})`)
             .join(", ")
         : "no docs page section shows this diagram"
     }`,
@@ -813,11 +813,26 @@ export function processPage(
 }
 
 /**
- * Where the page goes: the declared directory's own name (#1168 B7a-2b,
- * `conventionalPage`). Never a literal — `site-dir-single-answer` refuses one.
+ * Where the page goes: the route of the visualiser cat-harness DECLARES this
+ * Tool draws — `cat-harness/processes/index.md` (owner, 2026-10-09:
+ * `<base>/<harness>/<visualizer>`). Never a literal — `site-dir-single-answer`
+ * refuses one, and the declaration is the only thing that names it.
  */
 export function pageRelPath(repo = REPO): string | undefined {
-  return conventionalPage(join(repo, "cat-harness"), KIND);
+  try {
+    return visualiserSitePath(join(repo, "cat-harness"), VIEWER_TOOL).rel;
+  } catch {
+    return undefined;
+  }
+}
+
+/** From a page of this viewer back to the site root — the route's depth, never a literal `../`. */
+function up(repo = REPO): string {
+  try {
+    return visualiserSitePath(join(repo, "cat-harness"), VIEWER_TOOL).up;
+  } catch {
+    return "../../";
+  }
 }
 
 /**
@@ -830,11 +845,7 @@ export function publishedIndex(
   repo = REPO,
   skillPages: ReadonlySet<string> = skillPagesOf(repo),
 ): string {
-  return withRendersFrontMatter(
-    page(rows, skillPages),
-    instanceRoots(repo).flatMap((r) => handledDirectories(repo, r, KIND)),
-    VIEWER_TOOL,
-  );
+  return withRenderedByFrontMatter(page(rows, skillPages), VIEWER_TOOL);
 }
 
 if (import.meta.main) {
@@ -871,7 +882,7 @@ if (import.meta.main) {
   }
   // A page whose diagram is gone is REPORTED, never deleted — the
   // deletion-requires-confirmation rule, applied to generated output too.
-  const orphans = readdirSync(dirname(out))
+  const orphans = (existsSync(dirname(out)) ? readdirSync(dirname(out)) : [])
     .filter((f) => f.endsWith(".md"))
     .map((f) => join(dirname(out), f))
     .filter((f) => !pages.has(f));

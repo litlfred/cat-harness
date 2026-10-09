@@ -79,7 +79,7 @@ describe("classify", () => {
     expect(classify("cat-harness/test/results/translation-qa/docs/installation.fr.translation-qa.json").pattern?.id).toBe("derived-results");
     expect(classify("cat-harness/test/results/translation-qa/docs/installation.fr.translation-qa.json").strategy).toBe("take-base");
     expect(classify("cat-harness/docs/cat-harness/auto-docs/index/index.html").pattern?.id).toBe("auto-docs");
-    expect(classify("cat-harness/docs/glossary/index.md").pattern?.id).toBe("glossary");
+    expect(classify("cat-harness/docs/folio-assistant-core/glossary/index.md").pattern?.id).toBe("glossary");
     expect(classify("beans/README.md").strategy).toBe("generated-regions");
   });
 
@@ -191,13 +191,13 @@ describe("classify", () => {
 
   test("translated glossaries and viewer pages are taken; their authored neighbours are not", () => {
     for (const l of ["ar", "es", "fr", "ru", "zh"]) {
-      expect(classify(`cat-harness/docs/${l}/glossary/index.md`).pattern?.id).toBe("translated-glossary");
+      expect(classify(`cat-harness/docs/${l}/folio-assistant-core/glossary/index.md`).pattern?.id).toBe("translated-glossary");
     }
-    expect(classify("cat-harness/docs/external-schemas/index.md").pattern?.id).toBe("viewer-pages");
-    expect(classify("cat-harness/docs/processes/index.md").pattern?.id).toBe("viewer-pages");
-    expect(classify("cat-harness/docs/processes/merge-base.md").pattern?.id).toBe("viewer-pages");
-    expect(classify("cat-harness/docs/translation-status/index.html").pattern?.id).toBe("viewer-pages");
-    expect(classify("cat-harness/docs/methodologies/index.md").pattern?.id).toBe("viewer-pages");
+    expect(classify("cat-harness/docs/cat-harness/external-schemas/index.md").pattern?.id).toBe("viewer-pages");
+    expect(classify("cat-harness/docs/cat-harness/processes/index.md").pattern?.id).toBe("viewer-pages");
+    expect(classify("cat-harness/docs/cat-harness/processes/merge-base.md").pattern?.id).toBe("viewer-pages");
+    expect(classify("cat-harness/docs/cat-harness/translation-status/index.html").pattern?.id).toBe("viewer-pages");
+    expect(classify("cat-harness/docs/cat-harness/methodologies/index.md").pattern?.id).toBe("viewer-pages");
     // The fsh-guts viewer is no longer committed (built at publish, bean 0b8c),
     // so no pattern takes it: a merge cannot meet it, and if one ever did the
     // file would be a tracked copy check:derived-from refuses.
@@ -218,7 +218,7 @@ describe("classify", () => {
     // The unsafe neighbours: authored translations, and a locale no generator writes.
     expect(classify("cat-harness/docs/ar/index.md").strategy).toBe("refuse");
     expect(classify("cat-harness/docs/start/fr/getting-started.md").strategy).toBe("refuse");
-    expect(classify("cat-harness/docs/de/glossary/index.md").strategy).toBe("refuse");
+    expect(classify("cat-harness/docs/de/folio-assistant-core/glossary/index.md").strategy).toBe("refuse");
   });
 
   test("the PROV-O report is taken; the workflow instances it is derived FROM are refused", () => {
@@ -257,14 +257,15 @@ describe("classify", () => {
   test("generated VIEWERS of uploads/ are taken; uploads/ itself stays refused", () => {
     // The false positive found on #1764/#1775: `**/uploads/**` caught pages
     // that render uploads/ rather than being uploads.
-    expect(classify("cat-harness/docs/uploads/index.html").pattern?.id).toBe("viewer-pages");
+    expect(classify("cat-harness/docs/cat-harness/uploads-queue/index.html").pattern?.id).toBe("viewer-pages");
     expect(classify("cat-harness/docs/cat-harness/uploads/who-iris/index.html").pattern?.id).toBe("viewer-namespace");
     for (const p of ["beans", "todos", "health", "issue-marks", "swimlane-glossary"]) {
-      expect(classify(`cat-harness/docs/${p}/index.html`).pattern?.id).toBe("viewer-pages");
+      expect(classify(`cat-harness/docs/cat-harness/${p}/index.html`).pattern?.id).toBe("viewer-pages");
     }
-    for (const seg of ["catalogue", "folio", "library", "schemas", "voices"]) {
+    for (const seg of ["folio", "library", "schemas", "voices"]) {
       expect(classify(`cat-harness/docs/cat-harness/${seg}/index.html`).pattern?.id).toBe("viewer-namespace");
     }
+    expect(classify("cat-harness/docs/who-iris/catalogue/index.html").pattern?.id).toBe("viewer-namespace");
     expect(classify("cat-harness/docs/_includes/generated/navbar-footer.html").pattern?.id).toBe("navbar-include");
     expect(classify("cat-harness/test/results/viewer-nav/viewer-nav.qa.json").pattern?.id).toBe("viewer-nav-qa");
     // The real uploads stay refused, at the root and in any instance.
@@ -304,8 +305,8 @@ describe("classify", () => {
 
 describe("plan is all-or-nothing input", () => {
   test("one authored conflict among generated ones is reported as refused", () => {
-    const p = plan(["cat-harness/docs/glossary/index.md", "cat-harness/scripts/merge-base.ts"]);
-    expect(p.resolvable.map((c) => c.path)).toEqual(["cat-harness/docs/glossary/index.md"]);
+    const p = plan(["cat-harness/docs/folio-assistant-core/glossary/index.md", "cat-harness/scripts/merge-base.ts"]);
+    expect(p.resolvable.map((c) => c.path)).toEqual(["cat-harness/docs/folio-assistant-core/glossary/index.md"]);
     expect(p.refused.map((c) => c.path)).toEqual(["cat-harness/scripts/merge-base.ts"]);
   });
 });

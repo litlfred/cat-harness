@@ -53,11 +53,14 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
-import { declarationPathIn } from "../schemas/cat-harness.js";
 import { frozenSubtreeNote, fshGutsDirectory, withoutFrozenSubtrees } from "../schemas/fsh-guts.js";
 import { BranchStoreUsageError, exitUnlessMounted, readMarker } from "./branch-store.js";
 import { baseDocsDir } from "./compose-docs.js";
 import { publishPlan } from "./derive-at-publish.js";
+import { visualiserSitePath } from "./viewer-declarations.js";
+
+/** This generator's Tool node (`tools/viewers.ts`), which cat-harness declares its `fsh-guts` visualiser `renderedBy`. */
+const VIEWER_TOOL = "fsh-guts-viewer";
 
 const REPO = resolve(import.meta.dir, "..", "..");
 const TAG = "folio-fsh-guts/v1";
@@ -97,45 +100,24 @@ export function gutsDir(repo = REPO): string | undefined {
 }
 
 /** The declarations that may hold the trashcan: the checkout's root instance, then the platform. */
-function declarers(repo: string): string[] {
-  return [repo, join(repo, "cat-harness")];
-}
-
 /**
- * Where the page goes, READ FROM THE SAME DECLARATION that renders it.
+ * Where the page goes: the route cat-harness DECLARES for its `fsh-guts`
+ * visualiser, rendered by this generator's Tool (`fsh-guts-viewer`) —
+ * `cat-harness/fsh-guts/index.md` under the base docs layer.
  *
- * The visualiser ref IS the page's location — `compose-docs.ts` withholds
- * exactly that path on a canonical build — so a literal here would let the
- * generator write one file while the withholding protected another. The two
- * would disagree silently and the failure mode is publishing the page this
- * whole change exists to withhold.
- *
- * Returned relative to the base docs layer, which is where a generated page
- * belongs and what the ref is expressed against.
+ * READ FROM THE SAME DECLARATION that withholds it: `compose-docs.ts`
+ * withholds the route of every `publish: "staging-only"` visualiser on a
+ * canonical build, and computes it with the same `visualiserRoute`. A literal
+ * here could let the generator write one file while the withholding
+ * protected another — and the failure mode is publishing the page this
+ * whole change exists to withhold. No declaration, no page.
  */
 export function pageRelPath(repo = REPO): string | undefined {
-  const entries = declarers(repo).flatMap((root) => {
-    const declPath = declarationPathIn(root);
-    if (!declPath || !existsSync(declPath)) return [];
-    return (
-      JSON.parse(readFileSync(declPath, "utf-8")) as {
-        directories?: { graphTypologies?: string[]; coverage?: { visualiser?: unknown } }[];
-      }
-    ).directories ?? [];
-  });
-  for (const e of entries) {
-    if (!(e.graphTypologies ?? []).includes(KIND)) continue;
-    const v = e.coverage?.visualiser;
-    for (const one of Array.isArray(v) ? v : [v]) {
-      const ref = typeof one === "string" ? one : (one as { ref?: string } | undefined)?.ref;
-      if (!ref) continue;
-      const rel = relative(baseDocsDir(repo), resolve(repo, ref));
-      // Outside the base docs layer is not a page this generator may write.
-      if (rel.startsWith("..") || rel === "") return undefined;
-      return rel;
-    }
+  try {
+    return visualiserSitePath(join(repo, "cat-harness"), VIEWER_TOOL).rel;
+  } catch {
+    return undefined;
   }
-  return undefined;
 }
 
 /** Every file under `dir`, relative, sorted, dotfiles skipped. */

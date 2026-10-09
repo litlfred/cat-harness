@@ -56,6 +56,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { declaredGraphs, instanceRootsIn } from "../schemas/cat-harness";
+import { visualiserSitePath } from "./viewer-declarations.ts";
 import { buildQaResult, writeQaResult } from "./qa-results.ts";
 import { downstreamState, parseToolRun, toolRunPath, writeToolRun, TOOL_RUNS_DIR, UNKNOWN_FINGERPRINT, type DownstreamState } from "../schemas/tool-run.ts";
 import { specimenSections } from "../schemas/section-verdicts.ts";
@@ -79,8 +80,21 @@ const RESULTS = join(REPO, "cat-harness/test/results/lsi");
 const HARNESS = join(REPO, "cat-harness");
 /** The Tool node whose runs this module records (`tools/index.ts`, `downstream`). */
 export const LSI_TOOL_ID = "lsi-index";
-/** Where `gen-lsi-viz.ts` writes; never a unit of any index (see `unitsOf`). */
-export const VIEWER_DIR = join(REPO, "cat-harness/docs/lsi") + "/";
+/**
+ * Where `gen-lsi-viz.ts` writes; never a unit of any index (see `unitsOf`).
+ * The route cat-harness DECLARES for the `lsi-viewer` visualiser
+ * (`<site>/cat-harness/lsi/`, owner 2026-10-09) — read, never spelled here.
+ */
+export const VIEWER_DIR = join(REPO, "cat-harness/docs", lsiViewerRoute()) + "/";
+
+function lsiViewerRoute(): string {
+  try {
+    return dirname(visualiserSitePath(HARNESS, "lsi-viewer").rel);
+  } catch {
+    // No declaration (a fixture checkout): the route the declaration would give.
+    return "cat-harness/lsi";
+  }
+}
 
 export const NEED_UNITS = 100;
 export const NEED_WORDS = 20_000;

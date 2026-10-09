@@ -179,11 +179,16 @@ describe("an EMPTY overlay composes byte-identically — the safety property", (
     const missingFromComposed = [...before.keys()].filter((p) => !after.has(p));
     expect(missingFromComposed.sort()).toEqual([...withheld].sort());
 
+    // An ALIAS redirect (bean `t4xb`, owner 2026-10-09) is the one other
+    // addition, and only where a declaration opted into one: every stray must
+    // be a stub the report names, never a file it does not.
     const prefixes = report.composed.map((c) => `${c.under}/`);
+    const stubs = new Set(report.aliases.written);
     const strays = [...after.keys()].filter(
-      (p) => !before.has(p) && !prefixes.some((pre) => p.startsWith(pre)),
+      (p) => !before.has(p) && !prefixes.some((pre) => p.startsWith(pre)) && !stubs.has(p),
     );
     expect(strays).toEqual([]);
+    expect(report.aliases.collisions).toEqual([]);
 
     // ...and the composition actually happened. Both checks above are
     // satisfied by a composer that emitted nothing: no base file differs and
@@ -197,7 +202,7 @@ describe("an EMPTY overlay composes byte-identically — the safety property", (
     // to follow the composition exactly, either way, rather than to be
     // non-empty: added files exist iff an instance composed. The composer's
     // own behaviour on an instance stays pinned by the fixtures below.
-    const added = [...after.keys()].filter((p) => !before.has(p));
+    const added = [...after.keys()].filter((p) => !before.has(p) && !stubs.has(p));
     expect(added.length > 0).toBe(report.composed.length > 0);
     rmSync(join(dest, ".."), { recursive: true, force: true });
   });

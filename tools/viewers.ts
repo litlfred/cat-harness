@@ -15,10 +15,22 @@
  * corpus: every directory that declares a viewer today has a Tool rendering
  * one of its kinds, and every rendered kind is declared somewhere.
  *
- * **`gen-fsh-guts-viz.ts` is deliberately not here.** Tool nodes are
- * published in the tools graph, and the owner's rule is that no published
- * artefact carries a path to fsh-guts (`UNPUBLISHED_GRAPH_TYPOLOGIES`). A Tool
- * whose `renders` named it would be that path.
+ * ## `renders` is what a Tool CAN draw; the harness declares what it DOES
+ *
+ * Since 2026-10-09 (owner: *"Need harness to declare visualizer is
+ * renderedBy"*) a visualiser is declared by the harness, in its
+ * `<instance>.json` `visualisers`, naming one of these Tools as `renderedBy`.
+ * The page's URL comes from that declaration (`<base>/<harness>/<id>/`), and
+ * `check:visualiser-routes` checks every kind a visualiser covers is one its
+ * Tool lists here — so `renders` stays, as the capability the declaration is
+ * checked against rather than as a way to find pages.
+ *
+ * **`fsh-guts-viewer` declares no `renders`.** Tool nodes are published in
+ * the tools graph, and the owner's rule is that no published artefact links
+ * to fsh-guts (`UNPUBLISHED_GRAPH_TYPOLOGIES`): a `renders` naming the kind
+ * would be that edge. It exists so cat-harness's staging-only `fsh-guts`
+ * visualiser has a Tool to be `renderedBy`, which is what the owner asked for
+ * by name; the gate does not ask an unpublished kind of a Tool's `renders`.
  *
  * @module tools/viewers
  */
@@ -33,7 +45,7 @@ interface Viewer {
   title: string;
   description: string;
   script: string;
-  renders: string[];
+  renders?: string[];
 }
 
 const VIEWERS: Viewer[] = [
@@ -126,7 +138,7 @@ const VIEWERS: Viewer[] = [
     title: "State graph viewer",
     description: "Render each declared state graph with a projection as a dashboard page: what the work plan holds, and what state it is in.",
     script: "state:visualizer",
-    renders: ["beans", "todos"],
+    renders: ["beans", "todos", "issue-marks", "qa", "health", "attestations", "swimlane-glossary", "uploads"],
   },
   {
     id: "translation-status-viewer",
@@ -141,6 +153,12 @@ const VIEWERS: Viewer[] = [
     description: "Render index pages for the declared skills, docs and swimlane-glossary directories, one per directory.",
     script: "auto:docs",
     renders: ["skills", "docs", "swimlane-glossary"],
+  },
+  {
+    id: "fsh-guts-viewer",
+    title: "Staging-only graph viewer",
+    description: "Render the kept-but-unpublished workspace graph as one page, for a local build or a staging preview only; a canonical deploy withholds it.",
+    script: "fsh-guts:viz",
   },
 ];
 
@@ -160,7 +178,7 @@ export function viewerTools(t: TypeIri): ToolDefinition[] {
         outputs: [{ name: "pages", schema: t("RepoPath"), description: "The viewer pages, under the published site directory." }],
       },
       satisfies: ["graph-rendering"],
-      renders: v.renders,
+      ...(v.renders ? { renders: v.renders } : {}),
       requires: { runtime: ["bun"], network: false },
     }),
   );

@@ -59,7 +59,7 @@ import {
 } from "../schemas/cat-harness.ts";
 import { tileCounts } from "../schemas/tile-count.js";
 import { makeEmit } from "./viewer-page.ts";
-import { withRendersFrontMatter } from "./viewer-declarations.js";
+import { declaredRoute, withRenderedByFrontMatter } from "./viewer-declarations.js";
 import { subjectNav, subjectNavCss, themedPage } from "./lib/themed-page.ts";
 import { libraryResolver, type LibraryResolver } from "./lib/library-links.ts";
 import { SKILL_PAGES_DIR, skillPagesOf } from "./lib/skill-pages.ts";
@@ -461,7 +461,16 @@ if (import.meta.main) {
     console.log("  · this instance declares no name — no handler segment to publish under");
     process.exit(0);
   }
-  const { pageDir, dataDir, dataHref } = viewerPlacement(site, `${handler}/${seg}`, seg);
+
+  // THE ROUTE IS DECLARED (owner, 2026-10-09): `<harness>/<id>/`, from the
+  // visualiser this harness declares `renderedBy` this Tool — never composed
+  // here from the directory's name.
+  const route = declaredRoute(ROOT, VIEWER_TOOL);
+  if (route === undefined) {
+    console.log(`  · no visualiser declared rendered by ${VIEWER_TOOL} — nothing to publish`);
+    process.exit(0);
+  }
+  const { pageDir, dataDir, dataHref } = viewerPlacement(site, route, seg);
   // A KG-node citation is a file in the cited instance (bean `qgjh`): it links
   // to that file on the repository host, and a skill also to its published
   // instruction page. Resolved against the instance's root, and only where
@@ -482,12 +491,8 @@ if (import.meta.main) {
     join(dataDir, "index.json"),
     JSON.stringify(projection(g, libraryResolver(repoRoot, ROOT), kgLinks), null, 2) + "\n",
   );
-  // Each page says which directories it draws (#1168 B7a-2): the voices
-  // directories present — every one here, the subject's own on a subject page.
-  const drawn = (subject?: string): string[] =>
-    g.directories.filter((d) => d.present && (subject === undefined || d.instance === subject)).map((d) => d.dir);
   const subjects = [...new Set(g.voices.map((v) => v.instance))].sort();
-  emit(join(pageDir, "index.html"), withRendersFrontMatter(viewerHtml(dataHref, "", subjects), drawn(), VIEWER_TOOL));
+  emit(join(pageDir, "index.html"), withRenderedByFrontMatter(viewerHtml(dataHref, "", subjects), VIEWER_TOOL));
 
   // One page per SUBJECT — the instances whose voices this handler renders.
   // Read from the VOICES rather than from the directory list, so the instance
@@ -495,8 +500,8 @@ if (import.meta.main) {
   // show it. It still gets a row in the directories table, which is the
   // honest place for "declared, not present".
   for (const subject of subjects) {
-    const sub = viewerPlacement(site, `${handler}/${seg}/${subject}`, seg);
-    emit(join(sub.pageDir, "index.html"), withRendersFrontMatter(viewerHtml(sub.dataHref, subject, subjects), drawn(subject), VIEWER_TOOL));
+    const sub = viewerPlacement(site, `${route}/${subject}`, seg);
+    emit(join(sub.pageDir, "index.html"), withRenderedByFrontMatter(viewerHtml(sub.dataHref, subject, subjects), VIEWER_TOOL));
   }
 
   // ── ORPHANS (bean `ankg`) ──────────────────────────────────────────────

@@ -52,7 +52,7 @@ import {
   unusedNamespaces,
   type ExternalSchema,
 } from "../schemas/external-schema.js";
-import { conventionalPage, handledDirectories, withRendersFrontMatter } from "./viewer-declarations.js";
+import { visualiserSitePath, withRenderedByFrontMatter } from "./viewer-declarations.js";
 import { sourceLinks } from "../schemas/cat-harness.ts";
 import { detectRepoUrl } from "../src/core/git-refs.js";
 
@@ -87,7 +87,13 @@ export function declaredUsers(specs: readonly ExternalSchema[], repoRoot = REPO)
  * `conventionalPage`). Never a literal — `site-dir-single-answer` refuses one.
  */
 export function pageRelPath(repo = REPO): string | undefined {
-  return conventionalPage(join(repo, "cat-harness"), KIND);
+  // The route cat-harness DECLARES for this Tool's visualiser (owner,
+  // 2026-10-09): `<harness>/<id>/index.md`, never chosen here.
+  try {
+    return visualiserSitePath(join(repo, "cat-harness"), VIEWER_TOOL).rel;
+  } catch {
+    return undefined;
+  }
 }
 
 /** The base docs layer — the same answer `compose-docs.ts` uses. */
@@ -353,9 +359,8 @@ if (import.meta.main) {
     const abs = join(REPO, repoPath);
     return existsSync(abs) && statSync(abs).isFile() ? sourceLinks(repoUrl, repoPath, "main")?.viewHref : undefined;
   };
-  const rendered = withRendersFrontMatter(
+  const rendered = withRenderedByFrontMatter(
     page(specs, users, namespacesInUse(), fileHref),
-    handledDirectories(REPO, INSTANCE_ROOT, KIND),
     VIEWER_TOOL,
   );
   const out = join(baseDocsDir(REPO), PAGE);

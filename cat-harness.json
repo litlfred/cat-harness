@@ -878,19 +878,7 @@
     },
     {
       "id": "fsh-guts",
-      "_coverage_comment": "RESTORED 2026-10-09. This declaration moved here from the deleted root folio-assistant.json at the state cutover (8f55441e5) without its coverage, and gen-fsh-guts-viz.ts refuses to write a page it has no declared visualiser for: the ref IS what compose-docs withholds from a canonical build (publish: staging-only), so a derived page would publish the very graph the owner ruled kept-but-unpublished (2026-09-21). The ref is checkout-relative, like the rest of the wireframe index.",
-      "coverage": {
-        "visualiser": [
-          {
-            "ref": "cat-harness/docs/fsh-guts/index.md",
-            "title": "fsh-guts",
-            "publish": "staging-only",
-            "writer": [
-              "cat-harness/scripts/gen-fsh-guts-viz.ts"
-            ]
-          }
-        ]
-      },
+      "_coverage_comment": "RESTORED 2026-10-09, then MOVED the same day to this instance's `visualisers` (owner: \"Why renders: [fsh-guts] in visualizer? … Need harness to declare visualizer is renderedBy\"). The visualiser is declared there as `fsh-guts`, rendered by the `fsh-guts-viewer` Tool, `publish: staging-only` with its `writer`, so compose-docs still withholds it from a canonical build and gen-fsh-guts-viz.ts still refuses to draw a page nobody declared.",
       "path": "fsh-guts/",
       "scope": "repository",
       "description": "The workspace for FSH guts, scratch space, retired configs, and separated archives. REPOSITORY-scoped: it sits at the top of the checkout, not inside this instance, and it is deliberately never overlaid by a dependency.",
@@ -953,6 +941,31 @@
       },
       "description": "How far an agent has read an issue: `lastCommentId`, `lastUpdatedAt` and `checkedAt`, one file per issue — the marks say what was seen, never the comments. Two marks rather than one because an EDITED comment keeps its id (`issue-working`). `state`: a running process writes one each time it checks. REPOSITORY-scoped for the reason `beans/` and `todos/` are."
     }
+  ],
+  "_visualisers_comment": "THE VISUALISERS THIS HARNESS DECLARES, at its own level — owner, 2026-10-09: \"I still want the harness to be where specific visualizers/pages are declared for the harness at the level. And that they are all compliant of <base URL>/<harness>/<visualizer> (which is for the full KG) and <base URL>/<harness>/<visualizer>/<sub-graph>, <base URL>/<harness>/<visualizer>/<sub-graph>/<path to asset> rules … Need harness to declare visualizer is renderedBy\". Each entry is published at <base>/cat-harness/<id>/ — computed by visualiserRoute (schemas/visualiser-route.ts) and by nothing else — and drawn by the Tool `renderedBy` names. A page no longer says what it renders (the `renders:` front matter and <meta name=\"renders\"> of #1168 B7a-2b are retired); `check:visualiser-routes` refuses two declarations on one route and a page outside its Tool's declared routes. `alias` is bean t4xb's opt-in <base>/<alias>/: a redirect composed into the site, never where the page is drawn — kept here for every visualiser that was published at the short URL before 2026-10-09, so no existing link breaks. The state dashboard of `uploads` is `uploads-queue` because `uploads` is the uploads viewer's route: two visualisers of one directory need two ids, which is exactly the contention the owner named.",
+  "visualisers": [
+    {"id": "library", "renderedBy": "library-viewer", "coversKinds": ["library"], "subgraphs": "instance"},
+    {"id": "uploads", "renderedBy": "uploads-viewer", "coversKinds": ["uploads"], "subgraphs": "instance"},
+    {"id": "schemas", "renderedBy": "schemas-viewer", "coversKinds": ["schemas"], "subgraphs": "instance"},
+    {"id": "voices", "renderedBy": "voices-viewer", "coversKinds": ["voices"], "subgraphs": "instance"},
+    {"id": "document-kinds", "renderedBy": "document-kinds-viewer", "coversKinds": ["document-kinds"], "subgraphs": "instance"},
+    {"id": "folio", "renderedBy": "folio-viewer", "covers": ["folio"]},
+    {"id": "auto-docs", "renderedBy": "auto-docs-viewer", "coversKinds": ["skills", "docs", "swimlane-glossary"], "subgraphs": "directory", "subgraphUnder": {"skills": "index/skills", "docs": "index/docs", "swimlane-glossary": "glossary"}},
+    {"id": "processes", "renderedBy": "processes-viewer", "coversKinds": ["processes"], "alias": "processes"},
+    {"id": "tools", "renderedBy": "tools-viewer", "covers": ["tools"], "alias": "tools"},
+    {"id": "methodologies", "renderedBy": "methodologies-viewer", "coversKinds": ["methodology"], "alias": "methodologies"},
+    {"id": "external-schemas", "renderedBy": "external-schemas-viewer", "covers": ["external-schemas"], "alias": "external-schemas"},
+    {"id": "lsi", "renderedBy": "lsi-viewer", "covers": ["qa"], "title": "Latent semantic indexes", "alias": "lsi"},
+    {"id": "translation-status", "renderedBy": "translation-status-viewer", "coversKinds": ["translation-sources"], "alias": "translation-status"},
+    {"id": "beans", "renderedBy": "state-viewer", "covers": ["beans"], "alias": "beans"},
+    {"id": "todos", "renderedBy": "state-viewer", "covers": ["todos"], "alias": "todos"},
+    {"id": "issue-marks", "renderedBy": "state-viewer", "covers": ["issue-marks"], "alias": "issue-marks"},
+    {"id": "qa", "renderedBy": "state-viewer", "covers": ["qa"], "title": "QA results", "alias": "qa"},
+    {"id": "health", "renderedBy": "state-viewer", "covers": ["health"], "alias": "health"},
+    {"id": "attestations", "renderedBy": "state-viewer", "covers": ["attestations"], "alias": "attestations"},
+    {"id": "swimlane-glossary", "renderedBy": "state-viewer", "covers": ["swimlane-glossary"], "alias": "swimlane-glossary"},
+    {"id": "uploads-queue", "renderedBy": "state-viewer", "covers": ["uploads"], "title": "Uploads queue", "alias": "uploads"},
+    {"id": "fsh-guts", "renderedBy": "fsh-guts-viewer", "covers": ["fsh-guts"], "title": "fsh-guts", "publish": "staging-only", "writer": ["scripts/gen-fsh-guts-viz.ts"]}
   ],
   "_needs_comment": "The layer this instance sits on. Owner, 2026-09-20: \"So bootsteap, cat harness, fa-core, f-a, from bottom to top.\" Declared rather than hardcoded in the navbar, so the ordering is a fact of the repository and not of whichever consumer needed it first. `bootstrap-tools` added 2026-09-30 (bean `0lj4`, owner's ruling): bean `xsqm` moved that code OUT of this instance into its own, and this list was not updated with it, so 20 imports under `cat-harness/` reached an instance this file did not name. `allowedFromNeeds` gives a layer `{layer} U ancestors(layer)`, and `bootstrap-tools` is a SIBLING of `cat-harness` rather than an ancestor, so every one of those 20 was `wrong-direction` by the declared rule while four separate checks reported clean. The reverse arrow stays forbidden and is guarded by `check:tools-closure`.",
   "needs": [

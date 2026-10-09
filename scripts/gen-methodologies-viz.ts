@@ -67,7 +67,7 @@ import {
   type MethodologyNode,
 } from "./check-methodology-evidence.js";
 import { libraryResolver, type LibraryResolver } from "./lib/library-links.ts";
-import { conventionalPage, handledDirectories, withRendersFrontMatter } from "./viewer-declarations.js";
+import { visualiserSitePath, withRenderedByFrontMatter } from "./viewer-declarations.js";
 
 /** This generator's Tool node (`tools/viewers.ts`), named on every page it draws. */
 const VIEWER_TOOL = "methodologies-viewer";
@@ -168,7 +168,13 @@ export function methodologyRows(
  * `conventionalPage`). Never a literal — `site-dir-single-answer` refuses one.
  */
 export function pageRelPath(repo = REPO): string | undefined {
-  return conventionalPage(join(repo, "cat-harness"), KIND);
+  // The route cat-harness DECLARES for this Tool's visualiser (owner,
+  // 2026-10-09): `<harness>/<id>/index.md`, never chosen here.
+  try {
+    return visualiserSitePath(join(repo, "cat-harness"), VIEWER_TOOL).rel;
+  } catch {
+    return undefined;
+  }
 }
 
 /** The base docs layer — the same answer `compose-docs.ts` uses. */
@@ -411,9 +417,8 @@ if (import.meta.main) {
   }
 
   // The page says which directories it draws (#1168 B7a-2).
-  const rendered = withRendersFrontMatter(
+  const rendered = withRenderedByFrontMatter(
     page(rows, report, libraryResolver(REPO, INSTANCE_ROOT), PAGE),
-    handledDirectories(REPO, INSTANCE_ROOT, KIND, "corpus"),
     VIEWER_TOOL,
   );
   const out = join(baseDocsDir(REPO), PAGE);

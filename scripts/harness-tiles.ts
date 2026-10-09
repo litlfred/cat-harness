@@ -82,7 +82,8 @@ import {
   instanceDirectories,
   nestedDirectories,
 } from "../schemas/cat-harness.js";
-import { withViewers } from "./viewer-declarations.js";
+import { declaredVisualisers, visualiserPageDir, withViewers } from "./viewer-declarations.js";
+import { aliasRoute, visualiserRoute } from "../schemas/visualiser-route.js";
 import { subscribedHarnesses, subscribedTile } from "./subscribed-harnesses.js";
 import { labelVisualisations, nameInstanceRoot } from "./lib/nav-label.js";
 import type { HarnessMark } from "./lib/harness-mark.js";
@@ -487,28 +488,24 @@ function siteDirMount(
 }
 
 /**
- * Where a subject page for one instance's graph is published.
- *
- * The rule is `gen-library-viz.ts`'s, not a new one:
- * `<site>/<handler>/<kind>/<subject>/`, where the handler is the instance that
- * OWNS the site and the subject is the instance whose assets are shown. Its
- * comment is emphatic about why the subject does not come first — `<base>/
- * who-iris/` is who-iris presenting itself, and a viewer parked there would
- * squat on the instance's own site.
+ * Where a visualiser's sub-graph page for one instance is published:
+ * `/<harness>/<visualiser>/<subject>/` — `visualiserRoute`, the ONE function
+ * every route is computed with (owner, 2026-10-09). The subject never comes
+ * first: `<base>/who-iris/` is who-iris presenting itself.
  */
-export function subjectPage(handler: string, kind: string, subject: string): string {
-  return `/${handler}/${kind}/${subject}/`;
+export function subjectPage(handler: string, visualiser: string, subject: string): string {
+  return `/${visualiserRoute({ harness: handler, visualiser, subgraph: subject })}`;
 }
 
 /**
- * Where the instance that owns the site publishes its own state graph.
- *
- * `state-visualizer.ts` rule 3: the root instance elides its own name, because
- * its `docs/` is installed by cat-harness rather than by itself. So this is
- * `<base>/<graph>/` with nothing in front of it.
+ * The opt-in ALIAS of a visualiser — `<base>/<alias>/` (bean `t4xb`). Until
+ * 2026-10-09 this was where the site owner's state dashboards were DRAWN
+ * (`state-visualizer` rule 3, "the root elides its own name"); now each is
+ * drawn at its route and this URL is a composed redirect, present only where
+ * a declaration opts in.
  */
-export function ownStatePage(kind: string): string {
-  return `/${kind}/`;
+export function ownStatePage(alias: string): string {
+  return `/${aliasRoute(alias)}`;
 }
 
 /**
@@ -709,60 +706,17 @@ function tileFor(
     }
   }
 
-  // CANDIDATES FROM THE DECLARATION, presence checked on disk. Both pages a
-  // kind can be published at are considered, because the instance that owns
-  // the site elides its own name and every other instance does not — two rules
-  // that live in two generators, read here rather than restated.
-  /**
-   * THE READ-ONLY ANSWER FOR A KIND, resolved across the directories declaring
-   * it — and `undefined` when they do not agree.
-   *
-   * A kind can be declared by more than one directory, so it can be declared
-   * read-only by one and writable by another. `who-iris` is exactly that shape
-   * one field along: `catalogue/` is frozen and `uploads/` is the drop zone.
-   * Picking the first answer would make the listing depend on declaration
-   * order; picking `true` if any says so would freeze a kind on the strength of
-   * one directory. Disagreement is a THIRD state and it is reported as one —
-   * undefined here, and named in a finding below, rather than resolved by a
-   * rule nobody chose.
-   */
-  const readOnlyFor = (kind: string): boolean | undefined => {
-    const said = dirs
-      .filter((d) => (d.graphTypologies ?? []).includes(kind))
-      .map((d) => d.readOnly)
-      .filter((v): v is boolean => v !== undefined);
-    if (said.length === 0) return undefined;
-    return said.every((v) => v === said[0]) ? said[0] : undefined;
-  };
-
+  // THE DECLARATION ALONE (owner, 2026-10-09). A kind's page is the route of
+  // a visualiser some harness DECLARES over one of this instance's
+  // directories of that kind — `<base>/<harness>/<visualiser>/[<sub-graph>/]`
+  // from `visualiserRoute` — and nothing else. Until then this probed two
+  // CONVENTIONS first (`/<handler>/<kind>/<name>/`, and `/<kind>/` for the
+  // site owner) and fell back to the declaration; a convention is a URL the
+  // reader chose, which is the contention the owner ruled out. The short
+  // `/<kind>/` survives only as a declared ALIAS, composed as a redirect.
   const visualisations: HarnessVisualisation[] = [];
   for (const kind of kinds) {
-    // `ownsSite || isRepoRoot`, as `folioRoot` and `siteDirMount` below
-    // already read it: `state-visualizer` rule 3 says the ROOT instance elides
-    // its own name, and since cmsl step 2 (issue #1694) the root declares the
-    // checkout's state graphs, so `/issue-marks/` is its page too. Testing
-    // `ownsSite` alone rendered that tile "no viewer yet".
-    // …but `/<kind>/` is the SITE OWNER's whenever it declares that kind too:
-    // the root's `uploads` would otherwise open cat-harness's `/uploads/`.
-    const ownerHolds = (owner?.decl.directories ?? []).some((d) => (d.graphTypologies ?? []).includes(kind));
-    const candidates = ownsSite || (isRepoRoot && !ownerHolds)
-      ? [ownStatePage(kind), subjectPage(handler, kind, decl.name)]
-      : [subjectPage(handler, kind, decl.name)];
-    // `index.md` COUNTS TOO (issue #1164): Jekyll builds it to the same URL,
-    // so a plain documentation page at the conventional place IS the kind's
-    // page. Only `index.html` was recognised, which is why `methodologies`
-    // had to declare a viewer for a page the convention already named.
-    const found = candidates.find((p) =>
-      existsSync(join(siteDir, p, "index.html")) || existsSync(join(siteDir, p, "index.md")));
-    // CONVENTION FIRST, declaration as the fallback — and the order is
-    // OBSERVABLE, so it is a decision rather than a detail. Exactly one kind
-    // in this repository resolves both ways today: cat-harness's `uploads`,
-    // which the convention publishes at `/uploads/` and the declaration names
-    // at `/cat-harness/library/cat-harness/`. Preferring the declaration
-    // would repoint a working link nobody asked about; preferring the
-    // convention leaves every existing link exactly where it was and fills
-    // only the gaps, which is the whole of what this is for.
-    const path = found ?? declared.get(kind);
+    const path = declared.get(kind);
     // READ-ONLY IS ORTHOGONAL TO WHETHER A VIEWER WAS FOUND, and keeping the
     // two independent here is the whole of the two-greys distinction: `path`
     // answers "is there anything to open", `readOnly` answers "may it be
@@ -958,23 +912,23 @@ function tileFor(
     }
   }
 
-  // THE OTHER HALF OF `flh4`: a page published for this instance under a kind
-  // it does NOT declare. The tile must not link it — the declaration is what
-  // decides what a tile claims to show — but staying silent would hide a
-  // working viewer behind a rule, which is how "declared and not rendered"
-  // and "rendered and not declared" both end up invisible. It is reported so
-  // the remedy is one line in a declaration rather than a mystery.
-  const handlerDir = join(siteDir, handler);
-  if (existsSync(handlerDir)) {
-    for (const seg of readdirSync(handlerDir, { withFileTypes: true })) {
-      if (!seg.isDirectory() || kinds.includes(seg.name)) continue;
-      if (existsSync(join(handlerDir, seg.name, decl.name, "index.html"))) {
-        findings.push(
-          `${decl.name}: a viewer is published at ${subjectPage(handler, seg.name, decl.name)} ` +
-            `for a "${seg.name}" graph this instance does not declare. Declare it and the tile links it.`,
-        );
-      }
-    }
+  // THE OTHER HALF OF `flh4`: a page published for this instance by a
+  // declared visualiser that covers NONE of its directories. The tile must not
+  // link it — the declaration decides what a tile claims to show — but staying
+  // silent would hide a working viewer behind a rule, and the remedy is one
+  // line in a declaration rather than a mystery. Asked of the DECLARED routes
+  // (`<harness>/<visualiser>/<this instance>/`), never of a directory listing.
+  const linked = new Set(visualisations.map((v) => v.path).filter((p): p is string => p !== undefined));
+  for (const v of declaredVisualisers(repoRoot)) {
+    if (v.subgraphs !== "instance") continue;
+    const parts = { harness: v.harness, visualiser: v.id, subgraph: decl.name };
+    if (!existsSync(join(visualiserPageDir(siteDir, parts), "index.html"))) continue;
+    const url = `/${visualiserRoute(parts)}`;
+    if (linked.has(url)) continue;
+    findings.push(
+      `${decl.name}: a viewer is published at ${url} by ${v.harness}'s \`${v.id}\` visualiser, ` +
+        `which covers none of this instance's directories. Declare one it covers and the tile links it.`,
+    );
   }
 
   // The declaration's own `avatar` first (sod4 #4), so a tile is drawn from

@@ -78,7 +78,7 @@ import {
 import { makeEmit } from "./viewer-page.ts";
 import { themedPage } from "./lib/themed-page.ts";
 import { publishedHref } from "./lib/jekyll-permalink.ts";
-import { withRendersFrontMatter } from "./viewer-declarations.js";
+import { declaredRoute, withRenderedByFrontMatter } from "./viewer-declarations.js";
 
 /** This generator's Tool node (`tools/viewers.ts`), named on every page it draws. */
 const VIEWER_TOOL = "folio-viewer";
@@ -338,14 +338,20 @@ if (import.meta.main) {
     process.exit(0);
   }
 
-  const { pageDir, dataDir, dataHref } = viewerPlacement(site, `${handler}/${seg}`, seg);
+  // THE ROUTE IS DECLARED (owner, 2026-10-09): `<harness>/<id>/`, from the
+  // visualiser this harness declares `renderedBy` this Tool — never composed
+  // here from the directory's name.
+  const route = declaredRoute(ROOT, VIEWER_TOOL);
+  if (route === undefined) {
+    console.log(`  · no visualiser declared rendered by ${VIEWER_TOOL} — nothing to publish`);
+    process.exit(0);
+  }
+
+  const { pageDir, dataDir, dataHref } = viewerPlacement(site, route, seg);
 
   emit(join(dataDir, "index.json"), JSON.stringify(projection(g), null, 2) + "\n");
-  // The page says which directories it draws (#1168 B7a-2).
-  emit(
-    join(pageDir, "index.html"),
-    withRendersFrontMatter(viewerHtml(dataHref), g.directories.filter((d) => d.present).map((d) => d.dir), VIEWER_TOOL),
-  );
+  // The page names the Tool that drew it; the route is the declaration's.
+  emit(join(pageDir, "index.html"), withRenderedByFrontMatter(viewerHtml(dataHref), VIEWER_TOOL));
 
   const absent = g.directories.filter((d) => !d.present).length;
   console.log(

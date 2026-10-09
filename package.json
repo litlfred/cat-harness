@@ -94,6 +94,7 @@
     "check:bean-rollup": "bun run cat-harness/scripts/check-bean-rollup.ts",
     "ci:watch": "bun run cat-harness/scripts/watch-ci.ts",
     "check:declared-dirs": "bun run cat-harness/scripts/check-declared-dirs.ts",
+    "check:visualiser-routes": "bun run cat-harness/scripts/check-visualiser-routes.ts",
     "check:environment": "bun run cat-harness/scripts/check-environment.ts",
     "check:declared-paths": "bun run cat-harness/scripts/check-declared-paths.ts",
     "check:duplicate-ids": "bun run cat-harness/scripts/check-duplicate-ids.ts",
