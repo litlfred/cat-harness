@@ -93,6 +93,11 @@ export function declaredUsers(specs: readonly ExternalSchema[], repoRoot = REPO)
       return def ? [[k, def]] : [];
     }),
   );
+  const targetRoot = existsSync(join(repoRoot, "cat-harness", "schemas"))
+    ? repoRoot
+    : existsSync(join(repoRoot, "schemas"))
+    ? repoRoot
+    : INSTANCE_ROOT;
   const kindsInstance = existsSync(join(targetRoot, "cat-harness")) ? "cat-harness" : ".";
   return specUsers(targetRoot, files, specs, joined, kindsInstance);
 }
