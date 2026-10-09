@@ -468,7 +468,7 @@ mistake this entry would otherwise invite.
 ### `docs-pages` — take the base, regenerate (17)
 
 The 17 `cat-harness/docs/**.md` pages `gen-docs-pages.ts` writes whole from the
-authored blocks under `cat-harness/content/docs/<slug>/` (`docs:pages`, gated
+authored blocks under `cat-harness/docs/source/<slug>/` (`docs:pages`, gated
 by `docs:pages:check`). Each one says so in its own front matter:
 
 ```
@@ -485,7 +485,7 @@ rule working as designed, and the gap it exposed.
 **Safe because nothing is carried forward.** `emit()` is compare-or-write: the
 only read of a prior page is inside its `--check` branch, for the comparison,
 and every other read in the script is of an INPUT (`readBlock` over
-`content/docs/`, BPMN XML, manifests). Its one walk of the output directory
+`docs/source/`, BPMN XML, manifests). Its one walk of the output directory
 skips files carrying the generated marker. This is bean `8rff`'s discipline —
 **confirm the writer by reading the script, not by how whole-file it looks** —
 applied again, and here it comes out the other way than it did for the
@@ -505,7 +505,7 @@ checked.
 `guides/` holds 9 of which 4 are generated, leaving `agent-onboarding.md`,
 `voices.md` and 3 more. A directory glob would take a side on
 authored prose — the one thing a resolver must never do. The cost is that a
-page added to `content/docs/` is **refused until its slug is declared here**,
+page added to `docs/source/` is **refused until its slug is declared here**,
 which is the safe direction to be wrong in, and a test reads the pages' own
 front matter from the TREE so the enumeration cannot go quietly stale.
 
@@ -522,7 +522,7 @@ matter names `gen-skill-docs.ts`, and `skill-instructions` is declared before
 all three facts.
 
 **The authored neighbour is the source, and it stays refused.**
-`cat-harness/content/docs/process-publication-workflow/every-workflow-in-the-repo.md`
+`cat-harness/docs/source/process-publication-workflow/every-workflow-in-the-repo.md`
 is the hand-written INPUT for `docs/process/publication-workflow.md`; on #1888 both
 sides had only *added* rows to it, but a union of additions is a property of
 that instance and not of the path, so the next conflict there could be a

@@ -14,6 +14,348 @@
       "dcterms:source": "Schema fields of cat-harness"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimateconfigmodelschema.description",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateConfigModelSchema.description"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "One sentence on what this model is and why the instance holds it."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateConfigModelSchema.description",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimateconfigmodelschema.file",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateConfigModelSchema.file"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The `.archimate` file, relative to the declared directory."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateConfigModelSchema.file",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimateconfigmodelschema.id",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateConfigModelSchema.id"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The model's id: its page directory and its IRI segment. A version (`0.2.0`) is a good one."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateConfigModelSchema.id",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimateconfigmodelschema.title",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateConfigModelSchema.title"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "What a reader calls it. Absent, the model's own name is used."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateConfigModelSchema.title",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimateconfigschema.directory",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateConfigSchema.directory"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The `<instance>.json` directory id of graph typology `archimate` the models are held in."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateConfigSchema.directory",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimateelement.folder",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateElement.folder"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The folder path it is filed under in the model tree."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateElement.folder",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimateelement.type",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateElement.type"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The ArchiMate type without Archi's prefix: `ApplicationComponent`."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateElement.type",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimatemodel.archiversion",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateModel.archiVersion"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Archi's model `version` attribute — the tool's file version, not the model's."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateModel.archiVersion",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimaterelationship.accesstype",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateRelationship.accessType"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Access only: `write` (Archi's default), `read`, `access` or `readwrite`."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateRelationship.accessType",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimaterelationship.directed",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateRelationship.directed"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Association only."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateRelationship.directed",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimaterelationship.strength",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateRelationship.strength"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Influence only: the strength, e.g. `+` or `--`."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateRelationship.strength",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimaterelationship.type",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateRelationship.type"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The relationship type without prefix or suffix: `Composition`, `Serving`."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateRelationship.type",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimateviewconnection.bendpoints",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateViewConnection.bendpoints"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Archi's relative bendpoints: offsets from the source's and the target's centres."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateViewConnection.bendpoints",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimateviewconnection.relationship",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateViewConnection.relationship"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The relationship it shows; absent for a plain line between a note and a box."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateViewConnection.relationship",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimateviewnode.alternate",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateViewNode.alternate"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Archi's `type=\"1\"`: the element drawn as its figure's alternate."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateViewNode.alternate",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimateviewnode.parent",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateViewNode.parent"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The diagram object it is drawn inside, if any."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateViewNode.parent",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimateviewnode.ref",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateViewNode.ref"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The element it shows (`element`), or the view it refers to (`view-ref`)."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateViewNode.ref",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archimate.archimateviewnode.text",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ArchimateViewNode.text"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "A group's label, or a note's text."
+        }
+      ],
+      "dcterms:source": "cat-harness/archimate/schemas/archimate.ts#ArchimateViewNode.text",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/archive-contents.archivecontentsschema.archive",
       "@type": "skos:Concept",
       "skos:inScheme": {

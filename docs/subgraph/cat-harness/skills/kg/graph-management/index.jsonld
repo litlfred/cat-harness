@@ -13,9 +13,9 @@
       "@type": "bootstrap:Skill",
       "name": "domain-fencing",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/97d85eb52db9209d16fde9b9346c9eedd22ed88093e4238d3395f0a19b4a1fcc",
-        "bytes": 11674,
-        "sha256": "97d85eb52db9209d16fde9b9346c9eedd22ed88093e4238d3395f0a19b4a1fcc"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0d8c676d3cf26429bd3661993bfb9ce576f2b6a014af90e17d66fa6176dfd969",
+        "bytes": 11673,
+        "sha256": "0d8c676d3cf26429bd3661993bfb9ce576f2b6a014af90e17d66fa6176dfd969"
       },
       "title": "Domain fencing — keeping one folio's rules out of everybody's platform"
     },
@@ -57,9 +57,9 @@
       "@type": "bootstrap:Skill",
       "name": "kg-separation",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a0ff94a66ee2019260d4c6221b10bec20c38edd3dc25c6b78aecccd5669d1bea",
-        "bytes": 29576,
-        "sha256": "a0ff94a66ee2019260d4c6221b10bec20c38edd3dc25c6b78aecccd5669d1bea"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/af63ebef5071b740f37b945722f143705f836a043178f4b33f0cef96fcfb85d0",
+        "bytes": 31981,
+        "sha256": "af63ebef5071b740f37b945722f143705f836a043178f4b33f0cef96fcfb85d0"
       },
       "title": "Knowledge Graph separation — the method"
     },

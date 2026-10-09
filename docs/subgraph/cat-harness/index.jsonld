@@ -461,9 +461,9 @@
       "@type": "bootstrap:Asset",
       "name": "npm-manifest",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4bdb16124d903dad31819e4e22b1d256b5068de30e388bee170bfdceaee5ed92",
-        "bytes": 23715,
-        "sha256": "4bdb16124d903dad31819e4e22b1d256b5068de30e388bee170bfdceaee5ed92"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/852b8e22ea81752c32f86d4a60efd29a8324ec5e72c11f31e27f700268b8560a",
+        "bytes": 24069,
+        "sha256": "852b8e22ea81752c32f86d4a60efd29a8324ec5e72c11f31e27f700268b8560a"
       },
       "title": "package.json"
     },
@@ -2174,6 +2174,18 @@
       "title": "Agent memory assembler"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/archimate-check",
+      "@type": "cat-harness:Tool",
+      "name": "archimate-check",
+      "title": "Check an instance's ArchiMate models against its config"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/archimate-pages",
+      "@type": "cat-harness:Tool",
+      "name": "archimate-pages",
+      "title": "Give every ArchiMate view, element and relationship a page and an IRI, and draw every view"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/auto-docs-viewer",
       "@type": "cat-harness:Tool",
       "name": "auto-docs-viewer",
@@ -2520,6 +2532,12 @@
       "@type": "cat-harness:Tool",
       "name": "methodologies-viewer",
       "title": "Methodologies viewer"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/mount-from-lock",
+      "@type": "cat-harness:Tool",
+      "name": "mount-from-lock",
+      "title": "Replay a committed mount lock with nothing but Node"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/narrative-queue",
@@ -3021,6 +3039,7 @@
     }
   ],
   "hasSubgraph": [
+    "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/archimate/",
     "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/openapi/",
     "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/processes/",
     "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/scenarios/",

@@ -13,16 +13,16 @@ permalink: /glossary/schema-fields/a-e/
 
 Candidate terms extracted from every schema field with a doc comment: `<Declaration>.<field>` as the label, the comment's first paragraph as the definition. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2003 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 165 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2021 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 165 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
 
 One of 4 pages of this type, split by the first letter of the label: <a href="{{ '/glossary/schema-fields/' | relative_url }}">all parts</a>.
 
-**Size:** this page holds 615 terms and is 345 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 633 terms and is 355 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>2296</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2296</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>2314</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2314</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -32,7 +32,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">615</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">633</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-A">A</a> <a href="#letter-B">B</a> <a href="#letter-C">C</a> <a href="#letter-D">D</a> <a href="#letter-E">E</a></nav>
 
@@ -359,6 +359,132 @@ AptDependency.version <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>Debian version relation (e.g., &quot;&gt;=2.3&quot;). Omit for any version.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/assistant-package.ts"><code>cat-harness/schemas/assistant-package.ts#AptDependency.version</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimateconfigmodelschema.description" data-fa-state="extracted" data-fa-gloss="">
+ArchimateConfigModelSchema.description <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>One sentence on what this model is and why the instance holds it.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateConfigModelSchema.description</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimateconfigmodelschema.file" data-fa-state="extracted" data-fa-gloss="">
+ArchimateConfigModelSchema.file <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The <code>.archimate</code> file, relative to the declared directory.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateConfigModelSchema.file</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimateconfigmodelschema.id" data-fa-state="extracted" data-fa-gloss="">
+ArchimateConfigModelSchema.id <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The model's id: its page directory and its IRI segment. A version (<code>0.2.0</code>) is a good one.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateConfigModelSchema.id</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimateconfigmodelschema.title" data-fa-state="extracted" data-fa-gloss="">
+ArchimateConfigModelSchema.title <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>What a reader calls it. Absent, the model's own name is used.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateConfigModelSchema.title</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimateconfigschema.directory" data-fa-state="extracted" data-fa-gloss="">
+ArchimateConfigSchema.directory <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The <code>&lt;instance&gt;.json</code> directory id of graph typology <code>archimate</code> the models are held in.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateConfigSchema.directory</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimateelement.folder" data-fa-state="extracted" data-fa-gloss="">
+ArchimateElement.folder <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The folder path it is filed under in the model tree.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateElement.folder</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimateelement.type" data-fa-state="extracted" data-fa-gloss="">
+ArchimateElement.type <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The ArchiMate type without Archi's prefix: <code>ApplicationComponent</code>.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateElement.type</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimatemodel.archiversion" data-fa-state="extracted" data-fa-gloss="">
+ArchimateModel.archiVersion <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Archi's model <code>version</code> attribute — the tool's file version, not the model's.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateModel.archiVersion</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimaterelationship.accesstype" data-fa-state="extracted" data-fa-gloss="">
+ArchimateRelationship.accessType <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Access only: <code>write</code> (Archi's default), <code>read</code>, <code>access</code> or <code>readwrite</code>.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateRelationship.accessType</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimaterelationship.directed" data-fa-state="extracted" data-fa-gloss="">
+ArchimateRelationship.directed <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Association only.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateRelationship.directed</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimaterelationship.strength" data-fa-state="extracted" data-fa-gloss="">
+ArchimateRelationship.strength <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Influence only: the strength, e.g. <code>+</code> or <code>--</code>.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateRelationship.strength</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimaterelationship.type" data-fa-state="extracted" data-fa-gloss="">
+ArchimateRelationship.type <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The relationship type without prefix or suffix: <code>Composition</code>, <code>Serving</code>.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateRelationship.type</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimateviewconnection.bendpoints" data-fa-state="extracted" data-fa-gloss="">
+ArchimateViewConnection.bendpoints <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Archi's relative bendpoints: offsets from the source's and the target's centres.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateViewConnection.bendpoints</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimateviewconnection.relationship" data-fa-state="extracted" data-fa-gloss="">
+ArchimateViewConnection.relationship <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The relationship it shows; absent for a plain line between a note and a box.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateViewConnection.relationship</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimateviewnode.alternate" data-fa-state="extracted" data-fa-gloss="">
+ArchimateViewNode.alternate <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Archi's <code>type=&quot;1&quot;</code>: the element drawn as its figure's alternate.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateViewNode.alternate</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimateviewnode.parent" data-fa-state="extracted" data-fa-gloss="">
+ArchimateViewNode.parent <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The diagram object it is drawn inside, if any.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateViewNode.parent</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimateviewnode.ref" data-fa-state="extracted" data-fa-gloss="">
+ArchimateViewNode.ref <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The element it shows (<code>element</code>), or the view it refers to (<code>view-ref</code>).</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateViewNode.ref</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--archimate.archimateviewnode.text" data-fa-state="extracted" data-fa-gloss="">
+ArchimateViewNode.text <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>A group's label, or a note's text.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/archimate/schemas/archimate.ts"><code>cat-harness/archimate/schemas/archimate.ts#ArchimateViewNode.text</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--archive-contents.archivecontentsschema.at-context" data-fa-state="extracted" data-fa-gloss="">
 ArchiveContentsSchema.@context <span class="fa-gloss-status">candidate, extracted</span>

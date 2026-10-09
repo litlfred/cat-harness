@@ -572,9 +572,9 @@
               "instructionsPath": "skills/authoring/authoring-core/voice-editorial-review.md",
               "name": "voice-editorial-review",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/de87b1be69713c1fadd1d5803515d6b8be1af4904e18ab7e6a693fb427197e68",
-                "bytes": 5518,
-                "sha256": "de87b1be69713c1fadd1d5803515d6b8be1af4904e18ab7e6a693fb427197e68"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/79367f483c263326b9fdf7748eb431b26da7cfd16ba26300455c56bda2461ad3",
+                "bytes": 5515,
+                "sha256": "79367f483c263326b9fdf7748eb431b26da7cfd16ba26300455c56bda2461ad3"
               },
               "title": "Voice editorial review"
             },
@@ -1429,9 +1429,9 @@
               "instructionsPath": "skills/kg/graph-management/domain-fencing.md",
               "name": "domain-fencing",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/97d85eb52db9209d16fde9b9346c9eedd22ed88093e4238d3395f0a19b4a1fcc",
-                "bytes": 11674,
-                "sha256": "97d85eb52db9209d16fde9b9346c9eedd22ed88093e4238d3395f0a19b4a1fcc"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0d8c676d3cf26429bd3661993bfb9ce576f2b6a014af90e17d66fa6176dfd969",
+                "bytes": 11673,
+                "sha256": "0d8c676d3cf26429bd3661993bfb9ce576f2b6a014af90e17d66fa6176dfd969"
               },
               "title": "Domain fencing — keeping one folio's rules out of everybody's platform"
             },
@@ -1501,13 +1501,13 @@
               "hasInstructions": true,
               "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/graph-management",
               "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-              "instructionLines": 351,
+              "instructionLines": 355,
               "instructionsPath": "skills/kg/graph-management/kg-separation.md",
               "name": "kg-separation",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a0ff94a66ee2019260d4c6221b10bec20c38edd3dc25c6b78aecccd5669d1bea",
-                "bytes": 29576,
-                "sha256": "a0ff94a66ee2019260d4c6221b10bec20c38edd3dc25c6b78aecccd5669d1bea"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/af63ebef5071b740f37b945722f143705f836a043178f4b33f0cef96fcfb85d0",
+                "bytes": 31981,
+                "sha256": "af63ebef5071b740f37b945722f143705f836a043178f4b33f0cef96fcfb85d0"
               },
               "title": "Knowledge Graph separation — the method"
             },
@@ -1648,9 +1648,9 @@
               "instructionsPath": "skills/kg/kg-core/artefact-reachability.md",
               "name": "artefact-reachability",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/df7f9a7564467735fb23794a42d64883e63214e43d36b21b27de34259e65254b",
-                "bytes": 16065,
-                "sha256": "df7f9a7564467735fb23794a42d64883e63214e43d36b21b27de34259e65254b"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7a19c67d8cdf8690565a0a2166560188ffe14613eac2f095a0596772a950be34",
+                "bytes": 16064,
+                "sha256": "7a19c67d8cdf8690565a0a2166560188ffe14613eac2f095a0596772a950be34"
               },
               "title": "Artefact reachability — load is not evaluability, and a test is not a caller"
             },
@@ -1776,13 +1776,13 @@
               "hasInstructions": true,
               "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/kg-core",
               "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-              "instructionLines": 1712,
+              "instructionLines": 1721,
               "instructionsPath": "skills/kg/kg-core/directory-conventions.md",
               "name": "directory-conventions",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d6c14ce24d1fdc3099d5198c627e87c6b375017c8498c78c487b7b2c167c3b8f",
-                "bytes": 132063,
-                "sha256": "d6c14ce24d1fdc3099d5198c627e87c6b375017c8498c78c487b7b2c167c3b8f"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9091979597dce6534219a26fddfafbe36f5eedf50032e4d2352151b11b34d3d9",
+                "bytes": 133066,
+                "sha256": "9091979597dce6534219a26fddfafbe36f5eedf50032e4d2352151b11b34d3d9"
               },
               "title": "Directory conventions — what an instance declares it scans"
             },
@@ -2734,9 +2734,9 @@
               "instructionsPath": "skills/process/process-core/task-authorization.md",
               "name": "task-authorization",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b7cf2e4dcf7094bd391bc27031cb0c7e4b7bd4b50fb6f6e75b9cff69c3d460e5",
-                "bytes": 18323,
-                "sha256": "b7cf2e4dcf7094bd391bc27031cb0c7e4b7bd4b50fb6f6e75b9cff69c3d460e5"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/87af43f7879e718b236728d962201ccd8609b1afea52413b293500d899367408",
+                "bytes": 18322,
+                "sha256": "87af43f7879e718b236728d962201ccd8609b1afea52413b293500d899367408"
               },
               "title": "Task authorization — four questions before every task"
             }
@@ -3264,9 +3264,9 @@
               "instructionsPath": "skills/sdlc/crdm/crdm-requirements-workflow.md",
               "name": "crdm-requirements-workflow",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e5ab786917b58ad608bb1a7b5b8081cb9b4eab93d5c179d940b582fbea91782f",
-                "bytes": 27253,
-                "sha256": "e5ab786917b58ad608bb1a7b5b8081cb9b4eab93d5c179d940b582fbea91782f"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2b295326c5bc41ac2b25721eff2e41250a22a3bdb35d9dfedee0df1b20600246",
+                "bytes": 27252,
+                "sha256": "2b295326c5bc41ac2b25721eff2e41250a22a3bdb35d9dfedee0df1b20600246"
               },
               "title": "CRDM requirements workflow"
             }
@@ -3898,9 +3898,9 @@
               "instructionsPath": "skills/sdlc/sdlc-core/merge-conflict-patterns.md",
               "name": "merge-conflict-patterns",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/fca7962b5fe4b537875678eda97acc800ed431bd4752c4b3e5871886fd0027ee",
-                "bytes": 51618,
-                "sha256": "fca7962b5fe4b537875678eda97acc800ed431bd4752c4b3e5871886fd0027ee"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2d78fa176c6e38b7540fe5fd68fdcaec2c5c6eb47406a0905f31ff78843d73d6",
+                "bytes": 51614,
+                "sha256": "2d78fa176c6e38b7540fe5fd68fdcaec2c5c6eb47406a0905f31ff78843d73d6"
               },
               "title": "Merge-conflict patterns — what a merge may resolve on its own"
             },
@@ -4849,6 +4849,7 @@
               "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/ui-core",
               "@type": "cat-harness:SkillPackage",
               "declaresSkill": [
+                "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/archimate-models",
                 "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/auto-docs",
                 "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/board-diagram-interchange",
                 "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/board-windows",
@@ -4875,6 +4876,25 @@
               "name": "ui-core",
               "path": "skills/ui/ui-core",
               "version": "0.1.0"
+            },
+            {
+              "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/archimate-models",
+              "@type": "bootstrap:Skill",
+              "ambiguous": false,
+              "description": "ArchiMate models as knowledge-graph content: how an instance declares the Archi models it holds, what the `archimate` subgraph gives every model, view, element and relationship (an IRI, a thin page, and every view drawn as SVG from the model's own diagram), how to version the models, how to wire them into a folio's staging build and navbar, and why no Java, no Archi CLI and no Archi HTML report is ever part of the pipeline. Read before adding, publishing or rendering an `.archimate` file, before citing an ArchiMate element from prose, and before reaching for Archi's own tooling in CI.",
+              "hasIOContract": false,
+              "hasInstructions": true,
+              "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/ui-core",
+              "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
+              "instructionLines": 130,
+              "instructionsPath": "skills/ui/ui-core/archimate-models.md",
+              "name": "archimate-models",
+              "payload": {
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f0ba9b5acf1034f894d5e9950cbdc9bc572bddb4537b2991e197f4196c910f7d",
+                "bytes": 6673,
+                "sha256": "f0ba9b5acf1034f894d5e9950cbdc9bc572bddb4537b2991e197f4196c910f7d"
+              },
+              "title": "ArchiMate models — every view, element and relationship a node"
             },
             {
               "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/auto-docs",

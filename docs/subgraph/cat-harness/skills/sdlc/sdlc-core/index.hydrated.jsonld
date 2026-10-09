@@ -620,9 +620,9 @@
       "instructionsPath": "skills/sdlc/sdlc-core/merge-conflict-patterns.md",
       "name": "merge-conflict-patterns",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/fca7962b5fe4b537875678eda97acc800ed431bd4752c4b3e5871886fd0027ee",
-        "bytes": 51618,
-        "sha256": "fca7962b5fe4b537875678eda97acc800ed431bd4752c4b3e5871886fd0027ee"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2d78fa176c6e38b7540fe5fd68fdcaec2c5c6eb47406a0905f31ff78843d73d6",
+        "bytes": 51614,
+        "sha256": "2d78fa176c6e38b7540fe5fd68fdcaec2c5c6eb47406a0905f31ff78843d73d6"
       },
       "title": "Merge-conflict patterns — what a merge may resolve on its own"
     },

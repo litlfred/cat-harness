@@ -9,6 +9,17 @@
       "name": "ui-core"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/archimate-models",
+      "@type": "bootstrap:Skill",
+      "name": "archimate-models",
+      "payload": {
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f0ba9b5acf1034f894d5e9950cbdc9bc572bddb4537b2991e197f4196c910f7d",
+        "bytes": 6673,
+        "sha256": "f0ba9b5acf1034f894d5e9950cbdc9bc572bddb4537b2991e197f4196c910f7d"
+      },
+      "title": "ArchiMate models — every view, element and relationship a node"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/auto-docs",
       "@type": "bootstrap:Skill",
       "name": "auto-docs",

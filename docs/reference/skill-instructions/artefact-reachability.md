@@ -152,7 +152,7 @@ and both of them looked reasonable.
 
 **Attempt 1 — ask the broad question.** *Is any module reached by nothing?*
 Answer: **710 of 1834**. Not a findings list; noise. Most were corpora
-discovered by directory walk — content blocks under `content/docs/`, schema
+discovered by directory walk — content blocks under `docs/source/`, schema
 modules a registry names, the tests `bun test` globs — and no inference can tell
 those from a module nobody can run. A gate with 710 findings is a gate switched
 off in a week.

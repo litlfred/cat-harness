@@ -79,9 +79,9 @@
       "@type": "bootstrap:Skill",
       "name": "crdm-requirements-workflow",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e5ab786917b58ad608bb1a7b5b8081cb9b4eab93d5c179d940b582fbea91782f",
-        "bytes": 27253,
-        "sha256": "e5ab786917b58ad608bb1a7b5b8081cb9b4eab93d5c179d940b582fbea91782f"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2b295326c5bc41ac2b25721eff2e41250a22a3bdb35d9dfedee0df1b20600246",
+        "bytes": 27252,
+        "sha256": "2b295326c5bc41ac2b25721eff2e41250a22a3bdb35d9dfedee0df1b20600246"
       },
       "title": "CRDM requirements workflow"
     }
