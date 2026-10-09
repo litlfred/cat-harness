@@ -238,11 +238,12 @@ works."* So:
   site-wide route (`skills/`, `tools/`, `docs/`, `assets/`, …), and a
   collision names both claimants.
 
-**Not built yet:** the alias declaration, the collision check and the one
-declared list of reserved names are bean `t4xb`. Until they land, link to the
-canonical form, and treat an existing top-level kind route as a route that is
-already there, not a pattern to copy. The same bean covers the disk side —
-a remote mount landing at `<name>/` — in [`remote-mount`](remote-mount.md).
+The alias declaration (`alias: true` or `alias: "<alias>"` on `VisualisationSchema`),
+the collision checks (`checkVisualizerRouteCollisions`), and the one declared list of reserved
+names (`RESERVED_ROOT_AND_ROUTE_NAMES` in `schemas/remote-mount.ts`) are built under bean
+`t4xb`. When an alias is declared and clean, links address the alias; otherwise every link uses
+the canonical `<base>/<harness>/<visualizer>/` form. The disk half — a remote mount landing at
+`<name>/` — is documented in [`remote-mount`](remote-mount.md).
 
 ### When the two collide — the handler wins
 

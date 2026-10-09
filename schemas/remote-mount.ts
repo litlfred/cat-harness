@@ -360,3 +360,268 @@ export function readMountLock(file: string): { ok: true; lock: MountLock } | { o
   if (!p.success) return { ok: false, absent: false, why: `${file} is not a ${MOUNT_LOCK_SCHEMA} lock: ${p.error.issues[0]?.message ?? "invalid"}` };
   return { ok: true, lock: p.data };
 }
+
+// ── Reserved names and collision checks (bean folio-assistant-t4xb) ─────────
+
+/**
+ * Reserved root directory and site route names — declared in one place (bean folio-assistant-t4xb).
+ *
+ * A remote mount whose effective path collides with any of these names (or whose root segment
+ * collides with them) is rejected, and an opt-in visualiser alias that collides with any of these
+ * names is refused.
+ */
+export const RESERVED_ROOT_AND_ROUTE_NAMES: readonly string[] = [
+  "skills",
+  "tools",
+  "docs",
+  "assets",
+  "glossary",
+  "api",
+  "payload",
+  "STAGING",
+  "beans",
+  "todos",
+  "fsh-guts",
+  "uploads",
+  "test",
+  "build",
+  "_site",
+  "_docs",
+  "_kg",
+] as const;
+
+export type ReservedRootAndRouteName = (typeof RESERVED_ROOT_AND_ROUTE_NAMES)[number];
+
+export function isReservedRootOrRouteName(name: string): boolean {
+  const norm = name.replace(/^\/+|\/+$/g, "");
+  const segment = norm.split("/")[0] ?? norm;
+  return RESERVED_ROOT_AND_ROUTE_NAMES.some(
+    (r) => r.toLowerCase() === segment.toLowerCase(),
+  );
+}
+
+export interface MountPathDescriptor {
+  harness: string;
+  path?: string;
+  overrides?: Record<string, { path?: string }>;
+}
+
+/**
+ * The effective mount path of a remote mount entry:
+ * `m.path` or `m.overrides[harness].path` or default `<harness>/`.
+ * Stripped of leading and trailing slashes.
+ */
+export function effectiveMountPathOf(m: MountPathDescriptor): string {
+  const p = m.path ?? m.overrides?.[m.harness]?.path ?? m.harness;
+  return p.replace(/^\.\//, "").replace(/^\/+|\/+$/g, "");
+}
+
+export interface MountCollisionFinding {
+  harness: string;
+  effectivePath: string;
+  kind: "declared-directory" | "reserved-name" | "sibling-mount";
+  collidesWith: string;
+  message: string;
+}
+
+export interface CheckMountCollisionsOptions {
+  declaredDirs?: readonly string[];
+  reservedNames?: readonly string[];
+}
+
+/**
+ * Check a list of remote mounts for path collisions:
+ * 1. collides with a directory the downstream declares in its own configuration;
+ * 2. collides with a reserved root or site route name;
+ * 3. collides with another mount's path.
+ *
+ * When a collision occurs, the finding's message clearly says how to fix it: "set `path`".
+ */
+export function checkMountPathCollisions(
+  mounts: readonly MountPathDescriptor[],
+  opts: CheckMountCollisionsOptions = {},
+): MountCollisionFinding[] {
+  const findings: MountCollisionFinding[] = [];
+  const declaredDirs = (opts.declaredDirs ?? []).map((d) => d.replace(/^\.\//, "").replace(/^\/+|\/+$/g, ""));
+  const reserved = opts.reservedNames ?? RESERVED_ROOT_AND_ROUTE_NAMES;
+
+  for (let i = 0; i < mounts.length; i++) {
+    const m = mounts[i]!;
+    const eff = effectiveMountPathOf(m);
+    const rootSegment = eff.split("/")[0] ?? eff;
+
+    // 1. Collides with a directory the downstream declares
+    for (const d of declaredDirs) {
+      if (eff === d || eff.startsWith(`${d}/`) || d.startsWith(`${eff}/`)) {
+        findings.push({
+          harness: m.harness,
+          effectivePath: eff,
+          kind: "declared-directory",
+          collidesWith: d,
+          message: `Mount "${m.harness}" effective path "${eff}" collides with downstream declared directory "${d}" — set \`path\` to avoid collision.`,
+        });
+        break;
+      }
+    }
+
+    // 2. Collides with a reserved root or site route name
+    const reservedMatch = reserved.find(
+      (r) => r.toLowerCase() === rootSegment.toLowerCase() || r.toLowerCase() === eff.toLowerCase(),
+    );
+    if (reservedMatch) {
+      findings.push({
+        harness: m.harness,
+        effectivePath: eff,
+        kind: "reserved-name",
+        collidesWith: reservedMatch,
+        message: `Mount "${m.harness}" effective path "${eff}" collides with reserved root or site route name "${reservedMatch}" — set \`path\` to avoid collision.`,
+      });
+    }
+
+    // 3. Collides with another mount's path
+    for (let j = 0; j < mounts.length; j++) {
+      if (i === j) continue;
+      const other = mounts[j]!;
+      const otherEff = effectiveMountPathOf(other);
+      if (eff === otherEff || eff.startsWith(`${otherEff}/`) || otherEff.startsWith(`${eff}/`)) {
+        findings.push({
+          harness: m.harness,
+          effectivePath: eff,
+          kind: "sibling-mount",
+          collidesWith: other.harness,
+          message: `Mount "${m.harness}" effective path "${eff}" collides with mount "${other.harness}" (path: "${otherEff}") — set \`path\` to avoid collision.`,
+        });
+        break;
+      }
+    }
+  }
+
+  return findings;
+}
+
+// ── Route rules: Canonical and Alias ────────────────────────────────────────
+
+/**
+ * The canonical URL route for a visualiser: `<base>/<harness>/<visualizer>/`.
+ * Always trailing-slash terminated.
+ */
+export function canonicalVisualizerRoute(harness: string, visualizer: string, base = ""): string {
+  const b = base.replace(/\/+$/, "");
+  const prefix = b ? `${b}/` : "";
+  const h = harness.replace(/^\/+|\/+$/g, "");
+  const v = visualizer.replace(/^\/+|\/+$/g, "");
+  return `${prefix}${h}/${v}/`;
+}
+
+/**
+ * The alias route for a visualiser when opt-in alias is declared.
+ * Returns `undefined` if no alias is declared or alias is false.
+ */
+export function visualizerAliasRoute(visualizer: string, alias?: string | boolean): string | undefined {
+  if (alias === undefined || alias === false) return undefined;
+  if (typeof alias === "string") return alias.replace(/^\/+|\/+$/g, "");
+  return visualizer.replace(/^\/+|\/+$/g, "");
+}
+
+/**
+ * Determine the URL for a visualiser:
+ * Uses alias `<base>/<alias>/` if opt-in alias is declared,
+ * otherwise canonical form `<base>/<harness>/<visualizer>/`.
+ */
+export function visualizerUrl(
+  harness: string,
+  visualizer: string,
+  opts?: { alias?: string | boolean; base?: string },
+): string {
+  const alias = visualizerAliasRoute(visualizer, opts?.alias);
+  if (alias) {
+    const b = opts?.base ? opts.base.replace(/\/+$/, "") + "/" : "";
+    return `${b}${alias}/`;
+  }
+  return canonicalVisualizerRoute(harness, visualizer, opts?.base);
+}
+
+export interface VisualizerRouteClaim {
+  harness: string;
+  visualizer: string;
+  alias?: string | boolean;
+}
+
+export interface RouteCollisionFinding {
+  claimantA: string;
+  claimantB: string;
+  route: string;
+  kind: "reserved-route" | "harness-route" | "alias-collision";
+  message: string;
+}
+
+/**
+ * Validate visualiser route aliases:
+ * Rejects any alias that collides with:
+ * 1. a reserved site route;
+ * 2. a harness route;
+ * 3. another visualiser's alias.
+ * Refuses the collision and names both claimants.
+ */
+export function checkVisualizerRouteCollisions(
+  visualizers: readonly VisualizerRouteClaim[],
+  opts: {
+    reservedRoutes?: readonly string[];
+    harnessNames?: readonly string[];
+  } = {},
+): RouteCollisionFinding[] {
+  const findings: RouteCollisionFinding[] = [];
+  const reserved = opts.reservedRoutes ?? RESERVED_ROOT_AND_ROUTE_NAMES;
+  const harnesses = opts.harnessNames ?? [];
+
+  const seenAliases = new Map<string, string>();
+
+  for (const v of visualizers) {
+    const alias = visualizerAliasRoute(v.visualizer, v.alias);
+    if (!alias) continue;
+
+    const claimant = `${v.harness}/${v.visualizer}`;
+    const aliasLower = alias.toLowerCase();
+
+    // 1. Check collision with reserved site route
+    const reservedMatch = reserved.find((r) => r.toLowerCase() === aliasLower);
+    if (reservedMatch) {
+      findings.push({
+        claimantA: claimant,
+        claimantB: `reserved-route:${reservedMatch}`,
+        route: alias,
+        kind: "reserved-route",
+        message: `Visualiser alias "${alias}" from "${claimant}" collides with reserved site route "${reservedMatch}".`,
+      });
+    }
+
+    // 2. Check collision with harness route
+    const harnessMatch = harnesses.find((h) => h.toLowerCase() === aliasLower);
+    if (harnessMatch) {
+      findings.push({
+        claimantA: claimant,
+        claimantB: `harness:${harnessMatch}`,
+        route: alias,
+        kind: "harness-route",
+        message: `Visualiser alias "${alias}" from "${claimant}" collides with harness route "${harnessMatch}" (claimant: harness:${harnessMatch}).`,
+      });
+    }
+
+    // 3. Check collision with another visualiser's alias
+    const existing = seenAliases.get(aliasLower);
+    if (existing) {
+      findings.push({
+        claimantA: claimant,
+        claimantB: existing,
+        route: alias,
+        kind: "alias-collision",
+        message: `Visualiser alias "${alias}" collides between claimants "${claimant}" and "${existing}".`,
+      });
+    } else {
+      seenAliases.set(aliasLower, claimant);
+    }
+  }
+
+  return findings;
+}
+
