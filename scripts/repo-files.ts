@@ -42,7 +42,9 @@
  * `ls-files` when the question is literally "what is committed".
  */
 import { existsSync } from "node:fs";
-import { join } from "node:path";
+import { join, relative } from "node:path";
+
+import { gitCorpus } from "../schemas/git-corpus.js";
 
 function gitList(root: string, args: string[]): string[] {
   const proc = Bun.spawnSync(["git", ...args], { cwd: root });
@@ -63,6 +65,17 @@ function gitList(root: string, args: string[]): string[] {
 export function repoFiles(root: string, trees: readonly string[]): string[] {
   const seen = new Set<string>();
   for (const t of trees) {
+    // `gitCorpus` asks the same question (tracked ∪ untracked-not-ignored) and
+    // also answers it for a tree git does not hold: an instance REMOTE-MOUNTED
+    // into the index checkout is ignored there wholesale, so a bare
+    // `ls-files` listed nothing and every gate over a mounted instance passed
+    // over an empty set. Asked from inside the tree, the corpus is the
+    // mount's files.
+    const corpus = gitCorpus(join(root, t));
+    if (corpus !== undefined) {
+      for (const abs of corpus) seen.add(relative(root, abs));
+      continue;
+    }
     for (const f of gitList(root, ["ls-files", t])) seen.add(f);
     for (const f of gitList(root, ["ls-files", "--others", "--exclude-standard", t])) seen.add(f);
   }
