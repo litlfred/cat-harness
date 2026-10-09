@@ -8,7 +8,7 @@
   },
   "directories": [
     {
-      "dir": "cat-harness/folio",
+      "dir": "cat-harness-upstream/folio",
       "present": true,
       "nodes": 1
     }
@@ -23,7 +23,7 @@
       "links": [
         {
           "label": "cat-harness, in the source",
-          "href": "https://github.com/litlfred/folio-assistant"
+          "href": "https://github.com/litlfred/cat-harness"
         },
         {
           "label": "RTFM — the cat-harness docs",
@@ -47,7 +47,7 @@
         }
       ],
       "chars": 431,
-      "file": "cat-harness/folio/cat-harness.json"
+      "file": "cat-harness-upstream/folio/cat-harness.json"
     }
   ]
 }
