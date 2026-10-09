@@ -99,7 +99,6 @@
 
   // ── A model: its views, and its elements by layer ──────────────────────
   function drawModel(m) {
-    var ix = index(m);
     var out = [el("p", {}, [m.views.length + " views · " + m.elements.length + " elements · " + m.relationships.length + " relationships"])];
     if (m.documentation) out.push(text(m.documentation));
     out.push(props(m.properties));
