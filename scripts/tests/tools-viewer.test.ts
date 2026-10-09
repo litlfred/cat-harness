@@ -126,17 +126,50 @@ describe("satisfies links what resolves (qgjh)", () => {
   const TOOLS_PAGE = pageRelPath(REPO)!;
   const withSkill = rows.find((r) => r.satisfies.length > 0)!;
   const s = withSkill.satisfies[0]!;
-  const line = (md: string): string => md.split("\n").find((l) => l.startsWith(`| \`${withSkill.id}\``))!;
+  const satisfiesCell = (md: string): string =>
+    md
+      .split("\n")
+      .find((l) => l.includes(`\`${withSkill.id}\``) && l.startsWith("|"))!
+      .split("|")[4]!;
 
   it("links a skill whose page exists, relative to the page it sits on", () => {
-    expect(line(page(rows, new Set([s]), new Set([s]), TOOLS_PAGE))).toContain(
+    expect(satisfiesCell(page(rows, new Set([s]), new Set([s]), TOOLS_PAGE))).toContain(
       `[\`${s}\`](../reference/skill-instructions/${s}.html)`,
     );
   });
 
   it("leaves a skill with no page as code", () => {
-    const l = line(page(rows, new Set([s]), new Set(), TOOLS_PAGE));
-    expect(l).toContain(`\`${s}\``);
-    expect(l).not.toContain(`[\`${s}\`]`);
+    const c = satisfiesCell(page(rows, new Set([s]), new Set(), TOOLS_PAGE));
+    expect(c).toContain(`\`${s}\``);
+    expect(c).not.toContain(`[\`${s}\`]`);
   });
 });
+
+/**
+ * Bean `folio-assistant-qbfm`: wireframe fixes.
+ * - Stat boxes link into in-page anchors / table sections.
+ * - Tool ids are in-page anchors and links.
+ * - Mobile scroll cue styling on table-wrapper.
+ */
+describe("wireframe fixes (qbfm)", () => {
+  const html = page(rows, skillIds(REPO));
+
+  it("renders stat boxes as links into page sections", () => {
+    expect(html).toContain('<a class="tg-stat" href="#every-tool">');
+    expect(html).toContain('<a class="tg-stat" href="#does-every-satisfies-name-a-skill-that-exists">');
+    expect(html).toContain('<a class="tg-stat" href="#how-they-are-invoked-and-installed">');
+  });
+
+  it("renders tool ids as in-page anchors and links", () => {
+    for (const r of rows) {
+      expect(html).toContain(`<a id="${r.id}"></a>[\`${r.id}\`](#${r.id})`);
+    }
+  });
+
+  it("provides mobile scroll cue for the table wrapper", () => {
+    expect(html).toContain(".table-wrapper");
+    expect(html).toContain("mask-image");
+    expect(html).toContain("animation-timeline");
+  });
+});
+
