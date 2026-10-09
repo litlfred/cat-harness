@@ -1,13 +1,25 @@
 import { describe, expect, it } from "bun:test";
-import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 import { OpenApiConfigSchema, fallbackOperationId, operationsOf, type OpenApiDocument } from "../schemas/openapi.ts";
 import { checkCommitted, configPath } from "./ingest-openapi.ts";
 import { PAGE_CONFIG_ID, pagesFor } from "./gen-openapi-pages.ts";
 import { thinPageConfigOf } from "../../scripts/thin-page.ts";
+import { BASE_GRAPH_TYPOLOGIES, GraphTypologyRegistry } from "../../schemas/graph-typology-registry.ts";
+import { isZodSchema, resolveNodeSchemas } from "../../schemas/kind-validator.ts";
 
-const ROOT = join(import.meta.dir, "..", "..", "..");
+function findRoot(): string {
+  for (let up = "../../.."; resolve(join(import.meta.dir, up)) !== "/"; up += "/..") {
+    const candidate = resolve(join(import.meta.dir, up));
+    if (existsSync(join(candidate, "smart-trust", "openapi", "cat-openapi.config.json"))) {
+      return candidate;
+    }
+  }
+  return resolve(join(import.meta.dir, "../../.."));
+}
+const ROOT = findRoot();
+const hasSmartTrust = existsSync(join(ROOT, "smart-trust"));
 const doc = (paths: OpenApiDocument["paths"]): OpenApiDocument => ({ openapi: "3.0.1", info: { title: "T", version: "1" }, paths });
 
 describe("operationsOf", () => {
@@ -90,8 +102,8 @@ describe("the committed gateway API", () => {
   });
 });
 
-describe("pages", () => {
-  const files = pagesFor(join(ROOT, "smart-trust"));
+describe.skipIf(!hasSmartTrust)("pages", () => {
+  const files = hasSmartTrust ? pagesFor(join(ROOT, "smart-trust")) : [];
   const pages = files.filter((f) => f.path.endsWith("/index.html"));
 
   it("one page per operation, plus the document's", () => {
@@ -115,3 +127,33 @@ describe("pages", () => {
     }
   });
 });
+
+describe("openapi typology validators", () => {
+  it("every declared family in openapi/typologies/openapi.json resolves to a validator and valid schema", async () => {
+    const typologyPath = join(import.meta.dir, "..", "typologies", "openapi.json");
+    const typology = JSON.parse(readFileSync(typologyPath, "utf-8"));
+    const declaredFamilies = Object.keys(typology.nodeSchemas ?? {});
+    expect(declaredFamilies.length).toBeGreaterThan(0);
+
+    const harnessDir = resolve(join(import.meta.dir, "..", ".."));
+    const registry = new GraphTypologyRegistry(BASE_GRAPH_TYPOLOGIES, harnessDir);
+    const resolutions = await resolveNodeSchemas("openapi", harnessDir, registry);
+
+    const byTag = new Map(resolutions.map((r) => [r.tag, r]));
+
+    for (const family of declaredFamilies) {
+      const validatorNode = registry.validatorNodeFor("openapi", family);
+      expect(validatorNode).toBeDefined();
+      expect(validatorNode!.node.validates.kind).toBe("openapi");
+      expect(validatorNode!.node.validates.family).toBe(family);
+
+      const res = byTag.get(family);
+      expect(res).toBeDefined();
+      expect(res!.state).toBe("resolved");
+      if (res && res.state === "resolved") {
+        expect(isZodSchema(res.schema)).toBe(true);
+      }
+    }
+  });
+});
+
