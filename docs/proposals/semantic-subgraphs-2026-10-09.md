@@ -2,7 +2,7 @@
 title: "Semantic subgraphs: site chrome, themes, and concern groups a downstream can mount"
 kind: proposal
 summary: >-
-  Owner, 2026-10-09, after who-iris's standalone site could not be composed without the whole of cat-harness's 97 MB docs graph: make the just-the-docs CHROME its own subgraph, make the THEMES beyond the light/dark/accessibility base their own subgraph, and carry the eight concern groups (`9umr`) through docs and code so a downstream mounts a concern, not a monolith. Measured: chrome is 4 generic includes, 8 CSS and 11 JS files and the theme keys of one config, referenced by path from ~130 files; the themes are 14 entries in one TypeScript list plus 45 art declarations (5.1 MB). A mount can name only top-level directory ids today. Four layout options for the concern groups; C (kind-first layout plus a concern selector in the mount) is recommended. Five owner decisions.
+  Owner, 2026-10-09, after who-iris's standalone site could not be composed without the whole of cat-harness's 97 MB docs graph: make the just-the-docs CHROME its own subgraph, make the THEMES beyond the light/dark/accessibility base their own subgraph, and carry the eight concern groups (`9umr`) through docs and code so a downstream mounts a concern, not a monolith. Measured: chrome is 4 generic includes, 8 CSS and 11 JS files and the theme keys of one config, referenced by path from ~130 files; the themes are 14 entries in one TypeScript list plus 45 art declarations (5.1 MB). A mount can name only top-level directory ids today. Four layout options for the concern groups; C is recommended: kind-first layout plus a TWO-PHASE mount (hydrated metadata of any named subgraph, review, then materialize a chosen set), which the owner described and which is three gaps from today (Tools have no hydrated index; mounts take no hydrated or nested ids; materialization takes whole top-level directories). Five owner decisions.
 ---
 
 # Semantic subgraphs: site chrome, themes, and concern groups a downstream can mount
@@ -212,23 +212,60 @@ kinds from within — the shape `openapi/` already has.
   first path segment, so every kind's readers change, and `skills/` and
   `processes/` move again having just been grouped.
 
-### Option C — Option A's layout, plus a concern selector in the mount (recommended)
+### Option C — Option A's layout, plus a two-phase mount: hydrated first, then a chosen set (recommended)
 
-Keep kind-first. Add two things to `remote-mount`:
+> **Revised 2026-10-09** on the owner's correction: *"i thought we could mount
+> unhydrated and mount hydrated on (sub-\*)graphs .... so you can do a workflow
+> like 'load the tools/skills metadata, review the skills description and then
+> materialize a set of Tools'"*. The first draft of this option was a
+> `concerns: [...]` selector. A selector chooses by LABEL; the owner's workflow
+> chooses by READING, and reading needs the metadata to arrive first. The
+> selector survives as a convenience in step 2.
 
-1. **Nested ids resolve**: `byId` is built from `resolveDirectories`, not the
-   raw top level, so `overrides.directories` may name `proposals`, `voices`,
-   or `openapi-scripts`.
-2. **A `concerns` selector**: `overrides.<instance>.concerns: ["ui"]` expands
-   to every directory that is a member of that group in any `concern-groups/v1`
-   declaration of the instance — `skills/ui`, `processes/ui`, `docs/ui`,
-   `site-chrome`, `themes` — plus what those need (below).
+Keep the kind-first layout, and make a mount two-phase, the way a subscription
+already is:
 
-- **For:** keeps the ruled layout; turns "mount the publication concern" into
-  one line; both additions are local to `remote-mount.ts` and its schema.
-- **Against:** a mount plan becomes a resolution, not a list, so the lock
-  (`index.lock.json`) must record what a selector resolved to — which it
-  already does for directories.
+1. **Hydrated: the metadata of any named subgraph, nested or not.** The
+   downstream takes `index.hydrated.jsonld` for `skills/`, `skills/sdlc`,
+   `tools/` or `docs/proposals` — every node inline, typed, labelled and
+   described, payloads as pointers. Nothing executable arrives, so nothing has
+   to load.
+2. **Review.** A person or an agent reads the descriptions and chooses: these
+   six skills, these three Tools, this docs group.
+3. **Materialized: exactly the chosen set**, plus its **import closure** for
+   code (below). The mount plan names the nodes or nested subgraphs that were
+   chosen; the lock (`index.lock.json`) records what they resolved to, as it
+   already does for directories. `concerns: ["ui"]` is shorthand for "every
+   member of that group", for a downstream that does not need to read first.
+
+**What already exists, measured 2026-10-09** (beans `c1m4`, `fnx4`, `whlc`,
+`nn8e` on `cat/cat-harness/beans`):
+
+| step | for a SUBSCRIPTION (you read their content) | for a MOUNT (your code imports theirs) |
+|---|---|---|
+| 1 hydrated, nested subgraph | **exists** — `kg:materialize --nodes <sub> <path>` fetches `<docs>/subgraph/<HARNESS>/<path>/index.hydrated.jsonld`, validated against `SubgraphHydratedSchema` (`c1m4`, completed) | **missing** — named in `nn8e`'s done-when as a follow-up ("remote BRANCH mount of other repos' named subgraphs, hydrated vs not") and **never filed as a bean** |
+| …for Tools | **missing** — `gen-subgraph-jsonld` publishes subgraphs for `kgDirectories(instance)`: `skills/`, `scenarios/`, `processes/` (170 hydrated files across instances today). `tools/` is not among them, so there is no Tools metadata to load | missing, as above |
+| 3 materialize a chosen set | **partly** — `kg:materialize <sub> <subgraph>` copies a whole TOP-LEVEL declared directory through the five gates (`declaredDirectories` reads the raw top level); not a node set, not a nested subgraph | **missing** — `remote-mount.ts` takes top-level ids only (wall 2) |
+
+So the owner's workflow is three gaps, not a new mechanism:
+
+- **G1** — Tool nodes get a named subgraph and a hydrated index (`tools/` into
+  what `gen-subgraph-jsonld` exports).
+- **G2** — remote mount, phase 1: `hydrated: true` on a mount entry or
+  override fetches a named subgraph's `index.hydrated.jsonld` at the pin
+  instead of files (the `nn8e` follow-up; file it as its own bean).
+- **G3** — materialize a chosen set: nested subgraph ids and node ids resolve
+  through `resolveDirectories`/the hydrated index rather than the raw top
+  level, in both `remote-mount` and `kg:materialize`, with the code closure
+  added for Tools.
+
+- **For:** keeps the ruled layout; reuses the published `index.hydrated.jsonld`
+  contract instead of inventing a selector language; the same two phases serve
+  a subscription and a mount, so an agent learns one workflow.
+- **Against:** a mount becomes a decision with a review step in it, so it is
+  no longer a pure function of `index.config.json` — the CHOICE must be
+  written back to the mount entry (the way a subscription's `subgraphs` list
+  holds the choice and never the state), or a fresh clone cannot replay it.
 
 ### Option D — chrome and themes only
 
@@ -240,10 +277,11 @@ Do slices 1 and 2, leave the rest flat.
 
 ### The constraint every option meets: code does not subset like content
 
-A concern's PAGES can be mounted alone. Its SCRIPTS mostly cannot: a
+A concern's PAGES can be mounted alone, and so can any subgraph's METADATA
+(step 1 above). Its SCRIPTS mostly cannot: a
 publication script imports `schemas/cat-harness.ts`, which imports the
 graph-typology registry, which imports bootstrap-tools — the import cone is
-most of `schemas/`. So for code, a concern selector must mount the concern's
+most of `schemas/`. So for code, step 3 must mount the chosen Tools'
 scripts **plus their import closure**, which `check:tools-closure` already
 computes for kg-separation stage 6. Mounting "publication" without that would
 produce a checkout where `compose-docs.ts` is present and cannot load. This is
@@ -256,7 +294,7 @@ hides it inside the directory.
 |---|---|---|---|---|
 | A | large (docs + all scripts) | no | yes | n/a |
 | B | largest (every kind) | yes, today | **no** | by directory, coarsely |
-| C | as A, staged | yes | yes | yes, via `check:tools-closure` |
+| C | as A, staged | yes — read, then choose | yes | yes, via `check:tools-closure` |
 | D | small | no | yes | n/a |
 
 ## 5. Stages
@@ -265,11 +303,14 @@ hides it inside the directory.
 |---|---|---|
 | 1 | `site-chrome/` declared and populated; `compose-docs` base order; every path reader repointed | folio-assistant's composed tree identical except `_config.yml` parse-equal; `check:stale-paths`; `check:declared-paths` |
 | 2 | `themes/` declared; `RAW` → one node per theme; art declarations move with their themes; default with fallback | `gen-themes-css --check` byte-identical `themes.css`; `theme-contrast` QA unchanged |
-| 3 | `remote-mount`: nested ids resolve | a downstream naming `site-chrome` + `themes` + code mounts and builds |
+| 3 | G3 for top-level and nested subgraph ids in `remote-mount` | a downstream naming `site-chrome` + `themes` + code mounts and builds |
 | 4 | who-iris publishes its own site from `site-chrome` + its own `themes/` (kg-separation stages 7 and 12 for who-iris) | the site at `litlfred.github.io/who-iris/` builds and every replica link resolves |
-| 5+ | Option C's `concerns` selector, then docs and scripts into their groups, one group per PR | `check:concern-groups`; `check:tools-closure` |
+| 5 | G1: `tools/` exported as a named subgraph with `index.hydrated.jsonld` | `subgraph:jsonld:check`; the Tools' descriptions appear in the hydrated file |
+| 6 | G2: hydrated mounts (the unfiled `nn8e` follow-up, filed first) | a downstream reads `tools/` metadata at a pin with no code mounted |
+| 7 | G3 for node sets, with the code closure; then `concerns:` shorthand | "load tools metadata, review, materialize three Tools" runs end to end; `check:tools-closure` |
+| 8+ | docs and scripts into their concern groups, one group per PR | `check:concern-groups` |
 
-PRs 1–4 are the ruled slices and the who-iris unblock. 5+ waits on **D5**.
+PRs 1–4 are the ruled slices and the who-iris unblock. 5+ wait on **D5**.
 
 ## 6. Decisions for the owner
 
@@ -287,8 +328,9 @@ PRs 1–4 are the ruled slices and the who-iris unblock. 5+ waits on **D5**.
   site in any way a reader sees (nav order, search), slice 1 keeps the whole
   config in `docs/` and only downstream builds merge (D1, other branch).
 - If the import closure of `compose-docs.ts` + `mount-instance-docs.ts` turns
-  out to be most of `scripts/` as well as `schemas/`, a concern selector buys
-  little for code, and Option C should be scoped to content kinds only.
+  out to be most of `scripts/` as well as `schemas/`, step 3 buys little for
+  code: materializing "three Tools" would bring most of the harness anyway,
+  and Option C should be scoped to content kinds plus metadata for Tools.
 - If a second downstream (not who-iris) never asks for a concern, Option D is
   enough and slice 3 is not worth its churn.
 
