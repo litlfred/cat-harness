@@ -21,6 +21,10 @@ vendor or sync it rather than hand-maintaining their own copy.
 **"Prepare-merge" ≠ "merge".** It makes the branch *mergeable* and stops. It
 does **not** push to the default branch and does **not** merge a PR. Both are
 outward-facing, hard-to-reverse actions — do them only on an explicit request.
+The merge itself is its own sub-process with its own gate,
+[`merge-to-main`](merge-to-main.md): evidence on the head, the owner's
+authorisation for THAT merge, recorded, then the merge. Asking for
+prepare-merge (or "ship it") is not that authorisation.
 
 ## The problem this solves
 
@@ -498,6 +502,10 @@ nobody ran is a driver that is not there, failing open and silently.
 
 ## Shipping is not merging — hand over on the PR itself
 
+What happens after the handover is [`merge-to-main`](merge-to-main.md), called
+by `merge-train.bpmn` for a queued PR and by `crdm-close.bpmn` for a CRDM
+feature.
+
 When the branch is green and pushed, it reaches the Merge Steward only by its
 own state: label `ready-to-merge`, a signed `ready: <head sha>` comment, and no
 `needs-merge-human`. [`merge-queue`](merge-queue.md) §"Handing a PR to the
@@ -525,7 +533,9 @@ harness git instructions). Do not include the model identifier in the PR.
 ## Guardrails
 
 - **Never push to the default branch** and **never merge a PR** without an
-  explicit ask. Prepare-merge leaves the decision to the human.
+  explicit ask. Prepare-merge leaves the decision to the human. When the ask
+  comes, the merge runs [`merge-to-main`](merge-to-main.md); a broad
+  instruction such as "fix all issues until green" is not the ask.
 - **In folio-assistant an agent never merges to `main` at all** (owner,
   2026-10-01). When CI is green on every job: mark the PR Ready for review,
   add the label `ready-to-merge`, and comment `ready: <head sha>`. The Merge
@@ -632,7 +642,7 @@ harness git instructions). Do not include the model identifier in the PR.
 | [Code change and review](../../processes/code-change-review.html) | Prepare the merge, and watch it through (calls a sub-process) |
 | [Merge the base branch in](../../processes/merge-base.html) | Merge the base in, without committing; Regenerate, asking every CI gate; Resolve by hand, then regenerate |
 | [A refused merge-train member](../../processes/merge-refusal.html) | Fix the PR, report on the PR |
-| [A merge train](../../processes/merge-train.html) | Merge each member onto the base (calls a sub-process); Land the train at the tested SHA |
+| [A merge train](../../processes/merge-train.html) | Merge each member onto the base (calls a sub-process) |
 | [Adopting an upstream version bump](../../processes/upstream-version-adoption.html) | Move the pin and open the PR |
 | [Content Change and Review](../../processes/content-change-review.html) | Merge, on explicit confirmation |
 

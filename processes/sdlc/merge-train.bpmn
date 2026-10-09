@@ -250,7 +250,7 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       <bpmn:outgoing>t31</bpmn:outgoing>
     </bpmn:callActivity>
 
-    <bpmn:callActivity id="Call_MergeToMain" name="Release and land each&#10;member at the tested SHA&#10;[merge-to-main]" calledElement="Process_MergeToMain">
+    <bpmn:callActivity id="Call_MergeToMain" name="Land each member&#10;[merge-to-main]" calledElement="Process_MergeToMain">
       <bpmn:documentation>Once per member, in train order, at the SHA the train's gate set tested. `merge-to-main.bpmn` is where merging is a step with its own gate: it reads the head's evidence live (the train's green run is that evidence, and `merge:guard` re-evaluates it), establishes that the owner authorised THIS merge (explicitly, or by a standing ruling quoted verbatim with its date, e.g. 2026-10-01 "you may merge green PRs", which covers green heads only and only the queue as it stood), records the authorisation, merges pinned to the head, and then confirms `main`, re-pins downstream mounts and notes the bean. Until 2026-10-09 this was two steps here, `Task_Release` in the owner's lane bound to interaction-modality and `Task_Land` bound to prepare-merge; neither could refuse a merge, and neither said what happens when a repository has no CI. R1 still holds: what lands is exactly what CI tested. If `main` moved after the train's CI started, re-run rather than land. Each member's `trainId` is cleared, and its preview is then taken down by `feature-staging.bpmn`. A member the sub-process does not merge (held, refused, handed back) leaves the train with its reason on its queue entry.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>

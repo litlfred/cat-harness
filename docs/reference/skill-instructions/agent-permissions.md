@@ -1,20 +1,19 @@
 ---
-name: agent-permissions
-description: >
-  Securing what a coding agent may do without asking, from the person who can
-  grant it: the `secure-agent-permissions` sub-process, run at session start and
-  on demand when an action is denied. Vendor-neutral: the coding agent is a Tool
-  (Claude Code is one; Gemini CLI, Cursor, Copilot and Codex are others), and
-  each Tool's own config format belongs to its adapter, not here. Covers the
-  permissions the harness's processes need, least privilege, how each one is
-  explained before it is granted, how a grant is recorded, and the rules that no
-  grant relaxes: never self-granted, generated projections are CI's, and merging
-  to main is never a standing permission.
+layout: default
+generated: scripts/gen-skill-docs.ts — do not hand-edit; edit the skill
+title: 'Agent permissions'
+parent: Skill instructions
 ---
 
+{: .note }
+> Generated from [`cat-harness/skills/conduct/conduct-core/agent-permissions.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/skills/conduct/conduct-core/agent-permissions.md) — do not edit here.
+>
+> [✎ Edit this page's source](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/skills/conduct/conduct-core/agent-permissions.md){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/skills/conduct/conduct-core/agent-permissions.md" data-repo="litlfred/folio-assistant" }
+
+{% raw %}
 # Agent permissions — asked for, explained, granted by a person, recorded
 
-[`processes/process/secure-agent-permissions.bpmn`](../../../processes/process/secure-agent-permissions.bpmn)
+[`processes/process/secure-agent-permissions.bpmn`](../../processes/secure-agent-permissions.html)
 (`Process_SecureAgentPermissions`) is the process. It is called from
 `session-state-machine.bpmn` (`Call_SecurePermissions`, after the session record
 opens), so it is part of starting work in an instance. It also runs **on
@@ -29,7 +28,7 @@ one comparison.
 
 | layer | question | where it lives |
 |---|---|---|
-| role | what does the performer of this lane need to KNOW? | skills on the role ([`role-model`](../../process/process-core/role-model.md)) |
+| role | what does the performer of this lane need to KNOW? | skills on the role ([`role-model`](role-model.md)) |
 | actor permission | what may this participant DO in the harness, in any lane? | `skills/permissions/permissions.json` actions, granted by ODRL rules under `policies/` |
 | **agent Tool permission** | **what may this coding agent do on this machine without stopping to ask?** | **the Tool's own config, written through its adapter; the grant recorded as below** |
 
@@ -50,7 +49,7 @@ that does the job.
 | open and update a PR | create a PR, comment, label it | `continual-progress`, `issue-working`, `merge-queue` handover | never merge |
 | edit agent hooks and settings | change the Tool's hand-edited config | only when a hook or setting is itself the defect | **per change, never standing**: the exact diff, the reason, then the owner's yes ([`harness-projections`](harness-projections.md)) |
 | write generated projections | regenerate the Tool's projections of the graph | none: CI regenerates them on the PR head | **not granted to an agent at all** ([`harness-projections`](harness-projections.md)) |
-| merge to `main` | — | — | **never a Tool permission.** Every merge is its own owner-authorised run of [`merge-to-main`](../../sdlc/sdlc-core/merge-to-main.md). No allow-rule for a merge command is ever written. |
+| merge to `main` | — | — | **never a Tool permission.** Every merge is its own owner-authorised run of [`merge-to-main`](merge-to-main.md). No allow-rule for a merge command is ever written. |
 
 ## Explaining one before it is granted
 
@@ -107,7 +106,7 @@ cannot be told from one an agent wrote for itself.
   grant to edit settings does not exist. Each edit is its own diff, reason and
   yes.
 - **Merging to `main` is never granted here.** See
-  [`merge-to-main`](../../sdlc/sdlc-core/merge-to-main.md).
+  [`merge-to-main`](merge-to-main.md).
 - **A broad instruction is not a grant.** "Fix all issues until green", "get
   the session start working" and "stop the prompts" authorise investigation.
   They do not authorise widening what the agent may do. Bring the diff back.
@@ -124,7 +123,7 @@ with an owner's gate: this process for the first, `merge-to-main` for the second
 This skill names no vendor's file, on purpose. Where a Tool keeps its
 permissions, how a rule is spelled, and which of its files are generated are
 properties of that Tool. They belong on its Tool node or adapter, which is the
-same direction [`bpmn-processes`](../../process/workflow/bpmn-processes.md)
+same direction [`bpmn-processes`](bpmn-processes.md)
 §"A Tool's OWN procedure is the Tool's subprocess" sets. For example, Claude
 Code keeps permission allow-rules in `.claude/settings*.json`. That sentence is
 an example, not a rule, and its home is the Claude Code adapter.
@@ -143,3 +142,12 @@ an example, not a rule, and its home is the Claude Code adapter.
   actions (`admin-settings`, `content-authoring`) in the table above, but are
   not declared in `permissions.json`. Declaring them is a change to the
   permission vocabulary, and it should come with the adapters that read them.
+{% endraw %}
+
+## Processes that run this skill
+
+| process | step(s) that name it |
+|---|---|
+| [Secure agent permissions](../../processes/secure-agent-permissions.html) | Identify the agent Tool(s) acting here; Compare what the processes need with what is granted; Explain each missing permission, with the exact config diff; Grant, narrow or refuse each; Record each answer: who, when, scope, the quote; Write it through the Tool's adapter |
+| [Session state machine](../../processes/session-state-machine.html) | Secure the agent's permissions (calls a sub-process) |
+

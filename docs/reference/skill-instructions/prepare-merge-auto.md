@@ -18,7 +18,9 @@ Runs the full `/prepare-merge` workflow PLUS:
 1. **Sibling coordination** (before starting)
 2. **Review-comment resolution** (after reviews land)
 3. **Structured user questions** (only when genuinely blocked)
-4. **Merge** (after all comments resolved)
+4. **Merge** (after all comments resolved), through
+   [`merge-to-main`](merge-to-main.md): "autonomous" covers the preparation,
+   never the authorisation
 
 ## Workflow
 
@@ -141,12 +143,17 @@ After all review comments are resolved (or the user has answered
 all escalated questions):
 
 1. Run `bun run scripts/run-validate.ts content/<paper>` one final time.
-2. Check CI status via `mcp__github__pull_request_read get_check_runs`.
-3. If all green: merge via `mcp__github__merge_pull_request` with
-   `merge_method: "merge"` (default per AGENTS.md — preserves
-   structured commits).
-4. **CRITICAL:** DO NOT DELETE THE BRANCH EVER! If using the GitHub CLI, DO NOT pass `--delete-branch`. If using the GitHub API, ensure the branch is preserved.
-5. Report the merge SHA + URL.
+2. **Run the [`merge-to-main`](merge-to-main.md) sub-process**
+   (`processes/sdlc/merge-to-main.bpmn`). In order: read the head's evidence
+   live (CI per owed job on the head SHA, mergeability, review state and
+   Claude Approvals where the repository runs it); a repository with no CI is
+   `none`, never green; find the owner's authorisation for THIS merge, and ask
+   with the evidence when there is none; record it; then merge pinned to the
+   head, with `merge_method: "merge"` unless told otherwise. Having invoked
+   this skill is not the authorisation, and neither is a broad instruction
+   such as "fix all issues until green".
+3. **CRITICAL:** DO NOT DELETE THE BRANCH EVER! If using the GitHub CLI, DO NOT pass `--delete-branch`. If using the GitHub API, ensure the branch is preserved.
+4. Report the merge SHA + URL, and the authorisation it was made under.
 
 ### Phase 5: Post-merge coordination
 
@@ -169,6 +176,8 @@ After merge:
 ## Anti-patterns
 
 - Do NOT merge without resolving review comments (even if CI is green).
+- Do NOT merge without the owner's authorisation for that merge, recorded
+  ([`merge-to-main`](merge-to-main.md)). Green CI is evidence, not permission.
 - **Do NOT read "no checks" as "nothing red".** A PR with ZERO check runs
   renders identically to one whose checks have not started. Match the PR's
   `head_sha` against the branch's workflow-run list before calling it green,

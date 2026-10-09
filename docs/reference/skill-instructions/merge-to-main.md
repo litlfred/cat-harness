@@ -1,24 +1,22 @@
 ---
-name: merge-to-main
-description: >
-  Merging to `main` is its own step with its own gate: the `merge-to-main`
-  sub-process, which every process that lands work CALLS rather than inlines.
-  Covers the evidence read live on the head (CI per owed job, mergeability,
-  review state, Claude Approvals where the repository runs it), why a
-  repository with no CI is never green, who may authorise a merge and what does
-  NOT count as authorisation ("fix all issues until green" does not), how the
-  authorisation is recorded, and the post-merge steps: base green, downstream
-  re-pins, bean and issue. Use for "merge it", "land this PR", "merge the
-  green PRs", and before any write to a default branch in any repository.
-user_invocable: false
+layout: default
+generated: scripts/gen-skill-docs.ts — do not hand-edit; edit the skill
+title: 'Merge to main'
+parent: Skill instructions
 ---
 
+{: .note }
+> Generated from [`cat-harness/skills/sdlc/sdlc-core/merge-to-main.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/skills/sdlc/sdlc-core/merge-to-main.md) — do not edit here.
+>
+> [✎ Edit this page's source](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/skills/sdlc/sdlc-core/merge-to-main.md){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/skills/sdlc/sdlc-core/merge-to-main.md" data-repo="litlfred/folio-assistant" }
+
+{% raw %}
 # Merge to `main` — a sub-process with its own gate
 
-[`processes/sdlc/merge-to-main.bpmn`](../../../processes/sdlc/merge-to-main.bpmn)
+[`processes/sdlc/merge-to-main.bpmn`](../../processes/merge-to-main.html)
 (`Process_MergeToMain`) is the process. Its two gateways are computed by
-[`merge-evidence.dmn`](../../../processes/sdlc/decisions/merge-evidence.dmn) and
-[`merge-authorisation.dmn`](../../../processes/sdlc/decisions/merge-authorisation.dmn).
+[`merge-evidence.dmn`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/sdlc/decisions/merge-evidence.dmn) and
+[`merge-authorisation.dmn`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/sdlc/decisions/merge-authorisation.dmn).
 
 **Every process that ends in a write to `main` calls it.** Today that is
 `merge-train.bpmn` (`Call_MergeToMain`, in place of the old `Task_Release` and
@@ -46,7 +44,7 @@ None of the three could refuse, and none covered a repository with no CI.
 ## The steps
 
 CI regenerates the harness projections on the head
-([`harness-projections`](../../conduct/conduct-core/harness-projections.md)).
+([`harness-projections`](harness-projections.md)).
 The merging session then reads the evidence, runs local gates if there is no
 CI, finds the authorisation and asks for it if it is missing. The owner
 answers: merge, hold or refuse. The merging session records the answer (not
@@ -77,7 +75,7 @@ only through `merge:guard`". Where it does not exist, read the same facts with
 the GitHub tools and write each one down with the URL it came from.
 
 `merge-evidence.dmn` then decides, in this order: `hand-back` on red, `dirty`
-or `blocking` (to [`merge-refusal`](../../../processes/sdlc/merge-refusal.bpmn),
+or `blocking` (to [`merge-refusal`](../../processes/merge-refusal.html),
 which returns the PR to its owner with the reason); `unknown` when a fact could
 not be read (ends, not merged); `not-yet` while runs are pending or
 mergeability is uncomputed (ends; re-enter later); `no-ci` on a clean, clear
@@ -126,7 +124,7 @@ evidence about the change. It is not authorisation to merge it.
 | `authorisation` | what it is |
 |---|---|
 | `explicit` | The owner's own words, naming this merge. Examples: "merge #12"; "yes, merge it" in reply to a question that named the PR and its evidence; "approve all 6" in reply to a list of six. |
-| `waiver` | A node under `memory/waivers/` with `gate: merge-to-main`, in scope and unexpired, carrying all five fields ([`confirmation-waiver`](../../conduct/conduct-core/confirmation-waiver.md)). |
+| `waiver` | A node under `memory/waivers/` with `gate: merge-to-main`, in scope and unexpired, carrying all five fields ([`confirmation-waiver`](confirmation-waiver.md)). |
 | `instruction-only` | A broad instruction about the work that does not name the merge. |
 | `none` | Nothing found. |
 | `unknown` | The waivers could not be read, a waiver is malformed, or the conversation the authorisation would be in is not available to this session. |
@@ -148,7 +146,7 @@ evidence about the change. It is not authorisation to merge it.
 reads `main`, and through `index.config.json` pins to every instance that mounts
 the repository. It cannot be taken back quietly: a revert is a second public
 change. That makes it the same kind of action as a deletion
-([`deletion-requires-confirmation`](../../conduct/conduct-core/deletion-requires-confirmation.md)):
+([`deletion-requires-confirmation`](deletion-requires-confirmation.md)):
 an outward write that is hard to reverse, owed an explicit yes. An instruction
 about the goal does not contain that yes, however confident the reading.
 
@@ -165,7 +163,7 @@ given**, not PRs that arrive later (owner, 2026-10-04, quoted in
 ## Asking — evidence before the question
 
 `Task_Ask` follows
-[`interaction-modality`](../../conduct/conduct-core/interaction-modality.md)
+[`interaction-modality`](interaction-modality.md)
 §4.1: context, options, recommendation, question. The test is whether the owner
 can answer without opening anything. For a merge, that means one row per PR:
 
@@ -222,7 +220,7 @@ merge-authorised:
 These fields match `index.config.json`'s trust consent one for one (`by`,
 `on`, `ref`, `evidence`). A quote that is not verbatim is not evidence: a
 paraphrase is the thing under suspicion, as
-[`confirmation-waiver`](../../conduct/conduct-core/confirmation-waiver.md) says
+[`confirmation-waiver`](confirmation-waiver.md) says
 of a waiver's `quote`.
 
 **The same rule covers a re-pin's `trust.consent.evidence`.** It quotes the
@@ -248,8 +246,8 @@ commit unless told otherwise. **Never delete the branch**
    in `source.remote.repository`. For each, open a PR that moves `ref` to the
    merge commit, carries a `trust.consent` whose `evidence` quotes the owner's
    consent to that pin, and regenerates `index.lock.json` with `mount:remote`
-   ([`remote-mount`](../../kg/kg-core/remote-mount.md),
-   [`index-config`](../../kg/kg-core/index-config.md)). **Each re-pin PR is a
+   ([`remote-mount`](remote-mount.md),
+   [`index-config`](index-config.md)). **Each re-pin PR is a
    merge to `main` in another repository, so it runs this sub-process again.**
    The merge authorisation covers the re-pin only if the owner's words named the
    re-pin. When no instance mounts the repository, record "no downstream mounts
@@ -276,3 +274,17 @@ commit unless told otherwise. **Never delete the branch**
   workflows, check 5 refuses with "no `pull_request` run names the head". Read
   that refusal as `ciState: none` and take the `no-ci` path, not `hand-back`:
   the PR has no defect for its owner to fix.
+{% endraw %}
+
+## Processes that run this skill
+
+This skill has its own process: **[Merge to main](../../processes/merge-to-main.html)**.
+
+<img src="../../assets/img/workflows/merge-to-main.svg" alt="BPMN diagram: Merge to main" style="max-width:100%">
+
+| process | step(s) that name it |
+|---|---|
+| [CRDM close-out](../../processes/crdm-close.html) | Land the feature's PRs (calls a sub-process) |
+| [Merge to main](../../processes/merge-to-main.html) | Read the head's evidence, live; No CI: run the repo's own gates locally; Hand it back (calls a sub-process); Find the owner's authorisation for THIS merge; Put the merge to the owner, evidence first; Merge, hold or refuse; Record who authorised, when, and the quote; Merge, pinned to the evaluated head; Confirm main's CI on the merge commit; Re-pin downstream mounts, as PRs; Note the bean, summarise on the issue |
+| [A merge train](../../processes/merge-train.html) | Land each member (calls a sub-process) |
+

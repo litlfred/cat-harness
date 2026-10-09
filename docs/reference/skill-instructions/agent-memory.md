@@ -45,6 +45,11 @@ by design.
 
 ## Entries are authored as nodes; the file is generated
 
+**Edit the node; CI assembles.** The assembled file under `.claude/` is a
+projection, and since 2026-10-09 CI writes and commits it, never an agent
+([`harness-projections`](harness-projections.md)). Run the assembler locally in
+its check form to see what it would change.
+
 **Edit the node, then assemble.** One entry per file, each declaring its own
 `$schema`, a label, a summary, and the agents it reaches. The assembly check
 gates it, so **an entry edited and never assembled fails the build** rather than

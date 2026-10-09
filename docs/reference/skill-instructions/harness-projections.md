@@ -1,16 +1,16 @@
 ---
-name: harness-projections
-description: >
-  Who may write under `.claude/`, and when. The generated projections of the
-  knowledge graph (`.claude/commands/*.md` from `skill:commands`, the assembled
-  agent memory under `.claude/agents/` and `.claude/agent-memory/`) are written
-  by CI, which commits them to the PR branch, and never by an agent. A
-  hand-edited `.claude/` file (`settings.json`, its hooks, a hand-written
-  command or agent definition) changes only with the owner's explicit consent
-  to that change: the agent shows the exact diff and the reason, asks first,
-  and records the consent. Read before staging any path under `.claude/`.
+layout: default
+generated: scripts/gen-skill-docs.ts — do not hand-edit; edit the skill
+title: 'Harness projections: CI writes them, the owner consents to every hand edit'
+parent: Skill instructions
 ---
 
+{: .note }
+> Generated from [`cat-harness/skills/conduct/conduct-core/harness-projections.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/skills/conduct/conduct-core/harness-projections.md) — do not edit here.
+>
+> [✎ Edit this page's source](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/skills/conduct/conduct-core/harness-projections.md){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/skills/conduct/conduct-core/harness-projections.md" data-repo="litlfred/folio-assistant" }
+
+{% raw %}
 # Harness projections: CI writes them, the owner consents to every hand edit
 
 **Owner, 2026-10-09:** generated `.claude/` projections of the knowledge graph
@@ -48,7 +48,7 @@ the projection. You may run a generator locally in its `--check` form, or into
 a scratch tree, to see what it would write. Do not stage or commit anything it
 writes under `.claude/`.
 
-This applies inside [`skill-registration`](../../kg/kg-core/skill-registration.md)
+This applies inside [`skill-registration`](skill-registration.md)
 too. `skill:register` runs `skill:commands`, which writes `.claude/commands/` in
 a composed checkout. Commit what it writes everywhere else, and leave
 `.claude/` to CI.
@@ -103,7 +103,7 @@ needs consent.
 before it reads any evidence. CI regenerates the projections on the head and
 commits them to the PR branch, and the evidence is then read on that new head.
 A PR whose projections are stale therefore cannot reach the merge gate looking
-green ([`merge-to-main`](../../sdlc/sdlc-core/merge-to-main.md)).
+green ([`merge-to-main`](merge-to-main.md)).
 
 ## What this does not do yet
 
@@ -120,3 +120,11 @@ green ([`merge-to-main`](../../sdlc/sdlc-core/merge-to-main.md)).
   identity the workflow pushes as), and a gate that reads it.
 - **`skill:register` still writes `.claude/commands/`.** Restricting it to
   `--check` for that one step would be a change to `skill-register.ts`.
+{% endraw %}
+
+## Processes that run this skill
+
+| process | step(s) that name it |
+|---|---|
+| [Merge to main](../../processes/merge-to-main.html) | Regenerate harness projections (CI) |
+
