@@ -14,7 +14,7 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
 import { contentAt, resolveTipLocation, tipLocations } from "../branch-store.js";
-import { delegatedReport, delegatedStores, mountState, report } from "../state-mount.js";
+import { STATE_IGNORE_BEGIN, STATE_IGNORE_END, delegatedReport, delegatedStores, mountState, report, withStateIgnoreBlock } from "../state-mount.js";
 import { cleanup, git, MANIFEST, stateFixture, TIP_SOURCE, BRANCH } from "./state-fixture.js";
 
 afterEach(cleanup);
@@ -108,7 +108,10 @@ describe("stale is ASKED, never inferred from a refusal plus a marker", () => {
     const { root, store } = stateFixture("state-mount-t-").checkout("a");
     expect(mountState({ repoRoot: root, store }).state).toBe("mounted");
     // The marker stays; the path is now tracked, so mountTip refuses it.
+    // FORCED: since a successful mount ignores its path, a plain `add -A`
+    // no longer tracks it, which is the accident this setup has to override.
     git(root, "add", "-A");
+    git(root, "add", "-f", "todos");
     git(root, "commit", "-q", "-m", "tracked after mounting");
     const r = mountState({ repoRoot: root, store });
     expect(r.graphs[0]?.state).toBe("refused");
@@ -215,5 +218,33 @@ describe("a store state:mount does not mount names the Tool that does (bean j9cs
     const out = delegatedReport([{ id: "x", path: "x/", branch: "p/", keyedBy: "family" }]);
     expect(out).toContain("none declared");
     expect(delegatedReport([])).toBe("");
+  });
+});
+
+describe("a successful mount is ignored by the checkout", () => {
+  test("the mounted path lands in a generated .gitignore block, and git ignores it", () => {
+    const { root, store } = stateFixture("state-mount-t-").checkout("a");
+    expect(mountState({ repoRoot: root, store }).state).toBe("mounted");
+    const text = readFileSync(join(root, ".gitignore"), "utf-8");
+    expect(text).toContain(`${STATE_IGNORE_BEGIN}\n/todos/**\n${STATE_IGNORE_END}`);
+    expect(git(root, "status", "--porcelain", "--", "todos").trim()).toBe("");
+  });
+
+  test("a mount that did not happen writes nothing", () => {
+    const { root, store } = stateFixture("state-mount-t-").checkout("a", { kind: "directory" });
+    mountState({ repoRoot: root, store });
+    const file = join(root, ".gitignore");
+    expect(existsSync(file) ? readFileSync(file, "utf-8") : "").not.toContain(STATE_IGNORE_BEGIN);
+  });
+
+  test("the block is replaced in place, keeping everything around it", () => {
+    const before = `node_modules\n${STATE_IGNORE_BEGIN}\n/old/**\n${STATE_IGNORE_END}\n_site/\n`;
+    expect(withStateIgnoreBlock(before, [{ path: "todos" }, { path: "issue-marks/" }])).toBe(
+      `node_modules\n${STATE_IGNORE_BEGIN}\n/issue-marks/**\n/todos/**\n${STATE_IGNORE_END}\n_site/\n`,
+    );
+  });
+
+  test("unpaired markers are refused, not guessed at", () => {
+    expect(() => withStateIgnoreBlock(`${STATE_IGNORE_BEGIN}\n/x/**\n`, [{ path: "todos" }])).toThrow(/unpaired/);
   });
 });
