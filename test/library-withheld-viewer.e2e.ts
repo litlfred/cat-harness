@@ -1,4 +1,3 @@
-import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -15,9 +14,17 @@ import { serveThemed } from "./support/themed-page.ts";
  * gets. The viewer is client-rendered, so no grep of the committed HTML can
  * see what a reader sees; this opens the page.
  *
- * The withheld entries are read from `who-iris/library/withheld.json` — the
- * DECLARATION — never from the viewer's own data, so emptying the data cannot
- * empty the assertions (the defect `library-viewer-scope.e2e.ts` records).
+ * THE FIXTURE, declared here rather than assumed of a folio (owner ruling
+ * 2026-10-09, litlfred/folio-assistant#2521, option b). Until then the
+ * withheld entries were read from `who-iris/library/withheld.json`; the owner
+ * cleared every who-iris entry on 2026-10-08, that list is empty by design,
+ * and the banner went untested. The viewer's own index is now served with ONE
+ * who-iris entry withheld — in exactly the shape `library-graph.ts` records
+ * (the 2026-10-07 record of who-pub-tps-931, gates and catalogue record) —
+ * and every other who-iris entry open, so the committed projection's state,
+ * which `library:viz:check` deliberately does not gate, decides nothing here.
+ * Real data is still judged where it lives: `iris:pages:check` holds
+ * `withheld.json` to the catalogue's gates.
  */
 const SITE = process.env.FA_SITE_URL ?? "http://127.0.0.1:8080";
 const DOCS = "/cat-harness/docs";
@@ -27,17 +34,42 @@ const HARNESS = join(REPO, "cat-harness");
 const themed = (page: import("@playwright/test").Page): Promise<void> =>
   serveThemed(page, { fsRoot: join(HARNESS, siteDirFor(HARNESS)), urlPrefix: `${DOCS}/` });
 
-const listed = (
-  JSON.parse(readFileSync(join(REPO, "who-iris", "library", "withheld.json"), "utf-8")) as {
-    paths: { path: string }[];
-  }
-).paths
-  .map((p) => p.path)
-  .filter((p) => p.endsWith("/"))
-  .map((p) => p.slice(0, -1));
+const FIXTURE = {
+  id: "who-pub-tps-931",
+  withheld: 'item/b08c6c19-315a-41a4-a9cb-8edabdbc6791 ORIGINAL "WHO_PUB_TPS_93.1.pdf": copyright refused, restrictions refused',
+  withheldBy: {
+    gates: [
+      { gate: "copyright", verdict: "refused" },
+      { gate: "restrictions", verdict: "refused" },
+    ],
+    record: {
+      id: "item/b08c6c19-315a-41a4-a9cb-8edabdbc6791",
+      page: "/who-iris/item-item-b08c6c19-315a-41a4-a9cb-8edabdbc6791.html",
+      uri: "https://hdl.handle.net/10665/36842",
+    },
+  },
+};
+const listed = [FIXTURE.id];
 
-test("the withheld list names at least one entry — else the test below proves nothing", () => {
-  expect(listed.length).toBeGreaterThan(0);
+type Entry = { instance: string; id: string; withheld?: string; withheldBy?: unknown };
+
+/** Serve the viewer's index with the fixture applied: FIXTURE withheld, every other who-iris entry open. */
+async function withFixture(page: import("@playwright/test").Page): Promise<void> {
+  await page.route("**/assets/library/index.json", async (route) => {
+    const res = await route.fetch();
+    const g = (await res.json()) as { entries: Entry[] };
+    g.entries = g.entries.map((e) => {
+      if (e.instance !== "who-iris") return e;
+      const { withheld: _w, withheldBy: _b, ...open } = e;
+      return e.id === FIXTURE.id ? { ...open, withheld: FIXTURE.withheld, withheldBy: FIXTURE.withheldBy } : open;
+    });
+    await route.fulfill({ response: res, json: g });
+  });
+}
+
+test("the fixture's entry is in the library — else the test below proves nothing", async ({ page }) => {
+  const g = (await (await page.request.get(`${SITE}${DOCS}/assets/library/index.json`)).json()) as { entries: Entry[] };
+  expect(g.entries.some((e) => e.instance === "who-iris" && e.id === FIXTURE.id)).toBe(true);
 });
 
 for (const slug of listed) {
@@ -45,6 +77,7 @@ for (const slug of listed) {
     const errors: string[] = [];
     page.on("pageerror", (e) => errors.push(e.message));
     await themed(page);
+    await withFixture(page);
     await page.goto(`${SITE}${DOCS}/cat-harness/library/who-iris/#${encodeURIComponent(`who-iris/${slug}`)}`);
     const blocks = page.locator("#blocks");
     await expect(blocks.locator("table")).toBeVisible();
@@ -78,11 +111,13 @@ for (const slug of listed) {
 
 test("an entry that is not withheld gets no banner", async ({ page }) => {
   const g = (await (await page.request.get(`${SITE}${DOCS}/assets/library/index.json`)).json()) as {
-    entries: { instance: string; id: string; withheld?: string }[];
+    entries: Entry[];
   };
-  const open = g.entries.find((e) => e.instance === "who-iris" && !e.withheld && !listed.includes(e.id));
-  test.skip(open === undefined, "who-iris holds no entry that is not withheld");
+  // Open under the fixture: any who-iris entry but the one it withholds.
+  const open = g.entries.find((e) => e.instance === "who-iris" && !listed.includes(e.id));
+  test.skip(open === undefined, "who-iris holds no entry beside the fixture's");
   await themed(page);
+  await withFixture(page);
   await page.goto(`${SITE}${DOCS}/cat-harness/library/who-iris/#${encodeURIComponent(`who-iris/${open!.id}`)}`);
   await expect(page.locator("#blocks h2")).toBeVisible();
   await expect(page.locator("#blocks .wh-banner")).toHaveCount(0);
