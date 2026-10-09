@@ -37,7 +37,7 @@ import {
   type ContentProfile,
 } from "../../schemas/block-kinds";
 import { walkBlocks } from "./qa-utils";
-import { expectedInstanceConfigPath } from "../../schemas/harness-config";
+import { expectedInstanceConfigPath, readEffectiveConfig } from "../../schemas/harness-config";
 
 export interface ProfileViolation {
   label: string;
@@ -79,6 +79,16 @@ export function readDeclaredFolioProfile(repoRoot: string): {
   profile?: ContentProfile;
   declaredBy: string;
 } {
+  // An instance an `index.config.json` lists is configured by its ENTRY; it
+  // has no `<name>.config.json` of its own, and reading only the file
+  // reported every indexed instance as unconfigured (2026-10-09).
+  const eff = readEffectiveConfig(repoRoot);
+  if (eff.via === "index") {
+    if (eff.state === "unreadable") return { declaredBy: `undetermined (${eff.from} unreadable: ${eff.why})` };
+    const ct = eff.state === "ok" ? eff.config.contentType : undefined;
+    if (typeof ct !== "string" || ct === "") return { declaredBy: `undetermined (${eff.from} declares no contentType)` };
+    return { profile: profileForContentType(ct), declaredBy: `${eff.from} contentType: "${ct}"` };
+  }
   const configPath = expectedInstanceConfigPath(repoRoot);
   // A FOURTH way of not knowing, and it is not the same as the three below:
   // nothing here declares an instance, so there is no name to compose a

@@ -32,16 +32,11 @@
  */
 
 import { folioDirDeferred } from "../schemas/cat-harness.js";
-import {
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  writeFileSync,
-} from "fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { join, resolve, relative, basename } from "path";
 import { spawnSync } from "child_process";
 import type { Paper } from "../schemas/types";
-import { expectedInstanceConfigPath } from "../schemas/harness-config";
+import { readEffectiveConfig } from "../schemas/harness-config";
 
 // ── Repo layout ──────────────────────────────────────────────────────────────
 
@@ -75,11 +70,11 @@ const EXPLICIT_FILES = args.filter(a => !a.startsWith("--") && (a.endsWith(".ts"
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 function resolveConfigDriveFolder(): string | undefined {
-  // Read this instance's config (`<name>.config.json`) if present.
-  const cfgPath = expectedInstanceConfigPath(INSTANCE_ROOT);
-  if (cfgPath === undefined || !existsSync(cfgPath)) return undefined;
+  // Read this instance's config (its index entry, else `<name>.config.json`) if present.
+  const eff = readEffectiveConfig(INSTANCE_ROOT);
+  if (eff.state !== "ok") return undefined;
   try {
-    const cfg = JSON.parse(readFileSync(cfgPath, "utf-8"));
+    const cfg = eff.config as { googleDrive?: { folderPath?: unknown } };
     if (cfg?.googleDrive?.folderPath) {
       const base = String(cfg.googleDrive.folderPath).replace(/\/$/, "");
       return `${base}/blocks`;

@@ -58,7 +58,7 @@
 
 import { RoleRefSchema } from "./role-graph";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { resolveHarnessConfigPath } from "./harness-config";
+import { resolveHarnessConfigPath, readEffectiveConfig } from "./harness-config";
 import { join, relative, resolve } from "node:path";
 import { z } from "zod";
 import { RepoFullNameSchema } from "./repo-full-name.js";
@@ -905,6 +905,15 @@ export function readActiveVoices(repoRoot: string): string[] | undefined {
   // setting silently, so the one signal that could have said "your config is
   // not being read" instead said "no voices are active", which is a legitimate
   // answer. Reaching the third state is the point: it makes the criteria RUN.
+  // An indexed instance's voices are its index ENTRY's (2026-10-09): it has
+  // no `<name>.config.json`, and reading only the file put every instance in
+  // the index checkout in the third state.
+  const eff = readEffectiveConfig(repoRoot);
+  if (eff.via === "index") {
+    if (eff.state !== "ok") return undefined;
+    const parsed = VoiceConfigSchema.safeParse(eff.config.voices ?? {});
+    return parsed.success ? parsed.data.active : undefined;
+  }
   const found = resolveHarnessConfigPath(repoRoot);
   if (!found) return undefined; // no config at all — third state
   try {

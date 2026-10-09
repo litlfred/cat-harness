@@ -25,9 +25,8 @@
  * false dead links.
  */
 import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
 
-import { expectedInstanceConfigPath } from "../../schemas/harness-config";
+import { readEffectiveConfig } from "../../schemas/harness-config";
 import { inputSiteReached } from "../../scripts/input-trace.ts";
 
 /**
@@ -122,12 +121,12 @@ export function publishTargets(root: string): {
   pagesBaseUrl?: string;
   publishRef: string;
 } {
-  const configPath = expectedInstanceConfigPath(root);
+  const eff = readEffectiveConfig(root);
   let block: { repoUrl?: string; pagesBaseUrl?: string; publishRef?: string } = {};
-  // `undefined` = nothing declares an instance here; nothing to read.
-  if (configPath !== undefined && existsSync(configPath)) {
+  // The index entry when one lists the instance, else `<name>.config.json`.
+  if (eff.state === "ok") {
     try {
-      const parsed = JSON.parse(readFileSync(configPath, "utf-8")) as {
+      const parsed = eff.config as {
         readme?: typeof block;
       };
       block = parsed.readme ?? {};
