@@ -366,6 +366,13 @@ export const RULES: Rule[] = [
       "scripts/tool-remedy.ts",              // a refused host → the Tool that works without it (bean `6mk7`)
       "scripts/kg-export.ts",                // the instance's KG → one JSON-LD file
       "scripts/gen-subgraph-jsonld.ts",      // that graph framed per named subgraph (bean `c1m4`)
+      // Reported `unassigned` on 2026-10-09: the npm packaging of a graph and
+      // the query engine over its N-Quads. Harness by subject — they package,
+      // fetch and query an instance's KNOWLEDGE GRAPH, whatever it holds, and
+      // a folio could not make any of them act differently.
+      "scripts/pack-tarball.ts",             // an instance → npm .tgz + its folio-binary-release/v1 node
+      "scripts/kg-retrieve-npm.ts",          // ...and that package fetched back, hydrated or not
+      "scripts/nquads-query.ts",             // named SPARQL queries over a graph's N-Quads distribution
       // Harness by subject: the slice is the platform's own work plan, and the
       // per-slice SQLite contract is a kg-export one (bean `q8ar`).
       "scripts/gen-slice-sqlite.ts",         // a named slice → one SQLite file a browser mounts

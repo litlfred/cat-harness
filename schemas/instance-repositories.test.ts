@@ -6,20 +6,24 @@
  */
 import { describe, expect, test } from "bun:test";
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
-import { join, resolve } from "node:path";
+import { join, relative, resolve } from "node:path";
 import { CatHarnessDeclarationSchema } from "./cat-harness";
+import { gitCorpus } from "./git-corpus";
 import { instanceRepositories } from "./instance-repositories";
 
 const CHECKOUT = resolve(import.meta.dir, "../..");
 
 describe("instance references are owner/repo and resolve (bean 6rmv, phase 2)", () => {
   const map = instanceRepositories(CHECKOUT);
-  // Every committed voice and instance declaration, as git lists them — the
-  // files whose `instance` fields name another instance.
-  const files = execFileSync("git", ["ls-files", "*voice.json", "*/*.json"], { cwd: CHECKOUT, encoding: "utf8" })
-    .split("\n")
+  // Every committed voice and instance declaration — the files whose
+  // `instance` fields name another instance. Read through `gitCorpus`, not a
+  // bare `git ls-files`: in the index checkout every instance is a REMOTE
+  // MOUNT, ignored by the index's git, so `ls-files` listed none of them and
+  // this set came back empty. The corpus counts a mount's files as a
+  // submodule's were.
+  const files = (gitCorpus(CHECKOUT) ?? [])
+    .map((abs) => relative(CHECKOUT, abs))
     .filter((f) => f.endsWith("voice.json") || /^([^/]+)\/\1\.json$/.test(f));
   const refs: Array<{ file: string; ref: string }> = [];
   for (const file of files) {

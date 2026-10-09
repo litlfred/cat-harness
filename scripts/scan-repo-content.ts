@@ -42,6 +42,7 @@
 
 import { spawnSync } from "node:child_process";
 import { LEGACY_HARNESS_CONFIG } from "../schemas/harness-config";
+import { gitCorpus } from "../schemas/git-corpus";
 import { CONFIG_SUFFIX, isReservedIndexFile } from "../schemas/instance-roots";
 import { existsSync, readdirSync, statSync } from "node:fs";
 import { extname, join, relative, resolve, sep } from "node:path";
@@ -184,6 +185,15 @@ function listFiles(root: string): { files: string[]; source: "git" | "filesystem
   const r = spawnSync("git", ["-C", root, "ls-files", "-z"], { encoding: "buffer" });
   if (r.status === 0 && r.stdout) {
     const files = r.stdout.toString("utf-8").split(NUL).filter(Boolean);
+    // A tree its enclosing git IGNORES — an instance remote-mounted into an
+    // index checkout — lists nothing here although it holds a whole
+    // repository's files. `gitCorpus` counts a mount's files as git's own.
+    if (files.length === 0) {
+      const corpus = gitCorpus(root);
+      if (corpus !== undefined && corpus.length > 0) {
+        return { files: corpus.map((f) => relative(root, f).split(sep).join("/")).sort(), source: "git" };
+      }
+    }
     return { files, source: "git" };
   }
   const out: string[] = [];

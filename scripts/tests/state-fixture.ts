@@ -57,7 +57,13 @@ export interface StateFixture {
   remoteMode: (path: string) => string | undefined;
 }
 
-/** `files === null` pushes no branch at all. */
+/**
+ * `files === null` pushes no branch at all.
+ *
+ * declared-path-literal: fixture CONTENT — the files seeded onto a temporary
+ * state branch, never a path into this checkout, so there is no declaration
+ * to read them from.
+ */
 export function stateFixture(prefix: string, files: Record<string, string | Buffer> | null = { "manifest.json": MANIFEST, "todos/a.md": "A\n", "todos/keep.md": "keep\n" }): StateFixture {
   const base = mkdtempSync(join(tmpdir(), prefix));
   made.push(base);
@@ -106,7 +112,11 @@ export function stateFixture(prefix: string, files: Record<string, string | Buff
   };
 }
 
-/** A seed holding a binary, an executable and a symlink. */
+/**
+ * A seed holding a binary, an executable and a symlink.
+ *
+ * declared-path-literal: fixture CONTENT, as for `stateFixture` above.
+ */
 export function richSeed(): Record<string, string | Buffer> {
   return { "manifest.json": MANIFEST, "todos/a.md": "A\n", "todos/doc.pdf": PDF };
 }

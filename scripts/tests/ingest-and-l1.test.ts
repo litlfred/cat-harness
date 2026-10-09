@@ -1122,6 +1122,7 @@ describe("a document's figures can be VECTOR, and the gate no longer passes over
 describe("an entry's contents are a CLOSED set — `3psh`", () => {
   const entry = (children: Record<string, string | null>): string => {
     const dir = mkdtempSync(join(tmpdir(), "l1-contents-"));
+    made.push(dir);
     for (const [name, body] of Object.entries(children)) {
       if (body === null) mkdirSync(join(dir, name), { recursive: true });
       else writeFileSync(join(dir, name), body);
@@ -1200,7 +1201,14 @@ describe("libraryRootFor (bean 12ws)", () => {
 
   test("falls back to own instance when cwd does not declare a library", () => {
     const own = resolve(import.meta.dir, "../..");
-    const fallback = libraryRootFor(tmpdir());
+    // A fresh EMPTY directory, not `tmpdir()` itself: the shared temp root
+    // holds whatever other tests left there, and a leaked fixture instance
+    // with a `library` (e.g. `libqa-*`, 156 of them measured on 2026-10-09)
+    // makes the temp root a checkout that declares one, so this case asserted
+    // about a directory it did not control.
+    const empty = mkdtempSync(join(tmpdir(), "l1-nolib-"));
+    made.push(empty);
+    const fallback = libraryRootFor(empty);
     expect(fallback).toBe(own);
   });
 });

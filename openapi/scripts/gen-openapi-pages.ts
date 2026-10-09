@@ -6,6 +6,7 @@
  *
  * @module cat-harness/openapi/scripts/gen-openapi-pages
  * @covers openapi
+ * @conformsTo w3c-hydra
  *
  * Usage:
  *   bun run cat-harness/openapi/scripts/gen-openapi-pages.ts --instance <instance-dir> [--check]

@@ -9,7 +9,7 @@ import { describe, test, expect, beforeAll, afterAll } from "bun:test";
 import { createHash } from "node:crypto";
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { basename, join, resolve } from "node:path";
+import { basename, extname, join, resolve } from "node:path";
 import {
   SUBGRAPH_CONTEXT_PATH,
   auditPayloadTree,
@@ -24,6 +24,7 @@ import { termIri } from "../../schemas/namespaces.js";
 import { exportIdentity } from "../kg-export.js";
 import { inAggregate } from "../../test/support/checkout.js";
 import {
+  PAYLOAD_MEDIA_TYPES,
   PAYLOAD_PATH,
   PAYLOAD_SIDECAR_SUFFIX,
   PayloadLinkSchema,
@@ -278,7 +279,15 @@ describe("payloads", () => {
       if (name.endsWith(PAYLOAD_SIDECAR_SUFFIX)) {
         const s = PayloadSidecarSchema.parse(JSON.parse(String(b)));
         expect(s.sha256).toBe(name.slice(0, -PAYLOAD_SIDECAR_SUFFIX.length));
-        expect(s.mediaType).toBe("text/markdown; charset=utf-8");
+        // The media type follows the SOURCE file's extension, read here from
+        // the node that references the payload — not from the plan's own
+        // answer. Every payload was a skill body (markdown) until npm
+        // packaging made `package.json` an Asset (application/json).
+        const by = String(payloadPlan.payloads.get(s.sha256)?.referencedBy[0]);
+        const node = plan.nodes.get(by) as Record<string, unknown> | undefined;
+        const source = String(node?.instructionsPath ?? node?.path ?? "");
+        expect(source.length, `no source path for ${by}`).toBeGreaterThan(0);
+        expect(s.mediaType).toBe(PAYLOAD_MEDIA_TYPES[extname(source).slice(1).toLowerCase()]!);
       } else {
         expect(hex(b)).toBe(name);
       }

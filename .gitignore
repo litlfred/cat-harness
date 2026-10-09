@@ -10,3 +10,12 @@
 # Dependencies: each instance now installs its own (see package.json), so a
 # standalone `bun install` leaves these here. Never committed.
 node_modules/
+
+# The docs site's local build state (siteDirFor: `docs/`). Until the
+# separation these were ignored only by the monorepo root's .gitignore, so a
+# standalone clone would `git add -A` a gem tree. Anchored, so the vendored
+# assets Jekyll serves (`docs/assets/js/vendor/`) stay addable.
+/docs/.bundle/
+/docs/vendor/
+/docs/_data/build.yml
+/docs/_site/

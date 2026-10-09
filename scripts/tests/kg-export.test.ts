@@ -711,8 +711,12 @@ describe("every self-URL the export publishes resolves to something published", 
     // the deploy's own list, read rather than restated, since a second list
     // here would be the "what is declared" answer that went stale before.
     // A tombstone and a re-homed skill link land in these.
-    const rootStub = artefactStub(readDeclaration(repoRootFor(join(import.meta.dir, "../..")))!);
-    for (const s of [rootStub, ...instanceExportPlan().map((p) => p.stub)]) {
+    //
+    // An index checkout's root declares no instance (owner, 2026-10-08), so
+    // there is no root line to publish and none to admit here.
+    const rootDecl = readDeclaration(repoRootFor(join(import.meta.dir, "../..")));
+    const rootStubs = rootDecl === undefined ? [] : [artefactStub(rootDecl)];
+    for (const s of [...rootStubs, ...instanceExportPlan().map((p) => p.stub)]) {
       out.add(`${s}/${s}.jsonld`);
       out.add(`${s}/${s}.json`);
     }

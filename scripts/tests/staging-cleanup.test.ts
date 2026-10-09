@@ -302,12 +302,16 @@ describe("both removal paths can load the platform they run", () => {
   // `cleanup-dispatch` refused every dispatch, so 45 merged previews piled up
   // until `gh-pages` passed GitHub Pages' 10 GB limit and no deploy went live.
   // Since bean `nn8e` (#2462) those are REMOTE MOUNTS, not submodules: the
-  // checkout must be followed by the lock replay into the same path.
+  // checkout must be followed by the lock replay into the same path. Since
+  // the cat-harness cutover the replay is reached through the index's
+  // `.github/mount-from-lock.sh` — cat-harness is itself a mount, so the `.ts`
+  // replayer is not on disk until that wrapper fetches it. Either spelling is
+  // the replay this asserts.
   it.each(["cleanup", "cleanup-dispatch"])("%s mounts the platform's layers from its lock after checking it out", (name) => {
     const steps = wf.jobs[name].steps;
     const at = steps.findIndex((s) => (s.uses ?? "").startsWith("actions/checkout@") && s.with?.path === "source");
     expect(at).toBeGreaterThanOrEqual(0);
-    const replay = steps.slice(at + 1).find((s) => /mount-from-lock\.ts"?\s+--root\s+"?source"?/.test(s.run ?? ""));
+    const replay = steps.slice(at + 1).find((s) => /mount-from-lock\.(?:sh|ts)"?\s+--root\s+"?source"?/.test(s.run ?? ""));
     expect(replay).toBeDefined();
   });
 });

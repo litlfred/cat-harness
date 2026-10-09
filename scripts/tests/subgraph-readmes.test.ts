@@ -276,7 +276,13 @@ describe("a subgraph kept OFF the checkout is not described from it (bean 9c7h)"
     // Counting the files git tracks here would rewrite its README as "holds
     // no files" — true of main, false of the subgraph, whose README lives on
     // `cat/cat-harness/fsh-guts` with its content.
-    const ids = harnessInstances(REPO).flatMap((i) => i.dirs.map((d) => d.id));
+    //
+    // Asked of cat-harness, the instance that DECLARES fsh-guts, rather than of
+    // the checkout: in the index checkout every instance is a remote mount,
+    // whose READMEs are written in its own repository, so the checkout's plan
+    // is empty and the guard below was vacuous (0 directories). The plan
+    // cat-harness writes in its own repository is the one this rule binds.
+    const ids = harnessInstances(resolve(import.meta.dir, "..", "..")).flatMap((i) => i.dirs.map((d) => d.id));
     expect(ids.length).toBeGreaterThan(20);
     expect(ids).not.toContain("fsh-guts");
   });
