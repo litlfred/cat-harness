@@ -159,6 +159,9 @@ writes no holder note — use `bun run cat beans:claim <id>`). `beans update` st
 right for closing your own bean, `--body-append` and `--blocked-by`. Never
 delete a bean — `scrapped`, with reasons — which is one instance of
 [`deletion-requires-confirmation`](skills/conduct/conduct-core/deletion-requires-confirmation.md).
+Bean updates are pushed directly to the branch store
+(`bun cat-harness/scripts/branch-store.ts push --id beans` or `bun run cat state:push`)
+rather than committed to code PRs on `main`.
 Beans are not sidecars, and this is not the content-review feedback workflow
 ([`todo-review`](skills/authoring/authoring-core/todo-review.md)).
 
