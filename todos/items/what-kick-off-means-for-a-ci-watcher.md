@@ -1,5 +1,5 @@
 ---
-$schema: folio-todo/v1
+$schema: todo/1.0.0
 id: what-kick-off-means-for-a-ci-watcher
 summary: "Decide what 'kick off' means mechanically for the two CI-watcher dispatch points"
 status: in_progress
@@ -79,6 +79,6 @@ that may not exist yet — that needs checking rather than assuming.
 
 ## If nothing is decided
 
-Nothing fires. `bun run check:ci-health` still runs in the session-start sweep
+Nothing fires. `bun run cat check:ci-health` still runs in the session-start sweep
 and `ci-health.yml` still runs weekly, so the watcher is not silent — it is
 just not tied to the two moments named above.
