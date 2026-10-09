@@ -126,6 +126,21 @@ newlines to two, so do not fight blank lines with stripping.
   read by the site build too; if a KG value there can carry Liquid, build the
   site and look before assuming either way.
 
+## An undefined variable is a message, not silence
+
+Jekyll renders an undefined variable as the empty string and says nothing;
+`strict_variables` says something by FAILING the build and by changing what
+renders (the exception aborts the whole tag, `else` branch included).
+`docs/_plugins/liquid-undefined-warn.rb` does neither: every lookup runs as
+Liquid runs it, and at the end of the build each path that was ABSENT is
+printed as a warning with its count and pages, `site.data.*` first (owner,
+2026-10-09, bean `8pyz`: *"jekyll strict (if not error out, just message)"*).
+A lookup inside a condition or under `| default` is not reported — there the
+template asked. `FOLIO_LIQUID_UNDEFINED_REPORT=<file>` writes the same record
+as JSON; `liquid_undefined: off` in `_config.yml` turns it off. It runs only
+where plugins do (`bundle exec jekyll`, as an IG repository's own site and
+`preview:site` build); the github-pages build is safe mode and loads none.
+
 ## Markers — the platform owns the region, the folio owns the file
 
 `subgraph-readmes` writes only between `<!-- kg:subgraph:begin -->` and
