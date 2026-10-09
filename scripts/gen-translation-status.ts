@@ -51,7 +51,7 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
-import { findDeclarationFile, readDeclaration, siteDirFor } from "../schemas/cat-harness.js";
+import { findDeclarationFile, instanceDirectories, readDeclaration, repoRootFor, siteDirFor } from "../schemas/cat-harness.js";
 import { tileCounts } from "../schemas/tile-count.js";
 import { withRendersFrontMatter } from "./viewer-declarations.js";
 import { themedPage } from "./lib/themed-page.ts";
@@ -201,18 +201,20 @@ function filesUnder(dir: string, exts: readonly string[]): string[] {
  * than treated as an empty one.
  */
 export function translationsDirOf(root: string): string | undefined {
-  let decl: { directories?: Array<{ path: string; graphTypologies?: string[] }> } | undefined;
+  let dirs: Array<{ path: string; graphTypologies?: string[] }>;
   try {
-    decl = readDeclaration(root);
+    dirs = instanceDirectories(root);
   } catch {
     const file = findDeclarationFile(root);
+    let decl: { directories?: Array<{ path: string; graphTypologies?: string[] }> } | undefined;
     if (file) {
       try {
         decl = JSON.parse(readFileSync(join(root, file), "utf-8"));
       } catch {}
     }
+    dirs = decl?.directories ?? [];
   }
-  const entry = decl?.directories?.find((d) => (d.graphTypologies ?? []).includes("translation-sources"));
+  const entry = dirs.find((d) => (d.graphTypologies ?? []).includes("translation-sources"));
   return entry === undefined ? undefined : join(root, entry.path);
 }
 

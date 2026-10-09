@@ -399,6 +399,7 @@ import {
   isKgOnlyDirectory,
   materialiseDirectories,
   ownDirectories,
+  instanceDirectories,
   instanceRootsIn,
   readDeclaration,
   siblingScopeFor,
@@ -1804,7 +1805,7 @@ export function declaredSubgraph(start: string, id: string): DeclaredSubgraph | 
     } catch {
       continue;
     }
-    if (decl?.directories.some((d) => d.id === id)) owners.push(root);
+    if (instanceDirectories(root, decl).some((d) => d.id === id)) owners.push(root);
     if (root === here && owners.length > 0) break;
   }
   if (owners.length === 0) return undefined;
