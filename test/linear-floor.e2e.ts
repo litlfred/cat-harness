@@ -94,12 +94,39 @@ const PAGE = `<!doctype html><html lang="en"><head><meta charset="utf-8">
 <script>${JS}</script></body></html>`;
 
 const URL_PAGE = "http://floor.test/page.html";
+const URL_TODOS = "http://floor.test/todos/index.html";
+
+/**
+ * todos/index.html — the dedicated notes dashboard — serves the same listing
+ * in its bytes via footer_custom.html on the default layout (bean folio-assistant-dm4j).
+ */
+const TODOS_PAGE = `<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="fa-todo-src" content="/assets/todos/index.json">
+<style>${CSS}</style></head><body>
+<div class="side-bar"><div class="site-header"><a class="site-title">Site</a></div><nav class="site-nav"></nav></div>
+<div class="main-content-wrap"><div class="main-content" id="main-content">
+  <h1 id="todos">Todos</h1>
+  <p class="fs-5 fw-300">A PERSON's outstanding items — the human half of memory, as against <code>beans/</code>, which is the agent's workflow management.</p>
+  <details class="fa-sticky-panel" lang="en" dir="ltr" open>
+    <summary class="fa-sticky-panel__handle">
+      <span class="fa-sticky-panel__label">Stickies</span>
+    </summary>
+    <div class="fa-sticky-panel__body">
+      <div class="fa-sticky-board fa-landing-board" data-fa-home-panel="landing"></div>
+    </div>
+  </details>
+  ${LISTING}
+</div></div>
+<script>${JS}</script></body></html>`;
 
 test.beforeEach(async ({ page }) => {
   await page.route("http://floor.test/**", (route) => {
     const url = route.request().url();
     if (url.endsWith("/page.html")) {
       return route.fulfill({ contentType: "text/html", body: PAGE });
+    }
+    if (url.endsWith("/todos/index.html") || url.endsWith("/todos/")) {
+      return route.fulfill({ contentType: "text/html", body: TODOS_PAGE });
     }
     if (url.endsWith("/assets/todos/index.json")) {
       return route.fulfill({
@@ -155,6 +182,17 @@ test.describe("with JavaScript disabled", () => {
     const actual = await page.locator("#fa-todo-listing .fa-todo-listing-item").count();
     expect(Number(declared)).toBe(actual);
   });
+
+  test("todos/index.html serves the notes listing in its own bytes without JavaScript (folio-assistant-dm4j)", async ({ page }) => {
+    await page.goto(URL_TODOS);
+    const listing = page.locator("#fa-todo-listing");
+    await expect(listing).toBeVisible();
+    const items = page.locator("#fa-todo-listing .fa-todo-listing-item");
+    await expect(items).toHaveCount(2);
+    await expect(page.getByText("Zeta comes first in the file")).toBeVisible();
+    await expect(page.getByText("Alpha comes second in the file")).toBeVisible();
+    await expect(page.getByText("Body of zeta.")).toBeVisible();
+  });
 });
 
 test.describe("with JavaScript enabled", () => {
@@ -195,5 +233,12 @@ test.describe("with JavaScript enabled", () => {
     await page.waitForFunction(() => Boolean((window as never as { __faTodoBoard?: unknown }).__faTodoBoard));
     await expect(page.locator("#fa-todo-listing")).toHaveCount(1);
     await expect(page.locator('[data-fa-todo="zeta-note"]')).toHaveCount(1);
+  });
+
+  test("on todos/index.html the board mounts OVER the listing — it is collapsed, never removed", async ({ page }) => {
+    await page.goto(URL_TODOS);
+    await page.waitForFunction(() => Boolean((window as never as { __faTodoBoard?: unknown }).__faTodoBoard));
+    await expect(page.locator("#fa-todo-listing .fa-todo-listing-item")).toHaveCount(2);
+    await expect(page.locator(".fa-todo-listing-details #fa-todo-listing")).toHaveCount(1);
   });
 });

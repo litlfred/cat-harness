@@ -9,6 +9,8 @@
  *
  * @module scripts/tests/todo-listing.test
  */
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, test } from "bun:test";
 
 import { escapeHtml, renderTodoListing } from "../todo-listing.js";
@@ -159,5 +161,20 @@ describe("the listing", () => {
     // the generator used double quotes and produced `href="{{ "` — valid
     // Liquid, an attribute terminated after two characters.
     expect(html).not.toContain(`href="{{ "`);
+  });
+});
+
+describe("linear floor on todos/index.html (folio-assistant-dm4j)", () => {
+  test("todos/index.html serves the linear floor in its own bytes via layout and footer include", () => {
+    // The todos dashboard (docs/todos/index.html) is a themed page using
+    // layout: default. The linear floor (generated/todo-listing.html) is
+    // included in the footer of every default layout page (footer_custom.html),
+    // ensuring todos/index.html serves the notes listing in its own bytes.
+    const footer = readFileSync(join(import.meta.dir, "../../docs/_includes/footer_custom.html"), "utf8");
+    expect(footer).toContain("include generated/todo-listing.html");
+
+    const todosPage = readFileSync(join(import.meta.dir, "../../docs/todos/index.html"), "utf8");
+    expect(todosPage).toContain("layout: default");
+    expect(todosPage).toContain('<h1 id="todos">Todos</h1>');
   });
 });
