@@ -324,10 +324,12 @@ ruling, so it changes `code-lists/concern-group.json` and the definition of
 | `ui` (narrowed) | how the corpus is PRESENTED to a reader: viewers, boards, themes, the site's look and navigation |
 | `publication` (new) | how the corpus is BUILT AND SERVED: composing the docs layers, the site build, the publish branch, release sites at `/<version>/` and `/v<major>/`, the CDN, and publication verification |
 
-Today's members that move from `ui` to `publication`: `processes/ui/staging-render-log`,
-the publish and site-build scripts (`compose-docs`, `mount-instance-docs`,
-`publish-gh-pages`, `publish-verify`, `minify-site`, `search-split`, …), and
-the skills `instance-publication` and `publish-verification`. `site-chrome/`
+Members that move to `publication`: from `ui`, `processes/ui/staging-render-log`;
+from the flat `scripts/`, the publish and site-build scripts (`compose-docs`,
+`mount-instance-docs`, `publish-gh-pages`, `publish-verify`, `minify-site`,
+`search-split`, …). Candidates from OTHER groups, each a placement call to
+make in its PR rather than here: the skills `instance-publication` (in `kg`
+today) and `publish-verification` (in `sdlc` today). `site-chrome/`
 is `ui`; the process that builds a site from it is `publication`.
 
 ### Option D — chrome and themes only
