@@ -186,6 +186,40 @@ Dispatch rules (inherit parent §4b sidecar-aware dispatch):
 > `open-objection` (≥1 surviving). Be fair: a surviving objection must
 > be one you genuinely could not rebut, not one you declined to.
 
+## § Competitive multi-agent debate and structured adjudication (SWE-Debate / 2507.23348v1)
+
+The single-pass fan-out across independent lenses (L1–L4 above) followed by a unilateral adjudicator ruling is the baseline operational mode. However, recent empirical findings in repository-level multi-agent reasoning — specifically **SWE-Debate** (Li et al., arXiv:2507.23348v1, "SWE-Debate: Competitive Multi-Agent Debate for Software Issue Resolution", 2025) — demonstrate that independent exploration and uncoordinated multi-agent systems suffer from a fundamental failure mode: **limited observation scope**.
+
+When multiple candidate locations, definitions, or proof steps appear plausible, independent agents get stuck in local solutions, mistake downstream symptoms for root causes, and fail at disambiguation. Furthermore, purely collaborative consensus frameworks suffer from thought degeneration and premature convergence. SWE-Debate proves that **structured, competitive multi-agent debate** creates productive analytical tension that outperforms single-pass methods across localization accuracy (+14.67% over SWE-Agent with the same DeepSeek-V3 model, achieving 81.67% Acc@1(File)) and overall resolution (+6.7%).
+
+This analysis directly refines the devil's-advocate watcher and the adjudication protocol across three dimensions:
+
+### 1. Competitive Multi-Agent Debate vs Single Adversarial Pass
+
+In a single adversarial pass, each lens agent (Formalist, Skeptic, Structural Critic, Auditor) inspects a block in isolation. When applied to complex dependency structures, this produces two characteristic error patterns:
+- **False positives (symptom attack):** Analogous to the motivating Django-11999 case in SWE-Debate — where an isolated agent attacks `_get_FIELD_display` (a runtime symptom) rather than `Field.contribute_to_class` (the structural source) — an isolated L1 or L2 lens frequently attacks a downstream notation or lemma invocation, failing to recognize that the invariant is already enforced upstream in the `uses[]` closure.
+- **False negatives (local plausibility masking):** An isolated lens may accept a locally consistent argument or definition that subtly smuggles in a circular dependency or unproved regime assumption across multiple files.
+
+**Under structured competitive debate**, the lenses do not merely submit static finding lists. Instead, they engage in multi-round competition:
+- **Diverse objection traces along dependency graphs:** Traversal of the block dependency graph (`uses[]`, definition references, lemma calls) produces multiple candidate objection paths. Following Finding 4 of SWE-Debate, traversal depth must be bounded at **depth $L \le 5$**; deeper chains introduce extraneous noise that distracts agents and degrades adjudication focus.
+- **Cross-agent critique & argumentative pressure:** In Round 2, lenses defending competing objection hypotheses (e.g. L1 arguing logical non-sequitur vs L2 arguing hidden degree of freedom) must defend their own claims while directly critiquing rival analyses (`DebateCritiqueSchema`). This competitive pressure forces agents to justify assumptions against adversarial scrutiny, exposing vacuous objections and sharpening surviving referee arguments.
+
+### 2. When to Elevate to Structured Debate
+
+A single-pass fan-out remains appropriate for standard remarks, simple examples, and routine maintenance blocks. The watcher elevates to a structured **3-round competitive debate** under three explicit trigger conditions:
+1. **High blast radius & headline proximity (Slot H items 1 & 2):** Any block on the manuscript's central derivation chain, headline theorems, or global calibration parameters.
+2. **Multi-lens contention / divergent rulings:** When independent lenses produce conflicting assessments (e.g., L1 flags `da-false-claim` while L3 assesses the construction as well-defined, or L2 flags `da-empirical-fragility` on a number L4 considers reproducible).
+3. **Multi-hop dependency ambiguity:** When a defect could stem from the immediate block statement or any of its transitive `uses[]` dependencies within depth $L \le 5$.
+
+### 3. Formalizing Debate Rounds in the Adjudication Protocol
+
+The adjudication protocol formalizes the 3-round structure before the referee verdict, codified in `schemas/adjudication.ts` via `AdjudicationDebateSchema`:
+- **Round 1 — Objection Hypothesis Proposal & Competitive Ranking:** Specialized adversarial agents propose candidate objection chains along the dependency graph. The pool is ranked by relevance and distinctness, pruning duplicate or superficial quibbles.
+- **Round 2 — Competitive Strategy Refinement & Cross-Agent Critique:** Agents formulate concrete, step-by-step referee arguments and review rival proposals. Each agent defends its objection against counter-arguments and identifies flaws in competing hypotheses, recording explicit critiques (`targetAgent`, `point`, `severity`).
+- **Round 3 — Synthesis & Discriminator Adjudication:** The Adjudicator acts as the lead discriminator (Prompt 8 in SWE-Debate). Rather than taking an unweighted vote or averaging confidence scores, the adjudicator evaluates technical merit across the competing arguments, explicitly documents `resolved_conflicts`, and synthesizes a definitive, actionable `da-referee-verdict` (`clean`, `survivable-objection`, `open-objection`).
+
+The resulting debate record is embedded directly within `AdjudicationOutcomeSchema.debate`, providing full auditable provenance for how argumentative tension was resolved before the final sidecar entry was committed.
+
 ## Slot D — §4c finding taxonomy (the `da-*` criteria family)
 
 These are the sidecar criteria. Each block accrues one entry per
