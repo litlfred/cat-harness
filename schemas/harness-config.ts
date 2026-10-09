@@ -1356,6 +1356,43 @@ function checkoutGraph(root: string): CheckoutGraph {
     // back to its root alone rather than taking every corpus-wide tool down.
     flat = [];
   }
+  if (flat.length === 0 && readDeclaration(root) === undefined) {
+    // Aggregate / coordinator checkout with no root declaration:
+    // walk orderedDependencies from each instantiated/mounted instance so
+    // that dependents and implementers across sibling instances resolve.
+    const seen = new Set<string>();
+    for (const inst of instanceRootsIn(root)) {
+      if (resolve(inst) === resolve(root)) continue;
+      try {
+        const deps = orderedDependencies(inst);
+        for (const d of deps) {
+          const key = resolve(d.rootPath);
+          if (!seen.has(key)) {
+            seen.add(key);
+            flat.push(d);
+          }
+        }
+        const instKey = resolve(inst);
+        if (!seen.has(instKey)) {
+          seen.add(instKey);
+          let declName: string | undefined;
+          try {
+            declName = readDeclaration(inst)?.name;
+          } catch {
+            // unreadable
+          }
+          flat.push({
+            dependency: { name: declName ?? inst },
+            rootPath: inst,
+            config: readHarnessConfig(inst),
+            needs: deps.map((d) => d.rootPath),
+          });
+        }
+      } catch {
+        // cycle or problem reported elsewhere
+      }
+    }
+  }
   const order = [...new Set([...flat.map((d) => resolve(d.rootPath)), root])];
   const direct = new Map(flat.map((d) => [resolve(d.rootPath), d.needs.map((n) => resolve(n))]));
   direct.set(root, flat.map((d) => resolve(d.rootPath)));

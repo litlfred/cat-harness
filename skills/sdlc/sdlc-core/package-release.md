@@ -89,6 +89,11 @@ them with `tool_list` rather than relying on this list.
   instance into an npm `.tgz` tarball using `bun pm pack`, computing size and
   SHA-256 digest into a `folio-binary-release/v1` release record. See the
   [`npm-kg-distribution`](../../kg/kg-core/npm-kg-distribution.md) skill.
+- **`package-release-workflow`** (`gh workflow run release-npm.yml`) — dispatches
+  the release workflow across any repository (`--repo <owner/repo>`) via GitHub
+  Actions. Automates tarball building, tagging, GitHub Release asset upload, and
+  publishing to GitHub Packages / npm registries. Satisfies `package-release`,
+  `npm-kg-distribution`, and `document-publishing`.
 
 ## What this skill does not do
 
