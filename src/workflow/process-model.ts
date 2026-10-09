@@ -344,6 +344,11 @@ export interface ProcessNode {
    */
   workPlanOp?: WorkPlanOp;
   /**
+   * Bean references associated with this activity (via `<cat-harness.processes:bean ref="…"/>` or `id` or `bean`).
+   */
+  beanRef?: string;
+  beans?: string[];
+  /**
    * `<cat-harness.processes:policy relaxable="false"/>` — a content package may not declare a
    * relaxation for this step. These are the gate itself; if they were
    * negotiable, "strict base" would mean nothing.
@@ -609,7 +614,9 @@ function readWorkPlanOp(
   // string property beside `$type` — the same behaviour `folio:role variable`
   // relies on — so the check is over own keys, with moddle's own `$`-prefixed
   // internals excluded.
-  const unknown = Object.keys(bean).filter((k) => !k.startsWith("$") && k !== "op");
+  const unknown = Object.keys(bean).filter(
+    (k) => !k.startsWith("$") && k !== "op" && k !== "ref" && k !== "id" && k !== "bean",
+  );
   if (unknown.length > 0) {
     throw new UnsupportedBpmn(
       `${nodeId}: cat-harness.processes:bean carries ${unknown.map((k) => `"${k}"`).join(", ")}, ` +
@@ -1064,6 +1071,7 @@ interface ModdleElement {
       $type: string;
       ref?: string;
       op?: string;
+      bean?: string;
       enforcement?: string;
       capture?: string;
       involvement?: string;
@@ -1454,6 +1462,15 @@ export async function loadProcessModel(
         undefined,
       touchesWorkPlan: ext.some((v) => v.$type === "folio:bean"),
       workPlanOp: readWorkPlanOp(el.id, ext),
+      beanRef: (ext.find((v) => v.$type === "folio:bean" && (v.ref || v.id || v.bean))?.ref ??
+        ext.find((v) => v.$type === "folio:bean" && (v.ref || v.id || v.bean))?.id ??
+        ext.find((v) => v.$type === "folio:bean" && (v.ref || v.id || v.bean))?.bean) as
+        | string
+        | undefined,
+      beans: ext
+        .filter((v) => v.$type === "folio:bean")
+        .map((v) => (v.ref ?? v.id ?? v.bean) as string | undefined)
+        .filter((b): b is string => !!b),
       relaxable: ext.find((v) => v.$type === "folio:policy")?.relaxable !== "false",
       decisionRef: ext.find((v) => v.$type === "folio:decision" && v.ref)?.ref,
       documentation: el.documentation?.[0]?.text?.replace(...DOC_WS).trim() || undefined,
