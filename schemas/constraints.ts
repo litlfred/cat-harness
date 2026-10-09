@@ -951,9 +951,4 @@ export function typedBlockKinds(): string[] {
   return options.map((o) => o.shape.kind.value);
 }
 
-export {
-  classifyLeanRefTarget,
-  type LeanRefClassification,
-  type ClassifyLeanRefOptions,
-} from "../scripts/check-lake-targets.js";
 

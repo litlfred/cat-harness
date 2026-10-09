@@ -28,15 +28,6 @@
       "graphTypologies": [
         "schemas"
       ]
-    },
-    {
-      "id": "archimate-scripts",
-      "path": "scripts/",
-      "subgraph": true,
-      "description": "The rendering sub-pipeline: `check-archimate.ts` checks the committed models against the config; `render-view.ts` draws a view as SVG from the model's diagram; `gen-archimate-pages.ts` writes a JSON-LD node and a thin page per model, view, element and relationship; `templates/` holds the one shared loader that draws the pages in the browser.",
-      "graphTypologies": [
-        "code"
-      ]
     }
   ]
 }

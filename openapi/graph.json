@@ -34,15 +34,6 @@
       "graphTypologies": [
         "schemas"
       ]
-    },
-    {
-      "id": "openapi-scripts",
-      "path": "scripts/",
-      "subgraph": true,
-      "description": "The rendering sub-pipeline: `ingest-openapi.ts` copies a configured document in verbatim with its provenance; `gen-openapi-pages.ts` writes a JSON-LD node and a thin page per document and per operation; `templates/` holds the one shared loader that draws them in the browser.",
-      "graphTypologies": [
-        "code"
-      ]
     }
   ]
 }

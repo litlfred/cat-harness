@@ -360,7 +360,7 @@ export interface GraphTypologyDef {
    *
    * | kind | `schema` | `validator` |
    * |---|---|---|
-   * | `qa` | `content/pipeline/qa-witness.ts` | **none** — that module exports TypeScript INTERFACES; no Zod schema for `qa-witness/v1` exists anywhere |
+   * | `qa` | `schemas/qa-record-shapes.ts` | **none** — that module exports TypeScript INTERFACES; no Zod schema for `qa-witness/v1` exists anywhere |
    *
    * So overloading `schema` would have made its one substantial use a lie:
    * a consumer that imported it expecting something parseable would get a
@@ -1317,7 +1317,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "and test runs; every `$schema` family is named in `nodeSchemas`, which is the list " +
       "— a count here would be a second one, and it was already wrong by one before " +
       "`viewer-nav-qa/v1` was added. Generated; never hand-edited.",
-    schema: "content/pipeline/qa-witness.ts",
+    schema: "schemas/qa-record-shapes.ts",
     // declared-path-literal: this table IS the declaration, as on `health`.
     nodeSchemas: {
       "kg-qa/v1": {},
@@ -1332,9 +1332,9 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "kg-qa-manifest/v1": {},
       "block-qa/v1": {},
       "folio-test-run/v1": {},
-      "qa-witness/v1": { shape: "content/pipeline/qa-witness.ts#QaWitness" },
-      "qa-results/v1": { shape: "scripts/qa-results.ts#QaResult" },
-      "translation-qa/v1": { shape: "content/pipeline/translation-block-qa.ts#TranslationBlockQaReport" },
+      "qa-witness/v1": { shape: "schemas/qa-record-shapes.ts#QaWitness" },
+      "qa-results/v1": { shape: "schemas/qa-record-shapes.ts#QaResult" },
+      "translation-qa/v1": { shape: "schemas/qa-record-shapes.ts#TranslationBlockQaReport" },
       // Written inline by two call sites and typed by neither — recorded,
       // not invented. `qa-graph-index.ts` names the tag only to say it is
       // NOT its own (`NOT_TO_BE_CONFUSED_WITH`).
@@ -1349,7 +1349,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "folio-detangle-sidecar/v1": { shape: "schemas/detangle-sidecar.ts#DetangleSidecar" },
       // The per-graph LSI index sidecar (bean `ansc`): fingerprint, pole terms,
       // neighbours and findings — never the vectors.
-      "folio-lsi-index/v1": { shape: "scripts/lsi.ts#LsiSidecar" },
+      "folio-lsi-index/v1": { shape: "schemas/qa-record-shapes.ts#LsiSidecar" },
       // A downstream tool's run record (bean `fq5u`): outcome and input
       // fingerprint, read by kg:audit's `tool-downstream-fresh`.
       "folio-tool-run/v1": {},
