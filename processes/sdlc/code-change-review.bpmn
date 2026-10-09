@@ -299,7 +299,8 @@ The loop back through "root-cause the failure" is the point of drawing this at a
         A human or an agent acting AS reviewer. Nothing is a reviewer;
         somebody acts as one for the duration of this lane. For a rendered
         change the reviewer reads the agent's before/after preview rather
-        than building one.
+        than building one. On agent-touched changes, an adversarial code review
+        evaluates against the RED FLAG taxonomy and writes a committed verdict.
       </bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="code-node-review"/>

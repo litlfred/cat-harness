@@ -458,3 +458,46 @@ export function openFindings(review: QaReview): Finding[] {
   const overruled = new Set(review.decisions.flatMap((d) => d.overrules.map((o) => o.finding)));
   return review.findings.filter((f) => f.weight !== "praise" && !overruled.has(f.id));
 }
+
+export {
+  MERGE_REVIEW_SCHEMA,
+  RED_FLAG_CATEGORIES,
+  RedFlagCategorySchema,
+  RED_FLAG_DEFINITIONS,
+  isRedFlagCategory,
+  getRedFlagDefinition,
+  FINDING_STATUSES,
+  FindingResolutionSchema,
+  AdversarialFindingSchema,
+  ReviewCoverageSchema,
+  REVIEW_RESULTS,
+  AdversarialReviewSchema,
+  getReviewFindings,
+  MergeReviewSchema,
+  OverrideDecisionSchema,
+  getOverrideFindingId,
+  applyRedFlagOverride,
+  RED_FLAG_GATE_STATES,
+  RedFlagGateStateSchema,
+  evaluateFindingGateState,
+  evaluateReviewGateState,
+  evaluateMergeReviewGateState,
+  type RedFlagCategory,
+  type RedFlagCategoryDefinition,
+  type FindingStatus,
+  type FindingResolution,
+  type AdversarialFinding,
+  type ReviewCoverage,
+  type ReviewResult,
+  type AdversarialReview,
+  type MergeReview,
+  type RedFlagOverride,
+  type RedFlagGateState,
+  type GateAction,
+  type EnforcementMode,
+  type FindingGateEvaluation,
+  type ReviewGateOptions,
+  type ReviewGateEvaluation,
+} from "./red-flag";
+
+
