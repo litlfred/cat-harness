@@ -21,10 +21,15 @@
  *
  * @module scripts/tests/staging-cleanup.test
  */
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+
 import { describe, expect, it } from "bun:test";
 
 import type { BranchEvidenceSet, Probe } from "../../test/health/checks.ts";
 import { preflight, slugProblem } from "../staging-cleanup-preflight.ts";
+
+const ROOT = resolve(import.meta.dir, "..", "..");
 
 const NOW = new Date("2026-09-19T12:00:00Z");
 const branches = (over: Partial<BranchEvidenceSet> = {}): Probe<BranchEvidenceSet> => ({
@@ -111,4 +116,68 @@ describe("the preflight's verdicts", () => {
     expect(slugProblem("claude-health-checks")).toBeUndefined();
     expect(slugProblem("release.v1-0-rc1")).toBeUndefined();
   });
+
+  it("REFUSES removal when another open PR is reusing or claiming the slug (bean oz5w)", () => {
+    const v = preflight(
+      "claude-shared-slug",
+      { state: "ok", value: ["claude/shared-slug"] },
+      branches({
+        candidates: [
+          { ref: "claude/shared-slug", mergedIntoDefault: true, headCommittedAt: "2026-09-08T09:00:00Z" },
+        ],
+      }),
+      NOW,
+    );
+    expect(v.decision).toBe("refuse-live");
+    if (v.decision !== "refuse-live") return;
+    expect(v.why).toContain("open-pr");
+  });
+
+  it("REFUSES removal when a candidate branch has unmerged work claiming the slug", () => {
+    const v = preflight(
+      "claude-reused-branch",
+      { state: "ok", value: [] },
+      branches({
+        candidates: [
+          { ref: "claude/reused-branch", mergedIntoDefault: false, headCommittedAt: "2026-09-08T09:00:00Z" },
+        ],
+      }),
+      NOW,
+    );
+    expect(v.decision).toBe("refuse-live");
+    if (v.decision !== "refuse-live") return;
+    expect(v.why).toContain("unmerged-branch");
+  });
+
+  it("REFUSES removal when a candidate branch has a recent commit claiming the slug", () => {
+    const v = preflight(
+      "claude-reused-branch",
+      { state: "ok", value: [] },
+      branches({
+        candidates: [
+          { ref: "claude/reused-branch", mergedIntoDefault: true, headCommittedAt: "2026-09-19T11:55:00Z" },
+        ],
+      }),
+      NOW,
+    );
+    expect(v.decision).toBe("refuse-live");
+    if (v.decision !== "refuse-live") return;
+    expect(v.why).toContain("recent-commit");
+  });
 });
+
+describe("skills documentation covers bean oz5w failure modes", () => {
+  it("ci-health documents that cancelled is NOT benign when previous state is a deletion", () => {
+    const ciHealthText = readFileSync(resolve(ROOT, "skills/sdlc/sdlc-core/ci-health.md"), "utf-8");
+    expect(ciHealthText).toContain("folio-assistant-oz5w");
+    expect(ciHealthText).toContain("never when the previous state is a deletion");
+  });
+
+  it("staging-review documents checking gh-pages commit log for newer staging(cleanup) and the re-publish command", () => {
+    const stagingReviewText = readFileSync(resolve(ROOT, "skills/sdlc/sdlc-core/staging-review.md"), "utf-8");
+    expect(stagingReviewText).toContain("bean oz5w");
+    expect(stagingReviewText).toContain("staging(cleanup)");
+    expect(stagingReviewText).toContain("gh workflow run feature-staging.yml -f branch=<branch>");
+  });
+});
+

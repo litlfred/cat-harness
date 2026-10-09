@@ -129,6 +129,14 @@ rule about never letting a count in prose go stale.
   preview shipped; folded into failure it sends somebody after a build that was
   merely superseded. Both readings are wrong in a way the reader cannot detect
   — which is rule 1 again, wearing different clothes.
+
+  **Crucial exception (bean `folio-assistant-oz5w`)**: staleness is benign
+  only when falling back to an existing live preview,
+  **never when the previous state is a deletion** (where "stale" manifests as a
+  404). When PR N's merge cleanup removed `STAGING/<slug>/` and PR N+1's
+  staging deploy was cancelled, the live site serves the deletion rather than
+  a previous preview. Staleness is safe only when what you fall back to
+  actually exists.
 - **Say WHOSE contention it is.** One workflow pushing twice and cancelling its
   own build is a fixed defect; several sessions racing for the publish ref is a
   different, open one. A merged cancellation count cannot show whether the
