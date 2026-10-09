@@ -12,7 +12,7 @@
 import { describe, expect, test } from "bun:test";
 
 import type { ContentDirectory } from "../../schemas/cat-harness.js";
-import { mkdtempSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { mkdtempSync, readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -22,6 +22,7 @@ import {
   ensureLandingSticky,
   folioDirPath,
   insertDirectoryEntry,
+  readLandingStickies,
   stickiesFor,
   stickyFile,
   toAsciiJson,
@@ -383,23 +384,32 @@ describe("a nested instance contributes its own stickies", () => {
     expect(declaredContributions(root).map((c) => c.contribution.order)).toEqual([10, 90]);
   });
 
-  test("the written board holds one file per contributed sticky, from both layers", () => {
+  test("the written board holds one file per contributed sticky, each in its own instance's folio directory", () => {
     const root = nested();
     const report = ensureLandingSticky(root, "2026-09-20T00:00:00.000Z");
     expect(report.stickies.map((s) => s.id)).toEqual(["landing", "inner-card"]);
-    const dir = folioDirPath(JSON.parse(readFileSync(declarationPathIn(root)!, "utf8")));
     for (const st of report.stickies) {
       const node = LandingStickySchema.parse(
-        JSON.parse(readFileSync(join(root, dir, stickyFile(st.id)), "utf8")),
+        JSON.parse(readFileSync(join(root, st.path), "utf8")),
       );
       expect(node.id).toBe(st.id);
     }
+    const outerDir = folioDirPath(JSON.parse(readFileSync(declarationPathIn(root)!, "utf8")));
+    // Outer folio holds outer card only, NOT inner card
+    expect(existsSync(join(root, outerDir, stickyFile("landing")))).toBe(true);
+    expect(existsSync(join(root, outerDir, stickyFile("inner-card")))).toBe(false);
+
+    // Inner folio holds inner card
+    expect(existsSync(join(root, "inner", "folio", stickyFile("inner-card")))).toBe(true);
     // `contributedBy` is on the node, so "which layer put this here" is answerable
     // from the file rather than by re-deriving the composition.
     const inner = LandingStickySchema.parse(
-      JSON.parse(readFileSync(join(root, dir, stickyFile("inner-card")), "utf8")),
+      JSON.parse(readFileSync(join(root, "inner", "folio", stickyFile("inner-card")), "utf8")),
     );
     expect(inner.contributedBy).toBe("inner");
+
+    // readLandingStickies reads from each instance's folio
+    expect(readLandingStickies(root).map((s) => s.id)).toEqual(["landing", "inner-card"]);
   });
 
   test("an instance contributing NO stickies gets an empty board, not a default one", () => {

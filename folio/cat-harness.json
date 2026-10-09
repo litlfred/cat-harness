@@ -52,7 +52,7 @@
     }
   ],
   "contributedBy": "cat-harness",
-  "declaredIn": "cat-harness/cat-harness.json",
+  "declaredIn": "cat-harness.json",
   "text": {
     "box": {
       "x": 0.07,

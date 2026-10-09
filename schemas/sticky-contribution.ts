@@ -452,6 +452,8 @@ export interface DeclaredContribution {
    * use for this checkout's location on somebody's disk.
    */
   declaredIn: string;
+  /** The declaring instance's root path on disk, when known. */
+  instanceRoot?: string;
   /** The declaring instance's `description`, for `bodyFrom: "description"`. */
   description?: string;
   /** The declaring instance's `summary`, for `bodyFrom: "summary"`. */
