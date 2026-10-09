@@ -23,7 +23,8 @@
  * conversion that dropped real files a success. Every case asserts:
  *
  *   1. nothing the new corpus admits was absent from the old  (lost nothing)
- *   2. everything the old admitted and the new does not IS gitignored
+ *   2. everything the old admitted and the new does not IS gitignored (and
+ *      not laid down by a remote mount, which the corpus holds)
  *
  * The second is what makes the first non-vacuous: a `keep` that returned
  * `false` for everything would satisfy (1) and fail (2).
@@ -33,14 +34,25 @@ import { spawnSync } from "node:child_process";
 import { readdirSync } from "node:fs";
 import { join, relative, resolve, sep } from "node:path";
 
-import { gitFiles } from "../../schemas/git-corpus.ts";
+import { gitCorpus, gitFiles } from "../../schemas/git-corpus.ts";
 
 const ROOT = resolve(import.meta.dir, "../../..");
 const rel = (p: string, root = ROOT): string => relative(root, p).split(sep).join("/");
 const noDot = (r: string): boolean => !r.split("/").some((s) => s.startsWith("."));
 
-/** Is this repo-relative path one git ignores? */
+/**
+ * The checkout's corpus, as `gitCorpus` gives it: tracked and untracked files
+ * git does not ignore, PLUS the files a remote mount laid down. In the index
+ * checkout every instance is such a mount — ignored by the index's own git,
+ * yet part of the corpus — so `git check-ignore` called every one of them
+ * ignored and the discriminating control below found nothing swept-but-held.
+ */
+let corpus: Set<string> | undefined;
+
+/** Is this repo-relative path one the corpus leaves out — gitignored, and not mounted? */
 function ignored(p: string): boolean {
+  corpus ??= new Set((gitCorpus(ROOT) ?? []).map((f) => rel(f)));
+  if (corpus.has(p)) return false;
   return spawnSync("git", ["check-ignore", "-q", p], { cwd: ROOT }).status === 0;
 }
 
