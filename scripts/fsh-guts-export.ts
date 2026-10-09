@@ -38,7 +38,7 @@
  */
 
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
-import { dirname, join, relative, resolve } from "node:path";
+import { dirname, extname, join, relative, resolve } from "node:path";
 
 import {
   artefactStub,
@@ -134,6 +134,9 @@ export function fshGutsDirs(root: string): FshGutsDir[] {
     .filter((d) => existsSync(d.absPath));
 }
 
+/** The file types a node can be carried in: YAML front matter, or a top-level JSON `$schema`. */
+const NODE_CARRIERS: ReadonlySet<string> = new Set([".md", ".json"]);
+
 function walk(dir: string, out: string[] = []): string[] {
   for (const name of readdirSync(dir)) {
     const path = join(dir, name);
@@ -168,6 +171,16 @@ export function buildFshGutsExport(root: string = ROOT, baseUrl?: string): FshGu
     for (const path of walk(dir.absPath)) {
       // Relative to the DECLARED directory, not to `root`: see `FshGutsDir`.
       const rel = join(dir.path, relative(dir.absPath, path));
+      // A node is carried by markdown front matter or a top-level JSON
+      // `$schema` (`readFshGutsNode`), so nothing else is READ: since the
+      // separation the trashcan holds each separated instance's in-tree copy
+      // as a `.tar.gz` (272 MB with the uploaded PDFs), and decoding all of
+      // it as UTF-8 to learn that it declares nothing took ~6 s a build.
+      // Still listed as skipped, with the reason, so nothing vanishes.
+      if (!NODE_CARRIERS.has(extname(path).toLowerCase())) {
+        skipped.push({ path: rel, reason: `not a node carrier (${extname(path) || "no extension"}): a node is markdown or JSON` });
+        continue;
+      }
       let text: string;
       try {
         text = readFileSync(path, "utf8");
