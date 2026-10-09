@@ -529,7 +529,7 @@ const SV_CSS = `.sv-page a:not(.fa-workplan a) { color: inherit; text-decoration
 .sv-list > li::before, .sv-counts > li::before { content: none; }
 .sv-item { border: 1px solid rgba(127,127,127,0.4); border-radius: 8px; padding: 0.8rem 1rem; }
 .sv-item.is-here { border-color: currentColor; }
-.sv-item h2 { font-size: 1rem; margin: 0 0 0.2rem; }
+.sv-item h2, .sv-item h3 { font-size: 1rem; margin: 0 0 0.2rem; }
 .sv-item p { margin: 0; font-size: 0.85rem; }
 .sv-here { font-weight: 600; }
 .sv-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.03em;
@@ -554,7 +554,7 @@ function registry(graphs: StateGraph[], current: string): string {
       ? `<span class="sv-here">${esc(g.id)}</span>`
       : `<a href="../${esc(g.id)}/">${esc(g.id)}</a>`;
     return `  <li class="sv-item${here ? " is-here" : ""}">
-    <h2>${name}<span class="sv-tag is-${g.state}">${g.state}</span></h2>
+    <h3>${name} <span class="sv-tag is-${g.state}">${g.state}</span></h3>
     <p>${g.description ? describe(g.description) : esc(g.path)}</p>
   </li>`;
   }).join("\n");
@@ -864,7 +864,7 @@ export function qaPanels(id: string, src: string): string {
               .join("") +
             `</ul>`;
       return `<section class="sv-item">
-    <h2><code>${esc(f.schema)}</code><span class="sv-tag">${f.files} file${f.files === 1 ? "" : "s"}</span></h2>
+    <h3><code>${esc(f.schema)}</code> <span class="sv-tag">${f.files} file${f.files === 1 ? "" : "s"}</span></h3>
     ${body}
   </section>`;
     })

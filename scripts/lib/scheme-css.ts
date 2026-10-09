@@ -81,6 +81,7 @@ export function withSavedScheme(html: string): string {
   const key = JSON.stringify(schemeKey());
   const script =
     `<script ${SCHEME_MARK}>try{var s=localStorage.getItem(${key});` +
+    `if(s!=="light"&&s!=="dark"&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)s="light";` +
     `if(s==="light"||s==="dark")document.documentElement.setAttribute("data-fa-scheme",s)}catch(e){}</script>\n`;
   const at = head.index + head[0].length;
   return html.slice(0, at) + "\n" + script + html.slice(at);
