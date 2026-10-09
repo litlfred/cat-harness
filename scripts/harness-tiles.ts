@@ -65,7 +65,7 @@ import { isAbsolute, join, relative, resolve, sep } from "node:path";
 import { GENERIC, avatarFor, hasAvatar } from "../schemas/avatars.js";
 import { hexHue, resolveThemeBackdrop } from "../schemas/theme.js";
 import { PLATFORM_THEME_OWNER, themeByRef } from "../schemas/theme-by-ref.js";
-import { instanceConfigFilename, instantiatedHarnessNames } from "../schemas/harness-config.js";
+import { instantiatedHarnessNames } from "../schemas/harness-config.js";
 import { flattenDependencies } from "../schemas/dependency-order.js";
 import {
   type CatHarnessDeclaration,
