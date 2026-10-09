@@ -22,8 +22,8 @@
   "links": [
     {
       "label": "cat-harness, in the source",
-      "href": "https://github.com/litlfred/folio-assistant",
-      "note": "Still to be split out of this repository — issue #223."
+      "href": "https://github.com/litlfred/cat-harness",
+      "note": "Its own repository since the cutover; the in-tree copy is archived in folio-assistant’s fsh-guts."
     },
     {
       "label": "RTFM — the cat-harness docs",

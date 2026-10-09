@@ -114,7 +114,7 @@ import { parse as parseYaml, stringify as stringifyYaml } from "yaml";
 import { isDirectoryReadme } from "../schemas/kg-node.ts";
 import { coneForCheckout, type ConeDecision } from "./staging-cone.ts";
 import { DOCS_SITE_BASE } from "../schemas/jsonld.js";
-import { foreignScopeFor, isHostProjection, scopeHarnessData, scopeSiteConfig } from "./lib/foreign-site-scope.ts";
+import { foreignScopeFor, isHostProjection, scopeHarnessData, scopeSiteConfig, scopeStickies } from "./lib/foreign-site-scope.ts";
 import { subscribedTrees } from "./subscribed-trees.ts";
 
 const REPO = resolve(import.meta.dir, "..", "..");
@@ -831,6 +831,13 @@ export function compose(out: string, repo = REPO, opts: ComposeOptions = {}): Co
       const next = scopeHarnessData(JSON.parse(readFileSync(data, "utf-8")), scope);
       writeFileSync(data, `${JSON.stringify(next, null, 2)}\n`);
       scoped = { instance: scope.instance, platformBase: scope.platformBase, hostProjections: [...new Set(hostProjections)].sort() };
+    }
+    // The landing stickies' platform links, re-based the same way (who-iris's
+    // own site, 2026-10-09: they resolved under the folio's baseurl and 404'd).
+    const stickiesData = join(out, "_data", "stickies.json");
+    if (existsSync(stickiesData)) {
+      const next = scopeStickies(JSON.parse(readFileSync(stickiesData, "utf-8")), scope);
+      writeFileSync(stickiesData, `${JSON.stringify(next, null, 2)}\n`);
     }
     // The platform's `footer_content` describes the platform (its name, its
     // licences); on a folio's site it read as the folio's own. Replaced by a

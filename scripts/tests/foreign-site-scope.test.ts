@@ -42,6 +42,7 @@ import {
   rootRelativeLeft,
   scopeHarnessData,
   scopeSiteConfig,
+  scopeStickies,
   scopeNavbarRow,
   scopeTiles,
   siteHref,
@@ -386,5 +387,34 @@ describe("the chrome reads foreignSite.absent (head_custom.html, rendered)", () 
     expect(r.sweep.absent).toBeNull();
     expect(r.sweep.pagesWithTranslations).toBe(49);
     expect(r.fishSrc).toBe(true);
+  });
+});
+
+describe("the landing stickies on a folio's site (who-iris, 2026-10-09)", () => {
+  const scope = { instance: "who-iris", platformBase: BASE };
+  const data = {
+    stickies: [
+      {
+        id: "cat-harness",
+        links: [
+          { label: "source", href: "https://github.com/litlfred/cat-harness", external: true },
+          { label: "docs", href: "/docs/cat-harness/concepts/agentic-harness.html", external: false },
+          { label: "own", href: "/who-iris/community-list.html", external: false },
+          { label: "relative", href: "community-list.html", external: false },
+        ],
+      },
+    ],
+  };
+  const links = (scopeStickies(data, scope).stickies as { links: { href: string; external: boolean }[] }[])[0]!.links;
+  test("a platform page is re-based onto the platform's site, and marked external so relative_url leaves it alone", () => {
+    expect(links[1]).toEqual({ label: "docs", href: `${BASE}/docs/cat-harness/concepts/agentic-harness.html`, external: true });
+  });
+  test("an external link, a path in the folio's own root, and a relative link are the folio's", () => {
+    expect(links[0]!.href).toBe("https://github.com/litlfred/cat-harness");
+    expect(links[2]).toEqual({ label: "own", href: "/community-list.html", external: false });
+    expect(links[3]!.href).toBe("community-list.html");
+  });
+  test("a file with no stickies passes through", () => {
+    expect(scopeStickies({ other: 1 }, scope)).toEqual({ other: 1 });
   });
 });
