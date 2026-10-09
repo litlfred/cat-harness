@@ -689,8 +689,21 @@ function tileFor(
     // An `igSite` directory is served at the same `/<name>/` route, inside the IG's own site (bean `mftp`).
     .filter((d) => ((d as { composed?: boolean }).composed === true || (d as { igSite?: boolean }).igSite === true) && typeof d.path === "string")
     .map((d) => `${instanceRel}/${d.path!.replace(/^\.?\/+/, "").replace(/\/*$/, "/")}`);
+  // THE INSTANCE'S OWN SITE DIRECTORY, when it is served at the site root: the
+  // `ownsSite || isRepoRoot` rule `siteDirMount` already applies to its
+  // declared ICON (issue #46, gap 3). A folio that generates its own site and
+  // is the checkout's root declared its pages under its own `docs/`, and they
+  // were dropped here because only the SITE OWNER's directory counted, while
+  // its icon under the same directory resolved: one directory, two answers.
+  // Measured on litlfred/ihris: a declared `docs/schemas/` read "no viewer
+  // yet", and `beans`/`glossary` resolved only by convention.
+  const ownSitePrefix =
+    ownsSite || isRepoRoot
+      ? `${relative(repoRoot, join(instanceDir, siteDirFor(instanceDir))).split(sep).join("/")}/`
+      : undefined;
   const publishedRefOf = (ref: string): string | undefined => {
     if (ref.startsWith(sitePrefix)) return publishedUrlOf(ref.slice(sitePrefix.length));
+    if (ownSitePrefix !== undefined && ref.startsWith(ownSitePrefix)) return publishedUrlOf(ref.slice(ownSitePrefix.length));
     const under = composedPrefixes.find((p) => ref.startsWith(p));
     return under === undefined ? undefined : publishedUrlOf(`${decl.name}/${ref.slice(under.length)}`);
   };
@@ -1185,6 +1198,7 @@ function tileFor(
           src: iconSrc,
           title: icon?.title ?? "",
           ...(icon?.avatarRegion ? { region: icon.avatarRegion, crop: solveCrop(icon.avatarRegion) } : {}),
+          ...(icon?.ground ? { ground: icon.ground } : {}),
         };
   // The registry glyph is the THIRD candidate, not a separate mechanism: an
   // instance with its own avatar entry (never the generic one, which is a

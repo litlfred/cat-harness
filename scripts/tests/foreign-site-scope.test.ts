@@ -86,6 +86,30 @@ const tile = (id: string, href: string, count?: number) => ({
   ...(count === undefined ? {} : { count, unit: "things" }),
 });
 
+describe("a folio that is the ROOT of its own site keeps the pages it declares (issue #46, gap 1)", () => {
+  // Its pages are written root-relative (`/beans/`), not under `/<instance>/`.
+  const s = fakeScope({ ownPages: new Set(["/beans/", "/schemas/"]) });
+
+  test("a declared own page is the folio's: kept root-relative, with its link and count", () => {
+    expect(siteHref("/beans/", s)).toBe("/beans/");
+    const [beans] = scopeTiles([tile("beans", "/beans/", 15)], s);
+    expect(beans!.href).toBe("/beans/");
+    expect(beans!.count).toBe(15);
+    const row = scopeNavbarRow({ icons: ["beans"], hrefs: { beans: "/beans/" }, folders: [{ kind: "schemas", path: "/schemas/" }] }, s) as {
+      hrefs: Record<string, string>;
+      folders: { path?: string }[];
+    };
+    expect(row.hrefs.beans).toBe("/beans/");
+    expect(row.folders[0]!.path).toBe("/schemas/");
+  });
+
+  test("a root-relative path it does NOT declare is still not its own", () => {
+    expect(siteHref("/todos/", s)).toBe(`${BASE}/todos/`);
+    const [todos] = scopeTiles([tile("todos", "/todos/", 3)], s);
+    expect(todos!.href).toBeUndefined();
+  });
+});
+
 describe("the rule, one row per case", () => {
   const s = fakeScope();
   const out = Object.fromEntries(

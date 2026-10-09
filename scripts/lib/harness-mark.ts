@@ -42,6 +42,8 @@ export interface HarnessMark {
   title: string;
   region?: MarkRegion;
   crop?: { width: number; height: number; left: number; top: number };
+  /** The image's declared `ground` (`KgImageSchema`): `none` draws no tone behind it. */
+  ground?: "tone" | "none";
 }
 
 /**
@@ -65,6 +67,7 @@ export function navMarkFields(
         src: rebase(mark.src),
         ...(mark.title ? { title: mark.title } : {}),
         ...(mark.region ? { region: mark.region } : {}),
+        ...(mark.ground ? { ground: mark.ground } : {}),
       },
       ...toneField,
     };

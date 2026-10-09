@@ -69,9 +69,13 @@
  *
  * @module scripts/lib/foreign-site-scope
  */
-import { readDeclaration } from "../../schemas/cat-harness.js";
+import { existsSync } from "node:fs";
+import { join, resolve } from "node:path";
+
+import { readDeclaration, siteDirFor, visualisationResolves, visualisationsOf } from "../../schemas/cat-harness.js";
 import { defaultGraphTypologies } from "../../schemas/graph-typology-registry.ts";
 import { instanceRootsIn } from "../../schemas/instance-roots.ts";
+import { publishedUrlOf } from "../harness-tiles.ts";
 
 /** What the scoping needs to know about the site and the declarations. */
 export interface ForeignScope {
@@ -87,6 +91,14 @@ export interface ForeignScope {
   holdsOf: (kind: string) => string | undefined;
   /** The site's own title — what its header and home row say. */
   title?: string;
+  /**
+   * The site paths the folio's OWN declaration publishes at this site's root
+   * (`/beans/`, `/schemas/`), when the folio is the root of the checkout the
+   * harness data was generated from. Issue #46, gap 1: such a folio's pages are
+   * written root-relative, not under `/<instance>/`, and were read as "not
+   * published on this site". Undefined when the folio is not the root.
+   */
+  ownPages?: ReadonlySet<string>;
 }
 
 type Json = Record<string, unknown>;
@@ -98,8 +110,9 @@ const isAbsoluteUrl = (p: string): boolean => /^[a-z][a-z0-9+.-]*:/i.test(p) || 
  * root when it is under `/<instance>/`, else on the platform's site.
  * Absolute URLs and non-root paths (`#x`, `x.html`) pass through.
  */
-export function siteHref(p: string, scope: Pick<ForeignScope, "instance" | "platformBase">): string {
+export function siteHref(p: string, scope: Pick<ForeignScope, "instance" | "platformBase" | "ownPages">): string {
   if (isAbsoluteUrl(p) || !p.startsWith("/")) return p;
+  if (scope.ownPages?.has(p)) return p;
   if (scope.instance) {
     const own = `/${scope.instance}/`;
     if (p === own.slice(0, -1) || p === own) return "/";
@@ -108,8 +121,9 @@ export function siteHref(p: string, scope: Pick<ForeignScope, "instance" | "plat
   return `${scope.platformBase}${p}`;
 }
 
-/** Is `p` a path inside the folio's own root (`/<instance>/…`)? */
-export function isOwnPath(p: string, scope: Pick<ForeignScope, "instance">): boolean {
+/** Is `p` a path inside the folio's own root (`/<instance>/…`), or a page its declaration publishes at this site's root? */
+export function isOwnPath(p: string, scope: Pick<ForeignScope, "instance" | "ownPages">): boolean {
+  if (scope.ownPages?.has(p)) return true;
   if (!scope.instance) return false;
   const own = `/${scope.instance}/`;
   return p === own.slice(0, -1) || p.startsWith(own);
@@ -461,7 +475,9 @@ export function foreignScopeFor(
     }
   }
   const own = opts.instance ? decls.find((d) => d.name === opts.instance) : undefined;
+  const ownPages = opts.instance ? rootOwnPages(repo, opts.instance) : undefined;
   return {
+    ...(ownPages ? { ownPages } : {}),
     ...(opts.instance ? { instance: opts.instance } : {}),
     platformBase: opts.platformBase.replace(/\/$/, ""),
     ownKinds: new Set((own?.directories ?? []).flatMap((d) => d.graphTypologies ?? [])),
@@ -469,4 +485,28 @@ export function foreignScopeFor(
     holdsOf: (k) => defaultGraphTypologies.get(k)?.holds,
     ...(opts.title ? { title: opts.title } : {}),
   };
+}
+
+/**
+ * The pages a folio publishes at its OWN site's root: its declared
+ * visualisers under its site directory, when the folio IS the checkout's root
+ * (issue #46, gap 1). The same rule `harness-tiles.ts` applies to resolve
+ * those visualisers (`ownsSite || isRepoRoot`) and to place the folio's icon,
+ * so the scope and the tiles name the same paths. Undefined otherwise: a
+ * folio mounted beneath the root publishes under `/<instance>/`, which
+ * {@link isOwnPath} already reads.
+ */
+export function rootOwnPages(repo: string, instance: string): ReadonlySet<string> | undefined {
+  const root = resolve(repo);
+  const decl = readDeclaration(root);
+  if (decl?.name !== instance) return undefined;
+  const prefix = `${siteDirFor(root)}/`;
+  const pages = new Set<string>();
+  for (const d of decl.directories ?? []) {
+    for (const v of visualisationsOf(d.coverage, d.id)) {
+      if (!v.ref.startsWith(prefix) || !visualisationResolves(v, (p) => existsSync(join(root, p)))) continue;
+      pages.add(publishedUrlOf(v.ref.slice(prefix.length)));
+    }
+  }
+  return pages.size > 0 ? pages : undefined;
 }

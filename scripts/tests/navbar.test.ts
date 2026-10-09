@@ -284,6 +284,12 @@ describe("at rest it is a strip, and opens three ways", () => {
     expect(region(html, "fa-nav-top")).toContain("hsl(268 45% 28%)");
   });
 
+  it("an avatar that declares its ground `none` sits on the rail itself — no tone square (issue #46, gap 5)", () => {
+    const html = navbarHtml({ ...model, mark: { avatar: { src: "../a.svg", ground: "none" }, tone: 268 } });
+    expect(region(html, "fa-nav-top")).toContain('<img src="../a.svg" alt="">');
+    expect(region(html, "fa-nav-top")).not.toContain("hsl(268 45% 28%)");
+  });
+
   it("escapes what it is given", () => {
     const html = navbarHtml({ ...model, instance: '<img src=x onerror="pwn">' });
     expect(html).not.toContain("<img src=x");
@@ -1087,6 +1093,14 @@ describe("the harness row's data reaches a railed page (bean wckf, #2147)", () =
     const out = injectRail(SHELL, { ...opts, assetRoot: BASE, navbarRow: { icons: ["todos"] } })!;
     expect(out).toContain(`<script src="${BASE}/${NAVBAR_ROW_JS}" defer></script>`);
     expect(out).toContain(`data-fa-root="${BASE}"`);
+  });
+
+  it("a folio's own row paths and counts resolve on ITS site, while its files stay the platform's (issue #46, gap 2)", () => {
+    const BASE = "https://litlfred.github.io/folio-assistant";
+    const out = injectRail(SHELL, { ...opts, assetRoot: BASE, rowRoot: "..", navbarRow: { icons: ["beans"], hrefs: { beans: "/beans/" } } })!;
+    expect(out).toContain(`<script src="${BASE}/${NAVBAR_ROW_JS}" defer></script>`);
+    expect(out).toContain('id="fa-navbar-row" data-fa-root=".."');
+    expect(out).not.toContain(`data-fa-root="${BASE}"`);
   });
 
   it("a page that fetches nothing gets the row INLINED, not linked", () => {

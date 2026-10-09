@@ -23,6 +23,13 @@ describe("navMarkFields", () => {
     expect(navMarkFields({ glyph: "M3 18h18", title: "a base" }, 199)).toEqual({ glyphPath: "M3 18h18", tone: 199 });
   });
 
+  test("a declared ground rides along, so the navbar can leave the tone out (issue #46, gap 5)", () => {
+    expect(navMarkFields({ src: "/assets/img/logo.svg", title: "logo", ground: "none" }, 208, (s) => `.${s}`)).toEqual({
+      avatar: { src: "./assets/img/logo.svg", title: "logo", ground: "none" },
+      tone: 208,
+    });
+  });
+
   test("no mark leaves only the tone, and the navbar draws the initial", () => {
     expect(navMarkFields(undefined, 212)).toEqual({ tone: 212 });
     expect(navMarkFields(null, undefined)).toEqual({});
