@@ -54,6 +54,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
 import _pdf_headings as H  # noqa: E402
+from _benchmark_guard import assert_not_declared_graph_path  # noqa: E402
 
 MATCH = 0.85
 
@@ -418,7 +419,9 @@ def main() -> int:
     ap.add_argument("pdfs", nargs="*")
     ap.add_argument("--root", default=os.path.abspath(os.path.join(HERE, "..", "..")))
     ap.add_argument("--methods", default=",".join(METHODS))
-    ap.add_argument("--json", help="write per-document results here")
+    ap.add_argument("--json", default="build/benchmarks/toc-benchmark.json",
+                    help="write per-document results here (default: build/benchmarks/toc-benchmark.json)")
+    ap.add_argument("--no-json", action="store_true", help="do not write JSON output")
     ap.add_argument("--grobid-tei", help="directory of Grobid <stem>.tei.xml outputs, for the `grobid` method")
     ap.add_argument("--nougat-mmd", help="directory of Nougat <stem>.mmd outputs, for the `nougat` method")
     ap.add_argument("--layout-backend", choices=["pymupdf", "pdfminer"], default="pymupdf",
@@ -463,7 +466,9 @@ def main() -> int:
         print(f"{m:9s} {avg('title_p'):8.2f} {avg('title_r'):8.2f} {avg('title_f1'):8.2f} {avg('capped_f1'):8.2f} "
               f"{avg('link_f1'):8.2f} {avg('level_f1'):8.2f} {avg('full_f1'):8.2f} "
               f"{(sum(tv) / len(tv) if tv else float('nan')):6.2f}")
-    if args.json:
+    if args.json and not args.no_json:
+        assert_not_declared_graph_path(args.json, args.root)
+        os.makedirs(os.path.dirname(os.path.abspath(args.json)), exist_ok=True)
         with open(args.json, "w") as f:
             json.dump(rows, f, indent=1)
     return 0
