@@ -30,12 +30,14 @@ import {
   declarationPathIn,
   directoriesForGraph,
   instanceDirectoryForGraph,
+  instanceRootsIn,
+  readDeclaration,
   repoRootFor,
   visualisationsOf,
   type Tile,
   type Visualisation,
 } from "../schemas/cat-harness.js";
-import { corpusDirectoriesForGraph } from "../schemas/harness-config.js";
+import { checkoutDirectories, corpusDirectoriesForGraph } from "../schemas/harness-config.js";
 import { mountedInstanceRoots } from "../schemas/remote-mount.js";
 import { tools } from "../tools/discover.js";
 import { frontMatterList } from "./skill-governance.js";
@@ -306,17 +308,57 @@ export function siteDirectories<T extends ViewedDirectory>(
   // unchanged, so a tile, an icon and a dashboard keep their address. An id
   // this instance already declares wins (its own `docs`, `uploads`).
   if (resolve(repoRoot) === resolve(instanceRoot)) return [...own];
+  const shared = checkoutSharedDirectories<T>(repoRoot);
+  if (shared === undefined || shared.root === resolve(instanceRoot)) return [...own];
+  // An own entry wins only when it GOES somewhere — the rule `navbarRow` in
+  // `sync-docs-harness.ts` applies to the icon row (cat-harness#31). core
+  // declares a `beans` of its own with no viewer, and letting it shadow the
+  // checkout's viewed one dropped the Beans tile from the index site
+  // (`beans-count-agrees.e2e.ts`, 2026-10-09).
+  const viewed = (d: T) => viewersOf(d, instanceRoot, repoRoot).length > 0;
+  const replaced = new Set(
+    own.filter((d) => !viewed(d) && shared.directories.some((c) => c.id === d.id && viewed(c))).map((d) => d.id),
+  );
+  const kept = own.filter((d) => !replaced.has(d.id));
+  const ids = new Set(kept.map((d) => d.id));
+  return [...kept, ...shared.directories.filter((d) => !ids.has(d.id))];
+}
+
+/**
+ * The checkout's own directories, as repository-scoped entries, and the
+ * instance root that declares them: the checkout ROOT's instance when it has
+ * one, else — the index checkout, whose root declares nothing (owner,
+ * 2026-10-08) — the instance that declares the repository-scoped directories
+ * (cat-harness, decision (b)), the same answer `checkoutGraphOwner` gives
+ * the navbar. `undefined` when neither is readable.
+ */
+function checkoutSharedDirectories<T extends ViewedDirectory>(
+  repoRoot: string,
+): { root: string; directories: T[] } | undefined {
+  const read = (p: string): { directories?: T[] } | undefined => {
+    try {
+      return JSON.parse(readFileSync(p, "utf-8")) as { directories?: T[] };
+    } catch {
+      return undefined;
+    }
+  };
   const p = declarationPathIn(repoRoot);
-  if (p === undefined) return [...own];
-  let root: { directories?: T[] };
-  try {
-    root = JSON.parse(readFileSync(p, "utf-8")) as { directories?: T[] };
-  } catch {
-    return [...own];
+  if (p !== undefined) {
+    const root = read(p);
+    if (root === undefined) return undefined;
+    return { root: resolve(repoRoot), directories: (root.directories ?? []).map((d) => ({ ...d, scope: "repository" })) };
   }
-  const ids = new Set(own.map((d) => d.id));
-  const checkout = (root.directories ?? []).filter((d) => !ids.has(d.id)).map((d) => ({ ...d, scope: "repository" }));
-  return [...own, ...checkout];
+  let owner: string | undefined;
+  try {
+    owner = checkoutDirectories(repoRoot).find((d) => d.scope === "repository" && d.own)?.declaredBy;
+  } catch {
+    return undefined; // an unreadable declaration is `check:harness-dirs`'s to report
+  }
+  const ownerRoot = owner === undefined ? undefined : instanceRootsIn(repoRoot).find((r) => readDeclaration(r)?.name === owner);
+  const q = ownerRoot === undefined ? undefined : declarationPathIn(ownerRoot);
+  const decl = q === undefined ? undefined : read(q);
+  if (ownerRoot === undefined || decl === undefined) return undefined;
+  return { root: resolve(ownerRoot), directories: (decl.directories ?? []).filter((d) => d.scope === "repository") };
 }
 
 export function withViewers<T extends ViewedDirectory>(

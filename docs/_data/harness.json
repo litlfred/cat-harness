@@ -20,7 +20,9 @@
     "code",
     "docs",
     "folio",
+    "fsh-guts",
     "glossary",
+    "issue-marks",
     "library",
     "memory",
     "methodology",
@@ -28,9 +30,11 @@
     "qa",
     "schemas",
     "skills",
+    "todos",
     "tools",
     "translation-sources",
     "typologies",
+    "uploads",
     "validators"
   ],
   "links": [
@@ -50,6 +54,36 @@
     }
   ],
   "tiles": [
+    {
+      "id": "beans",
+      "directory": "beans",
+      "title": "Beans",
+      "ref": "cat-harness/docs/beans/index.html",
+      "surfaces": [
+        "navbar",
+        "board",
+        "glass"
+      ],
+      "href": "/beans/",
+      "hidden": false,
+      "icon": "beans",
+      "count": 286,
+      "unit": "open beans"
+    },
+    {
+      "id": "checkout-uploads",
+      "directory": "checkout-uploads",
+      "title": "Uploads",
+      "ref": "cat-harness/docs/cat-harness/uploads/folio-assistant/index.html",
+      "surfaces": [
+        "navbar",
+        "board",
+        "glass"
+      ],
+      "href": "/cat-harness/uploads/folio-assistant/",
+      "hidden": false,
+      "icon": "uploads"
+    },
     {
       "id": "core-library",
       "directory": "core-library",
@@ -140,6 +174,20 @@
       "hidden": false
     },
     {
+      "id": "fsh-guts",
+      "directory": "fsh-guts",
+      "title": "FSH guts",
+      "ref": "cat-harness/docs/fsh-guts/index.md",
+      "surfaces": [
+        "navbar",
+        "board",
+        "glass"
+      ],
+      "href": "/fsh-guts/",
+      "hidden": false,
+      "publish": "staging-only"
+    },
+    {
       "id": "glossary",
       "directory": "glossary",
       "title": "Glossary",
@@ -152,6 +200,21 @@
       ],
       "href": "/glossary/",
       "hidden": false
+    },
+    {
+      "id": "todos",
+      "directory": "todos",
+      "title": "Todos",
+      "ref": "cat-harness/docs/todos/index.html",
+      "surfaces": [
+        "navbar",
+        "board",
+        "glass"
+      ],
+      "href": "/todos/",
+      "hidden": false,
+      "count": 3,
+      "unit": "todos"
     }
   ],
   "glassStrip": {
