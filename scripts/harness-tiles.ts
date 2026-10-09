@@ -1352,8 +1352,11 @@ export function harnessTiles(
   const tiles: HarnessTile[] = [];
   const decls: { dir: string; decl: CatHarnessDeclaration }[] = [];
   for (const dir of instanceDirs(repoRoot, names)) {
-    const read = readDeclaration(dir);
+    let read = readDeclaration(dir);
     if (!read) continue;
+    if (ownerDecl && read.name === ownerDecl.name) {
+      read = ownerDecl;
+    }
     // Viewers RESOLVED from the pages (#1168 B7a-2b): a directory no longer
     // names its viewer, the page names the directories it draws.
     // The REPOSITORY root passed explicitly: its default, `repoRootFor(dir)`, is

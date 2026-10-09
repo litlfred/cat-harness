@@ -1146,7 +1146,7 @@ describe("the row's glyphs are docs-ui.js's glyphs (bean lhvt)", () => {
   const glyphs = (file: string): Record<string, string> => {
     const src = readFileSync(join(js, file), "utf-8");
     const out: Record<string, string> = {};
-    for (const name of ["STICKY_GLYPH", "BEANS_GLYPH", "PROCESS_GLYPH", "NET_GLYPH", "TILES_GLYPH", "FISH_GLYPH"]) {
+    for (const name of ["STICKY_GLYPH", "BEANS_GLYPH", "PROCESS_GLYPH", "NET_GLYPH", "TILES_GLYPH", "FISH_GLYPH", "QR_GLYPH"]) {
       const m = new RegExp(`var ${name} =([\\s\\S]*?);\\n`).exec(src);
       if (!m) throw new Error(`${file}: ${name} not found`);
       const expr = m[1]!.replace(/^\s*\/\/.*$/gm, "");
@@ -1155,10 +1155,10 @@ describe("the row's glyphs are docs-ui.js's glyphs (bean lhvt)", () => {
     return out;
   };
 
-  it("all six are identical in both files", () => {
+  it("all seven are identical in both files", () => {
     const row = glyphs("navbar-row.js");
     const ui = glyphs("docs-ui.js");
-    expect(Object.keys(row).length).toBe(6);
+    expect(Object.keys(row).length).toBe(7);
     expect(row).toEqual(ui);
   });
 });

@@ -3004,7 +3004,7 @@ function describeValidator(n: ValidatorNode): string {
  */
 export const defaultGraphTypologies = new GraphTypologyRegistry(
   BASE_GRAPH_TYPOLOGIES,
-  resolve(dirname(fileURLToPath(import.meta.url)), "..", ".."),
+  process.env.REPO_ROOT ?? resolve(dirname(fileURLToPath(import.meta.url)), "..", ".."),
 );
 
 /**

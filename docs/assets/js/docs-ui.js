@@ -832,11 +832,12 @@
 
   // A static glyph: three finder squares and a scatter of modules. Inline so
   // it needs no extra request and inherits the header's colour.
-  var GLYPH =
+  var QR_GLYPH =
     '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
     '<path d="M3 3h7v7H3V3zm2 2v3h3V5H5zm9-2h7v7h-7V3zm2 2v3h3V5h-3zM3 14h7v7H3v-7zm2 2v3h3v-3H5z"/>' +
     '<path d="M13 13h3v3h-3v-3zm5 0h3v2h-3v-2zm-5 5h2v3h-2v-3zm4 1h4v2h-4v-2zm2-3h2v2h-2v-2z"/>' +
     "</svg>";
+  var GLYPH = QR_GLYPH;
 
   // Ordered most specific first. just-the-docs has used `.site-title` across
   // many versions, but the theme is unpinned, so a miss here is configuration
