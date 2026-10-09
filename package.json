@@ -92,6 +92,7 @@
     "check:bootstrap-standalone": "bun run cat-harness/scripts/rehearse-bootstrap-standalone.ts",
     "check:bean-parents": "bun run cat-harness/scripts/check-bean-parents.ts",
     "check:bean-rollup": "bun run cat-harness/scripts/check-bean-rollup.ts",
+    "check:draft-beans": "bun run cat-harness/scripts/check-draft-beans.ts",
     "ci:watch": "bun run cat-harness/scripts/watch-ci.ts",
     "check:declared-dirs": "bun run cat-harness/scripts/check-declared-dirs.ts",
     "check:environment": "bun run cat-harness/scripts/check-environment.ts",

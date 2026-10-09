@@ -969,6 +969,7 @@ export const RULES: Rule[] = [
       // core, and core reading harness is downward.
       "scripts/beans.ts",
       "scripts/check-bean-parents.ts",
+      "scripts/check-draft-beans.ts",
       // The work plan's own readers. Harness by subject and by dependency:
       // `beans/` is the AGENT's work plan, declared by the harness, and a
       // folio's content has no bean store. `bean-store-read.ts` is the shared

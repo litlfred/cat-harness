@@ -137,11 +137,7 @@ sees it. Branch-locality hurts it worse than it hurts a work item, because a
 work item merely gets duplicated while a decision sits unanswered and every
 branch downstream of it waits.
 
-**So if you open a decision bean on a branch you will not land soon, post the
-question where the owner already reads — the issue — and say ON THE BEAN where
-you posted it.** Both halves. The comment is what reaches a person; the line on
-the bean is what stops the next session re-asking, and tells them where the
-answer will appear.
+**So if you open a decision bean on a branch you will not land soon: set `status: draft` in front matter (e.g. `status: draft` or `beans create "<title>" --status draft`), post the question where the owner already reads — the issue — and say ON THE BEAN where you posted it.** All three parts. The comment is what reaches a person; the line on the bean is what stops the next session re-asking, and tells them where the answer will appear; and front-matter `status: draft` is what lets automated checks detect an unmerged ruling request.
 
 **This is written down because it WORKED.** Bean `r0tm` carried a
 recommendation and a safe default on a branch with no PR, which is exactly the
@@ -151,12 +147,23 @@ and PR #1581 — not because anyone found the bean.
 
 **What the check reads, and what it must not — both measured over the whole store:**
 
-- **`status: draft` is the marker — claimed 2026-10-01, on the owner's ruling.**
+- **`status: draft` in front matter is the marker — claimed 2026-10-01, on the owner's ruling.**
   It was already legal (`schemas/tool-types.ts` has
   `.enum(["draft", "todo", "in-progress", "completed", "scrapped"])`, and
   `beans create --status` offers it) and used by **0 of 542** beans. An enum
   member nothing uses is free to adopt, so a decision bean awaiting a ruling is
-  `status: draft` and needs no new vocabulary.
+  `status: draft` in front matter:
+
+  ```yaml
+  ---
+  status: draft
+  ...
+  ---
+  ```
+
+  (or created with `beans create "<title>" --status draft`) and needs no new
+  vocabulary. A decision bean awaiting a ruling stays `status: draft` until
+  ruled on or landed.
 
   **This reverses what this section said for one day**, and the reversal is
   worth keeping. It read *"`status: draft` is not a signal"*, on a correct
@@ -172,10 +179,11 @@ and PR #1581 — not because anyone found the bean.
   recogniser found was one that *records* a ruling rather than asking for one.
   So a check reads the STATUS and the two halves above, never the prose.
 
-So the convention is three things, and the third is new: **a comment where a
-person reads, a line on the bean saying where, and `status: draft` while the
-ruling is outstanding.** The first two are what reach a human; the third is what
-lets a check find the bean that never landed.
+So the convention is three things: **`status: draft` in front matter while the
+ruling is outstanding, a comment where a person reads, and a line on the bean
+saying where.** The comment and the line are what reach a human; the front-matter
+status is what lets `bun run cat check:draft-beans` (`scripts/check-draft-beans.ts`)
+find any ruling request that never landed, reporting with a denominator (`dh4f`).
 
 
 ### The trigger is STARTING WORK, not claiming — and that distinction cost a merge
