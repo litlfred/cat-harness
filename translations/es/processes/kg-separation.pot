@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kg-separation\n"
-"POT-Creation-Date: 2026-10-07T18:45:27.185Z\n"
+"POT-Creation-Date: 2026-10-09T13:19:39.613Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -341,7 +341,7 @@ msgstr ""
 
 #: processes/kg/kg-separation.bpmn:259
 #. Diagram element documentation
-msgid "The parent pins the pair (a commit while staging, a version once released), repoints its imports, and keeps its own copy until it is green with the dependency declared."
+msgid "The parent pins the pair (a commit while staging, a version once released) — a code dependency as a `source.remote` instance in its root `index.config.json` (remote-mount skill), never a submodule — repoints its imports, and keeps its own copy until it is green with the dependency declared."
 msgstr ""
 
 #: processes/kg/kg-separation.bpmn:71
