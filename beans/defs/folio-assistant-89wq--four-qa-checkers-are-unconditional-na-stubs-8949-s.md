@@ -1,10 +1,10 @@
 ---
 # folio-assistant-89wq
 title: Four QA checkers are unconditional n/a stubs — 8949 sidecar entries indistinguishable from a correct decline, two of them proof-build-green / proof-no-axiom-growth
-status: todo
+status: completed
 type: task
 created_at: 2026-09-27T10:37:00Z
-updated_at: 2026-09-27T10:37:00Z
+updated_at: 2026-10-09T11:53:00Z
 parent: folio-assistant-1swy
 ---
 
@@ -136,3 +136,33 @@ stubs in authored content. Four of the checkers doing the detecting are
 themselves placeholder stubs, and nothing detects that. A registry-level
 `implemented` flag plus a test asserting every `automated: true` criterion has a
 non-trivial checker would close it as a class.
+
+## Closed 2026-10-09
+
+Closed on evidence following `skills/sdlc/sdlc-core/bean-coordination.md`.
+
+Implemented Option 3: gave the four unconditional `n/a` stub checkers (`checkDetanglerNoXChapterFwd`, `checkDetanglerArchimedeanWall`, `checkProofNoAxiomGrowth`, `checkProofBuildGreen`) in `content/pipeline/qa-checkers-extended.ts` an explicit, distinguishable sentinel note:
+`{ result: "n/a", hits: [], notes: "not implemented: stub checker" }`.
+
+### Evidence
+- **Branch**: `claude/89wq-qa-stub-sentinels`
+- **Commit**: `b08d6f7158c793d808e3e2d5d02cc0ef11b037cb`
+- **Test file**: `scripts/tests/qa-checkers-stub-sentinels.test.ts`
+- **Test execution**:
+  ```
+  bun test scripts/tests/qa-checkers-stub-sentinels.test.ts
+  bun test v1.3.14 (0d9b296a)
+
+  scripts/tests/qa-checkers-stub-sentinels.test.ts:
+  ✓ QA stub checkers distinguishable sentinels (folio-assistant-89wq) > checkDetanglerNoXChapterFwd returns distinguishable stub sentinel [0.12ms]
+  ✓ QA stub checkers distinguishable sentinels (folio-assistant-89wq) > checkDetanglerArchimedeanWall returns distinguishable stub sentinel [0.03ms]
+  ✓ QA stub checkers distinguishable sentinels (folio-assistant-89wq) > checkProofNoAxiomGrowth returns distinguishable stub sentinel [0.02ms]
+  ✓ QA stub checkers distinguishable sentinels (folio-assistant-89wq) > checkProofBuildGreen returns distinguishable stub sentinel [0.02ms]
+
+   4 pass
+   0 fail
+   8 expect() calls
+  Ran 4 tests across 1 file. [589.00ms]
+  ```
+- **Typecheck**: `bun run typecheck` (`tsc --noEmit -p tsconfig.json`) passed with 0 errors.
+
