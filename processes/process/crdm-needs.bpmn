@@ -4,6 +4,7 @@
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
                   xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
+                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_CRDM_Needs" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
   <bpmn:collaboration id="Collaboration_Process_CRDM_Needs">
@@ -11,6 +12,9 @@
   </bpmn:collaboration>
   <bpmn:process id="Process_CRDM_Needs" name="CRDM Phase 1 — needs" isExecutable="false">
     <bpmn:documentation>Identify the stakeholders, synthesise a needs statement from the sources, and loop until the BA and the stakeholders both recognise it. The loop is the phase: a needs statement nobody confirmed is an agent's summary, not a requirement.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="strict"/>
+    </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_CRDM_Needs">
       <bpmn:lane id="Lane_BA" name="BA / Feature Requestor">
         <bpmn:documentation>The single review here is what GW_Needs is literally named for — "BA approves?" — even though Lane_Stakeholders' confirmation sits between this task and that gateway in the flow; the phase's own documentation makes clear the loop needs both, so reading the gate label alone would miss half of what it takes to exit it.</bpmn:documentation>

@@ -4,6 +4,7 @@
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
                   xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
+                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_MountDependency"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows">
 
@@ -27,6 +28,9 @@
 You are in this process whenever a folio or harness needs a layer it does not hold: a downstream folio built on a content layer above this harness, a separated instance whose foundation lives elsewhere. The downstream names the harness, its repository and a 40-character pin as a `source.remote` instance in its root `index.config.json` (legacy: `remoteMounts` on its declaration, never both); everything else is read from the harness's own declaration at that pin.
 
 Every instance reached ends in one of three states — mounted, missing, could-not-determine — and the third is never reported as the first. The skill is `remote-mount`.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="strict"/>
+    </bpmn:extensionElements>
 
     <bpmn:laneSet id="LaneSet_MountDependency">
       <bpmn:lane id="Lane_Author" name="Downstream author">

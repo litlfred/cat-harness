@@ -14,6 +14,9 @@
     <bpmn:documentation>What a merge steward does with a PR it dropped from a merge train: its merge (`merge-base.bpmn`, run with `--no-regen`) refused an authored or undeclared conflict, or the train's combined result failed a gate. Owner, 2026-10-02: "create a new bean (under appropriate epic/story…), hand it back to the sibling (use the agent-to-agent handoff process with a fail condition) for resolution, or dispatch an agent as appropriate." Bean `zacz`; the discipline is in `merge-conflict-patterns` §"When a merge-train member is refused".
 
 ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The steward finds or creates that bean BEFORE starting the instance, because creating a bean is the agent's own `beans create` call, deduplicated by the PR number in its title; the engine has no create op (`bean-lifecycle.bpmn`). A second refusal of the same PR loops back into this instance rather than opening a second bean.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="strict"/>
+    </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_MergeRefusal">
       <bpmn:lane id="Lane_Steward" name="Merge steward">
         <bpmn:documentation>Coordinator and verifier of the hand-back: records, hands back, takes back when the fail condition fires, and closes. Never edits the bean's instructions after the executor claims it; later facts go to the PR.</bpmn:documentation>

@@ -20,6 +20,9 @@ TWO GATEWAYS, and both are three-state rather than yes/no. `Removal confirmed?` 
 EVERY PATH THAT CHANGES `STAGING/` WRITES TO THE RENDER LOG, and the two removal paths write the record in the SAME COMMIT as the removal. A separate log push can fail alone and leave a preview that vanished with nothing saying why, which is the state bean `plj1` left the publish branch in for months.
 
 The single human step is the dispatch confirmation. Everything else is mechanical, which is what makes `build-pipeline` the right lane rather than a convenient one.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="strict"/>
+    </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_FeatureStaging">
       <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline">
         <bpmn:documentation>Runs all three entry points — stage, cleanup, cleanup-dispatch — as one actor because none of the work in any of them needs judgement; the one step that does, confirming a dispatch deletion, was carved out into Lane_Human rather than left here. Every path that changes `STAGING/` writes its render-log entry in the SAME commit as the change, because a log push that can fail on its own is exactly how a preview vanishes with nothing on the branch saying why.

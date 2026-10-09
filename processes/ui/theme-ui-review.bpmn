@@ -20,6 +20,9 @@ This process was post-MVP until then — started by "MVP accepted" and called fr
 WHY THE MOMENT MATTERS. Reviewed after a build, a finding is a defect in something shipped. Reviewed at ingestion, the same finding is a decision about what the assets WILL be, taken while it is still cheap. The question the review asks is unchanged; the object it asks it of moved upstream, and so did the cost of the answer.
 
 WHAT DID NOT MOVE. There is still no role-to-theme mapping — theme choice remains an authoring judgement, per note — so nothing here checks a binding. What gets reviewed is the ingested art in its design context.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="advisory"/>
+    </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_ThemeUIReview">
       <bpmn:lane id="Lane_Reviewer" name="Reviewer">
         <bpmn:documentation>The single point in this process where a person looks rather than a tool measures, reached only after all four agent passes are done — so what this lane judges is the ingested assets as a whole, in the design they are for — not any one axis in isolation. Its finding is the only thing that can send the process to A_RaiseFindings; a clean ingest, a passing accessibility check and a correct branding pass can each be true and still miss what only laying the assets out and looking catches.</bpmn:documentation>

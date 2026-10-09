@@ -12,6 +12,9 @@
   </bpmn:collaboration>
   <bpmn:process id="Process_CRDM_Signoff" name="CRDM Phase 5 — beans and sign-off" isExecutable="false">
     <bpmn:documentation>The approved requirements become work-plan items, the BA signs off, and the branch is announced on the issue. The announcement is on the single edge into delivery, so the three loops back into implementation do not re-announce.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="strict"/>
+    </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_CRDM_Signoff">
       <bpmn:lane id="Lane_BA" name="BA / Feature Requestor">
         <bpmn:documentation>Makes two decisions of different character here: BA_Signoff approves what was drafted, and BA_ChooseKg commits it — or explicitly does not — to a knowledge-graph destination, where NONE is a legitimate answer rather than a refusal to answer. Only this lane may decide that a requirement is fully carried by the code and becomes a commit and nothing else; an agent that decided so on its own would be placing a node in somebody else's graph.</bpmn:documentation>
