@@ -125,6 +125,10 @@ export interface BeanNode {
   declaredBlockedBy?: string[];
   /** Front-matter `tags:`, or `[]`. Optional for the same reason. */
   tags?: string[];
+  /**
+   * Linked GitHub issue (e.g. 730, "#730", or URL), queryable from front matter.
+   */
+  issue?: number | string;
 }
 
 /**
@@ -400,6 +404,10 @@ function beansIn(dir: string, root: string): BeanNode[] {
     // A file with no front matter is not a bean. `beans check` owns that.
     if (!m) continue;
     const fm = m[1]!;
+    const rawIssue = field(fm, "issue");
+    const issue = rawIssue
+      ? (/^\d+$/.test(rawIssue) ? Number.parseInt(rawIssue, 10) : rawIssue)
+      : undefined;
     out.push({
       id: (/^#\s*(\S+)/m.exec(fm) ?? [, name.replace(/\.md$/, "")])[1]!,
       file: relative(root, join(dir, name)),
@@ -414,6 +422,7 @@ function beansIn(dir: string, root: string): BeanNode[] {
       body: m[2]!,
       declaredBlockedBy: sequence(fm, "blocked_by"),
       tags: sequence(fm, "tags"),
+      ...(issue !== undefined ? { issue } : {}),
     });
   }
   return out.sort((a, b) => a.id.localeCompare(b.id));
