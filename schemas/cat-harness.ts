@@ -4953,13 +4953,32 @@ export function instanceDirectories(
   return [...authored, ...inward];
 }
 
+/**
+ * Whether a repository-scoped entry's store belongs to the instance that
+ * declared it: the repository root is that instance, or declares none.
+ */
+function repositoryIsUnowned(
+  d: ResolvedDirectory,
+  rootLink: { root?: string } | undefined,
+  registry: GraphTypologyRegistry,
+): boolean {
+  const depth = d.path.split("/").filter((s) => s !== "" && s !== ".").length;
+  const repoRoot = resolve(d.absPath, ...Array<string>(depth).fill(".."));
+  if (rootLink?.root !== undefined && resolve(rootLink.root) === repoRoot) return true;
+  try {
+    return readDeclaration(repoRoot, registry) === undefined;
+  } catch {
+    return false; // unreadable is `check:harness-dirs`'s to report, and is not "undeclared"
+  }
+}
+
 /** Add `d`'s from-within instance directories to `byId`, recursively. */
 function promoteFromWithin(
   d: ResolvedDirectory,
   byId: Map<string, ResolvedDirectory>,
   registry: GraphTypologyRegistry,
   seen: Set<string>,
-  rootLink: { name: string; own?: boolean } | undefined,
+  rootLink: { name: string; root?: string; own?: boolean } | undefined,
 ): void {
   if (seen.has(d.absPath)) return;
   seen.add(d.absPath);
@@ -4968,7 +4987,14 @@ function promoteFromWithin(
   // arrow), and what that directory declares from within belongs to ITS owner.
   // Following it made cat-harness resolve core's `voices/` as its own the
   // moment core declared it from within (measured 2026-09-30).
-  if (d.scope === "repository") return;
+  //
+  // Unless nobody else owns it. When the repository's root IS this instance,
+  // or declares no instance at all (the index checkout, owner 2026-10-08:
+  // "folio-asst should not need folio-assistant declared at all"), the store
+  // this entry names has no other owner to defer to. Returning here then left
+  // `todos/todos.json`'s `items` and `beans/beans.json`'s `defs` attributed to
+  // `(root)` — an instance that does not exist (measured 2026-10-09).
+  if (d.scope === "repository" && !(d.own === true && repositoryIsUnowned(d, rootLink, registry))) return;
   const files = d.graphTypologies
     .map((g) => registry.get(g)?.declarationFile)
     .filter((f): f is string => typeof f === "string");
