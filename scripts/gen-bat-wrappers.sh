@@ -21,7 +21,16 @@
 #   docker-latex-build/build-pdf.sh, smoke-test-libraries.sh (qou-specific leftovers)
 set -euo pipefail
 
-REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+INSTANCE_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+REPO_ROOT="$(cd "$INSTANCE_ROOT/.." && pwd)"
+cur="$REPO_ROOT"
+while [ "$cur" != "/" ] && [ "$cur" != "." ]; do
+  if [ -f "$cur/index.config.json" ]; then
+    REPO_ROOT="$cur"
+    break
+  fi
+  cur="$(dirname "$cur")"
+done
 cd "$REPO_ROOT"
 
 WRAPPED=(
@@ -39,6 +48,7 @@ WRAPPED=(
   cat-harness/scripts/google-drive-mcp.sh
   cat-harness/scripts/greeting-task-selection.sh
   cat-harness/scripts/install-beans.sh
+  cat-harness/scripts/install-bun.sh
   cat-harness/scripts/install-lean-atlas.sh
   cat-harness/scripts/lake-cache-fetch.sh
   cat-harness/scripts/lake-cache.sh
@@ -92,8 +102,12 @@ render() {
 check="${1:-}"
 stale=0
 for sh in "${WRAPPED[@]}"; do
-  [ -f "$sh" ] || { echo "ERROR: $sh does not exist — remove it from WRAPPED" >&2; exit 2; }
-  bat="${sh%.sh}.bat"
+  target_sh="$sh"
+  if [ ! -f "$target_sh" ] && [ -f "$INSTANCE_ROOT/${sh#cat-harness/}" ]; then
+    target_sh="$INSTANCE_ROOT/${sh#cat-harness/}"
+  fi
+  [ -f "$target_sh" ] || { echo "ERROR: $sh does not exist — remove it from WRAPPED" >&2; exit 2; }
+  bat="${target_sh%.sh}.bat"
   if [ "$check" = "--check" ]; then
     if [ ! -f "$bat" ] || ! cmp -s <(render "$sh") "$bat"; then
       echo "STALE: $bat"; stale=1
