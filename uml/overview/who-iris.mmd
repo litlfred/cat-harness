@@ -413,6 +413,11 @@ classDiagram
       total [1] number
     }
   }
+  namespace who_iris__folio {
+    class n_who_iris_folio_folio["folio: no node schema"] {
+      <<could not determine>>
+    }
+  }
   namespace who_iris__voices {
     class who_iris_voices_Source["Source"] {
       <<json: VoiceProfileSchema>>
@@ -533,6 +538,8 @@ classDiagram
   cssClass "n_who_iris_id_lookup_code" fa_uml_kind_code
   cssClass "n_who_iris_id_lookup_code" fa_uml_undetermined
   cssClass "who_iris_qa_qa_results_v1" fa_uml_kind_qa
+  cssClass "n_who_iris_folio_folio" fa_uml_kind_folio
+  cssClass "n_who_iris_folio_folio" fa_uml_undetermined
   who_iris_voices_VoiceProfile *-- "1..*" who_iris_voices_Source : sources
   who_iris_voices_Rule *-- "0..*" who_iris_voices_Pattern : patterns
   who_iris_voices_Rule *-- "0..*" who_iris_voices_Terminology : terminology

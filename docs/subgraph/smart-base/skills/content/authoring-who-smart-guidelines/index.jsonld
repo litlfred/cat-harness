@@ -63,9 +63,9 @@
       "@type": "bootstrap:Skill",
       "name": "l2-dak-authoring",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/10c3580d3551d1489d640332df0301272df347253ce3d4414f7401f4de812a48",
-        "bytes": 3626,
-        "sha256": "10c3580d3551d1489d640332df0301272df347253ce3d4414f7401f4de812a48"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/697a90966d33d4c6aaa315a1d4f4bc35587d553683aad98df5642e2d6eed8613",
+        "bytes": 3780,
+        "sha256": "697a90966d33d4c6aaa315a1d4f4bc35587d553683aad98df5642e2d6eed8613"
       },
       "title": "l2-dak-authoring"
     },

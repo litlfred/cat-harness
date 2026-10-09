@@ -14,7 +14,7 @@ parent: Skill instructions
 # l3-fhir-authoring
 
 > Skill id: `l3-fhir-authoring` · Package: `fhir-ig-authoring` ·
-> Named by `l3-fhir-pipeline.bpmn` (**Map L2 → L3**, **Author FSH profiles**,
+> Named by `l3-fhir-pipeline.bpmn` (**Author FSH profiles**,
 > **SUSHI compile → FHIR JSON**) and `ig-incremental-build.bpmn`
 > (**SUSHI on the restricted tank**).
 
@@ -38,11 +38,12 @@ DAK, using FHIR Shorthand and SUSHI.
 `sourceModel` being required is the design: **L3 is derived, not authored from
 scratch.** An L3 artefact with no source behind it is a profile nobody can
 review against what it was meant to encode. Which source is the layer above's
-to say: a WHO SMART guideline passes its DAK's L2 content, and the WHO L3
-pipeline (`l3-fhir-pipeline.bpmn`, "Map L2 → L3") binds `l2-dak-authoring`
-beside this skill. This skill names no DAK, because `fhir-harness` may not
-(`fhir-harness/AGENTS.md`). Until stage D of the smart-* separation (#1767)
-the input was `l2Source` and the skill `dependsOn` `l2-dak-authoring`.
+to say, in its own process: that process maps its model and then CALLS
+`l3-fhir-pipeline.bpmn` (`Process_L3Fhir`), which starts at "Source model
+ready". Neither this skill nor that pipeline names the model, because
+`fhir-harness` may not (`fhir-harness/AGENTS.md`). The mapping step lived in
+`l3-fhir-pipeline.bpmn` itself until 2026-10-09 (bean `veiu`). Until stage D of the smart-* separation (#1767)
+the input was `l2Source` and the skill depended on an overlay's authoring skill.
 
 CQL — clinical decision logic — is part of this skill, not a separate one; the
 input schema already carries `cql` among its artefact types.
@@ -62,14 +63,13 @@ step **was not run** — never that it passed.
 
 ## Deriving rather than retyping
 
-`smart-base` carries the transforms in the render direction — `bpmn2fsh` turns
-an authored business process into FSH; `dmn2html` renders decision tables. Use
-them rather than hand-writing what a transform already emits, and read
-`smart-base-tools` first for the two behaviours that surprise people: one BPMN
-can emit hundreds of files, and **paths collide across inputs** (measured on
-`smart-dak-immz`: 313 emitted files landing at 201 distinct paths). A collision
-is either a duplicate input to remove or two processes legitimately
-contributing the same actor — decide, do not let it overwrite silently.
+When the layer above carries transforms in the render direction — from its own
+model to FSH, or to rendered tables — use them rather than hand-writing what a
+transform already emits, and read that layer's own tooling skill for how they
+behave. Whatever they emit is still FSH this skill owns: a collision between
+two emitted files is a finding to decide (a duplicate input, or two sources
+legitimately contributing the same thing), never one to let overwrite
+silently.
 
 ## Validate before you publish
 
@@ -90,5 +90,6 @@ diagram is what the release is cut from.
 | process | step(s) that name it |
 |---|---|
 | [Incremental IG build](../../processes/ig-incremental-build.html) | SUSHI on the restricted tank |
-| [L3 FHIR IG pipeline](../../processes/l3-fhir-pipeline.html) | Map L2 → L3; Author FSH profiles; SUSHI compile → FHIR JSON |
+| [L3 FHIR IG pipeline](../../processes/l3-fhir-pipeline.html) | Author FSH profiles; SUSHI compile → FHIR JSON |
+| [L2 DAK to L3 FHIR IG](../../processes/dak-l3-ig.html) | Map L2 → L3; L3 FHIR IG pipeline (fhir-harness) (calls a sub-process) |
 

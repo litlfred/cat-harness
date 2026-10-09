@@ -57,14 +57,14 @@
               "hasInstructions": true,
               "inSubgraph": "https://litlfred.github.io/folio-assistant/fhir-harness/fhir-harness.jsonld#directory/fhir-ig-skills",
               "inputSchema": "https://litlfred.github.io/folio-assistant/fhir-harness/schema/skills/ig-publication/input.schema.json",
-              "instructionLines": 118,
+              "instructionLines": 117,
               "instructionsPath": "skills/content/fhir-ig-authoring/ig-publication.md",
               "name": "ig-publication",
               "outputSchema": "https://litlfred.github.io/folio-assistant/fhir-harness/schema/skills/ig-publication/output.schema.json",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/1da6588ced1c9bd4931d948318384613c5d84934e02a6184c5e43f6ef50e9006",
-                "bytes": 5419,
-                "sha256": "1da6588ced1c9bd4931d948318384613c5d84934e02a6184c5e43f6ef50e9006"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/09c68d765b2dcf03642dd6e6787efd8c49382f21455ca9c569585e611224d60c",
+                "bytes": 5434,
+                "sha256": "09c68d765b2dcf03642dd6e6787efd8c49382f21455ca9c569585e611224d60c"
               },
               "title": "ig-publication"
             },
@@ -81,9 +81,9 @@
               "name": "l3-fhir-authoring",
               "outputSchema": "https://litlfred.github.io/folio-assistant/fhir-harness/schema/skills/l3-fhir-authoring/output.schema.json",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7d89e99802ee7309436e39bb1e7c6581d70c02efb13d33144f7c7cae0e07aab6",
-                "bytes": 3525,
-                "sha256": "7d89e99802ee7309436e39bb1e7c6581d70c02efb13d33144f7c7cae0e07aab6"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ecb07f7eb769486d52d022caf2b01e71c117d5be8cbfe17ca5ec873ed51a907c",
+                "bytes": 3481,
+                "sha256": "ecb07f7eb769486d52d022caf2b01e71c117d5be8cbfe17ca5ec873ed51a907c"
               },
               "title": "l3-fhir-authoring"
             },
@@ -100,9 +100,9 @@
               "name": "terminology-management",
               "outputSchema": "https://litlfred.github.io/folio-assistant/fhir-harness/schema/skills/terminology-management/output.schema.json",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f93df935dcdea4a4b3775901d7e5e957be6e8768628b83f405850211d4afb5a4",
-                "bytes": 2798,
-                "sha256": "f93df935dcdea4a4b3775901d7e5e957be6e8768628b83f405850211d4afb5a4"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6ccc2e192a89a0c02016b73cd84104590fb575d346551a8ba634f0339b1ebebb",
+                "bytes": 2765,
+                "sha256": "6ccc2e192a89a0c02016b73cd84104590fb575d346551a8ba634f0339b1ebebb"
               },
               "title": "terminology-management"
             }
@@ -233,13 +233,13 @@
           "hasIOContract": false,
           "hasInstructions": true,
           "inSubgraph": "https://litlfred.github.io/folio-assistant/fhir-harness/fhir-harness.jsonld#directory/fhir-ig-skills",
-          "instructionLines": 316,
+          "instructionLines": 332,
           "instructionsPath": "skills/fhir-ig-base/ig-build-pipeline.md",
           "name": "ig-build-pipeline",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/885c8fdbb2b74687bbd0d852ffeedcce8fea44aca6aa8159df3153d91c1a8b59",
-            "bytes": 16395,
-            "sha256": "885c8fdbb2b74687bbd0d852ffeedcce8fea44aca6aa8159df3153d91c1a8b59"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b93b63015242d1957714267698f4c68c7e89c03cde70a569eb36832fa83f8822",
+            "bytes": 17411,
+            "sha256": "b93b63015242d1957714267698f4c68c7e89c03cde70a569eb36832fa83f8822"
           },
           "title": "ig-build-pipeline"
         },
@@ -255,9 +255,9 @@
           "instructionsPath": "skills/fhir-ig-base/ig-publisher-fork.md",
           "name": "ig-publisher-fork",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/1f0ea3ce4b76fb485e13c9477d1ddf4254cf86a835a52f3a1dccddd63a0067c3",
-            "bytes": 10797,
-            "sha256": "1f0ea3ce4b76fb485e13c9477d1ddf4254cf86a835a52f3a1dccddd63a0067c3"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9fce03ace9dafe81d11a402ed8c2975b07a514b7efffa9890bf5cc45ac2dd9c6",
+            "bytes": 10765,
+            "sha256": "9fce03ace9dafe81d11a402ed8c2975b07a514b7efffa9890bf5cc45ac2dd9c6"
           },
           "title": "ig-publisher-fork"
         },
@@ -287,13 +287,13 @@
           "hasIOContract": false,
           "hasInstructions": true,
           "inSubgraph": "https://litlfred.github.io/folio-assistant/fhir-harness/fhir-harness.jsonld#directory/fhir-ig-skills",
-          "instructionLines": 112,
+          "instructionLines": 111,
           "instructionsPath": "skills/fhir-ig-base/ig-render-jekyll.md",
           "name": "ig-render-jekyll",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/fa4806b95d0737772da9a1ac428252ef46a89944863230e249b85e0a893d5368",
-            "bytes": 5210,
-            "sha256": "fa4806b95d0737772da9a1ac428252ef46a89944863230e249b85e0a893d5368"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0b3a5195d63f7362151458f4e7af4356efd6c1c491271442a76f05372a2110a8",
+            "bytes": 5017,
+            "sha256": "0b3a5195d63f7362151458f4e7af4356efd6c1c491271442a76f05372a2110a8"
           },
           "title": "ig-render-jekyll"
         },
