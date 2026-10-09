@@ -53,13 +53,22 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
-import { declarationPathIn } from "../schemas/cat-harness.js";
+import { declarationPathIn, instanceRootFor } from "../schemas/cat-harness.js";
 import { frozenSubtreeNote, fshGutsDirectory, withoutFrozenSubtrees } from "../schemas/fsh-guts.js";
 import { BranchStoreUsageError, exitUnlessMounted, readMarker } from "./branch-store.js";
 import { baseDocsDir } from "./compose-docs.js";
 import { publishPlan } from "./derive-at-publish.js";
 
-const REPO = resolve(import.meta.dir, "..", "..");
+function resolveRepoRoot(): string {
+  const dir = import.meta.dir;
+  const idx = dir.indexOf("/.claude/worktrees");
+  if (idx !== -1) {
+    return dir.slice(0, idx);
+  }
+  return resolve(dir, "..", "..");
+}
+
+const REPO = resolveRepoRoot();
 const TAG = "folio-fsh-guts/v1";
 /** The graph typology this renders — the one literal, and it is a KIND, not a path. */
 const KIND = "fsh-guts";
@@ -98,7 +107,8 @@ export function gutsDir(repo = REPO): string | undefined {
 
 /** The declarations that may hold the trashcan: the checkout's root instance, then the platform. */
 function declarers(repo: string): string[] {
-  return [repo, join(repo, "cat-harness")];
+  const inst = instanceRootFor(import.meta.dir);
+  return [repo, join(repo, "cat-harness"), inst];
 }
 
 /**
@@ -129,6 +139,8 @@ export function pageRelPath(repo = REPO): string | undefined {
     for (const one of Array.isArray(v) ? v : [v]) {
       const ref = typeof one === "string" ? one : (one as { ref?: string } | undefined)?.ref;
       if (!ref) continue;
+      const m = /^(?:cat-harness\/)?docs\/(.+)$/.exec(ref);
+      if (m) return m[1];
       const rel = relative(baseDocsDir(repo), resolve(repo, ref));
       // Outside the base docs layer is not a page this generator may write.
       if (rel.startsWith("..") || rel === "") return undefined;
@@ -274,6 +286,11 @@ function cell(v: string): string {
   return v.replace(/\|/g, "\\|").replace(/\r?\n/g, " ");
 }
 
+/** Escape an attribute value so quotes cannot break the tag. */
+function escAttr(v: string): string {
+  return v.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/\|/g, "\\|");
+}
+
 export function page(files: GutsFile[], blobBase: string): string {
   const counts: Record<DeclState, number> = { declared: 0, sidecar: 0, undeclared: 0 };
   for (const f of files) counts[f.state]++;
@@ -298,6 +315,10 @@ export function page(files: GutsFile[], blobBase: string): string {
     "",
     `**${files.length} file(s)** across ${groups.length} group(s). Each links to the file itself —`,
     "this page indexes what is kept, it does not republish it.",
+    "",
+    "> **Count relationship:** This page indexes all tracked files across the repository's trashcan.",
+    "> The interactive viewer (▦ Actions → Settings → Discarded or navigation bar fish icon) inspects",
+    `> the declared items from the \`@graph\` export (${counts.declared} declared nodes) plus any stickies discarded locally in this browser.`,
     "",
     "## Does each file declare itself?",
     "",
@@ -330,8 +351,9 @@ export function page(files: GutsFile[], blobBase: string): string {
     body.push("| file | what it is | declares itself |", "|---|---|---|");
     for (const f of inGroup) {
       const name = f.rel.slice(f.group === "." ? 0 : f.group.length + 1);
+      const link = `<a href="${blobBase}/${f.rel}" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="${escAttr(name)} (opens on GitHub)">${cell(name)} ↗</a>`;
       body.push(
-        `| [${cell(name)}](${blobBase}/${f.rel}) | ${cell(f.title ?? "—")} | ${BADGE[f.state]} |`,
+        `| ${link} | ${cell(f.title ?? "—")} | ${BADGE[f.state]} |`,
       );
     }
     body.push("");
@@ -379,9 +401,24 @@ if (import.meta.main) {
     console.error(`::error::gen-fsh-guts-viz: no visualiser declared for graph typology '${KIND}'`);
     process.exit(1);
   }
-  const out = join(baseDocsDir(REPO), PAGE);
+  const INSTANCE_ROOT = instanceRootFor(import.meta.dir);
+  const docsRoot = existsSync(join(INSTANCE_ROOT, "docs"))
+    ? join(INSTANCE_ROOT, "docs")
+    : baseDocsDir(REPO);
+  const out = join(docsRoot, PAGE);
 
-  if (check && publishPlan(REPO).some((a) => join(REPO, a.artefact) === out)) {
+  let isPublishArtefact = false;
+  try {
+    isPublishArtefact = publishPlan(REPO).some((a) => join(REPO, a.artefact) === out);
+  } catch {
+    try {
+      isPublishArtefact = publishPlan(INSTANCE_ROOT).some((a) => join(INSTANCE_ROOT, a.artefact) === out);
+    } catch {
+      isPublishArtefact = false;
+    }
+  }
+
+  if (check && isPublishArtefact) {
     // Built at publish (bean 0b8c, #2230): the page is derived from a graph
     // kept on a branch, so there is no committed copy to compare against —
     // a comparison would go red on main and every PR the moment somebody
