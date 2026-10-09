@@ -694,9 +694,11 @@ test("content reaches the DOM as TEXT, never as markup", async ({ page }) => {
   // ships to gh-pages, a STATIC host: there is no request-time anything — no
   // sanitiser, no template filter, no server to reject a payload before it
   // reaches a browser. Escaping at render is not defence in depth here, it is
-  // the whole depth. On a local-server topology the same page would have a
-  // second chance; it must never come to rely on one, because the same code
-  // serves both (bean `81vy`, under the deployment epic `5a3l`).
+  // the whole depth: gh-pages has no request-time sanitisation, so escaping at
+  // render is the required line of defence (XSS defence). On a local-server
+  // topology the same page would have a second chance; it must never come to
+  // rely on one, because the same code serves both (bean `81vy`, under the
+  // deployment epic `5a3l`).
   //
   // Recorded because a rule enforced without its reason is one somebody
   // eventually "simplifies": a reader who finds no stated justification
