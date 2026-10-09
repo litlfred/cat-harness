@@ -896,9 +896,18 @@ function main(): number {
   // declaration names — the `dh4f` defect, committed by the script whose whole
   // subject is coverage.
   if (!check) {
+    // Bean `loxz`: an unmounted tree must not leave a committed sidecar that
+    // drops unmounted graphs as `undetermined`. Refuse to write.
+    if (undet.length > 0) {
+      console.error(
+        `\nRefusing to write audit-coverage.qa-results.json: ${undet.length} declared graph(s) are undetermined (${undet.map((u) => u.kind).join(", ")}). ` +
+          "Mount required remotes before generating coverage.",
+      );
+      return 1;
+    }
     const out = writeQaResult(ROOT, "audit-coverage", result);
     console.log(`\n· ${relative(REPO, out)} — written.`);
-    if (strict && (unaudited.length > 0 || typedOnly.length > 0 || undet.length > 0)) return 1;
+    if (strict && (unaudited.length > 0 || typedOnly.length > 0)) return 1;
     if (requireAll && undeclared.length > 0) return 1;
     return 0;
   }

@@ -1189,6 +1189,20 @@ type ParsedDeclaration = Record<string, unknown> & { name?: string; directories?
 /** Every instance declaration at `repo`'s top level, parsed — an unparseable one is skipped, since `kg:schema:check` owns it. */
 function topLevelDeclarations(repo: string): { dirName: string; dir: string; decl: ParsedDeclaration }[] {
   const out: { dirName: string; dir: string; decl: ParsedDeclaration }[] = [];
+  // THE CHECKOUT ROOT'S OWN DECLARATION, when the repository IS an instance
+  // (who-iris after its cutover, bean g8jp; the owner, 2026-10-09: "index.html
+  // should follow cat-harness and folio-asst"). In the monorepo every instance
+  // was a subdirectory and the root declared nothing, so the scan below found
+  // them all; a separated instance's own repository has its declaration at
+  // the root, and without this its replica and docs were mounted nowhere.
+  const rootDecl = declarationPathIn(repo);
+  if (rootDecl !== undefined && existsSync(rootDecl)) {
+    try {
+      out.push({ dirName: posix.basename(resolve(repo)), dir: repo, decl: JSON.parse(readFileSync(rootDecl, "utf-8")) });
+    } catch {
+      // Unparseable: `kg:schema:check`'s finding, as for the subdirectories below.
+    }
+  }
   for (const e of readdirSync(repo, { withFileTypes: true })) {
     if (!e.isDirectory() || e.name.startsWith(".") || e.name === "node_modules") continue;
     const decl = declarationPathIn(join(repo, e.name));

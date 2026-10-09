@@ -85,6 +85,8 @@ export interface ScriptIO {
   writer?: string;
   /** A merge train runs this check, and its writer when red, even without `regen`. */
   afterMerge?: boolean;
+  /** True when the check is a judge/baseline verdict against qa-reports rather than an artefact staleness check. */
+  judge?: boolean;
 }
 
 /** Writes nothing — measured with `strace` (see the module comment). Not skippable. */
@@ -118,8 +120,8 @@ const OWN_TASK_IO: Readonly<Record<string, ScriptIO>> = {
   "processes:viz:check": TREE_READER, //            19 s
   "external-schemas:viz:check": TREE_READER, //     17 s — reads `git ls-files`, which the tree digest covers
   "kg:detangle:check": TREE_READER, //              15 s — writes only when not checking
-  "audit:coverage:require-all": TREE_READER, //     14 s — `writeQaResult` only without `--check`
-  "audit:coverage:strict": TREE_READER, //          14 s
+  "audit:coverage:require-all": { ...TREE_READER, judge: true }, //     14 s — `writeQaResult` only without `--check`
+  "audit:coverage:strict": { ...TREE_READER, judge: true }, //          14 s
   "lsi:viz:check": TREE_READER, //                  12 s
   "check:prov-qaqc": TREE_READER, //                12 s — exits before its write loop
   // ── read-only by measurement: no write under `strace` on a clean tree ──

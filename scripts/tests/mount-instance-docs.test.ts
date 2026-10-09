@@ -249,6 +249,30 @@ describe("which kind answers at the instance's own route", () => {
     expect(withRoutes(found, igSiteRoots(repo)).candidates.map((c) => c.route)).toEqual(["openapi/st"]);
   });
 
+  it("an instance declared at the REPOSITORY ROOT is mounted too — a separated instance's own site", () => {
+    // who-iris's shape after its cutover (bean g8jp): the declaration sits at the
+    // checkout root, not in a subdirectory, so the subdirectory scan alone found
+    // nothing and the replica was published nowhere.
+    const repo = mkdtempSync(join(tmpdir(), "root-instance-"));
+    for (const d of ["site", "docs"]) {
+      mkdirSync(join(repo, d), { recursive: true });
+      writeFileSync(join(repo, d, "index.html"), "<html><body></body></html>");
+    }
+    writeFileSync(
+      join(repo, "wi.json"),
+      JSON.stringify({
+        name: "wi",
+        directories: [
+          { id: "wi-site", path: "site/", graphTypologies: ["docs"], instanceRoot: true },
+          { id: "wi-docs", path: "docs/", graphTypologies: ["docs"] },
+        ],
+      }),
+    );
+    const found = mountable(repo).filter((m) => m.name === "wi");
+    expect(found.length).toBe(2);
+    expect(withRoutes(found).candidates.map((c) => c.route).sort()).toEqual(["docs/wi", "wi"]);
+  });
+
   it("one instance being undetermined does not implicate another", () => {
     const { undetermined } = withRoutes([
       m("x", "docs"),

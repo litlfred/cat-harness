@@ -237,14 +237,9 @@ export function writerFor(scripts: Record<string, string>, check: string): strin
  * - `translate-bpmn` with no flag only REPORTS; the writing mode is
  *   `--extract`, exposed as its own script so the writer stays a name read
  *   from `package.json` (a writer renamed away still comes back `no-writer`).
- * - the two audit-coverage gates are not `:check`-named at all, so the
- *   convention never offered them; `audit:coverage` rewrites the sidecar both
- *   compare against.
  */
 const OWN_WRITER_OVERRIDES: Readonly<Record<string, string>> = {
   "translate-bpmn:check": "translate-bpmn:extract",
-  "audit:coverage:strict": "audit:coverage",
-  "audit:coverage:require-all": "audit:coverage",
   // Bean `uju6`: a `check:X` gate is `check:`-PREFIXED, so the convention never
   // offered it and regen skipped it outright. It did not even count it as
   // `no-writer`. #1550 went red on this one while regen reported "63 current,
@@ -365,6 +360,13 @@ export const NO_WRITER: Readonly<Record<string, string>> = {
   //   the first is not asking it at all.
   "check:viewer-nav": "its writer re-baselines, which would hide the regression the gate exists to report",
   "check:state-on-main": "its --update writes the ratchet the gate reads; repairing it would RAISE a baseline that may only shrink",
+  // Bean `loxz`: the two audit-coverage gates are judge-mode baseline checks
+  // against qa-reports, not staleness checks over `audit-coverage.qa-results.json`.
+  // Pairing them with `audit:coverage` caused `regen` to treat exit 0 from judge
+  // mode as evidence that the on-disk sidecar was current, while the writer
+  // produced different output.
+  "audit:coverage:strict": "judge-mode baseline check against qa-reports, not an artefact staleness check",
+  "audit:coverage:require-all": "judge-mode baseline check against qa-reports, not an artefact staleness check",
 };
 
 /**
@@ -417,7 +419,33 @@ export function maxPassesFromArgv(argv: readonly string[], fallback = DEFAULT_MA
   return fallback;
 }
 
-export type Outcome = "current" | "regenerated" | "unrepaired" | "no-writer" | "writer-failed" | "no-browser";
+export type Outcome = "current" | "regenerated" | "unrepaired" | "no-writer" | "writer-failed" | "no-browser" | "judged";
+
+/**
+ * Checks whose execution runs in judge mode against a baseline (e.g. via
+ * `judgeQaResult`), rather than comparing an on-disk artefact against fresh
+ * generator output.
+ *
+ * Such a check passing asserts only that no new findings exist against the
+ * baseline; it does NOT assert that the artefact on disk matches what a writer
+ * would produce. Counting it as `current` is the `1xhc` defect (bean `loxz`).
+ */
+export const JUDGE_CHECKS: ReadonlySet<string> = new Set([
+  "audit:coverage:strict",
+  "audit:coverage:require-all",
+  "audit:coverage:check",
+  "audit:reachability:check",
+  "audit:reachability:strict",
+  "check:term-mapping",
+  "kg:export:check",
+  "root-scan-census:check",
+]);
+
+/** Whether a check or pair is a judge/baseline verdict rather than an artefact staleness check. */
+export function isJudgeCheck(check: string, pair?: Pair): boolean {
+  if (pair?.judge === true || TASK_IO[check]?.judge === true) return true;
+  return JUDGE_CHECKS.has(check);
+}
 
 export interface Result {
   check: string;
@@ -455,6 +483,11 @@ export interface Pair {
    * it be skipped.
    */
   io?: PairIO | undefined;
+  /**
+   * True when the check is a judge/baseline verdict against qa-reports rather
+   * than an artefact staleness check.
+   */
+  judge?: boolean;
 }
 
 /** Every repairable gate in the set, in workflow order, deduplicated. */
@@ -535,10 +568,11 @@ export async function regenPass(
   const gate = new ReadWriteGate();
   const askOne = async (pair: Pair, index: number): Promise<{ result: Result; why: string | undefined; ms: number }> => {
     const { check, writer } = pair;
+    const isJudge = isJudgeCheck(check, pair);
     const t0 = performance.now();
     const decision = o.skip?.(pair);
     if (decision?.skip === true) {
-      return { result: { check, writer, outcome: "current", skipped: true }, why: decision.why, ms: 0 };
+      return { result: { check, writer, outcome: isJudge ? "judged" : "current", skipped: true }, why: decision.why, ms: 0 };
     }
     const fold = folds.get(check);
     const why =
@@ -553,8 +587,8 @@ export async function regenPass(
     });
     // A folded check runs its residual in its place, or nothing at all.
     const ask = fold === undefined ? check : fold.residual;
-    if (ask === undefined) return done({ check, writer, outcome: "current" });
-    if (await gate.read(async () => runner(ask))) return done({ check, writer, outcome: "current" });
+    if (ask === undefined) return done({ check, writer, outcome: isJudge ? "judged" : "current" });
+    if (await gate.read(async () => runner(ask))) return done({ check, writer, outcome: isJudge ? "judged" : "current" });
     if (writer === undefined) return done({ check, outcome: "no-writer" });
     if (o.dryRun) return done({ check, writer, outcome: "regenerated" });
     return gate.write(index, async () => {
@@ -656,7 +690,8 @@ export async function regenToFixpoint(
       // result says so (`hashesToRecord` will not record a hash for it).
       // Asked in an earlier pass: that answer stands — nothing it reads moved.
       if (!final.has(pair.check)) {
-        final.set(pair.check, { check: pair.check, writer: pair.writer, outcome: "current", skipped: true, assumed: true });
+        const isJudge = isJudgeCheck(pair.check, pair);
+        final.set(pair.check, { check: pair.check, writer: pair.writer, outcome: isJudge ? "judged" : "current", skipped: true, assumed: true });
       }
     }
     const measure = opts.narrow?.begin();
@@ -664,7 +699,7 @@ export async function regenToFixpoint(
     lastChange = measure === undefined ? undefined : measure();
     for (const r of results) {
       const prev = final.get(r.check);
-      final.set(r.check, prev?.outcome === "regenerated" && r.outcome === "current" ? prev : r);
+      final.set(r.check, prev?.outcome === "regenerated" && (r.outcome === "current" || r.outcome === "judged") ? prev : r);
     }
     if (writerRan.length === 0) {
       settled = true;
@@ -743,9 +778,9 @@ export type ExitReason = "dry-run" | "clean" | "not-settled" | "not-staleness";
  * why — a hand-kept list of failures is a list that forgets the next one, and
  * forgetting here means exiting 0.
  */
-const CLEAN_OUTCOMES = new Set<Outcome>(["current", "regenerated"]);
+const CLEAN_OUTCOMES = new Set<Outcome>(["current", "regenerated", "judged"]);
 const NOT_STALENESS: ReadonlySet<Outcome> = new Set<Outcome>(
-  (["current", "regenerated", "unrepaired", "no-writer", "writer-failed", "no-browser"] as const).filter(
+  (["current", "regenerated", "judged", "unrepaired", "no-writer", "writer-failed", "no-browser"] as const).filter(
     (o) => !CLEAN_OUTCOMES.has(o),
   ),
 );
@@ -1030,7 +1065,7 @@ export function hashesToRecord(
     // would launder that premise into a measurement. Leave whatever a real
     // run recorded (if it still matches, it still holds).
     if (r?.assumed === true) return;
-    const green = r !== undefined && (r.outcome === "current" || r.outcome === "regenerated");
+    const green = r !== undefined && (r.outcome === "current" || r.outcome === "regenerated" || r.outcome === "judged");
     if (!settled || !green) {
       delete next.pairs[key];
       if (fpCheck !== undefined && r?.derived !== true) delete checks[pair.check];
@@ -1250,7 +1285,9 @@ if (import.meta.main) {
       console.log(`  ${r.outcome === "regenerated" ? "·" : "✗"} ${r.check} is ${r.outcome} through ${r.coveredBy} (see its line)`);
       continue;
     }
-    if (r.outcome === "regenerated") {
+    if (r.outcome === "judged") {
+      console.log(`  ✓ ${r.check} passed (judge mode, wrote nothing)`);
+    } else if (r.outcome === "regenerated") {
       console.log(
         dryRun
           ? `  · ${r.check} is stale — would run \`bun run cat ${r.writer}\``
@@ -1286,6 +1323,7 @@ if (import.meta.main) {
   ];
   console.log(
     `\n${by("current").length} current${skipNotes.length > 0 ? ` (${skipNotes.join("; ")})` : ""}, ` +
+      `${by("judged").length > 0 ? `${by("judged").length} judged, ` : ""}` +
       `${by("regenerated").length} ` +
       `${dryRun ? "stale" : "regenerated"}, ${by("unrepaired").length} unrepaired, ` +
       `${by("no-writer").length} without a writer, ${by("writer-failed").length} with a failing writer, ` +

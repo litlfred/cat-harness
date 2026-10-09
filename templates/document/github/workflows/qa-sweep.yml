@@ -7,6 +7,11 @@
 # scripts it runs are the PLATFORM's, from the checkout at `{{assistant}}/`;
 # the blocks it sweeps are this folio's, under `{{folio}}/`.
 #
+# Derived QA verdicts live in the working copy under `test/results/` and are
+# stored on the orphan `qa-reports` branch (keyed by commit, published via
+# `qa-store.ts` / `qa:publish`). Authored judgements and reviewer attestations
+# remain on `main` in the `attestations` graph (`test/attestations/`).
+#
 # Triggers
 # ────────
 #   workflow_dispatch — manual run, and the only trigger as written.
@@ -22,7 +27,9 @@
 #     (`continue-on-error: true`) until the folio's critical baseline is
 #     zero; then remove it so the workflow gates merges.
 #   - Runs qa-staleness to surface blocks with stale or missing sidecars.
-#   - HARD-gates the shape of every committed `.qa.json` sidecar.
+#   - HARD-gates the shape of every .qa.json sidecar (derived verdicts in
+#     test/results/ for the qa-reports branch, and any legacy sidecars).
+#     Attestations on main follow the qa-attestations schema.
 
 name: QA sweep (all integration watchers)
 
@@ -99,8 +106,10 @@ jobs:
         run: |
           bun run "{{assistant}}/cat-harness/content/pipeline/qa-staleness.ts" "{{folio}}" --ci 2>&1 | tee /tmp/qa-staleness.log
 
-      # Schema sanity — every committed .qa.json must declare the v1
-      # schema marker. Strict (fails the workflow on shape drift).
+      # Schema sanity — every .qa.json sidecar must declare the v1 schema
+      # marker. Derived verdicts live in the working copy (test/results/) and are
+      # stored on the orphan qa-reports branch, while judgements (attestations)
+      # stay on main in test/attestations/. Strict (fails the workflow on shape drift).
       - name: Schema sanity (.qa.json files)
         run: |
           bad=0
@@ -123,6 +132,26 @@ jobs:
             exit 1
           fi
           echo "schema sanity: all $seen .qa.json file(s) pass"
+
+          # Attestation schema sanity on main (qa-attestations/v1)
+          if [ -d test/attestations ]; then
+            att_seen=0
+            att_bad=0
+            while IFS= read -r af; do
+              att_seen=$((att_seen+1))
+              if ! grep -q '"\$schema": "qa-attestations/v1"' "$af"; then
+                echo "::error file=$af::missing or wrong \$schema marker for attestation"
+                att_bad=$((att_bad+1))
+              fi
+            done < <(find test/attestations -name '*.attestations.json' -type f 2>/dev/null)
+            if [ "$att_bad" -gt 0 ]; then
+              echo "::error::$att_bad of $att_seen attestation file(s) failed schema sanity"
+              exit 1
+            fi
+            if [ "$att_seen" -gt 0 ]; then
+              echo "attestation schema sanity: all $att_seen attestation file(s) on main pass"
+            fi
+          fi
 
       - name: Upload sweep + staleness logs
         if: always()

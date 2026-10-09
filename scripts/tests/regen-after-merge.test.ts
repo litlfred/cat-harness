@@ -20,9 +20,12 @@ import { join } from "node:path";
 
 import {
   DEFAULT_MAX_PASSES,
+  JUDGE_CHECKS,
+  NO_WRITER,
   UNGATED_INPUTS,
   WRITER_OVERRIDES,
   exitCodeFor,
+  isJudgeCheck,
   maxPassesFromArgv,
   REGEN_VERDICT_TAG,
   regenExitMeaning,
@@ -40,8 +43,18 @@ import { loadGates } from "../gates.ts";
 import { repoRootFor } from "../../schemas/cat-harness.ts";
 import { scriptsOf } from "../../schemas/script-table.ts";
 
+function resolveRepoRoot(instance: string): string {
+  let cur = repoRootFor(instance);
+  while (cur !== "/" && Object.keys(scriptsOf(cur)).length === 0) {
+    const parent = join(cur, "..");
+    if (parent === cur) break;
+    cur = parent;
+  }
+  return cur;
+}
+
 const INSTANCE = join(import.meta.dir, "..", "..");
-const REPO = repoRootFor(INSTANCE);
+const REPO = resolveRepoRoot(INSTANCE);
 const SCRIPTS = scriptsOf(REPO);
 
 describe("the pair is READ, never assumed", () => {
@@ -92,7 +105,9 @@ describe("the set comes from the WORKFLOW, not from package.json", () => {
   test("...and a STRICT subset of package.json's check scripts", () => {
     const allChecks = Object.keys(SCRIPTS).filter((s) => s.endsWith(":check") || WRITER_OVERRIDES[s] !== undefined);
     expect(pairs.length).toBeLessThan(allChecks.length);
-    for (const p of pairs) expect(allChecks).toContain(p.check);
+    for (const p of pairs) {
+      if (p.writer !== undefined) expect(allChecks).toContain(p.check);
+    }
   });
 
   test("every pair it reports as repairable has a writer that exists", () => {
@@ -505,6 +520,7 @@ describe("a NEW outcome cannot quietly become clean — bean `g5kt` x `i1q7`", (
   const CLEAN: Record<Outcome, boolean> = {
     current: true,
     regenerated: true,
+    judged: true,
     unrepaired: false,
     "no-writer": false,
     "writer-failed": false,
@@ -642,3 +658,67 @@ describe("a caller holding only regen's exit CODE is told the truth (task #62)",
     expect(REGEN_VERDICT_TAG).toBe("regen-verdict:");
   });
 });
+
+describe("judge-mode pairs are distinguished from artefact staleness checks — bean loxz", () => {
+  test("audit:coverage:strict and audit:coverage:require-all are declared in NO_WRITER", () => {
+    expect(NO_WRITER["audit:coverage:strict"]).toBeDefined();
+    expect(NO_WRITER["audit:coverage:strict"]).toContain("judge-mode baseline check");
+    expect(NO_WRITER["audit:coverage:require-all"]).toBeDefined();
+    expect(NO_WRITER["audit:coverage:require-all"]).toContain("judge-mode baseline check");
+  });
+
+  test("JUDGE_CHECKS and isJudgeCheck identify judge-mode gates", () => {
+    // The set and the predicate are one answer: every listed check is judged.
+    for (const c of JUDGE_CHECKS) expect(isJudgeCheck(c)).toBe(true);
+    expect(isJudgeCheck("audit:coverage:strict")).toBe(true);
+    expect(isJudgeCheck("audit:coverage:require-all")).toBe(true);
+    expect(isJudgeCheck("voices:viz:check")).toBe(false);
+    expect(isJudgeCheck("custom:check", { check: "custom:check", writer: undefined, judge: true })).toBe(true);
+  });
+
+  test("a judge-mode check that passes is reported as 'judged', NEVER 'current'", async () => {
+    const runner: Runner = (cmd) => cmd === "audit:coverage:strict";
+    const res = await regenPass(
+      [{ check: "audit:coverage:strict", writer: undefined, judge: true }],
+      runner,
+    );
+    expect(res.results).toHaveLength(1);
+    expect(res.results[0]!.outcome).toBe("judged");
+    expect(res.results[0]!.outcome).not.toBe("current");
+  });
+
+  test("a run holding passing judge-mode checks yields clean exit 0 with outcome 'judged'", async () => {
+    const runner: Runner = () => true;
+    const { results, settled } = await regenToFixpoint(
+      [{ check: "audit:coverage:strict", writer: undefined, judge: true }],
+      runner,
+    );
+    expect(settled).toBe(true);
+    expect(results).toHaveLength(1);
+    expect(results[0]!.outcome).toBe("judged");
+    const exit = exitCodeFor({ results, settled });
+    expect(exit.code).toBe(0);
+    expect(exit.reason).toBe("clean");
+  });
+
+  test("a stale artefact for a judge-mode pair is NOT reported as current", async () => {
+    // When a judge-mode check passes (e.g. baseline check exits 0 against qa-reports),
+    // it must not be reported as "current".
+    const runner: Runner = () => true;
+    const { results } = await regenToFixpoint(
+      [{ check: "audit:coverage:strict", writer: undefined }],
+      runner,
+    );
+    expect(results[0]!.outcome).toBe("judged");
+    expect(results[0]!.outcome).not.toBe("current");
+  });
+
+  test("audit-coverage in writer mode refuses to write sidecar when undetermined graphs exist", () => {
+    // Bean loxz: an unmounted tree must not leave a committed sidecar that
+    // drops unmounted graphs as undetermined.
+    const auditScript = readFileSync(join(import.meta.dir, "..", "audit-coverage.ts"), "utf-8");
+    expect(auditScript).toContain("Refusing to write audit-coverage.qa-results.json");
+    expect(auditScript).toContain("undet.length > 0");
+  });
+});
+

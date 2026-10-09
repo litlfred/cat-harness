@@ -62,9 +62,10 @@
  * Exit codes: 0 up to date or written · 1 stale/absent under `--check`.
  */
 import { existsSync, mkdirSync, readFileSync, readdirSync, unlinkSync, writeFileSync } from "node:fs";
-import { join, relative, resolve } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
 
 import { checkoutRootFor, type ContentDirectory, findDeclarationFile, findInstanceRoot, instanceRootFor, readDeclaration, repoRootFor, rootForScope, declarationPathIn } from "../schemas/cat-harness.js";
+import { mountedInstanceRoots } from "../schemas/remote-mount.js";
 import {
   LandingStickySchema,
   stickyFromContribution,
@@ -407,6 +408,17 @@ export function contributingRoots(root: string): string[] {
     if (findDeclarationFile(repoRoot) !== undefined) nested.push(resolve(repoRoot));
   }
 
+  // MOUNTED INSTANCES: remote-mounted instances declared in index.lock.json
+  // (or mount lock). For a mounted instance, the sticky arrives with the mount.
+  for (const mRoot of mountedInstanceRoots(own).values()) {
+    if (resolve(mRoot) !== own && findDeclarationFile(mRoot) !== undefined) nested.push(resolve(mRoot));
+  }
+  if (repoRoot !== own) {
+    for (const mRoot of mountedInstanceRoots(repoRoot).values()) {
+      if (resolve(mRoot) !== own && findDeclarationFile(mRoot) !== undefined) nested.push(resolve(mRoot));
+    }
+  }
+
   // The instance LAST, so its own contributions are read after its nested
   // layers'. Order here does not decide the board — `order` does — but a stable
   // read order makes the duplicate-id error message name the layers in a
@@ -438,6 +450,7 @@ export function declaredContributions(root: string): DeclaredContribution[] {
         // resolving one by searching is how two instances sharing a `name`
         // silently attribute a card to the wrong file.
         declaredIn: relative(checkoutRootFor(root), declarationPathIn(layer)!) || (findDeclarationFile(layer) ?? ""),
+        instanceRoot: resolve(layer),
         ...(decl.description === undefined ? {} : { description: decl.description }),
         ...(decl.summary === undefined ? {} : { summary: decl.summary }),
         ...(decl.alsoWritten === undefined ? {} : { alsoWritten: decl.alsoWritten }),
@@ -445,6 +458,40 @@ export function declaredContributions(root: string): DeclaredContribution[] {
     }
   }
   return composeContributions(declared);
+}
+
+/**
+ * Find the file for a declared contribution on disk.
+ *
+ * Looks in the declaring instance's own declared folio directory first:
+ * each instance's sticky lives in its own folio/, not in cat-harness/folio/.
+ * Falls back to the composing instance's folio directory for backward
+ * compatibility / pre-split fixtures.
+ */
+export function stickyPathForContribution(
+  d: DeclaredContribution,
+  composingRoot: string,
+): { abs: string; rel: string } {
+  const composingDecl = readDeclaration(composingRoot);
+  const composingFolio = folioDirPath(composingDecl);
+
+  const instRoot = d.instanceRoot;
+  if (instRoot && existsSync(instRoot)) {
+    const instDecl = instRoot === resolve(composingRoot) ? composingDecl : readDeclaration(instRoot);
+    const instFolio = folioDirPath(instDecl);
+    const instAbs = join(instRoot, instFolio, stickyFile(d.contribution.id));
+    if (existsSync(instAbs)) {
+      const rel = relative(composingRoot, instAbs);
+      return { abs: instAbs, rel: rel.startsWith("..") ? join(instFolio, stickyFile(d.contribution.id)) : rel };
+    }
+    if (instRoot !== resolve(composingRoot)) {
+      const rel = relative(composingRoot, instAbs);
+      return { abs: instAbs, rel: rel.startsWith("..") ? join(instFolio, stickyFile(d.contribution.id)) : rel };
+    }
+  }
+
+  const fallbackAbs = join(composingRoot, composingFolio, stickyFile(d.contribution.id));
+  return { abs: fallbackAbs, rel: join(composingFolio, stickyFile(d.contribution.id)) };
 }
 
 /**
@@ -462,7 +509,8 @@ export function stickiesFor(
   initiation?: InitiationUpdate,
 ): LandingSticky[] {
   return declaredContributions(root).map((d) => {
-    const existing = readExistingSticky(join(dir, stickyFile(d.contribution.id)));
+    const { abs } = stickyPathForContribution(d, root);
+    const existing = readExistingSticky(abs) ?? readExistingSticky(join(dir, stickyFile(d.contribution.id)));
     // The status this card should carry after this run. Only the harness named
     // by the update changes; every other card keeps what it had, because one
     // harness finishing says nothing about another.
@@ -497,17 +545,13 @@ export function stickiesFor(
  * the card itself, and there is no declaration field to compare them with.
  */
 export function readerTextProblems(root: string): string[] {
-  const decl = JSON.parse(readFileSync(declarationPathIn(root)!, "utf8")) as {
-    directories?: ContentDirectory[];
-  };
-  const dir = join(root, folioDirPath(decl));
   const problems: string[] = [];
   for (const d of declaredContributions(root)) {
     if (d.contribution.bodyFrom === undefined) continue;
     const want = readerText(d);
     if (want === undefined) continue;
-    const file = join(folioDirPath(decl), stickyFile(d.contribution.id));
-    const onDisk = readExistingSticky(join(dir, stickyFile(d.contribution.id)));
+    const { abs, rel } = stickyPathForContribution(d, root);
+    const onDisk = readExistingSticky(abs);
     if (onDisk === undefined) continue; // reported as missing by the main check
     if (!onDisk.comment.startsWith(want)) {
       const why =
@@ -515,7 +559,7 @@ export function readerTextProblems(root: string): string[] {
           ? `declares \`bodyFrom: "description"\` but ${d.declaredIn} has a \`summary\`; use \`bodyFrom: "summary"\``
           : "is stale";
       problems.push(
-        `${file} does not show ${d.declaredBy}'s summary and "Also written" (the landing's text): it ${why}`,
+        `${rel} does not show ${d.declaredBy}'s summary and "Also written" (the landing's text): it ${why}`,
       );
     }
   }
@@ -580,9 +624,12 @@ export function readLandingStickies(root: string): LandingSticky[] {
   const decl = JSON.parse(readFileSync(declarationPathIn(root)!, "utf8")) as {
     directories?: ContentDirectory[];
   };
-  const dir = join(root, folioDirPath(decl));
+  const ownDir = join(root, folioDirPath(decl));
   return declaredContributions(root)
-    .map((d) => readExistingSticky(join(dir, stickyFile(d.contribution.id))))
+    .map((d) => {
+      const { abs } = stickyPathForContribution(d, root);
+      return readExistingSticky(abs) ?? readExistingSticky(join(ownDir, stickyFile(d.contribution.id)));
+    })
     .filter((s): s is LandingSticky => s !== undefined);
 }
 
@@ -597,17 +644,35 @@ export function ensureLandingSticky(
   const folioDir = folioDirPath(decl);
   const absDir = join(root, folioDir);
 
+  const own = resolve(root);
+  const repoRoot = repoRootFor(own);
+  const mountedRoots = new Set([
+    ...mountedInstanceRoots(own).values(),
+    ...(repoRoot !== own ? mountedInstanceRoots(repoRoot).values() : []),
+  ]);
+
   const wanted = stickiesFor(root, absDir, now, opts.initiation);
+  const contributions = declaredContributions(root);
+
   const planned = wanted.map((w) => {
-    const abs = join(absDir, stickyFile(w.id));
+    const contrib = contributions.find((c) => c.contribution.id === w.id);
+    const instRoot = contrib?.instanceRoot ? resolve(contrib.instanceRoot) : own;
+    const isMounted = mountedRoots.has(instRoot);
+
+    const { abs, rel } = contrib ? stickyPathForContribution(contrib, root) : {
+      abs: join(absDir, stickyFile(w.id)),
+      rel: join(folioDir, stickyFile(w.id)),
+    };
+
     const wantedText = `${JSON.stringify(w, null, 2)}\n`;
     const currentText = existsSync(abs) ? readFileSync(abs, "utf8") : undefined;
     const state: StickyReport["state"] =
       currentText === wantedText ? "already" : currentText === undefined ? "written" : "updated";
-    return { abs, wantedText, currentText, report: { id: w.id, path: join(folioDir, stickyFile(w.id)), state } };
+    return { abs, wantedText, currentText, isMounted, instRoot, report: { id: w.id, path: rel, state } };
   });
 
-  const prunable = prunableStickies(absDir, wanted.map((w) => w.id));
+  const ownWantedIds = planned.filter((p) => p.instRoot === own).map((p) => p.report.id);
+  const prunable = prunableStickies(absDir, ownWantedIds);
   const report: EnsureReport = {
     declaredFolio: already ? "already" : "added",
     folioDir,
@@ -623,7 +688,13 @@ export function ensureLandingSticky(
   // whole point.
   if (!already) writeFileSync(declarationPathIn(root)!, insertDirectoryEntry(raw, FOLIO_DIRECTORY_ENTRY));
   mkdirSync(absDir, { recursive: true });
-  for (const p of planned) if (p.currentText !== p.wantedText) writeFileSync(p.abs, p.wantedText);
+  for (const p of planned) {
+    if (p.isMounted) continue;
+    if (p.currentText !== p.wantedText) {
+      mkdirSync(dirname(p.abs), { recursive: true });
+      writeFileSync(p.abs, p.wantedText);
+    }
+  }
   for (const f of prunable) unlinkSync(join(absDir, f));
   return report;
 }

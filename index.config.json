@@ -1,5 +1,8 @@
 {
   "$schema": "folio-index-config/v1",
+  "site": {
+    "landing": "cat-harness"
+  },
   "instances": [
     {
       "name": "cat-harness",
