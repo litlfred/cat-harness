@@ -359,10 +359,11 @@ fi
 
 # ── 3-ter. Bun runtime vs the pin ───────────────────────────────────────────
 #
-# Bean `3ozg`. #1442 pinned Bun at `.bun-version` and at all 22 `setup-bun`
-# sites; #1452 then removed `engine_version` from `saveQaScriptSidecar`'s
-# write-skip comparison, which fixed the churn at the WRITER for every
-# container, including the ones the repository does not control.
+# Bean `3ozg` pinned Bun at `.bun-version` and at all 22 `setup-bun` sites.
+# Bean `p3zo`: agent containers default to 1.4.2 instead of `.bun-version` (1.3.14),
+# causing local tool drift (e.g. navbar-assets minification differences).
+# Check if bun --version matches .bun-version; if it differs, install the pinned
+# version into $HOME/.local/bin/bun via npm pack, and prepend to PATH.
 #
 # THIS SECTION'S ORIGINAL PURPOSE IS THEREFORE DISCHARGED, and the claim it
 # carried — that a mismatched bun rewrites 72 of 86 sidecars on every sweep,
@@ -380,8 +381,92 @@ fi
 # "could not check", as the adjacent block correctly does for its own script,
 # would swallow exactly the message this exists to deliver. So it keys on EMPTY
 # OUTPUT instead, and an empty result is reported as unknown rather than matched.
-if command -v bun >/dev/null 2>&1 && [ -f "$REPO_ROOT/scripts/check-bun-runtime.ts" ]; then
-  bun_rt_out=$(timeout 20 bun run "$REPO_ROOT/scripts/check-bun-runtime.ts" --markdown 2>/dev/null || true)
+
+# Ensure ~/.local/bin is first on PATH if bun was installed there previously
+if [ -x "$HOME/.local/bin/bun" ]; then
+  case ":$PATH:" in
+    *":$HOME/.local/bin:"*) ;;
+    *) PATH="$HOME/.local/bin:$PATH"; export PATH ;;
+  esac
+fi
+
+bun_pin_file=""
+if [ -f "$CHECKOUT_ROOT/.bun-version" ]; then
+  bun_pin_file="$CHECKOUT_ROOT/.bun-version"
+elif [ -f "$REPO_ROOT/.bun-version" ]; then
+  bun_pin_file="$REPO_ROOT/.bun-version"
+elif [ -f "$CHECKOUT_ROOT/cat-harness/.bun-version" ]; then
+  bun_pin_file="$CHECKOUT_ROOT/cat-harness/.bun-version"
+fi
+
+pinned_bun=""
+if [ -n "$bun_pin_file" ]; then
+  pinned_bun="$(tr -d ' \t\r\n' < "$bun_pin_file" 2>/dev/null || true)"
+fi
+
+current_bun=""
+if command -v bun >/dev/null 2>&1; then
+  current_bun="$(bun --version 2>/dev/null | tr -d ' \t\r\n' || true)"
+fi
+
+if [ -z "$pinned_bun" ]; then
+  echo "## Bun runtime alignment"
+  echo
+  echo "**Could not determine pinned Bun version:** \`.bun-version\` was not found or is empty."
+  echo
+elif [ "$current_bun" != "$pinned_bun" ]; then
+  if [ -x "$REPO_ROOT/scripts/install-bun.sh" ]; then
+    install_out=$(timeout 120 "$REPO_ROOT/scripts/install-bun.sh" "$pinned_bun" 2>&1 || true)
+    if [ -x "$HOME/.local/bin/bun" ] && [ "$("$HOME/.local/bin/bun" --version 2>/dev/null | tr -d ' \t\r\n')" = "$pinned_bun" ]; then
+      case ":$PATH:" in
+        *":$HOME/.local/bin:"*) ;;
+        *) PATH="$HOME/.local/bin:$PATH"; export PATH ;;
+      esac
+      echo "## Bun runtime aligned (folio-assistant-p3zo)"
+      echo
+      echo "Installed pinned Bun **${pinned_bun}** into \`$HOME/.local/bin/bun\` (replaced ${current_bun:-uninstalled})."
+      echo "Prepend \`\$HOME/.local/bin\` first on PATH for this session."
+      echo
+      current_bun="$pinned_bun"
+    elif [ -x "$CHECKOUT_ROOT/.local/bin/bun" ] && [ "$("$CHECKOUT_ROOT/.local/bin/bun" --version 2>/dev/null | tr -d ' \t\r\n')" = "$pinned_bun" ]; then
+      case ":$PATH:" in
+        *":$CHECKOUT_ROOT/.local/bin:"*) ;;
+        *) PATH="$CHECKOUT_ROOT/.local/bin:$PATH"; export PATH ;;
+      esac
+      echo "## Bun runtime aligned (folio-assistant-p3zo)"
+      echo
+      echo "Installed pinned Bun **${pinned_bun}** into \`$CHECKOUT_ROOT/.local/bin/bun\` (replaced ${current_bun:-uninstalled})."
+      echo "Prepend \`\$CHECKOUT_ROOT/.local/bin\` first on PATH for this session."
+      echo
+      current_bun="$pinned_bun"
+    else
+      echo "## Bun runtime alignment warning"
+      echo
+      echo "**Could not align Bun to pin ${pinned_bun}:** install script failed or produced unexpected version."
+      echo "Output: \`${install_out}\`"
+      echo "Container Bun (${current_bun:-uninstalled}) remains in place."
+      echo
+    fi
+  else
+    echo "## Bun runtime alignment warning"
+    echo
+    echo "**Could not align Bun to pin ${pinned_bun}:** \`cat-harness/scripts/install-bun.sh\` is missing."
+    echo "Container Bun (${current_bun:-uninstalled}) remains in place."
+    echo
+  fi
+fi
+
+bun_rt_script=""
+if [ -f "$REPO_ROOT/scripts/check-bun-runtime.ts" ]; then
+  bun_rt_script="$REPO_ROOT/scripts/check-bun-runtime.ts"
+elif [ -f "$CHECKOUT_ROOT/cat-harness-tools/scripts/check-bun-runtime.ts" ]; then
+  bun_rt_script="$CHECKOUT_ROOT/cat-harness-tools/scripts/check-bun-runtime.ts"
+elif [ -f "$CHECKOUT_ROOT/../cat-harness-tools/scripts/check-bun-runtime.ts" ]; then
+  bun_rt_script="$CHECKOUT_ROOT/../cat-harness-tools/scripts/check-bun-runtime.ts"
+fi
+
+if command -v bun >/dev/null 2>&1 && [ -n "$bun_rt_script" ]; then
+  bun_rt_out=$(timeout 20 bun run "$bun_rt_script" --markdown 2>/dev/null || true)
   if [ -n "$bun_rt_out" ]; then
     printf '%s\n' "$bun_rt_out"
     echo
