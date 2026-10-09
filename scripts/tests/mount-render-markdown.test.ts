@@ -13,6 +13,7 @@ import { tmpdir } from "os";
 import { join } from "path";
 
 import { renderMountedMarkdown } from "../mount-instance-docs.ts";
+import { siteDir } from "../../schemas/cat-harness.ts";
 
 function site(files: Record<string, string>): string {
   const dir = mkdtempSync(join(tmpdir(), "mount-md-"));
@@ -75,13 +76,15 @@ describe("renderMountedMarkdown", () => {
     const dest = mkdtempSync(join(tmpdir(), "mount-md-site-"));
     try {
       const text = "# Agents\n\n[library](../library/) [agents](../AGENTS.md#top) [sibling](style-guide.md) [root](../../AGENTS.md) [web](https://example.org/x.md) [assets](assets/) [guide](guide/)\n";
-      mkdirSync(join(instance, "docs", "assets"), { recursive: true });
-      mkdirSync(join(instance, "docs", "guide"), { recursive: true });
-      writeFileSync(join(instance, "docs", "guide", "README.md"), "# Guide\n");
-      writeFileSync(join(instance, "docs", "a.md"), text);
+      // The instance's site directory, composed in one place (`site-dir-single-answer`).
+      const docs = join(instance, siteDir({ name: "who-iris" }));
+      mkdirSync(join(docs, "assets"), { recursive: true });
+      mkdirSync(join(docs, "guide"), { recursive: true });
+      writeFileSync(join(docs, "guide", "README.md"), "# Guide\n");
+      writeFileSync(join(docs, "a.md"), text);
       writeFileSync(join(dest, "a.md"), text);
       const { rendered, unresolved } = await renderMountedMarkdown(dest, {
-        dir: join(instance, "docs"),
+        dir: docs,
         instanceDir: instance,
         repository: "example/who-iris",
       });
