@@ -23,7 +23,7 @@ authorised.
 
 | level | answers | where it lives |
 |---|---|---|
-| **process instance** | which run of which process is this? | `.folio/workflow/`, committed |
+| **process instance** | which run of which process is this? | `beans/workflows/` (state graph on the branch store, `cat/cat-harness/beans`) |
 | **swimlane / role** | am I the actor who may do this? | the lane on the activity; checked by the executor ([`task-authorization`](../process-core/task-authorization.md)) |
 | **task** | which step am I on, and is it enabled? | `workflow_next` |
 
@@ -94,15 +94,14 @@ recorded.** So:
 
 > **A turn that is in a process has an INSTANCE under the declared
 > `workflow-state` graph. Naming the process in prose is the report; the
-> committed instance is the evidence, and a report with no evidence behind it
-> is what produced 54 merges and an empty directory.**
+> recorded instance in the state graph on the branch store is the evidence, and
+> a report with no evidence behind it is what produced 54 merges and an empty directory.**
 
 `workflow_start` creates it, `workflow_next` and `workflow_complete` advance
-it, and the state is committed precisely so a sibling session reads the same
-position — [`workflow-state.md`](workflow-state.md) §"Why the state is
-committed".
+it, and the state lives on the branch store precisely so a sibling session
+reads the same position — [`workflow-state.md`](workflow-state.md) §"Where running instances live".
 
-**The session-start sweep reports "no instance recorded" as a FINDING, not as
+**The session-start sweep reads the branch store and reports "no instance recorded" as a FINDING, not as
 silence.** That is the half that makes the rule self-enforcing: a STRICT rule
 whose breach looks exactly like compliance is the `xom7` shape, and it is how
 this one went unobserved for 54 merges. A finding is not a failure — plenty of

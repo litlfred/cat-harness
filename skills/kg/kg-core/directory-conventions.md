@@ -1169,24 +1169,40 @@ directory makes every consumer scan nothing and report a clean run over it.
 ## `storage` — a directory kept on a branch
 
 A `ContentDirectory` may declare where its contents are KEPT when that is not
-the checkout (bean `16ei`, arc `3fva`; schema `DirectoryStorageSchema` in
-`schemas/cat-harness.ts`):
+the checkout (bean `16ei`, arc `3fva`, and proposal `state-branch-2026-10-02`;
+schema `DirectoryStorageSchema` in `schemas/cat-harness.ts`, or its modern
+`source: { kind: "branch", ... }` spelling in `schemas/subgraph-source.ts`):
 
 ```jsonc
+// Derived / QA: commit-keyed
 { "id": "qa", "path": "test/results", "graphTypologies": ["qa"],
   "storage": { "branch": "qa-reports", "keyedBy": "commit" } }
+
+// State / work-plan: tip-keyed
+{ "id": "beans", "path": "beans/", "graphTypologies": ["beans"],
+  "storage": { "branch": "cat/cat-harness/beans", "keyedBy": "tip" } }
 ```
 
-- **Writers still write the declared path** — it is the working copy — and
-  `bun run cat qa:publish` carries it to the branch under `main/<sha>/` or
-  `pr/<n>/<sha>/`. In CI that is the `qa-publish` job, which runs after the
-  gates and is not one.
-- **Readers go through `qa-store`** (`readQa`, `bun run cat qa:fetch`), which
-  answers hit / miss / corrupt / unknown. **A miss is never read as an empty,
-  clean directory** — that is `dh4f` again, with a branch in place of a path.
-- **Presence checks stop expecting the files**: a stored directory absent
-  from the checkout is not "declared but absent", and `harness:dirs` does not
-  create it empty. `audit:coverage` reads its kind as `stored`.
+**A graph on another ref is still a declared directory, mounted at the declared path.**
+Declaring `storage` or a branch `source` does not make it a separate concept
+from a directory. The instance still accesses the graph at its declared path
+(`beans/`, `todos/`, `test/results/`), whether via a working mount (e.g. worktree
+mounted by `state:mount` at session start) or an in-memory branch store.
+
+- **`keyedBy: "commit"` (derived/QA)**: Writers write the declared working copy
+  path, and `bun run cat qa:publish` carries it to the branch under
+  `main/<sha>/` or `pr/<n>/<sha>/`. Readers go through `qa-store` (`readQa`,
+  `bun run cat qa:fetch`), which answers hit / miss / corrupt / unknown.
+- **`keyedBy: "tip"` (state graphs: beans, workflow instances, todos)**:
+  Represents a single living tree where the branch tip IS the state. Writers
+  write to the mounted path and push via `BranchStore` (`branch-store.ts push`
+  or `bun run cat state:push`), which splices changes onto the remote tip and
+  pushes without force (`-f`), retrying if the tip moved. Claims and updates are
+  immediately visible globally.
+- **Presence checks stop expecting unmounted files on `main`**: a stored directory
+  absent from the checkout tree on `main` is not "declared but absent", and
+  `harness:dirs` does not create it empty. `audit:coverage` reads its kind as
+  `stored` via `contentIsOffCheckout`.
 
 Two facts to hold while the arc is in flight. **Every `qa` directory declares
 `storage` since bean `5hox`**, and only after every reader had migrated —

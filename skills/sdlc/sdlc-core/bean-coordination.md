@@ -97,37 +97,39 @@ Full cycle, as a diagram: [Beans and todos](https://litlfred.github.io/folio-ass
 > consuming projects. Project-specific overrides should sit alongside, not
 > replace, this canonical version.
 
-## A claim is branch-local, so it announces rather than reserves
+## Claims are global via the state branch store (formerly branch-local)
 
-**A claim is a commit to `beans/defs/<bean>.md` on your feature branch.** A
-sibling session reads `origin/main`, where the bean still says `status: todo`.
-So your claim becomes visible to anyone else only once you push and open the
-PR — and the platform's "open the PR at the first commit" rule is what makes it
-visible then rather than at the end.
+Historically, claims were commits to `beans/defs/<bean>.md` on feature branches,
+meaning a claim only announced rather than reserved until a PR opened.
 
-That leaves a window, from deciding to work an item to having a PR for it, in
-which the bean reads as unclaimed to every other session. The mechanism is not
-broken; it is **branch-local**, and reading "claim before you work" as a lock is
-what produces the duplicate.
+Under the state branch architecture (proposal `state-branch-2026-10-02.md`),
+**claims are pushed immediately to the branch store** (`cat/cat-harness/beans`)
+via `claimOnBranchStore` in `bun run cat beans:claim <id>`.
 
-**So before you claim, look in the two places a sibling's claim can already be:**
+The claim and its holder note are written directly to the tip-keyed branch store,
+so:
+- **Immediate global visibility**: Sibling sessions see your claim as soon as
+  `beans:claim` finishes, with no delay waiting for a PR on `main`.
+- **Atomic push with collision detection**: If two sessions race to claim the
+  same bean, `BranchStore` detects the conflict via blob expectations and
+  rejects the second claim cleanly (`state: "conflict"`).
 
-```sh
-git fetch origin main                            # their claim may be merged already
-git show origin/main:beans/defs/<file>.md | head # ...status THERE, not on your branch
-```
+Always claim with `bun run cat beans:claim <id>`. Do not use `beans update --status in-progress`
+(which writes no holder note and does not push to the branch store).
 
-and then the open PR list, because a bean id is carried in a PR title or body by
-convention:
+### Linking PRs to beans with `Closes-bean:` and recording closure evidence
 
-```sh
-# any open PR already naming this bean?  (or the equivalent MCP call)
-gh pr list --state open --search '<bean-id>'
-```
-
-Neither check closes the window. Both are cheap, and the second catches the case
-that matters most in practice — a sibling minutes ahead of you who already has a
-PR up.
+Code changes on `main` and work-plan state on the state branch are separate git
+refs. To link them:
+1. **In your PR body**, include:
+   ```markdown
+   Closes-bean: <bean-id>
+   ```
+2. **On closure**, record the landed merge commit SHA from `main`, the branch,
+   and verifiable evidence in the bean body before pushing to the branch store:
+   ```bash
+   bun cat-harness/scripts/branch-store.ts push --id beans
+   ```
 
 ### A DECISION bean you will not land soon — put the question where a person reads
 
@@ -370,9 +372,9 @@ what makes them the shared substrate.
 1. **Prime** — at session start read the current work-plan (`beans prime` +
    `beans list`, or the CLI-independent fallback that parses `beans/` directly).
    Know what is open and what siblings are touching.
-2. **Declare intent + claim** — before starting, set the bean `in-progress` and
-   add a short note naming your branch. Read §"A claim is branch-local" above
-   first: the claim announces, it does not reserve.
+2. **Declare intent + claim** — before starting, claim the bean via
+   `bun run cat beans:claim <id>`, which records your holder note and pushes
+   immediately to the branch store so siblings see it globally.
 3. **Work** — keep the bean current; append status notes as you go **to a bean
    only your branch is changing**. When other open pull requests are adding
    to the same bean, write a note instead — §"Adding to a bean — a note, not
@@ -496,7 +498,7 @@ verbatim in shape:
 the number that made it a defect rather than a habit: **zero** beans carrying
 that phrase had ever reached `completed`. The rule named who may **not** close
 a bean and never named who **may**, so nothing ever discharged it. It also
-contradicted §"A claim is branch-local" one screen up, which says an unclaimed
+contradicted the claiming rule, which says an unclaimed
 bean is fair game — none of the six carried a claim.
 
 The cost is the failure this section already warns about, reached from the
@@ -765,7 +767,7 @@ bulk move at 09:37. Eight sessions were active in that window. So at most 17 of
 the 60 claims corresponded to a session actually working the item — and the
 `status` field cannot tell a reviewer which 17.
 
-That is the cost of §"A claim is branch-local" landing without its complement.
+That is the cost of claiming landing without its liveness complement.
 `blocked` has an expiry ([`bean-blocking.md`](bean-blocking.md)); `in-progress`
 has nothing, so it carries **no information about activity** and a reader cannot
 tell a stalled agent from a claim nobody has thought about since a bulk edit.
@@ -834,29 +836,26 @@ whose children are moving (`thux`). It runs as one batch with a summary, under
 [`work-plan-restructure`](work-plan-restructure.md) when it is more than a
 handful.
 
-## The store on `main` is the one every sibling reads (STRICT)
+## The branch store is the one every sibling reads (STRICT)
 
-§"A claim is branch-local" states the fact. This says what to do about it.
+Under the state branch architecture, beans live on the dedicated branch store
+(`cat/cat-harness/beans`), rather than being committed to `main` or held on
+unmerged feature branches.
 
-**Measured 2026-09-20, bean `cvab`.** Branch `claude/sleepy-rubin-mr6kdu`
+**Measured 2026-09-20, bean `cvab`.** Before the state branch, branch `claude/sleepy-rubin-mr6kdu`
 (PR #477, 65 commits ahead, 1,937 files) carried the `kupb` epic and **12 of its
 13 children**. None existed on `main`. A review of the store on `main` therefore
 saw **0 %** of the IRIS work plan, and a whole goal's workstream was invisible
 until somebody swept the branch by hand.
 
-The owner chose both remedies, 2026-09-20:
+The remedies:
 
-1. **Land beans ahead of code.** A bean-only change — the epic, its children,
-   their Done-whens — opens its own PR and merges **as soon as the plan
-   exists**. The code branch that follows carries only status updates. A
-   bean-only diff has nothing to review but the plan, so it does not wait on
-   the code's review, and the store on `main` is never blind to a goal that has
-   been decided.
-2. **A sweep reads the open branches' stores too.** [`goal-review`](goal-review.md)
-   already does; the todo-manager fallback does not, and the fallback is what a
-   container without the CLI falls back to. Until it does, a sweep run from the
-   fallback is reporting over `main` only, and must say so rather than present
-   its count as the work plan.
+1. **Push beans directly to the branch store.** Because beans are not bundled into
+   code PR commits on `main`, newly created beans, epics, and Done-whens are
+   pushed to the branch store (`bun cat-harness/scripts/branch-store.ts push --id beans`)
+   as soon as the plan exists. The work plan is immediately visible to all agents.
+2. **A sweep reads the branch store.** Sweeps read the shared branch store,
+   so no session is blind to current goals and claims.
 
 The two are not alternatives. (1) prevents the blindness; (2) catches the
 branches that were already open when (1) landed — including #477, whose 12

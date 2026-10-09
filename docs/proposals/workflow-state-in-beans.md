@@ -49,6 +49,20 @@ Both paths are now declared in `harness.config.json` under `harness`
 (`HarnessDirsSchema`), and `bun run cat check:harness-dirs` fails if that
 declaration, `.beans.yml` and `workflow/store.ts` ever disagree.
 
+### 0.1 Addendum — State branch architecture (2026-10-02)
+
+Under the state branch architecture (proposal
+[`state-branch-2026-10-02.md`](state-branch-2026-10-02.md)), Option A's
+**co-location is preserved**. The two stores (`beans/defs/`, `beans/defs/archive/`,
+`beans/workflows/`, `beans/surveys/`) move **together** off `main` to the
+dedicated tip-keyed branch store (`cat/cat-harness/beans`).
+
+Only the **git ref** moved — from `main` to the dedicated branch store. The
+two-store architecture, the filesystem layout, and their co-location side by side
+under `beans/` remain intact: the interpreter still owns workflow instances
+without human hand-edits, `beans` still tracks work items, and both are mounted
+at `beans/` via `state:mount` at session start.
+
 The rest of this page is kept as written, because options B–D remain the honest
 alternatives if the question is reopened — in particular for CRDM, per §5.
 
