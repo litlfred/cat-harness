@@ -88,6 +88,7 @@ import { basename, join } from "node:path";
 import { readLibraryGraph, type UploadItem } from "./library-graph.ts";
 import { viewerPlacement } from "./gen-schema-viz.ts";
 import {
+  checkoutRootFor,
   directoriesForGraph,
   instanceRootsIn,
   readDeclaration,
@@ -140,12 +141,21 @@ export function viewerHtml(dataHref: string, scope = "", subjects: readonly stri
 .up-page .badge{background:var(--card);border:1px solid var(--line);border-radius:.5rem;padding:.6rem .9rem;min-width:7rem}
 .up-page .badge b{display:block;font-size:1.6rem;line-height:1.1}
 .up-page .badge span{opacity:.9;font-size:.8rem}
+.up-page .badge.lead{border:2px solid var(--wait);background:var(--waitbg)}
 .up-page .badge.lead b{color:var(--wait)}
+.up-page .badge.lead .lead-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:.08rem .35rem;border-radius:.25rem;border:1px solid var(--wait);background:var(--card);vertical-align:middle;margin-left:.4rem}
 .up-page table{display:table;border-collapse:collapse;width:100%;font-size:.9rem}
 .up-page th,.up-page td{text-align:left;padding:.45rem .6rem;border:0;border-bottom:1px solid var(--line);vertical-align:top;background:transparent}
-.up-page th{cursor:pointer;user-select:none;white-space:nowrap;opacity:.9;font-weight:600}
-.up-page th:hover{opacity:1}
+.up-page th{user-select:none;white-space:nowrap;opacity:.9;font-weight:600}
+.up-page th button{border:0;background:transparent;padding:0;font:inherit;font-weight:600;color:inherit;cursor:pointer;text-align:inherit;white-space:nowrap}
+.up-page th button:hover{text-decoration:underline;opacity:1}
+.up-page th button:focus-visible{outline:2px solid var(--wait);outline-offset:2px;border-radius:.2rem}
 .up-page td.num,.up-page th.num{text-align:right;font-variant-numeric:tabular-nums}
+.up-page td.size,.up-page th.size,.up-page .size{white-space:nowrap;min-width:6rem}
+.up-page tr.group-row th,.up-page tr.group-row td{background:var(--card);font-size:.82rem;font-weight:600;padding:.35rem .6rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:left}
+.up-page .capture-tag{display:inline-block;font-size:.7rem;font-weight:600;padding:.05rem .35rem;border-radius:.25rem;background:var(--card);border:1px solid var(--line);color:inherit;opacity:.85;vertical-align:middle;margin-left:.35rem}
+.up-page .capture-name{opacity:.85;font-style:italic}
+.up-page tr.raw-capture td{opacity:.88}
 .up-page .pill{display:inline-block;border-radius:1rem;padding:.05rem .55rem;font-size:.78rem;font-weight:600}
 .up-page .pill.waiting{background:var(--waitbg);color:var(--wait)}
 .up-page .pill.ingested{background:var(--ingbg);color:var(--ing)}
@@ -173,9 +183,12 @@ var SCOPE = ${JSON.stringify(scope)};
 function $(i){ return document.getElementById(i); }
 function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,function(c){
   return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
-function size(n){ return n >= 1048576 ? (n/1048576).toFixed(1)+" MB" : Math.round(n/1024)+" KB"; }
+function size(n){ return n >= 1048576 ? (n/1048576).toFixed(1)+"\u00a0MB" : Math.round(n/1024)+"\u00a0KB"; }
 function inScope(x){ return !SCOPE || x.instance === SCOPE; }
 function state(u){ return u.ingestedBy ? "ingested" : "waiting"; }
+function isRawCapture(u){
+  return !u.title && (/^ChatGPT[-_ ]Image/i.test(u.file) || /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i.test(u.file));
+}
 
 var ITEMS = [], QUEUES = [], sortKey = "state", sortAsc = true;
 
@@ -200,7 +213,11 @@ function cell(u, k){
   }
   if (k === "bytes") return size(u.bytes);
   if (k === "file") {
-    return esc(u.file) + (u.title ? '<br><span class="kind">'+esc(u.title)+'</span>' : '');
+    var isRaw = isRawCapture(u);
+    var rawTag = isRaw ? ' <span class="capture-tag">raw capture</span>' : '';
+    var nameCls = isRaw ? ' class="capture-name"' : '';
+    return '<span' + nameCls + '>' + esc(u.file) + '</span>' + rawTag +
+      (u.title ? '<br><span class="kind">'+esc(u.title)+'</span>' : '');
   }
   if (k === "ext") return u.ext ? '<code>'+esc(u.ext)+'</code>' : '<span class="kind">&mdash;</span>';
   return esc(u[k]);
@@ -209,8 +226,19 @@ function cell(u, k){
 function sorted(){
   var rows = ITEMS.filter(inScope).slice();
   rows.sort(function(a,b){
-    var x = sortKey === "state" ? state(a) : a[sortKey];
-    var y = sortKey === "state" ? state(b) : b[sortKey];
+    if (sortKey === "state") {
+      var sa = state(a) === "waiting" ? 0 : 1;
+      var sb = state(b) === "waiting" ? 0 : 1;
+      if (sa !== sb) return sortAsc ? sa - sb : sb - sa;
+      var ra = isRawCapture(a) ? 1 : 0;
+      var rb = isRawCapture(b) ? 1 : 0;
+      if (ra !== rb) return ra - rb;
+      var fa = String(a.file || "").toLowerCase();
+      var fb = String(b.file || "").toLowerCase();
+      return fa < fb ? -1 : fa > fb ? 1 : 0;
+    }
+    var x = a[sortKey];
+    var y = b[sortKey];
     if (typeof x === "number" && typeof y === "number") return sortAsc ? x-y : y-x;
     x = String(x).toLowerCase(); y = String(y).toLowerCase();
     return sortAsc ? (x<y?-1:x>y?1:0) : (x<y?1:x>y?-1:0);
@@ -226,7 +254,11 @@ function render(){
   // The uningested count LEADS, because it is the one that makes a clean
   // corpus grep lie. A total would read as reassurance.
   $("badges").innerHTML =
-    '<div class="badge lead"><b>'+waiting+'</b><span>waiting to be ingested</span></div>' +
+    '<div class="badge lead" role="status" aria-label="'+waiting+' waiting to be ingested">' +
+      '<b><span class="lead-icon" aria-hidden="true">&#x23f3; </span>'+waiting+
+      '<span class="lead-tag">action needed</span></b>' +
+      '<span>waiting to be ingested</span>' +
+    '</div>' +
     '<div class="badge"><b>'+ingested+'</b><span>ingested into library/</span></div>' +
     '<div class="badge"><b>'+total+'</b><span>queued units</span></div>' +
     '<div class="badge"><b>'+qs.length+'</b><span>queue(s)</span></div>';
@@ -277,15 +309,43 @@ function render(){
     return;
   }
   var h = '<table><thead><tr>' + COLS.map(function(c){
-    var mark = sortKey === c.k ? (sortAsc ? " \\u25b4" : " \\u25be") : "";
-    return '<th class="'+(c.num?"num":"")+'" data-k="'+c.k+'">'+c.t+mark+'</th>';
-  }).join("") + '</tr></thead><tbody>';
-  h += rows.map(function(u){
-    return '<tr>' + COLS.map(function(c){
-      return '<td class="'+(c.num?"num":"")+'">'+cell(u,c.k)+'</td>';
-    }).join("") + '</tr>';
-  }).join("");
-  $("body").innerHTML = h + '</tbody></table>';
+    var isSorted = sortKey === c.k;
+    var sortAttr = isSorted ? (sortAsc ? ' aria-sort="ascending"' : ' aria-sort="descending"') : ' aria-sort="none"';
+    var mark = isSorted ? (sortAsc ? " \\u25b4" : " \\u25be") : "";
+    var thCls = (c.num ? "num " : "") + (c.k === "bytes" ? "size " : "") + "col-" + c.k;
+    return '<th class="'+thCls+'"'+sortAttr+' data-k="'+c.k+'"><button type="button" data-k="'+c.k+'">'+esc(c.t)+mark+'</button></th>';
+  }).join("") + '</tr></thead>';
+
+  if (sortKey === "state") {
+    var waitingRows = rows.filter(function(u){ return state(u) === "waiting"; });
+    var ingestedRows = rows.filter(function(u){ return state(u) === "ingested"; });
+    var groups = sortAsc ?
+      [ { name: "Waiting to be ingested", rows: waitingRows }, { name: "Ingested into library/", rows: ingestedRows } ] :
+      [ { name: "Ingested into library/", rows: ingestedRows }, { name: "Waiting to be ingested", rows: waitingRows } ];
+    groups.forEach(function(g){
+      if (!g.rows.length) return;
+      h += '<tbody><tr class="group-row"><th colspan="6" scope="colgroup">' + esc(g.name) + ' &middot; <span class="kind">' + g.rows.length + ' unit(s)</span></th></tr>';
+      h += g.rows.map(function(u){
+        var isRaw = isRawCapture(u);
+        return '<tr' + (isRaw ? ' class="raw-capture"' : '') + '>' + COLS.map(function(c){
+          var cls = (c.num ? "num " : "") + (c.k === "bytes" ? "size " : "") + "col-" + c.k;
+          return '<td class="'+cls+'">'+cell(u,c.k)+'</td>';
+        }).join("") + '</tr>';
+      }).join("");
+      h += '</tbody>';
+    });
+  } else {
+    h += '<tbody>' + rows.map(function(u){
+      var isRaw = isRawCapture(u);
+      return '<tr' + (isRaw ? ' class="raw-capture"' : '') + '>' + COLS.map(function(c){
+        var cls = (c.num ? "num " : "") + (c.k === "bytes" ? "size " : "") + "col-" + c.k;
+        return '<td class="'+cls+'">'+cell(u,c.k)+'</td>';
+      }).join("") + '</tr>';
+    }).join("") + '</tbody>';
+  }
+  h += '</table>';
+  $("body").innerHTML = h;
+
   Array.prototype.forEach.call(document.querySelectorAll("th[data-k]"), function(th){
     th.addEventListener("click", function(){
       var k = th.getAttribute("data-k");
@@ -321,7 +381,7 @@ fetch(SRC).then(function(r){ return r.json(); }).then(function(d){
 const emitPage = makeEmit({ check, onStale: () => { stale++; } });
 
 if (import.meta.main) {
-  const repoRoot = repoRootFor(ROOT);
+  const repoRoot = checkoutRootFor(ROOT);
   const site = join(ROOT, siteDirFor(ROOT));
   const g = readLibraryGraph(instanceRootsIn(repoRoot), repoRoot);
   if (g === null) {
