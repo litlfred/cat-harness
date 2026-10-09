@@ -44,7 +44,13 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { baseDocsDir } from "./compose-docs.js";
-import { loadSpecs, namespacesInUse } from "./external-schemas.js";
+import {
+  jsonLdNamespacesInUse,
+  loadSpecs,
+  namespaceMentions,
+  namespacesInUse,
+} from "./external-schemas.js";
+import { OWN_XML_NAMESPACES } from "../schemas/namespaces.js";
 import { specUsers, type SpecUse, type SpecUseForm, type SpecUsers } from "./spec-users.js";
 import { BASE_GRAPH_TYPOLOGIES, defaultGraphTypologies } from "../schemas/graph-typology-registry.js";
 import {
@@ -55,20 +61,30 @@ import {
 import { conventionalPage, handledDirectories, withRendersFrontMatter } from "./viewer-declarations.js";
 import { sourceLinks } from "../schemas/cat-harness.ts";
 import { detectRepoUrl } from "../src/core/git-refs.js";
+import { darkRules } from "./lib/scheme-css.js";
 
 /** This generator's Tool node (`tools/viewers.ts`), named on every page it draws. */
 const VIEWER_TOOL = "external-schemas-viewer";
 
 const INSTANCE_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const REPO = resolve(INSTANCE_ROOT, "..");
+const REPO = existsSync(join(INSTANCE_ROOT, "cat-harness"))
+  ? INSTANCE_ROOT
+  : existsSync(join(INSTANCE_ROOT, "../../../cat-harness"))
+  ? resolve(INSTANCE_ROOT, "../../..")
+  : resolve(INSTANCE_ROOT, "..");
 
 /** The graph typology this renders. A KIND, never a path. */
 const KIND = "external-schema";
 
 /** Every declared user of every spec, read from the users (bean `u63y`). */
-export function declaredUsers(specs: readonly ExternalSchema[], repoRoot = REPO): SpecUsers {
+export function declaredUsers(specs: readonly ExternalSchema[], repoRoot = INSTANCE_ROOT): SpecUsers {
+  const targetRoot = existsSync(join(repoRoot, "cat-harness", "schemas"))
+    ? repoRoot
+    : existsSync(join(repoRoot, "schemas"))
+    ? repoRoot
+    : INSTANCE_ROOT;
   // input-site: tree #a397b180 — ls-files: the index
-  const ls = Bun.spawnSync(["git", "ls-files"], { cwd: repoRoot });
+  const ls = Bun.spawnSync(["git", "ls-files"], { cwd: targetRoot });
   const files = new TextDecoder().decode(ls.stdout).split("\n").filter(Boolean);
   // BASE's kinds, read THROUGH the registry: since bean riit (step 1c) a
   // kind's validator refs are `validators/` nodes the registry joins on, so
@@ -79,7 +95,8 @@ export function declaredUsers(specs: readonly ExternalSchema[], repoRoot = REPO)
       return def ? [[k, def]] : [];
     }),
   );
-  return specUsers(repoRoot, files, specs, joined, "cat-harness");
+  const kindsInstance = existsSync(join(targetRoot, "cat-harness")) ? "cat-harness" : ".";
+  return specUsers(targetRoot, files, specs, joined, kindsInstance);
 }
 
 /**
@@ -87,17 +104,29 @@ export function declaredUsers(specs: readonly ExternalSchema[], repoRoot = REPO)
  * `conventionalPage`). Never a literal — `site-dir-single-answer` refuses one.
  */
 export function pageRelPath(repo = REPO): string | undefined {
-  return conventionalPage(join(repo, "cat-harness"), KIND);
+  const handlerRoot = existsSync(join(repo, "cat-harness")) ? join(repo, "cat-harness") : INSTANCE_ROOT;
+  return conventionalPage(handlerRoot, KIND);
 }
 
 /** The base docs layer — the same answer `compose-docs.ts` uses. */
 
+const DARK_TAG_RULES = darkRules(
+  ".xs-ok { color: #34d399; } .xs-na { color: #a1a1aa; } .xs-missing { color: #f87171; }",
+);
+
 const CSS = `
+h2, h3 { scroll-margin-top: 2rem; }
 .xs-tag{display:inline-block;padding:.05rem .4rem;border-radius:3px;font-size:.72rem;
   font-weight:600;white-space:nowrap;border:1px solid currentColor}
 .xs-ok{color:#0d6e5e}
 .xs-na{color:#5b5f66}
 .xs-missing{color:#a8200f}
+${DARK_TAG_RULES}
+.table-wrapper{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  mask-image:linear-gradient(to right,black calc(100% - 2rem),transparent 100%);
+  -webkit-mask-image:linear-gradient(to right,black calc(100% - 2rem),transparent 100%)}
+.xs-scroll-cue{display:none;font-size:.75rem;opacity:.75;margin:-.5rem 0 .75rem;font-style:italic}
+@media (max-width: 640px){.xs-scroll-cue{display:block}}
 .xs-grid{display:flex;flex-wrap:wrap;gap:.75rem;margin:1rem 0}
 .xs-stat{flex:1 1 8rem;border:1px solid rgba(128,128,128,.35);border-radius:6px;padding:.5rem .7rem}
 .xs-stat b{display:block;font-size:1.25rem;line-height:1.2}
@@ -154,19 +183,26 @@ export function page(
   users: SpecUsers,
   inUse: readonly string[],
   fileHref: (repoPath: string) => string | undefined = () => undefined,
+  broaderInUse: readonly string[] = [],
 ): string {
   const userCell = (u: string): string => {
     const h = fileHref(u);
     return h === undefined ? `\`${cell(u)}\`` : `[\`${cell(u)}\`](${h})`;
   };
+  const allInUse = [...new Set([...inUse, ...broaderInUse])].sort();
   // One row per user and spec; a `.bpmn` per diagram would bury the rest, so
   // `xmlns` users are counted per directory.
   const bySpec = new Map<string, SpecUse[]>();
   for (const u of users.uses) bySpec.set(u.spec, [...(bySpec.get(u.spec) ?? []), u]);
   const undeclaredSpecs = specs.filter((s) => !bySpec.has(s.id));
-  const undeclared = undeclaredNamespaces(inUse, specs);
-  const unused = unusedNamespaces(inUse, specs);
+  const undeclared = undeclaredNamespaces(allInUse, specs);
+  const unreg = unusedNamespaces(allInUse, specs);
+  const mentioned = namespaceMentions(unreg);
+  const unused = unreg.filter((ns) => !mentioned.has(ns));
   const terms = specs.reduce((n, s) => n + s.terms.length, 0);
+  const describedCount = specs.flatMap((s) => s.terms).filter((t) => !t.operative.includes("not yet described")).length;
+  const pendingCount = terms - describedCount;
+  const termsLabel = pendingCount > 0 ? `operative terms in graph (${describedCount} described, ${pendingCount} pending)` : `operative terms in graph`;
 
   const b: string[] = [
     "---",
@@ -186,12 +222,14 @@ export function page(
     "",
     '<div class="xs-grid">',
     `<div class="xs-stat"><b>${specs.length}</b><span>specifications</span></div>`,
-    `<div class="xs-stat"><b>${terms}</b><span>operative terms in the graph</span></div>`,
+    `<div class="xs-stat"><b>${terms}</b><span>${termsLabel}</span></div>`,
     `<div class="xs-stat"><b>${users.uses.length}</b><span>declared uses</span></div>`,
     `<div class="xs-stat"><b>${users.unknown.length}</b><span>declarations naming no record</span></div>`,
     "</div>",
     "",
     "## The specifications",
+    "",
+    '<p class="xs-scroll-cue" role="note" aria-hidden="true">Scroll table horizontally to view all columns &rarr;</p>',
     "",
     "| specification | authority | edition | how it is used |",
     "|---|---|---|---|",
@@ -242,8 +280,8 @@ export function page(
   // could not tell them apart.
   b.push("## Namespaces the corpus uses against the ones it declares", "");
   b.push(
-    `Read from the BPMN and DMN files themselves — **${inUse.length}** namespace IRI(s)`,
-    "are in use. Derived rather than listed, so a diagram that adopts a new",
+    `Read from diagram files (BPMN and DMN), metadata records, and JSON-LD contexts — **${allInUse.length}** namespace IRI(s)`,
+    "are in use across the corpus. Derived rather than listed, so an artefact that adopts a new",
     "vocabulary shows up here instead of going unnoticed.",
     "",
   );
@@ -288,7 +326,18 @@ export function page(
       ...s.namespaces.map((n) => `- \`${cell(n)}\``),
       "",
     );
-    if (s.note) b.push(`**Note.** ${cell(s.note)}`, "");
+    if (s.note) {
+      const paras = s.note
+        .split(/\n\s*\n/)
+        .map((p) => p.replace(/\|/g, "\\|").trim())
+        .filter(Boolean);
+      if (paras.length > 0) {
+        b.push(`**Note.** ${paras[0]}`, "");
+        for (const p of paras.slice(1)) {
+          b.push(p, "");
+        }
+      }
+    }
 
     if (rows.length === 0) {
       b.push("**What depends on it.** Nothing here declares it.", "");
@@ -310,14 +359,31 @@ export function page(
         "",
       );
     } else {
+      const pendingInSpec = s.terms.filter((t) => t.operative.includes("not yet described")).length;
       b.push(
         `**Operative terms (${s.terms.length}).** The terms this repository acts on —`,
         "derived by the tooling from the corpus, never hand-listed, and deliberately",
         "a subset of the edition rather than a transcription of it.",
         "",
+      );
+      if (pendingInSpec === s.terms.length) {
+        b.push(
+          "*All terms below are derived from the corpus; operational semantics are pending individual per-term descriptions.*",
+          "",
+        );
+      } else if (pendingInSpec > 0) {
+        b.push(
+          "*Terms marked pending description are derived from the corpus and await detailed operational description.*",
+          "",
+        );
+      }
+      b.push(
         "| term | what it means here |",
         "|---|---|",
-        ...s.terms.map((t) => `| \`${cell(t.term)}\` | ${cell(t.operative)} |`),
+        ...s.terms.map((t) => {
+          const meaning = t.operative.includes("not yet described") ? "*(pending description)*" : t.operative;
+          return `| \`${cell(t.term)}\` | ${cell(meaning)} |`;
+        }),
         "",
       );
     }
@@ -348,17 +414,30 @@ if (import.meta.main) {
   // The page says which directories it draws (#1168 B7a-2).
   // A dependent links to its file on the repository host, and only when that
   // file exists here: a directory or a path gone since stays code.
-  const repoUrl = detectRepoUrl(REPO);
+  const targetRoot = INSTANCE_ROOT;
+  const repoUrl = detectRepoUrl(targetRoot);
   const fileHref = (repoPath: string): string | undefined => {
-    const abs = join(REPO, repoPath);
+    const abs = join(targetRoot, repoPath);
     return existsSync(abs) && statSync(abs).isFile() ? sourceLinks(repoUrl, repoPath, "main")?.viewHref : undefined;
   };
+
+  const bpmnInUse = namespacesInUse();
+  const jsonLd = jsonLdNamespacesInUse();
+  const externalBpmn = bpmnInUse.filter((ns) => !(OWN_XML_NAMESPACES as readonly string[]).includes(ns));
+  const combined = [...new Set([...externalBpmn, ...jsonLd.keys()])].sort();
+  const unreg = unusedNamespaces(combined, specs);
+  const mentioned = namespaceMentions(unreg);
+  const inUse = [...new Set([...combined, ...mentioned])].sort();
+
   const rendered = withRendersFrontMatter(
-    page(specs, users, namespacesInUse(), fileHref),
+    page(specs, users, inUse, fileHref),
     handledDirectories(REPO, INSTANCE_ROOT, KIND),
     VIEWER_TOOL,
   );
-  const out = join(baseDocsDir(REPO), PAGE);
+  const docsBase = existsSync(join(INSTANCE_ROOT, "docs"))
+    ? join(INSTANCE_ROOT, "docs")
+    : baseDocsDir(REPO);
+  const out = join(docsBase, PAGE);
 
   if (check) {
     const current = existsSync(out) ? readFileSync(out, "utf-8") : "";

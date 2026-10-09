@@ -14,92 +14,92 @@
   "terms": [
     {
       "term": "dc.contributor.author",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Primary author or creator of the catalogue record or ingested document."
     },
     {
       "term": "dc.coverage.spatial",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Spatial or geographic coverage of the publication or resource."
     },
     {
       "term": "dc.date.accessioned",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Timestamp when the digital repository accessioned the resource."
     },
     {
       "term": "dc.date.available",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Date when the resource became publicly available in the catalogue."
     },
     {
       "term": "dc.date.created",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Creation date of the original document or intellectual work."
     },
     {
       "term": "dc.date.issued",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Formal publication or issue date asserted by the publisher."
     },
     {
       "term": "dc.description",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "General descriptive summary or annotation of the resource."
     },
     {
       "term": "dc.description.abstract",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Abstract summarizing the contents and findings of the publication."
     },
     {
       "term": "dc.description.tableofcontents",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Table of contents or section outline of the document."
     },
     {
       "term": "dc.identifier.govdoc",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Government or agency publication document number."
     },
     {
       "term": "dc.identifier.isbn",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "International Standard Book Number (ISBN) for the published work."
     },
     {
       "term": "dc.identifier.uri",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Canonical persistent URI (e.g. Handle or DOI) identifying the resource."
     },
     {
       "term": "dc.language",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Language designation of the catalogue record resource."
     },
     {
       "term": "dc.language.iso",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "ISO language code representing the language of the resource content."
     },
     {
       "term": "dc.publisher",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Organization or publisher responsible for distributing the resource."
     },
     {
       "term": "dc.subject.mesh",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Medical Subject Headings (MeSH) descriptor assigned to the health topic."
     },
     {
       "term": "dc.subject.meshqualifier",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "MeSH qualifier sub-heading refining the subject topic."
     },
     {
       "term": "dc.subject.other",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Additional topical classification or keyword descriptor."
     },
     {
       "term": "dc.title",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Formal title of the catalogue publication or document."
     },
     {
       "term": "dc.title.release",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Release or edition title qualifying the primary title."
     },
     {
       "term": "dc.type",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Resource publication type or document genre classification."
     },
     {
       "term": "who.relation.languageVersion",
-      "operative": "derived from the corpus; what this repository does with it is not yet described"
+      "operative": "Language edition relationship linking multilingual publications."
     }
   ],
-  "note": "`reads`, not `conforms`: these records describe SOMEBODY ELSE'S metadata — DSpace's — so a DCMI revision is a compatibility question rather than a migration. THE TRANSCRIPTION CAME FIRST AND THAT WAS THE DEFECT. `dublin-core.ts` was written from ONE captured IRIS record and carries the prefix string `dc` with no namespace URI and no edition, so it recorded what one deployment SPELLS rather than what the standard DEFINES — and a transcription with no cited edition cannot say whether a field it lacks is missing or simply not in that edition. The operative terms below are derived from the catalogue records, so they are what IRIS actually sends; DSpace also mints `dcterms`, `local` and other prefixes this repository has not met. A term absent here is UNDECLARED, not unsupported."
+  "note": "`reads`, not `conforms`: these records describe external metadata (DSpace), so a DCMI revision is a compatibility question rather than a migration. The transcription came first, which was the defect: `dublin-core.ts` was written from one captured IRIS record and carries the prefix string `dc` with no namespace URI and no edition, recording what one deployment spells rather than what the standard defines. A transcription with no cited edition cannot distinguish a missing field from one absent in that edition.\n\nThe operative terms below are derived from the catalogue records, so they are what IRIS actually sends (DSpace also mints `dcterms`, `local` and other prefixes this repository has not met). A term absent here is undeclared, not unsupported."
 }
