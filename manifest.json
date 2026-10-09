@@ -1,0 +1,20 @@
+{
+  "$schema": "state-manifest/v1",
+  "status": "active",
+  "authoritative": true,
+  "subgraph": "issue-marks",
+  "note": "Authoritative branch store for issue-marks/, seeded 2026-10-09 from the retired cat/cat-harness/state (the only live copy once main dropped it on 2026-10-08). Owner, 2026-10-09: mount it like beans.",
+  "source": {
+    "ref": "cat/cat-harness/state",
+    "sha": "0f4d78bef5319c5b6b93f0b57997f4e34c5f752e"
+  },
+  "seededAt": "2026-10-09T07:50:49Z",
+  "keyedBy": "tip",
+  "graphs": [
+    {
+      "path": "issue-marks",
+      "tree": "a2bdc9faf96b18418de1dc5053cb3ef10f8f07e0",
+      "files": 3
+    }
+  ]
+}
