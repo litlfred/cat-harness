@@ -567,6 +567,18 @@ describe("index.config.json as the mount declaration (owner, 2026-10-07)", () =>
     expect(checkRemote({ instanceRoot: root }).state).toBe("mounted");
   });
 
+  test("27b. a need the index mounts by its OWN entry is that entry's — no `skip` needed, none recorded", () => {
+    const root = indexed();
+    const cfg = JSON.parse(readFileSync(join(root, "index.config.json"), "utf-8"));
+    cfg.instances.push({ name: "base", source: { remote: { repository: "o/up", ref: up.sha, ...consentFor(up.sha), overrides: { boot: consentFor(boot.sha) } } } });
+    writeFileSync(join(root, "index.config.json"), JSON.stringify(cfg, null, 2));
+    const r = mountRemote({ instanceRoot: root, urlFor });
+    expect(r.plan.outcomes.filter((o) => o.state === "skipped")).toEqual([]);
+    const lock = readLock(root);
+    expect(lock.instances.find((i) => i.instance === "base")).toMatchObject({ via: "base", pinnedBy: "declared" });
+    expect(lock.unmounted).toEqual([]);
+  });
+
   test("28. without an index the fallback is unchanged: remoteMounts on the declaration, info/exclude for an unignored path", () => {
     const root = downstream({});
     expect(readDeclaredMounts(root).from).toBe("declaration");

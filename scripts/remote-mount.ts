@@ -416,6 +416,15 @@ function resolveClosure(opts: RemoteMountOptions, trees: Map<string, RemoteTree>
       const modules = gitmodules(tree.readText(".gitmodules"));
       for (const need of decl.needs ?? []) {
         if (seen.has(need)) continue;
+        // A need the downstream mounts by an entry of ITS OWN is that entry's
+        // to lay down, at that entry's pin. Walking it here as well reached it
+        // at a second pin ("reached at two pins") whenever this entry came
+        // first, which is why every index entry carried a `skip: true` for
+        // each sibling it needs, and the lock then listed those siblings as
+        // `unmounted: skipped` beside their own `mounted` record (measured
+        // 2026-10-09: 4 of 11 in folio-assistant's lock). Not an outcome:
+        // nothing was skipped, it is simply mounted once, by its own entry.
+        if (ds.mounts.some((other) => other !== m && other.harness === need)) continue;
         const skip = m.overrides?.[need]?.skip ?? ds.mounts.some((other) => other.overrides?.[need]?.skip);
         if (skip) {
           seen.set(need, { repository: "(skipped)", sha: "" });
