@@ -15,7 +15,7 @@
  * (bean `ho66`): standing alone, cat-harness has no such root to read.
  */
 import { describe, expect, test } from "bun:test";
-import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
@@ -94,9 +94,9 @@ describe("the real corpus", () => {
   });
 
   test("the @id names where it is actually served", () => {
-    expect(doc["@id"]).toBe("https://litlfred.github.io/folio-assistant/fsh-guts.jsonld");
+    expect(doc["@id"]).toBe("https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/fsh-guts");
     expect(buildFshGutsExport(ROOT, "https://example.invalid/preview")["@id"]).toBe(
-      "https://example.invalid/preview/fsh-guts.jsonld",
+      "https://example.invalid/preview/cat-harness.jsonld#directory/fsh-guts",
     );
   });
 
@@ -183,7 +183,11 @@ describe("what was not included is reported", () => {
 });
 
 describe("the site build publishes it, with the media-type alias", () => {
-  const wf = readFileSync(join(repoRootFor(ROOT), ".github/workflows/docs-site.yml"), "utf8");
+  const wfPath = [
+    join(repoRootFor(ROOT), ".github/workflows/docs-site.yml"),
+    join(repoRootFor(ROOT), "..", "..", ".github/workflows/docs-site.yml"),
+  ].find(existsSync);
+  const wf = wfPath ? readFileSync(wfPath, "utf8") : "";
 
   test("the document is written into the site", () => {
     expect(wf).toContain("scripts/fsh-guts-export.ts");

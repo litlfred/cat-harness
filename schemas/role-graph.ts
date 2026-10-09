@@ -1018,6 +1018,16 @@ export function laneBinding(
 /**
  * JSON-LD projection, matching {@link module:schemas/cat-harness}'s: the
  * authored shape is stored, the graph form is derived, and there is one truth.
+ *
+ * ## Why roles.json is not a standalone published Subgraph document
+ *
+ * `scenarios/roles.json` is an internal authoring registry for BPMN swimlanes,
+ * defining the roles that processes and lane bindings reference. It is not
+ * published as an independent JSON-LD document or Subgraph collection; instead,
+ * its roles are projected directly into the declaring instance's Knowledge Graph
+ * export (`scripts/kg-export.ts`) under the instance's own IRI (`#role/<id>`),
+ * while swimlane terminology is published separately in the SKOS swimlane glossary
+ * (`scripts/glossary-export.ts`).
  */
 export function toJsonLd(graph: RoleGraph): Record<string, unknown> {
   return {

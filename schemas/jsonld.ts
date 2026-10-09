@@ -661,6 +661,7 @@ export const CONTENT_CONTEXT = {
   pageStart: termCurie("pageStart"),
   pageEnd: termCurie("pageEnd"),
   strength: termCurie("strength"),
+  inSubgraph: { "@id": termCurie("inSubgraph"), "@type": "@id" },
   // No `certainty` term yet. It must bind to FHIR's GRADE value set
   // (`QualityOfEvidenceRating` on HL7 Terminology), and the exact predicate
   // wants checking against a real IG rather than guessed — it lands with the

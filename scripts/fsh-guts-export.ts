@@ -44,11 +44,14 @@ import {
   artefactStub,
   readDeclaration,
   repoRootFor } from "../schemas/cat-harness.js";
-import { NS_PREFIXES, termIri } from "../schemas/namespaces.js";
+import { NS_PREFIXES, propertyIri, termIri } from "../schemas/namespaces.js";
+import { contentSourceContext } from "../schemas/subgraph-source.js";
 import { fshGutsDirectories, isFrozenSubtree, readFshGutsNode } from "../schemas/fsh-guts.js";
 import { exitUnlessMounted } from "./branch-store.js";
 import { contextBindings, vocabMapping } from "../schemas/vocab-mapping.js";
 import { STANDARD_PREFIXES } from "../schemas/vocab-mapping-fhir.js";
+import { declaredSubgraphNode } from "./kg-export.js";
+import { memberOf, subgraphContainer } from "./subgraph-node.js";
 
 const ROOT = resolve(import.meta.dir, "..");
 
@@ -69,6 +72,7 @@ export interface FshGutsDocument {
   skipped: SkippedFile[];
   /** Directories walked. Empty means the instance declares no trashcan. */
   scans: string[];
+  [key: string]: unknown;
 }
 
 /**
@@ -162,6 +166,7 @@ export function buildFshGutsExport(root: string = ROOT, baseUrl?: string): FshGu
   const stub = decl ? artefactStub(decl) : "instance";
   const base = (baseUrl ?? decl?.canonicalUrl ?? "").replace(/\/+$/, "");
   const docIri = `${base}/fsh-guts.jsonld`;
+  const subgraph = declaredSubgraphNode(root, "fsh-guts", { baseUrl });
 
   const scans = fshGutsDirs(root);
   const graph: Record<string, unknown>[] = [];
@@ -200,6 +205,7 @@ export function buildFshGutsExport(root: string = ROOT, baseUrl?: string): FshGu
         name: n.title,
         nodeKind: n.kind,
         sourcePath: rel,
+        ...(subgraph ? memberOf(subgraph.iri) : {}),
         ...(n.movedOn ? { movedOn: n.movedOn } : {}),
         ...(n.movedFrom ? { movedFrom: n.movedFrom } : {}),
         ...(n.issue !== undefined ? { issue: String(n.issue) } : {}),
@@ -256,6 +262,11 @@ export function buildFshGutsExport(root: string = ROOT, baseUrl?: string): FshGu
         prefixes: { ...STANDARD_PREFIXES, ...NS_PREFIXES },
         only: ["name", "description"],
       }),
+      Subgraph: termIri("Subgraph"),
+      hasPart: { "@id": "dcterms:hasPart", "@type": "@id" },
+      inSubgraph: { "@id": propertyIri("inSubgraph"), "@type": "@id" },
+      contentSource: contentSourceContext(),
+      dcterms: "http://purl.org/dc/terms/",
       nodeKind: termIri("nodeKind"),
       sourcePath: termIri("sourcePath"),
       movedOn: termIri("movedOn"),
@@ -282,8 +293,16 @@ export function buildFshGutsExport(root: string = ROOT, baseUrl?: string): FshGu
         "@context": { path: termIri("sourcePath"), reason: "rdfs:comment" },
       },
     },
-    "@id": docIri,
-    "@type": termIri("FshGutsGraph"),
+    ...(subgraph
+      ? subgraphContainer({
+          iri: subgraph.iri,
+          members: graph.map((m) => String(m["@id"])),
+          ...(subgraph.contentSource ? { contentSource: subgraph.contentSource } : {}),
+        })
+      : {
+          "@id": docIri,
+          "@type": termIri("FshGutsGraph"),
+        }),
     name: `${stub} — fsh-guts`,
     description:
       "The trashcan that is kept: deprecated and throwaway structured content, " +
