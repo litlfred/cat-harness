@@ -147,6 +147,9 @@ When one of the five fires, **stop making changes** and recover in this order:
    silently re-enters a process it inferred its way back into is asserting
    authorisation nobody gave it. The whole point of the swimlane guardrail is
    that the actor is *assigned*, not self-declared.
+
+   The person owed the confirmation may give it in advance for a stated scope —
+   see [`confirmation-waiver.md`](../../conduct/conduct-core/confirmation-waiver.md).
 4. **If you cannot reconstruct it, say so and stop.** A wrong instance is worse
    than none: completing a step in the wrong run records an authorisation that
    did not happen.
