@@ -1627,13 +1627,19 @@ async function collectProcesses(
   // repository.
   // The CHECKOUT, not `dirname`: for the root instance `dirname` is outside it (g43f).
   const repoRoot = checkoutRootFor(root);
-  const repoName = (() => {
+  // An index checkout's root declares no instance (owner, 2026-10-08), so it
+  // names no repository; then the instance's own declaration does. Every file
+  // of a remote-mounted instance resolves to the mount's repository through
+  // `forgeLocation` anyway, so this only supplies the fallback that call
+  // needs — without it every `sourceUrl` in the separated index vanished.
+  const repositoryOf = (dir: string): string | undefined => {
     try {
-      return readDeclaration(repoRoot)?.repository;
+      return readDeclaration(dir)?.repository;
     } catch {
       return undefined;
     }
-  })();
+  };
+  const repoName = repositoryOf(repoRoot) ?? repositoryOf(root);
   const forgeOf = (abs: string): string | undefined => {
     if (!repoName) return undefined;
     const at = forgeLocation(relative(repoRoot, abs).split(sep).join("/"), `https://github.com/${repoName}`, repoRoot);
