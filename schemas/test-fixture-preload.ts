@@ -31,10 +31,10 @@
 import { resolve } from "node:path";
 
 import { ownDeclaredDirectories } from "./declared-nodes";
-import { instanceRootsIn } from "./instance-roots";
+import { instanceRootsIn, repoRootFor } from "./instance-roots";
 
 /** The checkout this preload's harness sits in. */
-const CHECKOUT = resolve(import.meta.dir, "..", "..");
+const CHECKOUT = repoRootFor(resolve(import.meta.dir, ".."));
 
 const holdsVocabulary = instanceRootsIn(CHECKOUT).some((r) => ownDeclaredDirectories(r, "block-kinds", CHECKOUT).length > 0);
 if (!holdsVocabulary && process.env.FOLIO_FIXTURE_CHECKOUT === undefined) {

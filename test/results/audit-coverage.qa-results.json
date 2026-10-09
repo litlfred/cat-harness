@@ -1,8 +1,8 @@
 {
   "$schema": "qa-results/v1",
   "producer": {
-    "script": "cat-harness/scripts/audit-coverage.ts",
-    "script_hash": "a961c55f59da"
+    "script": ".claude/worktrees/cat-harness-lvlv/scripts/audit-coverage.ts",
+    "script_hash": "5b9058d08f7b"
   },
   "subject": {
     "kind": "audit-coverage",
@@ -10,7 +10,7 @@
   },
   "families": {
     "coverage-measured": {
-      "summary": "Every declared kind with its four counts and its state. Not findings: the measurement itself, so the committed record answers \"what audits this kind\" without rerunning anything. The file COUNTS are printed rather than recorded — a census moves on any commit and a gate keyed on it is stale by default; `hasFiles` carries the only thing it decides. 73 of 73 declared kind(s), 250 gate(s), 77 criteria.",
+      "summary": "Every declared kind with its four counts and its state. Not findings: the measurement itself, so the committed record answers \"what audits this kind\" without rerunning anything. The file COUNTS are printed rather than recorded — a census moves on any commit and a gate keyed on it is stale by default; `hasFiles` carries the only thing it decides. 73 of 73 declared kind(s), 255 gate(s), 77 criteria.",
       "count": 73,
       "entries": [
         {
@@ -27,6 +27,7 @@
             "bun run cat qa:attestations:migrate:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -52,6 +53,7 @@
             "bun run cat auto:docs:check"
           ],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -64,6 +66,7 @@
           "subjectKinds": [],
           "gates": [],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": false
         },
         {
@@ -71,7 +74,9 @@
           "state": "covered",
           "directories": [
             "beans/defs",
-            "beans/defs/archive"
+            "beans/defs/archive",
+            "cat-harness-tools/beans/defs",
+            "folio-assistant-core/beans/defs"
           ],
           "criteria": [],
           "subjectKinds": [],
@@ -90,13 +95,16 @@
             "bun run cat slice:sqlite:check"
           ],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
           "kind": "bean-notes",
           "state": "covered",
           "directories": [
-            "beans/notes"
+            "beans/notes",
+            "cat-harness-tools/beans/notes",
+            "folio-assistant-core/beans/notes"
           ],
           "criteria": [],
           "subjectKinds": [],
@@ -104,6 +112,7 @@
             "bun run cat beans:notes:check"
           ],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -129,6 +138,7 @@
             "bun run cat lsi:skills:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -139,6 +149,7 @@
           "subjectKinds": [],
           "gates": [],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": false
         },
         {
@@ -155,6 +166,7 @@
             "bun run cat check:kind-validators:require-all"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -169,6 +181,7 @@
             "bun run cat check:harness-state:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -183,6 +196,7 @@
             "bun run cat boards:default:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -242,6 +256,7 @@
             "bun run cat check:graph-typology-work",
             "bun run cat check:harness-dirs",
             "bun run cat check:image-roles",
+            "bun run cat check:index-ignores",
             "bun run cat check:instance-config",
             "bun run cat check:instance-graph",
             "bun run cat check:instance-render",
@@ -260,6 +275,7 @@
             "bun run cat check:version-bump",
             "bun run cat check:wireframes:check",
             "bun run cat harness:dirs:check",
+            "bun run cat index-config:migrate:check",
             "bun run cat kg:audit:all:check",
             "bun run cat kg:audit:check",
             "bun run cat kg:detangle:check",
@@ -281,6 +297,7 @@
             "bun run cat translation:pot:check"
           ],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -299,6 +316,7 @@
             "bun run cat iris:pages:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -309,6 +327,7 @@
           "subjectKinds": [],
           "gates": [],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": false
         },
         {
@@ -337,22 +356,24 @@
             "folio-assistant-core/src",
             "folio-assistant-sci/adapters",
             "folio-assistant-sci/scripts",
+            "smart-base/content",
+            "smart-base/platform",
+            "smart-base/schemas",
+            "smart-base/scripts",
+            "smart-trust/platform",
             "smart-trust/scripts",
-            "test",
             "who-iris/id-lookup",
             "who-iris/scripts"
           ],
           "criteria": [],
           "subjectKinds": [],
           "gates": [
-            "bun run bootstrap:vocabulary:check",
             "bun run cat audit:reachability:check",
             "bun run cat check:agents-claims",
             "bun run cat check:bootstrap-standalone",
             "bun run cat check:cat-harness-standalone",
             "bun run cat check:code-accounting",
             "bun run cat check:dependency-advisories",
-            "bun run cat check:fhir-harness-exclusions",
             "bun run cat check:foreign-paths",
             "bun run cat check:import-direction --all",
             "bun run cat check:lockfile-pinning",
@@ -361,10 +382,10 @@
             "bun run cat check:portable-paths",
             "bun run cat check:python-deps",
             "bun run cat check:secret-leaks",
-            "bun run cat deps:python:check",
-            "bun run check:tools-closure"
+            "bun run cat deps:python:check"
           ],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -379,6 +400,7 @@
             "bun run cat code-lists:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -389,6 +411,7 @@
           "subjectKinds": [],
           "gates": [],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": false
         },
         {
@@ -404,6 +427,7 @@
             "bun run cat check:kind-validators:require-all"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -422,6 +446,7 @@
             "bun run cat check:docs-populated"
           ],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -470,12 +495,12 @@
             "bun run cat readme:sync:check",
             "bun run cat readme:sync:root:check",
             "bun run cat skills:docs:check",
-            "bun run cat smart-base:dth-terms:check",
             "bun run cat subscriptions:viz:check",
             "bun run cat translated-links:check",
             "bun run cat-harness/scripts/gen-schema-docs.ts --check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -488,10 +513,10 @@
           "subjectKinds": [],
           "gates": [
             "bun run cat check:document-kind-sources",
-            "bun run cat document-kinds:viz:check",
-            "bun run cat smart-base:document-kinds:check"
+            "bun run cat document-kinds:viz:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -508,6 +533,7 @@
             "bun run cat external-schemas:viz:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -522,12 +548,10 @@
           "subjectKinds": [],
           "gates": [
             "bun run cat check:artifact-index",
-            "bun run cat p2:refusals:check",
-            "bun run cat smart-base:pages:check",
-            "bun run cat smart-immunizations:pages:check",
-            "bun run cat smart-trust:pages:check"
+            "bun run fhir-harness/scripts/stage-ast-sites.ts \"${CF[@]}\" > ./_ast-list.txt"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -548,6 +572,7 @@
             "bun run cat lsi:skills:check"
           ],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -562,6 +587,7 @@
             "bun run cat fsh-guts:viz:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -582,6 +608,7 @@
             "bun run cat lsi:skills:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -596,6 +623,7 @@
             "bun run cat check:harness-state:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -608,6 +636,7 @@
           "subjectKinds": [],
           "gates": [],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": false
         },
         {
@@ -618,11 +647,12 @@
           "subjectKinds": [],
           "gates": [],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": false
         },
         {
           "kind": "ig-pages",
-          "state": "covered",
+          "state": "unaudited",
           "directories": [
             "smart-base/docs",
             "smart-immunizations/docs",
@@ -630,12 +660,9 @@
           ],
           "criteria": [],
           "subjectKinds": [],
-          "gates": [
-            "bun run cat smart-base:pages:check",
-            "bun run cat smart-immunizations:pages:check",
-            "bun run cat smart-trust:pages:check"
-          ],
+          "gates": [],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -650,6 +677,7 @@
             "bun run cat check:harness-state:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -664,6 +692,7 @@
             "bun run cat check:harness-state:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -674,6 +703,7 @@
           "subjectKinds": [],
           "gates": [],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": false
         },
         {
@@ -700,10 +730,10 @@
             "bun run cat check:upload-names:check",
             "bun run cat check:uploads-retired",
             "bun run cat gen:jsonld:check",
-            "bun run cat lsi:skills:check",
-            "bun run cat smart-base:smart-kg-l1:check"
+            "bun run cat lsi:skills:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -720,6 +750,7 @@
             "bun run cat lsi:skills:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -734,6 +765,7 @@
             "bun run cat check:harness-state:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -753,6 +785,7 @@
             "bun run cat methodologies:viz:check"
           ],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -764,25 +797,23 @@
           "criteria": [],
           "subjectKinds": [],
           "gates": [
-            "bun run bootstrap:validate",
             "bun run cat check:model-languages"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
           "kind": "openapi",
-          "state": "covered",
+          "state": "typed-only",
           "directories": [
             "smart-trust/openapi"
           ],
           "criteria": [],
           "subjectKinds": [],
-          "gates": [
-            "bun run cat smart-trust:openapi:check",
-            "bun run cat smart-trust:openapi:pages:check"
-          ],
+          "gates": [],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -797,6 +828,7 @@
             "bun run cat check:kind-validators:require-all"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -813,6 +845,7 @@
             "bun run cat lsi:skills:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -883,6 +916,7 @@
             "bun run cat upload-step:docs:check"
           ],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -897,6 +931,7 @@
             "bun run cat check:requirements"
           ],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -907,6 +942,7 @@
           "subjectKinds": [],
           "gates": [],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": false
         },
         {
@@ -918,7 +954,6 @@
             "folio-assistant-core/test/results",
             "folio-assistant-sci/test/results",
             "smart-base/test/results",
-            "smart-ig/test/results",
             "smart-immunizations/test/results",
             "smart-trust/test/results",
             "who-iris/test/results"
@@ -933,11 +968,11 @@
             "bun run cat kg:export:check",
             "bun run cat kg:export:judge",
             "bun run cat lsi:viz:check",
-            "bun run cat p2:refusals:check",
             "bun run cat qa:attestations:migrate:check",
             "bun run cat translation:block-qa:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": false
         },
         {
@@ -953,6 +988,7 @@
             "bun run cat check:kind-validators:require-all"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -963,6 +999,7 @@
           "subjectKinds": [],
           "gates": [],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": false
         },
         {
@@ -977,6 +1014,7 @@
             "bun run cat check:requirements"
           ],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -987,6 +1025,7 @@
           "subjectKinds": [],
           "gates": [],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": false
         },
         {
@@ -1026,6 +1065,7 @@
             "bun run cat kg:audit:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1047,8 +1087,6 @@
           "criteria": [],
           "subjectKinds": [],
           "gates": [
-            "bun run bootstrap:schemas:check",
-            "bun run bootstrap:validate",
             "bun run cat check:context-emission",
             "bun run cat check:schema-nodes",
             "bun run cat gen:jsonld:check",
@@ -1056,11 +1094,10 @@
             "bun run cat kg:export:check",
             "bun run cat kg:export:judge",
             "bun run cat kg:schema:check",
-            "bun run cat-harness/scripts/gen-schema-docs.ts --check",
-            "bun run check:bootstrap-concepts",
-            "bun run check:node-iris"
+            "bun run cat-harness/scripts/gen-schema-docs.ts --check"
           ],
           "typed": true,
+          "adversarial": "reviewed",
           "hasFiles": true
         },
         {
@@ -1071,6 +1108,7 @@
           "subjectKinds": [],
           "gates": [],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": false
         },
         {
@@ -1085,6 +1123,7 @@
             "bun run cat check:harness-state:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1144,6 +1183,7 @@
             "bun run cat skills:docs:check"
           ],
           "typed": true,
+          "adversarial": "reviewed",
           "hasFiles": true
         },
         {
@@ -1159,6 +1199,7 @@
             "bun run cat kg:subscribe:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1175,6 +1216,7 @@
             "bun run cat glossary:check:bootstrap"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1185,6 +1227,7 @@
           "subjectKinds": [],
           "gates": [],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": false
         },
         {
@@ -1195,6 +1238,7 @@
           "subjectKinds": [],
           "gates": [],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": false
         },
         {
@@ -1210,6 +1254,7 @@
             "bun run cat check:instance-themes:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1224,6 +1269,7 @@
             "bun run cat check:harness-state:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1238,6 +1284,7 @@
             "bun run cat check:harness-state:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1252,6 +1299,7 @@
             "bun run cat check:harness-state:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1266,6 +1314,7 @@
             "bun run cat tool-releases:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1301,6 +1350,7 @@
             "bun run cat upload-step:docs:check"
           ],
           "typed": true,
+          "adversarial": "reviewed",
           "hasFiles": true
         },
         {
@@ -1330,6 +1380,7 @@
             "bun run cat translation:status:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1349,6 +1400,7 @@
             "bun run cat node-kinds:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1363,6 +1415,7 @@
             "bun run cat uml:overview:check"
           ],
           "typed": false,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1370,7 +1423,6 @@
           "state": "covered",
           "directories": [
             "cat-harness/uploads",
-            "uploads",
             "who-iris/uploads"
           ],
           "criteria": [],
@@ -1383,6 +1435,7 @@
             "bun run cat iris:covers:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1400,6 +1453,7 @@
             "bun run cat check:kind-validators:require-all"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1414,6 +1468,7 @@
             "bun run cat vocab-mappings:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1431,6 +1486,7 @@
             "bun run cat check:voices"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1451,6 +1507,7 @@
             "bun run cat voices:viz:check"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1465,6 +1522,7 @@
             "bun run cat check:waivers"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1479,6 +1537,7 @@
             "bun run cat check:prov-qaqc"
           ],
           "typed": true,
+          "adversarial": "never",
           "hasFiles": true
         }
       ]
@@ -1556,13 +1615,29 @@
     },
     "kinds-typed-only": {
       "summary": "A declared kind whose nodes a declared validator TYPES and no criterion or gate JUDGES. Kept apart from kinds-unaudited because they are different pieces of work, and still a finding — `--strict` fails on it. Typing is not judging: a kind can parse perfectly against its schema while nothing has an opinion about what it says.",
-      "count": 0,
-      "entries": []
+      "count": 1,
+      "entries": [
+        {
+          "kind": "openapi",
+          "directories": [
+            "smart-trust/openapi"
+          ]
+        }
+      ]
     },
     "kinds-unaudited": {
-      "summary": "A declared kind whose directories hold files that NOTHING reaches — no kg-audit criterion, no gate declaring @covers, and no declared validator. All 250 gate(s) have declared, so this is a verdict rather than an upper bound (bean `3srh`).",
-      "count": 0,
-      "entries": []
+      "summary": "A declared kind whose directories hold files that NOTHING reaches — no kg-audit criterion, no gate declaring @covers, and no declared validator. All 255 gate(s) have declared, so this is a verdict rather than an upper bound (bean `3srh`).",
+      "count": 1,
+      "entries": [
+        {
+          "kind": "ig-pages",
+          "directories": [
+            "smart-base/docs",
+            "smart-immunizations/docs",
+            "smart-trust/docs"
+          ]
+        }
+      ]
     },
     "kinds-unknown": {
       "summary": "A declared directory of this kind is not in the checkout and declares no `storage`, and nothing else of the kind was counted — the census was not taken (bean `0dav`, readers-audit C8). Never `empty`: that would print an absent answer as a determined zero. Not gated: proposal §2.3.",
@@ -1570,5 +1645,5 @@
       "entries": []
     }
   },
-  "total": 84
+  "total": 86
 }

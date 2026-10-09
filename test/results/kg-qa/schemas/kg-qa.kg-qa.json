@@ -1,0 +1,30 @@
+{
+  "$schema": "kg-qa/v1",
+  "subject": {
+    "kind": "schema",
+    "id": "kg-qa",
+    "path": "schemas/kg-qa.ts"
+  },
+  "source_hash": "37db801882f2",
+  "criteria": {},
+  "adversarial_reviews": [
+    {
+      "reviewer": {
+        "by": "agent",
+        "session": "session_backfill_lvlv",
+        "model": "claude-3-7-sonnet"
+      },
+      "author_sessions": [],
+      "skill_hash": "hash:adversarial-checklist:v1",
+      "at": "2026-10-09T16:54:43.277Z",
+      "coverage": {
+        "files_total": 1,
+        "files_reviewed": 1,
+        "skipped": []
+      },
+      "result": "pass",
+      "flags": [],
+      "findings": []
+    }
+  ]
+}

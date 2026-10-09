@@ -146,7 +146,8 @@
  * @covers none — it measures coverage rather than auditing a graph; a row about
  *   itself would be a criterion that cannot fail.
  */
-import { existsSync, readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
 import {
@@ -158,7 +159,7 @@ import {
   repoRootFor,
   resolveDirectories,
 } from "../schemas/cat-harness.js";
-import { KG_CRITERIA, KG_SUBJECT_GRAPH_TYPOLOGIES, type KgSubjectKind } from "../schemas/kg-qa.js";
+import { KG_CRITERIA, KG_SUBJECT_GRAPH_TYPOLOGIES, type KgQaReport, type KgSubjectKind } from "../schemas/kg-qa.js";
 import { gitFiles } from "../schemas/git-corpus.ts";
 import { contentIsOffCheckout, resolveSubgraphSource, type SubgraphSource } from "../schemas/subgraph-source.ts";
 // The same single reader `check:declared-dirs` uses, so the two gates cannot
@@ -248,6 +249,8 @@ export type KindState =
    */
   | "undetermined";
 
+export type AdversarialCoverageState = "reviewed" | "stale" | "never";
+
 export interface KindCoverage {
   kind: string;
   state: KindState;
@@ -274,6 +277,8 @@ export interface KindCoverage {
    * avoid. What this reads is the CLAIM; that gate is what keeps the claim true.
    */
   typed: boolean;
+  /** Adversarial review state for this kind (child lvlv, proposal §7). */
+  adversarial: AdversarialCoverageState;
 }
 
 /** A row without its census — what the sidecar records. See the docblock. */
@@ -569,12 +574,23 @@ export function gateCoverage(root: string, repo: string): GateCoverage[] {
     let anyRead = false;
     let anyDeclared = false;
     for (const f of files) {
-      let text: string;
-      try {
-        text = readFileSync(join(repo, f), "utf-8");
-      } catch {
-        continue;
+      let text: string | undefined;
+      const candidates = [join(repo, f), join(root, f)];
+      const chIdx = f.indexOf("cat-harness/");
+      if (chIdx !== -1) {
+        const after = f.slice(chIdx + "cat-harness/".length);
+        candidates.push(join(repo, "cat-harness", after));
+        candidates.push(join(root, after));
       }
+      for (const cand of candidates) {
+        try {
+          text = readFileSync(cand, "utf-8");
+          break;
+        } catch {
+          // try next candidate
+        }
+      }
+      if (text === undefined) continue;
       anyRead = true;
       const covers = coversIn(text);
       if (covers === undefined) continue;
@@ -609,17 +625,92 @@ export function kindUniverse(repo: string): { registered: string[]; declaredOnly
   const registered = defaultGraphTypologies.names().sort();
   const extra = new Set<string>();
   for (const inst of instanceRootsIn(repo)) {
-    const decl = readDeclaration(inst);
+    let decl;
+    try {
+      decl = readDeclaration(inst);
+    } catch {
+      continue;
+    }
     if (!decl) continue;
     for (const k of declaredKinds(inst, decl)) if (!registered.includes(k)) extra.add(k);
   }
   return { registered, declaredOnly: [...extra].sort() };
 }
 
+/**
+ * Adversarial review coverage per declared graph typology (proposal §7, child lvlv).
+ *
+ * Scans `test/results/kg-qa/` sidecars for `adversarial_reviews[]` and checks freshness
+ * against the subject's current source hash.
+ */
+export function adversarialCoverageByGraph(repo: string, root: string = ROOT): Map<string, AdversarialCoverageState> {
+  const result = new Map<string, { hasFresh: boolean; hasStale: boolean }>();
+
+  const scanDir = (dir: string): void => {
+    if (!existsSync(dir)) return;
+    let entries;
+    try {
+      entries = readdirSync(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const ent of entries) {
+      const full = join(dir, ent.name);
+      if (ent.isDirectory()) {
+        scanDir(full);
+      } else if (ent.name.endsWith(".kg-qa.json")) {
+        try {
+          const sc = JSON.parse(readFileSync(full, "utf-8")) as KgQaReport;
+          if (!sc.adversarial_reviews || sc.adversarial_reviews.length === 0) continue;
+          const subjKind = sc.subject?.kind;
+          const graph = subjKind ? KG_SUBJECT_GRAPH_TYPOLOGIES[subjKind] : undefined;
+          if (!graph) continue;
+
+          let isFresh = true;
+          if (sc.subject?.path) {
+            const candidates = [join(root, sc.subject.path), join(repo, sc.subject.path), join(repo, "cat-harness", sc.subject.path)];
+            for (const cand of candidates) {
+              if (existsSync(cand)) {
+                const currentHash = createHash("sha256").update(readFileSync(cand)).digest("hex").slice(0, 12);
+                if (sc.source_hash && sc.source_hash !== currentHash) {
+                  isFresh = false;
+                }
+                break;
+              }
+            }
+          }
+
+          const existing = result.get(graph) ?? { hasFresh: false, hasStale: false };
+          if (isFresh) existing.hasFresh = true;
+          else existing.hasStale = true;
+          result.set(graph, existing);
+        } catch {
+          // ignore unparseable sidecar
+        }
+      }
+    }
+  };
+
+  scanDir(join(root, "test", "results", "kg-qa"));
+  if (repo !== root) {
+    scanDir(join(repo, "test", "results", "kg-qa"));
+    scanDir(join(repo, "cat-harness", "test", "results", "kg-qa"));
+  }
+
+  const out = new Map<string, AdversarialCoverageState>();
+  for (const [graph, entry] of result.entries()) {
+    if (entry.hasFresh) out.set(graph, "reviewed");
+    else if (entry.hasStale) out.set(graph, "stale");
+    else out.set(graph, "never");
+  }
+  return out;
+}
+
 export function coverage(repo: string): { rows: KindCoverage[]; gates: GateCoverage[]; universe: { registered: string[]; declaredOnly: string[] } } {
   const universe = kindUniverse(repo);
   const kinds = [...universe.registered, ...universe.declaredOnly];
   const gates = gateCoverage(ROOT, repo);
+  const advCoverage = adversarialCoverageByGraph(repo, ROOT);
 
   const criteriaByGraph = new Map<string, { ids: string[]; subjects: Set<KgSubjectKind> }>();
   for (const c of KG_CRITERIA) {
@@ -648,7 +739,13 @@ export function coverage(repo: string): { rows: KindCoverage[]; gates: GateCover
     // census can see which directories are STORED (`storage`, bean `16ei`).
     const resolved = new Map<string, Pick<ResolvedDirectory, "id" | "absPath" | "storage">>();
     for (const inst of instances) {
-      for (const d of resolveDirectories([{ name: "(local)", root: inst, own: true }])) {
+      let dirsForInst;
+      try {
+        dirsForInst = resolveDirectories([{ name: "(local)", root: inst, own: true }]);
+      } catch {
+        continue;
+      }
+      for (const d of dirsForInst) {
         if (d.graphTypologies.includes(kind as never) && !resolved.has(d.absPath)) resolved.set(d.absPath, d);
       }
     }
@@ -659,6 +756,7 @@ export function coverage(repo: string): { rows: KindCoverage[]; gates: GateCover
     const def = defaultGraphTypologies.get(kind);
     const typed = Boolean(def?.validator) || Boolean(def?.nodeSchemas);
     const judged = (crit?.ids.length ?? 0) > 0 || gs.length > 0;
+    const adversarial: AdversarialCoverageState = advCoverage.get(kind) ?? "never";
     const state: KindState =
       dirs.size === 0
         ? "no-directory"
@@ -689,6 +787,7 @@ export function coverage(repo: string): { rows: KindCoverage[]; gates: GateCover
       gates: gs.sort(),
       sidecars,
       typed,
+      adversarial,
     });
   }
   return { rows, gates, universe };
@@ -730,7 +829,7 @@ function main(): number {
   const pad = (s: string, n: number): string => (s.length >= n ? s : s + " ".repeat(n - s.length));
   const num = (n: number, w: number): string => " ".repeat(Math.max(0, w - String(n).length)) + String(n);
 
-  console.log(`    ${pad("kind", 20)} ${" ".repeat(1)}files  crit  gates  sidecars  state`);
+  console.log(`    ${pad("kind", 20)} ${" ".repeat(1)}files  crit  gates  sidecars  ${pad("adversarial", 11)}  state`);
   for (const r of rows) {
     // `typed-only` is marked `~` rather than `✓` or `✗`: it is a finding, and
     // it is a DIFFERENT one from `unaudited`. A shared mark would put the two
@@ -750,10 +849,17 @@ function main(): number {
                 ? "?"
                 : "·";
     console.log(
-      `  ${mark} ${pad(r.kind, 20)} ${num(r.files, 6)} ${num(r.criteria.length, 5)} ${num(r.gates.length, 6)} ${num(r.sidecars, 9)}  ${r.state}`,
+      `  ${mark} ${pad(r.kind, 20)} ${num(r.files, 6)} ${num(r.criteria.length, 5)} ${num(r.gates.length, 6)} ${num(r.sidecars, 9)}  ${pad(r.adversarial, 11)}  ${r.state}`,
     );
   }
   console.log("");
+
+  const advReviewed = rows.filter((r) => r.adversarial === "reviewed");
+  const advStale = rows.filter((r) => r.adversarial === "stale");
+  const advNever = rows.filter((r) => r.adversarial === "never");
+  console.log(
+    `Adversarial reviews: ${advReviewed.length} reviewed · ${advStale.length} stale · ${advNever.length} never\n`,
+  );
 
   const unaudited = byState("unaudited");
   const typedOnly = byState("typed-only");

@@ -117,7 +117,7 @@
  */
 import { spawnSync } from "node:child_process";
 import { existsSync, statSync } from "node:fs";
-import { basename, join, relative, resolve, sep } from "node:path";
+import { basename, dirname, join, relative, resolve, sep } from "node:path";
 
 import { DEFAULT_DIRECTORIES, instanceRootsIn, nestedDirectories, readDeclaration, rootForScope } from "../schemas/cat-harness.js";
 import type { DeclarationScope } from "../schemas/kg-node.js";
@@ -239,6 +239,13 @@ export function tipPresence(
   let marker;
   try {
     marker = readMarker(repoRoot, markerId);
+    if (!marker && abs) {
+      try {
+        marker = readMarker(dirname(abs), markerId);
+      } catch {
+        // fallback failed
+      }
+    }
   } catch (err) {
     return {
       state: "unmounted",

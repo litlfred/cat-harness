@@ -14,6 +14,21 @@ import { existsSync, readdirSync, readFileSync, type Dirent } from "node:fs";
 import { basename, dirname, join, resolve } from "node:path";
 
 /**
+ * The REPOSITORY root that contains `instanceRoot` — the aggregate checkout.
+ *
+ * Handles both monorepo layout (instance is a subdirectory of the repo root)
+ * and worktree layout (e.g. `.claude/worktrees/<name>/`).
+ */
+export function repoRootFor(instanceRoot: string): string {
+  const abs = resolve(instanceRoot);
+  const parent = join(abs, "..");
+  if (basename(parent) === "worktrees" && basename(join(parent, "..")) === ".claude") {
+    return resolve(parent, "../..");
+  }
+  return parent;
+}
+
+/**
  * The suffix every instance declaration carries — `<name>.config.json`.
  *
  * ## `harness.json` is gone, and this replaced it
