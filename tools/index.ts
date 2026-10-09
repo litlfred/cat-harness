@@ -382,7 +382,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
           { name: "status", schema: t("Text"), description: "Workflow dispatch status and run URL." },
         ],
       },
-      satisfies: ["package-release", "npm-kg-distribution", "document-publishing"],
+      satisfies: ["package-release", "npm-kg-distribution"],
       requires: { runtime: ["gh"], network: true },
       remedies: [
         { host: "api.github.com", tool: "package-release-manual" },
