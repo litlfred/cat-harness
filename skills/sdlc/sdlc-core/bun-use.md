@@ -79,7 +79,7 @@ To prevent boundary leakage and cross-repository compiler errors:
    - Run tests directly with `bun test`.
    - Run targeted tests for fast verification:
      ```sh
-     bun test test/my-check.test.ts
+     bun test scripts/tests/beans.test.ts
      ```
 2. **Preloading Test Environments**:
    - If test suites rely on global setups, ambient matchers, or test-specific

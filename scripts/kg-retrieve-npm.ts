@@ -15,15 +15,11 @@
  */
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { basename, dirname, join, relative, resolve } from "node:path";
+import { basename, join, relative, resolve } from "node:path";
 
-import {
-  BINARY_RELEASE_SCHEMA_TAG,
-  BinaryReleaseSchema,
-  type BinaryRelease,
-} from "../schemas/binary-release.js";
+import { BinaryReleaseSchema } from "../schemas/binary-release.js";
 
 export type GraphViewMode = "unhydrated" | "hydrated" | "both";
 

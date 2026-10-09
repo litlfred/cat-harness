@@ -24,7 +24,7 @@ import {
   unlinkSync,
   writeFileSync,
 } from "node:fs";
-import { basename, dirname, join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
 
 import {
   BINARY_RELEASE_SCHEMA_TAG,
