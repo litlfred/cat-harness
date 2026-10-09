@@ -2079,7 +2079,7 @@
         {
           "id": "views",
           "label": "visualisations you can open",
-          "value": 22
+          "value": 23
         }
       ],
       "visualisations": [
@@ -2158,7 +2158,7 @@
         },
         {
           "kind": "folio",
-          "note": "no viewer yet",
+          "path": "/cat-harness/folio/",
           "label": "Folio"
         },
         {
@@ -3031,7 +3031,7 @@
         }
       ],
       "findings": [
-        "cat-harness: declares 27 graph(s) with no published viewer — auto-docs, basic-cdn-site, bean-defs, bean-notes, board-positions, boards, code, code-list, doc-group, folio, interaction, memory, merge-queue, policies, scenarios, session-survey, substrate-snapshot, todo-feedback, todo-items, tool-release, typologies, uml, validators, vocab-mapping, voice-vendors, waiver, workflow-state. Declared and not rendered is a gap, not a dead link."
+        "cat-harness: declares 26 graph(s) with no published viewer — auto-docs, basic-cdn-site, bean-defs, bean-notes, board-positions, boards, code, code-list, doc-group, interaction, memory, merge-queue, policies, scenarios, session-survey, substrate-snapshot, todo-feedback, todo-items, tool-release, typologies, uml, validators, vocab-mapping, voice-vendors, waiver, workflow-state. Declared and not rendered is a gap, not a dead link."
       ],
       "navbarIcons": [
         "close",

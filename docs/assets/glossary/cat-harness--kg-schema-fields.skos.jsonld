@@ -28438,6 +28438,25 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/sticky-contribution.declaredcontribution.instanceroot",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "DeclaredContribution.instanceRoot"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The declaring instance's root path on disk, when known."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/sticky-contribution.ts#DeclaredContribution.instanceRoot",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/sticky-contribution.declaredcontribution.summary",
       "@type": "skos:Concept",
       "skos:inScheme": {

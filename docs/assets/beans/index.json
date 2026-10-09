@@ -2,7 +2,7 @@
   "$schema": "folio-bean-index/v1",
   "tile": {
     "beans": {
-      "count": 296,
+      "count": 286,
       "unit": "open beans"
     }
   },
@@ -3115,14 +3115,14 @@
     {
       "id": "folio-assistant-72gk",
       "title": "todos visualiser: 5 wireframe findings",
-      "status": "in-progress",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-4ccr",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-23T10:36:15Z",
-      "updatedAt": "2026-10-02T18:41:04Z",
+      "updatedAt": "2026-10-09T12:52:00Z",
       "preview": "Findings from the as-is wireframe `cat-harness/docs/wireframes/todos/` (intent.md, as-is.html, checks/), observed at 1280×800 and 390×844. Verbatim from its `## Findings`; a finding tagged → is also covered by that cross-cutting bug.\n\n1. **The items are not on the page.** `assets/todos/index.json` carries 3 items, each with a summary, status, priority, target page and `viewHref`/`editHref`: \"The h",
       "file": "beans/defs/folio-assistant-72gk--todos-visualiser-5-wireframe-findings.md"
     },
@@ -3430,14 +3430,14 @@
     {
       "id": "folio-assistant-7uao",
       "title": "27 QA witnesses record a stale auditor scriptHash while claiming freshness: fresh",
-      "status": "todo",
+      "status": "completed",
       "type": "bug",
       "priority": "",
       "parent": "folio-assistant-1xhc",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-03T02:43:27Z",
-      "updatedAt": "2026-10-03T02:43:27Z",
+      "updatedAt": "2026-10-09T14:26:00Z",
       "preview": "Found 2026-10-03 while regenerating after a merge, not by looking for it: a\n`docs:pages` run rewrote 27 witness files, and the ONLY change in each was the\n`scriptHash` of the auditor that produced it.\n\n## The measurement\n\n`auditorHash` is `sha256` of one file and nothing else —\n`cat-harness/scripts/kg-audit.ts:2380`:\n\n```ts\nconst auditorHash = sha256(readFileSync(join(AUDITOR_ROOT, \"scripts\", \"kg-",
       "file": "beans/defs/folio-assistant-7uao--27-qa-witnesses-record-a-stale-auditor-scripthash.md"
     },
@@ -3503,14 +3503,14 @@
     {
       "id": "folio-assistant-7x7g",
       "title": "external-schemas visualiser: 8 wireframe findings",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-4ccr",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-23T10:36:14Z",
-      "updatedAt": "2026-09-30T16:12:46Z",
+      "updatedAt": "2026-10-09T14:36:00Z",
       "preview": "Findings from the as-is wireframe `cat-harness/docs/wireframes/external-schemas/` (intent.md, as-is.html, checks/), observed at 1280×800 and 390×844. Verbatim from its `## Findings`; a finding tagged → is also covered by that cross-cutting bug.\n\n1. **44 of the 53 operative terms say nothing.** Every DCMI term (22) and every BPMN term (22) reads \"derived from the corpus; what this repository does w",
       "file": "beans/defs/folio-assistant-7x7g--external-schemas-visualiser-8-wireframe-findings.md"
     },
@@ -4309,14 +4309,14 @@
     {
       "id": "folio-assistant-9scf",
       "title": "folio visualiser: 5 wireframe findings",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-4ccr",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-23T10:36:14Z",
-      "updatedAt": "2026-09-30T16:12:46Z",
+      "updatedAt": "2026-10-09T14:40:00Z",
       "preview": "Findings from the as-is wireframe `cat-harness/docs/wireframes/folio/` (intent.md, as-is.html, checks/), observed at 1280×800 and 390×844. Verbatim from its `## Findings`; a finding tagged → is also covered by that cross-cutting bug.\n\n1. **Horizontal scroll at phone width.** At 390 px the document is 769 px wide (`scrollWidth` 769). The node table's *declared in*, *links* and *prose* columns start",
       "file": "beans/defs/folio-assistant-9scf--folio-visualiser-5-wireframe-findings.md"
     },
@@ -4970,15 +4970,15 @@
     {
       "id": "folio-assistant-bgrz",
       "title": "translation-status visualiser: 6 wireframe findings",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-4ccr",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-23T10:36:15Z",
-      "updatedAt": "2026-09-30T16:12:46Z",
-      "preview": "Findings from the as-is wireframe `cat-harness/docs/wireframes/translation-status/` (intent.md, as-is.html, checks/), observed at 1280×800 and 390×844. Verbatim from its `## Findings`; a finding tagged → is also covered by that cross-cutting bug.\n\n1. **Horizontal scroll at phone width.** At 390 px the document is 509 px wide (`scrollWidth` 509). The *fuzzy* and *untranslated* columns start off-scr",
+      "updatedAt": "2026-10-09T12:36:00Z",
+      "preview": "Findings from the as-is wireframe `cat-harness/docs/wireframes/translation-status/` (intent.md, as-is.html, checks/), observed at 1280×800 and 390×844. Verbatim from its `## Findings`; a finding tagged → is also covered by that cross-cutting bug.\n\n1. [x] **Horizontal scroll at phone width.** At 390 px the document is 509 px wide (`scrollWidth` 509). The *fuzzy* and *untranslated* columns start off",
       "file": "beans/defs/folio-assistant-bgrz--translation-status-visualiser-6-wireframe-findings.md"
     },
     {
@@ -5681,14 +5681,14 @@
     {
       "id": "folio-assistant-db80",
       "title": "methodologies visualiser: 8 wireframe findings",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-4ccr",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-23T10:36:15Z",
-      "updatedAt": "2026-09-30T16:12:46Z",
+      "updatedAt": "2026-10-09T14:21:00Z",
       "preview": "Findings from the as-is wireframe `cat-harness/docs/wireframes/methodologies/` (intent.md, as-is.html, checks/), observed at 1280×800 and 390×844. Verbatim from its `## Findings`; a finding tagged → is also covered by that cross-cutting bug.\n\n1. **DIIG contradicts itself.** Its **Origin** says \"Ingested at `smart-base/library/9789240010567-eng/`; every citation below resolves to a section there\" (",
       "file": "beans/defs/folio-assistant-db80--methodologies-visualiser-8-wireframe-findings.md"
     },
@@ -5849,14 +5849,14 @@
     {
       "id": "folio-assistant-duez",
       "title": "beans visualiser: 7 wireframe findings",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-4ccr",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-23T10:36:14Z",
-      "updatedAt": "2026-09-30T16:12:46Z",
+      "updatedAt": "2026-10-09T14:31:00Z",
       "preview": "Findings from the as-is wireframe `cat-harness/docs/wireframes/beans/` (intent.md, as-is.html, checks/), observed at 1280×800 and 390×844. Verbatim from its `## Findings`; a finding tagged → is also covered by that cross-cutting bug.\n\n1. **Epic labels are unreadable on a phone.** At 390 px the label column is about 120 px wide and clamps to two lines, so rows read \"KG: the knowledge…\", \"PROCESS: h",
       "file": "beans/defs/folio-assistant-duez--beans-visualiser-7-wireframe-findings.md"
     },
@@ -9441,14 +9441,14 @@
     {
       "id": "folio-assistant-nnpk",
       "title": "schemas visualiser: 5 wireframe findings",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-4ccr",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-23T10:36:15Z",
-      "updatedAt": "2026-09-30T16:12:47Z",
+      "updatedAt": "2026-10-09T12:48:40Z",
       "preview": "Findings from the as-is wireframe `cat-harness/docs/wireframes/schemas/` (intent.md, as-is.html, checks/), observed at 1280×800 and 390×844. Verbatim from its `## Findings`; a finding tagged → is also covered by that cross-cutting bug.\n\n1. **On a phone, picking a declaration shows nothing.** The detail pane is below the 560 px list box, and selecting an item leaves the page where it is (`scrollY` ",
       "file": "beans/defs/folio-assistant-nnpk--schemas-visualiser-5-wireframe-findings.md"
     },
@@ -10405,15 +10405,15 @@
     {
       "id": "folio-assistant-qbfm",
       "title": "tools visualiser: 6 wireframe findings",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-4ccr",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-23T10:36:15Z",
-      "updatedAt": "2026-09-30T16:12:47Z",
-      "preview": "Findings from the as-is wireframe `cat-harness/docs/wireframes/tools/` (intent.md, as-is.html, checks/), observed at 1280×800 and 390×844. Verbatim from its `## Findings`; a finding tagged → is also covered by that cross-cutting bug.\n\n1. **No way to find one tool among 71 except page search.** The only way in is a flat alphabetical table. It has no filter by invocation or by skill, and the stat bo",
+      "updatedAt": "2026-10-09T12:20:00Z",
+      "preview": "Findings from the as-is wireframe `cat-harness/docs/wireframes/tools/` (intent.md, as-is.html, checks/), observed at 1280×800 and 390×844. Verbatim from its `## Findings`; a finding tagged → is also covered by that cross-cutting bug.\n\n1. [x] **No way to find one tool among 71 except page search.** The only way in is a flat alphabetical table. It has no filter by invocation or by skill, and the sta",
       "file": "beans/defs/folio-assistant-qbfm--tools-visualiser-6-wireframe-findings.md"
     },
     {
@@ -11143,7 +11143,7 @@
     {
       "id": "folio-assistant-s0ki",
       "title": "uploads visualiser: 6 wireframe findings",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-4ccr",
@@ -15902,13 +15902,13 @@
         "status": "in-progress",
         "epics": 17,
         "total": 596,
-        "closed": 426,
-        "open": 170,
-        "inProgress": 46,
-        "todo": 123,
+        "closed": 436,
+        "open": 160,
+        "inProgress": 45,
+        "todo": 114,
         "draft": 1,
         "unclassified": 0,
-        "share": 0.714765100671141
+        "share": 0.7315436241610739
       },
       {
         "id": "folio-assistant-vuip",
@@ -15942,8 +15942,8 @@
       }
     ],
     "orphanOpen": 0,
-    "openTotal": 296,
-    "coveredOpen": 293,
+    "openTotal": 286,
+    "coveredOpen": 283,
     "duplicateIds": 0
   }
 }
