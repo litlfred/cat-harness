@@ -21,7 +21,8 @@
   },
   "scripts": {
     "test": "bun test",
-    "typecheck": "tsc --noEmit -p tsconfig.json"
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "check:adversarial-review": "bun run scripts/check-adversarial-review.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.127.0",
@@ -96,6 +97,7 @@
     "beans:query": "bun run cat-harness/scripts/beans-query.ts",
     "boards:default": "bun run cat-harness/scripts/gen-default-boards.ts",
     "boards:default:check": "bun run cat-harness/scripts/gen-default-boards.ts --check",
+    "check:adversarial-review": "bun run cat-harness/scripts/check-adversarial-review.ts",
     "check:agent-entry-links": "bun run cat-harness/scripts/check-agent-entry-links.ts",
     "check:agents-claims": "bun run cat-harness/scripts/check-agents-claims.ts",
     "check:bun-pin": "bun run cat-harness/scripts/check-bun-pin.ts",

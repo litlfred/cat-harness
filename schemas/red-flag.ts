@@ -235,6 +235,7 @@ export const ReviewCoverageSchema = z.object({
       }),
     )
     .default([]),
+  truncated: z.boolean().optional(),
 });
 export type ReviewCoverage = z.infer<typeof ReviewCoverageSchema>;
 
@@ -481,13 +482,14 @@ export interface ReviewGateOptions {
   enforcementMode?: EnforcementMode;
   currentHeadSha?: string;
   expectedHeadSha?: string;
+  authorSessions?: string[];
 }
 
 /**
  * Evaluate the gate behaviour for an adversarial review.
  *
  * @param review  The review to evaluate.
- * @param options Options including enforcement mode and head SHA comparison.
+ * @param options Options including enforcement mode, head SHA comparison, and author sessions.
  */
 export function evaluateReviewGateState(
   review: AdversarialReview,
@@ -508,18 +510,41 @@ export function evaluateReviewGateState(
     };
   }
 
-  // 2. Check unknown outcome or incomplete coverage
-  if (review.result === "unknown") {
+  // 2. Check unknown outcome or truncated coverage
+  if (review.result === "unknown" || review.coverage?.truncated === true) {
     return {
       state: "unknown",
       action: mode === "hard" ? "block" : "warn",
       blocksMerge: mode === "hard",
-      message: "Review outcome is unknown: reviewer failed or coverage was incomplete. Never a silent pass.",
+      message: review.coverage?.truncated
+        ? "Review coverage was truncated. Silent truncation is forbidden; a truncated review is unknown."
+        : "Review outcome is unknown: reviewer failed or coverage was incomplete. Never a silent pass.",
       evaluations: [],
     };
   }
 
-  // 3. Evaluate each finding
+  // 3. Check reviewer independence and complete record
+  const authors = [...(review.author_sessions ?? []), ...(options.authorSessions ?? [])];
+  if (authors.includes(review.reviewer.session)) {
+    return {
+      state: "unknown",
+      action: mode === "hard" ? "block" : "warn",
+      blocksMerge: mode === "hard",
+      message: `Reviewer independence violation: reviewer session '${review.reviewer.session}' matches author session.`,
+      evaluations: [],
+    };
+  }
+  if (review.reviewer.by === "agent" && (!review.reviewer.session || !review.reviewer.model)) {
+    return {
+      state: "unknown",
+      action: mode === "hard" ? "block" : "warn",
+      blocksMerge: mode === "hard",
+      message: "Reviewer record incomplete: agent reviewer must record session id and model.",
+      evaluations: [],
+    };
+  }
+
+  // 4. Evaluate each finding
   const findings = getReviewFindings(review);
   const evaluations = findings.map((f) => evaluateFindingGateState(f, mode));
 

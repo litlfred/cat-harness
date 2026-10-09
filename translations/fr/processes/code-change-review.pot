@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: code-change-review\n"
-"POT-Creation-Date: 2026-10-07T18:45:27.276Z\n"
+"POT-Creation-Date: 2026-10-09T20:52:51.533Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: processes/sdlc/code-change-review.bpmn:298
 #. Diagram element documentation
-msgid "A human or an agent acting AS reviewer. Nothing is a reviewer; somebody acts as one for the duration of this lane. For a rendered change the reviewer reads the agent's before/after preview rather than building one."
+msgid "A human or an agent acting AS reviewer. Nothing is a reviewer; somebody acts as one for the duration of this lane. For a rendered change the reviewer reads the agent's before/after preview rather than building one. On agent-touched changes, an adversarial code review evaluates against the RED FLAG taxonomy and writes a committed verdict."
 msgstr ""
 
 #: processes/sdlc/code-change-review.bpmn:119
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Claim the work item"
 msgstr ""
 
-#: processes/sdlc/code-change-review.bpmn:325
+#: processes/sdlc/code-change-review.bpmn:326
 #. Diagram label
 msgid "clear"
 msgstr ""
@@ -124,7 +124,7 @@ msgstr ""
 msgid "Exists as a separate lane for one reason: what it tests — the merge of head into base — is not a claim the Agent lane could make about its own tree, so GW_CIGreen has to be fed by an independent run rather than by the agent reporting its own gates as done."
 msgstr ""
 
-#: processes/sdlc/code-change-review.bpmn:323
+#: processes/sdlc/code-change-review.bpmn:324
 #. Diagram label
 msgid "findings"
 msgstr ""
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Getting a change to the PLATFORM from \"this is needed\" to merged: claim the work, branch and announce it, make the change, prove it against the platform's own gates, and carry it through review to a merge somebody else is not left holding. You are in this process for a change to folio-assistant itself. `content-change-review` is the same shape for a folio's content, and the acceptance differs: here a code reviewer judges the engineering, there a review committee judges the editorial. The loop back through \"root-cause the failure\" is the point of drawing this at all. Red CI is not a state you report and leave; it is a state you re-enter the process from. The same is true of a review that is not clear."
 msgstr ""
 
-#: processes/sdlc/code-change-review.bpmn:319
+#: processes/sdlc/code-change-review.bpmn:320
 #. Diagram label
 msgid "green"
 msgstr ""
@@ -169,7 +169,7 @@ msgstr ""
 msgid "Record what was done, and close"
 msgstr ""
 
-#: processes/sdlc/code-change-review.bpmn:320
+#: processes/sdlc/code-change-review.bpmn:321
 #. Diagram label
 msgid "red"
 msgstr ""
