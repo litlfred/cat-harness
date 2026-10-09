@@ -2001,6 +2001,39 @@
         "saw": "Figure 2 on page 4: Cost-vs.-resolved routing curves on SWE-Bench Verified comparing SWE-Router against baselines and random assignment reference",
         "draft": "Figure 2: Cost-vs.-resolved routing curves on held-out SWE-Bench Verified across two (weak, strong) model pairs. SWE-Router (K=3, green) sits above the random-assignment gray band and prompt-only embedding baselines across the cost spectrum, achieving a Pareto frontier that retains the majority of frontier model performance at a fraction of inference cost."
       }
+    },
+    "arxiv-2601.04544v1": {
+      "img-p001-1": {
+        "role": "logo",
+        "saw": "TCAndon running header placed in the top margin across pages 1 to 16",
+        "draft": "The TCAndon running header mark: 'TCAndon' text placed in the upper page margin as running header furniture across all pages of the paper."
+      },
+      "img-p002-2": {
+        "role": "figure",
+        "saw": "Figure 1: (a) performance router and (b) task router architectures",
+        "draft": "Figure 1: Comparison between (a) performance router which routes queries to different sized models (Small LLM vs Large LLM) to balance cost and latency, and (b) task router which routes queries to domain-specific expert agents (ELB Agent, CDN Agent, DNS Agent) to improve accuracy."
+      },
+      "img-p005-2": {
+        "role": "figure",
+        "saw": "Figure 2: (a) Solo Agent vs (b) Refining Agent execution pipelines",
+        "draft": "Figure 2: Execution pipeline architectures. (a) Solo Agent: the router selects a single solver agent to respond directly to the query. (b) Refining Agent: the router selects candidate solver agents (Solver Agent A, B, C) running in parallel, and a downstream Refining Agent aggregates and reconciles partial responses into a unified Final Answer."
+      },
+      "vfig-p008": {
+        "role": "figure",
+        "saw": "Figure 3: Refining Agent win rate comparing Consultation (27.0%) vs Troubleshooting (63.0%)",
+        "draft": "Figure 3: Horizontal bar chart showing Refining Agent human preference win rate in candidate agent conflict scenarios: 27.0% for consultation queries and 63.0% for troubleshooting queries, demonstrating superior multi-agent aggregation for complex troubleshooting tasks.",
+        "shows": [
+          "3"
+        ]
+      },
+      "vfig-p009": {
+        "role": "figure",
+        "saw": "Figure 4: RL Reward (a) and RL Entropy (b) comparing SFT-Only vs SFT+Slerp training curves",
+        "draft": "Figure 4: Training curves across 1750 RL steps comparing SFT-Only and SFT+Slerp initialization. (a) RL Reward shows both approaches converging to ~0.9. (b) RL Entropy shows SFT+Slerp maintaining higher entropy (~0.6 vs ~0.5), indicating enhanced exploration and resistance to entropy collapse.",
+        "shows": [
+          "4"
+        ]
+      }
     }
   },
   "attribution": {
@@ -2081,6 +2114,14 @@
       "inspected_at": "2026-10-09"
     },
     "arxiv-2607.00053v1": {
+      "inspected_by": {
+        "kind": "agent",
+        "id": "claude",
+        "model": "claude-opus-5"
+      },
+      "inspected_at": "2026-10-09"
+    },
+    "arxiv-2601.04544v1": {
       "inspected_by": {
         "kind": "agent",
         "id": "claude",

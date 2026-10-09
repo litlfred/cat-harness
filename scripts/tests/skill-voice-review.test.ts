@@ -19,7 +19,10 @@ import {
   type VoiceReview,
 } from "../skill-voice-review.ts";
 
-const REPO = resolve(import.meta.dir, "..", "..", "..");
+import { checkoutRootFor, instanceRootsIn, repoRootFor } from "../../schemas/cat-harness.ts";
+
+const ROOT = resolve(import.meta.dir, "../..");
+const REPO = instanceRootsIn(repoRootFor(ROOT)).length ? repoRootFor(ROOT) : checkoutRootFor(ROOT);
 
 describe("which voices judge skills", () => {
   test("nothing active is an empty set, and an unreadable config is undefined", () => {

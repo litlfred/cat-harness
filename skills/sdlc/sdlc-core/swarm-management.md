@@ -176,6 +176,39 @@ Stop early when the first two units disagree about something structural: that
 means the decomposition was wrong and the remaining N−2 will reproduce the
 disagreement N−2 more times, at full price.
 
+## Adaptive reasoning routing and Andon-cord stopping (TCAndon-Router / 2601.04544v1)
+
+TCAndon-Router ([`arxiv-2601.04544v1`](../../../library/arxiv-2601.04544v1/README.md))
+refines two critical assumptions in swarm execution: **uniform model allocation**
+and **run-to-completion fan-out**.
+
+### 1. Adaptive reasoning routing: difficulty-matched depth
+
+Static model tiering ("all workers run small, one reviewer runs large") wastes tokens
+on trivial slices and starves ambiguous ones. TCAR demonstrates that real tasks
+partition into two distinct regimes:
+
+| Query/task regime | Agent conflict ($|A_q|$) | Reasoning & model demand | Swarm strategy |
+|---|---|---|---|
+| **Consultation / extraction** (direct lookups, syntax transforms, single-file edits) | $|A_q| = 1$ | Low reasoning depth; small tier (`flash_lite` / `flash`) | Single worker suffices (win rate parity, 27.0% TCAR win over solo). Do not swarm. |
+| **Troubleshooting / diagnosis** (cross-cutting bugs, multi-subsystem latency, root-cause analysis) | $|A_q| > 1$ (avg 1.37) | High reasoning depth (`<reason>` rationale); heavy tier (`pro` / `opus`) | Parallel subset of domain experts + downstream **Refining Agent** ($63.0\%$ win rate over solo). |
+
+**Rules for adaptive routing in swarms:**
+- **Reason before allocating:** Before spawning workers, evaluate the sub-task's domain boundaries and difficulty. Generate an explicit rationale for why a worker or model tier is needed.
+- **Dynamic reasoning budget:** Do not assign fixed thinking budgets or uniform model tiers across the swarm. Allocate light models with shallow reasoning to deterministic checks and reserve deep reasoning / frontier models for units with genuine ambiguity.
+- **Controlled candidate subset:** When sub-tasks have overlapping responsibilities, dispatch only the small relevant candidate subset (empirically 1 to 3 workers, average ~1.4), never an unconstrained fan-out.
+- **Refining synthesis:** When multiple workers investigate overlapping root causes, route their partial answers to a designated Refining Agent (reviewer) that compares, deduplicates, and resolves contradictions into a single coherent verdict.
+
+### 2. Andon-cord stopping: early termination on defect signals
+
+In the Toyota Production System and TCAndon, an **Andon cord** allows any participant to halt the line immediately when an abnormality is detected, preventing defects from cascading downstream. In an LLM swarm, running an entire swarm to completion when the foundation is broken burns tokens at $N\times$ the rate of serial work.
+
+**Pull the Andon cord (kill running subagents and halt the swarm) when:**
+- **Structural divergence:** The first two completed units produce incompatible interfaces, conflicting schema assumptions, or contradictory interpretations of the brief.
+- **Out-of-scope / missing prerequisites (TCAR `oos` signal):** An early worker discovers that required context, APIs, or files do not exist or are fundamentally underspecified. Stop the swarm immediately and clarify with the user rather than letting $N-1$ remaining agents hallucinate missing inputs.
+- **Reasoning loop / drift:** An agent's reasoning log exhibits circular deliberation, repeated retries without progress, or mismatch between rationale and tool actions. Terminate that worker early rather than waiting for timeout.
+- **Deadlock or shared state collision:** Multiple workers wait on interdependent outputs or attempt conflicting branch updates.
+
 ## Known gaps
 
 This skill is **written ahead of the tooling**. There is no swarm runner in

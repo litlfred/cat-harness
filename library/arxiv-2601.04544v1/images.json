@@ -1,0 +1,166 @@
+{
+  "$schema": "folio-document-images/v1",
+  "doc_id": "arxiv-2601.04544v1",
+  "images": [
+    {
+      "id": "img-p001-1",
+      "file": "images/img-p001-1.png",
+      "role": "logo",
+      "basis": {
+        "method": "inspection",
+        "by": {
+          "kind": "agent",
+          "id": "claude",
+          "model": "claude-opus-5"
+        },
+        "at": "2026-10-09",
+        "saw": "TCAndon running header placed in the top margin across pages 1 to 16",
+        "page": 1
+      },
+      "narrative": {
+        "text": "The TCAndon running header mark: 'TCAndon' text placed in the upper page margin as running header furniture across all pages of the paper.",
+        "state": "draft",
+        "drafted_by": {
+          "kind": "agent",
+          "id": "claude",
+          "model": "claude-opus-5"
+        },
+        "drafted_at": "2026-10-09"
+      },
+      "placements": [
+        {
+          "page": 1,
+          "coverage": 0.001103,
+          "imagesOnPage": 1
+        },
+        {
+          "page": 2,
+          "coverage": 0.001103,
+          "imagesOnPage": 2
+        },
+        {
+          "page": 3,
+          "coverage": 0.001103,
+          "imagesOnPage": 1
+        },
+        {
+          "page": 4,
+          "coverage": 0.001103,
+          "imagesOnPage": 1
+        },
+        {
+          "page": 5,
+          "coverage": 0.001103,
+          "imagesOnPage": 2
+        },
+        {
+          "page": 6,
+          "coverage": 0.001103,
+          "imagesOnPage": 1
+        },
+        {
+          "page": 7,
+          "coverage": 0.001103,
+          "imagesOnPage": 1
+        },
+        {
+          "page": 8,
+          "coverage": 0.001103,
+          "imagesOnPage": 1
+        },
+        {
+          "page": 9,
+          "coverage": 0.001103,
+          "imagesOnPage": 1
+        },
+        {
+          "page": 10,
+          "coverage": 0.001103,
+          "imagesOnPage": 1
+        },
+        {
+          "page": 11,
+          "coverage": 0.001103,
+          "imagesOnPage": 1
+        },
+        {
+          "page": 12,
+          "coverage": 0.001103,
+          "imagesOnPage": 1
+        },
+        {
+          "page": 13,
+          "coverage": 0.001103,
+          "imagesOnPage": 1
+        },
+        {
+          "page": 14,
+          "coverage": 0.001103,
+          "imagesOnPage": 1
+        },
+        {
+          "page": 15,
+          "coverage": 0.001103,
+          "imagesOnPage": 1
+        },
+        {
+          "page": 16,
+          "coverage": 0.001103,
+          "imagesOnPage": 1
+        }
+      ]
+    },
+    {
+      "id": "img-p002-2",
+      "file": "images/img-p002-2.png",
+      "role": "figure",
+      "basis": {
+        "method": "inspection",
+        "by": {
+          "kind": "agent",
+          "id": "claude",
+          "model": "claude-opus-5"
+        },
+        "at": "2026-10-09",
+        "saw": "Figure 1: (a) performance router and (b) task router architectures",
+        "page": 2
+      },
+      "narrative": {
+        "text": "Figure 1: Comparison between (a) performance router which routes queries to different sized models (Small LLM vs Large LLM) to balance cost and latency, and (b) task router which routes queries to domain-specific expert agents (ELB Agent, CDN Agent, DNS Agent) to improve accuracy.",
+        "state": "draft",
+        "drafted_by": {
+          "kind": "agent",
+          "id": "claude",
+          "model": "claude-opus-5"
+        },
+        "drafted_at": "2026-10-09"
+      }
+    },
+    {
+      "id": "img-p005-2",
+      "file": "images/img-p005-2.png",
+      "role": "figure",
+      "basis": {
+        "method": "inspection",
+        "by": {
+          "kind": "agent",
+          "id": "claude",
+          "model": "claude-opus-5"
+        },
+        "at": "2026-10-09",
+        "saw": "Figure 2: (a) Solo Agent vs (b) Refining Agent execution pipelines",
+        "page": 5
+      },
+      "narrative": {
+        "text": "Figure 2: Execution pipeline architectures. (a) Solo Agent: the router selects a single solver agent to respond directly to the query. (b) Refining Agent: the router selects candidate solver agents (Solver Agent A, B, C) running in parallel, and a downstream Refining Agent aggregates and reconciles partial responses into a unified Final Answer.",
+        "state": "draft",
+        "drafted_by": {
+          "kind": "agent",
+          "id": "claude",
+          "model": "claude-opus-5"
+        },
+        "drafted_at": "2026-10-09"
+      }
+    }
+  ]
+}

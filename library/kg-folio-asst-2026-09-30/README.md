@@ -1,5 +1,5 @@
 <!-- kg:subgraph:begin -->
-# kg-folio-asst-2026-09-30
+# WHO SMART Guidelines: Architecture & Knowledge Content Platform
 
 ingested source material — attributed to its document, not folio content
 
