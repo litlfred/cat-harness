@@ -95,5 +95,5 @@
     "Process_Publication"
   ],
   "source": "https://github.com/litlfred/folio-assistant/blob/main/todos/items/what-kick-off-means-for-a-ci-watcher.md",
-  "inSubgraph": "https://litlfred.github.io/folio-assistant/folio-assistant/folio-assistant.jsonld#directory/todos"
+  "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/todos"
 }

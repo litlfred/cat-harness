@@ -11,7 +11,7 @@
         "kind": "directory"
       },
       "description": "The BPMN core owns -- `deep-document-research`, Doc-Researcher's iterative loop as an executable process. A TOP-LEVEL directory rather than `methodologies/processes/`, which is where it was first put: `check:layout-norms` refused that as a package subdirectory of an already-declared graph, declaring the same directory twice. `smart-base` carries the nested shape and is baselined, but the harness's own diagrams live in a top-level `processes/` and so do these. That satisfies bean `g43o` -- `workflowDirs` resolves from a DECLARED directory -- without the double declaration, which is strictly better than baselining a third instance of a tolerated exception.",
-      "fileCount": 23,
+      "fileCount": 0,
       "holdsGraph": [
         "bootstrap:graphTypology/processes"
       ],
@@ -37,7 +37,6 @@
           "name": "Getting started",
           "nodeCount": 18,
           "sourcePath": "processes/conduct/getting-started.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/conduct/getting-started.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_GettingStarted/node/StartEvent_AskToStart",
           "summary": "Somebody said \"create a folio\": work out which request they meant, with the branch computed by a decision table that may answer \"ask\", and what has to be true before anything is written."
         },
@@ -636,7 +635,6 @@
           "name": "Content Change and Review",
           "nodeCount": 45,
           "sourcePath": "processes/content/content-change-review.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/content-change-review.bpmn",
           "startNode": [
             "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_ContentChangeReview/node/Start_Author",
             "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_ContentChangeReview/node/Start_Agent",
@@ -1868,7 +1866,6 @@
           "name": "Authoring a document",
           "nodeCount": 13,
           "sourcePath": "processes/content/authoring-a-document.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/authoring-a-document.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_DocumentAuthoring/node/StartEvent_NewDocument",
           "summary": "How a document folio — structured prose and policy guidance, with no Lean and no required TeX — is authored, built and reviewed end to end."
         },
@@ -2255,7 +2252,6 @@
           "name": "Editing and HCI validation",
           "nodeCount": 26,
           "sourcePath": "processes/content/editing-hci-validation.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/editing-hci-validation.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_Editing/node/StartEvent_EditRequested",
           "summary": "What happens to one proposed change to one content block: drafted, validated mechanically and by review, shown to the editor, and committed to the corpus only if accepted."
         },
@@ -3007,7 +3003,6 @@
           "name": "Evidence for a recommendation",
           "nodeCount": 17,
           "sourcePath": "processes/content/evidence-retrieval.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/evidence-retrieval.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_EvidenceRetrieval/node/StartEvent_Recommendation",
           "summary": "Frame a question for a recommendation, retrieve and appraise evidence from trusted sources, and either attach it or record the gap."
         },
@@ -3490,7 +3485,6 @@
           "name": "Content lifecycle",
           "nodeCount": 11,
           "sourcePath": "processes/content/content-lifecycle.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/content-lifecycle.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_Lifecycle/node/StartEvent_Initiative",
           "summary": "One cycle of a folio from plan to retirement, calling editing and the draft-to-publication path as call activities."
         },
@@ -3834,7 +3828,6 @@
           "name": "Public comment on a review draft",
           "nodeCount": 20,
           "sourcePath": "processes/content/public-comment.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/public-comment.bpmn",
           "startNode": [
             "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_PublicComment/node/StartEvent_CommentsReturned",
             "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_PublicComment/node/StartEvent_BlockFeedback",
@@ -4385,7 +4378,6 @@
           "name": "Draft, review and publish",
           "nodeCount": 19,
           "sourcePath": "processes/content/draft-to-publication.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/content/draft-to-publication.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_Publication/node/StartEvent_CorpusUpdated",
           "summary": "How the corpus becomes an officially published folio: a draft publication, its review, and the release authority's decision."
         },
@@ -5018,7 +5010,6 @@
           "name": "Ingestion subprocess — build the L1 knowledge graph",
           "nodeCount": 7,
           "sourcePath": "processes/library/ingest-build-l1-kg.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/library/ingest-build-l1-kg.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_BuildL1Kg/node/StartEvent_Derived2",
           "summary": "Build the L1 knowledge graph from what ingestion derived: Dublin Core, the manifest, the assets, their binding and their links."
         },
@@ -5205,7 +5196,6 @@
           "name": "Deep document research",
           "nodeCount": 9,
           "sourcePath": "processes/library/deep-document-research.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/library/deep-document-research.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_DeepDocumentResearch/node/Start_Question",
           "summary": "Answer a question from a corpus this folio ALREADY HOLDS, iteratively, stopping on a stated condition."
         },
@@ -5462,7 +5452,6 @@
           "name": "Ingestion subprocess — derive content from the assets",
           "nodeCount": 10,
           "sourcePath": "processes/library/ingest-derive-content.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/library/ingest-derive-content.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_DeriveContent/node/StartEvent_Assets",
           "summary": "Derive content from an ingested source's assets: the archive, technical metadata, images, audio, tabular data and provenance."
         },
@@ -5755,7 +5744,6 @@
           "name": "Ingestion subprocess — extract structure",
           "nodeCount": 8,
           "sourcePath": "processes/library/ingest-extract-structure.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/library/ingest-extract-structure.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_ExtractStructure/node/StartEvent_Binary",
           "summary": "Extract the structure of an uploaded source: its text layer, OCR where it has none, sections, structure and claim candidates."
         },
@@ -5973,7 +5961,6 @@
           "name": "L1 document ingestion — a document to the L1 source knowledge graph",
           "nodeCount": 16,
           "sourcePath": "processes/library/l1-document-ingestion.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/library/l1-document-ingestion.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_L1DocumentIngestion/node/StartEvent_Document",
           "summary": "folio-assistant — L1 document ingestion — a document to the L1 source knowledge graph."
         },
@@ -6419,7 +6406,6 @@
           "name": "Ingestion subprocess — the L1 completeness gate",
           "nodeCount": 8,
           "sourcePath": "processes/library/ingest-l1-completeness-gate.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/library/ingest-l1-completeness-gate.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_L1Gate/node/StartEvent_KgBuilt",
           "summary": "Decide whether the derived content is complete enough to promote to the L1 graph, and who says so."
         },
@@ -6684,7 +6670,6 @@
           "name": "Board: open and close content",
           "nodeCount": 10,
           "sourcePath": "processes/ui/board-open-close.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/ui/board-open-close.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_BoardOpenClose/node/Start_Board",
           "summary": "What a reader does to a board and what the renderer does back: every card rests as its avatar, a window opens onto the one the reader chose, and it closes back to where it came from."
         },
@@ -6997,7 +6982,6 @@
           "name": "Board: place a note",
           "nodeCount": 6,
           "sourcePath": "processes/ui/board-place-note.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/ui/board-place-note.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_BoardPlaceNote/node/Start_Place",
           "summary": "Putting a note at a spot on a board: write the note into the folio, record where it was drawn on THIS board, and sweep any position whose note has gone."
         },
@@ -7175,7 +7159,6 @@
           "name": "Board: relocate content to the trashcan",
           "nodeCount": 9,
           "sourcePath": "processes/ui/board-relocate.bpmn",
-          "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/ui/board-relocate.bpmn",
           "startNode": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_BoardRelocate/node/Start_Fishbone",
           "summary": "Moving open content to the trashcan from the board, with the reader's confirmation in front of the move and not behind it."
         },

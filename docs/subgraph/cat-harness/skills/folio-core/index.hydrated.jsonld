@@ -11,7 +11,8 @@
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/mcp-assembly",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/mcp-contract",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/mcp-projection",
-        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/skills-and-tools"
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/skills-and-tools",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/tool-authoring"
       ],
       "description": "Content-agnostic platform skills that have not yet moved into a topic: the MCP tool surface (assembly, contract, projection), skills-and-tools and tool coverage. Synced into a content repo as a folio-core bundle. The knowledge-graph, library, UI, conduct, process, authoring and SDLC skills moved into their topics (bean 9umr).",
       "hasManifest": true,
@@ -110,15 +111,34 @@
       "hasInstructions": true,
       "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/folio-core",
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-      "instructionLines": 402,
+      "instructionLines": 407,
       "instructionsPath": "skills/folio-core/skills-and-tools.md",
       "name": "skills-and-tools",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/80c9f175b58173a8b2f619c2edf8c86144e573faf68232cacf1a54c069ddfe86",
-        "bytes": 21972,
-        "sha256": "80c9f175b58173a8b2f619c2edf8c86144e573faf68232cacf1a54c069ddfe86"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/34a0ff8f32f28368872abdfa8e59bcd4a58a5407d68e7c18b49d5bbc50b27e28",
+        "bytes": 22261,
+        "sha256": "34a0ff8f32f28368872abdfa8e59bcd4a58a5407d68e7c18b49d5bbc50b27e28"
       },
       "title": "Skills and Tools — the skill says what, the Tool says how"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/tool-authoring",
+      "@type": "bootstrap:Skill",
+      "ambiguous": false,
+      "description": "How concrete Tools are authored, structured, packaged, and registered across the separated multi-repository platform: defining Knowledge Graph Tool nodes, implementing TypeScript handlers in the tools repository, registering MCP tools, isolating toolchain dependencies, and validating tool-to-skill alignment.",
+      "hasIOContract": false,
+      "hasInstructions": true,
+      "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/folio-core",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
+      "instructionLines": 159,
+      "instructionsPath": "skills/folio-core/tool-authoring.md",
+      "name": "tool-authoring",
+      "payload": {
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7517f4f5f05875ba64ae1c4c44c4717e032dcc8bf95269b67c3bb6ab29532aa2",
+        "bytes": 6499,
+        "sha256": "7517f4f5f05875ba64ae1c4c44c4717e032dcc8bf95269b67c3bb6ab29532aa2"
+      },
+      "title": "Tool Authoring — from capability to concrete mechanism"
     }
   ],
   "holdsGraph": [

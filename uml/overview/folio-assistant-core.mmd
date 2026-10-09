@@ -425,6 +425,14 @@ classDiagram
       $schema [1] 'kg-qa-manifest/v1'
       auditor [1] object
     }
+    class folio_assistant_core_qa_qa_results_v1["qa-results/v1"] {
+      <<ts: QaResult>>
+      $schema [1] 'qa-results/v1'
+      producer [1]  /** Repo-relative path to the script. */ script: string; /** 12-char SHA-256 prefix of that script's source, as `script-qa` writes. */ script_hash: string; 
+      subject [1]  kind: string; id: string 
+      families [1] Record~string, QaResultFamily~
+      total [1] number
+    }
   }
   namespace folio_assistant_core__memory {
     class folio_assistant_core_memory_AlsoAbout["AlsoAbout"] {
@@ -448,6 +456,11 @@ classDiagram
       archived [0..1] boolean
       detail [0..1] string
       $schema [1] 'folio-memory/v1'
+    }
+  }
+  namespace folio_assistant_core__beans {
+    class n_folio_assistant_core_beans_beans["beans: no node schema"] {
+      <<could not determine>>
     }
   }
   namespace folio_assistant_core__voices {
@@ -498,6 +511,22 @@ classDiagram
       extends [0..1] object
       activeIn [0..1] object
       superseded [0..1] object
+    }
+  }
+  namespace folio_assistant_core__defs {
+    class n_folio_assistant_core_defs_bean_defs["bean-defs: no node schema"] {
+      <<could not determine>>
+    }
+  }
+  namespace folio_assistant_core__notes {
+    class folio_assistant_core_notes_bean_notes_shape["bean-notes"] {
+      <<schema: schemas/bean-note.ts>>
+      fields not machine-readable: schemas/bean-note.ts names no exported schema
+    }
+  }
+  namespace folio_assistant_core__workflows {
+    class n_folio_assistant_core_workflows_workflow_state["workflow-state: no node schema"] {
+      <<could not determine>>
     }
   }
   cssClass "n_folio_assistant_core_folio_assistant_core_docs_docs" fa_uml_kind_docs
@@ -562,9 +591,12 @@ classDiagram
   cssClass "folio_assistant_core_core_processes_omg_bpmn_2_0" fa_uml_kind_processes
   cssClass "folio_assistant_core_qa_kg_qa_v1_kg_qa_v1" fa_uml_kind_qa
   cssClass "folio_assistant_core_qa_kg_qa_manifest_v1_kg_qa_manifest_v1" fa_uml_kind_qa
+  cssClass "folio_assistant_core_qa_qa_results_v1" fa_uml_kind_qa
   folio_assistant_core_memory_MemoryNode *-- "0..*" folio_assistant_core_memory_AlsoAbout : alsoAbout
   cssClass "folio_assistant_core_memory_AlsoAbout" fa_uml_kind_memory
   cssClass "folio_assistant_core_memory_MemoryNode" fa_uml_kind_memory
+  cssClass "n_folio_assistant_core_beans_beans" fa_uml_kind_beans
+  cssClass "n_folio_assistant_core_beans_beans" fa_uml_undetermined
   folio_assistant_core_voices_VoiceProfile *-- "1..*" folio_assistant_core_voices_Source : sources
   folio_assistant_core_voices_Rule *-- "0..*" folio_assistant_core_voices_Pattern : patterns
   folio_assistant_core_voices_Rule *-- "0..*" folio_assistant_core_voices_Terminology : terminology
@@ -574,3 +606,8 @@ classDiagram
   cssClass "folio_assistant_core_voices_Terminology" fa_uml_kind_voices
   cssClass "folio_assistant_core_voices_Rule" fa_uml_kind_voices
   cssClass "folio_assistant_core_voices_VoiceProfile" fa_uml_kind_voices
+  cssClass "n_folio_assistant_core_defs_bean_defs" fa_uml_kind_bean_defs
+  cssClass "n_folio_assistant_core_defs_bean_defs" fa_uml_undetermined
+  cssClass "folio_assistant_core_notes_bean_notes_shape" fa_uml_kind_bean_notes
+  cssClass "n_folio_assistant_core_workflows_workflow_state" fa_uml_kind_workflow_state
+  cssClass "n_folio_assistant_core_workflows_workflow_state" fa_uml_undetermined

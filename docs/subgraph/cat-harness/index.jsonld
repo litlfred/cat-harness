@@ -39,6 +39,31 @@
       "name": "basic-cdn-site"
     },
     {
+      "@id": "cat-harness:graphTypology/bean-defs",
+      "@type": "bootstrap:GraphTypology",
+      "name": "bean-defs"
+    },
+    {
+      "@id": "cat-harness:graphTypology/bean-notes",
+      "@type": "bootstrap:GraphTypology",
+      "name": "bean-notes"
+    },
+    {
+      "@id": "cat-harness:graphTypology/beans",
+      "@type": "bootstrap:GraphTypology",
+      "name": "beans"
+    },
+    {
+      "@id": "cat-harness:graphTypology/board-positions",
+      "@type": "bootstrap:GraphTypology",
+      "name": "board-positions"
+    },
+    {
+      "@id": "cat-harness:graphTypology/boards",
+      "@type": "bootstrap:GraphTypology",
+      "name": "boards"
+    },
+    {
       "@id": "cat-harness:graphTypology/cat-harness",
       "@type": "bootstrap:GraphTypology",
       "name": "cat-harness"
@@ -79,9 +104,19 @@
       "name": "interaction"
     },
     {
+      "@id": "cat-harness:graphTypology/issue-marks",
+      "@type": "bootstrap:GraphTypology",
+      "name": "issue-marks"
+    },
+    {
       "@id": "cat-harness:graphTypology/memory",
       "@type": "bootstrap:GraphTypology",
       "name": "memory"
+    },
+    {
+      "@id": "cat-harness:graphTypology/merge-queue",
+      "@type": "bootstrap:GraphTypology",
+      "name": "merge-queue"
     },
     {
       "@id": "cat-harness:graphTypology/methodology",
@@ -107,6 +142,11 @@
       "@id": "cat-harness:graphTypology/requirements",
       "@type": "bootstrap:GraphTypology",
       "name": "requirements"
+    },
+    {
+      "@id": "cat-harness:graphTypology/session-survey",
+      "@type": "bootstrap:GraphTypology",
+      "name": "session-survey"
     },
     {
       "@id": "cat-harness:graphTypology/substrate-snapshot",
@@ -159,6 +199,11 @@
       "name": "waiver"
     },
     {
+      "@id": "cat-harness:graphTypology/workflow-state",
+      "@type": "bootstrap:GraphTypology",
+      "name": "workflow-state"
+    },
+    {
       "@id": "folio-assistant-core:graphTypology/folio",
       "@type": "bootstrap:GraphTypology",
       "name": "folio"
@@ -167,6 +212,21 @@
       "@id": "folio-assistant-core:graphTypology/library",
       "@type": "bootstrap:GraphTypology",
       "name": "library"
+    },
+    {
+      "@id": "folio-assistant-core:graphTypology/todo-feedback",
+      "@type": "bootstrap:GraphTypology",
+      "name": "todo-feedback"
+    },
+    {
+      "@id": "folio-assistant-core:graphTypology/todo-items",
+      "@type": "bootstrap:GraphTypology",
+      "name": "todo-items"
+    },
+    {
+      "@id": "folio-assistant-core:graphTypology/todos",
+      "@type": "bootstrap:GraphTypology",
+      "name": "todos"
     },
     {
       "@id": "folio-assistant-core:graphTypology/uploads",
@@ -397,6 +457,17 @@
       "title": "cat-harness"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#asset/npm-manifest",
+      "@type": "bootstrap:Asset",
+      "name": "npm-manifest",
+      "payload": {
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5f143edf708c4e22ceb3189cbfbe8b14d3089e9019525574bbf74fe6425ba94e",
+        "bytes": 23567,
+        "sha256": "5f143edf708c4e22ceb3189cbfbe8b14d3089e9019525574bbf74fe6425ba94e"
+      },
+      "title": "package.json"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#capability/bun-runtime",
       "@type": "cat-harness:Capability",
       "name": "Bun Runtime"
@@ -542,6 +613,11 @@
       "name": "attestations"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/beans",
+      "@type": "bootstrap:Subgraph",
+      "name": "beans"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/cat-harness-adapters",
       "@type": "bootstrap:Subgraph",
       "name": "cat-harness-adapters"
@@ -577,6 +653,11 @@
       "name": "cat-harness-validators"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/checkout-uploads",
+      "@type": "bootstrap:Subgraph",
+      "name": "checkout-uploads"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/code-lists",
       "@type": "bootstrap:Subgraph",
       "name": "code-lists"
@@ -605,6 +686,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/health",
       "@type": "bootstrap:Subgraph",
       "name": "health"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/issue-marks",
+      "@type": "bootstrap:Subgraph",
+      "name": "issue-marks"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/library",
@@ -651,6 +737,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/swimlane-glossary",
       "@type": "bootstrap:Subgraph",
       "name": "swimlane-glossary"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/todos",
+      "@type": "bootstrap:Subgraph",
+      "name": "todos"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/tool-releases",
@@ -748,6 +839,12 @@
       "@type": "cat-harness:ExternalSchema",
       "name": "w3c-hydra",
       "title": "Hydra Core Vocabulary"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#externalSchema/w3c-n-quads",
+      "@type": "cat-harness:ExternalSchema",
+      "name": "w3c-n-quads",
+      "title": "RDF 1.1 N-Quads: A line-based syntax for RDF datasets"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#externalSchema/w3c-odrl",
@@ -1531,6 +1628,12 @@
       "title": "note-anchor"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/nquads-distribution",
+      "@type": "cat-harness:Schema",
+      "name": "nquads-distribution",
+      "title": "nquads-distribution"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/odrl",
       "@type": "cat-harness:Schema",
       "name": "odrl",
@@ -2257,6 +2360,12 @@
       "title": "Headless render QC (Playwright)"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/index-config-migrate",
+      "@type": "cat-harness:Tool",
+      "name": "index-config-migrate",
+      "title": "Convert a checkout to a root index.config.json"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/ingest-extended",
       "@type": "cat-harness:Tool",
       "name": "ingest-extended",
@@ -2279,6 +2388,12 @@
       "@type": "cat-harness:Tool",
       "name": "kg-graph-export",
       "title": "Knowledge-graph export"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/kg-retrieve-npm",
+      "@type": "cat-harness:Tool",
+      "name": "kg-retrieve-npm",
+      "title": "Retrieve a remote Knowledge Graph via npm package or tarball"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/kg-validate",
@@ -2419,16 +2534,34 @@
       "title": "Node kind pages"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/npm",
+      "@type": "cat-harness:Tool",
+      "name": "npm",
+      "title": "Package manager and registry client for npm and GitHub Packages"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/ns-vocabulary",
       "@type": "cat-harness:Tool",
       "name": "ns-vocabulary",
       "title": "Namespace vocabulary"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/pack-tarball",
+      "@type": "cat-harness:Tool",
+      "name": "pack-tarball",
+      "title": "Package instance into an npm tarball and record binary release"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/package-release-manual",
       "@type": "cat-harness:Tool",
       "name": "package-release-manual",
       "title": "Package release by hand"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/package-release-workflow",
+      "@type": "cat-harness:Tool",
+      "name": "package-release-workflow",
+      "title": "Release package via GitHub Actions release workflow"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/pages-index",

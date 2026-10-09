@@ -46,9 +46,9 @@
       "@type": "bootstrap:Skill",
       "name": "docs-generation",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ef3754d751602f65be850b05c8e85e3c92e658c27883a3f3921883ceaaaa101c",
-        "bytes": 6631,
-        "sha256": "ef3754d751602f65be850b05c8e85e3c92e658c27883a3f3921883ceaaaa101c"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e91f55ea56052809882b1a9b74305a74bae88409514708f62d1f341aa4d5fa5c",
+        "bytes": 7074,
+        "sha256": "e91f55ea56052809882b1a9b74305a74bae88409514708f62d1f341aa4d5fa5c"
       },
       "title": "Documentation Generation Skill"
     },
@@ -57,9 +57,9 @@
       "@type": "bootstrap:Skill",
       "name": "harness-tiles",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/38fcde788a47a04b883b40e4e3667760bf6a8eff81ca53900fc3c036c42a3dd5",
-        "bytes": 35678,
-        "sha256": "38fcde788a47a04b883b40e4e3667760bf6a8eff81ca53900fc3c036c42a3dd5"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/eec40f18c68743ea6c9d3b0d59a4f4b32a562959db283c6b44604f032cfabe65",
+        "bytes": 35098,
+        "sha256": "eec40f18c68743ea6c9d3b0d59a4f4b32a562959db283c6b44604f032cfabe65"
       },
       "title": "A tile is the harness's, not the node's"
     },

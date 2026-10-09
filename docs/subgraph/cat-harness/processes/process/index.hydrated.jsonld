@@ -18,7 +18,6 @@
       "name": "Actor and role administration",
       "nodeCount": 11,
       "sourcePath": "processes/process/actor-role-administration.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/process/actor-role-administration.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_ActorRoleAdministration/node/Start_AdminRequest",
       "summary": "Changing who can do what: adding an actor, opening or closing a role to one, granting or revoking a permission — and auditing the graph afterwards, because the declaration and the graph are two things that can disagree."
     },
@@ -363,7 +362,6 @@
       "name": "CRDM requirements",
       "nodeCount": 13,
       "sourcePath": "processes/process/crdm-requirements.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/process/crdm-requirements.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM/node/Start_BA",
       "summary": "A feature request turned into agreed, signed-off requirements and delivered, with one call activity per CRDM phase from issue linking to close-out."
     },
@@ -707,7 +705,6 @@
       "name": "CRDM close-out",
       "nodeCount": 8,
       "sourcePath": "processes/process/crdm-close.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/process/crdm-close.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Close/node/Start_Process_CRDM_Close",
       "summary": "The stakeholders sign off, the BA confirms every criterion is met, and only then does the agent close the issue."
     },
@@ -948,7 +945,6 @@
       "name": "CRDM data model",
       "nodeCount": 8,
       "sourcePath": "processes/process/crdm-data-model.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/process/crdm-data-model.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_DataModel/node/Start_Process_CRDM_DataModel",
       "summary": "Draft the data model from the BPA and the requirements, have the BA confirm the entities and the stakeholders confirm the cardinalities, and loop until both."
     },
@@ -1186,7 +1182,6 @@
       "name": "CRDM Phase 6 — implement, MVP, acceptance",
       "nodeCount": 14,
       "sourcePath": "processes/process/crdm-deliver.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/process/crdm-deliver.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Deliver/node/Start_Process_CRDM_Deliver",
       "summary": "One phase and not three, because the loops say so: an increment the BA rejects, an MVP that is not ready, and stakeholder findings all route back into implementation."
     },
@@ -1594,7 +1589,6 @@
       "name": "CRDM — link the work to an issue",
       "nodeCount": 7,
       "sourcePath": "processes/process/crdm-issue-linking.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/process/crdm-issue-linking.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Issue/node/Start_Process_CRDM_Issue",
       "summary": "Scan for a GitHub issue matching the feature work, then link it or ask — an issue is never created without the BA's permission."
     },
@@ -1792,7 +1786,6 @@
       "name": "CRDM Phase 1 — needs",
       "nodeCount": 7,
       "sourcePath": "processes/process/crdm-needs.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/process/crdm-needs.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Needs/node/Start_Process_CRDM_Needs",
       "summary": "Identify the stakeholders, synthesise a needs statement from the sources, and loop until the BA and the stakeholders both recognise it."
     },
@@ -2005,7 +1998,6 @@
       "name": "CRDM Phases 2–4 — BPA and requirements",
       "nodeCount": 8,
       "sourcePath": "processes/process/crdm-requirements-definition.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/process/crdm-requirements-definition.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Requirements/node/Start_Process_CRDM_Requirements",
       "summary": "Map the current workflow, then define the requirements and the impact they carry, and loop until approved."
     },
@@ -2245,7 +2237,6 @@
       "name": "CRDM Phase 5 — beans and sign-off",
       "nodeCount": 12,
       "sourcePath": "processes/process/crdm-signoff.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/process/crdm-signoff.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Signoff/node/Start_Process_CRDM_Signoff",
       "summary": "The approved requirements become work-plan items, the BA signs off, and the branch is announced on the issue."
     },
@@ -2595,7 +2586,6 @@
       "name": "Render a Knowledge Graph to a CDN",
       "nodeCount": 8,
       "sourcePath": "processes/process/render-kg-to-cdn.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/process/render-kg-to-cdn.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_RenderKgToCdn/node/Start_Render",
       "summary": "Render a Knowledge Graph — the whole of it, or a list of its Subgraphs — for publication to a CDN at a publication root URL, and report a STATUS and a MESSAGE."
     },
@@ -2819,7 +2809,6 @@
       "name": "Session state machine",
       "nodeCount": 11,
       "sourcePath": "processes/process/session-state-machine.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/process/session-state-machine.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SessionStateMachine/node/Start_Session",
       "summary": "The shape of a session from the outside: establish who is acting, open a record for them, take each turn in, and write down only what actually changed."
     },
@@ -3154,7 +3143,6 @@
       "name": "SWOT situation analysis",
       "nodeCount": 11,
       "sourcePath": "processes/process/swot-analysis.bpmn",
-      "sourceUrl": "https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/process/swot-analysis.bpmn",
       "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SwotAnalysis/node/Start_Process_SwotAnalysis",
       "summary": "Situation analysis over two axes — internal/external and helpful/harmful — producing the raw material a decision is made from, and NEVER the decision."
     },

@@ -2,7 +2,7 @@
   "$schema": "folio-bean-index/v1",
   "tile": {
     "beans": {
-      "count": 303,
+      "count": 296,
       "unit": "open beans"
     }
   },
@@ -337,15 +337,15 @@
     {
       "id": "folio-assistant-0tg5",
       "title": "STATE BRANCH P4: bean gates run on push to 'state'; harness-dirs, audit:coverage, kg:audit read the storage field",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-fs43",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-02T10:58:10Z",
-      "updatedAt": "2026-10-04T06:42:31Z",
-      "preview": "Nine bean gates in code-quality-gates.yml move to a state-branch workflow. A gate that cannot fetch the branch reports unknown, never a pass.\n\n## Done when\n- [ ] state-branch workflow with the bean gates\n- [ ] check:harness-dirs / audit:coverage / kg:audit read storage\n\nProposal: cat-harness/docs/proposals/state-branch-2026-10-02.md\n\n## Measured 2026-10-04 (PR #2052): what the mount covers, and th",
+      "updatedAt": "2026-10-09T07:45:00Z",
+      "preview": "Nine bean gates in code-quality-gates.yml move to a state-branch workflow. A gate that cannot fetch the branch reports unknown, never a pass.\n\n## Done when\n- [x] state-branch workflow with the bean gates\n- [x] check:harness-dirs / audit:coverage / kg:audit read storage\n\nProposal: cat-harness/docs/proposals/state-branch-2026-10-02.md\n\n## Measured 2026-10-04 (PR #2052): what the mount covers, and th",
       "file": "beans/defs/folio-assistant-0tg5--state-branch-p4-bean-gates-run-on-push-to-state-ha.md"
     },
     {
@@ -850,14 +850,14 @@
     {
       "id": "folio-assistant-1yd7",
       "title": "LANDING STICKIES: each instance's sticky lives in its own folio/, not in cat-harness/folio/",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-7x5n",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-07T21:46:20Z",
-      "updatedAt": "2026-10-07T21:46:20Z",
+      "updatedAt": "2026-10-09T14:05:00Z",
       "preview": "## What\n\n`cat-harness/folio/` holds the landing stickies (`folio-landing-sticky/v1`) for\nother instances, beside its own `cat-harness.json`:\n`who-iris.json`, `bootstrap.json`, `folio-assist-core.json` and `folio-assistant.json`.\nMeasured on main 33bf3d2, 2026-10-07.\n\nEach sticky belongs in the `folio/` directory of the instance it describes.\n\n## Why now\n\nThe separation (ar1s) moves instances to th",
       "file": "beans/defs/folio-assistant-1yd7--landing-stickies-live-with-their-own-instance-not-in-cat-h.md"
     },
@@ -1098,14 +1098,14 @@
     {
       "id": "folio-assistant-2j2r",
       "title": "cmsl follow-up: ~44 readers of decl.directories miss entries declared from within",
-      "status": "todo",
+      "status": "completed",
       "type": "bug",
       "priority": "normal",
       "parent": "folio-assistant-vke6",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-30T17:24:45Z",
-      "updatedAt": "2026-09-30T19:49:40Z",
+      "updatedAt": "2026-10-09T14:06:13Z",
       "preview": "## What\n\nSince cmsl step 1 (2026-09-30), `voices/` and `skills/lean/` are declared FROM WITHIN `skills/skills.json`, not in `<instance>.json`. `resolveDirectories` promotes them; but ~44 call sites read `readDeclaration(root).directories` directly and never see them.\n\nMeasured the same day: the UML overview deleted 5 voices diagrams, `check:wireframes` called 5 voices pages undeclared, and `viewer",
       "file": "beans/defs/folio-assistant-2j2r--cmsl-follow-up-44-readers-of-decldirectories-miss.md"
     },
@@ -2849,14 +2849,14 @@
     {
       "id": "folio-assistant-6eiw",
       "title": "Library titles for non-PDF entries (pptx deck, CODATA table)",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "",
       "parent": "folio-assistant-4ccr",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-02T12:55:31Z",
-      "updatedAt": "2026-10-02T12:55:31Z",
+      "updatedAt": "2026-10-09T13:45:00Z",
       "preview": "## Why\n\nBean `w6fu` (PR #1849) gave PDF library entries a verified title: a title is\nused only when two independent sources agree, or when an editorial\n`title_correction` exists. Two entries are not PDFs, so that resolver never\nreaches them, and they still show placeholder titles:\n\n| entry | format | what shows now | evidence in the file |\n|---|---|---|---|\n| `cat-harness/library/kg-folio-asst-202",
       "file": "beans/defs/folio-assistant-6eiw--library-titles-for-non-pdf-entries-pptx-deck-codat.md"
     },
@@ -8693,14 +8693,14 @@
     {
       "id": "folio-assistant-loxz",
       "title": "regen reports audit:coverage:strict current while the artefact on disk differs from what its writer produces",
-      "status": "todo",
+      "status": "completed",
       "type": "bug",
       "priority": "normal",
       "parent": "folio-assistant-1xhc",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-04T12:18:57Z",
-      "updatedAt": "2026-10-04T12:18:57Z",
+      "updatedAt": "2026-10-09T13:56:00Z",
       "preview": "A verify/write pair whose CHECK is a judge-mode baseline rather than a byte comparison cannot detect a stale artefact, and `regen` counts it as `current`. So \"0 unrepaired\" is not evidence that every generated artefact matches its writer.\n\nMEASURED on the #1898 branch, 2026-10-04, in one worktree, in this order:\n\n1. `regen` run with `fsh-guts/` NOT mounted (main has cut it over, so it is absent fr",
       "file": "beans/defs/folio-assistant-loxz--regen-reports-audit-coverage-strict-current-while-.md"
     },
@@ -9527,14 +9527,14 @@
     {
       "id": "folio-assistant-nsbk",
       "title": "INSTANCE ID COLLISION: bootstrap declares id 'cat-harness' too, so its 5 skills are dropped from the overlay and unreachable",
-      "status": "todo",
+      "status": "completed",
       "type": "bug",
       "priority": "high",
       "parent": "folio-assistant-1swy",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-22T13:54:27Z",
-      "updatedAt": "2026-09-22T13:54:53Z",
+      "updatedAt": "2026-10-09T11:35:00Z",
       "preview": "_2026-09-22T14:00:00Z_ — Found while fixing `oe98`'s dead links. `oe98` went 262 non-resolving → 5, and the last 5 would not move. They are not a link defect at all; they are the visible edge of this.\n\n## The collision\n\nTwo instances declare a directory with the **same id**:\n\n    root instance   cat-harness.json   id \"cat-harness\"      -> skills/      => cat-harness/skills\n    bootstrap       boot",
       "file": "beans/defs/folio-assistant-nsbk--instance-id-collision-bootstrap-declares-id-cat-ha.md"
     },
@@ -14511,14 +14511,14 @@
     {
       "id": "folio-assistant-zjm1",
       "title": "VACUOUS CLEAN: devils-advocate 'clean (all rebutted)' is satisfied by ZERO objections, and the sidecar skip then makes it sticky",
-      "status": "todo",
+      "status": "completed",
       "type": "bug",
       "priority": "",
       "parent": "folio-assistant-0ipy",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-02T23:49:21Z",
-      "updatedAt": "2026-10-02T23:49:21Z",
+      "updatedAt": "2026-10-09T12:09:00Z",
       "preview": "## The defect, quoted\n\n`cat-harness/skills/authoring/authoring-core/devils-advocate-watcher.md:186`:\n\n> Then assign the block a `da-referee-verdict`: `clean` (**all rebutted**),\n> `survivable-objection` (≥1 partial, none surviving), or `open-objection`\n> (≥1 surviving).\n\n**\"All rebutted\" is vacuously true over an empty set.** A block where every\nlens returned no objection at all earns the SAME ver",
       "file": "beans/defs/folio-assistant-zjm1--vacuous-clean-devils-advocate-clean-all-rebutted-i.md"
     },
@@ -15902,13 +15902,13 @@
         "status": "in-progress",
         "epics": 17,
         "total": 596,
-        "closed": 421,
-        "open": 175,
+        "closed": 426,
+        "open": 170,
         "inProgress": 46,
-        "todo": 128,
+        "todo": 123,
         "draft": 1,
         "unclassified": 0,
-        "share": 0.7063758389261745
+        "share": 0.714765100671141
       },
       {
         "id": "folio-assistant-vuip",
@@ -15917,13 +15917,13 @@
         "status": "in-progress",
         "epics": 10,
         "total": 283,
-        "closed": 185,
-        "open": 98,
+        "closed": 187,
+        "open": 96,
         "inProgress": 43,
-        "todo": 54,
+        "todo": 52,
         "draft": 1,
         "unclassified": 0,
-        "share": 0.6537102473498233
+        "share": 0.6607773851590106
       },
       {
         "id": "folio-assistant-yg29",
@@ -15942,8 +15942,8 @@
       }
     ],
     "orphanOpen": 0,
-    "openTotal": 303,
-    "coveredOpen": 300,
+    "openTotal": 296,
+    "coveredOpen": 293,
     "duplicateIds": 0
   }
 }

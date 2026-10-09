@@ -29,11 +29,28 @@ package "cat-harness-tools/cat-harness-tools-src" as pkg_cat_harness_tools_cat_h
 package "cat-harness-tools/cat-harness-tools-python" as pkg_cat_harness_tools_cat_harness_tools_python <<code>> {
   note "code: no node schema declared\n(no validator registered: could not determine)" as n_cat_harness_tools_cat_harness_tools_python_code
 }
+package "cat-harness-tools/beans" as pkg_cat_harness_tools_beans <<beans>> {
+  note "beans: no node schema declared\n(no node here carries a $schema family beans names (3 named): could not determine)" as n_cat_harness_tools_beans_beans
+}
+package "cat-harness-tools/defs" as pkg_cat_harness_tools_defs <<bean-defs>> {
+  note "bean-defs: no node schema declared\n(no validator registered: could not determine)" as n_cat_harness_tools_defs_bean_defs
+}
+package "cat-harness-tools/notes" as pkg_cat_harness_tools_notes <<bean-notes>> {
+  class "bean-notes" as cat_harness_tools_notes_bean_notes_shape <<schema: schemas/bean-note.ts>> #f4f4f1 {
+    //fields not machine-readable: schemas/bean-note.ts names no exported schema//
+  }
+}
+package "cat-harness-tools/workflows" as pkg_cat_harness_tools_workflows <<workflow-state>> {
+  note "workflow-state: no node schema declared\n(no node here carries a $schema family workflow-state names (1 named): could not determine)" as n_cat_harness_tools_workflows_workflow_state
+}
 
-' grid: portrait, 2 column(s) — pkg_cat_harness_tools_cat_harness_tools_adapters pkg_cat_harness_tools_cat_harness_tools_schemas pkg_cat_harness_tools_cat_harness_tools_scripts pkg_cat_harness_tools_cat_harness_tools_id_lookup pkg_cat_harness_tools_cat_harness_tools_tests pkg_cat_harness_tools_cat_harness_tools_src pkg_cat_harness_tools_cat_harness_tools_python
-pkg_cat_harness_tools_cat_harness_tools_adapters -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_scripts
-pkg_cat_harness_tools_cat_harness_tools_schemas -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_id_lookup
-pkg_cat_harness_tools_cat_harness_tools_scripts -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_tests
-pkg_cat_harness_tools_cat_harness_tools_id_lookup -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_src
-pkg_cat_harness_tools_cat_harness_tools_tests -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_python
+' grid: portrait, 3 column(s) — pkg_cat_harness_tools_cat_harness_tools_adapters pkg_cat_harness_tools_cat_harness_tools_schemas pkg_cat_harness_tools_cat_harness_tools_scripts pkg_cat_harness_tools_cat_harness_tools_id_lookup pkg_cat_harness_tools_cat_harness_tools_tests pkg_cat_harness_tools_cat_harness_tools_src pkg_cat_harness_tools_cat_harness_tools_python pkg_cat_harness_tools_beans pkg_cat_harness_tools_defs pkg_cat_harness_tools_notes pkg_cat_harness_tools_workflows
+pkg_cat_harness_tools_cat_harness_tools_adapters -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_id_lookup
+pkg_cat_harness_tools_cat_harness_tools_schemas -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_tests
+pkg_cat_harness_tools_cat_harness_tools_scripts -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_src
+pkg_cat_harness_tools_cat_harness_tools_id_lookup -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_python
+pkg_cat_harness_tools_cat_harness_tools_tests -[hidden]down- pkg_cat_harness_tools_beans
+pkg_cat_harness_tools_cat_harness_tools_src -[hidden]down- pkg_cat_harness_tools_defs
+pkg_cat_harness_tools_cat_harness_tools_python -[hidden]down- pkg_cat_harness_tools_notes
+pkg_cat_harness_tools_beans -[hidden]down- pkg_cat_harness_tools_workflows
 @enduml
