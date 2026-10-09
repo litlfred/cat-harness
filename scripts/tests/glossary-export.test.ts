@@ -24,7 +24,7 @@
  * cat-harness has none of it.
  */
 import { describe, expect, test } from "bun:test";
-import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
@@ -40,8 +40,11 @@ import {
 } from "../glossary-export.ts";
 import { LEDGER_KEY, LedgerSchema } from "../../schemas/glossary-ledger.ts";
 
-const REPO = resolve(import.meta.dir, "..", "..", "..");
-const HARNESS = join(REPO, "cat-harness");
+const REPO =
+  [resolve(import.meta.dir, "..", "..", "..", "..", ".."), resolve(import.meta.dir, "..", "..", "..")].find((d) =>
+    existsSync(join(d, "AGENTS.md")) || (existsSync(join(d, ".git")) && existsSync(join(d, "bootstrap"))),
+  ) ?? resolve(import.meta.dir, "..", "..", "..");
+const HARNESS = resolve(import.meta.dir, "../..");
 const BOOTSTRAP = join(REPO, "bootstrap");
 
 type Node = Record<string, unknown>;

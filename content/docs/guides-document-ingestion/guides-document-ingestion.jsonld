@@ -27,6 +27,7 @@
     "site/guides/document-ingestion/nodes/editing-an-ingested-source.jsonld"
   ],
   "provenance": "authored",
+  "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/docs",
   "meta": {
     "publishedAt": "guides/document-ingestion.html",
     "sourceDir": "content/docs/guides-document-ingestion",

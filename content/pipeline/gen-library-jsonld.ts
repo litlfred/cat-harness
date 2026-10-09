@@ -74,6 +74,8 @@ import { documentContext } from "../../schemas/content-context.ts";
 import { termCurie } from "../../schemas/namespaces.ts";
 import { LABEL_PREFIXES } from "../../schemas/constraints";
 import { findContentRepoRoot } from "./repo-root";
+import { declaredSubgraphNode } from "../../scripts/kg-export.ts";
+import { memberOf } from "../../scripts/subgraph-node.ts";
 import type { DocumentImage, ImagesSidecar } from "../../schemas/document-image.ts";
 import { buildTabularNodes, tabularShapeOf } from "./tabular-nodes.ts";
 import { TABULAR_CSVW_FILENAME } from "../../schemas/tabular-csvw.ts";
@@ -449,6 +451,7 @@ export function buildDocumentNodes(
     });
   }
 
+  const librarySubgraph = declaredSubgraphNode(findContentRepoRoot(), "library");
   out.push({
     path: "manifest.jsonld",
     content: node({
@@ -461,6 +464,7 @@ export function buildDocumentNodes(
       title: resolvedTitle.title,
       contains: sectionIris,
       provenance: "ingested",
+      ...(librarySubgraph ? memberOf(librarySubgraph.iri) : {}),
       ...licenceProperties(licence),
       meta: {
         doc_id: docId,
@@ -664,6 +668,7 @@ function entryTitle(
 export function buildEntryNodes(docId: string, dir: string, locatedAt: string = dir): EntryOutcome {
   const instance = libraryInstanceOf(locatedAt);
   const iri = iriFor(docId, instance);
+  const librarySubgraph = declaredSubgraphNode(findContentRepoRoot(), "library");
   // Two ingest rungs reach this walk, and a tabular entry has no Stage A
   // output at all — no `structure.json`, no `sections/*.md` — so it is not a
   // `buildDocumentNodes` with different arguments. Its own branch, which is
@@ -725,7 +730,10 @@ export function buildEntryNodes(docId: string, dir: string, locatedAt: string = 
         // sheets and blocks; without this nothing in the graph says which
         // record produced them.
         meta: { ...titleMeta(titled), tabular_record: record?.$schema },
-        properties: licenceProperties(readLicence(dir)),
+        properties: {
+          ...licenceProperties(readLicence(dir)),
+          ...(librarySubgraph ? memberOf(librarySubgraph.iri) : {}),
+        },
       }),
     };
   }
@@ -758,6 +766,7 @@ export function buildEntryNodes(docId: string, dir: string, locatedAt: string = 
       // The same value every manifest carries; `disposition` below says that
       // none of the source's text is held.
       provenance: "ingested",
+      ...(librarySubgraph ? memberOf(librarySubgraph.iri) : {}),
       ...licenceProperties(readLicence(dir)),
       meta: published
         ? {

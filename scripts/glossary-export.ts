@@ -130,9 +130,9 @@ import { dirname, join, relative, resolve } from "node:path";
 
 import { NS_PREFIXES, ownElementPattern, termIri } from "../schemas/namespaces.js";
 import { laneBinding, readRoleGraph, type LaneBinding, type RoleDef, type RoleGraph } from "../schemas/role-graph.js";
-import { glossaryHomeFor, repoRootFor } from "../schemas/cat-harness.js";
+import { glossaryHomeFor, readDeclaration, repoRootFor } from "../schemas/cat-harness.js";
 import { kgRoots } from "./known-skills.js";
-import { exportIdentity, makeIri } from "./kg-export.js";
+import { declaredSubgraphNode, exportIdentity, makeIri } from "./kg-export.js";
 import { codeListDirs, loadCodeLists } from "../schemas/code-list.js";
 import { gitFiles } from "../schemas/git-corpus.ts";
 import { buildCodeListsDoc } from "./code-lists.js";
@@ -372,7 +372,12 @@ export function buildGlossary(opts: {
   today?: Today;
 } = {}): GlossaryBuild {
   const instanceRoot = resolve(opts.instanceRoot ?? ROOT);
-  const repoRoot = repoRootFor(ROOT);
+  const repoRoot =
+    [repoRootFor(ROOT), join(repoRootFor(ROOT), "..", "..")].find((d) => existsSync(join(d, ".git"))) ??
+    repoRootFor(ROOT);
+  const decl = readDeclaration(instanceRoot);
+  const hasGlossary = decl?.directories.some((d) => d.id === "swimlane-glossary");
+  const subgraph = hasGlossary ? declaredSubgraphNode(instanceRoot, "swimlane-glossary", { baseUrl: opts.baseUrl }) : undefined;
   const id = exportIdentity({ baseUrl: opts.baseUrl, instanceRoot: opts.instanceRoot });
   const now = (opts.today ?? isoToday)();
 
@@ -678,6 +683,7 @@ export function buildGlossary(opts: {
       notation: "skos:notation",
       title: "dcterms:title",
       source: "dcterms:source",
+      isPartOf: { "@id": "dcterms:isPartOf", "@type": "@id" },
       deprecated: "owl:deprecated",
       inScheme: { "@id": "skos:inScheme", "@type": "@id" },
       usage: { "@id": termIri("hasLaneUsage"), "@type": "@id" },
@@ -692,6 +698,7 @@ export function buildGlossary(opts: {
     // would name a set that already has a name and would not dereference
     // (`blv9`).
     "@type": "skos:ConceptScheme",
+    ...(subgraph ? { isPartOf: subgraph.iri } : {}),
     // ONE SOURCE, TWO VOCABULARIES (bean `sl9u`, owner 2026-09-23: keep
     // both). `skos:prefLabel` is what a SKOS reader looks for and
     // `dcterms:title` what a catalogue reader does. Since bean `k74z` a

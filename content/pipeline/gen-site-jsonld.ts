@@ -56,6 +56,8 @@ import type { WebPage, WebPageNode } from "../../schemas/webpage.ts";
 import { portableSegment } from "../../schemas/portable-path";
 import { repoRootFor, siteDirFor, sourceLinks } from "../../schemas/cat-harness.ts";
 import { detectRepoUrl } from "../../src/core/git-refs.js";
+import { declaredSubgraphNode } from "../../scripts/kg-export.ts";
+import { memberOf } from "../../scripts/subgraph-node.ts";
 
 const INSTANCE_ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const SRC_DIR = join(INSTANCE_ROOT, "content", "docs");
@@ -63,6 +65,7 @@ const REPO_ROOT = repoRootFor(INSTANCE_ROOT);
 // The same fallback `gen-docs-pages.ts` uses, so the two generators name one
 // forge — and so the output does not depend on how this checkout was cloned.
 const REPO_WEB = detectRepoUrl(REPO_ROOT) ?? "https://github.com/litlfred/folio-assistant";
+const docsSubgraph = declaredSubgraphNode(INSTANCE_ROOT, "docs");
 
 /**
  * `sourceDocument` as an ADDRESS, not a path — #1772. It is a link-type term
@@ -204,6 +207,7 @@ for (const flat of flats) {
     // `dcterms:hasPart` in the published context.
     contains: page.nodes.map((n) => siteIri(page.slug, n.id)),
     provenance: "authored",
+    ...(docsSubgraph ? memberOf(docsSubgraph.iri) : {}),
     meta: {
       publishedAt: `${page.slug}.html`,
       sourceDir: `content/docs/${flat}`,

@@ -70,7 +70,13 @@ export function subgraphContainer(opts: {
   members: readonly string[];
   name?: string;
   contentSource?: Record<string, unknown>;
-}): Record<string, unknown> {
+}): {
+  "@id": string;
+  "@type": string;
+  name?: string;
+  contentSource?: Record<string, unknown>;
+  hasPart: string[];
+} {
   return {
     "@id": opts.iri,
     "@type": "Subgraph",
