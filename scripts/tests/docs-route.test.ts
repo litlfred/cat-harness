@@ -115,13 +115,14 @@ describe("what moves and what stays — read off the real tree", () => {
 
   test("kind directories and viewers stay where they are", () => {
     for (const rel of [
-      "processes/index.md",
-      "glossary/index.md",
+      // Visualisers at their DECLARED routes (owner, 2026-10-09).
+      "cat-harness/processes/index.md",
+      "folio-assistant-core/glossary/index.md",
       "proposals/index.md",
       "requirements/index.md",
-      "methodologies/index.md",
+      "cat-harness/methodologies/index.md",
       "bootstrap/initialization.md",
-      "fr/glossary/index.md",
+      "fr/folio-assistant-core/glossary/index.md",
     ]) {
       expect(url(rel).startsWith(`/${ROUTE}/`), rel).toBe(false);
     }

@@ -331,25 +331,27 @@ export interface ViewedDirectory {
 }
 
 /**
- * Does visualiser `v` cover directory `d` of the instance named `owner`
- * rooted at `ownerRoot`?
+ * Does visualiser `v` cover directory `d` of the instance named `owner`?
  *
  * - `covers`: only the declaring harness's own directories, by id;
- * - `coversKinds`: any directory of those kinds in the corpus stacked on the
- *   declaring harness (`corpusDirectoriesForGraph`).
+ * - `coversKinds`: every declared directory of those kinds in the checkout —
+ *   the "full KG" the owner's rule names, which is what a corpus-wide viewer
+ *   (the library, schemas, processes) draws: it lists bootstrap's processes
+ *   as readily as smart-base's.
  */
-export function covers(v: DeclaredVisualiser, d: ViewedDirectory, owner: string, absDir: string): boolean {
+export function covers(v: DeclaredVisualiser, d: ViewedDirectory, owner: string, absDir?: string, repoRoot?: string): boolean {
   if (v.harness === owner && (v.covers ?? []).includes(d.id)) return true;
-  const kinds = (v.coversKinds ?? []).filter((k) => (d.graphTypologies ?? []).includes(k));
-  if (kinds.length === 0) return false;
-  const want = resolve(absDir);
-  return kinds.some((k) => {
-    try {
-      return corpusDirectoriesForGraph(v.harnessRoot, k).some((p) => resolve(p) === want);
-    } catch {
-      return false;
+  // The SAME directory declared by another instance (`beans/`, scope
+  // `repository`, is one directory however many instances name it): a
+  // visualiser of it is a visualiser of it, whoever declared the entry.
+  if (absDir !== undefined && repoRoot !== undefined && (v.covers ?? []).length > 0) {
+    const mine = readRaw(v.harnessRoot)?.directories ?? [];
+    for (const id of v.covers ?? []) {
+      const e = mine.find((x) => x.id === id) as { path?: string; scope?: string } | undefined;
+      if (e?.path && resolve(join(e.scope === "repository" ? repoRoot : v.harnessRoot, e.path)) === resolve(absDir)) return true;
     }
-  });
+  }
+  return (v.coversKinds ?? []).some((k) => (d.graphTypologies ?? []).includes(k));
 }
 
 /**
@@ -368,6 +370,8 @@ export function viewersOf(
   d: ViewedDirectory,
   instanceRoot: string,
   repoRoot: string = repoRootFor(instanceRoot),
+  /** The site directory the routes are under; default the site owner's (`siteOwnerDir`). */
+  siteDir?: string,
 ): Array<Visualisation & { title: string }> {
   // The OWNER is the instance whose declaration carries the entry: this one,
   // or — for an entry `siteDirectories` presented from the checkout root —
@@ -376,16 +380,37 @@ export function viewersOf(
   const owner = (own?.directories ?? []).some((x) => x.id === d.id) ? own?.name : (readRaw(repoRoot)?.name ?? own?.name);
   if (owner === undefined) return [];
   const absDir = join(d.scope === "repository" ? repoRoot : instanceRoot, d.path);
-  let site: string | undefined;
+  let site: string | undefined = siteDir;
   const out: Array<Visualisation & { title: string }> = [];
   for (const v of declaredVisualisers(repoRoot)) {
-    if (!covers(v, d, owner, absDir)) continue;
+    if (!covers(v, d, owner, absDir, repoRoot)) continue;
     site ??= siteOwnerDir(repoRoot);
     const full = { harness: v.harness, visualiser: v.id };
+    // The sub-graph a directory's tile opens. `instance`: the owner's name.
+    // `directory`: the directory id — qualified by its instance first when
+    // another harness owns the visualiser, because a corpus-wide view keeps
+    // ids unique that way (`folio-assistant-sci-skills` beside `skills`).
     const under = (d.graphTypologies ?? []).map((k) => v.subgraphUnder?.[k]).find((u) => u !== undefined);
-    const sub = v.subgraphs === "instance" ? owner : v.subgraphs === "directory" ? (under ? `${under}/${d.id}` : d.id) : undefined;
-    const subRef = sub === undefined ? undefined : visualiserPageRef(repoRoot, { ...full, subgraph: sub }, site);
-    const ref = subRef !== undefined && existsSync(join(repoRoot, subRef)) ? subRef : visualiserPageRef(repoRoot, full, site);
+    const at = (seg: string): string => (under ? `${under}/${seg}` : seg);
+    // A bare id is taken for another instance's directory only when the
+    // declaring harness does not hold a directory of that id itself: a bare
+    // `skills` is cat-harness's own, `core-skills` can only be core's.
+    const harnessIds = new Set((readRaw(v.harnessRoot)?.directories ?? []).map((x) => x.id));
+    const subs =
+      v.subgraphs === "instance"
+        ? [owner]
+        : v.subgraphs === "directory"
+          ? owner === v.harness
+            ? [at(d.id)]
+            : [at(`${owner}-${d.id}`), ...(harnessIds.has(d.id) ? [] : [at(d.id)])]
+          : [];
+    const subRef = subs.map((sub) => visualiserPageRef(repoRoot, { ...full, subgraph: sub }, site!)).find((r) => existsSync(join(repoRoot, r)));
+    // Covered BY KIND, a visualiser that draws per-sub-graph views covers a
+    // directory only where it drew that directory's view: the full KG page of
+    // a viewer that never reached this instance is not its viewer.
+    const byId = !(v.coversKinds ?? []).some((k) => (d.graphTypologies ?? []).includes(k));
+    if (subs.length > 0 && subRef === undefined && !byId) continue;
+    const ref = subRef ?? visualiserPageRef(repoRoot, full, site);
     const { id: _id, renderedBy: _by, covers: _c, coversKinds: _k, subgraphs: _s, subgraphUnder: _u, alias: _a, harness: _h, harnessRoot: _r, ...tile } = v;
     // `writer` is declared relative to the HARNESS (its own scripts), and read
     // repository-relative like `ref`, so a mount path is never written down.
@@ -432,9 +457,10 @@ export function withViewers<T extends ViewedDirectory>(
   dirs: readonly T[],
   instanceRoot: string,
   repoRoot: string = repoRootFor(instanceRoot),
+  siteDir?: string,
 ): T[] {
   return dirs.map((d) => {
-    const v = viewersOf(d, instanceRoot, repoRoot);
+    const v = viewersOf(d, instanceRoot, repoRoot, siteDir);
     if (v.length === 0) return d;
     return { ...d, coverage: { ...d.coverage, visualiser: v as [Visualisation, ...Visualisation[]] } };
   });

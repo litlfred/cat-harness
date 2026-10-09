@@ -49,8 +49,8 @@ So each visualiser is ONE declaration in the harness that owns it:
 
 - **`id`** is the URL segment; **`renderedBy`** names a Tool node (the
   implementation may live anywhere); **`covers`** names this harness's own
-  directory ids, **`coversKinds`** graph typologies across the corpus stacked
-  on the harness. A harness never names another instance's directory — that
+  directory ids, **`coversKinds`** graph typologies, over every declared
+  directory of them in the checkout. A harness never names another instance's directory — that
   would be a lower layer naming a higher one.
 - **The URL is computed, never chosen.** `visualiserRoute` in
   `schemas/visualiser-route.ts` is the ONE function every generator and reader

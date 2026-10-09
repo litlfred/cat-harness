@@ -634,12 +634,16 @@ function tileFor(
   // (bean `cmsl`: `skills/skills.json` names `voices/`). `nestedDirectories`
   // walks only DECLARED parents, and `skills/` is now inherited, so without
   // this SMART Base's voices tile vanished (measured 2026-09-30).
+  // Every directory's viewers resolved from the DECLARED visualisers — the
+  // nested and from-within ones too, which `harnessTiles` did not resolve
+  // with the declaration's own list.
+  const resolved = (xs: Dir[]): Dir[] => withViewers(xs, instanceDir, repoRoot, siteDir);
   const dirs: Dir[] = [
     ...(decl.directories ?? []),
-    ...listedSubgraphs.map(({ parentId: _parent, ...d }) => d as Dir),
+    ...resolved(listedSubgraphs.map(({ parentId: _parent, ...d }) => d as Dir)),
   ];
   for (const d of instanceDirectories(instanceDir, decl)) {
-    if (!dirs.some((x) => x.id === d.id)) dirs.push(d as Dir);
+    if (!dirs.some((x) => x.id === d.id)) dirs.push(...resolved([d as Dir]));
   }
   const kinds = [...new Set(dirs.flatMap((d) => d.graphTypologies ?? []))].sort();
   const findings: string[] = [];
@@ -714,9 +718,47 @@ function tileFor(
   // site owner) and fell back to the declaration; a convention is a URL the
   // reader chose, which is the contention the owner ruled out. The short
   // `/<kind>/` survives only as a declared ALIAS, composed as a redirect.
+  /**
+   * THE READ-ONLY ANSWER FOR A KIND, resolved across the directories declaring
+   * it — and `undefined` when they do not agree.
+   *
+   * A kind can be declared by more than one directory, so it can be declared
+   * read-only by one and writable by another. `who-iris` is exactly that shape
+   * one field along: `catalogue/` is frozen and `uploads/` is the drop zone.
+   * Picking the first answer would make the listing depend on declaration
+   * order; picking `true` if any says so would freeze a kind on the strength of
+   * one directory. Disagreement is a THIRD state and it is reported as one —
+   * undefined here, and named in a finding below, rather than resolved by a
+   * rule nobody chose.
+   */
+  const readOnlyFor = (kind: string): boolean | undefined => {
+    const said = dirs
+      .filter((d) => (d.graphTypologies ?? []).includes(kind))
+      .map((d) => d.readOnly)
+      .filter((v): v is boolean => v !== undefined);
+    if (said.length === 0) return undefined;
+    return said.every((v) => v === said[0]) ? said[0] : undefined;
+  };
+
   const visualisations: HarnessVisualisation[] = [];
+  // A SUB-GRAPH OF THE SITE ITSELF — a directory the site's own docs layer
+  // holds and declares from within (`docs/docs.json`'s `proposals/`) — is not
+  // a visualiser: it is content, served at its own path. Read from the
+  // DIRECTORY'S declared path, never composed from the kind's name.
+  const sitePageFor = (kind: string): string | undefined => {
+    for (const d of dirs) {
+      if (!(d.graphTypologies ?? []).includes(kind) || !d.path) continue;
+      const abs = join(instanceDir, d.path);
+      const rel = relative(siteDir, abs);
+      if (rel === "" || rel.startsWith("..")) continue;
+      if (existsSync(join(abs, "index.html")) || existsSync(join(abs, "index.md"))) {
+        return publishedUrlOf(`${rel.split(sep).join("/").replace(/\/*$/, "")}/`);
+      }
+    }
+    return undefined;
+  };
   for (const kind of kinds) {
-    const path = declared.get(kind);
+    const path = declared.get(kind) ?? sitePageFor(kind);
     // READ-ONLY IS ORTHOGONAL TO WHETHER A VIEWER WAS FOUND, and keeping the
     // two independent here is the whole of the two-greys distinction: `path`
     // answers "is there anything to open", `readOnly` answers "may it be
@@ -1315,7 +1357,7 @@ export function harnessTiles(
     // the directory ABOVE the repository. Since cmsl step 2 (issue #1694) that
     // declaration holds `beans`/`todos`/`issue-marks`, so their dashboards went
     // undiscovered and the tiles rendered "no viewer yet".
-    const decl = { ...read, directories: withViewers(read.directories ?? [], dir, repoRoot) };
+    const decl = { ...read, directories: withViewers(read.directories ?? [], dir, repoRoot, siteDir) };
     decls.push({ dir, decl });
   }
 

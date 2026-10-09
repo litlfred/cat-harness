@@ -502,7 +502,11 @@ describe("the cut, on the REAL tree", () => {
     // IG sites (`igSite`), whose cut is the staging cone in `stage-ig-sites`,
     // so a ratio tuned to that corpus measured instances no longer here.
     const stubbed = cut.carried.filter((d) => !d.carry).map((d) => `${d.instance.under}/`);
-    const theirs = Object.keys(all.suppliedBy).filter((k) => stubbed.some((u) => k.startsWith(u))).length;
+    // The instance's OWN files — supplied BY it. Since 2026-10-09 a harness's
+    // declared visualisers are also drawn under `<name>/<visualiser>/`, in the
+    // base layer, and a cut that stubs the instance's docs rightly keeps them.
+    const stubbedNames = new Set(cut.carried.filter((d) => !d.carry).map((d) => d.instance.instance));
+    const theirs = Object.entries(all.suppliedBy).filter(([k, by]) => stubbedNames.has(by) && stubbed.some((u) => k.startsWith(u))).length;
     // A stubbed instance whose docs are ONE page (folio-assistant-core's, since
     // bean c5fm) is replaced by exactly one stub, so the cut cannot shrink the
     // tree: assert that it does not grow it either, the same answer the

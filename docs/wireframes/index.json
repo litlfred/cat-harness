@@ -28,9 +28,7 @@
     },
     "fhir-artifact-index": {
       "covers": [
-        "smart-base/artifacts",
-        "smart-immunizations/artifacts",
-        "smart-trust/artifacts"
+        "smart-base/artifact-index"
       ]
     },
     "folio": {
@@ -90,6 +88,16 @@
     "skills-index": {
       "covers": [
         "cat-harness/auto-docs/index/skills"
+      ]
+    },
+    "state-dashboard": {
+      "covers": [
+        "cat-harness/qa",
+        "cat-harness/health",
+        "cat-harness/attestations",
+        "cat-harness/issue-marks",
+        "cat-harness/swimlane-glossary",
+        "cat-harness/uploads-queue"
       ]
     },
     "todos": {

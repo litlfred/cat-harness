@@ -202,7 +202,7 @@ describe("a link is DECLARATION-driven and PRESENCE-checked", () => {
     const f = fixture({ host: host(), who: { name: "who", needs: ["host"], directories: [] } }, ["host/library/who"]);
     const who = tilesOf(f).find((t) => t.name === "who")!;
     expect(who.visualisations).toEqual([]);
-    expect(who.findings.join(" ")).toContain("does not declare");
+    expect(who.findings.join(" ")).toContain("covers none of this instance's directories");
   });
 
   test("the site owner's own state graph is at its DECLARED route — the short URL is only an alias", () => {
@@ -215,14 +215,16 @@ describe("a link is DECLARATION-driven and PRESENCE-checked", () => {
     expect(tilesOf(stale)[0]!.visualisations).toEqual([{ kind: "beans", label: "Beans", note: "no viewer yet" }]);
   });
 
-  test("a sibling gets NO page at the elided path — that namespace is the owner's", () => {
-    // `/beans/` is the host's. A sibling declaring a `beans` graph must not
-    // pick up the host's page as though it were its own.
-    // `who` is not stacked on `host`, so no visualiser `host` declares covers it.
+  test("there is no elided namespace to squat: a sibling's graph opens the visualiser DECLARED over it", () => {
+    // `/beans/` was the host's by convention, and a sibling had to be kept out
+    // of it. Now a page is reached only through a declaration: `host` declares
+    // its `beans` visualiser over the KIND, so the sibling's beans graph opens
+    // that route — and the bare `/beans/` page links nobody.
     const f = fixture({ host: host(), who: { name: "who", directories: [{ id: "b", path: "b/", graphTypologies: ["beans"] }] } }, [
       "host/beans",
+      "beans",
     ]);
-    expect(tilesOf(f).find((t) => t.name === "who")!.visualisations).toEqual([{ kind: "beans", label: "Beans", note: "no viewer yet" }]);
+    expect(tilesOf(f).find((t) => t.name === "who")!.visualisations).toEqual([{ kind: "beans", label: "Beans", path: "/host/beans/" }]);
   });
 });
 
@@ -897,22 +899,27 @@ describe("one name per destination (bean `ob3m` finding 6)", () => {
         host: host(),
         who: { name: "who", needs: ["host"], directories: [{ id: "s", path: "schemas/", graphTypologies: ["schemas", "cat-harness"] }] },
       },
-      ["host/schemas/who", "host/cat-harness/who"],
+      ["host/schemas/who"],
     );
     const who = tilesOf(f).find((t) => t.name === "who")!;
-    // Both kinds resolve their own conventional page here, so neither is
-    // marked: two pages, two rows, each named for its kind. The shared-page
-    // case is `labelVisualisations`'s, pinned in `nav-label.test.ts`.
+    // ONE directory holding two kinds is drawn by ONE declared visualiser, so
+    // both rows open the same page, and the second says it is the same page
+    // rather than inventing a second name for it. A page at a conventional
+    // `/host/cat-harness/who/` would be reached by nothing: nothing declares it.
     expect(who.visualisations.map((v) => [v.kind, v.label, v.sameAs])).toEqual([
-      ["cat-harness", "Harness graph", undefined],
+      ["cat-harness", "Schemas", "schemas"],
       ["schemas", "Schemas", undefined],
     ]);
   });
 
   test("an INSTANTIATED harness with no folio opens its landing section, not a graph's viewer", () => {
+    // `host` declares a processes visualiser drawing one view per instance.
     // Bootstrap's row linked `/processes/` and named that page "Bootstrap".
     const f = fixture(
-      { host: host(), who: { name: "who", needs: ["host"], directories: [{ id: "p", path: "processes/", graphTypologies: ["processes"] }] } },
+      {
+        host: host({ visualisers: [...HOST_VISUALISERS, { id: "processes", renderedBy: "processes-viewer", coversKinds: ["processes"], subgraphs: "instance" }] }),
+        who: { name: "who", needs: ["host"], directories: [{ id: "p", path: "processes/", graphTypologies: ["processes"] }] },
+      },
       ["host/processes/who"],
     );
     writeFileSync(join(f.repo, "who.config.json"), "{}");

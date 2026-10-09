@@ -147,8 +147,16 @@ export function checkVisualiserRoutes(repoRoot: string): RouteReport {
   }
 
   const site = siteOwnerDir(repoRoot);
+  // What the site ALREADY ANSWERS at `<x>/`: a top-level directory serving an
+  // index, or the Jekyll namespaces. A directory holding only deeper pages
+  // (`todos/<item>/`, the todo node IRIs) leaves `<x>/` itself free, which is
+  // exactly where an alias's redirect goes.
   const siteTop = existsSync(site)
-    ? readdirSync(site).filter((n) => !n.startsWith(".") && !n.startsWith("_")).map((n) => n.replace(/\.(md|html)$/, ""))
+    ? readdirSync(site).filter(
+        (n) =>
+          !n.startsWith(".") &&
+          (n.startsWith("_") || n === "assets" || existsSync(join(site, n, "index.html")) || existsSync(join(site, n, "index.md"))),
+      )
     : [];
   const findings = declarationFindings(vis, [...new Set(siteTop)], harnessNames);
 
@@ -186,12 +194,19 @@ export function checkVisualiserRoutes(repoRoot: string): RouteReport {
 
   // A harness's OWN docs are mounted at `/<harness>/` (mount-instance-docs);
   // a visualiser route beneath it must not be a path those docs already hold.
+  // Which of its directories is served there is the declaration's: its `docs`
+  // directory, and any it marks `instanceRoot`.
   for (const v of vis) {
-    if (resolve(siteOwnerDir(repoRoot)) === resolve(join(v.harnessRoot, "docs"))) continue;
-    const docs = join(v.harnessRoot, "docs");
-    for (const p of [join(docs, v.id), `${join(docs, v.id)}.html`, `${join(docs, v.id)}.md`]) {
-      if (existsSync(p)) {
-        findings.push({ kind: "harness-docs-collision", subject: label(v), detail: `${relative(repoRoot, p).split(sep).join("/")} is also published at /${v.harness}/${v.id}` });
+    const d = declOf(v.harnessRoot) as { directories?: { path?: string; graphTypologies?: string[]; instanceRoot?: boolean }[] } | undefined;
+    const served = (d?.directories ?? [])
+      .filter((x) => x.path && (x.instanceRoot === true || (x.graphTypologies ?? []).includes("docs")))
+      .map((x) => join(v.harnessRoot, x.path!));
+    for (const dir of served) {
+      if (resolve(siteOwnerDir(repoRoot)) === resolve(dir)) continue;
+      for (const p of [join(dir, v.id), `${join(dir, v.id)}.html`, `${join(dir, v.id)}.md`]) {
+        if (existsSync(p)) {
+          findings.push({ kind: "harness-docs-collision", subject: label(v), detail: `${relative(repoRoot, p).split(sep).join("/")} is also published at /${v.harness}/${v.id}` });
+        }
       }
     }
   }

@@ -1541,10 +1541,10 @@ export type Tile = z.infer<typeof TileSchema>;
  * - `covers` — directory ids THIS instance declares. A harness names its own
  *   directories, never another instance's: that would be a lower layer naming
  *   a higher one.
- * - `coversKinds` — graph typologies, over every directory of those kinds in
- *   the corpus stacked on this harness (itself and every instance whose
- *   `needs` reach it). That is how cat-harness's library viewer covers
- *   who-iris's library without naming it.
+ * - `coversKinds` — graph typologies, over every declared directory of those
+ *   kinds in the checkout: the "full KG" a corpus-wide viewer draws. That is
+ *   how cat-harness's library viewer covers who-iris's library without
+ *   naming it — a kind is vocabulary, not another instance's directory.
  *
  * At least one is required: a visualiser covering nothing is a page nothing
  * can open.
@@ -1580,7 +1580,7 @@ export const HarnessVisualiserSchema = TileSchema.extend({
   renderedBy: z.string().regex(/^[a-z0-9][a-z0-9-]*$/, "a Tool node id"),
   /** This instance's directory ids it covers. */
   covers: z.array(z.string().min(1)).nonempty().optional(),
-  /** Graph typologies it covers across the corpus stacked on this harness. */
+  /** Graph typologies it covers, over every declared directory of them in the checkout. */
   coversKinds: z.array(z.string().min(1)).nonempty().optional(),
   /** What a `<sub-graph>` segment names, when the visualiser draws per-sub-graph views. */
   subgraphs: z.enum(["instance", "directory"]).optional(),
