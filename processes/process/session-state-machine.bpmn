@@ -69,6 +69,7 @@ The distinction between refreshing a timestamp and writing what changed is the d
         <bpmn:flowNodeRef>A_IdentifyActor</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_ActorKnown</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_OpenSession</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_SecurePermissions</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_ReadTurn</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_TurnEffect</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Touch</bpmn:flowNodeRef>
@@ -124,12 +125,19 @@ The distinction between refreshing a timestamp and writing what changed is the d
       <bpmn:outgoing>F_6</bpmn:outgoing>
     </bpmn:task>
 
+    <bpmn:callActivity id="Call_SecurePermissions" name="Secure the agent's&#10;permissions" calledElement="Process_SecureAgentPermissions">
+      <bpmn:documentation>Once the actor is known and the record is open, check that the coding agent acting here holds the permissions this instance's processes need, granted by a person and recorded, and ask for any that are missing. This is where initiating the harness for an actor secures them, rather than the first denied command. A run that finds them current returns without asking anything; the same process is called on demand when an action is denied later in the session. Vendor-neutral: the agent is a Tool, and its config is written through that Tool's adapter. Skill: agent-permissions.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="agent-permissions"/></bpmn:extensionElements>
+      <bpmn:incoming>F_6</bpmn:incoming>
+      <bpmn:outgoing>F_6b</bpmn:outgoing>
+    </bpmn:callActivity>
+
     <bpmn:task id="A_ReadTurn" name="Take in the turn">
       <bpmn:documentation>A turn is anything that arrives — a person's message, a tool result, a notification. The machine advances on turns rather than on a clock, because a session that has been told nothing has not changed.</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:no-skill reason="reading what a turn said is the agent's ordinary comprehension, not a procedure an instruction body could add anything to"/>
       </bpmn:extensionElements>
-      <bpmn:incoming>F_6</bpmn:incoming>
+      <bpmn:incoming>F_6b</bpmn:incoming>
       <bpmn:incoming>F_9</bpmn:incoming>
       <bpmn:incoming>F_11</bpmn:incoming>
       <bpmn:outgoing>F_7</bpmn:outgoing>
@@ -178,7 +186,8 @@ NO `cat-harness.processes:bean` on this step. It records that a claim happened; 
     <bpmn:sequenceFlow id="F_3" name="no" sourceRef="Gateway_ActorKnown" targetRef="A_AskWhoIsActing"/>
     <bpmn:sequenceFlow id="F_4" sourceRef="A_AskWhoIsActing" targetRef="A_IdentifyActor"/>
     <bpmn:sequenceFlow id="F_5" name="yes" sourceRef="Gateway_ActorKnown" targetRef="A_OpenSession"/>
-    <bpmn:sequenceFlow id="F_6" sourceRef="A_OpenSession" targetRef="A_ReadTurn"/>
+    <bpmn:sequenceFlow id="F_6" sourceRef="A_OpenSession" targetRef="Call_SecurePermissions"/>
+    <bpmn:sequenceFlow id="F_6b" sourceRef="Call_SecurePermissions" targetRef="A_ReadTurn"/>
     <bpmn:sequenceFlow id="F_7" sourceRef="A_ReadTurn" targetRef="Gateway_TurnEffect"/>
     <bpmn:sequenceFlow id="F_8" name="nothing changed" sourceRef="Gateway_TurnEffect" targetRef="A_Touch"/>
     <bpmn:sequenceFlow id="F_9" sourceRef="A_Touch" targetRef="A_ReadTurn"/>
@@ -191,16 +200,16 @@ NO `cat-harness.processes:bean` on this step. It records that a claim happened; 
   <bpmndi:BPMNDiagram id="Diagram_SessionStateMachine">
     <bpmndi:BPMNPlane id="Plane_SessionStateMachine" bpmnElement="Collab_SessionStateMachine">
       <bpmndi:BPMNShape id="Shape_Participant_SessionStateMachine" bpmnElement="Participant_SessionStateMachine" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1200" height="610" />
+        <dc:Bounds x="160" y="80" width="1400" height="610" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Machine" bpmnElement="Lane_Machine" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1170" height="320" />
+        <dc:Bounds x="190" y="80" width="1370" height="320" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Human" bpmnElement="Lane_Human" isHorizontal="true">
-        <dc:Bounds x="190" y="400" width="1170" height="170" />
+        <dc:Bounds x="190" y="400" width="1370" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Record" bpmnElement="Lane_Record" isHorizontal="true">
-        <dc:Bounds x="190" y="570" width="1170" height="120" />
+        <dc:Bounds x="190" y="570" width="1370" height="120" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_Session" bpmnElement="Start_Session">
@@ -218,23 +227,26 @@ NO `cat-harness.processes:bean` on this step. It records that a claim happened; 
       <bpmndi:BPMNShape id="Shape_A_OpenSession" bpmnElement="A_OpenSession">
         <dc:Bounds x="590" y="200" width="140" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_A_ReadTurn" bpmnElement="A_ReadTurn">
+      <bpmndi:BPMNShape id="Shape_Call_SecurePermissions" bpmnElement="Call_SecurePermissions">
         <dc:Bounds x="790" y="200" width="140" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_A_ReadTurn" bpmnElement="A_ReadTurn">
+        <dc:Bounds x="990" y="200" width="140" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gateway_TurnEffect" bpmnElement="Gateway_TurnEffect" isMarkerVisible="true">
-        <dc:Bounds x="980" y="215" width="50" height="50" />
+        <dc:Bounds x="1180" y="215" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Touch" bpmnElement="A_Touch">
-        <dc:Bounds x="1080" y="100" width="140" height="80" />
+        <dc:Bounds x="1280" y="100" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_UpdateSession" bpmnElement="A_UpdateSession">
-        <dc:Bounds x="1080" y="200" width="140" height="80" />
+        <dc:Bounds x="1280" y="200" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_CloseSession" bpmnElement="A_CloseSession">
-        <dc:Bounds x="1080" y="300" width="140" height="80" />
+        <dc:Bounds x="1280" y="300" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Session" bpmnElement="End_Session">
-        <dc:Bounds x="1290" y="322" width="36" height="36" />
+        <dc:Bounds x="1490" y="322" width="36" height="36" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNEdge id="Edge_F_1" bpmnElement="F_1">
@@ -263,38 +275,42 @@ NO `cat-harness.processes:bean` on this step. It records that a claim happened; 
         <di:waypoint x="730" y="240" />
         <di:waypoint x="790" y="240" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_F_7" bpmnElement="F_7">
+      <bpmndi:BPMNEdge id="Edge_F_6b" bpmnElement="F_6b">
         <di:waypoint x="930" y="240" />
-        <di:waypoint x="980" y="240" />
+        <di:waypoint x="990" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_7" bpmnElement="F_7">
+        <di:waypoint x="1130" y="240" />
+        <di:waypoint x="1180" y="240" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_8" bpmnElement="F_8">
-        <di:waypoint x="1005" y="215" />
-        <di:waypoint x="1005" y="140" />
-        <di:waypoint x="1080" y="140" />
+        <di:waypoint x="1205" y="215" />
+        <di:waypoint x="1205" y="140" />
+        <di:waypoint x="1280" y="140" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_9" bpmnElement="F_9">
-        <di:waypoint x="1080" y="140" />
-        <di:waypoint x="860" y="140" />
-        <di:waypoint x="860" y="200" />
+        <di:waypoint x="1280" y="140" />
+        <di:waypoint x="1060" y="140" />
+        <di:waypoint x="1060" y="200" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_10" bpmnElement="F_10">
-        <di:waypoint x="1030" y="240" />
-        <di:waypoint x="1080" y="240" />
+        <di:waypoint x="1230" y="240" />
+        <di:waypoint x="1280" y="240" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_11" bpmnElement="F_11">
-        <di:waypoint x="1150" y="280" />
-        <di:waypoint x="1150" y="360" />
-        <di:waypoint x="860" y="360" />
-        <di:waypoint x="860" y="280" />
+        <di:waypoint x="1350" y="280" />
+        <di:waypoint x="1350" y="360" />
+        <di:waypoint x="1060" y="360" />
+        <di:waypoint x="1060" y="280" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_12" bpmnElement="F_12">
-        <di:waypoint x="1005" y="265" />
-        <di:waypoint x="1005" y="340" />
-        <di:waypoint x="1080" y="340" />
+        <di:waypoint x="1205" y="265" />
+        <di:waypoint x="1205" y="340" />
+        <di:waypoint x="1280" y="340" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_13" bpmnElement="F_13">
-        <di:waypoint x="1220" y="340" />
-        <di:waypoint x="1290" y="340" />
+        <di:waypoint x="1420" y="340" />
+        <di:waypoint x="1490" y="340" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

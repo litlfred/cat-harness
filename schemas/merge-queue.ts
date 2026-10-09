@@ -243,8 +243,9 @@ const ObjectName = z.string().regex(/^[0-9a-f]{40}$/, "a full 40-character objec
  *
  * `explicit` — the person said it about THIS pull request ("merge #2077").
  * `standing-ruling` — a general ruling the decision invokes ("you may merge
- * green PRs"), with the date it was ruled, because `Task_Release` accepts a
- * standing ruling only when the steward "quotes [it] verbatim with its date".
+ * green PRs"), with the date it was ruled, because `merge-to-main.bpmn`
+ * (formerly `Task_Release` in `merge-train.bpmn`) accepts a standing ruling
+ * only when the steward "quotes [it] verbatim with its date".
  * A paraphrase is refused by construction: there is no field for one.
  */
 export const ReleaseAuthoritySchema = z.discriminatedUnion("kind", [

@@ -68,6 +68,11 @@ and the remedy; you add the slug, sorted.
 Everything else it either performs (the derived artefacts, and stripping a
 retired key — see below) or reports and leaves alone.
 
+**One exception to "commit what it writes":** `skill:commands`, one of its
+steps, writes `.claude/commands/` in a composed checkout. That directory is a
+projection CI writes ([`harness-projections`](../../conduct/conduct-core/harness-projections.md)),
+so leave its changes unstaged and let the workflow commit them.
+
 ## Why one pass is not enough
 
 `skill:register` runs each writer and then **re-runs every `:check` on its own**

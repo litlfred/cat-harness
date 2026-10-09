@@ -242,7 +242,7 @@ export function decisionFrom(
   if (!sha) return { usage: "--sha <40-hex> is required: the head the person approved — a later push voids the decision" };
   const standing = argv.includes("--standing-ruling");
   const ruledAt = flag(argv, "ruled-at");
-  if (standing && !ruledAt) return { usage: "--standing-ruling needs --ruled-at <YYYY-MM-DD>: Task_Release accepts a standing ruling only with its date" };
+  if (standing && !ruledAt) return { usage: "--standing-ruling needs --ruled-at <YYYY-MM-DD>: merge-to-main accepts a standing ruling only with its date" };
 
   const release = {
     verdict,

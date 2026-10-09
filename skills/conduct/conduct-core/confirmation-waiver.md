@@ -54,12 +54,14 @@ non-destructive move (`scrapped`, with reasons) is always available.
 
 | gate class | the rule it relaxes | waivable |
 |---|---|---|
-| `merge-to-main` | [`crdm-requirements-workflow`](../../sdlc/crdm/crdm-requirements-workflow.md) §Phase 6 — explicit confirmation before merging | yes |
+| `merge-to-main` | [`merge-to-main`](../../sdlc/sdlc-core/merge-to-main.md) — the owner's authorisation for each merge (and [`crdm-requirements-workflow`](../../sdlc/crdm/crdm-requirements-workflow.md) §Phase 6) | yes, **for green heads only**: a head in a repository with no CI is never covered |
 | `bean-close` | [`bean-coordination`](../../sdlc/sdlc-core/bean-coordination.md) §"When you cannot re-derive it yourself" — the `ready-to-close` batch | yes |
 | `deletion` | [`deletion-requires-confirmation`](deletion-requires-confirmation.md) — report and wait | yes, **per artefact class**, never blanket |
 | `swarm-spawn` | [`swarm-management`](../../sdlc/sdlc-core/swarm-management.md) — asked every time, per swarm | yes, with the agent count and model level named in the quote |
 | `process-reentry` | [`process-state`](../../process/workflow/process-state.md) — confirm before re-entering | yes |
 | `issue-close` | [`issue-working`](../../sdlc/sdlc-core/issue-working.md) — an agent never closes an issue on its own say-so | yes; the waiver names the issues |
+| *agent permission grants* | [`agent-permissions`](agent-permissions.md) — a person grants what a coding agent may do | **no — never self-granted, and granted per permission** |
+| *hand-edited agent config* | [`harness-projections`](harness-projections.md) — consent per change to `.claude/settings.json` and the like | **no — the owner asked for consent per change** |
 | *bean deletion* | `AGENTS.md`, "never delete ANY bean" | **no — a prohibition, not a gate** |
 | *fabricating evidence* | anywhere a rule says re-derive rather than quote | **no** |
 

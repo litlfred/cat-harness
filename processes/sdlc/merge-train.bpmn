@@ -41,7 +41,7 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
         <bpmn:flowNodeRef>Task_Bisect</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Eject</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_EjectHandBack</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_Land</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_MergeToMain</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Landed</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Sibling" name="Sibling session">
@@ -62,12 +62,11 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
         <bpmn:flowNodeRef>GW_StillRed</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Owner" name="Owner">
-        <bpmn:documentation>Releases a merge to `main` (or has released it by a standing ruling, which the steward quotes), and may override a placement, always with a reason.</bpmn:documentation>
+        <bpmn:documentation>May override a placement, always with a reason. Releasing a merge to `main` is no longer drawn here: it is the Owner lane of `merge-to-main.bpmn`, which `Call_MergeToMain` descends into, so the owner's release has one definition for every process that merges rather than one per diagram.</bpmn:documentation>
         <bpmn:extensionElements><bootstrap.processes:role ref="user"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Override</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Override</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_OverrideRecorded</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_Release</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
 
@@ -251,25 +250,16 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       <bpmn:outgoing>t31</bpmn:outgoing>
     </bpmn:callActivity>
 
-    <bpmn:task id="Task_Release" name="Release the merge&#10;to main">
-      <bpmn:documentation>Explicit confirmation before merging to `main`, or a standing ruling the steward quotes verbatim with its date (2026-10-01: "you may merge green PRs").</bpmn:documentation>
+    <bpmn:callActivity id="Call_MergeToMain" name="Release and land each&#10;member at the tested SHA&#10;[merge-to-main]" calledElement="Process_MergeToMain">
+      <bpmn:documentation>Once per member, in train order, at the SHA the train's gate set tested. `merge-to-main.bpmn` is where merging is a step with its own gate: it reads the head's evidence live (the train's green run is that evidence, and `merge:guard` re-evaluates it), establishes that the owner authorised THIS merge (explicitly, or by a standing ruling quoted verbatim with its date, e.g. 2026-10-01 "you may merge green PRs", which covers green heads only and only the queue as it stood), records the authorisation, merges pinned to the head, and then confirms `main`, re-pins downstream mounts and notes the bean. Until 2026-10-09 this was two steps here, `Task_Release` in the owner's lane bound to interaction-modality and `Task_Land` bound to prepare-merge; neither could refuse a merge, and neither said what happens when a repository has no CI. R1 still holds: what lands is exactly what CI tested. If `main` moved after the train's CI started, re-run rather than land. Each member's `trainId` is cleared, and its preview is then taken down by `feature-staging.bpmn`. A member the sub-process does not merge (held, refused, handed back) leaves the train with its reason on its queue entry.</bpmn:documentation>
       <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="interaction-modality"/>
+        <bootstrap.processes:skill ref="merge-to-main"/>
         <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>t17</bpmn:incoming>
       <bpmn:incoming>t22</bpmn:incoming>
-      <bpmn:outgoing>t28</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:task id="Task_Land" name="Land the train at&#10;the tested SHA">
-      <bpmn:documentation>R1: what lands is exactly what CI tested. If `main` moved after the train's CI started, re-run rather than land (open question for the owner in the requirements note §6). Clears each member's `trainId`; its preview is then taken down by `feature-staging.bpmn`.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="prepare-merge"/>
-        <cat-harness.processes:bean op="note"/>
-      </bpmn:extensionElements>
-      <bpmn:incoming>t28</bpmn:incoming>
       <bpmn:outgoing>t29</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_Landed" name="Landed">
       <bpmn:incoming>t29</bpmn:incoming>
     </bpmn:endEvent>
@@ -306,19 +296,18 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
     <bpmn:sequenceFlow id="t14" name="merged" sourceRef="GW_AllMerged" targetRef="Call_Gates"/>
     <bpmn:sequenceFlow id="t15" name="refused" sourceRef="GW_AllMerged" targetRef="Task_Eject"/>
     <bpmn:sequenceFlow id="t16" sourceRef="Call_Gates" targetRef="GW_Green"/>
-    <bpmn:sequenceFlow id="t17" name="green" sourceRef="GW_Green" targetRef="Task_Release"/>
+    <bpmn:sequenceFlow id="t17" name="green" sourceRef="GW_Green" targetRef="Call_MergeToMain"/>
     <bpmn:sequenceFlow id="t18" name="red" sourceRef="GW_Green" targetRef="Task_RetryFlaky"/>
     <bpmn:sequenceFlow id="t19" sourceRef="Task_RetryFlaky" targetRef="GW_StillRed"/>
     <bpmn:sequenceFlow id="t20" sourceRef="PG_HandBack" targetRef="Task_SiblingFix"/>
     <bpmn:sequenceFlow id="t21" sourceRef="Task_SiblingFix" targetRef="End_Requeued"/>
-    <bpmn:sequenceFlow id="t22" name="green" sourceRef="GW_StillRed" targetRef="Task_Release"/>
+    <bpmn:sequenceFlow id="t22" name="green" sourceRef="GW_StillRed" targetRef="Call_MergeToMain"/>
     <bpmn:sequenceFlow id="t23" name="red" sourceRef="GW_StillRed" targetRef="Task_Attribute"/>
     <bpmn:sequenceFlow id="t24" sourceRef="Task_Attribute" targetRef="GW_Culprit"/>
     <bpmn:sequenceFlow id="t25" name="evidence" sourceRef="GW_Culprit" targetRef="Task_Eject"/>
     <bpmn:sequenceFlow id="t26" name="bisect" sourceRef="GW_Culprit" targetRef="Task_Bisect"/>
     <bpmn:sequenceFlow id="t27" sourceRef="Task_Bisect" targetRef="Task_Eject"/>
-    <bpmn:sequenceFlow id="t28" sourceRef="Task_Release" targetRef="Task_Land"/>
-    <bpmn:sequenceFlow id="t29" sourceRef="Task_Land" targetRef="End_Landed"/>
+    <bpmn:sequenceFlow id="t29" sourceRef="Call_MergeToMain" targetRef="End_Landed"/>
     <bpmn:sequenceFlow id="t30" sourceRef="Task_Eject" targetRef="Call_EjectHandBack"/>
     <bpmn:sequenceFlow id="t31" name="re-run without it" sourceRef="Call_EjectHandBack" targetRef="Call_MergeMembers"/>
     <bpmn:sequenceFlow id="o1" sourceRef="Start_Override" targetRef="Task_Override"/>
@@ -357,7 +346,7 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       <bpmndi:BPMNShape id="Shape_Task_Eject" bpmnElement="Task_Eject"><dc:Bounds x="1440" y="190" width="130" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Culprit" bpmnElement="GW_Culprit" isMarkerVisible="true"><dc:Bounds x="1700" y="205" width="50" height="50"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Attribute" bpmnElement="Task_Attribute"><dc:Bounds x="1830" y="190" width="130" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_Land" bpmnElement="Task_Land"><dc:Bounds x="2130" y="60" width="130" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Call_MergeToMain" bpmnElement="Call_MergeToMain"><dc:Bounds x="2130" y="60" width="130" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Landed" bpmnElement="End_Landed"><dc:Bounds x="2310" y="82" width="36" height="36"/></bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Task_SiblingFix" bpmnElement="Task_SiblingFix"><dc:Bounds x="740" y="330" width="130" height="80"/></bpmndi:BPMNShape>
@@ -374,7 +363,6 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       <bpmndi:BPMNShape id="Shape_Start_Override" bpmnElement="Start_Override"><dc:Bounds x="80" y="762" width="36" height="36"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Override" bpmnElement="Task_Override"><dc:Bounds x="150" y="740" width="130" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_OverrideRecorded" bpmnElement="End_OverrideRecorded"><dc:Bounds x="320" y="762" width="36" height="36"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_Release" bpmnElement="Task_Release"><dc:Bounds x="1960" y="740" width="130" height="80"/></bpmndi:BPMNShape>
 
       <bpmndi:BPMNEdge id="Edge_t1" bpmnElement="t1"><di:waypoint x="116" y="100"/><di:waypoint x="150" y="100"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t2" bpmnElement="t2"><di:waypoint x="280" y="100"/><di:waypoint x="320" y="100"/></bpmndi:BPMNEdge>
@@ -392,18 +380,17 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       <bpmndi:BPMNEdge id="Edge_t14" bpmnElement="t14"><di:waypoint x="1400" y="510"/><di:waypoint x="1440" y="510"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t15" bpmnElement="t15"><di:waypoint x="1375" y="485"/><di:waypoint x="1375" y="230"/><di:waypoint x="1440" y="230"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t16" bpmnElement="t16"><di:waypoint x="1570" y="510"/><di:waypoint x="1610" y="510"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_t17" bpmnElement="t17"><di:waypoint x="1660" y="510"/><di:waypoint x="1990" y="510"/><di:waypoint x="1990" y="740"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_t17" bpmnElement="t17"><di:waypoint x="1660" y="510"/><di:waypoint x="2160" y="510"/><di:waypoint x="2160" y="140"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t18" bpmnElement="t18"><di:waypoint x="1635" y="535"/><di:waypoint x="1635" y="630"/><di:waypoint x="1700" y="630"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t19" bpmnElement="t19"><di:waypoint x="1830" y="630"/><di:waypoint x="1870" y="630"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t20" bpmnElement="t20"><di:waypoint x="775" y="255"/><di:waypoint x="775" y="330"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t21" bpmnElement="t21"><di:waypoint x="870" y="370"/><di:waypoint x="920" y="370"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_t22" bpmnElement="t22"><di:waypoint x="1920" y="630"/><di:waypoint x="1940" y="630"/><di:waypoint x="1940" y="780"/><di:waypoint x="1960" y="780"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_t22" bpmnElement="t22"><di:waypoint x="1920" y="630"/><di:waypoint x="2230" y="630"/><di:waypoint x="2230" y="140"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t23" bpmnElement="t23"><di:waypoint x="1895" y="605"/><di:waypoint x="1895" y="270"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t24" bpmnElement="t24"><di:waypoint x="1830" y="230"/><di:waypoint x="1750" y="230"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t25" bpmnElement="t25"><di:waypoint x="1700" y="230"/><di:waypoint x="1570" y="230"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t26" bpmnElement="t26"><di:waypoint x="1725" y="205"/><di:waypoint x="1725" y="140"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t27" bpmnElement="t27"><di:waypoint x="1660" y="100"/><di:waypoint x="1505" y="100"/><di:waypoint x="1505" y="190"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_t28" bpmnElement="t28"><di:waypoint x="2090" y="780"/><di:waypoint x="2195" y="780"/><di:waypoint x="2195" y="140"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t29" bpmnElement="t29"><di:waypoint x="2260" y="100"/><di:waypoint x="2310" y="100"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t30" bpmnElement="t30"><di:waypoint x="1505" y="270"/><di:waypoint x="1505" y="285"/><di:waypoint x="1245" y="285"/><di:waypoint x="1245" y="270"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t31" bpmnElement="t31"><di:waypoint x="1180" y="230"/><di:waypoint x="1160" y="230"/><di:waypoint x="1160" y="455"/><di:waypoint x="1245" y="455"/><di:waypoint x="1245" y="470"/></bpmndi:BPMNEdge>
