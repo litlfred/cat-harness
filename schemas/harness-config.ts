@@ -680,8 +680,25 @@ export function readHarnessConfig(dir: string): HarnessConfig | null {
   // An instance LISTED in an `index.config.json` on the way out from its root
   // is configured by that index: its import overlaid by the entry's inline
   // fields. One unlisted there is read exactly as before.
-  const indexed = indexedInstanceFor(dir);
-  if (indexed !== undefined) return effectiveInstanceConfig(indexed.root, indexed.name);
+  // An UNREADABLE config is `null` here on both branches. The file branch
+  // below has always returned `null` for a file that will not parse; the
+  // index branch threw instead, so once `init-folio` wrote an index every
+  // reader crashed where it used to report "undetermined" (`qa-sweep`,
+  // `profile-scoping`, 2026-10-09). A caller that must tell unreadable from
+  // absent asks `readEffectiveConfig`, which keeps them apart.
+  let indexed: ReturnType<typeof indexedInstanceFor>;
+  try {
+    indexed = indexedInstanceFor(dir);
+  } catch {
+    return null;
+  }
+  if (indexed !== undefined) {
+    try {
+      return effectiveInstanceConfig(indexed.root, indexed.name);
+    } catch {
+      return null;
+    }
+  }
   const found = resolveHarnessConfigPath(dir);
   if (!found) return null;
   const configPath = found.path;
