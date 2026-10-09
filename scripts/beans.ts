@@ -125,6 +125,8 @@ export interface BeanNode {
   declaredBlockedBy?: string[];
   /** Front-matter `tags:`, or `[]`. Optional for the same reason. */
   tags?: string[];
+  /** Front-matter `targets:`, or `[]` (folio-assistant-f227). */
+  targets?: string[];
 }
 
 /**
@@ -166,7 +168,20 @@ function field(fm: string, key: string): string {
  */
 function sequence(fm: string, key: string): string[] {
   const m = new RegExp(`^${key}:\\s*\\n((?:[ \\t]+-[ \\t]*\\S.*\\n?)+)`, "m").exec(fm);
-  if (!m) return [];
+  if (!m) {
+    const flow = new RegExp(`^${key}:\\s*\\[(.*)\\]\\s*$`, "m").exec(fm);
+    if (flow) {
+      return flow[1]!
+        .split(",")
+        .map((s) => s.trim().replace(/^['"]|['"]$/g, ""))
+        .filter((s) => s.length > 0);
+    }
+    const single = new RegExp(`^${key}:\\s*(\\S+)\\s*$`, "m").exec(fm);
+    if (single && !single[1]!.startsWith("[") && single[1] !== "") {
+      return [single[1]!.replace(/^['"]|['"]$/g, "")];
+    }
+    return [];
+  }
   return m[1]!
     .split("\n")
     .map((l) => l.replace(/^[ \t]*-[ \t]*/, "").trim().replace(/^['"]|['"]$/g, ""))
@@ -414,6 +429,7 @@ function beansIn(dir: string, root: string): BeanNode[] {
       body: m[2]!,
       declaredBlockedBy: sequence(fm, "blocked_by"),
       tags: sequence(fm, "tags"),
+      targets: sequence(fm, "targets"),
     });
   }
   return out.sort((a, b) => a.id.localeCompare(b.id));

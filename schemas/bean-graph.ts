@@ -130,6 +130,44 @@ export const BeanGraphSchema = z.object({
 export type BeanGraph = z.infer<typeof BeanGraphSchema>;
 
 /**
+ * Targets schema for bean front matter.
+ *
+ * Supports array of strings (e.g. `targets: ["sec:foo", "thm:bar"]`),
+ * flow sequence or single scalar coerced to array.
+ */
+export const BeanTargetsSchema = z
+  .union([
+    z.array(z.string()),
+    z.string().transform((s) => (s.trim().length > 0 ? [s.trim()] : [])),
+  ])
+  .optional();
+
+/**
+ * Bean front-matter schema — what a bean definition file declares in front matter.
+ *
+ * Supports standard bean fields plus `targets?: string[]`, representing target block
+ * labels or declaration identifiers for work traceability (folio-assistant-f227).
+ */
+export const BeanFrontMatterSchema = z
+  .object({
+    id: z.string().optional(),
+    title: z.string().optional(),
+    status: z.string().optional(),
+    type: z.string().optional(),
+    priority: z.string().optional(),
+    parent: z.string().optional(),
+    blocking: z.array(z.string()).optional(),
+    blocked_by: z.array(z.string()).optional(),
+    created_at: z.string().optional(),
+    updated_at: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    targets: BeanTargetsSchema,
+  })
+  .passthrough();
+
+export type BeanFrontMatter = z.infer<typeof BeanFrontMatterSchema>;
+
+/**
  * The graph file's name inside its root directory.
  *
  * DERIVED from the `beans` kind rather than written here, so the name exists

@@ -1595,6 +1595,15 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
       "declared tools instance `supports`) holds code. A content repository holds no code (kg-separation, " +
       "bootstrap FR-7); each file is named, and belongs in the platform or a `<name>-tools` repository.",
   },
+  {
+    id: "work-traceability-audit",
+    applies: ["graph"],
+    scope: "instance",
+    severity: "minor",
+    summary:
+      "Audit work traceability between declared beans, content blocks, and Lean declarations. " +
+      "Flags unassociated blocks, beans with no targets, and broken target references. Vacuity-guarded when no beans or blocks exist.",
+  },
 ] as const;
 
 export const KG_CRITERIA_BY_ID: Readonly<Record<string, KgCriterionDefinition>> = Object.fromEntries(

@@ -56,6 +56,7 @@ import { checkTestRuns, testRunFiles } from "./test-run-conformance.js";
 import { auditTestPlans, jsonFilesUnder } from "./test-plan-audit.js";
 import { processArrowFindings, schemaArrowFindings } from "./arrow-direction.js";
 import { contentCodeFindings, contentInstanceCode } from "./content-holds-code.js";
+import { evaluateTraceabilityAudit } from "./trace-work.ts";
 import { classifyName, diagramProse, generalDeclarationProse, namedFiles } from "./prose-names.js";
 import { readSchemaGraph } from "./schema-graph.js";
 import { checkTools, unresolvedPaths } from "./check-tools.js";
@@ -2446,6 +2447,7 @@ function auditGraph(
       "nested-instance-audited": entry(unreadNestedInstances()),
       // A content instance holding code (bean `eayu`) — see content-holds-code.ts.
       "content-instance-holds-code": contentInstanceHoldsCode(),
+      "work-traceability-audit": evaluateTraceabilityAudit({ root }),
     },
   );
 }
