@@ -264,7 +264,7 @@ Scenario.
 `;
 
   test("passing case: returns state pass when referenced issue carries a valid spec comment", () => {
-    const mockFetch = (issueNum: number): FetchResult => ({
+    const mockFetch = (_issueNum: number): FetchResult => ({
       state: "ok",
       content: validSpecText,
     });
@@ -277,7 +277,7 @@ Scenario.
   });
 
   test("failing case: missing spec comment on issue reports a finding, not silence (exit 1)", () => {
-    const mockFetch = (issueNum: number): FetchResult => ({
+    const mockFetch = (_issueNum: number): FetchResult => ({
       state: "ok",
       content: undefined,
     });
@@ -289,7 +289,7 @@ Scenario.
   });
 
   test("failing case: invalid spec comment (missing mandatory section) reports a finding (exit 1)", () => {
-    const mockFetch = (issueNum: number): FetchResult => ({
+    const mockFetch = (_issueNum: number): FetchResult => ({
       state: "ok",
       content: invalidSpecTextMissingReq,
     });
@@ -329,7 +329,7 @@ SC-001: Done.
   });
 
   test("could-not-determine case: unreachable issue reports unknown (exit 2)", () => {
-    const mockFetch = (issueNum: number): FetchResult => ({
+    const mockFetch = (_issueNum: number): FetchResult => ({
       state: "unknown",
       reason: "API rate limit exceeded or network down",
     });
@@ -350,7 +350,7 @@ status: todo
 
 Issue: https://github.com/litlfred/folio-assistant/issues/730
 `;
-    const mockFetch = (issueNum: number): FetchResult => ({
+    const mockFetch = (_issueNum: number): FetchResult => ({
       state: "ok",
       content: validSpecText,
     });
