@@ -35,6 +35,7 @@ import {
 import { CatHarnessDeclarationSchema, siteDirFor, declarationPathIn } from "./cat-harness.js";
 import { THEMES } from "./themes.js";
 import { resolveThemeBackdrop } from "./theme.js";
+import { inAggregate } from "../test/support/checkout.js";
 
 const REPO = join(import.meta.dir, "..", "..");
 /** This instance's root — where its own declaration and site live. */
@@ -756,9 +757,24 @@ describe("sourceLinks — where a card's declaration can be read and edited", ()
     // shows edit src icon (and also need view icon)". `/blob/` reads and
     // `/edit/` opens the editor; a reader checking what a card says should not
     // land in a text box.
+    //
+    // A file the index checkout itself holds, since cat-harness, like every
+    // other instance, became a remote mount of its own repository
+    // (2026-10-09): `index.config.json` is the checkout's own.
+    expect(sourceLinks(REPO, "index.config.json", "main")).toEqual({
+      viewHref: `${REPO}/blob/main/index.config.json`,
+      editHref: `${REPO}/edit/main/index.config.json`,
+    });
+  });
+
+  // Both read the index checkout's mount lock, which a standalone
+  // cat-harness checkout does not have (bean `ho66`).
+  test.skipIf(!inAggregate())("a file in a remote mount is read and edited in the mount's own repository", () => {
+    // Since the cutovers every instance here is a remote mount, and the lock
+    // says where it came from: this checkout's forge holds no copy of it.
     expect(sourceLinks(REPO, "cat-harness/cat-harness.json", "main")).toEqual({
-      viewHref: `${REPO}/blob/main/cat-harness/cat-harness.json`,
-      editHref: `${REPO}/edit/main/cat-harness/cat-harness.json`,
+      viewHref: "https://github.com/litlfred/cat-harness/blob/main/cat-harness.json",
+      editHref: "https://github.com/litlfred/cat-harness/edit/main/cat-harness.json",
     });
   });
 
@@ -779,23 +795,23 @@ describe("sourceLinks — where a card's declaration can be read and edited", ()
     expect(sourceLinks(undefined, "bootstrap/bootstrap.json", "main")).toBeUndefined();
   });
 
-  test("the path is the CONTRIBUTING instance's, not a default", () => {
+  test.skipIf(!inAggregate())("the path is the CONTRIBUTING instance's, not a default", () => {
     // The falsifier that matters. Three instances contribute today, so a
     // resolver that always answered `cat-harness/harness.json` would be
     // silently right one time in three.
     const a = sourceLinks(REPO, "cat-harness/cat-harness.json", "main")!;
     const b = sourceLinks(REPO, "folio-assistant-core/folio-assistant-core.json", "main")!;
     expect(a.editHref).not.toEqual(b.editHref);
-    expect(b.editHref).toContain("folio-assistant-core/folio-assistant-core.json");
+    // Each in its own repository, since both are remote mounts.
+    expect(a.editHref).toBe("https://github.com/litlfred/cat-harness/edit/main/cat-harness.json");
+    expect(b.editHref).toBe("https://github.com/litlfred/folio-assistant-core/edit/main/folio-assistant-core.json");
   });
 
   test("a branch other than main is honoured", () => {
     // `declaredIn` is a repo-relative PATH STRING, not a directory to look in
     // — `REPO` here is the remote URL. A codemod briefly passed this through
     // `findDeclarationFile`, which asked the filesystem about a URL.
-    expect(sourceLinks(REPO, "cat-harness/cat-harness.json", "claude/x")!.editHref).toBe(
-      `${REPO}/edit/claude/x/cat-harness/cat-harness.json`,
-    );
+    expect(sourceLinks(REPO, "index.config.json", "claude/x")!.editHref).toBe(`${REPO}/edit/claude/x/index.config.json`);
   });
 
   test("a path segment with a space survives as an escape, not as a break", () => {
