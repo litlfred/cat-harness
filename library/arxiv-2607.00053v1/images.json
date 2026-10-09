@@ -1,0 +1,58 @@
+{
+  "$schema": "folio-document-images/v1",
+  "doc_id": "arxiv-2607.00053v1",
+  "images": [
+    {
+      "id": "img-p002-1",
+      "file": "images/img-p002-1.png",
+      "role": "decorative",
+      "basis": {
+        "method": "inspection",
+        "by": {
+          "kind": "agent",
+          "id": "claude",
+          "model": "claude-opus-5"
+        },
+        "at": "2026-10-09",
+        "saw": "semi-transparent drop shadow rectangle element placed behind the callout box 'Not enough information in q -> Large Bayes error' in Figure 1",
+        "page": 2
+      },
+      "narrative": {
+        "text": "A drop shadow rectangle behind the callout box describing prompt-only routing limitations in Figure 1. A decorative rendering artifact.",
+        "state": "draft",
+        "drafted_by": {
+          "kind": "agent",
+          "id": "claude",
+          "model": "claude-opus-5"
+        },
+        "drafted_at": "2026-10-09"
+      }
+    },
+    {
+      "id": "img-p002-2",
+      "file": "images/img-p002-2.png",
+      "role": "decorative",
+      "basis": {
+        "method": "inspection",
+        "by": {
+          "kind": "agent",
+          "id": "claude",
+          "model": "claude-opus-5"
+        },
+        "at": "2026-10-09",
+        "saw": "semi-transparent drop shadow rectangle element placed behind the callout box 'Well-informed accurate routing' in Figure 1",
+        "page": 2
+      },
+      "narrative": {
+        "text": "A drop shadow rectangle behind the callout box describing SWE-Router value head routing in Figure 1. A decorative rendering artifact.",
+        "state": "draft",
+        "drafted_by": {
+          "kind": "agent",
+          "id": "claude",
+          "model": "claude-opus-5"
+        },
+        "drafted_at": "2026-10-09"
+      }
+    }
+  ]
+}
