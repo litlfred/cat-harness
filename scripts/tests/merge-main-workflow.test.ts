@@ -309,7 +309,9 @@ describe("one bad member no longer reds the whole run (bean `03nl`)", () => {
 
   test("the aggregator runs main's copy, with the remote mounts its checkout needs", () => {
     const steps = doc.jobs.notify!.steps;
-    const mount = steps.find((s) => s.run?.includes("mount-from-lock.ts"));
+    // `.github/mount-from-lock.sh` since the cat-harness cutover: cat-harness
+    // is itself a mount, so the wrapper fetches the pinned `.ts` replayer.
+    const mount = steps.find((s) => /mount-from-lock\.(?:sh|ts)\b/.test(s.run ?? ""));
     expect(mount).toBeDefined();
     const bun = steps.find((s) => (s.uses ?? "").startsWith("oven-sh/setup-bun")) as { with?: Record<string, unknown> };
     expect(bun.with?.["bun-version"]).toBe("1.3.14");
