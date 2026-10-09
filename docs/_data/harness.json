@@ -54,16 +54,16 @@
       "id": "beans",
       "directory": "beans",
       "title": "Beans",
-      "ref": "cat-harness/docs/beans/index.html",
+      "ref": "cat-harness/docs/cat-harness/beans/index.html",
       "surfaces": [
         "navbar",
         "board",
         "glass"
       ],
-      "href": "/beans/",
+      "href": "/cat-harness/beans/",
       "hidden": false,
       "icon": "beans",
-      "count": 297,
+      "count": 303,
       "unit": "open beans"
     },
     {
@@ -86,13 +86,13 @@
       "directory": "core-methodologies",
       "title": "Methodologies",
       "qualifier": "Folio Assistant Core",
-      "ref": "cat-harness/docs/methodologies/index.md",
+      "ref": "cat-harness/docs/cat-harness/methodologies/index.md",
       "surfaces": [
         "navbar",
         "board",
         "glass"
       ],
-      "href": "/methodologies/",
+      "href": "/cat-harness/methodologies/",
       "hidden": false,
       "theme": "analyst"
     },
@@ -101,13 +101,13 @@
       "directory": "core-processes",
       "title": "Processes",
       "qualifier": "Folio Assistant Core",
-      "ref": "cat-harness/docs/processes/index.md",
+      "ref": "cat-harness/docs/cat-harness/processes/index.md",
       "surfaces": [
         "navbar",
         "board",
         "glass"
       ],
-      "href": "/processes/",
+      "href": "/cat-harness/processes/",
       "hidden": false,
       "icon": "processes"
     },
@@ -146,13 +146,13 @@
       "directory": "folio-assistant-core-translations",
       "title": "Translation sources",
       "qualifier": "Folio Assistant Core",
-      "ref": "cat-harness/docs/translation-status/index.html",
+      "ref": "cat-harness/docs/cat-harness/translation-status/index.html",
       "surfaces": [
         "navbar",
         "board",
         "glass"
       ],
-      "href": "/translation-status/",
+      "href": "/cat-harness/translation-status/",
       "hidden": false
     },
     {
@@ -160,13 +160,13 @@
       "directory": "glossary",
       "title": "Glossary",
       "qualifier": "Folio Assistant Core",
-      "ref": "cat-harness/docs/glossary/index.md",
+      "ref": "cat-harness/docs/folio-assistant-core/glossary/index.md",
       "surfaces": [
         "navbar",
         "board",
         "glass"
       ],
-      "href": "/glossary/",
+      "href": "/folio-assistant-core/glossary/",
       "hidden": false
     }
   ],
@@ -218,7 +218,7 @@
         {
           "id": "views",
           "label": "visualisations you can open",
-          "value": 9
+          "value": 10
         }
       ],
       "visualisations": [
@@ -254,8 +254,8 @@
         },
         {
           "kind": "fhir-artifact-index",
+          "path": "/smart-base/artifact-index/smart-base/",
           "readOnly": true,
-          "note": "no viewer yet",
           "label": "FHIR artefact index"
         },
         {
@@ -271,12 +271,12 @@
         },
         {
           "kind": "methodology",
-          "path": "/methodologies/",
+          "path": "/cat-harness/methodologies/",
           "label": "Methodologies"
         },
         {
           "kind": "processes",
-          "path": "/processes/",
+          "path": "/cat-harness/processes/",
           "label": "Processes"
         },
         {
@@ -311,7 +311,7 @@
         },
         {
           "kind": "translation-sources",
-          "path": "/translation-status/",
+          "path": "/cat-harness/translation-status/",
           "label": "Translation sources"
         },
         {
@@ -508,7 +508,7 @@
         }
       ],
       "findings": [
-        "smart-base: declares 10 graph(s) with no published viewer — block-kinds, code, content-adapters, external-schema, fhir-artifact-index, qa, qa-checkers, scenarios, themes, tools. Declared and not rendered is a gap, not a dead link.",
+        "smart-base: declares 9 graph(s) with no published viewer — block-kinds, code, content-adapters, external-schema, qa, qa-checkers, scenarios, themes, tools. Declared and not rendered is a gap, not a dead link.",
         "smart-base: 1 graph(s) hold materialized content and are READ-ONLY — fhir-artifact-index. Readable, not editable here: copy one out to your own folio/ to work on it. Separate from whether a viewer is published.",
         "smart-base: has no docs/ of its own, so the tile opens a kind handler's viewer (/cat-harness/auto-docs/index/docs/smart-base-docs/) rather than the instance's own themed root."
       ],
@@ -566,12 +566,12 @@
         {
           "id": "directories",
           "label": "declared directories",
-          "value": 14
+          "value": 15
         },
         {
           "id": "kinds",
           "label": "declared graph typologies",
-          "value": 12
+          "value": 13
         },
         {
           "id": "views",
@@ -582,7 +582,7 @@
       "visualisations": [
         {
           "kind": "catalogue",
-          "path": "/cat-harness/catalogue/who-iris/",
+          "path": "/who-iris/catalogue/",
           "readOnly": true,
           "label": "Catalogue"
         },
@@ -627,8 +627,13 @@
           "label": "Themes"
         },
         {
+          "kind": "tools",
+          "note": "no viewer yet",
+          "label": "Tools"
+        },
+        {
           "kind": "translation-sources",
-          "path": "/translation-status/",
+          "path": "/cat-harness/translation-status/",
           "label": "Translation sources"
         },
         {
@@ -749,6 +754,14 @@
           "path": "who-iris/test/results/"
         },
         {
+          "id": "who-iris-tools",
+          "kinds": [
+            "tools"
+          ],
+          "where": "local",
+          "path": "who-iris/tools/"
+        },
+        {
           "id": "voices",
           "kinds": [
             "voices"
@@ -758,7 +771,7 @@
         }
       ],
       "findings": [
-        "who-iris: declares 5 graph(s) with no published viewer — code, glossary, qa, schemas, themes. Declared and not rendered is a gap, not a dead link.",
+        "who-iris: declares 6 graph(s) with no published viewer — code, glossary, qa, schemas, themes, tools. Declared and not rendered is a gap, not a dead link.",
         "who-iris: 1 graph(s) hold materialized content and are READ-ONLY — catalogue. Readable, not editable here: copy one out to your own folio/ to work on it. Separate from whether a viewer is published."
       ],
       "navbarIcons": [
@@ -835,7 +848,7 @@
         },
         {
           "kind": "methodology",
-          "path": "/methodologies/",
+          "path": "/cat-harness/methodologies/",
           "label": "Methodologies"
         },
         {
@@ -845,7 +858,7 @@
         },
         {
           "kind": "processes",
-          "path": "/processes/",
+          "path": "/cat-harness/processes/",
           "label": "Processes"
         },
         {
@@ -876,7 +889,7 @@
         },
         {
           "kind": "translation-sources",
-          "path": "/translation-status/",
+          "path": "/cat-harness/translation-status/",
           "label": "Translation sources"
         },
         {
@@ -1107,7 +1120,7 @@
         },
         {
           "kind": "processes",
-          "path": "/processes/",
+          "path": "/cat-harness/processes/",
           "label": "Processes"
         },
         {
@@ -1127,7 +1140,7 @@
         },
         {
           "kind": "translation-sources",
-          "path": "/translation-status/",
+          "path": "/cat-harness/translation-status/",
           "label": "Translation sources"
         },
         {
@@ -1297,7 +1310,7 @@
       "visualisations": [
         {
           "kind": "beans",
-          "path": "/beans/",
+          "path": "/cat-harness/beans/",
           "label": "Beans"
         },
         {
@@ -1327,7 +1340,7 @@
         },
         {
           "kind": "glossary",
-          "path": "/glossary/",
+          "path": "/folio-assistant-core/glossary/",
           "label": "Glossary"
         },
         {
@@ -1342,12 +1355,12 @@
         },
         {
           "kind": "methodology",
-          "path": "/methodologies/",
+          "path": "/cat-harness/methodologies/",
           "label": "Methodologies"
         },
         {
           "kind": "processes",
-          "path": "/processes/",
+          "path": "/cat-harness/processes/",
           "label": "Processes"
         },
         {
@@ -1372,7 +1385,7 @@
         },
         {
           "kind": "translation-sources",
-          "path": "/translation-status/",
+          "path": "/cat-harness/translation-status/",
           "label": "Translation sources"
         },
         {
@@ -1585,7 +1598,7 @@
       "reads": "a wrench, in cat-harness's colour — the code that implements its tools",
       "genericAvatar": false,
       "instantiated": false,
-      "href": "/beans/",
+      "href": "/cat-harness/beans/",
       "hrefKind": "viewer",
       "stats": [
         {
@@ -1607,7 +1620,7 @@
       "visualisations": [
         {
           "kind": "beans",
-          "path": "/beans/",
+          "path": "/cat-harness/beans/",
           "label": "Beans"
         },
         {
@@ -1684,7 +1697,7 @@
       ],
       "findings": [
         "cat-harness-tools: declares 1 graph(s) with no published viewer — code. Declared and not rendered is a gap, not a dead link.",
-        "cat-harness-tools: has no docs/ of its own, so the tile opens a kind handler's viewer (/beans/) rather than the instance's own themed root."
+        "cat-harness-tools: has no docs/ of its own, so the tile opens a kind handler's viewer (/cat-harness/beans/) rather than the instance's own themed root."
       ],
       "navbarIcons": [
         "close",
@@ -1758,29 +1771,29 @@
         {
           "id": "directories",
           "label": "declared directories",
-          "value": 73
+          "value": 75
         },
         {
           "id": "kinds",
           "label": "declared graph typologies",
-          "value": 38
+          "value": 40
         },
         {
           "id": "views",
           "label": "visualisations you can open",
-          "value": 20
+          "value": 25
         }
       ],
       "visualisations": [
         {
           "kind": "attestations",
-          "path": "/attestations/",
+          "path": "/cat-harness/attestations/",
           "label": "Attestations"
         },
         {
           "kind": "auto-docs",
           "within": "docs",
-          "note": "no viewer yet",
+          "path": "/cat-harness/auto-docs/",
           "label": "Auto docs"
         },
         {
@@ -1790,13 +1803,14 @@
         },
         {
           "kind": "beans",
-          "path": "/beans/",
+          "path": "/cat-harness/beans/",
           "label": "Beans"
         },
         {
           "kind": "cat-harness",
-          "note": "no viewer yet",
-          "label": "Harness graph"
+          "path": "/cat-harness/schemas/cat-harness/",
+          "label": "Schemas",
+          "sameAs": "schemas"
         },
         {
           "kind": "code",
@@ -1811,7 +1825,7 @@
         {
           "kind": "doc-group",
           "within": "docs",
-          "note": "no viewer yet",
+          "path": "/start/",
           "label": "Doc group"
         },
         {
@@ -1821,7 +1835,7 @@
         },
         {
           "kind": "external-schema",
-          "path": "/external-schemas/",
+          "path": "/cat-harness/external-schemas/",
           "label": "External schemas"
         },
         {
@@ -1831,18 +1845,24 @@
         },
         {
           "kind": "fsh-guts",
-          "path": "/fsh-guts/",
+          "path": "/cat-harness/fsh-guts/",
+          "stagingOnly": true,
           "label": "FSH guts"
         },
         {
           "kind": "health",
-          "path": "/health/",
+          "path": "/cat-harness/health/",
           "label": "Health"
         },
         {
           "kind": "interaction",
           "note": "no viewer yet",
           "label": "Interaction"
+        },
+        {
+          "kind": "issue-marks",
+          "path": "/cat-harness/issue-marks/",
+          "label": "Issue marks"
         },
         {
           "kind": "library",
@@ -1856,7 +1876,7 @@
         },
         {
           "kind": "methodology",
-          "path": "/methodologies/",
+          "path": "/cat-harness/methodologies/",
           "label": "Methodologies"
         },
         {
@@ -1866,7 +1886,7 @@
         },
         {
           "kind": "processes",
-          "path": "/processes/",
+          "path": "/cat-harness/processes/",
           "label": "Processes"
         },
         {
@@ -1877,7 +1897,7 @@
         },
         {
           "kind": "qa",
-          "path": "/qa/",
+          "path": "/cat-harness/lsi/",
           "label": "QA"
         },
         {
@@ -1909,8 +1929,13 @@
         },
         {
           "kind": "swimlane-glossary",
-          "path": "/swimlane-glossary/",
+          "path": "/cat-harness/auto-docs/glossary/swimlane-glossary/",
           "label": "Swimlane glossary"
+        },
+        {
+          "kind": "todos",
+          "path": "/cat-harness/todos/",
+          "label": "Todos"
         },
         {
           "kind": "tool-release",
@@ -1919,12 +1944,12 @@
         },
         {
           "kind": "tools",
-          "path": "/tools/",
+          "path": "/cat-harness/tools/",
           "label": "Tools"
         },
         {
           "kind": "translation-sources",
-          "path": "/translation-status/",
+          "path": "/cat-harness/translation-status/",
           "label": "Translation sources"
         },
         {
@@ -1939,7 +1964,7 @@
         },
         {
           "kind": "uploads",
-          "path": "/uploads/",
+          "path": "/cat-harness/uploads/cat-harness/",
           "label": "Uploads"
         },
         {
@@ -2254,6 +2279,22 @@
           "path": "cat-harness/beans/"
         },
         {
+          "id": "todos",
+          "kinds": [
+            "todos"
+          ],
+          "where": "local",
+          "path": "cat-harness/todos/"
+        },
+        {
+          "id": "issue-marks",
+          "kinds": [
+            "issue-marks"
+          ],
+          "where": "local",
+          "path": "cat-harness/issue-marks/"
+        },
+        {
           "id": "docs/proposals",
           "kinds": [
             "proposals"
@@ -2559,7 +2600,7 @@
         }
       ],
       "findings": [
-        "cat-harness: declares 18 graph(s) with no published viewer — auto-docs, basic-cdn-site, cat-harness, code, code-list, doc-group, interaction, memory, policies, scenarios, substrate-snapshot, tool-release, typologies, uml, validators, vocab-mapping, voice-vendors, waiver. Declared and not rendered is a gap, not a dead link."
+        "cat-harness: declares 15 graph(s) with no published viewer — basic-cdn-site, code, code-list, interaction, memory, policies, scenarios, substrate-snapshot, tool-release, typologies, uml, validators, vocab-mapping, voice-vendors, waiver. Declared and not rendered is a gap, not a dead link."
       ],
       "navbarIcons": [
         "close",
@@ -2588,7 +2629,7 @@
       "reads": "a trowel, in bootstrap's colour — the code that implements bootstrap's tools",
       "genericAvatar": false,
       "instantiated": false,
-      "href": "/processes/",
+      "href": "/cat-harness/processes/",
       "hrefKind": "viewer",
       "stats": [
         {
@@ -2615,7 +2656,7 @@
         },
         {
           "kind": "processes",
-          "path": "/processes/",
+          "path": "/cat-harness/processes/",
           "label": "Processes"
         },
         {
@@ -2678,7 +2719,7 @@
       ],
       "findings": [
         "bootstrap-tools: declares 3 graph(s) with no published viewer — code, scenarios, skills. Declared and not rendered is a gap, not a dead link.",
-        "bootstrap-tools: has no docs/ of its own, so the tile opens a kind handler's viewer (/processes/) rather than the instance's own themed root."
+        "bootstrap-tools: has no docs/ of its own, so the tile opens a kind handler's viewer (/cat-harness/processes/) rather than the instance's own themed root."
       ],
       "navbarIcons": [
         "close",
@@ -2724,7 +2765,7 @@
         {
           "id": "views",
           "label": "visualisations you can open",
-          "value": 2
+          "value": 3
         }
       ],
       "visualisations": [
@@ -2740,8 +2781,8 @@
         },
         {
           "kind": "fhir-artifact-index",
+          "path": "/smart-base/artifact-index/smart-trust/",
           "readOnly": true,
-          "note": "no viewer yet",
           "label": "FHIR artefact index"
         },
         {
@@ -2827,7 +2868,7 @@
         }
       ],
       "findings": [
-        "smart-trust: declares 5 graph(s) with no published viewer — code, fhir-artifact-index, ig-ast, openapi, qa. Declared and not rendered is a gap, not a dead link.",
+        "smart-trust: declares 4 graph(s) with no published viewer — code, ig-ast, openapi, qa. Declared and not rendered is a gap, not a dead link.",
         "smart-trust: 2 graph(s) hold materialized content and are READ-ONLY — fhir-artifact-index, openapi. Readable, not editable here: copy one out to your own folio/ to work on it. Separate from whether a viewer is published.",
         "smart-trust: has no docs/ of its own, so the tile opens a kind handler's viewer (/cat-harness/auto-docs/index/docs/smart-trust-docs/) rather than the instance's own themed root.",
         "smart-trust: needs \"smart-ig\", which names no instance in this tree.",
@@ -2860,8 +2901,8 @@
       "reads": "a syringe — the immunization guide",
       "genericAvatar": false,
       "instantiated": false,
-      "href": "/smart-immunizations/",
-      "hrefKind": "folio",
+      "href": "/cat-harness/auto-docs/index/docs/smart-immunizations-docs/",
+      "hrefKind": "viewer",
       "stats": [
         {
           "id": "directories",
@@ -2887,7 +2928,7 @@
         },
         {
           "kind": "fhir-artifact-index",
-          "path": "/smart-immunizations/artifacts.html",
+          "path": "/smart-base/artifact-index/smart-immunizations/",
           "readOnly": true,
           "label": "FHIR artefact index"
         },
@@ -2933,6 +2974,7 @@
       "findings": [
         "smart-immunizations: declares 1 graph(s) with no published viewer — qa. Declared and not rendered is a gap, not a dead link.",
         "smart-immunizations: 1 graph(s) hold materialized content and are READ-ONLY — fhir-artifact-index. Readable, not editable here: copy one out to your own folio/ to work on it. Separate from whether a viewer is published.",
+        "smart-immunizations: has no docs/ of its own, so the tile opens a kind handler's viewer (/cat-harness/auto-docs/index/docs/smart-immunizations-docs/) rather than the instance's own themed root.",
         "smart-immunizations: needs \"smart-ig\", which names no instance in this tree."
       ],
       "navbarIcons": [
@@ -2988,7 +3030,7 @@
       "reads": "a seed germinating — the first thing, before anything else is known",
       "genericAvatar": false,
       "instantiated": false,
-      "href": "/processes/",
+      "href": "/cat-harness/processes/",
       "hrefKind": "viewer",
       "stats": [
         {
@@ -3015,7 +3057,7 @@
         },
         {
           "kind": "processes",
-          "path": "/processes/",
+          "path": "/cat-harness/processes/",
           "label": "Processes"
         },
         {
@@ -3078,7 +3120,7 @@
       ],
       "findings": [
         "bootstrap: 3 graph(s) render no viewer — models, scenarios, skills — under a declared `renderExemption`. Not a gap: it owes Its own Knowledge Graph, written out as `.jsonld` with a `.json` copy and published at `<base>/bootstrap/bootstrap.jsonld`, the exact address its `@id` names. Governed by `skills/bootstrap-graph-emission.md` and `skills/bootstrap-graph-publication.md`.",
-        "bootstrap: has no docs/ of its own, so the tile opens a kind handler's viewer (/processes/) rather than the instance's own themed root."
+        "bootstrap: has no docs/ of its own, so the tile opens a kind handler's viewer (/cat-harness/processes/) rather than the instance's own themed root."
       ],
       "navbarIcons": [
         "close",
@@ -3098,14 +3140,14 @@
       "launcher"
     ],
     "hrefs": {
-      "beans": "/beans/"
+      "beans": "/cat-harness/beans/"
     },
     "notes": {},
     "folders": [
       {
         "kind": "beans",
         "label": "Beans",
-        "path": "/beans/"
+        "path": "/cat-harness/beans/"
       },
       {
         "kind": "block-kinds",
@@ -3135,7 +3177,7 @@
       {
         "kind": "glossary",
         "label": "Glossary",
-        "path": "/glossary/"
+        "path": "/folio-assistant-core/glossary/"
       },
       {
         "kind": "library",
@@ -3150,12 +3192,12 @@
       {
         "kind": "methodology",
         "label": "Methodologies",
-        "path": "/methodologies/"
+        "path": "/cat-harness/methodologies/"
       },
       {
         "kind": "processes",
         "label": "Processes",
-        "path": "/processes/"
+        "path": "/cat-harness/processes/"
       },
       {
         "kind": "qa",
@@ -3180,7 +3222,7 @@
       {
         "kind": "translation-sources",
         "label": "Translation sources",
-        "path": "/translation-status/"
+        "path": "/cat-harness/translation-status/"
       },
       {
         "kind": "typologies",
@@ -3208,7 +3250,7 @@
         {
           "kind": "beans",
           "label": "Beans",
-          "path": "/beans/"
+          "path": "/cat-harness/beans/"
         },
         {
           "kind": "block-kinds",
@@ -3238,7 +3280,7 @@
         {
           "kind": "glossary",
           "label": "Glossary",
-          "path": "/glossary/"
+          "path": "/folio-assistant-core/glossary/"
         },
         {
           "kind": "library",
@@ -3253,12 +3295,12 @@
         {
           "kind": "methodology",
           "label": "Methodologies",
-          "path": "/methodologies/"
+          "path": "/cat-harness/methodologies/"
         },
         {
           "kind": "processes",
           "label": "Processes",
-          "path": "/processes/"
+          "path": "/cat-harness/processes/"
         },
         {
           "kind": "qa",
@@ -3283,7 +3325,7 @@
         {
           "kind": "translation-sources",
           "label": "Translation sources",
-          "path": "/translation-status/"
+          "path": "/cat-harness/translation-status/"
         },
         {
           "kind": "typologies",
@@ -3303,28 +3345,6 @@
       ]
     },
     {
-      "name": "smart-immunizations",
-      "title": "smart-immunizations",
-      "href": "/smart-immunizations/",
-      "folders": [
-        {
-          "kind": "docs",
-          "label": "Docs",
-          "path": "/cat-harness/auto-docs/index/docs/smart-immunizations-docs/"
-        },
-        {
-          "kind": "fhir-artifact-index",
-          "label": "FHIR artefact index",
-          "path": "/smart-immunizations/artifacts.html"
-        },
-        {
-          "kind": "qa",
-          "label": "QA",
-          "note": "no viewer yet"
-        }
-      ]
-    },
-    {
       "name": "who-iris",
       "title": "WHO IRIS",
       "href": "/who-iris/",
@@ -3332,7 +3352,7 @@
         {
           "kind": "catalogue",
           "label": "Catalogue",
-          "path": "/cat-harness/catalogue/who-iris/"
+          "path": "/who-iris/catalogue/"
         },
         {
           "kind": "code",
@@ -3375,9 +3395,14 @@
           "note": "no viewer yet"
         },
         {
+          "kind": "tools",
+          "label": "Tools",
+          "note": "no viewer yet"
+        },
+        {
           "kind": "translation-sources",
           "label": "Translation sources",
-          "path": "/translation-status/"
+          "path": "/cat-harness/translation-status/"
         },
         {
           "kind": "uploads",
@@ -3703,6 +3728,19 @@
         ]
       },
       {
+        "key": "visualisers",
+        "skills": [
+          {
+            "name": "harness-tiles",
+            "path": "/reference/skill-instructions/harness-tiles.html"
+          },
+          {
+            "name": "harness-requirements",
+            "path": "/reference/skill-instructions/harness-requirements.html"
+          }
+        ]
+      },
+      {
         "key": "remoteGraphs",
         "skills": [
           {
@@ -3921,6 +3959,10 @@
             "summary": "22: smart-base-qa-checkers, smart-base-block-kinds, smart-base-content-adapters, smart-base-t…"
           },
           {
+            "key": "visualisers",
+            "summary": "1: artifact-index"
+          },
+          {
             "key": "needs",
             "summary": "fhir-harness"
           },
@@ -3988,7 +4030,11 @@
           },
           {
             "key": "directories",
-            "summary": "13: who-iris-translations, library, who-iris-site, who-iris-catalogue, who-iris-uploads, who-…"
+            "summary": "14: who-iris-translations, library, who-iris-site, who-iris-catalogue, who-iris-uploads, who-…"
+          },
+          {
+            "key": "visualisers",
+            "summary": "1: catalogue"
           },
           {
             "key": "stickies",
@@ -4177,6 +4223,10 @@
             "summary": "19: folio-assistant-core-docs, folio-assistant-core-translations, folio-assistant-core-block-…"
           },
           {
+            "key": "visualisers",
+            "summary": "1: glossary"
+          },
+          {
             "key": "stickies",
             "summary": "1: folio-assist-core"
           },
@@ -4330,7 +4380,11 @@
           },
           {
             "key": "directories",
-            "summary": "35: cat-harness-validators, tools, external-schemas, subscriptions, code-lists, vocab-mapping…"
+            "summary": "37: cat-harness-validators, tools, external-schemas, subscriptions, code-lists, vocab-mapping…"
+          },
+          {
+            "key": "visualisers",
+            "summary": "22: library, uploads, schemas, voices, document-kinds, folio, auto-docs, processes, tools, me…"
           },
           {
             "key": "associatedHarnesses",
