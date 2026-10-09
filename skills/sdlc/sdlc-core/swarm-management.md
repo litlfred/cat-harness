@@ -60,9 +60,95 @@ shape; you have a task you have not understood yet.
 | dimension | guidance |
 |---|---|
 | **size** | Start at 3. Go above 6 only when the corpus slices are genuinely disjoint and each unit is substantial. Beyond ~10 the coordination cost and the token cost both grow faster than the throughput. |
-| **model level** | Match the *hardest* judgement in the unit, not the average. A sweep that only classifies runs small; anything making a call a human would argue with runs large. Mixed swarms are fine and usually right: small workers, one large reviewer. |
+| **model level** | Match the *hardest* judgement in the unit, not the average. A sweep that only classifies runs small; anything making a call a human would argue with runs large. Mixed swarms are fine and usually right: small workers, one large reviewer. For tasks with uncertain difficulty, use dynamic temporal routing (§"Cost-aware dynamic routing") rather than statically over-allocating frontier models. |
 | **CPU / concurrency** | Bounded by what the box can actually run. A swarm that thrashes is slower than half the swarm. If units shell out to a build or a solver, the real limit is that tool's parallelism, not the agent count. |
 | **wall-clock** | Give each unit a bound. An unbounded unit in a swarm is an unbounded swarm. |
+
+## Cost-aware dynamic routing (SWE-Router / 2607.00053v1)
+
+A swarm's token consumption is dominated by model choice. Deploying frontier
+models (e.g. Claude Opus, GPT-4) across every parallel agent creates an
+unfavorable cost–capability trade-off: empirical analysis on SWE benchmarks
+shows that only a minority of software engineering subtasks genuinely demand
+frontier reasoning, while most admit localized, cheap resolution.
+
+SWE-Router (*arXiv:2607.00053v1*, `library/arxiv-2607.00053v1`) provides the
+principled framework for cost-aware routing in multi-turn agentic SE tasks,
+demonstrating how to break the information-theoretic Bayes-error floor that
+plagues static, prompt-only routers.
+
+### The Bayes-error floor of prompt-only routing
+
+Static routers that inspect only the task description $q$ (e.g. issue or
+sub-bean description) inherit a high Bayes error: in software engineering, a
+superficially simple issue description may require a multi-module architectural
+refactoring, while an intimidating, complex stack trace may resolve with a
+one-line typo fix. The prompt alone cannot distinguish between these cases.
+
+In agentic systems, the disambiguating information is generated dynamically
+during the agent's interaction loop (ReAct thoughts $z_t$, actions $a_t$, and
+observations $o_t$). Early turns are predominantly exploratory—running grep,
+inspecting directory structures, reading localized test failures. These
+intermediate observations contain the structural signals of task difficulty
+that no prompt-time classification can see.
+
+### Value-based temporal routing policy
+
+SWE-Router establishes a two-phase temporal routing policy:
+
+1. **Exploration budget ($K$ steps)**:
+   Assign the subtask initially to a lightweight, compact model $m_1$ (e.g.
+   Claude Haiku, GPT-4o-mini, Qwen-Coder-7B). Run $m_1$ for a small exploration
+   budget $K$ (empirically $K=3$ achieves optimal trade-offs).
+2. **Trajectory evaluation via value head**:
+   A value estimator $\hat{r}_1(T_{\le K, 1})$ inspects the partial trajectory
+   $T_{\le K, 1} = [q, (z_1, a_1, o_1), \dots, (z_K, a_K, o_K)]$, evaluating
+   whether $m_1$ has successfully localized the problem and is likely to solve it.
+3. **Routing decision**:
+   - **Continue with $m_1$**: If the predicted resolution probability exceeds a
+     cost-adjusted threshold ($\hat{r}_1 \ge \lambda''$), let the cheap model
+     complete the task.
+   - **Escalate to frontier model $m_2$**: If $\hat{r}_1 < \lambda''$, escalate
+     to the frontier model $m_2$.
+
+### Clean escalation vs context poisoning
+
+A critical structural finding in SWE-Router is the **clean escalation rule**:
+when escalating to the frontier model $m_2$, **restart $m_2$ from the original
+specification $q$** rather than continuing from $m_1$'s partial trajectory.
+Conditioning a strong model on a weak model's flawed reasoning biases $m_2$
+toward $m_1$'s false assumptions and hallucinated bug locations. The $K$ turns
+of $m_1$ are treated as an up-front exploratory cost.
+
+### Pareto frontier and swarm economics
+
+Conditioning on partial trajectories provides a proven Bayes-optimality guarantee
+(Theorem 4.1): partial-trajectory routing never harms expected utility compared
+to prompt-only routing and is strictly superior whenever early exploration yields
+informative observations.
+
+Tuning the escalation threshold $\lambda''$ traces a cost–performance Pareto
+curve:
+- **High-economy regime ($\lambda'' \to 1$)**: High threshold for escalation;
+  maximizes utilization of $m_1$, achieving 60–80% cost savings for tasks with
+  straightforward localization and repetitive mechanics.
+- **Matched-capability regime**: A balanced threshold captures 85–95% of
+  pure-frontier performance while cutting overall token expenditure by 40–50%.
+- **Synergistic resolution**: At specific operating points, routing achieves
+  higher aggregate resolution than pure frontier execution because compact
+  models occasionally explore non-obvious localized paths that large models
+  overlook.
+
+### When does a swarm need a frontier model?
+
+Apply this matrix when assigning models across swarm sub-beans:
+
+| Task characteristics | Trajectory signals ($T_{\le K}$) | Routing decision |
+|---|---|---|
+| Repetitive scaffolding, single-file edits, straightforward grep/tests | Clean reproduction in $\le K$ turns, clear localization | **Compact / lightweight worker ($m_1$)** |
+| Ambiguous bug description, initially unknown scope | $m_1$ localizes exact file and passes reproducing test in $K$ steps | **Continue with $m_1$** |
+| Multi-file architectural refactor, deep semantic reasoning | $m_1$ thrashes in search, fails to reproduce, or loops across modules | **Escalate cleanly to frontier model ($m_2$)** |
+| High-stakes adjudication, cross-agent review, security invariant checks | N/A (inherently high-complexity judgement) | **Frontier model ($m_2$) from step 0** |
 
 ## Decomposition into sub-beans
 

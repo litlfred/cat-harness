@@ -1181,6 +1181,34 @@
         "saw": "supplementary comparison panel of free-form evaluation edge cases",
         "draft": "Figure 16: Supplementary case comparison of model deviations across infection control and post-exposure prophylaxis guidance."
       }
+    },
+    "arxiv-2607.00053v1": {
+      "img-p002-1": {
+        "role": "decorative",
+        "saw": "semi-transparent drop shadow rectangle element placed behind the callout box 'Not enough information in q -> Large Bayes error' in Figure 1",
+        "draft": "A drop shadow rectangle behind the callout box describing prompt-only routing limitations in Figure 1. A decorative rendering artifact."
+      },
+      "img-p002-2": {
+        "role": "decorative",
+        "saw": "semi-transparent drop shadow rectangle element placed behind the callout box 'Well-informed accurate routing' in Figure 1",
+        "draft": "A drop shadow rectangle behind the callout box describing SWE-Router value head routing in Figure 1. A decorative rendering artifact."
+      },
+      "vfig-p002": {
+        "role": "figure",
+        "shows": [
+          "1"
+        ],
+        "saw": "Figure 1 on page 2: SWE-Router architecture overview comparing conventional prompt-only routing against value-based trajectory routing",
+        "draft": "Figure 1: SWE-Router overview diagram. The left panel shows Conventional LLM Routing, where task prompt q is classified by router r_hat(q) to weak m1 or strong m2, facing high Bayes error due to lack of trajectory context. The right panel shows SWE-Router: weak model m1 executes K exploration steps; value head r_hat(T_<=K) evaluates partial trajectory to predict m1 success, continuing with m1 if high or escalating to strong m2 restarted from q if low."
+      },
+      "vfig-p004": {
+        "role": "figure",
+        "shows": [
+          "2"
+        ],
+        "saw": "Figure 2 on page 4: Cost-vs.-resolved routing curves on SWE-Bench Verified comparing SWE-Router against baselines and random assignment reference",
+        "draft": "Figure 2: Cost-vs.-resolved routing curves on held-out SWE-Bench Verified across two (weak, strong) model pairs. SWE-Router (K=3, green) sits above the random-assignment gray band and prompt-only embedding baselines across the cost spectrum, achieving a Pareto frontier that retains the majority of frontier model performance at a fraction of inference cost."
+      }
     }
   },
   "attribution": {
@@ -1243,6 +1271,14 @@
         "session": "https://claude.ai/code/session_01VfkKocGaQW7Msro2t5S66U"
       },
       "inspected_at": "2026-10-03"
+    },
+    "arxiv-2607.00053v1": {
+      "inspected_by": {
+        "kind": "agent",
+        "id": "claude",
+        "model": "claude-opus-5"
+      },
+      "inspected_at": "2026-10-09"
     }
   }
 }
