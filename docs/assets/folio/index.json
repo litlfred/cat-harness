@@ -8,7 +8,7 @@
   },
   "directories": [
     {
-      "dir": "cat-harness-upstream/folio",
+      "dir": "cat-harness-9scf/folio",
       "present": true,
       "nodes": 1
     }
@@ -47,7 +47,7 @@
         }
       ],
       "chars": 431,
-      "file": "cat-harness-upstream/folio/cat-harness.json"
+      "file": "cat-harness-9scf/folio/cat-harness.json"
     }
   ]
 }

@@ -6,7 +6,7 @@
  */
 import { describe, expect, test } from "bun:test";
 import { existsSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { basename, join } from "node:path";
 
 import { readFolioGraph, projection, viewerHtml } from "../gen-folio-viz.ts";
 import { MARKER } from "../folio-mount.ts";
@@ -83,6 +83,24 @@ describe("the page", () => {
     // remembered.
     expect(viewerHtml("x.json")).not.toContain("`");
   });
+
+  test("both tables carry a caption, an aria-label, and a preceding h2 heading (finding 5)", () => {
+    const html = viewerHtml("../../assets/folio/index.json");
+    expect(html).toContain('<h2 id="fo-dirs-head">Declared folio directories</h2>');
+    expect(html).toContain('aria-label="Declared folio directories"');
+    expect(html).toContain('<caption>Declared folio directories</caption>');
+    expect(html).toContain('<h2 id="fo-nodes-head">Folio nodes</h2>');
+    expect(html).toContain('aria-label="Folio nodes"');
+    expect(html).toContain('<caption>Folio nodes</caption>');
+  });
+
+  test("link cells are compact and wrap links in .links and .link-pill (finding 4)", () => {
+    const html = viewerHtml("../../assets/folio/index.json");
+    expect(html).toContain('<div class="links">');
+    expect(html).toContain('class="link-pill"');
+    expect(html).toContain(".fo-page .links { display:flex; flex-wrap:wrap;");
+    expect(html).toContain(".fo-page .link-pill { display:inline-block;");
+  });
 });
 
 describe("the generated artefacts are the ones declared", () => {
@@ -150,7 +168,7 @@ describe("the committed projection is MACHINE-INDEPENDENT", () => {
     const a = readFolioGraph([ROOT, REPO], REPO)!;
     const b = readFolioGraph([ROOT, REPO], REPO)!;
     expect(a.nodes.map((n) => n.file)).toEqual(b.nodes.map((n) => n.file));
-    expect(a.nodes.every((n) => n.file.includes("cat-harness/folio/"))).toBe(true);
+    expect(a.nodes.every((n) => n.file.includes(`${basename(ROOT)}/folio/`))).toBe(true);
   });
 });
 
