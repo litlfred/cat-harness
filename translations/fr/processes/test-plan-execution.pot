@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: test-plan-execution\n"
-"POT-Creation-Date: 2026-10-03T09:50:53.855Z\n"
+"POT-Creation-Date: 2026-10-09T20:40:53.589Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -61,7 +61,7 @@ msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:174
 #. Diagram element documentation
-msgid "Computed from six facts read off the records — report status, data hash known, unexecuted cases, the checker's agreement, failed and passed cases — by the table the plan's `exitCriteria` names. Supplying the branch by hand is refused."
+msgid "Computed from six facts read off the records — report status, data hash known, unexecuted cases, the checker's agreement, failed and passed cases — by the table the plan's `exitCriteria` names (resolved dynamically; if unresolvable, routes to undetermined and never silently falls back to default). Supplying the branch by hand is refused."
 msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:142
