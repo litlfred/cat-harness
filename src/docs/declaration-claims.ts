@@ -43,9 +43,9 @@
  */
 
 import { existsSync } from "node:fs";
-import { basename, join } from "node:path";
+import { basename, join, relative, resolve, sep } from "node:path";
 
-import { findDeclarationFile, instanceRootsIn, readDeclaration } from "../../schemas/cat-harness.js";
+import { findDeclarationFile, instanceRootsIn, readDeclaration, rootForScope } from "../../schemas/cat-harness.js";
 
 /** Where a graph id is declared: the ids, each with its declaring file(s). */
 export type GraphSources = Map<string, Set<string>>;
@@ -222,14 +222,21 @@ export function historicalPrefixes(repoRoot: string): string[] {
   for (const instance of instanceRootsIn(repoRoot)) {
     for (const entry of readDeclaration(instance)?.directories ?? []) {
       if (!(entry.graphTypologies ?? []).some((g) => historical.has(g))) continue;
-      const path = entry.path.replace(/^\.\//, "").replace(/\/?$/, "/");
-      // REPO-relative, not instance-relative — measured, after a draft that
-      // prefixed each path with its declaring instance produced
+      // RESOLVED BY THE ENTRY'S OWN SCOPE, then made repo-relative. A draft
+      // that prefixed every path with its declaring instance produced
       // `cat-harness/beans/` and `cat-harness/fsh-guts/`, neither of which
-      // exists. `cat-harness.json` says so itself about the `fsh-guts` entry:
-      // *"REPOSITORY-scoped: it sits at the top of the checkout, not inside
-      // this instance"*.
-      if (existsSync(join(repoRoot, path))) out.add(path);
+      // exists — those are `scope: "repository"`. The fix that followed joined
+      // EVERY path onto the repository root instead, which is the same mistake
+      // the other way: an instance-scoped bean store (folio-assistant-core's
+      // and cat-harness-tools' own `beans/`, separated 2026-10-09) or
+      // `who-iris/library/` resolved to a root directory that is not there,
+      // and their history was read as live claims. `rootForScope` is the rule
+      // the declaration resolver itself uses.
+      const abs = resolve(rootForScope(instance, entry.scope), entry.path);
+      if (!existsSync(abs)) continue;
+      const rel = relative(repoRoot, abs).split(sep).join("/");
+      if (rel === "" || rel.startsWith("..")) continue;
+      out.add(rel.replace(/\/?$/, "/"));
     }
   }
   // A declared-but-absent directory is NOT silently dropped as a judgement —
