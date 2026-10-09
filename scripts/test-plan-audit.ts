@@ -272,3 +272,60 @@ function entryOf(findings: KgFinding[], applicable: boolean): KgCriterionEntry {
   if (!applicable) return { result: "n/a", findings: [] };
   return { result: findings.length > 0 ? "fail" : "pass", findings };
 }
+
+export interface TestPlanExitCriteriaAuditInput {
+  root: string;
+  plans: string[];
+  dmnBases?: string[];
+}
+
+/**
+ * Audit criterion `test-plan-exit-criteria-resolves` (bean `4iey`).
+ *
+ * Ensures a plan whose `exitCriteria` names a decision table points to an
+ * existing `.dmn` file and decision.
+ * - If 0 plans checked: `unknown` (vacuity-guarded).
+ * - If any unresolvable: `fail` (major severity).
+ * - If all checked plans resolve: `pass`.
+ */
+export function auditTestPlanExitCriteria(input: TestPlanExitCriteriaAuditInput): KgCriterionEntry {
+  const rel = (p: string) => relative(input.root, p);
+  const bases = [input.root, ...(input.dmnBases ?? [])];
+  const findings: KgFinding[] = [];
+  let plansChecked = 0;
+
+  for (const f of input.plans) {
+    const raw = readJson(f);
+    if (!raw.ok) {
+      plansChecked++;
+      findings.push({ where: rel(f), detail: `is not JSON: ${raw.error}` });
+      continue;
+    }
+    if ((raw.value as { $schema?: unknown })?.$schema !== TEST_PLAN_SCHEMA_ID) continue;
+    plansChecked++;
+    const parsed = TestPlanSchema.safeParse(raw.value);
+    if (!parsed.success) {
+      findings.push({ where: rel(f), detail: `does not parse as ${TEST_PLAN_SCHEMA_ID}: ${issues(parsed.error)}` });
+      continue;
+    }
+    const plan = parsed.data;
+    if (!dmnRefResolves(plan.exitCriteria.decision, bases)) {
+      findings.push({
+        where: rel(f),
+        detail: `exitCriteria \`${plan.exitCriteria.decision}\` does not resolve to an existing .dmn file and decision.`,
+      });
+    }
+  }
+
+  if (plansChecked === 0) {
+    return {
+      result: "unknown",
+      findings: [{ where: "—", detail: "0 plans checked (vacuity guard)." }],
+    };
+  }
+
+  return {
+    result: findings.length > 0 ? "fail" : "pass",
+    findings,
+  };
+}

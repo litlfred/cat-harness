@@ -1517,6 +1517,15 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
       "undeclared actor, one with no system-under-test facet, or one of a different kind from the plan's scope).",
   },
   {
+    id: "test-plan-exit-criteria-resolves",
+    applies: ["graph"],
+    scope: "instance",
+    severity: "major",
+    summary:
+      "A test plan's exitCriteria names a decision table that does not resolve to an existing .dmn file " +
+      "and decision (bean folio-assistant-4iey). Vacuity-guarded: unknown if 0 plans checked.",
+  },
+  {
     id: "test-case-executed-or-skipped",
     applies: ["graph"],
     scope: "instance",
