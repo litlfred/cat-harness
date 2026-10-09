@@ -19,7 +19,7 @@ rendered-by: auto-docs-viewer
   .da-page table { display: table; width: 100%; border-collapse: collapse; font-size: .95rem; }
   .da-page th, .da-page td { text-align: left; padding: .6rem .6rem; border: 0; border-bottom: 1px solid rgba(127,127,127,.4); vertical-align: top; background: transparent; }
   .da-page th { background: rgba(127,127,127,.12); }
-  .da-page td:first-child { width: 20rem; }
+  .da-page td:first-child { width: 20rem; max-width: 40%; }
   /* A repo-relative path is long and has no spaces, so it breaks mid-word
      unless the breakpoints are named. Slashes are where a reader expects it. */
   .da-page .p { opacity: .9; font-size: .8rem; font-family: ui-monospace, monospace; word-break: normal; overflow-wrap: anywhere; line-break: anywhere; }
@@ -63,7 +63,8 @@ rendered-by: auto-docs-viewer
      type selector; the header row is dropped because each cell is now
      self-evidently what it is. */
   @media (max-width: 799.98px) {
-    .da-page #da-index, .da-page #da-index tbody, .da-page #da-index tr, .da-page #da-index td { display: block; width: auto; min-width: 0; }
+    .da-page #da-index, .da-page #da-index tbody, .da-page #da-index tr, .da-page #da-index td { display: block; width: 100% !important; max-width: 100%; min-width: 0; box-sizing: border-box; }
+    .da-page #da-index td:first-child { width: 100% !important; max-width: 100%; }
     .da-page #da-index { mask-image: none; animation: none; overflow: visible; }
     .da-page #da-index thead { display: none; }
     .da-page #da-index td { border-bottom: 0; padding: .25rem 0; overflow-wrap: anywhere; }
@@ -82,15 +83,11 @@ rendered-by: auto-docs-viewer
 </div>
 
 <ul class="subs">
-<li><a href="../docs/">docs</a> <span class="p">cat-harness/docs</span> <span class="n">570</span></li>
-<li><a href="../docs-source/">docs-source</a> <span class="p">cat-harness/docs/source</span> <span class="n">172</span></li>
-<li><strong>folio-assistant-core-docs</strong> <span class="p">folio-assistant-core/docs</span> <span class="n">2</span></li>
-<li><a href="../smart-base-docs/">smart-base-docs</a> <span class="p">smart-base/docs</span> <span class="n">295</span></li>
-<li><a href="../smart-base-findings/">smart-base-findings</a> <span class="p">smart-base/findings</span> <span class="n">4</span></li>
-<li><a href="../smart-immunizations-docs/">smart-immunizations-docs</a> <span class="p">smart-immunizations/docs</span> <span class="n">749</span></li>
-<li><a href="../smart-trust-docs/">smart-trust-docs</a> <span class="p">smart-trust/docs</span> <span class="n">2145</span></li>
-<li><a href="../who-iris-docs/">who-iris-docs</a> <span class="p">who-iris/docs</span> <span class="n">5</span></li>
-<li><a href="../who-iris-site/">who-iris-site</a> <span class="p">who-iris/site</span> <span class="n">1</span></li>
+<li><a href="../docs/">docs</a> <span class="p">cat-harness/docs</span> <span class="n">126</span></li>
+<li><strong>folio-assistant-core-docs</strong> <span class="p">folio-assistant-core/docs</span> <span class="n">1</span></li>
+<li><a href="../smart-base-findings/">smart-base-findings</a> <span class="p">smart-base/findings</span> <span class="n">2</span></li>
+<li><a href="../smart-immunizations-docs/">smart-immunizations-docs</a> <span class="p">smart-immunizations/docs</span> <span class="n">748</span></li>
+<li><a href="../who-iris-docs/">who-iris-docs</a> <span class="p">who-iris/docs</span> <span class="n">3</span></li>
 </ul>
 
 
@@ -98,12 +95,8 @@ rendered-by: auto-docs-viewer
 <thead><tr><th>Artefact</th><th>What it declares about itself</th></tr></thead>
 <tbody>
 <tr>
-  <td><a href="https://github.com/litlfred/folio-assistant-core/blob/main/docs/index.md"><code>index</code></a><br><span class="p">folio-assistant-core/docs/index.md</span></td>
-  <td>&quot;The content layer: what a folio is, its block kinds and adapters, and the folio graph typology itself.&quot;</td>
-</tr>
-<tr>
-  <td><a href="https://github.com/litlfred/folio-assistant-core/blob/main/docs/README.md"><code>README</code></a><br><span class="p">folio-assistant-core/docs/README.md</span></td>
-  <td><span class="none">no description in the artefact</span></td>
+  <td><a href="https://github.com/litlfred/folio-assistant-core/blob/main/docs/index.md"><code>folio-assistant-core (folio-assistant-core/docs/index.md)</code></a><br><span class="p">folio-assistant-core/docs/index.md</span></td>
+  <td>The content layer: what a folio is, its block kinds and adapters, and the folio graph typology itself.</td>
 </tr>
 </tbody>
 </table>

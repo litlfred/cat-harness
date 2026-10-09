@@ -305,7 +305,7 @@ fetch(DATA_HREF).then(function(r){ if(!r.ok) throw new Error(r.status + " " + r.
         "<td>" + (n.anchor ? "<code>" + esc(n.anchor) + "</code>"
                            : '<span class="muted">none</span>') + "</td>" +
         "<td>" + (n.theme ? esc(n.theme) : '<span class="muted">none</span>') + "</td>" +
-        "<td><code class=\"muted\">" + esc(n.declaredIn || "\\u2014") + "</code></td>" +
+        '<td><code class="muted">' + esc(n.declaredIn || "\\u2014") + "</code></td>" +
         "<td>" + (n.links.length
           ? '<div class="links">' + n.links.map(function(l){
               var h = linkHref(l.href);

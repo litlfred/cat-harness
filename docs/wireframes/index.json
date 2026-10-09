@@ -16,12 +16,9 @@
         "cat-harness/docs/cat-harness/auto-docs/index/docs/docs/index.html",
         "cat-harness/docs/cat-harness/auto-docs/index/docs/docs-source/index.html",
         "cat-harness/docs/cat-harness/auto-docs/index/docs/folio-assistant-core-docs/index.html",
-        "cat-harness/docs/cat-harness/auto-docs/index/docs/smart-base-docs/index.html",
         "cat-harness/docs/cat-harness/auto-docs/index/docs/smart-base-findings/index.html",
         "cat-harness/docs/cat-harness/auto-docs/index/docs/smart-immunizations-docs/index.html",
-        "cat-harness/docs/cat-harness/auto-docs/index/docs/smart-trust-docs/index.html",
-        "cat-harness/docs/cat-harness/auto-docs/index/docs/who-iris-docs/index.html",
-        "cat-harness/docs/cat-harness/auto-docs/index/docs/who-iris-site/index.html"
+        "cat-harness/docs/cat-harness/auto-docs/index/docs/who-iris-docs/index.html"
       ]
     },
     "document-kinds": {
