@@ -31,7 +31,7 @@
 
 import { isActivity, type ProcessModel, type ProcessNode } from "./process-model.js";
 import { evaluate } from "./decision-table.js";
-import { roleForLane, resolveRoleSkills, type RoleGraph } from "../../schemas/role-graph.js";
+import { roleForLane, resolveRoleSkills, resolveRoleStack, type RoleGraph } from "../../schemas/role-graph.js";
 import type { ConventionScope } from "../../schemas/convention.js";
 import { authorizeTask, describeVerdict, type TaskAuthVerdict } from "./authorize.js";
 import { provActivityFor } from "./prov-record.js";
@@ -104,6 +104,8 @@ export interface InstanceState {
   subject: string;
   /** Bean this instance is tracked under, when there is one. */
   bean?: string;
+  /** Bean ids carried by this instance / traveling with its tokens. */
+  carriedBeans?: string[];
   /** Node ids currently holding a token. */
   tokens: string[];
   /**
@@ -133,6 +135,38 @@ export interface InstanceState {
    * line per pass, so a replaced run is not a lost one.
    */
   children?: Record<string, InstanceState>;
+}
+
+/**
+ * Deterministic snapshot of an agent's context from the KG at a task.
+ *
+ * Scoped along the process call path: entering a subprocess overlays context
+ * (skills, conventions, role stack), and completing/leaving the subprocess
+ * cleanly removes that overlay. Carried beans travel with the token.
+ */
+export interface TaskContext {
+  /** The declared role the actor takes on for this task. */
+  role?: string;
+  /**
+   * The call stack of roles along the subprocess chain, outermost first.
+   */
+  roleStack: string[];
+  /**
+   * Effective skills available at this task: the union of role skills along
+   * the subprocess stack (closed over inherits) and the activity's own declared
+   * skills. Deterministically deduplicated and sorted.
+   */
+  effectiveSkills: string[];
+  /** Alias to effectiveSkills. */
+  skills: string[];
+  /**
+   * Conventions in force at this task, preserving scope and call hierarchy.
+   */
+  conventions: Array<{ ref: string; scope: ConventionScope }>;
+  /**
+   * Bean IDs associated with this task/token/instance, deterministically sorted.
+   */
+  carriedBeans: string[];
 }
 
 export interface EnabledActivity {
@@ -184,7 +218,13 @@ export interface EnabledActivity {
    * diagram to know which phase they are in.
    */
   phase?: string[];
+  /**
+   * Deterministic task context snapshot derived from the KG at this task.
+   */
+  context: TaskContext;
 }
+
+export type StepNext = EnabledActivity;
 
 export interface EnabledDecision {
   kind: "decision";
@@ -204,6 +244,8 @@ export interface EnabledDecision {
   computed?: { decision: string; facts: string[] };
   /** The chain of call activities this decision sits inside. See {@link EnabledActivity.phase}. */
   phase?: string[];
+  /** Deterministic context snapshot at this decision point. */
+  context?: TaskContext;
 }
 
 export type Enabled = EnabledActivity | EnabledDecision;
@@ -303,12 +345,26 @@ function enterSubprocesses(model: ProcessModel, state: InstanceState): void {
     // into has to RUN AGAIN — treating the old record as "already entered" is
     // how a re-validation silently becomes a no-op.
     if (state.children?.[tokenId]?.status === "running") continue;
+    const callNode = model.nodes.get(tokenId);
+    const callBeans = [
+      ...(callNode?.beans ?? []),
+      ...(callNode?.beanRef ? [callNode.beanRef] : []),
+    ];
+    const inheritedCarried = Array.from(
+      new Set([
+        ...(state.carriedBeans ?? []),
+        ...(state.bean ? [state.bean] : []),
+        ...callBeans,
+      ]),
+    ).sort((a, b) => a.localeCompare(b));
+
     state.children = {
       ...state.children,
       [tokenId]: startInstance(child, {
         id: `${state.id}/${tokenId}`,
         subject: state.subject,
         bean: state.bean,
+        carriedBeans: inheritedCarried,
       }),
     };
   }
@@ -388,18 +444,32 @@ function subprocessOwning(
 
 export function startInstance(
   model: ProcessModel,
-  opts: { id: string; subject: string; bean?: string; startNode?: string },
+  opts: {
+    id: string;
+    subject: string;
+    bean?: string;
+    carriedBeans?: string[];
+    startNode?: string;
+  },
 ): InstanceState {
   const startNode = opts.startNode ?? model.startNodes[0];
   if (!model.nodes.has(startNode)) {
     throw new WorkflowError(`no such start node: ${startNode}`);
   }
+  const initialCarriedBeans = Array.from(
+    new Set([
+      ...(opts.carriedBeans ?? []),
+      ...(opts.bean ? [opts.bean] : []),
+    ]),
+  ).sort((a, b) => a.localeCompare(b));
+
   const state: InstanceState = {
     id: opts.id,
     processId: model.id,
     source: model.source,
     subject: opts.subject,
     bean: opts.bean,
+    carriedBeans: initialCarriedBeans,
     tokens: [],
     arrivals: {},
     history: [{ at: now(), node: startNode, note: "instance started" }],
@@ -428,7 +498,28 @@ function outcomesOf(model: ProcessModel, node: ProcessNode): string[] {
  * handed a step should be told what it is acting AS, not only which lane the
  * box was drawn in.
  */
-export function enabled(model: ProcessModel, state: InstanceState, roles?: RoleGraph): Enabled[] {
+export interface SubprocessScopeContext {
+  roleStack: string[];
+  conventions: Array<{ ref: string; scope: ConventionScope }>;
+  carriedBeans: string[];
+}
+
+/**
+ * What is enabled now.
+ *
+ * `roles` is optional so that the interpreter keeps working in an instance that
+ * declares no role graph — an unmigrated repo is not an error. When it IS
+ * supplied, every enabled step reports the role its lane binds and the skills
+ * that role carries, which is the whole point of declaring roles: an agent
+ * handed a step should be told what it is acting AS, not only which lane the
+ * box was drawn in.
+ */
+export function enabled(
+  model: ProcessModel,
+  state: InstanceState,
+  roles?: RoleGraph,
+  parentScope?: SubprocessScopeContext,
+): Enabled[] {
   const roleFor = (node: { lane?: string; roleRef?: string }): string | undefined =>
     roles ? roleForLane(roles, node.lane, node.roleRef)?.id : undefined;
 
@@ -442,11 +533,85 @@ export function enabled(model: ProcessModel, state: InstanceState, roles?: RoleG
     const child = state.children?.[id];
     const childModel = model.children.get(id);
     if (child && childModel && child.status === "running") {
-      return enabled(childModel, child, roles).map((e) => ({
+      const callRole = roleFor(node);
+      const childRoleStack = [
+        ...(parentScope?.roleStack ?? []),
+        ...(callRole ? [callRole] : []),
+      ];
+
+      const seenConventions = new Set<string>();
+      const childConventions: Array<{ ref: string; scope: ConventionScope }> = [];
+      for (const c of [...(parentScope?.conventions ?? []), ...node.conventions]) {
+        if (!seenConventions.has(c.ref)) {
+          seenConventions.add(c.ref);
+          childConventions.push(c);
+        }
+      }
+
+      const childCarriedBeans = Array.from(
+        new Set([
+          ...(parentScope?.carriedBeans ?? []),
+          ...(state.carriedBeans ?? []),
+          ...(state.bean ? [state.bean] : []),
+          ...(node.beans ?? []),
+          ...(node.beanRef ? [node.beanRef] : []),
+        ]),
+      ).sort((a, b) => a.localeCompare(b));
+
+      return enabled(childModel, child, roles, {
+        roleStack: childRoleStack,
+        conventions: childConventions,
+        carriedBeans: childCarriedBeans,
+      }).map((e) => ({
         ...e,
         phase: [node.name, ...(e.phase ?? [])],
       }));
     }
+
+    const roleId = roleFor(node);
+    const roleStack = [
+      ...(parentScope?.roleStack ?? []),
+      ...(roleId ? [roleId] : []),
+    ];
+
+    const stackSkills =
+      roles && roleStack.length > 0
+        ? resolveRoleStack(roles, roleStack).skills.map((s) => s.skill)
+        : roleId && roles
+          ? resolveRoleSkills(roles, roleId).map((s) => s.skill)
+          : [];
+
+    const effectiveSkills = Array.from(new Set([...stackSkills, ...node.skills])).sort((a, b) =>
+      a.localeCompare(b),
+    );
+
+    const seenConventions = new Set<string>();
+    const combinedConventions: Array<{ ref: string; scope: ConventionScope }> = [];
+    for (const c of [...(parentScope?.conventions ?? []), ...node.conventions]) {
+      if (!seenConventions.has(c.ref)) {
+        seenConventions.add(c.ref);
+        combinedConventions.push(c);
+      }
+    }
+
+    const taskCarriedBeans = Array.from(
+      new Set([
+        ...(parentScope?.carriedBeans ?? []),
+        ...(state.carriedBeans ?? []),
+        ...(state.bean ? [state.bean] : []),
+        ...(node.beans ?? []),
+        ...(node.beanRef ? [node.beanRef] : []),
+      ]),
+    ).sort((a, b) => a.localeCompare(b));
+
+    const taskContext: TaskContext = {
+      role: roleId ?? (roleStack.length > 0 ? roleStack[roleStack.length - 1] : undefined),
+      roleStack,
+      effectiveSkills,
+      skills: effectiveSkills,
+      conventions: combinedConventions,
+      carriedBeans: taskCarriedBeans,
+    };
 
     if (node.kind === "exclusive") {
       const table = model.decisions.get(node.id);
@@ -455,14 +620,15 @@ export function enabled(model: ProcessModel, state: InstanceState, roles?: RoleG
         node: node.id,
         name: node.name,
         lane: node.lane,
-        role: roleFor(node),
+        role: roleId,
         outcomes: outcomesOf(model, node),
         computed: table
           ? { decision: table.id, facts: table.inputs.map((i) => i.expression) }
           : undefined,
+        context: taskContext,
       }];
     }
-    const roleId = roleFor(node);
+
     return [{
       kind: "activity" as const,
       node: node.id,
@@ -471,10 +637,11 @@ export function enabled(model: ProcessModel, state: InstanceState, roles?: RoleG
       role: roleId,
       roleSkills: roleId && roles ? resolveRoleSkills(roles, roleId).map((s) => s.skill) : undefined,
       skills: node.skills,
-      conventions: node.conventions,
+      conventions: combinedConventions,
       touchesWorkPlan: node.touchesWorkPlan,
       documentation: node.documentation,
       calledElement: node.calledElement,
+      context: taskContext,
     }];
   });
 }
@@ -498,6 +665,8 @@ export function complete(
     note?: string;
     /** Run the task-authorization check before recording anything. */
     authz?: AuthzOptions;
+    /** Carried beans to add or update during this step. */
+    carriedBeans?: string[];
   } = {},
 ): InstanceState {
   if (state.status !== "running") {
@@ -606,6 +775,16 @@ export function complete(
     chosen = node.outgoing[idx];
   }
 
+  const nodeBeans = [
+    ...(node.beans ?? []),
+    ...(node.beanRef ? [node.beanRef] : []),
+  ];
+  if (opts.carriedBeans?.length || nodeBeans.length) {
+    state.carriedBeans = Array.from(
+      new Set([...(state.carriedBeans ?? []), ...(opts.carriedBeans ?? []), ...nodeBeans]),
+    ).sort((a, b) => a.localeCompare(b));
+  }
+
   state.tokens = state.tokens.filter((t) => t !== nodeId);
   const at = now();
   const prov =
@@ -668,6 +847,11 @@ function completeInSubprocess(
   state.children = { ...state.children, [owner.call]: child };
   state.updatedAt = now();
   if (child.status !== "completed") return state;
+  if (child.carriedBeans?.length) {
+    state.carriedBeans = Array.from(
+      new Set([...(state.carriedBeans ?? []), ...child.carriedBeans]),
+    ).sort((a, b) => a.localeCompare(b));
+  }
   return complete(model, state, owner.call, {
     actor: opts?.actor,
     note: `subprocess ${child.processId} completed`,
@@ -721,6 +905,9 @@ export function describe(model: ProcessModel, state: InstanceState, roles?: Role
             ? [`        conventions: ${e.conventions.map((c) => `${c.ref} (${c.scope})`).join(", ")}`]
             : []),
           ...(e.touchesWorkPlan ? [`        touches the work plan (beans/)`] : []),
+          ...(e.context?.carriedBeans.length
+            ? [`        carried beans: ${e.context.carriedBeans.join(", ")}`]
+            : []),
           ...(e.calledElement ? [`        expands into: ${e.calledElement}`] : []),
         );
       }
