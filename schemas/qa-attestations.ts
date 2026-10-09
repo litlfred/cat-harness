@@ -139,7 +139,15 @@ export const ATTESTATIONS_SUFFIX = ".attestations.json";
  * the other two are named so bean `8wj1` extends one list rather than adding
  * a second.
  */
-export const ATTESTATION_FAMILIES = ["kg-qa", "block-qa", "translation-qa", "bib-verification", "bib-human-review", "requirement-signoff"] as const;
+export const ATTESTATION_FAMILIES = [
+  "kg-qa",
+  "block-qa",
+  "translation-qa",
+  "bib-verification",
+  "bib-human-review",
+  "requirement-signoff",
+  "certification",
+] as const;
 export type AttestationFamily = (typeof ATTESTATION_FAMILIES)[number];
 
 /** One declared prose ↔ code pair's accepted state. Paths are repo-relative. */
@@ -338,6 +346,193 @@ export function requirementSignoffPath(attestationsHome: string, setId: string):
   return join(attestationsHome, REQUIREMENT_SIGNOFF_FAMILY, `${slug}${ATTESTATIONS_SUFFIX}`);
 }
 
+/** The base schema every family extends. */
+export const BaseAttestationsSchema = QaAttestationsBaseSchema;
+export type BaseAttestations = z.infer<typeof BaseAttestationsSchema>;
+
+/**
+ * ## The `certification` family (bean `zaui`, test-plan-execution)
+ *
+ * A certification of a system under test against a `test-plan/v1` is an
+ * adjudication record filed by `A_FileCertification` in
+ * `test-plan-execution.bpmn`. It records the certifier's decision
+ * (`certified` / `refused` / `undetermined`), the test plan, optional
+ * requirement ids, signer details and signature verification data.
+ *
+ * It is a judgement, so it lives on `main` under the declared `attestations`
+ * graph:
+ *
+ * ```
+ * <attestations>/certification/<id or subject path>.attestations.json
+ * ```
+ *
+ * Corrupt store handling returns `unknown` and refuses writes, consistent with
+ * the other families.
+ */
+export const CERTIFICATION_FAMILY = "certification" as const;
+
+export const CertificationSignerSchema = z.object({
+  kind: z.string().min(1),
+  id: z.string().min(1),
+  actor: z.string().min(1).optional(),
+  version: z.string().optional(),
+});
+export type CertificationSigner = z.infer<typeof CertificationSignerSchema>;
+
+export const CertificationSignatureSchema = z.object({
+  algorithm: z.string().optional(),
+  value: z.string().min(1),
+  certificate: z.string().optional(),
+  signed_at: z.string().optional(),
+  key_id: z.string().optional(),
+});
+export type CertificationSignature = z.infer<typeof CertificationSignatureSchema>;
+
+export const CertificationEntrySchema = z
+  .object({
+    signer: z.union([z.string().min(1), CertificationSignerSchema]),
+    timestamp: z.string().min(1),
+    verdict: z.string().min(1).optional(),
+    decision: z.string().min(1).optional(),
+    testPlanId: z.string().min(1),
+    reqId: z.union([z.string().min(1), z.array(z.string().min(1))]).optional(),
+    signature: z.union([z.string().min(1), CertificationSignatureSchema]).optional(),
+    evidence: z.string().optional(),
+    notes: z.string().optional(),
+    attestation: z.record(z.string(), z.unknown()).optional(),
+  })
+  .refine((e) => e.verdict !== undefined || e.decision !== undefined, {
+    message: "either verdict or decision must be provided",
+  });
+export type CertificationEntry = z.infer<typeof CertificationEntrySchema>;
+
+export const CertificationAttestationsSchema = BaseAttestationsSchema.extend({
+  family: z.literal(CERTIFICATION_FAMILY),
+  certifications: z.array(CertificationEntrySchema),
+}).strict();
+export type CertificationAttestations = z.infer<typeof CertificationAttestationsSchema>;
+
+/**
+ * The store file for one certification:
+ * `<attestationsHome>/certification/<id or relative path>.attestations.json`.
+ */
+export function certificationPath(attestationsHomeOrRoot: string, idOrPath: string): string {
+  const home =
+    attestationsHomeOrRoot.endsWith(join("test", "attestations")) ||
+    attestationsHomeOrRoot.includes(join("test", "attestations"))
+      ? attestationsHomeOrRoot
+      : attestationsHomeFor(attestationsHomeOrRoot).root;
+  const stem = idOrPath.endsWith(ATTESTATIONS_SUFFIX)
+    ? idOrPath.slice(0, -ATTESTATIONS_SUFFIX.length)
+    : idOrPath.replace(/\.json$/, "");
+  return join(home, CERTIFICATION_FAMILY, `${stem}${ATTESTATIONS_SUFFIX}`);
+}
+
+/**
+ * The attestation home for certification records: resolves using {@link attestationsHomeFor}.
+ */
+export function certificationAttestationsHome(instanceRoot: string): ReturnType<typeof attestationsHomeFor> {
+  return attestationsHomeFor(instanceRoot);
+}
+
+export type CertificationAttestationRead =
+  | { state: "hit"; path: string; text: string; file: CertificationAttestations }
+  | { state: "miss" | "absent"; path: string }
+  | { state: "corrupt" | "unknown"; path: string; reason: string };
+
+/**
+ * Read one certification attestation file, through {@link readAttestationFile}.
+ */
+export function readCertificationAttestations(
+  instanceRoot: string,
+  idOrPath: string,
+): CertificationAttestationRead {
+  const home = attestationsHomeFor(instanceRoot);
+  const path = certificationPath(home.root, idOrPath);
+  const r = readAttestationFile(path, home.storeRoot);
+  if (r.state === "miss" || r.state === "absent") return { state: r.state, path };
+  if (r.state !== "hit") return { state: r.state, path, reason: r.reason };
+  const f = r.file;
+  if (f.family !== CERTIFICATION_FAMILY) {
+    return { state: "corrupt", path, reason: `names family "${f.family}", not "${CERTIFICATION_FAMILY}"` };
+  }
+  return { state: "hit", path, text: r.text, file: f as CertificationAttestations };
+}
+
+export type WriteCertificationResult =
+  | { ok: true; path: string; written: boolean }
+  | { ok: false; state: "corrupt" | "unknown"; path: string; reason: string };
+
+/**
+ * Write one certification attestation file.
+ * Refuses write and returns state `unknown` or `corrupt` if store is corrupt or unreadable.
+ */
+export function writeCertificationAttestations(
+  instanceRoot: string,
+  idOrPath: string,
+  data:
+    | CertificationAttestations
+    | {
+        subject: z.infer<typeof AttestationSubjectSchema>;
+        certifications?: CertificationEntry[];
+        certification?: CertificationEntry;
+      },
+  opts: { asciiEscape?: boolean } = {},
+): WriteCertificationResult {
+  const home = attestationsHomeFor(instanceRoot);
+  const path = certificationPath(home.root, idOrPath);
+  const read = readAttestationFile(path, home.storeRoot);
+  if (read.state === "corrupt" || read.state === "unknown") {
+    return { ok: false, state: read.state, path, reason: read.reason };
+  }
+
+  let certifications: CertificationEntry[];
+  if ("certifications" in data && Array.isArray(data.certifications)) {
+    certifications = data.certifications;
+  } else if ("certification" in data && data.certification) {
+    const prior =
+      read.state === "hit" &&
+      read.file.family === CERTIFICATION_FAMILY &&
+      Array.isArray((read.file as CertificationAttestations).certifications)
+        ? (read.file as CertificationAttestations).certifications
+        : [];
+    certifications = [...prior, data.certification];
+  } else {
+    certifications = [];
+  }
+
+  const doc: CertificationAttestations = {
+    $schema: QA_ATTESTATIONS_SCHEMA,
+    family: CERTIFICATION_FAMILY,
+    subject: data.subject,
+    certifications,
+  };
+
+  const parsed = CertificationAttestationsSchema.safeParse(doc);
+  if (!parsed.success) {
+    return {
+      ok: false,
+      state: "corrupt",
+      path,
+      reason: `invalid certification document: ${parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ")}`,
+    };
+  }
+
+  const body = serialiseAttestations(doc, opts.asciiEscape ?? false);
+  const before = existsSync(path) ? readFileSync(path, "utf-8") : undefined;
+  if (before === body) return { ok: true, path, written: false };
+
+  mkdirSync(dirname(path), { recursive: true });
+  writeFileSync(path, body);
+  return { ok: true, path, written: true };
+}
+
+/**
+ * File a signed certification (for test-plan-execution `A_FileCertification`).
+ * Re-exports {@link writeCertificationAttestations}.
+ */
+export const fileCertification = writeCertificationAttestations;
+
 /**
  * Every `qa-attestations/v1` file. A union on `family` so `kg_validate` and
  * the registry have ONE validator per `$schema`.
@@ -349,6 +544,7 @@ export const QaAttestationsSchema = z.discriminatedUnion("family", [
   BibVerificationAttestationsSchema,
   BibHumanReviewAttestationsSchema,
   RequirementSignoffAttestationsSchema,
+  CertificationAttestationsSchema,
 ]);
 export type QaAttestations = z.infer<typeof QaAttestationsSchema>;
 

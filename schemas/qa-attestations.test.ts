@@ -4,7 +4,7 @@
  * where a miss or an absent store is "never attested" only once the prior derived file has been read.
  */
 import { describe, expect, test } from "bun:test";
-import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -12,10 +12,18 @@ import {
   ATTESTATION_FAMILIES,
   attestationPathFor,
   attestationsHomeFor,
+  CERTIFICATION_FAMILY,
+  CertificationAttestationsSchema,
+  certificationPath,
+  fileCertification,
   QA_ATTESTATIONS_SCHEMA,
   QaAttestationsSchema,
   readAttestationFile,
+  readCertificationAttestations,
   serialiseAttestations,
+  writeCertificationAttestations,
+  type CertificationAttestations,
+  type CertificationEntry,
   type KgAttestations,
 } from "./qa-attestations";
 import { defaultGraphTypologies } from "./cat-harness";
@@ -64,7 +72,15 @@ describe("qa-attestations/v1", () => {
   });
 
   test("the family is one of the shared list: kg-qa (bean 2gst), block-qa and translation-qa (bean 8wj1)", () => {
-    expect([...ATTESTATION_FAMILIES]).toEqual(["kg-qa", "block-qa", "translation-qa", "bib-verification", "bib-human-review", "requirement-signoff"]);
+    expect([...ATTESTATION_FAMILIES]).toEqual([
+      "kg-qa",
+      "block-qa",
+      "translation-qa",
+      "bib-verification",
+      "bib-human-review",
+      "requirement-signoff",
+      "certification",
+    ]);
     expect(QaAttestationsSchema.safeParse({ ...file(), family: "lsi" }).success).toBe(false);
   });
 
@@ -145,5 +161,148 @@ describe("the kg-qa sidecar no longer carries judgements", () => {
     expect(KgQaReportSchema.safeParse(derived).success).toBe(true);
     expect(KgQaReportSchema.safeParse({ ...derived, pair_attestations: [pair] }).success).toBe(false);
     expect(KgQaReportSchema.safeParse({ ...derived, voice_reviews: [] }).success).toBe(false);
+  });
+});
+
+describe("the certification family (bean zaui)", () => {
+  const certEntry: CertificationEntry = {
+    signer: { kind: "agent", id: "certifier-bot", actor: "certifier" },
+    timestamp: "2026-10-09T12:00:00Z",
+    verdict: "certified",
+    decision: "certified",
+    testPlanId: "test-plan-core-v1",
+    reqId: ["req:auth-tokens", "req:session-expiry"],
+    signature: {
+      algorithm: "ed25519",
+      value: "sig_abc123",
+      signed_at: "2026-10-09T12:00:05Z",
+    },
+    evidence: "https://github.com/litlfred/cat-harness/issues/123#issuecomment-456",
+    notes: "All test cases passed exit criteria",
+  };
+
+  const certDoc: CertificationAttestations = {
+    $schema: QA_ATTESTATIONS_SCHEMA,
+    family: "certification",
+    subject: {
+      kind: "test-report",
+      id: "report-2026-10-09",
+      path: "tests/crdm/report-2026-10-09.json",
+    },
+    certifications: [certEntry],
+  };
+
+  test("a certification file validates against CertificationAttestationsSchema and QaAttestationsSchema", () => {
+    expect(CertificationAttestationsSchema.safeParse(certDoc).success).toBe(true);
+    expect(QaAttestationsSchema.safeParse(certDoc).success).toBe(true);
+  });
+
+  test("a certification entry requires either verdict or decision", () => {
+    const { verdict: _v, decision: _d, ...noVerdictOrDecision } = certEntry;
+    expect(CertificationAttestationsSchema.safeParse({ ...certDoc, certifications: [noVerdictOrDecision] }).success).toBe(false);
+    expect(CertificationAttestationsSchema.safeParse({ ...certDoc, certifications: [{ ...certEntry, decision: undefined }] }).success).toBe(true);
+    expect(CertificationAttestationsSchema.safeParse({ ...certDoc, certifications: [{ ...certEntry, verdict: undefined }] }).success).toBe(true);
+  });
+
+  test("certificationPath resolves under <attestationsHome>/certification/", () => {
+    const root = "/repo/test/attestations";
+    expect(certificationPath(root, "plan-123")).toBe("/repo/test/attestations/certification/plan-123.attestations.json");
+    expect(certificationPath(root, "sub/dir/report.json")).toBe("/repo/test/attestations/certification/sub/dir/report.attestations.json");
+    expect(certificationPath(root, "my-cert.attestations.json")).toBe("/repo/test/attestations/certification/my-cert.attestations.json");
+  });
+
+  test("a filed certification round-trips cleanly through the store", () => {
+    const root = mkdtempSync(join(tmpdir(), "cert-roundtrip-"));
+    const id = "tests/plan-1/report-1";
+    try {
+      // 1. Initially missing
+      const initial = readCertificationAttestations(root, id);
+      expect(initial.state).toBe("absent");
+
+      // 2. File / write certification
+      const writeRes = writeCertificationAttestations(root, id, certDoc);
+      expect(writeRes.ok).toBe(true);
+      if (!writeRes.ok) return;
+      expect(writeRes.written).toBe(true);
+
+      // 3. Read back
+      const readRes = readCertificationAttestations(root, id);
+      expect(readRes.state).toBe("hit");
+      if (readRes.state !== "hit") return;
+      expect(readRes.file).toEqual(certDoc);
+      expect(readRes.file.certifications[0]?.testPlanId).toBe("test-plan-core-v1");
+      expect(readRes.file.certifications[0]?.verdict).toBe("certified");
+
+      // 4. Writing identical data is a no-op (written: false)
+      const reWrite = fileCertification(root, id, certDoc);
+      expect(reWrite.ok).toBe(true);
+      if (!reWrite.ok) return;
+      expect(reWrite.written).toBe(false);
+
+      // 5. Append a second certification entry
+      const secondEntry: CertificationEntry = {
+        signer: "human:auditor",
+        timestamp: "2026-10-09T13:00:00Z",
+        verdict: "certified",
+        testPlanId: "test-plan-core-v1",
+      };
+      const appendRes = writeCertificationAttestations(root, id, {
+        subject: certDoc.subject,
+        certification: secondEntry,
+      });
+      expect(appendRes.ok).toBe(true);
+      const afterAppend = readCertificationAttestations(root, id);
+      expect(afterAppend.state).toBe("hit");
+      if (afterAppend.state !== "hit") return;
+      expect(afterAppend.file.certifications).toHaveLength(2);
+      expect(afterAppend.file.certifications[1]?.signer).toBe("human:auditor");
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  test("corrupt store handling returns corrupt/unknown and refuses write", () => {
+    const root = mkdtempSync(join(tmpdir(), "cert-corrupt-"));
+    const id = "tests/plan-1/report-corrupt";
+
+    try {
+      const p = certificationPath(root, id);
+      mkdirSync(join(p, ".."), { recursive: true });
+      writeFileSync(p, "<<<<<<< ours\n");
+
+      // Reading a corrupt file returns state corrupt
+      const r = readCertificationAttestations(root, id);
+      expect(r.state).toBe("corrupt");
+
+      // Writing to a corrupt store is refused
+      const w = writeCertificationAttestations(root, id, certDoc);
+      expect(w.ok).toBe(false);
+      if (w.ok) return;
+      expect(w.state).toBe("corrupt");
+      expect(readFileSync(p, "utf-8")).toBe("<<<<<<< ours\n");
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  test("an unreadable/non-directory store root returns unknown and refuses write", () => {
+    const root = mkdtempSync(join(tmpdir(), "cert-unknown-"));
+    const id = "tests/plan-1/report-unknown";
+
+    try {
+      const storeRoot = join(root, "test", "attestations");
+      mkdirSync(join(root, "test"), { recursive: true });
+      writeFileSync(storeRoot, "not a directory");
+
+      const r = readCertificationAttestations(root, id);
+      expect(r.state).toBe("unknown");
+
+      const w = writeCertificationAttestations(root, id, certDoc);
+      expect(w.ok).toBe(false);
+      if (w.ok) return;
+      expect(w.state).toBe("unknown");
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
   });
 });
