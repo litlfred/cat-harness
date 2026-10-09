@@ -38,6 +38,19 @@ import { provActivityFor } from "./prov-record.js";
 import type { ProvActivity } from "../../schemas/prov.js";
 import type { AccessContext, Principal } from "../core/access.js";
 import { inputSiteReached } from "../../scripts/input-trace.ts";
+import {
+  validateWorkflowModel,
+  validateLaneModelCapabilities,
+  WorkflowCapabilityRefusalError,
+  type ModelConfig,
+} from "./model-capabilities.js";
+
+export {
+  validateWorkflowModel,
+  validateLaneModelCapabilities,
+  WorkflowCapabilityRefusalError,
+  type ModelConfig,
+};
 
 export interface HistoryEntry {
   at: string;
@@ -388,8 +401,18 @@ function subprocessOwning(
 
 export function startInstance(
   model: ProcessModel,
-  opts: { id: string; subject: string; bean?: string; startNode?: string },
+  opts: {
+    id: string;
+    subject: string;
+    bean?: string;
+    startNode?: string;
+    model?: ModelConfig;
+    roles?: RoleGraph;
+  },
 ): InstanceState {
+  if (opts.model && opts.roles) {
+    validateWorkflowModel(model, opts.model, opts.roles);
+  }
   const startNode = opts.startNode ?? model.startNodes[0];
   if (!model.nodes.has(startNode)) {
     throw new WorkflowError(`no such start node: ${startNode}`);
@@ -498,6 +521,10 @@ export function complete(
     note?: string;
     /** Run the task-authorization check before recording anything. */
     authz?: AuthzOptions;
+    /** Single model configured for execution. */
+    model?: ModelConfig;
+    /** Role graph for looking up lane/role capability requirements. */
+    roles?: RoleGraph;
   } = {},
 ): InstanceState {
   if (state.status !== "running") {
@@ -530,6 +557,15 @@ export function complete(
         `steps do — complete those instead` +
         (open.length ? `: ${open.join(", ")}.` : "."),
     );
+  }
+
+  // If a single model is configured and roles are provided, verify the lane's role
+  // capabilities. If the model lacks any required capability, refuse rather than degrade.
+  if (opts.model && opts.roles) {
+    const roleId = node.roleRef ?? (node.lane ? roleForLane(opts.roles, node.lane, node.roleRef)?.id : undefined);
+    if (roleId) {
+      validateLaneModelCapabilities(roleId, node.lane ?? roleId, opts.model, opts.roles);
+    }
   }
 
   // Every task and every decision, before anything is recorded: authenticated,

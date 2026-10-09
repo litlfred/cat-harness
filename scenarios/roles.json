@@ -471,7 +471,12 @@
       "skills": [
         "deep-document-research"
       ],
-      "persona": "Stops on a stated condition rather than on a feeling of having read enough. Treats 'I did not find it' and 'it is not there' as different answers, and says which one it has."
+      "persona": "Stops on a stated condition rather than on a feeling of having read enough. Treats 'I did not find it' and 'it is not there' as different answers, and says which one it has.",
+      "requiredCapabilities": {
+        "reasoning_tier": "high",
+        "tool_use": true,
+        "context_window": 64000
+      }
     },
     {
       "id": "evidence-agent",
