@@ -71,15 +71,15 @@
           "names": 2
         },
         {
-          "file": "cat-harness/content/docs/concepts-content-types/concepts-content-types.ts",
+          "file": "cat-harness/docs/source/concepts-content-types/concepts-content-types.ts",
           "names": 3
         },
         {
-          "file": "cat-harness/content/docs/concepts-harnessed-kg-overview/slide-09.md",
+          "file": "cat-harness/docs/source/concepts-harnessed-kg-overview/slide-09.md",
           "names": 4
         },
         {
-          "file": "cat-harness/content/docs/fhir-fhir-content/the-three-layers.md",
+          "file": "cat-harness/docs/source/fhir-fhir-content/the-three-layers.md",
           "names": 3
         },
         {
@@ -661,7 +661,7 @@
           "names": 2
         },
         {
-          "file": "cat-harness/content/docs/fhir-ig-publisher/what-it-cannot-be-asked-for.md",
+          "file": "cat-harness/docs/source/fhir-ig-publisher/what-it-cannot-be-asked-for.md",
           "names": 2
         },
         {
@@ -1151,131 +1151,131 @@
           "target": "folio-assistant-core"
         },
         {
-          "file": "cat-harness/content/docs/concepts-content-types/concepts-content-types.ts",
+          "file": "cat-harness/docs/source/concepts-content-types/concepts-content-types.ts",
           "target": "fhir-harness"
         },
         {
-          "file": "cat-harness/content/docs/concepts-content-types/concepts-content-types.ts",
+          "file": "cat-harness/docs/source/concepts-content-types/concepts-content-types.ts",
           "target": "folio-assistant-core"
         },
         {
-          "file": "cat-harness/content/docs/concepts-content-types/concepts-content-types.ts",
+          "file": "cat-harness/docs/source/concepts-content-types/concepts-content-types.ts",
           "target": "smart-base"
         },
         {
-          "file": "cat-harness/content/docs/concepts-harness/overview.md",
+          "file": "cat-harness/docs/source/concepts-harness/overview.md",
           "target": "folio-assistant-core"
         },
         {
-          "file": "cat-harness/content/docs/concepts-harness/the-dependency-walk.md",
+          "file": "cat-harness/docs/source/concepts-harness/the-dependency-walk.md",
           "target": "folio-assistant-core"
         },
         {
-          "file": "cat-harness/content/docs/concepts-harnessed-kg-overview/slide-01.md",
+          "file": "cat-harness/docs/source/concepts-harnessed-kg-overview/slide-01.md",
           "target": "smart-base"
         },
         {
-          "file": "cat-harness/content/docs/concepts-harnessed-kg-overview/slide-02.md",
+          "file": "cat-harness/docs/source/concepts-harnessed-kg-overview/slide-02.md",
           "target": "who-iris"
         },
         {
-          "file": "cat-harness/content/docs/concepts-harnessed-kg-overview/slide-03.md",
+          "file": "cat-harness/docs/source/concepts-harnessed-kg-overview/slide-03.md",
           "target": "smart-base"
         },
         {
-          "file": "cat-harness/content/docs/concepts-harnessed-kg-overview/slide-04.md",
+          "file": "cat-harness/docs/source/concepts-harnessed-kg-overview/slide-04.md",
           "target": "smart-base"
         },
         {
-          "file": "cat-harness/content/docs/concepts-harnessed-kg-overview/slide-06.md",
+          "file": "cat-harness/docs/source/concepts-harnessed-kg-overview/slide-06.md",
           "target": "folio-assistant-core"
         },
         {
-          "file": "cat-harness/content/docs/concepts-harnessed-kg-overview/slide-09.md",
+          "file": "cat-harness/docs/source/concepts-harnessed-kg-overview/slide-09.md",
           "target": "folio-assistant-core"
         },
         {
-          "file": "cat-harness/content/docs/concepts-harnessed-kg-overview/slide-09.md",
+          "file": "cat-harness/docs/source/concepts-harnessed-kg-overview/slide-09.md",
           "target": "smart-base"
         },
         {
-          "file": "cat-harness/content/docs/concepts-harnessed-kg-overview/slide-09.md",
+          "file": "cat-harness/docs/source/concepts-harnessed-kg-overview/slide-09.md",
           "target": "smart-immunizations"
         },
         {
-          "file": "cat-harness/content/docs/concepts-harnessed-kg-overview/slide-09.md",
+          "file": "cat-harness/docs/source/concepts-harnessed-kg-overview/slide-09.md",
           "target": "who-iris"
         },
         {
-          "file": "cat-harness/content/docs/concepts-harnessed-kg-overview/slide-10.md",
+          "file": "cat-harness/docs/source/concepts-harnessed-kg-overview/slide-10.md",
           "target": "smart-base"
         },
         {
-          "file": "cat-harness/content/docs/concepts-knowledge-graph/what-is-declared-today.md",
+          "file": "cat-harness/docs/source/concepts-knowledge-graph/what-is-declared-today.md",
           "target": "who-iris"
         },
         {
-          "file": "cat-harness/content/docs/fhir-fhir-content/the-three-layers.md",
+          "file": "cat-harness/docs/source/fhir-fhir-content/the-three-layers.md",
           "target": "folio-assistant-core"
         },
         {
-          "file": "cat-harness/content/docs/fhir-fhir-content/the-three-layers.md",
+          "file": "cat-harness/docs/source/fhir-fhir-content/the-three-layers.md",
           "target": "folio-assistant-sci"
         },
         {
-          "file": "cat-harness/content/docs/fhir-fhir-content/the-three-layers.md",
+          "file": "cat-harness/docs/source/fhir-fhir-content/the-three-layers.md",
           "target": "smart-base"
         },
         {
-          "file": "cat-harness/content/docs/fhir-ig-publisher/what-it-cannot-be-asked-for.md",
+          "file": "cat-harness/docs/source/fhir-ig-publisher/what-it-cannot-be-asked-for.md",
           "target": "smart-immunizations"
         },
         {
-          "file": "cat-harness/content/docs/fhir-ig-publisher/what-it-cannot-be-asked-for.md",
+          "file": "cat-harness/docs/source/fhir-ig-publisher/what-it-cannot-be-asked-for.md",
           "target": "smart-trust"
         },
         {
-          "file": "cat-harness/content/docs/fhir-ig-publisher/what-only-it-can-do.md",
+          "file": "cat-harness/docs/source/fhir-ig-publisher/what-only-it-can-do.md",
           "target": "smart-base"
         },
         {
-          "file": "cat-harness/content/docs/guides-document-ingestion/guides-document-ingestion.ts",
+          "file": "cat-harness/docs/source/guides-document-ingestion/guides-document-ingestion.ts",
           "target": "folio-assistant-core"
         },
         {
-          "file": "cat-harness/content/docs/guides-who-smart-dak/guides-who-smart-dak.ts",
+          "file": "cat-harness/docs/source/guides-who-smart-dak/guides-who-smart-dak.ts",
           "target": "smart-base"
         },
         {
-          "file": "cat-harness/content/docs/guides-who-smart-dak/the-l2-artifacts.md",
+          "file": "cat-harness/docs/source/guides-who-smart-dak/the-l2-artifacts.md",
           "target": "smart-base"
         },
         {
-          "file": "cat-harness/content/docs/guides-who-smart-ig/guides-who-smart-ig.ts",
+          "file": "cat-harness/docs/source/guides-who-smart-ig/guides-who-smart-ig.ts",
           "target": "fhir-harness"
         },
         {
-          "file": "cat-harness/content/docs/guides-who-smart-ig/making-the-build-incremental.md",
+          "file": "cat-harness/docs/source/guides-who-smart-ig/making-the-build-incremental.md",
           "target": "smart-immunizations"
         },
         {
-          "file": "cat-harness/content/docs/guides-writing-a-document/guides-writing-a-document.ts",
+          "file": "cat-harness/docs/source/guides-writing-a-document/guides-writing-a-document.ts",
           "target": "folio-assistant-core"
         },
         {
-          "file": "cat-harness/content/docs/guides-writing-a-document/where-things-are.md",
+          "file": "cat-harness/docs/source/guides-writing-a-document/where-things-are.md",
           "target": "folio-assistant-core"
         },
         {
-          "file": "cat-harness/content/docs/guides-writing-a-paper/guides-writing-a-paper.ts",
+          "file": "cat-harness/docs/source/guides-writing-a-paper/guides-writing-a-paper.ts",
           "target": "folio-assistant-sci"
         },
         {
-          "file": "cat-harness/content/docs/process-evidence/process-evidence.ts",
+          "file": "cat-harness/docs/source/process-evidence/process-evidence.ts",
           "target": "folio-assistant-core"
         },
         {
-          "file": "cat-harness/content/docs/process-publication-workflow/process-publication-workflow.ts",
+          "file": "cat-harness/docs/source/process-publication-workflow/process-publication-workflow.ts",
           "target": "folio-assistant-core"
         },
         {

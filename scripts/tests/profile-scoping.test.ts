@@ -5,7 +5,7 @@
  * inside one adapter's vocabulary, so a document folio's prose block is a
  * paper-adapter kind and sails through the adapter gate. Which meant every
  * document-profile block inherited the paper adapter's LaTeX- and
- * Lean-shaped criteria. Measured on `content/docs/crdm-methodology`
+ * Lean-shaped criteria. Measured on `docs/source/crdm-methodology`
  * (2026-09-18, sidecars removed first so nothing was `fresh-skip`):
  * 328 pass / 8 fail / 336 n/a, and **five of the eight failures** were
  * `voice-unicode-crash` — a criterion whose own description says the

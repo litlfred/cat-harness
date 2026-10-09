@@ -1,5 +1,5 @@
 /**
- * Emit `docs/<slug>.md` from a `content/docs/<slug>/<slug>.ts` webpage manifest.
+ * Emit `docs/<slug>.md` from a `docs/source/<slug>/<slug>.ts` webpage manifest.
  *
  * This is the missing code path. Every existing renderer targets LaTeX
  * (`render-latex.ts`), one assembled Markdown file (`render-markdown.ts`), or
@@ -73,6 +73,7 @@ import {
   directoryForGraph,
   publishedAssetPath,
   readDeclaration,
+  docsSourceDirFor,
   siteDirFor,
   sourceLinks,
   repoRootFor,
@@ -90,7 +91,7 @@ const INSTANCE_ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
  * not the `en` literal this file used to write into every page's front matter.
  */
 const SOURCE_LOCALE = sourceLocale(INSTANCE_ROOT);
-// Platform documentation lives under `content/docs/`. It is NOT folio content
+// Platform documentation lives under `docs/source/`. It is NOT folio content
 // (papers, chapters, block triples) — it is the platform's own structured docs,
 // authored as `WebPage` manifests with `.ts` + `.md` blocks.
 //
@@ -98,10 +99,10 @@ const SOURCE_LOCALE = sourceLocale(INSTANCE_ROOT);
 // because `qa-section-title-audit.ts` walked every `content/<dir>/` looking for
 // chapter manifests and treated webpage manifests as folio chapters ("7 titles
 // across 7 chapters"). The fix was in the wrong place: the audit now skips
-// `content/docs/` explicitly (alongside `content/pipeline/` and
+// `docs/source/` explicitly (alongside `content/pipeline/` and
 // `content/schema/`), so documentation can live where content belongs — under
 // `content/` — without tripping the folio-emptiness gate.
-const SRC_DIR = join(INSTANCE_ROOT, "content", "docs");
+const SRC_DIR = docsSourceDirFor(INSTANCE_ROOT);
 const OUT_DIR = join(INSTANCE_ROOT, siteDirFor(INSTANCE_ROOT));
 
 /**
@@ -236,7 +237,7 @@ export function editTarget(page: WebPage, node: WebPageNode): string | null {
     return src.startsWith("../") ? repoRelative(src) : src;
   }
   const narrative = node.block ?? node.lead;
-  if (narrative) return `content/docs/${page.slug.replace(/\//g, "-")}/${narrative}.md`;
+  if (narrative) return `docs/source/${page.slug.replace(/\//g, "-")}/${narrative}.md`;
   return null;
 }
 
@@ -719,7 +720,7 @@ function pageQaIcons(page: WebPage): string {
  */
 function blockLabel(page: WebPage, node: WebPageNode): string | undefined {
   const slug = page.slug.replace(/\//g, "-");
-  const file = join(INSTANCE_ROOT, "content", "docs", slug, `${node.id}.ts`);
+  const file = join(SRC_DIR, slug, `${node.id}.ts`);
   if (!existsSync(file)) return undefined;
   const m = /^\s*label:\s*"([^"]+)"/m.exec(readFileSync(file, "utf-8"));
   return m ? m[1] : undefined;
@@ -813,7 +814,7 @@ function siteAddressed(page: WebPage, path: string): string {
 
 /** Where a page's content is authored — the file to edit instead of the output. */
 function manifestRef(page: WebPage): string {
-  return `content/docs/${page.slug.replace(/\//g, "-")}/`;
+  return `docs/source/${page.slug.replace(/\//g, "-")}/`;
 }
 
 /**
@@ -941,7 +942,7 @@ function renderPage(page: WebPage): string {
   lines.push("</details>");
   lines.push("");
   lines.push(
-    `_This page is generated from [\`content/docs/${page.slug.replace(/\//g, "-")}/\`](${REPO_WEB}/tree/main/content/docs/${page.slug.replace(/\//g, "-")}) — ` +
+    `_This page is generated from [\`docs/source/${page.slug.replace(/\//g, "-")}/\`](${REPO_WEB}/tree/main/docs/source/${page.slug.replace(/\//g, "-")}) — ` +
       `each section below links to its own source._`,
   );
   lines.push("");
@@ -1111,7 +1112,7 @@ for (const slug of slugs) {
   const page = mod.default;
   // A slug may carry a path (`guides/writing-a-paper`) because the published
   // site has a `guides/` subdirectory. The content DIRECTORY flattens it, so
-  // one level of `content/docs/` holds every page and there is no second
+  // one level of `docs/source/` holds every page and there is no second
   // nesting rule to remember.
   if (page.slug.replace(/\//g, "-") !== slug) {
     throw new Error(`${manifest} declares slug "${page.slug}" but lives in ${slug}/`);

@@ -37,7 +37,7 @@ third person, where a status marker really is a leak of the work tracker into
 the published text.
 
 None of them carries `profiles` scoping today. So they also run over
-`content/docs/` — documentation, where the genre's whole register is to address
+`docs/source/` — documentation, where the genre's whole register is to address
 the reader: *"you need `bun`, `latexmk` and Lean"* is a correct sentence in a
 prerequisites page and a `voice-scholarly-default` match at the same time.
 
@@ -83,7 +83,7 @@ an assertion, and the reviewer entry should say so in those words.
    registry edit with `profiles`, or a reviewer entry. A finding that is simply
    left open teaches nobody anything, and it comes back on the next sweep.
 4. **Re-run the sweep** — `bun run content/pipeline/qa-sweep.ts --root
-   content/docs` — so the sidecar, the icon and the panel agree with what you
+   docs/source` — so the sidecar, the icon and the panel agree with what you
    decided.
 
 ## Where the open findings are
@@ -109,6 +109,6 @@ the criterion opens the witness that ruled on it — which checker, at which
   different causes.
 - **Do not treat `critical` as "fix first".** Severity ranks the criterion's
   authors' concern, not the confidence of this match; three of the four
-  criticals in `content/docs/` are quotations.
+  criticals in `docs/source/` are quotations.
 - **Do not delete a finding from a sidecar.** The sweep rewrites its own
   entries; a hand-removed one comes back with no record that anyone looked.

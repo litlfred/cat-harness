@@ -216,7 +216,7 @@ export const PATTERNS: readonly ConflictPattern[] = [
     // `.md` pages are generated and 18 are authored (`architecture.md`,
     // `index.md`, `getting-started.md`, …), and `guides/` is 4 of 9 — so a
     // directory glob such as `docs/*.md` would take a side on
-    // authored prose. A page added to `content/docs/` is refused until it is
+    // authored prose. A page added to `docs/source/` is refused until it is
     // named here, which is the safe direction to be wrong in.
     globs: [
       // In the docs graph's named groups since bean `xka5`: the same 17 pages,
@@ -227,7 +227,7 @@ export const PATTERNS: readonly ConflictPattern[] = [
       "cat-harness/docs/fhir/{fhir-content,ig-publisher}.md",
     ],
     strategy: "take-base",
-    why: "the 17 whole-file docs pages gen-docs-pages.ts writes from the authored blocks under cat-harness/content/docs/<slug>/ (`docs:pages`, gated by `docs:pages:check`), each carrying `generated: scripts/gen-docs-pages.ts — do not hand-edit` in its own front matter. Bean `8c6v`: all 17 were named by NO pattern, so merge:main refused them and handed back for hand-editing the files that forbid it — docs/process/publication-workflow.md was one of the 2 refusals that blocked #1888 after 53 of its 55 conflicts resolved. Safe because `emit()` is compare-or-write and the only read of a prior page is inside its `--check` branch, so nothing is carried forward; and the `page` kind is gated on EXACT content, which makes regeneration the verifiable resolution. The AUTHORED SOURCES under cat-harness/content/docs/** are the neighbour and stay refused.",
+    why: "the 17 whole-file docs pages gen-docs-pages.ts writes from the authored blocks under cat-harness/docs/source/<slug>/ (`docs:pages`, gated by `docs:pages:check`), each carrying `generated: scripts/gen-docs-pages.ts — do not hand-edit` in its own front matter. Bean `8c6v`: all 17 were named by NO pattern, so merge:main refused them and handed back for hand-editing the files that forbid it — docs/process/publication-workflow.md was one of the 2 refusals that blocked #1888 after 53 of its 55 conflicts resolved. Safe because `emit()` is compare-or-write and the only read of a prior page is inside its `--check` branch, so nothing is carried forward; and the `page` kind is gated on EXACT content, which makes regeneration the verifiable resolution. The AUTHORED SOURCES under cat-harness/docs/source/** are the neighbour and stay refused.",
   },
   {
     id: "health-report",

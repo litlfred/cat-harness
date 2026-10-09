@@ -869,7 +869,7 @@ function publishedLocation(
   }
 
   // 4. A repository file that publishes no page — `.ts`, `.py`, `.sh`,
-  //    `.json`, and the markdown under `methodologies/` and `content/docs/`
+  //    `.json`, and the markdown under `methodologies/` and `docs/source/`
   //    that this checked for rather than assumed: `docs/methodologies/` holds
   //    only `index.md`, so those nine sources publish NOWHERE, and the bean's
   //    instruction to give them a site-relative path would have composed nine

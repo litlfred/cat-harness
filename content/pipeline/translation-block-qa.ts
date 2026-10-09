@@ -98,7 +98,7 @@ import {
 } from "../../schemas/qa-attestations.ts";
 import { sourceLocale, targetLocales } from "./translation-index.ts";
 import { againstOrUsage, judgeSidecarTree, judgeUsage, qaStorageOf, type FreshSidecar } from "../../scripts/qa-results.ts";
-import { siteDirFor } from "../../schemas/cat-harness.ts";
+import { docsSourceDirFor, siteDirFor } from "../../schemas/cat-harness.ts";
 
 const INSTANCE_ROOT = join(import.meta.dir, "..", "..");
 /**
@@ -164,7 +164,7 @@ export const TRANSLATION_CRITERIA = [
 /**
  * The chapter's PAGE slug, which is what its catalogue is named after.
  *
- * A chapter directory is `content/docs/<dir>/`, and its page manifest
+ * A chapter directory is `docs/source/<dir>/`, and its page manifest
  * `<dir>.ts` declares `slug:`. They were the same word until the docs graph's
  * named groups (bean `xka5`): `process-crdm-methodology/` now publishes
  * `process/crdm-methodology`, whose catalogue is
@@ -530,7 +530,7 @@ function entry(
  * POT and this module does not get to dictate that:
  *
  *   - `docs/index.md` — instance-relative, no line;
- *   - `content/docs/process-crdm-methodology/overview.md:1` — instance-relative, line;
+ *   - `docs/source/process-crdm-methodology/overview.md:1` — instance-relative, line;
  *   - `agent-onboarding.md:10` — bare basename, line.
  *
  * So the line suffix is stripped, and then the reference's OWN SHAPE decides
@@ -1027,7 +1027,8 @@ if (import.meta.main) {
     if (a.exit !== undefined) process.exit(a.exit);
     against = a.against;
   }
-  const root = join(INSTANCE_ROOT, arg("root", join("content", "docs")));
+  const rootArg = arg("root", "");
+  const root = rootArg ? join(INSTANCE_ROOT, rootArg) : docsSourceDirFor(INSTANCE_ROOT);
   const src = sourceLocale(INSTANCE_ROOT);
   const locales = arg("locales", targetLocales(INSTANCE_ROOT).join(","))
     .split(",")

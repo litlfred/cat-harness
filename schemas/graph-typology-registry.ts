@@ -1966,7 +1966,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // checklist searches `library/` and not `uploads/`, so a source still in
   // `uploads/` makes a clean grep read as "nobody has done this" while the
   // file sits on disk. Collapsing them into one kind would erase exactly
-  // the distinction `content/docs/guides-document-ingestion/uploads-and-library-
+  // the distinction `docs/source/guides-document-ingestion/uploads-and-library-
   // are-two-stages-of-one-pipeline.md` exists to state. A QUEUE, and a
   // queue is a position in a pipeline. The declaration already says these
   // files are NOT L1 and read as absent to every corpus consumer: the file

@@ -48,7 +48,7 @@ function frontMatter(text: string): string {
 /**
  * Every `.md` under this instance's site directory whose own front matter names
  * `gen-docs-pages.ts` as its writer, repo-relative. Read from the TREE rather
- * than listed, so a page added to `content/docs/` makes the `docs-pages` test
+ * than listed, so a page added to `docs/source/` makes the `docs-pages` test
  * fail until its slug is declared — the enumeration cannot go quietly stale.
  */
 function generatedDocsPages(): string[] {
@@ -127,7 +127,7 @@ describe("classify", () => {
     const pages = generatedDocsPages();
     expect(pages.length).toBeGreaterThanOrEqual(17);
     // Deriving the subjects from the tree is the point: a page added to
-    // `content/docs/` lands here and fails until the glob names its slug.
+    // `docs/source/` lands here and fails until the glob names its slug.
     const unmatched = pages.filter((p) => classify(p).pattern?.id !== "docs-pages");
     expect(unmatched).toEqual([]);
     expect(classify("cat-harness/docs/process/publication-workflow.md").pattern?.id).toBe("docs-pages");
@@ -136,13 +136,13 @@ describe("classify", () => {
 
   test("the AUTHORED source a docs page is generated from is refused, and so are its authored siblings", () => {
     // The pair that makes `docs-pages` safe, and step 3 of §"Adding a pattern":
-    // `gen-docs-pages.ts` READS the blocks under `content/docs/<slug>/`, which
+    // `gen-docs-pages.ts` READS the blocks under `docs/source/<slug>/`, which
     // are hand-written and genuinely need a person. The glob must not reach
     // them, nor the authored `docs/*.md` pages sitting beside the generated
     // ones in the SAME directory — `cat-harness/docs/*.md` is a mix, which is
     // why the 17 slugs are enumerated instead of globbed.
     expect(
-      classify("cat-harness/content/docs/process-publication-workflow/every-workflow-in-the-repo.md").strategy,
+      classify("cat-harness/docs/source/process-publication-workflow/every-workflow-in-the-repo.md").strategy,
     ).toBe("refuse");
     for (const authored of [
       "cat-harness/docs/concepts/architecture.md",

@@ -51,7 +51,7 @@ const TREES = ["scripts", "content", "schemas", "src", "test"];
  * fires on its own rationale. The defect this bean measured was five
  * CONSTANTS that resolve to a directory, so that is what is checked.
  *
- * `content/docs/` is the generator's INPUT — a different directory that
+ * `docs/source/` is the generator's INPUT — a different directory that
  * happens to share a segment — so a preceding `content` disqualifies a hit.
  *
  * ## `scanSync` and a bare `cwd:` were added after they let one through

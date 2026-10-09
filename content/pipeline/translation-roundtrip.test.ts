@@ -13,7 +13,7 @@ import { describe, expect, test } from "bun:test";
 import { roundTripEntries, type RoundTripPayload } from "./translation-roundtrip.ts";
 
 const base: RoundTripPayload = {
-  block: "content/docs/x/b.md",
+  block: "docs/source/x/b.md",
   locale: "fr",
   backTranslation: "A back-translation.",
   backTranslator: { id: "back-translator" },

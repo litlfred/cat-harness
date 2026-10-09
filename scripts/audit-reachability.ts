@@ -71,7 +71,7 @@
  *
  * Measured over 1834 tracked `.ts`: **710** are reached by no signal any grep
  * can see. That is not a findings list, it is noise — the great majority are
- * corpora discovered by directory walk (content blocks under `content/docs/`,
+ * corpora discovered by directory walk (content blocks under `docs/source/`,
  * test files `bun test` globs), and inference cannot tell those from a module
  * nobody can run. A gate keyed on 710 findings is a gate switched off within a
  * week. So the number is PRINTED and never committed, and it is the whole
@@ -501,7 +501,7 @@ export interface ModuleReach {
  *
  * The first version of this asked *"is any module reached by nothing?"* and
  * answered **710 of 1834** — noise, not findings. The great majority were
- * corpora discovered by directory walk (content blocks under `content/docs/`,
+ * corpora discovered by directory walk (content blocks under `docs/source/`,
  * schema modules a registry names, the tests `bun test` globs), and no
  * inference can tell those from a module nobody can run. A gate with 710
  * findings is a gate switched off in a week.

@@ -24,7 +24,7 @@ import { existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { inputSiteReached } from "./input-trace.ts";
 
-import { siteDirFor } from "../schemas/cat-harness.js";
+import { docsSourceDirFor, siteDirFor } from "../schemas/cat-harness.js";
 import { publishedPagePath } from "./lib/jekyll-permalink.ts";
 
 /**
@@ -57,9 +57,9 @@ export interface Presentation {
   pageTitle: string;
 }
 
-/** The docs manifests, as `gen-docs-pages.ts` finds them: `content/docs/<slug>/<slug>.ts`. */
+/** The docs manifests, as `gen-docs-pages.ts` finds them: `docs/source/<slug>/<slug>.ts`. */
 export function docsManifests(instanceRoot: string): string[] {
-  const dir = join(instanceRoot, "content", "docs");
+  const dir = docsSourceDirFor(instanceRoot);
   if (!existsSync(dir)) return [];
   return readdirSync(dir, { withFileTypes: true })
     .filter((d) => d.isDirectory())

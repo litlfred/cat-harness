@@ -157,7 +157,7 @@
 import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
-import { resolveDirectories } from "../schemas/cat-harness.js";
+import { docsSourceDirFor, resolveDirectories } from "../schemas/cat-harness.js";
 
 const root = resolve(import.meta.dir, "..");
 const update = process.argv.includes("--update");
@@ -526,6 +526,10 @@ export function scanDeclaredPaths(root: string): Scan {
   };
 
   for (const d of SOURCE_DIRS) walk(join(root, d));
+  // The docs graph's content-object manifests carry path literals too (a
+  // page's processes). They lived under `content/` until 2026-10-09 and are
+  // the docs graph's declared source now, so the declaration says where.
+  walk(docsSourceDirFor(root));
   return { prefixes, artefacts, marked, refused };
 }
 

@@ -1,5 +1,5 @@
 /**
- * Emit the docs site's own JSON-LD graph from `content/docs/`.
+ * Emit the docs site's own JSON-LD graph from `docs/source/`.
  *
  * STRAWPERSON — a first cut, deliberately. The shape here (page node ->
  * ordered `contains` -> one node per child) mirrors `gen-library-jsonld.ts`
@@ -14,7 +14,7 @@
  * "folio-assistant is the platform; papers live in the folio repo." That
  * refusal is load-bearing — `scripts/tests/audit-empty-corpus.test.ts`
  * enforces the same invariant from the audit side. The docs live under
- * `content/docs/`, which both `gen-block-jsonld.ts` and the section-title
+ * `docs/source/`, which both `gen-block-jsonld.ts` and the section-title
  * audit skip when walking paper directories — keeping the two populations
  * (folio content vs platform documentation) apart without an out-of-tree
  * `site-content/` workaround.
@@ -54,11 +54,11 @@ import {
 } from "../../schemas/jsonld.ts";
 import type { WebPage, WebPageNode } from "../../schemas/webpage.ts";
 import { portableSegment } from "../../schemas/portable-path";
-import { repoRootFor, siteDirFor, sourceLinks } from "../../schemas/cat-harness.ts";
+import { docsSourceDirFor, repoRootFor, siteDirFor, sourceLinks } from "../../schemas/cat-harness.ts";
 import { detectRepoUrl } from "../../src/core/git-refs.js";
 
 const INSTANCE_ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
-const SRC_DIR = join(INSTANCE_ROOT, "content", "docs");
+const SRC_DIR = docsSourceDirFor(INSTANCE_ROOT);
 const REPO_ROOT = repoRootFor(INSTANCE_ROOT);
 // The same fallback `gen-docs-pages.ts` uses, so the two generators name one
 // forge — and so the output does not depend on how this checkout was cloned.
@@ -106,7 +106,7 @@ function emit(path: string, doc: Record<string, unknown>): void {
 
 /**
  * The site directory, where each node is ALSO published at the path its `@id`
- * names — issue #1908. Before this the nodes lived only under `content/docs/`,
+ * names — issue #1908. Before this the nodes lived only under `docs/source/`,
  * which the site does not serve, so every `site/…` IRI (and every todo's
  * `target` edge to one) named nothing a reader could open.
  */
@@ -159,7 +159,7 @@ function nodeDoc(page: WebPage, node: WebPageNode, flat: string): Record<string,
   }
   // Recorded so a consumer can find the file without re-deriving the
   // flattening rule from the slug.
-  doc.meta = { ...((doc.meta as Record<string, unknown>) ?? {}), sourceDir: `content/docs/${flat}` };
+  doc.meta = { ...((doc.meta as Record<string, unknown>) ?? {}), sourceDir: `docs/source/${flat}` };
   return doc;
 }
 
@@ -179,7 +179,7 @@ if (flats.length === 0) {
   // nothing is a failure: a clean run on an empty tree is indistinguishable
   // from a clean run on a healthy one, and that is exactly how a broken path
   // survives a gate.
-  console.error("gen-site-jsonld: content/docs/ exists but holds no pages — refusing to report success.");
+  console.error("gen-site-jsonld: docs/source/ exists but holds no pages — refusing to report success.");
   process.exit(1);
 }
 
@@ -206,7 +206,7 @@ for (const flat of flats) {
     provenance: "authored",
     meta: {
       publishedAt: `${page.slug}.html`,
-      sourceDir: `content/docs/${flat}`,
+      sourceDir: `docs/source/${flat}`,
       ...(page.navOrder !== undefined ? { navOrder: page.navOrder } : {}),
       ...(page.parent ? { navParent: page.parent } : {}),
     },

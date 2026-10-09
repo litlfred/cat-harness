@@ -460,7 +460,7 @@ const DOMAIN_PHRASE_EXEMPT = /\bnaturally\s+occurring\b/gi;
 // beautiful result"); a comparative marks the WEAKER alternative, which is the
 // opposite move.
 //
-// Measured on this repo's own `content/docs/` (122 blocks), 2026-09-19: four
+// Measured on this repo's own `docs/source/` (122 blocks), 2026-09-19: four
 // `merely` hits, four comparative, ZERO genuine. Same shape as bean `fl5m`
 // mechanism #2 — a word in a phrase list matching the construction the word
 // is actually for. Global, so it is a STRIP like the domain phrase above and
