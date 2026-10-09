@@ -1637,9 +1637,15 @@ export function redirectHtml(route: string, target: string): string {
  * The collision with a mount route and with a file already in the site are
  * checked by the caller, which holds the mount table and the site.
  */
-export function kindRouteRedirects(docsPrefix: string | undefined): { redirects: KindRouteRedirect[]; problems: string[] } {
+export function kindRouteRedirects(docsPrefix: string | undefined): {
+  redirects: KindRouteRedirect[];
+  problems: string[];
+  /** Declared redirects this site owes nobody, each with why — printed, never silent. */
+  notOwed: string[];
+} {
   const redirects: KindRouteRedirect[] = [];
   const problems: string[] = [];
+  const notOwed: string[] = [];
   for (const x of declaredEntries()) {
     if (x.entry.kindRouteRedirect !== true) continue;
     const where = `${relative(REPO, x.abs).split(sep).join("/")}`;
@@ -1648,16 +1654,26 @@ export function kindRouteRedirects(docsPrefix: string | undefined): { redirects:
       continue;
     }
     const viewer = viewerOf(x);
-    const target = viewer !== undefined && docsPrefix !== undefined ? visualiserHref(viewer, docsPrefix) : undefined;
+    // NO VIEWER FOR THE KIND IN THIS BUILD AT ALL: the site never published the
+    // kind route, so there is no old URL here to keep alive (bean `kx0p`).
+    // who-iris's own site is the case: `/library/who-iris/` was a URL of the
+    // folio-assistant site, where the redirect still applies, and who-iris's
+    // site builds no library viewer. A viewer that IS declared but is not
+    // published stays a refusal below — that is the defect the check exists for.
+    if (viewer === undefined) {
+      notOwed.push(`${where} declares kindRouteRedirect, and no viewer for its kind is built here — no old route to keep`);
+      continue;
+    }
+    const target = docsPrefix !== undefined ? visualiserHref(viewer, docsPrefix) : undefined;
     if (target === undefined) {
       problems.push(
-        `${where} declares kindRouteRedirect but ${viewer === undefined ? "no viewer" : `its viewer ${viewer} is not published`}`,
+        `${where} declares kindRouteRedirect but its viewer ${viewer} is not published`,
       );
       continue;
     }
     for (const kind of x.entry.graphTypologies ?? []) redirects.push({ route: `${kind}/${x.name}`, target });
   }
-  return { redirects: redirects.sort((a, b) => a.route.localeCompare(b.route)), problems };
+  return { redirects: redirects.sort((a, b) => a.route.localeCompare(b.route)), problems, notOwed };
 }
 
 
@@ -1954,8 +1970,9 @@ async function main(): Promise<number> {
   // KIND ROUTES WHOSE DIRECTORY IS NOT MOUNTED — bean `2b5s`. After the
   // mounts, so a redirect can be refused against the routes they own.
   const redirectProblems: string[] = [];
-  const { redirects, problems: declaredRedirectProblems } = kindRouteRedirects(docsPrefix);
+  const { redirects, problems: declaredRedirectProblems, notOwed } = kindRouteRedirects(docsPrefix);
   redirectProblems.push(...declaredRedirectProblems);
+  for (const n of notOwed) console.log(`  redirect not owed: ${n}`);
   const written: KindRouteRedirect[] = [];
   for (const r of redirects) {
     const owner = mounts.find((m) => r.route === m.route || r.route.startsWith(`${m.route}/`));
