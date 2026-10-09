@@ -405,7 +405,7 @@ describe("the landing stickies on a folio's site (who-iris, 2026-10-09)", () => 
       },
     ],
   };
-  const links = (scopeStickies(data, scope).stickies as { links: { href: string; external: boolean }[] }[])[0]!.links;
+  const links = (scopeStickies(data, scope).stickies as { links: { label: string; href: string; external: boolean }[] }[])[0]!.links;
   test("a platform page is re-based onto the platform's site, and marked external so relative_url leaves it alone", () => {
     expect(links[1]).toEqual({ label: "docs", href: `${BASE}/docs/cat-harness/concepts/agentic-harness.html`, external: true });
   });
