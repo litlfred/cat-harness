@@ -1,11 +1,11 @@
 ---
 # folio-assistant-70lx
 title: 'Separation stage 1a: stage cat-harness-tools/ as a sibling instance and git mv the unambiguous code'
-status: completed
+status: todo
 type: task
 priority: normal
 created_at: 2026-10-01T06:58:00Z
-updated_at: 2026-10-07T17:37:00Z
+updated_at: 2026-10-09T18:00:00Z
 parent: folio-assistant-iirv
 blocked_by:
     - folio-assistant-pyds
@@ -65,3 +65,29 @@ _2026-10-01T19:46:46Z_ — Claimed by claude/70lx-b0 — pushed to main so sibli
 
 ## Completed on landed evidence
 Landed on main in PR #2146 (Separation stage 1a: stage cat-harness-tools/ as a sibling instance and move unambiguous code).
+
+## Reopened 2026-10-09 — "completed on landed evidence" was premature
+
+The closure above was recorded when PR #2146 landed, with none of the
+Done-when falsifiers ticked. Measured on `litlfred/cat-harness` main @
+`712332dc` (2026-10-09), the move list has not happened in the separated
+repository:
+
+- `scripts/`, `src/`, `content/pipeline/` (156 `.ts`), `test/` (outside
+  results/attestations/health), `templates/`, `deploy/`, `types/`, `ui/`,
+  `viewer/` are all still in `cat-harness` — **1,233 code files** on this
+  bean's own move list. `cat-harness-tools` holds only `adapters/mcp-server`
+  and the server `src/` from w2gr 3a/3b.
+- The cost of leaving it: `content/pipeline` and the rest of the harness code
+  import each other (174 harness files → pipeline, 224 pipeline imports →
+  harness), so no part of it can move to `cat-harness-tools` alone. Moved
+  WHOLE, as this bean specifies, the cycle disappears: only **10 import
+  edges** would remain from staying files into moving code (5 in `schemas/`
+  tests and `schemas/test-run.ts`, 2 in `openapi/scripts/`, 3 in
+  `test/health/`).
+- Downstream naming the moving paths: `cat-harness-tools` 47 files,
+  `folio-assistant-core` 44, `who-iris` 1, `bootstrap-tools` 1.
+
+Owner, 2026-10-09: "split pipeline properly first" — i.e. this bean's D1 move
+is the route, not a pipeline-only carve-out. Measurement scripts:
+session scratchpad `pl/graph.ts`, `pl/residual.ts`.
