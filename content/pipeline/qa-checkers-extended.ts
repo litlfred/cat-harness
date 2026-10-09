@@ -1850,7 +1850,7 @@ export function checkDetanglerNoXChapterFwd(
   // TODO: same as above but at paper.ts level — verify cross-chapter
   // `uses:` refs point at an earlier chapter in `paper.ts`'s
   // ordering. n/a until wired.
-  return { result: "n/a", hits: [] };
+  return { result: "n/a", hits: [], notes: "not implemented: stub checker" };
 }
 
 export function checkDetanglerArchimedeanWall(
@@ -1860,7 +1860,7 @@ export function checkDetanglerArchimedeanWall(
   // TODO: parse the chapter directory + classify Lean files as
   // archimedean / generic-R / mixed; verify the chapter's expected
   // wall side per the chapter-ts metadata. n/a until wired.
-  return { result: "n/a", hits: [] };
+  return { result: "n/a", hits: [], notes: "not implemented: stub checker" };
 }
 
 // ─── detangler-block-tanglement ─────────────────────────────────
@@ -2783,13 +2783,13 @@ export function checkProofSubstantive(
 export function checkProofNoAxiomGrowth(
   _leanPath: string | undefined,
 ): CheckerResult {
-  return { result: "n/a", hits: [] };
+  return { result: "n/a", hits: [], notes: "not implemented: stub checker" };
 }
 
 export function checkProofBuildGreen(
   _leanPath: string | undefined,
 ): CheckerResult {
-  return { result: "n/a", hits: [] };
+  return { result: "n/a", hits: [], notes: "not implemented: stub checker" };
 }
 
 // `proof-lean-compiles` reads a cached diagnostics JSON produced by
