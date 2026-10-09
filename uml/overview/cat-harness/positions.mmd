@@ -1,0 +1,10 @@
+classDiagram
+  direction TB
+  namespace cat_harness__positions {
+    class cat_harness_positions_BoardPositions["BoardPositions"] {
+      <<json: BoardPositionsSchema>>
+      $schema [1] 'folio-board-positions/v1'
+      boards [1] map~map~object~~
+    }
+  }
+  cssClass "cat_harness_positions_BoardPositions" fa_uml_kind_board_positions
