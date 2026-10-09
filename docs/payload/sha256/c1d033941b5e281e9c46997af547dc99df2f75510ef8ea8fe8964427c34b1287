@@ -164,6 +164,8 @@
     "health:check": "bun run cat-harness/test/health/run.ts --no-write",
     "health:list": "bun run cat-harness/test/health/run.ts --list",
     "ingest": "bun run cat-harness/scripts/ingest-document.ts",
+    "software:ensure": "bun run cat-harness/scripts/ensure-software.ts",
+    "software:check": "bun run cat-harness/scripts/ensure-software.ts --check",
     "init-folio": "bun run cat-harness/scripts/init-folio.ts",
     "kg:audit": "bun run cat-harness/scripts/kg-audit.ts",
     "kg:audit:check": "bun run cat-harness/scripts/kg-audit.ts --check --against main",
