@@ -1,11 +1,11 @@
 ---
 # folio-assistant-70lx
 title: 'Separation stage 1a: stage cat-harness-tools/ as a sibling instance and git mv the unambiguous code'
-status: todo
+status: in-progress
 type: task
 priority: normal
 created_at: 2026-10-01T06:58:00Z
-updated_at: 2026-10-09T18:00:00Z
+updated_at: 2026-10-09T23:30:00Z
 parent: folio-assistant-iirv
 blocked_by:
     - folio-assistant-pyds
@@ -23,7 +23,7 @@ Plans (session scratchpad, 2026-10-01; to be committed with stage 0): `cat-harne
 - [ ] falsifier 1: every generator's `--check` output byte-identical to the stage-0 baseline except generated-by path strings (diff shows only those)
 - [ ] falsifier 2: `bun test` pass count equal to the stage-0 baseline
 - [ ] falsifier 3: `mcp:capture` tool list identical; the server starts over stdio from `cat-harness-tools/src/index.ts`
-- [ ] falsifier 4: `check:import-direction --all` green, and the planted `cat-harness → cat-harness-tools` import red
+- [x] falsifier 4: `check:import-direction --all` green, and the planted `cat-harness → cat-harness-tools` import red
 - [ ] `bun run cat gates --all` green, or each failure shown pre-existing on the base SHA
 
 
@@ -91,3 +91,18 @@ repository:
 Owner, 2026-10-09: "split pipeline properly first" — i.e. this bean's D1 move
 is the route, not a pipeline-only carve-out. Measurement scripts:
 session scratchpad `pl/graph.ts`, `pl/residual.ts`.
+
+## 2026-10-09 late — the code moved (litlfred/cat-harness-tools#22, litlfred/cat-harness#79, both merged)
+
+Session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG. 1,488 files left cat-harness on `main` b798a12d, which landed in tools 09f713ff and harness 1571e4a4. `schemas/block-qa-schema/` and `skills/framework/types.ts` STAYED: the first is a schema package the registry names, and eight skill definitions import the second. `schemas/input-trace.ts` and `schemas/qa-record-shapes.ts` are new in the harness, so that its references resolve inside it.
+
+Falsifier 2, measured per test (JUnit) in a 4-instance checkout against `main`: 588 failures after the move and 589 before, with 4 new ones.
+- `harness-state` ×2: the health report is stamped with the old checker hash. It needs `bun run cat health` in a full checkout with remotes.
+- `layout-norms` "at least one pair": cat-harness's three nestings are gone, so the guard needs a fixture rather than the corpus.
+- `graph-index`: `beforeAll` takes about 25 s and also times out on `main`.
+
+Still open:
+- Falsifiers 1 and 3: generator `--check` byte-identity and `mcp:capture` were not run.
+- Repoint downstream: folio-assistant-core's references and who-iris's pin.
+- `cat` runner in the separated repos (`j3ls`).
+
