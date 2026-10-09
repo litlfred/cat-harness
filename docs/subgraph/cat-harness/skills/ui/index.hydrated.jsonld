@@ -381,13 +381,13 @@
           "hasInstructions": true,
           "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/ui-core",
           "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-          "instructionLines": 176,
+          "instructionLines": 181,
           "instructionsPath": "skills/ui/ui-core/liquid-templates.md",
           "name": "liquid-templates",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d8e53229b4bfd7e76a8febb7d4d10b4bba1278eb961444ffca5ad4a5205aa3da",
-            "bytes": 10295,
-            "sha256": "d8e53229b4bfd7e76a8febb7d4d10b4bba1278eb961444ffca5ad4a5205aa3da"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/59b9385d6ed6a146297b93abc4b0b4246d8c2c09f5534d12eecd56b1f9a6af75",
+            "bytes": 10678,
+            "sha256": "59b9385d6ed6a146297b93abc4b0b4246d8c2c09f5534d12eecd56b1f9a6af75"
           },
           "title": "Liquid templates — layout only, every fact from the graph"
         },
