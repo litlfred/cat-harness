@@ -200,9 +200,36 @@ const CSS = `
 :root[data-fa-scheme="light"] .tg-inproc{color:#1d5fa8}
 :root[data-fa-scheme="light"] .tg-manual{color:#a8430f}
 .tg-grid{display:flex;flex-wrap:wrap;gap:.75rem;margin:1rem 0}
-.tg-stat{flex:1 1 8rem;border:1px solid rgba(128,128,128,.35);border-radius:6px;padding:.5rem .7rem}
+.tg-stat{flex:1 1 8rem;border:1px solid rgba(128,128,128,.35);border-radius:6px;padding:.5rem .7rem;text-decoration:none;color:inherit;display:block}
+.tg-stat:hover,.tg-stat:focus{border-color:currentColor;text-decoration:none}
 .tg-stat b{display:block;font-size:1.25rem;line-height:1.2}
 .tg-stat span{font-size:.75rem;opacity:.75}
+.table-wrapper{position:relative}
+.table-wrapper table{min-width:36rem}
+@media (max-width: 799.98px) {
+  @supports (animation-timeline: scroll()) {
+    .table-wrapper {
+      mask-image: linear-gradient(to right,
+        transparent 0, #000 var(--fa-cue-l, 0px),
+        #000 calc(100% - var(--fa-cue-r, 2.5rem)), transparent 100%);
+      animation: fa-scroll-cue linear both;
+      animation-timeline: scroll(self inline);
+    }
+  }
+  @supports not (animation-timeline: scroll()) {
+    .table-wrapper {
+      mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent 100%);
+    }
+  }
+}
+@property --fa-cue-l { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@property --fa-cue-r { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@keyframes fa-scroll-cue {
+  0%   { --fa-cue-l: 0px;    --fa-cue-r: 2.5rem; }
+  12%  { --fa-cue-l: 2.5rem; }
+  88%  { --fa-cue-r: 2.5rem; }
+  100% { --fa-cue-l: 2.5rem; --fa-cue-r: 0px; }
+}
 `;
 
 const INVOKE_CLASS: Record<string, string> = {
@@ -262,10 +289,10 @@ export function page(
     "to do that*, never *this skill is a tool*.",
     "",
     "<div class=\"tg-grid\">",
-    `<div class="tg-stat"><b>${rows.length}</b><span>Tool nodes</span></div>`,
-    `<div class="tg-stat"><b>${allSkills.size}</b><span>skills satisfied</span></div>`,
-    `<div class="tg-stat"><b>${invoke.get("shell") ?? 0}</b><span>invoked as a shell command</span></div>`,
-    `<div class="tg-stat"><b>${invoke.get("mcp") ?? 0}</b><span>reachable over MCP</span></div>`,
+    `<a class="tg-stat" href="#every-tool"><b>${rows.length}</b><span>Tool nodes</span></a>`,
+    `<a class="tg-stat" href="#does-every-satisfies-name-a-skill-that-exists"><b>${allSkills.size}</b><span>skills satisfied</span></a>`,
+    `<a class="tg-stat" href="#how-they-are-invoked-and-installed"><b>${invoke.get("shell") ?? 0}</b><span>invoked as a shell command</span></a>`,
+    `<a class="tg-stat" href="#how-they-are-invoked-and-installed"><b>${invoke.get("mcp") ?? 0}</b><span>reachable over MCP</span></a>`,
     "</div>",
     "",
     "## How they are invoked, and installed",
@@ -335,7 +362,7 @@ export function page(
           .join("<br>")
       : "**—**";
     b.push(
-      `| \`${cell(r.id)}\`<br>${cell(r.title)} | ${cell(r.description)} | ` +
+      `| <a id="${cell(r.id)}"></a>[\`${cell(r.id)}\`](#${cell(r.id)})<br>${cell(r.title)} | ${cell(r.description)} | ` +
         `${r.invoke.map(badge).join(" ")} | ${sat} | ${r.inputs} in / ${r.outputs} out |`,
     );
   }
@@ -372,7 +399,8 @@ if (import.meta.main) {
     process.exit(1);
   }
   const rendered = publishedPage(rows, skillIds(REPO));
-  const out = join(baseDocsDir(REPO), PAGE);
+  const localDocs = join(resolve(import.meta.dir, ".."), "docs");
+  const out = existsSync(localDocs) ? join(localDocs, PAGE) : join(baseDocsDir(REPO), PAGE);
 
   if (check) {
     const current = existsSync(out) ? readFileSync(out, "utf-8") : "";
