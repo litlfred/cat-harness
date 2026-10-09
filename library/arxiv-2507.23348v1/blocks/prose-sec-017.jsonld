@@ -1,0 +1,17 @@
+{
+  "@context": [
+    "https://litlfred.github.io/folio-assistant/ns/content/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/"
+    }
+  ],
+  "@id": "library/arxiv-2507.23348v1/blocks/prose-sec-017",
+  "kind": "prose",
+  "title": "RQ3: Localization Performance Comparison",
+  "pageStart": 7,
+  "pageEnd": 8,
+  "text": "../sections/sec-017-53-rq3-localization-performance-comparison.md",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2507.23348v1/manifest.jsonld",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2507.23348v1/manifest.jsonld",
+  "provenance": "ingested"
+}
