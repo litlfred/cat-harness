@@ -49,6 +49,8 @@ function railed(row: unknown): string {
 const ROW_JS = readFileSync(join(ROOT, SITE, "assets/js/navbar-row.js"), "utf8");
 const ROW_CSS = readFileSync(join(ROOT, SITE, "assets/css/navbar-row.css"), "utf8");
 const DOCS_UI_JS = readFileSync(join(ROOT, SITE, "assets/js/docs-ui.js"), "utf8");
+const QR_JS = readFileSync(join(ROOT, SITE, "assets/js/vendor/qrcode.js"), "utf8");
+const QR_UTF8_JS = readFileSync(join(ROOT, SITE, "assets/js/vendor/qrcode_UTF8.js"), "utf8");
 
 /**
  * Serve `html` at a who-iris replica's address, and the site's real assets at
@@ -59,6 +61,8 @@ async function serve(page: import("@playwright/test").Page, html: string, assets
     "/folio-assistant/assets/js/navbar-row.js": ["text/javascript", ROW_JS],
     "/folio-assistant/assets/css/navbar-row.css": ["text/css", ROW_CSS],
     "/folio-assistant/assets/js/docs-ui.js": ["text/javascript", DOCS_UI_JS],
+    "/folio-assistant/assets/js/vendor/qrcode.js": ["text/javascript", QR_JS],
+    "/folio-assistant/assets/js/vendor/qrcode_UTF8.js": ["text/javascript", QR_UTF8_JS],
     ...Object.fromEntries(Object.entries(assets).map(([k, v]) => [k, ["text/javascript", v] as [string, string]])),
   };
   await page.route("**/*", (r) => {
@@ -127,6 +131,27 @@ test("no row data, no row — and no invented one", async ({ page }) => {
   await expect(page.locator("nav.fa-nav .fa-nav-icons")).toHaveCount(0);
 });
 
+test("the QR icon button on the rail toggles the page QR code (bean 5rmf)", async ({ page }) => {
+  await serve(page, railed(LIVE));
+  const qrBtn = page.locator("nav.fa-nav .fa-nav-icons button.fa-nav-qr");
+  await expect(qrBtn).toHaveCount(1);
+  await expect(qrBtn).toHaveAttribute("aria-label", "QR code for this page");
+  await expect(qrBtn).toHaveAttribute("aria-expanded", "false");
+
+  const qrPanel = page.locator("nav.fa-nav .fa-qr-panel");
+  await expect(qrPanel).toHaveCount(1);
+  await expect(qrPanel).toHaveAttribute("data-open", "false");
+
+  await qrBtn.click();
+  await expect(qrBtn).toHaveAttribute("aria-expanded", "true");
+  await expect(qrPanel).toHaveAttribute("data-open", "true");
+  await expect(qrPanel.locator("svg")).toHaveCount(1);
+
+  await qrBtn.click();
+  await expect(qrBtn).toHaveAttribute("aria-expanded", "false");
+  await expect(qrPanel).toHaveAttribute("data-open", "false");
+});
+
 /* THE 2,709 — bean `lhvt`. Measured on the built site after #2149: railed
  * pages that never load `docs-ui.js` carried the row's data and drew nothing.
  * These run the page exactly as `injectRail` writes it, with the real
@@ -146,7 +171,7 @@ test("a railed page WITHOUT docs-ui.js draws the row — the link slots, at full
   // Every declared slot except the one that needs `docs-ui.js` (the launcher,
   // LEFT OUT here) and the retired close. Derived, not a
   // number: the row's membership is the owner's to change (bean `82qs`).
-  const linked = LIVE.icons.filter((i: string) => !["close", "launcher"].includes(i));
+  const linked = LIVE.icons.filter((i: string) => !["close", "launcher", "qr"].includes(i));
   expect(hrefs.length).toBe(linked.length);
   for (const h of hrefs) expect(h).toMatch(/^\/folio-assistant\//);
   const widths = await row.locator("svg").evaluateAll((s) => s.map((e) => Math.round(e.getBoundingClientRect().width)));

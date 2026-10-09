@@ -258,7 +258,7 @@ test.describe("the icon row — line 2 of the fixed top", () => {
     expect(labels.map((l) => (l ?? "").split(" — ")[0])).toEqual([
       // Processes and Knowledge graph left the row (owner, 2026-10-05, bean
       // `82qs`); language is the glass band's globe (#2211), not a row slot.
-      "Todos", "Beans", "fsh-guts, discarded items", "More actions",
+      "Todos", "Beans", "fsh-guts, discarded items", "QR code for this page", "More actions",
     ]);
     // ...then the switch, last. No [x] after it (ob3m finding 8).
     const tail = await page.locator(".fa-nav-icons > *").evaluateAll((ns) =>
@@ -267,7 +267,7 @@ test.describe("the icon row — line 2 of the fixed top", () => {
     expect(tail).toEqual(["scheme"]);
   });
 
-  test("FIVE DISTINCT drawings — a row where slots look alike says nothing", async ({ page }) => {
+  test("SIX DISTINCT drawings — a row where slots look alike says nothing", async ({ page }) => {
     // `glyphFor` falls back to one net glyph, which would have given four of
     // these five the same picture. The count of distinct markup is the check;
     // which drawing is which is a design decision this does not pin.
@@ -276,6 +276,54 @@ test.describe("the icon row — line 2 of the fixed top", () => {
       .locator(".fa-nav-icons .fa-nav-icon")
       .evaluateAll((ns) => ns.map((n) => n.innerHTML));
     expect(new Set(glyphs).size).toBe(glyphs.length);
+  });
+
+  test("QR icon button toggles the current page QR code inside the LHS navbar (bean 5rmf)", async ({ page }) => {
+    const { errors } = await load(page, LIVE);
+    expect(errors).toEqual([]);
+
+    const qrBtn = page.locator(".fa-nav-icons button.fa-nav-qr");
+    await expect(qrBtn).toHaveCount(1);
+    await expect(qrBtn).toHaveAttribute("aria-label", "QR code for this page");
+    await expect(qrBtn).toHaveAttribute("aria-expanded", "false");
+
+    const qrPanel = page.locator(".side-bar > .fa-qr-panel");
+    await expect(qrPanel).toHaveCount(1);
+    await expect(qrPanel).toHaveAttribute("data-open", "false");
+    await expect(qrPanel).toBeHidden();
+
+    // First click opens it
+    await qrBtn.click();
+    await expect(qrBtn).toHaveAttribute("aria-expanded", "true");
+    await expect(qrPanel).toHaveAttribute("data-open", "true");
+    await expect(qrPanel).toBeVisible();
+
+    // Renders the QR code SVG and caption matching the current URL
+    const svg = qrPanel.locator("svg");
+    await expect(svg).toHaveCount(1);
+    const caption = qrPanel.locator(".fa-qr-caption");
+    await expect(caption).toHaveCount(1);
+    expect(await caption.textContent()).toBe(page.url());
+
+    // Second click closes it (l4zi: reachable inverse)
+    await qrBtn.click();
+    await expect(qrBtn).toHaveAttribute("aria-expanded", "false");
+    await expect(qrPanel).toHaveAttribute("data-open", "false");
+    await expect(qrPanel).toBeHidden();
+
+    // Open again, clicking panel closes it
+    await qrBtn.click();
+    await expect(qrPanel).toHaveAttribute("data-open", "true");
+    await qrPanel.click();
+    await expect(qrBtn).toHaveAttribute("aria-expanded", "false");
+    await expect(qrPanel).toHaveAttribute("data-open", "false");
+
+    // Open again, pressing Escape key closes it
+    await qrBtn.click();
+    await expect(qrPanel).toHaveAttribute("data-open", "true");
+    await page.keyboard.press("Escape");
+    await expect(qrBtn).toHaveAttribute("aria-expanded", "false");
+    await expect(qrPanel).toHaveAttribute("data-open", "false");
   });
 
   test("a published destination is a link; a declared one that is not is NOT", async ({ page }) => {

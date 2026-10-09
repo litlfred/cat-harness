@@ -140,14 +140,14 @@ describe("the walk is breadth-first, and it terminates", () => {
 });
 
 describe("the schema holds the owner's cap", () => {
-  test("seven is allowed; an eighth is REFUSED, never truncated", () => {
+  test("eight is allowed; a ninth is REFUSED, never truncated", () => {
     // Truncating drops whichever the instance listed last, silently. An
-    // instance that declared seven made a decision, and overruling it without
-    // saying so is the failure the `.max(7)` message names.
+    // instance that declared eight made a decision, and overruling it without
+    // saying so is the failure the `.max(8)` message names.
     expect(NavbarIconsSchema.safeParse([...NAVBAR_ICONS]).success).toBe(true);
-    expect(NAVBAR_ICONS.length).toBe(7);
-    const eight = [...NAVBAR_ICONS, "todos"];
-    expect(NavbarIconsSchema.safeParse(eight).success).toBe(false);
+    expect(NAVBAR_ICONS.length).toBe(8);
+    const nine = [...NAVBAR_ICONS, "todos"];
+    expect(NavbarIconsSchema.safeParse(nine).success).toBe(false);
   });
 
   test("an icon listed twice is two slots doing one job", () => {

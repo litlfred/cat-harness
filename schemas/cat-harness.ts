@@ -2980,13 +2980,13 @@ export function renderExemptionProblems(
  * listed last, silently, and an instance that declared seven has made a
  * decision the navbar would then be overruling without saying so.
  */
-export const NAVBAR_ICONS = ["close", "todos", "beans", "processes", "kg", "fsh-guts", "launcher"] as const;
+export const NAVBAR_ICONS = ["close", "todos", "beans", "processes", "kg", "fsh-guts", "launcher", "qr"] as const;
 
 export type NavbarIcon = (typeof NAVBAR_ICONS)[number];
 
 export const NavbarIconsSchema = z
   .array(z.enum(NAVBAR_ICONS))
-  .max(7, { message: "the navbar icon row holds at most 7 — the owner's cap" })
+  .max(8, { message: "the navbar icon row holds at most 8 — the owner's cap" })
   .refine((xs) => new Set(xs).size === xs.length, {
     message: "an icon listed twice is two slots doing one job",
   });

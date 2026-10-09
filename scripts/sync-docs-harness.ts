@@ -55,7 +55,7 @@ const ROOT = resolve(import.meta.dir, "..");
  * starts one level up. The two are different places and the previous version
  * of this file needed only the first.
  */
-const REPO_ROOT = resolve(ROOT, "..");
+const REPO_ROOT = process.env.REPO_ROOT ?? resolve(ROOT, "..");
 const OUT = join(ROOT, siteDirFor(ROOT), "_data/harness.json");
 const check = process.argv.includes("--check");
 
@@ -432,10 +432,10 @@ function navbarRow(
     if (at) hrefs[icon] = at;
     else {
       const why = icon === "kg" ? undefined : noteByKind.get(icon);
-      // `close`, `launcher` and `fsh-guts` drive controls on the page and are MEANT to have
+      // `close`, `launcher`, `fsh-guts` and `qr` drive controls on the page and are MEANT to have
       // no href, so they owe no explanation. An entry for them would make the
       // client render "no viewer yet" on a working button.
-      if (why && icon !== "close" && icon !== "launcher" && icon !== "fsh-guts") notes[icon] = why;
+      if (why && icon !== "close" && icon !== "launcher" && icon !== "fsh-guts" && icon !== "qr") notes[icon] = why;
     }
   }
   // THIS INSTANCE'S OWN CONTROLLED FOLDERS — owner: *"next on navbar then is

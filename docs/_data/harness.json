@@ -376,6 +376,7 @@
         "todos",
         "beans",
         "fsh-guts",
+        "qr",
         "launcher"
       ]
     },
@@ -477,6 +478,7 @@
         "todos",
         "beans",
         "fsh-guts",
+        "qr",
         "launcher"
       ]
     },
@@ -813,6 +815,7 @@
         "todos",
         "beans",
         "fsh-guts",
+        "qr",
         "launcher"
       ]
     },
@@ -1062,6 +1065,7 @@
         "todos",
         "beans",
         "fsh-guts",
+        "qr",
         "launcher"
       ]
     },
@@ -1349,6 +1353,7 @@
         "todos",
         "beans",
         "fsh-guts",
+        "qr",
         "launcher"
       ]
     },
@@ -1520,6 +1525,7 @@
         "todos",
         "beans",
         "fsh-guts",
+        "qr",
         "launcher"
       ]
     },
@@ -1897,6 +1903,7 @@
         "todos",
         "beans",
         "fsh-guts",
+        "qr",
         "launcher"
       ]
     },
@@ -2065,6 +2072,7 @@
         "todos",
         "beans",
         "fsh-guts",
+        "qr",
         "launcher"
       ]
     },
@@ -3101,6 +3109,7 @@
         "todos",
         "beans",
         "fsh-guts",
+        "qr",
         "launcher"
       ]
     },
@@ -3220,6 +3229,7 @@
         "todos",
         "beans",
         "fsh-guts",
+        "qr",
         "launcher"
       ]
     },
@@ -3365,6 +3375,7 @@
         "todos",
         "beans",
         "fsh-guts",
+        "qr",
         "launcher"
       ]
     }
@@ -3375,7 +3386,8 @@
       "todos",
       "beans",
       "fsh-guts",
-      "launcher"
+        "qr",
+        "launcher"
     ],
     "hrefs": {
       "todos": "/todos/",
@@ -4840,7 +4852,7 @@
           },
           {
             "key": "navbarIcons",
-            "summary": "close, todos, beans, fsh-guts, launcher"
+            "summary": "close, todos, beans, fsh-guts, qr, launcher"
           },
           {
             "key": "glassStrip",
