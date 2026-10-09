@@ -27,9 +27,10 @@
 #     (`continue-on-error: true`) until the folio's critical baseline is
 #     zero; then remove it so the workflow gates merges.
 #   - Runs qa-staleness to surface blocks with stale or missing sidecars.
-#   - HARD-gates the shape of every .qa.json sidecar (derived verdicts in
-#     test/results/ for the qa-reports branch, and any legacy sidecars).
-#     Attestations on main follow the qa-attestations schema.
+#   - HARD-gates the shape of every .qa.json sidecar produced in the working
+#     copy under test/results/ during sweep (for publication to the qa-reports
+#     branch; not committed to main). Attestations on main follow the
+#     qa-attestations schema.
 
 name: QA sweep (all integration watchers)
 
@@ -107,9 +108,10 @@ jobs:
           bun run "{{assistant}}/cat-harness/content/pipeline/qa-staleness.ts" "{{folio}}" --ci 2>&1 | tee /tmp/qa-staleness.log
 
       # Schema sanity — every .qa.json sidecar must declare the v1 schema
-      # marker. Derived verdicts live in the working copy (test/results/) and are
-      # stored on the orphan qa-reports branch, while judgements (attestations)
-      # stay on main in test/attestations/. Strict (fails the workflow on shape drift).
+      # marker. Derived verdicts are transient working-copy outputs under
+      # test/results/ published to the orphan qa-reports branch (not committed
+      # to main), while authored judgements (attestations) stay on main in
+      # test/attestations/. Strict (fails the workflow on shape drift).
       - name: Schema sanity (.qa.json files)
         run: |
           bad=0
