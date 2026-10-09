@@ -28,7 +28,7 @@ describe("the platform renderer delegates beside-source SVGs (bean gm9g)", () =>
   const src = readFileSync(PLATFORM_RENDERER, "utf8");
 
   test("it imports bootstrap-tools' own besideSource", () => {
-    expect(src).toMatch(/besideSource as besideSourceSvg[\s\S]*?from "\.\.\/\.\.\/bootstrap-tools\/scripts\/render-bpmn\.ts"/);
+    expect(src).toMatch(/besideSource as besideSourceSvg[\s\S]*?from "@litlfred\/bootstrap-tools\/scripts\/render-bpmn\.ts"/);
     expect(src).toContain("besideSourceSvg(renderer, file, processPath)");
   });
 
