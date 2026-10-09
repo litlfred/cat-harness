@@ -1,9 +1,9 @@
 /**
  * Bean `3ozg` — every workflow installs the same Bun, and the gate can fail.
  *
- * The corpus test says the repository is currently consistent. The fixtures say
- * the gate would notice otherwise, which a test over a correct tree cannot
- * establish about itself.
+ * The corpus test (now in the index repository; see below) says the repository
+ * is currently consistent. The fixtures say the gate would notice otherwise,
+ * which a test over a correct tree cannot establish about itself.
  *
  * ## Three live controls, recorded because they are evidence
  *
@@ -20,10 +20,16 @@
  * next run, naming the file and the job. The accident is the best demonstration
  * available that it works on real input, so it is written down rather than
  * tidied away.
+ *
+ * The corpus test — the gate run over the index repository's own
+ * `.github/workflows/` — lives in that repository's
+ * `test/workflows/bun-pin.test.ts` (owner's ruling 2026-10-09,
+ * litlfred/folio-assistant#2521, ruling 1(c)): standing alone, cat-harness
+ * has no workflows to scan. What stays here is the gate's own behaviour.
  */
 import { describe, expect, test } from "bun:test";
 
-import { auditWorkflow, bunPin, readPinFile } from "../check-bun-pin.ts";
+import { auditWorkflow, readPinFile } from "../check-bun-pin.ts";
 
 /** A workflow with one `setup-bun` step, pinned to `v`, or unpinned. */
 const wf = (v?: string, uses = "oven-sh/setup-bun@v2"): unknown => ({
@@ -35,26 +41,6 @@ const wf = (v?: string, uses = "oven-sh/setup-bun@v2"): unknown => ({
       ],
     },
   },
-});
-
-describe("the real repository", () => {
-  const report = bunPin();
-
-  test("`.bun-version` was READ — every assertion below is computed from it", () => {
-    expect(report.expected).toMatch(/^\d+\.\d+\.\d+$/);
-  });
-
-  test("setup-bun sites were FOUND — a scan matching nothing must not read clean", () => {
-    // The failure shape this repository keeps paying for. `main` exits 2 on it
-    // rather than 0, and it is asserted here too because a test checking only
-    // `findings` would pass over an empty scan.
-    expect(report.sites).toBeGreaterThan(0);
-    expect(report.workflows).toBeGreaterThan(0);
-  });
-
-  test("every site installs the pinned version", () => {
-    expect(report.findings.map((f) => `${f.workflow} ${f.job} ${f.kind}`)).toEqual([]);
-  });
 });
 
 describe("readPinFile", () => {

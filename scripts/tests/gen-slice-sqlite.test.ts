@@ -192,14 +192,18 @@ describe("gen-slice-sqlite — fixture", () => {
 // The bean store is the AGGREGATE's, at its checkout root: cat-harness run as
 // its own clone has none, so these two are skipped there, never passed (bean `ho66`).
 describe.skipIf(!inAggregate())("gen-slice-sqlite — the real bean store", () => {
-  const beans = readBeans(repoRootFor(join(import.meta.dir, "../.."))) ?? [];
+  // Read inside the tests, never here: `describe.skipIf` still runs this body,
+  // and standing alone the read throws (no store is mounted), which failed the
+  // whole file at load instead of skipping these two.
+  let read: BeanNode[] | undefined;
+  const beans = (): BeanNode[] => (read ??= readBeans(repoRootFor(join(import.meta.dir, "../.."))) ?? []);
 
   test("rows equal the bean count, and a known bean is queryable by id and by FTS", () =>
     withDir((dir) => {
-      expect(beans.length).toBeGreaterThan(100);
-      const m = buildSlice(BEANS_SLICE, beansData(beans), dir);
-      expect(m.rows.beans).toBe(beans.length);
-      const known = beans.find((b) => b.id === "folio-assistant-q8ar")!;
+      expect(beans().length).toBeGreaterThan(100);
+      const m = buildSlice(BEANS_SLICE, beansData(beans()), dir);
+      expect(m.rows.beans).toBe(beans().length);
+      const known = beans().find((b) => b.id === "folio-assistant-q8ar")!;
       expect(known).toBeDefined();
       const db = new Database(join(dir, m.file), { readonly: true });
       expect(db.query(`SELECT title, status FROM beans WHERE id = ?`).get(known.id)).toEqual({ title: known.title, status: known.status });
@@ -211,7 +215,7 @@ describe.skipIf(!inAggregate())("gen-slice-sqlite — the real bean store", () =
     }));
 
   test("--check is green over the store as it is", () => {
-    expect(checkSlice(BEANS_SLICE, beansData(beans))).toEqual([]);
+    expect(checkSlice(BEANS_SLICE, beansData(beans()))).toEqual([]);
   });
 });
 

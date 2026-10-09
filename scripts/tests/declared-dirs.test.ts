@@ -35,6 +35,7 @@ import { join, resolve } from "node:path";
 import { auditInstance, auditNested, auditUndeclaredState, conventionalStateDirectories, resolveDeclaredPath } from "../check-declared-dirs.ts";
 import { mayLeaveMain } from "../qa-results.ts";
 import { readDeclaration } from "../../schemas/cat-harness.ts";
+import { notApplicableAlone } from "../../test/support/checkout.ts";
 
 const REPO = resolve(import.meta.dir, "../../..");
 const made: string[] = [];
@@ -250,6 +251,11 @@ describe("a repository-scoped entry inside another instance is a mirror", () => 
   });
 });
 
+/** Standing alone, the checkout-level directories a composed checkout holds are not here. */
+const CHECKOUT_LEVEL_ABSENT = notApplicableAlone(
+  "the composed checkout's own `scope: \"repository\"` directories (the index's `uploads/` queue), which a cat-harness clone does not hold",
+);
+
 describe("the real corpus", () => {
   test("every declared directory in this repository resolves", async () => {
     const { instanceRootsIn } = await import("../../schemas/cat-harness.ts");
@@ -284,7 +290,18 @@ describe("the real corpus", () => {
     // `unmountable` (a declaration no mount can reach) are defects in the
     // declaration itself and stay failing here, whatever the environment.
     const unmounted = (f: (typeof all)[number]): boolean => f.kind === "unmounted";
-    expect(all.filter((f) => !offMain(f) && !unmounted(f))).toEqual([]);
+    // And standing alone, a `scope: "repository"` directory that is simply
+    // ABSENT is the composed checkout's, not a defect of this one — the index
+    // checkout's own `uploads/` queue, which cat-harness declares on its
+    // behalf (owner, 2026-10-08) and which a cat-harness clone does not hold.
+    // Not applicable there, and said so; composed, it is checked like any
+    // other directory.
+    const composedOnly = (f: (typeof all)[number]): boolean => {
+      if (!CHECKOUT_LEVEL_ABSENT || f.kind !== "absent") return false;
+      const decl = readDeclaration(f.instance) as { directories?: Array<{ id: string; scope?: string }> } | undefined;
+      return decl?.directories?.find((d) => d.id === f.id)?.scope === "repository";
+    };
+    expect(all.filter((f) => !offMain(f) && !unmounted(f) && !composedOnly(f))).toEqual([]);
   });
 });
 

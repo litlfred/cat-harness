@@ -50,6 +50,10 @@ copies of `stripLeanComments` ended up with three broken and nothing saying so
 `retry-backoff-in-workflows.test.ts` is the enforcement, and it pins the
 *property* — a loop that retries does not compute its own wait — rather than
 any spelling. A loop reaching the shared implementation some other way passes.
+The workflows it reads are the index repository's, so its workflow half lives
+there, as `test/workflows/retry-backoff-in-workflows.test.ts`; the half that
+pins `backoff-sleep.ts` itself stays in cat-harness's `scripts/tests/` (owner's
+ruling 2026-10-09, litlfred/folio-assistant#2521).
 
 One number to read correctly: the cap applies to the **ideal** wait, before
 jitter. `waitFor` caps `baseMs * 2 ** (attempt - 1)` and then multiplies by

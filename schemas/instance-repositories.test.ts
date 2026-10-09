@@ -11,10 +11,18 @@ import { join, relative, resolve } from "node:path";
 import { CatHarnessDeclarationSchema } from "./cat-harness";
 import { gitCorpus } from "./git-corpus";
 import { instanceRepositories } from "./instance-repositories";
+import { notApplicableAlone } from "../test/support/checkout";
 
 const CHECKOUT = resolve(import.meta.dir, "../..");
 
-describe("instance references are owner/repo and resolve (bean 6rmv, phase 2)", () => {
+// The references are those of every instance a COMPOSED checkout stages,
+// read from its corpus. Standing alone, cat-harness's checkout is its own
+// clone and holds none of the others, so these are not applicable there.
+const COMPOSED_ABSENT = notApplicableAlone(
+  "the voice and instance declarations of every instance a composed checkout stages",
+);
+
+describe.skipIf(COMPOSED_ABSENT)("instance references are owner/repo and resolve (bean 6rmv, phase 2)", () => {
   const map = instanceRepositories(CHECKOUT);
   // Every committed voice and instance declaration — the files whose
   // `instance` fields name another instance. Read through `gitCorpus`, not a

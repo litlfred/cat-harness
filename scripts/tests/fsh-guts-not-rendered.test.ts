@@ -13,6 +13,13 @@
  * `docs/` → `docs/<stub>`), and a future move that happened to put the two in
  * the same tree would republish the trashcan with nothing complaining.
  *
+ * The half that reads the publish WORKFLOWS — that no Jekyll `source:` a
+ * workflow names contains the trashcan — checks the index repository's own
+ * `.github/workflows/`, so it lives in that repository's
+ * `test/workflows/fsh-guts-not-rendered.test.ts` (owner's ruling 2026-10-09,
+ * litlfred/folio-assistant#2521). What stays here is the declared site
+ * directory and the trashcan's own nodes.
+ *
  * @module scripts/tests/fsh-guts-not-rendered.test
  */
 import { describe, expect, test } from "bun:test";
@@ -29,6 +36,7 @@ import {
   isFrozenSubtree,
 } from "../../schemas/fsh-guts.ts";
 import { isDirectoryReadme } from "../../schemas/kg-node.ts";
+import { notApplicableAlone } from "../../test/support/checkout.ts";
 
 const ROOT = resolve(import.meta.dir, "../..");
 // THE REPOSITORY root. `fsh-guts/` is declared `scope: "repository"` — it sits
@@ -40,21 +48,6 @@ const REPO_ROOT = repoRootFor(ROOT);
 const GUTS_DIR = fshGutsDirectory(REPO_ROOT);
 /** Its path relative to the repository root: what a Jekyll source or the built site would contain. */
 const GUTS = relative(REPO_ROOT, GUTS_DIR);
-
-/** Every `source:` a publish workflow hands to the Jekyll build. */
-function jekyllSourceRoots(): { file: string; source: string }[] {
-  const out: { file: string; source: string }[] = [];
-  const dir = join(REPO_ROOT, ".github/workflows");
-  for (const f of readdirSync(dir).filter((n) => n.endsWith(".yml") || n.endsWith(".yaml"))) {
-    readFileSync(join(dir, f), "utf8")
-      .split("\n")
-      .forEach((line) => {
-        const m = /^\s*source:\s*(\S+)\s*$/.exec(line);
-        if (m) out.push({ file: f, source: m[1]!.replace(/^\.\//, "").replace(/\/$/, "") });
-      });
-  }
-  return out;
-}
 
 /**
  * Every markdown node under `fsh-guts/`, at any depth.
@@ -102,30 +95,23 @@ function frozenSubtrees(repoRoot: string): string[] {
   return out;
 }
 
+/**
+ * The trashcan's CONTENT is kept on a state branch that only a composed
+ * checkout mounts. Standing alone it is not there, so the tests that read its
+ * nodes are not applicable; composed, they run, and an unmounted trashcan
+ * fails the first of them.
+ */
+const NO_TRASHCAN = notApplicableAlone(
+  "the `fsh-guts` trashcan's content (kept on its state branch, mounted only in a composed checkout)",
+);
+
 describe("fsh-guts stays out of the render pipeline", () => {
-  test("the declared trashcan exists", () => {
+  test.skipIf(NO_TRASHCAN)("the declared trashcan exists", () => {
     // If this fails the rest is vacuous — a test suite that passes because
     // its subject is missing is the shape of `pzdv` (two hard gates passing
     // over an empty corpus).
     expect(existsSync(GUTS_DIR)).toBe(true);
     expect(GUTS).toBe("fsh-guts");
-  });
-
-  test("at least one workflow declares a Jekyll source, so the check has teeth", () => {
-    // Same guard, one level up: if the regex stops matching because the
-    // workflows changed shape, every assertion below would pass over an
-    // empty list.
-    expect(jekyllSourceRoots().length).toBeGreaterThan(0);
-  });
-
-  test("no Jekyll source root contains it", () => {
-    const offenders = jekyllSourceRoots()
-      // A workflow's `source:` is REPOSITORY-relative — `cat-harness/docs`.
-      // Resolved against the instance it named nothing, so this filter was
-      // vacuous and the assertion passed without teeth.
-      .filter(({ source }) => existsSync(join(REPO_ROOT, source, GUTS)))
-      .map(({ file, source }) => `${file}: source '${source}' contains ${GUTS}/`);
-    expect(offenders).toEqual([]);
   });
 
   test("its CONTENT is not inside the declared site directory", () => {
@@ -169,7 +155,7 @@ describe("fsh-guts stays out of the render pipeline", () => {
     expect(isWithheld(rel, withheldFromCanonical(REPO_ROOT))).toBe(true);
   });
 
-  test("its nodes declare themselves", () => {
+  test.skipIf(NO_TRASHCAN)("its nodes declare themselves", () => {
     // A directory is a place to look; the file says what it is. Without this
     // the graph is duck-typed on location, which is the coincidence-not-
     // contract problem the bean and workflow stores already fixed.
@@ -193,7 +179,7 @@ describe("fsh-guts stays out of the render pipeline", () => {
     expect(undeclared).toEqual([]);
   });
 
-  test("no node here is an orphan — each says what put it here", () => {
+  test.skipIf(NO_TRASHCAN)("no node here is an orphan — each says what put it here", () => {
     // The property is PROVENANCE, not the `movedFrom` key. A reader must be
     // able to tell why a file is in the trashcan rather than in the site, or
     // they cannot distinguish a considered move from an accident — the
@@ -220,7 +206,7 @@ describe("fsh-guts stays out of the render pipeline", () => {
     expect(orphans).toEqual([]);
   });
 
-  test("a frozen subtree's note says what the copy is, so skipping its files hides nothing", () => {
+  test.skipIf(NO_TRASHCAN)("a frozen subtree's note says what the copy is, so skipping its files hides nothing", () => {
     // The price of not walking a frozen subtree is that its note must answer
     // for all of it. A note missing the new repository or the commit the copy
     // matches would leave thousands of files whose provenance nobody can
@@ -235,7 +221,7 @@ describe("fsh-guts stays out of the render pipeline", () => {
     expect(missing).toEqual([]);
   });
 
-  test("a node that says it moved says when", () => {
+  test.skipIf(NO_TRASHCAN)("a node that says it moved says when", () => {
     // `movedFrom` without `movedOn` dates the move to "sometime", which is
     // the state the two fields exist together to avoid: a reader comparing
     // the trashcan against the site's history needs a point to compare at.

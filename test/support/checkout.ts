@@ -30,7 +30,8 @@
  *
  * ## A skip, visibly
  *
- * Callers use `test.skipIf(!inAggregate())`, so a standalone run REPORTS the
+ * Callers use `test.skipIf(!inAggregate())`, or {@link notApplicableAlone}
+ * where the skip should name what is absent, so a standalone run REPORTS the
  * skip rather than counting a pass; in the aggregate every guarded test runs
  * exactly as before. A test whose subject can be found in cat-harness's own
  * content is rewritten to read that instead, and does not use this at all.
@@ -73,4 +74,28 @@ export function inAggregate(instanceRoot: string = INSTANCE): boolean {
   const top = checkoutHolding(inst);
   if (top === inst) return false;
   return instanceRootsIn(top).some((r) => resolve(r) !== inst);
+}
+
+/**
+ * Whether cat-harness is STANDING ALONE: its own checkout, with no composed
+ * checkout above it — the negation of {@link inAggregate}, computed once.
+ */
+export const STANDALONE: boolean = !inAggregate();
+
+/**
+ * The guard for a test whose subject exists only in a COMPOSED checkout — a
+ * state-branch graph (`beans/`, `todos/`, `fsh-guts/`, `issue-marks/`) or
+ * another checkout-level tree — so that standing alone it reports a NAMED
+ * "not applicable" rather than a failure (owner's ruling 2026-10-09,
+ * litlfred/folio-assistant#2521, ruling 1(c)).
+ *
+ * `absent` names what is missing and why, at the call site. Standing alone it
+ * is printed, so the skip says what it skipped in the run's own output rather
+ * than only being counted; in the composed checkout this returns `false`, and
+ * the guarded test runs exactly as before — and fails loudly if the graph is
+ * not there. Use it as `test.skipIf(notApplicableAlone("…"))`.
+ */
+export function notApplicableAlone(absent: string): boolean {
+  if (STANDALONE) console.warn(`not applicable standing alone: ${absent}`);
+  return STANDALONE;
 }

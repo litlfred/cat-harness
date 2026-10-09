@@ -31,6 +31,7 @@ import { join } from "node:path";
 import { codeWithoutComments } from "../repo-files.js";
 import { fshGutsDirectory } from "../../schemas/fsh-guts.js";
 import { implementingRootFor } from "../../schemas/harness-config.js";
+import { notApplicableAlone } from "../../test/support/checkout.js";
 
 const ROOT = join(import.meta.dir, "../..");
 /**
@@ -47,7 +48,19 @@ const ROOT = join(import.meta.dir, "../..");
  * script revives whatever it says — so the honesty property has to survive
  * the move, or the fix silently un-fixes on the day it matters.
  */
-const GEN = readFileSync(join(fshGutsDirectory(join(ROOT, "..")), "scripts/generate-docs.ts"), "utf8");
+const generator = (): string => readFileSync(join(fshGutsDirectory(join(ROOT, "..")), "scripts/generate-docs.ts"), "utf8");
+
+/**
+ * The relocated generator lives in the `fsh-guts` trashcan, kept on a state
+ * branch that only a composed checkout mounts. Standing alone it is not there,
+ * so the page's tests are not applicable; composed, they run, and an
+ * unmounted trashcan fails them.
+ */
+const NO_TRASHCAN = notApplicableAlone(
+  "`fsh-guts/scripts/generate-docs.ts` (the `fsh-guts` trashcan is kept on its state branch, mounted only in a composed checkout)",
+);
+
+let emitted: string | undefined;
 
 /**
  * What the generator EMITS for the Remote Packages page — the `L.push(...)`
@@ -60,14 +73,16 @@ const GEN = readFileSync(join(fshGutsDirectory(join(ROOT, "..")), "scripts/gener
  * hit grepping for `shallow-clone` — a string search cannot tell an
  * implementation from a note about one.
  */
-const EMITTED = (() => {
-  const i = GEN.indexOf('L.push("# Remote Packages")');
+function emittedText(): string {
+  if (emitted !== undefined) return emitted;
+  const gen = generator();
+  const i = gen.indexOf('L.push("# Remote Packages")');
   expect(i).toBeGreaterThan(-1);
-  const section = GEN.slice(i, i + 6000);
-  return [...section.matchAll(/L\.push\(([\s\S]*?)\);\n/g)].map((m) => m[1]!).join("\n");
-})();
+  const section = gen.slice(i, i + 6000);
+  return (emitted = [...section.matchAll(/L\.push\(([\s\S]*?)\);\n/g)].map((m) => m[1]!).join("\n"));
+}
 
-describe("the generated Remote Packages page", () => {
+describe.skipIf(NO_TRASHCAN)("the generated Remote Packages page", () => {
   test("does not state that anything syncs automatically", () => {
     // Present-tense capability claims. Each of these was either in the page or
     // one rewrite away from it.
@@ -76,24 +91,24 @@ describe("the generated Remote Packages page", () => {
       "are synced automatically",
       "Agents can sync",
     ]) {
-      expect(EMITTED).not.toContain(claim);
+      expect(emittedText()).not.toContain(claim);
     }
   });
 
   test("says the skills cannot be fetched from this instance", () => {
-    expect(EMITTED).toContain("not fetchable");
+    expect(emittedText()).toContain("not fetchable");
   });
 
   test("labels the sync fields as intent rather than as behaviour", () => {
     // A column headed "Strategy" beside a live Maintainer and Repo reads as
     // live. "Intended" is the whole correction.
-    expect(EMITTED).toContain("Intended strategy");
-    expect(EMITTED).toContain("Intended frequency");
-    expect(EMITTED).not.toContain("| Strategy | Frequency |");
+    expect(emittedText()).toContain("Intended strategy");
+    expect(emittedText()).toContain("Intended frequency");
+    expect(emittedText()).not.toContain("| Strategy | Frequency |");
   });
 
   test("points at the bean, so a reader can find the decision", () => {
-    expect(EMITTED).toContain("wlqd");
+    expect(emittedText()).toContain("wlqd");
   });
 });
 
@@ -102,7 +117,11 @@ describe("the reason the page has to say that is still true", () => {
   // should change back, and this is where that argument lives rather than being
   // rediscovered. `manifest-skill-exists` would also want its allowance back;
   // `manifest-remote-resolution.test.ts` records that half.
-  test("neither skill_fetch nor the registry reads skills/remote-packages/", () => {
+  // `skill-fetch.ts` is implemented in cat-harness-tools, the layer composed
+  // ABOVE this one (bean `70lx`): standing alone it is not here to read.
+  test.skipIf(
+    notApplicableAlone("`src/tools/skill-fetch.ts`, implemented in cat-harness-tools (composed above cat-harness)"),
+  )("neither skill_fetch nor the registry reads skills/remote-packages/", () => {
     // CODE, not prose. This asserted on the raw file text until 2026-09-19,
     // when a documentation comment in `skill-fetch.ts` naming the directory —
     // as one of seven a naive scan would wrongly treat as a skill package —

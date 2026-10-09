@@ -27,11 +27,12 @@
  */
 import { describe, expect, test } from "bun:test";
 import { existsSync, readFileSync } from "node:fs";
-import { join, relative, resolve } from "node:path";
+import { join, relative, resolve, sep } from "node:path";
 import { Glob } from "bun";
 
 import { fshGutsDirectory } from "../../schemas/fsh-guts.js";
 import { kgRoots } from "../known-skills.js";
+import { notApplicableAlone } from "../../test/support/checkout.js";
 
 const ROOT = resolve(import.meta.dir, "../..");
 
@@ -72,16 +73,41 @@ function skillDefinitionFiles(): string[] {
   return out;
 }
 
+/**
+ * Two of the things this file reads exist only in a COMPOSED checkout, so
+ * standing alone the tests over them are not applicable and say so; composed,
+ * they run exactly as before.
+ *
+ * - The floor of 15 below counts the skill definitions of the instances
+ *   composed ABOVE cat-harness too — `kgRoots` resolves the checkout's skills
+ *   roots, and most of the definitions are folio-assistant-sci's (measured
+ *   2026-10-09: 24 composed, 15 of them sci's, 8 cat-harness's own).
+ * - The `roles` record sits in the `fsh-guts` trashcan, kept on a state branch.
+ */
+const COMPOSED_SKILLS_ABSENT = notApplicableAlone(
+  "the skill definitions of the instances composed above cat-harness (folio-assistant-sci, folio-assistant-core), which the 15-definition floor counts",
+);
+const NO_TRASHCAN = notApplicableAlone(
+  "the `fsh-guts` trashcan, which holds the `roles` retirement record (kept on its state branch, mounted only in a composed checkout)",
+);
+
 describe("retired SkillDefinition fields", () => {
   const files = skillDefinitionFiles();
 
-  test("the sweep found the skill definitions — otherwise nothing below holds", () => {
+  test.skipIf(COMPOSED_SKILLS_ABSENT)("the sweep found the skill definitions — otherwise nothing below holds", () => {
     // Vacuity first. A rename of the annotation, or a move of these trees,
     // turns every assertion below into a pass over an empty list.
     expect(files.length, "no `: SkillDefinition =` literals found at all").toBeGreaterThan(15);
   });
 
-  test("every record named here dereferences", () => {
+  test("the sweep found cat-harness's OWN skill definitions", () => {
+    // The same vacuity guard over the trees that are here in every checkout,
+    // so a standalone run is not a pass over an empty list either.
+    const own = files.filter((f) => f.startsWith(ROOT + sep));
+    expect(own.length, "no `: SkillDefinition =` literals in cat-harness's own trees").toBeGreaterThan(0);
+  });
+
+  test.skipIf(NO_TRASHCAN)("every record named here dereferences", () => {
     // A link-shaped value that does not dereference is the `blv9` class, and
     // a retirement note is the one place it hurts most: the reader who most
     // needs it is the one about to reinstate the field.
