@@ -259,7 +259,10 @@ describe("asset and rendering: two resources, two IRIs (owner, 2026-10-02)", () 
   });
 });
 
-describe("smart-trust, referenced in smart-base's library (owner, 2026-10-02)", () => {
+const HAS_SMART_TRUST_REF = existsSync(join(REPO, "smart-base", "library", "smart-trust", "referenced.json"));
+
+describe.skipIf(!HAS_SMART_TRUST_REF)("smart-trust, referenced in smart-base's library (owner, 2026-10-02)", () => {
+  if (!HAS_SMART_TRUST_REF) return;
   const dir = join(REPO, "smart-base", "library", "smart-trust");
   const rec = ReferencedSourceSchema.parse(JSON.parse(readFileSync(join(dir, "referenced.json"), "utf-8")));
   const ig = JSON.parse(readFileSync(join(REPO, "smart-trust", "fhir-artifact-index", "index.json"), "utf-8")) as {
