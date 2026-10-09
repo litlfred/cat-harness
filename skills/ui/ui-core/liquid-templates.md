@@ -136,7 +136,12 @@ Liquid runs it, and at the end of the build each path that was ABSENT is
 printed as a warning with its count and pages, `site.data.*` first (owner,
 2026-10-09, bean `8pyz`: *"jekyll strict (if not error out, just message)"*).
 A lookup inside a condition or under `| default` is not reported — there the
-template asked. `FOLIO_LIQUID_UNDEFINED_REPORT=<file>` writes the same record
+template asked — nor an include's own parameter (`include.x`, optional by
+convention), a field of a variable that is there and nil (its cause is reported
+once, where it went undefined), or a path `liquid_undefined_ignore` in
+`_config.yml` lists: a THEME's optional settings, which `docs/_config.yml`
+names for just-the-docs. On smart-immunizations those rules took 399 reports
+to the 2 real gaps. `FOLIO_LIQUID_UNDEFINED_REPORT=<file>` writes the same record
 as JSON; `liquid_undefined: off` in `_config.yml` turns it off. It runs only
 where plugins do (`bundle exec jekyll`, as an IG repository's own site and
 `preview:site` build); the github-pages build is safe mode and loads none.

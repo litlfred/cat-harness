@@ -20,7 +20,17 @@
 #
 # - inside a condition (`if`, `unless`, `elsif`, `case`/`when`) -- testing
 #   whether a thing exists is how a template asks;
-# - under a `default` filter -- the template supplied the fallback.
+# - under a `default` filter -- the template supplied the fallback;
+# - an include's own parameter (`include.x`) -- every one is optional by
+#   Liquid's convention, and just-the-docs alone left 177 of them on one site;
+# - a path `liquid_undefined_ignore` in `_config.yml` lists (a prefix, matched
+#   at a segment boundary) -- for a THEME's optional settings, which the
+#   site's own authors cannot define and should not be told about.
+#
+# Measured on smart-immunizations, 2026-10-09: 399 references before these
+# two rules, 395 of them just-the-docs' own parameters and settings; the four
+# left were real -- IG Publisher data (`site.data.resources`,
+# `site.data.fhir.igId`) the page reads and no build supplies.
 #
 # At the end of the build every recorded path is printed as a warning, with
 # how many times and on which pages, the `site.data.*` ones first. With
@@ -50,6 +60,15 @@ module FolioLiquidUndefined
     end
 
     attr_writer :enabled
+
+    def ignore=(prefixes)
+      @ignore = Array(prefixes).map(&:to_s).reject(&:empty?)
+    end
+
+    # An include's parameters, and whatever the site's configuration names.
+    def ignored?(path)
+      (["include"] + (@ignore || [])).any? { |p| path == p || path.start_with?("#{p}.") }
+    end
 
     def quiet?
       (Thread.current[:folio_liquid_quiet] || 0).positive?
@@ -82,6 +101,10 @@ module FolioLiquidUndefined
       object = context.find_variable(name)
       path = [name]
       lookup.lookups.each do |raw|
+        # A variable that is there and nil: its own cause was reported where it
+        # went undefined (`assign x = site.data.gone` reports site.data.gone),
+        # so `x.y` would only report it twice.
+        return nil if object.nil?
         key = context.evaluate(raw)
         path << key.to_s
         if object.respond_to?(:[]) &&
@@ -120,7 +143,7 @@ module FolioLiquidUndefined
       result = super
       if result.nil? && FolioLiquidUndefined.enabled? && !FolioLiquidUndefined.quiet?
         path = FolioLiquidUndefined.quietly { FolioLiquidUndefined.absent_path(self, context) }
-        FolioLiquidUndefined.record(path, context) if path
+        FolioLiquidUndefined.record(path, context) if path && !FolioLiquidUndefined.ignored?(path)
       end
       result
     end
@@ -146,6 +169,7 @@ Liquid::Variable.prepend(FolioLiquidUndefined::DefaultFilter)
 
 Jekyll::Hooks.register :site, :after_init do |site|
   FolioLiquidUndefined.enabled = site.config["liquid_undefined"].to_s != "off"
+  FolioLiquidUndefined.ignore = site.config["liquid_undefined_ignore"]
 end
 
 Jekyll::Hooks.register :site, :pre_render do |_site, _payload|

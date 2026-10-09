@@ -106,6 +106,15 @@ exclude:
   - assets/img/uml/overview/README.md
   - cat-harness/auto-docs/lsi/README.md
 
+# just-the-docs' OPTIONAL settings, which its templates read whether or not
+# a site sets them: not reported by `_plugins/liquid-undefined-warn.rb` (bean
+# 8pyz). A site's own undefined variables still are. Measured on
+# smart-immunizations, 2026-10-09: 216 of 399 reports were these three.
+liquid_undefined_ignore:
+  - site.compress_html
+  - site.callouts
+  - nav_breadcrumbs
+
 plugins:
   - jekyll-remote-theme
 
