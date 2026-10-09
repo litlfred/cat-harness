@@ -1,9 +1,9 @@
 ---
 layout: default
-title: "Schema graph — folio-assistant-core"
+title: "Schema graph — openapi"
 nav_exclude: true
 renders:
-  - folio-assistant-core/schemas
+  - openapi/schemas
 rendered-by: schemas-viewer
 ---
 <!--
@@ -46,6 +46,9 @@ rendered-by: schemas-viewer
 }
 .sc-page input { flex: 1 1 180px; min-width: 0; }
 .sc-page ul#items { list-style: none; margin: 0; padding: 0 0 24px; max-height: 70vh; overflow: auto; }
+@media (max-width: 640px) {
+  #items { max-height: 35vh; }
+}
 .sc-page #items > li { margin: 0; padding: 0; }
 .sc-page #items > li::before { content: none; }
 .sc-page li > button {
@@ -61,13 +64,20 @@ rendered-by: schemas-viewer
   border: 1px solid var(--line); color: var(--muted); margin-left: 6px; vertical-align: 1px;
 }
 .sc-page .tag.warn { color: var(--warn); background: var(--warn-soft); border-color: var(--warn); }
-.sc-page #detail { padding: 16px; min-width: 0; }
+.sc-page #detail { padding: 16px; min-width: 0; overflow-x: auto; }
+.sc-page #detail:focus { outline: none; }
 .sc-page #detail h2 { font-size: 1rem; margin: 0 0 2px; font-family: ui-monospace, Menlo, monospace; }
 .sc-page table { display: table; border-collapse: collapse; width: 100%; font-size: .86rem; margin: 8px 0 16px; }
 .sc-page th, .sc-page td { border: 0; background: transparent; text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
 .sc-page th { color: var(--muted); font-weight: 600; font-size: .76rem; text-transform: uppercase; letter-spacing: .04em; }
-.sc-page td code { font-family: ui-monospace, Menlo, monospace; font-size: .82rem; word-break: break-word; }
+td code { font-family: ui-monospace, Menlo, monospace; font-size: .82rem; word-break: normal; overflow-wrap: anywhere; }
+#detail table td code { word-break: normal; overflow-wrap: anywhere; }
+#detail table td:first-child code { white-space: nowrap; }
+.sc-page td code { font-family: ui-monospace, Menlo, monospace; font-size: .82rem; word-break: normal; overflow-wrap: anywhere; }
+.sc-page #detail table td code { word-break: normal; overflow-wrap: anywhere; }
+.sc-page #detail table td:first-child code { white-space: nowrap; }
 .sc-page .opt { color: var(--muted); }
+.sc-page a { color: var(--accent); }
 .sc-page svg { max-width: 100%; height: auto; display: block; margin: 8px 0 16px; }
 .sc-page .uml-box { fill: var(--box); stroke: var(--line); }
 .sc-page .uml-box.sel { stroke: var(--accent); stroke-width: 2; }
@@ -91,6 +101,8 @@ rendered-by: schemas-viewer
 .sc-page .ov-body { padding: 0 16px 14px; }
 .sc-page .ov-cap { color: var(--muted); font-size: .8rem; margin: 0 0 8px; }
 .sc-page #ov-svg { width: 100%; height: auto; display: block; max-height: 78vh; }
+#ov-svg:empty { display: none; }
+.sc-page #ov-svg:empty { display: none; }
 .sc-page .dia-e { fill: none; stroke-width: 1.6; }
 .sc-page .dia-field { stroke: var(--accent); }
 .sc-page .dia-gen { stroke: var(--fg); }
@@ -135,7 +147,7 @@ rendered-by: schemas-viewer
 <div class="sc-page">
 <div class="sc-head">
   <h1 id="sc-title">Schema graph</h1>
-  <nav class="sc-page-subjects" aria-label="Instances"><ul><li><a href="../">All instances</a></li><li><a href="../bootstrap/">bootstrap</a></li><li><a href="../bootstrap-tools/">bootstrap-tools</a></li><li><a href="../cat-harness/">cat-harness</a></li><li><a href="../fhir-harness/">fhir-harness</a></li><li><span aria-current="page">folio-assistant-core</span></li></ul></nav>
+  <nav class="sc-page-subjects" aria-label="Instances"><ul><li><a href="../">All instances</a></li><li><a href="../archimate/">archimate</a></li><li><a href="../bootstrap/">bootstrap</a></li><li><a href="../bootstrap-tools/">bootstrap-tools</a></li><li><a href="../cat-harness/">cat-harness</a></li><li><span aria-current="page">openapi</span></li></ul></nav>
   <p class="counts" id="counts">loading…</p>
   <p class="counts" style="margin-top:4px">Diagrams show <strong>containment</strong> and
     <strong>generalisation</strong>. A reference carried as a string id is not drawn &mdash; it is
@@ -167,7 +179,7 @@ rendered-by: schemas-viewer
     </div>
     <ul id="items"></ul>
   </section>
-  <section id="detail" aria-live="polite"><p class="empty">Select a declaration.</p></section>
+  <section id="detail" tabindex="-1" aria-live="polite"><p class="empty">Select a declaration.</p></section>
 </div>
 </div>
 <script>
@@ -177,7 +189,7 @@ var DATA_HREF = "../../../assets/schemas/index.json";
 /* The SUBJECT this page is scoped to, or "" for the handler's whole view.
    One projection serves every page — a second JSON per subject would be the
    same facts written N+1 times, free to disagree once one is regenerated. */
-var SCOPE = "folio-assistant-core";
+var SCOPE = "openapi";
 /* The site root, relative to this page: where a node kind's own page is. */
 var SITE_HREF = "../../../";
 function inScope(d){ return !SCOPE || d.instance === SCOPE; }
@@ -204,6 +216,8 @@ function byId(id) { return G.declIndex[id]; }
    Built as SVG text so the page keeps its no-dependency rule. */
 function uml(d) {
   var CH = 7.0, PAD = 10, LH = 15, HEAD = 22;
+  var maxChars = (typeof window !== "undefined" && window.innerWidth < 640) ? 42 : 76;
+  var maxTypeChars = (typeof window !== "undefined" && window.innerWidth < 640) ? 28 : 64;
   function box(x, y, title, fields, sel) {
     // Truncation is STATED, not silent. A box showing 8 of 24 fields with no
     // mark reads as a type with 8 fields, which is a wrong diagram rather than
@@ -212,15 +226,15 @@ function uml(d) {
     if (fields.length > rows.length) rows = rows.concat(["… " + (fields.length - rows.length) + " more"]);
     var w = Math.max(title.length, 8);
     rows.forEach(function (r) { w = Math.max(w, r.length); });
-    w = Math.min(w, 42) * CH + PAD * 2;
+    w = Math.min(w, maxChars) * CH + PAD * 2;
     var h = HEAD + (rows.length ? rows.length * LH + 6 : 0);
     var g = '<g><rect class="uml-box' + (sel ? " sel" : "") + '" x="' + x + '" y="' + y +
       '" width="' + w + '" height="' + h + '" rx="4"/>' +
-      '<text class="uml-t" x="' + (x + PAD) + '" y="' + (y + 15) + '">' + esc(title.slice(0, 42)) + "</text>";
+      '<text class="uml-t" x="' + (x + PAD) + '" y="' + (y + 15) + '">' + esc(title.slice(0, maxChars)) + "</text>";
     if (rows.length) {
       g += '<line class="uml-e" x1="' + x + '" y1="' + (y + HEAD) + '" x2="' + (x + w) + '" y2="' + (y + HEAD) + '"/>';
       rows.forEach(function (r, i) {
-        g += '<text class="uml-f" x="' + (x + PAD) + '" y="' + (y + HEAD + 14 + i * LH) + '">' + esc(r.slice(0, 42)) + "</text>";
+        g += '<text class="uml-f" x="' + (x + PAD) + '" y="' + (y + HEAD + 14 + i * LH) + '">' + esc(r.slice(0, maxChars)) + "</text>";
       });
     }
     return { svg: g + "</g>", w: w, h: h };
@@ -239,7 +253,7 @@ function uml(d) {
   });
   refs = refs.slice(0, 6);
   var selFields = (d.fields || []).map(function (f) {
-    return f.name + (f.optional ? "?" : "") + ": " + f.type.replace(/^z\./, "").slice(0, 28);
+    return f.name + (f.optional ? "?" : "") + ": " + f.type.replace(/^z\./, "").slice(0, maxTypeChars);
   });
 
   var W = 0, parts = [], y = 0;
@@ -576,7 +590,7 @@ function diagram() {
        the SUBJECT for what a filter did, and a reader who typed a word that
        matches nothing is told the page is empty. */
     var why = m.filtered
-      ? "No declaration matches the filters above, so there is nothing to draw. Clear the search or the kind to get the picture back."
+      ? "No declaration matches the filters below, so there is nothing to draw. Clear the search or the kind to get the picture back."
       : "Nothing in scope to draw.";
     cap.textContent = why;
     svg.innerHTML = ""; key.innerHTML = "";
@@ -588,7 +602,7 @@ function diagram() {
     svg.innerHTML = ""; key.innerHTML = "";
     cap.innerHTML = "<b>" + m.decls.length + "</b> declarations in scope — too many to draw as a relationship diagram " +
       "(the limit is <b>" + DIA_MAX + "</b>, above which labelled boxes stop being readable). " +
-      "Pick a <b>module</b> in the filter above and the diagram for it appears here.";
+      "Pick a <b>module</b> in the filter below and the diagram for it appears here.";
     return;
   }
 
@@ -819,6 +833,11 @@ function select(id) {
   }
   render();
   detail(d);
+  var dt = $("detail");
+  if (dt && (window.innerWidth <= 640 || dt.getBoundingClientRect().top > window.innerHeight / 2)) {
+    try { dt.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) { dt.scrollIntoView(); }
+    dt.focus();
+  }
 }
 
 fetch(DATA_HREF).then(function (r) {
