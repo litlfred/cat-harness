@@ -247,15 +247,50 @@ export const RemoteSourceSchema = z
       .regex(/^[A-Za-z0-9_-][A-Za-z0-9._-]*(?:\/[A-Za-z0-9_-][A-Za-z0-9._-]*)*\/?$/, "a repository-relative path, no dot-prefixed segment")
       .refine((p) => !p.split("/").includes(".."), "may not climb with `..`")
       .optional(),
+    tool: z.string().regex(/^[a-z0-9][a-z0-9-]*$/, "a Tool node id").optional(),
   })
   .strict();
+
+/**
+ * The content is an NPM PACKAGE or tarball (.tgz) retrieved from npm or GitHub Packages
+ * (bean `0mpw`, skills `npm-kg-distribution` & `remote-mount`).
+ * The entry's `path` is where the package contents land in this checkout;
+ * `upstreamPath` is where the bytes are inside the unpacked package (default: root).
+ * `tool` is the declared Tool node id used for retrieval (defaults to "npm").
+ */
+export const NpmSourceSchema = z
+  .object({
+    kind: z.literal("npm"),
+    /** Scoped or unscoped package name (e.g. `@litlfred/cat-harness`). */
+    package: z.string().regex(/^(@[a-z0-9-~][a-z0-9-._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/, "an npm package name"),
+    /** Exact semver version triple (no ranges). */
+    version: z.string().regex(/^\d+\.\d+\.\d+(-[a-zA-Z0-9.-]+)?$/, "exact semver version triple (no ranges)"),
+    /** Integrity SRI string (sha256 or sha512) for fixity verification. */
+    integrity: z.string().optional(),
+    /** Upstream path inside the extracted package tarball. */
+    upstreamPath: z
+      .string()
+      .regex(/^[A-Za-z0-9_-][A-Za-z0-9._-]*(?:\/[A-Za-z0-9_-][A-Za-z0-9._-]*)*\/?$/, "a package-relative path, no dot-prefixed segment")
+      .refine((p) => !p.split("/").includes(".."), "may not climb with `..`")
+      .optional(),
+    /** Declared Tool that retrieves/mounts the package. Default: 'npm'. */
+    tool: z.string().regex(/^[a-z0-9][a-z0-9-]*$/, "a Tool node id").default("npm"),
+  })
+  .strict();
+export type NpmSource = z.infer<typeof NpmSourceSchema>;
 
 /**
  * A declared subgraph's content source. A discriminated union, so a new kind
  * is a new member here and a compile error at every consumer that has not
  * decided what to do with it.
  */
-export const SubgraphSourceSchema = z.discriminatedUnion("kind", [DirectorySourceSchema, BranchSourceSchema, FamilySourceSchema, RemoteSourceSchema]);
+export const SubgraphSourceSchema = z.discriminatedUnion("kind", [
+  DirectorySourceSchema,
+  BranchSourceSchema,
+  FamilySourceSchema,
+  RemoteSourceSchema,
+  NpmSourceSchema,
+]);
 export type SubgraphSource = z.infer<typeof SubgraphSourceSchema>;
 export type SubgraphSourceKind = SubgraphSource["kind"];
 
@@ -303,7 +338,7 @@ export function instanceStateBranch(instance: string, id: string): string {
 }
 
 /** Every kind the union knows — for a reader that must refuse the rest (`branch-store mount`'s exit code). */
-export const SUBGRAPH_SOURCE_KINDS: readonly SubgraphSourceKind[] = ["directory", "branch", "family", "remote"];
+export const SUBGRAPH_SOURCE_KINDS: readonly SubgraphSourceKind[] = ["directory", "branch", "family", "remote", "npm"];
 
 /** The config half: `<instance>.config.json` → `subgraphSources`, keyed by directory id. */
 export const SubgraphSourceOverridesSchema = z.record(z.string().min(1), SubgraphSourceSchema);
@@ -364,6 +399,20 @@ export type ResolvedSubgraphSource =
       ref: string;
       /** Where the bytes are in the remote repository. */
       upstreamPath: string;
+      tool?: string;
+      declaredIn: SourceDeclaredIn;
+    }
+  | {
+      kind: "npm";
+      id: string;
+      /** The entry's `path` — where the package mount lands in this checkout. */
+      path: string;
+      package: string;
+      version: string;
+      integrity?: string;
+      /** Where the bytes are in the extracted package. */
+      upstreamPath: string;
+      tool: string;
       declaredIn: SourceDeclaredIn;
     };
 
@@ -486,6 +535,23 @@ export function resolveSubgraphSource(
         repository: src.repository,
         ref: src.ref,
         upstreamPath: src.upstreamPath ?? entry.path,
+        ...(src.tool ? { tool: src.tool } : {}),
+        declaredIn,
+      };
+    }
+    case "npm": {
+      if ((entry.graphTypologies ?? []).includes("qa")) {
+        throw new Error(`directory "${entry.id}" is a \`qa\` subgraph: it is keyed by this repository's commits, and an npm package is not.`);
+      }
+      return {
+        kind: "npm",
+        id: entry.id,
+        path: entry.path,
+        package: src.package,
+        version: src.version,
+        ...(src.integrity ? { integrity: src.integrity } : {}),
+        upstreamPath: src.upstreamPath ?? entry.path,
+        tool: src.tool,
         declaredIn,
       };
     }
@@ -530,6 +596,18 @@ export function contentSourceJsonLd(src: ResolvedSubgraphSource, repository?: st
       // so no new term is minted for either: the `@id` dereferences to them.
       const web = forgeTreeUrl(src.repository, `${src.ref}/${src.upstreamPath.replace(/\/+$/, "")}`);
       return { ...(web ? { "@id": web } : {}), kind: "remote", declaredIn: src.declaredIn };
+    }
+    case "npm": {
+      const npmUrl = `https://www.npmjs.com/package/${src.package}/v/${src.version}`;
+      return {
+        "@id": npmUrl,
+        kind: "npm",
+        package: src.package,
+        version: src.version,
+        ...(src.integrity ? { integrity: src.integrity } : {}),
+        tool: src.tool,
+        declaredIn: src.declaredIn,
+      };
     }
   }
 }

@@ -135,3 +135,81 @@ describe("a branch FAMILY's repository (owner: read remote, or materialise local
     expect(SubgraphSourceSchema.safeParse({ kind: "family", branchPrefix: "cat/x/", keyFrom: "k", repository: "https://github.com/a/b" }).success).toBe(false);
   });
 });
+
+describe("a remote source tool option and npm package source (skills npm-kg-distribution, remote-mount)", () => {
+  const REMOTE_ENTRY = { id: "schemas", path: "schemas/", graphTypologies: ["schemas"] };
+  const NPM_ENTRY = { id: "pkg-kg", path: "pkg-kg/", graphTypologies: ["knowledge-graph"] };
+
+  test("remote source admits tool option and resolves it", () => {
+    const r = resolveSubgraphSource({
+      ...REMOTE_ENTRY,
+      source: {
+        kind: "remote",
+        repository: "litlfred/cat-harness",
+        ref: "8824ea6d6a8d00db8b34fb20cf3e644eea33c06a",
+        tool: "remote-mount",
+      },
+    });
+    expect(r).toMatchObject({
+      kind: "remote",
+      repository: "litlfred/cat-harness",
+      ref: "8824ea6d6a8d00db8b34fb20cf3e644eea33c06a",
+      tool: "remote-mount",
+      declaredIn: "declaration",
+    });
+  });
+
+  test("npm source validates and defaults tool to npm", () => {
+    const parsed = SubgraphSourceSchema.parse({
+      kind: "npm",
+      package: "@litlfred/cat-harness",
+      version: "0.1.0",
+    });
+    expect(parsed).toMatchObject({
+      kind: "npm",
+      package: "@litlfred/cat-harness",
+      version: "0.1.0",
+      tool: "npm",
+    });
+  });
+
+  test("npm source resolves cleanly and is off checkout", () => {
+    const r = resolveSubgraphSource({
+      ...NPM_ENTRY,
+      source: {
+        kind: "npm",
+        package: "@litlfred/cat-harness",
+        version: "0.1.0",
+        tool: "kg-retrieve-npm",
+      },
+    });
+    expect(r).toMatchObject({
+      kind: "npm",
+      id: "pkg-kg",
+      path: "pkg-kg/",
+      package: "@litlfred/cat-harness",
+      version: "0.1.0",
+      tool: "kg-retrieve-npm",
+      declaredIn: "declaration",
+    });
+    expect(contentIsOffCheckout({ source: r })).toBe(true);
+  });
+
+  test("npm source JSON-LD links to npm registry", () => {
+    const r = resolveSubgraphSource({
+      ...NPM_ENTRY,
+      source: {
+        kind: "npm",
+        package: "@litlfred/cat-harness",
+        version: "0.1.0",
+      },
+    });
+    expect(contentSourceJsonLd(r)).toMatchObject({
+      "@id": "https://www.npmjs.com/package/@litlfred/cat-harness/v/0.1.0",
+      kind: "npm",
+      package: "@litlfred/cat-harness",
+      version: "0.1.0",
+      tool: "npm",
+    });
+  });
+});

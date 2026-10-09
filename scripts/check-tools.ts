@@ -396,7 +396,9 @@ export function danglingStorageTools(repoRoot: string = REPO): Array<{ instance:
     }
     if (!decl) continue;
     for (const d of [...(decl.directories ?? []), ...nestedDirectories(root, decl)]) {
-      const tool = (d.storage as { tool?: string } | undefined)?.tool;
+      const storageTool = (d.storage as { tool?: string } | undefined)?.tool;
+      const sourceTool = (d.source as { tool?: string } | undefined)?.tool;
+      const tool = storageTool ?? sourceTool;
       if (tool !== undefined && !known.has(tool)) out.push({ instance: relative(repoRoot, root) || ".", directory: d.id, tool });
     }
   }

@@ -3,6 +3,18 @@
   "version": "0.1.0",
   "private": false,
   "type": "module",
+  "files": [
+    "schemas/",
+    "scripts/",
+    "skills/",
+    "tools/",
+    "templates/",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "test": "bun test",
     "typecheck": "tsc --noEmit -p tsconfig.json"

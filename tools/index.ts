@@ -303,7 +303,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
           { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "Instance root containing package.json (default: cwd)." },
           { name: "destination", schema: t("RepoPath"), required: false, arg: { flag: "--destination" }, description: "Directory to save the tarball and release record." },
           { name: "out", schema: t("RepoPath"), required: false, arg: { flag: "--out" }, description: "Path to write the folio-binary-release/v1 JSON record." },
-          { name: "repository", schema: t("Text"), required: false, arg: { flag: "--repository" }, description: "Repository owner/repo for the release origin." },
+          { name: "repository", schema: t("RepoFullName"), required: false, arg: { flag: "--repository" }, description: "Repository owner/repo for the release origin." },
           { name: "release-url", schema: t("Url"), required: false, arg: { flag: "--release-url" }, description: "Public URL where the tarball is published/hosted." },
           { name: "json", schema: t("Flag"), required: false, arg: { flag: "--json" }, description: "Emit the folio-binary-release/v1 JSON record to stdout." },
         ],
@@ -326,7 +326,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
         inputs: [
           { name: "package", schema: t("Text"), required: true, description: "Package name, npm tarball (.tgz) path, or URL." },
           { name: "destination", schema: t("RepoPath"), required: false, arg: { flag: "--destination" }, description: "Directory to unpack or install into." },
-          { name: "view", schema: t("Text"), required: false, arg: { flag: "--view" }, description: "Graph view to inspect/retrieve: 'unhydrated' (source graph), 'hydrated' (materialized JSON-LD/indexes), or 'both'." },
+          { name: "view", schema: t("Slug"), required: false, arg: { flag: "--view" }, description: "Graph view to inspect/retrieve: 'unhydrated' (source graph), 'hydrated' (materialized JSON-LD/indexes), or 'both'." },
           { name: "release", schema: t("RepoPath"), required: false, arg: { flag: "--release" }, description: "Optional `folio-binary-release/v1` record to verify digest and size against." },
         ],
         outputs: [
@@ -336,6 +336,53 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       },
       satisfies: ["npm-kg-distribution", "remote-mount"],
       requires: { runtime: ["bun"], network: true },
+      remedies: [
+        { host: "registry.npmjs.org", none: "Retrieves packages from npm registry; local tarballs work offline via direct path." },
+        { host: "npm.pkg.github.com", none: "Retrieves packages from GitHub Packages registry; local tarballs work offline via direct path." },
+      ],
+    }),
+    defineTool({
+      id: "npm",
+      title: "Package manager and registry client for npm and GitHub Packages",
+      description:
+        "Package, publish, inspect, and retrieve npm packages and Knowledge Graphs distributed as tarballs or packages from npm registry or GitHub Packages.",
+      install: { none: true },
+      invoke: { shell: "npm" },
+      io: {
+        inputs: [
+          { name: "args", schema: t("Text"), required: false, description: "Arguments passed to npm (e.g. 'pack', 'publish', 'view')." },
+        ],
+        outputs: [
+          { name: "stdout", schema: t("Text"), description: "Standard output from npm invocation." },
+        ],
+      },
+      satisfies: ["npm-kg-distribution", "remote-mount", "package-release"],
+      requires: { runtime: ["node"], network: true },
+      remedies: [
+        { host: "registry.npmjs.org", tool: "kg-retrieve-npm" },
+        { host: "npm.pkg.github.com", tool: "kg-retrieve-npm" },
+      ],
+    }),
+    defineTool({
+      id: "package-release-workflow",
+      title: "Release package via GitHub Actions release workflow",
+      description:
+        "Build, tag, and publish an npm package tarball to GitHub Releases and GitHub Packages registry via workflow_dispatch.",
+      install: { none: true },
+      invoke: { shell: "gh workflow run release-npm.yml" },
+      io: {
+        inputs: [
+          { name: "version", schema: t("Text"), required: true, description: "The semver version string to release (e.g. '0.1.0')." },
+        ],
+        outputs: [
+          { name: "status", schema: t("Text"), description: "Workflow dispatch status and run URL." },
+        ],
+      },
+      satisfies: ["package-release"],
+      requires: { runtime: ["gh"], network: true },
+      remedies: [
+        { host: "api.github.com", tool: "package-release-manual" },
+      ],
     }),
     defineTool({
       id: "rail-standalone-pages",
