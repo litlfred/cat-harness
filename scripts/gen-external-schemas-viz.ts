@@ -40,12 +40,13 @@
  *   bun run cat-harness/scripts/gen-external-schemas-viz.ts --check
  */
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { dirname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { baseDocsDir } from "./compose-docs.js";
 import { loadSpecs, namespacesInUse } from "./external-schemas.js";
 import { specUsers, type SpecUse, type SpecUseForm, type SpecUsers } from "./spec-users.js";
+import { gitCorpus } from "../schemas/git-corpus.js";
 import { BASE_GRAPH_TYPOLOGIES, defaultGraphTypologies } from "../schemas/graph-typology-registry.js";
 import {
   undeclaredNamespaces,
@@ -67,9 +68,11 @@ const KIND = "external-schema";
 
 /** Every declared user of every spec, read from the users (bean `u63y`). */
 export function declaredUsers(specs: readonly ExternalSchema[], repoRoot = REPO): SpecUsers {
-  // input-site: tree #a397b180 — ls-files: the index
-  const ls = Bun.spawnSync(["git", "ls-files"], { cwd: repoRoot });
-  const files = new TextDecoder().decode(ls.stdout).split("\n").filter(Boolean);
+  // The checkout's corpus, mounts included. A bare `git ls-files` listed only
+  // what the checkout's own git tracks; in the index checkout every instance
+  // is a remote mount that git ignores, so no declaration was found and every
+  // specification read as unused.
+  const files = (gitCorpus(repoRoot) ?? []).map((f) => relative(repoRoot, f).split(sep).join("/")).sort();
   // BASE's kinds, read THROUGH the registry: since bean riit (step 1c) a
   // kind's validator refs are `validators/` nodes the registry joins on, so
   // the code list alone carries none and the `kind` form would vanish.
