@@ -13,16 +13,16 @@ permalink: /glossary/schema-fields/f-l/
 
 Candidate terms extracted from every schema field with a doc comment: `<Declaration>.<field>` as the label, the comment's first paragraph as the definition. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2001 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 165 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2003 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 165 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
 
 One of 4 pages of this type, split by the first letter of the label: <a href="{{ '/glossary/schema-fields/' | relative_url }}">all parts</a>.
 
-**Size:** this page holds 439 terms and is 243 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 441 terms and is 244 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>2294</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2294</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>2296</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2296</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -32,7 +32,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">439</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">441</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-F">F</a> <a href="#letter-G">G</a> <a href="#letter-H">H</a> <a href="#letter-I">I</a> <a href="#letter-J">J</a> <a href="#letter-K">K</a> <a href="#letter-L">L</a></nav>
 
@@ -2193,6 +2193,13 @@ KgImage.avatarRegion <span class="fa-gloss-status">candidate, extracted</span>
 <p>Where the SUBJECT of this image is, as fractions of its size — the box a square avatar frame clips to.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/kg-node.ts"><code>cat-harness/schemas/kg-node.ts#KgImage.avatarRegion</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--kg-node.kgimage.ground" data-fa-state="extracted" data-fa-gloss="">
+KgImage.ground <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>What the navbar draws BEHIND this image when it is an avatar: <code>tone</code> (the default), the instance's hue square, which a card-art crop covers; or <code>none</code>, the image on the rail itself, for a mark that is transparent around its shape (issue #46, gap 5).</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/kg-node.ts"><code>cat-harness/schemas/kg-node.ts#KgImage.ground</code></a></p>
+</dd>
 <dt id="cat-harness--kg-schema-fields--kg-node.kgimage.height" data-fa-state="extracted" data-fa-gloss="">
 KgImage.height <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -2241,6 +2248,13 @@ KgImage.width <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>Intrinsic width in pixels, so a renderer can reserve space.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/kg-node.ts"><code>cat-harness/schemas/kg-node.ts#KgImage.width</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--kg-node.kgimageschema.ground" data-fa-state="extracted" data-fa-gloss="">
+KgImageSchema.ground <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>&#123;@link KgImage.ground}.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/kg-node.ts"><code>cat-harness/schemas/kg-node.ts#KgImageSchema.ground</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--todo.kgindex.tasks" data-fa-state="extracted" data-fa-gloss="">
 KgIndex.tasks <span class="fa-gloss-status">candidate, extracted</span>

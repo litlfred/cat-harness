@@ -19584,6 +19584,25 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/kg-node.kgimage.ground",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "KgImage.ground"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "What the navbar draws BEHIND this image when it is an avatar: `tone` (the default), the instance's hue square, which a card-art crop covers; or `none`, the image on the rail itself, for a mark that is transparent around its shape (issue #46, gap 5)."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/kg-node.ts#KgImage.ground",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/kg-node.kgimage.height",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -19714,6 +19733,25 @@
         }
       ],
       "dcterms:source": "cat-harness/schemas/kg-node.ts#KgImage.width",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/kg-node.kgimageschema.ground",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "KgImageSchema.ground"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "{@link KgImage.ground}."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/kg-node.ts#KgImageSchema.ground",
       "skos:note": "candidate"
     },
     {

@@ -24,9 +24,9 @@
       "@type": "bootstrap:Skill",
       "name": "iris-oxigraph",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/cac0f1238d1640b8473621c8f92d04d98a2cfb3e059721f228f0d6fffe7e7325",
-        "bytes": 8511,
-        "sha256": "cac0f1238d1640b8473621c8f92d04d98a2cfb3e059721f228f0d6fffe7e7325"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d87efa3ec8500f99616d23e807e0059579f8175374ddd30d580b0781ddf070ea",
+        "bytes": 8515,
+        "sha256": "d87efa3ec8500f99616d23e807e0059579f8175374ddd30d580b0781ddf070ea"
       },
       "title": "Oxigraph Multi-Graph Search & Discovery for WHO IRIS"
     }

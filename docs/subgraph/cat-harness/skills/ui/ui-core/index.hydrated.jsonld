@@ -119,13 +119,13 @@
       "hasInstructions": true,
       "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/ui-core",
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-      "instructionLines": 607,
+      "instructionLines": 631,
       "instructionsPath": "skills/ui/ui-core/harness-tiles.md",
       "name": "harness-tiles",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/eec40f18c68743ea6c9d3b0d59a4f4b32a562959db283c6b44604f032cfabe65",
-        "bytes": 35098,
-        "sha256": "eec40f18c68743ea6c9d3b0d59a4f4b32a562959db283c6b44604f032cfabe65"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/3ec34994435dd04616b2554406392f2fc6831cb51e76b00af58ac6d19f08c3e9",
+        "bytes": 36666,
+        "sha256": "3ec34994435dd04616b2554406392f2fc6831cb51e76b00af58ac6d19f08c3e9"
       },
       "title": "A tile is the harness's, not the node's"
     },
@@ -194,13 +194,13 @@
       "hasInstructions": true,
       "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/ui-core",
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-      "instructionLines": 161,
+      "instructionLines": 176,
       "instructionsPath": "skills/ui/ui-core/liquid-templates.md",
       "name": "liquid-templates",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/3ed5124e36f79c15451e831be7c4f5606b3a98db526e3b52296a4d00669873ec",
-        "bytes": 9335,
-        "sha256": "3ed5124e36f79c15451e831be7c4f5606b3a98db526e3b52296a4d00669873ec"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d8e53229b4bfd7e76a8febb7d4d10b4bba1278eb961444ffca5ad4a5205aa3da",
+        "bytes": 10295,
+        "sha256": "d8e53229b4bfd7e76a8febb7d4d10b4bba1278eb961444ffca5ad4a5205aa3da"
       },
       "title": "Liquid templates — layout only, every fact from the graph"
     },

@@ -7,17 +7,17 @@
       "@id": "http://smart.who.int/base/smart-base.jsonld#skill/dak-l1-library",
       "@type": "bootstrap:Skill",
       "ambiguous": false,
-      "description": "Build a DAK's library from the L1 sources its Component 1 cites, and the L1 knowledge graph that records them. Read when starting or extending a DAK library, when a DAK's guidance changes, and before writing any L1 graph for a DAK. Covers fetching a cited WHO IRIS item, ingesting it, extracting the Component 1 graph, and the two validators it must pass.",
+      "description": "Build a DAK's library from the L1 sources its Component 1 cites, and the L1 knowledge graph that records them. Read when starting or extending a DAK library, when a DAK's guidance changes, and before writing any L1 graph for a DAK. Covers fetching a cited WHO IRIS item, ingesting it, deciding whether it is L1 (declared > context > inferred), extracting the Component 1 graph, the L1 graph of each L1 source as a specialisation of its library entry, and the layering rule: the library is upstream of L1.",
       "hasIOContract": false,
       "hasInstructions": true,
       "inSubgraph": "http://smart.who.int/base/smart-base.jsonld#directory/smart-base-skills",
-      "instructionLines": 102,
+      "instructionLines": 174,
       "instructionsPath": "skills/content/authoring-who-smart-guidelines/dak-l1-library.md",
       "name": "dak-l1-library",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6a89820f2024f97d13f93d2369508cc1278a42835d642fab7117fe72179ee9c8",
-        "bytes": 5292,
-        "sha256": "6a89820f2024f97d13f93d2369508cc1278a42835d642fab7117fe72179ee9c8"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b6f66d3a12c91ed243091a7d568a8336efaf46dc1ad14cfd1db63a68adf30720",
+        "bytes": 9806,
+        "sha256": "b6f66d3a12c91ed243091a7d568a8336efaf46dc1ad14cfd1db63a68adf30720"
       },
       "title": "dak-l1-library"
     },

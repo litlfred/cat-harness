@@ -895,6 +895,12 @@
       "title": "SKOS Simple Knowledge Organization System Reference"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#externalSchema/w3c-sparql-1.1-query",
+      "@type": "cat-harness:ExternalSchema",
+      "name": "w3c-sparql-1.1-query",
+      "title": "SPARQL 1.1 Query Language"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#externalSchema/w3c-web-annotation",
       "@type": "cat-harness:ExternalSchema",
       "name": "w3c-web-annotation",

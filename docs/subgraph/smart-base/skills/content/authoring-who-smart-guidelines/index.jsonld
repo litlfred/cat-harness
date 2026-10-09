@@ -8,9 +8,9 @@
       "@type": "bootstrap:Skill",
       "name": "dak-l1-library",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6a89820f2024f97d13f93d2369508cc1278a42835d642fab7117fe72179ee9c8",
-        "bytes": 5292,
-        "sha256": "6a89820f2024f97d13f93d2369508cc1278a42835d642fab7117fe72179ee9c8"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b6f66d3a12c91ed243091a7d568a8336efaf46dc1ad14cfd1db63a68adf30720",
+        "bytes": 9806,
+        "sha256": "b6f66d3a12c91ed243091a7d568a8336efaf46dc1ad14cfd1db63a68adf30720"
       },
       "title": "dak-l1-library"
     },
