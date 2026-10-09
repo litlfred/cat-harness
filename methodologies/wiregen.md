@@ -7,7 +7,7 @@ origin: >
   "Designing with Language: Wireframing UI Design Intent with Generative Large
   Language Models", arXiv:2312.07755v1 [cs.HC], 12 Dec 2023. Ingested in full at
   `cat-harness/library/arxiv-2312.07755v1/`. The source states no licence, and
-  its licence could not be established (see `check:source-licence`). Section numbers below are the paper's.
+  its licence could not be established (see `check:source-licence`).
 evidence:
   - library/arxiv-2312.07755v1
 applies-when: >
@@ -26,6 +26,8 @@ applies-when: >
 **Placed in cat-harness** (owner, 2026-09-23: *"put wireframe in cat-harness, not folio-assist(-core)"*). The method is domain-neutral, and `methodology-adoption` §4 puts a domain-neutral method in the harness. It was first drafted in litlfred/ihris, and its first use was that folio's data-model site. Issue #1023.
 
 ## What the method says (rendered faithfully)
+
+Section numbers below are the paper's.
 
 1. **Design intent comes first, as language** (§3, §5.2). A short natural-language description of what the screen is for and what it holds.
 2. **Mid-fidelity is the target** (§3.1.1). The wireframe is monochrome and simplified, but it carries **real content**, **semantic icons** and interactive elements, not boxes and placeholder text.

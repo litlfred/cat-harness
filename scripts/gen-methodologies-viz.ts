@@ -56,7 +56,7 @@
  *   bun run cat-harness/scripts/gen-methodologies-viz.ts --check
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join, relative, resolve, posix } from "node:path";
+import { basename, dirname, isAbsolute, join, relative, resolve, posix } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { baseDocsDir } from "./compose-docs.js";
@@ -68,6 +68,7 @@ import {
 } from "./check-methodology-evidence.js";
 import { libraryResolver, type LibraryResolver } from "./lib/library-links.ts";
 import { conventionalPage, handledDirectories, withRendersFrontMatter } from "./viewer-declarations.js";
+import { readDeclaration } from "../schemas/cat-harness.js";
 
 /** This generator's Tool node (`tools/viewers.ts`), named on every page it draws. */
 const VIEWER_TOOL = "methodologies-viewer";
@@ -113,7 +114,13 @@ export interface MethodologyRow {
  * so the join stays testable without one.
  */
 export function instanceOf(node: string, instanceRoot: string, repoRoot: string): string {
-  const rel = relative(repoRoot, resolve(instanceRoot, node));
+  const resolved = resolve(instanceRoot, node);
+  const relInstance = relative(instanceRoot, resolved);
+  if (!relInstance.startsWith("..") && !isAbsolute(relInstance)) {
+    const decl = readDeclaration(instanceRoot);
+    if (decl?.name) return decl.name;
+  }
+  const rel = relative(repoRoot, resolved);
   const seg = rel.split("/")[0] ?? "";
   // Still `..` means the node sits OUTSIDE the repository, which no declared
   // graph should. Reported as itself rather than guessed at: a wrong instance
@@ -168,7 +175,12 @@ export function methodologyRows(
  * `conventionalPage`). Never a literal — `site-dir-single-answer` refuses one.
  */
 export function pageRelPath(repo = REPO): string | undefined {
-  return conventionalPage(join(repo, "cat-harness"), KIND);
+  const catRoot = existsSync(join(repo, "cat-harness.json"))
+    ? repo
+    : existsSync(join(repo, "cat-harness"))
+      ? join(repo, "cat-harness")
+      : repo;
+  return conventionalPage(catRoot, KIND);
 }
 
 /** The base docs layer — the same answer `compose-docs.ts` uses. */
@@ -188,6 +200,31 @@ const CSS = `
 .mv-stat{flex:1 1 8rem;border:1px solid rgba(128,128,128,.35);border-radius:6px;padding:.5rem .7rem}
 .mv-stat b{display:block;font-size:1.25rem;line-height:1.2}
 .mv-stat span{font-size:.75rem;opacity:.75}
+.mv-scroll-hint{display:none;font-size:.78rem;color:var(--muted,#888);margin:-.5rem 0 .5rem}
+@media (max-width: 799.98px) {
+  .mv-scroll-hint{display:block}
+  .table-wrapper {
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+  }
+  @supports (animation-timeline: scroll()) {
+    .table-wrapper {
+      mask-image: linear-gradient(to right,
+        transparent 0, #000 var(--fa-cue-l),
+        #000 calc(100% - var(--fa-cue-r)), transparent 100%);
+      animation: fa-scroll-cue linear both;
+      animation-timeline: scroll(self inline);
+    }
+  }
+}
+@property --fa-cue-l { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@property --fa-cue-r { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@keyframes fa-scroll-cue {
+  0%   { --fa-cue-l: 0px;    --fa-cue-r: 2.5rem; }
+  12%  { --fa-cue-l: 2.5rem; }
+  88%  { --fa-cue-r: 2.5rem; }
+  100% { --fa-cue-l: 2.5rem; --fa-cue-r: 0px; }
+}
 `;
 
 /**
@@ -211,24 +248,22 @@ function cell(v: string): string {
 /**
  * A long prose field, trimmed for a table cell with the full text below it.
  *
- * ## The cut never leaves a span open
- *
- * A fixed-length cut landed INSIDE a code span on the `madr` row — `(see
- * \`kepner-tregoe…` — and the unmatched backtick paired with the next one on the
- * line, in the `declared by` cell. Everything between became one code span, the
- * cell pipes inside it stopped being cell boundaries, and kramdown rendered the
- * WHOLE table as a paragraph of pipes (owner, 2026-09-24, bean `7w1a`). So an
- * odd backtick count cuts back to before the unmatched backtick, and an odd `**`
- * count likewise: an open bold run does not break the table, but it does print
- * two stray asterisks.
+ * Avoids arbitrary mid-word cuts and unclosed spans. Cuts at word boundaries,
+ * closes any open backticks or bold markers, and never leaves a bare ellipsis.
  */
 export function short(v: string, n = 150): string {
   const one = cell(v);
   if (one.length <= n) return one;
-  let cut = one.slice(0, n - 1);
-  if ((cut.match(/`/g) ?? []).length % 2 === 1) cut = cut.slice(0, cut.lastIndexOf("`"));
-  if ((cut.match(/\*\*/g) ?? []).length % 2 === 1) cut = cut.slice(0, cut.lastIndexOf("**"));
-  return cut.trimEnd() + "…";
+  const sub = one.slice(0, n);
+  const lastSpace = sub.lastIndexOf(" ");
+  let cut = lastSpace > 0 ? sub.slice(0, lastSpace) : sub;
+  const backticks = (cut.match(/`/g) ?? []).length;
+  if (backticks % 2 === 1) cut += "`";
+  const bolds = (cut.match(/\*\*/g) ?? []).length;
+  if (bolds % 2 === 1) cut += "**";
+  cut = cut.trimEnd();
+  if (cut.length === 0) return one;
+  return cut + "…";
 }
 
 /**
@@ -291,13 +326,15 @@ export function page(
     "column to read first. A methodology whose applicability is unstated is one an",
     "agent picks by resemblance, which is why the schema requires the field.",
     "",
+    '<p class="mv-scroll-hint">Scroll horizontally to see all columns &rarr;</p>',
+    "",
     "| methodology | applies when | origin held? | declared by |",
     "|---|---|---|---|",
   ];
 
   for (const r of rows) {
     b.push(
-      `| **[${cell(r.title)}](#${r.name})**<br>\`${cell(r.name)}\` | ${short(r.appliesWhen)} | ` +
+      `| **[${cell(r.title)}](#${r.name})**<br>\`${cell(r.name)}\` | ${cell(r.appliesWhen)} | ` +
         `${BADGE[r.state]} | \`${cell(r.instance)}\` |`,
     );
   }
@@ -318,16 +355,17 @@ export function page(
   );
 
   for (const r of rows) {
+    const cleanOrigin = cell(r.origin)
+      .replace(/\s*Section numbers below are the paper's\.?/gi, "")
+      .trim();
     b.push(
-      `### ${cell(r.title)}`,
-      "",
-      `<a id="${r.name}"></a>`,
+      `### ${cell(r.title)} {#${r.name}}`,
       "",
       `\`${cell(r.name)}\` — declared by \`${cell(r.instance)}\` — ${BADGE[r.state]}`,
       "",
       `**Applies when.** ${cell(r.appliesWhen)}`,
       "",
-      `**Origin.** ${cell(r.origin)}`,
+      `**Origin.** ${cleanOrigin}`,
       "",
     );
     if (r.evidence.length > 0) {
@@ -411,12 +449,24 @@ if (import.meta.main) {
   }
 
   // The page says which directories it draws (#1168 B7a-2).
+  const declName = readDeclaration(INSTANCE_ROOT)?.name ?? "cat-harness";
+  const bName = basename(INSTANCE_ROOT);
+  const handled = handledDirectories(REPO, INSTANCE_ROOT, KIND, "corpus").map((p) => {
+    if (declName && (p === bName || p.startsWith(bName + "/"))) {
+      return declName + p.slice(bName.length);
+    }
+    return p;
+  });
+
   const rendered = withRendersFrontMatter(
     page(rows, report, libraryResolver(REPO, INSTANCE_ROOT), PAGE),
-    handledDirectories(REPO, INSTANCE_ROOT, KIND, "corpus"),
+    handled,
     VIEWER_TOOL,
   );
-  const out = join(baseDocsDir(REPO), PAGE);
+  const docsBase = existsSync(join(INSTANCE_ROOT, "docs"))
+    ? join(INSTANCE_ROOT, "docs")
+    : baseDocsDir(REPO);
+  const out = join(docsBase, PAGE);
 
   if (check) {
     const current = existsSync(out) ? readFileSync(out, "utf-8") : "";
