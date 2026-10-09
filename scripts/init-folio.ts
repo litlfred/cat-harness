@@ -678,7 +678,8 @@ folio/${o.slug}/          the document
   <chapter>/<root>.ts      a block manifest
   <chapter>/<root>.md      that block's prose
 folio/schema/            re-export shim for the platform's builders
-test/results/block-qa/     QA verdicts, one per block, mirroring folio/ (machine-written — never hand-edit)
+test/results/block-qa/     QA verdicts, one per block, mirroring folio/ (machine-written working copy — published to qa-reports)
+test/attestations/        reviewer judgements and baseline attestations (committed on main)
 library/                   ingested source documents (read-only reference)
 uploads/                   source PDFs, for offline citation verification
 ${assistant}/              the platform
@@ -697,10 +698,10 @@ bun run ${platformDir(assistant)}/content/pipeline/qa-sweep.ts folio  # QA every
 ## QA — every block is checked from the first commit
 
 \`qa-sweep\` runs every criterion a script can check against each block, and
-writes one verdict file per block under \`test/results/block-qa/\`. **Commit
-those files with the edit they are about**: a verdict is keyed on the block's
-content hash, so one that is older than its block reads as stale, never as
-passing.
+writes one verdict file per block under \`test/results/block-qa/\`. Derived QA
+verdicts live on the orphan \`qa-reports\` branch (published by CI), rather than
+being committed to \`main\`. Judgements stay on \`main\` in \`test/attestations/\`.
+The working copy under \`test/results/\` is machine-written.
 
 The staging preview sweeps each pull request as well (\`.github/workflows/staging.yml\`),
 so the review page's QA column reports that build. \`.github/workflows/qa-sweep.yml\`

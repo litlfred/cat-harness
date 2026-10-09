@@ -16,7 +16,7 @@
  * cat-harness has none of it.
  */
 import { describe, test, expect, afterEach } from "bun:test";
-import { mkdtempSync, rmSync, existsSync, readFileSync, writeFileSync, symlinkSync } from "fs";
+import { mkdtempSync, rmSync, existsSync, readFileSync, writeFileSync, symlinkSync, mkdirSync } from "fs";
 import { join, resolve } from "path";
 import { tmpdir } from "os";
 
@@ -74,8 +74,10 @@ const REPO_ROOT = resolve(import.meta.dir, "../../..");
 const dirs: string[] = [];
 
 function tmp(): string {
-  const d = mkdtempSync(join(tmpdir(), "folio-init-"));
-  dirs.push(d);
+  const base = mkdtempSync(join(tmpdir(), "folio-init-base-"));
+  dirs.push(base);
+  const d = join(base, "folio");
+  mkdirSync(d);
   return d;
 }
 

@@ -21,8 +21,9 @@ afterEach(() => {
 
 describe("a new folio is QA'd from its first commit", () => {
   test("AGENTS.md documents the sweep and where its verdicts go", () => {
-    const root = mkdtempSync(join(tmpdir(), "init-qa-doc-"));
-    dirs.push(root);
+    const repo = mkdtempSync(join(tmpdir(), "init-qa-doc-"));
+    dirs.push(repo);
+    const root = join(repo, "doc");
     initFolio({ targetDir: root, contentType: "document", slug: "qa-doc", title: "QA Doc", authors: ["A"], link: "sibling", assistantPath: "folio-assistant", skipVcs: true });
     const agents = readFileSync(join(root, "AGENTS.md"), "utf-8");
     expect(agents).toContain("bun run folio-assistant/cat-harness/content/pipeline/qa-sweep.ts folio");
