@@ -407,6 +407,8 @@ With the recommended option A:
 
 ### PR9 (follow-up): docs pages follow their subject
 
+> **Extended 2026-10-09** by [Semantic subgraphs](semantic-subgraphs-2026-10-09.html): the owner asked for concern groups a downstream can MOUNT across docs, skills and code, and for the site chrome and the themes to be their own subgraphs. That proposal measures what blocks it (a remote mount can name only top-level directory ids) and offers four layouts for carrying the groups through `docs/` and `scripts/`; its recommended option keeps this proposal's kind-first layout (§1.1).
+
 The harness docs folio still documents the moved processes. Under `1g4s`, a dependent's `docs/` is a named member of `docs`, so each page moves to its owner's `docs/`. Nothing is lost from the site.
 
 | docs folio pages | to |

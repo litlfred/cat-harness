@@ -301,7 +301,7 @@ The owner ruled on 2026-10-06 (bean `0mpw`, `remote-mount.md`): **no git submodu
 | **Package import** | published tools | The parent imports the tools' Zod schemas and pipeline writers as an npm package dependency. |
 | **Upstream pins** | maintenance | `upstream-pins.json`, maintained by `upstream-version-adoption.bpmn`. |
 
-### Ten separation lessons learned (2026-10-08)
+### Separation lessons learned (2026-10-08, extended 2026-10-09)
 
 1. **Downstream Gitignore Contract**: When remote mounts populate an instance directory in the consumer repository, the consumer's `.gitignore` must ignore the mounted paths. Otherwise, git treats external files as uncommitted local files. `index.config.json` automatically includes all `remoteMounts` paths in the generated `.gitignore`.
 2. **Folded Layer Aliases**: When an instance or subgraph is folded into another (e.g. `cat-openapi` folded into `cat-harness` as named subgraph `openapi`), existing external forks or historical dependencies may still carry `needs: ["cat-openapi"]`. `schemas/harness-config.ts` maintains `FOLDED_INSTANCE_ALIASES` to resolve these transparently without breaking dependency graphs.
@@ -321,6 +321,7 @@ The owner ruled on 2026-10-06 (bean `0mpw`, `remote-mount.md`): **no git submodu
 12. **Monorepo Coordinator Demotion**: Once tools and code are extracted to their respective packages, the root `package.json` is demoted to a private coordinator (`"private": true`) with narrowed `tsconfig.json` (`test/**/*.ts`). The root platform coordinates development workspaces, mounts, and integration tests, but never directly exports or publishes tool implementations.
 13. **Ephemeral File Purging and Root Hygiene**: Ephemeral generated directories (`_kg/`, `build/`, `test-results/`) must NEVER be committed to the root repository or left unignored. Build outputs belong to the tool that produces them.
 14. **Instance Memory Preservation**: Root directories `beans/`, `todos/`, and `fsh-guts/` are the instance's own durable working memory (the agent's plan, the user's todo queue, and the archival store). They are never overlaid across instances, never extracted to downstream packages, and stay at root by design.
+15. **A cutover is not done until the instance has re-pointed and can publish itself (who-iris, 2026-10-09)**: folio-assistant consumed `litlfred/who-iris` remotely while who-iris still declared `livesAt: { repository: "litlfred/folio-assistant", path: "who-iris" }`, had no `iriBase`, and had never had stage 7 or 12. `livesAt` is not a comment: `remote-mount.ts` takes `livesAt.path` as the mount path and `seed-ready` reads it as "still staged". And `/who-iris/` had only ever been a mount inside the parent's site build, so `litlfred.github.io/who-iris/` served nothing. The generated pages also kept absolute links to the parent's paths (`folio-assistant/.../who-iris-approval/uploads/...`), which 404 once the bytes moved. Before stage 13: `livesAt` is gone, `iriBase` is declared, and the instance's own site builds from its own repository. Building that site exposed the next gap, that a downstream cannot compose a site without the harness's entire `docs/` graph, which is [Semantic subgraphs](../../../docs/proposals/semantic-subgraphs-2026-10-09.md).
 
 ## Rollback
 
