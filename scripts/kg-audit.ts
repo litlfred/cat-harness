@@ -57,6 +57,7 @@ import { auditTestPlans, jsonFilesUnder } from "./test-plan-audit.js";
 import { processArrowFindings, schemaArrowFindings } from "./arrow-direction.js";
 import { contentCodeFindings, contentInstanceCode } from "./content-holds-code.js";
 import { orphanSubjectResolves } from "./orphan-detector.js";
+import { evaluateActorFactConsumers } from "./actor-facts.js";
 import { classifyName, diagramProse, generalDeclarationProse, namedFiles } from "./prose-names.js";
 import { readSchemaGraph } from "./schema-graph.js";
 import { checkTools, unresolvedPaths } from "./check-tools.js";
@@ -2422,6 +2423,12 @@ function auditGraph(
       "actor-capabilities-resolve": entry(badCaps),
       "actor-permissions-resolve": entry(badPerms),
       "actor-is-not-a-role": entry(roleish),
+      "actor-fact-has-consumer": evaluateActorFactConsumers({
+        actors,
+        processes,
+        workflowFiles: workflowFiles(root, corpusScopeFor(root)),
+        policiesDir: POLICY_DIR,
+      }),
       // A story points at its role (#1168); a story whose role is not declared
       // is told as nobody. Only this instance's roles are judged — see
       // `danglingStoryRoles`.
