@@ -219,17 +219,22 @@ export interface StepExemption {
 export const PRECONDITION_STEPS: readonly string[] = ["bun run cat qa:working-copy"];
 
 const OWN_STEP_EXEMPTIONS: StepExemption[] = [
+  // The `nn8e` remote-mount replay used to be exempted here, matched on
+  // `/cat-harness/scripts/mount-from-lock.ts`. Since the cat-harness cutover
+  // the workflows reach it as `bash .github/mount-from-lock.sh` (cat-harness is
+  // itself a mount, so the wrapper fetches the pinned replayer); that is not a
+  // `bun` line, which is all this reader extracts, so no exemption is needed
+  // and the old one exempted nothing — the stale-exemption test's finding.
   {
-    // Bean `nn8e` (#2462): bootstrap/, bootstrap-tools/ and every separated
-    // layer arrive as REMOTE MOUNTS replayed from the committed lock, right
-    // after checkout. A SETUP step with no verdict of its own: the offline
-    // `mount:lock:check` gate judges the result, and remote-mount.test.ts
-    // asserts the replay.
-    match: "/cat-harness/scripts/mount-from-lock.ts",
-    kind: "ci-only",
+    // Bean `hupw`: the IG instances are remote mounts of their forks, which
+    // do not commit the pages this checkout generates for them, so the
+    // publish builds write them. (In the monorepo since before the
+    // separation; this repository was seeded without it.)
+    match: "bun run smart:pages:publish",
+    kind: "covered-by",
     reason:
-      "a SETUP step, not a check: it lays down the remote mounts the committed lock pins (the submodules' successor); " +
-      "a contributor runs `bun run cat mount:lock`, and the session-start hook does it for them",
+      "a BUILD step, not a check: it writes the mounted IG instances' docs/ and OpenAPI pages at publish; the gate " +
+      "`smart:pages` (code-quality-gates) runs the same docs generator over the mounts",
   },
   {
     // Bean `9c7h`: fsh-guts is kept on `cat/cat-harness/fsh-guts`, so every
@@ -1311,6 +1316,24 @@ export interface ScriptExemption {
  * whole difference, since the comment silently covered six of nine.
  */
 const OWN_SCRIPT_EXEMPTIONS: ScriptExemption[] = [
+  {
+    script: "check:change-size",
+    kind: "report",
+    reason:
+      "A MEASUREMENT OF ONE CHANGE against a base ref (`--against origin/main`), not a property of a commit: the same tree is " +
+      "small against one base and large against another. It is advisory by its own header (report-only until the ~400-line " +
+      "threshold is calibrated, spec-kit Child 4 / issue #754), so as a CI gate it would red ordinary work on a number nobody " +
+      "has yet agreed is a defect",
+  },
+  {
+    script: "check:spec",
+    kind: "report",
+    reason:
+      "IT HAS NO SUBJECT IN A COMMIT: it validates ONE specification, named by `--issue <n>` or `--file <path>`, and reads " +
+      "specs from issue comments rather than from a directory (FR-013, spec-kit Child 2 / issue #752). Run bare it has " +
+      "nothing to judge, so as a CI step it would be a gate whose normal state is unable to fire; the CRDM process runs it " +
+      "on the spec in hand",
+  },
   {
     script: "skill:register:declarations:check",
     kind: "covered-by",
