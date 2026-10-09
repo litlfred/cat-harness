@@ -101,7 +101,7 @@ strictly worse than declaring none.
 
 **Ingested sources:**
 
-- [`library/arxiv-2607.20636v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2607.20636v1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2607.20636v1/README.md) · [source](https://arxiv.org/abs/2607.20636v1)
+- [`library/arxiv-2607.20636v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2607.20636v1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2607.20636v1/README.md) · [source](https://arxiv.org/abs/2607.20636v1)
 
 ### Bidirectional agentic autoformalization — extract, compile-fix, check faithfulness, then informalize back without the source
 
@@ -115,7 +115,7 @@ strictly worse than declaring none.
 
 **Ingested sources:**
 
-- [`library/arxiv-2602.16554v1`](../cat-harness/library/folio-assistant-sci/#folio-assistant-sci%2Farxiv-2602.16554v1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-sci/library/arxiv-2602.16554v1/README.md) · [source](https://arxiv.org/abs/2602.16554v1)
+- [`library/arxiv-2602.16554v1`](../cat-harness/library/folio-assistant-sci/#folio-assistant-sci%2Farxiv-2602.16554v1) · [item page](https://github.com/litlfred/folio-assistant-sci/blob/main/library/arxiv-2602.16554v1/README.md) · [source](https://arxiv.org/abs/2602.16554v1)
 
 ### Blueprint-driven formalization — Lean as the single source of dependency and status, the blueprint node as the unit of work
 
@@ -129,7 +129,7 @@ strictly worse than declaring none.
 
 **Ingested sources:**
 
-- [`library/arxiv-2601.22554v1`](../cat-harness/library/folio-assistant-sci/#folio-assistant-sci%2Farxiv-2601.22554v1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-sci/library/arxiv-2601.22554v1/README.md) · [source](https://arxiv.org/abs/2601.22554v1)
+- [`library/arxiv-2601.22554v1`](../cat-harness/library/folio-assistant-sci/#folio-assistant-sci%2Farxiv-2601.22554v1) · [item page](https://github.com/litlfred/folio-assistant-sci/blob/main/library/arxiv-2601.22554v1/README.md) · [source](https://arxiv.org/abs/2601.22554v1)
 
 ### Consensus-grounded subject evaluation — independent indexers as the answer key, and a panel instead of one score
 
@@ -143,8 +143,8 @@ strictly worse than declaring none.
 
 **Ingested sources:**
 
-- [`library/arxiv-2606.04382v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2606.04382v1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2606.04382v1/README.md) · [source](https://arxiv.org/abs/2606.04382v1)
-- [`library/arxiv-2504.07199v3`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2504.07199v3) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2504.07199v3/README.md) · [source](https://arxiv.org/abs/2504.07199v3)
+- [`library/arxiv-2606.04382v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2606.04382v1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2606.04382v1/README.md) · [source](https://arxiv.org/abs/2606.04382v1)
+- [`library/arxiv-2504.07199v3`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2504.07199v3) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2504.07199v3/README.md) · [source](https://arxiv.org/abs/2504.07199v3)
 
 ### Correspondence analysis for retrieval — decompose the departure from independence, not the counts
 
@@ -158,7 +158,7 @@ strictly worse than declaring none.
 
 **Ingested sources:**
 
-- [`library/qi-hessen-vanderheijden-2023-ca-vs-lsa`](../cat-harness/library/cat-harness/#cat-harness%2Fqi-hessen-vanderheijden-2023-ca-vs-lsa) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/qi-hessen-vanderheijden-2023-ca-vs-lsa/README.md) · [source](https://doi.org/10.1007/s10844-023-00815-y)
+- [`library/qi-hessen-vanderheijden-2023-ca-vs-lsa`](../cat-harness/library/cat-harness/#cat-harness%2Fqi-hessen-vanderheijden-2023-ca-vs-lsa) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/qi-hessen-vanderheijden-2023-ca-vs-lsa/README.md) · [source](https://doi.org/10.1007/s10844-023-00815-y)
 
 ### DIIG — Digital Implementation Investment Guide
 
@@ -172,7 +172,7 @@ strictly worse than declaring none.
 
 **Ingested sources:**
 
-- [`library/9789240010567-eng`](../cat-harness/library/smart-base/#smart-base%2F9789240010567-eng) · [item page](https://github.com/litlfred/folio-assistant/blob/main/smart-base/library/9789240010567-eng/README.md)
+- [`library/9789240010567-eng`](../cat-harness/library/smart-base/#smart-base%2F9789240010567-eng) · [item page](https://github.com/litlfred/smart-base/blob/main/smart-base/library/9789240010567-eng/README.md)
 
 ### DMN — Decision Model and Notation
 
@@ -186,7 +186,7 @@ strictly worse than declaring none.
 
 **Ingested sources:**
 
-- [`library/omg-2024-dmn-1-5`](../cat-harness/library/cat-harness/#cat-harness%2Fomg-2024-dmn-1-5) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/omg-2024-dmn-1-5/README.md)
+- [`library/omg-2024-dmn-1-5`](../cat-harness/library/cat-harness/#cat-harness%2Fomg-2024-dmn-1-5) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/omg-2024-dmn-1-5/README.md)
 
 ### Doc-Researcher — parse for multiple granularities, then research iteratively against a sufficiency threshold
 
@@ -200,7 +200,7 @@ strictly worse than declaring none.
 
 **Ingested sources:**
 
-- [`library/arxiv-2510.21603v1`](../cat-harness/library/folio-assistant-core/#folio-assistant-core%2Farxiv-2510.21603v1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/library/arxiv-2510.21603v1/README.md) · [source](https://arxiv.org/abs/2510.21603v1)
+- [`library/arxiv-2510.21603v1`](../cat-harness/library/folio-assistant-core/#folio-assistant-core%2Farxiv-2510.21603v1) · [item page](https://github.com/litlfred/folio-assistant-core/blob/main/library/arxiv-2510.21603v1/README.md) · [source](https://arxiv.org/abs/2510.21603v1)
 
 ### Hybrid LLM/deterministic — the model proposes a RULE, machinery validates and runs it
 
@@ -214,7 +214,7 @@ strictly worse than declaring none.
 
 **Ingested sources:**
 
-- [`library/arxiv-2508.05192v2`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2508.05192v2) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2508.05192v2/README.md) · [source](https://arxiv.org/abs/2508.05192v2)
+- [`library/arxiv-2508.05192v2`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2508.05192v2) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2508.05192v2/README.md) · [source](https://arxiv.org/abs/2508.05192v2)
 
 ### JSON-LD 1.1 — the knowledge graph serialised as Linked Data in plain JSON
 
@@ -228,7 +228,7 @@ strictly worse than declaring none.
 
 **Ingested sources:**
 
-- [`library/w3c-2020-json-ld-1-1`](../cat-harness/library/cat-harness/#cat-harness%2Fw3c-2020-json-ld-1-1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/w3c-2020-json-ld-1-1/README.md)
+- [`library/w3c-2020-json-ld-1-1`](../cat-harness/library/cat-harness/#cat-harness%2Fw3c-2020-json-ld-1-1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/w3c-2020-json-ld-1-1/README.md)
 
 ### Kepner-Tregoe Decision Analysis
 
@@ -256,11 +256,11 @@ these.
 
 **Ingested sources:**
 
-- [`library/deerwester-1990-indexing-by-lsa`](../cat-harness/library/cat-harness/#cat-harness%2Fdeerwester-1990-indexing-by-lsa) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/deerwester-1990-indexing-by-lsa/README.md)
-- [`library/landauer-foltz-laham-1998-intro-lsa`](../cat-harness/library/cat-harness/#cat-harness%2Flandauer-foltz-laham-1998-intro-lsa) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/landauer-foltz-laham-1998-intro-lsa/README.md)
-- [`library/arxiv-0909.4061v2`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-0909.4061v2) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-0909.4061v2/README.md)
-- [`library/qi-hessen-vanderheijden-2023-ca-vs-lsa`](../cat-harness/library/cat-harness/#cat-harness%2Fqi-hessen-vanderheijden-2023-ca-vs-lsa) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/qi-hessen-vanderheijden-2023-ca-vs-lsa/README.md) · [source](https://doi.org/10.1007/s10844-023-00815-y)
-- [`library/arxiv-2202.02427v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2202.02427v1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2202.02427v1/README.md) · [source](https://arxiv.org/abs/2202.02427v1)
+- [`library/deerwester-1990-indexing-by-lsa`](../cat-harness/library/cat-harness/#cat-harness%2Fdeerwester-1990-indexing-by-lsa) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/deerwester-1990-indexing-by-lsa/README.md)
+- [`library/landauer-foltz-laham-1998-intro-lsa`](../cat-harness/library/cat-harness/#cat-harness%2Flandauer-foltz-laham-1998-intro-lsa) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/landauer-foltz-laham-1998-intro-lsa/README.md)
+- [`library/arxiv-0909.4061v2`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-0909.4061v2) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-0909.4061v2/README.md)
+- [`library/qi-hessen-vanderheijden-2023-ca-vs-lsa`](../cat-harness/library/cat-harness/#cat-harness%2Fqi-hessen-vanderheijden-2023-ca-vs-lsa) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/qi-hessen-vanderheijden-2023-ca-vs-lsa/README.md) · [source](https://doi.org/10.1007/s10844-023-00815-y)
+- [`library/arxiv-2202.02427v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2202.02427v1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2202.02427v1/README.md) · [source](https://arxiv.org/abs/2202.02427v1)
 
 ### MADR — Markdown Architectural Decision Records
 
@@ -288,7 +288,7 @@ these.
 
 **Ingested sources:**
 
-- [`library/wang-rangaiah-2026-mcdm-aggregation`](../cat-harness/library/cat-harness/#cat-harness%2Fwang-rangaiah-2026-mcdm-aggregation) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/wang-rangaiah-2026-mcdm-aggregation/README.md)
+- [`library/wang-rangaiah-2026-mcdm-aggregation`](../cat-harness/library/cat-harness/#cat-harness%2Fwang-rangaiah-2026-mcdm-aggregation) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/wang-rangaiah-2026-mcdm-aggregation/README.md)
 
 ### ODRL 2.2 — what a party may do, as permission and prohibition rules over actions
 
@@ -302,7 +302,7 @@ these.
 
 **Ingested sources:**
 
-- [`library/w3c-2018-odrl-model-2-2`](../cat-harness/library/cat-harness/#cat-harness%2Fw3c-2018-odrl-model-2-2) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/w3c-2018-odrl-model-2-2/README.md)
+- [`library/w3c-2018-odrl-model-2-2`](../cat-harness/library/cat-harness/#cat-harness%2Fw3c-2018-odrl-model-2-2) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/w3c-2018-odrl-model-2-2/README.md)
 
 ### Probabilistic decision-making algorithms — and what their regret bounds are claims ABOUT
 
@@ -316,7 +316,7 @@ these.
 
 **Ingested sources:**
 
-- [`library/arxiv-2508.21620v2`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2508.21620v2) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2508.21620v2/README.md) · [source](https://arxiv.org/abs/2508.21620v2)
+- [`library/arxiv-2508.21620v2`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2508.21620v2) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2508.21620v2/README.md) · [source](https://arxiv.org/abs/2508.21620v2)
 
 ### Process-driven autoformalization — judge a formalised statement by compiling it WITH a proof, and read the first error as the step signal
 
@@ -330,7 +330,7 @@ these.
 
 **Ingested sources:**
 
-- [`library/arxiv-2406.01940v2`](../cat-harness/library/folio-assistant-sci/#folio-assistant-sci%2Farxiv-2406.01940v2) · [item page](https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-sci/library/arxiv-2406.01940v2/README.md) · [source](https://arxiv.org/abs/2406.01940v2)
+- [`library/arxiv-2406.01940v2`](../cat-harness/library/folio-assistant-sci/#folio-assistant-sci%2Farxiv-2406.01940v2) · [item page](https://github.com/litlfred/folio-assistant-sci/blob/main/library/arxiv-2406.01940v2/README.md) · [source](https://arxiv.org/abs/2406.01940v2)
 
 ### PROV-O — the record of who did what, in which role, under which plan
 
@@ -344,8 +344,8 @@ these.
 
 **Ingested sources:**
 
-- [`library/w3c-2013-prov-o`](../cat-harness/library/cat-harness/#cat-harness%2Fw3c-2013-prov-o) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/w3c-2013-prov-o/README.md)
-- [`library/w3c-2024-prov-jsonld`](../cat-harness/library/cat-harness/#cat-harness%2Fw3c-2024-prov-jsonld) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/w3c-2024-prov-jsonld/README.md)
+- [`library/w3c-2013-prov-o`](../cat-harness/library/cat-harness/#cat-harness%2Fw3c-2013-prov-o) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/w3c-2013-prov-o/README.md)
+- [`library/w3c-2024-prov-jsonld`](../cat-harness/library/cat-harness/#cat-harness%2Fw3c-2024-prov-jsonld) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/w3c-2024-prov-jsonld/README.md)
 
 ### RACI — who is involved in an activity, and in which of four ways
 
@@ -359,7 +359,7 @@ these.
 
 **Ingested sources:**
 
-- [`library/dusengumuremyi-2026-ai-mediated-raci`](../cat-harness/library/cat-harness/#cat-harness%2Fdusengumuremyi-2026-ai-mediated-raci) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/dusengumuremyi-2026-ai-mediated-raci/README.md)
+- [`library/dusengumuremyi-2026-ai-mediated-raci`](../cat-harness/library/cat-harness/#cat-harness%2Fdusengumuremyi-2026-ai-mediated-raci) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/dusengumuremyi-2026-ai-mediated-raci/README.md)
 
 ### RASCI — RACI plus Supportive, for when doing the work and owning it come apart
 
@@ -387,9 +387,9 @@ these.
 
 **Ingested sources:**
 
-- [`library/arxiv-2605.03537v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2605.03537v1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2605.03537v1/README.md) · [source](https://arxiv.org/abs/2605.03537v1)
-- [`library/arxiv-2504.19675v2`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2504.19675v2) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2504.19675v2/README.md) · [source](https://arxiv.org/abs/2504.19675v2)
-- [`library/arxiv-2504.21474v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2504.21474v1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2504.21474v1/README.md) · [source](https://arxiv.org/abs/2504.21474v1)
+- [`library/arxiv-2605.03537v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2605.03537v1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2605.03537v1/README.md) · [source](https://arxiv.org/abs/2605.03537v1)
+- [`library/arxiv-2504.19675v2`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2504.19675v2) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2504.19675v2/README.md) · [source](https://arxiv.org/abs/2504.19675v2)
+- [`library/arxiv-2504.21474v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2504.21474v1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2504.21474v1/README.md) · [source](https://arxiv.org/abs/2504.21474v1)
 
 ### SPDX 3 — a bill of materials as a graph of elements, for what crosses a trust boundary
 
@@ -403,8 +403,8 @@ these.
 
 **Ingested sources:**
 
-- [`library/omg-2024-spdx-3-0`](../cat-harness/library/cat-harness/#cat-harness%2Fomg-2024-spdx-3-0) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/omg-2024-spdx-3-0/README.md)
-- [`library/strauch-carbno-2025-spdx-3-1-supply-chain`](../cat-harness/library/cat-harness/#cat-harness%2Fstrauch-carbno-2025-spdx-3-1-supply-chain) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/strauch-carbno-2025-spdx-3-1-supply-chain/README.md)
+- [`library/omg-2024-spdx-3-0`](../cat-harness/library/cat-harness/#cat-harness%2Fomg-2024-spdx-3-0) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/omg-2024-spdx-3-0/README.md)
+- [`library/strauch-carbno-2025-spdx-3-1-supply-chain`](../cat-harness/library/cat-harness/#cat-harness%2Fstrauch-carbno-2025-spdx-3-1-supply-chain) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/strauch-carbno-2025-spdx-3-1-supply-chain/README.md)
 
 ### Specification-compiled agents — the control flow comes from the diagram, not from the model's plan
 
@@ -418,9 +418,9 @@ these.
 
 **Ingested sources:**
 
-- [`library/arxiv-2607.14456v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2607.14456v1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2607.14456v1/README.md)
-- [`library/kg-folio-asst-2026-09-30`](../cat-harness/library/cat-harness/#cat-harness%2Fkg-folio-asst-2026-09-30) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/kg-folio-asst-2026-09-30/README.md)
-- [`library/omg-2013-bpmn-2-0-2`](../cat-harness/library/cat-harness/#cat-harness%2Fomg-2013-bpmn-2-0-2) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/omg-2013-bpmn-2-0-2/README.md)
+- [`library/arxiv-2607.14456v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2607.14456v1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2607.14456v1/README.md)
+- [`library/kg-folio-asst-2026-09-30`](../cat-harness/library/cat-harness/#cat-harness%2Fkg-folio-asst-2026-09-30) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/kg-folio-asst-2026-09-30/README.md)
+- [`library/omg-2013-bpmn-2-0-2`](../cat-harness/library/cat-harness/#cat-harness%2Fomg-2013-bpmn-2-0-2) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/omg-2013-bpmn-2-0-2/README.md)
 
 ### SWOT — situation analysis over internal and external factors
 
@@ -434,8 +434,8 @@ these.
 
 **Ingested sources:**
 
-- [`library/gurel-tat-2017-swot-analysis`](../cat-harness/library/cat-harness/#cat-harness%2Fgurel-tat-2017-swot-analysis) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/gurel-tat-2017-swot-analysis/README.md)
-- [`library/sammut-bonnici-galea-2015-swot-analysis`](../cat-harness/library/cat-harness/#cat-harness%2Fsammut-bonnici-galea-2015-swot-analysis) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/sammut-bonnici-galea-2015-swot-analysis/README.md)
+- [`library/gurel-tat-2017-swot-analysis`](../cat-harness/library/cat-harness/#cat-harness%2Fgurel-tat-2017-swot-analysis) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/gurel-tat-2017-swot-analysis/README.md)
+- [`library/sammut-bonnici-galea-2015-swot-analysis`](../cat-harness/library/cat-harness/#cat-harness%2Fsammut-bonnici-galea-2015-swot-analysis) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/sammut-bonnici-galea-2015-swot-analysis/README.md)
 
 ### Verifiable AI guideline evaluation — multi-measurement debiased inference, peer councils, and hybrid no-gold-standard bounds for clinical guidelines
 
@@ -449,14 +449,14 @@ these.
 
 **Ingested sources:**
 
-- [`library/arxiv-2606.21008v3`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2606.21008v3) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2606.21008v3/README.md) · [source](https://arxiv.org/abs/2606.21008v3)
-- [`library/arxiv-2608.18294v2`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2608.18294v2) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2608.18294v2/README.md) · [source](https://arxiv.org/abs/2608.18294v2)
-- [`library/arxiv-2403.16873v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2403.16873v1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2403.16873v1/README.md) · [source](https://arxiv.org/abs/2403.16873v1)
-- [`library/arxiv-260327124v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-260327124v1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-260327124v1/README.md)
-- [`library/arxiv-2203.02010v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2203.02010v1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2203.02010v1/README.md) · [source](https://arxiv.org/abs/2203.02010v1)
-- [`library/arxiv-2505.10399v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2505.10399v1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2505.10399v1/README.md) · [source](https://arxiv.org/abs/2505.10399v1)
-- [`library/arxiv-2405.14766v2`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2405.14766v2) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2405.14766v2/README.md) · [source](https://arxiv.org/abs/2405.14766v2)
-- [`library/arxiv-2505.06046v4`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2505.06046v4) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2505.06046v4/README.md) · [source](https://arxiv.org/abs/2505.06046v4)
+- [`library/arxiv-2606.21008v3`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2606.21008v3) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2606.21008v3/README.md) · [source](https://arxiv.org/abs/2606.21008v3)
+- [`library/arxiv-2608.18294v2`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2608.18294v2) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2608.18294v2/README.md) · [source](https://arxiv.org/abs/2608.18294v2)
+- [`library/arxiv-2403.16873v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2403.16873v1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2403.16873v1/README.md) · [source](https://arxiv.org/abs/2403.16873v1)
+- [`library/arxiv-260327124v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-260327124v1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-260327124v1/README.md)
+- [`library/arxiv-2203.02010v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2203.02010v1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2203.02010v1/README.md) · [source](https://arxiv.org/abs/2203.02010v1)
+- [`library/arxiv-2505.10399v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2505.10399v1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2505.10399v1/README.md) · [source](https://arxiv.org/abs/2505.10399v1)
+- [`library/arxiv-2405.14766v2`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2405.14766v2) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2405.14766v2/README.md) · [source](https://arxiv.org/abs/2405.14766v2)
+- [`library/arxiv-2505.06046v4`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2505.06046v4) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2505.06046v4/README.md) · [source](https://arxiv.org/abs/2505.06046v4)
 
 ### WireGen: wireframing from a written design intent
 
@@ -470,7 +470,7 @@ these.
 
 **Ingested sources:**
 
-- [`library/arxiv-2312.07755v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2312.07755v1) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/arxiv-2312.07755v1/README.md) · [source](https://arxiv.org/abs/2312.07755v1)
+- [`library/arxiv-2312.07755v1`](../cat-harness/library/cat-harness/#cat-harness%2Farxiv-2312.07755v1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2312.07755v1/README.md) · [source](https://arxiv.org/abs/2312.07755v1)
 
 ### Zero trust architecture (NIST SP 800-207) — trust is never granted implicitly, it is evaluated per request at a decision point
 
@@ -484,7 +484,7 @@ these.
 
 **Ingested sources:**
 
-- [`library/nist-sp-800-207`](../cat-harness/library/cat-harness/#cat-harness%2Fnist-sp-800-207) · [item page](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/library/nist-sp-800-207/README.md) · [source](https://doi.org/10.6028/NIST.SP.800-207)
+- [`library/nist-sp-800-207`](../cat-harness/library/cat-harness/#cat-harness%2Fnist-sp-800-207) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/nist-sp-800-207/README.md) · [source](https://doi.org/10.6028/NIST.SP.800-207)
 
 ## Files in the graph that are not methodology nodes
 

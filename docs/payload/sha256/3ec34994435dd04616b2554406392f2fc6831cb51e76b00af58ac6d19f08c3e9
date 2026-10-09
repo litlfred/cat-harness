@@ -1,16 +1,13 @@
 ---
-layout: default
-generated: scripts/gen-skill-docs.ts — do not hand-edit; edit the skill
-title: 'A tile is the harness''s, not the node''s'
-parent: Skill instructions
+name: harness-tiles
+description: >
+  A tile is a function of the harness watching a directory, not of nodes.
+  Where the tile set comes from, what a tile opens, and the two gaps it reports
+  rather than hides.
+adapters: [document, paper, dak]
+profiles: [document, paper]
 ---
 
-{: .note }
-> Generated from [`cat-harness/skills/ui/ui-core/harness-tiles.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/skills/ui/ui-core/harness-tiles.md) — do not edit here.
->
-> [✎ Edit this page's source](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/skills/ui/ui-core/harness-tiles.md){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/skills/ui/ui-core/harness-tiles.md" data-repo="litlfred/folio-assistant" }
-
-{% raw %}
 # A tile is the harness's, not the node's
 
 The owner, 2026-09-20, correcting the question rather than answering it:
@@ -35,7 +32,7 @@ The declaration says what an instance **declares**. Which instances are
 instantiated **here** is a different fact, and its answer is the root
 `index.config.json` (`instances[]`). Without an index, each root
 `<name>.config.json` is the answer. **That rule — the index, the fallback, the
-reserved name `index` — is [`index-config`](index-config.md)'s,
+reserved name `index` — is [`index-config`](../../kg/kg-core/index-config.md)'s,
 not this page's.** The tiles only consume it: the navbar could not be derived
 from the declarations alone, and a directory listing is not the question a
 reader is asking.
@@ -48,7 +45,7 @@ silence.
 no local declaration: its declaration is the substrate snapshot `kg:subscribe`
 cached at the pin. `bun run cat kg:instantiate <subscription> <harness>` writes the
 config and the harness's state directories (and, under an index, the harness's
-`instances[]` entry — [`index-config`](index-config.md)), and refuses a harness that was not
+`instances[]` entry — [`index-config`](../../kg/kg-core/index-config.md)), and refuses a harness that was not
 chosen, not declared at the pin, or whose `needs` nothing here holds. The tile
 is drawn from the snapshot (`scripts/subscribed-harnesses.ts`): it links
 nowhere, because nothing of it is published here, and a snapshot that cannot
@@ -61,7 +58,7 @@ as the tiles. It is never the instance the generator happens to live in, and
 never the repository's name.
 
 **Which one it is, and how a checkout says so, is
-[`index-config`](index-config.md)'s rule, not this page's.**
+[`index-config`](../../kg/kg-core/index-config.md)'s rule, not this page's.**
 Since 2026-10-07 the root `index.config.json` says it as `site.landing` — an
 instance name or `"hub"`. A folio without an index keeps the 2026-10-02
 per-config `site.landing` flag as its fallback. `resolveLandingInstance` in
@@ -84,7 +81,7 @@ and by the owner, for something else:
 
 | sense | what it means | how you tell |
 |---|---|---|
-| **1 — instantiated here** | this checkout runs it | an entry in the root `index.config.json` `instances[]` — or, in a folio with no index, a root `<name>.config.json` ([`index-config`](index-config.md)). Read the file, not a number quoted here |
+| **1 — instantiated here** | this checkout runs it | an entry in the root `index.config.json` `instances[]` — or, in a folio with no index, a root `<name>.config.json` ([`index-config`](../../kg/kg-core/index-config.md)). Read the file, not a number quoted here |
 | **2 — a layer others instantiate** | a base a *downstream* repo stands up | nothing in this checkout. It is a statement about the layer's role in the stack |
 
 **No count is given for either sense, on purpose.** The first draft of this
@@ -118,7 +115,7 @@ and the check flagging its own docstring.
 A predicate that cannot separate its two senses is not a check. It is an
 **adjudication**, and this corpus already says what that means: if a mechanism
 could decide it, the process would not have been entered
-([`adjudication`](adjudication.md)).
+([`adjudication`](../../sdlc/sdlc-core/adjudication.md)).
 
 **What to do instead when the word is load-bearing:** say which sense, or say
 the fact. *"instantiated here"* and *"a layer downstream repos instantiate"*
@@ -631,4 +628,3 @@ parses, because the pinned `bootstrap/bootstrap.json` declares it.
 `bun run cat landing:sticky:check` fails when a card built from its declaration
 does not open with that text. A `bodyAppend` may follow the reader's text,
 and a card with a literal `body` is not compared.
-{% endraw %}
