@@ -1,6 +1,0 @@
-{
-  "$schema": "cat-harness-payload/v1",
-  "bytes": 36666,
-  "mediaType": "text/markdown; charset=utf-8",
-  "sha256": "3ec34994435dd04616b2554406392f2fc6831cb51e76b00af58ac6d19f08c3e9"
-}

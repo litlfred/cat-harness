@@ -330,9 +330,9 @@
           "instructionsPath": "skills/ui/ui-core/harness-tiles.md",
           "name": "harness-tiles",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/3ec34994435dd04616b2554406392f2fc6831cb51e76b00af58ac6d19f08c3e9",
-            "bytes": 36666,
-            "sha256": "3ec34994435dd04616b2554406392f2fc6831cb51e76b00af58ac6d19f08c3e9"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/bebba1eadfa82b40dbad29979469932f84a2095abe456a89d930907fe754e14f",
+            "bytes": 36643,
+            "sha256": "bebba1eadfa82b40dbad29979469932f84a2095abe456a89d930907fe754e14f"
           },
           "title": "A tile is the harness's, not the node's"
         },

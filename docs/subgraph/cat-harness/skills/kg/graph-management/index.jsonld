@@ -35,9 +35,9 @@
       "@type": "bootstrap:Skill",
       "name": "graph-detanglement",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d9439b7e304358cb56a0583d4649e5fd9c3fbf6457c2a8204d5d90cc23d124d4",
-        "bytes": 17969,
-        "sha256": "d9439b7e304358cb56a0583d4649e5fd9c3fbf6457c2a8204d5d90cc23d124d4"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/14d5740de9ca123899aa6fe3f92d82099f6daa9e4f2b1d464aeb0af9964e4e80",
+        "bytes": 18026,
+        "sha256": "14d5740de9ca123899aa6fe3f92d82099f6daa9e4f2b1d464aeb0af9964e4e80"
       },
       "title": "Graph detanglement — the practice, not the migration"
     },
