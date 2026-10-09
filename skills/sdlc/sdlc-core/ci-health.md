@@ -268,3 +268,26 @@ regressed. Where a check has both a subject-invariant branch and an
 audit/baseline-reachability branch, the step name in the workflow must cover both
 (e.g. `viewer pages keep the navbar they had, and audit is reachable`).
 
+## The accidental-repair trap on derived gates
+
+A green outcome on a derived gate (such as `readme:subgraphs:check`,
+`docs:harness:check`, or other verify/write pairs) must **never be read as
+"was never broken"** (bean `folio-assistant-ey1c`).
+
+Because PR branches run `merge:main` which regenerates derived files, an
+unrelated PR branch may happen to carry a freshly generated artefact. When that PR
+merges into `main`, it incidentally repairs `main`, creating an illusion in CI
+history that the commit before it was clean.
+
+Observed on 2026-10-03 (three times in two hours on `main`): PR #1938 broke `uploads/README.md`;
+PR #1940 carried a regenerated file and incidentally made `main` green again; then
+a direct web-UI upload broke it once more.
+
+**The guard:** The post-merge regeneration pipeline
+(`.github/workflows/post-merge-regen.yml`, `scripts/post-merge-regen.ts`) audits
+derived artefacts after merges to `main` and opens a reviewable repair PR if
+stale. When inspecting CI health on `main`, do not treat an accidental green as
+evidence of health: verify that post-merge checks run and derive their state
+consistently. Full details in [`merge-queue.md`](merge-queue.md) §"The accidental-repair pattern".
+
+

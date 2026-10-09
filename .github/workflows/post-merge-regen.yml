@@ -1,0 +1,78 @@
+# Post-merge regeneration check and automated repair PR pipeline — bean `folio-assistant-ey1c`.
+#
+# ## The failure this exists for
+#
+# `.github/workflows/merge-main.yml` runs `bun run cat merge:main` on an opted-in
+# PR branch when `main` moves, resolving declared conflicts and regenerating. But
+# after a PR merges into `main`, nothing regenerates `main`.
+#
+# Any merge changing an enumerated or counted directory can leave `main` red
+# (e.g. `readme:subgraphs:check` step 65 counting files in `uploads/`).
+#
+# The accidental-repair pattern: PR branches that happen to carry regenerated
+# files incidentally repair `main`, creating untrustworthy gate histories
+# (observed 3 times in 2 hours on 2026-10-03).
+#
+# ## Principles
+#
+# 1. Detected and ACTED on: main going stale on a derived artefact is detected
+#    and an automated repair action is generated.
+# 2. Reviewable PR, never direct push to main: the repair is a PR rather than a
+#    push to main, so it is reviewable and cannot bypass CI gates.
+# 3. NEGATIVE CONTROL: a merge that changes nothing counted triggers 0 repairs
+#    and opens NO repair PR, preventing churn.
+# 4. Honest reporting: if a check has no writer or its writer fails, it is
+#    reported as unrepaired/defect (exit 1), not claimed as a repair.
+
+name: Post-merge regen check and repair
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (report only, do not create PR)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: post-merge-regen
+  cancel-in-progress: false
+
+jobs:
+  check-and-repair:
+    name: Check post-merge derived artefacts
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.3.14
+
+      - name: Mount bootstrap and bootstrap-tools from lock
+        run: |
+          if [ -f "cat-harness/scripts/mount-from-lock.ts" ]; then
+            bun cat-harness/scripts/mount-from-lock.ts --root .
+          elif [ -f "scripts/mount-from-lock.ts" ]; then
+            bun scripts/mount-from-lock.ts --root .
+          fi
+
+      - name: Run post-merge regen check and automated repair
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            bun run cat post-merge:regen --dry-run
+          else
+            bun run cat post-merge:regen --create-pr
+          fi
