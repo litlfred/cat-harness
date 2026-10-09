@@ -1000,6 +1000,40 @@ force here, because the temptation is strongest when the failure is not real.
   compound command's exit status is the last command's, and a test runner's
   status has to be captured before anything else runs.
 
+## Agentic pre-merge review: warn-only and the would-have-blocked counterfactual
+
+Bean `h1uq`. Owner ruled agentic merge review **warn-only** on 2026-10-02 and confirmed 2026-10-03: *"warn only. proposal predates ruling, update it."*
+
+### Architectural decision: staying WARN-ONLY with measured justification
+
+The decision to keep agentic code review warn-only is governed by empirical evidence, not caution:
+
+1. **Literature gap**: Across five ingested agentic SE papers (CodeAgent arXiv:2402.02172v5, SWE-Debate arXiv:2404.04834v4, SWE-Router arXiv:2507.23348v1, TCAndon-Router arXiv:2601.04544v1, He et al. arXiv:2607.00053v1), **zero empirical false-positive rates (FPR) exist for an LLM judge**.
+2. **CodeAgent's unconfirmed flag rate**: CodeAgent's own human annotation revealed that **48.6% of GPT-4's flags were unconfirmed**. A reviewer where nearly half of all flags are unconfirmed cannot be a blocking gate.
+3. **SWE-Router & SWE-Debate noise boundaries**: LLM-as-a-judge suffers from self-enhancement bias, verbosity bias, and positional bias.
+4. **Deterministic compile checks stay blocking**: G5 (Lean module compilation), G6 (SUSHI FHIR compilation), and G7 (JSON-LD schema validation) are deterministic compile gates that have exact binary outcomes and remain blocking. An agentic reviewer does not share this property.
+5. **Backlog inversion**: A blocking gate over an active codebase with unreviewed content nodes would fail on existing background patterns rather than PR delta, inverting the order of necessary backfill.
+
+### The counterfactual instrument: why only a warn-only phase can measure FPR
+
+A blocking gate destroys the counterfactual: when a gate blocks, authors modify code, bypass checks, or abandon PRs. It is impossible to determine whether the flagged condition would have actually broken production or represented a false positive.
+
+By contrast, a warn-only gate records `blocking`-severity findings as **"would have blocked"** (`WouldHaveBlockedRecordSchema` in `schemas/merge-queue.ts`), pinned to the PR's `headSha`. The PR then merges to `main`. Subsequent monitoring observes whether any defect materialized, enabling humans to adjudicate findings:
+- `true_positive`: Finding correctly identified a genuine defect.
+- `false_positive`: Finding flagged benign, correct code.
+- `unknown`: Third state (inconclusive, unverified, or cannot be determined).
+
+**The third-state rule**: `unknown` is strictly preserved and never folded into `true_positive` (which would artificially deflate FPR) or `false_positive` (which would artificially inflate FPR).
+
+### Pre-registered promotion criteria
+
+To prevent choosing thresholds to fit data, promotion criteria are registered as numbers and windows *before* data collection begins (`AgenticPromotionCriteriaSchema`):
+- `minimumPrWindow`: 50 evaluated PRs.
+- `maximumFalsePositiveRate`: <= 0.05 (5% FPR: `confirmedFalsePositives / (confirmedTruePositives + confirmedFalsePositives)`).
+- `minimumReviewCoverage`: >= 0.80 (80% non-unknown adjudication: `(confirmedTruePositives + confirmedFalsePositives) / warnedFindings`).
+
+Until all three criteria are empirically proven, the agentic review remains **warn-only**.
+
 ## What this does not do yet
 
 The train's size is a fixed cap. Sizing it by risk waits for this process's
@@ -1007,3 +1041,4 @@ own run records, which is why each run is a committed instance under
 `beans/workflows/`. The tools named on the steps (`merge:overlap`,
 `merge:train`, `merge:leftover`) live on branch `claude/merge-pipeline-tools`
 until it lands.
+
