@@ -11,7 +11,6 @@ import { join } from "node:path";
 import { BeanFrontMatterSchema } from "../../schemas/bean-graph.ts";
 import { readBeans } from "../beans.ts";
 import {
-  BASELINE_FILE,
   checkBeanIssues,
   extractIssueFromBody,
   formatReport,

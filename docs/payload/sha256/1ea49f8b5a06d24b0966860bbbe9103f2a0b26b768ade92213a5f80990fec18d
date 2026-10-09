@@ -1,16 +1,8 @@
 ---
-layout: default
-generated: scripts/gen-skill-docs.ts — do not hand-edit; edit the skill
-title: 'quality-control'
-parent: Skill instructions
+input: schemas/skills/quality-control/input.schema.json
+output: schemas/skills/quality-control/output.schema.json
 ---
 
-{: .note }
-> Generated from [`folio-assistant-core/skills/content/content-lifecycle-ext/quality-control.md`](https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/skills/content/content-lifecycle-ext/quality-control.md) — do not edit here. Typed contract: [schema reference](../skills/quality-control.html).
->
-> [✎ Edit this page's source](https://github.com/litlfred/folio-assistant/edit/main/folio-assistant-core/skills/content/content-lifecycle-ext/quality-control.md){: .fa-edit-source data-fa-link="edit" data-src="folio-assistant-core/skills/content/content-lifecycle-ext/quality-control.md" data-repo="litlfred/folio-assistant" }
-
-{% raw %}
 # quality-control
 
 > Skill id: `quality-control` · Package: `content-lifecycle-ext` ·
@@ -75,13 +67,3 @@ and the content type's own conformance validator where its layer provides one
 (for a FHIR IG, that layer's validation skill). `checklistSections` narrows the pass;
 `findings` and `checklistResults` are what the reviewer reads — not
 `overallResult` alone, which is a summary of them rather than a substitute.
-{% endraw %}
-
-## Processes that run this skill
-
-| process | step(s) that name it |
-|---|---|
-| [Incremental IG build](../../processes/ig-incremental-build.html) | Post the cone report on the PR; QC gates on the aggregate QA |
-| [L3 FHIR IG pipeline](../../processes/l3-fhir-pipeline.html) | QC gates |
-| [Draft, review and publish](../../processes/draft-to-publication.html) | Run publication QA gates |
-

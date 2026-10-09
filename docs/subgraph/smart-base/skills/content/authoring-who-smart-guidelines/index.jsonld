@@ -74,9 +74,9 @@
       "@type": "bootstrap:Skill",
       "name": "smart-base-tools",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4c01b4d555c657cbc4ca37d14d7eb851d575db7fe39abbc5b5c42667378403a3",
-        "bytes": 4046,
-        "sha256": "4c01b4d555c657cbc4ca37d14d7eb851d575db7fe39abbc5b5c42667378403a3"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/fc88b971b8652e3226dd7c6088f8998f685a295bea655ffef9ecd1e1369da8d4",
+        "bytes": 5101,
+        "sha256": "fc88b971b8652e3226dd7c6088f8998f685a295bea655ffef9ecd1e1369da8d4"
       },
       "title": "smart-base Toolchain"
     },

@@ -75,7 +75,7 @@ describe("folio-paper-adapter role modelling (bean 3025)", () => {
 
     const boundSkills = new Set<string>();
     for (const r of harnessRoles.roles) {
-      for (const s of (r as any).skills || []) boundSkills.add(s);
+      for (const s of (r as { skills?: string[] }).skills || []) boundSkills.add(s);
     }
     for (const ext of sciRoles.extensions || []) {
       for (const s of ext.skills || []) boundSkills.add(s);
