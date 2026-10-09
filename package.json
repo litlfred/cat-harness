@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": false,
   "type": "module",
+  "workspaces": [
+    "bootstrap-tool[s]",
+    "../bootstrap-tool[s]"
+  ],
   "files": [
     "schemas/",
     "scripts/",
@@ -21,6 +25,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.127.0",
+    "@litlfred/bootstrap-tools": "0.1.0",
     "@unified-latex/unified-latex-util-parse": "^1.8.4",
     "bpmn-moddle": "^10.2.0",
     "csl-json": "^0.1.0",

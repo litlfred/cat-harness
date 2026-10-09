@@ -113,7 +113,7 @@ import { dirname, join, relative, resolve, sep } from "node:path";
 
 import { z } from "zod";
 
-import { SignOffSchema } from "../../bootstrap-tools/schemas/requirement-set.ts";
+import { SignOffSchema } from "@litlfred/bootstrap-tools/schemas/requirement-set.ts";
 
 import {
   artefactStub,

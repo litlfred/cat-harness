@@ -22,7 +22,7 @@ import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 
-import { BEGIN, END, plan, TEMPLATES } from "../../../bootstrap-tools/scripts/subgraph-readmes.ts";
+import { BEGIN, END, plan, TEMPLATES } from "@litlfred/bootstrap-tools/scripts/subgraph-readmes.ts";
 import { harnessInstances, harnessPlan, isStored, subdirDescriptions } from "../subgraph-readmes.ts";
 import { siteDir } from "../../schemas/cat-harness.ts";
 import { isDirectoryReadme } from "../../schemas/kg-node.ts";
@@ -203,7 +203,7 @@ describe("coverage.process — declared, absent, and could-not-determine", async
 });
 
 test("a link destination is percent-encoded per segment, parentheses included", async () => {
-  const { linkTarget } = await import("../../../bootstrap-tools/scripts/subgraph-readmes.ts");
+  const { linkTarget } = await import("@litlfred/bootstrap-tools/scripts/subgraph-readmes.ts");
   expect(linkTarget("PIIS2589750021000388 (2).pdf")).toBe("PIIS2589750021000388%20%282%29.pdf");
   expect(linkTarget("a b/c(d.md")).toBe("a%20b/c%28d.md");
   expect(linkTarget("plain.md")).toBe("plain.md");

@@ -124,7 +124,7 @@
  * @conformsTo w3c-skos
  */
 import { LEDGER_SCHEMA, LEDGER_SCHEMA_NAME, LEGACY_LEDGER_SCHEMA } from "../schemas/glossary-ledger.ts";
-import { tagCompatible } from "../../bootstrap-tools/schemas/release-iri.ts";
+import { tagCompatible } from "@litlfred/bootstrap-tools/schemas/release-iri.ts";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 

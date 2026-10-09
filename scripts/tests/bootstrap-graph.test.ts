@@ -23,8 +23,8 @@ import { describe, expect, test } from "bun:test";
 import { readFileSync, readdirSync } from "node:fs";
 import { join, resolve } from "node:path";
 
-import { GraphExportSchema } from "../../../bootstrap-tools/schemas/graph-export.ts";
-import { exportGraph } from "../../../bootstrap-tools/scripts/export-graph.ts";
+import { GraphExportSchema } from "@litlfred/bootstrap-tools/schemas/graph-export.ts";
+import { exportGraph } from "@litlfred/bootstrap-tools/scripts/export-graph.ts";
 import { isSkillMd } from "../known-skills.js";
 import {
   repoRootFor,

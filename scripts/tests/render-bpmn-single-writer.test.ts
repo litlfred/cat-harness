@@ -18,7 +18,7 @@ import { describe, expect, test } from "bun:test";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
-import { GENERATED_BY } from "../../../bootstrap-tools/scripts/generated-by.ts";
+import { GENERATED_BY } from "@litlfred/bootstrap-tools/scripts/generated-by.ts";
 
 const REPO = resolve(import.meta.dir, "..", "..", "..");
 const PLATFORM_RENDERER = join(REPO, "cat-harness", "scripts", "render-bpmn.ts");

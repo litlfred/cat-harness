@@ -46,8 +46,8 @@ import { join, resolve } from "node:path";
 
 import { artefactStub, instanceRootsIn, readDeclaration, repoRootFor } from "../schemas/cat-harness.js";
 import { exportIdentity } from "./kg-export.js";
-import { readKnowledgeGraphDeclaration } from "../../bootstrap-tools/schemas/declaration.ts";
-import { publicationBase } from "../../bootstrap-tools/scripts/subgraph-jsonld.ts";
+import { readKnowledgeGraphDeclaration } from "@litlfred/bootstrap-tools/schemas/declaration.ts";
+import { publicationBase } from "@litlfred/bootstrap-tools/scripts/subgraph-jsonld.ts";
 import { propertyIri, termIri } from "../schemas/namespaces.js";
 import { SUBGRAPH_INDEX_FILE } from "../schemas/subgraph-manifest.js";
 

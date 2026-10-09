@@ -29,7 +29,7 @@ import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "
 import { basename, join, relative, resolve } from "node:path";
 import { Liquid } from "liquidjs";
 
-import { splice } from "../../bootstrap-tools/scripts/subgraph-readmes.ts";
+import { splice } from "@litlfred/bootstrap-tools/scripts/subgraph-readmes.ts";
 import { directoriesForGraph, instanceRootsIn, repoRootFor } from "../schemas/cat-harness.ts";
 
 const ROOT = resolve(import.meta.dir, "..");

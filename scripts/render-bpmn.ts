@@ -35,7 +35,7 @@ import {
   openRenderer,
   VIEWER_BUNDLE,
   wrapShapeInLink,
-} from "../../bootstrap-tools/scripts/render-bpmn.ts";
+} from "@litlfred/bootstrap-tools/scripts/render-bpmn.ts";
 import { checkXmlComments } from "./xml-comment-check";
 import {
   siteDirFor,

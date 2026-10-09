@@ -145,8 +145,8 @@ import { existsSync, lstatSync, mkdirSync, mkdtempSync, readdirSync, readFileSyn
 import { tmpdir } from "node:os";
 import { basename, dirname, join, relative, resolve } from "node:path";
 
-import { declarationFileIn } from "../../bootstrap-tools/schemas/declaration.ts";
-import { KnowledgeGraphDeclarationSchema } from "../../bootstrap-tools/schemas/graph.ts";
+import { declarationFileIn } from "@litlfred/bootstrap-tools/schemas/declaration.ts";
+import { KnowledgeGraphDeclarationSchema } from "@litlfred/bootstrap-tools/schemas/graph.ts";
 import {
   CatHarnessDeclarationSchema,
   KG_CONTENT_GRAPH_TYPOLOGIES,

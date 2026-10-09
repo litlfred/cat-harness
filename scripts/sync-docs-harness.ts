@@ -33,7 +33,7 @@ import { dirname, join, relative, resolve } from "node:path";
 
 import { detectRepoUrl } from "../content/pipeline/readme-toc.js";
 import { instanceDeclarationFilename, instanceRootsIn, readDeclaration, resolveInherited, siteDirFor } from "../schemas/cat-harness.js";
-import { releaseIris } from "../../bootstrap-tools/schemas/release-iri.ts";
+import { releaseIris } from "@litlfred/bootstrap-tools/schemas/release-iri.ts";
 import { imageForRole, imagesForRole } from "../schemas/kg-node.js";
 import { graphTiles, resolveGlassStrip, withTileCounts } from "./graph-tiles.js";
 import { readTileCounts, type TileCount } from "../schemas/tile-count.js";

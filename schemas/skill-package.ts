@@ -39,7 +39,7 @@ import {
   RequirementStatementFields,
   refineRequirement,
   refineStatement,
-} from "../../bootstrap-tools/schemas/requirement.ts";
+} from "@litlfred/bootstrap-tools/schemas/requirement.ts";
 import { NETWORK_REACHES } from "./cat-harness";
 import { SkillNameSchema } from "./tool-types.js";
 import { SutKindSchema } from "./test-plan";

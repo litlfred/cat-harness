@@ -70,8 +70,8 @@ import { findContentRepoRoot } from "./repo-root";
 import { optionalPipelinePlugin } from "./pipeline-plugins";
 import { readEffectiveConfig } from "../../schemas/harness-config";
 import { AGENT_INSTRUCTIONS_ROLE, assetRolePurpose, INSTANCE_README_ROLE, declaredAssetPath, instanceRootsIn, readDeclaration, workPlanGraphsIn } from "../../schemas/cat-harness";
-import { generatedBanner } from "../../../bootstrap-tools/scripts/generated-by.ts";
-import { filesSection, processesSection, rolesSection } from "../../../bootstrap-tools/scripts/readme-graph-sections.ts";
+import { generatedBanner } from "@litlfred/bootstrap-tools/scripts/generated-by.ts";
+import { filesSection, processesSection, rolesSection } from "@litlfred/bootstrap-tools/scripts/readme-graph-sections.ts";
 
 // ── Section contract ────────────────────────────────────────────────────────
 

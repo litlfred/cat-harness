@@ -9,7 +9,7 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 
-import { BOOTSTRAP_GRAPH_TYPOLOGIES } from "../../../bootstrap-tools/schemas/graph.ts";
+import { BOOTSTRAP_GRAPH_TYPOLOGIES } from "@litlfred/bootstrap-tools/schemas/graph.ts";
 import { CatHarnessDeclarationSchema } from "../../schemas/cat-harness.ts";
 import { SubstrateSnapshotSchema } from "../../schemas/substrate-snapshot.ts";
 import {

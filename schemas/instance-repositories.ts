@@ -21,7 +21,7 @@ import { relative, resolve } from "node:path";
 import { instanceRootsIn, readDeclaration, type InstanceLocation } from "./cat-harness.js";
 import { declarationChain } from "./harness-config.js";
 import { LEGACY_FOLIO_NS } from "./namespaces.js";
-import { releaseIris } from "../../bootstrap-tools/schemas/release-iri.js";
+import { releaseIris } from "@litlfred/bootstrap-tools/schemas/release-iri.js";
 import { mountScopeFor } from "./remote-mount.js";
 import { RepoFullNameSchema, type RepoFullName } from "./repo-full-name.js";
 

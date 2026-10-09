@@ -42,7 +42,7 @@ import { join } from "node:path";
 import { afterAll, expect, test } from "bun:test";
 
 import { gitCorpus } from "../../schemas/git-corpus.ts";
-import { gitFiles } from "../../../bootstrap-tools/scripts/git-files.ts";
+import { gitFiles } from "@litlfred/bootstrap-tools/scripts/git-files.ts";
 
 /** node's `spawnSync` default, restated so the fixture's target is explicit. */
 const NODE_DEFAULT_MAX_BUFFER = 1024 * 1024;
