@@ -14,53 +14,47 @@
  * cat-harness has none of it.
  */
 import { describe, expect, test } from "bun:test";
-import { existsSync } from "node:fs";
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
 import { BoardSchema } from "../../schemas/board.js";
+import { DECLARATION_SUFFIX } from "../../schemas/cat-harness.js";
+import { INDEX_CONFIG_SCHEMA } from "../../schemas/index-config.js";
 import { instanceConfigFilename } from "../../schemas/harness-config.js";
 import { defaultBoard, harnessesOwedABoard } from "../gen-default-boards.js";
 
 const ROOT = resolve(import.meta.dir, "../..");
 const REPO = resolve(ROOT, "..");
-/**
- * The directories to look in — a FIXED list rather than a walk.
- *
- * `harnessesOwedABoard` takes its candidates as an argument precisely so a
- * test can hand it a known set: walking the checkout would make these
- * assertions change whenever a sibling session adds a directory, and an
- * assertion that drifts with the tree is not an assertion.
- */
-const names = () => ["agent-skills", "bootstrap", "cat-harness", "detangle", "who-iris"];
 
 describe("who owes a board", () => {
 
   test("a DEPENDENCY is excluded too — instantiated is a different fact", () => {
     // "Only the instiatiated harnesses (not all dependent ones)".
     //
-    // DERIVED, not named. This asserted that `who-iris` was not instantiated,
-    // as its illustration of the rule — and on 2026-09-21 the owner
-    // instantiated who-iris, so a test about the RULE failed because its
-    // EXAMPLE had changed. The rule never moved. Reading the dependencies off
-    // the candidate list instead means the next instantiation does not look
-    // like a broken rule.
-    const deps = names().filter((n) => !existsSync(join(REPO, instanceConfigFilename(n))));
-    // Vacuity guard: with every candidate instantiated there is no dependency
-    // left to exclude, and `not.toContain` over an empty list asserts nothing.
-    //
-    // The message says what to DO, because this failure is the one most
-    // likely to be "fixed" by deleting the test. It fires only when somebody
-    // instantiates the last remaining dependency, at which point the rule it
-    // guards is still real and only the example is gone — exactly the
-    // situation that produced this rewrite in the first place.
-    expect(
-      deps.length,
-      `no candidate in [${names().join(", ")}] is a non-instantiated dependency, so this ` +
-        "test has no subject. Add a declared-but-not-instantiated instance to `names()` " +
-        "rather than deleting the test.",
-    ).toBeGreaterThan(0);
-    const owed = harnessesOwedABoard(REPO, names());
-    for (const d of deps) expect(owed).not.toContain(d);
+    // A FIXTURE since 2026-10-09. This read the real checkout and called a
+    // candidate a dependency when it had no root `<name>.config.json`; in the
+    // index checkout NO instance has one (the index lists them), so the rule
+    // and its example came apart in the opposite direction from 2026-09-21's.
+    // The rule is about the checkout's answer to "instantiated", and a fixture
+    // states both answers — the root config set, and an index — without
+    // depending on which instances some checkout happens to hold.
+    const repo = mkdtempSync(join(tmpdir(), "boards-owed-"));
+    try {
+      for (const n of ["one", "two"]) {
+        mkdirSync(join(repo, n));
+        writeFileSync(join(repo, n, `${n}${DECLARATION_SUFFIX}`), JSON.stringify({ name: n, version: "0.1.0", directories: [] }));
+      }
+      writeFileSync(join(repo, instanceConfigFilename("one")), "{}\n");
+      expect(harnessesOwedABoard(repo, ["one", "two"])).toEqual(["one"]);
+      writeFileSync(
+        join(repo, "index.config.json"),
+        JSON.stringify({ $schema: INDEX_CONFIG_SCHEMA, instances: [{ name: "two", source: { local: { at: "two" } } }] }),
+      );
+      expect(harnessesOwedABoard(repo, ["one", "two"])).toEqual(["two"]);
+    } finally {
+      rmSync(repo, { recursive: true, force: true });
+    }
   });
 
   test("the set is sorted, so it is a function of the declarations", () => {

@@ -50,7 +50,7 @@ import { join, relative, resolve } from "node:path";
 
 import { BOARD_SCHEMA_TAG, wholeFolioBoard } from "../schemas/board.js";
 import { isExemptFrom, readDeclaration } from "../schemas/cat-harness.js";
-import { instanceConfigFilename } from "../schemas/harness-config.js";
+import { instantiatedHarnessNames } from "../schemas/harness-config.js";
 import { TODO_GRAPH_FILE, parseTodoGraph } from "../schemas/todo-graph.js";
 import { checkoutTopLevelDirs } from "../schemas/git-corpus.ts";
 import { TODO_ROOT } from "./todos.js";
@@ -88,11 +88,17 @@ export function boardsDir(_repoRoot: string, todoRoot: string = TODO_ROOT()): st
  */
 export function harnessesOwedABoard(repoRoot: string, names: readonly string[]): string[] {
   const out: string[] = [];
+  // INSTANTIATED is the checkout's answer, not a file test: an index lists its
+  // instances in `index.config.json` and none of them has a root
+  // `<name>.config.json`, so asking for the file owed no harness a board in
+  // the index checkout (2026-10-09, `gen-default-boards-checkout`). Without an
+  // index, `instantiatedHarnessNames` is the same root config set as before.
+  const instantiated = new Set(instantiatedHarnessNames(repoRoot));
   for (const name of [".", ...names]) {
     const dir = name === "." ? repoRoot : join(repoRoot, name);
     const decl = readDeclaration(dir);
     if (decl === undefined || decl === null) continue;
-    if (!existsSync(join(repoRoot, instanceConfigFilename(decl.name)))) continue;
+    if (!instantiated.has(decl.name)) continue;
     if (isExemptFrom(decl, "visualiser")) continue;
     out.push(decl.name);
   }
