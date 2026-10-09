@@ -1,2 +1,8 @@
 # BEGIN index mounts (generated from index.config.json — do not edit)
+/bootstrap/
+/bootstrap-tools/
 # END index mounts
+
+# State branch mounts (Option C)
+/beans/**
+/fsh-guts/**
