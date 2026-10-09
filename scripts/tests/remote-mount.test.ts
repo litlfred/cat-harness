@@ -289,7 +289,7 @@ describe("mount:remote over fixture repositories", () => {
   test("13. the mount is kept out of commits", () => {
     const root = downstream({});
     const r = mountRemote({ instanceRoot: root, urlFor });
-    expect(r.excluded.sort()).toEqual(["base", "boot", "core"]);
+    expect(r.excluded).toEqual([]);
     expect(git(root, "status", "--porcelain")).not.toContain("core/");
   });
 
@@ -579,13 +579,15 @@ describe("index.config.json as the mount declaration (owner, 2026-10-07)", () =>
     expect(lock.unmounted).toEqual([]);
   });
 
-  test("28. without an index the fallback is unchanged: remoteMounts on the declaration, info/exclude for an unignored path", () => {
+  test("28. without an index: remoteMounts on the declaration, and the SAME committed block from the lock — never info/exclude (owner, 2026-10-09)", () => {
     const root = downstream({});
     expect(readDeclaredMounts(root).from).toBe("declaration");
+    const before = exclude(root);
     const r = mountRemote({ instanceRoot: root, urlFor });
-    expect(r.excluded.sort()).toEqual(["base", "boot", "core"]);
-    expect(exclude(root)).toContain("/core/");
-    expect(existsSync(join(root, ".gitignore"))).toBe(false);
+    expect(r.excluded).toEqual([]);
+    expect(exclude(root)).toBe(before);
+    expect(readFileSync(join(root, ".gitignore"), "utf-8")).toBe(`${IGNORE_BLOCK_BEGIN}\n/base/\n/boot/\n/core/\n${IGNORE_BLOCK_END}\n`);
+    expect(Object.values(Object.fromEntries(r.plan.outcomes.map((o) => [o.instance, o.state])))).not.toContain("missing");
   });
 
   test("29. mounts in BOTH the index and the declaration: the check is could-not-determine and names both, the mount throws", () => {

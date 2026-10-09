@@ -55,7 +55,7 @@ import { z } from "zod";
 
 import { mountTrust, type TrustVerdict } from "../schemas/mount-trust.js";
 import { checkoutRootFor, instanceRootsIn, readDeclaration } from "../schemas/cat-harness.js";
-import { lockedMountPaths, readDeclaredMounts, readIndexConfig, syncIgnoreBlock } from "../schemas/index-config.js";
+import { INDEX_CONFIG_SCHEMA, lockedMountPaths, readDeclaredMounts, readIndexConfig, syncIgnoreBlock, type IndexConfig } from "../schemas/index-config.js";
 import {
   MOUNT_LOCK_SCHEMA,
   MountDefaultsSchema,
@@ -506,6 +506,10 @@ function tracked(base: string, rel: string): boolean {
  * committed `.gitignore` block generated from the index is the rule, and a
  * path it does not cover is `not-ignored` — reported, never patched locally,
  * because a local exclude is invisible to every other clone.
+ *
+ * `mountRemote` now always passes `indexed`: a folio with no index gets the
+ * same committed block, written from its lock (owner, 2026-10-09). The
+ * `info/exclude` branch stays for a direct caller that asks for it.
  */
 function ensureIgnored(base: string, rel: string, indexed = false): "ignored" | "excluded" | "not-ignored" | "not-a-checkout" {
   if (gitIn(base, ["rev-parse", "--git-dir"]).status !== 0) return "not-a-checkout";
@@ -558,7 +562,14 @@ export function mountRemote(opts: RemoteMountOptions = {}): MountReport {
     const index = idx.state === "ok" ? idx.config : undefined;
     // The PLANNED closure, so an instance the mount brings in transitively is
     // ignored before its bytes land; re-synced from the lock once written.
-    if (index !== undefined) syncIgnoreBlock(plan.instanceRoot, index, [...lockedMountPaths(plan.instanceRoot), ...plan.instances.map((i) => i.path)]);
+    //
+    // WITHOUT an index the same committed block is written from the lock
+    // alone (owner, 2026-10-09: "yes, write the .gitignore block"). Until then
+    // such a folio got `info/exclude` lines, local to one clone, so every
+    // other clone — CI's included — had the mounted bytes one `git add -A`
+    // away from a commit.
+    const blockConfig: IndexConfig = index ?? { $schema: INDEX_CONFIG_SCHEMA, instances: [] };
+    syncIgnoreBlock(plan.instanceRoot, blockConfig, [...lockedMountPaths(plan.instanceRoot), ...plan.instances.map((i) => i.path)]);
 
     const prior = readMountLock(lockFile);
     // A refused instance's left-on-disk record counts as "this mount put it
@@ -663,7 +674,7 @@ export function mountRemote(opts: RemoteMountOptions = {}): MountReport {
           if (absent.includes(`asset ${a}`)) continue;
           assets.push({ src: a, sha256: sha256Text(readFileSync(join(target, a))) });
         }
-        const ignored = ensureIgnored(plan.instanceRoot, p.path, index !== undefined);
+        const ignored = ensureIgnored(plan.instanceRoot, p.path, true);
         if (ignored === "excluded") excluded.push(p.path);
         locked.push({
           instance: p.instance,
@@ -709,7 +720,7 @@ export function mountRemote(opts: RemoteMountOptions = {}): MountReport {
         .sort((a, b) => a.instance.localeCompare(b.instance)),
     };
     writeFileSync(lockFile, JSON.stringify(lock, null, 2) + "\n");
-    if (index !== undefined) syncIgnoreBlock(plan.instanceRoot, index);
+    syncIgnoreBlock(plan.instanceRoot, blockConfig);
     return { plan, lockFile, excluded };
   } finally {
     for (const t of trees.values()) t.close();
