@@ -12,6 +12,12 @@
   },
   "metadata": {
     "title": null,
+    "title_correction": {
+      "title": "WHO SMART Guidelines: Architecture & Knowledge Content Platform",
+      "basis": "Slide 1 title 'WHO SMART Guidelines' and deck content introducing the computable asset acquisition, adjudication and agentic test tool harness for the WHO SMART Guidelines architecture",
+      "corrected_on": "2026-10-09",
+      "bean": "folio-assistant-6eiw"
+    },
     "docinfo": {
       "format": "pptx",
       "languages": [
