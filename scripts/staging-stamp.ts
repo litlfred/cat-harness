@@ -58,6 +58,7 @@ export const STAGING_KEY = "staging";
  * when `sha` is present, which is the case where we are demonstrably in a run
  * and one variable happens to be unset.
  */
+// input-site: env GITHUB_SHA,KG_BRANCH,GITHUB_REF_NAME,GITHUB_RUN_ID #8cd909dc — build and git identity variables for the staging stamp
 export function stagingStamp(env: Record<string, string | undefined> = process.env): StagingStamp | undefined {
   const sha = env.GITHUB_SHA;
   if (!sha) return undefined;
@@ -78,6 +79,7 @@ export function stagingStamp(env: Record<string, string | undefined> = process.e
  * build artefact with a missing field.
  */
 export function stagingFields(
+  // input-site: env GITHUB_SHA,KG_BRANCH,GITHUB_REF_NAME,GITHUB_RUN_ID #631c5920 — build and git identity variables for the staging stamp
   env: Record<string, string | undefined> = process.env,
 ): Record<string, StagingStamp> {
   const s = stagingStamp(env);

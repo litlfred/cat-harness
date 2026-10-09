@@ -193,6 +193,7 @@ async function loadValidator(
 
   let mod: Record<string, unknown>;
   try {
+    // input-site: imports */schemas/**/*.ts,*/src/**/*.ts,schemas/**/*.ts,src/**/*.ts #771876e3 — validator modules referenced by graph typology and node-kind declarations
     mod = (await import(abs)) as Record<string, unknown>;
   } catch (e) {
     return {

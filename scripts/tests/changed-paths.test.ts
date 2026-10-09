@@ -6,7 +6,7 @@
  * corollary, that not knowing is never a skip.
  */
 import { describe, expect, test } from "bun:test";
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -26,6 +26,7 @@ import { regenArgs } from "../merge-base.ts";
 import { exitCodeFor, regenToFixpoint, type Pair, type Runner } from "../regen-after-merge.ts";
 import { TASK_IO, pairIO } from "../task-io.ts";
 import { repoRootFor } from "../../schemas/cat-harness.ts";
+import { scriptsOf } from "../../schemas/script-table.ts";
 
 const ROOT = repoRootFor(join(import.meta.dir, "..", ".."));
 
@@ -177,8 +178,9 @@ describe("intersection selection over a declared footprint", () => {
 describe("FALSIFIER over the real declaration table: no declared input can change unseen", () => {
   // Every narrow (non-{tracked}) declaration in task-io.ts: changing ANY file
   // it expands to, or any file its pattern could name, must ask the pair.
-  const scripts = (JSON.parse(readFileSync(join(ROOT, "package.json"), "utf-8")) as { scripts: Record<string, string> })
-    .scripts;
+  const scripts = existsSync(join(ROOT, "package.json"))
+    ? (JSON.parse(readFileSync(join(ROOT, "package.json"), "utf-8")) as { scripts: Record<string, string> }).scripts
+    : scriptsOf(ROOT);
   const narrow = Object.entries(TASK_IO).filter(([, io]) => io.inputs !== undefined && !io.inputs.includes(TRACKED));
 
   for (const [check] of narrow) {
