@@ -68,6 +68,7 @@ export interface Bean {
   path: string;
   body: string;
   issue?: number | string;
+  targets?: string[];
 }
 
 /**
@@ -134,6 +135,27 @@ function parseBean(path: string): Bean | undefined {
     path,
     body: body ?? "",
     ...(issue !== undefined ? { issue } : {}),
+    targets: (() => {
+      const block = new RegExp(`^targets:\\s*\\n((?:[ \\t]+-[ \\t]*\\S.*\\n?)+)`, "m").exec(front!);
+      if (block) {
+        return block[1]!
+          .split("\n")
+          .map((l) => l.replace(/^[ \t]*-[ \t]*/, "").trim().replace(/^['"]|['"]$/g, ""))
+          .filter((s) => s.length > 0);
+      }
+      const flow = new RegExp(`^targets:\\s*\\[(.*)\\]\\s*$`, "m").exec(front!);
+      if (flow) {
+        return flow[1]!
+          .split(",")
+          .map((s) => s.trim().replace(/^['"]|['"]$/g, ""))
+          .filter((s) => s.length > 0);
+      }
+      const single = new RegExp(`^targets:\\s*(\\S+)\\s*$`, "m").exec(front!);
+      if (single && !single[1]!.startsWith("[") && single[1] !== "") {
+        return [single[1]!.replace(/^['"]|['"]$/g, "")];
+      }
+      return undefined;
+    })(),
   };
 }
 

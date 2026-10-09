@@ -58,6 +58,7 @@ import { processArrowFindings, schemaArrowFindings } from "./arrow-direction.js"
 import { contentCodeFindings, contentInstanceCode } from "./content-holds-code.js";
 import { orphanSubjectResolves } from "./orphan-detector.js";
 import { evaluateActorFactConsumers } from "./actor-facts.js";
+import { evaluateTraceabilityAudit } from "./trace-work.ts";
 import { classifyName, diagramProse, generalDeclarationProse, namedFiles } from "./prose-names.js";
 import { readSchemaGraph } from "./schema-graph.js";
 import { checkTools, unresolvedPaths } from "./check-tools.js";
@@ -2466,6 +2467,7 @@ function auditGraph(
       "content-instance-holds-code": contentInstanceHoldsCode(),
       // Generic orphan detector across declared graph kinds (bean folio-assistant-9mmu).
       "orphan-subject-resolves": orphanSubjectResolves(root, { repoRoot: REPO_ROOT }),
+      "work-traceability-audit": evaluateTraceabilityAudit({ root }),
     },
   );
 }

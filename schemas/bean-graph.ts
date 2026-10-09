@@ -130,17 +130,32 @@ export const BeanGraphSchema = z.object({
 export type BeanGraph = z.infer<typeof BeanGraphSchema>;
 
 /**
+ * Targets schema for bean front matter.
+ *
+ * Supports array of strings (e.g. `targets: ["sec:foo", "thm:bar"]`),
+ * flow sequence or single scalar coerced to array.
+ */
+export const BeanTargetsSchema = z
+  .union([
+    z.array(z.string()),
+    z.string().transform((s) => (s.trim().length > 0 ? [s.trim()] : [])),
+  ])
+  .optional();
+
+/**
  * Schema for front matter of a bean definition file (`beans/defs/*.md`).
  *
  * Beans are authored by people and agents and managed by the `beans` CLI.
  * Unknown keys are allowed via `.passthrough()` so that new fields from `beans`
  * do not break parsing.
  *
- * A bean can name its linked GitHub issue in front matter as a queryable field
- * (`issue:`), representing the human adjudication / issue-tracker link.
+ * Supports standard bean fields plus `issue` linking external GitHub issue tracker,
+ * and `targets?: string[]`, representing target block labels or declaration
+ * identifiers for work traceability (folio-assistant-f227).
  */
 export const BeanFrontMatterSchema = z
   .object({
+    id: z.string().optional(),
     title: z.string().optional(),
     status: z.string().optional(),
     type: z.string().optional(),
@@ -156,6 +171,7 @@ export const BeanFrontMatterSchema = z
      * Queryable field linking a bean to its external human adjudication/tracking issue.
      */
     issue: z.union([z.number().int().positive(), z.string().min(1)]).optional(),
+    targets: BeanTargetsSchema,
   })
   .passthrough();
 

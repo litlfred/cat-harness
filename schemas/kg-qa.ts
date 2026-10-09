@@ -1644,6 +1644,15 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
       "graph (e.g. beans referencing nonexistent parents, sidecars whose subject file is missing, etc.). " +
       "Vacuity-guarded: empty candidate set returns `unknown`, never a false pass.",
   },
+  {
+    id: "work-traceability-audit",
+    applies: ["graph"],
+    scope: "instance",
+    severity: "minor",
+    summary:
+      "Audit work traceability between declared beans, content blocks, and Lean declarations. " +
+      "Flags unassociated blocks, beans with no targets, and broken target references. Vacuity-guarded when no beans or blocks exist.",
+  },
 ] as const;
 
 export const KG_CRITERIA_BY_ID: Readonly<Record<string, KgCriterionDefinition>> = Object.fromEntries(
