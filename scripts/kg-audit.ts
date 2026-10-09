@@ -77,6 +77,7 @@ import {
   type KgAttestations,
 } from "../schemas/qa-attestations.js";
 import { claimsEntry, judgePair, rootScripts } from "./pair-claims.js";
+import { auditFolioBlocks } from "./block-reference-resolver.js";
 // `Dirent` for the orphan-sidecar sweep (bean `3jj9`), which walks the
 // results tree with `withFileTypes` to tell a directory from a file.
 import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, writeFileSync, writeSync } from "node:fs";
@@ -272,6 +273,7 @@ const SCENARIO_DIR = ownDirectoryById(root, "scenarios", "scenarios");
 // declared-path-literal: the convention fallback, at the call site, as for
 // `SCENARIO_DIR`. The ODRL policies (issue #1180) are their own graph typology.
 const POLICY_DIR = ownDirectoryById(root, "policies", "policies");
+const FOLIO_DIR = ownDirectoryById(root, "folio", "folio");
 const DECISION_DIR = join(WORKFLOW_DIR, "decisions");
 const KG_ROOT = join(root, "skills");
 // The actor registry's declared home (bean rqao). kg-audit runs over ANY
@@ -2475,6 +2477,7 @@ function sidecarPath(r: KgQaReport): string {
     skill: KG_ROOT,
     graph: SCENARIO_DIR,
     tool: TOOLS_DIR,
+    folio: FOLIO_DIR,
   };
   const stem = r.subject.path ? basename(r.subject.path).replace(/\.(bpmn|dmn|json|md)$/, "") : r.subject.id;
   const name = r.subject.kind === "role" || r.subject.kind === "requirement" ? r.subject.id : stem;
@@ -2772,6 +2775,7 @@ reports.push(...auditRequirements(requirements, actors, satisfiers));
 reports.push(...auditSkills());
 reports.push(auditGraph(graph, processes, actors, skills, stories, danglingSatisfies(requirements, satisfiers)));
 reports.push(...auditTools(INSTANCE_RUN ? root : undefined));
+reports.push(...auditFolioBlocks(root));
 
 /**
  * Drop every subject ANOTHER instance owns — it audits that subject itself.

@@ -424,7 +424,7 @@ export function sweepOrphans(
  * decided something `check-tools` does not would be the drift this note exists
  * to prevent.
  */
-export const KG_SUBJECT_KINDS = ["process", "decision", "role", "requirement", "skill", "graph", "tool"] as const;
+export const KG_SUBJECT_KINDS = ["process", "decision", "role", "requirement", "skill", "graph", "tool", "folio"] as const;
 export type KgSubjectKind = (typeof KG_SUBJECT_KINDS)[number];
 
 /**
@@ -475,6 +475,7 @@ export const KG_SUBJECT_GRAPH_TYPOLOGIES: Readonly<Record<KgSubjectKind, string>
   // kg graph itself rather than the directory its sidecar happens to sit in.
   graph: KG_GRAPH_TYPOLOGY,
   tool: "tools",
+  folio: "folio",
 };
 
 /** Outcome of one criterion. `unknown` is never a pass. */
@@ -488,12 +489,13 @@ export const KG_SEVERITIES = ["critical", "major", "minor"] as const;
  *
  * `instance` — every declared instance can decide it about its own corpus.
  * `repo` — only the repository can; an instance run records `n/a` and says so.
+ * `block` — evaluated at the content-block level within a folio graph.
  *
  * Two states rather than three: there is no "both", because a criterion that
  * the repository AND each instance can answer separately is `instance` and gets
  * asked once per instance, with the repository's own run being one of them.
  */
-export const KG_CRITERION_SCOPES = ["instance", "repo"] as const;
+export const KG_CRITERION_SCOPES = ["instance", "repo", "block"] as const;
 export type KgCriterionScope = (typeof KG_CRITERION_SCOPES)[number];
 
 export type KgSeverity = (typeof KG_SEVERITIES)[number];
@@ -1594,6 +1596,15 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
       "An instance declared as a CONTENT repository (`separation: \"content\"`, or the content half a " +
       "declared tools instance `supports`) holds code. A content repository holds no code (kg-separation, " +
       "bootstrap FR-7); each file is named, and belongs in the platform or a `<name>-tools` repository.",
+  },
+  {
+    id: "block-reference-resolves",
+    applies: ["folio"],
+    scope: "block",
+    severity: "minor",
+    summary:
+      "A content block's relative links, computation.script path, or {{...}} macro templates do not resolve against " +
+      "the instance's declared directories. Guarded by vacuity and undetermined states; report-only warning.",
   },
 ] as const;
 
