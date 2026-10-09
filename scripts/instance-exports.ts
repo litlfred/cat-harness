@@ -25,7 +25,7 @@
  *
  * ## Published elsewhere — the only list, and each entry is CHECKED
  *
- * Three instances keep the publisher they already have, for reasons that are
+ * Two instances keep the publisher they already have, for reasons that are
  * not this bean's to overturn. {@link PUBLISHED_ELSEWHERE} names each one with
  * the command that publishes it, and `check:published-instance-exports` fails
  * when a workflow that runs this script does not also run that command — so an
@@ -77,10 +77,6 @@ export const PUBLISHED_ELSEWHERE: Readonly<Record<string, PublishedElsewhere>> =
       "the host: published at the site root as `<stub>.jsonld`, the address every published `@id` names. " +
       "Built in instance scope since bean `4ak5` item 2 (the split): its own directories only, with a " +
       "tombstone for one release at each `@id` that moved to its owner's document",
-  },
-  "folio-assistant": {
-    publisher: /kg-export\.ts\s+--instance\s+\.\s/,
-    why: "the checkout root, published by its own line since bean `l4ay`, which tests pin by name",
   },
   bootstrap: {
     publisher: /bootstrap-tools\/scripts\/export-graph\.ts\s+--root\s+\.\/bootstrap\s/,
