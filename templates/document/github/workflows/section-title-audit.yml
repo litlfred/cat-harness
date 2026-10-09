@@ -7,14 +7,17 @@
 #   - MACHINE review — the platform's qa-section-title-audit.ts flags
 #     auto-split " : <tag>" title artifacts, trailing colons, over-long /
 #     compound titles, and structure findings (depth/band/balance).
+#     Derived findings belong with QA results on the orphan `qa-reports` branch.
 #   - AGENT review — story-coherence verdicts live in the `agent` block
 #     of each per-document sidecar
 #     ({{folio}}/<document>/section-title-audit.qa.json), re-opened as the
-#     chapter manifest hash drifts.
+#     chapter manifest hash drifts. Judgements and reviewer attestations
+#     are preserved on `main` in the `attestations` graph (`test/attestations/`).
 #
 # This workflow HARD-gates the machine side and sidecar freshness, so a
-# chapter manifest can't change without the committed sidecars being
-# updated.
+# chapter manifest can't change without the sidecars being updated.
+# QA verdicts are stored on the orphan `qa-reports` branch, while attestations
+# remain on `main`.
 #
 # Triggers: `workflow_dispatch` only as written. Uncomment `pull_request`
 # to run it on every pull request.
@@ -60,7 +63,8 @@ jobs:
 
       # HARD GATE: sidecars must be regenerated when a manifest — or, in
       # --thorough mode, any contained block (.md/.ts/.lean) or descendant
-      # subsection — changes.
+      # subsection — changes. QA verdicts are stored on the orphan qa-reports
+      # branch, while authored judgements remain on main.
       - name: Sidecars up to date
         run: |
           bun run "{{assistant}}/cat-harness/content/pipeline/qa-section-title-audit.ts" --report-only --write-sidecar --thorough
