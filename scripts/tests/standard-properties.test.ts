@@ -9,7 +9,7 @@
 import { describe, expect, test } from "bun:test";
 import { join } from "node:path";
 
-import { exportGraph } from "../../../bootstrap-tools/scripts/export-graph.ts";
+import { exportGraph } from "@litlfred/bootstrap-tools/scripts/export-graph.ts";
 import { BOOTSTRAP_PROCESSES_NS, propertyIri, replacementIri, termIri } from "../../schemas/namespaces.ts";
 import { PROPERTY_GLOSSES } from "../../schemas/vocabulary.ts";
 import { buildContext } from "../kg-export.ts";

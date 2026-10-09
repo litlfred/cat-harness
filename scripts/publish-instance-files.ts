@@ -30,7 +30,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
-import { filesIn, publishFiles } from "../../bootstrap-tools/scripts/publish-files.ts";
+import { filesIn, publishFiles } from "@litlfred/bootstrap-tools/scripts/publish-files.ts";
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";

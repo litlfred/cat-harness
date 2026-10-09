@@ -29,7 +29,7 @@ import { SUMMARY_STATUSES } from "./block-summary.js";
 import { TileCountsSchema } from "./tile-count.js";
 import { WithheldEntrySchema } from "./withheld.js";
 import { BeanIdSchema } from "./tool-types.js";
-import { ModelIdSchema } from "../../bootstrap-tools/schemas/model-registry.ts";
+import { ModelIdSchema } from "@litlfred/bootstrap-tools/schemas/model-registry.ts";
 
 /** A generated-index envelope: its `$schema` tag and the navbar count. */
 const envelope = <T extends string>(tag: T) => ({

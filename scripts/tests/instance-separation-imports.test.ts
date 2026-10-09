@@ -48,7 +48,7 @@ import { spawnSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 
-import { specifiersOf } from "../../../bootstrap-tools/scripts/check-closure.js";
+import { specifiersOf } from "@litlfred/bootstrap-tools/scripts/check-closure.js";
 import { declarationPathIn } from "../../schemas/cat-harness.js";
 import { mountScopeFor } from "../../schemas/remote-mount.js";
 import { inAggregate } from "../../test/support/checkout.js";

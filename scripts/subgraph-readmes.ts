@@ -46,7 +46,7 @@ import {
   type InstanceInput,
   type Plan,
   plan,
-} from "../../bootstrap-tools/scripts/subgraph-readmes.ts";
+} from "@litlfred/bootstrap-tools/scripts/subgraph-readmes.ts";
 import { instanceDirectories, declaredAssetPath, INSTANCE_README_ROLE, instanceRootsIn, readDeclaration, repoRootFor } from "../schemas/cat-harness.ts";
 import { mountScopeFor } from "../schemas/remote-mount.ts";
 import { defaultGraphTypologies, type GraphTypologyRegistry } from "../schemas/graph-typology-registry.ts";

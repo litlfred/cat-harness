@@ -45,7 +45,7 @@
  */
 
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "fs";
-import { chromiumExecutable } from "../../bootstrap-tools/scripts/render-bpmn.ts";
+import { chromiumExecutable } from "@litlfred/bootstrap-tools/scripts/render-bpmn.ts";
 import { basename, join } from "path";
 
 /** The bundled viewer, injected into the page — no network fetch. */

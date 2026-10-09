@@ -21,7 +21,7 @@ import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { gitCorpus } from "../../schemas/git-corpus.ts";
-import { gitFiles } from "../../../bootstrap-tools/scripts/git-files.ts";
+import { gitFiles } from "@litlfred/bootstrap-tools/scripts/git-files.ts";
 
 describe("a >1 MiB git listing is answered", () => {
   test("gitCorpus and gitFiles both return every file", () => {

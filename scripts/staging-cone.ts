@@ -42,7 +42,7 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 
-import { specifiersOf } from "../../bootstrap-tools/scripts/check-closure.js";
+import { specifiersOf } from "@litlfred/bootstrap-tools/scripts/check-closure.js";
 import { instanceRootsIn, readDeclaration } from "../schemas/cat-harness.ts";
 import { contributingDependencies } from "../schemas/harness-config.ts";
 import { downstreamOf, type Edge, judge, readTree, renderingOrder } from "./check-derived-from.ts";

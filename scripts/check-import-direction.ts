@@ -70,7 +70,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join, relative, resolve, sep } from "node:path";
 
-import { specifiersOf, stripComments } from "../../bootstrap-tools/scripts/check-closure.js";
+import { specifiersOf, stripComments } from "@litlfred/bootstrap-tools/scripts/check-closure.js";
 import { findDeclarationFile, instanceRootsIn } from "../schemas/cat-harness.js";
 import { ancestorsOf, flattenDependencies } from "../schemas/dependency-order.js";
 import { allowedFromNeeds, directionOf, type LayerRule } from "../schemas/layer-direction.js";

@@ -52,7 +52,7 @@ import { GraphTypologyNodeSchema, kindDefOf } from "./graph-typology-node";
 import { ValidatorNodeSchema, type ValidatorNode } from "./validator-node";
 import { namespaceForLayer } from "./namespaces";
 import type { NewInstanceSource } from "./subgraph-source";
-import { BOOTSTRAP_GRAPH_TYPOLOGIES } from "../../bootstrap-tools/schemas/graph";
+import { BOOTSTRAP_GRAPH_TYPOLOGIES } from "@litlfred/bootstrap-tools/schemas/graph";
 
 
 // ── Graph typologies ─────────────────────────────────────────────────

@@ -108,8 +108,8 @@ import jsonld from "jsonld";
 import { buildContext, buildExport, graphTypologyId } from "./kg-export.js";
 import { corpusScopeFor, kgDirectories, workflowFiles } from "./known-skills.js";
 import { checkoutRootFor, findInstanceRoot, instanceRootsIn, readDeclaration } from "../schemas/cat-harness.js";
-import { readKnowledgeGraphDeclaration } from "../../bootstrap-tools/schemas/declaration.ts";
-import { publicationBase } from "../../bootstrap-tools/scripts/subgraph-jsonld.ts";
+import { readKnowledgeGraphDeclaration } from "@litlfred/bootstrap-tools/schemas/declaration.ts";
+import { publicationBase } from "@litlfred/bootstrap-tools/scripts/subgraph-jsonld.ts";
 import { gitCorpus } from "../schemas/git-corpus.js";
 import { propertyIri, termIri } from "../schemas/namespaces.js";
 import {

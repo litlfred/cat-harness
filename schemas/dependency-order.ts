@@ -316,4 +316,4 @@ export function findConflicts(
  * needs it and bootstrap-tools may import nothing above bootstrap. Re-exported
  * here so a harness caller asks one module about order either way.
  */
-export { checkDeclaredOrder, type OrderViolation } from "../../bootstrap-tools/schemas/declared-order.ts";
+export { checkDeclaredOrder, type OrderViolation } from "@litlfred/bootstrap-tools/schemas/declared-order.ts";

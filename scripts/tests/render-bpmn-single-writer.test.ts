@@ -18,7 +18,7 @@ import { describe, expect, test } from "bun:test";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
-import { GENERATED_BY } from "../../../bootstrap-tools/scripts/generated-by.ts";
+import { GENERATED_BY } from "@litlfred/bootstrap-tools/scripts/generated-by.ts";
 
 const REPO = resolve(import.meta.dir, "..", "..", "..");
 const PLATFORM_RENDERER = join(REPO, "cat-harness", "scripts", "render-bpmn.ts");
@@ -28,7 +28,7 @@ describe("the platform renderer delegates beside-source SVGs (bean gm9g)", () =>
   const src = readFileSync(PLATFORM_RENDERER, "utf8");
 
   test("it imports bootstrap-tools' own besideSource", () => {
-    expect(src).toMatch(/besideSource as besideSourceSvg[\s\S]*?from "\.\.\/\.\.\/bootstrap-tools\/scripts\/render-bpmn\.ts"/);
+    expect(src).toMatch(/besideSource as besideSourceSvg[\s\S]*?from "@litlfred\/bootstrap-tools\/scripts\/render-bpmn\.ts"/);
     expect(src).toContain("besideSourceSvg(renderer, file, processPath)");
   });
 

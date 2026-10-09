@@ -40,7 +40,7 @@
  */
 import { z } from "zod";
 import { SkillRefSchema } from "./tool-types.js";
-import { ModelIdSchema } from "../../bootstrap-tools/schemas/model-registry.ts";
+import { ModelIdSchema } from "@litlfred/bootstrap-tools/schemas/model-registry.ts";
 
 /**
  * The three sorts of participant that can author content.

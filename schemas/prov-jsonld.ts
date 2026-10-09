@@ -52,7 +52,7 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { basename, join, relative } from "node:path";
 
-import { releaseIris, releaseIri } from "../../bootstrap-tools/schemas/release-iri.ts";
+import { releaseIris, releaseIri } from "@litlfred/bootstrap-tools/schemas/release-iri.ts";
 import { instanceDirectoryForGraph, instanceRootsIn, readDeclaration } from "./cat-harness.ts";
 import { CAT_HARNESS_NS, FOLIO_BASE } from "./namespaces.ts";
 import { PROV_CONTEXT, type ProvActivity } from "./prov.ts";

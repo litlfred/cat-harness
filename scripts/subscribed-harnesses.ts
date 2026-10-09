@@ -24,7 +24,7 @@ import { createHash } from "node:crypto";
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";
 
-import { KnowledgeGraphDeclarationSchema } from "../../bootstrap-tools/schemas/graph.ts";
+import { KnowledgeGraphDeclarationSchema } from "@litlfred/bootstrap-tools/schemas/graph.ts";
 import { GENERIC, avatarFor, hasAvatar } from "../schemas/avatars.js";
 import { type CatHarnessDeclaration, type Subscription, rootForScope } from "../schemas/cat-harness.js";
 import { instanceConfigFilename } from "../schemas/harness-config.js";
