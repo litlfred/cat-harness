@@ -17,10 +17,10 @@
     "scripts/validate-skills.ts": 1
   },
   "resolves": [
-    "content/docs/guides-beans-and-todos/guides-beans-and-todos.ts::processes/sdlc/bean-lifecycle.bpmn",
-    "content/docs/guides-document-ingestion/guides-document-ingestion.ts::processes/library/document-ingestion.bpmn",
-    "content/docs/guides-document-ingestion/guides-document-ingestion.ts::processes/ui/ingest-theme.bpmn",
-    "content/docs/process-crdm-methodology/process-crdm-methodology.ts::processes/process/crdm-requirements.bpmn",
+    "docs/source/guides-beans-and-todos/guides-beans-and-todos.ts::processes/sdlc/bean-lifecycle.bpmn",
+    "docs/source/guides-document-ingestion/guides-document-ingestion.ts::processes/library/document-ingestion.bpmn",
+    "docs/source/guides-document-ingestion/guides-document-ingestion.ts::processes/ui/ingest-theme.bpmn",
+    "docs/source/process-crdm-methodology/process-crdm-methodology.ts::processes/process/crdm-requirements.bpmn",
     "schemas/detangle.ts::schemas/detangle.ts",
     "schemas/graph-typology-registry.ts::schemas/interaction.ts",
     "schemas/graph-typology-registry.ts::schemas/merge-queue.ts",

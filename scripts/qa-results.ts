@@ -346,6 +346,12 @@ export function qaStorageOf(absPath: string, repoRoot?: string): string | undefi
  * Each entry is `[now, before]`, substrings of the sidecar path.
  */
 export const MOVED_QA_SUBJECTS: ReadonlyArray<readonly [string, string]> = [
+  // The docs graph's SOURCE moved from `content/docs/` into the graph it
+  // renders, `docs/source/` (owner, 2026-10-09: "move content/docs into
+  // docs/"). First, because the lookup takes the first match and makes one
+  // substitution: a baseline still keyed by the older names below predates
+  // this move, and the entries after this one answer only `/content/docs/` paths.
+  ["/docs/source/", "/content/docs/"],
   ["/content/docs/concepts-agentic-harness/", "/content/docs/agentic-harness/"],
   ["/content/docs/guides-beans-and-todos/", "/content/docs/beans-and-todos/"],
   ["/content/docs/concepts-content-types/", "/content/docs/content-types/"],

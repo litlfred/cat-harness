@@ -164,7 +164,7 @@ export function pipeline(scratch: string): RenderStep[] {
       // asking the resolver for it throws, and the authored pages would
       // otherwise go undeclared — which under-declares, the direction bean
       // `9c34` calls dangerous. Named here rather than resolved.
-      inputs: ["cat-harness/content/docs"],
+      inputs: ["cat-harness/docs/source"],
       label: "content-backed docs pages",
       run: ["bun", "run", "cat-harness/scripts/gen-docs-pages.ts"],
     },

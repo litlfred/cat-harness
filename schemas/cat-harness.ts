@@ -3889,6 +3889,28 @@ export function siteDirFor(root: string): string {
 }
 
 /**
+ * Where the docs graph's own SOURCE lives — the authored blocks and manifests
+ * `gen-docs-pages.ts` renders into the pages beside them — read from its
+ * declaration (`docs-source` in the docs graph's `docs.json`), never spelled.
+ * Moved from `content/docs/` on 2026-10-09 (owner: "move content/docs into
+ * docs/"), so the docs subgraph carries its own source. The site directory is
+ * {@link siteDirFor}'s answer, for the same reason that function exists: one
+ * question, one answer.
+ */
+export function docsSourceDirFor(root: string): string {
+  const site = join(root, siteDirFor(root));
+  let path = "source";
+  try {
+    const raw = JSON.parse(readFileSync(join(site, "docs.json"), "utf-8")) as { directories?: { id?: string; path?: string }[] };
+    const entry = (raw.directories ?? []).find((d) => d.id === "docs-source");
+    if (entry?.path) path = entry.path.replace(/\/+$/, "");
+  } catch {
+    // No readable docs.json: the declared default. `check:declared-dirs` owns an unreadable one.
+  }
+  return join(site, path);
+}
+
+/**
  * {@link artefactStub} for the instance rooted at `root`, read from its
  * declaration — the RAW read, for the same reason {@link siteDirFor} takes one.
  *

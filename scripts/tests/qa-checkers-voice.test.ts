@@ -39,7 +39,7 @@ const ed = (line: string) =>
 
 describe("checkEditorializing — `merely` in a contrast is a degree marker", () => {
   // Bean `nwus`. All four `voice-editorializing` findings in this repo's own
-  // content/docs/ were the bare word `merely` inside an explicit contrast, and
+  // docs/source/ were the bare word `merely` inside an explicit contrast, and
   // all four were false. The criterion is after the author commenting on
   // quality; a comparative marks the WEAKER alternative, which is the opposite
   // move. Same shape as bean `fl5m` mechanism #2.
@@ -369,7 +369,7 @@ describe("checkScholarlyDefault — a wrap continuation is not a sentence start"
 
 // ── b7yo: the two false positives that survived the profile axis ────
 //
-// Both were found by running the real sweep over `content/docs/`
+// Both were found by running the real sweep over `docs/source/`
 // (a document-profile corpus) after PR #256 made the profile gate fire.
 // Neither is a scoping problem, so no gate change clears them — the
 // criteria themselves over-match.

@@ -609,7 +609,7 @@ async function run(): Promise<void> {
       // total and unambiguous on all of them — so the adapter gate passes it
       // through, and without this second gate it inherited every LaTeX- and
       // Lean-shaped criterion in the registry. Measured on
-      // `content/docs/crdm-methodology` (2026-09-18): 5 of 8 failures were
+      // `docs/source/crdm-methodology` (2026-09-18): 5 of 8 failures were
       // `voice-unicode-crash` firing on characters whose only stated defect
       // is that they crash pdflatex, in a folio whose render path takes no
       // TeX at all.

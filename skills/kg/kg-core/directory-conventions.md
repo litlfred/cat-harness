@@ -739,6 +739,14 @@ two, because the clean run is over content that is really there.
 **The fix under this ruling is not to add `content/docs/` to the root
 declaration.** It is a node inside the first subdirectory naming the fourteen.
 
+**Moved 2026-10-09** (owner: *"move content/docs into docs/"*). The source now
+lives at `docs/source/`, inside the docs graph it renders, and is declared FROM
+WITHIN by the docs graph's own node, `docs/docs.json` (entry `docs-source`) —
+the ruled half above, applied. Readers ask `docsSourceDirFor(root)` rather than
+spelling the path. **The open half stays open:** that entry carries the `docs`
+kind, used positionally, as a provisional choice made so the move could land;
+which kind the node should carry is still the owner's to rule.
+
 ### What the owner left open, and it is NOT an agent's to settle
 
 The ruling says *"(Sub?)KGraph node"* — with the question mark. **What that node

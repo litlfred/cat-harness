@@ -84,6 +84,11 @@ keep_files:
   - api
 
 exclude:
+  # The docs graph's own SOURCE (owner, 2026-10-09: "move content/docs into
+  # docs/"): authored blocks and their manifests, which gen-docs-pages.ts
+  # renders into the pages beside them. Source, not pages -- Jekyll must not
+  # publish the .md blocks as pages of their own.
+  - source
   - Gemfile
   - Gemfile.lock
   - vendor

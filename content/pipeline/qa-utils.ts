@@ -1357,7 +1357,7 @@ export function entryIsFresh(
  * verdict is FRESH. The sweep then short-circuits and never reorders, so the
  * script `fail` keeps leading and the reviewer's `pass` is recorded but not in
  * force. Measured 2026-09-19 on eleven voice adjudications over
- * `content/docs`: all eleven merged, all eleven still read `fail`.
+ * `docs/source`: all eleven merged, all eleven still read `fail`.
  *
  * The script entry is KEPT, below — nothing is silently rewritten, and the
  * disagreement between the checker and the reviewer stays legible.

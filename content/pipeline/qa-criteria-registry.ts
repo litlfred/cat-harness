@@ -159,7 +159,7 @@ const VOICE: QaCriterionDefinition[] = [
     // TeX. The defect IS the pdflatex crash — these characters are valid and
     // render correctly everywhere else, and the document render path
     // (`render-markdown.ts` → pandoc → weasyprint) never invokes latexmk. On
-    // `content/docs/crdm-methodology` this was 5 of the sweep's 8 failures,
+    // `docs/source/crdm-methodology` this was 5 of the sweep's 8 failures,
     // every one a `critical` on prose that builds fine.
     profiles: ["paper"],
     depends_on: ["md"],
@@ -210,7 +210,7 @@ const VOICE: QaCriterionDefinition[] = [
     // Scoped to the paper profile, bean `hbsh`. "Scholarly third-person by
     // default" is the register of a PAPER; documentation's register is to
     // address the reader, and the two are not reconcilable per block. Measured
-    // on this repo's own `content/docs/` (a `contentType: "document"` corpus),
+    // on this repo's own `docs/source/` (a `contentType: "document"` corpus),
     // 2026-09-19: ten findings, ten guide or reference pages, zero writing
     // defects — `guides-who-smart-ig/prerequisites.md:3` is "locally you
     // need:" and `guides-writing-a-paper/before-you-start.md:2` is "For papers
@@ -1620,7 +1620,7 @@ const DETANGLER: QaCriterionDefinition[] = [
 // `profiles: ["paper"]` does not fence them: any paper folio has a `.lean`
 // to read, so every other paper folio was being audited against chapters it
 // does not have. Measured here — this platform repo's own sidecars under
-// `test/results/block-qa/content/docs/process-publication-workflow/` carry
+// `test/results/block-qa/docs/source/process-publication-workflow/` carry
 // `detangler-archimedean-wall` verdicts on workflow documentation.
 //
 // So it is registered only when the folio opts in:
