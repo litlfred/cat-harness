@@ -19,6 +19,18 @@ owner, 2026-10-09; their *shape* below is still open to argument. Slice 3
 > | the themes are a subgraph | *"put the themes (beyond light and dark) as their own seperate subgraph"* |
 > | semantic subgraphs are wanted | *"can we further breakdown into semantic subgraphs? like doc-ingestion, SDLC, publication for docs and skills/tools and such? please reivew and propose some organizational options"* |
 
+> ## Answers, owner, 2026-10-09 (second round)
+>
+> | | answer | what it settles |
+> |---|---|---|
+> | **Option A** | *"extend the current kind-first layout into docs/ and scripts/"* | ruled: `docs/<group>/` and `scripts/<group>/` join `skills/<group>/` and `processes/<group>/` |
+> | **Option B** | *"n.... but should be able to name "sdcl" at top level to be list of ["docs/sdlc", "skills/sdlc"] or so..."* | concern-first DIRECTORIES are refused; a concern NAME at the top level, standing for the list of its kind-first members, is wanted (§4, "A concern is a name for a list") |
+> | **Option C** | *"not sure what you mean"* | re-explained in plain terms below its heading; open |
+> | **D1** | *"explain more"* | re-explained in §6; open |
+> | **D2** | *"y (or better a docs/ css package)"* | the harness pages' own JS/CSS stay in `docs/`, preferably as a declared package there rather than loose files in `assets/` |
+> | **D3** | *"y"* | the base light/dark + high-contrast pair live in `site-chrome/` |
+> | **D4** | *"ninth group"* | `publication` becomes the ninth concern group, a `9umr` amendment (§4, "The ninth group") |
+
 1. TOC
 {:toc}
 
@@ -214,6 +226,15 @@ kinds from within — the shape `openapi/` already has.
 
 ### Option C — Option A's layout, plus a two-phase mount: hydrated first, then a chosen set (recommended)
 
+**In plain terms.** Today a downstream that wants anything from cat-harness
+gets a whole top-level folder (all of `docs/`, all of `skills/`) as files.
+Option C lets it ask in two steps instead: first *"tell me what is in
+`skills/sdlc` and `tools/`"* and receive only the descriptions (one JSON-LD
+file each, no code), then *"give me these three Tools and these two skills"*
+and receive only those files, plus whatever code those Tools import. It is
+a change to how things are FETCHED, and it works with Option A's layout; it
+is not a third way of arranging folders.
+
 > **Revised 2026-10-09** on the owner's correction: *"i thought we could mount
 > unhydrated and mount hydrated on (sub-\*)graphs .... so you can do a workflow
 > like 'load the tools/skills metadata, review the skills description and then
@@ -267,6 +288,48 @@ So the owner's workflow is three gaps, not a new mechanism:
   written back to the mount entry (the way a subscription's `subgraphs` list
   holds the choice and never the state), or a fresh clone cannot replay it.
 
+### A concern is a name for a list (the owner's answer to Option B)
+
+The folders stay kind-first (A). What the owner asked for instead of
+concern-first folders is a NAME: `sdlc` at the top level standing for
+`["docs/sdlc", "skills/sdlc", "processes/sdlc", "scripts/sdlc"]`. That is a
+declaration, not a directory:
+
+```jsonc
+// cat-harness.json, beside "directories"
+"concerns": {
+  "sdlc":        ["docs/sdlc", "skills/sdlc", "processes/sdlc", "scripts/sdlc"],
+  "publication": ["docs/publication", "skills/publication", "scripts/publication", "site-chrome"]
+}
+```
+
+- **Derived, not hand-kept, where it can be.** Every `concern-groups/v1`
+  declaration already names its members by group code, so the list for
+  `sdlc` is computable from them; `concerns` is then only where a member does
+  not sit at `<kind>/<group>/` (`site-chrome`, `themes`). `check:concern-groups`
+  fails a list that disagrees with the members it can compute.
+- **Mountable.** `overrides.cat-harness.directories: ["sdlc"]` expands to the
+  list. That needs G3 (nested ids resolve), because every member is nested.
+- **Same name everywhere.** The code is the concern-group code, so `sdlc` in a
+  mount, a skill path and a docs path is one word.
+
+### The ninth group: `publication` (D4)
+
+Ruled 2026-10-09. The eight groups were ruled in `9umr`; this amends that
+ruling, so it changes `code-lists/concern-group.json` and the definition of
+`ui`, which today covers both:
+
+| code | definition (proposed) |
+|---|---|
+| `ui` (narrowed) | how the corpus is PRESENTED to a reader: viewers, boards, themes, the site's look and navigation |
+| `publication` (new) | how the corpus is BUILT AND SERVED: composing the docs layers, the site build, the publish branch, release sites at `/<version>/` and `/v<major>/`, the CDN, and publication verification |
+
+Today's members that move from `ui` to `publication`: `processes/ui/staging-render-log`,
+the publish and site-build scripts (`compose-docs`, `mount-instance-docs`,
+`publish-gh-pages`, `publish-verify`, `minify-site`, `search-split`, …), and
+the skills `instance-publication` and `publish-verification`. `site-chrome/`
+is `ui`; the process that builds a site from it is `publication`.
+
 ### Option D — chrome and themes only
 
 Do slices 1 and 2, leave the rest flat.
@@ -316,11 +379,33 @@ PRs 1–4 are the ruled slices and the who-iris unblock. 5+ wait on **D5**.
 
 | | question | proposed default |
 |---|---|---|
-| **D1** | Composed `_config.yml`: parse-equal acceptable, or must the published bytes stay identical? | parse-equal |
+| **D1** | Composed `_config.yml`: parse-equal acceptable, or must its bytes stay identical? (explained below) | parse-equal |
 | **D2** | `work-plan.*`, `process-index.js`, `slice-sqlite*`, `kg-render.js`: chrome, or harness pages' assets that stay in `docs/`? | stay in `docs/` — they serve harness pages |
 | **D3** | The base light/dark + high-contrast pair: code in `schemas/`, or nodes in `site-chrome/`? | `site-chrome/` — the base travels with the chrome that needs it |
 | **D4** | Split `publication` out of `ui` as a ninth concern group? | no — `ui`'s definition already says "rendered, published and presented"; a ninth code is a `9umr` amendment |
 | **D5** | Option A, B, C or D for slice 3 | **C** |
+
+### D1, explained
+
+Jekyll reads ONE `_config.yml`. After slice 1 there are two: `site-chrome/`'s
+(theme keys) and `docs/`'s (title, `baseurl`, nav). `compose-docs` already
+handles that case by **parsing both, merging, and writing the result back
+out** (overlay keys win; owner's rule, 2026-09-21). Writing YAML back out
+keeps every setting and value but drops the comments and may reorder keys.
+
+- **Who sees it:** nobody reading the site. Jekyll consumes `_config.yml` and
+  does not publish it. A difference shows on the site only if a SETTING
+  differs, and parse equality is exactly the test that no setting differs.
+- **Who would notice the bytes:** `compose-docs.test.ts`, which today pins
+  "an empty overlay produces a byte-identical tree", and a person diffing the
+  composed tree. Under parse-equal that test changes to "byte-identical for
+  every file except `_config.yml`, which is parse-equal".
+- **The alternative, if bytes must stay identical:** `docs/_config.yml` keeps
+  its full content, theme keys included, and `site-chrome/_config.yml` is used
+  only when no later layer has a config (a downstream like who-iris). Then
+  folio-assistant's composed config is byte-identical, at the price of the
+  theme keys living in two files that can drift — the duplication the merge
+  rule exists to avoid.
 
 ## 7. What would change this
 
