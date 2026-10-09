@@ -72,12 +72,17 @@ describe("the committed gateway API", () => {
     const dir = mkdtempSync(join(tmpdir(), "openapi-"));
     try {
       const inst = join(dir, "smart-trust");
+      // Wherever smart-trust keeps its config today: since its cutover the
+      // mount carries declared directories only, so the copy lives inside
+      // `openapi/` and there is no root file to read.
+      const config = configPath(join(ROOT, "smart-trust"))!;
+      expect(config).toBeDefined();
       cpSync(join(ROOT, "smart-trust", "smart-trust.json"), join(inst, "smart-trust.json"));
       cpSync(join(ROOT, "smart-trust", "openapi"), join(inst, "openapi"), { recursive: true });
-      cpSync(join(ROOT, "smart-trust", "cat-openapi.config.json"), join(inst, "openapi", "cat-openapi.config.json"));
+      cpSync(config, join(inst, "openapi", "cat-openapi.config.json"));
       expect(configPath(inst)).toBe(join(inst, "openapi", "cat-openapi.config.json"));
       expect(checkCommitted(inst)).toEqual([]);
-      cpSync(join(ROOT, "smart-trust", "cat-openapi.config.json"), join(inst, "cat-openapi.config.json"));
+      cpSync(config, join(inst, "cat-openapi.config.json"));
       expect(configPath(inst)).toBe(join(inst, "cat-openapi.config.json"));
     } finally {
       rmSync(dir, { recursive: true, force: true });
