@@ -1026,15 +1026,15 @@ export function tools(baseUrl?: string): ToolDefinition[] {
     // self-sovereign — and before this node they had no publication
     // mechanism, only a skill saying what one would have to do.
     //
-    // ONE tool here, not two, and that is a retreat from this bean's own
-    // plan. `0hi8` said two implementations, because one is an assertion and
-    // two is a demonstration — the argument `4dbr` makes about a second
-    // forge. It still holds. But the obvious second candidate is a generic
-    // static server, and it does NOT satisfy `compound-extension-wins`:
-    // every OS table resolves `.schema.json` to `application/json`. Caddy
-    // configured per-path would satisfy it and is not installed here, so
-    // declaring it would be asserting conformance nobody measured. Left
-    // open on the bean rather than claimed.
+    // TWO tools satisfy `serving-renderings` (discharging bean `0hi8` Done-when
+    // item 2: "at least two tools satisfy it, because one is an assertion and
+    // two is a demonstration"):
+    // 1. `serve-rendering` (Bun / TypeScript)
+    // 2. `serve-rendering-py` (Python 3 standard library)
+    //
+    // Both conform to `skills/requirements/serving-a-rendering.json` and share
+    // the same signature, so they are derived alternatives with explicit
+    // `selection` records.
     defineTool({
       id: "serve-rendering",
       title: "Local rendering server",
@@ -1050,10 +1050,37 @@ export function tools(baseUrl?: string): ToolDefinition[] {
         outputs: [{ name: "url", schema: t("Url"), description: "Where the tree is being served.", render: { as: "url", reason: "a reader opens it; the scheme is checked before it reaches an href" } }],
       },
       satisfies: ["serving-renderings"],
+      selection: {
+        when: "Serving renderings in a Bun / JavaScript / TypeScript runtime environment.",
+        limits: "Requires Bun runtime. For Python-only environments without Bun, use `serve-rendering-py`.",
+        cost: "Zero install cost when Bun is already present.",
+      },
       // No network: it BINDS one, it does not reach out. `requires.network`
       // means "needs egress", and conflating the two would mark this
       // unavailable on exactly the air-gapped topology it exists for.
       requires: { runtime: ["bun"], network: false },
+    }),
+    defineTool({
+      id: "serve-rendering-py",
+      title: "Local rendering server (Python)",
+      description:
+        "Serve an instance's renderings over local HTTP with their declared media types using Python 3 standard library. The publication host wherever GitHub Pages is absent, and the only host that can enforce `application/ld+json` at all.",
+      install: { none: true },
+      invoke: { shell: "python3 cat-harness/scripts/serve-rendering.py" },
+      io: {
+        inputs: [
+          { name: "directory", schema: t("RepoPath"), required: false, arg: { flag: "--dir" }, description: "Tree to serve; defaults to the built site when present." },
+          { name: "port", schema: t("Port"), required: false, arg: { flag: "--port" }, description: "0 binds a free port, which is what the tests use." },
+        ],
+        outputs: [{ name: "url", schema: t("Url"), description: "Where the tree is being served.", render: { as: "url", reason: "a reader opens it; the scheme is checked before it reaches an href" } }],
+      },
+      satisfies: ["serving-renderings"],
+      selection: {
+        when: "Serving renderings in a Python runtime environment without requiring Bun or Node.",
+        limits: "Requires Python 3. For Bun runtime environments, use `serve-rendering`.",
+        cost: "Zero external dependencies beyond standard library Python 3.",
+      },
+      requires: { runtime: ["python3"], network: false },
     }),
 
     // ── The export itself, which five nodes claimed and none performed ────

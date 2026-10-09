@@ -255,6 +255,7 @@
     "schema:viz": "bun run cat-harness/scripts/gen-schema-viz.ts",
     "schema:viz:check": "bun run cat-harness/scripts/gen-schema-viz.ts --check",
     "serve:rendering": "bun run cat-harness/scripts/serve-rendering.ts",
+    "serve:rendering:py": "python3 cat-harness/scripts/serve-rendering.py",
     "sessions": "bun run cat-harness/scripts/sibling-sessions.ts",
     "site:links": "bun run cat-harness/scripts/site-links.ts",
     "skill:register": "bun run cat-harness/scripts/skill-register.ts",
