@@ -668,6 +668,8 @@ describe("judge-mode pairs are distinguished from artefact staleness checks — 
   });
 
   test("JUDGE_CHECKS and isJudgeCheck identify judge-mode gates", () => {
+    // The set and the predicate are one answer: every listed check is judged.
+    for (const c of JUDGE_CHECKS) expect(isJudgeCheck(c)).toBe(true);
     expect(isJudgeCheck("audit:coverage:strict")).toBe(true);
     expect(isJudgeCheck("audit:coverage:require-all")).toBe(true);
     expect(isJudgeCheck("voices:viz:check")).toBe(false);
