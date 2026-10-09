@@ -527,5 +527,7 @@ goal. Apply when you hold the flag.
 For systematic evaluation of multi-agent SDLC workflows (comparing Waterfall, Agile, and dynamic process models against this repository's 69 BPMN processes) and the architectural gap checklist, see:
 - Methodology: [`methodologies/sdlc-agentic-landscape.md`](../../../methodologies/sdlc-agentic-landscape.md) (derived from arXiv:2404.04834v4, He, Treude, and Lo)
 - Architectural analysis: [`docs/architecture/sdlc-agentic-coverage.md`](../../../docs/architecture/sdlc-agentic-coverage.md)
+- Cross-paper literature synthesis & bidirectional adversarial pass: [`methodologies/agentic-se-literature-synthesis.md`](../../../methodologies/agentic-se-literature-synthesis.md) (synthesizing arXiv:2404.04834v4, arXiv:2507.23348v1, arXiv:2607.00053v1, arXiv:2601.04544v1, arXiv:2402.02172v5 under epic `0ipy`)
+
 
 

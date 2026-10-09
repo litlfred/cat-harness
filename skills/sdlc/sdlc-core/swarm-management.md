@@ -209,6 +209,11 @@ In the Toyota Production System and TCAndon, an **Andon cord** allows any partic
 - **Reasoning loop / drift:** An agent's reasoning log exhibits circular deliberation, repeated retries without progress, or mismatch between rationale and tool actions. Terminate that worker early rather than waiting for timeout.
 - **Deadlock or shared state collision:** Multiple workers wait on interdependent outputs or attempt conflicting branch updates.
 
+## Agentic SE literature synthesis & cross-paper methodology
+
+For the comprehensive cross-cutting synthesis, epistemic partition (Measured vs. Recommended vs. Claimed), and bidirectional adversarial analysis across all five foundation papers (He et al., SWE-Debate, SWE-Router, TCAndon-Router, CodeAgent), see:
+- [`methodologies/agentic-se-literature-synthesis.md`](../../../methodologies/agentic-se-literature-synthesis.md)
+
 ## Known gaps
 
 This skill is **written ahead of the tooling**. There is no swarm runner in
