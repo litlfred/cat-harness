@@ -16,7 +16,9 @@
         "interaction-modality",
         "kg-subscription",
         "materialize-remote",
-        "repo-conversion"
+        "repo-conversion",
+        "merge-to-main",
+        "agent-permissions"
       ],
       "persona": "Has a goal and no interest in the machinery. Types with difficulty and will not read three paragraphs to find a choice. Knows their own domain far better than the system, and will be right about it when the agent is not."
     },
@@ -405,7 +407,9 @@
         "pr-description",
         "branch-archaeology",
         "generalise-the-fix",
-        "blocked-build-dependencies"
+        "blocked-build-dependencies",
+        "merge-to-main",
+        "agent-permissions"
       ],
       "persona": "Has the whole corpus available and no memory of the last session. Will follow the most specific instruction it can find and improvise when it finds none. Reads a skill before it reads the code."
     },
@@ -511,7 +515,8 @@
         "merge-conflict-patterns",
         "merge-queue",
         "prepare-merge",
-        "ref-stewardship"
+        "ref-stewardship",
+        "merge-to-main"
       ],
       "persona": "Patient and literal. Would rather eject one PR with evidence than hold a whole train, and would rather re-run than land a SHA CI did not test. Closes its window on the clock even while writes are still arriving, because a window that extends on every arrival is an outage with a timer."
     },
@@ -541,7 +546,8 @@
         "prepare-merge",
         "qa-reports",
         "compiled-artefact-cache",
-        "remote-mount"
+        "remote-mount",
+        "harness-projections"
       ]
     },
     {

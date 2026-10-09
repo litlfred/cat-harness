@@ -9,7 +9,7 @@ nav_exclude: true
 {% raw %}
 # Session state machine
 
-`Process_SessionStateMachine` · advisory · 7 step(s)
+`Process_SessionStateMachine` · advisory · 8 step(s)
 
 The shape of a session from the outside: establish who is acting, open a record for them, take each turn in, and write down only what actually changed.
 
@@ -22,7 +22,7 @@ The distinction between refreshing a timestamp and writing what changed is the d
 ## How it connects
 
 - **Called by:** no call activity names this process
-- **Calls:** none
+- **Calls:** [Secure agent permissions](secure-agent-permissions.html)
 - **Presented on:** no docs page section shows this diagram
 - **Skill:** [`session-state-machine`](../reference/skill-instructions/session-state-machine.html)
 
@@ -36,13 +36,14 @@ The distinction between refreshing a timestamp and writing what changed is the d
 
 ## Steps
 
-Every one of the 7 step(s) is documented.
+Every one of the 8 step(s) is documented.
 
 | step | lane | skill / sub-process | what it does |
 |---|---|---|---|
 | **Establish who is acting**<br>`A_IdentifyActor` | Agent (playing the machine) | [`session-context`](../reference/skill-instructions/session-context.html) | The first step and not a formality: `actor` is the one field of the record that nothing else can supply. Every other field is recoverable by reading the repository; who is acting is not. |
 | **Ask who is acting**<br>`A_AskWhoIsActing` | Human actor | [`interaction-modality`](../reference/skill-instructions/interaction-modality.html) | The one step that needs a person. Asked ONCE and recorded, never re-asked: `cat-harness/memory/interaction.json` and the record exist so that a preference stated once is not requested again, which is WCAG 2.2 SC 3.3.7. |
 | **Open the session record**<br>`A_OpenSession` | Agent (playing the machine) | [`session-context`](../reference/skill-instructions/session-context.html) | Writes `id`, `actor` and `startedAt`, with `open` and `claimed` empty. An empty `open` is the NORMAL state, not an unfinished one: an agent reading, answering or deciding is in no process at all. |
+| **Secure the agent's permissions**<br>`Call_SecurePermissions` | Agent (playing the machine) | calls [Secure agent permissions](secure-agent-permissions.html)<br>[`agent-permissions`](../reference/skill-instructions/agent-permissions.html) | Once the actor is known and the record is open, check that the coding agent acting here holds the permissions this instance's processes need, granted by a person and recorded, and ask for any that are missing. This is where initiating the harness for an actor secures them, rather than the first denied command. A run that finds them current returns without asking anything; the same process is called on demand when an action is denied later in the session. Vendor-neutral: the agent is a Tool, and its config is written through that Tool's adapter. Skill: agent-permissions. |
 | **Take in the turn**<br>`A_ReadTurn` | Agent (playing the machine) | — | A turn is anything that arrives — a person's message, a tool result, a notification. The machine advances on turns rather than on a clock, because a session that has been told nothing has not changed. |
 | **Refresh `updatedAt` only**<br>`A_Touch` | Agent (playing the machine) | [`session-context`](../reference/skill-instructions/session-context.html) | Nothing changed, and saying so is the point. A record that stops being written looks exactly like an abandoned session; a refreshed timestamp with no other change says the session is alive and idle, which is a different fact and the commonest one. |
 | **Write what changed**<br>`A_UpdateSession` | Agent (playing the machine) | [`session-context`](../reference/skill-instructions/session-context.html) | An instance opened or closed, a bean claimed, a wait started or ended. All by REFERENCE: the bean and the instance are each the authority on themselves, and a status copied here would be free to contradict them.<br>NO `cat-harness.processes:bean` on this step. It records that a claim happened; it does not claim. |

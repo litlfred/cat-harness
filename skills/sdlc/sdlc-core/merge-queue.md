@@ -724,7 +724,9 @@ then cannot land at all. Measured 2026-10-04: #2059 was admitted at
 green, but GitHub refuses to merge a conflicted PR, so it waits for its
 `merge:main` round and fresh CI on the new head.
 
-Only with the owner's release (`Task_Release`): explicit, or a standing ruling
+Only with the owner's release, which is now the authorisation half of
+[`merge-to-main`](merge-to-main.md) (`Call_MergeToMain` in `merge-train.bpmn`;
+it was `Task_Release` until 2026-10-09): explicit, or a standing ruling
 quoted verbatim with its date, and **only through `bun run cat merge:guard <pr>
 --merge --session <id>`** (section above). What lands is exactly the SHA CI
 tested — the guard pins the PUT to the head it evaluated, so GitHub refuses it

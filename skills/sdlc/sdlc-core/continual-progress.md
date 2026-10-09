@@ -238,6 +238,10 @@ than a question:
 4. **If it reports red, it is yours again**: fix, push, wait for green on
    every job, then re-label and comment `ready: <new head sha>`.
 
+Wherever a merge does happen, it is the
+[`merge-to-main`](merge-to-main.md) sub-process: evidence on the head, the
+owner's authorisation for that merge, recorded, then the merge.
+
 So "merge anyway" in §"What to do with the thing you could not verify" reads
 here as **mark it ready anyway**, and "merge it as soon as it is green" in the
 fix-forward section below reads as **hand it over as soon as it is green**.

@@ -9,7 +9,7 @@ nav_exclude: true
 {% raw %}
 # A merge train
 
-`Process_MergeTrain` · strict · 16 step(s)
+`Process_MergeTrain` · strict · 15 step(s)
 
 Land the ready pull requests as one train: place each by the merge-priority decision table, merge the members with `merge-base`, run the gate set on the combination, and on red eject the culprit rather than reject the train. A TRAIN OF PULL REQUESTS, landed together. Bean `hfag` (merge-pipeline epic), owner's ruling 2026-10-02. One instance per train run, committed under `beans/workflows/` like every other instance, so a sibling steward sees the same position and the run's record is what T4 will later be tuned from (R10).
 
@@ -24,7 +24,7 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
 ## How it connects
 
 - **Called by:** no call activity names this process
-- **Calls:** [The gates a change must pass before it can merge](code-quality-gates.html), [Merge the base branch in](merge-base.html), [A refused merge-train member](merge-refusal.html), [Which open pull requests have no CI run on their head?](pr-checks-present.html)
+- **Calls:** [The gates a change must pass before it can merge](code-quality-gates.html), [Merge the base branch in](merge-base.html), [A refused merge-train member](merge-refusal.html), [Merge to main](merge-to-main.html), [Which open pull requests have no CI run on their head?](pr-checks-present.html)
 - **Presented on:** no docs page section shows this diagram
 
 ## Lanes — who acts
@@ -34,11 +34,11 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
 | Merge steward | `merge-steward` | Composes the train from the queue, decides nothing the placement table or the owner has not, attributes and ejects on red, and lands at the tested SHA. |
 | Sibling session | `sibling-session` | The session that owns a handed-back PR. Fixes it on its own branch and re-signals ready; never merged on its behalf. |
 | Build pipeline | `build-pipeline` | Mechanical: merges, regenerates and runs the gates, and reports. Judges nothing a declaration has not decided. |
-| Owner | `user` | Releases a merge to `main` (or has released it by a standing ruling, which the steward quotes), and may override a placement, always with a reason. |
+| Owner | `user` | May override a placement, always with a reason. Releasing a merge to `main` is no longer drawn here: it is the Owner lane of `merge-to-main.bpmn`, which `Call_MergeToMain` descends into, so the owner's release has one definition for every process that merges rather than one per diagram. |
 
 ## Steps
 
-Every one of the 16 step(s) is documented.
+Every one of the 15 step(s) is documented.
 
 | step | lane | skill / sub-process | what it does |
 |---|---|---|---|
@@ -55,8 +55,7 @@ Every one of the 16 step(s) is documented.
 | **Bisect the train**<br>`Task_Bisect` | Merge steward | [`merge-queue`](../reference/skill-instructions/merge-queue.html) | Halve the members and re-run the gates on each half until the conflicting one is found: two or three CI runs for three to six members. Only reached when the cheap evidence is silent. |
 | **Eject the culprit, record why**<br>`Task_Eject` | Merge steward | [`merge-queue`](../reference/skill-instructions/merge-queue.html) | T1 (R3; SQ19 §2.2 p. 3): the culprit leaves, the rest re-run. Writes `ejection` on its queue entry (train id, reason, evidence URL, when) and a dated evidence snapshot on this instance. The train is never rejected whole for one member. |
 | **Hand the culprit back**<br>`Call_EjectHandBack` | Merge steward | calls [A refused merge-train member](merge-refusal.html)<br>[`merge-conflict-patterns`](../reference/skill-instructions/merge-conflict-patterns.html) | The same hand-back as a refused placement (#1888), carrying the ejection's evidence (R4). Then the train re-runs without it. |
-| **Release the merge to main**<br>`Task_Release` | Owner | [`interaction-modality`](../reference/skill-instructions/interaction-modality.html) | Explicit confirmation before merging to `main`, or a standing ruling the steward quotes verbatim with its date (2026-10-01: "you may merge green PRs"). |
-| **Land the train at the tested SHA**<br>`Task_Land` | Merge steward | [`prepare-merge`](../reference/skill-instructions/prepare-merge.html) | R1: what lands is exactly what CI tested. If `main` moved after the train's CI started, re-run rather than land (open question for the owner in the requirements note §6). Clears each member's `trainId`; its preview is then taken down by `feature-staging.bpmn`. |
+| **Land each member**<br>`Call_MergeToMain` | Merge steward | calls [Merge to main](merge-to-main.html)<br>[`merge-to-main`](../reference/skill-instructions/merge-to-main.html) | Once per member, in train order, at the SHA the train's gate set tested. `merge-to-main.bpmn` is where merging is a step with its own gate: it reads the head's evidence live (the train's green run is that evidence, and `merge:guard` re-evaluates it), establishes that the owner authorised THIS merge (explicitly, or by a standing ruling quoted verbatim with its date, e.g. 2026-10-01 "you may merge green PRs", which covers green heads only and only the queue as it stood), records the authorisation, merges pinned to the head, and then confirms `main`, re-pins downstream mounts and notes the bean. Until 2026-10-09 this was two steps here, `Task_Release` in the owner's lane bound to interaction-modality and `Task_Land` bound to prepare-merge; neither could refuse a merge, and neither said what happens when a repository has no CI. R1 still holds: what lands is exactly what CI tested. If `main` moved after the train's CI started, re-run rather than land. Each member's `trainId` is cleared, and its preview is then taken down by `feature-staging.bpmn`. A member the sub-process does not merge (held, refused, handed back) leaves the train with its reason on its queue entry. |
 | **Place it by hand, with a reason**<br>`Task_Override` | Owner | [`interaction-modality`](../reference/skill-instructions/interaction-modality.html) | Recorded as a queue entry whose placement is `override` with a position and a reason; the schema refuses one without a reason. It enters the next placement as the table's `ownerOverride` input. |
 
 ## Decisions
@@ -68,8 +67,8 @@ Every one of the 6 decision(s) is documented.
 | **Where does this PR go?**<br>`GW_Placement` | Computed, not chosen: decisions/merge-priority.dmn (hit policy FIRST) over the live facts plus `ownerOverride`. An owner override is an INPUT to the table, never a hand-supplied outcome, which the engine refuses here. `hand back` when a declared merge pattern refuses a path or the PR carries an un-cleared ejection; otherwise `admit`, with the class, rank and whether it rides alone (T3) recorded on its queue entry. | **admit** → Admit it to the train, record the train id<br>**hand back** → Hand it back |
 | **Train full, or queue empty?**<br>`GW_More` | `more` while the queue has admissible PRs and the train is under its cap; `full` otherwise. The cap is fixed for now: T4 (risk-based size) waits for this process's own run records (R10). `merge:leftover` reports what a train left behind. | **more** → Take the next PR in queue order<br>**full** → Find members with no CI on their head |
 | **Every member merged?**<br>`GW_AllMerged` | `refused` when `merge-base` refused a member's conflict: that member is ejected (T1) rather than the whole train aborted. `merged` otherwise. | **merged** → Run the gate set on the train<br>**refused** → Eject the culprit, record why |
-| **Train green?**<br>`GW_Green` | Read per job from the check runs on the train's head, never from the legacy status API. `green` goes to the owner's release; `red` to a single retry of declared-flaky gates. | **green** → Release the merge to main<br>**red** → Retry a declared-flaky gate once |
-| **Still red?**<br>`GW_StillRed` | `green` if the only red gate was a declared flake that passed on retry; `red` otherwise, and a member is to blame. | **green** → Release the merge to main<br>**red** → Attribute the failure: each member's own CI first |
+| **Train green?**<br>`GW_Green` | Read per job from the check runs on the train's head, never from the legacy status API. `green` goes to the owner's release; `red` to a single retry of declared-flaky gates. | **green** → Land each member<br>**red** → Retry a declared-flaky gate once |
+| **Still red?**<br>`GW_StillRed` | `green` if the only red gate was a declared flake that passed on retry; `red` otherwise, and a member is to blame. | **green** → Land each member<br>**red** → Attribute the failure: each member's own CI first |
 | **Culprit evident?**<br>`GW_Culprit` | `evidence` when exactly the suspects' own CI explains the red; `bisect` when every member is green alone. | **evidence** → Eject the culprit, record why<br>**bisect** → Bisect the train |
 
 {% endraw %}

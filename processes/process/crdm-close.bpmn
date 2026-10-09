@@ -11,7 +11,7 @@
     <bpmn:participant id="Participant_Process_CRDM_Close" name="CRDM close-out" processRef="Process_CRDM_Close"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_CRDM_Close" name="CRDM close-out" isExecutable="false">
-    <bpmn:documentation>The stakeholders sign off, the BA confirms every criterion is met, and only then does the agent close the issue. Never the other way round: an agent must never assume completion.</bpmn:documentation>
+    <bpmn:documentation>The stakeholders sign off, the BA confirms every criterion is met, the feature lands on `main` through the `merge-to-main` sub-process, and only then does the agent close the issue. Never the other way round: an agent must never assume completion.</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
@@ -27,6 +27,7 @@
         <bpmn:flowNodeRef>A_RecordSignoff</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_SignoffRecorded</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_NotAccepted</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_MergeToMain</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Close</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Process_CRDM_Close</bpmn:flowNodeRef>
       </bpmn:lane>
@@ -66,6 +67,13 @@ GW_SignoffRecorded after this reads the record back, so this step cannot be skip
       </bpmn:extensionElements>
     </bpmn:exclusiveGateway>
     <bpmn:endEvent id="End_NotAccepted" name="Not accepted — recorded, with its reason"/>
+    <bpmn:callActivity id="Call_MergeToMain" name="Land the feature's PRs&#10;[merge-to-main]" calledElement="Process_MergeToMain">
+      <bpmn:documentation>Phase 6's "explicit confirmation before merging to main", made a step that can refuse. Once per pull request the feature still has open, after the sign-off is recorded and before the issue is closed: an issue is not closed on a feature that is not on `main`. `merge-to-main.bpmn` reads each head's evidence live, establishes that the owner authorised THAT merge (a stakeholder sign-off or the BA's confirmation is acceptance of the feature, not authorisation to merge it, unless the owner's own words say so), records the authorisation, merges, and confirms the base. A PR the owner holds or refuses stays open, and A_Close then waits: the BA's authorisation to close does not cover a feature that did not land. An increment the owner asked to land earlier in Phase 6 went through the same sub-process at that time.</bpmn:documentation>
+      <bpmn:extensionElements>
+        <bootstrap.processes:skill ref="merge-to-main"/>
+        <cat-harness.processes:bean op="note"/>
+      </bpmn:extensionElements>
+    </bpmn:callActivity>
     <bpmn:task id="A_Close" name="Close issue ONLY on
 BA authorisation">
       <bpmn:documentation>Reachable only through BA_Confirm, which is the BA
@@ -82,7 +90,8 @@ says so rather than leaving a reader to trace the flow for it.</bpmn:documentati
     <bpmn:sequenceFlow id="SF_Process_CRDM_Close_2" sourceRef="S_FeatureSignoff" targetRef="BA_Confirm"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_Close_3" sourceRef="BA_Confirm" targetRef="A_RecordSignoff"/>
     <bpmn:sequenceFlow id="SF_Close_Gate" sourceRef="A_RecordSignoff" targetRef="GW_SignoffRecorded"/>
-    <bpmn:sequenceFlow id="SF_Close_Proceed" name="proceed" sourceRef="GW_SignoffRecorded" targetRef="A_Close"/>
+    <bpmn:sequenceFlow id="SF_Close_Proceed" name="proceed" sourceRef="GW_SignoffRecorded" targetRef="Call_MergeToMain"/>
+    <bpmn:sequenceFlow id="SF_Close_Merged" sourceRef="Call_MergeToMain" targetRef="A_Close"/>
     <bpmn:sequenceFlow id="SF_Close_Stop" name="stop" sourceRef="GW_SignoffRecorded" targetRef="End_NotAccepted"/>
     <bpmn:sequenceFlow id="SF_Close_Missing" name="missing" sourceRef="GW_SignoffRecorded" targetRef="A_RecordSignoff"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_Close_4" sourceRef="A_Close" targetRef="End_Process_CRDM_Close"/>
@@ -90,16 +99,16 @@ says so rather than leaving a reader to trace the flow for it.</bpmn:documentati
   <bpmndi:BPMNDiagram id="Diagram_Process_CRDM_Close">
     <bpmndi:BPMNPlane id="Plane_Process_CRDM_Close" bpmnElement="Collaboration_Process_CRDM_Close">
       <bpmndi:BPMNShape id="Shape_Participant_Process_CRDM_Close" bpmnElement="Participant_Process_CRDM_Close" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1266" height="550" />
+        <dc:Bounds x="160" y="80" width="1466" height="550" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_BA_Process_CRDM_Close" bpmnElement="Lane_BA" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1236" height="170" />
+        <dc:Bounds x="190" y="80" width="1436" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent_Process_CRDM_Close" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="250" width="1236" height="170" />
+        <dc:Bounds x="190" y="250" width="1436" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Stakeholders_Process_CRDM_Close" bpmnElement="Lane_Stakeholders" isHorizontal="true">
-        <dc:Bounds x="190" y="420" width="1236" height="170" />
+        <dc:Bounds x="190" y="420" width="1436" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_CRDM_Close" bpmnElement="Start_Process_CRDM_Close">
         <dc:Bounds x="310" y="487" width="36" height="36" />
@@ -110,11 +119,14 @@ says so rather than leaving a reader to trace the flow for it.</bpmn:documentati
       <bpmndi:BPMNShape id="Shape_BA_Confirm" bpmnElement="BA_Confirm">
         <dc:Bounds x="710" y="125" width="140" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Call_MergeToMain" bpmnElement="Call_MergeToMain">
+        <dc:Bounds x="1030" y="295" width="140" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Close" bpmnElement="A_Close">
-        <dc:Bounds x="1050" y="295" width="140" height="80" />
+        <dc:Bounds x="1250" y="295" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Process_CRDM_Close" bpmnElement="End_Process_CRDM_Close">
-        <dc:Bounds x="1290" y="317" width="36" height="36" />
+        <dc:Bounds x="1490" y="317" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Close_1" bpmnElement="SF_Process_CRDM_Close_1">
         <di:waypoint x="346" y="505" />
@@ -145,7 +157,11 @@ says so rather than leaving a reader to trace the flow for it.</bpmn:documentati
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Close_Proceed" bpmnElement="SF_Close_Proceed">
         <di:waypoint x="960" y="335" />
-        <di:waypoint x="1050" y="335" />
+        <di:waypoint x="1030" y="335" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Close_Merged" bpmnElement="SF_Close_Merged">
+        <di:waypoint x="1170" y="335" />
+        <di:waypoint x="1250" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Close_Stop" bpmnElement="SF_Close_Stop">
         <di:waypoint x="935" y="360" />
@@ -158,8 +174,8 @@ says so rather than leaving a reader to trace the flow for it.</bpmn:documentati
         <di:waypoint x="820" y="295" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Close_4" bpmnElement="SF_Process_CRDM_Close_4">
-        <di:waypoint x="1190" y="335" />
-        <di:waypoint x="1290" y="335" />
+        <di:waypoint x="1390" y="335" />
+        <di:waypoint x="1490" y="335" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

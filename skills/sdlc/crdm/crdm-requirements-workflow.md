@@ -442,7 +442,12 @@ For each bean:
    `content-change-review.bpmn`. The review coordinator slices the change and
    assigns the slices, reviewers work them in `review-task`, disagreements go
    to `adjudication`, and the coverage gate must pass before sign-off.
-7. **Ask user for explicit confirmation before merging to main**
+7. **Ask user for explicit confirmation before merging to main.** This is the
+   [`merge-to-main`](../sdlc-core/merge-to-main.md) sub-process, called from
+   `crdm-close.bpmn` (`Call_MergeToMain`) once the sign-off is recorded and
+   before the issue is closed, and run the same way for any increment the owner
+   asks to land earlier. A stakeholder sign-off or the BA's confirmation is
+   acceptance of the feature, not authorisation to merge it.
 8. **Update documentation** — the OWNING instance's `docs/` pages and the
    workflow BPMNs. For the harness's own feature, **file its proposal as its
    requirements** once the merge is agreed: see *"A harness feature's
