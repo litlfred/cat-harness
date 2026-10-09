@@ -382,15 +382,6 @@ describe("annotations hold to the data that chooses their targets", () => {
     for (const g of globs) expect(annotated("cat-harness/schemas/harness-config.ts", g), g).toBe(true);
   });
 
-  test("every declared `contributes` module lies under `*/contributes.ts`", () => {
-    for (const root of roots()) {
-      for (const d of orderedDependencies(root)) {
-        const spec = d.config?.contributes;
-        if (spec) expect(globMatch("*/contributes.ts", relTo(resolve(d.rootPath, spec))), `${d.rootPath}: ${spec}`).toBe(true);
-      }
-    }
-    expect(annotated("cat-harness/schemas/harness-config.ts", "*/contributes.ts")).toBe(true);
-  });
 
   test("every instance themes module lies under theme-by-ref's `imports` glob", () => {
     for (const root of roots()) {

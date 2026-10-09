@@ -44,7 +44,6 @@ import { dirname, join, relative, resolve } from "node:path";
 
 import { specifiersOf } from "@litlfred/bootstrap-tools/scripts/check-closure.js";
 import { instanceRootsIn, readDeclaration } from "../schemas/cat-harness.ts";
-import { contributingDependencies } from "../schemas/harness-config.ts";
 import { downstreamOf, type Edge, judge, readTree, renderingOrder } from "./check-derived-from.ts";
 
 export interface ConeDir {
@@ -81,11 +80,6 @@ function resolveSpecifier(fromAbs: string, spec: string): string | undefined {
  * keyed by the importing file. Anything not listed stays a bounded doubt.
  */
 export const DECLARED_COMPUTED_IMPORTS: Record<string, (repoRoot: string) => string[]> = {
-  // `loadContributions`: each dependency's declared `contributes` module,
-  // resolved by harness-config's OWN resolver so the two cannot disagree about
-  // which file a declaration names.
-  "cat-harness/schemas/harness-config.ts": (repoRoot) =>
-    contributingDependencies(repoRoot).map((c) => relative(repoRoot, c.modulePath)),
   // `loadBlockModule`: a folio's block manifests, which live in the directories
   // declared with graph typology `folio`.
   "cat-harness/content/pipeline/block-module.ts": (repoRoot) =>
