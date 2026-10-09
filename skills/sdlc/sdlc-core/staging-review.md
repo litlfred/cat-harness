@@ -649,11 +649,49 @@ Give them the number and the follow-up, in the same breath as the link:
 Never present a URL as though it is already serving. *"Deployed to `gh-pages`,
 should be live in ~5 minutes"* is the honest sentence and costs nothing.
 
+### Check for newer cleanup commits on gh-pages (bean oz5w)
+
+Before declaring a preview good, check the `gh-pages` commit log for any
+`staging(cleanup)` commit touching that slug that is **newer than** the last
+`staging(...)` publish:
+
+```sh
+git log -n 5 --oneline origin/gh-pages -- "STAGING/<slug>"
+```
+
+If a `staging(cleanup)` commit appears newer than the last `staging(...)`
+publish, or if the directory was deleted within the hour, **flag it
+immediately**. A preview whose slug was recently deleted and re-published is
+vulnerable to cancelled Pages builds: if Pages cancelled the re-publish build,
+the site continues serving the deletion (a 404) even though the publish ref has
+the files.
+
+A preview whose slug was deleted within the hour is not in the ordinary
+propagation window.
+
+### Re-publishing without a code push
+
+When a preview needs to be rebuilt or re-published — because a previous Pages
+build was cancelled, or because a slug was deleted by cleanup from a preceding
+PR — you do **not** need an empty code commit or push. Dispatch the staging
+workflow directly with the branch name:
+
+```sh
+gh workflow run feature-staging.yml -f branch=<branch>
+```
+
+This triggers `feature-staging.yml` via `workflow_dispatch` for that branch,
+building and deploying a fresh preview to `STAGING/<slug>/` on `gh-pages` and
+queueing a new Pages build.
+
 ## Do not
 
 - **Do not hand over a staging URL without listing `STAGING/<slug>/` on
   `gh-pages` first.** The bot's comment says a workflow pushed, not that a
   site serves, and relaying it unchecked is what this section exists for.
+- **Do not declare a preview good without checking the `gh-pages` commit log for
+  newer cleanup commits.** A `staging(cleanup)` commit newer than the publish
+  means a cancelled Pages build leaves the live site serving a 404.
 - **Do not say a preview is "live", "up" or "deployed and ready"** unless
   someone has loaded it. You cannot see that from here.
 - **Do not provide before/after URLs without checking the staging workflow

@@ -31,10 +31,22 @@
  * and with a worse outcome, because the sweep only *proposes* while this
  * *acts*.
  *
+ * ## Branch reuse across PRs (bean oz5w)
+ *
+ * The preview slug is derived from the branch name, while cleanup is triggered
+ * when a PR closes. When a session reuses a branch across successive pull
+ * requests (e.g. PR N merges while PR N+1 is already open on the same branch),
+ * PR N's merge triggers cleanup. Without a liveness preflight, that cleanup
+ * deletes the preview PR N+1 just published (bean `folio-assistant-oz5w`).
+ *
  * So liveness is evaluated again, here, at removal time, through the SAME
  * {@link previewLiveness} the sweep uses. Not a second implementation: two
  * implementations of one judgement are two answers free to diverge, and the
  * one that diverges here deletes somebody's work.
+ *
+ * Invoking preview liveness checks (`previewLiveness`, `probeOpenPrHeads`)
+ * before any slug removal explicitly verifies that another open PR or branch
+ * is not reusing or claiming the slug.
  *
  * ## Three states, and the third one refuses
  *
@@ -51,6 +63,9 @@
  *
  * @module scripts/staging-cleanup-preflight
  */
+import { existsSync } from "node:fs";
+import { join, resolve } from "node:path";
+
 import { previewLiveness, type BranchEvidenceSet, type Probe } from "../test/health/checks.ts";
 import { originSlug, probeBranches, probeOpenPrHeads } from "../test/health/probes.ts";
 import { RETIRED_DIR, SLUG_PATTERN } from "./restore-staging.ts";
@@ -79,6 +94,42 @@ export type PreflightVerdict =
   | { decision: "remove" }
   | { decision: "refuse-live"; why: string }
   | { decision: "refuse-unknown"; why: string };
+
+function findGitRoot(start: string): string {
+  let cur = resolve(start);
+  while (true) {
+    if (existsSync(join(cur, ".git"))) return cur;
+    const parent = resolve(cur, "..");
+    if (parent === cur) break;
+    cur = parent;
+  }
+  return start;
+}
+
+export interface PreflightOptions {
+  repoRoot?: string;
+  repo?: string;
+  remote?: string;
+  now?: Date;
+}
+
+/**
+ * Perform a full liveness evaluation for a preview slug against remote branches
+ * and open pull requests. Refuses removal if any open PR or branch claims or reuses the slug.
+ */
+export async function runPreflight(
+  slug: string,
+  options: PreflightOptions = {},
+): Promise<PreflightVerdict> {
+  const bad = slugProblem(slug);
+  if (bad !== undefined) return { decision: "refuse-unknown", why: bad };
+
+  const root = options.repoRoot ?? findGitRoot(new URL("..", import.meta.url).pathname);
+  const repo = options.repo ?? process.env.GITHUB_REPOSITORY ?? originSlug(root);
+  const openPrHeads = await probeOpenPrHeads(repo);
+  const branches = probeBranches({ repoRoot: root, remote: options.remote ?? "origin", previewSlugs: [slug] });
+  return preflight(slug, openPrHeads, branches, options.now ?? new Date());
+}
 
 /** The decision, pure, so it can be tested without a network. */
 export function preflight(
@@ -116,11 +167,10 @@ if (import.meta.main) {
     console.error("usage: bun run cat-harness/scripts/staging-cleanup-preflight.ts --slug <staging-slug>");
     process.exit(2);
   }
-  const root = new URL("..", import.meta.url).pathname;
-  const repo = originSlug(root);
-  const openPrHeads = await probeOpenPrHeads(repo);
-  const branches = probeBranches({ repoRoot: root, remote: "origin", previewSlugs: [slug] });
-  const verdict = preflight(slug, openPrHeads, branches, new Date());
+  const repoIdx = argv.findIndex((a) => a === "--repo" || a.startsWith("--repo="));
+  const repo = repoIdx === -1 ? undefined : argv[repoIdx].startsWith("--repo=") ? argv[repoIdx].slice("--repo=".length) : argv[repoIdx + 1];
+
+  const verdict = await runPreflight(slug, { repo });
 
   if (verdict.decision === "remove") {
     console.log(`STAGING/${slug}: no liveness signal fired — no open pull request, no branch carrying unmerged work, no recent commit.`);
@@ -131,7 +181,7 @@ if (import.meta.main) {
     console.error(`REFUSING to remove STAGING/${slug}: it is still in use.`);
     console.error(`  ${verdict.why}`);
     console.error(
-      "This is bean `w2g5`: a preview whose pull request is closed is not an abandoned one, and a session that " +
+      "This is bean `w2g5` and `oz5w`: a preview whose pull request is closed is not an abandoned one, and a session that " +
         "reuses a branch across successive pull requests spends much of its life in that gap.",
     );
     process.exit(1);
