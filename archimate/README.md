@@ -18,9 +18,15 @@ the model and for every **view, element and relationship** in it:
 - for every view, a **drawing**: SVG made from the bounds and bendpoints the
   model stores, in ArchiMate's notation, every box a link to its element.
 
-No Archi install is needed for any of it. Archi's own HTML report still has
-its place — it is the tool's — but it needs a JVM and a virtual display per
-run, and what it draws is not addressable in the graph.
+**No Java, no Archi CLI, no Archi HTML report — anywhere in the pipeline.**
+Archi's command line needs a JVM, a virtual display and a ~200 MB download per
+run, which is too heavy for CI and impossible in a web client, and what it
+draws is not addressable in the graph (owner, 2026-10-09: *"do not do java
+200mb... that's not usable for webclients and is too heavy"*). Authors draw in
+Archi on their own machines; everything published is made here, in
+TypeScript. The discipline is the skill
+[`archimate-models`](../skills/ui/ui-core/archimate-models.md); the Tools are
+`archimate-check` and `archimate-pages` (`tools/index.ts`).
 
 | graph | path | typology |
 |---|---|---|

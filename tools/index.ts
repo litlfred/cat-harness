@@ -388,6 +388,60 @@ export function tools(baseUrl?: string): ToolDefinition[] {
         { host: "api.github.com", tool: "package-release-manual" },
       ],
     }),
+    // ── The archimate subgraph's two Tools (skill `archimate-models`).
+    //
+    // Owner, 2026-10-09: "do not do java 200mb... that's not usable for
+    // webclients and is too heavy." Neither needs Archi, a JVM or a display:
+    // the model is read and every view drawn in TypeScript.
+    defineTool({
+      id: "archimate-check",
+      title: "Check an instance's ArchiMate models against its config",
+      description:
+        "The gate for the `archimate` graph typology: every model `cat-archimate.config.json` names is held, parses (Archi's native XML or its zipped archive), and resolves — every box in every view draws an element the model holds, every relationship's ends are in the model — and no `.archimate` file is held that the config does not name.",
+      install: { none: true },
+      invoke: { shell: "bun run cat-harness/archimate/scripts/check-archimate.ts" },
+      io: {
+        inputs: [
+          { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root whose `archimate` directory is checked." },
+        ],
+        outputs: [
+          { name: "problems", schema: t("Text"), description: "One line per problem on stderr, exit 1; or one ✓ line, exit 0." },
+        ],
+      },
+      satisfies: ["archimate-models"],
+      selection: {
+        when: "Before publishing an instance's ArchiMate models, and in its CI: a model that will not parse, draws an element it does not hold, or is held without being configured.",
+        limits: "Archi's native format only; the Open Group exchange format is not read yet.",
+        cost: "One parse per model. No network, no JVM.",
+      },
+      requires: { runtime: ["bun"], network: false },
+    }),
+    defineTool({
+      id: "archimate-pages",
+      title: "Give every ArchiMate view, element and relationship a page and an IRI, and draw every view",
+      description:
+        "Write a JSON-LD node and a thin page for each model an instance's `cat-archimate.config.json` names and for every view, element and relationship in it — keyed by Archi's own ids — plus the normalised model the pages' one loader draws from, and every view drawn as SVG from the model's own bounds and bendpoints in ArchiMate's notation, each box a link to its element. `--out` writes into a site being built at the graph's path; without it the files go into the graph and `--check` gates them.",
+      install: { none: true },
+      invoke: { shell: "bun run cat-harness/archimate/scripts/gen-archimate-pages.ts" },
+      io: {
+        inputs: [
+          { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root." },
+          { name: "out", schema: t("RepoPath"), required: false, arg: { flag: "--out" }, description: "A site being built: the pages land at `<out>/<graph path>/`. Absent, they are written into the graph, which must be `served: true`." },
+          { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Without `--out`: fail if a committed page is missing, stale or orphaned; write nothing." },
+        ],
+        outputs: [
+          { name: "pages", schema: t("Count"), description: "Pages and view drawings written (or found current)." },
+        ],
+      },
+      satisfies: ["archimate-models"],
+      renders: ["archimate"],
+      selection: {
+        when: "A folio's staging or publish build should show its ArchiMate models: run after the document site is built and before the navbar pass.",
+        limits: "Draws the notation, not Archi's icons, custom images or fonts; sketch and canvas views are skipped. Never replaced by Archi's CLI report (skill `archimate-models`).",
+        cost: "Milliseconds per view; smart-ra's four models are 5,809 pages and 131 drawings (~24 MB) in about 1.5 s. No network, no JVM.",
+      },
+      requires: { runtime: ["bun"], network: false },
+    }),
     defineTool({
       id: "rail-standalone-pages",
       title: "Give every page Jekyll did not lay out the folio-assistant navbar",
