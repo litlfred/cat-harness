@@ -57,6 +57,7 @@ import { z } from "zod";
 
 import { KG_GRAPH_TYPOLOGY } from "./cat-harness";
 import { portableSegment } from "./portable-path";
+import { AdversarialReviewSchema, type AdversarialReview } from "./qa-review";
 
 /** Marker value carried by every sidecar written by `scripts/kg-audit.ts`. */
 export const KG_QA_SCHEMA = "kg-qa/v1";
@@ -1696,6 +1697,8 @@ export interface KgQaReport {
   /** Criterion id → entry. Criteria not applying to this kind are omitted. */
   criteria: Record<string, KgCriterionEntry>;
   totals: Record<KgResult, number>;
+  // Optional adversarial reviews, compatible with kg-qa/v1 (folio-assistant-abmq)
+  adversarial_reviews?: AdversarialReview[];
   // NO judgements here. `pair_attestations` and `voice_reviews` lived in this
   // report until bean `2gst` (2026-10-01): they are what an earlier run or a
   // reviewer recorded, so they cannot be regenerated, and owner ruling D2 (a)
@@ -1729,7 +1732,9 @@ export const KgQaReportSchema = z.object({
   // a writer that never learned about the store. See `schemas/qa-attestations.ts`.
   pair_attestations: z.never({ error: "pair_attestations belong in the attestation store (schemas/qa-attestations.ts), not a kg-qa sidecar" }).optional(),
   voice_reviews: z.never({ error: "voice_reviews belong in the attestation store (schemas/qa-attestations.ts), not a kg-qa sidecar" }).optional(),
+  adversarial_reviews: z.array(AdversarialReviewSchema).optional(),
 });
+
 
 export const KgQaManifestSchema = z.object({
   $schema: z.literal(KG_QA_MANIFEST_SCHEMA),
