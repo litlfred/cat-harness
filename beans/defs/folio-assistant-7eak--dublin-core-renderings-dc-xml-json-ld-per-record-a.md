@@ -1,10 +1,10 @@
 ---
 # folio-assistant-7eak
 title: 'Dublin Core renderings: DC XML + JSON(-LD) per record, as a skill and tool in the rendering pipeline, published to gh-pages; who-iris links to both'
-status: in-progress
+status: completed
 type: task
 created_at: 2026-09-30T08:54:51Z
-updated_at: 2026-10-02T00:00:00Z
+updated_at: 2026-10-09T19:30:00Z
 parent: folio-assistant-7deg
 ---
 
@@ -34,3 +34,13 @@ Owner: keep the primary focus on the bootstrap / bootstrap-tools staging separat
 ## Claim
 
 Claimed by claude/dublin-core-renderings (session https://claude.ai/code/session_01CVVoavPoCHMLA7AASxG8cH). Issue #1840.
+
+## Completed 2026-10-09 — each done-when checked on evidence, not on a PR landing (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
+
+The claim above (`claude/dublin-core-renderings`) was last touched 2026-10-02 and the work it names is on main in both repositories; this closes it on what is true today, item by item:
+
+- [x] **skill** — `folio-assistant-core/skills/.../dublin-core-renderings.md`: which records get a rendering (exactly those an item names through `metadataRef`), which XML form and why, the field mapping from the record's own data, and the gate.
+- [x] **Tool node + script, deterministic, with `--check`** — `dublin-core-render` in `folio-assistant-core/tools/index.ts`; `scripts/dc-render.ts`.
+- [x] **published beside the record's page** — measured on a local build of who-iris's own site (the publish Routine's steps 3–7): `/who-iris/dublin-core/<stem>.dc.xml` and `.dc.jsonld` for all 3 records.
+- [x] **who-iris links each record to both** — every item page carries `href="dublin-core/<stem>.dc.xml"` and `.dc.jsonld` (6 links over 3 pages); a whole-site link check finds 0 unresolved hrefs.
+- [x] **a gate fails on a missing or stale rendering** — watched: with `who-pub-tps-931.dc.xml` removed, `bun run dc:render:check` in who-iris exits 1 ("1 problem(s)"); restored, it reports "3 record(s), 6 rendering(s) current, no orphans". In the separated who-iris the gate runs as step 3 of the publish Routine (no GitHub Actions, owner's rule), not in `code-quality-gates.yml` as the skill's table still says — that row is monorepo-era.
