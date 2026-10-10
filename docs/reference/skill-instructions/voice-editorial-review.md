@@ -119,5 +119,5 @@ the criterion opens the witness that ruled on it — which checker, at which
 
 | process | step(s) that name it |
 |---|---|
-| [Narrative review](../../cat-harness/processes/review-narrative.html) | Adjudicate the voice findings (calls a sub-process) |
+| [Narrative review](../../en/cat-harness/processes/review-narrative.html) | Adjudicate the voice findings (calls a sub-process) |
 

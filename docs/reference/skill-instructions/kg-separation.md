@@ -14,7 +14,7 @@ parent: Skill instructions
 # Knowledge Graph separation — the method
 
 > Skill id: `kg-separation` · Package: `graph-management`
-> Process: [`kg-separation.bpmn`](../../cat-harness/processes/kg-separation.html)
+> Process: [`kg-separation.bpmn`](../../en/cat-harness/processes/kg-separation.html)
 
 Owner, 2026-09-29: *"need replicable process for when KG gets too large to
 handle and skills"*, and on cat-harness: *"follow same methodology/house
@@ -125,7 +125,7 @@ the work looks finished.
 | 8 | **Rehearse standalone**: copy content + tools alone into a temporary directory and run the tools' checks there | `build-pipeline` | green with nothing else on the path; an empty tree exits non-zero |
 | 9 | **Authorise** — report what moves, sizes, what breaks, and wait | `administrator` | the owner's answer ([`deletion-requires-confirmation`](deletion-requires-confirmation.md)) |
 | 10 | **Seed**: the owner creates the repositories; once the source has settled, seed `main`, then the content and tools as reviewed PRs, with history | `administrator`, then `authoring-agent` | `bun run cat seed:ready --layer <name> --rehearse` answers `settled` for each layer, at seed time; then the seeding PRs reviewed and green |
-| 11 | **Parent consumes, additively**: pin (a SHA while staging, a version once released), repoint imports, keep the parent's copy | `platform-authoring-agent` | the parent green with the dependency declared; `check:published-refs` |
+| 11 | **Parent consumes, additively**: pin (a SHA while staging, a version once released), repoint imports, keep the parent's copy. After any move of files between the pair, run the post-move sweep first ([below](#after-a-move-lands--the-post-move-sweep)) | `platform-authoring-agent` | the parent green with the dependency declared; `check:published-refs`; every gate in the sweep table |
 | 12 | **First release**: tag, publish `/<version>/` and `/v<major>/` | `publication-manager` | `check:version-bump`; every identifier dereferences ([`publish-verification`](publish-verification.md)) |
 | 13 | **Cutover**: the one commit retiring the parent's copy into [`fsh-guts`](fsh-guts.md) as a verified archive (the deposit `state:seed --cutover` makes: it must extract to the exact tree removed, with a provenance note), deposited into the PARENT's fsh-guts before the removal, frozen, never refreshed or rendered: a relocation, not a deletion (owner, 2026-10-06; [`sub-kg-lifecycle`](sub-kg-lifecycle.md) stage 13 has the steps) | `administrator` | only after 11 and 12 are green |
 | 14 | **Independent refinement**: each new release adopted by the parent as a reviewed step | `authoring-agent` | [`upstream-version-adoption`](upstream-version-adoption.md) |
@@ -322,9 +322,104 @@ The owner ruled on 2026-10-06 (bean `0mpw`, `remote-mount.md`): **no git submodu
 14. **Instance Memory Preservation**: Root directories `beans/`, `todos/`, and `fsh-guts/` are the instance's own durable working memory (the agent's plan, the user's todo queue, and the archival store). They are never overlaid across instances, never extracted to downstream packages, and stay at root by design.
 15. **A cutover is not done until the instance has re-pointed and can publish itself (who-iris, 2026-10-09)**: folio-assistant consumed `litlfred/who-iris` remotely while who-iris still declared `livesAt: { repository: "litlfred/folio-assistant", path: "who-iris" }`, had no `iriBase`, and had never had stage 7 or 12. `livesAt` is not a comment: `remote-mount.ts` takes `livesAt.path` as the mount path and `seed-ready` reads it as "still staged". And `/who-iris/` had only ever been a mount inside the parent's site build, so `litlfred.github.io/who-iris/` served nothing. The generated pages also kept absolute links to the parent's paths (`folio-assistant/.../who-iris-approval/uploads/...`), which 404 once the bytes moved. Before stage 13: `livesAt` is gone, `iriBase` is declared, and the instance's own site builds from its own repository. Building that site exposed the next gap, that a downstream cannot compose a site without the harness's entire `docs/` graph, which is [Semantic subgraphs](../../proposals/semantic-subgraphs-2026-10-09.html).
 
-16. **The replayer must never live inside a layer it replays (cat-harness cutover, 2026-10-09)**: every workflow in folio-assistant — and, through the reusable `folio-staging.yml@main`, every downstream folio's staging build — bootstrapped with `bun "<platform>/cat-harness/scripts/mount-from-lock.ts"`. The cutover removed `cat-harness/` from the parent's tree, so the first step of every job failed with `Module not found "folio-assistant/cat-harness/scripts/mount-from-lock.ts"` before any of the job's own work ran (measured on `litlfred/smart-ra#32`'s staging; fixed by folio-assistant#2518's dependency-free `.github/mount-from-lock.sh`, which fetches the pinned replayer). `mount-from-lock.ts` was written to break exactly this loop for `bootstrap-tools` (its own docblock: "the tool that would fetch it cannot be loaded until it is there") and then moved into a layer that is itself mounted. **Before stage 13**, grep every workflow the parent ships for paths into the directory being retired, and give the parent a bootstrap entry point that lives in the parent and needs nothing mounted.
+16. **The replayer must never live inside a layer it replays (cat-harness cutover, 2026-10-09)**: every workflow in folio-assistant — and, through the reusable `folio-staging.yml@main`, every downstream folio's staging build — bootstrapped with `bun "<platform>/cat-harness-tools/scripts/mount-from-lock.ts"`. The cutover removed `cat-harness/` from the parent's tree, so the first step of every job failed with `Module not found "folio-assistant/cat-harness-tools/scripts/mount-from-lock.ts"` before any of the job's own work ran (measured on `litlfred/smart-ra#32`'s staging; fixed by folio-assistant#2518's dependency-free `.github/mount-from-lock.sh`, which fetches the pinned replayer). `mount-from-lock.ts` was written to break exactly this loop for `bootstrap-tools` (its own docblock: "the tool that would fetch it cannot be loaded until it is there") and then moved into a layer that is itself mounted. **Before stage 13**, grep every workflow the parent ships for paths into the directory being retired, and give the parent a bootstrap entry point that lives in the parent and needs nothing mounted.
 17. **A downstream's CI is part of "green" for a cutover**: a reusable workflow called `@main` (`uses: litlfred/folio-assistant/.github/workflows/folio-staging.yml@main`) runs the PARENT's current workflow in the DOWNSTREAM's repository. A cutover that is green in the parent can therefore be red in every folio at once, and the red lands on whatever pull request the folio author opens next — it reads as their failure. Stage 12's "green" includes one dispatched staging run of at least one downstream folio after the cutover commit.
 18. **A separated checkout must run its own tests and type-check its own subgraphs (cat-harness, 2026-10-09)**: measured in a fresh standalone clone, `scripts/tests/skill-coverage.test.ts` and `tools.test.ts` still read `<checkout>/../package.json` (`harness-schema-export.ts`, via `repoRootFor`) and fail with `ENOENT` outside the composed tree — lesson 6 by another route; and `tsconfig.json`'s `include` names `scripts/`, `schemas/`, … but not the named subgraphs `openapi/` and `archimate/`, so `tsc` was green while never reading them (both added to `include` in cat-harness#55; they type-check clean). A test or type-check that silently depends on the composition, or silently skips part of the repository, is not evidence the separated repository works.
+
+## After a move lands — the post-move sweep
+
+Learned on cat-harness bean `70lx` stage 1a (cat-harness e29c6429, which moved
+`scripts/`, `src/`, `content/pipeline/`, most of `test/` and the archimate and
+openapi scripts into cat-harness-tools d8d42ab), and on the index re-pin that
+had to follow it (folio-assistant #2524, superseded by #2529; bean
+`folio-assistant-beaf`, 2026-10-10). The move itself was one reviewed commit
+in each repository. **Making the repositories that consume the move work again
+took about twenty more PRs across six repositories and a day.** Nearly all of
+them were one of the classes below. Run the sweep after a move lands and
+before the parent re-pins (stage 11), and do not call the move done until
+every gate in this table is green in a composed checkout at the matched pins.
+
+| what still named the old home | the gate that catches it | how it was fixed in 70lx |
+|---|---|---|
+| A Tool node's `invoke.shell` | `kg:audit` criterion `tool-invoke-path-resolves` (CRITICAL; 43 of them) | cat-harness #84: the 47 invokes in `tools/index.ts` |
+| Prose and commands in skills, guides, READMEs, BPMN documentation, workflows | `check:command-paths` | cat-harness #99: 170 lines in 83 files |
+| A script's own usage string | `check:usage-paths` | cat-harness-tools #41 |
+| Printed and RUN commands: "Run: …" remedies, generated banners, shell hooks, an e2e global setup that ran an old path | `check:published-instance-exports`, `check:invocation-parity`, `security:gate` (all three matched old paths by text), and the unit tests | cat-harness-tools #39, #43 (429 strings in 183 files) |
+| A wrapper generator's list of the scripts it wraps | `bat:sync` / `bat:sync:check` (the writer errored on the first missing file) | cat-harness-tools #53 |
+| Partition rules naming moved files | `check:partition` ("exact rule(s) name a file that is not in …") | cat-harness-tools #55: 332 dead rules removed (owner: "2y") |
+| A kind-validator node pointing at a moved module | `check:kind-validators:require-all` | open: how a node in one layer names a module in the other |
+| A writer's claims in `qa-refresh`: sidecars that used to be committed files the writer *rewrites* became output it *writes* | `qa:refresh` ("N file(s) no declared writer claims") | cat-harness-tools #27 |
+| A visualiser route a generator computed by hand (the glossary page moved under its declared route) | `uml:overview` inside `skill:register` ("no glossary page at …") | cat-harness-tools #27: `declaredRoute(<core>, "glossary-page")` |
+| A browser bundle importing a node-only module through a package import | `navbar:assets` ("Browser polyfill for module node:url …") | cat-harness #98 + cat-harness-tools #49: the constant moved into a node-free module |
+| A directory declared inside another declared directory in the receiving layer | `check:layout-norms` (it stopped `qa:refresh`) | cat-harness-tools #54: `health/` out of the declared `test/` (owner: option A) |
+| A file left in BOTH layers (`schemas/adjudication.ts` and `schemas/materialization.ts` were in cat-harness and in folio-assistant-core) | `slice:sqlite` / `slice:sqlite:check` (the KG export mints the same IRI twice and the slice dies on a UNIQUE constraint); `node-kinds:check` and `kg:export` do not refuse a duplicate on their own | delete the copy the move should have removed, in the layer that no longer owns it: folio-assistant-core#37 took the SWE-Debate schemas into core's `adjudication.ts`, cat-harness#106 removed the harness copies (archived to `fsh-guts/retired/`), cat-harness-tools#66 the stray `scripts/cache-index.ts` |
+| Paired artefacts a move split across repositories (`review-comments`, `glossary-terms` to folio-assistant-core; the GRADE lists to smart-base) | `skills:docs` ("page(s) produced by NO source"), `check:declared-dirs` ("absent — declared and not on disk") | pin the receiving commits WITH the removing one (below) |
+
+### The rewrite rule
+
+Rewrite a path **only where the file exists in the destination and not in the
+source**, and **never in a record**. The first half keeps a placeholder or a
+typo from turning into a different wrong path; the second keeps a file that
+moved and was later re-created from being redirected. Records say what was true
+when they were written, so they stay as written: proposals, todos, agent
+memory, beans, provenance (library figures, terminologies), upstream pins,
+vocab mappings, QA results and test fixtures. Generated files are rewritten by
+re-running their generators, never by hand.
+
+The rule is a Tool: **`rewrite-moved-paths`**
+(`bun run cat paths:rewrite-moved --from-name <old> --from-root <dir>
+--to-name <new> --to-root <dir> --prefix <moved dir> … [--keep <glob>]`). It
+reports with file and line by default, applies with `--write`, and with
+`--check` is the gate for a sweep that should be finished. Its test proves it
+never opens a proposal, a memory or a fixture.
+
+### Pin the pair together, and record each consent first-hand
+
+**A move that removes files from one repository must be pinned together with
+the commit that adds them to the receiving one.** cat-harness #81/#82 moved
+two skills down to folio-assistant-core and six code lists to smart-base; a
+parent pinning the new cat-harness with the OLD core and smart-base had those
+artefacts in neither repository, and the gates said so only indirectly. The
+fix was to pin core #20 and smart-base #27 in the same re-pin. The general
+form: before a re-pin, list what each new commit removes and confirm the
+receiving repository's pin contains it.
+
+**Every pin is a trust decision with its own consent** (rule H8,
+`remote-mount`): `trust.consent` names who, when, the exact ref and the
+evidence, and `mount:remote` refuses a ref nobody consented to. A consent
+relayed by another agent is not the owner's consent, so it is not recorded
+from the relay alone. In 70lx the session wrote no consent record until the
+owner's answer to a question naming the exact SHAs was relayed verbatim with
+its time. A standing consent ("pin any main commit of these repositories that
+includes a fix merged in this session, listed in the PR") covers only the
+repositories and the window it names, and each pin made under it is listed
+where the owner will read it. When a consented ref turns out not to do (a
+consented `main` with no declaration of the instance), do not substitute
+another ref: keep the previous pin and report it.
+
+### The order that worked, and the rules for several sessions at once
+
+1. **Fix the tools** (the receiving layer): paths, the checks that matched
+   paths by text, bundles, layout.
+2. **Fix the content** (the source layer): prose, Tool invokes, declarations,
+   partition rules.
+3. **Regenerate the content at matched pins**, in a composed checkout laid
+   down from the parent's lock, to a fixed point (`qa:refresh` COMPLETE, then
+   `bun run cat regen`, then every `--check` green on a fresh lay-down).
+4. **Re-pin the parent** to those commits.
+5. **Run `bun run cat gates`** on a fresh lay-down of the parent.
+
+When several sessions work on one separation at once:
+
+- **Hold pushes on a branch another session is superseding**; hand over what
+  is unpushed instead of racing it.
+- **Announce which gates each session takes** before starting, and re-check
+  the open PRs and recent merges of a repository before opening one there.
+- **Verify on the lock of the PR that will land**, in a fresh scratch copy,
+  never on another session's checkout.
+- **A measurement-only workaround stays local** (for 70lx, a baseline entry
+  for the layout-norms defect, needed to run `qa:refresh` while the owner
+  decided), is never committed, and is deleted once the real fix lands.
 
 ## Rollback
 
@@ -351,16 +446,17 @@ with a new patch release and move the parent's pin back.
 - `cat-harness` (`litlfred/cat-harness`): owns the knowledge graph, declarative schemas, content adapters, and BPMN/DMN processes.
 - `cat-harness-tools` (`litlfred/cat-harness-tools`): owns the MCP server (`src/server.ts`), concrete tool implementations (`src/tools/`), ambient moddle type definitions (`types/`), standalone `package.json`, `tsconfig.json`, and `bunfig.toml`.
 - Decoupled from monorepo root via `index.config.json` remote mount and locked via `index.lock.json`.
+- 70lx stage 1a (2026-10-09) then moved the harness's remaining code into cat-harness-tools; the sweep that followed is [After a move lands](#after-a-move-lands--the-post-move-sweep).
 {% endraw %}
 
 ## Processes that run this skill
 
-This skill has its own process: **[A knowledge graph leaves for its own repositories](../../cat-harness/processes/kg-separation.html)**.
+This skill has its own process: **[A knowledge graph leaves for its own repositories](../../en/cat-harness/processes/kg-separation.html)**.
 
 <img src="../../assets/img/workflows/kg-separation.svg" alt="BPMN diagram: A knowledge graph leaves for its own repositories" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [A knowledge graph leaves for its own repositories](../../cat-harness/processes/kg-separation.html) | Measure the signals; Separate this graph?; 4 · Identity: version, iriBase, nodeSchemas; 5 · Move harness output about it to the host; 6 · Split content from tools; 8 · Rehearse standalone; Create the repositories; Drain: land, close or re-target the open PRs; 10 · Seed both repositories |
-| [A sub-KG is staged in place, then leaves for its own repository](../../cat-harness/processes/sub-kg-lifecycle.html) | Drain: land, close or re-target the open PRs |
+| [A knowledge graph leaves for its own repositories](../../en/cat-harness/processes/kg-separation.html) | Measure the signals; Separate this graph?; 4 · Identity: version, iriBase, nodeSchemas; 5 · Move harness output about it to the host; 6 · Split content from tools; 8 · Rehearse standalone; Create the repositories; Drain: land, close or re-target the open PRs; 10 · Seed both repositories |
+| [A sub-KG is staged in place, then leaves for its own repository](../../en/cat-harness/processes/sub-kg-lifecycle.html) | Drain: land, close or re-target the open PRs |
 

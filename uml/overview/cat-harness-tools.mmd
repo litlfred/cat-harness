@@ -40,9 +40,91 @@ classDiagram
       <<could not determine>>
     }
   }
-  namespace cat_harness_tools__defs {
-    class n_cat_harness_tools_defs_bean_defs["bean-defs: no node schema"] {
+  namespace cat_harness_tools__cat_harness_tools_content {
+    class n_cat_harness_tools_cat_harness_tools_content_code["code: no node schema"] {
       <<could not determine>>
+    }
+  }
+  namespace cat_harness_tools__folio_templates {
+    class n_cat_harness_tools_folio_templates_code["code: no node schema"] {
+      <<could not determine>>
+    }
+  }
+  namespace cat_harness_tools__cat_harness_tools_deploy {
+    class n_cat_harness_tools_cat_harness_tools_deploy_code["code: no node schema"] {
+      <<could not determine>>
+    }
+  }
+  namespace cat_harness_tools__cat_harness_tools_archimate {
+    class n_cat_harness_tools_cat_harness_tools_archimate_code["code: no node schema"] {
+      <<could not determine>>
+    }
+  }
+  namespace cat_harness_tools__cat_harness_tools_openapi {
+    class n_cat_harness_tools_cat_harness_tools_openapi_code["code: no node schema"] {
+      <<could not determine>>
+    }
+  }
+  namespace cat_harness_tools__health {
+    class cat_harness_tools_health_Threshold["Threshold"] {
+      <<json: HealthReportSchema>>
+      metric [1] string
+      value [1] number
+      unit [1] string
+      basis [1] string
+      severity [1] critical | major | minor
+    }
+    class cat_harness_tools_health_Measurement["Measurement"] {
+      <<json: HealthReportSchema>>
+      metric [1] string
+      value [1] number
+      unit [1] string
+      command [1] string
+    }
+    class cat_harness_tools_health_Finding["Finding"] {
+      <<json: HealthReportSchema>>
+      summary [1] string
+      metric [0..1] string
+      severity [1] critical | major | minor
+      action [1] string
+    }
+    class cat_harness_tools_health_Check["Check"] {
+      <<json: HealthReportSchema>>
+      id [1] string
+      state [1] ok | finding | unknown
+      summary [1] string
+      thresholds [0..*] Threshold[]
+      measurements [0..*] Measurement[]
+      findings [0..*] Finding[]
+      reason [0..1] string
+    }
+    class cat_harness_tools_health_HealthReport["HealthReport"] {
+      <<json: HealthReportSchema>>
+      $schema [1] 'health-report/v1'
+      producer [1] object
+      subject [1] object
+      updated_at [1] string
+      verdict [1] clean | findings | unknown
+      checks [1..*] Check[]
+    }
+  }
+  namespace cat_harness_tools__defs {
+    class cat_harness_tools_defs_BeanKind["BeanKind"] {
+      <<json: BeanKind>>
+      id [0..1] string
+      title [0..1] string
+      status [0..1] string
+      type [0..1] string
+      priority [0..1] string
+      parent [0..1] string
+      blocking [0..*] string[]
+      blocked_by [0..*] string[]
+      created_at [0..1] string
+      updated_at [0..1] string
+      tags [0..*] string[]
+      issue [0..1] integer | string
+      targets [0..1] string[] | string
+      $schema [1] string
     }
   }
   namespace cat_harness_tools__notes {
@@ -72,8 +154,26 @@ classDiagram
   cssClass "n_cat_harness_tools_cat_harness_tools_python_code" fa_uml_undetermined
   cssClass "n_cat_harness_tools_beans_beans" fa_uml_kind_beans
   cssClass "n_cat_harness_tools_beans_beans" fa_uml_undetermined
-  cssClass "n_cat_harness_tools_defs_bean_defs" fa_uml_kind_bean_defs
-  cssClass "n_cat_harness_tools_defs_bean_defs" fa_uml_undetermined
+  cssClass "n_cat_harness_tools_cat_harness_tools_content_code" fa_uml_kind_code
+  cssClass "n_cat_harness_tools_cat_harness_tools_content_code" fa_uml_undetermined
+  cssClass "n_cat_harness_tools_folio_templates_code" fa_uml_kind_code
+  cssClass "n_cat_harness_tools_folio_templates_code" fa_uml_undetermined
+  cssClass "n_cat_harness_tools_cat_harness_tools_deploy_code" fa_uml_kind_code
+  cssClass "n_cat_harness_tools_cat_harness_tools_deploy_code" fa_uml_undetermined
+  cssClass "n_cat_harness_tools_cat_harness_tools_archimate_code" fa_uml_kind_code
+  cssClass "n_cat_harness_tools_cat_harness_tools_archimate_code" fa_uml_undetermined
+  cssClass "n_cat_harness_tools_cat_harness_tools_openapi_code" fa_uml_kind_code
+  cssClass "n_cat_harness_tools_cat_harness_tools_openapi_code" fa_uml_undetermined
+  cat_harness_tools_health_Check *-- "0..*" cat_harness_tools_health_Threshold : thresholds
+  cat_harness_tools_health_Check *-- "0..*" cat_harness_tools_health_Measurement : measurements
+  cat_harness_tools_health_Check *-- "0..*" cat_harness_tools_health_Finding : findings
+  cat_harness_tools_health_HealthReport *-- "1..*" cat_harness_tools_health_Check : checks
+  cssClass "cat_harness_tools_health_Threshold" fa_uml_kind_health
+  cssClass "cat_harness_tools_health_Measurement" fa_uml_kind_health
+  cssClass "cat_harness_tools_health_Finding" fa_uml_kind_health
+  cssClass "cat_harness_tools_health_Check" fa_uml_kind_health
+  cssClass "cat_harness_tools_health_HealthReport" fa_uml_kind_health
+  cssClass "cat_harness_tools_defs_BeanKind" fa_uml_kind_bean_defs
   cssClass "cat_harness_tools_notes_bean_notes_shape" fa_uml_kind_bean_notes
   cssClass "n_cat_harness_tools_workflows_workflow_state" fa_uml_kind_workflow_state
   cssClass "n_cat_harness_tools_workflows_workflow_state" fa_uml_undetermined

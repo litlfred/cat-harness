@@ -65,13 +65,28 @@ A change can be large in lines while being trivial to adjudicate, or small in li
 2. **Generated Artefacts**: `*.jsonld`, `*.doc.json`, `*.qa.json`, `*.script-qa.json`, `_site/`, `dist/`. Build and pipeline products whose source is audited elsewhere.
 3. **Uniform Mechanical Changes**: Automated renames, bulk import path migrations, or file relocations that preserve logic, provided they carry a **recorded justification** in the PR description.
 
-## Splitting Strategy (Sub-Issues)
+## Splitting Strategy — GitHub Sub-Issues (Child 5 / issue #755)
 
-When a proposed change exceeds 400 effective lines:
-1. Decompose the work into independent increments.
-2. Open child issues linked to the governing parent issue.
-3. Each child issue produces **one PR** representing one independently reviewable, independently revertible increment.
-4. If a PR cannot be split, it MUST record its justification in the PR description.
+When a proposed change exceeds 400 effective lines, or when a feature represents
+a multi-increment delivery:
+
+1. **GitHub Sub-Issues**: Decompose the work using GitHub sub-issues under the
+   governing parent issue.
+2. **Parent Issue Carries the Spec**: The parent issue is the single source of
+   truth holding the overarching specification in the declared template
+   (`spec-template.md`). Sub-issues reference the parent spec rather than
+   forking requirements.
+3. **One PR per Sub-Issue**: Each child sub-issue delivers **one standalone,
+   adjudicable, reviewable, revertible increment with its own PR**:
+   - Each PR must aim to stay within the ~400 effective line review threshold
+     (`(code * 1.0) + (prose/kg * 0.25)`).
+   - Each increment is independently covered by automated tests.
+   - Each increment is safe to revert without breaking repository integrity or CI gates.
+4. **Spec-Before-Code Gate**: The spec-before-code gate requires an accepted
+   specification on the parent issue *before* code implementation begins on any
+   child increment, detectable via `check-spec.ts --spec-before-code`.
+5. If a PR cannot be split below 400 effective lines, it MUST record its justification
+   in the PR description.
 
 ## Reporting Format (SC-005)
 

@@ -137,7 +137,7 @@ strictly worse than declaring none.
 
 **Ingested sources:**
 
-- [`library/arxiv-2402.02172v5`](../library/cat-harness/#cat-harness%2Farxiv-2402.02172v5) · [source](https://arxiv.org/abs/2402.02172v5)
+- [`library/arxiv-2402.02172v5`](../library/cat-harness/#cat-harness%2Farxiv-2402.02172v5) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2402.02172v5/README.md) · [source](https://arxiv.org/abs/2402.02172v5)
 
 ### Agentic Software Engineering Literature Synthesis — Cross-Paper Synthesis and Bidirectional Adversarial Analysis {#agentic-se-literature-synthesis}
 
@@ -153,7 +153,7 @@ strictly worse than declaring none.
 - [`library/arxiv-2507.23348v1`](../library/cat-harness/#cat-harness%2Farxiv-2507.23348v1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2507.23348v1/README.md) · [source](https://arxiv.org/abs/2507.23348v1)
 - [`library/arxiv-2607.00053v1`](../library/cat-harness/#cat-harness%2Farxiv-2607.00053v1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2607.00053v1/README.md) · [source](https://arxiv.org/abs/2607.00053v1)
 - [`library/arxiv-2601.04544v1`](../library/cat-harness/#cat-harness%2Farxiv-2601.04544v1) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2601.04544v1/README.md) · [source](https://arxiv.org/abs/2601.04544v1)
-- [`library/arxiv-2402.02172v5`](../library/cat-harness/#cat-harness%2Farxiv-2402.02172v5) · [source](https://arxiv.org/abs/2402.02172v5)
+- [`library/arxiv-2402.02172v5`](../library/cat-harness/#cat-harness%2Farxiv-2402.02172v5) · [item page](https://github.com/litlfred/cat-harness/blob/main/library/arxiv-2402.02172v5/README.md) · [source](https://arxiv.org/abs/2402.02172v5)
 
 ### Bidirectional agentic autoformalization — extract, compile-fix, check faithfulness, then informalize back without the source {#bidirectional-agentic-autoformalization}
 

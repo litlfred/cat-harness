@@ -1,0 +1,39 @@
+classDiagram
+  direction TB
+  namespace who_iris__who_iris_tools {
+    class who_iris_who_iris_tools_Remedy["Remedy"] {
+      <<json: ToolDefinitionSchema>>
+      host [1] string
+      error [0..1] string
+      tool [0..1] string
+      none [0..1] string
+    }
+    class who_iris_who_iris_tools_Maintain["Maintain"] {
+      <<json: ToolDefinitionSchema>>
+      source [1] string
+      artefact [1] string
+      format [0..1] string
+    }
+    class who_iris_who_iris_tools_ToolDefinition["ToolDefinition"] {
+      <<json: ToolDefinitionSchema>>
+      id [1] string
+      title [1] string
+      description [1] string
+      install [1] object
+      invoke [1] object
+      io [1] object
+      satisfies [1..*] string[]
+      selection [0..1] object
+      requires [0..1] object
+      remedies [0..*] Remedy[]
+      maintains [0..*] Maintain[]
+      downstream [0..1] object
+      renders [0..*] string[]
+      subprocesses [0..*] string[]
+    }
+  }
+  who_iris_who_iris_tools_ToolDefinition *-- "0..*" who_iris_who_iris_tools_Remedy : remedies
+  who_iris_who_iris_tools_ToolDefinition *-- "0..*" who_iris_who_iris_tools_Maintain : maintains
+  cssClass "who_iris_who_iris_tools_Remedy" fa_uml_kind_tools
+  cssClass "who_iris_who_iris_tools_Maintain" fa_uml_kind_tools
+  cssClass "who_iris_who_iris_tools_ToolDefinition" fa_uml_kind_tools

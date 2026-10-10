@@ -227,6 +227,6 @@ standalone clone of any separated repository.
 
 | process | step(s) that name it |
 |---|---|
-| [Remote-mount a dependency](../../processes/mount-dependency.html) | Declare the mount: harness, repository, pin |
-| [Subscribe to an external knowledge graph](../../processes/subscribe-kg.html) | Instantiate the harness: write its config |
+| [Remote-mount a dependency](../../en/cat-harness/processes/mount-dependency.html) | Declare the mount: harness, repository, pin |
+| [Subscribe to an external knowledge graph](../../en/cat-harness/processes/subscribe-kg.html) | Instantiate the harness: write its config |
 

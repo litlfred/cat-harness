@@ -69,5 +69,5 @@ its reader to skip it, and the one round that mattered goes with the rest.
 
 | process | step(s) that name it |
 |---|---|
-| [Content acquisition](../../cat-harness/processes/content-acquisition.html) | Route it, and watch the queue |
+| [Content acquisition](../../en/cat-harness/processes/content-acquisition.html) | Route it, and watch the queue |
 

@@ -15,7 +15,7 @@ Held in the library [`cat-harness/library/`](../README.md) as `arxiv-2507.23348v
 
 | holds | count |
 |---|---|
-| [sections](sections/) | 31 |
+| [sections](sections/) | 62 |
 | [blocks](blocks/) | 31 |
 | images | 115 |
 <!-- kg:subgraph:end -->

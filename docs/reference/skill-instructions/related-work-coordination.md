@@ -63,5 +63,5 @@ Recommend one of them. **Do not link, block, merge or comment on another item be
 
 | process | step(s) that name it |
 |---|---|
-| [Related work: find, sort, summarize, ask to coordinate](../../cat-harness/processes/related-work.html) | Search beans for relevance; Search issues and open PRs; Categorize and summarize; Record and act on the answer |
+| [Related work: find, sort, summarize, ask to coordinate](../../en/cat-harness/processes/related-work.html) | Search beans for relevance; Search issues and open PRs; Categorize and summarize; Record and act on the answer |
 

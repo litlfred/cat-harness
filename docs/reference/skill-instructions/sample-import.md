@@ -92,11 +92,11 @@ now a checkable fact, not an argument.
 
 ## Processes that run this skill
 
-This skill has its own process: **[Sample import into a structured data store](../../cat-harness/processes/sample-import.html)**.
+This skill has its own process: **[Sample import into a structured data store](../../en/cat-harness/processes/sample-import.html)**.
 
 <img src="../../assets/img/workflows/sample-import.svg" alt="BPMN diagram: Sample import into a structured data store" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Sample import into a structured data store](../../cat-harness/processes/sample-import.html) | Scope the sample: which items, which store, and is it PERMANENT?; Materialize remote content (the five gates) (calls a sub-process); Land it in library/; Keep it as a trial: the unpublished trashcan; Import into the store, and test the import; Record what failed; Refresh materialized content (calls a sub-process) |
+| [Sample import into a structured data store](../../en/cat-harness/processes/sample-import.html) | Scope the sample: which items, which store, and is it PERMANENT?; Materialize remote content (the five gates) (calls a sub-process); Land it in library/; Keep it as a trial: the unpublished trashcan; Import into the store, and test the import; Record what failed; Refresh materialized content (calls a sub-process) |
 

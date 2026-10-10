@@ -91,21 +91,27 @@ as a reviewed artefact, and any dashboard built on this has to say so.
 **A position is not a claim.** An instance at `Task_Commit` says the token
 arrived, not that the commit is good.
 
-## Why the state is committed
+## Where running instances live — the state graph on the branch store
+
+Running instances are part of the `beans` graph (`workflow-state` graph typology).
+Under the state branch architecture (proposal `cat-harness/docs/proposals/state-branch-2026-10-02.md`),
+the bean graph is mounted from the tip-keyed branch store (`cat/cat-harness/beans`).
 
 The container is ephemeral and **a work plan only one agent can see is not a
-work plan**. Instance state is committed for the same reason `beans/` is: a
-sibling session, or the same session resumed in a fresh container, must find
-the position that exists rather than starting a second one beside it.
+work plan**. Instance state lives on the branch store for the same reason
+bean definitions do: a sibling session, or the same session resumed in a fresh
+container, reads the branch store to find the position that exists rather than
+starting a second one beside it.
+
+When an instance advances, its state is written to the mounted store and pushed
+via the branch store (`bun cat-harness-tools/scripts/branch-store.ts push --id beans` or `state:push`).
+This keeps instance state globally visible without cluttering code PR diffs on `main`.
 
 Instance ids are **derived from the subject rather than random**, so re-entering
 a step finds the instance that is already there. That is not a stylistic
 preference: `beans create` is not idempotent and dedupes on nothing, which
 produced 14,688 duplicates in one afternoon — 92 % of every open bean in that
 repo. An id you can recompute is the fix, and it is cheap.
-
-The trade-off, stated openly: this is churn in the diff, on every step. Beans
-already carry that cost and the repository tolerates it.
 
 ## Reading the state you did not write
 

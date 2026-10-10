@@ -44,11 +44,11 @@ Validate authored content against schemas, standards, and clinical accuracy.
 
 | process | step(s) that name it |
 |---|---|
-| [Review task](../../cat-harness/processes/review-task.html) | Accept, or send back |
-| [Authoring a document](../../cat-harness/processes/authoring-a-document.html) | 5 · Check the profile; 6 · Validate |
-| [Content lifecycle](../../cat-harness/processes/content-lifecycle.html) | Editing and HCI validation (calls a sub-process) |
-| [Draft, review and publish](../../cat-harness/processes/draft-to-publication.html) | Editing and HCI validation (calls a sub-process) |
-| [Editing and HCI validation](../../cat-harness/processes/editing-hci-validation.html) | Schema and constraint checks; Syntax, spelling and links; Collate findings into a report |
-| [Authoring a paper](../../cat-harness/processes/authoring-a-paper.html) | 6 · Validate |
-| [L2 DAK authoring](../../cat-harness/processes/l2-dak-authoring.html) | Assemble and validate the DAK |
+| [Review task](../../en/cat-harness/processes/review-task.html) | Accept, or send back |
+| [Authoring a document](../../en/cat-harness/processes/authoring-a-document.html) | 5 · Check the profile; 6 · Validate |
+| [Content lifecycle](../../en/cat-harness/processes/content-lifecycle.html) | Editing and HCI validation (calls a sub-process) |
+| [Draft, review and publish](../../en/cat-harness/processes/draft-to-publication.html) | Editing and HCI validation (calls a sub-process) |
+| [Editing and HCI validation](../../en/cat-harness/processes/editing-hci-validation.html) | Schema and constraint checks; Syntax, spelling and links; Collate findings into a report |
+| [Authoring a paper](../../en/cat-harness/processes/authoring-a-paper.html) | 6 · Validate |
+| [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Assemble and validate the DAK |
 

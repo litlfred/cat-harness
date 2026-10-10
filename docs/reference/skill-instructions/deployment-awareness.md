@@ -1,7 +1,7 @@
 ---
 layout: default
 generated: scripts/gen-skill-docs.ts — do not hand-edit; edit the skill
-title: 'Deployment awareness — UI surfaces, host constraints, and chat degradation'
+title: 'Deployment awareness'
 parent: Skill instructions
 ---
 

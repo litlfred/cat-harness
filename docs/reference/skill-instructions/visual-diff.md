@@ -92,10 +92,10 @@ a picture looks wrong, check the anchors first.
 
 ```sh
 # how many blocks would be pictured (no browser needed)
-bun run <platform>/cat-harness/scripts/block-screenshots.ts --changeset _site/changeset.json --count
+bun run <platform>/cat-harness-tools/scripts/block-screenshots.ts --changeset _site/changeset.json --count
 
 # picture and compare
-bun run <platform>/cat-harness/scripts/block-screenshots.ts \
+bun run <platform>/cat-harness-tools/scripts/block-screenshots.ts \
   --changeset _site/changeset.json --base pages --head _site --out _site
 ```
 
@@ -123,18 +123,18 @@ next to the site. The review page reads `../visual-diff.json`.
 
 ## Tests
 
-- `cat-harness/scripts/tests/block-screenshots.test.ts`: the pixel compare,
+- `cat-harness-tools/scripts/tests/block-screenshots.test.ts`: the pixel compare,
   the tolerance, a size change, block selection, and page paths (including
   `..` being refused).
-- `cat-harness/test/block-screenshots.e2e.ts`: the whole Tool in Chromium.
+- `cat-harness-tools/test/block-screenshots.e2e.ts`: the whole Tool in Chromium.
   It covers a recoloured block, an unchanged block, a new block, and a
   missing anchor.
-- `cat-harness/test/review-visual.e2e.ts`: the renderer, keyboard only.
+- `cat-harness-tools/test/review-visual.e2e.ts`: the renderer, keyboard only.
 {% endraw %}
 
 ## Processes that run this skill
 
 | process | step(s) that name it |
 |---|---|
-| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Compare main vs staging |
+| [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Compare main vs staging |
 

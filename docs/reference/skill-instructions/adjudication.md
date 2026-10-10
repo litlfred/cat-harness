@@ -282,20 +282,20 @@ deliberately stops short of it.
 
 ## Processes that run this skill
 
-This skill has its own process: **[Adjudication](../../cat-harness/processes/adjudication.html)**.
+This skill has its own process: **[Adjudication](../../en/cat-harness/processes/adjudication.html)**.
 
 <img src="../../assets/img/workflows/adjudication.svg" alt="BPMN diagram: Adjudication" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Narrative review](../../cat-harness/processes/review-narrative.html) | Adjudicate the voice findings (calls a sub-process) |
-| [Voice overlay review](../../cat-harness/processes/voice-review.html) | Adjudicate: prose, scope, or exception (calls a sub-process) |
-| [Refresh materialized remote content](../../cat-harness/processes/refresh-materialized.html) | Adjudicate the conflict (calls a sub-process) |
-| [Translation Workflow](../../cat-harness/processes/translation-workflow.html) | Adjudicate flagged passage (human reviewer) (calls a sub-process) |
-| [CRDM close-out](../../cat-harness/processes/crdm-close.html) | Confirm all criteria met (calls a sub-process); Record the sign-off as a requirement-signoff attestation |
-| [CRDM Phase 5 — beans and sign-off](../../cat-harness/processes/crdm-signoff.html) | Sign off on requirements (calls a sub-process); Record the sign-off as a requirement-signoff attestation |
-| [Adjudication](../../cat-harness/processes/adjudication.html) | Adjudicate the disagreement |
-| [Criterion adjudication](../../cat-harness/processes/criterion-adjudication.html) | Adjudicate the criterion disagreement (calls a sub-process); Scope the criterion so it stops applying here; Grant a dispensation, with its reason; Write the entry that LEADS — keeping the checker's beneath it |
-| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Adjudicate the disagreement (calls a sub-process) |
-| [Ingestion subprocess — the L1 completeness gate](../../cat-harness/processes/ingest-l1-completeness-gate.html) | Adjudicate the flagged passage (calls a sub-process) |
+| [Narrative review](../../en/cat-harness/processes/review-narrative.html) | Adjudicate the voice findings (calls a sub-process) |
+| [Voice overlay review](../../en/cat-harness/processes/voice-review.html) | Adjudicate: prose, scope, or exception (calls a sub-process) |
+| [Refresh materialized remote content](../../en/cat-harness/processes/refresh-materialized.html) | Adjudicate the conflict (calls a sub-process) |
+| [Translation Workflow](../../en/cat-harness/processes/translation-workflow.html) | Adjudicate flagged passage (human reviewer) (calls a sub-process) |
+| [CRDM close-out](../../en/cat-harness/processes/crdm-close.html) | Confirm all criteria met (calls a sub-process); Record the sign-off as a requirement-signoff attestation |
+| [CRDM Phase 5 — beans and sign-off](../../en/cat-harness/processes/crdm-signoff.html) | Sign off on requirements (calls a sub-process); Record the sign-off as a requirement-signoff attestation |
+| [Adjudication](../../en/cat-harness/processes/adjudication.html) | Adjudicate the disagreement |
+| [Criterion adjudication](../../en/cat-harness/processes/criterion-adjudication.html) | Adjudicate the criterion disagreement (calls a sub-process); Scope the criterion so it stops applying here; Grant a dispensation, with its reason; Write the entry that LEADS — keeping the checker's beneath it |
+| [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Adjudicate the disagreement (calls a sub-process) |
+| [Ingestion subprocess — the L1 completeness gate](../../en/cat-harness/processes/ingest-l1-completeness-gate.html) | Adjudicate the flagged passage (calls a sub-process) |
 

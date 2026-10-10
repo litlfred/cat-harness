@@ -270,5 +270,5 @@ subject matter. See the platform-boundary rule in
 
 | process | step(s) that name it |
 |---|---|
-| [CRDM Phases 2–4 — BPA and requirements](../../cat-harness/processes/crdm-requirements-definition.html) | Phases 3–4: Define requirements + impact |
+| [CRDM Phases 2–4 — BPA and requirements](../../en/cat-harness/processes/crdm-requirements-definition.html) | Phases 3–4: Define requirements + impact |
 

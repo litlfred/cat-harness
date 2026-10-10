@@ -114,7 +114,7 @@ prevents is stated beside it.
    figure takes focus (Tab from its toolbar). While it has focus, the arrow
    keys pan it, `+` and `-` zoom, and `0` resets. An arrow key is taken only
    when the figure can scroll in that direction. Otherwise the page scrolls as
-   usual. `cat-harness/test/ig-diagram-viewer.e2e.ts` checks all of this on
+   usual. `cat-harness-tools/test/ig-diagram-viewer.e2e.ts` checks all of this on
    a fixture page.
 10. **Put the measurement on the drawing.** When a graph is being partitioned,
     show each group's detangle numbers (size, cohesion, links in and out)

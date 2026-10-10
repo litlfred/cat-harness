@@ -13,16 +13,16 @@ permalink: /folio-assistant-core/glossary/schema-fields/m-r/
 
 Candidate terms extracted from every schema field with a doc comment: `<Declaration>.<field>` as the label, the comment's first paragraph as the definition. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2011 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 165 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2067 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 167 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
 
 One of 4 pages of this type, split by the first letter of the label: <a href="{{ '/folio-assistant-core/glossary/schema-fields/' | relative_url }}">all parts</a>.
 
-**Size:** this page holds 600 terms and is 331 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 631 terms and is 347 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>2304</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2304</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>2362</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2362</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -32,7 +32,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">600</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">631</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-M">M</a> <a href="#letter-N">N</a> <a href="#letter-O">O</a> <a href="#letter-P">P</a> <a href="#letter-Q">Q</a> <a href="#letter-R">R</a></nav>
 
@@ -191,6 +191,13 @@ MaterializationSchema.inputs <span class="fa-gloss-status">candidate, extracted<
 <dd>
 <p>Required when <code>purpose</code> is <code>compiled</code>, and only allowed then. See &#123;@link CompiledInputsSchema}.</p>
 <p class="fa-gloss-meta">Schema fields of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/schemas/materialization.ts"><code>folio-assistant-core/schemas/materialization.ts#MaterializationSchema.inputs</code></a></p>
+</dd>
+<dt id="folio-assistant-core--kg-schema-fields--materialization.materializationschema.lastreadat" data-fa-state="extracted" data-fa-gloss="">
+MaterializationSchema.lastReadAt <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>When this copy was last read. Absent means 'not recorded'.</p>
+<p class="fa-gloss-meta">Schema fields of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/schemas/materialization.ts"><code>folio-assistant-core/schemas/materialization.ts#MaterializationSchema.lastReadAt</code></a></p>
 </dd>
 <dt id="folio-assistant-core--kg-schema-fields--materialization.materializationschema.localpath" data-fa-state="extracted" data-fa-gloss="">
 MaterializationSchema.localPath <span class="fa-gloss-status">candidate, extracted</span>
@@ -556,6 +563,41 @@ MilestoneRollupSchema.unclassified <span class="fa-gloss-status">candidate, extr
 <p>In neither status set — reported alone, folded into neither figure.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/bean-graph.ts"><code>cat-harness/schemas/bean-graph.ts#MilestoneRollupSchema.unclassified</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--model-capabilities.modelcapabilitiesschema.capabilities" data-fa-state="extracted" data-fa-gloss="">
+ModelCapabilitiesSchema.capabilities <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Specific named capabilities (e.g. &quot;code_execution&quot;, &quot;json_schema&quot;).</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/model-capabilities.ts"><code>cat-harness/schemas/model-capabilities.ts#ModelCapabilitiesSchema.capabilities</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--model-capabilities.modelcapabilitiesschema.context_window" data-fa-state="extracted" data-fa-gloss="">
+ModelCapabilitiesSchema.context_window <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Minimum context window size in tokens.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/model-capabilities.ts"><code>cat-harness/schemas/model-capabilities.ts#ModelCapabilitiesSchema.context_window</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--model-capabilities.modelcapabilitiesschema.multimodal" data-fa-state="extracted" data-fa-gloss="">
+ModelCapabilitiesSchema.multimodal <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Whether multimodal input (images, diagrams) is required.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/model-capabilities.ts"><code>cat-harness/schemas/model-capabilities.ts#ModelCapabilitiesSchema.multimodal</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--model-capabilities.modelcapabilitiesschema.reasoning_tier" data-fa-state="extracted" data-fa-gloss="">
+ModelCapabilitiesSchema.reasoning_tier <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Minimum reasoning tier required.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/model-capabilities.ts"><code>cat-harness/schemas/model-capabilities.ts#ModelCapabilitiesSchema.reasoning_tier</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--model-capabilities.modelcapabilitiesschema.tool_use" data-fa-state="extracted" data-fa-gloss="">
+ModelCapabilitiesSchema.tool_use <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Whether function calling / tool invocation is required.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/model-capabilities.ts"><code>cat-harness/schemas/model-capabilities.ts#ModelCapabilitiesSchema.tool_use</code></a></p>
+</dd>
 <dt id="bootstrap-tools--kg-schema-fields--model-registry.modelentryschema.id" data-fa-state="extracted" data-fa-gloss="">
 ModelEntrySchema.id <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -686,6 +728,13 @@ MountSignatureSchema.signedDigest <span class="fa-gloss-status">candidate, extra
 
 <h2 id="letter-N">N</h2>
 <dl class="fa-gloss">
+<dt id="cat-harness--kg-schema-fields--node-kind-index.namerulekind.file" data-fa-state="extracted" data-fa-gloss="">
+NameRuleKind.file <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Absolute path of the module holding the export.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/node-kind-index.ts"><code>cat-harness/schemas/node-kind-index.ts#NameRuleKind.file</code></a></p>
+</dd>
 <dt id="cat-harness--kg-schema-fields--id-lookup.namespaceindexschema.shards" data-fa-state="extracted" data-fa-gloss="">
 NamespaceIndexSchema.shards <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -839,6 +888,13 @@ NodeKindEntry.declaredBy <span class="fa-gloss-status">candidate, extracted</spa
 <dd>
 <p>The instance that declares it: the one whose code holds the <code>nodeKind()</code>. Absent for a kind reached only as an ANCESTOR (a mixin such as <code>themed</code>): no typology names it, so nothing here says where it lives, and guessing from a child would file it under whichever child was read first.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/node-kind-index.ts"><code>cat-harness/schemas/node-kind-index.ts#NodeKindEntry.declaredBy</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--node-kind-index.nodekindentry.foundby" data-fa-state="extracted" data-fa-gloss="">
+NodeKindEntry.foundBy <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>How its nodes are found when no typology holds them: by a NAME RULE (&#123;@link NAME_RULE_KINDS}). <code>instance-declaration</code> is each instance's own <code>&lt;instance&gt;.json</code>, which sits at an instance root rather than in a declared directory, so no typology can name it. Absent: found through <code>holdings</code>.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/node-kind-index.ts"><code>cat-harness/schemas/node-kind-index.ts#NodeKindEntry.foundBy</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--node-kind-index.nodekindentry.holdings" data-fa-state="extracted" data-fa-gloss="">
 NodeKindEntry.holdings <span class="fa-gloss-status">candidate, extracted</span>
@@ -2497,6 +2553,55 @@ QaReportSourceSchema.tool <span class="fa-gloss-status">candidate, extracted</sp
 <p>The script or binary, as invoked. <code>generate_valueset_schemas.py</code>, <code>publisher.jar</code>.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-report.ts"><code>cat-harness/schemas/qa-report.ts#QaReportSourceSchema.tool</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qaresult.families" data-fa-state="extracted" data-fa-gloss="">
+QaResult.families <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Finding families, keyed by name.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaResult.families</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qaresult.producer" data-fa-state="extracted" data-fa-gloss="">
+QaResult.producer <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>What produced this, so a finding can be traced to the code that made it.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaResult.producer</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qaresult.subject" data-fa-state="extracted" data-fa-gloss="">
+QaResult.subject <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The artefact the findings are ABOUT — not an authored subject.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaResult.subject</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qaresult.total" data-fa-state="extracted" data-fa-gloss="">
+QaResult.total <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Total findings across every family, so &quot;clean&quot; is one read.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaResult.total</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qaresultfamily.count" data-fa-state="extracted" data-fa-gloss="">
+QaResultFamily.count <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>How many findings — <code>0</code> is a determined empty, not an absent answer.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaResultFamily.count</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qaresultfamily.entries" data-fa-state="extracted" data-fa-gloss="">
+QaResultFamily.entries <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The findings themselves, in whatever shape the producer records.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaResultFamily.entries</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qaresultfamily.summary" data-fa-state="extracted" data-fa-gloss="">
+QaResultFamily.summary <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>What this family means, for a reader who has only the file.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaResultFamily.summary</code></a></p>
+</dd>
 <dt id="cat-harness--kg-schema-fields--block-qa.qareviewer.actor" data-fa-state="extracted" data-fa-gloss="">
 QaReviewer.actor <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -2651,6 +2756,83 @@ QaTranslationPagesSchema.pages <span class="fa-gloss-status">candidate, extracte
 <p>Page slugs (path, <code>/</code> → <code>-</code>). Empty with <code>corpus: &quot;absent&quot;</code>.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/site-indexes.ts"><code>cat-harness/schemas/site-indexes.ts#QaTranslationPagesSchema.pages</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qawitness.at" data-fa-state="extracted" data-fa-gloss="">
+QaWitness.at <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>When the review ran (ISO-8601), or absent when the sidecar records none.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaWitness.at</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qawitness.changed" data-fa-state="extracted" data-fa-gloss="">
+QaWitness.changed <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>On <code>stale</code>, the subject files whose hash moved. On <code>unknown</code>, why the comparison could not be made, one phrase per unresolved input.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaWitness.changed</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qawitness.depshash" data-fa-state="extracted" data-fa-gloss="">
+QaWitness.depsHash <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Hash of every extra input the checker consulted beyond the subject.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaWitness.depsHash</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qawitness.freshness" data-fa-state="extracted" data-fa-gloss="">
+QaWitness.freshness <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Whether the verdict still holds for the files on disk.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaWitness.freshness</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qawitness.id" data-fa-state="extracted" data-fa-gloss="">
+QaWitness.id <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Script path, model + skill, or GitHub login.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaWitness.id</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qawitness.kind" data-fa-state="extracted" data-fa-gloss="">
+QaWitness.kind <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><code>script</code> — a deterministic checker. <code>agent</code> — an LLM. <code>human</code> — a person.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaWitness.kind</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qawitness.method" data-fa-state="extracted" data-fa-gloss="">
+QaWitness.method <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>How the verdict was measured, where the checker records it.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaWitness.method</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qawitness.model" data-fa-state="extracted" data-fa-gloss="">
+QaWitness.model <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Agent provenance.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaWitness.model</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qawitness.notcompared" data-fa-state="extracted" data-fa-gloss="">
+QaWitness.notCompared <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>On <code>partial</code>, the derived inputs that were not re-computed.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaWitness.notCompared</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qawitness.scripthash" data-fa-state="extracted" data-fa-gloss="">
+QaWitness.scriptHash <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Hash of the checker's own source, and the commit it was last changed in.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaWitness.scriptHash</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.qawitness.sha" data-fa-state="extracted" data-fa-gloss="">
+QaWitness.sha <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Repo HEAD at review time.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#QaWitness.sha</code></a></p>
+</dd>
 </dl>
 
 <h2 id="letter-R">R</h2>
@@ -2669,6 +2851,20 @@ ReaderFilter.properties <span class="fa-gloss-status">candidate, extracted</span
 <p>Kind properties to keep, keyed by property name — the owner's *&quot;filter out by kind properties&quot;*. OR within a property's values, AND across properties.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/reader-filter.ts"><code>cat-harness/schemas/reader-filter.ts#ReaderFilter.properties</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--types.recommendationblock.about" data-fa-state="extracted" data-fa-gloss="">
+RecommendationBlock.about <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Labels of the health interventions (DAK adapter) this recommendation is about.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/types.ts"><code>cat-harness/schemas/types.ts#RecommendationBlock.about</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--types.recommendationblock.strength" data-fa-state="extracted" data-fa-gloss="">
+RecommendationBlock.strength <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Its strength or requirement level, as a code in a declared list.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/types.ts"><code>cat-harness/schemas/types.ts#RecommendationBlock.strength</code></a></p>
+</dd>
 <dt id="folio-assistant-core--kg-schema-fields--public-comment.recommendationschema.by" data-fa-state="extracted" data-fa-gloss="">
 RecommendationSchema.by <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -2682,6 +2878,20 @@ RecommendationSchema.url <span class="fa-gloss-status">candidate, extracted</spa
 <dd>
 <p>The issue or PR comment it was given in.</p>
 <p class="fa-gloss-meta">Schema fields of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/schemas/public-comment.ts"><code>folio-assistant-core/schemas/public-comment.ts#RecommendationSchema.url</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--red-flag.redflagcategorydefinition.definition" data-fa-state="extracted" data-fa-gloss="">
+RedFlagCategoryDefinition.definition <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>What this category means and what kind of defect it covers.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/red-flag.ts"><code>cat-harness/schemas/red-flag.ts#RedFlagCategoryDefinition.definition</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--red-flag.redflagcategorydefinition.historicalexample" data-fa-state="extracted" data-fa-gloss="">
+RedFlagCategoryDefinition.historicalExample <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Concrete historical example drawn from this repository's history.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/red-flag.ts"><code>cat-harness/schemas/red-flag.ts#RedFlagCategoryDefinition.historicalExample</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--refactor-strategy.refactorstrategy.caveat" data-fa-state="extracted" data-fa-gloss="">
 RefactorStrategy.caveat <span class="fa-gloss-status">candidate, extracted</span>
@@ -4117,6 +4327,13 @@ RoleDef.persona <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>Who this reader IS, in prose — the persona an author writes for and a QA reviewer checks against.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/role-graph.ts"><code>cat-harness/schemas/role-graph.ts#RoleDef.persona</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--role-graph.roledef.requiredcapabilities" data-fa-state="extracted" data-fa-gloss="">
+RoleDef.requiredCapabilities <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Minimum model capabilities required by this role when performed by an agent/model. If a single model lacks these capabilities, the workflow refuses rather than degrades.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/role-graph.ts"><code>cat-harness/schemas/role-graph.ts#RoleDef.requiredCapabilities</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--role-graph.roledef.skills" data-fa-state="extracted" data-fa-gloss="">
 RoleDef.skills <span class="fa-gloss-status">candidate, extracted</span>

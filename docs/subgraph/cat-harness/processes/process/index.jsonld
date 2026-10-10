@@ -275,6 +275,10 @@
       "@type": "bootstrap:SequenceFlow"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Close/flow/SF_Close_Merged",
+      "@type": "bootstrap:SequenceFlow"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Close/flow/SF_Close_Missing",
       "@type": "bootstrap:SequenceFlow",
       "name": "missing"
@@ -334,6 +338,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Close/node/BA_Confirm",
       "@type": "bootstrap:ProcessNode",
       "name": "Confirm all criteria met"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Close/node/Call_MergeToMain",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Land the feature's PRs"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_CRDM_Close/node/End_NotAccepted",
@@ -1087,6 +1096,129 @@
       "name": "Resolve the Subgraphs, the root URL and the target's Tool"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions",
+      "@type": "bootstrap:Process",
+      "name": "Secure agent permissions"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/flow/p1",
+      "@type": "bootstrap:SequenceFlow"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/flow/p10",
+      "@type": "bootstrap:SequenceFlow",
+      "name": "granted"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/flow/p11",
+      "@type": "bootstrap:SequenceFlow"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/flow/p2",
+      "@type": "bootstrap:SequenceFlow"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/flow/p3",
+      "@type": "bootstrap:SequenceFlow"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/flow/p4",
+      "@type": "bootstrap:SequenceFlow",
+      "name": "none missing"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/flow/p5",
+      "@type": "bootstrap:SequenceFlow",
+      "name": "missing"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/flow/p6",
+      "@type": "bootstrap:SequenceFlow"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/flow/p7",
+      "@type": "bootstrap:SequenceFlow"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/flow/p8",
+      "@type": "bootstrap:SequenceFlow"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/flow/p9",
+      "@type": "bootstrap:SequenceFlow",
+      "name": "refused"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/lane/Lane_Agent",
+      "@type": "cat-harness:Lane",
+      "name": "Agent"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/lane/Lane_Owner",
+      "@type": "cat-harness:Lane",
+      "name": "Owner"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/node/End_Current",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Permissions current"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/node/End_Granted",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Granted, recorded"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/node/End_Refused",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Refused: actions keep asking"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/node/GW_Gap",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Anything needed and not granted?"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/node/GW_Granted",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Anything granted?"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/node/Start_Secure",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Session opened, or an action was denied"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/node/Task_Explain",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Explain each missing permission, with the exact config diff"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/node/Task_IdentifyTools",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Identify the agent Tool(s) acting here"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/node/Task_OwnerGrants",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Grant, narrow or refuse each"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/node/Task_ReadGrants",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Compare what the processes need with what is granted"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/node/Task_RecordGrant",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Record each answer: who, when, scope, the quote"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SecureAgentPermissions/node/Task_WriteConfig",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Write it through the Tool's adapter"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SessionStateMachine",
       "@type": "bootstrap:Process",
       "name": "Session state machine"
@@ -1133,6 +1265,10 @@
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SessionStateMachine/flow/F_6",
+      "@type": "bootstrap:SequenceFlow"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SessionStateMachine/flow/F_6b",
       "@type": "bootstrap:SequenceFlow"
     },
     {
@@ -1197,6 +1333,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SessionStateMachine/node/A_UpdateSession",
       "@type": "bootstrap:ProcessNode",
       "name": "Write what changed"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SessionStateMachine/node/Call_SecurePermissions",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Secure the agent's permissions"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_SessionStateMachine/node/End_Session",

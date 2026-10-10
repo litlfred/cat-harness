@@ -62,10 +62,10 @@ nothing ran.
 
 | process | step(s) that name it |
 |---|---|
-| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Edit narrative content blocks; Edit deterministic logic (if needed); Iterate on author feedback |
-| [Content lifecycle](../../cat-harness/processes/content-lifecycle.html) | Editing and HCI validation (calls a sub-process) |
-| [Draft, review and publish](../../cat-harness/processes/draft-to-publication.html) | Editing and HCI validation (calls a sub-process) |
-| [Editing and HCI validation](../../cat-harness/processes/editing-hci-validation.html) | Draft the block edit; Revise the proposed change |
-| [Evidence for a recommendation](../../cat-harness/processes/evidence-retrieval.html) | Frame the question as PICO; Attach the evidence to the recommendation |
-| [Authoring a paper](../../cat-harness/processes/authoring-a-paper.html) | 4 · Author blocks |
+| [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Edit narrative content blocks; Edit deterministic logic (if needed); Iterate on author feedback |
+| [Content lifecycle](../../en/cat-harness/processes/content-lifecycle.html) | Editing and HCI validation (calls a sub-process) |
+| [Draft, review and publish](../../en/cat-harness/processes/draft-to-publication.html) | Editing and HCI validation (calls a sub-process) |
+| [Editing and HCI validation](../../en/cat-harness/processes/editing-hci-validation.html) | Draft the block edit; Revise the proposed change |
+| [Evidence for a recommendation](../../en/cat-harness/processes/evidence-retrieval.html) | Frame the question as PICO; Attach the evidence to the recommendation |
+| [Authoring a paper](../../en/cat-harness/processes/authoring-a-paper.html) | 4 · Author blocks |
 

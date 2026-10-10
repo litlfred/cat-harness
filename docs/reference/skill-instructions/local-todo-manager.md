@@ -51,20 +51,20 @@ pointers to it. Do not re-add content here — edit the skill.
 
 | process | step(s) that name it |
 |---|---|
-| [CRDM Phase 5 — beans and sign-off](../../cat-harness/processes/crdm-signoff.html) | Phase 5: Create beans |
-| [Agent bean lifecycle](../../cat-harness/processes/bean-lifecycle.html) | Check before you create (exact-title search); Create the bean (agent CLI, not an engine op); Work, keeping the body current (this is 'edit'); Complete (no unchecked todos left); Scrap with reasons NEVER delete |
-| [Code change and review](../../cat-harness/processes/code-change-review.html) | Record what was done, and close |
-| [Is the incremental IG AST what a full build would have produced?](../../cat-harness/processes/ig-ast-delta-review.html) | Note the missed coupling on the bean |
-| [Incremental IG build](../../cat-harness/processes/ig-incremental-build.html) | Log the environment error on the bean; Log findings on the bean; File QC findings as beans |
-| [L3 FHIR IG pipeline](../../cat-harness/processes/l3-fhir-pipeline.html) | File QC findings as beans |
-| [Getting started](../../cat-harness/processes/getting-started.html) | Seed the work plan |
-| [Authoring a document](../../cat-harness/processes/authoring-a-document.html) | 2 · Seed the work plan |
-| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Open the branch-watch bean; Note the main-branch watch |
-| [Content lifecycle](../../cat-harness/processes/content-lifecycle.html) | Seed the work plan; File feedback as beans |
-| [Draft, review and publish](../../cat-harness/processes/draft-to-publication.html) | Open or claim the release bean; Open beans for the change requests; Close the release beans |
-| [Editing and HCI validation](../../cat-harness/processes/editing-hci-validation.html) | Claim or open the bean; Log findings on the bean; Resolve or re-open the bean |
-| [Evidence for a recommendation](../../cat-harness/processes/evidence-retrieval.html) | Open a bean for the unverified citation; Record the evidence gap |
-| [L1 document ingestion — a document to the L1 source knowledge graph](../../cat-harness/processes/l1-document-ingestion.html) | Record the gap as a bean |
-| [Authoring a paper](../../cat-harness/processes/authoring-a-paper.html) | 2 · Seed the work plan |
-| [L2 DAK authoring](../../cat-harness/processes/l2-dak-authoring.html) | Seed the work plan |
+| [CRDM Phase 5 — beans and sign-off](../../en/cat-harness/processes/crdm-signoff.html) | Phase 5: Create beans |
+| [Agent bean lifecycle](../../en/cat-harness/processes/bean-lifecycle.html) | Check before you create (exact-title search); Create the bean (agent CLI, not an engine op); Work, keeping the body current (this is 'edit'); Complete (no unchecked todos left); Scrap with reasons NEVER delete |
+| [Code change and review](../../en/cat-harness/processes/code-change-review.html) | Record what was done, and close |
+| [Is the incremental IG AST what a full build would have produced?](../../en/cat-harness/processes/ig-ast-delta-review.html) | Note the missed coupling on the bean |
+| [Incremental IG build](../../en/cat-harness/processes/ig-incremental-build.html) | Log the environment error on the bean; Log findings on the bean; File QC findings as beans |
+| [L3 FHIR IG pipeline](../../en/cat-harness/processes/l3-fhir-pipeline.html) | File QC findings as beans |
+| [Getting started](../../en/cat-harness/processes/getting-started.html) | Seed the work plan |
+| [Authoring a document](../../en/cat-harness/processes/authoring-a-document.html) | 2 · Seed the work plan |
+| [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Open the branch-watch bean; Note the main-branch watch |
+| [Content lifecycle](../../en/cat-harness/processes/content-lifecycle.html) | Seed the work plan; File feedback as beans |
+| [Draft, review and publish](../../en/cat-harness/processes/draft-to-publication.html) | Open or claim the release bean; Open beans for the change requests; Close the release beans |
+| [Editing and HCI validation](../../en/cat-harness/processes/editing-hci-validation.html) | Claim or open the bean; Log findings on the bean; Resolve or re-open the bean |
+| [Evidence for a recommendation](../../en/cat-harness/processes/evidence-retrieval.html) | Open a bean for the unverified citation; Record the evidence gap |
+| [L1 document ingestion — a document to the L1 source knowledge graph](../../en/cat-harness/processes/l1-document-ingestion.html) | Record the gap as a bean |
+| [Authoring a paper](../../en/cat-harness/processes/authoring-a-paper.html) | 2 · Seed the work plan |
+| [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Seed the work plan |
 

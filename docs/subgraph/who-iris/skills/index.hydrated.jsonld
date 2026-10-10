@@ -32,9 +32,9 @@
       "instructionsPath": "skills/iris-dspace.md",
       "name": "iris-dspace",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e6d4c02ce5a7deec73e3f2b325954201f51096d6f97ac5f6f44993f698a5c04c",
-        "bytes": 15231,
-        "sha256": "e6d4c02ce5a7deec73e3f2b325954201f51096d6f97ac5f6f44993f698a5c04c"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b04890ea73bd519d3a8df009f72a927fa53577064b8f04f3c6a104a6b53d843b",
+        "bytes": 15243,
+        "sha256": "b04890ea73bd519d3a8df009f72a927fa53577064b8f04f3c6a104a6b53d843b"
       },
       "title": "IRIS, DSpace and Dublin Core"
     },

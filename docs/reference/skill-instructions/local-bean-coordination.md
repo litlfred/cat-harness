@@ -43,9 +43,9 @@ pointers to it. Do not re-add content here — edit the skill.
 
 | process | step(s) that name it |
 |---|---|
-| [Agent bean lifecycle](../../cat-harness/processes/bean-lifecycle.html) | Leave it alone (coordinate instead); Claim it (status: in-progress); Record the blocker and hand back |
-| [Code change and review](../../cat-harness/processes/code-change-review.html) | Claim the work item |
-| [A refused merge-train member](../../cat-harness/processes/merge-refusal.html) | Close the bean, merge commit as evidence; Scrap the bean, with the reason |
-| [A merge train](../../cat-harness/processes/merge-train.html) | Fix the PR, then re-signal ready |
-| [Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route](../../cat-harness/processes/stalled-agent-triage.html) | Record the triage and claim the picked-up work |
+| [Agent bean lifecycle](../../en/cat-harness/processes/bean-lifecycle.html) | Leave it alone (coordinate instead); Claim it (status: in-progress); Record the blocker and hand back |
+| [Code change and review](../../en/cat-harness/processes/code-change-review.html) | Claim the work item |
+| [A refused merge-train member](../../en/cat-harness/processes/merge-refusal.html) | Close the bean, merge commit as evidence; Scrap the bean, with the reason |
+| [A merge train](../../en/cat-harness/processes/merge-train.html) | Fix the PR, then re-signal ready |
+| [Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route](../../en/cat-harness/processes/stalled-agent-triage.html) | Record the triage and claim the picked-up work |
 

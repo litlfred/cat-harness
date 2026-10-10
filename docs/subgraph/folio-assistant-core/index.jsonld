@@ -29,9 +29,9 @@
       "@type": "bootstrap:Asset",
       "name": "npm-manifest",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7079b917b3b38f65b1c5be8eb0f9e5c7974c468a6ee86cac09c700a3be41b886",
-        "bytes": 2194,
-        "sha256": "7079b917b3b38f65b1c5be8eb0f9e5c7974c468a6ee86cac09c700a3be41b886"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/c67d31f50b65a1a6a1a1f60447633a5928a0601a1eaece55a166c41b133d45ed",
+        "bytes": 2340,
+        "sha256": "c67d31f50b65a1a6a1a1f60447633a5928a0601a1eaece55a166c41b133d45ed"
       },
       "title": "package.json"
     },
@@ -120,6 +120,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/glossary",
       "@type": "bootstrap:Subgraph",
       "name": "glossary"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/health",
+      "@type": "bootstrap:Subgraph",
+      "name": "health"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/memory",

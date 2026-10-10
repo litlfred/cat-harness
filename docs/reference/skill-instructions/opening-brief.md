@@ -242,8 +242,8 @@ reader who arrives after it.
 
 | process | step(s) that name it |
 |---|---|
-| [A sub-graph wants to leave](../../cat-harness/processes/graph-detanglement.html) | Brief the topic before touching anything |
-| [A knowledge graph leaves for its own repositories](../../cat-harness/processes/kg-separation.html) | Brief, and claim the bean |
-| [A sub-KG is staged in place, then leaves for its own repository](../../cat-harness/processes/sub-kg-lifecycle.html) | Brief, and claim the bean |
-| [Options analysis](../../cat-harness/processes/options-analysis.html) | Frame the decision and check the trigger |
+| [A sub-graph wants to leave](../../en/cat-harness/processes/graph-detanglement.html) | Brief the topic before touching anything |
+| [A knowledge graph leaves for its own repositories](../../en/cat-harness/processes/kg-separation.html) | Brief, and claim the bean |
+| [A sub-KG is staged in place, then leaves for its own repository](../../en/cat-harness/processes/sub-kg-lifecycle.html) | Brief, and claim the bean |
+| [Options analysis](../../en/cat-harness/processes/options-analysis.html) | Frame the decision and check the trigger |
 

@@ -14,7 +14,7 @@ parent: Skill instructions
 # Running a test plan — from a request to a signed certification
 
 > Skill id: `test-plan-execution` · Package: `sdlc-core` · Process:
-> [`test-plan-execution.bpmn`](../../cat-harness/processes/test-plan-execution.html) ·
+> [`test-plan-execution.bpmn`](../../en/cat-harness/processes/test-plan-execution.html) ·
 > Decision: [`test-certification.dmn`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/sdlc/decisions/test-certification.dmn)
 
 **A system is tested against a plan, by somebody who is not the system, and
@@ -155,11 +155,11 @@ plan-run, no report — and never a pass over nothing.
 
 ## Processes that run this skill
 
-This skill has its own process: **[Test-plan execution](../../cat-harness/processes/test-plan-execution.html)**.
+This skill has its own process: **[Test-plan execution](../../en/cat-harness/processes/test-plan-execution.html)**.
 
 <img src="../../assets/img/workflows/test-plan-execution.svg" alt="BPMN diagram: Test-plan execution" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Test-plan execution](../../cat-harness/processes/test-plan-execution.html) | Request certification of the system against plan P; Resolve the plan [test-plan/v1]; Bind the test data [fixed or generated]; Execute every case, or skip it with a reason; Write the test run and the test report [folio-test-run/v1 + test-report/v1]; Re-execute a sample, blind to the tester's verdicts; Record the certification decision; Record the refusal, with the failing cases; Record why it could not be decided; File the signed certification [qa-attestations/v1] |
+| [Test-plan execution](../../en/cat-harness/processes/test-plan-execution.html) | Request certification of the system against plan P; Resolve the plan [test-plan/v1]; Bind the test data [fixed or generated]; Execute every case, or skip it with a reason; Write the test run and the test report [folio-test-run/v1 + test-report/v1]; Re-execute a sample, blind to the tester's verdicts; Record the certification decision; Record the refusal, with the failing cases; Record why it could not be decided; File the signed certification [qa-attestations/v1] |
 

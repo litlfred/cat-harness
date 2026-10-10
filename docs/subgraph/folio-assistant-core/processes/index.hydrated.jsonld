@@ -6628,7 +6628,10 @@
           "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_L1Gate/node/Task_RoundTrip",
           "@type": "bootstrap:ProcessNode",
           "bpmnType": "bpmn:ServiceTask",
-          "implementedBy": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#skill/document-intake",
+          "implementedBy": [
+            "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#skill/translation-manager",
+            "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#skill/untainted-verification"
+          ],
           "inLane": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_L1Gate/lane/Lane_0",
           "inSubgraph": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/core-processes",
           "incoming": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#process/Process_L1Gate/flow/Flow_g2",

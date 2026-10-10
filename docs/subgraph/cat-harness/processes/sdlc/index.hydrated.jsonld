@@ -3570,7 +3570,7 @@
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#externalSchema/omg-dd-1.0"
       ],
       "depiction": "https://litlfred.github.io/folio-assistant/assets/img/workflows/merge-base.svg",
-      "description": "Bring the base branch into a pull-request branch: merge, classify every conflicted path before resolving any, refuse the whole merge if one is authored or undeclared, otherwise resolve, regenerate and prove the result with the gate set. CALLED FROM `Task_PrepareMerge` in code-change-review.bpmn, and executed by `bun run cat merge:main` (cat-harness/scripts/merge-base.ts). Bean `y7b3`, issue #1707. Owner, 2026-10-01: \"put in merge process bpmn\".\n\nMEASURED 2026-09-30 over 300 main-into-branch merges: 235 conflicted, 147 (63%) ONLY on generated files, each resolved the same mechanical way. The declared patterns, and why each is or is not automatic, are in the `merge-conflict-patterns` skill.\n\nALL OR NOTHING: every conflicted path is classified before any is touched, and one refusal aborts the merge and restores the tree. PROVED, NOT ASSUMED: `regen` derives every check/writer pair from the CI workflow, and an unrepaired check aborts too. Only what both gateways pass is committed.",
+      "description": "Bring the base branch into a pull-request branch: merge, classify every conflicted path before resolving any, refuse the whole merge if one is authored or undeclared, otherwise resolve, regenerate and prove the result with the gate set. CALLED FROM `Task_PrepareMerge` in code-change-review.bpmn, and executed by `bun run cat merge:main` (cat-harness-tools/scripts/merge-base.ts). Bean `y7b3`, issue #1707. Owner, 2026-10-01: \"put in merge process bpmn\".\n\nMEASURED 2026-09-30 over 300 main-into-branch merges: 235 conflicted, 147 (63%) ONLY on generated files, each resolved the same mechanical way. The declared patterns, and why each is or is not automatic, are in the `merge-conflict-patterns` skill.\n\nALL OR NOTHING: every conflicted path is classified before any is touched, and one refusal aborts the merge and restores the tree. PROVED, NOT ASSUMED: `regen` derives every check/writer pair from the CI workflow, and an unrepaired check aborts too. Only what both gateways pass is committed.",
       "enforcement": "strict",
       "flowCount": 18,
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
@@ -4557,6 +4557,612 @@
       "touchesWorkPlan": false
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "@type": "bootstrap:Process",
+      "conformsTo": [
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#externalSchema/omg-bpmn-2.0",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#externalSchema/omg-dd-1.0"
+      ],
+      "depiction": "https://litlfred.github.io/folio-assistant/assets/img/workflows/merge-to-main.svg",
+      "description": "Land ONE pull request on `main`, in any repository, as its own step with its own gate: read the head's evidence live, establish that the owner authorised THIS merge, record the authorisation, merge pinned to the evaluated head, then confirm the base, re-pin downstream mounts and report. Every process that ends in a write to `main` CALLS this rather than inlining it: `merge-train.bpmn` (Call_MergeToMain, once per member, in train order) and `crdm-close.bpmn` (Call_MergeToMain, after the sign-off is recorded); `prepare-merge-auto` Phase 4 runs it by hand. Skill: `merge-to-main`.\n\nWHY IT EXISTS. 2026-10-09: one session merged seven PRs into `main` across seven repositories that run no CI, reading the owner's \"fix all issues until green\" as permission to merge; a safety classifier flagged it as \"Merge Without Review\". Until then merging was a line at the end of other procedures, and no step could refuse it.\n\nTWO GATES, BOTH COMPUTED. GW_Evidence reads `decisions/merge-evidence.dmn` over the head's facts; GW_Authorised reads `decisions/merge-authorisation.dmn` over what authorisation was found and the CI state. A hand-supplied outcome is refused at both. A repository with NO CI is `none`, never green: it takes the `no-ci` branch, which runs the repository's own gates locally and can never be covered by a standing waiver.\n\nTHE AUTHORISATION IS RECORDED BEFORE THE MERGE (Task_RecordAuthorisation, not relaxable), in the shape `index.config.json` uses for a trust consent: by, on, ref, evidence (the owner's words, verbatim). A broad instruction about the work (\"fix all issues until green\", \"ship it\", \"prepare-merge\") is `instruction-only` and routes to `ask`.\n\nNOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and refused all end with the PR open. Nothing is closed and no branch is deleted on any path.",
+      "enforcement": "strict",
+      "flowCount": 23,
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "Merge to main",
+      "nodeCount": 22,
+      "sourcePath": "processes/sdlc/merge-to-main.bpmn",
+      "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/merge-to-main.bpmn",
+      "startNode": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Start_Merge",
+      "summary": "Land ONE pull request on `main`, in any repository, as its own step with its own gate: read the head's evidence live, establish that the owner authorised THIS merge, record the authorisation, merge pinned to the evaluated head, then confirm the base, re-pin d…"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m1",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Start_Merge",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_RegenProjections"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m10",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_LocalGates",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_ReadAuthorisation"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m11",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_ReadAuthorisation",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Authorised"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m12",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Authorised",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "merge",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_RecordAuthorisation"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m13",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Authorised",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "ask",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_Ask"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m14",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_Ask",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_OwnerDecides"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m15",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_OwnerDecides",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Owner"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m16",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Owner",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "merge",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_RecordAuthorisation"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m17",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Owner",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "hold",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/End_Held"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m18",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Owner",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "refuse",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/End_Refused"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m19",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_RecordAuthorisation",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_Merge"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m2",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_RegenProjections",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_ReadEvidence"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m20",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_Merge",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_ConfirmBase"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m21",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_ConfirmBase",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_Repin"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m22",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_Repin",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_Report"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m23",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_Report",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/End_Merged"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m3",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_ReadEvidence",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Evidence"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m4",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Evidence",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "ready",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_ReadAuthorisation"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m5",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Evidence",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "no-ci",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_LocalGates"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m6",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Evidence",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "hand-back",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Call_HandBack"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m7",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Evidence",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "not-yet",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/End_NotYet"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m8",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Evidence",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "unknown",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/End_Unknown"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m9",
+      "@type": "bootstrap:SequenceFlow",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Call_HandBack",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/End_HandedBack"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "@type": "cat-harness:Lane",
+      "bindsRole": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "Merging session",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Owner",
+      "@type": "cat-harness:Lane",
+      "bindsRole": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/user",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "Owner",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Pipeline",
+      "@type": "cat-harness:Lane",
+      "bindsRole": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/build-pipeline",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "Build pipeline",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Call_HandBack",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:CallActivity",
+      "calledElement": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeRefusal",
+      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/merge-to-main",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m6",
+      "name": "Hand it back",
+      "nodeKind": "activity",
+      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m9",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": true,
+      "workPlanOp": "note"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/End_HandedBack",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:EndEvent",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m9",
+      "name": "Handed back, not merged",
+      "nodeKind": "end",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": false
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/End_Held",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:EndEvent",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Owner",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m17",
+      "name": "Held: PR stays open",
+      "nodeKind": "end",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/user",
+      "relaxable": true,
+      "touchesWorkPlan": false
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/End_Merged",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:EndEvent",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m23",
+      "name": "Merged, recorded",
+      "nodeKind": "end",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": false
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/End_NotYet",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:EndEvent",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m7",
+      "name": "Not yet: re-enter later",
+      "nodeKind": "end",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": false
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/End_Refused",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:EndEvent",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Owner",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m18",
+      "name": "Refused: not merged",
+      "nodeKind": "end",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/user",
+      "relaxable": true,
+      "touchesWorkPlan": false
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/End_Unknown",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:EndEvent",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m8",
+      "name": "Could not determine",
+      "nodeKind": "end",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": false
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Authorised",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:ExclusiveGateway",
+      "decidedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#decision/merge-authorisation/Decision_MergeAuthorisation",
+      "decisionRef": "decisions/merge-authorisation.dmn#Decision_MergeAuthorisation",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m11",
+      "name": "Authorised?",
+      "nodeKind": "exclusive",
+      "outgoing": [
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m12",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m13"
+      ],
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": false
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Evidence",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:ExclusiveGateway",
+      "decidedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#decision/merge-evidence/Decision_MergeEvidence",
+      "decisionRef": "decisions/merge-evidence.dmn#Decision_MergeEvidence",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m3",
+      "name": "What does the evidence say?",
+      "nodeKind": "exclusive",
+      "outgoing": [
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m4",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m5",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m6",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m7",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m8"
+      ],
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": false
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/GW_Owner",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:ExclusiveGateway",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Owner",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m15",
+      "name": "Owner's answer?",
+      "nodeKind": "exclusive",
+      "outgoing": [
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m16",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m17",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m18"
+      ],
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/user",
+      "relaxable": true,
+      "touchesWorkPlan": false
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Start_Merge",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:StartEvent",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "name": "A PR is to land on main",
+      "nodeKind": "start",
+      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m1",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": false
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_Ask",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:Task",
+      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/merge-to-main",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m13",
+      "name": "Put the merge to the owner, evidence first",
+      "nodeKind": "activity",
+      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m14",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": true,
+      "workPlanOp": "note"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_ConfirmBase",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:Task",
+      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/merge-to-main",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m20",
+      "name": "Confirm main's CI on the merge commit",
+      "nodeKind": "activity",
+      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m21",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": true,
+      "workPlanOp": "note"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_LocalGates",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:Task",
+      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/merge-to-main",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m5",
+      "name": "No CI: run the repo's own gates locally",
+      "nodeKind": "activity",
+      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m10",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": true,
+      "workPlanOp": "note"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_Merge",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:Task",
+      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/merge-to-main",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m19",
+      "name": "Merge, pinned to the evaluated head",
+      "nodeKind": "activity",
+      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m20",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": false,
+      "touchesWorkPlan": true,
+      "workPlanOp": "note"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_OwnerDecides",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:Task",
+      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/merge-to-main",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Owner",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m14",
+      "name": "Merge, hold or refuse",
+      "nodeKind": "activity",
+      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m15",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/user",
+      "relaxable": false,
+      "touchesWorkPlan": false
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_ReadAuthorisation",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:Task",
+      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/merge-to-main",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": [
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m4",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m10"
+      ],
+      "name": "Find the owner's authorisation for THIS merge",
+      "nodeKind": "activity",
+      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m11",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": true,
+      "workPlanOp": "note"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_ReadEvidence",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:Task",
+      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/merge-to-main",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m2",
+      "name": "Read the head's evidence, live",
+      "nodeKind": "activity",
+      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m3",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": true,
+      "workPlanOp": "note"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_RecordAuthorisation",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:Task",
+      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/merge-to-main",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": [
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m12",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m16"
+      ],
+      "name": "Record who authorised, when, and the quote",
+      "nodeKind": "activity",
+      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m19",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": false,
+      "touchesWorkPlan": true,
+      "workPlanOp": "note"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_RegenProjections",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:Task",
+      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/harness-projections",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Pipeline",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m1",
+      "name": "Regenerate harness projections (CI)",
+      "nodeKind": "activity",
+      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m2",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/build-pipeline",
+      "relaxable": true,
+      "touchesWorkPlan": false
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_Repin",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:Task",
+      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/merge-to-main",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m21",
+      "name": "Re-pin downstream mounts, as PRs",
+      "nodeKind": "activity",
+      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m22",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": true,
+      "workPlanOp": "note"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/node/Task_Report",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:Task",
+      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/merge-to-main",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/lane/Lane_Merger",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m22",
+      "name": "Note the bean, summarise on the issue",
+      "nodeKind": "activity",
+      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain/flow/m23",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
+      "relaxable": true,
+      "touchesWorkPlan": true,
+      "workPlanOp": "note"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain",
       "@type": "bootstrap:Process",
       "conformsTo": [
@@ -4566,10 +5172,10 @@
       "depiction": "https://litlfred.github.io/folio-assistant/assets/img/workflows/merge-train.svg",
       "description": "Land the ready pull requests as one train: place each by the merge-priority decision table, merge the members with `merge-base`, run the gate set on the combination, and on red eject the culprit rather than reject the train. A TRAIN OF PULL REQUESTS, landed together. Bean `hfag` (merge-pipeline epic), owner's ruling 2026-10-02. One instance per train run, committed under `beans/workflows/` like every other instance, so a sibling steward sees the same position and the run's record is what T4 will later be tuned from (R10).\n\nIT LINKS THE EXISTING PROCESSES AND DUPLICATES NONE. Each member is merged by `merge-base.bpmn` (`Process_MergeBase`); the train is gated by `code-quality-gates.bpmn` and `pr-checks-present.bpmn`; a refused or ejected member is handed back by `merge-refusal.bpmn` (`Process_MergeRefusal`, draft PR #1888 — until it lands the call stays opaque, which the engine permits). The ORDER is computed by `decisions/merge-priority.dmn`, whose inputs come from the ordering processes: `graph-detanglement.bpmn` (a PR that removes tangle edges unblocks others, input b) and `kg-separation.bpmn` (a PR that seeds the staging repos, input a; `seed:ready` on branch `claude/seed-ready` reports which). A landed member's preview is taken down by `feature-staging.bpmn`, which this process does not repeat.\n\nTHE QUEUE STORES DECISIONS, NEVER GITHUB'S FACTS. CI status, mergeability, labels and head SHA are read live at each step (`schemas/merge-queue.ts`). What this instance records is what the steward decided and the dated evidence it acted on.\n\nFROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipeline-requirements.md`, branch `claude/merge-pipeline-library`): T3 cheap conflict prediction on authored paths (R6, R7; SQ19 §5.2 pp. 7-8) feeds the placement table; T7 retries a declared-flaky gate once (R11; TAP17 Table II p. 5); T2 attributes a red train from each member's own CI before bisecting (SQ19 §2.1 pp. 2-3); T1 ejects the culprit and re-runs the rest rather than rejecting the whole train (R3; SQ19 §2.2 p. 3), handing it back with the reason (R4; SQ19 §3.2 p. 4). The tools behind the steps are `merge:overlap`, `merge:train` and `merge:leftover`, on branch `claude/merge-pipeline-tools`.",
       "enforcement": "strict",
-      "flowCount": 33,
+      "flowCount": 32,
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
       "name": "A merge train",
-      "nodeCount": 29,
+      "nodeCount": 28,
       "sourcePath": "processes/sdlc/merge-train.bpmn",
       "sourceUrl": "https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/merge-train.bpmn",
       "startNode": [
@@ -4668,7 +5274,7 @@
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
       "name": "green",
       "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain",
-      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Task_Release"
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Call_MergeToMain"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/flow/t18",
@@ -4718,7 +5324,7 @@
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
       "name": "green",
       "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain",
-      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Task_Release"
+      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Call_MergeToMain"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/flow/t23",
@@ -4764,17 +5370,9 @@
       "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Task_Eject"
     },
     {
-      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/flow/t28",
-      "@type": "bootstrap:SequenceFlow",
-      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Task_Release",
-      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
-      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain",
-      "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Task_Land"
-    },
-    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/flow/t29",
       "@type": "bootstrap:SequenceFlow",
-      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Task_Land",
+      "from": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Call_MergeToMain",
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
       "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain",
       "to": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/End_Landed"
@@ -4976,6 +5574,27 @@
       "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/flow/t13",
       "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain",
       "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/build-pipeline",
+      "relaxable": true,
+      "touchesWorkPlan": true,
+      "workPlanOp": "note"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Call_MergeToMain",
+      "@type": "bootstrap:ProcessNode",
+      "bpmnType": "bpmn:CallActivity",
+      "calledElement": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeToMain",
+      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/merge-to-main",
+      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/lane/Lane_Steward",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+      "incoming": [
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/flow/t17",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/flow/t22"
+      ],
+      "name": "Land each member",
+      "nodeKind": "activity",
+      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/flow/t29",
+      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain",
+      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
       "relaxable": true,
       "touchesWorkPlan": true,
       "workPlanOp": "note"
@@ -5269,23 +5888,6 @@
       "workPlanOp": "note"
     },
     {
-      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Task_Land",
-      "@type": "bootstrap:ProcessNode",
-      "bpmnType": "bpmn:Task",
-      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/prepare-merge",
-      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/lane/Lane_Steward",
-      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
-      "incoming": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/flow/t28",
-      "name": "Land the train at the tested SHA",
-      "nodeKind": "activity",
-      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/flow/t29",
-      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain",
-      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
-      "relaxable": true,
-      "touchesWorkPlan": true,
-      "workPlanOp": "note"
-    },
-    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Task_Override",
       "@type": "bootstrap:ProcessNode",
       "bpmnType": "bpmn:Task",
@@ -5315,26 +5917,6 @@
       "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/flow/t2",
       "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain",
       "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/merge-steward",
-      "relaxable": true,
-      "touchesWorkPlan": true,
-      "workPlanOp": "note"
-    },
-    {
-      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/node/Task_Release",
-      "@type": "bootstrap:ProcessNode",
-      "bpmnType": "bpmn:Task",
-      "implementedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/interaction-modality",
-      "inLane": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/lane/Lane_Owner",
-      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
-      "incoming": [
-        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/flow/t17",
-        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/flow/t22"
-      ],
-      "name": "Release the merge to main",
-      "nodeKind": "activity",
-      "outgoing": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain/flow/t28",
-      "partOf": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MergeTrain",
-      "performedBy": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#role/user",
       "relaxable": true,
       "touchesWorkPlan": true,
       "workPlanOp": "note"
@@ -9163,6 +9745,24 @@
       "@id": "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/processes/sdlc/decisions/",
       "@type": "bootstrap:Subgraph",
       "hasMember": [
+        {
+          "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#decision/merge-authorisation/Decision_MergeAuthorisation",
+          "@type": "cat-harness:Decision",
+          "conformsTo": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#externalSchema/omg-dmn-1.3",
+          "hitPolicy": "FIRST",
+          "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+          "name": "Is this merge authorised?",
+          "sourcePath": "processes/sdlc/decisions/merge-authorisation.dmn"
+        },
+        {
+          "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#decision/merge-evidence/Decision_MergeEvidence",
+          "@type": "cat-harness:Decision",
+          "conformsTo": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#externalSchema/omg-dmn-1.3",
+          "hitPolicy": "FIRST",
+          "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/processes",
+          "name": "What does the head's evidence say?",
+          "sourcePath": "processes/sdlc/decisions/merge-evidence.dmn"
+        },
         {
           "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#decision/merge-priority/Decision_MergePriority",
           "@type": "cat-harness:Decision",

@@ -100,9 +100,9 @@ are good.
 
 | process | step(s) that name it |
 |---|---|
-| [KG to public portal](../../cat-harness/processes/kg-to-portal.html) | Record the decision as still open |
-| [Options analysis](../../cat-harness/processes/options-analysis.html) | Record the recommendation AND the rejected options |
-| [Adopting an upstream version bump](../../cat-harness/processes/upstream-version-adoption.html) | Adopt, hold or decline |
-| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Approve |
-| [Editing and HCI validation](../../cat-harness/processes/editing-hci-validation.html) | Review the findings; Record the decision and its audit note |
+| [KG to public portal](../../en/cat-harness/processes/kg-to-portal.html) | Record the decision as still open |
+| [Options analysis](../../en/cat-harness/processes/options-analysis.html) | Record the recommendation AND the rejected options |
+| [Adopting an upstream version bump](../../en/cat-harness/processes/upstream-version-adoption.html) | Adopt, hold or decline |
+| [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Approve |
+| [Editing and HCI validation](../../en/cat-harness/processes/editing-hci-validation.html) | Review the findings; Record the decision and its audit note |
 

@@ -155,7 +155,7 @@ schema data model mapping exercise. (make sure defined processes)"*
 
 `cat-harness/external-schemas/` — one record per specification, pinning the
 **edition** and carrying the operative terms **derived from the corpus**, never
-hand-listed. `bun run cat-harness/scripts/external-schemas.ts --check`.
+hand-listed. `bun run cat-harness-tools/scripts/external-schemas.ts --check`.
 
 Two things about that registry worth knowing before you trust its output.
 It was **undeclared** in `cat-harness.json` until 2026-09-22 — the `dh4f` shape

@@ -13,7 +13,7 @@ parent: Skill instructions
 {% raw %}
 # Merge to `main` — a sub-process with its own gate
 
-[`processes/sdlc/merge-to-main.bpmn`](../../processes/merge-to-main.html)
+[`processes/sdlc/merge-to-main.bpmn`](../../en/cat-harness/processes/merge-to-main.html)
 (`Process_MergeToMain`) is the process. Its two gateways are computed by
 [`merge-evidence.dmn`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/sdlc/decisions/merge-evidence.dmn) and
 [`merge-authorisation.dmn`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/sdlc/decisions/merge-authorisation.dmn).
@@ -75,7 +75,7 @@ only through `merge:guard`". Where it does not exist, read the same facts with
 the GitHub tools and write each one down with the URL it came from.
 
 `merge-evidence.dmn` then decides, in this order: `hand-back` on red, `dirty`
-or `blocking` (to [`merge-refusal`](../../processes/merge-refusal.html),
+or `blocking` (to [`merge-refusal`](../../en/cat-harness/processes/merge-refusal.html),
 which returns the PR to its owner with the reason); `unknown` when a fact could
 not be read (ends, not merged); `not-yet` while runs are pending or
 mergeability is uncomputed (ends; re-enter later); `no-ci` on a clean, clear
@@ -278,13 +278,13 @@ commit unless told otherwise. **Never delete the branch**
 
 ## Processes that run this skill
 
-This skill has its own process: **[Merge to main](../../processes/merge-to-main.html)**.
+This skill has its own process: **[Merge to main](../../en/cat-harness/processes/merge-to-main.html)**.
 
 <img src="../../assets/img/workflows/merge-to-main.svg" alt="BPMN diagram: Merge to main" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [CRDM close-out](../../processes/crdm-close.html) | Land the feature's PRs (calls a sub-process) |
-| [Merge to main](../../processes/merge-to-main.html) | Read the head's evidence, live; No CI: run the repo's own gates locally; Hand it back (calls a sub-process); Find the owner's authorisation for THIS merge; Put the merge to the owner, evidence first; Merge, hold or refuse; Record who authorised, when, and the quote; Merge, pinned to the evaluated head; Confirm main's CI on the merge commit; Re-pin downstream mounts, as PRs; Note the bean, summarise on the issue |
-| [A merge train](../../processes/merge-train.html) | Land each member (calls a sub-process) |
+| [CRDM close-out](../../en/cat-harness/processes/crdm-close.html) | Land the feature's PRs (calls a sub-process) |
+| [Merge to main](../../en/cat-harness/processes/merge-to-main.html) | Read the head's evidence, live; No CI: run the repo's own gates locally; Hand it back (calls a sub-process); Find the owner's authorisation for THIS merge; Put the merge to the owner, evidence first; Merge, hold or refuse; Record who authorised, when, and the quote; Merge, pinned to the evaluated head; Confirm main's CI on the merge commit; Re-pin downstream mounts, as PRs; Note the bean, summarise on the issue |
+| [A merge train](../../en/cat-harness/processes/merge-train.html) | Land each member (calls a sub-process) |
 

@@ -8,9 +8,9 @@
       "@type": "bootstrap:Skill",
       "name": "block-actions",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/36523bf229f512b032cc74470963106b3d05689e949abd268e97d36bdc8b5da8",
-        "bytes": 8307,
-        "sha256": "36523bf229f512b032cc74470963106b3d05689e949abd268e97d36bdc8b5da8"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/06c806242f67b44f52fa7062f306261ec30a770f9197f08a86f39670673af56f",
+        "bytes": 8319,
+        "sha256": "06c806242f67b44f52fa7062f306261ec30a770f9197f08a86f39670673af56f"
       },
       "title": "Block actions: [edit] and [feedback] on every block"
     },
@@ -30,9 +30,9 @@
       "@type": "bootstrap:Skill",
       "name": "document-publishing",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/275daac470176c81c1251a78d39ae218a04c95426d98f0f753f9a62b0afc3261",
-        "bytes": 5414,
-        "sha256": "275daac470176c81c1251a78d39ae218a04c95426d98f0f753f9a62b0afc3261"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/004bfead058c17bf82c780d8ef66c9295fc2c9701babd22823c83f7ebe0368a5",
+        "bytes": 5630,
+        "sha256": "004bfead058c17bf82c780d8ef66c9295fc2c9701babd22823c83f7ebe0368a5"
       },
       "title": "document-publishing"
     },
@@ -63,9 +63,9 @@
       "@type": "bootstrap:Skill",
       "name": "public-comment",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e4d52d30a78aa11c087c3a86cca3b900e3fb4f0859d09d6234ebb923c98b4283",
-        "bytes": 19536,
-        "sha256": "e4d52d30a78aa11c087c3a86cca3b900e3fb4f0859d09d6234ebb923c98b4283"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/bafe6fbc2094f9c5642ede3fa48f52f1d4c1515e6842bb0e2ec092cfaa66a251",
+        "bytes": 19648,
+        "sha256": "bafe6fbc2094f9c5642ede3fa48f52f1d4c1515e6842bb0e2ec092cfaa66a251"
       },
       "title": "public-comment"
     }

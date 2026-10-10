@@ -12,14 +12,14 @@ permalink: /folio-assistant-core/glossary/dmn-decisions/
 
 Candidate terms extracted from every DMN decision: `name` as the label, its own `<description>` as the definition, the element id as the code. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: cat-harness 8 (<a href="{{ '/assets/glossary/cat-harness--kg-dmn-decisions.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 4 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-dmn-decisions.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 1 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-dmn-decisions.skos.jsonld' | relative_url }}">SKOS</a>).
+From: cat-harness 10 (<a href="{{ '/assets/glossary/cat-harness--kg-dmn-decisions.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 4 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-dmn-decisions.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 1 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-dmn-decisions.skos.jsonld' | relative_url }}">SKOS</a>).
 
-**Size:** this page holds 13 terms and is 11 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 15 terms and is 12 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>13</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>13</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>15</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>15</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -29,7 +29,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">13</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">15</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-A">A</a> <a href="#letter-B">B</a> <a href="#letter-D">D</a> <a href="#letter-E">E</a> <a href="#letter-I">I</a> <a href="#letter-R">R</a> <a href="#letter-S">S</a> <a href="#letter-W">W</a></nav>
 
@@ -107,6 +107,13 @@ Is the sign-off recorded, and does it let the work proceed? <span class="fa-glos
 <p><em>The asset carries no description.</em></p>
 <p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/decisions/requirement-signoff-recorded.dmn"><code>cat-harness/processes/process/decisions/requirement-signoff-recorded.dmn#Decision_RequirementSignoffRecorded</code></a></p>
 </dd>
+<dt id="cat-harness--kg-dmn-decisions--decision_mergeauthorisation" data-fa-state="extracted" data-fa-gloss="">
+Is this merge authorised? <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/decisions/merge-authorisation.dmn"><code>cat-harness/processes/sdlc/decisions/merge-authorisation.dmn#Decision_MergeAuthorisation</code></a></p>
+</dd>
 </dl>
 
 <h2 id="letter-R">R</h2>
@@ -133,6 +140,13 @@ Stands alone? <span class="fa-gloss-status">candidate, extracted</span>
 
 <h2 id="letter-W">W</h2>
 <dl class="fa-gloss">
+<dt id="cat-harness--kg-dmn-decisions--decision_mergeevidence" data-fa-state="extracted" data-fa-gloss="">
+What does the head's evidence say? <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">DMN decisions of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/decisions/merge-evidence.dmn"><code>cat-harness/processes/sdlc/decisions/merge-evidence.dmn#Decision_MergeEvidence</code></a></p>
+</dd>
 <dt id="folio-assistant-core--kg-dmn-decisions--decision_foliointent" data-fa-state="extracted" data-fa-gloss="">
 What is the user asking for? <span class="fa-gloss-status">candidate, extracted</span>
 </dt>

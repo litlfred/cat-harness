@@ -428,9 +428,9 @@
       "@type": "bootstrap:Asset",
       "name": "agent-instructions",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/16df82f49cf1c627365908fefb61b0e18008aae24d359a7280dff2a107317a07",
-        "bytes": 17397,
-        "sha256": "16df82f49cf1c627365908fefb61b0e18008aae24d359a7280dff2a107317a07"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/8e1dcc9aa672450dbacf8336bf582839cd789acd18559edb5450168039988454",
+        "bytes": 17607,
+        "sha256": "8e1dcc9aa672450dbacf8336bf582839cd789acd18559edb5450168039988454"
       },
       "title": "AGENTS.md — cat-harness"
     },
@@ -450,9 +450,9 @@
       "@type": "bootstrap:Asset",
       "name": "instance-readme",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/01a1632c34070b13dfebb8577c71a1cf770ab4227cf789ce46d747828beb3dac",
-        "bytes": 14597,
-        "sha256": "01a1632c34070b13dfebb8577c71a1cf770ab4227cf789ce46d747828beb3dac"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/34b42b0a89524713d0bc4c9c81c53a7dc091b2dedebfa08ab5cd0118b0a13935",
+        "bytes": 14609,
+        "sha256": "34b42b0a89524713d0bc4c9c81c53a7dc091b2dedebfa08ab5cd0118b0a13935"
       },
       "title": "cat-harness"
     },
@@ -461,9 +461,9 @@
       "@type": "bootstrap:Asset",
       "name": "npm-manifest",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/c1d033941b5e281e9c46997af547dc99df2f75510ef8ea8fe8964427c34b1287",
-        "bytes": 24222,
-        "sha256": "c1d033941b5e281e9c46997af547dc99df2f75510ef8ea8fe8964427c34b1287"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d4dac4f64d18225dd07ab945724f2ac1d32f4892af648888c9e58e589ea16ba5",
+        "bytes": 1999,
+        "sha256": "d4dac4f64d18225dd07ab945724f2ac1d32f4892af648888c9e58e589ea16ba5"
       },
       "title": "package.json"
     },
@@ -618,31 +618,6 @@
       "name": "beans"
     },
     {
-      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/cat-harness-adapters",
-      "@type": "bootstrap:Subgraph",
-      "name": "cat-harness-adapters"
-    },
-    {
-      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/cat-harness-deploy",
-      "@type": "bootstrap:Subgraph",
-      "name": "cat-harness-deploy"
-    },
-    {
-      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/cat-harness-scripts",
-      "@type": "bootstrap:Subgraph",
-      "name": "cat-harness-scripts"
-    },
-    {
-      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/cat-harness-src",
-      "@type": "bootstrap:Subgraph",
-      "name": "cat-harness-src"
-    },
-    {
-      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/cat-harness-tests",
-      "@type": "bootstrap:Subgraph",
-      "name": "cat-harness-tests"
-    },
-    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/cat-harness-upstream",
       "@type": "bootstrap:Subgraph",
       "name": "cat-harness-upstream"
@@ -676,11 +651,6 @@
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/folio",
       "@type": "bootstrap:Subgraph",
       "name": "folio"
-    },
-    {
-      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/folio-templates",
-      "@type": "bootstrap:Subgraph",
-      "name": "folio-templates"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/health",
@@ -809,6 +779,12 @@
       "@type": "cat-harness:ExternalSchema",
       "name": "omg-dmn-1.3",
       "title": "Decision Model and Notation (DMN)"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#externalSchema/opengroup-archimate-3.0",
+      "@type": "cat-harness:ExternalSchema",
+      "name": "opengroup-archimate-3.0",
+      "title": "ArchiMate® Model Exchange File Format"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#externalSchema/schema-org",
@@ -1194,6 +1170,12 @@
       "@type": "cat-harness:Schema",
       "name": "actor-reach",
       "title": "actor-reach"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/adversarial-checklist",
+      "@type": "cat-harness:Schema",
+      "name": "adversarial-checklist",
+      "title": "adversarial-checklist"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/archive-contents",
@@ -1610,10 +1592,22 @@
       "title": "merge-queue"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/merge-review",
+      "@type": "cat-harness:Schema",
+      "name": "merge-review",
+      "title": "merge-review"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/methodology",
       "@type": "cat-harness:Schema",
       "name": "methodology",
       "title": "methodology"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/model-capabilities",
+      "@type": "cat-harness:Schema",
+      "name": "model-capabilities",
+      "title": "model-capabilities"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/mount-trust",
@@ -1706,6 +1700,12 @@
       "title": "qa-attestations"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/qa-record-shapes",
+      "@type": "cat-harness:Schema",
+      "name": "qa-record-shapes",
+      "title": "qa-record-shapes"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/qa-report",
       "@type": "cat-harness:Schema",
       "name": "qa-report",
@@ -1722,6 +1722,12 @@
       "@type": "cat-harness:Schema",
       "name": "reader-filter",
       "title": "reader-filter"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/red-flag",
+      "@type": "cat-harness:Schema",
+      "name": "red-flag",
+      "title": "red-flag"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/ref-window",
@@ -2222,6 +2228,12 @@
       "title": "BPMN diagram rendering"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/build-instance-site",
+      "@type": "cat-harness:Tool",
+      "name": "build-instance-site",
+      "title": "Build, check and (on request) publish an instance's own site, or a STAGING/<branch> preview"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/cat-harness-schema",
       "@type": "cat-harness:Tool",
       "name": "cat-harness-schema",
@@ -2720,6 +2732,12 @@
       "title": "The render pipeline, in dependency order"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/rewrite-moved-paths",
+      "@type": "cat-harness:Tool",
+      "name": "rewrite-moved-paths",
+      "title": "Rewrite paths that still name a moved file's old layer — never in a record"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/schema-docs",
       "@type": "cat-harness:Tool",
       "name": "schema-docs",
@@ -2742,6 +2760,12 @@
       "@type": "cat-harness:Tool",
       "name": "serve-rendering",
       "title": "Local rendering server"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/serve-rendering-py",
+      "@type": "cat-harness:Tool",
+      "name": "serve-rendering-py",
+      "title": "Local rendering server (Python)"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/sibling-sessions",
@@ -2790,6 +2814,12 @@
       "@type": "cat-harness:Tool",
       "name": "slice-sqlite",
       "title": "Per-slice SQLite builder"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/staging-graph-viewer",
+      "@type": "cat-harness:Tool",
+      "name": "staging-graph-viewer",
+      "title": "Staging-only graph viewer"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/stakeholder-map",

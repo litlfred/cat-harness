@@ -269,7 +269,7 @@ reader's own copy*. `folio/` is a different graph typology: **renderable** autho
 content.
 
 Reading it as the directory would break a consumer that exists.
-`schemas/materialization.ts` states the dependency outright — ***`corpus-grep`
+folio-assistant-core's `schemas/materialization.ts` states the dependency outright — ***`corpus-grep`
 searches `library/` only***, so a node materialised anywhere else reads as
 ABSENT to every consumer. That is the same defect the schema already forbids
 one state up, where collapsing `referenced` into `materialized` hides a node
@@ -370,6 +370,6 @@ out of a folio is `deletion-requires-confirmation`, applied by
 
 | process | step(s) that name it |
 |---|---|
-| [Board: open and close content](../../cat-harness/processes/board-open-close.html) | Render every card as its avatar; Project a window onto the board; Raise the window the reader selected; Close the window back to its avatar; Leave a reachable way back; Resolve the kind's zoom threshold; Swap cards below the threshold; leave open windows alone |
-| [Board: relocate content to the trashcan](../../cat-harness/processes/board-relocate.html) | Leave the content exactly where it is |
+| [Board: open and close content](../../en/cat-harness/processes/board-open-close.html) | Render every card as its avatar; Project a window onto the board; Raise the window the reader selected; Close the window back to its avatar; Leave a reachable way back; Resolve the kind's zoom threshold; Swap cards below the threshold; leave open windows alone |
+| [Board: relocate content to the trashcan](../../en/cat-harness/processes/board-relocate.html) | Leave the content exactly where it is |
 

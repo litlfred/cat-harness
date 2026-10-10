@@ -13,16 +13,16 @@ permalink: /folio-assistant-core/glossary/schema-fields/s-z/
 
 Candidate terms extracted from every schema field with a doc comment: `<Declaration>.<field>` as the label, the comment's first paragraph as the definition. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2011 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 165 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2067 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 167 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
 
 One of 4 pages of this type, split by the first letter of the label: <a href="{{ '/folio-assistant-core/glossary/schema-fields/' | relative_url }}">all parts</a>.
 
-**Size:** this page holds 647 terms and is 350 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 653 terms and is 354 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>2304</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2304</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>2362</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2362</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -32,7 +32,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">647</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">653</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-S">S</a> <a href="#letter-T">T</a> <a href="#letter-U">U</a> <a href="#letter-V">V</a> <a href="#letter-W">W</a></nav>
 
@@ -3066,6 +3066,34 @@ TranslatableFormatSchema.smartBaseScript <span class="fa-gloss-status">candidate
 <p>Smart-base Python script that handles this format (reference).</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/cat-harness.ts"><code>cat-harness/schemas/cat-harness.ts#TranslatableFormatSchema.smartBaseScript</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.translationblockqareport.block" data-fa-state="extracted" data-fa-gloss="">
+TranslationBlockQaReport.block <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The content block this translates, by ITS label — a different identity.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#TranslationBlockQaReport.block</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.translationblockqareport.label" data-fa-state="extracted" data-fa-gloss="">
+TranslationBlockQaReport.label <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><code>trans:&lt;locale&gt;/&lt;stem&gt;</code>, the convention <code>schemas/translation.ts</code> fixes.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#TranslationBlockQaReport.label</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.translationblockqareport.paths" data-fa-state="extracted" data-fa-gloss="">
+TranslationBlockQaReport.paths <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Repo-relative paths of the block's files.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#TranslationBlockQaReport.paths</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.translationblockqareport.po" data-fa-state="extracted" data-fa-gloss="">
+TranslationBlockQaReport.po <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The PO this verdict was measured against, repo-relative.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#TranslationBlockQaReport.po</code></a></p>
+</dd>
 <dt id="cat-harness--kg-schema-fields--harness-config.translationconfig.defaultlocale" data-fa-state="extracted" data-fa-gloss="">
 TranslationConfig.defaultLocale <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -3795,6 +3823,13 @@ ViewerNavQaSchema.root <span class="fa-gloss-status">candidate, extracted</span>
 <p>The published docs root the audit walked, repo-relative.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/viewer-nav-qa.ts"><code>cat-harness/schemas/viewer-nav-qa.ts#ViewerNavQaSchema.root</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--cat-harness.visualisationschema.alias" data-fa-state="extracted" data-fa-gloss="">
+VisualisationSchema.alias <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Opt-in top-level route alias: <code>&lt;base&gt;/&lt;alias&gt;/</code> (bean folio-assistant-t4xb). Canonical route is always <code>&lt;base&gt;/&lt;harness&gt;/&lt;visualizer&gt;/</code>. When true, uses the visualizer's name as the alias; when string, uses the specified alias. Refused if it collides with another alias, a harness route, or a reserved site route.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/cat-harness.ts"><code>cat-harness/schemas/cat-harness.ts#VisualisationSchema.alias</code></a></p>
+</dd>
 <dt id="cat-harness--kg-schema-fields--cat-harness.visualisationschema.hidden" data-fa-state="extracted" data-fa-gloss="">
 VisualisationSchema.hidden <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -3864,6 +3899,13 @@ VisualiserRouteParts.harness <span class="fa-gloss-status">candidate, extracted<
 <dd>
 <p>The declaring harness's <code>name</code>.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/visualiser-route.ts"><code>cat-harness/schemas/visualiser-route.ts#VisualiserRouteParts.harness</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--visualiser-route.visualiserrouteparts.locale" data-fa-state="extracted" data-fa-gloss="">
+VisualiserRouteParts.locale <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The locale the page is rendered in (<code>en</code>), the route's first segment. Absent for the unlocalised route the t4xb rule keeps working.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/visualiser-route.ts"><code>cat-harness/schemas/visualiser-route.ts#VisualiserRouteParts.locale</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--visualiser-route.visualiserrouteparts.subgraph" data-fa-state="extracted" data-fa-gloss="">
 VisualiserRouteParts.subgraph <span class="fa-gloss-status">candidate, extracted</span>

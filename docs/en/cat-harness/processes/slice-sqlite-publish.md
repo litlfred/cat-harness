@@ -11,7 +11,7 @@ nav_exclude: true
 
 `Process_SliceSqlitePublish` · strict · 7 step(s)
 
-Build one named slice of a knowledge graph as a SQLite file a browser mounts without parsing, and publish it beside its manifest and its payloads. The contract is `kg-export` §"Per-slice SQLite"; the builder is the `slice-sqlite` Tool (`cat-harness/scripts/gen-slice-sqlite.ts`), one table-driven builder with one definition per slice; the search is one page, `slices/search.html?slice=<name>`. Bean `q8ar`.
+Build one named slice of a knowledge graph as a SQLite file a browser mounts without parsing, and publish it beside its manifest and its payloads. The contract is `kg-export` §"Per-slice SQLite"; the builder is the `slice-sqlite` Tool (`cat-harness-tools/scripts/gen-slice-sqlite.ts`), one table-driven builder with one definition per slice; the search is one page, `slices/search.html?slice=<name>`. Bean `q8ar`.
 
 THE SIZE IS MEASURED BEFORE THE SLICE IS WIRED, AND THAT IS WHY THIS IS A DIAGRAM. A slice that is wired first and measured afterwards ships whatever it weighs, because by then a manifest, a gate, two deploy steps and a page depend on it. The budget gateway sits between measuring and wiring so that an oversized slice stops with its measurement reported, rather than arriving on a reader's connection.
 

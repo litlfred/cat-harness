@@ -89,7 +89,7 @@ diagram is what the release is cut from.
 
 | process | step(s) that name it |
 |---|---|
-| [Incremental IG build](../../processes/ig-incremental-build.html) | SUSHI on the restricted tank |
-| [L3 FHIR IG pipeline](../../processes/l3-fhir-pipeline.html) | Author FSH profiles; SUSHI compile → FHIR JSON |
-| [L2 DAK to L3 FHIR IG](../../processes/dak-l3-ig.html) | Map L2 → L3; L3 FHIR IG pipeline (fhir-harness) (calls a sub-process) |
+| [Incremental IG build](../../en/cat-harness/processes/ig-incremental-build.html) | SUSHI on the restricted tank |
+| [L3 FHIR IG pipeline](../../en/cat-harness/processes/l3-fhir-pipeline.html) | Author FSH profiles; SUSHI compile → FHIR JSON |
+| [L2 DAK to L3 FHIR IG](../../en/cat-harness/processes/dak-l3-ig.html) | Map L2 → L3; L3 FHIR IG pipeline (fhir-harness) (calls a sub-process) |
 

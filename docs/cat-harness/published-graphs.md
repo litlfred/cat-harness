@@ -119,10 +119,10 @@ nothing renders yet. It is shown rather than omitted: "nothing renders this" and
 
 ### `catalogue`
 
-0 of 1 published.
+1 of 1 published.
 {: .fa-hx-dim }
 
-- WHO IRIS — *declared, not published*
+- [WHO IRIS]({{ '/who-iris/catalogue/' | relative_url }})
 
 ### `code`
 
@@ -141,10 +141,11 @@ nothing renders yet. It is shown rather than omitted: "nothing renders this" and
 
 ### `code-list`
 
-0 of 1 published.
+0 of 2 published.
 {: .fa-hx-dim }
 
 - C@T Harness — *declared, not published*
+- SMART Base — *declared, not published*
 
 ### `content-adapters`
 
@@ -190,12 +191,12 @@ nothing renders yet. It is shown rather than omitted: "nothing renders this" and
 
 ### `fhir-artifact-index`
 
-0 of 3 published.
+3 of 3 published.
 {: .fa-hx-dim }
 
-- SMART Base — *declared, not published*
-- smart-immunizations — *declared, not published*
-- smart-trust — *declared, not published*
+- [SMART Base]({{ '/smart-base/artifact-index/smart-base/' | relative_url }})
+- [smart-immunizations]({{ '/smart-base/artifact-index/smart-immunizations/' | relative_url }})
+- [smart-trust]({{ '/smart-base/artifact-index/smart-trust/' | relative_url }})
 
 ### `folio`
 
@@ -223,12 +224,13 @@ nothing renders yet. It is shown rather than omitted: "nothing renders this" and
 
 ### `health`
 
-1 of 3 published.
+1 of 4 published.
 {: .fa-hx-dim }
 
 - [C@T Harness]({{ '/en/cat-harness/health/' | relative_url }})
 - C@T Harness Tools — *declared, not published*
 - Folio Assistant Core — *declared, not published*
+- WHO IRIS — *declared, not published*
 
 ### `ig-ast`
 
@@ -469,7 +471,7 @@ nothing renders yet. It is shown rather than omitted: "nothing renders this" and
 
 ### `tools`
 
-1 of 5 published.
+1 of 6 published.
 {: .fa-hx-dim }
 
 - [C@T Harness]({{ '/en/cat-harness/tools/' | relative_url }})
@@ -477,6 +479,7 @@ nothing renders yet. It is shown rather than omitted: "nothing renders this" and
 - Folio Assistant Core — *declared, not published*
 - folio-assistant-sci — *declared, not published*
 - SMART Base — *declared, not published*
+- WHO IRIS — *declared, not published*
 
 ### `translation-sources`
 

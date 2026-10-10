@@ -96,5 +96,5 @@ one builder call.
 
 | process | step(s) that name it |
 |---|---|
-| [Authoring a document](../../processes/authoring-a-document.html) | 4 · Author blocks |
+| [Authoring a document](../../en/cat-harness/processes/authoring-a-document.html) | 4 · Author blocks |
 

@@ -57,9 +57,9 @@
       "@type": "bootstrap:Skill",
       "name": "crdm-recorded-walkthrough",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d99a16fe1b1a05ebec9ecf00af0853df2ca3fa43ea1f117a024ae1032bf05bba",
-        "bytes": 5105,
-        "sha256": "d99a16fe1b1a05ebec9ecf00af0853df2ca3fa43ea1f117a024ae1032bf05bba"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/80910a85b6f99daad4654561535dbff6fca737605d9a60371d61e1e6627b94e6",
+        "bytes": 5111,
+        "sha256": "80910a85b6f99daad4654561535dbff6fca737605d9a60371d61e1e6627b94e6"
       },
       "title": "Requirements from a recorded walkthrough"
     },
@@ -68,9 +68,9 @@
       "@type": "bootstrap:Skill",
       "name": "crdm-requirements-template",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/eb29de336c429ac5b25b92d5444d9bd0b1f1eac75ee78cf90589aead7f02d843",
-        "bytes": 5994,
-        "sha256": "eb29de336c429ac5b25b92d5444d9bd0b1f1eac75ee78cf90589aead7f02d843"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/38a66e26df50f9f93232cda82036c203df6287b90a3b86a754dae10e02c0465a",
+        "bytes": 6335,
+        "sha256": "38a66e26df50f9f93232cda82036c203df6287b90a3b86a754dae10e02c0465a"
       },
       "title": "Phase 3 — Requirements definition (detail)"
     },
@@ -79,9 +79,9 @@
       "@type": "bootstrap:Skill",
       "name": "crdm-requirements-workflow",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2b295326c5bc41ac2b25721eff2e41250a22a3bdb35d9dfedee0df1b20600246",
-        "bytes": 27252,
-        "sha256": "2b295326c5bc41ac2b25721eff2e41250a22a3bdb35d9dfedee0df1b20600246"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4479a9540e91362fd52578e62de78cc75d9c071a20cfd67dfbf1343f380c8a7e",
+        "bytes": 27635,
+        "sha256": "4479a9540e91362fd52578e62de78cc75d9c071a20cfd67dfbf1343f380c8a7e"
       },
       "title": "CRDM requirements workflow"
     }

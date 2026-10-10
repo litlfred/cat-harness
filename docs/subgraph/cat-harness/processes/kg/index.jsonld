@@ -792,6 +792,10 @@
       "@type": "bootstrap:SequenceFlow"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MountDependency/flow/F_D5b",
+      "@type": "bootstrap:SequenceFlow"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MountDependency/flow/F_D6",
       "@type": "bootstrap:SequenceFlow"
     },
@@ -849,6 +853,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MountDependency/node/Task_MountInstances",
       "@type": "bootstrap:ProcessNode",
       "name": "Mount each instance at its declared path"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MountDependency/node/Task_RenderAgentSurface",
+      "@type": "bootstrap:ProcessNode",
+      "name": "Re-render the agent surface"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#process/Process_MountDependency/node/Task_ResolveClosure",

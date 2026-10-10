@@ -98,7 +98,7 @@ Full cycle, as a diagram: [Beans and todos](https://litlfred.github.io/folio-ass
   working on?" display.
 - [`idle-backlog.md`](idle-backlog.md) — pull right-scoped beans while idle.
 
-**Install the CLI:** [`scripts/install-beans.sh`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/scripts/install-beans.sh)
+**Install the CLI:** [`scripts/install-beans.sh`](../../../scripts/install-beans.sh)
 (idempotent; `go install github.com/hmans/beans@latest`).
 
 > **Ownership note.** The *generic* coordinator/orchestrator bean-coordination
@@ -106,37 +106,39 @@ Full cycle, as a diagram: [Beans and todos](https://litlfred.github.io/folio-ass
 > consuming projects. Project-specific overrides should sit alongside, not
 > replace, this canonical version.
 
-## A claim is branch-local, so it announces rather than reserves
+## Claims are global via the state branch store (formerly branch-local)
 
-**A claim is a commit to `beans/defs/<bean>.md` on your feature branch.** A
-sibling session reads `origin/main`, where the bean still says `status: todo`.
-So your claim becomes visible to anyone else only once you push and open the
-PR — and the platform's "open the PR at the first commit" rule is what makes it
-visible then rather than at the end.
+Historically, claims were commits to `beans/defs/<bean>.md` on feature branches,
+meaning a claim only announced rather than reserved until a PR opened.
 
-That leaves a window, from deciding to work an item to having a PR for it, in
-which the bean reads as unclaimed to every other session. The mechanism is not
-broken; it is **branch-local**, and reading "claim before you work" as a lock is
-what produces the duplicate.
+Under the state branch architecture (proposal `state-branch-2026-10-02.md`),
+**claims are pushed immediately to the branch store** (`cat/cat-harness/beans`)
+via `claimOnBranchStore` in `bun run cat beans:claim <id>`.
 
-**So before you claim, look in the two places a sibling's claim can already be:**
+The claim and its holder note are written directly to the tip-keyed branch store,
+so:
+- **Immediate global visibility**: Sibling sessions see your claim as soon as
+  `beans:claim` finishes, with no delay waiting for a PR on `main`.
+- **Atomic push with collision detection**: If two sessions race to claim the
+  same bean, `BranchStore` detects the conflict via blob expectations and
+  rejects the second claim cleanly (`state: "conflict"`).
 
-```sh
-git fetch origin main                            # their claim may be merged already
-git show origin/main:beans/defs/<file>.md | head # ...status THERE, not on your branch
-```
+Always claim with `bun run cat beans:claim <id>`. Do not use `beans update --status in-progress`
+(which writes no holder note and does not push to the branch store).
 
-and then the open PR list, because a bean id is carried in a PR title or body by
-convention:
+### Linking PRs to beans with `Closes-bean:` and recording closure evidence
 
-```sh
-# any open PR already naming this bean?  (or the equivalent MCP call)
-gh pr list --state open --search '<bean-id>'
-```
-
-Neither check closes the window. Both are cheap, and the second catches the case
-that matters most in practice — a sibling minutes ahead of you who already has a
-PR up.
+Code changes on `main` and work-plan state on the state branch are separate git
+refs. To link them:
+1. **In your PR body**, include:
+   ```markdown
+   Closes-bean: <bean-id>
+   ```
+2. **On closure**, record the landed merge commit SHA from `main`, the branch,
+   and verifiable evidence in the bean body before pushing to the branch store:
+   ```bash
+   bun cat-harness-tools/scripts/branch-store.ts push --id beans
+   ```
 
 ### A DECISION bean you will not land soon — put the question where a person reads
 
@@ -146,11 +148,7 @@ sees it. Branch-locality hurts it worse than it hurts a work item, because a
 work item merely gets duplicated while a decision sits unanswered and every
 branch downstream of it waits.
 
-**So if you open a decision bean on a branch you will not land soon, post the
-question where the owner already reads — the issue — and say ON THE BEAN where
-you posted it.** Both halves. The comment is what reaches a person; the line on
-the bean is what stops the next session re-asking, and tells them where the
-answer will appear.
+**So if you open a decision bean on a branch you will not land soon: set `status: draft` in front matter (e.g. `status: draft` or `beans create "<title>" --status draft`), post the question where the owner already reads — the issue — and say ON THE BEAN where you posted it.** All three parts. The comment is what reaches a person; the line on the bean is what stops the next session re-asking, and tells them where the answer will appear; and front-matter `status: draft` is what lets automated checks detect an unmerged ruling request.
 
 **This is written down because it WORKED.** Bean `r0tm` carried a
 recommendation and a safe default on a branch with no PR, which is exactly the
@@ -160,12 +158,23 @@ and PR #1581 — not because anyone found the bean.
 
 **What the check reads, and what it must not — both measured over the whole store:**
 
-- **`status: draft` is the marker — claimed 2026-10-01, on the owner's ruling.**
+- **`status: draft` in front matter is the marker — claimed 2026-10-01, on the owner's ruling.**
   It was already legal (`schemas/tool-types.ts` has
   `.enum(["draft", "todo", "in-progress", "completed", "scrapped"])`, and
   `beans create --status` offers it) and used by **0 of 542** beans. An enum
   member nothing uses is free to adopt, so a decision bean awaiting a ruling is
-  `status: draft` and needs no new vocabulary.
+  `status: draft` in front matter:
+
+  ```yaml
+  ---
+  status: draft
+  ...
+  ---
+  ```
+
+  (or created with `beans create "<title>" --status draft`) and needs no new
+  vocabulary. A decision bean awaiting a ruling stays `status: draft` until
+  ruled on or landed.
 
   **This reverses what this section said for one day**, and the reversal is
   worth keeping. It read *"`status: draft` is not a signal"*, on a correct
@@ -181,10 +190,11 @@ and PR #1581 — not because anyone found the bean.
   recogniser found was one that *records* a ruling rather than asking for one.
   So a check reads the STATUS and the two halves above, never the prose.
 
-So the convention is three things, and the third is new: **a comment where a
-person reads, a line on the bean saying where, and `status: draft` while the
-ruling is outstanding.** The first two are what reach a human; the third is what
-lets a check find the bean that never landed.
+So the convention is three things: **`status: draft` in front matter while the
+ruling is outstanding, a comment where a person reads, and a line on the bean
+saying where.** The comment and the line are what reach a human; the front-matter
+status is what lets `bun run cat check:draft-beans` (`scripts/check-draft-beans.ts`)
+find any ruling request that never landed, reporting with a denominator (`dh4f`).
 
 
 ### The trigger is STARTING WORK, not claiming — and that distinction cost a merge
@@ -379,9 +389,9 @@ what makes them the shared substrate.
 1. **Prime** — at session start read the current work-plan (`beans prime` +
    `beans list`, or the CLI-independent fallback that parses `beans/` directly).
    Know what is open and what siblings are touching.
-2. **Declare intent + claim** — before starting, set the bean `in-progress` and
-   add a short note naming your branch. Read §"A claim is branch-local" above
-   first: the claim announces, it does not reserve.
+2. **Declare intent + claim** — before starting, claim the bean via
+   `bun run cat beans:claim <id>`, which records your holder note and pushes
+   immediately to the branch store so siblings see it globally.
 3. **Work** — keep the bean current; append status notes as you go **to a bean
    only your branch is changing**. When other open pull requests are adding
    to the same bean, write a note instead — §"Adding to a bean — a note, not
@@ -469,7 +479,7 @@ by every pull request that adds a note, so two of them conflict on it. It is a
 `README.md` whose rows all sit inside one `<!-- bean-notes:begin -->` region,
 so the declared `readme-generated-regions` pattern resolves it without a
 person and `regen` rewrites it from the merged notes. The notes themselves
-never conflict. `cat-harness/scripts/tests/bean-notes.test.ts` merges two real
+never conflict. `cat-harness-tools/scripts/tests/bean-notes.test.ts` merges two real
 branches to show both halves, and fails when the branch is dropped from the
 name.
 
@@ -505,7 +515,7 @@ verbatim in shape:
 the number that made it a defect rather than a habit: **zero** beans carrying
 that phrase had ever reached `completed`. The rule named who may **not** close
 a bean and never named who **may**, so nothing ever discharged it. It also
-contradicted §"A claim is branch-local" one screen up, which says an unclaimed
+contradicted the claiming rule, which says an unclaimed
 bean is fair game — none of the six carried a claim.
 
 The cost is the failure this section already warns about, reached from the
@@ -774,7 +784,7 @@ bulk move at 09:37. Eight sessions were active in that window. So at most 17 of
 the 60 claims corresponded to a session actually working the item — and the
 `status` field cannot tell a reviewer which 17.
 
-That is the cost of §"A claim is branch-local" landing without its complement.
+That is the cost of claiming landing without its liveness complement.
 `blocked` has an expiry ([`bean-blocking.md`](bean-blocking.md)); `in-progress`
 has nothing, so it carries **no information about activity** and a reader cannot
 tell a stalled agent from a claim nobody has thought about since a bulk edit.
@@ -843,29 +853,26 @@ whose children are moving (`thux`). It runs as one batch with a summary, under
 [`work-plan-restructure`](work-plan-restructure.md) when it is more than a
 handful.
 
-## The store on `main` is the one every sibling reads (STRICT)
+## The branch store is the one every sibling reads (STRICT)
 
-§"A claim is branch-local" states the fact. This says what to do about it.
+Under the state branch architecture, beans live on the dedicated branch store
+(`cat/cat-harness/beans`), rather than being committed to `main` or held on
+unmerged feature branches.
 
-**Measured 2026-09-20, bean `cvab`.** Branch `claude/sleepy-rubin-mr6kdu`
+**Measured 2026-09-20, bean `cvab`.** Before the state branch, branch `claude/sleepy-rubin-mr6kdu`
 (PR #477, 65 commits ahead, 1,937 files) carried the `kupb` epic and **12 of its
 13 children**. None existed on `main`. A review of the store on `main` therefore
 saw **0 %** of the IRIS work plan, and a whole goal's workstream was invisible
 until somebody swept the branch by hand.
 
-The owner chose both remedies, 2026-09-20:
+The remedies:
 
-1. **Land beans ahead of code.** A bean-only change — the epic, its children,
-   their Done-whens — opens its own PR and merges **as soon as the plan
-   exists**. The code branch that follows carries only status updates. A
-   bean-only diff has nothing to review but the plan, so it does not wait on
-   the code's review, and the store on `main` is never blind to a goal that has
-   been decided.
-2. **A sweep reads the open branches' stores too.** [`goal-review`](goal-review.md)
-   already does; the todo-manager fallback does not, and the fallback is what a
-   container without the CLI falls back to. Until it does, a sweep run from the
-   fallback is reporting over `main` only, and must say so rather than present
-   its count as the work plan.
+1. **Push beans directly to the branch store.** Because beans are not bundled into
+   code PR commits on `main`, newly created beans, epics, and Done-whens are
+   pushed to the branch store (`bun cat-harness-tools/scripts/branch-store.ts push --id beans`)
+   as soon as the plan exists. The work plan is immediately visible to all agents.
+2. **A sweep reads the branch store.** Sweeps read the shared branch store,
+   so no session is blind to current goals and claims.
 
 The two are not alternatives. (1) prevents the blindness; (2) catches the
 branches that were already open when (1) landed — including #477, whose 12
@@ -886,9 +893,55 @@ downstream repo syncs from**, and the generated mirror under the docs site
 follows it automatically. On landing a coordination change that affects a
 downstream repo, update that repo's ownership note and close the tracking beans.
 
+## Issues are a third todo source — queryable `issue:` link
+
+`beans/` (agent work plan) and `todos/` (human items and feedback) are the two
+stores declared in the repository. **GitHub issues are a third source**,
+carrying external tracking, stakeholder adjudication, cross-repo visibility,
+and human decisions.
+
+A bean can link directly to its corresponding GitHub issue via the front-matter
+`issue:` field:
+
+```yaml
+---
+# folio-assistant-xeer
+title: 'ISSUES ARE A THIRD TODO SOURCE: queryable bean-issue link'
+status: in-progress
+type: feature
+issue: 730
+---
+```
+
+The `issue:` field is typed as `z.union([z.number().int().positive(), z.string().min(1)]).optional()`,
+supporting numeric issue numbers (`issue: 730`), issue shorthand (`issue: "#730"`),
+or fully-qualified issue URLs (`issue: "https://github.com/litlfred/folio-assistant/issues/730"`).
+
+### When an issue is owed
+
+Not every internal task needs an external issue, but beans representing
+substantive roadmap scope or human adjudication **owe an issue**:
+
+1. **Features (`type: feature`)**: features deliver user-facing capabilities or
+   major roadmap changes, so they require an external tracking issue for
+   stakeholder visibility and acceptance.
+2. **Stakeholder adjudication**: any work item requiring human adjudication,
+   policy rulings, or cross-team consensus (flagged via `issue-required` or
+   `needs-issue` tags, or explicit adjudication requirements in the body) owes
+   an issue link so the discussion and ruling remain discoverable.
+
+The check **`bun run cat check:bean-issues`** audits the bean store to verify
+that beans owing an issue provide either an `issue:` front-matter link or an
+issue reference in the bean body (`#<number>`, `issue #<number>`, or issue URL).
+It reports compliant beans alongside findings for unlinked items under 3-state
+reporting (0 = pass, 1 = finding, 2 = could not determine).
+
 ## Disambiguation (do not conflate)
 
 - **beans** = the agent's *session work-plan* (`beans/`, this skill).
+- **todos** = the human *work-plan items* (`todos/`).
+- **issues** = the *third todo source* (`issue:` front-matter field), carrying
+  human/stakeholder adjudication and external tracking.
 - **sidecars** (`*.qa.json`, `*.witness.json`) = *content state tracking*.
   Beans ≠ sidecars. Do **not** convert QA / witness queue items into individual
   beans (see todo-manager.md disambiguation block).
@@ -904,9 +957,9 @@ downstream repo, update that repo's ownership note and close the tracking beans.
 
 | process | step(s) that name it |
 |---|---|
-| [Agent bean lifecycle](../../cat-harness/processes/bean-lifecycle.html) | Leave it alone (coordinate instead); Claim it (status: in-progress); Record the blocker and hand back |
-| [Code change and review](../../cat-harness/processes/code-change-review.html) | Claim the work item |
-| [A refused merge-train member](../../cat-harness/processes/merge-refusal.html) | Close the bean, merge commit as evidence; Scrap the bean, with the reason |
-| [A merge train](../../cat-harness/processes/merge-train.html) | Fix the PR, then re-signal ready |
-| [Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route](../../cat-harness/processes/stalled-agent-triage.html) | Record the triage and claim the picked-up work |
+| [Agent bean lifecycle](../../en/cat-harness/processes/bean-lifecycle.html) | Leave it alone (coordinate instead); Claim it (status: in-progress); Record the blocker and hand back |
+| [Code change and review](../../en/cat-harness/processes/code-change-review.html) | Claim the work item |
+| [A refused merge-train member](../../en/cat-harness/processes/merge-refusal.html) | Close the bean, merge commit as evidence; Scrap the bean, with the reason |
+| [A merge train](../../en/cat-harness/processes/merge-train.html) | Fix the PR, then re-signal ready |
+| [Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route](../../en/cat-harness/processes/stalled-agent-triage.html) | Record the triage and claim the picked-up work |
 

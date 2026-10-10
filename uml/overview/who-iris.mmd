@@ -18,13 +18,6 @@ classDiagram
       images [1] object[] | null
       undetermined_reason [0..1] string
     }
-    class who_iris_library_folio_image_verdicts_v1["folio-image-verdicts/v1"] {
-      <<ts: VerdictFile>>
-      inspected_by [1] unknown
-      inspected_at [1] string
-      attribution [0..1] Record~string,  inspected_by: unknown; inspected_at: string ~
-      verdicts [1] Record~string, Record~string, Verdict~~
-    }
     class who_iris_library_folio_section_verdicts_v1_folio_section_verdicts_v1["folio-section-verdicts/v1"] {
       <<json: SectionVerdictFileSchema>>
       $schema [1] 'folio-section-verdicts/v1'
@@ -90,6 +83,9 @@ classDiagram
       $schema [1] 'folio-withheld/v1'
       _comment [0..1] string
       paths [0..*] Path[]
+    }
+    class n_who_iris_library_library_folio_image_verdicts_v1["library folio-image-verdicts/v1: no node schema"] {
+      <<could not determine>>
     }
   }
   namespace who_iris__who_iris_site {
@@ -418,6 +414,81 @@ classDiagram
       <<could not determine>>
     }
   }
+  namespace who_iris__who_iris_tools {
+    class who_iris_who_iris_tools_Remedy["Remedy"] {
+      <<json: ToolDefinitionSchema>>
+      host [1] string
+      error [0..1] string
+      tool [0..1] string
+      none [0..1] string
+    }
+    class who_iris_who_iris_tools_Maintain["Maintain"] {
+      <<json: ToolDefinitionSchema>>
+      source [1] string
+      artefact [1] string
+      format [0..1] string
+    }
+    class who_iris_who_iris_tools_ToolDefinition["ToolDefinition"] {
+      <<json: ToolDefinitionSchema>>
+      id [1] string
+      title [1] string
+      description [1] string
+      install [1] object
+      invoke [1] object
+      io [1] object
+      satisfies [1..*] string[]
+      selection [0..1] object
+      requires [0..1] object
+      remedies [0..*] Remedy[]
+      maintains [0..*] Maintain[]
+      downstream [0..1] object
+      renders [0..*] string[]
+      subprocesses [0..*] string[]
+    }
+  }
+  namespace who_iris__health {
+    class who_iris_health_Threshold["Threshold"] {
+      <<json: HealthReportSchema>>
+      metric [1] string
+      value [1] number
+      unit [1] string
+      basis [1] string
+      severity [1] critical | major | minor
+    }
+    class who_iris_health_Measurement["Measurement"] {
+      <<json: HealthReportSchema>>
+      metric [1] string
+      value [1] number
+      unit [1] string
+      command [1] string
+    }
+    class who_iris_health_Finding["Finding"] {
+      <<json: HealthReportSchema>>
+      summary [1] string
+      metric [0..1] string
+      severity [1] critical | major | minor
+      action [1] string
+    }
+    class who_iris_health_Check["Check"] {
+      <<json: HealthReportSchema>>
+      id [1] string
+      state [1] ok | finding | unknown
+      summary [1] string
+      thresholds [0..*] Threshold[]
+      measurements [0..*] Measurement[]
+      findings [0..*] Finding[]
+      reason [0..1] string
+    }
+    class who_iris_health_HealthReport["HealthReport"] {
+      <<json: HealthReportSchema>>
+      $schema [1] 'health-report/v1'
+      producer [1] object
+      subject [1] object
+      updated_at [1] string
+      verdict [1] clean | findings | unknown
+      checks [1..*] Check[]
+    }
+  }
   namespace who_iris__voices {
     class who_iris_voices_Source["Source"] {
       <<json: VoiceProfileSchema>>
@@ -475,7 +546,6 @@ classDiagram
   who_iris_library_folio_withheld_v1_Path *-- "1..*" who_iris_library_folio_withheld_v1_Gate : gates
   who_iris_library_folio_withheld_v1_folio_withheld_v1 *-- "0..*" who_iris_library_folio_withheld_v1_Path : paths
   cssClass "who_iris_library_folio_document_images_v1_folio_document_images_v1" fa_uml_kind_library
-  cssClass "who_iris_library_folio_image_verdicts_v1" fa_uml_kind_library
   cssClass "who_iris_library_folio_section_verdicts_v1_folio_section_verdicts_v1" fa_uml_kind_library
   cssClass "who_iris_library_folio_block_summaries_v1_Superseded" fa_uml_kind_library
   cssClass "who_iris_library_folio_block_summaries_v1_Summary" fa_uml_kind_library
@@ -485,6 +555,8 @@ classDiagram
   cssClass "who_iris_library_folio_withheld_v1_Gate" fa_uml_kind_library
   cssClass "who_iris_library_folio_withheld_v1_Path" fa_uml_kind_library
   cssClass "who_iris_library_folio_withheld_v1_folio_withheld_v1" fa_uml_kind_library
+  cssClass "n_who_iris_library_library_folio_image_verdicts_v1" fa_uml_kind_library_folio_image_verdicts_v1
+  cssClass "n_who_iris_library_library_folio_image_verdicts_v1" fa_uml_undetermined
   cssClass "n_who_iris_who_iris_site_docs" fa_uml_kind_docs
   cssClass "n_who_iris_who_iris_site_docs" fa_uml_undetermined
   who_iris_who_iris_catalogue_folio_dublin_core_v1_Field *-- "1..*" who_iris_who_iris_catalogue_folio_dublin_core_v1_Value : values
@@ -540,6 +612,20 @@ classDiagram
   cssClass "who_iris_qa_qa_results_v1" fa_uml_kind_qa
   cssClass "n_who_iris_folio_folio" fa_uml_kind_folio
   cssClass "n_who_iris_folio_folio" fa_uml_undetermined
+  who_iris_who_iris_tools_ToolDefinition *-- "0..*" who_iris_who_iris_tools_Remedy : remedies
+  who_iris_who_iris_tools_ToolDefinition *-- "0..*" who_iris_who_iris_tools_Maintain : maintains
+  cssClass "who_iris_who_iris_tools_Remedy" fa_uml_kind_tools
+  cssClass "who_iris_who_iris_tools_Maintain" fa_uml_kind_tools
+  cssClass "who_iris_who_iris_tools_ToolDefinition" fa_uml_kind_tools
+  who_iris_health_Check *-- "0..*" who_iris_health_Threshold : thresholds
+  who_iris_health_Check *-- "0..*" who_iris_health_Measurement : measurements
+  who_iris_health_Check *-- "0..*" who_iris_health_Finding : findings
+  who_iris_health_HealthReport *-- "1..*" who_iris_health_Check : checks
+  cssClass "who_iris_health_Threshold" fa_uml_kind_health
+  cssClass "who_iris_health_Measurement" fa_uml_kind_health
+  cssClass "who_iris_health_Finding" fa_uml_kind_health
+  cssClass "who_iris_health_Check" fa_uml_kind_health
+  cssClass "who_iris_health_HealthReport" fa_uml_kind_health
   who_iris_voices_VoiceProfile *-- "1..*" who_iris_voices_Source : sources
   who_iris_voices_Rule *-- "0..*" who_iris_voices_Pattern : patterns
   who_iris_voices_Rule *-- "0..*" who_iris_voices_Terminology : terminology

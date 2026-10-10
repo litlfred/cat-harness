@@ -314,5 +314,5 @@ When a requirement is **initiated or updated** in chat, find the related work be
 
 | process | step(s) that name it |
 |---|---|
-| [CRDM requirements](../../cat-harness/processes/crdm-requirements.html) | Detect feature request (crdm-detect skill) |
+| [CRDM requirements](../../en/cat-harness/processes/crdm-requirements.html) | Detect feature request (crdm-detect skill) |
 

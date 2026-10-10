@@ -10,7 +10,7 @@ nav_order: 44
 The **first step of document ingestion** — what puts a file into the queue everything downstream assumes it is already in — and the Tools that perform it.
 
 {: .note }
-> Generated from the **Tool documentation** and from the process diagram. Nothing here is authored on this page: edit the Tool node or the `.bpmn` and re-run `bun run cat-harness/scripts/gen-upload-step-docs.ts`.
+> Generated from the **Tool documentation** and from the process diagram. Nothing here is authored on this page: edit the Tool node or the `.bpmn` and re-run `bun run cat-harness-tools/scripts/gen-upload-step-docs.ts`.
 
 ## Where this step sits
 
@@ -72,7 +72,7 @@ Compose the forge URL a person can drop a file at, from the instance's own decla
 | | |
 |---|---|
 | install | nothing to install |
-| invoke | `bun run cat-harness/scripts/upload-url.ts` |
+| invoke | `bun run cat-harness-tools/scripts/upload-url.ts` |
 | requires | runtime `bun` · no network |
 
 ### Inputs

@@ -23,7 +23,7 @@ does not edit it in place.** The owner, 2026-09-21:
 And 2026-09-22, choosing between advising and enforcing: **enforce from the
 start.**
 
-Diagram: [`copy-out-materialized.bpmn`](../../cat-harness/processes/copy-out-materialized.html).
+Diagram: [`copy-out-materialized.bpmn`](../../en/cat-harness/processes/copy-out-materialized.html).
 Schema: the `folio-materialization/v1` record (`MaterializationSchema`, owned
 by the content layer above this one — named here, not linked). Where they disagree,
 the schema wins and this file is wrong.
@@ -135,11 +135,11 @@ clean run over nothing.
 
 ## Processes that run this skill
 
-This skill has its own process: **[Copy out materialized content — to work on somebody else's bytes](../../cat-harness/processes/copy-out-materialized.html)**.
+This skill has its own process: **[Copy out materialized content — to work on somebody else's bytes](../../en/cat-harness/processes/copy-out-materialized.html)**.
 
 <img src="../../assets/img/workflows/copy-out-materialized.svg" alt="BPMN diagram: Copy out materialized content — to work on somebody else's bytes" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Copy out materialized content — to work on somebody else's bytes](../../cat-harness/processes/copy-out-materialized.html) | Edit it in place — it is your own content; Read the original — and write nothing; Land the bytes in the copier's own folio/; Record provenance.local — what this is a copy OF; Verify the ORIGINAL still hashes to its digest |
+| [Copy out materialized content — to work on somebody else's bytes](../../en/cat-harness/processes/copy-out-materialized.html) | Edit it in place — it is your own content; Read the original — and write nothing; Land the bytes in the copier's own folio/; Record provenance.local — what this is a copy OF; Verify the ORIGINAL still hashes to its digest |
 

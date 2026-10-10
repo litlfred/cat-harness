@@ -74,5 +74,5 @@ Validation of the resulting artefacts is `fhir-validation`, not this skill.
 
 | process | step(s) that name it |
 |---|---|
-| [L2 DAK authoring](../../processes/l2-dak-authoring.html) | Terminology bindings |
+| [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Terminology bindings |
 

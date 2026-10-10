@@ -149,5 +149,5 @@ clean run.
 
 | process | step(s) that name it |
 |---|---|
-| [Session state machine](../../cat-harness/processes/session-state-machine.html) | Establish who is acting; Open the session record; Refresh `updatedAt` only; Write what changed; Close the session |
+| [Session state machine](../../en/cat-harness/processes/session-state-machine.html) | Establish who is acting; Open the session record; Refresh `updatedAt` only; Write what changed; Close the session |
 

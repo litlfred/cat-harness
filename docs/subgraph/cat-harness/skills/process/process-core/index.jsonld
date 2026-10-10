@@ -13,9 +13,9 @@
       "@type": "bootstrap:Skill",
       "name": "compiled-artefact-cache",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/fa5c390589744fa0747835025ebb9f72db92881ca04401d87c8da251e783e67d",
-        "bytes": 6251,
-        "sha256": "fa5c390589744fa0747835025ebb9f72db92881ca04401d87c8da251e783e67d"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/88a67ef7e23216011a80db3e82afd4759e468affe771964d0d0f1e8aa04bd807",
+        "bytes": 6257,
+        "sha256": "88a67ef7e23216011a80db3e82afd4759e468affe771964d0d0f1e8aa04bd807"
       },
       "title": "Compiled Artefact Cache"
     },
@@ -57,9 +57,9 @@
       "@type": "bootstrap:Skill",
       "name": "swimlane-glossary",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/cb0cc01b5847979a0a3e526fae393b25842d2c813592cd13ba744697e211095e",
-        "bytes": 8350,
-        "sha256": "cb0cc01b5847979a0a3e526fae393b25842d2c813592cd13ba744697e211095e"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e6cb3bf704a1cafb81103434d76a96738ba5b447cc100b0407655058186ae219",
+        "bytes": 8302,
+        "sha256": "e6cb3bf704a1cafb81103434d76a96738ba5b447cc100b0407655058186ae219"
       },
       "title": "Swimlane Glossary Skill"
     },

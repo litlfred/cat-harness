@@ -23,6 +23,7 @@
   "hasSubgraph": [
     "https://litlfred.github.io/folio-assistant/subgraph/folio-assistant-core/skills/content/",
     "https://litlfred.github.io/folio-assistant/subgraph/folio-assistant-core/skills/library/",
+    "https://litlfred.github.io/folio-assistant/subgraph/folio-assistant-core/skills/review/",
     "https://litlfred.github.io/folio-assistant/subgraph/folio-assistant-core/skills/skill-definitions/",
     "https://litlfred.github.io/folio-assistant/subgraph/folio-assistant-core/skills/voices/"
   ],

@@ -39,9 +39,9 @@
           "instructionsPath": "skills/process/process-core/compiled-artefact-cache.md",
           "name": "compiled-artefact-cache",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/fa5c390589744fa0747835025ebb9f72db92881ca04401d87c8da251e783e67d",
-            "bytes": 6251,
-            "sha256": "fa5c390589744fa0747835025ebb9f72db92881ca04401d87c8da251e783e67d"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/88a67ef7e23216011a80db3e82afd4759e468affe771964d0d0f1e8aa04bd807",
+            "bytes": 6257,
+            "sha256": "88a67ef7e23216011a80db3e82afd4759e468affe771964d0d0f1e8aa04bd807"
           },
           "title": "Compiled Artefact Cache"
         },
@@ -114,9 +114,9 @@
           "instructionsPath": "skills/process/process-core/swimlane-glossary.md",
           "name": "swimlane-glossary",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/cb0cc01b5847979a0a3e526fae393b25842d2c813592cd13ba744697e211095e",
-            "bytes": 8350,
-            "sha256": "cb0cc01b5847979a0a3e526fae393b25842d2c813592cd13ba744697e211095e"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e6cb3bf704a1cafb81103434d76a96738ba5b447cc100b0407655058186ae219",
+            "bytes": 8302,
+            "sha256": "e6cb3bf704a1cafb81103434d76a96738ba5b447cc100b0407655058186ae219"
           },
           "title": "Swimlane Glossary Skill"
         },
@@ -361,13 +361,13 @@
           "hasInstructions": true,
           "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/workflow",
           "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-          "instructionLines": 237,
+          "instructionLines": 239,
           "instructionsPath": "skills/process/workflow/process-state.md",
           "name": "process-state",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/444618558082aefe836fe2c9483d296ce952f5c587726ee6361ecd681a6f4e03",
-            "bytes": 12688,
-            "sha256": "444618558082aefe836fe2c9483d296ce952f5c587726ee6361ecd681a6f4e03"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/aa61a5dacfce58ca4b693fcbf0f1d65245cca171dbacaa87b5764834118d0f1c",
+            "bytes": 12985,
+            "sha256": "aa61a5dacfce58ca4b693fcbf0f1d65245cca171dbacaa87b5764834118d0f1c"
           },
           "title": "Process state — the task you are in, inside the process you are running"
         },
@@ -494,13 +494,13 @@
           "hasInstructions": true,
           "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/workflow",
           "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-          "instructionLines": 128,
+          "instructionLines": 134,
           "instructionsPath": "skills/process/workflow/workflow-state.md",
           "name": "workflow-state",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/96ca7aaa57dc772b361fd56d6222714da177802904abaadd2e20d23ca6c9b5cd",
-            "bytes": 6262,
-            "sha256": "96ca7aaa57dc772b361fd56d6222714da177802904abaadd2e20d23ca6c9b5cd"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2c380ac49a922026fb1ffa2d616a7af0512b02e2aff01805b05b5ee5601b076e",
+            "bytes": 6755,
+            "sha256": "2c380ac49a922026fb1ffa2d616a7af0512b02e2aff01805b05b5ee5601b076e"
           },
           "title": "State in a running process"
         }

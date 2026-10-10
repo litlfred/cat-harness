@@ -83,12 +83,12 @@ processes it feeds (`editing-hci-validation`, `content-lifecycle`) stay strict.
 
 ## Processes that run this skill
 
-This skill has its own process: **[L2 DAK authoring](../../processes/l2-dak-authoring.html)**.
+This skill has its own process: **[L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html)**.
 
 <img src="../../assets/img/workflows/l2-dak-authoring.svg" alt="BPMN diagram: L2 DAK authoring" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [L2 DAK to L3 FHIR IG](../../processes/dak-l3-ig.html) | Map L2 → L3 |
-| [L2 DAK authoring](../../processes/l2-dak-authoring.html) | Personas and scenarios; Data dictionary and core data elements; Indicators and requirements |
+| [L2 DAK to L3 FHIR IG](../../en/cat-harness/processes/dak-l3-ig.html) | Map L2 → L3 |
+| [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Personas and scenarios; Data dictionary and core data elements; Indicators and requirements |
 

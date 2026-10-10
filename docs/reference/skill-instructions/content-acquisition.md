@@ -68,7 +68,7 @@ cheaper answers have been offered.
 
 ## Never write the upload URL by hand
 
-Use **`bun run cat-harness/scripts/upload-url.ts [branch]`**, which composes it
+Use **`bun run cat-harness-tools/scripts/upload-url.ts [branch]`**, which composes it
 from the declaration. The reason is a live 404 rather than a preference. The
 owner, 2026-09-20, pointed at
 `github.com/litlfred/folio-assistant/upload/main/uploads`:
@@ -109,11 +109,11 @@ ingestion unchanged.
 
 ## Processes that run this skill
 
-This skill has its own process: **[Content acquisition](../../cat-harness/processes/content-acquisition.html)**.
+This skill has its own process: **[Content acquisition](../../en/cat-harness/processes/content-acquisition.html)**.
 
 <img src="../../assets/img/workflows/content-acquisition.svg" alt="BPMN diagram: Content acquisition" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Content acquisition](../../cat-harness/processes/content-acquisition.html) | Say what is needed, and ask for a link OR a description; Point at the upload target [scripts/upload-url.ts]; Accept it, and record where it came from |
+| [Content acquisition](../../en/cat-harness/processes/content-acquisition.html) | Say what is needed, and ask for a link OR a description; Point at the upload target [scripts/upload-url.ts]; Accept it, and record where it came from |
 

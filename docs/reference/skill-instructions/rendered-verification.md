@@ -97,7 +97,7 @@ processes. It also covers papers, FHIR IGs and slide decks.
 
 ## Running it here
 
-Building the site is [`preview:site`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/scripts/preview-site.sh), whose
+Building the site is [`preview:site`](../../../scripts/preview-site.sh), whose
 header carries the two things that make a naive `bundle exec jekyll` fail
 in this repo. **It is not what CI builds** — CI uses the pinned
 `remote_theme`, this uses the gem — so read a *theme-chrome* question off
@@ -362,5 +362,5 @@ skipped is the one that shipped the defect.
 
 | process | step(s) that name it |
 |---|---|
-| [Build and publish a per-slice SQLite file](../../cat-harness/processes/slice-sqlite-publish.html) | Search the published slice in a browser |
+| [Build and publish a per-slice SQLite file](../../en/cat-harness/processes/slice-sqlite-publish.html) | Search the published slice in a browser |
 

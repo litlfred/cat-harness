@@ -136,16 +136,30 @@ partial`.
 
 Dispatch rules (inherit parent §4b sidecar-aware dispatch):
 
-- **Sidecar skip.** Before dispatching, read `<block>.qa.json`. If a
-  `da-referee-verdict` entry exists with a `field_hash` matching the
-  current `.md`/`.ts`/formal hashes → skip (already adjudicated at this
-  content). Re-audit on hash drift or a prior `surviving` verdict.
+- **Sidecar skip.** Before dispatching, read `<block>.qa.json`. The skip rule
+  honours **only** `clean-rebutted` and `survivable-objection` verdicts where
+  the entry's `field_hash` matches current `.md`/`.ts`/formal hashes (and
+  legacy `clean` for backward compatibility). A `no-objection-raised` verdict
+  (where zero objections were raised by any lens) does **NOT** satisfy the
+  sidecar skip; it represents the unknown state ("unattacked") rather than an
+  attack that was defeated, so it must not make the absence of audit sticky.
+  Re-audit on hash drift, a prior `open-objection` (`surviving`) verdict, or
+  a prior `no-objection-raised` verdict.
 - **Lens selection.** Always run L1. Run L2/L3/L4 only when their "When
   to run" column matches — most remark/prose blocks get L1+L3 only;
   empirical/measured blocks get all four.
 - **One adversarial agent per lens per block** (parent §5m parallelism
   cap applies; default 4 in flight). The four lenses on one block are
   independent → batch them in a single response.
+- **Lens independence and model provenance.** Agreement among lenses that
+  share the same model family (e.g. all Opus or all DeepSeek) is much weaker
+  corroboration than agreement across independent model families, because
+  models of the same lineage share blind spots, training biases, and failure
+  modes. As established in
+  [`cat-harness/methodologies/consensus-grounded-subject-evaluation.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/consensus-grounded-subject-evaluation.md),
+  a genuine consensus requires independent evaluators, and same-family agreement
+  is not independent corroboration. Every lens and referee entry should record
+  `reviewer.agent_model` so model lineage is auditable.
 - Cap each lens report at ~350 words; the adjudicator at ~250.
 
 **Adversarial-lens prompt skeleton** (every lens agent):
@@ -170,10 +184,47 @@ Dispatch rules (inherit parent §4b sidecar-aware dispatch):
 > `structural` objection without a cited proved invariant is downgraded
 > to `limited`. Rule each `surviving | rebutted | partial` with one
 > sentence of reasoning + the rebutting artifact (if any). Then assign
-> the block a `da-referee-verdict`: `clean` (all rebutted),
-> `survivable-objection` (≥1 partial, none surviving), or
-> `open-objection` (≥1 surviving). Be fair: a surviving objection must
-> be one you genuinely could not rebut, not one you declined to.
+> the block a `da-referee-verdict`: `clean-rebutted` (≥1 objection was
+> raised and all rebutted with cited artifacts), `no-objection-raised`
+> (zero objections were raised by any lens — not a clearance, does not
+> satisfy the sidecar skip), `survivable-objection` (≥1 partial, none
+> surviving), or `open-objection` (≥1 surviving). Be fair: a surviving
+> objection must be one you genuinely could not rebut, not one you
+> declined to.
+
+## § Competitive multi-agent debate and structured adjudication (SWE-Debate / 2507.23348v1)
+
+The single-pass fan-out across independent lenses (L1–L4 above) followed by a unilateral adjudicator ruling is the baseline operational mode. However, recent empirical findings in repository-level multi-agent reasoning — specifically **SWE-Debate** (Li et al., arXiv:2507.23348v1, "SWE-Debate: Competitive Multi-Agent Debate for Software Issue Resolution", 2025) — demonstrate that independent exploration and uncoordinated multi-agent systems suffer from a fundamental failure mode: **limited observation scope**.
+
+When multiple candidate locations, definitions, or proof steps appear plausible, independent agents get stuck in local solutions, mistake downstream symptoms for root causes, and fail at disambiguation. Furthermore, purely collaborative consensus frameworks suffer from thought degeneration and premature convergence. SWE-Debate proves that **structured, competitive multi-agent debate** creates productive analytical tension that outperforms single-pass methods across localization accuracy (+14.67% over SWE-Agent with the same DeepSeek-V3 model, achieving 81.67% Acc@1(File)) and overall resolution (+6.7%).
+
+This analysis directly refines the devil's-advocate watcher and the adjudication protocol across three dimensions:
+
+### 1. Competitive Multi-Agent Debate vs Single Adversarial Pass
+
+In a single adversarial pass, each lens agent (Formalist, Skeptic, Structural Critic, Auditor) inspects a block in isolation. When applied to complex dependency structures, this produces two characteristic error patterns:
+- **False positives (symptom attack):** Analogous to the motivating Django-11999 case in SWE-Debate — where an isolated agent attacks `_get_FIELD_display` (a runtime symptom) rather than `Field.contribute_to_class` (the structural source) — an isolated L1 or L2 lens frequently attacks a downstream notation or lemma invocation, failing to recognize that the invariant is already enforced upstream in the `uses[]` closure.
+- **False negatives (local plausibility masking):** An isolated lens may accept a locally consistent argument or definition that subtly smuggles in a circular dependency or unproved regime assumption across multiple files.
+
+**Under structured competitive debate**, the lenses do not merely submit static finding lists. Instead, they engage in multi-round competition:
+- **Diverse objection traces along dependency graphs:** Traversal of the block dependency graph (`uses[]`, definition references, lemma calls) produces multiple candidate objection paths. Following Finding 4 of SWE-Debate, traversal depth must be bounded at **depth $L \le 5$**; deeper chains introduce extraneous noise that distracts agents and degrades adjudication focus.
+- **Cross-agent critique & argumentative pressure:** In Round 2, lenses defending competing objection hypotheses (e.g. L1 arguing logical non-sequitur vs L2 arguing hidden degree of freedom) must defend their own claims while directly critiquing rival analyses (`DebateCritiqueSchema`). This competitive pressure forces agents to justify assumptions against adversarial scrutiny, exposing vacuous objections and sharpening surviving referee arguments.
+
+### 2. When to Elevate to Structured Debate
+
+A single-pass fan-out remains appropriate for standard remarks, simple examples, and routine maintenance blocks. The watcher elevates to a structured **3-round competitive debate** under three explicit trigger conditions:
+1. **High blast radius & headline proximity (Slot H items 1 & 2):** Any block on the manuscript's central derivation chain, headline theorems, or global calibration parameters.
+2. **Multi-lens contention / divergent rulings:** When independent lenses produce conflicting assessments (e.g., L1 flags `da-false-claim` while L3 assesses the construction as well-defined, or L2 flags `da-empirical-fragility` on a number L4 considers reproducible).
+3. **Multi-hop dependency ambiguity:** When a defect could stem from the immediate block statement or any of its transitive `uses[]` dependencies within depth $L \le 5$.
+
+### 3. Formalizing Debate Rounds in the Adjudication Protocol
+
+The adjudication protocol formalizes the 3-round structure before the referee verdict, codified in folio-assistant-core's `schemas/adjudication.ts` via `AdjudicationDebateSchema`:
+- **Round 1 — Objection Hypothesis Proposal & Competitive Ranking:** Specialized adversarial agents propose candidate objection chains along the dependency graph. The pool is ranked by relevance and distinctness, pruning duplicate or superficial quibbles.
+- **Round 2 — Competitive Strategy Refinement & Cross-Agent Critique:** Agents formulate concrete, step-by-step referee arguments and review rival proposals. Each agent defends its objection against counter-arguments and identifies flaws in competing hypotheses, recording explicit critiques (`targetAgent`, `point`, `severity`).
+- **Round 3 — Synthesis & Discriminator Adjudication:** The Adjudicator acts as the lead discriminator (Prompt 8 in SWE-Debate). Rather than taking an unweighted vote or averaging confidence scores, the adjudicator evaluates technical merit across the competing arguments, explicitly documents `resolved_conflicts`, and synthesizes a definitive, actionable `da-referee-verdict` (`clean`, `survivable-objection`, `open-objection`).
+
+The resulting debate record is embedded directly within `AdjudicationOutcomeSchema.debate`, providing full auditable provenance for how argumentative tension was resolved before the final sidecar entry was committed.
 
 ## Slot D — §4c finding taxonomy (the `da-*` criteria family)
 
@@ -194,7 +245,7 @@ criterion that fired; the `da-referee-verdict` is the rollup.
 | `da-empirical-fragility` | A numerical match lives inside fit noise, relies on cherry-picked precision, hides a swing, or is stale against the current pinned input. |
 | `da-domain-implausibility` | A domain claim an expert rejects: wrong units, a broken conservation/consistency law, or contradiction with an established measurement. |
 | `da-reproducibility` | The compute/witness backing a number is irreproducible, stale (`scriptHash`/`scriptCommitSha` drift), or its value contradicts the prose `≈`. |
-| `da-referee-verdict` | Rollup: `clean` / `survivable-objection` / `open-objection` + the strongest objection's one-line referee argument. |
+| `da-referee-verdict` | Rollup: `clean-rebutted` / `no-objection-raised` / `survivable-objection` / `open-objection` (`clean` retained as legacy synonym) + the strongest objection's one-line referee argument. |
 
 ### Sidecar schema (pre-adopted)
 
@@ -204,10 +255,20 @@ Each `da-*` entry is a standard `block-qa/v1` `QaCriterionEntry`
 fields: `scope` (`limited`|`structural`), `ruling`
 (`surviving`|`rebutted`|`partial`), `referee_argument`, `rebuttal`, and
 — on the `da-referee-verdict` rollup only — `verdict`
-(`clean`|`survivable-objection`|`open-objection`). `result` is derived
+(`clean-rebutted`|`no-objection-raised`|`clean`|`survivable-objection`|`open-objection`). `result` is derived
 from `ruling`/`verdict` (surviving/open→`fail`, partial/survivable→`warn`,
-rebutted/clean→`pass`); a `structural` scope requires a non-empty
+rebutted/clean/clean-rebutted→`pass`); a `structural` scope requires a non-empty
 `rebuttal` + `referee_argument` naming the proved invariant.
+
+### Rollup evaluation and independence
+
+The `da-referee-verdict` aggregates objections across all activated lenses:
+- `clean-rebutted`: ≥1 objection was raised by the adversarial lenses, and every one was rebutted with cited artifacts.
+- `no-objection-raised`: Zero objections were raised across all lenses. This is an unattacked/unverified state, not a clearance, and does NOT qualify for the sidecar skip.
+- `survivable-objection`: ≥1 partial objection survived, but none fully surviving (`warn`).
+- `open-objection`: ≥1 objection survived rebuttal (`fail`).
+
+When multiple lenses agree that no objection exists or agree on an evaluation, note that **same-family agreement is not corroboration**. Per [`cat-harness/methodologies/consensus-grounded-subject-evaluation.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/consensus-grounded-subject-evaluation.md), consensus must be grounded in independent judges, disagreement must be retained rather than smoothed over, and unanimous agreement among copies of the same model family provides weak epistemic backing.
 
 The producing types are owned by the folio-assistant platform's
 `schemas/block-qa.ts`; the watcher emits the structured fields now so
@@ -303,7 +364,7 @@ Rank the backlog by *blast radius × headline-proximity × novelty*:
 3. **Provable kinds before definitions before conjectures** — a
    `theorem` carries a truth claim a referee can falsify; a `conjecture`
    already admits it is unproved (lower adversarial yield).
-4. **Never-audited before stale before previously-clean.**
+4. **Never-audited before stale or no-objection-raised before previously-clean-rebutted.**
 5. Alphabetical tie-break.
 
 High-yield seed targets are the project's load-bearing, most-attackable

@@ -11,7 +11,7 @@ nav_exclude: true
 
 `Process_MergeBase` · strict · 8 step(s)
 
-Bring the base branch into a pull-request branch: merge, classify every conflicted path before resolving any, refuse the whole merge if one is authored or undeclared, otherwise resolve, regenerate and prove the result with the gate set. CALLED FROM `Task_PrepareMerge` in code-change-review.bpmn, and executed by `bun run cat merge:main` (cat-harness/scripts/merge-base.ts). Bean `y7b3`, issue #1707. Owner, 2026-10-01: "put in merge process bpmn".
+Bring the base branch into a pull-request branch: merge, classify every conflicted path before resolving any, refuse the whole merge if one is authored or undeclared, otherwise resolve, regenerate and prove the result with the gate set. CALLED FROM `Task_PrepareMerge` in code-change-review.bpmn, and executed by `bun run cat merge:main` (cat-harness-tools/scripts/merge-base.ts). Bean `y7b3`, issue #1707. Owner, 2026-10-01: "put in merge process bpmn".
 
 MEASURED 2026-09-30 over 300 main-into-branch merges: 235 conflicted, 147 (63%) ONLY on generated files, each resolved the same mechanical way. The declared patterns, and why each is or is not automatic, are in the `merge-conflict-patterns` skill.
 
@@ -45,7 +45,7 @@ ALL OR NOTHING: every conflicted path is classified before any is touched, and o
 | **Commit the merge**<br>`Task_Commit` | merge:main command | [`continual-progress`](../../../reference/skill-instructions/continual-progress.html) | — |
 | **Abort, restore the tree, list what was refused**<br>`Task_Abort` | merge:main command | [`merge-conflict-patterns`](../../../reference/skill-instructions/merge-conflict-patterns.html) | `git merge --abort`. Each refused path is listed with its pattern's reason, or "no declared pattern". |
 | **Resolve by hand, then regenerate**<br>`Task_ByHand` | Authoring agent | [`prepare-merge`](../../../reference/skill-instructions/prepare-merge.html) | — |
-| **Report what the run found, once**<br>`Task_Report` | merge:main command | [`ci-health`](../../../reference/skill-instructions/ci-health.html) | Every member's verdict, in one table in the run's summary: merged, already up to date, refused, an expected race, a repeat of a failure already reported, something new, or a member that could not say. `cat-harness/scripts/merge-main-comment.ts --aggregate`. |
+| **Report what the run found, once**<br>`Task_Report` | merge:main command | [`ci-health`](../../../reference/skill-instructions/ci-health.html) | Every member's verdict, in one table in the run's summary: merged, already up to date, refused, an expected race, a repeat of a failure already reported, something new, or a member that could not say. `cat-harness-tools/scripts/merge-main-comment.ts --aggregate`. |
 
 ## Decisions
 

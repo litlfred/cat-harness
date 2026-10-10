@@ -407,7 +407,7 @@ merges. Merging still needs the explicit confirmation the processes require.
 
 | process | step(s) that name it |
 |---|---|
-| [Code change and review](../../cat-harness/processes/code-change-review.html) | Commit, push, open the PR |
-| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Commit, push, update PR; Iterate on author feedback |
-| [Editing and HCI validation](../../cat-harness/processes/editing-hci-validation.html) | Draft the block edit; Revise the proposed change |
+| [Code change and review](../../en/cat-harness/processes/code-change-review.html) | Commit, push, open the PR |
+| [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Commit, push, update PR; Iterate on author feedback |
+| [Editing and HCI validation](../../en/cat-harness/processes/editing-hci-validation.html) | Draft the block edit; Revise the proposed change |
 

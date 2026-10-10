@@ -320,5 +320,5 @@ read that other block first. Record the reasoning in the sidecar
 
 | process | step(s) that name it |
 |---|---|
-| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Review the editorial dependencies |
+| [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Review the editorial dependencies |
 

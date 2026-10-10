@@ -50,7 +50,7 @@ qa-reports  (orphan; never merged; author folio-qa-bot)
 └── pr/<number>/<head-sha>/…     same shape (ruling D3), pruned 7 days after close
 ```
 
-Everything goes through **`cat-harness/scripts/qa-store.ts`**, and nothing
+Everything goes through **`cat-harness-tools/scripts/qa-store.ts`**, and nothing
 else writes the branch. `check:workflows` fails a raw push
 (`qa-reports-unretried`).
 
@@ -154,7 +154,7 @@ so read that rather than this list.
 
 | process | step(s) that name it |
 |---|---|
-| [The gates a change must pass before it can merge](../../cat-harness/processes/code-quality-gates.html) | QA working copy, built once (NOT A GATE); Publish QA results to qa-reports (NOT A GATE) (calls a sub-process) |
-| [Publish and keep QA results on qa-reports](../../cat-harness/processes/qa-publish.html) | Derive the key [main/<sha> or pr/<n>/<sha>]; Build the entry [tree + manifest]; Splice onto the tip and push (never -f); Back off; Read every PR's state; Plan the prune; Commit a tip without the pruned entries |
-| [QA report signing](../../cat-harness/processes/qa-report-signing.html) | Store the signed report on qa-reports |
+| [The gates a change must pass before it can merge](../../en/cat-harness/processes/code-quality-gates.html) | QA working copy, built once (NOT A GATE); Publish QA results to qa-reports (NOT A GATE) (calls a sub-process) |
+| [Publish and keep QA results on qa-reports](../../en/cat-harness/processes/qa-publish.html) | Derive the key [main/<sha> or pr/<n>/<sha>]; Build the entry [tree + manifest]; Splice onto the tip and push (never -f); Back off; Read every PR's state; Plan the prune; Commit a tip without the pruned entries |
+| [QA report signing](../../en/cat-harness/processes/qa-report-signing.html) | Store the signed report on qa-reports |
 

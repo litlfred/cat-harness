@@ -13,9 +13,9 @@ parent: Skill instructions
 {% raw %}
 # /repo-conversion — folio-assistant over a repo that already has a life
 
-Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../cat-harness/processes/getting-started.html),
+Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../en/cat-harness/processes/getting-started.html),
 `Task_ScanRepo` and `Task_ConfirmImport` (non-relaxable).
-Scanner: `bun run cat-harness/scripts/scan-repo-content.ts`.
+Scanner: `bun run cat-harness-tools/scripts/scan-repo-content.ts`.
 
 ## 0. The one rule
 
@@ -31,8 +31,8 @@ and a content package may not declare it away.
 ## 1. Scan — read-only, and honest about its limits
 
 ```sh
-bun run cat-harness/scripts/scan-repo-content.ts            # human-readable report
-bun run cat-harness/scripts/scan-repo-content.ts --json     # same, as facts
+bun run cat-harness-tools/scripts/scan-repo-content.ts            # human-readable report
+bun run cat-harness-tools/scripts/scan-repo-content.ts --json     # same, as facts
 ```
 
 It walks the working tree (respecting `.gitignore`) and sorts what it finds into
@@ -54,6 +54,41 @@ The classification is by **path convention and extension only**. It does not
 read file contents, does not call a model, and is not trying to be clever —
 it is trying to be *fast, explicable and reversible*, so the author can
 disagree with any row of it in one word.
+
+### Outside-content math scanning — preserving evidence and refutations
+
+In repositories with mathematical and scientific content, crucial mathematical evidence
+often lives **outside** the content tree (`content/` or `folio/`).
+
+Recorded from the `qou` orphaned-content census (2026-10-04, session `01NdDGeP1SyShmoUssLuRZ91`, issue #2106):
+- 30 `docs/audits/*.lean` files (several are refutations of paper claims, e.g. `skein-mass-relation-is-false.lean`),
+- 68 `docs/audits/*.py` computations, and
+- 272 derivation notes
+lived outside `folio/` and were linked by no block.
+
+**A conversion that carries only the content tree drops the evidence that some claims are false.**
+
+The scanner scans outside the content tree and classifies these artifacts into **candidate classifications**, read-only, reporting source location, rationale, and link status:
+
+| classification | description | examples |
+|---|---|---|
+| `math_proof` | Formal proof or theorem outside content tree | `docs/audits/*.lean`, `math/*.lean`, Coq `.v`, Isabelle `.thy` |
+| `computation_script` | Numerical or symbolic calculation / verification script | `docs/audits/*.py`, `computations/*.py`, `.sage`, `.ipynb`, `.jl` |
+| `macro_definition` | TeX macros, custom commands, environments, or math tables | `macros.tex`, `tables/*.tex`, `preamble.tex`, `defs.tex` |
+| `audit_refutation` | Audit refutation or counterexample falsifying a claim | `docs/audits/*is-false*.lean`, `audits/counterexample.py` |
+| `derivation_note` | Informal mathematical derivation note or scratchpad | `docs/notes/derivation*.md`, `derivations/*.md`, `scratchpad.md` |
+
+#### Link status — detecting orphaned evidence
+
+Each candidate carries a `linkStatus`:
+- **`linked`**: Referenced by at least one block/manifest in the content tree (`linkedBy`).
+- **`unlinked`**: Orphaned evidence — not linked by any content block.
+
+An `unlinked` candidate is at immediate risk: if the conversion only imports blocks in `content/` or `folio/`, the unlinked evidence or refutation is left behind and lost to readers.
+
+#### Read-only candidate discipline
+
+Like the general scan, outside-content math candidate scanning **never writes, moves, or modifies files**. It presents the candidates to the author and agent so decisions can be made about linking, ingesting, or maintaining sidecars during the conversion.
 
 ## 2. Show, then ask — three questions, all as selections
 
@@ -134,15 +169,15 @@ itself, so this section repeats the one step a publishing route cannot skip:
 2026-10-07: *"need to create gh-pages before can deploy"* (issue #2417).
 
 The step is `Task_ProvisionGhPages` ("Provision gh-pages") in
-[`getting-started.bpmn`](../../cat-harness/processes/getting-started.html),
+[`getting-started.bpmn`](../../en/cat-harness/processes/getting-started.html),
 on the shared path after scaffolding and before the Pages build, and it
 carries the semantics of `A_Provision` in bootstrap-tools'
-[`render-kg-to-github-pages.bpmn`](../../cat-harness/processes/render-kg-to-github-pages.html).
+[`render-kg-to-github-pages.bpmn`](../../en/cat-harness/processes/render-kg-to-github-pages.html).
 The tool is `pages-bootstrap`:
 
 ```sh
-bun run cat-harness/scripts/pages-bootstrap.ts               # reports `unprovisioned` (exit 3) and the exact command when gh-pages is absent
-bun run cat-harness/scripts/pages-bootstrap.ts --provision   # pushes an orphan gh-pages: placeholder index.html + .nojekyll
+bun run cat-harness-tools/scripts/pages-bootstrap.ts               # reports `unprovisioned` (exit 3) and the exact command when gh-pages is absent
+bun run cat-harness-tools/scripts/pages-bootstrap.ts --provision   # pushes an orphan gh-pages: placeholder index.html + .nojekyll
 ```
 
 `--provision` is idempotent and never forces a push, and nothing creates a
@@ -185,11 +220,14 @@ original plan skipped.
    a separate process with its own diagram and its own gate.
 7. **Switching Pages on before `gh-pages` exists, or choosing "GitHub
    Actions" for a workflow that pushes `gh-pages`.** See §5.
+8. **Dropping outside-content math artifacts or unlinked audit refutations.**
+   Carrying only the primary content tree (`content/` or `folio/`) drops outside proofs,
+   computations, and refutations showing that some paper claims are false. See §1.
 {% endraw %}
 
 ## Processes that run this skill
 
 | process | step(s) that name it |
 |---|---|
-| [Getting started](../../cat-harness/processes/getting-started.html) | Scan the repo for content worth importing; Import what, where, and who does it; Create the repository |
+| [Getting started](../../en/cat-harness/processes/getting-started.html) | Scan the repo for content worth importing; Import what, where, and who does it; Create the repository |
 

@@ -91,8 +91,8 @@ hold two byte-identical models under two names.
 ## In a folio's build
 
 ```sh
-bun run <platform>/cat-harness/archimate/scripts/check-archimate.ts --instance .
-bun run <platform>/cat-harness/archimate/scripts/gen-archimate-pages.ts --instance . --out _site
+bun run <platform>/cat-harness-tools/archimate/scripts/check-archimate.ts --instance .
+bun run <platform>/cat-harness-tools/archimate/scripts/gen-archimate-pages.ts --instance . --out _site
 ```
 
 Run both in the staging build, after the document site is built and before

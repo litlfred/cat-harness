@@ -82,7 +82,7 @@ rendered-by: auto-docs-viewer
 <ul class="subs">
 <li><a href="core-processes/">core-processes</a> <span class="p">folio-assistant-core/processes</span> <span class="n">17</span></li>
 <li><a href="fhir-harness-processes/">fhir-harness-processes</a> <span class="p">fhir-harness/processes</span> <span class="n">3</span></li>
-<li><a href="processes/">processes</a> <span class="p">cat-harness/processes</span> <span class="n">65</span></li>
+<li><a href="processes/">processes</a> <span class="p">cat-harness/processes</span> <span class="n">67</span></li>
 <li><a href="sci-processes/">sci-processes</a> <span class="p">folio-assistant-sci/processes</span> <span class="n">2</span></li>
 <li><a href="smart-base-house-processes/">smart-base-house-processes</a> <span class="p">smart-base/processes</span> <span class="n">2</span></li>
 <li><a href="smart-base-processes/">smart-base-processes</a> <span class="p">smart-base/methodologies/processes</span> <span class="n">1</span></li>
@@ -122,7 +122,7 @@ rendered-by: auto-docs-viewer
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/mount-dependency.bpmn"><code>Remote-mount a dependency</code></a><br><span class="p">cat-harness/processes/kg/mount-dependency.bpmn</span></td>
-  <td>Laying a harness — and every instance it needs — down from another repository at a pinned commit, as declared directories, with a lock that says exactly what arrived.<div class="f"><span class="k">activities</span> 5</div><div class="f"><span class="k">lanes</span> Downstream author · Build pipeline</div><div class="f"><span class="k">skills</span> ci-health, index-config, remote-mount</div></td>
+  <td>Laying a harness — and every instance it needs — down from another repository at a pinned commit, as declared directories, with a lock that says exactly what arrived.<div class="f"><span class="k">activities</span> 6</div><div class="f"><span class="k">lanes</span> Downstream author · Build pipeline</div><div class="f"><span class="k">skills</span> agent-memory, ci-health, index-config, remote-mount</div></td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/mount-subgraph.bpmn"><code>Mount a declared subgraph</code></a><br><span class="p">cat-harness/processes/kg/mount-subgraph.bpmn</span></td>
@@ -194,7 +194,7 @@ rendered-by: auto-docs-viewer
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-close.bpmn"><code>CRDM close-out</code></a><br><span class="p">cat-harness/processes/process/crdm-close.bpmn</span></td>
-  <td>The stakeholders sign off, the BA confirms every criterion is met, and only then does the agent close the issue.<div class="f"><span class="k">activities</span> 4</div><div class="f"><span class="k">lanes</span> BA / Feature Requestor · Agent · Stakeholders</div><div class="f"><span class="k">skills</span> adjudication, crdm-requirements-workflow</div></td>
+  <td>The stakeholders sign off, the BA confirms every criterion is met, the feature lands on <code>main</code> through the <a href="../../../../reference/skill-instructions/merge-to-main.html"><code>merge-to-main</code></a> sub-process, and only then does the agent close the issue.<div class="f"><span class="k">activities</span> 5</div><div class="f"><span class="k">lanes</span> BA / Feature Requestor · Agent · Stakeholders</div><div class="f"><span class="k">skills</span> adjudication, crdm-requirements-workflow, merge-to-main</div></td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-data-model.bpmn"><code>CRDM data model</code></a><br><span class="p">cat-harness/processes/process/crdm-data-model.bpmn</span></td>
@@ -229,8 +229,12 @@ rendered-by: auto-docs-viewer
   <td>Render a Knowledge Graph — the whole of it, or a list of its Subgraphs — for publication to a CDN at a publication root URL, and report a STATUS and a MESSAGE.<div class="f"><span class="k">activities</span> 3</div><div class="f"><span class="k">lanes</span> Build pipeline</div><div class="f"><span class="k">skills</span> render-kg-to-cdn</div></td>
 </tr>
 <tr>
+  <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/secure-agent-permissions.bpmn"><code>Secure agent permissions</code></a><br><span class="p">cat-harness/processes/process/secure-agent-permissions.bpmn</span></td>
+  <td>Secure the permissions a coding agent needs to take part in this harness's processes, from the human who can grant them, and write each grant into the agent Tool's own configuration through that Tool's adapter.<div class="f"><span class="k">activities</span> 6</div><div class="f"><span class="k">lanes</span> Agent · Owner</div><div class="f"><span class="k">skills</span> agent-permissions</div></td>
+</tr>
+<tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/session-state-machine.bpmn"><code>Session state machine</code></a><br><span class="p">cat-harness/processes/process/session-state-machine.bpmn</span></td>
-  <td>The shape of a session from the outside: establish who is acting, open a record for them, take each turn in, and write down only what actually changed.<div class="f"><span class="k">activities</span> 7</div><div class="f"><span class="k">lanes</span> Agent (playing the machine) · Human actor · Session record</div><div class="f"><span class="k">skills</span> interaction-modality, session-context</div></td>
+  <td>The shape of a session from the outside: establish who is acting, open a record for them, take each turn in, and write down only what actually changed.<div class="f"><span class="k">activities</span> 8</div><div class="f"><span class="k">lanes</span> Agent (playing the machine) · Human actor · Session record</div><div class="f"><span class="k">skills</span> agent-permissions, interaction-modality, session-context</div></td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/swot-analysis.bpmn"><code>SWOT situation analysis</code></a><br><span class="p">cat-harness/processes/process/swot-analysis.bpmn</span></td>
@@ -285,8 +289,12 @@ rendered-by: auto-docs-viewer
   <td>What a merge steward does with a PR it dropped from a merge train: its merge (<code>merge-base.bpmn</code>, run with <code>--no-regen</code>) refused an authored or undeclared conflict, or the train's combined result failed a gate.<div class="f"><span class="k">activities</span> 10</div><div class="f"><span class="k">lanes</span> Merge steward · Owning session · Dispatched agent</div><div class="f"><span class="k">skills</span> bean-coordination, dispatch-agent, interaction-modality, merge-conflict-patterns, prepare-merge</div></td>
 </tr>
 <tr>
+  <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/merge-to-main.bpmn"><code>Merge to main</code></a><br><span class="p">cat-harness/processes/sdlc/merge-to-main.bpmn</span></td>
+  <td>Land ONE pull request on <code>main</code>, in any repository, as its own step with its own gate: read the head's evidence live, establish that the owner authorised THIS merge, record the authorisation, merge pinned to the evaluat…<div class="f"><span class="k">activities</span> 12</div><div class="f"><span class="k">lanes</span> Build pipeline · Merging session · Owner</div><div class="f"><span class="k">skills</span> harness-projections, merge-to-main</div></td>
+</tr>
+<tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/merge-train.bpmn"><code>A merge train</code></a><br><span class="p">cat-harness/processes/sdlc/merge-train.bpmn</span></td>
-  <td>Land the ready pull requests as one train: place each by the merge-priority decision table, merge the members with <code>merge-base</code>, run the gate set on the combination, and on red eject the culprit rather than reject the t…<div class="f"><span class="k">activities</span> 16</div><div class="f"><span class="k">lanes</span> Merge steward · Sibling session · Build pipeline · Owner</div><div class="f"><span class="k">skills</span> bean-coordination, ci-health, interaction-modality, merge-conflict-patterns, merge-queue, platform-gates, prepare-merge</div></td>
+  <td>Land the ready pull requests as one train: place each by the merge-priority decision table, merge the members with <code>merge-base</code>, run the gate set on the combination, and on red eject the culprit rather than reject the t…<div class="f"><span class="k">activities</span> 15</div><div class="f"><span class="k">lanes</span> Merge steward · Sibling session · Build pipeline · Owner</div><div class="f"><span class="k">skills</span> bean-coordination, ci-health, interaction-modality, merge-conflict-patterns, merge-queue, merge-to-main, platform-gates, prepare-merge</div></td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/narrative-code-review.bpmn"><code>Prose and the code it describes</code></a><br><span class="p">cat-harness/processes/sdlc/narrative-code-review.bpmn</span></td>
@@ -418,7 +426,7 @@ rendered-by: auto-docs-viewer
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/library/ingest-l1-completeness-gate.bpmn"><code>Ingestion subprocess — the L1 completeness gate</code></a><br><span class="p">folio-assistant-core/processes/library/ingest-l1-completeness-gate.bpmn</span></td>
-  <td>Decide whether the derived content is complete enough to promote to the L1 graph, and who says so.<div class="f"><span class="k">activities</span> 4</div><div class="f"><span class="k">lanes</span> Ingestion Engine (agent, runs unattended) · Reviewer (SME or editor)</div><div class="f"><span class="k">skills</span> adjudication, document-intake</div></td>
+  <td>Decide whether the derived content is complete enough to promote to the L1 graph, and who says so.<div class="f"><span class="k">activities</span> 4</div><div class="f"><span class="k">lanes</span> Ingestion Engine (agent, runs unattended) · Reviewer (SME or editor)</div><div class="f"><span class="k">skills</span> adjudication, document-intake, translation-manager, untainted-verification</div></td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/library/l1-document-ingestion.bpmn"><code>L1 document ingestion — a document to the L1 source knowledge graph</code></a><br><span class="p">folio-assistant-core/processes/library/l1-document-ingestion.bpmn</span></td>

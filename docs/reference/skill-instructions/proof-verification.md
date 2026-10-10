@@ -80,5 +80,5 @@ the toolchain's call — it belongs to the editor, at
 
 | process | step(s) that name it |
 |---|---|
-| [Authoring a paper](../../processes/authoring-a-paper.html) | 5 · Formalise in Lean |
+| [Authoring a paper](../../en/cat-harness/processes/authoring-a-paper.html) | 5 · Formalise in Lean |
 

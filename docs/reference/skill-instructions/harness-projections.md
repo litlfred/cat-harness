@@ -126,5 +126,5 @@ green ([`merge-to-main`](merge-to-main.md)).
 
 | process | step(s) that name it |
 |---|---|
-| [Merge to main](../../processes/merge-to-main.html) | Regenerate harness projections (CI) |
+| [Merge to main](../../en/cat-harness/processes/merge-to-main.html) | Regenerate harness projections (CI) |
 

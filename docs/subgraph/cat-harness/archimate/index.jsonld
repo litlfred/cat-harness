@@ -11,7 +11,6 @@
   ],
   "hasSubgraph": [
     "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/archimate/schemas/",
-    "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/archimate/scripts/",
     "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/archimate/typologies/",
     "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/archimate/validators/"
   ],

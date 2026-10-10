@@ -84,7 +84,7 @@ rendered-by: auto-docs-viewer
 <li><a href="../core-schemas/">core-schemas</a> <span class="p">folio-assistant-core/schemas</span> <span class="n">12</span></li>
 <li><a href="../fhir-harness-schemas/">fhir-harness-schemas</a> <span class="p">fhir-harness/schemas</span> <span class="n">7</span></li>
 <li><a href="../openapi-schemas/">openapi-schemas</a> <span class="p">cat-harness/openapi/schemas</span> <span class="n">1</span></li>
-<li><strong>schemas</strong> <span class="p">cat-harness/schemas</span> <span class="n">187</span></li>
+<li><strong>schemas</strong> <span class="p">cat-harness/schemas</span> <span class="n">195</span></li>
 </ul>
 
 <div class="fa-table-filter">
@@ -98,6 +98,10 @@ rendered-by: auto-docs-viewer
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/actor-reach.ts"><code>actor-reach</code></a><br><span class="p">cat-harness/schemas/actor-reach.ts</span></td>
   <td>**Network reach is a property of an ACTOR**, and how it composes with the deployment's.</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/adversarial-checklist.ts"><code>adversarial-checklist</code></a><br><span class="p">cat-harness/schemas/adversarial-checklist.ts</span></td>
+  <td>Per-content-block adversarial checklists for tools, schemas, skills, and processes.</td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/archive-contents.ts"><code>archive-contents</code></a><br><span class="p">cat-harness/schemas/archive-contents.ts</span></td>
@@ -146,6 +150,10 @@ rendered-by: auto-docs-viewer
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/binary-release.ts"><code>binary-release</code></a><br><span class="p">cat-harness/schemas/binary-release.ts</span></td>
   <td><span class="none">no description in the artefact</span></td>
+</tr>
+<tr>
+  <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/blank-avatar.ts"><code>blank-avatar</code></a><br><span class="p">cat-harness/schemas/blank-avatar.ts</span></td>
+  <td>The blank avatar on its own, with no <code>node:</code> import, so a browser bundle can use it: the navbar client (<a href="https://github.com/litlfred/cat-harness-tools/blob/main/scripts/lib/navbar.ts"><code>cat-harness-tools/scripts/lib/navbar.ts</code></a>) compares a glyph with it, and importing it from <code>avatars.ts</code> pulled that…</td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/block-kind-node.ts"><code>block-kind-node</code></a><br><span class="p">cat-harness/schemas/block-kind-node.ts</span></td>
@@ -360,6 +368,10 @@ rendered-by: auto-docs-viewer
   <td>Backtick spans in authored prose, rendered as <code>&lt;code&gt;</code> — bean <code>mylx</code>.</td>
 </tr>
 <tr>
+  <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/input-trace.ts"><code>input-trace</code></a><br><span class="p">cat-harness/schemas/input-trace.ts</span></td>
+  <td>The runtime half of the input-site audit — bean <code>f017</code>.</td>
+</tr>
+<tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/instance-repositories.ts"><code>instance-repositories</code></a><br><span class="p">cat-harness/schemas/instance-repositories.ts</span></td>
   <td>The <code>owner/repo ↔ instance</code> map — DERIVED, never kept by hand (bean <code>6rmv</code>).</td>
 </tr>
@@ -428,8 +440,16 @@ rendered-by: auto-docs-viewer
   <td><span class="none">no description in the artefact</span></td>
 </tr>
 <tr>
+  <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/merge-review.ts"><code>merge-review</code></a><br><span class="p">cat-harness/schemas/merge-review.ts</span></td>
+  <td>Agentic pre-merge review and would-have-blocked counterfactual schemas.</td>
+</tr>
+<tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/methodology.ts"><code>methodology</code></a><br><span class="p">cat-harness/schemas/methodology.ts</span></td>
   <td>A methodology node's front matter — <code>folio-methodology/v1</code>.</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/model-capabilities.ts"><code>model-capabilities</code></a><br><span class="p">cat-harness/schemas/model-capabilities.ts</span></td>
+  <td>Model capabilities and single-model capability refusal schema.</td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/mount-trust.ts"><code>mount-trust</code></a><br><span class="p">cat-harness/schemas/mount-trust.ts</span></td>
@@ -516,6 +536,10 @@ rendered-by: auto-docs-viewer
   <td><span class="none">no description in the artefact</span></td>
 </tr>
 <tr>
+  <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>qa-record-shapes</code></a><br><span class="p">cat-harness/schemas/qa-record-shapes.ts</span></td>
+  <td>The SHAPES of the record families the harness's <code>qa</code> and <code>lsi</code> graphs hold — <code>qa-witness/v1</code>, <code>qa-results/v1</code>, <code>translation-qa/v1</code>, <code>folio-lsi-index/v1</code>.</td>
+</tr>
+<tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-report.ts"><code>qa-report</code></a><br><span class="p">cat-harness/schemas/qa-report.ts</span></td>
   <td><span class="none">no description in the artefact</span></td>
 </tr>
@@ -526,6 +550,10 @@ rendered-by: auto-docs-viewer
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/reader-filter.ts"><code>reader-filter</code></a><br><span class="p">cat-harness/schemas/reader-filter.ts</span></td>
   <td>The filter a READER applies to a board, which commits nothing.</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/red-flag.ts"><code>red-flag</code></a><br><span class="p">cat-harness/schemas/red-flag.ts</span></td>
+  <td>RED FLAG taxonomy, adversarial review sidecar schema, and recorded override path.</td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/ref-window.ts"><code>ref-window</code></a><br><span class="p">cat-harness/schemas/ref-window.ts</span></td>
@@ -806,6 +834,10 @@ rendered-by: auto-docs-viewer
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/viewer-nav-qa.ts"><code>viewer-nav-qa</code></a><br><span class="p">cat-harness/schemas/viewer-nav-qa.ts</span></td>
   <td>The viewer-navbar audit — **what the owner's rule looks like as data**.</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/visualiser-route.ts"><code>visualiser-route</code></a><br><span class="p">cat-harness/schemas/visualiser-route.ts</span></td>
+  <td>Where a declared visualiser is published — THE one function every generator and every reader computes a visualiser's URL with.</td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/vocab-mapping-fhir.ts"><code>vocab-mapping-fhir</code></a><br><span class="p">cat-harness/schemas/vocab-mapping-fhir.ts</span></td>

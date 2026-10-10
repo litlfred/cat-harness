@@ -140,9 +140,9 @@
       "instructionsPath": "skills/content/folio-paper-adapter/content-validation.md",
       "name": "content-validation",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/bcc7e3b0266dd65ab8a8ebae5ab1c8de8a3d1270e6047171458d8ce08f6249d5",
-        "bytes": 13168,
-        "sha256": "bcc7e3b0266dd65ab8a8ebae5ab1c8de8a3d1270e6047171458d8ce08f6249d5"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e22632d1b580f8bbf01841975b87db6d69df8dac812790a0a160e15bdf23931b",
+        "bytes": 13174,
+        "sha256": "e22632d1b580f8bbf01841975b87db6d69df8dac812790a0a160e15bdf23931b"
       },
       "title": "Content Validation Skill"
     },
@@ -248,9 +248,9 @@
       "instructionsPath": "skills/content/folio-paper-adapter/latex-build-cache.md",
       "name": "latex-build-cache",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6babc3bbed2c2b45dae6ebaee2d2d522d92cefb630f7ab0a7c20bea2d0efaa33",
-        "bytes": 10485,
-        "sha256": "6babc3bbed2c2b45dae6ebaee2d2d522d92cefb630f7ab0a7c20bea2d0efaa33"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/28d9f2a4e951338e869228c64335486b09f000cf7ffd81393750c6a67298356f",
+        "bytes": 10515,
+        "sha256": "28d9f2a4e951338e869228c64335486b09f000cf7ffd81393750c6a67298356f"
       },
       "title": "LaTeX build performance — findings + what's safe"
     },
@@ -266,9 +266,9 @@
       "instructionsPath": "skills/content/folio-paper-adapter/latex-compilation.md",
       "name": "latex-compilation",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4122e40602dfff5be8b2026af763471e26de573bf6a42b4eaef9f37c41918e66",
-        "bytes": 2034,
-        "sha256": "4122e40602dfff5be8b2026af763471e26de573bf6a42b4eaef9f37c41918e66"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/3b39aaed88489f6bfb8523fb1469022ccf04fec02dceed8bfd0644d06e207f3d",
+        "bytes": 2058,
+        "sha256": "3b39aaed88489f6bfb8523fb1469022ccf04fec02dceed8bfd0644d06e207f3d"
       },
       "title": "LaTeX Compilation Skill"
     },
@@ -319,9 +319,9 @@
       "instructionsPath": "skills/content/folio-paper-adapter/lean-cache-restore.md",
       "name": "lean-cache-restore",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7300d1bbc850fcd21c826b202eaca6c63a170b918fffde15ef4d1a13661cd40f",
-        "bytes": 6903,
-        "sha256": "7300d1bbc850fcd21c826b202eaca6c63a170b918fffde15ef4d1a13661cd40f"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6c9f22198c7e84b1e54edfe0517ff9229778c88f1b68351a628ffe15d8ad6228",
+        "bytes": 6933,
+        "sha256": "6c9f22198c7e84b1e54edfe0517ff9229778c88f1b68351a628ffe15d8ad6228"
       },
       "title": "Lean cache: the authoring loop"
     },
@@ -337,9 +337,9 @@
       "instructionsPath": "skills/content/folio-paper-adapter/lean-completeness-audit.md",
       "name": "lean-completeness-audit",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d8174de1bd5cf3085d0705d112cae94f8c4cb92d44c336e6e4d5348d280ccb51",
-        "bytes": 10966,
-        "sha256": "d8174de1bd5cf3085d0705d112cae94f8c4cb92d44c336e6e4d5348d280ccb51"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/52932cbe5b7e3e77b2aad683aa6bd64d169aec663d85f2c163589576f3ab0f64",
+        "bytes": 11068,
+        "sha256": "52932cbe5b7e3e77b2aad683aa6bd64d169aec663d85f2c163589576f3ab0f64"
       },
       "title": "Lean Completeness Audit Skill"
     },
@@ -373,9 +373,9 @@
       "instructionsPath": "skills/content/folio-paper-adapter/lean-formal-graph.md",
       "name": "lean-formal-graph",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/45439605f53e0e08767cb7dab55d848cdd3a443409d9e40647a7d6f22b41b64b",
-        "bytes": 4813,
-        "sha256": "45439605f53e0e08767cb7dab55d848cdd3a443409d9e40647a7d6f22b41b64b"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/3878f8c10c1021967cbd4f2873c3ee0dee3726020f102bc5222d626faf62fbf6",
+        "bytes": 4819,
+        "sha256": "3878f8c10c1021967cbd4f2873c3ee0dee3726020f102bc5222d626faf62fbf6"
       },
       "title": "Lean formal dependency graph"
     },
@@ -481,9 +481,9 @@
       "instructionsPath": "skills/content/folio-paper-adapter/lean-witness-audit.md",
       "name": "lean-witness-audit",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ec35386ba50f2749b8c37332267de0ac24cd5a1b36f1ddc29050ccef915e6de7",
-        "bytes": 6738,
-        "sha256": "ec35386ba50f2749b8c37332267de0ac24cd5a1b36f1ddc29050ccef915e6de7"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9e1e454a2389b0607539e1430b5d960bfd08f425851247c0837069f721b72248",
+        "bytes": 6744,
+        "sha256": "9e1e454a2389b0607539e1430b5d960bfd08f425851247c0837069f721b72248"
       },
       "title": "Lean Witness Audit Skill"
     },
@@ -697,9 +697,9 @@
       "instructionsPath": "skills/content/folio-paper-adapter/q-usage-watcher.md",
       "name": "q-usage-watcher",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0063252f6e50ba7684a78bcbd335ba77292dc0c5496b99438a908791773768c8",
-        "bytes": 17359,
-        "sha256": "0063252f6e50ba7684a78bcbd335ba77292dc0c5496b99438a908791773768c8"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/274ca946ee53dff241cbe8fe946c5728094d45cdbe04ea8b197d8709186f6b15",
+        "bytes": 17406,
+        "sha256": "274ca946ee53dff241cbe8fe946c5728094d45cdbe04ea8b197d8709186f6b15"
       },
       "title": "/q-usage-watcher"
     },

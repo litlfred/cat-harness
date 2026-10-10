@@ -134,9 +134,9 @@
       "instructionsPath": "skills/folio-core/tool-authoring.md",
       "name": "tool-authoring",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7517f4f5f05875ba64ae1c4c44c4717e032dcc8bf95269b67c3bb6ab29532aa2",
-        "bytes": 6499,
-        "sha256": "7517f4f5f05875ba64ae1c4c44c4717e032dcc8bf95269b67c3bb6ab29532aa2"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d5d7cd5b196f9415dbd37b158893159717494ba93bf3dd07a9a566cece2e5c42",
+        "bytes": 6505,
+        "sha256": "d5d7cd5b196f9415dbd37b158893159717494ba93bf3dd07a9a566cece2e5c42"
       },
       "title": "Tool Authoring — from capability to concrete mechanism"
     }

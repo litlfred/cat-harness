@@ -154,6 +154,6 @@ After pushing changes to `claude/feature-xyz`:
 
 | process | step(s) that name it |
 |---|---|
-| [CRDM Phase 6 — implement, MVP, acceptance](../../cat-harness/processes/crdm-deliver.html) | Post summary to issue |
-| [Adopting an upstream version bump](../../cat-harness/processes/upstream-version-adoption.html) | Post the MVP evidence staging URL + gate results |
+| [CRDM Phase 6 — implement, MVP, acceptance](../../en/cat-harness/processes/crdm-deliver.html) | Post summary to issue |
+| [Adopting an upstream version bump](../../en/cat-harness/processes/upstream-version-adoption.html) | Post the MVP evidence staging URL + gate results |
 

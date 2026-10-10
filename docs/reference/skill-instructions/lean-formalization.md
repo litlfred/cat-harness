@@ -106,5 +106,5 @@ and `proof-gap-audit` are how you work the backlog of them down.
 
 | process | step(s) that name it |
 |---|---|
-| [Authoring a paper](../../processes/authoring-a-paper.html) | 5 · Formalise in Lean |
+| [Authoring a paper](../../en/cat-harness/processes/authoring-a-paper.html) | 5 · Formalise in Lean |
 

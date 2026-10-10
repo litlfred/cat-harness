@@ -15,6 +15,9 @@
       "title": "Reference dataset ingestion"
     }
   ],
+  "holdsGraph": [
+    "bootstrap:graphTypology/skills"
+  ],
   "name": "skills/data",
   "path": "skills/data/"
 }

@@ -342,5 +342,5 @@ content object:
 
 | process | step(s) that name it |
 |---|---|
-| [CRDM Phase 5 — beans and sign-off](../../cat-harness/processes/crdm-signoff.html) | Run placement, and raise a bean for the authoring |
+| [CRDM Phase 5 — beans and sign-off](../../en/cat-harness/processes/crdm-signoff.html) | Run placement, and raise a bean for the authoring |
 

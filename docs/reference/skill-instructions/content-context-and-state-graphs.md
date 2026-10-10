@@ -144,6 +144,28 @@ verdict.
 `isStateGraph` is usually being asked in service of, and naming it means a
 fourth layer is one edit rather than a search.
 
+## Where each layer lives
+
+The layer a kind already declares (`holds`) decides where its graph lives by
+default. The declaration makes it explicit and checkable.
+
+| layer (`holds`) | example | default ref | keyed by | write shape |
+|---|---|---|---|---|
+| `content` | chapters, skills, processes | `main` | — | PR |
+| `context` | interaction prefs, roles | `main` | — | PR |
+| `state` | beans, workflow instances, todos | dedicated branch-store branches (e.g. `cat/cat-harness/beans`, `cat/cat-harness/todos`) | **tip** — one living tree | fetch → splice → push, never `-f` |
+| `derived` (verdicts) | QA sidecars | `cat/cat-harness/qa-reports` (arc 3fva) | commit | append under `main/<sha>/`, `pr/<n>/<sha>/` |
+| rendered | the docs site | `gh-pages` | commit (the build stamp) | replace, previews kept |
+| cache | Lake builds | `lake-cache/*` | toolchain + inputs | one key per branch, pruned |
+
+The distinction that matters between `state` and `derived`: **state is not
+regenerable**. A QA verdict can be recomputed from the tree, so a commit-keyed
+snapshot per run is right and losing one costs a rerun. A bean is somebody's
+decision; it must be a single living tree whose history is the audit trail, and
+a lost write is lost work. So `state` is tip-keyed (`storage.keyedBy: tip`),
+stored on dedicated branch-store branches like `cat/cat-harness/beans`, `todos`,
+and `fsh-guts`, and its write loop must splice, never replace.
+
 ## Where a graph is STORED — `storage.keyedBy`
 
 The layer says who may write a graph. The directory's `storage` field says

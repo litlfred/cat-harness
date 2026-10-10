@@ -133,8 +133,8 @@ the default.
 ```sh
 bun run cat uml:overview           # write every overview diagram, page and SVG
 bun run cat uml:overview:check     # CI: fail if any is stale or orphaned
-bun run cat-harness/scripts/gen-object-model-uml.ts           # the object model
-bun run cat-harness/scripts/gen-object-model-uml.ts --check   # needs the beans CLI
+bun run cat-harness-tools/scripts/gen-object-model-uml.ts           # the object model
+bun run cat-harness-tools/scripts/gen-object-model-uml.ts --check   # needs the beans CLI
 ```
 
 **The SVGs need Java,** and the generator fetches the pinned PlantUML jar

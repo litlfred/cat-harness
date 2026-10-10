@@ -8,9 +8,9 @@
       "@type": "bootstrap:Skill",
       "name": "document-intake",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/07ba98d5e04703386407c24bd07d47c54bf426e95f0847655e909ea459be9969",
-        "bytes": 23511,
-        "sha256": "07ba98d5e04703386407c24bd07d47c54bf426e95f0847655e909ea459be9969"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6c179aa332e0e42e033dd4461c2400d91e33b9904684a186561dcbe2fdad08e6",
+        "bytes": 23655,
+        "sha256": "6c179aa332e0e42e033dd4461c2400d91e33b9904684a186561dcbe2fdad08e6"
       },
       "title": "Document Intake"
     },
@@ -30,9 +30,9 @@
       "@type": "bootstrap:Skill",
       "name": "l1-document-ingestion",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/53d2bbaad8972e92fa1ae3bcc40cd9299eae14c4d508344fd028ca9d361ada85",
-        "bytes": 48561,
-        "sha256": "53d2bbaad8972e92fa1ae3bcc40cd9299eae14c4d508344fd028ca9d361ada85"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9c6b694a9359b17916986a5ff96c6853ab47e2afb010bedd713509d91d650bdc",
+        "bytes": 48591,
+        "sha256": "9c6b694a9359b17916986a5ff96c6853ab47e2afb010bedd713509d91d650bdc"
       },
       "title": "L1 document ingestion"
     },
@@ -41,9 +41,9 @@
       "@type": "bootstrap:Skill",
       "name": "tabular-metadata",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e902f9f1910f15dd4c55ca066819f57553ad6e40f7bedba4de41b40756d9e4ab",
-        "bytes": 10720,
-        "sha256": "e902f9f1910f15dd4c55ca066819f57553ad6e40f7bedba4de41b40756d9e4ab"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5f33901e848c6200e6cff69a70e43e619f21c6764d23bde68bec88159903b51f",
+        "bytes": 11796,
+        "sha256": "5f33901e848c6200e6cff69a70e43e619f21c6764d23bde68bec88159903b51f"
       },
       "title": "Tabular metadata — CSVW, annotated, and honest about what it could not read"
     }
