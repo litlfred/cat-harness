@@ -190,8 +190,13 @@ export type BeanFrontMatter = z.infer<typeof BeanFrontMatterSchema>;
  *
  * Built on {@link BeanFrontMatterSchema}'s shape rather than a second list of
  * the same fields: the CLI's vocabulary is defined once.
+ *
+ * Named `BeanKind`, not `BeanNodeKind`: that name is already the type of a
+ * NODE in the bean graph (`bean-defs`, `notes`, …) above, and one export name
+ * for two things made `schemas/bean-graph.ts#BeanNodeKind` resolve to the type
+ * in the schema index and to this value in `validators/bean-node.json`.
  */
-export const BeanNodeKind = nodeKind("bean/1.0.0", [], BeanFrontMatterSchema.shape);
+export const BeanKind = nodeKind("bean/1.0.0", [], BeanFrontMatterSchema.shape);
 
 /** The `$schema` tag every bean carries in its front matter. */
 export const BEAN_SCHEMA_TAG = "bean/1.0.0";

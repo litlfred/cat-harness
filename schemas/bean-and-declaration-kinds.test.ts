@@ -6,7 +6,7 @@
 import { describe, expect, test } from "bun:test";
 import { join } from "node:path";
 
-import { BEAN_SCHEMA_TAG, BeanNodeKind } from "./bean-graph";
+import { BEAN_SCHEMA_TAG, BeanKind } from "./bean-graph";
 import {
   CAT_HARNESS_DECLARATION_SCHEMA_TAG,
   CatHarnessDeclarationKind,
@@ -17,14 +17,14 @@ import { nodeKindIndex } from "./node-kind-index";
 
 describe("the bean kind", () => {
   test("is `bean/1.0.0`, and the tag constant says the same", () => {
-    expect(BeanNodeKind.tag).toBe("bean/1.0.0");
-    expect(BEAN_SCHEMA_TAG).toBe(BeanNodeKind.tag!);
+    expect(BeanKind.tag).toBe("bean/1.0.0");
+    expect(BEAN_SCHEMA_TAG).toBe(BeanKind.tag!);
   });
 
   test("accepts a tagged bean's front matter and refuses an untagged one", () => {
-    expect(BeanNodeKind.schema.safeParse({ $schema: "bean/1.0.0", id: "x-1", title: "t", status: "todo" }).success).toBe(true);
-    expect(BeanNodeKind.schema.safeParse({ id: "x-1", title: "t", status: "todo" }).success).toBe(false);
-    expect(BeanNodeKind.schema.safeParse({ $schema: "bean/2.0.0", id: "x-1" }).success).toBe(false);
+    expect(BeanKind.schema.safeParse({ $schema: "bean/1.0.0", id: "x-1", title: "t", status: "todo" }).success).toBe(true);
+    expect(BeanKind.schema.safeParse({ id: "x-1", title: "t", status: "todo" }).success).toBe(false);
+    expect(BeanKind.schema.safeParse({ $schema: "bean/2.0.0", id: "x-1" }).success).toBe(false);
   });
 });
 
