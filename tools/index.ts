@@ -250,7 +250,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       id: "remote-mount",
       title: "Mount remote harnesses at a pinned commit, only when trusted",
       description:
-        "Lay down each declared remote mount — a `source.remote` instance in the root `index.config.json`, or, in a folio with no index, a `remoteMounts` entry on its declaration (both at once is refused) — and its dependency closure, from another repository at a full commit SHA. Write the lock, `index.lock.json` (a legacy `<name>.mount-lock.json` is read, and renamed onto it when rewritten), and, with an index, regenerate the root `.gitignore` block that ignores each mount path. It READS the declared mounts and never writes them: a tool that changes a mount writes through `writeDeclaredMounts` into `index.config.json`. Before anything is checked out, each mount must pass the trust gate (`schemas/mount-trust.ts`, rule H8): a person's consent recorded for THIS pin, or a signature in a declared trust network. No signature verifier exists yet, so a signature alone is could-not-determine and does not mount. Unsigned and unconsented is refused. `--staging` mounts for a preview and needs neither, by the owner's ruling. `--check` compares the disk against the lock and never fetches.",
+        "Lay down each declared remote mount — a `source.remote` instance in the root `index.config.json`, or, in a folio with no index, a `remoteMounts` entry on its declaration (both at once is refused) — and its dependency closure, from another repository at a full commit SHA. Write the lock, `index.lock.json` (a legacy `<name>.mount-lock.json` is read, and renamed onto it when rewritten), and, with an index, regenerate the root `.gitignore` block that ignores each mount path. It READS the declared mounts and never writes them: a tool that changes a mount writes through `writeDeclaredMounts` into `index.config.json`. Before anything is checked out, each mount must pass the trust gate (`schemas/mount-trust.ts`, rule H8): a person's consent recorded for THIS pin, or a signature in a declared trust network. No signature verifier exists yet, so a signature alone is could-not-determine and does not mount. Unsigned and unconsented is refused. `--staging` mounts for a preview and needs neither, by the owner's ruling. `--check` compares the disk against the lock and never fetches. When a run CHANGES the lock, it then re-renders the agent surface (`skill:commands` → `.claude/commands/`, `agent-memory` → `.claude/agent-memory/` and `.agents/`) from the checkout root, so a re-pin commit carries the skills and memory the new layers define; a generator that fails fails the run, and `--no-agent-surface` opts out.",
       install: { none: true },
       invoke: { shell: "bun run cat-harness-tools/scripts/remote-mount.ts" },
       io: {
@@ -258,12 +258,13 @@ export function tools(baseUrl?: string): ToolDefinition[] {
           { name: "instance", schema: t("RepoPath"), required: false, arg: { flag: "--instance" }, description: "The downstream instance root; omitted, every declaring instance in the checkout." },
           { name: "staging", schema: t("Flag"), required: false, arg: { flag: "--staging" }, description: "Mount for a staging preview: no signature or consent required." },
           { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Compare the disk against the lock; fetch nothing." },
+          { name: "noAgentSurface", schema: t("Flag"), required: false, arg: { flag: "--no-agent-surface" }, description: "Do not re-render `.claude/commands/` and the agent memory after a mount that changed the lock." },
         ],
         outputs: [
           { name: "outcomes", schema: t("Count"), description: "Per instance: mounted, local, skipped, missing (including refused by the trust gate) or could-not-determine." },
         ],
       },
-      satisfies: ["security"],
+      satisfies: ["security", "agent-memory"],
       requires: { runtime: ["bun", "git"], network: true },
       remedies: [{ host: "github.com", none: "A remote mount IS a fetch of another repository at a pin; offline there is nothing to mount. `--check` still reports the lock without the network." }],
     }),
@@ -451,13 +452,13 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       id: "archimate-pages",
       title: "Give every ArchiMate view, element and relationship a page and an IRI, and draw every view",
       description:
-        "Write a JSON-LD node and a thin page for each model an instance's `cat-archimate.config.json` names and for every view, element and relationship in it — keyed by Archi's own ids — plus the normalised model the pages' one loader draws from, and every view drawn as SVG from the model's own bounds and bendpoints in ArchiMate's notation, each box a link to its element. `--out` writes into a site being built at the graph's path; without it the files go into the graph and `--check` gates them.",
+        "Write a JSON-LD node and a thin page for each model an instance's `cat-archimate.config.json` names and for every view, element and relationship in it — keyed by Archi's own ids — plus the normalised model the pages' one loader draws from, and every view drawn as SVG from the model's own bounds and bendpoints in ArchiMate's notation, each box a link to its element. `--out` writes into a site being built — the data at the graph's path, the pages at the route of the visualiser the instance declares for this Tool, `<locale>/<harness>/<id>/`; without it the files go into the graph and `--check` gates them.",
       install: { none: true },
       invoke: { shell: "bun run cat-harness-tools/archimate/scripts/gen-archimate-pages.ts" },
       io: {
         inputs: [
           { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root." },
-          { name: "out", schema: t("RepoPath"), required: false, arg: { flag: "--out" }, description: "A site being built: the pages land at `<out>/<graph path>/`. Absent, they are written into the graph, which must be `served: true`." },
+          { name: "out", schema: t("RepoPath"), required: false, arg: { flag: "--out" }, description: "A site being built: the data lands at `<out>/<graph path>/` and the pages at `<out>/<locale>/<harness>/<id>/`, the route of the instance's one visualiser `renderedBy` this Tool (none declared: nothing is written). Absent, they are written into the graph, which must be `served: true`." },
           { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Without `--out`: fail if a committed page is missing, stale or orphaned; write nothing." },
         ],
         outputs: [

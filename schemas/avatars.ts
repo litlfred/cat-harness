@@ -47,8 +47,11 @@ import { readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { BLANK_AVATAR } from "./blank-avatar";
 import { defaultGraphTypologies } from "./graph-typology-registry";
 import { findDeclarationFile, instanceRootsIn } from "./instance-roots";
+
+export { BLANK_AVATAR };
 
 /** The platform checkout this module sits in — where instances are scanned from. */
 const PLATFORM_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
@@ -627,24 +630,6 @@ export const GENERIC: Avatar = {
   glyph: "M9 9a3 3 0 114 3v2m0 3h.01",
   tone: 0,
   reads: "a question mark — no avatar is declared for this kind",
-};
-
-/**
- * What an instance, role or kind with no declared avatar gets.
- *
- * Owner ruling, 2026-09-20: *"there is always an avatar, even when there is none
- * (always have default blank/themecolor if no avatar. etc)"*.
- *
- * Absence of an avatar is not absence of a mark: an instance, role or kind
- * with no declared avatar gets a BLANK one drawn in its theme's colour,
- * rather than a gap or generic question mark fallback.
- *
- * Distinct from {@link GENERIC}, which is the question mark for undetermined kinds.
- */
-export const BLANK_AVATAR: Avatar = {
-  glyph: "M3 3h18v18H3z",
-  tone: 0,
-  reads: "a blank mark — no avatar declared; rendered in theme colour",
 };
 
 /**
