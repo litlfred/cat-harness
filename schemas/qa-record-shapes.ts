@@ -8,6 +8,7 @@
  * the harness can only resolve inside the harness.
  *
  * @module cat-harness/schemas/qa-record-shapes
+ * @graphNode schema
  */
 import type { QaCriterionEntry, QaFieldHash } from "./block-qa.ts";
 

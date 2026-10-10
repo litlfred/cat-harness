@@ -251,7 +251,7 @@ the body changes. **A skill edit is three files:**
 |---|---|
 | the body, `skills/<pkg>/<name>.md` | — you edit it |
 | `test/results/kg-qa/.../<name>.kg-qa.json` | `bun run cat kg:audit` |
-| `docs/reference/skill-instructions/<name>.md` | `bun run cat-harness/scripts/gen-skill-docs.ts` |
+| `docs/reference/skill-instructions/<name>.md` | `bun run cat-harness-tools/scripts/gen-skill-docs.ts` |
 
 The `kg-qa` row is a derived QA result: its record is the commit-keyed entry
 the CI job `qa-publish` stores on the orphan `qa-reports` branch (arc `3fva`),

@@ -185,7 +185,7 @@ Two properties of that scheduled run are load-bearing rather than incidental:
 ### The second instance: merge-main's in-place comment
 
 The same edited-in-place doctrine governs `merge-main.yml` (bean `03nl`,
-implemented by `cat-harness/scripts/merge-main-comment.ts`). The workflow fires on every
+implemented by `cat-harness-tools/scripts/merge-main-comment.ts`). The workflow fires on every
 push to `main` and runs across open PRs; one failing PR must not email the
 maintainer on every push across the day.
 
@@ -241,7 +241,7 @@ one cancelled.
 
 ## A green step can be a SKIPPED one: the CI cone
 
-`cat-harness/scripts/ci-cone.ts` (bean `4rbc`, issue #2456) lets a pull request skip a `bun run cat <check>` gate step whose inputs are unchanged since main's last green run. Such a step prints `SKIPPED — inputs unchanged since <sha>`, and the job summary lists it under **CI cone**. **Read it as "not asked here", never as "passed here".**
+`cat-harness-tools/scripts/ci-cone.ts` (bean `4rbc`, issue #2456) lets a pull request skip a `bun run cat <check>` gate step whose inputs are unchanged since main's last green run. Such a step prints `SKIPPED — inputs unchanged since <sha>`, and the job summary lists it under **CI cone**. **Read it as "not asked here", never as "passed here".**
 
 **It is built but NOT wired into the workflow.** Measured 2026-10-07 on the 53 candidate steps of `gates-kg` and `gates-docs`:
 - **It saves almost nothing.** The 36 checks it could record skip on a beans-only or one-script PR, but they are the cheap ones: about 30 runner-seconds a run. Deciding costs about 0.5 s a step, roughly 22 s for those steps.

@@ -227,7 +227,7 @@ the owner's confirmation.
    it. Owner, 2026-10-01: *"need to create gh-pages branch before can turn
    on"*; repeated 2026-10-07: *"need to create gh-pages before can deploy"*
    (issue #2417). Run
-   `bun run cat-harness/scripts/pages-bootstrap.ts --provision`: it checks
+   `bun run cat-harness-tools/scripts/pages-bootstrap.ts --provision`: it checks
    `git ls-remote --heads origin gh-pages` and, only if the branch is absent,
    pushes an orphan `gh-pages` holding a placeholder `index.html` and
    `.nojekyll`. It is idempotent and never forces a push; without
@@ -241,7 +241,7 @@ the owner's confirmation.
    that [remote-mounts](../../kg/kg-core/remote-mount.md) its dependencies,
    which never reaches this section by itself.
 3. **Start the Pages build and report the URL.** Run
-   `bun run cat-harness/scripts/pages-bootstrap.ts --wait`. It checks the
+   `bun run cat-harness-tools/scripts/pages-bootstrap.ts --wait`. It checks the
    branch first, derives the site address, says whether a publish workflow
    exists and which Pages source it needs, and probes until the site answers.
 4. **Say which of the four states you got**, and never blur them:

@@ -43,7 +43,7 @@ not wired, because an unwired gate must never read as a passing one.
 2026-10-04, found by the merge steward. Both artefacts were declared, both were
 documented, and both were past all 217 gates CI runs.
 
-**`cat-harness/scripts/merge-queue.ts`** derived a pull request's facts,
+**`cat-harness-tools/scripts/merge-queue.ts`** derived a pull request's facts,
 evaluated the reprioritisation table and ordered the merge queue. Its own
 docblock said *"a library the merge steward and the tile call."* Nothing called
 it — no `package.json` script, no workflow, no command — and the only thing that

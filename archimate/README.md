@@ -41,7 +41,7 @@ TypeScript. The discipline is the skill
 copy nothing.** A model is authored in Archi and committed where it is held —
 unlike an OpenAPI document, which is ingested from somebody else's
 repository, which is why this kind is `content` where `openapi` is
-`derived`. Every page is a thin page (`cat-harness/scripts/thin-page.ts`):
+`derived`. Every page is a thin page (`cat-harness-tools/scripts/thin-page.ts`):
 identity and a pointer. What a page shows is drawn by one shared loader from
 the model, normalised (`<model>/model.json`). A fix to a view is made in
 Archi, and shows on the next build.
@@ -59,11 +59,11 @@ Then:
 
 ```sh
 # the gate: every configured model is held, parses, and resolves; no other is held
-bun run cat-harness/archimate/scripts/check-archimate.ts --instance <dir>
+bun run cat-harness-tools/archimate/scripts/check-archimate.ts --instance <dir>
 # into a site being built — what a folio's staging build runs
-bun run cat-harness/archimate/scripts/gen-archimate-pages.ts --instance <dir> --out _site
+bun run cat-harness-tools/archimate/scripts/gen-archimate-pages.ts --instance <dir> --out _site
 # or into the graph itself, gated with --check
-bun run cat-harness/archimate/scripts/gen-archimate-pages.ts --instance <dir> [--check]
+bun run cat-harness-tools/archimate/scripts/gen-archimate-pages.ts --instance <dir> [--check]
 ```
 
 `--out` exists because a model is large: smart-ra's four versions are 5,809

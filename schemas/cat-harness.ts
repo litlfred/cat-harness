@@ -824,7 +824,7 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
   needs?: string[];
   /**
    * What this instance's own package tasks read and write, keyed by task name
-   * — the same {@link ScriptIO}-shaped facts `cat-harness/scripts/task-io.ts`
+   * — the same {@link ScriptIO}-shaped facts `cat-harness-tools/scripts/task-io.ts`
    * holds for the harness's own tasks: `outputs: []` (measured to write
    * nothing, so it may run in the pool) and `inputs` (what can change the
    * answer, so `regen` may skip it on an unchanged tree; `"{tracked}"` is the
@@ -850,7 +850,7 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
   /**
    * The CI steps and check scripts of THIS instance that the local gate set
    * deliberately does not run, each with its reason — the rows
-   * `cat-harness/scripts/gates.ts` holds as `STEP_EXEMPTIONS` and
+   * `cat-harness-tools/scripts/gates.ts` holds as `STEP_EXEMPTIONS` and
    * `SCRIPT_EXEMPTIONS` for the harness's own. Same contract: a reason is
    * required, a step `match` is a substring of the workflow command, a script
    * name is matched exactly. Declared by the owner so the harness need not
@@ -3481,7 +3481,7 @@ const catHarnessDeclarationShape = {
   needs: z.array(z.string().min(1)).optional(),
   /**
    * What this instance's own package tasks read and write, keyed by task name
-   * — the same {@link ScriptIO}-shaped facts `cat-harness/scripts/task-io.ts`
+   * — the same {@link ScriptIO}-shaped facts `cat-harness-tools/scripts/task-io.ts`
    * holds for the harness's own tasks: `outputs: []` (measured to write
    * nothing, so it may run in the pool) and `inputs` (what can change the
    * answer, so `regen` may skip it on an unchanged tree; `"{tracked}"` is the

@@ -407,7 +407,7 @@ export function isReservedIndexFile(file: string): boolean {
  * has not migrated). BOTH present is a `conflict` and `files` is empty —
  * merging two locks silently would replay whichever pins happened to win.
  *
- * `cat-harness/scripts/mount-from-lock.ts` re-states this rule inline, because
+ * `cat-harness-tools/scripts/mount-from-lock.ts` re-states this rule inline, because
  * it imports nothing but `node:*` by design; its test holds the two together.
  */
 export function lockFilesIn(dir: string): { files: string[]; conflict?: string } {

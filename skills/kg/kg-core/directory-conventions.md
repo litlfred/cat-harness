@@ -1112,8 +1112,8 @@ enforce this, and neither fails just because a count goes down:
 
 | gate | what it scans | baseline |
 |---|---|---|
-| `check:declared-paths` | an instance's literals into its OWN declared directories | `cat-harness/scripts/declared-path-baseline.json` |
-| `check:foreign-paths` | an instance's literals into ANOTHER instance's directories, across the whole checkout | `cat-harness/scripts/foreign-path-baseline.json` — **empty since 2026-10-03** |
+| `check:declared-paths` | an instance's literals into its OWN declared directories | `cat-harness-tools/scripts/declared-path-baseline.json` |
+| `check:foreign-paths` | an instance's literals into ANOTHER instance's directories, across the whole checkout | `cat-harness-tools/scripts/foreign-path-baseline.json` — **empty since 2026-10-03** |
 
 - **Classify a hit by what it READS, not by how it is spelled.** A name counts
   as foreign only if the scanning instance does not declare the same name. A

@@ -153,7 +153,7 @@ table says which rule below answers each:
   screened for injected instructions before a model reads them. The screen
   works FIELD BY FIELD over a declared schema, never over a free-text blob,
   which is why skill and tool I/O stays tightly typed. **The screen is a
-  deterministic pattern tripwire** (`cat-harness/src/core/handover-screen.ts`),
+  deterministic pattern tripwire** (`cat-harness-tools/src/core/handover-screen.ts`),
   not CaMeL's quarantined LLM. CaMeL is the prior work for typing hand-overs
   (§"Prior work"), but nothing here is a model reader. A `clean` verdict means
   no pattern fired. **It is never a clearance**: paraphrase, confusables and
@@ -199,7 +199,7 @@ sites are third-party comments, and those are treated as data:
   reads them later through `guardUntrusted` (feedback triage, the chat's open
   todos; §"Where the screen is wired").
 - `merge-guard.yml` reacts to `issue_comment`, but the comment text goes to a
-  deterministic checker (`cat-harness/scripts/merge-guard.ts`), which reads a
+  deterministic checker (`cat-harness-tools/scripts/merge-guard.ts`), which reads a
   `ready:` marker and never a model.
 
 ## Where the screen is wired (bean `cztn`)

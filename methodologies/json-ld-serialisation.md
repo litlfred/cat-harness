@@ -71,12 +71,12 @@ JSON parser reads records; a consumer with a JSON-LD processor reads a graph.
    same with `CONTENT_CONTEXT_URL` (`cat-harness/schemas/jsonld.ts`), and the
    context file `cat-harness/ns/content/v1.jsonld` is generated from the
    TypeScript value `CONTENT_CONTEXT` by
-   `cat-harness/scripts/gen-jsonld-context.ts` and gated by
+   `cat-harness-tools/scripts/gen-jsonld-context.ts` and gated by
    `gen:jsonld:check`.
 2. **`@version: 1.1`.** §4.1.1: *"Explicitly setting the processing mode to
    json-ld-1.1 will prohibit JSON-LD 1.0 processors from incorrectly
    processing a JSON-LD 1.1 document"* (`sec-030`). Both `CONTENT_CONTEXT` and
-   `buildContext()` in `cat-harness/scripts/kg-export.ts` set it, the latter
+   `buildContext()` in `cat-harness-tools/scripts/kg-export.ts` set it, the latter
    with that reason stated.
 3. **Compact IRIs over declared prefixes.** §4.1.5: *"A compact IRI is a way
    of expressing an IRI using a prefix and suffix separated by a colon"*, and
@@ -142,7 +142,7 @@ coercion belonging to terms, and PROV in PROV-JSONLD's shape.
    consider caching remote contexts for future use, or use the documentLoader
    to maintain a local version of such contexts"* (held in
    `sec-133-11-security-considerations.md`). `localLoader()` in
-   `cat-harness/scripts/publish-verify.ts` does exactly that: our context URL
+   `cat-harness-tools/scripts/publish-verify.ts` does exactly that: our context URL
    maps to the file in the tree, and anything else is refused — *"a document
    that needs the network to be understood is a finding"*.
 3. **No framing.** Framed document form (§5.4, `sec-095`) is defined by the
@@ -170,10 +170,10 @@ expanding to the `@base` address.
 | concern | file |
 |---|---|
 | the context, minting `@id`s, block kind → `@type` | `cat-harness/schemas/jsonld.ts` |
-| the generated context file | `cat-harness/scripts/gen-jsonld-context.ts` → `cat-harness/ns/content/v1.jsonld` |
-| block / library / site siblings | `cat-harness/content/pipeline/gen-block-jsonld.ts`, `gen-library-jsonld.ts`, `gen-site-jsonld.ts` (`gen:jsonld:check`) |
-| whole-graph export, aliasing, no `@vocab` | `cat-harness/scripts/kg-export.ts` |
-| expansion under a real processor, offline loader | `cat-harness/scripts/publish-verify.ts` (`jsonld-expand` verifier) |
+| the generated context file | `cat-harness-tools/scripts/gen-jsonld-context.ts` → `cat-harness/ns/content/v1.jsonld` |
+| block / library / site siblings | `cat-harness-tools/content/pipeline/gen-block-jsonld.ts`, `gen-library-jsonld.ts`, `gen-site-jsonld.ts` (`gen:jsonld:check`) |
+| whole-graph export, aliasing, no `@vocab` | `cat-harness-tools/scripts/kg-export.ts` |
+| expansion under a real processor, offline loader | `cat-harness-tools/scripts/publish-verify.ts` (`jsonld-expand` verifier) |
 | prefixes bound vs emitted | `cat-harness-tools/scripts/check-context-emission.ts` |
 | identifier = file path | `bootstrap-tools/scripts/check-node-iris.ts` |
 

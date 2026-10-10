@@ -429,7 +429,7 @@ in words ("1 verdict on an earlier version, not counted"). A build whose
 `review-comments.json` carries no verdicts says "No verdict data on this
 build" rather than treating every block as unread. Typing into a selector is never navigation.
 
-**Tests.** `cat-harness/test/review-nav.e2e.ts` drives all of this with the
+**Tests.** `cat-harness-tools/test/review-nav.e2e.ts` drives all of this with the
 keyboard alone. It uses no mouse, no click and no hover.
 
 ### The review page, and choosing how to see a change
@@ -459,8 +459,8 @@ at the top applies to every block:
   that can.
 - **The page-level choice is remembered** for this viewer in
   `localStorage`. A private window just gets the defaults.
-- **The renderers and the registry** are `cat-harness/scripts/review-renderers.ts`,
-  `cat-harness/scripts/word-diff.ts` (no diff library; about forty lines,
+- **The renderers and the registry** are `cat-harness-tools/scripts/review-renderers.ts`,
+  `cat-harness-tools/scripts/word-diff.ts` (no diff library; about forty lines,
   tested) and `cat-harness/schemas/diff-renderers.ts`. To add one, declare it
   in the registry with what it needs and which kinds it defaults for, add its
   function to `review-renderers.ts`, and add a case to the page's
@@ -553,7 +553,7 @@ What the `stage` job now does, on every deploy, before its one push:
 
 - **Sums the size of the previews under `STAGING/`, including the one it is
   staging, and keeps them within 3 GB.** The number lives once, as
-  `MAX_PREVIEW_BYTES` in `cat-harness/scripts/staging-rotate.ts`.
+  `MAX_PREVIEW_BYTES` in `cat-harness-tools/scripts/staging-rotate.ts`.
 - **Keeps the newest that fit and removes the rest, oldest first — strictly by
   recency.** An older small preview never outlives a newer one that did not
   fit, so a preview's age alone says whether it is still there. One 780 MB

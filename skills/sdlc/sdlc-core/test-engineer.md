@@ -146,15 +146,15 @@ describe("Content objects", () => {
 ```bash
 # All tests
 bun test                              # from scripts/tests/
-cat-harness/scripts/tests/run-tests.sh          # from repo root
+cat-harness-tools/scripts/tests/run-tests.sh          # from repo root
 
 # By suite
-cat-harness/scripts/tests/run-tests.sh formal     # formal-layer project tests
-cat-harness/scripts/tests/run-tests.sh coverage   # render coverage
-cat-harness/scripts/tests/run-tests.sh infra      # Infrastructure
+cat-harness-tools/scripts/tests/run-tests.sh formal     # formal-layer project tests
+cat-harness-tools/scripts/tests/run-tests.sh coverage   # render coverage
+cat-harness-tools/scripts/tests/run-tests.sh infra      # Infrastructure
 
 # JSON report (TestReport schema)
-cat-harness/scripts/tests/run-tests.sh --json
+cat-harness-tools/scripts/tests/run-tests.sh --json
 bun run report.ts --out test-report.json
 ```
 

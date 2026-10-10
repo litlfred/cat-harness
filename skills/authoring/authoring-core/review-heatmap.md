@@ -48,7 +48,7 @@ open.
 
 The staging workflow first sweeps the build (its `qa_sweep` input, on by
 default, bean `tw61`), then runs the `folio-block-qa-summary` Tool
-(`cat-harness/scripts/publish-block-qa.ts`). The Tool reads each block's
+(`cat-harness-tools/scripts/publish-block-qa.ts`). The Tool reads each block's
 `block-qa/v1` verdicts, runs no checker itself, and writes `block-qa.json`.
 So the column reports THIS build's script-checkable criteria. Criteria that
 need an agent's judgement are not run by the sweep. Each block is one of:
@@ -100,7 +100,7 @@ it counts.
 
 ## Where it lives
 
-- `cat-harness/scripts/review-heat.ts`: `computeHeat` (the numbers),
+- `cat-harness-tools/scripts/review-heat.ts`: `computeHeat` (the numbers),
   `heatBucket` (the thirds) and `renderHeat` (the table). The page embeds
   all three with `toString()`, so the tested functions are the ones that run.
 - `blocks.json` carries each block's `section`, so a comment on an

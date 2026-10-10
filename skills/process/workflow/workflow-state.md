@@ -102,7 +102,7 @@ container, reads the branch store to find the position that exists rather than
 starting a second one beside it.
 
 When an instance advances, its state is written to the mounted store and pushed
-via the branch store (`bun cat-harness/scripts/branch-store.ts push --id beans` or `state:push`).
+via the branch store (`bun cat-harness-tools/scripts/branch-store.ts push --id beans` or `state:push`).
 This keeps instance state globally visible without cluttering code PR diffs on `main`.
 
 Instance ids are **derived from the subject rather than random**, so re-entering

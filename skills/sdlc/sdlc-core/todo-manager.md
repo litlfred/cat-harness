@@ -49,7 +49,7 @@ flat-file issue tracker storing issues as markdown under `beans/`. Cloud
 sandboxes do **not** ship it, so reinstall on demand (Go ships in the sandbox):
 
 ```bash
-cat-harness/scripts/install-beans.sh          # idempotent; installs into a PATH dir
+cat-harness-tools/scripts/install-beans.sh          # idempotent; installs into a PATH dir
 # equivalently, the one-liner it runs:
 GOBIN="$HOME/.local/bin" go install github.com/hmans/beans@latest
 ```
@@ -108,7 +108,7 @@ first minutes reading it.
 3. **No manual `.md` checklists:** Never use `session-beans.md` or raw Markdown `- [ ]` checklists to track global tasks. Always use the `beans` CLI to prevent namespace pollution and maintain the official project tracking.
 4. **Check before you create:** `beans create` is **not** idempotent. Run the existence check below before every `beans create` — no exceptions.
 5. **Brief before you work:** claiming a bean records *which* item is taken; the opening brief records what it is taken **for**. Write it before the first tool call, in the chat. See §"Opening brief" below.
-6. **Push beans to the state branch, not code PRs:** `beans/` is mounted from the dedicated state branch (e.g. `cat/cat-harness/beans`). Bean creation, claim, note, and status changes are pushed to the branch store via `bun cat-harness/scripts/branch-store.ts push --id beans` (or `bun run cat state:push`). Do **not** commit bean files directly to code PR branches on `main`.
+6. **Push beans to the state branch, not code PRs:** `beans/` is mounted from the dedicated state branch (e.g. `cat/cat-harness/beans`). Bean creation, claim, note, and status changes are pushed to the branch store via `bun cat-harness-tools/scripts/branch-store.ts push --id beans` (or `bun run cat state:push`). Do **not** commit bean files directly to code PR branches on `main`.
 
 ## Where beans live — the state mount and pushing changes
 
@@ -122,7 +122,7 @@ during session start).
 - **Pushing changes**: When you create, update, or resolve a bean in `beans/`,
   push the state branch:
   ```bash
-  bun cat-harness/scripts/branch-store.ts push --id beans
+  bun cat-harness-tools/scripts/branch-store.ts push --id beans
   # or equivalently:
   bun run cat state:push
   ```
@@ -416,7 +416,7 @@ one session** on 2026-09-20:
 
 **So: `beans create` and the `--parent` that follows it are one action, and
 touching the bean store invalidates your last test run.** Re-run at least
-`bun test cat-harness/scripts/tests/check-bean-parents.test.ts` — 105 ms —
+`bun test cat-harness-tools/scripts/tests/check-bean-parents.test.ts` — 105 ms —
 before pushing.
 
 The general shape is worth more than the bean case: **a green suite is green for
@@ -441,7 +441,7 @@ That is `readme:subgraphs:check`. Run its writer before you push:
 ```sh
 bun run cat readme:subgraphs          # updates beans/README.md; push state via branch-store
 bun run cat readme:subgraphs:check    # must exit 0
-bun cat-harness/scripts/branch-store.ts push --id beans  # or: bun run cat state:push
+bun cat-harness-tools/scripts/branch-store.ts push --id beans  # or: bun run cat state:push
 ```
 
 **Measured 2026-10-03: three separate PRs failed this gate on the same day** —
@@ -703,4 +703,4 @@ this skill by name never received them. Ported here as part of bean `tdmg`.
 - `scripts/session-start-coord-sweep.sh` — the CLI-independent session-start
   surface: fetches `origin/main` and summarises sibling branch activity. Works
   even when the `beans` CLI is absent.
-- `cat-harness/scripts/install-beans.sh` — provisions the CLI.
+- `cat-harness-tools/scripts/install-beans.sh` — provisions the CLI.

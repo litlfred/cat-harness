@@ -36,7 +36,7 @@ by somebody reading a sibling's open PR, which is not a mechanism.
 So, from shell:
 
 ```sh
-bun run cat-harness/scripts/backoff-sleep.ts --attempt "$attempt"
+bun run cat-harness-tools/scripts/backoff-sleep.ts --attempt "$attempt"
 ```
 
 It calls `waitFor` directly, so a workflow and `withBackoff` compute the same

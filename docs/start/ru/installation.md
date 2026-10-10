@@ -89,12 +89,12 @@ cat-harness\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
 в Windows `PATH`, поскольку Git Bash наследует его от вызывающего процесса. Скрипты, которые
 имеют смысл только на хосте Linux (`deploy/`, `install-tex.sh`, `setup-sage.sh`,
 `setup-singular.sh`), намеренно не имеют bat-оберток. Их список находится в
-`cat-harness/scripts/gen-bat-wrappers.sh`; команда `bun run cat bat:sync` заново генерирует обертки,
+`cat-harness-tools/scripts/gen-bat-wrappers.sh`; команда `bun run cat bat:sync` заново генерирует обертки,
 а `bun run cat bat:sync:check` завершает CI с ошибкой, если какая-либо из них отсутствует или устарела.
 
 ### Для Linux/macOS также есть скрипт
 
-`cat-harness/scripts/start-folio-assistant.sh` устанавливает Bun, если он отсутствует, а
+`cat-harness-tools/scripts/start-folio-assistant.sh` устанавливает Bun, если он отсутствует, а
 затем запускает сервер, а
 `cat-harness-tools/adapters/mcp-server/install.sh` представляет собой более полный установщик, охватывающий
 также и TeX Live. Оба оставались недокументированными до 2026-09-21
@@ -217,7 +217,7 @@ Antigravity нативно считывает `AGENTS.md`, поддержива�
 
 Подключите прайминг при старте сессии к хуку `SessionStart` в Antigravity, чтобы каждая
 сессия получала прайминг плана работы: укажите в команде хука общий скрипт
-`cat-harness/scripts/session-start-coord-sweep.sh` (тот же самый скрипт, который используют
+`cat-harness-tools/scripts/session-start-coord-sweep.sh` (тот же самый скрипт, который используют
 все харнессы; у каждого инструмента отличается только формат конфигурации хука).
 
 ### Gemini CLI

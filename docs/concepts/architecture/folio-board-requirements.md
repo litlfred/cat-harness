@@ -176,7 +176,7 @@ requirement had to move. It was not. Three facts settled it on 2026-10-02:
 
 So the docs nav never stood on R4 and needed no relaxation to be loaded once.
 What the relaxation *does* reach is the artefact R4 names: the board's linear
-floor is the todo listing, and `cat-harness/test/linear-floor.e2e.ts` is five
+floor is the todo listing, and `cat-harness-tools/test/linear-floor.e2e.ts` is five
 `javaScriptEnabled: false` assertions over it. Relaxing R4 permits converting
 that listing to a fetch; it does not decide whether to, and the test's header
 records what the static floor cost to build (bean `0jtj`: with JavaScript off,

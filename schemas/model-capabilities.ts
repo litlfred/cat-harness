@@ -10,6 +10,7 @@
  * **explicitly refuse with a clear structured error rather than silently degrading**.
  *
  * @module schemas/model-capabilities
+ * @graphNode schema
  */
 
 import { z } from "zod";

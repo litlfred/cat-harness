@@ -61,7 +61,7 @@ way; the pale decorator sages (`#9CAF88`, `#87A96B`) all land near 2.5:1.
 
 #### The facts are fetched, not baked — and that is a storage decision
 
-`cat-harness/scripts/staging-banner.ts` injects a fragment that is
+`cat-harness-tools/scripts/staging-banner.ts` injects a fragment that is
 **byte-identical on every page and across every rebuild**, and the browser
 derives its preview root from `location.pathname`, fetches `staging.json` and
 fills the banner in.
@@ -164,7 +164,7 @@ total, every preview is a full copy of the site, and `gh-pages` passed GitHub's
 10 GB Pages limit — freezing the live site on 2026-10-01.
 
 So every `stage` run, inside its push loop, runs
-`cat-harness/scripts/staging-rotate.ts`: it stamps the preview it is staging
+`cat-harness-tools/scripts/staging-rotate.ts`: it stamps the preview it is staging
 (`STAGING/<slug>/.staged-at`), keeps that one plus the most recently updated
 others while the total fits `MAX_PREVIEW_BYTES` (3 GB, 3 x 1024^3 bytes, defined
 there and nowhere else), and removes the rest, oldest first — each with a `removed` render-log entry, its record retired into
@@ -198,7 +198,7 @@ A rendered directory is **in the cone** when a changed file is
 3. in a directory it is `derivedFrom`, transitively (`check:derived-from
    --downstream <instance/id>` prints that half on its own).
 
-`cat-harness/scripts/staging-cone.ts` computes it; `compose-docs.ts`
+`cat-harness-tools/scripts/staging-cone.ts` computes it; `compose-docs.ts`
 `carriedInstances` applies it to the composed instances. Three rules hold it
 honest:
 
@@ -245,7 +245,7 @@ builds cancelled in a row between 07:50Z and 08:00Z that day, the main site's
 among them.
 
 So before each push attempt the `stage` job re-reads `gh-pages` and runs
-`cat-harness/scripts/staging-push-gate.ts gate`, which holds the push until the
+`cat-harness-tools/scripts/staging-push-gate.ts gate`, which holds the push until the
 branch tip is old enough:
 
 | tip of `gh-pages` | wait until it is |
@@ -314,8 +314,8 @@ smart-ra: the staging workflow waited **33 min** for a runner to do 45 s of
 work, and GitHub's Pages deploy then waited **47 min** for about one.
 
 ```sh
-bun run cat-harness/scripts/stage-local.ts --repo <folio> [--branch B] [--dry-run]
-bun run cat-harness/scripts/stage-local.ts --repo <folio> --artifact <dir>
+bun run cat-harness-tools/scripts/stage-local.ts --repo <folio> [--branch B] [--dry-run]
+bun run cat-harness-tools/scripts/stage-local.ts --repo <folio> --artifact <dir>
 ```
 
 - **Default: push to `gh-pages`.** It runs the folio staging workflow's steps,

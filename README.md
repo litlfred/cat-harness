@@ -190,8 +190,8 @@ bun run cat readme:audit                        # verify a README's links still 
 bun run cat index:render                        # write an index checkout's root AGENTS.md, README.md and stubs
 bun run cat preview:site                        # BUILD the docs site locally and look at a page
 bun run cat bat:sync                            # the Windows .bat wrapper beside each user-run .sh (bat:sync:check for CI)
-bun run cat-harness/scripts/gen-schema-docs.ts  # regenerate the schema reference
-bun run cat-harness/scripts/gen-skill-docs.ts   # regenerate the skill-instruction reference
+bun run cat-harness-tools/scripts/gen-schema-docs.ts  # regenerate the schema reference
+bun run cat-harness-tools/scripts/gen-skill-docs.ts   # regenerate the skill-instruction reference
 ```
 
 **Connecting an LLM harness.** The assistant is an MCP server, launched over

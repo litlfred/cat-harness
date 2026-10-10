@@ -223,7 +223,7 @@ The step is `Task_ProvisionGhPages` ("Provision gh-pages") in the
 getting-started process ([`getting-started`](../../conduct/conduct-core/getting-started.md)
 §5), with the semantics of `A_Provision` in bootstrap-tools'
 [`render-kg-to-github-pages.bpmn`](../../../../bootstrap-tools/processes/render-kg-to-github-pages.bpmn).
-Run `bun run cat-harness/scripts/pages-bootstrap.ts --provision` (idempotent,
+Run `bun run cat-harness-tools/scripts/pages-bootstrap.ts --provision` (idempotent,
 never forced; without the flag it only reports `unprovisioned` and the exact
 command), then set Pages to **"Deploy from a branch: gh-pages, / (root)"**.
 The worked example is litlfred/test — an overlay with remote mounts, its

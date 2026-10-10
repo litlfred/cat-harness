@@ -75,7 +75,7 @@ To prevent browser V8 heap exhaustion on edge devices, datasets are never delive
 * **Declared Served Directory**: `dist/oxigraph/` with `"served": true` in instance configuration.
 
 ### Implementation B: Folio Assistant Beans Work Plan
-* **Compiler**: `cat-harness/scripts/beans-query.ts`
+* **Compiler**: `cat-harness-tools/scripts/beans-query.ts`
 * **Spine Graph**: `<https://folio-assistant.org/graph/beans>` $\to$ `beans-spine.nq.gz` (all 1,600+ beans with IDs, status, parents, and dependency edges).
 * **Subgraph Partitions**: `<https://folio-assistant.org/graph/beans/claims>` $\to$ `claims.nq.gz` (session claims, burndown history, and audit records).
 * **Queries**: `safe_drain_candidates`, `actionable_leaves`, `critical_path_blockers`, `rollup_invariant_violations`, `circular_blockers`.

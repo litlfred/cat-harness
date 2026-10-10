@@ -120,7 +120,7 @@ What that takes, on any page that picks its scheme on the client:
    ever pressed the toggle. `applyScheme` in `docs-ui.js` now asks
    `jtdShows(name)` first.
 
-**How it is held:** `cat-harness/test/first-paint-scheme.e2e.ts` lifts the
+**How it is held:** `cat-harness-tools/test/first-paint-scheme.e2e.ts` lifts the
 shipped snippet out of `head_custom.html`, holds the deferred bundle, and reads
 `html`'s computed background before the bundle runs; it holds the dark sheet in
 flight to prove no swap happens; and it checks a stored light choice ends up

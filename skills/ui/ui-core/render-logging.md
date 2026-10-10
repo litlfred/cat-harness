@@ -166,7 +166,7 @@ from the removal it describes.
 ## Writing an entry
 
 ```sh
-bun run cat-harness/scripts/render-log.ts --dir <gh-pages-checkout> \
+bun run cat-harness-tools/scripts/render-log.ts --dir <gh-pages-checkout> \
   --event rendered --kind staging-preview --path STAGING/<slug> --slug <slug> \
   --summary "preview published" --branch "$BRANCH" --commit "$SHA" --run "$RUN_URL"
 ```
