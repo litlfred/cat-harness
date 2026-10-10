@@ -5,7 +5,7 @@ status: in-progress
 type: task
 priority: normal
 created_at: 2026-10-01T06:58:00Z
-updated_at: 2026-10-09T23:30:00Z
+updated_at: 2026-10-10T06:20:00Z
 parent: folio-assistant-iirv
 blocked_by:
     - folio-assistant-pyds
@@ -106,3 +106,17 @@ Still open:
 - Repoint downstream: folio-assistant-core's references and who-iris's pin.
 - `cat` runner in the separated repos (`j3ls`).
 
+
+## 2026-10-10 — downstream repointed, who-iris pinned past the move
+
+Owner, 2026-10-10: "go" (move the pins); "merge when green and ready".
+- **Core.** folio-assistant-core #18 changed 194 imports and 16 other references from `../cat-harness/` to `../cat-harness-tools/`. Core's 656 tests show no new failures against the pre-move layout. #19 fixed the `input-trace` import: that file moved to `cat-harness/schemas/`, not to the tools layer.
+- **Tools fixes found by building who-iris.** cat-harness-tools #23: four modules still rooted the harness at their own directory, `gen-navbar-include` among them, which crashed the site build. #24: `ui/` and `viewer/` are undeclared again; they are the server's pages, and as declared they collided at `/code/cat-harness-tools/`. #25: no kind-route redirect is written to a viewer the site does not carry.
+- **who-iris #25.** Pins: cat-harness 9ca7c32, cat-harness-tools 6313049, core 17bbe5f, with consent recorded. It also restores the `HARNESS_IS_MOUNTED` skip that the declared-visualisers refactor had dropped, and writes the catalogue page into who-iris's own site with its relative links re-based. Verified: mount 0, the five gates 0, 97 tests, publish steps 3–6 all 0, and 0 unresolved links over 1,646 files. The publish Routine now names `cat-harness-tools/scripts/…`.
+- **bootstrap-tools.** No reference to the moved code.
+
+Still open:
+- The two `harness-state` tests need `bun run cat health` in a full checkout with remotes.
+- layout-norms "at least one pair" fails only in a checkout too small to hold a nesting, like the existing `>5 instances` guard.
+- Falsifiers 1 and 3 have not been run.
+- gh-pages has not been republished at the new pins; it still serves the 2026-10-09 build.
