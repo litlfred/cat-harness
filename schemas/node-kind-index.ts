@@ -40,7 +40,7 @@ import { existsSync } from "node:fs";
 import { z } from "zod";
 import { join, relative, resolve } from "node:path";
 
-import { readDeclaration, resolveGraphTypology, type GraphTypologyRegistry } from "./cat-harness.js";
+import { CatHarnessDeclarationKind, readDeclaration, resolveGraphTypology, type GraphTypologyRegistry } from "./cat-harness.js";
 import type { NodeSchemaRef } from "./graph-typology-registry.js";
 import { parseValidatorRef, rootOf } from "./kind-validator.js";
 import { isNodeKind, nodeKind, type NodeKind } from "./node-kind.js";
@@ -74,7 +74,47 @@ export interface NodeKindEntry {
   pages?: { module: string; exportName: string };
   /** The graph typologies that hold nodes of this kind, and the families they file it under. */
   holdings: { typology: string; family?: string }[];
+  /**
+   * How its nodes are found when no typology holds them: by a NAME RULE
+   * ({@link NAME_RULE_KINDS}). `instance-declaration` is each instance's own
+   * `<instance>.json`, which sits at an instance root rather than in a
+   * declared directory, so no typology can name it. Absent: found through
+   * `holdings`.
+   */
+  foundBy?: NameRule;
 }
+
+/**
+ * The rules that find a kind's nodes WITHOUT a typology. One today.
+ *
+ * An instance declaration is a node (bean `ujiv`, issue #88: *"harness
+ * declarations become node kinds by tagging the files"*), but it is not IN a
+ * directory any typology describes. It is the file that DECLARES the
+ * directories, at the instance's root, found by `findDeclarationFile`. Filing
+ * it under a typology would invent a directory; the rule names where it is.
+ */
+export type NameRule = "instance-declaration";
+
+/** A kind found by a name rule: the `nodeKind()` itself, where it is declared, and the rule. */
+export interface NameRuleKind {
+  kind: NodeKind;
+  /** Absolute path of the module holding the export. */
+  file: string;
+  exportName: string;
+  rule: NameRule;
+}
+
+/**
+ * Kinds found by a name rule. Imported, not named by a validator ref: a ref
+ * resolves against the `instanceRoot` the caller passes, and these are this
+ * module's OWN instance's kinds wherever the index is built from.
+ */
+export const NAME_RULE_KINDS: readonly NameRuleKind[] = [
+  { kind: CatHarnessDeclarationKind, file: join(import.meta.dir, "cat-harness.ts"), exportName: "CatHarnessDeclarationKind", rule: "instance-declaration" },
+];
+
+/** The instance this module belongs to: the one whose code holds {@link NAME_RULE_KINDS}. */
+const OWN_INSTANCE = (): string => readDeclaration(resolve(import.meta.dir, ".."))?.name ?? "";
 
 /** A family (or a typology's nodes as a whole) that no node kind validates yet. */
 export interface Unkinded {
@@ -97,7 +137,7 @@ export interface NodeKindIndex {
  * node kind — so the file that records node kinds is itself one, and the gate
  * that refuses a new unkinded family does not start by refusing its own.
  */
-export const NodeKindIndexFileKind = nodeKind("node-kind-index/1.0.0", [], {
+export const NodeKindIndexFileKind = nodeKind("node-kind-index/1.1.0", [], {
   kinds: z.array(z.object({
     id: z.string().min(1),
     version: z.string().optional(),
@@ -109,6 +149,8 @@ export const NodeKindIndexFileKind = nodeKind("node-kind-index/1.0.0", [], {
     exportName: z.string().optional(),
     pages: z.object({ module: z.string().min(1), exportName: z.string().min(1) }).optional(),
     holdings: z.array(z.object({ typology: z.string().min(1), family: z.string().optional() })),
+    // 1.1.0 (bean `ujiv`): a kind found by a name rule rather than a typology.
+    foundBy: z.enum(["instance-declaration"]).optional(),
   })),
   unkinded: z.array(z.object({
     typology: z.string().min(1),
@@ -132,6 +174,7 @@ export async function nodeKindIndex(
   registry: GraphTypologyRegistry,
   instanceRoot: string,
   repoRoot: string,
+  nameRules: readonly NameRuleKind[] = NAME_RULE_KINDS,
 ): Promise<NodeKindIndex> {
   const byId = new Map<string, { kind: NodeKind; entry: NodeKindEntry }>();
   const collisions = new Set<string>();
@@ -212,6 +255,11 @@ export async function nodeKindIndex(
       if (r.kind) withPages(add(r.kind, { declaredBy: r.declaredBy, ...r.at! }), typology).holdings.push({ typology });
       else unkinded.push({ typology, reason: r.reason ?? "unresolvable", ref: def.validator });
     }
+  }
+
+  // Kinds no typology holds, found by a name rule instead.
+  for (const { kind, file, exportName, rule } of nameRules) {
+    add(kind, { declaredBy: OWN_INSTANCE(), module: relative(repoRoot, file).split("\\").join("/"), exportName }).foundBy = rule;
   }
 
   for (const { entry } of byId.values()) {

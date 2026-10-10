@@ -12,6 +12,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-validators`,
 |---|---|---|
 | [`basic-cdn-site.json`](basic-cdn-site.json) | data |  |
 | [`bean-index.json`](bean-index.json) | data |  |
+| [`bean-node.json`](bean-node.json) | data |  |
 | [`beans-merge-queue-entry.json`](beans-merge-queue-entry.json) | data |  |
 | [`beans-session-survey.json`](beans-session-survey.json) | data |  |
 | [`binary-release.json`](binary-release.json) | data |  |

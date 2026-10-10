@@ -995,7 +995,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "folio-qa-graph/v1": { shape: "content/pipeline/qa-graph-index.ts#QaGraphIndex" },
       "folio-translation-index/v1": { shape: "content/pipeline/translation-index.ts#TranslationIndex" },
       "folio-bean-index/v1": { generated: true },
-      "node-kind-index/1.0.0": { generated: true },
+      "node-kind-index/1.1.0": { generated: true },
       "folio-translation-status/v1": { generated: true },
       "folio-schema-graph/v1": { generated: true },
       "folio-library-index/v1": { generated: true },
@@ -1728,19 +1728,21 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // thing in different words.
   "bean-defs": {
     description:
-      "work items — one Markdown file each, in the layout the `beans` CLI reads. Authored by people and agents.",
+      "work items — one Markdown file each, in the layout the `beans` CLI reads, `$schema: bean/1.0.0` in its front matter. Authored by people and agents.",
     title: "Bean definitions",
     renderable: false,
     // What is being worked on. A bean names a change to something; it is not
     // the something.
     holds: "state",
     recordsWork: true, // beans (agent), todos (person), workflow-state (a process mid-flight)
-    validatorNotApplicable:
-      "no instance declares a directory of this kind — it is nested inside `beans/`, declared by " +
-      "`beans/beans.json`, and reached through its parent. There is nothing here to validate; `check:bean-front-matter` and its four siblings grade the bean store.",
+    // Its validator is the `bean/1.0.0` node kind (`validators/bean-node.json`,
+    // bean `ujiv`, issue #88). It was `validatorNotApplicable` until then: a
+    // bean carried no tag, so nothing could say which schema it was written
+    // against. The tag is restored by `bun run beans:retag`, because `beans
+    // update` drops every front-matter key it does not know.
     summary:
-      "Work items — one Markdown file each, in the layout the `beans` CLI reads. " +
-      "Authored and edited by people and agents.",
+      "Work items — one Markdown file each, in the layout the `beans` CLI reads, carrying " +
+      "`$schema: bean/1.0.0` in its front matter. Authored and edited by people and agents.",
   },
   // Bean `m61r`, issue #1853: one pull request's addendum to a bean, in a file
   // of its own, so sibling pull requests stop conflicting on one bean they all

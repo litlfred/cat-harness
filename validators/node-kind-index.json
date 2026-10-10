@@ -3,7 +3,7 @@
   "id": "node-kind-index",
   "validates": {
     "kind": "docs",
-    "family": "node-kind-index/1.0.0"
+    "family": "node-kind-index/1.1.0"
   },
   "schema": "schemas/node-kind-index.ts#NodeKindIndexFileKind"
 }
