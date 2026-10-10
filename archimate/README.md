@@ -84,6 +84,20 @@ Types are the Open Group exchange format's names in its namespace
 view's SVG links relative to its own address, so it works standalone, in its
 page, or embedded in a document as a figure.
 
+In a site build (`--out`) the data stays at the graph's path, so no IRI moves,
+and the **pages** go to the route of the visualiser the instance declares for
+the `archimate-pages` Tool, `<locale>/<harness>/<id>/` (owner, 2026-10-09:
+every visualiser page at `<base>/<harness>/<visualiser>`). smart-ra declares
+
+```json
+"visualisers": [{ "id": "archimate", "renderedBy": "archimate-pages", "covers": ["archimate"] }]
+```
+
+so its pages are at `en/dpi-h-ra/archimate/`. An instance that declares none
+gets no site pages: the run stops and says what to declare, rather than write
+to a route nobody declared. Every site page carries `rendered-by`, which is
+how `check:visualiser-routes` holds it to the route.
+
 ## What is read, and what is not yet
 
 Archi's native format, plain or zipped. Not yet: the Open Group exchange
