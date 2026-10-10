@@ -33,8 +33,14 @@ export function declaredDirectories(repoRoot: string, graphTypology: string): st
   // input-site: env-unset FOLIO_FIXTURE_CHECKOUT #d3ac43d3 — a test-only override naming a checkout OUTSIDE the tree
   const fixture = process.env[FIXTURE_ENV];
   const ownRoots = instanceRootsIn(repoRoot);
-  const hasOwn = ownRoots.some((r) => ownDeclaredDirectories(r, graphTypology, repoRoot).length > 0);
-  const roots = hasOwn || !fixture ? ownRoots : [...ownRoots, ...instanceRootsIn(fixture)];
+  // The fixture's instances are scanned BESIDE this checkout's, for every
+  // graph typology. It was "only when no own instance declares the typology",
+  // which hid the fixture's fhir-harness `typologies/` from a standalone
+  // cat-harness that declares a `typologies/` of its own (ig-pages, ig-ast,
+  // ig-metadata-index, the todo kinds), so four tests failed standalone. The
+  // fixture is set only when the checkout holds no vocabulary, never in a
+  // composed checkout, so there a scan is unchanged.
+  const roots = fixture ? [...ownRoots, ...instanceRootsIn(fixture)] : ownRoots;
   return roots.flatMap((root) => ownDeclaredDirectories(root, graphTypology, repoRoot));
 }
 
