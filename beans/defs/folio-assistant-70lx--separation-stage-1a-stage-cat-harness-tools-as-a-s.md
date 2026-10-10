@@ -5,7 +5,7 @@ status: in-progress
 type: task
 priority: normal
 created_at: 2026-10-01T06:58:00Z
-updated_at: 2026-10-10T08:00:00Z
+updated_at: 2026-10-10T12:00:00Z
 parent: folio-assistant-iirv
 blocked_by:
     - folio-assistant-pyds
@@ -136,3 +136,12 @@ Still open:
 
 **Remaining Done-when.** `bun run cat gates --all` has not been run as a whole; its parts were measured above.
 
+
+## 2026-10-10 — why `gates --all` cannot be run as written
+
+`bun run cat gates --all` reads its gate list from the monorepo's `.github/workflows/code-quality-gates.yml`. The separated repositories have no such aggregate workflow, so it exits 2 before running anything. That is not a gate failing. The last Done-when box cannot be checked in the form it is written; what it was meant to cover was measured part by part:
+- all 106 `:check` scripts, before and after the move (falsifier 1);
+- `check:import-direction --all` (falsifier 4);
+- who-iris's five gates and 97 tests at the repinned closure (who-iris #27).
+
+Closing the box needs one of two things: a gate list the gates runner reads from the declarations rather than from a workflow file, or an owner ruling that the per-part measurement stands in for it.

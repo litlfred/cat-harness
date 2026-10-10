@@ -1,11 +1,11 @@
 ---
 # folio-assistant-qump
 title: 'REMOTE MOUNT BOOTSTRAP: mount:remote cannot read a declaration whose kinds come from the closure it is about to mount'
-status: todo
+status: in-progress
 type: bug
 priority: high
 created_at: 2026-10-09T19:00:00Z
-updated_at: 2026-10-09T19:00:00Z
+updated_at: 2026-10-10T12:00:00Z
 parent: folio-assistant-iirv
 ---
 
@@ -38,4 +38,21 @@ checked against the first.
 ## Done when
 - [ ] from an EMPTY directory: clone who-iris, clone cat-harness at the lock ref, run
       `remote-mount.ts` — it mounts, with no sibling checkout anywhere above it
-- [ ] a test with a fixture whose root declaration uses a kind only a mounted layer registers
+- [x] a test with a fixture whose root declaration uses a kind only a mounted layer registers
+
+## 2026-10-10 — fixed: cat-harness #87 (b27a4da), cat-harness-tools #33 (c6dd270)
+
+**Re-measured first, at who-iris 748c238.** In an empty directory: who-iris, plus cat-harness ffad8df, cat-harness-tools abadba3 and bootstrap-tools at the lock refs, and no core anywhere. It still failed: exit 2, `directory "who-iris-catalogue" declares unknown graph typology "catalogue"`.
+
+**The fix is the shape above.**
+- The harness gains `readMountFields`: `name`, `remoteMounts`, `mountApprovers` and `directories[].path`, read structurally. This is how the planner already reads an upstream.
+- `readDeclaredMounts`, `writeDeclaredMounts` and remote-mount's downstream reads go through it.
+- Full validation is left to the checks that run once the closure is on disk.
+
+**Verified in the same empty directory with both fixes applied.**
+- The mount exits 0, and `index.lock.json` is byte-identical to the committed one.
+- The five who-iris gates exit 0, and 97/97 tests pass.
+- All 106 `:check` scripts exit identically before and after.
+- New tests in `index-config.test.ts` assert that the full read throws on the unregistered kind while the mounts are still read.
+
+**Box 1 stays open until who-iris's lock pins cat-harness ≥ b27a4da and cat-harness-tools ≥ c6dd270.** Until then, a sibling cloned "at the lock ref" is the unfixed revision. That repin is a pin move, so it needs the owner's consent (H8).
