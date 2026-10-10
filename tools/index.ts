@@ -451,13 +451,13 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       id: "archimate-pages",
       title: "Give every ArchiMate view, element and relationship a page and an IRI, and draw every view",
       description:
-        "Write a JSON-LD node and a thin page for each model an instance's `cat-archimate.config.json` names and for every view, element and relationship in it — keyed by Archi's own ids — plus the normalised model the pages' one loader draws from, and every view drawn as SVG from the model's own bounds and bendpoints in ArchiMate's notation, each box a link to its element. `--out` writes into a site being built at the graph's path; without it the files go into the graph and `--check` gates them.",
+        "Write a JSON-LD node and a thin page for each model an instance's `cat-archimate.config.json` names and for every view, element and relationship in it — keyed by Archi's own ids — plus the normalised model the pages' one loader draws from, and every view drawn as SVG from the model's own bounds and bendpoints in ArchiMate's notation, each box a link to its element. `--out` writes into a site being built — the data at the graph's path, the pages at the route of the visualiser the instance declares for this Tool, `<locale>/<harness>/<id>/`; without it the files go into the graph and `--check` gates them.",
       install: { none: true },
       invoke: { shell: "bun run cat-harness-tools/archimate/scripts/gen-archimate-pages.ts" },
       io: {
         inputs: [
           { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root." },
-          { name: "out", schema: t("RepoPath"), required: false, arg: { flag: "--out" }, description: "A site being built: the pages land at `<out>/<graph path>/`. Absent, they are written into the graph, which must be `served: true`." },
+          { name: "out", schema: t("RepoPath"), required: false, arg: { flag: "--out" }, description: "A site being built: the data lands at `<out>/<graph path>/` and the pages at `<out>/<locale>/<harness>/<id>/`, the route of the instance's one visualiser `renderedBy` this Tool (none declared: nothing is written). Absent, they are written into the graph, which must be `served: true`." },
           { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Without `--out`: fail if a committed page is missing, stale or orphaned; write nothing." },
         ],
         outputs: [
