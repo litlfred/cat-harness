@@ -53,7 +53,7 @@ import { ValidatorNodeSchema, type ValidatorNode } from "./validator-node";
 import { namespaceForLayer } from "./namespaces";
 import type { NewInstanceSource } from "./subgraph-source";
 import { BOOTSTRAP_GRAPH_TYPOLOGIES } from "@litlfred/bootstrap-tools/schemas/graph.ts";
-import { instanceRootsIn, repoRootFor } from "./instance-roots";
+import { instanceRootsIn } from "./instance-roots";
 
 
 // ── Graph typologies ─────────────────────────────────────────────────
