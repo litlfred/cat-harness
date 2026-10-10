@@ -3,12 +3,12 @@
   "group": "cat-harness/skills/authoring/content-lifecycle",
   "size": 10,
   "internal": 9,
-  "inbound": 52,
-  "outbound": 3,
+  "inbound": 53,
+  "outbound": 4,
   "cohesion": 0.14,
   "enforcedBoundary": 0,
-  "recordedBoundary": 55,
-  "proseMentions": 10,
-  "wrongDirection": 0,
+  "recordedBoundary": 57,
+  "proseMentions": 11,
+  "wrongDirection": 1,
   "undeterminedDirection": 0
 }

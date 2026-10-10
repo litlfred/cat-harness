@@ -5,7 +5,7 @@
     "id": "content-graph-build",
     "path": null
   },
-  "source_hash": "21dd11b78b16",
+  "source_hash": "e24cb3be673c",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

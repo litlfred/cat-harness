@@ -5,7 +5,7 @@
     "id": "Process_CRDM_Close",
     "path": "processes/process/crdm-close.bpmn"
   },
-  "source_hash": "sha256:9c3718686e8b98feadf671575b9723523f665c34b2797744c5dd002572e5ed3f",
+  "source_hash": "sha256:1366f8e1c2fa4705b47e8470e7b04b2a7513ccf614ba07e24757fb86df01c5a7",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -41,6 +41,10 @@
         {
           "where": "A_RecordSignoff",
           "detail": "names skill \"adjudication\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
+        },
+        {
+          "where": "Call_MergeToMain",
+          "detail": "names skill \"merge-to-main\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
         },
         {
           "where": "A_Close",

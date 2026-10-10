@@ -5,7 +5,7 @@
     "id": "latexmk-compile",
     "path": null
   },
-  "source_hash": "3d066b860e83",
+  "source_hash": "2c1b80b68cb1",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "Process_RelatedWork",
     "path": "processes/sdlc/related-work.bpmn"
   },
-  "source_hash": "sha256:fabebdbd1b8d26e0255cdecf44517c4ae6ee04d439aad349f2e8f88d1754ee3e",
+  "source_hash": "sha256:c21b0b6f005a1a970a8d1ed3370c327454772ee193fc289967f04acb51fc246b",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

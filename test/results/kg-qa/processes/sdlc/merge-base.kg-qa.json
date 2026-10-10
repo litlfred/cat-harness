@@ -5,7 +5,7 @@
     "id": "Process_MergeBase",
     "path": "processes/sdlc/merge-base.bpmn"
   },
-  "source_hash": "sha256:51a97361c3b8e832609629b3510c8793b01fa391c7c0051b936534d55b2700af",
+  "source_hash": "sha256:b067072b22591fc12746cfc058b1b128a7a2cf06a558335798c50d989075e644",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -126,13 +126,8 @@
       "findings": []
     },
     "prose-reviewed-since-code-changed": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": ".github/workflows/merge-main.yml",
-          "detail": ".github/workflows/merge-main.yml changed since cat-harness/processes/sdlc/merge-base.bpmn was last attested (agent), and the prose did not. Re-read it; if it still holds, run pairs:attest with a reason."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "prose-claims-resolve": {
       "result": "pass",
@@ -140,8 +135,8 @@
     }
   },
   "totals": {
-    "pass": 14,
-    "fail": 3,
+    "pass": 15,
+    "fail": 2,
     "n/a": 8,
     "unknown": 0
   }

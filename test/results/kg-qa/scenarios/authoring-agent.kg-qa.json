@@ -5,7 +5,7 @@
     "id": "authoring-agent",
     "path": "scenarios/roles.json"
   },
-  "source_hash": "sha256:6100b2a54fccaaea070659e5054fc2d6015936dccf4603e270c9e7c2fc7a3369",
+  "source_hash": "sha256:66abbc76e0e0168c2a8cce71e34e844c5d2a68d39c90bf6830fa68605987b0b8",
   "criteria": {
     "role-skills-resolve": {
       "result": "pass",

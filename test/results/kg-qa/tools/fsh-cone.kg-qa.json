@@ -5,7 +5,7 @@
     "id": "fsh-cone",
     "path": null
   },
-  "source_hash": "285e5eb5928a",
+  "source_hash": "943c516e640c",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

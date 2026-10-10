@@ -5,7 +5,7 @@
     "id": "Process_SubscribeKg",
     "path": "processes/library/subscribe-kg.bpmn"
   },
-  "source_hash": "sha256:acf7312787407b5a13a6b6686c1c5710eedb8e1a3c00f1dd59a630fdf4724b9d",
+  "source_hash": "sha256:d4f1bfe13cc5fd43d502cd339e55379a77c787e376550de106e0b390bfc16420",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -101,8 +101,13 @@
       "findings": []
     },
     "role-carries-activity-skill": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Task_Instantiate",
+          "detail": "needs skill \"index-config\", but its lane's role \"ingestion-agent\" does not carry it."
+        }
+      ]
     },
     "activity-names-skill": {
       "result": "pass",
@@ -154,8 +159,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 1,
+    "pass": 15,
+    "fail": 2,
     "n/a": 8,
     "unknown": 0
   }

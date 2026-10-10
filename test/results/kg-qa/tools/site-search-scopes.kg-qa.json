@@ -5,7 +5,7 @@
     "id": "site-search-scopes",
     "path": null
   },
-  "source_hash": "991d1b74b630",
+  "source_hash": "17bf05ad443e",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

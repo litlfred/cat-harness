@@ -5,7 +5,7 @@
     "id": "lean-coverage",
     "path": null
   },
-  "source_hash": "2bdc34de8b04",
+  "source_hash": "914d9ac01e31",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

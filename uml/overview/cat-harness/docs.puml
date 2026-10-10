@@ -370,8 +370,8 @@ package "cat-harness/docs" as pkg_cat_harness_docs <<docs>> {
     bytes [1] : integer
     mediaType [1] : string
   }
-  note "docs folio-qa-graph/v1: no node schema declared\n(content/pipeline/qa-graph-index.ts does not exist under the instance root /tmp/claude-0/-home-user/01aeb2b8-4c29-5fe7-9903-53487fd27bbb/scratchpad/env29/folio-assistant/cat-harness: could not determine)" as n_cat_harness_docs_docs_folio_qa_graph_v1
-  note "docs folio-translation-index/v1: no node schema declared\n(content/pipeline/translation-index.ts does not exist under the instance root /tmp/claude-0/-home-user/01aeb2b8-4c29-5fe7-9903-53487fd27bbb/scratchpad/env29/folio-assistant/cat-harness: could not determine)" as n_cat_harness_docs_docs_folio_translation_index_v1
+  note "docs folio-qa-graph/v1: no node schema declared\n(content/pipeline/qa-graph-index.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_cat_harness_docs_docs_folio_qa_graph_v1
+  note "docs folio-translation-index/v1: no node schema declared\n(content/pipeline/translation-index.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_cat_harness_docs_docs_folio_translation_index_v1
 }
 
 cat_harness_docs_folio_todo_index_v1_Item *-- "0..*" cat_harness_docs_folio_todo_index_v1_Relation : relations

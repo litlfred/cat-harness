@@ -1,8 +1,8 @@
 {
   "$schema": "qa-results/v1",
   "producer": {
-    "script": "cat-harness/scripts/check-term-mapping.ts",
-    "script_hash": "0f2abae34137"
+    "script": "cat-harness-tools/scripts/check-term-mapping.ts",
+    "script_hash": "ba9329dc2473"
   },
   "subject": {
     "kind": "glossary",
@@ -10,14 +10,14 @@
   },
   "families": {
     "fhir": {
-      "summary": "3528 candidate(s): 0 mapped, 3528 unmapped, 0 undetermined",
+      "summary": "3685 candidate(s): 0 mapped, 3685 unmapped, 0 undetermined",
       "count": 5,
       "entries": [
         {
           "scheme": "kg-bpmn-activities",
           "target": "fhir",
           "mapped": 0,
-          "unmapped": 713,
+          "unmapped": 749,
           "undetermined": 0,
           "mappedTerms": []
         },
@@ -25,7 +25,7 @@
           "scheme": "kg-dmn-decisions",
           "target": "fhir",
           "mapped": 0,
-          "unmapped": 13,
+          "unmapped": 15,
           "undetermined": 0,
           "mappedTerms": []
         },
@@ -33,7 +33,7 @@
           "scheme": "kg-schema-fields",
           "target": "fhir",
           "mapped": 0,
-          "unmapped": 2274,
+          "unmapped": 2362,
           "undetermined": 0,
           "mappedTerms": []
         },
@@ -41,7 +41,7 @@
           "scheme": "kg-skills",
           "target": "fhir",
           "mapped": 0,
-          "unmapped": 346,
+          "unmapped": 363,
           "undetermined": 0,
           "mappedTerms": []
         },
@@ -49,21 +49,21 @@
           "scheme": "kg-tools",
           "target": "fhir",
           "mapped": 0,
-          "unmapped": 182,
+          "unmapped": 196,
           "undetermined": 0,
           "mappedTerms": []
         }
       ]
     },
     "skos": {
-      "summary": "3528 candidate(s): 0 mapped, 3528 unmapped, 0 undetermined",
+      "summary": "3685 candidate(s): 0 mapped, 3685 unmapped, 0 undetermined",
       "count": 5,
       "entries": [
         {
           "scheme": "kg-bpmn-activities",
           "target": "skos",
           "mapped": 0,
-          "unmapped": 713,
+          "unmapped": 749,
           "undetermined": 0,
           "mappedTerms": []
         },
@@ -71,7 +71,7 @@
           "scheme": "kg-dmn-decisions",
           "target": "skos",
           "mapped": 0,
-          "unmapped": 13,
+          "unmapped": 15,
           "undetermined": 0,
           "mappedTerms": []
         },
@@ -79,7 +79,7 @@
           "scheme": "kg-schema-fields",
           "target": "skos",
           "mapped": 0,
-          "unmapped": 2274,
+          "unmapped": 2362,
           "undetermined": 0,
           "mappedTerms": []
         },
@@ -87,7 +87,7 @@
           "scheme": "kg-skills",
           "target": "skos",
           "mapped": 0,
-          "unmapped": 346,
+          "unmapped": 363,
           "undetermined": 0,
           "mappedTerms": []
         },
@@ -95,7 +95,7 @@
           "scheme": "kg-tools",
           "target": "skos",
           "mapped": 0,
-          "unmapped": 182,
+          "unmapped": 196,
           "undetermined": 0,
           "mappedTerms": []
         }

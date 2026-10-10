@@ -5,7 +5,7 @@
     "id": "qa-sweep",
     "path": null
   },
-  "source_hash": "a68e7e7507c8",
+  "source_hash": "acbd834ae1d2",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

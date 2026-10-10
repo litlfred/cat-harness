@@ -5,7 +5,7 @@
     "id": "pin-spdx-license-list",
     "path": null
   },
-  "source_hash": "6b5ad1ae6d0b",
+  "source_hash": "0c6a00c459b9",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

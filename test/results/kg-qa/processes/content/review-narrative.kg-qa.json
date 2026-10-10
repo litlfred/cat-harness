@@ -5,7 +5,7 @@
     "id": "Process_NarrativeReview",
     "path": "processes/content/review-narrative.bpmn"
   },
-  "source_hash": "sha256:44fec5fd8ab3d4a38409f0532528b1da95a5f47643481d878bea303d938609e1",
+  "source_hash": "sha256:076b7130fa9d3106a3fc1cbc116c46a67a84346496bfb03d73333fee9e6cf44e",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

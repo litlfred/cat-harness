@@ -5,7 +5,7 @@
     "id": "serve-rendering",
     "path": null
   },
-  "source_hash": "a3ce6e416397",
+  "source_hash": "9555418c011b",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",
@@ -28,7 +28,7 @@
       "findings": []
     },
     "tool-alternative-selectable": {
-      "result": "n/a",
+      "result": "pass",
       "findings": []
     },
     "tool-downstream-fresh": {
@@ -41,9 +41,9 @@
     }
   },
   "totals": {
-    "pass": 5,
+    "pass": 6,
     "fail": 0,
-    "n/a": 3,
+    "n/a": 2,
     "unknown": 0
   }
 }

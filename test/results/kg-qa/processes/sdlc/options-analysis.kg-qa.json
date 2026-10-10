@@ -5,7 +5,7 @@
     "id": "Process_OptionsAnalysis",
     "path": "processes/sdlc/options-analysis.bpmn"
   },
-  "source_hash": "sha256:40f305b09179d5bb141a619c05d48bae0c40de23e19894749231f5154ad0aa91",
+  "source_hash": "sha256:1402c5d8b61ef45d59599cc564b0c8431ae6b9cc89835547544eb9a3336d1e14",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

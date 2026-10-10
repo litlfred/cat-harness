@@ -5,7 +5,7 @@
     "id": "translation-roundtrip-record",
     "path": null
   },
-  "source_hash": "2779cd454d6c",
+  "source_hash": "615f856a7acc",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

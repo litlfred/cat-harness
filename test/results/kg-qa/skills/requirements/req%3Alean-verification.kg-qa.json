@@ -5,7 +5,7 @@
     "id": "req:lean-verification",
     "path": "skills/requirements/lean-verification.json"
   },
-  "source_hash": "sha256:1ebbef49e2bafc986b182fdb78f7717447bf3eb1d19b850545c4297c29ad86b9",
+  "source_hash": "sha256:807d17a9d398bc9dcf683e903ab513c370fe055b327e5e48bf4fe2e50206c1bc",
   "criteria": {
     "requirement-statement-satisfied": {
       "result": "fail",

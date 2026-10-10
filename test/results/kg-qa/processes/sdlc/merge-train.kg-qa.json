@@ -5,7 +5,7 @@
     "id": "Process_MergeTrain",
     "path": "processes/sdlc/merge-train.bpmn"
   },
-  "source_hash": "sha256:94bcc9a96408c980d10b9cbb95aa375231d8406ce49cd00d6424dc4495a215d7",
+  "source_hash": "sha256:8c966aff9631a0959f745a15b9416d614d191db2fd8ed5f5577ab91c808a5d31",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -59,8 +59,8 @@
           "detail": "names skill \"merge-queue\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
         },
         {
-          "where": "Task_Release",
-          "detail": "names skill \"interaction-modality\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
+          "where": "Call_MergeToMain",
+          "detail": "names skill \"merge-to-main\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
         },
         {
           "where": "Task_Override",

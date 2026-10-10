@@ -5,7 +5,7 @@
     "id": "Process_ContentAcquisition",
     "path": "processes/library/content-acquisition.bpmn"
   },
-  "source_hash": "sha256:e30afc9827652f32555c9f385e3023fa5042776ed69f7428920a225d539edf0f",
+  "source_hash": "sha256:fbb11c4ba39a9413fde6cd486bdbb1f2bf8e2872474b285fead0e9b9c33f6c9e",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

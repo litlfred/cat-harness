@@ -8,14 +8,14 @@
   },
   "po": "translations/ar/guides/agent-onboarding.po",
   "source_hashes": {
-    "md": "d4665b9c0af1",
+    "md": "3bc342701ee9",
     "po": "69fc5d3e36d8"
   },
   "criteria": {
     "translation-coverage": [
       {
         "field_hash": {
-          "md": "d4665b9c0af1",
+          "md": "3bc342701ee9",
           "po": "69fc5d3e36d8"
         },
         "result": "warn",
@@ -24,11 +24,11 @@
           "id": "content/pipeline/translation-block-qa.ts",
           "actor": "local-sweep",
           "version": "v1",
-          "script_hash": "06b101877fe3",
-          "script_commit_sha": "0aafa93a45b45fdf8ff8e148b03e0f1f1b6c251f"
+          "script_hash": "4d69a471d0c9",
+          "script_commit_sha": "fc645ae1a775f8b8d14837374868f3e5bdfac397"
         },
-        "reviewed_at": "2026-10-08T06:10:40.512Z",
-        "reviewed_sha": "bface6c80e99d806ee91398c4d6b41b4ddcf2d53",
+        "reviewed_at": "2026-10-10T22:03:16.623Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
         "severity": "minor",
         "metrics": {
           "translated": 69,
@@ -41,7 +41,7 @@
     "translation-terms-preserved": [
       {
         "field_hash": {
-          "md": "d4665b9c0af1",
+          "md": "3bc342701ee9",
           "po": "69fc5d3e36d8"
         },
         "result": "pass",
@@ -50,11 +50,11 @@
           "id": "content/pipeline/translation-block-qa.ts",
           "actor": "local-sweep",
           "version": "v1",
-          "script_hash": "06b101877fe3",
-          "script_commit_sha": "0aafa93a45b45fdf8ff8e148b03e0f1f1b6c251f"
+          "script_hash": "4d69a471d0c9",
+          "script_commit_sha": "fc645ae1a775f8b8d14837374868f3e5bdfac397"
         },
-        "reviewed_at": "2026-10-08T06:10:40.528Z",
-        "reviewed_sha": "bface6c80e99d806ee91398c4d6b41b4ddcf2d53",
+        "reviewed_at": "2026-10-10T22:03:16.629Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
         "metrics": {
           "checked": 69,
           "missing": 0,
@@ -68,7 +68,7 @@
     "translation-not-echo": [
       {
         "field_hash": {
-          "md": "d4665b9c0af1",
+          "md": "3bc342701ee9",
           "po": "69fc5d3e36d8"
         },
         "result": "pass",
@@ -77,11 +77,11 @@
           "id": "content/pipeline/translation-block-qa.ts",
           "actor": "local-sweep",
           "version": "v1",
-          "script_hash": "06b101877fe3",
-          "script_commit_sha": "0aafa93a45b45fdf8ff8e148b03e0f1f1b6c251f"
+          "script_hash": "4d69a471d0c9",
+          "script_commit_sha": "fc645ae1a775f8b8d14837374868f3e5bdfac397"
         },
-        "reviewed_at": "2026-10-08T06:10:40.545Z",
-        "reviewed_sha": "bface6c80e99d806ee91398c4d6b41b4ddcf2d53",
+        "reviewed_at": "2026-10-10T22:03:16.633Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
         "metrics": {
           "echoed": 0,
           "translated": 69
@@ -90,5 +90,5 @@
     ],
     "translation-semantic-roundtrip": []
   },
-  "updated_at": "2026-10-08T06:10:40.553Z"
+  "updated_at": "2026-10-10T22:03:16.635Z"
 }

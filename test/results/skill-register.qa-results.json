@@ -1,8 +1,8 @@
 {
   "$schema": "qa-results/v1",
   "producer": {
-    "script": "cat-harness/scripts/skill-register.ts",
-    "script_hash": "9c94c4f9a239"
+    "script": "cat-harness-tools/scripts/skill-register.ts",
+    "script_hash": "dc5956ec3238"
   },
   "subject": {
     "kind": "corpus",

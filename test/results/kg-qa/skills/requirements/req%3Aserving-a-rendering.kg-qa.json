@@ -5,7 +5,7 @@
     "id": "req:serving-a-rendering",
     "path": "skills/requirements/serving-a-rendering.json"
   },
-  "source_hash": "sha256:3bdcb23fe7ccd6873682af908a4c7f4d4d523505f6992e2476a37c41b210f7e6",
+  "source_hash": "sha256:6a1598f04f2e33a8057a1f548bc6ad725911174451e020c5b9d7006d912e8789",
   "criteria": {
     "requirement-statement-satisfied": {
       "result": "fail",

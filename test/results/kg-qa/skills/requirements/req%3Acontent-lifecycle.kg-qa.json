@@ -5,7 +5,7 @@
     "id": "req:content-lifecycle",
     "path": "skills/requirements/content-lifecycle.json"
   },
-  "source_hash": "sha256:eb463303a98e4476ee88342e189b30b5d5f0f5e02ce989a219ff479b6ecc38af",
+  "source_hash": "sha256:2e3891937f9976d96a8f0a0e1f6d1d674a3c854b6df607d74770f4480195acd9",
   "criteria": {
     "requirement-statement-satisfied": {
       "result": "pass",

@@ -99,7 +99,7 @@ package "smart-base/library" as pkg_smart_base_library <<library>> {
     withheld [1] : object
     links [0..*] : object[]
   }
-  note "library folio-image-verdicts/v1: no node schema declared\n(scripts/apply-image-verdicts.ts does not exist under the instance root /tmp/claude-0/-home-user/01aeb2b8-4c29-5fe7-9903-53487fd27bbb/scratchpad/env29/folio-assistant/cat-harness: could not determine)" as n_smart_base_library_library_folio_image_verdicts_v1
+  note "library folio-image-verdicts/v1: no node schema declared\n(scripts/apply-image-verdicts.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_smart_base_library_library_folio_image_verdicts_v1
 }
 package "smart-base/methodologies" as pkg_smart_base_methodologies <<methodology>> {
   note "methodology: no node schema declared\n(no validator registered: could not determine)" as n_smart_base_methodologies_methodology
@@ -785,7 +785,7 @@ package "smart-base/smart-base-skills" as pkg_smart_base_smart_base_skills <<ski
     provenance [1] : assertion | evidence | house
     rules [1..*] : Rule[]
     overlaySeverity [0..1] : critical | major | minor
-    appliesTo [0..*] : list<enum(16) | docs | skill | readme | specification | code>
+    appliesTo [0..*] : list<enum(17) | docs | skill | readme | specification | code>
     activeIn [0..1] : object
     extends [0..1] : object
     superseded [0..1] : object
@@ -902,7 +902,7 @@ package "smart-base/voices" as pkg_smart_base_voices <<voices>> {
     sources [1..*] : Source[]
     rules [1..*] : Rule[]
     overlaySeverity [0..1] : critical | major | minor
-    appliesTo [0..*] : list<enum(16) | docs | skill | readme | specification | code>
+    appliesTo [0..*] : list<enum(17) | docs | skill | readme | specification | code>
     provenance [1] : assertion | evidence | house
     extends [0..1] : object
     activeIn [0..1] : object

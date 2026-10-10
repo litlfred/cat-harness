@@ -5,7 +5,7 @@
     "id": "Process_MountSubgraph",
     "path": "processes/kg/mount-subgraph.bpmn"
   },
-  "source_hash": "sha256:0a3eb8c87237ee3c8ad2a04f131059f5d54a47c697852ffb76450f5e21d9b185",
+  "source_hash": "sha256:ff97dd97476305b8ff829b9b8ef408909f91cd3b3d55a5bf1b1717bdd5d589c4",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -32,13 +32,8 @@
       "findings": []
     },
     "activity-skill-has-tool": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Task_MountRemotePin",
-          "detail": "names skill \"remote-mount\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "decision-ref-resolves": {
       "result": "n/a",
@@ -61,8 +56,13 @@
       "findings": []
     },
     "role-carries-activity-skill": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Task_RetrieveNpmPackage",
+          "detail": "needs skill \"npm-kg-distribution\", but its lane's role \"build-pipeline\" does not carry it."
+        }
+      ]
     },
     "activity-names-skill": {
       "result": "pass",

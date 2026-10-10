@@ -57,6 +57,11 @@
       "name": "core-adapters"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/core-code-lists",
+      "@type": "bootstrap:Subgraph",
+      "name": "core-code-lists"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/core-library",
       "@type": "bootstrap:Subgraph",
       "name": "core-library"

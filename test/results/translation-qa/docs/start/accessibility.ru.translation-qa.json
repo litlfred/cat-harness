@@ -24,11 +24,11 @@
           "id": "content/pipeline/translation-block-qa.ts",
           "actor": "local-sweep",
           "version": "v1",
-          "script_hash": "06b101877fe3",
-          "script_commit_sha": "0aafa93a45b45fdf8ff8e148b03e0f1f1b6c251f"
+          "script_hash": "4d69a471d0c9",
+          "script_commit_sha": "fc645ae1a775f8b8d14837374868f3e5bdfac397"
         },
-        "reviewed_at": "2026-10-08T06:10:41.222Z",
-        "reviewed_sha": "bface6c80e99d806ee91398c4d6b41b4ddcf2d53",
+        "reviewed_at": "2026-10-10T22:03:17.310Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
         "metrics": {
           "translated": 117,
           "total": 117,
@@ -48,11 +48,11 @@
           "id": "content/pipeline/translation-block-qa.ts",
           "actor": "local-sweep",
           "version": "v1",
-          "script_hash": "06b101877fe3",
-          "script_commit_sha": "0aafa93a45b45fdf8ff8e148b03e0f1f1b6c251f"
+          "script_hash": "4d69a471d0c9",
+          "script_commit_sha": "fc645ae1a775f8b8d14837374868f3e5bdfac397"
         },
-        "reviewed_at": "2026-10-08T06:10:41.242Z",
-        "reviewed_sha": "bface6c80e99d806ee91398c4d6b41b4ddcf2d53",
+        "reviewed_at": "2026-10-10T22:03:17.314Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
         "severity": "minor",
         "evidence": [
           {
@@ -91,11 +91,11 @@
           "id": "content/pipeline/translation-block-qa.ts",
           "actor": "local-sweep",
           "version": "v1",
-          "script_hash": "06b101877fe3",
-          "script_commit_sha": "0aafa93a45b45fdf8ff8e148b03e0f1f1b6c251f"
+          "script_hash": "4d69a471d0c9",
+          "script_commit_sha": "fc645ae1a775f8b8d14837374868f3e5bdfac397"
         },
-        "reviewed_at": "2026-10-08T06:10:41.261Z",
-        "reviewed_sha": "bface6c80e99d806ee91398c4d6b41b4ddcf2d53",
+        "reviewed_at": "2026-10-10T22:03:17.318Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
         "severity": "minor",
         "metrics": {
           "echoed": 5,
@@ -106,5 +106,5 @@
     ],
     "translation-semantic-roundtrip": []
   },
-  "updated_at": "2026-10-08T06:10:41.270Z"
+  "updated_at": "2026-10-10T22:03:17.320Z"
 }

@@ -15,6 +15,8 @@
     "smart-base:diig-figure": "python3 cat-harness-tools/scripts/pdf-vector-svg.py smart-base/library/9789240010567-eng vfig-p017 --pdf fsh-guts/uploads/9789240010567-eng.pdf --title \"DIIG Fig. 1.1.1. Planning and implementing a digital health enterprise: phases, steps and resources\"",
     "smart-base:diig-figure:check": "python3 cat-harness-tools/scripts/pdf-vector-svg.py smart-base/library/9789240010567-eng vfig-p017 --pdf fsh-guts/uploads/9789240010567-eng.pdf --title \"DIIG Fig. 1.1.1. Planning and implementing a digital health enterprise: phases, steps and resources\" --check",
     "smart-base:dth-terms": "bun run smart-base/scripts/gen-dth-term-findings.ts",
-    "smart-base:dth-terms:check": "bun run smart-base/scripts/gen-dth-term-findings.ts --check"
+    "smart-base:dth-terms:check": "bun run smart-base/scripts/gen-dth-term-findings.ts --check",
+    "smart-base:dak-data-dictionary": "bun run smart-base/scripts/dak-data-dictionary.ts",
+    "smart-base:dak-swimlanes": "bun run smart-base/scripts/dak-swimlanes.ts"
   }
 }

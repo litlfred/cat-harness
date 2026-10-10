@@ -51,7 +51,7 @@ package "smart-base/smart-base-skills" as pkg_smart_base_smart_base_skills <<ski
     provenance [1] : assertion | evidence | house
     rules [1..*] : Rule[]
     overlaySeverity [0..1] : critical | major | minor
-    appliesTo [0..*] : list<enum(16) | docs | skill | readme | specification | code>
+    appliesTo [0..*] : list<enum(17) | docs | skill | readme | specification | code>
     activeIn [0..1] : object
     extends [0..1] : object
     superseded [0..1] : object

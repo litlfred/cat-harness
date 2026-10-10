@@ -5,7 +5,7 @@
     "id": "latex-overfull",
     "path": null
   },
-  "source_hash": "189526868fc8",
+  "source_hash": "93c7bae5710e",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

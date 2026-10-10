@@ -89,7 +89,7 @@ package "cat-harness/library" as pkg_cat_harness_library <<library>> {
     withheld [1] : object
     links [0..*] : object[]
   }
-  note "library folio-image-verdicts/v1: no node schema declared\n(scripts/apply-image-verdicts.ts does not exist under the instance root /tmp/claude-0/-home-user/01aeb2b8-4c29-5fe7-9903-53487fd27bbb/scratchpad/env29/folio-assistant/cat-harness: could not determine)" as n_cat_harness_library_library_folio_image_verdicts_v1
+  note "library folio-image-verdicts/v1: no node schema declared\n(scripts/apply-image-verdicts.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_cat_harness_library_library_folio_image_verdicts_v1
 }
 
 cat_harness_library_folio_block_summaries_v1_Summary *-- "0..*" cat_harness_library_folio_block_summaries_v1_Superseded : superseded

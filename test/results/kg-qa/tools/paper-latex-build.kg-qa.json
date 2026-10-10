@@ -5,7 +5,7 @@
     "id": "paper-latex-build",
     "path": null
   },
-  "source_hash": "4548d16a254e",
+  "source_hash": "1f79cb1d85f0",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",
