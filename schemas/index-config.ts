@@ -237,6 +237,46 @@ export function requireIndexConfig(root: string): IndexConfig | undefined {
 
 // ── Declared mounts: ONE read path, ONE write path ──────────────────────────
 
+/**
+ * The fields of a declaration that mounting reads, and only those.
+ *
+ * Read STRUCTURALLY, the way the planner already reads an upstream's
+ * declaration. A full {@link readDeclaration} needs every graph typology the
+ * declaration names to be registered first. Some of those kinds are registered
+ * by the very layers the mount fetches: who-iris names core's `catalogue`, and
+ * core is one of its mounts. So in an empty checkout the full read refused the
+ * mount that would have supplied the kind (bean `qump`). Whether the rest of the
+ * declaration is valid is for the checks that read all of it once it is mounted.
+ */
+const MountFieldsSchema = z
+  .object({
+    name: z.string().min(1),
+    remoteMounts: RemoteMountsSchema.optional(),
+    mountApprovers: z.array(z.string().min(1)).min(1).optional(),
+    directories: z.array(z.object({ path: z.string().min(1) }).passthrough()).default([]),
+  })
+  .passthrough();
+export type MountFields = z.infer<typeof MountFieldsSchema>;
+
+/** {@link MountFieldsSchema} for the instance at `instanceRoot`; `undefined` when it holds no declaration. Throws, with the file, on bad JSON or a bad field. */
+export function readMountFields(instanceRoot: string): MountFields | undefined {
+  const file = findDeclarationFile(instanceRoot);
+  if (file === undefined) return undefined;
+  const p = join(instanceRoot, file);
+  let raw: unknown;
+  try {
+    raw = JSON.parse(readFileSync(p, "utf-8"));
+  } catch (e) {
+    throw new Error(`${p} is not valid JSON: ${e instanceof Error ? e.message : String(e)}`);
+  }
+  const r = MountFieldsSchema.safeParse(raw);
+  if (!r.success) {
+    const i = r.error.issues[0];
+    throw new Error(`${p}: ${i ? `${i.path.join(".") || "(root)"}: ${i.message}` : "invalid"}`);
+  }
+  return r.data;
+}
+
 /** A remote instance entry as the `RemoteMount` the mount tooling consumes. */
 export function remoteMountOf(entry: IndexInstance): RemoteMount | undefined {
   const src = entry.source;
@@ -268,7 +308,7 @@ export function readDeclaredMounts(instanceRoot: string): DeclaredMounts {
   const idx = readIndexConfig(instanceRoot);
   if (idx.state === "unreadable") throw new Error(`${idx.file} is ${idx.why}`);
   const declFile = findDeclarationFile(instanceRoot);
-  const declMounts = readDeclaration(instanceRoot)?.remoteMounts ?? [];
+  const declMounts = readMountFields(instanceRoot)?.remoteMounts ?? [];
   if (idx.state === "absent") {
     return declMounts.length > 0 ? { from: "declaration", file: join(instanceRoot, declFile!), mounts: declMounts } : { from: "none", mounts: [] };
   }
@@ -300,7 +340,7 @@ export function readDeclaredMounts(instanceRoot: string): DeclaredMounts {
  */
 export function writeDeclaredMounts(instanceRoot: string, mounts: readonly RemoteMount[]): { file: string; config: IndexConfig } {
   const parsed = RemoteMountsSchema.parse(mounts);
-  const declMounts = readDeclaration(instanceRoot)?.remoteMounts ?? [];
+  const declMounts = readMountFields(instanceRoot)?.remoteMounts ?? [];
   if (declMounts.length > 0) {
     throw new Error(
       `${join(instanceRoot, findDeclarationFile(instanceRoot)!)} still declares \`remoteMounts\` (${declMounts.map((m) => m.harness).join(", ")}); ` +
