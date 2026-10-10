@@ -486,6 +486,18 @@ export const FigureSchema = BlockBaseSchema.extend({
   narrative: NarrativeSchema.optional(),
 });
 
+/** A code in a declared code list; see `CodeRef` in `types.ts`. */
+export const CodeRefSchema = z.object({ list: z.string().min(1), code: z.string().min(1) }).strict();
+
+export const RecommendationSchema = BlockBaseSchema.extend({
+  kind: z.literal("recommendation"),
+  // The folio chooses the prefix (owner, Q1), so its node sets
+  // `prefixEnforced: false` and this resolves to a non-empty string.
+  label: labelForKind("recommendation"),
+  strength: CodeRefSchema.optional(),
+  about: z.array(z.string().min(1)).optional(),
+});
+
 /** Discriminated union — validates any Block. */
 export const BlockSchema = z
   .discriminatedUnion("kind", [
@@ -505,6 +517,7 @@ export const BlockSchema = z
     DiagramSchema,
     TableSchema,
     FigureSchema,
+    RecommendationSchema,
   ])
   .superRefine((block, ctx) => {
     // Cross-kind invariant: an `algorithm` block must cite at least
@@ -697,7 +710,7 @@ export const CONSTRAINT_RULES: ConstraintRule[] = [
     description: "Every block must have a companion .md file",
     appliesTo: [
       "definition", "theorem", "lemma", "proposition", "corollary",
-      "conjecture", "example", "remark", "simulator", "prose",
+      "conjecture", "example", "remark", "simulator", "prose", "recommendation",
     ],
     check: (_block, ctx) => {
       const mdPath = `${ctx.dir}/${ctx.rootName}.md`;

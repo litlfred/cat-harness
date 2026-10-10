@@ -76,7 +76,7 @@ export const DIFF_RENDERERS: readonly DiffRenderer[] = z.array(DiffRendererSchem
     label: "Inline, as rendered",
     description: "The block as a reader sees it now, with added words marked and removed words struck through where they were.",
     needs: ["text"],
-    defaultFor: ["prose", "remark", "definition", "example"],
+    defaultFor: ["prose", "remark", "definition", "example", "recommendation"],
   },
   {
     id: "visual",

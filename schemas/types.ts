@@ -1038,6 +1038,53 @@ export interface FigureBlock extends OptionalLabelBlockBase {
   narrative?: Narrative;
 }
 
+// ── Recommendations (document folios) ───────────────────────────
+
+/**
+ * A reference to one code in a declared code list (`folio-code-list/v1`,
+ * exported as a SKOS concept scheme). The check is "resolves in the scheme":
+ * the list is one the folio's dependency tree declares, and the code is an
+ * active code in it.
+ */
+export interface CodeRef {
+  /** The code list's `id`, e.g. `grade-recommendation-strength`. */
+  list: string;
+  /** One of that list's `codes[].code`. */
+  code: string;
+}
+
+/**
+ * A recommendation: the statement an L1 guidance document exists to make.
+ * Bean `55ao`.
+ *
+ * It is the block readers cite, implementers trace to, and reviewers sign off
+ * one at a time. So it has a label and a place in the `uses[]` graph, like a
+ * theorem. It is NOT a theorem: nothing proves it, and its authority is the
+ * issuing body's.
+ *
+ * The owner's rulings of 2026-09-23 and 2026-10-06:
+ * - **The label prefix is the folio's to choose.** The platform reserves none
+ *   (Q1), because a standards body's grammar is its own. Its node declares
+ *   `prefixEnforced: false`.
+ * - **`strength` names a concept in a declared scheme** (Q2). It is not a
+ *   closed enum and not free text. WHO's GRADE is not IETF's RFC 2119, so each
+ *   domain brings its own code list.
+ * - **It links to a DAK `health-intervention`, never merges with one** (Q3).
+ *   `about` carries the labels of the interventions it is about. They are
+ *   cross-adapter references, so nothing in the document vocabulary depends on
+ *   the DAK adapter.
+ *
+ * The statement itself lives in the sibling `.md`, one per block. The
+ * published number is kept out of the label, because editions renumber.
+ */
+export interface RecommendationBlock extends BlockBase {
+  kind: "recommendation";
+  /** Its strength or requirement level, as a code in a declared list. */
+  strength?: CodeRef;
+  /** Labels of the health interventions (DAK adapter) this recommendation is about. */
+  about?: string[];
+}
+
 // ── The discriminated union ──────────────────────────────────────
 
 export type Block =
@@ -1056,7 +1103,8 @@ export type Block =
   | EquationBlock
   | DiagramBlock
   | TableBlock
-  | FigureBlock;
+  | FigureBlock
+  | RecommendationBlock;
 
 /**
  * `BLOCK_KINDS`, `BlockKind` and `BLOCK_KIND_ALT` now live in the leaf
