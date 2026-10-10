@@ -10274,9 +10274,14 @@
   // on smart-immunizations' business-processes page). Each inlined drawing
   // therefore gets its own prefix on every class and id, and its `<style>`
   // selectors, `url(#…)` references and `#…` hrefs are rewritten to match.
+  // The harness's OWN classes (`fa-…`, e.g. render-bpmn's `fa-subprocess-link`)
+  // are not the file's private names: the page's stylesheet and scripts select
+  // them, so they are left as written. Prefixing them broke every subprocess
+  // link on the processes pages (subprocess-links.e2e.ts, 2026-10-10).
   var svgScopeSeq = 0;
   function scopeSvg(svg) {
     var pfx = "fa-svg" + ++svgScopeSeq + "-";
+    function scoped(c) { return /^fa-/.test(c) ? c : pfx + c; }
     var ids = {};
     [].forEach.call(svg.querySelectorAll("[id]"), function (el) {
       var id = el.getAttribute("id");
@@ -10291,7 +10296,7 @@
     [].forEach.call(svg.querySelectorAll("*"), function (el) {
       var cls = el.getAttribute("class");
       if (cls) {
-        el.setAttribute("class", cls.split(/\s+/).filter(Boolean).map(function (c) { return pfx + c; }).join(" "));
+        el.setAttribute("class", cls.split(/\s+/).filter(Boolean).map(scoped).join(" "));
       }
       [].forEach.call([].slice.call(el.attributes), function (a) {
         if (a.value.indexOf("url(") !== -1) el.setAttribute(a.name, reId(a.value));
@@ -10301,7 +10306,7 @@
       });
     });
     var rootCls = svg.getAttribute("class");
-    if (rootCls) svg.setAttribute("class", rootCls.split(/\s+/).filter(Boolean).map(function (c) { return pfx + c; }).join(" "));
+    if (rootCls) svg.setAttribute("class", rootCls.split(/\s+/).filter(Boolean).map(scoped).join(" "));
     // Selectors are rewritten only OUTSIDE the declaration blocks, so a value
     // such as `font-size:0.83em` is never mistaken for a class.
     [].forEach.call(svg.querySelectorAll("style"), function (st) {
@@ -10311,7 +10316,7 @@
         if (ch === "{") {
           if (depth === 0) {
             out += buf.replace(/([.#])(-?[A-Za-z_][\w-]*)/g, function (m, sigil, name) {
-              return sigil === "." ? "." + pfx + name : (ids[name] ? "#" + ids[name] : m);
+              return sigil === "." ? "." + scoped(name) : (ids[name] ? "#" + ids[name] : m);
             });
             buf = "";
           }
