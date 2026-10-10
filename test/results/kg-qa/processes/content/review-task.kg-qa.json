@@ -5,7 +5,7 @@
     "id": "Process_Review",
     "path": "processes/content/review-task.bpmn"
   },
-  "source_hash": "sha256:3e1dfee17a28a7ba732a856147b76f446919962279eb7839eeaaf5ed36158b9a",
+  "source_hash": "sha256:23d63c6d820526d9f56b87e6ddbbdfdec03bde210ae5fd647a5ace39b0ae7070",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

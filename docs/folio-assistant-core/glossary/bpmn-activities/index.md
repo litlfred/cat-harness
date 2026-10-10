@@ -200,7 +200,7 @@ be a term this corpus is right to coin.</p>
 4 · Author blocks [document-authoring] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Every block edit runs the HCI validation gate — see editing-hci-validation.bpmn. A normative statement goes through normative-statements.</p>
+<p>Every block edit runs the HCI validation gate — see editing-hci-validation.bpmn. A normative statement is a <code>recommendation</code> block (bean 55ao), drafted through normative-statements: one statement per block, a folio-chosen label, and its strength as a code in a declared code list, so a reviewer signs off each one individually.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/authoring-a-document.bpmn"><code>folio-assistant-core/processes/content/authoring-a-document.bpmn#Task_AuthorBlocks</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_graphdetanglement.task_extract" data-fa-state="extracted" data-fa-gloss="">

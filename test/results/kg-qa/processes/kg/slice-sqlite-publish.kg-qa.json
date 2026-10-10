@@ -5,7 +5,7 @@
     "id": "Process_SliceSqlitePublish",
     "path": "processes/kg/slice-sqlite-publish.bpmn"
   },
-  "source_hash": "sha256:3e64a6f10678f67b6e4e732732c810e501d2724d4512ae6a641ad87f07dcedd1",
+  "source_hash": "sha256:763f2bc31867c5fe7981605bca112da0999a1ed978b25b25ce7954a0ac4bedb3",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

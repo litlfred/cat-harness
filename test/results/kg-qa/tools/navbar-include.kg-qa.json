@@ -5,7 +5,7 @@
     "id": "navbar-include",
     "path": null
   },
-  "source_hash": "0f38ac8d49c2",
+  "source_hash": "1e6218df72ee",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "pdf-viewer-embed",
     "path": null
   },
-  "source_hash": "50ebc39f57a0",
+  "source_hash": "62749ee79ce6",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

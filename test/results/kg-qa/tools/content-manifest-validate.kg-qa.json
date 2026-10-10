@@ -5,7 +5,7 @@
     "id": "content-manifest-validate",
     "path": null
   },
-  "source_hash": "01bc01e97d8c",
+  "source_hash": "61d7a50e0bf6",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

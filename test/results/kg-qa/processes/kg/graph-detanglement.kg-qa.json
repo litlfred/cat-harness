@@ -5,7 +5,7 @@
     "id": "Process_GraphDetanglement",
     "path": "processes/kg/graph-detanglement.bpmn"
   },
-  "source_hash": "sha256:d68c2e9cccee158e35ef02b38ae55c31bfd53ac87c06c3fda2f2b45cad45738f",
+  "source_hash": "sha256:918a3e7d410473537d0245a50f2a38b97b85d67b429c4775036aaa7bd582e91c",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

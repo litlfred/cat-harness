@@ -5,7 +5,7 @@
     "id": "req:commit-hygiene",
     "path": "skills/requirements/commit-hygiene.json"
   },
-  "source_hash": "sha256:043d7b92499046e9ff733dd112f7eb2c3a033c16ee342a39dcde986902a155e0",
+  "source_hash": "sha256:1f7fba9463383e87224cf7ca6e414610bb63d0bb9135c4c21e47a4c1cb62e451",
   "criteria": {
     "requirement-statement-satisfied": {
       "result": "fail",

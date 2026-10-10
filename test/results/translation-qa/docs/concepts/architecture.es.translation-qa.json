@@ -24,11 +24,11 @@
           "id": "content/pipeline/translation-block-qa.ts",
           "actor": "local-sweep",
           "version": "v1",
-          "script_hash": "06b101877fe3",
-          "script_commit_sha": "0aafa93a45b45fdf8ff8e148b03e0f1f1b6c251f"
+          "script_hash": "4d69a471d0c9",
+          "script_commit_sha": "fc645ae1a775f8b8d14837374868f3e5bdfac397"
         },
-        "reviewed_at": "2026-10-08T06:10:40.252Z",
-        "reviewed_sha": "bface6c80e99d806ee91398c4d6b41b4ddcf2d53",
+        "reviewed_at": "2026-10-10T22:03:16.346Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
         "severity": "minor",
         "metrics": {
           "translated": 59,
@@ -50,11 +50,11 @@
           "id": "content/pipeline/translation-block-qa.ts",
           "actor": "local-sweep",
           "version": "v1",
-          "script_hash": "06b101877fe3",
-          "script_commit_sha": "0aafa93a45b45fdf8ff8e148b03e0f1f1b6c251f"
+          "script_hash": "4d69a471d0c9",
+          "script_commit_sha": "fc645ae1a775f8b8d14837374868f3e5bdfac397"
         },
-        "reviewed_at": "2026-10-08T06:10:40.270Z",
-        "reviewed_sha": "bface6c80e99d806ee91398c4d6b41b4ddcf2d53",
+        "reviewed_at": "2026-10-10T22:03:16.350Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
         "severity": "minor",
         "evidence": [
           {
@@ -87,11 +87,11 @@
           "id": "content/pipeline/translation-block-qa.ts",
           "actor": "local-sweep",
           "version": "v1",
-          "script_hash": "06b101877fe3",
-          "script_commit_sha": "0aafa93a45b45fdf8ff8e148b03e0f1f1b6c251f"
+          "script_hash": "4d69a471d0c9",
+          "script_commit_sha": "fc645ae1a775f8b8d14837374868f3e5bdfac397"
         },
-        "reviewed_at": "2026-10-08T06:10:40.287Z",
-        "reviewed_sha": "bface6c80e99d806ee91398c4d6b41b4ddcf2d53",
+        "reviewed_at": "2026-10-10T22:03:16.355Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
         "metrics": {
           "echoed": 0,
           "translated": 59
@@ -100,5 +100,5 @@
     ],
     "translation-semantic-roundtrip": []
   },
-  "updated_at": "2026-10-08T06:10:40.295Z"
+  "updated_at": "2026-10-10T22:03:16.357Z"
 }

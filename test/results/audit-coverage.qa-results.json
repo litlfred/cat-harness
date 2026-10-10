@@ -1,8 +1,8 @@
 {
   "$schema": "qa-results/v1",
   "producer": {
-    "script": ".claude/worktrees/cat-harness-lvlv/scripts/audit-coverage.ts",
-    "script_hash": "5b9058d08f7b"
+    "script": "cat-harness-tools/scripts/audit-coverage.ts",
+    "script_hash": "70bcd1939489"
   },
   "subject": {
     "kind": "audit-coverage",
@@ -10,9 +10,20 @@
   },
   "families": {
     "coverage-measured": {
-      "summary": "Every declared kind with its four counts and its state. Not findings: the measurement itself, so the committed record answers \"what audits this kind\" without rerunning anything. The file COUNTS are printed rather than recorded — a census moves on any commit and a gate keyed on it is stale by default; `hasFiles` carries the only thing it decides. 73 of 73 declared kind(s), 255 gate(s), 77 criteria.",
-      "count": 73,
+      "summary": "Every declared kind with its four counts and its state. Not findings: the measurement itself, so the committed record answers \"what audits this kind\" without rerunning anything. The file COUNTS are printed rather than recorded — a census moves on any commit and a gate keyed on it is stale by default; `hasFiles` carries the only thing it decides. 75 of 75 declared kind(s), 252 gate(s), 84 criteria.",
+      "count": 75,
       "entries": [
+        {
+          "kind": "archimate",
+          "state": "no-directory",
+          "directories": [],
+          "criteria": [],
+          "subjectKinds": [],
+          "gates": [],
+          "typed": true,
+          "adversarial": "never",
+          "hasFiles": false
+        },
         {
           "kind": "attestations",
           "state": "covered",
@@ -94,7 +105,7 @@
             "bun run cat check:stale-paths",
             "bun run cat slice:sqlite:check"
           ],
-          "typed": false,
+          "typed": true,
           "adversarial": "never",
           "hasFiles": true
         },
@@ -119,7 +130,9 @@
           "kind": "beans",
           "state": "covered",
           "directories": [
-            "beans"
+            "beans",
+            "cat-harness-tools/beans",
+            "folio-assistant-core/beans"
           ],
           "criteria": [],
           "subjectKinds": [],
@@ -205,6 +218,7 @@
           "directories": [
             "bootstrap-tools/schemas",
             "cat-harness-tools/schemas",
+            "cat-harness/archimate",
             "cat-harness/openapi",
             "cat-harness/schemas",
             "fhir-harness/schemas",
@@ -214,6 +228,7 @@
           ],
           "criteria": [
             "actor-capabilities-resolve",
+            "actor-fact-has-consumer",
             "actor-is-not-a-role",
             "actor-permissions-resolve",
             "actor-roles-resolve",
@@ -221,9 +236,12 @@
             "consulted-skill-not-performed",
             "content-instance-holds-code",
             "downstream-tool-declared",
+            "lake-target-lean-resolution",
             "manifest-skill-exists",
             "nested-instance-audited",
+            "orphan-subject-resolves",
             "prose-names-resolve",
+            "redundant-rendered-content-audit",
             "remote-skill-is-servable",
             "satisfies-resolves",
             "skill-contract-claimed",
@@ -234,11 +252,13 @@
             "story-role-resolves",
             "test-case-executed-or-skipped",
             "test-data-hash-present",
+            "test-plan-exit-criteria-resolves",
             "test-plan-resolves",
             "test-run-checkable",
             "test-run-conforms",
             "test-run-skill-resolves",
-            "test-sut-not-self-judged"
+            "test-sut-not-self-judged",
+            "work-traceability-audit"
           ],
           "subjectKinds": [
             "graph"
@@ -273,9 +293,11 @@
             "bun run cat check:subgraphs",
             "bun run cat check:undeclared-files:check",
             "bun run cat check:version-bump",
+            "bun run cat check:visualiser-routes",
             "bun run cat check:wireframes:check",
             "bun run cat harness:dirs:check",
             "bun run cat index-config:migrate:check",
+            "bun run cat index:render:check",
             "bun run cat kg:audit:all:check",
             "bun run cat kg:audit:check",
             "bun run cat kg:detangle:check",
@@ -309,11 +331,7 @@
           "criteria": [],
           "subjectKinds": [],
           "gates": [
-            "bun run cat check:catalogue",
-            "bun run cat dc:render:check",
-            "bun run cat id-lookup:check",
-            "bun run cat iris:covers:check",
-            "bun run cat iris:pages:check"
+            "bun run cat id-lookup:check"
           ],
           "typed": true,
           "adversarial": "never",
@@ -336,19 +354,17 @@
           "directories": [
             "bootstrap-tools/scripts",
             "cat-harness-tools/adapters",
+            "cat-harness-tools/archimate/scripts",
+            "cat-harness-tools/content",
+            "cat-harness-tools/deploy",
             "cat-harness-tools/id-lookup",
+            "cat-harness-tools/openapi/scripts",
             "cat-harness-tools/python",
             "cat-harness-tools/schemas",
             "cat-harness-tools/scripts",
             "cat-harness-tools/src",
+            "cat-harness-tools/templates",
             "cat-harness-tools/test",
-            "cat-harness/adapters",
-            "cat-harness/deploy",
-            "cat-harness/openapi/scripts",
-            "cat-harness/scripts",
-            "cat-harness/src",
-            "cat-harness/templates",
-            "cat-harness/test",
             "cat-harness/upstream",
             "fhir-harness/scripts",
             "folio-assistant-core/adapters",
@@ -368,12 +384,14 @@
           "criteria": [],
           "subjectKinds": [],
           "gates": [
+            "bun run bootstrap:vocabulary:check",
             "bun run cat audit:reachability:check",
             "bun run cat check:agents-claims",
             "bun run cat check:bootstrap-standalone",
             "bun run cat check:cat-harness-standalone",
             "bun run cat check:code-accounting",
             "bun run cat check:dependency-advisories",
+            "bun run cat check:fhir-harness-exclusions",
             "bun run cat check:foreign-paths",
             "bun run cat check:import-direction --all",
             "bun run cat check:lockfile-pinning",
@@ -382,7 +400,8 @@
             "bun run cat check:portable-paths",
             "bun run cat check:python-deps",
             "bun run cat check:secret-leaks",
-            "bun run cat deps:python:check"
+            "bun run cat deps:python:check",
+            "bun run check:tools-closure"
           ],
           "typed": false,
           "adversarial": "never",
@@ -392,7 +411,9 @@
           "kind": "code-list",
           "state": "covered",
           "directories": [
-            "cat-harness/code-lists"
+            "cat-harness/code-lists",
+            "folio-assistant-core/code-lists",
+            "smart-base/code-lists"
           ],
           "criteria": [],
           "subjectKinds": [],
@@ -454,6 +475,7 @@
           "state": "covered",
           "directories": [
             "cat-harness/docs",
+            "cat-harness/docs/source",
             "folio-assistant-core/docs",
             "smart-base/docs",
             "smart-base/findings",
@@ -483,6 +505,8 @@
             "bun run cat check:viewer-backticks",
             "bun run cat check:viewer-nav",
             "bun run cat check:wireframes:check",
+            "bun run cat docs:harness",
+            "bun run cat docs:harness 2>&1 | tail -2 || true",
             "bun run cat docs:harness:check",
             "bun run cat docs:pages:check",
             "bun run cat gen:jsonld:check",
@@ -495,9 +519,10 @@
             "bun run cat readme:sync:check",
             "bun run cat readme:sync:root:check",
             "bun run cat skills:docs:check",
+            "bun run cat smart-base:dth-terms:check",
             "bun run cat subscriptions:viz:check",
             "bun run cat translated-links:check",
-            "bun run cat-harness/scripts/gen-schema-docs.ts --check"
+            "bun run cat-harness-tools/scripts/gen-schema-docs.ts --check"
           ],
           "typed": true,
           "adversarial": "never",
@@ -513,7 +538,8 @@
           "subjectKinds": [],
           "gates": [
             "bun run cat check:document-kind-sources",
-            "bun run cat document-kinds:viz:check"
+            "bun run cat document-kinds:viz:check",
+            "bun run cat smart-base:document-kinds:check"
           ],
           "typed": true,
           "adversarial": "never",
@@ -548,7 +574,9 @@
           "subjectKinds": [],
           "gates": [
             "bun run cat check:artifact-index",
-            "bun run fhir-harness/scripts/stage-ast-sites.ts \"${CF[@]}\" > ./_ast-list.txt"
+            "bun run cat p2:refusals:check",
+            "bun run cat smart:pages",
+            "bun run smart:pages"
           ],
           "typed": true,
           "adversarial": "never",
@@ -559,10 +587,15 @@
           "state": "covered",
           "directories": [
             "cat-harness/folio",
-            "folio-assistant-core/folios"
+            "folio-assistant-core/folios",
+            "who-iris/folio"
           ],
-          "criteria": [],
-          "subjectKinds": [],
+          "criteria": [
+            "block-reference-resolves"
+          ],
+          "subjectKinds": [
+            "folio"
+          ],
           "gates": [
             "bun run cat check:folio-mount",
             "bun run cat folio:viz:check",
@@ -615,7 +648,10 @@
           "kind": "health",
           "state": "covered",
           "directories": [
-            "cat-harness/test/health/results"
+            "cat-harness-tools/health",
+            "cat-harness/test/health/results",
+            "folio-assistant-core/test/health/results",
+            "who-iris/test/health/results"
           ],
           "criteria": [],
           "subjectKinds": [],
@@ -652,7 +688,7 @@
         },
         {
           "kind": "ig-pages",
-          "state": "unaudited",
+          "state": "covered",
           "directories": [
             "smart-base/docs",
             "smart-immunizations/docs",
@@ -660,7 +696,10 @@
           ],
           "criteria": [],
           "subjectKinds": [],
-          "gates": [],
+          "gates": [
+            "bun run cat smart:pages",
+            "bun run smart:pages"
+          ],
           "typed": false,
           "adversarial": "never",
           "hasFiles": true
@@ -730,7 +769,8 @@
             "bun run cat check:upload-names:check",
             "bun run cat check:uploads-retired",
             "bun run cat gen:jsonld:check",
-            "bun run cat lsi:skills:check"
+            "bun run cat lsi:skills:check",
+            "bun run cat smart-base:smart-kg-l1:check"
           ],
           "typed": true,
           "adversarial": "never",
@@ -797,6 +837,7 @@
           "criteria": [],
           "subjectKinds": [],
           "gates": [
+            "bun run bootstrap:validate",
             "bun run cat check:model-languages"
           ],
           "typed": true,
@@ -804,14 +845,27 @@
           "hasFiles": true
         },
         {
+          "kind": "notes",
+          "state": "no-directory",
+          "directories": [],
+          "criteria": [],
+          "subjectKinds": [],
+          "gates": [],
+          "typed": false,
+          "adversarial": "never",
+          "hasFiles": false
+        },
+        {
           "kind": "openapi",
-          "state": "typed-only",
+          "state": "covered",
           "directories": [
             "smart-trust/openapi"
           ],
           "criteria": [],
           "subjectKinds": [],
-          "gates": [],
+          "gates": [
+            "bun run cat smart-trust:openapi:check"
+          ],
           "typed": true,
           "adversarial": "never",
           "hasFiles": true
@@ -968,6 +1022,7 @@
             "bun run cat kg:export:check",
             "bun run cat kg:export:judge",
             "bun run cat lsi:viz:check",
+            "bun run cat p2:refusals:check",
             "bun run cat qa:attestations:migrate:check",
             "bun run cat translation:block-qa:check"
           ],
@@ -1075,6 +1130,7 @@
             "bootstrap-tools/schemas",
             "bootstrap/schemas",
             "cat-harness-tools/schemas",
+            "cat-harness/archimate/schemas",
             "cat-harness/openapi/schemas",
             "cat-harness/schemas",
             "fhir-harness/schemas",
@@ -1087,6 +1143,8 @@
           "criteria": [],
           "subjectKinds": [],
           "gates": [
+            "bun run bootstrap:schemas:check",
+            "bun run bootstrap:validate",
             "bun run cat check:context-emission",
             "bun run cat check:schema-nodes",
             "bun run cat gen:jsonld:check",
@@ -1094,10 +1152,12 @@
             "bun run cat kg:export:check",
             "bun run cat kg:export:judge",
             "bun run cat kg:schema:check",
-            "bun run cat-harness/scripts/gen-schema-docs.ts --check"
+            "bun run cat-harness-tools/scripts/gen-schema-docs.ts --check",
+            "bun run check:bootstrap-concepts",
+            "bun run check:node-iris"
           ],
           "typed": true,
-          "adversarial": "reviewed",
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1132,6 +1192,7 @@
           "directories": [
             "bootstrap-tools/skills",
             "bootstrap/skills",
+            "cat-harness-tools/skills",
             "cat-harness/skills",
             "fhir-harness/skills",
             "folio-assistant-core/skills",
@@ -1183,7 +1244,7 @@
             "bun run cat skills:docs:check"
           ],
           "typed": true,
-          "adversarial": "reviewed",
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1321,11 +1382,13 @@
           "kind": "tools",
           "state": "covered",
           "directories": [
+            "cat-harness-tools/tools",
             "cat-harness/tools",
             "fhir-harness/tools",
             "folio-assistant-core/tools",
             "folio-assistant-sci/tools",
-            "smart-base/tools"
+            "smart-base/tools",
+            "who-iris/tools"
           ],
           "criteria": [
             "tool-alternative-selectable",
@@ -1350,7 +1413,7 @@
             "bun run cat upload-step:docs:check"
           ],
           "typed": true,
-          "adversarial": "reviewed",
+          "adversarial": "never",
           "hasFiles": true
         },
         {
@@ -1387,6 +1450,7 @@
           "kind": "typologies",
           "state": "covered",
           "directories": [
+            "cat-harness/archimate/typologies",
             "cat-harness/openapi/typologies",
             "fhir-harness/typologies",
             "folio-assistant-core/typologies",
@@ -1423,6 +1487,7 @@
           "state": "covered",
           "directories": [
             "cat-harness/uploads",
+            "uploads",
             "who-iris/uploads"
           ],
           "criteria": [],
@@ -1431,8 +1496,7 @@
             "bun run cat check:source-licence:check",
             "bun run cat check:upload-names:check",
             "bun run cat check:uploads-retired",
-            "bun run cat gen:jsonld:check",
-            "bun run cat iris:covers:check"
+            "bun run cat gen:jsonld:check"
           ],
           "typed": true,
           "adversarial": "never",
@@ -1442,6 +1506,7 @@
           "kind": "validators",
           "state": "covered",
           "directories": [
+            "cat-harness/archimate/validators",
             "cat-harness/openapi/validators",
             "cat-harness/validators",
             "fhir-harness/validators",
@@ -1529,7 +1594,9 @@
           "kind": "workflow-state",
           "state": "covered",
           "directories": [
-            "beans/workflows"
+            "beans/workflows",
+            "cat-harness-tools/beans/workflows",
+            "folio-assistant-core/beans/workflows"
           ],
           "criteria": [],
           "subjectKinds": [],
@@ -1554,8 +1621,13 @@
     },
     "kinds-no-directory": {
       "summary": "No instance declares a directory of this kind — a nested kind reached through its parent (`bean-defs` inside `beans/`), or one this repository does not have. Recorded so it cannot be read as a coverage gap, and so a kind that LOSES its directory shows up.",
-      "count": 11,
+      "count": 13,
       "entries": [
+        {
+          "kind": "archimate",
+          "criteria": 0,
+          "gates": []
+        },
         {
           "kind": "binary-release",
           "criteria": 0,
@@ -1578,6 +1650,11 @@
         },
         {
           "kind": "lake-cache",
+          "criteria": 0,
+          "gates": []
+        },
+        {
+          "kind": "notes",
           "criteria": 0,
           "gates": []
         },
@@ -1615,29 +1692,13 @@
     },
     "kinds-typed-only": {
       "summary": "A declared kind whose nodes a declared validator TYPES and no criterion or gate JUDGES. Kept apart from kinds-unaudited because they are different pieces of work, and still a finding — `--strict` fails on it. Typing is not judging: a kind can parse perfectly against its schema while nothing has an opinion about what it says.",
-      "count": 1,
-      "entries": [
-        {
-          "kind": "openapi",
-          "directories": [
-            "smart-trust/openapi"
-          ]
-        }
-      ]
+      "count": 0,
+      "entries": []
     },
     "kinds-unaudited": {
-      "summary": "A declared kind whose directories hold files that NOTHING reaches — no kg-audit criterion, no gate declaring @covers, and no declared validator. All 255 gate(s) have declared, so this is a verdict rather than an upper bound (bean `3srh`).",
-      "count": 1,
-      "entries": [
-        {
-          "kind": "ig-pages",
-          "directories": [
-            "smart-base/docs",
-            "smart-immunizations/docs",
-            "smart-trust/docs"
-          ]
-        }
-      ]
+      "summary": "A declared kind whose directories hold files that NOTHING reaches — no kg-audit criterion, no gate declaring @covers, and no declared validator. All 252 gate(s) have declared, so this is a verdict rather than an upper bound (bean `3srh`).",
+      "count": 0,
+      "entries": []
     },
     "kinds-unknown": {
       "summary": "A declared directory of this kind is not in the checkout and declares no `storage`, and nothing else of the kind was counted — the census was not taken (bean `0dav`, readers-audit C8). Never `empty`: that would print an absent answer as a determined zero. Not gated: proposal §2.3.",
@@ -1645,5 +1706,5 @@
       "entries": []
     }
   },
-  "total": 86
+  "total": 88
 }

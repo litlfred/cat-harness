@@ -5,7 +5,7 @@
     "id": "headless-render-qc",
     "path": null
   },
-  "source_hash": "b2a1a35f31d2",
+  "source_hash": "8b2b0bb21f5f",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

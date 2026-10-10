@@ -1,13 +1,13 @@
 {
   "$schema": "folio-detangle-sidecar/v1",
   "group": "cat-harness/processes/process",
-  "size": 13,
-  "internal": 11,
+  "size": 14,
+  "internal": 12,
   "inbound": 2,
-  "outbound": 72,
+  "outbound": 81,
   "cohesion": 0.13,
-  "enforcedBoundary": 8,
-  "recordedBoundary": 66,
+  "enforcedBoundary": 9,
+  "recordedBoundary": 74,
   "proseMentions": 0,
   "wrongDirection": 0,
   "undeterminedDirection": 0

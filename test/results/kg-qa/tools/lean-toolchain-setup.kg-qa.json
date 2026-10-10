@@ -5,7 +5,7 @@
     "id": "lean-toolchain-setup",
     "path": null
   },
-  "source_hash": "ea75f4c3dea3",
+  "source_hash": "4f4d07cc3c75",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -163,15 +163,15 @@
         "reviewer": {
           "kind": "script",
           "id": "content/pipeline/qa-checkers-voice.ts",
-          "actor": "ci-pipeline",
+          "actor": "local-sweep",
           "version": "v1",
           "script_hash": "c35d809edf9a",
           "script_commit_sha": "unknown",
           "def_hash": "63a6e57fead9"
         },
-        "reviewed_at": "2026-10-06T19:03:18.035Z",
-        "reviewed_sha": "fb3dc8a8fa657b3f47a9feac706ce5edfe98f3c7",
-        "notes": "criterion applies to the paper profile; this folio is document (cat-harness.config.json contentType: \"document\")"
+        "reviewed_at": "2026-10-10T22:03:20.475Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
+        "notes": "criterion applies to the paper profile; this folio is document (index.config.json entry \"cat-harness\" contentType: \"document\")"
       }
     ],
     "voice-editorializing": [
@@ -204,15 +204,15 @@
         "reviewer": {
           "kind": "script",
           "id": "content/pipeline/qa-checkers-voice.ts",
-          "actor": "ci-pipeline",
+          "actor": "local-sweep",
           "version": "v1",
           "script_hash": "d33e313ad147",
           "script_commit_sha": "unknown",
           "def_hash": "90af5388e1e9"
         },
-        "reviewed_at": "2026-10-06T19:03:18.035Z",
-        "reviewed_sha": "fb3dc8a8fa657b3f47a9feac706ce5edfe98f3c7",
-        "notes": "criterion applies to the paper profile; this folio is document (cat-harness.config.json contentType: \"document\")"
+        "reviewed_at": "2026-10-10T22:03:20.475Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
+        "notes": "criterion applies to the paper profile; this folio is document (index.config.json entry \"cat-harness\" contentType: \"document\")"
       }
     ],
     "voice-title-scholarly": [
@@ -573,14 +573,15 @@
         "reviewer": {
           "kind": "script",
           "id": "content/pipeline/qa-checkers-extended.ts",
-          "actor": "ci-pipeline",
+          "actor": "local-sweep",
           "version": "v1",
-          "script_hash": "ab8b04976626",
+          "script_hash": "b8703f487cf4",
           "script_commit_sha": "unknown",
           "def_hash": "f0a866b13629"
         },
-        "reviewed_at": "2026-10-06T19:03:18.035Z",
-        "reviewed_sha": "fb3dc8a8fa657b3f47a9feac706ce5edfe98f3c7"
+        "reviewed_at": "2026-10-10T22:03:20.475Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
+        "notes": "not implemented: stub checker"
       }
     ],
     "detangler-block-tanglement": [
@@ -677,15 +678,15 @@
         "reviewer": {
           "kind": "script",
           "id": "content/pipeline/qa-checkers-uses.ts",
-          "actor": "ci-pipeline",
+          "actor": "local-sweep",
           "version": "v1",
           "script_hash": "63814f2a6677",
           "script_commit_sha": "unknown",
-          "deps_hash": "89bf86edd585",
+          "deps_hash": "644287e56bc5",
           "def_hash": "f0a866b13629"
         },
-        "reviewed_at": "2026-10-06T19:03:18.035Z",
-        "reviewed_sha": "fb3dc8a8fa657b3f47a9feac706ce5edfe98f3c7",
+        "reviewed_at": "2026-10-10T22:03:20.475Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
         "notes": "content graph unavailable (no folio/ root found)"
       }
     ],
@@ -699,16 +700,16 @@
         "reviewer": {
           "kind": "script",
           "id": "content/pipeline/qa-checkers-uses.ts",
-          "actor": "ci-pipeline",
+          "actor": "local-sweep",
           "version": "v1",
           "script_hash": "82fd1e2e6831",
           "script_commit_sha": "unknown",
-          "deps_hash": "9ea337965d40",
+          "deps_hash": "f277a5aa865d",
           "def_hash": "ce2b8102b97f"
         },
-        "reviewed_at": "2026-10-06T19:03:18.035Z",
-        "reviewed_sha": "fb3dc8a8fa657b3f47a9feac706ce5edfe98f3c7",
-        "notes": "criterion applies to the paper profile; this folio is document (cat-harness.config.json contentType: \"document\")"
+        "reviewed_at": "2026-10-10T22:03:20.475Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
+        "notes": "criterion applies to the paper profile; this folio is document (index.config.json entry \"cat-harness\" contentType: \"document\")"
       }
     ],
     "lean-ref-owns-decl": [
@@ -721,16 +722,16 @@
         "reviewer": {
           "kind": "script",
           "id": "content/pipeline/qa-checkers-uses.ts",
-          "actor": "ci-pipeline",
+          "actor": "local-sweep",
           "version": "v1",
           "script_hash": "926f3fa820ec",
           "script_commit_sha": "unknown",
-          "deps_hash": "89bf86edd585",
+          "deps_hash": "644287e56bc5",
           "def_hash": "d292915cbf8a"
         },
-        "reviewed_at": "2026-10-06T19:03:18.035Z",
-        "reviewed_sha": "fb3dc8a8fa657b3f47a9feac706ce5edfe98f3c7",
-        "notes": "criterion applies to the paper profile; this folio is document (cat-harness.config.json contentType: \"document\")"
+        "reviewed_at": "2026-10-10T22:03:20.475Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
+        "notes": "criterion applies to the paper profile; this folio is document (index.config.json entry \"cat-harness\" contentType: \"document\")"
       }
     ],
     "bib-cite-resolves": [
@@ -938,12 +939,12 @@
           "id": "content/pipeline/qa-checkers-ids.ts",
           "actor": "local-sweep",
           "version": "v1",
-          "script_hash": "423ab812fbba",
-          "script_commit_sha": "98f955453393f9dedf1060aed1dbcf0a2a8c2dbf",
+          "script_hash": "96c040687506",
+          "script_commit_sha": "unknown",
           "def_hash": "bcd452a1177c"
         },
-        "reviewed_at": "2026-10-07T11:13:35.498Z",
-        "reviewed_sha": "c7bde619cf6d5ca111d6156d250a8fcbf9838113",
+        "reviewed_at": "2026-10-10T22:03:20.475Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
         "notes": "no folio content root to index — uniqueness undetermined"
       }
     ],
@@ -959,12 +960,12 @@
           "id": "content/pipeline/qa-checkers-ids.ts",
           "actor": "local-sweep",
           "version": "v1",
-          "script_hash": "423ab812fbba",
-          "script_commit_sha": "98f955453393f9dedf1060aed1dbcf0a2a8c2dbf",
+          "script_hash": "96c040687506",
+          "script_commit_sha": "unknown",
           "def_hash": "f0a866b13629"
         },
-        "reviewed_at": "2026-10-07T11:13:35.498Z",
-        "reviewed_sha": "c7bde619cf6d5ca111d6156d250a8fcbf9838113",
+        "reviewed_at": "2026-10-10T22:03:20.475Z",
+        "reviewed_sha": "467444349ba76654683dbc1aacdea590dc3d67f8",
         "notes": "unchanged since origin/main"
       }
     ],
@@ -1221,5 +1222,5 @@
       }
     ]
   },
-  "updated_at": "2026-10-08T06:10:43.081Z"
+  "updated_at": "2026-10-10T22:03:20.475Z"
 }

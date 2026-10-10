@@ -5,7 +5,7 @@
     "id": "latex-preflight",
     "path": null
   },
-  "source_hash": "e0abde4aaf75",
+  "source_hash": "38f70b40071b",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

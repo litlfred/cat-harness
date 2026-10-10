@@ -60,16 +60,17 @@ package "folio-assistant-core/core-schemas" as pkg_folio_assistant_core_core_sch
     label [1] : string
     title [0..1] : string
     statement [1] : string
-    force [1] : must | should | may | good-practice | research-priority
-    grading [0..1] : string
+    strength [0..1] : object
     publishedNumber [0..1] : string
     uses [0..*] : string[]
+    about [0..*] : string[]
   }
   class "Normative Statement Output" as folio_assistant_core_core_schemas_skills_normative_statements_output_schema_json_Normative_Statement_Output <<schema: skills/normative-statements/output.schema.json>> #e9edf3 {
     label [1] : string
-    kind [1] : 'prose'
+    kind [1] : 'recommendation'
     anchor [0..1] : string
     citedBy [0..*] : string[]
+    strength [0..1] : object
   }
   class "Public Comment Input" as folio_assistant_core_core_schemas_skills_public_comment_input_schema_json_Public_Comment_Input <<schema: skills/public-comment/input.schema.json>> #e9edf3 {
     operation [1] : enum(13)

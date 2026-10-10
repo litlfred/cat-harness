@@ -45,6 +45,26 @@ classDiagram
       rationale [0..1] string
     }
   }
+  namespace folio_assistant_core__core_code_lists {
+    class folio_assistant_core_core_code_lists_Code["Code"] {
+      <<json: CodeListSchema>>
+      code [1] string
+      label [1] string
+      definition [1] string
+      source [0..1] object
+      value [0..1] string
+      status [0..1] active | retired
+    }
+    class folio_assistant_core_core_code_lists_CodeList["CodeList"] {
+      <<json: CodeListSchema>>
+      $schema [1] 'folio-code-list/v1'
+      id [1] string
+      title [1] string
+      description [1] string
+      source [1] object
+      codes [1..*] Code[]
+    }
+  }
   namespace folio_assistant_core__folio_assistant_core_typologies {
     class folio_assistant_core_folio_assistant_core_typologies_folio_graph_typology_v1_folio_graph_typology_v1["folio-graph-typology/v1"] {
       <<json: GraphTypologyNodeSchema>>
@@ -136,17 +156,18 @@ classDiagram
       label [1] string
       title [0..1] string
       statement [1] string
-      force [1] must | should | may | good-practice | research-priority
-      grading [0..1] string
+      strength [0..1] object
       publishedNumber [0..1] string
       uses [0..*] string[]
+      about [0..*] string[]
     }
     class folio_assistant_core_core_schemas_skills_normative_statements_output_schema_json_Normative_Statement_Output["Normative Statement Output"] {
       <<schema: skills/normative-statements/output.schema.json>>
       label [1] string
-      kind [1] 'prose'
+      kind [1] 'recommendation'
       anchor [0..1] string
       citedBy [0..*] string[]
+      strength [0..1] object
     }
     class folio_assistant_core_core_schemas_skills_public_comment_input_schema_json_Public_Comment_Input["Public Comment Input"] {
       <<schema: skills/public-comment/input.schema.json>>
@@ -351,7 +372,7 @@ classDiagram
       sources [1..*] Source[]
       rules [1..*] Rule[]
       overlaySeverity [0..1] critical | major | minor
-      appliesTo [0..*] list~enum(16) | docs | skill | readme | specification | code~
+      appliesTo [0..*] list~enum(17) | docs | skill | readme | specification | code~
       provenance [1] assertion | evidence | house
       extends [0..1] object
       activeIn [0..1] object
@@ -581,7 +602,7 @@ classDiagram
       sources [1..*] Source[]
       rules [1..*] Rule[]
       overlaySeverity [0..1] critical | major | minor
-      appliesTo [0..*] list~enum(16) | docs | skill | readme | specification | code~
+      appliesTo [0..*] list~enum(17) | docs | skill | readme | specification | code~
       provenance [1] assertion | evidence | house
       extends [0..1] object
       activeIn [0..1] object
@@ -623,6 +644,9 @@ classDiagram
   cssClass "folio_assistant_core_folio_assistant_core_translations_TranslationConfig" fa_uml_kind_translation_sources
   cssClass "folio_assistant_core_folio_assistant_core_block_typologies_folio_block_kind_v1_folio_block_kind_v1" fa_uml_kind_block_kinds
   cssClass "folio_assistant_core_folio_assistant_core_validators_folio_validator_v1_folio_validator_v1" fa_uml_kind_validators
+  folio_assistant_core_core_code_lists_CodeList *-- "1..*" folio_assistant_core_core_code_lists_Code : codes
+  cssClass "folio_assistant_core_core_code_lists_Code" fa_uml_kind_code_list
+  cssClass "folio_assistant_core_core_code_lists_CodeList" fa_uml_kind_code_list
   cssClass "folio_assistant_core_folio_assistant_core_typologies_folio_graph_typology_v1_folio_graph_typology_v1" fa_uml_kind_typologies
   folio_assistant_core_core_schemas_skills_document_publishing_output_schema_json_Document_Publishing_Output *-- "0..*" folio_assistant_core_core_schemas_skills_document_publishing_output_schema_json_Issue : issues
   folio_assistant_core_core_schemas_skills_quality_control_output_schema_json_Quality_Control_Output *-- "0..*" folio_assistant_core_core_schemas_skills_quality_control_output_schema_json_Finding : findings

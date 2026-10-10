@@ -27,7 +27,7 @@ package "folio-assistant-core/core-library" as pkg_folio_assistant_core_core_lib
     document [0..*] : Document[]
     sections [1] : map<object[]>
   }
-  note "library folio-image-verdicts/v1: no node schema declared\n(scripts/apply-image-verdicts.ts does not exist under the instance root /tmp/claude-0/-home-user/01aeb2b8-4c29-5fe7-9903-53487fd27bbb/scratchpad/env29/folio-assistant/cat-harness: could not determine)" as n_folio_assistant_core_core_library_library_folio_image_verdicts_v1
+  note "library folio-image-verdicts/v1: no node schema declared\n(scripts/apply-image-verdicts.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_folio_assistant_core_core_library_library_folio_image_verdicts_v1
 }
 
 folio_assistant_core_core_library_folio_keywords_v1_folio_keywords_v1 *-- "0..*" folio_assistant_core_core_library_folio_keywords_v1_Document : document

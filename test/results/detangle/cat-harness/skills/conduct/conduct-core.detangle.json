@@ -1,14 +1,14 @@
 {
   "$schema": "folio-detangle-sidecar/v1",
   "group": "cat-harness/skills/conduct/conduct-core",
-  "size": 14,
-  "internal": 13,
-  "inbound": 119,
-  "outbound": 50,
+  "size": 16,
+  "internal": 15,
+  "inbound": 137,
+  "outbound": 59,
   "cohesion": 0.07,
   "enforcedBoundary": 0,
-  "recordedBoundary": 169,
-  "proseMentions": 72,
+  "recordedBoundary": 196,
+  "proseMentions": 88,
   "wrongDirection": 0,
   "undeterminedDirection": 0
 }

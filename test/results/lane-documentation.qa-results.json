@@ -1,8 +1,8 @@
 {
   "$schema": "qa-results/v1",
   "producer": {
-    "script": "cat-harness/scripts/check-lane-documentation.ts",
-    "script_hash": "352fe6fb10f3"
+    "script": "cat-harness-tools/scripts/check-lane-documentation.ts",
+    "script_hash": "023bb2182dd1"
   },
   "subject": {
     "kind": "corpus",

@@ -5,7 +5,7 @@
     "id": "Process_MountDependency",
     "path": "processes/kg/mount-dependency.bpmn"
   },
-  "source_hash": "sha256:eee64256e83c67c7c83d7094473fde142de5c49933bab45e16ecf569bbd34e7c",
+  "source_hash": "sha256:31558fdac83a7da3dbc754d37d50da370370cb2a4a3cddc4ccc5bb8aed435385",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -32,29 +32,8 @@
       "findings": []
     },
     "activity-skill-has-tool": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Task_DeclareMount",
-          "detail": "names skill \"remote-mount\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        },
-        {
-          "where": "Task_ResolveClosure",
-          "detail": "names skill \"remote-mount\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        },
-        {
-          "where": "Task_MountInstances",
-          "detail": "names skill \"remote-mount\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        },
-        {
-          "where": "Task_WriteLock",
-          "detail": "names skill \"remote-mount\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        },
-        {
-          "where": "Task_CheckAgainstLock",
-          "detail": "names skill \"remote-mount\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "decision-ref-resolves": {
       "result": "n/a",
@@ -82,6 +61,14 @@
         {
           "where": "Task_DeclareMount",
           "detail": "needs skill \"remote-mount\", but its lane's role \"author\" does not carry it."
+        },
+        {
+          "where": "Task_DeclareMount",
+          "detail": "needs skill \"index-config\", but its lane's role \"author\" does not carry it."
+        },
+        {
+          "where": "Task_RenderAgentSurface",
+          "detail": "needs skill \"agent-memory\", but its lane's role \"build-pipeline\" does not carry it."
         }
       ]
     },
@@ -135,8 +122,8 @@
     }
   },
   "totals": {
-    "pass": 13,
-    "fail": 2,
+    "pass": 14,
+    "fail": 1,
     "n/a": 10,
     "unknown": 0
   }

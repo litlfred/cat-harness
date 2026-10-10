@@ -5,7 +5,7 @@
     "id": "Process_KgSeparation",
     "path": "processes/kg/kg-separation.bpmn"
   },
-  "source_hash": "sha256:91ec392f9384e8e7eba0a6c239f6880f02fe1b5bb10f39b4ba7dab94d2f73eca",
+  "source_hash": "sha256:b969edb4b8ed72f0d15029595c13bcfdc9717f4dcbaae562234805b980642da4",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -39,36 +39,12 @@
           "detail": "names skill \"opening-brief\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
         },
         {
-          "where": "Task_Measure",
-          "detail": "names skill \"kg-separation\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        },
-        {
-          "where": "Task_Decide",
-          "detail": "names skill \"kg-separation\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        },
-        {
           "where": "Task_Detangle",
           "detail": "names skill \"graph-detanglement\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
         },
         {
-          "where": "Task_Identity",
-          "detail": "names skill \"kg-separation\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        },
-        {
-          "where": "Task_Hosted",
-          "detail": "names skill \"kg-separation\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        },
-        {
-          "where": "Task_Split",
-          "detail": "names skill \"kg-separation\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        },
-        {
           "where": "Task_Plan",
           "detail": "names skill \"instance-publication\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        },
-        {
-          "where": "Task_Rehearse",
-          "detail": "names skill \"kg-separation\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
         },
         {
           "where": "Task_Propose",
@@ -77,18 +53,6 @@
         {
           "where": "Task_Authorise",
           "detail": "names skill \"deletion-requires-confirmation\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        },
-        {
-          "where": "Task_Create",
-          "detail": "names skill \"kg-separation\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        },
-        {
-          "where": "Task_Drain",
-          "detail": "names skill \"kg-separation\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
-        },
-        {
-          "where": "Task_Seed",
-          "detail": "names skill \"kg-separation\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
         },
         {
           "where": "Task_Consume",

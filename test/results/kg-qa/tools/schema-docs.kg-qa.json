@@ -5,7 +5,7 @@
     "id": "schema-docs",
     "path": null
   },
-  "source_hash": "8fb1f317b56b",
+  "source_hash": "cb11b0fa02c8",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

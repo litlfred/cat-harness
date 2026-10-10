@@ -5,7 +5,7 @@
     "id": "upload-url",
     "path": null
   },
-  "source_hash": "214a2d99e269",
+  "source_hash": "d6fa52a204ba",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

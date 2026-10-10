@@ -5,7 +5,7 @@
     "id": "folio-block-screenshots",
     "path": null
   },
-  "source_hash": "e495f90fb211",
+  "source_hash": "a0d68d91c1d4",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -4,13 +4,24 @@
   "@type": "bootstrap:Subgraph",
   "hasMember": [
     {
+      "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#skill/audio-transcription",
+      "@type": "bootstrap:Skill",
+      "name": "audio-transcription",
+      "payload": {
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/473901aff2ee05f460ab11c25bde96cd9abf59eaa5aaa88103ee836c4a932428",
+        "bytes": 6296,
+        "sha256": "473901aff2ee05f460ab11c25bde96cd9abf59eaa5aaa88103ee836c4a932428"
+      },
+      "title": "Audio transcription: which recogniser, when, and how to check it"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#skill/document-intake",
       "@type": "bootstrap:Skill",
       "name": "document-intake",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6c179aa332e0e42e033dd4461c2400d91e33b9904684a186561dcbe2fdad08e6",
-        "bytes": 23655,
-        "sha256": "6c179aa332e0e42e033dd4461c2400d91e33b9904684a186561dcbe2fdad08e6"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e56e7ddc19287951fc3fbe6998a42f0b96ee54406b77bb2975ea1c7e24e040a2",
+        "bytes": 23687,
+        "sha256": "e56e7ddc19287951fc3fbe6998a42f0b96ee54406b77bb2975ea1c7e24e040a2"
       },
       "title": "Document Intake"
     },

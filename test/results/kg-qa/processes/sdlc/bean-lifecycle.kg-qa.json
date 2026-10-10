@@ -5,7 +5,7 @@
     "id": "Process_BeanLifecycle",
     "path": "processes/sdlc/bean-lifecycle.bpmn"
   },
-  "source_hash": "sha256:457a1a84eb8184544bfd1f8b6f30f131102301a3e771180ebae5bc886ed85f50",
+  "source_hash": "sha256:f73b3465dd925f3f177eb1877415924d7166854db89aa7d16953381ad2f173fc",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

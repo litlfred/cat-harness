@@ -5,7 +5,7 @@
     "id": "req:agent-workflow",
     "path": "skills/requirements/agent-workflow.json"
   },
-  "source_hash": "sha256:b9c52a76dba596b9519798505d832226e3afce56e56af277115963c5fb89c2b2",
+  "source_hash": "sha256:df5593ab3fdb4bd88bb4361c413a91b4973707484024a04f43a5027afd80462f",
   "criteria": {
     "requirement-statement-satisfied": {
       "result": "fail",

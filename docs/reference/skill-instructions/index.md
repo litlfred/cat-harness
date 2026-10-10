@@ -403,6 +403,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 
 | Skill | Id | Schema | Summary |
 |-------|----|--------|---------|
+| [Audio transcription: which recogniser, when, and how to check it](audio-transcription.html) | `audio-transcription` | — | Bean `1r0p`. The first real recording is the smart-ra meeting: |
 | [Document Intake](document-intake.html) | `document-intake` | — | > **Bib human-review integration.** Track per-upload ingestion |
 | [L1 coverage](l1-coverage.html) | `l1-coverage` | — | Issue [#2405](https://github.com/litlfred/folio-assistant/issues/2405) FR-009: |
 | [L1 document ingestion](l1-document-ingestion.html) | `l1-document-ingestion` | — | **This is a refinement, not the entry point.** The harness's |

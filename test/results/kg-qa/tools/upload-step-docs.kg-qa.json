@@ -5,7 +5,7 @@
     "id": "upload-step-docs",
     "path": null
   },
-  "source_hash": "773c89568418",
+  "source_hash": "08fced97f8e6",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "site-build-local",
     "path": null
   },
-  "source_hash": "5a625878d235",
+  "source_hash": "4c639d10e5b7",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

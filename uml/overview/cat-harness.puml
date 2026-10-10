@@ -398,7 +398,7 @@ package "cat-harness/skills" as pkg_cat_harness_skills <<skills>> {
     sources [1..*] : Source[]
     rules [1..*] : Rule[]
     overlaySeverity [0..1] : critical | major | minor
-    appliesTo [0..*] : list<enum(16) | docs | skill | readme | specification | code>
+    appliesTo [0..*] : list<enum(17) | docs | skill | readme | specification | code>
     provenance [1] : assertion | evidence | house
     extends [0..1] : object
     activeIn [0..1] : object
@@ -818,7 +818,7 @@ package "cat-harness/library" as pkg_cat_harness_library <<library>> {
     withheld [1] : object
     links [0..*] : object[]
   }
-  note "library folio-image-verdicts/v1: no node schema declared\n(scripts/apply-image-verdicts.ts does not exist under the instance root /tmp/claude-0/-home-user/01aeb2b8-4c29-5fe7-9903-53487fd27bbb/scratchpad/env29/folio-assistant/cat-harness: could not determine)" as n_cat_harness_library_library_folio_image_verdicts_v1
+  note "library folio-image-verdicts/v1: no node schema declared\n(scripts/apply-image-verdicts.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_cat_harness_library_library_folio_image_verdicts_v1
 }
 package "cat-harness/translation-sources" as pkg_cat_harness_translation_sources <<translation-sources>> {
   class "TranslationConfig" as cat_harness_translation_sources_TranslationConfig <<json: TranslationConfigSchema>> #f4f4f1 {
@@ -1194,8 +1194,8 @@ package "cat-harness/docs" as pkg_cat_harness_docs <<docs>> {
     bytes [1] : integer
     mediaType [1] : string
   }
-  note "docs folio-qa-graph/v1: no node schema declared\n(content/pipeline/qa-graph-index.ts does not exist under the instance root /tmp/claude-0/-home-user/01aeb2b8-4c29-5fe7-9903-53487fd27bbb/scratchpad/env29/folio-assistant/cat-harness: could not determine)" as n_cat_harness_docs_docs_folio_qa_graph_v1
-  note "docs folio-translation-index/v1: no node schema declared\n(content/pipeline/translation-index.ts does not exist under the instance root /tmp/claude-0/-home-user/01aeb2b8-4c29-5fe7-9903-53487fd27bbb/scratchpad/env29/folio-assistant/cat-harness: could not determine)" as n_cat_harness_docs_docs_folio_translation_index_v1
+  note "docs folio-qa-graph/v1: no node schema declared\n(content/pipeline/qa-graph-index.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_cat_harness_docs_docs_folio_qa_graph_v1
+  note "docs folio-translation-index/v1: no node schema declared\n(content/pipeline/translation-index.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_cat_harness_docs_docs_folio_translation_index_v1
 }
 package "cat-harness/site" as pkg_cat_harness_site <<basic-cdn-site>> {
   note "basic-cdn-site: no node schema declared\n(no node here carries a $schema family basic-cdn-site names (1 named): could not determine)" as n_cat_harness_site_basic_cdn_site
@@ -1317,7 +1317,7 @@ package "cat-harness/voices" as pkg_cat_harness_voices <<voices>> {
     sources [1..*] : Source[]
     rules [1..*] : Rule[]
     overlaySeverity [0..1] : critical | major | minor
-    appliesTo [0..*] : list<enum(16) | docs | skill | readme | specification | code>
+    appliesTo [0..*] : list<enum(17) | docs | skill | readme | specification | code>
     provenance [1] : assertion | evidence | house
     extends [0..1] : object
     activeIn [0..1] : object
@@ -1362,7 +1362,7 @@ package "cat-harness/vendors" as pkg_cat_harness_vendors <<voice-vendors>> {
     sources [1..*] : Source[]
     rules [1..*] : Rule[]
     overlaySeverity [0..1] : critical | major | minor
-    appliesTo [0..*] : list<enum(16) | docs | skill | readme | specification | code>
+    appliesTo [0..*] : list<enum(17) | docs | skill | readme | specification | code>
     provenance [1] : assertion | evidence | house
     extends [0..1] : object
     activeIn [0..1] : object
@@ -1407,7 +1407,7 @@ package "cat-harness/agent-skill-authoring-claude" as pkg_cat_harness_agent_skil
     sources [1..*] : Source[]
     rules [1..*] : Rule[]
     overlaySeverity [0..1] : critical | major | minor
-    appliesTo [0..*] : list<enum(16) | docs | skill | readme | specification | code>
+    appliesTo [0..*] : list<enum(17) | docs | skill | readme | specification | code>
     provenance [1] : assertion | evidence | house
     extends [0..1] : object
     activeIn [0..1] : object
@@ -1452,7 +1452,7 @@ package "cat-harness/agent-skill-authoring-gemini-cli" as pkg_cat_harness_agent_
     sources [1..*] : Source[]
     rules [1..*] : Rule[]
     overlaySeverity [0..1] : critical | major | minor
-    appliesTo [0..*] : list<enum(16) | docs | skill | readme | specification | code>
+    appliesTo [0..*] : list<enum(17) | docs | skill | readme | specification | code>
     provenance [1] : assertion | evidence | house
     extends [0..1] : object
     activeIn [0..1] : object
@@ -1497,7 +1497,7 @@ package "cat-harness/agent-skill-authoring-openai" as pkg_cat_harness_agent_skil
     sources [1..*] : Source[]
     rules [1..*] : Rule[]
     overlaySeverity [0..1] : critical | major | minor
-    appliesTo [0..*] : list<enum(16) | docs | skill | readme | specification | code>
+    appliesTo [0..*] : list<enum(17) | docs | skill | readme | specification | code>
     provenance [1] : assertion | evidence | house
     extends [0..1] : object
     activeIn [0..1] : object

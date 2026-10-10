@@ -3,17 +3,17 @@
   "skill": "crdm-detect",
   "subject": "crdm-detect phrase signals against the issue corpus",
   "data": {
-    "hash": "1736c0d4c300",
+    "hash": "3554a15543fc",
     "inputs": [
-      "scripts/eval/crdm-detect-corpus.json"
+      "cat-harness-tools/scripts/eval/crdm-detect-corpus.json"
     ]
   },
   "process": {
-    "hash": "eb4dcf9446f6",
+    "hash": "97b574a2a508",
     "inputs": [
-      "scripts/eval-crdm-detect.ts",
-      "skills/sdlc/crdm/crdm-detect.md",
-      "src/crdm/detect-signals.ts"
+      "cat-harness-tools/scripts/eval-crdm-detect.ts",
+      "cat-harness-tools/src/crdm/detect-signals.ts",
+      "cat-harness/skills/sdlc/crdm/crdm-detect.md"
     ]
   },
   "outcome": {
@@ -353,5 +353,5 @@
       }
     }
   ],
-  "updated_at": "2026-10-08T06:11:02.114Z"
+  "updated_at": "2026-10-10T22:04:11.950Z"
 }

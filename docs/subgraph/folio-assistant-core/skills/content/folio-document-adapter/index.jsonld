@@ -52,9 +52,9 @@
       "@type": "bootstrap:Skill",
       "name": "normative-statements",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9b8f41a3efb6f406fccc533b5223d0e89052465c3bc52e84ebc2c73b20258038",
-        "bytes": 3562,
-        "sha256": "9b8f41a3efb6f406fccc533b5223d0e89052465c3bc52e84ebc2c73b20258038"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f04e60c96d1504fae5a522cdfd6a6dc8feb3ce6f7ff39e841e8fbc5f3d66d4fa",
+        "bytes": 4366,
+        "sha256": "f04e60c96d1504fae5a522cdfd6a6dc8feb3ce6f7ff39e841e8fbc5f3d66d4fa"
       },
       "title": "normative-statements"
     },

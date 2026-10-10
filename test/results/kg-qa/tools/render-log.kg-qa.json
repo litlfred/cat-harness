@@ -5,7 +5,7 @@
     "id": "render-log",
     "path": null
   },
-  "source_hash": "f149a79fda67",
+  "source_hash": "a8d2b10859df",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",
