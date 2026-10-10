@@ -21,10 +21,8 @@
 import { z } from "zod";
 import {
   FINDING_SEVERITIES,
-  FINDING_WEIGHTS,
   RED_FLAG_CATEGORIES,
   type FindingSeverity,
-  type FindingWeight,
   type RedFlagCategory,
 } from "./red-flag";
 
