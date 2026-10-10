@@ -507,6 +507,13 @@
   mask-image: var(--fa-avatar-glyph);
 }
 
+.fa-avatar[data-fa-kind="archimate"] {
+  /* three boxes and the lines between them — an architecture drawn as a model, every box an element */
+  --fa-avatar-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 4h7v5H3zM14 4h7v5h-7zM8.5 15h7v5h-7zM6.5 9v3h11V9M12 12v3' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--fa-avatar-glyph);
+  mask-image: var(--fa-avatar-glyph);
+}
+
 .fa-avatar[data-fa-kind="fhir-artifact-index"] {
   /* a card index with a schema brace — an IG's artefacts, known by canonical URL */
   --fa-avatar-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 6h12v12H4zM4 10h12M10 6v12M19 7c-1 0-1 2-2 2 1 0 1 2 2 2' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -695,6 +702,7 @@
   .fa-avatar[data-fa-kind="fsh-guts"] { background-color: hsl(16 46% 34%); }
   .fa-avatar[data-fa-kind="uploads"] { background-color: hsl(200 46% 34%); }
   .fa-avatar[data-fa-kind="openapi"] { background-color: hsl(136 46% 34%); }
+  .fa-avatar[data-fa-kind="archimate"] { background-color: hsl(196 46% 34%); }
   .fa-avatar[data-fa-kind="fhir-artifact-index"] { background-color: hsl(168 46% 34%); }
   .fa-avatar[data-fa-kind="ig-ast"] { background-color: hsl(152 46% 34%); }
   .fa-avatar[data-fa-kind="ig-metadata-index"] { background-color: hsl(190 46% 34%); }
@@ -783,6 +791,7 @@
     .fa-avatar[data-fa-kind="fsh-guts"] { background-color: hsl(16 46% 34%); }
     .fa-avatar[data-fa-kind="uploads"] { background-color: hsl(200 46% 34%); }
     .fa-avatar[data-fa-kind="openapi"] { background-color: hsl(136 46% 34%); }
+    .fa-avatar[data-fa-kind="archimate"] { background-color: hsl(196 46% 34%); }
     .fa-avatar[data-fa-kind="fhir-artifact-index"] { background-color: hsl(168 46% 34%); }
     .fa-avatar[data-fa-kind="ig-ast"] { background-color: hsl(152 46% 34%); }
     .fa-avatar[data-fa-kind="ig-metadata-index"] { background-color: hsl(190 46% 34%); }
@@ -872,6 +881,7 @@
   .fa-avatar[data-fa-kind="fsh-guts"] { background-color: hsl(16 42% 72%); }
   .fa-avatar[data-fa-kind="uploads"] { background-color: hsl(200 42% 72%); }
   .fa-avatar[data-fa-kind="openapi"] { background-color: hsl(136 42% 72%); }
+  .fa-avatar[data-fa-kind="archimate"] { background-color: hsl(196 42% 72%); }
   .fa-avatar[data-fa-kind="fhir-artifact-index"] { background-color: hsl(168 42% 72%); }
   .fa-avatar[data-fa-kind="ig-ast"] { background-color: hsl(152 42% 72%); }
   .fa-avatar[data-fa-kind="ig-metadata-index"] { background-color: hsl(190 42% 72%); }
@@ -960,6 +970,7 @@
     .fa-avatar[data-fa-kind="fsh-guts"] { background-color: hsl(16 42% 72%); }
     .fa-avatar[data-fa-kind="uploads"] { background-color: hsl(200 42% 72%); }
     .fa-avatar[data-fa-kind="openapi"] { background-color: hsl(136 42% 72%); }
+    .fa-avatar[data-fa-kind="archimate"] { background-color: hsl(196 42% 72%); }
     .fa-avatar[data-fa-kind="fhir-artifact-index"] { background-color: hsl(168 42% 72%); }
     .fa-avatar[data-fa-kind="ig-ast"] { background-color: hsl(152 42% 72%); }
     .fa-avatar[data-fa-kind="ig-metadata-index"] { background-color: hsl(190 42% 72%); }
@@ -1051,6 +1062,7 @@
   .fa-avatar[data-fa-kind="fsh-guts"][data-fa-trash="true"] { background-color: hsl(16 16% 52%); }
   .fa-avatar[data-fa-kind="uploads"][data-fa-trash="true"] { background-color: hsl(200 16% 52%); }
   .fa-avatar[data-fa-kind="openapi"][data-fa-trash="true"] { background-color: hsl(136 16% 52%); }
+  .fa-avatar[data-fa-kind="archimate"][data-fa-trash="true"] { background-color: hsl(196 16% 52%); }
   .fa-avatar[data-fa-kind="fhir-artifact-index"][data-fa-trash="true"] { background-color: hsl(168 16% 52%); }
   .fa-avatar[data-fa-kind="ig-ast"][data-fa-trash="true"] { background-color: hsl(152 16% 52%); }
   .fa-avatar[data-fa-kind="ig-metadata-index"][data-fa-trash="true"] { background-color: hsl(190 16% 52%); }
@@ -1138,6 +1150,7 @@
     .fa-avatar[data-fa-kind="fsh-guts"][data-fa-trash="true"] { background-color: hsl(16 16% 52%); }
     .fa-avatar[data-fa-kind="uploads"][data-fa-trash="true"] { background-color: hsl(200 16% 52%); }
     .fa-avatar[data-fa-kind="openapi"][data-fa-trash="true"] { background-color: hsl(136 16% 52%); }
+    .fa-avatar[data-fa-kind="archimate"][data-fa-trash="true"] { background-color: hsl(196 16% 52%); }
     .fa-avatar[data-fa-kind="fhir-artifact-index"][data-fa-trash="true"] { background-color: hsl(168 16% 52%); }
     .fa-avatar[data-fa-kind="ig-ast"][data-fa-trash="true"] { background-color: hsl(152 16% 52%); }
     .fa-avatar[data-fa-kind="ig-metadata-index"][data-fa-trash="true"] { background-color: hsl(190 16% 52%); }
@@ -1225,6 +1238,7 @@
   .fa-avatar[data-fa-kind="fsh-guts"][data-fa-trash="true"] { background-color: hsl(16 14% 56%); }
   .fa-avatar[data-fa-kind="uploads"][data-fa-trash="true"] { background-color: hsl(200 14% 56%); }
   .fa-avatar[data-fa-kind="openapi"][data-fa-trash="true"] { background-color: hsl(136 14% 56%); }
+  .fa-avatar[data-fa-kind="archimate"][data-fa-trash="true"] { background-color: hsl(196 14% 56%); }
   .fa-avatar[data-fa-kind="fhir-artifact-index"][data-fa-trash="true"] { background-color: hsl(168 14% 56%); }
   .fa-avatar[data-fa-kind="ig-ast"][data-fa-trash="true"] { background-color: hsl(152 14% 56%); }
   .fa-avatar[data-fa-kind="ig-metadata-index"][data-fa-trash="true"] { background-color: hsl(190 14% 56%); }
@@ -1312,6 +1326,7 @@
     .fa-avatar[data-fa-kind="fsh-guts"][data-fa-trash="true"] { background-color: hsl(16 14% 56%); }
     .fa-avatar[data-fa-kind="uploads"][data-fa-trash="true"] { background-color: hsl(200 14% 56%); }
     .fa-avatar[data-fa-kind="openapi"][data-fa-trash="true"] { background-color: hsl(136 14% 56%); }
+    .fa-avatar[data-fa-kind="archimate"][data-fa-trash="true"] { background-color: hsl(196 14% 56%); }
     .fa-avatar[data-fa-kind="fhir-artifact-index"][data-fa-trash="true"] { background-color: hsl(168 14% 56%); }
     .fa-avatar[data-fa-kind="ig-ast"][data-fa-trash="true"] { background-color: hsl(152 14% 56%); }
     .fa-avatar[data-fa-kind="ig-metadata-index"][data-fa-trash="true"] { background-color: hsl(190 14% 56%); }
