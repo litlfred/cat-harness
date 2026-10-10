@@ -47,7 +47,7 @@ Each page shows the diagram, what it is for, who acts in it, every step with the
 | [A sub-graph wants to leave](graph-detanglement.html) | 8 | — |
 | [A knowledge graph leaves for its own repositories](kg-separation.html) | 18 | — |
 | [KG to public portal](kg-to-portal.html) | 10 | — |
-| [Remote-mount a dependency](mount-dependency.html) | 5 | — |
+| [Remote-mount a dependency](mount-dependency.html) | 6 | — |
 | [Mount a declared subgraph](mount-subgraph.html) | 6 | — |
 | [Execute audited named queries over partitioned W3C N-Quads distributions](named-query-execution.html) | 7 | — |
 | [Package and distribute partitioned W3C N-Quads and named queries](nquads-distribution.html) | 7 | — |
@@ -138,13 +138,14 @@ Each page shows the diagram, what it is for, who acts in it, every step with the
 
 The reverse of `<bootstrap.processes:skill ref>`, which is the join nothing else exposes: a skill says what to do, and until now nothing said which processes ask for it.
 
-**136** distinct skill(s) are named by an activity.
+**137** distinct skill(s) are named by an activity.
 
 | skill | run by |
 |---|---|
 | [`activity-log`](../../../reference/skill-instructions/activity-log.html) | [`activity-log.bpmn`](activity-log.html) |
 | [`adjudication`](../../../reference/skill-instructions/adjudication.html) | [`review-narrative.bpmn`](review-narrative.html), [`voice-review.bpmn`](voice-review.html), [`refresh-materialized.bpmn`](refresh-materialized.html), [`translation-workflow.bpmn`](translation-workflow.html), [`crdm-close.bpmn`](crdm-close.html), [`crdm-signoff.bpmn`](crdm-signoff.html), [`adjudication.bpmn`](adjudication.html), [`criterion-adjudication.bpmn`](criterion-adjudication.html), [`content-change-review.bpmn`](content-change-review.html), [`ingest-l1-completeness-gate.bpmn`](ingest-l1-completeness-gate.html) |
 | [`adopt-methodology-from-source`](../../../reference/skill-instructions/adopt-methodology-from-source.html) | [`methodology-from-source.bpmn`](methodology-from-source.html) |
+| [`agent-memory`](../../../reference/skill-instructions/agent-memory.html) | [`mount-dependency.bpmn`](mount-dependency.html) |
 | [`agent-permissions`](../../../reference/skill-instructions/agent-permissions.html) | [`secure-agent-permissions.bpmn`](secure-agent-permissions.html), [`session-state-machine.bpmn`](session-state-machine.html) |
 | [`asset-extraction`](../../../reference/skill-instructions/asset-extraction.html) | [`document-ingestion.bpmn`](document-ingestion.html) |
 | [`bean-coordination`](../../../reference/skill-instructions/bean-coordination.html) | [`bean-lifecycle.bpmn`](bean-lifecycle.html), [`code-change-review.bpmn`](code-change-review.html), [`merge-refusal.bpmn`](merge-refusal.html), [`merge-train.bpmn`](merge-train.html), [`stalled-agent-triage.bpmn`](stalled-agent-triage.html) |
