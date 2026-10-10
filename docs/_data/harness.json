@@ -67,7 +67,7 @@
       "href": "/beans/",
       "hidden": false,
       "icon": "beans",
-      "count": 188,
+      "count": 286,
       "unit": "open beans"
     },
     {
@@ -128,21 +128,6 @@
       "href": "/processes/",
       "hidden": false,
       "icon": "processes"
-    },
-    {
-      "id": "core-schemas",
-      "directory": "core-schemas",
-      "title": "Schemas",
-      "qualifier": "Folio Assistant Core",
-      "ref": "cat-harness/docs/cat-harness/schemas/folio-assistant-core/index.html",
-      "surfaces": [
-        "navbar",
-        "board",
-        "glass"
-      ],
-      "href": "/cat-harness/schemas/folio-assistant-core/",
-      "hidden": false,
-      "icon": "schemas"
     },
     {
       "id": "core-skills",
@@ -877,17 +862,17 @@
         {
           "id": "directories",
           "label": "declared directories",
-          "value": 15
+          "value": 14
         },
         {
           "id": "kinds",
           "label": "declared graph typologies",
-          "value": 13
+          "value": 12
         },
         {
           "id": "views",
           "label": "visualisations you can open",
-          "value": 8
+          "value": 7
         }
       ],
       "visualisations": [
@@ -908,11 +893,6 @@
           "label": "Docs"
         },
         {
-          "kind": "folio",
-          "note": "no viewer yet",
-          "label": "Folio"
-        },
-        {
           "kind": "glossary",
           "note": "no viewer yet",
           "label": "Glossary"
@@ -929,7 +909,7 @@
         },
         {
           "kind": "schemas",
-          "path": "/cat-harness/schemas/",
+          "note": "no viewer yet",
           "label": "Schemas"
         },
         {
@@ -1065,14 +1045,6 @@
           "path": "who-iris/test/results/"
         },
         {
-          "id": "folio",
-          "kinds": [
-            "folio"
-          ],
-          "where": "local",
-          "path": "who-iris/folio/"
-        },
-        {
           "id": "voices",
           "kinds": [
             "voices"
@@ -1082,7 +1054,7 @@
         }
       ],
       "findings": [
-        "who-iris: declares 5 graph(s) with no published viewer — code, folio, glossary, qa, themes. Declared and not rendered is a gap, not a dead link.",
+        "who-iris: declares 5 graph(s) with no published viewer — code, glossary, qa, schemas, themes. Declared and not rendered is a gap, not a dead link.",
         "who-iris: 1 graph(s) hold materialized content and are READ-ONLY — catalogue. Readable, not editable here: copy one out to your own folio/ to work on it. Separate from whether a viewer is published."
       ],
       "navbarIcons": [
@@ -1128,7 +1100,7 @@
         {
           "id": "views",
           "label": "visualisations you can open",
-          "value": 7
+          "value": 6
         }
       ],
       "visualisations": [
@@ -1184,7 +1156,7 @@
         },
         {
           "kind": "schemas",
-          "path": "/cat-harness/schemas/",
+          "note": "no viewer yet",
           "label": "Schemas"
         },
         {
@@ -1369,7 +1341,7 @@
         }
       ],
       "findings": [
-        "folio-assistant-sci: declares 9 graph(s) with no published viewer — attestations, block-kinds, code, content-adapters, pipeline-plugins, qa, qa-checkers, tools, typologies. Declared and not rendered is a gap, not a dead link.",
+        "folio-assistant-sci: declares 10 graph(s) with no published viewer — attestations, block-kinds, code, content-adapters, pipeline-plugins, qa, qa-checkers, schemas, tools, typologies. Declared and not rendered is a gap, not a dead link.",
         "folio-assistant-sci: has no docs/ of its own, so the tile opens its section of the landing (/#harness-folio-assistant-sci) rather than the instance's own themed root."
       ],
       "navbarIcons": [
@@ -1541,7 +1513,6 @@
       ],
       "findings": [
         "fhir-harness: declares 5 graph(s) with no published viewer — code, qa, tools, typologies, validators. Declared and not rendered is a gap, not a dead link.",
-        "fhir-harness: a viewer is published at /cat-harness/schemas/fhir-harness/ for a \"schemas\" graph this instance does not declare. Declare it and the tile links it.",
         "fhir-harness: has no docs/ of its own, so the tile opens its section of the landing (/#harness-fhir-harness) rather than the instance's own themed root."
       ],
       "navbarIcons": [
@@ -1616,7 +1587,7 @@
         {
           "id": "views",
           "label": "visualisations you can open",
-          "value": 10
+          "value": 8
         }
       ],
       "visualisations": [
@@ -1642,9 +1613,8 @@
         },
         {
           "kind": "cat-harness",
-          "path": "/cat-harness/schemas/folio-assistant-core/",
-          "label": "Schemas",
-          "sameAs": "schemas"
+          "note": "no viewer yet",
+          "label": "Harness graph"
         },
         {
           "kind": "code",
@@ -1693,7 +1663,7 @@
         },
         {
           "kind": "schemas",
-          "path": "/cat-harness/schemas/folio-assistant-core/",
+          "note": "no viewer yet",
           "label": "Schemas"
         },
         {
@@ -1920,7 +1890,7 @@
         }
       ],
       "findings": [
-        "folio-assistant-core: declares 12 graph(s) with no published viewer — bean-defs, bean-notes, beans, block-kinds, code, folio, memory, qa, tools, typologies, validators, workflow-state. Declared and not rendered is a gap, not a dead link."
+        "folio-assistant-core: declares 14 graph(s) with no published viewer — bean-defs, bean-notes, beans, block-kinds, cat-harness, code, folio, memory, qa, schemas, tools, typologies, validators, workflow-state. Declared and not rendered is a gap, not a dead link."
       ],
       "navbarIcons": [
         "close",
@@ -2162,7 +2132,7 @@
         {
           "id": "directories",
           "label": "declared directories",
-          "value": 92
+          "value": 86
         },
         {
           "id": "kinds",
@@ -2689,14 +2659,6 @@
           "path": "cat-harness/openapi/"
         },
         {
-          "id": "archimate",
-          "kinds": [
-            "cat-harness"
-          ],
-          "where": "local",
-          "path": "cat-harness/archimate/"
-        },
-        {
           "id": "memory",
           "kinds": [
             "memory",
@@ -3019,14 +2981,6 @@
           "path": "cat-harness/docs/assets/img/uml/overview/"
         },
         {
-          "id": "docs-source",
-          "kinds": [
-            "docs"
-          ],
-          "where": "local",
-          "path": "cat-harness/docs/source/"
-        },
-        {
           "id": "openapi-validators",
           "kinds": [
             "validators"
@@ -3057,38 +3011,6 @@
           ],
           "where": "local",
           "path": "cat-harness/openapi/scripts/"
-        },
-        {
-          "id": "archimate-validators",
-          "kinds": [
-            "validators"
-          ],
-          "where": "local",
-          "path": "cat-harness/archimate/validators/"
-        },
-        {
-          "id": "archimate-typologies",
-          "kinds": [
-            "typologies"
-          ],
-          "where": "local",
-          "path": "cat-harness/archimate/typologies/"
-        },
-        {
-          "id": "archimate-schemas",
-          "kinds": [
-            "schemas"
-          ],
-          "where": "local",
-          "path": "cat-harness/archimate/schemas/"
-        },
-        {
-          "id": "archimate-scripts",
-          "kinds": [
-            "code"
-          ],
-          "where": "local",
-          "path": "cat-harness/archimate/scripts/"
         },
         {
           "id": "defs",
@@ -3483,6 +3405,11 @@
         "note": "no viewer yet"
       },
       {
+        "kind": "cat-harness",
+        "label": "Harness graph",
+        "note": "no viewer yet"
+      },
+      {
         "kind": "code",
         "label": "Code",
         "note": "no viewer yet"
@@ -3530,7 +3457,7 @@
       {
         "kind": "schemas",
         "label": "Schemas",
-        "path": "/cat-harness/schemas/folio-assistant-core/"
+        "note": "no viewer yet"
       },
       {
         "kind": "skills",
@@ -3596,6 +3523,11 @@
           "note": "no viewer yet"
         },
         {
+          "kind": "cat-harness",
+          "label": "Harness graph",
+          "note": "no viewer yet"
+        },
+        {
           "kind": "code",
           "label": "Code",
           "note": "no viewer yet"
@@ -3643,7 +3575,7 @@
         {
           "kind": "schemas",
           "label": "Schemas",
-          "path": "/cat-harness/schemas/folio-assistant-core/"
+          "note": "no viewer yet"
         },
         {
           "kind": "skills",
@@ -3859,11 +3791,6 @@
           "path": "/cat-harness/auto-docs/index/docs/who-iris-site/"
         },
         {
-          "kind": "folio",
-          "label": "Folio",
-          "note": "no viewer yet"
-        },
-        {
           "kind": "glossary",
           "label": "Glossary",
           "note": "no viewer yet"
@@ -3881,7 +3808,7 @@
         {
           "kind": "schemas",
           "label": "Schemas",
-          "path": "/cat-harness/schemas/"
+          "note": "no viewer yet"
         },
         {
           "kind": "skills",
@@ -4440,10 +4367,6 @@
             "summary": "{ smart-trust:pages:check, smart-trust:openapi:check, smart-trust:openapi:pages:check }"
           },
           {
-            "key": "gateExemptions",
-            "summary": "{ scripts }"
-          },
-          {
             "key": "version",
             "summary": "0.1.0"
           }
@@ -4496,10 +4419,6 @@
           {
             "key": "taskIo",
             "summary": "{ smart-immunizations:pages:check }"
-          },
-          {
-            "key": "gateExemptions",
-            "summary": "{ scripts }"
           },
           {
             "key": "version",
@@ -4558,10 +4477,6 @@
           {
             "key": "taskIo",
             "summary": "{ smart-base:diig-figure:check, smart-base:pages:check, smart-base:document-kinds:check, smart-base:dth-terms:check, smart-base:smart-kg-l1:check }"
-          },
-          {
-            "key": "gateExemptions",
-            "summary": "{ scripts }"
           },
           {
             "key": "contentTranslations",
@@ -4623,7 +4538,7 @@
           },
           {
             "key": "directories",
-            "summary": "14: who-iris-translations, library, who-iris-site, who-iris-catalogue, who-iris-uploads, who-…"
+            "summary": "13: who-iris-translations, library, who-iris-site, who-iris-catalogue, who-iris-uploads, who-…"
           },
           {
             "key": "stickies",
@@ -4953,7 +4868,7 @@
           },
           {
             "key": "directories",
-            "summary": "39: cat-harness-validators, tools, external-schemas, subscriptions, code-lists, vocab-mapping…"
+            "summary": "38: cat-harness-validators, tools, external-schemas, subscriptions, code-lists, vocab-mapping…"
           },
           {
             "key": "associatedHarnesses",
