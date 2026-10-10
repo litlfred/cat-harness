@@ -74,6 +74,7 @@
 
 import { z } from "zod";
 
+import { nodeKind } from "./node-kind";
 import {
   GraphNodeDirectorySchema,
   defaultGraphTypologies,
@@ -176,6 +177,24 @@ export const BeanFrontMatterSchema = z
   .passthrough();
 
 export type BeanFrontMatter = z.infer<typeof BeanFrontMatterSchema>;
+
+/**
+ * A bean, as a node kind: `$schema: bean/1.0.0` in its front matter.
+ *
+ * Bean `ujiv` (issue #88), owner 2026-10-06: a file that cannot keep a tag on
+ * its own is TAGGED. A bean is such a file — `beans update` rewrites the front
+ * matter and drops every key it does not know, `$schema` included (measured
+ * 2026-10-06 on a scratch store). So the tag is restored rather than trusted:
+ * `bun run beans:retag` writes it back, the session-start and pre-commit hooks
+ * run that, and a gate fails on a bean that is still missing it.
+ *
+ * Built on {@link BeanFrontMatterSchema}'s shape rather than a second list of
+ * the same fields: the CLI's vocabulary is defined once.
+ */
+export const BeanNodeKind = nodeKind("bean/1.0.0", [], BeanFrontMatterSchema.shape);
+
+/** The `$schema` tag every bean carries in its front matter. */
+export const BEAN_SCHEMA_TAG = "bean/1.0.0";
 
 /**
  * The graph file's name inside its root directory.

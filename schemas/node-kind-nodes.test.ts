@@ -56,3 +56,51 @@ describe("nodesOfKind", () => {
     expect(nodes[0]!.node.refs).toEqual([{ kind: "bean", id: "b1" }]);
   });
 });
+
+/**
+ * Bean `ujiv` (issue #88): an instance declaration is found by its NAME RULE,
+ * a repository-scoped directory is addressed from the repository rather than
+ * with `../`, and a directory whose content is off the checkout is not read.
+ */
+describe("nodesOfKind: name rules, repository scope, off-checkout content", () => {
+  const agg = mkdtempSync(join(import.meta.dir, ".tmp-node-kind-nodes-agg-"));
+  afterAll(() => rmSync(agg, { recursive: true, force: true }));
+  mkdirSync(join(agg, "beta"), { recursive: true });
+  writeFileSync(
+    join(agg, "beta", "beta.json"),
+    JSON.stringify({
+      $schema: "cat-harness-declaration/1.0.0",
+      name: "beta",
+      version: "0.1.0",
+      directories: [
+        { id: "shared", path: "shared/", scope: "repository", graphTypologies: ["todo-items"] },
+        { id: "branched", path: "branched/", source: { kind: "branch", branch: "cat/beta/branched", keyedBy: "tip" }, graphTypologies: ["todo-items"] },
+      ],
+    }),
+  );
+  mkdirSync(join(agg, "gamma"), { recursive: true });
+  writeFileSync(join(agg, "gamma", "gamma.json"), JSON.stringify({ name: "gamma", version: "0.1.0" }));
+  mkdirSync(join(agg, "shared"), { recursive: true });
+  writeFileSync(join(agg, "shared", "s.json"), JSON.stringify({ $schema: "todo/1.0.0", id: "s" }));
+  mkdirSync(join(agg, "beta", "branched"), { recursive: true });
+  writeFileSync(join(agg, "beta", "branched", "m.json"), JSON.stringify({ $schema: "todo/1.0.0", id: "mounted" }));
+
+  const idx = {
+    kinds: [
+      entry("todo", "1.0.0"),
+      entry("cat-harness-declaration", "1.0.0", { holdings: [], foundBy: "instance-declaration" }),
+    ],
+  };
+
+  test("a repository-scoped directory's node is addressed from the repository, not with ../", () => {
+    expect(nodesOfKind(idx, "todo", agg).map((n) => [n.harness, n.path])).toEqual([["beta", "shared/s"]]);
+  });
+
+  test("content mounted from a branch is not read: a committed page cannot keep up with its tip", () => {
+    expect(nodesOfKind(idx, "todo", agg).some((n) => n.node.id === "mounted")).toBe(false);
+  });
+
+  test("an instance declaration is a node by its name rule, and only when tagged", () => {
+    expect(nodesOfKind(idx, "cat-harness-declaration", agg).map((n) => [n.harness, n.path, n.file])).toEqual([["beta", "beta", "beta/beta.json"]]);
+  });
+});

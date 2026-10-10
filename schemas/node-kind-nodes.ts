@@ -19,16 +19,31 @@
  * Each node is filed under the HARNESS that holds it — the instance whose
  * declaration names the directory — with a path relative to that instance's
  * root and without its extension. That path is the node's stable address:
- * `<declaring>/<kind>/<harness>/<path>`.
+ * `<declaring>/<kind>/<harness>/<path>`. A repository-scoped directory sits
+ * OUTSIDE its declaring instance's root, so its nodes are addressed relative
+ * to the repository instead; an instance-relative path would start `../`.
+ *
+ * ## Two things this does NOT read (bean `ujiv`, issue #88)
+ *
+ * - **A directory whose content is off the checkout** — a `source` other than
+ *   `directory`, e.g. beans and todos kept at the tip of a state branch. What a
+ *   checkout holds there is a mount of a branch that moves on its own, so a
+ *   page committed from it is stale the moment the branch moves, and no commit
+ *   can keep up. The state viewer renders those nodes live. A NESTED entry
+ *   (`within`) inherits its parent's source, since the nested entry itself
+ *   carries none.
+ * - Nothing else is skipped. A kind with no typology (an instance declaration)
+ *   is found by its NAME RULE instead: see `NAME_RULE_KINDS` in `node-kind-index.ts`.
  */
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 
-import { directoryEntriesForGraph, readDeclaration } from "./cat-harness.js";
+import { readDeclaration, resolveDirectories, type ResolvedDirectory } from "./cat-harness.js";
 import { parse as parseYaml } from "yaml";
-import { instanceRootsIn } from "./instance-roots.js";
-import { kindAndSubclasses, type NodeKindIndex } from "./node-kind-index.js";
+import { findDeclarationFile, instanceRootsIn } from "./instance-roots.js";
+import { kindAndSubclasses, type NameRule, type NodeKindEntry, type NodeKindIndex } from "./node-kind-index.js";
 import { acceptsSchemaTag } from "./node-kind.js";
+import { contentIsOffCheckout } from "./subgraph-source.js";
 
 export interface KindNode {
   /** The kind the node IS — the kind asked for, or one of its subclasses. */
@@ -80,34 +95,73 @@ export function readNode(file: string): Record<string, unknown> | undefined {
   }
 }
 
+/**
+ * The directories of `typologies` an instance holds ON THE CHECKOUT: its
+ * resolved entries, nested ones included (`todos/todos.json` declares
+ * `items/` — the resolver `check:kind-validators` uses, so the two agree),
+ * less any whose content is off the checkout, directly or through the entry
+ * it is nested `within`.
+ */
+function checkoutDirectories(root: string, typologies: readonly string[]): ResolvedDirectory[] {
+  const all = resolveDirectories([{ name: "(local)", root, own: true }]);
+  const offCheckout = (d: ResolvedDirectory, seen = new Set<string>()): boolean => {
+    if (contentIsOffCheckout(d)) return true;
+    if (d.within === undefined || seen.has(d.within)) return false;
+    seen.add(d.within);
+    const parent = all.find((p) => p.id === d.within && p.declaredBy === d.declaredBy);
+    return parent !== undefined && offCheckout(parent, seen);
+  };
+  return all.filter((d) => d.graphTypologies.some((t) => typologies.includes(t)) && !offCheckout(d));
+}
+
+/** The instance's own declaration, `<instance>.json`, as an absolute path. */
+function declarationPath(root: string): string | undefined {
+  const name = findDeclarationFile(root); // a file NAME, not a path
+  return name === undefined ? undefined : join(root, name);
+}
+
+/**
+ * A node's address within its harness: relative to the instance root, or to
+ * the repository when the file is outside it (a repository-scoped directory),
+ * extension dropped.
+ */
+function nodePath(root: string, repoRoot: string, file: string): string {
+  const fromInstance = relative(root, file);
+  const rel = fromInstance.startsWith("..") ? relative(repoRoot, file) : fromInstance;
+  return rel.replace(/\.(json|md)$/, "").split("\\").join("/");
+}
+
 /** Every node of `kindId` and its subclasses in the checkout at `repoRoot`, sorted by harness then path. */
 export function nodesOfKind(index: Pick<NodeKindIndex, "kinds">, kindId: string, repoRoot: string): KindNode[] {
   const byId = new Map(index.kinds.map((k) => [k.id, k]));
   const kinds = kindAndSubclasses(index, kindId).map((id) => byId.get(id)!).filter((k) => k?.version);
   const typologies = [...new Set(kinds.flatMap((k) => k.holdings.map((h) => h.typology)))];
+  const byRule = kinds.filter((k): k is NodeKindEntry & { foundBy: NameRule } => k.foundBy !== undefined);
   const out = new Map<string, KindNode>();
+  const take = (file: string, harness: string, root: string, candidates: readonly NodeKindEntry[]): void => {
+    if (out.has(file)) return;
+    const node = readNode(file);
+    const kind = node && candidates.find((k) => acceptsSchemaTag(k, node.$schema));
+    if (!node || !kind) return;
+    out.set(file, {
+      kind: kind.id,
+      harness,
+      path: nodePath(root, repoRoot, file),
+      file: relative(repoRoot, file).split("\\").join("/"),
+      node,
+    });
+  };
   for (const root of instanceRootsIn(repoRoot)) {
     const harness = readDeclaration(root)?.name;
     if (!harness) continue;
-    for (const typology of typologies) {
-      // Nested declarations included (`todos/todos.json` declares `items/`):
-      // the resolver `check:kind-validators` uses, so the two agree.
-      for (const { absPath } of directoryEntriesForGraph(root, typology)) {
-        for (const file of files(absPath)) {
-          if (out.has(file)) continue;
-          const node = readNode(file);
-          const kind = node && kinds.find((k) => acceptsSchemaTag(k, node.$schema));
-          if (!node || !kind) continue;
-          out.set(file, {
-            kind: kind.id,
-            harness,
-            path: relative(root, file).replace(/\.(json|md)$/, "").split("\\").join("/"),
-            file: relative(repoRoot, file).split("\\").join("/"),
-            node,
-          });
-        }
+    if (typologies.length > 0) {
+      for (const { absPath } of checkoutDirectories(root, typologies)) {
+        for (const file of files(absPath)) take(file, harness, root, kinds);
       }
     }
+    // The one name rule: the instance's own declaration, `<instance>.json`.
+    const declaration = byRule.some((k) => k.foundBy === "instance-declaration") ? declarationPath(root) : undefined;
+    if (declaration !== undefined) take(declaration, harness, root, byRule.filter((k) => k.foundBy === "instance-declaration"));
   }
   return [...out.values()].sort((a, b) => a.harness.localeCompare(b.harness) || a.path.localeCompare(b.path));
 }
@@ -120,10 +174,15 @@ export function nodesOfKind(index: Pick<NodeKindIndex, "kinds">, kindId: string,
  */
 export function kindDirectories(index: Pick<NodeKindIndex, "kinds">, repoRoot: string): string[] {
   const typologies = [...new Set(index.kinds.filter((k) => k.version).flatMap((k) => k.holdings.map((h) => h.typology)))];
+  const byRule = index.kinds.some((k) => k.version && k.foundBy === "instance-declaration");
   const out = new Set<string>();
   for (const root of instanceRootsIn(repoRoot)) {
     if (!readDeclaration(root)?.name) continue;
-    for (const typology of typologies) for (const { absPath } of directoryEntriesForGraph(root, typology)) out.add(absPath);
+    for (const { absPath } of checkoutDirectories(root, typologies)) out.add(absPath);
+    // A name-rule node is a FILE at the instance root, not a directory; the
+    // file itself is what a changed-path test compares against.
+    const declaration = byRule ? declarationPath(root) : undefined;
+    if (declaration !== undefined) out.add(declaration);
   }
   return [...out].sort();
 }

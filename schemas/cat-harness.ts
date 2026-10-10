@@ -66,6 +66,7 @@ import {
 } from "node:fs";
 import { isAbsolute, join, relative, resolve, basename } from "node:path";
 import { z } from "zod";
+import { acceptsSchemaTag, nodeKind } from "./node-kind";
 import { RepoFullNameSchema, type RepoFullName } from "./repo-full-name.js";
 import { SubscriptionKindSchema, type SubscriptionKind } from "./substrate-snapshot.js";
 import {
@@ -621,6 +622,8 @@ export type ContentTypeTranslation = z.infer<typeof ContentTypeTranslationSchema
 
 
 export interface CatHarnessDeclaration extends KgNodeLabels {
+  /** `cat-harness-declaration/1.0.0` — see {@link CAT_HARNESS_DECLARATION_SCHEMA_TAG} (bean `ujiv`). */
+  $schema?: string;
   /** A reader's one line — see {@link CatHarnessDeclarationSchema}'s `summary` (`ob3m` 4/5). */
   summary?: string;
   /** Other spellings of the name, listed on the landing (`ob3m` 5). */
@@ -3242,7 +3245,18 @@ export const ExactVersionSchema = z
   );
 
 
-export const CatHarnessDeclarationSchema = z.object({
+/**
+ * The `$schema` an instance declaration carries: `cat-harness-declaration/1.0.0`.
+ *
+ * Bean `ujiv` (issue #88). A declaration is a node kind like any other file
+ * that says what it is, but it sits in no typology directory — it is found by
+ * its NAME, `<instance>/<instance>.json` — so the node-kind index reaches it
+ * through a name rule rather than a typology (`node-kind-index.ts`).
+ */
+export const CAT_HARNESS_DECLARATION_SCHEMA_TAG = "cat-harness-declaration/1.0.0" as const;
+
+/** The declaration's fields, shared by {@link CatHarnessDeclarationSchema} and {@link CatHarnessDeclarationKind}. */
+const catHarnessDeclarationShape = {
   name: z.string().min(1),
   ...kgNodeLabelShape,
   /**
@@ -3566,87 +3580,119 @@ export const CatHarnessDeclarationSchema = z.object({
    * without one.
    */
   version: ExactVersionSchema.optional(),
-})
-  /**
-   * What the refinement still checks, now that `id` and `version` are required
-   * by the type and `publication` is a one-value union.
-   *
-   * The old refinement carried §3.1's conditional obligations in both
-   * directions — id and version REQUIRED under `publishable: true` and REFUSED
-   * otherwise. Both are gone: the owner's 2026-09-23 ruling makes them
-   * universal, so there is nothing conditional left to express, and
-   * `"published"` is refused by the literal union rather than by a check
-   * somebody could relax.
-   */
-  .superRefine((d, ctx) => {
-    // The owner, 2026-10-09: one route per `(harness, visualiser)`. Two
-    // entries with one id would be two pages contending for one URL, which is
-    // the defect the harness-level declaration exists to make impossible; and
-    // `covers` names THIS instance's directories, so an id it does not
-    // declare points at nothing.
-    const visIds = new Set<string>();
-    const dirIds = new Set((d.directories ?? []).map((x) => x.id));
-    (d.visualisers ?? []).forEach((v, i) => {
-      if (visIds.has(v.id)) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          path: ["visualisers", i, "id"],
-          message: `visualiser \`${v.id}\` is declared twice: two pages would contend for <base>/${d.name}/${v.id}/`,
-        });
-      }
-      visIds.add(v.id);
-      (v.covers ?? []).forEach((c, j) => {
-        if (!dirIds.has(c)) {
-          ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            path: ["visualisers", i, "covers", j],
-            message: `visualiser \`${v.id}\` covers \`${c}\`, which this instance does not declare as a directory`,
-          });
-        }
+};
+
+/**
+ * What the refinement still checks, now that `id` and `version` are required
+ * by the type and `publication` is a one-value union.
+ *
+ * The old refinement carried §3.1's conditional obligations in both
+ * directions — id and version REQUIRED under `publishable: true` and REFUSED
+ * otherwise. Both are gone: the owner's 2026-09-23 ruling makes them
+ * universal, so there is nothing conditional left to express, and
+ * `"published"` is refused by the literal union rather than by a check
+ * somebody could relax.
+ */
+function refineCatHarnessDeclaration(
+  d: z.infer<z.ZodObject<typeof catHarnessDeclarationShape>>,
+  ctx: z.RefinementCtx,
+): void {
+  // The owner, 2026-10-09: one route per `(harness, visualiser)`. Two
+  // entries with one id would be two pages contending for one URL, which is
+  // the defect the harness-level declaration exists to make impossible; and
+  // `covers` names THIS instance's directories, so an id it does not
+  // declare points at nothing.
+  const visIds = new Set<string>();
+  const dirIds = new Set((d.directories ?? []).map((x) => x.id));
+  (d.visualisers ?? []).forEach((v, i) => {
+    if (visIds.has(v.id)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["visualisers", i, "id"],
+        message: `visualiser \`${v.id}\` is declared twice: two pages would contend for <base>/${d.name}/${v.id}/`,
       });
-    });
-    // Issue #1146: an associated harness is referenced, never held. A name that
-    // is also in `needs` would make it both, and the overlay would load it.
-    const needs = new Set(d.needs ?? []);
-    (d.associatedHarnesses ?? []).forEach((a, i) => {
-      if (needs.has(a.name)) {
+    }
+    visIds.add(v.id);
+    (v.covers ?? []).forEach((c, j) => {
+      if (!dirIds.has(c)) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          path: ["associatedHarnesses", i, "name"],
-          message: `\`${a.name}\` is in \`needs\`: an associated harness is referenced, not loaded (issue #1146)`,
+          path: ["visualisers", i, "covers", j],
+          message: `visualiser \`${v.id}\` covers \`${c}\`, which this instance does not declare as a directory`,
         });
       }
     });
-    // Issue #1719: one relation per remote thing. A subscription that is also
-    // in `needs` would be both loaded and chosen part by part; one that is
-    // also an associated harness would be both referenced-only and consumed.
-    const associated = new Set((d.associatedHarnesses ?? []).map((a) => a.name));
-    (d.subscriptions ?? []).forEach((sub, i) => {
-      if (needs.has(sub.id)) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          path: ["subscriptions", i, "id"],
-          message: `\`${sub.id}\` is in \`needs\`: a subscription is consumed part by part, not loaded whole (issue #1719)`,
-        });
-      }
-      if (associated.has(sub.id)) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          path: ["subscriptions", i, "id"],
-          message: `\`${sub.id}\` is also in \`associatedHarnesses\`: subscribe to it OR associate it, not both (issue #1719)`,
-        });
-      }
-    });
-    // `id` and `version` are REQUIRED BY THE TYPE now, so there is nothing
-    // conditional left to check about them. What replaced the old branches:
-    // §3.1 refused both unless `publishable: true`, and the owner's ruling of
-    // 2026-09-23 makes them universal. See
-    // `skills/kg/kg-core/instance-publication.md`.
-    //
-    // `publication` is a literal union of one value, so `"published"` is
-    // refused by the type rather than here — deliberately, because a refusal
-    // in the schema cannot be switched off the way a gate can.
   });
+  // Issue #1146: an associated harness is referenced, never held. A name that
+  // is also in `needs` would make it both, and the overlay would load it.
+  const needs = new Set(d.needs ?? []);
+  (d.associatedHarnesses ?? []).forEach((a, i) => {
+    if (needs.has(a.name)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["associatedHarnesses", i, "name"],
+        message: `\`${a.name}\` is in \`needs\`: an associated harness is referenced, not loaded (issue #1146)`,
+      });
+    }
+  });
+  // Issue #1719: one relation per remote thing. A subscription that is also
+  // in `needs` would be both loaded and chosen part by part; one that is
+  // also an associated harness would be both referenced-only and consumed.
+  const associated = new Set((d.associatedHarnesses ?? []).map((a) => a.name));
+  (d.subscriptions ?? []).forEach((sub, i) => {
+    if (needs.has(sub.id)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["subscriptions", i, "id"],
+        message: `\`${sub.id}\` is in \`needs\`: a subscription is consumed part by part, not loaded whole (issue #1719)`,
+      });
+    }
+    if (associated.has(sub.id)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["subscriptions", i, "id"],
+        message: `\`${sub.id}\` is also in \`associatedHarnesses\`: subscribe to it OR associate it, not both (issue #1719)`,
+      });
+    }
+  });
+  // `id` and `version` are REQUIRED BY THE TYPE now, so there is nothing
+  // conditional left to check about them. What replaced the old branches:
+  // §3.1 refused both unless `publishable: true`, and the owner's ruling of
+  // 2026-09-23 makes them universal. See
+  // `skills/kg/kg-core/instance-publication.md`.
+  //
+  // `publication` is a literal union of one value, so `"published"` is
+  // refused by the type rather than here — deliberately, because a refusal
+  // in the schema cannot be switched off the way a gate can.
+}
+
+export const CatHarnessDeclarationSchema = z
+  .object({
+    ...catHarnessDeclarationShape,
+    /**
+     * What this file is: {@link CAT_HARNESS_DECLARATION_SCHEMA_TAG}, or an
+     * earlier minor/patch of its major. Optional here so a declaration read
+     * before it was tagged still parses; `declarations:retag:check` is what
+     * fails an untagged one. Declared so a parse-and-write KEEPS it — an
+     * undeclared key is dropped by the parse, which is how a tag is lost.
+     */
+    $schema: z
+      .string()
+      .refine((t) => acceptsSchemaTag({ id: "cat-harness-declaration", version: "1.0.0" }, t), {
+        message: `expected \`${CAT_HARNESS_DECLARATION_SCHEMA_TAG}\`, or an earlier minor/patch of major 1`,
+      })
+      .optional(),
+  })
+  .superRefine(refineCatHarnessDeclaration);
+
+/**
+ * An instance declaration as a node kind (bean `ujiv`, issue #88): the same
+ * fields and the same cross-field checks as {@link CatHarnessDeclarationSchema},
+ * with `$schema` required, as every tagged kind's is.
+ */
+export const CatHarnessDeclarationKind = nodeKind(CAT_HARNESS_DECLARATION_SCHEMA_TAG, [], catHarnessDeclarationShape, {
+  refine: refineCatHarnessDeclaration,
+});
 
 /**
  * The stem every published artefact is named with: `stub` when declared,

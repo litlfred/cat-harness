@@ -109,6 +109,10 @@ export const PROPERTY_SKILLS = {
   // publication means and why `published` does not parse.
   id: { skills: ["instance-publication", "directory-conventions"] },
   version: { skills: ["instance-publication", "directory-conventions"] },
+  // Bean `ujiv` (issue #88): the declaration's own node-kind tag,
+  // `cat-harness-declaration/1.0.0`. `declarations:retag` writes it and
+  // `declarations:retag:check` fails an untagged declaration.
+  $schema: { skills: ["schema-management"] },
 } as const satisfies Record<string, PropertySkills>;
 
 export type DeclarationProperty = keyof typeof PROPERTY_SKILLS;

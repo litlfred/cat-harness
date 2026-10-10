@@ -1,5 +1,5 @@
 {
-  "$schema": "node-kind-index/1.0.0",
+  "$schema": "node-kind-index/1.1.0",
   "kinds": [
     {
       "id": "basic-cdn-site",
@@ -20,12 +20,39 @@
       ]
     },
     {
+      "id": "bean",
+      "version": "1.0.0",
+      "tag": "bean/1.0.0",
+      "parents": [],
+      "subclasses": [],
+      "declaredBy": "cat-harness",
+      "module": "cat-harness/schemas/bean-graph.ts",
+      "exportName": "BeanNodeKind",
+      "holdings": [
+        {
+          "typology": "bean-defs"
+        }
+      ]
+    },
+    {
       "id": "carried-note",
       "parents": [],
       "subclasses": [
         "todo"
       ],
       "holdings": []
+    },
+    {
+      "id": "cat-harness-declaration",
+      "version": "1.0.0",
+      "tag": "cat-harness-declaration/1.0.0",
+      "parents": [],
+      "subclasses": [],
+      "declaredBy": "cat-harness",
+      "module": "cat-harness/schemas/cat-harness.ts",
+      "exportName": "CatHarnessDeclarationKind",
+      "holdings": [],
+      "foundBy": "instance-declaration"
     },
     {
       "id": "cdn-site",
@@ -99,8 +126,8 @@
     },
     {
       "id": "node-kind-index",
-      "version": "1.0.0",
-      "tag": "node-kind-index/1.0.0",
+      "version": "1.1.0",
+      "tag": "node-kind-index/1.1.0",
       "parents": [],
       "subclasses": [],
       "declaredBy": "cat-harness",
@@ -109,7 +136,7 @@
       "holdings": [
         {
           "typology": "docs",
-          "family": "node-kind-index/1.0.0"
+          "family": "node-kind-index/1.1.0"
         }
       ]
     },
@@ -165,6 +192,12 @@
     }
   ],
   "unkinded": [
+    {
+      "typology": "archimate",
+      "family": "cat-archimate-config/v1",
+      "reason": "zod-schema",
+      "ref": "cat-harness:archimate/schemas/archimate.ts#ArchimateConfigSchema"
+    },
     {
       "typology": "attestations",
       "reason": "zod-schema",
@@ -408,7 +441,7 @@
     {
       "typology": "issue-marks",
       "family": "folio-issue-mark/v1",
-      "reason": "zod-schema",
+      "reason": "unresolvable",
       "ref": "src/issue-watch/seen-comments.ts#IssueMarkSchema"
     },
     {
@@ -502,7 +535,7 @@
       "typology": "openapi",
       "family": "cat-openapi-config/v1",
       "reason": "zod-schema",
-      "ref": "cat-openapi:schemas/openapi.ts#OpenApiConfigSchema"
+      "ref": "cat-harness:openapi/schemas/openapi.ts#OpenApiConfigSchema"
     },
     {
       "typology": "openapi",
