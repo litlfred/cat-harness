@@ -87,6 +87,18 @@ export const BranchSchema = z
   .refine((b) => !b.includes(".."), "a branch name may not contain `..`")
   .describe("A git branch name");
 
+/**
+ * A package script name (`check:catalogue`, `site:catalogue`): what a Tool
+ * runs as `bun run <name>`, so the thing executed is what the instance's own
+ * package.json says. Alphanumerics, colon, dot, underscore and hyphen, and it
+ * cannot start with a hyphen (no flag injection). Owner, 2026-10-10 (bean n3h9).
+ */
+export const ScriptNameSchema = z
+  .string()
+  .min(1)
+  .regex(/^[A-Za-z0-9][A-Za-z0-9:._-]*$/, "a script name is alphanumerics, colon, dot, underscore and hyphen")
+  .describe("A package script name");
+
 import { RepoFullNameSchema } from "./repo-full-name.js";
 export { RepoFullNameSchema };
 
@@ -566,6 +578,7 @@ export const TOOL_TYPES = {
   WorkbookPath: WorkbookPathSchema,
   Url: UrlSchema,
   Branch: BranchSchema,
+  ScriptName: ScriptNameSchema,
   RepoFullName: RepoFullNameSchema,
   ChangeProposalNumber: ChangeProposalNumberSchema,
   Markdown: MarkdownSchema,
@@ -666,6 +679,7 @@ export const INJECTION_SAFE: ReadonlySet<ToolTypeName> = new Set<ToolTypeName>([
   "RepoPath",
   "Url",
   "Branch",
+  "ScriptName",
   "RepoFullName",
   "ChangeProposalNumber",
   "Slug",
