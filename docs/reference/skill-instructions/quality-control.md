@@ -81,7 +81,7 @@ and the content type's own conformance validator where its layer provides one
 
 | process | step(s) that name it |
 |---|---|
-| [Incremental IG build](../../processes/ig-incremental-build.html) | Post the cone report on the PR; QC gates on the aggregate QA |
-| [L3 FHIR IG pipeline](../../processes/l3-fhir-pipeline.html) | QC gates |
-| [Draft, review and publish](../../processes/draft-to-publication.html) | Run publication QA gates |
+| [Incremental IG build](../../en/cat-harness/processes/ig-incremental-build.html) | Post the cone report on the PR; QC gates on the aggregate QA |
+| [L3 FHIR IG pipeline](../../en/cat-harness/processes/l3-fhir-pipeline.html) | QC gates |
+| [Draft, review and publish](../../en/cat-harness/processes/draft-to-publication.html) | Run publication QA gates |
 

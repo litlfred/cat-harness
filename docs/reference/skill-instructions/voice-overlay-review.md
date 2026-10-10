@@ -99,6 +99,6 @@ and deleting it loses the record that anyone looked.
 
 | process | step(s) that name it |
 |---|---|
-| [Narrative review](../../cat-harness/processes/review-narrative.html) | Voice overlay review (calls a sub-process) |
-| [Voice overlay review](../../cat-harness/processes/voice-review.html) | Load the active voices; Run the rule's mechanical half; Open the rule's citation; The RULE is the defect — bean it; Adjudicate: prose, scope, or exception (calls a sub-process); Record on the block's QA sidecar |
+| [Narrative review](../../en/cat-harness/processes/review-narrative.html) | Voice overlay review (calls a sub-process) |
+| [Voice overlay review](../../en/cat-harness/processes/voice-review.html) | Load the active voices; Run the rule's mechanical half; Open the rule's citation; The RULE is the defect — bean it; Adjudicate: prose, scope, or exception (calls a sub-process); Record on the block's QA sidecar |
 

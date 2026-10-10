@@ -54,6 +54,22 @@ while you work.
    collision review in `coordinate` §"Starting new work" has been run
    and recorded in the workplan bean.
 
+### Bean edits are pushed to the state branch, not the PR
+
+Under the state branch architecture (proposal `cat-harness/docs/proposals/state-branch-2026-10-02.md`),
+bean edits (`beans/defs/*.md`, `beans/workflows/*.json`) do not belong in the
+PR's commit set. The code PR contains code, test, and documentation changes
+destined for `main`.
+
+Work-plan progress, bean claims, status updates, and notes are pushed directly
+to the branch store (`bun cat-harness-tools/scripts/branch-store.ts push --id beans` or
+`bun run cat state:push`).
+
+The PR description references the bean via `Closes-bean: <id>` (or in the
+status checklist), but git commits on the PR branch must not bundle bean file
+edits. This avoids merge conflicts on bean files and prevents work-plan edits
+from triggering code CI workflows.
+
 ## The fifth invariant, and the one agents get wrong
 
 5. **Do not hold a green change proposal back waiting for someone to look at
@@ -306,8 +322,8 @@ have seen it (bean `391j`).
 
 | process | step(s) that name it |
 |---|---|
-| [KG to public portal](../../cat-harness/processes/kg-to-portal.html) | Human eyes on the rendered artefact |
-| [Actor and role administration](../../cat-harness/processes/actor-role-administration.html) | Branch, gates, PR and review (calls a sub-process) |
-| [Code change and review](../../cat-harness/processes/code-change-review.html) | Make the change; Commit, push, open the PR |
-| [Merge the base branch in](../../cat-harness/processes/merge-base.html) | Commit the merge |
+| [KG to public portal](../../en/cat-harness/processes/kg-to-portal.html) | Human eyes on the rendered artefact |
+| [Actor and role administration](../../en/cat-harness/processes/actor-role-administration.html) | Branch, gates, PR and review (calls a sub-process) |
+| [Code change and review](../../en/cat-harness/processes/code-change-review.html) | Make the change; Commit, push, open the PR |
+| [Merge the base branch in](../../en/cat-harness/processes/merge-base.html) | Commit the merge |
 

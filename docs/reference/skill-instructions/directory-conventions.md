@@ -138,6 +138,7 @@ decides it.
 | `requirements` | **harness** | what the harness promises, one page per shipped feature: a proposal MOVED here on ship, its front matter a `Requirement` (`bootstrap/schemas/requirement.schema.json`), checked by `check:requirements`. A **sub-graph of `docs`**, declared from within. Issue #1164. | no — its pages are built by `docs` |
 | `doc-group` | **harness** | a named group of the docs graph's own pages — Start here, Concepts, Authoring guides, Process & methodology, FHIR — one folder each, declared from within by `docs/docs.json`. A **sub-graph of `docs`** (`within: "docs"`): its pages are `docs` pages, grouped by where they live. The Pages list nests a group's pages under it through `_config.yml` `defaults` (one `parent` per folder). Bean `xka5`. | no — its pages are built by `docs` |
 | `auto-docs` | **harness** | derived indexes over the other graphs — one page per auto-doc TYPE crossed with each SUB-GRAPH that type reaches, written by `scripts/gen-auto-docs.ts` and never by hand. A **sub-graph of `docs`** (`within: "docs"`), declared from within by `docs/docs.json`; its own sub-sub-graphs are named one level further down by `auto-docs.json`, which is GENERATED from that script's `TYPES` because they carry `collect()` functions that cannot live in JSON. `derived`, and the question that settles it against its parent is the same one everywhere: a `docs` page is RE-AUTHORED, an index is REGENERATED. Bean `xsrv`, owner 2026-10-03. | no — its pages are built by `docs` |
+| `notes` | **harness** | a folio's derivation notes, cheat sheets, scoping docs and recorded refutations — declared context read by agents and never written by a process, not rendered content. Distinct from `docs` by not being renderable, and from `todos` by holding context rather than outstanding work. Downstream math and derivation notes from qou (migration S-REST-1, qou-pjfi). | no |
 | `external-schema` | **harness** | the specifications this instance depends on (`external-schemas/`) — one record per specification, pinning the EDITION in use, with the operative terms DERIVED from the corpus rather than hand-listed. `content`, and the call goes against the obvious reading: a process DOES write these files (`external-schemas.ts --write` refreshes `terms[]`), which sounds like `state`, but the axis asks what the graph IS and the subject matter here is a DECISION — which specifications we depend on, at which edition, and what each term operatively means. `derived` would be destructive: it says "regenerate it", and regenerating a deleted record recovers neither the authored edition, nor the `usedBy` blast radius, nor a line of the `operative` prose. UNDECLARED until 2026-09-22, which is `dh4f` inverted — a held directory nothing declares, so every consumer fanning out over declared directories skipped a registry pinning four external namespaces. Governed by [`vocabulary-authority`](vocabulary-authority.md) and [`schema-management`](schema-management.md). | no |
 | `code-list` | **harness** | closed sets of codes (`code-lists/`) — one `folio-code-list/v1` file per list, each code with a label, a definition, a source and, where it stands for one, a value; published as SKOS concept schemes. `content`, by the same argument as `external-schema`: the subject matter is a DECISION — which answers an adjudication may give, which namespaces are ours — and a person makes it. Diagrams (`<cat-harness.processes:adjudication list>`) and `schemas/namespaces.ts` READ these. Owner, 2026-09-23. Governed by [`code-lists`](code-lists.md). | no |
 | `vocab-mapping` | **harness** | vocabulary mapping tables (`vocab-mappings/`) — one `folio-vocab-mapping/v1` table per source content type and target node, saying which source field becomes which target predicate and with what relationship. Shaped like a FHIR ConceptMap: an existing ConceptMap is representable here, and a table can be produced as one with every loss reported (`schemas/vocab-mapping-fhir.ts`). `content`, by the `code-list` argument: which predicate a field becomes, and which of two is authoritative, is a DECISION. Generators READ these through the `vocab-map` Tool; nothing writes them. Owner, 2026-10-02 (bean `k74z`). Governed by [`vocabulary-authority`](vocabulary-authority.md). | no |
@@ -151,7 +152,7 @@ decides it.
 | `test-report` | **harness** | test reports — one `test-report/v1` document per run of a plan against a system under test, per-case verdicts in the block-qa entry shape, and a rollup for that ONE plan. **Never a total across plans** — the owner's `py74` ruling, enforced by a strict top level that has no field for a second plan or a total. Strawperson, bean `ygzh`. `state`: the run writes it, and re-running produces a new report rather than the same one. A separate kind from `qa-report` because the subject differs — that is a tool's account of its OWN run, this is a tester's finding about SOMEBODY ELSE, which is why the system under test may not write its own verdict. The rollup may not disagree with the cases, and `running` is never a pass. Written to the `qa-reports` branch under `tests/<plan-id>/<sut>/<run-id>/`; declared, no directory. Shape in `schemas/test-report.ts`. | no |
 | `swimlane-glossary` | **harness** | (renamed from `glossary` on 2026-09-23, owner: "Rename harness one") the swimlane glossary's retirement ledger (`glossary/`) — every concept this instance has ever minted, with the date it was first seen and the date it stopped being derivable. `state` but **not** work (`recordsWork: false`): a bean is something somebody is partway through, this is a record that a term exists. Only the ledger is stored — the glossary DOCUMENT is derived from the corpus each run, which is exactly why the ledger has to exist: a derived document has no memory, so without it a retired term and one that never existed look the same. Written by `scripts/glossary-export.ts`; read with the [`swimlane-glossary`](swimlane-glossary.md) skill. | no |
 | `beans` | **harness** | the work plan as a whole (`beans/`); its inner nodes are declared by `beans/beans.json` | no |
-| `bean-defs` | **harness** | work items — one Markdown file each, in the layout the `beans` CLI reads. Authored by people and agents. | no |
+| `bean-defs` | **harness** | work items — one Markdown file each, in the layout the `beans` CLI reads, `$schema: bean/1.0.0` in its front matter. Authored by people and agents. | no |
 | `bean-notes` | **harness** | one pull request's addendum to a bean — one Markdown file per branch per bean, `$schema: folio-bean-note/v1` in its front matter, named `<bean>--<date>--<branch>.md` so two pull requests never write one path; `README.md` beside them is the generated index. Bean `m61r`: `ob3m` cost five hand-merges in one afternoon while every finding was appended to the bean. `state`, and `recordsWork: false` because a note is a record about a bean, whose work is counted on the bean. Convention: [`bean-coordination`](bean-coordination.md) §"Adding to a bean — a note, not an append". | no |
 | `session-survey` | **harness** | published surveys of a commit window — one JSON each, `"$schema": "folio-session-survey/v1"`. Bean `6ptx`: eight sessions surveyed the same ~2435-commit window in one minute and that day produced ONE authored commit. Each records the window's **two edge commits**, so a later session computes the uncovered delta (`bun run cat survey:owed`) instead of re-deriving the range — staleness decidable rather than guessed, and an unreachable upper edge reads as *unusable*, never as covered. `state` because a running session writes it; `recordsWork: false` because a survey is a READING of work, not work anybody is partway through. | no |
 | `workflow-state` | **harness** | running BPMN instances — one JSON each, `"$schema": "folio-workflow-instance/v1"`. Owned by the interpreter, never hand-edited. | no |
@@ -181,10 +182,10 @@ decides it.
 | `voice-vendors` | **core** | a base voice specialised for one agent vendor — `folio-voice/v1` with `extends` naming the base. A **sub-graph of `voices`** (`within: "voices"`), declared from within: `voices/voices.json` names `vendors/`, and `vendors/vendors.json` names each `<id>/`. `loadVoices` descends only where a declaration says to and **refuses** an undeclared voice directory rather than skipping it. Bean `rkqp`, owner 2026-09-30. | no |
 | `todo-feedback` | **core** | feedback items — todos raised against a specific block, carrying the submitter's identity. Read by `todo-review`. | no |
 | `folio` | **core** | authored content an AUTHOR creates using the graph — a note, a visualization, a paper. The who-iris catalogue is `library/`; a note about it is a `folio`; the page explaining how ingestion works is `docs`. | **yes** — just-the-docs renders it to a website |
-| `glossary` | **core**, and any layer | Terms and what they mean, as W3C SKOS (`folio-glossary/v1`, `folio-assistant-core/schemas/glossary.ts`): local terms, each `authored`, `candidate` or `could-not-extract`, linked to external SKOS concepts by `exactMatch`/`closeMatch`, and external concepts listed as `members` without being copied. A whole external scheme is a `remoteGraphs` entry with `graphTypologies: ["glossary"]`. The `glossary` kind is `perInstance`, so every folio built on core gets one. Rendered on the site's `glossary/` page with SKOS JSON-LD beside it; the swimlane ledger is one more source. Read with the `glossary-terms` skill; gated by `check:glossary`. | no |
+| `glossary` | **core**, and any layer | Terms and what they mean, as W3C SKOS (`folio-glossary/v1`, `folio-assistant-core/schemas/glossary.ts`): local terms, each `authored`, `candidate` or `could-not-extract`, linked to external SKOS concepts by `exactMatch`/`closeMatch`, and external concepts listed as `members` without being copied. A whole external scheme is a `remoteGraphs` entry with `graphTypologies: ["glossary"]`. The `glossary` kind is `perInstance`, so every folio built on core gets one. Rendered on the site's `glossary/` page with SKOS JSON-LD beside it; the swimlane ledger is one more source. Read with the [`glossary-terms`](../../library/library-core/glossary-terms.md) skill; gated by `check:glossary`. | no |
+| `archimate` | **cat-harness/archimate** (`typologies/archimate.json`) | ArchiMate models an instance holds, as Archi `.archimate` files (plain XML or Archi's zipped archive), named by `cat-archimate.config.json` (cat-harness's `archimate` subgraph). Every view, element and relationship in a model is a node of its own: a page and an IRI, keyed by Archi's own id, and every view is drawn as SVG from the model's diagram. | no |
 | `openapi` | **cat-harness/openapi** (`typologies/openapi.json`) | OpenAPI 3 documents an instance holds, each verbatim beside a provenance node naming the repository, path and commit it was ingested from (cat-harness's `openapi` subgraph). Every operation in a document is a node of its own: a page and an IRI under the instance's docs. | no |
-| `archimate` | **cat-harness/archimate** (`typologies/archimate.json`) | ArchiMate models an instance holds, as Archi `.archimate` files named by `cat-archimate.config.json` (cat-harness's `archimate` subgraph). Every view, element and relationship in a model is a node of its own: a page and an IRI, keyed by Archi's own id; every view is drawn as SVG. | no |
-| `fhir-artifact-index` | **fhir-harness** (`typologies/fhir-artifact-index.json`) | The artefact index of a published FHIR Implementation Guide, reconstructed from its published output — every artefact by canonical URL and published representation, with the DAK API's JSON Schema / JSON-LD sidecars as an overlay where the IG publishes one. No IG publishes such an index itself, so every field records which file it came out of. | no |
+| `fhir-artifact-index` | **fhir-harness** (`typologies/fhir-artifact-index.json`) | The artefact index of a published FHIR Implementation Guide, reconstructed from its published output — every artefact by canonical URL and published representation, with the IG API's JSON Schema / JSON-LD sidecars as an overlay where the IG publishes them. No IG publishes such an index itself, so every field records which file it came out of. | no |
 | `ig-ast` | **fhir-harness** (`typologies/ig-ast.json`) | The IG Publisher's abstract syntax tree of a FHIR Implementation Guide (its resources, their dependency edges and the build plan), ingested into the folio that uses the IG. One branch per IG package id; the IG's own source need not be materialised. | no |
 | `ig-metadata-index` | **fhir-harness** (`typologies/ig-metadata-index.json`) | The IG Publisher's own metadata exports for one published IG, harvested verbatim — ValueSet→CodeSystem edges, CodeSystem `uses`, and extension/profile usage paths. Each export declares whether it was present, absent or never looked for, and a `uses` field that upstream declared and left empty is recorded as exactly that. | no |
 | `ig-pages` | **fhir-harness** (`typologies/ig-pages.json`) | The pages of a FHIR Implementation Guide mirror, generated from its artefact index and the chrome of its template chain. Carried beside `docs` on the same directory: `docs` is how the site mounts them, and this kind is what says they are derived. | no |
@@ -862,7 +863,10 @@ beside a directory concept. Bean `l4ay`; schema `schemas/subgraph-source.ts`.
   repository's tree at a full 40-character pin, laid down and locked by
   `mount:remote` and never written back (the [`remote-mount`](remote-mount.md)
   skill, bean `0mpw`); a kind with no flow is refused with its own exit code
-  rather than read as an empty directory.
+  rather than read as an empty directory. A remote mount's effective path must
+  not collide with downstream declared directories, reserved root/route names
+  (`RESERVED_ROOT_AND_ROUTE_NAMES`), or sibling mounts (`checkMountPathCollisions`,
+  bean `t4xb`, [`remote-mount`](remote-mount.md)).
 - **The KG export publishes the resolved source** on the Subgraph node, as
   `contentSource` — `dcterms:source`, with `kind` (`dcterms:type`), `branch`
   (`dcterms:identifier`), `keyedBy` and `declaredIn` scoped inside it. A
@@ -1117,8 +1121,8 @@ enforce this, and neither fails just because a count goes down:
 
 | gate | what it scans | baseline |
 |---|---|---|
-| `check:declared-paths` | an instance's literals into its OWN declared directories | `cat-harness/scripts/declared-path-baseline.json` |
-| `check:foreign-paths` | an instance's literals into ANOTHER instance's directories, across the whole checkout | `cat-harness/scripts/foreign-path-baseline.json` — **empty since 2026-10-03** |
+| `check:declared-paths` | an instance's literals into its OWN declared directories | `cat-harness-tools/scripts/declared-path-baseline.json` |
+| `check:foreign-paths` | an instance's literals into ANOTHER instance's directories, across the whole checkout | `cat-harness-tools/scripts/foreign-path-baseline.json` — **empty since 2026-10-03** |
 
 - **Classify a hit by what it READS, not by how it is spelled.** A name counts
   as foreign only if the scanning instance does not declare the same name. A
@@ -1175,24 +1179,40 @@ directory makes every consumer scan nothing and report a clean run over it.
 ## `storage` — a directory kept on a branch
 
 A `ContentDirectory` may declare where its contents are KEPT when that is not
-the checkout (bean `16ei`, arc `3fva`; schema `DirectoryStorageSchema` in
-`schemas/cat-harness.ts`):
+the checkout (bean `16ei`, arc `3fva`, and proposal `state-branch-2026-10-02`;
+schema `DirectoryStorageSchema` in `schemas/cat-harness.ts`, or its modern
+`source: { kind: "branch", ... }` spelling in `schemas/subgraph-source.ts`):
 
 ```jsonc
+// Derived / QA: commit-keyed
 { "id": "qa", "path": "test/results", "graphTypologies": ["qa"],
   "storage": { "branch": "qa-reports", "keyedBy": "commit" } }
+
+// State / work-plan: tip-keyed
+{ "id": "beans", "path": "beans/", "graphTypologies": ["beans"],
+  "storage": { "branch": "cat/cat-harness/beans", "keyedBy": "tip" } }
 ```
 
-- **Writers still write the declared path** — it is the working copy — and
-  `bun run cat qa:publish` carries it to the branch under `main/<sha>/` or
-  `pr/<n>/<sha>/`. In CI that is the `qa-publish` job, which runs after the
-  gates and is not one.
-- **Readers go through `qa-store`** (`readQa`, `bun run cat qa:fetch`), which
-  answers hit / miss / corrupt / unknown. **A miss is never read as an empty,
-  clean directory** — that is `dh4f` again, with a branch in place of a path.
-- **Presence checks stop expecting the files**: a stored directory absent
-  from the checkout is not "declared but absent", and `harness:dirs` does not
-  create it empty. `audit:coverage` reads its kind as `stored`.
+**A graph on another ref is still a declared directory, mounted at the declared path.**
+Declaring `storage` or a branch `source` does not make it a separate concept
+from a directory. The instance still accesses the graph at its declared path
+(`beans/`, `todos/`, `test/results/`), whether via a working mount (e.g. worktree
+mounted by `state:mount` at session start) or an in-memory branch store.
+
+- **`keyedBy: "commit"` (derived/QA)**: Writers write the declared working copy
+  path, and `bun run cat qa:publish` carries it to the branch under
+  `main/<sha>/` or `pr/<n>/<sha>/`. Readers go through `qa-store` (`readQa`,
+  `bun run cat qa:fetch`), which answers hit / miss / corrupt / unknown.
+- **`keyedBy: "tip"` (state graphs: beans, workflow instances, todos)**:
+  Represents a single living tree where the branch tip IS the state. Writers
+  write to the mounted path and push via `BranchStore` (`branch-store.ts push`
+  or `bun run cat state:push`), which splices changes onto the remote tip and
+  pushes without force (`-f`), retrying if the tip moved. Claims and updates are
+  immediately visible globally.
+- **Presence checks stop expecting unmounted files on `main`**: a stored directory
+  absent from the checkout tree on `main` is not "declared but absent", and
+  `harness:dirs` does not create it empty. `audit:coverage` reads its kind as
+  `stored` via `contentIsOffCheckout`.
 
 Two facts to hold while the arc is in flight. **Every `qa` directory declares
 `storage` since bean `5hox`**, and only after every reader had migrated —

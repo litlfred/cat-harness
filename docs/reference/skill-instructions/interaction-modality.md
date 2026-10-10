@@ -13,7 +13,7 @@ parent: Skill instructions
 {% raw %}
 # /interaction-modality — ask in a form the person can answer
 
-Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../cat-harness/processes/getting-started.html),
+Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../en/cat-harness/processes/getting-started.html),
 `Task_DetectModality` and `Task_AskIntent`.
 Preferences: `cat-harness/memory/interaction.json` (committed, read at session start).
 
@@ -361,7 +361,7 @@ tool's labels); and nothing sat between the agent and the question tool.
 
 None of these is sufficient and the omissions are stated rather than implied,
 which is the same three-state discipline the rest of this skill asks for.
-`bun test cat-harness/scripts/tests/decision-request.test.ts` asserts each
+`bun test cat-harness-tools/scripts/tests/decision-request.test.ts` asserts each
 refusal, because a schema whose refusals are untested quietly stops refusing.
 
 **The fourth layer was added 2026-09-26, after the owner named this failure a
@@ -580,8 +580,8 @@ reader's font choice silently reconfiguring how an agent talks to the author.
 
 | process | step(s) that name it |
 |---|---|
-| [Session state machine](../../cat-harness/processes/session-state-machine.html) | Ask who is acting |
-| [A refused merge-train member](../../cat-harness/processes/merge-refusal.html) | Ask the owner on the PR, both sides quoted |
-| [A merge train](../../cat-harness/processes/merge-train.html) | Release the merge to main; Place it by hand, with a reason |
-| [Getting started](../../cat-harness/processes/getting-started.html) | Detect the interaction modality; Choose from the offered options |
+| [Session state machine](../../en/cat-harness/processes/session-state-machine.html) | Ask who is acting |
+| [A refused merge-train member](../../en/cat-harness/processes/merge-refusal.html) | Ask the owner on the PR, both sides quoted |
+| [A merge train](../../en/cat-harness/processes/merge-train.html) | Place it by hand, with a reason |
+| [Getting started](../../en/cat-harness/processes/getting-started.html) | Detect the interaction modality; Choose from the offered options |
 

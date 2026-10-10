@@ -28,10 +28,10 @@ restore  ──▶  draft / edit .lean  ──▶  lake build  ──▶  contri
 ```
 
 ```sh
-cat-harness/scripts/lake-cache.sh status       # what do I have?
-cat-harness/scripts/lake-cache.sh restore      # warm up  (~2 min)
+cat-harness-tools/scripts/lake-cache.sh status       # what do I have?
+cat-harness-tools/scripts/lake-cache.sh restore      # warm up  (~2 min)
 # … draft, edit, `lake build` …
-cat-harness/scripts/lake-cache.sh contribute   # give the build back
+cat-harness-tools/scripts/lake-cache.sh contribute   # give the build back
 ```
 
 **Restore before any Lean work.** The single most common wasted hour is
@@ -132,7 +132,7 @@ If there is no usable branch at all, that is a bootstrap, not a session
 task:
 
 ```sh
-cat-harness/scripts/reseed-lean-cache.sh --repo <content-repo> --dry-run
+cat-harness-tools/scripts/reseed-lean-cache.sh --repo <content-repo> --dry-run
 ```
 
 Phased, resumable, and safe by default — seeds to a `-test` branch and
@@ -142,7 +142,7 @@ See [Reseeding the Lean cache](../../docs/cat-harness/guides/reseeding-the-lean-
 ## Toolchain
 
 ```sh
-cat-harness/scripts/lake-cache.sh restore-toolchain
+cat-harness-tools/scripts/lake-cache.sh restore-toolchain
 ```
 
 Exits `3` if the restored toolchain has no static libraries — it will

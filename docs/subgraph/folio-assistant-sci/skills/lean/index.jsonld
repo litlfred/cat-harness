@@ -15,6 +15,9 @@
       "title": "Lean formal edges (elaborated)"
     }
   ],
+  "holdsGraph": [
+    "bootstrap:graphTypology/skills"
+  ],
   "name": "skills/lean",
   "path": "skills/lean/"
 }

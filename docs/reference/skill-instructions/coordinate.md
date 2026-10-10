@@ -484,6 +484,8 @@ What happened instead:
   pending work (todos, intent, queue assignments).
 - `prepare-merge-auto` — autonomous merge pipeline (uses
   this skill's sibling-coord pattern).
+- `specification-management` — governance of specification requirements,
+  linking CRDM and spec-kit to the bootstrap Requirement definition.
 
 `/coordinate` complements them: it is the **active** cross-PR
 protocol — including handling of code-review comments on your own
@@ -528,6 +530,15 @@ goal. Apply when you hold the flag.
    (`litlfred/qou` `AGENTS.md` "CI billing failures"), note `[skip-ci: billing]`, and keep
    working; never re-diagnose it as a code problem or pause the cluster
    for it.
+
+## SDLC multi-agent landscape & coverage
+
+For systematic evaluation of multi-agent SDLC workflows (comparing Waterfall, Agile, and dynamic process models against this repository's 69 BPMN processes) and the architectural gap checklist, see:
+- Methodology: [`methodologies/sdlc-agentic-landscape.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/sdlc-agentic-landscape.md) (derived from arXiv:2404.04834v4, He, Treude, and Lo)
+- Architectural analysis: [`docs/architecture/sdlc-agentic-coverage.md`](../../architecture/sdlc-agentic-coverage.html)
+- Cross-paper literature synthesis & bidirectional adversarial pass: [`methodologies/agentic-se-literature-synthesis.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/agentic-se-literature-synthesis.md) (synthesizing arXiv:2404.04834v4, arXiv:2507.23348v1, arXiv:2607.00053v1, arXiv:2601.04544v1, arXiv:2402.02172v5 under epic `0ipy`)
+
+
 
 
 
@@ -1026,6 +1037,6 @@ author.  Do not block indefinitely.
 
 | process | step(s) that name it |
 |---|---|
-| [CRDM Phase 5 — beans and sign-off](../../cat-harness/processes/crdm-signoff.html) | Announce the branch on the issue |
-| [Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route](../../cat-harness/processes/stalled-agent-triage.html) | Re-route open PRs that lost their driver |
+| [CRDM Phase 5 — beans and sign-off](../../en/cat-harness/processes/crdm-signoff.html) | Announce the branch on the issue |
+| [Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route](../../en/cat-harness/processes/stalled-agent-triage.html) | Re-route open PRs that lost their driver |
 

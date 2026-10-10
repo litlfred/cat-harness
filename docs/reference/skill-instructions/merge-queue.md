@@ -321,7 +321,7 @@ So a filter for `conclusion == "failure"` returns nothing, and three suites
 completed having executed nothing at all. **Counting the runs does not catch
 it either** — nine were present and every expected name matched. Only asking
 *which runs are owed for this event* catches it, and
-[`check-head-has-run`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/scripts/check-head-has-run.ts) is the one
+[`check-head-has-run`](../../../scripts/check-head-has-run.ts) is the one
 thing here that asks (bean `3pqn`). Do not write a second checker: it already
 keeps the states apart, has a test, and is already wired into
 `pr-checks-present.bpmn`.
@@ -384,7 +384,7 @@ nobody needed.**
 `authored` outranks `shared-declaration`, which outranks `generated-only`,
 because at each step the earlier kind is the one the later kind's remedy
 cannot resolve. The partition is tested in
-[`scripts/tests/merge-queue.test.ts`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/scripts/tests/merge-queue.test.ts)
+[`scripts/tests/merge-queue.test.ts`](../../../scripts/tests/merge-queue.test.ts)
 — including that a refused member cannot be the other side of a collision,
 since it never enters a train.
 
@@ -479,7 +479,7 @@ per-checkout `git config`.
 never the web button, never `merge_pull_request` from an MCP tool, and, while a
 Merge Manager is active, never by marking a PR ready or labelling it yourself
 first (with none active, see §"When no Merge Manager is active"). The script
-(`cat-harness/scripts/merge-guard.ts`, bean `uoob`, child (f) of `nok9`) is
+(`cat-harness-tools/scripts/merge-guard.ts`, bean `uoob`, child (f) of `nok9`) is
 the merge: it evaluates eight checks over GitHub's live facts, and performs
 the PUT, pinned to the head it evaluated, only when every one passes.
 
@@ -740,6 +740,74 @@ siblign)"*. So on every sweep the steward lists the PRs opened since the
 release, and puts them to the owner in one question, with the table's verdict
 on each. One answer ("approve all 6") may cover the whole batch.
 
+## Post-merge asymmetry: why main needs its own regeneration pipeline (bean ey1c)
+
+`.github/workflows/merge-main.yml` runs `bun run cat merge:main` on an opted-in
+**PR branch** when `main` moves, resolving declared conflicts and regenerating.
+There is a structural asymmetry in the other direction: **after a PR merges into
+`main`, nothing in that workflow regenerates `main`.**
+
+So any merge changing an enumerated or counted directory can leave `main` red on a
+hard gate, even when the PR merged cleanly with zero git conflicts. The only reason
+it usually does not is an accident: the PR branch happened to regenerate against a
+base that had not moved yet. When that accident does not hold, `main` goes red and
+stays red until somebody notices.
+
+### The accidental-repair pattern (observed 3 times in 2 hours)
+
+On 2026-10-03 on `main`'s own runs, step 65 ("Every declared directory's README is
+current", `readme:subgraphs:check`) demonstrated this pattern:
+
+    5187a4df361  after #1936                               green
+    8688288494a  after #1938 (arXiv licences → uploads/)   RED
+    268c0911a06                                            RED
+    ea1d8b10593  after #1940                               green
+    70882785607  "Add files via upload" (web UI)           RED
+
+PR #1938 added PDFs to `uploads/` without updating the generated table in
+`uploads/README.md`. It broke `main`. Then PR #1940's branch happened to carry a
+regenerated README, which repaired `main` **incidentally**; then a web-UI upload
+broke it again with no generator run at all.
+
+**The trap:** A green on a derived gate must NOT be read as "was never broken" or
+"the commit before it was clean". Unrelated PR branches that happen to carry
+regenerated files incidentally repair `main`, creating untrustworthy gate
+histories.
+
+**Why this halts development:** While `main` is red on a hard gate, every open PR
+inherits that red, so no PR can show green, and nothing can be merged on green CI.
+PR sessions start debugging their own diffs for failures that belong to `main`.
+
+### The automated post-merge repair pipeline
+
+To resolve this asymmetry, `.github/workflows/post-merge-regen.yml` triggers on
+push to `main` and runs `bun run cat post-merge:regen --create-pr`.
+
+1. **Detected and ACTED on:** It audits verify/write pairs on the post-merge tree.
+   If derived artefacts are stale, it does not merely fail silently or log red; it
+   acts by running the generators and generating a reviewable repair.
+2. **Reviewable PR, never a direct push to `main`:** The repair is pushed to an
+   `automation/post-merge-regen-<sha>` branch and opened as a PR targeting
+   `main`. This ensures the repair cannot bypass gates, full PR CI runs on it, and
+   it remains auditable and reviewable.
+3. **NEGATIVE CONTROL:** A merge that changes nothing counted triggers 0 repairs
+   and opens NO PR (`status: "clean"`, exit 0), preventing churn (bean `do70`).
+
+### Merge steward procedure: post-merge verification
+
+**Decision on merge steward role vs automation:**
+- **Automation handles post-merge verification:** The steward does not manually run
+  regen sweeps after every landing. Automation via `post-merge-regen.yml` executes on
+  push to `main` across all types of landings (steward trains, direct pushes, web
+  uploads).
+- **Steward triage when main goes red on a derived gate:** If `main` turns red on a
+  verify/write check (e.g. `readme:subgraphs:check`, `check:prov-qaqc`), the
+  steward checks whether an automated repair PR (`automation/post-merge-regen-...`)
+  has already been opened before dispatching unblockers or opening duplicate PRs.
+- **Priority admission for repair PRs:** When the automated repair PR passes CI,
+  the steward admits and lands it with priority under `merge-priority.dmn` as an
+  unblock-main repair.
+
 ## ACK every PR that enters the queue, on its bean (STRICT)
 
 Owner, 2026-10-04: *"as part of merge manager skill you need to ACK a new PR
@@ -997,10 +1065,67 @@ force here, because the temptation is strongest when the failure is not real.
 
 - The agent first reported "exactly one failure" from a partial log, then the
   run finished at 14. A count read before the run ends is not a count.
-- It read the run's exit code as 0 — but `echo` and `tail` were chained after
-  the test command in the same invocation, so **the 0 was `tail`'s**. A
-  compound command's exit status is the last command's, and a test runner's
+- A compound command's exit status is the last command's, and a test runner's
   status has to be captured before anything else runs.
+
+## Agentic pre-merge review: warn-only and the would-have-blocked counterfactual
+
+Bean `h1uq`. Owner ruled agentic merge review **warn-only** on 2026-10-02 and confirmed 2026-10-03: *"warn only. proposal predates ruling, update it."*
+
+### Architectural decision: staying WARN-ONLY with measured justification
+
+The decision to keep agentic code review warn-only is governed by empirical evidence, not caution:
+
+1. **Literature gap**: Across five ingested agentic SE papers (CodeAgent arXiv:2402.02172v5, SWE-Debate arXiv:2404.04834v4, SWE-Router arXiv:2507.23348v1, TCAndon-Router arXiv:2601.04544v1, He et al. arXiv:2607.00053v1), **zero empirical false-positive rates (FPR) exist for an LLM judge**.
+2. **CodeAgent's unconfirmed flag rate**: CodeAgent's own human annotation revealed that **48.6% of GPT-4's flags were unconfirmed**. A reviewer where nearly half of all flags are unconfirmed cannot be a blocking gate.
+3. **SWE-Router & SWE-Debate noise boundaries**: LLM-as-a-judge suffers from self-enhancement bias, verbosity bias, and positional bias.
+4. **Deterministic compile checks stay blocking**: G5 (Lean module compilation), G6 (SUSHI FHIR compilation), and G7 (JSON-LD schema validation) are deterministic compile gates that have exact binary outcomes and remain blocking. An agentic reviewer does not share this property.
+5. **Backlog inversion**: A blocking gate over an active codebase with unreviewed content nodes would fail on existing background patterns rather than PR delta, inverting the order of necessary backfill.
+
+### The counterfactual instrument: why only a warn-only phase can measure FPR
+
+A blocking gate destroys the counterfactual: when a gate blocks, authors modify code, bypass checks, or abandon PRs. It is impossible to determine whether the flagged condition would have actually broken production or represented a false positive.
+
+By contrast, a warn-only gate records `blocking`-severity findings as **"would have blocked"** (`WouldHaveBlockedRecordSchema` in `schemas/merge-queue.ts`), pinned to the PR's `headSha`. The PR then merges to `main`. Subsequent monitoring observes whether any defect materialized, enabling humans to adjudicate findings:
+- `true_positive`: Finding correctly identified a genuine defect.
+- `false_positive`: Finding flagged benign, correct code.
+- `unknown`: Third state (inconclusive, unverified, or cannot be determined).
+
+**The third-state rule**: `unknown` is strictly preserved and never folded into `true_positive` (which would artificially deflate FPR) or `false_positive` (which would artificially inflate FPR).
+
+### Pre-registered promotion criteria
+
+To prevent choosing thresholds to fit data, promotion criteria are registered as numbers and windows *before* data collection begins (`AgenticPromotionCriteriaSchema`):
+- `minimumPrWindow`: 50 evaluated PRs.
+- `maximumFalsePositiveRate`: <= 0.05 (5% FPR: `confirmedFalsePositives / (confirmedTruePositives + confirmedFalsePositives)`).
+- `minimumReviewCoverage`: >= 0.80 (80% non-unknown adjudication: `(confirmedTruePositives + confirmedFalsePositives) / warnedFindings`).
+
+Until all three criteria are empirically proven, the agentic review remains **warn-only**.
+
+## Tool-integrated agentic pre-merge review (CodeAgent / 2402.02172v5)
+
+Evaluated under bean `gs0u` and codified in [`methodologies/agentic-pre-merge-review.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/agentic-pre-merge-review.md).
+
+Multi-agent tool-integrated code review architectures (Tang et al., arXiv:2402.02172v5)
+structure automated pre-merge evaluation into specialized roles (Reviewer, Coder,
+QA-Checker, Consistency, Security) across four sequential phases.
+
+Three operational rules govern its integration into this repository's merge queue:
+
+1. **The Deterministic vs. Judged Boundary (Owner ruling 2026-10-02/10-03, bean `nok9`)**:
+   Deterministic compile gates (Lean formal proofs, SUSHI/FHIR IG AST, JSON-LD schema renders,
+   linter and test suites) answer questions with one computable truth — **these MUST BLOCK**.
+   LLM-mediated agentic code reviews answer questions with uncalibrated error rates — **these
+   MUST WARN ("would have blocked")**, exiting 0 and logging structured finding sidecars.
+2. **The 49% False-Positive Guard**: Standalone LLMs exhibit up to 48.58% false-positive
+   rates in code vulnerability detection (arXiv:2402.02172v5, Table 2). An automated review gate
+   must never block merge on unverified LLM assertions, which induce severe alert fatigue.
+   Promotion from warn to block requires measured calibration against recorded repository
+   defects (`plj1`, `dh4f`, `w4tq`, `7u3g`).
+3. **Bounded Dialogue Budgets**: Conversational QA-Checker loops must cap at a maximum of 2
+   adjustment iterations to avoid latency explosions (CodeAgent measured 5 min / $0.122 per review)
+   and context window exhaustion. Deterministic formatters and linters must run directly in CLI
+   gates (`bun run cat gates`) rather than consuming multi-turn LLM reasoning.
 
 ## What this does not do yet
 
@@ -1015,5 +1140,5 @@ until it lands.
 
 | process | step(s) that name it |
 |---|---|
-| [A merge train](../../cat-harness/processes/merge-train.html) | Read each queued PR's live facts; Take the next PR in queue order; Admit it to the train, record the train id; Attribute the failure: each member's own CI first; Bisect the train; Eject the culprit, record why |
+| [A merge train](../../en/cat-harness/processes/merge-train.html) | Read each queued PR's live facts; Take the next PR in queue order; Admit it to the train, record the train id; Attribute the failure: each member's own CI first; Bisect the train; Eject the culprit, record why |
 

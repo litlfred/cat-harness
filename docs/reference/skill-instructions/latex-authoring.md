@@ -75,5 +75,5 @@ environment actually has; the capability is `latex-compiler`.
 
 | process | step(s) that name it |
 |---|---|
-| [Authoring a paper](../../processes/authoring-a-paper.html) | 7 · Render PDF / HTML |
+| [Authoring a paper](../../en/cat-harness/processes/authoring-a-paper.html) | 7 · Render PDF / HTML |
 

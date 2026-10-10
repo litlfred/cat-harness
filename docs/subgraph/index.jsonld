@@ -4,6 +4,7 @@
   "@type": "bootstrap:Subgraph",
   "hasSubgraph": [
     "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/",
+    "https://litlfred.github.io/folio-assistant/subgraph/cat-harness-tools/",
     "https://litlfred.github.io/folio-assistant/subgraph/fhir-harness/",
     "https://litlfred.github.io/folio-assistant/subgraph/folio-assistant-core/",
     "https://litlfred.github.io/folio-assistant/subgraph/folio-assistant-sci/",

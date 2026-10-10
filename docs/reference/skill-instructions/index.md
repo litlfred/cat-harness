@@ -39,7 +39,6 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [One-Voice Style Guide](one-voice-style-guide.html) | `one-voice-style-guide` | — | > **See also:** `one-voice-audit` is the mechanical sweep (greps for |
 | [Production vs exploratory vs numerology](production-vs-exploratory-discipline.html) | `production-vs-exploratory-discipline` | — | N_TRUNCATION = 5 |
 | [Readability Editing](readability-editing.html) | `readability-editing` | — |  |
-| [Review comments](review-comments.html) | `review-comments` | — | > Skill id: `review-comments` · Package: `folio-core` |
 | [Review heat map](review-heatmap.html) | `review-heatmap` | — | > Skill id: `review-heatmap` · Package: `folio-core` · Bean: `qbfi` · Epic: `q4jm` |
 | [Scientific Accuracy](scientific-accuracy.html) | `scientific-accuracy` | — |  |
 | [Technical documentation](technical-documentation.html) | `technical-documentation` | — | The register is an SDO's — W3C, IHE. The reader is an implementer who was not |
@@ -68,13 +67,15 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | Skill | Id | Schema | Summary |
 |-------|----|--------|---------|
 | [Subagent memory](agent-memory.html) | `agent-memory` | — | A subagent declaring project memory gets its own directory; the first **200 |
+| [Agent permissions](agent-permissions.html) | `agent-permissions` | — | [`processes/process/secure-agent-permissions.bpmn`](../../en/cat-harness/processes/secure-agent-permissions.html) |
 | [The language you communicate in](communication-language.html) | `communication-language` | — |  |
 | [A confirmation can be waived](confirmation-waiver.html) | `confirmation-waiver` | — | Several rules here stop an agent and hand a decision back: merging to `main`, |
 | [The comparison goes BEFORE the question, not inside the options](decision-comparison.html) | `decision-comparison` | — | [`interaction-modality`](interaction-modality.md) §4.1 fixes the *order* — |
 | [Deletion requires explicit confirmation](deletion-requires-confirmation.html) | `deletion-requires-confirmation` | — | **One rule, and it has no exceptions worth the word:** |
-| [/getting-started](getting-started.html) | `getting-started` | — | Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../cat-harness/processes/getting-sta |
-| [/interaction-modality](interaction-modality.html) | `interaction-modality` | — | Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../cat-harness/processes/getting-sta |
-| [/repo-conversion](repo-conversion.html) | `repo-conversion` | — | Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../cat-harness/processes/getting-sta |
+| [/getting-started](getting-started.html) | `getting-started` | — | Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../en/cat-harness/processes/getting-started.html) |
+| [Harness projections: CI writes them, the owner consents to every hand edit](harness-projections.html) | `harness-projections` | — | **Owner, 2026-10-09:** generated `.claude/` projections of the knowledge graph |
+| [/interaction-modality](interaction-modality.html) | `interaction-modality` | — | Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../en/cat-harness/processes/getting-started.html) |
+| [/repo-conversion](repo-conversion.html) | `repo-conversion` | — | Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../en/cat-harness/processes/getting-started.html) |
 | [A falling-off retry rate, on every error](retry-backoff.html) | `retry-backoff` | — | Owner, 2026-09-20: **"as rule, use logarithmic fall-off on all errors. core |
 | [symbiotic-interaction](symbiotic-interaction.html) | `symbiotic-interaction` | — |  |
 | [Untrusted input](untrusted-input.html) | `untrusted-input` | — | One defect, three substrates. In every case something **substitutes a value |
@@ -111,7 +112,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [Graph rendering: one set of rules for every drawn graph](graph-rendering.html) | `graph-rendering` | — | > Skill id: `graph-rendering` · Package: `graph-management` |
 | [Knowledge Graph separation](kg-separation.html) | `kg-separation` | — | > Skill id: `kg-separation` · Package: `graph-management` |
 | [KG subgraph layout: one diagram per declared sub-graph, laid out in the browser](kg-subgraph-layout.html) | `kg-subgraph-layout` | — | > Skill id: `kg-subgraph-layout` · Package: `graph-management` |
-| [LSI indexing](lsi-indexing.html) | `lsi-indexing` | — | **The method is the node, not this file.** [`lsi`](https://github.com/litlfred/folio-assistant/blob/ |
+| [LSI indexing](lsi-indexing.html) | `lsi-indexing` | — | **The method is the node, not this file.** [`lsi`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/lsi.md) |
 | [Named Query Execution across CLI, MCP, and Web](named-query-execution.html) | `named-query-execution` | — | This skill governs the execution of audited SPARQL 1.1 named queries against partitioned W3C N-Quads |
 | [W3C N-Quads Dataset Packaging & Subgraph Distribution](nquads-distribution.html) | `nquads-distribution` | — | This skill governs the compilation, subgraph partitioning, packaging, and distribution of RDF datase |
 | [Sub-KG lifecycle](sub-kg-lifecycle.html) | `sub-kg-lifecycle` | — | > Skill id: `sub-kg-lifecycle` · Package: `graph-management` |
@@ -171,7 +172,6 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [Asset extraction](asset-extraction.html) | `asset-extraction` | — | A container arrives in `uploads/`: a zip of a saved web page, a PDF, a |
 | [Code lists](code-lists.html) | `code-lists` | — | Owner, 2026-09-23: *"we need an expandable option, not just declared in code. |
 | [Acquisition is the step before ingestion, and it had no home](content-acquisition.html) | `content-acquisition` | — | `document-ingestion.bpmn` begins at **`StartEvent_Dropped` — "a file lands in |
-| [Glossary terms](glossary-terms.html) | `glossary-terms` | — | The owner, 2026-09-23: *"put glossary into folio-assistant-core"*, *"it should |
 | [Library ingestion](library-ingestion.html) | `library-ingestion` | — | `uploads/` and `library/` are two stages of **one** pipeline. `uploads/` is the |
 | [Literature search](literature-search.html) | `literature-search` | — | A node cites a source. Nothing in any declared library holds it. This skill is |
 | [Term disagreement](term-disagreement.html) | `term-disagreement` | — | > Skill id: `term-disagreement` · Package: `library-core` |
@@ -214,7 +214,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [Render a Knowledge Graph to a CDN](render-kg-to-cdn.html) | `render-kg-to-cdn` | — | Owner, 2026-09-30: *"render content of a KG (or list of subgraphs within) for |
 | [Session context](session-context.html) | `session-context` | — | A **session** is one actor working, from the moment it picks up until it stops. |
 | [Playing a state machine](session-state-machine.html) | `session-state-machine` | — | > **An agent could also play a (non-deterministic) state machine as a tool. |
-| [Specification-compiled agents](specification-compiled-agents.html) | `specification-compiled-agents` | — | Renders [`methodologies/specification-compiled-agents.md`](https://github.com/litlfred/folio-assista |
+| [Specification-compiled agents](specification-compiled-agents.html) | `specification-compiled-agents` | — | Renders [`methodologies/specification-compiled-agents.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/specification-compiled-agents.md) |
 | [State in a running process](workflow-state.html) | `workflow-state` | — | A process instance is not self-contained. It walks a diagram that lives |
 
 ## CRDM requirements methodology (skills/sdlc/crdm)
@@ -239,6 +239,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [Blocking is a claim about the work, not a mood](bean-blocking.html) | `bean-blocking` | — | `blocked` is the most expensive status a bean can carry, because a blocked bean |
 | [Bean Coordination](bean-coordination.html) | `bean-coordination` | — | The **bean-based work-plan system** — the [`beans`](https://github.com/hmans/beans) |
 | [/before-after-preview](before-after-preview.html) | `before-after-preview` | — | > Skill id: `before-after-preview` · Package: `sdlc-core` · Issue: #1710 · |
+| [Benchmarking mode](benchmarking-mode.html) | `benchmarking-mode` | — | > Skill id: `benchmarking-mode` · Package: `sdlc-core` · Issue: [#363](https://github.com/litlfred/folio-assistant/issues/363) |
 | [Blocked build dependencies](blocked-build-dependencies.html) | `blocked-build-dependencies` | — | Outbound HTTPS from an agent container goes through a proxy. A failed download |
 | [Branch archaeology: what each branch holds that main does not](branch-archaeology.html) | `branch-archaeology` | — | The question sounds like `git branch -r --no-merged`, and that command answers |
 | [Bun Runtime, Toolchain, and Multi-Repo Conventions](bun-use.html) | `bun-use` | — | > Skill id: `bun-use` · Package: `sdlc-core` |
@@ -264,6 +265,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [Working an issue](issue-working.html) | `issue-working` | — | Two rules. Both exist because **your view of an issue and everyone else's |
 | [Merge-conflict patterns](merge-conflict-patterns.html) | `merge-conflict-patterns` | — | `bun run cat merge:main` is the command; `processes/sdlc/merge-base.bpmn` is the |
 | [Merge queue](merge-queue.html) | `merge-queue` | — | `processes/sdlc/merge-train.bpmn` is the process. The ORDER is computed by |
+| [Merge to `main`](merge-to-main.html) | `merge-to-main` | — | [`processes/sdlc/merge-to-main.bpmn`](../../en/cat-harness/processes/merge-to-main.html) |
 | [Does the prose say what the code does?](narrative-asserts-code.html) | `narrative-asserts-code` | — | Issue #1042, feature bean `flbx`, stage C. The owner, 2026-09-21: *"need to see |
 | [Opening brief](opening-brief.html) | `opening-brief` | — | Split out of `todo-manager.md` on 2026-09-19 (bean `tdmg`), which had reached |
 | [Cutting a package release](package-release.html) | `package-release` | — | A **release** is a version number that one commit keeps from then on: a tag, |
@@ -283,6 +285,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [Rendered impact](rendered-impact.html) | `rendered-impact` | — | > Skill id: `rendered-impact` · Package: `sdlc-core` · Bean: `bnjs` · Epic: `q4jm` · Issue #971 |
 | [/rendered-verification](rendered-verification.html) | `rendered-verification` | — | [`continual-progress`](continual-progress.md) argues that **a human cannot |
 | [/session-intent](session-intent.html) | `session-intent` | — | A coordination failure mode recurs whenever agents have no durable |
+| [Specification and requirements management](specification-management.html) | `specification-management` | — | > Skill id: `specification-management` · Package: `sdlc-core` |
 | [Staging review](staging-review.html) | `staging-review` | — | > Skill id: `staging-review` · Package: `sdlc-core` |
 | [Stalled-agent triage](stalled-agent-triage.html) | `stalled-agent-triage` | — | A stall is not an event anyone records. The agent simply stops, and what it |
 | [Swarm management](swarm-management.html) | `swarm-management` | — | A swarm is several agents working one goal in parallel. It is the most |
@@ -342,7 +345,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [At ingestion, and only at ingestion](theme-ui-review.html) | `theme-ui-review` | — | **The owner, 2026-09-23 and 2026-09-24**, settling bean `9fdi`: |
 | [All UI must follow accessibility guidelines](ui-accessibility.html) | `ui-accessibility` | — | This is a **rule**, stated as one by the owner, and it binds every surface this |
 | [Visualizer loading](visualizer-loading.html) | `visualizer-loading` | — | > Skill id: `visualizer-loading` · Package: `ui-core` · Beans `680p`, `s32v`, |
-| [Wireframe design review](wireframe-design-review.html) | `wireframe-design-review` | — | Method: [`wiregen`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/ |
+| [Wireframe design review](wireframe-design-review.html) | `wireframe-design-review` | — | Method: [`wiregen`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/wiregen.md) |
 
 ## Content layer (folio-assistant-core)
 
@@ -355,6 +358,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | Skill | Id | Schema | Summary |
 |-------|----|--------|---------|
 | [quality-control](quality-control.html) | `quality-control` | [schema](../skills/quality-control.html) | > Skill id: `quality-control` · Package: `content-lifecycle-ext` · |
+| [Review comments](review-comments.html) | `review-comments` | — | > Skill id: `review-comments` · Package: `content-lifecycle-ext` |
 
 ## Document adapter (folio-document-adapter)
 
@@ -392,6 +396,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [Bibliography QA](bib-qa.html) | `bib-qa` | — | cd content && bun run pipeline/bib-qa.ts --check-urls |
 | [Filing a source: what Dublin Core carries, and what it does not](filing-dublin-core.html) | `filing-dublin-core` | — | This is the **librarian's** half of intake, not the ingestion engine's. A file |
 | [Glossary Build](glossary-build.html) | `glossary-build` | — |  |
+| [Glossary terms](glossary-terms.html) | `glossary-terms` | — | The owner, 2026-09-23: *"put glossary into folio-assistant-core"*, *"it should |
 | [Semantic Ontologist (Ambiguity Detection & Glossary)](ontologist.html) | `ontologist` | — |  |
 
 ## Document ingestion methods (ingestion)
@@ -402,6 +407,12 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [L1 coverage](l1-coverage.html) | `l1-coverage` | — | Issue [#2405](https://github.com/litlfred/folio-assistant/issues/2405) FR-009: |
 | [L1 document ingestion](l1-document-ingestion.html) | `l1-document-ingestion` | — | **This is a refinement, not the entry point.** The harness's |
 | [Tabular metadata](tabular-metadata.html) | `tabular-metadata` | — | **The model is CSVW and nothing custom.** Bean `ulqj`, decided by the owner: |
+
+## Where to start reviewing a large folio (review)
+
+| Skill | Id | Schema | Summary |
+|-------|----|--------|---------|
+| [Review: a pointer to the review skills](review.html) | `review` | — | Bean `0jtl`. The owner asked for review skills "for document review for large |
 
 ## FHIR IG authoring (fhir-ig-authoring)
 
@@ -459,14 +470,14 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [Compute Audit](compute-audit.html) | `compute-audit` | — | python3 script.py --args ... |
 | [Compute-author](compute-author.html) | `compute-author` | — |  |
 | [Content Block Review](content-block-review.html) | `content-block-review` | — |  |
-| [Content Validation](content-validation.html) | `content-validation` | — | bun run cat-harness/content/pipeline/validate.ts content/<paper>   # after setup-folio-assistant.sh |
+| [Content Validation](content-validation.html) | `content-validation` | — | bun run cat-harness-tools/content/pipeline/validate.ts content/<paper>   # after setup-folio-assista |
 | [Critical Path Analysis & Context Review](critical-path-analysis.html) | `critical-path-analysis` | — |  |
 | [definition-clarity-audit](definition-clarity-audit.html) | `definition-clarity-audit` | — | A content block can be **schema-clean, ref-resolving, proof-backed** and still be |
 | [FFI roundtrip audit](ffi-roundtrip-audit.html) | `ffi-roundtrip-audit` | — | total = mp.mpf(0) |
 | [Lean 4 Formalizer (Narrative to Proof)](formalizer.html) | `formalizer` | — | The base ring rule, import ordering, and library synthesis. Read before |
 | [Gröbner Basis](groebner-basis.html) | `groebner-basis` | — |  |
 | [LaTeX build performance](latex-build-cache.html) | `latex-build-cache` | — | ``` |
-| [LaTeX Compilation](latex-compilation.html) | `latex-compilation` | — | cat-harness/scripts/latexmk-compile.sh main.tex |
+| [LaTeX Compilation](latex-compilation.html) | `latex-compilation` | — | cat-harness-tools/scripts/latexmk-compile.sh main.tex |
 | [LaTeX Validation](latex-validation.html) | `latex-validation` | — |  |
 | [Lean Build Fix](lean-build-fix.html) | `lean-build-fix` | — |  |
 | [Lean cache: the authoring loop](lean-cache-restore.html) | `lean-cache-restore` | — | > This is an instantiation of the general compiled-artefact-cache pattern. See `cat-harness/skills/p |

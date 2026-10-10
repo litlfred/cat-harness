@@ -25,7 +25,7 @@ sessions sharing one store and racing for one claim. It is not
 and can read directly. Here you **cannot see the executor's checkout**. The
 only things you will ever see are what it pushes and what it posts.
 
-**Needs** the `beans` CLI on both sides (`cat-harness/scripts/install-beans.sh`)
+**Needs** the `beans` CLI on both sides (`cat-harness-tools/scripts/install-beans.sh`)
 and `bun run cat beans:claim`. An executor without them reports that it is
 blocked; it does not edit bean files by hand.
 

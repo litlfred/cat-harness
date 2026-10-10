@@ -428,7 +428,7 @@ in words ("1 verdict on an earlier version, not counted"). A build whose
 `review-comments.json` carries no verdicts says "No verdict data on this
 build" rather than treating every block as unread. Typing into a selector is never navigation.
 
-**Tests.** `cat-harness/test/review-nav.e2e.ts` drives all of this with the
+**Tests.** `cat-harness-tools/test/review-nav.e2e.ts` drives all of this with the
 keyboard alone. It uses no mouse, no click and no hover.
 
 ### The review page, and choosing how to see a change
@@ -458,8 +458,8 @@ at the top applies to every block:
   that can.
 - **The page-level choice is remembered** for this viewer in
   `localStorage`. A private window just gets the defaults.
-- **The renderers and the registry** are `cat-harness/scripts/review-renderers.ts`,
-  `cat-harness/scripts/word-diff.ts` (no diff library; about forty lines,
+- **The renderers and the registry** are `cat-harness-tools/scripts/review-renderers.ts`,
+  `cat-harness-tools/scripts/word-diff.ts` (no diff library; about forty lines,
   tested) and `cat-harness/schemas/diff-renderers.ts`. To add one, declare it
   in the registry with what it needs and which kinds it defaults for, add its
   function to `review-renderers.ts`, and add a case to the page's
@@ -552,7 +552,7 @@ What the `stage` job now does, on every deploy, before its one push:
 
 - **Sums the size of the previews under `STAGING/`, including the one it is
   staging, and keeps them within 3 GB.** The number lives once, as
-  `MAX_PREVIEW_BYTES` in `cat-harness/scripts/staging-rotate.ts`.
+  `MAX_PREVIEW_BYTES` in `cat-harness-tools/scripts/staging-rotate.ts`.
 - **Keeps the newest that fit and removes the rest, oldest first — strictly by
   recency.** An older small preview never outlives a newer one that did not
   fit, so a preview's age alone says whether it is still there. One 780 MB
@@ -649,11 +649,49 @@ Give them the number and the follow-up, in the same breath as the link:
 Never present a URL as though it is already serving. *"Deployed to `gh-pages`,
 should be live in ~5 minutes"* is the honest sentence and costs nothing.
 
+### Check for newer cleanup commits on gh-pages (bean oz5w)
+
+Before declaring a preview good, check the `gh-pages` commit log for any
+`staging(cleanup)` commit touching that slug that is **newer than** the last
+`staging(...)` publish:
+
+```sh
+git log -n 5 --oneline origin/gh-pages -- "STAGING/<slug>"
+```
+
+If a `staging(cleanup)` commit appears newer than the last `staging(...)`
+publish, or if the directory was deleted within the hour, **flag it
+immediately**. A preview whose slug was recently deleted and re-published is
+vulnerable to cancelled Pages builds: if Pages cancelled the re-publish build,
+the site continues serving the deletion (a 404) even though the publish ref has
+the files.
+
+A preview whose slug was deleted within the hour is not in the ordinary
+propagation window.
+
+### Re-publishing without a code push
+
+When a preview needs to be rebuilt or re-published — because a previous Pages
+build was cancelled, or because a slug was deleted by cleanup from a preceding
+PR — you do **not** need an empty code commit or push. Dispatch the staging
+workflow directly with the branch name:
+
+```sh
+gh workflow run feature-staging.yml -f branch=<branch>
+```
+
+This triggers `feature-staging.yml` via `workflow_dispatch` for that branch,
+building and deploying a fresh preview to `STAGING/<slug>/` on `gh-pages` and
+queueing a new Pages build.
+
 ## Do not
 
 - **Do not hand over a staging URL without listing `STAGING/<slug>/` on
   `gh-pages` first.** The bot's comment says a workflow pushed, not that a
   site serves, and relaying it unchecked is what this section exists for.
+- **Do not declare a preview good without checking the `gh-pages` commit log for
+  newer cleanup commits.** A `staging(cleanup)` commit newer than the publish
+  means a cancelled Pages build leaves the live site serving a 404.
 - **Do not say a preview is "live", "up" or "deployed and ready"** unless
   someone has loaded it. You cannot see that from here.
 - **Do not provide before/after URLs without checking the staging workflow
@@ -685,8 +723,8 @@ Full rule and the measured failure:
 
 | process | step(s) that name it |
 |---|---|
-| [Staging a feature branch preview, and taking it down](../../cat-harness/processes/feature-staging.html) | Comment the preview URL on the PR; Post the retention notice on the PR |
-| [Adopting an upstream version bump](../../cat-harness/processes/upstream-version-adoption.html) | Review the MVP against what we bind to |
-| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Review staged rendering; Request further revisions; Submit to review committee; Compare main vs staging; Slice the change and assign reviewers |
-| [Public comment on a review draft](../../cat-harness/processes/public-comment.html) | Review the change set on its staging preview (calls a sub-process) |
+| [Staging a feature branch preview, and taking it down](../../en/cat-harness/processes/feature-staging.html) | Comment the preview URL on the PR; Post the retention notice on the PR |
+| [Adopting an upstream version bump](../../en/cat-harness/processes/upstream-version-adoption.html) | Review the MVP against what we bind to |
+| [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Review staged rendering; Request further revisions; Submit to review committee; Compare main vs staging; Slice the change and assign reviewers |
+| [Public comment on a review draft](../../en/cat-harness/processes/public-comment.html) | Review the change set on its staging preview (calls a sub-process) |
 

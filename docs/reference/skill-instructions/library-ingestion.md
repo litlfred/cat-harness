@@ -339,7 +339,7 @@ removing the old entry, which is why it is worth getting right on the way in.
 
 | process | step(s) that name it |
 |---|---|
-| [Content acquisition](../../cat-harness/processes/content-acquisition.html) | Route it, and watch the queue |
-| [Basic ingestion — an upload to an asset catalogued in library/](../../cat-harness/processes/document-ingestion.html) | Place the asset in library/<slug>/; Record it in library/ as referenced |
-| [L1 document ingestion — a document to the L1 source knowledge graph](../../cat-harness/processes/l1-document-ingestion.html) | Basic ingestion (harness) (calls a sub-process) |
+| [Content acquisition](../../en/cat-harness/processes/content-acquisition.html) | Route it, and watch the queue |
+| [Basic ingestion — an upload to an asset catalogued in library/](../../en/cat-harness/processes/document-ingestion.html) | Place the asset in library/<slug>/; Record it in library/ as referenced |
+| [L1 document ingestion — a document to the L1 source knowledge graph](../../en/cat-harness/processes/l1-document-ingestion.html) | Basic ingestion (harness) (calls a sub-process) |
 

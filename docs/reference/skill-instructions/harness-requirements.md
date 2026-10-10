@@ -124,7 +124,7 @@ segments come from the harness's `visualisers` declaration and are computed by
 `visualiserRoute` (`schemas/visualiser-route.ts`) — never composed by a
 generator, never claimed by a page. Two declarations on one route are a
 declaration error, refused by `check:visualiser-routes`; see
-[`harness-tiles`](../../ui/ui-core/harness-tiles.md) §"Where a tile goes".
+[`harness-tiles`](harness-tiles.md) §"Where a tile goes".
 
 Case 3 is why `docs/` has two roles at once — the owner, asked which it was,
 answered **"both are right"**. It is a directory cat-harness instantiates AND a
@@ -132,8 +132,11 @@ namespace under which the docs-kind assets of another subgraph are rendered:
 `<base>/cat-harness/docs/who-iris/`.
 
 Case 3 is the **canonical** address, and a bare `<base>/<visualizer>/` is an
-opt-in alias. That rule, and what is not yet enforced (bean `t4xb`), are in
-[`schema-management`](schema-management.md) §"Where a viewer publishes".
+opt-in alias (`alias` on the declaration, composed as a redirect). That rule
+is in [`schema-management`](schema-management.md) §"Where a viewer publishes".
+The site owner's state dashboards (`/beans/`, `/todos/`, …) were drawn at the
+bare URL until 2026-10-09; they are drawn at `<base>/cat-harness/<id>/` now,
+and the bare URL is their declared alias.
 
 So "which directory holds it" and "which URL serves it" are different
 questions, and a visualiser's declaration answers the first. Do not compose the

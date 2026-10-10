@@ -138,6 +138,13 @@ in [`kg-export`](kg-export.md) §"`fsh-guts` NEVER reaches a published graph".
    advisories (240 of 240 third-party actions unpinned, dependency
    advisories) are reported in the PR and are not cleared by a green gate.
 
+   **Check the adversarial review verdict with `bun run cat check:adversarial-review`.**
+   On any branch with agent provenance (trailers, `claude/*` branch, bot committer),
+   verifies that an independent adversarial review verdict exists, binds to the
+   head SHA, and covers the full diff without silent truncation. Under the 2026-10-03
+   owner ruling, findings are warn-only ("would have blocked"), recording data for
+   gate promotion without holding the merge.
+
    **Know what the target covered.** Green is a claim about the files the build
    compiled, which is usually fewer than the files on disk — build targets
    default to a root plus its transitive imports. Confirm the files *you
@@ -638,12 +645,12 @@ harness git instructions). Do not include the model identifier in the PR.
 
 | process | step(s) that name it |
 |---|---|
-| [Actor and role administration](../../cat-harness/processes/actor-role-administration.html) | Branch, gates, PR and review (calls a sub-process) |
-| [CRDM Phase 6 — implement, MVP, acceptance](../../cat-harness/processes/crdm-deliver.html) | Phase 6: Implement (feature branch + PR) |
-| [Code change and review](../../cat-harness/processes/code-change-review.html) | Prepare the merge, and watch it through (calls a sub-process) |
-| [Merge the base branch in](../../cat-harness/processes/merge-base.html) | Merge the base in, without committing; Regenerate, asking every CI gate; Resolve by hand, then regenerate |
-| [A refused merge-train member](../../cat-harness/processes/merge-refusal.html) | Fix the PR, report on the PR |
-| [A merge train](../../cat-harness/processes/merge-train.html) | Merge each member onto the base (calls a sub-process); Land the train at the tested SHA |
-| [Adopting an upstream version bump](../../cat-harness/processes/upstream-version-adoption.html) | Move the pin and open the PR |
-| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Merge, on explicit confirmation |
+| [Actor and role administration](../../en/cat-harness/processes/actor-role-administration.html) | Branch, gates, PR and review (calls a sub-process) |
+| [CRDM Phase 6 — implement, MVP, acceptance](../../en/cat-harness/processes/crdm-deliver.html) | Phase 6: Implement (feature branch + PR) |
+| [Code change and review](../../en/cat-harness/processes/code-change-review.html) | Prepare the merge, and watch it through (calls a sub-process) |
+| [Merge the base branch in](../../en/cat-harness/processes/merge-base.html) | Merge the base in, without committing; Regenerate, asking every CI gate; Resolve by hand, then regenerate |
+| [A refused merge-train member](../../en/cat-harness/processes/merge-refusal.html) | Fix the PR, report on the PR |
+| [A merge train](../../en/cat-harness/processes/merge-train.html) | Merge each member onto the base (calls a sub-process) |
+| [Adopting an upstream version bump](../../en/cat-harness/processes/upstream-version-adoption.html) | Move the pin and open the PR |
+| [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Merge, on explicit confirmation |
 

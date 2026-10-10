@@ -1,0 +1,25 @@
+classDiagram
+  direction TB
+  namespace smart_base__smart_base_code_lists {
+    class smart_base_smart_base_code_lists_Code["Code"] {
+      <<json: CodeListSchema>>
+      code [1] string
+      label [1] string
+      definition [1] string
+      source [0..1] object
+      value [0..1] string
+      status [0..1] active | retired
+    }
+    class smart_base_smart_base_code_lists_CodeList["CodeList"] {
+      <<json: CodeListSchema>>
+      $schema [1] 'folio-code-list/v1'
+      id [1] string
+      title [1] string
+      description [1] string
+      source [1] object
+      codes [1..*] Code[]
+    }
+  }
+  smart_base_smart_base_code_lists_CodeList *-- "1..*" smart_base_smart_base_code_lists_Code : codes
+  cssClass "smart_base_smart_base_code_lists_Code" fa_uml_kind_code_list
+  cssClass "smart_base_smart_base_code_lists_CodeList" fa_uml_kind_code_list

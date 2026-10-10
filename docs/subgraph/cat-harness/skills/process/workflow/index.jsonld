@@ -79,9 +79,9 @@
       "@type": "bootstrap:Skill",
       "name": "process-state",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/444618558082aefe836fe2c9483d296ce952f5c587726ee6361ecd681a6f4e03",
-        "bytes": 12688,
-        "sha256": "444618558082aefe836fe2c9483d296ce952f5c587726ee6361ecd681a6f4e03"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/aa61a5dacfce58ca4b693fcbf0f1d65245cca171dbacaa87b5764834118d0f1c",
+        "bytes": 12985,
+        "sha256": "aa61a5dacfce58ca4b693fcbf0f1d65245cca171dbacaa87b5764834118d0f1c"
       },
       "title": "Process state — the task you are in, inside the process you are running"
     },
@@ -156,9 +156,9 @@
       "@type": "bootstrap:Skill",
       "name": "workflow-state",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/96ca7aaa57dc772b361fd56d6222714da177802904abaadd2e20d23ca6c9b5cd",
-        "bytes": 6262,
-        "sha256": "96ca7aaa57dc772b361fd56d6222714da177802904abaadd2e20d23ca6c9b5cd"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2c380ac49a922026fb1ffa2d616a7af0512b02e2aff01805b05b5ee5601b076e",
+        "bytes": 6755,
+        "sha256": "2c380ac49a922026fb1ffa2d616a7af0512b02e2aff01805b05b5ee5601b076e"
       },
       "title": "State in a running process"
     }

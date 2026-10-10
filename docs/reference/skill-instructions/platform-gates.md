@@ -254,7 +254,7 @@ the body changes. **A skill edit is three files:**
 |---|---|
 | the body, `skills/<pkg>/<name>.md` | — you edit it |
 | `test/results/kg-qa/.../<name>.kg-qa.json` | `bun run cat kg:audit` |
-| `docs/reference/skill-instructions/<name>.md` | `bun run cat-harness/scripts/gen-skill-docs.ts` |
+| `docs/reference/skill-instructions/<name>.md` | `bun run cat-harness-tools/scripts/gen-skill-docs.ts` |
 
 The `kg-qa` row is a derived QA result: its record is the commit-keyed entry
 the CI job `qa-publish` stores on the orphan `qa-reports` branch (arc `3fva`),
@@ -381,7 +381,7 @@ renamed or restructured and the reader needs fixing — not the gate list.
 
 | process | step(s) that name it |
 |---|---|
-| [Code change and review](../../cat-harness/processes/code-change-review.html) | Run the platform's own gates |
-| [The gates a change must pass before it can merge](../../cat-harness/processes/code-quality-gates.html) | Verdict reuse: tree already green? (NOT A GATE); Import hygiene (HARD) and advisories (WARN-ONLY); TypeScript: lint, types and tests (HARD); End-to-end + accessibility (HARD); Repository gates (HARD); Registered gates that never run (HARD); Skill-registration chain (UNMASKED) |
-| [A merge train](../../cat-harness/processes/merge-train.html) | Run the gate set on the train (calls a sub-process) |
+| [Code change and review](../../en/cat-harness/processes/code-change-review.html) | Run the platform's own gates |
+| [The gates a change must pass before it can merge](../../en/cat-harness/processes/code-quality-gates.html) | Verdict reuse: tree already green? (NOT A GATE); Import hygiene (HARD) and advisories (WARN-ONLY); TypeScript: lint, types and tests (HARD); End-to-end + accessibility (HARD); Repository gates (HARD); Registered gates that never run (HARD); Skill-registration chain (UNMASKED) |
+| [A merge train](../../en/cat-harness/processes/merge-train.html) | Run the gate set on the train (calls a sub-process) |
 

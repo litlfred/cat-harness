@@ -79,7 +79,7 @@ handing over a file, not an instruction to publish it.
 ## Route 2 — the forge's web UI
 
 GitHub's **"Add files via upload"**. Never write the URL by hand — run
-`bun run cat-harness/scripts/upload-url.ts [branch]`, which composes it from
+`bun run cat-harness-tools/scripts/upload-url.ts [branch]`, which composes it from
 the declaration. A hand-written one 404'd for the owner on 2026-09-20, because
 the declared path `uploads/` is relative to the *instance* and a forge URL
 needs it relative to the *repository*.
@@ -200,5 +200,5 @@ been asked.
 
 | process | step(s) that name it |
 |---|---|
-| [Basic ingestion — an upload to an asset catalogued in library/](../../cat-harness/processes/document-ingestion.html) | Place it in uploads/ by a declared route |
+| [Basic ingestion — an upload to an asset catalogued in library/](../../en/cat-harness/processes/document-ingestion.html) | Place it in uploads/ by a declared route |
 

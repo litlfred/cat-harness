@@ -75,7 +75,7 @@ To prevent browser V8 heap exhaustion on edge devices, datasets are never delive
 * **Declared Served Directory**: `dist/oxigraph/` with `"served": true` in instance configuration.
 
 ### Implementation B: Folio Assistant Beans Work Plan
-* **Compiler**: `cat-harness/scripts/beans-query.ts`
+* **Compiler**: `cat-harness-tools/scripts/beans-query.ts`
 * **Spine Graph**: `<https://folio-assistant.org/graph/beans>` $\to$ `beans-spine.nq.gz` (all 1,600+ beans with IDs, status, parents, and dependency edges).
 * **Subgraph Partitions**: `<https://folio-assistant.org/graph/beans/claims>` $\to$ `claims.nq.gz` (session claims, burndown history, and audit records).
 * **Queries**: `safe_drain_candidates`, `actionable_leaves`, `critical_path_blockers`, `rollup_invariant_violations`, `circular_blockers`.
@@ -84,11 +84,11 @@ To prevent browser V8 heap exhaustion on edge devices, datasets are never delive
 
 ## Processes that run this skill
 
-This skill has its own process: **[Package and distribute partitioned W3C N-Quads and named queries](../../processes/nquads-distribution.html)**.
+This skill has its own process: **[Package and distribute partitioned W3C N-Quads and named queries](../../en/cat-harness/processes/nquads-distribution.html)**.
 
 <img src="../../assets/img/workflows/nquads-distribution.svg" alt="BPMN diagram: Package and distribute partitioned W3C N-Quads and named queries" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Package and distribute partitioned W3C N-Quads and named queries](../../processes/nquads-distribution.html) | Extract & Skolemize RDF Dataset; Stream W3C N-Quads into Subgraph Partitions; Report Budget Finding; Refine Subgraph Splitting; Declare Distribution Manifest & Named Queries; Publish Distribution via 'served: true' to Pages |
+| [Package and distribute partitioned W3C N-Quads and named queries](../../en/cat-harness/processes/nquads-distribution.html) | Extract & Skolemize RDF Dataset; Stream W3C N-Quads into Subgraph Partitions; Report Budget Finding; Refine Subgraph Splitting; Declare Distribution Manifest & Named Queries; Publish Distribution via 'served: true' to Pages |
 

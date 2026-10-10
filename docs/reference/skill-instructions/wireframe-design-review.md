@@ -13,7 +13,7 @@ parent: Skill instructions
 {% raw %}
 # Wireframe design review
 
-Method: [`wiregen`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/wiregen.md). Process: [`processes/ui/wireframe-design-review.bpmn`](../../cat-harness/processes/wireframe-design-review.html). Owner, 2026-09-23: *"need both web and mobile layouts in usability reviews. wireframe is part of design process for adjudication"*.
+Method: [`wiregen`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/wiregen.md). Process: [`processes/ui/wireframe-design-review.bpmn`](../../en/cat-harness/processes/wireframe-design-review.html). Owner, 2026-09-23: *"need both web and mobile layouts in usability reviews. wireframe is part of design process for adjudication"*.
 
 ## Where wireframes live
 
@@ -78,11 +78,11 @@ There are no scores and no averages (`methodology-adoption`, Refusals).
 
 ## Processes that run this skill
 
-This skill has its own process: **[Wireframe design review](../../cat-harness/processes/wireframe-design-review.html)**.
+This skill has its own process: **[Wireframe design review](../../en/cat-harness/processes/wireframe-design-review.html)**.
 
 <img src="../../assets/img/workflows/wireframe-design-review.svg" alt="BPMN diagram: Wireframe design review" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Wireframe design review](../../cat-harness/processes/wireframe-design-review.html) | Write the design intent; Produce >= 2 candidates, web + mobile; Mechanical checks, both viewports; Blind review per criterion |
+| [Wireframe design review](../../en/cat-harness/processes/wireframe-design-review.html) | Write the design intent; Produce >= 2 candidates, web + mobile; Mechanical checks, both viewports; Blind review per criterion |
 

@@ -46,5 +46,5 @@ The adoption **rules** are [`methodology-adoption`](methodology-adoption.md). Th
 
 | process | step(s) that name it |
 |---|---|
-| [Adopt a methodology from a source document](../../cat-harness/processes/methodology-from-source.html) | Establish origin and licence; Integrate: call existing processes; Every skill and tool used becomes a Tool |
+| [Adopt a methodology from a source document](../../en/cat-harness/processes/methodology-from-source.html) | Establish origin and licence; Integrate: call existing processes; Every skill and tool used becomes a Tool |
 

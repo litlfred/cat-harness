@@ -18,7 +18,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 
 ## Totals
 
-12 instance(s), 151 step(s) checked, 151 `prov:Activity` emitted, 124 finding(s). Policies evaluated: `https://litlfred.github.io/folio-assistant/policies/folio-defaults`, `https://litlfred.github.io/folio-assistant/policies/http-gateway`.
+12 instance(s), 149 step(s) checked, 149 `prov:Activity` emitted, 124 finding(s). Policies evaluated: `https://litlfred.github.io/folio-assistant/policies/folio-defaults`, `https://litlfred.github.io/folio-assistant/policies/http-gateway`.
 
 | finding | count | means |
 |---|---|---|
@@ -26,10 +26,10 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 | `no-role` | 0 | the node's lane binds no role; no activity is emitted, because `ProvActivitySchema` requires `prov:hadRole` (PROV-O itself does not) |
 | `undeclared-actor` | 3 | the actor is not declared in `cat-harness/scenarios/actors/` |
 | `not-eligible` | 2 | the actor's `roles` do not include the role the lane binds |
-| `unknown` | 81 | no ODRL policy grants `perform-task` here; `unknown` is never permit |
+| `unknown` | 79 | no ODRL policy grants `perform-task` here; `unknown` is never permit |
 | `deny` | 0 | an ODRL policy prohibits `perform-task` here |
 | `authz-disagrees` | 0 | the verdict recorded in the entry's `authz` differs from the one recomputed now |
-| `node-not-in-model` | 4 | the entry names a node its process model does not have |
+| `node-not-in-model` | 6 | the entry names a node its process model does not have |
 | `source-moved` | 18 | the `.bpmn` the instance recorded is gone; the diagram was found by file name, as `workflow_start` resolves one, and its process id matches the instance's |
 | `source-missing` | 0 | the `.bpmn` the instance recorded is gone and no diagram with that name and process id exists; nothing in it can be checked |
 | `unaddressed` | 16 | the agent, role or plan has no release address — its owning instance declares no `iriBase`, or no instance declares it — so the PROV-JSONLD record carries it as a literal, not a link (`linked-data` voice, `ld-link-is-the-node-release-address`) |
@@ -179,7 +179,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 
 ### merge-train--train-6
 
-12 step(s) checked, 12 `prov:Activity` emitted, 12 finding(s). Source: `cat-harness/processes/sdlc/merge-train.bpmn`. [PROV JSON-LD]({{ '/assets/prov/merge-train--train-6.prov.jsonld' | relative_url }})
+10 step(s) checked, 10 `prov:Activity` emitted, 12 finding(s). Source: `cat-harness/processes/sdlc/merge-train.bpmn`. [PROV JSON-LD]({{ '/assets/prov/merge-train--train-6.prov.jsonld' | relative_url }})
 
 | instance | entry | node | finding | detail |
 |---|---|---|---|---|
@@ -193,8 +193,8 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 | `merge-train--train-6` | 8 | `Task_Attribute` | `unknown` | no policy grants perform-task for Process_MergeTrain/Task_Attribute as merge-steward |
 | `merge-train--train-6` | 9 | `Call_ChecksPresent` | `unknown` | no policy grants perform-task for Process_MergeTrain/Call_ChecksPresent as build-pipeline |
 | `merge-train--train-6` | 10 | `GW_Green` | `unknown` | no policy grants perform-task for Process_MergeTrain/GW_Green as build-pipeline |
-| `merge-train--train-6` | 11 | `Task_Release` | `unknown` | no policy grants perform-task for Process_MergeTrain/Task_Release as user |
-| `merge-train--train-6` | 12 | `Task_Land` | `unknown` | no policy grants perform-task for Process_MergeTrain/Task_Land as merge-steward |
+| `merge-train--train-6` | 11 | `Task_Release` | `node-not-in-model` | Task_Release is not a node of Process_MergeTrain as the diagram now stands |
+| `merge-train--train-6` | 12 | `Task_Land` | `node-not-in-model` | Task_Land is not a node of Process_MergeTrain as the diagram now stands |
 
 ### mergetrain--merge-train-2026-10-04a
 

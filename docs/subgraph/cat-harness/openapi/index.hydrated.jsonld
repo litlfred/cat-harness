@@ -43,26 +43,6 @@
       "path": "openapi/schemas/"
     },
     {
-      "@id": "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/openapi/scripts/",
-      "@type": "bootstrap:Subgraph",
-      "hasSubgraph": [
-        {
-          "@id": "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/openapi/scripts/templates/",
-          "@type": "bootstrap:Subgraph",
-          "holdsGraph": [
-            "cat-harness:graphTypology/cat-harness"
-          ],
-          "name": "openapi/scripts/templates",
-          "path": "openapi/scripts/templates/"
-        }
-      ],
-      "holdsGraph": [
-        "cat-harness:graphTypology/cat-harness"
-      ],
-      "name": "openapi/scripts",
-      "path": "openapi/scripts/"
-    },
-    {
       "@id": "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/openapi/typologies/",
       "@type": "bootstrap:Subgraph",
       "holdsGraph": [

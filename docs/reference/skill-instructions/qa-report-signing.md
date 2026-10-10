@@ -143,12 +143,12 @@ routes like unknown reach — to a person, never to a pass.
 
 ## Processes that run this skill
 
-This skill has its own process: **[QA report signing](../../cat-harness/processes/qa-report-signing.html)**.
+This skill has its own process: **[QA report signing](../../en/cat-harness/processes/qa-report-signing.html)**.
 
 <img src="../../assets/img/workflows/qa-report-signing.svg" alt="BPMN diagram: QA report signing" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [QA report signing](../../cat-harness/processes/qa-report-signing.html) | Build the test run [folio-test-run/v1]; Resolve the performer's reach [effectiveReach + signing-api probe]; Sign over the API; Sign as release authority; Record which route signed it |
-| [Test-plan execution](../../cat-harness/processes/test-plan-execution.html) | Sign the certification (calls a sub-process) |
+| [QA report signing](../../en/cat-harness/processes/qa-report-signing.html) | Build the test run [folio-test-run/v1]; Resolve the performer's reach [effectiveReach + signing-api probe]; Sign over the API; Sign as release authority; Record which route signed it |
+| [Test-plan execution](../../en/cat-harness/processes/test-plan-execution.html) | Sign the certification (calls a sub-process) |
 

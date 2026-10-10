@@ -118,5 +118,5 @@ passes every check and teaches nothing.
 
 | process | step(s) that name it |
 |---|---|
-| [Code node review](../../cat-harness/processes/review-code.html) | Review the schema definition node |
+| [Code node review](../../en/cat-harness/processes/review-code.html) | Review the schema definition node |
 

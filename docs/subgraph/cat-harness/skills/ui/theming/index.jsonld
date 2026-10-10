@@ -46,9 +46,9 @@
       "@type": "bootstrap:Skill",
       "name": "theme-artefacts",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/3ebacbd78acf7cfbc6fc51b142f0ccc4a34e12d477f87174f3d50217543d9c9d",
-        "bytes": 11736,
-        "sha256": "3ebacbd78acf7cfbc6fc51b142f0ccc4a34e12d477f87174f3d50217543d9c9d"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f9bc3122f3049d488f915c05ff341833af428983e9d249083cbf3b417bd91b14",
+        "bytes": 11742,
+        "sha256": "f9bc3122f3049d488f915c05ff341833af428983e9d249083cbf3b417bd91b14"
       },
       "title": "Per-artefact specialisation"
     },

@@ -115,12 +115,12 @@ const results = await client.runNamedQuery('search_by_mesh', { term: 'Vaccines' 
 
 ## Processes that run this skill
 
-This skill has its own process: **[Execute audited named queries over partitioned W3C N-Quads distributions](../../processes/named-query-execution.html)**.
+This skill has its own process: **[Execute audited named queries over partitioned W3C N-Quads distributions](../../en/cat-harness/processes/named-query-execution.html)**.
 
 <img src="../../assets/img/workflows/named-query-execution.svg" alt="BPMN diagram: Execute audited named queries over partitioned W3C N-Quads distributions" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Execute audited named queries over partitioned W3C N-Quads distributions](../../processes/named-query-execution.html) | Validate Arguments against Parameter Schema; Reject Request with ValidationError; Check Graph Availability Guard (requiredSubgraphs); Fetch & Ingest Missing Subgraphs (.nq.gz); Raise MissingPartitionError (Fail-Closed Guard); Bind Typed Parameters & Execute SPARQL; Format Universal Result Response Envelope |
-| [Package and distribute partitioned W3C N-Quads and named queries](../../processes/nquads-distribution.html) | Declare Distribution Manifest & Named Queries; Verify Queries via CLI & Test Graph Availability; CI Gate Verification: Audit Manifest & Schemas |
+| [Execute audited named queries over partitioned W3C N-Quads distributions](../../en/cat-harness/processes/named-query-execution.html) | Validate Arguments against Parameter Schema; Reject Request with ValidationError; Check Graph Availability Guard (requiredSubgraphs); Fetch & Ingest Missing Subgraphs (.nq.gz); Raise MissingPartitionError (Fail-Closed Guard); Bind Typed Parameters & Execute SPARQL; Format Universal Result Response Envelope |
+| [Package and distribute partitioned W3C N-Quads and named queries](../../en/cat-harness/processes/nquads-distribution.html) | Declare Distribution Manifest & Named Queries; Verify Queries via CLI & Test Graph Availability; CI Gate Verification: Audit Manifest & Schemas |
 

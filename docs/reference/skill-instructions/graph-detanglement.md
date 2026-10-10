@@ -45,7 +45,7 @@ message:
 > wrong — **check the target's layer before the importer's** — or the import
 > is."
 
-**At knowledge-graph scale** — [`kg-detangle.ts`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/skills/kg/graph-management/kg-detangle.ts), beside this skill (`bun run cat kg:detangle`), over the
+**At knowledge-graph scale** — [`kg-detangle.ts`](kg-detangle.ts), beside this skill (`bun run cat kg:detangle`), over the
 instance stack each `<instance>.json` declares in `needs`.
 
 The repository and knowledge-graph scales share ONE verdict function,
@@ -355,13 +355,13 @@ auto-dischargeable — they rename things and ripple through every reference.
 
 ## Processes that run this skill
 
-This skill has its own process: **[A sub-graph wants to leave](../../cat-harness/processes/graph-detanglement.html)**.
+This skill has its own process: **[A sub-graph wants to leave](../../en/cat-harness/processes/graph-detanglement.html)**.
 
 <img src="../../assets/img/workflows/graph-detanglement.svg" alt="BPMN diagram: A sub-graph wants to leave" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [A sub-graph wants to leave](../../cat-harness/processes/graph-detanglement.html) | 1 · Declare in place (nothing moves); 2a · Measure — unassigned column FIRST; 2b · Prune, merge, factor — or the classification is wrong; 3 · Isolate — own declaration, namespace, artefact; 4 · Extract — a directory move, not a file-by-file sift |
-| [A knowledge graph leaves for its own repositories](../../cat-harness/processes/kg-separation.html) | 1–3 · Declare, detangle, isolate |
-| [A sub-KG is staged in place, then leaves for its own repository](../../cat-harness/processes/sub-kg-lifecycle.html) | 3 · Push generic down first |
+| [A sub-graph wants to leave](../../en/cat-harness/processes/graph-detanglement.html) | 1 · Declare in place (nothing moves); 2a · Measure — unassigned column FIRST; 2b · Prune, merge, factor — or the classification is wrong; 3 · Isolate — own declaration, namespace, artefact; 4 · Extract — a directory move, not a file-by-file sift |
+| [A knowledge graph leaves for its own repositories](../../en/cat-harness/processes/kg-separation.html) | 1–3 · Declare, detangle, isolate |
+| [A sub-KG is staged in place, then leaves for its own repository](../../en/cat-harness/processes/sub-kg-lifecycle.html) | 3 · Push generic down first |
 

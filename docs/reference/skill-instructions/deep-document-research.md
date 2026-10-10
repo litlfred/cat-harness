@@ -107,11 +107,11 @@ search*. Those are different, and only the first is a fact about the folio.
 
 ## Processes that run this skill
 
-This skill has its own process: **[Deep document research](../../processes/deep-document-research.html)**.
+This skill has its own process: **[Deep document research](../../en/cat-harness/processes/deep-document-research.html)**.
 
 <img src="../../assets/img/workflows/deep-document-research.svg" alt="BPMN diagram: Deep document research" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Deep document research](../../processes/deep-document-research.html) | Filter the corpus, choose the granularity, decompose the question; Retrieve for each sub-question; Deduplicate, and keep what is actually relevant; Synthesise, cite to a location, and say what was not found |
+| [Deep document research](../../en/cat-harness/processes/deep-document-research.html) | Filter the corpus, choose the granularity, decompose the question; Retrieve for each sub-question; Deduplicate, and keep what is actually relevant; Synthesise, cite to a location, and say what was not found |
 

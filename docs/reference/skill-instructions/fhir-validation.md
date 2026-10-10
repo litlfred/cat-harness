@@ -107,6 +107,6 @@ QC reviewer's decision, not the decision.
 
 | process | step(s) that name it |
 |---|---|
-| [Incremental IG build](../../processes/ig-incremental-build.html) | Validate the cone (fhir_validate) |
-| [L3 FHIR IG pipeline](../../processes/l3-fhir-pipeline.html) | Validate against profiles |
+| [Incremental IG build](../../en/cat-harness/processes/ig-incremental-build.html) | Validate the cone (fhir_validate) |
+| [L3 FHIR IG pipeline](../../en/cat-harness/processes/l3-fhir-pipeline.html) | Validate against profiles |
 

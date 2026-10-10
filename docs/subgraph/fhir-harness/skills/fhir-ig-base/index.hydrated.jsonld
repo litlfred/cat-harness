@@ -119,13 +119,13 @@
       "hasIOContract": false,
       "hasInstructions": true,
       "inSubgraph": "https://litlfred.github.io/folio-assistant/fhir-harness/fhir-harness.jsonld#directory/fhir-ig-skills",
-      "instructionLines": 111,
+      "instructionLines": 113,
       "instructionsPath": "skills/fhir-ig-base/ig-render-jekyll.md",
       "name": "ig-render-jekyll",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0b3a5195d63f7362151458f4e7af4356efd6c1c491271442a76f05372a2110a8",
-        "bytes": 5017,
-        "sha256": "0b3a5195d63f7362151458f4e7af4356efd6c1c491271442a76f05372a2110a8"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/25dbe8b9fb556a90ee94eb539b67268a8e21e0b1cf0160c3a296b78f156b229f",
+        "bytes": 5048,
+        "sha256": "25dbe8b9fb556a90ee94eb539b67268a8e21e0b1cf0160c3a296b78f156b229f"
       },
       "title": "ig-render-jekyll"
     },

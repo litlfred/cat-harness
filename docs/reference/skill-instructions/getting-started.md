@@ -13,7 +13,7 @@ parent: Skill instructions
 {% raw %}
 # /getting-started — what did they actually ask for?
 
-Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../cat-harness/processes/getting-started.html).
+Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../en/cat-harness/processes/getting-started.html).
 Decision table: [`decisions/folio-intent.dmn`](https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/processes/conduct/decisions/folio-intent.dmn).
 
 ## The landing page is the instance's own description
@@ -227,14 +227,14 @@ the owner's confirmation.
 2. **Provision `gh-pages` — before Pages is switched on.** This is
    `Task_ProvisionGhPages` in the process, and it carries the semantics of
    `A_Provision` in bootstrap-tools'
-   [`render-kg-to-github-pages.bpmn`](../../cat-harness/processes/render-kg-to-github-pages.html)
+   [`render-kg-to-github-pages.bpmn`](../../en/cat-harness/processes/render-kg-to-github-pages.html)
    (the `gh-pages` Tool's subprocess —
    [`render-kg-to-cdn`](render-kg-to-cdn.md)):
    **a `gh-pages` branch must exist before Pages can be switched on** to serve
    it. Owner, 2026-10-01: *"need to create gh-pages branch before can turn
    on"*; repeated 2026-10-07: *"need to create gh-pages before can deploy"*
    (issue #2417). Run
-   `bun run cat-harness/scripts/pages-bootstrap.ts --provision`: it checks
+   `bun run cat-harness-tools/scripts/pages-bootstrap.ts --provision`: it checks
    `git ls-remote --heads origin gh-pages` and, only if the branch is absent,
    pushes an orphan `gh-pages` holding a placeholder `index.html` and
    `.nojekyll`. It is idempotent and never forces a push; without
@@ -248,7 +248,7 @@ the owner's confirmation.
    that [remote-mounts](remote-mount.md) its dependencies,
    which never reaches this section by itself.
 3. **Start the Pages build and report the URL.** Run
-   `bun run cat-harness/scripts/pages-bootstrap.ts --wait`. It checks the
+   `bun run cat-harness-tools/scripts/pages-bootstrap.ts --wait`. It checks the
    branch first, derives the site address, says whether a publish workflow
    exists and which Pages source it needs, and probes until the site answers.
 4. **Say which of the four states you got**, and never blur them:
@@ -289,11 +289,11 @@ the owner's confirmation.
 
 ## Processes that run this skill
 
-This skill has its own process: **[Getting started](../../cat-harness/processes/getting-started.html)**.
+This skill has its own process: **[Getting started](../../en/cat-harness/processes/getting-started.html)**.
 
 <img src="../../assets/img/workflows/getting-started.svg" alt="BPMN diagram: Getting started" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Getting started](../../cat-harness/processes/getting-started.html) | Read the repository facts; Choose from the offered options; Scaffold the folio (folio_init); Provision gh-pages; Start the Pages build and derive the URL; Hand over the live link; Say where it will be; Say it could not be confirmed |
+| [Getting started](../../en/cat-harness/processes/getting-started.html) | Read the repository facts; Choose from the offered options; Scaffold the folio (folio_init); Provision gh-pages; Start the Pages build and derive the URL; Hand over the live link; Say where it will be; Say it could not be confirmed |
 

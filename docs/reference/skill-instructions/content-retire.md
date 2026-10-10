@@ -44,5 +44,5 @@ Deprecate and retire content that is no longer current or needed.
 
 | process | step(s) that name it |
 |---|---|
-| [Content lifecycle](../../cat-harness/processes/content-lifecycle.html) | Retire or archive |
+| [Content lifecycle](../../en/cat-harness/processes/content-lifecycle.html) | Retire or archive |
 

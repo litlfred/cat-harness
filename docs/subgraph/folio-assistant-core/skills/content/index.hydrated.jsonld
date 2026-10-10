@@ -25,6 +25,24 @@
             "sha256": "1ea49f8b5a06d24b0966860bbbe9103f2a0b26b768ade92213a5f80990fec18d"
           },
           "title": "quality-control"
+        },
+        {
+          "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#skill/review-comments",
+          "@type": "bootstrap:Skill",
+          "ambiguous": false,
+          "description": "Reviewer comments on a folio's edit-set, from a tagged pull-request comment to a structured todo on the review page. Covers the tag a reviewer types, how the comments are ingested into `review-comment/1.0.0` todos, where the published `review-comments.json` comes from and when it refreshes, how a comment follows a renamed block and survives a removed one, who may change a comment's status, and how to change this process. Use when a reviewer asks how to comment on a block, when the review page shows no comments or a wrong one, when editing the ingestion, or when a folio's staging workflow is set up.",
+          "hasIOContract": false,
+          "hasInstructions": true,
+          "inSubgraph": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/core-skills",
+          "instructionLines": 342,
+          "instructionsPath": "skills/content/content-lifecycle-ext/review-comments.md",
+          "name": "review-comments",
+          "payload": {
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/68b914f25758b77528879b5ee0f6edf8bc0ed17e8edab96676d06a79488b98a3",
+            "bytes": 17926,
+            "sha256": "68b914f25758b77528879b5ee0f6edf8bc0ed17e8edab96676d06a79488b98a3"
+          },
+          "title": "Review comments — from a PR comment to a structured todo"
         }
       ],
       "holdsGraph": [
@@ -49,9 +67,9 @@
           "instructionsPath": "skills/content/folio-document-adapter/block-actions.md",
           "name": "block-actions",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/36523bf229f512b032cc74470963106b3d05689e949abd268e97d36bdc8b5da8",
-            "bytes": 8307,
-            "sha256": "36523bf229f512b032cc74470963106b3d05689e949abd268e97d36bdc8b5da8"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/06c806242f67b44f52fa7062f306261ec30a770f9197f08a86f39670673af56f",
+            "bytes": 8319,
+            "sha256": "06c806242f67b44f52fa7062f306261ec30a770f9197f08a86f39670673af56f"
           },
           "title": "Block actions: [edit] and [feedback] on every block"
         },
@@ -82,14 +100,14 @@
           "hasInstructions": true,
           "inSubgraph": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/core-skills",
           "inputSchema": "https://litlfred.github.io/folio-assistant/folio-assistant-core/schema/skills/document-publishing/input.schema.json",
-          "instructionLines": 115,
+          "instructionLines": 119,
           "instructionsPath": "skills/content/folio-document-adapter/document-publishing.md",
           "name": "document-publishing",
           "outputSchema": "https://litlfred.github.io/folio-assistant/folio-assistant-core/schema/skills/document-publishing/output.schema.json",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/275daac470176c81c1251a78d39ae218a04c95426d98f0f753f9a62b0afc3261",
-            "bytes": 5414,
-            "sha256": "275daac470176c81c1251a78d39ae218a04c95426d98f0f753f9a62b0afc3261"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/004bfead058c17bf82c780d8ef66c9295fc2c9701babd22823c83f7ebe0368a5",
+            "bytes": 5630,
+            "sha256": "004bfead058c17bf82c780d8ef66c9295fc2c9701babd22823c83f7ebe0368a5"
           },
           "title": "document-publishing"
         },
@@ -139,14 +157,14 @@
           "hasInstructions": true,
           "inSubgraph": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/core-skills",
           "inputSchema": "https://litlfred.github.io/folio-assistant/folio-assistant-core/schema/skills/public-comment/input.schema.json",
-          "instructionLines": 345,
+          "instructionLines": 347,
           "instructionsPath": "skills/content/folio-document-adapter/public-comment.md",
           "name": "public-comment",
           "outputSchema": "https://litlfred.github.io/folio-assistant/folio-assistant-core/schema/skills/public-comment/output.schema.json",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e4d52d30a78aa11c087c3a86cca3b900e3fb4f0859d09d6234ebb923c98b4283",
-            "bytes": 19536,
-            "sha256": "e4d52d30a78aa11c087c3a86cca3b900e3fb4f0859d09d6234ebb923c98b4283"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/bafe6fbc2094f9c5642ede3fa48f52f1d4c1515e6842bb0e2ec092cfaa66a251",
+            "bytes": 19648,
+            "sha256": "bafe6fbc2094f9c5642ede3fa48f52f1d4c1515e6842bb0e2ec092cfaa66a251"
           },
           "title": "public-comment"
         }

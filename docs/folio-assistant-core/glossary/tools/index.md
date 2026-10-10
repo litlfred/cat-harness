@@ -12,14 +12,14 @@ permalink: /folio-assistant-core/glossary/tools/
 
 Candidate terms extracted from every Tool node: `title` as the label, `description` as the definition, the Tool id as the code. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: cat-harness 143 (<a href="{{ '/assets/glossary/cat-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 25 (<a href="{{ '/assets/glossary/fhir-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 9 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 5 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 7 (<a href="{{ '/assets/glossary/smart-base--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · who-iris 1 (<a href="{{ '/assets/glossary/who-iris--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>).
+From: cat-harness 149 (<a href="{{ '/assets/glossary/cat-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 25 (<a href="{{ '/assets/glossary/fhir-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 9 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 5 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 7 (<a href="{{ '/assets/glossary/smart-base--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · who-iris 1 (<a href="{{ '/assets/glossary/who-iris--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>).
 
-**Size:** this page holds 190 terms and is 136 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 196 terms and is 143 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>190</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>190</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>196</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>196</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -29,7 +29,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">190</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">196</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-A">A</a> <a href="#letter-B">B</a> <a href="#letter-C">C</a> <a href="#letter-D">D</a> <a href="#letter-E">E</a> <a href="#letter-F">F</a> <a href="#letter-G">G</a> <a href="#letter-H">H</a> <a href="#letter-I">I</a> <a href="#letter-J">J</a> <a href="#letter-K">K</a> <a href="#letter-L">L</a> <a href="#letter-M">M</a> <a href="#letter-N">N</a> <a href="#letter-O">O</a> <a href="#letter-P">P</a> <a href="#letter-Q">Q</a> <a href="#letter-R">R</a> <a href="#letter-S">S</a> <a href="#letter-T">T</a> <a href="#letter-U">U</a> <a href="#letter-V">V</a> <a href="#letter-W">W</a></nav>
 
@@ -130,10 +130,24 @@ Build the Latent Semantic Indexing index of a prose graph <span class="fa-gloss-
 <p>Build the per-graph LSI index sidecar for every declared prose graph (or the one named): input fingerprint, parameters, dimension summaries, nearest neighbours and near-duplicate findings, never the vectors. Records each run's outcome and input fingerprint, success or failure, as a <code>folio-tool-run/v1</code> record.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#lsi-index</code></a></p>
 </dd>
+<dt id="cat-harness--kg-tools--build-instance-site" data-fa-state="extracted" data-fa-gloss="">
+Build, check and (on request) publish an instance's own site, or a STAGING/&lt;branch&gt; preview <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>From a checkout whose layers arrive by remote mount: mount the pinned closure, install, run the instance's own gates (<code>--pre</code>), compose the harness chrome for THIS instance, run its source steps, build with Jekyll at the base path read from the git remote (<code>/&lt;repo&gt;</code>, or <code>/&lt;repo&gt;/STAGING/&lt;branch&gt;</code> for a preview), run the post-build steps (mount-instance-docs, pdf-viewer, set-html-lang, publish-id-lookup, rail-standalone-pages), and check that every relative or base-rooted link in every page resolves to a file under the site, reading each page with an HTML parser. Any failing step stops the run; a link that does not resolve means nothing is published. It never decides to publish: only <code>--publish</code> does, and then a root publish keeps <code>STAGING/</code> and <code>_render-log/</code> on the branch, and a preview replaces only its own <code>STAGING/&lt;branch&gt;/</code>.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#build-instance-site</code></a></p>
+</dd>
 </dl>
 
 <h2 id="letter-C">C</h2>
 <dl class="fa-gloss">
+<dt id="cat-harness--kg-tools--archimate-check" data-fa-state="extracted" data-fa-gloss="">
+Check an instance's ArchiMate models against its config <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The gate for the <code>archimate</code> graph typology: every model <code>cat-archimate.config.json</code> names is held, parses (Archi's native XML or its zipped archive), and resolves — every box in every view draws an element the model holds, every relationship's ends are in the model — and no <code>.archimate</code> file is held that the config does not name.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#archimate-check</code></a></p>
+</dd>
 <dt id="folio-assistant-sci--kg-tools--latex-image" data-fa-state="extracted" data-fa-gloss="">
 Compile LaTeX in a container <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -423,6 +437,13 @@ GitHub Pages publish <span class="fa-gloss-status">candidate, extracted</span>
 <p>Push a built directory to the <a href="#cat-harness--kg-tools--gh-pages"><code>gh-pages</code></a> branch, where it is served. How the knowledge graph and its schema reach a URL.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#pages-publish</code></a></p>
 </dd>
+<dt id="cat-harness--kg-tools--archimate-pages" data-fa-state="extracted" data-fa-gloss="">
+Give every ArchiMate view, element and relationship a page and an IRI, and draw every view <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Write a JSON-LD node and a thin page for each model an instance's <code>cat-archimate.config.json</code> names and for every view, element and relationship in it — keyed by Archi's own ids — plus the normalised model the pages' one loader draws from, and every view drawn as SVG from the model's own bounds and bendpoints in ArchiMate's notation, each box a link to its element. <code>--out</code> writes into a site being built — the data at the graph's path, the pages at the route of the visualiser the instance declares for this Tool, <code>&lt;locale&gt;/&lt;harness&gt;/&lt;id&gt;/</code>; without it the files go into the graph and <code>--check</code> gates them.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#archimate-pages</code></a></p>
+</dd>
 <dt id="cat-harness--kg-tools--rail-standalone-pages" data-fa-state="extracted" data-fa-gloss="">
 Give every page Jekyll did not lay out the folio-assistant navbar <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -695,6 +716,13 @@ Local rendering server <span class="fa-gloss-status">candidate, extracted</span>
 <p>Serve an instance's renderings over local HTTP with their declared media types. The publication host wherever GitHub Pages is absent, and the only host that can enforce <code>application/ld+json</code> at all.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#serve-rendering</code></a></p>
 </dd>
+<dt id="cat-harness--kg-tools--serve-rendering-py" data-fa-state="extracted" data-fa-gloss="">
+Local rendering server (Python) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Serve an instance's renderings over local HTTP with their declared media types using Python 3 standard library. The publication host wherever GitHub Pages is absent, and the only host that can enforce <code>application/ld+json</code> at all.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#serve-rendering-py</code></a></p>
+</dd>
 <dt id="cat-harness--kg-tools--log-message" data-fa-state="extracted" data-fa-gloss="">
 Log a message to the discussion <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -773,7 +801,7 @@ Mirror FHIR packages from packages.fhir.org into a git repository <span class="f
 Mount remote harnesses at a pinned commit, only when trusted <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Lay down each declared remote mount — a <code>source.remote</code> instance in the root <code>index.config.json</code>, or, in a folio with no index, a <code>remoteMounts</code> entry on its declaration (both at once is refused) — and its dependency closure, from another repository at a full commit SHA. Write the lock, <code>index.lock.json</code> (a legacy <code>&lt;name&gt;.mount-lock.json</code> is read, and renamed onto it when rewritten), and, with an index, regenerate the root <code>.gitignore</code> block that ignores each mount path. It READS the declared mounts and never writes them: a tool that changes a mount writes through <code>writeDeclaredMounts</code> into <code>index.config.json</code>. Before anything is checked out, each mount must pass the trust gate (<code>schemas/mount-trust.ts</code>, rule H8): a person's consent recorded for THIS pin, or a signature in a declared trust network. No signature verifier exists yet, so a signature alone is could-not-determine and does not mount. Unsigned and unconsented is refused. <code>--staging</code> mounts for a preview and needs neither, by the owner's ruling. <code>--check</code> compares the disk against the lock and never fetches.</p>
+<p>Lay down each declared remote mount — a <code>source.remote</code> instance in the root <code>index.config.json</code>, or, in a folio with no index, a <code>remoteMounts</code> entry on its declaration (both at once is refused) — and its dependency closure, from another repository at a full commit SHA. Write the lock, <code>index.lock.json</code> (a legacy <code>&lt;name&gt;.mount-lock.json</code> is read, and renamed onto it when rewritten), and, with an index, regenerate the root <code>.gitignore</code> block that ignores each mount path. It READS the declared mounts and never writes them: a tool that changes a mount writes through <code>writeDeclaredMounts</code> into <code>index.config.json</code>. Before anything is checked out, each mount must pass the trust gate (<code>schemas/mount-trust.ts</code>, rule H8): a person's consent recorded for THIS pin, or a signature in a declared trust network. No signature verifier exists yet, so a signature alone is could-not-determine and does not mount. Unsigned and unconsented is refused. <code>--staging</code> mounts for a preview and needs neither, by the owner's ruling. <code>--check</code> compares the disk against the lock and never fetches. When a run CHANGES the lock, it then re-renders the agent surface (<code>skill:commands</code> → <code>.claude/commands/</code>, <a href="#cat-harness--kg-tools--agent-memory"><code>agent-memory</code></a> → <code>.claude/agent-memory/</code> and <code>.agents/</code>) from the checkout root, so a re-pin commit carries the skills and memory the new layers define; a generator that fails fails the run, and <code>--no-agent-surface</code> opts out.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#remote-mount</code></a></p>
 </dd>
 <dt id="folio-assistant-core--kg-tools--folio-review-comment-move" data-fa-state="extracted" data-fa-gloss="">
@@ -1013,6 +1041,13 @@ Replace inline Library content with URL references <span class="fa-gloss-status"
 <p>Replace inline CQL/ELM in <code>Library</code> resources with a URL reference to the published copy.</p>
 <p class="fa-gloss-meta">Tools of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/tools/index.ts"><code>fhir-harness/tools/index.ts#strip-library-content</code></a></p>
 </dd>
+<dt id="cat-harness--kg-tools--mount-from-lock" data-fa-state="extracted" data-fa-gloss="">
+Replay a committed mount lock with nothing but Node <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Lay down every remote mount <code>index.lock.json</code> records — each instance fetched at the lock's full SHA (sparse, blob-filtered), each directory verified against its <code>treeDigest</code>, a mismatch undone and reported — importing only <code>node:*</code>, so it runs on a fresh clone before any layer is present. It never decides what to mount: <a href="#cat-harness--kg-tools--remote-mount"><code>remote-mount</code></a> writes the lock (and checks trust); this only replays it. Refuses to write over a path with tracked files or bytes that no longer hash to the lock. Exit 0 mounted/current, 1 missing, 2 could-not-determine.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#mount-from-lock</code></a></p>
+</dd>
 <dt id="cat-harness--kg-tools--subgraph-resolve" data-fa-state="extracted" data-fa-gloss="">
 Resolve a declared subgraph's content source <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1026,6 +1061,13 @@ Retrieve a remote Knowledge Graph via npm package or tarball <span class="fa-glo
 <dd>
 <p>Retrieve and inspect a remote Knowledge Graph packaged as an npm package or tarball (.tgz), supporting both unhydrated source graph views (authored declarations, skills, schemas) and hydrated materialized graph views (subgraph JSON-LD, metadata indexes, dereferenced graph projections).</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#kg-retrieve-npm</code></a></p>
+</dd>
+<dt id="cat-harness--kg-tools--rewrite-moved-paths" data-fa-state="extracted" data-fa-gloss="">
+Rewrite paths that still name a moved file's old layer — never in a record <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>After a move between two layers lands, find every mention <code>&lt;from&gt;/&lt;prefix&gt;/&lt;rest&gt;</code> in the scanned tree's tracked files and rewrite it to <code>&lt;to&gt;/&lt;prefix&gt;/&lt;rest&gt;</code> only when the file exists under the destination root and not under the source root. Records are never read: beans, todos, memory, proposals, wireframes, QA results, upstream pins, vocab mappings, provenance figures and terminologies, and test fixtures (<code>DEFAULT_RECORD_GLOBS</code>; the CLI's <code>--keep &lt;glob&gt;</code> adds more, generated trees among them, which their generators rewrite — a glob is not a shell-safe argument type, so it is not a declared input). Reports by default with file and line; <code>--write</code> applies; <code>--check</code> exits 1 while a rewrite is owed.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#rewrite-moved-paths</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--security-gate" data-fa-state="extracted" data-fa-gloss="">
 Run every existing security check as one named release step <span class="fa-gloss-status">candidate, extracted</span>
@@ -1323,7 +1365,7 @@ Translation status viewer <span class="fa-gloss-status">candidate, extracted</sp
 UML overview per named sub-graph <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Draw one UML class diagram per harness and one per named sub-graph it declares, as PlantUML and Mermaid from one model, with every class read from the graph typology's node schema, and render the PlantUML to the SVG each page shows (needs Java; the check does not). A kind with none is drawn as could-not-determine, never as an empty box.</p>
+<p>Draw one UML class diagram per harness and one per named sub-graph it declares, as PlantUML, Mermaid and Graphviz DOT from one model, with every class read from the graph typology's node schema, and render the PlantUML to the SVG each page shows (needs Java; the check does not). The DOT is the page's Interactive view, laid out in the reader's browser by the site's vendored Graphviz WASM with draggable nodes. A kind with none is drawn as could-not-determine, never as an empty box.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#uml-overview</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--uploads-viewer" data-fa-state="extracted" data-fa-gloss="">

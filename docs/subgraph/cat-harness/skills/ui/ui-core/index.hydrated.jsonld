@@ -11,6 +11,7 @@
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/auto-docs",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/board-diagram-interchange",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/board-windows",
+        "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/deployment-awareness",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/docs-generation",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/harness-tiles",
         "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/html-rendering-qc",
@@ -48,9 +49,9 @@
       "instructionsPath": "skills/ui/ui-core/archimate-models.md",
       "name": "archimate-models",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f0ba9b5acf1034f894d5e9950cbdc9bc572bddb4537b2991e197f4196c910f7d",
-        "bytes": 6673,
-        "sha256": "f0ba9b5acf1034f894d5e9950cbdc9bc572bddb4537b2991e197f4196c910f7d"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ef2f1112880b3ea2f3235ccff647eb6510f11d75c81f204ccc33862ed4fe3ad9",
+        "bytes": 6685,
+        "sha256": "ef2f1112880b3ea2f3235ccff647eb6510f11d75c81f204ccc33862ed4fe3ad9"
       },
       "title": "ArchiMate models — every view, element and relationship a node"
     },
@@ -105,11 +106,30 @@
       "instructionsPath": "skills/ui/ui-core/board-windows.md",
       "name": "board-windows",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/8b963601b667e1801f6993c549a9f1af80c5025e5027c88fa6f405eabb2ee40f",
-        "bytes": 19120,
-        "sha256": "8b963601b667e1801f6993c549a9f1af80c5025e5027c88fa6f405eabb2ee40f"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7e70d50f0118a899b4fde9dae73556cb17e721a39e7abf14f0af7cb3c8f15048",
+        "bytes": 19143,
+        "sha256": "7e70d50f0118a899b4fde9dae73556cb17e721a39e7abf14f0af7cb3c8f15048"
       },
       "title": "Start in the avatar, open into a window"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/deployment-awareness",
+      "@type": "bootstrap:Skill",
+      "ambiguous": false,
+      "description": "The agent must know its UI surface — gh-pages, local server, with/without MCP, or chat discussion only — because deployment surfaces are declared architectural facts that decide which tools apply, forbid request-time assumptions, and require graceful degradation to chat.",
+      "hasIOContract": false,
+      "hasInstructions": true,
+      "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/ui-core",
+      "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
+      "instructionLines": 179,
+      "instructionsPath": "skills/ui/ui-core/deployment-awareness.md",
+      "name": "deployment-awareness",
+      "payload": {
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5421413edd969a64a307f4cabe693235ee9508dbb3e32b9dfd876e023dbed95e",
+        "bytes": 9621,
+        "sha256": "5421413edd969a64a307f4cabe693235ee9508dbb3e32b9dfd876e023dbed95e"
+      },
+      "title": "Deployment awareness — UI surfaces, host constraints, and chat degradation"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/docs-generation",
@@ -124,9 +144,9 @@
       "instructionsPath": "skills/ui/ui-core/docs-generation.md",
       "name": "docs-generation",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e91f55ea56052809882b1a9b74305a74bae88409514708f62d1f341aa4d5fa5c",
-        "bytes": 7074,
-        "sha256": "e91f55ea56052809882b1a9b74305a74bae88409514708f62d1f341aa4d5fa5c"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a0b592a10f4cedff9aade85da1c015640b0a63d77cf79eaf70ccbb0f50f7f53b",
+        "bytes": 7086,
+        "sha256": "a0b592a10f4cedff9aade85da1c015640b0a63d77cf79eaf70ccbb0f50f7f53b"
       },
       "title": "Documentation Generation Skill"
     },
@@ -139,13 +159,13 @@
       "hasInstructions": true,
       "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/ui-core",
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-      "instructionLines": 631,
+      "instructionLines": 687,
       "instructionsPath": "skills/ui/ui-core/harness-tiles.md",
       "name": "harness-tiles",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/bebba1eadfa82b40dbad29979469932f84a2095abe456a89d930907fe754e14f",
-        "bytes": 36643,
-        "sha256": "bebba1eadfa82b40dbad29979469932f84a2095abe456a89d930907fe754e14f"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4b545613997afb0258464f151a36fd7d7ac9aa2cd8b619ab56ced1c8656d4c31",
+        "bytes": 39946,
+        "sha256": "4b545613997afb0258464f151a36fd7d7ac9aa2cd8b619ab56ced1c8656d4c31"
       },
       "title": "A tile is the harness's, not the node's"
     },
@@ -180,9 +200,9 @@
       "instructionsPath": "skills/ui/ui-core/incremental-render.md",
       "name": "incremental-render",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ade90fc6a4d56168d9b3e7060aee00b1a1ceb05cb5b62295ec23e0d455a143be",
-        "bytes": 9943,
-        "sha256": "ade90fc6a4d56168d9b3e7060aee00b1a1ceb05cb5b62295ec23e0d455a143be"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a6246a49876254926dcc195d98982482c8bd01b0ab885e06cdc0c36cf692c821",
+        "bytes": 9949,
+        "sha256": "a6246a49876254926dcc195d98982482c8bd01b0ab885e06cdc0c36cf692c821"
       },
       "title": "Incremental render — the cache is easy, the cascade is the work"
     },
@@ -199,9 +219,9 @@
       "instructionsPath": "skills/ui/ui-core/kg-viewer.md",
       "name": "kg-viewer",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/448dc6a866c7d4b2d5680412ba191ac16abed9ffc3f5c93a9e11dbd42d55299b",
-        "bytes": 14561,
-        "sha256": "448dc6a866c7d4b2d5680412ba191ac16abed9ffc3f5c93a9e11dbd42d55299b"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/13d53930e8cd7d747ec77cd309601102c7b9a2d9e909dfd315f92e2dc0e5b02a",
+        "bytes": 14606,
+        "sha256": "13d53930e8cd7d747ec77cd309601102c7b9a2d9e909dfd315f92e2dc0e5b02a"
       },
       "title": "Rendering the knowledge graph"
     },
@@ -218,9 +238,9 @@
       "instructionsPath": "skills/ui/ui-core/liquid-templates.md",
       "name": "liquid-templates",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/59b9385d6ed6a146297b93abc4b0b4246d8c2c09f5534d12eecd56b1f9a6af75",
-        "bytes": 10678,
-        "sha256": "59b9385d6ed6a146297b93abc4b0b4246d8c2c09f5534d12eecd56b1f9a6af75"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f401b5499befb64e04712affae8383f5e7ec336d9cf72fe089ab4266ecd4d908",
+        "bytes": 10684,
+        "sha256": "f401b5499befb64e04712affae8383f5e7ec336d9cf72fe089ab4266ecd4d908"
       },
       "title": "Liquid templates — layout only, every fact from the graph"
     },
@@ -255,9 +275,9 @@
       "instructionsPath": "skills/ui/ui-core/pdf-inline-viewer.md",
       "name": "pdf-inline-viewer",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/74a217384805c436f052614a63c35b523a5eeeae0de99e8952e1de0678727f86",
-        "bytes": 8307,
-        "sha256": "74a217384805c436f052614a63c35b523a5eeeae0de99e8952e1de0678727f86"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/aa755018476186a2a22ad01fd59ac3f1a8c722aa92b577275361e5ea765a3577",
+        "bytes": 8319,
+        "sha256": "aa755018476186a2a22ad01fd59ac3f1a8c722aa92b577275361e5ea765a3577"
       },
       "title": "Inline PDF viewer — a pinned pdf.js, installed at build time"
     },
@@ -293,9 +313,9 @@
       "instructionsPath": "skills/ui/ui-core/render-logging.md",
       "name": "render-logging",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f7dc32e61c279164eec6d59a9c6b6811cf6c14d9c36bb7492b9e6c797e9cf145",
-        "bytes": 11643,
-        "sha256": "f7dc32e61c279164eec6d59a9c6b6811cf6c14d9c36bb7492b9e6c797e9cf145"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/cdcb6122896eb6ca792a4f2be4047aa5626d68ef02b6db6b5cc0adbe2156f6e7",
+        "bytes": 11649,
+        "sha256": "cdcb6122896eb6ca792a4f2be4047aa5626d68ef02b6db6b5cc0adbe2156f6e7"
       },
       "title": "Render logging — the publish branch keeps its own history"
     },
@@ -311,9 +331,9 @@
       "instructionsPath": "skills/ui/ui-core/render-order.md",
       "name": "render-order",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/8b0e4c167a6c52447d841681c53b53e3ed005180ea0696b40a2aa9799b099620",
-        "bytes": 6466,
-        "sha256": "8b0e4c167a6c52447d841681c53b53e3ed005180ea0696b40a2aa9799b099620"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/1b756f204d220b4ebd6ce5448cda024135197a19f12ddd1bd204010956b35a16",
+        "bytes": 6424,
+        "sha256": "1b756f204d220b4ebd6ce5448cda024135197a19f12ddd1bd204010956b35a16"
       },
       "title": "Render order — flattening a dependency hierarchy, and the two stages"
     },
@@ -325,13 +345,13 @@
       "hasInstructions": true,
       "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/ui-core",
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-      "instructionLines": 162,
+      "instructionLines": 167,
       "instructionsPath": "skills/ui/ui-core/serving-renderings.md",
       "name": "serving-renderings",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/aa31f134920bd498971a62b8aaf4f0c323b034830b4093528d7f487cefaf5668",
-        "bytes": 8364,
-        "sha256": "aa31f134920bd498971a62b8aaf4f0c323b034830b4093528d7f487cefaf5668"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/43c4da4a1c9abdf8ca180909064f29f6f2bb31bfb55b51b9509df3c718aa0116",
+        "bytes": 8707,
+        "sha256": "43c4da4a1c9abdf8ca180909064f29f6f2bb31bfb55b51b9509df3c718aa0116"
       },
       "title": "Serving a rendering — endpoints, MIME types, and what each host can enforce"
     },
@@ -367,9 +387,9 @@
       "instructionsPath": "skills/ui/ui-core/ui-accessibility.md",
       "name": "ui-accessibility",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/1bbb2c02b53c5cff2e628953a0c430214f7fbfd16aeff6a20561d37aaa4e9474",
-        "bytes": 9737,
-        "sha256": "1bbb2c02b53c5cff2e628953a0c430214f7fbfd16aeff6a20561d37aaa4e9474"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7dbede95d2ec877690dfcd87708b7b501a4ee7625574aab84e9fa0c991ef03aa",
+        "bytes": 9743,
+        "sha256": "7dbede95d2ec877690dfcd87708b7b501a4ee7625574aab84e9fa0c991ef03aa"
       },
       "title": "All UI must follow accessibility guidelines"
     },

@@ -51,7 +51,7 @@ flat-file issue tracker storing issues as markdown under `beans/`. Cloud
 sandboxes do **not** ship it, so reinstall on demand (Go ships in the sandbox):
 
 ```bash
-cat-harness/scripts/install-beans.sh          # idempotent; installs into a PATH dir
+cat-harness-tools/scripts/install-beans.sh          # idempotent; installs into a PATH dir
 # equivalently, the one-liner it runs:
 GOBIN="$HOME/.local/bin" go install github.com/hmans/beans@latest
 ```
@@ -110,6 +110,29 @@ first minutes reading it.
 3. **No manual `.md` checklists:** Never use `session-beans.md` or raw Markdown `- [ ]` checklists to track global tasks. Always use the `beans` CLI to prevent namespace pollution and maintain the official project tracking.
 4. **Check before you create:** `beans create` is **not** idempotent. Run the existence check below before every `beans create` — no exceptions.
 5. **Brief before you work:** claiming a bean records *which* item is taken; the opening brief records what it is taken **for**. Write it before the first tool call, in the chat. See §"Opening brief" below.
+6. **Push beans to the state branch, not code PRs:** `beans/` is mounted from the dedicated state branch (e.g. `cat/cat-harness/beans`). Bean creation, claim, note, and status changes are pushed to the branch store via `bun cat-harness-tools/scripts/branch-store.ts push --id beans` (or `bun run cat state:push`). Do **not** commit bean files directly to code PR branches on `main`.
+
+## Where beans live — the state mount and pushing changes
+
+Under the state branch architecture (proposal `cat-harness/docs/proposals/state-branch-2026-10-02.md`),
+the work plan does not live on `main`. It lives on a dedicated tip-keyed branch
+store (`cat/cat-harness/beans`), mounted at `beans/` (e.g. by `bun run cat state:mount`
+during session start).
+
+- **The CLI still works off disk**: `beans` reads and writes files under the
+  mounted `beans/defs/`.
+- **Pushing changes**: When you create, update, or resolve a bean in `beans/`,
+  push the state branch:
+  ```bash
+  bun cat-harness-tools/scripts/branch-store.ts push --id beans
+  # or equivalently:
+  bun run cat state:push
+  ```
+- **Never bundle beans in code PR commits**: Committing bean files directly to
+  code PRs on `main` is replaced by pushing the state branch. Code PRs touch code
+  and documentation on `main`; bean updates are pushed to the state branch store,
+  keeping the work plan globally up-to-date in real time without merge conflicts
+  or spurious CI runs.
 
 ## Check before you create — `beans create` is not idempotent (STRICT)
 
@@ -395,7 +418,7 @@ one session** on 2026-09-20:
 
 **So: `beans create` and the `--parent` that follows it are one action, and
 touching the bean store invalidates your last test run.** Re-run at least
-`bun test cat-harness/scripts/tests/check-bean-parents.test.ts` — 105 ms —
+`bun test cat-harness-tools/scripts/tests/check-bean-parents.test.ts` — 105 ms —
 before pushing.
 
 The general shape is worth more than the bean case: **a green suite is green for
@@ -418,8 +441,9 @@ Repository gates (hard) · step 65: "Every declared directory's README is curren
 That is `readme:subgraphs:check`. Run its writer before you push:
 
 ```sh
-bun run cat readme:subgraphs          # then commit beans/README.md with the bean
+bun run cat readme:subgraphs          # updates beans/README.md; push state via branch-store
 bun run cat readme:subgraphs:check    # must exit 0
+bun cat-harness-tools/scripts/branch-store.ts push --id beans  # or: bun run cat state:push
 ```
 
 **Measured 2026-10-03: three separate PRs failed this gate on the same day** —
@@ -681,27 +705,27 @@ this skill by name never received them. Ported here as part of bean `tdmg`.
 - `scripts/session-start-coord-sweep.sh` — the CLI-independent session-start
   surface: fetches `origin/main` and summarises sibling branch activity. Works
   even when the `beans` CLI is absent.
-- `cat-harness/scripts/install-beans.sh` — provisions the CLI.
+- `cat-harness-tools/scripts/install-beans.sh` — provisions the CLI.
 {% endraw %}
 
 ## Processes that run this skill
 
 | process | step(s) that name it |
 |---|---|
-| [CRDM Phase 5 — beans and sign-off](../../cat-harness/processes/crdm-signoff.html) | Phase 5: Create beans |
-| [Agent bean lifecycle](../../cat-harness/processes/bean-lifecycle.html) | Check before you create (exact-title search); Create the bean (agent CLI, not an engine op); Work, keeping the body current (this is 'edit'); Complete (no unchecked todos left); Scrap with reasons NEVER delete |
-| [Code change and review](../../cat-harness/processes/code-change-review.html) | Record what was done, and close |
-| [Is the incremental IG AST what a full build would have produced?](../../cat-harness/processes/ig-ast-delta-review.html) | Note the missed coupling on the bean |
-| [Incremental IG build](../../cat-harness/processes/ig-incremental-build.html) | Log the environment error on the bean; Log findings on the bean; File QC findings as beans |
-| [L3 FHIR IG pipeline](../../cat-harness/processes/l3-fhir-pipeline.html) | File QC findings as beans |
-| [Getting started](../../cat-harness/processes/getting-started.html) | Seed the work plan |
-| [Authoring a document](../../cat-harness/processes/authoring-a-document.html) | 2 · Seed the work plan |
-| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Open the branch-watch bean; Note the main-branch watch |
-| [Content lifecycle](../../cat-harness/processes/content-lifecycle.html) | Seed the work plan; File feedback as beans |
-| [Draft, review and publish](../../cat-harness/processes/draft-to-publication.html) | Open or claim the release bean; Open beans for the change requests; Close the release beans |
-| [Editing and HCI validation](../../cat-harness/processes/editing-hci-validation.html) | Claim or open the bean; Log findings on the bean; Resolve or re-open the bean |
-| [Evidence for a recommendation](../../cat-harness/processes/evidence-retrieval.html) | Open a bean for the unverified citation; Record the evidence gap |
-| [L1 document ingestion — a document to the L1 source knowledge graph](../../cat-harness/processes/l1-document-ingestion.html) | Record the gap as a bean |
-| [Authoring a paper](../../cat-harness/processes/authoring-a-paper.html) | 2 · Seed the work plan |
-| [L2 DAK authoring](../../cat-harness/processes/l2-dak-authoring.html) | Seed the work plan |
+| [CRDM Phase 5 — beans and sign-off](../../en/cat-harness/processes/crdm-signoff.html) | Phase 5: Create beans |
+| [Agent bean lifecycle](../../en/cat-harness/processes/bean-lifecycle.html) | Check before you create (exact-title search); Create the bean (agent CLI, not an engine op); Work, keeping the body current (this is 'edit'); Complete (no unchecked todos left); Scrap with reasons NEVER delete |
+| [Code change and review](../../en/cat-harness/processes/code-change-review.html) | Record what was done, and close |
+| [Is the incremental IG AST what a full build would have produced?](../../en/cat-harness/processes/ig-ast-delta-review.html) | Note the missed coupling on the bean |
+| [Incremental IG build](../../en/cat-harness/processes/ig-incremental-build.html) | Log the environment error on the bean; Log findings on the bean; File QC findings as beans |
+| [L3 FHIR IG pipeline](../../en/cat-harness/processes/l3-fhir-pipeline.html) | File QC findings as beans |
+| [Getting started](../../en/cat-harness/processes/getting-started.html) | Seed the work plan |
+| [Authoring a document](../../en/cat-harness/processes/authoring-a-document.html) | 2 · Seed the work plan |
+| [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Open the branch-watch bean; Note the main-branch watch |
+| [Content lifecycle](../../en/cat-harness/processes/content-lifecycle.html) | Seed the work plan; File feedback as beans |
+| [Draft, review and publish](../../en/cat-harness/processes/draft-to-publication.html) | Open or claim the release bean; Open beans for the change requests; Close the release beans |
+| [Editing and HCI validation](../../en/cat-harness/processes/editing-hci-validation.html) | Claim or open the bean; Log findings on the bean; Resolve or re-open the bean |
+| [Evidence for a recommendation](../../en/cat-harness/processes/evidence-retrieval.html) | Open a bean for the unverified citation; Record the evidence gap |
+| [L1 document ingestion — a document to the L1 source knowledge graph](../../en/cat-harness/processes/l1-document-ingestion.html) | Record the gap as a bean |
+| [Authoring a paper](../../en/cat-harness/processes/authoring-a-paper.html) | 2 · Seed the work plan |
+| [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Seed the work plan |
 

@@ -128,6 +128,25 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant-core/0.1.0/ns#glossary/kg-schema-fields/adjudication.adjudicationoutcomeschema.debate",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant-core/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "AdjudicationOutcomeSchema.debate"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Optional structured debate record formalizing debate rounds conducted prior to the adjudicator's verdict (SWE-Debate / 2507.23348v1)."
+        }
+      ],
+      "dcterms:source": "folio-assistant-core/schemas/adjudication.ts#AdjudicationOutcomeSchema.debate",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant-core/0.1.0/ns#glossary/kg-schema-fields/adjudication.adjudicationoutcomeschema.reasoning",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -1778,6 +1797,25 @@
         }
       ],
       "dcterms:source": "folio-assistant-core/schemas/materialization.ts#MaterializationSchema.inputs",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant-core/0.1.0/ns#glossary/kg-schema-fields/materialization.materializationschema.lastreadat",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant-core/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "MaterializationSchema.lastReadAt"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "When this copy was last read. Absent means 'not recorded'."
+        }
+      ],
+      "dcterms:source": "folio-assistant-core/schemas/materialization.ts#MaterializationSchema.lastReadAt",
       "skos:note": "candidate"
     },
     {

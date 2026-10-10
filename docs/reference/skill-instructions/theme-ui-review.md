@@ -148,12 +148,12 @@ Owner, 2026-09-23 (issue #1023): *"need both web and mobile layouts in usability
 
 ## Processes that run this skill
 
-This skill has its own process: **[Theme and UI review — at ingestion](../../cat-harness/processes/theme-ui-review.html)**.
+This skill has its own process: **[Theme and UI review — at ingestion](../../en/cat-harness/processes/theme-ui-review.html)**.
 
 <img src="../../assets/img/workflows/theme-ui-review.svg" alt="BPMN diagram: Theme and UI review — at ingestion" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Ingestion subprocess — ingest a theme](../../cat-harness/processes/ingest-theme.html) | Theme and UI review (calls a sub-process) |
-| [Theme and UI review — at ingestion](../../cat-harness/processes/theme-ui-review.html) | Inventory the ingested assets; Accessibility: measure, do not assert; Branding: does it read as this instance?; Languages: extracted, rendered, and RTL; Raise findings before the assets land |
+| [Ingestion subprocess — ingest a theme](../../en/cat-harness/processes/ingest-theme.html) | Theme and UI review (calls a sub-process) |
+| [Theme and UI review — at ingestion](../../en/cat-harness/processes/theme-ui-review.html) | Inventory the ingested assets; Accessibility: measure, do not assert; Branding: does it read as this instance?; Languages: extracted, rendered, and RTL; Raise findings before the assets land |
 

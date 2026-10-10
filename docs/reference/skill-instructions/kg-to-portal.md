@@ -246,11 +246,11 @@ above, and it is the one that decides stage 4.
 
 ## Processes that run this skill
 
-This skill has its own process: **[KG to public portal](../../cat-harness/processes/kg-to-portal.html)**.
+This skill has its own process: **[KG to public portal](../../en/cat-harness/processes/kg-to-portal.html)**.
 
 <img src="../../assets/img/workflows/kg-to-portal.svg" alt="BPMN diagram: KG to public portal" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [KG to public portal](../../cat-harness/processes/kg-to-portal.html) | State the constraints, with denominators; Decide what may leave the repository; Cut the subgraph that leaves; Package: files plus a manifest of digests; Sign the package and/or each asset; Publish to the origin (a cache may front it); Verify what arrived against what was signed |
+| [KG to public portal](../../en/cat-harness/processes/kg-to-portal.html) | State the constraints, with denominators; Decide what may leave the repository; Cut the subgraph that leaves; Package: files plus a manifest of digests; Sign the package and/or each asset; Publish to the origin (a cache may front it); Verify what arrived against what was signed |
 

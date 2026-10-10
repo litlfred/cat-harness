@@ -94,14 +94,14 @@ for `publication-manager`. Watching the label is how a person takes the role.
 
 ## Processes that run this skill
 
-This skill has its own process: **[Verify the export before it is deployed](../../cat-harness/processes/publish-verification.html)**.
+This skill has its own process: **[Verify the export before it is deployed](../../en/cat-harness/processes/publish-verification.html)**.
 
 <img src="../../assets/img/workflows/publish-verification.svg" alt="BPMN diagram: Verify the export before it is deployed" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [A knowledge graph leaves for its own repositories](../../cat-harness/processes/kg-separation.html) | Every identifier dereferences (calls a sub-process) |
-| [Publishing the docs site, and keeping the previews alive](../../cat-harness/processes/docs-site-publish.html) | Verify the export (calls a sub-process); Alert the publication manager (calls a sub-process) |
-| [Alert the publication manager](../../cat-harness/processes/publish-alert.html) | Triage the failure: hold or fix forward |
-| [Verify the export before it is deployed](../../cat-harness/processes/publish-verification.html) | Run every verifier over the export |
+| [A knowledge graph leaves for its own repositories](../../en/cat-harness/processes/kg-separation.html) | Every identifier dereferences (calls a sub-process) |
+| [Publishing the docs site, and keeping the previews alive](../../en/cat-harness/processes/docs-site-publish.html) | Verify the export (calls a sub-process); Alert the publication manager (calls a sub-process) |
+| [Alert the publication manager](../../en/cat-harness/processes/publish-alert.html) | Triage the failure: hold or fix forward |
+| [Verify the export before it is deployed](../../en/cat-harness/processes/publish-verification.html) | Run every verifier over the export |
 

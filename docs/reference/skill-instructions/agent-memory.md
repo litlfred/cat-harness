@@ -197,3 +197,10 @@ Both are required of every instance: one with a README and no `AGENTS.md` is
 readable by a person and mute to an agent, and the reverse leaves a reader
 following instructions with nothing saying what they are in.
 {% endraw %}
+
+## Processes that run this skill
+
+| process | step(s) that name it |
+|---|---|
+| [Remote-mount a dependency](../../en/cat-harness/processes/mount-dependency.html) | Re-render the agent surface |
+

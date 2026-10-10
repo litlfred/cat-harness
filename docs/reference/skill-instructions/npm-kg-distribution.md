@@ -28,8 +28,8 @@ packaging and retrieval:
 
 | | where |
 |---|---|
-| the packaging tool | `pack-tarball` (`bun run cat-harness/scripts/pack-tarball.ts`) |
-| the retrieval tool | `kg-retrieve-npm` (`bun run cat-harness/scripts/kg-retrieve-npm.ts`) |
+| the packaging tool | `pack-tarball` (`bun run cat-harness-tools/scripts/pack-tarball.ts`) |
+| the retrieval tool | `kg-retrieve-npm` (`bun run cat-harness-tools/scripts/kg-retrieve-npm.ts`) |
 | the release schema | `schemas/binary-release.ts` (`folio-binary-release/v1`) |
 | asset verification | `cat-harness-tools/scripts/check-declared-assets.ts` |
 | related skills | [`remote-mount`](remote-mount.md), [`kg-export`](kg-export.md), [`package-release`](package-release.md), [`kg-subscription`](kg-subscription.md) |
@@ -73,7 +73,7 @@ in its `<instance>.json`:
 An npm package is built as a compressed tarball (`.tgz`) using `bun pm pack`:
 
 ```sh
-bun run cat-harness/scripts/pack-tarball.ts --root <instance-root> --destination <out-dir>
+bun run cat-harness-tools/scripts/pack-tarball.ts --root <instance-root> --destination <out-dir>
 ```
 
 The packaging process:
@@ -190,16 +190,16 @@ To retrieve and inspect a remote Knowledge Graph tarball or package:
 
 ```sh
 # Retrieve and inspect both graph views from a tarball
-bun run cat-harness/scripts/kg-retrieve-npm.ts path/to/package.tgz
+bun run cat-harness-tools/scripts/kg-retrieve-npm.ts path/to/package.tgz
 
 # Retrieve and verify integrity against a folio-binary-release/v1 document
-bun run cat-harness/scripts/kg-retrieve-npm.ts path/to/package.tgz --release path/to/release.json
+bun run cat-harness-tools/scripts/kg-retrieve-npm.ts path/to/package.tgz --release path/to/release.json
 
 # Retrieve only the unhydrated source graph view into a target directory
-bun run cat-harness/scripts/kg-retrieve-npm.ts path/to/package.tgz --view unhydrated --destination ./deps/my-kg
+bun run cat-harness-tools/scripts/kg-retrieve-npm.ts path/to/package.tgz --view unhydrated --destination ./deps/my-kg
 
 # Retrieve only the hydrated materialized graph view
-bun run cat-harness/scripts/kg-retrieve-npm.ts path/to/package.tgz --view hydrated --destination ./static-kg
+bun run cat-harness-tools/scripts/kg-retrieve-npm.ts path/to/package.tgz --view hydrated --destination ./static-kg
 ```
 
 When verified against a `folio-binary-release/v1` document, any mismatch in byte
@@ -211,5 +211,5 @@ tampered graph data from entering the consumer environment.
 
 | process | step(s) that name it |
 |---|---|
-| [Mount a declared subgraph](../../processes/mount-subgraph.html) | Retrieve the npm package or tarball |
+| [Mount a declared subgraph](../../en/cat-harness/processes/mount-subgraph.html) | Retrieve the npm package or tarball |
 

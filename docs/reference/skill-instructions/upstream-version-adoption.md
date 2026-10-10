@@ -23,8 +23,8 @@ ordering:
 
 | Diagram | What it is |
 |---|---|
-| [`upstream-pin-watch.bpmn`](../../cat-harness/processes/upstream-pin-watch.html) | The **watcher**. Scheduled, mechanical, ends at either "every pin is current" or "one tracking issue says which is not". |
-| [`upstream-version-adoption.bpmn`](../../cat-harness/processes/upstream-version-adoption.html) | The **reusable subprocess**, entered once per stale pin. Scope → impact → MVP → review → decide. |
+| [`upstream-pin-watch.bpmn`](../../en/cat-harness/processes/upstream-pin-watch.html) | The **watcher**. Scheduled, mechanical, ends at either "every pin is current" or "one tracking issue says which is not". |
+| [`upstream-version-adoption.bpmn`](../../en/cat-harness/processes/upstream-version-adoption.html) | The **reusable subprocess**, entered once per stale pin. Scope → impact → MVP → review → decide. |
 
 The second is called, not copied: `calledElement="Process_UpstreamAdoption"`.
 Any pinned upstream dependency enters it the same way, and a new tenant is a
@@ -112,7 +112,7 @@ run the row's `mvp` commands. For the theme:
 rm -rf _kg _site
 bun test                              # unit tests
 CI=1 bun run cat test:e2e                 # a11y, action tiles, sidebar panels, qa panel
-bun run cat-harness/scripts/site-links.ts --site ./_site   # every navbar tile resolves in the BUILT site
+bun run cat-harness-tools/scripts/site-links.ts --site ./_site   # every navbar tile resolves in the BUILT site
 ```
 
 `site-links.ts` is the one that earns its place here: it checks the tiles
@@ -203,14 +203,14 @@ unverified pin is still strictly better than an unpinned dependency, and
 
 ## Processes that run this skill
 
-This skill has its own process: **[Adopting an upstream version bump](../../cat-harness/processes/upstream-version-adoption.html)**.
+This skill has its own process: **[Adopting an upstream version bump](../../en/cat-harness/processes/upstream-version-adoption.html)**.
 
 <img src="../../assets/img/workflows/upstream-version-adoption.svg" alt="BPMN diagram: Adopting an upstream version bump" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [A knowledge graph leaves for its own repositories](../../cat-harness/processes/kg-separation.html) | 11 · Parent consumes, additively (calls a sub-process) |
-| [A sub-KG is staged in place, then leaves for its own repository](../../cat-harness/processes/sub-kg-lifecycle.html) | 10 · Re-point: livesAt, seam, submodule or subscription |
-| [Watching a pinned upstream dependency](../../cat-harness/processes/upstream-pin-watch.html) | Read the pin registry upstream-pins.json; List upstream releases and compare to the pin; Close the tracking issue; Open or EDIT the one tracking issue; Pick up the stale pin claim a bean; Adopt the version bump (calls a sub-process) |
-| [Adopting an upstream version bump](../../cat-harness/processes/upstream-version-adoption.html) | Scope the delta pinned → candidate; Impact analysis what of ours binds it; Record the hold or the decline |
+| [A knowledge graph leaves for its own repositories](../../en/cat-harness/processes/kg-separation.html) | 11 · Parent consumes, additively (calls a sub-process) |
+| [A sub-KG is staged in place, then leaves for its own repository](../../en/cat-harness/processes/sub-kg-lifecycle.html) | 10 · Re-point: livesAt, seam, submodule or subscription |
+| [Watching a pinned upstream dependency](../../en/cat-harness/processes/upstream-pin-watch.html) | Read the pin registry upstream-pins.json; List upstream releases and compare to the pin; Close the tracking issue; Open or EDIT the one tracking issue; Pick up the stale pin claim a bean; Adopt the version bump (calls a sub-process) |
+| [Adopting an upstream version bump](../../en/cat-harness/processes/upstream-version-adoption.html) | Scope the delta pinned → candidate; Impact analysis what of ours binds it; Record the hold or the decline |
 

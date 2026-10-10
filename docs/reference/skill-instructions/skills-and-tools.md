@@ -413,5 +413,5 @@ and the two reasons *not* to write `maintains`:
 
 | process | step(s) that name it |
 |---|---|
-| [Code node review](../../cat-harness/processes/review-code.html) | Review the Tool node |
+| [Code node review](../../en/cat-harness/processes/review-code.html) | Review the Tool node |
 

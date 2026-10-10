@@ -84,7 +84,7 @@ it:
 
 | row source | tool | evidence class |
 |---|---|---|
-| reparent an open bean | [`lsi:epics`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/scripts/lsi-epics.ts): a `parent:` chain or a bean id in commits first, cosine second | `explicit`, else `latent` |
+| reparent an open bean | [`lsi:epics`](../../../scripts/lsi-epics.ts): a `parent:` chain or a bean id in commits first, cosine second | `explicit`, else `latent` |
 | session log typed as epic or milestone | `sessionLogRootBeans` in `test/health/checks.ts` (the `bean-session-log-roots` finding) | `rule:session-log` |
 | duplicate | the `bean-store` duplicate groups; the target-object key in [`todo-manager`](todo-manager.md) §"Check before you create" | `rule:same-title`, `rule:same-target` |
 | landed work still open | [`branch-archaeology`](branch-archaeology.md): patch-id equivalence on main | `explicit` |

@@ -75,5 +75,5 @@ about reading order rather than a mechanical detail.
 
 | process | step(s) that name it |
 |---|---|
-| [Authoring a document](../../processes/authoring-a-document.html) | 3 · Scaffold the folio [folio_init] |
+| [Authoring a document](../../en/cat-harness/processes/authoring-a-document.html) | 3 · Scaffold the folio [folio_init] |
 

@@ -131,6 +131,14 @@ rule about never letting a count in prose go stale.
   preview shipped; folded into failure it sends somebody after a build that was
   merely superseded. Both readings are wrong in a way the reader cannot detect
   — which is rule 1 again, wearing different clothes.
+
+  **Crucial exception (bean `folio-assistant-oz5w`)**: staleness is benign
+  only when falling back to an existing live preview,
+  **never when the previous state is a deletion** (where "stale" manifests as a
+  404). When PR N's merge cleanup removed `STAGING/<slug>/` and PR N+1's
+  staging deploy was cancelled, the live site serves the deletion rather than
+  a previous preview. Staleness is safe only when what you fall back to
+  actually exists.
 - **Say WHOSE contention it is.** One workflow pushing twice and cancelling its
   own build is a fixed defect; several sessions racing for the publish ref is a
   different, open one. A merged cancellation count cannot show whether the
@@ -179,7 +187,7 @@ Two properties of that scheduled run are load-bearing rather than incidental:
 ### The second instance: merge-main's in-place comment
 
 The same edited-in-place doctrine governs `merge-main.yml` (bean `03nl`,
-implemented by `cat-harness/scripts/merge-main-comment.ts`). The workflow fires on every
+implemented by `cat-harness-tools/scripts/merge-main-comment.ts`). The workflow fires on every
 push to `main` and runs across open PRs; one failing PR must not email the
 maintainer on every push across the day.
 
@@ -235,7 +243,7 @@ one cancelled.
 
 ## A green step can be a SKIPPED one: the CI cone
 
-`cat-harness/scripts/ci-cone.ts` (bean `4rbc`, issue #2456) lets a pull request skip a `bun run cat <check>` gate step whose inputs are unchanged since main's last green run. Such a step prints `SKIPPED — inputs unchanged since <sha>`, and the job summary lists it under **CI cone**. **Read it as "not asked here", never as "passed here".**
+`cat-harness-tools/scripts/ci-cone.ts` (bean `4rbc`, issue #2456) lets a pull request skip a `bun run cat <check>` gate step whose inputs are unchanged since main's last green run. Such a step prints `SKIPPED — inputs unchanged since <sha>`, and the job summary lists it under **CI cone**. **Read it as "not asked here", never as "passed here".**
 
 **It is built but NOT wired into the workflow.** Measured 2026-10-07 on the 53 candidate steps of `gates-kg` and `gates-docs`:
 - **It saves almost nothing.** The 36 checks it could record skip on a beans-only or one-script PR, but they are the cheap ones: about 30 runner-seconds a run. Deciding costs about 0.5 s a step, roughly 22 s for those steps.
@@ -269,17 +277,39 @@ sidecar is absent misleads a reader to investigate page layouts when zero pages
 regressed. Where a check has both a subject-invariant branch and an
 audit/baseline-reachability branch, the step name in the workflow must cover both
 (e.g. `viewer pages keep the navbar they had, and audit is reachable`).
+
+## The accidental-repair trap on derived gates
+
+A green outcome on a derived gate (such as `readme:subgraphs:check`,
+`docs:harness:check`, or other verify/write pairs) must **never be read as
+"was never broken"** (bean `folio-assistant-ey1c`).
+
+Because PR branches run `merge:main` which regenerates derived files, an
+unrelated PR branch may happen to carry a freshly generated artefact. When that PR
+merges into `main`, it incidentally repairs `main`, creating an illusion in CI
+history that the commit before it was clean.
+
+Observed on 2026-10-03 (three times in two hours on `main`): PR #1938 broke `uploads/README.md`;
+PR #1940 carried a regenerated file and incidentally made `main` green again; then
+a direct web-UI upload broke it once more.
+
+**The guard:** The post-merge regeneration pipeline
+(`.github/workflows/post-merge-regen.yml`, `scripts/post-merge-regen.ts`) audits
+derived artefacts after merges to `main` and opens a reviewable repair PR if
+stale. When inspecting CI health on `main`, do not treat an accidental green as
+evidence of health: verify that post-merge checks run and derive their state
+consistently. Full details in [`merge-queue.md`](merge-queue.md) §"The accidental-repair pattern".
 {% endraw %}
 
 ## Processes that run this skill
 
 | process | step(s) that name it |
 |---|---|
-| [Remote-mount a dependency](../../cat-harness/processes/mount-dependency.html) | Check disk against lock against declaration |
-| [Is CI actually working on the default branch?](../../cat-harness/processes/ci-health-watch.html) | Run check:ci-health, WRITING the report file; Ensure the tracking label exists; Close the tracking issue; Open or EDIT the one tracking issue |
-| [Code change and review](../../cat-harness/processes/code-change-review.html) | Root-cause the failure |
-| [Merge the base branch in](../../cat-harness/processes/merge-base.html) | Report what the run found, once |
-| [A merge train](../../cat-harness/processes/merge-train.html) | Find members with no CI on their head (calls a sub-process); Retry a declared-flaky gate once |
-| [Which open pull requests have no CI run on their head?](../../cat-harness/processes/pr-checks-present.html) | Ask, per open PR, whether its HEAD has a run — skipping heads younger than 15 min; Ensure the tracking label exists; Close the tracking issue; Open or EDIT the one tracking issue |
-| [Is the repository itself healthy?](../../cat-harness/processes/repository-health-watch.html) | Ensure the tracking label exists; Close the tracking issue; Open or EDIT the one tracking issue |
+| [Remote-mount a dependency](../../en/cat-harness/processes/mount-dependency.html) | Check disk against lock against declaration |
+| [Is CI actually working on the default branch?](../../en/cat-harness/processes/ci-health-watch.html) | Run check:ci-health, WRITING the report file; Ensure the tracking label exists; Close the tracking issue; Open or EDIT the one tracking issue |
+| [Code change and review](../../en/cat-harness/processes/code-change-review.html) | Root-cause the failure |
+| [Merge the base branch in](../../en/cat-harness/processes/merge-base.html) | Report what the run found, once |
+| [A merge train](../../en/cat-harness/processes/merge-train.html) | Find members with no CI on their head (calls a sub-process); Retry a declared-flaky gate once |
+| [Which open pull requests have no CI run on their head?](../../en/cat-harness/processes/pr-checks-present.html) | Ask, per open PR, whether its HEAD has a run — skipping heads younger than 15 min; Ensure the tracking label exists; Close the tracking issue; Open or EDIT the one tracking issue |
+| [Is the repository itself healthy?](../../en/cat-harness/processes/repository-health-watch.html) | Ensure the tracking label exists; Close the tracking issue; Open or EDIT the one tracking issue |
 

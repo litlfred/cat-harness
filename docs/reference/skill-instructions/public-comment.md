@@ -184,9 +184,11 @@ that (owner: *"no drift of metadata"*):
 - the change-set section at the top of its issue is **rendered** from the
   record, and a hand-edit to it is put back with a pointer to the commands;
 - the dashboard is built from the records. It is published per document at
-  `<site>/folio-assistant-core/public-comments/<folio>/<slug>/`, the handler
+  `<site>/en/folio-assistant-core/public-comments/<folio>/<slug>/`, the handler
   route every viewer follows (`<base>/<handler>/<kind>/<subject>`, the subject
-  being the materialised document's path in the folio); the flat
+  being the materialised document's path in the folio) under the page locale,
+  with its `comments.json` at the same route without the locale (issue #2527);
+  the flat
   `public-comments/` it had until 2026-10-07 is gone, with no redirect (owner:
   *"clean break, no deprecated/redirect links"*). `public-comment-route.ts` is
   the one place that says so: the site, the change-set issues and the
@@ -274,7 +276,7 @@ when the reopen event has already been handled.
 ### The issue forms
 
 `public-comment-changesets.ts install` writes three forms and the two
-workflows into the folio's `.github/`, from `cat-harness/templates/public-comment/`.
+workflows into the folio's `.github/`, from `cat-harness-tools/templates/public-comment/`.
 A form renders as `### Label` and the value, and the tool reads it as the same
 lines a person would type, so there is one parser for both:
 
@@ -354,12 +356,12 @@ the change alters, and review approves against those lists (skill
 
 ## Processes that run this skill
 
-This skill has its own process: **[Public comment on a review draft](../../processes/public-comment.html)**.
+This skill has its own process: **[Public comment on a review draft](../../en/cat-harness/processes/public-comment.html)**.
 
 <img src="../../assets/img/workflows/public-comment.svg" alt="BPMN diagram: Public comment on a review draft" style="max-width:100%">
 
 | process | step(s) that name it |
 |---|---|
-| [Draft, review and publish](../../processes/draft-to-publication.html) | Public comment on the review version (calls a sub-process) |
-| [Public comment on a review draft](../../processes/public-comment.html) | Ingest and place each comment; Triage: confirm the anchor, type and priority; Propose change-sets, as records with no issue yet; Agree each change-set's requirements on its issue; Assign to committee members; Recommend a decision, with a rationale; Decide, weighing the recommendations; Edit the document as decided, on a feature branch; Mark incorporated when the change set merges; Record the withdrawal |
+| [Draft, review and publish](../../en/cat-harness/processes/draft-to-publication.html) | Public comment on the review version (calls a sub-process) |
+| [Public comment on a review draft](../../en/cat-harness/processes/public-comment.html) | Ingest and place each comment; Triage: confirm the anchor, type and priority; Propose change-sets, as records with no issue yet; Agree each change-set's requirements on its issue; Assign to committee members; Recommend a decision, with a rationale; Decide, weighing the recommendations; Edit the document as decided, on a feature branch; Mark incorporated when the change set merges; Record the withdrawal |
 

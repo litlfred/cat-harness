@@ -13,9 +13,9 @@
       "@type": "bootstrap:Skill",
       "name": "artefact-reachability",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7a19c67d8cdf8690565a0a2166560188ffe14613eac2f095a0596772a950be34",
-        "bytes": 16064,
-        "sha256": "7a19c67d8cdf8690565a0a2166560188ffe14613eac2f095a0596772a950be34"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9a4b6bd56da80178f0843f047defab7c707ea49b23ab415878cbaa6199e6a96e",
+        "bytes": 16070,
+        "sha256": "9a4b6bd56da80178f0843f047defab7c707ea49b23ab415878cbaa6199e6a96e"
       },
       "title": "Artefact reachability — load is not evaluability, and a test is not a caller"
     },
@@ -57,9 +57,9 @@
       "@type": "bootstrap:Skill",
       "name": "content-context-and-state-graphs",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b621a49d8725eaeb8794bbf138754e283f94dc789a043e58484d7f74ccd96adb",
-        "bytes": 20972,
-        "sha256": "b621a49d8725eaeb8794bbf138754e283f94dc789a043e58484d7f74ccd96adb"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/03e4ab141c17aea2c540b79652f5eb1692031aefebaedaa2e1c0e8665022f570",
+        "bytes": 22413,
+        "sha256": "03e4ab141c17aea2c540b79652f5eb1692031aefebaedaa2e1c0e8665022f570"
       },
       "title": "Content, context and state graphs"
     },
@@ -90,9 +90,9 @@
       "@type": "bootstrap:Skill",
       "name": "directory-conventions",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9091979597dce6534219a26fddfafbe36f5eedf50032e4d2352151b11b34d3d9",
-        "bytes": 133066,
-        "sha256": "9091979597dce6534219a26fddfafbe36f5eedf50032e4d2352151b11b34d3d9"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7f0c8c635496f435d15211aa614ef1460655c4fc11626033273c36952e48830e",
+        "bytes": 135315,
+        "sha256": "7f0c8c635496f435d15211aa614ef1460655c4fc11626033273c36952e48830e"
       },
       "title": "Directory conventions — what an instance declares it scans"
     },
@@ -112,9 +112,9 @@
       "@type": "bootstrap:Skill",
       "name": "harness-requirements",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e1bd4e044901e1927640fc10a4cf3f7c6bf2a421aa1b9921026d3be0a9d7579b",
-        "bytes": 14569,
-        "sha256": "e1bd4e044901e1927640fc10a4cf3f7c6bf2a421aa1b9921026d3be0a9d7579b"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2f817d05c8e7e7ff163acffb4adbf7e26cdbd17ffab8f432900adfd969a3db90",
+        "bytes": 15490,
+        "sha256": "2f817d05c8e7e7ff163acffb4adbf7e26cdbd17ffab8f432900adfd969a3db90"
       },
       "title": "Harness requirements — what an instance owes for what it declares"
     },
@@ -145,9 +145,9 @@
       "@type": "bootstrap:Skill",
       "name": "instance-publication",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4bbd11dac87c887850cf044f56559d6837ce34dcd7c7491345375b8cfa874517",
-        "bytes": 32133,
-        "sha256": "4bbd11dac87c887850cf044f56559d6837ce34dcd7c7491345375b8cfa874517"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7be3cd258b8e48af4051f00243c7d7782c46b6d5bef72121438dd9db55b29325",
+        "bytes": 32139,
+        "sha256": "7be3cd258b8e48af4051f00243c7d7782c46b6d5bef72121438dd9db55b29325"
       },
       "title": "instance-publication — draft is a state, not an absence of one"
     },
@@ -189,9 +189,9 @@
       "@type": "bootstrap:Skill",
       "name": "npm-kg-distribution",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2d68655e8938c175dd7981bad0ed80b9b551e7f982431f235d47a9917a4629c8",
-        "bytes": 9440,
-        "sha256": "2d68655e8938c175dd7981bad0ed80b9b551e7f982431f235d47a9917a4629c8"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d0b84bd1c446d07768efeb049118cda133f66b5a9dc3ae50e927d87817a7722a",
+        "bytes": 9482,
+        "sha256": "d0b84bd1c446d07768efeb049118cda133f66b5a9dc3ae50e927d87817a7722a"
       },
       "title": "NPM Knowledge Graph Distribution"
     },
@@ -211,9 +211,9 @@
       "@type": "bootstrap:Skill",
       "name": "remote-mount",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/75a028f54382867e9b5b79e4525d45a27af940b9d619190e9505f2add6bbca0c",
-        "bytes": 12356,
-        "sha256": "75a028f54382867e9b5b79e4525d45a27af940b9d619190e9505f2add6bbca0c"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/cc0004c2fdd38c6fe8e41a607dbe64169f8e75a448f9b99fb5f5ef2b08234146",
+        "bytes": 15172,
+        "sha256": "cc0004c2fdd38c6fe8e41a607dbe64169f8e75a448f9b99fb5f5ef2b08234146"
       },
       "title": "Remote-mount a harness"
     },
@@ -222,9 +222,9 @@
       "@type": "bootstrap:Skill",
       "name": "schema-management",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/55cc1b80b87f450a2c041238a81d3a5d8c8392f1f5de5a699d7ebf0251333bbe",
-        "bytes": 23921,
-        "sha256": "55cc1b80b87f450a2c041238a81d3a5d8c8392f1f5de5a699d7ebf0251333bbe"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2d0abde8f785dec7a1374e6bfa0a7fa265bacb2d6473f24de08f285548a6302a",
+        "bytes": 24384,
+        "sha256": "2d0abde8f785dec7a1374e6bfa0a7fa265bacb2d6473f24de08f285548a6302a"
       },
       "title": "Managing a schema — the graph, the viewer, and the three answers that are not \"fine\""
     },
@@ -233,9 +233,9 @@
       "@type": "bootstrap:Skill",
       "name": "skill-registration",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/01a2a2bfee12f316d2e8edc466281f778113a3ddb1447cc97d4f51602f068945",
-        "bytes": 6809,
-        "sha256": "01a2a2bfee12f316d2e8edc466281f778113a3ddb1447cc97d4f51602f068945"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b0c330e74cf1e7c22e5ab2cd036c4ce154cb657772a221449f7810de71a30034",
+        "bytes": 7126,
+        "sha256": "b0c330e74cf1e7c22e5ab2cd036c4ce154cb657772a221449f7810de71a30034"
       },
       "title": "Adding a skill"
     },
@@ -266,9 +266,9 @@
       "@type": "bootstrap:Skill",
       "name": "uml-overview",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/779974440a8039d556435db5b9fe49f7d1a85d354aac57fea3e7ad82236e1faa",
-        "bytes": 11002,
-        "sha256": "779974440a8039d556435db5b9fe49f7d1a85d354aac57fea3e7ad82236e1faa"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4d7e7a8a216d8c7c28418810891ca1f1a98a2f7e207a6fdb177ecb4de98537f9",
+        "bytes": 11014,
+        "sha256": "4d7e7a8a216d8c7c28418810891ca1f1a98a2f7e207a6fdb177ecb4de98537f9"
       },
       "title": "UML overview: generated from declarations and schemas, never drawn"
     },
@@ -277,9 +277,9 @@
       "@type": "bootstrap:Skill",
       "name": "vocabulary-authority",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a3705fc04842173aeb4d14eebad83b6ecd2db7711dc7d3e8b2cda2617c670a7b",
-        "bytes": 8498,
-        "sha256": "a3705fc04842173aeb4d14eebad83b6ecd2db7711dc7d3e8b2cda2617c670a7b"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/862a55ebc408738ecd5730ebdf4792a54e1c6542f740da7c39d6569ba70ffa63",
+        "bytes": 8504,
+        "sha256": "862a55ebc408738ecd5730ebdf4792a54e1c6542f740da7c39d6569ba70ffa63"
       },
       "title": "Vocabulary authority — one fact, one home, N renderings"
     }

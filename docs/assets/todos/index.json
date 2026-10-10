@@ -253,7 +253,8 @@
       "Process_CodeChangeReview"
     ],
     "Process_CRDM_Close": [
-      "Process_Adjudication"
+      "Process_Adjudication",
+      "Process_MergeToMain"
     ],
     "Process_CRDM_DataModel": [],
     "Process_CRDM_Deliver": [
@@ -278,7 +279,10 @@
       "Process_Adjudication"
     ],
     "Process_RenderKgToCdn": [],
-    "Process_SessionStateMachine": [],
+    "Process_SecureAgentPermissions": [],
+    "Process_SessionStateMachine": [
+      "Process_SecureAgentPermissions"
+    ],
     "Process_SwotAnalysis": [],
     "Process_ActivityLog": [],
     "Process_Adjudication": [],
@@ -304,10 +308,14 @@
     "Process_JsonLdDrift": [],
     "Process_MergeBase": [],
     "Process_MergeRefusal": [],
+    "Process_MergeToMain": [
+      "Process_MergeRefusal"
+    ],
     "Process_MergeTrain": [
       "Process_CodeQualityGates",
       "Process_MergeBase",
       "Process_MergeRefusal",
+      "Process_MergeToMain",
       "Process_PrChecksPresent"
     ],
     "Process_NarrativeCodeReview": [

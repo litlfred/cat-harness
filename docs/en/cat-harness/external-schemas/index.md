@@ -34,9 +34,9 @@ So each record answers three questions — **which edition**, **what here
 depends on it**, and **which of its terms this repository branches on**.
 
 <div class="xs-grid">
-<div class="xs-stat"><b>25</b><span>specifications</span></div>
+<div class="xs-stat"><b>26</b><span>specifications</span></div>
 <div class="xs-stat"><b>107</b><span>operative terms in graph (65 described, 42 pending)</span></div>
-<div class="xs-stat"><b>0</b><span>declared uses</span></div>
+<div class="xs-stat"><b>267</b><span>declared uses</span></div>
 <div class="xs-stat"><b>0</b><span>declarations naming no record</span></div>
 </div>
 
@@ -52,6 +52,7 @@ depends on it**, and **which of its terms this repository branches on**.
 | **[Business Process Model and Notation (BPMN)](#omg-bpmn-2.0)**<br>`omg-bpmn-2.0` | OMG | [2.0](https://www.omg.org/spec/BPMN/2.0/) | `conforms` — this repository's artefacts are valid against it |
 | **[Diagram Definition (DD)](#omg-dd-1.0)**<br>`omg-dd-1.0` | OMG | [1.0](https://www.omg.org/spec/DD/1.0/) | `conforms` — this repository's artefacts are valid against it |
 | **[Decision Model and Notation (DMN)](#omg-dmn-1.3)**<br>`omg-dmn-1.3` | OMG | [1.3](https://www.omg.org/spec/DMN/1.3/) | `conforms` — this repository's artefacts are valid against it |
+| **[ArchiMate® Model Exchange File Format](#opengroup-archimate-3.0)**<br>`opengroup-archimate-3.0` | other | [3.0](https://www.opengroup.org/xsd/archimate/) | `reads` — this repository parses documents written in it |
 | **[Schema.org](#schema-org)**<br>`schema-org` | other | [unpinned](https://schema.org/) | `conforms` — this repository's artefacts are valid against it |
 | **[SPAR Ontologies: DoCO, DEO and CiTO](#spar-doco-deo-cito)**<br>`spar-doco-deo-cito` | other | [unpinned](http://www.sparontologies.net/) | `conforms` — this repository's artefacts are valid against it |
 | **[SPDX License List](#spdx-license-list)**<br>`spdx-license-list` | other | [3.29.0](https://spdx.org/licenses/) | `reads` — this repository parses documents written in it |
@@ -83,37 +84,13 @@ declares the spec (bean `u63y`).
 
 Every declaration names a record on this page.
 
-**25 record(s) nothing declares.** A version bump would move nothing that says so:
+**1 record(s) nothing declares.** A version bump would move nothing that says so:
 
-- [`dcmi-terms`](#dcmi-terms)
-- [`hl7-fhir`](#hl7-fhir)
-- [`ietf-handle-system`](#ietf-handle-system)
-- [`omg-bpmn-2.0`](#omg-bpmn-2.0)
-- [`omg-dd-1.0`](#omg-dd-1.0)
-- [`omg-dmn-1.3`](#omg-dmn-1.3)
-- [`schema-org`](#schema-org)
-- [`spar-doco-deo-cito`](#spar-doco-deo-cito)
-- [`spdx-license-list`](#spdx-license-list)
-- [`w3c-csvw`](#w3c-csvw)
-- [`w3c-hydra`](#w3c-hydra)
-- [`w3c-n-quads`](#w3c-n-quads)
-- [`w3c-odrl`](#w3c-odrl)
-- [`w3c-owl2`](#w3c-owl2)
-- [`w3c-prov-jsonld`](#w3c-prov-jsonld)
-- [`w3c-prov-o`](#w3c-prov-o)
-- [`w3c-rdf-calendar`](#w3c-rdf-calendar)
-- [`w3c-rdf`](#w3c-rdf)
-- [`w3c-rdfs`](#w3c-rdfs)
-- [`w3c-skos`](#w3c-skos)
-- [`w3c-sparql-1.1-query`](#w3c-sparql-1.1-query)
-- [`w3c-web-annotation`](#w3c-web-annotation)
-- [`w3c-xsd11-datatypes`](#w3c-xsd11-datatypes)
-- [`w3c-xsd11-structures`](#w3c-xsd11-structures)
-- [`who-smart-base`](#who-smart-base)
+- [`opengroup-archimate-3.0`](#opengroup-archimate-3.0)
 
 ## Namespaces the corpus uses against the ones it declares
 
-Read from diagram files (BPMN and DMN), metadata records, and JSON-LD contexts — **30** namespace IRI(s)
+Read from diagram files (BPMN and DMN), metadata records, and JSON-LD contexts — **31** namespace IRI(s)
 are in use across the corpus. Derived rather than listed, so an artefact that adopts a new
 vocabulary shows up here instead of going unnoticed.
 
@@ -142,7 +119,18 @@ a registry nobody prunes is one that stops describing the repository.
 
 The operative terms below are derived from the catalogue records, so they are what IRIS actually sends (DSpace also mints `dcterms`, `local` and other prefixes this repository has not met). A term absent here is undeclared, not unsupported.
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness-tools/scripts/kg-export.ts` | `@conformsTo` tag |
+| `cat-harness-tools/scripts/ns-export.ts` | `@conformsTo` tag |
+| `cat-harness-tools/scripts/todo-graph.ts` | `@conformsTo` tag |
+| `folio-assistant-core/schemas/dublin-core-render.ts` | `@conformsTo` tag |
+| `folio-assistant-core/schemas/dublin-core.ts` | `@conformsTo` tag |
+| `folio-assistant-core/skills/library/catalogue/oxigraph-catalogue-search.md` | `conformsTo:` front matter |
+| `folio-dublin-core/v1 nodes` | through the module that types it (`folio-assistant-core/schemas/dublin-core.ts`) |
+| `who-iris/skills/iris-dspace.md` | `conformsTo:` front matter |
 
 **Operative terms (22).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -183,7 +171,14 @@ a subset of the edition rather than a transcription of it.
 
 **Note.** No FHIR version is declared anywhere in this repository (measured 2026-09-23), and the namespace is version-independent. `reads`: the platform parses FHIR artefacts other instances ingest; it does not claim its own documents are FHIR resources.
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness/schemas/jsonld.ts` | `@conformsTo` tag |
+| `cat-harness/schemas/vocab-mapping-fhir.ts` | `@conformsTo` tag |
+| `cat-harness/schemas/vocab-mapping.ts` | `@conformsTo` tag |
+| `vocab-mapping graph` | through the module that types it (`cat-harness/schemas/vocab-mapping.ts`) |
 
 **Operative terms (1).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -205,7 +200,11 @@ a subset of the edition rather than a transcription of it.
 
 **Note.** The persistent identifiers DSpace mints (`<prefix>/<suffix>`, e.g. WHO IRIS's 10665/332098), written as IRIs through the global HTTP resolver https://hdl.handle.net/. Emitted by schemas/prov-jsonld.ts for PROV `prov:used`: owner decision 2026-10-01 (option A) links a catalogue item at its Handle, the identifier that outlives the publishing host, rather than at the host's own item URL. folio-assistant-core's catalogue schema (HandleSchema, handleIri) applies the same rule to catalogue records. The RFCs are Informational and define the identifier system; the hdl.handle.net proxy is the resolver its operators run, not a namespace in the vocabulary sense.
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness/schemas/prov-jsonld.ts` | `@conformsTo` tag |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -227,7 +226,29 @@ No XSD is held and none is fetched — referenced, per the owner's "dont need to
 
 The `MODEL#` form is the RDF spelling of the same namespace: OMG publishes no RDF vocabulary for BPMN, so a graph that states a sequence flow's `sourceRef`/`targetRef` or a node's `incoming`/`outgoing` (kg-export, and bootstrap-tools' `export-graph.ts`) names BPMN's own attribute by appending `#` to its XML namespace — the model's name for the relation, rather than a second one minted here (owner, 2026-09-30, bean `xsqm`).
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `bootstrap-tools/processes/*.bpmn (1)` | `xmlns` binding |
+| `bootstrap/processes/*.bpmn (5)` | `xmlns` binding |
+| `cat-harness-tools/scripts/kg-export.ts` | `@conformsTo` tag |
+| `cat-harness-tools/scripts/render-bpmn.ts` | `@conformsTo` tag |
+| `cat-harness-tools/src/workflow/process-model.ts` | `@conformsTo` tag |
+| `cat-harness/processes/content/*.bpmn (3)` | `xmlns` binding |
+| `cat-harness/processes/kg/*.bpmn (10)` | `xmlns` binding |
+| `cat-harness/processes/library/*.bpmn (10)` | `xmlns` binding |
+| `cat-harness/processes/process/*.bpmn (13)` | `xmlns` binding |
+| `cat-harness/processes/sdlc/*.bpmn (27)` | `xmlns` binding |
+| `cat-harness/processes/ui/*.bpmn (4)` | `xmlns` binding |
+| `fhir-harness/processes/content/*.bpmn (3)` | `xmlns` binding |
+| `folio-assistant-core/processes/conduct/*.bpmn (1)` | `xmlns` binding |
+| `folio-assistant-core/processes/content/*.bpmn (7)` | `xmlns` binding |
+| `folio-assistant-core/processes/library/*.bpmn (6)` | `xmlns` binding |
+| `folio-assistant-core/processes/ui/*.bpmn (3)` | `xmlns` binding |
+| `folio-assistant-sci/processes/content/*.bpmn (2)` | `xmlns` binding |
+| `smart-base/methodologies/processes/*.bpmn (1)` | `xmlns` binding |
+| `smart-base/processes/content/*.bpmn (2)` | `xmlns` binding |
 
 **Operative terms (21).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -268,7 +289,27 @@ a subset of the edition rather than a transcription of it.
 
 **Note.** Separate from BPMN even though the release date matches: DD is its own OMG specification and BPMN's DI namespace builds on it. Recording them as one would make a DD bump invisible. `DD/.../DC` is Diagram Common — NOT Dublin Core, which is `dcmi-terms` in this registry and shares nothing with it but a two-letter prefix. That collision is exactly why a namespace URI is the identity here and a prefix is not.
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `bootstrap-tools/processes/*.bpmn (1)` | `xmlns` binding |
+| `bootstrap/processes/*.bpmn (5)` | `xmlns` binding |
+| `cat-harness-tools/scripts/render-bpmn.ts` | `@conformsTo` tag |
+| `cat-harness/processes/content/*.bpmn (3)` | `xmlns` binding |
+| `cat-harness/processes/kg/*.bpmn (10)` | `xmlns` binding |
+| `cat-harness/processes/library/*.bpmn (10)` | `xmlns` binding |
+| `cat-harness/processes/process/*.bpmn (13)` | `xmlns` binding |
+| `cat-harness/processes/sdlc/*.bpmn (27)` | `xmlns` binding |
+| `cat-harness/processes/ui/*.bpmn (4)` | `xmlns` binding |
+| `fhir-harness/processes/content/*.bpmn (3)` | `xmlns` binding |
+| `folio-assistant-core/processes/conduct/*.bpmn (1)` | `xmlns` binding |
+| `folio-assistant-core/processes/content/*.bpmn (7)` | `xmlns` binding |
+| `folio-assistant-core/processes/library/*.bpmn (6)` | `xmlns` binding |
+| `folio-assistant-core/processes/ui/*.bpmn (3)` | `xmlns` binding |
+| `folio-assistant-sci/processes/content/*.bpmn (2)` | `xmlns` binding |
+| `smart-base/methodologies/processes/*.bpmn (1)` | `xmlns` binding |
+| `smart-base/processes/content/*.bpmn (2)` | `xmlns` binding |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -284,6 +325,31 @@ graph. That is a determined zero, not an unfilled field.
 - `https://www.omg.org/spec/DMN/20191111/DMNDI/`
 
 **Note.** The decision tables under processes/decisions/ that BPMN gateways compute from. Added 2026-09-27 when the knowledge graph began linking each process graph to the standards its files declare; until then the DMN namespaces went unregistered because namespacesInUse read only the top of processes/.
+
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness/processes/kg/decisions/*.dmn (4)` | `xmlns` binding |
+| `cat-harness/processes/process/decisions/*.dmn (1)` | `xmlns` binding |
+| `cat-harness/processes/sdlc/decisions/*.dmn (5)` | `xmlns` binding |
+| `folio-assistant-core/processes/conduct/decisions/*.dmn (2)` | `xmlns` binding |
+| `folio-assistant-core/processes/content/decisions/*.dmn (2)` | `xmlns` binding |
+| `folio-assistant-sci/processes/content/decisions/*.dmn (1)` | `xmlns` binding |
+
+**No operative terms.** This repository conforms to the specification
+without branching on any of its terms, so none is materialised into the
+graph. That is a determined zero, not an unfilled field.
+
+### ArchiMate® Model Exchange File Format {#opengroup-archimate-3.0}
+
+`opengroup-archimate-3.0` — other, edition [3.0](https://www.opengroup.org/xsd/archimate/) — `reads`, meaning this repository parses documents written in it.
+
+**Namespaces.**
+
+- `http://www.opengroup.org/xsd/archimate/3.0/`
+
+**Note.** The Open Group's ArchiMate vocabulary, the `archimate:` prefix of the JSON-LD the archimate subgraph's page generator writes (gen-archimate-pages.ts, in cat-harness-tools since 70lx) for every model, view, element and relationship it gives a page. Authority `other`: The Open Group is not in SPEC_AUTHORITIES. Added 2026-10-10 when external-schemas:check found the namespace in use and unregistered, a day after the subgraph landed.
 
 **What depends on it.** Nothing here declares it.
 
@@ -301,7 +367,12 @@ graph. That is a determined zero, not an unfilled field.
 
 **Note.** No release is pinned: schema.org publishes continuously under one namespace. Used for one property in kg-export. Recorded 2026-09-23 (bean 2j09).
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness-tools/scripts/kg-export.ts` | `@conformsTo` tag |
+| `cat-harness-tools/scripts/todo-graph.ts` | `@conformsTo` tag |
 
 **Operative terms (4).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -328,7 +399,11 @@ a subset of the edition rather than a transcription of it.
 
 **Note.** No edition is pinned: each namespace is a purl.org redirect to the ontology's current release. Recorded 2026-09-23 (bean 2j09) so the dependency is named; pinning an edition is a later decision.
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness/schemas/jsonld.ts` | `@conformsTo` tag |
 
 **Operative terms (7).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -356,7 +431,11 @@ a subset of the edition rather than a transcription of it.
 
 **Note.** The identifiers a `licence.json` `id` (and an `intake.json` licence) may use, as an SPDX licence expression: a listed licence or exception id, or a `LicenseRef-`. Adopted for VALIDATION ONLY on the owner's ruling 2026-10-03 (bean sd5v): 'go ahead with licence-id validation, that's it for now' — no SPDX documents are produced. The ids are snapshotted beside this record in spdx-license-list.terminology.json; move this pin, fetch github.com/spdx/license-list-data at tag v<version>, and re-run scripts/pin-spdx-license-list.ts to update both together. Authority is `other` because the list is published by the SPDX Legal Team of The Linux Foundation, not by a standards body this registry names.
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness/schemas/spdx-license-expression.ts` | `@conformsTo` tag |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -370,7 +449,11 @@ graph. That is a determined zero, not an unfilled field.
 
 - `http://www.w3.org/ns/csvw#`
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness/schemas/jsonld.ts` | `@conformsTo` tag |
 
 **Operative terms (1).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -390,7 +473,11 @@ a subset of the edition rather than a transcription of it.
 
 - `http://www.w3.org/ns/hydra/core#`
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness-tools/openapi/scripts/gen-openapi-pages.ts` | `@conformsTo` tag |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -404,7 +491,14 @@ graph. That is a determined zero, not an unfilled field.
 
 - `http://www.w3.org/ns/formats/N-Quads`
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness/schemas/nquads-distribution.ts` | `@conformsTo` tag |
+| `cat-harness/skills/kg/graph-management/named-query-execution.md` | `conformsTo:` front matter |
+| `cat-harness/skills/kg/graph-management/nquads-distribution.md` | `conformsTo:` front matter |
+| `who-iris/skills/iris-oxigraph.md` | `conformsTo:` front matter |
 
 **Operative terms (2).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -425,7 +519,12 @@ a subset of the edition rather than a transcription of it.
 
 **Note.** Added when the bean 2j09 JSON-LD scan found ODRL bound in cat-harness/policies/folio-defaults.jsonld (#1181) with no record. `conforms`: that file is an ODRL policy document, by the rule the owner approved 2026-09-23 for namespaces this instance's documents are written in.
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness/schemas/odrl.ts` | `@conformsTo` tag |
+| `policies graph` | through the module that types it (`cat-harness/schemas/odrl.ts`) |
 
 **Operative terms (14).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -458,7 +557,13 @@ a subset of the edition rather than a transcription of it.
 
 - `http://www.w3.org/2002/07/owl#`
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness-tools/scripts/code-lists.ts` | `@conformsTo` tag |
+| `cat-harness-tools/scripts/glossary-export.ts` | `@conformsTo` tag |
+| `cat-harness-tools/scripts/ns-export.ts` | `@conformsTo` tag |
 
 **Operative terms (3).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -482,7 +587,11 @@ a subset of the edition rather than a transcription of it.
 
 **Note.** A W3C Member Submission (King's College London; editors Luc Moreau, Dong Huynh) — acknowledged by W3C, NOT endorsed. Adopted by owner decision 2026-10-01 (beans jcet, 9y9j) because W3C publishes no JSON-LD context for PROV-O; PROV itself stays pinned by w3c-prov-o. The text is held at library/w3c-2024-prov-jsonld and its context.jsonld beside it, pinned by sha256 in schemas/prov-jsonld.ts and served offline; provext# is the Submission's own extension namespace, which that context binds.
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness/schemas/prov-jsonld.ts` | `@conformsTo` tag |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -496,7 +605,13 @@ graph. That is a determined zero, not an unfilled field.
 
 - `http://www.w3.org/ns/prov#`
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `bootstrap-tools/scripts/export-graph.ts` | `@conformsTo` tag |
+| `cat-harness-tools/scripts/kg-export.ts` | `@conformsTo` tag |
+| `cat-harness/schemas/jsonld.ts` | `@conformsTo` tag |
 
 **Operative terms (3).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -518,7 +633,11 @@ a subset of the edition rather than a transcription of it.
 
 - `http://www.w3.org/2002/12/cal/ical#`
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness-tools/scripts/todo-graph.ts` | `@conformsTo` tag |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -532,7 +651,14 @@ graph. That is a determined zero, not an unfilled field.
 
 - `http://www.w3.org/1999/02/22-rdf-syntax-ns#`
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness-tools/scripts/code-lists.ts` | `@conformsTo` tag |
+| `cat-harness-tools/scripts/ns-export.ts` | `@conformsTo` tag |
+| `folio-assistant-core/schemas/dublin-core-render.ts` | `@conformsTo` tag |
+| `folio-assistant-core/skills/library/catalogue/oxigraph-catalogue-search.md` | `conformsTo:` front matter |
 
 **Operative terms (2).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -553,7 +679,13 @@ a subset of the edition rather than a transcription of it.
 
 - `http://www.w3.org/2000/01/rdf-schema#`
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness-tools/scripts/glossary-export.ts` | `@conformsTo` tag |
+| `cat-harness-tools/scripts/kg-export.ts` | `@conformsTo` tag |
+| `cat-harness-tools/scripts/ns-export.ts` | `@conformsTo` tag |
 
 **Operative terms (5).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -577,7 +709,16 @@ a subset of the edition rather than a transcription of it.
 
 - `http://www.w3.org/2004/02/skos/core#`
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness-tools/scripts/glossary-export.ts` | `@conformsTo` tag |
+| `cat-harness-tools/scripts/ns-export.ts` | `@conformsTo` tag |
+| `cat-harness/schemas/jsonld.ts` | `@conformsTo` tag |
+| `cat-harness/schemas/vocab-mapping.ts` | `@conformsTo` tag |
+| `cat-harness/schemas/vocabulary.ts` | `@conformsTo` tag |
+| `vocab-mapping graph` | through the module that types it (`cat-harness/schemas/vocab-mapping.ts`) |
 
 **Operative terms (22).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -619,7 +760,11 @@ a subset of the edition rather than a transcription of it.
 
 **Note.** The query language who-iris's Oxigraph pipeline (skill iris-oxigraph) runs over the catalogue's N-Quads: faceted rollups and combined queries, in the browser (WebAssembly) and on the CLI. A language, not an RDF vocabulary, so it claims no namespace; the IRIs its queries match are the vocabularies' own (dcterms, skos, …), recorded under those.
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `who-iris/skills/iris-oxigraph.md` | `conformsTo:` front matter |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -633,7 +778,11 @@ graph. That is a determined zero, not an unfilled field.
 
 - `http://www.w3.org/ns/oa#`
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness/schemas/jsonld.ts` | `@conformsTo` tag |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -647,7 +796,12 @@ graph. That is a determined zero, not an unfilled field.
 
 - `http://www.w3.org/2001/XMLSchema#`
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness-tools/scripts/kg-export.ts` | `@conformsTo` tag |
+| `cat-harness/schemas/jsonld.ts` | `@conformsTo` tag |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -663,7 +817,11 @@ graph. That is a determined zero, not an unfilled field.
 
 **Note.** Added for bean 7eak. The Dublin Core XML rendering (folio-assistant-core/schemas/dublin-core-render.ts) puts `xsi:type="dcterms:<Scheme>"` on an element to name its encoding scheme. That is how DCMI's Guidelines for implementing Dublin Core in XML (2003-04-02) carry W3CDTF, URI, RFC4646 and MESH. The `xsi` namespace is defined in Part 1 (Structures) §2.7, not in Part 2 (Datatypes), which `w3c-xsd11-datatypes` already pins. So this is a separate record and not an extra namespace on that one.
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `folio-assistant-core/schemas/dublin-core-render.ts` | `@conformsTo` tag |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -679,7 +837,11 @@ graph. That is a determined zero, not an unfilled field.
 
 **Note.** Tracks the canonical smart-base's sushi-config.yaml declares (http://smart.who.int/base); its logical models publish under StructureDefinition/. `reads`: the platform references those models; it does not publish them. PINNED 2026-09-30 to v1.0.0 (sushi-config `version: 1.0.0`, `releaseLabel: release` — a published release, not a ci-build), on the owner's ruling that `check:term-mapping`'s fhir half asserts a published IG AT A VERSION. Its terminology is snapshotted beside this record in who-smart-base.terminology.json; move the pin and re-run scripts/pin-smart-base-terminology.ts to update both together.
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness/schemas/jsonld.ts` | `@conformsTo` tag |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the

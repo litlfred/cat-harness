@@ -13,16 +13,16 @@ permalink: /folio-assistant-core/glossary/schema-fields/f-l/
 
 Candidate terms extracted from every schema field with a doc comment: `<Declaration>.<field>` as the label, the comment's first paragraph as the definition. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2011 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 165 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2067 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 167 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
 
 One of 4 pages of this type, split by the first letter of the label: <a href="{{ '/folio-assistant-core/glossary/schema-fields/' | relative_url }}">all parts</a>.
 
-**Size:** this page holds 441 terms and is 244 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 451 terms and is 250 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>2304</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2304</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>2362</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2362</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -32,7 +32,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">441</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">451</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-F">F</a> <a href="#letter-G">G</a> <a href="#letter-H">H</a> <a href="#letter-I">I</a> <a href="#letter-J">J</a> <a href="#letter-K">K</a> <a href="#letter-L">L</a></nav>
 
@@ -84,7 +84,7 @@ FhirArtifactIndexSchema.id <span class="fa-gloss-status">candidate, extracted</s
 FhirArtifactIndexSchema.igApiHub <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>The IG API hub: the region of the IG's hub page between the two markers its post-processing writes after the Publisher has run (for WHO's DAK overlay, <code>dak-api.html</code> between <code>DAK_API_HUB_START</code> and <code>DAK_API_HUB_END</code>, written by smart-base's <code>generate_dak_api_hub.py</code>). <code>url</code> is the page it was read from; <code>localPath</code> is the fragment, held so a page can fetch it (bean <code>680p</code>) rather than retype its prose — as a JSON node (<code>&#123; from, between, html }</code>), because an <code>.html</code> fragment published in the served graph would be a page with no &lt;body&gt;. Absent means the IG publishes no hub, or it was not materialised.</p>
+<p>The IG API hub: the region of the IG's hub page between the two markers its post-processing writes after the Publisher has run (<code>ig-api.html</code> between <code>IG_API_HUB_START</code> and <code>IG_API_HUB_END</code> by default; an overlay whose post-processing uses other names passes them to the ingest). <code>url</code> is the page it was read from; <code>localPath</code> is the fragment, held so a page can fetch it (bean <code>680p</code>) rather than retype its prose — as a JSON node (<code>&#123; from, between, html }</code>), because an <code>.html</code> fragment published in the served graph would be a page with no &lt;body&gt;. Absent means the IG publishes no hub, or it was not materialised.</p>
 <p class="fa-gloss-meta">Schema fields of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/schemas/fhir-artifact-index.ts"><code>fhir-harness/schemas/fhir-artifact-index.ts#FhirArtifactIndexSchema.igApiHub</code></a></p>
 </dd>
 <dt id="fhir-harness--kg-schema-fields--fhir-artifact-index.fhirartifactindexschema.package" data-fa-state="extracted" data-fa-gloss="">
@@ -1033,13 +1033,6 @@ HarnessConfig.contentType <span class="fa-gloss-status">candidate, extracted</sp
 <p>Content type — &quot;document&quot; or &quot;paper&quot;.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/harness-config.ts"><code>cat-harness/schemas/harness-config.ts#HarnessConfig.contentType</code></a></p>
 </dd>
-<dt id="cat-harness--kg-schema-fields--harness-config.harnessconfig.contributes" data-fa-state="extracted" data-fa-gloss="">
-HarnessConfig.contributes <span class="fa-gloss-status">candidate, extracted</span>
-</dt>
-<dd>
-<p>Module this instance contributes from when it is loaded as a DEPENDENCY.</p>
-<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/harness-config.ts"><code>cat-harness/schemas/harness-config.ts#HarnessConfig.contributes</code></a></p>
-</dd>
 <dt id="cat-harness--kg-schema-fields--harness-config.harnessconfig.dependencies" data-fa-state="extracted" data-fa-gloss="">
 HarnessConfig.dependencies <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1639,6 +1632,20 @@ IndexAgreement.withoutConfig <span class="fa-gloss-status">candidate, extracted<
 <p>An index entry with no config file to import — a legitimate state, reported so it is seen.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/harness-config.ts"><code>cat-harness/schemas/harness-config.ts#IndexAgreement.withoutConfig</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--index-config.indexconfigschema.description" data-fa-state="extracted" data-fa-gloss="">
+IndexConfigSchema.description <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>One paragraph under that title, saying what the checkout is for.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/index-config.ts"><code>cat-harness/schemas/index-config.ts#IndexConfigSchema.description</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--index-config.indexconfigschema.title" data-fa-state="extracted" data-fa-gloss="">
+IndexConfigSchema.title <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>What this CHECKOUT is called. The index declares no instance of its own (owner, 2026-10-08), so nothing else names it; <code>index:render</code> titles the root <code>README.md</code> and <code>AGENTS.md</code> with it (owner, 2026-10-09: those two are rendered files). Absent, they are titled generically.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/index-config.ts"><code>cat-harness/schemas/index-config.ts#IndexConfigSchema.title</code></a></p>
+</dd>
 <dt id="cat-harness--kg-schema-fields--index-config.indexmigration.moved" data-fa-state="extracted" data-fa-gloss="">
 IndexMigration.moved <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1685,7 +1692,7 @@ IndexProvenanceSchema.packageManifest <span class="fa-gloss-status">candidate, e
 IndexProvenanceSchema.sidecarEnumerations <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>The DAK API enumeration schemas, when present.</p>
+<p>The IG API enumeration schemas, when present.</p>
 <p class="fa-gloss-meta">Schema fields of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/schemas/fhir-artifact-index.ts"><code>fhir-harness/schemas/fhir-artifact-index.ts#IndexProvenanceSchema.sidecarEnumerations</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--index-config.indexsiteschema.landing" data-fa-state="extracted" data-fa-gloss="">
@@ -1863,6 +1870,20 @@ InstanceRepositoryMap.undeclared <span class="fa-gloss-status">candidate, extrac
 <p>Roots whose declaration names no <code>repository</code> — reported, never guessed.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/instance-repositories.ts"><code>cat-harness/schemas/instance-repositories.ts#InstanceRepositoryMap.undeclared</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--intake.intakeclassificationschema.basis" data-fa-state="extracted" data-fa-gloss="">
+IntakeClassificationSchema.basis <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Why — the rule, the person's words, or the process step. Required: an unexplained classification is a guess.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/intake.ts"><code>cat-harness/schemas/intake.ts#IntakeClassificationSchema.basis</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--intake.intakeclassificationschema.properties" data-fa-state="extracted" data-fa-gloss="">
+IntakeClassificationSchema.properties <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Qualifiers the scheme defines, e.g. <code>&#123; publicationType: &quot;implementation-guidance&quot; }</code>.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/intake.ts"><code>cat-harness/schemas/intake.ts#IntakeClassificationSchema.properties</code></a></p>
+</dd>
 <dt id="cat-harness--kg-schema-fields--intake.intakefileschema.role" data-fa-state="extracted" data-fa-gloss="">
 IntakeFileSchema.role <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1883,6 +1904,13 @@ IntakeSchema._comment <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>Authored context for a person reading the file.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/intake.ts"><code>cat-harness/schemas/intake.ts#IntakeSchema._comment</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--intake.intakeschema.classifications" data-fa-state="extracted" data-fa-gloss="">
+IntakeSchema.classifications <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Classifications of the captured item (&#123;@link IntakeClassificationSchema}).</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/intake.ts"><code>cat-harness/schemas/intake.ts#IntakeSchema.classifications</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--intake.intakeschema.doc_id" data-fa-state="extracted" data-fa-gloss="">
 IntakeSchema.doc_id <span class="fa-gloss-status">candidate, extracted</span>
@@ -2207,6 +2235,13 @@ KgImage.avatarRegion <span class="fa-gloss-status">candidate, extracted</span>
 <p>Where the SUBJECT of this image is, as fractions of its size — the box a square avatar frame clips to.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/kg-node.ts"><code>cat-harness/schemas/kg-node.ts#KgImage.avatarRegion</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--kg-node.kgimage.ground" data-fa-state="extracted" data-fa-gloss="">
+KgImage.ground <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>What the navbar draws BEHIND this image when it is an avatar: <code>tone</code> (the default), the instance's hue square, which a card-art crop covers; or <code>none</code>, the image on the rail itself, for a mark that is transparent around its shape (issue #46, gap 5).</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/kg-node.ts"><code>cat-harness/schemas/kg-node.ts#KgImage.ground</code></a></p>
+</dd>
 <dt id="cat-harness--kg-schema-fields--kg-node.kgimage.height" data-fa-state="extracted" data-fa-gloss="">
 KgImage.height <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -2255,6 +2290,13 @@ KgImage.width <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>Intrinsic width in pixels, so a renderer can reserve space.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/kg-node.ts"><code>cat-harness/schemas/kg-node.ts#KgImage.width</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--kg-node.kgimageschema.ground" data-fa-state="extracted" data-fa-gloss="">
+KgImageSchema.ground <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>&#123;@link KgImage.ground}.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/kg-node.ts"><code>cat-harness/schemas/kg-node.ts#KgImageSchema.ground</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--todo.kgindex.tasks" data-fa-state="extracted" data-fa-gloss="">
 KgIndex.tasks <span class="fa-gloss-status">candidate, extracted</span>
@@ -3148,6 +3190,34 @@ Loss.path <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>Where in the table, e.g. <code>group[0].element[2].target[1]</code>.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/vocab-mapping-fhir.ts"><code>cat-harness/schemas/vocab-mapping-fhir.ts#Loss.path</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.lsioptions.k" data-fa-state="extracted" data-fa-gloss="">
+LsiOptions.k <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Requested rank. Capped at <code>min(terms, units) - 1</code>. Default 100 — the literature's working range for small collections is 50–300, and <code>k</code> is reported with the variance it retains so a reader can judge it.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#LsiOptions.k</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.lsioptions.maxdfshare" data-fa-state="extracted" data-fa-gloss="">
+LsiOptions.maxDfShare <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Drop terms in more than this share of units. Default 0.5.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#LsiOptions.maxDfShare</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.lsioptions.mindf" data-fa-state="extracted" data-fa-gloss="">
+LsiOptions.minDf <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>A term must occur in at least this many units to be kept. A term in one unit can create no co-occurrence and only adds a row. Default 2.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#LsiOptions.minDf</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--qa-record-shapes.lsioptions.poweriterations" data-fa-state="extracted" data-fa-gloss="">
+LsiOptions.powerIterations <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Power iterations for the randomized range finder. Default 4.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/qa-record-shapes.ts"><code>cat-harness/schemas/qa-record-shapes.ts#LsiOptions.powerIterations</code></a></p>
 </dd>
 </dl>
 

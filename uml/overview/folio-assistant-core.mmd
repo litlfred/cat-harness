@@ -285,13 +285,6 @@ classDiagram
       images [1] object[] | null
       undetermined_reason [0..1] string
     }
-    class folio_assistant_core_core_library_folio_image_verdicts_v1["folio-image-verdicts/v1"] {
-      <<ts: VerdictFile>>
-      inspected_by [1] unknown
-      inspected_at [1] string
-      attribution [0..1] Record~string,  inspected_by: unknown; inspected_at: string ~
-      verdicts [1] Record~string, Record~string, Verdict~~
-    }
     class folio_assistant_core_core_library_folio_keywords_v1_Document["Document"] {
       <<json: KeywordsFileSchema>>
       term [1] string
@@ -305,6 +298,9 @@ classDiagram
       corpus [1] object
       document [0..*] Document[]
       sections [1] map~object[]~
+    }
+    class n_folio_assistant_core_core_library_library_folio_image_verdicts_v1["library folio-image-verdicts/v1: no node schema"] {
+      <<could not determine>>
     }
   }
   namespace folio_assistant_core__core_methodologies {
@@ -410,6 +406,41 @@ classDiagram
     }
   }
   namespace folio_assistant_core__qa {
+    class folio_assistant_core_qa_kg_qa_v1_Flag["Flag"] {
+      <<json: KgQaReportSchema>>
+      id [1] string
+      category [0..1] enum(8)
+      severity [1] critical | major | minor
+      weight [1] blocking | suggestion | praise
+      where [1] string
+      evidence [0..1] string
+      detail [0..1] string
+      status [0..1] open | resolved | overridden
+      resolution [0..1] object
+    }
+    class folio_assistant_core_qa_kg_qa_v1_Finding["Finding"] {
+      <<json: KgQaReportSchema>>
+      id [1] string
+      category [0..1] enum(8)
+      severity [1] critical | major | minor
+      weight [1] blocking | suggestion | praise
+      where [1] string
+      evidence [0..1] string
+      detail [0..1] string
+      status [0..1] open | resolved | overridden
+      resolution [0..1] object
+    }
+    class folio_assistant_core_qa_kg_qa_v1_Adversarial_review["Adversarial_review"] {
+      <<json: KgQaReportSchema>>
+      reviewer [1] object
+      author_sessions [0..*] string[]
+      skill_hash [1] string
+      at [1] string
+      coverage [1] object
+      result [1] pass | fail | unknown
+      flags [0..*] Flag[]
+      findings [0..*] Finding[]
+    }
     class folio_assistant_core_qa_kg_qa_v1_kg_qa_v1["kg-qa/v1"] {
       <<json: KgQaReportSchema>>
       $schema [1] 'kg-qa/v1'
@@ -419,6 +450,7 @@ classDiagram
       totals [1] map~number~
       pair_attestations [0..1] any
       voice_reviews [0..1] any
+      adversarial_reviews [0..*] Adversarial_review[]
     }
     class folio_assistant_core_qa_kg_qa_manifest_v1_kg_qa_manifest_v1["kg-qa-manifest/v1"] {
       <<json: KgQaManifestSchema>>
@@ -461,6 +493,49 @@ classDiagram
   namespace folio_assistant_core__beans {
     class n_folio_assistant_core_beans_beans["beans: no node schema"] {
       <<could not determine>>
+    }
+  }
+  namespace folio_assistant_core__health {
+    class folio_assistant_core_health_Threshold["Threshold"] {
+      <<json: HealthReportSchema>>
+      metric [1] string
+      value [1] number
+      unit [1] string
+      basis [1] string
+      severity [1] critical | major | minor
+    }
+    class folio_assistant_core_health_Measurement["Measurement"] {
+      <<json: HealthReportSchema>>
+      metric [1] string
+      value [1] number
+      unit [1] string
+      command [1] string
+    }
+    class folio_assistant_core_health_Finding["Finding"] {
+      <<json: HealthReportSchema>>
+      summary [1] string
+      metric [0..1] string
+      severity [1] critical | major | minor
+      action [1] string
+    }
+    class folio_assistant_core_health_Check["Check"] {
+      <<json: HealthReportSchema>>
+      id [1] string
+      state [1] ok | finding | unknown
+      summary [1] string
+      thresholds [0..*] Threshold[]
+      measurements [0..*] Measurement[]
+      findings [0..*] Finding[]
+      reason [0..1] string
+    }
+    class folio_assistant_core_health_HealthReport["HealthReport"] {
+      <<json: HealthReportSchema>>
+      $schema [1] 'health-report/v1'
+      producer [1] object
+      subject [1] object
+      updated_at [1] string
+      verdict [1] clean | findings | unknown
+      checks [1..*] Check[]
     }
   }
   namespace folio_assistant_core__voices {
@@ -514,8 +589,22 @@ classDiagram
     }
   }
   namespace folio_assistant_core__defs {
-    class n_folio_assistant_core_defs_bean_defs["bean-defs: no node schema"] {
-      <<could not determine>>
+    class folio_assistant_core_defs_BeanKind["BeanKind"] {
+      <<json: BeanKind>>
+      id [0..1] string
+      title [0..1] string
+      status [0..1] string
+      type [0..1] string
+      priority [0..1] string
+      parent [0..1] string
+      blocking [0..*] string[]
+      blocked_by [0..*] string[]
+      created_at [0..1] string
+      updated_at [0..1] string
+      tags [0..*] string[]
+      issue [0..1] integer | string
+      targets [0..1] string[] | string
+      $schema [1] string
     }
   }
   namespace folio_assistant_core__notes {
@@ -569,9 +658,10 @@ classDiagram
   cssClass "n_folio_assistant_core_core_scripts_code" fa_uml_undetermined
   folio_assistant_core_core_library_folio_keywords_v1_folio_keywords_v1 *-- "0..*" folio_assistant_core_core_library_folio_keywords_v1_Document : document
   cssClass "folio_assistant_core_core_library_folio_document_images_v1_folio_document_images_v1" fa_uml_kind_library
-  cssClass "folio_assistant_core_core_library_folio_image_verdicts_v1" fa_uml_kind_library
   cssClass "folio_assistant_core_core_library_folio_keywords_v1_Document" fa_uml_kind_library
   cssClass "folio_assistant_core_core_library_folio_keywords_v1_folio_keywords_v1" fa_uml_kind_library
+  cssClass "n_folio_assistant_core_core_library_library_folio_image_verdicts_v1" fa_uml_kind_library_folio_image_verdicts_v1
+  cssClass "n_folio_assistant_core_core_library_library_folio_image_verdicts_v1" fa_uml_undetermined
   cssClass "n_folio_assistant_core_core_methodologies_methodology" fa_uml_kind_methodology
   cssClass "n_folio_assistant_core_core_methodologies_methodology" fa_uml_undetermined
   folio_assistant_core_core_skills_folio_voice_v1_folio_voice_v1 *-- "1..*" folio_assistant_core_core_skills_folio_voice_v1_Source : sources
@@ -589,6 +679,12 @@ classDiagram
   cssClass "folio_assistant_core_core_skills_skill_topics_v1_Directory" fa_uml_kind_skills
   cssClass "folio_assistant_core_core_skills_skill_topics_v1_skill_topics_v1" fa_uml_kind_skills
   cssClass "folio_assistant_core_core_processes_omg_bpmn_2_0" fa_uml_kind_processes
+  folio_assistant_core_qa_kg_qa_v1_Adversarial_review *-- "0..*" folio_assistant_core_qa_kg_qa_v1_Flag : flags
+  folio_assistant_core_qa_kg_qa_v1_Adversarial_review *-- "0..*" folio_assistant_core_qa_kg_qa_v1_Finding : findings
+  folio_assistant_core_qa_kg_qa_v1_kg_qa_v1 *-- "0..*" folio_assistant_core_qa_kg_qa_v1_Adversarial_review : adversarial_reviews
+  cssClass "folio_assistant_core_qa_kg_qa_v1_Flag" fa_uml_kind_qa
+  cssClass "folio_assistant_core_qa_kg_qa_v1_Finding" fa_uml_kind_qa
+  cssClass "folio_assistant_core_qa_kg_qa_v1_Adversarial_review" fa_uml_kind_qa
   cssClass "folio_assistant_core_qa_kg_qa_v1_kg_qa_v1" fa_uml_kind_qa
   cssClass "folio_assistant_core_qa_kg_qa_manifest_v1_kg_qa_manifest_v1" fa_uml_kind_qa
   cssClass "folio_assistant_core_qa_qa_results_v1" fa_uml_kind_qa
@@ -597,6 +693,15 @@ classDiagram
   cssClass "folio_assistant_core_memory_MemoryNode" fa_uml_kind_memory
   cssClass "n_folio_assistant_core_beans_beans" fa_uml_kind_beans
   cssClass "n_folio_assistant_core_beans_beans" fa_uml_undetermined
+  folio_assistant_core_health_Check *-- "0..*" folio_assistant_core_health_Threshold : thresholds
+  folio_assistant_core_health_Check *-- "0..*" folio_assistant_core_health_Measurement : measurements
+  folio_assistant_core_health_Check *-- "0..*" folio_assistant_core_health_Finding : findings
+  folio_assistant_core_health_HealthReport *-- "1..*" folio_assistant_core_health_Check : checks
+  cssClass "folio_assistant_core_health_Threshold" fa_uml_kind_health
+  cssClass "folio_assistant_core_health_Measurement" fa_uml_kind_health
+  cssClass "folio_assistant_core_health_Finding" fa_uml_kind_health
+  cssClass "folio_assistant_core_health_Check" fa_uml_kind_health
+  cssClass "folio_assistant_core_health_HealthReport" fa_uml_kind_health
   folio_assistant_core_voices_VoiceProfile *-- "1..*" folio_assistant_core_voices_Source : sources
   folio_assistant_core_voices_Rule *-- "0..*" folio_assistant_core_voices_Pattern : patterns
   folio_assistant_core_voices_Rule *-- "0..*" folio_assistant_core_voices_Terminology : terminology
@@ -606,8 +711,7 @@ classDiagram
   cssClass "folio_assistant_core_voices_Terminology" fa_uml_kind_voices
   cssClass "folio_assistant_core_voices_Rule" fa_uml_kind_voices
   cssClass "folio_assistant_core_voices_VoiceProfile" fa_uml_kind_voices
-  cssClass "n_folio_assistant_core_defs_bean_defs" fa_uml_kind_bean_defs
-  cssClass "n_folio_assistant_core_defs_bean_defs" fa_uml_undetermined
+  cssClass "folio_assistant_core_defs_BeanKind" fa_uml_kind_bean_defs
   cssClass "folio_assistant_core_notes_bean_notes_shape" fa_uml_kind_bean_notes
   cssClass "n_folio_assistant_core_workflows_workflow_state" fa_uml_kind_workflow_state
   cssClass "n_folio_assistant_core_workflows_workflow_state" fa_uml_undetermined

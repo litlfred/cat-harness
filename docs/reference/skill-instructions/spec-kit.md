@@ -141,6 +141,50 @@ carry:
 
 Owner, 2026-09-21: *"ensure that the spec exists before anything is developed"*.
 
+### The spec-before-code gate (Child 3 / issue #753)
+
+The spec-before-code gate requires that feature work be backed by an accepted
+specification before implementation code is written.
+
+- **Where an agent reads it**: Declared here in the governing skill (`spec-kit`),
+  in `AGENTS.md`, and in opening briefs.
+- **Mechanically detectable**: Detectable automatically via `check-spec.ts`:
+  ```sh
+  bun run cat-harness-tools/scripts/check-spec.ts --spec-before-code --issue <number>
+  bun run cat-harness-tools/scripts/check-spec.ts --spec-before-code --bean <path>
+  ```
+- **Three-state reporting**:
+  - `exit 0` (`pass`): The referenced issue carries a valid spec comment adhering
+    to `spec-template.md` (all mandatory sections present: *User Scenarios & Testing*,
+    *Requirements*, *Success Criteria*).
+  - `exit 1` (`finding`): A spec comment is missing, missing mandatory sections,
+    carries unresolved `[NEEDS CLARIFICATION]` markers when adjudicated, or a
+    feature bean lacks an issue reference. **Breach is a finding, NOT silence.**
+  - `exit 2` (`could not determine`): The issue cannot be fetched or reached (e.g.
+    network error or GitHub API outage).
+
+## Sub-issue splitting: Parent carries spec, children deliver increments (Child 5 / issue #755)
+
+When a proposed feature change is oversized (>400 effective lines) or naturally
+spans multiple increments:
+
+1. **Splitting uses GitHub sub-issues**: The parent issue serves as the single
+   source of truth and **carries the overarching specification** (user journeys
+   P1..Pn, requirements FR-001.., success criteria SC-001..).
+2. **Sub-issues link to parent**: Child sub-issues do not duplicate or fork the
+   spec; they implement specific requirements defined on the parent.
+3. **One PR per child sub-issue**: Each child sub-issue delivers **one standalone,
+   adjudicable, reviewable, revertible increment with its own PR**:
+   - *Standalone*: Delivers a coherent, self-contained capability slice.
+   - *Adjudicable*: Change size stays within the ~400 effective lines threshold
+     to keep human review thorough and prevent cognitive fatigue.
+   - *Reviewable*: Includes automated tests and documentation for that increment.
+   - *Revertible*: Can be merged or rolled back independently without corrupting trunk invariants.
+4. **Spec-before-code gate applies before any child begins**: Implementation of child
+   sub-issues cannot start until the parent issue's specification has been accepted
+   and posted. Feature beans and child PRs must reference the parent or sub-issue
+   hierarchy verified by `check-spec.ts --spec-before-code`.
+
 ## A request for a plan reaches the gate (issue #2405)
 
 **A request for a plan is a detection signal here as in `crdm`** — "plan",
@@ -218,4 +262,11 @@ must sign it off, tied to WHO/IG subject matter → `crdm`.
   the marker becomes a way of appearing to ask without having asked.
 - **Never cite spec-kit for the spec-before-code gate.** It is this platform's
   addition, stated above.
+
+## Related
+
+- [`specification-management`](specification-management.md) —
+  specification and requirements governance across spec-kit and CRDM
+- [`requirements-standards-assessment`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/requirements-standards-assessment.md) —
+  assessment of open requirements standards (EARS, ISO 29148, ReqIF)
 {% endraw %}

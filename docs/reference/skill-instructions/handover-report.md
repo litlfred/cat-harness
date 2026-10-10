@@ -159,5 +159,5 @@ Do bean folio-assistant-<id> on branch <branch-to-create> of repo <owner>/<repo>
 
 | process | step(s) that name it |
 |---|---|
-| [Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route](../../cat-harness/processes/stalled-agent-triage.html) | Collect or reconstruct a handover report per agent |
+| [Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route](../../en/cat-harness/processes/stalled-agent-triage.html) | Collect or reconstruct a handover report per agent |
 

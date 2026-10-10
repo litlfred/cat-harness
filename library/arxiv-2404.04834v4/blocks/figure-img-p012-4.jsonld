@@ -2,10 +2,15 @@
   "@context": [
     "https://litlfred.github.io/folio-assistant/ns/content/v1.jsonld",
     {
-      "@base": "https://litlfred.github.io/folio/"
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/0.1.0/ns#"
     }
   ],
   "@id": "library/arxiv-2404.04834v4/blocks/figure-img-p012-4",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
   "kind": "figure",
   "file": "../images/img-p012-4.png",
   "pageStart": 12,
@@ -21,6 +26,6 @@
     "drafted_at": "2026-10-09"
   },
   "derivedFrom": "library/arxiv-2404.04834v4/sections/sec-013",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness-8107/arxiv-2404.04834v4/manifest.jsonld",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2404.04834v4/manifest.jsonld",
   "provenance": "ingested"
 }

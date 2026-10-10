@@ -13,7 +13,7 @@ parent: Skill instructions
 {% raw %}
 # Agent permissions — asked for, explained, granted by a person, recorded
 
-[`processes/process/secure-agent-permissions.bpmn`](../../processes/secure-agent-permissions.html)
+[`processes/process/secure-agent-permissions.bpmn`](../../en/cat-harness/processes/secure-agent-permissions.html)
 (`Process_SecureAgentPermissions`) is the process. It is called from
 `session-state-machine.bpmn` (`Call_SecurePermissions`, after the session record
 opens), so it is part of starting work in an instance. It also runs **on
@@ -148,6 +148,6 @@ an example, not a rule, and its home is the Claude Code adapter.
 
 | process | step(s) that name it |
 |---|---|
-| [Secure agent permissions](../../processes/secure-agent-permissions.html) | Identify the agent Tool(s) acting here; Compare what the processes need with what is granted; Explain each missing permission, with the exact config diff; Grant, narrow or refuse each; Record each answer: who, when, scope, the quote; Write it through the Tool's adapter |
-| [Session state machine](../../processes/session-state-machine.html) | Secure the agent's permissions (calls a sub-process) |
+| [Secure agent permissions](../../en/cat-harness/processes/secure-agent-permissions.html) | Identify the agent Tool(s) acting here; Compare what the processes need with what is granted; Explain each missing permission, with the exact config diff; Grant, narrow or refuse each; Record each answer: who, when, scope, the quote; Write it through the Tool's adapter |
+| [Session state machine](../../en/cat-harness/processes/session-state-machine.html) | Secure the agent's permissions (calls a sub-process) |
 

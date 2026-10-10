@@ -41,6 +41,11 @@
       "name": "glossary"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/who-iris/who-iris.jsonld#directory/health",
+      "@type": "bootstrap:Subgraph",
+      "name": "health"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/who-iris/who-iris.jsonld#directory/id-lookup",
       "@type": "bootstrap:Subgraph",
       "name": "id-lookup"
@@ -84,6 +89,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/who-iris/who-iris.jsonld#directory/who-iris-themes",
       "@type": "bootstrap:Subgraph",
       "name": "who-iris-themes"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/who-iris/who-iris.jsonld#directory/who-iris-tools",
+      "@type": "bootstrap:Subgraph",
+      "name": "who-iris-tools"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/who-iris/who-iris.jsonld#directory/who-iris-translations",

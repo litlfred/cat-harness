@@ -54,14 +54,14 @@ Findings and a decision — two things, not one. See
 
 | process | step(s) that name it |
 |---|---|
-| [Narrative review](../../cat-harness/processes/review-narrative.html) | Read the sidecar findings |
-| [Review task](../../cat-harness/processes/review-task.html) | Classify what changed; Consolidate findings |
-| [Authoring a document](../../cat-harness/processes/authoring-a-document.html) | 8 · Review and feedback |
-| [Content Change and Review](../../cat-harness/processes/content-change-review.html) | Review each slice (calls a sub-process); Review impact assessment; Request changes |
-| [Content lifecycle](../../cat-harness/processes/content-lifecycle.html) | Editing and HCI validation (calls a sub-process); Draft, review and publish (calls a sub-process) |
-| [Draft, review and publish](../../cat-harness/processes/draft-to-publication.html) | Circulate the draft; Review the draft publication; Clinical / scientific sign-off |
-| [Editing and HCI validation](../../cat-harness/processes/editing-hci-validation.html) | Agent review of the change; Human / SME review |
-| [Evidence for a recommendation](../../cat-harness/processes/evidence-retrieval.html) | Review the guidance already in this content |
-| [Authoring a paper](../../cat-harness/processes/authoring-a-paper.html) | 8 · Review and feedback |
-| [L2 DAK authoring](../../cat-harness/processes/l2-dak-authoring.html) | Clinical validation |
+| [Narrative review](../../en/cat-harness/processes/review-narrative.html) | Read the sidecar findings |
+| [Review task](../../en/cat-harness/processes/review-task.html) | Classify what changed; Consolidate findings |
+| [Authoring a document](../../en/cat-harness/processes/authoring-a-document.html) | 8 · Review and feedback |
+| [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Review each slice (calls a sub-process); Review impact assessment; Request changes |
+| [Content lifecycle](../../en/cat-harness/processes/content-lifecycle.html) | Editing and HCI validation (calls a sub-process); Draft, review and publish (calls a sub-process) |
+| [Draft, review and publish](../../en/cat-harness/processes/draft-to-publication.html) | Circulate the draft; Review the draft publication; Clinical / scientific sign-off |
+| [Editing and HCI validation](../../en/cat-harness/processes/editing-hci-validation.html) | Agent review of the change; Human / SME review |
+| [Evidence for a recommendation](../../en/cat-harness/processes/evidence-retrieval.html) | Review the guidance already in this content |
+| [Authoring a paper](../../en/cat-harness/processes/authoring-a-paper.html) | 8 · Review and feedback |
+| [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Clinical validation |
 

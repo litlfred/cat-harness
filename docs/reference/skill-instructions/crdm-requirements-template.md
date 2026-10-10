@@ -158,4 +158,6 @@ PR (Phase 6)
 - [`crdm-impact-analysis`](crdm-impact-analysis.md) — Phase 4 follows this
 - [`crdm-detect`](crdm-detect.md) — detection
 - [`../../skills/sdlc/sdlc-core/todo-manager.md`](todo-manager.md) — bean creation
+- [`../../skills/sdlc/sdlc-core/specification-management.md`](specification-management.md) — governance and EARS/ISO statement quality
+- [`../../../methodologies/requirements-standards-assessment.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/requirements-standards-assessment.md) — open standards (ReqIF, OSLC-RM, EARS, ISO 29148) assessment
 {% endraw %}

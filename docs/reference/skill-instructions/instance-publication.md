@@ -289,7 +289,7 @@ such lists do, missing every instance added since `l4ay`.
 | the host, `cat-harness` | `<site>/<stub>.jsonld` | `kg-export.ts --scope instance`, its own line in `docs-site.yml` |
 | the checkout root, `folio-assistant` | `<site>/<stub>/<stub>.jsonld` | `kg-export.ts --instance .` (bean `l4ay`) |
 | `bootstrap` | `<site>/bootstrap/bootstrap.jsonld` | `bootstrap-tools/scripts/export-graph.ts` (owner, 2026-09-30, bean `xsqm`) |
-| every other declared instance | `<site>/<stub>/<stub>.jsonld` | `cat-harness/scripts/instance-exports.ts` |
+| every other declared instance | `<site>/<stub>/<stub>.jsonld` | `cat-harness-tools/scripts/instance-exports.ts` |
 
 - **Each document has a `.json` copy beside it**, the same bytes. Pages serves
   `.jsonld` as octet-stream, and `.json` is the only way to get a correct
@@ -561,5 +561,5 @@ way there. It waits for the process, which is somebody's work and not a field.
 
 | process | step(s) that name it |
 |---|---|
-| [A knowledge graph leaves for its own repositories](../../cat-harness/processes/kg-separation.html) | 7 · Plan publication |
+| [A knowledge graph leaves for its own repositories](../../en/cat-harness/processes/kg-separation.html) | 7 · Plan publication |
 

@@ -43,7 +43,7 @@ Measured 2026-10-06, building Grobid from source for issue #2302:
 lookup at the mirror without touching the project's build files:
 
 ```sh
-./gradlew build --init-script cat-harness/scripts/gradle-maven-mirror.init.gradle
+./gradlew build --init-script cat-harness-tools/scripts/gradle-maven-mirror.init.gradle
 ```
 
 With it the same Grobid build succeeded in 3 min 45 s. `-Dmaven.mirror=<url>`

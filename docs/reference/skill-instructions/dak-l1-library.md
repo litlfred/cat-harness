@@ -178,5 +178,5 @@ item. The PDFs themselves are pinned by sha256 and not committed.
 
 | process | step(s) that name it |
 |---|---|
-| [L2 DAK authoring](../../processes/l2-dak-authoring.html) | Build the L1 library from Component 1 |
+| [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Build the L1 library from Component 1 |
 

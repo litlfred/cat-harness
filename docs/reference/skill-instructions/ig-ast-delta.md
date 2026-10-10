@@ -212,5 +212,5 @@ bun run fhir-harness/scripts/ig-rendered-impact.ts --ig <root> --base origin/mai
 
 | process | step(s) that name it |
 |---|---|
-| [Is the incremental IG AST what a full build would have produced?](../../processes/ig-ast-delta-review.html) | Check the base AST against the IG's inputs; Diff base → head and render the delta pages; Read the rendered delta |
+| [Is the incremental IG AST what a full build would have produced?](../../en/cat-harness/processes/ig-ast-delta-review.html) | Check the base AST against the IG's inputs; Diff base → head and render the delta pages; Read the rendered delta |
 

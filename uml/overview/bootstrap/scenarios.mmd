@@ -19,6 +19,7 @@ classDiagram
       inherits [0..*] string[]
       actedUpon [0..1] boolean
       judgementOnly [0..1] boolean
+      requiredCapabilities [0..1] object
     }
     class bootstrap_scenarios_Actor["Actor"] {
       <<json: RoleGraphSchema>>
