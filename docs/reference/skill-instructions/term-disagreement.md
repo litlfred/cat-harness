@@ -91,7 +91,7 @@ The table is `OUTCOME_WRITES` in the schema. In short:
 | outcome | writes | where | afterwards |
 |---|---|---|---|
 | `change-prose` | the authorised label | the source asset the extractor read, listed in `changed` | re-extraction mints that label, and the check reports `exact: mapped` |
-| `local-term` | an **authored** term, with the `reason` | an authored glossary (`localTerm.glossary`) | the candidate is promoted ([`glossary-terms`](glossary-terms.md)); its mapping to the authority is a person's |
+| `local-term` | an **authored** term, with the `reason` | an authored glossary (`localTerm.glossary`) | the candidate is promoted (`glossary-terms`); its mapping to the authority is a person's |
 | `vocabulary-wrong` | nothing in the corpus | the record itself | the check keeps reporting the miss, and the record says why it is not acted on |
 
 Every outcome also writes **the record**: one entry in a
@@ -145,5 +145,5 @@ moved is still a decision, and it has become a question to look at again.
   `untainted-verification`, when the owner lifts the wait.
 - **Which vocabulary is authoritative for which fact**:
   [`vocabulary-authority`](vocabulary-authority.md).
-- **How a term is authored**: [`glossary-terms`](glossary-terms.md).
+- **How a term is authored**: `glossary-terms`.
 {% endraw %}
