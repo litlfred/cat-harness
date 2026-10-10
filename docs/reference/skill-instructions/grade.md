@@ -27,7 +27,7 @@ over a body of evidence answering one PICO question — not to platform or
 architecture decisions, which are `kepner-tregoe`, recorded per `madr`.
 
 **Every value below is a code, and the codes are nodes.** Each vocabulary is a
-`folio-code-list/v1` in `cat-harness/code-lists/`, with a definition and a
+`folio-code-list/v1` in this instance's `code-lists/`, with a definition and a
 source per code, published as SKOS beside the glossary. Record a code, never a
 paraphrase of one:
 
