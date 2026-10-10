@@ -16,7 +16,7 @@
     "library/arxiv-2601.04544v1/blocks/prose-sec-006",
     "library/arxiv-2601.04544v1/blocks/figure-img-p005-2"
   ],
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness-ptdp/arxiv-2601.04544v1/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness-ptdp/arxiv-2601.04544v1/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2601.04544v1/manifest.jsonld",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2601.04544v1/manifest.jsonld",
   "provenance": "ingested"
 }
