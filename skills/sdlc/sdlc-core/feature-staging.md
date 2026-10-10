@@ -299,7 +299,9 @@ When an author requests a content change:
    identify affected blocks and downstream implications
 2. **Create feature branch** — branch from `main`, open PR immediately
 3. **Make changes** — edit content blocks, deterministic logic, translations
-4. **Push** — the staging deployment happens automatically
+4. **Push** — on a folio whose `staging.yml` runs on push, the staging
+   deployment happens automatically. On an agent-run folio, run
+   `stage-local.ts` (below).
 5. **Report staging URL** — tell the author the preview is at
    `<pages-url>/STAGING/<slug>/`
 6. **Iterate** — each push updates the staging deployment with a new SHA
@@ -337,6 +339,33 @@ bun run cat-harness-tools/scripts/stage-local.ts --repo <folio> --artifact <dir>
 - **Neither replaces the workflow's review data.** The QA sweep, screenshots,
   review-comment ingestion and the PR comment do not run. The banner says the
   preview was built locally.
+
+### Agent-run folios — the GitHub Actions path is documented, not run (owner, 2026-10-10)
+
+Some folios are **agent-run**: an agent builds and publishes the site, and
+the folio's `staging.yml` keeps only `workflow_dispatch`. smart-ra has been
+agent-run since 2026-10-10 (bean `n3h9`), like the other smart-* repositories.
+For these folios the GitHub Actions path below is **documentation**. It says
+what the workflow does, so that the agent path can match it. It is not a
+fallback for an agent to take.
+
+| what | agent path | GitHub Actions path (documented, not run) |
+|---|---|---|
+| preview of a branch at `STAGING/<slug>/` | `stage-local.ts` (above) | `folio-staging.yml` job `stage`, on a dispatch from a branch |
+| the main site at the Pages root | **none yet**: this is a gap, so report it | `folio-staging.yml` job `publish-main`, on a dispatch from `main` |
+| QA sweep, screenshots, review comments | not run (the banner says so) | jobs in `folio-staging.yml` |
+
+**Do not dispatch the workflow to cover a gap in the agent path.** On
+2026-10-10 an agent dispatched smart-ra's `staging.yml` on `main` to
+republish the root after a re-pin. The site was published, but the run
+contradicted the folio's agent-run setting, and the owner asked *"why
+github action and not agentic?"*. When the agent path cannot do a step,
+say which step it is and ask. Do not reach for the workflow because it is
+there.
+
+The owner's ruling for now: **skills that drive GitHub Actions are not to be
+implemented**. Document what the workflows do, here and in the workflow
+files, so that an agent-run step can be checked against them.
 
 ## Staleness detection
 
