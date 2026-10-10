@@ -23,7 +23,7 @@ import { declarationChain } from "../../schemas/harness-config.ts";
 import { instanceRootsIn } from "../../schemas/instance-roots.ts";
 import { RemoteSourceSchema, resolveSubgraphSource } from "../../schemas/subgraph-source.ts";
 import { MountLockSchema, mountedInstanceRoots } from "../../schemas/remote-mount.ts";
-import { checkRemote, exitCode, mountRemote, planRemote, remoteFanOut, summarise } from "../remote-mount.ts";
+import { AGENT_SURFACE_GENERATORS, checkRemote, exitCode, mountRemote, planRemote, remoteFanOut, summarise } from "../remote-mount.ts";
 import { IGNORE_BLOCK_BEGIN, IGNORE_BLOCK_END, INDEX_CONFIG_SCHEMA, readDeclaredMounts } from "../../schemas/index-config.ts";
 import { run as replayLocks } from "../mount-from-lock.ts";
 import { gitCorpus } from "../../schemas/git-corpus.ts";
@@ -614,5 +614,13 @@ describe("index.config.json as the mount declaration (owner, 2026-10-07)", () =>
     writeFileSync(join(root, "down.mount-lock.json"), readFileSync(join(root, "index.lock.json")));
     expect(checkRemote({ instanceRoot: root }).state).toBe("could-not-determine");
     expect(mountedInstanceRoots(root).size).toBe(0);
+  });
+});
+
+describe("a changed lock re-renders the agent surface", () => {
+  // The generators run by path, so a rename would turn the step into a
+  // spawn of a missing file — a failure at re-pin time rather than here.
+  test("every agent-surface generator exists beside remote-mount.ts", () => {
+    for (const g of AGENT_SURFACE_GENERATORS) expect(existsSync(join(import.meta.dir, "..", g)), g).toBe(true);
   });
 });
