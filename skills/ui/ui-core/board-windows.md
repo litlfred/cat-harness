@@ -266,7 +266,7 @@ reader's own copy*. `folio/` is a different graph typology: **renderable** autho
 content.
 
 Reading it as the directory would break a consumer that exists.
-`schemas/materialization.ts` states the dependency outright — ***`corpus-grep`
+folio-assistant-core's `schemas/materialization.ts` states the dependency outright — ***`corpus-grep`
 searches `library/` only***, so a node materialised anywhere else reads as
 ABSENT to every consumer. That is the same defect the schema already forbids
 one state up, where collapsing `referenced` into `materialized` hides a node

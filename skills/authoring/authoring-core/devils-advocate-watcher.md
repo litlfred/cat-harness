@@ -230,7 +230,7 @@ A single-pass fan-out remains appropriate for standard remarks, simple examples,
 
 ### 3. Formalizing Debate Rounds in the Adjudication Protocol
 
-The adjudication protocol formalizes the 3-round structure before the referee verdict, codified in `schemas/adjudication.ts` via `AdjudicationDebateSchema`:
+The adjudication protocol formalizes the 3-round structure before the referee verdict, codified in folio-assistant-core's `schemas/adjudication.ts` via `AdjudicationDebateSchema`:
 - **Round 1 — Objection Hypothesis Proposal & Competitive Ranking:** Specialized adversarial agents propose candidate objection chains along the dependency graph. The pool is ranked by relevance and distinctness, pruning duplicate or superficial quibbles.
 - **Round 2 — Competitive Strategy Refinement & Cross-Agent Critique:** Agents formulate concrete, step-by-step referee arguments and review rival proposals. Each agent defends its objection against counter-arguments and identifies flaws in competing hypotheses, recording explicit critiques (`targetAgent`, `point`, `severity`).
 - **Round 3 — Synthesis & Discriminator Adjudication:** The Adjudicator acts as the lead discriminator (Prompt 8 in SWE-Debate). Rather than taking an unweighted vote or averaging confidence scores, the adjudicator evaluates technical merit across the competing arguments, explicitly documents `resolved_conflicts`, and synthesizes a definitive, actionable `da-referee-verdict` (`clean`, `survivable-objection`, `open-objection`).
