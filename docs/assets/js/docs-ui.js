@@ -11749,6 +11749,17 @@
     var node = document.getElementById("fa-navbar-row");
     if (!node) return undefined;
     var text = (node.textContent || "").trim();
+    // SHARED ROW DATA THAT DID NOT ARRIVE. A folio's railed page keeps the
+    // island empty and names the file that fills it (`data-fa-row-src`,
+    // `withNavbarRow` in harness-rail.ts); the file drops the name once it
+    // has. Still named and still empty, the load FAILED — and that is not
+    // "declared nothing", which an empty island otherwise means.
+    if (text === "" && node.hasAttribute("data-fa-row-src")) {
+      node.setAttribute("data-fa-row-state", "failed");
+      console.warn("docs-ui: the navbar icon row's shared data (" +
+                   node.getAttribute("data-fa-row-src") + ".js) did not load; the row was not mounted.");
+      return undefined;
+    }
     if (text === "" || text === "null") return null;   // declared nothing
     try {
       var parsed = JSON.parse(text);
