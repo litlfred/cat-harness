@@ -26,3 +26,6 @@ node_modules/
 /issue-marks/**
 /todos/**
 # END state mounts
+
+# Agent worktree scaffolding (symlinks into an enclosing checkout); never committed.
+.claude/worktrees/
