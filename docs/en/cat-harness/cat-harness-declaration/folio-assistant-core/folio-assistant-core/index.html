@@ -169,6 +169,14 @@ nav_exclude: true
     ]
   },
   {
+    &quot;id&quot;: &quot;core-code-lists&quot;,
+    &quot;path&quot;: &quot;code-lists/&quot;,
+    &quot;description&quot;: &quot;Code lists this layer owns, one `folio-code-list/v1` file per list, inherited by every dependent through the dependency overlay (`codeListDirs`) and exported as SKOS with the harness&#39;s. Declared with its files, bean 55ao: a `recommendation` block&#39;s `strength` names a code here, so the check is \&quot;resolves in the scheme\&quot; rather than a closed enum (owner ruling 2026-09-23, Q2). Two lists: `grade-recommendation-strength` (GRADE as WHO applies it) and `rfc2119-requirement-level` (BCP 14). A folio whose issuing body grades differently declares its own list rather than editing these.&quot;,
+    &quot;graphTypologies&quot;: [
+      &quot;code-list&quot;
+    ]
+  },
+  {
     &quot;id&quot;: &quot;folio-assistant-core-typologies&quot;,
     &quot;path&quot;: &quot;typologies/&quot;,
     &quot;description&quot;: &quot;The graph typologies folio-assistant-core owns, one folio-graph-typology/v1 node per file (bean dmx1). Owner, 2026-10-04: no central registry for subgraph types; a harness declares its own in a kinds/ graph. Moved here from cat-harness/schemas/graph-typology-registry.ts, with each entry&#39;s code comments kept as its rationale.&quot;,
