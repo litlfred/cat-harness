@@ -508,6 +508,15 @@ const OWN_STEP_EXEMPTIONS: StepExemption[] = [
     reason: "`state:visualizer:check` is in the gate set; the site build runs the writer over the results it fetched",
   },
   {
+    // Owner, 2026-10-10: "regenerate at build". A navbar tile's count is read
+    // from projections the site build rewrites, and the beans count is live,
+    // so `docs/_data/harness.json` is regenerated in the build and
+    // `docs:harness:check` compares the committed copy without the counts.
+    match: "bun run cat docs:harness",
+    kind: "covered-by",
+    reason: "`docs:harness:check` is in the gate set (comparing without the live tile counts); the site build runs the writer after the projections are rewritten",
+  },
+  {
     // Bean `tqjj`: the LSI viewer page, the same shape as the step above and
     // for a sharper version of the same reason. It is an aggregate over every
     // index, so one sentence added to one of 229 skills restaged it — 319 of
