@@ -300,7 +300,7 @@ When an author requests a content change:
 2. **Create feature branch** — branch from `main`, open PR immediately
 3. **Make changes** — edit content blocks, deterministic logic, translations
 4. **Push** — on a folio whose `staging.yml` runs on push, the staging
-   deployment happens automatically. On an agent-run folio, run
+   deployment happens automatically. On an agent-run repository, run
    `stage-local.ts` (below).
 5. **Report staging URL** — tell the author the preview is at
    `<pages-url>/STAGING/<slug>/`
@@ -308,23 +308,62 @@ When an author requests a content change:
 
 The BPMN for this workflow is `folio-assistant-core/processes/content/content-change-review.bpmn`.
 
-### Staging without waiting for a runner — `stage-local.ts` (#2410)
+### Publishing without a runner — `stage-local.ts`, one command (#2410)
 
-When the Actions queue is backed up, the agent can build the preview itself:
+When the Actions queue is backed up, the agent can build and publish itself:
 it already has the checkout, the platform and bun. Measured 2026-10-07 on
 smart-ra: the staging workflow waited **33 min** for a runner to do 45 s of
 work, and GitHub's Pages deploy then waited **47 min** for about one.
 
+On an **agent-run** repository (below) this is not a shortcut. It is the only
+publish path. It is one command for a preview and for the main site, for a
+folio and for a FHIR IG:
+
 ```sh
-bun run cat-harness-tools/scripts/stage-local.ts --repo <folio> [--branch B] [--dry-run]
-bun run cat-harness-tools/scripts/stage-local.ts --repo <folio> --artifact <dir>
+bun run cat-harness-tools/scripts/stage-local.ts --repo <repo> --plan        # what it would do; nothing built
+bun run cat-harness-tools/scripts/stage-local.ts --repo <repo> --dry-run     # build, compose the commit, push nothing
+bun run cat-harness-tools/scripts/stage-local.ts --repo <repo>               # build and push
+bun run cat-harness-tools/scripts/stage-local.ts --repo <repo> --artifact <dir>
 ```
 
-- **Default: push to `gh-pages`.** It runs the folio staging workflow's steps,
-  with the inputs read from the folio's own `staging.yml`. It pushes
-  `STAGING/<slug>/` through the same rate-limit gate (§8) and render log. This
-  removes the first wait and **not the second**: Pages deploys on a runner,
-  so say the preview is live once that deploy has run, never sooner.
+It prints its plan first, every time: which workflow it mirrors, where the
+output lands, what it replaces and what it keeps, the commit message, and
+what it does not run.
+
+**Which publisher** is read from the repository's own workflow files, from the
+reusable workflow each one calls:
+
+- a caller of `folio-staging.yml` is a **folio**. The build inputs
+  (`build_command`, `site_dir`, `publish_branch`, …) are read from that
+  caller.
+- a caller of smart-base's `fhirbuild.yml` or `ghbuild.yml` is an **IG**. The
+  reusable workflow is fetched at the ref the caller names, and its build job
+  is run step by step as written: `run:` blocks with the environment a runner
+  gives them, `docker://` steps in their image. Steps that read a secret, push
+  to the source branch, or need an Actions runtime are skipped, and the plan
+  names each one with its reason. `fhirbuild.yml` itself only triggers
+  build.fhir.org's auto-build, so the Pages build is the `ghbuild.yml` beside
+  it, and the plan says so.
+- a repository that calls both (smart-ra carries an IG under `input/`) gets
+  the **folio**, unless `--publisher ig` is given. The folio owns the publish
+  root. An IG's root deploy is a clean one, and it is refused on a publish
+  branch that holds a folio's `STAGING/`, `_render-log/` or `_main-site.json`.
+
+**Main site or preview** follows the branch, as the workflows do. The default
+branch publishes the main site; any other branch publishes a preview.
+`--main` says the same explicitly, and it is refused off the default branch.
+The main site is published only from a HEAD that is the pushed tip of the
+default branch.
+
+| | folio | IG |
+|---|---|---|
+| preview | `STAGING/<slug>/`, replaced wholesale; held by the rate-limit gate (§8); commit `staging(<slug>): from <sha>`; render log `staging-preview` | `branches/<last path component>/`, nothing deleted; commit `Deploy candidate branch` |
+| main site | the root, through `publish-main-site.ts`: only the files the last publish's `_main-site.json` lists are replaced, and `STAGING/`, `_render-log/` and anything a person put at the root are kept; commit `main-site: from <sha>`; render log `main-site` for `/` | the root, cleaned except for the deploy step's `clean-exclude` (`branches`, `sitepreview`) and the action's own exclusions; commit `Deploy main branch` |
+
+Every path refuses an empty build before it deletes anything (bean `oisv`).
+
+- **Pushing removes the first wait and not the second.** Pages deploys on a
+  runner, so say the page is live once that deploy has run, never sooner.
 - **`--artifact <dir>`: no GitHub at all.** It writes the same build as a
   bundle for a claude.ai Artifact: `index.html` plus the files listed in
   `<dir>/artifact.json`. Publish that, and it is live in about a minute,
@@ -336,36 +375,48 @@ bun run cat-harness-tools/scripts/stage-local.ts --repo <folio> --artifact <dir>
   - Before publishing a folio whose content belongs to a real organisation
     (a WHO draft, say), ask the author: an Artifact is a new place that
     content appears.
-- **Neither replaces the workflow's review data.** The QA sweep, screenshots,
-  review-comment ingestion and the PR comment do not run. The banner says the
-  preview was built locally.
+- **What it does not do, and says in its plan:**
+  - the folio preview's QA sweep, screenshots, review-comment ingestion and
+    PR comment (the banner says the preview was built locally);
+  - the IG workflow's PR comments, its branch-history page and README
+    write-back (each reads a token, or writes the source branch);
+  - the IG deploy action's `single-commit`, which force-pushes one orphan
+    commit and erases the publish branch's history. This path commits on top
+    and never force-pushes.
+- **An IG build needs what its workflow needs.** The workflow runs IG
+  Publisher in a Docker image, so a machine with no Docker daemon gets the
+  plan from `--dry-run`, and a real run stops naming the missing
+  prerequisite.
 
-### Agent-run folios — the GitHub Actions path is documented, not run (owner, 2026-10-10)
+### Agent-run repositories — the GitHub Actions path is documented, not run (owner, 2026-10-10)
 
-Some folios are **agent-run**: an agent builds and publishes the site, and
-the folio's `staging.yml` keeps only `workflow_dispatch`. smart-ra has been
-agent-run since 2026-10-10 (bean `n3h9`), like the other smart-* repositories.
-For these folios the GitHub Actions path below is **documentation**. It says
-what the workflow does, so that the agent path can match it. It is not a
-fallback for an agent to take.
+Some repositories are **agent-run**: an agent builds and publishes the site,
+and the repository's publish workflow keeps only `workflow_dispatch`. smart-ra
+has been agent-run since 2026-10-10 (bean `n3h9`), like smart-immunizations
+and smart-trust. For these repositories the GitHub Actions path is
+**documentation**. It says what the workflow does, so that the agent path can
+match it. It is not a fallback for an agent to take.
 
 | what | agent path | GitHub Actions path (documented, not run) |
 |---|---|---|
-| preview of a branch at `STAGING/<slug>/` | `stage-local.ts` (above) | `folio-staging.yml` job `stage`, on a dispatch from a branch |
-| the main site at the Pages root | **none yet**: this is a gap, so report it | `folio-staging.yml` job `publish-main`, on a dispatch from `main` |
-| QA sweep, screenshots, review comments | not run (the banner says so) | jobs in `folio-staging.yml` |
+| a folio preview at `STAGING/<slug>/` | `stage-local.ts` from the branch | `folio-staging.yml` job `stage` |
+| a folio's main site at the Pages root | `stage-local.ts` from the default branch | `folio-staging.yml` job `publish-main` |
+| an IG preview at `branches/<branch>/` | `stage-local.ts` from the branch | smart-base `ghbuild.yml`, "Deploy candidate" |
+| an IG's main site at the Pages root | `stage-local.ts` from the default branch | smart-base `ghbuild.yml`, "Deploy main" |
+| QA sweep, screenshots, review comments, PR comments | not run (the plan says so) | jobs in the workflows above |
 
-**Do not dispatch the workflow to cover a gap in the agent path.** On
+**Never dispatch the workflow, to cover a gap or for any other reason.** On
 2026-10-10 an agent dispatched smart-ra's `staging.yml` on `main` to
 republish the root after a re-pin. The site was published, but the run
-contradicted the folio's agent-run setting, and the owner asked *"why
-github action and not agentic?"*. When the agent path cannot do a step,
-say which step it is and ask. Do not reach for the workflow because it is
-there.
+contradicted the repository's agent-run setting, and the owner asked *"why
+github action and not agentic?"*. When the agent path cannot do a step, say
+which step it is and ask. Do not reach for the workflow because it is there.
 
 The owner's ruling for now: **skills that drive GitHub Actions are not to be
 implemented**. Document what the workflows do, here and in the workflow
-files, so that an agent-run step can be checked against them.
+files, so that an agent-run step can be checked against them —
+`stage-local.ts` reads the workflow files rather than restating them, so a
+change to a workflow's build or layout is a change to the agent path too.
 
 ## Staleness detection
 
