@@ -163,7 +163,7 @@
     '<path d="M7.2 10.2l2 2m0-2l-2 2" fill="none" stroke="currentColor" ' +
     'stroke-width="1.6" stroke-linecap="round"/></svg>';
   var QR_GLYPH =
-    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor">' +
     '<path d="M3 3h7v7H3V3zm2 2v3h3V5H5zm9-2h7v7h-7V3zm2 2v3h3V5h-3zM3 14h7v7H3v-7zm2 2v3h3v-3H5z"/>' +
     '<path d="M13 13h3v3h-3v-3zm5 0h3v2h-3v-2zm-5 5h2v3h-2v-3zm4 1h4v2h-4v-2zm2-3h2v2h-2v-2z"/>' +
     "</svg>";
@@ -504,7 +504,7 @@
         // the page the slot is LEFT OUT (owner, 2026-10-05).
         if (typeof hooks.launcher !== "function") continue;
         var tip = LABELS.launcher + " — settings, discarded items";
-        var proxy = el("button", { type: "button", class: "fa-nav-icon", "aria-label": LABELS.launcher, title: tip, "data-fa-tip": tip });
+        var proxy = el("button", { type: "button", class: "fa-nav-icon", "aria-label": tip, title: tip, "data-fa-tip": tip });
         proxy.innerHTML = rowGlyph("launcher");
         proxy.addEventListener("click", hooks.launcher);
         host.appendChild(proxy);
