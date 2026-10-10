@@ -18,6 +18,7 @@
     "block-kinds",
     "cat-harness",
     "code",
+    "code-list",
     "docs",
     "folio",
     "fsh-guts",
@@ -68,7 +69,7 @@
       "href": "/en/cat-harness/beans/",
       "hidden": false,
       "icon": "beans",
-      "count": 191,
+      "count": 190,
       "unit": "open beans"
     },
     {
@@ -1665,12 +1666,12 @@
         {
           "id": "directories",
           "label": "declared directories",
-          "value": 24
+          "value": 25
         },
         {
           "id": "kinds",
           "label": "declared graph typologies",
-          "value": 23
+          "value": 24
         },
         {
           "id": "views",
@@ -1709,6 +1710,11 @@
           "kind": "code",
           "note": "no viewer yet",
           "label": "Code"
+        },
+        {
+          "kind": "code-list",
+          "note": "no viewer yet",
+          "label": "Code lists"
         },
         {
           "kind": "docs",
@@ -1828,6 +1834,14 @@
           ],
           "where": "local",
           "path": "folio-assistant-core/validators/"
+        },
+        {
+          "id": "core-code-lists",
+          "kinds": [
+            "code-list"
+          ],
+          "where": "local",
+          "path": "folio-assistant-core/code-lists/"
         },
         {
           "id": "folio-assistant-core-typologies",
@@ -1992,7 +2006,7 @@
         }
       ],
       "findings": [
-        "folio-assistant-core: declares 13 graph(s) with no published viewer — bean-defs, bean-notes, beans, block-kinds, code, folio, health, memory, qa, tools, typologies, validators, workflow-state. Declared and not rendered is a gap, not a dead link.",
+        "folio-assistant-core: declares 14 graph(s) with no published viewer — bean-defs, bean-notes, beans, block-kinds, code, code-list, folio, health, memory, qa, tools, typologies, validators, workflow-state. Declared and not rendered is a gap, not a dead link.",
         "folio-assistant-core: a viewer is published at /en/cat-harness/uploads/folio-assistant-core/ by cat-harness's `uploads` visualiser, which covers none of this instance's directories. Declare one it covers and the tile links it."
       ],
       "navbarIcons": [
@@ -3556,6 +3570,11 @@
         "note": "no viewer yet"
       },
       {
+        "kind": "code-list",
+        "label": "Code lists",
+        "note": "no viewer yet"
+      },
+      {
         "kind": "docs",
         "label": "Docs",
         "path": "/cat-harness/auto-docs/index/docs/folio-assistant-core-docs/"
@@ -3671,6 +3690,11 @@
         {
           "kind": "code",
           "label": "Code",
+          "note": "no viewer yet"
+        },
+        {
+          "kind": "code-list",
+          "label": "Code lists",
           "note": "no viewer yet"
         },
         {
@@ -4944,7 +4968,7 @@
           },
           {
             "key": "directories",
-            "summary": "20: folio-assistant-core-docs, folio-assistant-core-translations, folio-assistant-core-block-…"
+            "summary": "21: folio-assistant-core-docs, folio-assistant-core-translations, folio-assistant-core-block-…"
           },
           {
             "key": "visualisers",
