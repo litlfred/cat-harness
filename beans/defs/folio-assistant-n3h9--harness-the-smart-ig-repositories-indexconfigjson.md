@@ -5,7 +5,7 @@ status: in-progress
 type: epic
 priority: high
 created_at: 2026-10-10T14:06:53Z
-updated_at: 2026-10-10T14:40:00Z
+updated_at: 2026-10-10T15:10:00Z
 ---
 
 Owner, 2026-10-10: *"you can work onthe litlfred/smart-* go ahead and harness them with index.config.json and make sure they stop the ghpages currrent redering pipleine and use to the harnessed one"* (fhir-harness, smart-base harness). Repositories: *"smart-base, smart-base-clinical, smart-core, smart-immunizations, smart-hiv and smart-trust smart-ra"*.
@@ -54,3 +54,14 @@ The owner says the policy is not theirs to change.
 Adding the three HL7 tarballs to litlfred/fhir-package-mirror, with their SHA512SUMS lines, from a machine that can reach packages.fhir.org would unblock SUSHI and the IG Publisher here.
 
 **Seeding source.** The three forks have no gh-pages branch, and WHO's published copies are on refused hosts. So the artefact index must come from a local IG Publisher build, which needs the packages above.
+
+## 2026-10-10 — staging previews are agent-run (owner's decision)
+Owner, 2026-10-10, choosing between agent-run previews, PR previews in Actions, and no previews: **"Agent-run previews"**.
+
+The one agent-run build tool this epic delivers also publishes a branch preview at `STAGING/<branch>/`, the path smart-ra's public-comment links expect for the AFTER side. It runs on request, or from a Routine. Nothing in Actions builds a preview on its own.
+
+Until the tool exists, an agent starts `staging.yml` by hand (workflow_dispatch) for any PR that needs a preview.
+
+Done when, added:
+- [ ] the build tool takes `--staging <branch>` and writes only `STAGING/<branch>/`, keeping the root site and the other previews
+- [ ] smart-ra: a public-comment change set can be reviewed on an agent-built `STAGING/<branch>/` preview
