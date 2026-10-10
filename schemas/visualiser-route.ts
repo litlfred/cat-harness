@@ -32,6 +32,18 @@
  * an id that is not a portable segment is a defect in the declaration, and
  * encoding it would publish a URL the declaration no longer spells.
  *
+ * ## The locale segment
+ *
+ * The owner, 2026-10-05: every rendered page on the CDN lives under
+ * `/<locale>/…`. So a route may carry a `locale`, and then it is
+ * `<locale>/<harness>/<visualiser>/…`. The locale is the FIRST segment, above
+ * the harness, so one locale's site is one subtree and a translation is a
+ * sibling of it.
+ *
+ * It is optional here so that adding it changes nothing until the generators
+ * pass it: every caller names `DEFAULT_LOCALE` (`translation.ts`) explicitly,
+ * and the unlocalised route is what the t4xb rule below keeps working.
+ *
  * ## Why collisions are now DECLARATION errors
  *
  * Under page-derived discovery (#1168 B7a-2b) a page said which directories it
@@ -62,6 +74,11 @@ export const ROUTE_SEGMENT = /^[a-z0-9][a-z0-9-]*$/;
 
 /** The parts of a visualiser route. */
 export interface VisualiserRouteParts {
+  /**
+   * The locale the page is rendered in (`en`), the route's first segment.
+   * Absent for the unlocalised route the t4xb rule keeps working.
+   */
+  locale?: string;
   /** The declaring harness's `name`. */
   harness: string;
   /** The visualiser's declared `id`. */
@@ -93,10 +110,15 @@ function segment(what: string, s: string): string {
  * `visualiserRoute({ harness: "cat-harness", visualiser: "library" })` is
  * `cat-harness/library/`; with `subgraph: "who-iris"` it is
  * `cat-harness/library/who-iris/`; with `asset: "data.json"` as well it is
- * `cat-harness/library/who-iris/data.json`.
+ * `cat-harness/library/who-iris/data.json`. With `locale: "en"` each of those
+ * gains a leading `en/`.
  */
 export function visualiserRoute(p: VisualiserRouteParts): string {
-  const parts = [segment("harness", p.harness), segment("visualiser", p.visualiser)];
+  const parts = [
+    ...(p.locale !== undefined ? [segment("locale", p.locale)] : []),
+    segment("harness", p.harness),
+    segment("visualiser", p.visualiser),
+  ];
   if (p.subgraph !== undefined) for (const s of p.subgraph.split("/")) parts.push(segment("sub-graph", s));
   const base = `${parts.join("/")}/`;
   if (p.asset === undefined || p.asset === "") return base;
@@ -124,11 +146,11 @@ export function aliasRoute(alias: string): string {
  */
 export function routeOf(
   sitePath: string,
-  declared: readonly Pick<VisualiserRouteParts, "harness" | "visualiser">[],
+  declared: readonly Pick<VisualiserRouteParts, "locale" | "harness" | "visualiser">[],
 ): { harness: string; visualiser: string; rest: string } | undefined {
   const p = sitePath.replace(/^\/+/, "");
   for (const d of declared) {
-    const prefix = `${d.harness}/${d.visualiser}/`;
+    const prefix = `${d.locale !== undefined ? `${d.locale}/` : ""}${d.harness}/${d.visualiser}/`;
     if (p === prefix.slice(0, -1) || p.startsWith(prefix)) {
       return { harness: d.harness, visualiser: d.visualiser, rest: p.slice(prefix.length) };
     }
@@ -186,7 +208,8 @@ export function routeCollisions(claims: readonly RouteClaim[]): RouteCollision[]
 
 /**
  * The relative path from a view's page back to the SITE ROOT — `../../` for
- * `<harness>/<visualiser>/`, one more `../` per sub-graph segment.
+ * `<harness>/<visualiser>/`, one more `../` per sub-graph segment and one for
+ * the locale.
  *
  * A page links the site's shared assets (`assets/`, `reference/`) relative to
  * itself so the same bytes work at the canonical base and under a staging
@@ -194,8 +217,13 @@ export function routeCollisions(claims: readonly RouteClaim[]): RouteCollision[]
  * down and hard-coded `../`; computing it from the route is what lets the
  * route be the only thing that decides the depth.
  */
-export function siteRootFrom(p: Pick<VisualiserRouteParts, "harness" | "visualiser" | "subgraph">): string {
-  const depth = visualiserRoute({ harness: p.harness, visualiser: p.visualiser, ...(p.subgraph ? { subgraph: p.subgraph } : {}) })
+export function siteRootFrom(p: Pick<VisualiserRouteParts, "locale" | "harness" | "visualiser" | "subgraph">): string {
+  const depth = visualiserRoute({
+    ...(p.locale !== undefined ? { locale: p.locale } : {}),
+    harness: p.harness,
+    visualiser: p.visualiser,
+    ...(p.subgraph ? { subgraph: p.subgraph } : {}),
+  })
     .split("/")
     .filter(Boolean).length;
   return "../".repeat(depth);
