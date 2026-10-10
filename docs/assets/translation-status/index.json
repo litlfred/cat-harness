@@ -1,6 +1,6 @@
 {
   "$schema": "folio-translation-status/v1",
-  "changedAt": "2026-10-10",
+  "changedAt": "2026-10-06",
   "scope": "cat-harness/translations",
   "tile": {
     "translation-sources": {
@@ -11,7 +11,7 @@
   "locales": [
     {
       "locale": "ar",
-      "templates": 85,
+      "templates": 83,
       "catalogues": 15,
       "entries": 1056,
       "translated": 1005,
@@ -21,7 +21,7 @@
     },
     {
       "locale": "es",
-      "templates": 85,
+      "templates": 83,
       "catalogues": 17,
       "entries": 1352,
       "translated": 1301,
@@ -31,7 +31,7 @@
     },
     {
       "locale": "fr",
-      "templates": 88,
+      "templates": 86,
       "catalogues": 19,
       "entries": 1427,
       "translated": 1320,
@@ -41,7 +41,7 @@
     },
     {
       "locale": "ru",
-      "templates": 85,
+      "templates": 83,
       "catalogues": 18,
       "entries": 1420,
       "translated": 1369,
@@ -51,7 +51,7 @@
     },
     {
       "locale": "zh",
-      "templates": 85,
+      "templates": 83,
       "catalogues": 14,
       "entries": 905,
       "translated": 852,
@@ -235,7 +235,7 @@
       "locales": [
         {
           "locale": "ar",
-          "templates": 3,
+          "templates": 2,
           "catalogues": 0,
           "entries": 0,
           "translated": 0,
@@ -245,7 +245,7 @@
         },
         {
           "locale": "es",
-          "templates": 3,
+          "templates": 2,
           "catalogues": 0,
           "entries": 0,
           "translated": 0,
@@ -255,7 +255,7 @@
         },
         {
           "locale": "fr",
-          "templates": 3,
+          "templates": 2,
           "catalogues": 0,
           "entries": 0,
           "translated": 0,
@@ -265,7 +265,7 @@
         },
         {
           "locale": "ru",
-          "templates": 3,
+          "templates": 2,
           "catalogues": 0,
           "entries": 0,
           "translated": 0,
@@ -275,7 +275,7 @@
         },
         {
           "locale": "zh",
-          "templates": 3,
+          "templates": 2,
           "catalogues": 0,
           "entries": 0,
           "translated": 0,

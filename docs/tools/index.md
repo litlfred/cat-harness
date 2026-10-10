@@ -36,9 +36,9 @@ is `satisfies`, and it runs **from a tool to a skill** — *this tool is one way
 to do that*, never *this skill is a tool*.
 
 <div class="tg-grid">
-<div class="tg-stat"><b>145</b><span>Tool nodes</span></div>
-<div class="tg-stat"><b>79</b><span>skills satisfied</span></div>
-<div class="tg-stat"><b>121</b><span>invoked as a shell command</span></div>
+<div class="tg-stat"><b>142</b><span>Tool nodes</span></div>
+<div class="tg-stat"><b>77</b><span>skills satisfied</span></div>
+<div class="tg-stat"><b>118</b><span>invoked as a shell command</span></div>
 <div class="tg-stat"><b>25</b><span>reachable over MCP</span></div>
 </div>
 
@@ -48,20 +48,20 @@ A tool may declare more than one invocation, so these do not sum to the total.
 
 | invocation | tools |
 |---|---|
-| <span class="tg-tag tg-shell">shell</span> | 121 |
+| <span class="tg-tag tg-shell">shell</span> | 118 |
 | <span class="tg-tag tg-inproc">inProcess</span> | 26 |
 | <span class="tg-tag tg-mcp">mcp</span> | 25 |
 | <span class="tg-tag tg-manual">manual</span> | 8 |
 
 | installation | tools |
 |---|---|
-| `none` | 135 |
+| `none` | 132 |
 | `cli` | 9 |
 | `container` | 1 |
 
 ## Does every `satisfies` name a skill that exists?
 
-Yes — all **79** skills named across **145** tools resolve to a
+Yes — all **77** skills named across **142** tools resolve to a
 skill document in this checkout. A `satisfies` pointing at nothing would be a
 tool advertising a capability the graph cannot locate.
 
@@ -70,8 +70,6 @@ tool advertising a capability the graph cannot locate.
 | tool | what it does | invoked | satisfies | i/o |
 |---|---|---|---|---|
 | `agent-memory`<br>Agent memory assembler | Assemble every declared `memory` directory's nodes into each agent's memory, per vendor: Claude Code's `.claude/agent-memory/<agent>/MEMORY.md` (a marked region, injected when the subagent starts) and Antigravity's workspace skill `.agents/skills/<agent>-memory/SKILL.md`. Other vendors (Gemini CLI, Copilot, Codex, Cursor) are beaned under `31ni` and not generated. | <span class="tg-tag tg-shell">shell</span> | [`agent-memory`](../reference/skill-instructions/agent-memory.html) | 0 in / 1 out |
-| `archimate-check`<br>Check an instance's ArchiMate models against its config | The gate for the `archimate` graph typology: every model `cat-archimate.config.json` names is held, parses (Archi's native XML or its zipped archive), and resolves — every box in every view draws an element the model holds, every relationship's ends are in the model — and no `.archimate` file is held that the config does not name. | <span class="tg-tag tg-shell">shell</span> | [`archimate-models`](../reference/skill-instructions/archimate-models.html) | 1 in / 1 out |
-| `archimate-pages`<br>Give every ArchiMate view, element and relationship a page and an IRI, and draw every view | Write a JSON-LD node and a thin page for each model an instance's `cat-archimate.config.json` names and for every view, element and relationship in it — keyed by Archi's own ids — plus the normalised model the pages' one loader draws from, and every view drawn as SVG from the model's own bounds and bendpoints in ArchiMate's notation, each box a link to its element. `--out` writes into a site being built at the graph's path; without it the files go into the graph and `--check` gates them. | <span class="tg-tag tg-shell">shell</span> | [`archimate-models`](../reference/skill-instructions/archimate-models.html) | 3 in / 1 out |
 | `auto-docs-viewer`<br>Generated index pages | Render index pages for the declared skills, docs and swimlane-glossary directories, one per directory. | <span class="tg-tag tg-shell">shell</span> | [`graph-rendering`](../reference/skill-instructions/graph-rendering.html) | 1 in / 1 out |
 | `avatars-css`<br>Avatar stylesheet | Render the declared avatar nodes — an actor's glyph and colours, including the overlay states — into the stylesheet the site serves. | <span class="tg-tag tg-shell">shell</span> | [`site-presentation-assets`](../reference/skill-instructions/site-presentation-assets.html) | 1 in / 1 out |
 | `bean-query`<br>Query the beans knowledge graph | Query the beans knowledge graph using named graph analytics or arbitrary SPARQL 1.1. | <span class="tg-tag tg-inproc">inProcess</span> <span class="tg-tag tg-mcp">mcp</span> | [`bean-coordination`](../reference/skill-instructions/bean-coordination.html)<br>[`todo-manager`](../reference/skill-instructions/todo-manager.html) | 3 in / 1 out |
@@ -130,7 +128,6 @@ tool advertising a capability the graph cannot locate.
 | `merge-overlap`<br>Merge overlap (conflict prediction) | For the open PRs (via `gh`, or a list of branches), report which pairs would conflict: pairwise overlap on AUTHORED paths, with generated paths excluded using the merge-conflict-patterns declaration; which PRs touch a shared declaration (an instance's `<instance>.json`, `roles.json`, `package.json`, `bun.lock`, schemas, BPMN/DMN); and which touch `cat-harness/` or `cat-harness-tools/`. A PR that could not be measured makes no pair independent. JSON (`merge-overlap/v1`), the conflict-prediction input for composing trains. | <span class="tg-tag tg-shell">shell</span> | [`coordinate`](../reference/skill-instructions/coordinate.html)<br>[`merge-conflict-patterns`](../reference/skill-instructions/merge-conflict-patterns.html) | 2 in / 1 out |
 | `merge-train`<br>Merge train | Build a train branch from a base SHA: merge each member (a PR number or branch) with `merge-base.ts --no-regen`, refusing — never hand-resolving — a member whose conflicts no declared pattern covers; then one `bun run cat regen`, `check:l1-complete --write`, every check an instance declares `afterMerge` (its declared writer run when red), and `kg:audit:all:check`; then merge `origin/main`, taking main's side of generated conflicts and regenerating once more. Emits a `merge-train-report/v1` JSON report. Never pushes, opens or merges a PR. | <span class="tg-tag tg-shell">shell</span> | [`merge-conflict-patterns`](../reference/skill-instructions/merge-conflict-patterns.html)<br>[`prepare-merge`](../reference/skill-instructions/prepare-merge.html) | 5 in / 1 out |
 | `methodologies-viewer`<br>Methodologies viewer | Render the declared methodology graph as one page. | <span class="tg-tag tg-shell">shell</span> | [`graph-rendering`](../reference/skill-instructions/graph-rendering.html) | 1 in / 1 out |
-| `mount-from-lock`<br>Replay a committed mount lock with nothing but Node | Lay down every remote mount `index.lock.json` records — each instance fetched at the lock's full SHA (sparse, blob-filtered), each directory verified against its `treeDigest`, a mismatch undone and reported — importing only `node:*`, so it runs on a fresh clone before any layer is present. It never decides what to mount: `remote-mount` writes the lock (and checks trust); this only replays it. Refuses to write over a path with tracked files or bytes that no longer hash to the lock. Exit 0 mounted/current, 1 missing, 2 could-not-determine. | <span class="tg-tag tg-shell">shell</span> | [`kg-separation`](../reference/skill-instructions/kg-separation.html)<br>[`remote-mount`](../reference/skill-instructions/remote-mount.html) | 2 in / 1 out |
 | `narrative-queue`<br>What narratives are waiting on a person | List the agent-drafted narratives awaiting human confirmation, numbered, with the numbered rejection reasons beside them. The queue is the only place a draft's state is visible before someone accepts it. | <span class="tg-tag tg-shell">shell</span> | [`library-ingestion`](../reference/skill-instructions/library-ingestion.html) | 0 in / 1 out |
 | `navbar-include`<br>Write the site sidebar's harness navbar include | Render `_includes/generated/navbar-footer.html` from `docs/_data/harness.json` with the same renderer every railed page uses. With `--instance`, render the navbar of an IG repository's OWN site instead — that instance first, then what it needs; its own pages at this site's root, every other link to the main site at `--link-root` — into the shell that site is built from (#2235). | <span class="tg-tag tg-shell">shell</span> | [`harness-tiles`](../reference/skill-instructions/harness-tiles.html) | 5 in / 1 out |
 | `node-kind-pages`<br>Node kind pages | Render a page for every node kind, every harness holding nodes of it, and every node, under /<locale>/<declaring>/<kind>/ (issue #2195). | <span class="tg-tag tg-shell">shell</span> | [`graph-rendering`](../reference/skill-instructions/graph-rendering.html) | 1 in / 1 out |
