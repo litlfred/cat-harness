@@ -177,11 +177,12 @@ in [`kg-export`](../../kg/kg-core/kg-export.md) §"`fsh-guts` NEVER reaches a pu
      version.
 
    Both come from one command, the `folio-review-coverage` Tool (bean
-   `px0t`), run on the preview's published files:
-   `bun run <platform>/folio-assistant-core/scripts/review-coverage.ts
-   --changeset changeset.json --blocks blocks.json --comments
-   review-comments.json [--rendered rendered-impact.json --measured
-   rendered-measured.json]`. Quote its stderr summary. **If the preview has no
+   `px0t`), run on the preview's published files with `--changeset
+   changeset.json --blocks blocks.json --comments review-comments.json
+   [--rendered rendered-impact.json --measured rendered-measured.json]`. Its
+   command line is the Tool node's `invoke`, declared by the content layer
+   that owns the review process; this skill names the Tool, not that layer's
+   path. Quote its stderr summary. **If the preview has no
    `review-comments.json`, or one with no `verdicts` field, write "not
    measured"**, never 0. And never count resolved comments as coverage: a
    resolved comment is not a reviewer's verdict on the block.

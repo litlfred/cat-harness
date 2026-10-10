@@ -377,9 +377,10 @@ review the rendered output, not just the code diff.
 When an author has made content changes on a feature branch:
 
 1. **Compute the ChangeSet**, not a file list, when the branch touches a
-   folio's `folio` graph:
-   `bun run <platform>/folio-assistant-core/schemas/changeset.ts --folio <folio dir> --base origin/main --head <branch>`.
-   It says, per block, whether it was added, removed, reworded (`prose`),
+   folio's `folio` graph: the `folio-changeset` Tool, with `--folio <folio
+   dir> --base origin/main --head <branch>`. Its command line is the Tool
+   node's `invoke`, declared by the content layer that defines the `folio`
+   graph kind; this skill names the Tool, not that layer's path. It says, per block, whether it was added, removed, reworded (`prose`),
    edited (`manifest`), `moved` or `renamed`. A file list cannot: a
    prose-only edit changes no `.ts`, and a move changes two files that look
    unrelated. Rank "where to start" by it. For a large document, the section
