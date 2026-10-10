@@ -354,6 +354,7 @@ every gate in this table is green in a composed checkout at the matched pins.
 | A visualiser route a generator computed by hand (the glossary page moved under its declared route) | `uml:overview` inside `skill:register` ("no glossary page at …") | cat-harness-tools #27: `declaredRoute(<core>, "glossary-page")` |
 | A browser bundle importing a node-only module through a package import | `navbar:assets` ("Browser polyfill for module node:url …") | cat-harness #98 + cat-harness-tools #49: the constant moved into a node-free module |
 | A directory declared inside another declared directory in the receiving layer | `check:layout-norms` (it stopped `qa:refresh`) | cat-harness-tools #54: `health/` out of the declared `test/` (owner: option A) |
+| A file left in BOTH layers (`schemas/adjudication.ts` and `schemas/materialization.ts` were in cat-harness and in folio-assistant-core) | `slice:sqlite` / `slice:sqlite:check` (the KG export mints the same IRI twice and the slice dies on a UNIQUE constraint); `node-kinds:check` and `kg:export` do not refuse a duplicate on their own | delete the copy the move should have removed, in the layer that no longer owns it (folio-assistant#2529's session) |
 | Paired artefacts a move split across repositories (`review-comments`, `glossary-terms` to folio-assistant-core; the GRADE lists to smart-base) | `skills:docs` ("page(s) produced by NO source"), `check:declared-dirs` ("absent — declared and not on disk") | pin the receiving commits WITH the removing one (below) |
 
 ### The rewrite rule
