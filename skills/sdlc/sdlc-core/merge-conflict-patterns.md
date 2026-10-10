@@ -18,7 +18,7 @@ user_invocable: false
 `bun run cat merge:main` is the command; `processes/sdlc/merge-base.bpmn` is the
 process it executes, called from `Task_PrepareMerge` in
 `code-change-review.bpmn`. The patterns themselves are data in
-`cat-harness/scripts/merge-conflict-patterns.ts`. This page says what each one
+`cat-harness-tools/scripts/merge-conflict-patterns.ts`. This page says what each one
 is FOR, so a reader can tell a deliberate refusal from a gap.
 
 ## Why this exists
@@ -73,7 +73,7 @@ its authored conflict was a bean definition; it is not in conflict at all.
 
 So before classifying anything, `git fetch` and read the patterns from the
 BASE — or do what the measurement did and classify against
-`git show origin/<base>:cat-harness/scripts/merge-conflict-patterns.ts`. The
+`git show origin/<base>:cat-harness-tools/scripts/merge-conflict-patterns.ts`. The
 number that decides whether a human is needed must come from the declaration
 the merge will actually be resolved under.
 
@@ -770,7 +770,7 @@ that is behind `main`, one live run per PR (a newer run cancels an older one).
   was **cancelled** (a newer push to `main` superseded it) or whose merge step
   reported no status, which leaves the comment untouched. Before #1854 such a
   run rewrote it to "**Error** (exit )". The text is composed by
-  `cat-harness/scripts/merge-main-comment.ts`, which is unit-tested.
+  `cat-harness-tools/scripts/merge-main-comment.ts`, which is unit-tested.
 - **The merge commit is still judged by CI**: pushed with `MERGE_MAIN_TOKEN`
   when that secret exists, otherwise followed by a dispatch of
   `code-quality-gates.yml` on the branch, because a GITHUB_TOKEN push triggers

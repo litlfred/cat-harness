@@ -64,7 +64,7 @@ cheaper answers have been offered.
 
 ## Never write the upload URL by hand
 
-Use **`bun run cat-harness/scripts/upload-url.ts [branch]`**, which composes it
+Use **`bun run cat-harness-tools/scripts/upload-url.ts [branch]`**, which composes it
 from the declaration. The reason is a live 404 rather than a preference. The
 owner, 2026-09-20, pointed at
 `github.com/litlfred/folio-assistant/upload/main/uploads`:

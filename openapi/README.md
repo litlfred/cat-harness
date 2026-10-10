@@ -32,7 +32,7 @@ built for.
 **The document is the API authors'; the pages are ours, and they copy nothing.**
 A document is ingested verbatim beside a `<id>.source.json` naming the
 repository, path and commit it came from. Every page is a thin page
-(`cat-harness/scripts/thin-page.ts`): identity and a pointer. The operation's
+(`cat-harness-tools/scripts/thin-page.ts`): identity and a pointer. The operation's
 parameters, request body and responses are drawn in the browser by one shared
 loader from the served document (`visualizer-loading`). A fix to what an
 operation says is a fix upstream, then a re-ingest.
@@ -46,8 +46,8 @@ operation says is a fix upstream, then a re-ingest.
    exist (`configPath` in `scripts/ingest-openapi.ts`).
 3. `cat-harness` in its `needs` — directly or through its closure.
 
-Then `cat-harness/openapi/scripts/ingest-openapi.ts --instance <dir> --source <checkout>`
-brings the bytes in, and `cat-harness/openapi/scripts/gen-openapi-pages.ts --instance <dir>`
+Then `cat-harness-tools/openapi/scripts/ingest-openapi.ts --instance <dir> --source <checkout>`
+brings the bytes in, and `cat-harness-tools/openapi/scripts/gen-openapi-pages.ts --instance <dir>`
 writes the pages and JSON-LD into the same graph. Both take `--check`.
 
 ## Where the pages and IRIs land — inside the `openapi` graph

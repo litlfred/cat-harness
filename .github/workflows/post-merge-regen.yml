@@ -61,8 +61,8 @@ jobs:
 
       - name: Mount bootstrap and bootstrap-tools from lock
         run: |
-          if [ -f "cat-harness/scripts/mount-from-lock.ts" ]; then
-            bun cat-harness/scripts/mount-from-lock.ts --root .
+          if [ -f "cat-harness-tools/scripts/mount-from-lock.ts" ]; then
+            bun cat-harness-tools/scripts/mount-from-lock.ts --root .
           elif [ -f "scripts/mount-from-lock.ts" ]; then
             bun scripts/mount-from-lock.ts --root .
           fi

@@ -90,9 +90,9 @@ That sentence is the QA/QC after-check, stated by the standard.
 | `prov:qualifiedAssociation` → `prov:agent` | the actor that performed the task | same, `ProvAssociationSchema` |
 | `prov:hadRole` | the role the BPMN lane binds | same |
 | `prov:hadPlan` | the BPMN task, written `<process>#<task id>` (`PLAN_REF`) — a task is *"a set of actions or steps intended by one or more agents"* (entry (52)), so no term is minted | same |
-| `prov:used` | the content a step acted on | `cat-harness/src/workflow/prov-record.ts` |
-| `prov:Entity`, `prov:wasDerivedFrom` | the exported graph is an Entity derived from its source commit | `cat-harness/scripts/kg-export.ts`; also `derivedFrom` in `cat-harness/schemas/jsonld.ts` |
-| `prov:alternateOf` (expanded) | a preview graph → the canonical one: *"Two alternate entities present aspects of the same thing"* (§4.2, entry (20), `sections/sec-017-…md`) | `cat-harness/scripts/kg-export.ts`, chosen over `owl:sameAs` because sameAs would merge their statements |
+| `prov:used` | the content a step acted on | `cat-harness-tools/src/workflow/prov-record.ts` |
+| `prov:Entity`, `prov:wasDerivedFrom` | the exported graph is an Entity derived from its source commit | `cat-harness-tools/scripts/kg-export.ts`; also `derivedFrom` in `cat-harness/schemas/jsonld.ts` |
+| `prov:alternateOf` (expanded) | a preview graph → the canonical one: *"Two alternate entities present aspects of the same thing"* (§4.2, entry (20), `sections/sec-017-…md`) | `cat-harness-tools/scripts/kg-export.ts`, chosen over `owl:sameAs` because sameAs would merge their statements |
 
 **One extension, by the route the Abstract allows** ("specialized to create new
 classes and properties"): `cat-harness:underPolicy`, the ODRL policy uid(s) a
@@ -104,7 +104,7 @@ run was under. `schemas/prov.ts` calls it *"the one non-PROV term"*. It is in th
 1. **No invented agent or role.** `ProvAssociationSchema` requires both
    `prov:agent` and `prov:hadRole`; a step with no actor, or in a lane binding
    no role, gets **no** activity and a `no-actor` / `no-role` finding instead
-   (`cat-harness/scripts/prov-qaqc.ts`, `prov-record.ts`). This is stricter
+   (`cat-harness-tools/scripts/prov-qaqc.ts`, `prov-record.ts`). This is stricter
    than the standard, deliberately — the code records the owner's 2026-09-24
    *"Keep required"*. Filling the field to satisfy the schema is the
    fabrication the report exists to catch.
@@ -153,13 +153,13 @@ Recorded so the next reader does not mistake them for adoption decisions:
 ## Where it runs
 
 - `cat-harness/schemas/prov.ts` — the adopted subset, as Zod.
-- `cat-harness/src/workflow/prov-record.ts` — the engine writes the activity as
+- `cat-harness-tools/src/workflow/prov-record.ts` — the engine writes the activity as
   each step is recorded (`InstanceState` history `prov`, `src/workflow/instance.ts`).
-- `cat-harness/scripts/prov-qaqc.ts` — the after-check: derives or reads each
+- `cat-harness-tools/scripts/prov-qaqc.ts` — the after-check: derives or reads each
   activity, re-runs `authorizeTask`, writes `docs/assets/prov/<instance>.prov.jsonld`
   and the `/prov-qaqc/` page. `bun run cat check:prov-qaqc`, the CI step
   **"PROV-O QA/QC report"** in `.github/workflows/code-quality-gates.yml`;
   advisory — it fails only on stale output, an invalid activity, or an internal
   error.
-- Tests: `cat-harness/scripts/tests/prov-qaqc.test.ts`,
-  `cat-harness/scripts/tests/prov-record.test.ts`.
+- Tests: `cat-harness-tools/scripts/tests/prov-qaqc.test.ts`,
+  `cat-harness-tools/scripts/tests/prov-record.test.ts`.

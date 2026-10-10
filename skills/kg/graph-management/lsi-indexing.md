@@ -44,7 +44,7 @@ bun run cat lsi query "certainty of the evidence" --instance who-iris --graph li
 bun run cat lsi:audit                                          # which graphs need one; is each fresh?
 bun run cat lsi:epics --out <file.md> [--prs <open-prs.json>]  # epic-filing proposal
 bun run cat lsi:near "<planned bean title>"                    # before `beans create`
-bun run cat-harness/content/pipeline/graph-search.ts "<q>" --latent   # lexical + graph, THEN a separate latent list
+bun run cat-harness-tools/content/pipeline/graph-search.ts "<q>" --latent   # lexical + graph, THEN a separate latent list
 ```
 
 **From an MCP host**: the `lsi_query` tool (Tool node `lsi-query`), with the

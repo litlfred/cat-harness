@@ -14,7 +14,7 @@ description: >
 
 > Skill id: `pdf-inline-viewer` · Package: `ui-core` · Bean
 > `folio-assistant-5ea6` · Issue #2119 · Tools `pdf-viewer-install`,
-> `pdf-viewer-embed` · Code `cat-harness/scripts/pdf-viewer.ts`
+> `pdf-viewer-embed` · Code `cat-harness-tools/scripts/pdf-viewer.ts`
 
 Owner, 2026-10-04: *"is there a lightweight inline viewer that could be used for
 viewing PDF on CDN … basic functionality (search, scroll, jump to page, print,
@@ -145,7 +145,7 @@ added to a clone.
 
 ## Verifying a change here
 
-Unit tests (`cat-harness/scripts/tests/pdf-viewer.test.ts`) run the **shipped**
+Unit tests (`cat-harness-tools/scripts/tests/pdf-viewer.test.ts`) run the **shipped**
 shim and client against stubs: the allowlist, the parent-document listener, the
 root derivation at three depths, and lazy loading. They cannot check that
 pdf.js opens, searches and prints. For that, install into a scratch site with

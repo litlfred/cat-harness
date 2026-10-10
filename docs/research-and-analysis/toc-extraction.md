@@ -35,7 +35,7 @@ only headings that were numbered or carried one of thirteen stock names.
 more entries. For each, the outline is set aside, every method runs on the page
 content alone, and its output is scored against the outline. No hand labelling,
 and the same harness re-runs after every change:
-`python3 cat-harness/scripts/toc-benchmark.py`.
+`python3 cat-harness-tools/scripts/toc-benchmark.py`.
 
 The metrics are the ones the uploaded papers use, so results compare:
 
@@ -314,7 +314,7 @@ an article that starts mid-volume. `_pdf_page_labels.page_labels` writes a
 | `interpolated` | an unnumbered page inside a run (chapter opener, full-page figure) takes the run's value |
 | `contents` | a contents entry confirmed in the body pairs a printed label with a physical page |
 
-**Measured** (`cat-harness/scripts/page-label-benchmark.py`): hide each PDF's
+**Measured** (`cat-harness-tools/scripts/page-label-benchmark.py`): hide each PDF's
 /PageLabels and predict from the content alone. Over the 15 PDFs whose labels
 are informative: **arabic-labelled pages 0.98 correct**, all labelled pages
 0.88 (the remainder is mostly cover labels such as "A", "B", "Cover Page",
@@ -351,7 +351,7 @@ PyMuPDF when it is installed and pdfminer.six otherwise.
 ## Methods assessed but not run
 
 Grobid was first in this list; it is now measured above, built from source with
-the Maven Central mirror in `cat-harness/scripts/gradle-maven-mirror.init.gradle`
+the Maven Central mirror in `cat-harness-tools/scripts/gradle-maven-mirror.init.gradle`
 (skill `blocked-build-dependencies`).
 
 | tool | what it is | why not run here | assessment |

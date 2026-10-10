@@ -105,7 +105,7 @@ DSpace makes this concrete. It generates a `THUMBNAIL` bundle of its own, so
 IRIS's thumbnail. The three WHO IRIS covers in this repository are **not**
 those: `iris.who.int` is egress-blocked here, nothing upstream was fetched, and
 each is page 1 of a PDF already held, rasterised by
-`cat-harness/scripts/pdf-cover.py`.
+`cat-harness-tools/scripts/pdf-cover.py`.
 
 Three rules, in the order they bite:
 
@@ -178,6 +178,6 @@ file's `localPath`, which exists only once somebody asked for it.
 - `schemas/materialization.ts` in folio-assistant-core — `materializedAt`, the
   timestamp this one is most often confused with; its state vocabulary is
   `schemas/materialization-state.ts` here.
-- `cat-harness/scripts/pdf-cover.py` — the generic page raster, and
+- `cat-harness-tools/scripts/pdf-cover.py` — the generic page raster, and
   `folio-assistant-core/scripts/gen-covers.ts` the catalogue wiring (any instance; the catalogue decides which
   documents get one) that checks every claim it makes about them.

@@ -87,7 +87,7 @@ from source `.fsh` file to output FHIR resource, with source locations. The AST
 exporter copies it into the AST directory; the incremental planner reads it
 there. No modification to SUSHI is needed.
 
-`fsh-cone` (`cat-harness/content/pipeline/fsh-cone.ts`) provides the **reverse**
+`fsh-cone` (`cat-harness-tools/content/pipeline/fsh-cone.ts`) provides the **reverse**
 half — who depends on a file — so a changed RuleSet- or Alias-only file (which
 produces no resource itself) can be traced to the resources it affects. These two
 maps together give the planner a complete cone.

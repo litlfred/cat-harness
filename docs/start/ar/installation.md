@@ -89,12 +89,12 @@ cat-harness\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
 `PATH` الخاص بنظام Windows، نظرًا لأن Git Bash يرثه من برنامج الاستدعاء. والبرامج النصية التي
 لا معنى لها إلا على بيئة استضافة Linux (`deploy/`، و`install-tex.sh`، و`setup-sage.sh`،
 و`setup-singular.sh`) لا تحتوي على مغلّف عن قصد. وتوجد القائمة في
-`cat-harness/scripts/gen-bat-wrappers.sh`؛ ويقوم `bun run cat bat:sync` بإعادة إنشاء المغلّفات،
+`cat-harness-tools/scripts/gen-bat-wrappers.sh`؛ ويقوم `bun run cat bat:sync` بإعادة إنشاء المغلّفات،
 بينما يتسبب `bun run cat bat:sync:check` في إفشال CI إذا كان أي منها مفقودًا أو قديمًا.
 
 ### على Linux/macOS، يوجد أيضًا برنامج نصي
 
-يقوم `cat-harness/scripts/start-folio-assistant.sh` بتثبيت Bun إذا كان مفقودًا ثم
+يقوم `cat-harness-tools/scripts/start-folio-assistant.sh` بتثبيت Bun إذا كان مفقودًا ثم
 يبدأ تشغيل الخادم، كما أن
 `cat-harness-tools/adapters/mcp-server/install.sh` هو برنامج تثبيت أكثر شمولاً يغطي TeX
 Live أيضًا. كلاهما لم يكن موثقًا حتى 2026-09-21
@@ -217,7 +217,7 @@ claude mcp add folio-assistant -- bun run /path/to/folio-assistant/cat-harness-t
 
 قم بربط ممهّد بدء الجلسة بخطاف `SessionStart` في Antigravity حتى تُمهَّد كل
 جلسة بخطة العمل — وجّه أمر الخطاف إلى البرنامج النصي
-المشترك `cat-harness/scripts/session-start-coord-sweep.sh` (وهو البرنامج النصي نفسه الذي يستخدمه
+المشترك `cat-harness-tools/scripts/session-start-coord-sweep.sh` (وهو البرنامج النصي نفسه الذي يستخدمه
 كل إطار؛ ويختلف فقط تنسيق تكوين الخطاف باختلاف الأداة).
 
 ### Gemini CLI

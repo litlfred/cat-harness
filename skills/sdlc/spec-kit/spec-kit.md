@@ -147,8 +147,8 @@ specification before implementation code is written.
   in `AGENTS.md`, and in opening briefs.
 - **Mechanically detectable**: Detectable automatically via `check-spec.ts`:
   ```sh
-  bun run cat-harness/scripts/check-spec.ts --spec-before-code --issue <number>
-  bun run cat-harness/scripts/check-spec.ts --spec-before-code --bean <path>
+  bun run cat-harness-tools/scripts/check-spec.ts --spec-before-code --issue <number>
+  bun run cat-harness-tools/scripts/check-spec.ts --spec-before-code --bean <path>
   ```
 - **Three-state reporting**:
   - `exit 0` (`pass`): The referenced issue carries a valid spec comment adhering

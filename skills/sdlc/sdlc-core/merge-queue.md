@@ -479,7 +479,7 @@ per-checkout `git config`.
 never the web button, never `merge_pull_request` from an MCP tool, and, while a
 Merge Manager is active, never by marking a PR ready or labelling it yourself
 first (with none active, see §"When no Merge Manager is active"). The script
-(`cat-harness/scripts/merge-guard.ts`, bean `uoob`, child (f) of `nok9`) is
+(`cat-harness-tools/scripts/merge-guard.ts`, bean `uoob`, child (f) of `nok9`) is
 the merge: it evaluates eight checks over GitHub's live facts, and performs
 the PUT, pinned to the head it evaluated, only when every one passes.
 

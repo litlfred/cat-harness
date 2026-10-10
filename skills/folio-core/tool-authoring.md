@@ -117,7 +117,7 @@ export const packTarballTool = defineTool({
     ],
   },
   invoke: {
-    command: "bun cat-harness/scripts/pack-tarball.ts",
+    command: "bun cat-harness-tools/scripts/pack-tarball.ts",
   },
 });
 ```

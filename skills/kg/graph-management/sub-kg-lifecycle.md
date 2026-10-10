@@ -138,7 +138,7 @@ Every symbol the sub-KG uses from the platform is re-exported from **one
 file**, and nothing else in the directory climbs out of it. On the day it
 leaves, re-pointing the platform is a one-file edit instead of a sweep.
 
-`cat-harness/scripts/tests/instance-separation-imports.test.ts` is the guard.
+`cat-harness-tools/scripts/tests/instance-separation-imports.test.ts` is the guard.
 It covers **every** instance whose `repository` differs from its
 `livesAt.repository` — not only those that opted in, because the opt-in
 version was silent in exactly the case it existed for: the one climb that

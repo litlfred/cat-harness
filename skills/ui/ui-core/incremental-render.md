@@ -82,7 +82,7 @@ rejects.
 The three options were: spell the paths as literals (rejected, and rightly);
 import core (rejected, and rightly); or **ask across the boundary the way the
 pipeline already asks every renderer it runs** — by spawning one.
-`cat-harness/scripts/declared-dirs.ts` is that third option: core-layer, one
+`cat-harness-tools/scripts/declared-dirs.ts` is that third option: core-layer, one
 line of JSON on stdout, `{graph: [dirs]}`.
 
 **A failure prints nothing to stdout and exits non-zero**, so the caller cannot

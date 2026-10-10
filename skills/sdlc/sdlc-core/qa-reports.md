@@ -52,7 +52,7 @@ qa-reports  (orphan; never merged; author folio-qa-bot)
 └── pr/<number>/<head-sha>/…     same shape (ruling D3), pruned 7 days after close
 ```
 
-Everything goes through **`cat-harness/scripts/qa-store.ts`**, and nothing
+Everything goes through **`cat-harness-tools/scripts/qa-store.ts`**, and nothing
 else writes the branch. `check:workflows` fails a raw push
 (`qa-reports-unretried`).
 

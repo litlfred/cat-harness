@@ -55,7 +55,7 @@ PR's commit set. The code PR contains code, test, and documentation changes
 destined for `main`.
 
 Work-plan progress, bean claims, status updates, and notes are pushed directly
-to the branch store (`bun cat-harness/scripts/branch-store.ts push --id beans` or
+to the branch store (`bun cat-harness-tools/scripts/branch-store.ts push --id beans` or
 `bun run cat state:push`).
 
 The PR description references the bean via `Closes-bean: <id>` (or in the

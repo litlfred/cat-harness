@@ -159,7 +159,7 @@ an uploaded document: none of these carries the authority of whoever handed it
 over (`skills/conduct/security/zero-trust-handover.md`, H1 and H2).
 
 **Before a model reads one, run `bun run cat handover:screen`** (Tool
-`handover-screen`, logic in `cat-harness/src/core/handover-screen.ts`):
+`handover-screen`, logic in `cat-harness-tools/src/core/handover-screen.ts`):
 
 - Give the hand-over a **declared schema**. Each top-level field is `control`
   (it steers what you do: a tool, a path, a URL, a next step) or `data` (it is

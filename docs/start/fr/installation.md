@@ -88,12 +88,12 @@ Tout ce dont le script `.sh` a besoin — `bun`, `curl`, `gh`, `elan` — doit s
 `PATH` de Windows, puisque Git Bash en hérite depuis l'appelant. Les scripts qui n'ont de sens
 que sur un hôte Linux (`deploy/`, `install-tex.sh`, `setup-sage.sh`,
 `setup-singular.sh`) n'ont délibérément aucun wrapper. La liste se trouve dans
-`cat-harness/scripts/gen-bat-wrappers.sh` ; `bun run cat bat:sync` régénère les wrappers
+`cat-harness-tools/scripts/gen-bat-wrappers.sh` ; `bun run cat bat:sync` régénère les wrappers
 et `bun run cat bat:sync:check` fait échouer la CI si l'un d'eux est manquant ou obsolète.
 
 ### Sur Linux/macOS, il existe également un script
 
-`cat-harness/scripts/start-folio-assistant.sh` installe Bun s'il est manquant et
+`cat-harness-tools/scripts/start-folio-assistant.sh` installe Bun s'il est manquant et
 démarre ensuite le serveur, et
 `cat-harness-tools/adapters/mcp-server/install.sh` est un installateur plus complet couvrant également TeX
 Live. Tous deux n'étaient pas documentés jusqu'au 2026-09-21
@@ -216,7 +216,7 @@ partagé avec Gemini CLI) :
 
 Reliez l'amorceur de démarrage de session au hook `SessionStart` d'Antigravity afin que chaque
 session soit initialisée avec le plan de travail — faites pointer la commande du hook vers le script
-partagé `cat-harness/scripts/session-start-coord-sweep.sh` (le même script utilisé par chaque harnais ;
+partagé `cat-harness-tools/scripts/session-start-coord-sweep.sh` (le même script utilisé par chaque harnais ;
 seul le format de configuration du hook diffère selon l'outil).
 
 ### Gemini CLI

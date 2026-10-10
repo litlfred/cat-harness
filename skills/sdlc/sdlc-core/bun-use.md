@@ -118,11 +118,11 @@ distinct roles:
      `tsconfig.json`, `bunfig.toml`, or `bun.lock`.
    - All instance compositions are declared in `index.config.json` and locked with their
      pinned SHAs and tree digests in `index.lock.json`.
-   - Subgraphs and remote instances are mounted from the lock via `bun cat-harness/scripts/mount-from-lock.ts`.
+   - Subgraphs and remote instances are mounted from the lock via `bun cat-harness-tools/scripts/mount-from-lock.ts`.
    - Whole-checkout integration tests live under `cat-harness-tools/test/coordinator/`.
    - Working state subgraphs (`beans/`, `fsh-guts/`) are branch-mounted subgraphs kept at branch
      tips (`cat/cat-harness/beans`, `cat/cat-harness/fsh-guts`) and mounted via
-     `bun cat-harness/scripts/state-mount.ts`.
+     `bun cat-harness-tools/scripts/state-mount.ts`.
 2. **Standalone Subgraphs**:
    - Each code repository (`cat-harness-tools`, `cat-harness`, `bootstrap-tools`, etc.) maintains
      its own standalone `package.json`, `tsconfig.json`, and `bunfig.toml`.

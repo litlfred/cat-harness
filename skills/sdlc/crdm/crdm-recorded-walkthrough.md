@@ -19,7 +19,7 @@ is what turned a 17-minute call into
 [the round 2 public-comment CRD](../../../docs/proposals/public-comment-round-2-crd-2026-10-06.md)
 (bean `uphx`), and every rule below was paid for there.
 
-The tool is `cat-harness/scripts/meeting-recording.py` (stdlib + ffmpeg;
+The tool is `cat-harness-tools/scripts/meeting-recording.py` (stdlib + ffmpeg;
 `--help` per subcommand).
 
 ## 1. Inventory what was actually uploaded

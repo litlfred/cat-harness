@@ -164,7 +164,7 @@ bun run cat readme:subgraphs:check    # fail on a stale README or sidecar — CI
 Changing a template changes every README it renders; commit them with the
 template, in one commit. So does adding or removing a file in any declared
 directory — that directory's table changed. `readme:subgraphs:check` runs in
-`code-quality-gates.yml` and in `cat-harness/scripts/git-hooks/pre-commit`; it
+`code-quality-gates.yml` and in `cat-harness-tools/scripts/git-hooks/pre-commit`; it
 is part of `bun run cat gates`.
 
 ## On the site specifically

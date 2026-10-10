@@ -517,7 +517,7 @@ badges fetched `assets/beans/count.json` from the page's own site, where the
 shell had copied the platform's. So smart-trust showed folio-assistant's 537
 open beans, and 109 rail and tile links on one page resolved to 404s.
 
-`cat-harness/scripts/lib/foreign-site-scope.ts` applies the rule to the data,
+`cat-harness-tools/scripts/lib/foreign-site-scope.ts` applies the rule to the data,
 once, for both passes (`compose-docs --shell --instance`, and
 `rail-standalone-pages --foreign-site`):
 

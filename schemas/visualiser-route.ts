@@ -3,6 +3,7 @@
  * and every reader computes a visualiser's URL with.
  *
  * @module schemas/visualiser-route
+ * @graphNode none — a function library: the one route every visualiser URL is computed with
  *
  * ## The owner's rule, 2026-10-09
  *

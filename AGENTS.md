@@ -12,7 +12,7 @@ this layer, so they are linked here rather than there:
 [continual progress](skills/sdlc/sdlc-core/continual-progress.md),
 [context before the question](skills/conduct/conduct-core/interaction-modality.md).
 
-1. **Get the work-plan CLI** — `cat-harness/scripts/install-beans.sh &&
+1. **Get the work-plan CLI** — `cat-harness-tools/scripts/install-beans.sh &&
    export PATH="$HOME/.local/bin:$PATH" && beans prime`. A fresh container has
    no `beans`, and the hand-parse fallback cannot claim or create anything.
 2. **Claim before you work.** `bun run cat beans:claim <id>` — not
@@ -160,7 +160,7 @@ right for closing your own bean, `--body-append` and `--blocked-by`. Never
 delete a bean — `scrapped`, with reasons — which is one instance of
 [`deletion-requires-confirmation`](skills/conduct/conduct-core/deletion-requires-confirmation.md).
 Bean updates are pushed directly to the branch store
-(`bun cat-harness/scripts/branch-store.ts push --id beans` or `bun run cat state:push`)
+(`bun cat-harness-tools/scripts/branch-store.ts push --id beans` or `bun run cat state:push`)
 rather than committed to code PRs on `main`.
 Beans are not sidecars, and this is not the content-review feedback workflow
 ([`todo-review`](skills/authoring/authoring-core/todo-review.md)).
@@ -295,8 +295,8 @@ doing ([`opening-brief`](skills/sdlc/sdlc-core/opening-brief.md)).
   [`docs/folio-assistant-migration.md`](docs/folio-assistant-migration.md); the
   Lean tooling roadmap is issue #198.
 - **The generated references are never hand-edited**: regenerate them with
-  `bun run cat-harness/scripts/gen-schema-docs.ts` and
-  `bun run cat-harness/scripts/gen-skill-docs.ts`.
+  `bun run cat-harness-tools/scripts/gen-schema-docs.ts` and
+  `bun run cat-harness-tools/scripts/gen-skill-docs.ts`.
 
 ---
 

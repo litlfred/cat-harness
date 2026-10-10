@@ -46,7 +46,7 @@ folio-supplied data. See §7.
 
 ```sh
 beans prime && beans list      # the work-plan — see §6
-cat-harness/scripts/session-start-coord-sweep.sh  # CLI-independent equivalent
+cat-harness-tools/scripts/session-start-coord-sweep.sh  # CLI-independent equivalent
 bun run cat check-deps                     # what this environment can do
 ```
 
@@ -94,8 +94,8 @@ start:
 | [Skills & roles](../concepts/skills.html) | how skills, roles, and capabilities compose |
 
 Both `reference/` directories are **generated** — never hand-edit them.
-Regenerate with `bun run cat-harness/scripts/gen-schema-docs.ts` and
-`bun run cat-harness/scripts/gen-skill-docs.ts`.
+Regenerate with `bun run cat-harness-tools/scripts/gen-schema-docs.ts` and
+`bun run cat-harness-tools/scripts/gen-skill-docs.ts`.
 
 ## 4. The content object model, briefly
 

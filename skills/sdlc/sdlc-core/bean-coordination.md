@@ -128,7 +128,7 @@ refs. To link them:
 2. **On closure**, record the landed merge commit SHA from `main`, the branch,
    and verifiable evidence in the bean body before pushing to the branch store:
    ```bash
-   bun cat-harness/scripts/branch-store.ts push --id beans
+   bun cat-harness-tools/scripts/branch-store.ts push --id beans
    ```
 
 ### A DECISION bean you will not land soon — put the question where a person reads
@@ -470,7 +470,7 @@ by every pull request that adds a note, so two of them conflict on it. It is a
 `README.md` whose rows all sit inside one `<!-- bean-notes:begin -->` region,
 so the declared `readme-generated-regions` pattern resolves it without a
 person and `regen` rewrites it from the merged notes. The notes themselves
-never conflict. `cat-harness/scripts/tests/bean-notes.test.ts` merges two real
+never conflict. `cat-harness-tools/scripts/tests/bean-notes.test.ts` merges two real
 branches to show both halves, and fails when the branch is dropped from the
 name.
 
@@ -860,7 +860,7 @@ The remedies:
 
 1. **Push beans directly to the branch store.** Because beans are not bundled into
    code PR commits on `main`, newly created beans, epics, and Done-whens are
-   pushed to the branch store (`bun cat-harness/scripts/branch-store.ts push --id beans`)
+   pushed to the branch store (`bun cat-harness-tools/scripts/branch-store.ts push --id beans`)
    as soon as the plan exists. The work plan is immediately visible to all agents.
 2. **A sweep reads the branch store.** Sweeps read the shared branch store,
    so no session is blind to current goals and claims.

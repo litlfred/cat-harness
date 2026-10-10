@@ -71,7 +71,7 @@ whose target resolves to `PIIS2589750021000388 (2`. That reddened `main` through
 in `bootstrap-tools/scripts/subgraph-readmes.ts` percent-encodes every segment
 of a destination — parentheses included, because an unbalanced one ends a
 CommonMark destination just as surely as a space — and `decodeLinkTarget` in
-`cat-harness/scripts/check-subgraphs.ts` decodes before asking the filesystem.
+`cat-harness-tools/scripts/check-subgraphs.ts` decodes before asking the filesystem.
 
 This section argued against that route while it was hypothetical. It is not a
 reason to undo it. **The two layers answer different questions**, and neither
@@ -112,7 +112,7 @@ counts below are from `git status` over the repair, not from recall:
 | `provenance.source` | 3 × `who-iris/catalogue/records/*.dc.json` | repointed |
 | `file`, `source_file` | 6 × `structure.json`, 6 × `manifest.jsonld` | repointed |
 | a hardcoded path | `who-iris/themes/themes.test.ts` | **threw at module load**, which is why bun reported `1 error` with an empty failure list |
-| two test fixtures | `cat-harness/scripts/tests/pdf-images.test.py` | the arm **skipped silently** — `1xhc` — so the skip now announces itself |
+| two test fixtures | `cat-harness-tools/scripts/tests/pdf-images.test.py` | the arm **skipped silently** — `1xhc` — so the skip now announces itself |
 | prose paths | `gen-iris-pages.ts`, `pdf-pages.py`, two `_comment` fields | repointed |
 
 Everything else regenerates, and **in dependency order**: `library:graph` →

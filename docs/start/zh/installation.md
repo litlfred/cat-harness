@@ -69,11 +69,11 @@ cat-harness\scripts\install-beans.bat
 cat-harness\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
 ```
 
-`.sh` 所需的任何工具——`bun`、`curl`、`gh`、`elan`——都必须位于 Windows 的 `PATH` 中，因为 Git Bash 会从调用方继承环境变量。特意未为仅在 Linux 主机上有意义的脚本（`deploy/`、`install-tex.sh`、`setup-sage.sh`、`setup-singular.sh`）提供包装器。脚本列表维护在 `cat-harness/scripts/gen-bat-wrappers.sh` 中；`bun run cat bat:sync` 会重新生成这些包装器，如果缺少或过期，`bun run cat bat:sync:check` 会导致 CI 失败。
+`.sh` 所需的任何工具——`bun`、`curl`、`gh`、`elan`——都必须位于 Windows 的 `PATH` 中，因为 Git Bash 会从调用方继承环境变量。特意未为仅在 Linux 主机上有意义的脚本（`deploy/`、`install-tex.sh`、`setup-sage.sh`、`setup-singular.sh`）提供包装器。脚本列表维护在 `cat-harness-tools/scripts/gen-bat-wrappers.sh` 中；`bun run cat bat:sync` 会重新生成这些包装器，如果缺少或过期，`bun run cat bat:sync:check` 会导致 CI 失败。
 
 ### 在 Linux/macOS 上，也有一个脚本
 
-`cat-harness/scripts/start-folio-assistant.sh` 会在 Bun 缺失时自动安装，然后启动服务器；`cat-harness-tools/adapters/mcp-server/install.sh` 是一个更完整的安装程序，同时也涵盖了 TeX Live。两者在 2026-09-21 之前都未曾记录在文档中（[#740](https://github.com/litlfred/folio-assistant/issues/740)）——这也正是本节存在的原因。
+`cat-harness-tools/scripts/start-folio-assistant.sh` 会在 Bun 缺失时自动安装，然后启动服务器；`cat-harness-tools/adapters/mcp-server/install.sh` 是一个更完整的安装程序，同时也涵盖了 TeX Live。两者在 2026-09-21 之前都未曾记录在文档中（[#740](https://github.com/litlfred/folio-assistant/issues/740)）——这也正是本节存在的原因。
 
 ## 检查你的环境
 
@@ -177,7 +177,7 @@ Antigravity 原生读取 `AGENTS.md`，并支持 MCP 服务器和 `SessionStart`
 }
 ```
 
-将会话启动引导挂接到 Antigravity 的 `SessionStart` 钩子，以便每个会话在启动时都载入工作计划 —— 将钩子命令指向共享脚本 `cat-harness/scripts/session-start-coord-sweep.sh`（所有 harness 都使用同一个脚本；仅每个工具的钩子配置格式有所不同）。
+将会话启动引导挂接到 Antigravity 的 `SessionStart` 钩子，以便每个会话在启动时都载入工作计划 —— 将钩子命令指向共享脚本 `cat-harness-tools/scripts/session-start-coord-sweep.sh`（所有 harness 都使用同一个脚本；仅每个工具的钩子配置格式有所不同）。
 
 ### Gemini CLI
 

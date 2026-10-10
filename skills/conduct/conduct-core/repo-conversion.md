@@ -8,7 +8,7 @@ user_invocable: true
 
 Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../../../folio-assistant-core/processes/conduct/getting-started.bpmn),
 `Task_ScanRepo` and `Task_ConfirmImport` (non-relaxable).
-Scanner: `bun run cat-harness/scripts/scan-repo-content.ts`.
+Scanner: `bun run cat-harness-tools/scripts/scan-repo-content.ts`.
 
 ## 0. The one rule
 
@@ -24,8 +24,8 @@ and a content package may not declare it away.
 ## 1. Scan — read-only, and honest about its limits
 
 ```sh
-bun run cat-harness/scripts/scan-repo-content.ts            # human-readable report
-bun run cat-harness/scripts/scan-repo-content.ts --json     # same, as facts
+bun run cat-harness-tools/scripts/scan-repo-content.ts            # human-readable report
+bun run cat-harness-tools/scripts/scan-repo-content.ts --json     # same, as facts
 ```
 
 It walks the working tree (respecting `.gitignore`) and sorts what it finds into
@@ -169,8 +169,8 @@ carries the semantics of `A_Provision` in bootstrap-tools'
 The tool is `pages-bootstrap`:
 
 ```sh
-bun run cat-harness/scripts/pages-bootstrap.ts               # reports `unprovisioned` (exit 3) and the exact command when gh-pages is absent
-bun run cat-harness/scripts/pages-bootstrap.ts --provision   # pushes an orphan gh-pages: placeholder index.html + .nojekyll
+bun run cat-harness-tools/scripts/pages-bootstrap.ts               # reports `unprovisioned` (exit 3) and the exact command when gh-pages is absent
+bun run cat-harness-tools/scripts/pages-bootstrap.ts --provision   # pushes an orphan gh-pages: placeholder index.html + .nojekyll
 ```
 
 `--provision` is idempotent and never forces a push, and nothing creates a

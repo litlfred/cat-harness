@@ -358,7 +358,7 @@ tool's labels); and nothing sat between the agent and the question tool.
 
 None of these is sufficient and the omissions are stated rather than implied,
 which is the same three-state discipline the rest of this skill asks for.
-`bun test cat-harness/scripts/tests/decision-request.test.ts` asserts each
+`bun test cat-harness-tools/scripts/tests/decision-request.test.ts` asserts each
 refusal, because a schema whose refusals are untested quietly stops refusing.
 
 **The fourth layer was added 2026-09-26, after the owner named this failure a
