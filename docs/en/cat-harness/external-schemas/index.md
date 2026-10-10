@@ -36,7 +36,7 @@ depends on it**, and **which of its terms this repository branches on**.
 <div class="xs-grid">
 <div class="xs-stat"><b>26</b><span>specifications</span></div>
 <div class="xs-stat"><b>107</b><span>operative terms in graph (65 described, 42 pending)</span></div>
-<div class="xs-stat"><b>267</b><span>declared uses</span></div>
+<div class="xs-stat"><b>268</b><span>declared uses</span></div>
 <div class="xs-stat"><b>0</b><span>declarations naming no record</span></div>
 </div>
 
@@ -83,10 +83,6 @@ front-matter list, an `xmlns` binding, and a graph typology whose typing module
 declares the spec (bean `u63y`).
 
 Every declaration names a record on this page.
-
-**1 record(s) nothing declares.** A version bump would move nothing that says so:
-
-- [`opengroup-archimate-3.0`](#opengroup-archimate-3.0)
 
 ## Namespaces the corpus uses against the ones it declares
 
@@ -351,7 +347,11 @@ graph. That is a determined zero, not an unfilled field.
 
 **Note.** The Open Group's ArchiMate vocabulary, the `archimate:` prefix of the JSON-LD the archimate subgraph's page generator writes (gen-archimate-pages.ts, in cat-harness-tools since 70lx) for every model, view, element and relationship it gives a page. Authority `other`: The Open Group is not in SPEC_AUTHORITIES. Added 2026-10-10 when external-schemas:check found the namespace in use and unregistered, a day after the subgraph landed.
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `cat-harness/archimate/schemas/archimate.ts` | `@conformsTo` tag |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the

@@ -5,6 +5,7 @@
  *
  * @module cat-harness/archimate/schemas/archimate
  * @graphNode schema
+ * @conformsTo opengroup-archimate-3.0
  *
  * ## The node is the model; views, elements and relationships are nodes inside it
  *
