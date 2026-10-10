@@ -27,9 +27,9 @@ So each record answers three questions — **which edition**, **what here
 depends on it**, and **which of its terms this repository branches on**.
 
 <div class="xs-grid">
-<div class="xs-stat"><b>25</b><span>specifications</span></div>
+<div class="xs-stat"><b>26</b><span>specifications</span></div>
 <div class="xs-stat"><b>107</b><span>operative terms in the graph</span></div>
-<div class="xs-stat"><b>259</b><span>declared uses</span></div>
+<div class="xs-stat"><b>261</b><span>declared uses</span></div>
 <div class="xs-stat"><b>0</b><span>declarations naming no record</span></div>
 </div>
 
@@ -43,6 +43,7 @@ depends on it**, and **which of its terms this repository branches on**.
 | **[Business Process Model and Notation (BPMN)](#omg-bpmn-2.0)**<br>`omg-bpmn-2.0` | OMG | [2.0](https://www.omg.org/spec/BPMN/2.0/) | `conforms` — this repository's artefacts are valid against it |
 | **[Diagram Definition (DD)](#omg-dd-1.0)**<br>`omg-dd-1.0` | OMG | [1.0](https://www.omg.org/spec/DD/1.0/) | `conforms` — this repository's artefacts are valid against it |
 | **[Decision Model and Notation (DMN)](#omg-dmn-1.3)**<br>`omg-dmn-1.3` | OMG | [1.3](https://www.omg.org/spec/DMN/1.3/) | `conforms` — this repository's artefacts are valid against it |
+| **[ArchiMate® Model Exchange File Format](#opengroup-archimate-3.0)**<br>`opengroup-archimate-3.0` | other | [3.0](https://www.opengroup.org/xsd/archimate/) | `reads` — this repository parses documents written in it |
 | **[Schema.org](#schema-org)**<br>`schema-org` | other | [unpinned](https://schema.org/) | `conforms` — this repository's artefacts are valid against it |
 | **[SPAR Ontologies: DoCO, DEO and CiTO](#spar-doco-deo-cito)**<br>`spar-doco-deo-cito` | other | [unpinned](http://www.sparontologies.net/) | `conforms` — this repository's artefacts are valid against it |
 | **[SPDX License List](#spdx-license-list)**<br>`spdx-license-list` | other | [3.29.0](https://spdx.org/licenses/) | `reads` — this repository parses documents written in it |
@@ -74,6 +75,10 @@ declares the spec (bean `u63y`).
 
 Every declaration names a record on this page.
 
+**1 record(s) nothing declares.** A version bump would move nothing that says so:
+
+- [`opengroup-archimate-3.0`](#opengroup-archimate-3.0)
+
 ## Namespaces the corpus uses against the ones it declares
 
 Read from the BPMN and DMN files themselves — **5** namespace IRI(s)
@@ -82,7 +87,7 @@ vocabulary shows up here instead of going unnoticed.
 
 Every namespace the corpus declares is covered by a record above.
 
-**27 declared and not in use.** Not a defect on its own: a
+**28 declared and not in use.** Not a defect on its own: a
 record may cover a namespace only some artefacts carry. It is here because
 a registry nobody prunes is one that stops describing the repository.
 
@@ -95,6 +100,7 @@ a registry nobody prunes is one that stops describing the repository.
 - `http://purl.org/spar/doco/`
 - `http://smart.who.int/base/StructureDefinition/`
 - `http://www.omg.org/spec/BPMN/20100524/MODEL#`
+- `http://www.opengroup.org/xsd/archimate/3.0/`
 - `http://www.w3.org/1999/02/22-rdf-syntax-ns#`
 - `http://www.w3.org/2000/01/rdf-schema#`
 - `http://www.w3.org/2001/XMLSchema#`
@@ -251,7 +257,7 @@ graph. That is a determined zero, not an unfilled field.
 | `folio-assistant-core/processes/ui/*.bpmn (3)` | `xmlns` binding |
 | `folio-assistant-sci/processes/content/*.bpmn (2)` | `xmlns` binding |
 | `smart-base/methodologies/processes/*.bpmn (1)` | `xmlns` binding |
-| `smart-base/processes/content/*.bpmn (1)` | `xmlns` binding |
+| `smart-base/processes/content/*.bpmn (2)` | `xmlns` binding |
 
 **Operative terms (21).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -312,7 +318,7 @@ a subset of the edition rather than a transcription of it.
 | `folio-assistant-core/processes/ui/*.bpmn (3)` | `xmlns` binding |
 | `folio-assistant-sci/processes/content/*.bpmn (2)` | `xmlns` binding |
 | `smart-base/methodologies/processes/*.bpmn (1)` | `xmlns` binding |
-| `smart-base/processes/content/*.bpmn (1)` | `xmlns` binding |
+| `smart-base/processes/content/*.bpmn (2)` | `xmlns` binding |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -339,6 +345,22 @@ graph. That is a determined zero, not an unfilled field.
 | `folio-assistant-core/processes/conduct/decisions/*.dmn (2)` | `xmlns` binding |
 | `folio-assistant-core/processes/content/decisions/*.dmn (2)` | `xmlns` binding |
 | `folio-assistant-sci/processes/content/decisions/*.dmn (1)` | `xmlns` binding |
+
+**No operative terms.** This repository conforms to the specification
+without branching on any of its terms, so none is materialised into the
+graph. That is a determined zero, not an unfilled field.
+
+### ArchiMate® Model Exchange File Format {#opengroup-archimate-3.0}
+
+`opengroup-archimate-3.0` — other, edition [3.0](https://www.opengroup.org/xsd/archimate/) — `reads`, meaning this repository parses documents written in it.
+
+**Namespaces.**
+
+- `http://www.opengroup.org/xsd/archimate/3.0/`
+
+**Note.** The Open Group's ArchiMate vocabulary, the `archimate:` prefix of the JSON-LD the archimate subgraph's page generator writes (archimate/scripts/gen-archimate-pages.ts) for every model, view, element and relationship it gives a page. Authority `other`: The Open Group is not in SPEC_AUTHORITIES. Added 2026-10-10 when external-schemas:check found the namespace in use and unregistered, a day after the subgraph landed.
+
+**What depends on it.** Nothing here declares it.
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
