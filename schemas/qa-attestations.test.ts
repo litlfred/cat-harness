@@ -12,7 +12,6 @@ import {
   ATTESTATION_FAMILIES,
   attestationPathFor,
   attestationsHomeFor,
-  CERTIFICATION_FAMILY,
   CertificationAttestationsSchema,
   certificationPath,
   fileCertification,

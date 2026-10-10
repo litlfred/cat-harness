@@ -9,7 +9,6 @@ import { describe, expect, it } from "bun:test";
 import {
   ADJUDICATION_SCHEMA_TAG,
   ADJUDICATOR_KINDS,
-  AdjudicationAssetSchema,
   AdjudicationOutcomeSchema,
   AdjudicationRequestSchema,
   adjudicationDefects,
