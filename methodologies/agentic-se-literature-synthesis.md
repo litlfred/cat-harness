@@ -377,7 +377,7 @@ operational vulnerabilities across its 69 BPMN/DMN processes and SDLC skills:
 │ Bounded dependency trace   │ TRANSFERS                  │ Implemented in `devils-advocate-watcher.md`:  │
 │ L ≤ 5 (SWE-Debate)         │                            │ Block dependency traversal capped at depth 5  │
 ├────────────────────────────┼────────────────────────────┼───────────────────────────────────────────────┤
-│ 3-round competitive debate │ TRANSFERS                  │ Codified in `schemas/adjudication.ts`:        │
+│ 3-round competitive debate │ TRANSFERS                  │ Codified in core's `adjudication.ts`:         │
 │ (SWE-Debate)               │ (Selective)                │ Reserved for high-blast-radius headline math  │
 ├────────────────────────────┼────────────────────────────┼───────────────────────────────────────────────┤
 │ Difficulty partitioning    │ TRANSFERS                  │ Implemented in `swarm-management.md`:         │
