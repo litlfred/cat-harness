@@ -264,6 +264,6 @@ must sign it off, tied to WHO/IG subject matter → `crdm`.
 
 - [`specification-management`](../sdlc-core/specification-management.md) —
   specification and requirements governance across spec-kit and CRDM
-- [`requirements-standards-assessment`](../../methodologies/requirements-standards-assessment.md) —
+- [`requirements-standards-assessment`](../../../methodologies/requirements-standards-assessment.md) —
   assessment of open requirements standards (EARS, ISO 29148, ReqIF)
 

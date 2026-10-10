@@ -34,6 +34,7 @@ import type {
   DiagramBlock,
   TableBlock,
   FigureBlock,
+  RecommendationBlock,
   Chapter,
   ChapterRef,
   Section,
@@ -71,6 +72,7 @@ import {
   DiagramSchema,
   TableSchema,
   FigureSchema,
+  RecommendationSchema,
   ChapterSchema,
   ChapterRefSchema,
   SectionRefSchema,
@@ -219,6 +221,11 @@ export function table(data: Omit<TableBlock, "kind">): TableBlock {
  */
 export function figure(data: Omit<FigureBlock, "kind">): FigureBlock {
   return validated(FigureSchema, { kind: "figure" as const, ...data });
+}
+
+/** A document folio's recommendation (bean `55ao`): one statement, its strength as a code. */
+export function recommendation(data: Omit<RecommendationBlock, "kind">): RecommendationBlock {
+  return validated(RecommendationSchema, { kind: "recommendation" as const, ...data });
 }
 
 // ── Structure builders ───────────────────────────────────────────

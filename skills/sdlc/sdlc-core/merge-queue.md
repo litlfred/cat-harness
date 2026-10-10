@@ -1104,7 +1104,7 @@ Until all three criteria are empirically proven, the agentic review remains **wa
 
 ## Tool-integrated agentic pre-merge review (CodeAgent / 2402.02172v5)
 
-Evaluated under bean `gs0u` and codified in [`methodologies/agentic-pre-merge-review.md`](../../../../methodologies/agentic-pre-merge-review.md).
+Evaluated under bean `gs0u` and codified in [`methodologies/agentic-pre-merge-review.md`](../../../methodologies/agentic-pre-merge-review.md).
 
 Multi-agent tool-integrated code review architectures (Tang et al., arXiv:2402.02172v5)
 structure automated pre-merge evaluation into specialized roles (Reviewer, Coder,
