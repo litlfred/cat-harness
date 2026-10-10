@@ -54,7 +54,7 @@ detailed in `requirement-definition.md`):
 While the bootstrap schema is deliberately lightweight and zero-dependency,
 requirements authored in the harness must adhere to proven international
 notations and quality models evaluated in
-[`requirements-standards-assessment`](../../methodologies/requirements-standards-assessment.md):
+[`requirements-standards-assessment`](../../../methodologies/requirements-standards-assessment.md):
 
 ### A. EARS syntax for statement formulation
 Requirement statements should follow the **Easy Approach to Requirements
@@ -109,7 +109,7 @@ A requirements document is governed as a **`RequirementSet`** (`reqset:<slug>`):
 
 ## 5. Related skills & methodologies
 
-- [`requirements-standards-assessment`](../../methodologies/requirements-standards-assessment.md) —
+- [`requirements-standards-assessment`](../../../methodologies/requirements-standards-assessment.md) —
   Formal evaluation of open requirements standards (ReqIF, OSLC-RM, EARS, ISO 29148, ISO 25010).
 - [`crdm-requirements-template`](../crdm/crdm-requirements-template.md) — CRDM Phase 3
   template and elicitation guide.
