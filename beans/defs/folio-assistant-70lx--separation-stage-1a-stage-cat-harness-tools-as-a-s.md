@@ -5,7 +5,7 @@ status: in-progress
 type: task
 priority: normal
 created_at: 2026-10-01T06:58:00Z
-updated_at: 2026-10-10T06:20:00Z
+updated_at: 2026-10-10T08:00:00Z
 parent: folio-assistant-iirv
 blocked_by:
     - folio-assistant-pyds
@@ -20,9 +20,9 @@ Plans (session scratchpad, 2026-10-01; to be committed with stage 0): `cat-harne
 **Edits:** blocker-3 codemod (≈204 `import.meta.dir/..` root sites), root `package.json` (338 scripts, `main`, `exports`, `files`), workflows (136 code-path mentions in 13 files; path filters list BOTH dirs), `tsconfig` (9 globs), `.mcp.json`, `.claude/settings.json` hooks, `playwright.config.ts`, `upstream-pins.json`, higher-instance code imports (27 files), `partition/instance-rules.ts` `REPOS`/`ROOT`, `kg:detangle` `SCAN`. The MCP server entry becomes `cat-harness-tools/src/index.ts` — this discharges `w2gr`'s server move (Q1: the document adapter's server half moves; core keeps the content logic).
 
 ## Done when
-- [ ] falsifier 1: every generator's `--check` output byte-identical to the stage-0 baseline except generated-by path strings (diff shows only those)
+- [x] falsifier 1: every generator's `--check` output byte-identical to the stage-0 baseline except generated-by path strings (diff shows only those)
 - [ ] falsifier 2: `bun test` pass count equal to the stage-0 baseline
-- [ ] falsifier 3: `mcp:capture` tool list identical; the server starts over stdio from `cat-harness-tools/src/index.ts`
+- [x] falsifier 3: `mcp:capture` tool list identical; the server starts over stdio from `cat-harness-tools/src/index.ts`
 - [x] falsifier 4: `check:import-direction --all` green, and the planted `cat-harness → cat-harness-tools` import red
 - [ ] `bun run cat gates --all` green, or each failure shown pre-existing on the base SHA
 
@@ -120,3 +120,19 @@ Still open:
 - layout-norms "at least one pair" fails only in a checkout too small to hold a nesting, like the existing `>5 instances` guard.
 - Falsifiers 1 and 3 have not been run.
 - gh-pages has not been republished at the new pins; it still serves the 2026-10-09 build.
+
+## 2026-10-10 — falsifiers 1 and 3 measured; health report regenerated
+
+**Falsifier 1.** All 106 `:check` checkoutScripts were run from the aggregate root at the commits just before the move (harness b798a12d, tools ea0b91a) and just after it (harness 1571e4a, tools 09f713f).
+- 105 exit identically.
+- `translate-kg-viewer:check` went 0 → 1. Its string table was read through a path *constant* under the harness, which the move's literal pass could not see.
+- A sweep for that shape found three silent ones: `q-usage-audit`, `translation-block-qa` and `check-library-qa` each hashed a missing file, which reads as "unknown".
+- All four are fixed in cat-harness-tools #28; `translate-kg-viewer:check` exits 0 again.
+- `navbar:include:check`'s ENOENT was already fixed in #23.
+
+**Falsifier 3.** `capture-mcp-tools --json` gives an identical before/after: 21 tools, the same input shapes and modules. The server starts over stdio from `cat-harness-tools/src/index.ts`, and `tools/list` returns the same 46 tools with identical input schemas before and after.
+
+**Health.** cat-harness-tools #26 makes the probes read the harness's own checkout (`checkoutRootFor`): standalone, `dirname` held no repository. cat-harness #83 regenerated the report from a worktree with its state branches mounted: subject `litlfred/cat-harness`, all seven checks evaluated, and both harness-state hash tests pass.
+
+**Remaining Done-when.** `bun run cat gates --all` has not been run as a whole; its parts were measured above.
+
