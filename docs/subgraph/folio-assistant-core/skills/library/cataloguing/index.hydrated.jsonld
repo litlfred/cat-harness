@@ -15,9 +15,9 @@
       "instructionsPath": "skills/library/cataloguing/archiving-arxiv.md",
       "name": "archiving-arxiv",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/c3c362c6c6f20ee4ce4d6b2085a90bb1b87c9423ca548b9338b38770f1f3e2d4",
-        "bytes": 9387,
-        "sha256": "c3c362c6c6f20ee4ce4d6b2085a90bb1b87c9423ca548b9338b38770f1f3e2d4"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ead23881e4eb8eb2cb8f6eef3cc12aeefd0b32d8c1ce96285ce59eba4ccad7b6",
+        "bytes": 9386,
+        "sha256": "ead23881e4eb8eb2cb8f6eef3cc12aeefd0b32d8c1ce96285ce59eba4ccad7b6"
       },
       "title": "Materializing from arXiv"
     },
@@ -105,9 +105,9 @@
       "instructionsPath": "skills/library/cataloguing/filing-dublin-core.md",
       "name": "filing-dublin-core",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/342d517bc40a858e33e91392204da9797fbb3bd6670b338ab663a90a2fe9b21a",
-        "bytes": 5174,
-        "sha256": "342d517bc40a858e33e91392204da9797fbb3bd6670b338ab663a90a2fe9b21a"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/546e246b5e1bc334417a409ca98d082bd041df1ff2995e9e9564570ce2d2ea40",
+        "bytes": 5184,
+        "sha256": "546e246b5e1bc334417a409ca98d082bd041df1ff2995e9e9564570ce2d2ea40"
       },
       "title": "Filing a source: what Dublin Core carries, and what it does not"
     },

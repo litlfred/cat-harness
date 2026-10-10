@@ -185,9 +185,9 @@
       "instructionsPath": "skills/kg/kg-core/directory-conventions.md",
       "name": "directory-conventions",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9091979597dce6534219a26fddfafbe36f5eedf50032e4d2352151b11b34d3d9",
-        "bytes": 133066,
-        "sha256": "9091979597dce6534219a26fddfafbe36f5eedf50032e4d2352151b11b34d3d9"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/11362f9cdcc73f436fabfbdf6532ed9ad15211595dbf16b5fb7ff65e84eb2923",
+        "bytes": 133134,
+        "sha256": "11362f9cdcc73f436fabfbdf6532ed9ad15211595dbf16b5fb7ff65e84eb2923"
       },
       "title": "Directory conventions — what an instance declares it scans"
     },

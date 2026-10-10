@@ -24,7 +24,7 @@ import { detectRepoUrl } from "../src/core/git-refs.js";
 import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from "fs";
 import { join, relative, resolve } from "path";
 import { repoRootFor, siteDirFor } from "../schemas/cat-harness.ts";
-import { instanceDirectoryForGraph } from "../schemas/cat-harness.js";
+import { instanceDirectories, instanceDirectoryForGraph } from "../schemas/cat-harness.js";
 
 /** The repository the links name: this checkout's origin, else folio-assistant (bean v433). */
 const SCHEMA_DOCS_REPO = repoOf(detectRepoUrl(process.cwd()));
@@ -48,6 +48,13 @@ const SCHEMA_DOCS_REPO = repoOf(detectRepoUrl(process.cwd()));
  * sent this generator's output into another checkout, silently. Bean `a02m`.
  */
 function schemasRoot(root: string): string {
+  // The instance's OWN `schemas` directory, by id. The harness also declares
+  // the `openapi` and `archimate` subgraphs' schema directories (both of graph
+  // `schemas`), so asking for "the" schemas directory is ambiguous and throws;
+  // the skill-instruction schemas this page documents live in the one whose id
+  // is `schemas`.
+  const own = instanceDirectories(root).find((d) => d.id === "schemas");
+  if (own?.path) return join(root, own.path);
   return instanceDirectoryForGraph(root, "schemas") ?? join(root, "schemas");
 }
 

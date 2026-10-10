@@ -166,6 +166,12 @@
   ],
   "unkinded": [
     {
+      "typology": "archimate",
+      "family": "cat-archimate-config/v1",
+      "reason": "zod-schema",
+      "ref": "cat-harness:archimate/schemas/archimate.ts#ArchimateConfigSchema"
+    },
+    {
       "typology": "attestations",
       "reason": "zod-schema",
       "ref": "schemas/qa-attestations.ts#QaAttestationsSchema"
@@ -502,7 +508,7 @@
       "typology": "openapi",
       "family": "cat-openapi-config/v1",
       "reason": "zod-schema",
-      "ref": "cat-openapi:schemas/openapi.ts#OpenApiConfigSchema"
+      "ref": "cat-harness:openapi/schemas/openapi.ts#OpenApiConfigSchema"
     },
     {
       "typology": "openapi",
