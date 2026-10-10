@@ -9,7 +9,7 @@ nav_exclude: true
 {% raw %}
 # Remote-mount a dependency
 
-`Process_MountDependency` · strict · 5 step(s)
+`Process_MountDependency` · strict · 6 step(s)
 
 Laying a harness — and every instance it needs — down from another repository at a pinned commit, as declared directories, with a lock that says exactly what arrived.
 
@@ -34,7 +34,7 @@ Every instance reached ends in one of three states — mounted, missing, could-n
 
 ## Steps
 
-Every one of the 5 step(s) is documented.
+Every one of the 6 step(s) is documented.
 
 | step | lane | skill / sub-process | what it does |
 |---|---|---|---|
@@ -42,6 +42,7 @@ Every one of the 5 step(s) is documented.
 | **Resolve the closure at the pin**<br>`Task_ResolveClosure` | Build pipeline | [`remote-mount`](../../../reference/skill-instructions/remote-mount.html) | Fetch the pinned tree (shallow, blobless). Read the harness's declaration<br>from it; for each `needs` name, find that instance in the same tree, else<br>follow a GITLINK at that tree as a pin into its own repository. A need<br>found in neither is missing; one the downstream already holds is local.<br>Paths and directories come from `mountDefaults` unless overridden. |
 | **Mount each instance at its declared path**<br>`Task_MountInstances` | Build pipeline | [`remote-mount`](../../../reference/skill-instructions/remote-mount.html) | Sparse checkout of the declaration and the chosen directories, copied to<br>the mount path (by default the instance's home path, so relative imports<br>and sibling discovery hold). Never onto tracked bytes; never onto a<br>directory no lock says this mount made; never over edits to a previous<br>mount — those are left untouched and reported. |
 | **Write the lock**<br>`Task_WriteLock` | Build pipeline | [`remote-mount`](../../../reference/skill-instructions/remote-mount.html) | `index.lock.json` beside the downstream's `index.config.json` (the<br>legacy `<instance>.mount-lock.json` is still read, and is renamed<br>onto the new name when rewritten; both present is an error): the<br>pins it was written for, each instance's repository, SHA and how the pin<br>was found, each directory's tree digest — and what was NOT mounted, with<br>why, so an offline check cannot read a gap as clean. |
+| **Re-render the agent surface**<br>`Task_RenderAgentSurface` | Build pipeline | [`remote-mount`](../../../reference/skill-instructions/remote-mount.html)<br>[`agent-memory`](../../../reference/skill-instructions/agent-memory.html) | When the lock changed, the layers an agent's skills and memory are<br>generated from changed with it. `mount:remote` re-runs the generators<br>of what an agent actually reads — `skill:commands` (`.claude/commands/`)<br>and `agent-memory` (`.claude/agent-memory/` and the `.agents/` copies)<br>— from the checkout root, and a generator that fails fails the run.<br>A re-pin commit therefore carries the new layers AND the surface<br>rendered from them; shipping the first without the second is how<br>folio-assistant#2526 went red on three agent-memory tests. Owner,<br>2026-10-10: "it may have new agentic skills to re-render and add.<br>same for memory." |
 | **Check disk against lock against declaration**<br>`Task_CheckAgainstLock` | Build pipeline | [`remote-mount`](../../../reference/skill-instructions/remote-mount.html)<br>[`ci-health`](../../../reference/skill-instructions/ci-health.html) | `mount:remote:check`, with no network: the lock's pins are the<br>declaration's, and every locked directory is on disk and hashes to its<br>digest. Could-not-determine outranks missing, which outranks mounted. |
 
 ## Decisions
