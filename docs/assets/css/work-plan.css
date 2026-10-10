@@ -58,6 +58,15 @@
      first time a critical finding was shown). The reserved status hue stays
      for fills; text takes this shade (5.07:1). Light keeps #d03b3b (4.68:1). */
   --fa-wp-critical-text: #e85c5c;
+  /* The other status hues as TEXT. On the dark surface each hue clears 4.5:1
+     itself (good 5.19, warning 9.49, serious 6.60). On the light one none
+     does (3.27, 1.79, 2.57) — axe on /beans/, 2026-10-10: every warning badge
+     label at 1.78:1 — so the light override gives each a darker shade. The
+     icon-and-word mitigation above is for telling statuses APART; it does not
+     make a label legible. */
+  --fa-wp-good-text: var(--fa-wp-good);
+  --fa-wp-warning-text: var(--fa-wp-warning);
+  --fa-wp-serious-text: var(--fa-wp-serious);
   margin: 1.5rem 0;
 }
 
@@ -69,6 +78,11 @@
   --fa-wp-track: #e1e0d9;
   --fa-wp-series: #2a78d6;
   --fa-wp-critical-text: #d03b3b;
+  /* 5.18, 5.77 and 5.75:1 on #fcfcfb; muted 5.28 (#898781 was 3.50). */
+  --fa-wp-good-text: #0a7d0a;
+  --fa-wp-warning-text: #8a5a00;
+  --fa-wp-serious-text: #a8461c;
+  --fa-wp-muted: #6b6a65;
 }
 
 @media (prefers-color-scheme: light) {
@@ -80,6 +94,10 @@
     --fa-wp-track: #e1e0d9;
     --fa-wp-series: #2a78d6;
     --fa-wp-critical-text: #d03b3b;
+    --fa-wp-good-text: #0a7d0a;
+    --fa-wp-warning-text: #8a5a00;
+    --fa-wp-serious-text: #a8461c;
+    --fa-wp-muted: #6b6a65;
   }
 }
 
@@ -247,9 +265,9 @@
 
 .fa-workplan-icon { width: 1rem; height: 1rem; flex: none; }
 
-.fa-workplan-finding.is-good .fa-workplan-finding-badge { color: var(--fa-wp-good); }
-.fa-workplan-finding.is-warning .fa-workplan-finding-badge { color: var(--fa-wp-warning); }
-.fa-workplan-finding.is-serious .fa-workplan-finding-badge { color: var(--fa-wp-serious); }
+.fa-workplan-finding.is-good .fa-workplan-finding-badge { color: var(--fa-wp-good-text); }
+.fa-workplan-finding.is-warning .fa-workplan-finding-badge { color: var(--fa-wp-warning-text); }
+.fa-workplan-finding.is-serious .fa-workplan-finding-badge { color: var(--fa-wp-serious-text); }
 .fa-workplan-finding.is-critical .fa-workplan-finding-badge { color: var(--fa-wp-critical-text); }
 
 /* The sentence stays in text ink. A finding's words are read; its colour is
@@ -391,7 +409,7 @@
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: var(--fa-wp-warning);
+  color: var(--fa-wp-warning-text);
 }
 /* A blocker's id inside the badge (bean `vhqq`): ids are case-sensitive, so
    the badge's uppercase does not apply to them. */
