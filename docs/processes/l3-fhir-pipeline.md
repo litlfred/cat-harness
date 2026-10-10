@@ -9,9 +9,9 @@ nav_exclude: true
 {% raw %}
 # L3 FHIR IG pipeline
 
-`Process_L3Fhir` · advisory · 8 step(s)
+`Process_L3Fhir` · advisory · 7 step(s)
 
-How a WHO SMART Guidelines L3 FHIR Implementation Guide is modelled, built with SUSHI, the validator and the IG Publisher, reviewed and published. folio-assistant — the WHO SMART Guidelines L3 FHIR IG pipeline.
+How an L3 FHIR Implementation Guide is authored in FSH, built with SUSHI, the validator and the IG Publisher, reviewed and published, starting from a source model that is ready. Generic: what produces the source model is the layer above's own process, which maps its model and then calls Process_L3Fhir. This one names no such model. folio-assistant — the generic L3 FHIR IG pipeline.
 Source of truth: this file. Open it in bpmn.io, Camunda Modeler, or any other
 BPMN 2.0 tool. The SVG under docs/assets/img/workflows/ is generated from it
 by `bun run cat render:bpmn` — never hand-edit the SVG.
@@ -23,7 +23,7 @@ work plan in beans/.
 
 ## How it connects
 
-- **Called by:** no call activity names this process
+- **Called by:** [L2 DAK to L3 FHIR IG](dak-l3-ig.html)
 - **Calls:** none
 - **Presented on:** [Content types — WHO SMART Implementation Guides (L3)](../docs/cat-harness/concepts/content-types.html#who-smart-implementation-guides-l3), [Authoring a WHO SMART IG (L3) — The L3 pipeline](../docs/cat-harness/guides/who-smart-ig.html#the-l3-pipeline)
 
@@ -39,12 +39,11 @@ work plan in beans/.
 
 ## Steps
 
-Every one of the 8 step(s) is documented.
+Every one of the 7 step(s) is documented.
 
 | step | lane | skill / sub-process | what it does |
 |---|---|---|---|
-| **Map L2 → L3**<br>`Task_MapL2` | FHIR modeller | [`l3-fhir-authoring`](../reference/skill-instructions/l3-fhir-authoring.html)<br>[`l2-dak-authoring`](../reference/skill-instructions/l2-dak-authoring.html) | Each data element becomes a profile, each value set a ValueSet, each decision a PlanDefinition / Library. The DAK's L2 content is l3-fhir-authoring's sourceModel; this step binds l2-dak-authoring beside it, which is where the WHO L2 → L3 ordering lives now that the generic skill names no DAK (smart-* separation stage D, #1767). |
-| **Author FSH profiles**<br>`Task_AuthorFsh` | FHIR modeller | [`l3-fhir-authoring`](../reference/skill-instructions/l3-fhir-authoring.html) | Write the FSH profiles, value sets and definitions the L2 mapping calls for. This is the stage where profiles, slicing and invariants belong — a decision that can only be expressed in FHIR comes here, not back into L2. |
+| **Author FSH profiles**<br>`Task_AuthorFsh` | FHIR modeller | [`l3-fhir-authoring`](../reference/skill-instructions/l3-fhir-authoring.html) | Write the FSH profiles, value sets and definitions the source model calls for. This is the stage where profiles, slicing and invariants belong — a decision that can only be expressed in FHIR comes here, not back into the source model. |
 | **SUSHI compile → FHIR JSON**<br>`Task_Sushi` | Build pipeline — SUSHI · validator · IG Publisher | [`l3-fhir-authoring`](../reference/skill-instructions/l3-fhir-authoring.html) | Compile the FSH to FHIR JSON with SUSHI. Compiling is not conformance: a green SUSHI result goes on to validation and never stands in for it. |
 | **Validate against profiles**<br>`Task_Validate` | Build pipeline — SUSHI · validator · IG Publisher | [`fhir-validation`](../reference/skill-instructions/fhir-validation.html) | Validate the compiled resources against their profiles and the packages they constrain. A validator that could not start is could-not-determine, never a pass with an empty findings list. Failures return to authoring. |
 | **QC gates**<br>`Task_QcGates` | QC reviewer | [`quality-control`](../reference/skill-instructions/quality-control.html) | The QC reviewer rules on the aggregate QA against the publication gates. Emitting the QA report is mechanical; ruling on it is a decision, which is why it sits in the reviewer's lane rather than the build's. |
