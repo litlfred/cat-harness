@@ -41,7 +41,6 @@ Every instance reached ends in one of three states — mounted, missing, could-n
         <bpmn:flowNodeRef>Task_ResolveClosure</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_MountInstances</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_WriteLock</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_RenderAgentSurface</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_CheckAgainstLock</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_State</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Mounted</bpmn:flowNodeRef>
@@ -100,22 +99,6 @@ Every instance reached ends in one of three states — mounted, missing, could-n
       <bpmn:extensionElements><bootstrap.processes:skill ref="remote-mount"/></bpmn:extensionElements>
     </bpmn:task>
 
-    <bpmn:task id="Task_RenderAgentSurface" name="Re-render the&#10;agent surface">
-      <bpmn:documentation>
-        When the lock changed, the layers an agent's skills and memory are
-        generated from changed with it. `mount:remote` re-runs the generators
-        of what an agent actually reads — `skill:commands` (`.claude/commands/`)
-        and `agent-memory` (`.claude/agent-memory/` and the `.agents/` copies)
-        — from the checkout root, and a generator that fails fails the run.
-        A re-pin commit therefore carries the new layers AND the surface
-        rendered from them; shipping the first without the second is how
-        folio-assistant#2526 went red on three agent-memory tests. Owner,
-        2026-10-10: "it may have new agentic skills to re-render and add.
-        same for memory."
-      </bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="remote-mount"/><bootstrap.processes:skill ref="agent-memory"/></bpmn:extensionElements>
-    </bpmn:task>
-
     <bpmn:task id="Task_CheckAgainstLock" name="Check disk against&#10;lock against declaration">
       <bpmn:documentation>
         `mount:remote:check`, with no network: the lock's pins are the
@@ -136,8 +119,7 @@ Every instance reached ends in one of three states — mounted, missing, could-n
     <bpmn:sequenceFlow id="F_D2" sourceRef="Task_DeclareMount" targetRef="Task_ResolveClosure"/>
     <bpmn:sequenceFlow id="F_D3" sourceRef="Task_ResolveClosure" targetRef="Task_MountInstances"/>
     <bpmn:sequenceFlow id="F_D4" sourceRef="Task_MountInstances" targetRef="Task_WriteLock"/>
-    <bpmn:sequenceFlow id="F_D5" sourceRef="Task_WriteLock" targetRef="Task_RenderAgentSurface"/>
-    <bpmn:sequenceFlow id="F_D5b" sourceRef="Task_RenderAgentSurface" targetRef="Task_CheckAgainstLock"/>
+    <bpmn:sequenceFlow id="F_D5" sourceRef="Task_WriteLock" targetRef="Task_CheckAgainstLock"/>
     <bpmn:sequenceFlow id="F_D6" sourceRef="Task_CheckAgainstLock" targetRef="GW_State"/>
     <bpmn:sequenceFlow id="F_D7" name="yes" sourceRef="GW_State" targetRef="End_Mounted"/>
     <bpmn:sequenceFlow id="F_D8" name="no" sourceRef="GW_State" targetRef="End_Reported"/>
@@ -147,10 +129,10 @@ Every instance reached ends in one of three states — mounted, missing, could-n
   <bpmndi:BPMNDiagram id="Diagram_MountDependency">
     <bpmndi:BPMNPlane id="Plane_MountDependency" bpmnElement="Process_MountDependency">
       <bpmndi:BPMNShape id="S_Lane_Author" bpmnElement="Lane_Author" isHorizontal="true">
-        <dc:Bounds x="160" y="60" width="1470" height="140"/>
+        <dc:Bounds x="160" y="60" width="1260" height="140"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Lane_Pipeline" bpmnElement="Lane_Pipeline" isHorizontal="true">
-        <dc:Bounds x="160" y="200" width="1470" height="240"/>
+        <dc:Bounds x="160" y="200" width="1260" height="240"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Start_LayerNeeded" bpmnElement="Start_LayerNeeded">
         <dc:Bounds x="200" y="112" width="36" height="36"/>
@@ -167,20 +149,17 @@ Every instance reached ends in one of three states — mounted, missing, could-n
       <bpmndi:BPMNShape id="S_Task_WriteLock" bpmnElement="Task_WriteLock">
         <dc:Bounds x="690" y="270" width="150" height="80"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="S_Task_RenderAgentSurface" bpmnElement="Task_RenderAgentSurface">
+      <bpmndi:BPMNShape id="S_Task_CheckAgainstLock" bpmnElement="Task_CheckAgainstLock">
         <dc:Bounds x="880" y="270" width="170" height="80"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="S_Task_CheckAgainstLock" bpmnElement="Task_CheckAgainstLock">
-        <dc:Bounds x="1090" y="270" width="170" height="80"/>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_State" bpmnElement="GW_State" isMarkerVisible="true">
-        <dc:Bounds x="1300" y="285" width="50" height="50"/>
+        <dc:Bounds x="1090" y="285" width="50" height="50"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_Mounted" bpmnElement="End_Mounted">
-        <dc:Bounds x="1410" y="232" width="36" height="36"/>
+        <dc:Bounds x="1200" y="232" width="36" height="36"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_Reported" bpmnElement="End_Reported">
-        <dc:Bounds x="1410" y="362" width="36" height="36"/>
+        <dc:Bounds x="1200" y="362" width="36" height="36"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="E_F_D1" bpmnElement="F_D1">
         <di:waypoint x="236" y="130"/><di:waypoint x="270" y="130"/>
@@ -197,17 +176,14 @@ Every instance reached ends in one of three states — mounted, missing, could-n
       <bpmndi:BPMNEdge id="E_F_D5" bpmnElement="F_D5">
         <di:waypoint x="840" y="310"/><di:waypoint x="880" y="310"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="E_F_D5b" bpmnElement="F_D5b">
+      <bpmndi:BPMNEdge id="E_F_D6" bpmnElement="F_D6">
         <di:waypoint x="1050" y="310"/><di:waypoint x="1090" y="310"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="E_F_D6" bpmnElement="F_D6">
-        <di:waypoint x="1260" y="310"/><di:waypoint x="1300" y="310"/>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_D7" bpmnElement="F_D7">
-        <di:waypoint x="1325" y="285"/><di:waypoint x="1325" y="250"/><di:waypoint x="1410" y="250"/>
+        <di:waypoint x="1115" y="285"/><di:waypoint x="1115" y="250"/><di:waypoint x="1200" y="250"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_D8" bpmnElement="F_D8">
-        <di:waypoint x="1325" y="335"/><di:waypoint x="1325" y="380"/><di:waypoint x="1410" y="380"/>
+        <di:waypoint x="1115" y="335"/><di:waypoint x="1115" y="380"/><di:waypoint x="1200" y="380"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
