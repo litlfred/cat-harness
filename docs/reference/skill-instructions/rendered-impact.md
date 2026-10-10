@@ -124,7 +124,7 @@ names none above it.
   A pin is the hash of the git blobs of the changed inputs on a file's
   `via` (`pinImpact`), never the built bytes, which carry a per-build
   banner. An edit after review reopens exactly the pages it touched.
-  The tag is in [`review-comments`](review-comments.md).
+  The tag is in `review-comments`.
 
 ## Adding a renderer
 

@@ -97,7 +97,7 @@ the block-scale rule with terms for blocks: a forward `requires` is a forward
 edge, and two terms defined by each other are a cycle **no ordering removes**,
 so the moves are the same three — drop the use, merge the two terms, or factor
 the shared idea into a term above both. The rule and its form on the page are
-in [`glossary-terms`](../../library/library-core/glossary-terms.md) §"Ordered glossaries".
+in `glossary-terms` §"Ordered glossaries".
 
 Same rule, four scales, two vocabularies. **Prune, merge, or factor into a
 third** are the only three moves, and "the classification is wrong" is the

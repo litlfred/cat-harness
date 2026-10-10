@@ -6,9 +6,9 @@ parent: Skill instructions
 ---
 
 {: .note }
-> Generated from [`cat-harness/skills/library/library-core/glossary-terms.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/skills/library/library-core/glossary-terms.md) — do not edit here.
+> Generated from [`folio-assistant-core/skills/library/cataloguing/glossary-terms.md`](https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/skills/library/cataloguing/glossary-terms.md) — do not edit here.
 >
-> [✎ Edit this page's source](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/skills/library/library-core/glossary-terms.md){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/skills/library/library-core/glossary-terms.md" data-repo="litlfred/folio-assistant" }
+> [✎ Edit this page's source](https://github.com/litlfred/folio-assistant/edit/main/folio-assistant-core/skills/library/cataloguing/glossary-terms.md){: .fa-edit-source data-fa-link="edit" data-src="folio-assistant-core/skills/library/cataloguing/glossary-terms.md" data-repo="litlfred/folio-assistant" }
 
 {% raw %}
 # Glossary terms

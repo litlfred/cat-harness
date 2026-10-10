@@ -6,14 +6,14 @@ parent: Skill instructions
 ---
 
 {: .note }
-> Generated from [`cat-harness/skills/authoring/authoring-core/review-comments.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/skills/authoring/authoring-core/review-comments.md) — do not edit here.
+> Generated from [`folio-assistant-core/skills/content/content-lifecycle-ext/review-comments.md`](https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/skills/content/content-lifecycle-ext/review-comments.md) — do not edit here.
 >
-> [✎ Edit this page's source](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/skills/authoring/authoring-core/review-comments.md){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/skills/authoring/authoring-core/review-comments.md" data-repo="litlfred/folio-assistant" }
+> [✎ Edit this page's source](https://github.com/litlfred/folio-assistant/edit/main/folio-assistant-core/skills/content/content-lifecycle-ext/review-comments.md){: .fa-edit-source data-fa-link="edit" data-src="folio-assistant-core/skills/content/content-lifecycle-ext/review-comments.md" data-repo="litlfred/folio-assistant" }
 
 {% raw %}
 # Review comments — from a PR comment to a structured todo
 
-> Skill id: `review-comments` · Package: `folio-core`
+> Skill id: `review-comments` · Package: `content-lifecycle-ext`
 > Tools: `folio-review-comments` (ingest), `folio-review-comment-move` (record a decision) · Bean: `423d` · Epic: `q4jm`
 
 A reviewer comments on **one block** of a folio by writing an ordinary comment
