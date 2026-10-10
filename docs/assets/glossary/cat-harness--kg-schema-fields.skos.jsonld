@@ -2712,6 +2712,25 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/bean-graph.beanfrontmatterschema.issue",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "BeanFrontMatterSchema.issue"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "GitHub issue number or reference (e.g. 730, \"#730\", or issue URL). Queryable field linking a bean to its external human adjudication/tracking issue."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/bean-graph.ts#BeanFrontMatterSchema.issue",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/bean-graph.beangraphschema.directories",
       "@type": "skos:Concept",
       "skos:inScheme": {

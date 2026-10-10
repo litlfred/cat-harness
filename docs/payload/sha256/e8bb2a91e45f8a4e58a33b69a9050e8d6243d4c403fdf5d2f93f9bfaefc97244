@@ -1,16 +1,13 @@
 ---
-layout: default
-generated: scripts/gen-skill-docs.ts — do not hand-edit; edit the skill
-title: 'Spec Kit'
-parent: Skill instructions
+name: spec-kit
+description: >
+  Spec-driven development, adopted whole: define what and why before deciding how,
+  and do not develop before a spec exists. Carries what this platform adopts and —
+  separately, with reasons — what it refuses.
+allowed-tools: Read Grep Glob Bash
+consulted: true
 ---
 
-{: .note }
-> Generated from [`cat-harness/skills/sdlc/spec-kit/spec-kit.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/skills/sdlc/spec-kit/spec-kit.md) — do not edit here.
->
-> [✎ Edit this page's source](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/skills/sdlc/spec-kit/spec-kit.md){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/skills/sdlc/spec-kit/spec-kit.md" data-repo="litlfred/folio-assistant" }
-
-{% raw %}
 # Spec Kit — spec-driven development
 
 ## Origin
@@ -262,4 +259,3 @@ must sign it off, tied to WHO/IG subject matter → `crdm`.
   the marker becomes a way of appearing to ask without having asked.
 - **Never cite spec-kit for the spec-before-code gate.** It is this platform's
   addition, stated above.
-{% endraw %}

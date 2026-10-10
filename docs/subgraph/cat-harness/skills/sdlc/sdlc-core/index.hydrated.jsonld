@@ -162,13 +162,13 @@
       "hasInstructions": true,
       "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/sdlc-core",
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-      "instructionLines": 892,
+      "instructionLines": 938,
       "instructionsPath": "skills/sdlc/sdlc-core/bean-coordination.md",
       "name": "bean-coordination",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/84c05d735a2141dbc45933979dfe3b82de6e84955b1840ce164e6006956c8b9f",
-        "bytes": 48767,
-        "sha256": "84c05d735a2141dbc45933979dfe3b82de6e84955b1840ce164e6006956c8b9f"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/680b9e9a96ccbed5c30c84964db5f6383585a041cf2d8f41538447582516bede",
+        "bytes": 50847,
+        "sha256": "680b9e9a96ccbed5c30c84964db5f6383585a041cf2d8f41538447582516bede"
       },
       "title": "Bean Coordination"
     },

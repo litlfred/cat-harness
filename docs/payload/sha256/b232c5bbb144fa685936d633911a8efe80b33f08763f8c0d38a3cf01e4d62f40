@@ -1,16 +1,13 @@
 ---
-layout: default
-generated: scripts/gen-skill-docs.ts — do not hand-edit; edit the skill
-title: 'Change Size Rule'
-parent: Skill instructions
+name: change-size
+description: >
+  The change-size rule: keeps review increments adjudicable by establishing a
+  line-count threshold (~400 effective lines), recording its empirical basis,
+  weighting prose/KG lower than code, and distinguishing size from complexity.
+allowed-tools: Read Grep Glob Bash
+consulted: true
 ---
 
-{: .note }
-> Generated from [`cat-harness/skills/sdlc/spec-kit/change-size.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/skills/sdlc/spec-kit/change-size.md) — do not edit here.
->
-> [✎ Edit this page's source](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/skills/sdlc/spec-kit/change-size.md){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/skills/sdlc/spec-kit/change-size.md" data-repo="litlfred/folio-assistant" }
-
-{% raw %}
 # Change Size Rule — Threshold, Basis, and Complexity Weighting
 
 ## Origin & Decision
@@ -93,4 +90,3 @@ a multi-increment delivery:
 Per **SC-005**, compliance metrics must always be reported as a **count with its denominator**, never as a bare percentage:
 - Correct: *"4 of 32 PRs (12.5%) exceeded the advisory threshold."*
 - Incorrect: *"12.5% of PRs exceeded the threshold."*
-{% endraw %}

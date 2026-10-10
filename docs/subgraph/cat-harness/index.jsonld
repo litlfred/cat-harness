@@ -461,9 +461,9 @@
       "@type": "bootstrap:Asset",
       "name": "npm-manifest",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/c1d033941b5e281e9c46997af547dc99df2f75510ef8ea8fe8964427c34b1287",
-        "bytes": 24222,
-        "sha256": "c1d033941b5e281e9c46997af547dc99df2f75510ef8ea8fe8964427c34b1287"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/144e995d96b4a0af474fd1db5bf1122a59077bb49d9a61deeee49b6c5d6d5ede",
+        "bytes": 24299,
+        "sha256": "144e995d96b4a0af474fd1db5bf1122a59077bb49d9a61deeee49b6c5d6d5ede"
       },
       "title": "package.json"
     },

@@ -27,13 +27,13 @@
       "hasInstructions": true,
       "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/spec-kit",
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-      "instructionLines": 78,
+      "instructionLines": 93,
       "instructionsPath": "skills/sdlc/spec-kit/change-size.md",
       "name": "change-size",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7949c1712465fc2d0dc22c98a560429bac90eaf3d5ea2198b27ad82410e28015",
-        "bytes": 4301,
-        "sha256": "7949c1712465fc2d0dc22c98a560429bac90eaf3d5ea2198b27ad82410e28015"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b232c5bbb144fa685936d633911a8efe80b33f08763f8c0d38a3cf01e4d62f40",
+        "bytes": 5195,
+        "sha256": "b232c5bbb144fa685936d633911a8efe80b33f08763f8c0d38a3cf01e4d62f40"
       },
       "title": "Change Size Rule — Threshold, Basis, and Complexity Weighting"
     },
@@ -46,13 +46,13 @@
       "hasInstructions": true,
       "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/spec-kit",
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-      "instructionLines": 218,
+      "instructionLines": 262,
       "instructionsPath": "skills/sdlc/spec-kit/spec-kit.md",
       "name": "spec-kit",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2af3eed078d0e4c5349eb572e0c6a54114a348f46cc986490389fecbcb141fe3",
-        "bytes": 11259,
-        "sha256": "2af3eed078d0e4c5349eb572e0c6a54114a348f46cc986490389fecbcb141fe3"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e8bb2a91e45f8a4e58a33b69a9050e8d6243d4c403fdf5d2f93f9bfaefc97244",
+        "bytes": 13860,
+        "sha256": "e8bb2a91e45f8a4e58a33b69a9050e8d6243d4c403fdf5d2f93f9bfaefc97244"
       },
       "title": "Spec Kit — spec-driven development"
     },
