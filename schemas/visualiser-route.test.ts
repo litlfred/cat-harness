@@ -44,6 +44,19 @@ describe("visualiserRoute", () => {
     expect(routeOf("h/vv/index.html", d)).toBeUndefined();
   });
 
+  test("a locale is the route's first segment, above the harness", () => {
+    expect(visualiserRoute({ locale: "en", harness: "h", visualiser: "v" })).toBe("en/h/v/");
+    expect(visualiserRoute({ locale: "en", harness: "h", visualiser: "v", subgraph: "s", asset: "d.json" })).toBe("en/h/v/s/d.json");
+    expect(siteRootFrom({ locale: "en", harness: "h", visualiser: "v" })).toBe("../../../");
+    expect(() => visualiserRoute({ locale: "EN", harness: "h", visualiser: "v" })).toThrow();
+  });
+
+  test("routeOf tells a localised route from the unlocalised one", () => {
+    const d = [{ locale: "en", harness: "h", visualiser: "v" }];
+    expect(routeOf("en/h/v/s/", d)).toEqual({ harness: "h", visualiser: "v", rest: "s/" });
+    expect(routeOf("h/v/s/", d)).toBeUndefined();
+  });
+
   test("an alias is one segment at the site's top level", () => {
     expect(aliasRoute("todos")).toBe("todos/");
     expect(() => aliasRoute("a/b")).toThrow();

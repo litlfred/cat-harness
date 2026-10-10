@@ -89,6 +89,26 @@ export const UN_LOCALES = ["ar", "zh", "en", "fr", "ru", "es"] as const;
 export type UnLocale = (typeof UN_LOCALES)[number];
 
 /**
+ * The locale every rendered page is written in first, and the first segment of
+ * its published URL.
+ *
+ * The owner, 2026-10-05: *"we need to keep track of locales, so lets do it
+ * upfront /<locale>/<declaring>/<kind>/.... ALL rendered visualizer pages for
+ * the CDN need to follow this pattern"*. English is prefixed like any other
+ * locale, so a translation lands beside it at `/<locale>/…` rather than
+ * displacing it.
+ */
+export const DEFAULT_LOCALE: UnLocale = "en";
+
+/**
+ * The locales pages are PUBLISHED under today. Only English is rendered; a
+ * locale joins this list when its pages are, not when its glossary is
+ * translated. Every page generator reads it from here rather than keeping its
+ * own list, so adding a locale is one edit.
+ */
+export const PUBLISHED_LOCALES: readonly UnLocale[] = [DEFAULT_LOCALE];
+
+/**
  * Human-readable native names for the UN languages, for the viewer's
  * language switcher dropdown.
  */
