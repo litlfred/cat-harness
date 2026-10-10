@@ -4,5 +4,5 @@
   "validates": {
     "kind": "bean-defs"
   },
-  "schema": "schemas/bean-graph.ts#BeanNodeKind"
+  "schema": "schemas/bean-graph.ts#BeanKind"
 }

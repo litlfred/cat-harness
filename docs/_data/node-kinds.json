@@ -27,7 +27,7 @@
       "subclasses": [],
       "declaredBy": "cat-harness",
       "module": "cat-harness/schemas/bean-graph.ts",
-      "exportName": "BeanNodeKind",
+      "exportName": "BeanKind",
       "holdings": [
         {
           "typology": "bean-defs"
