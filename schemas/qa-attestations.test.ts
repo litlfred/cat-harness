@@ -19,6 +19,7 @@ import {
   QaAttestationsSchema,
   readAttestationFile,
   readCertificationAttestations,
+  SectionTitleAttestationsSchema,
   serialiseAttestations,
   writeCertificationAttestations,
   type CertificationAttestations,
@@ -79,6 +80,7 @@ describe("qa-attestations/v1", () => {
       "bib-human-review",
       "requirement-signoff",
       "certification",
+      "section-title",
     ]);
     expect(QaAttestationsSchema.safeParse({ ...file(), family: "lsi" }).success).toBe(false);
   });
@@ -303,5 +305,41 @@ describe("the certification family (bean zaui)", () => {
     } finally {
       rmSync(root, { recursive: true, force: true });
     }
+  });
+});
+
+describe("the `section-title` family — bean 5qy8, owner's option 1", () => {
+  const verdict = {
+    title: "Setting the scene",
+    depth: 1,
+    result: "pass",
+    reviewer: "agent",
+    reviewed_hash: "abc123",
+    stale_mode: "thorough" as const,
+    reviewed_at: "2026-10-11T07:00:00Z",
+    note: null,
+  };
+  const st = (title_coherence: unknown) => ({
+    $schema: QA_ATTESTATIONS_SCHEMA,
+    family: "section-title",
+    subject: { kind: "paper", id: "my-paper", path: "folio/my-paper" },
+    title_coherence,
+  });
+
+  test("a decided verdict per chapter and section parses, through the shared union", () => {
+    expect(QaAttestationsSchema.safeParse(st({ "01-intro": { "1.1": verdict } })).success).toBe(true);
+  });
+
+  test("`pending` is refused — it is the absence of a judgement, and the store holds judgements only", () => {
+    expect(SectionTitleAttestationsSchema.safeParse(st({ "01-intro": { "1.1": { ...verdict, result: "pending" } } })).success).toBe(false);
+  });
+
+  test("a verdict without the hash it reviewed is refused — staleness is recomputed from it", () => {
+    const { reviewed_hash: _drop, ...noHash } = verdict;
+    expect(SectionTitleAttestationsSchema.safeParse(st({ "01-intro": { "1.1": noHash } })).success).toBe(false);
+  });
+
+  test("an anonymous verdict is refused", () => {
+    expect(SectionTitleAttestationsSchema.safeParse(st({ "01-intro": { "1.1": { ...verdict, reviewer: "" } } })).success).toBe(false);
   });
 });
