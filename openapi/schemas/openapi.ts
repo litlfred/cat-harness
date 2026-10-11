@@ -72,19 +72,50 @@ export const OpenApiConfigDocumentSchema = z
     source: OpenApiSourceSchema,
   })
   .strict();
+/**
+ * Where a RENDERED document is read from: an already-published spec, by URL
+ * (bean `folio-assistant-7jkp`; owner ruling 2026-10-10: two tools,
+ * `openapi-ingest-source` and `openapi-ingest-rendered`). A different input
+ * from a repository, and it fails differently — so a different list, not a
+ * mode of {@link OpenApiSourceSchema}.
+ */
+export const OpenApiRenderedSourceSchema = z
+  .object({
+    /** The published spec's URL: an OpenAPI 3 JSON document, served over https. */
+    url: z.string().url().refine((u) => u.startsWith("https://"), "a rendered spec is read over https"),
+  })
+  .strict();
+export const OpenApiRenderedDocumentSchema = z
+  .object({
+    id: z.string().regex(SEGMENT),
+    title: z.string().min(1).optional(),
+    description: z.string().min(1).optional(),
+    rendered: OpenApiRenderedSourceSchema,
+  })
+  .strict();
+export type OpenApiRenderedDocument = z.infer<typeof OpenApiRenderedDocumentSchema>;
+
 export const OpenApiConfigSchema = z
   .object({
     $schema: z.literal(OPENAPI_CONFIG_SCHEMA_TAG),
     /** The `<instance>.json` directory id of graph typology `openapi` the documents are ingested into. */
     directory: z.string().min(1),
-    documents: z.array(OpenApiConfigDocumentSchema).min(1),
+    /** Documents read from a repository (`openapi-ingest-source`). */
+    documents: z.array(OpenApiConfigDocumentSchema).default([]),
+    /** Documents read from a published spec URL (`openapi-ingest-rendered`). */
+    rendered: z.array(OpenApiRenderedDocumentSchema).default([]),
   })
   .strict()
   .superRefine((c, ctx) => {
+    if (c.documents.length + c.rendered.length === 0) {
+      ctx.addIssue({ code: "custom", path: ["documents"], message: "a config names at least one document, from a repository or rendered" });
+    }
     const seen = new Set<string>();
-    for (const [i, d] of c.documents.entries()) {
-      if (seen.has(d.id)) ctx.addIssue({ code: "custom", path: ["documents", i, "id"], message: `document id "${d.id}" is declared twice` });
-      seen.add(d.id);
+    for (const [list, docs] of [["documents", c.documents], ["rendered", c.rendered]] as const) {
+      for (const [i, d] of docs.entries()) {
+        if (seen.has(d.id)) ctx.addIssue({ code: "custom", path: [list, i, "id"], message: `document id "${d.id}" is declared twice` });
+        seen.add(d.id);
+      }
     }
   });
 export type OpenApiConfig = z.infer<typeof OpenApiConfigSchema>;
@@ -130,6 +161,17 @@ export const OpenApiProvenanceSchema = z
   })
   .strict();
 export type OpenApiProvenance = z.infer<typeof OpenApiProvenanceSchema>;
+
+/**
+ * What `openapi-ingest-rendered` records beside a document read from a URL.
+ * Same file name and shape as {@link OpenApiProvenanceSchema}, except the
+ * source: a URL and WHEN it was fetched, because a published spec has no
+ * commit to pin — what pins the bytes is the digest in `materialization`.
+ */
+export const OpenApiRenderedProvenanceSchema = OpenApiProvenanceSchema.extend({
+  source: OpenApiRenderedSourceSchema.extend({ fetchedAt: z.string().datetime() }).strict(),
+}).strict();
+export type OpenApiRenderedProvenance = z.infer<typeof OpenApiRenderedProvenanceSchema>;
 
 const OperationSchema = z
   .object({
