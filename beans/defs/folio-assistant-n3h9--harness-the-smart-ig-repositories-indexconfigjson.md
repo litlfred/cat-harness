@@ -90,3 +90,10 @@ Still open:
 - [ ] smart-ra step 2: workflows onto the mounts, submodule removed
 - [ ] an IG mode for build-instance-site (fhir-harness stage-ig-sites), after 53rv's packages land
 - [ ] the Routine environment allows cloning the litlfred repos and `bun install`/`bun run` (owner setting)
+
+## 2026-10-11 — smart-ra onto the mounts
+- smart-ra#37 (merged): index.config.json mounts the 7 layers plus folio-assistant-sci beside the submodule. sci is needed because core's block kinds name its `paper` adapter (bean bzwk).
+- smart-ra#38 (merged): qa-sweep.yml checks out without submodules and mounts from the lock. CI green, 933 sidecars pass.
+- smart-ra#39 (open): composite action `.github/actions/mount-layers`. qa-sweep-nightly, section-title-audit, public-comment and public-comment-check move onto it.
+- Left: staging.yml (agent-run) → build-instance-site. smart-ra has no package.json, so its build steps (build-document-site, public-comment-site, build-library-site, gen-node-kind-pages, archimate) need script names first. After that, remove the folio-assistant submodule.
+- Found: section-title-audit reports 0 titles on dpi-h-ra (its sections are SectionRefs with no inline title). This is pre-existing, and the workflow is dispatch-only.
