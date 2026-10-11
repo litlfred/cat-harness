@@ -1115,6 +1115,63 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       },
     }),
 
+    // ── The BPMN engine, as a Tool node — bean `folio-assistant-cy4p`, owner
+    // ruling 2026-10-10 ("both"): the engine other instances discover and
+    // depend on, not an implementation detail of one MCP server; and its
+    // checklist projection, generated per diagram and gated.
+    defineTool({
+      id: "bpmn-engine",
+      title: "BPMN workflow engine",
+      description:
+        "Run a declared BPMN process as an instance: `workflow_start` opens one for a subject, `workflow_next` reports what is enabled, `workflow_complete` records a step or answers a decision (a DMN-computed one from `facts`) and REFUSES a step that is not enabled. State is committed under the work plan, so which edge was taken is a record, not a memory.",
+      install: { none: true },
+      // The harness's own arm is the registrar the MCP server loads; the
+      // module is instance-relative (`inProcess.module`), and the code lives in
+      // the implementation layer beside this one (`w2gr`: definitions here,
+      // implementations there).
+      invoke: { inProcess: { module: "../cat-harness-tools/src/tools/workflow.ts", register: "registerWorkflowTools" }, mcp: { tool: "workflow_*" } },
+      io: {
+        inputs: [
+          { name: "process", schema: t("ProcessId"), required: true, description: "The process to run: a diagram's file stem or its `bpmn:process` id." },
+          { name: "node", schema: t("NodeId"), required: false, description: "The step or decision to complete, as `workflow_next` reported it." },
+        ],
+        outputs: [
+          { name: "enabled", schema: t("NodeId"), description: "What may be worked next, after each call." },
+        ],
+      },
+      satisfies: ["process-state"],
+      selection: {
+        when: "Work follows a declared process and its order must be enforced and recorded: a step done out of order should be refused, not just discouraged.",
+        limits: "Reached over MCP; an agent without the server can walk the generated checklist (`bpmn-checklist`) by hand, but nothing then refuses a wrong turn.",
+        cost: "One diagram load per call; state is a small committed file.",
+      },
+      requires: { runtime: ["bun"], network: false },
+    }),
+    defineTool({
+      id: "bpmn-checklist",
+      title: "BPMN checklist projection",
+      description:
+        "Generate, per diagram, a checklist that walks the BPMN as a state machine: each task names the `workflow_complete` call that records it and ends with `next:` by node id; each decision lists its labelled branches (or the DMN that computes it); parallel forks name every branch and joins wait for all; start/end events are entry and exit lines. A rendering, never an authority: it says it is generated, and `--check` fails when one is stale.",
+      install: { none: true },
+      invoke: { shell: "bun run cat-harness-tools/scripts/bpmn-checklist.ts" },
+      io: {
+        inputs: [
+          { name: "out", schema: t("RepoPath"), required: false, arg: { flag: "--out" }, description: "Where to write `<stem>.checklist.md`. Default: the harness site's `assets/workflows/checklists`." },
+          { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Verify instead of write: exit 1 on a stale, missing or orphaned checklist." },
+        ],
+        outputs: [
+          { name: "checklists", schema: t("RepoPath"), description: "One `<stem>.checklist.md` per diagram in every instance." },
+        ],
+      },
+      satisfies: ["docs-generation"],
+      selection: {
+        when: "A coding agent needs a process in a form it can follow without reading BPMN XML, or without the engine's MCP server.",
+        limits: "Conditions are the flows' labels or the DMN's id; a condition expression the model does not carry is not reproduced. The engine stays the authority.",
+        cost: "One diagram load per process; no network.",
+      },
+      requires: { runtime: ["bun"], network: false },
+    }),
+
     defineTool({
       id: "github",
       title: "GitHub",
