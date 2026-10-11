@@ -993,7 +993,10 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "folio-todo-index/v1": {},
       "folio-semantic-zoom/v1": {},
       "folio-qa-graph/v1": { shape: "content/pipeline/qa-graph-index.ts#QaGraphIndex" },
-      "folio-translation-index/v1": { shape: "content/pipeline/translation-index.ts#TranslationIndex" },
+      // GENERATOR OUTPUT: `translation:index` writes the one file of this
+      // family whole (cat-harness-tools content/pipeline/translation-index.ts,
+      // INDEX_PATH = <site>/_data/translations.json, INDEX_SCHEMA).
+      "folio-translation-index/v1": { shape: "content/pipeline/translation-index.ts#TranslationIndex", generated: true },
       "folio-bean-index/v1": { generated: true },
       "node-kind-index/1.1.0": { generated: true },
       "folio-translation-status/v1": { generated: true },
