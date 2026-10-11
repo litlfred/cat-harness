@@ -76,3 +76,8 @@ Published: gh-pages `9255288` carries `cat-harness/catalogue/who-iris/index.html
   - re-draw `cat-harness/docs/wireframes/catalogue/` and re-run `wireframe:check`;
   - a library viewer on who-iris's own site;
   - who-iris's site is not yet republished with this.
+
+## 2026-10-11 — live, wireframe re-drawn
+- who-iris's site was republished from ced6dff: gh-pages 402af64, 57 pages, 0 unresolved links, Pages run 38139255901 succeeded. `catalogue/` now carries the filter and sort.
+- cat-harness#157 (merged, 0a79e9c) re-draws `docs/wireframes/catalogue/` as the page is now. intent.md records the state of all six findings: each is fixed or gone. `wireframe:check` passes at both viewports.
+- The one thing left on this bean is a library viewer on who-iris's own site, so that "held as" can link somewhere. That is turh's work, and the bean can close with it.
