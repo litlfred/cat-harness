@@ -125,6 +125,61 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       },
       requires: { runtime: ["bun"], network: false },
     }),
+    // ── The two OpenAPI ingest tools — bean `folio-assistant-7jkp`, owner
+    // ruling 2026-10-10: two tools, not one with a mode, because a repository
+    // and a published URL are different inputs that fail differently. Both
+    // write into the instance's declared `openapi` directory, verbatim, with a
+    // `folio-openapi-source/v1` provenance beside each document, and
+    // `ingest-openapi.ts --check` verifies either kind offline.
+    defineTool({
+      id: "openapi-ingest-source",
+      title: "OpenAPI ingest from source",
+      description:
+        "Ingest the OpenAPI documents an instance's `cat-openapi.config.json` lists under `documents` from a local checkout of their repository, read AT a branch, tag or commit (`git show`), verbatim, with a provenance recording the resolved commit and the document's sha256. `--check` verifies the committed copies offline.",
+      install: { none: true },
+      invoke: { shell: "bun run cat-harness-tools/openapi/scripts/ingest-openapi.ts" },
+      io: {
+        inputs: [
+          { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root holding `cat-openapi.config.json` and the declared `openapi` directory." },
+          { name: "source", schema: t("RepoPath"), required: true, arg: { flag: "--source" }, description: "A local checkout of the documents' repository." },
+          { name: "ref", schema: t("Branch"), required: false, arg: { flag: "--ref" }, description: "The branch, tag or commit to read each document at. Default: the checkout's HEAD." },
+        ],
+        outputs: [
+          { name: "documents", schema: t("RepoPath"), description: "`<id>.openapi.json` and `<id>.source.json` per document, in the declared `openapi` directory." },
+        ],
+      },
+      satisfies: ["library-ingestion"],
+      selection: {
+        when: "An instance holds an OpenAPI spec whose source is a repository (e.g. a gateway's spec file) and the KG should describe it, pinned to a commit.",
+        limits: "Reads a LOCAL checkout; fetching the repository is the caller's. A document that is not OpenAPI 3 fails rather than being written.",
+        cost: "One git read and one JSON parse per document. No network.",
+      },
+      requires: { runtime: ["bun", "git"], network: false },
+    }),
+    defineTool({
+      id: "openapi-ingest-rendered",
+      title: "OpenAPI ingest from a published spec",
+      description:
+        "Ingest the OpenAPI documents an instance's `cat-openapi.config.json` lists under `rendered` by fetching each published spec URL (https), verbatim, with a provenance recording the URL, when it was fetched and the document's sha256 — a URL has no commit, so the digest pins the bytes. A failed fetch or bytes that are not OpenAPI 3 write nothing and never replace a held copy.",
+      install: { none: true },
+      invoke: { shell: "bun run cat-harness-tools/openapi/scripts/ingest-openapi-rendered.ts" },
+      io: {
+        inputs: [
+          { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root holding `cat-openapi.config.json` and the declared `openapi` directory." },
+          { name: "only", schema: t("Slug"), required: false, arg: { flag: "--only" }, description: "Ingest just this document id." },
+        ],
+        outputs: [
+          { name: "documents", schema: t("RepoPath"), description: "`<id>.openapi.json` and `<id>.source.json` per rendered document, in the declared `openapi` directory." },
+        ],
+      },
+      satisfies: ["library-ingestion"],
+      selection: {
+        when: "The spec is only available as a published document (a rendered IG or docs site), or the repository should stay remote while its spec is ingested.",
+        limits: "Reads what the publisher serves at fetch time; whether it has changed since is answered only by fetching again and comparing digests.",
+        cost: "One https GET and one JSON parse per document.",
+      },
+      requires: { runtime: ["bun"], network: true },
+    }),
     // ── `gh-pages`: ONE way of performing `render-kg-to-cdn`.
     //
     // Owner, 2026-09-30: "make sure that gh-pages is one specific tool of
@@ -345,6 +400,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
           { name: "home", schema: t("RepoPath"), required: false, arg: { flag: "--home" }, description: "A page that becomes the site's index.md." },
           { name: "pre", schema: t("ScriptName"), required: false, arg: { flag: "--pre" }, description: "A package script to run in the checkout first, as `bun run <name>` (repeatable): the instance's own gates. Any non-zero exit stops the build." },
           { name: "sourceStep", schema: t("ScriptName"), required: false, arg: { flag: "--source-step" }, description: "A package script that writes into the site source, run as `bun run <name> <site source>` (repeatable)." },
+          { name: "siteStep", schema: t("ScriptName"), required: false, arg: { flag: "--site-step" }, description: "A package script that writes finished pages into the BUILT site, run as `bun run <name> <built site>` after Jekyll (repeatable): Jekyll drops `_`-prefixed directories, so a generator whose pages sit under one runs here." },
           { name: "staging", schema: t("Branch"), required: false, arg: { flag: "--staging" }, description: "Build (and with --publish, publish) a preview of this branch at STAGING/<branch>/." },
           { name: "noMount", schema: t("Flag"), required: false, arg: { flag: "--no-mount" }, description: "Use the mounts already on disk." },
           { name: "publish", schema: t("Flag"), required: false, arg: { flag: "--publish" }, description: "Publish after every check passes; needs --remote." },
@@ -359,7 +415,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       selection: {
         when: "Publishing an instance's site, or a branch preview of it, from an agent or a Routine: the agent-run replacement for a pages workflow.",
         limits:
-          "Instance sites only. A FHIR IG's site (fhir-harness `stage-ig-sites`) is not built here yet; it needs the IG's FHIR packages, which some environments cannot reach (bean `53rv`).",
+          "Instance sites only. A FHIR IG's site (the IG pipeline layer's `stage-ig-sites`) is not built here yet; it needs the IG's FHIR packages, which some environments cannot reach (bean `53rv`).",
         cost: "A full mount, install and Jekyll build: minutes, not seconds. `--no-mount` reuses what is on disk.",
       },
       requires: { runtime: ["bun", "git", "ruby"], network: true },

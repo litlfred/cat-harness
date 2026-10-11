@@ -24,6 +24,7 @@ node_modules/
 /beans/**
 /fsh-guts/**
 /issue-marks/**
+/test/health/results/**
 /todos/**
 # END state mounts
 

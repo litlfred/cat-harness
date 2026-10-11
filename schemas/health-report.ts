@@ -261,3 +261,59 @@ export type HealthReport = z.infer<typeof HealthReportSchema>;
 export function parseHealthReport(value: unknown): HealthReport {
   return HealthReportSchema.parse(value);
 }
+
+// ── The pages-serving observation (bean `folio-assistant-1dre`) ─────────
+
+/** Marker value carried by every pages-serving observation. */
+export const PAGES_SERVING_SCHEMA = "pages-serving/v1";
+
+/** The file the observation is published as, under the `health` prefix on `qa-reports`. */
+export const PAGES_SERVING_FILENAME = "pages-serving.json";
+
+/**
+ * One published URL, as a CI job with ordinary egress saw it.
+ *
+ * `expectedPage` is separate from `status` because GitHub Pages answers a
+ * missing page with its OWN 404 document, and a probe that read only the
+ * status would still need to say whether the body is the page it asked for.
+ */
+export const PagesServingUrlSchema = z
+  .object({
+    url: z.string().url(),
+    /** HTTP status of the final response. */
+    status: z.number().int().min(100).max(599),
+    /** Bytes in the response body. */
+    bytes: z.number().int().nonnegative(),
+    /** Whether the body is the page asked for, rather than Pages' own 404. */
+    expectedPage: z.boolean(),
+  })
+  .strict();
+export type PagesServingUrl = z.infer<typeof PagesServingUrlSchema>;
+
+/**
+ * What the published site served, recorded by the CI writer and read OFFLINE
+ * by `pages-publish-health`.
+ *
+ * Owner, 2026-10-11 (bean `1dre`, option 1): the observation lives on
+ * `qa-reports` under `main/<sha>/health/pages-serving.json`, published through
+ * the qa-store, and the health check reads it with `qa:fetch`. A missing or
+ * old observation reads as `unknown` with its date: a recorded observation is
+ * a measurement with a date, and one past its horizon is not an observation.
+ *
+ * `observedAt` is required for that reason. At least one URL is required, for
+ * the reason {@link parseHealthReport} refuses an empty sweep: an observation
+ * of nothing would count as an instrument over no evidence.
+ */
+export const PagesServingObservationSchema = z
+  .object({
+    $schema: z.literal(PAGES_SERVING_SCHEMA),
+    /** ISO 8601, when the CI job fetched the site. */
+    observedAt: z.string().datetime({ offset: true }),
+    /** The published site's root URL. */
+    site: z.string().url(),
+    /** The workflow run that made the observation, for a reader to open. */
+    run: z.string().url().optional(),
+    urls: z.array(PagesServingUrlSchema).min(1),
+  })
+  .strict();
+export type PagesServingObservation = z.infer<typeof PagesServingObservationSchema>;

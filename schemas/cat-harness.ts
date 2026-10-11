@@ -3928,6 +3928,14 @@ export function siblingScopeFor(instanceRoot: string): string {
   for (const found of instanceRootsIn(abs)) {
     if (resolve(found) !== abs) return abs;
   }
+  // NEVER outside the checkout (owner ruling 2026-10-11, bean `68k7`): an
+  // instance that IS its own checkout — its own `.git`, not a declared
+  // submodule of its parent — is the root instance, and its parent is not a
+  // place to look for siblings. A checkout cloned straight into `/tmp` would
+  // otherwise treat every directory in `/tmp` as a candidate instance, which is
+  // how 163 malformed fixtures once failed two unrelated tests (`8zsb`).
+  // Nested instances, submodules and lock mounts (no `.git`) are unchanged.
+  if (isForeignCheckout(abs)) return abs;
   return repoRootFor(abs);
 }
 
@@ -5326,6 +5334,12 @@ function promoteFromWithin(
       const fromDefault = d.declaredBy === "(default)" && rootLink !== undefined;
       const entry = {
         ...(nd as unknown as ContentDirectory),
+        // A from-within entry's `path` is spelled from its PARENT's path, so it
+        // resolves against the parent's root: it inherits the parent's `scope`
+        // unless it states its own. Without this, `beans/beans.json`'s `defs`
+        // under the repository-scoped `beans/` resolved against the INSTANCE,
+        // and `materialiseDirectories` refused (`harness:dirs:check`).
+        ...(d.scope !== undefined && (nd as { scope?: unknown }).scope === undefined ? { scope: d.scope } : {}),
         path: `${d.path.replace(/\/+$/, "")}/${sub}/`,
         declaredBy: fromDefault ? rootLink.name : d.declaredBy,
         absPath: join(d.absPath, sub),

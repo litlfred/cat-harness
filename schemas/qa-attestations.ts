@@ -147,6 +147,7 @@ export const ATTESTATION_FAMILIES = [
   "bib-human-review",
   "requirement-signoff",
   "certification",
+  "section-title",
 ] as const;
 export type AttestationFamily = (typeof ATTESTATION_FAMILIES)[number];
 
@@ -533,6 +534,44 @@ export function writeCertificationAttestations(
  */
 export const fileCertification = writeCertificationAttestations;
 
+// ── The `section-title` family (bean `folio-assistant-5qy8`) ───────────
+
+export const SECTION_TITLE_FAMILY = "section-title" as const;
+
+/**
+ * One title-coherence verdict on one section of a chapter.
+ *
+ * Owner, 2026-10-11 (bean `5qy8`, option 1): these were the `agent` slots of
+ * the COMMITTED `section-title-audit.qa.json`, which made a derived sidecar
+ * carry judgements. They move here; the sidecar becomes a derived working copy.
+ *
+ * Only a DECIDED verdict is stored — `pending` is the absence of a judgement,
+ * and the derived copy is where an open slot shows. `reviewed_hash` pins what
+ * was reviewed (the chapter manifest's hash, or under `thorough` the section's
+ * subtree hash), so a stale verdict is detected by recomputing it and is never
+ * rewritten here.
+ */
+export const SectionTitleVerdictSchema = z
+  .object({
+    title: z.string().min(1),
+    depth: z.number().int().nonnegative(),
+    result: z.string().min(1).refine((r) => r !== "pending", { message: "`pending` is no judgement: the store holds decided verdicts only" }),
+    reviewer: z.string().min(1),
+    reviewed_hash: z.string().min(1),
+    stale_mode: z.enum(["manifest", "thorough"]),
+    reviewed_at: z.string().min(1).optional(),
+    note: z.string().nullable().optional(),
+  })
+  .strict();
+export type SectionTitleVerdict = z.infer<typeof SectionTitleVerdictSchema>;
+
+/** One paper's verdicts: chapter directory → section key (its label, else its title) → verdict. */
+export const SectionTitleAttestationsSchema = QaAttestationsBaseSchema.extend({
+  family: z.literal(SECTION_TITLE_FAMILY),
+  title_coherence: z.record(z.string(), z.record(z.string(), SectionTitleVerdictSchema)),
+}).strict();
+export type SectionTitleAttestations = z.infer<typeof SectionTitleAttestationsSchema>;
+
 /**
  * Every `qa-attestations/v1` file. A union on `family` so `kg_validate` and
  * the registry have ONE validator per `$schema`.
@@ -545,6 +584,7 @@ export const QaAttestationsSchema = z.discriminatedUnion("family", [
   BibHumanReviewAttestationsSchema,
   RequirementSignoffAttestationsSchema,
   CertificationAttestationsSchema,
+  SectionTitleAttestationsSchema,
 ]);
 export type QaAttestations = z.infer<typeof QaAttestationsSchema>;
 

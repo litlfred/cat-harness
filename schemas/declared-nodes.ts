@@ -35,7 +35,7 @@ export function declaredDirectories(repoRoot: string, graphTypology: string): st
   const ownRoots = instanceRootsIn(repoRoot);
   // The fixture's instances are scanned BESIDE this checkout's, for every
   // graph typology. It was "only when no own instance declares the typology",
-  // which hid the fixture's fhir-harness `typologies/` from a standalone
+  // which hid the fixture's IG-pipeline instance's `typologies/` from a standalone
   // cat-harness that declares a `typologies/` of its own (ig-pages, ig-ast,
   // ig-metadata-index, the todo kinds), so four tests failed standalone. The
   // fixture is set only when the checkout holds no vocabulary, never in a

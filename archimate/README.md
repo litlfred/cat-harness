@@ -33,7 +33,6 @@ TypeScript. The discipline is the skill
 | `archimate-validators` | [`validators/`](validators/) | `validators` |
 | `archimate-typologies` | [`typologies/`](typologies/) | `typologies` — the `archimate` kind |
 | `archimate-schemas` | [`schemas/`](schemas/) | `schemas` |
-| `archimate-scripts` | [`scripts/`](scripts/) | `code` |
 
 ## The one rule
 

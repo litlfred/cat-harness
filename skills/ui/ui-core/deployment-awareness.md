@@ -90,7 +90,7 @@ When the UI is backed by a local server (such as `bun run cat serve:rendering`):
 The agent interacts with the harness through different channels depending on
 whether the Model Context Protocol (MCP) server is running:
 
-- **With MCP (`cat-harness-tools` in `--stdio` or `--http` mode):**
+- **With MCP (the tools layer's MCP server in `--stdio` or `--http` mode):**
   The agent has access to structured tools: `skill_list`, `skill_fetch`,
   `work_plan_prime`, `beans`, and content adapter tools. It should invoke tools
   directly rather than scraping files or inventing shell workarounds.

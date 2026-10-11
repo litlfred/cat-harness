@@ -38,7 +38,7 @@ taking on that role. Owner, 2026-10-03 (#1984); the comparison is on
 `smart-base/findings/dth-terms.md`.
 
 Schema: [`schemas/role-graph.ts`](../../../schemas/role-graph.ts). Audit:
-[`scripts/kg-audit.ts`](../../../scripts/kg-audit.ts), sidecar schema
+`scripts/kg-audit.ts`, sidecar schema
 [`schemas/kg-qa.ts`](../../../schemas/kg-qa.ts).
 
 ### Not every skill is PERFORMED — `consulted: true`

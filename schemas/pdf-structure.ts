@@ -128,6 +128,13 @@ export const PdfSourceSchema = z
     pages: z.number().int().min(0).optional(),
     text_source: z.enum(["embedded", "ocr"]).optional(),
     extractor: z.enum(["pymupdf", "pypdf"]).optional(),
+    /**
+     * Where the entry's MATHEMATICS comes from, written by
+     * `latex-math-overlay.py`: `latex` when at least one section's text was
+     * replaced by the paper's own LaTeX, `text-layer` when the overlay ran and
+     * none passed its gates. Absent when the overlay never ran.
+     */
+    math_source: z.enum(["latex", "text-layer"]).optional(),
   })
   .strict();
 
@@ -231,10 +238,28 @@ export const PdfDiagnosticsSchema = z
     toc_inferred_empty_share: z.number().min(0).max(1).optional(),
     /**
      * Which inference produced an inferred TOC (issue #2302): a printed
-     * contents page, heading styles read from font metrics, or the
-     * text-pattern heuristic that OCR'd text falls back to.
+     * contents page, heading styles read from font metrics, the
+     * text-pattern heuristic that OCR'd text falls back to, or `latex`: the
+     * `\section` commands of the paper's own LaTeX source, each placed on its
+     * PDF page (cat-harness-tools `_latex_headings.py`).
      */
-    toc_inferred_method: z.enum(["contents", "font", "regex"]).optional(),
+    toc_inferred_method: z.enum(["latex", "contents", "font", "regex"]).optional(),
+    /**
+     * What `latex-math-overlay.py` did: the main `.tex` file it read, how many
+     * sections it found there and how many PDF sections took their text from
+     * it, the three gates it applied, and a per-section record of each match.
+     */
+    latex_overlay: z
+      .object({
+        _schema: z.string(),
+        main: z.string().nullable(),
+        tex_sections: z.number().int().min(0),
+        overlaid: z.number().int().min(0),
+        thresholds: z.record(z.string(), z.number()),
+        sections: z.array(z.record(z.string(), z.unknown())),
+      })
+      .strict()
+      .optional(),
     figure_entries: z.number().int().min(0).optional(),
     /** Numbers missing from a caption run, e.g. "table 2.1" beside a Table 2.2. */
     figure_sequence_gaps: z.array(z.string()).optional(),
