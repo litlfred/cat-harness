@@ -58,3 +58,9 @@ open this bean and tell the separation session.
 ## 2026-10-09 — who-iris's half is LIVE; the bean is not done (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
 
 who-iris declares `folio/` and holds `folio/who-iris.json` (litlfred/who-iris #22), and its site is published from it (gh-pages `9255288`, Pages run 37977615950 success; `landing:sticky:check` exits 0 in the build). Still open: done-when 1 covers EVERY instance that renders a landing — `ensure-landing-sticky --check` run from who-iris's checkout reported folio-assistant-core's card (`folios/folio-assist-core.json`) and bootstrap's (`folio/bootstrap.json`) missing in their own trees; those land in their repositories. Done-when 4 (`/cat-harness/folio/` on cat-harness's site) not re-measured.
+
+## 2026-10-11 — core's card in core's tree; bootstrap's is a ruling question (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
+- **folio-assistant-core#59 (merged, 672f30f):** adds `folios/folio-assist-core.json`, written by `ensure-landing-sticky.ts .`. Its `--check` exits 0. The card now arrives with the mount.
+- **smart-ra:** renders a landing since 2026-10-11, and `ensure-landing-sticky . --check` exits 0 there (3 stickies, mounted).
+- **bootstrap: left open for the owner.** `--check` on bootstrap reports no folio declared, no folio/ and no sticky. But ensure-landing-sticky's header records the ruling *"a bare bootstrap instance gets no folio and no cat"*, and bootstrap does publish gh-pages. Either bootstrap's site is not "a landing" in done-when 1's sense, or the ruling yields here. The owner decides which.
+- **Not re-measured:** done-when 4 (`/cat-harness/folio/` on cat-harness's site).
