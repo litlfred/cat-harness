@@ -107,3 +107,12 @@ Still open:
   - `.claude/hooks/session-start.sh` mounts from the lock when the mounts are absent.
   - .mcp.json and dpi-h-ra.config.json point at the mount paths.
 - Still open: the first agent-run publish of smart-ra's root site and of its previews. The command is in AGENTS.md "The site", with `--publish --remote`.
+
+## 2026-10-11 06:41 — first agent-run root publish of smart-ra
+- The owner chose "2": publish the root now.
+- smart-ra#42 (merged) made the RA mapper a site step (`tools/ra-mapper/build-site.sh`, `site:mapper`). Without it the root publish would have dropped `mapper/`. ra-mapper.yml, an Actions deploy, is removed.
+- Published from smart-ra main 6b42948 with the AGENTS.md command:
+  - gh-pages c36bb41: 8780 pages, 0 unresolved links;
+  - STAGING/ and _render-log/ kept;
+  - Pages run 38118816755 succeeded.
+- Breaks: the old root `review/` is now `en/review/`, so links to /smart-ra/review/ 404. Root `_main-site.json` (the reusable staging workflow's before-manifest) is gone with that workflow.
