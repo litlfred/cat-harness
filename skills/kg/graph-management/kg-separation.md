@@ -379,10 +379,11 @@ never opens a proposal, a memory or a fixture.
 
 **A move that removes files from one repository must be pinned together with
 the commit that adds them to the receiving one.** cat-harness #81/#82 moved
-two skills down to folio-assistant-core and six code lists to smart-base; a
-parent pinning the new cat-harness with the OLD core and smart-base had those
-artefacts in neither repository, and the gates said so only indirectly. The
-fix was to pin core #20 and smart-base #27 in the same re-pin. The general
+two skills out to the content core and six code lists to a content instance
+above it; a parent pinning the new cat-harness with the OLD pins of those two
+receiving repositories had those artefacts in neither, and the gates said so
+only indirectly. The fix was to re-pin both receivers (their #20 and #27) in
+the same re-pin. The general
 form: before a re-pin, list what each new commit removes and confirm the
 receiving repository's pin contains it.
 

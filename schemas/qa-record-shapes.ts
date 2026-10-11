@@ -3,7 +3,7 @@
  * `qa-witness/v1`, `qa-results/v1`, `translation-qa/v1`, `folio-lsi-index/v1`.
  *
  * Definitions, so they live here; the code that writes and reads these records
- * is in cat-harness-tools and re-exports them (bean 70lx). The graph-typology
+ * is in the tools layer above this one and re-exports them (bean 70lx). The graph-typology
  * registry's `nodeSchemas` names these by `module#Export`, and a reference from
  * the harness can only resolve inside the harness.
  *
@@ -12,7 +12,7 @@
  */
 import type { QaCriterionEntry, QaFieldHash } from "./block-qa.ts";
 
-// ── from cat-harness-tools/content/pipeline/qa-witness.ts ──
+// ── from the tools layer's content/pipeline/qa-witness.ts ──
 
 /**
  * Whether a witness's verdict still applies to the files on disk.
@@ -66,7 +66,7 @@ export interface QaWitness {
   notes?: string;
 }
 
-// ── from cat-harness-tools/scripts/qa-results.ts ──
+// ── from the tools layer's scripts/qa-results.ts ──
 
 /**
  * One finding family within a result.
@@ -109,7 +109,7 @@ export interface QaResult {
   total: number;
 }
 
-// ── from cat-harness-tools/content/pipeline/translation-block-qa.ts ──
+// ── from the tools layer's content/pipeline/translation-block-qa.ts ──
 
 /**
  * A translation verdict's inputs: the block's own companions, plus the `.po`.
@@ -144,7 +144,7 @@ export interface TranslationBlockQaReport {
   updated_at: string;
 }
 
-// ── from cat-harness-tools/content/pipeline/lsi.ts ──
+// ── from the tools layer's content/pipeline/lsi.ts ──
 
 export interface LsiOptions {
   /** Requested rank. Capped at `min(terms, units) - 1`. Default 100 — the
@@ -162,7 +162,7 @@ export interface LsiOptions {
   seed?: number;
 }
 
-// ── from cat-harness-tools/scripts/lsi.ts ──
+// ── from the tools layer's scripts/lsi.ts ──
 
 /** The committed per-graph index sidecar, `folio-lsi-index/v1`. */
 export interface LsiSidecar {
