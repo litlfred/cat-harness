@@ -211,6 +211,15 @@ export const AVATARS: Readonly<Record<string, Avatar>> = {
     tone: 40,
     reads: "a bean with a slip of paper beside it — an addendum, not a second item",
   },
+  // NOTES: a folio's derivation notes and scoping docs — declared context an
+  // agent reads, never rendered content. A ruled page with a margin line,
+  // because a note is something written down to be read again, not a task
+  // (`todos`) and not a published page (`docs`).
+  notes: {
+    glyph: "M6 4h12v16H6zM9 4v16M11 8h5M11 12h5M11 16h3",
+    tone: 95,
+    reads: "a ruled page with a margin line — context written down to be read again",
+  },
   // A SURVEY of a commit window. Two endpoint marks with a span between them,
   // because the two edge commits ARE the artefact: a survey whose window
   // cannot be pinned tells a reader nothing about today (bean `6ptx`).
