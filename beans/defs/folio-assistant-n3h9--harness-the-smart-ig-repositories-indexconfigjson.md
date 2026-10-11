@@ -5,7 +5,7 @@ status: in-progress
 type: epic
 priority: high
 created_at: 2026-10-10T14:06:53Z
-updated_at: 2026-10-10T15:10:00Z
+updated_at: 2026-10-11T05:50:00Z
 ---
 
 Owner, 2026-10-10: *"you can work onthe litlfred/smart-* go ahead and harness them with index.config.json and make sure they stop the ghpages currrent redering pipleine and use to the harnessed one"* (fhir-harness, smart-base harness). Repositories: *"smart-base, smart-base-clinical, smart-core, smart-immunizations, smart-hiv and smart-trust smart-ra"*.
@@ -65,3 +65,28 @@ Until the tool exists, an agent starts `staging.yml` by hand (workflow_dispatch)
 Done when, added:
 - [ ] the build tool takes `--staging <branch>` and writes only `STAGING/<branch>/`, keeping the root site and the other previews
 - [ ] smart-ra: a public-comment change set can be reviewed on an agent-built `STAGING/<branch>/` preview
+
+## 2026-10-11 — environment migrated: four repositories on remote mounts, and an agent-run publish
+
+Owner, 2026-10-10: *"keep going. keep migrating environment"*. On 2026-10-11: *"repin as needed. merge all ready green next 4hrs, continue"*.
+
+**Remote mounts, no submodule.** These follow who-iris's pattern: the instance declaration at the root, plus `index.config.json`. Each mounts smart-base (its 22 declared directories), fhir-harness, folio-assistant-core, cat-harness, cat-harness-tools, bootstrap and bootstrap-tools, at each repository's main of 2026-10-10:
+- smart-hiv#2: `smart-hiv.json`
+- smart-base-clinical#2: `smart-base-clinical.json`
+- smart-core#2: `smart-core.json`
+
+Each was verified from an empty directory: remote-mount exits 0 and all seven layers mount. The declarations declare no directories yet (dh4f), and the IG content is seeded later (53rv).
+
+**smart-ra (dpi-h-ra), step 1: smart-ra#37.** The same mounts sit beside the folio-assistant submodule. Step 2 moves its six workflows onto the mounts and removes the submodule.
+
+**The build tool.** `build-instance-site` is in place:
+- implementation: cat-harness-tools #58, #62, #64, #67;
+- Tool node and `ScriptName` type: cat-harness #104;
+- `publish-site --into/--keep`: bootstrap-tools #16.
+
+who-iris is pinned to it (who-iris #32, #33, #34). Its publish Routine now makes one `build-instance-site` call. It was first used from this session (gh-pages 2951fee; Pages run 38072524836, success). The Routine itself is blocked: its session's permission check refuses cloning the pinned layers.
+
+Still open:
+- [ ] smart-ra step 2: workflows onto the mounts, submodule removed
+- [ ] an IG mode for build-instance-site (fhir-harness stage-ig-sites), after 53rv's packages land
+- [ ] the Routine environment allows cloning the litlfred repos and `bun install`/`bun run` (owner setting)
