@@ -359,7 +359,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       selection: {
         when: "Publishing an instance's site, or a branch preview of it, from an agent or a Routine: the agent-run replacement for a pages workflow.",
         limits:
-          "Instance sites only. A FHIR IG's site (fhir-harness `stage-ig-sites`) is not built here yet; it needs the IG's FHIR packages, which some environments cannot reach (bean `53rv`).",
+          "Instance sites only. A FHIR IG's site (the IG pipeline layer's `stage-ig-sites`) is not built here yet; it needs the IG's FHIR packages, which some environments cannot reach (bean `53rv`).",
         cost: "A full mount, install and Jekyll build: minutes, not seconds. `--no-mount` reuses what is on disk.",
       },
       requires: { runtime: ["bun", "git", "ruby"], network: true },

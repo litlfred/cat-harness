@@ -109,9 +109,9 @@ function segment(what: string, s: string): string {
  * none for an asset.
  *
  * `visualiserRoute({ harness: "cat-harness", visualiser: "library" })` is
- * `cat-harness/library/`; with `subgraph: "who-iris"` it is
- * `cat-harness/library/who-iris/`; with `asset: "data.json"` as well it is
- * `cat-harness/library/who-iris/data.json`. With `locale: "en"` each of those
+ * `cat-harness/library/`; with `subgraph: "<instance>"` it is
+ * `cat-harness/library/<instance>/`; with `asset: "data.json"` as well it is
+ * `cat-harness/library/<instance>/data.json`. With `locale: "en"` each of those
  * gains a leading `en/`.
  */
 export function visualiserRoute(p: VisualiserRouteParts): string {

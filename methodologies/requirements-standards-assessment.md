@@ -19,7 +19,7 @@ applies-when: >
   **Evaluating how requirements authored or verified in the harness map to or
   from open industry standards, interchange formats, statement grammars, and
   quality models — and deciding which transformations belong in higher harness
-  layers (cat-harness, folio-assistant-core) while keeping the bootstrap
+  layers (cat-harness, and content instances above it) while keeping the bootstrap
   Requirement schema strictly self-contained and free of external dependencies.**
   It answers *how bootstrap requirements translate to ReqIF, OSLC-RM, EARS, ISO
   29148, and ISO 25010, what each standard costs in serialization and semantic
@@ -288,7 +288,7 @@ that every tool, harness, and workspace inherits.
 3. **Speed and Portability**: Validating bootstrap schemas via Zod is nearly
    instantaneous in Bun or Node. It introduces zero runtime overhead.
 4. **Conclusion**: Any standard mapping or projection **must live in higher layers**
-   (`cat-harness` or `folio-assistant-core`). Injecting outside formats into
+   (`cat-harness`, or a content instance above it). Injecting outside formats into
    bootstrap would violate the repository's foundational architecture.
 
 ### Architectural layer placement

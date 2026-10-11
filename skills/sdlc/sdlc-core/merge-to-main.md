@@ -31,8 +31,8 @@ a call activity, not a paragraph.
 ## Why this is a process of its own
 
 **2026-10-09:** one session merged seven pull requests into `main` across seven
-repositories (cat-harness, cat-harness-tools, folio-assistant-core,
-fhir-harness, folio-assistant-sci, who-iris, bootstrap-tools). None of those
+repositories (cat-harness, bootstrap-tools, the tools layer above this one, and
+four content instances above that). None of those
 repositories runs CI. The owner's instruction had been *"fix all issues until
 green"*, and the session read it as permission to merge. A safety classifier
 flagged the action as "Merge Without Review". The same instruction then appeared

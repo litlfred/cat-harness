@@ -60,9 +60,17 @@ jobs:
           bun-version: 1.3.14
 
       - name: Mount bootstrap and bootstrap-tools from lock
+        # The mounter is the tools layer's, found wherever that layer sits
+        # rather than named: this layer does not name the one above it.
+        # Exactly one copy is run; several is an error, not a first pick.
         run: |
-          if [ -f "cat-harness-tools/scripts/mount-from-lock.ts" ]; then
-            bun cat-harness-tools/scripts/mount-from-lock.ts --root .
+          shopt -s nullglob
+          found=(*/scripts/mount-from-lock.ts)
+          if [ "${#found[@]}" -gt 1 ]; then
+            echo "more than one mount-from-lock.ts: ${found[*]}" >&2
+            exit 1
+          elif [ "${#found[@]}" -eq 1 ]; then
+            bun "${found[0]}" --root .
           elif [ -f "scripts/mount-from-lock.ts" ]; then
             bun scripts/mount-from-lock.ts --root .
           fi

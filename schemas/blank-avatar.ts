@@ -1,6 +1,6 @@
 /**
  * The blank avatar on its own, with no `node:` import, so a browser bundle can
- * use it: the navbar client (`cat-harness-tools/scripts/lib/navbar.ts`)
+ * use it: the navbar client (the tools layer's `scripts/lib/navbar.ts`)
  * compares a glyph with it, and importing it from `avatars.ts` pulled that
  * module's `node:fs` / `node:url` reads into the bundle, which Bun's browser
  * build refuses (`navbar:assets:check`). `avatars.ts` re-exports it, so every

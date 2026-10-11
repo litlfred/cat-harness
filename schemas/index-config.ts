@@ -243,8 +243,8 @@ export function requireIndexConfig(root: string): IndexConfig | undefined {
  * Read STRUCTURALLY, the way the planner already reads an upstream's
  * declaration. A full {@link readDeclaration} needs every graph typology the
  * declaration names to be registered first. Some of those kinds are registered
- * by the very layers the mount fetches: who-iris names core's `catalogue`, and
- * core is one of its mounts. So in an empty checkout the full read refused the
+ * by the very layers the mount fetches: a content instance may name a kind such
+ * as `catalogue` that a layer it mounts registers. So in an empty checkout the full read refused the
  * mount that would have supplied the kind (bean `qump`). Whether the rest of the
  * declaration is valid is for the checks that read all of it once it is mounted.
  */
