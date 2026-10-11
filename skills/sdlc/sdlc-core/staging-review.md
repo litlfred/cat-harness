@@ -429,7 +429,7 @@ in words ("1 verdict on an earlier version, not counted"). A build whose
 `review-comments.json` carries no verdicts says "No verdict data on this
 build" rather than treating every block as unread. Typing into a selector is never navigation.
 
-**Tests.** `cat-harness-tools/test/review-nav.e2e.ts` drives all of this with the
+**Tests.** the tools layer's `test/review-nav.e2e.ts` drives all of this with the
 keyboard alone. It uses no mouse, no click and no hover.
 
 ### The review page, and choosing how to see a change

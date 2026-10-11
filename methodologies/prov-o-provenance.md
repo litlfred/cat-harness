@@ -90,7 +90,7 @@ That sentence is the QA/QC after-check, stated by the standard.
 | `prov:qualifiedAssociation` → `prov:agent` | the actor that performed the task | same, `ProvAssociationSchema` |
 | `prov:hadRole` | the role the BPMN lane binds | same |
 | `prov:hadPlan` | the BPMN task, written `<process>#<task id>` (`PLAN_REF`) — a task is *"a set of actions or steps intended by one or more agents"* (entry (52)), so no term is minted | same |
-| `prov:used` | the content a step acted on | `cat-harness-tools/src/workflow/prov-record.ts` |
+| `prov:used` | the content a step acted on | the tools layer's `src/workflow/prov-record.ts` |
 | `prov:Entity`, `prov:wasDerivedFrom` | the exported graph is an Entity derived from its source commit | `cat-harness-tools/scripts/kg-export.ts`; also `derivedFrom` in `cat-harness/schemas/jsonld.ts` |
 | `prov:alternateOf` (expanded) | a preview graph → the canonical one: *"Two alternate entities present aspects of the same thing"* (§4.2, entry (20), `sections/sec-017-…md`) | `cat-harness-tools/scripts/kg-export.ts`, chosen over `owl:sameAs` because sameAs would merge their statements |
 
@@ -153,7 +153,7 @@ Recorded so the next reader does not mistake them for adoption decisions:
 ## Where it runs
 
 - `cat-harness/schemas/prov.ts` — the adopted subset, as Zod.
-- `cat-harness-tools/src/workflow/prov-record.ts` — the engine writes the activity as
+- the tools layer's `src/workflow/prov-record.ts` — the engine writes the activity as
   each step is recorded (`InstanceState` history `prov`, `src/workflow/instance.ts`).
 - `cat-harness-tools/scripts/prov-qaqc.ts` — the after-check: derives or reads each
   activity, re-runs `authorizeTask`, writes `docs/assets/prov/<instance>.prov.jsonld`
