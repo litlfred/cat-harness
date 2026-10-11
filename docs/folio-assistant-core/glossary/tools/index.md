@@ -12,14 +12,14 @@ permalink: /folio-assistant-core/glossary/tools/
 
 Candidate terms extracted from every Tool node: `title` as the label, `description` as the definition, the Tool id as the code. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: cat-harness 149 (<a href="{{ '/assets/glossary/cat-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 25 (<a href="{{ '/assets/glossary/fhir-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 9 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 5 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 7 (<a href="{{ '/assets/glossary/smart-base--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · who-iris 1 (<a href="{{ '/assets/glossary/who-iris--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>).
+From: cat-harness 152 (<a href="{{ '/assets/glossary/cat-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 25 (<a href="{{ '/assets/glossary/fhir-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 11 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 7 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 7 (<a href="{{ '/assets/glossary/smart-base--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · who-iris 1 (<a href="{{ '/assets/glossary/who-iris--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>).
 
-**Size:** this page holds 196 terms and is 143 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 203 terms and is 150 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>196</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>196</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>203</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>203</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -29,7 +29,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">196</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">203</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-A">A</a> <a href="#letter-B">B</a> <a href="#letter-C">C</a> <a href="#letter-D">D</a> <a href="#letter-E">E</a> <a href="#letter-F">F</a> <a href="#letter-G">G</a> <a href="#letter-H">H</a> <a href="#letter-I">I</a> <a href="#letter-J">J</a> <a href="#letter-K">K</a> <a href="#letter-L">L</a> <a href="#letter-M">M</a> <a href="#letter-N">N</a> <a href="#letter-O">O</a> <a href="#letter-P">P</a> <a href="#letter-Q">Q</a> <a href="#letter-R">R</a> <a href="#letter-S">S</a> <a href="#letter-T">T</a> <a href="#letter-U">U</a> <a href="#letter-V">V</a> <a href="#letter-W">W</a></nav>
 
@@ -102,12 +102,33 @@ BPMN → FHIR Shorthand <span class="fa-gloss-status">candidate, extracted</span
 <p>Derive FSH from a DAK's BPMN business processes — the render direction, of which the extractors are the inverse.</p>
 <p class="fa-gloss-meta">Tools of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/tools/index.ts"><code>smart-base/tools/index.ts#bpmn-to-fsh</code></a></p>
 </dd>
+<dt id="cat-harness--kg-tools--bpmn-checklist" data-fa-state="extracted" data-fa-gloss="">
+BPMN checklist projection <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Generate, per diagram, a checklist that walks the BPMN as a state machine: each task names the <code>workflow_complete</code> call that records it and ends with <code>next:</code> by node id; each decision lists its labelled branches (or the DMN that computes it); parallel forks name every branch and joins wait for all; start/end events are entry and exit lines. A rendering, never an authority: it says it is generated, and <code>--check</code> fails when one is stale.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#bpmn-checklist</code></a></p>
+</dd>
 <dt id="cat-harness--kg-tools--bpmn-render" data-fa-state="extracted" data-fa-gloss="">
 BPMN diagram rendering <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p>Render each process diagram to SVG for the documentation site. The .bpmn file is the source of truth; the picture is generated from it, so a diagram and its image cannot disagree.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#bpmn-render</code></a></p>
+</dd>
+<dt id="cat-harness--kg-tools--bpmn-engine" data-fa-state="extracted" data-fa-gloss="">
+BPMN workflow engine <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Run a declared BPMN process as an instance: <code>workflow_start</code> opens one for a subject, <code>workflow_next</code> reports what is enabled, <code>workflow_complete</code> records a step or answers a decision (a DMN-computed one from <code>facts</code>) and REFUSES a step that is not enabled. State is committed under the work plan, so which edge was taken is a record, not a memory.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#bpmn-engine</code></a></p>
+</dd>
+<dt id="folio-assistant-sci--kg-tools--lean-html-docs" data-fa-state="extracted" data-fa-gloss="">
+Build a Lean package's HTML docs (doc-gen4) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Build the doc-gen4 HTML render of a folio's Lake package — the visualiser of a declared <code>lean</code> directory — with <code>lake -R -Kenv=dev build &lt;Lib&gt;:docs</code>, cache-aware: refuses while another lake/lean process holds <code>.lake/</code>, refuses on a restored tree that carries no traces (a Lake build there EVICTS the cache), checks or restores the warm cache first, and enables a sentinel-commented doc-gen4 <code>[[require]]</code> for this build only, restoring the lakefile on exit. Never runs <code>lake update</code>. Output: <code>&lt;lake-root&gt;/.lake/build/doc</code>.</p>
+<p class="fa-gloss-meta">Tools of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/tools/index.ts"><code>folio-assistant-sci/tools/index.ts#lean-html-docs</code></a></p>
 </dd>
 <dt id="fhir-harness--kg-tools--ig-ast-export" data-fa-state="extracted" data-fa-gloss="">
 Build an IG and write its AST <span class="fa-gloss-status">candidate, extracted</span>
@@ -147,6 +168,13 @@ Check an instance's ArchiMate models against its config <span class="fa-gloss-st
 <dd>
 <p>The gate for the <code>archimate</code> graph typology: every model <code>cat-archimate.config.json</code> names is held, parses (Archi's native XML or its zipped archive), and resolves — every box in every view draws an element the model holds, every relationship's ends are in the model — and no <code>.archimate</code> file is held that the config does not name.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#archimate-check</code></a></p>
+</dd>
+<dt id="cat-harness--kg-tools--secrets-check" data-fa-state="extracted" data-fa-gloss="">
+Check declared credential needs against workflow use and expiry, by name <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Compare each repository's declared credential needs (<code>credentials/needs.json</code>, profile and registry) with the <code>$&#123;&#123; secrets.NAME }}</code> references its workflows make, with the secret names GitHub lists when a token allows it, and with any recorded expiry. NAMES ONLY — no value is ever read. Findings per §6.2: used-not-declared, declared-not-used, declared-not-present, present-not-declared (reported, never deleted), naming advisories, and expiry (≤30 days minor, ≤7 major, expired critical). Exits 2 when anything could not be determined, which outranks clean; else 1 on a major or critical finding; else 0.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#secrets-check</code></a></p>
 </dd>
 <dt id="folio-assistant-sci--kg-tools--latex-image" data-fa-state="extracted" data-fa-gloss="">
 Compile LaTeX in a container <span class="fa-gloss-status">candidate, extracted</span>
@@ -197,12 +225,12 @@ Convert a checkout to a root index.config.json <span class="fa-gloss-status">can
 <p>Write the root <code>index.config.json</code> (<code>folio-index-config/v1</code>) that says which instances the checkout instantiates, where each comes from (<code>source.local</code> or <code>source.remote</code>) and which owns <code>/</code> (<code>site.landing</code>), from the root <code>*.config.json</code> files and the declaration's <code>remoteMounts</code>. With <code>--write</code> it moves <code>remoteMounts</code> off the declaration into <code>source.remote</code> entries, writes the generated <code>.gitignore</code> block, and renames a legacy <code>&lt;name&gt;.mount-lock.json</code> to <code>index.lock.json</code>. Without a flag it prints the index it would write. Idempotent: a re-run merges what the declaration gained, and refuses an entry the index already holds differently. A root config naming no instance is reported as <code>unmatched-config</code> and not imported, because what to do with it is a person's decision.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#index-config-migrate</code></a></p>
 </dd>
-<dt id="cat-harness--kg-tools--tabular-csv" data-fa-state="extracted" data-fa-gloss="">
-CSV tabular metadata (STUB) <span class="fa-gloss-status">candidate, extracted</span>
+<dt id="folio-assistant-core--kg-tools--tabular-csv" data-fa-state="extracted" data-fa-gloss="">
+CSV tabular metadata <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>STUB — not implemented. Would read a delimited text file into CSVW: one table, its columns and their datatypes. A CSV has no sheets and no cells outside the table, so <code>fac:anchor.sheet</code> and <code>fac:anchor.cell</code> are a determined null rather than an absence. Routing a CSV is not a sniff — it has no magic bytes — and must not become an extension guess (bean <code>p67i</code>).</p>
-<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#tabular-csv</code></a></p>
+<p>Read a delimited text file into a <code>folio-tabular-csvw/v1</code> record: one table, its columns and their CSVW datatypes, each measured or explicitly undetermined. Routing is by content, never by extension: the first rows must agree on one field count of two or more, under exactly one of <code>,</code> <code>;</code> TAB <code>|</code>. A CSV's <code>fac:anchor</code> sheet and cell are a determined null. Governed by the <code>tabular-metadata</code> skill (bean <code>eief</code>).</p>
+<p class="fa-gloss-meta">Tools of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/tools/index.ts"><code>folio-assistant-core/tools/index.ts#tabular-csv</code></a></p>
 </dd>
 </dl>
 
@@ -840,6 +868,20 @@ Open a render <span class="fa-gloss-status">candidate, extracted</span>
 <p>Open a rendered PDF, HTML page or image in the system browser, or list the renders available to open.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/mcp.ts"><code>cat-harness/tools/mcp.ts#paper-preview</code></a></p>
 </dd>
+<dt id="cat-harness--kg-tools--openapi-ingest-rendered" data-fa-state="extracted" data-fa-gloss="">
+OpenAPI ingest from a published spec <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Ingest the OpenAPI documents an instance's <code>cat-openapi.config.json</code> lists under <code>rendered</code> by fetching each published spec URL (https), verbatim, with a provenance recording the URL, when it was fetched and the document's sha256 — a URL has no commit, so the digest pins the bytes. A failed fetch or bytes that are not OpenAPI 3 write nothing and never replace a held copy.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#openapi-ingest-rendered</code></a></p>
+</dd>
+<dt id="cat-harness--kg-tools--openapi-ingest-source" data-fa-state="extracted" data-fa-gloss="">
+OpenAPI ingest from source <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Ingest the OpenAPI documents an instance's <code>cat-openapi.config.json</code> lists under <code>documents</code> from a local checkout of their repository, read AT a branch, tag or commit (<code>git show</code>), verbatim, with a provenance recording the resolved commit and the document's sha256. <code>--check</code> verifies the committed copies offline.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#openapi-ingest-source</code></a></p>
+</dd>
 </dl>
 
 <h2 id="letter-P">P</h2>
@@ -948,6 +990,13 @@ Proof-object extraction <span class="fa-gloss-status">candidate, extracted</span
 <dd>
 <p>Extract the theorem, lemma and definition environments of a paper's LaTeX chapters into <code>proof-objects.json</code> — the manifest the dependency graph and the proof-status update read.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#proof-objects-extract</code></a></p>
+</dd>
+<dt id="folio-assistant-sci--kg-tools--lean-render-publish" data-fa-state="extracted" data-fa-gloss="">
+Publish a Lean render under a folio site, with the harness rail <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Stage a doc-gen4 render under a folio's built site (<code>&lt;site&gt;/&lt;route&gt;/</code>, default <code>lean/</code>) and give every page the harness navbar and rail by running <code>cat-harness/scripts/rail-standalone-pages.ts --foreign-site</code> over the site — the same rail <code>stage-folio-local.ts</code> applies to the folio's own pages. Leaves out Lake's <code>.hash</code>/<code>.trace</code> bookkeeping, marks doc-gen4's iframe navbar and <code>find/</code> redirect <code>folio-navbar: none</code> so no rail is drawn inside the sidebar, adds a layout shim so the rail does not cover doc-gen4's fixed sidebar, and with <code>--modules</code> prunes to the folio's own modules, repointing links into dropped ones to the community docs. Then asserts every staged page is railed or declined.</p>
+<p class="fa-gloss-meta">Tools of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/tools/index.ts"><code>folio-assistant-sci/tools/index.ts#lean-render-publish</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--pages-index" data-fa-state="extracted" data-fa-gloss="">
 Published-paper index page <span class="fa-gloss-status">candidate, extracted</span>
@@ -1171,12 +1220,12 @@ Snapshot the SPDX License List at its pinned version <span class="fa-gloss-statu
 <p>Read <code>json/licenses.json</code> and <code>json/exceptions.json</code> from a copy of github.com/spdx/license-list-data at the pinned tag and write <code>cat-harness/external-schemas/spdx-license-list.terminology.json</code> (<code>folio-pinned-terminology/v1</code>): every licence and exception id with its name and deprecated flag — the offline, version-fixed list <code>check:source-licence</code> validates a <code>licence.json</code> id against.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#pin-spdx-license-list</code></a></p>
 </dd>
-<dt id="cat-harness--kg-tools--tabular-xlsx" data-fa-state="extracted" data-fa-gloss="">
-Spreadsheet tabular metadata (STUB) <span class="fa-gloss-status">candidate, extracted</span>
+<dt id="folio-assistant-core--kg-tools--tabular-xlsx" data-fa-state="extracted" data-fa-gloss="">
+Spreadsheet tabular metadata <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>STUB — not implemented. Would read a workbook into a CSVW TableGroup: one table per sheet, with the location CSVW cannot express (<code>fac:anchor</code>, <code>fac:headerRow</code>, <code>fac:extent</code>) carried as annotations on valid CSVW. A workbook is the case that motivates those terms: tables that do not start at A1, headers that are not row 1, several tables on one sheet.</p>
-<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#tabular-xlsx</code></a></p>
+<p>Read a workbook into a <code>folio-tabular-csvw/v1</code> record, one CSVW table per rectangular block of cells. Blocks are split on empty rows, then on empty columns, so several tables on one sheet are found, each anchored at its real top-left cell (<code>fac:anchor</code>: sheet, A1 cell, row, column). Dates are read through the number formats in <code>styles.xml</code>, not misread as integer serials. A malformed part is refused rather than half-read. No new dependency: ZIP via <code>node:zlib</code>, SpreadsheetML via <code>fast-xml-parser</code>. Governed by the <code>tabular-metadata</code> skill (bean <code>eief</code>).</p>
+<p class="fa-gloss-meta">Tools of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/tools/index.ts"><code>folio-assistant-core/tools/index.ts#tabular-xlsx</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--feature-staging" data-fa-state="extracted" data-fa-gloss="">
 Stage a branch's preview <span class="fa-gloss-status">candidate, extracted</span>

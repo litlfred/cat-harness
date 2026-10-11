@@ -9,6 +9,11 @@
       "name": "block-kinds"
     },
     {
+      "@id": "cat-harness:graphTypology/qa-checkers",
+      "@type": "bootstrap:GraphTypology",
+      "name": "qa-checkers"
+    },
+    {
       "@id": "folio-assistant-core:graphTypology/glossary",
       "@type": "bootstrap:GraphTypology",
       "name": "glossary"
@@ -70,6 +75,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/core-methodologies",
       "@type": "bootstrap:Subgraph",
       "name": "core-methodologies"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/core-qa-checkers",
+      "@type": "bootstrap:Subgraph",
+      "name": "core-qa-checkers"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/core-schemas",

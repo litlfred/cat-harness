@@ -9,7 +9,7 @@ skinparam packageStyle rectangle
 hide empty methods
 
 package "smart-immunizations/qa" as pkg_smart_immunizations_qa <<qa>> {
-  note "qa: no node schema declared\n(no node here carries a $schema family qa names (13 named): could not determine)" as n_smart_immunizations_qa_qa
+  note "qa: no node schema declared\n(no node here carries a $schema family qa names (14 named): could not determine)" as n_smart_immunizations_qa_qa
 }
 
 @enduml

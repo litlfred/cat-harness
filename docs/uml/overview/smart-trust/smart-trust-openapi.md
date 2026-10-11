@@ -68,15 +68,25 @@ classDiagram
       description [0..1] string
       source [1] object
     }
+    class smart_trust_smart_trust_openapi_cat_openapi_config_v1_Rendered["Rendered"] {
+      <<json: OpenApiConfigSchema>>
+      id [1] string
+      title [0..1] string
+      description [0..1] string
+      rendered [1] object
+    }
     class smart_trust_smart_trust_openapi_cat_openapi_config_v1_cat_openapi_config_v1["cat-openapi-config/v1"] {
       <<json: OpenApiConfigSchema>>
       $schema [1] 'cat-openapi-config/v1'
       directory [1] string
-      documents [1..*] Document[]
+      documents [0..*] Document[]
+      rendered [0..*] Rendered[]
     }
   }
-  smart_trust_smart_trust_openapi_cat_openapi_config_v1_cat_openapi_config_v1 *-- "1..*" smart_trust_smart_trust_openapi_cat_openapi_config_v1_Document : documents
+  smart_trust_smart_trust_openapi_cat_openapi_config_v1_cat_openapi_config_v1 *-- "0..*" smart_trust_smart_trust_openapi_cat_openapi_config_v1_Document : documents
+  smart_trust_smart_trust_openapi_cat_openapi_config_v1_cat_openapi_config_v1 *-- "0..*" smart_trust_smart_trust_openapi_cat_openapi_config_v1_Rendered : rendered
   cssClass "smart_trust_smart_trust_openapi_folio_openapi_source_v1_folio_openapi_source_v1" fa_uml_kind_openapi
   cssClass "smart_trust_smart_trust_openapi_cat_openapi_config_v1_Document" fa_uml_kind_openapi
+  cssClass "smart_trust_smart_trust_openapi_cat_openapi_config_v1_Rendered" fa_uml_kind_openapi
   cssClass "smart_trust_smart_trust_openapi_cat_openapi_config_v1_cat_openapi_config_v1" fa_uml_kind_openapi
 ```

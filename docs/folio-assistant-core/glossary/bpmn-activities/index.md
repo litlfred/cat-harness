@@ -12,14 +12,14 @@ permalink: /folio-assistant-core/glossary/bpmn-activities/
 
 Candidate terms extracted from every BPMN task and call activity: `name` as the label, its own `<documentation>` as the definition, the element id as the code. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap 38 (<a href="{{ '/assets/glossary/bootstrap--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · bootstrap-tools 7 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 481 (<a href="{{ '/assets/glossary/cat-harness--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 30 (<a href="{{ '/assets/glossary/fhir-harness--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 161 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 10 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 22 (<a href="{{ '/assets/glossary/smart-base--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap 38 (<a href="{{ '/assets/glossary/bootstrap--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · bootstrap-tools 7 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 481 (<a href="{{ '/assets/glossary/cat-harness--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 30 (<a href="{{ '/assets/glossary/fhir-harness--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 161 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 12 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 22 (<a href="{{ '/assets/glossary/smart-base--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>).
 
-**Size:** this page holds 749 terms and is 607 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 751 terms and is 609 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>749</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>749</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>751</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>751</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -29,7 +29,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">749</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">751</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-0-9">0–9</a> <a href="#letter-A">A</a> <a href="#letter-B">B</a> <a href="#letter-C">C</a> <a href="#letter-D">D</a> <a href="#letter-E">E</a> <a href="#letter-F">F</a> <a href="#letter-G">G</a> <a href="#letter-H">H</a> <a href="#letter-I">I</a> <a href="#letter-J">J</a> <a href="#letter-K">K</a> <a href="#letter-L">L</a> <a href="#letter-M">M</a> <a href="#letter-N">N</a> <a href="#letter-O">O</a> <a href="#letter-P">P</a> <a href="#letter-Q">Q</a> <a href="#letter-R">R</a> <a href="#letter-S">S</a> <a href="#letter-T">T</a> <a href="#letter-U">U</a> <a href="#letter-V">V</a> <a href="#letter-W">W</a></nav>
 
@@ -910,6 +910,13 @@ Build staging site <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>feature-staging.yml triggers: 1. Regenerate docs (schema, skills, content-backed pages) 2. Render BPMN diagrams 3. Stamp build with commit SHA + timestamp + branch 4. Build Jekyll site with STAGING/ baseurl 5. Inject yellow staging banner into every HTML page</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/content-change-review.bpmn"><code>folio-assistant-core/processes/content/content-change-review.bpmn#Task_BuildStaging</code></a></p>
+</dd>
+<dt id="folio-assistant-sci--kg-bpmn-activities--process_leandocspublish.task_build" data-fa-state="extracted" data-fa-gloss="">
+Build the doc-gen4 render over the warm cache <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Tool <code>lean-html-docs</code> (<code>adapters/paper/lean/lean-docs-build.sh --lake-root &lt;pkg&gt; --lib &lt;Lib&gt;</code>). Refuses while another lake/lean process holds <code>.lake/</code>, refuses over a restored tree with no traces, checks or restores the warm cache, enables the sentinel-commented doc-gen4 require for this build only, then <code>lake -R -Kenv=dev build &lt;Lib&gt;:docs</code>. Output: <code>&lt;pkg&gt;/.lake/build/doc</code>.</p>
+<p class="fa-gloss-meta">BPMN activities of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/processes/content/lean-docs-publish.bpmn"><code>folio-assistant-sci/processes/content/lean-docs-publish.bpmn#Task_Build</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_featurestaging.task_build" data-fa-state="extracted" data-fa-gloss="">
 Build the docs site Jekyll · TypeDoc · KG export <span class="fa-gloss-status">candidate, extracted</span>
@@ -4933,6 +4940,13 @@ Split into sections/*.md with doc_brief front-matter <span class="fa-gloss-statu
 <dd>
 <p>Contextual retrieval: a chunk in isolation loses what makes it mean anything, so each section carries the document brief.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/library/ingest-extract-structure.bpmn"><code>folio-assistant-core/processes/library/ingest-extract-structure.bpmn#Task_Sections</code></a></p>
+</dd>
+<dt id="folio-assistant-sci--kg-bpmn-activities--process_leandocspublish.task_publish" data-fa-state="extracted" data-fa-gloss="">
+Stage the render under the site and rail every page <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Tool <code>lean-render-publish</code> (<code>adapters/paper/lean/lean-render.ts --docs &lt;render&gt; --site &lt;site&gt;</code>). Copies the render to <code>&lt;site&gt;/lean/</code> without Lake's bookkeeping, marks doc-gen4's iframe navbar and <code>find/</code> redirect rail-declined, adds the layout shim, optionally prunes to the folio's modules, then runs <code>rail-standalone-pages.ts --foreign-site</code> over the whole site and checks every staged page.</p>
+<p class="fa-gloss-meta">BPMN activities of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/processes/content/lean-docs-publish.bpmn"><code>folio-assistant-sci/processes/content/lean-docs-publish.bpmn#Task_Publish</code></a></p>
 </dd>
 <dt id="bootstrap-tools--kg-bpmn-activities--process_renderkgtogithubpages.a_stage" data-fa-state="extracted" data-fa-gloss="">
 Stage the rendering <span class="fa-gloss-status">candidate, extracted</span>

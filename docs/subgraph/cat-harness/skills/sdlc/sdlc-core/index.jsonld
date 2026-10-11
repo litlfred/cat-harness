@@ -57,9 +57,9 @@
       "@type": "bootstrap:Skill",
       "name": "bean-coordination",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/075183e087ef9f0eeb5605112c0eb4dac21a5a5d49f17e2ba9c74aaae824f184",
-        "bytes": 51402,
-        "sha256": "075183e087ef9f0eeb5605112c0eb4dac21a5a5d49f17e2ba9c74aaae824f184"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6b90673760f85936e12fc898be8e0977f5a47a2236c8a5a22ed33d708465e8e8",
+        "bytes": 51365,
+        "sha256": "6b90673760f85936e12fc898be8e0977f5a47a2236c8a5a22ed33d708465e8e8"
       },
       "title": "Bean Coordination"
     },
@@ -211,9 +211,9 @@
       "@type": "bootstrap:Skill",
       "name": "feature-staging",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6bf27bbe80ac27e3e67ce9f0d02349aeb0f0181ef906ae1309e4f2d262bdb29d",
-        "bytes": 20643,
-        "sha256": "6bf27bbe80ac27e3e67ce9f0d02349aeb0f0181ef906ae1309e4f2d262bdb29d"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/347453e89d009773f16689c1db2852b8b8c04a84c2132f7c2ad8bfd81eee3f8c",
+        "bytes": 25918,
+        "sha256": "347453e89d009773f16689c1db2852b8b8c04a84c2132f7c2ad8bfd81eee3f8c"
       },
       "title": "Feature-branch staging"
     },
@@ -354,9 +354,9 @@
       "@type": "bootstrap:Skill",
       "name": "merge-queue",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/1f64ac6b6fab3956a676c4725d6704cb86dc99651a3af5500acf254cf3fa6f3f",
-        "bytes": 64782,
-        "sha256": "1f64ac6b6fab3956a676c4725d6704cb86dc99651a3af5500acf254cf3fa6f3f"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ebe8b101cf4f2e86918579f119ff81053ad5e087c282f64704c40a2a6537083c",
+        "bytes": 64694,
+        "sha256": "ebe8b101cf4f2e86918579f119ff81053ad5e087c282f64704c40a2a6537083c"
       },
       "title": "Merge queue — what lands next, and as what"
     },
@@ -365,9 +365,9 @@
       "@type": "bootstrap:Skill",
       "name": "merge-to-main",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5971f2dd6c3802c50c9a8f4bbd014edba42ba8179c1e11a3edbd776994bdb65e",
-        "bytes": 15632,
-        "sha256": "5971f2dd6c3802c50c9a8f4bbd014edba42ba8179c1e11a3edbd776994bdb65e"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/fef3352c1966d70e6a0afb3d32f310d448ec273052049b5f9d46c83f0a82341e",
+        "bytes": 15617,
+        "sha256": "fef3352c1966d70e6a0afb3d32f310d448ec273052049b5f9d46c83f0a82341e"
       },
       "title": "Merge to `main` — a sub-process with its own gate"
     },
@@ -563,11 +563,22 @@
       "@type": "bootstrap:Skill",
       "name": "rendered-verification",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d3a763c327abbd797ee74ebd10e04eb016b0ea8dfacff65eb06bdb7ecb5c0739",
-        "bytes": 17836,
-        "sha256": "d3a763c327abbd797ee74ebd10e04eb016b0ea8dfacff65eb06bdb7ecb5c0739"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5282b08b3daa82b1e95148f0f24403202db60aa5ff4754e82a3aadd5115c184b",
+        "bytes": 17800,
+        "sha256": "5282b08b3daa82b1e95148f0f24403202db60aa5ff4754e82a3aadd5115c184b"
       },
       "title": "/rendered-verification — look at it, then send the picture"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/secrets",
+      "@type": "bootstrap:Skill",
+      "name": "secrets",
+      "payload": {
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e312e72be5e1973f41e6dd423435fb7827e354ff4f4109233146906eb5c010a0",
+        "bytes": 10218,
+        "sha256": "e312e72be5e1973f41e6dd423435fb7827e354ff4f4109233146906eb5c010a0"
+      },
+      "title": "Secrets — the person handles the value, the agent handles everything else"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#skill/session-intent",
@@ -585,9 +596,9 @@
       "@type": "bootstrap:Skill",
       "name": "specification-management",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/eb914a5dedfe49fd35bf487bb67775e2427178a1d4eca10deb98ed98a752bccc",
-        "bytes": 6035,
-        "sha256": "eb914a5dedfe49fd35bf487bb67775e2427178a1d4eca10deb98ed98a752bccc"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e6e51880a1332325dc0d19a90d716cb65c8c56344f6d0015a3dcb23e5e3f830e",
+        "bytes": 6041,
+        "sha256": "e6e51880a1332325dc0d19a90d716cb65c8c56344f6d0015a3dcb23e5e3f830e"
       },
       "title": "Specification and requirements management"
     },
@@ -596,9 +607,9 @@
       "@type": "bootstrap:Skill",
       "name": "staging-review",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/670ecd14e0ac9300b62776e2c30b32c687691c63ea6fefe659d669708c911a27",
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/375e0cb7f9bd3e3d6d5eab4dea9d655ef4884a1e551f2df077f8ab6ed22d2f61",
         "bytes": 35911,
-        "sha256": "670ecd14e0ac9300b62776e2c30b32c687691c63ea6fefe659d669708c911a27"
+        "sha256": "375e0cb7f9bd3e3d6d5eab4dea9d655ef4884a1e551f2df077f8ab6ed22d2f61"
       },
       "title": "Staging review — before/after comparison"
     },
@@ -695,9 +706,9 @@
       "@type": "bootstrap:Skill",
       "name": "visual-diff",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/af83c271492ff75ffbaa8717a2c3bb22f2d8b3763e2c7dcb14627c836f6f71b3",
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/c13c0d26fb38c03055adc4bb73fa493ef6b984a8138edd5284ef4d02f512c95d",
         "bytes": 6384,
-        "sha256": "af83c271492ff75ffbaa8717a2c3bb22f2d8b3763e2c7dcb14627c836f6f71b3"
+        "sha256": "c13c0d26fb38c03055adc4bb73fa493ef6b984a8138edd5284ef4d02f512c95d"
       },
       "title": "Visual diff — see a figure change"
     },
@@ -728,9 +739,9 @@
       "@type": "bootstrap:Skill",
       "name": "work-plan-restructure",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/245f4b3b9c3ba78978b73d69ae57ecd880e19c5295ed0148b6571027d775b5ca",
-        "bytes": 9258,
-        "sha256": "245f4b3b9c3ba78978b73d69ae57ecd880e19c5295ed0148b6571027d775b5ca"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/13bea0da3bab6cfa0ff6054a122bcbbc260753d5da49c372b9e7aee056b53433",
+        "bytes": 9225,
+        "sha256": "13bea0da3bab6cfa0ff6054a122bcbbc260753d5da49c372b9e7aee056b53433"
       },
       "title": "Restructuring a work plan — a reviewed plan, not a bulk edit"
     }

@@ -13,16 +13,16 @@ permalink: /folio-assistant-core/glossary/schema-fields/a-e/
 
 Candidate terms extracted from every schema field with a doc comment: `<Declaration>.<field>` as the label, the comment's first paragraph as the definition. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2067 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 167 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2083 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 167 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
 
 One of 4 pages of this type, split by the first letter of the label: <a href="{{ '/folio-assistant-core/glossary/schema-fields/' | relative_url }}">all parts</a>.
 
-**Size:** this page holds 627 terms and is 348 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 631 terms and is 352 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>2362</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2362</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>2378</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2378</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -32,7 +32,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">627</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">631</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-A">A</a> <a href="#letter-B">B</a> <a href="#letter-C">C</a> <a href="#letter-D">D</a> <a href="#letter-E">E</a></nav>
 
@@ -336,7 +336,7 @@ AdversarialChecklistItem.question <span class="fa-gloss-status">candidate, extra
 AdversarialChecklistItem.references <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Reference documents or rules supporting this check.</p>
+<p>The rules supporting this check, BY NAME — <code>skill:&lt;name&gt;</code> or <code>schema:&lt;module&gt;</code> — never by path. Code, which is addressed by path on purpose, is <code>code:&lt;layer&gt;/&lt;module path&gt;</code>. Paths went stale as skills moved between packages (two named a skill that no longer exists); a name is found wherever the declaration puts it (<code>check:declared-paths</code>, bean <code>rmi6</code> follow-up). <code>adversarial-checklist.test.ts</code> resolves every one.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/adversarial-checklist.ts"><code>cat-harness/schemas/adversarial-checklist.ts#AdversarialChecklistItem.references</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--merge-queue.agenticpromotioncriteriaschema.maximumfalsepositiverate" data-fa-state="extracted" data-fa-gloss="">
@@ -3189,12 +3189,40 @@ CsvwColumnSchema.datatype <span class="fa-gloss-status">candidate, extracted</sp
 <p>A CSVW datatype name. <code>any</code> is CSVW's own top type.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/tabular-csvw.ts"><code>cat-harness/schemas/tabular-csvw.ts#CsvwColumnSchema.datatype</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--tabular-csvw.csvwcolumnschema.fac-group" data-fa-state="extracted" data-fa-gloss="">
+CsvwColumnSchema.fac:group <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The upper row of a two-row header: the label spanning this column, e.g. a decision table's <code>Inputs</code> or <code>Output</code>. Absent for a one-row header. CSVW has no column groups, so <code>toCsvw</code> drops it (bean folio-core-scn4).</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/tabular-csvw.ts"><code>cat-harness/schemas/tabular-csvw.ts#CsvwColumnSchema.fac:group</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--tabular-csvw.csvwtableschema.fac-merged" data-fa-state="extracted" data-fa-gloss="">
+CsvwTableSchema.fac:merged <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Merged cell ranges inside the table, A1 notation, e.g. <code>K8:K25</code>.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/tabular-csvw.ts"><code>cat-harness/schemas/tabular-csvw.ts#CsvwTableSchema.fac:merged</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--tabular-csvw.csvwtableschema.fac-preamble" data-fa-state="extracted" data-fa-gloss="">
+CsvwTableSchema.fac:preamble <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Key/value rows ABOVE the header that describe the table rather than belong to it, in sheet order: a DAK decision table's <code>Decision ID</code>, <code>Business rule</code>, <code>Trigger</code>. Not CSVW <code>notes</code>, whose objects are JSON-LD annotations a standard reader interprets; these are the source's own labels, verbatim (bean folio-core-scn4).</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/tabular-csvw.ts"><code>cat-harness/schemas/tabular-csvw.ts#CsvwTableSchema.fac:preamble</code></a></p>
+</dd>
 <dt id="cat-harness--kg-schema-fields--tabular-csvw.csvwtableschema.fac-stub" data-fa-state="extracted" data-fa-gloss="">
 CsvwTableSchema.fac:stub <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p>Present iff no extractor produced this.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/tabular-csvw.ts"><code>cat-harness/schemas/tabular-csvw.ts#CsvwTableSchema.fac:stub</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--tabular-csvw.csvwtableschema.fac-wildcard" data-fa-state="extracted" data-fa-gloss="">
+CsvwTableSchema.fac:wildcard <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The cell values meaning &quot;any value matches&quot; — a decision table's don't-care. A list: the WHO IMMZ workbook writes <code>–</code> and <code>-</code>, and 18 of its 86 decision tables use both. A wildcard is a rule, not data: it is not evidence for a column's datatype, and it is not CSVW <code>null</code> (absent), which would read a don't-care as a missing value.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/tabular-csvw.ts"><code>cat-harness/schemas/tabular-csvw.ts#CsvwTableSchema.fac:wildcard</code></a></p>
 </dd>
 </dl>
 

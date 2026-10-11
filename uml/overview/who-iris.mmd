@@ -18,6 +18,13 @@ classDiagram
       images [1] object[] | null
       undetermined_reason [0..1] string
     }
+    class who_iris_library_folio_image_verdicts_v1["folio-image-verdicts/v1"] {
+      <<ts: VerdictFile>>
+      inspected_by [1] unknown
+      inspected_at [1] string
+      attribution [0..1] Record~string,  inspected_by: unknown; inspected_at: string ~
+      verdicts [1] Record~string, Record~string, Verdict~~
+    }
     class who_iris_library_folio_section_verdicts_v1_folio_section_verdicts_v1["folio-section-verdicts/v1"] {
       <<json: SectionVerdictFileSchema>>
       $schema [1] 'folio-section-verdicts/v1'
@@ -83,9 +90,6 @@ classDiagram
       $schema [1] 'folio-withheld/v1'
       _comment [0..1] string
       paths [0..*] Path[]
-    }
-    class n_who_iris_library_library_folio_image_verdicts_v1["library folio-image-verdicts/v1: no node schema"] {
-      <<could not determine>>
     }
   }
   namespace who_iris__who_iris_site {
@@ -546,6 +550,7 @@ classDiagram
   who_iris_library_folio_withheld_v1_Path *-- "1..*" who_iris_library_folio_withheld_v1_Gate : gates
   who_iris_library_folio_withheld_v1_folio_withheld_v1 *-- "0..*" who_iris_library_folio_withheld_v1_Path : paths
   cssClass "who_iris_library_folio_document_images_v1_folio_document_images_v1" fa_uml_kind_library
+  cssClass "who_iris_library_folio_image_verdicts_v1" fa_uml_kind_library
   cssClass "who_iris_library_folio_section_verdicts_v1_folio_section_verdicts_v1" fa_uml_kind_library
   cssClass "who_iris_library_folio_block_summaries_v1_Superseded" fa_uml_kind_library
   cssClass "who_iris_library_folio_block_summaries_v1_Summary" fa_uml_kind_library
@@ -555,8 +560,6 @@ classDiagram
   cssClass "who_iris_library_folio_withheld_v1_Gate" fa_uml_kind_library
   cssClass "who_iris_library_folio_withheld_v1_Path" fa_uml_kind_library
   cssClass "who_iris_library_folio_withheld_v1_folio_withheld_v1" fa_uml_kind_library
-  cssClass "n_who_iris_library_library_folio_image_verdicts_v1" fa_uml_kind_library_folio_image_verdicts_v1
-  cssClass "n_who_iris_library_library_folio_image_verdicts_v1" fa_uml_undetermined
   cssClass "n_who_iris_who_iris_site_docs" fa_uml_kind_docs
   cssClass "n_who_iris_who_iris_site_docs" fa_uml_undetermined
   who_iris_who_iris_catalogue_folio_dublin_core_v1_Field *-- "1..*" who_iris_who_iris_catalogue_folio_dublin_core_v1_Value : values

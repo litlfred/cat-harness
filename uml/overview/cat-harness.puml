@@ -616,6 +616,18 @@ package "cat-harness/qa" as pkg_cat_harness_qa <<qa>> {
     families [1] : Record<string, QaResultFamily>
     total [1] : number
   }
+  class "qa-script/v1" as cat_harness_qa_qa_script_v1_qa_script_v1 <<json: QaScriptSidecar>> #f4e6e6 {
+    $schema [1] : 'qa-script/v1'
+    criterion_id [1] : string
+    source_file [1] : string
+    script_hash [1] : string
+    script_commit_sha [1] : string
+    extra_inputs [0..*] : string[]
+    deps_hash [0..1] : string
+    last_run_at [1] : string
+    last_run_sha [1] : string
+    engine_version [0..1] : string
+  }
   class "translation-qa/v1" as cat_harness_qa_translation_qa_v1 <<ts: TranslationBlockQaReport>> #f4e6e6 {
     $schema [1] : 'translation-qa/v1'
     label [1] : string
@@ -696,6 +708,38 @@ package "cat-harness/attestations" as pkg_cat_harness_attestations <<attestation
   class "QaAttestations" as cat_harness_attestations_QaAttestations <<json: QaAttestationsSchema>> #f4f4f1 {
   }
 }
+package "cat-harness/test-plans" as pkg_cat_harness_test_plans <<test-plan>> {
+  class "Assertion" as cat_harness_test_plans_Assertion <<json: TestPlanSchema>> #f4f4f1 {
+    id [1] : string
+    type [1] : required | informative
+    expectation [0..1] : string
+  }
+  class "TestCase" as cat_harness_test_plans_TestCase <<json: TestPlanSchema>> #f4f4f1 {
+    id [1] : string
+    description [0..1] : string
+    assertions [1..*] : Assertion[]
+    testData [0..*] : object[]
+    feature [0..1] : string
+    dependsOn [0..*] : string[]
+  }
+  class "Dependency" as cat_harness_test_plans_Dependency <<json: TestPlanSchema>> #f4f4f1 {
+    description [1] : string
+    predecessor [0..1] : string
+  }
+  class "TestPlan" as cat_harness_test_plans_TestPlan <<json: TestPlanSchema>> #f4f4f1 {
+    $schema [1] : 'test-plan/v1'
+    id [1] : string
+    title [1] : string
+    status [1] : draft | active | retired | unknown
+    version [1] : string
+    description [0..1] : string
+    scope [1] : object
+    requirements [1..*] : string[]
+    testCases [1..*] : TestCase[]
+    dependencies [0..*] : Dependency[]
+    exitCriteria [1] : object
+  }
+}
 package "cat-harness/health" as pkg_cat_harness_health <<health>> {
   class "Threshold" as cat_harness_health_Threshold <<json: HealthReportSchema>> #f4e6e6 {
     metric [1] : string
@@ -743,6 +787,12 @@ package "cat-harness/library" as pkg_cat_harness_library <<library>> {
     doc_id [1] : string
     images [1] : object[] | null
     undetermined_reason [0..1] : string
+  }
+  class "folio-image-verdicts/v1" as cat_harness_library_folio_image_verdicts_v1 <<ts: VerdictFile>> #f4f4f1 {
+    inspected_by [1] : unknown
+    inspected_at [1] : string
+    attribution [0..1] : Record<string, { inspected_by: unknown; inspected_at: string }>
+    verdicts [1] : Record<string, Record<string, Verdict>>
   }
   class "folio-vector-labels/v1" as cat_harness_library_folio_vector_labels_v1_folio_vector_labels_v1 <<json: VectorLabelsSidecarSchema>> #f4f4f1 {
     $schema [1] : 'folio-vector-labels/v1'
@@ -818,7 +868,6 @@ package "cat-harness/library" as pkg_cat_harness_library <<library>> {
     withheld [1] : object
     links [0..*] : object[]
   }
-  note "library folio-image-verdicts/v1: no node schema declared\n(scripts/apply-image-verdicts.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_cat_harness_library_library_folio_image_verdicts_v1
 }
 package "cat-harness/translation-sources" as pkg_cat_harness_translation_sources <<translation-sources>> {
   class "TranslationConfig" as cat_harness_translation_sources_TranslationConfig <<json: TranslationConfigSchema>> #f4f4f1 {
@@ -866,6 +915,39 @@ package "cat-harness/docs" as pkg_cat_harness_docs <<docs>> {
     $schema [1] : 'folio-semantic-zoom/v1'
     belowPx [1] : number
     byKind [0..1] : map<object>
+  }
+  class "folio-qa-graph/v1" as cat_harness_docs_folio_qa_graph_v1 <<ts: QaGraphIndex>> #f4f4f1 {
+    $schema [1] : typeof QA_GRAPH_INDEX_SCHEMA
+    files [1] : number
+    families [1] : QaFamily[]
+    unclassified [1] : number
+    unreadable [1] : number
+  }
+  class "folio-translation-index/v1" as cat_harness_docs_folio_translation_index_v1 <<ts: TranslationIndex>> #f4f4f1 {
+    $schema [1] : string
+    sourceLocale [1] : string
+    locales [1] : string[]
+    pages [1] : Record<string, IndexedPage>
+  }
+  class "folio-slice-sqlite/v1" as cat_harness_docs_folio_slice_sqlite_v1 <<ts: SliceManifest>> #f4f4f1 {
+    $schema [1] : typeof MANIFEST_SCHEMA
+    slice [1] : string
+    file [1] : string
+    schemaVersion [1] : number
+    sha256 [1] : string
+    bytes [1] : number
+    contentDigest [1] : string
+    sqliteVersion [1] : string
+    pageSize [1] : number
+    fts5 [1] : { table: string; rowsOf: string; columns: string[]; contentless: true; detail: 'full' }
+    payloadPath [1] : string
+    payloads [1] : { mode: 'deploy' | 'published'; count: number; bytes: number }
+    rows [1] : Record<string, number>
+    duplicateIds [1] : string[]
+    findings [1] : string[]
+    overBudget [1] : boolean
+    search [1] : SliceSearch
+    source [1] : { graph: string; path: string }
   }
   class "Item" as cat_harness_docs_folio_bean_index_v1_Item <<json: BeanIndexSchema>> #f4f4f1 {
     id [1] : string
@@ -1194,8 +1276,7 @@ package "cat-harness/docs" as pkg_cat_harness_docs <<docs>> {
     bytes [1] : integer
     mediaType [1] : string
   }
-  note "docs folio-qa-graph/v1: no node schema declared\n(content/pipeline/qa-graph-index.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_cat_harness_docs_docs_folio_qa_graph_v1
-  note "docs folio-translation-index/v1: no node schema declared\n(content/pipeline/translation-index.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_cat_harness_docs_docs_folio_translation_index_v1
+  note "docs folio-slice-index/v1: no node schema declared\n(scripts/gen-slice-sqlite.ts exports no SliceIndexSchema: could not determine)" as n_cat_harness_docs_docs_folio_slice_index_v1
 }
 package "cat-harness/site" as pkg_cat_harness_site <<basic-cdn-site>> {
   note "basic-cdn-site: no node schema declared\n(no node here carries a $schema family basic-cdn-site names (1 named): could not determine)" as n_cat_harness_site_basic_cdn_site
@@ -1564,7 +1645,7 @@ package "cat-harness/uml-overview-svgs" as pkg_cat_harness_uml_overview_svgs <<a
   note "auto-docs: no node schema declared\n(no validator registered: could not determine)" as n_cat_harness_uml_overview_svgs_auto_docs
 }
 package "cat-harness/docs-source" as pkg_cat_harness_docs_source <<docs>> {
-  note "docs: no node schema declared\n(no node here carries a $schema family docs names (14 named): could not determine)" as n_cat_harness_docs_source_docs
+  note "docs: no node schema declared\n(no node here carries a $schema family docs names (16 named): could not determine)" as n_cat_harness_docs_source_docs
 }
 package "cat-harness/openapi-validators" as pkg_cat_harness_openapi_validators <<validators>> {
   class "folio-validator/v1" as cat_harness_openapi_validators_folio_validator_v1_folio_validator_v1 <<json: ValidatorNodeSchema>> #f4f4f1 {
@@ -1795,6 +1876,9 @@ cat_harness_qa_kg_qa_v1_Adversarial_review *-- "0..*" cat_harness_qa_kg_qa_v1_Fi
 cat_harness_qa_kg_qa_v1_kg_qa_v1 *-- "0..*" cat_harness_qa_kg_qa_v1_Adversarial_review : adversarial_reviews
 cat_harness_qa_folio_test_run_v1_folio_test_run_v1 *-- "0..*" cat_harness_qa_folio_test_run_v1_Case : cases
 cat_harness_qa_viewer_nav_qa_v1_viewer_nav_qa_v1 *-- "0..*" cat_harness_qa_viewer_nav_qa_v1_Page : pages
+cat_harness_test_plans_TestCase *-- "1..*" cat_harness_test_plans_Assertion : assertions
+cat_harness_test_plans_TestPlan *-- "1..*" cat_harness_test_plans_TestCase : testCases
+cat_harness_test_plans_TestPlan *-- "0..*" cat_harness_test_plans_Dependency : dependencies
 cat_harness_health_Check *-- "0..*" cat_harness_health_Threshold : thresholds
 cat_harness_health_Check *-- "0..*" cat_harness_health_Measurement : measurements
 cat_harness_health_Check *-- "0..*" cat_harness_health_Finding : findings
@@ -1855,7 +1939,7 @@ cat_harness_agent_skill_authoring_openai_Rule *-- "0..*" cat_harness_agent_skill
 cat_harness_agent_skill_authoring_openai_Rule *-- "0..*" cat_harness_agent_skill_authoring_openai_Terminology : terminology
 cat_harness_agent_skill_authoring_openai_VoiceProfile *-- "1..*" cat_harness_agent_skill_authoring_openai_Rule : rules
 cat_harness_items_TodoNodeKind *-- "0..*" cat_harness_items_AlsoAbout : alsoAbout
-' grid: portrait, 7 column(s) — pkg_cat_harness_cat_harness_validators pkg_cat_harness_tools pkg_cat_harness_external_schemas pkg_cat_harness_subscriptions pkg_cat_harness_code_lists pkg_cat_harness_vocab_mappings pkg_cat_harness_tool_releases pkg_cat_harness_schemas pkg_cat_harness_uml pkg_cat_harness_skills pkg_cat_harness_scenarios pkg_cat_harness_policies pkg_cat_harness_processes pkg_cat_harness_methodologies pkg_cat_harness_qa pkg_cat_harness_attestations pkg_cat_harness_health pkg_cat_harness_uploads pkg_cat_harness_library pkg_cat_harness_translation_sources pkg_cat_harness_folio pkg_cat_harness_docs pkg_cat_harness_site pkg_cat_harness_swimlane_glossary pkg_cat_harness_cat_harness_upstream pkg_cat_harness_openapi pkg_cat_harness_archimate pkg_cat_harness_memory pkg_cat_harness_fsh_guts pkg_cat_harness_beans pkg_cat_harness_todos pkg_cat_harness_checkout_uploads pkg_cat_harness_issue_marks pkg_cat_harness_voices pkg_cat_harness_vendors pkg_cat_harness_agent_skill_authoring_claude pkg_cat_harness_agent_skill_authoring_gemini_cli pkg_cat_harness_agent_skill_authoring_openai pkg_cat_harness_proposals pkg_cat_harness_requirements pkg_cat_harness_start pkg_cat_harness_concepts pkg_cat_harness_guides pkg_cat_harness_process pkg_cat_harness_fhir pkg_cat_harness_auto_docs pkg_cat_harness_glossary pkg_cat_harness_index_dmn pkg_cat_harness_index_docs pkg_cat_harness_index_processes pkg_cat_harness_index_roles pkg_cat_harness_index_schemas pkg_cat_harness_index_skills pkg_cat_harness_index_tasks pkg_cat_harness_index_tools pkg_cat_harness_uml_overview_pages pkg_cat_harness_uml_overview_svgs pkg_cat_harness_docs_source pkg_cat_harness_openapi_validators pkg_cat_harness_openapi_typologies pkg_cat_harness_openapi_schemas pkg_cat_harness_archimate_validators pkg_cat_harness_archimate_typologies pkg_cat_harness_archimate_schemas pkg_cat_harness_defs pkg_cat_harness_archive pkg_cat_harness_notes pkg_cat_harness_workflows pkg_cat_harness_queue pkg_cat_harness_surveys pkg_cat_harness_items pkg_cat_harness_feedback pkg_cat_harness_boards pkg_cat_harness_positions
+' grid: portrait, 7 column(s) — pkg_cat_harness_cat_harness_validators pkg_cat_harness_tools pkg_cat_harness_external_schemas pkg_cat_harness_subscriptions pkg_cat_harness_code_lists pkg_cat_harness_vocab_mappings pkg_cat_harness_tool_releases pkg_cat_harness_schemas pkg_cat_harness_uml pkg_cat_harness_skills pkg_cat_harness_scenarios pkg_cat_harness_policies pkg_cat_harness_processes pkg_cat_harness_methodologies pkg_cat_harness_qa pkg_cat_harness_attestations pkg_cat_harness_test_plans pkg_cat_harness_health pkg_cat_harness_uploads pkg_cat_harness_library pkg_cat_harness_translation_sources pkg_cat_harness_folio pkg_cat_harness_docs pkg_cat_harness_site pkg_cat_harness_swimlane_glossary pkg_cat_harness_cat_harness_upstream pkg_cat_harness_openapi pkg_cat_harness_archimate pkg_cat_harness_memory pkg_cat_harness_fsh_guts pkg_cat_harness_beans pkg_cat_harness_todos pkg_cat_harness_checkout_uploads pkg_cat_harness_issue_marks pkg_cat_harness_voices pkg_cat_harness_vendors pkg_cat_harness_agent_skill_authoring_claude pkg_cat_harness_agent_skill_authoring_gemini_cli pkg_cat_harness_agent_skill_authoring_openai pkg_cat_harness_proposals pkg_cat_harness_requirements pkg_cat_harness_start pkg_cat_harness_concepts pkg_cat_harness_guides pkg_cat_harness_process pkg_cat_harness_fhir pkg_cat_harness_auto_docs pkg_cat_harness_glossary pkg_cat_harness_index_dmn pkg_cat_harness_index_docs pkg_cat_harness_index_processes pkg_cat_harness_index_roles pkg_cat_harness_index_schemas pkg_cat_harness_index_skills pkg_cat_harness_index_tasks pkg_cat_harness_index_tools pkg_cat_harness_uml_overview_pages pkg_cat_harness_uml_overview_svgs pkg_cat_harness_docs_source pkg_cat_harness_openapi_validators pkg_cat_harness_openapi_typologies pkg_cat_harness_openapi_schemas pkg_cat_harness_archimate_validators pkg_cat_harness_archimate_typologies pkg_cat_harness_archimate_schemas pkg_cat_harness_defs pkg_cat_harness_archive pkg_cat_harness_notes pkg_cat_harness_workflows pkg_cat_harness_queue pkg_cat_harness_surveys pkg_cat_harness_items pkg_cat_harness_feedback pkg_cat_harness_boards pkg_cat_harness_positions
 pkg_cat_harness_cat_harness_validators -[hidden]down- pkg_cat_harness_schemas
 pkg_cat_harness_tools -[hidden]down- pkg_cat_harness_uml
 pkg_cat_harness_external_schemas -[hidden]down- pkg_cat_harness_skills
@@ -1865,13 +1949,14 @@ pkg_cat_harness_vocab_mappings -[hidden]down- pkg_cat_harness_processes
 pkg_cat_harness_tool_releases -[hidden]down- pkg_cat_harness_methodologies
 pkg_cat_harness_schemas -[hidden]down- pkg_cat_harness_qa
 pkg_cat_harness_uml -[hidden]down- pkg_cat_harness_attestations
-pkg_cat_harness_skills -[hidden]down- pkg_cat_harness_health
-pkg_cat_harness_scenarios -[hidden]down- pkg_cat_harness_uploads
-pkg_cat_harness_policies -[hidden]down- pkg_cat_harness_library
-pkg_cat_harness_processes -[hidden]down- pkg_cat_harness_translation_sources
-pkg_cat_harness_methodologies -[hidden]down- pkg_cat_harness_folio
-pkg_cat_harness_qa -[hidden]down- pkg_cat_harness_docs
-pkg_cat_harness_attestations -[hidden]down- pkg_cat_harness_site
+pkg_cat_harness_skills -[hidden]down- pkg_cat_harness_test_plans
+pkg_cat_harness_scenarios -[hidden]down- pkg_cat_harness_health
+pkg_cat_harness_policies -[hidden]down- pkg_cat_harness_uploads
+pkg_cat_harness_processes -[hidden]down- pkg_cat_harness_library
+pkg_cat_harness_methodologies -[hidden]down- pkg_cat_harness_translation_sources
+pkg_cat_harness_qa -[hidden]down- pkg_cat_harness_folio
+pkg_cat_harness_attestations -[hidden]down- pkg_cat_harness_docs
+pkg_cat_harness_test_plans -[hidden]down- pkg_cat_harness_site
 pkg_cat_harness_health -[hidden]down- pkg_cat_harness_swimlane_glossary
 pkg_cat_harness_uploads -[hidden]down- pkg_cat_harness_cat_harness_upstream
 pkg_cat_harness_library -[hidden]down- pkg_cat_harness_openapi

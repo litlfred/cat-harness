@@ -36,7 +36,7 @@ depends on it**, and **which of its terms this repository branches on**.
 <div class="xs-grid">
 <div class="xs-stat"><b>26</b><span>specifications</span></div>
 <div class="xs-stat"><b>107</b><span>operative terms in graph (65 described, 42 pending)</span></div>
-<div class="xs-stat"><b>268</b><span>declared uses</span></div>
+<div class="xs-stat"><b>271</b><span>declared uses</span></div>
 <div class="xs-stat"><b>0</b><span>declarations naming no record</span></div>
 </div>
 
@@ -242,7 +242,7 @@ The `MODEL#` form is the RDF spelling of the same namespace: OMG publishes no RD
 | `folio-assistant-core/processes/content/*.bpmn (7)` | `xmlns` binding |
 | `folio-assistant-core/processes/library/*.bpmn (6)` | `xmlns` binding |
 | `folio-assistant-core/processes/ui/*.bpmn (3)` | `xmlns` binding |
-| `folio-assistant-sci/processes/content/*.bpmn (2)` | `xmlns` binding |
+| `folio-assistant-sci/processes/content/*.bpmn (3)` | `xmlns` binding |
 | `smart-base/methodologies/processes/*.bpmn (1)` | `xmlns` binding |
 | `smart-base/processes/content/*.bpmn (2)` | `xmlns` binding |
 
@@ -303,7 +303,7 @@ a subset of the edition rather than a transcription of it.
 | `folio-assistant-core/processes/content/*.bpmn (7)` | `xmlns` binding |
 | `folio-assistant-core/processes/library/*.bpmn (6)` | `xmlns` binding |
 | `folio-assistant-core/processes/ui/*.bpmn (3)` | `xmlns` binding |
-| `folio-assistant-sci/processes/content/*.bpmn (2)` | `xmlns` binding |
+| `folio-assistant-sci/processes/content/*.bpmn (3)` | `xmlns` binding |
 | `smart-base/methodologies/processes/*.bpmn (1)` | `xmlns` binding |
 | `smart-base/processes/content/*.bpmn (2)` | `xmlns` binding |
 
@@ -351,6 +351,7 @@ graph. That is a determined zero, not an unfilled field.
 
 | user | declared by |
 |---|---|
+| `cat-harness-tools/archimate/scripts/gen-archimate-pages.ts` | `@conformsTo` tag |
 | `cat-harness/archimate/schemas/archimate.ts` | `@conformsTo` tag |
 
 **No operative terms.** This repository conforms to the specification

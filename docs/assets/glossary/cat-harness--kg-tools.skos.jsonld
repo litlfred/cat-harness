@@ -174,6 +174,46 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/bpmn-checklist",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "BPMN checklist projection"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Generate, per diagram, a checklist that walks the BPMN as a state machine: each task names the `workflow_complete` call that records it and ends with `next:` by node id; each decision lists its labelled branches (or the DMN that computes it); parallel forks name every branch and joins wait for all; start/end events are entry and exit lines. A rendering, never an authority: it says it is generated, and `--check` fails when one is stale."
+        }
+      ],
+      "skos:notation": "bpmn-checklist",
+      "dcterms:source": "cat-harness/tools/index.ts#bpmn-checklist",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/bpmn-engine",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "BPMN workflow engine"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Run a declared BPMN process as an instance: `workflow_start` opens one for a subject, `workflow_next` reports what is enabled, `workflow_complete` records a step or answers a decision (a DMN-computed one from `facts`) and REFUSES a step that is not enabled. State is committed under the work plan, so which edge was taken is a record, not a memory."
+        }
+      ],
+      "skos:notation": "bpmn-engine",
+      "dcterms:source": "cat-harness/tools/index.ts#bpmn-engine",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/bpmn-render",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -1374,6 +1414,46 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/openapi-ingest-rendered",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "OpenAPI ingest from a published spec"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Ingest the OpenAPI documents an instance's `cat-openapi.config.json` lists under `rendered` by fetching each published spec URL (https), verbatim, with a provenance recording the URL, when it was fetched and the document's sha256 — a URL has no commit, so the digest pins the bytes. A failed fetch or bytes that are not OpenAPI 3 write nothing and never replace a held copy."
+        }
+      ],
+      "skos:notation": "openapi-ingest-rendered",
+      "dcterms:source": "cat-harness/tools/index.ts#openapi-ingest-rendered",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/openapi-ingest-source",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "OpenAPI ingest from source"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Ingest the OpenAPI documents an instance's `cat-openapi.config.json` lists under `documents` from a local checkout of their repository, read AT a branch, tag or commit (`git show`), verbatim, with a provenance recording the resolved commit and the document's sha256. `--check` verifies the committed copies offline."
+        }
+      ],
+      "skos:notation": "openapi-ingest-source",
+      "dcterms:source": "cat-harness/tools/index.ts#openapi-ingest-source",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/pack-tarball",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -1934,6 +2014,26 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/secrets-check",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Check declared credential needs against workflow use and expiry, by name"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Compare each repository's declared credential needs (`credentials/needs.json`, profile and registry) with the `${{ secrets.NAME }}` references its workflows make, with the secret names GitHub lists when a token allows it, and with any recorded expiry. NAMES ONLY — no value is ever read. Findings per §6.2: used-not-declared, declared-not-used, declared-not-present, present-not-declared (reported, never deleted), naming advisories, and expiry (≤30 days minor, ≤7 major, expired critical). Exits 2 when anything could not be determined, which outranks clean; else 1 on a major or critical finding; else 0."
+        }
+      ],
+      "skos:notation": "secrets-check",
+      "dcterms:source": "cat-harness/tools/index.ts#secrets-check",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/security-gate",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -2271,46 +2371,6 @@
       ],
       "skos:notation": "subgraph-resolve",
       "dcterms:source": "cat-harness/tools/index.ts#subgraph-resolve",
-      "skos:note": "candidate"
-    },
-    {
-      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/tabular-csv",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "CSV tabular metadata (STUB)"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "STUB — not implemented. Would read a delimited text file into CSVW: one table, its columns and their datatypes. A CSV has no sheets and no cells outside the table, so `fac:anchor.sheet` and `fac:anchor.cell` are a determined null rather than an absence. Routing a CSV is not a sniff — it has no magic bytes — and must not become an extension guess (bean `p67i`)."
-        }
-      ],
-      "skos:notation": "tabular-csv",
-      "dcterms:source": "cat-harness/tools/index.ts#tabular-csv",
-      "skos:note": "candidate"
-    },
-    {
-      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/tabular-xlsx",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "Spreadsheet tabular metadata (STUB)"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "STUB — not implemented. Would read a workbook into a CSVW TableGroup: one table per sheet, with the location CSVW cannot express (`fac:anchor`, `fac:headerRow`, `fac:extent`) carried as annotations on valid CSVW. A workbook is the case that motivates those terms: tables that do not start at A1, headers that are not row 1, several tables on one sheet."
-        }
-      ],
-      "skos:notation": "tabular-xlsx",
-      "dcterms:source": "cat-harness/tools/index.ts#tabular-xlsx",
       "skos:note": "candidate"
     },
     {

@@ -174,6 +174,20 @@ nav_exclude: true
     ]
   },
   {
+    &quot;id&quot;: &quot;sci-lean&quot;,
+    &quot;path&quot;: &quot;lean/&quot;,
+    &quot;description&quot;: &quot;The Lean templates this harness&#39;s tooling fills: today `formal-edges.lean.tmpl`, which content/pipeline/formal-edges.ts writes into a folio&#39;s own `.lake/` and elaborates there. Declared with graph typology `lean`, the kind this instance owns for Lean sources (typologies/lean.json), on the owner&#39;s ruling of 2026-10-10: \&quot;lean/ is a declared directory in folio-asst-sci (it should be) and lean Processes and Tools are around that.\&quot; The Tools (`lean-html-docs`, `lean-render-publish`), the process (`lean-docs-publish`) and the skill (`lean-html-docs`) are what a FOLIO&#39;s `lean` directory gets: its doc-gen4 render, published under the folio&#39;s site in the harness rail. `.tmpl`, never `.lean`: the platform tracks no Lean content, and lean-decl-starts-are-shared.test.ts holds it to that. Declared WITH its files, per bean dh4f.&quot;,
+    &quot;graphTypologies&quot;: [
+      &quot;lean&quot;
+    ],
+    &quot;coverage&quot;: {
+      &quot;process&quot;: &quot;lean-docs-publish&quot;,
+      &quot;exempt&quot;: {
+        &quot;visualiser&quot;: &quot;This directory holds a Lean TEMPLATE, not a Lake package: there is nothing for doc-gen4 to elaborate, so there is no render to show. The visualiser the kind provides — the doc-gen4 render wrapped in the harness rail — belongs to a folio&#39;s `lean` directory, where a package is built; README.md here documents how a folio declares it.&quot;
+      }
+    }
+  },
+  {
     &quot;id&quot;: &quot;sci-tools&quot;,
     &quot;path&quot;: &quot;tools/&quot;,
     &quot;description&quot;: &quot;The science layer&#39;s Tool nodes. Declared 2026-10-04 with the first two, `paper-feature-build` and `tex-install`, the iterative paper-build loop (issue #2117). Reached by the harness through tool auto-discovery (cat-harness/tools/discover.ts), never by an import.&quot;,

@@ -686,6 +686,19 @@ classDiagram
       families [1] Record~string, QaResultFamily~
       total [1] number
     }
+    class cat_harness_qa_qa_script_v1_qa_script_v1["qa-script/v1"] {
+      <<json: QaScriptSidecar>>
+      $schema [1] 'qa-script/v1'
+      criterion_id [1] string
+      source_file [1] string
+      script_hash [1] string
+      script_commit_sha [1] string
+      extra_inputs [0..*] string[]
+      deps_hash [0..1] string
+      last_run_at [1] string
+      last_run_sha [1] string
+      engine_version [0..1] string
+    }
     class cat_harness_qa_translation_qa_v1["translation-qa/v1"] {
       <<ts: TranslationBlockQaReport>>
       $schema [1] 'translation-qa/v1'
@@ -775,6 +788,42 @@ classDiagram
       <<json: QaAttestationsSchema>>
     }
   }
+  namespace cat_harness__test_plans {
+    class cat_harness_test_plans_Assertion["Assertion"] {
+      <<json: TestPlanSchema>>
+      id [1] string
+      type [1] required | informative
+      expectation [0..1] string
+    }
+    class cat_harness_test_plans_TestCase["TestCase"] {
+      <<json: TestPlanSchema>>
+      id [1] string
+      description [0..1] string
+      assertions [1..*] Assertion[]
+      testData [0..*] object[]
+      feature [0..1] string
+      dependsOn [0..*] string[]
+    }
+    class cat_harness_test_plans_Dependency["Dependency"] {
+      <<json: TestPlanSchema>>
+      description [1] string
+      predecessor [0..1] string
+    }
+    class cat_harness_test_plans_TestPlan["TestPlan"] {
+      <<json: TestPlanSchema>>
+      $schema [1] 'test-plan/v1'
+      id [1] string
+      title [1] string
+      status [1] draft | active | retired | unknown
+      version [1] string
+      description [0..1] string
+      scope [1] object
+      requirements [1..*] string[]
+      testCases [1..*] TestCase[]
+      dependencies [0..*] Dependency[]
+      exitCriteria [1] object
+    }
+  }
   namespace cat_harness__health {
     class cat_harness_health_Threshold["Threshold"] {
       <<json: HealthReportSchema>>
@@ -830,6 +879,13 @@ classDiagram
       doc_id [1] string
       images [1] object[] | null
       undetermined_reason [0..1] string
+    }
+    class cat_harness_library_folio_image_verdicts_v1["folio-image-verdicts/v1"] {
+      <<ts: VerdictFile>>
+      inspected_by [1] unknown
+      inspected_at [1] string
+      attribution [0..1] Record~string,  inspected_by: unknown; inspected_at: string ~
+      verdicts [1] Record~string, Record~string, Verdict~~
     }
     class cat_harness_library_folio_vector_labels_v1_folio_vector_labels_v1["folio-vector-labels/v1"] {
       <<json: VectorLabelsSidecarSchema>>
@@ -916,9 +972,6 @@ classDiagram
       withheld [1] object
       links [0..*] object[]
     }
-    class n_cat_harness_library_library_folio_image_verdicts_v1["library folio-image-verdicts/v1: no node schema"] {
-      <<could not determine>>
-    }
   }
   namespace cat_harness__translation_sources {
     class cat_harness_translation_sources_TranslationConfig["TranslationConfig"] {
@@ -973,6 +1026,42 @@ classDiagram
       $schema [1] 'folio-semantic-zoom/v1'
       belowPx [1] number
       byKind [0..1] map~object~
+    }
+    class cat_harness_docs_folio_qa_graph_v1["folio-qa-graph/v1"] {
+      <<ts: QaGraphIndex>>
+      $schema [1] typeof QA_GRAPH_INDEX_SCHEMA
+      files [1] number
+      families [1] QaFamily[]
+      unclassified [1] number
+      unreadable [1] number
+    }
+    class cat_harness_docs_folio_translation_index_v1["folio-translation-index/v1"] {
+      <<ts: TranslationIndex>>
+      $schema [1] string
+      sourceLocale [1] string
+      locales [1] string[]
+      pages [1] Record~string, IndexedPage~
+    }
+    class cat_harness_docs_folio_slice_sqlite_v1["folio-slice-sqlite/v1"] {
+      <<ts: SliceManifest>>
+      $schema [1] typeof MANIFEST_SCHEMA
+      slice [1] string
+      file [1] string
+      schemaVersion [1] number
+      sha256 [1] string
+      bytes [1] number
+      contentDigest [1] string
+      sqliteVersion [1] string
+      pageSize [1] number
+      fts5 [1]  table: string; rowsOf: string; columns: string[]; contentless: true; detail: 'full' 
+      payloadPath [1] string
+      payloads [1]  mode: 'deploy' | 'published'; count: number; bytes: number 
+      rows [1] Record~string, number~
+      duplicateIds [1] string[]
+      findings [1] string[]
+      overBudget [1] boolean
+      search [1] SliceSearch
+      source [1]  graph: string; path: string 
     }
     class cat_harness_docs_folio_bean_index_v1_Item["Item"] {
       <<json: BeanIndexSchema>>
@@ -1338,10 +1427,7 @@ classDiagram
       bytes [1] integer
       mediaType [1] string
     }
-    class n_cat_harness_docs_docs_folio_qa_graph_v1["docs folio-qa-graph/v1: no node schema"] {
-      <<could not determine>>
-    }
-    class n_cat_harness_docs_docs_folio_translation_index_v1["docs folio-translation-index/v1: no node schema"] {
+    class n_cat_harness_docs_docs_folio_slice_index_v1["docs folio-slice-index/v1: no node schema"] {
       <<could not determine>>
     }
   }
@@ -2128,6 +2214,7 @@ classDiagram
   cssClass "cat_harness_qa_folio_test_run_v1_folio_test_run_v1" fa_uml_kind_qa
   cssClass "cat_harness_qa_qa_witness_v1" fa_uml_kind_qa
   cssClass "cat_harness_qa_qa_results_v1" fa_uml_kind_qa
+  cssClass "cat_harness_qa_qa_script_v1_qa_script_v1" fa_uml_kind_qa
   cssClass "cat_harness_qa_translation_qa_v1" fa_uml_kind_qa
   cssClass "cat_harness_qa_folio_qa_index_v1_folio_qa_index_v1" fa_uml_kind_qa
   cssClass "cat_harness_qa_folio_qa_translation_pages_v1_folio_qa_translation_pages_v1" fa_uml_kind_qa
@@ -2137,6 +2224,13 @@ classDiagram
   cssClass "cat_harness_qa_viewer_nav_qa_v1_Page" fa_uml_kind_qa
   cssClass "cat_harness_qa_viewer_nav_qa_v1_viewer_nav_qa_v1" fa_uml_kind_qa
   cssClass "cat_harness_attestations_QaAttestations" fa_uml_kind_attestations
+  cat_harness_test_plans_TestCase *-- "1..*" cat_harness_test_plans_Assertion : assertions
+  cat_harness_test_plans_TestPlan *-- "1..*" cat_harness_test_plans_TestCase : testCases
+  cat_harness_test_plans_TestPlan *-- "0..*" cat_harness_test_plans_Dependency : dependencies
+  cssClass "cat_harness_test_plans_Assertion" fa_uml_kind_test_plan
+  cssClass "cat_harness_test_plans_TestCase" fa_uml_kind_test_plan
+  cssClass "cat_harness_test_plans_Dependency" fa_uml_kind_test_plan
+  cssClass "cat_harness_test_plans_TestPlan" fa_uml_kind_test_plan
   cat_harness_health_Check *-- "0..*" cat_harness_health_Threshold : thresholds
   cat_harness_health_Check *-- "0..*" cat_harness_health_Measurement : measurements
   cat_harness_health_Check *-- "0..*" cat_harness_health_Finding : findings
@@ -2153,6 +2247,7 @@ classDiagram
   cat_harness_library_folio_keywords_v1_folio_keywords_v1 *-- "0..*" cat_harness_library_folio_keywords_v1_Document : document
   cat_harness_library_folio_referenced_source_v1_folio_referenced_source_v1 *-- "0..*" cat_harness_library_folio_referenced_source_v1_Outline : outline
   cssClass "cat_harness_library_folio_document_images_v1_folio_document_images_v1" fa_uml_kind_library
+  cssClass "cat_harness_library_folio_image_verdicts_v1" fa_uml_kind_library
   cssClass "cat_harness_library_folio_vector_labels_v1_folio_vector_labels_v1" fa_uml_kind_library
   cssClass "cat_harness_library_folio_vector_figures_v1_folio_vector_figures_v1" fa_uml_kind_library
   cssClass "cat_harness_library_folio_figure_descriptions_v1_folio_figure_descriptions_v1" fa_uml_kind_library
@@ -2164,8 +2259,6 @@ classDiagram
   cssClass "cat_harness_library_folio_slides_accessibility_v1_folio_slides_accessibility_v1" fa_uml_kind_library
   cssClass "cat_harness_library_folio_referenced_source_v1_Outline" fa_uml_kind_library
   cssClass "cat_harness_library_folio_referenced_source_v1_folio_referenced_source_v1" fa_uml_kind_library
-  cssClass "n_cat_harness_library_library_folio_image_verdicts_v1" fa_uml_kind_library_folio_image_verdicts_v1
-  cssClass "n_cat_harness_library_library_folio_image_verdicts_v1" fa_uml_undetermined
   cssClass "cat_harness_translation_sources_TranslationConfig" fa_uml_kind_translation_sources
   cssClass "n_cat_harness_folio_folio" fa_uml_kind_folio
   cssClass "n_cat_harness_folio_folio" fa_uml_undetermined
@@ -2203,6 +2296,9 @@ classDiagram
   cssClass "cat_harness_docs_folio_todo_index_v1_Item" fa_uml_kind_docs
   cssClass "cat_harness_docs_folio_todo_index_v1_folio_todo_index_v1" fa_uml_kind_docs
   cssClass "cat_harness_docs_folio_semantic_zoom_v1_folio_semantic_zoom_v1" fa_uml_kind_docs
+  cssClass "cat_harness_docs_folio_qa_graph_v1" fa_uml_kind_docs
+  cssClass "cat_harness_docs_folio_translation_index_v1" fa_uml_kind_docs
+  cssClass "cat_harness_docs_folio_slice_sqlite_v1" fa_uml_kind_docs
   cssClass "cat_harness_docs_folio_bean_index_v1_Item" fa_uml_kind_docs
   cssClass "cat_harness_docs_folio_bean_index_v1_Edge" fa_uml_kind_docs
   cssClass "cat_harness_docs_folio_bean_index_v1_Finding" fa_uml_kind_docs
@@ -2240,10 +2336,8 @@ classDiagram
   cssClass "cat_harness_docs_folio_graph_projection_v1_Node" fa_uml_kind_docs
   cssClass "cat_harness_docs_folio_graph_projection_v1_folio_graph_projection_v1" fa_uml_kind_docs
   cssClass "cat_harness_docs_cat_harness_payload_v1_cat_harness_payload_v1" fa_uml_kind_docs
-  cssClass "n_cat_harness_docs_docs_folio_qa_graph_v1" fa_uml_kind_docs_folio_qa_graph_v1
-  cssClass "n_cat_harness_docs_docs_folio_qa_graph_v1" fa_uml_undetermined
-  cssClass "n_cat_harness_docs_docs_folio_translation_index_v1" fa_uml_kind_docs_folio_translation_index_v1
-  cssClass "n_cat_harness_docs_docs_folio_translation_index_v1" fa_uml_undetermined
+  cssClass "n_cat_harness_docs_docs_folio_slice_index_v1" fa_uml_kind_docs_folio_slice_index_v1
+  cssClass "n_cat_harness_docs_docs_folio_slice_index_v1" fa_uml_undetermined
   cssClass "n_cat_harness_site_basic_cdn_site" fa_uml_kind_basic_cdn_site
   cssClass "n_cat_harness_site_basic_cdn_site" fa_uml_undetermined
   cssClass "cat_harness_swimlane_glossary_glossary_ledger_1_0_0_glossary_ledger_1_0_0" fa_uml_kind_swimlane_glossary

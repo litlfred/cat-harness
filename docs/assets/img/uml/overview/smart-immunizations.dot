@@ -4,6 +4,12 @@ digraph "smart_immunizations" {
   graph [label="smart-immunizations", labelloc=t, fontname="Helvetica", fontsize=12, fontcolor="#1b2432", newrank=true, ratio=auto, nodesep=0.3, ranksep=0.5, bgcolor="transparent"];
   node [shape=box, style="rounded,filled", margin=0.05, fontname="Helvetica", fontsize=10, color="#1b2432", fontcolor="#1b2432"];
   edge [color="#1b2432", fontcolor="#1b2432", fontname="Helvetica", fontsize=9];
+  subgraph "cluster_pkg_smart_immunizations_smart_immunizations_fhir_ast" {
+    label=<<b>smart-immunizations/smart-immunizations-fhir-ast</b><br/><i>«ig-ast»</i>>; style="rounded"; color="#1b2432"; class="fa_uml_subgraph";
+    "n_smart_immunizations_smart_immunizations_fhir_ast_ig_ast" [style="rounded,filled,dashed", fillcolor="#f4f4f1", class="fa_uml_kind_ig_ast fa_uml_undetermined", label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="2"><tr><td><b>ig-ast: no node schema</b></td></tr><tr><td align="left"><i>could not determine: no node here carries a $schema family ig-ast names (3 named)</i></td></tr></table>>];
+    "grid_pkg_smart_immunizations_smart_immunizations_fhir_ast_top" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
+    "grid_pkg_smart_immunizations_smart_immunizations_fhir_ast_bottom" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
+  }
   subgraph "cluster_pkg_smart_immunizations_smart_immunizations_artifact_index" {
     label=<<b>smart-immunizations/smart-immunizations-artifact-index</b><br/><i>«fhir-artifact-index»</i>>; style="rounded"; color="#1b2432"; class="fa_uml_subgraph";
     "smart_immunizations_smart_immunizations_artifact_index_folio_fhir_artifact_index_v2_Context" [fillcolor="#f4f4f1", class="fa_uml_kind_fhir_artifact_index", label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="2"><tr><td border="1" sides="b"><b>Context</b></td></tr><tr><td><i>«json: FhirArtifactIndexSchema»</i></td></tr><tr><td align="left">id [1] : string</td></tr><tr><td align="left">representation [1] : object</td></tr><tr><td align="left">binds [0..*] : string[]</td></tr></table>>];
@@ -217,14 +223,14 @@ digraph "smart_immunizations" {
   }
   subgraph "cluster_pkg_smart_immunizations_smart_immunizations_docs" {
     label=<<b>smart-immunizations/smart-immunizations-docs</b><br/><i>«docs, ig-pages»</i>>; style="rounded"; color="#1b2432"; class="fa_uml_subgraph";
-    "n_smart_immunizations_smart_immunizations_docs_docs" [style="rounded,filled,dashed", fillcolor="#f4f4f1", class="fa_uml_kind_docs fa_uml_undetermined", label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="2"><tr><td><b>docs: no node schema</b></td></tr><tr><td align="left"><i>could not determine: no node here carries a $schema family docs names (14 named)</i></td></tr></table>>];
+    "n_smart_immunizations_smart_immunizations_docs_docs" [style="rounded,filled,dashed", fillcolor="#f4f4f1", class="fa_uml_kind_docs fa_uml_undetermined", label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="2"><tr><td><b>docs: no node schema</b></td></tr><tr><td align="left"><i>could not determine: no node here carries a $schema family docs names (16 named)</i></td></tr></table>>];
     "n_smart_immunizations_smart_immunizations_docs_ig_pages" [style="rounded,filled,dashed", fillcolor="#f4f4f1", class="fa_uml_kind_ig_pages fa_uml_undetermined", label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="2"><tr><td><b>ig-pages: no node schema</b></td></tr><tr><td align="left"><i>could not determine: no validator registered</i></td></tr></table>>];
     "grid_pkg_smart_immunizations_smart_immunizations_docs_top" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
     "grid_pkg_smart_immunizations_smart_immunizations_docs_bottom" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
   }
   subgraph "cluster_pkg_smart_immunizations_qa" {
     label=<<b>smart-immunizations/qa</b><br/><i>«qa»</i>>; style="rounded"; color="#1b2432"; class="fa_uml_subgraph";
-    "n_smart_immunizations_qa_qa" [style="rounded,filled,dashed", fillcolor="#f4f4f1", class="fa_uml_kind_qa fa_uml_undetermined", label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="2"><tr><td><b>qa: no node schema</b></td></tr><tr><td align="left"><i>could not determine: no node here carries a $schema family qa names (13 named)</i></td></tr></table>>];
+    "n_smart_immunizations_qa_qa" [style="rounded,filled,dashed", fillcolor="#f4f4f1", class="fa_uml_kind_qa fa_uml_undetermined", label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="2"><tr><td><b>qa: no node schema</b></td></tr><tr><td align="left"><i>could not determine: no node here carries a $schema family qa names (14 named)</i></td></tr></table>>];
     "grid_pkg_smart_immunizations_qa_top" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
     "grid_pkg_smart_immunizations_qa_bottom" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
   }
@@ -233,6 +239,8 @@ digraph "smart_immunizations" {
   "smart_immunizations_smart_immunizations_artifact_index_folio_fhir_artifact_index_v2_folio_fhir_artifact_index_v2" -> "smart_immunizations_smart_immunizations_artifact_index_folio_fhir_artifact_index_v2_Artifact" [dir=both, arrowtail=diamond, arrowhead=none, label="artifacts", headlabel="0..*", class="fa_uml_composition"];
   "smart_immunizations_smart_immunizations_artifact_index_folio_ig_menu_v1_Group" -> "smart_immunizations_smart_immunizations_artifact_index_folio_ig_menu_v1_Item" [dir=both, arrowtail=diamond, arrowhead=none, label="items", headlabel="0..*", class="fa_uml_composition"];
   "smart_immunizations_smart_immunizations_artifact_index_folio_ig_menu_v1_folio_ig_menu_v1" -> "smart_immunizations_smart_immunizations_artifact_index_folio_ig_menu_v1_Group" [dir=both, arrowtail=diamond, arrowhead=none, label="groups", headlabel="0..*", class="fa_uml_composition"];
+  "grid_pkg_smart_immunizations_smart_immunizations_fhir_ast_top" -> "n_smart_immunizations_smart_immunizations_fhir_ast_ig_ast" [style=invis, class="kg-graph-anchor"];
+  "n_smart_immunizations_smart_immunizations_fhir_ast_ig_ast" -> "grid_pkg_smart_immunizations_smart_immunizations_fhir_ast_bottom" [style=invis, class="kg-graph-anchor"];
   "smart_immunizations_smart_immunizations_artifact_index_folio_fhir_artifact_index_v2_Context" -> "smart_immunizations_smart_immunizations_artifact_index_dak_StructureDefinition_IMMZ_D5_Determine_vaccine_s__to_be_administered_based_on_contraindications_schema_json_IMMZ_D5_Determine_vaccine_s__to_be_administered_based_on_contraindications" [style=invis, class="kg-graph-anchor"];
   "smart_immunizations_smart_immunizations_artifact_index_folio_fhir_artifact_index_v2_SidecarsUnbound" -> "smart_immunizations_smart_immunizations_artifact_index_dak_StructureDefinition_IMMZ_D7_Counsel_client_schema_json_IMMZ_D7_Counsel_client" [style=invis, class="kg-graph-anchor"];
   "smart_immunizations_smart_immunizations_artifact_index_folio_fhir_artifact_index_v2_Artifact" -> "smart_immunizations_smart_immunizations_artifact_index_dak_ValueSet_IMMZ_C_DE5_displays_json_IMMZ_C_DE5_ValueSet_for_Sex_Display_Values" [style=invis, class="kg-graph-anchor"];
@@ -460,5 +468,6 @@ digraph "smart_immunizations" {
   "n_smart_immunizations_smart_immunizations_docs_ig_pages" -> "grid_pkg_smart_immunizations_smart_immunizations_docs_bottom" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_smart_immunizations_qa_top" -> "n_smart_immunizations_qa_qa" [style=invis, class="kg-graph-anchor"];
   "n_smart_immunizations_qa_qa" -> "grid_pkg_smart_immunizations_qa_bottom" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_smart_immunizations_smart_immunizations_fhir_ast_bottom" -> "grid_pkg_smart_immunizations_smart_immunizations_docs_top" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_smart_immunizations_smart_immunizations_artifact_index_bottom" -> "grid_pkg_smart_immunizations_qa_top" [style=invis, class="kg-graph-anchor"];
 }

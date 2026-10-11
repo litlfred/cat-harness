@@ -15,13 +15,13 @@
           "hasIOContract": false,
           "hasInstructions": true,
           "inSubgraph": "http://smart.who.int/base/smart-base.jsonld#directory/smart-base-skills",
-          "instructionLines": 174,
+          "instructionLines": 176,
           "instructionsPath": "skills/content/authoring-who-smart-guidelines/dak-l1-library.md",
           "name": "dak-l1-library",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b6f66d3a12c91ed243091a7d568a8336efaf46dc1ad14cfd1db63a68adf30720",
-            "bytes": 9806,
-            "sha256": "b6f66d3a12c91ed243091a7d568a8336efaf46dc1ad14cfd1db63a68adf30720"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/73abb7f651751fd5234beb18bc1a4548da6be5f32d82c553a20e7c4c51209a1d",
+            "bytes": 10001,
+            "sha256": "73abb7f651751fd5234beb18bc1a4548da6be5f32d82c553a20e7c4c51209a1d"
           },
           "title": "dak-l1-library"
         },
@@ -114,6 +114,24 @@
             "sha256": "697a90966d33d4c6aaa315a1d4f4bc35587d553683aad98df5642e2d6eed8613"
           },
           "title": "l2-dak-authoring"
+        },
+        {
+          "@id": "http://smart.who.int/base/smart-base.jsonld#skill/recommendation-extraction",
+          "@type": "bootstrap:Skill",
+          "ambiguous": false,
+          "description": "Extract the recommendations of an L1 source as L1 3.0 recommendation and remark nodes, then describe each one's scenario: the persona (role) who acts on it, the business process they act in, and the user story, as smart-kg L2 user-scenario candidates that reuse the target guide's own vocabulary. Read before extracting recommendations from a WHO guideline or position paper with no printed \"Recommendation N\" labels, before linking a recommendation to a DAK persona or process, and whenever a recommendation has to say who does it and where. Covers the hybrid extraction (mechanical candidates, agent structuring, verbatim and 100 % coverage gates), the reuse-first precedence for personas and processes, the WARNING format, and sign-off.",
+          "hasIOContract": false,
+          "hasInstructions": true,
+          "inSubgraph": "http://smart.who.int/base/smart-base.jsonld#directory/smart-base-skills",
+          "instructionLines": 231,
+          "instructionsPath": "skills/content/authoring-who-smart-guidelines/recommendation-extraction.md",
+          "name": "recommendation-extraction",
+          "payload": {
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5aecf145bb4973f24dda0a656a871cd60ce26ed72a11765e2580ace34b4cc825",
+            "bytes": 11455,
+            "sha256": "5aecf145bb4973f24dda0a656a871cd60ce26ed72a11765e2580ace34b4cc825"
+          },
+          "title": "recommendation-extraction"
         },
         {
           "@id": "http://smart.who.int/base/smart-base.jsonld#skill/smart-base-tools",

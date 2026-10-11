@@ -12,14 +12,14 @@ permalink: /folio-assistant-core/glossary/skills/
 
 Candidate terms extracted from every skill's front matter: `name` as the label, `description` as the definition. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap 11 (<a href="{{ '/assets/glossary/bootstrap--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · bootstrap-tools 2 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 240 (<a href="{{ '/assets/glossary/cat-harness--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 15 (<a href="{{ '/assets/glossary/fhir-harness--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 28 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 55 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 10 (<a href="{{ '/assets/glossary/smart-base--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · who-iris 2 (<a href="{{ '/assets/glossary/who-iris--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap 11 (<a href="{{ '/assets/glossary/bootstrap--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · bootstrap-tools 2 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 241 (<a href="{{ '/assets/glossary/cat-harness--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 15 (<a href="{{ '/assets/glossary/fhir-harness--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 28 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 56 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 11 (<a href="{{ '/assets/glossary/smart-base--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · who-iris 2 (<a href="{{ '/assets/glossary/who-iris--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>).
 
-**Size:** this page holds 363 terms and is 277 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 366 terms and is 280 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>363</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>363</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>366</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>366</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -29,7 +29,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">363</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">366</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-A">A</a> <a href="#letter-B">B</a> <a href="#letter-C">C</a> <a href="#letter-D">D</a> <a href="#letter-E">E</a> <a href="#letter-F">F</a> <a href="#letter-G">G</a> <a href="#letter-H">H</a> <a href="#letter-I">I</a> <a href="#letter-K">K</a> <a href="#letter-L">L</a> <a href="#letter-M">M</a> <a href="#letter-N">N</a> <a href="#letter-O">O</a> <a href="#letter-P">P</a> <a href="#letter-Q">Q</a> <a href="#letter-R">R</a> <a href="#letter-S">S</a> <a href="#letter-T">T</a> <a href="#letter-U">U</a> <a href="#letter-V">V</a> <a href="#letter-W">W</a> <a href="#letter-Z">Z</a></nav>
 
@@ -1412,6 +1412,13 @@ lean-generation <span class="fa-gloss-status">candidate, extracted</span>
 <p>Extract theorem-like objects from LaTeX source and generate corresponding Lean 4 stub files with <code>sorry</code> placeholders. Maintains the proof-objects.json manifest linking LaTeX labels to Lean declarations by doc-gen4 URL.</p>
 <p class="fa-gloss-meta">Skills of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/skills/content/folio-paper-adapter/lean-generation.md"><code>folio-assistant-sci/skills/content/folio-paper-adapter/lean-generation.md</code></a></p>
 </dd>
+<dt id="folio-assistant-sci--kg-skills--lean-html-docs" data-fa-state="extracted" data-fa-gloss="">
+lean-html-docs <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Build and publish the visualiser of a folio's declared <code>lean</code> directory: the package's doc-gen4 HTML render, staged under the folio's site and wrapped in the harness navbar and rail. Use when a folio's Lean docs are missing, stale, or published without the harness chrome, or when declaring a <code>lean</code> directory and its <code>coverage.visualiser</code>.</p>
+<p class="fa-gloss-meta">Skills of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/skills/lean/lean-html-docs.md"><code>folio-assistant-sci/skills/lean/lean-html-docs.md</code></a></p>
+</dd>
 <dt id="folio-assistant-sci--kg-skills--lean-mathlibext-curator" data-fa-state="extracted" data-fa-gloss="">
 lean-mathlibext-curator <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1933,6 +1940,13 @@ readme-sections <span class="fa-gloss-status">candidate, extracted</span>
 <p>A folio's README is the author's file; the platform owns only the marked regions it generates. How the sync/audit split works, why the whole-file generator it replaced could not, and the third state both tools must report.</p>
 <p class="fa-gloss-meta">Skills of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/skills/ui/ui-core/readme-sections.md"><code>cat-harness/skills/ui/ui-core/readme-sections.md</code></a></p>
 </dd>
+<dt id="smart-base--kg-skills--recommendation-extraction" data-fa-state="extracted" data-fa-gloss="">
+recommendation-extraction <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Extract the recommendations of an L1 source as L1 3.0 recommendation and remark nodes, then describe each one's scenario: the persona (role) who acts on it, the business process they act in, and the user story, as smart-kg L2 user-scenario candidates that reuse the target guide's own vocabulary. Read before extracting recommendations from a WHO guideline or position paper with no printed &quot;Recommendation N&quot; labels, before linking a recommendation to a DAK persona or process, and whenever a recommendation has to say who does it and where. Covers the hybrid extraction (mechanical candidates, agent structuring, verbatim and 100 % coverage gates), the reuse-first precedence for personas and processes, the WARNING format, and sign-off.</p>
+<p class="fa-gloss-meta">Skills of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/skills/content/authoring-who-smart-guidelines/recommendation-extraction.md"><code>smart-base/skills/content/authoring-who-smart-guidelines/recommendation-extraction.md</code></a></p>
+</dd>
 <dt id="cat-harness--kg-skills--ref-stewardship" data-fa-state="extracted" data-fa-gloss="">
 ref-stewardship <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -2132,6 +2146,13 @@ scientific-visualization <span class="fa-gloss-status">candidate, extracted</spa
 <dd>
 <p>Create and audit truthful, accessible, publication-ready scientific figures with Matplotlib, Seaborn, or Plotly. Use for figure design, multi-panel layouts, uncertainty and missing-data displays, color/contrast review, image metadata validation, and journal export planning.</p>
 <p class="fa-gloss-meta">Skills of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/skills/content/scientific-visualization/scientific-visualization.md"><code>folio-assistant-sci/skills/content/scientific-visualization/scientific-visualization.md</code></a></p>
+</dd>
+<dt id="cat-harness--kg-skills--secrets" data-fa-state="extracted" data-fa-gloss="">
+secrets <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Adding, rotating and revoking the credentials the harness's automation needs, one mechanism at a time, with the exact GitHub UI path for each step. Every step that touches a value is a person's; an agent drafts the steps, checks names and expiry dates, and records what was done. Leads with the GitHub App on a personal account, the recommended mechanism (owner ruling D1=A).</p>
+<p class="fa-gloss-meta">Skills of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/skills/sdlc/sdlc-core/secrets.md"><code>cat-harness/skills/sdlc/sdlc-core/secrets.md</code></a></p>
 </dd>
 <dt id="cat-harness--kg-skills--security" data-fa-state="extracted" data-fa-gloss="">
 security <span class="fa-gloss-status">candidate, extracted</span>

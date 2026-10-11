@@ -65,6 +65,15 @@ classDiagram
       codes [1..*] Code[]
     }
   }
+  namespace folio_assistant_core__core_qa_checkers {
+    class folio_assistant_core_core_qa_checkers_folio_qa_checker_v1_folio_qa_checker_v1["folio-qa-checker/v1"] {
+      <<json: QaCheckerNodeSchema>>
+      $schema [1] 'folio-qa-checker/v1'
+      criterion [1] string
+      check [1] string
+      rationale [0..1] string
+    }
+  }
   namespace folio_assistant_core__folio_assistant_core_typologies {
     class folio_assistant_core_folio_assistant_core_typologies_folio_graph_typology_v1_folio_graph_typology_v1["folio-graph-typology/v1"] {
       <<json: GraphTypologyNodeSchema>>
@@ -306,6 +315,13 @@ classDiagram
       images [1] object[] | null
       undetermined_reason [0..1] string
     }
+    class folio_assistant_core_core_library_folio_image_verdicts_v1["folio-image-verdicts/v1"] {
+      <<ts: VerdictFile>>
+      inspected_by [1] unknown
+      inspected_at [1] string
+      attribution [0..1] Record~string,  inspected_by: unknown; inspected_at: string ~
+      verdicts [1] Record~string, Record~string, Verdict~~
+    }
     class folio_assistant_core_core_library_folio_keywords_v1_Document["Document"] {
       <<json: KeywordsFileSchema>>
       term [1] string
@@ -319,9 +335,6 @@ classDiagram
       corpus [1] object
       document [0..*] Document[]
       sections [1] map~object[]~
-    }
-    class n_folio_assistant_core_core_library_library_folio_image_verdicts_v1["library folio-image-verdicts/v1: no node schema"] {
-      <<could not determine>>
     }
   }
   namespace folio_assistant_core__core_methodologies {
@@ -647,6 +660,7 @@ classDiagram
   folio_assistant_core_core_code_lists_CodeList *-- "1..*" folio_assistant_core_core_code_lists_Code : codes
   cssClass "folio_assistant_core_core_code_lists_Code" fa_uml_kind_code_list
   cssClass "folio_assistant_core_core_code_lists_CodeList" fa_uml_kind_code_list
+  cssClass "folio_assistant_core_core_qa_checkers_folio_qa_checker_v1_folio_qa_checker_v1" fa_uml_kind_qa_checkers
   cssClass "folio_assistant_core_folio_assistant_core_typologies_folio_graph_typology_v1_folio_graph_typology_v1" fa_uml_kind_typologies
   folio_assistant_core_core_schemas_skills_document_publishing_output_schema_json_Document_Publishing_Output *-- "0..*" folio_assistant_core_core_schemas_skills_document_publishing_output_schema_json_Issue : issues
   folio_assistant_core_core_schemas_skills_quality_control_output_schema_json_Quality_Control_Output *-- "0..*" folio_assistant_core_core_schemas_skills_quality_control_output_schema_json_Finding : findings
@@ -682,10 +696,9 @@ classDiagram
   cssClass "n_folio_assistant_core_core_scripts_code" fa_uml_undetermined
   folio_assistant_core_core_library_folio_keywords_v1_folio_keywords_v1 *-- "0..*" folio_assistant_core_core_library_folio_keywords_v1_Document : document
   cssClass "folio_assistant_core_core_library_folio_document_images_v1_folio_document_images_v1" fa_uml_kind_library
+  cssClass "folio_assistant_core_core_library_folio_image_verdicts_v1" fa_uml_kind_library
   cssClass "folio_assistant_core_core_library_folio_keywords_v1_Document" fa_uml_kind_library
   cssClass "folio_assistant_core_core_library_folio_keywords_v1_folio_keywords_v1" fa_uml_kind_library
-  cssClass "n_folio_assistant_core_core_library_library_folio_image_verdicts_v1" fa_uml_kind_library_folio_image_verdicts_v1
-  cssClass "n_folio_assistant_core_core_library_library_folio_image_verdicts_v1" fa_uml_undetermined
   cssClass "n_folio_assistant_core_core_methodologies_methodology" fa_uml_kind_methodology
   cssClass "n_folio_assistant_core_core_methodologies_methodology" fa_uml_undetermined
   folio_assistant_core_core_skills_folio_voice_v1_folio_voice_v1 *-- "1..*" folio_assistant_core_core_skills_folio_voice_v1_Source : sources

@@ -177,6 +177,14 @@ nav_exclude: true
     ]
   },
   {
+    &quot;id&quot;: &quot;core-qa-checkers&quot;,
+    &quot;path&quot;: &quot;qa-checkers/&quot;,
+    &quot;description&quot;: &quot;The QA checkers this layer&#39;s code provides, one `folio-qa-checker/v1` node per criterion, registered for a folio through its dependency tree by `loadContributions` (bean riit, step 3b). One today: `recommendation-strength-resolves` (bean 55ao), naming `RECOMMENDATION_CHECKERS` in `schemas/recommendation-strength.ts`. The criterion itself is declared in cat-harness-tools&#39; QA registry with `checker_contributed`.&quot;,
+    &quot;graphTypologies&quot;: [
+      &quot;qa-checkers&quot;
+    ]
+  },
+  {
     &quot;id&quot;: &quot;folio-assistant-core-typologies&quot;,
     &quot;path&quot;: &quot;typologies/&quot;,
     &quot;description&quot;: &quot;The graph typologies folio-assistant-core owns, one folio-graph-typology/v1 node per file (bean dmx1). Owner, 2026-10-04: no central registry for subgraph types; a harness declares its own in a kinds/ graph. Moved here from cat-harness/schemas/graph-typology-registry.ts, with each entry&#39;s code comments kept as its rationale.&quot;,
@@ -311,7 +319,13 @@ nav_exclude: true
     &quot;description&quot;: &quot;Repository health reports for THIS repository: the one `health-report/v1` document `bun run cat-harness-tools/test/health/run.ts --instance &lt;this instance&gt;` writes. Each repository the separation made is its own clone, with its own size, publish branch, branches and stores, so each carries its own report (owner, 2026-10-10: \&quot;All repos need health check\&quot;). The graph typology is cat-harness&#39;s; its `health` entry says what separates a health report (about the repository) from a `qa` verdict (about an artefact).&quot;,
     &quot;graphTypologies&quot;: [
       &quot;health&quot;
-    ]
+    ],
+    &quot;_source_comment&quot;: &quot;MOUNTED, owner 2026-10-11 (session_01UC1NuEuSy1MBNpEhnDuiGj, 05:58:12Z: \&quot;move health to state branch now\&quot;). The report is generated state, not reviewed content, so it is kept on its own per-graph branch (owner, 2026-10-03, bean laqs) and mounted at this path by `bun run cat state:mount`; main dropped it in the same commit that declared this source, because `mountTip` refuses a path the checkout still tracks.&quot;,
+    &quot;source&quot;: {
+      &quot;kind&quot;: &quot;branch&quot;,
+      &quot;branch&quot;: &quot;cat/folio-assistant-core/health&quot;,
+      &quot;keyedBy&quot;: &quot;tip&quot;
+    }
   }
 ]</pre></dd>
 <dt>_visualisers_comment</dt><dd>THE VISUALISERS THIS HARNESS DECLARES, at its own level (owner, 2026-10-09: &quot;I still want the harness to be where specific visualizers/pages are declared for the harness at the level … Need harness to declare visualizer is renderedBy&quot;). Until then the glossary directory named its page (`coverage.visualiser: cat-harness/docs/glossary/index.md`) — a page in another layer&#39;s tree at a URL nothing derived. The page is now at &lt;base&gt;/folio-assistant-core/glossary/, computed by visualiserRoute from this entry, drawn by the `glossary-page` Tool (scripts/glossary-page.ts), with &lt;base&gt;/glossary/ kept as its declared alias so no existing link breaks.</dd>

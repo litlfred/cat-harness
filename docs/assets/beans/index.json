@@ -2,7 +2,7 @@
   "$schema": "folio-bean-index/v1",
   "tile": {
     "beans": {
-      "count": 190,
+      "count": 188,
       "unit": "open beans"
     }
   },
@@ -1006,6 +1006,20 @@
       "file": "beans/defs/folio-assistant-2c2b--ci-watch-is-two-state-cancelled-read-as-failure-an.md"
     },
     {
+      "id": "folio-assistant-2coi",
+      "title": "IG fork sites: artefact JSON, JSON Schema and JSON-LD from the AST route, with the AST cache built and seeded in CI",
+      "status": "completed",
+      "type": "task",
+      "priority": "normal",
+      "parent": "folio-assistant-uhkv",
+      "blocking": [],
+      "blockedBy": [],
+      "createdAt": "2026-10-11T07:17:27Z",
+      "updatedAt": "2026-10-11T12:25:41Z",
+      "preview": "Owner, 2026-10-11: \"fix: Artefact pages still link JSON to WHO, and have no JSON-LD or JSON Schema links. Use AST route. make sure it is fullly working w/ branch caches etc\". Follows 48a6 (fork site drift).\n\nLanded: fhir-harness#38 (ast-to-artifact-index --sidecars; ig-cache keeps expansions.json), #39 (--keep-published-grouping; description links rebased); smart-base#42 (smart-base:dak-ast-sideca",
+      "file": "beans/defs/folio-assistant-2coi--ig-fork-sites-artefact-json-json-schema-and-json-l.md"
+    },
+    {
       "id": "folio-assistant-2e39",
       "title": "B9b (#1168): a BPMN lane is its own node; performedBy points at the registry role",
       "status": "completed",
@@ -1858,7 +1872,7 @@
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-06T06:17:40Z",
-      "updatedAt": "2026-10-10T17:14:37Z",
+      "updatedAt": "2026-10-11T05:43:55Z",
       "preview": "Reported by the owner, 2026-10-06 (session https://claude.ai/code/session_012qoycyCSGidZqW245vXhze), verbatim:\n\n> https://litlfred.github.io/smart-trust/ and https://litlfred.github.io/smart-base dont have updated harness on ghpages like https://litlfred.github.io/smart-immunizations does\n\n## What is known\n- **Reference (good):** https://litlfred.github.io/smart-immunizations/ shows the current ha",
       "file": "beans/defs/folio-assistant-48a6--ig-fork-sites-drift-smart-trust-and-smart-base-git.md"
     },
@@ -2774,7 +2788,7 @@
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-30T19:48:10Z",
-      "updatedAt": "2026-10-09T13:36:00Z",
+      "updatedAt": "2026-10-11T06:52:45Z",
       "preview": "**Owner ruling, 2026-09-30: leave open until the call site is named.**\n\n## Why this is its own bean\n\nIt was Box 3 of `8zsb`, and **`8zsb` is `completed`**. A completed bean's\nunchecked box is not reachable by `beans list`, so the question was on its way\nto being invisible — which is `8zsb`'s own lesson (*a finding needs somewhere\nto live that nobody has to already know about*) turned on the bean t",
       "file": "beans/defs/folio-assistant-68k7--resolvedirectories-climbs-the-checkouts-parent-is.md"
     },
@@ -2858,7 +2872,7 @@
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-02T12:55:31Z",
-      "updatedAt": "2026-10-10T16:40:53Z",
+      "updatedAt": "2026-10-11T06:23:23Z",
       "preview": "## Why\n\nBean `w6fu` (PR #1849) gave PDF library entries a verified title: a title is\nused only when two independent sources agree, or when an editorial\n`title_correction` exists. Two entries are not PDFs, so that resolver never\nreaches them, and they still show placeholder titles:\n\n| entry | format | what shows now | evidence in the file |\n|---|---|---|---|\n| `cat-harness/library/kg-folio-asst-202",
       "file": "beans/defs/folio-assistant-6eiw--library-titles-for-non-pdf-entries-pptx-deck-codat.md"
     },
@@ -3301,14 +3315,14 @@
     {
       "id": "folio-assistant-7jkp",
       "title": "cat-openapi: two ingest tools — OpenAPI into the KG from SOURCE (a repo) or from RENDERED (a published spec/site); smart-trust's example comes from WHO smart-trust-network-gateway",
-      "status": "todo",
+      "status": "completed",
       "type": "feature",
       "priority": "normal",
       "parent": "folio-assistant-uhkv",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-04T18:50:39Z",
-      "updatedAt": "2026-10-10T17:46:33Z",
+      "updatedAt": "2026-10-11T06:23:23Z",
       "preview": "Owner, 2026-10-04, verbatim: *\"note for openapi bean: source code for openapi in example for smart-trust is from here. should be bale to ingest either https://github.com/WorldHealthOrganization/smart-trust-network-gateway\"* and *\"(two different tools for openapi... ingest into KG from source or from rendered)\"*.\n\n## What this asks\n- smart-trust's OpenAPI example has its source in WorldHealthOrgani",
       "file": "beans/defs/folio-assistant-7jkp--cat-openapi-two-ingest-tools-openapi-into-the-kg-f.md"
     },
@@ -3519,14 +3533,14 @@
     {
       "id": "folio-assistant-7x8o",
       "title": "TRANSLATIONS: 8 pairs may carry less than their source — but 7 of the original 9 were the extractor's hard wrap, not the translators (see lvk9)",
-      "status": "todo",
+      "status": "completed",
       "type": "bug",
       "priority": "normal",
       "parent": "folio-assistant-bzyu",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-26T08:57:09Z",
-      "updatedAt": "2026-10-10T17:43:33Z",
+      "updatedAt": "2026-10-11T06:23:24Z",
       "preview": "Found while deriving `.po` catalogues for #206 (bean `tbdg`). Measured\n2026-09-26.\n\n`derive-po.ts` refuses 18 of 25 (page, locale) pairs because the published\ntranslation does not have the same SHAPE as its source. **9 of those 18 are\nartefacts of the extractor** (beans `6b8u` and `ig4a`) and disappear once the\nthreshold is script-neutral. These are the **other 9**, which are still mismatched\nwith",
       "file": "beans/defs/folio-assistant-7x8o--translations-9-published-pages-carry-less-than-the.md"
     },
@@ -3874,7 +3888,7 @@
         "folio-assistant-vobp"
       ],
       "createdAt": "2026-10-02T06:31:23Z",
-      "updatedAt": "2026-10-10T17:28:17Z",
+      "updatedAt": "2026-10-11T06:52:45Z",
       "preview": "From the proposal cat-harness/docs/proposals/credentials-needs-and-supply.md §4.3 (D2=A). Edit the secret references and the error and help messages in bootstrap-tools/.github/workflows/publish-bootstrap.yml and .github/workflows/merge-main.yml. With the App (D1=A), add the create-github-app-token mint step and expose the job variable under the capability name. Both secrets are unset, so the renam",
       "file": "beans/defs/folio-assistant-8mlt--credentials-iv-rename-bootstrap-pages-token-publis.md"
     },
@@ -4501,7 +4515,7 @@
       "blockedBy": [],
       "createdAt": "2026-09-25T04:51:47Z",
       "updatedAt": "2026-09-29T22:01:05Z",
-      "preview": "**SCRAPPED 2026-09-29 — superseded on `main` before this bean was ever\ncommitted.** Not deleted: a scrapped bean stops the next agent re-entering a\ndead end, and this one would read as an obvious gap to anybody who had not\nchecked.\n\nWritten 2026-09-25 to ask \"what IS a term, per asset kind, and what is not\",\non the reading that `glossary-page.ts`'s rule was implicit. It is not implicit\nany more. [",
+      "preview": "**SCRAPPED 2026-09-29 — superseded on `main` before this bean was ever\ncommitted.** Not deleted: a scrapped bean stops the next agent re-entering a\ndead end, and this one would read as an obvious gap to anybody who had not\nchecked.\n\nWritten 2026-09-25 to ask \"what IS a term, per asset kind, and what is not\",\non the reading that `glossary-page.ts`'s rule was implicit. It is not implicit\nany more. `",
       "file": "beans/defs/folio-assistant-a13a--terminology-identification-say-what-a-term-is-per.md"
     },
     {
@@ -5579,14 +5593,14 @@
     {
       "id": "folio-assistant-cy4p",
       "title": "BPMN ENGINE: a Tool node, with downcompilation per coding agent",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-ahvw",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-19T17:04:01Z",
-      "updatedAt": "2026-10-10T17:46:33Z",
+      "updatedAt": "2026-10-11T06:52:44Z",
       "preview": "**Uncaptured owner requirement, found 2026-09-19T17:0x** while checking\n[#363](https://github.com/litlfred/folio-assistant/issues/363) for replies.\nThe ask was made at 09:20 and had reached no bean in eight hours — the\n`issue-working` re-check is what surfaced it, which is the case that skill\nexists for.\n\nOwner, [#363 comment](https://github.com/litlfred/folio-assistant/issues/363#issuecomment-574",
       "file": "beans/defs/folio-assistant-cy4p--bpmn-engine-a-tool-node-with-downcompilation-per-c.md"
     },
@@ -5815,7 +5829,7 @@
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-02T17:41:46Z",
-      "updatedAt": "2026-10-10T16:40:53Z",
+      "updatedAt": "2026-10-11T06:23:23Z",
       "preview": "Found while measuring the linear floor for `qj9a`, 2026-10-02, on\n`origin/gh-pages`. Parent topic: `qj9a`; the floor itself is bean `0jtj`.\n\n## The defect\n\n`todos/index.html` — the dedicated notes dashboard — carries **no\n`fa-todo-listing` section and zero `fa-todo-listing-item` elements** in its\nserved bytes. It is one of the eight generated JS shells in\n`cat-harness/test/first-paint-scheme.e2e.t",
       "file": "beans/defs/folio-assistant-dm4j--todosindexhtml-serves-zero-notes-without-javascrip.md"
     },
@@ -6474,8 +6488,8 @@
         "folio-assistant-3o5b"
       ],
       "createdAt": "2026-10-01T08:00:47Z",
-      "updatedAt": "2026-10-01T09:12:25Z",
-      "preview": "Arc `3fva`, proposal §3.3 and §4 item 5.6. Blocked on the TEST PROCESS bean.\n\n`test/results/crdm-detect-eval.test-run.json` already holds 27 cases with precision and recall, plus a second-annotator corpus in `scripts/eval/`. Turn it into `test-plan/v1`, execute it through `test-plan-execution.bpmn`, and take a certification decision. The second plan is an MCP tool (`workflow_complete` refuses a st",
+      "updatedAt": "2026-10-11T07:00:59Z",
+      "preview": "Arc `3fva`, proposal §3.3 and §4 item 5.6. Blocked on the TEST PROCESS bean.\n\nThe skill it certifies is the one #203 asked for (CRDM: recognise a feature\nrequest and run a requirements process). #203 stays open until the owner\nauthorises closing it; this bean is where the work plan reaches it.\n\n`test/results/crdm-detect-eval.test-run.json` already holds 27 cases with precision and recall, plus a s",
       "file": "beans/defs/folio-assistant-ff09--dogfood-test-plan-1-certify-the-crdm-detect-skill.md"
     },
     {
@@ -8151,7 +8165,7 @@
     {
       "id": "folio-assistant-jzba",
       "title": "CREDENTIALS (ii): secrets:check — declared needs vs workflow usage vs secret names vs expiry registry",
-      "status": "todo",
+      "status": "in-progress",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-5a3l",
@@ -8160,7 +8174,7 @@
         "folio-assistant-vobp"
       ],
       "createdAt": "2026-10-02T06:31:22Z",
-      "updatedAt": "2026-10-10T17:46:33Z",
+      "updatedAt": "2026-10-11T06:52:45Z",
       "preview": "From the proposal cat-harness/docs/proposals/credentials-needs-and-supply.md §6.2. Code in cat-harness-tools. Names only, never values. Findings per §6.2, including could-not-determine, which outranks clean (exit 2). Warns at 30 and 7 days before expiry. Feeds bun run health. Has the MCP and CLI parity of axis 6. Declares its own need, list-secret-names, supplied by the App. Not built yet.\n\n## Don",
       "file": "beans/defs/folio-assistant-jzba--credentials-ii-secretscheck-declared-needs-vs-work.md"
     },
@@ -8176,7 +8190,7 @@
         "folio-assistant-vobp"
       ],
       "createdAt": "2026-10-02T06:31:22Z",
-      "updatedAt": "2026-10-10T17:19:46Z",
+      "updatedAt": "2026-10-11T05:44:48Z",
       "preview": "From the proposal cat-harness/docs/proposals/credentials-needs-and-supply.md §6.3 (D1=A, the App). Write skills/sdlc/sdlc-core/secrets.md with the human steps per mechanism and the UI paths. Lead with the GitHub App setup on a personal account: register the App, generate its private key, install it on selected repositories, store HARNESS_BOT_ID as a variable and HARNESS_BOT_PRIVATE_KEY as a secret",
       "file": "beans/defs/folio-assistant-k3ml--credentials-i-secrets-skill-addrotaterevoke-per-me.md"
     },
@@ -8419,6 +8433,20 @@
       "file": "beans/defs/folio-assistant-kott--harness-namespaced-values-one-dotted-key-harnesssu.md"
     },
     {
+      "id": "folio-assistant-kpci",
+      "title": "who-iris gets its own CI for check:catalogue, iris:pages, iris:covers, dc:render; folio-assistant's index workflow stops calling them",
+      "status": "in-progress",
+      "type": "task",
+      "priority": "high",
+      "parent": "folio-assistant-ml9h",
+      "blocking": [],
+      "blockedBy": [],
+      "createdAt": "2026-10-11T07:00:59Z",
+      "updatedAt": "2026-10-11T07:00:59Z",
+      "preview": "Owner ruling 2026-10-11 ~06:55 UTC: **who-iris CI**. who-iris 7eda8c3 moved these from checkoutScripts to its own scripts (run from who-iris's root, with folio-assistant-core mounted inside it); who-iris has no workflow, and folio-assistant's code-quality-gates.yml 'registered, never run elsewhere' job calls them through 'bun run cat', which no longer finds them.\n\n## Done when\n- [ ] litlfred/who-i",
+      "file": "beans/defs/folio-assistant-kpci--who-iris-gets-its-own-ci-for-checkcatalogue-irispa.md"
+    },
+    {
       "id": "folio-assistant-kpcl",
       "title": "STREAM 4/4: trust the instruments — the stale-claim sweep, CI that does not fire, and the QA record (1xhc + 1swy + ahvw, 43 open beans)",
       "status": "todo",
@@ -8505,14 +8533,14 @@
     {
       "id": "folio-assistant-kx0p",
       "title": "catalogue visualiser: 6 wireframe findings",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-4ccr",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-23T10:36:14Z",
-      "updatedAt": "2026-10-10T16:40:53Z",
+      "updatedAt": "2026-10-11T05:54:58Z",
       "preview": "Findings from the as-is wireframe `cat-harness/docs/wireframes/catalogue/` (intent.md, as-is.html, checks/), observed at 1280×800 and 390×844. Verbatim from its `## Findings`; a finding tagged → is also covered by that cross-cutting bug.\n\n1. **Horizontal scroll at phone width.** At 390 px the document is 752 px wide (`scrollWidth` 752). The \"Every node\" table does not wrap or scroll in a container",
       "file": "beans/defs/folio-assistant-kx0p--catalogue-visualiser-6-wireframe-findings.md"
     },
@@ -9270,7 +9298,7 @@
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-10T15:40:10Z",
-      "updatedAt": "2026-10-10T17:25:15Z",
+      "updatedAt": "2026-10-11T05:44:48Z",
       "preview": "Drain the open bean backlog across the three bean stores the separation left, working LEAVES UP: a bean is taken only when it is `todo`, not an epic/milestone, has no open children and no open blocked-by. Parents close when their last child closes — never before.\n\n## Census (2026-10-10 15:40 UTC)\n\n| store | where it lives | open | ready leaves (todo) |\n|---|---|---|---|\n| cat-harness graph | `bean",
       "file": "beans/defs/folio-assistant-ml9h--drain-2026-10-10-open-bean-backlog-across-cat-harn.md"
     },
@@ -9616,6 +9644,20 @@
       "updatedAt": "2026-10-10T08:00:00Z",
       "preview": "Owner, 2026-10-02 (bean for later): update the Merge Manager skills, process and tools so that a merge is GATED on:\n\n- a full agentic adversarial software code review of any change made by one or more agents;\n- no blocking RED FLAG from any agentic review;\n- (math content block) every changed Lean file compiles;\n- (FHIR IG) SUSHI and the IG AST compile;\n- JSON(-LD) plus schema for the KG renders (",
       "file": "beans/defs/folio-assistant-nok9--merge-gate-agentic-adversarial-review-content-type.md"
+    },
+    {
+      "id": "folio-assistant-np6o",
+      "title": "cat-harness kind registry: point the 6 shapes 70lx moved at 'cat-harness-tools:<path>#Export'; map folio-slice-sqlite/v1, folio-slice-index/v1, qa-script/v1",
+      "status": "in-progress",
+      "type": "task",
+      "priority": "",
+      "parent": "folio-assistant-ml9h",
+      "blocking": [],
+      "blockedBy": [],
+      "createdAt": "2026-10-11T07:00:59Z",
+      "updatedAt": "2026-10-11T07:00:59Z",
+      "preview": "Owner ruling 2026-10-11 ~06:55 UTC: **Point at tools** — the 'cat-harness-tools:<path>#Export' form the registry already uses for models (bootstrap-tools:schemas/model-registry.ts#ModelRegistrySchema). check:kind-validators:require-all at #2529's pins: folio-qa-graph/v1, folio-translation-index/v1, folio-workflow-instance/v1 (x2), folio-image-verdicts/v1, folio-issue-mark/v1 name files no longer u",
+      "file": "beans/defs/folio-assistant-np6o--cat-harness-kind-registry-point-the-6-shapes-70lx.md"
     },
     {
       "id": "folio-assistant-npuo",
@@ -10294,14 +10336,14 @@
     {
       "id": "folio-assistant-pnn5",
       "title": "v8n5 Done-when #2 promised coverage 'the day instance #2 declares a theme' — that day came and nothing compares",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-1xhc",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-30T21:24:19Z",
-      "updatedAt": "2026-09-30T21:24:41Z",
+      "updatedAt": "2026-10-11T06:52:45Z",
       "preview": "Found 2026-09-30 by becoming instance #2. Bean `7h3u` declared\n`smart-trust/themes/`, which took the themes set from 1 to 2 — and that is the\ncondition `check-navbar-consistency.ts` said would close a gap.\n\n## What the check promises at set size ≤ 1\n\n```\nNOTE: `v8n5`'s Done-when #2 — a surface must not fall back to the\n      platform default for an instance that declares its own theme —\n      is r",
       "file": "beans/defs/folio-assistant-pnn5--v8n5-done-when-2-promised-coverage-the-day-instanc.md"
     },
@@ -10941,7 +10983,7 @@
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-01T18:43:35Z",
-      "updatedAt": "2026-10-09T17:21:55Z",
+      "updatedAt": "2026-10-11T06:23:23Z",
       "preview": "Issue #1794 (follow-up to PR #1818, which only fixed the viewer).\n\n## Why\nThe owner ruled on 2026-10-01 (option 1 of 4) that a WITHHELD library entry's rows show the section's summary when one exists, and otherwise \"Withheld — copyright not granted\" with a link to the catalogue record. Drafting the summaries was explicitly NOT part of that change. Measured at PR #1818: who-iris `who-pub-tps-931` h",
       "file": "beans/defs/folio-assistant-r96p--library-draft-summaries-for-the-withheld-who-iris.md"
     },
@@ -14660,6 +14702,20 @@
       "file": "beans/defs/folio-assistant-zcak--library-viewer-shared-editfeedback-links-and-the-d.md"
     },
     {
+      "id": "folio-assistant-zckw",
+      "title": "check:declared-paths: rewrite the ~1,950 literals in 70lx-moved cat-harness-tools code to resolve through declarations (owner: no re-baseline)",
+      "status": "todo",
+      "type": "task",
+      "priority": "high",
+      "parent": "folio-assistant-ml9h",
+      "blocking": [],
+      "blockedBy": [],
+      "createdAt": "2026-10-11T07:00:59Z",
+      "updatedAt": "2026-10-11T07:00:59Z",
+      "preview": "Owner ruling 2026-10-11 ~06:55 UTC (drain ml9h, asked in session_01JkK6uP3iU2etyMbrw7v3cu): **Rewrite the code** — no re-baseline. At folio-assistant#2529's pins check:declared-paths reports 199 named files (23 new) and 1973 literals unaccounted for against a baseline of 27, in 46 cat-harness-tools files that 70lx moved from cat-harness (it scans codeRoots = [root, TOOLS_ROOT]).\n\nAssigned to lane ",
+      "file": "beans/defs/folio-assistant-zckw--checkdeclared-paths-rewrite-the-1950-literals-in-7.md"
+    },
+    {
       "id": "folio-assistant-zdfa",
       "title": "INIT SIBLING LINK: staging.yml gets platform_dir ../platform, outside the Actions checkout; a subfolder folio's workflow lands where GitHub never reads it",
       "status": "completed",
@@ -16040,13 +16096,13 @@
         "status": "in-progress",
         "epics": 17,
         "total": 596,
-        "closed": 506,
-        "open": 90,
-        "inProgress": 37,
-        "todo": 52,
+        "closed": 510,
+        "open": 86,
+        "inProgress": 38,
+        "todo": 47,
         "draft": 1,
         "unclassified": 0,
-        "share": 0.8489932885906041
+        "share": 0.8557046979865772
       },
       {
         "id": "folio-assistant-vuip",
@@ -16054,14 +16110,14 @@
         "file": "beans/defs/folio-assistant-vuip--goal-1-separation-of-repos-into-dirrepos-each-harn.md",
         "status": "in-progress",
         "epics": 10,
-        "total": 289,
-        "closed": 215,
-        "open": 74,
+        "total": 290,
+        "closed": 217,
+        "open": 73,
         "inProgress": 33,
-        "todo": 40,
+        "todo": 39,
         "draft": 1,
         "unclassified": 0,
-        "share": 0.7439446366782007
+        "share": 0.7482758620689656
       },
       {
         "id": "folio-assistant-yg29",
@@ -16079,9 +16135,9 @@
         "share": 1
       }
     ],
-    "orphanOpen": 7,
-    "openTotal": 190,
-    "coveredOpen": 180,
+    "orphanOpen": 10,
+    "openTotal": 188,
+    "coveredOpen": 175,
     "duplicateIds": 0
   }
 }

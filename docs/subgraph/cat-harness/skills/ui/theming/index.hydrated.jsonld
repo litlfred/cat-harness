@@ -93,9 +93,9 @@
       "instructionsPath": "skills/ui/theming/theme-artefacts.md",
       "name": "theme-artefacts",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f9bc3122f3049d488f915c05ff341833af428983e9d249083cbf3b417bd91b14",
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/23aa7d69c9c2f5da756207daa162a14508bdd6d2355e8f99fcbd3c3e23801800",
         "bytes": 11742,
-        "sha256": "f9bc3122f3049d488f915c05ff341833af428983e9d249083cbf3b417bd91b14"
+        "sha256": "23aa7d69c9c2f5da756207daa162a14508bdd6d2355e8f99fcbd3c3e23801800"
       },
       "title": "Per-artefact specialisation"
     },

@@ -243,7 +243,7 @@ nav_exclude: true
     &quot;graphTypologies&quot;: [
       &quot;code&quot;
     ],
-    &quot;description&quot;: &quot;This layer&#39;s own scripts and their tests: document-kinds, the DAK components figure, the DTH term findings, the smart-kg L1 extraction and pin, and the fhir-harness exclusions check. Declared at the cutover (bean hupw) so a remote mount brings them.&quot;
+    &quot;description&quot;: &quot;This layer&#39;s own scripts and their tests: document-kinds, the DAK components figure, the DTH term findings, the smart-kg L1 extraction and pin, and the fhir-harness exclusions check, and the L1 recommendation scenario candidates with the vocabulary reader they resolve against (bean kvd2), whose test fixtures and measles run sit under `scripts/fixtures/`. Declared at the cutover (bean hupw) so a remote mount brings them.&quot;
   },
   {
     &quot;id&quot;: &quot;smart-base-skills&quot;,
@@ -337,6 +337,13 @@ nav_exclude: true
     ],
     &quot;outputs&quot;: [],
     &quot;because&quot;: &quot;measured 2026-10-01 (bean xpcu); moved from cat-harness/scripts/task-io.ts to its owning instance 2026-10-06 (bean 0r7u)&quot;
+  },
+  &quot;smart-base:l1-scenarios:measles:check&quot;: {
+    &quot;inputs&quot;: [
+      &quot;{tracked}&quot;
+    ],
+    &quot;outputs&quot;: [],
+    &quot;because&quot;: &quot;exits before either writeFileSync under `--check` -- measured 2026-10-10 (bean kvd2): a --check run leaves `git status` clean&quot;
   },
   &quot;smart-base:smart-kg-l1:check&quot;: {
     &quot;outputs&quot;: [],

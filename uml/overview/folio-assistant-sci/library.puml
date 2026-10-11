@@ -15,6 +15,12 @@ package "folio-assistant-sci/library" as pkg_folio_assistant_sci_library <<libra
     images [1] : object[] | null
     undetermined_reason [0..1] : string
   }
+  class "folio-image-verdicts/v1" as folio_assistant_sci_library_folio_image_verdicts_v1 <<ts: VerdictFile>> #f4f4f1 {
+    inspected_by [1] : unknown
+    inspected_at [1] : string
+    attribution [0..1] : Record<string, { inspected_by: unknown; inspected_at: string }>
+    verdicts [1] : Record<string, Record<string, Verdict>>
+  }
   class "folio-vector-labels/v1" as folio_assistant_sci_library_folio_vector_labels_v1_folio_vector_labels_v1 <<json: VectorLabelsSidecarSchema>> #f4f4f1 {
     $schema [1] : 'folio-vector-labels/v1'
     doc_id [1] : string
@@ -33,7 +39,6 @@ package "folio-assistant-sci/library" as pkg_folio_assistant_sci_library <<libra
     document [0..*] : Document[]
     sections [1] : map<object[]>
   }
-  note "library folio-image-verdicts/v1: no node schema declared\n(scripts/apply-image-verdicts.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_folio_assistant_sci_library_library_folio_image_verdicts_v1
 }
 
 folio_assistant_sci_library_folio_keywords_v1_folio_keywords_v1 *-- "0..*" folio_assistant_sci_library_folio_keywords_v1_Document : document
