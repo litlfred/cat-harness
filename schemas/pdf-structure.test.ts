@@ -99,4 +99,11 @@ describe("pdf-structure/v1", () => {
     const src = { ...(d.source as object), mimetype_sniffed: null, mimetype_source: "unrecognised" };
     expect(PdfStructureSchema.safeParse({ ...d, source: src }).success).toBe(true);
   });
+  test("a duplicate copy names its preferred entry; the preferred entry lists its copies", () => {
+    const d = minimal();
+    expect(PdfStructureSchema.safeParse({ ...d, duplicate_of: "arxiv-1206.6004v2", duplicate_note: "same work" }).success).toBe(true);
+    expect(PdfStructureSchema.safeParse({ ...d, duplicate_copies: ["a", "b"] }).success).toBe(true);
+    expect(PdfStructureSchema.safeParse({ ...d, duplicate_of: "" }).success).toBe(false);
+    expect(PdfStructureSchema.safeParse({ ...d, duplicate_copies: "a" }).success).toBe(false);
+  });
 });
