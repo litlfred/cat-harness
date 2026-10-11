@@ -379,9 +379,12 @@ describe("the actor kind is three-way: human, agentic, mechanical", () => {
     // local one may rest on an uncommitted edit, so the same sha addresses a
     // tree that produced something else. Folding the two together would make
     // `reviewed_sha` a decoration rather than an address.
+    // `crdm-detect-signals` (bean `folio-assistant-ff09`) is the phrase-signal
+    // detector declared as a system under test for dogfood plan #1: a fixed
+    // function from issue text to a classification, nothing to decide.
     expect(by("system")).toEqual([
       "attestation-service", "board-renderer", "ci-health-watcher", "ci-pipeline",
-      "ig-publisher-service", "lean-mcp", "local-sweep",
+      "crdm-detect-signals", "ig-publisher-service", "lean-mcp", "local-sweep",
     ]);
   });
 
