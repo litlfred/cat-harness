@@ -5326,6 +5326,12 @@ function promoteFromWithin(
       const fromDefault = d.declaredBy === "(default)" && rootLink !== undefined;
       const entry = {
         ...(nd as unknown as ContentDirectory),
+        // A from-within entry's `path` is spelled from its PARENT's path, so it
+        // resolves against the parent's root: it inherits the parent's `scope`
+        // unless it states its own. Without this, `beans/beans.json`'s `defs`
+        // under the repository-scoped `beans/` resolved against the INSTANCE,
+        // and `materialiseDirectories` refused (`harness:dirs:check`).
+        ...(d.scope !== undefined && (nd as { scope?: unknown }).scope === undefined ? { scope: d.scope } : {}),
         path: `${d.path.replace(/\/+$/, "")}/${sub}/`,
         declaredBy: fromDefault ? rootLink.name : d.declaredBy,
         absPath: join(d.absPath, sub),
