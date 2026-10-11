@@ -14,6 +14,82 @@
       "dcterms:source": "Schema fields of smart-base"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/smart-base/ns#glossary/kg-schema-fields/dak-annexes.dakdatadictionaryannexschema.idcolumn",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant/smart-base/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "DakDataDictionaryAnnexSchema.idColumn"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The column key that identifies a data element."
+        }
+      ],
+      "dcterms:source": "smart-base/schemas/dak-annexes.ts#DakDataDictionaryAnnexSchema.idColumn",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/smart-base/ns#glossary/kg-schema-fields/dak-annexes.dakdatadictionaryannexschema.source",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant/smart-base/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "DakDataDictionaryAnnexSchema.source"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The workbook it was read from, and the sha256 of its bytes."
+        }
+      ],
+      "dcterms:source": "smart-base/schemas/dak-annexes.ts#DakDataDictionaryAnnexSchema.source",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/smart-base/ns#glossary/kg-schema-fields/dak-annexes.dakswimlanemapschema.notpersonas",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant/smart-base/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "DakSwimlaneMapSchema.notPersonas"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Lane words that are deliberately not personas -> why."
+        }
+      ],
+      "dcterms:source": "smart-base/schemas/dak-annexes.ts#DakSwimlaneMapSchema.notPersonas",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/smart-base/ns#glossary/kg-schema-fields/dak-annexes.dakswimlanemapschema.personas",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant/smart-base/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "DakSwimlaneMapSchema.personas"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Persona as named on the personas page -> the words a lane uses for it."
+        }
+      ],
+      "dcterms:source": "smart-base/schemas/dak-annexes.ts#DakSwimlaneMapSchema.personas",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/smart-base/ns#glossary/kg-schema-fields/dak-blocks.dakblockbase.layer",
       "@type": "skos:Concept",
       "skos:inScheme": {
