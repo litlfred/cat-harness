@@ -321,7 +321,7 @@ So a filter for `conclusion == "failure"` returns nothing, and three suites
 completed having executed nothing at all. **Counting the runs does not catch
 it either** — nine were present and every expected name matched. Only asking
 *which runs are owed for this event* catches it, and
-[`check-head-has-run`](../../../scripts/check-head-has-run.ts) is the one
+`check-head-has-run` is the one
 thing here that asks (bean `3pqn`). Do not write a second checker: it already
 keeps the states apart, has a test, and is already wired into
 `pr-checks-present.bpmn`.
@@ -384,7 +384,7 @@ nobody needed.**
 `authored` outranks `shared-declaration`, which outranks `generated-only`,
 because at each step the earlier kind is the one the later kind's remedy
 cannot resolve. The partition is tested in
-[`scripts/tests/merge-queue.test.ts`](../../../scripts/tests/merge-queue.test.ts)
+`scripts/tests/merge-queue.test.ts`
 — including that a refused member cannot be the other side of a collision,
 since it never enters a train.
 

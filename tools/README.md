@@ -10,7 +10,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 
 | file | what it is | used by |
 |---|---|---|
-| [`discover.ts`](discover.ts) | a file |  |
 | [`index.ts`](index.ts) | a file |  |
 | [`mcp.ts`](mcp.ts) | a file |  |
 | [`sessions.ts`](sessions.ts) | a file |  |
