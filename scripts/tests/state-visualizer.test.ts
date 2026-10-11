@@ -21,6 +21,7 @@ import {
   describe as describeText,
   GENERATED_BY,
   prunableDashboards,
+  withoutLiveCounts,
 } from "../state-visualizer.ts";
 import { instanceRootFor, siteDirFor } from "../../schemas/cat-harness.ts";
 
@@ -556,5 +557,25 @@ describe("the e2e spec's copy of the marker agrees with the generator's — bean
   test("and the marker is really in the pages, so neither copy is hypothetical", () => {
     // Guards the case where both copies agree and both are wrong.
     expect(read("qa")).toContain(GENERATED_BY);
+  });
+});
+
+
+describe("--check masks the qa page's live counts and nothing else", () => {
+  test("two runs that counted differently compare equal", () => {
+    const a = `<h2 class="sv-h2">Families — 13, over 1152 document(s)</h2><section class="sv-item"><h2><code>kg-qa/v1</code><span class="sv-tag">545 files</span></h2><ul class="sv-counts"><li class="sv-count"><span class="sv-count-v">232</span><span class="sv-count-k">fail</span></li></ul></section><p class="sv-sub">0 document(s) carry no <code>$schema</code> (could not determine); 2 would not parse.</p>`;
+    const b = a.replace("13, over 1152", "13, over 1160").replace("545 files", "551 files").replace(">232<", ">240<").replace("2 would not parse", "3 would not parse");
+    expect(withoutLiveCounts(a)).toBe(withoutLiveCounts(b));
+  });
+
+  test("a renamed family, bucket or roll-up field still differs", () => {
+    const a = `<h2><code>kg-qa/v1</code><span class="sv-tag">545 files</span></h2><span class="sv-count-v">232</span><span class="sv-count-k">fail</span>`;
+    expect(withoutLiveCounts(a)).not.toBe(withoutLiveCounts(a.replace("kg-qa/v1", "kg-qa/v2")));
+    expect(withoutLiveCounts(a)).not.toBe(withoutLiveCounts(a.replace(">fail<", ">warn<")));
+  });
+
+  test("numbers outside those five places are compared as written", () => {
+    const a = `<p>Rolled up from <code>totals</code>.</p><span class="sv-tag">elsewhere</span> 0.85rem`;
+    expect(withoutLiveCounts(a)).toBe(a);
   });
 });

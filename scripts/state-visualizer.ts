@@ -450,6 +450,28 @@ export function prunableDashboards(site: string, wantedIds: readonly string[]): 
 }
 
 /**
+ * The qa dashboard with its LIVE COUNTS masked, for `--check` only.
+ *
+ * The qa page counts the QA corpus (`test/results/`), and CI builds that
+ * corpus afresh for every run (the QA working copy), so the committed counts
+ * are stale on any run that judged something new. Owner, 2026-10-10, on the
+ * same race in `docs:harness:check`: "regenerate at build". The docs-site
+ * build runs `state:visualizer`, so the published counts are this build's.
+ * What the check still holds the committed page to is everything else: the
+ * families, their names, their roll-up fields and every word around them.
+ * Only the numbers a run produces are masked: a bucket's value, a family's
+ * file count, the heading's two totals, and the two third-state counts.
+ */
+export function withoutLiveCounts(html: string): string {
+  return html
+    .replace(/(<span class="sv-count-v">)\d+(<\/span>)/g, "$1#$2")
+    .replace(/(<span class="sv-tag">)\d+( files?<\/span>)/g, "$1#$2")
+    .replace(/(Families — )\d+(, over )\d+( document\(s\))/g, "$1#$2#$3")
+    .replace(/(<p class="sv-sub">)\d+( document\(s\) carry no)/g, "$1#$2")
+    .replace(/(; )\d+( would not parse)/g, "$1#$2");
+}
+
+/**
  * One generated file, with the `--check` contract every generator here uses.
  *
  * THE NAVBAR IS APPLIED HERE, before the staleness comparison, because this is
@@ -468,7 +490,7 @@ function emit(path: string, content: string): void {
     if (!existsSync(path)) {
       console.error(`  ✗ ${rel} is missing`);
       stale++;
-    } else if (readFileSync(path, "utf-8") !== content) {
+    } else if (withoutLiveCounts(readFileSync(path, "utf-8")) !== withoutLiveCounts(content)) {
       console.error(`  ✗ ${rel} is stale`);
       stale++;
     }
