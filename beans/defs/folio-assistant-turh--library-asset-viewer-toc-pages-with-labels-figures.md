@@ -24,3 +24,6 @@ Run from who-iris's own repository (cat-harness mounted at `6c2d453`), all three
 - **Two pipeline defects found and fixed:** the OCR rung could never finish (the vector arms exit 2 with a recorded UNDETERMINED on a scan; the sequencer stopped) — fixed in `ingest-document` (branch `claude/ensure-software`, test watched); and two stale image verdicts (`img-p009-6/7`, duplicates of `img-p008-2/3`) — removed in who-iris `06f2b79`.
 - **Staged and promotable:** section ids identical in all three (summaries and verdicts keyed on them survive); the two bogus inferred contents lists (the manual's 41 "entries", all on page 2) are gone.
 - **Not committed:** promotion regenerates the JSON-LD from inside the mount, which drops every block's `@type` — bean `j3ls`. Re-run promotion once that is fixed; the staging is reproducible with the commands above.
+
+## 2026-10-11 — the j3ls blocker is lifted (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
+who-iris#43 mounts folio-assistant-sci, and with it `gen-library-jsonld` from who-iris's repository writes the committed JSON-LD exactly (813 nodes up to date). Promotion no longer drops the `@type`s, so the staged re-ingest can be re-run and promoted from a checkout named `who-iris`.

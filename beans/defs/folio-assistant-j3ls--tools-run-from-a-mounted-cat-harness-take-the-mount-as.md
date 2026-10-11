@@ -33,3 +33,12 @@ split; this is the same cause seen from the other side, and it is live today.
       instance's `needs`, so `ingest --promote` from who-iris's repo writes the
       same JSON-LD as the aggregate checkout did (diff = 0 on the three entries)
 - [ ] a test that runs each tool from a fixture checkout whose harness is a mount
+
+## 2026-10-11 — the @type regression was bzwk, not the root (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
+- Measured on who-iris main.
+  - With folio-assistant-sci unmounted, `gen-library-jsonld --check` is stale, and output has no `@type` and no core namespace.
+  - With sci mounted, all 813 nodes are up to date (diff = 0 against the committed JSON-LD).
+- `typesForKind` reads the discovered block kinds. Core's kinds need sci's `paper` adapter (bean bzwk), so nothing is discovered without it.
+- who-iris#43 (merged, 6b50625) mounts sci at 5bc2c90.
+- So done-when 2 holds for who-iris, through the mount rather than through `needs`. The real fix is still bzwk.
+- New finding: the generator names the instance after the checkout DIRECTORY (`…/jsonld/<dir>/…` in every derivedFrom). In a clone not named `who-iris`, all 813 nodes change. That is the same resolver defect as done-when 1.
