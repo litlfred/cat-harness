@@ -15,7 +15,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import { DECLARATION_SUFFIX, resolveDirectories } from "../../schemas/cat-harness.ts";
+import { DECLARATION_SUFFIX, materialiseDirectories, resolveDirectories } from "../../schemas/cat-harness.ts";
 
 const made: string[] = [];
 afterEach(() => {
@@ -52,6 +52,16 @@ describe("a repository-scoped entry's from-within declarations", () => {
     const defs = resolveDirectories([{ name: "inst", root: inst, own: true }]).find((d) => d.id === "defs");
     expect(defs?.declaredBy).toBe("inst");
     expect(defs?.path).toBe("beans/defs/");
+  });
+  test("inherit the parent's scope, so they materialise where the parent's content is", () => {
+    const { repoRoot, inst } = checkout({ rootDeclares: false });
+    const dirs = resolveDirectories([{ name: "inst", root: inst, own: true }]);
+    const defs = dirs.find((d) => d.id === "defs");
+    expect(defs?.scope).toBe("repository");
+    expect(defs?.absPath).toBe(join(repoRoot, "beans", "defs"));
+    // Before the fix `defs` carried no scope, so this resolved it against the
+    // instance and refused: an empty inst/beans/defs beside the real one.
+    expect(() => materialiseDirectories(dirs, inst, { dryRun: true })).not.toThrow();
   });
   test("are NOT followed when the repository root is another, declared instance", () => {
     const { inst } = checkout({ rootDeclares: true });

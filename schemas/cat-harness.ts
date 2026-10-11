@@ -5051,6 +5051,13 @@ function promoteFromWithin(
       const fromDefault = d.declaredBy === "(default)" && rootLink !== undefined;
       const entry = {
         ...(nd as unknown as ContentDirectory),
+        // The child's path is composed onto the PARENT's, so it resolves
+        // against the parent's root: a `repository`-scoped `beans/` makes
+        // `beans/defs/` repository-scoped too. Without this, `defs` lost the
+        // scope and `materialiseDirectories` resolved it against the
+        // instance, so `harness:dirs:check` called the work plan an empty
+        // twin of itself (cat-harness/beans/defs beside the real beans/defs).
+        ...(nd.scope === undefined && d.scope !== undefined ? { scope: d.scope } : {}),
         path: `${d.path.replace(/\/+$/, "")}/${sub}/`,
         declaredBy: fromDefault ? rootLink.name : d.declaredBy,
         absPath: join(d.absPath, sub),
