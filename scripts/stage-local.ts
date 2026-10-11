@@ -8,19 +8,18 @@
  * @covers none — a PUBLISHER, not an audit: it builds and deploys one preview and judges nothing
  *
  * ```sh
- * bun run cat-harness-tools/scripts/stage-local.ts --repo ../smart-ra [--branch B] [--plan | --dry-run | --artifact DIR]
+ * bun run cat-harness/scripts/stage-local.ts --repo ../<folio> [--branch B] [--plan | --dry-run | --artifact DIR]
  * ```
  *
  * ## One command, every agent-run publish (owner, 2026-10-10)
  *
- * *"isnt this what is happening with smart-immz, smart-trust? i want one
- * consolidated worfklow."* smart-ra, smart-immunizations and smart-trust are
- * agent-run: their publish workflows are dispatch-only and are documentation
+ * The owner asked for one consolidated workflow for every agent-run
+ * repository, folio and IG alike: their publish workflows are dispatch-only and are documentation
  * of what this path must match, never something an agent dispatches. So:
  *
  * - **which publisher** is read from the repository's own workflow files
  *   ({@link detectPublisher}): a caller of `folio-staging.yml` is a folio, a
- *   caller of smart-base's `fhirbuild.yml`/`ghbuild.yml` an IG
+ *   caller of the IG base layer's `fhirbuild.yml`/`ghbuild.yml` an IG
  *   (`stage-local-ig.ts`);
  * - **main site or preview** follows the branch ({@link chooseTarget}): the
  *   default branch publishes the main site at the root as `publish-main`
@@ -325,12 +324,12 @@ function run(cwd: string, cmd: string, args: string[], env: NodeJS.ProcessEnv = 
 }
 
 /**
- * Where this platform's pin keeps a script: `cat-harness-tools/scripts/` since
- * the 70lx split, `cat-harness/scripts/` before it. The folio's own build
- * command makes the same fallback, so a folio pinned either side of the split
- * publishes.
+ * Where this platform's pin keeps a script. On this pre-70lx pin that is
+ * `cat-harness/scripts/` alone; after the 70lx split the tools layer's copy
+ * of this file looks in its own scripts directory first. Naming that layer
+ * here would point cat-harness at an instance above it (check:reference-direction).
  */
-export const SCRIPT_HOMES = ["cat-harness-tools/scripts", "cat-harness/scripts"] as const;
+export const SCRIPT_HOMES = ["cat-harness/scripts"] as const;
 
 export function platformScript(platform: string, name: string): string {
   for (const h of SCRIPT_HOMES) {
@@ -796,7 +795,7 @@ async function stageIg(a: IgRun): Promise<StageResult> {
 const USAGE = `usage: stage-local.ts [--repo DIR] [--branch B] [--base B] [--run-url URL] [--main] [--plan | --dry-run | --artifact DIR] [--workflow-source DIR] [--publisher folio|ig]
 
   One command for every agent-run publish: a folio (its workflow calls ${FOLIO_WORKFLOW}) or an
-  IG (it calls smart-base's ${IG_WORKFLOWS.join(" or ")}), preview or main site. The default
+  IG (it calls the IG base layer's ${IG_WORKFLOWS.join(" or ")}), preview or main site. The default
   branch publishes the main site; any other branch a preview.
 
   --plan             print what would be built and where, and stop

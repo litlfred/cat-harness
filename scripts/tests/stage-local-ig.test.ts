@@ -194,12 +194,10 @@ describe("stage-local: main site or preview", () => {
     expect(previewCommitMessage("feat-x", "abc123", "u")[0]).toBe("staging(feat-x): from abc123");
   });
 
-  test("a platform script is found either side of the 70lx split", () => {
+  test("a platform script is found where this pin keeps it", () => {
     const p = tmp("stage-local-platform-");
     put(p, "cat-harness/scripts/render-log.ts");
-    put(p, "cat-harness-tools/scripts/publish-main-site.ts");
     expect(platformScript(p, "render-log.ts")).toBe(join(p, "cat-harness/scripts/render-log.ts"));
-    expect(platformScript(p, "publish-main-site.ts")).toBe(join(p, "cat-harness-tools/scripts/publish-main-site.ts"));
     expect(() => platformScript(p, "nothing.ts")).toThrow(/in none of/);
   });
 });

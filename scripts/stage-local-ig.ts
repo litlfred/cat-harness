@@ -32,7 +32,7 @@
  *
  * ## `fhirbuild.yml` builds nothing on Pages
  *
- * smart-base's `fhirbuild.yml` posts the commit to build.fhir.org's
+ * The IG base layer's `fhirbuild.yml` posts the commit to build.fhir.org's
  * auto-build trigger and nothing else. The Pages build its callers' headers
  * describe ("publish default branches to /, other branches
  * branches/<branch>") is its sibling `ghbuild.yml`, which upstream callers
@@ -50,7 +50,7 @@ import { parse as parseYaml } from "yaml";
 
 /** The reusable workflow a folio calls. */
 export const FOLIO_WORKFLOW = "folio-staging.yml";
-/** The reusable workflows an IG calls (smart-base's). */
+/** The reusable workflows an IG calls (the IG base layer's). */
 export const IG_WORKFLOWS = ["fhirbuild.yml", "ghbuild.yml"] as const;
 /** Where an IG workflow with no deploy step finds its Pages build: the sibling beside it. */
 export const PAGES_SIBLING = "ghbuild.yml";
