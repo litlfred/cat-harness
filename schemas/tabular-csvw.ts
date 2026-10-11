@@ -192,12 +192,13 @@ export const CsvwTableSchema = z
      */
     "fac:preamble": z.array(z.object({ key: z.string().min(1), value: z.string() })).optional(),
     /**
-     * A cell value meaning "any value matches" — a decision table's
-     * don't-care, `–` in the WHO DAKs. It is a rule, not data: it is not
-     * evidence for a column's datatype, and it is not CSVW `null` (absent),
-     * which would read a don't-care as a missing value.
+     * The cell values meaning "any value matches" — a decision table's
+     * don't-care. A list: the WHO IMMZ workbook writes `–` and `-`, and 18 of
+     * its 86 decision tables use both. A wildcard is a rule, not data: it is
+     * not evidence for a column's datatype, and it is not CSVW `null`
+     * (absent), which would read a don't-care as a missing value.
      */
-    "fac:wildcard": z.string().min(1).optional(),
+    "fac:wildcard": z.array(z.string().min(1)).min(1).optional(),
     /** Merged cell ranges inside the table, A1 notation, e.g. `K8:K25`. */
     "fac:merged": z.array(z.string().regex(/^[A-Z]+[1-9]\d*:[A-Z]+[1-9]\d*$/)).optional(),
   })
