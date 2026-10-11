@@ -133,6 +133,12 @@ export const CsvwColumnSchema = z.object({
   /** A CSVW datatype name. `any` is CSVW's own top type. */
   datatype: z.string().min(1),
   datatypeSource: z.enum(DETERMINATION),
+  /**
+   * The upper row of a two-row header: the label spanning this column, e.g. a
+   * decision table's `Inputs` or `Output`. Absent for a one-row header.
+   * CSVW has no column groups, so `toCsvw` drops it (bean folio-core-scn4).
+   */
+  "fac:group": z.string().min(1).optional(),
 }).refine((c) => c.datatypeSource !== "undetermined" || c.datatype === "any", {
   message: '`undetermined` datatype must be recorded as CSVW `any`, not guessed',
   path: ["datatype"],
@@ -177,6 +183,23 @@ export const CsvwTableSchema = z
     "fac:extent": ExtentSchema,
     /** Present iff no extractor produced this. */
     "fac:stub": TabularStubSchema.optional(),
+    /**
+     * Key/value rows ABOVE the header that describe the table rather than
+     * belong to it, in sheet order: a DAK decision table's `Decision ID`,
+     * `Business rule`, `Trigger`. Not CSVW `notes`, whose objects are JSON-LD
+     * annotations a standard reader interprets; these are the source's own
+     * labels, verbatim (bean folio-core-scn4).
+     */
+    "fac:preamble": z.array(z.object({ key: z.string().min(1), value: z.string() })).optional(),
+    /**
+     * A cell value meaning "any value matches" — a decision table's
+     * don't-care, `–` in the WHO DAKs. It is a rule, not data: it is not
+     * evidence for a column's datatype, and it is not CSVW `null` (absent),
+     * which would read a don't-care as a missing value.
+     */
+    "fac:wildcard": z.string().min(1).optional(),
+    /** Merged cell ranges inside the table, A1 notation, e.g. `K8:K25`. */
+    "fac:merged": z.array(z.string().regex(/^[A-Z]+[1-9]\d*:[A-Z]+[1-9]\d*$/)).optional(),
   })
   .refine((t) => !t["fac:stub"] || t.tableSchema.columns.length === 0, {
     message:
