@@ -400,6 +400,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
           { name: "home", schema: t("RepoPath"), required: false, arg: { flag: "--home" }, description: "A page that becomes the site's index.md." },
           { name: "pre", schema: t("ScriptName"), required: false, arg: { flag: "--pre" }, description: "A package script to run in the checkout first, as `bun run <name>` (repeatable): the instance's own gates. Any non-zero exit stops the build." },
           { name: "sourceStep", schema: t("ScriptName"), required: false, arg: { flag: "--source-step" }, description: "A package script that writes into the site source, run as `bun run <name> <site source>` (repeatable)." },
+          { name: "siteStep", schema: t("ScriptName"), required: false, arg: { flag: "--site-step" }, description: "A package script that writes finished pages into the BUILT site, run as `bun run <name> <built site>` after Jekyll (repeatable): Jekyll drops `_`-prefixed directories, so a generator whose pages sit under one runs here." },
           { name: "staging", schema: t("Branch"), required: false, arg: { flag: "--staging" }, description: "Build (and with --publish, publish) a preview of this branch at STAGING/<branch>/." },
           { name: "noMount", schema: t("Flag"), required: false, arg: { flag: "--no-mount" }, description: "Use the mounts already on disk." },
           { name: "publish", schema: t("Flag"), required: false, arg: { flag: "--publish" }, description: "Publish after every check passes; needs --remote." },
