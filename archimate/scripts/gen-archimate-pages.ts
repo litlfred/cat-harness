@@ -5,7 +5,6 @@
  * view as SVG from the model's own diagram.
  *
  * @module cat-harness/archimate/scripts/gen-archimate-pages
- * @conformsTo opengroup-archimate-3.0
  * @covers archimate
  * @conformsTo opengroup-archimate-3.0
  *
