@@ -19,9 +19,9 @@
       "@type": "bootstrap:Asset",
       "name": "checkout-scripts",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/bb1cfcc1d12541cacb8e00ef0fa522b0f0df5ef1ad18aee8de611e57c4759869",
-        "bytes": 2245,
-        "sha256": "bb1cfcc1d12541cacb8e00ef0fa522b0f0df5ef1ad18aee8de611e57c4759869"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/3b5d63677a175172944074c10f182d118fcba674a35a48c80bf3e7c4c5ec8b24",
+        "bytes": 3526,
+        "sha256": "3b5d63677a175172944074c10f182d118fcba674a35a48c80bf3e7c4c5ec8b24"
       },
       "title": "package.json — smart-base"
     },

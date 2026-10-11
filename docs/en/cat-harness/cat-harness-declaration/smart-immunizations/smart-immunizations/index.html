@@ -61,6 +61,21 @@ nav_exclude: true
 <dt>_avatar_comment</dt><dd>A syringe: plunger, barrel, needle. Moved here from cat-harness/schemas/avatars.ts, 2026-10-05 (bean sod4 #4): an instance declares its own mark.</dd>
 <dt>directories</dt><dd><pre>[
   {
+    &quot;id&quot;: &quot;smart-immunizations-fhir-ast&quot;,
+    &quot;path&quot;: &quot;fhir-ast/&quot;,
+    &quot;description&quot;: &quot;WHO SMART Immunizations&#39; IG Publisher AST, read from the branch family cat/fhir-harness/fhir-ast/ on the IG&#39;s own repository (litlfred/smart-immunizations), one branch per IG package id; this IG&#39;s member is cat/fhir-harness/fhir-ast/smart.who.int.immunizations. Restored by fhir-harness/scripts/ig-cache.sh, and built and seeded by this repository&#39;s folio-site workflow when it is missing or stale. Absent from the checkout by design, as smart-trust&#39;s is.&quot;,
+    &quot;graphTypologies&quot;: [
+      &quot;ig-ast&quot;
+    ],
+    &quot;storage&quot;: {
+      &quot;branchPrefix&quot;: &quot;cat/fhir-harness/fhir-ast/&quot;,
+      &quot;keyedBy&quot;: &quot;family&quot;,
+      &quot;keyFrom&quot;: &quot;the IG&#39;s package id&quot;,
+      &quot;repository&quot;: &quot;litlfred/smart-immunizations&quot;,
+      &quot;tool&quot;: &quot;ig-cache&quot;
+    }
+  },
+  {
     &quot;id&quot;: &quot;smart-immunizations-artifact-index&quot;,
     &quot;path&quot;: &quot;fhir-artifact-index/&quot;,
     &quot;description&quot;: &quot;The reconstructed artefact index and the DAK API surface it points at. 40.6 MB of sidecars, materialised on the owner&#39;s explicit choice of &#39;everything&#39; over the 11.3 MB schema+jsonld subset — 133x smart-trust&#39;s 332 KB, because this IG publishes 198 schemas and 188 display files against smart-trust&#39;s 19 and 14. `index.json` carries a `provenance` block naming the published file every field came out of, and `dakUnbound` records any sidecar an enumeration listed that bound to no artefact.&quot;,
@@ -68,7 +83,9 @@ nav_exclude: true
       &quot;fhir-artifact-index&quot;
     ],
     &quot;readOnly&quot;: true,
-    &quot;readOnlyBasis&quot;: &quot;Copies of upstream IG artefacts, and GENERATED -- `ingest-ig-artifacts.ts` rewrites this index, a person does not edit it. Read-only is about the second: a hand edit here silently changes what this repository claims upstream published, and `check:materialized-fixity` is what catches one that happened.&quot;
+    &quot;readOnlyBasis&quot;: &quot;Copies of upstream IG artefacts, and GENERATED -- `ingest-ig-artifacts.ts` rewrites this index, a person does not edit it. Read-only is about the second: a hand edit here silently changes what this repository claims upstream published, and `check:materialized-fixity` is what catches one that happened.&quot;,
+    &quot;served&quot;: true,
+    &quot;_comment_served&quot;: &quot;Served (owner, 2026-10-11: artefact pages link JSON, JSON Schema and JSON-LD on THIS site, by the AST route). The IG site&#39;s artefact pages read ../fhir-artifact-index/, where the build also writes the DAK sidecars it generates from the AST (smart-base:dak-ast-sidecars) under sidecars/.&quot;
   },
   {
     &quot;id&quot;: &quot;smart-immunizations-docs&quot;,

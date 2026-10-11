@@ -106,6 +106,18 @@ package "cat-harness/qa" as pkg_cat_harness_qa <<qa>> {
     families [1] : Record<string, QaResultFamily>
     total [1] : number
   }
+  class "qa-script/v1" as cat_harness_qa_qa_script_v1_qa_script_v1 <<json: QaScriptSidecar>> #f4e6e6 {
+    $schema [1] : 'qa-script/v1'
+    criterion_id [1] : string
+    source_file [1] : string
+    script_hash [1] : string
+    script_commit_sha [1] : string
+    extra_inputs [0..*] : string[]
+    deps_hash [0..1] : string
+    last_run_at [1] : string
+    last_run_sha [1] : string
+    engine_version [0..1] : string
+  }
   class "translation-qa/v1" as cat_harness_qa_translation_qa_v1 <<ts: TranslationBlockQaReport>> #f4e6e6 {
     $schema [1] : 'translation-qa/v1'
     label [1] : string

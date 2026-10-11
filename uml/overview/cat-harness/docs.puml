@@ -43,6 +43,39 @@ package "cat-harness/docs" as pkg_cat_harness_docs <<docs>> {
     belowPx [1] : number
     byKind [0..1] : map<object>
   }
+  class "folio-qa-graph/v1" as cat_harness_docs_folio_qa_graph_v1 <<ts: QaGraphIndex>> #f4f4f1 {
+    $schema [1] : typeof QA_GRAPH_INDEX_SCHEMA
+    files [1] : number
+    families [1] : QaFamily[]
+    unclassified [1] : number
+    unreadable [1] : number
+  }
+  class "folio-translation-index/v1" as cat_harness_docs_folio_translation_index_v1 <<ts: TranslationIndex>> #f4f4f1 {
+    $schema [1] : string
+    sourceLocale [1] : string
+    locales [1] : string[]
+    pages [1] : Record<string, IndexedPage>
+  }
+  class "folio-slice-sqlite/v1" as cat_harness_docs_folio_slice_sqlite_v1 <<ts: SliceManifest>> #f4f4f1 {
+    $schema [1] : typeof MANIFEST_SCHEMA
+    slice [1] : string
+    file [1] : string
+    schemaVersion [1] : number
+    sha256 [1] : string
+    bytes [1] : number
+    contentDigest [1] : string
+    sqliteVersion [1] : string
+    pageSize [1] : number
+    fts5 [1] : { table: string; rowsOf: string; columns: string[]; contentless: true; detail: 'full' }
+    payloadPath [1] : string
+    payloads [1] : { mode: 'deploy' | 'published'; count: number; bytes: number }
+    rows [1] : Record<string, number>
+    duplicateIds [1] : string[]
+    findings [1] : string[]
+    overBudget [1] : boolean
+    search [1] : SliceSearch
+    source [1] : { graph: string; path: string }
+  }
   class "Item" as cat_harness_docs_folio_bean_index_v1_Item <<json: BeanIndexSchema>> #f4f4f1 {
     id [1] : string
     title [1] : string
@@ -370,8 +403,7 @@ package "cat-harness/docs" as pkg_cat_harness_docs <<docs>> {
     bytes [1] : integer
     mediaType [1] : string
   }
-  note "docs folio-qa-graph/v1: no node schema declared\n(content/pipeline/qa-graph-index.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_cat_harness_docs_docs_folio_qa_graph_v1
-  note "docs folio-translation-index/v1: no node schema declared\n(content/pipeline/translation-index.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_cat_harness_docs_docs_folio_translation_index_v1
+  note "docs folio-slice-index/v1: no node schema declared\n(scripts/gen-slice-sqlite.ts exports no SliceIndexSchema: could not determine)" as n_cat_harness_docs_docs_folio_slice_index_v1
 }
 
 cat_harness_docs_folio_todo_index_v1_Item *-- "0..*" cat_harness_docs_folio_todo_index_v1_Relation : relations

@@ -126,10 +126,10 @@ next to the site. The review page reads `../visual-diff.json`.
 - `cat-harness-tools/scripts/tests/block-screenshots.test.ts`: the pixel compare,
   the tolerance, a size change, block selection, and page paths (including
   `..` being refused).
-- `cat-harness-tools/test/block-screenshots.e2e.ts`: the whole Tool in Chromium.
+- the tools layer's `test/block-screenshots.e2e.ts`: the whole Tool in Chromium.
   It covers a recoloured block, an unchanged block, a new block, and a
   missing anchor.
-- `cat-harness-tools/test/review-visual.e2e.ts`: the renderer, keyboard only.
+- the tools layer's `test/review-visual.e2e.ts`: the renderer, keyboard only.
 {% endraw %}
 
 ## Processes that run this skill

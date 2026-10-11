@@ -159,6 +159,11 @@
       "name": "swimlane-glossary"
     },
     {
+      "@id": "cat-harness:graphTypology/test-plan",
+      "@type": "bootstrap:GraphTypology",
+      "name": "test-plan"
+    },
+    {
       "@id": "cat-harness:graphTypology/tool-release",
       "@type": "bootstrap:GraphTypology",
       "name": "tool-release"
@@ -302,6 +307,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#actor/content-reviewer",
       "@type": "bootstrap:Actor",
       "title": "Content Reviewer"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#actor/crdm-detect-signals",
+      "@type": "bootstrap:Actor",
+      "title": "crdm-detect phrase signals"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#actor/deep-researcher",
@@ -707,6 +717,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/swimlane-glossary",
       "@type": "bootstrap:Subgraph",
       "name": "swimlane-glossary"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/test-plans",
+      "@type": "bootstrap:Subgraph",
+      "name": "test-plans"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/todos",
@@ -2222,6 +2237,18 @@
       "title": "beans, by hand"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/bpmn-checklist",
+      "@type": "cat-harness:Tool",
+      "name": "bpmn-checklist",
+      "title": "BPMN checklist projection"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/bpmn-engine",
+      "@type": "cat-harness:Tool",
+      "name": "bpmn-engine",
+      "title": "BPMN workflow engine"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/bpmn-render",
       "@type": "cat-harness:Tool",
       "name": "bpmn-render",
@@ -2582,6 +2609,18 @@
       "title": "Namespace vocabulary"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/openapi-ingest-rendered",
+      "@type": "cat-harness:Tool",
+      "name": "openapi-ingest-rendered",
+      "title": "OpenAPI ingest from a published spec"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/openapi-ingest-source",
+      "@type": "cat-harness:Tool",
+      "name": "openapi-ingest-source",
+      "title": "OpenAPI ingest from source"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/pack-tarball",
       "@type": "cat-harness:Tool",
       "name": "pack-tarball",
@@ -2750,6 +2789,12 @@
       "title": "Schemas viewer"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/secrets-check",
+      "@type": "cat-harness:Tool",
+      "name": "secrets-check",
+      "title": "Check declared credential needs against workflow use and expiry, by name"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/security-gate",
       "@type": "cat-harness:Tool",
       "name": "security-gate",
@@ -2850,18 +2895,6 @@
       "@type": "cat-harness:Tool",
       "name": "subgraph-resolve",
       "title": "Resolve a declared subgraph's content source"
-    },
-    {
-      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/tabular-csv",
-      "@type": "cat-harness:Tool",
-      "name": "tabular-csv",
-      "title": "CSV tabular metadata (STUB)"
-    },
-    {
-      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/tabular-xlsx",
-      "@type": "cat-harness:Tool",
-      "name": "tabular-xlsx",
-      "title": "Spreadsheet tabular metadata (STUB)"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#tool/tex-snippet-validate",

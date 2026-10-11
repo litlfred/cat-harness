@@ -76,9 +76,9 @@
       "instructionsPath": "skills/kg/graph-management/graph-detanglement.md",
       "name": "graph-detanglement",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f2c944139709d1e666ffb9a299bb681c1d1eb3747cb9fd5abce64e332e5f2569",
-        "bytes": 17978,
-        "sha256": "f2c944139709d1e666ffb9a299bb681c1d1eb3747cb9fd5abce64e332e5f2569"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d26eae9bdb7fd4f218c0cc9fb0b9e366e0fca636d88e11ebeec51a613279b1af",
+        "bytes": 17960,
+        "sha256": "d26eae9bdb7fd4f218c0cc9fb0b9e366e0fca636d88e11ebeec51a613279b1af"
       },
       "title": "Graph detanglement — the practice, not the migration"
     },
@@ -95,9 +95,9 @@
       "instructionsPath": "skills/kg/graph-management/graph-rendering.md",
       "name": "graph-rendering",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/25bb50ee4fb2c4577b4f2219f8be1c72c1a97a439845e5f5b57a1a94b99021ee",
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/70a6f13b77e79286ba9cc8661fbc96911591908ae68efc3d09b141cbb207a8c1",
         "bytes": 12138,
-        "sha256": "25bb50ee4fb2c4577b4f2219f8be1c72c1a97a439845e5f5b57a1a94b99021ee"
+        "sha256": "70a6f13b77e79286ba9cc8661fbc96911591908ae68efc3d09b141cbb207a8c1"
       },
       "title": "Graph rendering: one set of rules for every drawn graph"
     },
@@ -110,13 +110,13 @@
       "hasInstructions": true,
       "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/graph-management",
       "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-      "instructionLines": 452,
+      "instructionLines": 453,
       "instructionsPath": "skills/kg/graph-management/kg-separation.md",
       "name": "kg-separation",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d6ee2ce3a5aea94811eb74ad89348318a4943ee27045d281ca807b3b5d529d04",
-        "bytes": 40120,
-        "sha256": "d6ee2ce3a5aea94811eb74ad89348318a4943ee27045d281ca807b3b5d529d04"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2ca44d5fead81d3e0f4550b998c886939243cb99328e0d3b366a5666efaf100f",
+        "bytes": 40152,
+        "sha256": "2ca44d5fead81d3e0f4550b998c886939243cb99328e0d3b366a5666efaf100f"
       },
       "title": "Knowledge Graph separation — the method"
     },

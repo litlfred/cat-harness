@@ -57,9 +57,9 @@
       "@type": "bootstrap:Skill",
       "name": "deployment-awareness",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5421413edd969a64a307f4cabe693235ee9508dbb3e32b9dfd876e023dbed95e",
-        "bytes": 9621,
-        "sha256": "5421413edd969a64a307f4cabe693235ee9508dbb3e32b9dfd876e023dbed95e"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2e7f53b3f8809a5e0f5fd557b5bc243f8dc6584a67ac8fced1b4d043a3933546",
+        "bytes": 9630,
+        "sha256": "2e7f53b3f8809a5e0f5fd557b5bc243f8dc6584a67ac8fced1b4d043a3933546"
       },
       "title": "Deployment awareness — UI surfaces, host constraints, and chat degradation"
     },

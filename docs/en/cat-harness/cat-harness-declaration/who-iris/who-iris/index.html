@@ -245,7 +245,13 @@ nav_exclude: true
     &quot;description&quot;: &quot;Repository health reports for THIS repository: the one `health-report/v1` document `bun run cat-harness-tools/test/health/run.ts --instance &lt;this instance&gt;` writes. Each repository the separation made is its own clone, with its own size, publish branch, branches and stores, so each carries its own report (owner, 2026-10-10: \&quot;All repos need health check\&quot;). The graph typology is cat-harness&#39;s; its `health` entry says what separates a health report (about the repository) from a `qa` verdict (about an artefact).&quot;,
     &quot;graphTypologies&quot;: [
       &quot;health&quot;
-    ]
+    ],
+    &quot;_source_comment&quot;: &quot;MOUNTED, owner 2026-10-11 (session_01UC1NuEuSy1MBNpEhnDuiGj, 05:58:12Z: \&quot;move health to state branch now\&quot;). The report is generated state, not reviewed content, so it is kept on its own per-graph branch (owner, 2026-10-03, bean laqs) and mounted at this path by `bun run cat state:mount`; main dropped it in the same commit that declared this source, because `mountTip` refuses a path the checkout still tracks.&quot;,
+    &quot;source&quot;: {
+      &quot;kind&quot;: &quot;branch&quot;,
+      &quot;branch&quot;: &quot;cat/who-iris/health&quot;,
+      &quot;keyedBy&quot;: &quot;tip&quot;
+    }
   }
 ]</pre></dd>
 <dt>_visualisers_comment</dt><dd>THE VISUALISERS THIS HARNESS DECLARES, at its own level (owner, 2026-10-09: &quot;I still want the harness to be where specific visualizers/pages are declared for the harness at the level&quot;). Each is published at &lt;base&gt;/who-iris/&lt;id&gt;/, computed by visualiserRoute from this entry and nothing else.</dd>

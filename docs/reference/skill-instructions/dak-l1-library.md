@@ -155,7 +155,9 @@ item. The PDFs themselves are pinned by sha256 and not committed.
   emits the three the ingest finds and names the other six in the
   publication's note.
 - **Recommendations** in an L1 source are `extract-smart-kg-l1.ts`'s, which
-  still writes L1 1.0.
+  still writes L1 1.0, and finds only printed labels. For a source with none,
+  and for each recommendation's scenario (persona, process, user story), see
+  [`recommendation-extraction`](recommendation-extraction.md).
 - **The position papers behind a summary table.** (29) in the immunizations
   DAK is the routine-immunization summary tables, which cite the WHO vaccine
   position papers; following them is a fetch per paper, not yet automated.

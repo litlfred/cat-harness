@@ -98,6 +98,12 @@ package "folio-assistant-sci/library" as pkg_folio_assistant_sci_library <<libra
     images [1] : object[] | null
     undetermined_reason [0..1] : string
   }
+  class "folio-image-verdicts/v1" as folio_assistant_sci_library_folio_image_verdicts_v1 <<ts: VerdictFile>> #f4f4f1 {
+    inspected_by [1] : unknown
+    inspected_at [1] : string
+    attribution [0..1] : Record<string, { inspected_by: unknown; inspected_at: string }>
+    verdicts [1] : Record<string, Record<string, Verdict>>
+  }
   class "folio-vector-labels/v1" as folio_assistant_sci_library_folio_vector_labels_v1_folio_vector_labels_v1 <<json: VectorLabelsSidecarSchema>> #f4f4f1 {
     $schema [1] : 'folio-vector-labels/v1'
     doc_id [1] : string
@@ -116,7 +122,6 @@ package "folio-assistant-sci/library" as pkg_folio_assistant_sci_library <<libra
     document [0..*] : Document[]
     sections [1] : map<object[]>
   }
-  note "library folio-image-verdicts/v1: no node schema declared\n(scripts/apply-image-verdicts.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_folio_assistant_sci_library_library_folio_image_verdicts_v1
 }
 package "folio-assistant-sci/sci-methodologies" as pkg_folio_assistant_sci_sci_methodologies <<methodology>> {
   note "methodology: no node schema declared\n(no validator registered: could not determine)" as n_folio_assistant_sci_sci_methodologies_methodology
@@ -208,6 +213,9 @@ package "folio-assistant-sci/sci-adapters" as pkg_folio_assistant_sci_sci_adapte
 }
 package "folio-assistant-sci/sci-scripts" as pkg_folio_assistant_sci_sci_scripts <<code>> {
   note "code: no node schema declared\n(no validator registered: could not determine)" as n_folio_assistant_sci_sci_scripts_code
+}
+package "folio-assistant-sci/sci-lean" as pkg_folio_assistant_sci_sci_lean <<lean>> {
+  note "lean: no node schema declared\n(no validator registered: could not determine)" as n_folio_assistant_sci_sci_lean_lean
 }
 package "folio-assistant-sci/sci-tools" as pkg_folio_assistant_sci_sci_tools <<tools>> {
   class "Remedy" as folio_assistant_sci_sci_tools_Remedy <<json: ToolDefinitionSchema>> #eee9f5 {
@@ -366,7 +374,7 @@ folio_assistant_sci_voices_VoiceProfile *-- "1..*" folio_assistant_sci_voices_So
 folio_assistant_sci_voices_Rule *-- "0..*" folio_assistant_sci_voices_Pattern : patterns
 folio_assistant_sci_voices_Rule *-- "0..*" folio_assistant_sci_voices_Terminology : terminology
 folio_assistant_sci_voices_VoiceProfile *-- "1..*" folio_assistant_sci_voices_Rule : rules
-' grid: portrait, 4 column(s) — pkg_folio_assistant_sci_folio_assistant_sci_qa_checkers pkg_folio_assistant_sci_folio_assistant_sci_pipeline_plugins pkg_folio_assistant_sci_folio_assistant_sci_translations pkg_folio_assistant_sci_folio_assistant_sci_block_typologies pkg_folio_assistant_sci_folio_assistant_sci_content_adapters pkg_folio_assistant_sci_folio_assistant_sci_typologies pkg_folio_assistant_sci_library pkg_folio_assistant_sci_sci_methodologies pkg_folio_assistant_sci_skills pkg_folio_assistant_sci_sci_adapters pkg_folio_assistant_sci_sci_scripts pkg_folio_assistant_sci_sci_tools pkg_folio_assistant_sci_sci_sources pkg_folio_assistant_sci_sci_processes pkg_folio_assistant_sci_qa pkg_folio_assistant_sci_attestations pkg_folio_assistant_sci_voices pkg_folio_assistant_sci_lean_skills pkg_folio_assistant_sci_data_skills
+' grid: portrait, 4 column(s) — pkg_folio_assistant_sci_folio_assistant_sci_qa_checkers pkg_folio_assistant_sci_folio_assistant_sci_pipeline_plugins pkg_folio_assistant_sci_folio_assistant_sci_translations pkg_folio_assistant_sci_folio_assistant_sci_block_typologies pkg_folio_assistant_sci_folio_assistant_sci_content_adapters pkg_folio_assistant_sci_folio_assistant_sci_typologies pkg_folio_assistant_sci_library pkg_folio_assistant_sci_sci_methodologies pkg_folio_assistant_sci_skills pkg_folio_assistant_sci_sci_adapters pkg_folio_assistant_sci_sci_scripts pkg_folio_assistant_sci_sci_lean pkg_folio_assistant_sci_sci_tools pkg_folio_assistant_sci_sci_sources pkg_folio_assistant_sci_sci_processes pkg_folio_assistant_sci_qa pkg_folio_assistant_sci_attestations pkg_folio_assistant_sci_voices pkg_folio_assistant_sci_lean_skills pkg_folio_assistant_sci_data_skills
 pkg_folio_assistant_sci_folio_assistant_sci_qa_checkers -[hidden]down- pkg_folio_assistant_sci_folio_assistant_sci_content_adapters
 pkg_folio_assistant_sci_folio_assistant_sci_pipeline_plugins -[hidden]down- pkg_folio_assistant_sci_folio_assistant_sci_typologies
 pkg_folio_assistant_sci_folio_assistant_sci_translations -[hidden]down- pkg_folio_assistant_sci_library
@@ -374,10 +382,11 @@ pkg_folio_assistant_sci_folio_assistant_sci_block_typologies -[hidden]down- pkg_
 pkg_folio_assistant_sci_folio_assistant_sci_content_adapters -[hidden]down- pkg_folio_assistant_sci_skills
 pkg_folio_assistant_sci_folio_assistant_sci_typologies -[hidden]down- pkg_folio_assistant_sci_sci_adapters
 pkg_folio_assistant_sci_library -[hidden]down- pkg_folio_assistant_sci_sci_scripts
-pkg_folio_assistant_sci_sci_methodologies -[hidden]down- pkg_folio_assistant_sci_sci_tools
-pkg_folio_assistant_sci_skills -[hidden]down- pkg_folio_assistant_sci_sci_sources
-pkg_folio_assistant_sci_sci_adapters -[hidden]down- pkg_folio_assistant_sci_sci_processes
-pkg_folio_assistant_sci_sci_scripts -[hidden]down- pkg_folio_assistant_sci_qa
+pkg_folio_assistant_sci_sci_methodologies -[hidden]down- pkg_folio_assistant_sci_sci_lean
+pkg_folio_assistant_sci_skills -[hidden]down- pkg_folio_assistant_sci_sci_tools
+pkg_folio_assistant_sci_sci_adapters -[hidden]down- pkg_folio_assistant_sci_sci_sources
+pkg_folio_assistant_sci_sci_scripts -[hidden]down- pkg_folio_assistant_sci_sci_processes
+pkg_folio_assistant_sci_sci_lean -[hidden]down- pkg_folio_assistant_sci_qa
 pkg_folio_assistant_sci_sci_tools -[hidden]down- pkg_folio_assistant_sci_attestations
 pkg_folio_assistant_sci_sci_sources -[hidden]down- pkg_folio_assistant_sci_voices
 pkg_folio_assistant_sci_sci_processes -[hidden]down- pkg_folio_assistant_sci_lean_skills

@@ -13,16 +13,16 @@ permalink: /folio-assistant-core/glossary/schema-fields/m-r/
 
 Candidate terms extracted from every schema field with a doc comment: `<Declaration>.<field>` as the label, the comment's first paragraph as the definition. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2067 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 167 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2083 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 167 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
 
 One of 4 pages of this type, split by the first letter of the label: <a href="{{ '/folio-assistant-core/glossary/schema-fields/' | relative_url }}">all parts</a>.
 
-**Size:** this page holds 631 terms and is 347 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 643 terms and is 354 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>2362</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2362</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>2378</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2378</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -32,7 +32,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">631</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">643</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-M">M</a> <a href="#letter-N">N</a> <a href="#letter-O">O</a> <a href="#letter-P">P</a> <a href="#letter-Q">Q</a> <a href="#letter-R">R</a></nav>
 
@@ -1180,6 +1180,20 @@ OpenApiConfigSchema.directory <span class="fa-gloss-status">candidate, extracted
 <p>The <code>&lt;instance&gt;.json</code> directory id of graph typology <code>openapi</code> the documents are ingested into.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/openapi/schemas/openapi.ts"><code>cat-harness/openapi/schemas/openapi.ts#OpenApiConfigSchema.directory</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--openapi.openapiconfigschema.documents" data-fa-state="extracted" data-fa-gloss="">
+OpenApiConfigSchema.documents <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Documents read from a repository (<code>openapi-ingest-source</code>).</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/openapi/schemas/openapi.ts"><code>cat-harness/openapi/schemas/openapi.ts#OpenApiConfigSchema.documents</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--openapi.openapiconfigschema.rendered" data-fa-state="extracted" data-fa-gloss="">
+OpenApiConfigSchema.rendered <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Documents read from a published spec URL (<code>openapi-ingest-rendered</code>).</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/openapi/schemas/openapi.ts"><code>cat-harness/openapi/schemas/openapi.ts#OpenApiConfigSchema.rendered</code></a></p>
+</dd>
 <dt id="cat-harness--kg-schema-fields--openapi.openapioperation.declaredid" data-fa-state="extracted" data-fa-gloss="">
 OpenApiOperation.declaredId <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1221,6 +1235,13 @@ OpenApiProvenanceSchema.operations <span class="fa-gloss-status">candidate, extr
 <dd>
 <p>How many operations it holds — every one of which gets a page.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/openapi/schemas/openapi.ts"><code>cat-harness/openapi/schemas/openapi.ts#OpenApiProvenanceSchema.operations</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--openapi.openapirenderedsourceschema.url" data-fa-state="extracted" data-fa-gloss="">
+OpenApiRenderedSourceSchema.url <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The published spec's URL: an OpenAPI 3 JSON document, served over https.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/openapi/schemas/openapi.ts"><code>cat-harness/openapi/schemas/openapi.ts#OpenApiRenderedSourceSchema.url</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--openapi.openapisourceschema.path" data-fa-state="extracted" data-fa-gloss="">
 OpenApiSourceSchema.path <span class="fa-gloss-status">candidate, extracted</span>
@@ -1436,6 +1457,48 @@ PackageManifest.python <span class="fa-gloss-status">candidate, extracted</span>
 <p>Python packages (installed via uv/pip).</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/assistant-package.ts"><code>cat-harness/schemas/assistant-package.ts#PackageManifest.python</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--health-report.pagesservingobservationschema.observedat" data-fa-state="extracted" data-fa-gloss="">
+PagesServingObservationSchema.observedAt <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>ISO 8601, when the CI job fetched the site.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/health-report.ts"><code>cat-harness/schemas/health-report.ts#PagesServingObservationSchema.observedAt</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--health-report.pagesservingobservationschema.run" data-fa-state="extracted" data-fa-gloss="">
+PagesServingObservationSchema.run <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The workflow run that made the observation, for a reader to open.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/health-report.ts"><code>cat-harness/schemas/health-report.ts#PagesServingObservationSchema.run</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--health-report.pagesservingobservationschema.site" data-fa-state="extracted" data-fa-gloss="">
+PagesServingObservationSchema.site <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The published site's root URL.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/health-report.ts"><code>cat-harness/schemas/health-report.ts#PagesServingObservationSchema.site</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--health-report.pagesservingurlschema.bytes" data-fa-state="extracted" data-fa-gloss="">
+PagesServingUrlSchema.bytes <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Bytes in the response body.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/health-report.ts"><code>cat-harness/schemas/health-report.ts#PagesServingUrlSchema.bytes</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--health-report.pagesservingurlschema.expectedpage" data-fa-state="extracted" data-fa-gloss="">
+PagesServingUrlSchema.expectedPage <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Whether the body is the page asked for, rather than Pages' own 404.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/health-report.ts"><code>cat-harness/schemas/health-report.ts#PagesServingUrlSchema.expectedPage</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--health-report.pagesservingurlschema.status" data-fa-state="extracted" data-fa-gloss="">
+PagesServingUrlSchema.status <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>HTTP status of the final response.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/health-report.ts"><code>cat-harness/schemas/health-report.ts#PagesServingUrlSchema.status</code></a></p>
+</dd>
 <dt id="cat-harness--kg-schema-fields--qa-attestations.pairattestationschema.by" data-fa-state="extracted" data-fa-gloss="">
 PairAttestationSchema.by <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1569,6 +1632,13 @@ PdfDiagnosticsSchema.figure_sequence_gaps <span class="fa-gloss-status">candidat
 <p>Numbers missing from a caption run, e.g. &quot;table 2.1&quot; beside a Table 2.2.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/pdf-structure.ts"><code>cat-harness/schemas/pdf-structure.ts#PdfDiagnosticsSchema.figure_sequence_gaps</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--pdf-structure.pdfdiagnosticsschema.latex_overlay" data-fa-state="extracted" data-fa-gloss="">
+PdfDiagnosticsSchema.latex_overlay <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>What <code>latex-math-overlay.py</code> did: the main <code>.tex</code> file it read, how many sections it found there and how many PDF sections took their text from it, the three gates it applied, and a per-section record of each match.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/pdf-structure.ts"><code>cat-harness/schemas/pdf-structure.ts#PdfDiagnosticsSchema.latex_overlay</code></a></p>
+</dd>
 <dt id="cat-harness--kg-schema-fields--pdf-structure.pdfdiagnosticsschema.page_label_conflicts" data-fa-state="extracted" data-fa-gloss="">
 PdfDiagnosticsSchema.page_label_conflicts <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1601,7 +1671,7 @@ PdfDiagnosticsSchema.toc_inferred_mean_confidence <span class="fa-gloss-status">
 PdfDiagnosticsSchema.toc_inferred_method <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Which inference produced an inferred TOC (issue #2302): a printed contents page, heading styles read from font metrics, or the text-pattern heuristic that OCR'd text falls back to.</p>
+<p>Which inference produced an inferred TOC (issue #2302): a printed contents page, heading styles read from font metrics, the text-pattern heuristic that OCR'd text falls back to, or <code>latex</code>: the <code>\section</code> commands of the paper's own LaTeX source, each placed on its PDF page (cat-harness-tools <code>_latex_headings.py</code>).</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/pdf-structure.ts"><code>cat-harness/schemas/pdf-structure.ts#PdfDiagnosticsSchema.toc_inferred_method</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--pdf-structure.pdfmetadataschema.title_correction" data-fa-state="extracted" data-fa-gloss="">
@@ -1645,6 +1715,20 @@ PdfSectionSchema.label_start <span class="fa-gloss-status">candidate, extracted<
 <dd>
 <p>Printed labels of page_start / page_end, where known (issue #2302).</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/pdf-structure.ts"><code>cat-harness/schemas/pdf-structure.ts#PdfSectionSchema.label_start</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--pdf-structure.pdfsourceschema.math_source" data-fa-state="extracted" data-fa-gloss="">
+PdfSourceSchema.math_source <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Where the entry's MATHEMATICS comes from, written by <code>latex-math-overlay.py</code>: <code>latex</code> when at least one section's text was replaced by the paper's own LaTeX, <code>text-layer</code> when the overlay ran and none passed its gates. Absent when the overlay never ran.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/pdf-structure.ts"><code>cat-harness/schemas/pdf-structure.ts#PdfSourceSchema.math_source</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--pdf-structure.pdfstructureschema.duplicate_of" data-fa-state="extracted" data-fa-gloss="">
+PdfStructureSchema.duplicate_of <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The library holds some works more than once (a preprint beside its published version, one PDF under two names). The duplicate copy names the entry to prefer in <code>duplicate_of</code> and says why in <code>duplicate_note</code>; the preferred entry lists its copies in <code>duplicate_copies</code>. Adjudicated in qou <code>docs/audits/library-duplicate-ledger.json</code>.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/pdf-structure.ts"><code>cat-harness/schemas/pdf-structure.ts#PdfStructureSchema.duplicate_of</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--pdf-structure.pdfstructureschema.figures" data-fa-state="extracted" data-fa-gloss="">
 PdfStructureSchema.figures <span class="fa-gloss-status">candidate, extracted</span>

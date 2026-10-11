@@ -284,6 +284,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [Related work: find it, sort it, ask](related-work-coordination.html) | `related-work-coordination` | — | Owner, 2026-09-23 (issue #1023): *"when CRDM is initiated/updated through human agent chat discussio |
 | [Rendered impact](rendered-impact.html) | `rendered-impact` | — | > Skill id: `rendered-impact` · Package: `sdlc-core` · Bean: `bnjs` · Epic: `q4jm` · Issue #971 |
 | [/rendered-verification](rendered-verification.html) | `rendered-verification` | — | [`continual-progress`](continual-progress.md) argues that **a human cannot |
+| [Secrets](secrets.html) | `secrets` | — | The design is [`docs/proposals/credentials-needs-and-supply.md`](../../proposals/credentials-needs-and-supply.html) |
 | [/session-intent](session-intent.html) | `session-intent` | — | A coordination failure mode recurs whenever agents have no durable |
 | [Specification and requirements management](specification-management.html) | `specification-management` | — | > Skill id: `specification-management` · Package: `sdlc-core` |
 | [Staging review](staging-review.html) | `staging-review` | — | > Skill id: `staging-review` · Package: `sdlc-core` |
@@ -535,6 +536,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | Skill | Id | Schema | Summary |
 |-------|----|--------|---------|
 | [Lean formal edges (elaborated)](lean-formal-edges.html) | `lean-formal-edges` | — | bun run folio-assistant-sci/content/pipeline/formal-edges.ts \ |
+| [Lean HTML docs](lean-html-docs.html) | `lean-html-docs` | — | A directory of graph typology `lean` holds a folio's Lean 4 formalisation: |
 
 ## Science layer: reference data (folio-assistant-sci)
 
@@ -552,6 +554,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [grade](grade.html) | `grade` | — | > Skill id: `grade` · Package: `authoring-who-smart-guidelines` · The grading |
 | [ig-artifact-ingestion](ig-artifact-ingestion.html) | `ig-artifact-ingestion` | — | > Skill id: `ig-artifact-ingestion` · Package: `authoring-who-smart-guidelines` · |
 | [l2-dak-authoring](l2-dak-authoring.html) | `l2-dak-authoring` | [schema](../skills/l2-dak-authoring.html) | > Skill id: `l2-dak-authoring` · Package: `authoring-who-smart-guidelines` · |
+| [recommendation-extraction](recommendation-extraction.html) | `recommendation-extraction` | — | > Skill id: `recommendation-extraction` · Package: `authoring-who-smart-guidelines` · |
 | [smart-base Toolchain](smart-base-tools.html) | `smart-base-tools` | — | > Skill id: `smart-base-tools` · Package: |
 | [smart-guideline-create](smart-guideline-create.html) | `smart-guideline-create` | — | > Skill id: `smart-guideline-create` · Package: `authoring-who-smart-guidelines` |
 | [smart-stack-layering](smart-stack-layering.html) | `smart-stack-layering` | — | > Skill id: `smart-stack-layering` · Package: `authoring-who-smart-guidelines` |

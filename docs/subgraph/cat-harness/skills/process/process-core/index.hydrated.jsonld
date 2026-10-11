@@ -35,9 +35,9 @@
       "instructionsPath": "skills/process/process-core/compiled-artefact-cache.md",
       "name": "compiled-artefact-cache",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/88a67ef7e23216011a80db3e82afd4759e468affe771964d0d0f1e8aa04bd807",
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ba49a832ade3c74b5ba643ee63bbb10f4973c654dbe7b8571836b1982af9b0b5",
         "bytes": 6257,
-        "sha256": "88a67ef7e23216011a80db3e82afd4759e468affe771964d0d0f1e8aa04bd807"
+        "sha256": "ba49a832ade3c74b5ba643ee63bbb10f4973c654dbe7b8571836b1982af9b0b5"
       },
       "title": "Compiled Artefact Cache"
     },
@@ -92,9 +92,9 @@
       "instructionsPath": "skills/process/process-core/role-model.md",
       "name": "role-model",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/da80ffd5ae067258f2ecfcf3355569f836003d61937b6f11a1c12184c13b9f01",
-        "bytes": 39887,
-        "sha256": "da80ffd5ae067258f2ecfcf3355569f836003d61937b6f11a1c12184c13b9f01"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/795d6d884f572f3ed967866ce9a27d70e13b727e64d83becbcbc5b6845e246c8",
+        "bytes": 39855,
+        "sha256": "795d6d884f572f3ed967866ce9a27d70e13b727e64d83becbcbc5b6845e246c8"
       },
       "title": "Roles are swimlanes"
     },

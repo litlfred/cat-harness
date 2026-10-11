@@ -97,9 +97,9 @@
           "instructionsPath": "skills/ui/theming/theme-artefacts.md",
           "name": "theme-artefacts",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f9bc3122f3049d488f915c05ff341833af428983e9d249083cbf3b417bd91b14",
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/23aa7d69c9c2f5da756207daa162a14508bdd6d2355e8f99fcbd3c3e23801800",
             "bytes": 11742,
-            "sha256": "f9bc3122f3049d488f915c05ff341833af428983e9d249083cbf3b417bd91b14"
+            "sha256": "23aa7d69c9c2f5da756207daa162a14508bdd6d2355e8f99fcbd3c3e23801800"
           },
           "title": "Per-artefact specialisation"
         },
@@ -312,9 +312,9 @@
           "instructionsPath": "skills/ui/ui-core/deployment-awareness.md",
           "name": "deployment-awareness",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5421413edd969a64a307f4cabe693235ee9508dbb3e32b9dfd876e023dbed95e",
-            "bytes": 9621,
-            "sha256": "5421413edd969a64a307f4cabe693235ee9508dbb3e32b9dfd876e023dbed95e"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2e7f53b3f8809a5e0f5fd557b5bc243f8dc6584a67ac8fced1b4d043a3933546",
+            "bytes": 9630,
+            "sha256": "2e7f53b3f8809a5e0f5fd557b5bc243f8dc6584a67ac8fced1b4d043a3933546"
           },
           "title": "Deployment awareness — UI surfaces, host constraints, and chat degradation"
         },

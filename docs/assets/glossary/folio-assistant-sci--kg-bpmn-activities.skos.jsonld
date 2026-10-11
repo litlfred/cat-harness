@@ -34,6 +34,46 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/ns#glossary/kg-bpmn-activities/process_leandocspublish.task_build",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Build the doc-gen4 render over the warm cache"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Tool `lean-html-docs` (`adapters/paper/lean/lean-docs-build.sh --lake-root <pkg> --lib <Lib>`). Refuses while another lake/lean process holds `.lake/`, refuses over a restored tree with no traces, checks or restores the warm cache, enables the sentinel-commented doc-gen4 require for this build only, then `lake -R -Kenv=dev build <Lib>:docs`. Output: `<pkg>/.lake/build/doc`."
+        }
+      ],
+      "skos:notation": "Task_Build",
+      "dcterms:source": "folio-assistant-sci/processes/content/lean-docs-publish.bpmn#Task_Build",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/ns#glossary/kg-bpmn-activities/process_leandocspublish.task_publish",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Stage the render under the site and rail every page"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Tool `lean-render-publish` (`adapters/paper/lean/lean-render.ts --docs <render> --site <site>`). Copies the render to `<site>/lean/` without Lake's bookkeeping, marks doc-gen4's iframe navbar and `find/` redirect rail-declined, adds the layout shim, optionally prunes to the folio's modules, then runs `rail-standalone-pages.ts --foreign-site` over the whole site and checks every staged page."
+        }
+      ],
+      "skos:notation": "Task_Publish",
+      "dcterms:source": "folio-assistant-sci/processes/content/lean-docs-publish.bpmn#Task_Publish",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/ns#glossary/kg-bpmn-activities/process_paperauthoring.task_authorblocks",
       "@type": "skos:Concept",
       "skos:inScheme": {

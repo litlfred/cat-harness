@@ -60,6 +60,12 @@ package "smart-base/library" as pkg_smart_base_library <<library>> {
     images [1] : object[] | null
     undetermined_reason [0..1] : string
   }
+  class "folio-image-verdicts/v1" as smart_base_library_folio_image_verdicts_v1 <<ts: VerdictFile>> #f4f4f1 {
+    inspected_by [1] : unknown
+    inspected_at [1] : string
+    attribution [0..1] : Record<string, { inspected_by: unknown; inspected_at: string }>
+    verdicts [1] : Record<string, Record<string, Verdict>>
+  }
   class "folio-vector-labels/v1" as smart_base_library_folio_vector_labels_v1_folio_vector_labels_v1 <<json: VectorLabelsSidecarSchema>> #f4f4f1 {
     $schema [1] : 'folio-vector-labels/v1'
     doc_id [1] : string
@@ -99,7 +105,6 @@ package "smart-base/library" as pkg_smart_base_library <<library>> {
     withheld [1] : object
     links [0..*] : object[]
   }
-  note "library folio-image-verdicts/v1: no node schema declared\n(scripts/apply-image-verdicts.ts does not exist under the instance root /tmp/claude-0/-home-user-folio-assistant/c33a3d90-e131-5892-be9f-a8b74b021eb6/scratchpad/fa8/cat-harness: could not determine)" as n_smart_base_library_library_folio_image_verdicts_v1
 }
 package "smart-base/methodologies" as pkg_smart_base_methodologies <<methodology>> {
   note "methodology: no node schema declared\n(no validator registered: could not determine)" as n_smart_base_methodologies_methodology
@@ -642,7 +647,7 @@ package "smart-base/smart-base-themes" as pkg_smart_base_smart_base_themes <<the
   }
 }
 package "smart-base/smart-base-docs" as pkg_smart_base_smart_base_docs <<docs, ig-pages>> {
-  note "docs: no node schema declared\n(no node here carries a $schema family docs names (14 named): could not determine)" as n_smart_base_smart_base_docs_docs
+  note "docs: no node schema declared\n(no node here carries a $schema family docs names (16 named): could not determine)" as n_smart_base_smart_base_docs_docs
   note "ig-pages: no node schema declared\n(no validator registered: could not determine)" as n_smart_base_smart_base_docs_ig_pages
 }
 package "smart-base/smart-base-document-kinds" as pkg_smart_base_smart_base_document_kinds <<document-kinds>> {
@@ -696,7 +701,7 @@ package "smart-base/smart-base-document-kinds" as pkg_smart_base_smart_base_docu
   }
 }
 package "smart-base/smart-base-findings" as pkg_smart_base_smart_base_findings <<docs>> {
-  note "docs: no node schema declared\n(no node here carries a $schema family docs names (14 named): could not determine)" as n_smart_base_smart_base_findings_docs
+  note "docs: no node schema declared\n(no node here carries a $schema family docs names (16 named): could not determine)" as n_smart_base_smart_base_findings_docs
 }
 package "smart-base/smart-base-external-schemas" as pkg_smart_base_smart_base_external_schemas <<external-schema>> {
   class "Term" as smart_base_smart_base_external_schemas_folio_external_schema_v1_Term <<json: ExternalSchemaSchema>> #e9edf3 {
