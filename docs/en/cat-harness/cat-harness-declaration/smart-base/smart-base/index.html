@@ -222,6 +222,22 @@ nav_exclude: true
     &quot;description&quot;: &quot;The import seam: `platform/index.ts` re-exports every platform symbol this instance uses, so re-pointing the platform is a one-file edit. It sat at `platform.ts` beside the declaration until the cutover (folio-assistant#2320, bean hupw, owner 2026-10-07: &#39;Forks declare it&#39;): a remote mount brings declared directories only, so a root file the mounted code imports never arrived. Declared, it travels with the code that needs it.&quot;
   },
   {
+    &quot;id&quot;: &quot;smart-base-typologies&quot;,
+    &quot;path&quot;: &quot;typologies/&quot;,
+    &quot;description&quot;: &quot;The graph typologies smart-base owns, one folio-graph-typology/v1 node per file (bean dmx1), as fhir-harness&#39;s typologies/ are. Today `dak-annex`: a DAK&#39;s web annexes beside an IG&#39;s artefact index, a kind of smart-base&#39;s own so the DAK formats are not listed on fhir-harness&#39;s `fhir-artifact-index`.&quot;,
+    &quot;graphTypologies&quot;: [
+      &quot;typologies&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;smart-base-validators&quot;,
+    &quot;path&quot;: &quot;validators/&quot;,
+    &quot;description&quot;: &quot;The validators smart-base&#39;s code provides, one folio-validator/v1 node each naming the graph typology and $schema family it checks, as fhir-harness&#39;s validators/ do (bean riit). Today the two families of the `dak-annex` kind (typologies/dak-annex.json): dak-data-dictionary/v1 and dak-swimlanes/v1 (schemas/dak-annexes.ts), unmapped until 2026-10-11 (check:kind-validators:require-all).&quot;,
+    &quot;graphTypologies&quot;: [
+      &quot;validators&quot;
+    ]
+  },
+  {
     &quot;id&quot;: &quot;smart-base-schemas&quot;,
     &quot;path&quot;: &quot;schemas/&quot;,
     &quot;graphTypologies&quot;: [
