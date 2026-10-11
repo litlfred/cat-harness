@@ -97,3 +97,13 @@ Still open:
 - smart-ra#39 (open): composite action `.github/actions/mount-layers`. qa-sweep-nightly, section-title-audit, public-comment and public-comment-check move onto it.
 - Left: staging.yml (agent-run) → build-instance-site. smart-ra has no package.json, so its build steps (build-document-site, public-comment-site, build-library-site, gen-node-kind-pages, archimate) need script names first. After that, remove the folio-assistant submodule.
 - Found: section-title-audit reports 0 titles on dpi-h-ra (its sections are SectionRefs with no inline title). This is pre-existing, and the workflow is dispatch-only.
+
+## 2026-10-11 — smart-ra fully on the mounts (no submodule)
+- smart-ra#39 (merged): every workflow uses `.github/actions/mount-layers`.
+- smart-ra#40 (merged): the site is built by `build-instance-site`, using package.json scripts and `--site-step site:node-kinds`. Result: 8778 pages, 0 unresolved links. staging.yml is removed.
+  - Repins: cat-harness-tools bbfc3c5 (#107: --site-step, the review page root link) and cat-harness e890428 (#133: the Tool's siteStep).
+  - Consent recorded: "repin as neede".
+- smart-ra#41 (merged): the folio-assistant submodule is removed.
+  - `.claude/hooks/session-start.sh` mounts from the lock when the mounts are absent.
+  - .mcp.json and dpi-h-ra.config.json point at the mount paths.
+- Still open: the first agent-run publish of smart-ra's root site and of its previews. The command is in AGENTS.md "The site", with `--publish --remote`.
