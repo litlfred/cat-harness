@@ -51,6 +51,28 @@ describe("siblingScopeFor — which directory a sibling is looked up in", () => 
     });
   });
 
+  test("the ROOT instance of a checkout never looks outside it (owner, 2026-10-11, bean 68k7)", () => {
+    // A checkout holding one instance at its root, cloned into a directory that
+    // ALSO holds an instance — the `/tmp` case. Its siblings are not out there.
+    withTree({ stray: { name: "stray", directories: [] }, repo: { name: "repo", directories: [] } }, (root) => {
+      const repo = join(root, "repo");
+      mkdirSync(join(repo, ".git"));
+      expect(siblingScopeFor(repo)).toBe(resolve(repo));
+      // ...and without its own `.git` the same directory is a nested leaf again.
+      rmSync(join(repo, ".git"), { recursive: true });
+      expect(siblingScopeFor(repo)).toBe(resolve(root));
+    });
+  });
+
+  test("a declared SUBMODULE with its own `.git` is still nested — it looks in its parent", () => {
+    withTree({ sub: { name: "sub", directories: [] }, other: { name: "other", directories: [] } }, (root) => {
+      mkdirSync(join(root, "sub", ".git"));
+      mkdirSync(join(root, ".git"));
+      writeFileSync(join(root, ".gitmodules"), '[submodule "sub"]\n\tpath = sub\n\turl = https://example.org/sub\n');
+      expect(siblingScopeFor(join(root, "sub"))).toBe(resolve(root));
+    });
+  });
+
   test("a LEAF instance resolves siblings one level up, as `repoRootFor` assumes", () => {
     withTree(
       { alpha: { name: "alpha", directories: [] }, beta: { name: "beta", directories: [] } },

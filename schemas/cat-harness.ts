@@ -3928,6 +3928,14 @@ export function siblingScopeFor(instanceRoot: string): string {
   for (const found of instanceRootsIn(abs)) {
     if (resolve(found) !== abs) return abs;
   }
+  // NEVER outside the checkout (owner ruling 2026-10-11, bean `68k7`): an
+  // instance that IS its own checkout — its own `.git`, not a declared
+  // submodule of its parent — is the root instance, and its parent is not a
+  // place to look for siblings. A checkout cloned straight into `/tmp` would
+  // otherwise treat every directory in `/tmp` as a candidate instance, which is
+  // how 163 malformed fixtures once failed two unrelated tests (`8zsb`).
+  // Nested instances, submodules and lock mounts (no `.git`) are unchanged.
+  if (isForeignCheckout(abs)) return abs;
   return repoRootFor(abs);
 }
 
