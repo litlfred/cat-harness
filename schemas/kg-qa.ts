@@ -1570,6 +1570,22 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
       "A verdict in a test report names the system under test as its reviewer — a system judging itself " +
       "(untainted-verification). The schema refuses it; this records it under its own name.",
   },
+  // The certification family (bean `zaui`, Done-when 2): until this, nothing
+  // judged `<attestations>/certification/**`, so audit:coverage could count the
+  // family only as typed. Implemented beside the four above, in
+  // `scripts/test-plan-audit.ts`.
+  {
+    id: "certification-resolves",
+    applies: ["graph"],
+    scope: "instance",
+    severity: "major",
+    summary:
+      "A filed certification does not parse as the `certification` family, records a decision other than " +
+      "`certified` (a refusal filed as a certification is the false green the test process exists to " +
+      "prevent), names a test plan no declared `test-plan` directory holds, or points at no evidence. " +
+      "Evidence that is not in this checkout — a report kept on `qa-reports` — is `unknown`, never a pass; " +
+      "no certification filed is `n/a`.",
+  },
   {
     id: "arrow-direction",
     applies: ["graph"],
