@@ -1,7 +1,7 @@
 ---
 # folio-assistant-kvd2
 title: 'RECOMMENDATION SCENARIO: every extracted L1 recommendation gets a user-scenario candidate (persona, process, domain), reusing existing vocabulary and warning when none fits'
-status: todo
+status: in-progress
 type: feature
 priority: high
 created_at: 2026-10-10T14:07:07Z
@@ -32,9 +32,14 @@ Stop at the first hit.
 - WARN: case management C01-C12, outbreak response, surveillance
 
 ## Done when
-- [ ] skill text in smart-base `dak-l1-library` (or a `recommendation-extraction` skill) holding the shape and the precedence
-- [ ] an output file per document beside the L1 graph, validated against the smart-kg L2 shape
+- [x] skill text in smart-base `dak-l1-library` (or a `recommendation-extraction` skill) holding the shape and the precedence
+- [x] an output file per document beside the L1 graph, validated against the smart-kg L2 shape
 - [ ] the measles position paper in smart-immunizations has a scenario candidate for each of its 75 recommendations, with warnings listed
 
 Related: 8pzh (L1 extraction from ingested PDFs), 55ao (recommendation block kind), and the ontologist, guideline-domain and process-catalogue beans filed the same day.
 Sibling beans: 4nfs (ontologist/terminologist), 398x (guideline domain), 2ipj (process catalogues), 96y4 (IMMZ BPMN), n3h9 (harness the smart-* repos).
+
+## 2026-10-11: smart-base#33 merged (71652941)
+- **Shipped:** the skill `recommendation-extraction`, `scripts/l1-recommendation-scenarios.ts` (with `--check`, 17 tests), and `scripts/l1-scenario-vocabulary.ts`.
+- **Measles run:** 75 candidates, 37 warnings. It is held as a smart-base fixture for now.
+- **Left:** the third box. The run belongs in smart-immunizations' library, beside the measles L1 graph; that repository is with the sibling session (session_017QXvm7c7RDYFguWzSxhrMb).
