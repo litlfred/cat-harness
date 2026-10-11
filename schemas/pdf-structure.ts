@@ -306,6 +306,16 @@ export const PdfStructureSchema = z
     granularity: z.enum(["page", "slide"]).optional(),
     /** What a rung did NOT claim. Required by check-l1-complete when there are no sections. */
     structure_note: z.string().optional(),
+    /**
+     * The library holds some works more than once (a preprint beside its
+     * published version, one PDF under two names). The duplicate copy names
+     * the entry to prefer in `duplicate_of` and says why in `duplicate_note`;
+     * the preferred entry lists its copies in `duplicate_copies`. Adjudicated
+     * in qou `docs/audits/library-duplicate-ledger.json`.
+     */
+    duplicate_of: z.string().min(1).optional(),
+    duplicate_note: z.string().optional(),
+    duplicate_copies: z.array(z.string().min(1)).optional(),
   })
   .strict();
 
