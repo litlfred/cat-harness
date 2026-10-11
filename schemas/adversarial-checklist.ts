@@ -48,7 +48,14 @@ export interface AdversarialChecklistItem {
   defaultCategory: RedFlagCategory;
   /** Default severity for findings under this check. */
   defaultSeverity: FindingSeverity;
-  /** Reference documents or rules supporting this check. */
+  /**
+   * The rules supporting this check, BY NAME — `skill:<name>` or
+   * `schema:<module>` — never by path. Code, which is addressed by path on
+   * purpose, is `code:<layer>/<module path>`. Paths went stale as skills moved
+   * between packages (two named a skill that no longer exists); a name is
+   * found wherever the declaration puts it (`check:declared-paths`, bean
+   * `rmi6` follow-up). `adversarial-checklist.test.ts` resolves every one.
+   */
   references: readonly string[];
 }
 
@@ -60,7 +67,7 @@ export const AdversarialChecklistItemSchema = z.object({
   extendsSource: z.enum(["code-node-review", "devils-advocate-watcher", "kg-audit"]),
   defaultCategory: z.enum(RED_FLAG_CATEGORIES),
   defaultSeverity: z.enum(FINDING_SEVERITIES),
-  references: z.array(z.string()).default([]),
+  references: z.array(z.string().regex(/^(?:(?:skill|schema):[a-z0-9][a-z0-9-]*|code:[a-z0-9][a-z0-9-]*\/[\w./-]+\.ts)$/, "a reference is `skill:<name>`, `schema:<module>` or `code:<layer>/<module path>`")).default([]),
 });
 
 // ── 1. Tool Adversarial Checklist ───────────────────────────────────────────
@@ -75,7 +82,7 @@ export const TOOL_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] = [
     extendsSource: "code-node-review",
     defaultCategory: "correctness",
     defaultSeverity: "critical",
-    references: ["skills/kg/kg-core/code-node-review.md", "schemas/tools.ts"],
+    references: ["skill:code-node-review", "schema:tool"],
   },
   {
     id: "tool-unknown-on-failure",
@@ -86,7 +93,7 @@ export const TOOL_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] = [
     extendsSource: "code-node-review",
     defaultCategory: "false-green",
     defaultSeverity: "critical",
-    references: ["skills/kg/kg-core/code-node-review.md", "skills/sdlc/sdlc-core/ci-health.md"],
+    references: ["skill:code-node-review", "skill:ci-health"],
   },
   {
     id: "tool-side-effects-declared",
@@ -97,7 +104,7 @@ export const TOOL_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] = [
     extendsSource: "code-node-review",
     defaultCategory: "scope-breach",
     defaultSeverity: "major",
-    references: ["skills/kg/kg-core/code-node-review.md", "scripts/task-io.ts"],
+    references: ["skill:code-node-review", "code:cat-harness-tools/scripts/task-io.ts"],
   },
   {
     id: "tool-deletion-guarded",
@@ -108,7 +115,7 @@ export const TOOL_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] = [
     extendsSource: "code-node-review",
     defaultCategory: "irreversible-action",
     defaultSeverity: "critical",
-    references: ["skills/conduct/conduct-core/deletion-requires-confirmation.md"],
+    references: ["skill:deletion-requires-confirmation"],
   },
 ] as const;
 
@@ -124,7 +131,7 @@ export const SCHEMA_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] =
     extendsSource: "code-node-review",
     defaultCategory: "correctness",
     defaultSeverity: "major",
-    references: ["skills/kg/kg-core/code-node-review.md"],
+    references: ["skill:code-node-review"],
   },
   {
     id: "schema-enums-closed",
@@ -135,7 +142,7 @@ export const SCHEMA_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] =
     extendsSource: "code-node-review",
     defaultCategory: "correctness",
     defaultSeverity: "major",
-    references: ["skills/kg/kg-core/code-node-review.md", "schemas/vocabulary.ts"],
+    references: ["skill:code-node-review", "schema:vocabulary"],
   },
   {
     id: "schema-docstring-fidelity",
@@ -146,7 +153,7 @@ export const SCHEMA_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] =
     extendsSource: "code-node-review",
     defaultCategory: "provenance",
     defaultSeverity: "major",
-    references: ["skills/kg/kg-core/code-node-review.md"],
+    references: ["skill:code-node-review"],
   },
   {
     id: "schema-backwards-compatible",
@@ -157,7 +164,7 @@ export const SCHEMA_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] =
     extendsSource: "code-node-review",
     defaultCategory: "data-loss",
     defaultSeverity: "critical",
-    references: ["skills/kg/kg-core/code-node-review.md"],
+    references: ["skill:code-node-review"],
   },
 ] as const;
 
@@ -173,7 +180,7 @@ export const SKILL_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] = 
     extendsSource: "devils-advocate-watcher",
     defaultCategory: "provenance",
     defaultSeverity: "critical",
-    references: ["skills/kg/kg-core/narrative-asserts-code.md", "skills/authoring/authoring-core/devils-advocate-watcher.md"],
+    references: ["skill:narrative-asserts-code", "skill:devils-advocate-watcher"],
   },
   {
     id: "skill-no-contradiction",
@@ -184,7 +191,7 @@ export const SKILL_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] = 
     extendsSource: "devils-advocate-watcher",
     defaultCategory: "correctness",
     defaultSeverity: "major",
-    references: ["skills/authoring/authoring-core/devils-advocate-watcher.md"],
+    references: ["skill:devils-advocate-watcher"],
   },
   {
     id: "skill-no-prose-counts",
@@ -195,7 +202,7 @@ export const SKILL_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] = 
     extendsSource: "devils-advocate-watcher",
     defaultCategory: "provenance",
     defaultSeverity: "minor",
-    references: ["skills/conduct/conduct-core/unverified-constraints.md", "skills/authoring/authoring-core/devils-advocate-watcher.md"],
+    references: ["skill:unverified-constraints", "skill:devils-advocate-watcher"],
   },
   {
     id: "skill-no-unasked-irreversible-action",
@@ -206,7 +213,7 @@ export const SKILL_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] = 
     extendsSource: "devils-advocate-watcher",
     defaultCategory: "irreversible-action",
     defaultSeverity: "critical",
-    references: ["skills/conduct/conduct-core/deletion-requires-confirmation.md"],
+    references: ["skill:deletion-requires-confirmation"],
   },
 ] as const;
 
@@ -222,7 +229,7 @@ export const PROCESS_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] 
     extendsSource: "kg-audit",
     defaultCategory: "correctness",
     defaultSeverity: "critical",
-    references: ["skills/process/process-core/bpmn-validation.md", "schemas/kg-qa.ts"],
+    references: ["skill:bpmn-processes", "schema:kg-qa"],
   },
   {
     id: "process-no-context-write",
@@ -233,7 +240,7 @@ export const PROCESS_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] 
     extendsSource: "kg-audit",
     defaultCategory: "scope-breach",
     defaultSeverity: "critical",
-    references: ["skills/kg/kg-core/directory-conventions.md", "schemas/cat-harness.ts"],
+    references: ["skill:directory-conventions", "schema:cat-harness"],
   },
   {
     id: "process-diagram-workflow-fidelity",
@@ -244,7 +251,7 @@ export const PROCESS_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] 
     extendsSource: "kg-audit",
     defaultCategory: "provenance",
     defaultSeverity: "major",
-    references: ["skills/process/process-core/bpmn-validation.md", "schemas/kg-qa.ts"],
+    references: ["skill:bpmn-processes", "schema:kg-qa"],
   },
 ] as const;
 
