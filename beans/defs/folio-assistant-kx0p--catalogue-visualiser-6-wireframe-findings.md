@@ -63,3 +63,16 @@ Re-measured on a local build (Routine steps 3–7):
 ## 2026-10-09 — live on who-iris's own site
 
 Published: gh-pages `9255288` carries `cat-harness/catalogue/who-iris/index.html` (held rows first, labelled gate counts, no dead library-viewer links; Pages run 37977615950 success). Still open: sortable/filterable columns; re-draw `cat-harness/docs/wireframes/catalogue/` and re-run `wireframe:check`; a library viewer for who-iris's own site.
+
+## 2026-10-11 — finding 4 closed: filter and sort (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
+- who-iris#40 (merged, ced6dff) adds to the "Every node" table:
+  - a state select and a title/id search, with a live "n of N shown";
+  - a sort button in every header, with aria-sort;
+  - held-first order on open;
+  - controls hidden without scripts.
+- Tests: 55 pass, and iris:pages:check is 0. Driven in Chromium at 390×844 (filter, search, both sort directions, no errors).
+- cat-harness#153 (merged, c3d513c) regenerates cat-harness's copy of the page. The diff is that change alone.
+- Still open:
+  - re-draw `cat-harness/docs/wireframes/catalogue/` and re-run `wireframe:check`;
+  - a library viewer on who-iris's own site;
+  - who-iris's site is not yet republished with this.
