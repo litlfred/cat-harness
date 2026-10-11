@@ -992,10 +992,14 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     nodeSchemas: {
       "folio-todo-index/v1": {},
       "folio-semantic-zoom/v1": {},
-      "folio-qa-graph/v1": { shape: "content/pipeline/qa-graph-index.ts#QaGraphIndex" },
+      "folio-qa-graph/v1": { shape: "cat-harness-tools:content/pipeline/qa-graph-index.ts#QaGraphIndex" },
       // GENERATOR OUTPUT: the `translation:index` command writes the one file
       // of this family whole, `<site>/_data/translations.json`.
-      "folio-translation-index/v1": { shape: "content/pipeline/translation-index.ts#TranslationIndex", generated: true },
+      "folio-translation-index/v1": { shape: "cat-harness-tools:content/pipeline/translation-index.ts#TranslationIndex", generated: true },
+      // The site slices `gen-slice-sqlite.ts` (cat-harness-tools) writes under
+      // docs/assets/slices/: one manifest per slice, and the index of slices.
+      "folio-slice-sqlite/v1": { shape: "cat-harness-tools:scripts/gen-slice-sqlite.ts#SliceManifest", generated: true },
+      "folio-slice-index/v1": { generated: true },
       "folio-bean-index/v1": { generated: true },
       "node-kind-index/1.1.0": { generated: true },
       "folio-translation-status/v1": { generated: true },
@@ -1336,6 +1340,9 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "folio-test-run/v1": {},
       "qa-witness/v1": { shape: "schemas/qa-record-shapes.ts#QaWitness" },
       "qa-results/v1": { shape: "schemas/qa-record-shapes.ts#QaResult" },
+      // Per-checker freshness sidecars (`<criterion>.script.json`), written by the
+      // QA sweep; validated by `validators/qa-script.json` (the block-qa schema package's Zod).
+      "qa-script/v1": { generated: true },
       "translation-qa/v1": { shape: "schemas/qa-record-shapes.ts#TranslationBlockQaReport" },
       // Written inline by two call sites and typed by neither — recorded,
       // not invented. `qa-graph-index.ts` names the tag only to say it is
@@ -1704,7 +1711,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     // ever been published and a map with no nodes cannot be caught failing to
     // route one (`1xhc`).
     nodeSchemas: {
-      "folio-workflow-instance/v1": { shape: "src/workflow/instance.ts#InstanceState" },
+      "folio-workflow-instance/v1": { shape: "cat-harness-tools:src/workflow/instance.ts#InstanceState" },
       // Runnable, unlike its neighbour: `SessionSurveySchema` is a Zod schema,
       // so a published survey is PARSED rather than merely typed.
       "folio-session-survey/v1": {},
@@ -1810,9 +1817,9 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     holds: "state",
     // declared-path-literal: this table IS the declaration, as on `health`.
     nodeSchemas: {
-      "folio-workflow-instance/v1": { shape: "src/workflow/instance.ts#InstanceState" },
+      "folio-workflow-instance/v1": { shape: "cat-harness-tools:src/workflow/instance.ts#InstanceState" },
     },
-    schema: "src/workflow/instance.ts",
+    schema: "cat-harness-tools:src/workflow/instance.ts",
     recordsWork: true, // beans (agent), todos (person), workflow-state (a process mid-flight)
     // The kind's own reader, wired 2026-09-20. `skill` is a property of the
     // KIND rather than of a directory because a `workflow-state` graph is read
@@ -2044,7 +2051,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       // (placement PR0c): `concern-groups/v1`.
       "concern-groups/v1": {},
       "folio-document-images/v1": {},
-      "folio-image-verdicts/v1": { shape: "scripts/apply-image-verdicts.ts#VerdictFile" },
+      "folio-image-verdicts/v1": { shape: "cat-harness-tools:scripts/apply-image-verdicts.ts#VerdictFile" },
       // The section analogue of image verdicts (bean `fnqn`): which sections are
       // mostly SAMPLE text. Read by summaries and the LSI units.
       "folio-section-verdicts/v1": {},
@@ -2536,7 +2543,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     renderable: false,
     holds: "state",
     recordsWork: false, // live state, but nothing anybody is partway through
-    schema: "src/issue-watch/seen-comments.ts",
+    schema: "cat-harness-tools:src/issue-watch/seen-comments.ts",
     // declared-path-literal: this table IS the declaration, as on `health`. The
     // shape was a TypeScript interface until 2026-09-24 — the `schema` /
     // `validator` divergence this field's own doc uses `qa` to illustrate — so

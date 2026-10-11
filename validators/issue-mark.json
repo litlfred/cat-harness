@@ -5,5 +5,5 @@
     "kind": "issue-marks",
     "family": "folio-issue-mark/v1"
   },
-  "schema": "src/issue-watch/seen-comments.ts#IssueMarkSchema"
+  "schema": "cat-harness-tools:src/issue-watch/seen-comments.ts#IssueMarkSchema"
 }
