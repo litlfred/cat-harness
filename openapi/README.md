@@ -25,7 +25,6 @@ built for.
 | `openapi-validators` | [`validators/`](validators/) | `validators` |
 | `openapi-typologies` | [`typologies/`](typologies/) | `typologies` — the `openapi` kind |
 | `openapi-schemas` | [`schemas/`](schemas/) | `schemas` |
-| `openapi-scripts` | [`scripts/`](scripts/) | `code` |
 
 ## The one rule
 

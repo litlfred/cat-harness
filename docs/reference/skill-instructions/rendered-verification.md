@@ -97,7 +97,7 @@ processes. It also covers papers, FHIR IGs and slide decks.
 
 ## Running it here
 
-Building the site is [`preview:site`](../../../scripts/preview-site.sh), whose
+Building the site is `preview:site`, whose
 header carries the two things that make a naive `bundle exec jekyll` fail
 in this repo. **It is not what CI builds** — CI uses the pinned
 `remote_theme`, this uses the gem — so read a *theme-chrome* question off
