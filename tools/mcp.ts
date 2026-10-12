@@ -217,6 +217,88 @@ export function mcpTools(t: TypeIri): ToolDefinition[] {
       requires: { network: false },
     }),
 
+    // The knowledge-graph tools. Their handlers lived only in the viewer
+    // server's embedded chat agent, so no MCP client could call them: an agent
+    // session got "Tool corpus_search not found" for the check a folio runs
+    // before declaring anything open (qou bean `qou-q261`). One module, one
+    // registrar, four served names.
+    defineTool({
+      id: "corpus-search",
+      title: "Search the corpus and follow the graph",
+      description:
+        "Seed lexically over the authored folio and every declared library, then expand along graph edges, labelling each hit MATCHED or REACHED and by which edge. Counts are split authored vs ingested, and a root that exists but holds no graph nodes is reported rather than read as an empty answer.",
+      install: bundled,
+      invoke: inProcess("src/tools/graph.ts", "corpus_search"),
+      io: {
+        inputs: [
+          { name: "query", schema: t("Text"), required: true, description: "Words to seed on. Seeding is lexical, so a short phrase works; a long query no node contains seeds nothing." },
+          { name: "hops", schema: t("Count"), required: false, description: "Expansion depth, 0-4 (default 1). 0 is a plain lexical search." },
+          { name: "direction", schema: t("Slug"), required: false, description: "`out`, `in` or `both` (default)." },
+          { name: "provenance", schema: t("Slug"), required: false, description: "`authored` or `ingested`: restricts the seeds, not the expansion." },
+          { name: "searchText", schema: t("Flag"), required: false, description: "Also seed on companion Markdown bodies." },
+          { name: "limit", schema: t("Count"), required: false, description: "Seed cap before expansion (default 20)." },
+        ],
+        outputs: [{ name: "result", schema: t("Markdown"), description: "JSON: summary, emptyRoots, dangling, and hits each carrying a `why`." }],
+      },
+      satisfies: ["corpus-grep"],
+      requires: { network: false },
+    }),
+
+    defineTool({
+      id: "search-graph",
+      title: "Lexical search over the content graph",
+      description:
+        "Find graph nodes, authored or ingested, whose label, title, kind or tags contain a string, with no graph expansion. corpus-search composes this with a neighbour walk.",
+      install: bundled,
+      invoke: inProcess("src/tools/graph.ts", "search_graph"),
+      io: {
+        inputs: [
+          { name: "query", schema: t("Text"), required: true, description: "Substring to look for." },
+          { name: "provenance", schema: t("Slug"), required: false, description: "`authored` or `ingested`. Omit for both." },
+          { name: "searchText", schema: t("Flag"), required: false, description: "Also scan companion Markdown bodies." },
+          { name: "limit", schema: t("Count"), required: false, description: "Max hits (default 20)." },
+        ],
+        outputs: [{ name: "result", schema: t("Markdown"), description: "JSON: the matching nodes and which field matched." }],
+      },
+      satisfies: ["corpus-grep"],
+      requires: { network: false },
+    }),
+
+    defineTool({
+      id: "get-neighbors",
+      title: "Walk the content graph from one node",
+      description:
+        "List the nodes adjacent to one node, out (what it depends on) or in (what depends on it), to a given depth and optionally over named edge terms only. An unknown edge term is reported, never silently dropped.",
+      install: bundled,
+      invoke: inProcess("src/tools/graph.ts", "get_neighbors"),
+      io: {
+        inputs: [
+          { name: "id", schema: t("Text"), required: true, description: "Node @id or authored label, e.g. `thm:main`." },
+          { name: "direction", schema: t("Slug"), required: false, description: "`out` (default), `in` or `both`." },
+          { name: "hops", schema: t("Count"), required: false, description: "Traversal depth, 1-6 (default 1)." },
+          { name: "edges", schema: t("Text"), required: false, description: "A LIST of edge terms (uses, interprets, cites, contains, ...) to restrict to. Omit for all." },
+        ],
+        outputs: [{ name: "result", schema: t("Markdown"), description: "JSON: the neighbours, each with the edge path that reached it." }],
+      },
+      satisfies: ["corpus-grep"],
+      requires: { network: false },
+    }),
+
+    defineTool({
+      id: "get-graph-stats",
+      title: "Content graph counts",
+      description:
+        "Node and edge counts for the content graph by provenance and kind, and whether each root exists. Tells 'nothing matched' from 'that population has not been built'.",
+      install: bundled,
+      invoke: inProcess("src/tools/graph.ts", "get_graph_stats"),
+      io: {
+        inputs: [{ name: "refresh", schema: t("Flag"), required: false, description: "Rebuild the index from disk first." }],
+        outputs: [{ name: "stats", schema: t("Markdown"), description: "JSON: node and edge counts, by provenance and kind, per root." }],
+      },
+      satisfies: ["corpus-grep"],
+      requires: { network: false },
+    }),
+
     defineTool({
       id: "render-order",
       title: "The render pipeline, in dependency order",
