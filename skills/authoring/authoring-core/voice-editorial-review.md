@@ -14,7 +14,7 @@ graph-typologies:
 
 ## The axis you are adjudicating
 
-Six criteria in `content/pipeline/qa-criteria-registry.ts` describe one house
+Six criteria in `pipeline/qa-criteria-registry.ts` describe one house
 voice:
 
 | criterion | what it matches | severity |
@@ -82,7 +82,7 @@ an assertion, and the reviewer entry should say so in those words.
 3. **Record the outcome where the next reader will find it** — a prose edit, a
    registry edit with `profiles`, or a reviewer entry. A finding that is simply
    left open teaches nobody anything, and it comes back on the next sweep.
-4. **Re-run the sweep** — `bun run content/pipeline/qa-sweep.ts --root
+4. **Re-run the sweep** — `bun run pipeline/qa-sweep.ts --root
    docs/source` — so the sidecar, the icon and the panel agree with what you
    decided.
 

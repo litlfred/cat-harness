@@ -189,7 +189,7 @@ without first deriving a filename. See
 **Input:** defined requirements
 
 1. **Schema impact** — which types, constraints, builders change?
-2. **Pipeline impact** — which scripts under `content/pipeline/` are affected?
+2. **Pipeline impact** — which scripts under `pipeline/` are affected?
 3. **Adapter impact** — paper, document, dak? Does it ripple?
 4. **QA impact** — new criteria? Modified criteria? Registry changes?
 5. **Folio impact** — which active folios need migration?

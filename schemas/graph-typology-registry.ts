@@ -662,7 +662,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   },
   "pipeline-plugins": {
     description:
-      "the generic pipeline's slots a harness fills, one `folio-pipeline-plugin/v1` node each (`schemas/contribution-nodes.ts`): the slot (`content/pipeline/pipeline-plugins.ts`), and the table of implementations (`path#Export`, keyed by slot, typed against the slots' contract). `loadContributions` registers them for every folio whose dependency tree includes the harness. Bean `riit`, step 3b; the slots themselves are bean `squu`'s.",
+      "the generic pipeline's slots a harness fills, one `folio-pipeline-plugin/v1` node each (`schemas/contribution-nodes.ts`): the slot (`pipeline/pipeline-plugins.ts`), and the table of implementations (`path#Export`, keyed by slot, typed against the slots' contract). `loadContributions` registers them for every folio whose dependency tree includes the harness. Bean `riit`, step 3b; the slots themselves are bean `squu`'s.",
     title: "Pipeline plugins",
     renderable: false,
     holds: "content",
@@ -992,10 +992,10 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     nodeSchemas: {
       "folio-todo-index/v1": {},
       "folio-semantic-zoom/v1": {},
-      "folio-qa-graph/v1": { shape: "cat-harness-tools:content/pipeline/qa-graph-index.ts#QaGraphIndex" },
+      "folio-qa-graph/v1": { shape: "cat-harness-tools:pipeline/qa-graph-index.ts#QaGraphIndex" },
       // GENERATOR OUTPUT: the `translation:index` command writes the one file
       // of this family whole, `<site>/_data/translations.json`.
-      "folio-translation-index/v1": { shape: "cat-harness-tools:content/pipeline/translation-index.ts#TranslationIndex", generated: true },
+      "folio-translation-index/v1": { shape: "cat-harness-tools:pipeline/translation-index.ts#TranslationIndex", generated: true },
       // The site slices `gen-slice-sqlite.ts` (cat-harness-tools) writes under
       // docs/assets/slices/: one manifest per slice, and the index of slices.
       "folio-slice-sqlite/v1": { shape: "cat-harness-tools:scripts/gen-slice-sqlite.ts#SliceManifest", generated: true },

@@ -202,14 +202,14 @@ composable").
 ## How it is performed here
 
 The skill is [`lsi-indexing`](../skills/kg/graph-management/lsi-indexing.md); the
-engine is `content/pipeline/lsi.ts`, computed by Halko et al.'s randomized
+engine is `pipeline/lsi.ts`, computed by Halko et al.'s randomized
 subspace iteration (their Algorithm 4.4: Gaussian test matrix, oversampling
 p = 10, re-orthonormalisation between every pass) and direct SVD of the small
 matrix (Algorithm 5.1). **One deviation, stated:** the small SVD is taken from
 the eigendecomposition of `BBᵀ`, which squares the condition number and so
 loses relative accuracy on the smallest retained singular values; acceptable
 for ranking, not for reporting those values to many digits.
-`content/pipeline/lsi.test.ts` checks the engine against the 1990 paper's own
+`pipeline/lsi.test.ts` checks the engine against the 1990 paper's own
 worked example: the nine singular values of its 12 × 9 matrix to the two
 decimals printed, and the query *"human computer interaction"* retrieving c3
 and c5, which share no term with it.

@@ -44,7 +44,7 @@ bun run cat lsi query "certainty of the evidence" --instance who-iris --graph li
 bun run cat lsi:audit                                          # which graphs need one; is each fresh?
 bun run cat lsi:epics --out <file.md> [--prs <open-prs.json>]  # epic-filing proposal
 bun run cat lsi:near "<planned bean title>"                    # before `beans create`
-bun run cat-harness-tools/content/pipeline/graph-search.ts "<q>" --latent   # lexical + graph, THEN a separate latent list
+bun run cat-harness-tools/pipeline/graph-search.ts "<q>" --latent   # lexical + graph, THEN a separate latent list
 ```
 
 **From an MCP host**: the `lsi_query` tool (Tool node `lsi-query`), with the
@@ -80,7 +80,7 @@ then reduces it to k dimensions and the per-unit view was gone.
 pooled set of units') top terms and two-word phrases, from the same weights.
 Its first consumer is `bun run cat library:keywords` (per library section and per
 document, written as `keywords.json` and shown in the library viewer). The
-scoring rules are documented with `keywordsOf` in `content/pipeline/lsi.ts`,
+scoring rules are documented with `keywordsOf` in `pipeline/lsi.ts`,
 and the ingestion skill that runs it says when (`skill_fetch
 l1-document-ingestion`, §"Keywords"). Reuse it for any unit set the index covers — beans, chapters —
 rather than writing a second term weighting.
@@ -88,7 +88,7 @@ rather than writing a second term weighting.
 ## Correspondence analysis — the parallel track
 
 [`correspondence-analysis`](../../../methodologies/correspondence-analysis.md)
-is a separate method over the same term matrix (`content/pipeline/ca.ts`):
+is a separate method over the same term matrix (`pipeline/ca.ts`):
 the SVD of the χ² residuals, so no dimension carries document length or term
 frequency. `bun run cat lsi:epics --method ca` runs it on the bean store.
 **Measured 2026-09-29: not significantly better or worse than LSI at filing

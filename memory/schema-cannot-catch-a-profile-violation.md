@@ -10,7 +10,7 @@ references:
   - kind: agent
     id: platform-boundary-guard
 ---
-`content/pipeline/profile-check.ts` runs on every `content_validate` and
+`pipeline/profile-check.ts` runs on every `content_validate` and
 catches what **Zod structurally cannot**: a `theorem` is a valid `theorem`
 whatever folio it sits in, and `constraints.ts` cannot read
 `<name>.config.json`.

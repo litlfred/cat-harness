@@ -32,7 +32,7 @@ dependencies would make the answers wrong rather than richer: a `simp`
 lemma invoked mid-proof implies nothing about where a section belongs.
 
 The formal relation is a separate edge kind in
-`content/pipeline/content-graph.ts`; pass `"editorial"` explicitly when
+`pipeline/content-graph.ts`; pass `"editorial"` explicitly when
 querying it from this watcher. The `uses` QA axis owns whether `uses[]`
 is *well used* — that is `uses-editorial-review`, not this watcher.
 

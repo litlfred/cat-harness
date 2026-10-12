@@ -544,7 +544,7 @@
     },
     {
       "id": "issue-33",
-      "description": "Issue #33 “Wrap remaining content/pipeline mechanical scripts as MCP tools” — adjudicated label: a feature request.",
+      "description": "Issue #33 “Wrap remaining pipeline mechanical scripts as MCP tools” — adjudicated label: a feature request.",
       "assertions": [
         {
           "id": "crdm-detect-classifies",

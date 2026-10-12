@@ -4030,7 +4030,7 @@ export function rootForScope(instanceRoot: string, scope?: DeclarationScope): st
  *
  * ## Why a walk rather than `process.cwd()`
  *
- * Nine scripts under `scripts/` and `content/pipeline/` read this instance's
+ * Nine scripts under `scripts/` and `pipeline/` read this instance's
  * declaration and got the root from the working directory. That was never a
  * claim about the instance; it was true only because a gate is run from the
  * repository root and the two were one directory. After the move (bean
@@ -6534,7 +6534,7 @@ export function directoryEntriesForGraph(
  * `ot9a` set the falsifier: *"if the harness still has to know the string
  * `folio` anywhere for the declaration to validate, the re-siting is
  * cosmetic."* The harness does still know it — this module is `harness` by
- * `repo-partition`, as are `content/pipeline/repo-root.ts` and `scripts/`.
+ * `repo-partition`, as are `pipeline/repo-root.ts` and `scripts/`.
  *
  * That is not this function reintroducing the problem; it is this function
  * CONCENTRATING it. The harness knew the string in 162 places before and knows

@@ -366,7 +366,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
           { name: "fromRoot", schema: t("RepoPath"), required: true, arg: { flag: "--from-root" }, description: "That layer's root on disk." },
           { name: "toName", schema: t("Slug"), required: true, arg: { flag: "--to-name" }, description: "The layer the files moved to." },
           { name: "toRoot", schema: t("RepoPath"), required: true, arg: { flag: "--to-root" }, description: "That layer's root on disk." },
-          { name: "prefix", schema: t("RepoPath"), required: true, arg: { flag: "--prefix" }, description: "A moved directory, repeatable (e.g. `scripts`, `content/pipeline`)." },
+          { name: "prefix", schema: t("RepoPath"), required: true, arg: { flag: "--prefix" }, description: "A moved directory, repeatable (e.g. `scripts`, `pipeline`)." },
           { name: "scan", schema: t("RepoPath"), required: false, arg: { flag: "--scan" }, description: "The git checkout whose tracked files are read; default the source root." },
           { name: "write", schema: t("Flag"), required: false, arg: { flag: "--write" }, description: "Apply the rewrites." },
           { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Exit 1 while any rewrite is owed; write nothing." },
@@ -1451,7 +1451,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Run every registered criterion over the blocks under a path and write a per-block QA sidecar. A sidecar rather than a console report, because a printed verdict cannot distinguish \"never checked\" from \"checked and clean\".",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/content/pipeline/qa-sweep.ts" },
+      invoke: { shell: "bun run cat-harness-tools/pipeline/qa-sweep.ts" },
       io: {
         inputs: [
           { name: "targetPath", schema: t("RepoPath"), required: true, arg: { positional: 0 }, description: "The content root to sweep. Absent, the command exits 2 with its usage — could-not-determine, not a clean sweep." },
@@ -1500,7 +1500,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Lint TeX source for the pdflatex-compile failure classes a permissive AST parser accepts — the ones that pass validation and then break the build.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/content/pipeline/latex-preflight.ts" },
+      invoke: { shell: "bun run cat-harness-tools/pipeline/latex-preflight.ts" },
       io: {
         inputs: [
           { name: "json", schema: t("Flag"), required: false, arg: { flag: "--json" } },
@@ -1521,7 +1521,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Turn a pdflatex log's Overfull \\hbox warnings into a located, actionable report, with a threshold so a long tail of trivial overruns does not bury the real ones.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/content/pipeline/latex-overfull-report.ts" },
+      invoke: { shell: "bun run cat-harness-tools/pipeline/latex-overfull-report.ts" },
       io: {
         inputs: [
           // REQUIRED and positional — found by running it, not by reading it:
@@ -1575,7 +1575,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Parse every `tex` snippet in a folio's blocks and report what will not compile — structural, not textual: it reads an AST rather than matching patterns. Complementary to `latex-preflight`, which gates a main.tex before a compile, and to `latex-overfull`, which reads a log after one.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/content/pipeline/validate-tex.ts" },
+      invoke: { shell: "bun run cat-harness-tools/pipeline/validate-tex.ts" },
       io: {
         inputs: [
           { name: "paper", schema: t("Slug"), required: false, arg: { flag: "--paper" }, description: "One folio by slug. Absent, every folio the content root holds." },
@@ -1603,7 +1603,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Catch the source patterns that crash pdflatex but read as ordinary prose — a bare `_` or `^` in a bibliography field, `|` inside a markdown table cell where it is also the column separator, a `$…$` span across two lines, markdown link syntax inside a fenced tex block, a double subscript. Born from named build failures rather than from a style opinion.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/content/pipeline/audit-tex-source.ts" },
+      invoke: { shell: "bun run cat-harness-tools/pipeline/audit-tex-source.ts" },
       io: {
         inputs: [
           { name: "strict", schema: t("Flag"), required: false, arg: { flag: "--strict" }, description: "Exit 1 on any finding, for use as a gate." },
@@ -2492,7 +2492,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
         when:
           "When choosing what to give a Tool node next. Tier C is the read: its own label says THE READ GOES HERE, and tier A is the list to act on.",
         limits:
-          "It enumerates SKILLS and asks which lack Tools, so a capability nobody has stated generically is absent from the list it walks — that blindness is structural, not an oversight, and bean `yean` is the case that proved it. It also cannot see a folio's entry points: `content/pipeline/*.ts` are invoked from a FOLIO's package.json, which is not readable from the platform.",
+          "It enumerates SKILLS and asks which lack Tools, so a capability nobody has stated generically is absent from the list it walks — that blindness is structural, not an oversight, and bean `yean` is the case that proved it. It also cannot see a folio's entry points: `pipeline/*.ts` are invoked from a FOLIO's package.json, which is not readable from the platform.",
         cost: "Seconds, plus loading every BPMN diagram to read task types.",
       },
     }),
@@ -2905,7 +2905,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Build the content graph under a path and report its edges, separated into the EDITORIAL relation an author maintains and the FORMAL one derived from Lean. Reading the two as one number is how the editorial signal gets overwritten.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/content/pipeline/content-graph.ts" },
+      invoke: { shell: "bun run cat-harness-tools/pipeline/content-graph.ts" },
       io: {
         inputs: [
           // Optional, because the script defaults to `<repo>/content` — and
@@ -2950,7 +2950,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Validate the block manifests under a path against their schemas. Exits 2 where no folio is present rather than reporting a clean run — the platform carries no content, and a validator that passes over nothing is how this one validated nothing for a while.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/content/pipeline/validate.ts" },
+      invoke: { shell: "bun run cat-harness-tools/pipeline/validate.ts" },
       io: {
         inputs: [
           { name: "targetPath", schema: t("RepoPath"), required: false, arg: { positional: 0 }, description: "A paper or chapter directory; absent, every paper the folio declares." },
@@ -2978,7 +2978,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Build the block- and section-level editorial dependency graph of one paper from its `.ts` manifests and report forward references, cross-chapter coupling, sparse or dense sections and isolated blocks, ranked. Reads `uses[]`/`interprets` only — the editorial relation, never the formal one.",
       install: { none: true },
-      invoke: { shell: "python3 cat-harness-tools/content/pipeline/content-graph-analysis.py" },
+      invoke: { shell: "python3 cat-harness-tools/pipeline/content-graph-analysis.py" },
       io: {
         inputs: [
           { name: "paper", schema: t("Slug"), required: false, arg: { flag: "--paper" }, description: "The paper directory under the content root. Its default names one folio's paper, which is migration debt: pass it explicitly." },
@@ -3028,7 +3028,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Render a paper's content objects to LaTeX chapters: load the paper manifest, resolve its chapters and blocks, render, validate the LaTeX AST, and write the chapter files. With no manifest it builds the folio's only paper, and refuses — naming them — when there are several or none.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/content/pipeline/build.ts" },
+      invoke: { shell: "bun run cat-harness-tools/pipeline/build.ts" },
       io: {
         inputs: [
           { name: "paperManifest", schema: t("RepoPath"), required: false, arg: { positional: 0 }, description: "The paper's `<paper>.ts` manifest; absent, the folio's single paper." },
@@ -3161,7 +3161,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Compute the dependency cone over an IG's FSH graph, and the blast radius of a set of changed files. What makes an incremental IG build possible: without it, any edit rebuilds everything.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/content/pipeline/fsh-cone.ts" },
+      invoke: { shell: "bun run cat-harness-tools/pipeline/fsh-cone.ts" },
       io: {
         inputs: [
           { name: "igRoot", schema: t("RepoPath"), required: true, arg: { positional: 0 }, description: "The IG root holding the FSH sources. Absent, the command exits 2 with its usage — could-not-determine, not an empty cone." },
@@ -3227,7 +3227,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Write a back-translation verdict, produced by a pair of translation agents, into a block's existing translation-QA sidecar. It records a judgement rather than making one, and refuses where no sidecar exists — a round trip cannot be what decides a block is translated.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/content/pipeline/translation-roundtrip.ts" },
+      invoke: { shell: "bun run cat-harness-tools/pipeline/translation-roundtrip.ts" },
       io: {
         inputs: [
           { name: "payload", schema: t("RepoPath"), required: true, arg: { flag: "--payload" }, description: "JSON carrying the block, locale, verdict and the agent pair. Absent, the command exits 2 with its usage — measured, not assumed." },

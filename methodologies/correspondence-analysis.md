@@ -121,7 +121,7 @@ is never evidence for a claim in content (4). And one of its own:
 
 ## How it is performed here
 
-`content/pipeline/ca.ts`, sharing `lsi.ts`'s term matrix and randomized SVD
+`pipeline/ca.ts`, sharing `lsi.ts`'s term matrix and randomized SVD
 (Halko et al.) so that a comparison is between decompositions and not between
 vocabularies. The residual matrix is never formed: products with `S` and `Sᵀ`
 are one sparse product plus a rank-one correction each. `ca.test.ts` checks

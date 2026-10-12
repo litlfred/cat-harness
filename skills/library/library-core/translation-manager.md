@@ -147,7 +147,7 @@ and reports every locale saying so. A locale with nothing to say is
 ### 1. Extract (POT generation)
 
 ```sh
-bun run content/pipeline/pot-extract.ts [--chapter <dir>] [--block <label>]
+bun run pipeline/pot-extract.ts [--chapter <dir>] [--block <label>]
 ```
 
 Or use the `translation_extract` MCP tool. Produces `.pot` files at the
@@ -168,7 +168,7 @@ Options, in order of preference:
 ### 3. Inject (PO → translated Markdown)
 
 ```sh
-bun run content/pipeline/po-inject.ts --locale <locale> [--chapter <dir>]
+bun run pipeline/po-inject.ts --locale <locale> [--chapter <dir>]
 ```
 
 Or use the `translation_inject` MCP tool. Reads `.po` files and produces
@@ -192,7 +192,7 @@ Validate with `TranslationNodeSchema` from `schemas/translation.ts`.
 After injection, run round-trip translation QA:
 
 ```sh
-bun run content/pipeline/translation-qa.ts --locale <locale>
+bun run pipeline/translation-qa.ts --locale <locale>
 ```
 
 Or use the `translation_validate` MCP tool for coverage and staleness.
@@ -206,7 +206,7 @@ human reviewer.
 A human reviewer signs off at the desired level:
 
 ```sh
-bun run content/pipeline/translation-signoff.ts --locale <locale> --level <block|section|chapter|folio> [--path <content-path>]
+bun run pipeline/translation-signoff.ts --locale <locale> --level <block|section|chapter|folio> [--path <content-path>]
 ```
 
 Or use the `translation_signoff` MCP tool. Updates the `TranslationNode`
@@ -286,7 +286,7 @@ now takes its artefact universe as a parameter.
 
 #### The declaration
 
-`ROUNDTRIP_DISPATCH` in `content/pipeline/translation-block-qa.ts`:
+`ROUNDTRIP_DISPATCH` in `pipeline/translation-block-qa.ts`:
 
 | party | sees | never sees |
 |---|---|---|
@@ -316,7 +316,7 @@ defect the whole mechanism exists to stop.
 #### Recording it
 
 ```sh
-bun run content/pipeline/translation-roundtrip.ts --payload <file.json>
+bun run pipeline/translation-roundtrip.ts --payload <file.json>
 ```
 
 Where it lands: `translation-block-qa` writes `translation-semantic-roundtrip:
@@ -416,10 +416,10 @@ formality.** It is the list a reader's language bar and coverage badge are
 computed from — "which languages can I read this page in" — and the page is
 certainly readable in the one it was written in. It is *not* the list of
 translations that exist, which is what `availableLocales()` in
-`content/pipeline/po-resolve.ts` returns by resolving
+`pipeline/po-resolve.ts` returns by resolving
 `translations/<locale>/<stem>.po`; that lookup can never name the source
 language, because there is no `translations/en/` and there never will be. Use
-`localesAvailableFor()` in `content/pipeline/translation-index.ts` to go from
+`localesAvailableFor()` in `pipeline/translation-index.ts` to go from
 one to the other.
 
 Both halves of the corpus must stamp the same meaning. They did not until issue
@@ -467,7 +467,7 @@ nav_exclude: true                     # keep it OUT of the static nav
 translation_source: index.md          # which page it expresses
 ```
 
-`content/pipeline/translation-index.ts` walks the site and reads those. A page
+`pipeline/translation-index.ts` walks the site and reads those. A page
 with no `lang` is the instance's **source language** — absent means the
 default, not unknown.
 
@@ -524,7 +524,7 @@ rather than an arbitrary one.
 
 ### 3. The swap, and the fallback that is not a code path
 
-`content/pipeline/translation-index.ts` writes `docs/_data/translations.json`; `_includes/head_custom.html` publishes it
+`pipeline/translation-index.ts` writes `docs/_data/translations.json`; `_includes/head_custom.html` publishes it
 into every page as `#fa-translation-index`; `mountNavLocale` in
 `docs/assets/js/docs-ui.js` reads it.
 

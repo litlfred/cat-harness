@@ -24,12 +24,12 @@ archived: true
 `${block.root}.qa.json` has found nothing since bean `2634`, and finding
 nothing reads as "never audited" rather than as an error — a false pass.
 
-Never compose the path; the helpers in `content/pipeline/qa-paths.ts` are the
+Never compose the path; the helpers in `pipeline/qa-paths.ts` are the
 one answer, and they differ for reading and writing.
 
 <!-- detail -->
 
-`content/pipeline/qa-paths.ts` is the contract:
+`pipeline/qa-paths.ts` is the contract:
 
 - **read** → `existingBlockQaPath(repoRoot, blockRoot)` — results tree first,
   legacy sibling second, `undefined` ONLY when there is genuinely no verdict.

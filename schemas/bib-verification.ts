@@ -24,7 +24,7 @@
  *
  * Backward-compat note: `bib-qa.ts` and `validate-bib.ts` parse the new
  * shape strictly.  The migration script
- * `content/pipeline/migrate-bib-verifier.ts` converts every legacy
+ * `pipeline/migrate-bib-verifier.ts` converts every legacy
  * free-text entry to the structured shape in one pass.
  * @graphNode schema
  */

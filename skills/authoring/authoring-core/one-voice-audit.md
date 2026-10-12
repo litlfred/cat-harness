@@ -175,7 +175,7 @@ grep -rEni \
 # runs on chapter manifests, not blocks): auto-split " : <tag>"
 # artifacts, trailing colons, over-long / compound titles. Hard
 # defects exit 1; emits a per-chapter agent worklist.
-bun run content/pipeline/qa-section-title-audit.ts
+bun run pipeline/qa-section-title-audit.ts
 ```
 
 ### 2. Triage by category

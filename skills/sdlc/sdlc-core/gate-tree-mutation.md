@@ -65,7 +65,7 @@ input had moved.
 ### The worked example, and it is fixed
 
 Bean `3ozg`, 2026-09-27. The committed QA script sidecars under
-`cat-harness/content/pipeline/script-sidecars/` carry three such fields:
+`cat-harness-tools/pipeline/script-sidecars/` carry three such fields:
 
 ```
 last_run_at     wall-clock time of this run
@@ -118,7 +118,7 @@ treat it as a proposal:
 | where | the guard | what it cost to learn |
 |---|---|---|
 | `scripts/qa-results.ts` `writeQaResult` | compares `withoutTimestamp(prior)`, so only `updated_at` differing is not a write | *"run the check, get a modified file, commit nothing of substance"* — 2026-09-19, across `kg-export` and `avatar-coverage` |
-| `content/pipeline/qa-sweep.ts` | `wroteSomething = verdictChanged \|\| metadataDrifted`, and `updated_at` advances only then | restamping "made an otherwise no-op sweep dirty the whole corpus" |
+| `pipeline/qa-sweep.ts` | `wroteSomething = verdictChanged \|\| metadataDrifted`, and `updated_at` advances only then | restamping "made an otherwise no-op sweep dirty the whole corpus" |
 | `qa-utils.ts` `saveQaScriptSidecar` | content-derived fields only; since #1452 `engine_version` joins the two `last_run_*` | `3ozg` — the churn this skill is named for |
 
 `writeQaResult` is shared by every `*.qa-results.json` family, which is why
@@ -178,6 +178,6 @@ this: the gate is telling you something new, and cause 1 is the likelier answer.
 |---|---|
 | [`platform-gates`](platform-gates.md) | which gates to run, and cause 1 in full |
 | `scripts/gate-tree-guard.ts` | why the detector cannot live in a gate |
-| `content/pipeline/qa-utils.ts` | `saveQaScriptSidecar`'s comparison, with `3ozg`'s reasoning beside it |
+| `pipeline/qa-utils.ts` | `saveQaScriptSidecar`'s comparison, with `3ozg`'s reasoning beside it |
 | [`generalise-the-fix`](generalise-the-fix.md) | the same shape one level up: fix the class, not the instance |
 | [`upstream-version-adoption`](upstream-version-adoption.md) | moving a pin forward — a person's decision, never a gate's |

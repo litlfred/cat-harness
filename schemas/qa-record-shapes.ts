@@ -12,7 +12,7 @@
  */
 import type { QaCriterionEntry, QaFieldHash } from "./block-qa.ts";
 
-// ── from the tools layer's content/pipeline/qa-witness.ts ──
+// ── from the tools layer's pipeline/qa-witness.ts ──
 
 /**
  * Whether a witness's verdict still applies to the files on disk.
@@ -109,7 +109,7 @@ export interface QaResult {
   total: number;
 }
 
-// ── from the tools layer's content/pipeline/translation-block-qa.ts ──
+// ── from the tools layer's pipeline/translation-block-qa.ts ──
 
 /**
  * A translation verdict's inputs: the block's own companions, plus the `.po`.
@@ -144,7 +144,7 @@ export interface TranslationBlockQaReport {
   updated_at: string;
 }
 
-// ── from the tools layer's content/pipeline/lsi.ts ──
+// ── from the tools layer's pipeline/lsi.ts ──
 
 export interface LsiOptions {
   /** Requested rank. Capped at `min(terms, units) - 1`. Default 100 — the

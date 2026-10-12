@@ -10,7 +10,7 @@ Cross-language schema for the folio **block-QA sidecar** format. Three artefacts
 | **Pydantic models** (Python) | `python/block_qa_schema/` | `pip install block-qa-schema` |
 | **Zod schemas** (TypeScript) | `js/index.ts` | `npm install @litlfred/block-qa-schema` |
 
-All three describe the same two sidecar shapes emitted by the folio QA pipeline (`content/pipeline/qa-sweep.ts`):
+All three describe the same two sidecar shapes emitted by the folio QA pipeline (`pipeline/qa-sweep.ts`):
 
 - **`<block>.qa.json`** (`$schema: "block-qa/v1"`) — one per content block. Under each QA criterion sits an append-only array of reviewer verdicts (script / agent / human), each pinned to the content hashes it judged so it auto-stales on edit.
 - **`<criterion-id>.script.json`** (`$schema: "qa-script/v1"`) — one per automated criterion, recording the checker's own source hash so a checker bug fix invalidates every verdict it ever wrote, corpus-wide.

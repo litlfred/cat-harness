@@ -19,9 +19,9 @@ Tests are TypeScript using Bun's built-in test runner (`bun:test`).
 | `scripts/tests/run-tests.sh` | Shell entry point (delegates to `bun test`) |
 | `schemas/formalization-types.ts` | TypeScript types for test definitions, results, reports, coverage |
 | `content/schema/` | Content-object types, Zod schemas, builder functions |
-| `content/pipeline/validate.ts` | Content validation pipeline (schema + constraints + AST) |
-| `content/pipeline/render.ts` | Block → output rendering + AST validation |
-| `content/pipeline/build.ts` | Full document build from content objects |
+| `pipeline/validate.ts` | Content validation pipeline (schema + constraints + AST) |
+| `pipeline/render.ts` | Block → output rendering + AST validation |
+| `pipeline/build.ts` | Full document build from content objects |
 
 ## Dependency graph for scoped testing
 
@@ -124,7 +124,7 @@ When a new formal-layer library is added to the build manifest:
 Test content objects using the validation pipeline:
 
 ```typescript
-import { validateObjects } from "../../content/pipeline/validate";
+import { validateObjects } from "../../pipeline/validate";
 
 describe("Content objects", () => {
   test("all objects pass schema validation", async () => {
