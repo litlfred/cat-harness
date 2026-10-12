@@ -772,6 +772,15 @@
       "description": "Authored content of this instance itself, rendered to a website. Holds the landing sticky — the instance's own description and its onboarding links, as a page-global note rather than text composited into the backdrop."
     },
     {
+      "id": "folio-render",
+      "path": "folio/render/",
+      "graphTypologies": [
+        "cat-harness",
+        "code"
+      ],
+      "description": "The harness's own minimal folio renderer (bean ohx6, owner ruling 2026-10-10): `file-list.ts`, which renders the folio as the list of files it holds into `folio/index.md`, and the skill that says when to run it. Code and a skill, not folio content: the folio reader reads only `folio/*.json`, and the renderer skips this directory."
+    },
+    {
       "id": "docs",
       "path": "docs/",
       "description": "Documentation about the Knowledge Graph itself: the pages of the published site, some written by people and some generated from the graph. Also holds `reference/harness.config.example.json`, the worked example of an instance config that the installation guide tells a reader to copy into their content repository and that `package.json` `files` ships in the npm tarball — a reference asset, published with the site rather than rendered as a page. It sat at the repository root until 2026-10-06 (bean `ar1s`, phase 3: tooling leaves the root before the repo split).",
