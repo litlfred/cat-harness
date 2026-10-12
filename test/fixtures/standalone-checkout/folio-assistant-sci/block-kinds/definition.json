@@ -1,7 +1,7 @@
 {
   "$schema": "folio-block-kind/v1",
   "kind": "definition",
-  "adapter": "mathpaper",
+  "adapter": "paper",
   "profile": "paper",
   "labelPrefix": "def",
   "provable": true,

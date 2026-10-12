@@ -1,7 +1,7 @@
 {
   "$schema": "folio-block-kind/v1",
   "kind": "diagram",
-  "adapter": "document",
+  "adapter": "paper",
   "profile": "document",
   "labelPrefix": "fig",
   "folioType": "folio-assistant-core:Diagram",

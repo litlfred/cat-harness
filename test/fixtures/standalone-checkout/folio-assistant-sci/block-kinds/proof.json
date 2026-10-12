@@ -1,7 +1,7 @@
 {
   "$schema": "folio-block-kind/v1",
   "kind": "proof",
-  "adapter": "mathpaper",
+  "adapter": "paper",
   "profile": "paper",
   "labelPrefix": "prf",
   "folioType": "folio-assistant-sci:Proof",

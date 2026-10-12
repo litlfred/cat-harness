@@ -1,7 +1,7 @@
 {
   "$schema": "folio-block-kind/v1",
   "kind": "example",
-  "adapter": "document",
+  "adapter": "paper",
   "profile": "document",
   "labelPrefix": "ex",
   "folioType": "folio-assistant-core:Example",
