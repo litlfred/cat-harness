@@ -117,6 +117,16 @@
   <img src="{{ h.icon.src | relative_url }}" alt="" aria-hidden="true"
        class="fa-site-mark" width="32" height="32" />
   {%- endif -%}
+{%- else -%}
+  {%- comment -%}
+    NO ART AT ALL — the title's first letter, framed. Owner, 2026-10-12, on
+    smart-trust: *"avatar is missing … (if b/c now WHO logo, then use [W])"*.
+    With neither crop nor icon the header had no mark, so the collapsed rail
+    showed an empty strip where the control to open it should be — the avatar
+    IS that control (`docs-ui.js`, "THE AVATAR OPENS AND CLOSES THE BAR").
+  {%- endcomment -%}
+  {%- assign mark_title = h.title | default: site.title | strip -%}
+  <span class="fa-site-mark fa-site-mark--initial" aria-hidden="true">{{ mark_title | slice: 0 | upcase }}</span>
 {%- endif -%}
 {%- comment -%}
   The title's OWN language, which the row's direction follows (docs-ui.css,

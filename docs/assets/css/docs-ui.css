@@ -2651,6 +2651,27 @@ button.fa-qa-badge[aria-busy="true"] { opacity: 0.6; }
   max-width: none;
 }
 
+/* THE INITIAL — the mark of an instance that declares no art (`title.html`).
+ * The owner's "[W]": the title's first letter in a square frame, the same
+ * `--fa-nav-mark` column as the avatar so the title lines up either way, and
+ * `currentColor` so it follows the scheme with no colour of its own. */
+.fa-site-mark--initial {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  box-sizing: border-box;
+  width: var(--fa-nav-mark, 2rem);
+  height: var(--fa-nav-mark, 2rem);
+  margin-inline-end: 0.4rem;
+  border: 2px solid currentColor;
+  border-radius: 0.25rem;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+  vertical-align: -0.32em;
+}
+
 /* ── Action tiles ─────────────────────────────────────────────────────── */
 
 /* ONE PANEL, THE SIZE OF THE QR CODE, HOLDING EVERY HEADER ACTION.
