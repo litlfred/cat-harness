@@ -37,13 +37,20 @@ describe("the four axes are four, and none is a synonym for another", () => {
      * It is named here rather than filtered out. A test that quietly
      * skipped it would pass equally over a second overlap nobody intended,
      * which is the whole failure this test exists to catch. */
-    const EXPECTED_OVERLAPS = new Set(["paper"]);
+    //
+    // Bean `bzwk` (owner 2026-10-12) moves the one overlap: core's vocabulary
+    // is named `document`, the profile its kinds make up, and sci's is
+    // `mathpaper`, so `paper` leaves the adapter axis. Until both layers are
+    // re-pinned a checkout may hold either layout, so the overlap is the one
+    // name that is both a typed adapter and a profile — `paper` or `document`,
+    // never both and never anything else.
     const counts = new Map<string, number>();
     for (const v of [...CONTENT_ADAPTERS, ...CONTENT_PROFILES, ...VISUALISER_KINDS, ...CONTENT_INTERACTIVITY]) {
       counts.set(v, (counts.get(v) ?? 0) + 1);
     }
     const overlaps = [...counts].filter(([, n]) => n > 1).map(([v]) => v);
-    expect(new Set(overlaps)).toEqual(EXPECTED_OVERLAPS);
+    expect(overlaps).toHaveLength(1);
+    expect(["paper", "document"]).toContain(overlaps[0]);
   });
 
   test("the two NEW axes overlap nothing at all", () => {
