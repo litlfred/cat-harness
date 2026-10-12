@@ -165,7 +165,7 @@ is still unaskable: **the mechanism has no command, so no CI job and no person c
 run it.**
 
 Met on 2026-09-20 (bean `0bzg`). `checkFolioProfile` in
-`content/pipeline/profile-check.ts` catches what schema validation **structurally
+`pipeline/profile-check.ts` catches what schema validation **structurally
 cannot** — a block valid against its own schema but wrong for the folio's content
 profile, because adapters partition disjointly while profiles nest. Its only caller
 registered MCP tools. So the check was reachable by an MCP-connected agent and by

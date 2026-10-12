@@ -144,9 +144,9 @@
       "instructionsPath": "skills/ui/ui-core/docs-generation.md",
       "name": "docs-generation",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a0b592a10f4cedff9aade85da1c015640b0a63d77cf79eaf70ccbb0f50f7f53b",
-        "bytes": 7086,
-        "sha256": "a0b592a10f4cedff9aade85da1c015640b0a63d77cf79eaf70ccbb0f50f7f53b"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/73bb204c2d1137a48e91f0dc2496f53f278c2e6b5e5c48bff5ffea6d91edade1",
+        "bytes": 7046,
+        "sha256": "73bb204c2d1137a48e91f0dc2496f53f278c2e6b5e5c48bff5ffea6d91edade1"
       },
       "title": "Documentation Generation Skill"
     },

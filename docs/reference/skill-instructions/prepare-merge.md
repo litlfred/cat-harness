@@ -239,7 +239,7 @@ in [`kg-export`](kg-export.md) §"`fsh-guts` NEVER reaches a published graph".
    it is only ever true because someone dispatched it.
 
    Several of those files document a **local equivalent in their own header**
-   — e.g. `bun run content/pipeline/lean-orphan-audit.ts --diff <changed .lean>`
+   — e.g. `bun run pipeline/lean-orphan-audit.ts --diff <changed .lean>`
    and `python3 scripts/probe-float64-guard.py --diff <changed .py>`. Run
    those; they are the same check without the dispatch. Read the workflow
    before assuming there is no local path.

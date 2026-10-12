@@ -13,9 +13,9 @@
       "@type": "bootstrap:Skill",
       "name": "domain-fencing",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0d8c676d3cf26429bd3661993bfb9ce576f2b6a014af90e17d66fa6176dfd969",
-        "bytes": 11673,
-        "sha256": "0d8c676d3cf26429bd3661993bfb9ce576f2b6a014af90e17d66fa6176dfd969"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/503902aec16041a282a35a61abf5a0faab2c11535b93b7d4e8a3adaa661dadb8",
+        "bytes": 11657,
+        "sha256": "503902aec16041a282a35a61abf5a0faab2c11535b93b7d4e8a3adaa661dadb8"
       },
       "title": "Domain fencing — keeping one folio's rules out of everybody's platform"
     },
@@ -35,9 +35,9 @@
       "@type": "bootstrap:Skill",
       "name": "graph-detanglement",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d26eae9bdb7fd4f218c0cc9fb0b9e366e0fca636d88e11ebeec51a613279b1af",
-        "bytes": 17960,
-        "sha256": "d26eae9bdb7fd4f218c0cc9fb0b9e366e0fca636d88e11ebeec51a613279b1af"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/416443920268fd27b94c823715badef61cdc7fa6cf529ee08858f59a46db7542",
+        "bytes": 17952,
+        "sha256": "416443920268fd27b94c823715badef61cdc7fa6cf529ee08858f59a46db7542"
       },
       "title": "Graph detanglement — the practice, not the migration"
     },
@@ -46,9 +46,9 @@
       "@type": "bootstrap:Skill",
       "name": "graph-rendering",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/70a6f13b77e79286ba9cc8661fbc96911591908ae68efc3d09b141cbb207a8c1",
-        "bytes": 12138,
-        "sha256": "70a6f13b77e79286ba9cc8661fbc96911591908ae68efc3d09b141cbb207a8c1"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d385563cb97cb9a926038ebc70b9045b2f6eea42a49b15d1c84e24f6e97f3263",
+        "bytes": 12130,
+        "sha256": "d385563cb97cb9a926038ebc70b9045b2f6eea42a49b15d1c84e24f6e97f3263"
       },
       "title": "Graph rendering: one set of rules for every drawn graph"
     },
@@ -57,9 +57,9 @@
       "@type": "bootstrap:Skill",
       "name": "kg-separation",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2ca44d5fead81d3e0f4550b998c886939243cb99328e0d3b366a5666efaf100f",
-        "bytes": 40152,
-        "sha256": "2ca44d5fead81d3e0f4550b998c886939243cb99328e0d3b366a5666efaf100f"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/49f545eb1fc85b026760ec60c73044d53d5205dd3c73c6eedde22d0fd1aa9ba0",
+        "bytes": 40144,
+        "sha256": "49f545eb1fc85b026760ec60c73044d53d5205dd3c73c6eedde22d0fd1aa9ba0"
       },
       "title": "Knowledge Graph separation — the method"
     },
@@ -79,9 +79,9 @@
       "@type": "bootstrap:Skill",
       "name": "lsi-indexing",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b2d59f1d919bed820359066054631b39694a40fd38297b540c12c6fadcade681",
-        "bytes": 16336,
-        "sha256": "b2d59f1d919bed820359066054631b39694a40fd38297b540c12c6fadcade681"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/295fe5c58c2ccc862cad9d4c29ac6c93b3b8ac2a8524a22a7386c1952766cba6",
+        "bytes": 16312,
+        "sha256": "295fe5c58c2ccc862cad9d4c29ac6c93b3b8ac2a8524a22a7386c1952766cba6"
       },
       "title": "LSI indexing — the platform's application of `methodologies/lsi.md`"
     },

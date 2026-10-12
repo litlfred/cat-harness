@@ -14,7 +14,7 @@ Candidate terms extracted from every BPMN task and call activity: `name` as the 
 
 From: bootstrap 38 (<a href="{{ '/assets/glossary/bootstrap--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · bootstrap-tools 7 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 481 (<a href="{{ '/assets/glossary/cat-harness--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 30 (<a href="{{ '/assets/glossary/fhir-harness--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 161 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 12 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 22 (<a href="{{ '/assets/glossary/smart-base--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>).
 
-**Size:** this page holds 751 terms and is 609 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 751 terms and is 610 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
@@ -2948,7 +2948,7 @@ Note the missed coupling on the bean [todo-manager] <span class="fa-gloss-status
 OCR to ocr/page-*.txt <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>A document ingested this way keeps its text in ocr/ and only a stub in sections/, which the documented sections/ grep cannot see. That asymmetry is why the corpus-grep checklist has a fourth tier.</p>
+<p>A document ingested this way keeps its text in ocr/ and only a stub in sections/, which the documented sections/ grep cannot see. That asymmetry is why the corpus-grep checklist has a fourth tier. The run also records WHICH SOFTWARE made the pages, in ocr/run-context.json: a folio-run-context/v1 (cat-harness schemas/run-context.ts, the record test runs and QA reports use for the same question), naming the OCR engine, the rasteriser and each language model with its version and the sha256 of the bytes that ran. Two OCRs of one scan can read differently (&quot;Manual&quot; and &quot;Manval&quot;, bean turh), and without it neither could be told from the other or reproduced.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/library/ingest-extract-structure.bpmn"><code>folio-assistant-core/processes/library/ingest-extract-structure.bpmn#Task_Ocr</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_crdm_signoff.a_offerkg" data-fa-state="extracted" data-fa-gloss="">
@@ -5318,7 +5318,7 @@ Write status.json (unofficial) <span class="fa-gloss-status">candidate, extracte
 Write structure.json (TOC, page ranges, metadata) <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Write structure.json (pdf-structure/v1): doc id, TOC from the PDF outline or inferred from headings, page ranges, metadata, and source&#123;} with the sha256 and a mimetype sniffed from the bytes, never the extension. A structure that could not be determined says so in structure_note rather than being rendered as one.</p>
+<p>Write structure.json (pdf-structure/v1): doc id, TOC from the PDF outline or inferred from headings, page ranges, metadata, and source&#123;} with the sha256 and a mimetype sniffed from the bytes, never the extension. A structure that could not be determined says so in structure_note rather than being rendered as one. For OCR'd text, source.runContext cites the OCR step's run context by sha256. A title already known for the document (the catalogue's dc.title, or one given with --title) is passed through as the raw title, so the sections' doc_title does not carry a scan's misreading (bean turh).</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/library/ingest-extract-structure.bpmn"><code>folio-assistant-core/processes/library/ingest-extract-structure.bpmn#Task_Structure</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_wireframedesignreview.d_intent" data-fa-state="extracted" data-fa-gloss="">

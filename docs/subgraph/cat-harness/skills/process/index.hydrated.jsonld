@@ -39,9 +39,9 @@
           "instructionsPath": "skills/process/process-core/compiled-artefact-cache.md",
           "name": "compiled-artefact-cache",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ba49a832ade3c74b5ba643ee63bbb10f4973c654dbe7b8571836b1982af9b0b5",
-            "bytes": 6257,
-            "sha256": "ba49a832ade3c74b5ba643ee63bbb10f4973c654dbe7b8571836b1982af9b0b5"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4e772fe2c95efc0a564be5020ebe8f9cb6a443db0dbd6e2b0040ea477aa1b193",
+            "bytes": 6249,
+            "sha256": "4e772fe2c95efc0a564be5020ebe8f9cb6a443db0dbd6e2b0040ea477aa1b193"
           },
           "title": "Compiled Artefact Cache"
         },
@@ -148,13 +148,13 @@
           "hasInstructions": true,
           "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/process-core",
           "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-          "instructionLines": 347,
+          "instructionLines": 358,
           "instructionsPath": "skills/process/process-core/task-authorization.md",
           "name": "task-authorization",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/87af43f7879e718b236728d962201ccd8609b1afea52413b293500d899367408",
-            "bytes": 18322,
-            "sha256": "87af43f7879e718b236728d962201ccd8609b1afea52413b293500d899367408"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7a183761224f68654dca2ab4ede821bd7b7da962a06e0e7a45b959b1b57b522e",
+            "bytes": 18977,
+            "sha256": "7a183761224f68654dca2ab4ede821bd7b7da962a06e0e7a45b959b1b57b522e"
           },
           "title": "Task authorization — four questions before every task"
         }
@@ -288,9 +288,9 @@
           "instructionsPath": "skills/process/workflow/branch-freshness.md",
           "name": "branch-freshness",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/fda7ad72f7706bcd79382376d6007da3fbc30b46255a78af3e74cf90baba1e13",
-            "bytes": 3593,
-            "sha256": "fda7ad72f7706bcd79382376d6007da3fbc30b46255a78af3e74cf90baba1e13"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4c77f3f8db2fc917f9c5e280168e268fdf880ddb4470c0b315e9761b06eab928",
+            "bytes": 3585,
+            "sha256": "4c77f3f8db2fc917f9c5e280168e268fdf880ddb4470c0b315e9761b06eab928"
           },
           "title": "Branch freshness — stay current with main"
         },
@@ -307,9 +307,9 @@
           "instructionsPath": "skills/process/workflow/code-review-process.md",
           "name": "code-review-process",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0661fd7a39549887f214929a804056a8c8a7a9b9466ae02ea576311db93adf55",
-            "bytes": 3283,
-            "sha256": "0661fd7a39549887f214929a804056a8c8a7a9b9466ae02ea576311db93adf55"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6a50fa1b11a34088da2962530569e2e7f02ca1a4a1800ff6a1c95f0525ad024e",
+            "bytes": 3275,
+            "sha256": "6a50fa1b11a34088da2962530569e2e7f02ca1a4a1800ff6a1c95f0525ad024e"
           },
           "title": "Code review process — from PR to release approval"
         },
@@ -361,13 +361,13 @@
           "hasInstructions": true,
           "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/workflow",
           "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-          "instructionLines": 239,
+          "instructionLines": 256,
           "instructionsPath": "skills/process/workflow/process-state.md",
           "name": "process-state",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/aa61a5dacfce58ca4b693fcbf0f1d65245cca171dbacaa87b5764834118d0f1c",
-            "bytes": 12985,
-            "sha256": "aa61a5dacfce58ca4b693fcbf0f1d65245cca171dbacaa87b5764834118d0f1c"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a55bdad392895afaa6532a9d44ae7b55a6216fb3981ed618528bd4f20cfb650d",
+            "bytes": 14024,
+            "sha256": "a55bdad392895afaa6532a9d44ae7b55a6216fb3981ed618528bd4f20cfb650d"
           },
           "title": "Process state — the task you are in, inside the process you are running"
         },

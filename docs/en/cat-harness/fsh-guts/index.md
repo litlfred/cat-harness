@@ -25,12 +25,12 @@ generally: a scrapped item stops the next agent re-entering a dead end, while
 a deleted one cannot be told from an accident. Delete here means relocate, and
 relocate is reversible.
 
-**188 file(s)** across 6 group(s). Each links to the file itself —
+**195 file(s)** across 6 group(s). Each links to the file itself —
 this page indexes what is kept, it does not republish it.
 
 > **Count relationship:** This page indexes all tracked files across the repository's trashcan.
 > The interactive viewer (▦ Actions → Settings → Discarded or navigation bar fish icon) inspects
-> the declared items from the `@graph` export (100 declared nodes) plus any stickies discarded locally in this browser.
+> the declared items from the `@graph` export (103 declared nodes) plus any stickies discarded locally in this browser.
 
 ## Does each file declare itself?
 
@@ -42,11 +42,11 @@ would make the format's limit and somebody's omission look the same.
 
 | state | files | what it means |
 |---|---|---|
-| <span class="fg-tag fg-ok">declared</span> | 100 | carries the tag itself |
+| <span class="fg-tag fg-ok">declared</span> | 103 | carries the tag itself |
 | <span class="fg-tag fg-side">via sidecar</span> | 60 | a script, or a frozen copy of a separated graph, described by a tagged `.md` sibling |
-| <span class="fg-tag fg-gap">undeclared</span> | 28 | **neither** — a gap, not a format limit |
+| <span class="fg-tag fg-gap">undeclared</span> | 32 | **neither** — a gap, not a format limit |
 
-The 28 undeclared are listed below with the rest rather than in a
+The 32 undeclared are listed below with the rest rather than in a
 separate section: they are part of the corpus, and a gap hidden behind a
 summary count is the failure this table exists to avoid.
 
@@ -60,7 +60,7 @@ summary count is the failure this table exists to avoid.
 
 ## retired
 
-34 file(s).
+41 file(s).
 
 | file | what it is | declares itself |
 |---|---|---|
@@ -80,10 +80,17 @@ summary count is the failure this table exists to avoid.
 | <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/detangle-schema-viewer.md" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="detangle-schema-viewer.md (opens on GitHub)">detangle-schema-viewer.md ↗</a> | detangle's schema viewer page — retired 2026-09-23 | <span class="fg-tag fg-ok">declared</span> |
 | <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/external-schema-w3c-dcat-3.md" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="external-schema-w3c-dcat-3.md (opens on GitHub)">external-schema-w3c-dcat-3.md ↗</a> | The record, as it was | <span class="fg-tag fg-ok">declared</span> |
 | <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/kg-export-folio-assistant-orphan-sidecar.md" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="kg-export-folio-assistant-orphan-sidecar.md (opens on GitHub)">kg-export-folio-assistant-orphan-sidecar.md ↗</a> | The orphaned `kg-export.@litlfred/folio-assistant` sidecar | <span class="fg-tag fg-ok">declared</span> |
+| <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/kg-qa-tools-tabular-csv.kg-qa.json" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="kg-qa-tools-tabular-csv.kg-qa.json (opens on GitHub)">kg-qa-tools-tabular-csv.kg-qa.json ↗</a> | — | <span class="fg-tag fg-gap">undeclared</span> |
+| <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/kg-qa-tools-tabular-sidecars.md" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="kg-qa-tools-tabular-sidecars.md (opens on GitHub)">kg-qa-tools-tabular-sidecars.md ↗</a> | Dead tabular kg-qa sidecars, 2026-10-12 | <span class="fg-tag fg-ok">declared</span> |
+| <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/kg-qa-tools-tabular-xlsx.kg-qa.json" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="kg-qa-tools-tabular-xlsx.kg-qa.json (opens on GitHub)">kg-qa-tools-tabular-xlsx.kg-qa.json ↗</a> | — | <span class="fg-tag fg-gap">undeclared</span> |
 | <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/legacy-root-configs.md" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="legacy-root-configs.md (opens on GitHub)">legacy-root-configs.md ↗</a> | Legacy Root Configs Retirement | <span class="fg-tag fg-ok">declared</span> |
 | <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/library-orphaned-figure-blocks.md" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="library-orphaned-figure-blocks.md (opens on GitHub)">library-orphaned-figure-blocks.md ↗</a> | Orphaned library figure blocks | <span class="fg-tag fg-ok">declared</span> |
 | <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/library-orphaned-figure-blocks.tar.gz" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="library-orphaned-figure-blocks.tar.gz (opens on GitHub)">library-orphaned-figure-blocks.tar.gz ↗</a> | — | <span class="fg-tag fg-gap">undeclared</span> |
 | <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/patches/oxigraph@0.5.11.patch" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="patches/oxigraph@0.5.11.patch (opens on GitHub)">patches/oxigraph@0.5.11.patch ↗</a> | — | <span class="fg-tag fg-gap">undeclared</span> |
+| <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/regen-orphans-2026-10-10.md" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="regen-orphans-2026-10-10.md (opens on GitHub)">regen-orphans-2026-10-10.md ↗</a> | Generated orphans, 2026-10-10 | <span class="fg-tag fg-ok">declared</span> |
+| <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/regen-orphans-2026-10-10.tar.gz" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="regen-orphans-2026-10-10.tar.gz (opens on GitHub)">regen-orphans-2026-10-10.tar.gz ↗</a> | — | <span class="fg-tag fg-gap">undeclared</span> |
+| <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/regen-orphans-2026-10-11.md" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="regen-orphans-2026-10-11.md (opens on GitHub)">regen-orphans-2026-10-11.md ↗</a> | Generated orphans, 2026-10-11 | <span class="fg-tag fg-ok">declared</span> |
+| <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/regen-orphans-2026-10-11.tar.gz" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="regen-orphans-2026-10-11.tar.gz (opens on GitHub)">regen-orphans-2026-10-11.tar.gz ↗</a> | — | <span class="fg-tag fg-gap">undeclared</span> |
 | <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/remote-stubs-package.md" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="remote-stubs-package.md (opens on GitHub)">remote-stubs-package.md ↗</a> | `remote-stubs`, as it was at retirement | <span class="fg-tag fg-ok">declared</span> |
 | <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/skill-capability-front-matter.md" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="skill-capability-front-matter.md (opens on GitHub)">skill-capability-front-matter.md ↗</a> | `capability:` in skill front matter — the whole record | <span class="fg-tag fg-ok">declared</span> |
 | <a href="https://github.com/litlfred/folio-assistant/blob/main/fsh-guts/retired/skill-definition-roles.md" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="skill-definition-roles.md (opens on GitHub)">skill-definition-roles.md ↗</a> | `SkillDefinition.roles` — retired 2026-09-20 | <span class="fg-tag fg-ok">declared</span> |

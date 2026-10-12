@@ -2,7 +2,7 @@
   "$schema": "folio-bean-index/v1",
   "tile": {
     "beans": {
-      "count": 188,
+      "count": 179,
       "unit": "open beans"
     }
   },
@@ -167,14 +167,14 @@
     {
       "id": "folio-assistant-0ipy",
       "title": "AGENTIC SE LITERATURE: five papers on agentic code review, adversarial debate and agent routing — ingest, analyse within and across, and attack folio-assistant with them",
-      "status": "in-progress",
+      "status": "completed",
       "type": "epic",
       "priority": "normal",
       "parent": "folio-assistant-rwmf",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-02T23:15:14Z",
-      "updatedAt": "2026-10-04T15:13:14Z",
+      "updatedAt": "2026-10-12T18:26:29Z",
       "preview": "placeholder",
       "file": "beans/defs/folio-assistant-0ipy--agentic-se-literature-five-papers-on-agentic-code.md"
     },
@@ -640,7 +640,7 @@
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-26T03:55:45Z",
-      "updatedAt": "2026-09-26T03:55:45Z",
+      "updatedAt": "2026-10-12T09:05:00Z",
       "preview": "`pages-publish-health` (bean `qj9a`) counts instruments for observing the\npublished site. The count is **0**, so it reports a `major` finding whose action\nis this bean. This is that probe, specified rather than built, because it cannot\nbe built here.\n\n## Why it cannot be written or tested from an agent's container\n\nMeasured 2026-09-25 and 2026-09-26, every route refused:\n\n| route | result |\n|---|-",
       "file": "beans/defs/folio-assistant-1dre--pages-serving-probe-the-instrument-pages-publish-h.md"
     },
@@ -1896,14 +1896,14 @@
     {
       "id": "folio-assistant-4ccr",
       "title": "WIREFRAME FINDINGS: usability and accessibility defects the as-is wireframes observed (#1023)",
-      "status": "in-progress",
+      "status": "completed",
       "type": "epic",
       "priority": "normal",
       "parent": "folio-assistant-rwmf",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-23T10:36:13Z",
-      "updatedAt": "2026-10-10T17:35:03Z",
+      "updatedAt": "2026-10-12T18:26:29Z",
       "preview": "The as-is wireframes merged in #1032 record, for every declared harness visualiser, what the page actually does at 1280×800 (web) and 390×844 (mobile). The `## Findings` section of each `cat-harness/docs/wireframes/<kind>/intent.md` holds only what was observed on the rendered page or read off its generator; nothing is inferred.\n\nThis epic turns those findings into work (owner, 2026-09-23: *\"make ",
       "file": "beans/defs/folio-assistant-4ccr--wireframe-findings-usability-and-accessibility-def.md"
     },
@@ -2127,14 +2127,14 @@
     {
       "id": "folio-assistant-4tnt",
       "title": "folio-test main lags the pipeline: the dogfood folio does not exercise what folio_init writes today",
-      "status": "todo",
+      "status": "in-progress",
       "type": "bug",
       "priority": "normal",
       "parent": "folio-assistant-vuip",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-04T15:10:09Z",
-      "updatedAt": "2026-10-10T16:31:50Z",
+      "updatedAt": "2026-10-12T16:07:00Z",
       "preview": "Recorded from the qou work-plan analysis, 2026-10-04 (session https://claude.ai/code/session_01NdDGeP1SyShmoUssLuRZ91). Not started: recorded so the gap has an owner. litlfred/folio-test was stood up by 58h0 as the folio_init dogfood; its main is behind the current template and pipeline, so it no longer proves what it was made to prove. Re-measure the delta before acting.\n\n\nRe-parented 2026-10-04 ",
       "file": "beans/defs/folio-assistant-4tnt--folio-test-main-lags-the-pipeline-the-dogfood-foli.md"
     },
@@ -2477,7 +2477,7 @@
     {
       "id": "folio-assistant-5rmf",
       "title": "NAVBAR QR ICON GONE: the LHS top row's QR code for the current page no longer appears, though its generator still loads",
-      "status": "todo",
+      "status": "completed",
       "type": "bug",
       "priority": "normal",
       "parent": "folio-assistant-9rq1",
@@ -2486,21 +2486,21 @@
         "folio-assistant-ndp0"
       ],
       "createdAt": "2026-10-06T06:51:27Z",
-      "updatedAt": "2026-10-10T16:50:32Z",
+      "updatedAt": "2026-10-12T16:36:00Z",
       "preview": "Owner, 2026-10-06 (https://claude.ai/code/session_012qoycyCSGidZqW245vXhze), verbatim:\n\n> LHS top navbar used to have a QR code icon that would make a QR code for the currently viewed page and show it inside the LHS navbar.\n\n## Measured\n- The generator is still shipped. `cat-harness/docs/_includes/head_custom.html:181` documents *\"Site UI: a QR of the current page in the sidebar header\"*, and line",
       "file": "beans/defs/folio-assistant-5rmf--navbar-qr-icon-gone-the-lhs-top-rows-qr-code-for-t.md"
     },
     {
       "id": "folio-assistant-5ulq",
       "title": "STRICT IN NAME ONLY: 9 workflow instances against 755 merges, and no gate reads beans/workflows at all",
-      "status": "todo",
+      "status": "completed",
       "type": "bug",
       "priority": "normal",
       "parent": "folio-assistant-0ipy",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-02T23:49:21Z",
-      "updatedAt": "2026-10-10T15:46:50Z",
+      "updatedAt": "2026-10-12T09:36:00Z",
       "preview": "## Measured 2026-10-02 at `871b1da1c`\n\n| | |\n|---|---|\n| instance files in `beans/workflows/` | **9** |\n| first-parent merge commits on `origin/main` since 2026-09-20T18:00Z | **755** |\n| gates or workflows referencing `beans/workflows` | **0** (grep over `.github/workflows/` and `cat-harness/scripts/check-*.ts`) |\n| bean `vlhk`, which made the rule mandatory | `status: completed`, archived |\n\n`AG",
       "file": "beans/defs/folio-assistant-5ulq--strict-in-name-only-9-workflow-instances-against-7.md"
     },
@@ -2865,14 +2865,14 @@
     {
       "id": "folio-assistant-6eiw",
       "title": "Library titles for non-PDF entries (pptx deck, CODATA table)",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-4ccr",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-02T12:55:31Z",
-      "updatedAt": "2026-10-11T06:23:23Z",
+      "updatedAt": "2026-10-12T09:12:00Z",
       "preview": "## Why\n\nBean `w6fu` (PR #1849) gave PDF library entries a verified title: a title is\nused only when two independent sources agree, or when an editorial\n`title_correction` exists. Two entries are not PDFs, so that resolver never\nreaches them, and they still show placeholder titles:\n\n| entry | format | what shows now | evidence in the file |\n|---|---|---|---|\n| `cat-harness/library/kg-folio-asst-202",
       "file": "beans/defs/folio-assistant-6eiw--library-titles-for-non-pdf-entries-pptx-deck-codat.md"
     },
@@ -5507,14 +5507,14 @@
     {
       "id": "folio-assistant-cp3v",
       "title": "TOC extractor: benchmark methods against PDF outlines and add a font-metric (layout) method (#2302)",
-      "status": "in-progress",
+      "status": "completed",
       "type": "feature",
       "priority": "normal",
       "parent": "folio-assistant-slw1",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-06T17:14:06Z",
-      "updatedAt": "2026-10-06T17:42:45Z",
+      "updatedAt": "2026-10-12T18:26:29Z",
       "preview": "Issue #2302. The outline-less fallback (infer_headings) is regex-on-text only. Build a benchmark that hides each PDF's embedded outline and scores candidate extractors against it, compare methods (current regex, PyMuPDF font-metric layout, contents-page parse, Grobid/Nougat evaluated), and land the best rule-based method.\n\n- [x] benchmark harness + metric\n- [x] font-metric method\n- [x] comparison ",
       "file": "beans/defs/folio-assistant-cp3v--toc-extractor-benchmark-methods-against-pdf-outlin.md"
     },
@@ -6076,14 +6076,14 @@
     {
       "id": "folio-assistant-ec2a",
       "title": "LSI over blocks and Lean declarations: extend lsi-indexing with folio and lean-decl graph kinds and a cross-graph query",
-      "status": "todo",
+      "status": "in-progress",
       "type": "feature",
       "priority": "normal",
       "parent": "folio-assistant-zzmr",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-04T15:10:08Z",
-      "updatedAt": "2026-10-10T16:38:24Z",
+      "updatedAt": "2026-10-12T16:00:00Z",
       "preview": "Recorded from the qou work-plan analysis, 2026-10-04 (session https://claude.ai/code/session_01NdDGeP1SyShmoUssLuRZ91). Not started: recorded so the gap has an owner. lsi-indexing covers library, skills, beans, docs only. qou's 141 duplicate groups are mostly the same Lean declaration filed twice; a cross-graph index would let lsi:near say 'this bean is about block Y / declaration Z'. Block indexe",
       "file": "beans/defs/folio-assistant-ec2a--lsi-over-blocks-and-lean-declarations-extend-lsi-i.md"
     },
@@ -6274,14 +6274,14 @@
     {
       "id": "folio-assistant-esz4",
       "title": "Every special branch carries a README declaring what it is, how and when it was generated — and it is KG, not just prose",
-      "status": "todo",
+      "status": "completed",
       "type": "feature",
       "priority": "",
       "parent": "folio-assistant-fs43",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-03T08:19:43Z",
-      "updatedAt": "2026-10-03T08:19:43Z",
+      "updatedAt": "2026-10-12T10:15:00Z",
       "preview": "Owner, 2026-10-03: *\"make sure each of the special branches has a read me file\nexplaining what they are how they are generated when they were generated, etc.\nlike cat/cat-harness/beans branch. that should be in KG too\"*.\n\n## Measured state, 2026-10-03\n\n`special-branches.json` on `main` declares **8** entries. Five exist as\n`cat/<harness>/<name>` heads on the remote:\n\n| branch | README |\n|---|---|\n",
       "file": "beans/defs/folio-assistant-esz4--every-special-branch-carries-a-readme-declaring-wh.md"
     },
@@ -6332,14 +6332,14 @@
     {
       "id": "folio-assistant-f1e1",
       "title": "Identity of the person typing, outside a GitHub environment — needs WAY more work",
-      "status": "todo",
+      "status": "in-progress",
       "type": "feature",
       "priority": "normal",
       "parent": "folio-assistant-7x5n",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-06T18:50:25Z",
-      "updatedAt": "2026-10-10T16:38:24Z",
+      "updatedAt": "2026-10-12T16:50:00Z",
       "preview": "Owner 2026-10-06: 'this needs WAY more work when not in GitHub environment'.\n\nWhat landed (bean ar1s P1, this session): interaction preferences are keyed by GitHub handle (+ optional published aliases); the session-start sweep resolves the handle through the authentication Tool's own resolver (`bun run cat auth:login` -> githubIdentity, part of auth_whoami, issue #1207) and matches it with the Cla",
       "file": "beans/defs/folio-assistant-f1e1--identity-of-the-person-typing-outside-a-github-env.md"
     },
@@ -7378,7 +7378,7 @@
       ],
       "blockedBy": [],
       "createdAt": "2026-10-02T17:17:27Z",
-      "updatedAt": "2026-10-04T15:12:15Z",
+      "updatedAt": "2026-10-12T17:10:00Z",
       "preview": "Owner, 2026-10-02: the merge pipeline gets its own top-level epic, marked as blocking the separation epic `7x5n`. Running the queue is NOT part of this epic; this epic is the finite build list below.\n\nUntil now the steward's ordering lived in prose (#1802's merge-manager SOP step 2, \"oldest first, unless the owner names an order\"), so nothing recorded WHY one PR jumped ahead of another, and a seco",
       "file": "beans/defs/folio-assistant-hfag--merge-pipeline-train-process-queue-state-repriorit.md"
     },
@@ -9340,7 +9340,7 @@
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-10T15:54:05Z",
-      "updatedAt": "2026-10-10T16:58:41Z",
+      "updatedAt": "2026-10-12T17:10:00Z",
       "preview": "Found by drain lane B (session_01QmRtjQNyHiH2RuimTfuJDu) on cat-harness-tools#59, 2026-10-10.\n\nCI log: one error, build-instance-site.ts — 'into' does not exist in type 'PublishOptions'. Identical on main and on #59, so every cat-harness-tools PR shows a red Typecheck that is not its own. A cast is NOT the fix: with the pinned bootstrap-tools, 'into' is silently ignored, so a staging preview publi",
       "file": "beans/defs/folio-assistant-mm4u--cat-harness-tools-main-typecheck-red-since-its-58.md"
     },
@@ -9529,7 +9529,7 @@
       ],
       "blockedBy": [],
       "createdAt": "2026-10-10T16:42:44Z",
-      "updatedAt": "2026-10-10T16:58:41Z",
+      "updatedAt": "2026-10-12T17:12:00Z",
       "preview": "Found by drain lane B, verified by lane A 2026-10-10: litlfred/cat-harness main no longer has scripts/run-script.ts, session-start-coord-sweep.sh, ask-well.sh or decisions-named-not-asked.ts. The pinned a89998b still has them, so nothing is broken today; the first re-pin of cat-harness past 70lx breaks `bun run cat …`, the SessionStart hook, and two prompt hooks, silently for the hooks.\n\nLane B al",
       "file": "beans/defs/folio-assistant-ndp0--next-cat-harness-re-pin-breaks-the-root-claudesett.md"
     },
@@ -9888,14 +9888,14 @@
     {
       "id": "folio-assistant-ohx6",
       "title": "CAT-HARNESS/FOLIO: a minimal just-the-docs rendering describing folio, and folio/render for the rendering skills and tools",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-vke6",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-20T14:28:56Z",
-      "updatedAt": "2026-10-10T16:31:49Z",
+      "updatedAt": "2026-10-12T16:05:00Z",
       "preview": "Owner, 2026-09-20, verbatim:\n\n> catharness build on that.   from there on up need to meet requirements b/c\n> cat-harness hould provude it with folio, etc.   it is a minimal justthedocs\n> rendering in cat-harness/folio/ describing folio and cat-harness/folio/render\n> for rendeing skills/tools etc.\n\n## What it asks for\n\nTwo directories, and they are different kinds of thing:\n\n| path | what it holds ",
       "file": "beans/defs/folio-assistant-ohx6--cat-harnessfolio-a-minimal-just-the-docs-rendering.md"
     },
@@ -11215,7 +11215,7 @@
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-18T15:00:27Z",
-      "updatedAt": "2026-10-10T16:21:17Z",
+      "updatedAt": "2026-10-12T16:05:00Z",
       "preview": "Mechanical but wide: **2,408** literal `content/` occurrences across **429**\nfiles (measured 2026-09-18). `content/` holds no content — it is 431 files /\n46,401 lines of *pipeline*.\n\n**NOT blocked on bean `fsch`.** It was scrapped 2026-09-20 and the block is\nvoid.\n\n**But the deliverable as written is IMPOSSIBLE, and the sentence that stood\nhere on 2026-09-22 argued the opposite. See §\"FALSIFIED\" b",
       "file": "beans/defs/folio-assistant-rnfl--phase-i-3-rename-content-to-folio-2408-occurrences.md"
     },
@@ -11236,14 +11236,14 @@
     {
       "id": "folio-assistant-rq8s",
       "title": "A SESSION BLOCKED ON THE OWNER IS INVISIBLE: four sessions held verbatim questions that only the session API could see, and nothing durable records one",
-      "status": "todo",
+      "status": "in-progress",
       "type": "bug",
       "priority": "normal",
       "parent": "folio-assistant-ahvw",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-21T06:30:04Z",
-      "updatedAt": "2026-10-10T16:31:50Z",
+      "updatedAt": "2026-10-12T10:05:00Z",
       "preview": "Found 2026-09-21 by the `goal-review` sweep of 2026-09-20T19:00Z →\n2026-09-21T06:25Z (session_01AYHimvYMmf8h8e9fFN6dW5). An instruction gap, and\nthe sweep's headline finding.\n\n## Measured\n\n`list_sessions` returned **7 sibling sessions**. **Four of them were stopped,\nwaiting on the owner**, each holding a question in the owner's own terms:\n\n| session | the question it is holding |\n|---|---|\n| WHO I",
       "file": "beans/defs/folio-assistant-rq8s--a-session-blocked-on-the-owner-is-invisible-four-s.md"
     },
@@ -12372,14 +12372,14 @@
     {
       "id": "folio-assistant-u9lb",
       "title": "TOC benchmark: score Nougat on the 13 outline PDFs (needs huggingface.co) (#2302)",
-      "status": "todo",
+      "status": "completed",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-cp3v",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-06T18:05:01Z",
-      "updatedAt": "2026-10-07T10:57:08Z",
+      "updatedAt": "2026-10-12T12:30:00Z",
       "preview": "Follow-up to bean cp3v / PR #2303 (issue #2302). Needs an agent with network access to huggingface.co (Nougat weights); the cp3v session's container is denied it.\n\nBranch from claude/compassionate-johnson-rzv00r and open a PR INTO that branch (or into main once #2303 has merged). Do not edit _pdf_headings.py.\n\n## Steps\n- [ ] pip install nougat-ocr (weights: facebook/nougat-small; nougat-base if a ",
       "file": "beans/defs/folio-assistant-u9lb--toc-benchmark-score-nougat-on-the-13-outline-pdfs.md"
     },
@@ -13595,14 +13595,14 @@
     {
       "id": "folio-assistant-x4mt",
       "title": "SKILLS: cross-agent installation + fa- namespace prefix (issue #247)",
-      "status": "todo",
+      "status": "in-progress",
       "type": "task",
       "priority": "normal",
       "parent": "folio-assistant-vke6",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-09-18T15:28:10Z",
-      "updatedAt": "2026-10-10T15:46:50Z",
+      "updatedAt": "2026-10-12T15:55:00Z",
       "preview": "## What\n\nInstall folio-assistant's skills into whichever agent is running (Claude Code,\nGemini CLI, Antigravity, Cursor, Copilot), across the whole dependency tree —\na folio links the platform as submodule or sibling, so the skill set is a union\nacross checkouts rather than one directory listing. Prefix every emitted skill\n`fa-` so the host's namespace does not collide.\n\nNot started. The issue rec",
       "file": "beans/defs/folio-assistant-x4mt--cross-agent-skill-install-fa-prefix.md"
     },
@@ -16066,13 +16066,13 @@
         "status": "todo",
         "epics": 2,
         "total": 71,
-        "closed": 55,
-        "open": 16,
-        "inProgress": 10,
-        "todo": 6,
+        "closed": 57,
+        "open": 14,
+        "inProgress": 9,
+        "todo": 5,
         "draft": 0,
         "unclassified": 0,
-        "share": 0.7746478873239436
+        "share": 0.8028169014084507
       },
       {
         "id": "folio-assistant-p5wm",
@@ -16096,13 +16096,13 @@
         "status": "in-progress",
         "epics": 17,
         "total": 596,
-        "closed": 510,
-        "open": 86,
-        "inProgress": 38,
-        "todo": 47,
+        "closed": 516,
+        "open": 80,
+        "inProgress": 37,
+        "todo": 42,
         "draft": 1,
         "unclassified": 0,
-        "share": 0.8557046979865772
+        "share": 0.8657718120805369
       },
       {
         "id": "folio-assistant-vuip",
@@ -16111,13 +16111,13 @@
         "status": "in-progress",
         "epics": 10,
         "total": 290,
-        "closed": 217,
-        "open": 73,
-        "inProgress": 33,
-        "todo": 39,
+        "closed": 218,
+        "open": 72,
+        "inProgress": 37,
+        "todo": 34,
         "draft": 1,
         "unclassified": 0,
-        "share": 0.7482758620689656
+        "share": 0.7517241379310344
       },
       {
         "id": "folio-assistant-yg29",
@@ -16136,8 +16136,8 @@
       }
     ],
     "orphanOpen": 10,
-    "openTotal": 188,
-    "coveredOpen": 175,
+    "openTotal": 179,
+    "coveredOpen": 166,
     "duplicateIds": 0
   }
 }

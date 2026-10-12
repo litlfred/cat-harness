@@ -126,7 +126,7 @@ decides it.
 | `typologies` | **harness** | the graph typologies a harness declares it OWNS, one `folio-graph-typology/v1` node per file (`schemas/graph-typology-node.ts`), loaded by the registry on first use across every instance; a name two files declare is refused. Owner, 2026-10-04: *"there should not be a central registry for declaring mount tools and subgraph types"*, and a `typologies/` graph rather than a contributions hook or a field in `<instance>.json` (option 1 of 3). The base layer lists only this one kind in code, because a reader needs it to find the rest. Bean `dmx1`. | no |
 | `validators` | **harness** | the validators a harness's code provides, one `folio-validator/v1` node each (`schemas/validator-node.ts`), naming the graph typology and `$schema` family it checks and the Zod export that checks it; the registry joins each onto its kind on first use, and refuses a second answer for one family. Owner, 2026-10-04: validators are KG nodes, and the validator names the family (option 1 of 2). Bean `riit`. | no |
 | `qa-checkers` | **harness** | the QA checkers a harness's code provides, one `folio-qa-checker/v1` node each (`schemas/contribution-nodes.ts`): the criterion it answers, and the dispatch table (`path#Export`, keyed by the criterion) that holds the code. `loadContributions` registers them for every folio whose dependency tree includes the harness. Owner, 2026-10-04: every contribution is a node, one graph per type (option 1 of 2), scoped by the dependency tree (option 1 of 3). Bean `riit`, step 3b. | no |
-| `pipeline-plugins` | **harness** | the generic pipeline's slots a harness fills, one `folio-pipeline-plugin/v1` node each (`schemas/contribution-nodes.ts`): the slot (`content/pipeline/pipeline-plugins.ts`), and the table of implementations (`path#Export`, keyed by slot, typed against the slots' contract). `loadContributions` registers them for every folio whose dependency tree includes the harness. Bean `riit`, step 3b; the slots themselves are bean `squu`'s. | no |
+| `pipeline-plugins` | **harness** | the generic pipeline's slots a harness fills, one `folio-pipeline-plugin/v1` node each (`schemas/contribution-nodes.ts`): the slot (`pipeline/pipeline-plugins.ts`), and the table of implementations (`path#Export`, keyed by slot, typed against the slots' contract). `loadContributions` registers them for every folio whose dependency tree includes the harness. Bean `riit`, step 3b; the slots themselves are bean `squu`'s. | no |
 | `block-kinds` | **harness** | the block kinds a harness's content adapter owns, one `folio-block-kind/v1` node each (`schemas/block-kind-node.ts`): the kind string, its adapter and narrowest profile, label prefix, RDF types, builder and English heading. `schemas/block-kinds.ts` discovers them across every instance's declared graph, so no module lists the kinds. Owner, 2026-10-04: *"kinds need to be discoverable … not centrally managed"*; document kinds live in folio-assistant-core and the math kinds in folio-assistant-sci (option 2 of 3). Bean `riit`, step 2; sod4 finding #1. | no |
 | `content-adapters` | **harness** | the block VOCABULARIES a harness owns, one `folio-content-adapter/v1` node each (`schemas/content-adapter-node.ts`): the name every block-kind node's `adapter` names, the companion roles its blocks can have, whether cat-harness's code types it, and for an untyped one its vocabulary module. `schemas/block-kinds.ts` derives `CONTENT_ADAPTERS` from the typed nodes and `schemas/block-qa.ts` derives `ADAPTER_COMPANION_ROLES`; an untyped vocabulary reaches a folio through its dependency tree. Owner, 2026-10-05, option 1 of 3: the vocabulary is a node and the server adapter CLASS is not, since the two do not line up (`document` has a class and no vocabulary, `dak` a vocabulary and no class). Bean `riit`, step 5. | no |
 | `tools` | **harness** | Tool definitions, themselves nodes in the KG | no |
@@ -241,7 +241,7 @@ decides it.
 > language.** `docs/fr/index.md` carries `lang: fr` and
 > `translation_source: index.md` in its own front matter, so it is the same
 > kind of thing as the page it translates: renderable content, differing by a
-> field. `content/pipeline/translation-index.ts` discovers the locale subtrees
+> field. `pipeline/translation-index.ts` discovers the locale subtrees
 > by reading those fields and **never** matches a directory name against a
 > list of language subtags — that inference is wrong in both directions,
 > silently hiding a `no/` chapter (Norwegian, or the English word) and
@@ -417,7 +417,7 @@ that lives only where nobody looks is the `where-does-this-go` failure.
 **The existing instances are the exception, and deliberately.** `ylj7`'s
 measurement confirmed the mechanism and argued against retro-fitting the
 destination: `schemas/` is already a declared graph of its own kind, and
-adding `code` to it would give one directory two kinds; `content/pipeline/` is
+adding `code` to it would give one directory two kinds; `pipeline/` is
 core's subject, not the harness's; and `scripts/` hold entry points named **by
 path** from `package.json` and the CI workflows, which `check:ci-invocations`
 and `check:command-paths` exist to guard — so moving them is a large

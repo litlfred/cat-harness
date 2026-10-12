@@ -60,9 +60,9 @@
           "name": "crdm-detect",
           "outputSchema": "https://litlfred.github.io/folio-assistant/skills/crdm-detect/output.schema.json",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/af8a1eec02ebf753065fe632c087ca3c73ef52ee694812c9188e8f0ee89f0480",
-            "bytes": 14496,
-            "sha256": "af8a1eec02ebf753065fe632c087ca3c73ef52ee694812c9188e8f0ee89f0480"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/1c7b0550316b5bdf1ab353a5cd4ced77b0b2cf999afd58eb2357a021ba70b453",
+            "bytes": 14488,
+            "sha256": "1c7b0550316b5bdf1ab353a5cd4ced77b0b2cf999afd58eb2357a021ba70b453"
           },
           "title": "Feature-request detection (CRDM trigger)"
         },
@@ -79,9 +79,9 @@
           "instructionsPath": "skills/sdlc/crdm/crdm-impact-analysis.md",
           "name": "crdm-impact-analysis",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/be58db421e4305c2da107f4baa4984baa786fae34c1d3a1c0bbd115641a0143d",
-            "bytes": 3843,
-            "sha256": "be58db421e4305c2da107f4baa4984baa786fae34c1d3a1c0bbd115641a0143d"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/418eba6f341f08a35707721c99fb1b0cc2bf67a6ee45b308bb1991bc11546458",
+            "bytes": 3819,
+            "sha256": "418eba6f341f08a35707721c99fb1b0cc2bf67a6ee45b308bb1991bc11546458"
           },
           "title": "Phase 4 — Impact analysis (detail)"
         },
@@ -154,9 +154,9 @@
           "instructionsPath": "skills/sdlc/crdm/crdm-requirements-workflow.md",
           "name": "crdm-requirements-workflow",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4479a9540e91362fd52578e62de78cc75d9c071a20cfd67dfbf1343f380c8a7e",
-            "bytes": 27635,
-            "sha256": "4479a9540e91362fd52578e62de78cc75d9c071a20cfd67dfbf1343f380c8a7e"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9e8f0eca27796e3d63e861ba99856d3d4a8ea6f3d1eeae2cd02e5ea1789d1bc8",
+            "bytes": 27627,
+            "sha256": "9e8f0eca27796e3d63e861ba99856d3d4a8ea6f3d1eeae2cd02e5ea1789d1bc8"
           },
           "title": "CRDM requirements workflow"
         }
@@ -641,9 +641,9 @@
           "instructionsPath": "skills/sdlc/sdlc-core/gate-tree-mutation.md",
           "name": "gate-tree-mutation",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/27798c5d9e19b422c43461e00acab07b2cb6cdcfc396466518a860bb852a888e",
-            "bytes": 9125,
-            "sha256": "27798c5d9e19b422c43461e00acab07b2cb6cdcfc396466518a860bb852a888e"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a95539fd443b4cccd57ee03098454c0a3fc72bcb767baaf840c5ee9173785146",
+            "bytes": 9107,
+            "sha256": "a95539fd443b4cccd57ee03098454c0a3fc72bcb767baaf840c5ee9173785146"
           },
           "title": "\"NOT clean\" is a verdict about the RUN, not about your diff"
         },
@@ -1040,9 +1040,9 @@
           "instructionsPath": "skills/sdlc/sdlc-core/prepare-merge.md",
           "name": "prepare-merge",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ff91f5da9b0fc806f1524de649dbabc4396d9e0944b59549fb3e26d4c0fafd6b",
-            "bytes": 37652,
-            "sha256": "ff91f5da9b0fc806f1524de649dbabc4396d9e0944b59549fb3e26d4c0fafd6b"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f911dcbd8f6b9620fd81cdff1dab76651e527baf3f2dff464b83c083f1440752",
+            "bytes": 37644,
+            "sha256": "f911dcbd8f6b9620fd81cdff1dab76651e527baf3f2dff464b83c083f1440752"
           },
           "title": "Prepare-merge — get a feature branch ready to land"
         },
@@ -1134,9 +1134,9 @@
           "instructionsPath": "skills/sdlc/sdlc-core/qa-witness.md",
           "name": "qa-witness",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5b60f17801a3992cb3ae8f824aac5f2fdc4acb978e7853af1f7c64b9826820d8",
-            "bytes": 7177,
-            "sha256": "5b60f17801a3992cb3ae8f824aac5f2fdc4acb978e7853af1f7c64b9826820d8"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/8288dee9cec4927f06bbf698820c62b13c61be73c737bc71177eef591290d592",
+            "bytes": 7153,
+            "sha256": "8288dee9cec4927f06bbf698820c62b13c61be73c737bc71177eef591290d592"
           },
           "title": "QA witnesses — the published projection of every verdict"
         },
@@ -1342,9 +1342,9 @@
           "instructionsPath": "skills/sdlc/sdlc-core/test-engineer.md",
           "name": "test-engineer",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a94cb6ec0c20599c762a2f8e6e989746cb43d22d31f91f40189af609b1dc1b63",
-            "bytes": 6898,
-            "sha256": "a94cb6ec0c20599c762a2f8e6e989746cb43d22d31f91f40189af609b1dc1b63"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a5c8175683897dfdab577160c02c5e8e3ae988752e60cc6adb1f753f46528bf8",
+            "bytes": 6866,
+            "sha256": "a5c8175683897dfdab577160c02c5e8e3ae988752e60cc6adb1f753f46528bf8"
           },
           "title": "Test Engineer Skill"
         },
@@ -1418,9 +1418,9 @@
           "instructionsPath": "skills/sdlc/sdlc-core/untainted-verification.md",
           "name": "untainted-verification",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ac73ea8b5e85933ec6c982d01eacbf0190ab6fedce5526166cc902e14a84b741",
-            "bytes": 9221,
-            "sha256": "ac73ea8b5e85933ec6c982d01eacbf0190ab6fedce5526166cc902e14a84b741"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/26593e276cd8846bcb8139d71104256df503528967288427df5b6e8f4bbac9da",
+            "bytes": 9213,
+            "sha256": "26593e276cd8846bcb8139d71104256df503528967288427df5b6e8f4bbac9da"
           },
           "title": "Untainted verification — the producer never writes the verdict"
         },

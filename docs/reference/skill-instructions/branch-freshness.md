@@ -51,7 +51,7 @@ git log --oneline HEAD..origin/main
 **Look for:**
 - Files you are also editing → **merge conflict risk**
 - Schema changes (`schemas/*.ts`) → **types may be stale**
-- Pipeline changes (`content/pipeline/*.ts`) → **behaviour may differ**
+- Pipeline changes (`pipeline/*.ts`) → **behaviour may differ**
 - Skill changes (`cat-harness/skills/**`) → **guidance may be out of date**
 - BPMN changes (`cat-harness/processes/**/*.bpmn`) → **diagrams may conflict**
 - Bean changes (`.beans/`) → **beans may have been created/resolved by sibling**

@@ -41,6 +41,8 @@ nav_exclude: true
 <dt>$schema</dt><dd>cat-harness-declaration/1.0.0</dd>
 <dt>_comment</dt><dd>The SCIENCE folio instance, staged as a top-level directory ahead of becoming its own repository -- the same pattern as who-iris/ and folio-assistant-core/. Owner, 2026-09-20: &#39;milnor goes in f-a-sci library/, move all 4 and fix fallout&#39;. It exists because `milnorlink` is source material for mathematics and has nothing to do with the WHO IRIS catalogue, so sending it to who-iris/ alongside the three IRIS items would have put one thing in a place named for another. Bean r1lz. DECLARE ONLY WHAT EXISTS, per the dh4f rule: every entry here is a directory that is present.</dd>
 <dt>name</dt><dd>folio-assistant-sci</dd>
+<dt>_skillPrefix_comment</dt><dd>Skills from this instance install as fa-&lt;name&gt; (bean x4mt; owner ruling 2026-10-11: harnesses have their own prefix, e.g. cat, fa).</dd>
+<dt>skillPrefix</dt><dd>fa</dd>
 <dt>repository</dt><dd>litlfred/folio-assistant-sci</dd>
 <dt>version</dt><dd>0.1.0</dd>
 <dt>needs</dt><dd><pre>[
@@ -76,6 +78,13 @@ nav_exclude: true
     &quot;role&quot;: &quot;instance-readme&quot;,
     &quot;title&quot;: &quot;folio-assistant-sci&quot;,
     &quot;description&quot;: &quot;What is here and why it is not in who-iris.&quot;
+  },
+  {
+    &quot;id&quot;: &quot;checkout-scripts&quot;,
+    &quot;src&quot;: &quot;package.json&quot;,
+    &quot;role&quot;: &quot;checkout-scripts&quot;,
+    &quot;title&quot;: &quot;package.json — folio-assistant-sci&quot;,
+    &quot;description&quot;: &quot;The checkout scripts this instance&#39;s code runs, under `checkoutScripts`. Each command is relative to the downstream checkout root; a downstream that mounts this instance reads them with `bun run cat`.&quot;
   }
 ]</pre></dd>
 <dt>directories</dt><dd><pre>[
@@ -114,7 +123,7 @@ nav_exclude: true
   {
     &quot;id&quot;: &quot;folio-assistant-sci-content-adapters&quot;,
     &quot;path&quot;: &quot;content-adapters/&quot;,
-    &quot;description&quot;: &quot;The paper block VOCABULARY&#39;s node, folio-content-adapter/v1 (bean riit, step 5): its name, its companion roles (md, ts, lean) and that cat-harness&#39;s code types it. cat-harness/schemas/block-kinds.ts derives CONTENT_ADAPTERS from the typed nodes, and block-qa.ts derives ADAPTER_COMPANION_ROLES. Owner, 2026-10-05, option 1: the vocabulary is a node; the server adapter class stays in contentAdapters.&quot;,
+    &quot;description&quot;: &quot;The `mathpaper` block VOCABULARY&#39;s node, folio-content-adapter/v1 (bean riit, step 5; renamed from `paper`, bean bzwk, 2026-10-12): its name, its companion roles (md, ts, lean) and that cat-harness&#39;s code types it. The seven formal-claim kinds in block-kinds/ name it; core&#39;s document kinds name core&#39;s own `document` adapter. cat-harness/schemas/block-kinds.ts derives CONTENT_ADAPTERS from the typed nodes, and block-qa.ts derives ADAPTER_COMPANION_ROLES. Owner, 2026-10-05, option 1: the vocabulary is a node; the server adapter class stays in contentAdapters.&quot;,
     &quot;graphTypologies&quot;: [
       &quot;content-adapters&quot;
     ]

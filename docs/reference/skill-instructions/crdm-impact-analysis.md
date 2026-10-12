@@ -32,7 +32,7 @@ rg "YourChangedConcept" schemas/
 
 ### 2. Pipeline impact
 
-Scan `content/pipeline/*.ts`:
+Scan `pipeline/*.ts`:
 - Validators (`validate.ts`, `profile-check.ts`)
 - Renderers (`render-markdown.ts`, `render-latex.ts`)
 - Extractors/codemods (`pot-extract.ts`, `po-inject.ts`, `citations.ts`)
@@ -87,7 +87,7 @@ Post this table to the GitHub issue:
 | Dimension | Affected? | Files | Risk | Migration needed? |
 |---|---|---|---|---|
 | Schema | Yes/No | `schemas/types.ts` | High/Med/Low | Yes/No |
-| Pipeline | Yes/No | `content/pipeline/validate.ts` | ... | ... |
+| Pipeline | Yes/No | `pipeline/validate.ts` | ... | ... |
 | Adapter | Yes/No | `adapters/paper/` | ... | ... |
 | Folio | Yes/No | `qou`, `who-smart` | ... | ... |
 | Skills | Yes/No | `skills/sdlc/crdm/` | ... | ... |
@@ -110,7 +110,7 @@ Post this table to the GitHub issue:
 rg "CONCEPT" schemas/
 
 # 2. Pipeline
-rg "CONCEPT" content/pipeline/
+rg "CONCEPT" pipeline/
 
 # 3. Adapters
 rg "CONCEPT" adapters/ content/adapters/

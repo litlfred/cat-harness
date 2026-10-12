@@ -74,6 +74,26 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/ns#glossary/kg-tools/ig-artifact-jsonld",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/ns#glossary/kg-tools"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Write one JSON-LD node per IG artefact, and check a built site's nodes"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "`write` turns an artefact index into `artifact/<Type>-<id>.jsonld` (and a `.json` twin) under a docs root: one `folio-ig-artifact-jsonld/v1` node per artefact, in borrowed vocabularies only (the FHIR RDF class, dcterms, schema.org, PROV), naming the artefact's canonical URL, its representations and, for a compiled copy, what built it. `check` is the kind's QA: over a BUILT site, every artefact has its node and no node is an orphan, each node is its own file's, its twin matches, and every local resource it names is on the site. WHO-free; the asset `gen-ig-pages --thin` renders (owner, 2026-10-11, option A)."
+        }
+      ],
+      "skos:notation": "ig-artifact-jsonld",
+      "dcterms:source": "fhir-harness/tools/index.ts#ig-artifact-jsonld",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/ns#glossary/kg-tools/ig-ast-diff",
       "@type": "skos:Concept",
       "skos:inScheme": {

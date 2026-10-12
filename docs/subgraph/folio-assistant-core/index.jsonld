@@ -9,6 +9,11 @@
       "name": "block-kinds"
     },
     {
+      "@id": "cat-harness:graphTypology/content-adapters",
+      "@type": "bootstrap:GraphTypology",
+      "name": "content-adapters"
+    },
+    {
       "@id": "cat-harness:graphTypology/qa-checkers",
       "@type": "bootstrap:GraphTypology",
       "name": "qa-checkers"
@@ -105,6 +110,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/folio-assistant-core-block-typologies",
       "@type": "bootstrap:Subgraph",
       "name": "folio-assistant-core-block-typologies"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/folio-assistant-core-content-adapters",
+      "@type": "bootstrap:Subgraph",
+      "name": "folio-assistant-core-content-adapters"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/folio-assistant-core-docs",

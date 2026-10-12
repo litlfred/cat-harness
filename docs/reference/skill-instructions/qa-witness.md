@@ -47,7 +47,7 @@ diagram. The **witness** is the same verdict rendered for the web, flattened
 into the shape the panel draws and placed where the site can fetch it.
 
 So a wrong verdict is fixed in the checker; a verdict that reads wrongly on the
-page is fixed in `content/pipeline/qa-witness.ts` or in `docs-ui.js`. Editing a
+page is fixed in `pipeline/qa-witness.ts` or in `docs-ui.js`. Editing a
 file under `test/results/witnesses/` by hand fixes neither — it is generated, and the
 next `gen-docs-pages` run discards the edit.
 
@@ -124,14 +124,14 @@ and render order coincide only while nothing sorts above it.
 | projections (working copy) | `test/results/witnesses/**/*.{block,kg,translation}.json` |
 | projections (stored) | `qa-reports:main/<sha>/<instance>/test/results/witnesses/…` (or `pr/<n>/<sha>/…`); `bun run cat qa:fetch --ref …` reads them, and a miss is never read as clean |
 | projections (published) | `/assets/qa/…`, copied into `_site` by `docs-site.yml` and `feature-staging.yml` |
-| schema + builder | `content/pipeline/qa-witness.ts` |
+| schema + builder | `pipeline/qa-witness.ts` |
 | written by | `scripts/gen-docs-pages.ts` |
 | drawn by | `site-chrome/assets/js/docs-ui.js` (`qaBuildPanel`) |
 | block verdicts | `content/**/*.qa.json` |
 | kg verdicts | `test/results/kg-qa/<subject-dir>/<stem>.kg-qa.json` — the tree MIRRORS the subject's path, because four basenames already collide across packages. Path from `kgQaSidecarPath` in `schemas/kg-qa.ts`, never composed by hand. Auditor in `skills/kg-qa.manifest.json` |
 | judgements behind a verdict | `test/attestations/<family>/<mirrored subject path>.attestations.json` (`qa-attestations/v1`, the `attestations` graph): every agent, human and baseline-pair judgement, kept on `main` because regeneration cannot reproduce it (owner ruling D2 (a)). Schema `schemas/qa-attestations.ts` |
 
-The schema lives in `content/pipeline/` rather than `schemas/` because it is
+The schema lives in `pipeline/` rather than `schemas/` because it is
 the pipeline's own output shape. Worth knowing when you go looking for it in
 the declared `schemas/` graph and do not find it.
 {% endraw %}

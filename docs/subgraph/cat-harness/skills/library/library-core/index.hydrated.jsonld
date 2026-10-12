@@ -172,9 +172,9 @@
       "instructionsPath": "skills/library/library-core/translation-manager.md",
       "name": "translation-manager",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5bdd851ea665808eed37b1812affb06ad8dd6ac72759cab591016c424388300a",
-        "bytes": 32820,
-        "sha256": "5bdd851ea665808eed37b1812affb06ad8dd6ac72759cab591016c424388300a"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e0eaa8940524d8411072f179a7d9abb0d1e271e9e482761ad34686acafdd714c",
+        "bytes": 32740,
+        "sha256": "e0eaa8940524d8411072f179a7d9abb0d1e271e9e482761ad34686acafdd714c"
       },
       "title": "Translation manager"
     },

@@ -135,9 +135,9 @@
           "instructionsPath": "skills/authoring/authoring-core/content-graph.md",
           "name": "content-graph",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/974088ca2f9d01d5e57e562946a65ba47abbce3fe6eb28d7375fcee5d1bf0461",
-            "bytes": 17490,
-            "sha256": "974088ca2f9d01d5e57e562946a65ba47abbce3fe6eb28d7375fcee5d1bf0461"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/8a05fc1739f6781bef473f55110edee2b2baadbd3e6892151a90d36bdb246662",
+            "bytes": 17466,
+            "sha256": "8a05fc1739f6781bef473f55110edee2b2baadbd3e6892151a90d36bdb246662"
           },
           "title": "Content Graph — Editorial Organisation Skill"
         },
@@ -173,9 +173,9 @@
           "instructionsPath": "skills/authoring/authoring-core/detangler-integration-watcher.md",
           "name": "detangler-integration-watcher",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9d0f4fec44b31fc85b9f08e21b0931813c8e68124b6e52353d15461bc7dcb327",
-            "bytes": 20390,
-            "sha256": "9d0f4fec44b31fc85b9f08e21b0931813c8e68124b6e52353d15461bc7dcb327"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/fa287a9868fbe85a9eadd95564e8f27a7c95bd8b7a890eae09b01bc43839cb97",
+            "bytes": 20382,
+            "sha256": "fa287a9868fbe85a9eadd95564e8f27a7c95bd8b7a890eae09b01bc43839cb97"
           },
           "title": "/detangler-integration-watcher"
         },
@@ -248,9 +248,9 @@
           "instructionsPath": "skills/authoring/authoring-core/exposition-swarm-drain.md",
           "name": "exposition-swarm-drain",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f65d1bdbfb953c29db51f8c1e33590f869b0a3ad440de974b36db799c589c5af",
-            "bytes": 11340,
-            "sha256": "f65d1bdbfb953c29db51f8c1e33590f869b0a3ad440de974b36db799c589c5af"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a69df845fd84daf578e2708013735d18ebfe2a11360e9bb09feef11e30ba3c22",
+            "bytes": 11332,
+            "sha256": "a69df845fd84daf578e2708013735d18ebfe2a11360e9bb09feef11e30ba3c22"
           },
           "title": "/exposition-swarm-drain — Milnor-exposition audit→resolve drain"
         },
@@ -267,9 +267,9 @@
           "instructionsPath": "skills/authoring/authoring-core/integration-audit.md",
           "name": "integration-audit",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ace659635e039c54f7bf05dead4dba8c4cb39044a087c924bfea160eda2b5c65",
-            "bytes": 6733,
-            "sha256": "ace659635e039c54f7bf05dead4dba8c4cb39044a087c924bfea160eda2b5c65"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/942a7b01d87eb84373400271ef8f6815a1a03b330d30f87a242dfa174a06a3ee",
+            "bytes": 6717,
+            "sha256": "942a7b01d87eb84373400271ef8f6815a1a03b330d30f87a242dfa174a06a3ee"
           },
           "title": "/integration-audit — invalidate + re-audit the sidecar pipeline"
         },
@@ -285,9 +285,9 @@
           "instructionsPath": "skills/authoring/authoring-core/md-authoring.md",
           "name": "md-authoring",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/696a660ee52bfe0c6c3ad854e4455b004e975dd41ed889ce38c791a19c88a041",
-            "bytes": 6776,
-            "sha256": "696a660ee52bfe0c6c3ad854e4455b004e975dd41ed889ce38c791a19c88a041"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/3751ffe86fa9a80a2b27ab96ab8b330664a5888a460868b457594125791f48eb",
+            "bytes": 6768,
+            "sha256": "3751ffe86fa9a80a2b27ab96ab8b330664a5888a460868b457594125791f48eb"
           },
           "title": "Markdown Authoring Conventions"
         },
@@ -322,9 +322,9 @@
           "instructionsPath": "skills/authoring/authoring-core/one-voice-audit.md",
           "name": "one-voice-audit",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/55a21bd3f1b6822bcc823ec2da42c71dc446b3dd6f5b411cbea7ee4e14a6e2a4",
-            "bytes": 17392,
-            "sha256": "55a21bd3f1b6822bcc823ec2da42c71dc446b3dd6f5b411cbea7ee4e14a6e2a4"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ceb992c95baa1a711148ec2b642637a755fb62d1d329cd12fab9b3a973483cd2",
+            "bytes": 17384,
+            "sha256": "ceb992c95baa1a711148ec2b642637a755fb62d1d329cd12fab9b3a973483cd2"
           },
           "title": "One-Voice Audit"
         },
@@ -341,9 +341,9 @@
           "instructionsPath": "skills/authoring/authoring-core/one-voice-integration-watcher.md",
           "name": "one-voice-integration-watcher",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ba7cb4ab5cf91cebf655b3bc755c944789693be6e2494cf26ef4c4e6bbabdb1d",
-            "bytes": 16271,
-            "sha256": "ba7cb4ab5cf91cebf655b3bc755c944789693be6e2494cf26ef4c4e6bbabdb1d"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0706e91706800170366e633e55b6d68b136cd37318a23cd5a40aa0a098968a77",
+            "bytes": 16239,
+            "sha256": "0706e91706800170366e633e55b6d68b136cd37318a23cd5a40aa0a098968a77"
           },
           "title": "/one-voice-integration-watcher"
         },
@@ -491,9 +491,9 @@
           "instructionsPath": "skills/authoring/authoring-core/uses-editorial-review.md",
           "name": "uses-editorial-review",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/8a3e8873fc57b855f2e3d70f823923c5afdffa91308763055a19aca043990d3e",
-            "bytes": 16476,
-            "sha256": "8a3e8873fc57b855f2e3d70f823923c5afdffa91308763055a19aca043990d3e"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e0f3880045d23912efaf3eae81cd4494a92429bb5af656b11c6738b36f11f531",
+            "bytes": 16460,
+            "sha256": "e0f3880045d23912efaf3eae81cd4494a92429bb5af656b11c6738b36f11f531"
           },
           "title": "`uses[]` Editorial Review"
         },
@@ -529,9 +529,9 @@
           "instructionsPath": "skills/authoring/authoring-core/voice-editorial-review.md",
           "name": "voice-editorial-review",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/79367f483c263326b9fdf7748eb431b26da7cfd16ba26300455c56bda2461ad3",
-            "bytes": 5515,
-            "sha256": "79367f483c263326b9fdf7748eb431b26da7cfd16ba26300455c56bda2461ad3"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e4c686bba2b3901d60a69a51ffaed31a123ddce959599cf81231f9c81fd43f31",
+            "bytes": 5499,
+            "sha256": "e4c686bba2b3901d60a69a51ffaed31a123ddce959599cf81231f9c81fd43f31"
           },
           "title": "Voice editorial review"
         },
@@ -548,9 +548,9 @@
           "instructionsPath": "skills/authoring/authoring-core/voice-overlay-review.md",
           "name": "voice-overlay-review",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/c2258b73588ef6a62f67e18a6721563fd97ab64fe7fccf54068688f6cb03ab0a",
-            "bytes": 4098,
-            "sha256": "c2258b73588ef6a62f67e18a6721563fd97ab64fe7fccf54068688f6cb03ab0a"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/70fff52979ff8a099e015072fb2a3d0d5f2c09c44444ad35e9be1d5159bc2cb6",
+            "bytes": 4090,
+            "sha256": "70fff52979ff8a099e015072fb2a3d0d5f2c09c44444ad35e9be1d5159bc2cb6"
           },
           "title": "Voice overlay review"
         }

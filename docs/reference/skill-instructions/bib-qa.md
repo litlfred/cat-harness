@@ -231,7 +231,7 @@ bibliography (PDF + HTML) via the `annotation` field in
     annotation = {[Verified+Fixed] 18 fixes by <reviewer> 2026-05-19},
   }
 
-`content/pipeline/export-bibtex.ts` reads
+`pipeline/export-bibtex.ts` reads
 `content/bib-qa-verifications.json` at export time and injects a
 short status marker per entry. Format:
 
@@ -569,7 +569,7 @@ snapshot to validate the citation without re-fetching.
 
 #### `validate-bib` — comprehensive correctness audit
 
-`content/pipeline/validate-bib.ts` is the umbrella correctness audit
+`pipeline/validate-bib.ts` is the umbrella correctness audit
 (complement to `validate-refs` which is just key-resolution). Five
 selectable modes:
 

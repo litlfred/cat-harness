@@ -85,9 +85,9 @@
       "@type": "bootstrap:Skill",
       "name": "content-validation",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e22632d1b580f8bbf01841975b87db6d69df8dac812790a0a160e15bdf23931b",
-        "bytes": 13174,
-        "sha256": "e22632d1b580f8bbf01841975b87db6d69df8dac812790a0a160e15bdf23931b"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4bcf74aeaf93ac8c2da71775a7d29eeb7a351524db8991d274561b951f106c8d",
+        "bytes": 13166,
+        "sha256": "4bcf74aeaf93ac8c2da71775a7d29eeb7a351524db8991d274561b951f106c8d"
       },
       "title": "Content Validation Skill"
     },
@@ -151,9 +151,9 @@
       "@type": "bootstrap:Skill",
       "name": "latex-build-cache",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/28d9f2a4e951338e869228c64335486b09f000cf7ffd81393750c6a67298356f",
-        "bytes": 10515,
-        "sha256": "28d9f2a4e951338e869228c64335486b09f000cf7ffd81393750c6a67298356f"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/57601c477952ed0a72cc946eb0bb99b62557359f168432a99d594340df53210c",
+        "bytes": 10499,
+        "sha256": "57601c477952ed0a72cc946eb0bb99b62557359f168432a99d594340df53210c"
       },
       "title": "LaTeX build performance — findings + what's safe"
     },
@@ -426,9 +426,9 @@
       "@type": "bootstrap:Skill",
       "name": "q-usage-watcher",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/274ca946ee53dff241cbe8fe946c5728094d45cdbe04ea8b197d8709186f6b15",
-        "bytes": 17406,
-        "sha256": "274ca946ee53dff241cbe8fe946c5728094d45cdbe04ea8b197d8709186f6b15"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/3b58f1c3e373fa41d3684b9ab214e8c0ce8d166b8312aa4ea30c13890d894e0c",
+        "bytes": 17366,
+        "sha256": "3b58f1c3e373fa41d3684b9ab214e8c0ce8d166b8312aa4ea30c13890d894e0c"
       },
       "title": "/q-usage-watcher"
     },

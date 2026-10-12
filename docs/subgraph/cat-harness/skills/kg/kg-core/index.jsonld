@@ -90,9 +90,9 @@
       "@type": "bootstrap:Skill",
       "name": "directory-conventions",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9d0efa7e1386da61e911e068928c1de2bbf0759540de8aa0c55466f2afa815b9",
-        "bytes": 135267,
-        "sha256": "9d0efa7e1386da61e911e068928c1de2bbf0759540de8aa0c55466f2afa815b9"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7f3056ea10befff020e231fbbceca050c2ce21a260d17e48c89b38d2edad5cb8",
+        "bytes": 137503,
+        "sha256": "7f3056ea10befff020e231fbbceca050c2ce21a260d17e48c89b38d2edad5cb8"
       },
       "title": "Directory conventions — what an instance declares it scans"
     },

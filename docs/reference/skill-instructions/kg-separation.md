@@ -330,7 +330,7 @@ The owner ruled on 2026-10-06 (bean `0mpw`, `remote-mount.md`): **no git submodu
 ## After a move lands — the post-move sweep
 
 Learned on cat-harness bean `70lx` stage 1a (cat-harness e29c6429, which moved
-`scripts/`, `src/`, `content/pipeline/`, most of `test/` and the archimate and
+`scripts/`, `src/`, `pipeline/`, most of `test/` and the archimate and
 openapi scripts into cat-harness-tools d8d42ab), and on the index re-pin that
 had to follow it (folio-assistant #2524, superseded by #2529; bean
 `folio-assistant-beaf`, 2026-10-10). The move itself was one reviewed commit

@@ -77,7 +77,7 @@ For each resolved criterion:
 
 ## Implementation
 
-Backed by a CLI script `content/pipeline/integration-audit.ts` that:
+Backed by a CLI script `pipeline/integration-audit.ts` that:
 
 - Walks every `.qa.json` under `content/<paper>/` via `walkBlocks`.
 - For each criterion in the invalidation set:
@@ -132,7 +132,7 @@ convention.
     over the sidecars
   - [`/integration-backlog`](integration-backlog.md) — write-side drain
     of the open findings
-- **CLI**: `content/pipeline/integration-audit.ts`
+- **CLI**: `pipeline/integration-audit.ts`
 
 ## Examples
 

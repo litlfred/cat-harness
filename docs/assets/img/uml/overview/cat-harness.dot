@@ -226,6 +226,12 @@ digraph "cat_harness" {
     "grid_pkg_cat_harness_folio_top" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
     "grid_pkg_cat_harness_folio_bottom" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
   }
+  subgraph "cluster_pkg_cat_harness_folio_render" {
+    label=<<b>cat-harness/folio-render</b><br/><i>«cat-harness, code»</i>>; style="rounded"; color="#1b2432"; class="fa_uml_subgraph";
+    "n_cat_harness_folio_render_code" [style="rounded,filled,dashed", fillcolor="#f4f4f1", class="fa_uml_kind_code fa_uml_undetermined", label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="2"><tr><td><b>code: no node schema</b></td></tr><tr><td align="left"><i>could not determine: no validator registered</i></td></tr></table>>];
+    "grid_pkg_cat_harness_folio_render_top" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
+    "grid_pkg_cat_harness_folio_render_bottom" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
+  }
   subgraph "cluster_pkg_cat_harness_docs" {
     label=<<b>cat-harness/docs</b><br/><i>«docs»</i>>; style="rounded"; color="#1b2432"; class="fa_uml_subgraph";
     "cat_harness_docs_folio_todo_index_v1_Relation" [fillcolor="#f4f4f1", class="fa_uml_kind_docs", label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="2"><tr><td border="1" sides="b"><b>Relation</b></td></tr><tr><td><i>«json: TodoIndexSchema»</i></td></tr><tr><td align="left">axis [1] : string</td></tr><tr><td align="left">label [1] : string</td></tr><tr><td align="left">href [0..1] : string</td></tr></table>>];
@@ -324,7 +330,7 @@ digraph "cat_harness" {
   }
   subgraph "cluster_pkg_cat_harness_beans" {
     label=<<b>cat-harness/beans</b><br/><i>«beans»</i>>; style="rounded"; color="#1b2432"; class="fa_uml_subgraph";
-    "n_cat_harness_beans_beans" [style="rounded,filled,dashed", fillcolor="#f4f4f1", class="fa_uml_kind_beans fa_uml_undetermined", label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="2"><tr><td><b>beans: no node schema</b></td></tr><tr><td align="left"><i>could not determine: no node here carries a $schema family beans names (3 named)</i></td></tr></table>>];
+    "n_cat_harness_beans_beans" [style="rounded,filled,dashed", fillcolor="#f4f4f1", class="fa_uml_kind_beans fa_uml_undetermined", label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="2"><tr><td><b>beans: no node schema</b></td></tr><tr><td align="left"><i>could not determine: no node here carries a $schema family beans names (4 named)</i></td></tr></table>>];
     "grid_pkg_cat_harness_beans_top" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
     "grid_pkg_cat_harness_beans_bottom" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
   }
@@ -871,6 +877,8 @@ digraph "cat_harness" {
   "cat_harness_translation_sources_TranslationConfig" -> "grid_pkg_cat_harness_translation_sources_bottom" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_cat_harness_folio_top" -> "n_cat_harness_folio_folio" [style=invis, class="kg-graph-anchor"];
   "n_cat_harness_folio_folio" -> "grid_pkg_cat_harness_folio_bottom" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_cat_harness_folio_render_top" -> "n_cat_harness_folio_render_code" [style=invis, class="kg-graph-anchor"];
+  "n_cat_harness_folio_render_code" -> "grid_pkg_cat_harness_folio_render_bottom" [style=invis, class="kg-graph-anchor"];
   "cat_harness_docs_folio_todo_index_v1_Relation" -> "cat_harness_docs_folio_slice_index_v1_Slice" [style=invis, class="kg-graph-anchor"];
   "cat_harness_docs_folio_todo_index_v1_Item" -> "cat_harness_docs_folio_slice_index_v1_folio_slice_index_v1" [style=invis, class="kg-graph-anchor"];
   "cat_harness_docs_folio_todo_index_v1_folio_todo_index_v1" -> "cat_harness_docs_folio_bean_index_v1_Item" [style=invis, class="kg-graph-anchor"];
@@ -1079,13 +1087,14 @@ digraph "cat_harness" {
   "grid_pkg_cat_harness_processes_bottom" -> "grid_pkg_cat_harness_library_top" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_cat_harness_methodologies_bottom" -> "grid_pkg_cat_harness_translation_sources_top" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_cat_harness_qa_bottom" -> "grid_pkg_cat_harness_folio_top" [style=invis, class="kg-graph-anchor"];
-  "grid_pkg_cat_harness_attestations_bottom" -> "grid_pkg_cat_harness_docs_top" [style=invis, class="kg-graph-anchor"];
-  "grid_pkg_cat_harness_test_plans_bottom" -> "grid_pkg_cat_harness_site_top" [style=invis, class="kg-graph-anchor"];
-  "grid_pkg_cat_harness_health_bottom" -> "grid_pkg_cat_harness_swimlane_glossary_top" [style=invis, class="kg-graph-anchor"];
-  "grid_pkg_cat_harness_uploads_bottom" -> "grid_pkg_cat_harness_cat_harness_upstream_top" [style=invis, class="kg-graph-anchor"];
-  "grid_pkg_cat_harness_library_bottom" -> "grid_pkg_cat_harness_openapi_top" [style=invis, class="kg-graph-anchor"];
-  "grid_pkg_cat_harness_translation_sources_bottom" -> "grid_pkg_cat_harness_archimate_top" [style=invis, class="kg-graph-anchor"];
-  "grid_pkg_cat_harness_folio_bottom" -> "grid_pkg_cat_harness_memory_top" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_cat_harness_attestations_bottom" -> "grid_pkg_cat_harness_folio_render_top" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_cat_harness_test_plans_bottom" -> "grid_pkg_cat_harness_docs_top" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_cat_harness_health_bottom" -> "grid_pkg_cat_harness_site_top" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_cat_harness_uploads_bottom" -> "grid_pkg_cat_harness_swimlane_glossary_top" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_cat_harness_library_bottom" -> "grid_pkg_cat_harness_cat_harness_upstream_top" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_cat_harness_translation_sources_bottom" -> "grid_pkg_cat_harness_openapi_top" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_cat_harness_folio_bottom" -> "grid_pkg_cat_harness_archimate_top" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_cat_harness_folio_render_bottom" -> "grid_pkg_cat_harness_memory_top" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_cat_harness_docs_bottom" -> "grid_pkg_cat_harness_fsh_guts_top" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_cat_harness_site_bottom" -> "grid_pkg_cat_harness_beans_top" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_cat_harness_swimlane_glossary_bottom" -> "grid_pkg_cat_harness_todos_top" [style=invis, class="kg-graph-anchor"];
