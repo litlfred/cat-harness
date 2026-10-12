@@ -30,11 +30,11 @@ function instance(directories: unknown[], files: Record<string, string>): string
 
 describe("site layers", () => {
   test("one docs directory: every answer is siteDirFor's", () => {
-    const root = instance([{ id: "docs", path: "docs/", graphTypologies: ["docs"] }], { "docs/index.md": "x" });
+    const root = instance([{ id: "pages", path: `${siteDirFor(HARNESS)}/`, graphTypologies: ["docs"] }], {});
     try {
       expect(siteLayersFor(root)).toEqual([siteDirFor(root)]);
       expect(siteChromeDirFor(root)).toBe(siteDirFor(root));
-      expect(siteFileFor(root, "assets/css/a.css")).toBe(join("docs", "assets/css/a.css"));
+      expect(siteFileFor(root, "assets/css/a.css")).toBe(join(siteDirFor(root), "assets/css/a.css"));
     } finally {
       rmSync(root, { recursive: true, force: true });
     }
@@ -44,16 +44,18 @@ describe("site layers", () => {
     const root = instance(
       [
         { id: "chrome", path: "chrome/", graphTypologies: ["docs"] },
-        { id: "docs", path: "docs/", graphTypologies: ["docs"] },
-        { id: "root-docs", path: "../docs/", graphTypologies: ["docs"], scope: "repository" },
+        { id: "pages", path: "pages/", graphTypologies: ["docs"] },
+        { id: "root-pages", path: "../pages/", graphTypologies: ["docs"], scope: "repository" },
       ],
-      { "chrome/_includes/head_custom.html": "c", "chrome/_config.yml": "a: 1", "docs/_config.yml": "b: 2" },
+      { "chrome/_includes/head_custom.html": "c", "chrome/_config.yml": "a: 1", "pages/_config.yml": "b: 2" },
     );
     try {
-      expect(siteLayersFor(root)).toEqual(["chrome", "docs"]);
+      // `siteDirFor` is always a layer, appended when undeclared; the declared
+      // ones keep their order and the repository-scoped one is not a layer.
+      expect(siteLayersFor(root)).toEqual(["chrome", "pages", siteDirFor(root)]);
       expect(siteChromeDirFor(root)).toBe("chrome");
       expect(siteFileFor(root, "_includes/head_custom.html")).toBe(join("chrome", "_includes/head_custom.html"));
-      expect(siteFileFor(root, "_config.yml")).toBe(join("docs", "_config.yml"));
+      expect(siteFileFor(root, "_config.yml")).toBe(join("pages", "_config.yml"));
       // Held by no layer: written where the chrome lives.
       expect(siteFileFor(root, "assets/css/new.css")).toBe(join("chrome", "assets/css/new.css"));
     } finally {
@@ -64,7 +66,7 @@ describe("site layers", () => {
 
 describe("cat-harness's own site chrome", () => {
   test("is declared before docs, so it is the base layer", () => {
-    expect(siteLayersFor(HARNESS)).toEqual(["site-chrome", "docs"]);
+    expect(siteLayersFor(HARNESS)).toEqual(["site-chrome", siteDirFor(HARNESS)]);
     expect(siteChromeDirFor(HARNESS)).toBe("site-chrome");
   });
 
@@ -79,24 +81,24 @@ describe("cat-harness's own site chrome", () => {
       "assets/js/navbar.js",
       "Gemfile",
     ]) {
-      expect(siteFileFor(HARNESS, rel)).toBe(join("site-chrome", rel));
-      expect(existsSync(join(HARNESS, "docs", rel))).toBe(false);
+      expect(siteFileFor(HARNESS, rel)).toBe(join(siteChromeDirFor(HARNESS), rel));
+      expect(existsSync(join(HARNESS, siteDirFor(HARNESS), rel))).toBe(false);
     }
     // Ruling D2: the harness pages' own assets stay with the pages.
     for (const rel of ["assets/js/work-plan.js", "assets/js/process-index.js", "assets/js/slice-sqlite.js", "assets/js/kg-render.js"]) {
-      expect(siteFileFor(HARNESS, rel)).toBe(join("docs", rel));
+      expect(siteFileFor(HARNESS, rel)).toBe(join(siteDirFor(HARNESS), rel));
     }
   });
 
   test("an include the chrome pulls in exists in the chrome alone, so a site with no harness pages builds", () => {
     for (const rel of ["_includes/generated/navbar-footer.html", "_includes/generated/todo-listing.html"]) {
-      expect(existsSync(join(HARNESS, "site-chrome", rel))).toBe(true);
+      expect(existsSync(join(HARNESS, siteChromeDirFor(HARNESS), rel))).toBe(true);
     }
   });
 
   test("the two _config.yml layers merge to a config with the theme keys and the site's identity (D1)", () => {
-    const chrome = parseYaml(readFileSync(join(HARNESS, "site-chrome/_config.yml"), "utf-8")) as Record<string, unknown>;
-    const docs = parseYaml(readFileSync(join(HARNESS, "docs/_config.yml"), "utf-8")) as Record<string, unknown>;
+    const chrome = parseYaml(readFileSync(join(HARNESS, siteChromeDirFor(HARNESS), "_config.yml"), "utf-8")) as Record<string, unknown>;
+    const docs = parseYaml(readFileSync(join(HARNESS, siteDirFor(HARNESS), "_config.yml"), "utf-8")) as Record<string, unknown>;
     expect(chrome.remote_theme).toMatch(/^just-the-docs\/just-the-docs@/);
     expect(docs.remote_theme).toBeUndefined();
     expect(chrome.title).toBeUndefined();
