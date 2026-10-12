@@ -8,7 +8,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import { GraphTypologyNodeSchema } from "./graph-typology-node";
-import { GraphTypologyRegistry } from "./graph-typology-registry";
+import { GraphTypologyRegistry, defaultTypologyRoots } from "./graph-typology-registry";
 
 const made: string[] = [];
 afterAll(() => {
@@ -139,5 +139,42 @@ describe("validators as nodes (bean riit): the validator names the family", () =
     r.names();
     r.register("widget", { renderable: false, holds: "content", summary: "late" });
     expect(r.get("widget")?.validator).toBe("alpha:schemas/w.ts#WidgetSchema");
+  });
+});
+
+describe("several checkouts, in precedence order (kg-separation lesson 6)", () => {
+  test("a kind only the inspected checkout declares is known — the standalone-tools case", () => {
+    const inspected = checkout({ "contributor": [node("l6-contributed")] });
+    const own = checkout({ harness: [] });
+    const r = new GraphTypologyRegistry({}, [inspected, own]);
+    expect(r.has("l6-contributed")).toBe(true);
+    // The module's own checkout alone — what the registry read before — does not know it.
+    expect(new GraphTypologyRegistry({}, own).has("l6-contributed")).toBe(false);
+  });
+  test("a later checkout repeating a kind is SHADOWED and reported, not a conflict", () => {
+    const inspected = checkout({ layer: [node("l6-shared", "content")] });
+    const own = checkout({ layer: [node("l6-shared", "derived")] });
+    const r = new GraphTypologyRegistry({}, [inspected, own]);
+    expect(r.get("l6-shared")?.holds).toBe("content");
+    expect(r.shadowed()).toEqual([
+      { kind: "l6-shared", kept: join(inspected, "layer", "typologies", "l6-shared.json"), shadowed: join(own, "layer", "typologies", "l6-shared.json") },
+    ]);
+  });
+  test("within ONE checkout two files claiming a name are still refused", () => {
+    const one = checkout({ alpha: [node("l6-twice")], beta: [node("l6-twice")] });
+    const other = checkout({ gamma: [] });
+    expect(() => new GraphTypologyRegistry({}, [other, one]).get("l6-twice")).toThrow(/declared by/);
+  });
+  test("defaultTypologyRoots: $REPO_ROOT alone; else the inspected checkout first, then the module's", () => {
+    const inspected = checkout({ downstream: [] });
+    const own = checkout({ harness: [] });
+    const moduleDir = join(own, "harness", "schemas");
+    expect(defaultTypologyRoots({ REPO_ROOT: inspected }, own, moduleDir)).toEqual([inspected]);
+    expect(defaultTypologyRoots({}, inspected, moduleDir)).toEqual([inspected, own]);
+    expect(defaultTypologyRoots({}, own, moduleDir)).toEqual([own]);
+    // A cwd that holds no instance is not a checkout under inspection.
+    const empty = mkdtempSync(join(tmpdir(), "no-instance-"));
+    made.push(empty);
+    expect(defaultTypologyRoots({}, empty, moduleDir)).toEqual([own]);
   });
 });
