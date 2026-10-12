@@ -99,13 +99,16 @@ export function discoverContentAdapters(repoRoot: string = PLATFORM_ROOT): Conte
 export const CONTENT_ADAPTER_NODES: readonly ContentAdapterNode[] = discoverContentAdapters();
 
 /**
- * The vocabulary cat-harness's CODE types — `BlockSchema` in `types.ts` is a
- * union of its kinds. A type is erased, so it cannot be read off the nodes;
- * this is the code's assertion, and `block-kind-nodes.test.ts` holds it equal
- * to the nodes that say `typed: true` through an exhaustive
- * `Record<ContentAdapter, true>`, so neither can change alone.
+ * A typed content-adapter VOCABULARY's name, as its node declares it.
+ *
+ * A string, not a union of names (bean `bzwk`, owner 2026-10-12, option B):
+ * the vocabularies are declared by the layers ABOVE this one — core's
+ * `document`, sci's `mathpaper` — and a harness type that spelled their names
+ * would be the lower layer naming the higher. What the code types is the
+ * KINDS (`Block` in `types.ts` is a union over kind interfaces, whatever their
+ * adapter); which adapter a kind belongs to is data, read off its node.
  */
-export type ContentAdapter = "paper";
+export type ContentAdapter = string;
 
 /**
  * The BUILT-IN content adapters: the vocabularies whose node says `typed`.
@@ -129,6 +132,23 @@ export const DISCOVERED_BLOCK_KIND_NODES: readonly BlockKindNode[] = discoverBlo
 export const BLOCK_KIND_NODES: readonly BlockKindNode[] = DISCOVERED_BLOCK_KIND_NODES.filter((n) =>
   (CONTENT_ADAPTERS as readonly string[]).includes(n.adapter),
 );
+
+/**
+ * A typed vocabulary's kinds nest into the two content profiles, so each must
+ * say which side it is on and how it is headed. A CONTRIBUTED adapter's kind
+ * (smart-base's `dak`) is in no profile and is headed by its title-cased name
+ * unless its node says otherwise.
+ *
+ * Checked here, against the DISCOVERED typed adapters, rather than in the node
+ * schema: the schema cannot know which adapters are typed, and it used to
+ * stand in for that by naming one (`adapter !== "paper"`), which stopped being
+ * true when the vocabulary split by layer (bean `bzwk`).
+ */
+for (const n of BLOCK_KIND_NODES) {
+  for (const f of ["profile", "heading", "headingPlural"] as const) {
+    if (n[f] === undefined) throw new Error(`block kind "${n.kind}" of typed adapter "${n.adapter}" must declare \`${f}\``);
+  }
+}
 
 const NODE_OF: ReadonlyMap<string, BlockKindNode> = new Map(BLOCK_KIND_NODES.map((n) => [n.kind, n]));
 
@@ -182,16 +202,16 @@ export const BLOCK_KIND_ALT = BLOCK_KINDS.join("|");
 // `CONTENT_ADAPTERS` is declared above, before discovery reads it.
 
 /**
- * The `paper` adapter's block kinds — the fifteen above.
+ * Every built-in kind, which is what the `paper` PROFILE admits.
  *
- * An alias rather than a second list: `BLOCK_KINDS` *is* the paper set, and
- * the compile-time exhaustiveness proof in `types.ts` pins it to the `Block`
- * union. Duplicating it here is precisely the drift this module exists to
- * prevent.
+ * It read "the `paper` adapter's kinds" while one adapter held every kind.
+ * Since the vocabulary split by layer (bean `bzwk`: core's `document`, sci's
+ * `mathpaper`), the paper profile is every typed adapter's kinds, so this is
+ * {@link BLOCK_KINDS} under its old name, kept so callers move at their own pace.
+ *
+ * @deprecated use {@link BLOCK_KINDS}, or `PROFILE_BLOCK_KINDS.paper`.
  */
-export const PAPER_BLOCK_KINDS: readonly BlockKind[] = BLOCK_KIND_NODES.filter((n) => n.adapter === "paper").map(
-  (n) => n.kind as BlockKind,
-);
+export const PAPER_BLOCK_KINDS: readonly BlockKind[] = [...BLOCK_KINDS];
 
 // ── Content profiles ─────────────────────────────────────────────
 
@@ -347,7 +367,7 @@ export type DocumentBlockKind = BlockKind;
 /** Which kinds each profile admits. */
 export const PROFILE_BLOCK_KINDS: Record<ContentProfile, readonly BlockKind[]> = {
   document: DOCUMENT_BLOCK_KINDS,
-  paper: PAPER_BLOCK_KINDS,
+  paper: [...BLOCK_KINDS],
 };
 
 /**
@@ -411,26 +431,46 @@ export function profileForContentType(contentType: string | undefined): ContentP
 // rather than widened: the compile-time types narrow to what core owns.
 
 /**
- * Every BUILT-IN kind. Contributed kinds are not here — ask the registry
- * (`ContributionRegistry.contributedKinds()`).
- *
- * The paper vocabulary today, because `paper` is the one built-in adapter.
- * Kept as its own name so a reader looking for "every kind core knows" finds
- * it, and so it widens without its callers changing if a second adapter is
- * ever built in again.
+ * Every BUILT-IN kind, of every typed adapter. Contributed kinds are not here
+ * — ask the registry (`ContributionRegistry.contributedKinds()`).
  */
-export const ALL_BLOCK_KINDS = [...PAPER_BLOCK_KINDS] as const;
+export const ALL_BLOCK_KINDS = [...BLOCK_KINDS] as const;
 
-/** Which kinds belong to which BUILT-IN adapter. */
-export const ADAPTER_BLOCK_KINDS: Record<ContentAdapter, readonly string[]> = {
-  paper: PAPER_BLOCK_KINDS,
+/**
+ * Which kinds belong to which BUILT-IN adapter, read off the nodes. There is
+ * more than one since bean `bzwk` (core's `document`, sci's `mathpaper`), and
+ * a folio may hold kinds of several (owner, 2026-10-12).
+ */
+export const ADAPTER_BLOCK_KINDS: Record<ContentAdapter, readonly string[]> = Object.fromEntries(
+  CONTENT_ADAPTERS.map((a) => [a, BLOCK_KIND_NODES.filter((n) => n.adapter === a).map((n) => n.kind)]),
+);
+
+const KIND_TO_ADAPTER: ReadonlyMap<string, ContentAdapter> = new Map(BLOCK_KIND_NODES.map((n) => [n.kind, n.adapter]));
+
+/**
+ * Adapter names that are no longer a vocabulary but still appear in a scope
+ * list (`QaCriterionDefinition.adapters`), and what each now means.
+ *
+ * `paper` named the ONE vocabulary until it split by layer (bean `bzwk`); a
+ * criterion scoped `["paper"]` meant "every built-in kind", so it expands to
+ * every typed adapter. A name that IS a declared vocabulary is never expanded:
+ * while a checkout still mounts the single `paper` vocabulary, `paper` means
+ * itself. Temporary: removed once no scope names it.
+ */
+export const ADAPTER_ALIASES: Readonly<Record<string, () => readonly string[]>> = {
+  paper: () => CONTENT_ADAPTERS,
 };
 
-const KIND_TO_ADAPTER: ReadonlyMap<string, ContentAdapter> = new Map(
-  CONTENT_ADAPTERS.flatMap((a) =>
-    ADAPTER_BLOCK_KINDS[a].map((k) => [k, a] as [string, ContentAdapter]),
-  ),
-);
+/** `adapters` with every retired name replaced by what it now means, de-duplicated. */
+export function expandAdapterAliases(adapters: readonly string[]): string[] {
+  const out = new Set<string>();
+  for (const a of adapters) {
+    const alias = ADAPTER_ALIASES[a];
+    if (alias && !(CONTENT_ADAPTERS as readonly string[]).includes(a)) for (const x of alias()) out.add(x);
+    else out.add(a);
+  }
+  return [...out];
+}
 
 /**
  * The BUILT-IN adapter a block kind belongs to, or `undefined` for a kind core

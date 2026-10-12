@@ -67,18 +67,11 @@ export const BlockKindNodeSchema = z
     indexRank: z.number().int().positive().optional(),
     rationale: z.string().optional(),
   })
-  .strict()
-  // The paper adapter's kinds are typed by cat-harness's code and nest into the
-  // two content profiles, so each must say which side it is on and how it is
-  // headed. A CONTRIBUTED adapter's kind (smart-base's `dak`) is in no profile
-  // — a different adapter, not a narrower paper — and is headed by its
-  // title-cased name unless its node says otherwise.
-  .superRefine((n, ctx) => {
-    if (n.adapter !== "paper") return;
-    for (const f of ["profile", "heading", "headingPlural"] as const) {
-      if (n[f] === undefined) ctx.addIssue({ code: "custom", path: [f], message: `a paper-adapter kind must declare \`${f}\`` });
-    }
-  });
+  .strict();
+// A TYPED adapter's kinds must declare profile, heading and headingPlural.
+// That is checked in block-kinds.ts against the discovered typed adapters: this
+// schema cannot know which adapters are typed, and naming one here
+// (`adapter !== "paper"`) stopped being true when the vocabulary split (bzwk).
 
 export type BlockKindNode = z.infer<typeof BlockKindNodeSchema>;
 

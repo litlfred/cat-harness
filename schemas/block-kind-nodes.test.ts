@@ -10,10 +10,10 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import {
-  BLOCK_KIND_NODES, BLOCK_KINDS, CONTENT_ADAPTERS, CONTENT_ADAPTER_NODES, DOCUMENT_BLOCK_KINDS, MATH_BLOCK_KINDS,
-  discoverBlockKinds, discoverContentAdapters, kindForBuilder, type ContentAdapter,
+  ADAPTER_BLOCK_KINDS, BLOCK_KIND_NODES, BLOCK_KINDS, CONTENT_ADAPTERS, CONTENT_ADAPTER_NODES, DOCUMENT_BLOCK_KINDS, MATH_BLOCK_KINDS,
+  adapterForKind, discoverBlockKinds, discoverContentAdapters, expandAdapterAliases, kindForBuilder, type ContentAdapter,
 } from "./block-kinds";
-import { ADAPTER_COMPANION_ROLES } from "./block-qa";
+import { ADAPTER_COMPANION_ROLES, criterionAdapters } from "./block-qa";
 import { KNOWN_LABEL_PREFIXES, LABEL_PREFIXES, typedBlockKinds } from "./constraints";
 import { BLOCK_KIND_TO_FOLIO_TYPE, KIND_PREFIXES, assertPrefixesInSync } from "./jsonld";
 import { kindHeading } from "./translation";
@@ -98,20 +98,36 @@ describe("block kinds are discovered, not listed", () => {
 });
 
 describe("content-adapter vocabularies are nodes (bean riit, step 5)", () => {
-  test("the typed vocabularies the nodes declare are the ones the code types", () => {
-    // `ContentAdapter` is a type, erased at runtime; an exhaustive Record over
-    // it is the one place tsc and the nodes meet. Add a typed vocabulary to
-    // the type without a node, or a `typed: true` node without the type, and
-    // this fails — at compile time or here.
-    const typed: Record<ContentAdapter, true> = { paper: true };
-    expect([...CONTENT_ADAPTERS].sort() as string[]).toEqual(Object.keys(typed).sort());
+  test("the typed vocabularies are the nodes that say typed, each owning a kind, and every built-in kind names one", () => {
+    // Bean `bzwk` (owner 2026-10-12, option B): the vocabulary splits by
+    // layer — core's `document`, sci's `mathpaper` — so `ContentAdapter` is a
+    // string and the harness names neither. What still holds, whatever the
+    // layout: the typed adapters are read off the nodes, none is empty, and
+    // a built-in kind always belongs to exactly one of them.
+    const typedNodes = CONTENT_ADAPTER_NODES.filter((n) => n.typed).map((n) => n.adapter).sort();
+    expect([...CONTENT_ADAPTERS].sort() as string[]).toEqual(typedNodes);
+    for (const a of CONTENT_ADAPTERS) expect(ADAPTER_BLOCK_KINDS[a]!.length).toBeGreaterThan(0);
+    for (const k of BLOCK_KINDS) expect(CONTENT_ADAPTERS as readonly string[]).toContain(adapterForKind(k)!);
+  });
+
+  test("`paper` in a scope list means every typed vocabulary once it is no longer one (bean bzwk)", () => {
+    const declared = (CONTENT_ADAPTERS as readonly string[]).includes("paper");
+    const expanded = expandAdapterAliases(["paper", "dak"]);
+    if (declared) expect(expanded).toEqual(["paper", "dak"]);
+    else expect(expanded.sort()).toEqual([...CONTENT_ADAPTERS, "dak"].sort());
+    expect(criterionAdapters({}).slice().sort()).toEqual([...CONTENT_ADAPTERS].sort());
+    expect(criterionAdapters({ adapters: ["paper"] }).slice().sort()).toEqual(declared ? ["paper"] : [...CONTENT_ADAPTERS].sort());
   });
 
   test("each typed vocabulary's companion roles come from its node", () => {
     for (const n of CONTENT_ADAPTER_NODES.filter((x) => x.typed)) {
       expect(ADAPTER_COMPANION_ROLES[n.adapter as ContentAdapter]).toEqual(n.companionRoles);
     }
-    expect(ADAPTER_COMPANION_ROLES.paper).toEqual(["md", "ts", "lean"]);
+    // A formal-claim kind (profile `paper`) carries a .lean sibling, so its
+    // adapter must offer the role, whichever adapter holds it.
+    for (const n of BLOCK_KIND_NODES.filter((x) => x.profile === "paper")) {
+      expect(ADAPTER_COMPANION_ROLES[n.adapter]).toContain("lean");
+    }
   });
 
   test("every block-kind node names a vocabulary that has a node", () => {
