@@ -443,22 +443,53 @@
             document.head.appendChild(s1);
           }
 
+          /* THE CODE NEEDS THE BAR OPEN (bean 5rmf, measured 2026-10-12). The
+           * panel lives inside the bar, and the pointer that clicked the icon
+           * is on the icon column, where `.fa-nav-tip-hold` keeps the strip
+           * shut — so on a wide screen the code opened as a 56px sliver. Opening
+           * it pins the bar; closing it unpins only a pin it made, so a bar the
+           * reader pinned stays pinned. */
+          var pinnedByQr = false;
+          function pin(on) {
+            var box = document.getElementById("fa-nav-open");
+            var wide = window.matchMedia && window.matchMedia("(min-width: 50rem)").matches;
+            if (!box || !wide) return;
+            if (on && !box.checked) {
+              box.checked = true;
+              pinnedByQr = true;
+              box.dispatchEvent(new Event("change"));
+            } else if (!on && pinnedByQr) {
+              pinnedByQr = false;
+              if (box.checked) {
+                box.checked = false;
+                box.dispatchEvent(new Event("change"));
+              }
+            }
+          }
+
           function setOpen(isOpen) {
             if (isOpen) {
               ensure(function () {
                 render();
                 panel.setAttribute("data-open", "true");
                 btn.setAttribute("aria-expanded", "true");
+                pin(true);
               });
             } else {
               panel.setAttribute("data-open", "false");
               btn.setAttribute("aria-expanded", "false");
+              pin(false);
             }
           }
 
-          btn.addEventListener("click", function () {
+          btn.addEventListener("click", function (e) {
             var isOpen = panel.getAttribute("data-open") === "true";
             setOpen(!isOpen);
+            // A POINTER close drops focus too, as the avatar's does: the bar
+            // also opens on `:focus-within`, so a focused icon held it open
+            // after the click that closed the code. A keyboard close (detail 0)
+            // keeps focus where the reader is.
+            if (isOpen && e.detail > 0) btn.blur();
           });
 
           panel.addEventListener("click", function () {
