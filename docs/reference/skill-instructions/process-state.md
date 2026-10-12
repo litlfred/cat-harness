@@ -78,7 +78,7 @@ changes who is accountable for the next step and which gates apply, and **a
 reader who does not know you switched will assume the old lane's rules still
 hold.**
 
-### Naming it is not the same as recording it (STRICT)
+### Naming it is not the same as recording it (advisory)
 
 **Measured 2026-09-20, bean `vlhk`.** 54 proposals merged in one four-hour
 window, and `beans/workflows/` — the declared `workflow-state` graph — held
@@ -102,10 +102,27 @@ it, and the state lives on the branch store precisely so a sibling session
 reads the same position — [`workflow-state.md`](workflow-state.md) §"Where running instances live".
 
 **The session-start sweep reads the branch store and reports "no instance recorded" as a FINDING, not as
-silence.** That is the half that makes the rule self-enforcing: a STRICT rule
-whose breach looks exactly like compliance is the `xom7` shape, and it is how
-this one went unobserved for 54 merges. A finding is not a failure — plenty of
-turns are legitimately outside any process — it is the prompt to say which.
+silence**, when the directory holds none. A finding is not a failure — plenty
+of turns are legitimately outside any process — it is the prompt to say which.
+
+**This rule is ADVISORY: nothing gates on it.** Bean `5ulq` measured the
+remedy above on 2026-10-02: 9 instances against 755 merges since the ruling,
+and no CI workflow reading the graph. That is the `xom7` shape, a STRICT rule
+whose breach looks exactly like compliance. Calling it STRICT taught readers
+that the word is decoration, including where it is enforced. Offered the
+choice between gating it, making it advisory, or scrapping it, the owner ruled
+on 2026-10-10: **make it advisory.** So record the instance when the turn is
+in a process, but no check refuses a merge without one, and none should be
+added without a new ruling.
+
+**The gap is computed, never quoted.** `vlhk`'s 54 went stale by ~14× in two
+weeks with nothing to say so. `bun run cat workflow:instances` prints today's
+count: instances recorded, instances started since the ruling, first-parent
+merges in the same window, and the CI workflows that read the graph. Merges
+are an upper bound on the instances owed, since a steward's train, a docs-only
+fix or a revert may have none. The command reports the gap and exits 0; only
+a count it cannot make (store unmounted, shallow clone, an undatable
+instance) exits 2.
 
 ## How to tell you are out of process
 
