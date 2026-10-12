@@ -5,14 +5,14 @@ status: in-progress
 type: feature
 priority: normal
 created_at: 2026-10-09T15:29:13Z
-updated_at: 2026-10-12T16:45:00Z
+updated_at: 2026-10-12T17:00:00Z
 parent: folio-assistant-f6gq
 ---
 
 Top layer of f6gq; needs 7pvn. who-iris PR 18 (2026-10-09) re-pointed platform.ts to ./folio-assistant-core, the remote mount, as the interim; this replaces those six imports with @litlfred/folio-assistant-core.
 
 ## Done when
-- [ ] platform.ts imports @litlfred/folio-assistant-core, pinned at the commit index.config.json mounts, with the pin check
+- [x] platform.ts imports @litlfred/folio-assistant-core, pinned at the commit index.config.json mounts, with the pin check
 - [ ] who-iris's gates and tests pass from a fresh clone, and inside folio-assistant's aggregate checkout
 
 ## 2026-10-10 — progress
@@ -30,3 +30,10 @@ Top layer of f6gq; needs 7pvn. who-iris PR 18 (2026-10-09) re-pointed platform.t
   - The half becomes measurable when folio-assistant repins who-iris to ≥ `5a19a21`, then its gates plus who-iris's `bun test ./scripts/tests/` are run there.
   - Not done here, for two reasons. litlfred/folio-assistant is not enabled for this session (MCP and `gh` both refuse it). Mounting all 11 instances locally does not fit in the ~3.4 GB free.
 - Status stays **in-progress**: box 1 awaits the owner, and box 2's aggregate half awaits a folio-assistant repin.
+
+## Owner rulings 2026-10-12: B1, C1
+
+Owner, session_017fFnGmbJcfqqrHXz9oqxdG 2026-10-12: **"B1 C1"**.
+
+- **B1 — box 1 ticked.** The remote-mount pin in `index.lock.json` IS the package pin: `@litlfred/folio-assistant-core` resolves through `workspaces` to the core mount, `mount:remote:check` enforces the tree digest, and CI mounts the lock before anything runs. No separate package pin (git-sha dependency or published version): it would be a second copy of the same pin that can go stale.
+- **C1 — box 2 kept as written.** Its fresh-clone half holds (who-iris CI on main `5a19a21`). Its aggregate half closes only once folio-assistant repins who-iris to `5a19a21` or later and runs who-iris's gates and tests in that checkout; this needs a session with folio-assistant access (not enabled here). Bean stays in-progress until then.
