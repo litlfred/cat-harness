@@ -2884,17 +2884,40 @@ export class GraphTypologyRegistry {
   private validatorNodes = new Map<string, { file: string; node: ValidatorNode }>();
   private loaded = false;
 
+  /** Kinds a LATER checkout also declares and an earlier one already answered — reported, never silently merged. */
+  private shadowedKinds: Array<{ kind: string; kept: string; shadowed: string }> = [];
+  /** The checkouts, in precedence order, whose `typologies/` graphs are loaded on first use. */
+  private readonly declaredUnder: readonly string[];
+
   /**
    * @param seed the kinds this layer lists in code
-   * @param declaredUnder a checkout whose instances' `typologies/` graphs are
-   *   loaded on first use; omitted, the registry holds only `seed` and what is
-   *   `register`ed (a test's private registry)
+   * @param declaredUnder a checkout — or several, in PRECEDENCE order — whose
+   *   instances' `typologies/` graphs are loaded on first use; omitted, the
+   *   registry holds only `seed` and what is `register`ed (a test's private
+   *   registry). Within one checkout a name two files declare is refused, as
+   *   before; a later checkout declaring a kind an earlier one already answered
+   *   is SHADOWED (see {@link shadowed}), because the earlier checkout is the
+   *   one being read (`defaultGraphTypologies` puts the checkout under
+   *   inspection first).
    */
   constructor(
     seed: Readonly<Record<string, GraphTypologyDef>> = BASE_GRAPH_TYPOLOGIES,
-    private readonly declaredUnder?: string,
+    declaredUnder?: string | readonly string[],
   ) {
     for (const [k, v] of Object.entries(seed)) this.kinds.set(k, v);
+    const roots = declaredUnder === undefined ? [] : typeof declaredUnder === "string" ? [declaredUnder] : declaredUnder;
+    this.declaredUnder = [...new Set(roots.map((r) => resolve(r)))];
+  }
+
+  /** The checkouts this registry loads declared kinds from, in precedence order. */
+  roots(): readonly string[] {
+    return this.declaredUnder;
+  }
+
+  /** Kinds a lower-precedence checkout declared again, and which file was kept. */
+  shadowed(): ReadonlyArray<{ kind: string; kept: string; shadowed: string }> {
+    this.ensureDeclared();
+    return this.shadowedKinds;
   }
 
   /**
@@ -2906,25 +2929,39 @@ export class GraphTypologyRegistry {
    * which is the dh4f shape.
    */
   private ensureDeclared(): void {
-    if (this.loaded || this.declaredUnder === undefined) return;
+    if (this.loaded || this.declaredUnder.length === 0) return;
     this.loaded = true;
-    for (const { file, node } of declaredKindNodes(this.declaredUnder)) {
-      const prior = this.declaredIn.get(node.kind);
-      if (prior === file) continue;
-      if (prior !== undefined || this.kinds.has(node.kind)) {
-        throw new GraphTypologyConflictError(node.kind, `declared by ${prior ?? "the base layer's code"} and by ${file}`);
+    // Which checkout (by precedence index) answered each kind / validator key.
+    const kindRoot = new Map<string, number>();
+    const validatorRoot = new Map<string, number>();
+    this.declaredUnder.forEach((root, at) => {
+      for (const { file, node } of declaredKindNodes(root)) {
+        const prior = this.declaredIn.get(node.kind);
+        if (prior === file) continue;
+        const priorAt = kindRoot.get(node.kind);
+        if (prior !== undefined && priorAt !== undefined && priorAt < at) {
+          this.shadowedKinds.push({ kind: node.kind, kept: prior, shadowed: file });
+          continue;
+        }
+        if (prior !== undefined || this.kinds.has(node.kind)) {
+          throw new GraphTypologyConflictError(node.kind, `declared by ${prior ?? "the base layer's code"} and by ${file}`);
+        }
+        this.kinds.set(node.kind, kindDefOf(node));
+        this.declaredIn.set(node.kind, file);
+        kindRoot.set(node.kind, at);
       }
-      this.kinds.set(node.kind, kindDefOf(node));
-      this.declaredIn.set(node.kind, file);
-    }
-    for (const v of declaredValidatorNodes(this.declaredUnder)) {
-      const key = `${v.node.validates.kind}\u0000${v.node.validates.family ?? ""}`;
-      const prior = this.validatorNodes.get(key);
-      if (prior && prior.file !== v.file) {
-        throw new Error(`two validators for ${describeValidator(v.node)}: ${prior.file} and ${v.file}. One family, one validator.`);
+      for (const v of declaredValidatorNodes(root)) {
+        const key = `${v.node.validates.kind}\u0000${v.node.validates.family ?? ""}`;
+        const prior = this.validatorNodes.get(key);
+        const priorAt = validatorRoot.get(key);
+        if (prior && priorAt !== undefined && priorAt < at && prior.file !== v.file) continue;
+        if (prior && prior.file !== v.file) {
+          throw new Error(`two validators for ${describeValidator(v.node)}: ${prior.file} and ${v.file}. One family, one validator.`);
+        }
+        this.validatorNodes.set(key, v);
+        validatorRoot.set(key, at);
       }
-      this.validatorNodes.set(key, v);
-    }
+    });
     // A validator naming a kind not registered YET is joined by `register`
     // (core registers `folio` in code after load); one naming no kind at all
     // is `check:kind-validators`' finding.
@@ -3041,17 +3078,46 @@ function describeValidator(n: ValidatorNode): string {
 }
 
 /**
- * The shared registry: the base layer's kinds above, plus every kind the
- * instances of THIS checkout declare in their `typologies/` graphs (bean dmx1),
- * loaded on first use. Core registers `folio` into it at load.
+ * The checkouts the shared registry reads declared kinds from, in precedence
+ * order. Exported so a test can ask it without mutating the process.
+ *
+ * 1. `$REPO_ROOT`, when set — the caller said which checkout; it is the only one.
+ * 2. The checkout under inspection: `cwd`, when it holds any instance. Every
+ *    `check:*` script reads declarations from `process.cwd()`, so its kinds must
+ *    come from there too.
+ * 3. The checkout this module sits in, two levels up (or one).
+ *
+ * **Why 2 exists — the fixed-depth defect (kg-separation lesson 6).** Until
+ * 2026-10-12 only 3 was read: the registry assumed the declarations it judges
+ * live in the checkout the harness MODULE lives in. That holds in the monorepo
+ * and inside a downstream that remote-mounts the harness, and is false the
+ * moment the tools run standalone against another checkout — a sibling clone of
+ * cat-harness-tools checking `smart-ra`: `smart-base.json` declares the
+ * `fhir-artifact-index` kind that `fhir-harness` (mounted in `smart-ra`, absent
+ * beside the standalone clone) contributes, so `readDeclaration` threw "unknown
+ * graph typology" over a declaration that is correct. The mounted copy of the
+ * same script passed. Two layouts, two answers about one file.
  */
-const here = dirname(fileURLToPath(import.meta.url));
-const up2 = resolve(here, "..", "..");
-const up1 = resolve(here, "..");
-export const defaultGraphTypologies = new GraphTypologyRegistry(
-  BASE_GRAPH_TYPOLOGIES,
-  process.env.REPO_ROOT ?? (instanceRootsIn(up2).length > 0 ? up2 : up1),
-);
+export function defaultTypologyRoots(
+  env: Readonly<Record<string, string | undefined>> = process.env,
+  cwd: string = process.cwd(),
+  moduleDir: string = dirname(fileURLToPath(import.meta.url)),
+): string[] {
+  if (env.REPO_ROOT) return [resolve(env.REPO_ROOT)];
+  const up2 = resolve(moduleDir, "..", "..");
+  const up1 = resolve(moduleDir, "..");
+  const own = instanceRootsIn(up2).length > 0 ? up2 : up1;
+  const inspected = instanceRootsIn(cwd).length > 0 ? resolve(cwd) : undefined;
+  return inspected !== undefined && inspected !== own ? [inspected, own] : [own];
+}
+
+/**
+ * The shared registry: the base layer's kinds above, plus every kind the
+ * instances of the checkout under inspection — and then of the checkout this
+ * module sits in — declare in their `typologies/` graphs (bean dmx1), loaded on
+ * first use. Core registers `folio` into it at load. See {@link defaultTypologyRoots}.
+ */
+export const defaultGraphTypologies = new GraphTypologyRegistry(BASE_GRAPH_TYPOLOGIES, defaultTypologyRoots());
 
 /**
  * The display name of a graph typology: its declared {@link GraphTypologyDef.title},
