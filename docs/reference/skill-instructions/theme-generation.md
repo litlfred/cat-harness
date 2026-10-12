@@ -18,11 +18,11 @@ stylesheet gets told about it, and what happens to a reader when it is not told.
 
 ## One command, and forgetting it is the recurring defect
 
-    bun run cat themes:css          # regenerate docs/assets/css/themes.css
+    bun run cat themes:css          # regenerate site-chrome/assets/css/themes.css
     bun run cat themes:css:check    # fail the build when it is stale
 
 `scripts/gen-themes-css.ts` reads `schemas/themes.ts` and writes
-`docs/assets/css/themes.css`. **Never hand-edit the output.**
+`site-chrome/assets/css/themes.css`. **Never hand-edit the output.**
 
 ## The failure: a theme with no rule paints over its own art
 

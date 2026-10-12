@@ -108,7 +108,7 @@ of the deduplication above, and restoring it undoes that work silently.
 | `sha`, `short_sha`, `built_at`, `run_url` | **written** | **DELIBERATELY ABSENT** |
 | `branch`, `staging`, `staging_slug`, `pr_number`, `search_index` | — | written |
 
-**Why staging omits them.** `docs/_includes/footer_custom.html` renders
+**Why staging omits them.** `site-chrome/_includes/footer_custom.html` renders
 `short_sha`, `built_at` and `run_url` into the footer of **every** page. A
 fresh `date -u` per run therefore changed every page on every deploy — the
 same defect as the old bash banner, one include along, and it **survived the

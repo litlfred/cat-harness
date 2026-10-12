@@ -6,7 +6,7 @@
       "id": "just-the-docs",
       "title": "just-the-docs Jekyll theme",
       "repo": "https://github.com/just-the-docs/just-the-docs",
-      "pinnedIn": "docs/_config.yml",
+      "pinnedIn": "site-chrome/_config.yml",
       "pattern": "^remote_theme:\\s*just-the-docs/just-the-docs@(\\S+)\\s*$",
       "tagPattern": "^v\\d+\\.\\d+\\.\\d+$",
       "themedPaths": [
@@ -16,13 +16,13 @@
         "assets"
       ],
       "binds": [
-        "docs/assets/js/docs-ui.js — MOVES the theme's own search markup into the action launcher; binds `.search`, `#search-input`, `.search-label`. An upstream rename degrades a shipped feature without failing the build.",
-        "docs/assets/css/docs-ui.css — overrides `.side-bar`, `.site-header`, `.main-header`; `sidebar-panels.e2e.ts` records that the theme hard-caps `.site-header` height.",
+        "site-chrome/assets/js/docs-ui.js — MOVES the theme's own search markup into the action launcher; binds `.search`, `#search-input`, `.search-label`. An upstream rename degrades a shipped feature without failing the build.",
+        "site-chrome/assets/css/docs-ui.css — overrides `.side-bar`, `.site-header`, `.main-header`; `sidebar-panels.e2e.ts` records that the theme hard-caps `.site-header` height.",
         "test/a11y.e2e.ts — fixtures reproduce the theme's own search markup, including that the accessible name comes from `<label for=search-input>` rather than an aria-label.",
         "test/action-tiles.e2e.ts — asserts the theme's search element as rendered into `.main-header`.",
         "test/sidebar-panels.e2e.ts — asserts the theme's sidebar column and capped header.",
-        "docs/_includes/head_custom.html — pulled into every page by the theme.",
-        "docs/_config.yml — `search_enabled`, `heading_anchors`, `color_scheme: dark`, `mermaid`, `keep_files`, `footer_content` are all theme options."
+        "site-chrome/_includes/head_custom.html — pulled into every page by the theme.",
+        "site-chrome/_config.yml — `search_enabled`, `heading_anchors`, `color_scheme: dark`, `mermaid` are theme options; so are `keep_files` and `footer_content`, which the site sets in docs/_config.yml (its identity, overlaid on the chrome by compose-docs)."
       ],
       "mvp": [
         "rm -rf _kg _site",

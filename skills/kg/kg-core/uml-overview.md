@@ -93,7 +93,7 @@ empty shape. Close it by registering a node schema, not by editing the diagram.
   UML (with themes) showing schemas of schema, task, role, user scenario,
   process, skill, task, test", plus Actor.
 
-**Colours are declared once, in `docs/assets/css/uml.css`**, one CSS class per
+**Colours are declared once, in `site-chrome/assets/css/uml.css`**, one CSS class per
 graph typology in five families: schema, scenario, process, state and test. The
 Mermaid pages take them from CSS directly. The `.puml` files write the same
 colour onto each class, read from that stylesheet by `scripts/uml-palette.ts`,

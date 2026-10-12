@@ -91,14 +91,14 @@ What is kept from the Form Documentor:
    text says it needs JavaScript and links the DOT.
 7. **No third party at runtime.** Graphviz in WebAssembly is
    `@hpcc-js/wasm-graphviz`, pinned EXACTLY as a devDependency and vendored by
-   `bun run cat kg-graph:vendor` into `docs/assets/js/vendor/wasm-graphviz/`,
+   `bun run cat kg-graph:vendor` into `site-chrome/assets/js/vendor/wasm-graphviz/`,
    with a `LICENSE.txt` (the wrapper is Apache-2.0; the Graphviz compiled into
    it is EPL-1.0) and an entry in `NOTICE`. `kg-graph:vendor:check` fails when
    the copy differs from the pinned package. The viewer imports it relative to
    its own URL and only when a graph is first shown, so a page that is never
    switched to Interactive never fetches 740 KB.
 
-## The viewer: `docs/assets/js/kg-graph.js`
+## The viewer: `site-chrome/assets/js/kg-graph.js`
 
 One shared site script for every `.kg-graph[data-dot-src]` element. Do not
 write a second one. It:

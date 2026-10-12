@@ -419,7 +419,7 @@
  * The settled answer (owner's call) is that a schematic is a FIGURE and
  * figures are printed on white, whatever the surrounding page is doing. So the
  * card is back, Mermaid is pinned to its light palette
- * (docs/_includes/mermaid_config.js), and these now get the same treatment as
+ * (site-chrome/_includes/mermaid_config.js), and these now get the same treatment as
  * the BPMN exports in `.bpmn-figure` — which carry their own white backdrop
  * and could never have followed a scheme anyway. One treatment for both beats
  * two that each look right in only one mode.
@@ -1496,7 +1496,7 @@
  *
  * The gear in the sidebar header, its panel, and the four affordances the
  * panel switches on. Each is a WCAG 2.2 AA criterion this site can actually
- * satisfy; docs/assets/js/docs-ui.js names which.
+ * satisfy; site-chrome/assets/js/docs-ui.js names which.
  *
  * The switches are attributes on <html> (`data-fa-large-type` and friends), so
  * everything below is a plain attribute selector and nothing here depends on

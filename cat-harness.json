@@ -782,6 +782,14 @@
       "description": "The harness's own minimal folio renderer (bean ohx6, owner ruling 2026-10-10): `file-list.ts`, which renders the folio as the list of files it holds into `folio/index.md`, and the skill that says when to run it. Code and a skill, not folio content: the folio reader reads only `folio/*.json`, and the renderer skips this directory."
     },
     {
+      "id": "site-chrome",
+      "path": "site-chrome/",
+      "graphTypologies": [
+        "docs"
+      ],
+      "description": "The SITE CHROME: the just-the-docs theme configuration (`_config.yml`'s theme keys, the `Gemfile`), the generic includes every page pulls in (`head_custom`, `footer_custom`, `nav_footer_custom`, `mermaid_config`) and the stylesheets and scripts they load, in their Jekyll-relative places. Concern group `ui`. It is the BASE layer of the composed docs tree: declared BEFORE `docs`, so `compose-docs` lays it down first and `docs/` overlays it (later wins; `_config.yml` merged, parse-equal to the file it was cut from, ruling D1). Empty `_includes/generated/*` stand-ins let a site with no harness pages build. A downstream that wants the harness's look without its 3,456 pages mounts `site-chrome` and omits `docs`. Owner, 2026-10-09: *\"go ahead with the cat-harness chrome subgraph\"*; proposal `docs/proposals/semantic-subgraphs-2026-10-09.md`, slice 1. The harness pages' own assets (`work-plan.*`, `process-index.js`, `slice-sqlite*`, `kg-render.js`, `vendor/sqlite-wasm`) stay in `docs/` (ruling D2)."
+    },
+    {
       "id": "docs",
       "path": "docs/",
       "description": "Documentation about the Knowledge Graph itself: the pages of the published site, some written by people and some generated from the graph. Also holds `reference/harness.config.example.json`, the worked example of an instance config that the installation guide tells a reader to copy into their content repository and that `package.json` `files` ships in the npm tarball — a reference asset, published with the site rather than rendered as a page. It sat at the repository root until 2026-10-06 (bean `ar1s`, phase 3: tooling leaves the root before the repo split).",

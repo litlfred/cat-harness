@@ -526,7 +526,7 @@ rather than an arbitrary one.
 
 `pipeline/translation-index.ts` writes `docs/_data/translations.json`; `_includes/head_custom.html` publishes it
 into every page as `#fa-translation-index`; `mountNavLocale` in
-`docs/assets/js/docs-ui.js` reads it.
+`site-chrome/assets/js/docs-ui.js` reads it.
 
 With a non-source locale selected, each nav item that **has** a page in that
 locale is rewritten in place — same position, same parent, translated title,
