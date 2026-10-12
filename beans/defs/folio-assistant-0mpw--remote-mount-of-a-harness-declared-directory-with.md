@@ -5,7 +5,7 @@ status: in-progress
 type: feature
 priority: normal
 created_at: 2026-10-06T17:55:54Z
-updated_at: 2026-10-06T22:13:34Z
+updated_at: 2026-10-12T16:28:09Z
 parent: folio-assistant-fnx4
 ---
 
@@ -50,3 +50,9 @@ Built on branch claude/remote-mount-0mpw:
 SUPERSEDED in this bean's design: "Code … comes as a pinned package" — per the owner's later ruling (bean g8jp) code arrives through the remote-mounted declared code directories.
 
 Also: `mount-instance-docs`' `topLevelDeclarations` unions `mountedInstanceRoots`, so a mount an override placed below the top level is published (agreed with #2324's session).
+
+_2026-10-12_ — Claimed by claude/mount-gaps-2026-10-12 (session_017fFnGmbJcfqqrHXz9oqxdG) for task #10: three mount gaps observed that day.
+
+- [x] (a) `content/` undeclared in cat-harness-tools: the transitional `content/pipeline -> ../pipeline` link (rnfl #146) is now declared, so a mount by declared directories lays it down and `cat-harness-tools/content/pipeline/...` commands resolve in a downstream. cat-harness-tools#161.
+- [x] (b) mount:remote / mount:lock install each mounted instance's deps (`bun install --no-save --production`, after every instance is down); `node_modules/` at any depth is outside every mount digest, the lockfile stays pinned and is restored if moved, and an upstream tracking node_modules is refused. `--check` passes over an installed mount; a re-mount no longer refuses it. `--no-install` / `--install-all`. cat-harness-tools#161.
+- [x] (c) `mount:remote --seed <name>=<owner/repo>@<sha> --consent-by <who> --evidence "<…>"` creates/re-pins a remote instance in index.config.json and writes `trust.consent` for that pin (`withConsent`, cat-harness#176, merged).
