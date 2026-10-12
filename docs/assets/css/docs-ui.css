@@ -554,8 +554,10 @@
     /* Plain value first: a browser without env() treats the max() line as
        invalid and DROPS it, which would otherwise leave `top` at the base
        rule's 0 and tuck the code under a notch. */
-    top: 0.75rem;
-    top: max(0.75rem, env(safe-area-inset-top, 0px));
+    /* Below the fixed top bar (language, ▾ Folio), which sat over the code's top
+       rows at 390px (bean 5rmf, measured 2026-10-12). */
+    top: 3rem;
+    top: calc(3rem + env(safe-area-inset-top, 0px));
     left: 50%;
     transform: translateX(-50%);
     /* Bigger than the desktop 14rem: on a phone this is usually being read by
