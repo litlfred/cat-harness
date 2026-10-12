@@ -1228,6 +1228,33 @@ from a checkout without that being a finding. **Judgements never move**: they
 are the `attestations` kind at `test/attestations/`, on `main`, because a
 regenerated file cannot reproduce them (owner ruling D2 (a)).
 
+### A branch's README is rendered, not written (bean `esz4`)
+
+Every special branch says what it is at its root, and a reader cannot recover
+three of those facts from its files: its **status** (the store, a seed, or
+retired), its **provenance** (the commit it was seeded from, and when) and how
+it is **written**. A branch without them cannot be told from an abandoned one.
+
+They are KG already, in two places, and the README is rendered from both by
+`bun run cat branch:readme` (cat-harness-tools):
+
+- the **declarations** — every `directories[]` entry whose `storage` or branch
+  `source` names the branch, read where each instance declares it. Never a
+  table of branches: owner, 2026-10-03 (`rva2`), *"each harness declares it,
+  (and each instance can also declare), why centralize?"*;
+- the branch's root **`manifest.json`**, `state-manifest/v1`, whose field set
+  is `schemas/state-manifest.ts`: one shape for a tip-keyed branch (seed
+  commit, `graphs`) and one for a route-keyed branch (`writer`, `gate`).
+
+`branch:readme:check` reports each declared branch `current`, `stale`
+(absent, hand-written, or behind its sources) or `unknown` (the branch or its
+manifest could not be read, or the manifest does not parse); `--push <branch>`
+replaces the README with a describing write, the one write that may touch it.
+The commit-keyed QA branch carries no manifest and is described as derived
+from its declarations alone. A **family** (`branchPrefix`) has one README per
+member, rendered from the family's declaration and the member's manifest, and
+a branch a declared **Tool** publishes (`gh-pages`) is that Tool's to describe.
+
 ## Authoring an entry — the checklist
 
 The rules are argued elsewhere in this skill and its neighbours; this is the
