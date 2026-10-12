@@ -4214,6 +4214,70 @@ export function docsSourceDirFor(root: string): string {
 }
 
 /**
+ * The instance's SITE LAYERS: every directory it declares with graph typology
+ * `docs`, relative to `root`, in DECLARATION order — base first, the layer
+ * that overlays it last. This is the order `compose-docs` lays them down in.
+ *
+ * Read RAW, like {@link siteDirFor}: a validating read throws on any
+ * unregistered typology, and the site layers are needed by tools that must
+ * work on a declaration they are not the authority for.
+ *
+ * On cat-harness it is `["site-chrome", "docs"]` (proposal
+ * semantic-subgraphs-2026-10-09, slice 1; owner, 2026-10-09: *"go ahead with
+ * the cat-harness chrome subgraph"*): the just-the-docs CHROME is the base and
+ * the harness's own pages overlay it. An instance that declares one docs
+ * directory has one layer, and every answer below collapses to
+ * {@link siteDirFor}'s.
+ */
+export function siteLayersFor(root: string): string[] {
+  const file = findDeclarationFile(root);
+  if (file === undefined) return [siteDirFor(root)];
+  let raw: { directories?: { path?: unknown; graphTypologies?: unknown; scope?: unknown }[] };
+  try {
+    raw = JSON.parse(readFileSync(join(root, file), "utf-8"));
+  } catch {
+    return [siteDirFor(root)];
+  }
+  const layers = (raw.directories ?? [])
+    .filter(
+      (d) =>
+        typeof d.path === "string" &&
+        d.scope !== "repository" &&
+        Array.isArray(d.graphTypologies) &&
+        d.graphTypologies.includes("docs"),
+    )
+    .map((d) => (d.path as string).replace(/\/+$/, ""));
+  const site = siteDirFor(root);
+  // The site directory is always a layer: it is where the instance's pages are
+  // generated, whether or not the declaration happens to name it.
+  return layers.includes(site) ? layers : [...layers, site];
+}
+
+/**
+ * Where a file of the COMPOSED site comes from: the top-most site layer
+ * ({@link siteLayersFor}) that holds `rel`, relative to `root` — the same
+ * later-wins answer `compose-docs` gives. A file no layer holds resolves into
+ * the BASE layer, so a generator writing a chrome file it has not written yet
+ * writes it where the chrome lives.
+ *
+ * A reader of `assets/css/docs-ui.css` or `_includes/head_custom.html` asks
+ * this rather than joining {@link siteDirFor}: since slice 1 those files are
+ * the site chrome's, not the pages'.
+ */
+export function siteFileFor(root: string, rel: string): string {
+  const layers = siteLayersFor(root);
+  for (let i = layers.length - 1; i >= 0; i--) {
+    if (existsSync(join(root, layers[i]!, rel))) return join(layers[i]!, rel);
+  }
+  return join(layers[0]!, rel);
+}
+
+/** The BASE site layer — the site chrome where one is declared, else {@link siteDirFor}. */
+export function siteChromeDirFor(root: string): string {
+  return siteLayersFor(root)[0]!;
+}
+
+/**
  * {@link artefactStub} for the instance rooted at `root`, read from its
  * declaration — the RAW read, for the same reason {@link siteDirFor} takes one.
  *

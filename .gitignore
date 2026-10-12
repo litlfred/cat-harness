@@ -14,9 +14,13 @@ node_modules/
 # The docs site's local build state (siteDirFor: `docs/`). Until the
 # separation these were ignored only by the monorepo root's .gitignore, so a
 # standalone clone would `git add -A` a gem tree. Anchored, so the vendored
-# assets Jekyll serves (`docs/assets/js/vendor/`) stay addable.
+# assets Jekyll serves (`docs/assets/js/vendor/`, `site-chrome/assets/js/vendor/`)
+# stay addable. The Gemfile is the site chrome's (`site-chrome/`), so a bundle
+# installed beside it is ignored there too.
 /docs/.bundle/
 /docs/vendor/
+/site-chrome/.bundle/
+/site-chrome/vendor/
 /docs/_data/build.yml
 /docs/_site/
 

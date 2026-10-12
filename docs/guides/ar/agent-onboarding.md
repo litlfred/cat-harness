@@ -5,7 +5,7 @@ parent: Authoring guides
 lang: ar
 # `lang` above is what makes this a translation -- nothing reads `fr` out of
 # the path. `nav_exclude` keeps it out of the statically built nav, and
-# `mountNavLocale` (docs/assets/js/docs-ui.js) puts it back in place of its
+# `mountNavLocale` (site-chrome/assets/js/docs-ui.js) puts it back in place of its
 # source when this locale is selected. There is no `nav_order`: it stands
 # where its source stands. skills/library/library-core/translation-manager.md
 nav_exclude: true

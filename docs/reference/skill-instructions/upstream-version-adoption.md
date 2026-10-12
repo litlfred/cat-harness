@@ -41,7 +41,7 @@ that reads it, what of ours binds to it, and the commands that constitute its
 MVP.
 
 **It deliberately does not store the pinned version.** The version lives in
-exactly one place — `docs/_config.yml` for the theme — and the registry says
+exactly one place — `site-chrome/_config.yml` for the theme — and the registry says
 how to read it from there. A registry that carried its own copy would be a
 second answer to "what are we running", free to disagree with the build, and
 this repository has paid for that shape before. `bun run cat check:upstream-pins`
@@ -89,9 +89,9 @@ git -C <upstream-clone> diff --stat <pinned>..<candidate> -- _sass _includes _la
 
 **Then ask what of ours binds to it**, from the row's `binds` list. This is the
 half that a changelog cannot tell you, because upstream does not know what you
-reached into. For the theme it is concrete and small: `docs/assets/js/docs-ui.js`
+reached into. For the theme it is concrete and small: `site-chrome/assets/js/docs-ui.js`
 *moves* the theme's own search markup into the action launcher, binding `.search`,
-`#search-input` and `.search-label`; `docs/assets/css/docs-ui.css` overrides
+`#search-input` and `.search-label`; `site-chrome/assets/css/docs-ui.css` overrides
 `.side-bar`, `.site-header` and `.main-header`; and three e2e specs assert the
 structure the theme emits. An upstream rename of any of those is not a build
 failure — it is a shipped feature that quietly stops working, which is the

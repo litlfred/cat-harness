@@ -8,7 +8,7 @@
    DIAGRAMS ARE ALWAYS LIGHT, IN BOTH COLOUR SCHEMES. The site's stylesheet
    follows the reader's choice; the drawings do not. They render in Mermaid's
    light palette on a white card supplied by `.fa-figure-wrap`
-   (docs/assets/css/docs-ui.css), exactly like the BPMN exports beside them,
+   (site-chrome/assets/css/docs-ui.css), exactly like the BPMN exports beside them,
    which carry their own white backdrop and cannot follow a scheme at all.
 
    This reverses a decision made an hour earlier in this session, and the

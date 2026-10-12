@@ -764,7 +764,7 @@
     for (var i = 0; i < schemePainters.length; i++) schemePainters[i](next);
 
     // No reload. Diagrams are pinned to Mermaid's LIGHT palette on a white
-    // card in both schemes (docs/_includes/mermaid_config.js), so nothing on
+    // card in both schemes (site-chrome/_includes/mermaid_config.js), so nothing on
     // the page needs re-rendering when the scheme changes. An earlier version
     // reloaded here because the diagram palette followed the scheme; that
     // coupling is gone and the reload went with it.
