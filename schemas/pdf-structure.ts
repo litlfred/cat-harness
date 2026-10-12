@@ -38,6 +38,8 @@
  */
 import { z } from "zod";
 
+import { RunContextRefSchema } from "./run-context";
+
 export const PDF_STRUCTURE_SCHEMA_ID = "pdf-structure/v1" as const;
 
 /**
@@ -135,6 +137,21 @@ export const PdfSourceSchema = z
      * none passed its gates. Absent when the overlay never ran.
      */
     math_source: z.enum(["latex", "text-layer"]).optional(),
+    /**
+     * WHICH SOFTWARE produced the text, cited by digest: the
+     * `folio-run-context/v1` of the run that wrote it (`schemas/run-context.ts`),
+     * reused rather than restated — the one optional `runContext: { sha256 }`
+     * reference that `docs/proposals/tool-releases-2026-10-07.md` gives every
+     * run and report record (owner, C1 = a).
+     *
+     * Written when `text_source` is `ocr`: it is the context `pdf-ocr.py` wrote
+     * to `<entry>/ocr/run-context.json` (the OCR engine, its version, the bytes
+     * of the binary and of its language data). Without it, two OCRs of one PDF
+     * that read "Manual" and "Manval" cannot be told apart or reproduced.
+     * Absent on entries ingested before it existed, and on an embedded text
+     * layer.
+     */
+    runContext: RunContextRefSchema.optional(),
   })
   .strict();
 

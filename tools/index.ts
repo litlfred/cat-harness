@@ -348,6 +348,10 @@ export function tools(baseUrl?: string): ToolDefinition[] {
           { name: "staging", schema: t("Flag"), required: false, arg: { flag: "--staging" }, description: "Mount for a staging preview: no signature or consent required." },
           { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Compare the disk against the lock; fetch nothing." },
           { name: "noAgentSurface", schema: t("Flag"), required: false, arg: { flag: "--no-agent-surface" }, description: "Do not re-render `.claude/commands/` and the agent memory after a mount that changed the lock." },
+          { name: "noInstall", schema: t("Flag"), required: false, arg: { flag: "--no-install" }, description: "Lay the pinned bytes down without `bun install` in each mounted instance that carries a `package.json`. By default the install runs (`--production`; `--install-all` keeps devDependencies), so the mounted tools run; it writes only `node_modules/`, which no mount digest covers, so `--check` still passes." },
+          { name: "seed", schema: t("Text"), required: false, arg: { flag: "--seed" }, description: "`<name>=<owner/repo>@<40-char sha>`: create or re-pin that remote instance in `index.config.json` instead of mounting, writing its `trust.consent` for that pin in the same write (needs `consentBy` and `evidence`; repeatable; `--whole` mounts every tracked file)." },
+          { name: "consentBy", schema: t("Text"), required: false, arg: { flag: "--consent-by" }, description: "With `seed`: who consented, as `consent.by`." },
+          { name: "evidence", schema: t("Text"), required: false, arg: { flag: "--evidence" }, description: "With `seed`: where the consent was given, readable (a session, an issue comment), as `consent.evidence`." },
         ],
         outputs: [
           { name: "outcomes", schema: t("Count"), description: "Per instance: mounted, local, skipped, missing (including refused by the trust gate) or could-not-determine." },
