@@ -41,3 +41,10 @@ Owner: *"B, multiple adapter for same assets ok"* (after proposing "mathpaper").
   3. sci renames `paper` to `mathpaper`.
   4. Folio configs and QA scoping follow.
   5. The sci mounts in smart-ra and who-iris can go.
+
+## 2026-10-12 — names and companions decided (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
+Owner: *"1 document, 2 drop"*.
+- Core's adapter is `document`. Its 10 kinds: prose, example, remark, algorithm, simulator, equation, diagram, table, figure, recommendation.
+- It takes companion roles md and ts only, with NO lean. Only `mathpaper` kinds carry a `.lean` sibling. Existing folios with a lean companion on a document kind must be checked before step 3.
+- The class adapters (contentType document / paper) are unchanged.
+- The six-step PR plan (subagent research, 2026-10-12) is in the session. Step 1 makes cat-harness adapter-generic: ContentAdapter becomes a string, ADAPTER_BLOCK_KINDS is derived, the criterionAdapters default is every typed adapter, and a temporary `paper` alias is added.
