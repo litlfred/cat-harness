@@ -12450,13 +12450,19 @@
     // The class the stylesheet keys the hover-case `[x]` on. Set FIRST, so a
     // control that needs this handler never appears without it.
     bar.classList.add("fa-nav-js");
-    applyNavPref(readNavPref());
+    /* STAY-CLOSED IS NO LONGER REMEMBERED — owner, 2026-10-12: *"when LHS
+     * navbar is slid open, the navbar remains collapsed. you then have to
+     * click the avatar to open it"*. Once `[x]` went (#1762) the avatar was
+     * the only close, so EVERY close stored "closed" and the hover peek was
+     * withheld on every page after it. A close now holds the bar shut only
+     * until the pointer leaves it (below), and a "closed" an earlier visit
+     * stored is cleared rather than obeyed. */
+    if (readNavPref() === "closed") writeNavPref(null);
+    applyNavPref(null);
 
     var box = document.getElementById("fa-nav-open");
     // NO ☰ AND NO [x] (#1757 on the rail, ob3m finding 8 here). The avatar
-    // below is the one control: it pins the bar open, lifting stay-closed, and
-    // closes it, setting stay-closed -- so the preference keeps both of its
-    // directions (`l4zi`) with one control instead of three.
+    // below is the one control: it pins the bar open and closes it.
 
     /* THE AVATAR OPENS AND CLOSES THE BAR — owner, 2026-09-27: *"navbar
      * starts hidden, click avatar opens for a split second then returns to
@@ -12489,8 +12495,15 @@
         if (!wide.matches) return;
         e.preventDefault();
         box.checked = !box.checked;
-        writeNavPref(box.checked ? null : "closed");
+        // Closed under the pointer, the hover peek would hold it open, so the
+        // peek is withheld -- until the pointer leaves the bar, not for good.
         applyNavPref(box.checked ? null : "closed");
+        if (!box.checked) {
+          bar.addEventListener("pointerleave", function release() {
+            bar.removeEventListener("pointerleave", release);
+            if (!box.checked) applyNavPref(null);
+          });
+        }
         label();
         // Closing must drop focus too: the bar also opens on `:focus-within`
         // (the keyboard path), so a focused avatar held it open after the
