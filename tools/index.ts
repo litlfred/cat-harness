@@ -459,6 +459,58 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       requires: { runtime: ["bun", "git", "ruby"], network: true },
       remedies: [{ host: "github.com", none: "The mount and the publish both need the git host; offline, `--no-mount` still builds and checks from what is on disk." }],
     }),
+    // Owner, 2026-10-12 (task 7): "every path a declaration names resolves".
+    // Composes the four gates that each resolve one field, adds the one
+    // reference none resolved (`visualisers[].coversKinds`). kg-separation lesson 6.
+    defineTool({
+      id: "declaration-resolution",
+      title: "Every path a declaration names resolves — directories, assets, visualisers, needs",
+      description:
+        "Read every instance declaration in the checkout and resolve what it names: `directories` (and those declared from within) through `check:declared-dirs`, `assets` through `check:declared-assets`, `visualisers[].renderedBy` through `check:visualiser-routes`, `needs` through the instance-graph resolver, and `visualisers[].coversKinds` against the graph typologies registered IN THIS CHECKOUT — its own and those a mounted layer contributes, read from the checkout under inspection rather than from where the harness module sits (lesson 6). A declaration that does not parse is a finding. One verdict per instance and field, naming the gate that decided it. Exit 0 every reference resolves, 1 one does not, 2 could not determine; a certain finding is reported before anything undetermined.",
+      install: { none: true },
+      invoke: { shell: "bun run cat-harness-tools/scripts/check-declaration-resolution.ts" },
+      io: {
+        inputs: [
+          { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The checkout to check; the script re-runs itself there, so kinds are read from it. Default: the working directory." },
+          { name: "json", schema: t("Flag"), required: false, arg: { flag: "--json" }, description: "Print the report as JSON." },
+        ],
+        outputs: [
+          { name: "findings", schema: t("Count"), description: "Unresolved references per instance and field, and what could not be determined; entries examined per field." },
+        ],
+      },
+      satisfies: ["kg-separation"],
+      requires: { runtime: ["bun"], network: false },
+    }),
+    // Owner, 2026-10-12 (task 6): "a check that proves a repo's cutover from
+    // the monorepo is complete — measure it, do not assume it". The gate after
+    // kg-separation stage 13 (processes/kg/kg-separation.bpmn, GW_CutoverComplete).
+    defineTool({
+      id: "separation-cutover-check",
+      title: "Is this repository's cutover from the monorepo complete? Measured, condition by condition",
+      description:
+        "Run in a separated repository. Six conditions, each decided by an existing gate: `mounts` (every declared layer on disk at its pin — `remote-mount --check`), `declarations` (every path a declaration names resolves — `declaration-resolution`), `monorepo-paths` (no wiring still names the monorepo: `livesAt` on it, a submodule of it, a reusable workflow called from it, a path into its old checkout — the one condition implemented here), `import-direction` and `reference-direction` (no layer reaches a layer above it), and `site` (the site builds from the mounts alone, every link resolving — `build-instance-site --no-mount`, only with `--site`). Findings inside a MOUNTED layer are listed and not counted: a defect in a layer pinned from upstream is fixed upstream and re-pinned. Exit 0 complete, 1 a condition failed, 2 a condition could not be determined or was not run — without `--site` the answer is never 0.",
+      install: { none: true },
+      invoke: { shell: "bun run cat-harness-tools/scripts/separation-cutover-check.ts" },
+      io: {
+        inputs: [
+          { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The separated checkout. Default: the working directory." },
+          { name: "site", schema: t("Flag"), required: false, arg: { flag: "--site" }, description: "Build the site from the mounts on disk (minutes); without it the `site` condition is not run and the verdict cannot be complete." },
+          { name: "monorepo", schema: t("Text"), required: false, arg: { flag: "--monorepo" }, description: "The repository the separation left, `<owner>/<repo>`. Default: litlfred/folio-assistant." },
+          { name: "monorepoDir", schema: t("Slug"), required: false, arg: { flag: "--monorepo-dir" }, description: "Its old checkout directory name, as paths spell it. Default: the repository's name." },
+          { name: "json", schema: t("Flag"), required: false, arg: { flag: "--json" }, description: "Print the report as JSON, mounted-layer findings included." },
+        ],
+        outputs: [
+          { name: "conditions", schema: t("Count"), description: "Per condition: pass, fail, could-not-determine or not-run, the gate that decided it, and its findings." },
+        ],
+      },
+      satisfies: ["kg-separation"],
+      selection: {
+        when: "Before calling a separation's cutover (kg-separation stage 13) done, and after any re-pin of a separated repository's layers.",
+        limits: "It judges ONE repository. A downstream's own CI (lesson 17) and the parent's retirement into fsh-guts are not observed from here.",
+        cost: "Seconds without `--site`; a full Jekyll build with it.",
+      },
+      requires: { runtime: ["bun", "git"], network: false },
+    }),
     // Owner, 2026-10-07: "go ahead and start the migration NOW to
     // index.config.json". The converter is kept rather than run once, because
     // each separated repository needs the same conversion. It writes mounts, so
