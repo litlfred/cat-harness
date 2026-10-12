@@ -301,6 +301,21 @@ export const FilesystemPathSchema = z
   .min(1)
   .describe("A filesystem path, possibly outside the repository. Not admissible as a command-line argument.");
 
+/**
+ * A library document's id — the `doc_id` a record carries, e.g.
+ * `WPR-RDO-2020-003-eng` or `who-dpi-h-reference-architecture-draft-v1`.
+ *
+ * Not {@link SlugSchema}: library ids keep the publisher's case and may hold a
+ * dot. Constrained so that it cannot be a shell payload: letters, digits, dot,
+ * underscore and hyphen, starting with a letter or digit, so neither a
+ * metacharacter nor a leading `-` (an option) can parse.
+ */
+export const DocIdSchema = z
+  .string()
+  .min(1)
+  .regex(/^[A-Za-z0-9][A-Za-z0-9._-]*$/, "a document id is letters, digits, dot, underscore and hyphen, starting with a letter or digit")
+  .describe("A library document id, e.g. WPR-RDO-2020-003-eng");
+
 /** A folio's short name — the directory stem and the URL segment. */
 export const SlugSchema = z
   .string()
@@ -585,6 +600,7 @@ export const TOOL_TYPES = {
   Text: TextSchema,
   FilesystemPath: FilesystemPathSchema,
   Slug: SlugSchema,
+  DocId: DocIdSchema,
   ContentType: ContentTypeSchema,
   LinkMode: LinkModeSchema,
   LakeCacheAction: LakeCacheActionSchema,
@@ -677,12 +693,16 @@ export const INJECTION_SAFE: ReadonlySet<ToolTypeName> = new Set<ToolTypeName>([
   "Flag",
   "BeanStatus",
   "RepoPath",
+  // The same shape as `RepoPath` (see each schema); only the name differs.
+  "DelimitedTextPath",
+  "WorkbookPath",
   "Url",
   "Branch",
   "ScriptName",
   "RepoFullName",
   "ChangeProposalNumber",
   "Slug",
+  "DocId",
   // Every enum below is injection-safe by construction: a value outside the
   // member list does not parse, and no member contains a shell metacharacter.
   // This is the cheapest form of the whole argument — the payload is not

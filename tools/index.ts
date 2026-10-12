@@ -178,6 +178,13 @@ export function tools(baseUrl?: string): ToolDefinition[] {
         limits: "Reads what the publisher serves at fetch time; whether it has changed since is answered only by fetching again and comparing digests.",
         cost: "One https GET and one JSON parse per document.",
       },
+      // Published IGs are served from GitHub Pages or from smart.who.int; each
+      // is built from a repository, and `openapi-ingest-source` reads the same
+      // spec from a local checkout of it, pinned to a commit, with no network.
+      remedies: [
+        { host: "github.io", tool: "openapi-ingest-source" },
+        { host: "smart.who.int", tool: "openapi-ingest-source" },
+      ],
       requires: { runtime: ["bun"], network: true },
     }),
     // ── `gh-pages`: ONE way of performing `render-kg-to-cdn`.
