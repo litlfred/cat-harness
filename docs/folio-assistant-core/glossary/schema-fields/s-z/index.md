@@ -13,16 +13,16 @@ permalink: /folio-assistant-core/glossary/schema-fields/s-z/
 
 Candidate terms extracted from every schema field with a doc comment: `<Declaration>.<field>` as the label, the comment's first paragraph as the definition. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2083 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 167 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 13 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2095 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 76 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 167 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 13 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
 
 One of 4 pages of this type, split by the first letter of the label: <a href="{{ '/folio-assistant-core/glossary/schema-fields/' | relative_url }}">all parts</a>.
 
-**Size:** this page holds 653 terms and is 354 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 661 terms and is 358 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>2382</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2382</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>2395</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2395</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -32,7 +32,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">653</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">661</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-S">S</a> <a href="#letter-T">T</a> <a href="#letter-U">U</a> <a href="#letter-V">V</a> <a href="#letter-W">W</a></nav>
 
@@ -1564,6 +1564,41 @@ SurveyAxisSchema.finding <span class="fa-gloss-status">candidate, extracted</spa
 <p>What it found, or — when <code>covered</code> is false — why it was skipped.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/session-survey.ts"><code>cat-harness/schemas/session-survey.ts#SurveyAxisSchema.finding</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--sweep-mark.sweepmarkschema.by" data-fa-state="extracted" data-fa-gloss="">
+SweepMarkSchema.by <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Who ran it, so a reader can ask: a session URL or id. Absent when the runner did not know.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/sweep-mark.ts"><code>cat-harness/schemas/sweep-mark.ts#SweepMarkSchema.by</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--sweep-mark.sweepmarkschema.check" data-fa-state="extracted" data-fa-gloss="">
+SweepMarkSchema.check <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The check this marks, by its <code>cat</code> command name — <code>session-staleness</code>. Also the file's stem.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/sweep-mark.ts"><code>cat-harness/schemas/sweep-mark.ts#SweepMarkSchema.check</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--sweep-mark.sweepmarkschema.checkedat" data-fa-state="extracted" data-fa-gloss="">
+SweepMarkSchema.checkedAt <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>When the check last read its input, ISO-8601 with a zone.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/sweep-mark.ts"><code>cat-harness/schemas/sweep-mark.ts#SweepMarkSchema.checkedAt</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--sweep-mark.sweepmarkschema.findings" data-fa-state="extracted" data-fa-gloss="">
+SweepMarkSchema.findings <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>How many findings it reported.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/sweep-mark.ts"><code>cat-harness/schemas/sweep-mark.ts#SweepMarkSchema.findings</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--sweep-mark.sweepmarkschema.read" data-fa-state="extracted" data-fa-gloss="">
+SweepMarkSchema.read <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>How many subjects the run read — sessions, for <code>session-staleness</code>. Zero is a real answer.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/sweep-mark.ts"><code>cat-harness/schemas/sweep-mark.ts#SweepMarkSchema.read</code></a></p>
+</dd>
 </dl>
 
 <h2 id="letter-T">T</h2>
@@ -2477,6 +2512,27 @@ TileCount.unit <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>What is being counted, as a noun the reader sees — <code>&quot;entries&quot;</code>, <code>&quot;beans&quot;</code>, <code>&quot;waiting&quot;</code>. Pluralisation is the declarer's, because only it knows whether its unit pluralises regularly.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/tile-count.ts"><code>cat-harness/schemas/tile-count.ts#TileCount.unit</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--state-manifest.tipmanifestschema.authoritative" data-fa-state="extracted" data-fa-gloss="">
+TipManifestSchema.authoritative <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>True when THIS branch, not <code>main</code>, is where readers must look.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/state-manifest.ts"><code>cat-harness/schemas/state-manifest.ts#TipManifestSchema.authoritative</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--state-manifest.tipmanifestschema.source" data-fa-state="extracted" data-fa-gloss="">
+TipManifestSchema.source <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The commit the content was seeded from.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/state-manifest.ts"><code>cat-harness/schemas/state-manifest.ts#TipManifestSchema.source</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--state-manifest.tipmanifestschema.subgraph" data-fa-state="extracted" data-fa-gloss="">
+TipManifestSchema.subgraph <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The subgraph it holds. Absent only on the retired multi-graph <code>state</code> branch.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/state-manifest.ts"><code>cat-harness/schemas/state-manifest.ts#TipManifestSchema.subgraph</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--todo-graph.todographschema.defaulttheme" data-fa-state="extracted" data-fa-gloss="">
 TodoGraphSchema.defaultTheme <span class="fa-gloss-status">candidate, extracted</span>

@@ -23,7 +23,7 @@ content-object schemas through to per-paper PDF/HTML viewers.
 
 | Artifact | Generator | Output path (docs site) | Trigger |
 |----------|-----------|----------------------|---------|
-| **Paper PDF** | `content/pipeline/build.ts` + PDF engine | `papers/<dir>/<dir>.pdf` | publish workflow |
+| **Paper PDF** | `pipeline/build.ts` + PDF engine | `papers/<dir>/<dir>.pdf` | publish workflow |
 | **Paper HTML** | `generate-html.py` (Pandoc + enhance) | `papers/<dir>/paper.html` | publish workflow |
 | **Paper Markdown** | Pandoc (`gfm`) | `papers/<dir>/<dir>.md` | publish workflow |
 | **Paper viewer** | `generate-index.py` | `papers/<dir>/index.html` | publish workflow |
@@ -41,7 +41,7 @@ content-object schemas through to per-paper PDF/HTML viewers.
 ```
 content/<paper>/<paper>.ts          paper manifest (metadata, sections)
      ↓
-content/pipeline/build.ts           validates + renders sections → output
+pipeline/build.ts           validates + renders sections → output
      ↓
 preamble template + manifest        generate-main.ts → main document
      ↓
@@ -75,9 +75,9 @@ cd .. && <pdf-engine> main.tex
 | File | Purpose |
 |------|---------|
 | `latex/preamble.tex` | Shared rendering preamble template (paper-agnostic) |
-| `content/pipeline/build.ts` | Content → output section build |
-| `content/pipeline/generate-main.ts` | Manifest + preamble → main document |
-| `content/pipeline/render.ts` | Block-level markdown → output conversion |
+| `pipeline/build.ts` | Content → output section build |
+| `pipeline/generate-main.ts` | Manifest + preamble → main document |
+| `pipeline/render.ts` | Block-level markdown → output conversion |
 | `.github/scripts/generate-html.py` | Pandoc HTML → enhanced paper.html |
 | `.github/scripts/generate-index.py` | Per-paper viewer (paper/visualizer toggle) |
 | `.github/scripts/generate-folio-index.py` | Root folio landing page |

@@ -138,9 +138,9 @@
           "instructionsPath": "skills/library/cataloguing/bib-qa.md",
           "name": "bib-qa",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e5beb30b41a3306ff9d2881359f1135927f3df764b1db7b5844e9fe6254bb054",
-            "bytes": 14701,
-            "sha256": "e5beb30b41a3306ff9d2881359f1135927f3df764b1db7b5844e9fe6254bb054"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7e60dd8f2ac0842b23b1caeacecfbe9fa16a59ae584fb81cec9135f03f88a1a0",
+            "bytes": 14693,
+            "sha256": "7e60dd8f2ac0842b23b1caeacecfbe9fa16a59ae584fb81cec9135f03f88a1a0"
           },
           "title": "Bibliography QA Skill"
         },
@@ -173,9 +173,9 @@
           "instructionsPath": "skills/library/cataloguing/glossary-build.md",
           "name": "glossary-build",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f2144e753ce0e5bc390bdb5af508d6f7b01ece48e60d3b68ba5e3d97905fdbac",
-            "bytes": 7091,
-            "sha256": "f2144e753ce0e5bc390bdb5af508d6f7b01ece48e60d3b68ba5e3d97905fdbac"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5114f06cdb3b69a2f29acb9102a5b41222824bff800d268cde65c2e33c40db7c",
+            "bytes": 7067,
+            "sha256": "5114f06cdb3b69a2f29acb9102a5b41222824bff800d268cde65c2e33c40db7c"
           },
           "title": "Glossary Build Skill"
         },
@@ -303,9 +303,9 @@
           "instructionsPath": "skills/library/ingestion/l1-document-ingestion.md",
           "name": "l1-document-ingestion",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9c6b694a9359b17916986a5ff96c6853ab47e2afb010bedd713509d91d650bdc",
-            "bytes": 48591,
-            "sha256": "9c6b694a9359b17916986a5ff96c6853ab47e2afb010bedd713509d91d650bdc"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/17f208f2d909007ae536c2d4334ca8088e266111b935790eaea7141fa67ee61a",
+            "bytes": 48575,
+            "sha256": "17f208f2d909007ae536c2d4334ca8088e266111b935790eaea7141fa67ee61a"
           },
           "title": "L1 document ingestion"
         },
@@ -321,9 +321,9 @@
           "instructionsPath": "skills/library/ingestion/tabular-metadata.md",
           "name": "tabular-metadata",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5f33901e848c6200e6cff69a70e43e619f21c6764d23bde68bec88159903b51f",
-            "bytes": 11796,
-            "sha256": "5f33901e848c6200e6cff69a70e43e619f21c6764d23bde68bec88159903b51f"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e18620c98d9242718335cce9b2c084bdb181f97105797efb275efb3a218aaf84",
+            "bytes": 11788,
+            "sha256": "e18620c98d9242718335cce9b2c084bdb181f97105797efb275efb3a218aaf84"
           },
           "title": "Tabular metadata — CSVW, annotated, and honest about what it could not read"
         }

@@ -29,7 +29,7 @@ chapters, skills into packages.
 
 Two files state it. Neither mentions the other.
 
-**At block scale** — `content/pipeline/qa-criteria-registry.ts`, the
+**At block scale** — `pipeline/qa-criteria-registry.ts`, the
 `detangler-no-dependency-cycle` criterion:
 
 > "a cycle is reorder-invariant — when two blocks each `uses:` the other, or a

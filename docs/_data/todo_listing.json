@@ -1,0 +1,7 @@
+{
+  "pages": {
+    "guides/beans-and-todos": "generated/todo-listing/guides__beans-and-todos.html",
+    "process/publication-workflow": "generated/todo-listing/process__publication-workflow.html"
+  },
+  "unplaced": 0
+}

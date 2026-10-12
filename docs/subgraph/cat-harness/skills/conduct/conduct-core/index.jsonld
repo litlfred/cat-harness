@@ -101,9 +101,9 @@
       "@type": "bootstrap:Skill",
       "name": "interaction-modality",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/fea0f5c533574ad65830dc37b715fa397476f757de5d26b1440d21022552bd3a",
-        "bytes": 32742,
-        "sha256": "fea0f5c533574ad65830dc37b715fa397476f757de5d26b1440d21022552bd3a"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6218b4282105a39571d981da26b974b2884284aa07931dab9c4b171cee548564",
+        "bytes": 34570,
+        "sha256": "6218b4282105a39571d981da26b974b2884284aa07931dab9c4b171cee548564"
       },
       "title": "/interaction-modality — ask in a form the person can answer"
     },

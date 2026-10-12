@@ -52,9 +52,9 @@
       "@type": "bootstrap:Skill",
       "name": "bib-qa",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e5beb30b41a3306ff9d2881359f1135927f3df764b1db7b5844e9fe6254bb054",
-        "bytes": 14701,
-        "sha256": "e5beb30b41a3306ff9d2881359f1135927f3df764b1db7b5844e9fe6254bb054"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7e60dd8f2ac0842b23b1caeacecfbe9fa16a59ae584fb81cec9135f03f88a1a0",
+        "bytes": 14693,
+        "sha256": "7e60dd8f2ac0842b23b1caeacecfbe9fa16a59ae584fb81cec9135f03f88a1a0"
       },
       "title": "Bibliography QA Skill"
     },
@@ -74,9 +74,9 @@
       "@type": "bootstrap:Skill",
       "name": "glossary-build",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f2144e753ce0e5bc390bdb5af508d6f7b01ece48e60d3b68ba5e3d97905fdbac",
-        "bytes": 7091,
-        "sha256": "f2144e753ce0e5bc390bdb5af508d6f7b01ece48e60d3b68ba5e3d97905fdbac"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5114f06cdb3b69a2f29acb9102a5b41222824bff800d268cde65c2e33c40db7c",
+        "bytes": 7067,
+        "sha256": "5114f06cdb3b69a2f29acb9102a5b41222824bff800d268cde65c2e33c40db7c"
       },
       "title": "Glossary Build Skill"
     },

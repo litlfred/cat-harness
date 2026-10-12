@@ -81,7 +81,7 @@ echo "$changed" | grep -qE '(one-voice-(audit|style-guide|integration-watcher)\.
 
 > **Chapter-scoped title audit (not per-block).** Section / subsection
 > / chapter titles are audited by the standalone
-> `content/pipeline/qa-section-title-audit.ts` (criterion
+> `pipeline/qa-section-title-audit.ts` (criterion
 > `voice-section-title-coherence`), since titles live on chapter
 > manifests rather than block triples. A chapter-manifest change
 > (caught by the `^content/.*\.(md|ts|lean)$` trigger above) should
@@ -97,8 +97,8 @@ notation`, OR cites a content-block label.
 
 | Specialist | When to run |
 |------------|-------------|
-| `content/pipeline/qa-sweep.ts` | Always (re-runs every automated criterion on the changed-block set; refreshes sidecar JSON) |
-| `content/pipeline/qa-staleness.ts` | After every sweep — produces the post-event freshness map |
+| `pipeline/qa-sweep.ts` | Always (re-runs every automated criterion on the changed-block set; refreshes sidecar JSON) |
+| `pipeline/qa-staleness.ts` | After every sweep — produces the post-event freshness map |
 | `one-voice-audit` (skill) | Always — applies mechanical fixes for `voice-status-leak`, `voice-emoji-content`, `voice-unicode-crash` (Category A/C/E auto-fixes per the skill) |
 | `one-voice-style-guide` (skill, agent dispatch) | For `voice-scholarly-default`, `voice-ai-slop` adjudication — non-automated; agent reads the .md + proof file and writes a reviewer entry |
 | `chapter-complexity-review` (skill, agent dispatch) | For `fit-section-chapter` adjudication — agent compares block topic + kind against section/chapter context |
@@ -202,7 +202,7 @@ Override the parent's default rule with:
 | Invariant | Check |
 |-----------|-------|
 | Every modified `.md` / `.ts` / proof file in this branch has a refreshed `<block>.qa.json` with `reviewed_sha` ≥ branch HEAD | `git diff origin/main --name-only \| while read f; do qa="${f%.*}.qa.json"; [ -f "$qa" ] && git log -1 --format=%H -- "$qa" > /dev/null; done` |
-| No new automated critical findings on `git diff` | `bun run content/pipeline/qa-sweep.ts <changed-section> --ci` exits 0 |
+| No new automated critical findings on `git diff` | `bun run pipeline/qa-sweep.ts <changed-section> --ci` exits 0 |
 | `<block>.qa.json` JSON is valid against the `block-qa/v1` schema | `jq '.$schema == "block-qa/v1"' "$qa"` returns true |
 | No block carries a `tags: ["non-scholarly-voice-exception"]` marker without an associated `notes` field in the QA report describing the rationale | grep-style audit |
 | The notation register has not regressed (no new symbol added to a deprecated mapping) | git diff the project's notation register for additions to the "deprecated" tables |

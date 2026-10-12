@@ -34,6 +34,17 @@ classDiagram
       rationale [0..1] string
     }
   }
+  namespace folio_assistant_core__folio_assistant_core_content_adapters {
+    class folio_assistant_core_folio_assistant_core_content_adapters_folio_content_adapter_v1_folio_content_adapter_v1["folio-content-adapter/v1"] {
+      <<json: ContentAdapterNodeSchema>>
+      $schema [1] 'folio-content-adapter/v1'
+      adapter [1] string
+      typed [1] boolean
+      companionRoles [1..*] enum(9)[]
+      vocabulary [0..1] string
+      rationale [0..1] string
+    }
+  }
   namespace folio_assistant_core__folio_assistant_core_validators {
     class folio_assistant_core_folio_assistant_core_validators_folio_validator_v1_folio_validator_v1["folio-validator/v1"] {
       <<json: ValidatorNodeSchema>>
@@ -656,6 +667,7 @@ classDiagram
   cssClass "n_folio_assistant_core_folio_assistant_core_docs_docs" fa_uml_undetermined
   cssClass "folio_assistant_core_folio_assistant_core_translations_TranslationConfig" fa_uml_kind_translation_sources
   cssClass "folio_assistant_core_folio_assistant_core_block_typologies_folio_block_kind_v1_folio_block_kind_v1" fa_uml_kind_block_kinds
+  cssClass "folio_assistant_core_folio_assistant_core_content_adapters_folio_content_adapter_v1_folio_content_adapter_v1" fa_uml_kind_content_adapters
   cssClass "folio_assistant_core_folio_assistant_core_validators_folio_validator_v1_folio_validator_v1" fa_uml_kind_validators
   folio_assistant_core_core_code_lists_CodeList *-- "1..*" folio_assistant_core_core_code_lists_Code : codes
   cssClass "folio_assistant_core_core_code_lists_Code" fa_uml_kind_code_list

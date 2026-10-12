@@ -13,9 +13,9 @@
       "@type": "bootstrap:Skill",
       "name": "compiled-artefact-cache",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ba49a832ade3c74b5ba643ee63bbb10f4973c654dbe7b8571836b1982af9b0b5",
-        "bytes": 6257,
-        "sha256": "ba49a832ade3c74b5ba643ee63bbb10f4973c654dbe7b8571836b1982af9b0b5"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4e772fe2c95efc0a564be5020ebe8f9cb6a443db0dbd6e2b0040ea477aa1b193",
+        "bytes": 6249,
+        "sha256": "4e772fe2c95efc0a564be5020ebe8f9cb6a443db0dbd6e2b0040ea477aa1b193"
       },
       "title": "Compiled Artefact Cache"
     },
@@ -79,9 +79,9 @@
       "@type": "bootstrap:Skill",
       "name": "task-authorization",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/87af43f7879e718b236728d962201ccd8609b1afea52413b293500d899367408",
-        "bytes": 18322,
-        "sha256": "87af43f7879e718b236728d962201ccd8609b1afea52413b293500d899367408"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7a183761224f68654dca2ab4ede821bd7b7da962a06e0e7a45b959b1b57b522e",
+        "bytes": 18977,
+        "sha256": "7a183761224f68654dca2ab4ede821bd7b7da962a06e0e7a45b959b1b57b522e"
       },
       "title": "Task authorization — four questions before every task"
     }

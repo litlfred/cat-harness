@@ -91,7 +91,7 @@ Phrases that imply changes to folio-assistant itself (not folio content):
 - "the upstream change requests to …", "upstream asks" — a change asked of a
   tool this platform DEPENDS ON is still a platform change; the folio is not
   where it lands either way
-- References to files under `schemas/`, `content/pipeline/`, `adapters/`,
+- References to files under `schemas/`, `pipeline/`, `adapters/`,
   `src/`, `scripts/`, `.github/workflows/`
 
 ### Cross-cutting concerns

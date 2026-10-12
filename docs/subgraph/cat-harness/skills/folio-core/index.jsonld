@@ -13,9 +13,9 @@
       "@type": "bootstrap:Skill",
       "name": "covered-is-not-reachable",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/3aea6063a5354feeda8fe1814984a88b87460243732d610fb08defeee3d501ae",
-        "bytes": 14626,
-        "sha256": "3aea6063a5354feeda8fe1814984a88b87460243732d610fb08defeee3d501ae"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6eaa103fc705b345551b497eabd2da6c6384836c228362f9ba67fd15b64ab162",
+        "bytes": 14618,
+        "sha256": "6eaa103fc705b345551b497eabd2da6c6384836c228362f9ba67fd15b64ab162"
       },
       "title": "Covered is not reachable — and `check:tools` cannot tell you which"
     },

@@ -47,8 +47,11 @@ package "cat-harness-tools/beans" as pkg_cat_harness_tools_beans <<beans>> {
     children [0..1] : Record<string, InstanceState>
   }
 }
-package "cat-harness-tools/cat-harness-tools-content" as pkg_cat_harness_tools_cat_harness_tools_content <<code>> {
-  note "code: no node schema declared\n(no validator registered: could not determine)" as n_cat_harness_tools_cat_harness_tools_content_code
+package "cat-harness-tools/cat-harness-tools-pipeline" as pkg_cat_harness_tools_cat_harness_tools_pipeline <<code>> {
+  note "code: no node schema declared\n(no validator registered: could not determine)" as n_cat_harness_tools_cat_harness_tools_pipeline_code
+}
+package "cat-harness-tools/cat-harness-tools-content-pipeline-link" as pkg_cat_harness_tools_cat_harness_tools_content_pipeline_link <<code>> {
+  note "code: no node schema declared\n(no validator registered: could not determine)" as n_cat_harness_tools_cat_harness_tools_content_pipeline_link_code
 }
 package "cat-harness-tools/folio-templates" as pkg_cat_harness_tools_folio_templates <<code>> {
   note "code: no node schema declared\n(no validator registered: could not determine)" as n_cat_harness_tools_folio_templates_code
@@ -141,24 +144,28 @@ package "cat-harness-tools/workflows" as pkg_cat_harness_tools_workflows <<workf
     children [0..1] : Record<string, InstanceState>
   }
 }
+package "cat-harness-tools/marks" as pkg_cat_harness_tools_marks <<sweep-marks>> {
+  note "sweep-marks: no node schema declared\n(no node here carries a $schema family sweep-marks names (1 named): could not determine)" as n_cat_harness_tools_marks_sweep_marks
+}
 
 cat_harness_tools_health_Check *-- "0..*" cat_harness_tools_health_Threshold : thresholds
 cat_harness_tools_health_Check *-- "0..*" cat_harness_tools_health_Measurement : measurements
 cat_harness_tools_health_Check *-- "0..*" cat_harness_tools_health_Finding : findings
 cat_harness_tools_health_HealthReport *-- "1..*" cat_harness_tools_health_Check : checks
-' grid: portrait, 3 column(s) — pkg_cat_harness_tools_cat_harness_tools_adapters pkg_cat_harness_tools_cat_harness_tools_schemas pkg_cat_harness_tools_cat_harness_tools_scripts pkg_cat_harness_tools_cat_harness_tools_id_lookup pkg_cat_harness_tools_cat_harness_tools_tests pkg_cat_harness_tools_cat_harness_tools_src pkg_cat_harness_tools_cat_harness_tools_python pkg_cat_harness_tools_beans pkg_cat_harness_tools_cat_harness_tools_content pkg_cat_harness_tools_folio_templates pkg_cat_harness_tools_cat_harness_tools_deploy pkg_cat_harness_tools_cat_harness_tools_archimate pkg_cat_harness_tools_cat_harness_tools_openapi pkg_cat_harness_tools_health pkg_cat_harness_tools_defs pkg_cat_harness_tools_notes pkg_cat_harness_tools_workflows
-pkg_cat_harness_tools_cat_harness_tools_adapters -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_id_lookup
-pkg_cat_harness_tools_cat_harness_tools_schemas -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_tests
-pkg_cat_harness_tools_cat_harness_tools_scripts -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_src
-pkg_cat_harness_tools_cat_harness_tools_id_lookup -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_python
-pkg_cat_harness_tools_cat_harness_tools_tests -[hidden]down- pkg_cat_harness_tools_beans
-pkg_cat_harness_tools_cat_harness_tools_src -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_content
+' grid: portrait, 4 column(s) — pkg_cat_harness_tools_cat_harness_tools_adapters pkg_cat_harness_tools_cat_harness_tools_schemas pkg_cat_harness_tools_cat_harness_tools_scripts pkg_cat_harness_tools_cat_harness_tools_id_lookup pkg_cat_harness_tools_cat_harness_tools_tests pkg_cat_harness_tools_cat_harness_tools_src pkg_cat_harness_tools_cat_harness_tools_python pkg_cat_harness_tools_beans pkg_cat_harness_tools_cat_harness_tools_pipeline pkg_cat_harness_tools_cat_harness_tools_content_pipeline_link pkg_cat_harness_tools_folio_templates pkg_cat_harness_tools_cat_harness_tools_deploy pkg_cat_harness_tools_cat_harness_tools_archimate pkg_cat_harness_tools_cat_harness_tools_openapi pkg_cat_harness_tools_health pkg_cat_harness_tools_defs pkg_cat_harness_tools_notes pkg_cat_harness_tools_workflows pkg_cat_harness_tools_marks
+pkg_cat_harness_tools_cat_harness_tools_adapters -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_tests
+pkg_cat_harness_tools_cat_harness_tools_schemas -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_src
+pkg_cat_harness_tools_cat_harness_tools_scripts -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_python
+pkg_cat_harness_tools_cat_harness_tools_id_lookup -[hidden]down- pkg_cat_harness_tools_beans
+pkg_cat_harness_tools_cat_harness_tools_tests -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_pipeline
+pkg_cat_harness_tools_cat_harness_tools_src -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_content_pipeline_link
 pkg_cat_harness_tools_cat_harness_tools_python -[hidden]down- pkg_cat_harness_tools_folio_templates
 pkg_cat_harness_tools_beans -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_deploy
-pkg_cat_harness_tools_cat_harness_tools_content -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_archimate
-pkg_cat_harness_tools_folio_templates -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_openapi
-pkg_cat_harness_tools_cat_harness_tools_deploy -[hidden]down- pkg_cat_harness_tools_health
-pkg_cat_harness_tools_cat_harness_tools_archimate -[hidden]down- pkg_cat_harness_tools_defs
-pkg_cat_harness_tools_cat_harness_tools_openapi -[hidden]down- pkg_cat_harness_tools_notes
-pkg_cat_harness_tools_health -[hidden]down- pkg_cat_harness_tools_workflows
+pkg_cat_harness_tools_cat_harness_tools_pipeline -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_archimate
+pkg_cat_harness_tools_cat_harness_tools_content_pipeline_link -[hidden]down- pkg_cat_harness_tools_cat_harness_tools_openapi
+pkg_cat_harness_tools_folio_templates -[hidden]down- pkg_cat_harness_tools_health
+pkg_cat_harness_tools_cat_harness_tools_deploy -[hidden]down- pkg_cat_harness_tools_defs
+pkg_cat_harness_tools_cat_harness_tools_archimate -[hidden]down- pkg_cat_harness_tools_notes
+pkg_cat_harness_tools_cat_harness_tools_openapi -[hidden]down- pkg_cat_harness_tools_workflows
+pkg_cat_harness_tools_health -[hidden]down- pkg_cat_harness_tools_marks
 @enduml

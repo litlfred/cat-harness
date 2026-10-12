@@ -472,7 +472,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [Compute Audit](compute-audit.html) | `compute-audit` | — | python3 script.py --args ... |
 | [Compute-author](compute-author.html) | `compute-author` | — |  |
 | [Content Block Review](content-block-review.html) | `content-block-review` | — |  |
-| [Content Validation](content-validation.html) | `content-validation` | — | bun run cat-harness-tools/content/pipeline/validate.ts content/<paper>   # after setup-folio-assista |
+| [Content Validation](content-validation.html) | `content-validation` | — | bun run cat-harness-tools/pipeline/validate.ts content/<paper>   # after setup-folio-assistant.sh |
 | [Critical Path Analysis & Context Review](critical-path-analysis.html) | `critical-path-analysis` | — |  |
 | [definition-clarity-audit](definition-clarity-audit.html) | `definition-clarity-audit` | — | A content block can be **schema-clean, ref-resolving, proof-backed** and still be |
 | [FFI roundtrip audit](ffi-roundtrip-audit.html) | `ffi-roundtrip-audit` | — | total = mp.mpf(0) |

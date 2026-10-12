@@ -35,9 +35,9 @@
       "@type": "bootstrap:Skill",
       "name": "branch-freshness",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/fda7ad72f7706bcd79382376d6007da3fbc30b46255a78af3e74cf90baba1e13",
-        "bytes": 3593,
-        "sha256": "fda7ad72f7706bcd79382376d6007da3fbc30b46255a78af3e74cf90baba1e13"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4c77f3f8db2fc917f9c5e280168e268fdf880ddb4470c0b315e9761b06eab928",
+        "bytes": 3585,
+        "sha256": "4c77f3f8db2fc917f9c5e280168e268fdf880ddb4470c0b315e9761b06eab928"
       },
       "title": "Branch freshness — stay current with main"
     },
@@ -46,9 +46,9 @@
       "@type": "bootstrap:Skill",
       "name": "code-review-process",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0661fd7a39549887f214929a804056a8c8a7a9b9466ae02ea576311db93adf55",
-        "bytes": 3283,
-        "sha256": "0661fd7a39549887f214929a804056a8c8a7a9b9466ae02ea576311db93adf55"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6a50fa1b11a34088da2962530569e2e7f02ca1a4a1800ff6a1c95f0525ad024e",
+        "bytes": 3275,
+        "sha256": "6a50fa1b11a34088da2962530569e2e7f02ca1a4a1800ff6a1c95f0525ad024e"
       },
       "title": "Code review process — from PR to release approval"
     },
@@ -79,9 +79,9 @@
       "@type": "bootstrap:Skill",
       "name": "process-state",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/aa61a5dacfce58ca4b693fcbf0f1d65245cca171dbacaa87b5764834118d0f1c",
-        "bytes": 12985,
-        "sha256": "aa61a5dacfce58ca4b693fcbf0f1d65245cca171dbacaa87b5764834118d0f1c"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a55bdad392895afaa6532a9d44ae7b55a6216fb3981ed618528bd4f20cfb650d",
+        "bytes": 14024,
+        "sha256": "a55bdad392895afaa6532a9d44ae7b55a6216fb3981ed618528bd4f20cfb650d"
       },
       "title": "Process state — the task you are in, inside the process you are running"
     },

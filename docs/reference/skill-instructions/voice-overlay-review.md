@@ -75,7 +75,7 @@ Voice findings go on the block's QA sidecar like any other, through the same
 writer, so the icon and the published witness agree with what you decided:
 
 ```sh
-bun run content/pipeline/qa-merge-findings.ts --file findings.json
+bun run pipeline/qa-merge-findings.ts --file findings.json
 ```
 
 `insertAdjudication` places your entry ahead of the script entry, because

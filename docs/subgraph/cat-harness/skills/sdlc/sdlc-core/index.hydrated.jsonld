@@ -473,9 +473,9 @@
       "instructionsPath": "skills/sdlc/sdlc-core/gate-tree-mutation.md",
       "name": "gate-tree-mutation",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/27798c5d9e19b422c43461e00acab07b2cb6cdcfc396466518a860bb852a888e",
-        "bytes": 9125,
-        "sha256": "27798c5d9e19b422c43461e00acab07b2cb6cdcfc396466518a860bb852a888e"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a95539fd443b4cccd57ee03098454c0a3fc72bcb767baaf840c5ee9173785146",
+        "bytes": 9107,
+        "sha256": "a95539fd443b4cccd57ee03098454c0a3fc72bcb767baaf840c5ee9173785146"
       },
       "title": "\"NOT clean\" is a verdict about the RUN, not about your diff"
     },
@@ -872,9 +872,9 @@
       "instructionsPath": "skills/sdlc/sdlc-core/prepare-merge.md",
       "name": "prepare-merge",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ff91f5da9b0fc806f1524de649dbabc4396d9e0944b59549fb3e26d4c0fafd6b",
-        "bytes": 37652,
-        "sha256": "ff91f5da9b0fc806f1524de649dbabc4396d9e0944b59549fb3e26d4c0fafd6b"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f911dcbd8f6b9620fd81cdff1dab76651e527baf3f2dff464b83c083f1440752",
+        "bytes": 37644,
+        "sha256": "f911dcbd8f6b9620fd81cdff1dab76651e527baf3f2dff464b83c083f1440752"
       },
       "title": "Prepare-merge — get a feature branch ready to land"
     },
@@ -966,9 +966,9 @@
       "instructionsPath": "skills/sdlc/sdlc-core/qa-witness.md",
       "name": "qa-witness",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5b60f17801a3992cb3ae8f824aac5f2fdc4acb978e7853af1f7c64b9826820d8",
-        "bytes": 7177,
-        "sha256": "5b60f17801a3992cb3ae8f824aac5f2fdc4acb978e7853af1f7c64b9826820d8"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/8288dee9cec4927f06bbf698820c62b13c61be73c737bc71177eef591290d592",
+        "bytes": 7153,
+        "sha256": "8288dee9cec4927f06bbf698820c62b13c61be73c737bc71177eef591290d592"
       },
       "title": "QA witnesses — the published projection of every verdict"
     },
@@ -1174,9 +1174,9 @@
       "instructionsPath": "skills/sdlc/sdlc-core/test-engineer.md",
       "name": "test-engineer",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a94cb6ec0c20599c762a2f8e6e989746cb43d22d31f91f40189af609b1dc1b63",
-        "bytes": 6898,
-        "sha256": "a94cb6ec0c20599c762a2f8e6e989746cb43d22d31f91f40189af609b1dc1b63"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a5c8175683897dfdab577160c02c5e8e3ae988752e60cc6adb1f753f46528bf8",
+        "bytes": 6866,
+        "sha256": "a5c8175683897dfdab577160c02c5e8e3ae988752e60cc6adb1f753f46528bf8"
       },
       "title": "Test Engineer Skill"
     },
@@ -1250,9 +1250,9 @@
       "instructionsPath": "skills/sdlc/sdlc-core/untainted-verification.md",
       "name": "untainted-verification",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ac73ea8b5e85933ec6c982d01eacbf0190ab6fedce5526166cc902e14a84b741",
-        "bytes": 9221,
-        "sha256": "ac73ea8b5e85933ec6c982d01eacbf0190ab6fedce5526166cc902e14a84b741"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/26593e276cd8846bcb8139d71104256df503528967288427df5b6e8f4bbac9da",
+        "bytes": 9213,
+        "sha256": "26593e276cd8846bcb8139d71104256df503528967288427df5b6e8f4bbac9da"
       },
       "title": "Untainted verification — the producer never writes the verdict"
     },

@@ -47,6 +47,7 @@ nav_exclude: true
 <dt>iriBase</dt><dd>https://litlfred.github.io/cat-harness/</dd>
 <dt>_title_comment</dt><dd>The HUMAN display name, for the LHS navbar&#39;s harness tabs. Owner, 2026-09-21: &quot;harnesses should list the names (they should be named in schmeas, e.g. cat-boostrap should be named &#39;Boostrap&#39;, f-a =&gt; Folio Assistant, cat-harness =&gt; C@T Harness)&quot;. `name` stays the machine identifier that filenames, `needs` edges and `declaredBy` resolve against; `title` is what a reader sees and nothing resolves against. Bean t3n8. THIS ONE WAS WRONG RATHER THAN ABSENT: it declared `title: &quot;folio-assistant&quot;`, the ROOT instance&#39;s name, so two instances carried one title and `disambiguate()` correctly qualified this tab to &quot;folio-assistant (cat-harness)&quot; — the label the owner reported. The disambiguator behaved as designed; the declaration was the defect.</dd>
 <dt>title</dt><dd>C@T Harness</dd>
+<dt>skillPrefix</dt><dd>cat</dd>
 <dt>description</dt><dd>computable adjudication and agentic test harness
 
 caaat-harness
@@ -831,6 +832,15 @@ ca&amp;at-harness
     &quot;description&quot;: &quot;Authored content of this instance itself, rendered to a website. Holds the landing sticky — the instance&#39;s own description and its onboarding links, as a page-global note rather than text composited into the backdrop.&quot;
   },
   {
+    &quot;id&quot;: &quot;folio-render&quot;,
+    &quot;path&quot;: &quot;folio-render/&quot;,
+    &quot;graphTypologies&quot;: [
+      &quot;cat-harness&quot;,
+      &quot;code&quot;
+    ],
+    &quot;description&quot;: &quot;The harness&#39;s own minimal folio renderer (bean ohx6, owner ruling 2026-10-10): `file-list.ts`, which renders the folio as the list of files it holds into `folio/index.md`, and the skill that says when to run it. Code and a skill, not folio content: the folio reader reads only `folio/*.json`, and the renderer skips this directory.&quot;
+  },
+  {
     &quot;id&quot;: &quot;docs&quot;,
     &quot;path&quot;: &quot;docs/&quot;,
     &quot;description&quot;: &quot;Documentation about the Knowledge Graph itself: the pages of the published site, some written by people and some generated from the graph. Also holds `reference/harness.config.example.json`, the worked example of an instance config that the installation guide tells a reader to copy into their content repository and that `package.json` `files` ships in the npm tarball — a reference asset, published with the site rather than rendered as a page. It sat at the repository root until 2026-10-06 (bean `ar1s`, phase 3: tooling leaves the root before the repo split).&quot;,
@@ -1219,8 +1229,8 @@ ca&amp;at-harness
         &quot;extensions&quot;: [
           &quot;.md&quot;
         ],
-        &quot;extractModule&quot;: &quot;content/pipeline/pot-extract.ts&quot;,
-        &quot;injectModule&quot;: &quot;content/pipeline/po-inject.ts&quot;
+        &quot;extractModule&quot;: &quot;pipeline/pot-extract.ts&quot;,
+        &quot;injectModule&quot;: &quot;pipeline/po-inject.ts&quot;
       }
     ],
     &quot;rtlSupported&quot;: true,

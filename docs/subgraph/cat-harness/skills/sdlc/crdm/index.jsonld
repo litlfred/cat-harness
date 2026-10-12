@@ -24,9 +24,9 @@
       "@type": "bootstrap:Skill",
       "name": "crdm-detect",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/af8a1eec02ebf753065fe632c087ca3c73ef52ee694812c9188e8f0ee89f0480",
-        "bytes": 14496,
-        "sha256": "af8a1eec02ebf753065fe632c087ca3c73ef52ee694812c9188e8f0ee89f0480"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/1c7b0550316b5bdf1ab353a5cd4ced77b0b2cf999afd58eb2357a021ba70b453",
+        "bytes": 14488,
+        "sha256": "1c7b0550316b5bdf1ab353a5cd4ced77b0b2cf999afd58eb2357a021ba70b453"
       },
       "title": "Feature-request detection (CRDM trigger)"
     },
@@ -35,9 +35,9 @@
       "@type": "bootstrap:Skill",
       "name": "crdm-impact-analysis",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/be58db421e4305c2da107f4baa4984baa786fae34c1d3a1c0bbd115641a0143d",
-        "bytes": 3843,
-        "sha256": "be58db421e4305c2da107f4baa4984baa786fae34c1d3a1c0bbd115641a0143d"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/418eba6f341f08a35707721c99fb1b0cc2bf67a6ee45b308bb1991bc11546458",
+        "bytes": 3819,
+        "sha256": "418eba6f341f08a35707721c99fb1b0cc2bf67a6ee45b308bb1991bc11546458"
       },
       "title": "Phase 4 — Impact analysis (detail)"
     },
@@ -79,9 +79,9 @@
       "@type": "bootstrap:Skill",
       "name": "crdm-requirements-workflow",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4479a9540e91362fd52578e62de78cc75d9c071a20cfd67dfbf1343f380c8a7e",
-        "bytes": 27635,
-        "sha256": "4479a9540e91362fd52578e62de78cc75d9c071a20cfd67dfbf1343f380c8a7e"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9e8f0eca27796e3d63e861ba99856d3d4a8ea6f3d1eeae2cd02e5ea1789d1bc8",
+        "bytes": 27627,
+        "sha256": "9e8f0eca27796e3d63e861ba99856d3d4a8ea6f3d1eeae2cd02e5ea1789d1bc8"
       },
       "title": "CRDM requirements workflow"
     }

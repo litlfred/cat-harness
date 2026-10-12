@@ -13,16 +13,16 @@ permalink: /folio-assistant-core/glossary/schema-fields/m-r/
 
 Candidate terms extracted from every schema field with a doc comment: `<Declaration>.<field>` as the label, the comment's first paragraph as the definition. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2083 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 75 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 167 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 13 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2095 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 76 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 167 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 13 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
 
 One of 4 pages of this type, split by the first letter of the label: <a href="{{ '/folio-assistant-core/glossary/schema-fields/' | relative_url }}">all parts</a>.
 
-**Size:** this page holds 643 terms and is 354 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 646 terms and is 356 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>2382</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2382</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>2395</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2395</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -32,7 +32,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">643</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">646</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-M">M</a> <a href="#letter-N">N</a> <a href="#letter-O">O</a> <a href="#letter-P">P</a> <a href="#letter-Q">Q</a> <a href="#letter-R">R</a></nav>
 
@@ -1723,6 +1723,13 @@ PdfSourceSchema.math_source <span class="fa-gloss-status">candidate, extracted</
 <p>Where the entry's MATHEMATICS comes from, written by <code>latex-math-overlay.py</code>: <code>latex</code> when at least one section's text was replaced by the paper's own LaTeX, <code>text-layer</code> when the overlay ran and none passed its gates. Absent when the overlay never ran.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/pdf-structure.ts"><code>cat-harness/schemas/pdf-structure.ts#PdfSourceSchema.math_source</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--pdf-structure.pdfsourceschema.runcontext" data-fa-state="extracted" data-fa-gloss="">
+PdfSourceSchema.runContext <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>WHICH SOFTWARE produced the text, cited by digest: the <code>folio-run-context/v1</code> of the run that wrote it (<code>schemas/run-context.ts</code>), reused rather than restated — the one optional <code>runContext: &#123; sha256 }</code> reference that <code>docs/proposals/tool-releases-2026-10-07.md</code> gives every run and report record (owner, C1 = a).</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/pdf-structure.ts"><code>cat-harness/schemas/pdf-structure.ts#PdfSourceSchema.runContext</code></a></p>
+</dd>
 <dt id="cat-harness--kg-schema-fields--pdf-structure.pdfstructureschema.duplicate_of" data-fa-state="extracted" data-fa-gloss="">
 PdfStructureSchema.duplicate_of <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1846,7 +1853,7 @@ PinnedTerminologySchema.version <span class="fa-gloss-status">candidate, extract
 PipelinePluginContribution.implementation <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>What fills it. Shape is fixed per kind by <code>content/pipeline/pipeline-plugins.ts</code>.</p>
+<p>What fills it. Shape is fixed per kind by <code>pipeline/pipeline-plugins.ts</code>.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/contributions.ts"><code>cat-harness/schemas/contributions.ts#PipelinePluginContribution.implementation</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--contributions.pipelineplugincontribution.kind" data-fa-state="extracted" data-fa-gloss="">
@@ -1867,7 +1874,7 @@ PipelinePluginNodeSchema.implementation <span class="fa-gloss-status">candidate,
 PipelinePluginNodeSchema.slot <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>The generic pipeline slot this fills (<code>content/pipeline/pipeline-plugins.ts</code>); the key into the table.</p>
+<p>The generic pipeline slot this fills (<code>pipeline/pipeline-plugins.ts</code>); the key into the table.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/contribution-nodes.ts"><code>cat-harness/schemas/contribution-nodes.ts#PipelinePluginNodeSchema.slot</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--document-image.placementschema.coverage" data-fa-state="extracted" data-fa-gloss="">
@@ -4523,6 +4530,20 @@ RouteCollision.kind <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p><code>same</code> — one route claimed twice; <code>nested</code> — a claim inside another's subtree.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/visualiser-route.ts"><code>cat-harness/schemas/visualiser-route.ts#RouteCollision.kind</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--state-manifest.routemanifestschema.gate" data-fa-state="extracted" data-fa-gloss="">
+RouteManifestSchema.gate <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The command that checks the generator's output.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/state-manifest.ts"><code>cat-harness/schemas/state-manifest.ts#RouteManifestSchema.gate</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--state-manifest.routemanifestschema.writer" data-fa-state="extracted" data-fa-gloss="">
+RouteManifestSchema.writer <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The ONE generator that writes it.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/state-manifest.ts"><code>cat-harness/schemas/state-manifest.ts#RouteManifestSchema.writer</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--run-context.runcontextschema.profile" data-fa-state="extracted" data-fa-gloss="">
 RunContextSchema.profile <span class="fa-gloss-status">candidate, extracted</span>

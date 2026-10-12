@@ -471,9 +471,9 @@
       "@type": "bootstrap:Asset",
       "name": "npm-manifest",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d4dac4f64d18225dd07ab945724f2ac1d32f4892af648888c9e58e589ea16ba5",
-        "bytes": 1999,
-        "sha256": "d4dac4f64d18225dd07ab945724f2ac1d32f4892af648888c9e58e589ea16ba5"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/87cfc2162434ce060a910393d4f31cea869f93e1e95aae65017338a68041f0e1",
+        "bytes": 2148,
+        "sha256": "87cfc2162434ce060a910393d4f31cea869f93e1e95aae65017338a68041f0e1"
       },
       "title": "package.json"
     },
@@ -661,6 +661,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/folio",
       "@type": "bootstrap:Subgraph",
       "name": "folio"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/folio-render",
+      "@type": "bootstrap:Subgraph",
+      "name": "folio-render"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/health",
@@ -1931,6 +1936,12 @@
       "title": "staging-preview"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/state-manifest",
+      "@type": "cat-harness:Schema",
+      "name": "state-manifest",
+      "title": "state-manifest"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/sticky-contribution",
       "@type": "cat-harness:Schema",
       "name": "sticky-contribution",
@@ -1953,6 +1964,12 @@
       "@type": "cat-harness:Schema",
       "name": "substrate-snapshot",
       "title": "substrate-snapshot"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/sweep-mark",
+      "@type": "cat-harness:Schema",
+      "name": "sweep-mark",
+      "title": "sweep-mark"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#schema/tabular-csvw",

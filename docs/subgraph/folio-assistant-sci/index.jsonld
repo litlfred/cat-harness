@@ -4,11 +4,6 @@
   "@type": "bootstrap:Subgraph",
   "hasMember": [
     {
-      "@id": "cat-harness:graphTypology/content-adapters",
-      "@type": "bootstrap:GraphTypology",
-      "name": "content-adapters"
-    },
-    {
       "@id": "cat-harness:graphTypology/lean",
       "@type": "bootstrap:GraphTypology",
       "name": "lean"
@@ -28,6 +23,17 @@
         "sha256": "8d5cd0b9a6c42f694a433f7c2cf9b3dbabca9bbf34419d75198d3f7d9128709d"
       },
       "title": "AGENTS.md — folio-assistant-sci"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/folio-assistant-sci.jsonld#asset/checkout-scripts",
+      "@type": "bootstrap:Asset",
+      "name": "checkout-scripts",
+      "payload": {
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5cf0854513c554c523da80d0528a240010b000e285fd3bcb5f4496b2f066a964",
+        "bytes": 304,
+        "sha256": "5cf0854513c554c523da80d0528a240010b000e285fd3bcb5f4496b2f066a964"
+      },
+      "title": "package.json — folio-assistant-sci"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/folio-assistant-sci.jsonld#asset/readme",

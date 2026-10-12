@@ -603,6 +603,25 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/ns#glossary/kg-schema-fields/ig-artifact-jsonld.igartifactencodingschema.dcterms-source",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "IgArtifactEncodingSchema.dcterms:source"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "`local`: a copy this site serves; `upstream`: the file where the IG publishes it."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/ig-artifact-jsonld.ts#IgArtifactEncodingSchema.dcterms:source",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/ns#glossary/kg-schema-fields/ig-ast.astmanifestschema.inputs",
       "@type": "skos:Concept",
       "skos:inScheme": {

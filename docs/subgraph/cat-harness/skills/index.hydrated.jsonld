@@ -158,9 +158,9 @@
               "instructionsPath": "skills/authoring/authoring-core/content-graph.md",
               "name": "content-graph",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/974088ca2f9d01d5e57e562946a65ba47abbce3fe6eb28d7375fcee5d1bf0461",
-                "bytes": 17490,
-                "sha256": "974088ca2f9d01d5e57e562946a65ba47abbce3fe6eb28d7375fcee5d1bf0461"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/8a05fc1739f6781bef473f55110edee2b2baadbd3e6892151a90d36bdb246662",
+                "bytes": 17466,
+                "sha256": "8a05fc1739f6781bef473f55110edee2b2baadbd3e6892151a90d36bdb246662"
               },
               "title": "Content Graph — Editorial Organisation Skill"
             },
@@ -196,9 +196,9 @@
               "instructionsPath": "skills/authoring/authoring-core/detangler-integration-watcher.md",
               "name": "detangler-integration-watcher",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9d0f4fec44b31fc85b9f08e21b0931813c8e68124b6e52353d15461bc7dcb327",
-                "bytes": 20390,
-                "sha256": "9d0f4fec44b31fc85b9f08e21b0931813c8e68124b6e52353d15461bc7dcb327"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/fa287a9868fbe85a9eadd95564e8f27a7c95bd8b7a890eae09b01bc43839cb97",
+                "bytes": 20382,
+                "sha256": "fa287a9868fbe85a9eadd95564e8f27a7c95bd8b7a890eae09b01bc43839cb97"
               },
               "title": "/detangler-integration-watcher"
             },
@@ -271,9 +271,9 @@
               "instructionsPath": "skills/authoring/authoring-core/exposition-swarm-drain.md",
               "name": "exposition-swarm-drain",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f65d1bdbfb953c29db51f8c1e33590f869b0a3ad440de974b36db799c589c5af",
-                "bytes": 11340,
-                "sha256": "f65d1bdbfb953c29db51f8c1e33590f869b0a3ad440de974b36db799c589c5af"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a69df845fd84daf578e2708013735d18ebfe2a11360e9bb09feef11e30ba3c22",
+                "bytes": 11332,
+                "sha256": "a69df845fd84daf578e2708013735d18ebfe2a11360e9bb09feef11e30ba3c22"
               },
               "title": "/exposition-swarm-drain — Milnor-exposition audit→resolve drain"
             },
@@ -290,9 +290,9 @@
               "instructionsPath": "skills/authoring/authoring-core/integration-audit.md",
               "name": "integration-audit",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ace659635e039c54f7bf05dead4dba8c4cb39044a087c924bfea160eda2b5c65",
-                "bytes": 6733,
-                "sha256": "ace659635e039c54f7bf05dead4dba8c4cb39044a087c924bfea160eda2b5c65"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/942a7b01d87eb84373400271ef8f6815a1a03b330d30f87a242dfa174a06a3ee",
+                "bytes": 6717,
+                "sha256": "942a7b01d87eb84373400271ef8f6815a1a03b330d30f87a242dfa174a06a3ee"
               },
               "title": "/integration-audit — invalidate + re-audit the sidecar pipeline"
             },
@@ -308,9 +308,9 @@
               "instructionsPath": "skills/authoring/authoring-core/md-authoring.md",
               "name": "md-authoring",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/696a660ee52bfe0c6c3ad854e4455b004e975dd41ed889ce38c791a19c88a041",
-                "bytes": 6776,
-                "sha256": "696a660ee52bfe0c6c3ad854e4455b004e975dd41ed889ce38c791a19c88a041"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/3751ffe86fa9a80a2b27ab96ab8b330664a5888a460868b457594125791f48eb",
+                "bytes": 6768,
+                "sha256": "3751ffe86fa9a80a2b27ab96ab8b330664a5888a460868b457594125791f48eb"
               },
               "title": "Markdown Authoring Conventions"
             },
@@ -345,9 +345,9 @@
               "instructionsPath": "skills/authoring/authoring-core/one-voice-audit.md",
               "name": "one-voice-audit",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/55a21bd3f1b6822bcc823ec2da42c71dc446b3dd6f5b411cbea7ee4e14a6e2a4",
-                "bytes": 17392,
-                "sha256": "55a21bd3f1b6822bcc823ec2da42c71dc446b3dd6f5b411cbea7ee4e14a6e2a4"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ceb992c95baa1a711148ec2b642637a755fb62d1d329cd12fab9b3a973483cd2",
+                "bytes": 17384,
+                "sha256": "ceb992c95baa1a711148ec2b642637a755fb62d1d329cd12fab9b3a973483cd2"
               },
               "title": "One-Voice Audit"
             },
@@ -364,9 +364,9 @@
               "instructionsPath": "skills/authoring/authoring-core/one-voice-integration-watcher.md",
               "name": "one-voice-integration-watcher",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ba7cb4ab5cf91cebf655b3bc755c944789693be6e2494cf26ef4c4e6bbabdb1d",
-                "bytes": 16271,
-                "sha256": "ba7cb4ab5cf91cebf655b3bc755c944789693be6e2494cf26ef4c4e6bbabdb1d"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0706e91706800170366e633e55b6d68b136cd37318a23cd5a40aa0a098968a77",
+                "bytes": 16239,
+                "sha256": "0706e91706800170366e633e55b6d68b136cd37318a23cd5a40aa0a098968a77"
               },
               "title": "/one-voice-integration-watcher"
             },
@@ -514,9 +514,9 @@
               "instructionsPath": "skills/authoring/authoring-core/uses-editorial-review.md",
               "name": "uses-editorial-review",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/8a3e8873fc57b855f2e3d70f823923c5afdffa91308763055a19aca043990d3e",
-                "bytes": 16476,
-                "sha256": "8a3e8873fc57b855f2e3d70f823923c5afdffa91308763055a19aca043990d3e"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e0f3880045d23912efaf3eae81cd4494a92429bb5af656b11c6738b36f11f531",
+                "bytes": 16460,
+                "sha256": "e0f3880045d23912efaf3eae81cd4494a92429bb5af656b11c6738b36f11f531"
               },
               "title": "`uses[]` Editorial Review"
             },
@@ -552,9 +552,9 @@
               "instructionsPath": "skills/authoring/authoring-core/voice-editorial-review.md",
               "name": "voice-editorial-review",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/79367f483c263326b9fdf7748eb431b26da7cfd16ba26300455c56bda2461ad3",
-                "bytes": 5515,
-                "sha256": "79367f483c263326b9fdf7748eb431b26da7cfd16ba26300455c56bda2461ad3"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e4c686bba2b3901d60a69a51ffaed31a123ddce959599cf81231f9c81fd43f31",
+                "bytes": 5499,
+                "sha256": "e4c686bba2b3901d60a69a51ffaed31a123ddce959599cf81231f9c81fd43f31"
               },
               "title": "Voice editorial review"
             },
@@ -571,9 +571,9 @@
               "instructionsPath": "skills/authoring/authoring-core/voice-overlay-review.md",
               "name": "voice-overlay-review",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/c2258b73588ef6a62f67e18a6721563fd97ab64fe7fccf54068688f6cb03ab0a",
-                "bytes": 4098,
-                "sha256": "c2258b73588ef6a62f67e18a6721563fd97ab64fe7fccf54068688f6cb03ab0a"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/70fff52979ff8a099e015072fb2a3d0d5f2c09c44444ad35e9be1d5159bc2cb6",
+                "bytes": 4090,
+                "sha256": "70fff52979ff8a099e015072fb2a3d0d5f2c09c44444ad35e9be1d5159bc2cb6"
               },
               "title": "Voice overlay review"
             }
@@ -1000,13 +1000,13 @@
               "hasInstructions": true,
               "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/conduct-core",
               "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-              "instructionLines": 574,
+              "instructionLines": 609,
               "instructionsPath": "skills/conduct/conduct-core/interaction-modality.md",
               "name": "interaction-modality",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/fea0f5c533574ad65830dc37b715fa397476f757de5d26b1440d21022552bd3a",
-                "bytes": 32742,
-                "sha256": "fea0f5c533574ad65830dc37b715fa397476f757de5d26b1440d21022552bd3a"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6218b4282105a39571d981da26b974b2884284aa07931dab9c4b171cee548564",
+                "bytes": 34570,
+                "sha256": "6218b4282105a39571d981da26b974b2884284aa07931dab9c4b171cee548564"
               },
               "title": "/interaction-modality — ask in a form the person can answer"
             },
@@ -1290,9 +1290,9 @@
           "instructionsPath": "skills/folio-core/covered-is-not-reachable.md",
           "name": "covered-is-not-reachable",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/3aea6063a5354feeda8fe1814984a88b87460243732d610fb08defeee3d501ae",
-            "bytes": 14626,
-            "sha256": "3aea6063a5354feeda8fe1814984a88b87460243732d610fb08defeee3d501ae"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6eaa103fc705b345551b497eabd2da6c6384836c228362f9ba67fd15b64ab162",
+            "bytes": 14618,
+            "sha256": "6eaa103fc705b345551b497eabd2da6c6384836c228362f9ba67fd15b64ab162"
           },
           "title": "Covered is not reachable — and `check:tools` cannot tell you which"
         },
@@ -1450,9 +1450,9 @@
               "instructionsPath": "skills/kg/graph-management/domain-fencing.md",
               "name": "domain-fencing",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0d8c676d3cf26429bd3661993bfb9ce576f2b6a014af90e17d66fa6176dfd969",
-                "bytes": 11673,
-                "sha256": "0d8c676d3cf26429bd3661993bfb9ce576f2b6a014af90e17d66fa6176dfd969"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/503902aec16041a282a35a61abf5a0faab2c11535b93b7d4e8a3adaa661dadb8",
+                "bytes": 11657,
+                "sha256": "503902aec16041a282a35a61abf5a0faab2c11535b93b7d4e8a3adaa661dadb8"
               },
               "title": "Domain fencing — keeping one folio's rules out of everybody's platform"
             },
@@ -1488,9 +1488,9 @@
               "instructionsPath": "skills/kg/graph-management/graph-detanglement.md",
               "name": "graph-detanglement",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d26eae9bdb7fd4f218c0cc9fb0b9e366e0fca636d88e11ebeec51a613279b1af",
-                "bytes": 17960,
-                "sha256": "d26eae9bdb7fd4f218c0cc9fb0b9e366e0fca636d88e11ebeec51a613279b1af"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/416443920268fd27b94c823715badef61cdc7fa6cf529ee08858f59a46db7542",
+                "bytes": 17952,
+                "sha256": "416443920268fd27b94c823715badef61cdc7fa6cf529ee08858f59a46db7542"
               },
               "title": "Graph detanglement — the practice, not the migration"
             },
@@ -1507,9 +1507,9 @@
               "instructionsPath": "skills/kg/graph-management/graph-rendering.md",
               "name": "graph-rendering",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/70a6f13b77e79286ba9cc8661fbc96911591908ae68efc3d09b141cbb207a8c1",
-                "bytes": 12138,
-                "sha256": "70a6f13b77e79286ba9cc8661fbc96911591908ae68efc3d09b141cbb207a8c1"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d385563cb97cb9a926038ebc70b9045b2f6eea42a49b15d1c84e24f6e97f3263",
+                "bytes": 12130,
+                "sha256": "d385563cb97cb9a926038ebc70b9045b2f6eea42a49b15d1c84e24f6e97f3263"
               },
               "title": "Graph rendering: one set of rules for every drawn graph"
             },
@@ -1526,9 +1526,9 @@
               "instructionsPath": "skills/kg/graph-management/kg-separation.md",
               "name": "kg-separation",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/2ca44d5fead81d3e0f4550b998c886939243cb99328e0d3b366a5666efaf100f",
-                "bytes": 40152,
-                "sha256": "2ca44d5fead81d3e0f4550b998c886939243cb99328e0d3b366a5666efaf100f"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/49f545eb1fc85b026760ec60c73044d53d5205dd3c73c6eedde22d0fd1aa9ba0",
+                "bytes": 40144,
+                "sha256": "49f545eb1fc85b026760ec60c73044d53d5205dd3c73c6eedde22d0fd1aa9ba0"
               },
               "title": "Knowledge Graph separation — the method"
             },
@@ -1564,9 +1564,9 @@
               "instructionsPath": "skills/kg/graph-management/lsi-indexing.md",
               "name": "lsi-indexing",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b2d59f1d919bed820359066054631b39694a40fd38297b540c12c6fadcade681",
-                "bytes": 16336,
-                "sha256": "b2d59f1d919bed820359066054631b39694a40fd38297b540c12c6fadcade681"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/295fe5c58c2ccc862cad9d4c29ac6c93b3b8ac2a8524a22a7386c1952766cba6",
+                "bytes": 16312,
+                "sha256": "295fe5c58c2ccc862cad9d4c29ac6c93b3b8ac2a8524a22a7386c1952766cba6"
               },
               "title": "LSI indexing — the platform's application of `methodologies/lsi.md`"
             },
@@ -1816,13 +1816,13 @@
               "hasInstructions": true,
               "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/kg-core",
               "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-              "instructionLines": 1747,
+              "instructionLines": 1775,
               "instructionsPath": "skills/kg/kg-core/directory-conventions.md",
               "name": "directory-conventions",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9d0efa7e1386da61e911e068928c1de2bbf0759540de8aa0c55466f2afa815b9",
-                "bytes": 135267,
-                "sha256": "9d0efa7e1386da61e911e068928c1de2bbf0759540de8aa0c55466f2afa815b9"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7f3056ea10befff020e231fbbceca050c2ce21a260d17e48c89b38d2edad5cb8",
+                "bytes": 137503,
+                "sha256": "7f3056ea10befff020e231fbbceca050c2ce21a260d17e48c89b38d2edad5cb8"
               },
               "title": "Directory conventions — what an instance declares it scans"
             },
@@ -2504,9 +2504,9 @@
               "instructionsPath": "skills/library/library-core/translation-manager.md",
               "name": "translation-manager",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5bdd851ea665808eed37b1812affb06ad8dd6ac72759cab591016c424388300a",
-                "bytes": 32820,
-                "sha256": "5bdd851ea665808eed37b1812affb06ad8dd6ac72759cab591016c424388300a"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/e0eaa8940524d8411072f179a7d9abb0d1e271e9e482761ad34686acafdd714c",
+                "bytes": 32740,
+                "sha256": "e0eaa8940524d8411072f179a7d9abb0d1e271e9e482761ad34686acafdd714c"
               },
               "title": "Translation manager"
             },
@@ -2641,9 +2641,9 @@
               "instructionsPath": "skills/process/process-core/compiled-artefact-cache.md",
               "name": "compiled-artefact-cache",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ba49a832ade3c74b5ba643ee63bbb10f4973c654dbe7b8571836b1982af9b0b5",
-                "bytes": 6257,
-                "sha256": "ba49a832ade3c74b5ba643ee63bbb10f4973c654dbe7b8571836b1982af9b0b5"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4e772fe2c95efc0a564be5020ebe8f9cb6a443db0dbd6e2b0040ea477aa1b193",
+                "bytes": 6249,
+                "sha256": "4e772fe2c95efc0a564be5020ebe8f9cb6a443db0dbd6e2b0040ea477aa1b193"
               },
               "title": "Compiled Artefact Cache"
             },
@@ -2750,13 +2750,13 @@
               "hasInstructions": true,
               "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/process-core",
               "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-              "instructionLines": 347,
+              "instructionLines": 358,
               "instructionsPath": "skills/process/process-core/task-authorization.md",
               "name": "task-authorization",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/87af43f7879e718b236728d962201ccd8609b1afea52413b293500d899367408",
-                "bytes": 18322,
-                "sha256": "87af43f7879e718b236728d962201ccd8609b1afea52413b293500d899367408"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7a183761224f68654dca2ab4ede821bd7b7da962a06e0e7a45b959b1b57b522e",
+                "bytes": 18977,
+                "sha256": "7a183761224f68654dca2ab4ede821bd7b7da962a06e0e7a45b959b1b57b522e"
               },
               "title": "Task authorization — four questions before every task"
             }
@@ -2890,9 +2890,9 @@
               "instructionsPath": "skills/process/workflow/branch-freshness.md",
               "name": "branch-freshness",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/fda7ad72f7706bcd79382376d6007da3fbc30b46255a78af3e74cf90baba1e13",
-                "bytes": 3593,
-                "sha256": "fda7ad72f7706bcd79382376d6007da3fbc30b46255a78af3e74cf90baba1e13"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4c77f3f8db2fc917f9c5e280168e268fdf880ddb4470c0b315e9761b06eab928",
+                "bytes": 3585,
+                "sha256": "4c77f3f8db2fc917f9c5e280168e268fdf880ddb4470c0b315e9761b06eab928"
               },
               "title": "Branch freshness — stay current with main"
             },
@@ -2909,9 +2909,9 @@
               "instructionsPath": "skills/process/workflow/code-review-process.md",
               "name": "code-review-process",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/0661fd7a39549887f214929a804056a8c8a7a9b9466ae02ea576311db93adf55",
-                "bytes": 3283,
-                "sha256": "0661fd7a39549887f214929a804056a8c8a7a9b9466ae02ea576311db93adf55"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6a50fa1b11a34088da2962530569e2e7f02ca1a4a1800ff6a1c95f0525ad024e",
+                "bytes": 3275,
+                "sha256": "6a50fa1b11a34088da2962530569e2e7f02ca1a4a1800ff6a1c95f0525ad024e"
               },
               "title": "Code review process — from PR to release approval"
             },
@@ -2963,13 +2963,13 @@
               "hasInstructions": true,
               "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/workflow",
               "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-              "instructionLines": 239,
+              "instructionLines": 256,
               "instructionsPath": "skills/process/workflow/process-state.md",
               "name": "process-state",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/aa61a5dacfce58ca4b693fcbf0f1d65245cca171dbacaa87b5764834118d0f1c",
-                "bytes": 12985,
-                "sha256": "aa61a5dacfce58ca4b693fcbf0f1d65245cca171dbacaa87b5764834118d0f1c"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a55bdad392895afaa6532a9d44ae7b55a6216fb3981ed618528bd4f20cfb650d",
+                "bytes": 14024,
+                "sha256": "a55bdad392895afaa6532a9d44ae7b55a6216fb3981ed618528bd4f20cfb650d"
               },
               "title": "Process state — the task you are in, inside the process you are running"
             },
@@ -3190,9 +3190,9 @@
               "name": "crdm-detect",
               "outputSchema": "https://litlfred.github.io/folio-assistant/skills/crdm-detect/output.schema.json",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/af8a1eec02ebf753065fe632c087ca3c73ef52ee694812c9188e8f0ee89f0480",
-                "bytes": 14496,
-                "sha256": "af8a1eec02ebf753065fe632c087ca3c73ef52ee694812c9188e8f0ee89f0480"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/1c7b0550316b5bdf1ab353a5cd4ced77b0b2cf999afd58eb2357a021ba70b453",
+                "bytes": 14488,
+                "sha256": "1c7b0550316b5bdf1ab353a5cd4ced77b0b2cf999afd58eb2357a021ba70b453"
               },
               "title": "Feature-request detection (CRDM trigger)"
             },
@@ -3209,9 +3209,9 @@
               "instructionsPath": "skills/sdlc/crdm/crdm-impact-analysis.md",
               "name": "crdm-impact-analysis",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/be58db421e4305c2da107f4baa4984baa786fae34c1d3a1c0bbd115641a0143d",
-                "bytes": 3843,
-                "sha256": "be58db421e4305c2da107f4baa4984baa786fae34c1d3a1c0bbd115641a0143d"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/418eba6f341f08a35707721c99fb1b0cc2bf67a6ee45b308bb1991bc11546458",
+                "bytes": 3819,
+                "sha256": "418eba6f341f08a35707721c99fb1b0cc2bf67a6ee45b308bb1991bc11546458"
               },
               "title": "Phase 4 — Impact analysis (detail)"
             },
@@ -3284,9 +3284,9 @@
               "instructionsPath": "skills/sdlc/crdm/crdm-requirements-workflow.md",
               "name": "crdm-requirements-workflow",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4479a9540e91362fd52578e62de78cc75d9c071a20cfd67dfbf1343f380c8a7e",
-                "bytes": 27635,
-                "sha256": "4479a9540e91362fd52578e62de78cc75d9c071a20cfd67dfbf1343f380c8a7e"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/9e8f0eca27796e3d63e861ba99856d3d4a8ea6f3d1eeae2cd02e5ea1789d1bc8",
+                "bytes": 27627,
+                "sha256": "9e8f0eca27796e3d63e861ba99856d3d4a8ea6f3d1eeae2cd02e5ea1789d1bc8"
               },
               "title": "CRDM requirements workflow"
             }
@@ -3771,9 +3771,9 @@
               "instructionsPath": "skills/sdlc/sdlc-core/gate-tree-mutation.md",
               "name": "gate-tree-mutation",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/27798c5d9e19b422c43461e00acab07b2cb6cdcfc396466518a860bb852a888e",
-                "bytes": 9125,
-                "sha256": "27798c5d9e19b422c43461e00acab07b2cb6cdcfc396466518a860bb852a888e"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a95539fd443b4cccd57ee03098454c0a3fc72bcb767baaf840c5ee9173785146",
+                "bytes": 9107,
+                "sha256": "a95539fd443b4cccd57ee03098454c0a3fc72bcb767baaf840c5ee9173785146"
               },
               "title": "\"NOT clean\" is a verdict about the RUN, not about your diff"
             },
@@ -4170,9 +4170,9 @@
               "instructionsPath": "skills/sdlc/sdlc-core/prepare-merge.md",
               "name": "prepare-merge",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ff91f5da9b0fc806f1524de649dbabc4396d9e0944b59549fb3e26d4c0fafd6b",
-                "bytes": 37652,
-                "sha256": "ff91f5da9b0fc806f1524de649dbabc4396d9e0944b59549fb3e26d4c0fafd6b"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f911dcbd8f6b9620fd81cdff1dab76651e527baf3f2dff464b83c083f1440752",
+                "bytes": 37644,
+                "sha256": "f911dcbd8f6b9620fd81cdff1dab76651e527baf3f2dff464b83c083f1440752"
               },
               "title": "Prepare-merge — get a feature branch ready to land"
             },
@@ -4264,9 +4264,9 @@
               "instructionsPath": "skills/sdlc/sdlc-core/qa-witness.md",
               "name": "qa-witness",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5b60f17801a3992cb3ae8f824aac5f2fdc4acb978e7853af1f7c64b9826820d8",
-                "bytes": 7177,
-                "sha256": "5b60f17801a3992cb3ae8f824aac5f2fdc4acb978e7853af1f7c64b9826820d8"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/8288dee9cec4927f06bbf698820c62b13c61be73c737bc71177eef591290d592",
+                "bytes": 7153,
+                "sha256": "8288dee9cec4927f06bbf698820c62b13c61be73c737bc71177eef591290d592"
               },
               "title": "QA witnesses — the published projection of every verdict"
             },
@@ -4472,9 +4472,9 @@
               "instructionsPath": "skills/sdlc/sdlc-core/test-engineer.md",
               "name": "test-engineer",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a94cb6ec0c20599c762a2f8e6e989746cb43d22d31f91f40189af609b1dc1b63",
-                "bytes": 6898,
-                "sha256": "a94cb6ec0c20599c762a2f8e6e989746cb43d22d31f91f40189af609b1dc1b63"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a5c8175683897dfdab577160c02c5e8e3ae988752e60cc6adb1f753f46528bf8",
+                "bytes": 6866,
+                "sha256": "a5c8175683897dfdab577160c02c5e8e3ae988752e60cc6adb1f753f46528bf8"
               },
               "title": "Test Engineer Skill"
             },
@@ -4548,9 +4548,9 @@
               "instructionsPath": "skills/sdlc/sdlc-core/untainted-verification.md",
               "name": "untainted-verification",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ac73ea8b5e85933ec6c982d01eacbf0190ab6fedce5526166cc902e14a84b741",
-                "bytes": 9221,
-                "sha256": "ac73ea8b5e85933ec6c982d01eacbf0190ab6fedce5526166cc902e14a84b741"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/26593e276cd8846bcb8139d71104256df503528967288427df5b6e8f4bbac9da",
+                "bytes": 9213,
+                "sha256": "26593e276cd8846bcb8139d71104256df503528967288427df5b6e8f4bbac9da"
               },
               "title": "Untainted verification — the producer never writes the verdict"
             },
@@ -5106,9 +5106,9 @@
               "instructionsPath": "skills/ui/ui-core/docs-generation.md",
               "name": "docs-generation",
               "payload": {
-                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a0b592a10f4cedff9aade85da1c015640b0a63d77cf79eaf70ccbb0f50f7f53b",
-                "bytes": 7086,
-                "sha256": "a0b592a10f4cedff9aade85da1c015640b0a63d77cf79eaf70ccbb0f50f7f53b"
+                "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/73bb204c2d1137a48e91f0dc2496f53f278c2e6b5e5c48bff5ffea6d91edade1",
+                "bytes": 7046,
+                "sha256": "73bb204c2d1137a48e91f0dc2496f53f278c2e6b5e5c48bff5ffea6d91edade1"
               },
               "title": "Documentation Generation Skill"
             },

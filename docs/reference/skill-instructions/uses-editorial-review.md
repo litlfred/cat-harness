@@ -28,7 +28,7 @@ inferred, with a text matcher kept only as a guard that list and prose agree
 
 It is **not** the formal dependency graph. What a proof actually
 invokes is machine-derived from `lean.ref` (see
-`content/pipeline/content-graph.ts`). The two relations are different
+`pipeline/content-graph.ts`). The two relations are different
 questions and they diverge in both directions, correctly:
 
 | Situation | Formal edge | Editorial edge | Correct? |
@@ -282,7 +282,7 @@ Run the script half before adjudicating — it is cheap and it changes
 what you should look at:
 
 ```sh
-bun run content/pipeline/qa-checkers-uses.ts   # via qa-sweep --axis uses
+bun run pipeline/qa-checkers-uses.ts   # via qa-sweep --axis uses
 ```
 
 | Mechanical finding | What it means for your review |

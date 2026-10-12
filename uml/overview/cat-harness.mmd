@@ -988,6 +988,11 @@ classDiagram
       <<could not determine>>
     }
   }
+  namespace cat_harness__folio_render {
+    class n_cat_harness_folio_render_code["code: no node schema"] {
+      <<could not determine>>
+    }
+  }
   namespace cat_harness__docs {
     class cat_harness_docs_folio_todo_index_v1_Relation["Relation"] {
       <<json: TodoIndexSchema>>
@@ -2272,6 +2277,8 @@ classDiagram
   cssClass "cat_harness_translation_sources_TranslationConfig" fa_uml_kind_translation_sources
   cssClass "n_cat_harness_folio_folio" fa_uml_kind_folio
   cssClass "n_cat_harness_folio_folio" fa_uml_undetermined
+  cssClass "n_cat_harness_folio_render_code" fa_uml_kind_code
+  cssClass "n_cat_harness_folio_render_code" fa_uml_undetermined
   cat_harness_docs_folio_todo_index_v1_Item *-- "0..*" cat_harness_docs_folio_todo_index_v1_Relation : relations
   cat_harness_docs_folio_todo_index_v1_folio_todo_index_v1 *-- "0..*" cat_harness_docs_folio_todo_index_v1_Item : items
   cat_harness_docs_folio_slice_index_v1_folio_slice_index_v1 *-- "0..*" cat_harness_docs_folio_slice_index_v1_Slice : slices

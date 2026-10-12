@@ -64,7 +64,7 @@ nav_exclude: true
   {
     &quot;id&quot;: &quot;cat-harness-tools-schemas&quot;,
     &quot;path&quot;: &quot;schemas/&quot;,
-    &quot;description&quot;: &quot;Tests of cat-harness&#39;s schemas that exercise tools code: the sixteen `cat-harness/schemas/*.test.ts` files that imported `scripts/`, `src/`, `content/pipeline/` or `test/support/`, moved first (bean `70lx`, batch B0) so that no later batch of the code move leaves a harness file importing into this layer. The Zod sources they test stay in cat-harness and follow in stage 1b (bean `8lcl`). `code`, not `schemas`: nothing here is a schema definition.&quot;,
+    &quot;description&quot;: &quot;Tests of cat-harness&#39;s schemas that exercise tools code: the sixteen `cat-harness/schemas/*.test.ts` files that imported `scripts/`, `src/`, `pipeline/` or `test/support/`, moved first (bean `70lx`, batch B0) so that no later batch of the code move leaves a harness file importing into this layer. The Zod sources they test stay in cat-harness and follow in stage 1b (bean `8lcl`). `code`, not `schemas`: nothing here is a schema definition.&quot;,
     &quot;graphTypologies&quot;: [
       &quot;code&quot;
     ]
@@ -124,9 +124,17 @@ nav_exclude: true
     ]
   },
   {
-    &quot;id&quot;: &quot;cat-harness-tools-content&quot;,
-    &quot;path&quot;: &quot;content/&quot;,
+    &quot;id&quot;: &quot;cat-harness-tools-pipeline&quot;,
+    &quot;path&quot;: &quot;pipeline/&quot;,
     &quot;description&quot;: &quot;The content pipeline — build, render, QA checkers and generators over a folio&#39;s content graph — moved here from `cat-harness/content/pipeline/` by bean `70lx` (stage 1a). Its QA script sidecars stayed in the harness, under `test/results/script-sidecars/`, because they are the harness&#39;s QA state.&quot;,
+    &quot;graphTypologies&quot;: [
+      &quot;code&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;cat-harness-tools-content-pipeline-link&quot;,
+    &quot;path&quot;: &quot;content/&quot;,
+    &quot;description&quot;: &quot;TRANSITIONAL, and holds no file of its own: one symlink, `content/pipeline -&gt; ../pipeline`, left by bean `rnfl` PR 1 (#146, 2026-10-12) when the content pipeline moved up to `pipeline/`, so that the other repositories&#39; commands that still name `cat-harness-tools/content/pipeline/...` (smart-ra&#39;s AGENTS.md `qa-sweep`, and the scaffold `folio_init` writes until a folio repins) keep resolving. Declared because a remote mount lays down DECLARED directories only: undeclared, a downstream that mounts this layer by its defaults got `pipeline/` but no `content/`, and every one of those commands failed there while passing in this checkout (task #10, gap a). It exists, so this is not the `dh4f` shape. The symlink is not hashed by the mount digest (a link is not content), so the directory locks as zero files; that is correct. Remove this entry in the same change that removes the symlink, once no repository names the old path.&quot;,
     &quot;graphTypologies&quot;: [
       &quot;code&quot;
     ]

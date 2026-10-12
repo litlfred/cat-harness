@@ -54,8 +54,13 @@ classDiagram
       children [0..1] Record~string, InstanceState~
     }
   }
-  namespace cat_harness_tools__cat_harness_tools_content {
-    class n_cat_harness_tools_cat_harness_tools_content_code["code: no node schema"] {
+  namespace cat_harness_tools__cat_harness_tools_pipeline {
+    class n_cat_harness_tools_cat_harness_tools_pipeline_code["code: no node schema"] {
+      <<could not determine>>
+    }
+  }
+  namespace cat_harness_tools__cat_harness_tools_content_pipeline_link {
+    class n_cat_harness_tools_cat_harness_tools_content_pipeline_link_code["code: no node schema"] {
       <<could not determine>>
     }
   }
@@ -166,6 +171,11 @@ classDiagram
       children [0..1] Record~string, InstanceState~
     }
   }
+  namespace cat_harness_tools__marks {
+    class n_cat_harness_tools_marks_sweep_marks["sweep-marks: no node schema"] {
+      <<could not determine>>
+    }
+  }
   cssClass "n_cat_harness_tools_cat_harness_tools_adapters_code" fa_uml_kind_code
   cssClass "n_cat_harness_tools_cat_harness_tools_adapters_code" fa_uml_undetermined
   cssClass "n_cat_harness_tools_cat_harness_tools_schemas_code" fa_uml_kind_code
@@ -181,8 +191,10 @@ classDiagram
   cssClass "n_cat_harness_tools_cat_harness_tools_python_code" fa_uml_kind_code
   cssClass "n_cat_harness_tools_cat_harness_tools_python_code" fa_uml_undetermined
   cssClass "cat_harness_tools_beans_folio_workflow_instance_v1" fa_uml_kind_beans
-  cssClass "n_cat_harness_tools_cat_harness_tools_content_code" fa_uml_kind_code
-  cssClass "n_cat_harness_tools_cat_harness_tools_content_code" fa_uml_undetermined
+  cssClass "n_cat_harness_tools_cat_harness_tools_pipeline_code" fa_uml_kind_code
+  cssClass "n_cat_harness_tools_cat_harness_tools_pipeline_code" fa_uml_undetermined
+  cssClass "n_cat_harness_tools_cat_harness_tools_content_pipeline_link_code" fa_uml_kind_code
+  cssClass "n_cat_harness_tools_cat_harness_tools_content_pipeline_link_code" fa_uml_undetermined
   cssClass "n_cat_harness_tools_folio_templates_code" fa_uml_kind_code
   cssClass "n_cat_harness_tools_folio_templates_code" fa_uml_undetermined
   cssClass "n_cat_harness_tools_cat_harness_tools_deploy_code" fa_uml_kind_code
@@ -203,3 +215,5 @@ classDiagram
   cssClass "cat_harness_tools_defs_BeanKind" fa_uml_kind_bean_defs
   cssClass "cat_harness_tools_notes_bean_notes_shape" fa_uml_kind_bean_notes
   cssClass "cat_harness_tools_workflows_folio_workflow_instance_v1" fa_uml_kind_workflow_state
+  cssClass "n_cat_harness_tools_marks_sweep_marks" fa_uml_kind_sweep_marks
+  cssClass "n_cat_harness_tools_marks_sweep_marks" fa_uml_undetermined
