@@ -11,7 +11,7 @@ parent: folio-assistant-slw1
 Owner, #2302 session 2026-10-06: re-ingest the who-iris library with the updated method, and give ingested documents a viewer — browse page by page (with printed labels), an overview of figures/tables, the TOC linking to sections, and extracted summaries of each section. Not who-iris-specific: the viewer belongs to the ingestion SCHEMA (pdf-structure/v1 structure.json + sections/), so every library/ asset of every instance gets it; who-iris is the first consumer.
 
 - [x] extend the existing library viewer (cat-harness/scripts/gen-library-viz.ts) with a document view built from structure.json: TOC (with confidence), pages (label, sections, figures), figures/tables, sections (summary or extract), diagnostics (alignment, gaps, label conflicts)
-- [ ] re-ingest who-iris library entries with the updated pdf-structure
+- [x] re-ingest who-iris library entries with the updated pdf-structure
 - [x] check it rendered (screenshots)
 - [ ] tests / gates
 
@@ -27,3 +27,19 @@ Run from who-iris's own repository (cat-harness mounted at `6c2d453`), all three
 
 ## 2026-10-11 — the j3ls blocker is lifted (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
 who-iris#43 mounts folio-assistant-sci, and with it `gen-library-jsonld` from who-iris's repository writes the committed JSON-LD exactly (813 nodes up to date). Promotion no longer drops the `@type`s, so the staged re-ingest can be re-run and promoted from a checkout named `who-iris`.
+
+## 2026-10-12 — re-ingest promoted: who-iris#44 (merged, cf41bbc) (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
+- All three entries were staged and promoted from a checkout named `who-iris`, with sci mounted. `gen-library-jsonld --check`: 813 up to date. Gates 0. Tests 101/101.
+- **wpr:**
+  - printed page labels added (33);
+  - figures, the toc-refusal reason, and two vector figures added;
+  - page bodies unchanged.
+- **tps (scan):** the bogus contents list and the "Abies" title are gone.
+  - The FRESH OCR WAS WORSE (Manual→Manval, name→nome, rule→tule, on 30 pages), so the committed OCR was kept and pages rebuilt from it with `--title`.
+  - Follow-up: ingest-document passes no title to pdf-pages.
+  - Follow-up: the OCR rung doesn't record the OCR engine/config, so a degraded re-OCR is invisible unless diffed.
+- **Kept as committed:** palette-optimised PNGs. The re-extraction writes larger RGBA; nothing records their hashes.
+- **Small losses:**
+  - tps `source.pages` and `extractor` (manifest `pages: 121`): only pdf-structure writes them.
+  - wpr pages' `doc_title` is now the capitalised heading.
+- **Remaining:** tests/gates box; the viewer on who-iris's own site (kx0p).
