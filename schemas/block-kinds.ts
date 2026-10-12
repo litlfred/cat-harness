@@ -201,18 +201,6 @@ export const BLOCK_KIND_ALT = BLOCK_KINDS.join("|");
  */
 // `CONTENT_ADAPTERS` is declared above, before discovery reads it.
 
-/**
- * Every built-in kind, which is what the `paper` PROFILE admits.
- *
- * It read "the `paper` adapter's kinds" while one adapter held every kind.
- * Since the vocabulary split by layer (bean `bzwk`: core's `document`, sci's
- * `mathpaper`), the paper profile is every typed adapter's kinds, so this is
- * {@link BLOCK_KINDS} under its old name, kept so callers move at their own pace.
- *
- * @deprecated use {@link BLOCK_KINDS}, or `PROFILE_BLOCK_KINDS.paper`.
- */
-export const PAPER_BLOCK_KINDS: readonly BlockKind[] = [...BLOCK_KINDS];
-
 // ── Content profiles ─────────────────────────────────────────────
 
 /**
@@ -446,31 +434,6 @@ export const ADAPTER_BLOCK_KINDS: Record<ContentAdapter, readonly string[]> = Ob
 );
 
 const KIND_TO_ADAPTER: ReadonlyMap<string, ContentAdapter> = new Map(BLOCK_KIND_NODES.map((n) => [n.kind, n.adapter]));
-
-/**
- * Adapter names that are no longer a vocabulary but still appear in a scope
- * list (`QaCriterionDefinition.adapters`), and what each now means.
- *
- * `paper` named the ONE vocabulary until it split by layer (bean `bzwk`); a
- * criterion scoped `["paper"]` meant "every built-in kind", so it expands to
- * every typed adapter. A name that IS a declared vocabulary is never expanded:
- * while a checkout still mounts the single `paper` vocabulary, `paper` means
- * itself. Temporary: removed once no scope names it.
- */
-export const ADAPTER_ALIASES: Readonly<Record<string, () => readonly string[]>> = {
-  paper: () => CONTENT_ADAPTERS,
-};
-
-/** `adapters` with every retired name replaced by what it now means, de-duplicated. */
-export function expandAdapterAliases(adapters: readonly string[]): string[] {
-  const out = new Set<string>();
-  for (const a of adapters) {
-    const alias = ADAPTER_ALIASES[a];
-    if (alias && !(CONTENT_ADAPTERS as readonly string[]).includes(a)) for (const x of alias()) out.add(x);
-    else out.add(a);
-  }
-  return [...out];
-}
 
 /**
  * The BUILT-IN adapter a block kind belongs to, or `undefined` for a kind core
