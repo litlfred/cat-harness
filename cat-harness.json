@@ -774,7 +774,7 @@
     },
     {
       "id": "folio-render",
-      "path": "folio/render/",
+      "path": "folio-render/",
       "graphTypologies": [
         "cat-harness",
         "code"

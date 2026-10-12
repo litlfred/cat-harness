@@ -23,10 +23,13 @@ describe("folioFileList", () => {
   put("render/file-list.ts", "code");
   put(".hidden", "x");
 
-  it("lists every file, recursively and sorted, but not the page, the renderer or dot-files", () => {
+  it("lists every file, recursively and sorted, but not the page or dot-files", () => {
+    // `render/` is content now: the renderer moved out to `folio-render/`, so
+    // nothing inside a folio is hidden by name any more.
     expect(folioFileList(tmp)).toEqual([
       { path: "cat-harness.json", bytes: 2 },
       { path: "notes/a b.md", bytes: 5 },
+      { path: "render/file-list.ts", bytes: 4 },
     ]);
   });
 

@@ -31,7 +31,7 @@ dot-files.
 
 ## One list, two levels of polish
 
-`folioFileList` in `folio/render/file-list.ts` is the only answer to "which
+`folioFileList` in `folio-render/file-list.ts` is the only answer to "which
 files does this folio hold". The full folio viewer (cat-harness-tools
 `gen-folio-viz.ts`) shows the same list as its 'list' view by calling it, not
 by listing again. A second listing would be free to disagree with this one.
