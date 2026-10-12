@@ -5,7 +5,7 @@ status: in-progress
 type: task
 priority: normal
 created_at: 2026-10-02T06:16:07Z
-updated_at: 2026-10-12T18:35:00Z
+updated_at: 2026-10-12T18:55:00Z
 parent: folio-assistant-qvxh
 ---
 
@@ -14,7 +14,7 @@ Owner, 2026-10-02 (#1767), option 2 of the smart-kg fold-in: feed smart-kg. smar
 Rules carried from smart-kg docs/SCOPE.md and STORAGE.md: no instance data is committed to smart-kg; a recommendation's verbatim text, GRADE strength and certainty are READ from the source, never inferred; a citation stays unresolved unless a person resolves it.
 
 ## Done when
-- [ ] where the A-Box documents live is decided with the owner (published with the source, per smart-kg STORAGE.md, versus a committed sidecar here)
+- [x] where the A-Box documents live is decided with the owner (published with the source, per smart-kg STORAGE.md, versus a committed sidecar here) — ruled 2026-10-12: both
 - [x] the extractor on one real guideline, with T2 validation green and coverage reported
 - [ ] T3 fidelity left to a person, never auto-passed
 
@@ -38,3 +38,14 @@ Owner 2026-10-02: 'keep going' after the storage question went unanswered, so th
 - **Ruling 1b:** a publication whose `publicationType` is `implementation-guidance` or `methodology` makes no recommendations of its own (handbook §1.9). What it prints is modelled as a separate node class, `implementation-practice`, not as `recommendation` nodes of a new kind. The class is declared in `kg/src/l1-library.ts` (the extension), so `generated/l1/l1.json` stays equal to WHO's. The extractor emits it when the curation gives `publication.publicationType`. `validate.ts` refuses a recommendation defined in such a publication.
 - The demo (9789240116191-eng) is now 22 implementation practices, 0 remarks and 30 proposed exclusions, all unsigned.
 - **Item 1 (output location) is still awaiting the owner.** The location was explained (beside the entry, `<entry>/l1-extraction/`, by this bean's stated default), but it has not been ruled on.
+
+## 2026-10-12 — item 1 ruled: "a and b"; L1 output declared as KG content and published
+
+- **Owner's ruling (item 1, where L1 extraction output lives): "a and b".** (a) Keep it committed beside the library entry, in `<entry>/l1-extraction/` in the harness that holds the entry (today `smart-base/smart-base/library/9789240116191-eng/l1-extraction/`). (b) Also publish it with the source. **The owner also asked:** "why does b not happen already? if its a part of the KG it should be published."
+- **Root cause.** On smart-base's gh-pages, each library entry published four files: the avatar, `entries/<id>.json`, `<id>.doc.json` and `jsonld/smart-base/<id>/manifest.jsonld`. smart-base declares `library/` with the single typology `library`, and the publisher emits what that typology defines (each entry's manifest). `l1-extraction/` was plain files that no graph typology named. It sat in the repository but was not in the declared KG, so nothing published it.
+- **Fix: declare it, then publish what is declared.**
+  - smart-base#51 adds a smart-base-contributed typology `l1-extraction` (`typologies/l1-extraction.json`: `within: "library"`, `derived`, `validatorNotApplicable`, since its graph documents are JSON-LD with no `$schema`, validated by `kg/src/validate.ts` at write). It is a kind here rather than more families on cat-harness's `library`, by the `dak-annex` argument: L1 is a WHO SMART concept. The PR also declares `library/9789240116191-eng/l1-extraction/` in `smart-base.json`, plus `scripts/l1-extraction-declared.test.ts`: every `l1-extraction/` on disk must be declared and every declaration must exist.
+  - cat-harness-tools#173: `gen-library-viz` publishes every file of every directory declared inside an entry whose kind is `within: "library"`, as-is, beside the manifest at `assets/library/jsonld/<instance>/<entry>/<rel>` (e.g. `…/9789240116191-eng/l1-extraction/recommendations.l1.json` and `…/scenarios/scenario-candidates.l2.json`). The entry links its JSON-LD documents through the projection's `links` and the entry page. A withheld entry publishes none. Orphan pruning and `--check` cover the new files. `recommendations.l1.json` stays the single source and is copied byte-identical.
+  - The manifest is not changed: the content context has no term for related graphs. The L1 graph points back to its source with `wasDerivedFrom`.
+- **Republishing is still the owner's step.** Nothing was deployed. Both PRs must land, then `library:viz` must run in a checkout holding both, then smart-base's `folio-site.yml` must be dispatched on `claude/seed-smart-base` with its folio-assistant submodule bumped.
+
