@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { mountTrust, MountTrustBasisSchema, MountTrustSchema } from "./mount-trust.ts";
+import { mountTrust, MountTrustBasisSchema, MountTrustSchema, withConsent } from "./mount-trust.ts";
 
 const PIN = "a".repeat(40);
 const OTHER = "b".repeat(40);
@@ -57,5 +57,40 @@ describe("mount trust (H8): signed provenance or explicit consent; staging needs
     expect(MountTrustBasisSchema.safeParse({ basis: "consent", by: "a", on: "2026-10-07", ref: PIN, approver: "declared" }).success).toBe(true);
     expect(MountTrustBasisSchema.safeParse({ basis: "consent", by: "a", on: "2026-10-07", ref: PIN }).success).toBe(false);
     expect(MountTrustBasisSchema.safeParse({ basis: "signature" }).success).toBe(false);
+  });
+});
+
+describe("withConsent: seeding writes consent for the pin it writes (task #10, gap c)", () => {
+  const grant = { by: "litlfred", evidence: "session X: 'repin as needed'", on: "2026-10-12" };
+
+  test("an unconsented mount gains consent bound to ITS ref, and then mounts", () => {
+    const m = withConsent({ harness: "x", ref: PIN }, grant);
+    expect(m.trust?.consent).toEqual({ by: "litlfred", on: "2026-10-12", ref: PIN, evidence: grant.evidence });
+    expect(mountTrust(m, "mount")).toMatchObject({ ok: true, basis: "consent" });
+  });
+
+  test("a consent for a moved pin is replaced by the new grant", () => {
+    const m = withConsent({ harness: "x", ref: PIN, trust: consent(OTHER) }, grant);
+    expect(m.trust?.consent?.ref).toBe(PIN);
+    expect(m.trust?.consent?.evidence).toBe(grant.evidence);
+  });
+
+  test("a consent already recorded for this pin is kept, not rewritten", () => {
+    const before = { harness: "x", ref: PIN, trust: consent(PIN) };
+    expect(withConsent(before, grant)).toBe(before);
+  });
+
+  test("a signature is kept beside the new consent", () => {
+    const signature = { network: "gdhcn", keyId: "k", signedDigest: "c".repeat(64), value: "v" };
+    expect(withConsent({ harness: "x", ref: PIN, trust: { signature } }, grant).trust?.signature).toEqual(signature);
+  });
+
+  test("an empty grant throws rather than writing consent nobody can read", () => {
+    expect(() => withConsent({ harness: "x", ref: PIN }, { by: "", evidence: "e" })).toThrow();
+    expect(() => withConsent({ harness: "x", ref: PIN }, { by: "b", evidence: "" })).toThrow();
+  });
+
+  test("`on` defaults to today", () => {
+    expect(withConsent({ harness: "x", ref: PIN }, { by: "b", evidence: "e" }).trust?.consent?.on).toBe(new Date().toISOString().slice(0, 10));
   });
 });
