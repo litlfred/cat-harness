@@ -36,8 +36,23 @@
   into a disclosure once the board is available — collapsed, never removed,
   because an action whose inverse is not reachable is not a toggle
   (`board-windows`, bean `l4zi`).
+
+  EACH PAGE LISTS ITS OWN (bean `lwjc`). A page includes only the notes
+  attached to it, from `generated/todo-listing/<page>.html`, and its count is
+  its own. A page with no note includes NOTHING -- no empty section -- because
+  `_data/todo_listing.json` has no entry for it. The todos board
+  (`fa_todo_listing: all` in its front matter) keeps the whole listing, and so
+  does any site whose generator predates the index, so this cannot drop the
+  floor on a site that has not regenerated.
 {%- endcomment -%}
-{%- include generated/todo-listing.html -%}
+{%- assign fa_todo_index = site.data.todo_listing -%}
+{%- if page.fa_todo_listing == "all" or fa_todo_index == nil -%}
+  {%- include generated/todo-listing.html -%}
+{%- else -%}
+  {%- assign fa_todo_key = page.path | remove_first: ".md" | remove_first: ".html" -%}
+  {%- assign fa_todo_include = fa_todo_index.pages[fa_todo_key] -%}
+  {%- if fa_todo_include -%}{%- include {{ fa_todo_include }} -%}{%- endif -%}
+{%- endif -%}
 {%- if site.footer_content -%}
   <p class="text-small mb-0">{{ site.footer_content }}</p>
 {%- endif -%}
