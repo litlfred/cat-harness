@@ -1806,6 +1806,22 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "so a later session can compute what it is NOT covered for instead of re-deriving " +
       "the whole range (bean `6ptx`).",
   },
+  "sweep-marks": {
+    description:
+      "when a session-start sweep step last ran — one JSON per check, `\"$schema\": \"folio-sweep-mark/v1\"`, replaced on each run that read its input. Bean `rq8s`: the sweep asks an agent to run `check:session-staleness` and cannot run it itself, so a skipped step left no trace; the owner ruled 2026-10-10 that the check writes a last-checked timestamp to the state branch. Only a DETERMINED run writes a mark, so \"could not determine\" never reads as \"checked\". `state` because a running session writes it; `recordsWork: false` because a mark is a reading, not work anybody is partway through.",
+    title: "Sweep marks",
+    renderable: false,
+    holds: "state",
+    // declared-path-literal: this table IS the declaration, as on `health`.
+    nodeSchemas: {
+      "folio-sweep-mark/v1": {},
+    },
+    schema: "schemas/sweep-mark.ts",
+    recordsWork: false,
+    summary:
+      "When a sweep step last ran — one JSON per check, carrying `\"$schema\": \"folio-sweep-mark/v1\"`, " +
+      "so a skipped `check:session-staleness` is visible after the terminal scrolls (bean `rq8s`).",
+  },
   "workflow-state": {
     description:
       "running BPMN instances — one JSON each, `\"$schema\": \"folio-workflow-instance/v1\"`. Owned by the interpreter, never hand-edited.",
