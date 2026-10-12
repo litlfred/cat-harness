@@ -628,6 +628,8 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
   summary?: string;
   /** Other spellings of the name, listed on the landing (`ob3m` 5). */
   alsoWritten?: string[];
+  /** The prefix this harness's skills get when installed into an agent host — see {@link CatHarnessDeclarationSchema}'s `skillPrefix` (bean `x4mt`). */
+  skillPrefix?: string;
   /** The instance's own avatar (sod4 #4); the table in avatars.ts covers only the instances below the harness. */
   avatar?: KindAvatar;
   /**
@@ -3275,6 +3277,24 @@ const catHarnessDeclarationShape = {
    * Owner's choice, 2026-10-01: keep the spellings visible, as a list.
    */
   alsoWritten: z.array(z.string().min(1)).nonempty().optional(),
+  /**
+   * The namespace this instance's skills take when they are INSTALLED into an
+   * agent host (Claude Code, Antigravity, …): a skill `todo-manager` installs
+   * as `<skillPrefix>-todo-manager`, so two harnesses' skills, or a harness's
+   * and the host's own, cannot collide.
+   *
+   * Owner ruling 2026-10-10 (bean `x4mt`, issue #247): the prefix is applied
+   * **at install** — nothing in the repository is renamed, so manifests, BPMN
+   * `folio:skill` refs and cross-references keep the bare name — and it is
+   * **per harness**, declared here (`cat` for cat-harness, `fa` for
+   * folio-assistant), not one global `fa-`. The install layer reads it; an
+   * instance that declares none takes the prefix of the harness it is
+   * installed from.
+   *
+   * Lowercase letters and digits, starting with a letter: it becomes part of
+   * a directory name and a skill `name`, which hosts restrict to that set.
+   */
+  skillPrefix: z.string().regex(/^[a-z][a-z0-9]*$/).optional(),
   /**
    * The instance's mark — the same shape a kind node carries (bean sod4 #4).
    * It sat in `schemas/avatars.ts`'s AVATARS beside the kinds' until
