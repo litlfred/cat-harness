@@ -1192,6 +1192,33 @@ classDiagram
       dak/ValueSet-IMMZD5DTYellowFeverContraindicationsVS [1] enum(704) of string
     }
   }
+  namespace smart_immunizations__smart_immunizations_dak_annexes {
+    class smart_immunizations_smart_immunizations_dak_annexes_dak_data_dictionary_v1_Column["Column"] {
+      <<json: DakDataDictionaryAnnexSchema>>
+      key [1] string
+      label [1] string
+    }
+    class smart_immunizations_smart_immunizations_dak_annexes_dak_data_dictionary_v1_Sheet["Sheet"] {
+      <<json: DakDataDictionaryAnnexSchema>>
+      name [1] string
+      columns [0..*] Column[]
+      rows [0..*] string[][]
+    }
+    class smart_immunizations_smart_immunizations_dak_annexes_dak_data_dictionary_v1_dak_data_dictionary_v1["dak-data-dictionary/v1"] {
+      <<json: DakDataDictionaryAnnexSchema>>
+      $schema [1] 'dak-data-dictionary/v1'
+      title [1] string
+      source [1] object
+      idColumn [1] string
+      sheets [0..*] Sheet[]
+    }
+    class smart_immunizations_smart_immunizations_dak_annexes_dak_swimlanes_v1_dak_swimlanes_v1["dak-swimlanes/v1"] {
+      <<json: DakSwimlaneMapSchema>>
+      $schema [1] 'dak-swimlanes/v1'
+      personas [1] map~string[]~
+      notPersonas [1] map~string~
+    }
+  }
   namespace smart_immunizations__smart_immunizations_docs {
     class n_smart_immunizations_smart_immunizations_docs_docs["docs: no node schema"] {
       <<could not determine>>
@@ -1418,6 +1445,12 @@ classDiagram
   cssClass "smart_immunizations_smart_immunizations_artifact_index_dak_ValueSet_IMMZD5DTVaricellaContraindicationsVS_displays_json_IMMZD5DTVaricellaContraindications_ValueSet_for_Decision_Table_Display_Values" fa_uml_kind_fhir_artifact_index
   cssClass "smart_immunizations_smart_immunizations_artifact_index_dak_ValueSet_IMMZD5DTYellowFeverContraindicationsVS_displays_json_IMMZD5DTYellowFeverContraindications_ValueSet_for_Decision_Table_Display_Values" fa_uml_kind_fhir_artifact_index
   cssClass "smart_immunizations_smart_immunizations_artifact_index_https___json_schema_org_draft_2020_12_schema_listed" fa_uml_kind_fhir_artifact_index
+  smart_immunizations_smart_immunizations_dak_annexes_dak_data_dictionary_v1_Sheet *-- "0..*" smart_immunizations_smart_immunizations_dak_annexes_dak_data_dictionary_v1_Column : columns
+  smart_immunizations_smart_immunizations_dak_annexes_dak_data_dictionary_v1_dak_data_dictionary_v1 *-- "0..*" smart_immunizations_smart_immunizations_dak_annexes_dak_data_dictionary_v1_Sheet : sheets
+  cssClass "smart_immunizations_smart_immunizations_dak_annexes_dak_data_dictionary_v1_Column" fa_uml_kind_dak_annex
+  cssClass "smart_immunizations_smart_immunizations_dak_annexes_dak_data_dictionary_v1_Sheet" fa_uml_kind_dak_annex
+  cssClass "smart_immunizations_smart_immunizations_dak_annexes_dak_data_dictionary_v1_dak_data_dictionary_v1" fa_uml_kind_dak_annex
+  cssClass "smart_immunizations_smart_immunizations_dak_annexes_dak_swimlanes_v1_dak_swimlanes_v1" fa_uml_kind_dak_annex
   cssClass "n_smart_immunizations_smart_immunizations_docs_docs" fa_uml_kind_docs
   cssClass "n_smart_immunizations_smart_immunizations_docs_docs" fa_uml_undetermined
   cssClass "n_smart_immunizations_smart_immunizations_docs_ig_pages" fa_uml_kind_ig_pages

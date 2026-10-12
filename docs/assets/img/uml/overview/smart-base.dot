@@ -183,6 +183,18 @@ digraph "smart_base" {
     "grid_pkg_smart_base_smart_base_platform_top" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
     "grid_pkg_smart_base_smart_base_platform_bottom" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
   }
+  subgraph "cluster_pkg_smart_base_smart_base_typologies" {
+    label=<<b>smart-base/smart-base-typologies</b><br/><i>«typologies»</i>>; style="rounded"; color="#1b2432"; class="fa_uml_subgraph";
+    "smart_base_smart_base_typologies_folio_graph_typology_v1_folio_graph_typology_v1" [fillcolor="#f4f4f1", class="fa_uml_kind_typologies", label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="2"><tr><td border="1" sides="b"><b>folio-graph-typology/v1</b></td></tr><tr><td><i>«json: GraphTypologyNodeSchema»</i></td></tr><tr><td align="left">$schema [1] : &quot;folio-graph-typology/v1&quot;</td></tr><tr><td align="left">kind [1] : string</td></tr><tr><td align="left">title [0..1] : string</td></tr><tr><td align="left">layer [0..1] : &quot;core&quot;</td></tr><tr><td align="left">perInstance [0..1] : true</td></tr><tr><td align="left">newInstanceSource [0..1] : object</td></tr><tr><td align="left">renderable [1] : boolean</td></tr><tr><td align="left">recordsWork [0..1] : boolean</td></tr><tr><td align="left">holds [1] : content | context | state | derived</td></tr><tr><td align="left">summary [1] : string</td></tr><tr><td align="left">schema [0..1] : string</td></tr><tr><td align="left">validator [0..1] : string</td></tr><tr><td align="left">validatorNotApplicable [0..1] : string</td></tr><tr><td align="left">nodeSchemas [0..1] : map&lt;object&gt;</td></tr><tr><td align="left">declarationFile [0..1] : string</td></tr><tr><td align="left">concernGroups [0..1] : true</td></tr><tr><td align="left">within [0..1] : string</td></tr><tr><td align="left">avatar [0..1] : object</td></tr><tr><td align="left">tileIcon [0..1] : string</td></tr><tr><td align="left">published [0..1] : false</td></tr><tr><td align="left">skillBearing [0..1] : true</td></tr><tr><td align="left">kgContent [0..1] : true</td></tr><tr><td align="left">description [0..1] : string</td></tr><tr><td align="left">renderableNote [0..1] : string</td></tr><tr><td align="left">anyLayer [0..1] : true</td></tr><tr><td align="left">rationale [0..1] : string</td></tr></table>>];
+    "grid_pkg_smart_base_smart_base_typologies_top" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
+    "grid_pkg_smart_base_smart_base_typologies_bottom" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
+  }
+  subgraph "cluster_pkg_smart_base_smart_base_validators" {
+    label=<<b>smart-base/smart-base-validators</b><br/><i>«validators»</i>>; style="rounded"; color="#1b2432"; class="fa_uml_subgraph";
+    "smart_base_smart_base_validators_folio_validator_v1_folio_validator_v1" [fillcolor="#f4f4f1", class="fa_uml_kind_validators", label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="2"><tr><td border="1" sides="b"><b>folio-validator/v1</b></td></tr><tr><td><i>«json: ValidatorNodeSchema»</i></td></tr><tr><td align="left">$schema [1] : &quot;folio-validator/v1&quot;</td></tr><tr><td align="left">id [1] : string</td></tr><tr><td align="left">validates [1] : object</td></tr><tr><td align="left">schema [1] : string</td></tr><tr><td align="left">pages [0..1] : string</td></tr><tr><td align="left">rationale [0..1] : string</td></tr></table>>];
+    "grid_pkg_smart_base_smart_base_validators_top" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
+    "grid_pkg_smart_base_smart_base_validators_bottom" [shape=point, style=invis, width=0, height=0, label="", class="kg-graph-anchor"];
+  }
   subgraph "cluster_pkg_smart_base_smart_base_schemas" {
     label=<<b>smart-base/smart-base-schemas</b><br/><i>«code»</i>>; style="rounded"; color="#1b2432"; class="fa_uml_subgraph";
     "n_smart_base_smart_base_schemas_code" [style="rounded,filled,dashed", fillcolor="#f4f4f1", class="fa_uml_kind_code fa_uml_undetermined", label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="2"><tr><td><b>code: no node schema</b></td></tr><tr><td align="left"><i>could not determine: no validator registered</i></td></tr></table>>];
@@ -402,6 +414,10 @@ digraph "smart_base" {
   "smart_base_smart_base_external_schemas_folio_pinned_terminology_v1_folio_pinned_terminology_v1" -> "grid_pkg_smart_base_smart_base_external_schemas_bottom" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_smart_base_smart_base_platform_top" -> "n_smart_base_smart_base_platform_code" [style=invis, class="kg-graph-anchor"];
   "n_smart_base_smart_base_platform_code" -> "grid_pkg_smart_base_smart_base_platform_bottom" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_smart_base_smart_base_typologies_top" -> "smart_base_smart_base_typologies_folio_graph_typology_v1_folio_graph_typology_v1" [style=invis, class="kg-graph-anchor"];
+  "smart_base_smart_base_typologies_folio_graph_typology_v1_folio_graph_typology_v1" -> "grid_pkg_smart_base_smart_base_typologies_bottom" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_smart_base_smart_base_validators_top" -> "smart_base_smart_base_validators_folio_validator_v1_folio_validator_v1" [style=invis, class="kg-graph-anchor"];
+  "smart_base_smart_base_validators_folio_validator_v1_folio_validator_v1" -> "grid_pkg_smart_base_smart_base_validators_bottom" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_smart_base_smart_base_schemas_top" -> "n_smart_base_smart_base_schemas_code" [style=invis, class="kg-graph-anchor"];
   "n_smart_base_smart_base_schemas_code" -> "grid_pkg_smart_base_smart_base_schemas_bottom" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_smart_base_smart_base_content_top" -> "n_smart_base_smart_base_content_code" [style=invis, class="kg-graph-anchor"];
@@ -452,10 +468,12 @@ digraph "smart_base" {
   "grid_pkg_smart_base_qa_bottom" -> "grid_pkg_smart_base_smart_base_findings_top" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_smart_base_smart_base_themes_bottom" -> "grid_pkg_smart_base_smart_base_external_schemas_top" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_smart_base_smart_base_docs_bottom" -> "grid_pkg_smart_base_smart_base_platform_top" [style=invis, class="kg-graph-anchor"];
-  "grid_pkg_smart_base_smart_base_document_kinds_bottom" -> "grid_pkg_smart_base_smart_base_schemas_top" [style=invis, class="kg-graph-anchor"];
-  "grid_pkg_smart_base_smart_base_findings_bottom" -> "grid_pkg_smart_base_smart_base_content_top" [style=invis, class="kg-graph-anchor"];
-  "grid_pkg_smart_base_smart_base_external_schemas_bottom" -> "grid_pkg_smart_base_smart_base_scripts_top" [style=invis, class="kg-graph-anchor"];
-  "grid_pkg_smart_base_smart_base_platform_bottom" -> "grid_pkg_smart_base_smart_base_skills_top" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_smart_base_smart_base_document_kinds_bottom" -> "grid_pkg_smart_base_smart_base_typologies_top" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_smart_base_smart_base_findings_bottom" -> "grid_pkg_smart_base_smart_base_validators_top" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_smart_base_smart_base_external_schemas_bottom" -> "grid_pkg_smart_base_smart_base_schemas_top" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_smart_base_smart_base_platform_bottom" -> "grid_pkg_smart_base_smart_base_content_top" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_smart_base_smart_base_typologies_bottom" -> "grid_pkg_smart_base_smart_base_scripts_top" [style=invis, class="kg-graph-anchor"];
+  "grid_pkg_smart_base_smart_base_validators_bottom" -> "grid_pkg_smart_base_smart_base_skills_top" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_smart_base_smart_base_schemas_bottom" -> "grid_pkg_smart_base_smart_base_scenarios_top" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_smart_base_smart_base_content_bottom" -> "grid_pkg_smart_base_smart_base_code_lists_top" [style=invis, class="kg-graph-anchor"];
   "grid_pkg_smart_base_smart_base_scripts_bottom" -> "grid_pkg_smart_base_voices_top" [style=invis, class="kg-graph-anchor"];

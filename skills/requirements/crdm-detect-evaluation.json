@@ -7,8 +7,8 @@
     "req:agent-workflow"
   ],
   "actors": [
-    "tester",
-    "certifier",
+    "ci-pipeline",
+    "programme-manager",
     "untainted-checker"
   ],
   "statements": [
