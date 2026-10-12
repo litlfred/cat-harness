@@ -5,7 +5,7 @@ status: in-progress
 type: task
 priority: normal
 created_at: 2026-10-02T06:16:07Z
-updated_at: 2026-10-12T17:10:00Z
+updated_at: 2026-10-12T18:35:00Z
 parent: folio-assistant-qvxh
 ---
 
@@ -33,3 +33,8 @@ Owner 2026-10-02: 'keep going' after the storage question went unanswered, so th
 - `smart-base/scripts/l1-recommendation-candidates.ts` (Tool `l1-recommendation-candidates`) is the unlabelled-source path the 2026-10-07 finding asked for. It finds candidates by l1-coverage markers, takes an agent's curation, and writes L1 **3.0** (not 1.0), validated with `kg/src/validate.ts`.
 - **Output location:** beside the entry, under `<entry>/l1-extraction/`, by this bean's stated default.
 - **Item 1** (the owner's location decision) and **item 3** (T3 fidelity) are still open. The output records every node as `inferred` and coverage below 100 % until a person signs exclusions, but it still carries no T3 field.
+
+## 2026-10-12: owner ruling 1b (smart-base#50, merged 7e2c526)
+- **Ruling 1b:** a publication whose `publicationType` is `implementation-guidance` or `methodology` makes no recommendations of its own (handbook §1.9). What it prints is modelled as a separate node class, `implementation-practice`, not as `recommendation` nodes of a new kind. The class is declared in `kg/src/l1-library.ts` (the extension), so `generated/l1/l1.json` stays equal to WHO's. The extractor emits it when the curation gives `publication.publicationType`. `validate.ts` refuses a recommendation defined in such a publication.
+- The demo (9789240116191-eng) is now 22 implementation practices, 0 remarks and 30 proposed exclusions, all unsigned.
+- **Item 1 (output location) is still awaiting the owner.** The location was explained (beside the entry, `<entry>/l1-extraction/`, by this bean's stated default), but it has not been ruled on.

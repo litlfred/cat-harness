@@ -5,7 +5,7 @@ status: in-progress
 type: feature
 priority: normal
 created_at: 2026-10-07T22:13:50Z
-updated_at: 2026-10-07T22:17:25Z
+updated_at: 2026-10-12T18:35:00Z
 parent: folio-assistant-zzmr
 ---
 
@@ -19,3 +19,6 @@ Session: https://claude.ai/code/session_01FWGdsHong3XHiU7CMRWmfo
 
 
 - [x] design doc drafted: cat-harness/docs/proposals/tool-releases-2026-10-07.md (decisions T1–T4 for the owner)
+
+## 2026-10-12: owner ruling "1c"
+- The OCR `--dpi` setting is to be recorded on the **per-run record that cites the run context**: the tool-releases proposal's step 7, once that record is built. **Not now**: nothing records `--dpi` until step 7 exists.

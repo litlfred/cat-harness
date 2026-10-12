@@ -5,7 +5,7 @@ status: todo
 type: feature
 priority: high
 created_at: 2026-10-10T14:07:07Z
-updated_at: 2026-10-10T14:07:07Z
+updated_at: 2026-10-12T18:35:00Z
 ---
 
 Owner, 2026-10-10: *"(add bean: need to provide ontologist/termonologist skills+methdologies+tools+processes when trying to review content and classify/code it)"*.
@@ -28,3 +28,9 @@ Owner, 2026-10-10: *"(add bean: need to provide ontologist/termonologist skills+
 - [ ] the recommendation-scenario extraction (see its bean) cites this methodology for persona, process and domain coding
 
 Related: 5yhm, 2i5f (terminology), 8pzh (L1 extraction).
+
+## 2026-10-12: owner ruling 3b (smart-base#50, merged 7e2c526)
+- **Ruling 3b:** L1 extraction exclusions are signed by a **named reviewer role**, and they stay unsigned until that role exists and a person acting in it signs.
+- The role is declared as `l1-extraction-reviewer` ("L1 extraction reviewer") in `smart-base/scenarios/roles.json` (`roles`, owned by the instance). It is for a person only, inherits the harness's `reviewer`, and has the skill `recommendation-extraction`. It resolves through `overlayRoleGraphs`.
+- Each record in `exclusions.proposed.json` names it as `signerRole: {role: "l1-extraction-reviewer"}` (a role-graph `RoleRef`). All 30 demo records are unsigned.
+- **This bean still owns** the skills, methodologies, tools and processes that equip the role: how a reviewer reads a proposed exclusion against the page, and the BPMN lane in which it signs. No lane is declared yet.

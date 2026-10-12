@@ -5,7 +5,7 @@ status: in-progress
 type: feature
 priority: high
 created_at: 2026-10-10T14:07:07Z
-updated_at: 2026-10-12T17:10:00Z
+updated_at: 2026-10-12T18:35:00Z
 ---
 
 Owner, 2026-10-10: *"also add to the skills, as part of extracting a recommnedation the scenario (user story,role) get described. i am not sure what the 'process' is, but we need one for a role ... skill is to reuse existing vocabulary if possible ... For the measeles example, the process should be chosen from existint smart-immz processes if possivle. warn if not."*
@@ -52,3 +52,11 @@ Sibling beans: 4nfs (ontologist/terminologist), 398x (guideline domain), 2ipj (p
   - 48 candidates → 22 recommendations, 1 remark, 29 proposed exclusions (unsigned; coverage 19/48);
   - 22 scenario candidates, all `could-not-determine` process, 3 glossary-candidate personas; 25 + 30 warnings.
 - **Still open:** box 3 (measles in smart-immunizations' library) stays with the sibling session.
+
+## 2026-10-12: new L1 class `implementation-practice` (ruling 1b, smart-base#50, merged 7e2c526)
+- `implementation-practice` ("Implementation practice", Concept, `http://smart.who.int/kg/implementation-practice`) is declared in `kg/src/l1-library.ts`. It is what an implementation-guidance or methodology publication prints instead of a recommendation (handbook §1.9).
+- Properties: `identifier`, `statement` (verbatim) and `contentHash`. There is no grading.
+- Edges: `definedIn`, `presentedIn` x2 and `partOf`.
+- **`remark` cannot attach to it.** L1 3.0 mints a remark's IRI under a recommendation, so allowing this needs a change to L1 upstream.
+- `l1-recommendation-scenarios.ts` accepts it as input. It warns `practice-implementedBy-unlicensed`, because smart-kg L2 licenses `implementedBy` only from a recommendation.
+- The DTH NPC demo now has 22 practices and 26 scenario warnings.
