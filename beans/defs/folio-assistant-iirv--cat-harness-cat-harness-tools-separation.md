@@ -4,7 +4,7 @@ title: cat-harness / cat-harness-tools separation
 status: in-progress
 type: epic
 created_at: 2026-10-01T06:58:00Z
-updated_at: 2026-10-01T06:58:00Z
+updated_at: 2026-10-12T18:30:00Z
 parent: folio-assistant-vuip
 ---
 
@@ -47,3 +47,13 @@ PR0 (`ejye`) + PR1 (`ybwt`) → stage 0 → stage 1a → PR2 … PR8 (PR7/PR8 re
 - [ ] every child is completed or scrapped with reasons
 - [ ] `cat-harness/` and `cat-harness-tools/` are submodules pinned to seeded SHAs, and `bun run cat gates --all` matches the pre-cutover run gate for gate
 - [ ] a link/import audit over `cat-harness/` alone finds 0 upward references and 0 code files
+
+## 2026-10-12 — cutover is now measured, not assumed (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG, owner tasks 6 and 7)
+- **`separation:cutover:check`** (Tool `separation-cutover-check`): the gate after stage 13 in `processes/kg/kg-separation.bpmn` (`GW_CutoverComplete`). It checks six conditions: mounts, declarations, monorepo-paths, import-direction, reference-direction, and site. It answers for one separated repository; findings in mounted layers are listed but not counted.
+- **`check:declaration-resolution`**: every path a declaration names resolves, covering directories, assets, visualisers and needs.
+- **Registry defect fixed:** kinds are now read from the checkout under inspection (lesson 6/19).
+- PRs: definitions in cat-harness#182 (merged); implementations in cat-harness-tools#170.
+- **cat-harness-tools as a lone checkout is NOT cut over by this measure:**
+  - its `needs` (cat-harness, bootstrap-tools) do not resolve without the index;
+  - 90 wiring references remain into `folio-assistant/`.
+  - Both bear on done-when box 2.
