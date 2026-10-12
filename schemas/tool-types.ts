@@ -316,6 +316,22 @@ export const DocIdSchema = z
   .regex(/^[A-Za-z0-9][A-Za-z0-9._-]*$/, "a document id is letters, digits, dot, underscore and hyphen, starting with a letter or digit")
   .describe("A library document id, e.g. WPR-RDO-2020-003-eng");
 
+/**
+ * One `mount:remote --seed`: `<name>=<owner/repo>@<40-hex sha>`, the instance to
+ * create or re-pin in `index.config.json`. Constrained to that exact shape, so
+ * no shell metacharacter can parse.
+ */
+export const MountSeedSchema = z
+  .string()
+  .regex(/^[a-z0-9][a-z0-9-]*=[A-Za-z0-9][A-Za-z0-9-]*\/[A-Za-z0-9._-]+@[0-9a-f]{40}$/, "a mount seed is <name>=<owner/repo>@<40-hex sha>")
+  .describe("A remote instance to seed, e.g. smart-base=litlfred/smart-base@<40-hex sha>");
+
+/** A GitHub account name, as `consent.by` records who consented. */
+export const LoginSchema = z
+  .string()
+  .regex(/^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})$/, "a login is letters, digits and hyphens, starting with a letter or digit")
+  .describe("A GitHub account name, e.g. litlfred");
+
 /** A folio's short name — the directory stem and the URL segment. */
 export const SlugSchema = z
   .string()
@@ -601,6 +617,8 @@ export const TOOL_TYPES = {
   FilesystemPath: FilesystemPathSchema,
   Slug: SlugSchema,
   DocId: DocIdSchema,
+  MountSeed: MountSeedSchema,
+  Login: LoginSchema,
   ContentType: ContentTypeSchema,
   LinkMode: LinkModeSchema,
   LakeCacheAction: LakeCacheActionSchema,
@@ -703,6 +721,8 @@ export const INJECTION_SAFE: ReadonlySet<ToolTypeName> = new Set<ToolTypeName>([
   "ChangeProposalNumber",
   "Slug",
   "DocId",
+  "MountSeed",
+  "Login",
   // Every enum below is injection-safe by construction: a value outside the
   // member list does not parse, and no member contains a shell metacharacter.
   // This is the cheapest form of the whole argument — the payload is not
