@@ -168,3 +168,39 @@ export function mountTrust(
   }
   return { ok: false, state: "refused", detail: `\`${mount.harness}\` at ${mount.ref.slice(0, 10)} is unsigned and unconsented, so it is not mounted (H8)` };
 }
+
+/**
+ * What a person said when they consented, before it is bound to a pin: who,
+ * where it can be read, and optionally when (default: today, UTC).
+ */
+export interface ConsentGrant {
+  by: string;
+  evidence: string;
+  on?: string;
+}
+
+/**
+ * SEEDING writes consent; it is not left for hand editing (task #10, gap c).
+ * Whatever creates or re-pins a remote instance in `index.config.json` passes
+ * the person's grant here, and the mount comes back carrying
+ * `trust.consent {by, on, ref, evidence}` with `ref` taken from the mount
+ * itself — so the consent is for exactly the pin being written, and
+ * {@link mountTrust} accepts it.
+ *
+ * A consent ALREADY recorded for this same pin is kept as it is: it is that
+ * person's record, and a second grant does not rewrite who said yes first.
+ * A consent for a DIFFERENT pin is replaced — a moved pin asks again, and the
+ * grant passed here is the asking. A signature, if any, is kept beside it.
+ * The grant is validated with {@link MountConsentSchema}, so an empty `by` or
+ * `evidence` throws rather than writing consent nobody can read.
+ */
+export function withConsent<T extends { ref: string; trust?: MountTrust }>(mount: T, grant: ConsentGrant): T {
+  if (mount.trust?.consent?.ref === mount.ref) return mount;
+  const consent = MountConsentSchema.parse({
+    by: grant.by,
+    on: grant.on ?? new Date().toISOString().slice(0, 10),
+    ref: mount.ref,
+    evidence: grant.evidence,
+  });
+  return { ...mount, trust: { ...mount.trust, consent } };
+}
