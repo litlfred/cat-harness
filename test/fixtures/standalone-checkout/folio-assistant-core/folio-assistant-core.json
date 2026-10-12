@@ -25,6 +25,13 @@
       "graphTypologies": [
         "typologies"
       ]
+    },
+    {
+      "id": "folio-assistant-core-content-adapters",
+      "path": "content-adapters/",
+      "graphTypologies": [
+        "content-adapters"
+      ]
     }
   ]
 }
