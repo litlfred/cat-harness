@@ -117,6 +117,17 @@ cannot be read stays unknown and maps to nobody; it is never guessed. An actor
 you name is reported as **claimed**, because GitHub vouched for the login, not
 for the BPMN actor.
 
+**One resolver for preferences and permissions, two thresholds.** The same
+identities feed both, through `resolveIdentities`
+(`cat-harness-tools/src/core/identity.ts`, bean `f1e1`): GitHub's answer is
+the one `auth_whoami` gives, and the other providers — GitLab CI, the agent
+host's account, the user-level store, the git author — are listed beside it,
+each marked vouched or self-asserted. A preference may follow a self-asserted
+identity
+([`interaction-modality`](interaction-modality.md)
+§3.1). **A permission never does**: only an identity GitHub vouched for maps
+to an actor, and a self-asserted one maps to nobody.
+
 **There is no login-to-actor table, and there will not be one.** Owner,
 2026-09-24: *"just use github accounts and standard personal account
 permission levels"*. This repository is owned by a personal account, and
