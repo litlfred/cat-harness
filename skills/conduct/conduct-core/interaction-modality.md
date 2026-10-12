@@ -99,6 +99,41 @@ behaviour`, or `set in the site settings`. An inferred profile is honoured and
 is **labelled as inferred**, so it can be corrected without an argument about
 who decided it.
 
+### 3.1 Who is typing, outside GitHub too
+
+An entry is keyed by a handle, and the session has to work out whose handle
+it is before the entry can apply. Owner, 2026-10-10 (bean `f1e1`): *identity
+is (provider, handle), GitHub first*. One resolver answers for every host:
+`bun run cat auth:login --all` (`cat-harness-tools/src/core/identity.ts`).
+It prints every identity the session can see, each bare and as
+`provider:handle`:
+
+| provider | read from | vouched for by |
+|---|---|---|
+| `github` | the auth Tool's own resolver: a token, or `GITHUB_ACTOR` in Actions | GitHub |
+| `gitlab` | `GITLAB_USER_LOGIN`, only inside GitLab CI | GitLab |
+| `claude` | the agent host's signed-in account | the agent host |
+| any | the user-level store's `identities` | nobody: the person says so |
+| `git` | `git config user.email`, then `user.name` | nobody: self-asserted |
+
+So an entry may list `gitlab:<handle>` or `claude:<email>` among its
+`aliases`, and a person with no GitHub token is still recognised.
+
+**A self-asserted identity is enough to choose how to TALK to someone, never
+enough to AUTHORIZE them.** Permissions take only what GitHub vouched for
+([`task-authorization`](../../process/process-core/task-authorization.md)
+§"Asking who you are").
+
+**When nothing matches, that is a third state.** It is neither "no preference"
+nor a guess. The session-start sweep says it could not determine who is
+typing, and applies the strictest profile on record until told otherwise, so
+an account switch never drops an accommodation.
+
+**A preference that must not be committed** lives in the user-level store,
+`~/.config/cat-harness/identity.json` (or `$XDG_CONFIG_HOME/…`, or the path
+in `CAT_HARNESS_USER_CONFIG`), under `interaction`. It is per machine and
+never in the repository. The sweep prints it, marked as not committed.
+
 ## 4. Asking a question well
 
 Two halves, and the first is the one that gets skipped. §4.1 is what the
