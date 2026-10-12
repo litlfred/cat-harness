@@ -5,7 +5,7 @@ status: in-progress
 type: feature
 priority: normal
 created_at: 2026-10-09T15:29:13Z
-updated_at: 2026-10-10T12:00:00Z
+updated_at: 2026-10-12T16:45:00Z
 parent: folio-assistant-f6gq
 ---
 
@@ -22,3 +22,11 @@ Top layer of f6gq; needs 7pvn. who-iris PR 18 (2026-10-09) re-pointed platform.t
 - **Box 2, "inside folio-assistant's aggregate checkout".** That checkout no longer exists after the separation, so this half cannot be measured as written.
 
 **Update (who-iris #28).** The repin landed, so the fresh-clone half of box 2 now holds at the lock: gates 0, 97/97 tests.
+
+## 2026-10-12 — re-measured; box 2's second half is measurable again (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
+- **Box 1, unchanged.** On who-iris main `5a19a21`, `platform.ts` lines 76–81 import `@litlfred/folio-assistant-core/...` and nothing through `./folio-assistant-core`. `package.json` `workspaces` names `folio-assistant-cor[e]`. CI's first step mounts the `index.lock.json` pins (`mount-from-lock.ts`). The owner still has to accept the reading "the mount pin IS the package pin". Until then the box stays unticked.
+- **Box 2, fresh-clone half: holds at the current lock.** who-iris CI "who-iris checks" is a fresh clone that mounts the lock. It went green on main `5a19a21` (run 38231520658, 2026-10-12, after the #45 repin) and on its PR head `d9e9c95` (run 38231324199). It ran `check:catalogue`, `iris:pages:check`, `iris:covers:check`, `dc:render:check` and `bun test ./scripts/tests/`. CI does not run `landing:sticky:check`. #45's body records it exiting 0 on a fresh mount.
+- **Box 2, aggregate half: the 2026-10-10 note is STALE. The checkout exists again.** litlfred/folio-assistant main `1ad865e` (2026-10-12) is an index checkout: its `index.lock.json` mounts 11 instances, who-iris among them, and its root `package.json` `workspaces` includes `who-iris` and `folio-assistant-core`. Its `code-quality-gates.yml` runs `iris:pages:check`, `dc:render:check`, `id-lookup:check` and the covers check over the mounted who-iris. **But it pins who-iris `317be4b` (2026-10-10), 47 commits behind main. That is BEFORE #25, the `workspaces` entry this bean added.** So a green aggregate run today does not test this bean's change.
+  - The half becomes measurable when folio-assistant repins who-iris to ≥ `5a19a21`, then its gates plus who-iris's `bun test ./scripts/tests/` are run there.
+  - Not done here, for two reasons. litlfred/folio-assistant is not enabled for this session (MCP and `gh` both refuse it). Mounting all 11 instances locally does not fit in the ~3.4 GB free.
+- Status stays **in-progress**: box 1 awaits the owner, and box 2's aggregate half awaits a folio-assistant repin.
