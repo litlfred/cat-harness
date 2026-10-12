@@ -257,7 +257,7 @@ const PageNumber = z.number().int().nullable();
 
 /**
  * Which ingest rung a library entry sits on. The one list: `IngestRung` in
- * `content/pipeline/gen-library-jsonld.ts` is derived from it, so a rung added
+ * `pipeline/gen-library-jsonld.ts` is derived from it, so a rung added
  * there is a rung this index accepts. It was two lists until the `referenced`
  * rung (bean `scfh`) met an index that knew only three.
  */

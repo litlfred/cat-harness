@@ -26,8 +26,8 @@
  * adapters/mcp-server/server.ts -> schemas/lean-packages.ts
  * adapters/document/resolver.ts -> schemas/lean-packages.ts
  * adapters/manifest-entries.ts  -> schemas/lean-packages.ts
- * content/pipeline/qa-utils.ts  -> schemas/lean-packages.ts
- * content/pipeline/qa-utils.ts  -> content/pipeline/lean-signature.ts
+ * pipeline/qa-utils.ts  -> schemas/lean-packages.ts
+ * pipeline/qa-utils.ts  -> pipeline/lean-signature.ts
  * ```
  *
  * This is the injection that removes them.
@@ -48,7 +48,7 @@
  *
  * ## Third instance of an established pattern, deliberately
  *
- * `content/pipeline/references-registry-di.ts` (the bibliography) and
+ * `pipeline/references-registry-di.ts` (the bibliography) and
  * `value-registry-di.ts` (the values registry) are the same shape, and this
  * module copies it down to the names: a `configure…`, a `…Configured()`
  * predicate, and a getter that returns `undefined` rather than throwing.
@@ -162,7 +162,7 @@ export interface FormalRefResolverAPI {
    * statement granularity simply omits it.
    *
    * Takes the FILE only, deliberately — that is the real arity of the
-   * implementation it wraps (`content/pipeline/lean-signature.ts`
+   * implementation it wraps (`pipeline/lean-signature.ts`
    * `leanStatementHash(path)`), which hashes the file's signature lines rather
    * than one declaration. An earlier draft of this interface declared
    * `(file, declName)` on the assumption that a statement hash must be
@@ -251,7 +251,7 @@ function warnUnconfiguredOnce(): void {
       "resolves to `undefined`. This is NOT the same as 'no references' — " +
       "downstream checks will degrade, some failing closed and some open. " +
       "Install one where the package list is configured (for the Lean layer: " +
-      "import `configureLeanPackages` from `content/pipeline/lean-formal-ref`, " +
+      "import `configureLeanPackages` from `pipeline/lean-formal-ref`, " +
       "which installs the resolver as it loads). Ask " +
       "`formalRefResolverConfigured()` if your code can legitimately proceed " +
       "without resolution.",

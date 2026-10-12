@@ -340,8 +340,8 @@ export interface TranslationNode {
    * node-level summary field with no producer is an invitation to fill it
    * with a plausible number again.
    *
-   * @see content/pipeline/translation-block-qa.ts
-   * @see content/pipeline/translation-roundtrip.ts
+   * @see pipeline/translation-block-qa.ts
+   * @see pipeline/translation-roundtrip.ts
    */
 
   /** Optional title for display in the viewer / docs. */

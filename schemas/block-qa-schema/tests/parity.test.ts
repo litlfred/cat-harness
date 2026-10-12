@@ -113,7 +113,7 @@ describe("the Zod half matches the Pydantic half", () => {
     const s = QaScriptSidecar.parse({
       $schema: "qa-script/v1",
       criterion_id: "proof-no-bare-sorries",
-      source_file: "content/pipeline/qa-checkers.ts",
+      source_file: "pipeline/qa-checkers.ts",
       script_hash: "9a8b7c6d5e4f",
       script_commit_sha: "610a6aa2bde5fabec35796ead6bbb0adb76f6533",
       extra_inputs: ["content/schema/references.ts"],

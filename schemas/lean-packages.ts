@@ -12,7 +12,7 @@
  * `schemas/constraints.ts` validates its `ref` against
  * {@link LEAN_REF_PATTERN}. The field is on shared block kinds by design —
  * `remark`, `example`, `algorithm` and `simulator` all declare it and the
- * document profile forbids its use (`content/pipeline/profile-check.ts`). So
+ * document profile forbids its use (`pipeline/profile-check.ts`). So
  * the **grammar belongs wherever the field does**, which is core; only the
  * package list is a property of a particular folio.
  *

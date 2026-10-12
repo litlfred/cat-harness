@@ -41,7 +41,7 @@
  *
  * | Resource | Resolved? | How |
  * |---|---|---|
- * | PO translations | ✅ | `translations/<locale>/`, fallback chain step 4 — the only path with a live consumer (`content/pipeline/po-resolve.ts`) |
+ * | PO translations | ✅ | `translations/<locale>/`, fallback chain step 4 — the only path with a live consumer (`pipeline/po-resolve.ts`) |
  * | Kind headings | ✅ | `kindHeading` in `schemas/translation.ts`: English on each block-kind node, other locales in its owner's `translations/<lang>/block-kinds.po` |
  * | Skills | ✅ | {@link resolveSkillDirs} reads each instance's DECLARATION, and `LOCAL_PACKAGES` in `src/tools/skill-fetch.ts` is built from it, so a dependency's packages are served. Two nearby call sites stay root-only on purpose — see its docs |
  * | Declared directories | ✅ | {@link declarationChain} + `resolveDirectories`, materialised by {@link materialiseDeclaredDirectories} |
@@ -543,7 +543,7 @@ export function instanceConfigFor(dir: string): { root: string; name: string } |
  * Find the harness config in `dir`.
  *
  * **Every reader goes through this.** The path was previously built
- * independently at eleven sites — `src/index.ts`, four `content/pipeline`
+ * independently at eleven sites — `src/index.ts`, four `pipeline`
  * modules, three scripts, the document adapter, `folio_init` and `qa-sweep`.
  * Eleven hardcoded literals is eleven places to miss when the name changes,
  * and the one that is missed is the one where a folio silently stops being
@@ -1580,7 +1580,7 @@ const implementersCache = new Map<string, Array<{ name: string; root: string }>>
  * Owner rulings T1 and T7 (2026-10-01, bean `70lx`). A harness DEFINITION names
  * its implementation by an instance-relative path — a Tool's
  * `invoke.inProcess.module` (`src/tools/x.ts`), a criterion's `source_file`
- * (`content/pipeline/x.ts`). The code those paths name is moving to the layer
+ * (`pipeline/x.ts`). The code those paths name is moving to the layer
  * above, and writing that layer's name into the harness
  * would be a lower layer naming a higher one, which `check:reference-direction`
  * grades. So the path stays as written, and is resolved against the instance
@@ -2058,7 +2058,7 @@ export async function loadContributions<C extends { name: string }, S extends Co
  * ## Why a second loader exists
  *
  * The generic pipeline reaches the science layer's code through slots that a
- * dependency fills (`content/pipeline/pipeline-plugins.ts`, bean `squu`), and
+ * dependency fills (`pipeline/pipeline-plugins.ts`, bean `squu`), and
  * the callers of those slots are synchronous: a QA checker inside the sweep's
  * hot loop, a module-load side effect, a build step. Threading an awaited
  * registry through every one of them would change the checker signatures the

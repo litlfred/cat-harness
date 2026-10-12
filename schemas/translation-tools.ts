@@ -11,9 +11,9 @@
  *
  * ```
  * adapters/<type>/tools/translation.ts  — adapter-specific extract/inject
- * content/pipeline/pot-extract.ts       — generic Markdown extraction
- * content/pipeline/po-inject.ts         — generic Markdown injection
- * content/pipeline/po-resolve.ts        — PO source resolution (4-step)
+ * pipeline/pot-extract.ts       — generic Markdown extraction
+ * pipeline/po-inject.ts         — generic Markdown injection
+ * pipeline/po-resolve.ts        — PO source resolution (4-step)
  * scripts/translation/*.py             — smart-base Python originals
  * ```
  *

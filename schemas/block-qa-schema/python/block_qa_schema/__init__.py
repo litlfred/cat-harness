@@ -6,7 +6,7 @@ The canonical schemas are ``schemas/block-qa-schema/schema/block-qa.schema.json`
 ``<criterion-id>.script.json`` checker-staleness sidecar). This module ships
 Pydantic v2 models that validate against the same shapes. Used by any Python
 consumer that reads the QA sidecars emitted by the folio qa-sweep pipeline
-(``content/pipeline/qa-sweep.ts``; producing types in
+(``pipeline/qa-sweep.ts``; producing types in
 ``schemas/block-qa.ts``).
 
 Example::

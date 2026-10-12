@@ -55,7 +55,7 @@
  * The owner chose, 2026-09-23, between that and full-IRI annotation terms: the
  * record is JSON, and the CSVW is DERIVED. Two reasons carried it. Nothing
  * reads these annotations as linked data — the graph projection
- * (`content/pipeline/tabular-nodes.ts`) reads `anchor.sheet` from the JSON —
+ * (`pipeline/tabular-nodes.ts`) reads `anchor.sheet` from the JSON —
  * and `directory-conventions` says to generate as many renderings as have a
  * consumer and no more. And JSON-LD DROPS `null`, while the three-state rule
  * below depends on a DETERMINED null: a CSV's sheet is `null` because a CSV

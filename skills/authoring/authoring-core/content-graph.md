@@ -33,11 +33,11 @@ order is a question about readers, so mixing formal edges in would make
 the answers wrong, not richer.
 
 Impact questions ("what breaks if this changes?") want the **union** of
-both. Build it with `content/pipeline/content-graph.ts`, whose accessors
+both. Build it with `pipeline/content-graph.ts`, whose accessors
 default to the union and take an optional `EdgeKind` filter:
 
 ```sh
-bun run content/pipeline/content-graph.ts content/<paper>
+bun run pipeline/content-graph.ts content/<paper>
 ```
 
 Auditing whether `uses[]` is *well used* is a separate skill:
@@ -366,7 +366,7 @@ After:  energy=87,  backward_edges=4,  sparse_sections=1
 The core algorithm is a standalone Python script:
 
 ```
-content/pipeline/content-graph-analysis.py
+pipeline/content-graph-analysis.py
 ```
 
 **Usage:**

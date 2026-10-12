@@ -171,7 +171,7 @@ expanding to the `@base` address.
 |---|---|
 | the context, minting `@id`s, block kind → `@type` | `cat-harness/schemas/jsonld.ts` |
 | the generated context file | `cat-harness-tools/scripts/gen-jsonld-context.ts` → `cat-harness/ns/content/v1.jsonld` |
-| block / library / site siblings | `cat-harness-tools/content/pipeline/gen-block-jsonld.ts`, `gen-library-jsonld.ts`, `gen-site-jsonld.ts` (`gen:jsonld:check`) |
+| block / library / site siblings | `cat-harness-tools/pipeline/gen-block-jsonld.ts`, `gen-library-jsonld.ts`, `gen-site-jsonld.ts` (`gen:jsonld:check`) |
 | whole-graph export, aliasing, no `@vocab` | `cat-harness-tools/scripts/kg-export.ts` |
 | expansion under a real processor, offline loader | `cat-harness-tools/scripts/publish-verify.ts` (`jsonld-expand` verifier) |
 | prefixes bound vs emitted | `cat-harness-tools/scripts/check-context-emission.ts` |

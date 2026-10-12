@@ -16,7 +16,7 @@ Content `.md` files are rendered by two pipelines:
 
 1. **HTML viewer** (`ui/app.js` → `mdToHtml()`) — KaTeX for math,
    custom regex for markdown → HTML.
-2. **LaTeX pipeline** (`content/pipeline/render-latex.ts`) —
+2. **LaTeX pipeline** (`pipeline/render-latex.ts`) —
    remark parse → LaTeX AST.
 
 Both pipelines have limitations. These conventions ensure content

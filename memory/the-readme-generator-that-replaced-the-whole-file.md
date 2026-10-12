@@ -21,7 +21,7 @@ sections were derived from the tree at all; the rest was prose, and prose
 about a folio belongs to that folio. Deleted, with
 `scripts/readme-metadata.ts`, its only consumer.
 
-**The replacement inverts the ownership**: `content/pipeline/readme-sections.ts`
+**The replacement inverts the ownership**: `pipeline/readme-sections.ts`
 holds a registry (`folio:toc`, `folio:lean-coverage`, `folio:lean-modules`,
 `folio:simulators`, `folio:workflows`) and writes each section **only where
 the README already carries its `<!-- marker:begin -->` / `<!-- marker:end -->`

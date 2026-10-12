@@ -4,7 +4,7 @@
  *
  * ## The defect this replaces
  *
- * `content/pipeline/validate.ts` Phase 3 is "AST validation (render → parse)",
+ * `pipeline/validate.ts` Phase 3 is "AST validation (render → parse)",
  * and it read:
  *
  * ```ts
@@ -26,7 +26,7 @@
  *
  * ## Why a table and not an import
  *
- * The same reasoning as `content/pipeline/qa-checker-discovery.ts`: a module
+ * The same reasoning as `pipeline/qa-checker-discovery.ts`: a module
  * path held as DATA is resolved with a variable specifier, so this file
  * depends on neither renderer and `repo-partition` records no edge. The
  * platform's own targets are declared here for the same reason the platform's
@@ -94,14 +94,14 @@ export interface RenderTargetDeclaration {
 export const RENDER_TARGETS: Partial<Record<ContentProfile, RenderTargetDeclaration>> = {
   paper: {
     format: "latex",
-    module: "content/pipeline/render-latex.ts",
+    module: "pipeline/render-latex.ts",
     renderExport: "renderBlock",
     argStyle: "positional",
     validateExport: "validateLatexAst",
   },
   document: {
     format: "markdown",
-    module: "content/pipeline/render-markdown.ts",
+    module: "pipeline/render-markdown.ts",
     renderExport: "renderBlockMarkdown",
     argStyle: "entry",
   },

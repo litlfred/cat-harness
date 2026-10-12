@@ -40,7 +40,7 @@ the arbiter. If ambiguous, ask the BA.
 | Artefact | Primary reviewer | Secondary |
 |---|---|---|
 | Schema (`schemas/*.ts`) | Code review | BA (type ↔ requirement) |
-| Pipeline (`content/pipeline/*.ts`) | Code review + tests | BA (output correctness) |
+| Pipeline (`pipeline/*.ts`) | Code review + tests | BA (output correctness) |
 | Skills (`cat-harness/skills/**`) | BA (guidance sense) | Code review (cross-refs) |
 | BPMN (`cat-harness/processes/**/*.bpmn`) | BA (process ↔ reality) | Code review (compliance) |
 | Docs (`cat-harness/docs/**`) | BA (content accuracy) | Visual (staging preview) |

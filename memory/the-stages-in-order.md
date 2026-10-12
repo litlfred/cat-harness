@@ -18,7 +18,7 @@ archived: true
 .ts manifests + .md content
   → Zod schema validation (shape + types)          schemas/constraints.ts
   → constraint rules (file existence, cross-refs, lean requirements)
-  → profile check (kind-within-profile)            content/pipeline/profile-check.ts
+  → profile check (kind-within-profile)            pipeline/profile-check.ts
   → render (LaTeX or Markdown)                     render-latex.ts / render-markdown.ts
   → AST validation of the rendered output
   → chapters/*.tex  or  one assembled .md

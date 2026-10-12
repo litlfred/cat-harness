@@ -47,17 +47,17 @@ to prompt. Walk the priority order:
      the criterion's most recent entry. (Both stored hashes are
      12-character SHA-256 prefixes computed by the qa-sweep code;
      recompute with the same algorithm — see
-     `content/pipeline/qa-sweep.ts` for the canonical helper.)
+     `pipeline/qa-sweep.ts` for the canonical helper.)
      Refresh by deleting the stale `criteria.<crit>` entry from the
      `.qa.json` and running
-     `bun run content/pipeline/qa-sweep.ts <path> --only <crit>`
+     `bun run pipeline/qa-sweep.ts <path> --only <crit>`
      (or invoke `/integration-audit <axis>` for a whole axis at once).
    - **Section-title sidecar staleness** — the chapter-scoped
      `content/<paper>/section-title-audit.qa.json` sidecars are a
      *separate* kind (title/structure machine findings + agent
      title-coherence verdicts), refreshed by
      `qa-section-title-audit.ts`, **not** qa-sweep. Regenerate with
-     `bun run content/pipeline/qa-section-title-audit.ts --report-only
+     `bun run pipeline/qa-section-title-audit.ts --report-only
      --write-sidecar --thorough`. The `--thorough` flag folds every
      contained block's source content + descendant subsections into a
      per-section subtree hash, so a recorded title verdict re-opens

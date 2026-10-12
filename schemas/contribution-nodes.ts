@@ -55,7 +55,7 @@ export const PIPELINE_PLUGIN_NODE_SCHEMA = "folio-pipeline-plugin/v1" as const;
 export const PipelinePluginNodeSchema = z
   .object({
     $schema: z.literal(PIPELINE_PLUGIN_NODE_SCHEMA),
-    /** The generic pipeline slot this fills (`content/pipeline/pipeline-plugins.ts`); the key into the table. */
+    /** The generic pipeline slot this fills (`pipeline/pipeline-plugins.ts`); the key into the table. */
     slot: z.string().regex(/^[a-z][a-z0-9-]*$/),
     /** The table of slot implementations, typed against the slots' contract. */
     implementation: OwnCodeRefSchema,

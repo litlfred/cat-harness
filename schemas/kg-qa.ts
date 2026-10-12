@@ -131,7 +131,7 @@ export const KG_QA_RESULTS_DIR = join("test", "results", "kg-qa");
  * ## Why it is a function and not two path expressions
  *
  * It was two. `kg-audit.ts` composed the write path from the subject's own
- * directory and `content/pipeline/qa-witness.ts` composed the read path the
+ * directory and `pipeline/qa-witness.ts` composed the read path the
  * same way, independently — two spellings of one concept, which is the drift
  * this repository keeps paying for. They agreed only because neither had
  * changed. Moving the corpus is exactly the change that would have made them

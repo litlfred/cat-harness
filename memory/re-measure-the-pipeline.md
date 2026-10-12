@@ -16,10 +16,10 @@ archived: true
 
 | what | command |
 |---|---|
-| the pipeline's actual entrypoints | `ls content/pipeline/` |
+| the pipeline's actual entrypoints | `ls pipeline/` |
 | the scripts that exist on this side | `bun run` with no args, or read `package.json` |
 | block kinds and their classification | read `schemas/block-kinds.ts` |
-| sidecar staleness | `bun run content/pipeline/qa-staleness.ts <path>` |
+| sidecar staleness | `bun run pipeline/qa-staleness.ts <path>` |
 
 > Relabelled from BASELINE to STABLE, 2026-09-19. `AGENTS.md` defines a
 > BASELINE as *"a measured number, stored with the command that produced it

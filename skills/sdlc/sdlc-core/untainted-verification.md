@@ -170,7 +170,7 @@ fencing it and saying so is the honest move.
   the translation-specific drift definition that does *not* generalise.
 - `permissions.json` `qa-reporting` — who may emit a verdict at all. Bean
   `a58y` gives it its first consumer.
-- `content/pipeline/untainted-verification.ts` — the recorder. It deliberately
+- `pipeline/untainted-verification.ts` — the recorder. It deliberately
   does **not** call a model: the payload is written by whatever ran the
   parties, so recording works the same for two subagents, two API calls, or two
   people.

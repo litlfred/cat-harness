@@ -141,7 +141,7 @@ export interface ToolContribution {
 /**
  * A QA checker a dependency adds, keyed by the criterion it answers.
  *
- * The reason this exists: `content/pipeline/qa-sweep.ts` dispatched with
+ * The reason this exists: `pipeline/qa-sweep.ts` dispatched with
  *
  * ```ts
  * const checker = AUTOMATED_CHECKERS[id] ?? DAK_AUTOMATED_CHECKERS[id];
@@ -210,7 +210,7 @@ export interface QaCheckerContribution {
  *
  * — the GENERIC validator rendering every block to LaTeX. On a document folio
  * that is a category error twice over: the document render path goes through
- * pandoc and `content/pipeline/render-markdown.ts`, and deliberately never
+ * pandoc and `pipeline/render-markdown.ts`, and deliberately never
  * falls back to `latexmk`, so a "LaTeX AST" error there is raised against
  * output the folio will never produce. It is also a wrong-direction dependency
  * (core → sci), since the LaTeX renderer is the science layer's.
@@ -262,13 +262,13 @@ export interface RendererContribution {
  * The same reason {@link ToolContribution.register} takes `unknown`: what a
  * slot holds is a pipeline concern (a Lean lexer, a LaTeX preflight), and the
  * content model should not import the pipeline's shapes. The typed view is
- * `content/pipeline/pipeline-plugins.ts`, which owns the kind → interface map
+ * `pipeline/pipeline-plugins.ts`, which owns the kind → interface map
  * and is the only module that reads these.
  */
 export interface PipelinePluginContribution {
   /** The slot this fills, e.g. `"lean-lexer"`. One contributor per kind. */
   kind: string;
-  /** What fills it. Shape is fixed per kind by `content/pipeline/pipeline-plugins.ts`. */
+  /** What fills it. Shape is fixed per kind by `pipeline/pipeline-plugins.ts`. */
   implementation: unknown;
 }
 
@@ -615,7 +615,7 @@ export class ContributionRegistry {
    * What fills a pipeline slot, or `undefined` when no contributor did.
    *
    * Untyped on purpose — see {@link PipelinePluginContribution}. Read it
-   * through `content/pipeline/pipeline-plugins.ts`, which types the kind and
+   * through `pipeline/pipeline-plugins.ts`, which types the kind and
    * turns `undefined` into an error that names what is missing.
    */
   pipelinePlugin(kind: string): unknown {

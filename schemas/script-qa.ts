@@ -5,7 +5,7 @@
  * blocks** (`.ts` + `.md` + optional `.lean` triples under
  * `content/`), this schema audits **scripts** — Python files under
  * `folio-assistant/computations/`, TypeScript files under
- * `content/pipeline/`, and (later) Rust files under any compiled
+ * `pipeline/`, and (later) Rust files under any compiled
  * compute backend. Criteria like `does_not_default_to_float` and
  * `respects_archimedean_wall` apply to script source code; they
  * have no meaning for narrative `.md` content, so they live in
@@ -22,7 +22,7 @@
  * convention but keeps script-QA bookkeeping clearly separated from
  * `*.witness.json` (compute outputs) and `*.script.json` (per-
  * criterion checker version pins from
- * `content/pipeline/script-sidecars/`).
+ * `pipeline/script-sidecars/`).
  *
  * @module schemas/script-qa
  * @graphNode schema
@@ -40,7 +40,7 @@ import type {
  * checker.
  *
  * Currently only the `python` checker for `does_not_default_to_float`
- * is wired (see `SCRIPT_CHECKERS` in `content/pipeline/script-sweep.ts`).
+ * is wired (see `SCRIPT_CHECKERS` in `pipeline/script-sweep.ts`).
  * Future criteria (`respects_archimedean_wall`, `variables_typed`, …)
  * will extend coverage to TypeScript and Rust as separate follow-up
  * PRs land each checker.

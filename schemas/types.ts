@@ -477,7 +477,7 @@ export interface BlockBase {
    *
    * Consumers that want the whole picture (impact analysis, blast
    * radius, triage ordering) take the **union** of both edge sets via
-   * `content/pipeline/content-graph.ts` — see `ContentGraph`, where
+   * `pipeline/content-graph.ts` — see `ContentGraph`, where
    * every edge carries an `EdgeKind` provenance tag. Read that graph
    * rather than this field directly whenever the question is "what
    * breaks if this changes?" rather than "what must a reader read
@@ -890,7 +890,7 @@ export interface SimulatorRef {
  * the `.md` of any remark that references this simulator.
  *
  * Pipeline validates:
- *   - `html:` resolves to a file on disk — `content/pipeline/validate-simulator.ts`,
+ *   - `html:` resolves to a file on disk — `pipeline/validate-simulator.ts`,
  *     phase 6 of `validate.ts`. Three states: present, absent (a finding), and
  *     undetermined (a remote target, or a path escaping the repository), which
  *     is reported rather than passed.

@@ -64,7 +64,7 @@ export interface QaReviewer {
    *
    * **Measured 2026-09-21: 0 of 5,896 reviewer entries in this corpus resolve
    * to a declared actor.** Every `id` is a script path
-   * (`content/pipeline/qa-checkers-voice.ts`) or an ad-hoc agent name
+   * (`pipeline/qa-checkers-voice.ts`) or an ad-hoc agent name
    * (`roundtrip-adjudicator (subagent)`); every actor id is a persona
    * (`ci-pipeline`, `qc-reviewer`). So the permission that governs emitting a
    * QA report could not be evaluated for a single verdict — not because it was
@@ -193,7 +193,7 @@ export type CheckerPaths = Partial<Record<CompanionRole, string>>;
 /**
  * One place a checker found what it was looking for.
  *
- * Moved here from `content/pipeline/qa-checkers-extended.ts` on 2026-09-18, to
+ * Moved here from `pipeline/qa-checkers-extended.ts` on 2026-09-18, to
  * sit beside {@link CheckerPaths} — a checker's input and its output belong
  * together, and `CheckerPaths` was already here. The move is what lets
  * `schemas/contributions.ts` type a CONTRIBUTED checker: a dependency that
@@ -559,7 +559,7 @@ export interface QaFieldHash extends Partial<Record<CompanionRole, string>> {
    * Criteria opt in via `QaCriterionDefinition.lean_granularity`.
    * Absent, a criterion keeps using the whole-file `lean` hash.
    *
-   * Derived lexically (see `content/pipeline/lean-signature.ts`), so it
+   * Derived lexically (see `pipeline/lean-signature.ts`), so it
    * is approximate. It is computed to fail SAFE: if the file cannot be
    * lexed into declarations, this is left `undefined` and freshness
    * falls back to the whole-file hash — over-invalidating, never under.
@@ -655,7 +655,7 @@ export interface QaCriterionEntry {
  * Filename: `<block-root>.qa.json`, under `test/results/block-qa/` in a tree
  * that MIRRORS the block's own directory — never composed by hand. The one
  * answer is `blockQaPath` / `existingBlockQaPath` in
- * `content/pipeline/qa-paths.ts`.
+ * `pipeline/qa-paths.ts`.
  *
  * It WAS a sibling of `<block-root>.md`, one member of the block's companion
  * family alongside `.ts` and `.lean`, until bean `2634` moved it: placement
@@ -887,7 +887,7 @@ export interface QaCriterionDefinition {
    * is a bucket label rather than a contract: a second script axis under any
    * other name would have been handed to the block sweep, where its checker
    * would receive a `CheckerPaths` object as its `scriptPath` and read
-   * `[object Object]` off disk. `content/pipeline/qa-checker-discovery.ts`
+   * `[object Object]` off disk. `pipeline/qa-checker-discovery.ts`
    * partitions on this field, so the mismatch is impossible rather than
    * merely unlikely.
    *
@@ -974,7 +974,7 @@ export interface QaCriterionDefinition {
  * stale globally?".
  *
  * Filename: `<criterion-id>.script.json` under
- * `content/pipeline/script-sidecars/`.
+ * `pipeline/script-sidecars/`.
  */
 export interface QaScriptSidecar {
   /** Schema marker — value: `qa-script/v1`. */

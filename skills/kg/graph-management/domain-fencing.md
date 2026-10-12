@@ -17,7 +17,7 @@ anyone else, or worse, fires wrongly.
 
 ## The mechanism already exists and works
 
-`folioOptionalAxes()` in `content/pipeline/qa-criteria-registry.ts`. A folio
+`folioOptionalAxes()` in `pipeline/qa-criteria-registry.ts`. A folio
 opts in through `<name>.config.json`:
 
 ```json
@@ -41,7 +41,7 @@ It also states the rule that makes fencing necessary rather than merely tidy:
 
 ## The one that did not use it, and now does
 
-`detangler-archimedean-wall`, in `content/pipeline/qa-criteria-registry.ts`.
+`detangler-archimedean-wall`, in `pipeline/qa-criteria-registry.ts`.
 It carried **two** independent domain dependencies and its own comment admitted
 both:
 

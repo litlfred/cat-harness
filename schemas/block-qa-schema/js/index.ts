@@ -7,7 +7,7 @@
  * `<criterion-id>.script.json` checker-staleness sidecar). This file ships Zod
  * schemas that validate against the same shapes, so any TypeScript / JavaScript
  * consumer can parse + type-check the QA sidecars emitted by the folio
- * qa-sweep pipeline (`content/pipeline/qa-sweep.ts`; producing types in
+ * qa-sweep pipeline (`pipeline/qa-sweep.ts`; producing types in
  * `schemas/block-qa.ts`).
  *
  * @example
