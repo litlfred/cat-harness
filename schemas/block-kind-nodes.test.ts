@@ -11,9 +11,9 @@ import { join } from "node:path";
 
 import {
   ADAPTER_BLOCK_KINDS, BLOCK_KIND_NODES, BLOCK_KINDS, CONTENT_ADAPTERS, CONTENT_ADAPTER_NODES, DOCUMENT_BLOCK_KINDS, MATH_BLOCK_KINDS,
-  adapterForKind, discoverBlockKinds, discoverContentAdapters, expandAdapterAliases, kindForBuilder, type ContentAdapter,
+  adapterForKind, discoverBlockKinds, discoverContentAdapters, kindForBuilder, type ContentAdapter,
 } from "./block-kinds";
-import { ADAPTER_COMPANION_ROLES, criterionAdapters } from "./block-qa";
+import { ADAPTER_COMPANION_ROLES } from "./block-qa";
 import { KNOWN_LABEL_PREFIXES, LABEL_PREFIXES, typedBlockKinds } from "./constraints";
 import { BLOCK_KIND_TO_FOLIO_TYPE, KIND_PREFIXES, assertPrefixesInSync } from "./jsonld";
 import { kindHeading } from "./translation";
@@ -108,15 +108,6 @@ describe("content-adapter vocabularies are nodes (bean riit, step 5)", () => {
     expect([...CONTENT_ADAPTERS].sort() as string[]).toEqual(typedNodes);
     for (const a of CONTENT_ADAPTERS) expect(ADAPTER_BLOCK_KINDS[a]!.length).toBeGreaterThan(0);
     for (const k of BLOCK_KINDS) expect(CONTENT_ADAPTERS as readonly string[]).toContain(adapterForKind(k)!);
-  });
-
-  test("`paper` in a scope list means every typed vocabulary once it is no longer one (bean bzwk)", () => {
-    const declared = (CONTENT_ADAPTERS as readonly string[]).includes("paper");
-    const expanded = expandAdapterAliases(["paper", "dak"]);
-    if (declared) expect(expanded).toEqual(["paper", "dak"]);
-    else expect(expanded.sort()).toEqual([...CONTENT_ADAPTERS, "dak"].sort());
-    expect(criterionAdapters({}).slice().sort()).toEqual([...CONTENT_ADAPTERS].sort());
-    expect(criterionAdapters({ adapters: ["paper"] }).slice().sort()).toEqual(declared ? ["paper"] : [...CONTENT_ADAPTERS].sort());
   });
 
   test("each typed vocabulary's companion roles come from its node", () => {

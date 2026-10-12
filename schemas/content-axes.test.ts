@@ -38,19 +38,17 @@ describe("the four axes are four, and none is a synonym for another", () => {
      * skipped it would pass equally over a second overlap nobody intended,
      * which is the whole failure this test exists to catch. */
     //
-    // Bean `bzwk` (owner 2026-10-12) moves the one overlap: core's vocabulary
+    // Bean `bzwk` (owner 2026-10-12) moved the one overlap: core's vocabulary
     // is named `document`, the profile its kinds make up, and sci's is
-    // `mathpaper`, so `paper` leaves the adapter axis. Until both layers are
-    // re-pinned a checkout may hold either layout, so the overlap is the one
-    // name that is both a typed adapter and a profile — `paper` or `document`,
-    // never both and never anything else.
+    // `mathpaper`, so `paper` left the adapter axis and stays a profile (and
+    // the server adapter class's contentType, which is not on these axes).
     const counts = new Map<string, number>();
     for (const v of [...CONTENT_ADAPTERS, ...CONTENT_PROFILES, ...VISUALISER_KINDS, ...CONTENT_INTERACTIVITY]) {
       counts.set(v, (counts.get(v) ?? 0) + 1);
     }
     const overlaps = [...counts].filter(([, n]) => n > 1).map(([v]) => v);
     expect(overlaps).toHaveLength(1);
-    expect(["paper", "document"]).toContain(overlaps[0]);
+    expect(overlaps[0]).toBe("document");
   });
 
   test("the two NEW axes overlap nothing at all", () => {

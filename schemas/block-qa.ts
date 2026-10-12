@@ -20,7 +20,7 @@
  * @graphNode schema
  */
 
-import { CONTENT_ADAPTER_NODES, CONTENT_ADAPTERS, CONTENT_PROFILES, expandAdapterAliases } from "./block-kinds";
+import { CONTENT_ADAPTER_NODES, CONTENT_ADAPTERS, CONTENT_PROFILES } from "./block-kinds";
 
 import type { AttributionKind } from "./attribution";
 import type { ContentAdapter, ContentProfile } from "./block-kinds";
@@ -401,8 +401,9 @@ export function criterionAdapters(def: {
   adapters?: string[];
 }): readonly string[] {
   // Absent means every BUILT-IN vocabulary: what `["paper"]` meant while one
-  // adapter held every kind (bean `bzwk`). A retired name is expanded the same way.
-  return def.adapters === undefined ? [...CONTENT_ADAPTERS] : expandAdapterAliases(def.adapters);
+  // adapter held every kind (bean `bzwk`). `paper` is no longer an adapter
+  // name; a scope that still says it matches nothing, so write it out.
+  return def.adapters === undefined ? [...CONTENT_ADAPTERS] : [...def.adapters];
 }
 
 /**
