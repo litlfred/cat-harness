@@ -310,8 +310,35 @@ export type HarnessDirs = z.infer<typeof HarnessDirsSchema>;
  * landing flag there would follow it into checkouts where it is not the
  * landing. {@link resolveLandingInstance} is the only reader.
  */
+/** A package script name, never a command: the Tool contract admits no input that can carry a shell payload. */
+const PackageScriptName = z.string().regex(/^[A-Za-z0-9][A-Za-z0-9:._-]*$/, "a package script name, not a command");
+
+/**
+ * `site.build` — the steps that build this instance's site, as the
+ * instance's own package script names. Read by `build-instance-site.ts` when
+ * it is given no step flags, and by `stage-local.ts`, which hands a repository
+ * that declares it to `build-instance-site` (owner, 2026-10-10: "i want one
+ * consolidated worfklow"). Before this the recipe existed only as prose in a
+ * folio's AGENTS.md and in a Routine's prompt, so every runner re-typed it.
+ *
+ * - `pre`: the instance's own gates, run in the checkout before anything is built.
+ * - `sourceSteps`: run as `bun run <name> <site source>`, before Jekyll.
+ * - `siteSteps`: run as `bun run <name> <built site>`, after Jekyll: generators
+ *   that write finished pages, which Jekyll would otherwise drop.
+ * - `home`: the page that becomes the site's `index.md`.
+ */
+export const HarnessSiteBuildSchema = z.object({
+  home: z.string().optional(),
+  pre: z.array(PackageScriptName).default([]),
+  sourceSteps: z.array(PackageScriptName).default([]),
+  siteSteps: z.array(PackageScriptName).default([]),
+});
+
+export type HarnessSiteBuild = z.infer<typeof HarnessSiteBuildSchema>;
+
 export const HarnessSiteSchema = z.object({
   landing: z.boolean().optional(),
+  build: HarnessSiteBuildSchema.optional(),
 });
 
 export type HarnessSite = z.infer<typeof HarnessSiteSchema>;
