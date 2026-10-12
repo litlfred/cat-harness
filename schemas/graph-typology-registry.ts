@@ -1720,6 +1720,9 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       // and the first one made `check:kind-validators:require-all` red. The
       // SAME validator the child declares, so the two cannot disagree.
       "folio-merge-queue-entry/v1": {},
+      // `sweep-marks`' family, added with the kind (bean `rq8s`) so the first
+      // mark routes rather than reddening `require-all` as the queue's did.
+      "folio-sweep-mark/v1": {},
     },
     recordsWork: true, // beans (agent), todos (person), workflow-state (a process mid-flight)
     summary:
@@ -1805,6 +1808,22 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "`\"$schema\": \"folio-session-survey/v1\"` and the window's two edge commits, " +
       "so a later session can compute what it is NOT covered for instead of re-deriving " +
       "the whole range (bean `6ptx`).",
+  },
+  "sweep-marks": {
+    description:
+      "when a session-start sweep step last ran — one JSON per check, `\"$schema\": \"folio-sweep-mark/v1\"`, replaced on each run that read its input. Bean `rq8s`: the sweep asks an agent to run `check:session-staleness` and cannot run it itself, so a skipped step left no trace; the owner ruled 2026-10-10 that the check writes a last-checked timestamp to the state branch. Only a DETERMINED run writes a mark, so \"could not determine\" never reads as \"checked\". `state` because a running session writes it; `recordsWork: false` because a mark is a reading, not work anybody is partway through.",
+    title: "Sweep marks",
+    renderable: false,
+    holds: "state",
+    // declared-path-literal: this table IS the declaration, as on `health`.
+    nodeSchemas: {
+      "folio-sweep-mark/v1": {},
+    },
+    schema: "schemas/sweep-mark.ts",
+    recordsWork: false,
+    summary:
+      "When a sweep step last ran — one JSON per check, carrying `\"$schema\": \"folio-sweep-mark/v1\"`, " +
+      "so a skipped `check:session-staleness` is visible after the terminal scrolls (bean `rq8s`).",
   },
   "workflow-state": {
     description:

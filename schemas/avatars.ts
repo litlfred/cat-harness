@@ -228,6 +228,12 @@ export const AVATARS: Readonly<Record<string, Avatar>> = {
     tone: 168,
     reads: "a span between two marked endpoints — the window a survey covers",
   },
+  "sweep-marks": {
+    // a clock face with a tick beside it — when a check was last run
+    glyph: "M12 4a8 8 0 1 0 0 16a8 8 0 1 0 0-16M12 8v4l3 2",
+    tone: 48,
+    reads: "a clock face — the time a sweep step was last run",
+  },
   // THE BOARD AND ITS LAYOUT. Two glyphs because they are two kinds, and the
   // pair says the split: a frame with cards ON it, and the same frame with the
   // cards' POSITIONS marked. A reader who sees them side by side should be
