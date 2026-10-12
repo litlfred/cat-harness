@@ -94,6 +94,16 @@ describe("pdf-structure/v1", () => {
     expect(PdfStructureSchema.safeParse({ ...d, text_source: "ocr" }).success).toBe(false);
   });
 
+  test("which software made the text is a run-context reference by sha256, nothing else", () => {
+    const d = minimal();
+    const src = (extra: object) => ({ ...d, source: { ...(d.source as object), text_source: "ocr", ...extra } });
+    expect(PdfStructureSchema.safeParse(src({ runContext: { sha256: "a".repeat(64) } })).success).toBe(true);
+    // Not a second spelling of the engine: the context holds that, once.
+    expect(PdfStructureSchema.safeParse(src({ runContext: { sha256: "a".repeat(64), engine: "tesseract" } })).success).toBe(false);
+    expect(PdfStructureSchema.safeParse(src({ runContext: { sha256: "not-a-digest" } })).success).toBe(false);
+    expect(PdfStructureSchema.safeParse(src({ ocr_engine: "tesseract 5.3.4" })).success).toBe(false);
+  });
+
   test("an unrecognised mimetype is null with its reason, never guessed", () => {
     const d = minimal();
     const src = { ...(d.source as object), mimetype_sniffed: null, mimetype_source: "unrecognised" };
