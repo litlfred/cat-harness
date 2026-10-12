@@ -76,6 +76,17 @@ package "cat-harness/docs" as pkg_cat_harness_docs <<docs>> {
     search [1] : SliceSearch
     source [1] : { graph: string; path: string }
   }
+  class "Slice" as cat_harness_docs_folio_slice_index_v1_Slice <<json: SliceIndexSchema>> #f4f4f1 {
+    slice [1] : string
+    manifest [1] : string
+    title [1] : string
+    bytes [1] : integer
+    rows [1] : map<integer>
+  }
+  class "folio-slice-index/v1" as cat_harness_docs_folio_slice_index_v1_folio_slice_index_v1 <<json: SliceIndexSchema>> #f4f4f1 {
+    $schema [1] : 'folio-slice-index/v1'
+    slices [0..*] : Slice[]
+  }
   class "Item" as cat_harness_docs_folio_bean_index_v1_Item <<json: BeanIndexSchema>> #f4f4f1 {
     id [1] : string
     title [1] : string
@@ -403,11 +414,11 @@ package "cat-harness/docs" as pkg_cat_harness_docs <<docs>> {
     bytes [1] : integer
     mediaType [1] : string
   }
-  note "docs folio-slice-index/v1: no node schema declared\n(scripts/gen-slice-sqlite.ts exports no SliceIndexSchema: could not determine)" as n_cat_harness_docs_docs_folio_slice_index_v1
 }
 
 cat_harness_docs_folio_todo_index_v1_Item *-- "0..*" cat_harness_docs_folio_todo_index_v1_Relation : relations
 cat_harness_docs_folio_todo_index_v1_folio_todo_index_v1 *-- "0..*" cat_harness_docs_folio_todo_index_v1_Item : items
+cat_harness_docs_folio_slice_index_v1_folio_slice_index_v1 *-- "0..*" cat_harness_docs_folio_slice_index_v1_Slice : slices
 cat_harness_docs_folio_bean_index_v1_folio_bean_index_v1 *-- "0..*" cat_harness_docs_folio_bean_index_v1_Item : items
 cat_harness_docs_folio_bean_index_v1_folio_bean_index_v1 *-- "0..*" cat_harness_docs_folio_bean_index_v1_Edge : edges
 cat_harness_docs_folio_bean_index_v1_folio_bean_index_v1 *-- "0..*" cat_harness_docs_folio_bean_index_v1_Finding : findings

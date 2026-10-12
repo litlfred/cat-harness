@@ -127,6 +127,16 @@
       "name": "smart-base-translations"
     },
     {
+      "@id": "http://smart.who.int/base/smart-base.jsonld#directory/smart-base-typologies",
+      "@type": "bootstrap:Subgraph",
+      "name": "smart-base-typologies"
+    },
+    {
+      "@id": "http://smart.who.int/base/smart-base.jsonld#directory/smart-base-validators",
+      "@type": "bootstrap:Subgraph",
+      "name": "smart-base-validators"
+    },
+    {
       "@id": "http://smart.who.int/base/smart-base.jsonld#directory/tools",
       "@type": "bootstrap:Subgraph",
       "name": "tools"

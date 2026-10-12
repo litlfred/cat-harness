@@ -738,6 +738,46 @@ package "smart-base/smart-base-external-schemas" as pkg_smart_base_smart_base_ex
 package "smart-base/smart-base-platform" as pkg_smart_base_smart_base_platform <<code>> {
   note "code: no node schema declared\n(no validator registered: could not determine)" as n_smart_base_smart_base_platform_code
 }
+package "smart-base/smart-base-typologies" as pkg_smart_base_smart_base_typologies <<typologies>> {
+  class "folio-graph-typology/v1" as smart_base_smart_base_typologies_folio_graph_typology_v1_folio_graph_typology_v1 <<json: GraphTypologyNodeSchema>> #f4f4f1 {
+    $schema [1] : 'folio-graph-typology/v1'
+    kind [1] : string
+    title [0..1] : string
+    layer [0..1] : 'core'
+    perInstance [0..1] : true
+    newInstanceSource [0..1] : object
+    renderable [1] : boolean
+    recordsWork [0..1] : boolean
+    holds [1] : content | context | state | derived
+    summary [1] : string
+    schema [0..1] : string
+    validator [0..1] : string
+    validatorNotApplicable [0..1] : string
+    nodeSchemas [0..1] : map<object>
+    declarationFile [0..1] : string
+    concernGroups [0..1] : true
+    within [0..1] : string
+    avatar [0..1] : object
+    tileIcon [0..1] : string
+    published [0..1] : false
+    skillBearing [0..1] : true
+    kgContent [0..1] : true
+    description [0..1] : string
+    renderableNote [0..1] : string
+    anyLayer [0..1] : true
+    rationale [0..1] : string
+  }
+}
+package "smart-base/smart-base-validators" as pkg_smart_base_smart_base_validators <<validators>> {
+  class "folio-validator/v1" as smart_base_smart_base_validators_folio_validator_v1_folio_validator_v1 <<json: ValidatorNodeSchema>> #f4f4f1 {
+    $schema [1] : 'folio-validator/v1'
+    id [1] : string
+    validates [1] : object
+    schema [1] : string
+    pages [0..1] : string
+    rationale [0..1] : string
+  }
+}
 package "smart-base/smart-base-schemas" as pkg_smart_base_smart_base_schemas <<code>> {
   note "code: no node schema declared\n(no validator registered: could not determine)" as n_smart_base_smart_base_schemas_code
 }
@@ -950,7 +990,7 @@ smart_base_voices_VoiceProfile *-- "1..*" smart_base_voices_Source : sources
 smart_base_voices_Rule *-- "0..*" smart_base_voices_Pattern : patterns
 smart_base_voices_Rule *-- "0..*" smart_base_voices_Terminology : terminology
 smart_base_voices_VoiceProfile *-- "1..*" smart_base_voices_Rule : rules
-' grid: portrait, 4 column(s) — pkg_smart_base_smart_base_qa_checkers pkg_smart_base_smart_base_block_kinds pkg_smart_base_smart_base_content_adapters pkg_smart_base_smart_base_translations pkg_smart_base_library pkg_smart_base_methodologies pkg_smart_base_processes pkg_smart_base_smart_base_house_processes pkg_smart_base_smart_base_artifact_index pkg_smart_base_tools pkg_smart_base_qa pkg_smart_base_smart_base_themes pkg_smart_base_smart_base_docs pkg_smart_base_smart_base_document_kinds pkg_smart_base_smart_base_findings pkg_smart_base_smart_base_external_schemas pkg_smart_base_smart_base_platform pkg_smart_base_smart_base_schemas pkg_smart_base_smart_base_content pkg_smart_base_smart_base_scripts pkg_smart_base_smart_base_skills pkg_smart_base_smart_base_scenarios pkg_smart_base_smart_base_code_lists pkg_smart_base_voices
+' grid: portrait, 4 column(s) — pkg_smart_base_smart_base_qa_checkers pkg_smart_base_smart_base_block_kinds pkg_smart_base_smart_base_content_adapters pkg_smart_base_smart_base_translations pkg_smart_base_library pkg_smart_base_methodologies pkg_smart_base_processes pkg_smart_base_smart_base_house_processes pkg_smart_base_smart_base_artifact_index pkg_smart_base_tools pkg_smart_base_qa pkg_smart_base_smart_base_themes pkg_smart_base_smart_base_docs pkg_smart_base_smart_base_document_kinds pkg_smart_base_smart_base_findings pkg_smart_base_smart_base_external_schemas pkg_smart_base_smart_base_platform pkg_smart_base_smart_base_typologies pkg_smart_base_smart_base_validators pkg_smart_base_smart_base_schemas pkg_smart_base_smart_base_content pkg_smart_base_smart_base_scripts pkg_smart_base_smart_base_skills pkg_smart_base_smart_base_scenarios pkg_smart_base_smart_base_code_lists pkg_smart_base_voices
 pkg_smart_base_smart_base_qa_checkers -[hidden]down- pkg_smart_base_library
 pkg_smart_base_smart_base_block_kinds -[hidden]down- pkg_smart_base_methodologies
 pkg_smart_base_smart_base_content_adapters -[hidden]down- pkg_smart_base_processes
@@ -964,10 +1004,12 @@ pkg_smart_base_tools -[hidden]down- pkg_smart_base_smart_base_document_kinds
 pkg_smart_base_qa -[hidden]down- pkg_smart_base_smart_base_findings
 pkg_smart_base_smart_base_themes -[hidden]down- pkg_smart_base_smart_base_external_schemas
 pkg_smart_base_smart_base_docs -[hidden]down- pkg_smart_base_smart_base_platform
-pkg_smart_base_smart_base_document_kinds -[hidden]down- pkg_smart_base_smart_base_schemas
-pkg_smart_base_smart_base_findings -[hidden]down- pkg_smart_base_smart_base_content
-pkg_smart_base_smart_base_external_schemas -[hidden]down- pkg_smart_base_smart_base_scripts
-pkg_smart_base_smart_base_platform -[hidden]down- pkg_smart_base_smart_base_skills
+pkg_smart_base_smart_base_document_kinds -[hidden]down- pkg_smart_base_smart_base_typologies
+pkg_smart_base_smart_base_findings -[hidden]down- pkg_smart_base_smart_base_validators
+pkg_smart_base_smart_base_external_schemas -[hidden]down- pkg_smart_base_smart_base_schemas
+pkg_smart_base_smart_base_platform -[hidden]down- pkg_smart_base_smart_base_content
+pkg_smart_base_smart_base_typologies -[hidden]down- pkg_smart_base_smart_base_scripts
+pkg_smart_base_smart_base_validators -[hidden]down- pkg_smart_base_smart_base_skills
 pkg_smart_base_smart_base_schemas -[hidden]down- pkg_smart_base_smart_base_scenarios
 pkg_smart_base_smart_base_content -[hidden]down- pkg_smart_base_smart_base_code_lists
 pkg_smart_base_smart_base_scripts -[hidden]down- pkg_smart_base_voices

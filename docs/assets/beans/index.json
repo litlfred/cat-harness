@@ -8442,8 +8442,8 @@
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-11T07:00:59Z",
-      "updatedAt": "2026-10-11T07:00:59Z",
-      "preview": "Owner ruling 2026-10-11 ~06:55 UTC: **who-iris CI**. who-iris 7eda8c3 moved these from checkoutScripts to its own scripts (run from who-iris's root, with folio-assistant-core mounted inside it); who-iris has no workflow, and folio-assistant's code-quality-gates.yml 'registered, never run elsewhere' job calls them through 'bun run cat', which no longer finds them.\n\n## Done when\n- [ ] litlfred/who-i",
+      "updatedAt": "2026-10-11T15:35:00Z",
+      "preview": "Owner ruling 2026-10-11 ~06:55 UTC: **who-iris CI**. who-iris 7eda8c3 moved these from checkoutScripts to its own scripts (run from who-iris's root, with folio-assistant-core mounted inside it); who-iris has no workflow, and folio-assistant's code-quality-gates.yml 'registered, never run elsewhere' job calls them through 'bun run cat', which no longer finds them.\n\n## Done when\n- [x] litlfred/who-i",
       "file": "beans/defs/folio-assistant-kpci--who-iris-gets-its-own-ci-for-checkcatalogue-irispa.md"
     },
     {
@@ -8740,7 +8740,7 @@
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-05T18:46:23Z",
-      "updatedAt": "2026-10-07T17:37:00Z",
+      "updatedAt": "2026-10-11T15:35:00Z",
       "preview": "Issue #2228. Owner, 2026-10-05: 'help make sure who-iris has all translations'; after measurement the owner chose the who-iris/site/ portal replica (7 pages) in the five non-English UN languages. Interface text only; publication metadata stays as WHO published it. Method and QA standard follow bean t0jg (#2209): translation, tool-isolated back-translation round trip, evidence recorded here.\n\n\n## R",
       "file": "beans/defs/folio-assistant-lffo--who-iris-translate-the-iris-portal-replicas-interf.md"
     },
@@ -9655,7 +9655,7 @@
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-11T07:00:59Z",
-      "updatedAt": "2026-10-11T07:00:59Z",
+      "updatedAt": "2026-10-11T15:35:00Z",
       "preview": "Owner ruling 2026-10-11 ~06:55 UTC: **Point at tools** — the 'cat-harness-tools:<path>#Export' form the registry already uses for models (bootstrap-tools:schemas/model-registry.ts#ModelRegistrySchema). check:kind-validators:require-all at #2529's pins: folio-qa-graph/v1, folio-translation-index/v1, folio-workflow-instance/v1 (x2), folio-image-verdicts/v1, folio-issue-mark/v1 name files no longer u",
       "file": "beans/defs/folio-assistant-np6o--cat-harness-kind-registry-point-the-6-shapes-70lx.md"
     },
@@ -14704,14 +14704,14 @@
     {
       "id": "folio-assistant-zckw",
       "title": "check:declared-paths: rewrite the ~1,950 literals in 70lx-moved cat-harness-tools code to resolve through declarations (owner: no re-baseline)",
-      "status": "todo",
+      "status": "in-progress",
       "type": "task",
       "priority": "high",
       "parent": "folio-assistant-ml9h",
       "blocking": [],
       "blockedBy": [],
       "createdAt": "2026-10-11T07:00:59Z",
-      "updatedAt": "2026-10-11T07:00:59Z",
+      "updatedAt": "2026-10-11T15:35:00Z",
       "preview": "Owner ruling 2026-10-11 ~06:55 UTC (drain ml9h, asked in session_01JkK6uP3iU2etyMbrw7v3cu): **Rewrite the code** — no re-baseline. At folio-assistant#2529's pins check:declared-paths reports 199 named files (23 new) and 1973 literals unaccounted for against a baseline of 27, in 46 cat-harness-tools files that 70lx moved from cat-harness (it scans codeRoots = [root, TOOLS_ROOT]).\n\nAssigned to lane ",
       "file": "beans/defs/folio-assistant-zckw--checkdeclared-paths-rewrite-the-1950-literals-in-7.md"
     },

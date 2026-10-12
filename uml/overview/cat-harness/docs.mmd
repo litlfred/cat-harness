@@ -75,6 +75,19 @@ classDiagram
       search [1] SliceSearch
       source [1]  graph: string; path: string 
     }
+    class cat_harness_docs_folio_slice_index_v1_Slice["Slice"] {
+      <<json: SliceIndexSchema>>
+      slice [1] string
+      manifest [1] string
+      title [1] string
+      bytes [1] integer
+      rows [1] map~integer~
+    }
+    class cat_harness_docs_folio_slice_index_v1_folio_slice_index_v1["folio-slice-index/v1"] {
+      <<json: SliceIndexSchema>>
+      $schema [1] 'folio-slice-index/v1'
+      slices [0..*] Slice[]
+    }
     class cat_harness_docs_folio_bean_index_v1_Item["Item"] {
       <<json: BeanIndexSchema>>
       id [1] string
@@ -439,12 +452,10 @@ classDiagram
       bytes [1] integer
       mediaType [1] string
     }
-    class n_cat_harness_docs_docs_folio_slice_index_v1["docs folio-slice-index/v1: no node schema"] {
-      <<could not determine>>
-    }
   }
   cat_harness_docs_folio_todo_index_v1_Item *-- "0..*" cat_harness_docs_folio_todo_index_v1_Relation : relations
   cat_harness_docs_folio_todo_index_v1_folio_todo_index_v1 *-- "0..*" cat_harness_docs_folio_todo_index_v1_Item : items
+  cat_harness_docs_folio_slice_index_v1_folio_slice_index_v1 *-- "0..*" cat_harness_docs_folio_slice_index_v1_Slice : slices
   cat_harness_docs_folio_bean_index_v1_folio_bean_index_v1 *-- "0..*" cat_harness_docs_folio_bean_index_v1_Item : items
   cat_harness_docs_folio_bean_index_v1_folio_bean_index_v1 *-- "0..*" cat_harness_docs_folio_bean_index_v1_Edge : edges
   cat_harness_docs_folio_bean_index_v1_folio_bean_index_v1 *-- "0..*" cat_harness_docs_folio_bean_index_v1_Finding : findings
@@ -480,6 +491,8 @@ classDiagram
   cssClass "cat_harness_docs_folio_qa_graph_v1" fa_uml_kind_docs
   cssClass "cat_harness_docs_folio_translation_index_v1" fa_uml_kind_docs
   cssClass "cat_harness_docs_folio_slice_sqlite_v1" fa_uml_kind_docs
+  cssClass "cat_harness_docs_folio_slice_index_v1_Slice" fa_uml_kind_docs
+  cssClass "cat_harness_docs_folio_slice_index_v1_folio_slice_index_v1" fa_uml_kind_docs
   cssClass "cat_harness_docs_folio_bean_index_v1_Item" fa_uml_kind_docs
   cssClass "cat_harness_docs_folio_bean_index_v1_Edge" fa_uml_kind_docs
   cssClass "cat_harness_docs_folio_bean_index_v1_Finding" fa_uml_kind_docs
@@ -517,5 +530,3 @@ classDiagram
   cssClass "cat_harness_docs_folio_graph_projection_v1_Node" fa_uml_kind_docs
   cssClass "cat_harness_docs_folio_graph_projection_v1_folio_graph_projection_v1" fa_uml_kind_docs
   cssClass "cat_harness_docs_cat_harness_payload_v1_cat_harness_payload_v1" fa_uml_kind_docs
-  cssClass "n_cat_harness_docs_docs_folio_slice_index_v1" fa_uml_kind_docs_folio_slice_index_v1
-  cssClass "n_cat_harness_docs_docs_folio_slice_index_v1" fa_uml_undetermined

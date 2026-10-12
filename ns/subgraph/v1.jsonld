@@ -330,6 +330,10 @@
     },
     "statement": "https://litlfred.github.io/cat-harness/0.1.0/ns#statement",
     "summary": "rdfs:comment",
+    "systemUnderTest": {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#systemUnderTest",
+      "@type": "@json"
+    },
     "title": "http://purl.org/dc/terms/title",
     "to": {
       "@id": "http://www.omg.org/spec/BPMN/20100524/MODEL#targetRef",
