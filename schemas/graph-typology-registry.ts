@@ -1720,6 +1720,9 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       // and the first one made `check:kind-validators:require-all` red. The
       // SAME validator the child declares, so the two cannot disagree.
       "folio-merge-queue-entry/v1": {},
+      // `sweep-marks`' family, added with the kind (bean `rq8s`) so the first
+      // mark routes rather than reddening `require-all` as the queue's did.
+      "folio-sweep-mark/v1": {},
     },
     recordsWork: true, // beans (agent), todos (person), workflow-state (a process mid-flight)
     summary:

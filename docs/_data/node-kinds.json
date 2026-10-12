@@ -217,6 +217,12 @@
     },
     {
       "typology": "beans",
+      "family": "folio-sweep-mark/v1",
+      "reason": "zod-schema",
+      "ref": "schemas/sweep-mark.ts#SweepMarkSchema"
+    },
+    {
+      "typology": "beans",
       "family": "folio-workflow-instance/v1",
       "reason": "no-validator"
     },
@@ -665,6 +671,12 @@
       "family": "folio-session-survey/v1",
       "reason": "zod-schema",
       "ref": "schemas/session-survey.ts#SessionSurveySchema"
+    },
+    {
+      "typology": "sweep-marks",
+      "family": "folio-sweep-mark/v1",
+      "reason": "zod-schema",
+      "ref": "schemas/sweep-mark.ts#SweepMarkSchema"
     },
     {
       "typology": "skills",
