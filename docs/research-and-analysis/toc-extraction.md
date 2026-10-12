@@ -3,7 +3,7 @@ title: "Table-of-contents extraction — methods compared against held-out PDF o
 kind: research
 bean: folio-assistant-cp3v
 summary: >-
-  Which way of inferring a PDF's table of contents works, when the PDF has no outline? Seven methods scored on 2026-10-06 against the 13 corpus PDFs that do carry one, with the outline hidden and used as the answer key. Layout (a printed contents page, else heading styles from font metrics) reaches title F1 0.89, and the consensus of the methods 0.92 (0.83 on 20 held-out PDFs), against 0.30 for the text-pattern heuristic it replaces. Grobid measured (title F1 0.59, CRF models); Nougat assessed from the literature, its run handed to bean u9lb.
+  Which way of inferring a PDF's table of contents works, when the PDF has no outline? Seven methods scored on 2026-10-06 against the 13 corpus PDFs that do carry one, with the outline hidden and used as the answer key. Layout (a printed contents page, else heading styles from font metrics) reaches title F1 0.89, and the consensus of the methods 0.92 (0.83 on 20 held-out PDFs), against 0.30 for the text-pattern heuristic it replaces. Grobid measured (title F1 0.59, CRF models); Nougat-small measured on CPU over 10 of the 13 (title F1 0.81 against layout's 0.87 on the same 10; bean e8vg).
 ---
 
 # Table-of-contents extraction
@@ -188,6 +188,52 @@ built for — references, header metadata, citation parsing — which this
 benchmark does not measure. Its deep-learning (DeLFT) models were not tried;
 they need a GPU-scale Python stack and might narrow the precision gap.
 
+### Nougat, measured
+
+Run 2026-10-12 (bean `e8vg`): `nougat-ocr` 0.1.17, model **`0.1.0-small`**,
+**CPU only** (4 cores, no GPU), `--no-skipping`, torch 2.14, transformers
+4.38.2, pypdfium2 4.20.0 (5.x removed the `render` API nougat calls). The
+weights came from nougat's own GitHub release assets, which its
+`checkpoint.py` downloads from; **huggingface.co was never needed**, which
+corrects what this page said before. Wall time about 20 s a page: 3.3 h for
+the 10 documents below. The three longest (`9789241548960_eng`, 179 pages;
+`who-dpi-h-reference-architecture-draft-v1`, 254; the iHRIS handbook, 534)
+were **not run**: about 5 more hours on CPU. Scored with
+`toc-benchmark.py --methods layout,nougat --nougat-mmd`.
+
+| document | outline entries | Nougat P | R | Nougat F1 | `layout` F1 | wall time |
+|---|---|---|---|---|---|---|
+| `2403.07553v1.pdf` | 16 | 0.84 | 1.00 | 0.91 | 0.94 | 4.1 min |
+| `2506.20759v1.pdf` | 17 | 0.83 | 0.88 | 0.86 | 1.00 | 6.3 min |
+| `2609.07340v1.pdf` | 17 | 0.94 | 1.00 | 0.97 | 0.97 | 14.5 min |
+| `arxiv-2601.04544v1.pdf` | 19 | 0.63 | 1.00 | 0.78 | 0.90 | 17.3 min |
+| `arxiv-2404.04834v4.pdf` | 23 | 0.61 | 0.83 | 0.70 | 0.77 | 27.1 min |
+| `2603.10808v1.pdf` | 27 | 0.96 | 0.89 | 0.92 | 0.95 | 7.9 min |
+| `2505.07664v1.pdf` | 29 | 0.70 | 0.79 | 0.74 | 0.92 | 19.1 min |
+| `arxiv-2507.23348v1.pdf` | 33 | 0.94 | 0.88 | **0.91** | 0.79 | 19.8 min |
+| `arxiv-2402.02172v5.pdf` | 39 | 0.81 | 0.90 | **0.85** | 0.67 | 17.3 min |
+| `9789240093362-eng.pdf` | 54 | 0.33 | 0.63 | 0.43 | 0.81 | 67.4 min |
+| **macro, these 10** | | **0.76** | **0.88** | **0.81** | **0.87** | |
+
+Capped F1 0.84 against `layout`'s 0.90; level F1 0.79 against 0.83; TEDS 0.66
+against 0.75. **Link F1 and full F1 are not measurable** (scored 0.00): Nougat
+writes one Markdown stream with no page boundaries, so no heading carries a
+page. Wall times overlap with other work on the same 4 cores and are upper
+bounds.
+
+- **Nougat beats `layout` on the two papers `layout` finds hardest**
+  (`2507.23348v1` 0.91 vs 0.79, `2402.02172v5` 0.85 vs 0.67). Both are where
+  `layout` over-predicts (51 and 77 headings for 33 and 39 entries), and an
+  image model that never sees font metrics does not share that failure. That
+  makes it a useful **voter**, not a replacement.
+- **It fails on the long WHO guideline** (0.43): 104 headings for 54 entries,
+  with repeated headings, which is the hallucinate-and-repeat behaviour the
+  literature reports for long documents. `contents` (0.81) reads that
+  document's printed contents page and needs no model.
+- So the assessment below stands, now measured: on born-digital PDFs it trails
+  `layout` by 0.06 and costs ~20 s a page on CPU; it is the candidate for
+  **scanned** PDFs with no text layer, which this corpus does not contain.
+
 ### The consensus TOC — cross-checking the methods
 
 The methods are not independent guesses at one list; they are different
@@ -356,7 +402,6 @@ the Maven Central mirror in `cat-harness-tools/scripts/gradle-maven-mirror.init.
 
 | tool | what it is | why not run here | assessment |
 |---|---|---|---|
-| **Nougat** (Blecher et al. 2023, arXiv:2308.13418) | vision transformer encoder-decoder: page image to Markdown, headings and maths included | installs from PyPI, but the weights download from huggingface.co, which the network policy refuses (HTTP 403). On CPU it is slow enough that only a few short papers could be scored | the right tool for **scanned** PDFs, where there are no font metrics and `regex` over OCR text is all that is left. It hallucinates and repeats on long documents, so it is no replacement for an outline or a contents page |
 | **LayoutLMv3** | multimodal transformer for document layout; needs fine-tuning for heading detection | no labelled data, and a GPU-scale dependency | not justified while a rule-based method reaches 0.86 |
 | **Donut / GPT** (Feyisa et al. 2024) | contents-page parsing with an OCR-free image model or a prompted LLM | paper reports ~85–89 % field accuracy on 20 test documents in one domain, and its own figures disagree with its text | the rule-based `contents` method already reaches 0.81–1.00 on this corpus's contents pages, and runs offline |
 | **Bentabet et al. 2019 / Wang et al. 2023 models** | char-CNN + BiLSTM-CRF; RoBERTa + GNN over a block tree | need training data and a GPU | their **rule-based parts** are implemented: Bentabet's tree repair (`tree_levels`), and Wang's size-ordered construction (the `size` baseline) |
@@ -380,13 +425,14 @@ Sources: Grobid — <https://github.com/grobidOrg/grobid>, documentation
 <https://github.com/grobidOrg/grobid-client-python>; P. Lopez, *GROBID:
 Combining Automatic Bibliographic Data Recognition and Term Extraction for
 Scholarship Publications*, ECDL 2009. Nougat — arXiv:2308.13418,
-<https://github.com/facebookresearch/nougat>, weights `facebook/nougat-base`
-and `facebook/nougat-small` on Hugging Face.
+<https://github.com/facebookresearch/nougat>, weights `0.1.0-small` and
+`0.1.0-base` as that repository's release assets (also `facebook/nougat-*` on
+Hugging Face).
 
-To score Nougat, an environment needs `huggingface.co`; bean `u9lb` carries the
-run for an agent that has it. Either can also run elsewhere and write its output
-as `(level, title, page)` rows, which `toc-benchmark.py`'s `score()` accepts
-unchanged.
+Nougat is measured above ([Nougat, measured](#nougat-measured)); its weights
+come from nougat's GitHub release assets, not Hugging Face. Any other tool can
+run elsewhere and write its output as `(level, title, page)` rows, which
+`toc-benchmark.py`'s `score()` accepts unchanged.
 
 ## Held-out test — 20 PDFs the rules never saw
 
