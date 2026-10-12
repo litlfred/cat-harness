@@ -28,3 +28,16 @@ smart-ra#37 mounts folio-assistant-sci explicitly.
 - [ ] the `paper` content adapter is declared where its block kinds are (core), or core's kinds name an adapter core declares, or core `needs` the layer that declares it. Owner to pick.
 - [ ] qa-sweep runs from a closure without folio-assistant-sci
 - [ ] smart-ra drops the sci mount
+
+## 2026-10-12 — owner ruling: option B (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
+Owner: *"B, multiple adapter for same assets ok"* (after proposing "mathpaper").
+- **sci** declares an adapter `mathpaper` for its 7 formal-claim kinds (definition, theorem, lemma, proposition, corollary, conjecture, proof).
+- **core** declares its own adapter for its 9 kinds (prose, example, remark, algorithm, simulator, equation, diagram, table, figure). Core then names nothing in sci.
+- A folio may hold kinds of several adapters: a math paper uses core's and sci's.
+- The name of core's adapter is still to be confirmed. Proposed: `folio` or `document`.
+- Order:
+  1. cat-harness accepts multi-adapter folios, and kinds of more than one typed adapter.
+  2. core declares its adapter, and its kinds name it.
+  3. sci renames `paper` to `mathpaper`.
+  4. Folio configs and QA scoping follow.
+  5. The sci mounts in smart-ra and who-iris can go.
