@@ -5,7 +5,7 @@ status: in-progress
 type: feature
 priority: high
 created_at: 2026-10-10T14:07:07Z
-updated_at: 2026-10-10T14:07:07Z
+updated_at: 2026-10-12T17:10:00Z
 ---
 
 Owner, 2026-10-10: *"also add to the skills, as part of extracting a recommnedation the scenario (user story,role) get described. i am not sure what the 'process' is, but we need one for a role ... skill is to reuse existing vocabulary if possible ... For the measeles example, the process should be chosen from existint smart-immz processes if possivle. warn if not."*
@@ -43,3 +43,12 @@ Sibling beans: 4nfs (ontologist/terminologist), 398x (guideline domain), 2ipj (p
 - **Shipped:** the skill `recommendation-extraction`, `scripts/l1-recommendation-scenarios.ts` (with `--check`, 17 tests), and `scripts/l1-scenario-vocabulary.ts`.
 - **Measles run:** 75 candidates, 37 warnings. It is held as a smart-base fixture for now.
 - **Left:** the third box. The run belongs in smart-immunizations' library, beside the measles L1 graph; that repository is with the sibling session (session_017QXvm7c7RDYFguWzSxhrMb).
+
+## 2026-10-12: task #23, smart-base#49 (the extraction half as tools)
+- **Tool nodes** in `smart-base/tools/index.ts`: `l1-recommendation-candidates` (new) and `l1-recommendation-scenarios` (#33's script, now declared). Both satisfy `recommendation-extraction` and are implemented in `smart-base/scripts/`.
+- **Hybrid, made explicit.** The script lists every normative sentence of a `library/` entry (core `l1-coverage`, imported) with hints. The agent records an `l1-recommendation-curation/v1` (the skill's step). The script then gates it (verbatim, known locations, keys) and writes an L1 3.0 graph checked with `kg/src/validate.ts`.
+- **Provenance:** both tools write cat-harness `folio-run-context/v1` as `run-context.json` (`scripts/l1-run-context.ts`).
+- **Demo** on `smart-base/library/9789240116191-eng` (DTH health product catalogue):
+  - 48 candidates → 22 recommendations, 1 remark, 29 proposed exclusions (unsigned; coverage 19/48);
+  - 22 scenario candidates, all `could-not-determine` process, 3 glossary-candidate personas; 25 + 30 warnings.
+- **Still open:** box 3 (measles in smart-immunizations' library) stays with the sibling session.

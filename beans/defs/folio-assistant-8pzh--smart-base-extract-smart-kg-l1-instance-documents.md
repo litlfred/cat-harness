@@ -5,7 +5,7 @@ status: in-progress
 type: task
 priority: normal
 created_at: 2026-10-02T06:16:07Z
-updated_at: 2026-10-07T11:04:33Z
+updated_at: 2026-10-12T17:10:00Z
 parent: folio-assistant-qvxh
 ---
 
@@ -28,3 +28,8 @@ Owner 2026-10-02: 'keep going' after the storage question went unanswered, so th
 - 1 of 12 `smart-base/library/` entries extracted (12 directories with a `manifest.jsonld`; an earlier report said 14, which was wrong).
 
 2026-10-07 finding (issue #2405, litlfred/test#2): the label-based extractor (`smart-base/scripts/extract-smart-kg-l1.ts`) finds a recommendation only by a printed label ("Recommendation 8:"). WHO vaccine **position papers print no such labels**, so on WER 92(17) (measles, 2017) it finds **0** recommendations. litlfred/test#2 kept the authored L1 YAML for that paper and deferred extractor parity (its REQ-06, SC-06.1/06.2). A generic check that catches this class of miss, by reading the source rather than the labels, now exists in folio-assistant-core: `bun run cat l1:coverage` (`folio-assistant-core/scripts/l1-coverage.ts`, skill `l1-coverage`). It counts every normative sentence per page and reports captured % and accounted-for %.
+
+## 2026-10-12: hybrid extractor (task #23, smart-base#49)
+- `smart-base/scripts/l1-recommendation-candidates.ts` (Tool `l1-recommendation-candidates`) is the unlabelled-source path the 2026-10-07 finding asked for. It finds candidates by l1-coverage markers, takes an agent's curation, and writes L1 **3.0** (not 1.0), validated with `kg/src/validate.ts`.
+- **Output location:** beside the entry, under `<entry>/l1-extraction/`, by this bean's stated default.
+- **Item 1** (the owner's location decision) and **item 3** (T3 fidelity) are still open. The output records every node as `inferred` and coverage below 100 % until a person signs exclusions, but it still carries no T3 field.
