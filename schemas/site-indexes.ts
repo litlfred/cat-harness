@@ -58,7 +58,11 @@ export const BeanIndexItemSchema = z
     updatedAt: z.string(),
     /** The body, trimmed to its first 400 characters. */
     preview: z.string(),
-    /** Repository-relative path of the bean file. */
+    /**
+     * Path of the bean file ON {@link BeanIndexSchema} `fileRef` — the branch
+     * that keeps the store. Equal to the checkout path while the store is on
+     * `main`; since the state cutover it is a path on `cat/cat-harness/beans`.
+     */
     file: z.string().min(1),
   })
   .strict();
@@ -76,6 +80,15 @@ export const BeanIndexSchema = z
   .object({
     ...envelope("folio-bean-index/v1"),
     repoWeb: z.string().min(1),
+    /**
+     * The repository and branch every item's `file` is a path on. A board
+     * that composes `<repoWeb>/blob/main/<file>` sends every bean to a 404
+     * once the store is kept on its own branch (owner, 2026-10-13). Optional
+     * so a projection written before these keys still parses; absent means
+     * `repoWeb` at `main`.
+     */
+    fileWeb: z.string().min(1).optional(),
+    fileRef: z.string().min(1).optional(),
     items: z.array(BeanIndexItemSchema),
     /**
      * The block graph as ONE edge set, `blocker → blocked`, over both
