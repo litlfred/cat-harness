@@ -1,6 +1,7 @@
 ---
 title: 'DIIG — from a health system bottleneck to a costed implementation plan'
 nav_exclude: true
+generated: gen-processes-viz.ts — do not hand-edit; edit the diagram, then run `bun run cat processes:viz`
 ---
 
 {: .note }

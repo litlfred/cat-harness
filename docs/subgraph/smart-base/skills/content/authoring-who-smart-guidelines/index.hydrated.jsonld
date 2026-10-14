@@ -2,6 +2,7 @@
   "@context": "https://litlfred.github.io/folio-assistant/ns/subgraph/v1.jsonld",
   "@id": "https://litlfred.github.io/folio-assistant/subgraph/smart-base/skills/content/authoring-who-smart-guidelines/",
   "@type": "bootstrap:Subgraph",
+  "_generated": "gen-subgraph-jsonld.ts — do not hand-edit; run `bun run cat subgraph:jsonld`",
   "hasMember": [
     {
       "@id": "http://smart.who.int/base/smart-base.jsonld#skill/dak-l1-library",
@@ -119,13 +120,13 @@
       "hasIOContract": false,
       "hasInstructions": true,
       "inSubgraph": "http://smart.who.int/base/smart-base.jsonld#directory/smart-base-skills",
-      "instructionLines": 231,
+      "instructionLines": 234,
       "instructionsPath": "skills/content/authoring-who-smart-guidelines/recommendation-extraction.md",
       "name": "recommendation-extraction",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5aecf145bb4973f24dda0a656a871cd60ce26ed72a11765e2580ace34b4cc825",
-        "bytes": 11455,
-        "sha256": "5aecf145bb4973f24dda0a656a871cd60ce26ed72a11765e2580ace34b4cc825"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/dfa996935516ef36c9a8d65773621ccd241dc46455ad6aa1cad226e509c38a42",
+        "bytes": 11698,
+        "sha256": "dfa996935516ef36c9a8d65773621ccd241dc46455ad6aa1cad226e509c38a42"
       },
       "title": "recommendation-extraction"
     },

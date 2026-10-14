@@ -1,6 +1,7 @@
 ---
 title: 'Package and distribute partitioned W3C N-Quads and named queries'
 nav_exclude: true
+generated: gen-processes-viz.ts — do not hand-edit; edit the diagram, then run `bun run cat processes:viz`
 ---
 
 {: .note }
