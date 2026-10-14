@@ -6584,6 +6584,34 @@ export function directoryEntriesForGraph(
 }
 
 /**
+ * The CONVENTIONAL folio directory, `<root>/folio` — the answer when an
+ * instance declares no `folio` graph, and the only place outside a test where
+ * the string is spelled.
+ *
+ * Bean `hs08` concentrated 162 spellings of `join(root, "folio")` into
+ * {@link folioDir}; `folio-root-is-asked.test.ts` keeps it that way. What it
+ * could not reach were the callers that need the CONVENTION ITSELF rather than
+ * the declared answer: a legacy path that was only ever written at the
+ * convention, or a fallback taken because the declaration could not be read
+ * and reported as such. They spelled the literal and were the test's last two
+ * offenders. This names the fact, so they ask for it.
+ *
+ * **Not a substitute for {@link folioDir}.** A caller that wants the folio
+ * asks {@link folioDir}, which reads the declaration and FAILS when it cannot
+ * (`ot9a`): a folio that declares `content/` must never be answered with
+ * `folio/` by accident. Call this only where the convention is what you mean,
+ * and say why beside the call.
+ *
+ * @param root repository root to resolve against
+ * @returns `<root>/folio`
+ */
+export function conventionalFolioDir(root: string): string {
+  // declared-path-literal: the base case. This IS where the convention is
+  // written down; resolving it through a declaration would be circular.
+  return join(root, "folio");
+}
+
+/**
  * Where a folio's authored content lives — **asked, not assumed**.
  *
  * Bean `hs08`. The owner's ruling, 2026-09-20: *"content/ shouldnt be expected
@@ -6624,13 +6652,11 @@ export function directoryEntriesForGraph(
  * convention, and the convention is `folio/`.
  *
  * @param root repository root to resolve against
- * @returns the declared folio directory, else `<root>/folio`
+ * @returns the declared folio directory, else {@link conventionalFolioDir}
  */
 export function folioDir(root: string): string {
   try {
-    // declared-path-literal: the base case. This IS where the convention is
-    // written down; resolving it through a declaration would be circular.
-    return directoryForGraph(root, "folio") ?? join(root, "folio");
+    return directoryForGraph(root, "folio") ?? conventionalFolioDir(root);
   } catch (e) {
     // An instance whose declaration does not KNOW the `folio` kind — core
     // registers it by load-time side effect (`schemas/folio-graph-typology.ts`)
