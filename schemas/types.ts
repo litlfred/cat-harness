@@ -487,7 +487,7 @@ export interface BlockBase {
    *
    * List only direct neighbors — not the full transitive chain.
    * If A→B and B→C, then A lists only B; C is derived by walking
-   * the graph. Run `bun run pipeline/prune-transitive-deps.ts` to
+   * the graph. Run `bun run cat-harness-tools/pipeline/prune-transitive-deps.ts` to
    * enforce this. (Transitive pruning is sound on the editorial
    * relation, where reading-order is genuinely transitive; it is NOT
    * applied to formal edges.)
