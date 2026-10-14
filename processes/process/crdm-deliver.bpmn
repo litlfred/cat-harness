@@ -58,7 +58,14 @@ Contrast `upstream-version-adoption`, where the loop DOES re-enter the analysis.
     <bpmn:task id="A_Implement" name="Phase 6: Implement
 (feature branch + PR)">
       <bpmn:documentation>Inner loop: agent claims a bean, implements on
-feature branch, opens PR, posts summary to the issue.</bpmn:documentation>
+feature branch, opens PR, posts summary to the issue.
+
+When the requirement changes a rendered surface, implement against the
+wireframe candidate the requester or BA chose in Phases 3–4
+(Process_WireframeDesignReview, called from Process_CRDM_Requirements), not
+against a fresh design; and the delivery summary links the chosen candidate
+beside the after-screenshot, so the reviewer can see the build matches what was
+approved.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="prepare-merge"/>
         <cat-harness.processes:bean op="claim"/>
