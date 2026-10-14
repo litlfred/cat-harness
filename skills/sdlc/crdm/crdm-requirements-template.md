@@ -155,3 +155,12 @@ PR (Phase 6)
 - [`../../skills/sdlc/sdlc-core/todo-manager.md`](../sdlc-core/todo-manager.md) — bean creation
 - [`../../skills/sdlc/sdlc-core/specification-management.md`](../sdlc-core/specification-management.md) — governance and EARS/ISO statement quality
 - [`../../../methodologies/requirements-standards-assessment.md`](../../../methodologies/requirements-standards-assessment.md) — open standards (ReqIF, OSLC-RM, EARS, ISO 29148) assessment
+
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](../sdlc-core/staging-review.md) §"The deep-link rule".

@@ -473,3 +473,12 @@ so a failed fetch is not evidence either way.
 
 Full rule and the measured failure:
 [`github-state-inspection`](github-state-inspection.md).
+
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](staging-review.md) §"The deep-link rule".
