@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `mcp-2026-specific
 | [sections](sections/) | 1084 |
 | [blocks](blocks/) | 542 |
 | images | 0 |
+
 <!-- kg:subgraph:end -->

@@ -100,4 +100,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-tests`, hold
 | [`fixtures/`](fixtures/) | _nothing declares what this holds_ | |
 | [`health/`](health/) | _nothing declares what this holds_ | |
 | [`support/`](support/) | _nothing declares what this holds_ | |
+
 <!-- kg:subgraph:end -->

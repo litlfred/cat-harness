@@ -95,4 +95,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-validators`,
 | [`voices-voice-profile.json`](voices-voice-profile.json) | data |  |
 | [`waiver-node.json`](waiver-node.json) | data |  |
 | [`withheld.json`](withheld.json) | data |  |
+
 <!-- kg:subgraph:end -->

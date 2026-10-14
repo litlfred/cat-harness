@@ -18,4 +18,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `arxiv-2504.19675v
 | [sections](sections/) | 52 |
 | [blocks](blocks/) | 26 |
 | images | 0 |
+
 <!-- kg:subgraph:end -->

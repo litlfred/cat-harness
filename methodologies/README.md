@@ -31,4 +31,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `methodologies`, holding 
 | [`swot.md`](swot.md) | SWOT — the two axes, and what the method refuses to do |  |
 | [`wiregen.md`](wiregen.md) | WireGen: from a written intent to a reviewed, mid-fidelity wireframe |  |
 | [`zero-trust-architecture.md`](zero-trust-architecture.md) | Zero trust architecture |  |
+
 <!-- kg:subgraph:end -->

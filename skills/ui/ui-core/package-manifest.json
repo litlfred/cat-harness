@@ -23,7 +23,8 @@
     "theme-ui-review",
     "ui-accessibility",
     "visualizer-loading",
-    "wireframe-design-review"
+    "wireframe-design-review",
+    "wireframe-viewport-check"
   ],
   "docker": {
     "baseImage": "ubuntu:24.04",

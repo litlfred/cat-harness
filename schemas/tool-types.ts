@@ -504,6 +504,42 @@ export const NamespaceLayerSchema = z
   .enum(NAMESPACE_LAYERS)
   .describe("A namespace layer: bootstrap resolves before anything else, then harness, then core.");
 
+/**
+ * What a wireframe is drawn for: `design` (a new or changed surface, at least
+ * two candidates compared blind) or `as-is` (an existing visualiser, drawn as it
+ * renders on main). The members are the `use` enum of the
+ * `wireframe-design-review` input contract; an enum, so it is a command-line
+ * word that cannot carry a payload.
+ */
+export const WireframeUseSchema = z
+  .enum(["design", "as-is"])
+  .describe("Why a wireframe is drawn: `design` for a new or changed surface, `as-is` for an existing visualiser.");
+
+/**
+ * A rendered surface, as a command-line word.
+ *
+ * ## Why this exists rather than `Text`
+ *
+ * The `wireframe-design-review` contract types `surface` as a bare string ("a
+ * page, a visualiser ref, the navbar, a form, an app screen"), and `check:tools`
+ * refuses free text on a flag. What the harness actually names a surface by is
+ * a visualiser's route key, `<harness>/<visualiser>` with an optional sub-graph
+ * (`cat-harness/auto-docs/index/skills`, the keys of
+ * `docs/wireframes/index.json`), or a kebab-case name for chrome no visualiser
+ * declares (`navbar`, `kg-viewer`). This is that shape and nothing wider: no
+ * space, no dot, no `..`, so it is injection-safe by construction. Not
+ * `RepoPath`, which happens to admit the same words and would type a route as a
+ * file.
+ */
+export const SurfaceRefSchema = z
+  .string()
+  .min(1)
+  .regex(
+    /^[a-z0-9][a-z0-9-]*(\/[a-z0-9][a-z0-9-]*)*$/,
+    "a surface is a route key (`<harness>/<visualiser>[/<sub-graph>]`) or a kebab-case name",
+  )
+  .describe("A rendered surface: a visualiser route key such as cat-harness/beans, or a kebab-case name such as navbar.");
+
 /** The granularity a translation sign-off covers. */
 export const TranslationLevelSchema = z
   .enum(["block", "section", "chapter", "folio"])
@@ -636,6 +672,8 @@ export const TOOL_TYPES = {
   LinkStyle: LinkStyleSchema,
   ReadmeSection: ReadmeSectionSchema,
   TranslationLevel: TranslationLevelSchema,
+  WireframeUse: WireframeUseSchema,
+  SurfaceRef: SurfaceRefSchema,
   Count: CountSchema,
   Dpi: DpiSchema,
   Port: PortSchema,
@@ -744,6 +782,9 @@ export const INJECTION_SAFE: ReadonlySet<ToolTypeName> = new Set<ToolTypeName>([
   "LinkStyle",
   "ReadmeSection",
   "TranslationLevel",
+  "WireframeUse",
+  // A pattern type: kebab-case segments joined by `/`. See the schema.
+  "SurfaceRef",
   "Count",
   "Dpi",
   "Port",

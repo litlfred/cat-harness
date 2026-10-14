@@ -17,4 +17,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `w3c-2013-prov-o`.
 | [sections](sections/) | 66 |
 | [blocks](blocks/) | 33 |
 | images | 0 |
+
 <!-- kg:subgraph:end -->

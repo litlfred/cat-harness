@@ -11,4 +11,5 @@ Part of [C@T Harness](../../../../README.md) 0.1.0, declared as `agent-skill-aut
 | file | what it is | used by |
 |---|---|---|
 | [`voice.json`](voice.json) | Agent skill authoring — OpenAI override |  |
+
 <!-- kg:subgraph:end -->
