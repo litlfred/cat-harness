@@ -1326,11 +1326,11 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       invoke: { shell: "bun run cat-harness-tools/scripts/bpmn-checklist.ts" },
       io: {
         inputs: [
-          { name: "out", schema: t("RepoPath"), required: false, arg: { flag: "--out" }, description: "Where to write `<stem>.checklist.md`. Default: the harness site's `assets/workflows/checklists`." },
+          { name: "out", schema: t("RepoPath"), required: false, arg: { flag: "--out" }, description: "Write every `<stem>.checklist.md` into this one directory instead. Default: each beside its diagram, in the instance that owns it; the harness site's `assets/workflows/checklists` holds those of the instances below the harness." },
           { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Verify instead of write: exit 1 on a stale, missing or orphaned checklist." },
         ],
         outputs: [
-          { name: "checklists", schema: t("RepoPath"), description: "One `<stem>.checklist.md` per diagram in every instance." },
+          { name: "checklists", schema: t("RepoPath"), description: "One committed `<stem>.checklist.md` per diagram in every instance, beside its `.bpmn` (owner, 2026-10-14: commit them)." },
         ],
       },
       satisfies: ["docs-generation"],
