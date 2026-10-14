@@ -71,6 +71,14 @@
   // A page that learns its repository later (the folio site reads it from its outline) says so here.
   const configure = (c) => { cfg = c; };
   window.faEditLinks = { urls: faBlockUrls, fill: fill, configure: configure };
+  // Both the link reached and the host it sits in: a pointer that lands
+  // straight on a compact host's link (no gap crossed) or keyboard focus on it
+  // matches the bare link first, which carries no facts of its own.
   for (const ev of ["pointerover", "focusin", "touchstart"])
-    document.addEventListener(ev, (e) => { const h = e.target.closest && e.target.closest("[data-src], a[data-fa-link]"); if (h) ready(h); }, { passive: true });
+    document.addEventListener(ev, (e) => {
+      if (!e.target.closest) return;
+      const a = e.target.closest("a[data-fa-link]"), h = e.target.closest("[data-src]");
+      if (a) ready(a);
+      if (h && h !== a) ready(h);
+    }, { passive: true });
 })();
