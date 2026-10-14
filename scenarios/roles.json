@@ -245,7 +245,8 @@
         "crdm-recorded-walkthrough",
         "crdm-requirements-template",
         "decision-methodology-selector",
-        "data-modelling"
+        "data-modelling",
+        "wireframe-design-review"
       ],
       "persona": "Turns stated needs into requirements others can build against. Works in the gap between what a stakeholder said and what the system can do, and is the one who notices when those differ."
     },
