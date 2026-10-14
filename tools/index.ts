@@ -1310,38 +1310,13 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       },
     }),
 
-    // ── The BPMN engine, as a Tool node — bean `folio-assistant-cy4p`, owner
-    // ruling 2026-10-10 ("both"): the engine other instances discover and
-    // depend on, not an implementation detail of one MCP server; and its
-    // checklist projection, generated per diagram and gated.
-    defineTool({
-      id: "bpmn-engine",
-      title: "BPMN workflow engine",
-      description:
-        "Run a declared BPMN process as an instance: `workflow_start` opens one for a subject, `workflow_next` reports what is enabled, `workflow_complete` records a step or answers a decision (a DMN-computed one from `facts`) and REFUSES a step that is not enabled. State is committed under the work plan, so which edge was taken is a record, not a memory.",
-      install: { none: true },
-      // The harness's own arm is the registrar the MCP server loads; the
-      // module is instance-relative (`inProcess.module`), and the code lives in
-      // the implementation layer beside this one (`w2gr`: definitions here,
-      // implementations there).
-      invoke: { inProcess: { module: "../cat-harness-tools/src/tools/workflow.ts", register: "registerWorkflowTools" }, mcp: { tool: "workflow_*" } },
-      io: {
-        inputs: [
-          { name: "process", schema: t("ProcessId"), required: true, description: "The process to run: a diagram's file stem or its `bpmn:process` id." },
-          { name: "node", schema: t("NodeId"), required: false, description: "The step or decision to complete, as `workflow_next` reported it." },
-        ],
-        outputs: [
-          { name: "enabled", schema: t("NodeId"), description: "What may be worked next, after each call." },
-        ],
-      },
-      satisfies: ["process-state"],
-      selection: {
-        when: "Work follows a declared process and its order must be enforced and recorded: a step done out of order should be refused, not just discouraged.",
-        limits: "Reached over MCP; an agent without the server can walk the generated checklist (`bpmn-checklist`) by hand, but nothing then refuses a wrong turn.",
-        cost: "One diagram load per call; state is a small committed file.",
-      },
-      requires: { runtime: ["bun"], network: false },
-    }),
+    // ── The BPMN engine's checklist projection — bean `folio-assistant-cy4p`,
+    // owner ruling 2026-10-10 ("both"). The engine itself, `bpmn-engine`, is
+    // declared in `cat-harness-tools/tools/index.ts`, beside its in-process
+    // module (owner, 2026-10-14: "Move the node to tools"): declared here, the
+    // module path had to name `../cat-harness-tools/`, a layer cat-harness's
+    // `needs` does not reach (`check:import-direction`). This one is invoked by
+    // shell, like every `cat-harness-tools/scripts/` Tool, so it stays.
     defineTool({
       id: "bpmn-checklist",
       title: "BPMN checklist projection",
