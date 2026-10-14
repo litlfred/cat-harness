@@ -211,6 +211,14 @@ export const SubgraphHydratedNodeSchema: z.ZodType<SubgraphHydratedNode> = z.laz
 const ContextUrl = z.string().url();
 
 /**
+ * The file's own statement that a generator wrote it — a top-level
+ * `_generated`, the convention `check:reference-direction` reads (bean
+ * `ws99`). Top level only: a member node never carries it. Not a JSON-LD
+ * term, so a JSON-LD reader drops it on expansion and the graph is unchanged.
+ */
+const GeneratedNote = z.string().min(1);
+
+/**
  * `index.jsonld`. `seeAlso` is the REPOSITORY level's only (bean `t8c4`): the
  * repository indexes of instances in this checkout whose diagrams this build
  * does not frame (`pve3` — bootstrap publishes through its own graph). A link,
@@ -218,6 +226,7 @@ const ContextUrl = z.string().url();
  */
 export const SubgraphIndexSchema = SubgraphIndexNodeSchema.extend({
   "@context": ContextUrl,
+  _generated: GeneratedNote.optional(),
   seeAlso: z.array(z.string().url()).optional(),
 }).strict();
 export type SubgraphIndex = z.infer<typeof SubgraphIndexSchema>;
@@ -225,6 +234,7 @@ export type SubgraphIndex = z.infer<typeof SubgraphIndexSchema>;
 /** `index.hydrated.jsonld`. */
 export const SubgraphHydratedSchema = SubgraphNodeBase.extend({
   "@context": ContextUrl,
+  _generated: GeneratedNote.optional(),
   hasMember: z.array(SubgraphMemberSchema).optional(),
   hasSubgraph: z.array(SubgraphHydratedNodeSchema).optional(),
 }).strict();

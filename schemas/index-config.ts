@@ -27,6 +27,7 @@
  * | where each one comes from | `instances[].source` — `local.at`, or `remote` (a `remoteMounts` entry without its `harness`) |
  * | each one's configuration | the imported `<name>.config.json` (when it exists), overlaid by the entry's inline fields |
  * | which one is `/` | `site.landing` — an instance name, or `"hub"` |
+ * | whether an agent publishes it | `site.agentRun` — `true` when the repository is agent-run |
  * | what the checkout is called | `title` and `description`, which `index:render` writes into the root `README.md` and `AGENTS.md` |
  *
  * Without it every reader falls back to today's behaviour unchanged, which is
@@ -60,7 +61,7 @@ import { join, relative } from "node:path";
 
 import { z } from "zod";
 
-import { readDeclaration } from "./cat-harness";
+import { GateExemptionsSchema, readDeclaration } from "./cat-harness";
 import {
   CONFIG_SUFFIX,
   INDEX_CONFIG_FILENAME,
@@ -155,6 +156,27 @@ export const IndexSiteSchema = z
   .object({
     /** An instance name, or {@link HUB_LANDING}. Must name an instance this file lists. */
     landing: z.string().min(1).optional(),
+    /**
+     * This repository is AGENT-RUN: an agent builds and publishes its site
+     * (`stage-local.ts`), and its publish workflows keep only
+     * `workflow_dispatch`, as documentation of what the agent path must match
+     * rather than something to dispatch (owner, 2026-10-10, bean `n3h9`; the
+     * `feature-staging` skill, "Agent-run repositories").
+     *
+     * The repository declares it itself: the owner ruled on 2026-10-14 (Q7 of
+     * the folio-assistant#2529 reference-direction review, "Yes, declare it")
+     * that agent-run is a declaration, not a list the platform keeps of the
+     * repositories it applies to. It sits on the INDEX's `site`, beside
+     * `landing`, and not on an instance declaration, for the reason `landing`
+     * is on a config: it is a fact about how THIS checkout publishes. A
+     * declaration travels into every checkout that mounts the instance, and an
+     * IG repository may declare no instance of its own at all, so its
+     * `index.config.json` is all it has.
+     *
+     * Absent means not declared. That is not the same as "a runner publishes
+     * it", so a reader says which one it found rather than assuming.
+     */
+    agentRun: z.boolean().optional(),
   })
   .strict();
 
@@ -176,6 +198,13 @@ export const IndexConfigSchema = z
       .refine((xs) => new Set(xs.map((x) => x.name)).size === xs.length, { message: "instances: a name appears twice" })
       .refine((xs) => !xs.some((x) => x.name === HUB_LANDING), { message: `instances: \`${HUB_LANDING}\` is the landing keyword, not an instance name` }),
     site: IndexSiteSchema.optional(),
+    /**
+     * The steps of THIS checkout's own workflows that CI runs and the local
+     * gate set does not, each with its reason ({@link GateExemptionsSchema}).
+     * The index owns `.github/workflows/`, so it declares their exemptions,
+     * in the same change as the step — never ahead of it in a layer.
+     */
+    gateExemptions: GateExemptionsSchema.optional(),
   })
   .strict()
   .superRefine((c, ctx) => {
@@ -400,7 +429,7 @@ export function addIndexInstance(root: string, entry: IndexInstance): boolean {
 
 /** The canonical text of an index: two-space JSON, `$schema` first, a trailing newline. */
 export function formatIndexConfig(config: IndexConfig): string {
-  const { $schema, _comment, title, description, instances, site } = config;
+  const { $schema, _comment, title, description, instances, site, gateExemptions } = config;
   const ordered = {
     $schema,
     ...(_comment !== undefined ? { _comment } : {}),
@@ -411,6 +440,9 @@ export function formatIndexConfig(config: IndexConfig): string {
       return { name, ...(c !== undefined ? { _comment: c } : {}), ...(imp !== undefined ? { import: imp } : {}), ...(source !== undefined ? { source } : {}), ...rest };
     }),
     ...(site !== undefined ? { site } : {}),
+    // Last, and kept: dropping it here would make every rewrite of the index
+    // silently delete the exemptions of its own workflows.
+    ...(gateExemptions !== undefined ? { gateExemptions } : {}),
   };
   return `${JSON.stringify(ordered, null, 2)}\n`;
 }

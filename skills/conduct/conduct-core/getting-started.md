@@ -195,6 +195,12 @@ jumping straight to a branch.
 | `add-folio` | `folio_init` against a new top-level slug in the existing instance. Do not re-link the platform; it is already linked. |
 | `new-content` | **Stop.** This process ends here. Hand off to `authoring-a-document` or `authoring-a-paper`. Scaffolding anything on this branch is the bug. |
 
+**An empty repository gets `main` before any feature branch.** GitHub makes
+the first branch pushed to an empty repository its default, so run
+`init-folio` (it seeds `main` first) or push `main` yourself before pushing
+anything else. litlfred/dth-hrh got a feature branch as its default this way
+(owner, 2026-10-14).
+
 **An IG or a SMART Guideline is routed by its own creation skill.** When the
 answer to step 3's second question is a FHIR IG or a WHO SMART IG, hand over
 to `fhir-ig-create` (ask `skill_list`; a harness that specialises it, such as

@@ -90,7 +90,6 @@
         "agent"
       ],
       "skills": [
-        "review-comments",
         "rendered-impact",
         "review-heatmap",
         "staging-review",
@@ -221,7 +220,8 @@
         "publish-verification",
         "instance-publication",
         "package-release",
-        "render-kg-to-cdn"
+        "render-kg-to-cdn",
+        "staging-review"
       ],
       "persona": "Owns the release. Cares about what is authorised, what is built and what is public — and about the gap between them."
     },

@@ -1310,38 +1310,13 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       },
     }),
 
-    // ── The BPMN engine, as a Tool node — bean `folio-assistant-cy4p`, owner
-    // ruling 2026-10-10 ("both"): the engine other instances discover and
-    // depend on, not an implementation detail of one MCP server; and its
-    // checklist projection, generated per diagram and gated.
-    defineTool({
-      id: "bpmn-engine",
-      title: "BPMN workflow engine",
-      description:
-        "Run a declared BPMN process as an instance: `workflow_start` opens one for a subject, `workflow_next` reports what is enabled, `workflow_complete` records a step or answers a decision (a DMN-computed one from `facts`) and REFUSES a step that is not enabled. State is committed under the work plan, so which edge was taken is a record, not a memory.",
-      install: { none: true },
-      // The harness's own arm is the registrar the MCP server loads; the
-      // module is instance-relative (`inProcess.module`), and the code lives in
-      // the implementation layer beside this one (`w2gr`: definitions here,
-      // implementations there).
-      invoke: { inProcess: { module: "../cat-harness-tools/src/tools/workflow.ts", register: "registerWorkflowTools" }, mcp: { tool: "workflow_*" } },
-      io: {
-        inputs: [
-          { name: "process", schema: t("ProcessId"), required: true, description: "The process to run: a diagram's file stem or its `bpmn:process` id." },
-          { name: "node", schema: t("NodeId"), required: false, description: "The step or decision to complete, as `workflow_next` reported it." },
-        ],
-        outputs: [
-          { name: "enabled", schema: t("NodeId"), description: "What may be worked next, after each call." },
-        ],
-      },
-      satisfies: ["process-state"],
-      selection: {
-        when: "Work follows a declared process and its order must be enforced and recorded: a step done out of order should be refused, not just discouraged.",
-        limits: "Reached over MCP; an agent without the server can walk the generated checklist (`bpmn-checklist`) by hand, but nothing then refuses a wrong turn.",
-        cost: "One diagram load per call; state is a small committed file.",
-      },
-      requires: { runtime: ["bun"], network: false },
-    }),
+    // ── The BPMN engine's checklist projection — bean `folio-assistant-cy4p`,
+    // owner ruling 2026-10-10 ("both"). The engine itself, `bpmn-engine`, is
+    // declared in `cat-harness-tools/tools/index.ts`, beside its in-process
+    // module (owner, 2026-10-14: "Move the node to tools"): declared here, the
+    // module path had to name `../cat-harness-tools/`, a layer cat-harness's
+    // `needs` does not reach (`check:import-direction`). This one is invoked by
+    // shell, like every `cat-harness-tools/scripts/` Tool, so it stays.
     defineTool({
       id: "bpmn-checklist",
       title: "BPMN checklist projection",
@@ -1351,11 +1326,11 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       invoke: { shell: "bun run cat-harness-tools/scripts/bpmn-checklist.ts" },
       io: {
         inputs: [
-          { name: "out", schema: t("RepoPath"), required: false, arg: { flag: "--out" }, description: "Where to write `<stem>.checklist.md`. Default: the harness site's `assets/workflows/checklists`." },
+          { name: "out", schema: t("RepoPath"), required: false, arg: { flag: "--out" }, description: "Write every `<stem>.checklist.md` into this one directory instead. Default: each beside its diagram, in the instance that owns it; the harness site's `assets/workflows/checklists` holds those of the instances below the harness." },
           { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Verify instead of write: exit 1 on a stale, missing or orphaned checklist." },
         ],
         outputs: [
-          { name: "checklists", schema: t("RepoPath"), description: "One `<stem>.checklist.md` per diagram in every instance." },
+          { name: "checklists", schema: t("RepoPath"), description: "One committed `<stem>.checklist.md` per diagram in every instance, beside its `.bpmn` (owner, 2026-10-14: commit them)." },
         ],
       },
       satisfies: ["docs-generation"],
@@ -3304,67 +3279,6 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       },
       satisfies: ["proof-status-tracking"],
       requires: { runtime: ["python3"], network: false },
-    }),
-
-    // ── The FSH cone, and TWO of three declared contracts refused ─────────
-    //
-    // Group 12 of `d308` (`h588`). `ig-incremental-build · Task_Cone` names
-    // `fsh-cone --changed` in its own task label, so this binding is read off the
-    // diagram rather than inferred.
-    //
-    // **The bean asked for one node satisfying three skills; two are refused, on
-    // their own contracts.** Measured 2026-09-20 against
-    // `schemas/skills/*/input.schema.json`:
-    //
-    //   fhir-validation     requires igRoot                      → SATISFIABLE
-    //   ig-publication      requires igRoot + versionIncrement    → refused
-    //   l3-fhir-authoring   requires artifactType + sourceModel   → refused
-    //
-    // The refusals are not a gap to close later. `fsh-cone` computes a dependency
-    // cone over a FSH graph: it publishes nothing and authors nothing, so it has
-    // no version to increment and no source model to render from. Declaring those
-    // edges would put this node forward as the mechanism for two jobs it does not
-    // do — the `covered-is-not-reachable` shape, manufactured on purpose.
-    //
-    // **Its verification happens downstream, and that is recorded rather than
-    // implied.** The platform carries no folio, so this cannot be exercised here:
-    // `d308`'s correction established the same for six of thirteen groups, so the
-    // posture is the general case, not this group's quirk. What IS checked here is
-    // the one thing that does not need a folio — a missing `<ig-root>` exits 2
-    // with usage, measured, not assumed.
-    defineTool({
-      id: "fsh-cone",
-      title: "FSH dependency cone",
-      description:
-        "Compute the dependency cone over an IG's FSH graph, and the blast radius of a set of changed files. What makes an incremental IG build possible: without it, any edit rebuilds everything.",
-      install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/pipeline/fsh-cone.ts" },
-      io: {
-        inputs: [
-          { name: "igRoot", schema: t("RepoPath"), required: true, arg: { positional: 0 }, description: "The IG root holding the FSH sources. Absent, the command exits 2 with its usage — could-not-determine, not an empty cone." },
-          { name: "csv", schema: t("RepoPath"), required: false, arg: { flag: "--csv" }, description: "Write the report as CSV to this path instead of printing it." },
-          // `--top` and `--history` are now DECLARED: `Count` was added to the
-          // vocabulary on 2026-09-20, once this node and `content-graph-build`
-          // had met the same gap from two directions. Two independent needs is
-          // the bar; one flag wanting a bespoke type is not.
-          { name: "top", schema: t("Count"), required: false, arg: { flag: "--top" }, description: "Show only the N largest cones. `0` is a legitimate request for none, which is why `Count` admits zero." },
-          { name: "history", schema: t("Count"), required: false, arg: { flag: "--history" }, description: "Report the blast radius over the last N commits instead of a static cone." },
-          { name: "fileUsers", schema: t("RepoPath"), required: false, arg: { flag: "--file-users" }, description: "Also write `fsh-file-users/v1`: for each FSH file, the files that use what it declares. The IG AST's incremental plan reads it (`AstPlanCli -fsh-users`) so a changed RuleSet- or Alias-only file reaches its users rather than forcing a full build (bean `a9tx`)." },
-          // `--changed f1,f2,…` stays UNDECLARED, and for a reason the new type
-          // does not touch: it is a comma-separated list inside ONE argv word.
-          // `Slug` forbids the comma, `repeated` would claim the flag may be
-          // given more than once when the script parses a single list, and `Text`
-          // is refused on argv by the injection rule. That gap is about
-          // list-in-one-word, not about numbers.
-        ],
-        outputs: [
-          { name: "cone", schema: t("Text"), description: "The cone, or the impact of `--changed`. With `--csv` it goes to that path instead." },
-        ],
-      },
-      // ONE skill, not the three the bean listed — see the header for why the
-      // other two contracts refuse this mechanism rather than merely lacking it.
-      satisfies: ["fhir-validation"],
-      requires: { runtime: ["bun"], network: false },
     }),
 
     // ── The round-trip RECORDER, and the two dispatch points it did not need ─

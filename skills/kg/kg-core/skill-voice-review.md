@@ -23,7 +23,7 @@ A voice whose rules declare `appliesTo: ["skill"]` judges skill files. In
 per vendor under `skills/voices/vendors/` (`vendors/vendors.json` lists them),
 each extending the base. A voice counts
 only once the harness config **activates** it (`voice.active` in
-`<name>.config.json`) — the same switch every other voice uses.
+its `index.config.json` entry) — the same switch every other voice uses.
 
 The owner's ruling on bean `rkqp` sets the boundary: **an agentic review, with no
 formal gate on rule content.** "Best practice" drifts, and a vendor describing

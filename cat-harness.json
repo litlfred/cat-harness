@@ -977,6 +977,7 @@
     {"path": "docs/reference/skill-instructions/", "writer": ["skills:docs"], "because": "checkout", "reason": "a page per skill of every instance (measured: drifted on fhir-harness and folio-assistant-core skills at the current pins)"},
     {"path": "docs/en/cat-harness/processes/", "writer": ["processes:viz"], "because": "checkout", "reason": "a page per diagram of every instance, 32 of 100 of them other instances' (measured: a foreign task name rewrote public-comment.md)"},
     {"path": "docs/en/cat-harness/cat-harness-declaration/", "writer": ["node-kind:pages"], "because": "checkout", "reason": "a page per instance declaration in the checkout"},
+    {"path": "docs/assets/glossary/cat-harness-tools--kg-tools.skos.jsonld", "writer": ["glossary:export"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/fhir-harness--kg-bpmn-activities.skos.jsonld", "writer": ["glossary:export"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld", "writer": ["glossary:export"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/fhir-harness--kg-skills.skos.jsonld", "writer": ["glossary:export"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
@@ -1058,6 +1059,15 @@
     "bootstrap",
     "bootstrap-tools"
   ],
+  "_jsonldPrefixes_comment": "The external vocabularies this instance's JSON-LD speaks (schemas/jsonld-prefixes.ts; bean folio-assistant-63q4, owner 2026-10-14). Measured 2026-10-14: these are emitted (doco, prov, dcterms by the block/library/site generators; skos by the glossary export; cito by block siblings; rdfs by the named-subgraph documents, through ns/subgraph/v1.jsonld's aliases). deo, oa, csvw and fhir are bound in CONTENT_CONTEXT but emitted by no code and no document, so they are not declared: the generated context will not carry them.",
+  "jsonldPrefixes": {
+    "doco": "http://purl.org/spar/doco/",
+    "cito": "http://purl.org/spar/cito/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+  },
   "mountApprovers": [
     "litlfred"
   ],

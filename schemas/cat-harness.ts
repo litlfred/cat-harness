@@ -114,6 +114,7 @@ import {
 import { NS_PREFIXES, propertyIri, termIri } from "./namespaces";
 import { StickyContributionSchema, type StickyContribution } from "./sticky-contribution";
 import { BuiltAtPublishListSchema, type BuiltAtPublish } from "./built-at-publish";
+import { JsonldPrefixTableSchema, type JsonldPrefixTable } from "./jsonld-prefixes";
 import { BranchPrefixSchema, KeyedBySchema, SubgraphSourceSchema, contentIsOffCheckout, type SubgraphSource } from "./subgraph-source";
 
 
@@ -778,6 +779,13 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
    * branch-kept graph, cannot be current in a commit of this one.
    */
   builtAtPublish?: BuiltAtPublish[];
+  /**
+   * The external vocabularies this instance's JSON-LD speaks, prefix →
+   * namespace IRI — {@link JsonldPrefixTable}. Owner, 2026-10-14 (bean 63q4):
+   * the published context is generated from what documents use, flattened over
+   * `needs`, so a vocabulary is declared by the layer that owns it.
+   */
+  jsonldPrefixes?: JsonldPrefixTable;
   /** Graphs known but not held — {@link RemoteGraph}. */
   remoteGraphs?: RemoteGraph[];
   /** Harnesses this one is associated with and does not hold — {@link AssociatedHarness}. Issue #1146. */
@@ -3266,6 +3274,46 @@ export const ExactVersionSchema = z
 export const CAT_HARNESS_DECLARATION_SCHEMA_TAG = "cat-harness-declaration/1.0.0" as const;
 
 /** The declaration's fields, shared by {@link CatHarnessDeclarationSchema} and {@link CatHarnessDeclarationKind}. */
+/**
+ * The steps and check scripts a repository's CI runs that the local gate set
+ * does not, each with its reason — read by cat-harness-tools' `gates.ts`
+ * (beans `0r7u`, `ot9a`).
+ *
+ * Declared by whoever OWNS what is exempted: an instance for its own scripts
+ * and steps (`gateExemptions` on its declaration), and an index for the steps
+ * of its own workflows (`gateExemptions` in `index.config.json`). An index
+ * declares no instance, so before this its workflow steps were exempted from
+ * a layer's declaration instead, AHEAD of the workflow change — and a layer
+ * re-pinned before the workflow landed carried an exemption that matched
+ * nothing CI ran (`qa:publish --add`, 2026-10-14).
+ */
+export const GateExemptionsSchema = z
+  .object({
+    steps: z
+      .array(
+        z
+          .object({
+            match: z.string().min(1),
+            kind: z.enum(["covered-by", "ci-only", "no-folio"]),
+            reason: z.string().trim().min(1),
+          })
+          .strict(),
+      )
+      .optional(),
+    scripts: z
+      .array(
+        z
+          .object({
+            script: z.string().min(1),
+            kind: z.enum(["report", "covered-by", "no-folio", "scheduled"]),
+            reason: z.string().trim().min(1),
+          })
+          .strict(),
+      )
+      .optional(),
+  })
+  .strict();
+
 const catHarnessDeclarationShape = {
   name: z.string().min(1),
   ...kgNodeLabelShape,
@@ -3418,6 +3466,8 @@ const catHarnessDeclarationShape = {
   visualisers: z.array(HarnessVisualiserSchema).optional(),
   /** See {@link CatHarnessDeclaration.builtAtPublish} and `schemas/built-at-publish.ts`. Absent: this instance builds nothing at publish. */
   builtAtPublish: BuiltAtPublishListSchema.optional(),
+  /** See {@link CatHarnessDeclaration.jsonldPrefixes} and `schemas/jsonld-prefixes.ts`. Absent: this instance speaks no external vocabulary of its own. */
+  jsonldPrefixes: JsonldPrefixTableSchema.optional(),
   /**
    * Graphs this instance knows about and does not hold — see {@link RemoteGraph}.
    * A SEPARATE array from `directories`, not a variant of one, because a remote
@@ -3539,33 +3589,7 @@ const catHarnessDeclarationShape = {
         }),
     )
     .optional(),
-  gateExemptions: z
-    .object({
-      steps: z
-        .array(
-          z
-            .object({
-              match: z.string().min(1),
-              kind: z.enum(["covered-by", "ci-only", "no-folio"]),
-              reason: z.string().trim().min(1),
-            })
-            .strict(),
-        )
-        .optional(),
-      scripts: z
-        .array(
-          z
-            .object({
-              script: z.string().min(1),
-              kind: z.enum(["report", "covered-by", "no-folio", "scheduled"]),
-              reason: z.string().trim().min(1),
-            })
-            .strict(),
-        )
-        .optional(),
-    })
-    .strict()
-    .optional(),
+  gateExemptions: GateExemptionsSchema.optional(),
   /**
    * The content adapters this instance ships — see {@link ContentAdapterDeclaration}.
    *

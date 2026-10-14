@@ -186,6 +186,20 @@ defaults:
   # path segments and does not. A glob names the directory's own entries and
   # means the same thing to both.
   #
+  # THESE GLOBS ARE A DECLARATION, NOT WHAT JEKYLL READS (owner, 2026-10-14:
+  # "Explicit scopes"). Jekyll re-runs a glob scope's `Dir.glob`, and a
+  # `Pathname#relative_path_from` per match, on EVERY `to_liquid` of EVERY
+  # page: on the folio-assistant docs tree these seven were ~68% of the build's
+  # CPU. So `compose-docs` (cat-harness-tools `scripts/lib/default-scope-globs.ts`)
+  # replaces each one, in the COMPOSED `_config.yml`, by one exact-path scope
+  # per path the glob matches in the composed tree -- a locale folder such as
+  # `start/fr` stays one scope, as the glob treats it -- which is the same set
+  # of pages under Jekyll 3.10 and 4, and never `processes/`. GENERATED, never
+  # written out here by hand: a hand-kept list would silently miss the next
+  # page added to one of these folders, and the next compose covers it.
+  # `default-scope-globs.test.ts` holds each generated list to its glob's
+  # match set and the composed config to having no glob left.
+  #
   # The route is the `docs` kind and this instance's declared name
   # (`scripts/docs-route.ts`); `docs-route.test.ts` holds every permalink here
   # to it and checks the coverage both ways. Generators ask
