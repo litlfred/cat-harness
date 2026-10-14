@@ -1,6 +1,7 @@
 ---
 title: "External schemas"
 description: "The specifications this repository depends on — the edition of each, what would move if one bumped, and the terms it actually branches on."
+generated: gen-external-schemas-viz.ts — do not hand-edit; run `bun run cat external-schemas:viz`
 rendered-by: external-schemas-viewer
 ---
 <style>

@@ -1,6 +1,7 @@
 ---
 title: 'L1 document ingestion — a document to the L1 source knowledge graph'
 nav_exclude: true
+generated: gen-processes-viz.ts — do not hand-edit; edit the diagram, then run `bun run cat processes:viz`
 ---
 
 {: .note }

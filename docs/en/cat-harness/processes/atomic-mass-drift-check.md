@@ -1,6 +1,7 @@
 ---
 title: 'Is AtomicMass.lean still in sync with its data table?'
 nav_exclude: true
+generated: gen-processes-viz.ts — do not hand-edit; edit the diagram, then run `bun run cat processes:viz`
 ---
 
 {: .note }

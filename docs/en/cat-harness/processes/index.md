@@ -1,6 +1,7 @@
 ---
 title: Processes
 nav_exclude: true
+generated: gen-processes-viz.ts — do not hand-edit; edit the diagram, then run `bun run cat processes:viz`
 rendered-by: processes-viewer
 ---
 

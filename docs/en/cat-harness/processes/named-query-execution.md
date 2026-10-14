@@ -1,6 +1,7 @@
 ---
 title: 'Execute audited named queries over partitioned W3C N-Quads distributions'
 nav_exclude: true
+generated: gen-processes-viz.ts — do not hand-edit; edit the diagram, then run `bun run cat processes:viz`
 ---
 
 {: .note }
