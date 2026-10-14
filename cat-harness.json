@@ -1059,6 +1059,14 @@
     "bootstrap",
     "bootstrap-tools"
   ],
+  "_jsonldPrefixes_comment": "The external vocabularies this instance's JSON-LD speaks (schemas/jsonld-prefixes.ts; bean folio-assistant-63q4, owner 2026-10-14). Measured 2026-10-14: these five are emitted (doco, prov, dcterms by the block/library/site generators; skos by the glossary export; cito by block siblings). deo, oa, csvw and fhir are bound in CONTENT_CONTEXT but emitted by no code and no document, so they are not declared: the generated context will not carry them.",
+  "jsonldPrefixes": {
+    "doco": "http://purl.org/spar/doco/",
+    "cito": "http://purl.org/spar/cito/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dcterms": "http://purl.org/dc/terms/"
+  },
   "mountApprovers": [
     "litlfred"
   ],

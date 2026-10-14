@@ -86,6 +86,11 @@ export const PROPERTY_SKILLS = {
     skills: [],
     gap: "no skill edits `builtAtPublish` yet: the rule (commit an artefact only if every input is pinned by this commit) and its two causes are documented only in the schema (built-at-publish.ts)",
   },
+  // Owner, 2026-10-14 (bean 63q4): the external vocabularies an instance's JSON-LD speaks — schemas/jsonld-prefixes.ts.
+  jsonldPrefixes: {
+    skills: [],
+    gap: "no skill edits `jsonldPrefixes` yet: the rule (declare a vocabulary in the layer that owns it; the published context is generated from what documents use, flattened over `needs`) is documented only in the schema (jsonld-prefixes.ts)",
+  },
   remoteGraphs: { skills: ["library-ingestion", "materialize-remote"] },
   associatedHarnesses: { skills: ["associate-harness"] },
   // Issue #1719. Both name a large-datasets skill, as `remoteGraphs` already

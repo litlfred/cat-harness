@@ -324,7 +324,7 @@ export const DocIdSchema = z
 export const MountSeedSchema = z
   .string()
   .regex(/^[a-z0-9][a-z0-9-]*=[A-Za-z0-9][A-Za-z0-9-]*\/[A-Za-z0-9._-]+@[0-9a-f]{40}$/, "a mount seed is <name>=<owner/repo>@<40-hex sha>")
-  .describe("A remote instance to seed, e.g. smart-base=litlfred/smart-base@<40-hex sha>");
+  .describe("A remote instance to seed, e.g. <instance>=<owner>/<repo>@<40-hex sha>");
 
 /** A GitHub account name, as `consent.by` records who consented. */
 export const LoginSchema = z
