@@ -11,4 +11,5 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `openapi-typologies`, 
 | file | what it is | used by |
 |---|---|---|
 | [`openapi.json`](openapi.json) | OpenAPI 3 documents an instance holds, each verbatim beside a provenance node naming the repository, path and commit it was ingested from (cat-harness's `ope… |  |
+
 <!-- kg:subgraph:end -->

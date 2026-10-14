@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `agent-skills---go
 | [sections](sections/) | 8 |
 | [blocks](blocks/) | 4 |
 | images | 0 |
+
 <!-- kg:subgraph:end -->

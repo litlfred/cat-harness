@@ -47,4 +47,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `memory`, holding `memory
 | [`uses-is-editorial-and-immediate-neighbours-only.md`](uses-is-editorial-and-immediate-neighbours-only.md) | text |  |
 | [`who-owns-which-file-the-split-agents-get-wrong.md`](who-owns-which-file-the-split-agents-get-wrong.md) | text |  |
 | [`why-the-watchdog-exists.md`](why-the-watchdog-exists.md) | text |  |
+
 <!-- kg:subgraph:end -->

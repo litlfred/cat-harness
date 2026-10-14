@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `wang-rangaiah-202
 | [sections](sections/) | 78 |
 | [blocks](blocks/) | 47 |
 | images | 8 |
+
 <!-- kg:subgraph:end -->

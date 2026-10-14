@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `rfc2119-key-words
 | [sections](sections/) | 12 |
 | [blocks](blocks/) | 6 |
 | images | 0 |
+
 <!-- kg:subgraph:end -->

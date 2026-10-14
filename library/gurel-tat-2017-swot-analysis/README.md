@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `gurel-tat-2017-sw
 | [sections](sections/) | 26 |
 | [blocks](blocks/) | 21 |
 | images | 10 |
+
 <!-- kg:subgraph:end -->

@@ -100,6 +100,9 @@
         "cat-harness/uploads-queue"
       ]
     },
+    "suggest-editor": {
+      "covers": []
+    },
     "todos": {
       "covers": [
         "cat-harness/todos"

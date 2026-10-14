@@ -17,4 +17,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `strauch-carbno-20
 | [sections](sections/) | 2 |
 | [blocks](blocks/) | 25 |
 | images | 37 |
+
 <!-- kg:subgraph:end -->

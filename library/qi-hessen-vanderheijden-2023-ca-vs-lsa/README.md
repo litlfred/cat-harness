@@ -18,4 +18,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `qi-hessen-vanderh
 | [sections](sections/) | 48 |
 | [blocks](blocks/) | 24 |
 | images | 1 |
+
 <!-- kg:subgraph:end -->

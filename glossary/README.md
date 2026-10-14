@@ -12,4 +12,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `swimlane-glossary`, hold
 |---|---|---|
 | [`glossary-ledger.json`](glossary-ledger.json) | data |  |
 | [`bootstrap/`](bootstrap/) | _nothing declares what this holds_ | |
+
 <!-- kg:subgraph:end -->
