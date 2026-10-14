@@ -55,9 +55,10 @@ describe("this instance", () => {
   test("cat-harness.json still validates with its table", () => {
     expect(CatHarnessDeclarationSchema.safeParse(decl).success).toBe(true);
   });
-  test("every declared prefix binds the namespace CONTENT_CONTEXT binds it to", () => {
+  test("every declared prefix binds the namespace a hand-kept published context binds it to", () => {
     const table = decl.jsonldPrefixes as Record<string, string>;
-    const published = CONTENT_CONTEXT as unknown as Record<string, unknown>;
+    const subgraph = (JSON.parse(readFileSync(join(ROOT, "ns", "subgraph", "v1.jsonld"), "utf-8")) as { "@context": Record<string, unknown> })["@context"];
+    const published = { ...subgraph, ...(CONTENT_CONTEXT as unknown as Record<string, unknown>) };
     for (const [prefix, iri] of Object.entries(table)) expect([prefix, published[prefix]]).toEqual([prefix, iri]);
   });
 });
