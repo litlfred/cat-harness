@@ -3092,9 +3092,9 @@ function describeValidator(n: ValidatorNode): string {
  * live in the checkout the harness MODULE lives in. That holds in the monorepo
  * and inside a downstream that remote-mounts the harness, and is false the
  * moment the tools run standalone against another checkout — a sibling clone of
- * cat-harness-tools checking `smart-ra`: `smart-base.json` declares the
+ * the tools layer checking a downstream folio: a layer's declaration there declares the
  * `fhir-artifact-index` kind that a layer mounted only in the downstream
- * (mounted in `smart-ra`, absent beside the standalone clone) contributes, so `readDeclaration` threw "unknown
+ * (mounted in the folio, absent beside the standalone clone) contributes, so `readDeclaration` threw "unknown
  * graph typology" over a declaration that is correct. The mounted copy of the
  * same script passed. Two layouts, two answers about one file.
  */
