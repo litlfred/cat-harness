@@ -1,6 +1,7 @@
 ---
 title: Processes
 nav_exclude: true
+generated: gen-processes-viz.ts — do not hand-edit; edit the diagram, then run `bun run cat processes:viz`
 rendered-by: processes-viewer
 ---
 
@@ -70,7 +71,7 @@ Each page shows the diagram, what it is for, who acts in it, every step with the
 | [CRDM Phase 6 — implement, MVP, acceptance](crdm-deliver.html) | 9 | — |
 | [CRDM — link the work to an issue](crdm-issue-linking.html) | 4 | — |
 | [CRDM Phase 1 — needs](crdm-needs.html) | 4 | — |
-| [CRDM Phases 2–4 — BPA and requirements](crdm-requirements-definition.html) | 5 | — |
+| [CRDM Phases 2–4 — BPA and requirements](crdm-requirements-definition.html) | 6 | — |
 | [CRDM requirements](crdm-requirements.html) | 9 | — |
 | [CRDM Phase 5 — beans and sign-off](crdm-signoff.html) | 7 | — |
 | [Render a Knowledge Graph to a CDN](render-kg-to-cdn.html) | 3 | — |
@@ -260,7 +261,7 @@ The reverse of `<bootstrap.processes:skill ref>`, which is the join nothing else
 | [`session-context`](../../../reference/skill-instructions/session-context.html) | [`session-state-machine.bpmn`](session-state-machine.html) |
 | [`site-presentation-assets`](../../../reference/skill-instructions/site-presentation-assets.html) | [`review-code.bpmn`](review-code.html) |
 | [`skills-and-tools`](../../../reference/skill-instructions/skills-and-tools.html) | [`review-code.bpmn`](review-code.html) |
-| [`staging-review`](../../../reference/skill-instructions/staging-review.html) | [`feature-staging.bpmn`](feature-staging.html), [`upstream-version-adoption.bpmn`](upstream-version-adoption.html), [`content-change-review.bpmn`](content-change-review.html), [`public-comment.bpmn`](public-comment.html) |
+| [`staging-review`](../../../reference/skill-instructions/staging-review.html) | [`review-task.bpmn`](review-task.html), [`crdm-deliver.bpmn`](crdm-deliver.html), [`code-change-review.bpmn`](code-change-review.html), [`feature-staging.bpmn`](feature-staging.html), [`upstream-version-adoption.bpmn`](upstream-version-adoption.html), [`content-change-review.bpmn`](content-change-review.html), [`public-comment.bpmn`](public-comment.html) |
 | [`stalled-agent-triage`](../../../reference/skill-instructions/stalled-agent-triage.html) | [`stalled-agent-triage.bpmn`](stalled-agent-triage.html) |
 | [`sub-kg-lifecycle`](../../../reference/skill-instructions/sub-kg-lifecycle.html) | [`mount-subgraph.bpmn`](mount-subgraph.html), [`sub-kg-lifecycle.bpmn`](sub-kg-lifecycle.html) |
 | [`swot-analysis`](../../../reference/skill-instructions/swot-analysis.html) | [`swot-analysis.bpmn`](swot-analysis.html) |
@@ -280,7 +281,7 @@ The reverse of `<bootstrap.processes:skill ref>`, which is the join nothing else
 | [`voice-editorial-review`](../../../reference/skill-instructions/voice-editorial-review.html) | [`review-narrative.bpmn`](review-narrative.html) |
 | [`voice-overlay-review`](../../../reference/skill-instructions/voice-overlay-review.html) | [`review-narrative.bpmn`](review-narrative.html), [`voice-review.bpmn`](voice-review.html) |
 | [`watch`](../../../reference/skill-instructions/watch.html) | [`code-change-review.bpmn`](code-change-review.html), [`content-change-review.bpmn`](content-change-review.html) |
-| [`wireframe-design-review`](../../../reference/skill-instructions/wireframe-design-review.html) | [`wireframe-design-review.bpmn`](wireframe-design-review.html) |
+| [`wireframe-design-review`](../../../reference/skill-instructions/wireframe-design-review.html) | [`crdm-requirements-definition.bpmn`](crdm-requirements-definition.html), [`wireframe-design-review.bpmn`](wireframe-design-review.html) |
 
 ## Who appears in a process?
 

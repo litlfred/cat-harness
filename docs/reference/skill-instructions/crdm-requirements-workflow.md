@@ -529,6 +529,15 @@ When a round of implementation is complete (one or more beans resolved):
 - [`coordinate.md`](coordinate.md) — session coordination
 - [Publication workflow](https://litlfred.github.io/folio-assistant/docs/cat-harness/process/publication-workflow.html) — the content lifecycle this fits within
 - Issue [#203](https://github.com/litlfred/folio-assistant/issues/203)
+
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](staging-review.md) §"The deep-link rule".
 {% endraw %}
 
 ## Processes that run this skill

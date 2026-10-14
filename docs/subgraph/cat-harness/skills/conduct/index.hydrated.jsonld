@@ -2,6 +2,7 @@
   "@context": "https://litlfred.github.io/folio-assistant/ns/subgraph/v1.jsonld",
   "@id": "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/skills/conduct/",
   "@type": "bootstrap:Subgraph",
+  "_generated": "gen-subgraph-jsonld.ts — do not hand-edit; run `bun run cat subgraph:jsonld`",
   "hasSubgraph": [
     {
       "@id": "https://litlfred.github.io/folio-assistant/subgraph/cat-harness/skills/conduct/conduct-core/",
@@ -195,13 +196,13 @@
           "hasInstructions": true,
           "inPackage": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#package/conduct-core",
           "inSubgraph": "https://litlfred.github.io/folio-assistant/cat-harness.jsonld#directory/skills",
-          "instructionLines": 609,
+          "instructionLines": 610,
           "instructionsPath": "skills/conduct/conduct-core/interaction-modality.md",
           "name": "interaction-modality",
           "payload": {
-            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6218b4282105a39571d981da26b974b2884284aa07931dab9c4b171cee548564",
-            "bytes": 34570,
-            "sha256": "6218b4282105a39571d981da26b974b2884284aa07931dab9c4b171cee548564"
+            "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6b5bfc53e2f55119912dfb88e4af04d1f5d281d22d5b8a0610d3639dcd271b75",
+            "bytes": 34682,
+            "sha256": "6b5bfc53e2f55119912dfb88e4af04d1f5d281d22d5b8a0610d3639dcd271b75"
           },
           "title": "/interaction-modality — ask in a form the person can answer"
         },

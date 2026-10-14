@@ -162,10 +162,11 @@ for themselves — it points at the page, not at the site it is on.** Owner,
 2026-09-21, after three turns of being handed a staging root while being asked
 about one page on it: *"next time give appropraite link
 …/STAGING/<branch>/who-iris/"*. Linking the root hands the reader a route the
-agent already knew, and hands it to somebody who types with difficulty. Full
-rule, with the failure it also hides:
-[`continual-progress`](continual-progress.md) §"Link the PAGE, never the site
-root".
+agent already knew, and hands it to somebody who types with difficulty. The rule
+and where the page list comes from:
+[`staging-review`](staging-review.md) §"The deep-link rule"; the failure it also
+hides: [`continual-progress`](continual-progress.md) §"Link the PAGE, never the
+site root".
 
 Six parts, in order:
 

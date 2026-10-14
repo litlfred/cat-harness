@@ -126,11 +126,20 @@ what "done" was.
    git/branch/PR rules — do not re-derive these; reuse the project's
    standing lean-direct recipe and "push branch, parent PRs+merges"
    convention).
-3. **Launch all agents in a single message** (multiple `Agent` tool calls)
+3. **Name the skills that govern the front** in the brief, by path, and
+   quote the rules they set that the work could touch — rendering, layering,
+   what is forbidden. An agent cannot follow a rule it was never pointed at,
+   and "fix the site" read without `ig-render-jekyll` produced a site that
+   copied the IG Publisher's HTML, which that skill forbids (owner,
+   2026-10-14: *"I DO NOT WANT THE IG PUBLISHER HTML"*). If the skills are
+   served over MCP and the server is unreachable, read them from the mounted
+   layers (`<layer>/skills/**`) instead: an unreachable server is never a
+   reason to work without them.
+4. **Launch all agents in a single message** (multiple `Agent` tool calls)
    so they run concurrently. Record each returned `agentId` ↔ `<LABEL>`
    mapping in a scratch note (`/tmp/<session>-dispatch-map.txt`) so the
    heartbeat can label rows even before an agent's first block lands.
-4. **Immediately arm the heartbeat** (§3). Do not end the turn without it.
+5. **Immediately arm the heartbeat** (§3). Do not end the turn without it.
 
 ---
 
@@ -242,6 +251,9 @@ When an agent emits `⟦DONE⟧` (or the harness notifies completion):
 - **Reading the full transcript** — tailing/`cat`-ing the `*.output`
   JSONL into context instead of using the targeted extractor. Overflows
   context and defeats the point.
+- **A brief with no governing skills** — dispatching a front without naming
+  the skills that rule it (§2 step 3). The agent then decides a design
+  question the owner already ruled on, and the PR carries it in.
 - **Trusting the DONE line** — merging on an agent's self-reported
   "exit 0" without the parent's own lean-direct re-verification.
 - **Wrong cadence** — 5-minute or "when I remember" ticks when the user

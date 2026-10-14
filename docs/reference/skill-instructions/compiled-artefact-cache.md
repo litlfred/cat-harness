@@ -81,6 +81,7 @@ Preserving these intermediates is what makes subsequent incremental builds (such
 | Key Inputs | `toolchain` (Lean version), `sourceRevision` | `toolchain` (Publisher version), `sourceRevision`, `inputDigest` |
 | Storage Branch | `lake-cache/<package>-<toolchain>` | `fhir-ast/<ig-package-id>` |
 | Service Script | `lake-cache.sh` (9 verbs) | `ig-cache.sh` (7 verbs) |
+| Refreshed by | an agent's `lake-cache.sh contribute` | a reusable workflow of the IG layer, on a runner (the Publisher needs Java and a 10 GB heap), which each IG repository dispatches; a site build refuses an AST that is not valid (owner, 2026-10-14) |
 | Cone Engine | Lake's `.trace`-based dependency graph | SUSHI's `fsh-index.json` (forward: file → resource) + `fsh-cone.ts` (reverse: who uses this file) + `AstPlanCli` |
 | Incremental | `lake build` (only stale modules) | `IncrementalBuildCli` (cone rebuild loop) |
 
@@ -92,7 +93,7 @@ from source `.fsh` file to output FHIR resource, with source locations. The AST
 exporter copies it into the AST directory; the incremental planner reads it
 there. No modification to SUSHI is needed.
 
-`fsh-cone` (the tools layer's `pipeline/fsh-cone.ts`) provides the **reverse**
+`fsh-cone` (a Tool node, declared by the FHIR IG layer) provides the **reverse**
 half — who depends on a file — so a changed RuleSet- or Alias-only file (which
 produces no resource itself) can be traced to the resources it affects. These two
 maps together give the planner a complete cone.
