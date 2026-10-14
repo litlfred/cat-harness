@@ -79,6 +79,7 @@ node_modules/
 /docs/_data/harness.json
 /docs/_includes/generated/navbar-footer.html
 /site-chrome/assets/css/avatars.css
+/docs/cat-harness/kind-table.md
 /docs/assets/beans/
 /docs/assets/todos/count.json
 /docs/assets/todos/index.json
