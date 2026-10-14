@@ -5,13 +5,13 @@ status: todo
 type: feature
 priority: normal
 created_at: 2026-10-09T15:29:13Z
-updated_at: 2026-10-09T15:29:13Z
+updated_at: 2026-10-14T15:40:00Z
 parent: folio-assistant-f6gq
 ---
 
 Layer of f6gq beside core; needs pxtk. The largest: ~740 imports in 286 files.
 
 ## Done when
-- [ ] the imports become package imports
-- [ ] the pin check
-- [ ] tests: no new failure
+- [x] the imports become package imports — cat-harness-tools `b61b9fd`: 1,048 specifiers rewritten to `@litlfred/cat-harness/…` / `@litlfred/bootstrap-tools/…`; the only `../` left is a generated string (`adapters/mcp-server/server.ts:130`)
+- [ ] the pin check — as pxtk defines it (package pin == mounted commit, a check fails on a difference). OPEN: same owner question as cruz box 1, whether "the mount pin IS the pin" (`mount:remote:check` holding the locked tree digest) is accepted
+- [x] tests: no new failure — `b61b9fd` reports the same failure set before and after
