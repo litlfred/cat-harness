@@ -474,6 +474,46 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/corpus-search",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Search the corpus and follow the graph"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Seed lexically over the authored folio and every declared library, then expand along graph edges, labelling each hit MATCHED or REACHED and by which edge. Counts are split authored vs ingested, and a root that exists but holds no graph nodes is reported rather than read as an empty answer."
+        }
+      ],
+      "skos:notation": "corpus-search",
+      "dcterms:source": "cat-harness/tools/mcp.ts#corpus-search",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/declaration-resolution",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Every path a declaration names resolves — directories, assets, visualisers, needs"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Read every instance declaration in the checkout and resolve what it names: `directories` (and those declared from within) through `check:declared-dirs`, `assets` through `check:declared-assets`, `visualisers[].renderedBy` through `check:visualiser-routes`, `needs` through the instance-graph resolver, and `visualisers[].coversKinds` against the graph typologies registered IN THIS CHECKOUT — its own and those a mounted layer contributes, read from the checkout under inspection rather than from where the harness module sits (lesson 6). A declaration that does not parse is a finding. One verdict per instance and field, naming the gate that decided it. Exit 0 every reference resolves, 1 one does not, 2 could not determine; a certain finding is reported before anything undetermined."
+        }
+      ],
+      "skos:notation": "declaration-resolution",
+      "dcterms:source": "cat-harness/tools/index.ts#declaration-resolution",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/discuss",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -691,6 +731,46 @@
       ],
       "skos:notation": "gates-merged",
       "dcterms:source": "cat-harness/tools/index.ts#gates-merged",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/get-graph-stats",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Content graph counts"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Node and edge counts for the content graph by provenance and kind, and whether each root exists. Tells 'nothing matched' from 'that population has not been built'."
+        }
+      ],
+      "skos:notation": "get-graph-stats",
+      "dcterms:source": "cat-harness/tools/mcp.ts#get-graph-stats",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/get-neighbors",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Walk the content graph from one node"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "List the nodes adjacent to one node, out (what it depends on) or in (what depends on it), to a given depth and optionally over named edge terms only. An unknown edge term is reported, never silently dropped."
+        }
+      ],
+      "skos:notation": "get-neighbors",
+      "dcterms:source": "cat-harness/tools/mcp.ts#get-neighbors",
       "skos:note": "candidate"
     },
     {
@@ -2014,6 +2094,26 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/search-graph",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Lexical search over the content graph"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Find graph nodes, authored or ingested, whose label, title, kind or tags contain a string, with no graph expansion. corpus-search composes this with a neighbour walk."
+        }
+      ],
+      "skos:notation": "search-graph",
+      "dcterms:source": "cat-harness/tools/mcp.ts#search-graph",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/secrets-check",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -2051,6 +2151,26 @@
       ],
       "skos:notation": "security-gate",
       "dcterms:source": "cat-harness/tools/index.ts#security-gate",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/separation-cutover-check",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Is this repository's cutover from the monorepo complete? Measured, condition by condition"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Run in a separated repository. Six conditions, each decided by an existing gate: `mounts` (every declared layer on disk at its pin — `remote-mount --check`), `declarations` (every path a declaration names resolves — `declaration-resolution`), `monorepo-paths` (no wiring still names the monorepo: `livesAt` on it, a submodule of it, a reusable workflow called from it, a path into its old checkout — the one condition implemented here), `import-direction` and `reference-direction` (no layer reaches a layer above it), and `site` (the site builds from the mounts alone, every link resolving — `build-instance-site --no-mount`, only with `--site`). Findings inside a MOUNTED layer are listed and not counted: a defect in a layer pinned from upstream is fixed upstream and re-pinned. Exit 0 complete, 1 a condition failed, 2 a condition could not be determined or was not run — without `--site` the answer is never 0."
+        }
+      ],
+      "skos:notation": "separation-cutover-check",
+      "dcterms:source": "cat-harness/tools/index.ts#separation-cutover-check",
       "skos:note": "candidate"
     },
     {
