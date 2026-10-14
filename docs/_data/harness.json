@@ -4812,6 +4812,10 @@
             "summary": "{ check:glossary, glossary:pot:check, check:catalogue, check:materialized-fixity, check:voices, dc:render:check, kg:materialize:check }"
           },
           {
+            "key": "gateExemptions",
+            "summary": "{ steps }"
+          },
+          {
             "key": "contentAdapters",
             "summary": "1 entry"
           },
