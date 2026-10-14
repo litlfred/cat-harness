@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `omg-2013-bpmn-2-0
 | [sections](sections/) | 0 |
 | [blocks](blocks/) | 0 |
 | images | 0 |
+
 <!-- kg:subgraph:end -->

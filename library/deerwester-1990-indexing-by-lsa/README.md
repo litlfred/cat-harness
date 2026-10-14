@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `deerwester-1990-i
 | [sections](sections/) | 68 |
 | [blocks](blocks/) | 34 |
 | images | 0 |
+
 <!-- kg:subgraph:end -->

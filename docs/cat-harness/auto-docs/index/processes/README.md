@@ -17,4 +17,5 @@ Part of [C@T Harness](../../../../../README.md) 0.1.0, declared as `index-proces
 | [`sci-processes/`](sci-processes/) | _nothing declares what this holds_ | |
 | [`smart-base-house-processes/`](smart-base-house-processes/) | _nothing declares what this holds_ | |
 | [`smart-base-processes/`](smart-base-processes/) | _nothing declares what this holds_ | |
+
 <!-- kg:subgraph:end -->

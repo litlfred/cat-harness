@@ -14,4 +14,5 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `voices`, holding `voi
 | [`agent-skill-authoring/`](agent-skill-authoring/) | _nothing declares what this holds_ | |
 | [`secure-code-authoring/`](secure-code-authoring/) | _nothing declares what this holds_ | |
 | [`vendors/`](vendors/README.md) | Vendor voices: the base `agent-skill-authoring` voice specialised for one agent vendor each. Each vendor is its own sub-graph, declared by `vendors/vendors.json`. | |
+
 <!-- kg:subgraph:end -->

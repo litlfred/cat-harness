@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `skill-authoring-b
 | [sections](sections/) | 64 |
 | [blocks](blocks/) | 35 |
 | images | 3 |
+
 <!-- kg:subgraph:end -->

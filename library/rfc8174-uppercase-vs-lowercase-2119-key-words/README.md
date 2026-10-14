@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `rfc8174-uppercase
 | [sections](sections/) | 16 |
 | [blocks](blocks/) | 8 |
 | images | 0 |
+
 <!-- kg:subgraph:end -->

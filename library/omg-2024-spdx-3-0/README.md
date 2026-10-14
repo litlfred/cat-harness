@@ -17,4 +17,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `omg-2024-spdx-3-0
 | [sections](sections/) | 802 |
 | [blocks](blocks/) | 413 |
 | images | 13 |
+
 <!-- kg:subgraph:end -->

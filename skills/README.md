@@ -25,4 +25,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `skills`, holding `skills
 | [`skill-definitions/`](skill-definitions/) | _nothing declares what this holds_ | |
 | [`ui/`](ui/) | How the corpus is rendered, published and presented: the docs site, viewers, boards, themes, and their QC. | |
 | [`voices/`](voices/README.md) | described in its own README | |
+
 <!-- kg:subgraph:end -->

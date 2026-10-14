@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `dusengumuremyi-20
 | [sections](sections/) | 12 |
 | [blocks](blocks/) | 6 |
 | images | 1 |
+
 <!-- kg:subgraph:end -->

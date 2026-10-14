@@ -12,4 +12,5 @@ Part of [C@T Harness](../../../../README.md) 0.1.0, declared as `glossary`, hold
 |---|---|---|
 | [`index.html`](index.html) | a file |  |
 | [`swimlane-glossary/`](swimlane-glossary/) | _nothing declares what this holds_ | |
+
 <!-- kg:subgraph:end -->
