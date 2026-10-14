@@ -48,6 +48,7 @@ node_modules/
 /docs/reference/skill-instructions/
 /docs/en/cat-harness/processes/
 /docs/en/cat-harness/cat-harness-declaration/
+/docs/assets/glossary/cat-harness-tools--kg-tools.skos.jsonld
 /docs/assets/glossary/fhir-harness--kg-bpmn-activities.skos.jsonld
 /docs/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld
 /docs/assets/glossary/fhir-harness--kg-skills.skos.jsonld

@@ -977,6 +977,7 @@
     {"path": "docs/reference/skill-instructions/", "writer": ["skills:docs"], "because": "checkout", "reason": "a page per skill of every instance (measured: drifted on fhir-harness and folio-assistant-core skills at the current pins)"},
     {"path": "docs/en/cat-harness/processes/", "writer": ["processes:viz"], "because": "checkout", "reason": "a page per diagram of every instance, 32 of 100 of them other instances' (measured: a foreign task name rewrote public-comment.md)"},
     {"path": "docs/en/cat-harness/cat-harness-declaration/", "writer": ["node-kind:pages"], "because": "checkout", "reason": "a page per instance declaration in the checkout"},
+    {"path": "docs/assets/glossary/cat-harness-tools--kg-tools.skos.jsonld", "writer": ["glossary:export"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/fhir-harness--kg-bpmn-activities.skos.jsonld", "writer": ["glossary:export"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld", "writer": ["glossary:export"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/fhir-harness--kg-skills.skos.jsonld", "writer": ["glossary:export"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
