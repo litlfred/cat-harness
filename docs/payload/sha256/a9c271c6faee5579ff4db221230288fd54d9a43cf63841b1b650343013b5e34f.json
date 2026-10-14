@@ -1,0 +1,6 @@
+{
+  "$schema": "cat-harness-payload/v1",
+  "bytes": 46868,
+  "mediaType": "application/json",
+  "sha256": "a9c271c6faee5579ff4db221230288fd54d9a43cf63841b1b650343013b5e34f"
+}

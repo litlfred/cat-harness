@@ -4,9 +4,24 @@
   "@type": "bootstrap:Subgraph",
   "hasMember": [
     {
+      "@id": "cat-harness:graphTypology/bean-defs",
+      "@type": "bootstrap:GraphTypology",
+      "name": "bean-defs"
+    },
+    {
+      "@id": "cat-harness:graphTypology/bean-notes",
+      "@type": "bootstrap:GraphTypology",
+      "name": "bean-notes"
+    },
+    {
       "@id": "cat-harness:graphTypology/sweep-marks",
       "@type": "bootstrap:GraphTypology",
       "name": "sweep-marks"
+    },
+    {
+      "@id": "cat-harness:graphTypology/workflow-state",
+      "@type": "bootstrap:GraphTypology",
+      "name": "workflow-state"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness-tools/cat-harness-tools.jsonld#asset/agent-instructions",
@@ -24,9 +39,9 @@
       "@type": "bootstrap:Asset",
       "name": "instance-readme",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ee87b53628c69d15ae114533d0e7393221beb6c3e8e9a83a4963801b63e06d43",
-        "bytes": 1014,
-        "sha256": "ee87b53628c69d15ae114533d0e7393221beb6c3e8e9a83a4963801b63e06d43"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f7887bc8b82d28535858c9c241bbcac67945b310d0a486d0e33b2dfe588fb624",
+        "bytes": 2171,
+        "sha256": "f7887bc8b82d28535858c9c241bbcac67945b310d0a486d0e33b2dfe588fb624"
       },
       "title": "cat-harness-tools"
     },
@@ -35,9 +50,9 @@
       "@type": "bootstrap:Asset",
       "name": "npm-manifest",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/d0b4c3ec8ce6cf3e1e68958d1484ed5e47290aaa68faf49de31fafbd0f5af6b1",
-        "bytes": 45507,
-        "sha256": "d0b4c3ec8ce6cf3e1e68958d1484ed5e47290aaa68faf49de31fafbd0f5af6b1"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a9c271c6faee5579ff4db221230288fd54d9a43cf63841b1b650343013b5e34f",
+        "bytes": 46868,
+        "sha256": "a9c271c6faee5579ff4db221230288fd54d9a43cf63841b1b650343013b5e34f"
       },
       "title": "package.json"
     },
@@ -95,6 +110,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness-tools/cat-harness-tools.jsonld#directory/cat-harness-tools-tests",
       "@type": "bootstrap:Subgraph",
       "name": "cat-harness-tools-tests"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness-tools/cat-harness-tools.jsonld#directory/cat-harness-tools-tools",
+      "@type": "bootstrap:Subgraph",
+      "name": "cat-harness-tools-tools"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness-tools/cat-harness-tools.jsonld#directory/folio-templates",
