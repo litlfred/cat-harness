@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: crdm-deliver\n"
-"POT-Creation-Date: 2026-10-09T20:40:53.542Z\n"
+"POT-Creation-Date: 2026-10-14T17:46:06.484Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -206,7 +206,7 @@ msgstr ""
 
 #: processes/process/crdm-deliver.bpmn:91
 #. Diagram element documentation
-msgid "What was accomplished, what remains, and links to the updated content for review."
+msgid "What was accomplished, what remains, and the staging links: one deep link per changed page on the preview, with the same page on main (staging-review, \"The deep-link rule\")."
 msgstr ""
 
 #: processes/process/crdm-deliver.bpmn:138
