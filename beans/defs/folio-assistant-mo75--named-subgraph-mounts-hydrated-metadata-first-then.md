@@ -5,7 +5,7 @@ status: todo
 type: feature
 priority: normal
 created_at: 2026-10-09T11:22:06Z
-updated_at: 2026-10-09T15:34:50Z
+updated_at: 2026-10-14T16:10:00Z
 parent: folio-assistant-0mpw
 ---
 
@@ -25,6 +25,7 @@ Proposal: `cat-harness/docs/proposals/semantic-subgraphs-2026-10-09.md`, Option 
 - [ ] G3: `overrides.<instance>.directories` and `kg:materialize` accept NESTED subgraph ids and NODE ids, resolved through `resolveDirectories` / the hydrated index; code nodes bring their import closure (`check:tools-closure`)
 - [ ] concern names: `"sdlc"` at the top level expands to its kind-first members (`docs/sdlc`, `skills/sdlc`, `processes/sdlc`, `scripts/sdlc`), derived from the `concern-groups/v1` declarations, checked by `check:concern-groups`
 - [ ] the CHOICE made in review is written back to the mount entry (the choice, never the state), so a fresh clone replays it; `index.lock.json` records what it resolved to
+- [ ] package exports derived from declared `code` subgraphs, checked (owner 2026-10-14, option 1) — litlfred/cat-harness-tools#198 (`scripts/package-exports.ts`; also declares `tools/`)
 - [ ] end to end: "load tools metadata, review, materialize three Tools" from a downstream checkout
 
 Related: `whlc` (KG publication, named subgraphs), `fnx4` (subscriptions), `9umr` (concern groups).
@@ -36,3 +37,6 @@ Related: `whlc` (KG publication, named subgraphs), `fnx4` (subscriptions), `9umr
 - **54rk** (completed): the cache for on-demand subgraph materialization. G3's "materialize a chosen set" after review reuses it, and the five gates of `materialize-remote`.
 - **1g4s** (completed): nested entries carry `subgraph: true` and inherit as named members — those are the mountable units G3 names.
 - **c1m4** (completed): the `index.jsonld` / `index.hydrated.jsonld` pair per subgraph — what G1 must publish for `tools/`.
+
+## 2026-10-14 — declaration rule (owner: option 1, with per-Tool folders kept)
+Where a folder sits decides how it is declared: under the harness root in `<harness>.json`; inside a declared folder from within; a one-node folder (one Tool, one voice) not at all. One folder per Tool (`tools/<stub>/`, re-exported by `tools/index.ts`) is the recommended layout for a multi-file Tool. Guidance: litlfred/cat-harness#198. G3 still needs 2j2r: `remote-mount` reads top-level ids only.
