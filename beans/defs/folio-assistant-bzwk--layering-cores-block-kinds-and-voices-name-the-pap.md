@@ -1,11 +1,11 @@
 ---
 # folio-assistant-bzwk
 title: 'LAYERING: core''s block kinds and voices name the ''paper'' content adapter, which only folio-assistant-sci declares; without sci BLOCK_KINDS is empty and no voice loads'
-status: todo
+status: completed
 type: bug
 priority: high
 created_at: 2026-10-11T05:50:58Z
-updated_at: 2026-10-11T05:50:58Z
+updated_at: 2026-10-14T14:00:00Z
 ---
 
 Found 2026-10-11 while moving litlfred/smart-ra onto remote mounts (bean n3h9).
@@ -25,9 +25,9 @@ A layer's kinds are not usable without a layer that does not sit beneath it: sci
 smart-ra#37 mounts folio-assistant-sci explicitly.
 
 ## Done when
-- [ ] the `paper` content adapter is declared where its block kinds are (core), or core's kinds name an adapter core declares, or core `needs` the layer that declares it. Owner to pick.
-- [ ] qa-sweep runs from a closure without folio-assistant-sci
-- [ ] smart-ra drops the sci mount
+- [x] the `paper` content adapter is declared where its block kinds are (core), or core's kinds name an adapter core declares, or core `needs` the layer that declares it. Owner to pick. — option B: core declares its own `document` adapter (folio-assistant-core `05f09d8`)
+- [x] qa-sweep runs from a closure without folio-assistant-sci — smart-ra's `qa-sweep` check passed on litlfred/smart-ra#58 (2026-10-14 13:15Z) with no sci mount
+- [x] smart-ra drops the sci mount — smart-ra's `index.lock.json` mounts no folio-assistant-sci (AGENTS.md: "no longer mounted… since bean bzwk")
 
 ## 2026-10-12 — owner ruling: option B (session https://claude.ai/code/session_017fFnGmbJcfqqrHXz9oqxdG)
 Owner: *"B, multiple adapter for same assets ok"* (after proposing "mathpaper").
@@ -48,3 +48,7 @@ Owner: *"1 document, 2 drop"*.
 - It takes companion roles md and ts only, with NO lean. Only `mathpaper` kinds carry a `.lean` sibling. Existing folios with a lean companion on a document kind must be checked before step 3.
 - The class adapters (contentType document / paper) are unchanged.
 - The six-step PR plan (subagent research, 2026-10-12) is in the session. Step 1 makes cat-harness adapter-generic: ContentAdapter becomes a string, ADAPTER_BLOCK_KINDS is derived, the criterionAdapters default is every typed adapter, and a temporary `paper` alias is added.
+
+## Summary of Changes
+
+Done by the 2026-10-12 work above (core's `document` adapter, smart-ra unmounting sci); closed during the 2026-10-14 bean drain with the evidence ticked in place (session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs).
