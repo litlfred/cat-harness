@@ -18,7 +18,7 @@ anyone else, or worse, fires wrongly.
 ## The mechanism already exists and works
 
 `folioOptionalAxes()` in `pipeline/qa-criteria-registry.ts`. A folio
-opts in through `<name>.config.json`:
+opts in through its config, inline in its `index.config.json` entry:
 
 ```json
 { "qaAxes": ["q-usage"] }
