@@ -168,11 +168,12 @@ bun run cat kg:materialize --nodes <subscription> <subgraph-path>   # e.g. --nod
 
 ## Instantiating a harness
 
-`kg:instantiate` writes `<harness>.config.json` at the repository root, plus
-the state directories the harness declares. **Where the checkout has a root
-`index.config.json`, it also adds the harness to `instances[]`**, because the
-index is then what reads as **instantiated**: a root config it does not list
-fails `check:landing-instance`. The rule is
+`kg:instantiate` writes the state directories the harness declares and its
+config. **Where the checkout has a root `index.config.json`, the config goes
+INLINE in a new `instances[]` entry** and no `<harness>.config.json` is
+written (bean `ymvt`: the index is the one config, and it is then what reads
+as **instantiated**). Only a checkout with no index gets a root
+`<harness>.config.json`. The rule is
 [`index-config`](index-config.md)'s. Instantiation is what [`harness-tiles`](harness-tiles.md)
 reads, and what puts the harness in the navbar's bottom region. `check:instance-render` must be green afterwards; a config that renders
 nothing is a navbar entry pointing nowhere. A harness already instantiated at

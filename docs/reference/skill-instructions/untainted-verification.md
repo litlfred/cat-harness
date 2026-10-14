@@ -186,5 +186,4 @@ fencing it and saying so is the honest move.
 |---|---|
 | [Adjudication](../../en/cat-harness/processes/adjudication.html) | Dispatch with adjudicator_sees — never the artefact |
 | [Test-plan execution](../../en/cat-harness/processes/test-plan-execution.html) | Re-execute a sample, blind to the tester's verdicts |
-| [Ingestion subprocess — the L1 completeness gate](../../en/cat-harness/processes/ingest-l1-completeness-gate.html) | Round-trip translation QA |
 

@@ -163,13 +163,15 @@ withholding** — the artefact is technically reachable and practically hidden.
 ([`deployment-awareness`](deployment-awareness.md)), never a
 guess:
 1. **GitHub Pages (static host):** When Pages is configured (e.g. `pagesBaseUrl`
-   is declared in `<name>.config.json`), the staging workflow deploys to
+   is declared in the instance's `index.config.json` entry), the staging workflow deploys to
    `…/STAGING/<branch-slug>/`, and Jekyll rewrites `baseurl` so paths mirror
    `docs/`. A page at `docs/concepts/architecture/foo.md` is at
    `…/STAGING/<slug>/architecture/foo.html`; a skill at
    `skills/<pkg>/bar.md` is at
-   `…/STAGING/<slug>/reference/skill-instructions/bar.html`. Derive one per
-   changed file rather than guessing which the reader wants.
+   `…/STAGING/<slug>/reference/skill-instructions/bar.html`. Those paths say where a page *would* land; the links themselves come from the
+   preview's page list, each looked up in the publish ref, as
+   [`staging-review`](staging-review.md) §"The deep-link rule" requires, never built
+   from a source path.
 2. **Local server (dynamic host):** When running a local preview (e.g. Bun
    `serve:rendering`), report the local loopback host and port.
 3. **Chat discussion only:** When no web server or UI canvas is active,

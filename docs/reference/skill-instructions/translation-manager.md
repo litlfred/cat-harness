@@ -585,7 +585,7 @@ reader, whatever locale they chose, which is the bug this section records.
 
 ## Six UN languages
 
-The default `supportedLocales` in `<name>.config.json`:
+The default `supportedLocales` in the instance's config (its `index.config.json` entry):
 
 | Code | Language | Native |
 |---|---|---|
@@ -713,6 +713,15 @@ provides smooth 0.4s transitions for sidebar and content layout:
 When presenting translated content for review, use the `staging-review`
 skill to provide before/after URL comparison tables. See
 `schemas/staging.ts` for the `StagingComparison` schema.
+
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](staging-review.md) §"The deep-link rule".
 {% endraw %}
 
 ## Processes that run this skill
@@ -722,5 +731,4 @@ skill to provide before/after URL comparison tables. See
 | [Narrative review](../../en/cat-harness/processes/review-narrative.html) | Review the translation |
 | [Human Translation Workflow](../../en/cat-harness/processes/human-translation-workflow.html) | Identify content and target locale; Assign to qualified human translator; Check translation completeness; Request completion of remaining strings; Receive assignment and materials; Translate strings in preferred tool; Submit completed .po file; Review translation for accuracy; Return for correction with annotations; Sign off translation as official; Extract POT (translatable strings); Prepare domain glossary; Inject PO → translated Markdown; Round-trip translation QA; Append WHO disclaimer (if DAK); Write status.json (official) |
 | [Translation Workflow](../../en/cat-harness/processes/translation-workflow.html) | Extract translatable strings (POT generation); Produce translation (PO file); Inject translations (PO → Markdown); Round-trip translation QA (back-translate); Adjudicate flagged passage (human reviewer) (calls a sub-process); Edit the flagged passage and re-inject; Write status.json (unofficial); Sign off translation (human adjudicator); Write status.json (official); Check staleness (source hash) |
-| [Ingestion subprocess — the L1 completeness gate](../../en/cat-harness/processes/ingest-l1-completeness-gate.html) | Round-trip translation QA |
 

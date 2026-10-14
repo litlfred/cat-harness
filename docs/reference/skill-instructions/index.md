@@ -347,6 +347,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [All UI must follow accessibility guidelines](ui-accessibility.html) | `ui-accessibility` | — | This is a **rule**, stated as one by the owner, and it binds every surface this |
 | [Visualizer loading](visualizer-loading.html) | `visualizer-loading` | — | > Skill id: `visualizer-loading` · Package: `ui-core` · Beans `680p`, `s32v`, |
 | [Wireframe design review](wireframe-design-review.html) | `wireframe-design-review` | — | Method: [`wiregen`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/wiregen.md) |
+| [Wireframe viewport check](wireframe-viewport-check.html) | `wireframe-viewport-check` | — | Step 3 of [`wireframe-design-review`](wireframe-design-review.md): what can be judged without judgem |
 
 ## Content layer (folio-assistant-core)
 
