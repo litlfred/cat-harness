@@ -3306,67 +3306,6 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       requires: { runtime: ["python3"], network: false },
     }),
 
-    // ── The FSH cone, and TWO of three declared contracts refused ─────────
-    //
-    // Group 12 of `d308` (`h588`). `ig-incremental-build · Task_Cone` names
-    // `fsh-cone --changed` in its own task label, so this binding is read off the
-    // diagram rather than inferred.
-    //
-    // **The bean asked for one node satisfying three skills; two are refused, on
-    // their own contracts.** Measured 2026-09-20 against
-    // `schemas/skills/*/input.schema.json`:
-    //
-    //   fhir-validation     requires igRoot                      → SATISFIABLE
-    //   ig-publication      requires igRoot + versionIncrement    → refused
-    //   l3-fhir-authoring   requires artifactType + sourceModel   → refused
-    //
-    // The refusals are not a gap to close later. `fsh-cone` computes a dependency
-    // cone over a FSH graph: it publishes nothing and authors nothing, so it has
-    // no version to increment and no source model to render from. Declaring those
-    // edges would put this node forward as the mechanism for two jobs it does not
-    // do — the `covered-is-not-reachable` shape, manufactured on purpose.
-    //
-    // **Its verification happens downstream, and that is recorded rather than
-    // implied.** The platform carries no folio, so this cannot be exercised here:
-    // `d308`'s correction established the same for six of thirteen groups, so the
-    // posture is the general case, not this group's quirk. What IS checked here is
-    // the one thing that does not need a folio — a missing `<ig-root>` exits 2
-    // with usage, measured, not assumed.
-    defineTool({
-      id: "fsh-cone",
-      title: "FSH dependency cone",
-      description:
-        "Compute the dependency cone over an IG's FSH graph, and the blast radius of a set of changed files. What makes an incremental IG build possible: without it, any edit rebuilds everything.",
-      install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/pipeline/fsh-cone.ts" },
-      io: {
-        inputs: [
-          { name: "igRoot", schema: t("RepoPath"), required: true, arg: { positional: 0 }, description: "The IG root holding the FSH sources. Absent, the command exits 2 with its usage — could-not-determine, not an empty cone." },
-          { name: "csv", schema: t("RepoPath"), required: false, arg: { flag: "--csv" }, description: "Write the report as CSV to this path instead of printing it." },
-          // `--top` and `--history` are now DECLARED: `Count` was added to the
-          // vocabulary on 2026-09-20, once this node and `content-graph-build`
-          // had met the same gap from two directions. Two independent needs is
-          // the bar; one flag wanting a bespoke type is not.
-          { name: "top", schema: t("Count"), required: false, arg: { flag: "--top" }, description: "Show only the N largest cones. `0` is a legitimate request for none, which is why `Count` admits zero." },
-          { name: "history", schema: t("Count"), required: false, arg: { flag: "--history" }, description: "Report the blast radius over the last N commits instead of a static cone." },
-          { name: "fileUsers", schema: t("RepoPath"), required: false, arg: { flag: "--file-users" }, description: "Also write `fsh-file-users/v1`: for each FSH file, the files that use what it declares. The IG AST's incremental plan reads it (`AstPlanCli -fsh-users`) so a changed RuleSet- or Alias-only file reaches its users rather than forcing a full build (bean `a9tx`)." },
-          // `--changed f1,f2,…` stays UNDECLARED, and for a reason the new type
-          // does not touch: it is a comma-separated list inside ONE argv word.
-          // `Slug` forbids the comma, `repeated` would claim the flag may be
-          // given more than once when the script parses a single list, and `Text`
-          // is refused on argv by the injection rule. That gap is about
-          // list-in-one-word, not about numbers.
-        ],
-        outputs: [
-          { name: "cone", schema: t("Text"), description: "The cone, or the impact of `--changed`. With `--csv` it goes to that path instead." },
-        ],
-      },
-      // ONE skill, not the three the bean listed — see the header for why the
-      // other two contracts refuse this mechanism rather than merely lacking it.
-      satisfies: ["fhir-validation"],
-      requires: { runtime: ["bun"], network: false },
-    }),
-
     // ── The round-trip RECORDER, and the two dispatch points it did not need ─
     //
     // Bean `vo9d`, and the owner's answer to it: "1 2 3 are all triggers", then
