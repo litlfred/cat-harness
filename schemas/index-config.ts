@@ -429,7 +429,7 @@ export function addIndexInstance(root: string, entry: IndexInstance): boolean {
 
 /** The canonical text of an index: two-space JSON, `$schema` first, a trailing newline. */
 export function formatIndexConfig(config: IndexConfig): string {
-  const { $schema, _comment, title, description, instances, site } = config;
+  const { $schema, _comment, title, description, instances, site, gateExemptions } = config;
   const ordered = {
     $schema,
     ...(_comment !== undefined ? { _comment } : {}),
@@ -440,6 +440,9 @@ export function formatIndexConfig(config: IndexConfig): string {
       return { name, ...(c !== undefined ? { _comment: c } : {}), ...(imp !== undefined ? { import: imp } : {}), ...(source !== undefined ? { source } : {}), ...rest };
     }),
     ...(site !== undefined ? { site } : {}),
+    // Last, and kept: dropping it here would make every rewrite of the index
+    // silently delete the exemptions of its own workflows.
+    ...(gateExemptions !== undefined ? { gateExemptions } : {}),
   };
   return `${JSON.stringify(ordered, null, 2)}\n`;
 }
