@@ -104,8 +104,8 @@ import { ODRL_ACTIONS } from "./odrl";
 
 import { NS_PREFIXES, termIri } from "./namespaces";
 import { ACTOR_KINDS, SUT_ACTOR_KINDS, SystemUnderTestFacetSchema, type ActorKind, type SystemUnderTestFacet } from "./skill-package";
-import { NETWORK_REACHES, directoryForGraph, type NetworkReach } from "./cat-harness";
-import { instanceRootNamed } from "./instance-roots";
+import { NETWORK_REACHES, directoryForGraph, findInstanceRoot, type NetworkReach } from "./cat-harness";
+import { findDeclarationFile, instanceRootNamed, repoRootFor } from "./instance-roots";
 import { SkillNameSchema } from "./tool-types";
 import { ModelCapabilitiesSchema, type ModelCapabilities } from "./model-capabilities.js";
 
@@ -596,7 +596,66 @@ function scenariosSubdir(repoRoot: string, name: string): string | undefined {
   return scenarios === undefined ? undefined : join(scenarios, name);
 }
 
-export function readRoleGraph(kgRoot: string, lower: ReadonlySet<string> = new Set()): RoleGraph | undefined {
+/**
+ * The role ids declared by every instance the instance holding `kgRoot`
+ * `needs`, transitively: the LOWER instances whose roles a role here may
+ * inherit (placement PR0b).
+ *
+ * {@link readRoleGraph} uses this when a caller passes no `lower`. Before it
+ * did, a caller that passed nothing (`kg-export`, `glossary-export`,
+ * `gen-auto-docs` and others) refused any role inheriting a role from a lower
+ * instance: smart-base's `l1-extraction-reviewer`, which inherits cat-harness's
+ * `reviewer`, stopped every KG export that mounted smart-base. Only `needs` is
+ * followed, never a sibling or a dependent, so a role still cannot inherit
+ * upward and a cross-instance cycle still cannot form.
+ *
+ * `needs` is read from the declaration's JSON, not through `readDeclaration`:
+ * validating a declaration needs the typologies its dependencies contribute,
+ * and this runs while those are being read.
+ */
+export function lowerRoleIds(kgRoot: string): ReadonlySet<string> {
+  const cached = lowerCache.get(kgRoot);
+  if (cached !== undefined) return cached;
+  const out = new Set<string>();
+  lowerCache.set(kgRoot, out);
+  const own = findInstanceRoot(kgRoot);
+  if (own === undefined) return out;
+  const repo = repoRootFor(own);
+  const visited = new Set<string>();
+  const needsOf = (root: string): string[] => {
+    const file = findDeclarationFile(root);
+    if (file === undefined) return [];
+    try {
+      const needs = (JSON.parse(readFileSync(join(root, file), "utf-8")) as { needs?: unknown }).needs;
+      return Array.isArray(needs) ? needs.filter((n): n is string => typeof n === "string") : [];
+    } catch {
+      return [];
+    }
+  };
+  const visit = (root: string): void => {
+    for (const need of needsOf(root)) {
+      if (visited.has(need)) continue;
+      visited.add(need);
+      const lowerRoot = instanceRootNamed(repo, need);
+      if (lowerRoot === undefined) continue;
+      visit(lowerRoot);
+      let scenarios: string | undefined;
+      try {
+        scenarios = directoryForGraph(lowerRoot, "scenarios");
+      } catch {
+        continue;
+      }
+      const g = scenarios === undefined ? undefined : readRoleGraph(scenarios, out);
+      for (const r of g?.roles ?? []) out.add(r.id);
+    }
+  };
+  visit(own);
+  return out;
+}
+
+const lowerCache = new Map<string, Set<string>>();
+
+export function readRoleGraph(kgRoot: string, lower: ReadonlySet<string> = lowerRoleIds(kgRoot)): RoleGraph | undefined {
   // TWO PLACES, because the role graph became a DECLARED DIRECTORY on
   // 2026-09-21 instead of a subdirectory of one.
   //

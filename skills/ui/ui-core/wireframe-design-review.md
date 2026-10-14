@@ -68,6 +68,15 @@ There are no scores and no averages (`methodology-adoption`, Refusals).
 - When entries for one criterion disagree, call **`Process_Adjudication`**. The adjudication leads, the checker's entry is kept, and a dispensation needs its reason.
 - The choice between surviving candidates is **`Process_OptionsAnalysis`**. Rejected candidates stay, each with the reason it lost.
 
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](../../sdlc/sdlc-core/staging-review.md) §"The deep-link rule".
+
 ## Related
 
 - [`theme-ui-review`](theme-ui-review.md): reviews the **ingested graphical assets** in their design, also at both viewports. At ingestion only (bean `9fdi`) — it no longer reviews the built result.

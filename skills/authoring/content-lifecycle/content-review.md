@@ -42,3 +42,12 @@ Findings and a decision — two things, not one. See
 - **Audit notes** — why this outcome, and why each overruled finding was left.
   At least one per decision, each citing corpus evidence. Approving over an open
   `critical` or `blocking` finding without overruling it is a reported problem.
+
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](../../sdlc/sdlc-core/staging-review.md) §"The deep-link rule".
