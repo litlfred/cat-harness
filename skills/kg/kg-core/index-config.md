@@ -3,11 +3,12 @@ name: index-config
 description: >
   `index.config.json` at an instantiation root says which harnesses the
   checkout instantiates, where each one comes from (local, or a remote mount
-  pinned to a SHA), how its `<name>.config.json` is imported and overridden,
-  and which harness `/` is. Covers instantiated against declared, landing
+  pinned to a SHA), each instance's config INLINE in its entry (a legacy
+  `<name>.config.json` is only imported until `--inline` retires it), and
+  which harness `/` is. Covers instantiated against declared, landing
   resolution and its error case, `index.lock.json` and its legacy fallback,
   the reserved `index` stem, the generated `.gitignore` block and its gate,
-  and `index-config:migrate` for separated repositories.
+  and `index-config:migrate` (with `--inline`) for separated repositories.
 adapters: [document, paper, dak]
 profiles: [document, paper]
 consulted: true
@@ -20,6 +21,14 @@ importing `<harness>.config.json` information as needed"*, and later that day *"
 and start the migration NOW"*. The schema is `folio-index-config/v1` in
 `cat-harness/schemas/index-config.ts`, and the proposal with the full
 argument is `cat-harness/docs/proposals/index-config.md`.
+
+**The index is the ONE config.** Owner, bean `ymvt`, restated 2026-10-14:
+*"i thought ONLY index.config.json"*. Each instance's config is written inline
+in its `instances[]` entry. A `<name>.config.json` is a legacy file: imported
+only as a migration step, then retired with `index-config:migrate --inline
+--write`. **Never create one** — not to make a tool find a recipe, not for a
+new instance. If a reader only finds config in the file, that reader is the
+bug; fix it to read the index entry first.
 
 A checkout has one `<base>/index.html`. Before this file, three facts about
 how a checkout is instantiated sat in N+1 places:
@@ -41,7 +50,7 @@ behaviour, unchanged.
     { "name": "cat-harness" },
     { "name": "my-ig", "source": { "remote": { "repository": "owner/my-ig", "ref": "<40-char sha>",
         "overrides": { "my-ig": { "whole": true } }, "trust": { "consent": { "...": "..." } } } } },
-    { "name": "my-guide", "import": "my-guide.config.json", "site": { "landing": false } }
+    { "name": "my-guide", "contentType": "document", "site": { "build": { "sourceSteps": ["site:document"] } } }
   ],
   "site": { "landing": "cat-harness" }
 }
@@ -64,16 +73,17 @@ because a mount's closure brought them in. They keep a group of their own
 rather than disappearing.
 
 A harness that a KG subscription chose is instantiated the same way:
-`kg:instantiate` writes its config and, when the checkout has an index, adds
-its entry there too. Issue #1719.
+`kg:instantiate` adds its entry, with its config inline, when the checkout
+has an index (and only without one writes a root `<name>.config.json`).
+Issue #1719.
 
-## Import, then override
+## Inline, over a legacy import while one remains
 
 Each entry's effective config is built like this:
 
-1. Start from the imported file. That is `import` when it is given, else
-   `<name>.config.json`, and only if the file exists. A harness does not need
-   a config file.
+1. Start from a legacy imported file, while one remains. That is `import`
+   when it is given, else `<name>.config.json`, and only if the file exists.
+   The target state is that no such file exists.
 2. Overlay every other key of the entry (everything except `name`, `import`,
    `source` and `_comment`) as an inline `HarnessConfig` field. Objects merge
    key by key, and arrays and scalars are replaced. Inline fields win.
@@ -82,8 +92,15 @@ Each entry's effective config is built like this:
 returns it for any instance that an index lists, walking outward from the
 instance root and stopping at the first directory that holds either the index
 or the instance's own config. An instance the index does not list is read
-exactly as before. The `<name>.config.json` files stay where they are for
-now, and removing them is a later step taken per harness.
+exactly as before. Readers that are handed a root and a name (the site
+recipe in `build-instance-site.ts`) use `readInstanceConfig` in
+`cat-harness-tools/scripts/instance-config.ts`, which reads the same way and
+REPORTS every legacy file it reads.
+
+**Retiring the files** is `index-config:migrate --inline --write`: each
+imported file is folded into its entry by exactly the overlay above, so no
+effective config changes, and the file is deleted.
+`index-config:inline:check` fails while one remains.
 
 ## Local or remote
 
@@ -137,7 +154,12 @@ They do not use their own location.
   old rule that config instantiates a harness and under the index it does not,
   and nothing should pick between them silently.
 - An `import` that names a missing file also fails the check.
-- An entry with no config file at all is reported and is not a failure.
+- An entry with no config file at all is the target state, and passes.
+- A legacy file an entry still imports is reported every time. It passes
+  while it is a **pending migration** (every key it holds is either not inline
+  or inline with the same value). It **fails** when the entry overrides one of
+  its keys with a different value: the file's value is then dead text that a
+  reader of the file alone takes for the config.
 
 ## A harnessed repository runs its checks on its own pull requests
 
@@ -271,6 +293,8 @@ Checkouts without an index keep the old behaviour.
 bun run cat index-config:migrate                 # print the index it would write, and its findings
 bun run cat index-config:migrate --write         # write it; move remoteMounts; write the block; rename the lock
 bun run cat index-config:migrate --check         # exit 1 when --write would change anything (a gate here)
+bun run cat index-config:migrate --inline --write  # also fold each <name>.config.json into its entry, and delete it
+bun run cat index-config:inline:check            # exit 1 while any imported <name>.config.json remains
 bun run cat index-config:migrate --root <clone>  # a separated repository's standalone checkout
 ```
 

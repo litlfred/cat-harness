@@ -194,26 +194,6 @@
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/bpmn-engine",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "BPMN workflow engine"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Run a declared BPMN process as an instance: `workflow_start` opens one for a subject, `workflow_next` reports what is enabled, `workflow_complete` records a step or answers a decision (a DMN-computed one from `facts`) and REFUSES a step that is not enabled. State is committed under the work plan, so which edge was taken is a record, not a memory."
-        }
-      ],
-      "skos:notation": "bpmn-engine",
-      "dcterms:source": "cat-harness/tools/index.ts#bpmn-engine",
-      "skos:note": "candidate"
-    },
-    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/bpmn-render",
       "@type": "skos:Concept",
       "skos:inScheme": {

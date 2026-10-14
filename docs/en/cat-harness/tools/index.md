@@ -61,10 +61,10 @@ is `satisfies`, and it runs **from a tool to a skill** — *this tool is one way
 to do that*, never *this skill is a tool*.
 
 <div class="tg-grid">
-<a class="tg-stat" href="#every-tool"><b>158</b><span>Tool nodes</span></a>
+<a class="tg-stat" href="#every-tool"><b>157</b><span>Tool nodes</span></a>
 <a class="tg-stat" href="#does-every-satisfies-name-a-skill-that-exists"><b>81</b><span>skills satisfied</span></a>
 <a class="tg-stat" href="#how-they-are-invoked-and-installed"><b>131</b><span>invoked as a shell command</span></a>
-<a class="tg-stat" href="#how-they-are-invoked-and-installed"><b>30</b><span>reachable over MCP</span></a>
+<a class="tg-stat" href="#how-they-are-invoked-and-installed"><b>29</b><span>reachable over MCP</span></a>
 </div>
 
 ## How they are invoked, and installed
@@ -74,19 +74,19 @@ A tool may declare more than one invocation, so these do not sum to the total.
 | invocation | tools |
 |---|---|
 | <span class="tg-tag tg-shell">shell</span> | 131 |
-| <span class="tg-tag tg-inproc">inProcess</span> | 31 |
-| <span class="tg-tag tg-mcp">mcp</span> | 30 |
+| <span class="tg-tag tg-inproc">inProcess</span> | 30 |
+| <span class="tg-tag tg-mcp">mcp</span> | 29 |
 | <span class="tg-tag tg-manual">manual</span> | 6 |
 
 | installation | tools |
 |---|---|
-| `none` | 148 |
+| `none` | 147 |
 | `cli` | 9 |
 | `container` | 1 |
 
 ## Does every `satisfies` name a skill that exists?
 
-Yes — all **81** skills named across **158** tools resolve to a
+Yes — all **81** skills named across **157** tools resolve to a
 skill document in this checkout. A `satisfies` pointing at nothing would be a
 tool advertising a capability the graph cannot locate.
 
@@ -103,7 +103,6 @@ tool advertising a capability the graph cannot locate.
 | <a id="beans-cli"></a>[`beans-cli`](#beans-cli)<br>beans CLI | Read and write the work plan with the `beans` binary. The normal mechanism when it is installed. | <span class="tg-tag tg-shell">shell</span> | [`bean-coordination`](../../../reference/skill-instructions/bean-coordination.html)<br>[`continual-progress`](../../../reference/skill-instructions/continual-progress.html)<br>[`idle-backlog`](../../../reference/skill-instructions/idle-backlog.html)<br>[`pending-show`](../../../reference/skill-instructions/pending-show.html)<br>[`session-intent`](../../../reference/skill-instructions/session-intent.html)<br>[`todo-manager`](../../../reference/skill-instructions/todo-manager.html) | 3 in / 1 out |
 | <a id="beans-manual"></a>[`beans-manual`](#beans-manual)<br>beans, by hand | Read and write the same work plan without the CLI — `scripts/beans-fallback.ts`, or editing a bean's front matter directly. Equal standing to the CLI, not a degraded mode. | <span class="tg-tag tg-manual">manual</span> <span class="tg-tag tg-shell">shell</span> | [`bean-coordination`](../../../reference/skill-instructions/bean-coordination.html)<br>[`continual-progress`](../../../reference/skill-instructions/continual-progress.html)<br>[`idle-backlog`](../../../reference/skill-instructions/idle-backlog.html)<br>[`pending-show`](../../../reference/skill-instructions/pending-show.html)<br>[`session-intent`](../../../reference/skill-instructions/session-intent.html)<br>[`todo-manager`](../../../reference/skill-instructions/todo-manager.html) | 3 in / 1 out |
 | <a id="bpmn-checklist"></a>[`bpmn-checklist`](#bpmn-checklist)<br>BPMN checklist projection | Generate, per diagram, a checklist that walks the BPMN as a state machine: each task names the `workflow_complete` call that records it and ends with `next:` by node id; each decision lists its labelled branches (or the DMN that computes it); parallel forks name every branch and joins wait for all; start/end events are entry and exit lines. A rendering, never an authority: it says it is generated, and `--check` fails when one is stale. | <span class="tg-tag tg-shell">shell</span> | [`docs-generation`](../../../reference/skill-instructions/docs-generation.html) | 2 in / 1 out |
-| <a id="bpmn-engine"></a>[`bpmn-engine`](#bpmn-engine)<br>BPMN workflow engine | Run a declared BPMN process as an instance: `workflow_start` opens one for a subject, `workflow_next` reports what is enabled, `workflow_complete` records a step or answers a decision (a DMN-computed one from `facts`) and REFUSES a step that is not enabled. State is committed under the work plan, so which edge was taken is a record, not a memory. | <span class="tg-tag tg-inproc">inProcess</span> <span class="tg-tag tg-mcp">mcp</span> | [`process-state`](../../../reference/skill-instructions/process-state.html) | 2 in / 1 out |
 | <a id="bpmn-render"></a>[`bpmn-render`](#bpmn-render)<br>BPMN diagram rendering | Render each process diagram to SVG for the documentation site. The .bpmn file is the source of truth; the picture is generated from it, so a diagram and its image cannot disagree. | <span class="tg-tag tg-shell">shell</span> | [`docs-generation`](../../../reference/skill-instructions/docs-generation.html) | 1 in / 1 out |
 | <a id="build-instance-site"></a>[`build-instance-site`](#build-instance-site)<br>Build, check and (on request) publish an instance's own site, or a STAGING/<branch> preview | From a checkout whose layers arrive by remote mount: mount the pinned closure, install, run the instance's own gates (`--pre`), compose the harness chrome for THIS instance, run its source steps, build with Jekyll at the base path read from the git remote (`/<repo>`, or `/<repo>/STAGING/<branch>` for a preview), run the post-build steps (mount-instance-docs, pdf-viewer, set-html-lang, publish-id-lookup, rail-standalone-pages), and check that every relative or base-rooted link in every page resolves to a file under the site, reading each page with an HTML parser. Any failing step stops the run; a link that does not resolve means nothing is published. It never decides to publish: only `--publish` does, and then a root publish keeps `STAGING/` and `_render-log/` on the branch, and a preview replaces only its own `STAGING/<branch>/`. | <span class="tg-tag tg-shell">shell</span> | [`deployment-awareness`](../../../reference/skill-instructions/deployment-awareness.html)<br>[`remote-mount`](../../../reference/skill-instructions/remote-mount.html) | 10 in / 2 out |
 | <a id="cat-harness-schema"></a>[`cat-harness-schema`](#cat-harness-schema)<br>Instance declaration schema | The zod definition of `<name>.json` — what an instance may declare about itself — and the published JSON Schema generated from it. | <span class="tg-tag tg-shell">shell</span> | [`kg-export`](../../../reference/skill-instructions/kg-export.html) | 1 in / 1 out |

@@ -6,6 +6,11 @@
         "cat-harness/beans"
       ]
     },
+    "bibliography": {
+      "covers": [
+        "folio-assistant-core/bibliography"
+      ]
+    },
     "catalogue": {
       "covers": [
         "who-iris/catalogue"

@@ -38,6 +38,6 @@ by listing again. A second listing would be free to disagree with this one.
 
 ## What this is not
 
-Not the just-the-docs pipeline: that stays in folio-assistant-core. This
+Not the just-the-docs pipeline: that stays in the content core. This
 writes one page with just-the-docs front matter, which that pipeline or any
 Jekyll site can serve, and which reads as a plain table on GitHub.
