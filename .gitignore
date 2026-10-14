@@ -77,6 +77,7 @@ node_modules/
 /docs/zh/folio-assistant-core/
 /docs/smart-base/
 /docs/_data/harness.json
+/docs/_includes/generated/navbar-footer.html
 /docs/assets/beans/
 /docs/assets/todos/count.json
 /docs/assets/todos/index.json

@@ -1006,6 +1006,7 @@
     {"path": "docs/zh/folio-assistant-core/", "writer": ["glossary:page"], "because": "checkout", "reason": "its translated glossary index"},
     {"path": "docs/smart-base/", "writer": ["smart:pages"], "because": "checkout", "reason": "smart-base's IG artefact index, rendered by fhir-harness from the mounted IGs"},
     {"path": "docs/_data/harness.json", "writer": ["docs:pages", "docs:harness"], "because": "state", "from": ["beans", "todos"], "reason": "tiles of every instance in the checkout, with the live open-beans and todos counts; docs:harness reads the counts docs:pages just wrote, so both come from one mount"},
+    {"path": "docs/_includes/generated/navbar-footer.html", "writer": ["navbar:include"], "because": "checkout", "reason": "the navbar row of every harness in the checkout, rendered from docs/_data/harness.json (listed just above, so built first); measured: at a new pin the committed copy went stale as soon as harness.json was built"},
     {"path": "docs/assets/beans/", "writer": ["docs:pages"], "because": "state", "from": ["beans"], "reason": "the bean index and its open count, a snapshot of cat/cat-harness/beans (committed: 179 here against 190 in harness.json)"},
     {"path": "docs/assets/todos/count.json", "writer": ["docs:pages"], "because": "state", "from": ["todos"], "reason": "the open todos count"},
     {"path": "docs/assets/todos/index.json", "writer": ["docs:pages"], "because": "state", "from": ["todos"], "reason": "the todos index"},
