@@ -59,7 +59,7 @@ A few sentences: **who** the screen is for, **what they need to do**, and **what
 - **Mid-fidelity HTML:** monochrome, **real content** from the graph it shows, semantic icons, and no placeholder text.
 - **Web and mobile in every candidate**, through responsive CSS or two layouts. A candidate with one layout does not enter review.
 
-## 3. Mechanical checks (Tool `wireframe-check`)
+## 3. Mechanical checks ([`wireframe-viewport-check`](wireframe-viewport-check.md))
 
 ```sh
 bun run cat wireframe:check cat-harness/docs/wireframes/<topic>/*.html --out cat-harness/docs/wireframes/<topic>/checks
