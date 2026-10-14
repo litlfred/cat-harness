@@ -113,6 +113,7 @@ import {
 } from "./kg-node";
 import { NS_PREFIXES, propertyIri, termIri } from "./namespaces";
 import { StickyContributionSchema, type StickyContribution } from "./sticky-contribution";
+import { BuiltAtPublishListSchema, type BuiltAtPublish } from "./built-at-publish";
 import { BranchPrefixSchema, KeyedBySchema, SubgraphSourceSchema, contentIsOffCheckout, type SubgraphSource } from "./subgraph-source";
 
 
@@ -770,6 +771,13 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
   directories: ContentDirectory[];
   /** The visualisers this harness declares, each at `<base>/<name>/<id>/` — {@link HarnessVisualiser}. Owner, 2026-10-09. */
   visualisers?: HarnessVisualiser[];
+  /**
+   * Artefacts this instance serves and must never commit, each built at publish
+   * by the package scripts it names — {@link BuiltAtPublish}. Owner, 2026-10-14
+   * ("B1"): a page computed over the checkout's other instances, or from a
+   * branch-kept graph, cannot be current in a commit of this one.
+   */
+  builtAtPublish?: BuiltAtPublish[];
   /** Graphs known but not held — {@link RemoteGraph}. */
   remoteGraphs?: RemoteGraph[];
   /** Harnesses this one is associated with and does not hold — {@link AssociatedHarness}. Issue #1146. */
@@ -3408,6 +3416,8 @@ const catHarnessDeclarationShape = {
    * `.optional()`: absent means this instance declares none.
    */
   visualisers: z.array(HarnessVisualiserSchema).optional(),
+  /** See {@link CatHarnessDeclaration.builtAtPublish} and `schemas/built-at-publish.ts`. Absent: this instance builds nothing at publish. */
+  builtAtPublish: BuiltAtPublishListSchema.optional(),
   /**
    * Graphs this instance knows about and does not hold — see {@link RemoteGraph}.
    * A SEPARATE array from `directories`, not a variant of one, because a remote

@@ -81,6 +81,11 @@ export const PROPERTY_SKILLS = {
   // `<base>/<harness>/<visualiser>/`. `harness-tiles` carries the route and
   // collision rules; `harness-requirements` the obligation it meets.
   visualisers: { skills: ["harness-tiles", "harness-requirements"] },
+  // Owner, 2026-10-14 (B1): artefacts built at publish and never committed — schemas/built-at-publish.ts.
+  builtAtPublish: {
+    skills: [],
+    gap: "no skill edits `builtAtPublish` yet: the rule (commit an artefact only if every input is pinned by this commit) and its two causes are documented only in the schema (built-at-publish.ts)",
+  },
   remoteGraphs: { skills: ["library-ingestion", "materialize-remote"] },
   associatedHarnesses: { skills: ["associate-harness"] },
   // Issue #1719. Both name a large-datasets skill, as `remoteGraphs` already
