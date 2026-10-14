@@ -90,7 +90,6 @@
         "agent"
       ],
       "skills": [
-        "review-comments",
         "rendered-impact",
         "review-heatmap",
         "staging-review",
