@@ -64,6 +64,11 @@ export interface StagingComparison {
   stagingBaseUrl: string;
   /** Individual page comparisons. */
   pages: StagingPageComparison[];
+  /**
+   * What could not be linked, said rather than hidden: no preview yet, no
+   * page list computed, or a changed page the publish ref does not hold.
+   */
+  missing?: string[];
 }
 
 // ── Zod schemas ─────────────────────────────────────────────────
@@ -83,6 +88,7 @@ export const StagingComparisonSchema = z.object({
   mainBaseUrl: z.string().url(),
   stagingBaseUrl: z.string().url(),
   pages: z.array(StagingPageComparisonSchema),
+  missing: z.array(z.string()).optional(),
 });
 
 // ── Helpers ─────────────────────────────────────────────────────
