@@ -12,4 +12,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `policies`, holding `poli
 |---|---|---|
 | [`folio-defaults.jsonld`](folio-defaults.jsonld) | data |  |
 | [`http-gateway.jsonld`](http-gateway.jsonld) | data |  |
+
 <!-- kg:subgraph:end -->

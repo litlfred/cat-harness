@@ -14,4 +14,5 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `attestations`, holdin
 | [`folio-assistant-core/`](folio-assistant-core/) | _nothing declares what this holds_ | |
 | [`kg-qa/`](kg-qa/) | _nothing declares what this holds_ | |
 | [`translation-qa/`](translation-qa/) | _nothing declares what this holds_ | |
+
 <!-- kg:subgraph:end -->

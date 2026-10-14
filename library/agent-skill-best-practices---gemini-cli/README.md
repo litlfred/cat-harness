@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `agent-skill-best-
 | [sections](sections/) | 6 |
 | [blocks](blocks/) | 3 |
 | images | 0 |
+
 <!-- kg:subgraph:end -->

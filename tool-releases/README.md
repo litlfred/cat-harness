@@ -14,4 +14,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tool-releases`, holding 
 | [`graphviz-16.1.0-linux-x64-ubuntu-24.04.json`](graphviz-16.1.0-linux-x64-ubuntu-24.04.json) | data |  |
 | [`plantuml-1.2024.7.json`](plantuml-1.2024.7.json) | data |  |
 | [`temurin-jre-21.0.4_7-linux-x64.json`](temurin-jre-21.0.4_7-linux-x64.json) | data |  |
+
 <!-- kg:subgraph:end -->

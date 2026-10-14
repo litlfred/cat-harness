@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `hmans-2026-beans-
 | [sections](sections/) | 28 |
 | [blocks](blocks/) | 14 |
 | images | 0 |
+
 <!-- kg:subgraph:end -->

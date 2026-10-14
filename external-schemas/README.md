@@ -34,4 +34,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `external-schemas`, holdi
 | [`w3c-xsd11-structures.json`](w3c-xsd11-structures.json) | W3C XML Schema Definition Language (XSD) 1.1 Part 1: Structures |  |
 | [`who-smart-base.json`](who-smart-base.json) | WHO SMART Guidelines base IG |  |
 | [`who-smart-base.terminology.json`](who-smart-base.terminology.json) | data |  |
+
 <!-- kg:subgraph:end -->

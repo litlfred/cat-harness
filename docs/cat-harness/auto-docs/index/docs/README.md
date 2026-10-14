@@ -19,4 +19,5 @@ Part of [C@T Harness](../../../../../README.md) 0.1.0, declared as `index-docs`,
 | [`smart-trust-docs/`](smart-trust-docs/) | _nothing declares what this holds_ | |
 | [`who-iris-docs/`](who-iris-docs/) | _nothing declares what this holds_ | |
 | [`who-iris-site/`](who-iris-site/) | _nothing declares what this holds_ | |
+
 <!-- kg:subgraph:end -->

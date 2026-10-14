@@ -11,4 +11,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-upstream`, h
 | file | what it is | used by |
 |---|---|---|
 | [`upstream-pins.json`](upstream-pins.json) | data |  |
+
 <!-- kg:subgraph:end -->
