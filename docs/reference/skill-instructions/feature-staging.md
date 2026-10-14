@@ -339,7 +339,11 @@ reusable workflow each one calls:
 - a caller of `folio-staging.yml` is a **folio**. The build inputs
   (`build_command`, `site_dir`, `publish_branch`, …) are read from that
   caller.
-- a caller of smart-base's `fhirbuild.yml` or `ghbuild.yml` is an **IG**. The
+- a caller of a reusable workflow that a mounted layer declares as a **site
+  publisher** is that publisher's kind. The IG layer declares one: a caller
+  of its `fhirbuild.yml` or `ghbuild.yml` is an **IG**, published by that
+  layer's own code, which `stage-local.ts` reaches through the layer's
+  declared `site-publisher-ig` pipeline slot and never by path. The
   reusable workflow is fetched at the ref the caller names, and its build job
   is run step by step as written: `run:` blocks with the environment a runner
   gives them, `docker://` steps in their image. Steps that read a secret, push
@@ -390,13 +394,26 @@ Every path refuses an empty build before it deletes anything (bean `oisv`).
   Publisher in a Docker image, so a machine with no Docker daemon gets the
   plan from `--dry-run`, and a real run stops naming the missing
   prerequisite.
+- **An IG repository's own site is built from its AST, not from the
+  Publisher's HTML** (owner, 2026-10-14). The repository declares
+  `site.build` in its `index.config.json` entry (inline — never a
+  `<instance>.config.json`, bean `ymvt`), and that recipe's first step
+  restores the AST from its cache branch and refuses one that is not valid for
+  the commit. The cache is refreshed by a Publisher run on a runner, through
+  the IG layer's reusable refresh workflow. It is the one workflow an
+  agent-run IG repository dispatches, and only a person, or an agent the
+  owner names for that run, dispatches it. The layer that owns IG builds owns
+  the rule and the workflow; this skill names no IG step.
 
 ### Agent-run repositories — the GitHub Actions path is documented, not run (owner, 2026-10-10)
 
-Some repositories are **agent-run**: an agent builds and publishes the site,
-and the repository's publish workflow keeps only `workflow_dispatch`. smart-ra
-has been agent-run since 2026-10-10 (bean `n3h9`), like smart-immunizations
-and smart-trust. For these repositories the GitHub Actions path is
+A repository is **agent-run** when it says so in its own `index.config.json`:
+`"site": { "agentRun": true }` (owner, 2026-10-14). An agent builds and
+publishes its site, and its publish workflow keeps only `workflow_dispatch`.
+The first repositories became agent-run on 2026-10-10 (bean `n3h9`). This
+skill keeps no list of them: the declaration is the list, and
+`stage-local.ts` says in every plan whether the repository declares it. For
+these repositories the GitHub Actions path is
 **documentation**. It says what the workflow does, so that the agent path can
 match it. It is not a fallback for an agent to take.
 
@@ -404,12 +421,12 @@ match it. It is not a fallback for an agent to take.
 |---|---|---|
 | a folio preview at `STAGING/<slug>/` | `stage-local.ts` from the branch | `folio-staging.yml` job `stage` |
 | a folio's main site at the Pages root | `stage-local.ts` from the default branch | `folio-staging.yml` job `publish-main` |
-| an IG preview at `branches/<branch>/` | `stage-local.ts` from the branch | smart-base `ghbuild.yml`, "Deploy candidate" |
-| an IG's main site at the Pages root | `stage-local.ts` from the default branch | smart-base `ghbuild.yml`, "Deploy main" |
+| an IG preview at `branches/<branch>/` | `stage-local.ts` from the branch | the IG publisher's `ghbuild.yml`, "Deploy candidate" |
+| an IG's main site at the Pages root | `stage-local.ts` from the default branch | the IG publisher's `ghbuild.yml`, "Deploy main" |
 | QA sweep, screenshots, review comments, PR comments | not run (the plan says so) | jobs in the workflows above |
 
 **Never dispatch the workflow, to cover a gap or for any other reason.** On
-2026-10-10 an agent dispatched smart-ra's `staging.yml` on `main` to
+2026-10-10 an agent dispatched an agent-run repository's `staging.yml` on `main` to
 republish the root after a re-pin. The site was published, but the run
 contradicted the repository's agent-run setting, and the owner asked *"why
 github action and not agentic?"*. When the agent path cannot do a step, say
@@ -476,6 +493,15 @@ so a failed fetch is not evidence either way.
 
 Full rule and the measured failure:
 [`github-state-inspection`](github-state-inspection.md).
+
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](staging-review.md) §"The deep-link rule".
 {% endraw %}
 
 ## Processes that run this skill
