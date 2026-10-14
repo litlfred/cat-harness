@@ -21,7 +21,13 @@ const HERE = import.meta.dir;
 const canon = JSON.parse(readFileSync(join(HERE, "staging-comparison.schema.json"), "utf-8"));
 const { $schema: _s, $id: _i, ...canonDef } = canon;
 
-function contracts(): { file: string; json: any }[] {
+/** A skill contract, as much of it as these tests read; the rest is JSON Schema handed to zod. */
+type Contract = {
+  properties?: { stagingLinks?: { $ref?: string } };
+  definitions?: { stagingLinks?: Record<string, unknown> };
+} & Parameters<typeof fromJSONSchema>[0];
+
+function contracts(): { file: string; json: Contract }[] {
   const root = join(HERE, "skills");
   if (!existsSync(root)) return [];
   return readdirSync(root).flatMap((skill) =>
@@ -48,7 +54,7 @@ describe("staging links", () => {
     const drifted = contracts()
       .filter((c) => c.json?.definitions?.stagingLinks !== undefined)
       .filter((c) => {
-        const { $comment: _c, ...copy } = c.json.definitions.stagingLinks;
+        const { $comment: _c, ...copy } = c.json.definitions!.stagingLinks!;
         return JSON.stringify(copy) !== JSON.stringify(canonDef);
       })
       .map((c) => c.file);
@@ -58,7 +64,7 @@ describe("staging links", () => {
   test("every contract carrying stagingLinks points at its own inline copy", () => {
     const dangling = contracts()
       .filter((c) => c.json?.properties?.stagingLinks !== undefined)
-      .filter((c) => c.json.properties.stagingLinks.$ref !== "#/definitions/stagingLinks" || c.json.definitions?.stagingLinks === undefined)
+      .filter((c) => c.json.properties!.stagingLinks!.$ref !== "#/definitions/stagingLinks" || c.json.definitions?.stagingLinks === undefined)
       .map((c) => c.file);
     expect(dangling).toEqual([]);
   });
