@@ -62,8 +62,11 @@ A few sentences: **who** the screen is for, **what they need to do**, and **what
 ## 3. Mechanical checks (Tool `wireframe-check`)
 
 ```sh
-bun run cat wireframe:check cat-harness/docs/wireframes/<topic>/*.html --out cat-harness/docs/wireframes/<topic>/checks
+bun run cat wireframe:check --use as-is --topic <topic> --surface <visualiser ref>
+bun run cat wireframe:check --use design --topic <slug> --surface <surface>
 ```
+
+The three flags are this skill's input. `--topic` picks the directory in the table above and every candidate in it (name candidates to check fewer; one outside it is refused), and the report goes to its `checks/`. `--use design` needs at least two candidates; `--use as-is` needs each marked `as-is` in its file name, and a `--surface` that is the topic or a ref `index.json` says it covers. The use, topic and surface are recorded in `report.json`.
 
 This renders each candidate at web (1280×800) and mobile (390×844) sizes. It records `script` entries for *renders*, *no-overflow* and *no-placeholder*, each `pass` or `fail` with a note, and writes a screenshot per viewport. Any `fail` sends the candidate back to step 2.
 
