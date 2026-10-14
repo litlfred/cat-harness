@@ -17,4 +17,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `w3c-2018-odrl-mod
 | [sections](sections/) | 128 |
 | [blocks](blocks/) | 68 |
 | images | 4 |
+
 <!-- kg:subgraph:end -->

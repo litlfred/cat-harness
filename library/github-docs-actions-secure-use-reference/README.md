@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `github-docs-actio
 | [sections](sections/) | 34 |
 | [blocks](blocks/) | 18 |
 | images | 1 |
+
 <!-- kg:subgraph:end -->

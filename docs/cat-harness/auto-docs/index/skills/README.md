@@ -19,4 +19,5 @@ Part of [C@T Harness](../../../../../README.md) 0.1.0, declared as `index-skills
 | [`skills/`](skills/) | _nothing declares what this holds_ | |
 | [`smart-base-skills/`](smart-base-skills/) | _nothing declares what this holds_ | |
 | [`who-iris-skills/`](who-iris-skills/) | _nothing declares what this holds_ | |
+
 <!-- kg:subgraph:end -->

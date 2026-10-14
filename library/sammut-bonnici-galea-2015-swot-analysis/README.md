@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `sammut-bonnici-ga
 | [sections](sections/) | 18 |
 | [blocks](blocks/) | 9 |
 | images | 3 |
+
 <!-- kg:subgraph:end -->

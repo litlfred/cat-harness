@@ -17,4 +17,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `w3c-2020-json-ld-
 | [sections](sections/) | 330 |
 | [blocks](blocks/) | 165 |
 | images | 0 |
+
 <!-- kg:subgraph:end -->

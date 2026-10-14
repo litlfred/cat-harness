@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `kg-folio-asst-202
 | [sections](sections/) | 26 |
 | [blocks](blocks/) | 36 |
 | images | 5 |
+
 <!-- kg:subgraph:end -->

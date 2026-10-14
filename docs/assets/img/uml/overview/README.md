@@ -49,4 +49,5 @@ Part of [C@T Harness](../../../../../README.md) 0.1.0, declared as `uml-overview
 | [`smart-immunizations/`](smart-immunizations/) | _nothing declares what this holds_ | |
 | [`smart-trust/`](smart-trust/) | _nothing declares what this holds_ | |
 | [`who-iris/`](who-iris/) | _nothing declares what this holds_ | |
+
 <!-- kg:subgraph:end -->

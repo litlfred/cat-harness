@@ -16,4 +16,5 @@ Part of [C@T Harness](../../../README.md) 0.1.0, declared as `auto-docs`, holdin
 | [`index/`](index/) | _nothing declares what this holds_ | |
 | [`lsi/`](lsi/README.md) | described in its own README | |
 | [`uml/`](uml/) | UML — every UML model a declared `uml` directory holds, one row per model rather than per notation. Indexes the `uml` graph. | |
+
 <!-- kg:subgraph:end -->
