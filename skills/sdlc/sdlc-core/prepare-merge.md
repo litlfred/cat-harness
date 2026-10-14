@@ -549,6 +549,16 @@ harness git instructions). Do not include the model identifier in the PR.
   it reports red: fix, then re-label. The policy and why are in
   [`continual-progress`](continual-progress.md) §"Green means handed to the
   Merge Steward".
+- **Check the change against the skills that govern it before calling it
+  ready**, an agent's PR above all. Green CI says the code does what its
+  tests say; it does not say the change keeps the rules the owner set for
+  that area. Read the governing skills (from the mounted layers when the MCP
+  skill server is unreachable) and hold the diff to them: a step that, say,
+  copies the IG Publisher's finished HTML into a site passes every test and
+  breaks `ig-render-jekyll` (owner, 2026-10-14). A design choice the PR body
+  describes in passing ("copies every Publisher page the site lacks") is a
+  question for the owner when a skill already answers it, never an
+  implementation detail to merge past.
 - **`--force-with-lease`, never bare `--force`** when a rebase rewrote history.
 - **Honest green.** Pre-existing red is reported as pre-existing, with evidence;
   your-change red blocks the "ready" claim.
