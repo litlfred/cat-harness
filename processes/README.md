@@ -18,4 +18,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `processes`, holding `pro
 | [`process/`](process/) | _nothing declares what this holds_ | |
 | [`sdlc/`](sdlc/) | _nothing declares what this holds_ | |
 | [`ui/`](ui/) | _nothing declares what this holds_ | |
+
 <!-- kg:subgraph:end -->

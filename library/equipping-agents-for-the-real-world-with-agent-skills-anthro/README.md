@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `equipping-agents-
 | [sections](sections/) | 24 |
 | [blocks](blocks/) | 18 |
 | images | 6 |
+
 <!-- kg:subgraph:end -->

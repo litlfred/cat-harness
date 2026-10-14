@@ -16,4 +16,5 @@ Part of [C@T Harness](../../../../../README.md) 0.1.0, declared as `index-schema
 | [`openapi-schemas/`](openapi-schemas/) | _nothing declares what this holds_ | |
 | [`schemas/`](schemas/) | _nothing declares what this holds_ | |
 | [`smart-base-schemas/`](smart-base-schemas/) | _nothing declares what this holds_ | |
+
 <!-- kg:subgraph:end -->

@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `skills-in-openai-
 | [sections](sections/) | 2 |
 | [blocks](blocks/) | 1 |
 | images | 0 |
+
 <!-- kg:subgraph:end -->

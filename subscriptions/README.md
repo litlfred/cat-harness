@@ -9,4 +9,5 @@ The root declaration of each [Knowledge Graph](https://litlfred.github.io/bootst
 Part of [C@T Harness](../README.md) 0.1.0, declared as `subscriptions`, holding `substrate-snapshot`.
 
 _This directory holds no files yet._
+
 <!-- kg:subgraph:end -->

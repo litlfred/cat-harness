@@ -16,4 +16,5 @@ Held in the library [`cat-harness/library/`](../README.md) as `landauer-foltz-la
 | [sections](sections/) | 82 |
 | [blocks](blocks/) | 41 |
 | images | 0 |
+
 <!-- kg:subgraph:end -->

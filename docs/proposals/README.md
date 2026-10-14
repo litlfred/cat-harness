@@ -55,4 +55,5 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `proposals`, holding `
 | [`wallet-custody.md`](wallet-custody.md) | Wallet custody in a self-sovereign harness |  |
 | [`workflow-state-in-beans.md`](workflow-state-in-beans.md) | Options for executing DMN/BPMN with beans as state |  |
 | [`zod-schemas-as-tools.md`](zod-schemas-as-tools.md) | Zod schemas as Tools — audit and analysis |  |
+
 <!-- kg:subgraph:end -->

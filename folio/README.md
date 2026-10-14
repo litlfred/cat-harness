@@ -11,4 +11,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `folio`, holding `folio`.
 | file | what it is | used by |
 |---|---|---|
 | [`cat-harness.json`](cat-harness.json) | computable adjudication and agentic test harness |  |
+
 <!-- kg:subgraph:end -->

@@ -16,6 +16,7 @@ Held in the library [`cat-harness/library/`](../README.md) as `w3c-2024-prov-jso
 | [sections](sections/) | 142 |
 | [blocks](blocks/) | 71 |
 | images | 0 |
+
 <!-- kg:subgraph:end -->
 
 **The PROV-JSONLD Serialization — A JSON-LD Representation for the PROV Data

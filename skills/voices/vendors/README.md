@@ -14,4 +14,5 @@ Part of [C@T Harness](../../../README.md) 0.1.0, declared as `vendors`, holding 
 | [`agent-skill-authoring-claude/`](agent-skill-authoring-claude/README.md) | Claude Code's specialisation of `agent-skill-authoring`: 8 `cl-*` rules, each citing Anthropic's published skill documentation. | |
 | [`agent-skill-authoring-gemini-cli/`](agent-skill-authoring-gemini-cli/README.md) | Gemini CLI's specialisation of `agent-skill-authoring`: 10 `gc-*` rules, with `superseded` citing the Antigravity banner. | |
 | [`agent-skill-authoring-openai/`](agent-skill-authoring-openai/README.md) | OpenAI's specialisation of `agent-skill-authoring`: 12 `oa-*` rules, each citing the [Skills](https://litlfred.github.io/bootstrap/schemas/#skill)-in-OpenAI-API cookbook notebook (MIT), ingested through the notebook rung. | |
+
 <!-- kg:subgraph:end -->
