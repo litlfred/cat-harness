@@ -1,5 +1,8 @@
 import { describe, expect, test } from "bun:test";
-import { mountTrust, MountTrustBasisSchema, MountTrustSchema, withConsent } from "./mount-trust.ts";
+import { mountTrust, MountTrustBasisSchema, MountTrustSchema, withConsent, type MountTrust } from "./mount-trust.ts";
+
+/** A mount as `withConsent` sees it: `trust` optional, so a bare literal still type-checks its result. */
+type Mount = { harness: string; ref: string; trust?: MountTrust };
 
 const PIN = "a".repeat(40);
 const OTHER = "b".repeat(40);
@@ -64,7 +67,7 @@ describe("withConsent: seeding writes consent for the pin it writes (task #10, g
   const grant = { by: "litlfred", evidence: "session X: 'repin as needed'", on: "2026-10-12" };
 
   test("an unconsented mount gains consent bound to ITS ref, and then mounts", () => {
-    const m = withConsent({ harness: "x", ref: PIN }, grant);
+    const m = withConsent<Mount>({ harness: "x", ref: PIN }, grant);
     expect(m.trust?.consent).toEqual({ by: "litlfred", on: "2026-10-12", ref: PIN, evidence: grant.evidence });
     expect(mountTrust(m, "mount")).toMatchObject({ ok: true, basis: "consent" });
   });
@@ -86,11 +89,11 @@ describe("withConsent: seeding writes consent for the pin it writes (task #10, g
   });
 
   test("an empty grant throws rather than writing consent nobody can read", () => {
-    expect(() => withConsent({ harness: "x", ref: PIN }, { by: "", evidence: "e" })).toThrow();
-    expect(() => withConsent({ harness: "x", ref: PIN }, { by: "b", evidence: "" })).toThrow();
+    expect(() => withConsent<Mount>({ harness: "x", ref: PIN }, { by: "", evidence: "e" })).toThrow();
+    expect(() => withConsent<Mount>({ harness: "x", ref: PIN }, { by: "b", evidence: "" })).toThrow();
   });
 
   test("`on` defaults to today", () => {
-    expect(withConsent({ harness: "x", ref: PIN }, { by: "b", evidence: "e" }).trust?.consent?.on).toBe(new Date().toISOString().slice(0, 10));
+    expect(withConsent<Mount>({ harness: "x", ref: PIN }, { by: "b", evidence: "e" }).trust?.consent?.on).toBe(new Date().toISOString().slice(0, 10));
   });
 });
