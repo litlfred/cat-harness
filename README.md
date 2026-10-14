@@ -127,23 +127,23 @@ QA gates) and **non-mechanical** validation (a review agent, escalating to a
 human or SME on a judgement call). Both must report; the findings are shown to
 the editor; only an accepted change is written to the corpus.
 
-<img src="docs/assets/img/workflows/editing-hci-validation.svg" alt="BPMN swimlane diagram of the editing process and its HCI validation gate" width="100%">
+<img src="https://litlfred.github.io/folio-assistant/assets/img/workflows/editing-hci-validation.svg" alt="BPMN swimlane diagram of the editing process and its HCI validation gate" width="100%">
 
 **Corpus → draft → review team → published.**
 
-<img src="docs/assets/img/workflows/draft-to-publication.svg" alt="BPMN swimlane diagram: corpus to draft publication, review team and SME sign-off, programme-manager authorisation, publication" width="100%">
+<img src="https://litlfred.github.io/folio-assistant/assets/img/workflows/draft-to-publication.svg" alt="BPMN swimlane diagram: corpus to draft publication, review team and SME sign-off, programme-manager authorisation, publication" width="100%">
 
 **One cycle of a folio, plan → retire.** Both diagrams above appear here as call
 activities, and the **work plan (beans)** lane runs through all three —
 claimed before work starts, updated with findings, resolved on commit — so a
 human and an agent read the same answer to *what is done, and what is next*.
 
-<img src="docs/assets/img/workflows/content-lifecycle.svg" alt="BPMN swimlane diagram of the content lifecycle from plan to retire" width="100%">
+<img src="https://litlfred.github.io/folio-assistant/assets/img/workflows/content-lifecycle.svg" alt="BPMN swimlane diagram of the content lifecycle from plan to retire" width="100%">
 
-Per content type: [document](docs/assets/img/workflows/authoring-a-document.svg) ·
-[paper](docs/assets/img/workflows/authoring-a-paper.svg) ·
-[WHO SMART DAK (L2)](docs/assets/img/workflows/l2-dak-authoring.svg) ·
-[WHO SMART IG (L3)](docs/assets/img/workflows/l3-fhir-pipeline.svg). Their
+Per content type: [document](https://litlfred.github.io/folio-assistant/assets/img/workflows/authoring-a-document.svg) ·
+[paper](https://litlfred.github.io/folio-assistant/assets/img/workflows/authoring-a-paper.svg) ·
+[WHO SMART DAK (L2)](https://litlfred.github.io/folio-assistant/assets/img/workflows/l2-dak-authoring.svg) ·
+[WHO SMART IG (L3)](https://litlfred.github.io/folio-assistant/assets/img/workflows/l3-fhir-pipeline.svg). Their
 `.bpmn` sources belong to the content layers that own each process.
 
 ## Start a new folio
