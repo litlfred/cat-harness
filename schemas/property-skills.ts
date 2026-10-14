@@ -71,6 +71,12 @@ export const PROPERTY_SKILLS = {
     gap: "no skill edits `topology` yet: its axes are documented only in the schema (cat-harness.ts, TopologySchema)",
   },
   directories: { skills: ["directory-conventions", "schema-management"] },
+  // Owner ruling 2026-10-10 (bean `x4mt`): the install layer reads it, and no
+  // skill tells an author how to choose or change it yet.
+  skillPrefix: {
+    skills: [],
+    gap: "no skill edits `skillPrefix` yet: the rule (applied at install, per harness, `[a-z][a-z0-9]*`) is documented only in the schema (cat-harness.ts, CatHarnessDeclarationSchema)",
+  },
   // Owner, 2026-10-09: the harness declares each visualiser, at
   // `<base>/<harness>/<visualiser>/`. `harness-tiles` carries the route and
   // collision rules; `harness-requirements` the obligation it meets.
