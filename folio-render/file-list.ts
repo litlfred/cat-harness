@@ -6,8 +6,8 @@
  * @module cat-harness/folio-render/file-list
  *
  * ```sh
- * bun run folio-render/file-list.ts           # write folio/index.md
- * bun run folio-render/file-list.ts --check   # exit 1 when it is stale
+ * bun run cat-harness/folio-render/file-list.ts           # write folio/index.md
+ * bun run cat-harness/folio-render/file-list.ts --check   # exit 1 when it is stale
  * ```
  *
  * ## The owner's ruling, 2026-10-10
