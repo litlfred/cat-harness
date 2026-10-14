@@ -122,6 +122,57 @@ export const packTarballTool = defineTool({
 });
 ```
 
+### Step 4b: A new folder is a named subgraph of its harness — declare it
+
+If what you are adding needs a **new folder**, decide first which of three
+kinds of folder it is. Each has exactly one way to be declared, and the place
+the folder sits decides which (owner, 2026-10-14):
+
+1. **A folder directly under the harness root** (a new code area, a new
+   graph): an entry in the harness's own declaration (`<harness>.json`, e.g.
+   `cat-harness.json`), under `directories`, with an `id`, the `path`, its
+   `graphTypologies` and a one-line `description`.
+2. **A folder inside a folder the harness already declares**: declared
+   **from within**, in that directory's own `<dir>.json` (as
+   `skills/skills.json` declares `voices`). This is not a matter of taste:
+   `check:layout-norms` fails a new top-level entry whose path lies inside
+   another declared directory (the pairs it only lists are a baseline). Add `subgraph: true` when the new folder is a subgraph
+   of the INSTANCE rather than a part of its parent's graph (bean `cmsl`:
+   `voices` is the first kind, `beans.json`'s `defs` the second).
+3. **A folder that holds ONE node** — one Tool, one voice: it is **not
+   declared**. It sits inside the declared graph that owns the node and is
+   found through that graph's reader, as each voice folder is found by its
+   `voice.json`. Never declare one Tool's folder as a `tools` directory:
+   discovery loads ONE `tools/index.ts` per harness and refuses a harness
+   that declares two `tools` directories.
+
+Both declared forms say what a folder holds the same way, by its
+`graphTypologies`: a from-within entry names its own kind (`voices.json`
+declares `vendors` as `voice-vendors`), it does not inherit its parent's.
+
+**One folder per Tool is the recommended layout for a Tool with several
+files** (its implementation, fixtures, a schema): `tools/<stub>/` inside the
+harness's declared `tools` directory, re-exported by that directory's
+`tools/index.ts` so discovery is unchanged. A Tool that is one definition may
+stay a single entry in a shared file; both layouts are allowed, and moving the
+existing Tools is not required.
+
+Why declaring is part of the process, not tidying:
+
+- **A folder nothing declares is a folder nothing reasons about.** No check
+  catches it for you: `check:undeclared-files` sweeps the repository root
+  only, so a new undeclared folder inside a harness passes it.
+- **Declared directories are what can be mounted and exported.** A remote
+  mount lays down declared directories only, so an undeclared code folder is
+  missing downstream (cat-harness-tools' `tools/` was, until 2026-10-14). A
+  harness's package `exports` are derived from its declared, shipped `code`
+  directories (`check:package-exports`, bean `7pvn`), so an undeclared one
+  cannot be imported by package name either. A from-within id cannot yet be
+  mounted on its own: `remote-mount` reads top-level entries only (bean
+  `2j2r`, needed by `mo75`).
+- `bun run cat harness:dirs` then materialises every declared directory, so
+  the folder exists in every checkout rather than only in yours.
+
 ### Step 5: Test the Tool
 
 Author fast unit tests in `cat-harness-tools/test/` or whole-checkout integration tests in `cat-harness-tools/test/coordinator/`:
