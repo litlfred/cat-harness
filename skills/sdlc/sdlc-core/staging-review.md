@@ -52,9 +52,16 @@ features being edited or shown"*, and the request it repeats, beans `u1os`,
    will exist. A changed page the publish ref does not hold: a finding, listed
    with the others. No page list could be computed: say that, never "nothing
    changed".
-5. **Where it goes:** the PR comment the staging workflow posts, the PR body,
-   the turn that asks the person, and the issue the work answers, so the
-   person can open it from wherever they are.
+5. **Where it goes is a judgement, and more than one place may be right.**
+   Human feedback is gathered through several Tools: the agent conversation
+   (the turn that asks the person), a GitHub issue, a pull request (its body,
+   or the comment the staging workflow posts). Owner, 2026-10-14: *"it is a
+   Judgement as to the context which one to use. more than one can be
+   used."* Ask where the person will look. Work driven through, or primarily
+   referencing, a GitHub issue may warrant the request on that issue as well
+   as in the turn; a change reviewed on its PR carries it there. Whichever
+   places are chosen, each carries the same deep links. This rule fixes what
+   a request contains, not a list of places it must be posted.
 
 A skill whose output asks for feedback declares it: its output schema carries a
 `stagingLinks` field of type `StagingComparison` (`schemas/staging.ts`), and
