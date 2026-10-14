@@ -2,10 +2,17 @@
  * Staging links travel with every request for feedback (owner, 2026-10-14;
  * beans u1os, 28k2, g4dv). The shape is defined once, in
  * `staging-comparison.schema.json`, mirrored by `StagingComparisonSchema`, and
- * copied inline as `$defs.stagingLinks` into each skill contract, since a skill
- * contract is read standalone. These tests keep the copies honest.
+ * copied inline as `definitions.stagingLinks` into each skill contract, since a
+ * skill contract is read standalone. These tests keep the copies honest.
+ *
+ * `definitions`, not `$defs`: the contracts declare draft-07, and a reader
+ * that follows the declared draft resolves `#/$defs/…` only under 2019-09 and
+ * later. Zod's `fromJSONSchema`, which cat-harness-tools' test-run conformance
+ * check reads every contract with (bean `319n`), refused all of them while the
+ * copies sat under `$defs`.
  */
 import { describe, expect, test } from "bun:test";
+import { fromJSONSchema } from "zod";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { StagingComparisonSchema } from "./staging";
@@ -39,12 +46,32 @@ describe("staging links", () => {
 
   test("every inline copy is the canonical definition", () => {
     const drifted = contracts()
-      .filter((c) => c.json?.$defs?.stagingLinks !== undefined)
+      .filter((c) => c.json?.definitions?.stagingLinks !== undefined)
       .filter((c) => {
-        const { $comment: _c, ...copy } = c.json.$defs.stagingLinks;
+        const { $comment: _c, ...copy } = c.json.definitions.stagingLinks;
         return JSON.stringify(copy) !== JSON.stringify(canonDef);
       })
       .map((c) => c.file);
     expect(drifted).toEqual([]);
+  });
+
+  test("every contract carrying stagingLinks points at its own inline copy", () => {
+    const dangling = contracts()
+      .filter((c) => c.json?.properties?.stagingLinks !== undefined)
+      .filter((c) => c.json.properties.stagingLinks.$ref !== "#/definitions/stagingLinks" || c.json.definitions?.stagingLinks === undefined)
+      .map((c) => c.file);
+    expect(dangling).toEqual([]);
+  });
+
+  test("every skill contract reads as JSON Schema under the draft it declares", () => {
+    const unreadable = contracts().flatMap((c) => {
+      try {
+        fromJSONSchema(c.json);
+        return [];
+      } catch (e) {
+        return [`${c.file}: ${(e as Error).message}`];
+      }
+    });
+    expect(unreadable).toEqual([]);
   });
 });
