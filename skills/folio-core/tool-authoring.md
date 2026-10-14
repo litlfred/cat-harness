@@ -122,6 +122,34 @@ export const packTarballTool = defineTool({
 });
 ```
 
+### Step 4b: A new folder is a named subgraph of its harness — declare it
+
+If what you are adding needs a **new folder** (a skill package, a tool's code
+directory, a fixture set), that folder is a subgraph of the harness that holds
+it, and it is declared before it is committed. Two ways, and only these two:
+
+- an entry in the containing harness's own declaration (`<harness>.json`,
+  e.g. `cat-harness.json`), under `directories`: an `id`, the `path`, its
+  `graphTypologies` (the kind: `code`, `skills`, `tools`, …) and a one-line
+  `description`;
+- or **from within** a directory the harness already declares, in that
+  directory's own `<dir>.json` (as `skills/skills.json` declares `voices`),
+  with `subgraph: true` when it is a named member that may be mounted on its
+  own.
+
+Why it is part of the process, not tidying:
+
+- **A folder nothing declares is a folder nothing reasons about.**
+  `check:undeclared-files` reports it, but only after the fact and on every
+  open pull request.
+- **Declared subgraphs are what can be mounted and exported.** A remote mount
+  names a declared directory (bean `mo75` mounts named subgraphs), and a
+  harness's package `exports` should be derived from its declared `code`
+  subgraphs rather than hand-listed (`7pvn`). An undeclared folder can be
+  neither mounted nor imported by package name.
+- `bun run cat harness:dirs` then materialises every declared directory, so
+  the folder exists in every checkout rather than only in yours.
+
 ### Step 5: Test the Tool
 
 Author fast unit tests in `cat-harness-tools/test/` or whole-checkout integration tests in `cat-harness-tools/test/coordinator/`:
