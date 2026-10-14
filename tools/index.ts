@@ -773,7 +773,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       selection: {
         when: "Every agent-run publish of a folio's or an IG's site, preview or main: it is what the current build pipeline uses (smart-trust's and smart-immunizations' `site-publish.yml` run this same command on a runner).",
         limits:
-          "An IG is built by its own workflow's steps, so IG Publisher needs a Docker daemon (the plan names it MISSING without one). The IG chrome is the rail and the icon row, not the Jekyll theme's side bar and search box that `folio-site.yml` composes the IG into, and not that workflow's `publish-served` directories or `folio-build.json` stamp. A sync of the harness data that fails falls back to the data the cat-harness mount pins; whether the chrome landed is judged on the pages.",
+          "An IG repository's main site is built from its AST, read from the cache branch fhir-harness's `ig-ast-refresh` keeps current, by the steps its `site.build` recipe declares (`profile: "ig-repo-site"`): the theme side bar and search, the harness rail and icon row, the served directories and the `folio-build.json` stamp, measured against the live root (cat-harness-tools#202). A stale AST is refused, never built from Publisher HTML. A root publish is refused when the composed site lacks anything the current root has (`site-parity`), judged on the pages. Without a `site.build` recipe an IG falls back to its own workflow's Publisher steps, which need a Docker daemon and give the rail and icon row only.",
         cost: "An IG: the whole IG Publisher build (tens of minutes), then about two minutes of rail over ~3,600 pages. A folio: its build command. Then one push, and GitHub's own Pages deploy.",
       },
       requires: { runtime: ["bun", "git"], network: true },
@@ -804,7 +804,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       },
       satisfies: ["feature-staging", "harness-tiles"],
       selection: {
-        when: "A pipeline that still carries `folio-site.yml` (smart-base, measured 2026-10-14), or a site that needs what only it gives: the Jekyll theme's side bar and search box on IG pages, the served directories, the build stamp.",
+        when: "A pipeline that still carries `folio-site.yml` and builds on a runner rather than in the agent's checkout (smart-base's default branch carried it on 2026-10-14). Since cat-harness-tools#202 `stage-local` gives an IG the same site — theme side bar and search, served directories, stamp — so this is no longer the only route to them.",
         limits:
           "Dispatch-only and runner-bound: it needs a runner, the `gh` CLI with a token that may run workflows, and the folio-assistant submodule the template expects. It builds the IG with `stage-ig-sites`, not the IG's own `ghbuild.yml`, and has no plan or dry-run: a run on the default branch deploys. The current agent pipeline does not use it (owner, 2026-10-14).",
         cost: "One runner job, 8 to 15 minutes measured on 2026-10-12, plus GitHub's Pages deploy.",
