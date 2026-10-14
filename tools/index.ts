@@ -2050,7 +2050,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       requires: { runtime: ["bun", "chromium"], network: false },
     }),
 
-    // Wireframes (issue #1023): the mechanical half of `wireframe-design-review`.
+    // Wireframes (issue #1023): `wireframe-viewport-check`, the mechanical step of `wireframe-design-review`.
     // It records per-viewport pass/fail entries and never a score, because the
     // `wiregen` methodology adopts the structure of its source's rating and
     // refuses the arithmetic.
@@ -2074,7 +2074,10 @@ export function tools(baseUrl?: string): ToolDefinition[] {
         ],
         outputs: [{ name: "report", schema: t("RepoPath"), description: "report.json: per candidate, per viewport, per criterion. The screenshots are beside it." }],
       },
-      satisfies: ["wireframe-design-review"],
+      // The STEP, not the whole review: `wireframe-design-review`'s contract
+      // asks for the use, topic and surface, which a renderer neither needs nor
+      // can act on (check-tools: "the skill's own contract contradicts").
+      satisfies: ["wireframe-viewport-check"],
       requires: { runtime: ["bun", "chromium"], network: false },
     }),
 
