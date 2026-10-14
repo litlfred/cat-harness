@@ -78,6 +78,7 @@ node_modules/
 /docs/smart-base/
 /docs/_data/harness.json
 /docs/_includes/generated/navbar-footer.html
+/site-chrome/assets/css/avatars.css
 /docs/assets/beans/
 /docs/assets/todos/count.json
 /docs/assets/todos/index.json
