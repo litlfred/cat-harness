@@ -23,6 +23,8 @@ applies-when: >
 
 **Adopted in part, 2026-09-23, by the owner's direction.** In the owner's words: *"make methodology/utilize/integrate into existing processes. need both web and mobile layouts in usability reviews. wireframe is part of design process for adjudication"*.
 
+**Integrated into CRDM, 2026-10-14.** `crdm-requirements-definition.bpmn` calls `Process_WireframeDesignReview` (`Call_Wireframe`) whenever a requirement changes a rendered surface, before anything is built; the candidates become assets of the request's proposal, and the requester or BA chooses one at `BA_ReviewReqs`. See [`wireframe-design-review`](../skills/ui/ui-core/wireframe-design-review.md).
+
 **Placed in cat-harness** (owner, 2026-09-23: *"put wireframe in cat-harness, not folio-assist(-core)"*). The method is domain-neutral, and `methodology-adoption` §4 puts a domain-neutral method in the harness. It was first drafted in litlfred/ihris, and its first use was that folio's data-model site. Issue #1023.
 
 ## What the method says (rendered faithfully)

@@ -17,7 +17,7 @@ WireGen (methodologies/wiregen) made executable: a written design intent, at lea
 
 ## How it connects
 
-- **Called by:** no call activity names this process
+- **Called by:** [CRDM Phases 2–4 — BPA and requirements](crdm-requirements-definition.html)
 - **Calls:** [Criterion adjudication](criterion-adjudication.html), [Options analysis](options-analysis.html)
 - **Presented on:** no docs page section shows this diagram
 - **Skill:** [`wireframe-design-review`](../../../reference/skill-instructions/wireframe-design-review.html)

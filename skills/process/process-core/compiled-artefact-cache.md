@@ -76,6 +76,7 @@ Preserving these intermediates is what makes subsequent incremental builds (such
 | Key Inputs | `toolchain` (Lean version), `sourceRevision` | `toolchain` (Publisher version), `sourceRevision`, `inputDigest` |
 | Storage Branch | `lake-cache/<package>-<toolchain>` | `fhir-ast/<ig-package-id>` |
 | Service Script | `lake-cache.sh` (9 verbs) | `ig-cache.sh` (7 verbs) |
+| Refreshed by | an agent's `lake-cache.sh contribute` | a reusable workflow of the IG layer, on a runner (the Publisher needs Java and a 10 GB heap), which each IG repository dispatches; a site build refuses an AST that is not valid (owner, 2026-10-14) |
 | Cone Engine | Lake's `.trace`-based dependency graph | SUSHI's `fsh-index.json` (forward: file → resource) + `fsh-cone.ts` (reverse: who uses this file) + `AstPlanCli` |
 | Incremental | `lake build` (only stale modules) | `IncrementalBuildCli` (cone rebuild loop) |
 

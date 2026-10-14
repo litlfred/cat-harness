@@ -143,6 +143,21 @@ For each requirement:
    consumer is not done.
 5. **Cross-references** — link to related documentation pages under
    `docs/source/`, existing skills, existing workflows
+6. **Wireframe candidates, when a requirement changes a rendered surface** — a
+   page, a visualiser, the navbar, a form, an app screen. Before anything is
+   built, run [`wireframe-design-review`](wireframe-design-review.md)
+   in Design use (`Call_Wireframe` in `crdm-requirements-definition.bpmn`):
+   at least two candidates, each with a web and a mobile layout, committed as
+   assets of the proposal under `docs/proposals/<slug>/wireframes/` on the
+   feature branch, and shown where the requester will look, chosen from
+   context — the conversation, the issue the request came from, the PR, or
+   several — each place carrying the same STAGING deep links and screenshots
+   ([`staging-review`](staging-review.md), the deep-link rule,
+   point 5). The
+   candidates are the options Phase 4's comparison lays out; the requester or
+   BA chooses one at the review. Record "N/A — no rendered surface" in the
+   template otherwise. Owner, 2026-09-23 ([`wiregen`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/wiregen.md)):
+   *"wireframe is part of design process for adjudication"*.
 
 ### Consumer burden is a requirement, not a nicety (STRICT)
 
@@ -252,6 +267,10 @@ question the analysis already answered).
    - **Process/policy** formalization second (skills, workflows, conventions)
    - **Implementation** third (code, pipelines, tools)
    - **Visualization/UI** last (dashboards, pages, views)
+
+   Only the UI's **build** comes last. Its **wireframe** is designed and
+   approved in Phases 3–4 (step 6 of Phase 3), so the order fixes when it is
+   implemented, not when it is decided.
 
    This is not arbitrary — a visualization built before the process is
    formalized will be rebuilt; a process formalized before the structure is
@@ -425,7 +444,10 @@ For each bean:
 1. **Create feature branch** — always, no exceptions. Before the first edit,
    run the collision review in [`coordinate`](coordinate.md)
    §"Starting new work".
-2. **Implement** — following the accepted requirements
+2. **Implement** — following the accepted requirements, and, where a
+   requirement changes a rendered surface, **against the wireframe candidate
+   the requester or BA chose** in Phases 3–4. The delivery summary links the
+   chosen candidate beside the after-screenshot.
 3. **Open PR** — link to the bean and the parent issue
 4. **Deploy staging preview** — the `feature-staging.yml` workflow
    auto-deploys to `STAGING/<branch-slug>/` on `gh-pages`. The magenta

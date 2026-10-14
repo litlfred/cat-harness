@@ -387,6 +387,15 @@ Every path refuses an empty build before it deletes anything (bean `oisv`).
   Publisher in a Docker image, so a machine with no Docker daemon gets the
   plan from `--dry-run`, and a real run stops naming the missing
   prerequisite.
+- **An IG repository's own site is built from its AST, not from the
+  Publisher's HTML** (owner, 2026-10-14). The repository declares
+  `site.build` in its `<instance>.config.json`, and that recipe's first step
+  restores the AST from its cache branch and refuses one that is not valid for
+  the commit. The cache is refreshed by a Publisher run on a runner, through
+  the IG layer's reusable refresh workflow. It is the one workflow an
+  agent-run IG repository dispatches, and only a person, or an agent the
+  owner names for that run, dispatches it. The layer that owns IG builds owns
+  the rule and the workflow; this skill names no IG step.
 
 ### Agent-run repositories — the GitHub Actions path is documented, not run (owner, 2026-10-10)
 
@@ -473,3 +482,12 @@ so a failed fetch is not evidence either way.
 
 Full rule and the measured failure:
 [`github-state-inspection`](github-state-inspection.md).
+
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](staging-review.md) §"The deep-link rule".

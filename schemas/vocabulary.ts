@@ -589,6 +589,25 @@ export const PROPERTY_GLOSSES: Readonly<Record<string, TermGloss>> = {
   stagingSha: { gloss: "The commit a staging preview was built from." },
   stagingRef: { gloss: "The pull request a staging preview belongs to." },
   stagingRun: { gloss: "The CI run that produced a staging preview." },
+  // The changed-assets list a staging preview's graph carries — written by
+  // `cat-harness-tools/scripts/kg-changed-assets.ts`, declared in the export's
+  // `buildContext` (owner, 2026-10-14: "a list of changed assets in the
+  // staging knowledge graph"). `title`, `before` and `after` are the
+  // `StagingPageComparison` fields of `schemas/staging.ts`.
+  changedAssets: { gloss: "The nodes a staging preview's graph adds, changes or removes against the graph main publishes, in node order." },
+  changedAssetsComparedWith: { gloss: "The published main document a changed-assets list was computed against." },
+  changedAssetsUnavailable: {
+    gloss: "Why a staging preview's graph carries no changed-assets list — the main document could not be read — never rendered as 'nothing changed'.",
+  },
+  assetChange: { gloss: "How a changed asset differs from main: added, changed or removed." },
+  assetKind: { gloss: "The type of a changed asset's node, without its namespace." },
+  assetSource: { gloss: "The repository-relative file a changed asset's node was read from." },
+  beforeVersion: { gloss: "The same thing as published on main; absent when it is new on the branch." },
+  afterVersion: { gloss: "The same thing as published in the staging preview; absent when the branch removes it." },
+  renderedPage: { gloss: "A rendered page a changed asset's source file maps to, as a before/after pair." },
+  renderedPagesUnknown: {
+    gloss: "Why a changed asset's rendered pages were not mapped one by one — never read as 'renders no page'.",
+  },
 
   // ── Reporting ────────────────────────────────────────────────────────
   counts: { gloss: "How many nodes of each type the export produced." },

@@ -131,6 +131,33 @@ Format as a markdown checklist:
 | REQ-002 | Release lifecycle skill | Must | 1 | ⬜ |
 ```
 
+### UI / wireframe
+
+Every requirement set carries this section, filled or marked not applicable.
+When a requirement changes a rendered surface (a page, a visualiser, the
+navbar, a form, an app screen), the wireframe is designed and chosen **before**
+implementation, by [`wireframe-design-review`](../../ui/ui-core/wireframe-design-review.md)
+in Design use; its output (`schemas/skills/wireframe-design-review/output.schema.json`)
+supplies every row:
+
+```markdown
+### UI / wireframe
+
+- _Surface:_ the review page's heat map (REQ-004, REQ-005)
+- _Candidates:_ `docs/proposals/<slug>/wireframes/` — assets of this proposal
+  - `a.html` — [staging](…) · web ![](…/checks/a-web.png) · mobile ![](…/checks/a-mobile.png)
+  - `b.html` — [staging](…) · web ![](…/checks/b-web.png) · mobile ![](…/checks/b-mobile.png)
+- _Chosen:_ `b` by @requester ([where they chose](…): the conversation, the issue or the PR), because …; `a` rejected because …
+```
+
+Or, when no requirement changes a rendered surface:
+
+```markdown
+### UI / wireframe
+
+N/A — no rendered surface.
+```
+
 ## Traceability
 
 Every requirement traces in both directions:
@@ -155,3 +182,12 @@ PR (Phase 6)
 - [`../../skills/sdlc/sdlc-core/todo-manager.md`](../sdlc-core/todo-manager.md) — bean creation
 - [`../../skills/sdlc/sdlc-core/specification-management.md`](../sdlc-core/specification-management.md) — governance and EARS/ISO statement quality
 - [`../../../methodologies/requirements-standards-assessment.md`](../../../methodologies/requirements-standards-assessment.md) — open standards (ReqIF, OSLC-RM, EARS, ISO 29148) assessment
+
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](../sdlc-core/staging-review.md) §"The deep-link rule".

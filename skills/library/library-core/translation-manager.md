@@ -712,3 +712,11 @@ When presenting translated content for review, use the `staging-review`
 skill to provide before/after URL comparison tables. See
 `schemas/staging.ts` for the `StagingComparison` schema.
 
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](../../sdlc/sdlc-core/staging-review.md) §"The deep-link rule".

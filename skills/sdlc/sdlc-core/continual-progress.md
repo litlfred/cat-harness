@@ -116,9 +116,10 @@ So:
   navigation.
 - **Deep-link past the index.** If the change is on
   `/docs/who-iris/kg-to-portal.html`, that is the URL, not `/docs/who-iris/`.
-- **Compose it from the preview's own base**, which the staging comment
-  states. Never from memory: a branch slug is exactly the kind of string that
-  is almost right.
+- **Take it from the preview's page list**, never from memory or a source
+  path: a branch slug is exactly the kind of string that is almost right. The
+  rule, and where the list comes from, is
+  [`staging-review`](staging-review.md) §"The deep-link rule".
 - **The root is the right link for precisely one thing** — a change to the
   landing page itself.
 

@@ -163,6 +163,41 @@ package "cat-harness/schemas" as pkg_cat_harness_schemas <<schemas, cat-harness>
     ruleCount [0..1] : integer
     hitPolicy [0..1] : UNIQUE | FIRST | PRIORITY | ANY | COLLECT | RULE ORDER
   }
+  class "Channel" as cat_harness_schemas_skills_wireframe_design_review_input_schema_json_Channel <<schema: skills/wireframe-design-review/input.schema.json>> #e9edf3 {
+    kind [1] : conversation | issue | pull-request
+    url [0..1] : string<uri>
+  }
+  class "Wireframe Design Review Input" as cat_harness_schemas_skills_wireframe_design_review_input_schema_json_Wireframe_Design_Review_Input <<schema: skills/wireframe-design-review/input.schema.json>> #e9edf3 {
+    use [1] : design | as-is
+    topic [1] : string
+    surface [1] : string
+    intent [0..1] : string
+    requirements [0..*] : string[]
+    proposal [0..1] : string
+    humanReviewer [0..1] : string
+    channels [0..*] : Channel[]
+    branch [0..1] : string
+  }
+  class "Candidate" as cat_harness_schemas_skills_wireframe_design_review_output_schema_json_Candidate <<schema: skills/wireframe-design-review/output.schema.json>> #e9edf3 {
+    id [1] : string
+    title [0..1] : string
+    source [1] : string
+    screenshots [1] : object
+    staging [0..1] : object
+    entries [0..*] : any[]
+    outcome [1] : chosen | rejected | pending | as-is
+    reason [0..1] : string
+  }
+  class "Wireframe Design Review Output" as cat_harness_schemas_skills_wireframe_design_review_output_schema_json_Wireframe_Design_Review_Output <<schema: skills/wireframe-design-review/output.schema.json>> #e9edf3 {
+    use [1] : design | as-is
+    topic [1] : string
+    assetDir [1] : string
+    intent [0..1] : string
+    candidates [1..*] : Candidate[]
+    chosen [0..1] : object
+    changedAssets [0..*] : any[]
+    stagingLinks [1] : any
+  }
   class "BlockQaReport" as cat_harness_schemas_block_qa_schema_schema_block_qa_schema_json_BlockQaReport <<schema: block-qa-schema/schema/block-qa.schema.json>> #e9edf3 {
     $schema [1] : 'block-qa/v1'
     label [1] : string
@@ -194,4 +229,6 @@ cat_harness_schemas_skills_content_review_output_schema_json_Content_Review_Outp
 cat_harness_schemas_skills_content_test_output_schema_json_Content_Test_Output *-- "0..*" cat_harness_schemas_skills_content_test_output_schema_json_TestResult : testResults
 cat_harness_schemas_skills_content_validate_output_schema_json_Content_Validate_Output *-- "0..*" cat_harness_schemas_skills_content_validate_output_schema_json_Result : results
 cat_harness_schemas_skills_dmn_authoring_input_schema_json_DMN_Authoring_Input *-- "0..*" cat_harness_schemas_skills_dmn_authoring_input_schema_json_InputVariable : inputVariables
+cat_harness_schemas_skills_wireframe_design_review_input_schema_json_Wireframe_Design_Review_Input *-- "0..*" cat_harness_schemas_skills_wireframe_design_review_input_schema_json_Channel : channels
+cat_harness_schemas_skills_wireframe_design_review_output_schema_json_Wireframe_Design_Review_Output *-- "1..*" cat_harness_schemas_skills_wireframe_design_review_output_schema_json_Candidate : candidates
 @enduml

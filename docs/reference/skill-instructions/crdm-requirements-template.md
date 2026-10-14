@@ -136,6 +136,33 @@ Format as a markdown checklist:
 | REQ-002 | Release lifecycle skill | Must | 1 | ⬜ |
 ```
 
+### UI / wireframe
+
+Every requirement set carries this section, filled or marked not applicable.
+When a requirement changes a rendered surface (a page, a visualiser, the
+navbar, a form, an app screen), the wireframe is designed and chosen **before**
+implementation, by [`wireframe-design-review`](wireframe-design-review.md)
+in Design use; its output (`schemas/skills/wireframe-design-review/output.schema.json`)
+supplies every row:
+
+```markdown
+### UI / wireframe
+
+- _Surface:_ the review page's heat map (REQ-004, REQ-005)
+- _Candidates:_ `docs/proposals/<slug>/wireframes/` — assets of this proposal
+  - `a.html` — [staging](…) · web ![](…/checks/a-web.png) · mobile ![](…/checks/a-mobile.png)
+  - `b.html` — [staging](…) · web ![](…/checks/b-web.png) · mobile ![](…/checks/b-mobile.png)
+- _Chosen:_ `b` by @requester ([where they chose](…): the conversation, the issue or the PR), because …; `a` rejected because …
+```
+
+Or, when no requirement changes a rendered surface:
+
+```markdown
+### UI / wireframe
+
+N/A — no rendered surface.
+```
+
 ## Traceability
 
 Every requirement traces in both directions:

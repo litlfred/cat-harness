@@ -9,7 +9,7 @@ nav_exclude: true
 {% raw %}
 # A knowledge graph leaves for its own repositories
 
-`Process_KgSeparation` · strict · 18 step(s)
+`Process_KgSeparation` · strict · 19 step(s)
 
 Move part of a knowledge graph into repositories of its own: the content and the tools that write and check it separate as a pair, into two repositories, not one. The content (files to read, no code) and its tools (the code that writes and checks it) separate as a pair. `kg-separation.md` is the practice; this is its order and its gates. Stages 1-3 are `graph-detanglement`, reused rather than restated.
 
@@ -41,7 +41,7 @@ VERSIONS: the pair starts at the content's version at the split, then each is ve
 
 ## Steps
 
-Every one of the 18 step(s) is documented.
+Every one of the 19 step(s) is documented.
 
 | step | lane | skill / sub-process | what it does |
 |---|---|---|---|
@@ -63,10 +63,11 @@ Every one of the 18 step(s) is documented.
 | **12 · First release**<br>`Task_Release` | Publication manager | [`package-release`](../../../reference/skill-instructions/package-release.html) | Tag each repository, publish /<version>/ and /v<major>/. From here the two are versioned independently; a tools release lists the content majors it supports. |
 | **Every identifier dereferences**<br>`Task_Verify` | Build pipeline | calls [Verify the export before it is deployed](publish-verification.html)<br>[`publish-verification`](../../../reference/skill-instructions/publish-verification.html) | After the release is live, every published identifier resolves to the file it names. |
 | **13 · Cutover: retire the parent's copy**<br>`Task_Cutover` | Administrator | [`deletion-requires-confirmation`](../../../reference/skill-instructions/deletion-requires-confirmation.html) | The one commit worth reverting, made only after the parent consumes the release and every identifier dereferences. It retires the parent's copy, frozen, never refreshed and never rendered, rather than deleting it (owner, 2026-10-06). Where the copy goes is the sub-kg-lifecycle skill's stage 13; this diagram does not name that store, because the published graph must not. |
+| **Measure the cutover: separation:cutover:check**<br>`Task_CutoverCheck` | Build pipeline | [`kg-separation`](../../../reference/skill-instructions/kg-separation.html) | Run `bun run cat separation:cutover:check --site` in the SEPARATED repository (Tool `separation-cutover-check`). Six conditions, each decided by an existing gate and none assumed: every declared layer mounted at its pin; every path a declaration names resolves (`check:declaration-resolution` — directories, assets, visualisers, needs); no wiring still names the monorepo (`livesAt`, a submodule, a reusable workflow, a path into the old checkout — lessons 15 and 16); no import or reference against the layer order; and the site builds from the mounts alone. A finding inside a mounted layer is upstream's and is listed, not counted. |
 
 ## Decisions
 
-Every one of the 4 decision(s) is documented.
+Every one of the 5 decision(s) is documented.
 
 | decision | what decides it | branches |
 |---|---|---|
@@ -74,5 +75,6 @@ Every one of the 4 decision(s) is documented.
 | **Every identifier its file's path?**<br>`GW_Ids` | Decided by `check:node-iris`: a published node's own identifier ($id or @id) under the release address must be its file's path. A mismatch goes back to the plan: move the file, or change the identifier before it is ever served. | **mismatch** → 7 · Plan publication<br>**every one matches** → 8 · Rehearse standalone |
 | **Green alone?**<br>`GW_Alone` | Green with nothing else present goes on. Red means an edge the earlier gates did not see, so back to detangling. If the rehearsal could not run, that is not a pass: stop. | **red: an unseen edge** → 1–3 · Declare, detangle, isolate<br>**could not run** → UNKNOWN — stop. Not clean<br>**green** → Report what moves — sizes, what breaks |
 | **Ready to seed?**<br>`GW_SeedReady` | Asked AT SEED TIME, because the tree has moved since `8 · Rehearse`. A seed is a snapshot with no history, so every open PR over the layer when it is taken is orphaned into the monorepo. Computed by decisions/seed-readiness-gate.dmn (hit policy FIRST) from `seed:ready --layer <name>`: an open `heavy-mover` PR over the layer or the next one, any open PR on the next layer, more than five over the layer, any that moves a file in it, a red sibling-layout rehearsal, or a direct dependent that discovery cannot find among sibling clones answers `not yet`. A criterion that could not be decided answers `unknown` and stops; it never hides a finding already certain, which is why the `not yet` rows come first. The rehearsal runs only on request (`--rehearse`, owner ruling 2026-10-02), so without it the answer is never `settled`. | **not yet** → Drain: land, close or re-target the open PRs<br>**unknown** → UNKNOWN — do not seed. Not clean<br>**settled** → 10 · Seed both repositories |
+| **Cutover complete?**<br>`GW_CutoverComplete` | Decided by the exit of `separation:cutover:check`: 0 every condition measured and passed, 1 a condition failed, 2 one could not be determined or was not run (without `--site` the answer is never complete). A failure goes back to the cutover with the findings; an undetermined answer stops, because a cutover that could not be shown complete has not been shown complete. | **complete** → Separated<br>**a condition failed** → 13 · Cutover: retire the parent's copy<br>**could not determine** → UNKNOWN — not shown complete. Not clean |
 
 {% endraw %}

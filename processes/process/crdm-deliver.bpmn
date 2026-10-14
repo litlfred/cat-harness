@@ -58,7 +58,14 @@ Contrast `upstream-version-adoption`, where the loop DOES re-enter the analysis.
     <bpmn:task id="A_Implement" name="Phase 6: Implement
 (feature branch + PR)">
       <bpmn:documentation>Inner loop: agent claims a bean, implements on
-feature branch, opens PR, posts summary to the issue.</bpmn:documentation>
+feature branch, opens PR, posts summary to the issue.
+
+When the requirement changes a rendered surface, implement against the
+wireframe candidate the requester or BA chose in Phases 3–4
+(Process_WireframeDesignReview, called from Process_CRDM_Requirements), not
+against a fresh design; and the delivery summary links the chosen candidate
+beside the after-screenshot, so the reviewer can see the build matches what was
+approved.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="prepare-merge"/>
         <cat-harness.processes:bean op="claim"/>
@@ -88,9 +95,9 @@ assessment made assessment harder, not safer.</bpmn:documentation>
     </bpmn:task>
     <bpmn:task id="A_Summary" name="Post summary
 to issue">
-      <bpmn:documentation>What was accomplished, what remains, and links to
-the updated content for review.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="delivery-summary"/></bpmn:extensionElements>
+      <bpmn:documentation>What was accomplished, what remains, and the staging links: one deep link per
+changed page on the preview, with the same page on main (staging-review, "The deep-link rule").</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="delivery-summary"/><bootstrap.processes:skill ref="staging-review"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="BA_ReviewIncrement" name="Review increment
 (test behaviour)">
@@ -109,7 +116,7 @@ for stakeholders?">
 stakeholders">
       <bpmn:documentation>Outer loop: the BA presents the accumulated increments
 to stakeholders as a testable MVP. Staging URL, demo, or walkthrough.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="crdm-requirements-workflow"/></bpmn:extensionElements>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="crdm-requirements-workflow"/><bootstrap.processes:skill ref="staging-review"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="S_TestMVP" name="Test MVP
 in own context">
