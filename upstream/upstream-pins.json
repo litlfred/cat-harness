@@ -22,6 +22,7 @@
         "test/action-tiles.e2e.ts — asserts the theme's search element as rendered into `.main-header`.",
         "test/sidebar-panels.e2e.ts — asserts the theme's sidebar column and capped header.",
         "site-chrome/_includes/head_custom.html — pulled into every page by the theme.",
+        "site-chrome/_includes/css/activation.scss.liquid, components/breadcrumbs.html and components/children_nav.html — OVERRIDE the theme's files of those names (\"cache the nav\"). The theme re-derives each page's place in the nav on every page — re-walking the whole nav HTML for the first two, regrouping every page by parent for the third, each page touched costing a to_liquid that re-evaluates every front-matter `defaults` scope under Jekyll 3 — which is O(pages²) for the site. Here site-chrome/_includes/nav_cache/*.html compute those answers ONCE per build (include_cached) with the theme's own loops, and each page looks its answer up. The parts outside the marked blocks, and the maps' loop bodies, are the theme's verbatim; a pin move re-copies them and diffs a full build's pages against the theme's own output, which must be byte-identical.",
         "site-chrome/_config.yml — `search_enabled`, `heading_anchors`, `color_scheme: dark`, `mermaid` are theme options; so are `keep_files` and `footer_content`, which the site sets in docs/_config.yml (its identity, overlaid on the chrome by compose-docs)."
       ],
       "mvp": [
