@@ -481,6 +481,29 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       satisfies: ["kg-separation"],
       requires: { runtime: ["bun"], network: false },
     }),
+    // Owner, 2026-10-14 (bean 7pvn, mo75 exports item, option 1): a layer is
+    // imported by package name, and what it exports is what it DECLARES as
+    // code, not a hand list. A layer that cannot be imported by name is reached
+    // by `../../` paths that only work when every layer sits at one sibling path.
+    defineTool({
+      id: "package-exports",
+      title: "A package's exports are its declared, shipped code directories",
+      description:
+        "Derive a package's `package.json` `exports` from the instance declaration beside it: a directory declared with graph typology `code` (top level or from within) AND named in `files` is exported as `./<dir>/*.js → ./<dir>/*.ts` and `./<dir>/* → ./<dir>/*`; a declared code directory that is not shipped (`test/`) stays private. Keys without `*` are named entry points, kept as written and checked to point into an exported directory. Without `--write` it reports each difference; with it, it rewrites `exports`. Exit 0 in agreement, 1 drift, 2 cannot tell (no declaration, no `package.json`, or no shipped code directory).",
+      install: { none: true },
+      invoke: { shell: "bun run cat-harness-tools/scripts/package-exports.ts" },
+      io: {
+        inputs: [
+          { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The instance whose package to check. Default: cat-harness-tools." },
+          { name: "write", schema: t("Flag"), required: false, arg: { flag: "--write" }, description: "Rewrite `exports` to the derived set." },
+        ],
+        outputs: [
+          { name: "findings", schema: t("Count"), description: "Each difference between the written and the derived `exports`, or the directories exported and those declared but not shipped." },
+        ],
+      },
+      satisfies: ["kg-separation"],
+      requires: { runtime: ["bun"], network: false },
+    }),
     // Owner, 2026-10-12 (task 6): "a check that proves a repo's cutover from
     // the monorepo is complete — measure it, do not assume it". The gate after
     // kg-separation stage 13 (processes/kg/kg-separation.bpmn, GW_CutoverComplete).
