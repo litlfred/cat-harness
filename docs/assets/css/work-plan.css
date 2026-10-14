@@ -58,6 +58,9 @@
      first time a critical finding was shown). The reserved status hue stays
      for fills; text takes this shade (5.07:1). Light keeps #d03b3b (4.68:1). */
   --fa-wp-critical-text: #e85c5c;
+  /* Series as TEXT (the in-progress status word): #3987e5 is 4.79:1 here, so
+     dark keeps it; light needs its own shade, below. */
+  --fa-wp-series-text: #3987e5;
   /* The other status hues as TEXT. On the dark surface each hue clears 4.5:1
      itself (good 5.19, warning 9.49, serious 6.60). On the light one none
      does (3.27, 1.79, 2.57) — axe on /beans/, 2026-10-10: every warning badge
@@ -77,6 +80,9 @@
   --fa-wp-border: rgba(11, 11, 11, 0.10);
   --fa-wp-track: #e1e0d9;
   --fa-wp-series: #2a78d6;
+  /* #2a78d6 as 10.9px text on #fcfcfb is 4.30:1, under WCAG's 4.5:1 (axe,
+     /beans/, 2026-10-14). Fills and outlines keep it; text takes 4.80:1. */
+  --fa-wp-series-text: #2470cc;
   --fa-wp-critical-text: #d03b3b;
   /* 5.18, 5.77 and 5.75:1 on #fcfcfb; muted 5.28 (#898781 was 3.50). */
   --fa-wp-good-text: #0a7d0a;
@@ -93,6 +99,7 @@
     --fa-wp-border: rgba(11, 11, 11, 0.10);
     --fa-wp-track: #e1e0d9;
     --fa-wp-series: #2a78d6;
+    --fa-wp-series-text: #2470cc;
     --fa-wp-critical-text: #d03b3b;
     --fa-wp-good-text: #0a7d0a;
     --fa-wp-warning-text: #8a5a00;
@@ -403,7 +410,7 @@
   letter-spacing: 0.03em;
   color: var(--fa-wp-ink-2);
 }
-.fa-workplan-bean-status.is-in-progress { color: var(--fa-wp-series); }
+.fa-workplan-bean-status.is-in-progress { color: var(--fa-wp-series-text); }
 .fa-workplan-bean-blocked {
   flex: 0 0 auto;
   font-size: 0.68rem;
