@@ -435,3 +435,57 @@ describe("which actor kinds may fulfil an activity", () => {
     expect(MECHANICAL_KINDS).toEqual(["system"]);
   });
 });
+
+describe("readRoleGraph — a role inherits a role of an instance it needs", () => {
+  /** A directory of sibling instances, each with a declaration and a role graph at the conventional `scenarios/`. */
+  function instances(defs: { name: string; needs?: string[]; roles: unknown[] }[]): string {
+    const repo = mkdtempSync(join(tmpdir(), "role-graph-needs-"));
+    for (const d of defs) {
+      const root = join(repo, d.name);
+      mkdirSync(join(root, "scenarios"), { recursive: true });
+      writeFileSync(
+        join(root, `${d.name}.json`),
+        JSON.stringify({
+          name: d.name,
+          ...(d.needs ? { needs: d.needs } : {}),
+        }),
+      );
+      writeFileSync(join(root, "scenarios", ROLE_GRAPH_FILENAME), JSON.stringify({ name: d.name, roles: d.roles }));
+    }
+    return repo;
+  }
+  const role = (id: string, inherits?: string[]) => ({
+    id,
+    title: id,
+    description: "s",
+    actorKinds: ["person"],
+    skills: [],
+    ...(inherits ? { inherits } : {}),
+  });
+
+  test("through `needs`, transitively, with no `lower` passed by the caller", () => {
+    const repo = instances([
+      { name: "base", roles: [role("reviewer")] },
+      { name: "mid", needs: ["base"], roles: [] },
+      { name: "top", needs: ["mid"], roles: [role("checker", ["reviewer"])] },
+    ]);
+    try {
+      expect(readRoleGraph(join(repo, "top", "scenarios"))?.roles.map((r) => r.id)).toEqual(["checker"]);
+    } finally {
+      rmSync(repo, { recursive: true, force: true });
+    }
+  });
+
+  test("never from an instance it does not need — a sibling or a dependent stays refused", () => {
+    const repo = instances([
+      { name: "base", roles: [role("reviewer")] },
+      { name: "side", roles: [role("auditor")] },
+      { name: "top", needs: ["base"], roles: [role("checker", ["auditor"])] },
+    ]);
+    try {
+      expect(() => readRoleGraph(join(repo, "top", "scenarios"))).toThrow(/inherits "auditor", which is not declared/);
+    } finally {
+      rmSync(repo, { recursive: true, force: true });
+    }
+  });
+});
