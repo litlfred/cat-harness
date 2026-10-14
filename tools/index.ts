@@ -495,7 +495,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
         inputs: [
           { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The separated checkout. Default: the working directory." },
           { name: "site", schema: t("Flag"), required: false, arg: { flag: "--site" }, description: "Build the site from the mounts on disk (minutes); without it the `site` condition is not run and the verdict cannot be complete." },
-          { name: "monorepo", schema: t("Text"), required: false, arg: { flag: "--monorepo" }, description: "The repository the separation left, `<owner>/<repo>`. Default: litlfred/folio-assistant." },
+          { name: "monorepo", schema: t("RepoFullName"), required: false, arg: { flag: "--monorepo" }, description: "The repository the separation left, `<owner>/<repo>`. Default: litlfred/folio-assistant." },
           { name: "monorepoDir", schema: t("Slug"), required: false, arg: { flag: "--monorepo-dir" }, description: "Its old checkout directory name, as paths spell it. Default: the repository's name." },
           { name: "json", schema: t("Flag"), required: false, arg: { flag: "--json" }, description: "Print the report as JSON, mounted-layer findings included." },
         ],
