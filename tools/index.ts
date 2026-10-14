@@ -481,6 +481,29 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       satisfies: ["kg-separation"],
       requires: { runtime: ["bun"], network: false },
     }),
+    // Owner, 2026-10-14 (bean 7pvn, mo75 exports item, option 1): a layer is
+    // imported by package name, and what it exports is what it DECLARES as
+    // code, not a hand list. A layer that cannot be imported by name is reached
+    // by `../../` paths that only work when every layer sits at one sibling path.
+    defineTool({
+      id: "package-exports",
+      title: "A package's exports are its declared, shipped code directories",
+      description:
+        "Derive a package's `package.json` `exports` from the instance declaration beside it: a directory declared with graph typology `code` (top level or from within) AND named in `files` is exported as `./<dir>/*.js → ./<dir>/*.ts` and `./<dir>/* → ./<dir>/*`; a declared code directory that is not shipped (`test/`) stays private. Keys without `*` are named entry points, kept as written and checked to point into an exported directory. Without `--write` it reports each difference; with it, it rewrites `exports`. Exit 0 in agreement, 1 drift, 2 cannot tell (no declaration, no `package.json`, or no shipped code directory).",
+      install: { none: true },
+      invoke: { shell: "bun run cat-harness-tools/scripts/package-exports.ts" },
+      io: {
+        inputs: [
+          { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The instance whose package to check. Default: cat-harness-tools." },
+          { name: "write", schema: t("Flag"), required: false, arg: { flag: "--write" }, description: "Rewrite `exports` to the derived set." },
+        ],
+        outputs: [
+          { name: "findings", schema: t("Count"), description: "Each difference between the written and the derived `exports`, or the directories exported and those declared but not shipped." },
+        ],
+      },
+      satisfies: ["kg-separation"],
+      requires: { runtime: ["bun"], network: false },
+    }),
     // Owner, 2026-10-12 (task 6): "a check that proves a repo's cutover from
     // the monorepo is complete — measure it, do not assume it". The gate after
     // kg-separation stage 13 (processes/kg/kg-separation.bpmn, GW_CutoverComplete).
@@ -706,6 +729,88 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       },
       satisfies: ["harness-tiles"],
       requires: { runtime: ["bun"], network: false },
+    }),
+    // ── An IG repository's own site: two Tools, one pair of skills ─────────
+    //
+    // Owner, 2026-10-14: "It is up to a human or an agent whether to use a tool
+    // or not ... Multiple tools can implement the same skill." Both Tools below
+    // publish an IG repository's own Pages site wearing the harness chrome
+    // (`harness-tiles`) as a staging or main publish (`feature-staging`). They
+    // are NOT derived alternatives: their I/O differs (stage-local takes a
+    // checkout and plan/dry-run flags; the workflow takes a repository and a
+    // ref), so `deriveAlternatives` keeps them apart, and each says in its
+    // `selection` when it is the one to reach for.
+    //
+    // `stage-local` is the ONE agent publish path (owner, 2026-10-10: "one
+    // consolidated workflow"; bean n3h9), and until now it had no node: the
+    // `feature-staging` skill described it and nothing in the graph ran it.
+    // Owner, 2026-10-14, decision "1": its IG route now applies the chrome.
+    defineTool({
+      id: "stage-local",
+      title: "Publish a folio's or an IG's site from the agent's own checkout — the one agent publish path",
+      description:
+        "Build a repository's site in the agent's checkout and push it to the publish branch, as a preview or as the main site, without an Actions runner. Which build is read from the repository: a declared `site.build` recipe (built by `build-instance-site`), else the reusable workflow its own workflow files call — `folio-staging.yml` for a folio, smart-base's `ghbuild.yml` for a FHIR IG, whose `build` job is planned step by step and run as written. For an IG it then applies the harness chrome over the built output (`sync-docs-harness`, then `rail-standalone-pages --foreign-site --instance <the IG>`): every page gains the rail and the icon row `#fa-navbar-row`, and the IG's own content is left byte for byte. A root publish is REFUSED when the chrome cannot be applied, and a clean root deploy is refused over any root whose `index.html` wears the icon row unless the new output does too, so a chromed root is never replaced by bare IG Publisher pages. Every run prints its plan first, and the plan lists the chrome step; `--plan` stops there, `--dry-run` composes the commit in a temporary worktree and pushes nothing, `--artifact` writes a claude.ai Artifact bundle instead.",
+      install: { none: true },
+      invoke: { shell: "bun run cat-harness-tools/scripts/stage-local.ts" },
+      io: {
+        inputs: [
+          { name: "repo", schema: t("RepoPath"), required: false, arg: { flag: "--repo" }, description: "The checkout to publish, with the platform's layers mounted at its root. Default: the working directory." },
+          { name: "branch", schema: t("Branch"), required: false, arg: { flag: "--branch" }, description: "The branch to publish. Default: the checkout's. The default branch publishes the main site; any other a preview." },
+          { name: "base", schema: t("Branch"), required: false, arg: { flag: "--base" }, description: "A folio preview's base branch, for its ChangeSet and rendered impact." },
+          { name: "main", schema: t("Flag"), required: false, arg: { flag: "--main" }, description: "Publish the main site at the root. Implied on the default branch, refused off it." },
+          { name: "plan", schema: t("Flag"), required: false, arg: { flag: "--plan" }, description: "Print what would be built and where, every step named, and stop." },
+          { name: "dryRun", schema: t("Flag"), required: false, arg: { flag: "--dry-run" }, description: "Build and compose the commit in a temporary publish-branch worktree; push nothing." },
+          { name: "artifact", schema: t("RepoPath"), required: false, arg: { flag: "--artifact" }, description: "Write a claude.ai Artifact bundle here instead of pushing." },
+          { name: "workflowSource", schema: t("RepoPath"), required: false, arg: { flag: "--workflow-source" }, description: "An IG: read the reusable workflow from this local checkout instead of fetching it at the ref its caller names." },
+          { name: "publisher", schema: t("Slug"), required: false, arg: { flag: "--publisher" }, description: "`folio` or `ig`, when the repository's workflows call both (the folio by default)." },
+          { name: "runUrl", schema: t("Url"), required: false, arg: { flag: "--run-url" }, description: "What the commit and render log name as the run. Default: the commit's URL." },
+        ],
+        outputs: [
+          { name: "url", schema: t("Url"), description: "Where the site is served once GitHub's Pages deploy has run, with the commit pushed (or, with --dry-run, the commit composed and discarded).", render: { as: "url", reason: "a reader opens the published site; the scheme is checked before it reaches an href" } },
+        ],
+      },
+      satisfies: ["feature-staging", "harness-tiles"],
+      selection: {
+        when: "Every agent-run publish of a folio's or an IG's site, preview or main: it is what the current build pipeline uses (smart-trust's and smart-immunizations' `site-publish.yml` run this same command on a runner).",
+        limits:
+          "An IG repository's main site is built from its AST, read from the cache branch fhir-harness's `ig-ast-refresh` keeps current, by the steps its `site.build` recipe declares (`profile: ig-repo-site`): the theme side bar and search, the harness rail and icon row, the served directories and the `folio-build.json` stamp, measured against the live root (cat-harness-tools#202). A stale AST is refused, never built from Publisher HTML. A root publish is refused when the composed site lacks anything the current root has (`site-parity`), judged on the pages. Without a `site.build` recipe an IG falls back to its own workflow's Publisher steps, which need a Docker daemon and give the rail and icon row only.",
+        cost: "An IG: the whole IG Publisher build (tens of minutes), then about two minutes of rail over ~3,600 pages. A folio: its build command. Then one push, and GitHub's own Pages deploy.",
+      },
+      requires: { runtime: ["bun", "git"], network: true },
+      remedies: [{ host: "github.com", none: "The publish is a push to the repository's publish branch; offline, `--plan` and `--dry-run` still say and build what would be published." }],
+    }),
+    // The route the owner does not use in the current pipeline, and that is a
+    // choice, not a property of the Tool (owner, 2026-10-14: "But did other
+    // build pipelines? It might be necessary."). Measured that day: smart-base
+    // carries `.github/workflows/folio-site.yml` on its default branch and ran
+    // it by dispatch on 2026-10-12; smart-trust and smart-immunizations ran it
+    // the same day and have since replaced it with `site-publish.yml`
+    // (stage-local). No workflow calls it: it is dispatch-only, never reusable.
+    // A node over a workflow, on the `package-release-workflow` precedent: the
+    // mechanism is the dispatch.
+    defineTool({
+      id: "ig-folio-site-workflow",
+      title: "Build and publish an IG repository's own site with its folio-site.yml workflow",
+      description:
+        "Dispatch the IG repository's `folio-site.yml` (copied from the IG layer's `ig-repo-site` template): on a runner it composes the harness chrome for THIS instance (`compose-docs --shell --instance`, `gen-navbar-include`), composes the IG at the root of that Jekyll shell (`stage-ig-sites --compose-at-root`), builds it with Jekyll so every IG page wears the theme's side bar, search box and icon row, publishes the instance's served directories, rails any page Jekyll did not lay out (`rail-standalone-pages --foreign-site --instance`), stamps the platform that built it (`folio-build.json`), and on the default branch deploys the whole site to the `gh-pages` root. It reports platform drift against sibling sites and re-dispatches the IGs this one depends on when a token allows.",
+      install: { none: true },
+      invoke: { shell: "gh workflow run folio-site.yml" },
+      io: {
+        inputs: [
+          { name: "repo", schema: t("RepoFullName"), required: false, arg: { flag: "-R" }, description: "The IG repository whose workflow to dispatch. Default: the current repository." },
+          { name: "ref", schema: t("Branch"), required: false, arg: { flag: "--ref" }, description: "The branch to build. Only the default branch deploys; any other builds and reports." },
+        ],
+        outputs: [{ name: "status", schema: t("Text"), description: "The dispatch, and the run it starts; the site is served once that run and GitHub's Pages deploy have finished." }],
+      },
+      satisfies: ["feature-staging", "harness-tiles"],
+      selection: {
+        when: "A pipeline that still carries `folio-site.yml` and builds on a runner rather than in the agent's checkout (smart-base's default branch carried it on 2026-10-14). Since cat-harness-tools#202 `stage-local` gives an IG the same site — theme side bar and search, served directories, stamp — so this is no longer the only route to them.",
+        limits:
+          "Dispatch-only and runner-bound: it needs a runner, the `gh` CLI with a token that may run workflows, and the folio-assistant submodule the template expects. It builds the IG with `stage-ig-sites`, not the IG's own `ghbuild.yml`, and has no plan or dry-run: a run on the default branch deploys. The current agent pipeline does not use it (owner, 2026-10-14).",
+        cost: "One runner job, 8 to 15 minutes measured on 2026-10-12, plus GitHub's Pages deploy.",
+      },
+      requires: { runtime: ["gh"], network: true },
+      remedies: [{ host: "github.com", none: "It is a GitHub Actions workflow; it runs on GitHub or not at all. `stage-local` builds an IG's site, with the rail and icon row, in the agent's checkout." }],
     }),
     defineTool({
       id: "compose-docs",
