@@ -41,7 +41,7 @@ The contract is [`input.schema.json`](../../../schemas/skills/wireframe-design-r
 - **In:** the `use` (`design` or `as-is`), the `topic` (for CRDM, the proposal slug), the `surface`, and, from CRDM, the `requirements` that change it, the `proposal` path, the `humanReviewer` (requester or BA), the `channels` the candidates are shown in, and the `branch`.
 - **Out — the renderings:** `assetDir`, `intent`, and one `candidates[]` entry per candidate: its `source` HTML path, its `screenshots.web` and `screenshots.mobile` paths (from `wireframe-check`), their `staging` deep links, its per-criterion `entries`, and its `outcome` with the `reason`. `chosen` names the candidate, who chose it and the comment that records it; it is absent until a person chooses.
 - **Out — as changed assets:** `changedAssets[]` lists every wireframe file the branch adds, changes or removes (candidate HTML, screenshots, intent, reviews) in the record shape a staging preview's graph carries (`change`, `kind`, `title`, `before`, `after`, `source`, `pages` or `pagesUnknown`; `ChangedAsset` in cat-harness-tools `scripts/kg-changed-assets.ts`). The review therefore lists the drawings the same way it lists every other changed asset.
-- **Out — staging links:** `stagingLinks`, the shape every request for feedback carries ([`staging-review`](../../sdlc/sdlc-core/staging-review.md)), copied inline as `$defs.stagingLinks`.
+- **Out — staging links:** `stagingLinks`, the shape every request for feedback carries ([`staging-review`](../../sdlc/sdlc-core/staging-review.md)), copied inline as `definitions.stagingLinks`.
 
 ## Two uses
 
@@ -85,6 +85,15 @@ There are no scores and no averages (`methodology-adoption`, Refusals).
 
 - When entries for one criterion disagree, call **`Process_Adjudication`**. The adjudication leads, the checker's entry is kept, and a dispensation needs its reason.
 - The choice between surviving candidates is **`Process_OptionsAnalysis`**. Rejected candidates stay, each with the reason it lost.
+
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](../../sdlc/sdlc-core/staging-review.md) §"The deep-link rule".
 
 ## Showing it to the requester
 

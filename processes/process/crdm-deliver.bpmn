@@ -95,9 +95,9 @@ assessment made assessment harder, not safer.</bpmn:documentation>
     </bpmn:task>
     <bpmn:task id="A_Summary" name="Post summary
 to issue">
-      <bpmn:documentation>What was accomplished, what remains, and links to
-the updated content for review.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="delivery-summary"/></bpmn:extensionElements>
+      <bpmn:documentation>What was accomplished, what remains, and the staging links: one deep link per
+changed page on the preview, with the same page on main (staging-review, "The deep-link rule").</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="delivery-summary"/><bootstrap.processes:skill ref="staging-review"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="BA_ReviewIncrement" name="Review increment
 (test behaviour)">
@@ -116,7 +116,7 @@ for stakeholders?">
 stakeholders">
       <bpmn:documentation>Outer loop: the BA presents the accumulated increments
 to stakeholders as a testable MVP. Staging URL, demo, or walkthrough.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="crdm-requirements-workflow"/></bpmn:extensionElements>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="crdm-requirements-workflow"/><bootstrap.processes:skill ref="staging-review"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="S_TestMVP" name="Test MVP
 in own context">

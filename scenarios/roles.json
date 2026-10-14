@@ -133,7 +133,8 @@
         "skills-and-tools",
         "skill-voice-review",
         "test-engineer",
-        "code-review-process"
+        "code-review-process",
+        "staging-review"
       ],
       "persona": "Reads a node, not a program. Knows the graph's vocabulary and expects a node to declare what it is; does not know why this one was written and should not have to guess. The failure they are hunting is a node that looks well-formed and resolves to nothing — which no test catches, because nothing ran."
     },
@@ -246,6 +247,7 @@
         "crdm-requirements-template",
         "decision-methodology-selector",
         "data-modelling",
+        "staging-review",
         "wireframe-design-review"
       ],
       "persona": "Turns stated needs into requirements others can build against. Works in the gap between what a stakeholder said and what the system can do, and is the one who notices when those differ."
@@ -410,7 +412,8 @@
         "generalise-the-fix",
         "blocked-build-dependencies",
         "merge-to-main",
-        "agent-permissions"
+        "agent-permissions",
+        "staging-review"
       ],
       "persona": "Has the whole corpus available and no memory of the last session. Will follow the most specific instruction it can find and improvise when it finds none. Reads a skill before it reads the code."
     },

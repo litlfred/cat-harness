@@ -94,7 +94,7 @@
           "entries": {
             "type": "array",
             "items": {
-              "$ref": "#/$defs/criterionEntry"
+              "$ref": "#/definitions/criterionEntry"
             },
             "description": "Script and review entries, per criterion. No scores, no averages."
           },
@@ -140,15 +140,15 @@
     "changedAssets": {
       "type": "array",
       "items": {
-        "$ref": "#/$defs/changedAsset"
+        "$ref": "#/definitions/changedAsset"
       },
       "description": "Every wireframe file the branch adds, changes or removes — candidate HTML, screenshots, intent, reviews — in the changed-assets record shape a staging preview's graph carries, so the review lists them the same way."
     },
     "stagingLinks": {
-      "$ref": "#/$defs/stagingLinks"
+      "$ref": "#/definitions/stagingLinks"
     }
   },
-  "$defs": {
+  "definitions": {
     "criterionEntry": {
       "type": "object",
       "required": [
@@ -251,7 +251,7 @@
     },
     "stagingLinks": {
       "title": "Staging links",
-      "description": "The staging preview of the work a request for feedback is about: one deep link per changed page (the page and the anchor where the change sits) with the same page on main as `before`. Mirrors StagingComparison in schemas/staging.ts. The rule is skills/sdlc/sdlc-core/staging-review.md §\"The deep-link rule\". Copied inline as `$defs.stagingLinks` into every skill contract that carries it; schemas/staging.test.ts fails when a copy drifts.",
+      "description": "The staging preview of the work a request for feedback is about: one deep link per changed page (the page and the anchor where the change sits) with the same page on main as `before`. Mirrors StagingComparison in schemas/staging.ts. The rule is skills/sdlc/sdlc-core/staging-review.md §\"The deep-link rule\". Copied inline as `definitions.stagingLinks` into every skill contract that carries it; schemas/staging.test.ts fails when a copy drifts.",
       "type": "object",
       "required": [
         "branch",
@@ -323,7 +323,7 @@
           "description": "What could not be linked, said rather than hidden: no preview yet (and when it will exist), no page list computed, or a changed page the publish ref does not hold."
         }
       },
-      "$comment": "Copy of cat-harness schemas/staging-comparison.schema.json (added by PR #201, branch claude/staging-deep-links); cat-harness schemas/staging.test.ts fails when a copy drifts."
+      "$comment": "Copy of cat-harness schemas/staging-comparison.schema.json; cat-harness schemas/staging.test.ts fails when a copy drifts."
     }
   }
 }

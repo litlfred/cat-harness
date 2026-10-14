@@ -79,7 +79,7 @@ The accept-or-send-back decision lives here and nowhere beneath it. The subproce
         cannot reach. A paper process that wants semantic scoping adds it by
         calling this process.
       </bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="content-review"/></bpmn:extensionElements>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="content-review"/><bootstrap.processes:skill ref="staging-review"/></bpmn:extensionElements>
     </bpmn:task>
 
     <bpmn:exclusiveGateway id="GW_Kind" name="Prose, code,&#10;or both?">
