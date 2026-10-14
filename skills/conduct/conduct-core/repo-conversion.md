@@ -148,6 +148,11 @@ hand:
   content.
 - **`.gitignore`** — append the folio entries; keep theirs.
 
+**If the remote is empty, push `main` first.** A repository with work
+locally can still have an empty remote, and GitHub makes the first branch
+pushed to an empty repository its default. Run `init-folio` or push `main`
+before any feature branch (litlfred/dth-hrh, owner 2026-10-14).
+
 A harness built on this platform may add adoption steps of its own for its
 kind of repository, for example about CI that already publishes a site on
 every push. Ask `skill_list` for the skill governing that kind before
