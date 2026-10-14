@@ -15,6 +15,7 @@ classDiagram
       taskCount [0..1] integer
       gatewayCount [0..1] integer
       participantCount [0..1] integer
+      stagingLinks [0..1] any
     }
     class cat_harness_schemas_skills_content_author_input_schema_json_Content_Author_Input["Content Author Input"] {
       <<schema: skills/content-author/input.schema.json>>
@@ -31,6 +32,7 @@ classDiagram
     class cat_harness_schemas_skills_content_author_output_schema_json_Content_Author_Output["Content Author Output"] {
       <<schema: skills/content-author/output.schema.json>>
       artifacts [0..*] Artifact[]
+      stagingLinks [0..1] any
     }
     class cat_harness_schemas_skills_content_feedback_input_schema_json_FeedbackItem["FeedbackItem"] {
       <<schema: skills/content-feedback/input.schema.json>>
@@ -44,6 +46,7 @@ classDiagram
       source [1] github-issues | survey | implementation-report | clinical-review
       publishedVersion [0..1] string
       feedbackItems [0..*] FeedbackItem[]
+      stagingLinks [0..1] any
     }
     class cat_harness_schemas_skills_content_feedback_output_schema_json_TriagedItem["TriagedItem"] {
       <<schema: skills/content-feedback/output.schema.json>>
@@ -57,6 +60,7 @@ classDiagram
       <<schema: skills/content-feedback/output.schema.json>>
       triagedItems [0..*] TriagedItem[]
       summary [0..1] object
+      stagingLinks [0..1] any
     }
     class cat_harness_schemas_skills_content_plan_input_schema_json_Content_Plan_Input["Content Plan Input"] {
       <<schema: skills/content-plan/input.schema.json>>
@@ -69,12 +73,14 @@ classDiagram
     class cat_harness_schemas_skills_content_plan_output_schema_json_Content_Plan_Output["Content Plan Output"] {
       <<schema: skills/content-plan/output.schema.json>>
       plan [1] object
+      stagingLinks [0..1] any
     }
     class cat_harness_schemas_skills_content_publish_input_schema_json_Content_Publish_Input["Content Publish Input"] {
       <<schema: skills/content-publish/input.schema.json>>
       versionIncrement [1] major | minor | patch
       releaseNotes [0..1] string
       target [0..1] github-release | npm | fhir-registry | arxiv
+      stagingLinks [0..1] any
     }
     class cat_harness_schemas_skills_content_publish_output_schema_json_Content_Publish_Output["Content Publish Output"] {
       <<schema: skills/content-publish/output.schema.json>>
@@ -82,6 +88,7 @@ classDiagram
       status [1] published | failed
       publishedUrl [0..1] string
       releaseTag [0..1] string
+      stagingLinks [0..1] any
     }
     class cat_harness_schemas_skills_content_review_input_schema_json_Content_Review_Input["Content Review Input"] {
       <<schema: skills/content-review/input.schema.json>>
@@ -89,6 +96,7 @@ classDiagram
       contentRef [1] string
       previousVersion [0..1] string
       validationReport [0..1] string
+      stagingLinks [0..1] any
     }
     class cat_harness_schemas_skills_content_review_output_schema_json_Finding["Finding"] {
       <<schema: skills/content-review/output.schema.json>>
@@ -116,6 +124,7 @@ classDiagram
       findings [0..*] Finding[]
       decision [1] object
       notes [0..*] Note[]
+      stagingLinks [0..1] any
     }
     class cat_harness_schemas_skills_content_test_input_schema_json_Content_Test_Input["Content Test Input"] {
       <<schema: skills/content-test/input.schema.json>>
@@ -136,12 +145,14 @@ classDiagram
       overallStatus [1] pass | fail
       testResults [0..*] TestResult[]
       coverage [0..1] object
+      stagingLinks [0..1] any
     }
     class cat_harness_schemas_skills_content_validate_input_schema_json_Content_Validate_Input["Content Validate Input"] {
       <<schema: skills/content-validate/input.schema.json>>
       targetPath [1] string
       validationRules [0..*] string[]
       schemaRefs [0..*] string[]
+      stagingLinks [0..1] any
     }
     class cat_harness_schemas_skills_content_validate_output_schema_json_Result["Result"] {
       <<schema: skills/content-validate/output.schema.json>>
@@ -154,6 +165,7 @@ classDiagram
       <<schema: skills/content-validate/output.schema.json>>
       overallStatus [1] pass | warnings | errors
       results [0..*] Result[]
+      stagingLinks [0..1] any
     }
     class cat_harness_schemas_skills_crdm_detect_input_schema_json_CRDM_Detect_Input["CRDM Detect Input"] {
       <<schema: skills/crdm-detect/input.schema.json>>
@@ -164,6 +176,7 @@ classDiagram
       fires [1] boolean
       categories [0..*] list~direct-capability | workflow-gap | platform-change | cross-cutting | review-surfaced | self-declared-genre~
       excluded [1] boolean
+      stagingLinks [0..1] any
     }
     class cat_harness_schemas_skills_dmn_authoring_input_schema_json_InputVariable["InputVariable"] {
       <<schema: skills/dmn-authoring/input.schema.json>>
@@ -182,6 +195,19 @@ classDiagram
       decisionTableCount [0..1] integer
       ruleCount [0..1] integer
       hitPolicy [0..1] UNIQUE | FIRST | PRIORITY | ANY | COLLECT | RULE ORDER
+      stagingLinks [0..1] any
+    }
+    class cat_harness_schemas_skills_staging_review_input_schema_json_Staging_Review_Input["Staging Review Input"] {
+      <<schema: skills/staging-review/input.schema.json>>
+      ask [0..1] string
+      branch [0..1] string
+      pr [0..1] integer
+    }
+    class cat_harness_schemas_skills_staging_review_output_schema_json_Staging_Review_Output["Staging Review Output"] {
+      <<schema: skills/staging-review/output.schema.json>>
+      narrative [1] string
+      startHere [0..1] string~uri~
+      stagingLinks [1] any
     }
     class cat_harness_schemas_skills_wireframe_design_review_input_schema_json_Channel["Channel"] {
       <<schema: skills/wireframe-design-review/input.schema.json>>
@@ -222,6 +248,41 @@ classDiagram
       changedAssets [0..*] any[]
       stagingLinks [1] any
     }
+    class cat_harness_schemas_skills_wireframe_viewport_check_input_schema_json_Wireframe_Viewport_Check_Input["Wireframe Viewport Check Input"] {
+      <<schema: skills/wireframe-viewport-check/input.schema.json>>
+      candidates [1..*] string[]
+      out [0..1] string
+    }
+    class cat_harness_schemas_skills_wireframe_viewport_check_output_schema_json_Candidate["Candidate"] {
+      <<schema: skills/wireframe-viewport-check/output.schema.json>>
+      source [1] string
+      screenshots [1] object
+      entries [0..*] any[]
+    }
+    class cat_harness_schemas_skills_wireframe_viewport_check_output_schema_json_Wireframe_Viewport_Check_Output["Wireframe Viewport Check Output"] {
+      <<schema: skills/wireframe-viewport-check/output.schema.json>>
+      report [1] string
+      candidates [0..*] Candidate[]
+      stagingLinks [0..1] any
+    }
+    class cat_harness_schemas_staging_comparison_schema_json_Page["Page"] {
+      <<schema: staging-comparison.schema.json>>
+      title [1] string
+      before [0..1] string~uri~
+      after [0..1] string~uri~
+      summary [0..1] string
+    }
+    class cat_harness_schemas_staging_comparison_schema_json_Staging_links["Staging links"] {
+      <<schema: staging-comparison.schema.json>>
+      branch [1] string
+      slug [1] string
+      branchUrl [1] string~uri~
+      pr [0..1] integer
+      mainBaseUrl [1] string~uri~
+      stagingBaseUrl [1] string~uri~
+      pages [0..*] Page[]
+      missing [0..*] string[]
+    }
     class cat_harness_schemas_block_qa_schema_schema_block_qa_schema_json_BlockQaReport["BlockQaReport"] {
       <<schema: block-qa-schema/schema/block-qa.schema.json>>
       $schema [1] 'block-qa/v1'
@@ -256,6 +317,8 @@ classDiagram
   cat_harness_schemas_skills_dmn_authoring_input_schema_json_DMN_Authoring_Input *-- "0..*" cat_harness_schemas_skills_dmn_authoring_input_schema_json_InputVariable : inputVariables
   cat_harness_schemas_skills_wireframe_design_review_input_schema_json_Wireframe_Design_Review_Input *-- "0..*" cat_harness_schemas_skills_wireframe_design_review_input_schema_json_Channel : channels
   cat_harness_schemas_skills_wireframe_design_review_output_schema_json_Wireframe_Design_Review_Output *-- "1..*" cat_harness_schemas_skills_wireframe_design_review_output_schema_json_Candidate : candidates
+  cat_harness_schemas_skills_wireframe_viewport_check_output_schema_json_Wireframe_Viewport_Check_Output *-- "0..*" cat_harness_schemas_skills_wireframe_viewport_check_output_schema_json_Candidate : candidates
+  cat_harness_schemas_staging_comparison_schema_json_Staging_links *-- "0..*" cat_harness_schemas_staging_comparison_schema_json_Page : pages
   cssClass "cat_harness_schemas_skills_bpmn_authoring_input_schema_json_BPMN_Authoring_Input" fa_uml_kind_schemas
   cssClass "cat_harness_schemas_skills_bpmn_authoring_output_schema_json_BPMN_Authoring_Output" fa_uml_kind_schemas
   cssClass "cat_harness_schemas_skills_content_author_input_schema_json_Content_Author_Input" fa_uml_kind_schemas
@@ -284,9 +347,16 @@ classDiagram
   cssClass "cat_harness_schemas_skills_dmn_authoring_input_schema_json_InputVariable" fa_uml_kind_schemas
   cssClass "cat_harness_schemas_skills_dmn_authoring_input_schema_json_DMN_Authoring_Input" fa_uml_kind_schemas
   cssClass "cat_harness_schemas_skills_dmn_authoring_output_schema_json_DMN_Authoring_Output" fa_uml_kind_schemas
+  cssClass "cat_harness_schemas_skills_staging_review_input_schema_json_Staging_Review_Input" fa_uml_kind_schemas
+  cssClass "cat_harness_schemas_skills_staging_review_output_schema_json_Staging_Review_Output" fa_uml_kind_schemas
   cssClass "cat_harness_schemas_skills_wireframe_design_review_input_schema_json_Channel" fa_uml_kind_schemas
   cssClass "cat_harness_schemas_skills_wireframe_design_review_input_schema_json_Wireframe_Design_Review_Input" fa_uml_kind_schemas
   cssClass "cat_harness_schemas_skills_wireframe_design_review_output_schema_json_Candidate" fa_uml_kind_schemas
   cssClass "cat_harness_schemas_skills_wireframe_design_review_output_schema_json_Wireframe_Design_Review_Output" fa_uml_kind_schemas
+  cssClass "cat_harness_schemas_skills_wireframe_viewport_check_input_schema_json_Wireframe_Viewport_Check_Input" fa_uml_kind_schemas
+  cssClass "cat_harness_schemas_skills_wireframe_viewport_check_output_schema_json_Candidate" fa_uml_kind_schemas
+  cssClass "cat_harness_schemas_skills_wireframe_viewport_check_output_schema_json_Wireframe_Viewport_Check_Output" fa_uml_kind_schemas
+  cssClass "cat_harness_schemas_staging_comparison_schema_json_Page" fa_uml_kind_schemas
+  cssClass "cat_harness_schemas_staging_comparison_schema_json_Staging_links" fa_uml_kind_schemas
   cssClass "cat_harness_schemas_block_qa_schema_schema_block_qa_schema_json_BlockQaReport" fa_uml_kind_schemas
   cssClass "cat_harness_schemas_block_qa_schema_schema_qa_script_schema_json_QaScriptSidecar" fa_uml_kind_schemas

@@ -12,14 +12,14 @@ permalink: /folio-assistant-core/glossary/skills/
 
 Candidate terms extracted from every skill's front matter: `name` as the label, `description` as the definition. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap 11 (<a href="{{ '/assets/glossary/bootstrap--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · bootstrap-tools 2 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 241 (<a href="{{ '/assets/glossary/cat-harness--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 15 (<a href="{{ '/assets/glossary/fhir-harness--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 28 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 56 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 11 (<a href="{{ '/assets/glossary/smart-base--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · who-iris 2 (<a href="{{ '/assets/glossary/who-iris--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap 11 (<a href="{{ '/assets/glossary/bootstrap--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · bootstrap-tools 2 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 242 (<a href="{{ '/assets/glossary/cat-harness--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 16 (<a href="{{ '/assets/glossary/fhir-harness--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 28 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 56 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 13 (<a href="{{ '/assets/glossary/smart-base--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>) · who-iris 2 (<a href="{{ '/assets/glossary/who-iris--kg-skills.skos.jsonld' | relative_url }}">SKOS</a>).
 
-**Size:** this page holds 366 terms and is 280 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 370 terms and is 284 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>366</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>366</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>370</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>370</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -29,7 +29,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">366</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">370</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-A">A</a> <a href="#letter-B">B</a> <a href="#letter-C">C</a> <a href="#letter-D">D</a> <a href="#letter-E">E</a> <a href="#letter-F">F</a> <a href="#letter-G">G</a> <a href="#letter-H">H</a> <a href="#letter-I">I</a> <a href="#letter-K">K</a> <a href="#letter-L">L</a> <a href="#letter-M">M</a> <a href="#letter-N">N</a> <a href="#letter-O">O</a> <a href="#letter-P">P</a> <a href="#letter-Q">Q</a> <a href="#letter-R">R</a> <a href="#letter-S">S</a> <a href="#letter-T">T</a> <a href="#letter-U">U</a> <a href="#letter-V">V</a> <a href="#letter-W">W</a> <a href="#letter-Z">Z</a></nav>
 
@@ -639,7 +639,7 @@ dak-postprocessing <span class="fa-gloss-status">candidate, extracted</span>
 dak-preprocessing <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>What the DAK pre-processing phase actually accomplishes, step by step, before the IG Publisher runs — and which of its steps exist only to satisfy the Publisher's own page index. Read before changing a pre-processing step, before assuming one is needed, and before moving one to another layer.</p>
+<p>What the DAK pre-processing phase actually accomplishes, step by step, before the IG Publisher runs — and which of its steps exist only to satisfy the Publisher's own page index — and how it runs as the overlay on fhir-harness's AST cache refresh (<code>dak-pre-export.sh</code>). Read before changing a pre-processing step, before assuming one is needed, and before moving one to another layer.</p>
 <p class="fa-gloss-meta">Skills of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/skills/content/authoring-who-smart-guidelines/dak-preprocessing.md"><code>smart-base/skills/content/authoring-who-smart-guidelines/dak-preprocessing.md</code></a></p>
 </dd>
 <dt id="cat-harness--kg-skills--data-modelling" data-fa-state="extracted" data-fa-gloss="">
@@ -888,6 +888,13 @@ fhir-ig-create <span class="fa-gloss-status">candidate, extracted</span>
 <p>Somebody asked for a new FHIR Implementation Guide. Decide where it lives, in a new repository of its own or as a staged sub-KG inside the harnessed repository the session is already in, by reading three facts and, when they do not settle it, asking ONE numbered question with a default. Then route: a new repository goes to init-folio; an in-repository IG is declared as a staged instance and follows sub-kg-lifecycle, so it can move to its own repository later. FHIR-generic only; a harness built on this one may specialise it. Use whenever a user asks to create, start, set up or stand up an IG, an implementation guide, or a FHIR guide.</p>
 <p class="fa-gloss-meta">Skills of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/skills/fhir-ig-base/fhir-ig-create.md"><code>fhir-harness/skills/fhir-ig-base/fhir-ig-create.md</code></a></p>
 </dd>
+<dt id="fhir-harness--kg-skills--fhir-questionnaire-wireframe" data-fa-state="extracted" data-fa-gloss="">
+fhir-questionnaire-wireframe <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">Skills of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/skills/content/fhir-ig-authoring/fhir-questionnaire-wireframe.md"><code>fhir-harness/skills/content/fhir-ig-authoring/fhir-questionnaire-wireframe.md</code></a></p>
+</dd>
 <dt id="fhir-harness--kg-skills--fhir-validation" data-fa-state="extracted" data-fa-gloss="">
 fhir-validation <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1093,7 +1100,7 @@ ig-binary-artefacts <span class="fa-gloss-status">candidate, extracted</span>
 ig-build-pipeline <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>The bare FHIR IG pipeline — FSH to SUSHI to the IG Publisher to a pages branch, with no pre-processing and no post-processing. What this layer runs, what it emits, and the list of things it deliberately refuses to know about. Also owns the two questions put to the owner when an IG repository is adopted or found publishing on its own: whether automatic gh-pages builds become manual-only, and whether to install the just-the-docs site (default yes). Read before adding anything to fhir-harness, and before onboarding, converting or changing the workflows of an IG repository.</p>
+<p>The bare FHIR IG pipeline — FSH to SUSHI to the IG Publisher to a pages branch, with no pre-processing and no post-processing. What this layer runs, what it emits, and the list of things it deliberately refuses to know about. Also owns the two questions put to the owner when an IG repository is adopted or found publishing on its own: whether automatic gh-pages builds become manual-only, and whether to install the just-the-docs site (default yes). Owns the AST cache lifecycle: an IG site is built from the AST on its cache branch, the publish refuses a stale one, and the reusable <code>ig-ast-refresh.yml</code> is the one writer. Read before adding anything to fhir-harness, before onboarding, converting or changing the workflows of an IG repository, and before publishing an IG site.</p>
 <p class="fa-gloss-meta">Skills of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/skills/fhir-ig-base/ig-build-pipeline.md"><code>fhir-harness/skills/fhir-ig-base/ig-build-pipeline.md</code></a></p>
 </dd>
 <dt id="fhir-harness--kg-skills--ig-publication" data-fa-state="extracted" data-fa-gloss="">
@@ -1149,7 +1156,7 @@ incremental-render <span class="fa-gloss-status">candidate, extracted</span>
 index-config <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p><code>index.config.json</code> at an instantiation root says which harnesses the checkout instantiates, where each one comes from (local, or a remote mount pinned to a SHA), how its <code>&lt;name&gt;.config.json</code> is imported and overridden, and which harness <code>/</code> is. Covers instantiated against declared, landing resolution and its error case, <code>index.lock.json</code> and its legacy fallback, the reserved <code>index</code> stem, the generated <code>.gitignore</code> block and its gate, and <code>index-config:migrate</code> for separated repositories.</p>
+<p><code>index.config.json</code> at an instantiation root says which harnesses the checkout instantiates, where each one comes from (local, or a remote mount pinned to a SHA), each instance's config INLINE in its entry (a legacy <code>&lt;name&gt;.config.json</code> is only imported until <code>--inline</code> retires it), and which harness <code>/</code> is. Covers instantiated against declared, landing resolution and its error case, <code>index.lock.json</code> and its legacy fallback, the reserved <code>index</code> stem, the generated <code>.gitignore</code> block and its gate, and <code>index-config:migrate</code> (with <code>--inline</code>) for separated repositories.</p>
 <p class="fa-gloss-meta">Skills of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/skills/kg/kg-core/index-config.md"><code>cat-harness/skills/kg/kg-core/index-config.md</code></a></p>
 </dd>
 <dt id="bootstrap--kg-skills--initialization-steps" data-fa-state="extracted" data-fa-gloss="">
@@ -1313,6 +1320,13 @@ l1-document-ingestion <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>The detailed method for turning a DOCUMENT in <code>uploads/</code> into a complete L1 entry in <code>library/&lt;bib-slug&gt;/</code> — which rung reads it and why, what a complete L1 entry holds, why an inferred structure is refused rather than guessed, and the archive, dataset, narrative, image and vector-label arms. Refines the harness's basic <code>library-ingestion</code> flow; one entry point: <code>bun run cat ingest</code>.</p>
 <p class="fa-gloss-meta">Skills of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/skills/library/ingestion/l1-document-ingestion.md"><code>folio-assistant-core/skills/library/ingestion/l1-document-ingestion.md</code></a></p>
+</dd>
+<dt id="smart-base--kg-skills--l2-component-edit-review" data-fa-state="extracted" data-fa-gloss="">
+l2-component-edit-review <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>How one L2 DAK component is edited by the agent and reviewed by a person: personas and user scenarios, BPMN business processes, DMN decision and scheduling logic, core data elements and glossary with their terminology bindings, indicators and requirements. One subprocess for all of them. The agent edits, checks, renders and stages with a before/after, then hands the component on, and review forks alongside it without blocking. Per component, it lists the authoring skill, checker, renderer and diff, reviewing role, and what the reviewer judges. Read before authoring or reviewing any L2 component, and when an L2 track asks what its reviewer needs to see.</p>
+<p class="fa-gloss-meta">Skills of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/skills/content/authoring-who-smart-guidelines/l2-component-edit-review.md"><code>smart-base/skills/content/authoring-who-smart-guidelines/l2-component-edit-review.md</code></a></p>
 </dd>
 <dt id="smart-base--kg-skills--l2-dak-authoring" data-fa-state="extracted" data-fa-gloss="">
 l2-dak-authoring <span class="fa-gloss-status">candidate, extracted</span>
@@ -2252,6 +2266,13 @@ smart-guideline-create <span class="fa-gloss-status">candidate, extracted</span>
 <p>Somebody asked for a new WHO SMART Guideline (an IG built on smart-base, or a DAK that will feed one). Specialises fhir-ig-create: the same three facts, the same numbered question with the same default (stage it inside this repository first), and the same routes, plus what the owner ruled for SMART guidelines during the 2026-10 separation: every guideline repository instantiates smart-base identically, forks under litlfred come before any WHO repository, the identity comes from the declaration and never from the directory, and the WHO template's theme and chrome come from smart-base by <code>needs</code>, never copied. Use whenever a user asks to create, start or set up a SMART Guideline, a SMART IG, a WHO IG or a DAK.</p>
 <p class="fa-gloss-meta">Skills of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/skills/content/authoring-who-smart-guidelines/smart-guideline-create.md"><code>smart-base/skills/content/authoring-who-smart-guidelines/smart-guideline-create.md</code></a></p>
 </dd>
+<dt id="smart-base--kg-skills--smart-guideline-end-to-end" data-fa-state="extracted" data-fa-gloss="">
+smart-guideline-end-to-end <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The whole road from a use case to a running application on WHO SMART Guidelines, for a new guideline or a jurisdiction's adaptation: find the L1 guidelines that bear on the use case, ingest them into an L1 knowledge graph, choose the existing L2 DAKs and L3 IGs to build on, create or adapt the L2 and L3 assets, then build the consuming application the user describes. Human adjudication follows every stage, as QA and never as a gate: the agent goes on to the next stage while the last one is reviewed. Read before starting any end-to-end authoring or adaptation, and to find which existing skill and process runs each stage.</p>
+<p class="fa-gloss-meta">Skills of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/skills/content/authoring-who-smart-guidelines/smart-guideline-end-to-end.md"><code>smart-base/skills/content/authoring-who-smart-guidelines/smart-guideline-end-to-end.md</code></a></p>
+</dd>
 <dt id="fhir-harness--kg-skills--smart-launch" data-fa-state="extracted" data-fa-gloss="">
 smart-launch <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -2650,8 +2671,15 @@ where-does-this-go <span class="fa-gloss-status">candidate, extracted</span>
 wireframe-design-review <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Design a user interface (a page, a visualiser, a navbar) by the WireGen methodology: a written design intent, at least two mid-fidelity HTML candidates, each with a web AND a mobile layout, mechanical checks at both viewports, a blind per-criterion review, adjudication where reviewers disagree, and a recorded choice. Also how an EXISTING visualiser is wireframed as-is, so that every declared visualiser has a wireframe with a QA sidecar. Process: processes/ui/wireframe-design-review.bpmn.</p>
+<p>Design a user interface (a page, a visualiser, a navbar) by the WireGen methodology: a written design intent, at least two mid-fidelity HTML candidates, each with a web AND a mobile layout, mechanical checks at both viewports, a blind per-criterion review, adjudication where reviewers disagree, and a recorded choice. Also how an EXISTING visualiser is wireframed as-is, so that every declared visualiser has a wireframe with a QA sidecar. Process: processes/ui/wireframe-design-review.bpmn. Called for Design use from CRDM (Process_CRDM_Requirements, Call_Wireframe) whenever a requirement changes a rendered surface, before anything is built.</p>
 <p class="fa-gloss-meta">Skills of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/skills/ui/ui-core/wireframe-design-review.md"><code>cat-harness/skills/ui/ui-core/wireframe-design-review.md</code></a></p>
+</dd>
+<dt id="cat-harness--kg-skills--wireframe-viewport-check" data-fa-state="extracted" data-fa-gloss="">
+wireframe-viewport-check <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Render wireframe candidates at a web viewport (1280x800) and a mobile viewport (390x844), and record, per candidate and viewport, a pass or fail entry with a note for each mechanical criterion: renders, no-overflow, no-placeholder. Writes a screenshot per viewport beside the report. The mechanical step (step 3) of wireframe-design-review; a fail sends the candidate back to that skill's step 2.</p>
+<p class="fa-gloss-meta">Skills of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/skills/ui/ui-core/wireframe-viewport-check.md"><code>cat-harness/skills/ui/ui-core/wireframe-viewport-check.md</code></a></p>
 </dd>
 <dt id="folio-assistant-sci--kg-skills--witnessed-values" data-fa-state="extracted" data-fa-gloss="">
 witnessed-values <span class="fa-gloss-status">candidate, extracted</span>

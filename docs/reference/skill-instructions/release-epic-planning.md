@@ -149,3 +149,10 @@ The hierarchy and readiness tracking are identical.
 - [`../../skills/sdlc/sdlc-core/todo-manager.md`](todo-manager.md) — bean creation protocol
 - [`../../skills/sdlc/sdlc-core/bean-coordination.md`](bean-coordination.md) — cross-session coordination
 {% endraw %}
+
+## Processes that run this skill
+
+| process | step(s) that name it |
+|---|---|
+| [Phase 1: Planning](../../en/cat-harness/processes/SGAuthoring.DAKLifecycle.html) | Draft project roadmap, backlog, and sprint cadence |
+

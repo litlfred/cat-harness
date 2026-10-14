@@ -12,14 +12,14 @@ permalink: /folio-assistant-core/glossary/bpmn-activities/
 
 Candidate terms extracted from every BPMN task and call activity: `name` as the label, its own `<documentation>` as the definition, the element id as the code. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap 38 (<a href="{{ '/assets/glossary/bootstrap--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · bootstrap-tools 7 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 481 (<a href="{{ '/assets/glossary/cat-harness--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 30 (<a href="{{ '/assets/glossary/fhir-harness--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 161 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 12 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 22 (<a href="{{ '/assets/glossary/smart-base--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap 38 (<a href="{{ '/assets/glossary/bootstrap--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · bootstrap-tools 7 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 483 (<a href="{{ '/assets/glossary/cat-harness--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 45 (<a href="{{ '/assets/glossary/fhir-harness--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 161 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 12 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 106 (<a href="{{ '/assets/glossary/smart-base--kg-bpmn-activities.skos.jsonld' | relative_url }}">SKOS</a>).
 
-**Size:** this page holds 751 terms and is 610 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 852 terms and is 681 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>751</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>751</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>852</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>852</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -29,12 +29,19 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">751</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">852</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-0-9">0–9</a> <a href="#letter-A">A</a> <a href="#letter-B">B</a> <a href="#letter-C">C</a> <a href="#letter-D">D</a> <a href="#letter-E">E</a> <a href="#letter-F">F</a> <a href="#letter-G">G</a> <a href="#letter-H">H</a> <a href="#letter-I">I</a> <a href="#letter-J">J</a> <a href="#letter-K">K</a> <a href="#letter-L">L</a> <a href="#letter-M">M</a> <a href="#letter-N">N</a> <a href="#letter-O">O</a> <a href="#letter-P">P</a> <a href="#letter-Q">Q</a> <a href="#letter-R">R</a> <a href="#letter-S">S</a> <a href="#letter-T">T</a> <a href="#letter-U">U</a> <a href="#letter-V">V</a> <a href="#letter-W">W</a></nav>
 
 <h2 id="letter-0-9">0–9</h2>
 <dl class="fa-gloss">
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_describeusecase" data-fa-state="extracted" data-fa-gloss="">
+0 · Describe the use case <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Population, setting, jurisdiction, interventions in scope. The user's own words; the agent asks a numbered question if the request did not say.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_DescribeUseCase</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_graphdetanglement.task_declare" data-fa-state="extracted" data-fa-gloss="">
 1 · Declare in place (nothing moves) <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -48,6 +55,13 @@ be a term this corpus is right to coin.</p>
 <dd>
 <p><code>&lt;name&gt;/&lt;name&gt;.json</code> with name, version, <code>repository</code> (the planned home), <code>livesAt</code> (where it sits today), <code>needs</code>, and only the directories that exist, each declared with its files in one commit (bean dh4f). <code>&lt;name&gt;/platform.ts</code> from the first commit, so no climb out of the directory ever needs rerouting. Scaffolded by <code>init-folio --staged &lt;path&gt;</code>, which writes those two files and nothing at the host root; never <code>--instance</code>, which writes a whole repository.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/sub-kg-lifecycle.bpmn"><code>cat-harness/processes/kg/sub-kg-lifecycle.bpmn#Task_Declare</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_identifyl1" data-fa-state="extracted" data-fa-gloss="">
+1 · Identify L1 guidelines and recommendations [dak-l1-library] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Component 1 sources of any DAK already in scope first, then WHO IRIS and the jurisdiction's own guidelines. Each candidate marked in-library / in-KG / not yet.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_IdentifyL1</code></a></p>
 </dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_documentauthoring.task_plan" data-fa-state="extracted" data-fa-gloss="">
 1 · Plan the document [content-plan] <span class="fa-gloss-status">candidate, extracted</span>
@@ -133,6 +147,13 @@ be a term this corpus is right to coin.</p>
 <p>The content type's own authoring process runs here, against the staged instance. Many sub-KGs never leave; this task can last as long as the graph does.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/sub-kg-lifecycle.bpmn"><code>cat-harness/processes/kg/sub-kg-lifecycle.bpmn#Task_Grow</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_ingestkg" data-fa-state="extracted" data-fa-gloss="">
+2 · Ingest into the L1 KG [dak-l1-library · recommendation-extraction] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Per source not yet extracted: cat ingest into library/, the generic-document layer (l1-library), then the L1 layer (recommendations, remarks, practices, scenario candidates) into library/&lt;bib&gt;/l1-extraction/.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_IngestKg</code></a></p>
+</dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_documentauthoring.task_seedplan" data-fa-state="extracted" data-fa-gloss="">
 2 · Seed the work plan [todo-manager] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -160,6 +181,13 @@ be a term this corpus is right to coin.</p>
 <dd>
 <p>The only four moves. Move the shared TARGET first and the importers after; check the target's layer before the importer's; a schema moves with its script. The fix is never an exemption, it is the right owner.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/graph-detanglement.bpmn"><code>cat-harness/processes/kg/graph-detanglement.bpmn#Task_Move</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_depsl2" data-fa-state="extracted" data-fa-gloss="">
+3 · Choose L2 dependencies (WHO / jurisdiction DAKs) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>From the L1 KG: which existing DAKs to reuse, adapt, extend or reject, each with evidence and reason. Reuse first; prefer the jurisdiction's adaptation, recording the WHO original as its upstream.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_DepsL2</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_graphdetanglement.task_isolate" data-fa-state="extracted" data-fa-gloss="">
 3 · Isolate — own declaration, namespace, artefact <span class="fa-gloss-status">candidate, extracted</span>
@@ -203,6 +231,13 @@ be a term this corpus is right to coin.</p>
 <p>Every block edit runs the HCI validation gate — see editing-hci-validation.bpmn. A normative statement is a <code>recommendation</code> block (bean 55ao), drafted through normative-statements: one statement per block, a folio-chosen label, and its strength as a code in a declared code list, so a reviewer signs off each one individually.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/authoring-a-document.bpmn"><code>folio-assistant-core/processes/content/authoring-a-document.bpmn#Task_AuthorBlocks</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_l2" data-fa-state="extracted" data-fa-gloss="">
+4 · Create / adapt L2 DAK assets [l2-dak-authoring] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The authoring steps of l2-dak-authoring.bpmn (personas and scenarios, BPMN, DMN, data dictionary, indicators and requirements, terminology), plus the design of each data-entry form as wireframe candidates (wireframe-design-review, design use) from the persona, the user scenario and the core data elements. Its clinical validation is this stage's adjudication and does not hold up stage 5. The IG is built through fhir-harness's AST cache lifecycle (ig-ast-refresh.yml), with the DAK pre-processing as smart-base's pre-export overlay (dak-preprocessing, dak-pre-export.sh) and the DAK sidecars made from the AST (dak-postprocessing).</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_L2</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_graphdetanglement.task_extract" data-fa-state="extracted" data-fa-gloss="">
 4 · Extract — a directory move, not a file-by-file sift <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -231,6 +266,13 @@ be a term this corpus is right to coin.</p>
 <p>content_profile_check: no math kind, no lean field, no .lean sibling. This is the step a paper folio does not have, and the reason a document folio never needs Lean or TeX to publish.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/authoring-a-document.bpmn"><code>folio-assistant-core/processes/content/authoring-a-document.bpmn#Task_ProfileCheck</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_depsl3" data-fa-state="extracted" data-fa-gloss="">
+5 · Choose L3 dependencies (WHO / jurisdiction IGs) [ig-artifact-ingestion] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Index each candidate IG, then match the L1 KG and the L2 assets against it: reuse, adapt, extend or reject per IG.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_DepsL3</code></a></p>
+</dd>
 <dt id="folio-assistant-sci--kg-bpmn-activities--process_paperauthoring.task_formalize" data-fa-state="extracted" data-fa-gloss="">
 5 · Formalise in Lean [lean-formalization] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -251,6 +293,13 @@ be a term this corpus is right to coin.</p>
 <dd>
 <p><code>bun run cat seed:ready --layer &lt;name&gt; --rehearse</code> copies the layer and what it needs into a scratch workspace of sibling directories and runs the tests there. Run the gates rather than scanning imports: the fork rehearsal (bean rbz3) found a static scan saw 20 of the 23 platform files the gates loaded, and that renaming the directory changed every generated page.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/sub-kg-lifecycle.bpmn"><code>cat-harness/processes/kg/sub-kg-lifecycle.bpmn#Task_Rehearse</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_l3" data-fa-state="extracted" data-fa-gloss="">
+6 · Produce L3 assets [l3-fhir-authoring] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The mapping and pipeline of dak-l3-ig.bpmn, up to a clean IG build. Each Questionnaire is derived from the chosen L2 wireframe of its form. Publication continues in that process and is not on the path to stage 8.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_L3</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_subkglifecycle.task_report" data-fa-state="extracted" data-fa-gloss="">
 6 · Report what would move, and how it undoes <span class="fa-gloss-status">candidate, extracted</span>
@@ -279,6 +328,13 @@ be a term this corpus is right to coin.</p>
 <dd>
 <p>Run content validation over the folio: schemas, the content profile (formal kinds only in a paper), cross-block consistency and that the Lean builds. Loop back rather than rendering over a failure.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/processes/content/authoring-a-paper.bpmn"><code>folio-assistant-sci/processes/content/authoring-a-paper.bpmn#Task_Validate</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_describeapp" data-fa-state="extracted" data-fa-gloss="">
+7 · Describe the consuming application <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Who uses it, on what device, which L2 processes and L3 resources it covers, connectivity, the systems it talks to. The agent offers options drawn from the L2 personas and processes. This is the written intent wireframe-design-review starts from.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_DescribeApp</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_subkglifecycle.task_confirmcreate" data-fa-state="extracted" data-fa-gloss="">
 7 · Owner confirms: create the repository <span class="fa-gloss-status">candidate, extracted</span>
@@ -335,6 +391,20 @@ be a term this corpus is right to coin.</p>
 <dd>
 <p>Review the rendered paper, not a description of it, and record the feedback. The outcome is iterate — back to authoring — or approved for the publication path.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/processes/content/authoring-a-paper.bpmn"><code>folio-assistant-sci/processes/content/authoring-a-paper.bpmn#Task_Review</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_wireframeapp" data-fa-state="extracted" data-fa-gloss="">
+8a · Wireframe the application [wireframe-design-review] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>To-be mode, from the stage-7 intent: two or more candidates, web and mobile, with real content from the L2 personas and scenarios. The agent goes on with its recommended candidate; the requester may choose another during adjudication.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_WireframeApp</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_buildapp" data-fa-state="extracted" data-fa-gloss="">
+8b · Build the consuming application <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Against the stage-6 IG build, with conformance tests from the IG's examples and test cases.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_BuildApp</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_kgseparation.task_authorise" data-fa-state="extracted" data-fa-gloss="">
 9 · Authorise the extraction <span class="fa-gloss-status">candidate, extracted</span>
@@ -424,6 +494,20 @@ Adjudicate flagged passage (human reviewer) <span class="fa-gloss-status">candid
 <p>A human SME or editor reviews the flagged passage. They may: - Accept the translation as-is (false positive) - Edit the translation and re-run QA - Reject and request re-translation The round trip establishes that two readings differ. Which one is right is a human call.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/library/translation-workflow.bpmn"><code>cat-harness/processes/library/translation-workflow.bpmn#Task_Adjudicate</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_adjdepsl2" data-fa-state="extracted" data-fa-gloss="">
+Adjudicate L2 dependencies <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Programme manager and business analyst: one row per candidate DAK, rejected ones included.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_AdjDepsL2</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_adjdepsl3" data-fa-state="extracted" data-fa-gloss="">
+Adjudicate L3 dependencies <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>FHIR modeller and terminologist: one row per candidate IG, rejected ones included.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_AdjDepsL3</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_refreshmaterialized.task_adjudicate" data-fa-state="extracted" data-fa-gloss="">
 Adjudicate the conflict <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -459,12 +543,33 @@ Adjudicate the flagged passage <span class="fa-gloss-status">candidate, extracte
 <p>A machine can detect that two readings differ. Which one is right is a human call.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/library/ingest-l1-completeness-gate.bpmn"><code>folio-assistant-core/processes/library/ingest-l1-completeness-gate.bpmn#Task_FlagDrift</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_adjkg" data-fa-state="extracted" data-fa-gloss="">
+Adjudicate the L1 KG <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>l1-extraction-reviewer signs exclusions and coverage; Clinical SME reviews recommendations beside the printed page.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_AdjKg</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_adjl1" data-fa-state="extracted" data-fa-gloss="">
+Adjudicate the L1 source list <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Clinical SME: each source with why it was included or left out.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_AdjL1</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_narrativereview.task_adjudicatevoice" data-fa-state="extracted" data-fa-gloss="">
 Adjudicate the voice findings <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p>Three outcomes, all legitimate: the register is wrong for this genre; the criterion does not belong in this genre and should carry <code>profiles</code>; or the block is a stated exception and a reviewer entry records why.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/content/review-narrative.bpmn"><code>cat-harness/processes/content/review-narrative.bpmn#Task_AdjudicateVoice</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_adjapp" data-fa-state="extracted" data-fa-gloss="">
+Adjudicate the wireframes and the application <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Business analyst and clinical SME walk it through each L2 user scenario; FHIR modeller checks L3 conformance.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_AdjApp</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_voicereview.task_adjudicate" data-fa-state="extracted" data-fa-gloss="">
 Adjudicate: prose, scope, or exception <span class="fa-gloss-status">candidate, extracted</span>
@@ -592,6 +697,13 @@ Apply it, and state each option's trade-offs <span class="fa-gloss-status">candi
 <p>Follow the selected methodology as written — adopted whole, not blended with another. At least two real options: one option is not a choice, and a straw option is worse than a short list because it makes the analysis look thorough while narrowing it. Never quantify the comparison to make it look measured. Where a method scores and sums, this platform takes the structure and refuses the arithmetic: the weights are invented and a total reads as a measurement.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/options-analysis.bpmn"><code>cat-harness/processes/sdlc/options-analysis.bpmn#A_Apply</code></a></p>
 </dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_questionnairewireframereview.task_apply" data-fa-state="extracted" data-fa-gloss="">
+Apply it, bring the other side in line [l3-fhir-authoring] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The side the request edited is the source of the change (owner, 2026-10-14). An edited Questionnaire is applied as an FSH edit and the wireframe is redrawn to match; an edited wireframe is kept and the Questionnaire re-derived from it. Then back to Task_Read.</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn"><code>fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Task_Apply</code></a></p>
+</dd>
 <dt id="bootstrap--kg-bpmn-activities--process_humanagentdiscussion.a_applydefault" data-fa-state="extracted" data-fa-gloss="">
 Apply the stated default, and say so <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -612,6 +724,13 @@ Approve <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>The committee approves the change: the judgement, recorded with the evidence it rests on. Approving is not merging. They were one task (&quot;Approve and merge&quot;) until bean en2d split them, because a self-authored change cannot be approved through GitHub's own review (the approver may not be the PR's author), and a merge needs the owner's explicit confirmation whoever approved.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/content-change-review.bpmn"><code>folio-assistant-core/processes/content/content-change-review.bpmn#Task_Approve</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_approvepublication" data-fa-state="extracted" data-fa-gloss="">
+Approve IG for publication <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_ApprovePublication</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_crdm_requirements.s_approvereqs" data-fa-state="extracted" data-fa-gloss="">
 Approve requirements <span class="fa-gloss-status">candidate, extracted</span>
@@ -647,6 +766,20 @@ Ask first about what could not be determined <span class="fa-gloss-status">candi
 <dd>
 <p>The caller's question waits, and is counted (&quot;one more question after this&quot;). What is put first is the undetermined one: the context you could not establish, the Role you are not sure you hold, or the Process you cannot place this in. It goes through the same order as any question — say what you determined and what you could not, the candidates you see, the one you would pick and why — and it allows NO default: a Process or Role assumed rather than confirmed is an authority nobody gave. With more than one undetermined, ask about the outermost first (the Process before the Role before the context), since the outer answer usually settles the inner.</p>
 <p class="fa-gloss-meta">BPMN activities of bootstrap · source <a href="https://github.com/litlfred/bootstrap/blob/main/processes/human-agent-discussion.bpmn"><code>bootstrap/processes/human-agent-discussion.bpmn#A_AskUndeterminedFirst</code></a></p>
+</dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_questionnairewireframereview.task_askreview" data-fa-state="extracted" data-fa-gloss="">
+Ask for review with deep links [staging-review] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>One deep link per rendered Questionnaire and wireframe, before and after. Where the request goes — the conversation, an issue, the pull request — is a judgement, and more than one may be right: staging-review's deep-link rule, point 5.</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn"><code>fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Task_AskReview</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_l2componenteditreview.task_requestreview" data-fa-state="extracted" data-fa-gloss="">
+Ask for review with staging deep links [staging-review] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Ask the person in the reviewing role, following staging-review's deep-link rule: one deep link per changed page and anchor on STAGING/&lt;slug&gt;/, each beside the same page on main as before (or &quot;new page&quot;), the pages taken from the change (rendered-impact) rather than chosen; no preview yet is said, not hidden. The request leads with what changed in prose, then the links, the before/after and the checker's findings, and puts its question in interaction-modality's form. Where it goes is a judgement, and more than one place may be right: this conversation, the GitHub issue the work came from, the pull request; each place carries the same links. A comment tagged on the PR becomes a review-comment todo (review-comments).</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/l2-component-edit-review.bpmn"><code>smart-base/processes/content/l2-component-edit-review.bpmn#Task_RequestReview</code></a></p>
 </dd>
 <dt id="bootstrap--kg-bpmn-activities--process_humanagentdiscussion.a_putquestion" data-fa-state="extracted" data-fa-gloss="">
 Ask ONE question <span class="fa-gloss-status">candidate, extracted</span>
@@ -725,6 +858,13 @@ Assign to qualified human translator <span class="fa-gloss-status">candidate, ex
 <p>The coordinator assigns the translation to a qualified translator, ideally a domain SME for the content area. For WHO content, the translator should be familiar with WHO SMART Guidelines terminology. The assignment includes: - The .pot file(s) from extraction - The domain glossary - Context notes (block kind, chapter, content area) - The deadline</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/library/human-translation-workflow.bpmn"><code>cat-harness/processes/library/human-translation-workflow.bpmn#Task_AssignTranslator</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_assignwork" data-fa-state="extracted" data-fa-gloss="">
+Assign work and begin sprint cycle <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_AssignWork</code></a></p>
+</dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_evidenceretrieval.task_attachevidence" data-fa-state="extracted" data-fa-gloss="">
 Attach the evidence to the recommendation [content-author] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -760,12 +900,89 @@ Audit the graph [kg:audit] <span class="fa-gloss-status">candidate, extracted</s
 <p>AFTER the change, not before. Every criterion here is a join — role to lane, actor to role, activity to skill — so what an administrative edit breaks is not in the file it edited. The sidecars under <code>test/results/kg-qa/</code> are committed for the reason a printed verdict is not: without them, &quot;unbound since it was drawn&quot; and &quot;broken by this change&quot; are indistinguishable.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/actor-role-administration.bpmn"><code>cat-harness/processes/process/actor-role-administration.bpmn#Task_RunKgAudit</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_authoractors" data-fa-state="extracted" data-fa-gloss="">
+Author ActorDefinitions (reuse Commons) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_AuthorActors</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_authorbpmn" data-fa-state="extracted" data-fa-gloss="">
+Author BPMN business processes (Component 4) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_AuthorBPMN</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_authorterminology" data-fa-state="extracted" data-fa-gloss="">
+Author CodeSystems, ValueSets, ConceptMaps <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_AuthorTerminology</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_authorcql" data-fa-state="extracted" data-fa-gloss="">
+Author CQL (decision logic, scheduling, indicators) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_AuthorCQL</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_authorprofiles" data-fa-state="extracted" data-fa-gloss="">
+Author FHIR profiles <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_AuthorProfiles</code></a></p>
+</dd>
 <dt id="fhir-harness--kg-bpmn-activities--process_l3fhir.task_authorfsh" data-fa-state="extracted" data-fa-gloss="">
 Author FSH profiles [l3-fhir-authoring] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p>Write the FSH profiles, value sets and definitions the source model calls for. This is the stage where profiles, slicing and invariants belong — a decision that can only be expressed in FHIR comes here, not back into the source model.</p>
 <p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/l3-fhir-pipeline.bpmn"><code>fhir-harness/processes/content/l3-fhir-pipeline.bpmn#Task_AuthorFsh</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_authorpersonas" data-fa-state="extracted" data-fa-gloss="">
+Author generic personas (Component 2) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_AuthorPersonas</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_authorlogicalmodels" data-fa-state="extracted" data-fa-gloss="">
+Author logical models from L2 data dictionary <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_AuthorLogicalModels</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_authorremainingl3" data-fa-state="extracted" data-fa-gloss="">
+Author Measures, Requirements, Scenarios, Tests <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_AuthorRemainingL3</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_authorplandefs" data-fa-state="extracted" data-fa-gloss="">
+Author PlanDefinitions (processes, decision tables) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_AuthorPlanDefs</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_authorquestionnaires" data-fa-state="extracted" data-fa-gloss="">
+Author questionnaires and structure maps <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_AuthorQuestionnaires</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_authorscenarios" data-fa-state="extracted" data-fa-gloss="">
+Author user scenarios (Component 3) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_AuthorScenarios</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_graphdetanglement.task_authorise" data-fa-state="extracted" data-fa-gloss="">
 Authorise the extraction <span class="fa-gloss-status">candidate, extracted</span>
@@ -883,6 +1100,13 @@ Brief, and claim the bean <span class="fa-gloss-status">candidate, extracted</sp
 <p>What the sub-KG is and why it is staged here rather than in a repository of its own, what is already measured, and what would falsify the plan. Claim the bean so a sibling session sees the work.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/sub-kg-lifecycle.bpmn"><code>cat-harness/processes/kg/sub-kg-lifecycle.bpmn#Task_Brief</code></a></p>
 </dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_igastcache.task_buildsite" data-fa-state="extracted" data-fa-gloss="">
+Build and publish the site from the AST [ig-render-jekyll] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The site route's steps, provided by the mounted layers and run by <code>stage-local.ts</code> → <code>build-instance-site.ts</code>: the landing layer's IG API sidecars when it has the step (<code>ig-site:sidecars</code>), the artefact index from the AST and the thin pages with the IG composed at the root (<code>ig-site:compose</code>: <code>ast-to-artifact-index.ts</code>, <code>gen-ig-pages.ts --compiled-data ast-data</code>), the OpenAPI pages when the IG holds them (<code>ig-site:openapi</code>), the AST's resources served as <code>ast-data/</code> and the build stamp (<code>ig-site:publisher-pages</code>). Published at the root from the default branch, as a preview otherwise.</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/ig-ast-cache.bpmn"><code>fhir-harness/processes/content/ig-ast-cache.bpmn#Task_BuildSite</code></a></p>
+</dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_editing.task_buildgates" data-fa-state="extracted" data-fa-gloss="">
 Build and QA gates [content-test] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -939,6 +1163,13 @@ Build the entry [tree + manifest] <span class="fa-gloss-status">candidate, extra
 <p>First the working copy is produced (<code>qa:refresh</code>, bean <code>3hk4</code>): while the checkout still tracks <code>test/results/</code>, the commit's own copy is the record and nothing runs; once it does not, every declared QA writer runs into the empty tree, because the gates are in judge mode and wrote nothing a publish could carry. A refresh that leaves a writer failed, a family empty or a file unclaimed is INCOMPLETE: the job goes red and <code>qa:publish --completeness</code> refuses, so a partial tree is never stored as the commit's record — the &quot;Not stored&quot; outcome, reached before any push. Then it hashes the working copy of every declared <code>qa</code> directory (<code>&lt;instance&gt;/test/results/**</code>, byte-identical to the checkout's layout) into a tree through a private index, and writes <code>manifest.json</code> (<code>qa-reports-manifest/v1</code>): inputs, producers, verdict counts and the gates' result. Identical JSON is the same blob, so an unchanged family costs nothing to store again. Its git objects live in a private bare repository, never in the checkout's own store.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/qa-publish.bpmn"><code>cat-harness/processes/sdlc/qa-publish.bpmn#Task_BuildEntry</code></a></p>
 </dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_igastcache.task_export" data-fa-state="extracted" data-fa-gloss="">
+Build the IG with the Publisher AST exporter [ig-publisher-fork] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The runner mounts the layers the IG repository's <code>index.lock.json</code> pins, restores and judges the cache itself, and, when it is not valid, runs the caller's optional <code>pre-export</code> overlay command, then <code>AstExportCli</code> (Tool <code>ig-ast-export</code>, <code>litlfred/fhir-ig-publisher</code> at the pinned <code>claude/ast-export</code> commit) with <code>-tx</code>. The inputs <code>pre-export</code> changed are put back and the AST is recorded against the clean commit's input digest (<code>ig-ast.ts source-inputs</code>). The AST just built must itself be <code>valid</code> for the commit, or the run fails.</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/ig-ast-cache.bpmn"><code>fhir-harness/processes/content/ig-ast-cache.bpmn#Task_Export</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_docssite.task_build" data-fa-state="extracted" data-fa-gloss="">
 Build the Jekyll site and the API reference <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -971,7 +1202,7 @@ Build the test run [folio-test-run/v1] <span class="fa-gloss-status">candidate, 
 Business processes · BPMN 2.0 [bpmn-authoring] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Author the DAK's L2 business processes as BPMN 2.0, with Diagram Interchange: a .bpmn with no x/y on its shapes parses and renders blank. Stay at L2 — reviewable by a clinician, not FHIR.</p>
+<p>Author the DAK's L2 business processes as BPMN 2.0, with Diagram Interchange: a .bpmn with no x/y on its shapes parses and renders blank. Stay at L2 — reviewable by a clinician, not FHIR. Calls Process_L2ComponentEditReview with the BPMN inputs of the skill l2-component-edit-review (checker: bpmn-js import with no warnings, dak-swimlanes.ts, artefact-reachability; renderer: render:bpmn with a visual-diff before/after; reviewer: clinical SME).</p>
 <p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/l2-dak-authoring.bpmn"><code>smart-base/processes/content/l2-dak-authoring.bpmn#Task_Bpmn</code></a></p>
 </dd>
 </dl>
@@ -998,6 +1229,13 @@ Check disk against lock against declaration <span class="fa-gloss-status">candid
 <dd>
 <p><code>mount:remote:check</code>, with no network: the lock's pins are the declaration's, and every locked directory is on disk and hashes to its digest. Could-not-determine outranks missing, which outranks mounted.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/mount-dependency.bpmn"><code>cat-harness/processes/kg/mount-dependency.bpmn#Task_CheckAgainstLock</code></a></p>
+</dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_questionnairewireframereview.task_fidelity" data-fa-state="extracted" data-fa-gloss="">
+Check field for field [check-wireframe-questionnaire] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>fhir-harness/scripts/check-wireframe-questionnaire.ts &lt;wireframe.html&gt; &lt;Questionnaire.json&gt;, per layout. Exit 0 faithful, 1 a finding, 2 cannot tell, which is never a pass. The findings become the output's fidelity[] and are shown to the reviewers.</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn"><code>fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Task_Fidelity</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_namedqueryexecution.a_checksubgraphs" data-fa-state="extracted" data-fa-gloss="">
 Check Graph Availability Guard (requiredSubgraphs) <span class="fa-gloss-status">candidate, extracted</span>
@@ -1164,7 +1402,7 @@ Clinical / scientific sign-off [content-review] <span class="fa-gloss-status">ca
 Clinical validation [content-review] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Ground truth: does the DAK say what the guideline says?</p>
+<p>Ground truth: does the DAK say what the guideline says? This is the whole-DAK reading, across components: whether the personas, processes, decisions, data elements and indicators tell one consistent story. Each component has already had its own review, forking off inside its track (Process_L2ComponentEditReview, skill l2-component-edit-review), so this step does not repeat those per-component reviews.</p>
 <p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/l2-dak-authoring.bpmn"><code>smart-base/processes/content/l2-dak-authoring.bpmn#Task_SmeValidate</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_crdm_close.a_close" data-fa-state="extracted" data-fa-gloss="">
@@ -1433,12 +1671,33 @@ COPYRIGHT per bitstream, and for the derived work <span class="fa-gloss-status">
 <p>What the licence permits for THIS bitstream, and separately whether it permits the derivation. LICENSE-CONTENT.md exists in this repository and the ingestion pipeline does not read it.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/library/materialize-remote.bpmn"><code>cat-harness/processes/library/materialize-remote.bpmn#Task_Copyright</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_translateexamples" data-fa-state="extracted" data-fa-gloss="">
+Create example resources per UN language <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_TranslateExamples</code></a></p>
+</dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_contentchangereview.task_createbranch" data-fa-state="extracted" data-fa-gloss="">
 Create feature branch <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p>Agent creates a feature branch from main. Branch naming: feature/&lt;short-description&gt; Opens a PR immediately (AGENTS.md: &quot;open the PR at the first commit&quot;).</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/content-change-review.bpmn"><code>folio-assistant-core/processes/content/content-change-review.bpmn#Task_CreateBranch</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_createreleasetag" data-fa-state="extracted" data-fa-gloss="">
+Create GitHub release and tag (vX.Y.Z) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_CreateReleaseTag</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_createpubrequest" data-fa-state="extracted" data-fa-gloss="">
+Create publication-request.json <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_CreatePubRequest</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_beanlifecycle.task_create" data-fa-state="extracted" data-fa-gloss="">
 Create the bean (agent CLI, not an engine op) <span class="fa-gloss-status">candidate, extracted</span>
@@ -1483,7 +1742,7 @@ Cut the subgraph that leaves <span class="fa-gloss-status">candidate, extracted<
 Data dictionary and core data elements [l2-dak-authoring] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Author the data dictionary and core data elements for this component. Stay structured but not FHIR: a data element a clinician can review, from which L3 can later be derived rather than written twice.</p>
+<p>Author the data dictionary and core data elements for this component. Stay structured but not FHIR: a data element a clinician can review, from which L3 can later be derived rather than written twice. Calls Process_L2ComponentEditReview with the glossary inputs of the skill l2-component-edit-review (checker: check-dak-annexes.ts; renderer: the term diff from dak-data-dictionary-diff.ts and each form's chosen wireframe; reviewer: clinical SME, terminologist for codes).</p>
 <p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/l2-dak-authoring.bpmn"><code>smart-base/processes/content/l2-dak-authoring.bpmn#Task_DataDict</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_crdm.call_datamodel" data-fa-state="extracted" data-fa-gloss="">
@@ -1518,7 +1777,7 @@ Decide, weighing the recommendations <span class="fa-gloss-status">candidate, ex
 Decision logic · DMN tables [dmn-authoring] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Author the decision logic as DMN tables, within the FEEL subset the interpreter implements (any, literals, comparisons, one-of). Ranges, not() and function calls are refused at load, so write inside the subset.</p>
+<p>Author the decision and scheduling logic as DMN tables, within the FEEL subset the interpreter implements (any, literals, comparisons, one-of). Ranges, not() and function calls are refused at load, so write inside the subset. Calls Process_L2ComponentEditReview with the DMN inputs of the skill l2-component-edit-review (checker: load, reachability, test cases; renderer: dmn2html table before/after, each rule beside its L1 citation; reviewer: clinical SME).</p>
 <p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/l2-dak-authoring.bpmn"><code>smart-base/processes/content/l2-dak-authoring.bpmn#Task_Dmn</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_nquadsdistribution.a_declaremanifest" data-fa-state="extracted" data-fa-gloss="">
@@ -1562,6 +1821,27 @@ Deduplicate, and keep what is actually relevant <span class="fa-gloss-status">ca
 <dd>
 <p>The paper's Refiner. Accumulates into the evidence set the report is built from — so what is dropped here is invisible downstream, which is why it is a step somebody performs rather than a filter buried in retrieval.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/library/deep-document-research.bpmn"><code>folio-assistant-core/processes/library/deep-document-research.bpmn#A_Refine</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_definedataelements" data-fa-state="extracted" data-fa-gloss="">
+Define core data elements (Component 5) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_DefineDataElements</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_scoping" data-fa-state="extracted" data-fa-gloss="">
+Define DAK scope, purpose, and target audience <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_Scoping</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_definerequirements" data-fa-state="extracted" data-fa-gloss="">
+Define functional/non-functional requirements (Component 9) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_DefineRequirements</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_crdm_deliver.a_deploystaging" data-fa-state="extracted" data-fa-gloss="">
 Deploy the MVP to staging <span class="fa-gloss-status">candidate, extracted</span>
@@ -1640,6 +1920,13 @@ Describe the need (chat, issue, discussion) <span class="fa-gloss-status">candid
 <p>The BA describes the capability gap in their own words. They do not need to know it is called CRDM.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn"><code>cat-harness/processes/process/crdm-requirements.bpmn#BA_Submit</code></a></p>
 </dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_questionnairewireframereview.call_review" data-fa-state="extracted" data-fa-gloss="">
+Design review [wireframe-design-review] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>cat-harness Process_WireframeDesignReview: as-is use for a form that exists, design use for one being designed. This process does not restate the method.</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn"><code>fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Call_Review</code></a></p>
+</dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_contentchangereview.task_detectscope" data-fa-state="extracted" data-fa-gloss="">
 Detect change scope &amp; impact <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1717,6 +2004,20 @@ Develop a budget <span class="fa-gloss-status">candidate, extracted</span>
 <p>DIIG Chapter 7. Phases of implementation, cost drivers, and the budget matrix. This is the chapter that turns the preceding six into a COSTED implementation plan, which is the artefact the whole Guide exists to produce and the one a funder reads.</p>
 <p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/methodologies/processes/diig-investment-path.bpmn"><code>smart-base/methodologies/processes/diig-investment-path.bpmn#A_DevelopBudget</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_developdecisionlogic" data-fa-state="extracted" data-fa-gloss="">
+Develop decision-support logic (Component 6) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_DevelopDecisionLogic</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_developschedulinglogic" data-fa-state="extracted" data-fa-gloss="">
+Develop scheduling logic (Component 7) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_DevelopSchedulingLogic</code></a></p>
+</dd>
 <dt id="fhir-harness--kg-bpmn-activities--process_igastdeltareview.task_diff" data-fa-state="extracted" data-fa-gloss="">
 Diff base → head and render the delta pages [ig-ast-delta] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1745,6 +2046,13 @@ Dispatch one agent, recorded on the bean <span class="fa-gloss-status">candidate
 <p>Before the agent starts: the date, why the fail condition fired, the agent's id, its budget. Never while the first writer may still be live. Two failed attempts with the same cause go to the owner instead.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/merge-refusal.bpmn"><code>cat-harness/processes/sdlc/merge-refusal.bpmn#Task_Dispatch</code></a></p>
 </dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_igastcache.task_dispatch" data-fa-state="extracted" data-fa-gloss="">
+Dispatch the IG's ig-ast-refresh.yml [ig-build-pipeline] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Actions → &quot;IG AST refresh (by hand)&quot; → Run workflow on the default branch, inputs <code>ref</code> = the default branch, <code>force</code> = false. The publish refused, so the verdict already says the cache is not valid; <code>force</code> is for a cache that is valid but suspected wrong.</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/ig-ast-cache.bpmn"><code>fhir-harness/processes/content/ig-ast-cache.bpmn#Task_Dispatch</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_adjudication.a_dispatch" data-fa-state="extracted" data-fa-gloss="">
 Dispatch with adjudicator_sees — never the artefact <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1765,6 +2073,20 @@ Do the work <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>The task itself. This diagram says nothing about how it is done; it only brackets it, so that a reader of the log can tell where one run of work began and ended.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/activity-log.bpmn"><code>cat-harness/processes/sdlc/activity-log.bpmn#A_DoWork</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_detailworkflow" data-fa-state="extracted" data-fa-gloss="">
+Draft detailed workflow annotations <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_DetailWorkflow</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_plantimeline" data-fa-state="extracted" data-fa-gloss="">
+Draft project roadmap, backlog, and sprint cadence <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_PlanTimeline</code></a></p>
 </dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_editing.task_draftedit" data-fa-state="extracted" data-fa-gloss="">
 Draft the block edit [content-author] <span class="fa-gloss-status">candidate, extracted</span>
@@ -1832,6 +2154,13 @@ Edit narrative content blocks <span class="fa-gloss-status">candidate, extracted
 <dd>
 <p>Agent modifies the relevant content blocks (.md files, block manifests). Validates each edit against the schema (content_validate). skill: content editing, block builders</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/content-change-review.bpmn"><code>folio-assistant-core/processes/content/content-change-review.bpmn#Task_EditContent</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_l2componenteditreview.task_edit" data-fa-state="extracted" data-fa-gloss="">
+Edit the component [l2-component-edit-review] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Create or change the component with the authoring skill the call names (l2-dak-authoring, bpmn-authoring, dmn-authoring or terminology-management), one component per pass. On rework, apply the review's findings; a fix the reviewer wrote in an AuditNote is applied as given. An adapted component is edited against its pinned upstream, so the before side of the diff is that upstream, not an empty file.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/l2-component-edit-review.bpmn"><code>smart-base/processes/content/l2-component-edit-review.bpmn#Task_Edit</code></a></p>
 </dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_publiccomment.task_authoredits" data-fa-state="extracted" data-fa-gloss="">
 Edit the document as decided, on a feature branch <span class="fa-gloss-status">candidate, extracted</span>
@@ -1909,6 +2238,13 @@ ENUMERATE + SUBSET against the source descriptor <span class="fa-gloss-status">c
 <dd>
 <p>Resolve the request against the source's descriptor (one per corpus, in the declared sources/ of the instance that owns it, e.g. who-iris/sources/), read against cat-harness/schemas/source-descriptor.ts BEFORE any gate. Three things come from it and none may be guessed. (1) Which subset strategies the source supports — supportsSubset(). (2) Whether a subset stands on its own: when subsetIsSelfContained is false (mathlib), the request is closed over its dependencies here, and every gate after this one is asked about the CLOSURE, because a subset that omits what its members depend on is not a smaller corpus, it is one that does not build. (3) What enumerating the whole costs — enumerationCost(), which is undefined when the descriptor has no measured denominator; SIZE then refuses rather than estimates. A source with no descriptor is not an error here: it is an unknown, and SIZE refuses on it. Bean w5bn: the descriptor is CALLED here rather than restated.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/library/materialize-remote.bpmn"><code>cat-harness/processes/library/materialize-remote.bpmn#Task_Enumerate</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_establishprocess" data-fa-state="extracted" data-fa-gloss="">
+Establish development process (Agile/Scrum) and tooling <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_EstablishProcess</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_methodologyfromsource.a_origin" data-fa-state="extracted" data-fa-gloss="">
 Establish origin and licence <span class="fa-gloss-status">candidate, extracted</span>
@@ -2089,6 +2425,13 @@ Filter the corpus, choose the granularity, decompose the question <span class="f
 <p>The paper's Planner. Three outputs, and the middle one is the method's substance: a filtered document subset, the granularity to search at, and the sub-questions. CHOOSING THE GRANULARITY PER QUESTION is the whole point of parsing at several. A broad question is answered from summaries and a specific one from chunks; a pipeline that picks once has answered every future question the same way. This checkout cannot yet offer the choice — <code>l1-blocks.ts</code> produces blocks, there is no summary level — so this step SAYS which granularity it searched rather than implying the corpus offered alternatives. Re-entered on every iteration, not only the first: the sub-questions are re-derived from what has been found so far, which is what makes the loop a search rather than a retry.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/library/deep-document-research.bpmn"><code>folio-assistant-core/processes/library/deep-document-research.bpmn#A_Plan</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_finalizel2" data-fa-state="extracted" data-fa-gloss="">
+Finalize L2 DAK for L3 authoring <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_FinalizeL2</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_mergetrain.call_checkspresent" data-fa-state="extracted" data-fa-gloss="">
 Find members with no CI on their head [pr-checks-present] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -2109,6 +2452,13 @@ Find the owner's authorisation for THIS merge <span class="fa-gloss-status">cand
 <dd>
 <p>Classify what exists into one value: <code>explicit</code> (the owner's own words naming this merge, given against this head), <code>waiver</code> (a valid <code>memory/waivers/</code> node with gate merge-to-main, in scope and unexpired), <code>instruction-only</code> (a broad instruction about the work, such as &quot;fix all issues until green&quot; or &quot;ship it&quot;, which is not an authorisation), <code>none</code>, or <code>unknown</code> (waivers unreadable or malformed). A sibling agent's message is never the owner's consent.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/merge-to-main.bpmn"><code>cat-harness/processes/sdlc/merge-to-main.bpmn#Task_ReadAuthorisation</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_fixissues" data-fa-state="extracted" data-fa-gloss="">
+Fix QA issues from review <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_FixIssues</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_mergerefusal.task_fix" data-fa-state="extracted" data-fa-gloss="">
 Fix the PR, report on the PR <span class="fa-gloss-status">candidate, extracted</span>
@@ -2144,6 +2494,13 @@ Follow up, narrower <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>The answer did not settle it: it named a kind rather than an option, or chose two. Ask once more, narrower, naming what the first answer left open. Once: an agent that keeps asking has stopped narrowing.</p>
 <p class="fa-gloss-meta">BPMN activities of bootstrap · source <a href="https://github.com/litlfred/bootstrap/blob/main/processes/human-agent-discussion.bpmn"><code>bootstrap/processes/human-agent-discussion.bpmn#A_FollowUp</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_formteam" data-fa-state="extracted" data-fa-gloss="">
+Form DAK development team and define RASCI matrix <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_FormTeam</code></a></p>
 </dd>
 <dt id="smart-base--kg-bpmn-activities--process_diig.a_formteam" data-fa-state="extracted" data-fa-gloss="">
 Form the team and establish goals <span class="fa-gloss-status">candidate, extracted</span>
@@ -2198,6 +2555,13 @@ Gather and verify the evidence [evidence-retrieval] <span class="fa-gloss-status
 <p>Before anything is drafted: the author reads the guidance ALREADY in this content, frames the question as PICO, retrieves candidates across the three evidence classes, and has each candidate's authority resolved against its publisher's own API. A recommendation reaches the drafting step with its evidence attached, or with the gap recorded. This step has nothing to do for content that carries no recommendations -- a mathematics folio has none -- and is skipped there rather than satisfied vacuously.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/editing-hci-validation.bpmn"><code>folio-assistant-core/processes/content/editing-hci-validation.bpmn#CallActivity_Evidence</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_gatherdocs" data-fa-state="extracted" data-fa-gloss="">
+Gather source documents (guidelines, registers, policies) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_GatherDocs</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_contentacquisition.p_respond" data-fa-state="extracted" data-fa-gloss="">
 Give a link, a description, or neither <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -2225,6 +2589,13 @@ Grant, narrow or refuse each <span class="fa-gloss-status">candidate, extracted<
 <dd>
 <p>The owner's answer, per permission, in their own words. Quoted verbatim in the record.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/secure-agent-permissions.bpmn"><code>cat-harness/processes/process/secure-agent-permissions.bpmn#Task_OwnerGrants</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_groundtruth" data-fa-state="extracted" data-fa-gloss="">
+Ground-truth with field practice (country visits/interviews) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_GroundTruth</code></a></p>
 </dd>
 </dl>
 
@@ -2304,6 +2675,13 @@ Identify entities from the BPA and requirements <span class="fa-gloss-status">ca
 <p>Every verb in the BPA whose object is a candidate entity, and every noun in a requirement. An entity with no identifier is an attribute of something else — that test is decisive and belongs to the technique skill.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-data-model.bpmn"><code>cat-harness/processes/process/crdm-data-model.bpmn#A_Entities</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_identifyinterventions" data-fa-state="extracted" data-fa-gloss="">
+Identify health interventions and recommendations (Component 1) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_IdentifyInterventions</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_secureagentpermissions.task_identifytools" data-fa-state="extracted" data-fa-gloss="">
 Identify the agent Tool(s) acting here <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -2346,11 +2724,18 @@ Import what, where, and who does it <span class="fa-gloss-status">candidate, ext
 <p>Three questions the scan cannot answer: import these or not; library or content for each group; leave the files where they are or reorganize to declutter. Plus whether to dispatch one ingestion agent or a small swarm. Non-relaxable: nobody's files are moved or imported on inference.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/conduct/getting-started.bpmn"><code>folio-assistant-core/processes/conduct/getting-started.bpmn#Task_ConfirmImport</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_incorporatefeedback" data-fa-state="extracted" data-fa-gloss="">
+Incorporate SME feedback into DAK components <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_IncorporateFeedback</code></a></p>
+</dd>
 <dt id="smart-base--kg-bpmn-activities--process_l2dak.task_indicators" data-fa-state="extracted" data-fa-gloss="">
 Indicators and requirements [l2-dak-authoring] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Author the component's indicators and its functional and non-functional requirements. These are the DAK's requirements, distinct from skills/requirements/*.json, which are this harness's own conformance obligations.</p>
+<p>Author the component's indicators and its functional and non-functional requirements. These are the DAK's requirements, distinct from skills/requirements/*.json, which are this harness's own conformance obligations. Calls Process_L2ComponentEditReview with the indicators-and-requirements inputs of the skill l2-component-edit-review (checker: each names the persona and process it serves and traces to L1; renderer: prose diff; reviewer: business analyst with the programme manager).</p>
 <p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/l2-dak-authoring.bpmn"><code>smart-base/processes/content/l2-dak-authoring.bpmn#Task_Indicators</code></a></p>
 </dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_publiccomment.task_ingest" data-fa-state="extracted" data-fa-gloss="">
@@ -2477,6 +2862,13 @@ L1 completeness gate <span class="fa-gloss-status">candidate, extracted</span>
 <p>See ingest-l1-completeness-gate.bpmn. Skill-backed by <code>l1-document-ingestion</code> (2026-09-30, bean 7bg9; the section moved there from the harness's <code>library-ingestion</code> in placement PR6): its section &quot;What a complete L1 entry holds&quot; names <code>check:l1-complete</code> as the gate and states its three results. Until then this step named <code>paper-relevance-triage</code>, which never existed, and was left uncovered rather than bound to a guess. The gate contains one adjudication (Task_FlagDrift: <code>real</code>, <code>spurious</code> or <code>source-wrong</code>), and its own Task_Verdict records the answer as a reason against the verdict before returning. So both answers reach this step, and nothing here branches on them; Gateway_Complete branches on the gate's completeness verdict instead.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/library/l1-document-ingestion.bpmn"><code>folio-assistant-core/processes/library/l1-document-ingestion.bpmn#CallActivity_Gate</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_completel3" data-fa-state="extracted" data-fa-gloss="">
+L3 authoring complete - ready for review <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_CompleteL3</code></a></p>
+</dd>
 <dt id="smart-base--kg-bpmn-activities--process_dakl3ig.callactivity_l3fhir" data-fa-state="extracted" data-fa-gloss="">
 L3 FHIR IG pipeline (fhir-harness) <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -2581,6 +2973,13 @@ Link to the enterprise architecture <span class="fa-gloss-status">candidate, ext
 <dd>
 <p>DIIG Chapter 6. Assess the digital health enterprise architecture, identify the common and enabling components and shared services that make up the digital health platform, and link the investment to both.</p>
 <p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/methodologies/processes/diig-investment-path.bpmn"><code>smart-base/methodologies/processes/diig-investment-path.bpmn#A_LinkEnterpriseArchitecture</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_listindicators" data-fa-state="extracted" data-fa-gloss="">
+List indicators and metrics (Component 8) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_ListIndicators</code></a></p>
 </dd>
 <dt id="bootstrap--kg-bpmn-activities--process_discussion.a_listharnesses" data-fa-state="extracted" data-fa-gloss="">
 List the harnesses this could be <span class="fa-gloss-status">candidate, extracted</span>
@@ -2712,6 +3111,13 @@ Make the value proposition and set next steps <span class="fa-gloss-status">cand
 <p>DIIG Chapter 9. The case made to whoever pays, and what follows. Scaling up is a different method and a different publication — <code>9789241509510-eng</code>, The MAPS Toolkit — which begins where this implementation ends.</p>
 <p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/methodologies/processes/diig-investment-path.bpmn"><code>smart-base/methodologies/processes/diig-investment-path.bpmn#A_ValueProposition</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_maptocommons" data-fa-state="extracted" data-fa-gloss="">
+Map concepts to WHO Commons dictionary <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_MapToCommons</code></a></p>
+</dd>
 <dt id="smart-base--kg-bpmn-activities--process_dakl3ig.task_mapl2" data-fa-state="extracted" data-fa-gloss="">
 Map L2 → L3 [l3-fhir-authoring] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -2725,6 +3131,13 @@ Map the current state and confirm bottlenecks <span class="fa-gloss-status">cand
 <dd>
 <p>DIIG Chapter 3.1. Determine the health programme processes to target, map their workflows, identify and confirm bottlenecks. Then 3.2, a root cause analysis. This is where DIIG builds on CRDM, and it says so: &quot;This process builds on the Public Health Informatics Institute's Collaborative Requirements Development Methodology (CRDM)&quot;. Its three areas of concentration are business process analysis, business process redesign and requirements definition — two of which name diagrams this platform already executes. They are parallel tracks, not a composite: pick one per decision and name it.</p>
 <p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/methodologies/processes/diig-investment-path.bpmn"><code>smart-base/methodologies/processes/diig-investment-path.bpmn#A_MapCurrentState</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_maptostandards" data-fa-state="extracted" data-fa-gloss="">
+Map to ICD-11, SNOMED CT, LOINC <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_MapToStandards</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_ingesttheme.task_maproles" data-fa-state="extracted" data-fa-gloss="">
 Map values onto the shared palette ROLES <span class="fa-gloss-status">candidate, extracted</span>
@@ -2753,6 +3166,13 @@ Materialize remote content (the five gates) <span class="fa-gloss-status">candid
 <dd>
 <p>The shared subprocess. It resolves the request against the source descriptor, then asks size, restrictions, copyright, retention and source loss, and either fetches with fixity or leaves the content referenced. This process does not restate any of that; it waits for the outcome.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/library/sample-import.bpmn"><code>cat-harness/processes/library/sample-import.bpmn#Call_Materialize</code></a></p>
+</dd>
+<dt id="cat-harness--kg-bpmn-activities--process_kgseparation.task_cutovercheck" data-fa-state="extracted" data-fa-gloss="">
+Measure the cutover: separation:cutover:check <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Run <code>bun run cat separation:cutover:check --site</code> in the SEPARATED repository (Tool <code>separation-cutover-check</code>). Six conditions, each decided by an existing gate and none assumed: every declared layer mounted at its pin; every path a declaration names resolves (<code>check:declaration-resolution</code> — directories, assets, visualisers, needs); no wiring still names the monorepo (<code>livesAt</code>, a submodule, a reusable workflow, a path into the old checkout — lessons 15 and 16); no import or reference against the layer order; and the site builds from the mounts alone. A finding inside a mounted layer is upstream's and is listed, not counted.</p>
+<p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/kg-separation.bpmn"><code>cat-harness/processes/kg/kg-separation.bpmn#Task_CutoverCheck</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_kgseparation.task_measure" data-fa-state="extracted" data-fa-gloss="">
 Measure the signals <span class="fa-gloss-status">candidate, extracted</span>
@@ -2958,6 +3378,13 @@ Offer the knowledge-graph destinations for the agreed set <span class="fa-gloss-
 <p>THE STEP THAT WAS MISSING. Requirements were elicited, agreed and signed off, and then existed as an issue and a conversation — so the output of the process that exists to produce durable requirements was the one thing the knowledge graph never learned. ONE question for the SET, not one per requirement: a six-phase run can agree many, and asking six times is the same failure as a form that re-asks what it was already told. The options are DERIVED from the graphs this instance declares in <code>&lt;name&gt;.json</code>, read at the time of asking, so an instance that adds a graph gets it in the offer without anybody editing a skill. Never a list typed from memory.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-signoff.bpmn"><code>cat-harness/processes/process/crdm-signoff.bpmn#A_OfferKg</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_onboardconcepts" data-fa-state="extracted" data-fa-gloss="">
+Onboard new concepts to Commons (governance) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_OnboardConcepts</code></a></p>
+</dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_evidenceretrieval.task_recordunverified" data-fa-state="extracted" data-fa-gloss="">
 Open a bean for the unverified citation [todo-manager] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -3042,6 +3469,13 @@ Open the tracking issue, naming the failed step <span class="fa-gloss-status">ca
 <p>Open the issue with the step that failed, the run link and — for a verification failure — the verifier report.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/publish-alert.bpmn"><code>cat-harness/processes/sdlc/publish-alert.bpmn#A_Open</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_createreleasebranch" data-fa-state="extracted" data-fa-gloss="">
+Optionally create release-candidate branch <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_CreateReleaseBranch</code></a></p>
+</dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_editing.call_optionsanalysis" data-fa-state="extracted" data-fa-gloss="">
 Options analysis accept · revise · discard <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -3092,7 +3526,7 @@ Persist the log to the data store <span class="fa-gloss-status">candidate, extra
 Personas and scenarios [l2-dak-authoring] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Author the DAK's personas and the user journeys (scenarios) they appear in. These are the DAK's own actors, not this harness's scenarios/roles.json — the two vocabularies must not be conflated.</p>
+<p>Author the DAK's personas and the user journeys (scenarios) they appear in, then have them reviewed: calls Process_L2ComponentEditReview with the personas-and-scenarios inputs of the skill l2-component-edit-review (checker: dak-swimlanes.ts and traceability to L1 recommendations; renderer: the persona card and a prose diff; reviewer: clinical SME). These are the DAK's own actors, not this harness's scenarios/roles.json — the two vocabularies must not be conflated.</p>
 <p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/l2-dak-authoring.bpmn"><code>smart-base/processes/content/l2-dak-authoring.bpmn#Task_Personas</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_crdm.call_needs" data-fa-state="extracted" data-fa-gloss="">
@@ -3127,7 +3561,7 @@ Phase 2: Map current workflow (BPA) <span class="fa-gloss-status">candidate, ext
 Phase 4a: Compare the viable options <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Phase 4 often ends with a CHOICE rather than a plan, and this is the step that hands it over. Per option: what it does, its pro, its con, what it changes DOWNSTREAM, and how reversible it is — laid out where the rows can be read against each other, then one recommendation and a stated default. A step of its own rather than a line inside A_DefineReqs, because it has a different output and a different reader: the impact analysis is for the record, the comparison is the thing the BA answers from. Folding it in is how it gets skipped — the analysis feels finished, so the options go over as a list of names. Skipped legitimately when the analysis yields ONE viable approach. Do not manufacture alternatives to fill a table.</p>
+<p>Phase 4 often ends with a CHOICE rather than a plan, and this is the step that hands it over. Per option: what it does, its pro, its con, what it changes DOWNSTREAM, and how reversible it is — laid out where the rows can be read against each other, then one recommendation and a stated default. A step of its own rather than a line inside A_DefineReqs, because it has a different output and a different reader: the impact analysis is for the record, the comparison is the thing the BA answers from. Folding it in is how it gets skipped — the analysis feels finished, so the options go over as a list of names. When Call_Wireframe ran, its wireframe candidates are among the options: one row per candidate, with a link to its web and mobile screenshots. Skipped legitimately when the analysis yields ONE viable approach. Do not manufacture alternatives to fill a table.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements-definition.bpmn"><code>cat-harness/processes/process/crdm-requirements-definition.bpmn#A_CompareOptions</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_crdm.call_signoff" data-fa-state="extracted" data-fa-gloss="">
@@ -3155,7 +3589,7 @@ Phase 6 Implement + acceptance <span class="fa-gloss-status">candidate, extracte
 Phase 6: Implement (feature branch + PR) <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Inner loop: agent claims a bean, implements on feature branch, opens PR, posts summary to the issue.</p>
+<p>Inner loop: agent claims a bean, implements on feature branch, opens PR, posts summary to the issue. When the requirement changes a rendered surface, implement against the wireframe candidate the requester or BA chose in Phases 3–4 (Process_WireframeDesignReview, called from Process_CRDM_Requirements), not against a fresh design; and the delivery summary links the chosen candidate beside the after-screenshot, so the reviewer can see the build matches what was approved.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-deliver.bpmn"><code>cat-harness/processes/process/crdm-deliver.bpmn#A_Implement</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_crdm.call_requirements" data-fa-state="extracted" data-fa-gloss="">
@@ -3214,6 +3648,13 @@ Plan scope, team, artifacts [content-plan] <span class="fa-gloss-status">candida
 <p>Scope the work, identify artifacts and actors, form the team, set the timeline.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/content-lifecycle.bpmn"><code>folio-assistant-core/processes/content/content-lifecycle.bpmn#Task_Plan</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_planconsultations" data-fa-state="extracted" data-fa-gloss="">
+Plan SME consultation schedule and format <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_PlanConsultations</code></a></p>
+</dd>
 <dt id="smart-base--kg-bpmn-activities--process_diig.a_planimplementation" data-fa-state="extracted" data-fa-gloss="">
 Plan the implementation <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -3246,7 +3687,7 @@ Pool knowledge across participants <span class="fa-gloss-status">candidate, extr
 Post summary to issue <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>What was accomplished, what remains, and links to the updated content for review.</p>
+<p>What was accomplished, what remains, and the staging links: one deep link per changed page on the preview, with the same page on main (staging-review, &quot;The deep-link rule&quot;).</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-deliver.bpmn"><code>cat-harness/processes/process/crdm-deliver.bpmn#A_Summary</code></a></p>
 </dd>
 <dt id="fhir-harness--kg-bpmn-activities--process_igincremental.task_conereport" data-fa-state="extracted" data-fa-gloss="">
@@ -3339,6 +3780,13 @@ Prose blocks enter the summary queue [l1-document-ingestion] <span class="fa-glo
 <dd>
 <p>Owner, 2026-09-24: &quot;Make as QA sidecar as part of general doc ingestion to slowly drain.&quot; Nothing is written to ENQUEUE a block: the queue is derived (every prose block in every declared library, minus those whose summaries.json record is a current draft or confirmation), so a promoted entry is in it the moment its blocks are. A re-ingested document whose text changed re-enters it on its own, because the record's source_hash no longer matches. What an agent doing ingestion work does here is DRAIN a few: <code>bun run cat summaries:next -- --n K</code> hands it the next K blocks with their text, it writes a short summary of each in its own words, and <code>bun run cat summaries:record</code> writes them into library/&lt;bib-slug&gt;/summaries.json as drafts naming the agent and its model. The block itself stays verbatim and <code>ingested</code>. ADVISORY, never a gate: this step does not hold up Task_Citeable, and check:l1-complete reports the backlog (<code>block-summaries</code>) without failing on it. Confirming or rejecting a draft is a person's act, in <code>bun run cat narratives</code>.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/library/l1-document-ingestion.bpmn"><code>folio-assistant-core/processes/library/l1-document-ingestion.bpmn#Task_SummaryQueue</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_providefeedback" data-fa-state="extracted" data-fa-gloss="">
+Provide clinical feedback and identify gaps <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_ProvideFeedback</code></a></p>
 </dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_gettingstarted.task_provisionghpages" data-fa-state="extracted" data-fa-gloss="">
 Provision gh-pages <span class="fa-gloss-status">candidate, extracted</span>
@@ -3544,6 +3992,13 @@ Read every PR's state <span class="fa-gloss-status">candidate, extracted</span>
 <p><code>gh pr list --state all</code>: number, state and when it closed, so each <code>pr/&lt;n&gt;/</code> entry can be judged against its close date. A PR missing from the list is <code>unknown</code>, and an unknown is kept.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/qa-publish.bpmn"><code>cat-harness/processes/sdlc/qa-publish.bpmn#Task_ReadPrStates</code></a></p>
 </dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_questionnairewireframereview.task_read" data-fa-state="extracted" data-fa-gloss="">
+Read the built Questionnaire JSON <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>fsh-generated/resources/Questionnaire-&lt;id&gt;.json, or the IG's published Questionnaire-&lt;id&gt;.json — never FSH. The JSON is what every renderer and reader receives, so it is what is judged.</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn"><code>fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Task_Read</code></a></p>
+</dd>
 <dt id="bootstrap--kg-bpmn-activities--process_completeinitialization.a_readdeclarations" data-fa-state="extracted" data-fa-gloss="">
 Read the declaration, and each one it needs <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -3604,7 +4059,7 @@ Read the rendered delta [ig-ast-delta] <span class="fa-gloss-status">candidate, 
 Read the repository facts <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Mechanical, read-only: does a <code>&lt;name&gt;.config.json</code> declare a contentType, does the working tree hold somebody's existing project, and what has the user actually said. These are the three inputs to folio-intent.dmn. Non-relaxable: scaffolding without looking first is how a folio gets written over somebody's project.</p>
+<p>Mechanical, read-only: does the instance's config (its <code>index.config.json</code> entry; a legacy <code>&lt;name&gt;.config.json</code> only as a fallback) declare a contentType, does the working tree hold somebody's existing project, and what has the user actually said. These are the three inputs to folio-intent.dmn. Non-relaxable: scaffolding without looking first is how a folio gets written over somebody's project.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/conduct/getting-started.bpmn"><code>folio-assistant-core/processes/conduct/getting-started.bpmn#Task_ReadFacts</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_ingesttheme.task_readstylesheet" data-fa-state="extracted" data-fa-gloss="">
@@ -4104,6 +4559,27 @@ Render the method: adopted vs refused <span class="fa-gloss-status">candidate, e
 <p>What the source says, section by section, then a table of what this platform adopts and what it refuses, each with a reason. Extensions beyond the source (such as web plus mobile where the paper studied mobile) are stated as ours. Reported results are not imported as facts.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/library/methodology-from-source.bpmn"><code>cat-harness/processes/library/methodology-from-source.bpmn#A_Render</code></a></p>
 </dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_questionnairewireframereview.task_render" data-fa-state="extracted" data-fa-gloss="">
+Render the wireframe and the LHC-Forms view <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>A mid-fidelity wireframe with one field per answerable item, each carrying data-element and sitting in a data-layout web or mobile subtree; and the form view, the same JSON in the vendored &lt;lhc-forms&gt; web component on the IG site's form page. Never a CDN at runtime (owner, 2026-10-14).</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn"><code>fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Task_Render</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_l2componenteditreview.task_renderstage" data-fa-state="extracted" data-fa-gloss="">
+Render, stage, before/after [before-after-preview · feature-staging] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Render the component the way its reviewer reads it (column &quot;renderer and diff&quot;): the BPMN diagram (render:bpmn) with a visual-diff picture; the DMN decision table (smart-base-transform.py dmn2html) with each rule's L1 citation; the data dictionary's term diff (dak-data-dictionary-diff.ts) and the chosen wireframe of each form; personas, scenarios and requirements as a prose diff. Commit to the feature branch so it is staged as STAGING/&lt;slug&gt;/ on the platform's just-the-docs site (for smart-base, a folio-assistant staging re-pin, never the IG's /deploy), and make the before/after preview here, in the producing lane, so it exists when review starts.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/l2-component-edit-review.bpmn"><code>smart-base/processes/content/l2-component-edit-review.bpmn#Task_RenderStage</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_l2componenteditreview.task_reopenupstream" data-fa-state="extracted" data-fa-gloss="">
+Reopen upstream, flag derived assets [todo-manager] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>File a bean against the stage that chose the rejected source or dependency (check for an existing bean first), and mark every asset derived from this component adjudication: rejected-upstream on its wasDerivedFrom edge. Nothing is deleted ahead of time: the re-derivation may come out the same.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/l2-component-edit-review.bpmn"><code>smart-base/processes/content/l2-component-edit-review.bpmn#Task_ReopenUpstream</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_featurestaging.h_confirm" data-fa-state="extracted" data-fa-gloss="">
 Repeat the slug, exactly, to confirm <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -4124,6 +4600,13 @@ Report every step <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>One report, every step in its state, with counts: done, not done, could not determine, stated — led by the primary step, the JSON Schemas and JSON-LD at their IRIs. Required, which is what drawing the call says: an initialization that finished with steps open must say which.</p>
 <p class="fa-gloss-meta">BPMN activities of bootstrap · source <a href="https://github.com/litlfred/bootstrap/blob/main/processes/complete-initialization.bpmn"><code>bootstrap/processes/complete-initialization.bpmn#A_Report</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_reportissues" data-fa-state="extracted" data-fa-gloss="">
+Report issues to author for resolution <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_ReportIssues</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_activitylog.a_reportcapturestate" data-fa-state="extracted" data-fa-gloss="">
 Report the capture state <span class="fa-gloss-status">candidate, extracted</span>
@@ -4209,6 +4692,20 @@ Request further revisions <span class="fa-gloss-status">candidate, extracted</sp
 <p>Author provides feedback on what needs adjustment. Agent iterates on the feature branch.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/content-change-review.bpmn"><code>folio-assistant-core/processes/content/content-change-review.bpmn#Task_RequestRevision</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_requestwhoupdate" data-fa-state="extracted" data-fa-gloss="">
+Request WHO team to update smart.who.int <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_RequestWHOUpdate</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_resettodraft" data-fa-state="extracted" data-fa-gloss="">
+Reset main branch to draft, update version <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_ResetToDraft</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_mergebase.task_byhand" data-fa-state="extracted" data-fa-gloss="">
 Resolve by hand, then regenerate <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -4286,6 +4783,13 @@ Restore derived state [ig-publication] <span class="fa-gloss-status">candidate, 
 <p>ig-cache restore: per-artefact records, the terminology cache, the package cache and temp/, keyed by the toolchain slug. Exit 0 usable, 1 miss, 2 environment error, 3 present but toolchain moved.</p>
 <p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/ig-incremental-build.bpmn"><code>fhir-harness/processes/content/ig-incremental-build.bpmn#Task_Restore</code></a></p>
 </dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_igastcache.task_restore" data-fa-state="extracted" data-fa-gloss="">
+Restore the AST from its cache branch and judge it [ig-ast-delta] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><code>ig-cache.sh restore --ig-root .</code> fetches <code>cat/fhir-harness/fhir-ast/&lt;package id&gt;</code> into <code>output-ast/</code> (with the Publisher's <code>txcache/</code>), then <code>ig-cache.sh verify</code> runs <code>ig-ast.ts validity</code>: exit 0 valid, 1 stale-inputs (naming which input), 2 cannot-tell. A restore that finds no branch is a miss, judged as not valid. In an IG repository's site route this is the first <code>pre</code> step, <code>ig-site:ast</code> (<code>ig-repo-site.ts ast</code>).</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/ig-ast-cache.bpmn"><code>fhir-harness/processes/content/ig-ast-cache.bpmn#Task_Restore</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_docssite.task_restore" data-fa-state="extracted" data-fa-gloss="">
 Restore the OPEN PRs' staging previews <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -4356,12 +4860,40 @@ Return for correction with annotations <span class="fa-gloss-status">candidate, 
 <p>The reviewer annotates specific passages that need correction and returns to the translator with detailed feedback. Each annotation includes: - The passage in question - What is wrong (terminology, meaning, style) - The suggested correction or reference</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/library/human-translation-workflow.bpmn"><code>cat-harness/processes/library/human-translation-workflow.bpmn#Task_ReturnForCorrection</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_preparerelease" data-fa-state="extracted" data-fa-gloss="">
+Review changes and determine version number <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_PrepareRelease</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_adjl2" data-fa-state="extracted" data-fa-gloss="">
+Review each L2 asset (before / after if adapted) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>One review item per created or changed asset, shown as its reviewer reads it (diagram, table, data-dictionary rows); each form's wireframe candidates are reviewed blind and one is chosen (Process_Adjudication, Process_OptionsAnalysis); an adapted asset as a diff against its pinned upstream. For each L2 component this is the review that forks inside its own edit-and-review subprocess (l2-component-edit-review.bpmn, called by every l2-dak-authoring.bpmn track), with the renderer, checker and reviewing role that skill tables.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_AdjL2</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_sgendtoend.task_adjl3" data-fa-state="extracted" data-fa-gloss="">
+Review each L3 asset (before / after if adapted) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>One review item per created or changed resource: differential, each Questionnaire against the L2 wireframe it was derived from (field to item: fhir-harness fhir-questionnaire-wireframe, whose check is check-wireframe-questionnaire), CQL beside its DMN rule with test results, terminology expansions.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/smart-guideline-end-to-end.bpmn"><code>smart-base/processes/content/smart-guideline-end-to-end.bpmn#Task_AdjL3</code></a></p>
+</dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_contentchangereview.call_reviewslices" data-fa-state="extracted" data-fa-gloss="">
 Review each slice [review-task] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p>review-task.bpmn, once per slice, in parallel lanes by role. What kind of thing changed decides which review the slice descends into; the reviewer takes on that inner lane's role for the call only. Each reviewer gives the slice's blocks a verdict, and comments on the pull request with the <code>block:</code> tag where something needs saying.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/content-change-review.bpmn"><code>folio-assistant-core/processes/content/content-change-review.bpmn#Call_ReviewSlices</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_reviewqa" data-fa-state="extracted" data-fa-gloss="">
+Review IG Publisher QA report (qa.html) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_ReviewQA</code></a></p>
 </dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_contentchangereview.task_reviewimpact" data-fa-state="extracted" data-fa-gloss="">
 Review impact assessment <span class="fa-gloss-status">candidate, extracted</span>
@@ -4377,11 +4909,32 @@ Review increment (test behaviour) <span class="fa-gloss-status">candidate, extra
 <p>Inner loop: the BA tests each delivered increment against the acceptance criteria. They do not review code — they test behaviour.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-deliver.bpmn"><code>cat-harness/processes/process/crdm-deliver.bpmn#BA_ReviewIncrement</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_reviewchecklistl1l2" data-fa-state="extracted" data-fa-gloss="">
+Review L1 and L2 checklist items <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_ReviewChecklistL1L2</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_reviewl1" data-fa-state="extracted" data-fa-gloss="">
+Review L1 source documents for current sprint scope <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_ReviewL1</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_reviewchecklistl3l4" data-fa-state="extracted" data-fa-gloss="">
+Review L3 and L4 checklist items <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_ReviewChecklistL3L4</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_crdm_requirements.ba_reviewreqs" data-fa-state="extracted" data-fa-gloss="">
 Review requirements and impact analysis <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>The BA reviews the formal requirements and the impact analysis the agent produced.</p>
+<p>The BA reviews the formal requirements and the impact analysis the agent produced. When a requirement changes a rendered surface, the BA (or the requester) also reviews the wireframe candidates, web and mobile, shown wherever the requester will look (the conversation, the issue, the pull request, or several) with staging deep links and screenshots, and chooses one before implementation starts. The agent records the choice; it never makes it.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements-definition.bpmn"><code>cat-harness/processes/process/crdm-requirements-definition.bpmn#BA_ReviewReqs</code></a></p>
 </dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_contentchangereview.task_reviewstaging" data-fa-state="extracted" data-fa-gloss="">
@@ -4397,6 +4950,13 @@ Review synthesised needs statement <span class="fa-gloss-status">candidate, extr
 <dd>
 <p>The BA reviews what the agent synthesised and checks it against what they actually need.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-needs.bpmn"><code>cat-harness/processes/process/crdm-needs.bpmn#BA_ReviewNeeds</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_reviewtermbindings" data-fa-state="extracted" data-fa-gloss="">
+Review terminology bindings and code systems <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_ReviewTermBindings</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_methodologyfromsource.o_review" data-fa-state="extracted" data-fa-gloss="">
 Review the adoption <span class="fa-gloss-status">candidate, extracted</span>
@@ -4461,6 +5021,20 @@ Review the schema definition node <span class="fa-gloss-status">candidate, extra
 <p>Does the node declare what KIND of node it is? Does a widened type carry its mirrors? Does a removed field leave a reason behind, so the next author does not re-add it in good faith? And where the node RENDERS to something the site serves — a colour, a glyph, a theme's tokens — does a Tool maintain that artefact, and does the visual fact have only one home? The node decides; the stylesheet reports.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/review-code.bpmn"><code>cat-harness/processes/kg/review-code.bpmn#Task_ReviewSchema</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_l2componenteditreview.call_review" data-fa-state="extracted" data-fa-gloss="">
+Review the staged component [content-review] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>cat-harness's generic review, not a copy of it: classify what changed, review it, and record the decision as a qa-review/v1 QaReview whose subject is the component and whose Decision carries the reviewing role. The reviewer reads the staged page and the before/after; for a figure or table, the visual-diff picture and its changed-pixel count; for a form, the wireframe (wireframe-design-review; at L3 its Questionnaire follows fhir-questionnaire-wireframe). What to judge per component is the skill l2-component-edit-review's column &quot;the reviewer judges&quot;.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/l2-component-edit-review.bpmn"><code>smart-base/processes/content/l2-component-edit-review.bpmn#Call_Review</code></a></p>
+</dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_questionnairewireframereview.task_reviewstaged" data-fa-state="extracted" data-fa-gloss="">
+Review the staged form and wireframe <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>At the deep links. A change is requested through ✍ suggest in its Questionnaire mode, or the questionnaire-change issue form, and says which side was edited: the Questionnaire or the wireframe.</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn"><code>fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Task_ReviewStaged</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_codereview.task_reviewtool" data-fa-state="extracted" data-fa-gloss="">
 Review the Tool node <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -4474,6 +5048,13 @@ Review the translation <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>Coverage, preserved terms and echoes are mechanical. A semantic round trip needs a back-translator that has not seen the original; where none has run, the criterion carries no verdict and that is the honest state.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/content/review-narrative.bpmn"><code>cat-harness/processes/content/review-narrative.bpmn#Task_ReviewTranslation</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_reviewtranslatedcontent" data-fa-state="extracted" data-fa-gloss="">
+Review translated content for completeness <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_ReviewTranslatedContent</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_humantranslation.task_smereview" data-fa-state="extracted" data-fa-gloss="">
 Review translation for accuracy <span class="fa-gloss-status">candidate, extracted</span>
@@ -4545,6 +5126,20 @@ Run every verifier over the export <span class="fa-gloss-status">candidate, extr
 <p>Run the verifier set (scripts/publish-verify.ts, <code>bun run cat publish:verify -- --dir &lt;site&gt;</code>) over the built tree. A SET: each verifier is one entry, and adding one changes nothing else. The first is JSON-LD expansion under a real processor, network refused — a property the context does not declare, a relative IRI or a context that will not load is a finding. Only documents of OURS are verified; third-party data in the tree is counted and cannot block.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/publish-verification.bpmn"><code>cat-harness/processes/sdlc/publish-verification.bpmn#A_Verify</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_finalbuild" data-fa-state="extracted" data-fa-gloss="">
+Run final IG Publisher build and verify <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_FinalBuild</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_runbuild" data-fa-state="extracted" data-fa-gloss="">
+Run IG Publisher build <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_RunBuild</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_crdm_signoff.a_recordkg" data-fa-state="extracted" data-fa-gloss="">
 Run placement, and raise a bean for the authoring <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -4558,6 +5153,13 @@ Run publication QA gates [content-test] <span class="fa-gloss-status">candidate,
 <dd>
 <p>Publication-readiness QA across layers — QC reports, IG Publisher QA, proof status, broken links, build warnings.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/draft-to-publication.bpmn"><code>folio-assistant-core/processes/content/draft-to-publication.bpmn#Task_PublicationQa</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_l2componenteditreview.task_check" data-fa-state="extracted" data-fa-gloss="">
+Run the component's checker [content-validate · content-test] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The mechanical checks for this component, before anyone is asked (skill l2-component-edit-review, column &quot;checker&quot;): BPMN imports in bpmn-js with no warnings and its lanes map to personas (dak-swimlanes.ts); DMN loads, its decisions are reachable (artefact-reachability, audit:reachability) and its test cases run (content-test); the data dictionary's ids are unique and its references and terminology bindings resolve (check-dak-annexes.ts); personas, scenarios and requirements each trace to an L1 recommendation (recommendation-extraction's implementedBy edges). Findings travel with the review request; a failing check does not stop the hand-on, it is a finding the reviewer sees.</p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/l2-component-edit-review.bpmn"><code>smart-base/processes/content/l2-component-edit-review.bpmn#Task_Check</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_mergetrain.call_gates" data-fa-state="extracted" data-fa-gloss="">
 Run the gate set on the train [code-quality-gates] <span class="fa-gloss-status">candidate, extracted</span>
@@ -4658,7 +5260,7 @@ Say where it will be <span class="fa-gloss-status">candidate, extracted</span>
 Scaffold the folio (folio_init) <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>content/, uploads/, library/, the first manifests, &lt;slug&gt;.json and &lt;slug&gt;.config.json, the builder shim, AGENTS.md with its stubs, .mcp.json, the session-start hook and the beans store. Refuses rather than overwrites when a folio is already present.</p>
+<p>content/, uploads/, library/, the first manifests, &lt;slug&gt;.json and index.config.json (the instance's config inline in its entry; no &lt;slug&gt;.config.json, bean ymvt), the builder shim, AGENTS.md with its stubs, .mcp.json, the session-start hook and the beans store. Refuses rather than overwrites when a folio is already present.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/conduct/getting-started.bpmn"><code>folio-assistant-core/processes/conduct/getting-started.bpmn#Task_Scaffold</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_crdm_issue.a_scanissues" data-fa-state="extracted" data-fa-gloss="">
@@ -4738,6 +5340,13 @@ Scrap with reasons NEVER delete <span class="fa-gloss-status">candidate, extract
 <p><code>status: scrapped</code>, plus a &quot;Reasons for Scrapping&quot; section. This is what &quot;disable&quot; means here — the CLI has no disabled state; its vocabulary is draft, todo, in-progress, completed, scrapped. DELETION IS NEVER THE ANSWER, even though <code>beans delete</code> exists. A scrapped bean records that the work was considered and rejected, and why; a deleted one leaves a sibling session unable to tell abandonment from accident, and leaves the next agent free to re-open the same dead end.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/bean-lifecycle.bpmn"><code>cat-harness/processes/sdlc/bean-lifecycle.bpmn#Task_Scrap</code></a></p>
 </dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_questionnairewireframereview.task_screens" data-fa-state="extracted" data-fa-gloss="">
+Screenshots, web and mobile [wireframe-check] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>cat-harness Tool wireframe-check: 1280×800 and 390×844; renders, no-overflow and no-placeholder, each a script entry. A rendering missing either viewport does not enter review.</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn"><code>fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Task_Screens</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_relatedwork.a_searchbeans" data-fa-state="extracted" data-fa-gloss="">
 Search beans for relevance <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -4779,6 +5388,13 @@ Secure the agent's permissions <span class="fa-gloss-status">candidate, extracte
 <dd>
 <p>Once the actor is known and the record is open, check that the coding agent acting here holds the permissions this instance's processes need, granted by a person and recorded, and ask for any that are missing. This is where initiating the harness for an actor secures them, rather than the first denied command. A run that finds them current returns without asking anything; the same process is called on demand when an action is denied later in the session. Vendor-neutral: the agent is a Tool, and its config is written through that Tool's adapter. Skill: agent-permissions.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/session-state-machine.bpmn"><code>cat-harness/processes/process/session-state-machine.bpmn#Call_SecurePermissions</code></a></p>
+</dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_igastcache.task_seed" data-fa-state="extracted" data-fa-gloss="">
+Seed the cache branch (ig-cache seed --push) [compiled-artefact-cache] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><code>ig-cache.sh seed --ig-root . --push</code>: one commit holding the AST, the Publisher's expansions and <code>txcache/</code>, its subject recording the package, counts, Publisher version and source commit. Refused when the candidate is under 90% of the incumbent's resources or edges (the no-shrink gate).</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/ig-ast-cache.bpmn"><code>fhir-harness/processes/content/ig-ast-cache.bpmn#Task_Seed</code></a></p>
 </dd>
 <dt id="fhir-harness--kg-bpmn-activities--process_igincremental.task_seed" data-fa-state="extracted" data-fa-gloss="">
 Seed the cache from the green build (ig-cache seed · verify · promote) <span class="fa-gloss-status">candidate, extracted</span>
@@ -4828,6 +5444,13 @@ Serialize to JSON-LD <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>kg-export, already built and host-agnostic by design. Every edge term declared &#123;&quot;@type&quot;: &quot;@id&quot;} — without that coercion the document is a list of records that merely LOOKS linked, and the node IRIs are fragments of the document's own @id so the graph is mergeable with anyone else's.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/kg-to-portal.bpmn"><code>cat-harness/processes/kg/kg-to-portal.bpmn#A_Serialize</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_setupig" data-fa-state="extracted" data-fa-gloss="">
+Set up IG repository from template <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_SetupIG</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_crdm_deliver.ba_sharemvp" data-fa-state="extracted" data-fa-gloss="">
 Share MVP with stakeholders <span class="fa-gloss-status">candidate, extracted</span>
@@ -4955,11 +5578,18 @@ Stage the rendering <span class="fa-gloss-status">candidate, extracted</span>
 <p>site.ts --root &lt;instance&gt; --out &lt;dir&gt; [--subgraph &lt;id&gt;]…: every JSON Schema and JSON-LD document at the IRI it names, the files as they sit, the README page as README.md (served as README.html), and index.html as a redirect to it — the default landing page, which an index.html or index.md at the instance root replaces. Generated pages carry the generated-by notice at their top, and a footer that links their generator and source, never an edit page.</p>
 <p class="fa-gloss-meta">BPMN activities of bootstrap-tools · source <a href="https://github.com/litlfred/bootstrap-tools/blob/main/processes/render-kg-to-github-pages.bpmn"><code>bootstrap-tools/processes/render-kg-to-github-pages.bpmn#A_Stage</code></a></p>
 </dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_questionnairewireframereview.task_stage" data-fa-state="extracted" data-fa-gloss="">
+Stage the renderings [feature-staging] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The branch's wireframes and form pages published under STAGING/&lt;slug&gt;/ by feature-staging.</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn"><code>fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Task_Stage</code></a></p>
+</dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_gettingstarted.task_pagesbootstrap" data-fa-state="extracted" data-fa-gloss="">
 Start the Pages build and derive the URL <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>scripts/pages-bootstrap.ts: check the gh-pages branch first (absent is <code>unprovisioned</code>), derive the site URL from the git remote or &lt;name&gt;.config.json, report whether a publish workflow exists and the Pages source it needs, and optionally probe until the site answers.</p>
+<p>scripts/pages-bootstrap.ts: check the gh-pages branch first (absent is <code>unprovisioned</code>), derive the site URL from the git remote or the instance's config (its index.config.json entry), report whether a publish workflow exists and the Pages source it needs, and optionally probe until the site answers.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/conduct/getting-started.bpmn"><code>folio-assistant-core/processes/conduct/getting-started.bpmn#Task_PagesBootstrap</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_kgtoportal.d_constraints" data-fa-state="extracted" data-fa-gloss="">
@@ -4990,6 +5620,13 @@ Stream W3C N-Quads into Subgraph Partitions <span class="fa-gloss-status">candid
 <p>Serialize lines conforming to W3C RDF 1.1 N-Quads (subject predicate object graphIri .). Split into Tier 1 Spine (routing backbone) and Tier 2 Subgraphs (communities, domains). Compress each into .nq.gz.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/nquads-distribution.bpmn"><code>cat-harness/processes/kg/nquads-distribution.bpmn#A_PartitionQuads</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_draftdakcomponents" data-fa-state="extracted" data-fa-gloss="">
+Streamline and cross-check all DAK components <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_DraftDAKComponents</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_humantranslation.task_submitpo" data-fa-state="extracted" data-fa-gloss="">
 Submit completed .po file <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -5003,6 +5640,13 @@ Submit to review committee <span class="fa-gloss-status">candidate, extracted</s
 <dd>
 <p>Author submits the PR for formal review by the guidance review committee. The STAGING URL is the review surface.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/content-change-review.bpmn"><code>folio-assistant-core/processes/content/content-change-review.bpmn#Task_SubmitForReview</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_completetranslation" data-fa-state="extracted" data-fa-gloss="">
+Submit translations for review <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_CompleteTranslation</code></a></p>
 </dd>
 <dt id="fhir-harness--kg-bpmn-activities--process_l3fhir.task_sushi" data-fa-state="extracted" data-fa-gloss="">
 SUSHI compile → FHIR JSON [l3-fhir-authoring] <span class="fa-gloss-status">candidate, extracted</span>
@@ -5068,8 +5712,15 @@ Take the next PR in queue order <span class="fa-gloss-status">candidate, extract
 Terminology bindings [terminology-management] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>ICD-11, SNOMED CT, LOINC bindings — governed separately from the artifacts that cite them.</p>
+<p>ICD-11, SNOMED CT, LOINC bindings — governed separately from the artifacts that cite them. Calls Process_L2ComponentEditReview with the terminology inputs of the skill l2-component-edit-review (checker: bindings resolve and unmappedConcepts is reported; renderer: the term diff on the code columns; reviewer: a terminologist other than the one who bound it).</p>
 <p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/l2-dak-authoring.bpmn"><code>smart-base/processes/content/l2-dak-authoring.bpmn#Task_Terminology</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_testfunctionality" data-fa-state="extracted" data-fa-gloss="">
+Test L3 functionality (StructureMaps, CQL, Measures) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_TestFunctionality</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_crdm_deliver.s_testmvp" data-fa-state="extracted" data-fa-gloss="">
 Test MVP in own context <span class="fa-gloss-status">candidate, extracted</span>
@@ -5106,6 +5757,13 @@ Translate feedback into agent direction <span class="fa-gloss-status">candidate,
 <p>The BA translates stakeholder findings into actionable direction: new beans or bean updates for the agent.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-deliver.bpmn"><code>cat-harness/processes/process/crdm-deliver.bpmn#BA_TranslateFeedback</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_translatecontent" data-fa-state="extracted" data-fa-gloss="">
+Translate narrative and resource metadata <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_TranslateContent</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_humantranslation.task_translateintool" data-fa-state="extracted" data-fa-gloss="">
 Translate strings in preferred tool <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -5119,6 +5777,13 @@ Triage published feedback [content-feedback] <span class="fa-gloss-status">candi
 <dd>
 <p>Implementer and reader feedback on the published folio, triaged by severity and scope.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/content-lifecycle.bpmn"><code>folio-assistant-core/processes/content/content-lifecycle.bpmn#Task_Feedback</code></a></p>
+</dd>
+<dt id="fhir-harness--kg-bpmn-activities--process_questionnairewireframereview.task_triage" data-fa-state="extracted" data-fa-gloss="">
+Triage the change request [content-feedback] <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>content-feedback triages the issue; when a review round is open it joins a change-set through public-comment instead.</p>
+<p class="fa-gloss-meta">BPMN activities of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn"><code>fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Task_Triage</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_publishalert.u_triage" data-fa-state="extracted" data-fa-gloss="">
 Triage the failure: hold or fix forward <span class="fa-gloss-status">candidate, extracted</span>
@@ -5145,6 +5810,13 @@ TypeScript: lint, types and tests (HARD) <span class="fa-gloss-status">candidate
 
 <h2 id="letter-U">U</h2>
 <dl class="fa-gloss">
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_updateigstatus" data-fa-state="extracted" data-fa-gloss="">
+Update IG status to active, set version, date <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_UpdateIGStatus</code></a></p>
+</dd>
 <dt id="cat-harness--kg-bpmn-activities--process_mountsubgraph.task_usecheckoutpath" data-fa-state="extracted" data-fa-gloss="">
 Use the checkout path in place <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -5170,6 +5842,20 @@ Validate Arguments against Parameter Schema <span class="fa-gloss-status">candid
 <p>Look up query definition by queryId in distribution manifest. Validate supplied arguments against parameter types, required fields, and pattern constraints.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/named-query-execution.bpmn"><code>cat-harness/processes/kg/named-query-execution.bpmn#A_ValidateParams</code></a></p>
 </dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_validateconformance" data-fa-state="extracted" data-fa-gloss="">
+Validate artifact conformance (CRMI profiles) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_ValidateConformance</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_validateclinical" data-fa-state="extracted" data-fa-gloss="">
+Validate DAK components against L1 recommendations <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_ValidateClinical</code></a></p>
+</dd>
 <dt id="fhir-harness--kg-bpmn-activities--process_igincremental.task_validate" data-fa-state="extracted" data-fa-gloss="">
 Validate the cone (fhir_validate) [fhir-validation] <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -5190,6 +5876,20 @@ Verify authority against the observatory / registry API <span class="fa-gloss-st
 <dd>
 <p>Each candidate is resolved against the standard API of the body that publishes it, so that 'authoritative' is a RESOLVED FACT rather than an assertion in the citation. What is checked: that the identifier resolves at the publisher; that the retrieved record matches what the citation claims; that the version and date are the ones cited; and that the publisher is one this folio has declared trusted. STRAWPERSON: the concrete registry list and endpoints are not settled here -- see the cat-harness.processes:policy note.</p>
 <p class="fa-gloss-meta">BPMN activities of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/processes/content/evidence-retrieval.bpmn"><code>folio-assistant-core/processes/content/evidence-retrieval.bpmn#Task_VerifyAuthority</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_verifyautomation" data-fa-state="extracted" data-fa-gloss="">
+Verify automated publication workflow succeeded <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_VerifyAutomation</code></a></p>
+</dd>
+<dt id="smart-base--kg-bpmn-activities--process_planning.task_verifyl2input" data-fa-state="extracted" data-fa-gloss="">
+Verify L2 input availability and consistency <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><em>The asset carries no description.</em></p>
+<p class="fa-gloss-meta">BPMN activities of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn"><code>smart-base/processes/content/SGAuthoring.DAKLifecycle.bpmn#Task_VerifyL2Input</code></a></p>
 </dd>
 <dt id="cat-harness--kg-bpmn-activities--process_nquadsdistribution.a_verifyqueries" data-fa-state="extracted" data-fa-gloss="">
 Verify Queries via CLI &amp; Test Graph Availability <span class="fa-gloss-status">candidate, extracted</span>
@@ -5250,6 +5950,13 @@ Wire it: gate, deploy line, search, tests <span class="fa-gloss-status">candidat
 <dd>
 <p>Give the slice everything a slice owes: its manifest (written by the builder from the definition), its <code>--check</code> (covered by <code>slice:sqlite:check</code>), one deploy line in <code>docs-site.yml</code> and in <code>feature-staging.yml</code>, its search (the generic page needs no code, only the definition's <code>search</code> block), a unit test over a fixture and over the real source, and a search in <code>slice-sqlite.e2e.ts</code>.</p>
 <p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/slice-sqlite-publish.bpmn"><code>cat-harness/processes/kg/slice-sqlite-publish.bpmn#A_Wire</code></a></p>
+</dd>
+<dt id="cat-harness--kg-bpmn-activities--process_crdm_requirements.call_wireframe" data-fa-state="extracted" data-fa-gloss="">
+Wireframe candidates (web + mobile) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Design use of wireframe-design-review, before implementation: a written design intent, at least two mid-fidelity candidates each with a web and a mobile layout, the mechanical checks, and a blind review. The candidates are committed as assets of the request's proposal, under docs/proposals/&lt;slug&gt;/wireframes/ beside docs/proposals/&lt;slug&gt;.md, on the feature branch so feature-staging publishes them, and shown where the requester will look, chosen from context — the conversation, the issue the request came from, the pull request, or several of these — each place carrying the same staging deep links and screenshots (staging-review, the deep-link rule, point 5: where it goes is a judgement). The requester or BA is the human reviewer and chooses one at BA_ReviewReqs. The owner asked for this on 2026-09-23 (methodologies/wiregen.md): a wireframe is part of the design process for adjudication. The candidates ARE the options A_CompareOptions lays out, so this merges into it rather than producing a second comparison.</p>
+<p class="fa-gloss-meta">BPMN activities of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements-definition.bpmn"><code>cat-harness/processes/process/crdm-requirements-definition.bpmn#Call_Wireframe</code></a></p>
 </dd>
 <dt id="folio-assistant-core--kg-bpmn-activities--process_contentchangereview.task_withdrawcomment" data-fa-state="extracted" data-fa-gloss="">
 Withdraw a review comment [folio-review-comment-move] <span class="fa-gloss-status">candidate, extracted</span>

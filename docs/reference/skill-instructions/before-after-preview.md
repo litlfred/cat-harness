@@ -410,4 +410,5 @@ merges. Merging still needs the explicit confirmation the processes require.
 | [Code change and review](../../en/cat-harness/processes/code-change-review.html) | Commit, push, open the PR |
 | [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Commit, push, update PR; Iterate on author feedback |
 | [Editing and HCI validation](../../en/cat-harness/processes/editing-hci-validation.html) | Draft the block edit; Revise the proposed change |
+| [L2 component edit and review](../../en/cat-harness/processes/l2-component-edit-review.html) | Render, stage, before/after [before-after-preview · feature-staging] |
 

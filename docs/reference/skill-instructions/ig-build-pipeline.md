@@ -48,6 +48,172 @@ layer. Do not restate the list here — two copies of an emission list is two
 copies free to drift, and the emission list is exactly the thing a new Publisher
 release changes.
 
+## What the site build emits: thin pages, by default
+
+Since 2026-10-12 (owner: *"make thin default"*) the Jekyll phase emits THIN
+pages: each artefact page and the IG's `artifacts.html` and `toc.html` are a
+few KB that load their content from JSON-LD nodes (`artifact/<Type>-<id>.jsonld`
+and `artifact/index.jsonld`). Each artefact's tab views (definitions,
+mappings, JSON and examples) are thin pages beside it, drawn from the
+resource's JSON (owner, 2026-10-14: *"3. Render them too"*). The IG's
+narrative pages keep their prose
+with every piece of chrome linked rather than inlined. The old full pages stay
+reachable with `--full-pages` on both `gen-ig-pages.ts` and `stage-ig-sites.ts`.
+An IG that pins this layer by SHA changes nothing until it re-pins, and gets
+the thin pages when it does. What each page holds, and the QA over the nodes,
+is [`ig-render-jekyll`](ig-render-jekyll.md) §"Thin pages, the default".
+
+## The AST cache lifecycle: an IG site is built from the AST
+
+Owner, 2026-10-14: *"i want AST to be used. it should be in cache branch.
+update processes/skills"*, and *"that should be in fhir-harness then smart-*
+all use that"*. The process is
+[`ig-ast-cache.bpmn`](../../en/cat-harness/processes/ig-ast-cache.html).
+
+Terms:
+
+- **AST**: the per-resource dump the IG Publisher AST exporter writes
+  (`output-ast/`; formats in [`ig-ast-delta`](ig-ast-delta.md)).
+- **Cache branch**: `cat/fhir-harness/fhir-ast/<package id>` on the IG's own
+  repository, one orphan commit holding the AST, the Publisher's
+  `expansions.json` and its `txcache/`. `<package id>` is `sushi-config.yaml`'s
+  `id`.
+- **Valid**: `ig-ast.ts validity` says the AST was built from the inputs the
+  commit being published has (Publisher version, `sushi-config.yaml`,
+  `ig.ini`, `input/`).
+
+**The rule.**
+
+1. **An IG repository's site is built from the AST on its cache branch.** The
+   site is never built from the Publisher's HTML, and the publish runs no
+   Publisher. Its first step restores the cache and judges it: `ig-site:ast`
+   (`ig-repo-site.ts ast`), which runs `ig-cache.sh restore --ig-root .` and
+   then `validity`, as `ig-cache.sh verify` does. See §"The IG repository's
+   site route" for the steps that follow it.
+2. **The publish refuses an AST that is not valid**: `stale-inputs`,
+   `cannot-tell`, or no cache at all. It does not fall back to a Publisher
+   build or to the Publisher's HTML. `ig-site:ast` accepts a stale AST with
+   `SITE_ACCEPT_STALE_AST=1` for a preview only; on the root it still refuses.
+3. **A commit that changes no input does not make the AST stale.** If the
+   recorded commit is an ancestor of HEAD and the input digest is unchanged,
+   the AST is still valid (`sameSourceAs` in `ig-ast.ts`), so a README or
+   workflow merge needs no rebuild. A checkout that cannot see the recorded
+   commit (a shallow clone) reads as stale. It never reads as valid.
+4. **Only a Publisher run refreshes the cache, and it runs on a GitHub runner.**
+   It needs Java, a 10 GB heap and `tx.fhir.org`, which an agent's container
+   lacks. Whenever the IG's source changes, someone has to run it.
+
+**Who writes the cache: one workflow, here.**
+[`.github/workflows/ig-ast-refresh.yml`](https://github.com/litlfred/folio-assistant/blob/main/fhir-harness/.github/workflows/ig-ast-refresh.yml)
+(`workflow_call`) is the only writer. The IG repository's `site-publish.yml`
+(the [template](https://github.com/litlfred/folio-assistant/blob/main/fhir-harness/templates/ig-repo-site/site-publish.yml)) calls it as its
+first job, `ast`, so a publish refreshes the cache before it builds: a no-op
+when the cache is valid for the commit. No IG repository carries a workflow of
+its own for it (owner, 2026-10-14: "this all should be a part of fhir-harness
+via smart-base"). A repository whose owner wants the cache refreshed on every
+push to its IG sources may add the optional caller
+[`templates/ig-repo-site/ig-ast-refresh.yml`](https://github.com/litlfred/folio-assistant/blob/main/fhir-harness/templates/ig-repo-site/ig-ast-refresh.yml). One run:
+
+1. mounts the layers the IG repository's `index.lock.json` pins;
+2. restores and judges the cache for `ref` (default `main`);
+3. if the cache is not valid, or `force` is set, runs the caller's
+   `pre-export` command when it gives one, then builds the IG with
+   `AstExportCli` (Tool `ig-ast-export`, pinned `ast-export-ref`);
+4. puts back what `pre-export` changed in the inputs, and checks that the new
+   AST is valid for its own commit;
+5. seeds the cache with `ig-cache.sh seed --push`, only when the commit is on
+   the default branch with the tip's inputs. Otherwise the AST is uploaded as
+   a run artefact.
+
+Seeding is refused below 90% of the incumbent's resources or edges (the
+no-shrink gate in `compiled-artefact-cache`). The run builds no site, writes
+no gh-pages and dispatches nothing. The Tool node is `ig-ast-refresh`.
+
+**An overlay's preparation: `pre-export`.** Some IGs prepare their inputs
+before the Publisher runs: an overlay registers pages in `sushi-config.yaml`
+or generates resources from other sources. The plain exporter does not do
+this, so the caller passes the command as the optional `pre-export` input,
+written in its own workflow file. This layer runs it with `bash` at the IG root
+and knows nothing about what it does: the overlay names its own steps, and
+this skill does not list them.
+
+The exporter records the digest of the tree it is given, and a prepared tree
+is one no clean checkout has. So the run takes the source's digest
+(`ig-ast.ts digest`) before the command runs. After the export it puts the
+inputs back, checks the digest again, and writes the source's digest into the
+manifest's `inputs` with `ig-ast.ts source-inputs`. The prepared tree's
+digest and the command are kept under `preExport`. The cache then verifies
+on any clean checkout, the way an AST built without `pre-export` does. A
+failing `pre-export` fails the run, so nothing is seeded.
+
+**When it runs.** The run is dispatched by a person, or by an agent the owner
+named for that run. An agent never dispatches it on its own (`feature-staging`
+§"Agent-run repositories"). Adding a `push` trigger on the default branch,
+filtered to `sushi-config.yaml`, `ig.ini` and `input/**`, is the owner's
+decision for each repository.
+
+**Measured 2026-10-14**, cache branch against `main`. None of the three
+caches was built from a commit on `main`; each came from a side branch, so all
+three are stale by revision even under point 3:
+
+| repository | cache built from | `main` | input files that differ |
+|---|---|---|---|
+| smart-trust | `dab31ed` (Publisher 2.3.4), 678 resources | `0dae5c4` | 3 |
+| smart-immunizations | `6004ec5` (Publisher 3.0.0), 748 resources | `91f7cdb` | 0 |
+| smart-base | `b1e00c5` (Publisher 2.3.4), 162 resources | `a710c5d` | 51 |
+
+Until 2026-10-14 nothing refreshed these branches when the source changed.
+Each was seeded once, on 2026-10-12, by hand or by smart-trust's
+`folio-site.yml` on its branch `claude/seed-smart-base`. That workflow built
+from its own branch, and the same run also published gh-pages.
+
+What is WHO-specific stays in the overlay: the DAK sidecars and their label
+are the landing layer's `ig-site:sidecars` step (smart-base's), never this
+layer's and never the IG repository's own declaration. Restoring, judging,
+building and seeding are here.
+
+## The IG repository's site route: the layers supply the steps
+
+Owner, 2026-10-14, on an IG repository that lost its OpenAPI pages, its DAK
+API sidecars and its artefact index when it dropped its own declaration:
+*"that should already be there in smart-base (dak api) and cat-harness or so
+for openapi"*. So an IG repository declares no `site.build`. It holds
+`index.config.json` with `"site": {"landing": "<layer>"}`, and the site route
+(`stage-local.ts`, cat-harness-tools) asks the mounted layers' script table
+for these step names, never naming a layer:
+
+| slot | when | provided by | what |
+|---|---|---|---|
+| `ig-site:ast` | pre, required | this layer | restore the AST from the cache branch and judge it (rule 1 and 2) |
+| `ig-site:sidecars` | pre, optional | the landing layer | the IG API sidecars from the AST, into `$SITE_WORK/ig-api/` |
+| `ig-site:compose` | source, required | this layer | the artefact index from the AST, the thin pages, the IG composed at the root |
+| `ig-site:openapi` | site, when the IG holds `openapi/cat-openapi.config.json` | cat-harness-tools | a page and an IRI for each OpenAPI operation, at `openapi/` |
+| `ig-site:publisher-pages` | site, required | this layer | the AST's data served, the Publisher-chrome guard, the build stamp |
+
+**The handshake with a layer above** (`ig-repo-site.ts`): a sidecar step
+leaves its files in `$SITE_WORK/ig-api/sidecars/` and what the IG calls them
+in `$SITE_WORK/ig-api/ig-api.json` (`{ "label": "..." }`). This layer binds
+whatever is there to the artefacts by the Publisher's file names
+(`ast-to-artifact-index.ts --sidecars`), labels the pages with the descriptor's
+label, and serves the files at `fhir-artifact-index/sidecars/`. It knows no
+producer and writes no label down; with nothing there it binds nothing and
+the pages say "IG API". Files the layer above leaves in
+`$SITE_WORK/ig-api/site/` (its own pages over the sidecars, such as an
+OpenAPI page at `openapi/index.html`) are served verbatim at the site root,
+never over a path the site already holds, and the Publisher-chrome guard
+judges them like every other page. The one exception is named by the
+descriptor's `"placeholder"`: a page of the IG's own that holds that marker
+is a shell around the layer's content (an IG's hub page around its marker),
+and the layer's page at the same path replaces it. No other page is replaced.
+
+**What the site serves from the AST**: each resource under `ast-data/` (the
+thin pages' data, `gen-ig-pages --compiled-data ast-data`) and under the
+Publisher's name `<Type>-<id>.json` at the root (the narrative's links), the
+artefact index at `fhir-artifact-index/index.json`, and the AST as
+`site.data` for the IG's own pages. The grouping of the IG's committed
+`fhir-artifact-index/index.json` is kept when it holds one, since the AST
+stops before the Publisher assigns categories.
+
 ## The deploy phase, and the result that surprised me
 
 The WHO build's deploy phase is **ten steps**, read from `ghbuild.yml`:
@@ -157,6 +323,19 @@ who says so; it is no longer what silence means.
 
 Rules that hold whichever option is chosen:
 
+- **Turning a repository's automatic BUILDS off never turns its harness
+  CHECKS off.** The question is about the IG Publisher and gh-pages
+  workflows. The harness checks are a separate workflow: a caller of
+  cat-harness-tools' `layer-pr-checks.yml` on `pull_request`, described in the
+  cat-harness skill
+  [`index-config`](index-config.md)
+  ("A harnessed repository runs its checks on its own pull requests"). It stays
+  on whatever the answer is. On 2026-10-06 the answer "manual only" was
+  applied to every workflow in smart-base, smart-trust and smart-immunizations,
+  so their harness gates went off together with their builds, and nothing
+  judged those repositories until an index re-pinned them (owner, 2026-10-14:
+  "There should be CI running").
+
 - **Never delete gh-pages content as part of this.** The previews already
   published stay. Removing them is a separate question, asked separately, with
   what would go and how big it is, per
@@ -188,22 +367,58 @@ workflow publishes nothing until somebody runs it.
 
 On yes:
 
-1. Copy [`templates/ig-repo-site/folio-site.yml`](https://github.com/litlfred/folio-assistant/blob/main/fhir-harness/templates/ig-repo-site/folio-site.yml)
-   to `.github/workflows/folio-site.yml` and replace its two placeholders, as
-   its header says. The template is `workflow_dispatch` only (#2291). Add a
-   `push` trigger to the copy only if the owner asks for one in so many words.
-2. The repository needs folio-assistant as a submodule at `folio-assistant/`;
-   the template's header says so, and `init-folio --link submodule` does it.
-3. Tell the owner how to run it: **Actions tab → "folio site" → Run
-   workflow**, on the branch to publish. The site lands at the repository's
+1. **The repository needs no harness of its own.** No `<repo>.json`
+   declaration and no `folio-assistant/` submodule. Its `index.config.json`
+   names the layer it builds on as a remote instance, with consent: this
+   layer for a bare IG, or the overlay above it (smart-base, for an IG that
+   wants the DAK surface). `remote-mount.ts --seed` writes the entry and
+   `remote-mount.ts` the `index.lock.json`; the layer's closure comes with
+   it. The owner's ruling, 2026-10-14: *"It can just define
+   index.config.json and reference smart-base as a dependency. This is
+   preferred and expected behavior."*
+   `index.config.json` also says which mounted layer's chrome the site
+   wears: `"site": {"landing": "<that layer>"}` (`smart-base` for a WHO
+   SMART IG). Without it the route refuses rather than guess among the
+   mounted layers.
+2. Keep one workflow that calls the overlay's IG build (`ghbuild.yml` or
+   `fhirbuild.yml` of the layer the IG builds on): it is the recipe the
+   publish mirrors, and it stays `workflow_dispatch` only.
+3. Add `.github/workflows/site-publish.yml` from
+   [`templates/ig-repo-site/site-publish.yml`](https://github.com/litlfred/folio-assistant/blob/main/fhir-harness/templates/ig-repo-site/site-publish.yml),
+   `workflow_dispatch` only. It mounts the locked layers and runs
+   `bun run cat-harness-tools/scripts/stage-local.ts --repo .`, the same
+   command every agent-run repository publishes with: it builds the site
+   from the IG's cached AST, with the steps the mounted layers provide
+   (§"The IG repository's site route"), and publishes `main` at the root
+   (keeping `STAGING/`, `_render-log/` and `branches/`) and any other branch
+   as a preview under `STAGING/<branch>/`. `--plan` prints what it would do
+   and `--dry-run` builds without publishing. `--bare-ig`, which publishes
+   the Publisher's own output, is not how an IG site is built under the
+   2026-10-14 rule, and neither is a Publisher run by the route: it runs
+   none. The route's steps come from the mounted layers (§"The IG
+   repository's site route"); an IG that needs steps of its own beyond them
+   declares `site.build` inline in its `index.config.json` entry, never in a
+   `<instance>.config.json` (bean `ymvt`, owner 2026-10-14: *"i thought ONLY
+   index.config.json"*). The menu is read from `sushi-config.yaml`
+   at build time: nothing is committed for it. The old per-repository
+   `folio-site.yml` needed the `folio-assistant/` submodule, which the layer
+   split (bean `n3h9`) removed; the template above replaces it.
+   The site is built from the IG's AST on its cache branch, never from the
+   Publisher's HTML: the route's first step is `ig-site:ast`, the restore and
+   its judgement (§"The AST cache lifecycle").
+3a. Nothing more for the AST: the template's first job, `ast`, calls this
+   layer's reusable `ig-ast-refresh.yml`, which runs the Publisher on a runner
+   and seeds the cache branch when it is missing or stale for the commit.
+4. Tell the owner how to run it: **Actions tab → "Site publish (by hand)"
+   → Run workflow**, on the branch to publish, with `plan` ticked first. The site lands at the repository's
    own Pages URL, since the template reads the base path from the repository
    name rather than assuming it.
-4. If the IG has sibling sites (other IGs on the same platform) or depends
+5. If the IG has sibling sites (other IGs on the same platform) or depends
    on another IG with its own site, set the two repository **variables** the
    template reads, so no copy is edited per repository:
    `FOLIO_SITE_SIBLINGS` (site URLs) and `FOLIO_SITE_DEPENDENCIES`
    (`owner/repo@ref`). The run then reports each sibling built with a
-   different platform, and re-runs the dependencies' `folio site` after a
+   different platform, and re-runs the dependencies' `Site publish (by hand)` after a
    publish. The re-run needs a `FOLIO_SITE_DISPATCH_TOKEN` secret. Without it
    the run summary says what was not rebuilt, and nothing fails.
 
@@ -233,7 +448,8 @@ quiet.
 ### Process diagram
 
 No BPMN activity covers IG repository adoption yet, so these steps are not
-in a diagram. When one is drawn, steps 2 and 3 are the owner's lane and step
+in a diagram. Publishing the adopted site, and refreshing the AST it is built
+from, is [`ig-ast-cache.bpmn`](../../en/cat-harness/processes/ig-ast-cache.html). When one is drawn, steps 2 and 3 are the owner's lane and step
 1 is the agent's, with step 2's "no change" default as the gateway's default
 flow.
 
@@ -328,3 +544,10 @@ Do not treat an unpinned toolchain as a detail. It makes "the build changed" and
 "the content changed" indistinguishable, which is the same class of defect as an
 unrecorded workflow outcome.
 {% endraw %}
+
+## Processes that run this skill
+
+| process | step(s) that name it |
+|---|---|
+| [An IG site, built from the AST on its cache branch](../../en/cat-harness/processes/ig-ast-cache.html) | Restore the AST from its cache branch and judge it; Build and publish the site from the AST; Dispatch the IG's ig-ast-refresh.yml |
+

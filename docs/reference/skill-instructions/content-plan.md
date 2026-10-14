@@ -47,4 +47,5 @@ Plan content development by defining scope, team, timeline, and sprint cadence.
 | [Content lifecycle](../../en/cat-harness/processes/content-lifecycle.html) | Plan scope, team, artifacts |
 | [Authoring a paper](../../en/cat-harness/processes/authoring-a-paper.html) | 1 · Plan the paper; 3 · Scaffold the folio repo |
 | [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Scope the DAK |
+| [Phase 1: Planning](../../en/cat-harness/processes/SGAuthoring.DAKLifecycle.html) | Define DAK scope, purpose, and target audience; Plan SME consultation schedule and format |
 

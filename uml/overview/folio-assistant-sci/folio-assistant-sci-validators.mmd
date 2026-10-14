@@ -1,0 +1,14 @@
+classDiagram
+  direction TB
+  namespace folio_assistant_sci__folio_assistant_sci_validators {
+    class folio_assistant_sci_folio_assistant_sci_validators_folio_validator_v1_folio_validator_v1["folio-validator/v1"] {
+      <<json: ValidatorNodeSchema>>
+      $schema [1] 'folio-validator/v1'
+      id [1] string
+      validates [1] object
+      schema [1] string
+      pages [0..1] string
+      rationale [0..1] string
+    }
+  }
+  cssClass "folio_assistant_sci_folio_assistant_sci_validators_folio_validator_v1_folio_validator_v1" fa_uml_kind_validators

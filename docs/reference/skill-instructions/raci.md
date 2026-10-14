@@ -123,3 +123,10 @@ rule that permits `perform-task` there (issue #1180).
 performs something, the lane is right and the chart is stale — which is why R
 is read rather than declared, and the sharpest reason this is an overlay.
 {% endraw %}
+
+## Processes that run this skill
+
+| process | step(s) that name it |
+|---|---|
+| [Phase 1: Planning](../../en/cat-harness/processes/SGAuthoring.DAKLifecycle.html) | Form DAK development team and define RASCI matrix |
+

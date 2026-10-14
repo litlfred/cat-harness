@@ -191,6 +191,7 @@ package "cat-harness/schemas" as pkg_cat_harness_schemas <<schemas, cat-harness>
     taskCount [0..1] : integer
     gatewayCount [0..1] : integer
     participantCount [0..1] : integer
+    stagingLinks [0..1] : any
   }
   class "Content Author Input" as cat_harness_schemas_skills_content_author_input_schema_json_Content_Author_Input <<schema: skills/content-author/input.schema.json>> #e9edf3 {
     contentType [1] : document | fhir-ig | lean-proof | bpmn | data-dictionary
@@ -204,6 +205,7 @@ package "cat-harness/schemas" as pkg_cat_harness_schemas <<schemas, cat-harness>
   }
   class "Content Author Output" as cat_harness_schemas_skills_content_author_output_schema_json_Content_Author_Output <<schema: skills/content-author/output.schema.json>> #e9edf3 {
     artifacts [0..*] : Artifact[]
+    stagingLinks [0..1] : any
   }
   class "FeedbackItem" as cat_harness_schemas_skills_content_feedback_input_schema_json_FeedbackItem <<schema: skills/content-feedback/input.schema.json>> #e9edf3 {
     description [1] : string
@@ -215,6 +217,7 @@ package "cat-harness/schemas" as pkg_cat_harness_schemas <<schemas, cat-harness>
     source [1] : github-issues | survey | implementation-report | clinical-review
     publishedVersion [0..1] : string
     feedbackItems [0..*] : FeedbackItem[]
+    stagingLinks [0..1] : any
   }
   class "TriagedItem" as cat_harness_schemas_skills_content_feedback_output_schema_json_TriagedItem <<schema: skills/content-feedback/output.schema.json>> #e9edf3 {
     id [1] : string
@@ -226,6 +229,7 @@ package "cat-harness/schemas" as pkg_cat_harness_schemas <<schemas, cat-harness>
   class "Content Feedback Output" as cat_harness_schemas_skills_content_feedback_output_schema_json_Content_Feedback_Output <<schema: skills/content-feedback/output.schema.json>> #e9edf3 {
     triagedItems [0..*] : TriagedItem[]
     summary [0..1] : object
+    stagingLinks [0..1] : any
   }
   class "Content Plan Input" as cat_harness_schemas_skills_content_plan_input_schema_json_Content_Plan_Input <<schema: skills/content-plan/input.schema.json>> #e9edf3 {
     projectName [1] : string
@@ -236,23 +240,27 @@ package "cat-harness/schemas" as pkg_cat_harness_schemas <<schemas, cat-harness>
   }
   class "Content Plan Output" as cat_harness_schemas_skills_content_plan_output_schema_json_Content_Plan_Output <<schema: skills/content-plan/output.schema.json>> #e9edf3 {
     plan [1] : object
+    stagingLinks [0..1] : any
   }
   class "Content Publish Input" as cat_harness_schemas_skills_content_publish_input_schema_json_Content_Publish_Input <<schema: skills/content-publish/input.schema.json>> #e9edf3 {
     versionIncrement [1] : major | minor | patch
     releaseNotes [0..1] : string
     target [0..1] : github-release | npm | fhir-registry | arxiv
+    stagingLinks [0..1] : any
   }
   class "Content Publish Output" as cat_harness_schemas_skills_content_publish_output_schema_json_Content_Publish_Output <<schema: skills/content-publish/output.schema.json>> #e9edf3 {
     version [1] : string
     status [1] : published | failed
     publishedUrl [0..1] : string
     releaseTag [0..1] : string
+    stagingLinks [0..1] : any
   }
   class "Content Review Input" as cat_harness_schemas_skills_content_review_input_schema_json_Content_Review_Input <<schema: skills/content-review/input.schema.json>> #e9edf3 {
     reviewType [1] : l2-to-l3-gate | l3-to-publish-gate | change-assessment | final-signoff
     contentRef [1] : string
     previousVersion [0..1] : string
     validationReport [0..1] : string
+    stagingLinks [0..1] : any
   }
   class "Finding" as cat_harness_schemas_skills_content_review_output_schema_json_Finding <<schema: skills/content-review/output.schema.json>> #e9edf3 {
     id [1] : string
@@ -277,6 +285,7 @@ package "cat-harness/schemas" as pkg_cat_harness_schemas <<schemas, cat-harness>
     findings [0..*] : Finding[]
     decision [1] : object
     notes [0..*] : Note[]
+    stagingLinks [0..1] : any
   }
   class "Content Test Input" as cat_harness_schemas_skills_content_test_input_schema_json_Content_Test_Input <<schema: skills/content-test/input.schema.json>> #e9edf3 {
     targetPath [1] : string
@@ -294,11 +303,13 @@ package "cat-harness/schemas" as pkg_cat_harness_schemas <<schemas, cat-harness>
     overallStatus [1] : pass | fail
     testResults [0..*] : TestResult[]
     coverage [0..1] : object
+    stagingLinks [0..1] : any
   }
   class "Content Validate Input" as cat_harness_schemas_skills_content_validate_input_schema_json_Content_Validate_Input <<schema: skills/content-validate/input.schema.json>> #e9edf3 {
     targetPath [1] : string
     validationRules [0..*] : string[]
     schemaRefs [0..*] : string[]
+    stagingLinks [0..1] : any
   }
   class "Result" as cat_harness_schemas_skills_content_validate_output_schema_json_Result <<schema: skills/content-validate/output.schema.json>> #e9edf3 {
     rule [1] : string
@@ -309,6 +320,7 @@ package "cat-harness/schemas" as pkg_cat_harness_schemas <<schemas, cat-harness>
   class "Content Validate Output" as cat_harness_schemas_skills_content_validate_output_schema_json_Content_Validate_Output <<schema: skills/content-validate/output.schema.json>> #e9edf3 {
     overallStatus [1] : pass | warnings | errors
     results [0..*] : Result[]
+    stagingLinks [0..1] : any
   }
   class "CRDM Detect Input" as cat_harness_schemas_skills_crdm_detect_input_schema_json_CRDM_Detect_Input <<schema: skills/crdm-detect/input.schema.json>> #e9edf3 {
     text [1] : string
@@ -317,6 +329,7 @@ package "cat-harness/schemas" as pkg_cat_harness_schemas <<schemas, cat-harness>
     fires [1] : boolean
     categories [0..*] : list<direct-capability | workflow-gap | platform-change | cross-cutting | review-surfaced | self-declared-genre>
     excluded [1] : boolean
+    stagingLinks [0..1] : any
   }
   class "InputVariable" as cat_harness_schemas_skills_dmn_authoring_input_schema_json_InputVariable <<schema: skills/dmn-authoring/input.schema.json>> #e9edf3 {
     name [1] : string
@@ -332,6 +345,82 @@ package "cat-harness/schemas" as pkg_cat_harness_schemas <<schemas, cat-harness>
     decisionTableCount [0..1] : integer
     ruleCount [0..1] : integer
     hitPolicy [0..1] : UNIQUE | FIRST | PRIORITY | ANY | COLLECT | RULE ORDER
+    stagingLinks [0..1] : any
+  }
+  class "Staging Review Input" as cat_harness_schemas_skills_staging_review_input_schema_json_Staging_Review_Input <<schema: skills/staging-review/input.schema.json>> #e9edf3 {
+    ask [0..1] : string
+    branch [0..1] : string
+    pr [0..1] : integer
+  }
+  class "Staging Review Output" as cat_harness_schemas_skills_staging_review_output_schema_json_Staging_Review_Output <<schema: skills/staging-review/output.schema.json>> #e9edf3 {
+    narrative [1] : string
+    startHere [0..1] : string<uri>
+    stagingLinks [1] : any
+  }
+  class "Channel" as cat_harness_schemas_skills_wireframe_design_review_input_schema_json_Channel <<schema: skills/wireframe-design-review/input.schema.json>> #e9edf3 {
+    kind [1] : conversation | issue | pull-request
+    url [0..1] : string<uri>
+  }
+  class "Wireframe Design Review Input" as cat_harness_schemas_skills_wireframe_design_review_input_schema_json_Wireframe_Design_Review_Input <<schema: skills/wireframe-design-review/input.schema.json>> #e9edf3 {
+    use [1] : design | as-is
+    topic [1] : string
+    surface [1] : string
+    intent [0..1] : string
+    requirements [0..*] : string[]
+    proposal [0..1] : string
+    humanReviewer [0..1] : string
+    channels [0..*] : Channel[]
+    branch [0..1] : string
+  }
+  class "Candidate" as cat_harness_schemas_skills_wireframe_design_review_output_schema_json_Candidate <<schema: skills/wireframe-design-review/output.schema.json>> #e9edf3 {
+    id [1] : string
+    title [0..1] : string
+    source [1] : string
+    screenshots [1] : object
+    staging [0..1] : object
+    entries [0..*] : any[]
+    outcome [1] : chosen | rejected | pending | as-is
+    reason [0..1] : string
+  }
+  class "Wireframe Design Review Output" as cat_harness_schemas_skills_wireframe_design_review_output_schema_json_Wireframe_Design_Review_Output <<schema: skills/wireframe-design-review/output.schema.json>> #e9edf3 {
+    use [1] : design | as-is
+    topic [1] : string
+    assetDir [1] : string
+    intent [0..1] : string
+    candidates [1..*] : Candidate[]
+    chosen [0..1] : object
+    changedAssets [0..*] : any[]
+    stagingLinks [1] : any
+  }
+  class "Wireframe Viewport Check Input" as cat_harness_schemas_skills_wireframe_viewport_check_input_schema_json_Wireframe_Viewport_Check_Input <<schema: skills/wireframe-viewport-check/input.schema.json>> #e9edf3 {
+    candidates [1..*] : string[]
+    out [0..1] : string
+  }
+  class "Candidate" as cat_harness_schemas_skills_wireframe_viewport_check_output_schema_json_Candidate <<schema: skills/wireframe-viewport-check/output.schema.json>> #e9edf3 {
+    source [1] : string
+    screenshots [1] : object
+    entries [0..*] : any[]
+  }
+  class "Wireframe Viewport Check Output" as cat_harness_schemas_skills_wireframe_viewport_check_output_schema_json_Wireframe_Viewport_Check_Output <<schema: skills/wireframe-viewport-check/output.schema.json>> #e9edf3 {
+    report [1] : string
+    candidates [0..*] : Candidate[]
+    stagingLinks [0..1] : any
+  }
+  class "Page" as cat_harness_schemas_staging_comparison_schema_json_Page <<schema: staging-comparison.schema.json>> #e9edf3 {
+    title [1] : string
+    before [0..1] : string<uri>
+    after [0..1] : string<uri>
+    summary [0..1] : string
+  }
+  class "Staging links" as cat_harness_schemas_staging_comparison_schema_json_Staging_links <<schema: staging-comparison.schema.json>> #e9edf3 {
+    branch [1] : string
+    slug [1] : string
+    branchUrl [1] : string<uri>
+    pr [0..1] : integer
+    mainBaseUrl [1] : string<uri>
+    stagingBaseUrl [1] : string<uri>
+    pages [0..*] : Page[]
+    missing [0..*] : string[]
   }
   class "BlockQaReport" as cat_harness_schemas_block_qa_schema_schema_block_qa_schema_json_BlockQaReport <<schema: block-qa-schema/schema/block-qa.schema.json>> #e9edf3 {
     $schema [1] : 'block-qa/v1'
@@ -884,6 +973,9 @@ package "cat-harness/folio" as pkg_cat_harness_folio <<folio>> {
 package "cat-harness/folio-render" as pkg_cat_harness_folio_render <<cat-harness, code>> {
   note "code: no node schema declared\n(no validator registered: could not determine)" as n_cat_harness_folio_render_code
 }
+package "cat-harness/site-chrome" as pkg_cat_harness_site_chrome <<docs>> {
+  note "docs: no node schema declared\n(no node here carries a $schema family docs names (16 named): could not determine)" as n_cat_harness_site_chrome_docs
+}
 package "cat-harness/docs" as pkg_cat_harness_docs <<docs>> {
   class "Relation" as cat_harness_docs_folio_todo_index_v1_Relation <<json: TodoIndexSchema>> #f4f4f1 {
     axis [1] : string
@@ -992,6 +1084,8 @@ package "cat-harness/docs" as pkg_cat_harness_docs <<docs>> {
     $schema [1] : 'folio-bean-index/v1'
     tile [0..1] : map<object>
     repoWeb [1] : string
+    fileWeb [0..1] : string
+    fileRef [0..1] : string
     items [0..*] : Item[]
     edges [0..*] : Edge[]
     findings [0..*] : Finding[]
@@ -1870,6 +1964,10 @@ cat_harness_schemas_skills_content_review_output_schema_json_Content_Review_Outp
 cat_harness_schemas_skills_content_test_output_schema_json_Content_Test_Output *-- "0..*" cat_harness_schemas_skills_content_test_output_schema_json_TestResult : testResults
 cat_harness_schemas_skills_content_validate_output_schema_json_Content_Validate_Output *-- "0..*" cat_harness_schemas_skills_content_validate_output_schema_json_Result : results
 cat_harness_schemas_skills_dmn_authoring_input_schema_json_DMN_Authoring_Input *-- "0..*" cat_harness_schemas_skills_dmn_authoring_input_schema_json_InputVariable : inputVariables
+cat_harness_schemas_skills_wireframe_design_review_input_schema_json_Wireframe_Design_Review_Input *-- "0..*" cat_harness_schemas_skills_wireframe_design_review_input_schema_json_Channel : channels
+cat_harness_schemas_skills_wireframe_design_review_output_schema_json_Wireframe_Design_Review_Output *-- "1..*" cat_harness_schemas_skills_wireframe_design_review_output_schema_json_Candidate : candidates
+cat_harness_schemas_skills_wireframe_viewport_check_output_schema_json_Wireframe_Viewport_Check_Output *-- "0..*" cat_harness_schemas_skills_wireframe_viewport_check_output_schema_json_Candidate : candidates
+cat_harness_schemas_staging_comparison_schema_json_Staging_links *-- "0..*" cat_harness_schemas_staging_comparison_schema_json_Page : pages
 cat_harness_skills_folio_voice_v1_folio_voice_v1 *-- "1..*" cat_harness_skills_folio_voice_v1_Source : sources
 cat_harness_skills_folio_voice_v1_Rule *-- "0..*" cat_harness_skills_folio_voice_v1_Pattern : patterns
 cat_harness_skills_folio_voice_v1_Rule *-- "0..*" cat_harness_skills_folio_voice_v1_Terminology : terminology
@@ -1953,7 +2051,7 @@ cat_harness_agent_skill_authoring_openai_Rule *-- "0..*" cat_harness_agent_skill
 cat_harness_agent_skill_authoring_openai_Rule *-- "0..*" cat_harness_agent_skill_authoring_openai_Terminology : terminology
 cat_harness_agent_skill_authoring_openai_VoiceProfile *-- "1..*" cat_harness_agent_skill_authoring_openai_Rule : rules
 cat_harness_items_TodoNodeKind *-- "0..*" cat_harness_items_AlsoAbout : alsoAbout
-' grid: portrait, 7 column(s) — pkg_cat_harness_cat_harness_validators pkg_cat_harness_tools pkg_cat_harness_external_schemas pkg_cat_harness_subscriptions pkg_cat_harness_code_lists pkg_cat_harness_vocab_mappings pkg_cat_harness_tool_releases pkg_cat_harness_schemas pkg_cat_harness_uml pkg_cat_harness_skills pkg_cat_harness_scenarios pkg_cat_harness_policies pkg_cat_harness_processes pkg_cat_harness_methodologies pkg_cat_harness_qa pkg_cat_harness_attestations pkg_cat_harness_test_plans pkg_cat_harness_health pkg_cat_harness_uploads pkg_cat_harness_library pkg_cat_harness_translation_sources pkg_cat_harness_folio pkg_cat_harness_folio_render pkg_cat_harness_docs pkg_cat_harness_site pkg_cat_harness_swimlane_glossary pkg_cat_harness_cat_harness_upstream pkg_cat_harness_openapi pkg_cat_harness_archimate pkg_cat_harness_memory pkg_cat_harness_fsh_guts pkg_cat_harness_beans pkg_cat_harness_todos pkg_cat_harness_checkout_uploads pkg_cat_harness_issue_marks pkg_cat_harness_voices pkg_cat_harness_vendors pkg_cat_harness_agent_skill_authoring_claude pkg_cat_harness_agent_skill_authoring_gemini_cli pkg_cat_harness_agent_skill_authoring_openai pkg_cat_harness_proposals pkg_cat_harness_requirements pkg_cat_harness_start pkg_cat_harness_concepts pkg_cat_harness_guides pkg_cat_harness_process pkg_cat_harness_fhir pkg_cat_harness_auto_docs pkg_cat_harness_glossary pkg_cat_harness_index_dmn pkg_cat_harness_index_docs pkg_cat_harness_index_processes pkg_cat_harness_index_roles pkg_cat_harness_index_schemas pkg_cat_harness_index_skills pkg_cat_harness_index_tasks pkg_cat_harness_index_tools pkg_cat_harness_uml_overview_pages pkg_cat_harness_uml_overview_svgs pkg_cat_harness_docs_source pkg_cat_harness_openapi_validators pkg_cat_harness_openapi_typologies pkg_cat_harness_openapi_schemas pkg_cat_harness_archimate_validators pkg_cat_harness_archimate_typologies pkg_cat_harness_archimate_schemas pkg_cat_harness_defs pkg_cat_harness_archive pkg_cat_harness_notes pkg_cat_harness_workflows pkg_cat_harness_queue pkg_cat_harness_surveys pkg_cat_harness_items pkg_cat_harness_feedback pkg_cat_harness_boards pkg_cat_harness_positions
+' grid: portrait, 7 column(s) — pkg_cat_harness_cat_harness_validators pkg_cat_harness_tools pkg_cat_harness_external_schemas pkg_cat_harness_subscriptions pkg_cat_harness_code_lists pkg_cat_harness_vocab_mappings pkg_cat_harness_tool_releases pkg_cat_harness_schemas pkg_cat_harness_uml pkg_cat_harness_skills pkg_cat_harness_scenarios pkg_cat_harness_policies pkg_cat_harness_processes pkg_cat_harness_methodologies pkg_cat_harness_qa pkg_cat_harness_attestations pkg_cat_harness_test_plans pkg_cat_harness_health pkg_cat_harness_uploads pkg_cat_harness_library pkg_cat_harness_translation_sources pkg_cat_harness_folio pkg_cat_harness_folio_render pkg_cat_harness_site_chrome pkg_cat_harness_docs pkg_cat_harness_site pkg_cat_harness_swimlane_glossary pkg_cat_harness_cat_harness_upstream pkg_cat_harness_openapi pkg_cat_harness_archimate pkg_cat_harness_memory pkg_cat_harness_fsh_guts pkg_cat_harness_beans pkg_cat_harness_todos pkg_cat_harness_checkout_uploads pkg_cat_harness_issue_marks pkg_cat_harness_voices pkg_cat_harness_vendors pkg_cat_harness_agent_skill_authoring_claude pkg_cat_harness_agent_skill_authoring_gemini_cli pkg_cat_harness_agent_skill_authoring_openai pkg_cat_harness_proposals pkg_cat_harness_requirements pkg_cat_harness_start pkg_cat_harness_concepts pkg_cat_harness_guides pkg_cat_harness_process pkg_cat_harness_fhir pkg_cat_harness_auto_docs pkg_cat_harness_glossary pkg_cat_harness_index_dmn pkg_cat_harness_index_docs pkg_cat_harness_index_processes pkg_cat_harness_index_roles pkg_cat_harness_index_schemas pkg_cat_harness_index_skills pkg_cat_harness_index_tasks pkg_cat_harness_index_tools pkg_cat_harness_uml_overview_pages pkg_cat_harness_uml_overview_svgs pkg_cat_harness_docs_source pkg_cat_harness_openapi_validators pkg_cat_harness_openapi_typologies pkg_cat_harness_openapi_schemas pkg_cat_harness_archimate_validators pkg_cat_harness_archimate_typologies pkg_cat_harness_archimate_schemas pkg_cat_harness_defs pkg_cat_harness_archive pkg_cat_harness_notes pkg_cat_harness_workflows pkg_cat_harness_queue pkg_cat_harness_surveys pkg_cat_harness_items pkg_cat_harness_feedback pkg_cat_harness_boards pkg_cat_harness_positions
 pkg_cat_harness_cat_harness_validators -[hidden]down- pkg_cat_harness_schemas
 pkg_cat_harness_tools -[hidden]down- pkg_cat_harness_uml
 pkg_cat_harness_external_schemas -[hidden]down- pkg_cat_harness_skills
@@ -1970,13 +2068,14 @@ pkg_cat_harness_processes -[hidden]down- pkg_cat_harness_library
 pkg_cat_harness_methodologies -[hidden]down- pkg_cat_harness_translation_sources
 pkg_cat_harness_qa -[hidden]down- pkg_cat_harness_folio
 pkg_cat_harness_attestations -[hidden]down- pkg_cat_harness_folio_render
-pkg_cat_harness_test_plans -[hidden]down- pkg_cat_harness_docs
-pkg_cat_harness_health -[hidden]down- pkg_cat_harness_site
-pkg_cat_harness_uploads -[hidden]down- pkg_cat_harness_swimlane_glossary
-pkg_cat_harness_library -[hidden]down- pkg_cat_harness_cat_harness_upstream
-pkg_cat_harness_translation_sources -[hidden]down- pkg_cat_harness_openapi
-pkg_cat_harness_folio -[hidden]down- pkg_cat_harness_archimate
-pkg_cat_harness_folio_render -[hidden]down- pkg_cat_harness_memory
+pkg_cat_harness_test_plans -[hidden]down- pkg_cat_harness_site_chrome
+pkg_cat_harness_health -[hidden]down- pkg_cat_harness_docs
+pkg_cat_harness_uploads -[hidden]down- pkg_cat_harness_site
+pkg_cat_harness_library -[hidden]down- pkg_cat_harness_swimlane_glossary
+pkg_cat_harness_translation_sources -[hidden]down- pkg_cat_harness_cat_harness_upstream
+pkg_cat_harness_folio -[hidden]down- pkg_cat_harness_openapi
+pkg_cat_harness_folio_render -[hidden]down- pkg_cat_harness_archimate
+pkg_cat_harness_site_chrome -[hidden]down- pkg_cat_harness_memory
 pkg_cat_harness_docs -[hidden]down- pkg_cat_harness_fsh_guts
 pkg_cat_harness_site -[hidden]down- pkg_cat_harness_beans
 pkg_cat_harness_swimlane_glossary -[hidden]down- pkg_cat_harness_todos

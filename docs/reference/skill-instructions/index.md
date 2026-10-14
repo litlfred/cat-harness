@@ -347,6 +347,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [All UI must follow accessibility guidelines](ui-accessibility.html) | `ui-accessibility` | — | This is a **rule**, stated as one by the owner, and it binds every surface this |
 | [Visualizer loading](visualizer-loading.html) | `visualizer-loading` | — | > Skill id: `visualizer-loading` · Package: `ui-core` · Beans `680p`, `s32v`, |
 | [Wireframe design review](wireframe-design-review.html) | `wireframe-design-review` | — | Method: [`wiregen`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/methodologies/wiregen.md) |
+| [Wireframe viewport check](wireframe-viewport-check.html) | `wireframe-viewport-check` | — | Step 3 of [`wireframe-design-review`](wireframe-design-review.md): what can be judged without judgem |
 
 ## Content layer (folio-assistant-core)
 
@@ -420,6 +421,7 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 
 | Skill | Id | Schema | Summary |
 |-------|----|--------|---------|
+| [fhir-questionnaire-wireframe](fhir-questionnaire-wireframe.html) | `fhir-questionnaire-wireframe` | — | > Skill id: `fhir-questionnaire-wireframe` · Package: `fhir-ig-authoring` · |
 | [fhir-validation](fhir-validation.html) | `fhir-validation` | [schema](../skills/fhir-validation.html) | > Skill id: `fhir-validation` · Package: `fhir-ig-authoring` · |
 | [ig-publication](ig-publication.html) | `ig-publication` | [schema](../skills/ig-publication.html) | > Skill id: `ig-publication` · Package: `fhir-ig-authoring` · |
 | [l3-fhir-authoring](l3-fhir-authoring.html) | `l3-fhir-authoring` | [schema](../skills/l3-fhir-authoring.html) | > Skill id: `l3-fhir-authoring` · Package: `fhir-ig-authoring` · |
@@ -553,10 +555,12 @@ roles, and how they compose with the LLM, see [Skills & roles](../../skills.html
 | [dak-preprocessing](dak-preprocessing.html) | `dak-preprocessing` | — | > Skill id: `dak-preprocessing` · Package: `authoring-who-smart-guidelines` · |
 | [grade](grade.html) | `grade` | — | > Skill id: `grade` · Package: `authoring-who-smart-guidelines` · The grading |
 | [ig-artifact-ingestion](ig-artifact-ingestion.html) | `ig-artifact-ingestion` | — | > Skill id: `ig-artifact-ingestion` · Package: `authoring-who-smart-guidelines` · |
+| [l2-component-edit-review](l2-component-edit-review.html) | `l2-component-edit-review` | — | > Skill id: `l2-component-edit-review` · Package: `authoring-who-smart-guidelines` · |
 | [l2-dak-authoring](l2-dak-authoring.html) | `l2-dak-authoring` | [schema](../skills/l2-dak-authoring.html) | > Skill id: `l2-dak-authoring` · Package: `authoring-who-smart-guidelines` · |
 | [recommendation-extraction](recommendation-extraction.html) | `recommendation-extraction` | — | > Skill id: `recommendation-extraction` · Package: `authoring-who-smart-guidelines` · |
 | [smart-base Toolchain](smart-base-tools.html) | `smart-base-tools` | — | > Skill id: `smart-base-tools` · Package: |
 | [smart-guideline-create](smart-guideline-create.html) | `smart-guideline-create` | — | > Skill id: `smart-guideline-create` · Package: `authoring-who-smart-guidelines` |
+| [smart-guideline-end-to-end](smart-guideline-end-to-end.html) | `smart-guideline-end-to-end` | — | > Skill id: `smart-guideline-end-to-end` · Package: `authoring-who-smart-guidelines` · |
 | [smart-stack-layering](smart-stack-layering.html) | `smart-stack-layering` | — | > Skill id: `smart-stack-layering` · Package: `authoring-who-smart-guidelines` |
 | [toolchain-ownership](toolchain-ownership.html) | `toolchain-ownership` | — | > Skill id: `toolchain-ownership` · Package: `authoring-who-smart-guidelines` · |
 

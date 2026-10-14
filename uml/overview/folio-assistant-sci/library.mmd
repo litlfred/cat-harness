@@ -22,6 +22,13 @@ classDiagram
       pages [1] object[] | null
       undetermined_reason [0..1] string
     }
+    class folio_assistant_sci_library_folio_vector_figures_v1_folio_vector_figures_v1["folio-vector-figures/v1"] {
+      <<json: VectorFiguresSidecarSchema>>
+      $schema [1] 'folio-vector-figures/v1'
+      doc_id [1] string
+      figures [1] object[] | null
+      undetermined_reason [0..1] string
+    }
     class folio_assistant_sci_library_folio_keywords_v1_Document["Document"] {
       <<json: KeywordsFileSchema>>
       term [1] string
@@ -41,5 +48,6 @@ classDiagram
   cssClass "folio_assistant_sci_library_folio_document_images_v1_folio_document_images_v1" fa_uml_kind_library
   cssClass "folio_assistant_sci_library_folio_image_verdicts_v1" fa_uml_kind_library
   cssClass "folio_assistant_sci_library_folio_vector_labels_v1_folio_vector_labels_v1" fa_uml_kind_library
+  cssClass "folio_assistant_sci_library_folio_vector_figures_v1_folio_vector_figures_v1" fa_uml_kind_library
   cssClass "folio_assistant_sci_library_folio_keywords_v1_Document" fa_uml_kind_library
   cssClass "folio_assistant_sci_library_folio_keywords_v1_folio_keywords_v1" fa_uml_kind_library

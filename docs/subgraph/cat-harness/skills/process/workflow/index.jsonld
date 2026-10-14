@@ -46,9 +46,9 @@
       "@type": "bootstrap:Skill",
       "name": "code-review-process",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/6a50fa1b11a34088da2962530569e2e7f02ca1a4a1800ff6a1c95f0525ad024e",
-        "bytes": 3275,
-        "sha256": "6a50fa1b11a34088da2962530569e2e7f02ca1a4a1800ff6a1c95f0525ad024e"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/1a5075549e0f965ba01358c022d4417eb6b85519afa0569a42ebbda3bc2fabbb",
+        "bytes": 3721,
+        "sha256": "1a5075549e0f965ba01358c022d4417eb6b85519afa0569a42ebbda3bc2fabbb"
       },
       "title": "Code review process — from PR to release approval"
     },

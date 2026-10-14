@@ -90,9 +90,9 @@
       "@type": "bootstrap:Skill",
       "name": "directory-conventions",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/7f3056ea10befff020e231fbbceca050c2ce21a260d17e48c89b38d2edad5cb8",
-        "bytes": 137503,
-        "sha256": "7f3056ea10befff020e231fbbceca050c2ce21a260d17e48c89b38d2edad5cb8"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ae07f4114efe03d5de3587e695b090f287df7029890f4eda8a56297b438134e9",
+        "bytes": 137475,
+        "sha256": "ae07f4114efe03d5de3587e695b090f287df7029890f4eda8a56297b438134e9"
       },
       "title": "Directory conventions — what an instance declares it scans"
     },
@@ -123,9 +123,9 @@
       "@type": "bootstrap:Skill",
       "name": "index-config",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/dafb44b9ac2df545617119a0a2ad60fcc14c9e1f175e744558ceee3d6c0c5e69",
-        "bytes": 10625,
-        "sha256": "dafb44b9ac2df545617119a0a2ad60fcc14c9e1f175e744558ceee3d6c0c5e69"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5cc0f83b0e9b49d9e859e1fffb3e39b995b7d2da47ddae9d53b886819006153f",
+        "bytes": 14541,
+        "sha256": "5cc0f83b0e9b49d9e859e1fffb3e39b995b7d2da47ddae9d53b886819006153f"
       },
       "title": "`index.config.json`: what this checkout instantiates"
     },
@@ -233,9 +233,9 @@
       "@type": "bootstrap:Skill",
       "name": "skill-registration",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b0c330e74cf1e7c22e5ab2cd036c4ce154cb657772a221449f7810de71a30034",
-        "bytes": 7126,
-        "sha256": "b0c330e74cf1e7c22e5ab2cd036c4ce154cb657772a221449f7810de71a30034"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/f311d5c66a0c0c28e0d32de2cd1765d716b9387a1c5103bc6729e91e5de9a6b1",
+        "bytes": 10219,
+        "sha256": "f311d5c66a0c0c28e0d32de2cd1765d716b9387a1c5103bc6729e91e5de9a6b1"
       },
       "title": "Adding a skill"
     },
@@ -244,9 +244,9 @@
       "@type": "bootstrap:Skill",
       "name": "skill-voice-review",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/02cb413d77cfbdd1bc1e063b0b9d5aa82a86e210946ba66bd6593396b60d20ae",
-        "bytes": 4760,
-        "sha256": "02cb413d77cfbdd1bc1e063b0b9d5aa82a86e210946ba66bd6593396b60d20ae"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/eeb6e55e4bce68502a06650acb2cc00b0c1db29fcd1c41abddf594f74ca1ec66",
+        "bytes": 4769,
+        "sha256": "eeb6e55e4bce68502a06650acb2cc00b0c1db29fcd1c41abddf594f74ca1ec66"
       },
       "title": "Skill voice review"
     },
@@ -266,9 +266,9 @@
       "@type": "bootstrap:Skill",
       "name": "uml-overview",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4d7e7a8a216d8c7c28418810891ca1f1a98a2f7e207a6fdb177ecb4de98537f9",
-        "bytes": 11014,
-        "sha256": "4d7e7a8a216d8c7c28418810891ca1f1a98a2f7e207a6fdb177ecb4de98537f9"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/1e759bffda9533af5ab1c0a30ab543a27efd32ab9bca90cabaea22cde182c836",
+        "bytes": 11021,
+        "sha256": "1e759bffda9533af5ab1c0a30ab543a27efd32ab9bca90cabaea22cde182c836"
       },
       "title": "UML overview: generated from declarations and schemas, never drawn"
     },

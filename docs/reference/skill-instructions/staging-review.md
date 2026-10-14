@@ -22,6 +22,49 @@ visual content.
 URLs tell the reviewer where to look. The captured, measured pair that goes
 with them is [`before-after-preview`](before-after-preview.md).
 
+## The deep-link rule — every request for feedback
+
+**This is the one home of the rule.** Every skill or process that asks a person
+for feedback, review, sign-off or acceptance on something rendered (CRDM,
+SDLC code review, content authoring, translation, wireframes, a DAK or a
+guideline) points here rather than restating it. Owner, 2026-10-14: *"update
+your feedback skills as part of crdm, SDLC, other content authoring processes,
+if there is a staging URL provided, ideally with a deep link to the relevant
+features being edited or shown"*, and the request it repeats, beans `u1os`,
+`28k2` and `g4dv`.
+
+1. **When a staging preview exists, the request carries it.** A request for
+   feedback with a PR link and no staging link asks the person to read source
+   in place of the thing they are judging.
+2. **One deep link per changed thing**: the page, and the anchor on it where
+   the change sits (`…/STAGING/<slug>/<path>#<anchor>`), each with the same
+   page on main as **before** (or "new page"). The site root is the right link
+   only for a change to the landing page itself.
+3. **The pages come from the change, not from judgement.** Read
+   `rendered-impact.json` beside the preview when the staging build wrote one
+   (skill [`rendered-impact`](rendered-impact.md)), or run the renderer's
+   impact Tool for the branch. Never build a URL from a source path: look each
+   one up in the publish ref (§"You can open it yourself").
+4. **The third state is said, not hidden.** No preview yet: say so, and when it
+   will exist. A changed page the publish ref does not hold: a finding, listed
+   with the others. No page list could be computed: say that, never "nothing
+   changed".
+5. **Where it goes is a judgement, and more than one place may be right.**
+   Human feedback is gathered through several Tools: the agent conversation
+   (the turn that asks the person), a GitHub issue, a pull request (its body,
+   or the comment the staging workflow posts). Owner, 2026-10-14: *"it is a
+   Judgement as to the context which one to use. more than one can be
+   used."* Ask where the person will look. Work driven through, or primarily
+   referencing, a GitHub issue may warrant the request on that issue as well
+   as in the turn; a change reviewed on its PR carries it there. Whichever
+   places are chosen, each carries the same deep links. This rule fixes what
+   a request contains, not a list of places it must be posted.
+
+A skill whose output asks for feedback declares it: its output schema carries a
+`stagingLinks` field of type `StagingComparison` (`schemas/staging.ts`), and
+a skill that consumes feedback takes the same field as input, so the links
+travel with the request rather than being rebuilt.
+
 ## Signature — one optional string in, a reviewable list out
 
 Stated formally because this skill is invoked by other processes and by a
@@ -318,7 +361,7 @@ When reporting changes to the user:
 
 | Page | Before (main) | After (staging) | What changed |
 |---|---|---|---|
-| Landing page | [main](https://litlfred.github.io/folio-assistant/) | [staging](https://litlfred.github.io/folio-assistant/STAGING/claude-206-staging-preview/) | Added French translation badge |
+| Landing page | [main](https://litlfred.github.io/folio-assistant/#languages) | [staging](https://litlfred.github.io/folio-assistant/STAGING/claude-206-staging-preview/#languages) | Added French translation badge (the landing page itself changed, so its root is the page; the anchor is where the badge sits) |
 | French landing | — | [staging](https://litlfred.github.io/folio-assistant/STAGING/claude-206-staging-preview/fr/index.html) | New page |
 | Agent onboarding | [main](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/agent-onboarding.html) | [staging](https://litlfred.github.io/folio-assistant/STAGING/claude-206-staging-preview/docs/cat-harness/guides/agent-onboarding.html) | Language switcher added |
 ```
@@ -331,7 +374,7 @@ When reporting changes to the user:
 https://<owner>.github.io/<repo>/<path>
 ```
 
-Read from `<name>.config.json` → `readme.pagesBaseUrl`, or construct from
+Read from the instance's config (its `index.config.json` entry) → `readme.pagesBaseUrl`, or construct from
 the repo's GitHub Pages URL.
 
 ### Staging (after)
@@ -723,8 +766,16 @@ Full rule and the measured failure:
 
 | process | step(s) that name it |
 |---|---|
+| [Review task](../../en/cat-harness/processes/review-task.html) | Classify what changed |
+| [CRDM Phase 6 — implement, MVP, acceptance](../../en/cat-harness/processes/crdm-deliver.html) | Post summary to issue; Share MVP with stakeholders |
+| [Code change and review](../../en/cat-harness/processes/code-change-review.html) | Commit, push, open the PR; Review the change |
 | [Staging a feature branch preview, and taking it down](../../en/cat-harness/processes/feature-staging.html) | Comment the preview URL on the PR; Post the retention notice on the PR |
 | [Adopting an upstream version bump](../../en/cat-harness/processes/upstream-version-adoption.html) | Review the MVP against what we bind to |
+| [Questionnaire wireframe review](../../en/cat-harness/processes/questionnaire-wireframe-review.html) | Ask for review with deep links |
+| [Authoring a document](../../en/cat-harness/processes/authoring-a-document.html) | 8 · Review and feedback |
 | [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Review staged rendering; Request further revisions; Submit to review committee; Compare main vs staging; Slice the change and assign reviewers |
+| [Draft, review and publish](../../en/cat-harness/processes/draft-to-publication.html) | Circulate the draft; Review the draft publication; Clinical / scientific sign-off |
 | [Public comment on a review draft](../../en/cat-harness/processes/public-comment.html) | Review the change set on its staging preview (calls a sub-process) |
+| [L2 component edit and review](../../en/cat-harness/processes/l2-component-edit-review.html) | Ask for review with staging deep links |
+| [SMART Guideline end to end](../../en/cat-harness/processes/smart-guideline-end-to-end.html) | Review each L2 asset (before / after if adapted) (calls a sub-process); Review each L3 asset (before / after if adapted) (calls a sub-process); Adjudicate the wireframes and the application (calls a sub-process) |
 

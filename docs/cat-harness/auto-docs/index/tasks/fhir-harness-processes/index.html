@@ -81,10 +81,10 @@ rendered-by: auto-docs-viewer
 
 <ul class="subs">
 <li><a href="../core-processes/">core-processes</a> <span class="p">folio-assistant-core/processes</span> <span class="n">161</span></li>
-<li><strong>fhir-harness-processes</strong> <span class="p">fhir-harness/processes</span> <span class="n">30</span></li>
-<li><a href="../processes/">processes</a> <span class="p">cat-harness/processes</span> <span class="n">481</span></li>
+<li><strong>fhir-harness-processes</strong> <span class="p">fhir-harness/processes</span> <span class="n">45</span></li>
+<li><a href="../processes/">processes</a> <span class="p">cat-harness/processes</span> <span class="n">483</span></li>
 <li><a href="../sci-processes/">sci-processes</a> <span class="p">folio-assistant-sci/processes</span> <span class="n">12</span></li>
-<li><a href="../smart-base-house-processes/">smart-base-house-processes</a> <span class="p">smart-base/processes</span> <span class="n">13</span></li>
+<li><a href="../smart-base-house-processes/">smart-base-house-processes</a> <span class="p">smart-base/processes</span> <span class="n">97</span></li>
 <li><a href="../smart-base-processes/">smart-base-processes</a> <span class="p">smart-base/methodologies/processes</span> <span class="n">9</span></li>
 </ul>
 
@@ -96,6 +96,26 @@ rendered-by: auto-docs-viewer
 <table id="da-index" data-fa-filtered="true">
 <thead><tr><th>Artefact</th><th>What it declares about itself</th></tr></thead>
 <tbody>
+<tr id="a-fhir-harness-processes-content-ig-ast-cache-bpmn-Build-and-publish-the-site-10-from-the-AST-ig-render-jekyll-">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/ig-ast-cache.bpmn#Build and publish the site&amp;#10;from the AST [ig-render-jekyll]"><code>Build and publish the site&amp;#10;from the AST [ig-render-jekyll]</code></a><br><span class="p">fhir-harness/processes/content/ig-ast-cache.bpmn#Build and publish the site&amp;#10;from the AST [ig-render-jekyll]</span></td>
+  <td>serviceTask in ig-ast-cache</td>
+</tr>
+<tr id="a-fhir-harness-processes-content-ig-ast-cache-bpmn-Build-the-IG-with-the-Publisher-10-AST-exporter-ig-publisher-fork-">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/ig-ast-cache.bpmn#Build the IG with the Publisher&amp;#10;AST exporter [ig-publisher-fork]"><code>Build the IG with the Publisher&amp;#10;AST exporter [ig-publisher-fork]</code></a><br><span class="p">fhir-harness/processes/content/ig-ast-cache.bpmn#Build the IG with the Publisher&amp;#10;AST exporter [ig-publisher-fork]</span></td>
+  <td>serviceTask in ig-ast-cache</td>
+</tr>
+<tr id="a-fhir-harness-processes-content-ig-ast-cache-bpmn-Dispatch-the-IG-s-10-ig-ast-refresh-yml-ig-build-pipeline-">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/ig-ast-cache.bpmn#Dispatch the IG's&amp;#10;ig-ast-refresh.yml [ig-build-pipeline]"><code>Dispatch the IG's&amp;#10;ig-ast-refresh.yml [ig-build-pipeline]</code></a><br><span class="p">fhir-harness/processes/content/ig-ast-cache.bpmn#Dispatch the IG's&amp;#10;ig-ast-refresh.yml [ig-build-pipeline]</span></td>
+  <td>userTask in ig-ast-cache</td>
+</tr>
+<tr id="a-fhir-harness-processes-content-ig-ast-cache-bpmn-Restore-the-AST-from-its-cache-10-branch-and-judge-it-ig-ast-delta-">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/ig-ast-cache.bpmn#Restore the AST from its cache&amp;#10;branch and judge it [ig-ast-delta]"><code>Restore the AST from its cache&amp;#10;branch and judge it [ig-ast-delta]</code></a><br><span class="p">fhir-harness/processes/content/ig-ast-cache.bpmn#Restore the AST from its cache&amp;#10;branch and judge it [ig-ast-delta]</span></td>
+  <td>serviceTask in ig-ast-cache</td>
+</tr>
+<tr id="a-fhir-harness-processes-content-ig-ast-cache-bpmn-Seed-the-cache-branch-10-ig-cache-seed---push-compiled-artefact-cache-">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/ig-ast-cache.bpmn#Seed the cache branch&amp;#10;(ig-cache seed --push) [compiled-artefact-cache]"><code>Seed the cache branch&amp;#10;(ig-cache seed --push) [compiled-artefact-cache]</code></a><br><span class="p">fhir-harness/processes/content/ig-ast-cache.bpmn#Seed the cache branch&amp;#10;(ig-cache seed --push) [compiled-artefact-cache]</span></td>
+  <td>serviceTask in ig-ast-cache</td>
+</tr>
 <tr id="a-fhir-harness-processes-content-ig-ast-delta-review-bpmn-Check-the-base-AST-against-10-the-IG-s-inputs-ig-ast-delta-">
   <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/ig-ast-delta-review.bpmn#Check the base AST against&amp;#10;the IG's inputs [ig-ast-delta]"><code>Check the base AST against&amp;#10;the IG's inputs [ig-ast-delta]</code></a><br><span class="p">fhir-harness/processes/content/ig-ast-delta-review.bpmn#Check the base AST against&amp;#10;the IG's inputs [ig-ast-delta]</span></td>
   <td>serviceTask in ig-ast-delta-review</td>
@@ -215,6 +235,46 @@ rendered-by: auto-docs-viewer
 <tr id="a-fhir-harness-processes-content-l3-fhir-pipeline-bpmn-Validate-against-profiles-10-fhir-validation-">
   <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/l3-fhir-pipeline.bpmn#Validate against profiles&amp;#10;[fhir-validation]"><code>Validate against profiles&amp;#10;[fhir-validation]</code></a><br><span class="p">fhir-harness/processes/content/l3-fhir-pipeline.bpmn#Validate against profiles&amp;#10;[fhir-validation]</span></td>
   <td>serviceTask in l3-fhir-pipeline</td>
+</tr>
+<tr id="a-fhir-harness-processes-content-questionnaire-wireframe-review-bpmn-Apply-it-bring-the-other-10-side-in-line-l3-fhir-authoring-">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn#Apply it, bring the other&amp;#10;side in line [l3-fhir-authoring]"><code>Apply it, bring the other&amp;#10;side in line [l3-fhir-authoring]</code></a><br><span class="p">fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Apply it, bring the other&amp;#10;side in line [l3-fhir-authoring]</span></td>
+  <td>userTask in questionnaire-wireframe-review</td>
+</tr>
+<tr id="a-fhir-harness-processes-content-questionnaire-wireframe-review-bpmn-Ask-for-review-with-10-deep-links-staging-review-">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn#Ask for review with&amp;#10;deep links [staging-review]"><code>Ask for review with&amp;#10;deep links [staging-review]</code></a><br><span class="p">fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Ask for review with&amp;#10;deep links [staging-review]</span></td>
+  <td>task in questionnaire-wireframe-review</td>
+</tr>
+<tr id="a-fhir-harness-processes-content-questionnaire-wireframe-review-bpmn-Check-field-for-field-10-check-wireframe-questionnaire-">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn#Check field for field&amp;#10;[check-wireframe-questionnaire]"><code>Check field for field&amp;#10;[check-wireframe-questionnaire]</code></a><br><span class="p">fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Check field for field&amp;#10;[check-wireframe-questionnaire]</span></td>
+  <td>serviceTask in questionnaire-wireframe-review</td>
+</tr>
+<tr id="a-fhir-harness-processes-content-questionnaire-wireframe-review-bpmn-Design-review-10-wireframe-design-review-">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn#Design review&amp;#10;[wireframe-design-review]"><code>Design review&amp;#10;[wireframe-design-review]</code></a><br><span class="p">fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Design review&amp;#10;[wireframe-design-review]</span></td>
+  <td>callActivity in questionnaire-wireframe-review</td>
+</tr>
+<tr id="a-fhir-harness-processes-content-questionnaire-wireframe-review-bpmn-Read-the-built-10-Questionnaire-JSON">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn#Read the built&amp;#10;Questionnaire JSON"><code>Read the built&amp;#10;Questionnaire JSON</code></a><br><span class="p">fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Read the built&amp;#10;Questionnaire JSON</span></td>
+  <td>task in questionnaire-wireframe-review</td>
+</tr>
+<tr id="a-fhir-harness-processes-content-questionnaire-wireframe-review-bpmn-Render-the-wireframe-10-and-the-LHC-Forms-view">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn#Render the wireframe&amp;#10;and the LHC-Forms view"><code>Render the wireframe&amp;#10;and the LHC-Forms view</code></a><br><span class="p">fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Render the wireframe&amp;#10;and the LHC-Forms view</span></td>
+  <td>task in questionnaire-wireframe-review</td>
+</tr>
+<tr id="a-fhir-harness-processes-content-questionnaire-wireframe-review-bpmn-Review-the-staged-10-form-and-wireframe">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn#Review the staged&amp;#10;form and wireframe"><code>Review the staged&amp;#10;form and wireframe</code></a><br><span class="p">fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Review the staged&amp;#10;form and wireframe</span></td>
+  <td>userTask in questionnaire-wireframe-review</td>
+</tr>
+<tr id="a-fhir-harness-processes-content-questionnaire-wireframe-review-bpmn-Screenshots-web-and-10-mobile-wireframe-check-">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn#Screenshots, web and&amp;#10;mobile [wireframe-check]"><code>Screenshots, web and&amp;#10;mobile [wireframe-check]</code></a><br><span class="p">fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Screenshots, web and&amp;#10;mobile [wireframe-check]</span></td>
+  <td>serviceTask in questionnaire-wireframe-review</td>
+</tr>
+<tr id="a-fhir-harness-processes-content-questionnaire-wireframe-review-bpmn-Stage-the-renderings-10-feature-staging-">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn#Stage the renderings&amp;#10;[feature-staging]"><code>Stage the renderings&amp;#10;[feature-staging]</code></a><br><span class="p">fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Stage the renderings&amp;#10;[feature-staging]</span></td>
+  <td>serviceTask in questionnaire-wireframe-review</td>
+</tr>
+<tr id="a-fhir-harness-processes-content-questionnaire-wireframe-review-bpmn-Triage-the-change-10-request-content-feedback-">
+  <td><a href="https://github.com/litlfred/fhir-harness/blob/main/processes/content/questionnaire-wireframe-review.bpmn#Triage the change&amp;#10;request [content-feedback]"><code>Triage the change&amp;#10;request [content-feedback]</code></a><br><span class="p">fhir-harness/processes/content/questionnaire-wireframe-review.bpmn#Triage the change&amp;#10;request [content-feedback]</span></td>
+  <td>task in questionnaire-wireframe-review</td>
 </tr>
 </tbody>
 </table>

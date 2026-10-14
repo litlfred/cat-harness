@@ -105,13 +105,15 @@ than on the parity list.
 
 Declaring MVP against the checklist is the owner's call, not this skill's.
 
-## Thin artefact pages (`--thin`)
+## Thin pages, the default (`--full-pages` to opt out)
 
 The owner, 2026-10-11, option A: *"tiny html w/ dynamic load from json(ld)
-KG"*. `gen-ig-pages.ts --thin` writes each artefact page as a thin shell
-rather than a folio page. The shell is cat-harness-tools' `thinPageHtml`,
-imported and not copied: this layer needs core, which sits above
-cat-harness-tools.
+KG"*; and 2026-10-12: *"make thin default"*. Every page of an IG site is now
+thin unless a build asks for the old pages with `--full-pages`. The shell is
+cat-harness-tools' `thinPageHtml`, imported and not copied: this layer needs
+core, which sits above cat-harness-tools.
+
+### Artefact pages (`gen-ig-pages.ts`)
 
 - **The address does not move.** The page stays at `artifact/<Type>-<id>.html`
   and names that file as `rel="canonical"`. The IG's artifacts page, the
@@ -132,13 +134,109 @@ cat-harness-tools.
   build's rail pass (`rail-standalone-pages.ts`) links the rail's style and
   scripts instead of inlining them. Measured on the iHRIS 5 IG (182
   artefacts): 168 KB per full page, about 5.6 KB per railed thin page.
-- **Only artefact pages change.** IG API, JSON-view and tab pages stay full
-  pages. Without the flag nothing changes, so an IG opts in by passing it.
+- **The tab views are thin pages too.** Owner, 2026-10-14, answering
+  whether the IG Publisher's per-artefact tab views are rendered: *"3. Render
+  them too"*. This supersedes "IG API, JSON-view and tab pages stay full
+  pages". Wherever the site serves the artefact's JSON, its views are written
+  beside its page under `artifact/`. That JSON is either a compiled copy
+  (`--compiled-data`, which `ig-site:compose` passes as `ast-data`: the
+  AST's copy) or the Publisher's own `<Type>-<id>.json` carried as data
+  (`--publisher-data <dir>`).
+  Each view keeps the Publisher's file name:
+  - `-definitions`: the element table, from the snapshot, with the
+    differential's elements marked;
+  - `-mappings`: the `mapping` declarations, each with the elements that map
+    to it;
+  - the JSON view, `.profile.json` for a StructureDefinition and `.json` for
+    anything else, drawn by `ast-resource.js` (`data-ast-view="json"`);
+  - `-examples`: for every StructureDefinition, listing from the index node
+    the instances that claim it in their `meta.profile` (see below).
+
+  Each is the same shell (`thinArtifactView`) and the same renderer
+  (`assets/ig-artifact.js`, the config's `view`). The artefact's page links
+  them in a tab bar of plain links. The narrative's links to those file
+  names are relinked the same way as its links to the artefact pages. A full
+  tab page at the same address is replaced. The change history, testing,
+  XML and Turtle views are not rendered, and none of them is published. The
+  IG API view pages stay full pages.
+- **Every profile gets its examples view** (owner, 2026-10-14: *"1a"*). Each
+  StructureDefinition gets `-examples`, as the Publisher writes it. Where no
+  instance of the IG claims the profile, the page says there are no examples.
+- **Nothing under `comparison-v*/` is published** (owner, 2026-10-14:
+  *"2a"*). The Publisher's version comparisons are not rendered, and
+  `ig-site:publisher-pages` copies none of their files: it serves the AST's
+  data and reads no Publisher output at all.
 - In an IG site the docs root is the site root, so `--compiled-data` is
   `ast-data`. With `../ast-data`, every resource link points one level above
   the site.
 
+### The artefact list and the table of contents (`build-ig-site.ts`)
+
+- **One index node.** Beside the artefact nodes, `artifact/index.jsonld`
+  (family `folio-ig-artifact-index-jsonld/v1`, same kind) lists every artefact
+  once, in the Publisher's order, each entry naming its node and carrying
+  only what a list row shows. `check` holds the list to the artefact index
+  and each entry to its node: key, class, canonical, profiles and code.
+- **`artifacts.html` is a thin shell** over that node, drawn by the same
+  renderer: a jump list of categories, a filter, then every category OPEN
+  with its table. The owner could not find artefacts behind collapsed
+  `<details>`, so nothing is collapsed. Category anchors are the full page's
+  (`#artifacts-<slug>`), so old links still land.
+- **What a list draws, and what it does not** (owner, 2026-10-12):
+  - **The IG's own ImplementationGuide resource is "This guide"**, drawn
+    first with its description and a link (`#artifacts-this-guide`), never
+    as a "Not categorised" row at the end. It is the guide, not one of its
+    artefacts; the toc lists it first the same way.
+  - **A category that mixes resource types is sub-headed by type**
+    (`#artifacts-<category>-<type>`; the Publisher's "Other": Basic,
+    Questionnaire, DocumentReference…), and the jump list counts each type.
+  - **A table draws only the columns its rows fill.** No row with a
+    description: no Description column. An instance (an artefact with no
+    canonical URL) has no description, so the index carries what the
+    resource states instead, copied, never looked up: its `meta.profile`
+    (`dcterms:conformsTo`, drawn as the profile's last path segment, linked
+    when it is an artefact of the same IG) and its `code`
+    (`dcterms:subject`). A definition's core profile (`shareablevalueset`)
+    is not written: on a phone it cost a column for nothing.
+- **`toc.html` is a thin shell.** The IG's own pages (`sushi-config.yaml`
+  `pages:`, the landing page first) stay in its HTML: they are the page's
+  structure. The artefacts under each category are drawn from the index node.
+- Both are written by `stageIgSite` when `StageOptions.artifacts.index` is
+  given, which `stage-ig-sites.ts` does unless `--full-pages`. A site whose
+  artefact pages were generated with `--full-pages` has no index node, and
+  staging it thin is refused rather than shipping two pages that draw nothing.
+
+### The narrative pages (`composeIgSite`)
+
+- The IG's own prose stays in the HTML, rendered by Jekyll as before. What
+  changes is the layout: an IG page composed into a host site wears
+  `thinIgLayout` (`_layouts/ig-thin-<instance>.html`) instead of the host's
+  layout, so none of the host's chrome (the harness bar, the inline SVG
+  sprite, the sidebar nav, the inline scripts) is written into it.
+- Everything around the prose is LINKED: the shared `assets/ig-artifact.css`,
+  the top bar's `assets/ig-topbar.css`, the edit and source-link runtimes as
+  `assets/ig-source-links.js`, and the rail through `folio-navbar: linked`.
+  The IG's top bar, edit links, footer and its TOC declaration for the rail
+  stay. Measured on iHRIS 5: `index.html` 182 KB to about 11 KB.
+- What the host's chrome added and the thin page does not: the host's search
+  box and the language and QA badges.
+
+### The opt-out
+
+`gen-ig-pages.ts --full-pages` and `stage-ig-sites.ts --full-pages` build the
+pages as before 2026-10-12 (`composeIgSite(…, { fullPages: true })`). Pass
+both or neither. `gen-ig-pages --thin` is still accepted and changes nothing;
+`--thin --full-pages` is refused. Removing the full path is a separate
+decision.
+
 ## What this does not replace
+
+**Which AST the pages are drawn from.** An IG repository's site is drawn from
+the AST on its cache branch, `cat/fhir-harness/fhir-ast/<package id>`. The
+publish refuses one that is not valid for the commit, and is never drawn from
+the Publisher's HTML. The cache is refreshed by a Publisher run on a runner.
+[`ig-build-pipeline`](ig-build-pipeline.md) §"The AST cache lifecycle" has the
+rule and the workflow.
 
 The Publisher still runs. This skill is about **where pages are rendered**, not
 about whether the IG is built: validation, dependency resolution and terminology
@@ -146,3 +244,10 @@ expansion are the Publisher's and are not reproducible from cached output. The
 phased reduction of the Publisher to AST + QA is bean `kn0t`; until it lands,
 assume a full build.
 {% endraw %}
+
+## Processes that run this skill
+
+| process | step(s) that name it |
+|---|---|
+| [An IG site, built from the AST on its cache branch](../../en/cat-harness/processes/ig-ast-cache.html) | Build and publish the site from the AST |
+

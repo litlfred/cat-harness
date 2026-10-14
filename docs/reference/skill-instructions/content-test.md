@@ -124,4 +124,5 @@ read it as "no regressions".
 | [Content lifecycle](../../en/cat-harness/processes/content-lifecycle.html) | Integration test and QA sweep |
 | [Draft, review and publish](../../en/cat-harness/processes/draft-to-publication.html) | Run publication QA gates |
 | [Editing and HCI validation](../../en/cat-harness/processes/editing-hci-validation.html) | Build and QA gates |
+| [L2 component edit and review](../../en/cat-harness/processes/l2-component-edit-review.html) | Run the component's checker [content-validate · content-test] |
 

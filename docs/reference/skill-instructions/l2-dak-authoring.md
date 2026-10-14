@@ -16,7 +16,9 @@ parent: Skill instructions
 > Skill id: `l2-dak-authoring` · Package: `authoring-who-smart-guidelines` ·
 > Named by `l2-dak-authoring.bpmn` steps **Personas and scenarios**,
 > **Data dictionary and core data elements**, **Indicators and requirements**,
-> all in the `Business analyst` lane, and by `dak-l3-ig.bpmn` step
+> all in the `Business analyst` lane and each a call into
+> [`l2-component-edit-review.bpmn`](../../en/cat-harness/processes/l2-component-edit-review.html),
+> and by `dak-l3-ig.bpmn` step
 > **Map L2 → L3**, beside `l3-fhir-authoring`, before that diagram calls
 > fhir-harness's generic `l3-fhir-pipeline.bpmn`.
 
@@ -65,6 +67,26 @@ stated as a data element, a decision rule or an indicator, it belongs here.
 Business processes and decision logic are the sibling skills `bpmn-authoring`
 and `dmn-authoring`; terminology binding is `terminology-management`.
 
+## Every track is edited, then reviewed alongside
+
+Each of the six tracks (the three above, BPMN, DMN and terminology) is a
+call activity into `Process_L2ComponentEditReview`
+([`l2-component-edit-review`](l2-component-edit-review.md)). In that
+subprocess the agent:
+
+1. edits the component with the track's skill;
+2. runs the component's checker;
+3. renders and stages it with a before/after;
+4. hands it on with `adjudication: pending`.
+
+A person in the component's reviewing role reviews it at the same time, on
+the staged preview, through cat-harness's `Process_Review`. Review forks
+alongside the hand-on and never blocks it. The renderer, checker, diff and
+reviewer for each component are in that skill's table, so they are not
+repeated here. The clinical SME's **Clinical validation** after the join is
+the whole-DAK reading across components. It does not repeat these
+per-component reviews.
+
 ## Tooling
 
 `smart-base` carries the extractors that read authored L2 artefacts —
@@ -79,6 +101,12 @@ happens when `SMART_BASE_HOME` is unset (the skill degrades to `skip`, it does
 a per-content-type process, and this package owns what "adequate" means in its
 domain. That is licence to adapt the sequence, not to skip the gate — the base
 processes it feeds (`editing-hci-validation`, `content-lifecycle`) stay strict.
+
+When this skill runs as stage 4 of
+[`smart-guideline-end-to-end`](smart-guideline-end-to-end.md), clinical
+validation is that stage's adjudication. It runs beside the next stage and
+does not hold it up: the agent goes on to choose L3 dependencies while the L2
+assets are reviewed one by one.
 {% endraw %}
 
 ## Processes that run this skill
@@ -90,5 +118,6 @@ This skill has its own process: **[L2 DAK authoring](../../en/cat-harness/proces
 | process | step(s) that name it |
 |---|---|
 | [L2 DAK to L3 FHIR IG](../../en/cat-harness/processes/dak-l3-ig.html) | Map L2 → L3 |
-| [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Personas and scenarios; Data dictionary and core data elements; Indicators and requirements |
+| [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Personas and scenarios (calls a sub-process); Data dictionary and core data elements (calls a sub-process); Indicators and requirements (calls a sub-process) |
+| [SMART Guideline end to end](../../en/cat-harness/processes/smart-guideline-end-to-end.html) | 4 · Create / adapt L2 DAK assets; 6 · Produce L3 assets |
 

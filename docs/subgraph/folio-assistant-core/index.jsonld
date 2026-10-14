@@ -39,9 +39,9 @@
       "@type": "bootstrap:Asset",
       "name": "npm-manifest",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/c67d31f50b65a1a6a1a1f60447633a5928a0601a1eaece55a166c41b133d45ed",
-        "bytes": 2340,
-        "sha256": "c67d31f50b65a1a6a1a1f60447633a5928a0601a1eaece55a166c41b133d45ed"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4955bdfe7a168777becc141afe8ee4544e73fbc28ed05a50dd909478c9b9ed28",
+        "bytes": 2746,
+        "sha256": "4955bdfe7a168777becc141afe8ee4544e73fbc28ed05a50dd909478c9b9ed28"
       },
       "title": "package.json"
     },
@@ -70,6 +70,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/core-code-lists",
       "@type": "bootstrap:Subgraph",
       "name": "core-code-lists"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/core-content",
+      "@type": "bootstrap:Subgraph",
+      "name": "core-content"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#directory/core-library",

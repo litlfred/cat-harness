@@ -81,10 +81,11 @@ rendered-by: auto-docs-viewer
 
 <ul class="subs">
 <li><a href="../archimate-schemas/">archimate-schemas</a> <span class="p">cat-harness/archimate/schemas</span> <span class="n">1</span></li>
-<li><a href="../core-schemas/">core-schemas</a> <span class="p">folio-assistant-core/schemas</span> <span class="n">13</span></li>
+<li><a href="../core-schemas/">core-schemas</a> <span class="p">folio-assistant-core/schemas</span> <span class="n">14</span></li>
 <li><a href="../fhir-harness-schemas/">fhir-harness-schemas</a> <span class="p">fhir-harness/schemas</span> <span class="n">8</span></li>
+<li><a href="../folio-assistant-sci-schemas/">folio-assistant-sci-schemas</a> <span class="p">folio-assistant-sci/schemas</span> <span class="n">1</span></li>
 <li><a href="../openapi-schemas/">openapi-schemas</a> <span class="p">cat-harness/openapi/schemas</span> <span class="n">1</span></li>
-<li><strong>schemas</strong> <span class="p">cat-harness/schemas</span> <span class="n">197</span></li>
+<li><strong>schemas</strong> <span class="p">cat-harness/schemas</span> <span class="n">198</span></li>
 </ul>
 
 <div class="fa-table-filter">
@@ -190,6 +191,10 @@ rendered-by: auto-docs-viewer
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/builders.ts"><code>builders</code></a><br><span class="p">cat-harness/schemas/builders.ts</span></td>
   <td>Each builder validates the input against its Zod schema and returns the typed object, providing compile-time AND runtime safety.</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/built-at-publish.ts"><code>built-at-publish</code></a><br><span class="p">cat-harness/schemas/built-at-publish.ts</span></td>
+  <td>Artefacts an instance must NOT commit, because no commit of it can hold them current: they are built when the site is published, and only then.</td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/carried-note.ts"><code>carried-note</code></a><br><span class="p">cat-harness/schemas/carried-note.ts</span></td>

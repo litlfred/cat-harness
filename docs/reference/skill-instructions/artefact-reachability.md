@@ -313,3 +313,10 @@ added to it: that skill's subject is a **kind of node** and this one's is a
 **kind of artefact**, and it already carries its own warning about growing a
 second subject.
 {% endraw %}
+
+## Processes that run this skill
+
+| process | step(s) that name it |
+|---|---|
+| [L2 component edit and review](../../en/cat-harness/processes/l2-component-edit-review.html) | Run the component's checker [content-validate · content-test] |
+

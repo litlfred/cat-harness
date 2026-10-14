@@ -4,6 +4,17 @@
   "@type": "bootstrap:Subgraph",
   "hasMember": [
     {
+      "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/fhir-harness.jsonld#skill/fhir-questionnaire-wireframe",
+      "@type": "bootstrap:Skill",
+      "name": "fhir-questionnaire-wireframe",
+      "payload": {
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/b4741a27ed2d9d473683978eaad55a2f9cae70cfabfa802e68b94a9c9860c485",
+        "bytes": 15105,
+        "sha256": "b4741a27ed2d9d473683978eaad55a2f9cae70cfabfa802e68b94a9c9860c485"
+      },
+      "title": "fhir-questionnaire-wireframe"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/fhir-harness/fhir-harness.jsonld#skill/fhir-validation",
       "@type": "bootstrap:Skill",
       "name": "fhir-validation",

@@ -38,7 +38,7 @@ The contract is [`input.schema.json`](https://github.com/litlfred/folio-assistan
 - **In:** the `use` (`design` or `as-is`), the `topic` (for CRDM, the proposal slug), the `surface`, and, from CRDM, the `requirements` that change it, the `proposal` path, the `humanReviewer` (requester or BA), the `channels` the candidates are shown in, and the `branch`.
 - **Out — the renderings:** `assetDir`, `intent`, and one `candidates[]` entry per candidate: its `source` HTML path, its `screenshots.web` and `screenshots.mobile` paths (from `wireframe-check`), their `staging` deep links, its per-criterion `entries`, and its `outcome` with the `reason`. `chosen` names the candidate, who chose it and the comment that records it; it is absent until a person chooses.
 - **Out — as changed assets:** `changedAssets[]` lists every wireframe file the branch adds, changes or removes (candidate HTML, screenshots, intent, reviews) in the record shape a staging preview's graph carries (`change`, `kind`, `title`, `before`, `after`, `source`, `pages` or `pagesUnknown`; `ChangedAsset` in cat-harness-tools `scripts/kg-changed-assets.ts`). The review therefore lists the drawings the same way it lists every other changed asset.
-- **Out — staging links:** `stagingLinks`, the shape every request for feedback carries ([`staging-review`](staging-review.md)), copied inline as `$defs.stagingLinks`.
+- **Out — staging links:** `stagingLinks`, the shape every request for feedback carries ([`staging-review`](staging-review.md)), copied inline as `definitions.stagingLinks`.
 
 ## Two uses
 
@@ -56,11 +56,14 @@ A few sentences: **who** the screen is for, **what they need to do**, and **what
 - **Mid-fidelity HTML:** monochrome, **real content** from the graph it shows, semantic icons, and no placeholder text.
 - **Web and mobile in every candidate**, through responsive CSS or two layouts. A candidate with one layout does not enter review.
 
-## 3. Mechanical checks (Tool `wireframe-check`)
+## 3. Mechanical checks ([`wireframe-viewport-check`](wireframe-viewport-check.md))
 
 ```sh
-bun run cat wireframe:check cat-harness/docs/wireframes/<topic>/*.html --out cat-harness/docs/wireframes/<topic>/checks
+bun run cat wireframe:check --use as-is --topic <topic> --surface <visualiser ref>
+bun run cat wireframe:check --use design --topic <slug> --surface <surface>
 ```
+
+The three flags are this skill's input. `--topic` picks the directory in the table above and every candidate in it (name candidates to check fewer; one outside it is refused), and the report goes to its `checks/`. `--use design` needs at least two candidates; `--use as-is` needs each marked `as-is` in its file name, and a `--surface` that is the topic or a ref `index.json` says it covers. The use, topic and surface are recorded in `report.json`.
 
 This renders each candidate at web (1280×800) and mobile (390×844) sizes. It records `script` entries for *renders*, *no-overflow* and *no-placeholder*, each `pass` or `fail` with a note, and writes a screenshot per viewport. Any `fail` sends the candidate back to step 2.
 
@@ -82,6 +85,15 @@ There are no scores and no averages (`methodology-adoption`, Refusals).
 
 - When entries for one criterion disagree, call **`Process_Adjudication`**. The adjudication leads, the checker's entry is kept, and a dispensation needs its reason.
 - The choice between surviving candidates is **`Process_OptionsAnalysis`**. Rejected candidates stay, each with the reason it lost.
+
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](staging-review.md) §"The deep-link rule".
 
 ## Showing it to the requester
 
@@ -109,5 +121,6 @@ This skill has its own process: **[Wireframe design review](../../en/cat-harness
 |---|---|
 | [CRDM Phases 2–4 — BPA and requirements](../../en/cat-harness/processes/crdm-requirements-definition.html) | Wireframe candidates (web + mobile) (calls a sub-process) |
 | [Wireframe design review](../../en/cat-harness/processes/wireframe-design-review.html) | Write the design intent; Produce >= 2 candidates, web + mobile; Mechanical checks, both viewports; Blind review per criterion |
+| [Questionnaire wireframe review](../../en/cat-harness/processes/questionnaire-wireframe-review.html) | Screenshots, web and mobile; Design review (calls a sub-process) |
 | [SMART Guideline end to end](../../en/cat-harness/processes/smart-guideline-end-to-end.html) | 4 · Create / adapt L2 DAK assets; Review each L2 asset (before / after if adapted) (calls a sub-process); Review each L3 asset (before / after if adapted) (calls a sub-process); 8a · Wireframe the application; Adjudicate the wireframes and the application (calls a sub-process) |
 

@@ -108,6 +108,26 @@ asserted by both test suites. If you change the algorithm, change it in both
 places, and change the vector in both tests. A drift here makes every AST read
 as stale, or worse, makes a stale one read as valid.
 
+**A later commit that changes no input is the same source.** If the recorded
+`sourceRevision` is an ancestor of HEAD and the recomputed `inputDigest`
+equals the recorded one, the revision counts as unchanged (`sameSourceAs`,
+2026-10-14). Without that, every README merge would make the cache stale and
+block the publish that reads it. A recorded commit the checkout cannot see
+(a shallow clone, another branch) stays stale.
+
+**After a build, check the commit, not the work tree: `--at <rev>`.** The
+Publisher writes under `input/` during a build: it renders
+`input/images-source/*.plantuml` into `input/images/*.svg`, which overwrites
+tracked files and adds untracked ones. A work-tree digest taken after the
+build is therefore not the commit's. On 2026-10-14 smart-trust run
+38609595363 recorded `35047502…` before its build and re-hashed `079a4e58…`
+after it, so the AST it had just built failed its own check.
+`validity --at HEAD` (and `digest --at HEAD`) hashes the inputs as committed
+(`inputDigestAt`). In a clean checkout this equals the work-tree digest and
+the exporter's. `ig-ast-refresh.yml` also puts `input/` back with plain git
+before its check, so the fix holds with a fhir-harness pinned before `--at`
+existed.
+
 The toolchain cannot be read from a checkout. Without `--toolchain` it is
 **assumed unchanged**, and the result's `current` says so. When the Publisher
 you would run is known, pass it.
@@ -205,12 +225,17 @@ bun run fhir-harness/scripts/ig-rendered-impact.ts --ig <root> --base origin/mai
 - **Do not render from an AST whose `validity` you did not check.**
 - **Do not re-implement any of this in a CI workflow.** Owner, 2026-09-30: if
   CI is ever added, it **calls these same scripts and tools**, so a CI result
-  and a local result are the same measurement.
+  and a local result are the same measurement. The one workflow there is,
+  `.github/workflows/ig-ast-refresh.yml` (2026-10-14; `ig-build-pipeline`
+  §"The AST cache lifecycle"), does exactly that: `ig-cache.sh`,
+  `ig-ast.ts validity` and `AstExportCli`.
 {% endraw %}
 
 ## Processes that run this skill
 
 | process | step(s) that name it |
 |---|---|
+| [An IG site, built from the AST on its cache branch](../../en/cat-harness/processes/ig-ast-cache.html) | Restore the AST from its cache branch and judge it |
 | [Is the incremental IG AST what a full build would have produced?](../../en/cat-harness/processes/ig-ast-delta-review.html) | Check the base AST against the IG's inputs; Diff base → head and render the delta pages; Read the rendered delta |
+| [SMART Guideline end to end](../../en/cat-harness/processes/smart-guideline-end-to-end.html) | Review each L3 asset (before / after if adapted) (calls a sub-process) |
 

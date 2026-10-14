@@ -273,3 +273,10 @@ Step 4 is the one that gets skipped. An index nothing re-derives is a snapshot,
 and a stale snapshot of someone else's corpus is worse than no index: it
 answers confidently and wrongly about artefacts that have since moved.
 {% endraw %}
+
+## Processes that run this skill
+
+| process | step(s) that name it |
+|---|---|
+| [SMART Guideline end to end](../../en/cat-harness/processes/smart-guideline-end-to-end.html) | 5 · Choose L3 dependencies (WHO / jurisdiction IGs) |
+

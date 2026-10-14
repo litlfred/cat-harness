@@ -16,7 +16,7 @@ parent: Skill instructions
 ## What you are reviewing, and against what
 
 One block, against the rules of the voices the folio has **activated** — not
-every voice it ships. `<name>.config.json` holds the list; an empty list means
+every voice it ships. The instance's config (its `index.config.json` entry) holds the list; an empty list means
 there is nothing for this skill to do and that is a pass, not a gap.
 
 ```sh

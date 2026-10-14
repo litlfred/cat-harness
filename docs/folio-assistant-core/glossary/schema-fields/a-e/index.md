@@ -13,16 +13,16 @@ permalink: /folio-assistant-core/glossary/schema-fields/a-e/
 
 Candidate terms extracted from every schema field with a doc comment: `<Declaration>.<field>` as the label, the comment's first paragraph as the definition. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2095 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 76 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 167 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 13 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2105 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 78 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 170 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 6 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 13 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
 
 One of 4 pages of this type, split by the first letter of the label: <a href="{{ '/folio-assistant-core/glossary/schema-fields/' | relative_url }}">all parts</a>.
 
-**Size:** this page holds 636 terms and is 354 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 650 terms and is 363 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>2395</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2395</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>2416</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2416</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -32,7 +32,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">636</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">650</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-A">A</a> <a href="#letter-B">B</a> <a href="#letter-C">C</a> <a href="#letter-D">D</a> <a href="#letter-E">E</a></nav>
 
@@ -991,7 +991,7 @@ BeanGraphSchema.name <span class="fa-gloss-status">candidate, extracted</span>
 BeanIndexItemSchema.file <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Repository-relative path of the bean file.</p>
+<p>Path of the bean file ON &#123;@link BeanIndexSchema} <code>fileRef</code> — the branch that keeps the store. Equal to the checkout path while the store is on <code>main</code>; since the state cutover it is a path on <code>cat/cat-harness/beans</code>.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/site-indexes.ts"><code>cat-harness/schemas/site-indexes.ts#BeanIndexItemSchema.file</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--site-indexes.beanindexitemschema.parent" data-fa-state="extracted" data-fa-gloss="">
@@ -1014,6 +1014,13 @@ BeanIndexSchema.edges <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>The block graph as ONE edge set, <code>blocker → blocked</code>, over both front-matter declarations (<code>blocking:</code> on the blocker, <code>blocked_by:</code> on the blocked), deduplicated — <code>blockEdges</code> in <code>scripts/beans.ts</code>, bean <code>vhqq</code>. An end may name no bean in <code>items</code>: that edge is kept here and reported as a <code>blocking-unknown</code> finding, never dropped.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/site-indexes.ts"><code>cat-harness/schemas/site-indexes.ts#BeanIndexSchema.edges</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--site-indexes.beanindexschema.fileweb" data-fa-state="extracted" data-fa-gloss="">
+BeanIndexSchema.fileWeb <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The repository and branch every item's <code>file</code> is a path on. A board that composes <code>&lt;repoWeb&gt;/blob/main/&lt;file&gt;</code> sends every bean to a 404 once the store is kept on its own branch (owner, 2026-10-13). Optional so a projection written before these keys still parses; absent means <code>repoWeb</code> at <code>main</code>.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/site-indexes.ts"><code>cat-harness/schemas/site-indexes.ts#BeanIndexSchema.fileWeb</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--site-indexes.beanindexschema.plan" data-fa-state="extracted" data-fa-gloss="">
 BeanIndexSchema.plan <span class="fa-gloss-status">candidate, extracted</span>
@@ -1547,6 +1554,48 @@ BoardSchema.title <span class="fa-gloss-status">candidate, extracted</span>
 <p>What a reader sees in a tab or a heading.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/board.ts"><code>cat-harness/schemas/board.ts#BoardSchema.title</code></a></p>
 </dd>
+<dt id="cat-harness--kg-schema-fields--built-at-publish.builtatpublishschema.because" data-fa-state="extracted" data-fa-gloss="">
+BuiltAtPublishSchema.because <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Which half of the rule it fails.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/built-at-publish.ts"><code>cat-harness/schemas/built-at-publish.ts#BuiltAtPublishSchema.because</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--built-at-publish.builtatpublishschema.directory" data-fa-state="extracted" data-fa-gloss="">
+BuiltAtPublishSchema.directory <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The declared directory id this path fills, when it is one (so presence checks do not expect it on disk).</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/built-at-publish.ts"><code>cat-harness/schemas/built-at-publish.ts#BuiltAtPublishSchema.directory</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--built-at-publish.builtatpublishschema.from" data-fa-state="extracted" data-fa-gloss="">
+BuiltAtPublishSchema.from <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><code>state</code> only: the declared directory ids of the branch-kept graphs it is computed from.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/built-at-publish.ts"><code>cat-harness/schemas/built-at-publish.ts#BuiltAtPublishSchema.from</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--built-at-publish.builtatpublishschema.path" data-fa-state="extracted" data-fa-gloss="">
+BuiltAtPublishSchema.path <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Instance-relative; a directory ends in <code>/</code>.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/built-at-publish.ts"><code>cat-harness/schemas/built-at-publish.ts#BuiltAtPublishSchema.path</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--built-at-publish.builtatpublishschema.reason" data-fa-state="extracted" data-fa-gloss="">
+BuiltAtPublishSchema.reason <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>One sentence a reviewer can check: what makes it pin- or state-dependent.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/built-at-publish.ts"><code>cat-harness/schemas/built-at-publish.ts#BuiltAtPublishSchema.reason</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--built-at-publish.builtatpublishschema.writer" data-fa-state="extracted" data-fa-gloss="">
+BuiltAtPublishSchema.writer <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Package scripts that write it, in order — run as <code>bun run cat &lt;script&gt;</code>.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/built-at-publish.ts"><code>cat-harness/schemas/built-at-publish.ts#BuiltAtPublishSchema.writer</code></a></p>
+</dd>
 </dl>
 
 <h2 id="letter-C">C</h2>
@@ -1816,6 +1865,13 @@ CatHarnessDeclaration.avatar <span class="fa-gloss-status">candidate, extracted<
 <dd>
 <p>The instance's own avatar (sod4 #4); the table in avatars.ts covers only the instances below the harness.</p>
 <p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/cat-harness.ts"><code>cat-harness/schemas/cat-harness.ts#CatHarnessDeclaration.avatar</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--cat-harness.catharnessdeclaration.builtatpublish" data-fa-state="extracted" data-fa-gloss="">
+CatHarnessDeclaration.builtAtPublish <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Artefacts this instance serves and must never commit, each built at publish by the package scripts it names — &#123;@link BuiltAtPublish}. Owner, 2026-10-14 (&quot;B1&quot;): a page computed over the checkout's other instances, or from a branch-kept graph, cannot be current in a commit of this one.</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/cat-harness.ts"><code>cat-harness/schemas/cat-harness.ts#CatHarnessDeclaration.builtAtPublish</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--cat-harness.catharnessdeclaration.canonicalurl" data-fa-state="extracted" data-fa-gloss="">
 CatHarnessDeclaration.canonicalUrl <span class="fa-gloss-status">candidate, extracted</span>
@@ -4212,6 +4268,48 @@ DublinCoreRef.source <span class="fa-gloss-status">candidate, extracted</span>
 
 <h2 id="letter-E">E</h2>
 <dl class="fa-gloss">
+<dt id="folio-assistant-sci--kg-schema-fields--editor-checker.editorcheckernodeschema.check" data-fa-state="extracted" data-fa-gloss="">
+EditorCheckerNodeSchema.check <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><code>checkSuggestion(before, after, ctx)</code> → findings. Errors are syntax errors; warnings never block.</p>
+<p class="fa-gloss-meta">Schema fields of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/schemas/editor-checker.ts"><code>folio-assistant-sci/schemas/editor-checker.ts#EditorCheckerNodeSchema.check</code></a></p>
+</dd>
+<dt id="folio-assistant-sci--kg-schema-fields--editor-checker.editorcheckernodeschema.contenttype" data-fa-state="extracted" data-fa-gloss="">
+EditorCheckerNodeSchema.contentType <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The content type whose blocks this profile serves (a declared <code>contentAdapters[].contentType</code>).</p>
+<p class="fa-gloss-meta">Schema fields of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/schemas/editor-checker.ts"><code>folio-assistant-sci/schemas/editor-checker.ts#EditorCheckerNodeSchema.contentType</code></a></p>
+</dd>
+<dt id="folio-assistant-sci--kg-schema-fields--editor-checker.editorcheckernodeschema.crepe" data-fa-state="extracted" data-fa-gloss="">
+EditorCheckerNodeSchema.crepe <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Crepe settings for the profile.</p>
+<p class="fa-gloss-meta">Schema fields of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/schemas/editor-checker.ts"><code>folio-assistant-sci/schemas/editor-checker.ts#EditorCheckerNodeSchema.crepe</code></a></p>
+</dd>
+<dt id="folio-assistant-sci--kg-schema-fields--editor-checker.editorcheckernodeschema.kinds" data-fa-state="extracted" data-fa-gloss="">
+EditorCheckerNodeSchema.kinds <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Block kinds it is limited to. Absent means every Markdown block of the content type.</p>
+<p class="fa-gloss-meta">Schema fields of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/schemas/editor-checker.ts"><code>folio-assistant-sci/schemas/editor-checker.ts#EditorCheckerNodeSchema.kinds</code></a></p>
+</dd>
+<dt id="folio-assistant-sci--kg-schema-fields--editor-checker.editorcheckernodeschema.macros" data-fa-state="extracted" data-fa-gloss="">
+EditorCheckerNodeSchema.macros <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p><code>(katexMacros) =&gt; macros</code>: the profile's macro table from the page's KaTeX macros, passed to <code>check</code> (as <code>macros</code>) and to <code>crepe.remarkFirst</code>. Absent: the checker's own defaults.</p>
+<p class="fa-gloss-meta">Schema fields of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/schemas/editor-checker.ts"><code>folio-assistant-sci/schemas/editor-checker.ts#EditorCheckerNodeSchema.macros</code></a></p>
+</dd>
+<dt id="folio-assistant-sci--kg-schema-fields--editor-checker.editorcheckernodeschema.rawlatexfirstfor" data-fa-state="extracted" data-fa-gloss="">
+EditorCheckerNodeSchema.rawLatexFirstFor <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Block kinds whose raw-LaTeX pane is offered up front (owner, 2026-10-14: &quot;both&quot;).</p>
+<p class="fa-gloss-meta">Schema fields of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/schemas/editor-checker.ts"><code>folio-assistant-sci/schemas/editor-checker.ts#EditorCheckerNodeSchema.rawLatexFirstFor</code></a></p>
+</dd>
 <dt id="cat-harness--kg-schema-fields--merge-queue.ejectionschema.evidenceurl" data-fa-state="extracted" data-fa-gloss="">
 EjectionSchema.evidenceUrl <span class="fa-gloss-status">candidate, extracted</span>
 </dt>

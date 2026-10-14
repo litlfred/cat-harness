@@ -105,4 +105,5 @@ are good.
 | [Adopting an upstream version bump](../../en/cat-harness/processes/upstream-version-adoption.html) | Adopt, hold or decline |
 | [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Approve |
 | [Editing and HCI validation](../../en/cat-harness/processes/editing-hci-validation.html) | Review the findings; Record the decision and its audit note |
+| [SMART Guideline end to end](../../en/cat-harness/processes/smart-guideline-end-to-end.html) | Adjudicate L2 dependencies (calls a sub-process); Adjudicate L3 dependencies (calls a sub-process) |
 

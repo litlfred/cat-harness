@@ -4,6 +4,11 @@
   "@type": "bootstrap:Subgraph",
   "hasMember": [
     {
+      "@id": "cat-harness:graphTypology/editor-checkers",
+      "@type": "bootstrap:GraphTypology",
+      "name": "editor-checkers"
+    },
+    {
       "@id": "cat-harness:graphTypology/lean",
       "@type": "bootstrap:GraphTypology",
       "name": "lean"
@@ -12,6 +17,11 @@
       "@id": "cat-harness:graphTypology/pipeline-plugins",
       "@type": "bootstrap:GraphTypology",
       "name": "pipeline-plugins"
+    },
+    {
+      "@id": "cat-harness:graphTypology/references",
+      "@type": "bootstrap:GraphTypology",
+      "name": "references"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/folio-assistant-sci.jsonld#asset/agent-instructions",
@@ -29,9 +39,9 @@
       "@type": "bootstrap:Asset",
       "name": "checkout-scripts",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/5cf0854513c554c523da80d0528a240010b000e285fd3bcb5f4496b2f066a964",
-        "bytes": 304,
-        "sha256": "5cf0854513c554c523da80d0528a240010b000e285fd3bcb5f4496b2f066a964"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/ab73601f8a22df136769d686b8dd3afdd2e07c348f5922ce757b786a3af7a75e",
+        "bytes": 657,
+        "sha256": "ab73601f8a22df136769d686b8dd3afdd2e07c348f5922ce757b786a3af7a75e"
       },
       "title": "package.json — folio-assistant-sci"
     },
@@ -62,6 +72,11 @@
       "name": "folio-assistant-sci-content-adapters"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/folio-assistant-sci.jsonld#directory/folio-assistant-sci-editor-checkers",
+      "@type": "bootstrap:Subgraph",
+      "name": "folio-assistant-sci-editor-checkers"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/folio-assistant-sci.jsonld#directory/folio-assistant-sci-pipeline-plugins",
       "@type": "bootstrap:Subgraph",
       "name": "folio-assistant-sci-pipeline-plugins"
@@ -82,6 +97,11 @@
       "name": "folio-assistant-sci-typologies"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/folio-assistant-sci.jsonld#directory/folio-assistant-sci-validators",
+      "@type": "bootstrap:Subgraph",
+      "name": "folio-assistant-sci-validators"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/folio-assistant-sci.jsonld#directory/library",
       "@type": "bootstrap:Subgraph",
       "name": "library"
@@ -95,6 +115,11 @@
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/folio-assistant-sci.jsonld#directory/sci-adapters",
       "@type": "bootstrap:Subgraph",
       "name": "sci-adapters"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/folio-assistant-sci.jsonld#directory/sci-extracted-references",
+      "@type": "bootstrap:Subgraph",
+      "name": "sci-extracted-references"
     },
     {
       "@id": "https://litlfred.github.io/folio-assistant/folio-assistant-sci/folio-assistant-sci.jsonld#directory/sci-lean",

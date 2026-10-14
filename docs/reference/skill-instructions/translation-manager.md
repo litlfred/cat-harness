@@ -585,7 +585,7 @@ reader, whatever locale they chose, which is the bug this section records.
 
 ## Six UN languages
 
-The default `supportedLocales` in `<name>.config.json`:
+The default `supportedLocales` in the instance's config (its `index.config.json` entry):
 
 | Code | Language | Native |
 |---|---|---|
@@ -713,6 +713,15 @@ provides smooth 0.4s transitions for sidebar and content layout:
 When presenting translated content for review, use the `staging-review`
 skill to provide before/after URL comparison tables. See
 `schemas/staging.ts` for the `StagingComparison` schema.
+
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](staging-review.md) §"The deep-link rule".
 {% endraw %}
 
 ## Processes that run this skill

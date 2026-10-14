@@ -133,6 +133,42 @@ nothing downstream read it.
 down to upstream's snake_case field names, because renaming them would insert a
 translation step between a producer we do not control and a consumer we do.
 
+## In the AST lifecycle: the overlay on fhir-harness's refresh
+
+Owner, 2026-10-14: *"that should be in fhir-harness then smart-* all use
+that"*, and *"i want AST to be used. it should be in cache branch"*. smart-base's
+IG is published from the AST on its cache branch
+(`cat/fhir-harness/fhir-ast/<package id>`), like every smart-* IG. The one
+writer of that branch is fhir-harness's reusable `ig-ast-refresh.yml`
+(skill `ig-build-pipeline`, §"The AST cache lifecycle"). The plain AST
+exporter does not run this phase, so smart-base supplies it as an
+**overlay**. fhir-harness never names it.
+
+- **The command** is [`smart-base/scripts/dak-pre-export.sh`](https://github.com/litlfred/folio-assistant/blob/main/smart-base/scripts/dak-pre-export.sh)
+  (`bun run cat smart-base:dak-pre-export`). It runs steps 1, 2, 4, 5 and 6
+  of the table above, in that order. It uses this checkout's own
+  `input/scripts/`, never a download from another repository's `main`. It
+  does not repeat step 3, as §"Steps 1 and 3" says. Steps 4–6 run only when
+  `dak.json` is present, as in `ghbuild.yml`. Any failure fails the run.
+- **The caller** is smart-base's `.github/workflows/ig-ast-refresh.yml`:
+  fhir-harness's template plus `pre-export: bash smart-base/scripts/dak-pre-export.sh`.
+  It runs by hand, and on every push to `main` that changes `sushi-config.yaml`,
+  `ig.ini` or `input/**` (owner, 2026-10-14: refresh automatically when the IG
+  source changes).
+- **What the cache records.** This phase rewrites the IG's inputs:
+  `sushi-config.yaml`'s `pages:`/`menu:` and placeholder pages under
+  `input/pagecontent/`. fhir-harness takes the clean commit's input digest
+  before the command runs, puts the inputs back after the export, and records
+  the AST against the clean commit. The prepared tree's digest is kept under
+  the manifest's `preExport`. So the cache verifies on any clean checkout, and
+  a merge that changes no input does not make it stale.
+- **The counterpart** after the export is not the Publisher's `output/` any
+  more. It is `dak-ast-sidecars.ts`, which runs the post-processing schema and
+  vocabulary generators over the AST ([`dak-postprocessing`](dak-postprocessing.md)).
+
+`ghbuild.yml` is WHO's inherited build and keeps its own copy of these steps
+for downstream repositories. It is not how smart-base's cache is written.
+
 ## Where the counterpart is
 
 [`dak-postprocessing`](dak-postprocessing.md) — the eight steps after the
@@ -141,3 +177,10 @@ and the authority to release. [`smart-stack-layering`](smart-stack-layering.md)
 — which layer each of these belongs to, and the falsification test that placing
 them is what checks the stack.
 {% endraw %}
+
+## Processes that run this skill
+
+| process | step(s) that name it |
+|---|---|
+| [SMART Guideline end to end](../../en/cat-harness/processes/smart-guideline-end-to-end.html) | 4 · Create / adapt L2 DAK assets |
+

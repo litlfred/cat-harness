@@ -19,9 +19,9 @@
       "@type": "bootstrap:Asset",
       "name": "checkout-scripts",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/4417f6db08ab32d7ca26512e4e6ba4f955663b2662727946fac8c062f08aaabb",
-        "bytes": 3602,
-        "sha256": "4417f6db08ab32d7ca26512e4e6ba4f955663b2662727946fac8c062f08aaabb"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/cae08a256ce0d346a3cebf07cfd33f1871b03a25434a5cdfb8ee88188e07329c",
+        "bytes": 4039,
+        "sha256": "cae08a256ce0d346a3cebf07cfd33f1871b03a25434a5cdfb8ee88188e07329c"
       },
       "title": "package.json — smart-base"
     },
@@ -40,6 +40,11 @@
       "@id": "http://smart.who.int/base/smart-base.jsonld#directory/library",
       "@type": "bootstrap:Subgraph",
       "name": "library"
+    },
+    {
+      "@id": "http://smart.who.int/base/smart-base.jsonld#directory/library-9789240116191-eng-l1-extraction",
+      "@type": "bootstrap:Subgraph",
+      "name": "library-9789240116191-eng-l1-extraction"
     },
     {
       "@id": "http://smart.who.int/base/smart-base.jsonld#directory/methodologies",
@@ -142,6 +147,11 @@
       "name": "tools"
     },
     {
+      "@id": "http://smart.who.int/base/smart-base.jsonld#role/l1-extraction-reviewer",
+      "@type": "bootstrap:Role",
+      "title": "L1 extraction reviewer"
+    },
+    {
       "@id": "cat-harness:graphTypology/document-kinds",
       "@type": "bootstrap:GraphTypology",
       "name": "document-kinds"
@@ -155,6 +165,11 @@
       "@id": "cat-harness:graphTypology/ig-pages",
       "@type": "bootstrap:GraphTypology",
       "name": "ig-pages"
+    },
+    {
+      "@id": "cat-harness:graphTypology/l1-extraction",
+      "@type": "bootstrap:GraphTypology",
+      "name": "l1-extraction"
     },
     {
       "@id": "cat-harness:graphTypology/themes",

@@ -13,16 +13,16 @@ permalink: /folio-assistant-core/glossary/schema-fields/f-l/
 
 Candidate terms extracted from every schema field with a doc comment: `<Declaration>.<field>` as the label, the comment's first paragraph as the definition. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2095 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 76 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 167 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 13 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
+From: bootstrap-tools 44 (<a href="{{ '/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · cat-harness 2105 (<a href="{{ '/assets/glossary/cat-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 78 (<a href="{{ '/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 170 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 6 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 13 (<a href="{{ '/assets/glossary/smart-base--kg-schema-fields.skos.jsonld' | relative_url }}">SKOS</a>).
 
 One of 4 pages of this type, split by the first letter of the label: <a href="{{ '/folio-assistant-core/glossary/schema-fields/' | relative_url }}">all parts</a>.
 
-**Size:** this page holds 452 terms and is 251 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 455 terms and is 253 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>2395</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2395</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>2416</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>2416</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -32,7 +32,7 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">452</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">455</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-F">F</a> <a href="#letter-G">G</a> <a href="#letter-H">H</a> <a href="#letter-I">I</a> <a href="#letter-J">J</a> <a href="#letter-K">K</a> <a href="#letter-L">L</a></nav>
 
@@ -122,6 +122,13 @@ FhirArtifactSchema.category <span class="fa-gloss-status">candidate, extracted</
 <p>Editorial grouping from <code>artifacts.html</code>. Absent means the IG published no artefact page.</p>
 <p class="fa-gloss-meta">Schema fields of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/schemas/fhir-artifact-index.ts"><code>fhir-harness/schemas/fhir-artifact-index.ts#FhirArtifactSchema.category</code></a></p>
 </dd>
+<dt id="fhir-harness--kg-schema-fields--fhir-artifact-index.fhirartifactschema.code" data-fa-state="extracted" data-fa-gloss="">
+FhirArtifactSchema.code <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The resource's own <code>code</code> when it is a concept (<code>Basic.code</code>, a CodeableConcept; <code>Questionnaire.code</code>, a list of Codings, kept as the codings with no text). A string <code>code</code> (SearchParameter's) is a computable name, not a concept, and is not this. Copied, never looked up: a coding with no display stays without one.</p>
+<p class="fa-gloss-meta">Schema fields of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/schemas/fhir-artifact-index.ts"><code>fhir-harness/schemas/fhir-artifact-index.ts#FhirArtifactSchema.code</code></a></p>
+</dd>
 <dt id="fhir-harness--kg-schema-fields--fhir-artifact-index.fhirartifactschema.key" data-fa-state="extracted" data-fa-gloss="">
 FhirArtifactSchema.key <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -135,6 +142,13 @@ FhirArtifactSchema.listedAt <span class="fa-gloss-status">candidate, extracted</
 <dd>
 <p>Position on the Publisher's <code>artifacts.html</code>, 0-based, first appearance. The category's order and the artefact's order within it are both read off this — a renderer that must match the Publisher's page (owner, 2026-10-01: every phase renders equivalent to the standard IG render) has no other source for either. Absent exactly when <code>category</code> is.</p>
 <p class="fa-gloss-meta">Schema fields of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/schemas/fhir-artifact-index.ts"><code>fhir-harness/schemas/fhir-artifact-index.ts#FhirArtifactSchema.listedAt</code></a></p>
+</dd>
+<dt id="fhir-harness--kg-schema-fields--fhir-artifact-index.fhirartifactschema.profiles" data-fa-state="extracted" data-fa-gloss="">
+FhirArtifactSchema.profiles <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The resource's own <code>meta.profile</code>: the profiles it says it conforms to, as written. An instance has no canonical, title or description of its own, and this and <code>code</code> are what it does state; a list that showed neither showed an empty row. Absent when the resource claims none.</p>
+<p class="fa-gloss-meta">Schema fields of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/schemas/fhir-artifact-index.ts"><code>fhir-harness/schemas/fhir-artifact-index.ts#FhirArtifactSchema.profiles</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--types.figureblock.caption" data-fa-state="extracted" data-fa-gloss="">
 FigureBlock.caption <span class="fa-gloss-status">candidate, extracted</span>
@@ -1701,6 +1715,13 @@ IndexProvenanceSchema.sidecarEnumerations <span class="fa-gloss-status">candidat
 <dd>
 <p>The IG API enumeration schemas, when present.</p>
 <p class="fa-gloss-meta">Schema fields of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/schemas/fhir-artifact-index.ts"><code>fhir-harness/schemas/fhir-artifact-index.ts#IndexProvenanceSchema.sidecarEnumerations</code></a></p>
+</dd>
+<dt id="cat-harness--kg-schema-fields--index-config.indexsiteschema.agentrun" data-fa-state="extracted" data-fa-gloss="">
+IndexSiteSchema.agentRun <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>This repository is AGENT-RUN: an agent builds and publishes its site (<code>stage-local.ts</code>), and its publish workflows keep only <code>workflow_dispatch</code>, as documentation of what the agent path must match rather than something to dispatch (owner, 2026-10-10, bean <code>n3h9</code>; the <code>feature-staging</code> skill, &quot;Agent-run repositories&quot;).</p>
+<p class="fa-gloss-meta">Schema fields of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/schemas/index-config.ts"><code>cat-harness/schemas/index-config.ts#IndexSiteSchema.agentRun</code></a></p>
 </dd>
 <dt id="cat-harness--kg-schema-fields--index-config.indexsiteschema.landing" data-fa-state="extracted" data-fa-gloss="">
 IndexSiteSchema.landing <span class="fa-gloss-status">candidate, extracted</span>

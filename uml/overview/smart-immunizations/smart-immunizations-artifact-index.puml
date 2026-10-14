@@ -32,6 +32,8 @@ package "smart-immunizations/smart-immunizations-artifact-index" as pkg_smart_im
     version [0..1] : string
     category [0..1] : string
     listedAt [0..1] : integer
+    profiles [1..*] : string[]
+    code [0..1] : object
     published [1] : object
     sidecars [0..1] : object
     materialization [1] : object

@@ -1,0 +1,44 @@
+classDiagram
+  direction TB
+  namespace folio_assistant_sci__sci_extracted_references {
+    class folio_assistant_sci_sci_extracted_references_folio_reference_v1_Author["Author"] {
+      <<json: ReferenceNodeSchema>>
+      family [0..1] string
+      given [0..1] string
+      literal [0..1] string
+    }
+    class folio_assistant_sci_sci_extracted_references_folio_reference_v1_Editor["Editor"] {
+      <<json: ReferenceNodeSchema>>
+      family [0..1] string
+      given [0..1] string
+      literal [0..1] string
+    }
+    class folio_assistant_sci_sci_extracted_references_folio_reference_v1_folio_reference_v1["folio-reference/v1"] {
+      <<json: ReferenceNodeSchema>>
+      $schema [1] 'folio-reference/v1'
+      id [1] string
+      type [1] string
+      title [0..1] string
+      author [0..*] Author[]
+      editor [0..*] Editor[]
+      issued [0..1] object
+      container-title [0..1] string
+      publisher [0..1] string
+      volume [0..1] string | number
+      issue [0..1] string | number
+      page [0..1] string
+      DOI [0..1] string
+      ISBN [0..1] string
+      URL [0..1] string
+      language [0..1] string
+      abstract [0..1] string
+      provenance [0..1] authored | catalogue | library | extracted
+      derivedFrom [0..1] string
+      heldAt [0..1] string
+    }
+  }
+  folio_assistant_sci_sci_extracted_references_folio_reference_v1_folio_reference_v1 *-- "0..*" folio_assistant_sci_sci_extracted_references_folio_reference_v1_Author : author
+  folio_assistant_sci_sci_extracted_references_folio_reference_v1_folio_reference_v1 *-- "0..*" folio_assistant_sci_sci_extracted_references_folio_reference_v1_Editor : editor
+  cssClass "folio_assistant_sci_sci_extracted_references_folio_reference_v1_Author" fa_uml_kind_references
+  cssClass "folio_assistant_sci_sci_extracted_references_folio_reference_v1_Editor" fa_uml_kind_references
+  cssClass "folio_assistant_sci_sci_extracted_references_folio_reference_v1_folio_reference_v1" fa_uml_kind_references

@@ -81,10 +81,10 @@ rendered-by: auto-docs-viewer
 
 <ul class="subs">
 <li><a href="../core-processes/">core-processes</a> <span class="p">folio-assistant-core/processes</span> <span class="n">17</span></li>
-<li><a href="../fhir-harness-processes/">fhir-harness-processes</a> <span class="p">fhir-harness/processes</span> <span class="n">3</span></li>
+<li><a href="../fhir-harness-processes/">fhir-harness-processes</a> <span class="p">fhir-harness/processes</span> <span class="n">5</span></li>
 <li><strong>processes</strong> <span class="p">cat-harness/processes</span> <span class="n">67</span></li>
 <li><a href="../sci-processes/">sci-processes</a> <span class="p">folio-assistant-sci/processes</span> <span class="n">3</span></li>
-<li><a href="../smart-base-house-processes/">smart-base-house-processes</a> <span class="p">smart-base/processes</span> <span class="n">2</span></li>
+<li><a href="../smart-base-house-processes/">smart-base-house-processes</a> <span class="p">smart-base/processes</span> <span class="n">5</span></li>
 <li><a href="../smart-base-processes/">smart-base-processes</a> <span class="p">smart-base/methodologies/processes</span> <span class="n">1</span></li>
 </ul>
 
@@ -102,7 +102,7 @@ rendered-by: auto-docs-viewer
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/content/review-task.bpmn"><code>Review task</code></a><br><span class="p">cat-harness/processes/content/review-task.bpmn</span></td>
-  <td>The generic review position: classify what changed, descend into the review that fits it, consolidate what comes back, and accept or send back.<div class="f"><span class="k">activities</span> 6</div><div class="f"><span class="k">lanes</span> Reviewer / SME · Editors + authoring agents</div><div class="f"><span class="k">skills</span> content-review, content-validate</div></td>
+  <td>The generic review position: classify what changed, descend into the review that fits it, consolidate what comes back, and accept or send back.<div class="f"><span class="k">activities</span> 6</div><div class="f"><span class="k">lanes</span> Reviewer / SME · Editors + authoring agents</div><div class="f"><span class="k">skills</span> content-review, content-validate, staging-review</div></td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/content/voice-review.bpmn"><code>Voice overlay review</code></a><br><span class="p">cat-harness/processes/content/voice-review.bpmn</span></td>
@@ -114,7 +114,7 @@ rendered-by: auto-docs-viewer
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/kg-separation.bpmn"><code>A knowledge graph leaves for its own repositories</code></a><br><span class="p">cat-harness/processes/kg/kg-separation.bpmn</span></td>
-  <td>Move part of a knowledge graph into repositories of its own: the content and the tools that write and check it separate as a pair, into two repositories, not one.<div class="f"><span class="k">activities</span> 18</div><div class="f"><span class="k">lanes</span> Authoring agent · Platform authoring agent · Publication manager · Build pipeline · Administrator</div><div class="f"><span class="k">skills</span> deletion-requires-confirmation, graph-detanglement, instance-publication, kg-separation, opening-brief, package-release, publish-verification, upstream-version-adoption</div></td>
+  <td>Move part of a knowledge graph into repositories of its own: the content and the tools that write and check it separate as a pair, into two repositories, not one.<div class="f"><span class="k">activities</span> 19</div><div class="f"><span class="k">lanes</span> Authoring agent · Platform authoring agent · Publication manager · Build pipeline · Administrator</div><div class="f"><span class="k">skills</span> deletion-requires-confirmation, graph-detanglement, instance-publication, kg-separation, opening-brief, package-release, publish-verification, upstream-version-adoption</div></td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/kg/kg-to-portal.bpmn"><code>KG to public portal</code></a><br><span class="p">cat-harness/processes/kg/kg-to-portal.bpmn</span></td>
@@ -202,7 +202,7 @@ rendered-by: auto-docs-viewer
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-deliver.bpmn"><code>CRDM Phase 6 — implement, MVP, acceptance</code></a><br><span class="p">cat-harness/processes/process/crdm-deliver.bpmn</span></td>
-  <td>One phase and not three, because the loops say so: an increment the BA rejects, an MVP that is not ready, and stakeholder findings all route back into implementation.<div class="f"><span class="k">activities</span> 9</div><div class="f"><span class="k">lanes</span> BA / Feature Requestor · Agent · Stakeholders</div><div class="f"><span class="k">skills</span> crdm-requirements-workflow, delivery-summary, feature-staging, prepare-merge</div></td>
+  <td>One phase and not three, because the loops say so: an increment the BA rejects, an MVP that is not ready, and stakeholder findings all route back into implementation.<div class="f"><span class="k">activities</span> 9</div><div class="f"><span class="k">lanes</span> BA / Feature Requestor · Agent · Stakeholders</div><div class="f"><span class="k">skills</span> crdm-requirements-workflow, delivery-summary, feature-staging, prepare-merge, staging-review</div></td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-issue-linking.bpmn"><code>CRDM — link the work to an issue</code></a><br><span class="p">cat-harness/processes/process/crdm-issue-linking.bpmn</span></td>
@@ -214,7 +214,7 @@ rendered-by: auto-docs-viewer
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements-definition.bpmn"><code>CRDM Phases 2–4 — BPA and requirements</code></a><br><span class="p">cat-harness/processes/process/crdm-requirements-definition.bpmn</span></td>
-  <td>Map the current workflow, then define the requirements and the impact they carry, and loop until approved.<div class="f"><span class="k">activities</span> 5</div><div class="f"><span class="k">lanes</span> BA / Feature Requestor · Agent · Stakeholders</div><div class="f"><span class="k">skills</span> bpmn-authoring, crdm-requirements-workflow, data-modelling, decision-comparison</div></td>
+  <td>Map the current workflow, then define the requirements and the impact they carry, and loop until approved.<div class="f"><span class="k">activities</span> 6</div><div class="f"><span class="k">lanes</span> BA / Feature Requestor · Agent · Stakeholders</div><div class="f"><span class="k">skills</span> bpmn-authoring, crdm-requirements-workflow, data-modelling, decision-comparison, wireframe-design-review</div></td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn"><code>CRDM requirements</code></a><br><span class="p">cat-harness/processes/process/crdm-requirements.bpmn</span></td>
@@ -258,7 +258,7 @@ rendered-by: auto-docs-viewer
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/code-change-review.bpmn"><code>Code change and review</code></a><br><span class="p">cat-harness/processes/sdlc/code-change-review.bpmn</span></td>
-  <td>Getting a change to the PLATFORM from &quot;this is needed&quot; to merged: claim the work, branch and announce it, make the change, prove it against the platform's own gates, and carry it through review to a merge somebody else…<div class="f"><span class="k">activities</span> 11</div><div class="f"><span class="k">lanes</span> Authoring agent · CI/CD pipeline · Code reviewer</div><div class="f"><span class="k">skills</span> bean-coordination, before-after-preview, ci-health, code-node-review, continual-progress, issue-working, platform-gates, prepare-merge, todo-manager, watch</div></td>
+  <td>Getting a change to the PLATFORM from &quot;this is needed&quot; to merged: claim the work, branch and announce it, make the change, prove it against the platform's own gates, and carry it through review to a merge somebody else…<div class="f"><span class="k">activities</span> 11</div><div class="f"><span class="k">lanes</span> Authoring agent · CI/CD pipeline · Code reviewer</div><div class="f"><span class="k">skills</span> bean-coordination, before-after-preview, ci-health, code-node-review, continual-progress, issue-working, platform-gates, prepare-merge, staging-review, todo-manager, watch</div></td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/code-quality-gates.bpmn"><code>The gates a change must pass before it can merge</code></a><br><span class="p">cat-harness/processes/sdlc/code-quality-gates.bpmn</span></td>

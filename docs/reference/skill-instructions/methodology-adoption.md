@@ -243,4 +243,5 @@ while resting on nothing, which is the failure this whole section is about.
 | [SWOT situation analysis](../../en/cat-harness/processes/swot-analysis.html) | Hand the candidates to a decision methodology |
 | [Options analysis](../../en/cat-harness/processes/options-analysis.html) | Select the methodology by context; Apply it, and state each option's trade-offs |
 | [DIIG — from a health system bottleneck to a costed implementation plan](../../en/cat-harness/processes/diig-investment-path.html) | Form the team and establish goals; Map the current state and confirm bottlenecks; Prioritize, and map to health system challenges; Determine appropriate digital health interventions; Plan the implementation; Link to the enterprise architecture; Develop a budget; Monitor, and use data effectively; Make the value proposition and set next steps |
+| [Phase 1: Planning](../../en/cat-harness/processes/SGAuthoring.DAKLifecycle.html) | Establish development process (Agile/Scrum) and tooling |
 

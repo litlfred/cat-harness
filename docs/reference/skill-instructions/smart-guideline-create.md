@@ -65,7 +65,7 @@ every guideline repository instantiates smart-base **the same way**.
 | at the repository root | under `smart-base/` |
 |---|---|
 | the IG source as WHO publishes it (`sushi-config.yaml`, `input/`), unchanged | this guideline's data: its declaration, artefact index, menu, generated pages, QA results |
-| `smart-base.config.json` | |
+| `index.config.json`, whose `smart-base` entry carries the instance's config inline (bean `ymvt`: no `smart-base.config.json`) | |
 
 So while the guideline is staged in place (route `in-repo`), its directory is
 already that `smart-base/` data directory, under whatever path `livesAt`

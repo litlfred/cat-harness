@@ -91,5 +91,7 @@ diagram is what the release is cut from.
 |---|---|
 | [Incremental IG build](../../en/cat-harness/processes/ig-incremental-build.html) | SUSHI on the restricted tank |
 | [L3 FHIR IG pipeline](../../en/cat-harness/processes/l3-fhir-pipeline.html) | Author FSH profiles; SUSHI compile → FHIR JSON |
+| [Questionnaire wireframe review](../../en/cat-harness/processes/questionnaire-wireframe-review.html) | Apply it, bring the other side in line |
 | [L2 DAK to L3 FHIR IG](../../en/cat-harness/processes/dak-l3-ig.html) | Map L2 → L3; L3 FHIR IG pipeline (fhir-harness) (calls a sub-process) |
+| [SMART Guideline end to end](../../en/cat-harness/processes/smart-guideline-end-to-end.html) | 6 · Produce L3 assets |
 

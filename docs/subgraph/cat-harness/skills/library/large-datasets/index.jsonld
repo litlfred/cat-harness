@@ -24,9 +24,9 @@
       "@type": "bootstrap:Skill",
       "name": "kg-subscription",
       "payload": {
-        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/21379bf7ab53bcd6fd7e9c7c8eeb2ec5f262f1714f390ce29cdddba81c49f02c",
-        "bytes": 10869,
-        "sha256": "21379bf7ab53bcd6fd7e9c7c8eeb2ec5f262f1714f390ce29cdddba81c49f02c"
+        "@id": "https://litlfred.github.io/folio-assistant/payload/sha256/a89a52574b3c985ae46ea37f5cafbfa4972151919ee34841903d9bc38f30edf8",
+        "bytes": 10919,
+        "sha256": "a89a52574b3c985ae46ea37f5cafbfa4972151919ee34841903d9bc38f30edf8"
       },
       "title": "Subscribing to a knowledge graph"
     },

@@ -12,14 +12,14 @@ permalink: /folio-assistant-core/glossary/tools/
 
 Candidate terms extracted from every Tool node: `title` as the label, `description` as the definition, the Tool id as the code. Each is the asset's own text, verbatim and not curated, and carries the badge "candidate, extracted". A person promotes one by authoring it. Authored terms, the counts and the sources are on the <a href="{{ '/folio-assistant-core/glossary/' | relative_url }}">glossary index</a>.
 
-From: cat-harness 152 (<a href="{{ '/assets/glossary/cat-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 26 (<a href="{{ '/assets/glossary/fhir-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 11 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 7 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 7 (<a href="{{ '/assets/glossary/smart-base--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · who-iris 1 (<a href="{{ '/assets/glossary/who-iris--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>).
+From: cat-harness 159 (<a href="{{ '/assets/glossary/cat-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · fhir-harness 32 (<a href="{{ '/assets/glossary/fhir-harness--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-core 12 (<a href="{{ '/assets/glossary/folio-assistant-core--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · folio-assistant-sci 7 (<a href="{{ '/assets/glossary/folio-assistant-sci--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · smart-base 9 (<a href="{{ '/assets/glossary/smart-base--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>) · who-iris 1 (<a href="{{ '/assets/glossary/who-iris--kg-tools.skos.jsonld' | relative_url }}">SKOS</a>).
 
-**Size:** this page holds 204 terms and is 151 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
+**Size:** this page holds 220 terms and is 169 KB before compression, fetched in one request, within its budget of 1.0 MB. There is no search index: the filter below runs over this page, and the A–Z bar jumps within it.
 
 <table class="fa-gloss-mapping">
 <caption>Already somebody else's concept? — <code>check:term-mapping</code>, bean <code>7wou</code></caption>
 <thead><tr><th>target</th><th>mapped</th><th>unmapped</th><th>undetermined</th><th>why undetermined</th></tr></thead>
-<tbody><tr><td><code>fhir</code></td><td>0</td><td>204</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>204</td><td>0</td><td>—</td></tr></tbody>
+<tbody><tr><td><code>fhir</code></td><td>0</td><td>220</td><td>0</td><td>—</td></tr><tr><td><code>skos</code></td><td>0</td><td>220</td><td>0</td><td>—</td></tr></tbody>
 </table>
 <p class="fa-gloss-mapping-note"><strong>Undetermined is never “no match”.</strong> 
 A vocabulary that could not be reached has said nothing, and the column above keeps that 
@@ -29,12 +29,19 @@ be a term this corpus is right to coin.</p>
 
 <label for="fa-gloss-q">Filter terms</label>
 <input id="fa-gloss-q" type="search" autocomplete="off" style="min-height:44px;width:100%;max-width:32rem">
-<p aria-live="polite"><span id="fa-gloss-n">204</span> shown</p>
+<p aria-live="polite"><span id="fa-gloss-n">220</span> shown</p>
 
 <nav aria-label="Letters"><a href="#letter-A">A</a> <a href="#letter-B">B</a> <a href="#letter-C">C</a> <a href="#letter-D">D</a> <a href="#letter-E">E</a> <a href="#letter-F">F</a> <a href="#letter-G">G</a> <a href="#letter-H">H</a> <a href="#letter-I">I</a> <a href="#letter-J">J</a> <a href="#letter-K">K</a> <a href="#letter-L">L</a> <a href="#letter-M">M</a> <a href="#letter-N">N</a> <a href="#letter-O">O</a> <a href="#letter-P">P</a> <a href="#letter-Q">Q</a> <a href="#letter-R">R</a> <a href="#letter-S">S</a> <a href="#letter-T">T</a> <a href="#letter-U">U</a> <a href="#letter-V">V</a> <a href="#letter-W">W</a></nav>
 
 <h2 id="letter-A">A</h2>
 <dl class="fa-gloss">
+<dt id="cat-harness--kg-tools--package-exports" data-fa-state="extracted" data-fa-gloss="">
+A package's exports are its declared, shipped code directories <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Derive a package's <code>package.json</code> <code>exports</code> from the instance declaration beside it: a directory declared with graph typology <code>code</code> (top level or from within) AND named in <code>files</code> is exported as <code>./&lt;dir&gt;/*.js → ./&lt;dir&gt;/*.ts</code> and <code>./&lt;dir&gt;/* → ./&lt;dir&gt;/*</code>; a declared code directory that is not shipped (<code>test/</code>) stays private. Keys without <code>*</code> are named entry points, kept as written and checked to point into an exported directory. Without <code>--write</code> it reports each difference; with it, it rewrites <code>exports</code>. Exit 0 in agreement, 1 drift, 2 cannot tell (no declaration, no <code>package.json</code>, or no shipped code directory).</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#package-exports</code></a></p>
+</dd>
 <dt id="cat-harness--kg-tools--content-graph-uml" data-fa-state="extracted" data-fa-gloss="">
 A paper's block graph as UML <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -88,6 +95,13 @@ beans, by hand <span class="fa-gloss-status">candidate, extracted</span>
 <p>Read and write the same work plan without the CLI — <code>scripts/beans-fallback.ts</code>, or editing a bean's front matter directly. Equal standing to the CLI, not a degraded mode.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#beans-manual</code></a></p>
 </dd>
+<dt id="folio-assistant-core--kg-tools--bibliography-page" data-fa-state="extracted" data-fa-gloss="">
+Bibliography page <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Render every reference in the checkout (each declared <code>references</code> directory's folio-reference/v1 nodes and each <code>catalogue</code> directory's Dublin Core records) as the bibliography page and one page per sub-graph, each with its BibTeX, CSL-JSON, RIS and Dublin Core JSON-LD exports and a per-reference export, at the route of the visualiser core declares for it.</p>
+<p class="fa-gloss-meta">Tools of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/tools/index.ts"><code>folio-assistant-core/tools/index.ts#bibliography-page</code></a></p>
+</dd>
 <dt id="folio-assistant-core--kg-tools--block-actions" data-fa-state="extracted" data-fa-gloss="">
 Block edit and feedback links <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -116,13 +130,6 @@ BPMN diagram rendering <span class="fa-gloss-status">candidate, extracted</span>
 <p>Render each process diagram to SVG for the documentation site. The .bpmn file is the source of truth; the picture is generated from it, so a diagram and its image cannot disagree.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#bpmn-render</code></a></p>
 </dd>
-<dt id="cat-harness--kg-tools--bpmn-engine" data-fa-state="extracted" data-fa-gloss="">
-BPMN workflow engine <span class="fa-gloss-status">candidate, extracted</span>
-</dt>
-<dd>
-<p>Run a declared BPMN process as an instance: <code>workflow_start</code> opens one for a subject, <code>workflow_next</code> reports what is enabled, <code>workflow_complete</code> records a step or answers a decision (a DMN-computed one from <code>facts</code>) and REFUSES a step that is not enabled. State is committed under the work plan, so which edge was taken is a record, not a memory.</p>
-<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#bpmn-engine</code></a></p>
-</dd>
 <dt id="folio-assistant-sci--kg-tools--lean-html-docs" data-fa-state="extracted" data-fa-gloss="">
 Build a Lean package's HTML docs (doc-gen4) <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -136,6 +143,20 @@ Build an IG and write its AST <span class="fa-gloss-status">candidate, extracted
 <dd>
 <p>Run one ordinary IG Publisher build through <code>AstPublisher</code> (a subclass that overrides nothing) and write the AST beside <code>output/</code>: one JSON file per resource keyed <code>canonical|version</code>, <code>dependencies.json</code> (upstream's DependencyAnalyser plus the Library/PlanDefinition/ActivityDefinition/Measure edges it leaves empty), SUSHI's <code>fsh-index.json</code>, and a manifest that declares itself a cache and records the inputs it is valid for.</p>
 <p class="fa-gloss-meta">Tools of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/tools/index.ts"><code>fhir-harness/tools/index.ts#ig-ast-export</code></a></p>
+</dd>
+<dt id="fhir-harness--kg-tools--ig-repo-site" data-fa-state="extracted" data-fa-gloss="">
+Build an IG repository's own site from its cached AST, with no instance declaration <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>The three checkout scripts the platform's site build runs for a repository that holds an IG and only mounts layers (<code>index.config.json</code>): <code>ig-site:ast</code> restores the AST from the IG's cache branch (<code>ig-cache.sh restore</code>) and judges it, refusing a stale, cannot-tell or absent one (a stale one is accepted for a preview with <code>SITE_ACCEPT_STALE_AST=1</code>); <code>ig-site:compose</code> derives the artefact index from the AST (binding any IG API sidecars a layer above left in <code>$SITE_WORK/ig-api/</code>), writes the thin artefact pages, stages the IG's <code>input/</code> and <code>sushi-config.yaml</code> (menu read at build time, palette from the webpage theme of the top layer the repository mounts, edit links from its origin) and composes it at the ROOT of the host site source; <code>ig-site:publisher-pages</code> serves the AST's resources (<code>ast-data/</code> and <code>&lt;Type&gt;-&lt;id&gt;.json</code>), the artefact index and the sidecars, refuses a page wearing the IG Publisher's chrome, repairs repeated element ids and stamps <code>folio-build.json</code>. Never runs the Publisher and never reads its output. Compose lists the pages it puts in the site in <code>FOLIO_SITE_UPSTREAM_PAGES</code>, so the site build reports the IG's own dead links rather than refusing the publish over them.</p>
+<p class="fa-gloss-meta">Tools of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/tools/index.ts"><code>fhir-harness/tools/index.ts#ig-repo-site</code></a></p>
+</dd>
+<dt id="cat-harness--kg-tools--ig-folio-site-workflow" data-fa-state="extracted" data-fa-gloss="">
+Build and publish an IG repository's own site with its folio-site.yml workflow <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Dispatch the IG repository's <code>folio-site.yml</code> (copied from the IG layer's <code>ig-repo-site</code> template): on a runner it composes the harness chrome for THIS instance (<code>compose-docs --shell --instance</code>, <code>gen-navbar-include</code>), composes the IG at the root of that Jekyll shell (<code>stage-ig-sites --compose-at-root</code>), builds it with Jekyll so every IG page wears the theme's side bar, search box and icon row, publishes the instance's served directories, rails any page Jekyll did not lay out (<code>rail-standalone-pages --foreign-site --instance</code>), stamps the platform that built it (<code>folio-build.json</code>), and on the default branch deploys the whole site to the <a href="#cat-harness--kg-tools--gh-pages"><code>gh-pages</code></a> root. It reports platform drift against sibling sites and re-dispatches the IGs this one depends on when a token allows.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#ig-folio-site-workflow</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--site-build-local" data-fa-state="extracted" data-fa-gloss="">
 Build the docs site locally <span class="fa-gloss-status">candidate, extracted</span>
@@ -162,6 +183,20 @@ Build, check and (on request) publish an instance's own site, or a STAGING/&lt;b
 
 <h2 id="letter-C">C</h2>
 <dl class="fa-gloss">
+<dt id="fhir-harness--kg-tools--check-wireframe-questionnaire" data-fa-state="extracted" data-fa-gloss="">
+Check a Questionnaire field for field against the wireframe it was derived from <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Compare the <code>data-element</code> fields of a mid-fidelity wireframe (per <code>data-layout</code>, in document order) with the answerable items of a BUILT Questionnaire (depth first, named by <code>definition</code> or <code>code</code>). Reports a field with no item, an item with no field, an item naming no data element, a data element twice in one layout, and the first place the order differs. Fidelity, not design. Moved down from the WHO layer on the owner's ruling of 2026-10-14: nothing in it is WHO's.</p>
+<p class="fa-gloss-meta">Tools of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/tools/index.ts"><code>fhir-harness/tools/index.ts#check-wireframe-questionnaire</code></a></p>
+</dd>
+<dt id="fhir-harness--kg-tools--sdc-checks" data-fa-state="extracted" data-fa-gloss="">
+Check an IG's built Questionnaires with CSIRO's SDC libraries <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Build-time Structured Data Capture checks, one result per Questionnaire (<code>sdcChecks[]</code> of <code>fhir-questionnaire-wireframe</code>): <code>assemble</code> (<code>@aehrc/sdc-assemble</code> 2.0.3: an assemble-root's sub-forms resolve in this IG, and <code>--out</code> writes the assembled Questionnaire), <code>template-extract</code> (<code>@aehrc/sdc-template-extract</code> 1.0.16: extraction from the IG's fixture response yields the expected resources), <code>populate</code> (<code>@aehrc/sdc-populate</code> 4.7.2: FHIRPath pre-population from a fixture context gives the expected answers) and <code>behaviour</code> (<code>@aehrc/questionnaire-test-toolkit</code> 0.1.0: the IG's own behavioural test, warn-only). Owner, 2026-10-14: checks, not UI.</p>
+<p class="fa-gloss-meta">Tools of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/tools/index.ts"><code>fhir-harness/tools/index.ts#sdc-checks</code></a></p>
+</dd>
 <dt id="cat-harness--kg-tools--archimate-check" data-fa-state="extracted" data-fa-gloss="">
 Check an instance's ArchiMate models against its config <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -173,7 +208,7 @@ Check an instance's ArchiMate models against its config <span class="fa-gloss-st
 Check declared credential needs against workflow use and expiry, by name <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Compare each repository's declared credential needs (<code>credentials/needs.json</code>, profile and registry) with the <code>$&#123;&#123; secrets.NAME }}</code> references its workflows make, with the secret names GitHub lists when a token allows it, and with any recorded expiry. NAMES ONLY — no value is ever read. Findings per §6.2: used-not-declared, declared-not-used, declared-not-present, present-not-declared (reported, never deleted), naming advisories, and expiry (≤30 days minor, ≤7 major, expired critical). Exits 2 when anything could not be determined, which outranks clean; else 1 on a major or critical finding; else 0.</p>
+<p>Compare each repository's declared credential needs (<code>credentials/needs.json</code>, profile and registry) with the <code>secrets.NAME</code> expressions its workflows reference (GitHub Actions' dollar-and-double-brace form, said in words because this text is rendered on a Jekyll page), with the secret names GitHub lists when a token allows it, and with any recorded expiry. NAMES ONLY — no value is ever read. Findings per §6.2: used-not-declared, declared-not-used, declared-not-present, present-not-declared (reported, never deleted), naming advisories, and expiry (≤30 days minor, ≤7 major, expired critical). Exits 2 when anything could not be determined, which outranks clean; else 1 on a major or critical finding; else 0.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#secrets-check</code></a></p>
 </dd>
 <dt id="folio-assistant-sci--kg-tools--latex-image" data-fa-state="extracted" data-fa-gloss="">
@@ -203,6 +238,13 @@ Content graph <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>Build the content graph under a path and report its edges, separated into the EDITORIAL relation an author maintains and the FORMAL one derived from Lean. Reading the two as one number is how the editorial signal gets overwritten.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#content-graph-build</code></a></p>
+</dd>
+<dt id="cat-harness--kg-tools--get-graph-stats" data-fa-state="extracted" data-fa-gloss="">
+Content graph counts <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Node and edge counts for the content graph by provenance and kind, and whether each root exists. Tells 'nothing matched' from 'that population has not been built'.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/mcp.ts"><code>cat-harness/tools/mcp.ts#get-graph-stats</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--content-context" data-fa-state="extracted" data-fa-gloss="">
 Content JSON-LD context <span class="fa-gloss-status">candidate, extracted</span>
@@ -317,6 +359,13 @@ Embed a PDF inline in a page <span class="fa-gloss-status">candidate, extracted<
 <p>Print the HTML fragment that shows a PDF in the installed viewer: a lazily loaded frame whose address is derived from the page's own location (so one page works at the site root, under a project base and under a staging preview), plus plain open and download links that work without it.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#pdf-viewer-embed</code></a></p>
 </dd>
+<dt id="cat-harness--kg-tools--declaration-resolution" data-fa-state="extracted" data-fa-gloss="">
+Every path a declaration names resolves — directories, assets, visualisers, needs <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Read every instance declaration in the checkout and resolve what it names: <code>directories</code> (and those declared from within) through <code>check:declared-dirs</code>, <code>assets</code> through <code>check:declared-assets</code>, <code>visualisers[].renderedBy</code> through <code>check:visualiser-routes</code>, <code>needs</code> through the instance-graph resolver, and <code>visualisers[].coversKinds</code> against the graph typologies registered IN THIS CHECKOUT — its own and those a mounted layer contributes, read from the checkout under inspection rather than from where the harness module sits (lesson 6). A declaration that does not parse is a finding. One verdict per instance and field, naming the gate that decided it. Exit 0 every reference resolves, 1 one does not, 2 could not determine; a certain finding is reported before anything undetermined.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#declaration-resolution</code></a></p>
+</dd>
 <dt id="fhir-harness--kg-tools--ig-ast-jsonld" data-fa-state="extracted" data-fa-gloss="">
 Export an IG AST as JSON-LD <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -412,12 +461,12 @@ Formal edges from the Lean build <span class="fa-gloss-status">candidate, extrac
 <p>Extract ELABORATED formal dependencies between a folio's lean.ref declarations (LeanArchitect's rule over the folio's own lean.ref set). Needs a Lean toolchain and a built Lake project. Tagged declarations missing from the build are reported, never recorded as dependency-free; with ingest the result is recorded in the formal cache as source &quot;elaborated&quot;.</p>
 <p class="fa-gloss-meta">Tools of folio-assistant-sci · source <a href="https://github.com/litlfred/folio-assistant-sci/blob/main/tools/index.ts"><code>folio-assistant-sci/tools/index.ts#lean-formal-edges</code></a></p>
 </dd>
-<dt id="cat-harness--kg-tools--fsh-cone" data-fa-state="extracted" data-fa-gloss="">
+<dt id="fhir-harness--kg-tools--fsh-cone" data-fa-state="extracted" data-fa-gloss="">
 FSH dependency cone <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
 <p>Compute the dependency cone over an IG's FSH graph, and the blast radius of a set of changed files. What makes an incremental IG build possible: without it, any edit rebuilds everything.</p>
-<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#fsh-cone</code></a></p>
+<p class="fa-gloss-meta">Tools of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/tools/index.ts"><code>fhir-harness/tools/index.ts#fsh-cone</code></a></p>
 </dd>
 </dl>
 
@@ -592,6 +641,13 @@ Is this IG AST still valid for the IG's current inputs? <span class="fa-gloss-st
 <p>Run folio-assistant-core's <code>compiledValidity</code> on an AST manifest's <code>inputs</code>: recompute the input digest (the same algorithm as the Java writer, pinned by a shared golden vector) and the source revision, and answer valid, stale-inputs (naming which input), or cannot-tell.</p>
 <p class="fa-gloss-meta">Tools of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/tools/index.ts"><code>fhir-harness/tools/index.ts#ig-ast-validity</code></a></p>
 </dd>
+<dt id="cat-harness--kg-tools--separation-cutover-check" data-fa-state="extracted" data-fa-gloss="">
+Is this repository's cutover from the monorepo complete? Measured, condition by condition <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Run in a separated repository. Six conditions, each decided by an existing gate: <code>mounts</code> (every declared layer on disk at its pin — <code>remote-mount --check</code>), <code>declarations</code> (every path a declaration names resolves — <a href="#cat-harness--kg-tools--declaration-resolution"><code>declaration-resolution</code></a>), <code>monorepo-paths</code> (no wiring still names the monorepo: <code>livesAt</code> on it, a submodule of it, a reusable workflow called from it, a path into its old checkout — the one condition implemented here), <code>import-direction</code> and <code>reference-direction</code> (no layer reaches a layer above it), and <code>site</code> (the site builds from the mounts alone, every link resolving — <code>build-instance-site --no-mount</code>, only with <code>--site</code>). Findings inside a MOUNTED layer are listed and not counted: a defect in a layer pinned from upstream is fixed upstream and re-pinned. Exit 0 complete, 1 a condition failed, 2 a condition could not be determined or was not run — without <code>--site</code> the answer is never 0.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#separation-cutover-check</code></a></p>
+</dd>
 </dl>
 
 <h2 id="letter-J">J</h2>
@@ -631,6 +687,20 @@ L1 extraction coverage <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>Of the normative sentences in a publication (the closed marker list of smart-kg's <code>docs/COVERAGE.md</code> §1), count how many an L1 extraction CAPTURED, how many are EXCLUDED for a fixed-list reason a person signed off, and how many are UNACCOUNTED — per page and in total. Writes the contract's §4 report and exits non-zero below 100% accounted-for. Issue #2405 FR-009.</p>
 <p class="fa-gloss-meta">Tools of folio-assistant-core · source <a href="https://github.com/litlfred/folio-assistant-core/blob/main/tools/index.ts"><code>folio-assistant-core/tools/index.ts#l1-coverage</code></a></p>
+</dd>
+<dt id="smart-base--kg-tools--l1-recommendation-candidates" data-fa-state="extracted" data-fa-gloss="">
+L1 guideline → recommendation candidates (L1 3.0) <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Find every normative sentence of an ingested <code>library/</code> entry (folio-assistant-core's <code>l1-coverage</code> markers), hint where a reading is uncertain, and propose the publication's identity. Given an agent's <code>l1-recommendation-curation/v1</code>, refuse a non-verbatim statement or an unknown location, and write the recommendations and remarks as an L1 3.0 graph, checked with <code>kg/src/validate.ts</code>, with coverage and the proposed (unsigned) exclusions.</p>
+<p class="fa-gloss-meta">Tools of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/tools/index.ts"><code>smart-base/tools/index.ts#l1-recommendation-candidates</code></a></p>
+</dd>
+<dt id="smart-base--kg-tools--l1-recommendation-scenarios" data-fa-state="extracted" data-fa-gloss="">
+L1 recommendations → L2 user-scenario candidates <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>One smart-kg L2 <code>user-scenario</code> candidate per L1 recommendation, joined to a <code>persona</code> and a <code>business-process</code> by the edges smart-kg L2 already licenses, from an agent's <code>l1-scenario-mapping/v1</code>. Reuses the guide's own personas and processes, then smart-base's generic <code>DAK.Persona.*</code>; otherwise a glossary candidate or <code>could-not-determine</code>, each with a WARNING. Never invents a process.</p>
+<p class="fa-gloss-meta">Tools of smart-base · source <a href="https://github.com/litlfred/smart-base/blob/main/smart-base/tools/index.ts"><code>smart-base/tools/index.ts#l1-recommendation-scenarios</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--l1-complete-check" data-fa-state="extracted" data-fa-gloss="">
 L1 source completeness <span class="fa-gloss-status">candidate, extracted</span>
@@ -708,6 +778,13 @@ Lean vacuity audit <span class="fa-gloss-status">candidate, extracted</span>
 <dd>
 <p>Inspect Lean declarations chapter by chapter for proofs that type-check, are sorry-free and axiom-clean, and still carry no mathematical content — assuming what they claim, concluding something trivially true, or resting on a false premise.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#lean-audit</code></a></p>
+</dd>
+<dt id="cat-harness--kg-tools--search-graph" data-fa-state="extracted" data-fa-gloss="">
+Lexical search over the content graph <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Find graph nodes, authored or ingested, whose label, title, kind or tags contain a string, with no graph expansion. corpus-search composes this with a neighbour walk.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/mcp.ts"><code>cat-harness/tools/mcp.ts#search-graph</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--library-viewer" data-fa-state="extracted" data-fa-gloss="">
 Library viewer <span class="fa-gloss-status">candidate, extracted</span>
@@ -991,6 +1068,13 @@ Proof-object extraction <span class="fa-gloss-status">candidate, extracted</span
 <p>Extract the theorem, lemma and definition environments of a paper's LaTeX chapters into <code>proof-objects.json</code> — the manifest the dependency graph and the proof-status update read.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#proof-objects-extract</code></a></p>
 </dd>
+<dt id="cat-harness--kg-tools--stage-local" data-fa-state="extracted" data-fa-gloss="">
+Publish a folio's or an IG's site from the agent's own checkout — the one agent publish path <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Build a repository's site in the agent's checkout and push it to the publish branch, as a preview or as the main site, without an Actions runner. Which build is read from the repository: a declared <code>site.build</code> recipe (built by <a href="#cat-harness--kg-tools--build-instance-site"><code>build-instance-site</code></a>), else the reusable workflow its own workflow files call — <code>folio-staging.yml</code> for a folio, smart-base's <code>ghbuild.yml</code> for a FHIR IG, whose <code>build</code> job is planned step by step and run as written. For an IG it then applies the harness chrome over the built output (<code>sync-docs-harness</code>, then <code>rail-standalone-pages --foreign-site --instance &lt;the IG&gt;</code>): every page gains the rail and the icon row <code>#fa-navbar-row</code>, and the IG's own content is left byte for byte. A root publish is REFUSED when the chrome cannot be applied, and a clean root deploy is refused over any root whose <code>index.html</code> wears the icon row unless the new output does too, so a chromed root is never replaced by bare IG Publisher pages. Every run prints its plan first, and the plan lists the chrome step; <code>--plan</code> stops there, <code>--dry-run</code> composes the commit in a temporary worktree and pushes nothing, <code>--artifact</code> writes a claude.ai Artifact bundle instead.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#stage-local</code></a></p>
+</dd>
 <dt id="folio-assistant-sci--kg-tools--lean-render-publish" data-fa-state="extracted" data-fa-gloss="">
 Publish a Lean render under a folio site, with the harness rail <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1054,6 +1138,13 @@ Record what the publish branch served <span class="fa-gloss-status">candidate, e
 <dd>
 <p>Append one entry to the render log on the publish branch: what was published or taken down, when, from which commit, and — for a removal or a retention — WHY. The log is the only place a preview that vanished leaves a trace.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#render-log</code></a></p>
+</dd>
+<dt id="fhir-harness--kg-tools--ig-ast-refresh" data-fa-state="extracted" data-fa-gloss="">
+Refresh an IG's AST cache on a runner <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Dispatch an IG repository's <code>ig-ast-refresh.yml</code>, which calls fhir-harness's reusable <code>.github/workflows/ig-ast-refresh.yml</code>: mount the layers the IG's index.lock.json pins, restore and judge the cache for <code>ref</code>, and when it is not valid (or <code>force</code>) run the caller's optional <code>pre-export</code> overlay command and build the IG with the pinned Publisher AST exporter (the AST is recorded against the clean commit's inputs, the overlay's changes put back), check the new AST is valid for its commit, and seed <code>cat/fhir-harness/fhir-ast/&lt;package id&gt;</code> with <code>ig-cache seed --push</code> — only from a commit on the default branch with the tip's inputs. Builds no site, writes no gh-pages, dispatches nothing.</p>
+<p class="fa-gloss-meta">Tools of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/tools/index.ts"><code>fhir-harness/tools/index.ts#ig-ast-refresh</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--package-release-workflow" data-fa-state="extracted" data-fa-gloss="">
 Release package via GitHub Actions release workflow <span class="fa-gloss-status">candidate, extracted</span>
@@ -1149,6 +1240,13 @@ Screen a hand-over for injected instructions, field by field <span class="fa-glo
 <dd>
 <p>Before a model reads a sub-agent's report, a delegated prompt, a tool result or a comment from someone who is not the principal, screen it against a declared schema whose top-level fields are <code>control</code> (steers what the receiver does) or <code>data</code> (content it reads). A finding in a control field, or any field the strict schema does not declare, is REFUSED, so a report cannot extend the delegator's plan. A finding in a data field is QUARANTINED: the original is kept and marked, never stripped. The patterns are a deterministic tripwire (instruction overrides, role and turn spoofs, fence breaks, tool-call syntax, hidden Unicode, exfiltration links, pipe-to-shell), a mitigation and not a guarantee. Exit 0 clean, 1 refused, 3 quarantined, 2 could not determine.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#handover-screen</code></a></p>
+</dd>
+<dt id="cat-harness--kg-tools--corpus-search" data-fa-state="extracted" data-fa-gloss="">
+Search the corpus and follow the graph <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Seed lexically over the authored folio and every declared library, then expand along graph edges, labelling each hit MATCHED or REACHED and by which edge. Counts are split authored vs ingested, and a root that exists but holds no graph nodes is reported rather than read as an empty answer.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/mcp.ts"><code>cat-harness/tools/mcp.ts#corpus-search</code></a></p>
 </dd>
 <dt id="fhir-harness--kg-tools--fhir-cache-seed-npm" data-fa-state="extracted" data-fa-gloss="">
 Seed the FHIR package cache from trusted sources (exact versions) <span class="fa-gloss-status">candidate, extracted</span>
@@ -1474,6 +1572,13 @@ Voices viewer <span class="fa-gloss-status">candidate, extracted</span>
 
 <h2 id="letter-W">W</h2>
 <dl class="fa-gloss">
+<dt id="cat-harness--kg-tools--get-neighbors" data-fa-state="extracted" data-fa-gloss="">
+Walk the content graph from one node <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>List the nodes adjacent to one node, out (what it depends on) or in (what depends on it), to a given depth and optionally over named edge terms only. An unknown edge term is reported, never silently dropped.</p>
+<p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/mcp.ts"><code>cat-harness/tools/mcp.ts#get-neighbors</code></a></p>
+</dd>
 <dt id="cat-harness--kg-tools--workflow-next" data-fa-state="extracted" data-fa-gloss="">
 What is enabled now <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
@@ -1520,7 +1625,7 @@ Who is asking, and what may they do <span class="fa-gloss-status">candidate, ext
 Wireframe check at web and mobile viewports <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p>Render each mid-fidelity wireframe candidate at a web viewport (1280x800) and a mobile viewport (390x844). For each viewport it records <code>script</code> entries for renders, no-overflow and no-placeholder, each pass or fail with a note. It writes a screenshot per viewport and a report.json, and exits non-zero on any fail.</p>
+<p>Render each mid-fidelity wireframe candidate of one topic at a web viewport (1280x800) and a mobile viewport (390x844). For each viewport it records <code>script</code> entries for renders, no-overflow and no-placeholder, each pass or fail with a note. It writes a screenshot per viewport and a report.json carrying the use, topic and surface, and exits 1 on any fail and 2 when the candidate set is not one the use admits.</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#wireframe-check</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--witness-conformance" data-fa-state="extracted" data-fa-gloss="">
@@ -1537,11 +1642,18 @@ Witness reproduction check <span class="fa-gloss-status">candidate, extracted</s
 <p>Re-run a computation witness's producer and say whether it reproduces the committed witness. Reads the command from <code>invocation.reproduce</code> (else <code>python3 &lt;scriptFile&gt;</code>) and the recorded package versions from <code>environment</code>; on a version mismatch it stops at <code>unknown</code>, since a different environment is not a reproduction test. Otherwise it runs the COMMITTED producer in a scratch git worktree, so the folio's own checkout is never written, and compares the result with the committed witness with run-specific fields (commit, timing, environment) masked at every depth. <code>pass</code>, <code>fail</code> (with the differing JSON paths), or <code>unknown</code> (mismatch, non-zero exit, timeout, no witness written).</p>
 <p class="fa-gloss-meta">Tools of cat-harness · source <a href="https://github.com/litlfred/cat-harness/blob/main/tools/index.ts"><code>cat-harness/tools/index.ts#witness-parity</code></a></p>
 </dd>
+<dt id="fhir-harness--kg-tools--terminology-index" data-fa-state="extracted" data-fa-gloss="">
+Write an IG site's static terminology index from the IG's own cache <span class="fa-gloss-status">candidate, extracted</span>
+</dt>
+<dd>
+<p>Read the IG Publisher's <code>expansions.json</code> and <code>txcache/</code>, as <code>ig-cache.sh restore</code> leaves them, and write <code>index.json</code> (gzipped as <code>index.json.gz</code> over 1 MB): every code with its system and display, and each value set's codes. The IG site's service worker answers the self-hosted Form Builder's LOINC search from it, and its UCUM search from the vendored full UCUM list, so the site makes no cross-site call (owner, 2026-10-14: &quot;cache + ucum. this is gh-pages so no XSS&quot;). <a href="#fhir-harness--kg-tools--build-ig-site"><code>build-ig-site</code></a> runs it for every IG with a Questionnaire.</p>
+<p class="fa-gloss-meta">Tools of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/tools/index.ts"><code>fhir-harness/tools/index.ts#terminology-index</code></a></p>
+</dd>
 <dt id="fhir-harness--kg-tools--ig-artifact-jsonld" data-fa-state="extracted" data-fa-gloss="">
 Write one JSON-LD node per IG artefact, and check a built site's nodes <span class="fa-gloss-status">candidate, extracted</span>
 </dt>
 <dd>
-<p><code>write</code> turns an artefact index into <code>artifact/&lt;Type&gt;-&lt;id&gt;.jsonld</code> (and a <code>.json</code> twin) under a docs root: one <code>folio-ig-artifact-jsonld/v1</code> node per artefact, in borrowed vocabularies only (the FHIR RDF class, dcterms, schema.org, PROV), naming the artefact's canonical URL, its representations and, for a compiled copy, what built it. <code>check</code> is the kind's QA: over a BUILT site, every artefact has its node and no node is an orphan, each node is its own file's, its twin matches, and every local resource it names is on the site. WHO-free; the asset <code>gen-ig-pages --thin</code> renders (owner, 2026-10-11, option A).</p>
+<p><code>write</code> turns an artefact index into <code>artifact/&lt;Type&gt;-&lt;id&gt;.jsonld</code> (and a <code>.json</code> twin) under a docs root: one <code>folio-ig-artifact-jsonld/v1</code> node per artefact, in borrowed vocabularies only (the FHIR RDF class, dcterms, schema.org, PROV), naming the artefact's canonical URL, its representations and, for a compiled copy, what built it. <code>check</code> is the kind's QA: over a BUILT site, every artefact has its node and no node is an orphan, each node is its own file's, its twin matches, and every local resource it names is on the site. It also writes and checks the index node, <code>artifact/index.jsonld</code> (<code>folio-ig-artifact-index-jsonld/v1</code>): every artefact once, each entry naming its node. WHO-free; the assets the thin pages render (owner, 2026-10-11, option A; thin by default since 2026-10-12).</p>
 <p class="fa-gloss-meta">Tools of fhir-harness · source <a href="https://github.com/litlfred/fhir-harness/blob/main/tools/index.ts"><code>fhir-harness/tools/index.ts#ig-artifact-jsonld</code></a></p>
 </dd>
 <dt id="cat-harness--kg-tools--navbar-include" data-fa-state="extracted" data-fa-gloss="">

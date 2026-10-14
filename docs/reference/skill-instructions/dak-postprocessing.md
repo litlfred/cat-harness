@@ -117,6 +117,37 @@ Two things already measured about that surface, which constrain any redesign:
 
 Re-derive those numbers rather than quoting them.
 
+### On an IG repository's own site: `ig-site:sidecars`
+
+Owner, 2026-10-14, on smart-trust losing its DAK API sidecars when it dropped
+its own `site.build`: *"that should already be there in smart-base (dak
+api)"*. An IG repository whose `index.config.json` names smart-base as its
+site's landing declares no steps of its own. The site route (cat-harness-tools
+`stage-local.ts`) runs the landing layer's `ig-site:sidecars`, which is
+[`ig-site-sidecars.ts`](https://github.com/litlfred/folio-assistant/blob/main/smart-base/scripts/ig-site-sidecars.ts): steps 4 to 6's
+generators run over the cached AST by `dak-ast-sidecars.ts`, written to
+`$SITE_WORK/ig-api/sidecars/`, with `$SITE_WORK/ig-api/ig-api.json` saying
+`{"label": "DAK API"}` when the IG has a `dak.json`. fhir-harness binds and
+serves them (`ig-repo-site.ts`, fhir-harness `ig-build-pipeline`
+§"The IG repository's site route") and never learns the DAK name. Step 6 runs
+too, over the AST and the sidecars with a stand-in hub page: its OpenAPI
+documents (`<stem>.openapi.json`), enumeration schemas and Swagger UI page
+`openapi/index.html` land in `$SITE_WORK/ig-api/site/`, which fhir-harness
+serves at the site root without replacing a path the site already holds
+(smart-hiv's live root served that `openapi/`, measured 2026-10-14).
+
+The hub page itself is a THIN page (owner, 2026-10-14: *"Yes, thin page"*):
+[`dak-api-hub-page.ts`](https://github.com/litlfred/folio-assistant/blob/main/smart-base/scripts/dak-api-hub-page.ts) writes
+`dak-api.html`, a shell made with cat-harness-tools' `thinPageHtml`, over a
+node `dak-api.jsonld` that its loader (`assets/dak-api-hub.js`) draws. The
+node links `openapi/`, every sidecar with its artefact page and (for a JSON
+Schema or JSON-LD sidecar) its view page `artifact/<file>.html`, bound by the
+rule fhir-harness binds sidecars by, and the enumeration schemas. It goes
+into the same `$SITE_WORK/ig-api/site/`. An IG whose own `dak-api.md` holds
+only the hub's marker (`<!-- DAK_API_CONTENT -->`, smart-trust's) gets the
+thin hub in that page's place: `ig-api.json` names the marker as
+`placeholder`, and fhir-harness replaces a page holding it, and no other.
+
 ## Step 5 depends on expansion, which depends on a terminology server
 
 `generate_jsonld_vocabularies.py` reads ValueSet **expansions**, which exist only
@@ -208,3 +239,10 @@ Publisher, and why most of them exist only to populate `sushi-config.yaml`'s
 and the authority to release. [`ig-artifact-ingestion`](ig-artifact-ingestion.md)
 — reading the surface steps 3–6 produce, from a published IG.
 {% endraw %}
+
+## Processes that run this skill
+
+| process | step(s) that name it |
+|---|---|
+| [SMART Guideline end to end](../../en/cat-harness/processes/smart-guideline-end-to-end.html) | 4 · Create / adapt L2 DAK assets |
+

@@ -727,5 +727,7 @@ this skill by name never received them. Ported here as part of bean `tdmg`.
 | [Evidence for a recommendation](../../en/cat-harness/processes/evidence-retrieval.html) | Open a bean for the unverified citation; Record the evidence gap |
 | [L1 document ingestion — a document to the L1 source knowledge graph](../../en/cat-harness/processes/l1-document-ingestion.html) | Record the gap as a bean |
 | [Authoring a paper](../../en/cat-harness/processes/authoring-a-paper.html) | 2 · Seed the work plan |
+| [L2 component edit and review](../../en/cat-harness/processes/l2-component-edit-review.html) | Reopen upstream, flag derived assets |
 | [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Seed the work plan |
+| [Phase 1: Planning](../../en/cat-harness/processes/SGAuthoring.DAKLifecycle.html) | Assign work and begin sprint cycle |
 

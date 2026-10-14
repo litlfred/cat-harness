@@ -48,6 +48,15 @@ Findings and a decision — two things, not one. See
 - **Audit notes** — why this outcome, and why each overruled finding was left.
   At least one per decision, each citing corpus evidence. Approving over an open
   `critical` or `blocking` finding without overruling it is a reported problem.
+
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](staging-review.md) §"The deep-link rule".
 {% endraw %}
 
 ## Processes that run this skill
@@ -63,5 +72,7 @@ Findings and a decision — two things, not one. See
 | [Editing and HCI validation](../../en/cat-harness/processes/editing-hci-validation.html) | Agent review of the change; Human / SME review |
 | [Evidence for a recommendation](../../en/cat-harness/processes/evidence-retrieval.html) | Review the guidance already in this content |
 | [Authoring a paper](../../en/cat-harness/processes/authoring-a-paper.html) | 8 · Review and feedback |
+| [L2 component edit and review](../../en/cat-harness/processes/l2-component-edit-review.html) | Review the staged component (calls a sub-process) |
 | [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Clinical validation |
+| [SMART Guideline end to end](../../en/cat-harness/processes/smart-guideline-end-to-end.html) | Adjudicate the L1 source list (calls a sub-process); Adjudicate the L1 KG (calls a sub-process); Adjudicate L2 dependencies (calls a sub-process); Review each L2 asset (before / after if adapted) (calls a sub-process); Adjudicate L3 dependencies (calls a sub-process); Review each L3 asset (before / after if adapted) (calls a sub-process); Adjudicate the wireframes and the application (calls a sub-process) |
 

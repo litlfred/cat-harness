@@ -137,4 +137,6 @@ next to the site. The review page reads `../visual-diff.json`.
 | process | step(s) that name it |
 |---|---|
 | [Content Change and Review](../../en/cat-harness/processes/content-change-review.html) | Compare main vs staging |
+| [L2 component edit and review](../../en/cat-harness/processes/l2-component-edit-review.html) | Review the staged component (calls a sub-process) |
+| [SMART Guideline end to end](../../en/cat-harness/processes/smart-guideline-end-to-end.html) | Review each L2 asset (before / after if adapted) (calls a sub-process) |
 

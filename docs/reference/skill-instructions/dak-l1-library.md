@@ -181,4 +181,6 @@ item. The PDFs themselves are pinned by sha256 and not committed.
 | process | step(s) that name it |
 |---|---|
 | [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Build the L1 library from Component 1 |
+| [Phase 1: Planning](../../en/cat-harness/processes/SGAuthoring.DAKLifecycle.html) | Gather source documents (guidelines, registers, policies) |
+| [SMART Guideline end to end](../../en/cat-harness/processes/smart-guideline-end-to-end.html) | 1 · Identify L1 guidelines and recommendations; 2 · Ingest into the L1 KG [dak-l1-library · recommendation-extraction] |
 

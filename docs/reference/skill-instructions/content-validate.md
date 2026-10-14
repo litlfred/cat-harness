@@ -50,5 +50,6 @@ Validate authored content against schemas, standards, and clinical accuracy.
 | [Draft, review and publish](../../en/cat-harness/processes/draft-to-publication.html) | Editing and HCI validation (calls a sub-process) |
 | [Editing and HCI validation](../../en/cat-harness/processes/editing-hci-validation.html) | Schema and constraint checks; Syntax, spelling and links; Collate findings into a report |
 | [Authoring a paper](../../en/cat-harness/processes/authoring-a-paper.html) | 6 · Validate |
+| [L2 component edit and review](../../en/cat-harness/processes/l2-component-edit-review.html) | Run the component's checker [content-validate · content-test] |
 | [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Assemble and validate the DAK |
 

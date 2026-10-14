@@ -1,0 +1,17 @@
+classDiagram
+  direction TB
+  namespace folio_assistant_sci__folio_assistant_sci_editor_checkers {
+    class folio_assistant_sci_folio_assistant_sci_editor_checkers_folio_editor_checker_v1_folio_editor_checker_v1["folio-editor-checker/v1"] {
+      <<json: EditorCheckerNodeSchema>>
+      $schema [1] 'folio-editor-checker/v1'
+      id [1] string
+      contentType [1] string
+      kinds [1..*] string[]
+      check [1] string
+      macros [0..1] string
+      crepe [0..1] object
+      rawLatexFirstFor [0..*] string[]
+      rationale [0..1] string
+    }
+  }
+  cssClass "folio_assistant_sci_folio_assistant_sci_editor_checkers_folio_editor_checker_v1_folio_editor_checker_v1" fa_uml_kind_editor_checkers

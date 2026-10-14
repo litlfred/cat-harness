@@ -75,8 +75,12 @@ In the fork, under `ast-export/`:
 | `AstExportCli`, `AstPlanCli`, `IncrementalBuildCli` | export, plan a delta, rebuild the cone | export and rebuild: yes; plan: no |
 
 Here, [`ig-ast-delta`](ig-ast-delta.md) lists, checks, diffs and renders what
-those produce. Owner: **no GitHub Actions for now**, and any CI added later
-**calls these same scripts**.
+those produce. Owner, 2026-09-30: **no GitHub Actions for now**, and any CI
+added later **calls these same scripts**. That changed on 2026-10-14 ("try
+Q3"): `.github/workflows/ig-ast-refresh.yml` runs `AstExportCli` on a runner,
+at the pinned commit, to refresh an IG's AST cache. It calls the same
+exporter and `ig-cache.sh`; it is the one CI path, and
+[`ig-build-pipeline`](ig-build-pipeline.md) §"The AST cache lifecycle" owns it.
 
 ## Without packages.fhir.org: seeding the cache from trusted sources
 
@@ -214,3 +218,10 @@ A criterion is met when an AST from a real IG is shown to carry the thing —
 smart-immunizations is the right subject, because it is the IG whose 61 % gap
 motivated the work.
 {% endraw %}
+
+## Processes that run this skill
+
+| process | step(s) that name it |
+|---|---|
+| [An IG site, built from the AST on its cache branch](../../en/cat-harness/processes/ig-ast-cache.html) | Build the IG with the Publisher AST exporter |
+

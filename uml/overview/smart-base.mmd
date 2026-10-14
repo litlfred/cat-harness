@@ -110,6 +110,11 @@ classDiagram
       links [0..*] object[]
     }
   }
+  namespace smart_base__library_9789240116191_eng_l1_extraction {
+    class n_smart_base_library_9789240116191_eng_l1_extraction_l1_extraction["l1-extraction: no node schema"] {
+      <<could not determine>>
+    }
+  }
   namespace smart_base__methodologies {
     class n_smart_base_methodologies_methodology["methodology: no node schema"] {
       <<could not determine>>
@@ -194,6 +199,8 @@ classDiagram
       version [0..1] string
       category [0..1] string
       listedAt [0..1] integer
+      profiles [1..*] string[]
+      code [0..1] object
       published [1] object
       sidecars [0..1] object
       materialization [1] object
@@ -1087,6 +1094,8 @@ classDiagram
   cssClass "smart_base_library_folio_keywords_v1_folio_keywords_v1" fa_uml_kind_library
   cssClass "smart_base_library_folio_referenced_source_v1_Outline" fa_uml_kind_library
   cssClass "smart_base_library_folio_referenced_source_v1_folio_referenced_source_v1" fa_uml_kind_library
+  cssClass "n_smart_base_library_9789240116191_eng_l1_extraction_l1_extraction" fa_uml_kind_l1_extraction
+  cssClass "n_smart_base_library_9789240116191_eng_l1_extraction_l1_extraction" fa_uml_undetermined
   cssClass "n_smart_base_methodologies_methodology" fa_uml_kind_methodology
   cssClass "n_smart_base_methodologies_methodology" fa_uml_undetermined
   cssClass "smart_base_processes_omg_bpmn_2_0" fa_uml_kind_processes

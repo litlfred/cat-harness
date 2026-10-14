@@ -81,10 +81,11 @@ rendered-by: auto-docs-viewer
 
 <ul class="subs">
 <li><a href="archimate-schemas/">archimate-schemas</a> <span class="p">cat-harness/archimate/schemas</span> <span class="n">1</span></li>
-<li><a href="core-schemas/">core-schemas</a> <span class="p">folio-assistant-core/schemas</span> <span class="n">13</span></li>
+<li><a href="core-schemas/">core-schemas</a> <span class="p">folio-assistant-core/schemas</span> <span class="n">14</span></li>
 <li><a href="fhir-harness-schemas/">fhir-harness-schemas</a> <span class="p">fhir-harness/schemas</span> <span class="n">8</span></li>
+<li><a href="folio-assistant-sci-schemas/">folio-assistant-sci-schemas</a> <span class="p">folio-assistant-sci/schemas</span> <span class="n">1</span></li>
 <li><a href="openapi-schemas/">openapi-schemas</a> <span class="p">cat-harness/openapi/schemas</span> <span class="n">1</span></li>
-<li><a href="schemas/">schemas</a> <span class="p">cat-harness/schemas</span> <span class="n">197</span></li>
+<li><a href="schemas/">schemas</a> <span class="p">cat-harness/schemas</span> <span class="n">198</span></li>
 </ul>
 
 <div class="fa-table-filter">
@@ -198,6 +199,10 @@ rendered-by: auto-docs-viewer
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/builders.ts"><code>builders</code></a><br><span class="p">cat-harness/schemas/builders.ts</span></td>
   <td>Each builder validates the input against its Zod schema and returns the typed object, providing compile-time AND runtime safety.</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/built-at-publish.ts"><code>built-at-publish</code></a><br><span class="p">cat-harness/schemas/built-at-publish.ts</span></td>
+  <td>Artefacts an instance must NOT commit, because no commit of it can hold them current: they are built when the site is published, and only then.</td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/schemas/carried-note.ts"><code>carried-note</code></a><br><span class="p">cat-harness/schemas/carried-note.ts</span></td>
@@ -968,12 +973,20 @@ rendered-by: auto-docs-viewer
   <td>Does a <code>recommendation</code> block's <code>strength</code> resolve? Bean <code>55ao</code>.</td>
 </tr>
 <tr>
+  <td><a href="https://github.com/litlfred/folio-assistant-core/blob/main/schemas/reference.ts"><code>reference</code></a><br><span class="p">folio-assistant-core/schemas/reference.ts</span></td>
+  <td><code>folio-reference/v1</code>: one bibliographic reference, as a KG node (bean folio-assistant-63q4).</td>
+</tr>
+<tr>
   <td><a href="https://github.com/litlfred/folio-assistant-core/blob/main/schemas/review-comment.ts"><code>review-comment</code></a><br><span class="p">folio-assistant-core/schemas/review-comment.ts</span></td>
   <td>A reviewer's comment on one block of a folio: a todo with more structure and a closed lifecycle.</td>
 </tr>
 <tr>
   <td><a href="https://github.com/litlfred/folio-assistant-core/blob/main/schemas/review-verdict.ts"><code>review-verdict</code></a><br><span class="p">folio-assistant-core/schemas/review-verdict.ts</span></td>
   <td>A reviewer's VERDICT on one version of one block: &quot;I read this, and here is my judgement&quot;.</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/litlfred/folio-assistant-sci/blob/main/schemas/editor-checker.ts"><code>editor-checker</code></a><br><span class="p">folio-assistant-sci/schemas/editor-checker.ts</span></td>
+  <td><code>folio-editor-checker/v1</code>: one node per content profile, naming the code the ✍ suggest editor loads for that profile's blocks (bean folio-assistant-4dx7).</td>
 </tr>
 </tbody>
 </table>

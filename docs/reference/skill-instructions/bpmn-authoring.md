@@ -109,5 +109,5 @@ no layer above it.
 | process | step(s) that name it |
 |---|---|
 | [CRDM Phases 2–4 — BPA and requirements](../../en/cat-harness/processes/crdm-requirements-definition.html) | Phase 2: Map current workflow (BPA) |
-| [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Business processes · BPMN 2.0 |
+| [L2 DAK authoring](../../en/cat-harness/processes/l2-dak-authoring.html) | Business processes · BPMN 2.0 (calls a sub-process) |
 

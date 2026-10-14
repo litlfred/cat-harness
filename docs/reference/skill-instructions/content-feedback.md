@@ -39,6 +39,15 @@ Gather and triage feedback on published content for future iterations.
 - Triaged feedback log
 - Prioritized backlog for next iteration
 - Change requests linked to feedback
+
+## Staging links
+
+When a staging preview exists, every request this skill makes for feedback,
+review or sign-off carries it: one deep link per changed page, to the anchor
+where the change sits, with the same page on main as *before*. Where the skill
+declares an output contract, they go in its `stagingLinks` field. The rule, and
+where the page list comes from:
+[`staging-review`](staging-review.md) §"The deep-link rule".
 {% endraw %}
 
 ## Processes that run this skill
@@ -48,6 +57,7 @@ Gather and triage feedback on published content for future iterations.
 | [Narrative review](../../en/cat-harness/processes/review-narrative.html) | Record findings as advice |
 | [Adjudication](../../en/cat-harness/processes/adjudication.html) | State the finding and what it read |
 | [Prose and the code it describes](../../en/cat-harness/processes/narrative-code-review.html) | Raise a finding against the wrong side |
+| [Questionnaire wireframe review](../../en/cat-harness/processes/questionnaire-wireframe-review.html) | Triage the change request |
 | [Content lifecycle](../../en/cat-harness/processes/content-lifecycle.html) | Triage published feedback; File feedback as beans |
 | [Draft, review and publish](../../en/cat-harness/processes/draft-to-publication.html) | Open beans for the change requests |
 

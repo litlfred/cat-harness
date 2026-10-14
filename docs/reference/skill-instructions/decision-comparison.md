@@ -125,4 +125,5 @@ full" means. The rest get a number, never a row from a table they cannot see.
 | process | step(s) that name it |
 |---|---|
 | [CRDM Phases 2–4 — BPA and requirements](../../en/cat-harness/processes/crdm-requirements-definition.html) | Phase 4a: Compare the viable options |
+| [SMART Guideline end to end](../../en/cat-harness/processes/smart-guideline-end-to-end.html) | 3 · Choose L2 dependencies (WHO / jurisdiction DAKs); 5 · Choose L3 dependencies (WHO / jurisdiction IGs) |
 
