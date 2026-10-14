@@ -61,7 +61,7 @@ import { join, relative } from "node:path";
 
 import { z } from "zod";
 
-import { readDeclaration } from "./cat-harness";
+import { GateExemptionsSchema, readDeclaration } from "./cat-harness";
 import {
   CONFIG_SUFFIX,
   INDEX_CONFIG_FILENAME,
@@ -198,6 +198,13 @@ export const IndexConfigSchema = z
       .refine((xs) => new Set(xs.map((x) => x.name)).size === xs.length, { message: "instances: a name appears twice" })
       .refine((xs) => !xs.some((x) => x.name === HUB_LANDING), { message: `instances: \`${HUB_LANDING}\` is the landing keyword, not an instance name` }),
     site: IndexSiteSchema.optional(),
+    /**
+     * The steps of THIS checkout's own workflows that CI runs and the local
+     * gate set does not, each with its reason ({@link GateExemptionsSchema}).
+     * The index owns `.github/workflows/`, so it declares their exemptions,
+     * in the same change as the step — never ahead of it in a layer.
+     */
+    gateExemptions: GateExemptionsSchema.optional(),
   })
   .strict()
   .superRefine((c, ctx) => {
@@ -422,7 +429,7 @@ export function addIndexInstance(root: string, entry: IndexInstance): boolean {
 
 /** The canonical text of an index: two-space JSON, `$schema` first, a trailing newline. */
 export function formatIndexConfig(config: IndexConfig): string {
-  const { $schema, _comment, title, description, instances, site } = config;
+  const { $schema, _comment, title, description, instances, site, gateExemptions } = config;
   const ordered = {
     $schema,
     ...(_comment !== undefined ? { _comment } : {}),
@@ -433,6 +440,9 @@ export function formatIndexConfig(config: IndexConfig): string {
       return { name, ...(c !== undefined ? { _comment: c } : {}), ...(imp !== undefined ? { import: imp } : {}), ...(source !== undefined ? { source } : {}), ...rest };
     }),
     ...(site !== undefined ? { site } : {}),
+    // Last, and kept: dropping it here would make every rewrite of the index
+    // silently delete the exemptions of its own workflows.
+    ...(gateExemptions !== undefined ? { gateExemptions } : {}),
   };
   return `${JSON.stringify(ordered, null, 2)}\n`;
 }

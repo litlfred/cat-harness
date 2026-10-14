@@ -3274,6 +3274,46 @@ export const ExactVersionSchema = z
 export const CAT_HARNESS_DECLARATION_SCHEMA_TAG = "cat-harness-declaration/1.0.0" as const;
 
 /** The declaration's fields, shared by {@link CatHarnessDeclarationSchema} and {@link CatHarnessDeclarationKind}. */
+/**
+ * The steps and check scripts a repository's CI runs that the local gate set
+ * does not, each with its reason — read by cat-harness-tools' `gates.ts`
+ * (beans `0r7u`, `ot9a`).
+ *
+ * Declared by whoever OWNS what is exempted: an instance for its own scripts
+ * and steps (`gateExemptions` on its declaration), and an index for the steps
+ * of its own workflows (`gateExemptions` in `index.config.json`). An index
+ * declares no instance, so before this its workflow steps were exempted from
+ * a layer's declaration instead, AHEAD of the workflow change — and a layer
+ * re-pinned before the workflow landed carried an exemption that matched
+ * nothing CI ran (`qa:publish --add`, 2026-10-14).
+ */
+export const GateExemptionsSchema = z
+  .object({
+    steps: z
+      .array(
+        z
+          .object({
+            match: z.string().min(1),
+            kind: z.enum(["covered-by", "ci-only", "no-folio"]),
+            reason: z.string().trim().min(1),
+          })
+          .strict(),
+      )
+      .optional(),
+    scripts: z
+      .array(
+        z
+          .object({
+            script: z.string().min(1),
+            kind: z.enum(["report", "covered-by", "no-folio", "scheduled"]),
+            reason: z.string().trim().min(1),
+          })
+          .strict(),
+      )
+      .optional(),
+  })
+  .strict();
+
 const catHarnessDeclarationShape = {
   name: z.string().min(1),
   ...kgNodeLabelShape,
@@ -3549,33 +3589,7 @@ const catHarnessDeclarationShape = {
         }),
     )
     .optional(),
-  gateExemptions: z
-    .object({
-      steps: z
-        .array(
-          z
-            .object({
-              match: z.string().min(1),
-              kind: z.enum(["covered-by", "ci-only", "no-folio"]),
-              reason: z.string().trim().min(1),
-            })
-            .strict(),
-        )
-        .optional(),
-      scripts: z
-        .array(
-          z
-            .object({
-              script: z.string().min(1),
-              kind: z.enum(["report", "covered-by", "no-folio", "scheduled"]),
-              reason: z.string().trim().min(1),
-            })
-            .strict(),
-        )
-        .optional(),
-    })
-    .strict()
-    .optional(),
+  gateExemptions: GateExemptionsSchema.optional(),
   /**
    * The content adapters this instance ships — see {@link ContentAdapterDeclaration}.
    *
