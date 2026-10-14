@@ -111,6 +111,19 @@ names none above it.
   The review page shows it under the list, as the PR comment does: a run
   started by dispatch finds its PR from the branch, so the comment is not
   lost when no `pull_request` event started the run (bean `ehh6`).
+- **Show**: every docs-site preview also carries `STAGING/<slug>/changes/`
+  (`cat-harness-tools/scripts/staging-changes.ts`, owner 2026-10-14): the
+  changed sources, with a re-pinned mount in `index.lock.json` expanded into
+  the files its repository changed between the two pins (a re-pin handed to
+  a renderer as one JSON line predicts nothing); the cone's files and its
+  `undetermined` inputs; and the build diffed against the site at the
+  `gh-pages` root, its `missed` files listed as **changed, not in the cone**.
+  That diff folds the preview's base URL to the root's, blanks
+  `BUILD_STAMPS` and compares a page's `<main>`, because a preview's chrome
+  differs on every page; a removed file is listed apart, by directory, since
+  most are parts of the site the preview does not carry. The root records
+  its build commit in `build.json`; a root not built from the PR's base is
+  said on the page, never read as this branch's change.
 - **Gate**: `review-coverage-gate.dmn` reads three page counts beside the
   block counts, each with a status fact so an uncomputed count is never 0:
   - `unreviewedPages`: review-list files nobody has reviewed at their
