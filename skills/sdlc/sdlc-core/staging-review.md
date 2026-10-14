@@ -377,7 +377,7 @@ When reporting changes to the user:
 https://<owner>.github.io/<repo>/<path>
 ```
 
-Read from `<name>.config.json` → `readme.pagesBaseUrl`, or construct from
+Read from the instance's config (its `index.config.json` entry) → `readme.pagesBaseUrl`, or construct from
 the repo's GitHub Pages URL.
 
 ### Staging (after)

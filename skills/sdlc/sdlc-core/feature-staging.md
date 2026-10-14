@@ -389,7 +389,8 @@ Every path refuses an empty build before it deletes anything (bean `oisv`).
   prerequisite.
 - **An IG repository's own site is built from its AST, not from the
   Publisher's HTML** (owner, 2026-10-14). The repository declares
-  `site.build` in its `<instance>.config.json`, and that recipe's first step
+  `site.build` in its `index.config.json` entry (inline — never a
+  `<instance>.config.json`, bean `ymvt`), and that recipe's first step
   restores the AST from its cache branch and refuses one that is not valid for
   the commit. The cache is refreshed by a Publisher run on a runner, through
   the IG layer's reusable refresh workflow. It is the one workflow an

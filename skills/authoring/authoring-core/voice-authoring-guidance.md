@@ -22,7 +22,8 @@ rewriting prose somebody has already reviewed.
 bun run cat check:voices          # what this instance ships, and how many rules each carries
 ```
 
-The active set is in `<name>.config.json`:
+The active set is in the instance's config, its `index.config.json` entry
+(inline; a legacy `<name>.config.json` only until `index-config:migrate --inline`):
 
 ```json
 { "voices": { "active": ["milnor"] } }

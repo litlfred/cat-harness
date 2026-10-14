@@ -583,7 +583,7 @@ reader, whatever locale they chose, which is the bug this section records.
 
 ## Six UN languages
 
-The default `supportedLocales` in `<name>.config.json`:
+The default `supportedLocales` in the instance's config (its `index.config.json` entry):
 
 | Code | Language | Native |
 |---|---|---|

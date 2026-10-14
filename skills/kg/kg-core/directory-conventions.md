@@ -826,10 +826,10 @@ beside a directory concept. Bean `l4ay`; schema `schemas/subgraph-source.ts`.
   its built-in names only as a fallback (`cache-family-fallbacks.test.ts`
   keeps those in step). A branch no declaration names is a finding
   (`subgraph-source.test.ts`), never a guess at what to fetch.
-- **The instance config overrides it, by id.** `<instance>.config.json` →
-  `"subgraphSources": { "<dir-id>": <source> }` — or, when the root
-  `index.config.json` lists the instance, the same field inline on its entry,
-  which overlays the imported file ([`index-config`](index-config.md)).
+- **The instance config overrides it, by id.** `"subgraphSources":
+  { "<dir-id>": <source> }` inline on the instance's `index.config.json`
+  entry ([`index-config`](index-config.md); a legacy `<instance>.config.json`
+  is read only until it is retired, bean `ymvt`).
   `subgraphSources` moves a declared directory's content. Bringing in a whole
   instance from another repository is the entry's `source.remote`, which is a
   different field. The declaration says what the
