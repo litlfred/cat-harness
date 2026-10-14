@@ -5,7 +5,7 @@ status: in-progress
 type: feature
 priority: normal
 created_at: 2026-10-09T15:29:13Z
-updated_at: 2026-10-12T17:00:00Z
+updated_at: 2026-10-14T15:45:00Z
 parent: folio-assistant-f6gq
 ---
 
@@ -37,3 +37,7 @@ Owner, session_017fFnGmbJcfqqrHXz9oqxdG 2026-10-12: **"B1 C1"**.
 
 - **B1 — box 1 ticked.** The remote-mount pin in `index.lock.json` IS the package pin: `@litlfred/folio-assistant-core` resolves through `workspaces` to the core mount, `mount:remote:check` enforces the tree digest, and CI mounts the lock before anything runs. No separate package pin (git-sha dependency or published version): it would be a second copy of the same pin that can go stale.
 - **C1 — box 2 kept as written.** Its fresh-clone half holds (who-iris CI on main `5a19a21`). Its aggregate half closes only once folio-assistant repins who-iris to `5a19a21` or later and runs who-iris's gates and tests in that checkout; this needs a session with folio-assistant access (not enabled here). Bean stays in-progress until then.
+
+## Pin ruling (note added by another session; status left to this bean's owner)
+
+Owner ruling 2026-10-14 (session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs): **the mount pin IS the pin.** A layer is fetched at the exact commit `index.lock.json` pins, and `mount:remote:check` holds it to that locked tree digest, so no separate package-version pin or comparison check is needed. This accepts the reading box 1 left for the owner.
