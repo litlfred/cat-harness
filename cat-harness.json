@@ -998,7 +998,7 @@
     {"path": "docs/assets/glossary/who-iris--kg-skills.skos.jsonld", "writer": ["glossary:export"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/who-iris--kg-tools.skos.jsonld", "writer": ["glossary:export"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/who-iris--who-terms.skos.jsonld", "writer": ["glossary:export"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
-    {"path": "docs/folio-assistant-core/", "writer": ["glossary:page"], "because": "checkout", "reason": "folio-assistant-core's glossary, which sits above this layer"},
+    {"path": "docs/folio-assistant-core/", "writer": ["glossary:page", "bibliography:page"], "because": "checkout", "reason": "folio-assistant-core's glossary and bibliography, which sit above this layer; the bibliography is computed over every instance's references and catalogue directories"},
     {"path": "docs/ar/folio-assistant-core/", "writer": ["glossary:page"], "because": "checkout", "reason": "its translated glossary index"},
     {"path": "docs/es/folio-assistant-core/", "writer": ["glossary:page"], "because": "checkout", "reason": "its translated glossary index"},
     {"path": "docs/fr/folio-assistant-core/", "writer": ["glossary:page"], "because": "checkout", "reason": "its translated glossary index"},
