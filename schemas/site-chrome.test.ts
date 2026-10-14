@@ -96,6 +96,29 @@ describe("cat-harness's own site chrome", () => {
     }
   });
 
+  test("the nav is cached: each theme override looks its answer up in a map rendered once per build", () => {
+    // "Cache the nav": the theme re-derives a page's place in the nav on
+    // every page, O(pages^2) for the site. Each override fetches a map that
+    // `include_cached` renders once; an override that lost that line, or a
+    // map that moved, would put the quadratic cost back without failing the
+    // build.
+    const overrides: Record<string, string> = {
+      "_includes/css/activation.scss.liquid": "nav_cache/activation_map.html",
+      "_includes/components/breadcrumbs.html": "nav_cache/breadcrumbs_map.html",
+      "_includes/components/children_nav.html": "nav_cache/parenthood_map.html",
+    };
+    for (const [rel, map] of Object.entries(overrides)) {
+      const body = readFileSync(join(HARNESS, siteChromeDirFor(HARNESS), rel), "utf-8");
+      expect(body).toContain(`{%- include_cached ${map} -%}`);
+      expect(existsSync(join(HARNESS, siteChromeDirFor(HARNESS), "_includes", map))).toBe(true);
+      // A map depends on `site` alone; `page` in it would be cached from
+      // whichever page rendered first.
+      const mapBody = readFileSync(join(HARNESS, siteChromeDirFor(HARNESS), "_includes", map), "utf-8")
+        .replace(/{%-? comment -?%}[\s\S]*?{%-? endcomment -?%}/g, "");
+      expect(mapBody).not.toMatch(/\bpage\./);
+    }
+  });
+
   test("the two _config.yml layers merge to a config with the theme keys and the site's identity (D1)", () => {
     const chrome = parseYaml(readFileSync(join(HARNESS, siteChromeDirFor(HARNESS), "_config.yml"), "utf-8")) as Record<string, unknown>;
     const docs = parseYaml(readFileSync(join(HARNESS, siteDirFor(HARNESS), "_config.yml"), "utf-8")) as Record<string, unknown>;
