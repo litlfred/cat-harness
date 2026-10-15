@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "A LAST pass over the finished site: inject the shared navbar (`lib/navbar.ts`, the same component the site sidebar draws) into every page that carries none — standalone viewers, generated instance pages, and each IG site built by `stage-ig-sites`. A page under an `igSite` instance's route is railed as THAT instance's page (its name, mark and graphs); a page may declare its own section (`data-fa-visualiser-nav`) and its label (`fa-visualiser-label`). Mount routes are left to the mount pass, and a page that declines (`folio-navbar: none`) is left bare.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/rail-standalone-pages.ts" },
+    invoke: { shell: "bun run cat rail:standalone-pages" },
     io: {
       inputs: [
         { name: "site", schema: t("RepoPath"), required: true, description: "The finished site directory." },

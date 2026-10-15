@@ -29,7 +29,7 @@ export default toolFactory((t) =>
     // brings tesseract and Pillow, which a page raster does not need, and a
     // Tool node that overstates its install is a Tool nobody can schedule.
     install: { cli: "pip install pymupdf" },
-    invoke: { shell: "python3 cat-harness-tools/scripts/pdf-cover.py" },
+    invoke: { shell: "bun run cat pdf:cover" },
     requires: { runtime: ["python3", "pymupdf"], network: false },
     io: {
       inputs: [

@@ -45,6 +45,7 @@ node_modules/
 /docs/assets/img/uml/overview/
 /docs/subgraph/
 /docs/payload/
+/docs/assets/library/jsonld/smart-base/9789240116191-eng/l1-extraction/
 /docs/reference/skill-instructions/
 /docs/en/cat-harness/processes/
 /docs/en/cat-harness/cat-harness-declaration/
@@ -88,6 +89,7 @@ node_modules/
 /docs/assets/qa/index.json
 /docs/assets/folio/folio-assistant-core/
 /docs/assets/folio/who-iris/
+/docs/en/cat-harness/beans/cat-harness/
 /docs/en/cat-harness/beans/cat-harness-tools/
 /docs/en/cat-harness/beans/folio-assistant-core/
 /docs/en/cat-harness/folio/folio-assistant-core/
@@ -105,6 +107,20 @@ node_modules/
 /docs/en/cat-harness/health/who-iris/
 /docs/en/cat-harness/attestations/cat-harness/
 /docs/en/cat-harness/attestations/folio-assistant-sci/
+/docs/en/cat-harness/graph-typologies/
+/docs/en/cat-harness/validators/
+/docs/en/cat-harness/qa-checkers/
+/docs/en/cat-harness/block-kinds/
+/docs/en/cat-harness/content-adapters/
+/docs/en/cat-harness/code-lists/
+/docs/en/cat-harness/code/bootstrap-tools/
+/docs/en/cat-harness/code/cat-harness/
+/docs/en/cat-harness/code/cat-harness-tools/
+/docs/en/cat-harness/code/fhir-harness/
+/docs/en/cat-harness/code/folio-assistant-core/
+/docs/en/cat-harness/code/folio-assistant-sci/
+/docs/en/cat-harness/code/smart-base/
+/docs/en/cat-harness/code/who-iris/
 /docs/todos.json
 /docs/todos.jsonld
 /docs/todos/

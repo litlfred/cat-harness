@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Emit the published JSON-LD `@context` that both populations share — authored block siblings and ingested `library/**` nodes reference it by URL — generated from its TypeScript definition rather than hand-kept.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/gen-jsonld-context.ts" },
+    invoke: { shell: "bun run cat jsonld:context" },
     io: {
       inputs: [
         // `--check` is the CI arm: it compares against the committed copy and

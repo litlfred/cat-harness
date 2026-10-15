@@ -17,7 +17,7 @@ export default toolFactory((t) =>
     description:
       "Count how many provable blocks — theorem, lemma, proposition, corollary — carry a full Lean proof rather than a sorry, per paper. The completeness half of the Lean audit: what is formalised, and what is still a gap.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/lean-coverage.ts" },
+    invoke: { shell: "bun run cat lean:coverage" },
     io: {
       inputs: [
         { name: "paper", schema: t("Slug"), required: false, arg: { flag: "--paper" }, description: "One paper instead of all." },

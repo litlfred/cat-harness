@@ -702,10 +702,26 @@ export type ToolTypeName = keyof typeof TOOL_TYPES;
  * 404s while the document they name sat one directory away.
  * {@link renderingPath} is now the single answer to "where is it published".
  *
- * Since bean `tdir` the IRI is a whole document per type,
- * `<base>/tool-types/<Name>.schema.json` — see {@link TOOL_TYPES_DIR}.
+ * Bean `tdir` adds a whole document per type,
+ * `<base>/tool-types/<Name>.schema.json` ({@link toolTypeDocumentIri}); ports
+ * move to it in a second step — see there.
  */
 export function toolTypeIri(base: string, name: ToolTypeName): string {
+  return `${renderingPath(base, "tool-types.schema.json")}#/$defs/${name}`;
+}
+
+/**
+ * The per-type document's IRI, `<base>/tool-types/<Name>.schema.json`: the
+ * `$id` each published per-type schema carries (bean `tdir`).
+ *
+ * **Two phases, so no layer is ever broken by another's main.** A port's
+ * `schema` still uses {@link toolTypeIri}'s fragment form, because the tools
+ * layer's main reads that form; this PR adds the per-type documents and
+ * {@link toolTypeNameOf}, which reads both. Once the tools layer reads ports
+ * through `toolTypeNameOf`, `toolTypeIri` returns this IRI and the fragment
+ * form retires.
+ */
+export function toolTypeDocumentIri(base: string, name: ToolTypeName): string {
   return renderingPath(base, toolTypePath(name));
 }
 
@@ -742,7 +758,11 @@ export function toolTypePath(name: ToolTypeName): string {
  * `tool-types/<Name>.schema.json` tail is read.
  */
 export function toolTypeNameOf(iri: string): ToolTypeName | undefined {
-  const m = new RegExp(`(?:^|/)${TOOL_TYPES_DIR}/([A-Za-z][A-Za-z0-9]*)\\.schema\\.json$`).exec(iri);
+  // Both forms, during the two-phase move (see toolTypeDocumentIri): the
+  // fragment `tool-types.schema.json#/$defs/<Name>` and the per-type document.
+  const m =
+    new RegExp(`(?:^|/)${TOOL_TYPES_DIR}/([A-Za-z][A-Za-z0-9]*)\\.schema\\.json$`).exec(iri) ??
+    /tool-types\.schema\.json#\/\$defs\/([A-Za-z][A-Za-z0-9]*)$/.exec(iri);
   return m !== null && Object.prototype.hasOwnProperty.call(TOOL_TYPES, m[1]) ? (m[1] as ToolTypeName) : undefined;
 }
 

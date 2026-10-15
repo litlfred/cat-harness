@@ -24,7 +24,7 @@ export default toolFactory((t) =>
     description:
       "Build the content graph under a path and report its edges, separated into the EDITORIAL relation an author maintains and the FORMAL one derived from Lean. Reading the two as one number is how the editorial signal gets overwritten.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/pipeline/content-graph.ts" },
+    invoke: { shell: "bun run cat content:graph" },
     io: {
       inputs: [
         // Optional, because the script defaults to `<repo>/content` — and

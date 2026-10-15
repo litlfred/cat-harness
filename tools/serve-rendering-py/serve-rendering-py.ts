@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Serve an instance's renderings over local HTTP with their declared media types using Python 3 standard library. The publication host wherever GitHub Pages is absent, and the only host that can enforce `application/ld+json` at all.",
     install: { none: true },
-    invoke: { shell: "python3 cat-harness-tools/scripts/serve-rendering.py" },
+    invoke: { shell: "bun run cat serve:rendering:py" },
     io: {
       inputs: [
         { name: "directory", schema: t("RepoPath"), required: false, arg: { flag: "--dir" }, description: "Tree to serve; defaults to the built site when present." },

@@ -35,7 +35,7 @@ export default toolFactory((t) =>
     description:
       "Parse every `tex` snippet in a folio's blocks and report what will not compile — structural, not textual: it reads an AST rather than matching patterns. Complementary to `latex-preflight`, which gates a main.tex before a compile, and to `latex-overfull`, which reads a log after one.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/pipeline/validate-tex.ts" },
+    invoke: { shell: "bun run cat latex:validate" },
     io: {
       inputs: [
         { name: "paper", schema: t("Slug"), required: false, arg: { flag: "--paper" }, description: "One folio by slug. Absent, every folio the content root holds." },

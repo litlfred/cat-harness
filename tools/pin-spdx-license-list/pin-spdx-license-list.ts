@@ -14,7 +14,7 @@ export default toolFactory((t) =>
     description:
       "Read `json/licenses.json` and `json/exceptions.json` from a copy of github.com/spdx/license-list-data at the pinned tag and write `cat-harness/external-schemas/spdx-license-list.terminology.json` (`folio-pinned-terminology/v1`): every licence and exception id with its name and deprecated flag — the offline, version-fixed list `check:source-licence` validates a `licence.json` id against.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/pin-spdx-license-list.ts --from <license-list-data checkout>" },
+    invoke: { shell: "bun run cat spdx:pin --from <license-list-data checkout>" },
     // `network: false` is exact: it reads a local copy and never fetches.
     // The copy is fetched by hand at the pinned tag, for the reason
     // `pin-ig-terminology` gives: a gate that needs the network fails for

@@ -16,7 +16,7 @@ export default toolFactory((t) =>
     description:
       "Build the block- and section-level editorial dependency graph of one paper from its `.ts` manifests and report forward references, cross-chapter coupling, sparse or dense sections and isolated blocks, ranked. Reads `uses[]`/`interprets` only — the editorial relation, never the formal one.",
     install: { none: true },
-    invoke: { shell: "python3 cat-harness-tools/pipeline/content-graph-analysis.py" },
+    invoke: { shell: "bun run cat content:graph-analysis" },
     io: {
       inputs: [
         { name: "paper", schema: t("Slug"), required: false, arg: { flag: "--paper" }, description: "The paper directory under the content root. Its default names one folio's paper, which is migration debt: pass it explicitly." },

@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Retrieve and inspect a remote Knowledge Graph packaged as an npm package or tarball (.tgz), supporting both unhydrated source graph views (authored declarations, skills, schemas) and hydrated materialized graph views (subgraph JSON-LD, metadata indexes, dereferenced graph projections).",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/kg-retrieve-npm.ts" },
+    invoke: { shell: "bun run cat kg:retrieve:npm" },
     io: {
       inputs: [
         { name: "package", schema: t("Text"), required: true, description: "Package name, npm tarball (.tgz) path, or URL." },

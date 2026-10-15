@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Write the Jekyll source the docs site is built from: the base docs layer, the repository overlay on top (an overlay's `_config.yml` merged, every override reported), and each `composed` instance under its own name. `--staging` keeps staging-only visualisations; `--changed-files` stubs instances a branch does not reach. `--shell` writes the CHROME only — the layers' Jekyll machinery and assets, no page, no instance, and the host's generated includes empty — which an IG repository composes its IG into so its own site wears the main site's chrome (#2235).",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/compose-docs.ts" },
+    invoke: { shell: "bun run cat compose:docs" },
     io: {
       inputs: [
         { name: "out", schema: t("RepoPath"), required: true, description: "The Jekyll source to write (replaced)." },

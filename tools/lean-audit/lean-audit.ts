@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Inspect Lean declarations chapter by chapter for proofs that type-check, are sorry-free and axiom-clean, and still carry no mathematical content — assuming what they claim, concluding something trivially true, or resting on a false premise.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/lean-audit.ts" },
+    invoke: { shell: "bun run cat lean:audit" },
     io: {
       inputs: [
         { name: "chapter", schema: t("Slug"), required: false, arg: { flag: "--chapter" }, description: "One chapter instead of the whole corpus." },

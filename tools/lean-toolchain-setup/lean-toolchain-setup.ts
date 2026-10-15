@@ -10,7 +10,7 @@ export default toolFactory((t) =>
     // It IS the install step, so `install.cli` names itself: an agent that needs
     // Lean runs this, and `install.none` would say no step exists.
     install: { cli: "scripts/setup-lean-toolchain.sh" },
-    invoke: { shell: "cat-harness-tools/scripts/setup-lean-toolchain.sh" },
+    invoke: { shell: "bun run cat lean:setup-toolchain" },
     io: {
       inputs: [],
       outputs: [{ name: "toolchain", schema: t("Text"), description: "The linked toolchain name, and the per-repo override that selects it." }],

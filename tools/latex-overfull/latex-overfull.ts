@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Turn a pdflatex log's Overfull \\hbox warnings into a located, actionable report, with a threshold so a long tail of trivial overruns does not bury the real ones.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/pipeline/latex-overfull-report.ts" },
+    invoke: { shell: "bun run cat latex:overfull" },
     io: {
       inputs: [
         // REQUIRED and positional — found by running it, not by reading it:

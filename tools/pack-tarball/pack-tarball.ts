@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Build an npm tarball (.tgz) of an instance using `bun pm pack`, compute its size and SHA-256 digest, and record it as a `folio-binary-release/v1` state node.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/pack-tarball.ts" },
+    invoke: { shell: "bun run cat pack:tarball" },
     io: {
       inputs: [
         { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "Instance root containing package.json (default: cwd)." },

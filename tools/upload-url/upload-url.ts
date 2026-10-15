@@ -18,7 +18,7 @@ export default toolFactory((t) =>
     description:
       "Compose the forge URL a person can drop a file at, from the instance's own declaration: the `uploads` graph's directory, resolved against the ROOT its scope names, expressed relative to the repository, and appended to the origin remote as GitHub's `/upload/<branch>/<path>`. Every failure is NAMED and no URL is guessed — no declaration, no declared `uploads` graph, a declared queue absent from disk, no `origin` remote, and a non-github.com remote each return a reason and a remedy instead. It exists because the obvious composition mints a live 404: the declared path `uploads/` is relative to the INSTANCE and a forge URL needs it relative to the REPOSITORY, so pasting the declared path drops the `cat-harness/` segment. Owner, 2026-09-20, on the hand-written form: \"were it to exist, but it doesmt on main!!!!!\"",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/upload-url.ts" },
+    invoke: { shell: "bun run cat upload:url" },
     requires: { runtime: ["bun"], network: false },
     io: {
       inputs: [

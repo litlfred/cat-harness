@@ -11,7 +11,7 @@ export default toolFactory((t) =>
     description:
       "Run in a separated repository. Six conditions, each decided by an existing gate: `mounts` (every declared layer on disk at its pin — `remote-mount --check`), `declarations` (every path a declaration names resolves — `declaration-resolution`), `monorepo-paths` (no wiring still names the monorepo: `livesAt` on it, a submodule of it, a reusable workflow called from it, a path into its old checkout — the one condition implemented here), `import-direction` and `reference-direction` (no layer reaches a layer above it), and `site` (the site builds from the mounts alone, every link resolving — `build-instance-site --no-mount`, only with `--site`). Findings inside a MOUNTED layer are listed and not counted: a defect in a layer pinned from upstream is fixed upstream and re-pinned. Exit 0 complete, 1 a condition failed, 2 a condition could not be determined or was not run — without `--site` the answer is never 0.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/separation-cutover-check.ts" },
+    invoke: { shell: "bun run cat separation:cutover:check" },
     io: {
       inputs: [
         { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The separated checkout. Default: the working directory." },

@@ -15,7 +15,7 @@ export default toolFactory((t) =>
     description:
       "Append one entry to the render log on the publish branch: what was published or taken down, when, from which commit, and — for a removal or a retention — WHY. The log is the only place a preview that vanished leaves a trace.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/render-log.ts" },
+    invoke: { shell: "bun run cat render:log" },
     io: {
       inputs: [
         { name: "dir", schema: t("RepoPath"), required: true, arg: { flag: "--dir" }, description: "A checkout of the publish branch, or a publish directory about to become one. This tool NEVER fetches, commits or pushes: the workflows that call it already hold the checkout with their own retry and concurrency handling, and a second pusher racing those is a new way to lose a deploy." },

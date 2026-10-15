@@ -157,8 +157,9 @@ export const bundled = { none: true } as const;
  * into the site it is building, at the same declared route (owner,
  * 2026-10-15: *"a harness should combine its library/ (or whatever) sites of
  * it and all its dependencies and use the url path pattern"*). The input is
- * declared, not assumed: the runner (`visualiser-writers.ts`, cat-harness-tools)
- * passes a site only to a Tool whose `site` input says how.
+ * declared, not assumed: the runner
+ * (`cat-harness-tools/scripts/visualiser-writers.ts`) passes a site only to a
+ * Tool whose `site` input says how.
  */
 export interface Viewer {
   id: string;
@@ -179,7 +180,7 @@ export function viewerTool(t: TypeIri, v: Viewer): ToolDefinition {
     io: {
       inputs: [
         { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Fail if a page is stale, instead of writing." },
-        { name: "site", schema: t("RepoPath"), required: false, arg: { flag: "--site" }, description: "A site being built: write the pages at their declared route under it instead of under the harness's own site directory. A repository's own site build passes it (`visualiser-writers.ts` in cat-harness-tools), since its harness docs are a pinned mount." },
+        { name: "site", schema: t("RepoPath"), required: false, arg: { flag: "--site" }, description: "A site being built: write the pages at their declared route under it instead of under the harness's own site directory. A repository's own site build passes it (the tools layer's `visualiser-writers.ts`), since its harness docs are a pinned mount." },
       ],
       outputs: [{ name: "pages", schema: t("RepoPath"), description: "The viewer pages, under the published site directory." }],
     },

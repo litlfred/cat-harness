@@ -12,7 +12,7 @@ export default toolFactory((t) =>
     description:
       "Write the root `index.config.json` (`folio-index-config/v1`) that says which instances the checkout instantiates, where each comes from (`source.local` or `source.remote`) and which owns `/` (`site.landing`), from the root `*.config.json` files and the declaration's `remoteMounts`. With `--write` it moves `remoteMounts` off the declaration into `source.remote` entries, writes the generated `.gitignore` block, and renames a legacy `<name>.mount-lock.json` to `index.lock.json`. Without a flag it prints the index it would write. Idempotent: a re-run merges what the declaration gained, and refuses an entry the index already holds differently. A root config naming no instance is reported as `unmatched-config` and not imported, because what to do with it is a person's decision.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/index-config-migrate.ts" },
+    invoke: { shell: "bun run cat index-config:migrate" },
     io: {
       inputs: [
         { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The checkout to convert; omitted, this one." },

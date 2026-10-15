@@ -39,7 +39,7 @@ export default toolFactory((t) =>
     description:
       "Write a back-translation verdict, produced by a pair of translation agents, into a block's existing translation-QA sidecar. It records a judgement rather than making one, and refuses where no sidecar exists — a round trip cannot be what decides a block is translated.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/pipeline/translation-roundtrip.ts" },
+    invoke: { shell: "bun run cat translation:roundtrip" },
     io: {
       inputs: [
         { name: "payload", schema: t("RepoPath"), required: true, arg: { flag: "--payload" }, description: "JSON carrying the block, locale, verdict and the agent pair. Absent, the command exits 2 with its usage — measured, not assumed." },

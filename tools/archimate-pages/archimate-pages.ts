@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Write a JSON-LD node and a thin page for each model an instance's `cat-archimate.config.json` names and for every view, element and relationship in it — keyed by Archi's own ids — plus the normalised model the pages' one loader draws from, and every view drawn as SVG from the model's own bounds and bendpoints in ArchiMate's notation, each box a link to its element. `--out` writes into a site being built — the data at the graph's path, the pages at the route of the visualiser the instance declares for this Tool, `<locale>/<harness>/<id>/`; without it the files go into the graph and `--check` gates them.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/archimate/scripts/gen-archimate-pages.ts" },
+    invoke: { shell: "bun run cat archimate:pages" },
     io: {
       inputs: [
         { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root." },

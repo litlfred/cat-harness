@@ -12,10 +12,10 @@ export default toolFactory((t) =>
     description:
       "Derive a package's `package.json` `exports` from the instance declaration beside it: a directory declared with graph typology `code` (top level or from within) AND named in `files` is exported as `./<dir>/*.js → ./<dir>/*.ts` and `./<dir>/* → ./<dir>/*`; a declared code directory that is not shipped (`test/`) stays private. Keys without `*` are named entry points, kept as written and checked to point into an exported directory. Without `--write` it reports each difference; with it, it rewrites `exports`. Exit 0 in agreement, 1 drift, 2 cannot tell (no declaration, no `package.json`, or no shipped code directory).",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/package-exports.ts" },
+    invoke: { shell: "bun run cat check:package-exports" },
     io: {
       inputs: [
-        { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The instance whose package to check. Default: cat-harness-tools." },
+        { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The instance whose package to check. Default: the instance holding the script." },
         { name: "write", schema: t("Flag"), required: false, arg: { flag: "--write" }, description: "Rewrite `exports` to the derived set." },
       ],
       outputs: [

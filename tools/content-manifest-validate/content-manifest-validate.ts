@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Validate the block manifests under a path against their schemas. Exits 2 where no folio is present rather than reporting a clean run — the platform carries no content, and a validator that passes over nothing is how this one validated nothing for a while.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/pipeline/validate.ts" },
+    invoke: { shell: "bun run cat content:validate" },
     io: {
       inputs: [
         { name: "targetPath", schema: t("RepoPath"), required: false, arg: { positional: 0 }, description: "A paper or chapter directory; absent, every paper the folio declares." },

@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Drive a folio's built viewer in headless Chromium and report the blocks whose diagrams, SVGs, LaTeX math or markdown do not render — with `--screenshot` to save the pictures. This is the mechanised half of looking at it: a green gate set is not a rendering.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/headless-render-qc.ts" },
+    invoke: { shell: "bun run cat render:headless-qc" },
     io: {
       inputs: [
         { name: "screenshot", schema: t("Flag"), required: false, arg: { flag: "--screenshot" }, description: "Save the screenshots as well as the verdict — which is the point when the reader is a person rather than a gate." },

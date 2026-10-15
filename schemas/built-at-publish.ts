@@ -55,8 +55,8 @@
  * That is right whenever a writer reads what it reads at the checkout's pins.
  * It is wrong for a `checkout` artefact computed over what an instance ABOVE
  * builds at publish: cat-harness's `docs/_data/harness.json` (`docs:harness`)
- * tiles every instance's site directory, and smart-trust's `docs/` is
- * smart-trust's own publish-time artefact, so lowest-first wrote the tiles
+ * tiles every instance's site directory, and an IG instance's `docs/` is
+ * that instance's own publish-time artefact, so lowest-first wrote the tiles
  * before the directory existed. The ruling: a writer is ordered AFTER the
  * writers of other instances' outputs it reads, by an edge it DECLARES
  * (`reads`, the kinds of directory it reads), never by a guess at which

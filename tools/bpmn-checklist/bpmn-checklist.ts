@@ -5,9 +5,10 @@ import { defineTool } from "../../schemas/tool.js";
 // owner ruling 2026-10-10 ("both"). The engine itself, `bpmn-engine`, is
 // declared in `cat-harness-tools/tools/index.ts`, beside its in-process
 // module (owner, 2026-10-14: "Move the node to tools"): declared here, the
-// module path had to name `../cat-harness-tools/`, a layer cat-harness's
-// `needs` does not reach (`check:import-direction`). This one is invoked by
-// shell, like every `cat-harness-tools/scripts/` Tool, so it stays.
+// module path had to climb into the tools layer by a relative path, which
+// cat-harness's `needs` does not reach (`check:import-direction`). This one
+// is invoked by a script key, like every Tool whose command the tools layer
+// implements (owner, 2026-10-15, J2), so it stays.
 export default toolFactory((t) =>
   defineTool({
     id: "bpmn-checklist",
@@ -15,7 +16,7 @@ export default toolFactory((t) =>
     description:
       "Generate, per diagram, a checklist that walks the BPMN as a state machine: each task names the `workflow_complete` call that records it and ends with `next:` by node id; each decision lists its labelled branches (or the DMN that computes it); parallel forks name every branch and joins wait for all; start/end events are entry and exit lines. A rendering, never an authority: it says it is generated, and `--check` fails when one is stale.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/bpmn-checklist.ts" },
+    invoke: { shell: "bun run cat bpmn:checklist" },
     io: {
       inputs: [
         { name: "out", schema: t("RepoPath"), required: false, arg: { flag: "--out" }, description: "Write every `<stem>.checklist.md` into this one directory instead. Default: each beside its diagram, in the instance that owns it; the harness site's `assets/workflows/checklists` holds those of the instances below the harness." },

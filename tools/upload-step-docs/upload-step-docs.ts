@@ -15,7 +15,7 @@ export default toolFactory((t) =>
     description:
       "Render document ingestion's FIRST step as a reference page, generated from the Tool nodes that implement it: the step, its lane and role, its skill and every Tool whose `satisfies` names that skill, with each Tool's description, installation, invocation, typed ports and selection triple. Everything but the process file's own path is derived — the start event, the activity its single outgoing flow reaches, and that activity's skill — so a step inserted, renamed or re-pointed moves the page rather than staling a literal. Refuses rather than emitting a partial page when the start event flows nowhere or to more than one place, when the first step is not an activity, when it names no skill or several, or when NO Tool satisfies that skill — the last because an empty page reads as a documented absence of mechanism, which is a finding rather than a document.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/gen-upload-step-docs.ts" },
+    invoke: { shell: "bun run cat upload-step:docs" },
     io: {
       inputs: [
         { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Compare against the committed page and fail if stale, instead of writing." },

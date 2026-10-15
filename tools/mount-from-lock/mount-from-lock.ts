@@ -13,7 +13,7 @@ export default toolFactory((t) =>
     description:
       "Lay down every remote mount `index.lock.json` records — each instance fetched at the lock's full SHA (sparse, blob-filtered), each directory verified against its `treeDigest`, a mismatch undone and reported — importing only `node:*`, so it runs on a fresh clone before any layer is present. It never decides what to mount: `remote-mount` writes the lock (and checks trust); this only replays it. Refuses to write over a path with tracked files or bytes that no longer hash to the lock. Exit 0 mounted/current, 1 missing, 2 could-not-determine.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/mount-from-lock.ts" },
+    invoke: { shell: "bun run cat mount:lock" },
     io: {
       inputs: [
         { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The instance root whose lock is replayed. Default: the working directory." },

@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Render a paper's content objects to LaTeX chapters: load the paper manifest, resolve its chapters and blocks, render, validate the LaTeX AST, and write the chapter files. With no manifest it builds the folio's only paper, and refuses — naming them — when there are several or none.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/pipeline/build.ts" },
+    invoke: { shell: "bun run cat content:build" },
     io: {
       inputs: [
         { name: "paperManifest", schema: t("RepoPath"), required: false, arg: { positional: 0 }, description: "The paper's `<paper>.ts` manifest; absent, the folio's single paper." },

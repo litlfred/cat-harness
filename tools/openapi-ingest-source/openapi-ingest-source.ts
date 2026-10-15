@@ -14,7 +14,7 @@ export default toolFactory((t) =>
     description:
       "Ingest the OpenAPI documents an instance's `cat-openapi.config.json` lists under `documents` from a local checkout of their repository, read AT a branch, tag or commit (`git show`), verbatim, with a provenance recording the resolved commit and the document's sha256. `--check` verifies the committed copies offline.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/openapi/scripts/ingest-openapi.ts" },
+    invoke: { shell: "bun run cat openapi:ingest" },
     io: {
       inputs: [
         { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root holding `cat-openapi.config.json` and the declared `openapi` directory." },

@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Catch the source patterns that crash pdflatex but read as ordinary prose — a bare `_` or `^` in a bibliography field, `|` inside a markdown table cell where it is also the column separator, a `$…$` span across two lines, markdown link syntax inside a fenced tex block, a double subscript. Born from named build failures rather than from a style opinion.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/pipeline/audit-tex-source.ts" },
+    invoke: { shell: "bun run cat latex:audit-source" },
     io: {
       inputs: [
         { name: "strict", schema: t("Flag"), required: false, arg: { flag: "--strict" }, description: "Exit 1 on any finding, for use as a gate." },

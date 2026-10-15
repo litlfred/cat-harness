@@ -13,7 +13,7 @@ export default toolFactory((t) =>
     description:
       "The gate for the `archimate` graph typology: every model `cat-archimate.config.json` names is held, parses (Archi's native XML or its zipped archive), and resolves — every box in every view draws an element the model holds, every relationship's ends are in the model — and no `.archimate` file is held that the config does not name.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/archimate/scripts/check-archimate.ts" },
+    invoke: { shell: "bun run cat archimate:validate" },
     io: {
       inputs: [
         { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root whose `archimate` directory is checked." },

@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Render the skill instruction bodies — the prose an agent actually loads — as browsable pages with an index, so a reader can see what an agent is told without cloning the repository.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/gen-skill-docs.ts" },
+    invoke: { shell: "bun run cat skills:docs" },
     io: {
       inputs: [
         { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Compare against the committed pages and fail if stale, instead of writing." },

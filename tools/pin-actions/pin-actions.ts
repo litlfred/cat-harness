@@ -11,7 +11,7 @@ export default toolFactory((t) =>
     description:
       "Rewrite every third-party `uses: owner/repo@ref` outside the declared staging-only workflows to `@<full commit SHA> # <ref>`, so Dependabot keeps the pair current. A tag resolves to its PEELED commit (an annotated tag's object is never pinned), else a branch head, by `git ls-remote` with argv. A ref that resolves to nothing, or to more than one commit, is refused and reported, never guessed. This repository's own reusable workflows are first-party and left alone. Idempotent.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/pin-actions.ts" },
+    invoke: { shell: "bun run cat actions:pin" },
     io: {
       inputs: [
         { name: "dry-run", schema: t("Flag"), required: false, arg: { flag: "--dry-run" }, description: "Report what would be pinned and write nothing." },

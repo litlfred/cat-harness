@@ -37,7 +37,7 @@ export default toolFactory((t) =>
     description:
       "Is a `library/<bib-slug>/` entry complete as L1 source content? Each requirement is met, unmet, or NOT-DERIVABLE, so a document that cannot yield an artefact is distinguished from one that simply has not.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/check-l1-complete.ts" },
+    invoke: { shell: "bun run cat check:l1-complete" },
     io: {
       inputs: [
         // Optional: with no argument it walks every entry in the declared

@@ -8,14 +8,15 @@ export default toolFactory((t) =>
     description:
       "Print the HTML fragment that shows a PDF in the installed viewer: a lazily loaded frame whose address is derived from the page's own location (so one page works at the site root, under a project base and under a staging preview), plus plain open and download links that work without it.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/pdf-viewer.ts --embed" },
+    invoke: { shell: "bun run cat pdf:viewer --embed" },
     requires: { runtime: ["bun"], network: false },
     io: {
       inputs: [
         { name: "spec", schema: t("Text"), required: true, arg: { stdin: true }, description: "One JSON object: `src` (the PDF's URL, which must fall under a prefix `pdf-viewer-install` was given, or the viewer refuses it on screen), `title` (what the document is; the frame's accessible name), `route` (a regular expression over the page's pathname whose group 1 is the site root — the `folio-mount.ts` convention) and optionally `page` (open at this 1-based page). On stdin because a title and a regular expression are free text." },
       ],
       outputs: [
-        { name: "fragment", schema: t("Text"), description: "The HTML fragment on stdout. TypeScript callers import `embed` from `cat-harness-tools/scripts/pdf-viewer.ts` instead, as `who-iris/scripts/gen-iris-pages.ts` does." },
+        // `embed` is exported by cat-harness-tools/scripts/pdf-viewer.ts.
+        { name: "fragment", schema: t("Text"), description: "The HTML fragment on stdout. TypeScript callers import `embed` from the module that implements this Tool instead, as `who-iris/scripts/gen-iris-pages.ts` does." },
       ],
     },
     satisfies: ["pdf-inline-viewer"],

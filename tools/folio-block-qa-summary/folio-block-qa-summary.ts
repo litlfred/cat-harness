@@ -36,7 +36,7 @@ export default toolFactory((t) =>
     description:
       "Summarise a folio's committed per-block QA verdicts into one `block-qa.json` a staging preview publishes: each block is failing (a FRESH verdict failed, with the worst severity), stale (a verdict predates the block's current files), passing, or unaudited. Freshness is the QA sweep's own rule, including the uses-graph hash for graph-scoped criteria. Runs no checker and writes no verdict.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/publish-block-qa.ts" },
+    invoke: { shell: "bun run cat block-qa:publish" },
     io: {
       inputs: [
         { name: "folio", schema: t("RepoPath"), required: true, arg: { flag: "--folio" }, description: "The folio's `folio` graph directory." },

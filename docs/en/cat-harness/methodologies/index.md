@@ -1,6 +1,7 @@
 ---
 title: "Methodologies"
 description: "The methodologies this repository has adopted — what each is for, where it came from, and whether the source it rests on is held here."
+generated: gen-methodologies-viz.ts — do not hand-edit; run `bun run cat methodologies:viz`
 rendered-by: methodologies-viewer
 ---
 <style>

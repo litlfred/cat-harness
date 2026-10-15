@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "The site search index cut into one index per scope — each declared instance, each target locale, and the platform — plus `assets/js/search/manifest.json` naming them, so a reader's search loads its own scope rather than the whole site (issue #1972, bean `m7mn`). Run on the assembled site after the index is written or borrowed.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/search-split.ts --dir _site" },
+    invoke: { shell: "bun run cat search:split --dir _site" },
     io: {
       inputs: [
         // input-site: inert #a9ab302b — prose naming the directory, in a message or a description

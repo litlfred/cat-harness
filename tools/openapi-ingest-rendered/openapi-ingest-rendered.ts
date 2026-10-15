@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Ingest the OpenAPI documents an instance's `cat-openapi.config.json` lists under `rendered` by fetching each published spec URL (https), verbatim, with a provenance recording the URL, when it was fetched and the document's sha256 — a URL has no commit, so the digest pins the bytes. A failed fetch or bytes that are not OpenAPI 3 write nothing and never replace a held copy.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/openapi/scripts/ingest-openapi-rendered.ts" },
+    invoke: { shell: "bun run cat openapi:ingest:rendered" },
     io: {
       inputs: [
         { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root holding `cat-openapi.config.json` and the declared `openapi` directory." },

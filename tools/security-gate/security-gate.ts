@@ -15,7 +15,7 @@ export default toolFactory((t) =>
     description:
       "Run the repository's security checks — workflow injection, secret leaks, lockfile pinning, the toolchain pin, QA reviewer permission, materialised-asset fixity — plus two advisories (dependency advisories, third-party action SHA pinning), each by name as argv. Every check is reported as pass, fail or unknown; a blocking check that fails OR could not be run refuses the release, because could-not-check is never clean. Advisories are reported and never block. Called by `prepare-merge` before a push that will merge, and by any publish process before it publishes.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/security-gate.ts" },
+    invoke: { shell: "bun run cat security:gate" },
     io: {
       inputs: [
         { name: "json", schema: t("Flag"), required: false, arg: { flag: "--json" }, description: "Print a `folio-security-gate/v1` result on stdout instead of the human report." },

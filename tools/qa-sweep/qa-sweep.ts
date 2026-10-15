@@ -24,7 +24,7 @@ export default toolFactory((t) =>
     description:
       "Run every registered criterion over the blocks under a path and write a per-block QA sidecar. A sidecar rather than a console report, because a printed verdict cannot distinguish \"never checked\" from \"checked and clean\".",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/pipeline/qa-sweep.ts" },
+    invoke: { shell: "bun run cat qa:sweep" },
     io: {
       inputs: [
         { name: "targetPath", schema: t("RepoPath"), required: true, arg: { positional: 0 }, description: "The content root to sweep. Absent, the command exits 2 with its usage — could-not-determine, not a clean sweep." },

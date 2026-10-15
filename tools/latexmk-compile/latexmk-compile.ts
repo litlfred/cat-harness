@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Compile LaTeX source documents into PDF using latexmk with safe shell-escape isolation across CI events.",
     install: { none: true },
-    invoke: { shell: "cat-harness-tools/scripts/latexmk-compile.sh" },
+    invoke: { shell: "bun run cat latex:compile" },
     io: {
       inputs: [
         { name: "tex", schema: t("RepoPath"), required: true, arg: { positional: 0 }, description: "The TeX source file to compile (e.g. main.tex)." },

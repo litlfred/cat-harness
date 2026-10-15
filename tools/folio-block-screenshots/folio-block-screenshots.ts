@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Picture each changed figure, diagram, table, equation or simulator block on the published main site and on a staging build, and compare the two pictures pixel by pixel in Chromium's canvas. Writes `visual-diff.json` (`folio-visual-diff/v1`: per block, the share of pixels changed beyond anti-aliasing, and the before, after and diff pictures) and `visual/*.png`, which the review page's visual renderer shows. A side that cannot be pictured (page or anchor missing) is recorded as missing, never drawn blank. Adds no dependency: Playwright is already the platform's browser driver.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/block-screenshots.ts" },
+    invoke: { shell: "bun run cat block:screenshots" },
     io: {
       inputs: [
         { name: "changeset", schema: t("RepoPath"), required: true, arg: { flag: "--changeset" }, description: "The preview's `changeset.json`: which blocks changed, and their kind on each side." },

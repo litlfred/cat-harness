@@ -1,6 +1,8 @@
 ---
 title: "Tools — who-iris"
 description: "The Tool nodes who-iris declares — how each is installed and invoked, and which skill it satisfies."
+generated: gen-tools-viz.ts — do not hand-edit; run `bun run cat tools:viz`
+render_with_liquid: false
 rendered-by: tools-viewer
 ---
 <style>
@@ -91,4 +93,4 @@ tool advertising a capability the graph cannot locate.
 
 | tool | what it does | invoked | satisfies | i/o |
 |---|---|---|---|---|
-| <a id="iris-pages"></a>[`iris-pages`](#iris-pages)<br>IRIS replica and catalogue pages | Render who-iris's replica of the IRIS site, its docs pages, and the catalogue visualiser who-iris declares — what the catalogue knows and what it records that it does not know — at that visualiser's declared route. | <span class="tg-tag tg-shell">shell</span> | `graph-rendering` | 1 in / 1 out |
+| <a id="iris-pages"></a>[`iris-pages`](#iris-pages)<br>IRIS replica and catalogue pages | Render who-iris's replica of the IRIS site, its docs pages, and the catalogue visualiser who-iris declares — what the catalogue knows and what it records that it does not know — at that visualiser's declared route. | <span class="tg-tag tg-shell">shell</span> | [`graph-rendering`](../../../../reference/skill-instructions/graph-rendering.html) | 1 in / 1 out |

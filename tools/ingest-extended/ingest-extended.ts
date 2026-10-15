@@ -12,8 +12,8 @@ export default toolFactory((t) =>
     // from it — it already omitted `cryptography`, which the declaration's
     // own checker caught. `requirements.txt` is generated from the
     // declaration; the apt packages are not pip-installable and stay named.
-    install: { cli: "pip install -r cat-harness-tools/python/requirements.txt -r cat-harness-tools/python/requirements-extended.txt && apt-get install -y tesseract-ocr poppler-utils" },
-    invoke: { shell: "bun run cat-harness-tools/scripts/ingest-document.ts" },
+    install: { cli: "bun run cat ingest:install-extended" },
+    invoke: { shell: "bun run cat ingest" },
     requires: { runtime: ["python3", "pymupdf", "tesseract"], network: false },
     io: {
       inputs: [

@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Render `_includes/generated/navbar-footer.html` from `docs/_data/harness.json` with the same renderer every railed page uses. With `--instance`, render the navbar of an IG repository's OWN site instead — that instance first, then what it needs; its own pages at this site's root, every other link to the main site at `--link-root` — into the shell that site is built from (#2235).",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/gen-navbar-include.ts" },
+    invoke: { shell: "bun run cat navbar:include" },
     io: {
       inputs: [
         { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Fail if the committed include is stale; write nothing." },

@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Build the published site on this machine, so a page can be looked at rather than described: the same Jekyll build `pages-publish` runs in CI, into a directory of your choosing, and never pushed. The local half of the two site builds (owner, 2026-10-05: local and GitHub builds are two Tools for one skill).",
     install: { none: true },
-    invoke: { shell: "cat-harness-tools/scripts/preview-site.sh" },
+    invoke: { shell: "bun run cat preview:site" },
     io: {
       inputs: [
         { name: "dest", schema: t("RepoPath"), required: false, arg: { positional: 0 }, description: "Where to write the built site. Default: a temporary directory." },

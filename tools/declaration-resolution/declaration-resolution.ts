@@ -11,7 +11,7 @@ export default toolFactory((t) =>
     description:
       "Read every instance declaration in the checkout and resolve what it names: `directories` (and those declared from within) through `check:declared-dirs`, `assets` through `check:declared-assets`, `visualisers[].renderedBy` through `check:visualiser-routes`, `needs` through the instance-graph resolver, and `visualisers[].coversKinds` against the graph typologies registered IN THIS CHECKOUT — its own and those a mounted layer contributes, read from the checkout under inspection rather than from where the harness module sits (lesson 6). A declaration that does not parse is a finding. One verdict per instance and field, naming the gate that decided it. Exit 0 every reference resolves, 1 one does not, 2 could not determine; a certain finding is reported before anything undetermined.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/check-declaration-resolution.ts" },
+    invoke: { shell: "bun run cat check:declaration-resolution" },
     io: {
       inputs: [
         { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The checkout to check; the script re-runs itself there, so kinds are read from it. Default: the working directory." },

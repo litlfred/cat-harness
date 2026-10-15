@@ -27,7 +27,7 @@ export default toolFactory((t) =>
     },
     satisfies: ["feature-staging", "harness-tiles"],
     selection: {
-      when: "A pipeline that still carries `folio-site.yml` and builds on a runner rather than in the agent's checkout (smart-base's default branch carried it on 2026-10-14). Since cat-harness-tools#202 `stage-local` gives an IG the same site — theme side bar and search, served directories, stamp — so this is no longer the only route to them.",
+      when: "A pipeline that still carries `folio-site.yml` and builds on a runner rather than in the agent's checkout (smart-base's default branch carried it on 2026-10-14). Since https://github.com/litlfred/cat-harness-tools/pull/202 `stage-local` gives an IG the same site — theme side bar and search, served directories, stamp — so this is no longer the only route to them.",
       limits:
         "Dispatch-only and runner-bound: it needs a runner, the `gh` CLI with a token that may run workflows, and the folio-assistant submodule the template expects. It builds the IG with `stage-ig-sites`, not the IG's own `ghbuild.yml`, and has no plan or dry-run: a run on the default branch deploys. The current agent pipeline does not use it (owner, 2026-10-14).",
       cost: "One runner job, 8 to 15 minutes measured on 2026-10-12, plus GitHub's Pages deploy.",

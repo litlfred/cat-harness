@@ -16,7 +16,7 @@ export default toolFactory((t) =>
     description:
       "Download the pinned pdf.js release (legacy build), verify its SHA-256, copy the parts a site needs into `<site>/assets/vendor/pdfjs/`, and add the shim that opens `?src=` only for the allowlisted URL prefixes or the site's own origin. Nothing is committed: the viewer exists only in the built site.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/pdf-viewer.ts" },
+    invoke: { shell: "bun run cat pdf:viewer" },
     requires: { runtime: ["bun", "unzip"], network: true },
     remedies: [{ host: "github.com", none: "pdf.js is fetched from its GitHub release and no copy is vendored; the site builds without the viewer." }],
     io: {

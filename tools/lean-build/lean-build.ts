@@ -29,7 +29,7 @@ export default toolFactory((t) =>
     description:
       "Build every Lean project in the workspace from the root Lake manifest, so cross-package dependencies resolve against it rather than a possibly-stale per-paper manifest. Writes a committable build-status sidecar every run.",
     install: { none: true },
-    invoke: { shell: "cat-harness-tools/scripts/lean-build-all.sh" },
+    invoke: { shell: "bun run cat lean:build-all" },
     io: {
       inputs: [
         { name: "paper", schema: t("Slug"), required: false, arg: { flag: "--paper" }, description: "Build one paper instead of all of them." },

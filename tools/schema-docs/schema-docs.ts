@@ -28,7 +28,7 @@ export default toolFactory((t) =>
     description:
       "Render each skill's input/output JSON Schema as a browsable Markdown reference page, with an index. The generated pages are committed so they are readable on the forge as well as on the site.",
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/gen-schema-docs.ts" },
+    invoke: { shell: "bun run cat schema:docs" },
     io: {
       inputs: [
         { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Compare against the committed pages and fail if stale, instead of writing." },

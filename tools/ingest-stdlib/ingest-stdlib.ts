@@ -11,7 +11,7 @@ export default toolFactory((t) =>
     // `hashlib` ship with Python. Stated, so "needs nothing" is
     // distinguishable from an unfinished record.
     install: { none: true },
-    invoke: { shell: "bun run cat-harness-tools/scripts/ingest-document.ts" },
+    invoke: { shell: "bun run cat ingest" },
     requires: { runtime: ["python3"], network: false },
     io: {
       inputs: [
