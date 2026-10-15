@@ -36,8 +36,18 @@
    * address. Read ONCE, here, because `document.currentScript` is only set
    * while the script is first evaluated. Empty for an inline copy (every e2e
    * fixture), which is the previous behaviour. Bean `zrvt`. */
+  /* A PINNED COPY declares where the platform is (owner, 2026-10-15, "pinned
+   * copy per site"). A folio's or an IG's site now ships this file itself, at
+   * its pinned platform version, instead of loading it live from the
+   * platform's site, so the script's own address is that site's, not the
+   * platform's. The page then names the platform's base in
+   * `<meta name="fa-platform-base">` (written by `rail-standalone-pages.ts
+   * --foreign-site`), and it answers what the script's address used to. */
   var SCRIPT_BASE = (function () {
     try {
+      var pm = document.querySelector('meta[name="fa-platform-base"]');
+      var pv = pm && pm.getAttribute("content");
+      if (pv) return pv.replace(/\/+$/, "");
       var cs = document.currentScript;
       if (!cs || !cs.src) return "";
       var path = new URL(cs.src, location.href).pathname;
