@@ -7,6 +7,50 @@
     "doco": "http://purl.org/spar/doco/",
     "prov": "http://www.w3.org/ns/prov#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "skos": "http://www.w3.org/2004/02/skos/core#"
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "contains": {
+      "@id": "dcterms:hasPart",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "derivedFrom": {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "@id"
+    },
+    "file": {
+      "@id": "cat-harness:file"
+    },
+    "inSubgraph": {
+      "@id": "cat-harness:inSubgraph",
+      "@type": "@id"
+    },
+    "kind": "cat-harness:kind",
+    "label": "cat-harness:label",
+    "licenceRecord": {
+      "@id": "cat-harness:licenceRecord",
+      "@type": "@json"
+    },
+    "license": {
+      "@id": "dcterms:license"
+    },
+    "meta": {
+      "@id": "cat-harness:blockMeta",
+      "@type": "@json"
+    },
+    "narrative": {
+      "@id": "cat-harness:narrative",
+      "@type": "@json"
+    },
+    "pageEnd": "cat-harness:pageEnd",
+    "pageStart": "cat-harness:pageStart",
+    "provenance": "cat-harness:provenance",
+    "sourceDocument": {
+      "@id": "cat-harness:sourceDocument",
+      "@type": "@id"
+    },
+    "text": {
+      "@id": "cat-harness:text"
+    },
+    "title": "dcterms:title"
   }
 }
