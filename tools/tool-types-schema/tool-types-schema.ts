@@ -6,7 +6,7 @@ export default toolFactory((t) =>
     id: "tool-types-schema",
     title: "Tool I/O type vocabulary",
     description:
-      "The zod definitions of the shared types a Tool's inputs and outputs reference by IRI, and the published JSON Schema whose `$defs` those IRIs point into.",
+      "The zod definitions of the shared types a Tool's inputs and outputs reference by IRI, and the published JSON Schemas those IRIs name: one document per type, `tool-types/<Name>.schema.json`, plus the combined `tool-types.schema.json`.",
     install: { none: true },
     invoke: { shell: "bun run cat kg:schema" },
     io: {
