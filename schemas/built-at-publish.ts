@@ -46,6 +46,22 @@
  * can run it and a gate can refuse an entry nobody builds. The two are kept
  * equal by `built-at-publish.test.ts`: every declared path is ignored, and
  * nothing declared is tracked.
+ *
+ * ## Writer order, and the one edge that must be declared
+ *
+ * Owner, 2026-10-15 ("A1"). `derive:publish` runs every instance's writers
+ * lowest layer first (dependency order), each instance's entries in their
+ * declared order, a writer named twice running once, at its first mention.
+ * That is right whenever a writer reads what it reads at the checkout's pins.
+ * It is wrong for a `checkout` artefact computed over what an instance ABOVE
+ * builds at publish: cat-harness's `docs/_data/harness.json` (`docs:harness`)
+ * tiles every instance's site directory, and smart-trust's `docs/` is
+ * smart-trust's own publish-time artefact, so lowest-first wrote the tiles
+ * before the directory existed. The ruling: a writer is ordered AFTER the
+ * writers of other instances' outputs it reads, by an edge it DECLARES
+ * (`reads`, the kinds of directory it reads), never by a guess at which
+ * direction reads which. `derive:publish` sorts by those edges and refuses a
+ * cycle.
  */
 import { z } from "zod";
 
@@ -75,6 +91,19 @@ export const BuiltAtPublishSchema = z
     from: z.array(z.string().min(1)).min(1).optional(),
     /** The declared directory id this path fills, when it is one (so presence checks do not expect it on disk). */
     directory: z.string().min(1).optional(),
+    /**
+     * The graph typologies (directory kinds) whose directories, in OTHER
+     * instances, this entry's writers read: the declared READ EDGE that orders
+     * them (see "Writer order" above). `derive:publish` runs these writers after
+     * the writers of every other instance's entry that fills (`directory`) a
+     * directory of one of these kinds. Kinds, never instance names: a lower
+     * layer reading what the layers above it build cannot name them.
+     */
+    reads: z
+      .array(z.string().regex(/^[a-z0-9][a-z0-9-]*$/, "a graph typology name"))
+      .min(1)
+      .refine((ks) => new Set(ks).size === ks.length, "reads names a kind twice")
+      .optional(),
     /** One sentence a reviewer can check: what makes it pin- or state-dependent. */
     reason: z.string().min(1),
   })

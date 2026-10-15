@@ -35,6 +35,16 @@
  * `renderedBy`, which is what the owner asked for by name; the gate does not
  * ask an unpublished kind of a Tool's `renders`.
  *
+ * ## `site` — where a writer puts its pages when asked
+ *
+ * Every viewer here takes a `site` input (`--site <dir>`): a repository's
+ * own site build runs the writer of every visualiser its checkout declares
+ * into the site it is building, at the same declared route (owner,
+ * 2026-10-15: *"a harness should combine its library/ (or whatever) sites of
+ * it and all its dependencies and use the url path pattern"*). The input is
+ * declared, not assumed: the runner (`visualiser-writers.ts`, cat-harness-tools)
+ * passes a site only to a Tool whose `site` input says how.
+ *
  * @module tools/viewers
  */
 import { defineTool, type ToolDefinition } from "../schemas/tool.js";
@@ -177,6 +187,7 @@ export function viewerTools(t: TypeIri): ToolDefinition[] {
       io: {
         inputs: [
           { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Fail if a page is stale, instead of writing." },
+          { name: "site", schema: t("RepoPath"), required: false, arg: { flag: "--site" }, description: "A site being built: write the pages at their declared route under it instead of under the harness's own site directory. A repository's own site build passes it (`visualiser-writers.ts` in cat-harness-tools), since its harness docs are a pinned mount." },
         ],
         outputs: [{ name: "pages", schema: t("RepoPath"), description: "The viewer pages, under the published site directory." }],
       },

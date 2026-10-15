@@ -36,8 +36,18 @@
    * address. Read ONCE, here, because `document.currentScript` is only set
    * while the script is first evaluated. Empty for an inline copy (every e2e
    * fixture), which is the previous behaviour. Bean `zrvt`. */
+  /* A PINNED COPY declares where the platform is (owner, 2026-10-15, "pinned
+   * copy per site"). A folio's or an IG's site now ships this file itself, at
+   * its pinned platform version, instead of loading it live from the
+   * platform's site, so the script's own address is that site's, not the
+   * platform's. The page then names the platform's base in
+   * `<meta name="fa-platform-base">` (written by `rail-standalone-pages.ts
+   * --foreign-site`), and it answers what the script's address used to. */
   var SCRIPT_BASE = (function () {
     try {
+      var pm = document.querySelector('meta[name="fa-platform-base"]');
+      var pv = pm && pm.getAttribute("content");
+      if (pv) return pv.replace(/\/+$/, "");
       var cs = document.currentScript;
       if (!cs || !cs.src) return "";
       var path = new URL(cs.src, location.href).pathname;
@@ -682,8 +692,9 @@
   function currentScheme() {
     var stored = storedScheme();
     if (stored === "light" || stored === "dark") return stored;
-    // WHAT THE FIRST-PAINT SNIPPET DECIDED (`head_custom.html`), before this
-    // deferred bundle existed: stored, else the OS, else dark. Asked second,
+    // WHAT THE FIRST-PAINT SNIPPET DECIDED (`head_custom.html`, the one
+    // source of the rule), before this deferred bundle existed: stored, else
+    // the OS, else light (owner, 2026-10-15). Asked second,
     // because a page that painted in a scheme must not be re-decided by a
     // later, weaker guess — that re-decision IS a flash.
     var painted = document.documentElement.getAttribute("data-fa-scheme");
@@ -692,7 +703,11 @@
       var t = window.jtd.getTheme();
       if (t === "light" || t === "dark") return t;
     }
-    return configuredScheme();
+    // No snippet ran (a page that carries neither it nor a stored choice):
+    // the same rule it applies -- the OS, else light. The site's declared
+    // scheme is only which sheet shipped first (`jtdShows`), never the
+    // reader's scheme.
+    return osScheme();
   }
 
   function applyScheme(name) {
