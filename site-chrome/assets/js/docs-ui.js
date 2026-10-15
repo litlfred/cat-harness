@@ -505,7 +505,10 @@
     // a page nobody said anything about, and it keeps its layout.
     var mainContent = document.querySelector(".main-content, #main-content") ||
       (meta ? document.querySelector("main") : null);
-    if (!mainContent) return;
+    // A page that offers the bar a place of its own (`localeSlot`) needs no
+    // content column: the slot is where it goes.
+    var slot = localeSlot();
+    if (!mainContent && !slot) return;
 
     // No inline colours, here or below. Every one of this bar's pairs is a
     // per-scheme token in `docs-ui.css` with its measured ratio written beside
@@ -600,7 +603,28 @@
     // made `insertBefore` throw and took the rest of `init()` down with it
     // (2026-09-22, 2026-09-27). Appending to a slot this file created has no
     // reference node to go stale.
-    glassBandSlot("start").appendChild(container);
+    //
+    // OR IN THE PAGE'S OWN SLOT (owner, 2026-10-15: "move the language
+    // picker into the IG top bar"). A page whose own bar already holds its
+    // search box marks a place beside it, `data-fa-slot="locale"`, and the
+    // bar goes there instead of the band. A page without one keeps the band,
+    // so every folio site that has no such bar is unchanged.
+    if (slot) {
+      container.setAttribute("data-fa-slotted", "");
+      slot.appendChild(container);
+    } else {
+      glassBandSlot("start").appendChild(container);
+    }
+  }
+
+  /**
+   * The place a page set aside for the language picker, or null: the first
+   * element marked `data-fa-slot="locale"`. The page writes the slot and this
+   * file fills it; nothing here knows which page, or which layer's bar,
+   * offers one.
+   */
+  function localeSlot() {
+    return document.querySelector('[data-fa-slot="locale"]');
   }
 
   /* ── Colour scheme ───────────────────────────────────────────────────── */
