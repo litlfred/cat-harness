@@ -110,6 +110,7 @@ node_modules/
 /docs/assets/img/workflows/evidence-retrieval.svg
 /docs/assets/img/workflows/getting-started.svg
 /docs/assets/img/workflows/human-agent-discussion.svg
+/docs/assets/img/workflows/ig-ast-cache.svg
 /docs/assets/img/workflows/ig-ast-delta-review.svg
 /docs/assets/img/workflows/ig-incremental-build.svg
 /docs/assets/img/workflows/ingest-build-l1-kg.svg
@@ -118,10 +119,14 @@ node_modules/
 /docs/assets/img/workflows/ingest-l1-completeness-gate.svg
 /docs/assets/img/workflows/initialize-harness.svg
 /docs/assets/img/workflows/l1-document-ingestion.svg
+/docs/assets/img/workflows/l2-component-edit-review.svg
 /docs/assets/img/workflows/l2-dak-authoring.svg
 /docs/assets/img/workflows/l3-fhir-pipeline.svg
 /docs/assets/img/workflows/lean-docs-publish.svg
 /docs/assets/img/workflows/log-message.svg
 /docs/assets/img/workflows/public-comment.svg
+/docs/assets/img/workflows/questionnaire-wireframe-review.svg
 /docs/assets/img/workflows/render-kg-to-github-pages.svg
+/docs/assets/img/workflows/SGAuthoring.DAKLifecycle.svg
+/docs/assets/img/workflows/smart-guideline-end-to-end.svg
 # END built at publish
