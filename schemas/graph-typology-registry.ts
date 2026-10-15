@@ -998,7 +998,9 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "folio-translation-index/v1": { shape: "cat-harness-tools:pipeline/translation-index.ts#TranslationIndex", generated: true },
       // The site slices `gen-slice-sqlite.ts` (cat-harness-tools) writes under
       // docs/assets/slices/: one manifest per slice, and the index of slices.
-      "folio-slice-sqlite/v1": { shape: "cat-harness-tools:scripts/gen-slice-sqlite.ts#SliceManifest", generated: true },
+      // Both are validated through their validator nodes
+      // (`validators/slice-sqlite.json`, `validators/slice-index.json`).
+      "folio-slice-sqlite/v1": { generated: true },
       "folio-slice-index/v1": { generated: true },
       "folio-bean-index/v1": { generated: true },
       "node-kind-index/1.1.0": { generated: true },

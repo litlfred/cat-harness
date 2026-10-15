@@ -93,6 +93,34 @@
       }
     },
     {
+      "id": "dak-data-dictionary",
+      "parents": [],
+      "subclasses": [],
+      "declaredBy": "smart-base",
+      "module": "smart-base/schemas/dak-annexes.ts",
+      "exportName": "DakDataDictionaryAnnexKind",
+      "holdings": [
+        {
+          "typology": "dak-annex",
+          "family": "dak-data-dictionary/v1"
+        }
+      ]
+    },
+    {
+      "id": "dak-swimlanes",
+      "parents": [],
+      "subclasses": [],
+      "declaredBy": "smart-base",
+      "module": "smart-base/schemas/dak-annexes.ts",
+      "exportName": "DakSwimlaneMapKind",
+      "holdings": [
+        {
+          "typology": "dak-annex",
+          "family": "dak-swimlanes/v1"
+        }
+      ]
+    },
+    {
       "id": "document-kind",
       "version": "1.0.0",
       "tag": "document-kind/1.0.0",
@@ -121,6 +149,90 @@
         {
           "typology": "document-kinds",
           "family": "document-kind-coverage/1.0.0"
+        }
+      ]
+    },
+    {
+      "id": "folio-editor-checker",
+      "parents": [],
+      "subclasses": [],
+      "declaredBy": "folio-assistant-sci",
+      "module": "folio-assistant-sci/schemas/editor-checker.ts",
+      "exportName": "EditorCheckerKind",
+      "holdings": [
+        {
+          "typology": "editor-checkers",
+          "family": "folio-editor-checker/v1"
+        }
+      ]
+    },
+    {
+      "id": "folio-ig-artifact-index-jsonld",
+      "parents": [],
+      "subclasses": [],
+      "declaredBy": "fhir-harness",
+      "module": "fhir-harness/schemas/ig-artifact-jsonld.ts",
+      "exportName": "IgArtifactIndexJsonLdKind",
+      "holdings": [
+        {
+          "typology": "ig-artifact-jsonld",
+          "family": "folio-ig-artifact-index-jsonld/v1"
+        }
+      ]
+    },
+    {
+      "id": "folio-ig-artifact-jsonld",
+      "parents": [],
+      "subclasses": [],
+      "declaredBy": "fhir-harness",
+      "module": "fhir-harness/schemas/ig-artifact-jsonld.ts",
+      "exportName": "IgArtifactJsonLdKind",
+      "holdings": [
+        {
+          "typology": "ig-artifact-jsonld",
+          "family": "folio-ig-artifact-jsonld/v1"
+        }
+      ]
+    },
+    {
+      "id": "folio-reference",
+      "parents": [],
+      "subclasses": [],
+      "declaredBy": "folio-assistant-core",
+      "module": "folio-assistant-core/schemas/reference.ts",
+      "exportName": "ReferenceKind",
+      "holdings": [
+        {
+          "typology": "references",
+          "family": "folio-reference/v1"
+        }
+      ]
+    },
+    {
+      "id": "folio-slice-index",
+      "parents": [],
+      "subclasses": [],
+      "declaredBy": "cat-harness-tools",
+      "module": "cat-harness-tools/scripts/gen-slice-sqlite.ts",
+      "exportName": "SliceIndexKind",
+      "holdings": [
+        {
+          "typology": "docs",
+          "family": "folio-slice-index/v1"
+        }
+      ]
+    },
+    {
+      "id": "folio-slice-sqlite",
+      "parents": [],
+      "subclasses": [],
+      "declaredBy": "cat-harness-tools",
+      "module": "cat-harness-tools/scripts/gen-slice-sqlite.ts",
+      "exportName": "SliceManifestKind",
+      "holdings": [
+        {
+          "typology": "docs",
+          "family": "folio-slice-sqlite/v1"
         }
       ]
     },
@@ -161,6 +273,20 @@
         "module": "folio-assistant-core/scripts/public-comment-pages.ts",
         "exportName": "PublicCommentPages"
       }
+    },
+    {
+      "id": "qa-script",
+      "parents": [],
+      "subclasses": [],
+      "declaredBy": "cat-harness",
+      "module": "cat-harness/schemas/block-qa.ts",
+      "exportName": "QaScriptKind",
+      "holdings": [
+        {
+          "typology": "qa",
+          "family": "qa-script/v1"
+        }
+      ]
     },
     {
       "id": "themed",
@@ -447,8 +573,8 @@
     {
       "typology": "issue-marks",
       "family": "folio-issue-mark/v1",
-      "reason": "unresolvable",
-      "ref": "src/issue-watch/seen-comments.ts#IssueMarkSchema"
+      "reason": "zod-schema",
+      "ref": "cat-harness-tools:src/issue-watch/seen-comments.ts#IssueMarkSchema"
     },
     {
       "typology": "library",
@@ -673,12 +799,6 @@
       "ref": "schemas/session-survey.ts#SessionSurveySchema"
     },
     {
-      "typology": "sweep-marks",
-      "family": "folio-sweep-mark/v1",
-      "reason": "zod-schema",
-      "ref": "schemas/sweep-mark.ts#SweepMarkSchema"
-    },
-    {
       "typology": "skills",
       "family": "folio-remote-skill/v1",
       "reason": "zod-schema",
@@ -706,6 +826,12 @@
       "typology": "substrate-snapshot",
       "reason": "zod-schema",
       "ref": "schemas/substrate-snapshot.ts#SubstrateSnapshotSchema"
+    },
+    {
+      "typology": "sweep-marks",
+      "family": "folio-sweep-mark/v1",
+      "reason": "zod-schema",
+      "ref": "schemas/sweep-mark.ts#SweepMarkSchema"
     },
     {
       "typology": "swimlane-glossary",

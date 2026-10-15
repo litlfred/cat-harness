@@ -25,6 +25,8 @@ import { CONTENT_ADAPTER_NODES, CONTENT_ADAPTERS, CONTENT_PROFILES } from "./blo
 import type { AttributionKind } from "./attribution";
 import type { ContentAdapter, ContentProfile } from "./block-kinds";
 import type { ContributionRegistry } from "./contributions";
+import { QaScriptSidecar as QaScriptSidecarSchema } from "./block-qa-schema/js/index.ts";
+import { nodeKind } from "./node-kind.ts";
 
 /**
  * The kind of reviewer that produced this finding.
@@ -998,6 +1000,17 @@ export interface QaScriptSidecar {
   /** Engine fingerprint — e.g. `bun-1.3.11+node-22`. */
   engine_version?: string;
 }
+
+/**
+ * `qa-script/v1` as a node kind (issue #2195): the block-QA schema package's
+ * Zod shape, so `validators/qa-script.json` names a kind rather than a bare
+ * schema and `node-kinds:check` files the family under it. Unversioned: the
+ * family's tag is `qa-script/v1`, not SemVer, so the `$schema` literal stays a
+ * field of the shape rather than one `nodeKind()` generates. Not strict: the
+ * package's schema passes unknown keys through, and a kind that stripped them
+ * accepts exactly the same files.
+ */
+export const QaScriptKind = nodeKind("qa-script", [], QaScriptSidecarSchema.shape);
 
 /**
  * What a checker concluded.
