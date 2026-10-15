@@ -2,6 +2,7 @@
   "$schema": "folio-library-document/v1",
   "id": "w3c-2024-prov-jsonld",
   "title": "The PROV-JSONLD Serialization: A JSON-LD Representation for the PROV Data Model",
+  "variant": "pdf",
   "pages": 0,
   "tocSource": "none",
   "tocMethod": null,

@@ -2,6 +2,7 @@
   "$schema": "folio-library-document/v1",
   "id": "arxiv-2608.08453v1",
   "title": "What Keeps Agent Skills from Being Reusable? Evidence from 138K SKILL.md Files",
+  "variant": "pdf",
   "pages": 10,
   "tocSource": "outline",
   "tocMethod": null,

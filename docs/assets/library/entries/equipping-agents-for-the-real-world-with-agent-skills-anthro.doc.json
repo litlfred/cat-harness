@@ -2,6 +2,7 @@
   "$schema": "folio-library-document/v1",
   "id": "equipping-agents-for-the-real-world-with-agent-skills-anthro",
   "title": "Equipping agents for the real world with Agent Skills \\ Anthropic",
+  "variant": "pdf",
   "pages": 0,
   "tocSource": "none",
   "tocMethod": null,

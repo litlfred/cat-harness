@@ -2,6 +2,7 @@
   "$schema": "folio-library-document/v1",
   "id": "nist-sp-800-207",
   "title": "Zero Trust Architecture",
+  "variant": "pdf",
   "pages": 59,
   "tocSource": "outline",
   "tocMethod": null,

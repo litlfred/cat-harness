@@ -2,6 +2,7 @@
   "$schema": "folio-library-document/v1",
   "id": "arxiv-2607.14456v1",
   "title": "Beyond Generalist LLMs: Specialist Agentic Systems for Structured Code Workflow Execution",
+  "variant": "pdf",
   "pages": 0,
   "tocSource": "none",
   "tocMethod": null,

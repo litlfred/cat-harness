@@ -2,6 +2,7 @@
   "$schema": "folio-library-document/v1",
   "id": "skill-authoring-best-practices---claude-platform-docs",
   "title": "Skill authoring best practices - Claude Platform Docs",
+  "variant": "pdf",
   "pages": 0,
   "tocSource": "none",
   "tocMethod": null,
