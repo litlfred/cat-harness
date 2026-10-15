@@ -35,13 +35,26 @@
  * they name none. Each is reported as unkinded with the reason, so the gate can
  * hold the existing ones as a baseline and fail only on a NEW one — the owner's
  * *"QA check on new kinds"*.
+ *
+ * ## One baseline per layer, and the table built at publish
+ *
+ * Owner, 2026-10-15 (option 2 of the node-kinds ruling). The baseline was the
+ * `unkinded` half of `docs/_data/node-kinds.json`, one cat-harness file spanning
+ * every layer: it went stale at every re-pin, and it named the families of
+ * layers above this one. Now each family is OWNED by the instance that declares
+ * its typology ({@link typologyOwner}), each instance keeps its own families in
+ * a declared asset of role `unkinded-baseline` ({@link UnkindedBaselineKind}),
+ * and {@link ratchet} judges each instance against its own. The combined table
+ * is still written, for the node-kind pages, but at publish (cat-harness's
+ * `builtAtPublish`), never committed.
  */
 import { existsSync } from "node:fs";
 import { z } from "zod";
 import { join, relative, resolve } from "node:path";
 
-import { CatHarnessDeclarationKind, readDeclaration, resolveGraphTypology, type GraphTypologyRegistry } from "./cat-harness.js";
-import type { NodeSchemaRef } from "./graph-typology-registry.js";
+import { CatHarnessDeclarationKind, declaredAssetPath, readDeclaration, resolveGraphTypology, UNKINDED_BASELINE_ROLE, type GraphTypologyRegistry } from "./cat-harness.js";
+import { BASE_GRAPH_TYPOLOGIES, REGISTRATION_MODULE, type NodeSchemaRef } from "./graph-typology-registry.js";
+import { instanceRootsIn } from "./instance-roots.js";
 import { parseValidatorRef, rootOf } from "./kind-validator.js";
 import { isNodeKind, nodeKind, type NodeKind } from "./node-kind.js";
 
@@ -133,9 +146,11 @@ export interface NodeKindIndex {
 }
 
 /**
- * The committed index file, `cat-harness/docs/_data/node-kinds.json`, as a
- * node kind — so the file that records node kinds is itself one, and the gate
- * that refuses a new unkinded family does not start by refusing its own.
+ * The index file, `cat-harness/docs/_data/node-kinds.json`, as a node kind —
+ * so the file that records node kinds is itself one, and the gate that refuses
+ * a new unkinded family does not start by refusing its own. Built at publish
+ * since 2026-10-15; its `unkinded` is a report, and the baselines the gate
+ * reads are each instance's own ({@link UnkindedBaselineKind}).
  */
 export const NodeKindIndexFileKind = nodeKind("node-kind-index/1.1.0", [], {
   kinds: z.array(z.object({
@@ -292,4 +307,113 @@ export function kindAndSubclasses(index: Pick<NodeKindIndex, "kinds">, id: strin
   };
   visit(id);
   return out;
+}
+
+/**
+ * The instance that OWNS a typology's families, and so keeps them in its
+ * baseline: the instance whose `typologies/` graph declares the typology, or,
+ * for one declared in code here (`BASE_GRAPH_TYPOLOGIES`, or a registration
+ * `REGISTRATION_MODULE` names), this module's own instance.
+ *
+ * The DECLARER, not the validator's instance: a family is a `nodeSchemas` key
+ * of the typology, so it appears and disappears with that declaration, and a
+ * validator node another layer adds later moves no family between baselines.
+ *
+ * `undefined` is "could not attribute" — a typology registered in code by a
+ * module this one does not know (a layer's own `registry.register`). The gate
+ * reports it rather than filing it under a guess.
+ */
+export function typologyOwner(registry: GraphTypologyRegistry, typology: string): string | undefined {
+  const name = resolveGraphTypology(typology).kind;
+  const file = registry.declaredBy(name);
+  if (file === undefined) {
+    return Object.hasOwn(BASE_GRAPH_TYPOLOGIES, name) || Object.hasOwn(REGISTRATION_MODULE, name) ? OWN_INSTANCE() || undefined : undefined;
+  }
+  const abs = resolve(file);
+  const roots = [...new Set(registry.roots().flatMap((r) => instanceRootsIn(r)))].sort((a, b) => b.length - a.length);
+  const root = roots.find((r) => abs.startsWith(resolve(r) + "/"));
+  return root === undefined ? undefined : readDeclaration(root)?.name;
+}
+
+/** One family an instance's baseline admits: the key, nothing that can drift with another layer. */
+export const UnkindedBaselineEntrySchema = z.object({ typology: z.string().min(1), family: z.string().min(1).optional() }).strict();
+export type UnkindedBaselineEntry = z.infer<typeof UnkindedBaselineEntrySchema>;
+
+/**
+ * An instance's ratchet baseline: the families IT owns ({@link typologyOwner})
+ * that may stay unkinded. Declared as an asset of role `unkinded-baseline`, so
+ * where it lives is the instance's declaration and not a convention here.
+ *
+ * Keys only — `typology` and `family`. The reason and the validator ref are in
+ * the publish-time table: a ref names the validator's layer, which may sit
+ * above this one, and a reason changes when ANOTHER layer adds a validator
+ * node, which must not make this instance's commit stale.
+ */
+export const UnkindedBaselineKind = nodeKind("unkinded-baseline/1.0.0", [], {
+  unkinded: z.array(UnkindedBaselineEntrySchema),
+}, { strict: true });
+
+/** The baseline file, as written: entries sorted by key, so a regenerate is byte-stable. */
+export function renderBaseline(unkinded: readonly Pick<Unkinded, "typology" | "family">[]): string {
+  const entries = [...new Map(unkinded.map((u) => [unkindedKey(u), u.family === undefined ? { typology: u.typology } : { typology: u.typology, family: u.family }])).entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([, e]) => e);
+  return JSON.stringify({ $schema: UnkindedBaselineKind.tag!, unkinded: entries }, null, 2) + "\n";
+}
+
+/** Where an instance declares its baseline, absolute; `undefined` when it declares none (an empty baseline). */
+export function baselinePath(instanceRoot: string, registry?: GraphTypologyRegistry): string | undefined {
+  return declaredAssetPath(instanceRoot, UNKINDED_BASELINE_ROLE, registry);
+}
+
+/** One instance's verdict against its own baseline. */
+export interface LayerRatchet {
+  instance: string;
+  /** Unkinded now, owned here, and not in the baseline: the gate's finding. */
+  fresh: string[];
+  /** In the baseline and no longer an unkinded family here: a stale baseline, shrunk by the writer. */
+  gone: string[];
+  /** In the baseline and unkinded, but OWNED by another instance: a baseline may name only its own. */
+  foreign: string[];
+  /** What the writer leaves in the baseline (what it held and still owns unkinded, plus `fresh` when accepted). */
+  keep: Unkinded[];
+}
+
+/**
+ * The per-layer ratchet. `owners` maps each typology to its owning instance;
+ * `baselines` maps each instance to what its baseline admits (`undefined`: it
+ * declares none). Every instance that owns an unkinded family, or declares a
+ * baseline, gets a verdict. An unkinded family whose typology has no owner is
+ * returned as `unattributed`, never filed under a guess.
+ */
+export function ratchet(
+  index: Pick<NodeKindIndex, "unkinded">,
+  owners: (typology: string) => string | undefined,
+  baselines: ReadonlyMap<string, readonly Pick<Unkinded, "typology" | "family">[] | undefined>,
+  accept = false,
+): { layers: LayerRatchet[]; unattributed: Unkinded[] } {
+  const ownedBy = new Map<string, Unkinded[]>();
+  const ownerOf = new Map<string, string>();
+  const unattributed: Unkinded[] = [];
+  for (const u of index.unkinded) {
+    const o = owners(u.typology);
+    if (o === undefined) {
+      unattributed.push(u);
+      continue;
+    }
+    ownerOf.set(unkindedKey(u), o);
+    ownedBy.set(o, [...(ownedBy.get(o) ?? []), u]);
+  }
+  const instances = [...new Set([...ownedBy.keys(), ...[...baselines.entries()].filter(([, b]) => b !== undefined).map(([i]) => i)])].sort();
+  const layers = instances.map((instance): LayerRatchet => {
+    const now = ownedBy.get(instance) ?? [];
+    const held = new Set((baselines.get(instance) ?? []).map(unkindedKey));
+    const fresh = now.map(unkindedKey).filter((k) => !held.has(k));
+    const nowKeys = new Set(now.map(unkindedKey));
+    const foreign = [...held].filter((k) => !nowKeys.has(k) && ownerOf.has(k)).sort();
+    const gone = [...held].filter((k) => !nowKeys.has(k) && !ownerOf.has(k)).sort();
+    const keep = now.filter((u) => held.has(unkindedKey(u)) || accept);
+    return { instance, fresh, gone, foreign, keep };
+  });
+  return { layers, unattributed };
 }

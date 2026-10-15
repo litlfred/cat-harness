@@ -5488,6 +5488,14 @@ export const AGENT_INSTRUCTIONS_ROLE = "agent-instructions";
 export const INSTANCE_README_ROLE = "instance-readme";
 
 /**
+ * The role of an instance's node-kind ratchet baseline: the families IT owns
+ * that may stay unkinded (`schemas/node-kind-index.ts`, {@link UnkindedBaselineKind}
+ * there). Owner, 2026-10-15: one baseline per layer, so a layer's own families
+ * are judged by its own commit, and the cross-layer table is built at publish.
+ */
+export const UNKINDED_BASELINE_ROLE = "unkinded-baseline";
+
+/**
  * How a declared asset REACHES the agent that needs it.
  *
  * Two values, and the line between them is mechanical rather than a matter of
@@ -5586,6 +5594,15 @@ export const ASSET_ROLES: Readonly<Record<string, AssetRoleDef>> = {
   [AGENT_INSTRUCTIONS_ROLE]: {
     purpose:
       "What a cold agent DOES here, in order — augmenting the README rather than restating it, and read as a file so no injection budget truncates it.",
+    layer: "context",
+    delivery: "file",
+  },
+  // `context`: no process writes it. It shrinks when an author runs
+  // `node-kinds` after kinding a family, and grows only by the deliberate
+  // `--accept-unkinded` — both authoring acts, outside any process.
+  [UNKINDED_BASELINE_ROLE]: {
+    purpose:
+      "The families THIS instance owns that may stay without a node kind — the ratchet `node-kinds:check` holds them to, so a new unkinded family fails.",
     layer: "context",
     delivery: "file",
   },
