@@ -2,6 +2,7 @@
 title: "Tools — folio-assistant-sci"
 description: "The Tool nodes folio-assistant-sci declares — how each is installed and invoked, and which skill it satisfies."
 generated: gen-tools-viz.ts — do not hand-edit; run `bun run cat tools:viz`
+render_with_liquid: false
 rendered-by: tools-viewer
 ---
 <style>
