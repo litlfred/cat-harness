@@ -17,7 +17,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap",
-          "ref": "bc304e8971f7c34d94cd75f5e17d0c4932c1f0a5",
+          "ref": "9ecfb729b38b9196063fee76c6f7932f92502353",
           "overrides": {
             "bootstrap": {
               "whole": true
@@ -28,8 +28,8 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-10-15",
-              "ref": "bc304e8971f7c34d94cd75f5e17d0c4932c1f0a5",
-              "evidence": "owner, session 2026-10-14/15 (session_01Pc8vSeXCwp5Ckvmz56cMDs): 'merge and repin open 3 hrs' / chose cleanup option 2"
+              "ref": "9ecfb729b38b9196063fee76c6f7932f92502353",
+              "evidence": "Owner litlfred, 2026-10-15 (17:30Z): 'merge and repin for next 3 hrs. keep draining; check bootstrap-* who-iris and ihris too. make sure they are all updated to use index.config,json and are pinned and bbuilt according to most recent'"
             }
           }
         }
@@ -41,7 +41,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap-tools",
-          "ref": "94e51ae297ea039cf5f3b5055e01c85149578f48",
+          "ref": "7dc55773590bbc3158c877a3d61222aa7864006c",
           "overrides": {
             "bootstrap-tools": {
               "whole": true
@@ -55,8 +55,8 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-10-15",
-              "ref": "94e51ae297ea039cf5f3b5055e01c85149578f48",
-              "evidence": "owner, session 2026-10-14/15 (session_01Pc8vSeXCwp5Ckvmz56cMDs): 'merge and repin open 3 hrs' / chose cleanup option 2"
+              "ref": "7dc55773590bbc3158c877a3d61222aa7864006c",
+              "evidence": "Owner litlfred, 2026-10-15 (17:30Z): 'merge and repin for next 3 hrs. keep draining; check bootstrap-* who-iris and ihris too. make sure they are all updated to use index.config,json and are pinned and bbuilt according to most recent'"
             }
           }
         }

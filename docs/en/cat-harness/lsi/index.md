@@ -1,6 +1,7 @@
 ---
 title: "Latent semantic indexes"
 description: "Every published LSI index over a declared prose graph — its latent dimensions, its findings, and which graphs still need one."
+generated: gen-lsi-viz.ts — do not hand-edit; run `bun run cat lsi:viz`
 rendered-by: lsi-viewer
 ---
 <style>
@@ -22,7 +23,7 @@ The method is [Latent Semantic Indexing](../methodologies/) (node `lsi`), with
 how to build, query and audit an index is the skill `lsi-indexing`.
 
 <div class="lv-grid">
-<div class="lv-stat"><b>8</b><span>graphs that need an index</span></div>
+<div class="lv-stat"><b>6</b><span>graphs that need an index</span></div>
 </div>
 
 ## Which graphs need an index
@@ -47,6 +48,7 @@ it, drawn from the evidence that build fetched.
 | `cat-harness/memory` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `cat-harness/methodologies` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `cat-harness/policies` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
+| `cat-harness/site-chrome` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `cat-harness/skills` | **yes** |
 | `fhir-harness/fhir-ig-skills` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `fhir-harness/library` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
@@ -58,16 +60,14 @@ it, drawn from the evidence that build fetched.
 | `folio-assistant-core/folios` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `folio-assistant-core/glossary` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `folio-assistant-core/memory` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
-| `folio-assistant-sci/library` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
+| `folio-assistant-sci/library` | **yes** |
 | `folio-assistant-sci/sci-methodologies` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `folio-assistant-sci/skills` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `smart-base/library` | **yes** |
 | `smart-base/methodologies` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
-| `smart-base/smart-base-docs` | **yes** |
+| `smart-base/smart-base-docs` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `smart-base/smart-base-findings` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `smart-base/smart-base-skills` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
-| `smart-immunizations/smart-immunizations-docs` | **yes** |
-| `smart-trust/smart-trust-docs` | **yes** |
 | `who-iris/folio` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `who-iris/glossary` | <span class="lv-na">below the need-an-index threshold — not judged</span> |
 | `who-iris/library` | **yes** |
