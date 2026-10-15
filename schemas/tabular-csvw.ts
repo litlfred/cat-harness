@@ -21,11 +21,10 @@
  *
  * The gap is not a defect either, and that is the third state `fd6i` asked
  * for. This is the PLATFORM; the unemitted five describe what a FOLIO holds,
- * and this instance holds none. Each now carries a recorded reason naming
- * what would emit it, in `FORWARD_DECLARED` in
- * `scripts/check-context-emission.ts`, and `check:context-emission` fails on
- * any bound prefix that has neither an emission nor a reason. A forward
- * declaration is fine; a silent one is what this sentence used to be.
+ * and this instance holds none. Those reasons lived in `FORWARD_DECLARED`
+ * until bean `folio-assistant-63q4` retired it: each instance's context is now
+ * generated from what its documents use (`jsonld:contexts`), so a prefix
+ * nothing emits is simply never bound, and needs no reason.
  *
  * It models table → column → datatype and **nothing else**: no formulas, no
  * merged cells, no styling. The owner's "no full Excel complexity" is
