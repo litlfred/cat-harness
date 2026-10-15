@@ -609,6 +609,12 @@ export const PROPERTY_GLOSSES: Readonly<Record<string, TermGloss>> = {
     gloss: "Why a changed asset's rendered pages were not mapped one by one — never read as 'renders no page'.",
   },
 
+  // The top-level `_generated` note every subgraph file carries (bean `ws99`):
+  // a term of `ns/subgraph/v1.jsonld`, `@json`-typed, so the file stays valid
+  // JSON-LD — an unmapped key is an `invalid property` to a processor
+  // (folio-assistant#2545).
+  generatedNote: { gloss: "Which generator wrote this document and how to regenerate it — a statement about the file, not about the graph it frames." },
+
   // ── Reporting ────────────────────────────────────────────────────────
   counts: { gloss: "How many nodes of each type the export produced." },
   omitted: {
