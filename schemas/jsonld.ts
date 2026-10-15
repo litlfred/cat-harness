@@ -127,6 +127,22 @@ export const CONTENT_CONTEXT_URL =
   "https://litlfred.github.io/folio-assistant/ns/content/v1.jsonld";
 
 /**
+ * Where an instance's own published `@context` lives, relative to its
+ * `iriBase` — bean `folio-assistant-63q4`. `jsonld:contexts` (cat-harness-tools
+ * `scripts/gen-instance-contexts.ts`) writes it at this path inside the
+ * instance, built at publish, and an emitted document names
+ * `<iriBase>ns/context/v1.jsonld` in place of {@link CONTENT_CONTEXT_URL}.
+ * The `v1` is load-bearing: its terms are `@protected`, so a change that
+ * rebinds one is a `v2` beside it, never an edit under a cached URL.
+ */
+export const INSTANCE_CONTEXT_PATH = "ns/context/v1.jsonld";
+
+/** An instance's context URL from its declared `iriBase` (with or without the trailing `/`). */
+export function instanceContextUrl(iriBase: string): string {
+  return `${iriBase.endsWith("/") ? iriBase : `${iriBase}/`}${INSTANCE_CONTEXT_PATH}`;
+}
+
+/**
  * Base every minted `@id` is relative to. Declared in the published context
  * AND in each document's own context — see {@link CONTENT_DOCUMENT_CONTEXT}.
  */
@@ -173,7 +189,8 @@ export const SITE_DOCUMENT_CONTEXT = [CONTENT_CONTEXT_URL, { "@base": DOCS_SITE_
 
 /**
  * A content document's `@context`, as a record schema accepts it: the
- * two-part form above, the site form, or the bare URL that records written
+ * two-part form above, the site form, either of those naming an instance's
+ * own context instead of the shared one, or the bare URL that records written
  * before bean `bh4q` carry. Any other context would bind their keys to terms
  * nobody declared, so nothing else is accepted.
  */
@@ -181,6 +198,12 @@ export const ContentContextSchema = z.union([
   z.literal(CONTENT_CONTEXT_URL),
   z.tuple([z.literal(CONTENT_CONTEXT_URL), z.object({ "@base": z.literal(FOLIO_BASE) }).strict()]),
   z.tuple([z.literal(CONTENT_CONTEXT_URL), z.object({ "@base": z.literal(DOCS_SITE_BASE) }).strict()]),
+  // An instance's own context (`instanceDocumentContext`, bean
+  // `folio-assistant-63q4`): `<iriBase>ns/context/v1.jsonld`, which defines
+  // exactly the terms its documents use. The URL is checked for SHAPE only —
+  // which instance owns the file is the emitter's to know, not a schema's.
+  z.tuple([z.string().url().regex(/\/ns\/context\/v1\.jsonld$/), z.object({ "@base": z.literal(FOLIO_BASE) }).strict()]),
+  z.tuple([z.string().url().regex(/\/ns\/context\/v1\.jsonld$/), z.object({ "@base": z.literal(DOCS_SITE_BASE) }).strict()]),
 ]);
 
 // ── Block kind → RDF types ───────────────────────────────────────
