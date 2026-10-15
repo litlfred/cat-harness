@@ -469,6 +469,13 @@
       "role": "package-manifest",
       "title": "package.json",
       "description": "The npm pre-packaging source manifest declaring package identity, exports, dependencies, scripts, and tarball whitelist."
+    },
+    {
+      "id": "unkinded-baseline",
+      "src": "node-kinds.baseline.json",
+      "role": "unkinded-baseline",
+      "title": "Unkinded families — cat-harness",
+      "description": "The families whose typology THIS instance declares (in code, BASE_GRAPH_TYPOLOGIES and its registrations, or in its archimate/ and openapi/ typologies graphs) that predate node kinds and may stay unkinded; `node-kinds:check` fails on any other. Owner, 2026-10-15: split out of docs/_data/node-kinds.json, which spanned every layer and is now built at publish, so each layer's families are judged by its own commit. Written by `bun run cat node-kinds`, which only shrinks it; `--accept-unkinded` grows it deliberately."
     }
   ],
   "_stub_comment": "RENAMED from `folio-assistant` on 2026-09-21, on the owner's ruling, closing the collision issue #649 raised and bean `x3bd` flagged as settle-before-you-move. `artefactStub(d) = d.stub ?? d.name`, so this field is the ONLY stub declared anywhere in the tree — every other instance falls through to its `name`. While it read `folio-assistant` it was the string the REPOSITORY ROOT instance also carries as its `name`, so both resolved to `<base>/folio-assistant.jsonld`: two vocabularies, one path, and a reader dereferencing it got whichever layer answered. It is kept as an explicit field rather than deleted so the rename is visible where the collision was, and because `x3bd` records that this string names published artefacts (`.jsonld`, `.schema.json`, the viewer directory) rather than being cosmetic.",
@@ -983,6 +990,8 @@
     {"path": "docs/payload/", "writer": ["subgraph:jsonld"], "because": "checkout", "reason": "content-addressed bodies of every framed instance's skills; a foreign edit moves the hash"},
     {"path": "docs/assets/library/jsonld/smart-base/9789240116191-eng/l1-extraction/", "writer": ["library:viz"], "because": "checkout", "reads": ["library"], "reason": "byte copies of the l1-extraction sub-graph declared inside another instance's library entry, published beside the entry's manifest (bean 8pzh); the bytes are that instance's at the checkout's pin (owner, 2026-10-15, H1). Listed after docs/subgraph/, because the library pages link the subgraph index only when it is on disk"},
     {"path": "docs/reference/skill-instructions/", "writer": ["skills:docs"], "because": "checkout", "reason": "a page per skill of every instance (measured: drifted on fhir-harness and folio-assistant-core skills at the current pins)"},
+    {"path": "docs/_data/node-kinds.json", "writer": ["node-kinds"], "because": "checkout", "reads": ["typologies", "validators"], "reason": "the node-kind table: every node kind and unkinded family the typologies and validator nodes of EVERY instance in the checkout declare. Owner, 2026-10-15: built at publish, and the ratchet it carried moved to each instance's own `unkinded-baseline` asset (this instance's is node-kinds.baseline.json). Listed before node-kind:pages, which renders it, so it is written first"},
+    {"path": "docs/en/cat-harness/node-kind-index/", "writer": ["node-kind:pages"], "because": "checkout", "reason": "the node-kind-index kind's pages: its one node is docs/_data/node-kinds.json, listed just above and built at publish, which the node page renders verbatim (measured: the committed page went stale the day the table was regenerated, ci72 2026-10-15)"},
     {"path": "docs/en/cat-harness/cat-harness-declaration/", "writer": ["node-kind:pages"], "because": "checkout", "reason": "a page per instance declaration in the checkout"},
     {"path": "docs/assets/glossary/cat-harness-tools--kg-tools.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/fhir-harness--kg-bpmn-activities.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
