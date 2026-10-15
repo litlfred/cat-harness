@@ -3,8 +3,10 @@
  *
  * `ToolDefinition.io.*.schema` is an **absolute IRI**, which means the types it
  * names have to exist somewhere fetchable. This is that somewhere: one
- * published document of `$defs`, generated from Zod like every other schema
- * here, so a Tool's contract resolves rather than merely looking like it does.
+ * published JSON Schema per type (`tool-types/<Name>.schema.json`, bean
+ * `tdir`) and a combined document of `$defs`, generated from Zod like every
+ * other schema here, so a Tool's contract resolves rather than merely looking
+ * like it does.
  *
  * ## Why a shared document rather than a schema per tool
  *
@@ -699,9 +701,69 @@ export type ToolTypeName = keyof typeof TOOL_TYPES;
  * 95 `schema` refs across the published graph would have pointed at a URL that
  * 404s while the document they name sat one directory away.
  * {@link renderingPath} is now the single answer to "where is it published".
+ *
+ * Bean `tdir` adds a whole document per type,
+ * `<base>/tool-types/<Name>.schema.json` ({@link toolTypeDocumentIri}); ports
+ * move to it in a second step — see there.
  */
 export function toolTypeIri(base: string, name: ToolTypeName): string {
   return `${renderingPath(base, "tool-types.schema.json")}#/$defs/${name}`;
+}
+
+/**
+ * The per-type document's IRI, `<base>/tool-types/<Name>.schema.json`: the
+ * `$id` each published per-type schema carries (bean `tdir`).
+ *
+ * **Two phases, so no layer is ever broken by another's main.** A port's
+ * `schema` still uses {@link toolTypeIri}'s fragment form, because the tools
+ * layer's main reads that form; this PR adds the per-type documents and
+ * {@link toolTypeNameOf}, which reads both. Once the tools layer reads ports
+ * through `toolTypeNameOf`, `toolTypeIri` returns this IRI and the fragment
+ * form retires.
+ */
+export function toolTypeDocumentIri(base: string, name: ToolTypeName): string {
+  return renderingPath(base, toolTypePath(name));
+}
+
+/**
+ * The directory, at the harness's publication base, holding one JSON Schema
+ * per shared type.
+ *
+ * Bean `tdir`. The owner, 2026-10-15: *"input ouput schemas should be their
+ * own files/json schema when published w/ IRIs so can be referernced easy."*
+ * A port's `schema` was `<base>/tool-types.schema.json#/$defs/<Name>`: a
+ * pointer INTO one document, which a consumer had to fetch whole and then
+ * walk, and which a draft-07 reader (the draft that document declares) does
+ * not resolve at all, since `$defs` is a 2019-09 keyword (see
+ * `staging.test.ts` for the same trap in the skill contracts). Now each type
+ * is its own document, `<base>/tool-types/<Name>.schema.json`, whose `$id`
+ * is that IRI. `harness-schema-export.ts` writes them on publish, beside the
+ * combined `tool-types.schema.json` it keeps for existing readers; neither
+ * is committed.
+ */
+export const TOOL_TYPES_DIR = "tool-types";
+
+/** One type's published path under the base: `tool-types/<Name>.schema.json`. */
+export function toolTypePath(name: ToolTypeName): string {
+  return `${TOOL_TYPES_DIR}/${name}.schema.json`;
+}
+
+/**
+ * The type a port's `schema` IRI names, or `undefined` when it names none of
+ * {@link TOOL_TYPES}.
+ *
+ * The inverse of {@link toolTypeIri}, so a reader never splits the IRI on a
+ * literal of its own: four did, on `#/$defs/`, and each would have read every
+ * port as untyped the day the form changed. Whatever the base, only the
+ * `tool-types/<Name>.schema.json` tail is read.
+ */
+export function toolTypeNameOf(iri: string): ToolTypeName | undefined {
+  // Both forms, during the two-phase move (see toolTypeDocumentIri): the
+  // fragment `tool-types.schema.json#/$defs/<Name>` and the per-type document.
+  const m =
+    new RegExp(`(?:^|/)${TOOL_TYPES_DIR}/([A-Za-z][A-Za-z0-9]*)\\.schema\\.json$`).exec(iri) ??
+    /tool-types\.schema\.json#\/\$defs\/([A-Za-z][A-Za-z0-9]*)$/.exec(iri);
+  return m !== null && Object.prototype.hasOwnProperty.call(TOOL_TYPES, m[1]) ? (m[1] as ToolTypeName) : undefined;
 }
 
 

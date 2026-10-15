@@ -266,7 +266,7 @@ So a Tool is something you can reach for rather than a shape described in prose.
 
 Four of the 24 were authored by hand (`beans-cli`, `beans-manual`, `github`,
 `pages-publish`). The other twenty are the **migration of this instance's
-existing MCP surface** into `tools/mcp.ts` — every `server.tool()` registration
+existing MCP surface** into Tool nodes (then `tools/mcp.ts`, now one folder each) — every `server.tool()` registration
 the server serves, now with a declared contract and a declared set of skills it
 satisfies.
 
@@ -383,7 +383,9 @@ So when you write or edit a skill: follow the checklist above and reference a
 Tool. When you read one that inlines `gh pr create` or `beans update`, that is
 the debt, not the pattern — do not propagate it.
 
-Authoring a Tool node: `tools/index.ts`, calling `defineTool`. It is TypeScript
+Authoring a Tool node: `tools/<id>/<id>.ts`, one folder per Tool, default-exporting
+`toolFactory((t) => defineTool({ … }))`; `tools/index.ts` only loads the folders
+(bean `tdir`). It is TypeScript
 rather than JSON so a malformed node fails at `tsc` and in the editor, which is
 the carrier decision applied to instances as well as to the schema. `io` ports
 reference the shared vocabulary in `schemas/tool-types.ts` by absolute IRI —
