@@ -20,6 +20,7 @@ Input schema for content validation.
 | `targetPath` | string | **yes** | Path to content to validate. |
 | `validationRules` | array<string> | no | Specific validation rule IDs to run (empty = all applicable). |
 | `schemaRefs` | array<string> | no | Schema files to validate against. |
+| `stagingLinks` | any | no | The staging preview of the work under review, as the request for feedback carried it, so the reviewer opens the changed pages rather than rebuilding links. Rule: cat-harness skills/sdlc/sdlc-core/staging-review.md §"The deep-link rule". |
 
 
 [Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/content-validate/input.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/content-validate/input.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/content-validate/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/content-validate/input.schema.json" data-repo="litlfred/folio-assistant" }
@@ -32,6 +33,7 @@ Output schema for content validation results.
 |-------|------|----------|-------------|
 | `overallStatus` | `"pass"` \| `"warnings"` \| `"errors"` | **yes** |  |
 | `results` | array<object> | **yes** |  |
+| `stagingLinks` | any | no | The staging preview of the work this output asks a person to look at: one deep link per changed page, with the same page on main. Required whenever a preview exists; when it does not, say so in `missing`. Rule: cat-harness skills/sdlc/sdlc-core/staging-review.md §"The deep-link rule". |
 
 ### `results[]`
 
