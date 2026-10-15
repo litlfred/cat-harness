@@ -152,7 +152,9 @@ const VIEWERS: Viewer[] = [
     title: "State graph viewer",
     description: "Render each declared state graph with a projection as a dashboard page: what the work plan holds, and what state it is in.",
     script: "state:visualizer",
-    renders: ["beans", "todos", "issue-marks", "qa", "health", "attestations", "swimlane-glossary", "uploads", "code"],
+    renders: ["beans", "todos", "issue-marks", "qa", "health", "attestations", "swimlane-glossary", "uploads", "code",
+      // The harness registries, one page per instance (bean folio-assistant-k7ro).
+      "typologies", "validators", "qa-checkers", "block-kinds", "content-adapters", "code-list"],
   },
   {
     id: "translation-status-viewer",
