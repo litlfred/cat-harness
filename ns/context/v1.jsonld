@@ -1,0 +1,12 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    "cat-harness": "https://litlfred.github.io/cat-harness/0.1.0/ns#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doco": "http://purl.org/spar/doco/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#"
+  }
+}
