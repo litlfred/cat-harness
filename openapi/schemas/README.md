@@ -10,6 +10,7 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `openapi-schemas`, hol
 
 | file | what it is | used by |
 |---|---|---|
+| [`openapi.test.ts`](openapi.test.ts) | a file |  |
 | [`openapi.ts`](openapi.ts) | a file |  |
 
 <!-- kg:subgraph:end -->

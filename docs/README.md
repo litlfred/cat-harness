@@ -10,8 +10,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `docs`, holding `docs`.
 
 | file | what it is | used by |
 |---|---|---|
-| [`Gemfile`](Gemfile) | a file |  |
-| [`Gemfile.lock`](Gemfile.lock) | a file |  |
 | [`_config.yml`](_config.yml) | a file |  |
 | [`docs.json`](docs.json) | data |  |
 | [`folio-assistant-migration.md`](folio-assistant-migration.md) | Folio-Assistant Infrastructure Migration (miga) |  |
@@ -19,34 +17,23 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `docs`, holding `docs`.
 | [`platform.md`](platform.md) | "What the platform does, and how its processes, roles, tasks and skills fit together." |  |
 | [`qou-migration-checklist.md`](qou-migration-checklist.md) | qou migration checklist |  |
 | [`sage-mcp.md`](sage-mcp.md) | Sage as an MCP server (lazily loaded) |  |
-| [`todos.json`](todos.json) | data |  |
-| [`todos.jsonld`](todos.jsonld) | data |  |
 | [`_data/`](_data/) | _nothing declares what this holds_ | |
 | [`_includes/`](_includes/) | _nothing declares what this holds_ | |
+| [`_plugins/`](_plugins/) | _nothing declares what this holds_ | |
 | [`ar/`](ar/) | _nothing declares what this holds_ | |
+| [`architecture/`](architecture/) | _nothing declares what this holds_ | |
 | [`assets/`](assets/) | _nothing declares what this holds_ | |
-| [`attestations/`](attestations/) | _nothing declares what this holds_ | |
 | [`beans/`](beans/) | _nothing declares what this holds_ | |
 | [`bootstrap/`](bootstrap/) | _nothing declares what this holds_ | |
-| [`cat-harness/`](cat-harness/) | _nothing declares what this holds_ | |
 | [`concepts/`](concepts/README.md) | Concepts: what the harness, the knowledge graph and their parts are. | |
 | [`en/`](en/) | _nothing declares what this holds_ | |
 | [`es/`](es/) | _nothing declares what this holds_ | |
-| [`external-schemas/`](external-schemas/) | _nothing declares what this holds_ | |
 | [`fhir/`](fhir/README.md) | FHIR: FHIR content and the IG Publisher. | |
 | [`fr/`](fr/) | _nothing declares what this holds_ | |
-| [`glossary/`](glossary/) | _nothing declares what this holds_ | |
 | [`guides/`](guides/README.md) | Authoring guides: how to do a task with the harness, one guide per task. | |
-| [`health/`](health/) | _nothing declares what this holds_ | |
-| [`issue-marks/`](issue-marks/) | _nothing declares what this holds_ | |
-| [`lsi/`](lsi/) | _nothing declares what this holds_ | |
-| [`methodologies/`](methodologies/) | _nothing declares what this holds_ | |
-| [`payload/`](payload/) | _nothing declares what this holds_ | |
 | [`process/`](process/README.md) | [Process](https://litlfred.github.io/bootstrap/schemas/#process) & methodology: the publication workflow, CRDM and what counts as evidence. | |
-| [`processes/`](processes/) | _nothing declares what this holds_ | |
 | [`proposals/`](proposals/README.md) | Proposals for this harness's own features — initial analysis, MVP, options — argued, and updated in place, before and while they are built. | |
 | [`prov-qaqc/`](prov-qaqc/) | _nothing declares what this holds_ | |
-| [`qa/`](qa/) | _nothing declares what this holds_ | |
 | [`quality/`](quality/) | _nothing declares what this holds_ | |
 | [`reference/`](reference/) | _nothing declares what this holds_ | |
 | [`requirements/`](requirements/README.md) | What this harness promises, one page per shipped feature: a proposal MOVED here when its feature ships, its front matter a `Requirement` (`bootstrap/schemas/requirement.schema.json`), checked by `check:requirements`. | |
@@ -54,16 +41,10 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `docs`, holding `docs`.
 | [`ru/`](ru/) | _nothing declares what this holds_ | |
 | [`site/`](site/) | _nothing declares what this holds_ | |
 | [`slices/`](slices/) | _nothing declares what this holds_ | |
+| [`source/`](source/) | The docs graph's own SOURCE: one directory per generated page (`<group>-<slug>/`), holding its authored blocks (`.md`), its content-object manifests (`.ts`, `prose` and `webpage`) and their generated `.jsonld`. `gen-docs-pages.ts` renders each into the page beside it (`docs/<group>/<slug>.md`); Jekyll excludes this directory (`_config.yml`), so a block is never published as a page of its own. Moved here from `content/docs/` on 2026-10-09 (owner: "move content/docs into docs/"), so the docs subgraph carries its own source and a mount of `docs` brings it. | |
 | [`start/`](start/README.md) | Start here: installing, getting started, contributing and accessibility. | |
-| [`subgraph/`](subgraph/) | _nothing declares what this holds_ | |
-| [`subscriptions/`](subscriptions/) | _nothing declares what this holds_ | |
-| [`swimlane-glossary/`](swimlane-glossary/) | _nothing declares what this holds_ | |
 | [`themes/`](themes/) | _nothing declares what this holds_ | |
-| [`todos/`](todos/) | _nothing declares what this holds_ | |
-| [`tools/`](tools/) | _nothing declares what this holds_ | |
-| [`translation-status/`](translation-status/) | _nothing declares what this holds_ | |
-| [`uml/`](uml/) | _nothing declares what this holds_ | |
-| [`uploads/`](uploads/) | _nothing declares what this holds_ | |
+| [`who-iris/`](who-iris/) | _nothing declares what this holds_ | |
 | [`wireframes/`](wireframes/) | _nothing declares what this holds_ | |
 | [`zh/`](zh/) | _nothing declares what this holds_ | |
 
