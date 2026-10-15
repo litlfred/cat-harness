@@ -105,7 +105,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Summarise a folio's committed per-block QA verdicts into one `block-qa.json` a staging preview publishes: each block is failing (a FRESH verdict failed, with the worst severity), stale (a verdict predates the block's current files), passing, or unaudited. Freshness is the QA sweep's own rule, including the uses-graph hash for graph-scoped criteria. Runs no checker and writes no verdict.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/publish-block-qa.ts" },
+      invoke: { shell: "bun run cat block-qa:publish" },
       io: {
         inputs: [
           { name: "folio", schema: t("RepoPath"), required: true, arg: { flag: "--folio" }, description: "The folio's `folio` graph directory." },
@@ -137,7 +137,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Ingest the OpenAPI documents an instance's `cat-openapi.config.json` lists under `documents` from a local checkout of their repository, read AT a branch, tag or commit (`git show`), verbatim, with a provenance recording the resolved commit and the document's sha256. `--check` verifies the committed copies offline.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/openapi/scripts/ingest-openapi.ts" },
+      invoke: { shell: "bun run cat openapi:ingest" },
       io: {
         inputs: [
           { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root holding `cat-openapi.config.json` and the declared `openapi` directory." },
@@ -162,7 +162,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Ingest the OpenAPI documents an instance's `cat-openapi.config.json` lists under `rendered` by fetching each published spec URL (https), verbatim, with a provenance recording the URL, when it was fetched and the document's sha256 — a URL has no commit, so the digest pins the bytes. A failed fetch or bytes that are not OpenAPI 3 write nothing and never replace a held copy.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/openapi/scripts/ingest-openapi-rendered.ts" },
+      invoke: { shell: "bun run cat openapi:ingest:rendered" },
       io: {
         inputs: [
           { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root holding `cat-openapi.config.json` and the declared `openapi` directory." },
@@ -247,7 +247,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Run the repository's security checks — workflow injection, secret leaks, lockfile pinning, the toolchain pin, QA reviewer permission, materialised-asset fixity — plus two advisories (dependency advisories, third-party action SHA pinning), each by name as argv. Every check is reported as pass, fail or unknown; a blocking check that fails OR could not be run refuses the release, because could-not-check is never clean. Advisories are reported and never block. Called by `prepare-merge` before a push that will merge, and by any publish process before it publishes.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/security-gate.ts" },
+      invoke: { shell: "bun run cat security:gate" },
       io: {
         inputs: [
           { name: "json", schema: t("Flag"), required: false, arg: { flag: "--json" }, description: "Print a `folio-security-gate/v1` result on stdout instead of the human report." },
@@ -268,7 +268,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Compare each repository's declared credential needs (`credentials/needs.json`, profile and registry) with the `secrets.NAME` expressions its workflows reference (GitHub Actions' dollar-and-double-brace form, said in words because this text is rendered on a Jekyll page), with the secret names GitHub lists when a token allows it, and with any recorded expiry. NAMES ONLY — no value is ever read. Findings per §6.2: used-not-declared, declared-not-used, declared-not-present, present-not-declared (reported, never deleted), naming advisories, and expiry (≤30 days minor, ≤7 major, expired critical). Exits 2 when anything could not be determined, which outranks clean; else 1 on a major or critical finding; else 0.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/secrets-check.ts" },
+      invoke: { shell: "bun run cat secrets:check" },
       io: {
         inputs: [
           { name: "repos", schema: t("RepoPath"), required: false, repeated: true, arg: { positional: 0 }, description: "Repository checkouts to check. Default: every repository the index mounts." },
@@ -295,7 +295,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Rewrite every third-party `uses: owner/repo@ref` outside the declared staging-only workflows to `@<full commit SHA> # <ref>`, so Dependabot keeps the pair current. A tag resolves to its PEELED commit (an annotated tag's object is never pinned), else a branch head, by `git ls-remote` with argv. A ref that resolves to nothing, or to more than one commit, is refused and reported, never guessed. This repository's own reusable workflows are first-party and left alone. Idempotent.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/pin-actions.ts" },
+      invoke: { shell: "bun run cat actions:pin" },
       io: {
         inputs: [
           { name: "dry-run", schema: t("Flag"), required: false, arg: { flag: "--dry-run" }, description: "Report what would be pinned and write nothing." },
@@ -317,7 +317,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Before a model reads a sub-agent's report, a delegated prompt, a tool result or a comment from someone who is not the principal, screen it against a declared schema whose top-level fields are `control` (steers what the receiver does) or `data` (content it reads). A finding in a control field, or any field the strict schema does not declare, is REFUSED, so a report cannot extend the delegator's plan. A finding in a data field is QUARANTINED: the original is kept and marked, never stripped. The patterns are a deterministic tripwire (instruction overrides, role and turn spoofs, fence breaks, tool-call syntax, hidden Unicode, exfiltration links, pipe-to-shell), a mitigation and not a guarantee. Exit 0 clean, 1 refused, 3 quarantined, 2 could not determine.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/handover-screen.ts" },
+      invoke: { shell: "bun run cat handover:screen" },
       io: {
         inputs: [
           { name: "schema", schema: t("RepoPath"), required: false, arg: { flag: "--schema" }, description: "JSON `{ fields: { name: \"control\" | \"data\" }, strict?: boolean }`." },
@@ -341,7 +341,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Lay down each declared remote mount — a `source.remote` instance in the root `index.config.json`, or, in a folio with no index, a `remoteMounts` entry on its declaration (both at once is refused) — and its dependency closure, from another repository at a full commit SHA. Write the lock, `index.lock.json` (a legacy `<name>.mount-lock.json` is read, and renamed onto it when rewritten), and, with an index, regenerate the root `.gitignore` block that ignores each mount path. It READS the declared mounts and never writes them: a tool that changes a mount writes through `writeDeclaredMounts` into `index.config.json`. Before anything is checked out, each mount must pass the trust gate (`schemas/mount-trust.ts`, rule H8): a person's consent recorded for THIS pin, or a signature in a declared trust network. No signature verifier exists yet, so a signature alone is could-not-determine and does not mount. Unsigned and unconsented is refused. `--staging` mounts for a preview and needs neither, by the owner's ruling. `--check` compares the disk against the lock and never fetches. When a run CHANGES the lock, it then re-renders the agent surface (`skill:commands` → `.claude/commands/`, `agent-memory` → `.claude/agent-memory/` and `.agents/`) from the checkout root, so a re-pin commit carries the skills and memory the new layers define; a generator that fails fails the run, and `--no-agent-surface` opts out.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/remote-mount.ts" },
+      invoke: { shell: "bun run cat mount:remote" },
       io: {
         inputs: [
           { name: "instance", schema: t("RepoPath"), required: false, arg: { flag: "--instance" }, description: "The downstream instance root; omitted, every declaring instance in the checkout." },
@@ -370,7 +370,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "After a move between two layers lands, find every mention `<from>/<prefix>/<rest>` in the scanned tree's tracked files and rewrite it to `<to>/<prefix>/<rest>` only when the file exists under the destination root and not under the source root. Records are never read: beans, todos, memory, proposals, wireframes, QA results, upstream pins, vocab mappings, provenance figures and terminologies, and test fixtures (`DEFAULT_RECORD_GLOBS`; the CLI's `--keep <glob>` adds more, generated trees among them, which their generators rewrite — a glob is not a shell-safe argument type, so it is not a declared input). Reports by default with file and line; `--write` applies; `--check` exits 1 while a rewrite is owed.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/rewrite-moved-paths.ts" },
+      invoke: { shell: "bun run cat paths:rewrite-moved" },
       io: {
         inputs: [
           { name: "fromName", schema: t("Slug"), required: true, arg: { flag: "--from-name" }, description: "The moved files' old layer, as paths spell it (e.g. the harness)." },
@@ -400,7 +400,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Lay down every remote mount `index.lock.json` records — each instance fetched at the lock's full SHA (sparse, blob-filtered), each directory verified against its `treeDigest`, a mismatch undone and reported — importing only `node:*`, so it runs on a fresh clone before any layer is present. It never decides what to mount: `remote-mount` writes the lock (and checks trust); this only replays it. Refuses to write over a path with tracked files or bytes that no longer hash to the lock. Exit 0 mounted/current, 1 missing, 2 could-not-determine.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/mount-from-lock.ts" },
+      invoke: { shell: "bun run cat mount:lock" },
       io: {
         inputs: [
           { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The instance root whose lock is replayed. Default: the working directory." },
@@ -430,7 +430,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "From a checkout whose layers arrive by remote mount: mount the pinned closure, install, run the instance's own gates (`--pre`), compose the harness chrome for THIS instance, run its source steps, build with Jekyll at the base path read from the git remote (`/<repo>`, or `/<repo>/STAGING/<branch>` for a preview), run the post-build steps (mount-instance-docs, pdf-viewer, set-html-lang, publish-id-lookup, rail-standalone-pages), and check that every relative or base-rooted link in every page resolves to a file under the site, reading each page with an HTML parser. Any failing step stops the run; a link that does not resolve means nothing is published. It never decides to publish: only `--publish` does, and then a root publish keeps `STAGING/` and `_render-log/` on the branch, and a preview replaces only its own `STAGING/<branch>/`.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/build-instance-site.ts" },
+      invoke: { shell: "bun run cat site:instance" },
       io: {
         inputs: [
           { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The instance checkout (holds `index.config.json`). Default: the working directory." },
@@ -468,7 +468,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Read every instance declaration in the checkout and resolve what it names: `directories` (and those declared from within) through `check:declared-dirs`, `assets` through `check:declared-assets`, `visualisers[].renderedBy` through `check:visualiser-routes`, `needs` through the instance-graph resolver, and `visualisers[].coversKinds` against the graph typologies registered IN THIS CHECKOUT — its own and those a mounted layer contributes, read from the checkout under inspection rather than from where the harness module sits (lesson 6). A declaration that does not parse is a finding. One verdict per instance and field, naming the gate that decided it. Exit 0 every reference resolves, 1 one does not, 2 could not determine; a certain finding is reported before anything undetermined.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/check-declaration-resolution.ts" },
+      invoke: { shell: "bun run cat check:declaration-resolution" },
       io: {
         inputs: [
           { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The checkout to check; the script re-runs itself there, so kinds are read from it. Default: the working directory." },
@@ -491,10 +491,10 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Derive a package's `package.json` `exports` from the instance declaration beside it: a directory declared with graph typology `code` (top level or from within) AND named in `files` is exported as `./<dir>/*.js → ./<dir>/*.ts` and `./<dir>/* → ./<dir>/*`; a declared code directory that is not shipped (`test/`) stays private. Keys without `*` are named entry points, kept as written and checked to point into an exported directory. Without `--write` it reports each difference; with it, it rewrites `exports`. Exit 0 in agreement, 1 drift, 2 cannot tell (no declaration, no `package.json`, or no shipped code directory).",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/package-exports.ts" },
+      invoke: { shell: "bun run cat check:package-exports" },
       io: {
         inputs: [
-          { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The instance whose package to check. Default: cat-harness-tools." },
+          { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The instance whose package to check. Default: the instance holding the script." },
           { name: "write", schema: t("Flag"), required: false, arg: { flag: "--write" }, description: "Rewrite `exports` to the derived set." },
         ],
         outputs: [
@@ -513,7 +513,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Run in a separated repository. Six conditions, each decided by an existing gate: `mounts` (every declared layer on disk at its pin — `remote-mount --check`), `declarations` (every path a declaration names resolves — `declaration-resolution`), `monorepo-paths` (no wiring still names the monorepo: `livesAt` on it, a submodule of it, a reusable workflow called from it, a path into its old checkout — the one condition implemented here), `import-direction` and `reference-direction` (no layer reaches a layer above it), and `site` (the site builds from the mounts alone, every link resolving — `build-instance-site --no-mount`, only with `--site`). Findings inside a MOUNTED layer are listed and not counted: a defect in a layer pinned from upstream is fixed upstream and re-pinned. Exit 0 complete, 1 a condition failed, 2 a condition could not be determined or was not run — without `--site` the answer is never 0.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/separation-cutover-check.ts" },
+      invoke: { shell: "bun run cat separation:cutover:check" },
       io: {
         inputs: [
           { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The separated checkout. Default: the working directory." },
@@ -544,7 +544,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Write the root `index.config.json` (`folio-index-config/v1`) that says which instances the checkout instantiates, where each comes from (`source.local` or `source.remote`) and which owns `/` (`site.landing`), from the root `*.config.json` files and the declaration's `remoteMounts`. With `--write` it moves `remoteMounts` off the declaration into `source.remote` entries, writes the generated `.gitignore` block, and renames a legacy `<name>.mount-lock.json` to `index.lock.json`. Without a flag it prints the index it would write. Idempotent: a re-run merges what the declaration gained, and refuses an entry the index already holds differently. A root config naming no instance is reported as `unmatched-config` and not imported, because what to do with it is a person's decision.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/index-config-migrate.ts" },
+      invoke: { shell: "bun run cat index-config:migrate" },
       io: {
         inputs: [
           { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "The checkout to convert; omitted, this one." },
@@ -564,7 +564,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Build an npm tarball (.tgz) of an instance using `bun pm pack`, compute its size and SHA-256 digest, and record it as a `folio-binary-release/v1` state node.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/pack-tarball.ts" },
+      invoke: { shell: "bun run cat pack:tarball" },
       io: {
         inputs: [
           { name: "root", schema: t("RepoPath"), required: false, arg: { flag: "--root" }, description: "Instance root containing package.json (default: cwd)." },
@@ -588,7 +588,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Retrieve and inspect a remote Knowledge Graph packaged as an npm package or tarball (.tgz), supporting both unhydrated source graph views (authored declarations, skills, schemas) and hydrated materialized graph views (subgraph JSON-LD, metadata indexes, dereferenced graph projections).",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/kg-retrieve-npm.ts" },
+      invoke: { shell: "bun run cat kg:retrieve:npm" },
       io: {
         inputs: [
           { name: "package", schema: t("Text"), required: true, description: "Package name, npm tarball (.tgz) path, or URL." },
@@ -666,7 +666,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "The gate for the `archimate` graph typology: every model `cat-archimate.config.json` names is held, parses (Archi's native XML or its zipped archive), and resolves — every box in every view draws an element the model holds, every relationship's ends are in the model — and no `.archimate` file is held that the config does not name.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/archimate/scripts/check-archimate.ts" },
+      invoke: { shell: "bun run cat archimate:validate" },
       io: {
         inputs: [
           { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root whose `archimate` directory is checked." },
@@ -689,7 +689,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Write a JSON-LD node and a thin page for each model an instance's `cat-archimate.config.json` names and for every view, element and relationship in it — keyed by Archi's own ids — plus the normalised model the pages' one loader draws from, and every view drawn as SVG from the model's own bounds and bendpoints in ArchiMate's notation, each box a link to its element. `--out` writes into a site being built — the data at the graph's path, the pages at the route of the visualiser the instance declares for this Tool, `<locale>/<harness>/<id>/`; without it the files go into the graph and `--check` gates them.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/archimate/scripts/gen-archimate-pages.ts" },
+      invoke: { shell: "bun run cat archimate:pages" },
       io: {
         inputs: [
           { name: "instance", schema: t("RepoPath"), required: true, arg: { flag: "--instance" }, description: "The instance root." },
@@ -715,7 +715,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "A LAST pass over the finished site: inject the shared navbar (`lib/navbar.ts`, the same component the site sidebar draws) into every page that carries none — standalone viewers, generated instance pages, and each IG site built by `stage-ig-sites`. A page under an `igSite` instance's route is railed as THAT instance's page (its name, mark and graphs); a page may declare its own section (`data-fa-visualiser-nav`) and its label (`fa-visualiser-label`). Mount routes are left to the mount pass, and a page that declines (`folio-navbar: none`) is left bare.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/rail-standalone-pages.ts" },
+      invoke: { shell: "bun run cat rail:standalone-pages" },
       io: {
         inputs: [
           { name: "site", schema: t("RepoPath"), required: true, description: "The finished site directory." },
@@ -751,7 +751,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Build a repository's site in the agent's checkout and push it to the publish branch, as a preview or as the main site, without an Actions runner. Which build is read from the repository: a declared `site.build` recipe (built by `build-instance-site`), else the reusable workflow its own workflow files call — `folio-staging.yml` for a folio, smart-base's `ghbuild.yml` for a FHIR IG, whose `build` job is planned step by step and run as written. For an IG it then applies the harness chrome over the built output (`sync-docs-harness`, then `rail-standalone-pages --foreign-site --instance <the IG>`): every page gains the rail and the icon row `#fa-navbar-row`, and the IG's own content is left byte for byte. A root publish is REFUSED when the chrome cannot be applied, and a clean root deploy is refused over any root whose `index.html` wears the icon row unless the new output does too, so a chromed root is never replaced by bare IG Publisher pages. Every run prints its plan first, and the plan lists the chrome step; `--plan` stops there, `--dry-run` composes the commit in a temporary worktree and pushes nothing, `--artifact` writes a claude.ai Artifact bundle instead.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/stage-local.ts" },
+      invoke: { shell: "bun run cat stage:local" },
       io: {
         inputs: [
           { name: "repo", schema: t("RepoPath"), required: false, arg: { flag: "--repo" }, description: "The checkout to publish, with the platform's layers mounted at its root. Default: the working directory." },
@@ -773,7 +773,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       selection: {
         when: "Every agent-run publish of a folio's or an IG's site, preview or main: it is what the current build pipeline uses (smart-trust's and smart-immunizations' `site-publish.yml` run this same command on a runner).",
         limits:
-          "An IG repository's main site is built from its AST, read from the cache branch fhir-harness's `ig-ast-refresh` keeps current, by the steps its `site.build` recipe declares (`profile: ig-repo-site`): the theme side bar and search, the harness rail and icon row, the served directories and the `folio-build.json` stamp, measured against the live root (cat-harness-tools#202). A stale AST is refused, never built from Publisher HTML. A root publish is refused when the composed site lacks anything the current root has (`site-parity`), judged on the pages. Without a `site.build` recipe an IG falls back to its own workflow's Publisher steps, which need a Docker daemon and give the rail and icon row only.",
+          "An IG repository's main site is built from its AST, read from the cache branch fhir-harness's `ig-ast-refresh` keeps current, by the steps its `site.build` recipe declares (`profile: ig-repo-site`): the theme side bar and search, the harness rail and icon row, the served directories and the `folio-build.json` stamp, measured against the live root (https://github.com/litlfred/cat-harness-tools/pull/202). A stale AST is refused, never built from Publisher HTML. A root publish is refused when the composed site lacks anything the current root has (`site-parity`), judged on the pages. Without a `site.build` recipe an IG falls back to its own workflow's Publisher steps, which need a Docker daemon and give the rail and icon row only.",
         cost: "An IG: the whole IG Publisher build (tens of minutes), then about two minutes of rail over ~3,600 pages. A folio: its build command. Then one push, and GitHub's own Pages deploy.",
       },
       requires: { runtime: ["bun", "git"], network: true },
@@ -804,7 +804,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       },
       satisfies: ["feature-staging", "harness-tiles"],
       selection: {
-        when: "A pipeline that still carries `folio-site.yml` and builds on a runner rather than in the agent's checkout (smart-base's default branch carried it on 2026-10-14). Since cat-harness-tools#202 `stage-local` gives an IG the same site — theme side bar and search, served directories, stamp — so this is no longer the only route to them.",
+        when: "A pipeline that still carries `folio-site.yml` and builds on a runner rather than in the agent's checkout (smart-base's default branch carried it on 2026-10-14). Since https://github.com/litlfred/cat-harness-tools/pull/202 `stage-local` gives an IG the same site — theme side bar and search, served directories, stamp — so this is no longer the only route to them.",
         limits:
           "Dispatch-only and runner-bound: it needs a runner, the `gh` CLI with a token that may run workflows, and the folio-assistant submodule the template expects. It builds the IG with `stage-ig-sites`, not the IG's own `ghbuild.yml`, and has no plan or dry-run: a run on the default branch deploys. The current agent pipeline does not use it (owner, 2026-10-14).",
         cost: "One runner job, 8 to 15 minutes measured on 2026-10-12, plus GitHub's Pages deploy.",
@@ -818,7 +818,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Write the Jekyll source the docs site is built from: the base docs layer, the repository overlay on top (an overlay's `_config.yml` merged, every override reported), and each `composed` instance under its own name. `--staging` keeps staging-only visualisations; `--changed-files` stubs instances a branch does not reach. `--shell` writes the CHROME only — the layers' Jekyll machinery and assets, no page, no instance, and the host's generated includes empty — which an IG repository composes its IG into so its own site wears the main site's chrome (#2235).",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/compose-docs.ts" },
+      invoke: { shell: "bun run cat compose:docs" },
       io: {
         inputs: [
           { name: "out", schema: t("RepoPath"), required: true, description: "The Jekyll source to write (replaced)." },
@@ -839,7 +839,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Render `_includes/generated/navbar-footer.html` from `docs/_data/harness.json` with the same renderer every railed page uses. With `--instance`, render the navbar of an IG repository's OWN site instead — that instance first, then what it needs; its own pages at this site's root, every other link to the main site at `--link-root` — into the shell that site is built from (#2235).",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/gen-navbar-include.ts" },
+      invoke: { shell: "bun run cat navbar:include" },
       io: {
         inputs: [
           { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Fail if the committed include is stale; write nothing." },
@@ -981,7 +981,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Picture each changed figure, diagram, table, equation or simulator block on the published main site and on a staging build, and compare the two pictures pixel by pixel in Chromium's canvas. Writes `visual-diff.json` (`folio-visual-diff/v1`: per block, the share of pixels changed beyond anti-aliasing, and the before, after and diff pictures) and `visual/*.png`, which the review page's visual renderer shows. A side that cannot be pictured (page or anchor missing) is recorded as missing, never drawn blank. Adds no dependency: Playwright is already the platform's browser driver.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/block-screenshots.ts" },
+      invoke: { shell: "bun run cat block:screenshots" },
       io: {
         inputs: [
           { name: "changeset", schema: t("RepoPath"), required: true, arg: { flag: "--changeset" }, description: "The preview's `changeset.json`: which blocks changed, and their kind on each side." },
@@ -1124,7 +1124,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       // brings tesseract and Pillow, which a page raster does not need, and a
       // Tool node that overstates its install is a Tool nobody can schedule.
       install: { cli: "pip install pymupdf" },
-      invoke: { shell: "python3 cat-harness-tools/scripts/pdf-cover.py" },
+      invoke: { shell: "bun run cat pdf:cover" },
       requires: { runtime: ["python3", "pymupdf"], network: false },
       io: {
         inputs: [
@@ -1163,7 +1163,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Download the pinned pdf.js release (legacy build), verify its SHA-256, copy the parts a site needs into `<site>/assets/vendor/pdfjs/`, and add the shim that opens `?src=` only for the allowlisted URL prefixes or the site's own origin. Nothing is committed: the viewer exists only in the built site.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/pdf-viewer.ts" },
+      invoke: { shell: "bun run cat pdf:viewer" },
       requires: { runtime: ["bun", "unzip"], network: true },
       remedies: [{ host: "github.com", none: "pdf.js is fetched from its GitHub release and no copy is vendored; the site builds without the viewer." }],
       io: {
@@ -1192,14 +1192,15 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Print the HTML fragment that shows a PDF in the installed viewer: a lazily loaded frame whose address is derived from the page's own location (so one page works at the site root, under a project base and under a staging preview), plus plain open and download links that work without it.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/pdf-viewer.ts --embed" },
+      invoke: { shell: "bun run cat pdf:viewer --embed" },
       requires: { runtime: ["bun"], network: false },
       io: {
         inputs: [
           { name: "spec", schema: t("Text"), required: true, arg: { stdin: true }, description: "One JSON object: `src` (the PDF's URL, which must fall under a prefix `pdf-viewer-install` was given, or the viewer refuses it on screen), `title` (what the document is; the frame's accessible name), `route` (a regular expression over the page's pathname whose group 1 is the site root — the `folio-mount.ts` convention) and optionally `page` (open at this 1-based page). On stdin because a title and a regular expression are free text." },
         ],
         outputs: [
-          { name: "fragment", schema: t("Text"), description: "The HTML fragment on stdout. TypeScript callers import `embed` from `cat-harness-tools/scripts/pdf-viewer.ts` instead, as `who-iris/scripts/gen-iris-pages.ts` does." },
+          // `embed` is exported by cat-harness-tools/scripts/pdf-viewer.ts.
+          { name: "fragment", schema: t("Text"), description: "The HTML fragment on stdout. TypeScript callers import `embed` from the module that implements this Tool instead, as `who-iris/scripts/gen-iris-pages.ts` does." },
         ],
       },
       satisfies: ["pdf-inline-viewer"],
@@ -1227,7 +1228,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Compose the forge URL a person can drop a file at, from the instance's own declaration: the `uploads` graph's directory, resolved against the ROOT its scope names, expressed relative to the repository, and appended to the origin remote as GitHub's `/upload/<branch>/<path>`. Every failure is NAMED and no URL is guessed — no declaration, no declared `uploads` graph, a declared queue absent from disk, no `origin` remote, and a non-github.com remote each return a reason and a remedy instead. It exists because the obvious composition mints a live 404: the declared path `uploads/` is relative to the INSTANCE and a forge URL needs it relative to the REPOSITORY, so pasting the declared path drops the `cat-harness/` segment. Owner, 2026-09-20, on the hand-written form: \"were it to exist, but it doesmt on main!!!!!\"",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/upload-url.ts" },
+      invoke: { shell: "bun run cat upload:url" },
       requires: { runtime: ["bun"], network: false },
       io: {
         inputs: [
@@ -1257,7 +1258,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       // `hashlib` ship with Python. Stated, so "needs nothing" is
       // distinguishable from an unfinished record.
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/ingest-document.ts" },
+      invoke: { shell: "bun run cat ingest" },
       requires: { runtime: ["python3"], network: false },
       io: {
         inputs: [
@@ -1288,8 +1289,8 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       // from it — it already omitted `cryptography`, which the declaration's
       // own checker caught. `requirements.txt` is generated from the
       // declaration; the apt packages are not pip-installable and stay named.
-      install: { cli: "pip install -r cat-harness-tools/python/requirements.txt -r cat-harness-tools/python/requirements-extended.txt && apt-get install -y tesseract-ocr poppler-utils" },
-      invoke: { shell: "bun run cat-harness-tools/scripts/ingest-document.ts" },
+      install: { cli: "bun run cat ingest:install-extended" },
+      invoke: { shell: "bun run cat ingest" },
       requires: { runtime: ["python3", "pymupdf", "tesseract"], network: false },
       io: {
         inputs: [
@@ -1314,16 +1315,17 @@ export function tools(baseUrl?: string): ToolDefinition[] {
     // owner ruling 2026-10-10 ("both"). The engine itself, `bpmn-engine`, is
     // declared in `cat-harness-tools/tools/index.ts`, beside its in-process
     // module (owner, 2026-10-14: "Move the node to tools"): declared here, the
-    // module path had to name `../cat-harness-tools/`, a layer cat-harness's
-    // `needs` does not reach (`check:import-direction`). This one is invoked by
-    // shell, like every `cat-harness-tools/scripts/` Tool, so it stays.
+    // module path had to climb into the tools layer by a relative path, which
+    // cat-harness's `needs` does not reach (`check:import-direction`). This one
+    // is invoked by a script key, like every Tool whose command the tools layer
+    // implements (owner, 2026-10-15, J2), so it stays.
     defineTool({
       id: "bpmn-checklist",
       title: "BPMN checklist projection",
       description:
         "Generate, per diagram, a checklist that walks the BPMN as a state machine: each task names the `workflow_complete` call that records it and ends with `next:` by node id; each decision lists its labelled branches (or the DMN that computes it); parallel forks name every branch and joins wait for all; start/end events are entry and exit lines. A rendering, never an authority: it says it is generated, and `--check` fails when one is stale.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/bpmn-checklist.ts" },
+      invoke: { shell: "bun run cat bpmn:checklist" },
       io: {
         inputs: [
           { name: "out", schema: t("RepoPath"), required: false, arg: { flag: "--out" }, description: "Write every `<stem>.checklist.md` into this one directory instead. Default: each beside its diagram, in the instance that owns it; the harness site's `assets/workflows/checklists` holds those of the instances below the harness." },
@@ -1397,7 +1399,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Build the published site on this machine, so a page can be looked at rather than described: the same Jekyll build `pages-publish` runs in CI, into a directory of your choosing, and never pushed. The local half of the two site builds (owner, 2026-10-05: local and GitHub builds are two Tools for one skill).",
       install: { none: true },
-      invoke: { shell: "cat-harness-tools/scripts/preview-site.sh" },
+      invoke: { shell: "bun run cat preview:site" },
       io: {
         inputs: [
           { name: "dest", schema: t("RepoPath"), required: false, arg: { positional: 0 }, description: "Where to write the built site. Default: a temporary directory." },
@@ -1501,7 +1503,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Serve an instance's renderings over local HTTP with their declared media types using Python 3 standard library. The publication host wherever GitHub Pages is absent, and the only host that can enforce `application/ld+json` at all.",
       install: { none: true },
-      invoke: { shell: "python3 cat-harness-tools/scripts/serve-rendering.py" },
+      invoke: { shell: "bun run cat serve:rendering:py" },
       io: {
         inputs: [
           { name: "directory", schema: t("RepoPath"), required: false, arg: { flag: "--dir" }, description: "Tree to serve; defaults to the built site when present." },
@@ -1594,7 +1596,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Run every registered criterion over the blocks under a path and write a per-block QA sidecar. A sidecar rather than a console report, because a printed verdict cannot distinguish \"never checked\" from \"checked and clean\".",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/pipeline/qa-sweep.ts" },
+      invoke: { shell: "bun run cat qa:sweep" },
       io: {
         inputs: [
           { name: "targetPath", schema: t("RepoPath"), required: true, arg: { positional: 0 }, description: "The content root to sweep. Absent, the command exits 2 with its usage — could-not-determine, not a clean sweep." },
@@ -1643,7 +1645,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Lint TeX source for the pdflatex-compile failure classes a permissive AST parser accepts — the ones that pass validation and then break the build.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/pipeline/latex-preflight.ts" },
+      invoke: { shell: "bun run cat latex:preflight" },
       io: {
         inputs: [
           { name: "json", schema: t("Flag"), required: false, arg: { flag: "--json" } },
@@ -1664,7 +1666,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Turn a pdflatex log's Overfull \\hbox warnings into a located, actionable report, with a threshold so a long tail of trivial overruns does not bury the real ones.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/pipeline/latex-overfull-report.ts" },
+      invoke: { shell: "bun run cat latex:overfull" },
       io: {
         inputs: [
           // REQUIRED and positional — found by running it, not by reading it:
@@ -1718,7 +1720,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Parse every `tex` snippet in a folio's blocks and report what will not compile — structural, not textual: it reads an AST rather than matching patterns. Complementary to `latex-preflight`, which gates a main.tex before a compile, and to `latex-overfull`, which reads a log after one.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/pipeline/validate-tex.ts" },
+      invoke: { shell: "bun run cat latex:validate" },
       io: {
         inputs: [
           { name: "paper", schema: t("Slug"), required: false, arg: { flag: "--paper" }, description: "One folio by slug. Absent, every folio the content root holds." },
@@ -1746,7 +1748,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Catch the source patterns that crash pdflatex but read as ordinary prose — a bare `_` or `^` in a bibliography field, `|` inside a markdown table cell where it is also the column separator, a `$…$` span across two lines, markdown link syntax inside a fenced tex block, a double subscript. Born from named build failures rather than from a style opinion.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/pipeline/audit-tex-source.ts" },
+      invoke: { shell: "bun run cat latex:audit-source" },
       io: {
         inputs: [
           { name: "strict", schema: t("Flag"), required: false, arg: { flag: "--strict" }, description: "Exit 1 on any finding, for use as a gate." },
@@ -1765,7 +1767,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Drive a folio's built viewer in headless Chromium and report the blocks whose diagrams, SVGs, LaTeX math or markdown do not render — with `--screenshot` to save the pictures. This is the mechanised half of looking at it: a green gate set is not a rendering.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/headless-render-qc.ts" },
+      invoke: { shell: "bun run cat render:headless-qc" },
       io: {
         inputs: [
           { name: "screenshot", schema: t("Flag"), required: false, arg: { flag: "--screenshot" }, description: "Save the screenshots as well as the verdict — which is the point when the reader is a person rather than a gate." },
@@ -1795,7 +1797,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Compile LaTeX source documents into PDF using latexmk with safe shell-escape isolation across CI events.",
       install: { none: true },
-      invoke: { shell: "cat-harness-tools/scripts/latexmk-compile.sh" },
+      invoke: { shell: "bun run cat latex:compile" },
       io: {
         inputs: [
           { name: "tex", schema: t("RepoPath"), required: true, arg: { positional: 0 }, description: "The TeX source file to compile (e.g. main.tex)." },
@@ -1836,7 +1838,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Build every Lean project in the workspace from the root Lake manifest, so cross-package dependencies resolve against it rather than a possibly-stale per-paper manifest. Writes a committable build-status sidecar every run.",
       install: { none: true },
-      invoke: { shell: "cat-harness-tools/scripts/lean-build-all.sh" },
+      invoke: { shell: "bun run cat lean:build-all" },
       io: {
         inputs: [
           { name: "paper", schema: t("Slug"), required: false, arg: { flag: "--paper" }, description: "Build one paper instead of all of them." },
@@ -1879,7 +1881,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       // It IS the install step, so `install.cli` names itself: an agent that needs
       // Lean runs this, and `install.none` would say no step exists.
       install: { cli: "scripts/setup-lean-toolchain.sh" },
-      invoke: { shell: "cat-harness-tools/scripts/setup-lean-toolchain.sh" },
+      invoke: { shell: "bun run cat lean:setup-toolchain" },
       io: {
         inputs: [],
         outputs: [{ name: "toolchain", schema: t("Text"), description: "The linked toolchain name, and the per-repo override that selects it." }],
@@ -1908,7 +1910,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Count how many provable blocks — theorem, lemma, proposition, corollary — carry a full Lean proof rather than a sorry, per paper. The completeness half of the Lean audit: what is formalised, and what is still a gap.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/lean-coverage.ts" },
+      invoke: { shell: "bun run cat lean:coverage" },
       io: {
         inputs: [
           { name: "paper", schema: t("Slug"), required: false, arg: { flag: "--paper" }, description: "One paper instead of all." },
@@ -1938,7 +1940,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Inspect Lean declarations chapter by chapter for proofs that type-check, are sorry-free and axiom-clean, and still carry no mathematical content — assuming what they claim, concluding something trivially true, or resting on a false premise.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/lean-audit.ts" },
+      invoke: { shell: "bun run cat lean:audit" },
       io: {
         inputs: [
           { name: "chapter", schema: t("Slug"), required: false, arg: { flag: "--chapter" }, description: "One chapter instead of the whole corpus." },
@@ -2102,7 +2104,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Draw the harness object model (Actor, Role, Skill, Process, Task, Todo, Bean, tests, schemas) with every attribute read from the schema behind it. Each relationship names the field that carries it, and the generator refuses to write if that field is gone.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/gen-object-model-uml.ts" },
+      invoke: { shell: "bun run cat uml:object-model" },
       io: {
         inputs: [
           { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Fail if the committed diagram is stale. Needs the beans CLI; without it the result is could-not-check (exit 2)." },
@@ -2199,7 +2201,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Render each skill's input/output JSON Schema as a browsable Markdown reference page, with an index. The generated pages are committed so they are readable on the forge as well as on the site.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/gen-schema-docs.ts" },
+      invoke: { shell: "bun run cat schema:docs" },
       io: {
         inputs: [
           { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Compare against the committed pages and fail if stale, instead of writing." },
@@ -2216,7 +2218,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Render the skill instruction bodies — the prose an agent actually loads — as browsable pages with an index, so a reader can see what an agent is told without cloning the repository.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/gen-skill-docs.ts" },
+      invoke: { shell: "bun run cat skills:docs" },
       io: {
         inputs: [
           { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Compare against the committed pages and fail if stale, instead of writing." },
@@ -2245,7 +2247,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Render document ingestion's FIRST step as a reference page, generated from the Tool nodes that implement it: the step, its lane and role, its skill and every Tool whose `satisfies` names that skill, with each Tool's description, installation, invocation, typed ports and selection triple. Everything but the process file's own path is derived — the start event, the activity its single outgoing flow reaches, and that activity's skill — so a step inserted, renamed or re-pointed moves the page rather than staling a literal. Refuses rather than emitting a partial page when the start event flows nowhere or to more than one place, when the first step is not an activity, when it names no skill or several, or when NO Tool satisfies that skill — the last because an empty page reads as a documented absence of mechanism, which is a finding rather than a document.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/gen-upload-step-docs.ts" },
+      invoke: { shell: "bun run cat upload-step:docs" },
       io: {
         inputs: [
           { name: "check", schema: t("Flag"), required: false, arg: { flag: "--check" }, description: "Compare against the committed page and fail if stale, instead of writing." },
@@ -2319,7 +2321,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Emit the published JSON-LD `@context` that both populations share — authored block siblings and ingested `library/**` nodes reference it by URL — generated from its TypeScript definition rather than hand-kept.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/gen-jsonld-context.ts" },
+      invoke: { shell: "bun run cat jsonld:context" },
       io: {
         inputs: [
           // `--check` is the CI arm: it compares against the committed copy and
@@ -2484,7 +2486,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       id: "merge-overlap",
       title: "Merge overlap (conflict prediction)",
       description:
-        "For the open PRs (via `gh`, or a list of branches), report which pairs would conflict: pairwise overlap on AUTHORED paths, with generated paths excluded using the merge-conflict-patterns declaration; which PRs touch a shared declaration (an instance's `<instance>.json`, `roles.json`, `package.json`, `bun.lock`, schemas, BPMN/DMN); and which touch `cat-harness/` or `cat-harness-tools/`. A PR that could not be measured makes no pair independent. JSON (`merge-overlap/v1`), the conflict-prediction input for composing trains.",
+        "For the open PRs (via `gh`, or a list of branches), report which pairs would conflict: pairwise overlap on AUTHORED paths, with generated paths excluded using the merge-conflict-patterns declaration; which PRs touch a shared declaration (an instance's `<instance>.json`, `roles.json`, `package.json`, `bun.lock`, schemas, BPMN/DMN); and which touch the harness layer's directory or its tools layer's. A PR that could not be measured makes no pair independent. JSON (`merge-overlap/v1`), the conflict-prediction input for composing trains.",
       install: { none: true },
       invoke: { shell: "bun run cat merge:overlap" },
       io: {
@@ -2699,7 +2701,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Append one entry to the render log on the publish branch: what was published or taken down, when, from which commit, and — for a removal or a retention — WHY. The log is the only place a preview that vanished leaves a trace.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/render-log.ts" },
+      invoke: { shell: "bun run cat render:log" },
       io: {
         inputs: [
           { name: "dir", schema: t("RepoPath"), required: true, arg: { flag: "--dir" }, description: "A checkout of the publish branch, or a publish directory about to become one. This tool NEVER fetches, commits or pushes: the workflows that call it already hold the checkout with their own retry and concurrency handling, and a second pusher racing those is a new way to lose a deploy." },
@@ -2970,7 +2972,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "The site search index cut into one index per scope — each declared instance, each target locale, and the platform — plus `assets/js/search/manifest.json` naming them, so a reader's search loads its own scope rather than the whole site (issue #1972, bean `m7mn`). Run on the assembled site after the index is written or borrowed.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/search-split.ts --dir _site" },
+      invoke: { shell: "bun run cat search:split --dir _site" },
       io: {
         inputs: [
           // input-site: inert #a9ab302b — prose naming the directory, in a message or a description
@@ -3057,7 +3059,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Build the content graph under a path and report its edges, separated into the EDITORIAL relation an author maintains and the FORMAL one derived from Lean. Reading the two as one number is how the editorial signal gets overwritten.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/pipeline/content-graph.ts" },
+      invoke: { shell: "bun run cat content:graph" },
       io: {
         inputs: [
           // Optional, because the script defaults to `<repo>/content` — and
@@ -3102,7 +3104,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Validate the block manifests under a path against their schemas. Exits 2 where no folio is present rather than reporting a clean run — the platform carries no content, and a validator that passes over nothing is how this one validated nothing for a while.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/pipeline/validate.ts" },
+      invoke: { shell: "bun run cat content:validate" },
       io: {
         inputs: [
           { name: "targetPath", schema: t("RepoPath"), required: false, arg: { positional: 0 }, description: "A paper or chapter directory; absent, every paper the folio declares." },
@@ -3130,7 +3132,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Build the block- and section-level editorial dependency graph of one paper from its `.ts` manifests and report forward references, cross-chapter coupling, sparse or dense sections and isolated blocks, ranked. Reads `uses[]`/`interprets` only — the editorial relation, never the formal one.",
       install: { none: true },
-      invoke: { shell: "python3 cat-harness-tools/pipeline/content-graph-analysis.py" },
+      invoke: { shell: "bun run cat content:graph-analysis" },
       io: {
         inputs: [
           { name: "paper", schema: t("Slug"), required: false, arg: { flag: "--paper" }, description: "The paper directory under the content root. Its default names one folio's paper, which is migration debt: pass it explicitly." },
@@ -3149,8 +3151,9 @@ export function tools(baseUrl?: string): ToolDefinition[] {
     }),
 
     // The MCP server's image is part of THIS Tool (bean `ar1s`, phase 2):
-    // `install.container` is its build line, which `deps:python:check` reads
-    // to find the image whose Python set it checks. Manual, not `container`,
+    // `install.container` is its build line — a script key, whose declared
+    // command `deps:python:check` reads to find the image whose Python set it
+    // checks. Manual, not `container`,
     // on invoke: running it starts a SERVER, and a container invoke arm would
     // be projected as an MCP tool that launches the server it is served by.
     defineTool({
@@ -3159,14 +3162,13 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Build and run the folio MCP server as one image carrying Bun, TeX Live, Lean, lean-lsp-mcp and the generated Python set — the image `deploy/` serves behind the auth gateway. Run it with `docker run -i --rm paper-assistant --stdio`, or `--http` on port 8080.",
       install: {
-        container:
-          "docker build -t paper-assistant -f cat-harness-tools/adapters/mcp-server/Dockerfile .",
+        container: "bun run cat mcp:image",
       },
       invoke: { manual: true },
       io: { inputs: [], outputs: [] },
       satisfies: ["deployment-auth"],
       requires: { runtime: ["docker"], network: true },
-      remedies: [{ host: "archive.ubuntu.com", none: "The image build installs its toolchain from apt, cli.github.com, bun.sh and astral.sh; with any refused the image does not build. Run the server from a checkout instead: `bun run cat-harness-tools/src/index.ts --stdio`." }],
+      remedies: [{ host: "archive.ubuntu.com", none: "The image build installs its toolchain from apt, cli.github.com, bun.sh and astral.sh; with any refused the image does not build. Run the server from a checkout instead: `bun run cat start:stdio`." }],
       selection: {
         when: "Deploying the MCP server, or running it where its toolchain (TeX, Lean, Bun) is not installed.",
         limits: "The build context still COPYs a content repository's Lean packages and hecke-engine (see `.github/workflows/build-lean-mcp.yml`), so it builds from a folio checkout, not from this platform alone.",
@@ -3180,7 +3182,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Render a paper's content objects to LaTeX chapters: load the paper manifest, resolve its chapters and blocks, render, validate the LaTeX AST, and write the chapter files. With no manifest it builds the folio's only paper, and refuses — naming them — when there are several or none.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/pipeline/build.ts" },
+      invoke: { shell: "bun run cat content:build" },
       io: {
         inputs: [
           { name: "paperManifest", schema: t("RepoPath"), required: false, arg: { positional: 0 }, description: "The paper's `<paper>.ts` manifest; absent, the folio's single paper." },
@@ -3318,7 +3320,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Write a back-translation verdict, produced by a pair of translation agents, into a block's existing translation-QA sidecar. It records a judgement rather than making one, and refuses where no sidecar exists — a round trip cannot be what decides a block is translated.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/pipeline/translation-roundtrip.ts" },
+      invoke: { shell: "bun run cat translation:roundtrip" },
       io: {
         inputs: [
           { name: "payload", schema: t("RepoPath"), required: true, arg: { flag: "--payload" }, description: "JSON carrying the block, locale, verdict and the agent pair. Absent, the command exits 2 with its usage — measured, not assumed." },
@@ -3370,7 +3372,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Is a `library/<bib-slug>/` entry complete as L1 source content? Each requirement is met, unmet, or NOT-DERIVABLE, so a document that cannot yield an artefact is distinguished from one that simply has not.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/check-l1-complete.ts" },
+      invoke: { shell: "bun run cat check:l1-complete" },
       io: {
         inputs: [
           // Optional: with no argument it walks every entry in the declared
@@ -3405,7 +3407,7 @@ export function tools(baseUrl?: string): ToolDefinition[] {
       description:
         "Read `json/licenses.json` and `json/exceptions.json` from a copy of github.com/spdx/license-list-data at the pinned tag and write `cat-harness/external-schemas/spdx-license-list.terminology.json` (`folio-pinned-terminology/v1`): every licence and exception id with its name and deprecated flag — the offline, version-fixed list `check:source-licence` validates a `licence.json` id against.",
       install: { none: true },
-      invoke: { shell: "bun run cat-harness-tools/scripts/pin-spdx-license-list.ts --from <license-list-data checkout>" },
+      invoke: { shell: "bun run cat spdx:pin --from <license-list-data checkout>" },
       // `network: false` is exact: it reads a local copy and never fetches.
       // The copy is fetched by hand at the pinned tag, for the reason
       // `pin-ig-terminology` gives: a gate that needs the network fails for
