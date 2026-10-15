@@ -36,6 +36,12 @@ describe("the shape", () => {
     expect(BuiltAtPublishListSchema.safeParse([entry({}), entry({ path: "docs/x/y.json" })]).success).toBe(false);
     expect(BuiltAtPublishListSchema.safeParse([entry({}), entry({ path: "docs/y/" })]).success).toBe(true);
   });
+  test("`reads` names graph typologies, each once — never an instance path (A1)", () => {
+    expect(BuiltAtPublishSchema.safeParse(entry({ reads: ["docs"] })).success).toBe(true);
+    expect(BuiltAtPublishSchema.safeParse(entry({ reads: [] })).success).toBe(false);
+    expect(BuiltAtPublishSchema.safeParse(entry({ reads: ["docs", "docs"] })).success).toBe(false);
+    expect(BuiltAtPublishSchema.safeParse(entry({ reads: ["smart-trust/docs/"] })).success).toBe(false);
+  });
   test("isBuiltAtPublish matches a declared file, and anything under a declared directory", () => {
     const list = [{ path: "docs/x/" }, { path: "docs/a.json" }];
     expect(isBuiltAtPublish(list, "docs/x/deep/p.html")).toBe(true);

@@ -263,6 +263,16 @@ edit under a cached URL. **Owner, 2026-10-15** (bean `folio-assistant-63q4`):
 each repository publishes its own context, through ONE reusable workflow, and
 **the initiation process sets that up**.
 
+**Where its `ns` is a document, the context goes beside it.** Owner,
+2026-10-15 ("D1"): an instance holding its vocabulary as `ns.jsonld` at its
+root (bootstrap) has `ns` staged as a FILE (the extensionless `ns`, and
+`<version>/ns`), so `ns/` cannot also be the directory `ns/context/v1.jsonld`
+needs, and a static host cannot serve both. Its context is
+`<iriBase>ns.context.v1.jsonld`, same `v1` rule. The generator decides by what
+the instance holds (`contextPathFor` in `gen-instance-contexts.ts`), the
+instance's `builtAtPublish` and `.gitignore` name that path, and the workflow
+publishes at the path the build reports.
+
 - **The workflow** is cat-harness-tools'
   `.github/workflows/layer-publish-context.yml`. A repository calls it from a
   `publish-context.yml` of one `uses:` line, on push to `main`, with
