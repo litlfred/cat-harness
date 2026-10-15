@@ -965,7 +965,7 @@
     {"id": "beans", "renderedBy": "state-viewer", "covers": ["beans"], "coversKinds": ["beans", "bean-defs", "bean-notes", "workflow-state"], "subgraphs": "instance", "alias": "beans"},
     {"id": "todos", "renderedBy": "state-viewer", "covers": ["todos"], "alias": "todos"},
     {"id": "issue-marks", "renderedBy": "state-viewer", "covers": ["issue-marks"], "alias": "issue-marks"},
-    {"id": "qa", "renderedBy": "state-viewer", "coversKinds": ["qa"], "subgraphs": "instance", "title": "QA results", "alias": "qa"},
+    {"id": "qa", "renderedBy": "state-viewer", "coversKinds": ["qa"], "subgraphs": "instance", "title": "QA", "alias": "qa"},
     {"id": "health", "renderedBy": "state-viewer", "coversKinds": ["health"], "subgraphs": "instance", "alias": "health"},
     {"id": "attestations", "renderedBy": "state-viewer", "coversKinds": ["attestations"], "subgraphs": "instance", "alias": "attestations"},
     {"id": "graph-typologies", "renderedBy": "state-viewer", "coversKinds": ["typologies"], "subgraphs": "instance", "title": "Graph typologies"},
