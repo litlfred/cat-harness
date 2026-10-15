@@ -2,6 +2,7 @@
   "$schema": "folio-library-document/v1",
   "id": "arxiv-2608.18294v2",
   "title": "Debiased Inference for AI-Generated Data without Gold-Standard Labels: Identification via Multiple Imperfect Measurements",
+  "variant": "pdf",
   "pages": 47,
   "tocSource": "outline",
   "tocMethod": null,

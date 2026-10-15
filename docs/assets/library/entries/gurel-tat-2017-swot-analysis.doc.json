@@ -2,6 +2,7 @@
   "$schema": "folio-library-document/v1",
   "id": "gurel-tat-2017-swot-analysis",
   "title": "SWOT Analysis: A Theoretical Review",
+  "variant": "pdf",
   "pages": 0,
   "tocSource": "none",
   "tocMethod": null,
