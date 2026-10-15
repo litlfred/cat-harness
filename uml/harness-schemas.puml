@@ -16,14 +16,14 @@ hide empty methods
 title Harness schemas — attributes derived from JSON Schema
 
 package scenario {
-  class "Actor" as Actor <<json: ActorDefSchema>> [[../../../glossary/#cat-harness--platform--actor]] #e8f0ee {
+  class "Actor" as Actor <<json: ActorDefSchema>> [[../../../folio-assistant-core/glossary/instance/cat-harness/#cat-harness--platform--actor]] #e8f0ee {
     id [1] : string
     title [1] : string
     kind [1] : person | agent | system | external
     description [0..1] : string
     roles [0..*] : string[]
   }
-  class "Role" as Role <<json: RoleDefSchema>> [[../../../glossary/#cat-harness--platform--role]] #e8f0ee {
+  class "Role" as Role <<json: RoleDefSchema>> [[../../../folio-assistant-core/glossary/instance/cat-harness/#cat-harness--platform--role]] #e8f0ee {
     persona [0..1] : string
     id [1] : string
     title [1] : string
@@ -41,7 +41,7 @@ package scenario {
     requiredCapabilities.multimodal [0..1] : boolean
     requiredCapabilities.capabilities [0..*] : string[]
   }
-  class "Skill" as Skill <<json: SkillDefinitionSchema>> [[../../../glossary/#bootstrap--terms--skill]] #e8f0ee {
+  class "Skill" as Skill <<json: SkillDefinitionSchema>> [[../../../folio-assistant-core/glossary/instance/bootstrap/#bootstrap--terms--skill]] #e8f0ee {
     id [1] : string
     name [1] : string
     description [1] : string
@@ -53,7 +53,7 @@ package scenario {
     package [0..1] : string
     lifecycleStages [0..*] : list<plan | author | validate | review | test | publish | feedback | retire>
   }
-  class "Voice" as Voice <<json: VoiceProfileSchema>> [[../../../glossary/#cat-harness--platform--voice]] #e8f0ee {
+  class "Voice" as Voice <<json: VoiceProfileSchema>> [[../../../folio-assistant-core/glossary/instance/cat-harness/#cat-harness--platform--voice]] #e8f0ee {
     $schema [1] : 'folio-voice/v1' | 'folio-voice-skill/v1'
     id [1] : string
     title [1] : string
@@ -73,7 +73,7 @@ package scenario {
     superseded.quote [1] : string
     superseded.successor [0..1] : object
   }
-  class "User Story" as UserStory <<json: UserStorySchema>> [[../../../glossary/#cat-harness--platform--user-story]] #e8f0ee {
+  class "User Story" as UserStory <<json: UserStorySchema>> [[../../../folio-assistant-core/glossary/instance/cat-harness/#cat-harness--platform--user-story]] #e8f0ee {
     id [1] : string
     role.instance [0..1] : string
     role.role [1] : string
@@ -83,7 +83,7 @@ package scenario {
 }
 
 package process {
-  class "Process" as Process <<ext: OMG BPMN 2.0>> [[../../../glossary/#bootstrap--terms--process]] #eee9f5 {
+  class "Process" as Process <<ext: OMG BPMN 2.0>> [[../../../folio-assistant-core/glossary/instance/bootstrap/#bootstrap--terms--process]] #eee9f5 {
     bpmn:endEvent : element
     bpmn:exclusiveGateway : element
     bpmn:lane : element
@@ -93,7 +93,7 @@ package process {
     bpmn:sequenceFlow : element
     bpmn:startEvent : element
   }
-  class "Task" as Task <<json: TaskRefSchema>> [[../../../glossary/#bootstrap--terms--task]] #eee9f5 {
+  class "Task" as Task <<json: TaskRefSchema>> [[../../../folio-assistant-core/glossary/instance/bootstrap/#bootstrap--terms--task]] #eee9f5 {
     process [1] : string
     task [1] : string
     bpmn:callActivity : element
@@ -104,11 +104,11 @@ package process {
 }
 
 package schema {
-  class "JSON Schema" as JsonSchema <<draft-07>> [[../../../glossary/#cat-harness--platform--json-schema]] #e9edf3 {
+  class "JSON Schema" as JsonSchema <<draft-07>> [[../../../folio-assistant-core/glossary/instance/cat-harness/#cat-harness--platform--json-schema]] #e9edf3 {
     $schema [1] : string<uri>
     properties [0..*] : schema
   }
-  class "External Schema" as ExternalSchema <<json: ExternalSchemaSchema>> [[../../../glossary/#cat-harness--platform--external-schema]] #e9edf3 {
+  class "External Schema" as ExternalSchema <<json: ExternalSchemaSchema>> [[../../../folio-assistant-core/glossary/instance/cat-harness/#cat-harness--platform--external-schema]] #e9edf3 {
     $schema [1] : 'folio-external-schema/v1'
     id [1] : string
     authority [1] : OMG | DCMI | W3C | IETF | ISO | HL7 | other
@@ -123,7 +123,7 @@ package schema {
 }
 
 package test {
-  class "Test Run" as TestRun <<json: TestRunSchema>> [[../../../glossary/#cat-harness--platform--test-run]] #f4e6e6 {
+  class "Test Run" as TestRun <<json: TestRunSchema>> [[../../../folio-assistant-core/glossary/instance/cat-harness/#cat-harness--platform--test-run]] #f4e6e6 {
     $schema [1] : 'folio-test-run/v1'
     skill [1] : string
     subject [1] : string
@@ -141,7 +141,7 @@ package test {
     sut.version [1] : string
     sut.reach [1] : internet | egress-restricted | air-gapped | unknown
   }
-  class "KG QA Report" as KgQaReport <<json: KgQaReportSchema>> [[../../../glossary/#cat-harness--platform--kg-qa-report]] #f4e6e6 {
+  class "KG QA Report" as KgQaReport <<json: KgQaReportSchema>> [[../../../folio-assistant-core/glossary/instance/cat-harness/#cat-harness--platform--kg-qa-report]] #f4e6e6 {
     $schema [1] : 'kg-qa/v1'
     {field} subject.kind [1] : enum(9)
     subject.id [1] : string
