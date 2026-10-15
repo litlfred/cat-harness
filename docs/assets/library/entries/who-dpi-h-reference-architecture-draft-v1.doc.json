@@ -2,6 +2,7 @@
   "$schema": "folio-library-document/v1",
   "id": "who-dpi-h-reference-architecture-draft-v1",
   "title": "who-dpi-h-reference-architecture-draft-v1",
+  "variant": "pdf",
   "pages": 254,
   "tocSource": "outline",
   "tocMethod": null,

@@ -2,6 +2,7 @@
   "$schema": "folio-library-document/v1",
   "id": "arxiv-2606.21008v3",
   "title": "The Metanym Game: An LLM Benchmark Without Ground Truth That Rises With the Models It Measures",
+  "variant": "pdf",
   "pages": 33,
   "tocSource": "outline",
   "tocMethod": null,
