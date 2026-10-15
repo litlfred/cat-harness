@@ -106,6 +106,14 @@ node_modules/
 /docs/en/cat-harness/health/who-iris/
 /docs/en/cat-harness/attestations/cat-harness/
 /docs/en/cat-harness/attestations/folio-assistant-sci/
+/docs/en/cat-harness/code/bootstrap-tools/
+/docs/en/cat-harness/code/cat-harness/
+/docs/en/cat-harness/code/cat-harness-tools/
+/docs/en/cat-harness/code/fhir-harness/
+/docs/en/cat-harness/code/folio-assistant-core/
+/docs/en/cat-harness/code/folio-assistant-sci/
+/docs/en/cat-harness/code/smart-base/
+/docs/en/cat-harness/code/who-iris/
 /docs/todos.json
 /docs/todos.jsonld
 /docs/todos/

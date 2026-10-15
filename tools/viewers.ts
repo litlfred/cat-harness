@@ -152,7 +152,7 @@ const VIEWERS: Viewer[] = [
     title: "State graph viewer",
     description: "Render each declared state graph with a projection as a dashboard page: what the work plan holds, and what state it is in.",
     script: "state:visualizer",
-    renders: ["beans", "todos", "issue-marks", "qa", "health", "attestations", "swimlane-glossary", "uploads"],
+    renders: ["beans", "todos", "issue-marks", "qa", "health", "attestations", "swimlane-glossary", "uploads", "code"],
   },
   {
     id: "translation-status-viewer",
