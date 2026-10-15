@@ -44,7 +44,7 @@ nav_exclude: true
 .sc-page input { flex: 1 1 180px; min-width: 0; }
 .sc-page ul#items { list-style: none; margin: 0; padding: 0 0 24px; max-height: 70vh; overflow: auto; }
 @media (max-width: 640px) {
-  #items { max-height: 35vh; }
+  .sc-page ul#items { max-height: 35vh; }
 }
 .sc-page #items > li { margin: 0; padding: 0; }
 .sc-page #items > li::before { content: none; }
@@ -67,9 +67,6 @@ nav_exclude: true
 .sc-page table { display: table; border-collapse: collapse; width: 100%; font-size: .86rem; margin: 8px 0 16px; }
 .sc-page th, .sc-page td { border: 0; background: transparent; text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
 .sc-page th { color: var(--muted); font-weight: 600; font-size: .76rem; text-transform: uppercase; letter-spacing: .04em; }
-td code { font-family: ui-monospace, Menlo, monospace; font-size: .82rem; word-break: normal; overflow-wrap: anywhere; }
-#detail table td code { word-break: normal; overflow-wrap: anywhere; }
-#detail table td:first-child code { white-space: nowrap; }
 .sc-page td code { font-family: ui-monospace, Menlo, monospace; font-size: .82rem; word-break: normal; overflow-wrap: anywhere; }
 .sc-page #detail table td code { word-break: normal; overflow-wrap: anywhere; }
 .sc-page #detail table td:first-child code { white-space: nowrap; }
@@ -98,7 +95,6 @@ td code { font-family: ui-monospace, Menlo, monospace; font-size: .82rem; word-b
 .sc-page .ov-body { padding: 0 16px 14px; }
 .sc-page .ov-cap { color: var(--muted); font-size: .8rem; margin: 0 0 8px; }
 .sc-page #ov-svg { width: 100%; height: auto; display: block; max-height: 78vh; }
-#ov-svg:empty { display: none; }
 .sc-page #ov-svg:empty { display: none; }
 .sc-page .dia-e { fill: none; stroke-width: 1.6; }
 .sc-page .dia-field { stroke: var(--accent); }
@@ -136,6 +132,16 @@ td code { font-family: ui-monospace, Menlo, monospace; font-size: .82rem; word-b
 .sc-page #nk-table td code, .sc-page #nk-table td .sub { white-space: nowrap; word-break: normal; }
 .sc-page #nk-table button { border: 0; background: none; padding: 0; color: var(--accent); cursor: pointer; text-decoration: underline; font: inherit; }
 .sc-page .tag.nk { color: var(--accent); border-color: var(--accent); }
+/* Source descriptors (bean folio-assistant-1nu0). Hidden until the
+   projection says this scope holds one, so a page with none shows no empty
+   panel claiming there is nothing to describe. */
+.sc-page #sources { border-bottom: 1px solid var(--line); }
+.sc-page #sources > summary { cursor: pointer; padding: 10px 16px; font-weight: 600; font-size: .9rem; list-style: revert; }
+.sc-page #sources > summary:hover { color: var(--accent); }
+.sc-page .src-wrap { overflow-x: auto; }
+.sc-page #src-table { margin: 0; }
+.sc-page #src-table td { min-width: 9em; }
+.sc-page #src-table td.how { min-width: 18em; }
 .sc-page .sc-page-subjects ul { list-style:none; display:flex; flex-wrap:wrap; gap:.25rem 1rem; margin:0 0 1rem; padding:0; font-size:.9rem; }
 .sc-page .sc-page-subjects li { margin:0; padding:0; }
 .sc-page .sc-page-subjects li::before { content:none; }
@@ -144,12 +150,22 @@ td code { font-family: ui-monospace, Menlo, monospace; font-size: .82rem; word-b
 <div class="sc-page">
 <div class="sc-head">
   <h1 id="sc-title">Schema graph</h1>
-  <nav class="sc-page-subjects" aria-label="Instances"><ul><li><a href="../">All instances</a></li><li><a href="../bootstrap/">bootstrap</a></li><li><span aria-current="page">bootstrap-tools</span></li><li><a href="../cat-harness/">cat-harness</a></li><li><a href="../fhir-harness/">fhir-harness</a></li><li><a href="../folio-assistant-core/">folio-assistant-core</a></li></ul></nav>
+  <nav class="sc-page-subjects" aria-label="Instances"><ul><li><a href="../">All instances</a></li><li><a href="../bootstrap/">bootstrap</a></li><li><span aria-current="page">bootstrap-tools</span></li><li><a href="../cat-harness/">cat-harness</a></li><li><a href="../fhir-harness/">fhir-harness</a></li><li><a href="../folio-assistant-core/">folio-assistant-core</a></li><li><a href="../folio-assistant-sci/">folio-assistant-sci</a></li><li><a href="../who-iris/">who-iris</a></li></ul></nav>
   <p class="counts" id="counts">loading…</p>
   <p class="counts" style="margin-top:4px">Diagrams show <strong>containment</strong> and
     <strong>generalisation</strong>. A reference carried as a string id is not drawn &mdash; it is
     invisible to a syntactic reader, not absent from the model.</p>
 </div>
+<details id="sources" open hidden>
+  <summary>Source descriptors &mdash; <span id="src-count">loading&hellip;</span></summary>
+  <div class="ov-body">
+    <p class="ov-cap">A <b>source descriptor</b> (<code>folio-source-descriptor/v1</code>) says how to enumerate a corpus
+      and ask it for a subset: what one node is, which identifiers it mints and which of them to resolve by, and how
+      the whole is listed. It is a node the <code>schemas</code> graph typology holds, not a declaration, so it is listed
+      here rather than among the declarations below.</p>
+    <div class="src-wrap"><table id="src-table"><thead><tr><th>source</th><th>node</th><th>how to enumerate</th><th>subset</th><th>identifiers</th><th>character</th></tr></thead><tbody id="src-rows"></tbody></table></div>
+  </div>
+</details>
 <details id="overview">
   <summary>Relationship diagram &mdash; what is defined here, and how it is linked</summary>
   <div class="ov-body">
@@ -466,6 +482,51 @@ function renderKinds() {
   }).join("") || '<tr><td colspan="4" class="empty">' +
     (all.length ? "No node kind matches the search." : "No node kind or family is defined in " + esc(SCOPE || "this graph") + ".") +
     "</td></tr>";
+}
+
+/* The source-descriptor table: scoped like the list, narrowed by the same
+   search. A scope holding descriptors and no modules shows ONLY the table:
+   an empty declaration list beside it would read as a page that failed. */
+function renderSources() {
+  var q = $("q") ? $("q").value.trim().toLowerCase() : "";
+  var all = (G.sources || []).filter(nkInScope);
+  $("sources").hidden = all.length === 0;
+  if (!all.length) return;
+  var rows = all.filter(function (r) {
+    if (!q) return true;
+    return [r.id, r.title, r.system, r.nodeKind, r.file].join(" ").toLowerCase().indexOf(q) >= 0;
+  });
+  $("src-count").textContent = rows.length + " of " + all.length + (SCOPE ? " held in " + SCOPE : "");
+  function n(x) { return typeof x === "number" ? x.toLocaleString("en") : ""; }
+  $("src-rows").innerHTML = rows.map(function (r) {
+    var e = r.enumeration;
+    var nums = e ? [
+      e.totalNodes !== undefined ? "<b>" + n(e.totalNodes) + "</b> nodes" : "total <b>unknown</b>",
+      e.pageSize !== undefined ? "page size " + n(e.pageSize) : "",
+      e.requests !== undefined ? "~" + n(e.requests) + " requests to list all" : "",
+    ].filter(Boolean).join(" &middot; ") : "";
+    var ids = (r.identifiers || []).map(function (i) {
+      return esc(i.name) + (i.authoritative ? ' <span class="tag nk">authoritative</span>' : "") +
+        (i.example ? '<br><span class="sub"><code>' + esc(i.example) + "</code></span>" : "");
+    }).join("<br>");
+    var c = r.character;
+    var ch = c ? [c.remote ? "remote" : "local", c.large ? "large" : "small", esc(c.volatility),
+      esc(c.availability), c.hasOwnSearch ? "has its own search" : "no search of its own"].join(", ") : "";
+    var head = "<b>" + esc(r.title || r.id) + "</b><br><code>" + esc(r.id) + "</code>" +
+      (r.system ? '<br><span class="sub">' + esc(r.system) + "</span>" : "") +
+      (r.baseUrl ? '<br><a href="' + esc(r.baseUrl) + '">' + esc(r.baseUrl) + "</a>" : "") +
+      (r.termsUrl ? '<br><a class="sub" href="' + esc(r.termsUrl) + '">terms</a>' : "") +
+      '<br><span class="sub">' + esc(r.file) + "</span>" +
+      (SCOPE || !r.instance ? "" : '<br><span class="sub">' + esc(r.instance) + "</span>");
+    if (r.note) {
+      return "<tr><td>" + head + '</td><td colspan="5"><p class="note">' + esc(r.note) + "</p></td></tr>";
+    }
+    return "<tr><td>" + head + "</td><td>" + esc(r.nodeKind || "") +
+      '</td><td class="how">' + (e ? esc(e.method) : "") + (nums ? '<br><span class="sub">' + nums + "</span>" : "") +
+      "</td><td>" + esc((r.subsetStrategies || []).join(", ")) +
+      '<br><span class="sub">' + (r.subsetIsSelfContained ? "self-contained" : "needs its dependency closure") + "</span>" +
+      "</td><td>" + ids + "</td><td>" + ch + "</td></tr>";
+  }).join("") || '<tr><td colspan="6" class="empty">No source descriptor matches the search.</td></tr>';
 }
 
 /** The three filter controls, read once so every caller sees one state. */
@@ -818,7 +879,17 @@ function render() {
     "<b>" + rows.length + "</b> of <b>" + scoped.length + "</b> declarations &middot; <b>" +
     mods.length + "</b> modules &middot; <b>" + edgeCount + "</b> edges &middot; <b>" +
     scoped.filter(function (d) { return d.kind === "undetermined"; }).length + "</b> undetermined";
+  var srcs = (G.sources || []).filter(nkInScope).length;
+  if (srcs) $("counts").innerHTML += " &middot; <b>" + srcs + "</b> source descriptor" + (srcs === 1 ? "" : "s");
+  /* A scope with descriptors and no modules has no declarations to browse:
+     the declaration panels are hidden rather than shown empty. */
+  var onlySources = srcs > 0 && mods.length === 0;
+  ["overview", "kinds"].forEach(function (id) { $(id).hidden = onlySources; });
+  /* style, not the hidden attribute: .sc-main sets display: grid, which
+     outranks the attribute's display: none. */
+  document.querySelector(".sc-page .sc-main").style.display = onlySources ? "none" : "";
   renderKinds();
+  renderSources();
 }
 
 function select(id) {
