@@ -950,7 +950,7 @@
     {"id": "folio", "renderedBy": "folio-viewer", "covers": ["folio"]},
     {"id": "auto-docs", "renderedBy": "auto-docs-viewer", "coversKinds": ["skills", "docs", "swimlane-glossary"], "subgraphs": "directory", "subgraphUnder": {"skills": "index/skills", "docs": "index/docs", "swimlane-glossary": "glossary"}},
     {"id": "processes", "renderedBy": "processes-viewer", "coversKinds": ["processes"], "alias": "processes"},
-    {"id": "tools", "renderedBy": "tools-viewer", "covers": ["tools"], "alias": "tools"},
+    {"id": "tools", "renderedBy": "tools-viewer", "coversKinds": ["tools"], "subgraphs": "instance", "alias": "tools"},
     {"id": "methodologies", "renderedBy": "methodologies-viewer", "coversKinds": ["methodology"], "alias": "methodologies"},
     {"id": "external-schemas", "renderedBy": "external-schemas-viewer", "covers": ["external-schemas"], "alias": "external-schemas"},
     {"id": "lsi", "renderedBy": "lsi-viewer", "covers": ["qa"], "title": "Latent semantic indexes", "alias": "lsi"},
