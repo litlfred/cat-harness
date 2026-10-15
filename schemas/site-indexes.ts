@@ -607,7 +607,21 @@ export const VoicesIndexSchema = z
 export const FolioGraphProjectionSchema = z
   .object({
     ...envelope("folio-graph-projection/v1"),
-    directories: z.array(z.object({ dir: z.string(), present: z.boolean(), nodes: Count }).strict()),
+    directories: z.array(
+      z
+        .object({
+          dir: z.string(),
+          present: z.boolean(),
+          nodes: Count,
+          /**
+           * The list view (bean ohx6): every file the directory holds, as the
+           * harness's own `folioFileList` answers, with a formatted size. Empty
+           * for an absent directory.
+           */
+          files: z.array(z.object({ path: z.string(), bytes: Count, size: z.string() }).strict()),
+        })
+        .strict(),
+    ),
     nodes: z.array(
       z
         .object({
