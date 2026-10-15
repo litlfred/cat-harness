@@ -39,6 +39,7 @@ rendered-by: folio-viewer
      the landing board; this is a view of the graph behind it.</p>
   <div id="badges"></div>
   <div id="dirs"></div>
+  <div id="files"></div>
   <div id="nodes"><p class="empty">loading…</p></div>
 </div>
 <script>
@@ -76,6 +77,21 @@ fetch(DATA_HREF).then(function(r){ if(!r.ok) throw new Error(r.status + " " + r.
         (d.present ? "present" : '<span class="pill warn">declared, absent</span>') +
         "</td><td>" + d.nodes + "</td></tr>";
     }).join("") + "</tbody></table>";
+
+  /* THE 'LIST' VIEW (bean ohx6): the folio as the files it holds, the same
+     list the harness's own page (folio/index.md) renders. Drawn before the
+     node table so it shows even when the folio has no stickies. */
+  $("files").innerHTML = '<h2 id="fo-files-head">List view: files</h2>' +
+    G.directories.map(function(d){
+      var files = d.files || [];
+      if (!d.present) return '<p class="empty"><code>' + esc(d.dir) + "</code> is declared but absent, so it holds no files.</p>";
+      if (files.length === 0) return '<p class="empty"><code>' + esc(d.dir) + "</code> holds no files.</p>";
+      return '<table aria-label="Files in ' + esc(d.dir) + '" aria-labelledby="fo-files-head">' +
+        "<caption>Files in <code>" + esc(d.dir) + "</code></caption>" +
+        "<thead><tr><th>file</th><th>size</th></tr></thead><tbody>" +
+        files.map(function(f){ return "<tr><td><code>" + esc(f.path) + "</code></td><td class="muted">" + esc(f.size) + "</td></tr>"; }).join("") +
+        "</tbody></table>";
+    }).join("");
 
   if (G.nodes.length === 0) {
     $("nodes").innerHTML = '<h2 id="fo-nodes-head">Folio nodes</h2>' +
