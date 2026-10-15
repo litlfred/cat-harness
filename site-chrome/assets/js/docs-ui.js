@@ -682,8 +682,9 @@
   function currentScheme() {
     var stored = storedScheme();
     if (stored === "light" || stored === "dark") return stored;
-    // WHAT THE FIRST-PAINT SNIPPET DECIDED (`head_custom.html`), before this
-    // deferred bundle existed: stored, else the OS, else dark. Asked second,
+    // WHAT THE FIRST-PAINT SNIPPET DECIDED (`head_custom.html`, the one
+    // source of the rule), before this deferred bundle existed: stored, else
+    // the OS, else light (owner, 2026-10-15). Asked second,
     // because a page that painted in a scheme must not be re-decided by a
     // later, weaker guess — that re-decision IS a flash.
     var painted = document.documentElement.getAttribute("data-fa-scheme");
@@ -692,7 +693,11 @@
       var t = window.jtd.getTheme();
       if (t === "light" || t === "dark") return t;
     }
-    return configuredScheme();
+    // No snippet ran (a page that carries neither it nor a stored choice):
+    // the same rule it applies -- the OS, else light. The site's declared
+    // scheme is only which sheet shipped first (`jtdShows`), never the
+    // reader's scheme.
+    return osScheme();
   }
 
   function applyScheme(name) {
