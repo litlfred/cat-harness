@@ -86,6 +86,12 @@ node_modules/
 /docs/assets/todos/count.json
 /docs/assets/todos/index.json
 /docs/assets/qa/index.json
+/docs/assets/folio/folio-assistant-core/
+/docs/assets/folio/who-iris/
+/docs/en/cat-harness/beans/cat-harness-tools/
+/docs/en/cat-harness/beans/folio-assistant-core/
+/docs/en/cat-harness/folio/folio-assistant-core/
+/docs/en/cat-harness/folio/who-iris/
 /docs/en/cat-harness/qa/cat-harness/
 /docs/en/cat-harness/qa/cat-harness-tools/
 /docs/en/cat-harness/qa/fhir-harness/
