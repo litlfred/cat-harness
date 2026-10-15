@@ -434,7 +434,12 @@ export const LibraryDocumentViewSchema = z
     $schema: z.literal("folio-library-document/v1"),
     id: z.string().min(1),
     title: z.string().nullable(),
-    pages: z.number().int(),
+    /** Which structure variant: only a PDF has pages and a TOC (library-document.ts). */
+    variant: z.enum(["pdf", "notebook", "text"]).optional(),
+    /** Unknown is not zero: an older ingestion records no page count. */
+    pages: z.number().int().nullable(),
+    /** When `pages` is unknown, the last page a section reaches. */
+    pagesCovered: z.number().int().optional(),
     tocSource: z.string().nullable(),
     tocMethod: z.string().nullable(),
     toc: z.array(
