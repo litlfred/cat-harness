@@ -677,6 +677,20 @@
     }
   }
 
+  /**
+   * Is just-the-docs' switchable sheet on THIS page? `jtd.setTheme` swaps the
+   * page's FIRST stylesheet. On a page the theme did not lay out, the theme's
+   * script can still be present — the top bar's search loads it (cat-harness-tools
+   * `lib/site-bar.ts`, 2026-10-15) — and its first stylesheet is the rail's
+   * own: swapped, the rail lost its style. So the switch is the theme's only
+   * where its sheet comes first.
+   */
+  function themeSheet() {
+    if (!window.jtd || typeof window.jtd.setTheme !== "function" || typeof window.jtd.getTheme !== "function") return false;
+    var first = document.querySelector('[rel="stylesheet"]');
+    return !!first && /just-the-docs-[a-z]+\.css/.test(first.getAttribute("href") || "");
+  }
+
   function osScheme() {
     try {
       return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -699,7 +713,7 @@
     // later, weaker guess — that re-decision IS a flash.
     var painted = document.documentElement.getAttribute("data-fa-scheme");
     if (painted === "light" || painted === "dark") return painted;
-    if (window.jtd && typeof window.jtd.getTheme === "function") {
+    if (themeSheet()) {
       var t = window.jtd.getTheme();
       if (t === "light" || t === "dark") return t;
     }
@@ -715,7 +729,7 @@
     // own sheet, which follows `data-fa-scheme` (`lib/scheme-css.ts`), so the
     // attribute alone IS the switch there. Owner, 2026-10-05, on smart-ra:
     // the light bulb did nothing, because this returned before setting it.
-    if (!window.jtd || typeof window.jtd.setTheme !== "function") {
+    if (!themeSheet()) {
       document.documentElement.setAttribute("data-fa-scheme", name);
       return true;
     }
@@ -782,7 +796,7 @@
     // choice — because the first-paint snippet may have decided from the OS.
     // `applyScheme` leaves a sheet that already shows the scheme alone, so
     // this costs no swap in the common case.
-    if (window.jtd && typeof window.jtd.setTheme === "function") applyScheme(scheme);
+    if (themeSheet()) applyScheme(scheme);
     else document.documentElement.setAttribute("data-fa-scheme", scheme);
   }
 
