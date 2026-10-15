@@ -35,9 +35,9 @@ So each record answers three questions — **which edition**, **what here
 depends on it**, and **which of its terms this repository branches on**.
 
 <div class="xs-grid">
-<div class="xs-stat"><b>26</b><span>specifications</span></div>
+<div class="xs-stat"><b>28</b><span>specifications</span></div>
 <div class="xs-stat"><b>107</b><span>operative terms in graph (65 described, 42 pending)</span></div>
-<div class="xs-stat"><b>271</b><span>declared uses</span></div>
+<div class="xs-stat"><b>281</b><span>declared uses</span></div>
 <div class="xs-stat"><b>0</b><span>declarations naming no record</span></div>
 </div>
 
@@ -54,8 +54,10 @@ depends on it**, and **which of its terms this repository branches on**.
 | **[Diagram Definition (DD)](#omg-dd-1.0)**<br>`omg-dd-1.0` | OMG | [1.0](https://www.omg.org/spec/DD/1.0/) | `conforms` — this repository's artefacts are valid against it |
 | **[Decision Model and Notation (DMN)](#omg-dmn-1.3)**<br>`omg-dmn-1.3` | OMG | [1.3](https://www.omg.org/spec/DMN/1.3/) | `conforms` — this repository's artefacts are valid against it |
 | **[ArchiMate® Model Exchange File Format](#opengroup-archimate-3.0)**<br>`opengroup-archimate-3.0` | other | [3.0](https://www.opengroup.org/xsd/archimate/) | `reads` — this repository parses documents written in it |
+| **[The Bibliographic Ontology (BIBO)](#purl-bibo)**<br>`purl-bibo` | other | [unpinned](http://purl.org/ontology/bibo/) | `conforms` — this repository's artefacts are valid against it |
 | **[Schema.org](#schema-org)**<br>`schema-org` | other | [unpinned](https://schema.org/) | `conforms` — this repository's artefacts are valid against it |
 | **[SPAR Ontologies: DoCO, DEO and CiTO](#spar-doco-deo-cito)**<br>`spar-doco-deo-cito` | other | [unpinned](http://www.sparontologies.net/) | `conforms` — this repository's artefacts are valid against it |
+| **[SPAR Ontologies: FaBiO, the FRBR-aligned Bibliographic Ontology](#spar-fabio)**<br>`spar-fabio` | other | [unpinned](http://www.sparontologies.net/ontologies/fabio) | `conforms` — this repository's artefacts are valid against it |
 | **[SPDX License List](#spdx-license-list)**<br>`spdx-license-list` | other | [3.29.0](https://spdx.org/licenses/) | `reads` — this repository parses documents written in it |
 | **[Metadata Vocabulary for Tabular Data](#w3c-csvw)**<br>`w3c-csvw` | W3C | [2015-12-17](https://www.w3.org/TR/tabular-metadata/) | `conforms` — this repository's artefacts are valid against it |
 | **[Hydra Core Vocabulary](#w3c-hydra)**<br>`w3c-hydra` | W3C | [unpinned](https://www.hydra-cg.com/spec/latest/core/) | `conforms` — this repository's artefacts are valid against it |
@@ -85,9 +87,14 @@ declares the spec (bean `u63y`).
 
 Every declaration names a record on this page.
 
+**2 record(s) nothing declares.** A version bump would move nothing that says so:
+
+- [`purl-bibo`](#purl-bibo)
+- [`spar-fabio`](#spar-fabio)
+
 ## Namespaces the corpus uses against the ones it declares
 
-Read from diagram files (BPMN and DMN), metadata records, and JSON-LD contexts — **31** namespace IRI(s)
+Read from diagram files (BPMN and DMN), metadata records, and JSON-LD contexts — **33** namespace IRI(s)
 are in use across the corpus. Derived rather than listed, so an artefact that adopts a new
 vocabulary shows up here instead of going unnoticed.
 
@@ -238,14 +245,14 @@ The `MODEL#` form is the RDF spelling of the same namespace: OMG publishes no RD
 | `cat-harness/processes/process/*.bpmn (13)` | `xmlns` binding |
 | `cat-harness/processes/sdlc/*.bpmn (27)` | `xmlns` binding |
 | `cat-harness/processes/ui/*.bpmn (4)` | `xmlns` binding |
-| `fhir-harness/processes/content/*.bpmn (3)` | `xmlns` binding |
+| `fhir-harness/processes/content/*.bpmn (5)` | `xmlns` binding |
 | `folio-assistant-core/processes/conduct/*.bpmn (1)` | `xmlns` binding |
 | `folio-assistant-core/processes/content/*.bpmn (7)` | `xmlns` binding |
 | `folio-assistant-core/processes/library/*.bpmn (6)` | `xmlns` binding |
 | `folio-assistant-core/processes/ui/*.bpmn (3)` | `xmlns` binding |
 | `folio-assistant-sci/processes/content/*.bpmn (3)` | `xmlns` binding |
 | `smart-base/methodologies/processes/*.bpmn (1)` | `xmlns` binding |
-| `smart-base/processes/content/*.bpmn (2)` | `xmlns` binding |
+| `smart-base/processes/content/*.bpmn (5)` | `xmlns` binding |
 
 **Operative terms (21).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
@@ -299,14 +306,14 @@ a subset of the edition rather than a transcription of it.
 | `cat-harness/processes/process/*.bpmn (13)` | `xmlns` binding |
 | `cat-harness/processes/sdlc/*.bpmn (27)` | `xmlns` binding |
 | `cat-harness/processes/ui/*.bpmn (4)` | `xmlns` binding |
-| `fhir-harness/processes/content/*.bpmn (3)` | `xmlns` binding |
+| `fhir-harness/processes/content/*.bpmn (5)` | `xmlns` binding |
 | `folio-assistant-core/processes/conduct/*.bpmn (1)` | `xmlns` binding |
 | `folio-assistant-core/processes/content/*.bpmn (7)` | `xmlns` binding |
 | `folio-assistant-core/processes/library/*.bpmn (6)` | `xmlns` binding |
 | `folio-assistant-core/processes/ui/*.bpmn (3)` | `xmlns` binding |
 | `folio-assistant-sci/processes/content/*.bpmn (3)` | `xmlns` binding |
 | `smart-base/methodologies/processes/*.bpmn (1)` | `xmlns` binding |
-| `smart-base/processes/content/*.bpmn (2)` | `xmlns` binding |
+| `smart-base/processes/content/*.bpmn (5)` | `xmlns` binding |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -354,6 +361,20 @@ graph. That is a determined zero, not an unfilled field.
 |---|---|
 | `cat-harness-tools/archimate/scripts/gen-archimate-pages.ts` | `@conformsTo` tag |
 | `cat-harness/archimate/schemas/archimate.ts` | `@conformsTo` tag |
+
+**No operative terms.** This repository conforms to the specification
+without branching on any of its terms, so none is materialised into the
+graph. That is a determined zero, not an unfilled field.
+
+### The Bibliographic Ontology (BIBO) {#purl-bibo}
+
+`purl-bibo` — other, edition [unpinned](http://purl.org/ontology/bibo/) — `conforms`, meaning this repository's artefacts are valid against it.
+
+**Namespaces.**
+
+- `http://purl.org/ontology/bibo/`
+
+**What depends on it.** Nothing here declares it.
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -422,6 +443,20 @@ a subset of the edition rather than a transcription of it.
 | `doco:Formula` | *(pending description)* |
 | `doco:Section` | *(pending description)* |
 | `doco:Table` | *(pending description)* |
+
+### SPAR Ontologies: FaBiO, the FRBR-aligned Bibliographic Ontology {#spar-fabio}
+
+`spar-fabio` — other, edition [unpinned](http://www.sparontologies.net/ontologies/fabio) — `conforms`, meaning this repository's artefacts are valid against it.
+
+**Namespaces.**
+
+- `http://purl.org/spar/fabio/`
+
+**What depends on it.** Nothing here declares it.
+
+**No operative terms.** This repository conforms to the specification
+without branching on any of its terms, so none is materialised into the
+graph. That is a determined zero, not an unfilled field.
 
 ### SPDX License List {#spdx-license-list}
 
