@@ -12,6 +12,7 @@ import { describe, expect, test } from "bun:test";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
+import { Liquid } from "liquidjs";
 import { parse as parseYaml } from "yaml";
 
 import { siteChromeDirFor, siteDirFor, siteFileFor, siteLayersFor } from "./cat-harness.js";
@@ -128,5 +129,80 @@ describe("cat-harness's own site chrome", () => {
     expect(docs.title).toBeDefined();
     // Lists replace, so the overlay restates what the chrome excludes.
     for (const x of chrome.exclude as string[]) expect(docs.exclude as string[]).toContain(x);
+  });
+});
+
+/**
+ * The theme's markup passes must not reach raw-text elements (owner's report,
+ * 2026-10-15: /en/cat-harness/schemas/bootstrap/ never loaded). just-the-docs
+ * rewrites every `<hN>` in a page's content (`vendor/anchor_headings.html`)
+ * and every `<table` in the whole page (`table_wrappers.html`) by string
+ * replacement, so a generator that builds HTML in an inline script had its
+ * string literals broken and the script did not parse. The chrome overrides
+ * both to leave `<script>` and `<style>` bodies alone. Rendered here with
+ * liquidjs, Jekyll-include mode: the same Liquid, not the same engine, so the
+ * local Jekyll build in the PR is the other half of the evidence.
+ */
+describe("the theme's markup passes leave <script> and <style> alone", () => {
+  const chrome = join(HARNESS, siteChromeDirFor(HARNESS));
+  const engine = new Liquid({ root: join(chrome, "_includes"), jekyllInclude: true, extname: "" });
+  // The theme's own call, from its `_layouts/default.html`, less the svg.
+  const call = (file: string) =>
+    `{% include ${file} html=content beforeHeading="true" anchorBody="#" anchorClass="anchor-heading" anchorAttrs="data-x" %}`;
+  const anchored = (content: string, file = "vendor/anchor_headings.html") => engine.parseAndRender(call(file), { content });
+  const tableWrappers = (content: string) =>
+    engine.parseAndRender(readFileSync(join(chrome, "_layouts/table_wrappers.html"), "utf-8").replace(/^---\n[\s\S]*?\n---\n/, ""), { content });
+  /** Every inline classic script in `html`, and whether it parses. */
+  const scripts = (html: string) =>
+    [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].map((m) => {
+      try {
+        new Function(m[1]);
+        return { body: m[1], parses: true };
+      } catch {
+        return { body: m[1], parses: false };
+      }
+    });
+
+  // What gen-schema-viz.ts emits, cut down: HTML built in JavaScript.
+  const script = `<script>\nvar h = '<h2>' + esc(d.name) + '</h2><p class="sub">';\nh += "<table><caption class=\\"sub\\">Fields</caption></table>";\nvar s = "<script" + ">";\n</script>`;
+  const style = `<style>\n/* <h4>not a heading</h4> <table> */ .a { color: red }\n</style>`;
+  const page = `<h2 id="one">One</h2>\n<p>x</p>\n${script}\nafter text <h3 id="two">Two</h3>\n${style}\n<h4 id="three">Three</h4>`;
+
+  test("the theme's pass alone breaks the script (the defect, reproduced)", async () => {
+    const out = await anchored(page, "vendor/anchor_headings_core.html");
+    expect(scripts(out).some((s) => !s.parses)).toBe(true);
+    expect(scripts(out)[0].body).toContain("anchor-heading");
+  });
+
+  test("anchor_headings: script and style bodies come through byte for byte; every heading outside them is anchored", async () => {
+    const out = await anchored(page);
+    expect(out).toContain(script);
+    expect(out).toContain(style);
+    expect(scripts(out).every((s) => s.parses)).toBe(true);
+    for (const id of ["one", "two", "three"]) expect(out).toContain(`<a href="#${id}" class="anchor-heading" data-x>#</a>`);
+    // The text before a heading is not read as a heading's tail ("<hafter").
+    expect(out).toContain("after text ");
+    expect(out).not.toContain("<hafter");
+  });
+
+  test("anchor_headings: content with no script or style is exactly the theme's pass", async () => {
+    const plain = `<h1 id="a">A</h1>\n<p>p</p>\n<h2 id="b">B <code>c</code></h2>\n<hr>\n<h3>no id</h3>`;
+    expect(await anchored(plain)).toBe(await anchored(plain, "vendor/anchor_headings_core.html"));
+  });
+
+  test("table_wrappers: tables outside raw text are wrapped, the script's are not", async () => {
+    const whole = `<!DOCTYPE html>\n<html><head>${style}</head><body>\n<table><tr><td>1</td></tr></table>\n${script}\n</body></html>`;
+    const out = await tableWrappers(whole);
+    expect(out).toContain(script);
+    expect(out).toContain(style);
+    expect(out).toContain(`<div class="table-wrapper"><table><tr><td>1</td></tr></table></div>`);
+    expect(out.match(/table-wrapper/g)?.length).toBe(1);
+    expect(scripts(out).every((s) => s.parses)).toBe(true);
+  });
+
+  test("the theme's include is kept, renamed, for the override to call", () => {
+    const core = readFileSync(join(chrome, "_includes/vendor/anchor_headings_core.html"), "utf-8");
+    expect(core).toContain("https://github.com/allejo/jekyll-anchor-headings");
+    expect(readFileSync(join(chrome, "_includes/vendor/anchor_headings.html"), "utf-8")).toContain("include vendor/anchor_headings_core.html");
   });
 });
