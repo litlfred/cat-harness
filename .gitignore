@@ -77,6 +77,7 @@ node_modules/
 /docs/ru/folio-assistant-core/
 /docs/zh/folio-assistant-core/
 /docs/smart-base/
+/ns/context/v1.jsonld
 /docs/_data/harness.json
 /docs/_includes/generated/navbar-footer.html
 /site-chrome/assets/css/avatars.css
