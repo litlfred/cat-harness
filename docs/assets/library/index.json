@@ -2842,7 +2842,7 @@
       "bytes": 79309,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/fhir-harness/library/cucumber-2024-gherkin-reference/README.md",
+      "readme": "https://github.com/litlfred/fhir-harness/blob/main/library/cucumber-2024-gherkin-reference/README.md",
       "referencedBy": [],
       "summaries": {
         "prose": 21,
@@ -2886,7 +2886,7 @@
       "bytes": 110993,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/fhir-harness/library/hl7-2023-fhir-r5-testplan/README.md",
+      "readme": "https://github.com/litlfred/fhir-harness/blob/main/library/hl7-2023-fhir-r5-testplan/README.md",
       "referencedBy": [],
       "summaries": {
         "prose": 15,
@@ -2930,7 +2930,7 @@
       "bytes": 98793,
       "upload": "differs",
       "uploadInstance": "who-iris",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/fhir-harness/library/isaitb-2026-interoperability-test-bed-readme/README.md",
+      "readme": "https://github.com/litlfred/fhir-harness/blob/main/library/isaitb-2026-interoperability-test-bed-readme/README.md",
       "referencedBy": [],
       "summaries": {
         "prose": 26,
@@ -2974,7 +2974,7 @@
       "bytes": 6687632,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-core/library/arxiv-2510.21603v1/README.md",
+      "readme": "https://github.com/litlfred/folio-assistant-core/blob/main/library/arxiv-2510.21603v1/README.md",
       "avatar": {
         "href": "/assets/library/avatars/folio-assistant-core/arxiv-2510.21603v1.png",
         "src": "folio-assistant-core/library/arxiv-2510.21603v1/images/img-p002-1.png",
@@ -3023,7 +3023,7 @@
       "bytes": 3951227,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-sci/library/arxiv-2003.08005v1/README.md",
+      "readme": "https://github.com/litlfred/folio-assistant-sci/blob/main/library/arxiv-2003.08005v1/README.md",
       "referencedBy": [],
       "summaries": {
         "prose": 2,
@@ -3067,7 +3067,7 @@
       "bytes": 381209,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-sci/library/arxiv-2406.01940v2/README.md",
+      "readme": "https://github.com/litlfred/folio-assistant-sci/blob/main/library/arxiv-2406.01940v2/README.md",
       "avatar": {
         "href": "/assets/library/avatars/folio-assistant-sci/arxiv-2406.01940v2.png",
         "src": "folio-assistant-sci/library/arxiv-2406.01940v2/images/img-p002-7.png",
@@ -3116,7 +3116,7 @@
       "bytes": 5475221,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-sci/library/arxiv-2512.09874v3/README.md",
+      "readme": "https://github.com/litlfred/folio-assistant-sci/blob/main/library/arxiv-2512.09874v3/README.md",
       "referencedBy": [],
       "summaries": {
         "prose": 1,
@@ -3160,7 +3160,7 @@
       "bytes": 1681902,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-sci/library/arxiv-2601.22554v1/README.md",
+      "readme": "https://github.com/litlfred/folio-assistant-sci/blob/main/library/arxiv-2601.22554v1/README.md",
       "referencedBy": [],
       "summaries": {
         "prose": 17,
@@ -3204,7 +3204,7 @@
       "bytes": 211962,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-sci/library/arxiv-2602.16554v1/README.md",
+      "readme": "https://github.com/litlfred/folio-assistant-sci/blob/main/library/arxiv-2602.16554v1/README.md",
       "referencedBy": [],
       "summaries": {
         "prose": 15,
@@ -3248,7 +3248,7 @@
       "bytes": 2224533,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-sci/library/arxiv-2604.00554v1/README.md",
+      "readme": "https://github.com/litlfred/folio-assistant-sci/blob/main/library/arxiv-2604.00554v1/README.md",
       "referencedBy": [],
       "summaries": {
         "prose": 30,
@@ -3292,7 +3292,7 @@
       "bytes": 75216,
       "upload": "unknown",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-sci/library/codata-2022/README.md",
+      "readme": "https://github.com/litlfred/folio-assistant-sci/blob/main/library/codata-2022/README.md",
       "referencedBy": [],
       "summaries": {
         "prose": 0,
@@ -3336,7 +3336,7 @@
       "bytes": 120618,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/folio-assistant-sci/library/milnorlink/README.md",
+      "readme": "https://github.com/litlfred/folio-assistant-sci/blob/main/library/milnorlink/README.md",
       "referencedBy": [
         {
           "kind": "skills",
@@ -3387,7 +3387,7 @@
       "bytes": 13051173,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/smart-base/library/9789240010567-eng/README.md",
+      "readme": "https://github.com/litlfred/smart-base/blob/main/smart-base/library/9789240010567-eng/README.md",
       "referencedBy": [
         {
           "kind": "docs",
@@ -3444,7 +3444,7 @@
       "bytes": 620280,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/smart-base/library/9789240081949-eng/README.md",
+      "readme": "https://github.com/litlfred/smart-base/blob/main/smart-base/library/9789240081949-eng/README.md",
       "avatar": {
         "href": "/assets/library/avatars/smart-base/9789240081949-eng.png",
         "src": "smart-base/library/9789240081949-eng/images/img-p001-1.png",
@@ -3500,7 +3500,7 @@
       "bytes": 4458906,
       "upload": "match",
       "uploadInstance": "folio-assistant-core",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/smart-base/library/9789240093362-eng/README.md",
+      "readme": "https://github.com/litlfred/smart-base/blob/main/smart-base/library/9789240093362-eng/README.md",
       "avatar": {
         "href": "/assets/library/avatars/smart-base/9789240093362-eng.png",
         "src": "smart-base/library/9789240093362-eng/images/img-p001-1.png",
@@ -3562,7 +3562,7 @@
       "bytes": 4936851,
       "upload": "match",
       "uploadInstance": "folio-assistant-core",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/smart-base/library/9789240101197-eng/README.md",
+      "readme": "https://github.com/litlfred/smart-base/blob/main/smart-base/library/9789240101197-eng/README.md",
       "avatar": {
         "href": "/assets/library/avatars/smart-base/9789240101197-eng.png",
         "src": "smart-base/library/9789240101197-eng/images/img-p043-1.png",
@@ -3624,7 +3624,7 @@
       "bytes": 2569740,
       "upload": "match",
       "uploadInstance": "folio-assistant-core",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/smart-base/library/9789240116191-eng/README.md",
+      "readme": "https://github.com/litlfred/smart-base/blob/main/smart-base/library/9789240116191-eng/README.md",
       "links": [
         {
           "label": "l1-extraction/l1.json",
@@ -3696,7 +3696,7 @@
       "bytes": 1555295,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/smart-base/library/9789240120747-eng/README.md",
+      "readme": "https://github.com/litlfred/smart-base/blob/main/smart-base/library/9789240120747-eng/README.md",
       "referencedBy": [],
       "summaries": {
         "prose": 72,
@@ -3740,7 +3740,7 @@
       "bytes": 13827189,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/smart-base/library/9789241509510-eng/README.md",
+      "readme": "https://github.com/litlfred/smart-base/blob/main/smart-base/library/9789241509510-eng/README.md",
       "avatar": {
         "href": "/assets/library/avatars/smart-base/9789241509510-eng.png",
         "src": "smart-base/library/9789241509510-eng/images/img-p001-1.png",
@@ -3789,7 +3789,7 @@
       "bytes": 14413170,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/smart-base/library/9789241511766-eng/README.md",
+      "readme": "https://github.com/litlfred/smart-base/blob/main/smart-base/library/9789241511766-eng/README.md",
       "referencedBy": [],
       "summaries": {
         "prose": 144,
@@ -3833,7 +3833,7 @@
       "bytes": 71175,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/smart-base/library/mehl-2021-who-smart-guidelines/README.md",
+      "readme": "https://github.com/litlfred/smart-base/blob/main/smart-base/library/mehl-2021-who-smart-guidelines/README.md",
       "referencedBy": [],
       "summaries": {
         "prose": 2,
@@ -3877,7 +3877,7 @@
       "bytes": 4833,
       "upload": "unknown",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/smart-base/library/smart-trust/README.md",
+      "readme": "https://github.com/litlfred/smart-base/blob/main/smart-base/library/smart-trust/README.md",
       "links": [
         {
           "label": "published IG",
@@ -3931,7 +3931,7 @@
       "bytes": 5116528,
       "upload": "match",
       "uploadInstance": "folio-assistant-core",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/smart-base/library/who-dpi-h-reference-architecture-draft-v1/README.md",
+      "readme": "https://github.com/litlfred/smart-base/blob/main/smart-base/library/who-dpi-h-reference-architecture-draft-v1/README.md",
       "referencedBy": [
         {
           "kind": "docs",
@@ -3988,7 +3988,7 @@
       "bytes": 148194,
       "upload": "absent",
       "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/smart-base/library/who-rhr-1806-eng/README.md",
+      "readme": "https://github.com/litlfred/smart-base/blob/main/smart-base/library/who-rhr-1806-eng/README.md",
       "referencedBy": [
         {
           "kind": "skills",
@@ -4010,55 +4010,6 @@
         "empty": 0
       },
       "view": "/en/cat-harness/library/smart-base/who-rhr-1806-eng/"
-    },
-    {
-      "id": "arxiv-2510.21603v1",
-      "instance": "who-iris",
-      "dir": "who-iris/folio-assistant-core/library/arxiv-2510.21603v1",
-      "title": "Doc-Researcher: A Unified System for Multimodal Document Parsing and Deep Research",
-      "provenance": "ingested",
-      "rung": "paged",
-      "docId": "arxiv-2510.21603v1",
-      "sourceFile": "dong-2025-doc-researcher.pdf",
-      "sourceSha256": "edc03be2ad64077b4e84aa6c64e07ce7c6e2ea20e7a89412073d358245e9f9d3",
-      "arxiv": "2510.21603v1",
-      "doi": "",
-      "documentClass": "",
-      "sections": 22,
-      "blocks": 68,
-      "images": 50,
-      "ocrPages": 0,
-      "hasOcr": false,
-      "hasManifest": true,
-      "hasStructure": true,
-      "hasImagesJson": true,
-      "pageStart": 1,
-      "pageEnd": 13,
-      "words": 11541,
-      "chars": 78564,
-      "bytes": 6687631,
-      "upload": "absent",
-      "uploadInstance": "",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/who-iris/folio-assistant-core/library/arxiv-2510.21603v1/README.md",
-      "avatar": {
-        "href": "/assets/library/avatars/who-iris/arxiv-2510.21603v1.png",
-        "src": "who-iris/folio-assistant-core/library/arxiv-2510.21603v1/images/img-p002-1.png",
-        "source": "figure"
-      },
-      "referencedBy": [],
-      "summaries": {
-        "prose": 22,
-        "summarised": 0,
-        "backlog": 22,
-        "draft": 0,
-        "confirmed": 0,
-        "stale": 0,
-        "rejected": 0,
-        "notSummarised": 22,
-        "unreadable": 0,
-        "empty": 0
-      },
-      "view": "/en/cat-harness/library/who-iris/arxiv-2510.21603v1/"
     },
     {
       "id": "9789241548960-eng",
@@ -4088,7 +4039,7 @@
       "bytes": 1531083,
       "upload": "match",
       "uploadInstance": "who-iris",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/who-iris/library/9789241548960-eng/README.md",
+      "readme": "https://github.com/litlfred/who-iris/blob/main/library/9789241548960-eng/README.md",
       "avatar": {
         "href": "/assets/library/avatars/who-iris/9789241548960-eng.png",
         "src": "who-iris/library/9789241548960-eng-cover.png",
@@ -4150,7 +4101,7 @@
       "bytes": 785278,
       "upload": "match",
       "uploadInstance": "who-iris",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/who-iris/library/who-pub-tps-931/README.md",
+      "readme": "https://github.com/litlfred/who-iris/blob/main/library/who-pub-tps-931/README.md",
       "avatar": {
         "href": "/assets/library/avatars/who-iris/who-pub-tps-931.png",
         "src": "who-iris/library/who-pub-tps-931-cover.png",
@@ -4212,7 +4163,7 @@
       "bytes": 4292749,
       "upload": "match",
       "uploadInstance": "who-iris",
-      "readme": "https://github.com/litlfred/folio-assistant/blob/main/who-iris/library/wpr-rdo-2020-003-eng/README.md",
+      "readme": "https://github.com/litlfred/who-iris/blob/main/library/wpr-rdo-2020-003-eng/README.md",
       "avatar": {
         "href": "/assets/library/avatars/who-iris/wpr-rdo-2020-003-eng.png",
         "src": "who-iris/library/wpr-rdo-2020-003-eng-cover.png",
