@@ -132,6 +132,34 @@ nav_exclude: true
     }
   },
   {
+    &quot;id&quot;: &quot;dak-data-dictionary&quot;,
+    &quot;parents&quot;: [],
+    &quot;subclasses&quot;: [],
+    &quot;declaredBy&quot;: &quot;smart-base&quot;,
+    &quot;module&quot;: &quot;smart-base/schemas/dak-annexes.ts&quot;,
+    &quot;exportName&quot;: &quot;DakDataDictionaryAnnexKind&quot;,
+    &quot;holdings&quot;: [
+      {
+        &quot;typology&quot;: &quot;dak-annex&quot;,
+        &quot;family&quot;: &quot;dak-data-dictionary/v1&quot;
+      }
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;dak-swimlanes&quot;,
+    &quot;parents&quot;: [],
+    &quot;subclasses&quot;: [],
+    &quot;declaredBy&quot;: &quot;smart-base&quot;,
+    &quot;module&quot;: &quot;smart-base/schemas/dak-annexes.ts&quot;,
+    &quot;exportName&quot;: &quot;DakSwimlaneMapKind&quot;,
+    &quot;holdings&quot;: [
+      {
+        &quot;typology&quot;: &quot;dak-annex&quot;,
+        &quot;family&quot;: &quot;dak-swimlanes/v1&quot;
+      }
+    ]
+  },
+  {
     &quot;id&quot;: &quot;document-kind&quot;,
     &quot;version&quot;: &quot;1.0.0&quot;,
     &quot;tag&quot;: &quot;document-kind/1.0.0&quot;,
@@ -160,6 +188,90 @@ nav_exclude: true
       {
         &quot;typology&quot;: &quot;document-kinds&quot;,
         &quot;family&quot;: &quot;document-kind-coverage/1.0.0&quot;
+      }
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;folio-editor-checker&quot;,
+    &quot;parents&quot;: [],
+    &quot;subclasses&quot;: [],
+    &quot;declaredBy&quot;: &quot;folio-assistant-sci&quot;,
+    &quot;module&quot;: &quot;folio-assistant-sci/schemas/editor-checker.ts&quot;,
+    &quot;exportName&quot;: &quot;EditorCheckerKind&quot;,
+    &quot;holdings&quot;: [
+      {
+        &quot;typology&quot;: &quot;editor-checkers&quot;,
+        &quot;family&quot;: &quot;folio-editor-checker/v1&quot;
+      }
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;folio-ig-artifact-index-jsonld&quot;,
+    &quot;parents&quot;: [],
+    &quot;subclasses&quot;: [],
+    &quot;declaredBy&quot;: &quot;fhir-harness&quot;,
+    &quot;module&quot;: &quot;fhir-harness/schemas/ig-artifact-jsonld.ts&quot;,
+    &quot;exportName&quot;: &quot;IgArtifactIndexJsonLdKind&quot;,
+    &quot;holdings&quot;: [
+      {
+        &quot;typology&quot;: &quot;ig-artifact-jsonld&quot;,
+        &quot;family&quot;: &quot;folio-ig-artifact-index-jsonld/v1&quot;
+      }
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;folio-ig-artifact-jsonld&quot;,
+    &quot;parents&quot;: [],
+    &quot;subclasses&quot;: [],
+    &quot;declaredBy&quot;: &quot;fhir-harness&quot;,
+    &quot;module&quot;: &quot;fhir-harness/schemas/ig-artifact-jsonld.ts&quot;,
+    &quot;exportName&quot;: &quot;IgArtifactJsonLdKind&quot;,
+    &quot;holdings&quot;: [
+      {
+        &quot;typology&quot;: &quot;ig-artifact-jsonld&quot;,
+        &quot;family&quot;: &quot;folio-ig-artifact-jsonld/v1&quot;
+      }
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;folio-reference&quot;,
+    &quot;parents&quot;: [],
+    &quot;subclasses&quot;: [],
+    &quot;declaredBy&quot;: &quot;folio-assistant-core&quot;,
+    &quot;module&quot;: &quot;folio-assistant-core/schemas/reference.ts&quot;,
+    &quot;exportName&quot;: &quot;ReferenceKind&quot;,
+    &quot;holdings&quot;: [
+      {
+        &quot;typology&quot;: &quot;references&quot;,
+        &quot;family&quot;: &quot;folio-reference/v1&quot;
+      }
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;folio-slice-index&quot;,
+    &quot;parents&quot;: [],
+    &quot;subclasses&quot;: [],
+    &quot;declaredBy&quot;: &quot;cat-harness-tools&quot;,
+    &quot;module&quot;: &quot;cat-harness-tools/scripts/gen-slice-sqlite.ts&quot;,
+    &quot;exportName&quot;: &quot;SliceIndexKind&quot;,
+    &quot;holdings&quot;: [
+      {
+        &quot;typology&quot;: &quot;docs&quot;,
+        &quot;family&quot;: &quot;folio-slice-index/v1&quot;
+      }
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;folio-slice-sqlite&quot;,
+    &quot;parents&quot;: [],
+    &quot;subclasses&quot;: [],
+    &quot;declaredBy&quot;: &quot;cat-harness-tools&quot;,
+    &quot;module&quot;: &quot;cat-harness-tools/scripts/gen-slice-sqlite.ts&quot;,
+    &quot;exportName&quot;: &quot;SliceManifestKind&quot;,
+    &quot;holdings&quot;: [
+      {
+        &quot;typology&quot;: &quot;docs&quot;,
+        &quot;family&quot;: &quot;folio-slice-sqlite/v1&quot;
       }
     ]
   },
@@ -200,6 +312,20 @@ nav_exclude: true
       &quot;module&quot;: &quot;folio-assistant-core/scripts/public-comment-pages.ts&quot;,
       &quot;exportName&quot;: &quot;PublicCommentPages&quot;
     }
+  },
+  {
+    &quot;id&quot;: &quot;qa-script&quot;,
+    &quot;parents&quot;: [],
+    &quot;subclasses&quot;: [],
+    &quot;declaredBy&quot;: &quot;cat-harness&quot;,
+    &quot;module&quot;: &quot;cat-harness/schemas/block-qa.ts&quot;,
+    &quot;exportName&quot;: &quot;QaScriptKind&quot;,
+    &quot;holdings&quot;: [
+      {
+        &quot;typology&quot;: &quot;qa&quot;,
+        &quot;family&quot;: &quot;qa-script/v1&quot;
+      }
+    ]
   },
   {
     &quot;id&quot;: &quot;themed&quot;,
@@ -486,8 +612,8 @@ nav_exclude: true
   {
     &quot;typology&quot;: &quot;issue-marks&quot;,
     &quot;family&quot;: &quot;folio-issue-mark/v1&quot;,
-    &quot;reason&quot;: &quot;unresolvable&quot;,
-    &quot;ref&quot;: &quot;src/issue-watch/seen-comments.ts#IssueMarkSchema&quot;
+    &quot;reason&quot;: &quot;zod-schema&quot;,
+    &quot;ref&quot;: &quot;cat-harness-tools:src/issue-watch/seen-comments.ts#IssueMarkSchema&quot;
   },
   {
     &quot;typology&quot;: &quot;library&quot;,
@@ -712,12 +838,6 @@ nav_exclude: true
     &quot;ref&quot;: &quot;schemas/session-survey.ts#SessionSurveySchema&quot;
   },
   {
-    &quot;typology&quot;: &quot;sweep-marks&quot;,
-    &quot;family&quot;: &quot;folio-sweep-mark/v1&quot;,
-    &quot;reason&quot;: &quot;zod-schema&quot;,
-    &quot;ref&quot;: &quot;schemas/sweep-mark.ts#SweepMarkSchema&quot;
-  },
-  {
     &quot;typology&quot;: &quot;skills&quot;,
     &quot;family&quot;: &quot;folio-remote-skill/v1&quot;,
     &quot;reason&quot;: &quot;zod-schema&quot;,
@@ -745,6 +865,12 @@ nav_exclude: true
     &quot;typology&quot;: &quot;substrate-snapshot&quot;,
     &quot;reason&quot;: &quot;zod-schema&quot;,
     &quot;ref&quot;: &quot;schemas/substrate-snapshot.ts#SubstrateSnapshotSchema&quot;
+  },
+  {
+    &quot;typology&quot;: &quot;sweep-marks&quot;,
+    &quot;family&quot;: &quot;folio-sweep-mark/v1&quot;,
+    &quot;reason&quot;: &quot;zod-schema&quot;,
+    &quot;ref&quot;: &quot;schemas/sweep-mark.ts#SweepMarkSchema&quot;
   },
   {
     &quot;typology&quot;: &quot;swimlane-glossary&quot;,
