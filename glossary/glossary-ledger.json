@@ -122,6 +122,11 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/l1-extraction-reviewer": {
+      "prefLabel": "L1 extraction reviewer",
+      "firstSeen": "2026-10-15",
+      "retiredOn": null
+    },
     "role/lean-authoring-agent": {
       "prefLabel": "Lean authoring agent",
       "firstSeen": "2026-09-21",
