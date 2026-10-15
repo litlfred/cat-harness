@@ -1855,6 +1855,27 @@ a.fa-lang-tab:hover:not(.is-current) {
   padding: 0 4px;
   flex-wrap: wrap;
 }
+/* IN A SLOT THE PAGE OFFERS — owner, 2026-10-15: "move the language picker
+   into the IG top bar". A page's own bar marks `data-fa-slot="locale"` beside
+   its search box and `docs-ui.js` puts the bar there (`data-fa-slotted`). It
+   sits in someone else's row, so it takes the row's line and no margin; its
+   tokens above are unchanged, so every ratio still holds on its own chip. An
+   empty slot (no translation block, so no picker) takes no room. */
+[data-fa-slot="locale"]:empty { display: none; }
+[data-fa-slot="locale"] { display: inline-flex; align-items: center; }
+.fa-page-lang-bar[data-fa-slotted] {
+  box-sizing: border-box;
+  min-height: 2rem;
+  margin: 0;
+  padding: 0 4px;
+  flex-wrap: wrap;
+  line-height: 1.2;
+}
+/* The host row's own link rule (an IG bar writes `.ig-topbar a { color:
+   #fff }`) outranks `.fa-page-lang-tab`, and white on the light scheme's chip
+   is 1.2:1. These put the measured tokens back. */
+.fa-page-lang-bar[data-fa-slotted] a.fa-page-lang-tab { color: var(--fa-langbar-link); text-decoration: none; }
+.fa-page-lang-bar[data-fa-slotted] a.fa-page-lang-tab.is-current { color: var(--fa-langbar-on-current); }
 .fa-page-lang-toggle {
   display: inline-flex;
   align-items: center;
