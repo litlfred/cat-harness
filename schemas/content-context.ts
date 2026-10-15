@@ -116,7 +116,11 @@ function defaultCheckoutInstances(): InstanceContextDecl[] {
     const checkout = checkoutRootFor(dirname(dirname(fileURLToPath(import.meta.url))));
     checkoutInstances = instanceRootsIn(checkout).flatMap((root) => {
       const decl = readDeclaration(root);
-      return decl === undefined ? [] : [{ root: resolve(root), name: decl.name, ...(decl.iriBase !== undefined ? { iriBase: decl.iriBase } : {}) }];
+      if (decl === undefined) return [];
+      // `iriBase` is declared (`CatHarnessSchema`), read structurally as
+      // `releaseIris` does: the declaration type does not name it.
+      const iriBase = (decl as { iriBase?: unknown }).iriBase;
+      return [{ root: resolve(root), name: decl.name, ...(typeof iriBase === "string" ? { iriBase } : {}) }];
     });
   }
   return checkoutInstances;
