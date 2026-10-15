@@ -51,7 +51,13 @@ The order is the load-bearing part, not the individual steps.
    pointing at it. This is the phase-two file bootstrap's own `AGENTS.md`
    promises: the one you copied in could rely on nothing, and this one may
    rely on the harness that now exists.
-4. **Re-enter through this harness.** Read *its* next steps rather than any
+4. **Publish the instance's JSON-LD context.** Declare its `iriBase`
+   (`https://<owner>.github.io/<repo>/`) and add `.github/workflows/publish-context.yml`,
+   the one-line caller of cat-harness-tools' `layer-publish-context.yml`;
+   `init-folio --instance` writes both. After its first run on `main`, the
+   owner switches GitHub Pages on: *Deploy from a branch: `gh-pages`, `/ (root)`*.
+   See [`instance-publication`](https://litlfred.github.io/folio-assistant/reference/skill-instructions/instance-publication.html).
+5. **Re-enter through this harness.** Read *its* next steps rather than any
    list held in bootstrap — the set of available steps changed the moment the
    harness arrived, and the authority on what they are is the harness, not the
    bootstrap that predates it.
