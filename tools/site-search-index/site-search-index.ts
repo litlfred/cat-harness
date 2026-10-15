@@ -1,0 +1,28 @@
+import { toolFactory } from "../../schemas/tool-folders.js";
+import { defineTool } from "../../schemas/tool.js";
+
+export default toolFactory((t) =>
+  defineTool({
+    id: "site-search-index",
+    title: "Site search index",
+    description:
+      "The just-the-docs search index, `assets/js/search-data.json`, which the theme writes as part of the Jekyll site build: one entry per page section, searched by every page's search box. Built implicitly by the build rather than by a command of its own.",
+    install: { none: true },
+    invoke: { shell: "bun run cat preview:site" },
+    io: {
+      inputs: [],
+      outputs: [
+        // input-site: inert #4279ca6f — prose naming the directory, in a message or a description
+        { name: "index", schema: t("RepoPath"), description: "`_site/assets/js/search-data.json` in the assembled site." },
+      ],
+    },
+    satisfies: ["docs-generation"],
+    requires: { runtime: ["bun", "ruby"], network: false },
+    downstream: {
+      output: "assets/js/search-data.json",
+      inputs: ["the pages of the Jekyll site build (`cat-harness/docs/`)"],
+      judgedAt: "published",
+      verifier: "search-index",
+    },
+  }),
+);
