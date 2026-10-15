@@ -113,7 +113,7 @@ import {
 } from "./kg-node";
 import { NS_PREFIXES, propertyIri, termIri } from "./namespaces";
 import { StickyContributionSchema, type StickyContribution } from "./sticky-contribution";
-import { BuiltAtPublishListSchema, type BuiltAtPublish } from "./built-at-publish";
+import { BuiltAtPublishListSchema, isBuiltAtPublish, type BuiltAtPublish } from "./built-at-publish";
 import { JsonldPrefixTableSchema, type JsonldPrefixTable } from "./jsonld-prefixes";
 import { BranchPrefixSchema, KeyedBySchema, SubgraphSourceSchema, contentIsOffCheckout, type SubgraphSource } from "./subgraph-source";
 
@@ -6160,6 +6160,15 @@ export function isPerInstance(
  * marker: it is not at risk of vanishing, so a file explaining that it might
  * would be both redundant and wrong.
  */
+/** The instance's declared publish-time artefacts; none when it declares none or cannot be read. */
+function publishTimeOf(instanceRoot: string): BuiltAtPublish[] {
+  try {
+    return readDeclaration(instanceRoot)?.builtAtPublish ?? [];
+  } catch {
+    return [];
+  }
+}
+
 export function materialiseDirectories(
   dirs: ResolvedDirectory[],
   instanceRoot: string,
@@ -6202,6 +6211,12 @@ export function materialiseDirectories(
     // is not "missing", so `--check` does not list it either.
     // Any source off the checkout, not only `storage` (bean `l4ay`).
     if (contentIsOffCheckout(dir)) continue;
+    // BUILT AT PUBLISH (owner, 2026-10-14, "B1"): the instance declares it
+    // never commits this directory, and `derive:publish` writes it. Creating
+    // it here would commit a keep marker into a path the instance's own
+    // `.gitignore` keeps out, and its absence before a publish build is its
+    // correct state, so `--check` does not list it as missing either.
+    if (dir.own === true && dir.scope !== "repository" && isBuiltAtPublish(publishTimeOf(rootAbs), dir.path.replace(/\/*$/, "/"))) continue;
     const base = rootForScope(rootAbs, dir.scope);
     const abs = resolve(base, dir.path);
     const rel = relative(base, abs);

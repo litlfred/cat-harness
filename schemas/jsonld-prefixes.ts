@@ -16,6 +16,9 @@
  * This module is the declaration and the pure merge. It reads no files and runs
  * no generator: the generator and the gate live in cat-harness-tools, and they
  * read every instance's table as data, so no layer has to import the one above.
+ *
+ * @graphNode schema
+ * @module cat-harness/schemas/jsonld-prefixes
  */
 import { z } from "zod";
 

@@ -33,6 +33,7 @@ Output schema for content planning.
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | `plan` | object | **yes** |  |
+| `stagingLinks` | any | no | The staging preview of the work this output asks a person to look at: one deep link per changed page, with the same page on main. Required whenever a preview exists; when it does not, say so in `missing`. Rule: cat-harness skills/sdlc/sdlc-core/staging-review.md §"The deep-link rule". |
 
 ### `plan`
 
