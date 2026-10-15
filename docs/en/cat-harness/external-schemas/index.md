@@ -37,7 +37,7 @@ depends on it**, and **which of its terms this repository branches on**.
 <div class="xs-grid">
 <div class="xs-stat"><b>28</b><span>specifications</span></div>
 <div class="xs-stat"><b>107</b><span>operative terms in graph (65 described, 42 pending)</span></div>
-<div class="xs-stat"><b>281</b><span>declared uses</span></div>
+<div class="xs-stat"><b>284</b><span>declared uses</span></div>
 <div class="xs-stat"><b>0</b><span>declarations naming no record</span></div>
 </div>
 
@@ -87,11 +87,6 @@ declares the spec (bean `u63y`).
 
 Every declaration names a record on this page.
 
-**2 record(s) nothing declares.** A version bump would move nothing that says so:
-
-- [`purl-bibo`](#purl-bibo)
-- [`spar-fabio`](#spar-fabio)
-
 ## Namespaces the corpus uses against the ones it declares
 
 Read from diagram files (BPMN and DMN), metadata records, and JSON-LD contexts — **33** namespace IRI(s)
@@ -132,6 +127,7 @@ The operative terms below are derived from the catalogue records, so they are wh
 | `cat-harness-tools/scripts/todo-graph.ts` | `@conformsTo` tag |
 | `folio-assistant-core/schemas/dublin-core-render.ts` | `@conformsTo` tag |
 | `folio-assistant-core/schemas/dublin-core.ts` | `@conformsTo` tag |
+| `folio-assistant-core/schemas/reference.ts` | `@conformsTo` tag |
 | `folio-assistant-core/skills/library/catalogue/oxigraph-catalogue-search.md` | `conformsTo:` front matter |
 | `folio-dublin-core/v1 nodes` | through the module that types it (`folio-assistant-core/schemas/dublin-core.ts`) |
 | `who-iris/skills/iris-dspace.md` | `conformsTo:` front matter |
@@ -374,7 +370,11 @@ graph. That is a determined zero, not an unfilled field.
 
 - `http://purl.org/ontology/bibo/`
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `folio-assistant-core/schemas/reference.ts` | `@conformsTo` tag |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -452,7 +452,11 @@ a subset of the edition rather than a transcription of it.
 
 - `http://purl.org/spar/fabio/`
 
-**What depends on it.** Nothing here declares it.
+**What depends on it.**
+
+| user | declared by |
+|---|---|
+| `folio-assistant-core/schemas/reference.ts` | `@conformsTo` tag |
 
 **No operative terms.** This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
