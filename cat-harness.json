@@ -532,7 +532,7 @@
       "id": "tools",
       "_coverage_comment": "`docs` pointed at `cat-harness/docs/concepts/skills.md` until 2026-09-22 — a page titled \"Skills & roles\" whose headings are Skills, Roles and Capabilities, with no tools section in it. The tools graph had no documentation of its own and named a page about something else. That is worse than an absent ref, because an absent one is a legible gap while a ref that RESOLVES reports coverage: the check in force asks only whether the path exists, it did, and nothing ever flagged it. Found by applying the owner's instruction of 2026-09-21, \"keep tools and skills separate!\". `tool-graph.md` is the prose; `tools/index.md` is the generated view, and the two are different objects rather than two names for one.",
       "path": "tools/",
-      "description": "Tool definitions, one subdirectory per contributing instance (tools/<stub>/) so a composed instance adds its own without colliding on a filename. tools/index.ts merges them and is the only path a consumer imports. Authored as .ts calling defineTool so a malformed node fails at tsc; the JSON-LD and JSON Schema renderings are generated.",
+      "description": "Tool definitions, one folder per Tool (tools/<id>/<id>.ts, bean tdir), shared helpers in tools/lib.ts. tools/index.ts loads the folders (toolsFromFolders) and is the only path a consumer imports. Authored as .ts calling defineTool so a malformed node fails at tsc; the JSON-LD and JSON Schema renderings are generated.",
       "graphTypologies": [
         "tools"
       ],
@@ -955,7 +955,7 @@
     {"id": "external-schemas", "renderedBy": "external-schemas-viewer", "covers": ["external-schemas"], "alias": "external-schemas"},
     {"id": "lsi", "renderedBy": "lsi-viewer", "covers": ["qa"], "title": "Latent semantic indexes", "alias": "lsi"},
     {"id": "translation-status", "renderedBy": "translation-status-viewer", "coversKinds": ["translation-sources"], "alias": "translation-status"},
-    {"id": "beans", "renderedBy": "state-viewer", "covers": ["beans"], "coversKinds": ["beans"], "subgraphs": "instance", "alias": "beans"},
+    {"id": "beans", "renderedBy": "state-viewer", "covers": ["beans"], "coversKinds": ["beans", "bean-defs", "bean-notes", "workflow-state"], "subgraphs": "instance", "alias": "beans"},
     {"id": "todos", "renderedBy": "state-viewer", "covers": ["todos"], "alias": "todos"},
     {"id": "issue-marks", "renderedBy": "state-viewer", "covers": ["issue-marks"], "alias": "issue-marks"},
     {"id": "qa", "renderedBy": "state-viewer", "coversKinds": ["qa"], "subgraphs": "instance", "title": "QA results", "alias": "qa"},
@@ -1040,6 +1040,7 @@
     {"path": "docs/en/cat-harness/issue-marks/index.html", "writer": ["state:visualizer"], "because": "state", "from": ["issue-marks"], "reason": "the issue-marks dashboard: a graph kept on cat/cat-harness/issue-marks, and a list of every state graph tagged by what the build published (owner, 2026-10-15)"},
     {"path": "docs/en/cat-harness/swimlane-glossary/index.html", "writer": ["state:visualizer"], "because": "checkout", "reason": "the swimlane-glossary dashboard: a list of every state graph tagged by what the build published, which other instances' pins and the publish-time pages decide (owner, 2026-10-15)"},
     {"path": "docs/en/cat-harness/uploads-queue/index.html", "writer": ["state:visualizer"], "because": "checkout", "reason": "the uploads-queue dashboard: a list of every state graph tagged by what the build published, which other instances' pins and the publish-time pages decide (owner, 2026-10-15)"},
+    {"path": "docs/en/cat-harness/beans/cat-harness/", "writer": ["state:visualizer"], "because": "state", "from": ["beans"], "reason": "the repository store's own page (bean folio-assistant-750a): its open beans, notes and workflow instances, which the board's client does not draw; the rows of its parts (bean-defs, bean-notes, workflow-state) open it"},
     {"path": "docs/en/cat-harness/beans/cat-harness-tools/", "writer": ["state:visualizer"], "because": "checkout", "reason": "another instance's own work plan (bean folio-assistant-1nu0): one page per instance in the checkout holding a beans store of its own"},
     {"path": "docs/en/cat-harness/beans/folio-assistant-core/", "writer": ["state:visualizer"], "because": "checkout", "reason": "another instance's own work plan (bean folio-assistant-1nu0): one page per instance in the checkout holding a beans store of its own"},
     {"path": "docs/en/cat-harness/folio/folio-assistant-core/", "writer": ["folio:viz"], "because": "checkout", "reason": "another instance's folio-graph page (bean folio-assistant-1nu0): one per instance in the checkout holding a folio directory, other than this one"},

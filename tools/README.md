@@ -4,7 +4,7 @@
 
 # tools
 
-Tool definitions, one subdirectory per contributing instance (tools/<stub>/) so a composed instance adds its own without colliding on a filename. tools/index.ts merges them and is the only path a consumer imports. Authored as .ts calling defineTool so a malformed node fails at tsc; the JSON-LD and JSON Schema renderings are generated.
+Tool definitions, one folder per Tool (tools/<id>/<id>.ts, bean tdir), shared helpers in tools/lib.ts. tools/index.ts loads the folders (toolsFromFolders) and is the only path a consumer imports. Authored as .ts calling defineTool so a malformed node fails at tsc; the JSON-LD and JSON Schema renderings are generated.
 
 Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 

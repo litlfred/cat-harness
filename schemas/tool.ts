@@ -105,9 +105,12 @@ export const ToolRenderSchema = z
   });
 export type ToolRender = z.infer<typeof ToolRenderSchema>;
 
-/** The last segment of a schema IRI — `…#Url` or `…/Url` both give `Url`. */
+/**
+ * The last segment of a schema IRI — `…#Url`, `…/Url` and the per-type
+ * document `…/tool-types/Url.schema.json` (bean `tdir`) all give `Url`.
+ */
 export function schemaTypeName(iri: string): string {
-  return iri.split(/[#/]/).filter(Boolean).pop() ?? iri;
+  return (iri.split(/[#/]/).filter(Boolean).pop() ?? iri).replace(/\.schema\.json$/, "");
 }
 
 /** A schema type a hint may only be declared on, where it is restricted. */

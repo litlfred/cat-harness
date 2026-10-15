@@ -50,7 +50,7 @@ describe("renderToolOutput", () => {
 });
 
 describe("the hint's own rules", () => {
-  const port = (schema: string, render?: object) => ({ name: "o", schema: `https://x.test/tool-types.schema.json#/$defs/${schema}`, ...(render ? { render } : {}) });
+  const port = (schema: string, render?: object) => ({ name: "o", schema: `https://x.test/tool-types/${schema}.schema.json`, ...(render ? { render } : {}) });
 
   it("absent is allowed, and means text", () => {
     expect(ToolOutputSchema.safeParse(port("Markdown")).success).toBe(true);
