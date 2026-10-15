@@ -43,6 +43,46 @@ import { join } from "node:path";
 import type { ToolDefinition } from "./tool.js";
 import { toolTypeIri, type ToolTypeName } from "./tool-types.js";
 
+/**
+ * The directory, beside an instance's published document, that holds one
+ * JSON-LD document per Tool.
+ *
+ * Bean `tdir`. The owner, 2026-10-15: *"i want a seperate jsonld for each Tool
+ * w/ its own IRI."* A Tool was `<instance doc>#tool/<id>`: a fragment, which
+ * fetches the whole instance graph to read one node. It is now a DOCUMENT,
+ * `<dir of the instance doc>/tools/<id>.jsonld`, so the IRI dereferences to
+ * exactly the Tool, and the folder that declares it in source
+ * (`tools/<id>/<id>.ts`) and the document that publishes it share a name.
+ */
+export const TOOL_DOCUMENT_DIR = "tools";
+
+/** A Tool's document path relative to its instance document's directory: `tools/<id>.jsonld`. */
+export function toolDocumentPath(id: string): string {
+  return `${TOOL_DOCUMENT_DIR}/${encodeURIComponent(id)}.jsonld`;
+}
+
+/**
+ * The IRI of one Tool, given the IRI of the instance document it belongs to.
+ *
+ * BESIDE the document, never at a second composed address, for the reason
+ * `instanceSchemaBase` gives in `harness-schema-export.ts`: the host's
+ * document is `<base>/<stub>.jsonld`, a foreign instance's
+ * `<base>/<stub>/<stub>.jsonld`, and one with its own `canonicalUrl`
+ * `<canonicalUrl>/<stub>.jsonld`. Deriving from the document's own IRI gives
+ * all three the right answer and keeps a preview's Tools under the preview.
+ * `kg-export` writes the file at the same path relative to its `--out`, so
+ * the IRI and the bytes cannot drift apart.
+ *
+ * A document-relative `docIri` (no base declared) yields a document-relative
+ * Tool IRI, `tools/<id>.jsonld`, on `makeIri`'s rule that an IRI which only
+ * LOOKS dereferenceable is worse than one that is obviously local.
+ */
+export function toolIri(docIri: string, id: string): string {
+  const doc = docIri.split("#")[0];
+  const slash = doc.lastIndexOf("/");
+  return slash === -1 ? toolDocumentPath(id) : `${doc.slice(0, slash)}/${toolDocumentPath(id)}`;
+}
+
 /** Mint the IRI of one shared I/O type against the publication base. */
 export type TypeIri = (name: ToolTypeName) => string;
 
