@@ -3,7 +3,7 @@ import { defineTool } from "../../schemas/tool.js";
 
 // ── Judge a tree once, on any runner, and say so by digest ─────────────
 //
-// cat-harness-tools#399. Owner, 2026-10-16: "github should be one Tool of
+// Owner, 2026-10-16: "github should be one Tool of
 // several". `gates` RUNS the checks in one checkout; this judges a whole
 // composed TREE head-against-base and leaves a verdict record anyone can
 // find again by the tree's digest. The digest is the index lock's fixity
@@ -14,7 +14,7 @@ import { defineTool } from "../../schemas/tool.js";
 // local machine, or GitHub Actions. GitHub is where a verdict is PUBLISHED
 // (the commit status `judge-tree`), not where it must be reached.
 //
-// The implementation is cat-harness-tools `scripts/judge-tree.ts`; the
+// The implementation is the tools layer's `scripts/judge-tree.ts`; the
 // record's shape is its `schemas/verdict-record.schema.json`
 // (`cat-harness-verdict-record/v1`).
 export default toolFactory((t) =>
@@ -39,7 +39,7 @@ export default toolFactory((t) =>
         { name: "publish", schema: t("Flag"), required: false, arg: { flag: "--publish" }, description: "Post the commit status `judge-tree` when GITHUB_TOKEN/GH_TOKEN is set; without one, the record file is the verdict." },
       ],
       outputs: [
-        { name: "record", schema: t("RepoPath"), description: "The verdict record, `<records-dir>/<treeDigest>.json` unless --out names it; valid against cat-harness-tools `schemas/verdict-record.schema.json`. Three exit codes: 0 green, 1 red, 2 COULD NOT DETERMINE (no judging scripts, a stored base verdict for another tree, a compare script that crashed, or no gate ran). 2 is never green, and neither is a verdict for another digest." },
+        { name: "record", schema: t("RepoPath"), description: "The verdict record, `<records-dir>/<treeDigest>.json` unless --out names it; valid against the tools layer's `schemas/verdict-record.schema.json`. Three exit codes: 0 green, 1 red, 2 COULD NOT DETERMINE (no judging scripts, a stored base verdict for another tree, a compare script that crashed, or no gate ran). 2 is never green, and neither is a verdict for another digest." },
       ],
     },
     satisfies: ["platform-gates", "prepare-merge"],

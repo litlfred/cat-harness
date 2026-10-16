@@ -51,7 +51,7 @@
  *   through a gitlink is another repository at another commit; it needs
  *   consent of its own, given on the downstream's override for that instance.
  *
- * ## Standing consent (issue cat-harness-tools#401; owner, 2026-10-16)
+ * ## Standing consent (owner, 2026-10-16)
  *
  * Pins stay DECENTRALIZED: each site keeps its own lock. A site may say, once,
  * per upstream instance, *"keep me on `<branch>` of this upstream"* — a
