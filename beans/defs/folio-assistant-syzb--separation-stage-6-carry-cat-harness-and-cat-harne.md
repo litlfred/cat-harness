@@ -4,10 +4,8 @@ title: 'Separation stage 6: carry cat-harness and cat-harness-tools as submodule
 status: scrapped
 type: task
 created_at: 2026-10-01T06:58:02Z
-updated_at: 2026-10-16T06:30:00Z
+updated_at: 2026-10-16T10:30:00Z
 parent: folio-assistant-iirv
-blocked_by:
-    - folio-assistant-w1gy
 ---
 
 Stage 6 of the split plan: replace `cat-harness/` and `cat-harness-tools/` with submodules at the **same paths**, pinned to the seeded (post-QA) SHAs. `.gitmodules` +2; the 31 workflows already set `submodules: true`. Archive per D6 (owner 2026-10-01, default): `fsh-guts/retired/cat-harness-split.md` names the source SHA and lists `git archive <sha> cat-harness`, **no tarball** (a full one would add ≈69 MB to every clone).
@@ -23,3 +21,5 @@ Plans (session scratchpad, 2026-10-01; to be committed with stage 0): `cat-harne
 - [ ] `migration-plan.md` Phase II points at `kg-separation` for bootstrap and cat-harness
 
 _2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `scrapped` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: scrapped, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09); folio-assistant#2470 merged 2026-10-07, folio-assistant#2517 merged 2026-10-08, cat-harness#52 merged 2026-10-09, cat-harness-tools#16 merged 2026-10-09. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.
+
+_2026-10-16T10:30:00Z_ — Dead block removed: `blocked_by: w1gy`, since this bean is already closed. Recorded on the `fsh-guts` state branch (`retired/bean-blocks-2026-10-16.md`) (owner choice, https://claude.ai/code/session_01NUrhvvMEwU5MmPW4L2w9jP).
