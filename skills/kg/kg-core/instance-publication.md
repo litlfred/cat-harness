@@ -139,10 +139,9 @@ thing it mirrors. Anything resolving that id would then find two different
 artefacts answering to it.
 
 **The same reading governs `canonicalUrl`,** and the DAK layer's own declaration
-already said so before this skill existed:
-
-> It is READ from upstream rather than chosen here, so it is a fact about
-> smart-base and not a decision about where this staging directory publishes.
+already said so before this skill existed. It says, in substance, that the URL is READ from upstream rather than chosen
+there, so it is a fact about the upstream IG and not a decision about where
+that staging directory publishes.
 
 So, for a **true mirror**, `canonicalUrl` records the **subject**. It must not
 drive **our** identity. A mirror's declaration that carries an upstream

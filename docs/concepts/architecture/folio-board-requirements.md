@@ -314,12 +314,12 @@ rather than leaving a reader to discover the exception in the stylesheet.
 This is the layering statement of the round, and it is the one a paraphrase
 would lose:
 
-> these requriements are really for how the "folio" visuallation from
-> cat-harness should work. that should by convention be available on any
-> harness for consistent feel. who-iris, smart-\*, etc are content libraries a
-> user is browsing and their "folio" from the cat-harness is consistent across
-> them. todo, etc can refernces cross KG library. who-iris, implements its own
-> landing page and smart-\* has/will have its own harness
+Paraphrased: these requirements are really for how the "folio" visualisation
+from cat-harness should work, and by convention it should be available on any
+harness for a consistent feel. The content layers (the IRIS replica, the SMART
+IGs and so on) are libraries a user browses, and the cat-harness "folio" is
+consistent across them; todos and the like can reference the cross-KG library.
+A content layer may implement its own landing page or have its own harness.
 
 | | requirement | note |
 |---|---|---|

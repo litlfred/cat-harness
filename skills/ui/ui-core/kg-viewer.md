@@ -114,7 +114,7 @@ skills point here.
   of the page that renders it (another instance's declared root route for an
   entry that instance renders, e.g. the trust IG's `/<trust-ig>/`; else the
   entry's own library page) — and the row's slug links there. Owner,
-  2026-10-02: *"click on "smart-trust" slug and open up the visualizer"*.
+  2026-10-02, paraphrased: clicking a library entry's slug should open its visualiser.
 
 Reference implementation: `gen-library-viz.ts` (`viewerHtml`, `VIEWER_JS`,
 `VIEWER_CSS`) and `scripts/lib/library-address.ts`; browser check

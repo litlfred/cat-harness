@@ -897,9 +897,10 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
    * text — `{{ <prefix>.<directory-id>.<entry>.<path> }}` — and whether the
    * platform resolves it or passes it through.
    *
-   * Owner, 2026-09-30 (bean `kott`, issue #1564): *"{{ site.data...}} is
-   * declared for fhir-harness only... it declares its site prefix. bootstrap is
-   * {{ bootstrap.blah }} ... so existing IG publisher works as is."*
+   * Owner, 2026-09-30 (bean `kott`, issue #1564), paraphrased: `{{ site.data... }}`
+   * is the prefix the IG-pipeline layer declares for itself, every instance
+   * declares its own site prefix (bootstrap's is `{{ bootstrap.... }}`), so the
+   * existing IG Publisher works as is.
    *
    * **Absent means the default: the prefix is the instance's `name`, resolved
    * by the platform.** `passThrough: true` hands the prefix to the downstream
@@ -1925,8 +1926,9 @@ const ContentDirectoryShape = GraphNodeDirectoryShape.extend({
    * `mount-instance-docs.ts` publishes an instance's content twice: at
    * `/<kind>/<instance>/` for every renderable kind it declares, and once at
    * `/<instance>/` — the instance's themed root, per the owner's 2026-09-20
-   * ruling that *"`/docs/who-iris/` should be the cat-harness handler default
-   * for docs. who-iris themed at `/who-iris/`."*
+   * ruling (paraphrased) that `/docs/<instance>/` is the cat-harness handler's
+   * default for an instance's docs, and the instance's own themed site is at
+   * `/<instance>/`.
    *
    * **Until this field existed, the second route went to whichever kind sorted
    * first alphabetically** — and the comment doing the sorting said, in as many
@@ -7315,7 +7317,7 @@ function walkNested(
 // the problem: this import, and `schemas/test-preload.ts`.
 import "./folio-graph-typology.js";
 // Core's `glossary` kind, registered the same way and for the same reason
-// (issue: owner 2026-09-23, "put glossary into folio-assistant-core").
+// (issue: owner 2026-09-23, who asked that the glossary go into the content core).
 import "./glossary-graph-typology.js";
 import { ThemeRefSchema, type ThemeRef } from "./theme";
 import { CONFIG_SUFFIX, DECLARATION_SUFFIX, findDeclarationFile, instanceRootsIn, isForeignCheckout, lockFilesIn } from "./instance-roots";

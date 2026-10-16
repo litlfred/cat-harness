@@ -101,7 +101,7 @@ instance's `supports` and needs nothing — and kg:audit's
 `content-instance-holds-code` records a finding naming every code file still
 inside it. It is a `minor` QA **warning**, not a failure, by owner ruling
 (2026-10-01: *"QA warning. not failure.. ok b/c small # tools"*): the owner
-tolerates the code *for now* (*"iris specific tools for now ok in who-iris/"*),
+tolerates the code *for now* (IRIS-specific tools may stay in the IRIS replica for now),
 and the warrant is that the tolerated set is small. It was `major` until then,
 on the argument that FR-7 has no legitimate exceptions. A warning still names
 each file, so the violation is never silent. The remedy splits by what
@@ -175,7 +175,7 @@ move a corpus describe whole when it carries a vacuity guard: a sibling left
 behind passes standalone over nothing.
 
 **A test reading an UPPER layer's files moves to that layer (owner, 2026-10-06,
-"tests that read cat-harness-tools files => move to cat-harness-tools").** It is
+on the tests that read the tools layer's files: move them to that layer).** It is
 red standing alone for the same reason, one level down: the file it reads is
 not in its layer's closure. It goes in the upper layer's DECLARED test home,
 which may import the lower layer — never the reverse — and it is split, pointed

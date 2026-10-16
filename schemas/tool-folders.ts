@@ -1,8 +1,8 @@
 /**
  * One Tool per folder: `<tools dir>/<id>/<id>.ts`, and the loader that reads them.
  *
- * Bean `tdir`. The owner, 2026-10-15: *"why are they not each in their own
- * folder like smart-base/tools/extract-dak"* — and, on how: *"make sure the
+ * Bean `tdir`. The owner, 2026-10-15, asked why the tools were not each in
+ * their own folder, as a content layer's DAK-extraction tool already is — and, on how: *"make sure the
  * Tool schema is used and conventions of dirname and declaration like
  * `<tool>/<tool>.ts` are followed. dont externalize the json on main, only
  * when rendered in gh-pages."*

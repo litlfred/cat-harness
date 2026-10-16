@@ -36,8 +36,8 @@ export const FileSourceSchema = z
 /**
  * A source that is a PUBLICATION rather than a file — a FHIR implementation
  * guide, which is a website of hundreds of pages plus a package, not one PDF.
- * Owner, 2026-10-02: *"add the smart-trust IG to smart-base's library as an
- * external reference"*.
+ * Owner, 2026-10-02, paraphrased: add a trust IG to a content layer's library
+ * as an external reference.
  *
  * There are NO bytes here to hash, and the variant says so by having no
  * `sha256` rather than by carrying a made-up one: the identity is the

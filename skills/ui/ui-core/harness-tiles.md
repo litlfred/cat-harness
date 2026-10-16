@@ -191,8 +191,8 @@ routes:
 | `/<kind>/<instance>/` | the kind's, cat-harness's | the default rendering any instance declaring that kind gets |
 | `/<instance>/` | the instance itself | its own themed root |
 
-> `/docs/who-iris/` should be the cat-harness handler default for docs.
-> who-iris themed at `/who-iris/`.
+Paraphrased: `/docs/<instance>/` is the cat-harness handler's default for
+an instance's docs, and the instance is themed at `/<instance>/`.
 
 So the tile's target is the instance's **own themed root** when it has one, and
 a handler's viewer only when it does not — *"cliking shoud go to folio view,
@@ -501,11 +501,10 @@ other. A per-instance palette would be a second colour vocabulary beside
 
 ## On a folio's own site, a tile describes the FOLIO (issue #2263)
 
-Owner, 2026-10-06, on https://litlfred.github.io/smart-trust/, verbatim:
-
-> the beans and todos badges seems to be countts from folio-assistant and not
-> litlfred/smart-trust as expected. links to beans and todos dont work. why
-> not? fix process and skills.
+Owner, 2026-10-06, on a content instance's published site, paraphrased: the
+beans and todos badges showed counts from folio-assistant rather than from
+the instance whose site it was, and the links to beans and todos did not
+work — fix the process and the skills.
 
 **A page's tiles describe the instance whose site the page is on.** A folio's
 own Pages site (an IG repository's `folio-site.yml`, a document folio's

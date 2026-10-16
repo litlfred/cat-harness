@@ -1,7 +1,7 @@
 /**
  * The `glossary` graph typology — registered by **core**, not declared by the harness.
  *
- * Owner, 2026-09-23: *"put glossary into folio-assistant-core"*, *"it should be
+ * Owner, 2026-09-23: put the glossary into the content core, *"it should be
  * part of general pracice w/ glossary/ page"*, *"can glossary be refefences to
  * external skos schema?"* (yes), and, on the clash with the harness's own
  * swimlane ledger: *"Rename harness one"*. So the harness's kind is now

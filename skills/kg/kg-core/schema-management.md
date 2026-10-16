@@ -211,9 +211,9 @@ already names its module, so the list was one fact written twice.
 
 Owner, 2026-09-20:
 
-> i want two rules.... not three. one is cat-harness handling the `library/`
-> dir which has who-iris assets in it. one is who-iris handler to mock current
-> iris website.
+Paraphrased: two rules, not three. One is cat-harness handling the `library/`
+directory, which holds a content instance's assets; the other is that content
+instance's own handler, which mocks its current website.
 
 | rule | form | what it is |
 |---|---|---|
@@ -296,11 +296,12 @@ claims 512 edges among those nine.
 
 Owner, same day:
 
-> `<base>/cat-harness/docs/` is where all harness user documentation is... so
-> documentation at `<base>/cat-harness/docs/who-iris/` is more documentation
-> ABOUT iris, how it is ingested etc. **not the iris content**. source content
-> is repo root `who-iris/docs`. part of cat-handler `docs/` handler is to look
-> out for `docs/` directories in harness kinds.
+Paraphrased: `<base>/cat-harness/docs/` is where all harness user
+documentation is, so documentation at `<base>/cat-harness/docs/<instance>/`
+is documentation ABOUT that instance, how it is ingested and so on — **not
+the instance's content**, whose source is the instance's own `docs/`. Part of
+the cat-harness `docs/` handler's job is to look out for `docs/` directories
+in harness kinds.
 
 So a subject page under a handler is **about** its subject, rendered by the
 handler — never the subject's own content relocated. The content stays in the
