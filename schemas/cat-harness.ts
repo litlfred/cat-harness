@@ -111,7 +111,7 @@ import {
   type KgImage,
   type KgNodeLabels,
 } from "./kg-node";
-import { NS_PREFIXES, propertyIri, termIri } from "./namespaces";
+import { propertyIri, termIri } from "./namespaces";
 import { StickyContributionSchema, type StickyContribution } from "./sticky-contribution";
 import { BuiltAtPublishListSchema, isBuiltAtPublish, type BuiltAtPublish } from "./built-at-publish";
 import { JsonldPrefixTableSchema, type JsonldPrefixTable } from "./jsonld-prefixes";
@@ -202,6 +202,7 @@ import {
   BASE_GRAPH_TYPOLOGIES,
   defaultGraphTypologies,
   graphTypologyIri,
+  ownPrefixTable,
   REGISTRATION_MODULE,
   resolveGraphTypology,
   type GraphTypology,
@@ -7014,7 +7015,7 @@ export function toJsonLd(
 ): Record<string, unknown> {
   return {
     "@context": {
-      ...NS_PREFIXES,
+      ...ownPrefixTable(registry),
       path: termIri("path"),
       directories: termIri("scans"),
       scope: termIri("scope"),
@@ -7316,9 +7317,9 @@ function walkNested(
 // no-ops. Two were NOT removed and are the mechanism rather than instances of
 // the problem: this import, and `schemas/test-preload.ts`.
 import "./folio-graph-typology.js";
-// Core's `glossary` kind, registered the same way and for the same reason
-// (issue: owner 2026-09-23, who asked that the glossary go into the content core).
-import "./glossary-graph-typology.js";
+// The `glossary` kind was registered here too until folio-assistant#2598: it
+// is now a node in the content instance's own `typologies/` graph (owner
+// 2026-09-23, "put glossary into" the content layer).
 import { ThemeRefSchema, type ThemeRef } from "./theme";
 import { CONFIG_SUFFIX, DECLARATION_SUFFIX, findDeclarationFile, instanceRootsIn, isForeignCheckout, lockFilesIn } from "./instance-roots";
 // Instance DISCOVERY lives in a leaf module (bean dmx1), so the graph-typology
