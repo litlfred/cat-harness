@@ -489,6 +489,28 @@ export const RoleDefSchema = z.object({
 }).strict();
 
 /**
+ * The retired `actedUpon` (owner, 2026-10-16), dropped with a warning for one
+ * release rather than refused by the strict schema. Layers migrate in their
+ * own PRs and are mounted at their pinned commits, so a lower layer still
+ * carrying the flag (bootstrap's `roles.json` before its migration lands and
+ * is re-pinned) must not stop every graph that reads it from loading. It
+ * means nothing now: a mechanical role is a role, and its skills are its
+ * contract.
+ */
+function withoutRetiredKeys(raw: unknown, p: string): unknown {
+  if (typeof raw !== "object" || raw === null || !Array.isArray((raw as { roles?: unknown }).roles)) return raw;
+  const carrying: string[] = [];
+  const roles = ((raw as { roles: unknown[] }).roles).map((r) => {
+    if (typeof r !== "object" || r === null || !("actedUpon" in r)) return r;
+    const { actedUpon: _retired, ...rest } = r as Record<string, unknown>;
+    carrying.push(String(rest["id"] ?? "?"));
+    return rest;
+  });
+  if (carrying.length) console.warn(`${p}: \`actedUpon\` is retired and ignored (roles: ${carrying.join(", ")}); remove it`);
+  return { ...(raw as object), roles };
+}
+
+/**
  * A pointer AT a role, from whatever depends on one — a voice addressed to
  * that reader, a user story told as them.
  *
@@ -684,7 +706,7 @@ export function readRoleGraph(kgRoot: string, lower: ReadonlySet<string> = lower
   } catch (e) {
     throw new Error(`${p} is not valid JSON: ${e instanceof Error ? e.message : String(e)}`);
   }
-  const parsed = RoleGraphSchema.safeParse(withoutComments(raw));
+  const parsed = RoleGraphSchema.safeParse(withoutRetiredKeys(withoutComments(raw), p));
   if (!parsed.success) throw new Error(`${p} is not a valid role graph: ${parsed.error.message}`);
 
   const graph = parsed.data as RoleGraph;

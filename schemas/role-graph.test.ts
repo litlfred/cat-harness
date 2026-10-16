@@ -270,14 +270,16 @@ describe("laneRoleRef — a lane names its Role by partitionElementRef (owner, 2
 describe("mechanical roles are real roles (owner, 2026-10-16)", () => {
   const g = readRoleGraph(join(import.meta.dir, "..", "scenarios"))!;
 
-  test("no role carries the retired `actedUpon`, and the schema refuses it", () => {
+  test("no role carries the retired `actedUpon`; a layer still carrying it loads, with the flag dropped", () => {
     expect(g.roles.some((r) => "actedUpon" in r)).toBe(false);
     const dir = mkdtempSync(join(tmpdir(), "roles-"));
     writeFileSync(
       join(dir, "roles.json"),
-      JSON.stringify({ name: "t", roles: [{ id: "c", title: "C", description: "a store", actorKinds: ["system"], actedUpon: true }] }),
+      JSON.stringify({ name: "t", roles: [{ id: "c", title: "C", description: "a store", actorKinds: ["system"], skills: ["s"], actedUpon: true }] }),
     );
-    expect(() => readRoleGraph(dir)).toThrow();
+    const read = readRoleGraph(dir)!;
+    expect(read.roles.map((r) => r.id)).toEqual(["c"]);
+    expect("actedUpon" in read.roles[0]!).toBe(false);
     rmSync(dir, { recursive: true, force: true });
   });
 
