@@ -54,8 +54,18 @@
     "harness-config": {
       "covers": []
     },
+    "ig-ast": {
+      "covers": [
+        "fhir-harness/ig-ast"
+      ]
+    },
     "kg-viewer": {
       "covers": []
+    },
+    "l1-extraction": {
+      "covers": [
+        "smart-base/l1-extraction"
+      ]
     },
     "library": {
       "covers": [
@@ -112,7 +122,10 @@
         "cat-harness/qa-checkers",
         "cat-harness/block-kinds",
         "cat-harness/content-adapters",
-        "cat-harness/code-lists"
+        "cat-harness/code-lists",
+        "cat-harness/pipeline-plugins",
+        "cat-harness/editor-checkers",
+        "cat-harness/memory"
       ]
     },
     "suggest-editor": {
