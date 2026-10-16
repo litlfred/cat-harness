@@ -513,8 +513,8 @@
         }
       }
     },
-    "folio-assistant-core/glossary": {
-      "sourceUrl": "/folio-assistant-core/glossary/",
+    "en/folio-assistant-core/glossary": {
+      "sourceUrl": "/en/folio-assistant-core/glossary/",
       "sourceTitle": "Glossary",
       "translations": {
         "ar": {
