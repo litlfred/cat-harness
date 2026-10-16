@@ -20,6 +20,7 @@ Input schema for feedback collection and triage.
 | `source` | `"github-issues"` \| `"survey"` \| `"implementation-report"` \| `"clinical-review"` | **yes** | Source of feedback. |
 | `publishedVersion` | string | no | Version the feedback relates to. |
 | `feedbackItems` | array<object> | no |  |
+| `stagingLinks` | any | no | The staging preview of the work under review, as the request for feedback carried it, so the reviewer opens the changed pages rather than rebuilding links. Rule: cat-harness skills/sdlc/sdlc-core/staging-review.md §"The deep-link rule". |
 
 ### `feedbackItems[]`
 
@@ -41,6 +42,7 @@ Output schema for triaged feedback.
 |-------|------|----------|-------------|
 | `triagedItems` | array<object> | **yes** |  |
 | `summary` | object | no |  |
+| `stagingLinks` | any | no | The staging preview of the work this output asks a person to look at: one deep link per changed page, with the same page on main. Required whenever a preview exists; when it does not, say so in `missing`. Rule: cat-harness skills/sdlc/sdlc-core/staging-review.md §"The deep-link rule". |
 
 ### `triagedItems[]`
 

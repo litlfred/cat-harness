@@ -1,9 +1,21 @@
 import { afterAll, describe, expect, test } from "bun:test";
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
 
+import { readDeclaration } from "./cat-harness";
 import { GraphTypologyRegistry } from "./graph-typology-registry";
-import { kindAndSubclasses, newUnkinded, nodeKindIndex } from "./node-kind-index";
+import {
+  kindAndSubclasses,
+  newUnkinded,
+  nodeKindIndex,
+  ratchet,
+  renderBaseline,
+  typologyOwner,
+  UnkindedBaselineKind,
+  unkindedKey,
+  type Unkinded,
+} from "./node-kind-index";
 
 /**
  * Issue #2195: node kinds are found THROUGH the typologies. A module of kinds
@@ -83,5 +95,115 @@ describe("the ratchet", async () => {
   test("a baselined family is not new, and one that became a kind simply leaves", () => {
     const baseline = { unkinded: [...index.unkinded, { typology: "widgets", family: "child/v1", reason: "zod-schema" as const }] };
     expect(newUnkinded(index, baseline)).toEqual([]);
+  });
+});
+
+/**
+ * Owner, 2026-10-15: one baseline per layer. A family is owned by the instance
+ * that declares its typology, and each instance is judged against its own.
+ */
+describe("who owns a family", () => {
+  const root = mkdtempSync(join(tmpdir(), "node-kind-owner-"));
+  afterAll(() => rmSync(root, { recursive: true, force: true }));
+  mkdirSync(join(root, "alpha", "typologies"), { recursive: true });
+  writeFileSync(join(root, "alpha", "alpha.json"), JSON.stringify({ name: "alpha", directories: [{ id: "alpha-typologies", path: "typologies/", graphTypologies: ["typologies"] }] }));
+  writeFileSync(
+    join(root, "alpha", "typologies", "gadgets.json"),
+    JSON.stringify({ $schema: "folio-graph-typology/v1", kind: "gadgets", renderable: false, holds: "derived", summary: "the gadgets kind", nodeSchemas: { "gadget/v1": {} } }),
+  );
+  const reg = new GraphTypologyRegistry({ widgets: def({}) }, root);
+
+  test("a typology declared in an instance's typologies/ graph belongs to that instance", () => {
+    expect(typologyOwner(reg, "gadgets")).toBe("alpha");
+  });
+
+  test("a typology this layer lists in code belongs to this module's own instance", () => {
+    // `widgets` is a test seed, not a base typology: the rule is the base table, so it is unattributed.
+    expect(typologyOwner(reg, "widgets")).toBeUndefined();
+    expect(typologyOwner(new GraphTypologyRegistry(), "beans")).toBe(readDeclaration(resolve(import.meta.dir, ".."))!.name);
+  });
+
+  test("one registered in code by a module nothing here knows is NOT attributed to a guess", () => {
+    const r = new GraphTypologyRegistry({}, root);
+    r.register("coded", def({}));
+    expect(typologyOwner(r, "coded")).toBeUndefined();
+  });
+});
+
+describe("the per-layer ratchet", () => {
+  const u = (typology: string, family?: string): Unkinded => ({ typology, ...(family ? { family } : {}), reason: "zod-schema" });
+  const owners: Record<string, string> = { a1: "alpha", a2: "alpha", b1: "beta" };
+  const owner = (t: string) => owners[t];
+  const index = { unkinded: [u("a1", "x/v1"), u("a2"), u("b1", "y/v1")] };
+  const held = (m: Record<string, Unkinded[] | undefined>) => new Map(Object.entries(m));
+
+  test("a layer whose baseline holds its own families passes", () => {
+    const { layers, unattributed } = ratchet(index, owner, held({ alpha: [u("a1", "x/v1"), u("a2")], beta: [u("b1", "y/v1")] }));
+    expect(unattributed).toEqual([]);
+    for (const l of layers) expect([l.fresh, l.gone, l.foreign]).toEqual([[], [], []]);
+  });
+
+  test("a NEW family fails in its OWN layer, and another layer's baseline does not excuse it", () => {
+    const now = { unkinded: [...index.unkinded, u("b1", "z/v1")] };
+    const { layers } = ratchet(now, owner, held({ alpha: [u("a1", "x/v1"), u("a2"), u("b1", "z/v1")], beta: [u("b1", "y/v1")] }));
+    const by = new Map(layers.map((l) => [l.instance, l]));
+    expect(by.get("beta")!.fresh).toEqual(["b1#z/v1"]);
+    expect(by.get("alpha")!.fresh).toEqual([]);
+    expect(by.get("alpha")!.foreign).toEqual(["b1#z/v1"]);
+  });
+
+  test("an instance that declares no baseline owns an empty one", () => {
+    const { layers } = ratchet(index, owner, held({ alpha: [u("a1", "x/v1"), u("a2")] }));
+    expect(layers.find((l) => l.instance === "beta")!.fresh).toEqual(["b1#y/v1"]);
+  });
+
+  test("a baselined family that became a kind is GONE, and the writer drops it", () => {
+    const { layers } = ratchet({ unkinded: [u("a2")] }, owner, held({ alpha: [u("a1", "x/v1"), u("a2")] }));
+    expect(layers[0]).toMatchObject({ instance: "alpha", gone: ["a1#x/v1"], fresh: [] });
+    expect(layers[0]!.keep.map(unkindedKey)).toEqual(["a2"]);
+  });
+
+  test("--accept-unkinded keeps a new family in its owner's baseline, and only there", () => {
+    const { layers } = ratchet(index, owner, held({ alpha: [], beta: [] }), true);
+    expect(Object.fromEntries(layers.map((l) => [l.instance, l.keep.map(unkindedKey)]))).toEqual({ alpha: ["a1#x/v1", "a2"], beta: ["b1#y/v1"] });
+  });
+
+  test("a family no instance can own is unattributed, not filed under a guess", () => {
+    const { unattributed, layers } = ratchet({ unkinded: [u("orphan")] }, owner, held({}));
+    expect(unattributed.map(unkindedKey)).toEqual(["orphan"]);
+    expect(layers).toEqual([]);
+  });
+
+  test("MIGRATION: splitting one shared baseline by owner passes and fails exactly what it did", () => {
+    // Every subset of the families as the old shared baseline, against the same index:
+    // the old gate's NEW set equals the union of the layers' NEW sets.
+    const all = [...index.unkinded, u("b1", "z/v1")];
+    const now = { unkinded: all };
+    for (let mask = 0; mask < 1 << all.length; mask++) {
+      const shared = all.filter((_, i) => mask & (1 << i));
+      const split: Record<string, Unkinded[]> = {};
+      for (const x of shared) (split[owner(x.typology)!] ??= []).push(x);
+      const { layers } = ratchet(now, owner, held(split));
+      expect(layers.flatMap((l) => l.fresh).sort()).toEqual(newUnkinded(now, { unkinded: shared }).sort());
+      expect(layers.flatMap((l) => [...l.gone, ...l.foreign])).toEqual([]);
+    }
+  });
+});
+
+describe("the baseline file", () => {
+  test("is keys only, sorted and de-duplicated, under its kind's tag", () => {
+    const text = renderBaseline([
+      { typology: "b", family: "y/v1" },
+      { typology: "a" },
+      { typology: "b", family: "y/v1" },
+    ]);
+    const parsed = JSON.parse(text);
+    expect(parsed).toEqual({ $schema: "unkinded-baseline/1.0.0", unkinded: [{ typology: "a" }, { typology: "b", family: "y/v1" }] });
+    expect(UnkindedBaselineKind.schema.safeParse(parsed).success).toBe(true);
+  });
+
+  test("refuses a field that would drift with another layer (a validator ref)", () => {
+    const withRef = { $schema: "unkinded-baseline/1.0.0", unkinded: [{ typology: "a", ref: "core:x.ts#X" }] };
+    expect(UnkindedBaselineKind.schema.safeParse(withRef).success).toBe(false);
   });
 });

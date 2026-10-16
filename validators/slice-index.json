@@ -5,5 +5,5 @@
     "kind": "docs",
     "family": "folio-slice-index/v1"
   },
-  "schema": "cat-harness-tools:scripts/gen-slice-sqlite.ts#SliceIndexSchema"
+  "schema": "cat-harness-tools:scripts/gen-slice-sqlite.ts#SliceIndexKind"
 }

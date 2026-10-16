@@ -24,6 +24,9 @@ published reference can never drift from what the framework actually validates.
 | [Content Validate](content-validate.html) | `content-validate` | Input schema for content validation. |
 | [CRDM Detect](crdm-detect.html) | `crdm-detect` | One user request to classify: is it a feature request (a platform capability change, which enters the CRDM requirements workflow) or a content request? |
 | [DMN Authoring](dmn-authoring.html) | `dmn-authoring` | Input schema for DMN (Decision Model and Notation) decision table authoring. |
+| [Staging Review](staging-review.html) | `staging-review` | What the reader wants to look at, in their own words (kept verbatim; it narrows, never adds), and the branch or pull request whose preview to list. |
+| [Wireframe Design Review](wireframe-design-review.html) | `wireframe-design-review` | What is to be wireframed and why: the use (design of a new or changed surface, or as-is drawing of an existing visualiser), the surface, and where the drawings are kept. Called from Process_CRDM_Requirements (Call_Wireframe) for Design use, when a requirement changes a rendered surface. |
+| [Wireframe Viewport Check](wireframe-viewport-check.html) | `wireframe-viewport-check` | The wireframe candidates to render, and where the screenshots and report go. Called from wireframe-design-review step 3, once per round of candidates. |
 
 See also the [Skill instructions](../skill-instructions/) (the prose how-to
 bodies the LLM loads) and the [TypeScript API reference](../../api/) for the

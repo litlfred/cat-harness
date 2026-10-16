@@ -80,6 +80,7 @@ Three rules, each one a refusal:
 | `fhir-ig-pages` | `.fsh`, `.cql`, `input/pagecontent/*.md` | `fsh-cone` forward cone → SUSHI's `fsh-index.json` → AST artefact page + served JSON; a page → itself and every page that includes it | in the FHIR layer, documented with its AST tooling (`skill_fetch ig-ast-delta`) |
 | `document-site`, `public-comment-site`, `library-site` | a block, a document/chapter/section manifest, `media/*`, the public-comment store, a file in a declared library entry or a folio `review-anchors.json` naming one (the entry's Document view and `doc.json`; its `structure.json` also the library index) | loaded from the published `changeset.json` (each changed block's label and file) and `outline.json` (the documents), never from source: a block lands on its document's page, anchored at its label (`anchors`) — on a LAZY page (`outline.json` `lazy`, bean v433) on its `blocks/NNN.json` chunk and `index.hydrated.html` instead, and a block added, removed, renamed or moved reshapes the shell and every chunk from its position on; a file no builder of the site reads is an input with no page: each builder in the folio's build command exports `siteReads` (the folio; the comment store; every directory of a typology holding a kind it renders), and a file outside all of them, the submodules, `.github/` and the root's non-Markdown files reaches nothing — so `beans/` reaches no page, while `todos/`, whose pages are rendered, still may. A step that exports no `siteReads` excludes nothing; never decide it from the instance's declaration, which also declares what no builder reads | in the document layer, with the ChangeSet Tool |
 | `docs-site` | any file | a file in the COMPOSED Jekyll tree (`docsLayers`, `composedInstances`) → its page (permalink, or `.md` → `.html`) or asset; an include → the pages that include it, transitively; `_data` → the pages and includes that read it; a layout, a THEME include (read from the installed theme; unreadable means every include) or an include nothing calls → any page; any page change → the search index; a file outside the tree → `undetermined` when the staging cone carries any directory, nothing when it reaches none | `cat-harness-tools/scripts/docs-rendered-impact.ts` |
+| `published-provenance` | a mounted instance's skill, process or schema (anything a generator renders) | the published root's own record of what each page was generated from — the "Generated from `<path>`" note and `data-src` on the edit link — read back as source → pages; a new source has no page yet and an index names no source, so both stay for the QA diff | `cat-harness-tools/scripts/staging-changes.ts` (`predictByProvenance`) |
 
 **Measured on the docs-site renderer** (this repository's site, two local builds, 2026-10-06): a page, a data file read through an include, an include, a stylesheet and a script gave 8 predicted files and 8 measured. 7 were confirmed. The 1 miss differs between two builds of the same commit anyway (where QA data was fetched from), and 1 unconfirmed page includes the changed include behind a Liquid condition. Two builds of one commit first differed in 826 files, every one by a `?v=<build time>` cache-buster. So `diffBuiltSites` blanks `BUILD_STAMPS` before hashing; without that, every page reads as missed.
 
@@ -111,6 +112,19 @@ names none above it.
   The review page shows it under the list, as the PR comment does: a run
   started by dispatch finds its PR from the branch, so the comment is not
   lost when no `pull_request` event started the run (bean `ehh6`).
+- **Show**: every docs-site preview also carries `STAGING/<slug>/changes/`
+  (`cat-harness-tools/scripts/staging-changes.ts`, owner 2026-10-14): the
+  changed sources, with a re-pinned mount in `index.lock.json` expanded into
+  the files its repository changed between the two pins (a re-pin handed to
+  a renderer as one JSON line predicts nothing); the cone's files and its
+  `undetermined` inputs; and the build diffed against the site at the
+  `gh-pages` root, its `missed` files listed as **changed, not in the cone**.
+  That diff folds the preview's base URL to the root's, blanks
+  `BUILD_STAMPS` and compares a page's `<main>`, because a preview's chrome
+  differs on every page; a removed file is listed apart, by directory, since
+  most are parts of the site the preview does not carry. The root records
+  its build commit in `build.json`; a root not built from the PR's base is
+  said on the page, never read as this branch's change.
 - **Gate**: `review-coverage-gate.dmn` reads three page counts beside the
   block counts, each with a status fact so an uncomputed count is never 0:
   - `unreviewedPages`: review-list files nobody has reviewed at their

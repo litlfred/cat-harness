@@ -72,7 +72,7 @@ Compose the forge URL a person can drop a file at, from the instance's own decla
 | | |
 |---|---|
 | install | nothing to install |
-| invoke | `bun run cat-harness-tools/scripts/upload-url.ts` |
+| invoke | `bun run cat upload:url` |
 | requires | runtime `bun` · no network |
 
 ### Inputs

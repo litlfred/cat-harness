@@ -15,6 +15,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-validators`,
 | [`bean-node.json`](bean-node.json) | data |  |
 | [`beans-merge-queue-entry.json`](beans-merge-queue-entry.json) | data |  |
 | [`beans-session-survey.json`](beans-session-survey.json) | data |  |
+| [`beans-sweep-mark.json`](beans-sweep-mark.json) | data |  |
 | [`binary-release.json`](binary-release.json) | data |  |
 | [`block-kind-node.json`](block-kind-node.json) | data |  |
 | [`block-qa-report.json`](block-qa-report.json) | data |  |
@@ -57,6 +58,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-validators`,
 | [`qa-checker-node.json`](qa-checker-node.json) | data |  |
 | [`qa-index.json`](qa-index.json) | data |  |
 | [`qa-report.json`](qa-report.json) | data |  |
+| [`qa-script.json`](qa-script.json) | data |  |
 | [`qa-translation-pages.json`](qa-translation-pages.json) | data |  |
 | [`referenced-source.json`](referenced-source.json) | data |  |
 | [`remote-skill-record.json`](remote-skill-record.json) | data |  |
@@ -68,9 +70,12 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-validators`,
 | [`session-survey-session-survey.json`](session-survey-session-survey.json) | data |  |
 | [`skill-topics.json`](skill-topics.json) | data |  |
 | [`skills-voice-profile.json`](skills-voice-profile.json) | data |  |
+| [`slice-index.json`](slice-index.json) | data |  |
+| [`slice-sqlite.json`](slice-sqlite.json) | data |  |
 | [`slides-accessibility.json`](slides-accessibility.json) | data |  |
 | [`source-descriptor.json`](source-descriptor.json) | data |  |
 | [`substrate-snapshot.json`](substrate-snapshot.json) | data |  |
+| [`sweep-marks-sweep-mark.json`](sweep-marks-sweep-mark.json) | data |  |
 | [`test-plan.json`](test-plan.json) | data |  |
 | [`test-report.json`](test-report.json) | data |  |
 | [`test-run.json`](test-run.json) | data |  |

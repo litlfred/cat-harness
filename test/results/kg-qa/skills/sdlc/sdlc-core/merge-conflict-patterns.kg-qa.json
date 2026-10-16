@@ -62,7 +62,7 @@
       "reviewer": {
         "by": "agent",
         "session": "session_backfill_lvlv",
-        "model": "claude-3-7-sonnet"
+        "model": "not-disclosed"
       },
       "author_sessions": [],
       "skill_hash": "hash:adversarial-checklist:v1",

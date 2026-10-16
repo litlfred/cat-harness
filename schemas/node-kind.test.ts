@@ -103,3 +103,28 @@ describe("versioned kinds (SemVer, one live major — issue #2195)", () => {
     expect([Mixin.version, Mixin.tag, "$schema" in Mixin.schema.shape]).toEqual([undefined, undefined, false]);
   });
 });
+
+describe("strict kinds — a kind made from a strict schema's shape judges as that schema did", () => {
+  const Strict = z.object({ $schema: z.literal("x/v1"), a: z.string() }).strict();
+  const kind = nodeKind("x", [], Strict.shape, { strict: true });
+  const loose = nodeKind("x-loose", [], Strict.shape);
+
+  it("refuses an undeclared key only when strict", () => {
+    const extra = { $schema: "x/v1", a: "y", b: 1 };
+    expect(Strict.safeParse(extra).success).toBe(false);
+    expect(kind.schema.safeParse(extra).success).toBe(false);
+    expect(loose.schema.safeParse(extra).success).toBe(true);
+  });
+
+  it("accepts what the schema accepts, and keeps a refinement", () => {
+    expect(kind.schema.safeParse({ $schema: "x/v1", a: "y" }).success).toBe(true);
+    const refined = nodeKind("x-refined", [], Strict.shape, {
+      strict: true,
+      refine: (v, ctx) => {
+        if (v.a === "bad") ctx.addIssue({ code: "custom", path: ["a"], message: "bad" });
+      },
+    });
+    expect(refined.schema.safeParse({ $schema: "x/v1", a: "bad" }).success).toBe(false);
+    expect(refined.schema.safeParse({ $schema: "x/v1", a: "ok", b: 1 }).success).toBe(false);
+  });
+});

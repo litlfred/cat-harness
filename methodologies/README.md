@@ -11,6 +11,8 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `methodologies`, holding 
 | file | what it is | used by |
 |---|---|---|
 | [`adequacy-for-purpose-modelling.md`](adequacy-for-purpose-modelling.md) | Adequacy-for-purpose modelling |  |
+| [`agentic-pre-merge-review.md`](agentic-pre-merge-review.md) | Tool-Integrated Agentic Pre-Merge Review — Multi-Agent Verification Loops, Supervised Consistency, and Gate Boundaries |  |
+| [`agentic-se-literature-synthesis.md`](agentic-se-literature-synthesis.md) | Agentic Software Engineering Literature Synthesis — Cross-Paper Synthesis and Bidirectional Adversarial Analysis |  |
 | [`consensus-grounded-subject-evaluation.md`](consensus-grounded-subject-evaluation.md) | Consensus-grounded subject evaluation: score against where experts agree, and read the panel |  |
 | [`correspondence-analysis.md`](correspondence-analysis.md) | Correspondence analysis: the SVD of the standardised residuals |  |
 | [`dmn.md`](dmn.md) | DMN — the computable case |  |
@@ -25,10 +27,13 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `methodologies`, holding 
 | [`prov-o-provenance.md`](prov-o-provenance.md) | PROV-O: provenance as a shared record, not a house log format |  |
 | [`raci.md`](raci.md) | RACI — involvement, in four kinds |  |
 | [`rasci.md`](rasci.md) | RASCI — the fifth letter, and when it earns its place |  |
+| [`requirements-standards-assessment.md`](requirements-standards-assessment.md) | Assessment of open standards for requirements and bootstrap mapping |  |
+| [`sdlc-agentic-landscape.md`](sdlc-agentic-landscape.md) | SDLC Agentic Landscape — Mapping LLM Multi-Agent Systems to the Software Lifecycle |  |
 | [`skill-pipeline-subject-indexing.md`](skill-pipeline-subject-indexing.md) | [Skill](https://litlfred.github.io/bootstrap/schemas/#skill)-pipeline subject indexing: decompose the cataloguer's stages and validate each |  |
 | [`spdx-3.md`](spdx-3.md) | SPDX 3: a bill of materials as a graph of elements |  |
 | [`specification-compiled-agents.md`](specification-compiled-agents.md) | Specification-compiled agents |  |
 | [`swot.md`](swot.md) | SWOT — the two axes, and what the method refuses to do |  |
+| [`verifiable-ai-guideline-evaluation.md`](verifiable-ai-guideline-evaluation.md) | Verifiable AI Guideline Evaluation: Multi-Measurement Debiased Inference, Peer Councils, and Hybrid Bounds |  |
 | [`wiregen.md`](wiregen.md) | WireGen: from a written intent to a reviewed, mid-fidelity wireframe |  |
 | [`zero-trust-architecture.md`](zero-trust-architecture.md) | Zero trust architecture |  |
 

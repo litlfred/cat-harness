@@ -92,8 +92,8 @@ In `cat-harness-tools/src/tools/` or `cat-harness-tools/src/server.ts`:
 
 ### Step 4: Declare the Tool Node in the Knowledge Graph
 
-In `cat-harness/tools/` (or `tools/mcp.ts`):
-- Call `defineTool` from `schemas/tool.ts`.
+In `tools/<id>/<id>.ts`, one folder per Tool (Step 4b):
+- Default-export `toolFactory((t) => defineTool({ … }))` (`schemas/tool-folders.ts`, `schemas/tool.ts`).
 - Link to the skill via `satisfies: ["<skill-id>"]`.
 - Map I/O ports to shared vocabulary in `schemas/tool-types.ts` via absolute IRIs.
 - Specify invocation target:
@@ -102,7 +102,8 @@ In `cat-harness/tools/` (or `tools/mcp.ts`):
 
 Example:
 ```typescript
-export const packTarballTool = defineTool({
+// tools/pack-tarball/pack-tarball.ts
+export default toolFactory((t) => defineTool({
   id: "pack-tarball",
   satisfies: ["npm-kg-distribution", "package-release"],
   title: "Pack Knowledge Graph into npm tarball",
@@ -119,7 +120,7 @@ export const packTarballTool = defineTool({
   invoke: {
     command: "bun cat-harness-tools/scripts/pack-tarball.ts",
   },
-});
+}));
 ```
 
 ### Step 4b: A new folder is a named subgraph of its harness — declare it
@@ -144,18 +145,28 @@ the folder sits decides which (owner, 2026-10-14):
    found through that graph's reader, as each voice folder is found by its
    `voice.json`. Never declare one Tool's folder as a `tools` directory:
    discovery loads ONE `tools/index.ts` per harness and refuses a harness
-   that declares two `tools` directories.
+   that declares two `tools` directories. The Tool's folder is found by
+   that `index.ts` (`toolsFromFolders`), as each voice is by its `voice.json`.
 
 Both declared forms say what a folder holds the same way, by its
 `graphTypologies`: a from-within entry names its own kind (`voices.json`
 declares `vendors` as `voice-vendors`), it does not inherit its parent's.
 
-**One folder per Tool is the recommended layout for a Tool with several
-files** (its implementation, fixtures, a schema): `tools/<stub>/` inside the
-harness's declared `tools` directory, re-exported by that directory's
-`tools/index.ts` so discovery is unchanged. A Tool that is one definition may
-stay a single entry in a shared file; both layouts are allowed, and moving the
-existing Tools is not required.
+**One folder per Tool, always** (bean `tdir`, owner 2026-10-15: *"migrate
+all impacted repos … to sub-folders as is strongly recommended behaviour"*).
+A Tool is declared in `tools/<id>/<id>.ts` inside the harness's declared
+`tools` directory: the folder, the file stem and the Tool's `id` are one
+string, the file default-exports `toolFactory((t) => defineTool({ … }))`, and
+the folder also holds whatever is that Tool's alone (its script, fixtures,
+tests). `tools/index.ts` only calls `toolsFromFolders`
+(`schemas/tool-folders.ts`), which refuses a folder that breaks the
+convention, so discovery is unchanged. Helpers several Tools share go in
+`tools/lib.ts`, which declares no Tool. A `defineTool(` anywhere else in the
+directory is an inline declaration, and `check:tools` reports it.
+
+The source stays TypeScript on the default branch; the JSON-LD of each Tool
+(`<base>/tools/<id>.jsonld`, its own IRI) and the JSON Schema of each I/O type
+are written when the site is published, never committed.
 
 Why declaring is part of the process, not tidying:
 

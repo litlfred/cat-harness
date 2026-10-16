@@ -17,7 +17,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap",
-          "ref": "12a5c9eadca337483d37ce8402b3cf9a63588d2a",
+          "ref": "9ecfb729b38b9196063fee76c6f7932f92502353",
           "overrides": {
             "bootstrap": {
               "whole": true
@@ -27,9 +27,9 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-10-07",
-              "ref": "12a5c9eadca337483d37ce8402b3cf9a63588d2a",
-              "evidence": "owner, session_012qoycyCSGidZqW245vXhze 2026-10-07: 'Yes, trust both pins' — the SHAs the submodules already pinned (#2462)"
+              "on": "2026-10-15",
+              "ref": "9ecfb729b38b9196063fee76c6f7932f92502353",
+              "evidence": "Owner litlfred, 2026-10-15 (17:30Z): 'merge and repin for next 3 hrs. keep draining'"
             }
           }
         }
@@ -41,7 +41,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap-tools",
-          "ref": "1947e0536a97a9ca447b76edc39de1cf18b1f29e",
+          "ref": "7dc55773590bbc3158c877a3d61222aa7864006c",
           "overrides": {
             "bootstrap-tools": {
               "whole": true
@@ -54,9 +54,9 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-10-07",
-              "ref": "1947e0536a97a9ca447b76edc39de1cf18b1f29e",
-              "evidence": "owner, session_012qoycyCSGidZqW245vXhze 2026-10-07: 'Yes, trust both pins' — the SHAs the submodules already pinned (#2462)"
+              "on": "2026-10-15",
+              "ref": "7dc55773590bbc3158c877a3d61222aa7864006c",
+              "evidence": "Owner litlfred, 2026-10-15 (17:30Z): 'merge and repin for next 3 hrs. keep draining'"
             }
           }
         }

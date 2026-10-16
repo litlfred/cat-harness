@@ -41,7 +41,17 @@
  */
 import { z } from "zod";
 
-export const DIFF_RENDERER_INPUTS = ["text", "pages", "screenshots"] as const;
+export const DIFF_RENDERER_INPUTS = ["text", "pages", "screenshots", "structure"] as const;
+
+/**
+ * A `defaultFor` entry that names no kind: any block the build published
+ * STRUCTURED sides for (`changeset-structure.json`, its manifest's fields
+ * before and after). The structured kinds — a DAK persona, requirement, data
+ * element — are declared by the layers above this one (smart-base's
+ * `block-kinds/`), which this layer may not name, so the renderer is the
+ * default by what the block HAS rather than by a list of kinds (bean f327).
+ */
+export const STRUCTURED = "@structured" as const;
 
 export const DiffRendererSchema = z.object({
   /** Stable, and what a viewer's saved choice refers to. */
@@ -53,7 +63,8 @@ export const DiffRendererSchema = z.object({
   needs: z.array(z.enum(DIFF_RENDERER_INPUTS)).min(1),
   /**
    * Block kinds this renderer is the DEFAULT for, from `BLOCK_KINDS`. `*` is
-   * the fallback, and exactly one renderer carries it. Two renderers may list
+   * the fallback, and exactly one renderer carries it. {@link STRUCTURED} is
+   * any block with structured sides, and comes before its kind. Two renderers may list
    * the same kind: order is preference, and the page takes the first one
    * that can run on the block. A test holds every
    * other entry to a kind that exists, so a renamed kind cannot silently
@@ -95,11 +106,19 @@ export const DIFF_RENDERERS: readonly DiffRenderer[] = z.array(DiffRendererSchem
     // published no pictures opens tables side by side, not on a word diff.
     defaultFor: ["table", "figure", "diagram", "equation", "simulator"],
   },
+  {
+    id: "fields",
+    label: "Fields, before and after",
+    description: "The block's fields side by side, one row each, with every added, removed and changed field named. For structured blocks — a persona, a requirement, a data element — whose source diff is unreadable.",
+    needs: ["structure"],
+    defaultFor: [STRUCTURED],
+  },
 ]);
 
-/** The renderer a block of `kind` opens with. */
-export function defaultRendererFor(kind: string, renderers: readonly DiffRenderer[] = DIFF_RENDERERS): DiffRenderer {
+/** The renderer a block of `kind` opens with; `structured` when the build published its fields. */
+export function defaultRendererFor(kind: string, renderers: readonly DiffRenderer[] = DIFF_RENDERERS, structured = false): DiffRenderer {
   return (
+    (structured ? renderers.find((r) => r.defaultFor.includes(STRUCTURED)) : undefined) ??
     renderers.find((r) => r.defaultFor.includes(kind)) ??
     renderers.find((r) => r.defaultFor.includes("*")) ??
     renderers[0]!

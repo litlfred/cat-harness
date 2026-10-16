@@ -21,6 +21,7 @@ Input schema for formal content review and approval workflow.
 | `contentRef` | string | **yes** | Git ref or path to the content being reviewed. |
 | `previousVersion` | string | no | Git ref of the previous approved version (for diff). |
 | `validationReport` | string | no | Path to the validation report for this content. |
+| `stagingLinks` | any | no | The staging preview of the work under review, as the request for feedback carried it, so the reviewer opens the changed pages rather than rebuilding links. Rule: cat-harness skills/sdlc/sdlc-core/staging-review.md §"The deep-link rule". |
 
 
 [Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/content-review/input.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/content-review/input.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/content-review/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/content-review/input.schema.json" data-repo="litlfred/folio-assistant" }
@@ -34,6 +35,7 @@ What a review produces: findings, a decision about them, and the audit notes tha
 | `findings` | array<object> | **yes** | One entry per observation. Immutable once raised: to disagree with one, overrule it in the decision. |
 | `decision` | object | **yes** |  |
 | `notes` | array<object> | **yes** | Why the decision was made, and why each overruled finding was left. |
+| `stagingLinks` | any | no | The staging preview of the work this output asks a person to look at: one deep link per changed page, with the same page on main. Required whenever a preview exists; when it does not, say so in `missing`. Rule: cat-harness skills/sdlc/sdlc-core/staging-review.md §"The deep-link rule". |
 
 ### `findings[]`
 

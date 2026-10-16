@@ -24,6 +24,13 @@
 # 4. Honest reporting: if a check has no writer or its writer fails, it is
 #    reported as unrepaired/defect (exit 1), not claimed as a repair.
 
+# Since the split (bean 70lx) `post-merge:regen` is a cat-harness-tools script
+# that runs in the composed folio-assistant index, not in this repository on
+# its own: here, `bun run cat` found /usr/bin/cat and every run failed. The
+# job is the harness's reusable `layer-post-merge-regen.yml`, which composes
+# the index with this commit in place, regenerates, and opens the repair PR
+# HERE (owner, 2026-10-15: "a").
+
 name: Post-merge regen check and repair
 
 on:
@@ -40,47 +47,8 @@ permissions:
   contents: write
   pull-requests: write
 
-concurrency:
-  group: post-merge-regen
-  cancel-in-progress: false
-
 jobs:
-  check-and-repair:
-    name: Check post-merge derived artefacts
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-        with:
-          fetch-depth: 1
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
-        with:
-          bun-version: 1.3.14
-
-      - name: Mount bootstrap and bootstrap-tools from lock
-        # The mounter is the tools layer's, found wherever that layer sits
-        # rather than named: this layer does not name the one above it.
-        # Exactly one copy is run; several is an error, not a first pick.
-        run: |
-          shopt -s nullglob
-          found=(*/scripts/mount-from-lock.ts)
-          if [ "${#found[@]}" -gt 1 ]; then
-            echo "more than one mount-from-lock.ts: ${found[*]}" >&2
-            exit 1
-          elif [ "${#found[@]}" -eq 1 ]; then
-            bun "${found[0]}" --root .
-          elif [ -f "scripts/mount-from-lock.ts" ]; then
-            bun scripts/mount-from-lock.ts --root .
-          fi
-
-      - name: Run post-merge regen check and automated repair
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
-            bun run cat post-merge:regen --dry-run
-          else
-            bun run cat post-merge:regen --create-pr
-          fi
+  regen:
+    uses: litlfred/cat-harness-tools/.github/workflows/layer-post-merge-regen.yml@main
+    with:
+      dry-run: ${{ inputs.dry_run == true }}

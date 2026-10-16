@@ -137,6 +137,15 @@ export function nodeKind<const I extends string, const P extends readonly NodeKi
      * unwraps the kind into its schema runs it too.
      */
     refine?: (value: z.infer<z.ZodObject<Composed<P, OwnOf<I, O>>>>, ctx: z.RefinementCtx) => void;
+    /**
+     * Refuse a key no field declares, as `z.object(...).strict()` does. Absent:
+     * unknown keys are stripped and the node still passes. For a kind made from
+     * a strict Zod schema's shape (`nodeKind(id, [], XSchema.shape, { strict: true })`),
+     * so the validator node that names the kind judges files exactly as the
+     * schema did: a writer that emits exactly its keys treats an extra one as
+     * a defect, and stripping would pass it silently.
+     */
+    strict?: boolean;
   } = {},
 ): NodeKind<Composed<P, OwnOf<I, O>>> {
   const parsed = parseSchemaTag(versionedId);
@@ -214,9 +223,10 @@ export function nodeKind<const I extends string, const P extends readonly NodeKi
     own,
     overrides: [...declaredOverrides],
     order: order.map((s) => s.id),
-    schema: (opts.refine
-      ? z.object(shape).superRefine(opts.refine as (v: unknown, ctx: z.RefinementCtx) => void)
-      : z.object(shape)) as unknown as z.ZodObject<Composed<P, OwnOf<I, O>>>,
+    schema: (() => {
+      const object = opts.strict ? z.object(shape).strict() : z.object(shape);
+      return opts.refine ? object.superRefine(opts.refine as (v: unknown, ctx: z.RefinementCtx) => void) : object;
+    })() as unknown as z.ZodObject<Composed<P, OwnOf<I, O>>>,
   };
 }
 

@@ -10,7 +10,19 @@
     {
       "dir": "cat-harness/folio",
       "present": true,
-      "nodes": 1
+      "nodes": 1,
+      "files": [
+        {
+          "path": "README.md",
+          "bytes": 1131,
+          "size": "1.1 KB"
+        },
+        {
+          "path": "cat-harness.json",
+          "bytes": 2366,
+          "size": "2.3 KB"
+        }
+      ]
     }
   ],
   "nodes": [
