@@ -57,8 +57,12 @@ import { BOOTSTRAP_TERMS } from "@litlfred/bootstrap-tools/schemas/graph.ts";
  *   needs. Nothing here may require the harness.
  * - `harness` — the agentic machinery: tools, capabilities, requirements,
  *   work plan, process detail.
- * - `core` — authored content and what surrounds it: voices, library,
- *   uploads, todos, the folio itself.
+ * - `core` — authored content, declared by an instance above the harness and
+ *   minted in THAT instance's namespace (`<iriBase><version>/ns#` from its
+ *   declaration). The harness glosses no `core` term: since
+ *   folio-assistant#2598 (owner, 2026-10-16, "1a") the kinds it uses itself —
+ *   todos, library, uploads, voices, the folio — are harness terms, and the
+ *   rest are declared as nodes in the content instance's `typologies/` graph.
  *
  * The direction rule holds here as everywhere: core may name a harness term,
  * harness may name a bootstrap term, and never the reverse.
@@ -245,7 +249,6 @@ export const CLASS_GLOSSES: Readonly<Record<string, TermGloss>> = {
     gloss: "Something an actor's environment provides — a binary, a service, a credential — probed rather than assumed.",
   },
   Image: {
-    layer: "core",
     gloss: "A declared picture belonging to an instance, carrying its role, its layout and any text region.",
   },
   RoleGraph: {
@@ -253,16 +256,13 @@ export const CLASS_GLOSSES: Readonly<Record<string, TermGloss>> = {
   },
   // Registered outside BASE_GRAPH_TYPOLOGIES — `folio-graph-typology.ts` adds the first
   // and the other two are reporting states — so they carry no `summary` for
-  // `ns-export` to read and are glossed here instead.
+  // `ns-export` to read and are glossed here instead. Harness terms since
+  // folio-assistant#2598 (owner, 2026-10-16, "1a"): the harness mints them for
+  // its own declaration and graphs, so they are in its namespace. The glossary
+  // kind's class went up with the kind, to the instance that declares it.
   FolioGraph: {
-    layer: "core",
     gloss: "Authored content — the folio itself, rendered to a website.",
     seeAlso: "/concepts/content-types.html",
-  },
-  GlossaryGraph: {
-    layer: "core",
-    gloss:
-      "A graph of SKOS terms (folio-glossary/v1): local terms with definitions and codes, linked to external SKOS concepts rather than copying them. Registered by core, not the harness.",
   },
   // A DOCUMENT class, not a kind class: it types the published fsh-guts
   // export, as RoleGraph and PreviewGraph type theirs. It was defined only
@@ -273,11 +273,9 @@ export const CLASS_GLOSSES: Readonly<Record<string, TermGloss>> = {
       "The published export of an instance's fsh-guts tree: deprecated and throwaway structured content, reachable by name only.",
   },
   PreviewGraph: {
-    layer: "core",
     gloss: "A staging target: the same folio built for review rather than for release.",
   },
   UnknownGraph: {
-    layer: "core",
     gloss:
       "A declared graph typology nothing recognises — reported as its own state, never silently treated as empty.",
   },

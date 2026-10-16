@@ -346,12 +346,6 @@ export const AVATARS: Readonly<Record<string, Avatar>> = {
     tone: 300,
     reads: "a chip with its pins — the machine an agent is running on, not what it says",
   },
-  // An OPEN BOOK, and the choice is between two readings of "glossary". A tag
-  // or a label would draw the `notation` — the code a term carries — which is
-  // one field of a concept and not the thing itself. A book draws what a
-  // reader does with it: looks a word up. `tone: 84` is unused and sits
-  // between `qa`'s green verdict and `library`'s, which is right for a
-  // reference rather than a judgement.
   "external-schema": {
     glyph: "M4 6h7v12H4zM13 6h7v12h-7zM11 9h2M11 12h2M11 15h2",
     tone: 208,
@@ -403,11 +397,6 @@ export const AVATARS: Readonly<Record<string, Avatar>> = {
     tone: 92,
     reads: "three swimlanes with a tag — the roles a process's lanes define",
   },
-  glossary: {
-    glyph: "M12 7v12M12 7C10 5 7 5 4 6v12c3-1 6-1 8 1M12 7c2-2 5-2 8-1v12c-3-1-6-1-8 1",
-    tone: 84,
-    reads: "an open book — terms somebody looks up, not terms a machine mints",
-  },
   health: {
     glyph: "M3 13h4l2-5 3 10 2-6 2 3h5",
     tone: 4,
@@ -432,23 +421,6 @@ export const AVATARS: Readonly<Record<string, Avatar>> = {
     reads: "a clipboard carrying a tick and a cross — one run's own account of what it did, both outcomes on the same sheet",
   },
 
-
-
-
-
-
-
-
-  "computation-witness": {
-    // A clipboard with a tick: the record a computation keeps of what it
-    // checked and that the checks held. Deliberately NOT `qa`'s verdict — a
-    // witness is a computation's own record, produced by running it, and
-    // judges nothing else. Bean `qou-qb6t`. `tone: 328` was unused and sits
-    // away from `code`'s so a producer and its record are told apart.
-    glyph: "M9 4h6v2H9zM7 5H5v15h14V5h-2M8.5 13l2.5 2.5 4.5-5",
-    tone: 328,
-    reads: "a clipboard with a tick — a computation's record of what it checked, and that it held",
-  },
   "binary-release": {
     // A sealed carton with its strap. Deliberately NOT the `uploads` arrow —
     // that is something arriving, and a release is something that WENT, under

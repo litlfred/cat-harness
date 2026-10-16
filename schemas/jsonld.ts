@@ -78,11 +78,11 @@ import type { ContributionRegistry } from "./contributions";
  */
 import { z } from "zod";
 
-import { CAT_HARNESS_NS, CORE_NS, FOLIO_BASE, ownNamespace, termCurie } from "./namespaces";
+import { CAT_HARNESS_NS, FOLIO_BASE, ownNamespace, termCurie } from "./namespaces";
 
-// Content terms are folio-assist-core's, so they hang off core's namespace —
-// the same layer that owns block kinds, voices and the library.
-export { CORE_NS };
+// The content layer's namespace is no longer re-exported here
+// (folio-assistant#2598): it is derived from that instance's declaration
+// (`instanceNamespace`), and a block kind's class from its own node.
 /** SPAR Document Components Ontology — structural document parts. */
 export const DOCO_NS = "http://purl.org/spar/doco/";
 /** SPAR Discourse Elements Ontology — rhetorical roles. */

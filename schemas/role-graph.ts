@@ -116,9 +116,9 @@ import { z } from "zod";
 import { RepoFullNameSchema } from "./repo-full-name.js";
 import { ODRL_ACTIONS } from "./odrl";
 
-import { NS_PREFIXES, termIri } from "./namespaces";
+import { termIri } from "./namespaces";
 import { ACTOR_KINDS, SUT_ACTOR_KINDS, SystemUnderTestFacetSchema, type ActorKind, type SystemUnderTestFacet } from "./skill-package";
-import { NETWORK_REACHES, directoryForGraph, findInstanceRoot, type NetworkReach } from "./cat-harness";
+import { NETWORK_REACHES, directoryForGraph, findInstanceRoot, ownPrefixTable, type NetworkReach } from "./cat-harness";
 import { findDeclarationFile, instanceRootNamed, repoRootFor } from "./instance-roots";
 import { SkillNameSchema } from "./tool-types";
 import { ModelCapabilitiesSchema, type ModelCapabilities } from "./model-capabilities.js";
@@ -1193,7 +1193,7 @@ export function laneBinding(
 export function toJsonLd(graph: RoleGraph): Record<string, unknown> {
   return {
     "@context": {
-      ...NS_PREFIXES,
+      ...ownPrefixTable(),
       skills: termIri("hasSkill"),
       inherits: termIri("isA"),
       roles: termIri("declaresRole"),

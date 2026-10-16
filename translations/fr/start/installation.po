@@ -215,10 +215,6 @@ msgstr "folio-assistant expose ses outils via MCP, de sorte que tout harnais d'a
 msgid "Claude Code"
 msgstr "Claude Code"
 
-#: docs/start/installation.md:175
-msgid "Add folio-assistant as an MCP server. Project-scoped config lives in  at the root of your content repo:"
-msgstr "Ajoutez folio-assistant en tant que serveur MCP. La configuration propre au projet réside dans  à la racine de votre dépôt de contenu :"
-
 #: docs/start/installation.md:189
 msgid "Or register it from the CLI:"
 msgstr "Ou enregistrez-le depuis la ligne de commande (CLI) :"
@@ -258,3 +254,6 @@ msgstr "Pointez votre client vers la commande stdio ci-dessus, ou exécutez le t
 #: docs/start/installation.md:244
 msgid "Why this works across harnesses. The discipline lives in  (a Linux Foundation agent standard read natively by Claude Code, Gemini CLI, Antigravity, Cursor, Copilot, and others); the live state is exposed both as a per-harness  hook over one shared script and as the  MCP tool. See the architecture page."
 msgstr "Pourquoi cela fonctionne d'un harnais à l'autre. La discipline réside dans  (un standard pour agents de la Linux Foundation lu nativement par Claude Code, Gemini CLI, Antigravity, Cursor, Copilot et d'autres) ; l'état en direct est exposé à la fois sous la forme d'un hook  propre à chaque harnais via un script partagé et sous la forme de l'outil MCP . Consultez la page architecture."
+
+#~ msgid "Add folio-assistant as an MCP server. Project-scoped config lives in  at the root of your content repo:"
+#~ msgstr "Ajoutez folio-assistant en tant que serveur MCP. La configuration propre au projet réside dans  à la racine de votre dépôt de contenu :"
