@@ -39,17 +39,6 @@
       "source": "bootstrap:Role",
       "target": "cat-harness:",
       "element": [
-        {
-          "code": "actedUpon",
-          "target": [
-            {
-              "code": "actedUpon",
-              "relationship": "equivalent",
-              "transform": "flag",
-              "comment": "Written only when true: a lane tasks act ON is not a persona, and a reader must be told so."
-            }
-          ]
-        },
         { "code": "usages", "target": [{ "code": "hasLaneUsage", "key": "usage", "relationship": "equivalent" }] }
       ]
     }

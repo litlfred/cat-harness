@@ -36,7 +36,7 @@ Modelled on `WorldHealthOrganization/smart-base`'s
 and the first is the one that is cheap to lose and invisible when you do:
 
 **1. Every edge term is declared `{"@type": "@id"}`.** Without that coercion,
-`implementedBy`, `performedBy` and `partOf` are **string literals** to any
+`requires`, `performedBy` and `partOf` are **string literals** to any
 JSON-LD processor, and the document is a list of records that merely *looks*
 linked to a human reading the JSON. Declaring them costs one line each and is
 the difference between 900 records and a traversable graph. A test asserts it.
@@ -104,10 +104,11 @@ Five questions, in this order. The worked call for each term is in
    `dcterms:isPartOf`, `holdsGraph` is `dcterms:type`, `conformsTo` is
    `dcterms:conformsTo`; a sequence flow's `from`/`to` are BPMN's own
    `sourceRef`/`targetRef` and a node's `incoming`/`outgoing` BPMN's
-   attributes of those names; `implementedBy` and `bindsRole` are bootstrap's
-   `processes:skill` and `processes:role`, the extension attributes the
-   diagram itself carries. bootstrap's own graph (bootstrap-tools'
-   `export-graph.ts`) uses the same IRIs, so the two graphs agree.
+   attributes of those names; a task's skill is `requires`, which is
+   `dcterms:requires` (the task, the dependent node, requires the skill), and
+   a lane's role (`bindsRole`) is BPMN's own `partitionElementRef` (owner,
+   2026-10-16). bootstrap's own graph (bootstrap-tools' `export-graph.ts`)
+   uses the same IRIs, so the two graphs agree.
 
    **How, so it cannot drift:** a term that restated a standard keeps its
    gloss in `schemas/vocabulary.ts` and gains `replacedBy`, a CURIE.

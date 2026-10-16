@@ -11,16 +11,14 @@ Owner, 2026-09-19:
 > audit log to git data store is turned off - need explict like (cpature log
 > when agent runs this workflow).
 
-## The role is mechanical, and `actedUpon`
+## The role is mechanical
 
-`log` in `scenarios/roles.json`: `actorKinds: ["system"]`,
-`actedUpon: true`. It is written to and emptied *by* an actor; it decides
-nothing and performs no task. The two existing precedents are `work-plan`
-and `corpus` — stores that are acted upon rather than acting — and this is
-deliberately the same shape rather than a new one.
-
-`role-has-actor` is therefore `n/a` rather than a failure, which is the
-whole reason `actedUpon` exists.
+`log` in `scenarios/roles.json`: `actorKinds: ["system"]`. It is written to
+and emptied *by* an actor, and it decides nothing. The precedents are
+`work-plan` and `corpus`, and this is deliberately the same shape rather than
+a new one. A mechanical role is still a real role (owner, 2026-10-16): this
+skill is its **contract** — the shape of an entry and where it goes — and the
+`actedUpon` flag that once exempted it from `role-has-actor` is retired.
 
 ## The entry
 

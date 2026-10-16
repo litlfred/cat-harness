@@ -1447,8 +1447,8 @@ skills/                         ← this instance's `kg`
 and the processes those roles act in — `processes/**/*.bpmn` and
 `processes/**/decisions/*.dmn` — are reached **through the skill that
 describes them**, not as standalone artefacts. A BPMN activity names the skill
-that implements it (`<bootstrap.processes:skill ref>`); a lane names the role that performs it
-(`<bootstrap.processes:role ref>`, or an exact lane-name match in `roles.json`); a role carries
+that implements it (`<bootstrap.processes:skill ref>`); a lane names the role its tasks are performed in
+(`partitionElementRef` → a `<bpmn:resource>` whose id is the role id); a role carries
 the skills its lane's activities need. `bun run cat kg:audit` checks every one of
 those joins and writes a sidecar per node. Model and resolution rules:
 [`role-model.md`](../../process/process-core/role-model.md); schema: `schemas/role-graph.ts`.

@@ -261,7 +261,7 @@ be followed mechanically rather than inferred:
 | Voice | `activeIn.roles` | Role |
 | User Story | `role` | Role |
 | Workflow activity | `<bootstrap.processes:skill ref>` | Skill |
-| Workflow lane | `<bootstrap.processes:role ref>` | Role |
+| Workflow lane | `partitionElementRef` → `<bpmn:resource>` | Role |
 | Workflow activity | `<cat-harness.processes:bean op>` | a work-plan operation |
 | Tool | `satisfies` | Skill |
 | Skill, Capability | `satisfies` | Requirement statement |
