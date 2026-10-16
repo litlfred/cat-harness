@@ -134,7 +134,8 @@ Rule 5 above, applied to CONTENT (bean `yh6u`): in every document on the
 published content context, a plain key must be a declared term, or a JSON-LD
 processor drops it without a word. Measured before the check existed: 8
 undeclared keys across 392 committed figure blocks — every agent-drafted figure
-narrative was being dropped. `bun run cat check:context-emission` now fails on one.
+narrative was being dropped. `bun run cat check:content-keys` now fails on one
+(it judges documents on the content context and on an instance's own context).
 
 It does **not** descend into a value typed `@json`. Such a value is a JSON
 literal by declaration: its inner keys are data, not properties. That is the
@@ -146,7 +147,7 @@ right home for a nested structure that is ours rather than linked data, and
 names a location the file is not at. `text` did exactly that on all 1,323
 committed prose blocks — `../sections/x.md` became a well-formed link to
 nowhere — until bean `589f` made it, `leanSource` and `file` literals.
-`check:context-emission` now fails if a file path sits under any `@id` term.
+`check:content-keys` now fails if a file path sits under any `@id` term.
 
 **The upgrade rule** (owner, 2026-09-23, chosen for the least drift): a path
 term becomes a link — `@type: @id` with ABSOLUTE IRIs minted by the one
@@ -234,8 +235,15 @@ remembering:
   The converse — is each *spoken* prefix bound? — is the direction that
   corrupts data, and nothing asked it.
 
-**The two rules, and what enforces them** — `bun run cat check:context-emission`,
-in CI (`code-quality-gates.yml`), over every committed `.jsonld`:
+**The two rules, and what enforces them.** Since bean `folio-assistant-63q4`
+every emitted document names its own instance's generated context,
+`<iriBase>ns/context/v1.jsonld`, and `check:context-emission` is retired:
+`jsonld:contexts --check` (cat-harness-tools `scripts/gen-instance-contexts.ts`)
+enforces rule 1 over every `.jsonld` in the checkout, failing on a prefix used
+in an IRI position that nothing binds; a context generated from use binds
+nothing unused, which retired the converse. Rule 2 is upheld by construction —
+own prefixes are spelt from the declarations — and is no longer checked
+separately on a document's own inline bindings:
 
 1. **Spoken ⇒ bound.** A compact IRI used as a KEY or an `@type` value must
    have its prefix bound in that document's context — inline, or the
