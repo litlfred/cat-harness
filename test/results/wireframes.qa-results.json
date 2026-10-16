@@ -2,7 +2,7 @@
   "$schema": "qa-results/v1",
   "producer": {
     "script": "cat-harness-tools/scripts/check-wireframes.ts",
-    "script_hash": "1e8ed46a6a81"
+    "script_hash": "f004eb64da9b"
   },
   "subject": {
     "kind": "corpus",
@@ -11,7 +11,7 @@
   "families": {
     "covered": {
       "summary": "A declared visualiser with a wireframe whose checks pass at both viewports.",
-      "count": 26,
+      "count": 36,
       "entries": [
         {
           "ref": "cat-harness/attestations",
@@ -26,8 +26,28 @@
           "wireframe": "beans"
         },
         {
+          "ref": "cat-harness/block-kinds",
+          "wireframe": "state-registry"
+        },
+        {
+          "ref": "cat-harness/code",
+          "wireframe": "state-code"
+        },
+        {
+          "ref": "cat-harness/code-lists",
+          "wireframe": "state-registry"
+        },
+        {
+          "ref": "cat-harness/content-adapters",
+          "wireframe": "state-registry"
+        },
+        {
           "ref": "cat-harness/document-kinds",
           "wireframe": "document-kinds"
+        },
+        {
+          "ref": "cat-harness/editor-checkers",
+          "wireframe": "state-registry"
         },
         {
           "ref": "cat-harness/external-schemas",
@@ -40,6 +60,10 @@
         {
           "ref": "cat-harness/fsh-guts",
           "wireframe": "fsh-guts"
+        },
+        {
+          "ref": "cat-harness/graph-typologies",
+          "wireframe": "state-registry"
         },
         {
           "ref": "cat-harness/health",
@@ -58,8 +82,16 @@
           "wireframe": "lsi"
         },
         {
+          "ref": "cat-harness/memory",
+          "wireframe": "state-registry"
+        },
+        {
           "ref": "cat-harness/methodologies",
           "wireframe": "methodologies"
+        },
+        {
+          "ref": "cat-harness/pipeline-plugins",
+          "wireframe": "state-registry"
         },
         {
           "ref": "cat-harness/processes",
@@ -68,6 +100,10 @@
         {
           "ref": "cat-harness/qa",
           "wireframe": "state-dashboard"
+        },
+        {
+          "ref": "cat-harness/qa-checkers",
+          "wireframe": "state-registry"
         },
         {
           "ref": "cat-harness/schemas",
@@ -98,6 +134,10 @@
           "wireframe": "state-dashboard"
         },
         {
+          "ref": "cat-harness/validators",
+          "wireframe": "state-registry"
+        },
+        {
           "ref": "cat-harness/voices",
           "wireframe": "voices"
         },
@@ -115,7 +155,7 @@
         },
         {
           "ref": "who-iris/catalogue",
-          "wireframe": "catalogue"
+          "wireframe": "who-iris/catalogue"
         }
       ]
     },
@@ -145,5 +185,5 @@
       "entries": []
     }
   },
-  "total": 26
+  "total": 36
 }
