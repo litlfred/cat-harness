@@ -35,6 +35,7 @@
  * a literal specifier), which is the same reason discovery itself is safe.
  *
  * @module schemas/tool-folders
+ * @graphNode none — the folder convention and its loader: the Tool node's schema is `tool.ts`
  */
 import { existsSync, readdirSync } from "node:fs";
 import { createRequire } from "node:module";
