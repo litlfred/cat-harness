@@ -1,11 +1,11 @@
 ---
 # folio-assistant-f6gq
 title: 'PACKAGE IMPORTS ACROSS LAYERS: replace ../ climbs between repositories with package imports, bottom-up (separation lesson 5)'
-status: todo
+status: completed
 type: epic
 priority: normal
 created_at: 2026-10-09T15:29:13Z
-updated_at: 2026-10-16T10:45:00Z
+updated_at: 2026-10-16T14:35:00Z
 parent: folio-assistant-vuip
 ---
 
@@ -35,3 +35,5 @@ It asks the owner for rulings L1–L3. Measured for it:
 Status unchanged: todo, waiting on the ruling.
 
 _2026-10-16T10:45:00Z_ — Parented to `vuip` (GOAL 1) by subject: it had no parent, so it sat under no epic or goal and failed the parent check on main (https://claude.ai/code/session_01NUrhvvMEwU5MmPW4L2w9jP).
+
+**2026-10-16 — rolled up to completed.** All four children (7pvn, cruz, k6g5, pxtk) are completed, and `check:bean-rollup` fails an open epic with no open child. Session: https://claude.ai/code/session_01NUrhvvMEwU5MmPW4L2w9jP
