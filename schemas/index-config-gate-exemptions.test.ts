@@ -34,3 +34,22 @@ describe("an index's own gate exemptions", () => {
     expect("gateExemptions" in (JSON.parse(formatIndexConfig(IndexConfigSchema.parse(base))) as object)).toBe(false);
   });
 });
+
+describe("a file a gate's allowlist admits (owner, 2026-10-16, item 6b)", () => {
+  const files = { files: [{ gate: "check:structure-accessor", file: "schemas/library-ref.ts", reason: "existence only" }] };
+
+  test("parses, beside steps and scripts", () => {
+    expect(GateExemptionsSchema.safeParse(files).success).toBe(true);
+    expect(GateExemptionsSchema.safeParse({ ...exemptions, ...files }).success).toBe(true);
+  });
+
+  test("is refused with no reason, no gate, an unknown key, or a path outside the instance", () => {
+    for (const bad of [
+      { files: [{ gate: "check:x", file: "a.ts", reason: " " }] },
+      { files: [{ gate: "", file: "a.ts", reason: "r" }] },
+      { files: [{ gate: "check:x", file: "a.ts", reason: "r", extra: 1 }] },
+      { files: [{ gate: "check:x", file: "/abs/a.ts", reason: "r" }] },
+      { files: [{ gate: "check:x", file: "../up/a.ts", reason: "r" }] },
+    ]) expect(GateExemptionsSchema.safeParse(bad).success).toBe(false);
+  });
+});

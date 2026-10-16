@@ -877,6 +877,17 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
   gateExemptions?: {
     steps?: Array<{ match: string; kind: "covered-by" | "ci-only" | "no-folio"; reason: string }>;
     scripts?: Array<{ script: string; kind: "report" | "covered-by" | "no-folio" | "scheduled"; reason: string }>;
+    /**
+     * Files of THIS instance that one named gate's allowlist admits, each with
+     * its reason — `gate` is the check's script name (`check:structure-accessor`),
+     * `file` is relative to the declaring instance's root. Declared by the
+     * instance that owns the file, so the gate below it reads the entry
+     * instead of naming a file of a layer above (owner, 2026-10-16, item 6b
+     * of the folio-assistant#2598 wrong-direction triage). The gate decides
+     * what an entry admits; a stale entry is the gate's finding, as for its
+     * own allowlist.
+     */
+    files?: Array<{ gate: string; file: string; reason: string }>;
   };
   /**
    * The content adapters this instance SHIPS, which the harness's composition
@@ -3306,6 +3317,20 @@ export const GateExemptionsSchema = z
           .object({
             script: z.string().min(1),
             kind: z.enum(["report", "covered-by", "no-folio", "scheduled"]),
+            reason: z.string().trim().min(1),
+          })
+          .strict(),
+      )
+      .optional(),
+    files: z
+      .array(
+        z
+          .object({
+            gate: z.string().min(1),
+            file: z
+              .string()
+              .min(1)
+              .refine((f) => !f.startsWith("/") && !f.split("/").includes(".."), "relative to the declaring instance's root, inside it"),
             reason: z.string().trim().min(1),
           })
           .strict(),
