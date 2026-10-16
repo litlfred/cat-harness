@@ -5,10 +5,8 @@ status: todo
 type: task
 priority: normal
 created_at: 2026-10-01T12:16:24Z
-updated_at: 2026-10-12T16:45:00Z
+updated_at: 2026-10-16T07:00:00Z
 parent: folio-assistant-7x5n
-blocked_by:
-    - folio-assistant-hx65
 ---
 
 Story S4 (rfuq). Rows: cat-harness/docs/proposals/placement-audit-2026-10-01.json (PR #1778) — instance=cat-harness, pr 'unplanned', target folio-assistant-core (SPLIT 14, MOVE 1), who-iris (SPLIT 8), smart-base (SPLIT 6, MOVE 6), fhir-harness (SPLIT 4), root (SPLIT 4); plus fhir-harness->smart-base SPLIT 7, core->sci SPLIT 3. SPLIT here mostly means keep the generic item and invert the upward reference.
@@ -27,3 +25,5 @@ Story S4 (rfuq). Rows: cat-harness/docs/proposals/placement-audit-2026-10-01.jso
 - **The 6 live who-iris rows are mostly worked examples and verbatim owner quotes**, for example `schema-management.md:215,300`, which are quoted owner rulings. A SPLIT here therefore takes an editorial judgement: which example stays generic, and which passage moves into who-iris's own docs. It is not a mechanical inversion. Not started.
 - **What would unblock it, in practice:** (1) a fresh audit of the separated repos to replace the monorepo-era rows; (2) the owner or S4 coordinator restarting S4, or clearing the stale `blocked_by` on lthi and rfuq.
 - Status stays **todo**. Its box is unticked: no row was resolved.
+
+_2026-10-16T07:00:00Z_ — Block lifted (owner ruling 2026-10-16, items 1 and 9): `hx65` has been completed since 2026-10-01, and the folio-assistant copy lifted this edge on 2026-10-09. Session https://claude.ai/code/session_01K9Xi9QSxCNYju8QNu7EuHg.
