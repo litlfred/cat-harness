@@ -282,9 +282,10 @@ export function ownElementPattern(xml: string, local: string, rest = "", flags =
  * nothing. An abbreviation is a second name, and a second name is where the
  * two drift.
  *
- * `check-context-emission.ts` enforces both halves: a prefix a document USES
- * must be bound, and a binding onto one of our own namespaces must be spelt
- * as that namespace's stub.
+ * Both halves hold by construction since bean `folio-assistant-63q4`: each
+ * instance's context is generated (`jsonld:contexts`), spelling own prefixes
+ * from the declarations, and its `--check` fails on a prefix a document USES
+ * that nothing binds.
  */
 export const NS_PREFIXES = {
   bootstrap: CAT_BOOTSTRAP_NS,

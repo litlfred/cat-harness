@@ -111,11 +111,13 @@ JSON parser reads records; a consumer with a JSON-LD processor reads a graph.
    refuses a node carrying both a keyword and its alias.
 8. **`@graph`** for a whole-graph export: `kg-export.ts` emits one document
    whose `@graph` holds every node.
-9. **Every bound prefix is emitted, or declared forward with a reason.** A
-   platform rule, not the spec's: `check:context-emission`
-   (`cat-harness-tools/scripts/check-context-emission.ts`) counts emissions over the
-   published documents and fails on a bound prefix nothing speaks unless it
-   is listed in `FORWARD_DECLARED` with a reason.
+9. **A context binds only what its documents use.** A platform rule, not the
+   spec's: each instance's context, `<iriBase>ns/context/v1.jsonld`, is
+   GENERATED from the prefixes and content-context terms its documents use
+   (`jsonld:contexts`, cat-harness-tools `scripts/gen-instance-contexts.ts`),
+   so a bound prefix nothing speaks cannot exist. It replaced
+   `check:context-emission` and its `FORWARD_DECLARED` reasons (bean
+   `folio-assistant-63q4`).
 
 ## The voice that holds code to this node
 
@@ -174,7 +176,8 @@ expanding to the `@base` address.
 | block / library / site siblings | `cat-harness-tools/pipeline/gen-block-jsonld.ts`, `gen-library-jsonld.ts`, `gen-site-jsonld.ts` (`gen:jsonld:check`) |
 | whole-graph export, aliasing, no `@vocab` | `cat-harness-tools/scripts/kg-export.ts` |
 | expansion under a real processor, offline loader | `cat-harness-tools/scripts/publish-verify.ts` (`jsonld-expand` verifier) |
-| prefixes bound vs emitted | `cat-harness-tools/scripts/check-context-emission.ts` |
+| prefixes bound vs used | `cat-harness-tools/scripts/gen-instance-contexts.ts` (`jsonld:contexts --check`) |
+| every key a declared term, no path under `@id` | `cat-harness-tools/scripts/check-content-keys.ts` |
 | identifier = file path | `bootstrap-tools/scripts/check-node-iris.ts` |
 
 ## What the source does NOT establish

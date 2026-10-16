@@ -1,27 +1,30 @@
 import { toolFactory } from "../../schemas/tool-folders.js";
 import { defineTool } from "../../schemas/tool.js";
 
-// ── Every prefix spoken is bound, and every own prefix is a stub ──────
+// ── Every key a content document writes is a declared term ────────────
 //
-// Bean `zaqn`. `content-context` above proves the published context
-// AGREES with its source; it cannot prove the source is right, and it was
-// not: twenty terms written `folio:` under a binding spelt `fac`, so 1,737
-// documents expanded to IRIs in a URI scheme called `folio`. This node is
-// the check that asks the converse of the emission count — the direction
-// that corrupts data. The discipline is `kg-export` §"A prefix is the stub".
+// Beans `yh6u` and `589f`. This node was `check:context-emission`, which
+// also asked the two PREFIX questions of the shared content context (bean
+// `zaqn`): is each bound prefix spoken, and each spoken prefix bound. Once
+// every emitter names its own instance's generated context (bean
+// `folio-assistant-63q4`) both are answered by `jsonld:contexts --check`:
+// a context generated from use binds nothing unused, and it fails on a
+// prefix used and bound nowhere. What a generated context cannot answer
+// is a KEY the content context never declared — dropped by a processor
+// without a word — or a file path under an `@id` term, so those stay here.
 export default toolFactory((t) =>
   defineTool({
     id: "context-prefixes",
-    title: "JSON-LD prefix check",
+    title: "JSON-LD content-key check",
     description:
-      "Check every committed JSON-LD document in both directions: each prefix a context binds is spoken by something (or forward-declared with a reason), each prefix a document SPEAKS as a key or `@type` is bound in its context, each binding onto one of our own namespaces is spelt as that instance's stub, and every plain key in a document on the published content context is a declared term (never descending into an `@json` value). A context it cannot resolve is reported as undetermined, never clean.",
+      "Check every committed JSON-LD document that names the content context, or an instance's own generated context: every plain key is a declared term (never descending into an `@json` value), and no file path sits under an `@id`-coerced term. An empty corpus is a finding, never a clean run. Prefixes are checked by `jsonld:contexts --check`.",
     install: { none: true },
-    invoke: { shell: "bun run cat check:context-emission" },
+    invoke: { shell: "bun run cat check:content-keys" },
     io: {
       inputs: [
         { name: "json", schema: t("Flag"), required: false, arg: { flag: "--json" }, description: "Emit both reports as JSON instead of the console summary." },
       ],
-      outputs: [{ name: "report", schema: t("Text"), description: "Console (or JSON) report; exit 1 on an unbound prefix, a misspelt own prefix, a silent binding, or an empty corpus." }],
+      outputs: [{ name: "report", schema: t("Text"), description: "Console (or JSON) report; exit 1 on an undeclared key, a path under an `@id` term, or an empty corpus." }],
     },
     satisfies: ["kg-export"],
     requires: { runtime: ["bun"], network: false },
