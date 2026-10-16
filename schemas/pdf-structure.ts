@@ -65,7 +65,7 @@ export const TOC_SOURCES = ["outline", "inferred", "undetermined", "none", "outl
  * One entry of the table of contents, as `pdf-structure.py`'s `TocEntry`.
  *
  * `page` is `null` when an OUTLINE entry has no destination. Measured: the first
- * entry of `who-iris/library/9789241548960-eng`, the document's own title node.
+ * entry of the IRIS replica's `library/9789241548960-eng`, the document's own title node.
  * The outline says the entry exists and says nothing about where it is, and a
  * page number would be a guess.
  */

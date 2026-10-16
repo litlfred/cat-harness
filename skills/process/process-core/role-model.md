@@ -35,7 +35,7 @@ Architecture's conformance model (§3.7.2, an abstract information-processing
 role) and a DAK generic persona each map to a folio-assistant **Role**, never
 to an Actor. The RA's system *realising* an actor maps to a mechanical Actor
 taking on that role. Owner, 2026-10-03 (#1984); the comparison is on
-`smart-base/findings/dth-terms.md`.
+the DAK layer's `findings/dth-terms.md`.
 
 Schema: [`schemas/role-graph.ts`](../../../schemas/role-graph.ts). Audit:
 `scripts/kg-audit.ts`, sidecar schema
@@ -450,8 +450,8 @@ way a voice points at the role it addresses and a story at the role it is
 told as (#1168):
 
 ```jsonc
-// folio-assistant-core/scenarios/roles.json
-{ "name": "folio-assistant-core", "roles": [],
+// <content-core>/scenarios/roles.json
+{ "name": "<content-core>", "roles": [],
   "extensions": [{ "role": "librarian", "skills": ["filing-dublin-core"] }] }
 ```
 

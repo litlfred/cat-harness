@@ -53,7 +53,7 @@ The order is the load-bearing part, not the individual steps.
    rely on the harness that now exists.
 4. **Publish the instance's JSON-LD context.** Declare its `iriBase`
    (`https://<owner>.github.io/<repo>/`) and add `.github/workflows/publish-context.yml`,
-   the one-line caller of cat-harness-tools' `layer-publish-context.yml`;
+   the one-line caller of the tools layer's `layer-publish-context.yml`;
    `init-folio --instance` writes both. After its first run on `main`, the
    owner switches GitHub Pages on: *Deploy from a branch: `gh-pages`, `/ (root)`*.
    See [`instance-publication`](https://litlfred.github.io/folio-assistant/reference/skill-instructions/instance-publication.html).

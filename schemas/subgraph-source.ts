@@ -124,7 +124,7 @@ export type KeyedBy = z.infer<typeof KeyedBySchema>;
 /** A branch-name PREFIX for a family of branches: a plain branch name ending in `/`. */
 export const BranchPrefixSchema = z
   .string()
-  .regex(/^(?!-)(?!refs\/)[A-Za-z0-9._/-]+\/$/, "a plain branch prefix ending in /, e.g. cat/fhir-harness/fhir-ast/")
+  .regex(/^(?!-)(?!refs\/)[A-Za-z0-9._/-]+\/$/, "a plain branch prefix ending in /, e.g. cat/<instance>/fhir-ast/")
   .refine((b) => !b.includes("..") && !b.includes("//") && !b.startsWith("/"), "not a valid branch prefix");
 
 /**

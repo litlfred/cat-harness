@@ -28,7 +28,7 @@ whose author did not choose does not parse.
 
 **No module lists the kinds.** They are DISCOVERED from the `block-kinds/`
 graphs their owning harnesses declare — the document kinds in
-folio-assistant-core, the math kinds in folio-assistant-sci (owner,
+the content core, the math kinds in the science layer (owner,
 2026-10-04: *"kinds need to be discoverable … not centrally managed"*; bean
 riit). Adding a kind is adding a node to the harness that owns it; the
 `BLOCK_KINDS`, `MATH_BLOCK_KINDS` and `DOCUMENT_BLOCK_KINDS` values in

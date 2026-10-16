@@ -47,7 +47,7 @@ sources count differently, and the difference is recorded here:
   decision-support logic.
 
 Ten is the owner's count, and this repository encodes it. `DAK_COMPONENTS` in
-`smart-base/schemas/dak-kinds.ts` lists ten, and names scheduling logic in
+the DAK layer's `schemas/dak-kinds.ts` lists ten, and names scheduling logic in
 `DAK_UNFORMALIZED_COMPONENTS`: it has a field name ready (`schedulingLogic`),
 but `DAK.fsh` does not yet declare that field. The other nine are checked
 against `DAK.fsh` field for field.

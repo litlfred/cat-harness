@@ -13,7 +13,7 @@ export default toolFactory((t) =>
       inputs: [
         { name: "package", schema: t("PackageName"), required: false, description: "The package being released. Default: root package in the target repository." },
         { name: "version", schema: t("Text"), required: true, description: "The semver version string to release (e.g. '0.1.0')." },
-        { name: "repo", schema: t("RepoFullName"), required: false, arg: { flag: "-R" }, description: "Target repository full name (e.g. 'litlfred/cat-harness', 'litlfred/folio-assistant-core'). If omitted, runs in the current repository." },
+        { name: "repo", schema: t("RepoFullName"), required: false, arg: { flag: "-R" }, description: "Target repository full name (e.g. 'litlfred/cat-harness', 'litlfred/bootstrap-tools'). If omitted, runs in the current repository." },
         { name: "workflow", schema: t("Text"), required: false, description: "The workflow file to trigger (default: 'release-npm.yml')." },
       ],
       outputs: [

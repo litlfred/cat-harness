@@ -14,7 +14,7 @@
  * ## Why it exists: the data is already produced and already thrown away
  *
  * Every DAK pre- and post-processing script in
- * `WorldHealthOrganization/smart-base` instantiates a `QAReporter` and writes
+ * WHO's SMART Base repository instantiates a `QAReporter` and writes
  * a phase report — successes, warnings, errors, the files it processed, the
  * files it EXPECTED, and the files that were missing — and the IG Publisher
  * writes `qa.json`, uploaded as a workflow artifact.

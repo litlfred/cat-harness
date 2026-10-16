@@ -7,7 +7,7 @@ description: >-
   dependency resolution without rootDir pitfalls, packaging with bun pm pack,
   and coordinator vs standalone execution models.
 governs:
-  - cat-harness-tools
+  - The tools layer
   - cat-harness
 ---
 
@@ -25,8 +25,8 @@ checkout coordinates them.
 
 ## 1. Per-Repository Toolchain Autonomy
 
-Every separated repository (`cat-harness`, `cat-harness-tools`, `bootstrap-tools`,
-`smart-base`, etc.) MUST maintain its own standalone configuration files:
+Every separated repository (`cat-harness`, the tools layer, `bootstrap-tools`,
+the DAK layer, etc.) MUST maintain its own standalone configuration files:
 
 | file | purpose in each repository |
 |---|---|
@@ -119,15 +119,15 @@ distinct roles:
    - All instance compositions are declared in `index.config.json` and locked with their
      pinned SHAs and tree digests in `index.lock.json`.
    - Subgraphs and remote instances are mounted from the lock via `bun cat-harness-tools/scripts/mount-from-lock.ts`.
-   - Whole-checkout integration tests live under `cat-harness-tools/test/coordinator/`.
+   - Whole-checkout integration tests live under the tools layer's `test/coordinator/`.
    - Working state subgraphs (`beans/`, `fsh-guts/`) are branch-mounted subgraphs kept at branch
      tips (`cat/cat-harness/beans`, `cat/cat-harness/fsh-guts`) and mounted via
      `bun cat-harness-tools/scripts/state-mount.ts`.
 2. **Standalone Subgraphs**:
-   - Each code repository (`cat-harness-tools`, `cat-harness`, `bootstrap-tools`, etc.) maintains
+   - Each code repository (the tools layer, `cat-harness`, `bootstrap-tools`, etc.) maintains
      its own standalone `package.json`, `tsconfig.json`, and `bunfig.toml`.
    - Each subgraph can be cloned, typechecked, and tested independently:
      ```sh
-     bun test cat-harness-tools/test
+     bun test <tools-layer>/test
      ```
    - CI workflows in upstream repositories run independently of the coordinator.

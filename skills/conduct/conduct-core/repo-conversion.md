@@ -6,7 +6,7 @@ user_invocable: true
 
 # /repo-conversion — folio-assistant over a repo that already has a life
 
-Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../../../folio-assistant-core/processes/conduct/getting-started.bpmn),
+Process: the content core's `processes/conduct/getting-started.bpmn`,
 `Task_ScanRepo` and `Task_ConfirmImport` (non-relaxable).
 Scanner: `bun run cat-harness-tools/scripts/scan-repo-content.ts`.
 
@@ -114,7 +114,7 @@ preference; a broken relative link in somebody's README is a defect.
 
 ## 3. Dispatch the ingestion
 
-Ingestion proper is `document-intake` (folio-assistant-core)
+Ingestion proper is `document-intake` (the content core)
 and `processes/library/document-ingestion.bpmn`. What this skill decides is *how
 much parallelism*, and it is a question for the author because it spends their
 tokens:
@@ -167,7 +167,7 @@ itself, so this section repeats the one step a publishing route cannot skip:
 2026-10-07: *"need to create gh-pages before can deploy"* (issue #2417).
 
 The step is `Task_ProvisionGhPages` ("Provision gh-pages") in
-[`getting-started.bpmn`](../../../../folio-assistant-core/processes/conduct/getting-started.bpmn),
+`getting-started.bpmn`,
 on the shared path after scaffolding and before the Pages build, and it
 carries the semantics of `A_Provision` in bootstrap-tools'
 [`render-kg-to-github-pages.bpmn`](../../../../bootstrap-tools/processes/render-kg-to-github-pages.bpmn).

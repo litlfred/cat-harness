@@ -8,7 +8,7 @@
  * ## The problem it removes
  *
  * The harness's `scenarios/roles.json` held 54 role→skill edges naming skills
- * that belong above it (core 28, sci 20, fhir-harness 4, smart-base 2), and 5
+ * that belong above it (core 28, sci 20, the FHIR IG layer 4, the DAK layer 2), and 5
  * actor→role bindings naming roles that move up (placement proposal §5). Moving
  * a skill up while its role edge stays down leaves an UPWARD reference in the
  * harness; moving the whole role up moves 34 harness roles' neighbours with it.

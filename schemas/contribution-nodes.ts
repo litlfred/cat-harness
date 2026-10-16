@@ -19,7 +19,7 @@
  *
  * A contribution's code is its OWN: an `instance:` prefix is refused. A slot
  * whose implementation still lives in a lower layer is wrapped by a module in
- * the contributing instance, as folio-assistant-sci's `plugin-slots.ts` does.
+ * the contributing instance, as the science layer's `plugin-slots.ts` does.
  *
  * A LEAF: Zod only.
  *

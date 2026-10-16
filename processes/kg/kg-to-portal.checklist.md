@@ -63,7 +63,7 @@ How a knowledge graph reaches a public portal this repository does not run: sele
 
 - Who: the `Attestation (GDHCN / WHO SMART Trust)` lane (role `attestation-service`).
 - Skill: `kg-to-portal`.
-- What: THE TRUST ANCHOR IS GDHCN, SPECIFIED BY THE WHO SMART TRUST IG (owner, 2026-09-20: `propsal signing = GDHCN`, then `smart-trust`).
+- What: THE TRUST ANCHOR IS GDHCN, SPECIFIED BY THE WHO SMART TRUST IG (owner, 2026-09-20, paraphrased: proposal signing is GDHCN, as the WHO SMART Trust IG specifies).
 - Record it: `workflow_complete` with `node: "S_Sign"`.
 - next: → `E_HumanEyes` (Human eyes on the rendered artefact)
 

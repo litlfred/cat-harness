@@ -34,7 +34,7 @@ export const SUBSTRATE_SNAPSHOT_SCHEMA = "folio-substrate-snapshot/v1";
 /**
  * The tag on a MATERIALISED PART's record — a subgraph or asset of a
  * subscribed substrate, copied at the pin (slices 5 and 6). The record's full
- * schema is `folio-assistant-core/schemas/kg-materialization.ts`, because it
+ * schema is the content core's `schemas/kg-materialization.ts`, because it
  * embeds core's `MaterializationSchema`, which this instance may not import.
  * The tag lives HERE so the readers below core — the subscriptions page, and
  * `check:materialized-fixity`'s walk — recognise a record without importing up.
@@ -45,7 +45,7 @@ export const KG_PART_RECORD_SCHEMA = "folio-kg-materialization/v1";
  * The tag on a METADATA-MODE record (`kg:materialize --nodes`, bean `c1m4`):
  * one subgraph's `index.hydrated.jsonld`, fetched at the pin, with its sha256.
  * Full schema: `KgNodesRecordSchema` in
- * `folio-assistant-core/schemas/kg-materialization.ts`; the tag lives here for
+ * the content core's `schemas/kg-materialization.ts`; the tag lives here for
  * the same reason as {@link KG_PART_RECORD_SCHEMA}.
  */
 export const KG_NODES_RECORD_SCHEMA = "folio-kg-nodes/v1";

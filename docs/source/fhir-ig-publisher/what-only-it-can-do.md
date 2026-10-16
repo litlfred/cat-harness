@@ -4,7 +4,7 @@ elsewhere **keeps** the Publisher rather than removing it:
 1. **Profile validation** — every resource against its profiles and the
    declared FHIR version.
 2. **Dependency-closure resolution** with version pinning. For WHO's
-   `smart-base` that is `hl7.terminology`, `hl7.fhir.uv.extensions.r4`,
+   the DAK layer that is `hl7.terminology`, `hl7.fhir.uv.extensions.r4`,
    `hl7.fhir.uv.cql`, `hl7.fhir.uv.cpg`, `hl7.fhir.uv.crmi` and
    `hl7.fhir.uv.sdc`.
 3. **Terminology expansion** against a terminology server.

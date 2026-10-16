@@ -67,7 +67,7 @@ This is the part that is easy to leave out and impossible to reconstruct later.
 
 A copy-out writes **`local`**. It does not overwrite `upstream`, and it does not
 reuse `upstream` for the local original — that was one field until 2026-09-22,
-and by then 5 of the 9 who-iris item records were using it for a local value in
+and by then 5 of the 9 the IRIS replica item records were using it for a local value in
 violation of its own documentation.
 
 Without `local`, one rename later a copy is indistinguishable from original

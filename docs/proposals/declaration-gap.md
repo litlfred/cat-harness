@@ -139,14 +139,14 @@ child.
 
 | directory | files | the declared child that covers them |
 |---|---|---|
-| `folio-assistant-core/skills/` | 36 | `skills/voices` |
+| the content core's `skills/` | 36 | `skills/voices` |
 | `who-style-guide/skills/` | 6 | `skills/voices` |
-| `folio-assistant-sci/skills/` | 2 | `skills/voices` |
-| `smart-base/skills/` | 2 | `skills/voices` |
+| the science layer's `skills/` | 2 | `skills/voices` |
+| the DAK layer's `skills/` | 2 | `skills/voices` |
 | `agent-skills/skills/` | 1 | `skills/voices` |
 | `smart-kg/` | 1 | `smart-kg/methodologies` |
 
-In all six the parent holds **no files of its own** — `folio-assistant-core/skills/`
+In all six the parent holds **no files of its own** — the content core's `skills/`
 contains exactly one entry, `voices/`, and nothing else. They are therefore not
 the `v8gh` defect: no file is invisible. Whether the ruling nonetheless wants a
 declaration on the parent is a real question, but it is a question about the
@@ -164,7 +164,7 @@ content), so declaring it needs the repo-partition split settled first.
 Declaring it now would either give one directory two kinds or pre-empt a
 boundary `scripts/repo-partition.ts` exists to enforce. Left alone.
 
-`folio-assistant-sci/content/` (1 file, `pipeline/qa-checkers-cost.ts`) is the
+The science layer's `content/` (1 file, `pipeline/qa-checkers-cost.ts`) is the
 same question one instance along and travels with it.
 
 ### declare — 4 directories, 13 files
@@ -420,16 +420,16 @@ too**, at instance scope.
 | path | cat-harness's id | the owner's id |
 |---|---|---|
 | `agent-skills/library` | `agent-skills-library` | `library` |
-| `who-iris/library` | `who-iris-library` | `library` |
-| `folio-assistant-sci/library` | `folio-assistant-sci-library` | `library` |
-| `folio-assistant-core/library` | `folio-assistant-core-library` | `core-library` |
-| `smart-base/library` | `smart-base-library` | `library` |
-| `smart-base/methodologies` | `smart-base-methodologies` | `methodologies` |
-| `smart-base/methodologies/processes` | `smart-base-processes` | `processes` |
-| `folio-assistant-core/methodologies` | `folio-assistant-core-methodologies` | `core-methodologies` |
-| `folio-assistant-core/skills` | `folio-assistant-core-skills` | `core-skills` |
-| `folio-assistant-core/schemas` | `folio-assist-core-schemas` | `core-schemas` |
-| `folio-assistant-core/processes` | `folio-assistant-core-processes` | `core-processes` |
+| the IRIS replica's `library` | `who-iris-library` | `library` |
+| the science layer's `library` | `folio-assistant-sci-library` | `library` |
+| the content core's `library` | `folio-assistant-core-library` | `core-library` |
+| the DAK layer's `library` | `smart-base-library` | `library` |
+| the DAK layer's `methodologies` | `smart-base-methodologies` | `methodologies` |
+| the DAK layer's `methodologies/processes` | `smart-base-processes` | `processes` |
+| the content core's `methodologies` | `folio-assistant-core-methodologies` | `core-methodologies` |
+| the content core's `skills` | `folio-assistant-core-skills` | `core-skills` |
+| the content core's `schemas` | `folio-assist-core-schemas` | `core-schemas` |
+| the content core's `processes` | `folio-assistant-core-processes` | `core-processes` |
 
 **Why the differing id is the whole problem, and not a cosmetic one.** AGENTS.md
 states the resolution rule: *"Overrides match on the entry's `id`, not its
@@ -441,7 +441,7 @@ consumer that fans out over instances resolves both and scans the directory
 twice.
 
 The remaining four — `bootstrap-tools/schemas`, `large-datasets/skills`,
-`who-iris/skills`, `large-datasets/schemas` — carry the **same** id on both
+the IRIS replica's `skills`, `large-datasets/schemas` — carry the **same** id on both
 sides, so the by-id override does collapse them to one. They are duplicates in
 the file and not in the resolved set. That distinction is the finding: the same
 surface shape has two very different consequences, and only the id says which.
@@ -547,7 +547,7 @@ Declaring `cat-harness/ui/` as `code` turned `standalone-rail.test.ts` red:
 
 ```
 Expected to not contain: "cat-harness"
-Received: [ "cat-harness", "who-iris", "code/cat-harness", … ]
+Received: [ "cat-harness", "<iris-replica>", "code/cat-harness", … ]
 ```
 
 That test's own comment states the invariant — *"the root instance's own docs

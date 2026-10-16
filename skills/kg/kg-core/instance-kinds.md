@@ -18,7 +18,7 @@ adds the wrong one:
 
 | | what it is | where it is declared |
 |---|---|---|
-| **instance kind** | what a repository *is* — `cat-harness`, `bootstrap`, `who-iris`. It has a name, a prefix family, a `<name>.json`, and files it inherits from whatever it was bootstrapped off | a `<name>.json` at the instance root |
+| **instance kind** | what a repository *is* — `cat-harness`, `bootstrap`, the IRIS replica. It has a name, a prefix family, a `<name>.json`, and files it inherits from whatever it was bootstrapped off | a `<name>.json` at the instance root |
 | **graph typology** | what a declared DIRECTORY holds — `tools`, `docs`, `beans`, `library`. A value in the graph-typology registry, with `renderable`, `holds` and a summary | `defaultGraphTypologies` in `schemas/cat-harness.ts`, or a registration from a layer that owns it |
 
 An instance kind gets a **name**. A graph typology gets a **declaration**. This
@@ -87,8 +87,8 @@ A prefix names the **layer** or the **owner** an instance belongs to.
 | prefix | what it marks | instances here |
 |---|---|---|
 | `cat-` | the agentic-harness layer | `cat-harness`, `bootstrap` |
-| `folio-assistant-` | the content/core layer | `folio-assistant-core`, `folio-assistant-sci` |
-| `who-` | WHO material | `who-iris` (which absorbed `who-style-guide` on 2026-10-01, bean `qsx4`) |
+| `folio-assistant-` | the content/core layer | the content core, the science layer |
+| `who-` | WHO material | the IRIS replica (which absorbed `who-style-guide` on 2026-10-01, bean `qsx4`) |
 | `litlfred-` | the owner's own | — none yet |
 
 **Four of the eleven instances here carry no prefix at all** — `agent-skills`,
@@ -102,7 +102,7 @@ decline the convention").
 **The `cat-` prefix reaches the harness layer and stops there.** It does not
 extend to `folio-assistant-*`. That ruling settled a live merge conflict —
 `main` had renamed the core instance `folio-assist-core` while a branch carried
-`folio-assistant-core` — which is why it is written down rather than left to be
+the content core — which is why it is written down rather than left to be
 re-derived.
 
 ### The default is to keep the kind's name
@@ -172,7 +172,7 @@ its reason, and the two supporting questions for a hard case, are in
 It asks whether the graph records **work somebody is partway through**, not
 merely whether something writes to it. The distinction was measured rather than
 assumed: reading it as "declares any state graph" made the repository root and
-`who-iris` ACTIVE on `uploads` alone, and an ingestion queue is live state that
+the IRIS replica ACTIVE on `uploads` alone, and an ingestion queue is live state that
 nobody is partway through. An agent told *"this KG is active"* on that basis
 arrives looking for something to prioritise and finds unprocessed files.
 

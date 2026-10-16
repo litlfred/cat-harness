@@ -40,7 +40,7 @@
  * resource model: each requirement contains statements with conformance
  * verbs (SHALL/SHOULD/MAY). FHIR's `satisfiedBy` is the inverse of the
  * `satisfies` a skill or capability declares, and is derived from it. This enables
- * cross-repository interoperability with WHO SMART Guidelines (smart-base).
+ * cross-repository interoperability with WHO SMART Guidelines (the DAK layer).
  *
  * @module assistant-types
  * @graphNode schema

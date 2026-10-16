@@ -143,7 +143,7 @@ Recorded so the next reader does not mistake them for adoption decisions:
   in PROV-JSONLD's shape, whose held context coerces `agent`, `role` and `plan`
   (§5.8, `sections/page-037.md`), with each value at its node's release
   address. The rules this broke are now the `linked-data` voice
-  (`folio-assistant-core/skills/voices/linked-data/voice.json`), which a coding
+  (the content core's `skills/voices/linked-data/voice.json`), which a coding
   agent authoring or reviewing JSON-LD-emitting code is held to.
 - The association node carries no `@type: prov:Association` and the unqualified
   `prov:wasAssociatedWith` is not asserted beside it, as the §4.3 entry (51)

@@ -10,7 +10,7 @@ graph-typologies:
 
 # /interaction-modality — ask in a form the person can answer
 
-Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../../../folio-assistant-core/processes/conduct/getting-started.bpmn),
+Process: the content core's `processes/conduct/getting-started.bpmn`,
 `Task_DetectModality` and `Task_AskIntent`.
 Preferences: `cat-harness/memory/interaction.json` (committed, read at session start).
 
@@ -158,7 +158,7 @@ where the terms are defined.
 for themselves — it points at the page, not at the site it is on.** Owner,
 2026-09-21, after three turns of being handed a staging root while being asked
 about one page on it: *"next time give appropraite link
-…/STAGING/<branch>/who-iris/"*. Linking the root hands the reader a route the
+…/STAGING/<branch>/<iris-replica>/"*. Linking the root hands the reader a route the
 agent already knew, and hands it to somebody who types with difficulty. The rule
 and where the page list comes from:
 [`staging-review`](../../sdlc/sdlc-core/staging-review.md) §"The deep-link rule"; the failure it also

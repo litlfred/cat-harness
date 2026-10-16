@@ -10,7 +10,7 @@ description: >
 # Materialize on demand
 
 Bootstrap brings an agent to a working harness. It does **not** bring the
-corpus, and must not: `who-iris` alone is 1,057,223 files and 361.55 GB
+corpus, and must not: the IRIS replica alone is 1,057,223 files and 361.55 GB
 (IRIS's own storage report, read 2026-09-20). What arrives is the
 **reference**. Owner, 2026-09-20: *"user can ask (as they come in need to
 use) if they want to material parts of subgraphs."*
@@ -43,7 +43,7 @@ calling `materialize-remote`:
 
 - **Name the subset** in the source's own terms: its identifiers, or a subset
   strategy its descriptor (in the owning instance's declared `sources/`, e.g.
-  `who-iris/sources/`) supports.
+  the IRIS replica's `sources/`) supports.
 - **Close it over dependencies** if the descriptor says the subset is not
   self-contained (`subsetIsSelfContained: false`, mathlib). The size that
   matters is the closure's.

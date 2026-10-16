@@ -237,7 +237,7 @@ export interface GraphTypologyDef {
    *
    * **Narrower than `holds: "state"`, and the difference was measured rather
    * than assumed.** The first attempt read "declares any state graph", which
-   * made the repository root and `who-iris` ACTIVE on `uploads` alone — an
+   * made the repository root and the IRIS replica ACTIVE on `uploads` alone — an
    * ingestion queue is live state and is not work anybody is partway through.
    * An agent told "this KG is active" on that basis arrives, looks for
    * something to prioritise, and finds a directory of unprocessed files.
@@ -679,7 +679,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // every instance; no module lists them.
   "block-kinds": {
     description:
-      "the block kinds a harness's content adapter owns, one `folio-block-kind/v1` node each (`schemas/block-kind-node.ts`): the kind string, its adapter and narrowest profile, label prefix, RDF types, builder and English heading. `schemas/block-kinds.ts` discovers them across every instance's declared graph, so no module lists the kinds. Owner, 2026-10-04: *\"kinds need to be discoverable … not centrally managed\"*; document kinds live in folio-assistant-core and the math kinds in folio-assistant-sci (option 2 of 3). Bean `riit`, step 2; sod4 finding #1.",
+      "the block kinds a harness's content adapter owns, one `folio-block-kind/v1` node each (`schemas/block-kind-node.ts`): the kind string, its adapter and narrowest profile, label prefix, RDF types, builder and English heading. `schemas/block-kinds.ts` discovers them across every instance's declared graph, so no module lists the kinds. Owner, 2026-10-04: *\"kinds need to be discoverable … not centrally managed\"*; document kinds live in the content core and the math kinds in the science layer (option 2 of 3). Bean `riit`, step 2; sod4 finding #1.",
     title: "Block kinds",
     renderable: false,
     holds: "content",
@@ -794,7 +794,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     // THE FROM-WITHIN NODE for a skills directory (bean cmsl, owner
     // 2026-09-30, round 4): `skills/skills.json` names the instance
     // directories declared inside `skills/` — `voices/`, and `lean/` in
-    // folio-assistant-sci — so the nesting is declared where the #980 ruling
+    // the science layer — so the nesting is declared where the #980 ruling
     // says it must be, never by a root declaration reaching down.
     declarationFile: "skills.json",
     // Its `topics` ARE its concern groups (bean 9umr) — the first kind that
@@ -910,7 +910,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   //    would misrepresent the standard.
   //
   // Any layer may declare a directory of this kind: the harness carries the
-  // domain-neutral ones, `smart-base` carries DIIG and core carries
+  // domain-neutral ones, the DAK layer carries DIIG and core carries
   // Doc-Researcher. GRADE is not a methodology node: since 2026-09-24 (bean
   // `wg7r`) it is the `grade` skill with its vocabularies as code lists.
   methodology: {
@@ -1030,7 +1030,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "Documentation ABOUT the knowledge graph — how the harness works, what its " +
       "directories hold, how a process runs. Rendered by the plain just-the-docs " +
       "pipeline. Distinct from `folio`, which is content an author CREATES using " +
-      "the graph; the difference is the SUBJECT, not the format. The who-iris " +
+      "the graph; the difference is the SUBJECT, not the format. An L1 library's " +
       "catalogue is `library/`; a note about it is a `folio`; the page explaining " +
       "how ingestion works is `docs`.",
   },
@@ -1247,7 +1247,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   schemas: {
     tileIcon: "schemas",
     description:
-      "schema definitions, self-declared in the smart-base manner",
+      "schema definitions, self-declared in the WHO SMART Base manner",
     title: "Schemas",
     // Grouped by concern from within (`schemas/schemas.json`), PR0c.
     declarationFile: "schemas.json",
@@ -1632,7 +1632,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // and the #263 version it supersedes is preserved there too. PR #266 changed
   // the map and left that comment describing the old five-kind design.
   // RENAMED from `glossary` on 2026-09-23 (owner: "Rename harness one"). The
-  // name `glossary` now belongs to folio-assistant-core's kind: local SKOS
+  // name `glossary` now belongs to the content core's kind: local SKOS
   // terms plus references to external SKOS schemes, rendered on every
   // instance's glossary/ page. This is the harness's swimlane-role ledger, one
   // source that page reads.
@@ -2001,7 +2001,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   },
 
   // BACK IN THE BASE LAYER, 2026-10-04 (bean riit). dmx1 moved this kind to
-  // folio-assistant-core's typologies/ graph the same day; that broke the invariant
+  // the content core's typologies/ graph the same day; that broke the invariant
   // DEFAULT_DIRECTORIES states ("the harness cannot default a directory to a
   // kind it does not know"), because the harness defaults `uploads/` beside
   // `library/` — and the two are ONE pipeline, so they belong in one place.
@@ -2286,7 +2286,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // A published static site, as a graph (bean `lehh`, owner 2026-10-05). Two
   // capability tiers, both declared now so a real CDN has a kind to land in:
   // `basic-cdn-site` serves files by path and nothing more (GitHub Pages);
-  // `cdn-site` adds media types, redirects and headers (who-iris's CDN, beans
+  // `cdn-site` adds media types, redirects and headers (the IRIS replica's CDN, beans
   // l9v6 and xies). A site is an archive with routes: its files reuse
   // ArchiveEntrySchema, and the kind adds the route layout.
   "basic-cdn-site": {
@@ -2307,7 +2307,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   },
   "cdn-site": {
     description:
-      "a published site on a CDN that also controls media types, redirects and response headers. One `cdn-site/1.0.0` document: everything a `basic-cdn-site` carries, plus `mimeTypes`, `redirects` and `headers`. Declared ahead of its first instance so a CDN deployment (who-iris, beans l9v6 and xies) lands in a kind rather than widening `basic-cdn-site`, whose point is what it cannot do.",
+      "a published site on a CDN that also controls media types, redirects and response headers. One `cdn-site/1.0.0` document: everything a `basic-cdn-site` carries, plus `mimeTypes`, `redirects` and `headers`. Declared ahead of its first instance so a CDN deployment (the IRIS replica, beans l9v6 and xies) lands in a kind rather than widening `basic-cdn-site`, whose point is what it cannot do.",
     title: "CDN site",
     renderable: false,
     holds: "derived",
@@ -2455,7 +2455,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // rule could not apply to them. Now delete means relocate, and relocate is
   // reversible.
   //
-  // On the name: `.fsh` is FHIR Shorthand in this codebase (`smart-base/schemas/dak.ts`,
+  // On the name: `.fsh` is FHIR Shorthand in this codebase (the DAK layer's `schemas/dak.ts`,
   // `jsonld.ts`, `translation-tools.ts`, `block-qa.ts`) and throughout the
   // WHO SMART folios this platform targets. The collision was raised and the
   // owner confirmed the spelling; it is recorded here so the overlap is met
@@ -2702,7 +2702,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     // A SECOND family now lives here too, and the validator does not cover it:
     // the `folio-kg-materialization/v1` part records `kg:materialize` writes
     // (slices 5-6). Their schema embeds core's `MaterializationSchema`, so it
-    // is core's (`folio-assistant-core/schemas/kg-materialization.ts`) and
+    // is core's (its `schemas/kg-materialization.ts`) and
     // this registry cannot name it without pointing up the arrow. They are
     // JUDGED by `kg:materialize:check` instead; `kg:validate` on one reports
     // it against the snapshot schema, which is a known gap, not a verdict.

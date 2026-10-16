@@ -171,25 +171,25 @@ seven layers were judged by nothing until an index re-pinned them: the
 their harness gates along with their IG builds, and no initialization step
 turned the gates back on.
 
-The workflow is cat-harness-tools' `.github/workflows/layer-pr-checks.yml`. A
+The workflow is the tools layer's `.github/workflows/layer-pr-checks.yml`. A
 repository calls it from a workflow of about fifteen lines that runs on
 `pull_request`:
 
 ```yaml
 jobs:
   checks:
-    uses: litlfred/cat-harness-tools/.github/workflows/layer-pr-checks.yml@main
+    uses: <owner>/<tools-layer>/.github/workflows/layer-pr-checks.yml@main
     with:
       mode: layer              # or `index`: the repository is its own index
-      instance: smart-base     # layer mode: its directory in the folio-assistant index
-      path-in-repo: smart-base # where the instance sits in the repository ('.' at the root)
+      instance: <instance>     # layer mode: its directory in the folio-assistant index
+      path-in-repo: <instance> # where the instance sits in the repository ('.' at the root)
 ```
 
 - **`layer` mode** is for a repository that an index mounts, such as
-  cat-harness or smart-base. The workflow checks out folio-assistant and puts
+  cat-harness or the DAK layer. The workflow checks out folio-assistant and puts
   the PR in place of the locked mount.
 - **`index` mode** is for a repository that is its own index: an IG
-  repository over smart-base, smart-ra, or a folio. Its own `index.lock.json`
+  repository over the DAK layer, smart-ra, or a folio. Its own `index.lock.json`
   is replayed.
 - **The gates** are the harness's graph checks over the repository's own
   instance, plus every `check:*` / `*:check` script of that instance **and
@@ -202,7 +202,7 @@ jobs:
 
 **Disabling a repository's automatic builds is not disabling its checks.**
 When an IG repository's automatic gh-pages or IG Publisher triggers are
-switched off (the onboarding question in fhir-harness's `ig-build-pipeline`),
+switched off (the onboarding question in the FHIR IG layer's `ig-build-pipeline`),
 the harness caller stays on.
 
 ## The exemptions of the index's own workflows

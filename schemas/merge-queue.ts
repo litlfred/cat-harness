@@ -419,7 +419,7 @@ export const MemberFactsSchema = z
     /** Touches a shared declaration: a schema, generator, `<instance>.json`, BPMN or DMN (T3, R6). */
     touchesShared: z.boolean(),
     /**
-     * An authored path under `cat-harness/` or `cat-harness-tools/`. The raw
+     * An authored path under `cat-harness/` or its tools layer's directory. The raw
      * measurement behind input (a) — NOT input (a) itself: measured
      * 2026-10-02, it was true for 11 of the 11 PRs in that day's queue.
      */

@@ -252,7 +252,7 @@ A computable data sharing agreement is an **`odrl:Agreement`**: an assigner, an
 assignee, and permissions, prohibitions and duties. Nothing above prevents
 signing one as a W3C Verifiable Credential, holding it in a wallet, trusting
 its issuer through the WHO GDHCN trust lists (`did:web:tng-cdn.who.int:v2:trustlist:-:<country>`,
-already indexed by `smart-trust`), or carrying it as an HCERT. That is the next
+already indexed by the trust IG), or carrying it as an HCERT. That is the next
 proposal, and it depends on this one: an Agreement is only as computable as the
 actions and constraints it is written in.
 

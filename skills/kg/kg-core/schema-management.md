@@ -211,14 +211,14 @@ already names its module, so the list was one fact written twice.
 
 Owner, 2026-09-20:
 
-> i want two rules.... not three. one is cat-harness handling the `library/`
-> dir which has who-iris assets in it. one is who-iris handler to mock current
-> iris website.
+Paraphrased: two rules, not three. One is cat-harness handling the `library/`
+directory, which holds a content instance's assets; the other is that content
+instance's own handler, which mocks its current website.
 
 | rule | form | what it is |
 |---|---|---|
-| **1 — a handler renders a kind's assets** | `<base>/<handler>/<kind>/<optional subject>` | cat-harness's machinery over some graph. `<base>/cat-harness/library/who-iris/` |
-| **2 — an instance presents itself** | `<base>/<instance>/` | who-iris mocking the IRIS website |
+| **1 — a handler renders a kind's assets** | `<base>/<handler>/<kind>/<optional subject>` | cat-harness's machinery over some graph. `<base>/cat-harness/library/<iris-replica>/` |
+| **2 — an instance presents itself** | `<base>/<instance>/` | the IRIS replica mocking the IRIS website |
 
 The handler is the instance doing the rendering, the kind names what it
 renders, and the **subject is optional** — a page with no subject is the view
@@ -276,7 +276,7 @@ and the reason that section exists.
 
 **A subject page must NEVER be published at `<base>/<subject>/<kind>/`.** That
 is rule 2's namespace, and a viewer parked there squats on the instance's own
-site. An earlier draft was about to publish `who-iris/library/` exactly there,
+site. An earlier draft was about to publish the IRIS replica's `library/` exactly there,
 on a misreading of "path to dir handled" as the page's address rather than as
 what the page shows.
 
@@ -296,11 +296,12 @@ claims 512 edges among those nine.
 
 Owner, same day:
 
-> `<base>/cat-harness/docs/` is where all harness user documentation is... so
-> documentation at `<base>/cat-harness/docs/who-iris/` is more documentation
-> ABOUT iris, how it is ingested etc. **not the iris content**. source content
-> is repo root `who-iris/docs`. part of cat-handler `docs/` handler is to look
-> out for `docs/` directories in harness kinds.
+Paraphrased: `<base>/cat-harness/docs/` is where all harness user
+documentation is, so documentation at `<base>/cat-harness/docs/<instance>/`
+is documentation ABOUT that instance, how it is ingested and so on — **not
+the instance's content**, whose source is the instance's own `docs/`. Part of
+the cat-harness `docs/` handler's job is to look out for `docs/` directories
+in harness kinds.
 
 So a subject page under a handler is **about** its subject, rendered by the
 handler — never the subject's own content relocated. The content stays in the
@@ -397,7 +398,7 @@ files it is about to WRITE, so a file the generator no longer writes is outside
 what it looks at.
 
 Measured, bean `ankg`: #604 renamed `folio-assist-sci/` to
-`folio-assistant-sci/`. Subject slugs derive from the entry's path, so
+the science layer. Subject slugs derive from the entry's path, so
 regeneration correctly wrote the new page — and left the old one standing,
 serving a subject no declaration describes, at a URL nothing links to. It was
 removed by hand. That is the `yl5w` shape pointed the other way: there a claim
@@ -429,7 +430,7 @@ directories nothing here owns.
 ### Do not write another one
 
 There are already four selectors for one question — `prunableStickies`
-(`ensure-landing-sticky.ts`), `OWNED` (`who-iris/scripts/gen-iris-pages.ts`,
+(`ensure-landing-sticky.ts`), `OWNED` (the IRIS replica's `scripts/gen-iris-pages.ts`,
 #607), `orphanSubjectPages`, and `prunableDashboards` (`state-visualizer.ts`).
 Each is correct; the multiplicity is the defect, tracked as bean `s8nu`. A new
 generator imports `orphanSubjectPages` rather than minting a fifth.

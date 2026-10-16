@@ -107,7 +107,7 @@ that is the shape this proposal prefers wherever the relying party supports it
 | question | result |
 |---|---|
 | which secret **names** are set on folio-assistant and bootstrap-tools | **could not determine.** `GET /repos/{o}/{r}/actions/secrets` returns 403 from this session's proxy ("not permitted through this proxy"). "Unset" above is the lead session's finding and the workflows' own fallback messages. It was not re-measured here |
-| workflows in `litlfred/cat-harness`, `cat-harness-tools`, `smart-base`, `smart-trust`, `smart-immunizations` | **could not determine.** The API returns 403 because access to these repositories is not enabled for this session. The local `litlfred/cat-harness*` checkouts contain only `.git` |
+| workflows in `litlfred/cat-harness`, the tools layer, the DAK layer, the trust IG, the immunizations IG | **could not determine.** The API returns 403 because access to these repositories is not enabled for this session. The local `litlfred/cat-harness*` checkouts contain only `.git` |
 | workflows in `litlfred/bootstrap` | **none on the default branch** (404). A local checkout still has a `pages.yml`, which `publish-bootstrap.yml`'s header says was retired (owner, 2026-10-01, #1770) |
 | whether `litlfred` is an organization | **no.** `owner.type` is `User`. There are no organization secrets because there is no organization |
 
@@ -283,7 +283,7 @@ Two constraints shape this.
   is the consumer. bootstrap-tools is a *sibling* of cat-harness and may not
   import it. The files therefore declare themselves with a `"$schema"` tag, as
   a workflow instance does, and are validated *as data* by a checker in
-  cat-harness-tools. A tag is a name, not an import. If the layering rule
+  the tools layer. A tag is a name, not an import. If the layering rule
   turns out to forbid even a tag naming a cat-harness format, the format
   belongs in bootstrap. That is falsifier 4 in §10.
 
@@ -556,7 +556,7 @@ processes would be `processes/credential-add.bpmn`, `credential-rotate.bpmn`
 and `credential-revoke.bpmn`, each with a **human lane for every step that
 touches a value** and an agent lane that checks and writes the registry. The
 skill, the schemas and the declarations go in cat-harness. The checker's code
-goes in cat-harness-tools.
+goes in the tools layer.
 
 Its sections, with the GitHub UI paths the skill would carry:
 

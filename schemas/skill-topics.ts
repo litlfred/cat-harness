@@ -28,7 +28,7 @@ export const SkillTopicSchema = z
 
 /**
  * An INSTANCE directory declared from inside `skills/` (bean `cmsl`, owner
- * 2026-09-30): `voices/`, or folio-assistant-sci's `lean/`. The resolver in
+ * 2026-09-30): `voices/`, or the science layer's `lean/`. The resolver in
  * `cat-harness.ts` promotes each to a directory of the instance, exactly as if
  * `<instance>.json` declared it. Only the fields that resolver needs are
  * required here — this module depends on zod alone (see above), so the full

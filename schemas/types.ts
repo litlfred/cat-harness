@@ -395,7 +395,7 @@ export interface AuthorNote {
 /** Base fields shared by all environment blocks. */
 /**
  * Shared block fields. Exported so the `dak` adapter's blocks in
- * `smart-base/schemas/dak-blocks.ts` extend the same base — one set of editorial fields across
+ * the DAK layer's `schemas/dak-blocks.ts` extend the same base — one set of editorial fields across
  * both adapters is what lets one graph loader and one QA sweep serve both.
  */
 export interface BlockBase {
@@ -487,7 +487,7 @@ export interface BlockBase {
    *
    * List only direct neighbors — not the full transitive chain.
    * If A→B and B→C, then A lists only B; C is derived by walking
-   * the graph. Run `bun run cat-harness-tools/pipeline/prune-transitive-deps.ts` to
+   * the graph. Run the tools layer's `pipeline/prune-transitive-deps.ts` to
    * enforce this. (Transitive pruning is sound on the editorial
    * relation, where reading-order is genuinely transitive; it is NOT
    * applied to formal edges.)

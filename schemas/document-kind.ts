@@ -120,7 +120,7 @@ export type DocumentKindSection = z.infer<typeof DocumentKindSectionSchema>;
  * section, as computed by whoever owns the kind.
  *
  * Generic like the kind itself: the rule that assigns a member to a section is
- * the harness's (smart-base computes the DAK view of an IG from FHIR resource
+ * the harness's (the DAK layer computes the DAK view of an IG from FHIR resource
  * types), and `method` says what that rule was so the page can state it. What
  * no rule placed is listed in `unplaced`, never dropped — a coverage report
  * that hid its remainder would read as complete.

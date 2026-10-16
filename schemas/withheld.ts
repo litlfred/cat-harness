@@ -8,7 +8,7 @@
  * instance's directory wholesale, so a publication whose licence refuses
  * redistribution stayed reachable BY URL after every link to it was removed.
  * The platform cannot know an instance's licence rules; the instance's own
- * generator writes this list from its own data (who-iris: the catalogue's
+ * generator writes this list from its own data (the IRIS replica: the catalogue's
  * publication gates), and the mount honours it for every instance alike.
  *
  * Each entry names a path relative to the directory the file sits in — a
