@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-refusal\n"
-"POT-Creation-Date: 2026-10-09T20:40:53.573Z\n"
+"POT-Creation-Date: 2026-10-16T13:11:41.402Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -14,207 +14,207 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: processes/sdlc/merge-refusal.bpmn:72
+#: processes/sdlc/merge-refusal.bpmn:73
 #. Diagram element documentation
 msgid "`no` when the session is archived, failed, or unknown to `get_session`, or the PR names none."
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:11
+#: processes/sdlc/merge-refusal.bpmn:15
 #. Diagram label
 msgid "A refused merge-train member"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:119
+#: processes/sdlc/merge-refusal.bpmn:120
 #. Diagram label
 msgid "Ask the owner on the PR, both sides quoted"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:98
+#: processes/sdlc/merge-refusal.bpmn:99
 #. Diagram element documentation
 msgid "Before the agent starts: the date, why the fail condition fired, the agent's id, its budget. Never while the first writer may still be live. Two failed attempts with the same cause go to the owner instead."
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:87
+#: processes/sdlc/merge-refusal.bpmn:88
 #. Diagram element documentation
 msgid "Claims the refusal bean, brings main in with `merge:main`, settles what it refused, pushes. Completed with the outcome `fail condition` by the steward when the condition fires first."
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:140
+#: processes/sdlc/merge-refusal.bpmn:141
 #. Diagram label
 msgid "Close the bean, merge commit as evidence"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:177
+#: processes/sdlc/merge-refusal.bpmn:178
 #. Diagram label
 msgid "closed unmerged"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:65
+#: processes/sdlc/merge-refusal.bpmn:66
 #. Diagram label
 msgid "Comment on the PR once, linking the bean"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:22
+#: processes/sdlc/merge-refusal.bpmn:26
 #. Diagram element documentation
 msgid "Coordinator and verifier of the hand-back: records, hands back, takes back when the fail condition fires, and closes. Never edits the bean's instructions after the executor claims it; later facts go to the PR."
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:97
+#: processes/sdlc/merge-refusal.bpmn:98
 #. Diagram label
 msgid "Dispatch one agent, recorded on the bean"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:43
+#: processes/sdlc/merge-refusal.bpmn:45
 #. Diagram label
 msgid "Dispatched agent"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:86
+#: processes/sdlc/merge-refusal.bpmn:87
 #. Diagram label
 msgid "Fix the PR, report on the PR"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:92
+#: processes/sdlc/merge-refusal.bpmn:93
 #. Diagram label
 msgid "Fixed before the fail condition?"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:77
+#: processes/sdlc/merge-refusal.bpmn:78
 #. Diagram label
 msgid "Hand back, with a fail condition"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:148
+#: processes/sdlc/merge-refusal.bpmn:149
 #. Diagram label
 msgid "Landed"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:175
+#: processes/sdlc/merge-refusal.bpmn:176
 #. Diagram label
 msgid "landed"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:52
+#: processes/sdlc/merge-refusal.bpmn:53
 #. Diagram label
 msgid "Member dropped from a train"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:108
+#: processes/sdlc/merge-refusal.bpmn:109
 #. Diagram element documentation
 msgid "Merge commits only; never a force-push."
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:107
+#: processes/sdlc/merge-refusal.bpmn:108
 #. Diagram label
 msgid "Merge main in, regenerate, fix mechanical gates"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:21
+#: processes/sdlc/merge-refusal.bpmn:25
 #. Diagram label
 msgid "Merge steward"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:113
+#: processes/sdlc/merge-refusal.bpmn:114
 #. Diagram label
 msgid "Needs an authored choice?"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:164
+#: processes/sdlc/merge-refusal.bpmn:165
 #. Diagram label
 msgid "no"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:44
+#: processes/sdlc/merge-refusal.bpmn:46
 #. Diagram element documentation
 msgid "ONE agent with a modest budget, reached only when no live owner can be. May do what a declared pattern would have done; may NOT decide an authored conflict, which goes to the owner as a question."
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:66
+#: processes/sdlc/merge-refusal.bpmn:67
 #. Diagram element documentation
 msgid "One comment per refused PR, edited in place on every later event."
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:38
+#: processes/sdlc/merge-refusal.bpmn:41
 #. Diagram label
 msgid "Owning session"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:71
+#: processes/sdlc/merge-refusal.bpmn:72
 #. Diagram label
 msgid "Owning session live?"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:157
+#: processes/sdlc/merge-refusal.bpmn:158
 #. Diagram label
 msgid "PR closed unmerged"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:127
+#: processes/sdlc/merge-refusal.bpmn:128
 #. Diagram label
 msgid "Re-enter a train on the new head"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:55
+#: processes/sdlc/merge-refusal.bpmn:56
 #. Diagram label
 msgid "Record the refusal on the bean"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:176
+#: processes/sdlc/merge-refusal.bpmn:177
 #. Diagram label
 msgid "refused again"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:151
+#: processes/sdlc/merge-refusal.bpmn:152
 #. Diagram label
 msgid "Scrap the bean, with the reason"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:78
+#: processes/sdlc/merge-refusal.bpmn:79
 #. Diagram element documentation
 msgid "The `agent-handoff` format (#1884): Roles, Report to (the PR), Done when, Fails if. The fail condition: no `started` line within 4 h, no push within 24 h, the session gone, or `blocked` on something it cannot settle. One line to the session; the instructions are in the bean."
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:152
+#: processes/sdlc/merge-refusal.bpmn:153
 #. Diagram element documentation
 msgid "The agent's own `beans update --status scrapped`; never deleted."
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:128
+#: processes/sdlc/merge-refusal.bpmn:129
 #. Diagram element documentation
 msgid "The next train is the verifier: the executor's own log is evidence, not the close."
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:56
+#: processes/sdlc/merge-refusal.bpmn:57
 #. Diagram element documentation
 msgid "The PR, the head sha the train used, the train and its other members, each refused path or failing gate and why. A repeat refusal goes under `## Attempts` with `--body-append`."
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:134
+#: processes/sdlc/merge-refusal.bpmn:135
 #. Diagram label
 msgid "The PR's fate?"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:39
+#: processes/sdlc/merge-refusal.bpmn:42
 #. Diagram element documentation
 msgid "The session named in the PR's `Claude-Session:` trailer. The executor of the hand-back: claims the refusal bean, fixes the PR, reports on the PR in the bean's one-line formats."
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:114
+#: processes/sdlc/merge-refusal.bpmn:115
 #. Diagram element documentation
 msgid "Two siblings editing one bean, one script changed differently on both sides, a budget exceeded only in combination: each is a choice between authors."
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:124
+#: processes/sdlc/merge-refusal.bpmn:125
 #. Diagram label
 msgid "Waiting on the owner's ruling"
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:14
+#: processes/sdlc/merge-refusal.bpmn:18
 #. Diagram element documentation
 msgid "What a merge steward does with a PR it dropped from a merge train: its merge (`merge-base.bpmn`, run with `--no-regen`) refused an authored or undeclared conflict, or the train's combined result failed a gate. Owner, 2026-10-02: \"create a new bean (under appropriate epic/story…), hand it back to the sibling (use the agent-to-agent handoff process with a fail condition) for resolution, or dispatch an agent as appropriate.\" Bean `zacz`; the discipline is in `merge-conflict-patterns` §\"When a merge-train member is refused\". ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The steward finds or creates that bean BEFORE starting the instance, because creating a bean is the agent's own `beans create` call, deduplicated by the PR number in its title; the engine has no create op (`bean-lifecycle.bpmn`). A second refusal of the same PR loops back into this instance rather than opening a second bean."
 msgstr ""
 
-#: processes/sdlc/merge-refusal.bpmn:163
+#: processes/sdlc/merge-refusal.bpmn:164
 #. Diagram label
 msgid "yes"
 msgstr ""
