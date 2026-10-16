@@ -243,7 +243,7 @@ things to know (roast `1ygp` L4.2):
 
 ### Standing consent: a site keeps itself on an upstream branch
 
-Pins stay per site (owner, 2026-10-16, cat-harness-tools#401). A site may
+Pins stay per site (owner, 2026-10-16). A site may
 declare, on one instance's `trust.standing`, that a named person consents
 to following a branch — `{follows: "main", consentBy, consentAt, require?:
 "green"}`. The repin tool (`cat-harness-tools/scripts/repin-standing.ts`,
