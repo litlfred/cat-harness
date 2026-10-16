@@ -41,7 +41,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `docs`, holding `docs`.
 | [`ru/`](ru/) | _nothing declares what this holds_ | |
 | [`site/`](site/) | _nothing declares what this holds_ | |
 | [`slices/`](slices/) | _nothing declares what this holds_ | |
-| [`source/`](source/) | The docs graph's own SOURCE: one directory per generated page (`<group>-<slug>/`), holding its authored blocks (`.md`), its content-object manifests (`.ts`, `prose` and `webpage`) and their generated `.jsonld`. `gen-docs-pages.ts` renders each into the page beside it (`docs/<group>/<slug>.md`); Jekyll excludes this directory (`_config.yml`), so a block is never published as a page of its own. Moved here from `content/docs/` on 2026-10-09 (owner: "move content/docs into docs/"), so the docs subgraph carries its own source and a mount of `docs` brings it. | |
+| [`source/`](source/README.md) | The docs graph's own SOURCE: one directory per generated page (`<group>-<slug>/`), holding its authored blocks (`.md`), its content-object manifests (`.ts`, `prose` and `webpage`) and their generated `.jsonld`. `gen-docs-pages.ts` renders each into the page beside it (`docs/<group>/<slug>.md`); Jekyll excludes this directory (`_config.yml`), so a block is never published as a page of its own. Moved here from `content/docs/` on 2026-10-09 (owner: "move content/docs into docs/"), so the docs subgraph carries its own source and a mount of `docs` brings it. | |
 | [`start/`](start/README.md) | Start here: installing, getting started, contributing and accessibility. | |
 | [`themes/`](themes/) | _nothing declares what this holds_ | |
 | [`who-iris/`](who-iris/) | _nothing declares what this holds_ | |
