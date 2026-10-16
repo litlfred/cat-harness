@@ -215,10 +215,6 @@ msgstr "folio-assistant expone sus herramientas a través de MCP, por lo que cua
 msgid "Claude Code"
 msgstr "Claude Code"
 
-#: docs/start/installation.md:175
-msgid "Add folio-assistant as an MCP server. Project-scoped config lives in  at the root of your content repo:"
-msgstr "Agrega folio-assistant como un servidor MCP. La configuración con ámbito de proyecto se encuentra en  en la raíz de tu repositorio de contenido:"
-
 #: docs/start/installation.md:189
 msgid "Or register it from the CLI:"
 msgstr "O regístralo desde la CLI:"
@@ -258,3 +254,6 @@ msgstr "Apunta tu cliente al comando stdio anterior, o ejecuta el transporte HTT
 #: docs/start/installation.md:244
 msgid "Why this works across harnesses. The discipline lives in  (a Linux Foundation agent standard read natively by Claude Code, Gemini CLI, Antigravity, Cursor, Copilot, and others); the live state is exposed both as a per-harness  hook over one shared script and as the  MCP tool. See the architecture page."
 msgstr "Por qué funciona en diferentes arneses. La disciplina reside en  (un estándar de agentes de la Linux Foundation leído de forma nativa por Claude Code, Gemini CLI, Antigravity, Cursor, Copilot y otros); el estado en tiempo real se expone tanto como un hook  específico de cada arnés a través de un script compartido, como mediante la herramienta MCP . Consulta la página de arquitectura."
+
+#~ msgid "Add folio-assistant as an MCP server. Project-scoped config lives in  at the root of your content repo:"
+#~ msgstr "Agrega folio-assistant como un servidor MCP. La configuración con ámbito de proyecto se encuentra en  en la raíz de tu repositorio de contenido:"

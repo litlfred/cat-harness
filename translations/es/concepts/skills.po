@@ -321,10 +321,6 @@ msgstr "Disciplina de reclamación/coordinación multiagente"
 msgid "beans-as-todos discipline"
 msgstr "Disciplina de beans como tareas pendientes (beans-as-todos)"
 
-#: docs/concepts/skills.md:157
-msgid "Platform skill bundles (, , )"
-msgstr "Paquetes de habilidades de plataforma (, , )"
-
 #: docs/concepts/skills.md:159
 msgid "Larger platform bundles, two of them migrated from the qou content repo (see migration record and issue #27). These are content-agnostic and meant to be synced into any folio:"
 msgstr "Paquetes de plataforma más amplios, dos de ellos migrados desde el repositorio de contenido qou (consulta el registro de migración y el issue #27). Son independientes del contenido y están diseñados para sincronizarse en cualquier folio:"
@@ -551,3 +547,6 @@ msgstr "Primeros pasos — ejecutar tu primera habilidad"
 
 #~ msgid ", , , , and  now live (generalized) in the **** bundle below — fetch them with ."
 #~ msgstr ", , ,  y  ahora residen (generalizadas) en el paquete **** a continuación — cárgalas con ."
+
+#~ msgid "Platform skill bundles (, , )"
+#~ msgstr "Paquetes de habilidades de plataforma (, , )"
