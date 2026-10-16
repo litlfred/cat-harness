@@ -124,7 +124,6 @@
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#flowCount",
       "@type": "http://www.w3.org/2001/XMLSchema#integer"
     },
-    "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/0.1.0/ns#",
     "from": {
       "@id": "http://www.omg.org/spec/BPMN/20100524/MODEL#sourceRef",
       "@type": "@id"
