@@ -241,6 +241,18 @@ things to know (roast `1ygp` L4.2):
   does not delete them). The lock records them under `unmounted` as
   `leftOnDisk`, and the check reports them as not mounted.
 
+### Standing consent: a site keeps itself on an upstream branch
+
+Pins stay per site (owner, 2026-10-16, cat-harness-tools#401). A site may
+declare, on one instance's `trust.standing`, that a named person consents
+to following a branch — `{follows: "main", consentBy, consentAt, require?:
+"green"}`. The repin tool (`cat-harness-tools/scripts/repin-standing.ts`,
+run by its `standing-repin.yml` workflow) then moves that pin to the
+branch's newest (green) commit and writes `trust.consent` for the new pin,
+`by` that person and marked `standing`. The mount accepts it only while the
+same rule is still declared: withdraw or edit it and those pins ask again.
+A pin moved by hand still asks again, rule or not.
+
 ## Publishing a remote-mounted downstream — provision `gh-pages` first
 
 A mount brings layers into a checkout; it provisions **nothing** on the
