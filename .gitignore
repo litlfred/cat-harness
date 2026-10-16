@@ -140,6 +140,8 @@ node_modules/
 /docs/en/cat-harness/code/smart-base/
 /docs/en/cat-harness/code/who-iris/
 /docs/en/cat-harness/memory/
+/docs/en/cat-harness/pipeline-plugins/
+/docs/en/cat-harness/editor-checkers/
 /docs/todos.json
 /docs/todos.jsonld
 /docs/todos/
