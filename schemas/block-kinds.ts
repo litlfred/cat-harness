@@ -41,8 +41,8 @@ import type { Block } from "./types";
  * Owner, 2026-10-04: *"kinds need to be discoverable … not centrally
  * managed"* (bean riit, step 2; sod4 finding #1). Each kind is a
  * `folio-block-kind/v1` node in a `block-kinds/` graph its OWNING harness
- * declares — document kinds in folio-assistant-core, the math kinds in
- * folio-assistant-sci — and this module scans every instance's declaration
+ * declares — document kinds in the content core, the math kinds in
+ * the science layer — and this module scans every instance's declaration
  * for them. Adding a kind is adding a node; nothing here changes.
  *
  * Why a runtime list matters at all: `Block` is a type and is erased, so
@@ -123,7 +123,7 @@ export const DISCOVERED_BLOCK_KIND_NODES: readonly BlockKindNode[] = discoverBlo
 
 /**
  * The BUILT-IN kinds' nodes: those of an adapter the platform's code types
- * ({@link CONTENT_ADAPTERS}). A contributed adapter's kinds (smart-base's
+ * ({@link CONTENT_ADAPTERS}). A contributed adapter's kinds (the DAK layer's
  * `dak`) are discovered too, but reach a folio only through its dependency
  * tree — owner, 2026-10-04: a folio sees the nodes of the instances it depends
  * on (option 1 of 3) — so `loadContributions` registers them per folio, and
@@ -136,7 +136,7 @@ export const BLOCK_KIND_NODES: readonly BlockKindNode[] = DISCOVERED_BLOCK_KIND_
 /**
  * A typed vocabulary's kinds nest into the two content profiles, so each must
  * say which side it is on and how it is headed. A CONTRIBUTED adapter's kind
- * (smart-base's `dak`) is in no profile and is headed by its title-cased name
+ * (the DAK layer's `dak`) is in no profile and is headed by its title-cased name
  * unless its node says otherwise.
  *
  * Checked here, against the DISCOVERED typed adapters, rather than in the node
@@ -191,7 +191,7 @@ export const BLOCK_KIND_ALT = BLOCK_KINDS.join("|");
  * pool.
  *
  * These are the BUILT-IN adapters only. `dak` was listed here until bean
- * `1335`; it is smart-base's now, contributed through
+ * `1335`; it is the DAK layer's now, contributed through
  * `ContributionRegistry` like any adapter a harness adds, and
  * `register` refuses a contribution that names a built-in one — which is what
  * made narrowing this list safe rather than a collision waiting to happen.
@@ -408,8 +408,8 @@ export function profileForContentType(contentType: string | undefined): ContentP
 //
 // The `dak` adapter's 21 kinds, their builder names and label prefixes, and
 // the WHO DAK component tables were declared HERE until bean `1335`. They live
-// in `smart-base/schemas/dak-kinds.ts` now and reach core by registration:
-// smart-base declares the adapter and its kinds as nodes (bean riit, steps 3
+// in the DAK layer's `schemas/dak-kinds.ts` now and reach core by registration:
+// that layer declares the adapter and its kinds as nodes (bean riit, steps 3
 // and 5), and `loadContributions` hands them to a `ContributionRegistry`.
 //
 // So everything below answers for the BUILT-IN vocabulary — what core owns —

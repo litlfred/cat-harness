@@ -2,10 +2,10 @@
 /**
  * WHERE BYTES CAME FROM — the source-side provenance pair, and a signature.
  *
- * Bean `bf5l`. These two lived in `folio-assistant-core/schemas/materialization.ts`
+ * Bean `bf5l`. These two lived in the content core's `schemas/materialization.ts`
  * and `cat-harness/schemas/intake.ts` imported the second one across the
  * instance boundary — **up** the declared dependency order, since
- * `folio-assistant-core` declares `needs: ['cat-harness']` while `cat-harness`
+ * the content core declares `needs: ['cat-harness']` while `cat-harness`
  * declares only `needs: ['bootstrap']`. The code pointed one way and the
  * declarations the other, and `kg:detangle` pinned `wrongDirection: 1` on
  * `main` for it (#1375 made that count visible rather than silent).
@@ -110,7 +110,7 @@ export type Signature = z.infer<typeof SignatureSchema>;
  * They are not one field with two kinds of value, and this module already
  * proved it the hard way. Until 2026-09-22 there was a single `of`, documented
  * as *"the remote thing. A URI, always — never a path, never a bare name"* —
- * and **5 of the 9 who-iris item records violated that documentation**, in
+ * and **5 of the 9 IRIS replica item records violated that documentation**, in
  * three shapes, two of them inside a single file:
  *
  * | record | old `of` | what it actually was |
@@ -138,7 +138,7 @@ export type Signature = z.infer<typeof SignatureSchema>;
  *
  * ## Both absent is legitimate, and must say so
  *
- * The who-iris item above knows it came from IRIS and does **not** know the
+ * The IRIS replica's item above knows it came from IRIS and does **not** know the
  * handle. That is a real state, not an unfilled field — so both pointers may be
  * absent, and then {@link MaterializationSchema}'s `note` is REQUIRED. Same
  * discipline as {@link GateSchema}'s `basis`: *"we looked and could not

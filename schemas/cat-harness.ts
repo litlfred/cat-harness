@@ -44,7 +44,7 @@
  * Matching on path instead would make two directories out of one relocation,
  * and every consumer would scan a directory that is not there.
  *
- * ## Self-declarative, in the smart-base sense
+ * ## Self-declarative, in the WHO SMART Base sense
  *
  * The declaration is itself a small graph instance: each directory is a node
  * with an `@id` and an `@type` drawn from the folio namespace, so the set of
@@ -675,14 +675,14 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
    * this instance publishes** — `<stub>.jsonld` for the knowledge graph,
    * `<stub>.schema.json` for its schema. Defaults to `name`.
    *
-   * WHO's `smart-base` derives its stub by stripping the `smart-` prefix from
-   * the repository name (`smart-base` → `base` → `https://smart.who.int/base`),
+   * WHO's SMART Base IG derives its stub by stripping the `smart-` prefix from
+   * the repository name (`smart-<stub>` → `<stub>` → `https://smart.who.int/<stub>`),
    * so the stub, the directory and the published path are one word. The same
    * convention holds here without the prefix rule: the artefact is named after
    * the repository, so a reader who knows the repo knows the filename.
    *
    * Note the declaration file itself is **not** stub-named — it stays
-   * `harness.json`. (The analogy here was `smart-base`'s config "staying"
+   * `harness.json`. (The analogy here was the WHO SMART Base IG's config "staying"
    * `dak.json`; that config is ours and became `dak.config.json` on
    * 2026-09-22, so it argues nothing either way now.) A
    * consumer must be able to find the config without already knowing the
@@ -694,7 +694,7 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
    *
    * The identity every cross-instance reference resolves through: a bare
    * `name` says nothing about which forge or owner, and two owners may both
-   * publish a `smart-base`. Planned rather than current so that an IRI keyed
+   * publish an instance of the same name. Planned rather than current so that an IRI keyed
    * by it survives the split — where the instance sits TODAY is {@link livesAt}.
    * `instanceRepositories` in `schemas/instance-repositories.ts` derives the
    * `owner/repo ↔ name ↔ root` map from these; nothing keeps a list by hand.
@@ -903,7 +903,7 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
    *
    * **Absent means the default: the prefix is the instance's `name`, resolved
    * by the platform.** `passThrough: true` hands the prefix to the downstream
-   * engine untouched — fhir-harness declares `site.data`, which Jekyll and the
+   * engine untouched — the FHIR IG layer declares `site.data`, which Jekyll and the
    * IG Publisher resolve themselves.
    */
   liquid?: LiquidPrefix;
@@ -1601,7 +1601,7 @@ export type Tile = z.infer<typeof TileSchema>;
  *   a higher one.
  * - `coversKinds` — graph typologies, over every declared directory of those
  *   kinds in the checkout: the "full KG" a corpus-wide viewer draws. That is
- *   how cat-harness's library viewer covers who-iris's library without
+ *   how cat-harness's library viewer covers the IRIS replica's library without
  *   naming it — a kind is vocabulary, not another instance's directory.
  *
  * At least one is required: a visualiser covering nothing is a page nothing
@@ -1609,7 +1609,7 @@ export type Tile = z.infer<typeof TileSchema>;
  *
  * ## `subgraphs` — what `<visualiser>/<sub-graph>/` names
  *
- * `instance` — one page per covered instance (`cat-harness/library/who-iris/`);
+ * `instance` — one page per covered instance (`cat-harness/library/<instance>/`);
  * `directory` — one per covered directory id. Absent: the visualiser draws
  * the full view only. Readers use it to send a directory's tile to its
  * sub-graph page rather than the full one.
@@ -1909,7 +1909,7 @@ const ContentDirectoryShape = GraphNodeDirectoryShape.extend({
    * value is the one that needs it most, and the corpus proved it within
    * minutes of the gate existing.
    *
-   * `who-iris/uploads/` is the ingestion DROP ZONE — `adapters/document/paths.ts`
+   * An L1 library's `uploads/` is the ingestion DROP ZONE — `adapters/document/paths.ts`
    * creates it on a first ingest precisely so somebody can write there — and it
    * holds a materialized node. So it is declared writable OVER materialized
    * content, which is exactly the shape of the finding the gate raises, and is
@@ -1931,7 +1931,7 @@ const ContentDirectoryShape = GraphNodeDirectoryShape.extend({
    * **Until this field existed, the second route went to whichever kind sorted
    * first alphabetically** — and the comment doing the sorting said, in as many
    * words, that the choice "is the instance's own business". It was not: it was
-   * the alphabet's. who-iris declaring both `docs` and `library` made that
+   * the alphabet's. The IRIS replica declaring both `docs` and `library` made that
    * concrete, because `docs` sorts first and the themed root would have served
    * the documentation, contradicting the ruling it was implementing.
    *
@@ -2019,7 +2019,7 @@ const ContentDirectoryShape = GraphNodeDirectoryShape.extend({
    * `mount-instance-docs.ts` the first, and neither implemented *listed under*
    * as composition. This field is that clause.
    *
-   * **Opt-in, and it must stay opt-in.** `who-iris/` is a REPLICA of IRIS:
+   * **Opt-in, and it must stay opt-in.** The IRIS layer is a REPLICA of IRIS:
    * just-the-docs' layout would replace IRIS's chrome with folio-assistant's,
    * which is the opposite of what a replica is for, and
    * `mount-instance-docs.ts` says exactly that where it declines to run Jekyll
@@ -2038,7 +2038,7 @@ const ContentDirectoryShape = GraphNodeDirectoryShape.extend({
    *
    * An instance that mirrors a FHIR IG and records its source
    * (`fhir-artifact-index/menu.json`) gets one Jekyll site of its own, built
-   * by `fhir-harness/scripts/stage-ig-sites.ts` from the IG's narrative pages
+   * by the FHIR IG layer's `scripts/stage-ig-sites.ts` from the IG's narrative pages
    * (bean `bamf`). Without this field that site sits at `/<instance>/ig/`
    * BESIDE the instance's composed pages: two sites, two menus, and the
    * reader at `/<instance>/` sees only the artefact index. With it, the IG
@@ -2046,11 +2046,11 @@ const ContentDirectoryShape = GraphNodeDirectoryShape.extend({
    * their assets) build inside it, under the IG's own menu — one site, as the
    * IG Publisher builds one.
    *
-   * Owner, 2026-10-05 (bean `mftp`), choosing the merged site for smart-trust
+   * Owner, 2026-10-05 (bean `mftp`), choosing the merged site for the trust IG
    * with *"clean break on old beahviour, no redirect needed"*.
    *
-   * **Opt-in, never inferred from `menu.json`.** smart-base holds a menu too,
-   * but `/smart-base/` is a harness landing page (bean `n3ni`); inferring
+   * **Opt-in, never inferred from `menu.json`.** The DAK layer holds a menu too,
+   * but its root is a harness landing page (bean `n3ni`); inferring
    * would silently replace it. Refused together with `composed`: a directory
    * built into two different sites has two answers for one URL.
    */
@@ -3276,7 +3276,7 @@ export const CAT_HARNESS_DECLARATION_SCHEMA_TAG = "cat-harness-declaration/1.0.0
 /** The declaration's fields, shared by {@link CatHarnessDeclarationSchema} and {@link CatHarnessDeclarationKind}. */
 /**
  * The steps and check scripts a repository's CI runs that the local gate set
- * does not, each with its reason — read by cat-harness-tools' `gates.ts`
+ * does not, each with its reason — read by the tools layer's `gates.ts`
  * (beans `0r7u`, `ot9a`).
  *
  * Declared by whoever OWNS what is exempted: an instance for its own scripts
@@ -3404,7 +3404,7 @@ const catHarnessDeclarationShape = {
    *
    * Optional, and absent is "has not said", never "not content": most staged
    * instances here have not been through the split, and a default would claim
-   * a decision nobody made. Added 2026-09-30 (bean `eayu`) because who-iris is
+   * a decision nobody made. Added 2026-09-30 (bean `eayu`) because the IRIS replica is
    * staged as a CONTENT repository with no tools repository authorised, so
    * nothing else in the tree says it must hold no code; kg:audit's
    * `content-instance-holds-code` reads it. An instance a declared tools
@@ -3414,7 +3414,7 @@ const catHarnessDeclarationShape = {
   /**
    * Instances this one is SEEDED TOGETHER with: the same seeding step creates
    * both repositories, so neither ever stands alone in a checkout (bean
-   * `smbc` seeds `cat-harness` and `cat-harness-tools` at once).
+   * `smbc` seeds `cat-harness` and its tools layer at once).
    *
    * Declared by the HIGHER instance, naming the lower one, because a lower
    * instance naming one above it is the wrong direction
@@ -3422,7 +3422,7 @@ const catHarnessDeclarationShape = {
    * a lower instance that resolves only into an instance seeding with it is
    * not "upward" — it cannot break on a seeding day that creates both.
    * Owner, 2026-10-04: cat-harness's Tool nodes resolving into
-   * cat-harness-tools are a seeding pair, not a seeding risk.
+   * the tools layer are a seeding pair, not a seeding risk.
    *
    * Absent means "seeds alone", which is the strict reading.
    */
@@ -3952,7 +3952,7 @@ export function checkoutRootFor(instanceRoot: string): string {
  * instanceRootsIn("/home/user")              -> 1   (only folio-assistant)
  * ```
  *
- * so the root instance's `needs: ["folio-assistant-core"]` derived **nothing**,
+ * so the root instance's `needs` on the content core derived **nothing**,
  * and its overlay held one directory — the authored config edge, which does not
  * go through the derivation. A broken resolver that returns one plausible entry
  * is worse than one that returns none: it reads as a working overlay.
@@ -4152,7 +4152,7 @@ export function instanceRootFor(start: string): string {
  *
  * So every cat-harness instance, and every instance that depends on one,
  * publishes them at the SAME place. CatBootstrap then needs no special case per
- * target: `f-a-sci`, `smart-base` and a specialised harness nobody has written
+ * target: `f-a-sci`, a DAK layer and a specialised harness nobody has written
  * yet are all read the same way. That is what lets bootstrap initialise into a
  * *specialised* kind rather than only into the one it was written against.
  *
@@ -5042,7 +5042,7 @@ function pathContains(outer: string, inner: string): boolean {
  *
  * Scope matters and is honoured: a `repository`-scoped entry and an
  * instance-relative one resolve against different roots, so they are
- * compared by ABSOLUTE path where one is available. `smart-base/methodologies/`
+ * compared by ABSOLUTE path where one is available. A DAK layer's `methodologies/`
  * is repository-scoped precisely so it lifts out whole, and reading it as a
  * child of an instance-relative `methodologies/` would be wrong on both the
  * path and the intent.
@@ -6373,9 +6373,9 @@ export function renderableDirectories(
  * who had not been written yet, which is the one `wggr` was.
  *
  * **That caller arrived the same day.** Bean `frs5` moved the corpus out of
- * the platform into `who-iris/library/` and `folio-assistant-sci/library/`, so
+ * the platform into the IRIS replica's `library/` and the science layer's `library/`, so
  * `library` has TWO homes and `schemas` has FOUR (`cat-harness/`,
- * `folio-assistant-core/`, `large-datasets/`, `detangle/`). The paragraph
+ * the content core's, `large-datasets/`, `detangle/`). The paragraph
  * above is kept as written and corrected here rather than edited, because
  * what it records — a throw added for a caller nobody had written — is worth
  * more beside the date it stopped being true than it is silently updated.
@@ -6868,7 +6868,7 @@ export function deferResolution<T>(
  *
  * The first version of this filtered on `ResolvedDirectory.own`. Measured:
  * from the `cat-harness` root all FOUR `schemas` directories are `own` —
- * `cat-harness/schemas` plus `folio-assistant-core/`, `large-datasets/` and
+ * `cat-harness/schemas` plus the content core's, `large-datasets/` and
  * `detangle/`, each declared by cat-harness's own `harness.json` with
  * `scope: "repository"` because this repository stages three future instances
  * as sibling top-level directories. `own` distinguishes the root from a

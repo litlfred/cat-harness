@@ -21,7 +21,7 @@
  * ## What this does NOT audit
  *
  * **Whether the rail's links resolve.** They cannot be checked from the source
- * tree and it is not close: `/who-iris/` and `/smart-trust/` are mount routes
+ * tree and it is not close: the `/<instance>/` roots of mounted instances are mount routes
  * `mount-instance-docs.ts` creates AFTER Jekyll, and `/bootstrap/initialization.html`
  * is a `.md` Jekyll renders. A resolver run against the committed tree calls
  * all three dead. `check:subgraphs` and the site-link tests own that question
@@ -84,7 +84,7 @@ export const ViewerNavFlagSchema = z.enum([
 export type ViewerNavFlag = z.infer<typeof ViewerNavFlagSchema>;
 
 export const ViewerNavPageSchema = z.object({
-  /** The page's published path, e.g. `/cat-harness/library/who-iris/`. */
+  /** The page's published path, e.g. `/cat-harness/library/<instance>/`. */
   path: z.string().min(1),
   /** Repo-relative source, so a finding names a file somebody can open. */
   source: z.string().min(1),

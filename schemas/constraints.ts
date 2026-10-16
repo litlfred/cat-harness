@@ -226,7 +226,7 @@ export const AuthorNoteSchema = z.object({
 
 /**
  * Shared block fields, exported so the `dak` adapter's schemas in
- * `smart-base/schemas/dak-blocks.ts` extend the same base rather than restating it.
+ * the DAK layer's `schemas/dak-blocks.ts` extend the same base rather than restating it.
  */
 export const BlockBaseSchema = z.object({
   title: z.string().optional(),

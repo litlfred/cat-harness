@@ -8,7 +8,7 @@
  * jsonld.js expanded all of them to `{"@value": …}` — literals. PROV-O defines
  * all three as object properties, so the graph said an activity was done by
  * the TEXT "owner" and nothing joined it to the actor. The `linked-data` voice
- * (folio-assistant-core/skills/voices/linked-data) states the rules this module
+ * (in the content core's `skills/voices/linked-data`) states the rules this module
  * follows; each is cited there to the held W3C text.
  *
  * ## What it emits
@@ -143,7 +143,7 @@ export function addressBook(repo: string): AddressBook {
   // instance's declared `catalogue` graph holds `folio-catalogue-node/v1`
   // records; one with a Handle is addressed at the global Handle resolver,
   // the identifier that outlives the publishing host (owner 2026-10-01,
-  // option A). The same rule as `handleIri` in folio-assistant-core's
+  // option A). The same rule as `handleIri` in the content core's
   // catalogue schema, restated because importing it here would be an edge
   // from the platform up into core.
   const entities = new Map<string, Address>();

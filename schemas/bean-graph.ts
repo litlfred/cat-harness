@@ -333,7 +333,7 @@ export function nodeOfKind(graph: BeanGraph, kind: BeanNodeKind): BeanGraphNode 
 
 /* ── The milestone rollup ─────────────────────────────────────────────────
    Here rather than beside the projection that publishes it
-   (`site-indexes.ts`), because that file is `folio-assistant-core` and
+   (`site-indexes.ts`), because that file is the content core's and
    `scripts/milestone-rollup.ts` — the only implementation — is `cat-harness`.
    Core may import harness; harness may not import core. Putting the schema on
    the core side made `check:partition` report a wrong-direction edge, which is

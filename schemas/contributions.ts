@@ -31,7 +31,7 @@
  *
  * ## Why the diamond is not a collision
  *
- * The proposed dependency graph is a diamond: `smart-base → smart-kg → core`
+ * The proposed dependency graph is a diamond: `<DAK layer> → smart-kg → core`
  * and `folio-asst-sci → core`, so a depth-first walk reaches `core` twice.
  * Registering the same contribution twice from the same contributor is
  * therefore a **no-op**, not an error. Without that rule every realistic
@@ -148,7 +148,7 @@ export interface ToolContribution {
  * ```
  *
  * — the generic sweep naming one adapter's checker table. That is a
- * wrong-direction dependency (core → smart-base) and it does not generalise:
+ * wrong-direction dependency (core → the DAK layer) and it does not generalise:
  * a third adapter means a third `??`, and a folio that brings its own criteria
  * has nowhere to put them at all.
  */
@@ -250,7 +250,7 @@ export interface RendererContribution {
  *
  * ## Why this exists (bean `squu`, owner ruling 2026-10-01 ~18:15)
  *
- * The sci-bound pipeline files go straight to `folio-assistant-sci`, which sits
+ * The sci-bound pipeline files go straight to the science layer, which sits
  * above every generic layer. Before that `git mv` can happen, generic code must
  * stop importing them: a static import from a lower layer into sci is exactly
  * what `check:import-direction` rejects. A slot inverts the edge — the generic

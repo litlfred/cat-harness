@@ -13,7 +13,7 @@
  * ```
  *
  * One filename, one boolean, and no type behind it. A repository cannot be two
- * things that way, and `smart-base` already is two — a DAK *and* a SUSHI
+ * things that way, and the DAK layer already is two — a DAK *and* a SUSHI
  * project — so the boolean is wrong about the first repository anybody asks it
  * about. Bean `79t3`.
  *

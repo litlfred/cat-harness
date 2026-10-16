@@ -43,8 +43,8 @@
  *
  * Bean `tlat` (placement PR5, owner ruling 2, 2026-09-30, option A): this is
  * the contract behind the harness's own `asset-extraction` skill, so it moved
- * DOWN from `folio-assistant-core/schemas/` together with the tool that writes
- * it (`cat-harness-tools/scripts/extract-assets.ts`). Nothing here names a
+ * DOWN from the content core's `schemas/` together with the tool that writes
+ * it (the tools layer's `scripts/extract-assets.ts`). Nothing here names a
  * content concept — a container, its entries, three timestamps — and nothing
  * in core imported it, so the move left no upward edge behind. Like every Zod
  * module in this directory it follows to `cat-harness-tools/schemas/` at

@@ -4,8 +4,8 @@
  * finding #1).
  *
  * Owner, 2026-10-04: every contribution is a node; *"block kinds first"*; the
- * nodes live with their owners now (document kinds in folio-assistant-core,
- * the math kinds in folio-assistant-sci's paper adapter, option 2 of 3); and
+ * nodes live with their owners now (document kinds in the content core,
+ * the math kinds in the science layer's paper adapter, option 2 of 3); and
  * *"kinds need to be discoverable … not centrally managed"*. So no module
  * lists the kinds: `block-kinds.ts` DISCOVERS them by scanning every
  * instance's declared `block-kinds` graph, and each per-kind fact the old

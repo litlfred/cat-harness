@@ -8,7 +8,7 @@
  * ## Why only this half lives in the harness
  *
  * Bean `tlat` (placement PR5, owner ruling 2, 2026-09-30, option A): only the
- * VOCABULARY moved down from `folio-assistant-core/schemas/materialization.ts`
+ * VOCABULARY moved down from the content core's `schemas/materialization.ts`
  * — the three states and {@link FixitySchema}. The rest of that module stays
  * in core: the five gates (size, restrictions, retention, source loss,
  * copyright), the purposes, and the record that binds them, because each gate

@@ -93,8 +93,8 @@ export const KG_QA_MANIFEST_SCHEMA = "kg-qa-manifest/v1";
  * declared instance made it a defect: `kg-audit.ts` writes this file
  * unconditionally, so running the audit against an instance with no skills
  * CREATED a `skills/` directory holding nothing but this manifest. Measured on
- * the first full sweep: six instances (`smart-dak`, `smart-ig`,
- * `smart-immunizations`, `smart-l1`, `smart-trust`, `agent-skills`) gained one,
+ * the first full sweep: six instances (`smart-dak`, `smart-ig`, `smart-l1`,
+ * `agent-skills` and two IG instances above this layer) gained one,
  * and the generated UML and navbar both moved to report a skills graph that
  * holds no skills.
  *
@@ -219,7 +219,7 @@ export function kgQaSidecarPath(
 /**
  * Does `subjectDir` lie outside the instance at `repoRoot`?
  *
- * `relative` rather than a string prefix: `/repo/cat-harness-tools` starts with
+ * `relative` rather than a string prefix: `/repo/cat-harness-x` starts with
  * `/repo/cat-harness` and is not inside it. An absolute answer from `relative`
  * (a different drive on Windows) is outside too.
  */
@@ -1626,7 +1626,7 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
     // "QA warning. not failure.. ok b/c small # tools" (bean `eayu`; separation
     // arc S0, #1770). It was `major` on the argument that FR-7 admits no
     // exception; the owner overruled that for the tolerated case: the five
-    // IRIS-specific files STAY in who-iris/ and no who-iris-tools repository is
+    // IRIS-specific files STAY in the IRIS replica and no tools repository for it is
     // authorised. `minor` still records `fail` and still names every file, so
     // the detection is kept and the violation stays visible — it simply fails
     // neither `kg:audit --check` nor `--strict`. The ruling's warrant is that
