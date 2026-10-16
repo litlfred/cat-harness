@@ -26,7 +26,7 @@ When authoring or modifying tools in the separated architecture:
    Graph with its I/O contracts, capability bindings (`satisfies`), and
    execution metadata.
 3. **The Concrete Implementation** lives in the dedicated tools repository
-   (`cat-harness-tools/` or `<name>-tools/`), maintaining its own standalone
+   (the tools layer or `<name>-tools/`), maintaining its own standalone
    dependencies, build scripts, ambient type definitions, and test suites.
 
 ---
@@ -38,7 +38,7 @@ The platform splits content/schemas from tool implementations:
 | layer | repository | role & contents |
 |---|---|---|
 | **Graph & Schemas** | `litlfred/cat-harness` | Declarative Tool nodes in `tools/` (using `defineTool` from `schemas/tool.ts`), schema definitions, and skill contracts. |
-| **Tool Execution** | `litlfred/cat-harness-tools` | Executable TypeScript implementations in `src/tools/`, MCP server in `src/server.ts`, ambient moddle/type definitions in `types/`, standalone `package.json` (`@litlfred/cat-harness-tools`), `tsconfig.json`, and `bunfig.toml`. |
+| **Tool Execution** | the tools layer's repository | Executable TypeScript implementations in `src/tools/`, MCP server in `src/server.ts`, ambient moddle/type definitions in `types/`, standalone `package.json` (`@litlfred/<tools-layer>`), `tsconfig.json`, and `bunfig.toml`. |
 
 This split guarantees that a content-only consumer or reader does not drag
 along heavy runtime dependencies, SDKs, or compiler toolchains.
@@ -54,7 +54,7 @@ Before writing code, identify the generic capability the tool satisfies:
 - If the skill accepts inputs, verify or define its `input:` JSON Schema
   contract in the skill's front matter or under `schemas/skills/`.
 
-### Step 2: Implement the Handler in `cat-harness-tools`
+### Step 2: Implement the Handler in the tools layer
 
 Create a dedicated module under `cat-harness-tools/src/tools/<tool-name>.ts`:
 1. **Use Zod for input validation**: Define explicit input schemas with descriptions.
@@ -87,7 +87,7 @@ export async function packTarball(input: PackTarballInput) {
 In `cat-harness-tools/src/tools/` or `cat-harness-tools/src/server.ts`:
 - Export a registrar function: `register<ToolName>Tools(server: McpServer)`.
 - Register the tool with `server.tool(name, description, schema, handler)`.
-- Re-export the tool from `cat-harness-tools/src/index.ts` if it is part of the
+- Re-export the tool from the tools layer's `src/index.ts` if it is part of the
   public programmatic API.
 
 ### Step 4: Declare the Tool Node in the Knowledge Graph
@@ -97,7 +97,7 @@ In `tools/<id>/<id>.ts`, one folder per Tool (Step 4b):
 - Link to the skill via `satisfies: ["<skill-id>"]`.
 - Map I/O ports to shared vocabulary in `schemas/tool-types.ts` via absolute IRIs.
 - Specify invocation target:
-  - In-process: `invoke: { inProcess: "@litlfred/cat-harness-tools#<export>" }`
+  - In-process: `invoke: { inProcess: "@litlfred/<tools-layer>#<export>" }`
   - CLI: `invoke: { command: "bun run ...", args: [...] }`
 
 Example:
@@ -175,7 +175,7 @@ Why declaring is part of the process, not tidying:
   only, so a new undeclared folder inside a harness passes it.
 - **Declared directories are what can be mounted and exported.** A remote
   mount lays down declared directories only, so an undeclared code folder is
-  missing downstream (cat-harness-tools' `tools/` was, until 2026-10-14). A
+  missing downstream (the tools layer's `tools/` was, until 2026-10-14). A
   harness's package `exports` are derived from its declared, shipped `code`
   directories (`check:package-exports`, bean `7pvn`), so an undeclared one
   cannot be imported by package name either. A from-within id cannot yet be
@@ -186,10 +186,10 @@ Why declaring is part of the process, not tidying:
 
 ### Step 5: Test the Tool
 
-Author fast unit tests in `cat-harness-tools/test/` or whole-checkout integration tests in `cat-harness-tools/test/coordinator/`:
+Author fast unit tests in the tools layer's `test/` or whole-checkout integration tests in the tools layer's `test/coordinator/`:
 - Test valid arguments and expected outputs.
 - Test invalid inputs and error handling.
-- Verify with `bun test cat-harness-tools/test/<tool>.test.ts` or `bun test cat-harness-tools/test/coordinator/<test>.test.ts`.
+- Verify with `bun test <tools-layer>/test/<tool>.test.ts` or `bun test <tools-layer>/test/coordinator/<test>.test.ts`.
 
 ### Step 6: Validate Reachability and Skill Coverage
 
@@ -207,14 +207,14 @@ bun run cat tools:coverage          # checks automated coverage across skills
    If a tool uses external libraries that lack TypeScript types (such as Moddle
    XML parsers like `bpmn-moddle` or `dmn-moddle`), place ambient declaration
    files in `cat-harness-tools/types/*.d.ts` and include them in
-   `cat-harness-tools/tsconfig.json`. Never place tools-specific ambient types
+   the tools layer's `tsconfig.json`. Never place tools-specific ambient types
    in content-only subgraphs.
 
 2. **Bundled Dependencies**:
-   Tools declare their runtime dependencies in `cat-harness-tools/package.json`.
+   Tools declare their runtime dependencies in the tools layer's `package.json`.
    Subgraphs that only import schemas or markdown docs must not list tool runtime
    dependencies in their manifests.
 
 3. **Packaging**:
    The tools package is packaged and published using `bun pm pack` as
-   `@litlfred/cat-harness-tools`.
+   `@litlfred/<tools-layer>`.

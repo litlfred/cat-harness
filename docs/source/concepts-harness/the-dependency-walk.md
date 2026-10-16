@@ -9,7 +9,7 @@ last precisely so that it can.
 The order is **declared, not computed**, in each instance's `needs` array:
 
 ```json
-{ "name": "folio-assistant-core", "needs": ["bootstrap", "cat-harness"] }
+{ "name": "<content-core>", "needs": ["bootstrap", "cat-harness"] }
 ```
 
 It is declared for a measured reason. The layering was real before it was

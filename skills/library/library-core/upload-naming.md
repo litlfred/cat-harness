@@ -107,11 +107,11 @@ counts below are from `git status` over the repair, not from recall:
 
 | kind | where | how it was repaired |
 |---|---|---|
-| `files[].path` | 3 × `who-iris/uploads/*/intake.json` | repointed from the git map |
+| `files[].path` | 3 × the IRIS replica's `uploads/*/intake.json` | repointed from the git map |
 | `container`, `assets[].path` | 7 × `*.extraction.json` | repointed; an asset path equal to the container's own basename moves with it |
-| `provenance.source` | 3 × `who-iris/catalogue/records/*.dc.json` | repointed |
+| `provenance.source` | 3 × the IRIS replica's `catalogue/records/*.dc.json` | repointed |
 | `file`, `source_file` | 6 × `structure.json`, 6 × `manifest.jsonld` | repointed |
-| a hardcoded path | `who-iris/themes/themes.test.ts` | **threw at module load**, which is why bun reported `1 error` with an empty failure list |
+| a hardcoded path | the IRIS replica's `themes/themes.test.ts` | **threw at module load**, which is why bun reported `1 error` with an empty failure list |
 | two test fixtures | `cat-harness-tools/scripts/tests/pdf-images.test.py` | the arm **skipped silently** — `1xhc` — so the skip now announces itself |
 | prose paths | `gen-iris-pages.ts`, `pdf-pages.py`, two `_comment` fields | repointed |
 
@@ -146,7 +146,7 @@ left alone.
 
 **33 paths**, measured from `git diff --name-status -M` rather than re-derived:
 26 primaries and 7 `.extraction.json` sidecars; 23 under the root `uploads/`
-directory and 10 across four who-iris captures.
+directory and 10 across four the IRIS replica captures.
 
 (That sentence says *directory* rather than *graph* on purpose.
 `check:declaration-claims` pairs the phrase `` `<graph>` graph `` with any

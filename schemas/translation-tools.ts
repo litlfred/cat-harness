@@ -5,7 +5,7 @@
  * the scripts/extractors for each format. This schema is the bridge
  * between the generic translation pipeline (pot-extract, po-inject,
  * po-resolve) and the content-type-specific scripts ported from
- * smart-base.
+ * WHO's SMART Base repository.
  *
  * ## Architecture (issue #223 separation of concerns)
  *
@@ -14,7 +14,7 @@
  * pipeline/pot-extract.ts       — generic Markdown extraction
  * pipeline/po-inject.ts         — generic Markdown injection
  * pipeline/po-resolve.ts        — PO source resolution (4-step)
- * scripts/translation/*.py             — smart-base Python originals
+ * scripts/translation/*.py             — SMART Base Python originals
  * ```
  *
  * The generic pipeline handles Markdown (every content type has it).

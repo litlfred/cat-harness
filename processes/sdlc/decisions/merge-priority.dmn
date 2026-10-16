@@ -24,7 +24,7 @@
     refused        a declared merge pattern refuses a conflicted path against
                    current main, or the entry carries an un-cleared ejection
                    (T1). Goes to merge-refusal.bpmn (#1888), never into a train.
-    seedsStaging   (a) an AUTHORED path under cat-harness/ or cat-harness-tools/
+    seedsStaging   (a) an AUTHORED path under cat-harness/ or its tools layer
                    AND a linked bean in the separation arc. See the note below:
                    the path test alone was measured to select 11 of 11 PRs.
     unblocks       (b) open PRs or beans this unblocks, or tangle edges removed.

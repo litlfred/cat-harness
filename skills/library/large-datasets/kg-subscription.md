@@ -80,12 +80,12 @@ releases.
 
 ```jsonc
 "subscriptions": [{
-  "id": "who-iris",
-  "repository": "litlfred/who-iris",
+  "id": "<iris-replica>",
+  "repository": "litlfred/<iris-replica>",
   "ref": "<40-char sha>",
   "subgraphs": ["catalogue"],          // CHOSEN; everything else stays referenced
   "assets": { "policy": "on-demand" }, // none | on-demand | all
-  "harnesses": ["who-iris"]            // CHOSEN for instantiation
+  "harnesses": ["<iris-replica>"]      // CHOSEN for instantiation
 }]
 ```
 
@@ -160,7 +160,7 @@ bun run cat kg:materialize --nodes <subscription> <subgraph-path>   # e.g. --nod
   gates guard copies of somebody else's *content*. This is published graph
   metadata, with every body left as a pointer, and it can be fetched again
   from the pin at any time. The reasoning is in the header of
-  `folio-assistant-core/scripts/kg-materialize.ts`.
+  the content core's `scripts/kg-materialize.ts`.
 - **It is not a substitute for the byte copy.** When you need the files
   themselves, choose the subgraph and run it through the five gates above.
 

@@ -13,7 +13,7 @@
  *
  * ## Shaped after FHIR R5 TestPlan, not copied from it
  *
- * The source is held: `fhir-harness/library/hl7-2023-fhir-r5-testplan`
+ * The source is held: the FHIR IG layer's `library/hl7-2023-fhir-r5-testplan`
  * (HL7/fhir@v5.0.0, `source/testplan/`, CC0). The mapping, so a reader can
  * check each choice against the element it came from:
  *

@@ -81,10 +81,10 @@ reports the edges that cross a boundary **in the wrong direction**.
 | proposed repo | modules | by rule | hand-triaged | by keyword | fell through |
 |---|---:|---:|---:|---:|---:|
 | `cat-harness` | 58 | 43 | 15 | 0 | 0 |
-| `folio-assistant-core` | **129** | 120 | 9 | 0 | 0 |
-| `folio-assistant-sci` | 36 | 8 | 8 | 20 | 0 |
+| the content core | **129** | 120 | 9 | 0 | 0 |
+| the science layer | 36 | 8 | 8 | 20 | 0 |
 | `smart-kg` | **0** | 0 | 0 | 0 | 0 |
-| `smart-base` | 4 | 1 | 0 | 3 | 0 |
+| the DAK layer | 4 | 1 | 0 | 3 | 0 |
 | *(test material)* | 114 | 110 | 0 | 4 | 0 |
 | **unassigned** | **0** | — | — | — | 0 |
 
@@ -108,7 +108,7 @@ line has to be drawn by someone with the domain context, because there is no
 existing code to infer it from. It makes `smart-kg` **new construction, like the
 Test repos** — not an extraction.
 
-**`smart-base` is four modules.** The WHO material here is overwhelmingly prose,
+**the DAK layer is four modules.** The WHO material here is overwhelmingly prose,
 BPMN and schemas rather than TypeScript, so a module-count partition understates
 it badly. Do not read 4 as "nearly done".
 
@@ -129,10 +129,10 @@ complete count over that set rather than a floor:
 
 | importer | imports from | edges |
 |---|---|---:|
-| `cat-harness` | `folio-assistant-core` | **21** |
-| `folio-assistant-core` | `folio-assistant-sci` | **20** |
-| `cat-harness` | `folio-assistant-sci` | 3 |
-| `folio-assistant-core` | `smart-base` | 2 |
+| `cat-harness` | the content core | **21** |
+| the content core | the science layer | **20** |
+| `cat-harness` | the science layer | 3 |
+| the content core | the DAK layer | 2 |
 
 `bun run cat check:partition:edges` prints all 46 by name. The two large groups have
 different causes and different fixes.
@@ -151,7 +151,7 @@ import `schemas/types.ts` — the content-object model. That is the harness's
 defining constraint, [that it does not "do" anything](future-state.html#cat-harness),
 failing in practice: **a harness that imports the content model cannot be
 extracted from underneath core.** It makes `cat-harness` harder to extract
-than `folio-assistant-sci`, not easier, which is the opposite of the intuition that
+than the science layer, not easier, which is the opposite of the intuition that
 the most-depended-upon repo comes out first.
 
 **On the count's history.** The first run reported 33 cross-edges with 135
@@ -179,7 +179,7 @@ This is the most important finding on the page, and it cuts both ways.
 ```jsonc
 "dependencies": {
   "folioAssistant": [
-    { "name": "smart-base", "git": "…", "ref": "main",
+    { "name": "<dak-layer>", "git": "…", "ref": "main",
       "provides": ["skills", "content", "translations"] }
   ]
 }
@@ -230,7 +230,7 @@ assumes a dependency can contribute skills and content.
 The docstring was, until this change, explicit that two things are **never**
 resolved from a dependency: schemas, and MCP tools — "always from the root
 folio-assistant". For a single-platform world that was a reasonable
-simplification. For the proposed split it was a blocker: `folio-assistant-sci` exists
+simplification. For the proposed split it was a blocker: the science layer exists
 to own the math block kinds, the paper adapter and `lean_build`, and a
 dependency able to contribute none of them can only ship prose.
 

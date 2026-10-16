@@ -10,7 +10,7 @@ description: >-
   rollback, and the post-move sweep that a move between the pair owes before
   the parent re-pins. graph-detanglement owns stages 1–3; this skill owns the rest.
   Bootstrap + bootstrap-tools is the worked example; cat-harness +
-  cat-harness-tools is next.
+  the tools layer is next.
 ---
 
 # Knowledge Graph separation — the method
@@ -95,13 +95,13 @@ Owner rulings that make the pattern (2026-09-29, bean `xsqm`):
 ### Staged content with no tools repository yet — the finding, not the silence
 
 An instance can be planned as a content repository before its `-tools` pair
-is authorised (who-iris, 2026-09-30). Declare it — `separation: "content"` in
+is authorised (the IRIS replica, 2026-09-30). Declare it — `separation: "content"` in
 `<name>.json`; the content half of an existing pair is read from the tools
 instance's `supports` and needs nothing — and kg:audit's
 `content-instance-holds-code` records a finding naming every code file still
 inside it. It is a `minor` QA **warning**, not a failure, by owner ruling
 (2026-10-01: *"QA warning. not failure.. ok b/c small # tools"*): the owner
-tolerates the code *for now* (*"iris specific tools for now ok in who-iris/"*),
+tolerates the code *for now* (IRIS-specific tools may stay in the IRIS replica for now),
 and the warrant is that the tolerated set is small. It was `major` until then,
 on the argument that FR-7 has no legitimate exceptions. A warning still names
 each file, so the violation is never silent. The remedy splits by what
@@ -175,7 +175,7 @@ move a corpus describe whole when it carries a vacuity guard: a sibling left
 behind passes standalone over nothing.
 
 **A test reading an UPPER layer's files moves to that layer (owner, 2026-10-06,
-"tests that read cat-harness-tools files => move to cat-harness-tools").** It is
+on the tests that read the tools layer's files: move them to that layer).** It is
 red standing alone for the same reason, one level down: the file it reads is
 not in its layer's closure. It goes in the upper layer's DECLARED test home,
 which may import the lower layer — never the reverse — and it is split, pointed
@@ -318,11 +318,11 @@ The owner ruled on 2026-10-06 (bean `0mpw`, `remote-mount.md`): **no git submodu
 8. **Fan-Out Recursion Guard in `declaringInstances`**: When a mounted dependency carries its own nested `remoteMounts`, consumer remote fan-out resolution must not recursively mount sub-instances into roots that are already locked mounts of the parent checkout. Without filtering (`!lockedMountPaths(checkout).has(rel)`), `remoteFanOut` re-mounts nested dependencies directly into the child checkout's directory, mutating its pristine checkout tree, inflating its file count, and causing `treeDigest` verification to fail.
 9. **Relative Directory Symlink Handling in Staging & Tarball Scripts**: In repositories containing internal symlinked directory trees (such as FHIR Implementation Guides with test structure links), recursive directory copy utilities (like `cpSync(..., { recursive: true })`) can trigger infinite self-copy recursion loops. Staging, site compilation, and packaging scripts must copy symlinks with `{ dereference: false }` or use archive utilities (such as `tar` or `rsync -a`) that preserve symlink references rather than traversing into directory cycles.
 10. **Purely Declarative Ontologies vs. Companion Toolsets (FR-7)**: Purely declarative base repositories (such as `litlfred/bootstrap`) must contain zero runtime execution code, zero test suites, and zero `package.json` manifests by architectural contract (FR-7). All graph compilation (JSON-LD export, BPMN diagram rendering, site staging, and schema validation) is executed by the companion tooling repository (`bootstrap-tools`). The declarative repository explicitly marks its render exemption (`renderExemption: true`) in its root manifest, and tooling scripts accept an explicit target repository argument (`--repo <dir>`) rather than expecting co-located execution.
-11. **Toolchain Decentralization (`package.json`, `tsconfig.json`, `bunfig.toml`)**: Tools and harness subgraphs must possess full standalone toolchain autonomy. `package.json` must be a standalone package manifest (e.g. `@litlfred/cat-harness-tools`), `bunfig.toml` defines test preloads per instance, and `tsconfig.json` must set `"noEmit": true` and omit `rootDir`/`outDir` to prevent `error TS6059: File is not under rootDir` when cross-subgraph schemas or utilities are imported. See [`bun-use`](../../sdlc/sdlc-core/bun-use.md).
+11. **Toolchain Decentralization (`package.json`, `tsconfig.json`, `bunfig.toml`)**: Tools and harness subgraphs must possess full standalone toolchain autonomy. `package.json` must be a standalone package manifest (e.g. `@litlfred/<tools-layer>`), `bunfig.toml` defines test preloads per instance, and `tsconfig.json` must set `"noEmit": true` and omit `rootDir`/`outDir` to prevent `error TS6059: File is not under rootDir` when cross-subgraph schemas or utilities are imported. See [`bun-use`](../../sdlc/sdlc-core/bun-use.md).
 12. **Monorepo Coordinator Demotion**: Once tools and code are extracted to their respective packages, the root `package.json` is demoted to a private coordinator (`"private": true`) with narrowed `tsconfig.json` (`test/**/*.ts`). The root platform coordinates development workspaces, mounts, and integration tests, but never directly exports or publishes tool implementations.
 13. **Ephemeral File Purging and Root Hygiene**: Ephemeral generated directories (`_kg/`, `build/`, `test-results/`) must NEVER be committed to the root repository or left unignored. Build outputs belong to the tool that produces them.
 14. **Instance Memory Preservation**: Root directories `beans/`, `todos/`, and `fsh-guts/` are the instance's own durable working memory (the agent's plan, the user's todo queue, and the archival store). They are never overlaid across instances, never extracted to downstream packages, and stay at root by design.
-15. **A cutover is not done until the instance has re-pointed and can publish itself (who-iris, 2026-10-09)**: folio-assistant consumed `litlfred/who-iris` remotely while who-iris still declared `livesAt: { repository: "litlfred/folio-assistant", path: "who-iris" }`, had no `iriBase`, and had never had stage 7 or 12. `livesAt` is not a comment: `remote-mount.ts` takes `livesAt.path` as the mount path and `seed-ready` reads it as "still staged". And `/who-iris/` had only ever been a mount inside the parent's site build, so `litlfred.github.io/who-iris/` served nothing. The generated pages also kept absolute links to the parent's paths (`folio-assistant/.../who-iris-approval/uploads/...`), which 404 once the bytes moved. Before stage 13: `livesAt` is gone, `iriBase` is declared, and the instance's own site builds from its own repository. Building that site exposed the next gap, that a downstream cannot compose a site without the harness's entire `docs/` graph, which is [Semantic subgraphs](../../../docs/proposals/semantic-subgraphs-2026-10-09.md).
+15. **A cutover is not done until the instance has re-pointed and can publish itself (the IRIS replica, 2026-10-09)**: folio-assistant consumed the IRIS replica's repository remotely while the IRIS replica still declared `livesAt: { repository: "litlfred/folio-assistant", path: "<iris-replica>" }`, had no `iriBase`, and had never had stage 7 or 12. `livesAt` is not a comment: `remote-mount.ts` takes `livesAt.path` as the mount path and `seed-ready` reads it as "still staged". And `/<iris-replica>/` had only ever been a mount inside the parent's site build, so `litlfred.github.io/<iris-replica>/` served nothing. The generated pages also kept absolute links to the parent's paths (`folio-assistant/.../who-iris-approval/uploads/...`), which 404 once the bytes moved. Before stage 13: `livesAt` is gone, `iriBase` is declared, and the instance's own site builds from its own repository. Building that site exposed the next gap, that a downstream cannot compose a site without the harness's entire `docs/` graph, which is [Semantic subgraphs](../../../docs/proposals/semantic-subgraphs-2026-10-09.md).
 
 16. **The replayer must never live inside a layer it replays (cat-harness cutover, 2026-10-09)**: every workflow in folio-assistant — and, through the reusable `folio-staging.yml@main`, every downstream folio's staging build — bootstrapped with `bun "<platform>/cat-harness-tools/scripts/mount-from-lock.ts"`. The cutover removed `cat-harness/` from the parent's tree, so the first step of every job failed with `Module not found "folio-assistant/cat-harness-tools/scripts/mount-from-lock.ts"` before any of the job's own work ran (measured on `litlfred/smart-ra#32`'s staging; fixed by folio-assistant#2518's dependency-free `.github/mount-from-lock.sh`, which fetches the pinned replayer). `mount-from-lock.ts` was written to break exactly this loop for `bootstrap-tools` (its own docblock: "the tool that would fetch it cannot be loaded until it is there") and then moved into a layer that is itself mounted. **Before stage 13**, grep every workflow the parent ships for paths into the directory being retired, and give the parent a bootstrap entry point that lives in the parent and needs nothing mounted.
 17. **A downstream's CI is part of "green" for a cutover**: a reusable workflow called `@main` (`uses: litlfred/folio-assistant/.github/workflows/folio-staging.yml@main`) runs the PARENT's current workflow in the DOWNSTREAM's repository. A cutover that is green in the parent can therefore be red in every folio at once, and the red lands on whatever pull request the folio author opens next — it reads as their failure. Stage 12's "green" includes one dispatched staging run of at least one downstream folio after the cutover commit.
@@ -333,7 +333,7 @@ The owner ruled on 2026-10-06 (bean `0mpw`, `remote-mount.md`): **no git submodu
 
 Learned on cat-harness bean `70lx` stage 1a (cat-harness e29c6429, which moved
 `scripts/`, `src/`, `pipeline/`, most of `test/` and the archimate and
-openapi scripts into cat-harness-tools d8d42ab), and on the index re-pin that
+openapi scripts into the tools layer d8d42ab), and on the index re-pin that
 had to follow it (folio-assistant #2524, superseded by #2529; bean
 `folio-assistant-beaf`, 2026-10-10). The move itself was one reviewed commit
 in each repository. **Making the repositories that consume the move work again
@@ -446,8 +446,8 @@ with a new patch release and move the parent's pin back.
 - Next: the README and diagram writers join bootstrap-tools; the publication
   plan; the standalone rehearsal; then the owner's authorisation.
 
-### 2. cat-harness + cat-harness-tools (completed 2026-10-08)
+### 2. cat-harness + the tools layer (completed 2026-10-08)
 - `cat-harness` (`litlfred/cat-harness`): owns the knowledge graph, declarative schemas, content adapters, and BPMN/DMN processes.
-- `cat-harness-tools` (`litlfred/cat-harness-tools`): owns the MCP server (`src/server.ts`), concrete tool implementations (`src/tools/`), ambient moddle type definitions (`types/`), standalone `package.json`, `tsconfig.json`, and `bunfig.toml`.
+- The tools layer (the tools layer's repository): owns the MCP server (`src/server.ts`), concrete tool implementations (`src/tools/`), ambient moddle type definitions (`types/`), standalone `package.json`, `tsconfig.json`, and `bunfig.toml`.
 - Decoupled from monorepo root via `index.config.json` remote mount and locked via `index.lock.json`.
-- 70lx stage 1a (2026-10-09) then moved the harness's remaining code into cat-harness-tools; the sweep that followed is [After a move lands](#after-a-move-lands--the-post-move-sweep).
+- 70lx stage 1a (2026-10-09) then moved the harness's remaining code into the tools layer; the sweep that followed is [After a move lands](#after-a-move-lands--the-post-move-sweep).

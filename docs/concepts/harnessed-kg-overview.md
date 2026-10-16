@@ -96,8 +96,8 @@ over L5, beside the agentic actor (the robot cat). The slide pairs each question
 with an actor by position only; it states no pairing in words.
 
 **Sources:** [FHIR content — the five layers](../fhir/fhir-content.html#the-three-layers);
-`smart-base/library/mehl-2021-who-smart-guidelines` (the primary source, Lancet
-Digital Health 2021); `smart-base/library/9789240093362-eng` §1.2 (WHO's handbook
+the DAK layer's `library/mehl-2021-who-smart-guidelines` (the primary source, Lancet
+Digital Health 2021); the DAK layer's `library/9789240093362-eng` §1.2 (WHO's handbook
 restating them).
 
 > **Misaligned (fixed on this branch):** the docs said SMART Guidelines "names
@@ -135,7 +135,7 @@ the slide as Cloudflare R2 storage and the Cloudflare edge network.
 
 **Sources:** [`kg-to-portal`]({{ '/reference/skill-instructions/kg-to-portal.html' | relative_url }})
 (package and per-asset signatures; "a CDN is a LAYER");
-`large-datasets` (the WHO IRIS source descriptor); `who-iris` (the DSpace skill).
+`large-datasets` (the WHO IRIS source descriptor); the IRIS replica (the DSpace skill).
 
 > **Misaligned — proposal, not decision:** the repository treats the CDN as a
 > swappable layer. `kg-to-portal` and `large-datasets`' artifact store name
@@ -165,7 +165,7 @@ the slide as Cloudflare R2 storage and the Cloudflare edge network.
 | 9 | Functional and non-functional requirements | key functions and requirements of a digital tracking and decision-support system |
 | 10 | Test scenarios | test data and scenarios to check a system against the other nine |
 
-The slide drew nine cards and put the tenth, **testing: test data and test harness**, beside them. The squares below give all ten a card, and are generated from `DAK_COMPONENTS` (`smart-base/scripts/gen-dak-components-figure.ts`), so a component added there cannot go without one.
+The slide drew nine cards and put the tenth, **testing: test data and test harness**, beside them. The squares below give all ten a card, and are generated from `DAK_COMPONENTS` (the DAK layer's `scripts/gen-dak-components-figure.ts`), so a component added there cannot go without one.
 
 ![The ten components of a WHO Digital Adaptation Kit as numbered coloured squares: 1 Health Interventions and Recommendations, 2 Generic Personas, 3 User Scenarios, 4 Business Processes and Workflows, 5 Core Data Elements, 6 Decision Support Logic, 7 Scheduling Logic (not yet its own DAK model field), 8 Indicators and Monitoring, 9 Functional and Non-functional Requirements, 10 Test Scenarios.]({{ '/assets/img/dak-components.svg' | relative_url }})
 
@@ -206,7 +206,7 @@ exactly one of `url`, `canonical` or an inline `instance`.
 
 <a href="{{ '/assets/img/kg-deck/img-p004-1.webp' | relative_url }}"><img src="{{ '/assets/img/kg-deck/img-p004-1.webp' | relative_url }}" alt="Screenshot of the SMART Base DAK API documentation page: sections 8.2.16–8.2.22 list ValueSet JSON schemas (digital health interventions for managers, providers and data services; SMART Guidelines authoring skills; service and application types), and section 8.3, &quot;Logical Model Schemas (25 available)&quot;, lists cards such as Decision-Support Logic, Health Interventions and Recommendations, Functional and Non-Functional Requirements, Program Indicator, Core Data Element, Dublin Core Metadata Element Set, SUSHI Configuration, User Scenario Source, Test Scenario Source, Persona and Business Process Workflow. Each card carries FHIR, JSON Schema and OpenAPI badges." loading="lazy"></a>
 
-<a href="{{ '/assets/img/kg-deck/img-p004-3.webp' | relative_url }}"><img src="{{ '/assets/img/kg-deck/img-p004-3.webp' | relative_url }}" alt="Screenshot of a JSON Schema (draft 2020-12) for &quot;Decision Support Logic Source&quot;, $id under worldhealthorganization.github.io/smart-base/branches/v1.0.0: an object whose properties are resourceType (const DecisionSupportLogicSource), url and canonical (both URI strings) — exactly one of url, canonical or an inline instance must be provided." loading="lazy"></a>
+<a href="{{ '/assets/img/kg-deck/img-p004-3.webp' | relative_url }}"><img src="{{ '/assets/img/kg-deck/img-p004-3.webp' | relative_url }}" alt="Screenshot of a JSON Schema (draft 2020-12) for &quot;Decision Support Logic Source&quot;, $id under worldhealthorganization.github.io/<dak-layer>/branches/v1.0.0: an object whose properties are resourceType (const DecisionSupportLogicSource), url and canonical (both URI strings) — exactly one of url, canonical or an inline instance must be provided." loading="lazy"></a>
 
 <img src="{{ '/assets/img/kg-deck/img-p004-2.webp' | relative_url }}" alt="A QR code with a small pixel-art dinosaur in its centre. It was not decoded for this description; the slide prints https://smart.who.int/base/dak-api.html beside it." height="140" style="height:140px;width:auto;display:inline-block;vertical-align:middle" loading="lazy">
 
@@ -215,7 +215,7 @@ On the slide the JSON Schema is drawn over the list as a callout of one entry,
 entries holds". The QR code beside it points at the API page.
 
 **Source:** <https://smart.who.int/base/dak-api.html>; the ingested index
-`smart-base/fhir-artifact-index`.
+the DAK layer's `fhir-artifact-index`.
 
 > **Aligned in count, not checked item by item:** the slide shows "Logical
 > Model Schemas (25 available)", and the ingested index holds 25
@@ -283,7 +283,7 @@ BPMN picture and lines tie each one to a part of it:
 So the slide says a user story names a role, a role is a lane, a task is a node
 in it, a skill belongs to a task, and a test belongs to a skill.
 
-**Sources:** `folio-assistant-core/processes/content/content-lifecycle.bpmn` (the picture above is generated
+**Sources:** the content core's `processes/content/content-lifecycle.bpmn` (the picture above is generated
 from it); [beans and todos](../guides/beans-and-todos.html).
 
 > **Aligned:** the snapshot's diagram and today's process have the same six
@@ -370,8 +370,8 @@ to L3, tools to L3 and L4, tests to L2 to L4, apps to L4.
 
 > **Misaligned — target, not current:** none of these repositories exists under
 > these names. Today it is one monorepo, `litlfred/folio-assistant`, with
-> instance directories (`cat-harness`, `folio-assistant-core`, `smart-base`,
-> `smart-immunizations`, `who-iris`, …).
+> instance directories (`cat-harness`, the content core, the DAK layer,
+> the IG instances, the IRIS replica, …).
 > [Current state](architecture/current-state.html) is the measured picture, and
 > the slide is the [future state](architecture/future-state.html).
 
@@ -401,10 +401,10 @@ from each label, not from the drawing:
 
 | from | relation | to |
 |---|---|---|
-| `who/smart-kg` | depends on | `who/smart-base` |
-| `who/smart-immz` | depends on | `who/smart-base` |
+| `who/smart-kg` | depends on | `who/<dak-layer>` |
+| `who/smart-immz` | depends on | `who/<dak-layer>` |
 | `who/smart-kg` | references | `who/smart-kg-tools` |
-| `who/smart-base` | references | `who/smart-base-tools` |
+| `who/<dak-layer>` | references | `who/smart-base-tools` |
 | `who/smart-immz` | references | `who/smart-imz-test` |
 | `who/smart-kg-tools` | utilizes | `who/smart-base-tools` |
 | `who/smart-imz-test` | utilizes | `who/smart-base-tools` |

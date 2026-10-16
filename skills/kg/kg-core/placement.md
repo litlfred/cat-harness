@@ -114,7 +114,7 @@ that identifies the class and why `fsh-guts` is the tempting wrong answer
 infromation/design/planning/etc go into that harness' docs/"*. `docs` is a
 declared graph, and the instance that owns the feature owns the record of why
 it is shaped that way — measured the same day, `cat-harness/docs/` and
-`who-iris/docs/` both exist and `who-iris` declares `docs` among its own
+the IRIS replica's `docs/` both exist and the IRIS replica declares `docs` among its own
 graphs. A feature's reasoning filed in the wrong instance's `docs/` reads fine
 and is unreachable from the place that needs it.
 
@@ -251,7 +251,7 @@ been, and three of six appendix links happened to resolve, which is why nobody
 noticed.
 
 **A naive guess is not merely fragile, it is wrong on real instances.** WHO's
-`smart-base` publishes under the stub `base`, so "the stub is the repo name"
+SMART Base IG publishes under a stub shorter than its repository name, so "the stub is the repo name"
 fails on the reference implementation the convention was modelled on.
 
 **The declaration file itself is deliberately NOT stub-named.** A consumer

@@ -12,6 +12,8 @@ description: >
   requirement changes a rendered surface, before anything is built.
 input: schemas/skills/wireframe-design-review/input.schema.json
 output: schemas/skills/wireframe-design-review/output.schema.json
+uses-methodology:
+  - wiregen
 ---
 
 # Wireframe design review

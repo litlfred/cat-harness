@@ -93,9 +93,9 @@ export const AVATARS: Readonly<Record<string, Avatar>> = {
   // split (#223) has not happened, so `bootstrap` and `folio-assist-core`
   // exist as layers in the namespace and as nothing in `harness.json`"*. Both
   // halves were false by 2026-09-21 — `bootstrap/harness.json` and
-  // `folio-assistant-core/harness.json` both exist and both declare a `name`
+  // the content core's `harness.json` both exist and both declare a `name`
   // — and the second is not even the name that was adopted. Measured on
-  // 2026-09-21: `avatarFor("folio-assistant-core")` returned GENERIC, the
+  // 2026-09-21: `avatarFor(<the content core's name>)` returned GENERIC, the
   // question mark that means "no avatar is declared for this", while the leaf
   // of paper below sat in the table under a spelling nothing carries. A key
   // nobody can reach is worse than a missing one: the coverage check counted

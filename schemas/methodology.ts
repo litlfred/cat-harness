@@ -115,3 +115,25 @@ export const MethodologyFrontMatterSchema = z
   .strict();
 
 export type MethodologyFrontMatter = z.infer<typeof MethodologyFrontMatterSchema>;
+
+/**
+ * A SKILL'S EDGE TO THE METHODOLOGIES IT APPLIES — owner, 2026-10-16:
+ * *"uses-methodology in Skill"*.
+ *
+ * Skills linked their method in prose (`Method: [wiregen](…)`), which no
+ * reader of the graph could follow and no check could hold to a node that
+ * exists. The edge is on the SKILL, pointing at the general node: a
+ * methodology never lists the skills that apply it (a general node never names
+ * its users, `data-modelling` step 8), and the methodologies viewer reads the
+ * edge back to show, on each node's page, which skills apply it.
+ *
+ * Each entry is a methodology `name`, resolved across every instance that
+ * declares a `methodology` graph. Only a skill that APPLIES the method carries
+ * it; a skill that merely mentions one (a worked example, a related reading)
+ * keeps its prose link.
+ */
+export const USES_METHODOLOGY_FIELD = "uses-methodology";
+
+export const UsesMethodologySchema = z
+  .array(z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, "each `uses-methodology` entry is a methodology `name`, kebab-case"))
+  .min(1, "`uses-methodology: []` says nothing — omit the field instead");

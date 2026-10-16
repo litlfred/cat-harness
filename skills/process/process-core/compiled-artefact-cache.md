@@ -26,7 +26,7 @@ Artefacts are stored on orphan branches named for their package and toolchain (e
 
 ## Validity checking (3-valued)
 
-The validity of a cache is not a simple boolean. It relies on the `CompiledInputsSchema` defined in `folio-assistant-core/schemas/materialization.ts`. Validity is checked BEFORE use via `compiledValidity()` and returns one of three states:
+The validity of a cache is not a simple boolean. It relies on the `CompiledInputsSchema` defined in the content core's `schemas/materialization.ts`. Validity is checked BEFORE use via `compiledValidity()` and returns one of three states:
 
 - `valid`: The cache matches the current inputs (e.g. toolchain, source revision, input digest). Restore and build.
 - `stale-inputs`: Identifies exactly which input changed. The cache cannot be used as-is; restore for the current toolchain instead, or build cold.
@@ -93,7 +93,7 @@ half — who depends on a file — so a changed RuleSet- or Alias-only file (whi
 produces no resource itself) can be traced to the resources it affects. These two
 maps together give the planner a complete cone.
 
-Measured 2026-10-01 on smart-trust (678 resources):
+Measured 2026-10-01 on the trust IG (678 resources):
 
 | plan input | available | result |
 |---|---|---|
@@ -101,7 +101,7 @@ Measured 2026-10-01 on smart-trust (678 resources):
 | `fsh-index.json` only | new | `incremental`, 2 resources for a single-file change (**0.3% cone**) |
 | `fsh-index.json` + `fsh-users` | new | `incremental` with RuleSet/Alias propagation |
 
-### Timing (smart-trust, 678 resources, one CodeSystem changed)
+### Timing (the trust IG, 678 resources, one CodeSystem changed)
 
 | build type | time | vs cold |
 |---|---|---|

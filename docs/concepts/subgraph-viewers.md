@@ -195,8 +195,8 @@ reason to build a viewer and not a row in a report.
 
 | rule | form | what it is |
 |---|---|---|
-| **1 — a handler renders a kind's assets** | `/<handler>/<kind>/<optional subject>` | `/cat-harness/library/who-iris/` |
-| **2 — an instance presents itself** | `/<instance>/` | `/who-iris/` mocking the IRIS website |
+| **1 — a handler renders a kind's assets** | `/<handler>/<kind>/<optional subject>` | `/cat-harness/library/<iris-replica>/` |
+| **2 — an instance presents itself** | `/<instance>/` | `/<iris-replica>/` mocking the IRIS website |
 
 The handler is the instance doing the rendering; the kind names what it
 renders; the **subject is optional**, and a page without one is the view over
@@ -210,9 +210,9 @@ namespace, and a viewer there would squat on the instance's own site.
 | page | shows |
 |---|---|
 | `/cat-harness/library/` | every declared `library/`, and every queue |
-| `/cat-harness/library/who-iris/` | who-iris's three entries and its queue |
+| `/cat-harness/library/<iris-replica>/` | the IRIS replica's three entries and its queue |
 | `/cat-harness/library/agent-skills/` | its two entries |
-| `/cat-harness/library/folio-assistant-sci/` | its one entry |
+| `/cat-harness/library/<science-layer>/` | its one entry |
 | `/cat-harness/schemas/` | every declared `schemas/` |
 | `/cat-harness/schemas/<instance>/` | that instance's modules and declarations |
 
@@ -225,7 +225,7 @@ edges among those nine.
 ### `docs/` is the same shape, and its subject means something specific
 
 `/cat-harness/docs/` is where the harness user documentation lives, so
-`/cat-harness/docs/who-iris/` is documentation **about** IRIS — how it is
+`/cat-harness/docs/<iris-replica>/` is documentation **about** IRIS — how it is
 ingested, what the handler does with it — and **not IRIS content relocated**.
 The content stays in that instance's own `docs/`, and part of the handler's
 job is to look for those directories.

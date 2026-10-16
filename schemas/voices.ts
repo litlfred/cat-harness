@@ -112,7 +112,7 @@ export const VoiceRuleSourceSchema = z
      * breaks all 25 cited rules at once — and provenance was the entire reason
      * those rules were rewritten.
      *
-     * An identity, never a path. `../who-iris/library/...` would work today and
+     * An identity, never a path. `../<instance>/library/...` would work today and
      * hardcode a checkout layout into content, which is the practice
      * `AGENTS.md` opens by warning against and which this repository paid for
      * twice in one week. Resolution is `folio-assist-core`'s
@@ -216,7 +216,7 @@ export type VoiceRule = z.infer<typeof VoiceRuleSchema>;
  * A voice in this instance, or in another one.
  *
  * Mirrors `ThemeRef` and `LibraryRef` exactly, and for the same reason: a
- * NAME, never a path. `../who-iris/skills/voices/who-editorial/voice.json` would
+ * NAME, never a path. `../<instance>/skills/voices/who-editorial/voice.json` would
  * work today and hardcode a checkout layout into content.
  */
 export const VoiceRefSchema = z

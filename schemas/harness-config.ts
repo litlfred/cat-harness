@@ -73,7 +73,7 @@ import {
  * resolution).
  */
 export interface FolioAssistantDependency {
-  /** Display name of the dependency (e.g. "smart-base", "qou-platform"). */
+  /** Display name of the dependency (e.g. "qou-platform"). */
   name: string;
 
   /** Reverse-DNS package identity, stable forever. See the schema. */
@@ -299,7 +299,7 @@ export type HarnessDirs = z.infer<typeof HarnessDirsSchema>;
  * > "Flag it, with a default (recommended). The chosen instance's own
  * > `<name>.config.json` carries `"site": { "landing": true }`. If exactly one
  * > harness is instantiated, it is the landing page and no flag is needed.
- * > That covers smart-trust. If there are several and none is flagged, a gate
+ * > That covers [the single-IG repository]. If there are several and none is flagged, a gate
  * > fails. If more than one is flagged, then neutral hub with listing of
  * > harnesses, todos,"
  *
@@ -907,7 +907,7 @@ export function indexAgreement(repoRoot: string, config?: IndexConfig): IndexAgr
  * The owner's ruling, 2026-10-02, verbatim: *"Flag it, with a default
  * (recommended). The chosen instance's own `<name>.config.json` carries
  * `"site": { "landing": true }`. If exactly one harness is instantiated, it is
- * the landing page and no flag is needed. That covers smart-trust. If there
+ * the landing page and no flag is needed. That covers a single-IG repository. If there
  * are several and none is flagged, a gate fails. If more than one is flagged,
  * then neutral hub with listing of harnesses, todos,"*
  *
@@ -970,7 +970,7 @@ export function resolveLandingInstance(repoRoot: string): LandingInstance {
  *
  * Never the clone's folder name (bean `t5dm`, issue #1904): a worktree's
  * basename is wherever it was cloned, and a repository that instantiates only
- * `smart-base` is not an instance named after the repository.
+ * a DAK layer is not an instance named after the repository.
  */
 export function rootInstanceName(repoRoot: string): string | undefined {
   let declared: string | undefined;
@@ -1030,7 +1030,7 @@ export function resolveDependencyPath(
  * `dependencies` — and **exactly one instance in the repository declared
  * one**. So the whole `smart-*` stack had a correct navbar spine, a correct
  * topological order, green gates, and **not one skill crossing a layer
- * boundary**. `smart-trust` could not reach `ig-build-pipeline`, the skill
+ * boundary**. An IG instance could not reach `ig-build-pipeline`, the skill
  * governing how its own IG is built. Bean `5kn6`.
  *
  * That was invisible precisely because `needs` being right LOOKS like the
@@ -1210,7 +1210,7 @@ export function resolveInstanceGraph(folioRoot: string): InstanceGraph {
     // caller can report them — its docblock says *"A name that resolves to
     // nothing is REPORTED, never dropped"* — and this function used to throw
     // the array away. The cost was measured on `main` at `80c18ac`: the
-    // repository root's `needs: ["folio-assistant-core"]` resolved to nothing,
+    // repository root's `needs` on the content core resolved to nothing,
     // `problems` came back `[]`, and `check:instance-graph` printed *"19
     // instance(s): every dependency resolves, no cycle"*. A gate asserting the
     // opposite of the fact it was written to catch.
@@ -1347,7 +1347,7 @@ export function checkoutRootFor(start: string): string {
  *
  * Until placement PR0 (bean `ejye`), `cat-harness.json` carried 19
  * `scope: "repository"` entries naming its DEPENDENTS' directories —
- * `folio-assistant-core/skills/`, `who-iris/library/`, … — so that a
+ * the content core's `skills/`, the IRIS replica's `library/`, … — so that a
  * corpus-wide tool asking the platform for "every library" got every library.
  * Every one of those owners `needs` cat-harness, so the platform was naming
  * its users: the wrong-way arrow `cmsl` measured, and 5 of the 19 had already
@@ -1360,7 +1360,7 @@ export function checkoutRootFor(start: string): string {
  * ## Why per instance, and not one `resolveDirectories` over one long chain
  *
  * `resolveDirectories` overrides BY ID, which is right along one dependency
- * line and wrong across siblings: `smart-base` declares `processes` at
+ * line and wrong across siblings: the DAK layer declares `processes` at
  * `methodologies/processes/`, and resolving it in the same chain as
  * cat-harness would REPLACE cat-harness's `processes` rather than add to it.
  * Each instance answers for itself through its own chain, keeping the entries
@@ -1985,8 +1985,8 @@ export function resolveSkillDirs(folioRoot: string): string[] {
 
   // THE OTHER INSTANCES IN THIS CHECKOUT (bean `cmsl` step 3, issue #1694).
   // Until then `cat-harness.json` mirrored them with `scope: "repository"`, so
-  // seven packages — fhir-harness's two, core's, sci's `lean` and `data`,
-  // large-datasets', who-iris' — reached `skill_fetch` only through the
+  // seven packages — the FHIR IG layer's two, core's, sci's `lean` and `data`,
+  // large-datasets', the IRIS replica's — reached `skill_fetch` only through the
   // platform naming its dependents. The owner removed the mirrors; the
   // checkout answers instead. A folio in its own repository has no sibling
   // instances, so this adds nothing there.

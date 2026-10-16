@@ -184,7 +184,7 @@ had just been synced.
 
 **Zero h2/h3 is a determined empty** (*"This README has no sections yet."*),
 and a README with nothing to outline is better without the marker — which is
-why `smart-immunizations` carries none. A renderer called with no README text
+why the immunizations IG carries none. A renderer called with no README text
 is **undetermined** and leaves the region alone.
 
 **Gated by `readme:sync:all:check`**, over every declared instance. The three

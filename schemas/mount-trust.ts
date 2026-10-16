@@ -24,7 +24,9 @@
  *
  * **Consent is scoped to the pin.** It records the `ref` it was given for. A
  * moved pin is a different commit and different code, so it asks again rather
- * than inheriting yesterday's yes.
+ * than inheriting yesterday's yes — unless a STANDING consent the site
+ * declared covers it, in which case the repin tool records that consent for
+ * the new pin, by name (see "Standing consent" below).
  *
  * **An unverified signature is not trust.** Accepting a signature this code
  * cannot check would turn "signed" into a label anyone can write. Until a
@@ -48,6 +50,27 @@
  * - **A gitlink is not covered by its parent's consent.** An instance reached
  *   through a gitlink is another repository at another commit; it needs
  *   consent of its own, given on the downstream's override for that instance.
+ *
+ * ## Standing consent (owner, 2026-10-16)
+ *
+ * Pins stay DECENTRALIZED: each site keeps its own lock. A site may say, once,
+ * per upstream instance, *"keep me on `<branch>` of this upstream"* — a
+ * {@link StandingConsentSchema} on that instance's `trust.standing` (the
+ * remote source's own `trust`, or `overrides.<instance>.trust` for an instance
+ * reached through a gitlink, so the `instance` it is for is the entry it sits
+ * on). It names the person who gave it and when.
+ *
+ * A standing consent does NOT make a pin trusted by itself, and a hand-moved
+ * pin is still refused: what it allows is for the repin tool, having resolved
+ * the followed branch's newest (or, with `require: "green"`, newest green)
+ * commit, to WRITE a per-pin consent for the new pin, attributed to the
+ * standing rule's person and marked `consent.standing` ({@link withStandingConsent}).
+ * {@link mountTrust} accepts that moved pin only while the rule it names is
+ * still declared, unchanged, on the same instance — withdraw or edit the rule
+ * and every pin recorded under it asks again. A named person's consent is
+ * therefore recorded for every pin, and none is anonymous. A pin with no
+ * standing rule, or whose consent is for another ref, asks again exactly as
+ * before.
  */
 import { z } from "zod";
 
@@ -56,6 +79,48 @@ import { z } from "zod";
 const CommitShaSchema = z.string().regex(/^[0-9a-f]{40}$/, "a full 40-character commit SHA");
 
 const IsoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}/, "an ISO date");
+
+/** A git branch name a standing consent follows, e.g. `main`. No whitespace, no `..`, no leading `-`. */
+const BranchSchema = z
+  .string()
+  .regex(/^(?!-)(?!.*\.\.)[A-Za-z0-9._/-]+$/, "a branch name, e.g. `main`")
+  .refine((b) => !b.startsWith("refs/"), "the short branch name, not `refs/…`");
+
+/**
+ * A person's STANDING consent for one upstream instance: "re-pin me to the
+ * newest commit of `follows`" (owner, 2026-10-16). It sits on the instance's
+ * `trust.standing`, so the instance is the entry it is declared on.
+ */
+export const StandingConsentSchema = z
+  .object({
+    /** The upstream branch whose newest commit the pin follows. */
+    follows: BranchSchema,
+    /** Who gave the standing consent — recorded as `consent.by` on every pin it covers. */
+    consentBy: z.string().min(1),
+    /** When it was given. Part of the rule's identity: a re-given rule re-asks every pin under the old one. */
+    consentAt: IsoDate,
+    /** `green`: only a commit whose own combined status / checks are green. Absent: the branch head. */
+    require: z.literal("green").optional(),
+    /** Where it was given, so it can be read. Optional: `consentBy` and `consentAt` are the record. */
+    evidence: z.string().min(1).optional(),
+  })
+  .strict();
+export type StandingConsent = z.infer<typeof StandingConsentSchema>;
+
+/** What a per-pin consent keeps of the standing rule it was written under — enough to match the rule still declared. */
+export const StandingMarkerSchema = z
+  .object({
+    follows: BranchSchema,
+    consentAt: IsoDate,
+    require: z.literal("green").optional(),
+  })
+  .strict();
+export type StandingMarker = z.infer<typeof StandingMarkerSchema>;
+
+/** The marker a rule leaves on the consent it writes. */
+export function standingMarkerOf(rule: StandingConsent): StandingMarker {
+  return { follows: rule.follows, consentAt: rule.consentAt, ...(rule.require ? { require: rule.require } : {}) };
+}
 
 /** A person's explicit consent to mount one harness at one pin. */
 export const MountConsentSchema = z
@@ -67,6 +132,12 @@ export const MountConsentSchema = z
     ref: CommitShaSchema,
     /** Where the consent was given (an issue comment, a chat session), so it can be read. */
     evidence: z.string().min(1),
+    /**
+     * Present when this pin's consent was written under a STANDING consent
+     * (`trust.standing`), by the repin tool rather than by the person at this
+     * pin. It holds only while that rule is still declared, unchanged.
+     */
+    standing: StandingMarkerSchema.optional(),
   })
   .strict();
 export type MountConsent = z.infer<typeof MountConsentSchema>;
@@ -88,6 +159,8 @@ export const MountTrustSchema = z
   .object({
     consent: MountConsentSchema.optional(),
     signature: MountSignatureSchema.optional(),
+    /** A standing consent for this instance: see "Standing consent" above. */
+    standing: StandingConsentSchema.optional(),
   })
   .strict();
 export type MountTrust = z.infer<typeof MountTrustSchema>;
@@ -106,6 +179,8 @@ export const MountTrustBasisSchema = z.discriminatedUnion("basis", [
       on: IsoDate,
       ref: CommitShaSchema,
       approver: z.enum(["declared", "unverified"]),
+      /** The standing rule this pin's consent was written under, when it was. */
+      standing: StandingMarkerSchema.optional(),
     })
     .strict(),
 ]);
@@ -136,11 +211,24 @@ export function mountTrust(
   const t = mount.trust;
   if (t?.consent) {
     if (t.consent.ref !== mount.ref) {
+      const hint = t.standing
+        ? `; a standing consent (follows \`${t.standing.follows}\`) is declared, but a pin is covered only once the repin tool records its consent for that pin`
+        : "";
       return {
         ok: false,
         state: "refused",
-        detail: `consent by ${t.consent.by} on ${t.consent.on} was for ${t.consent.ref.slice(0, 10)}, not ${mount.ref.slice(0, 10)}: a moved pin asks again`,
+        detail: `consent by ${t.consent.by} on ${t.consent.on} was for ${t.consent.ref.slice(0, 10)}, not ${mount.ref.slice(0, 10)}: a moved pin asks again${hint}`,
       };
+    }
+    if (t.consent.standing) {
+      const why = standingMismatch(t.consent, t.standing);
+      if (why) {
+        return {
+          ok: false,
+          state: "refused",
+          detail: `consent for ${mount.ref.slice(0, 10)} was recorded under a standing consent (follows \`${t.consent.standing.follows}\`, given ${t.consent.standing.consentAt}) that ${why}: a pin the rule no longer covers asks again`,
+        };
+      }
     }
     const declared = (approvers?.length ?? 0) > 0;
     if (declared && !approvers!.includes(t.consent.by)) {
@@ -151,12 +239,13 @@ export function mountTrust(
       };
     }
     const approver: ApproverState = declared ? "declared" : "unverified";
+    const standing = t.consent.standing;
     return {
       ok: true,
       basis: "consent",
       approver,
-      detail: `consented by ${t.consent.by} on ${t.consent.on} (${t.consent.evidence})${declared ? "" : "; UNVERIFIED APPROVER: the instance declares no mountApprovers, so nothing checked who that is"}`,
-      record: { basis: "consent", by: t.consent.by, on: t.consent.on, ref: t.consent.ref, approver },
+      detail: `consented by ${t.consent.by} on ${t.consent.on} (${t.consent.evidence})${standing ? ` under a standing consent following \`${standing.follows}\`${standing.require ? ` (${standing.require} only)` : ""}` : ""}${declared ? "" : "; UNVERIFIED APPROVER: the instance declares no mountApprovers, so nothing checked who that is"}`,
+      record: { basis: "consent", by: t.consent.by, on: t.consent.on, ref: t.consent.ref, approver, ...(standing ? { standing } : {}) },
     };
   }
   if (t?.signature) {
@@ -177,6 +266,76 @@ export interface ConsentGrant {
   by: string;
   evidence: string;
   on?: string;
+  /** Set when the grant is a standing rule's, not a person's at this pin ({@link withStandingConsent}). */
+  standing?: StandingMarker;
+}
+
+/**
+ * Why a consent recorded under a standing rule is no longer covered by the
+ * rule declared now, or `undefined` when it still is. The rule is matched on
+ * everything that defines it — who gave it, when, the branch, and `require` —
+ * so editing any of them re-asks every pin recorded under the old one.
+ */
+export function standingMismatch(consent: MountConsent, declared: StandingConsent | undefined): string | undefined {
+  const m = consent.standing;
+  if (!m) return "is not a standing consent";
+  if (!declared) return "is no longer declared on this instance";
+  if (declared.consentBy !== consent.by) return `was given by ${consent.by}, but the rule declared now is ${declared.consentBy}'s`;
+  if (declared.consentAt !== m.consentAt) return `was given ${m.consentAt}, but the rule declared now was given ${declared.consentAt}`;
+  if (declared.follows !== m.follows) return `followed \`${m.follows}\`, but the rule declared now follows \`${declared.follows}\``;
+  if ((declared.require ?? null) !== (m.require ?? null)) return `required ${m.require ?? "nothing"}, but the rule declared now requires ${declared.require ?? "nothing"}`;
+  return undefined;
+}
+
+/** What the repin tool knows about one candidate commit of a followed branch. */
+export interface StandingCandidate {
+  /** The branch the commit was resolved from — it must be the one the rule follows. */
+  branch: string;
+  sha: string;
+  /** The commit's own combined status / checks: `green` only when every one concluded successfully. */
+  verdict?: "green" | "pending" | "red" | "none";
+}
+
+/**
+ * THE coverage decision: may `rule` move `mount`'s pin to `candidate`? Pure, so
+ * the repin tool and its tests share one answer. Covered only when the rule is
+ * declared on this mount, the candidate came from the branch it follows, and —
+ * with `require: "green"` — the candidate's own verdict is green. A pin that
+ * would not move (same sha) is reported as such, not as covered.
+ */
+export function standingCovers(
+  mount: { harness: string; ref: string; trust?: MountTrust },
+  candidate: StandingCandidate,
+): { covered: true; rule: StandingConsent } | { covered: false; reason: string } {
+  const rule = mount.trust?.standing;
+  if (!rule) return { covered: false, reason: `\`${mount.harness}\` declares no standing consent: its pin moves only when a person consents again` };
+  if (!CommitShaSchema.safeParse(candidate.sha).success) return { covered: false, reason: `\`${candidate.sha}\` is not a full commit sha` };
+  if (candidate.branch !== rule.follows) return { covered: false, reason: `the candidate came from \`${candidate.branch}\`, but the standing consent follows \`${rule.follows}\`` };
+  if (rule.require === "green" && candidate.verdict !== "green") {
+    return { covered: false, reason: `${candidate.sha.slice(0, 10)} is ${candidate.verdict ?? "unknown"}, and the standing consent requires green` };
+  }
+  if (candidate.sha === mount.ref) return { covered: false, reason: `already pinned at ${candidate.sha.slice(0, 10)}` };
+  return { covered: true, rule };
+}
+
+/**
+ * Re-pin `mount` to `ref` under its standing consent: the pin moves, and a
+ * consent for exactly that pin is written in the same object, `by` the rule's
+ * person and marked with the rule ({@link standingMarkerOf}), so
+ * {@link mountTrust} accepts it while the rule stands. Throws when the mount
+ * declares no standing consent — a pin is never moved on nobody's word.
+ */
+export function withStandingConsent<T extends { ref: string; trust?: MountTrust }>(mount: T, ref: string, on?: string): T {
+  const rule = mount.trust?.standing;
+  if (!rule) throw new Error("no standing consent is declared on this mount; a moved pin asks again");
+  return withConsent({ ...mount, ref }, standingGrantOf(rule, on));
+}
+
+/** The {@link ConsentGrant} a standing rule gives each pin it covers. */
+export function standingGrantOf(rule: StandingConsent, on?: string): ConsentGrant {
+  const evidence =
+    `standing consent by ${rule.consentBy} given ${rule.consentAt}: follow \`${rule.follows}\`${rule.require ? ` (${rule.require} commits only)` : ""}` + (rule.evidence ? ` — ${rule.evidence}` : "");
+  return { by: rule.consentBy, evidence, on, standing: standingMarkerOf(rule) };
 }
 
 /**
@@ -201,6 +360,7 @@ export function withConsent<T extends { ref: string; trust?: MountTrust }>(mount
     on: grant.on ?? new Date().toISOString().slice(0, 10),
     ref: mount.ref,
     evidence: grant.evidence,
+    ...(grant.standing ? { standing: grant.standing } : {}),
   });
   return { ...mount, trust: { ...mount.trust, consent } };
 }

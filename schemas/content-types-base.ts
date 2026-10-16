@@ -56,11 +56,11 @@
  * correctly:
  *
  * ```
- * schemas/content-types-base.ts [folio-assist-core] -> schemas/dak.ts [smart-base]
+ * schemas/content-types-base.ts [folio-assist-core] -> schemas/dak.ts [the DAK layer]
  * A repo may not import one that depends on it.
  * ```
  *
- * `smart-base` depends on core, so core recognising a DAK means core importing
+ * The DAK layer depends on core, so core recognising a DAK means core importing
  * downstream. The comment was right about the destination and wrong that it
  * could wait: recognising `dak.config.json` needs `DAK_TYPE`, and reaching for it is
  * the edge. They live in {@link module:schemas/dak-content-type}, registered by

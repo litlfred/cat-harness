@@ -19,7 +19,7 @@
  * — is the instance's own identifier, the thing `harness.json` calls
  * `folio-assistant` and publishes artefacts under. `title` is neither: it is
  * display text, it may contain punctuation an identifier could not, and it is
- * **translatable**. `WHO SMART Base` is a title; `smart-base` is a name.
+ * **translatable**. `C@T Harness` is a title; `cat-harness` is a name.
  *
  * **Having one is a decision, and the default is not to.** {@link displayTitle}
  * falls back to `name`, and `cat-harness.ts` requires `name` to be the

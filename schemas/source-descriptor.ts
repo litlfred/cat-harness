@@ -138,7 +138,7 @@ export type Volatility = (typeof VOLATILITIES)[number];
  *
  * KNOWN MODELLING LIMITATION, recorded rather than discovered later: this is
  * environment-relative and the descriptor stores it as though it were a
- * property of the source. Measured 2026-09-20, `who-iris` is `blocked` from
+ * property of the source. Measured 2026-09-20, the IRIS source is `blocked` from
  * this container (403 at the egress proxy) and is plainly reachable from an
  * ordinary browser — so `canDelegateSearch` refuses a delegation that would
  * work perfectly for a reader.

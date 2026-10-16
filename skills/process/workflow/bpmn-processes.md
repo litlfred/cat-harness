@@ -48,8 +48,8 @@ It would also put the edge on the wrong side. `satisfies` is owned by the Tool,
 which knows what it implements and is versioned with it; a `tool` ref would be
 owned by the diagram author, who would have to track Tools across every
 instance — measured 2026-09-26, **116** Tools are discovered from four
-`tools/` graphs (`cat-harness`, `smart-base`, `folio-assistant-core`,
-`fhir-harness`), so a diagram in one instance would be asserting facts about
+`tools/` graphs (`cat-harness`, the DAK layer, the content core,
+the FHIR IG layer), so a diagram in one instance would be asserting facts about
 three others.
 
 **What is NOT being claimed** is that the join is well populated. Measured the

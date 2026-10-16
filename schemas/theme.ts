@@ -367,7 +367,7 @@ export const THEME_SCHEMA_TAG = "folio-theme/v1";
  * bare `themeId` resolves against the citing instance, which is the common
  * case and the one that must stay cheap to write.
  *
- * Owner, 2026-09-20: *"who-iris inherits who-styleguide theme."* The WHO house
+ * Owner, 2026-09-20, paraphrased: the IRIS replica inherits the WHO style-guide theme. The WHO house
  * style is the authority and the repository site is the deviation, so the
  * inheritance runs FROM the site TO the style guide and crosses an instance
  * boundary to do it.

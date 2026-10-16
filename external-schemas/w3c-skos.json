@@ -12,7 +12,7 @@
   "terms": [
     {
       "term": "skos:Collection",
-      "operative": "A glossary's `members` (folio-glossary/v1): external concepts this folio lists without copying them, emitted by folio-assistant-core/schemas/glossary.ts#toSkos."
+      "operative": "A glossary's `members` (folio-glossary/v1): external concepts this folio lists without copying them, emitted by the content core's schemas/glossary.ts#toSkos."
     },
     {
       "term": "skos:Concept",

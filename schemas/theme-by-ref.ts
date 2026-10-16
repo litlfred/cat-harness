@@ -8,16 +8,16 @@
  * Bean `v8n5`. #1168 B8 (owner, 2026-09-30: *"migrate to ThemeRef"*) gave
  * every theme reference an `instance`, so *"a cross-instance theme now says
  * whose theme it is"* — and every consumer then went on reading `themeId`
- * alone and looking it up in {@link THEMES}, the platform's table. A who-iris
- * card citing `{instance: "who-iris", themeId: "iris-web"}` therefore resolved
+ * alone and looking it up in {@link THEMES}, the platform's table. An IRIS replica
+ * card citing `{instance: <its name>, themeId: "iris-web"}` therefore resolved
  * to nothing, and the harness surfaces rendered on the avatar's hue instead of
- * the theme who-iris measured off its own sources.
+ * the theme the IRIS replica measured off its own sources.
  *
  * ## The platform finds an instance's themes; it never holds them
  *
- * `who-iris/themes/themes.ts` says why its palette is not in
+ * The IRIS replica's `themes/themes.ts` says why its palette is not in
  * `cat-harness/schemas/`: *"a palette read off a WHO style guide is subject
- * matter."* So nothing here names who-iris or copies a colour. The owner is
+ * matter."* So nothing here names that instance or copies a colour. The owner is
  * found by its declared `name`, its themes by the directory it declares with
  * graph typology `themes`, and the module there by one convention: a `themes.ts`
  * exporting `INSTANCE_THEMES`, already resolved. That is the same shape as
@@ -63,7 +63,7 @@ export type ThemeRefResult = { ok: true; theme: ResolvedTheme; owner: string | u
  * **Exported so a GATE can ask the same question the runtime asks.** Bean
  * `z6xd`: three gates declared `@covers themes` while none of them resolved a
  * `themes` directory — they audit the platform's `THEMES` constants and the
- * declared theme ART, which the who-iris declaration is explicit are different
+ * declared theme ART, which the IRIS replica's declaration is explicit are different
  * things (*"These are NOT the platform's twelve themes"*). A gate that reached
  * the graph by re-deriving this resolution would be a second answer to
  * "which themes does this instance own", free to disagree with the one every

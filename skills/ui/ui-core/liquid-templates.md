@@ -140,7 +140,7 @@ template asked — nor an include's own parameter (`include.x`, optional by
 convention), a field of a variable that is there and nil (its cause is reported
 once, where it went undefined), or a path `liquid_undefined_ignore` in
 `_config.yml` lists: a THEME's optional settings, which `site-chrome/_config.yml`
-names for just-the-docs. On smart-immunizations those rules took 399 reports
+names for just-the-docs. On the immunizations IG those rules took 399 reports
 to the 2 real gaps. `FOLIO_LIQUID_UNDEFINED_REPORT=<file>` writes the same record
 as JSON; `liquid_undefined: off` in `_config.yml` turns it off. It runs only
 where plugins do (`bundle exec jekyll`, as an IG repository's own site and

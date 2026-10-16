@@ -142,7 +142,7 @@ export const DECIDED_DISPOSITIONS = ["deleted-before-deploy", "superseded"] as c
  *
  * The same shape as `FixitySchema`, restated rather than imported. It was a
  * deliberate duplicate while `FixitySchema` lived in core's `materialization.ts`:
- * nothing under `cat-harness/` imports from `folio-assistant-core/`. Since bean
+ * nothing under `cat-harness/` imports from the content core. Since bean
  * `tlat` (2026-10-02) `FixitySchema` lives in this instance, in
  * `materialization-state.ts`, so the two CAN now be unified without an upward
  * import; that is left as its own change, because this one's `verifiedAt`
@@ -229,7 +229,7 @@ export type ReleaseIdentity = z.infer<typeof ReleaseIdentitySchema>;
 export const ReleaseOriginRefSchema = z
   .object({
     kind: ReleaseOriginSchema,
-    /** The repository or registry, e.g. `WorldHealthOrganization/smart-trust`. */
+    /** The repository or registry, e.g. `<owner>/<ig-repository>`. */
     repository: z.string().min(1),
   })
   .strict();
