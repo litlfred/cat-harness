@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: human-translation-workflow\n"
-"POT-Creation-Date: 2026-10-09T20:40:53.525Z\n"
+"POT-Creation-Date: 2026-10-16T12:33:01.600Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -86,7 +86,7 @@ msgstr ""
 
 #: processes/library/human-translation-workflow.bpmn:253
 #. Diagram element documentation
-msgid "Generates or retrieves the domain glossary for the target locale. Sources: 1. Root folio's translations/ glossary 2. Folio-assistant dependency translations (depth-first walk) 3. WHO standard terminology (from smart-base) 4. Previous translations of related content"
+msgid "Generates or retrieves the domain glossary for the target locale. Sources: 1. Root folio's translations/ glossary 2. Folio-assistant dependency translations (depth-first walk) 3. WHO standard terminology (from the WHO SMART Base IG) 4. Previous translations of related content"
 msgstr ""
 
 #: processes/library/human-translation-workflow.bpmn:22

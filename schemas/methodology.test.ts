@@ -18,7 +18,7 @@ describe("uses-methodology", () => {
 
   it("refuses an empty list, a path, and a single string", () => {
     expect(UsesMethodologySchema.safeParse([]).success).toBe(false);
-    expect(UsesMethodologySchema.safeParse(["methodologies/wiregen.md"]).success).toBe(false);
+    expect(UsesMethodologySchema.safeParse(["not-a-dir/wiregen.md"]).success).toBe(false);
     expect(UsesMethodologySchema.safeParse("wiregen").success).toBe(false);
   });
 });

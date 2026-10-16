@@ -321,10 +321,6 @@ msgstr "Discipline d'appropriation et de coordination multi-agents"
 msgid "beans-as-todos discipline"
 msgstr "Discipline des tâches basées sur les beans (beans-as-todos)"
 
-#: docs/concepts/skills.md:157
-msgid "Platform skill bundles (, , )"
-msgstr "Lots de compétences de plateforme (, , )"
-
 #: docs/concepts/skills.md:159
 msgid "Larger platform bundles, two of them migrated from the qou content repo (see migration record and issue #27). These are content-agnostic and meant to be synced into any folio:"
 msgstr "Des lots de plateforme plus importants, dont deux ont été migrés depuis le dépôt de contenu qou (voir le registre de migration et le ticket #27). Ils sont indépendants du contenu et conçus pour être synchronisés dans n'importe quel folio :"
@@ -551,3 +547,6 @@ msgstr "Premiers pas — exécuter votre première compétence"
 
 #~ msgid ", , , , and  now live (generalized) in the **** bundle below — fetch them with ."
 #~ msgstr ", , ,  et  résident désormais (généralisées) dans le lot **** ci-dessous — chargez-les avec ."
+
+#~ msgid "Platform skill bundles (, , )"
+#~ msgstr "Lots de compétences de plateforme (, , )"

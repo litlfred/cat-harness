@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: translation-workflow\n"
-"POT-Creation-Date: 2026-10-09T20:40:53.538Z\n"
+"POT-Creation-Date: 2026-10-16T12:33:01.620Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -206,7 +206,7 @@ msgstr ""
 
 #: processes/library/translation-workflow.bpmn:99
 #. Diagram element documentation
-msgid "Translation of .pot → .po by one of: 1. Existing PO from smart-base (Weblate/Crowdin/Launchpad) 2. FHIR/translation-utils po-translate CLI (DeepL/Google, tagged #fuzzy) 3. Agent (LLM) translation 4. Human translator Result: <locale>/block.po with msgid/msgstr pairs."
+msgid "Translation of .pot → .po by one of: 1. Existing PO from the WHO SMART Base IG (Weblate/Crowdin/Launchpad) 2. FHIR/translation-utils po-translate CLI (DeepL/Google, tagged #fuzzy) 3. Agent (LLM) translation 4. Human translator Result: <locale>/block.po with msgid/msgstr pairs."
 msgstr ""
 
 #: processes/library/translation-workflow.bpmn:25

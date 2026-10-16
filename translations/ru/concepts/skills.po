@@ -321,10 +321,6 @@ msgstr "Дисциплина распределения задач и коорд
 msgid "beans-as-todos discipline"
 msgstr "Дисциплина управления задачами beans-as-todos"
 
-#: docs/concepts/skills.md:157
-msgid "Platform skill bundles (, , )"
-msgstr "Платформенные наборы навыков (, , )"
-
 #: docs/concepts/skills.md:159
 msgid "Larger platform bundles, two of them migrated from the qou content repo (see migration record and issue #27). These are content-agnostic and meant to be synced into any folio:"
 msgstr "Более крупные платформенные наборы, два из которых были перенесены из репозитория контента qou (см. отчет о миграции и issue #27). Они не зависят от типа контента и предназначены для синхронизации в любое фолио:"
@@ -551,3 +547,6 @@ msgstr "Начало работы — запуск вашего первого �
 
 #~ msgid ", , , , and  now live (generalized) in the **** bundle below — fetch them with ."
 #~ msgstr "Навыки , , ,  и  теперь находятся (в обобщенном виде) в наборе ****, описанном ниже — загружайте их с параметром ."
+
+#~ msgid "Platform skill bundles (, , )"
+#~ msgstr "Платформенные наборы навыков (, , )"
