@@ -1236,9 +1236,11 @@
           renderBoard(host);
           det = host.querySelector(sel);
         }
-        if (det && det.faOpen) {
-          det.faOpen();
-          var tog = det.querySelector(".fa-workplan-tree-toggle");
+        if (det) {
+          // A goal with nothing shown under it is a leaf: no branch to open,
+          // but it is still scrolled to and focused.
+          if (det.faOpen) det.faOpen();
+          var tog = det.querySelector(".fa-workplan-tree-toggle, .fa-workplan-bean-link[href]");
           det.scrollIntoView({ block: "start" });
           if (tog) tog.focus();
         }
