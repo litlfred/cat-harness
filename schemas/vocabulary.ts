@@ -463,6 +463,8 @@ export const PROPERTY_GLOSSES: Readonly<Record<string, TermGloss>> = {
   // 2026-10-16 (owner): a role a machine plays is a real role, and its skills
   // are its contract.
   judgementOnly: { gloss: "Whether this role acts by judgement, so no skill can be named for its tasks." },
+  // Retired 2026-10-16, kept so a reader not yet migrated still resolves it.
+  actedUpon: { gloss: "Retired (owner, 2026-10-16): whether a role was written to rather than performed. A role a machine plays is a real role, and its skills are its contract; readers ignore it." },
   declaresSkill: { gloss: "A skill this package declares." },
   declaresRole: { gloss: "A role this registry declares." },
   bindsRole: {
@@ -498,6 +500,7 @@ export const PROPERTY_GLOSSES: Readonly<Record<string, TermGloss>> = {
   // Renamed from `implementedBy` (owner, 2026-10-16): a skill does not
   // implement a task; the task, the dependent node, requires the skill.
   requires: { gloss: "A skill this activity requires: the activity's own <bootstrap.processes:skill ref>.", replacedBy: "dcterms:requires" },
+  implementedBy: { gloss: "Retired (owner, 2026-10-16): the old name of `requires`.", replacedBy: "dcterms:requires" },
   assignments: { gloss: "The role-to-lane bindings a diagram carries." },
   permissionName: { gloss: "A permission's name, as an actor holds it." },
   hasCapability: { gloss: "A capability this actor's environment provides." },
