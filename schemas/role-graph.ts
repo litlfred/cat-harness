@@ -1061,7 +1061,7 @@ export interface LaneRoleRead {
  *
  * The extension element is matched by its local name, `role`, whatever prefix
  * the reader registered for bootstrap's namespace (`folio:` in
- * cat-harness-tools, `bootstrap.processes:` unregistered): a reader matches by
+ * the tools layer, `bootstrap.processes:` unregistered): a reader matches by
  * namespace, never by prefix text (`processes/ns.jsonld`).
  */
 export function laneRoleRef(lane: LaneLike): LaneRoleRead {
