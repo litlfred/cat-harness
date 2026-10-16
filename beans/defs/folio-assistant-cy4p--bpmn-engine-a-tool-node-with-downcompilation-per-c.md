@@ -1,10 +1,12 @@
 ---
 # folio-assistant-cy4p
+$schema: bean/1.0.0
 title: 'BPMN ENGINE: a Tool node, with downcompilation per coding agent'
-status: completed
+status: in-progress
 type: task
+priority: normal
 created_at: 2026-09-19T17:04:01Z
-updated_at: 2026-10-16T06:30:00Z
+updated_at: 2026-10-16T12:35:00Z
 parent: folio-assistant-ahvw
 ---
 
@@ -56,4 +58,40 @@ answer is "read XML", the fix may be a projection rather than a compiler.
 - [ ] any downcompiled artefact is generated, with a `--check` gate, and
       carries in its own text that it is generated
 
+## Owner ruling (2026-10-10, drain session ml9h)
+
+**Both:** (1) declare the engine as a Tool node now; (2) generate a checklist projection per diagram. Owner asked how an agent following a checklist takes the BPMN edges correctly — the answer (below) is the design to build to.
+
+### How a checklist follows the edges
+
+The checklist is NOT a flat list; it is the diagram walked as a state machine, with the engine still the authority:
+
+1. **Each task is a step that names its outgoing edge(s).** A step ends with 'next: <task id>' — the sequence flow written out, so the agent never infers order from position.
+2. **Each gateway is a decision step, not a step to do.** Exclusive gateway → 'Decide: <condition A> → go to X; <condition B> → go to Y', the conditions copied from the flow's conditionExpression (or the DMN it calls, by id). Parallel gateway → 'Do all of X, Y; join at Z before continuing'.
+3. **Events become entry/exit lines:** start event = 'Begin here when…', end events = 'Done — record completion', boundary/timer events = 'If <trigger> while in this step → go to …'.
+4. **The agent records where it is.** Every step says which workflow_next / workflow_complete call to make, so the engine's committed state under beans/workflows/ — not the agent's memory of the list — says which edge was taken. A wrong turn is then visible and refusable.
+5. **Generated and gated.** The checklist is emitted from the .bpmn, says so in its own text, and a :check fails when it is stale, so it can never become a second source of truth.
+
+For an agent with no MCP, steps 1–3 are enough to walk the graph by hand; step 4 is what makes the walk auditable.
+
+## Assigned (2026-10-10 17:5x UTC, drain ml9h)
+
+Owner asked lane A to dispatch more to lane B; assigned to lane B (session_01QmRtjQNyHiH2RuimTfuJDu), whose repo (litlfred/cat-harness-tools) holds the code. Lane A will not start it.
+
+## Summary of Changes
+
+Done by drain lane B on the owner's ruling (Tool node + checklist projection): cat-harness-tools#106 (bpmn-checklist generator + :check; 98 diagrams render) and cat-harness#132 (bpmn-engine Tool node with inProcess registrar + workflow_* MCP arm; bpmn-checklist Tool node). Committing the generated checklists waits on a registered regen writer (follow-up).
+
 _2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-11); cat-harness#132 merged 2026-10-11, cat-harness-tools#106 merged 2026-10-11. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.
+
+## Reopened (2026-10-16, owner)
+
+Status `completed` → `in-progress`. Owner, thread "BPMN engine status", chose to reopen: only the first slice shipped. The cat-harness copy had also lost the owner ruling and the summary above; both copies now carry the same body.
+
+Still open:
+
+- [ ] **Checklists committed and gated.** `bpmn:checklist:check` exists (cat-harness-tools#106) but no `*.checklist.md` is committed on cat-harness-tools main, and the check is in neither regen nor CI, so it never runs. Waits on cat-harness#327 and cat-harness-tools#429 (lane names a Role via `partitionElementRef`), which change what the checklists say.
+- [ ] **Per-agent downcompile targets scoped.** The "Done when" scope question (which agents, needing what form) was never answered; only the checklist form exists.
+- [ ] The three "Done when" boxes above ticked with evidence.
+
+Session https://claude.ai/code/session_01WisJFefMYG4g6iFhtgCUYG.
