@@ -627,9 +627,13 @@ summary.fa-workplan-tree-row:focus-visible { outline: 2px solid var(--fa-wp-seri
 .fa-workplan-tree-row .fa-workplan-bean-status { min-width: 5.2rem; }
 /* The title takes the slack, so the count and the button stay on its line
    instead of wrapping under the type column. */
-.fa-workplan-tree-row .fa-workplan-bean-link { flex: 1 1 16rem; min-width: 0; }
+.fa-workplan-tree-row .fa-workplan-bean-link {
+  flex: 1 1 16rem; min-width: 0;
+  /* WCAG 2.5.8: a 24px target, as the results list gives its links. */
+  display: inline-flex; align-items: center; min-height: 24px;
+}
 .fa-workplan-tree-count { font-size: 0.72rem; color: var(--fa-wp-ink-2); white-space: nowrap; }
-.fa-workplan-tree-focus { font-size: 0.7rem; padding: 0.05rem 0.4rem; }
+.fa-workplan-tree-focus { font-size: 0.7rem; padding: 0.05rem 0.4rem; min-height: 24px; min-width: 24px; }
 /* A filter's match is marked by weight and a rule, not by colour alone. */
 .fa-workplan-tree-row.is-match { box-shadow: inset 3px 0 0 var(--fa-wp-series); }
 .fa-workplan-tree-row.is-match .fa-workplan-bean-link { font-weight: 600; }
