@@ -8,6 +8,8 @@ description: >
   to sketch its breakdown.
 allowed-tools: Read Grep Glob Bash
 consulted: true
+uses-methodology:
+  - raci
 ---
 
 # RACI — involvement, over the graph that already exists
