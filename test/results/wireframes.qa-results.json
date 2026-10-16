@@ -11,7 +11,7 @@
   "families": {
     "covered": {
       "summary": "A declared visualiser with a wireframe whose checks pass at both viewports.",
-      "count": 36,
+      "count": 38,
       "entries": [
         {
           "ref": "cat-harness/attestations",
@@ -142,6 +142,10 @@
           "wireframe": "voices"
         },
         {
+          "ref": "fhir-harness/ig-ast",
+          "wireframe": "ig-ast"
+        },
+        {
           "ref": "folio-assistant-core/bibliography",
           "wireframe": "bibliography"
         },
@@ -152,6 +156,10 @@
         {
           "ref": "smart-base/artifact-index",
           "wireframe": "fhir-artifact-index"
+        },
+        {
+          "ref": "smart-base/l1-extraction",
+          "wireframe": "l1-extraction"
         },
         {
           "ref": "who-iris/catalogue",
@@ -185,5 +193,5 @@
       "entries": []
     }
   },
-  "total": 36
+  "total": 38
 }
