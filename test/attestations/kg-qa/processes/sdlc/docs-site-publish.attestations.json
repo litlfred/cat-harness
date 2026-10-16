@@ -11,8 +11,8 @@
       "kind": "implements",
       "prose": "cat-harness/processes/sdlc/docs-site-publish.bpmn",
       "code": ".github/workflows/docs-site.yml",
-      "prose_hash": "e9a41f476450",
-      "code_hash": "ad4fdc1aaf58",
+      "prose_hash": "f7234e957d6a",
+      "code_hash": "70e93ab0ee86",
       "by": "baseline"
     }
   ]
