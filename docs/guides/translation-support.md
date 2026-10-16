@@ -12,7 +12,7 @@ documents:
 This document is the single reference for how translation works in
 folio-assistant. It covers the content model, the gettext PO/POT pipeline,
 the official/unofficial distinction, staleness tracking, the viewer language
-switcher, and the integration with WHO smart-base's existing translation
+switcher, and the integration with WHO SMART Base's existing translation
 subsystem.
 
 > **Status:** Architecture and work plan. No operational translation pipeline
@@ -190,7 +190,7 @@ sign-off overrides a higher-level one for that specific node.
 
 ### Why gettext
 
-Gettext is the WHO smart-base standard for translations. It provides:
+Gettext is the WHO SMART Base standard for translations. It provides:
 
 1. A proven extraction → translation → injection cycle.
 2. Compatibility with professional translation tools (Weblate, Crowdin,
@@ -234,7 +234,7 @@ duplicating PO files.
 ### Pipeline overview
 
 ```
-                     PRE-PROCESSING (smart-base)
+                     PRE-PROCESSING (SMART Base)
                      ─────────────────────────────
                      Markdown → segment → normalize
                            ↓
@@ -264,9 +264,9 @@ duplicating PO files.
                      Re-assemble → validate → render
 ```
 
-### Pre-processing (from smart-base)
+### Pre-processing (from SMART Base)
 
-The extraction state machine is a direct port of smart-base's
+The extraction state machine is a direct port of SMART Base's
 `extract_translations.py` (function `extract_markdown`, lines 700–856) and
 its text-cleaning helper `_clean_markdown_text` (lines 633–697). The same
 state machine handles:
@@ -287,10 +287,10 @@ state machine handles:
 
 The TypeScript port lives in `content/pipeline/pot-extract.ts`
 (`extractMarkdown` + `cleanMarkdownText`). It is **copied into
-folio-assistant** (not loaded from smart-base) because the markdown parsing
-is generic prose processing. The smart-base Python originals remain as-is.
+folio-assistant** (not loaded from SMART Base) because the markdown parsing
+is generic prose processing. SMART Base Python originals remain as-is.
 
-**Source scripts in smart-base** (`input/scripts/`):
+**Source scripts in SMART Base** (`input/scripts/`):
 
 | Script | Lines | Role |
 |---|---|---|
@@ -445,7 +445,7 @@ In `<name>.config.json`:
 {
   "dependencies": [
     {
-      "name": "smart-base",
+      "name": "WHO SMART Base",
       "uri": "https://github.com/WorldHealthOrganization/smart-base",
       "version": "1.0.0"
     },
@@ -611,24 +611,24 @@ localStorage key the docs site writes**, overridable per link with `?lang=`.
 
 ---
 
-## Integration with WHO smart-base
+## Integration with WHO SMART Base
 
-The WHO `smart-base` repository contains a ~5,500-line translation subsystem
+The WHO SMART Base repository contains a ~5,500-line translation subsystem
 that wires Weblate, Crowdin, and Launchpad with extraction, injection,
 per-project registration, and completeness reporting. This subsystem is the
 upstream authority for DAK translation workflows.
 
 ### What to import vs wrap
 
-Following the principle in `smart-base/skills/content/authoring-who-smart-guidelines/smart-base-tools.md`
-— **load it; never vendor it** — folio-assistant does not copy smart-base's
+Following the principle in the DAK layer's `skills/content/authoring-who-smart-guidelines/smart-base-tools.md`
+— **load it; never vendor it** — folio-assistant does not copy SMART Base's
 translation scripts. Instead:
 
-1. **Extraction/injection scripts** are invoked from the smart-base checkout
+1. **Extraction/injection scripts** are invoked from a SMART Base checkout
    (like `bpmn2fsh` and `dmn2html` today).
-2. **PO file format** is shared — smart-base produces PO, folio-assistant
+2. **PO file format** is shared — SMART Base produces PO, folio-assistant
    consumes it, and vice versa.
-3. **Completeness reporting** is re-used — smart-base's coverage metrics
+3. **Completeness reporting** is re-used — SMART Base's coverage metrics
    become inputs to folio-assistant's QA sweep.
 
 ### IG Publisher translation
@@ -730,7 +730,7 @@ See the beans created for this work and the
 | 9. Staleness tracking | — | Hash-based change detection | Todo |
 | 10. Sign-off workflow | — | Multi-level sign-off UI + persistence | Todo |
 | 11. Round-trip QA | `ktt2` | Back-translation drift detection | Todo (existing bean) |
-| 12. smart-base integration | — | Wrap extraction/injection scripts | Todo |
+| 12. SMART Base integration | — | Wrap extraction/injection scripts | Todo |
 | 13. BPMN diagram | — | Translation workflow BPMN | Todo |
 
 ---
@@ -750,4 +750,4 @@ See the beans created for this work and the
 - [BCP 47 — Tags for Identifying Languages](https://www.rfc-editor.org/info/bcp47)
 - [FRBR — Functional Requirements for Bibliographic Records](https://www.ifla.org/references/best-practice-for-national-bibliographic-agencies-in-a-digital-age/resource-description-and-standards/bibliographic-control/functional-requirements-the-frbr-family-of-models/functional-requirements-for-bibliographic-records-frbr/)
 - [Dublin Core `dcterms:language`](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/language)
-- WHO smart-base translation subsystem (~5,500 lines, Weblate/Crowdin/Launchpad)
+- WHO SMART Base translation subsystem (~5,500 lines, Weblate/Crowdin/Launchpad)

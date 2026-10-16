@@ -125,12 +125,12 @@ ruled rather than derived quietly.
 The hardest question in the ruling, and the one most likely to be re-opened by
 somebody who notices the ids "should" match.
 
-`smart-trust` here is **not** the WHO SMART Trust IG. It is this repository's
+The trust-IG mirror here is **not** the WHO SMART Trust IG. It is this repository's
 reconstructed index *about* that IG. The two are different objects, and the
 real upstream ids are already held — as **data**, in the right place:
 
 ```json
-// smart-base/fhir-artifact-index/chrome.json, ingested at commit 26635f7b
+// <dak-layer>/fhir-artifact-index/chrome.json, ingested at commit 26635f7b
 { "id": "smart.who.int.trust", "canonical": "http://smart.who.int/trust" }
 ```
 
@@ -138,11 +138,10 @@ Giving our instance `smart.who.int.trust` would claim our mirror **is** the
 thing it mirrors. Anything resolving that id would then find two different
 artefacts answering to it.
 
-**The same reading governs `canonicalUrl`,** and `smart-base`'s own declaration
-already said so before this skill existed:
-
-> It is READ from upstream rather than chosen here, so it is a fact about
-> smart-base and not a decision about where this staging directory publishes.
+**The same reading governs `canonicalUrl`,** and the DAK layer's own declaration
+already said so before this skill existed. It says, in substance, that the URL is READ from upstream rather than chosen
+there, so it is a fact about the upstream IG and not a decision about where
+that staging directory publishes.
 
 So, for a **true mirror**, `canonicalUrl` records the **subject**. It must not
 drive **our** identity. A mirror's declaration that carries an upstream
@@ -157,8 +156,8 @@ each has its own field:
 | question | answered by | example |
 |---|---|---|
 | **Publication identity** — where the artefact lives once formally published | the `@id` its document mints; for an instance staged here for publication elsewhere, its declared `canonicalUrl` | `smart-base` → `http://smart.who.int/base/smart-base.jsonld` |
-| **Staging location** — where this repository's site serves a draft copy now | the root index's `url`, never the `@id` | `smart-base` → `<site>/smart-base/smart-base.jsonld` |
-| **True mirror** — this repository's index *about* someone else's artefact | its own identity on this site; the subject's ids are held as **data** | `smart-trust` is not the WHO SMART Trust IG |
+| **Staging location** — where this repository's site serves a draft copy now | the root index's `url`, never the `@id` | a DAK layer → `<site>/<name>/<name>.jsonld` |
+| **True mirror** — this repository's index *about* someone else's artefact | its own identity on this site; the subject's ids are held as **data** | the trust-IG mirror is not the WHO SMART Trust IG |
 
 **An instance staged here for publication at its `canonicalUrl` is not a
 mirror.** It IS the thing that will be published there, so its `@id` is the
@@ -273,11 +272,11 @@ the instance holds (`contextPathFor` in `gen-instance-contexts.ts`), the
 instance's `builtAtPublish` and `.gitignore` name that path, and the workflow
 publishes at the path the build reports.
 
-- **The workflow** is cat-harness-tools'
+- **The workflow** is the tools layer's
   `.github/workflows/layer-publish-context.yml`. A repository calls it from a
   `publish-context.yml` of one `uses:` line, on push to `main`, with
   `contents: write` (`path-in-repo:` when the instance is a sub-directory, as
-  smart-base's is). It builds only the caller's context, judges only the
+  the DAK layer's is). It builds only the caller's context, judges only the
   caller's findings, and writes that one path to the caller's `gh-pages`. It
   skips with a notice when the instance declares no `iriBase` or has no
   `.jsonld` documents, and it creates `gh-pages` when it is absent.
@@ -385,8 +384,8 @@ at `<base>/<stub>/<stub>.jsonld` (bean `dyd3`). **An instance declaring its
 own `canonicalUrl` is the host of its own base**, so its `@id` is
 `<canonicalUrl>/<stub>.jsonld` (#1548), and the deploy passes it no
 `--base-url` (`declaresOwnCanonical` in `instance-exports.ts`). Measured
-2026-10-05, those are `cat-harness-tools`, `cat-openapi`, `fhir-harness` and
-`smart-base`. **This site serves their bytes at `<site>/<stub>/<stub>.jsonld`,
+2026-10-05, those are the tools layer, `cat-openapi`, the FHIR IG layer and
+the DAK layer. **This site serves their bytes at `<site>/<stub>/<stub>.jsonld`,
 and that is their STAGING location, not their identity** (§"Three questions
 that must not be merged" above). The root index records both: `@id` is the
 publication identity, `url` is where this site stages it. Anything that names a
@@ -411,7 +410,7 @@ item 1). It holds:
   `schema/skills/<skill>/<io>.schema.json`. They are read from
   `<instance>/schemas/skills/`, the directory its skills' `input:` and
   `output:` refs name. The declared `schemas` graph is not the answer:
-  `folio-assistant-sci` declares `sources/` as its `schemas` graph and keeps
+  the science layer declares `sources/` as its `schemas` graph and keeps
   its contracts under `schemas/skills/`.
 - **its public Zod schemas**, at `schema/zod/<module>/<Export>.schema.json`
   (§"Which Zod schemas are public" below).
@@ -422,9 +421,9 @@ item 1). It holds:
 **Every `$id` is the instance's publication identity, not this site's
 address.** The schema base is `schema/` beside the document `publishedIdentity`
 mints: `<site>/<stub>/schema/` for an instance with no `canonicalUrl`, and
-`<canonicalUrl>/schema/` for one that declares its own. So `smart-base`'s
+`<canonicalUrl>/schema/` for one that declares its own. So the DAK layer's
 contracts are `http://smart.who.int/base/schema/skills/…`, and this site stages
-the bytes at `<site>/smart-base/schema/` (§"Three questions that must not be
+the bytes at `<site>/<dak-layer>/schema/` (§"Three questions that must not be
 merged"). `publishedInstanceSchemas` in `kg-export.ts` is the one place
 identity and builder meet, and the deploy and the gate both call it. A stored
 `$id` in a source contract is never published: with a base the computed one
@@ -456,7 +455,7 @@ expose internal schemas."* So an instance's public schemas are **every
 exported const whose name ends in `Schema` and whose value is a Zod schema**,
 in the `.ts` modules (not `*.test.ts`) directly inside its schemas directory.
 That directory is the instance's declared `schemas` graph if it declares one,
-else `<root>/schemas/` by convention. `folio-assistant-sci` and `who-iris`
+else `<root>/schemas/` by convention. The science layer and the IRIS replica
 declare `sources/`, which holds JSON descriptors, so they publish none.
 
 The rule is the suffix, literally. A Zod value named otherwise is not public,

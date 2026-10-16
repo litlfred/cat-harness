@@ -39,7 +39,7 @@ in the built site only.
 
 **An embed is a link that also renders.** So it follows the same rule as the
 download link: if the bitstream's publication gates (`copyright`,
-`restrictions`) are not `permitted`, the page gets no viewer. On who-iris that
+`restrictions`) are not `permitted`, the page gets no viewer. On the IRIS replica that
 is `readHere()` in `gen-iris-pages.ts`, which returns nothing whenever
 `linkOrWithheld` would refuse the link. The page then says only what it already
 says: "held here, not published". Never embed a document to "just preview" it.
@@ -83,8 +83,8 @@ Each of these cost a debugging round. All three are listed under `binds` in the
 ## The embed, and what it does when it cannot work
 
 - **Site root from the browser.** One generated page is served at several
-  depths (`/who-iris/`, `/folio-assistant/who-iris/`,
-  `/STAGING/<branch>/who-iris/`). The caller passes the route pattern, using
+  depths (`/<iris-replica>/`, `/folio-assistant/<iris-replica>/`,
+  `/STAGING/<branch>/<iris-replica>/`). The caller passes the route pattern, using
   the `folio-mount.ts` convention (group 1 is the root), and the inlined client
   applies it. A page off the route gets a frame saying so, never a 404 inside
   the frame.

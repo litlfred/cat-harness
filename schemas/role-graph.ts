@@ -631,8 +631,8 @@ function scenariosSubdir(repoRoot: string, name: string): string | undefined {
  * {@link readRoleGraph} uses this when a caller passes no `lower`. Before it
  * did, a caller that passed nothing (`kg-export`, `glossary-export`,
  * `gen-auto-docs` and others) refused any role inheriting a role from a lower
- * instance: smart-base's `l1-extraction-reviewer`, which inherits cat-harness's
- * `reviewer`, stopped every KG export that mounted smart-base. Only `needs` is
+ * instance: a DAK layer's `l1-extraction-reviewer`, which inherits cat-harness's
+ * `reviewer`, stopped every KG export that mounted that layer. Only `needs` is
  * followed, never a sibling or a dependent, so a role still cannot inherit
  * upward and a cross-instance cycle still cannot form.
  *

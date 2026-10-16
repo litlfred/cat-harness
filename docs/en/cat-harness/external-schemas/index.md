@@ -769,7 +769,7 @@ a subset of the edition rather than a transcription of it.
 
 | term | what it means here |
 |---|---|
-| `skos:Collection` | A glossary's `members` (folio-glossary/v1): external concepts this folio lists without copying them, emitted by folio-assistant-core/schemas/glossary.ts#toSkos. |
+| `skos:Collection` | A glossary's `members` (folio-glossary/v1): external concepts this folio lists without copying them, emitted by the content core's schemas/glossary.ts#toSkos. |
 | `skos:Concept` | A MEANING, and the authoritative object for one. Minted per declared ROLE, never per lane name — 85 lane names resolve to 36 roles, so a concept per name would mint 85 terms for 36 meanings. |
 | `skos:ConceptScheme` | The glossary document IS the scheme; there is no separate `…#scheme` IRI, because that would name a set that already has a name and would not dereference (`blv9`). |
 | `skos:OrderedCollection` | *(pending description)* |
@@ -799,7 +799,7 @@ a subset of the edition rather than a transcription of it.
 **Namespaces.**
 
 
-**Note.** The query language who-iris's Oxigraph pipeline (skill iris-oxigraph) runs over the catalogue's N-Quads: faceted rollups and combined queries, in the browser (WebAssembly) and on the CLI. A language, not an RDF vocabulary, so it claims no namespace; the IRIs its queries match are the vocabularies' own (dcterms, skos, …), recorded under those.
+**Note.** The query language the IRIS replica's Oxigraph pipeline (skill iris-oxigraph) runs over the catalogue's N-Quads: faceted rollups and combined queries, in the browser (WebAssembly) and on the CLI. A language, not an RDF vocabulary, so it claims no namespace; the IRIs its queries match are the vocabularies' own (dcterms, skos, …), recorded under those.
 
 **What depends on it.**
 

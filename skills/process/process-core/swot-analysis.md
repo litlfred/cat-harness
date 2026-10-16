@@ -5,6 +5,8 @@ description: >
   `swot-analysis.bpmn`, what each step must produce, and the one thing the
   technique must never be used for. The method itself lives in the
   `methodology` graph and is not repeated here.
+uses-methodology:
+  - swot
 ---
 
 # Running a SWOT scan

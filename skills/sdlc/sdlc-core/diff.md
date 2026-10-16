@@ -29,7 +29,7 @@ clickable viewer link and 1-line explanation.
 ### Finding changed blocks: use the ChangeSet
 
 ```bash
-bun run folio-assistant/folio-assistant-core/schemas/changeset.ts \
+bun run folio-assistant/<content-core>/schemas/changeset.ts \
   --folio <folio graph dir> --base origin/main --head worktree --out /tmp/changeset.json
 ```
 
@@ -37,7 +37,7 @@ bun run folio-assistant/folio-assistant-core/schemas/changeset.ts \
 `<slug>.json`, usually `folio/`. The path prefix is wherever this folio
 links the platform. Its stderr line is the summary. The JSON
 (`folio-changeset/v1`, schema in
-`folio-assistant-core/schemas/changeset.ts`) lists every block that differs,
+the content core's `schemas/changeset.ts`) lists every block that differs,
 keyed on its **label**, in reading order.
 
 **Why not `git diff --name-only` over `.ts` files**, which this section used

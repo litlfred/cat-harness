@@ -150,7 +150,7 @@ re-introduces the leak `instance-graph-isolation.test.ts` exists to stop
   a role a lane in ANOTHER instance binds (`partitionElementRef`) is named
   with that diagram (`drawnElsewhere`), apart from roles no diagram in the
   repository draws. Bean `nafz`: unsplit, a role drawn in
-  folio-assistant-core read exactly like eleven drawn nowhere — a fact
+  the content core read exactly like eleven drawn nowhere — a fact
   about the walk phrased as a fact about the corpus. Reporting it is not
   widening the scan: nothing outside the instance is bound or emitted.
 - **A lane binding naming a lane no diagram contains** (`fd6i`). Distinct

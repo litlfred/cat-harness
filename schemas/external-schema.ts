@@ -39,7 +39,7 @@
  * @graphNode schema
  * ## Why this lives in cat-harness and not in core
  *
- * Moved 2026-09-27, bean `yj6r`. It sat in `folio-assistant-core/schemas/` and
+ * Moved 2026-09-27, bean `yj6r`. It sat in the content core's `schemas/` and
  * its only three importers were all in `cat-harness/scripts/` — so cat-harness,
  * which declares `needs: ['bootstrap']` and not core, was importing UP into a
  * layer above it. After a repository cut that is a circular dependency.

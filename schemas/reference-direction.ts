@@ -152,7 +152,7 @@ export type NameCollision = "instance" | "repository" | "unknown";
  * Every bounded occurrence of `name` in `text`, as 1-based line numbers.
  *
  * **Bounded, which is not a detail.** A name may be a prefix of another
- * instance's name — `folio-assistant` of `folio-assistant-core` — so a
+ * instance's name — `bootstrap` of `bootstrap-tools` — so a
  * substring scan counts one occurrence twice and attributes the second to an
  * instance that was never named. That is not hypothetical: the 2026-09-23
  * measurement that opened this work reported 6,778 occurrences by substring

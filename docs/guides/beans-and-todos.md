@@ -195,8 +195,12 @@ is one nobody checks.
 
 **What the dashboard shows, and why each panel is the shape it is.** The
 counts are a headline, so they are numbers rather than a chart of four bars
-saying the same thing. The epic distribution is magnitude across identities
-with long names, so it is a horizontal bar. The findings are three or four
+saying the same thing. The work plan itself is a tree, goal → epic →
+feature → story, because the question a reader brings is "where does this sit",
+and a bar per epic answered "how many" and listed one level. The type filter
+and the search prune that tree to what matches and open it down to them. The
+store's `task` type is shown as **story**, since a Task here is a BPMN task.
+The findings are three or four
 rows, so they are a list — with an icon and a label on every row, because a
 status colour never carries meaning alone.
 

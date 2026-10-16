@@ -5,7 +5,7 @@
  *
  * It was, and that placement inverted a dependency. `jsonld.ts` is the
  * **content** vocabulary: block kinds, DoCO structural types, SPAR citation
- * terms, the FHIR and smart-base namespaces. It belongs to
+ * terms, the FHIR and WHO SMART Base namespaces. It belongs to
  * `folio-assist-core`, and it imports `./block-kinds` to build its projection
  * tables.
  *

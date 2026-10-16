@@ -190,7 +190,7 @@ defaults:
   # "Explicit scopes"). Jekyll re-runs a glob scope's `Dir.glob`, and a
   # `Pathname#relative_path_from` per match, on EVERY `to_liquid` of EVERY
   # page: on the folio-assistant docs tree these seven were ~68% of the build's
-  # CPU. So `compose-docs` (cat-harness-tools `scripts/lib/default-scope-globs.ts`)
+  # CPU. So `compose-docs` (the tools layer's `scripts/lib/default-scope-globs.ts`)
   # replaces each one, in the COMPOSED `_config.yml`, by one exact-path scope
   # per path the glob matches in the composed tree -- a locale folder such as
   # `start/fr` stays one scope, as the glob treats it -- which is the same set

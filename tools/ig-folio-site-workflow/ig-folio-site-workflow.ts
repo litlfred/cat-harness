@@ -3,9 +3,9 @@ import { defineTool } from "../../schemas/tool.js";
 
 // The route the owner does not use in the current pipeline, and that is a
 // choice, not a property of the Tool (owner, 2026-10-14: "But did other
-// build pipelines? It might be necessary."). Measured that day: smart-base
+// build pipelines? It might be necessary."). Measured that day: the DAK IG
 // carries `.github/workflows/folio-site.yml` on its default branch and ran
-// it by dispatch on 2026-10-12; smart-trust and smart-immunizations ran it
+// it by dispatch on 2026-10-12; two further IG repositories ran it
 // the same day and have since replaced it with `site-publish.yml`
 // (stage-local). No workflow calls it: it is dispatch-only, never reusable.
 // A node over a workflow, on the `package-release-workflow` precedent: the

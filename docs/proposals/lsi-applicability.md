@@ -31,7 +31,7 @@ retrieval aid, so every output here is a proposal (method refusals 1–4).
 
 ### 2.1 Document ingestion
 
-| use | measured on who-iris (3 docs, 342 sections, 47,552 words, ~1 s) | verdict |
+| use | measured on the IRIS replica (3 docs, 342 sections, 47,552 words, ~1 s) | verdict |
 |---|---|---|
 | **Outlier / non-prose detection** (`narrowDimensions`) | two dimensions are placeholder text in the WPRO style guide: Lorem-ipsum layout filler (pp. 21, 29–31) and pseudo-Latin font specimens (pp. 14–15, 28). Found on the first run, by nobody looking for it | **strong** — cheap, and finds what a per-page check cannot, because "unusual" is only defined against the rest of the corpus |
 | **Near-duplicate pages** (`nearDuplicates`) | 12 pairs, all inside the WPRO guide: repeated layout pages (pp. 6–10) and font-specimen pages (14/15, cos 0.993) | **useful**, needs a person: similar is not duplicate |
@@ -54,11 +54,11 @@ retrieval aid, so every output here is a proposal (method refusals 1–4).
 
 `bun run cat lsi:audit` — which declared prose graphs need an index, and is each
 fresh. First run: **8 graphs** met the threshold (≥ 100 units, ≥ 20,000 words;
-a house number, basis stated in `scripts/lsi.ts`). After this PR: `who-iris/library`
+a house number, basis stated in `scripts/lsi.ts`). After this PR: the IRIS replica's `library`
 and `cat-harness/skills` **pass**; `cat-harness/beans` is **n/a by design**
 (a state graph, rebuilt on demand); five still **fail** —
 `agent-skills/library`, `cat-harness/library`, `cat-harness/docs`,
-`smart-base/library`, `smart-trust/smart-trust-docs`.
+the DAK layer's `library`, the trust IG's `smart-trust-docs`.
 
 ### 2.4 The work plan — epics
 
@@ -108,7 +108,7 @@ paper's CISI result shows stemming captured structure LSI did not).
 
 Built in this PR: the methodology node, the engine, `lsi` / `lsi:audit` /
 `lsi:epics`, the `lsi-indexing` skill, committed sidecars for
-who-iris and skills, this page and the epic proposal.
+the IRIS replica and skills, this page and the epic proposal.
 
 | # | option | what it adds | cost | recommendation |
 |---|---|---|---|---|
@@ -118,4 +118,4 @@ who-iris and skills, this page and the epic proposal.
 | D | Fold `lsi-index-fresh` into `kg:audit` as a sidecar criterion | the verdict joins the audited record, like `check:raci` did (bean `3kbd`) | medium; kg:audit sidecar churn, and PR #1472 is reshaping kg:audit now | after #1472 lands |
 | E | Index the five remaining graphs | `bun run cat lsi index` per graph; `docs` is 434k words (~10 s) | trivial compute, large sidecars to review | after deciding sidecar size policy |
 | F | Apply the epic proposal | `beans update --parent` for the 7 unfiled, scrap-with-pointer for confirmed duplicates | owner review per bean | owner decides |
-| G | **Correspondence analysis as its own method node** — ✅ **built and measured 2026-09-29** | `methodologies/correspondence-analysis.md`, `content/pipeline/ca.ts` (tested on Qi et al.'s Table 1). On the pre-refiling bean store: CA-raw 146 vs LSI-raw 136 of 250 (the paper's direction, McNemar p = 0.17); vs log-entropy LSI p = 0.71. Removes the margin dimension (who-iris dim 1: LSI 342/342 one side, CA 46/296) but its leading dimensions go to outliers | done | parallel track; LSI stays the filing default |
+| G | **Correspondence analysis as its own method node** — ✅ **built and measured 2026-09-29** | `methodologies/correspondence-analysis.md`, `content/pipeline/ca.ts` (tested on Qi et al.'s Table 1). On the pre-refiling bean store: CA-raw 146 vs LSI-raw 136 of 250 (the paper's direction, McNemar p = 0.17); vs log-entropy LSI p = 0.71. Removes the margin dimension (the IRIS replica dim 1: LSI 342/342 one side, CA 46/296) but its leading dimensions go to outliers | done | parallel track; LSI stays the filing default |

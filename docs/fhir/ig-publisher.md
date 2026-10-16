@@ -88,7 +88,7 @@ elsewhere **keeps** the Publisher rather than removing it:
 1. **Profile validation** — every resource against its profiles and the
    declared FHIR version.
 2. **Dependency-closure resolution** with version pinning. For WHO's
-   `smart-base` that is `hl7.terminology`, `hl7.fhir.uv.extensions.r4`,
+   the DAK layer that is `hl7.terminology`, `hl7.fhir.uv.extensions.r4`,
    `hl7.fhir.uv.cql`, `hl7.fhir.uv.cpg`, `hl7.fhir.uv.crmi` and
    `hl7.fhir.uv.sdc`.
 3. **Terminology expansion** against a terminology server.
@@ -114,7 +114,7 @@ The Publisher exports metadata about what it built, and those exports have a
 measured ceiling. Using them as a stand-in for a syntax tree, across two real
 WHO IGs:
 
-| export | smart-trust | smart-immunizations |
+| export | the trust IG | the immunizations IG |
 |---|---|---|
 | `valueset-ref-list.json` ValueSet→CodeSystem edges | 17 over 14 | 431 over 252 |
 | `codesystem-ref-list.json` `uses` populated | 0 of 15 | 0 of 14 |
@@ -128,7 +128,7 @@ field is worse than an absent one, because a consumer cannot tell "no
 dependencies" from "not computed".
 
 **Nothing exports dependencies among `Library`, `PlanDefinition` or
-`Measure`.** In `smart-immunizations` that is 279 + 138 + 41 artefacts —
+`Measure`.** In the immunizations IG that is 279 + 138 + 41 artefacts —
 around **61 %** of the IG, and precisely the CQL and decision-logic core —
 with no dependency edges at all.
 

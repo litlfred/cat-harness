@@ -13,7 +13,7 @@ export default toolFactory((t) =>
     io: {
       inputs: [
         { name: "text", schema: t("Text"), required: true, arg: { stdin: true }, description: "The query, in any words, on STDIN — free text never goes on a command line." },
-        { name: "instance", schema: t("Slug"), required: false, arg: { flag: "--instance" }, description: "Instance declaring the graph, e.g. `who-iris`." },
+        { name: "instance", schema: t("Slug"), required: false, arg: { flag: "--instance" }, description: "Instance declaring the graph, e.g. `cat-harness`." },
         { name: "graph", schema: t("Slug"), required: false, arg: { flag: "--graph" }, description: "Graph id within the instance, e.g. `library`." },
       ],
       outputs: [{ name: "report", schema: t("Markdown"), description: "Per graph: the top hits by cosine, each marked lexical+latent or latent only." }],

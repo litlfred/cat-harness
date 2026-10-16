@@ -125,7 +125,7 @@ Why declaring is part of the process, not tidying:
   only, so a new undeclared folder inside a harness passes it.
 - **Declared directories are what can be mounted and exported.** A remote
   mount lays down declared directories only, so an undeclared code folder is
-  missing downstream (cat-harness-tools' `tools/` was, until 2026-10-14). A
+  missing downstream (the tools layer's `tools/` was, until 2026-10-14). A
   harness's package `exports` are derived from its declared, shipped `code`
   directories (`check:package-exports`, bean `7pvn`), so an undeclared one
   cannot be imported by package name either. A from-within id cannot yet be

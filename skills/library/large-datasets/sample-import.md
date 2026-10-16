@@ -12,7 +12,7 @@ description: >
 The SDLC for trying out a remote source before committing to it: take a
 sample, land it, import it into the store you care about, and find out what
 breaks. The process is `cat-harness/processes/library/sample-import.bpmn`. IRIS is the worked
-instance (`who-iris/`); nothing here is WHO-specific.
+instance (the IRIS replica); nothing here is WHO-specific.
 
 ## The gates are not here
 
@@ -29,7 +29,7 @@ happens **around** it.
 
 | question | why it is asked first |
 |---|---|
-| **Which items?** By the source's identifiers, or a subset strategy its descriptor (in the owning instance's declared `sources/`, e.g. `who-iris/sources/`) supports. | the size gate needs a request to measure |
+| **Which items?** By the source's identifiers, or a subset strategy its descriptor (in the owning instance's declared `sources/`, e.g. The IRIS replica's `sources/`) supports. | the size gate needs a request to measure |
 | **Which store?** The graph or database the import is tested against. | the test in step 4 is against *this* store's schema |
 | **Permanent or trial?** | it decides where the copy lands, and moving a landed copy later means moving it under the wrong obligations |
 

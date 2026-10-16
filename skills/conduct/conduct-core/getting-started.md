@@ -6,8 +6,8 @@ user_invocable: true
 
 # /getting-started — what did they actually ask for?
 
-Process: [`folio-assistant-core/processes/conduct/getting-started.bpmn`](../../../../folio-assistant-core/processes/conduct/getting-started.bpmn).
-Decision table: [`decisions/folio-intent.dmn`](../../../../folio-assistant-core/processes/conduct/decisions/folio-intent.dmn).
+Process: the content core's `processes/conduct/getting-started.bpmn`.
+Decision table: `decisions/folio-intent.dmn`.
 
 ## The landing page is the instance's own description
 
@@ -260,7 +260,7 @@ the owner's confirmation.
      "Should be live shortly" is a claim you do not have evidence for, and an
      author who later finds nothing there has been told something false.
 5. **Tell them the corpus is by reference, and how to change that.** A fresh
-   harness holds references, not the remote content itself: `who-iris` alone
+   harness holds references, not the remote content itself: the IRIS replica alone
    is hundreds of gigabytes. When they need part of a remote subgraph locally,
    that is an ask made later, as the need appears. Name the skill
    (`materialize-on-demand`) and the one command that shows what is already

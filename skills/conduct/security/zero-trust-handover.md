@@ -7,6 +7,8 @@ description: >
   the remote-mount trust gate, per-tool risk read from a tool's sinks, and
   the release security gate. A house application, not a methodology: read the
   node for the method, read this for what to do at a boundary.
+uses-methodology:
+  - zero-trust-architecture
 ---
 
 # Zero-trust handover
@@ -193,7 +195,7 @@ Measured 2026-10-07 by searching the TypeScript tree for `send_message`,
 `webhook`, `trigger` and `routine`: **no code here takes text from a routine,
 a relay or a webhook and puts it in front of a model.** The nearest in-code
 sites are third-party comments, and those are treated as data:
-- `folio-assistant-core/scripts/review-comments.ts` ingests tagged PR
+- The content core's `scripts/review-comments.ts` ingests tagged PR
   comments verbatim into todos, run by the `issue_comment` job of
   `folio-staging.yml`. Nothing reads them as instruction there; the model
   reads them later through `guardUntrusted` (feedback triage, the chat's open
@@ -213,7 +215,7 @@ pattern fires) or `screenHandover` (a declared structure):
 |---|---|---|
 | chat route, generic (`cat-harness-tools/src/routes/chat.ts`) | every tool result, which carries block markdown and commenters' todos | `guardUntrusted`, JSON leaves screened too |
 | chat, legacy MCP server (`adapters/mcp-server/server.ts`) | the reader's selection, block markdown, open todos, labels, every tool result | `guardUntrusted`, `oneLineLabel` |
-| document adapter system prompt (`folio-assistant-core/adapters/document/index.ts`) | selection and block markdown | `guardUntrusted` |
+| document adapter system prompt (the content core's `adapters/document/index.ts`) | selection and block markdown | `guardUntrusted` |
 | feedback triage, both copies | the commenter's summary and detail, block markdown, assignee | `guardUntrusted`, `oneLineLabel` |
 | branch characterization, both copies | changed-block titles, branch and document ids | `guardUntrusted`, `oneLineLabel` |
 | `workflow_complete` (MCP) | the calling agent's arguments, later read from the bean body by the next agent | `screenHandover`: control fields refuse, and `instance`, `node`, `target` and `outcome` must also match an id, path or label pattern; the note quarantines and is folded to one line |

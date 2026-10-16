@@ -164,7 +164,7 @@ export const CLASS_GLOSSES: Readonly<Record<string, TermGloss>> = {
    * The two CONTENT-TYPE markers — what a repository asserts it is.
    *
    * Distinct from a graph typology, which says what is in a DIRECTORY. These say
-   * what the REPOSITORY is, and a repository is a set of them: `smart-base` is
+   * what the REPOSITORY is, and a repository is a set of them: a DAK repository is
    * a DAK and a SUSHI project at once. `DAK` is not here because it is WHO's
    * term in WHO's namespace, which is the point — a marker's type IRI belongs
    * to whoever defines the type, and only the ones we mint need glossing here.

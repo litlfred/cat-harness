@@ -314,7 +314,7 @@ about a defect feels like diligence.
 
 2026-09-23, bean `yag0`. The owner reported a library viewer as broken. A
 session "confirmed" it by grepping
-`cat-harness/docs/cat-harness/library/who-iris/index.html` for the entry names,
+`cat-harness/docs/cat-harness/library/<iris-replica>/index.html` for the entry names,
 finding none, and reporting the page as *"a shell"* — 20,160 bytes, committed
 and built identically, holding none of its subject's three entries.
 
@@ -325,7 +325,7 @@ have been in that file.** The test could not have returned any other answer,
 for a working page or a broken one.
 
 Loading it in Chromium took one command and settled it:
-`who-iris · 3 entries · 84,292 words · 404 sections`, data `200`, no console
+`<iris-replica> · 3 entries · 84,292 words · 404 sections`, data `200`, no console
 errors, all three entries present.
 
 ### The cost of a false red

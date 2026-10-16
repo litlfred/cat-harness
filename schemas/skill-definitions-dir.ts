@@ -4,9 +4,9 @@
  * Both were under `.claude/skills/` (`local/` and `conventions/`), a
  * vendor-named directory no declaration reached. The owner split them BY
  * THEME across the harnesses that own the subject (2026-09-30, bean `rqao`):
- * WHO SMART / FHIR to `smart-base` and `fhir-harness`, the content lifecycle
- * and document authoring to `folio-assistant-core`, mathematical papers to
- * `folio-assistant-sci`, BPMN/DMN authoring and the conventions to
+ * WHO SMART / FHIR to the DAK and FHIR IG layers, the content lifecycle
+ * and document authoring to the content core, mathematical papers to
+ * the science layer, BPMN/DMN authoring and the conventions to
  * `cat-harness`. So there is no single directory: each instance keeps its own
  * `skill-definitions/` inside a declared `skills` directory, and every reader
  * asks this module for all of them.
@@ -32,7 +32,7 @@ export function skillDefinitionDirs(repoRoot: string): string[] {
   const out = new Set<string>();
   for (const root of instanceRootsIn(repoRoot)) {
     // The declared `skills` directories, plus the conventional `skills/` an
-    // instance declaring none still has (smart-base, folio-assistant-sci):
+    // instance declaring none still has (the DAK and science layers):
     // declaring `skills/skill-definitions/` there would nest one declared
     // directory inside the conventional one, which layout-norms refuses.
     const candidates = new Set([...instanceDirectoriesForGraph(root, "skills"), ownDirectoryById(root, "skills", "skills")]);
