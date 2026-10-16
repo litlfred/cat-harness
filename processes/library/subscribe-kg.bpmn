@@ -19,6 +19,10 @@
                   id="Definitions_SubscribeKg"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="corpus" name="Corpus"/>
+  <bpmn:resource id="ingestion-agent" name="Ingestion engine"/>
+  <bpmn:resource id="user" name="User"/>
 
   <bpmn:collaboration id="Collaboration_SubscribeKg">
     <bpmn:participant id="Participant_SubscribeKg" name="Subscribe to an external knowledge graph" processRef="Process_SubscribeKg" />
@@ -37,18 +41,16 @@ STRICT. The pin and the five gates are the reason: an unpinned subscription is h
       <cat-harness.processes:policy enforcement="strict" />
     </bpmn:extensionElements>
     <bpmn:laneSet id="Process_SubscribeKg_LaneSet">
-      <bpmn:lane id="Lane_0" name="Subscriber (the folio's owner)">
+      <bpmn:lane id="Lane_0" name="Subscriber (the folio's owner)" partitionElementRef="user">
         <bpmn:documentation>Every CHOICE in the walk is made here and nowhere else: which substrate and at which commit, which of its subgraphs, asset classes and harnesses to hold. The engine never chooses a part on the subscriber's behalf — a subgraph not chosen stays referenced, which is a state, not an omission — and the pre-check on harness needs sends the choice back here rather than resolving it silently.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="user"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>StartEvent_Wanted</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Pin</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Review</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Choose</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_NeedsHeld</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_1" name="Ingestion Engine (agent, runs unattended)">
+      <bpmn:lane id="Lane_1" name="Ingestion Engine (agent, runs unattended)" partitionElementRef="ingestion-agent">
         <bpmn:documentation>Validates the substrate at the pin, then walks the chosen parts one at a time: each subgraph or asset through the shared materialisation subprocess, each held copy through the shared refresh, each harness by writing its config. Every loop here re-enters its decision after each part, so a refusal on one part is recorded and the walk continues to the next rather than aborting the subscription.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="ingestion-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_Validate</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_Substrate</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_Kind</bpmn:flowNodeRef>
@@ -59,9 +61,8 @@ STRICT. The pin and the five gates are the reason: an unpinned subscription is h
         <bpmn:flowNodeRef>Gateway_NextHarness</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Instantiate</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_2" name="Corpus — the subscriber's declaration">
+      <bpmn:lane id="Lane_2" name="Corpus — the subscriber's declaration" partitionElementRef="corpus">
         <bpmn:documentation>Where the subscription is written down: the entry in the subscriber's instance declaration (choice and pin only, never state), the cached copy of the substrate's declaration the visualizer reads offline, and the record of how the walk ended. A refusal lands here with the same weight as a success, so the next caller does not re-litigate it.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="corpus"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_Refuse</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_Refused</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Record</bpmn:flowNodeRef>

@@ -7,6 +7,9 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_UpstreamPinWatch" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
   <bpmn:collaboration id="Collaboration_Process_UpstreamPinWatch">
     <bpmn:participant id="Participant_Process_UpstreamPinWatch" name="Watching a pinned upstream dependency" processRef="Process_UpstreamPinWatch"/>
   </bpmn:collaboration>
@@ -22,9 +25,8 @@ The adoption itself is a call activity, so the judgement half lives in its own r
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_UpstreamPinWatch">
-      <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline">
+      <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>Owns exactly three outcomes and must keep them visibly different: current closes the tracking issue, behind opens or edits it, and UNKNOWN leaves the issue untouched while failing the job anyway — a watchdog that goes blind must never read as clean, so this lane is the one place that distinction cannot be collapsed into a single pass or fail. It hands off at the first sign of judgement: the moment a bump needs adopting, that is Lane_Agent's, never this one's.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Sweep</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_ReadPins</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_QueryUpstream</bpmn:flowNodeRef>
@@ -35,9 +37,8 @@ The adoption itself is a call activity, so the judgement half lives in its own r
         <bpmn:flowNodeRef>End_Current</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_TrackIssue</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Agent" name="Agent">
+      <bpmn:lane id="Lane_Agent" name="Agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Entered only once Lane_Ci has confirmed a pin is behind and filed the issue, never to make that determination itself: A_PickUp's claim is what stops two sessions adopting the same bump. The judgement of adoption is not drawn here either — Call_Adopt hands it to its own reusable process, so this lane is only the hand-off from mechanical detection to judgement, not the judgement itself.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>A_PickUp</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Adopt</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Handled</bpmn:flowNodeRef>

@@ -7,6 +7,9 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_NQuadsDistribution" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
+  <bpmn:resource id="platform-authoring-agent" name="Platform authoring agent"/>
   <bpmn:collaboration id="Collaboration_Process_NQuadsDistribution">
     <bpmn:participant id="Participant_Process_NQuadsDistribution" name="Package and distribute partitioned W3C N-Quads and named queries" processRef="Process_NQuadsDistribution"/>
   </bpmn:collaboration>
@@ -23,9 +26,8 @@ CRITICAL INVARIANTS:
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_NQuadsDistribution">
-      <bpmn:lane id="Lane_Author" name="Knowledge Graph Engineer">
+      <bpmn:lane id="Lane_Author" name="Knowledge Graph Engineer" partitionElementRef="platform-authoring-agent">
         <bpmn:documentation>The agent or engineer authoring or packaging the knowledge graph dataset: extracts RDF triples, skolemizes blank nodes, splits by subgraph topology, checks partition budgets, and tests named queries.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="platform-authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Dataset</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_ExtractSkolemize</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_PartitionQuads</bpmn:flowNodeRef>
@@ -35,9 +37,8 @@ CRITICAL INVARIANTS:
         <bpmn:flowNodeRef>A_DeclareManifest</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_VerifyQueries</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline">
+      <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>Automated CI validation and deployment pipeline: validates schema conformance, enforces graph availability guards, and publishes to GitHub Pages.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>A_GateCheck</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_CiGreen</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_CiFailed</bpmn:flowNodeRef>

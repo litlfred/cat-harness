@@ -7,6 +7,9 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_RelatedWork" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="user" name="User"/>
   <bpmn:collaboration id="Collaboration_Process_RelatedWork">
     <bpmn:participant id="Participant_Process_RelatedWork" name="Related work: find, sort, summarize, ask to coordinate" processRef="Process_RelatedWork"/>
   </bpmn:collaboration>
@@ -16,9 +19,8 @@
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_RelatedWork">
-      <bpmn:lane id="Lane_Agent" name="Agent">
+      <bpmn:lane id="Lane_Agent" name="Agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Searches, sorts and summarizes, and recommends. It never links, blocks, merges or comments on another piece of work before the user has answered, because coordinating is a commitment on behalf of the work's owners.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_RW</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_SearchBeans</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_SearchIssues</bpmn:flowNodeRef>
@@ -26,9 +28,8 @@
         <bpmn:flowNodeRef>A_Record</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_RW</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_User" name="User">
+      <bpmn:lane id="Lane_User" name="User" partitionElementRef="user">
         <bpmn:documentation>Answers one question: coordinate or not, and how. The question arrives with its context, options and a recommendation, so it can be answered without opening anything (interaction-modality §4.1).</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="user"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>U_Coordinate</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>

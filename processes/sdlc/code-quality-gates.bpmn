@@ -7,6 +7,8 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_CodeQualityGates" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
   <bpmn:collaboration id="Collaboration_Process_CodeQualityGates">
     <bpmn:participant id="Participant_Process_CodeQualityGates" name="The gates a change must pass before it can merge" processRef="Process_CodeQualityGates"/>
   </bpmn:collaboration>
@@ -31,9 +33,8 @@ Mechanical throughout. Nothing here waits on a person, which is what makes `buil
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_CodeQualityGates">
-      <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline">
+      <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>Joins every job before asking anything, then GW_Hard asks specifically about the HARD gates — the two warn-only results reach the same join but never the gate, so this lane's merge/block call is deliberately blind to a red warn-only step it also ran. No count is given here on purpose: this paragraph carried "seven jobs, five hard" and then "six-and-four", and each was wrong the next time a job was split or folded (beans `om30`, `7fu5`). Count the `# bpmn-node:` lines in the workflow instead.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Change</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_VerdictReuse</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Fork</bpmn:flowNodeRef>

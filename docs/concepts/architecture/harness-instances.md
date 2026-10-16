@@ -185,7 +185,10 @@ exactly this id and title all along. Its description names the machine:
 > and takes no part in deciding what should happen — which is why it carries no
 > skills and why naming one for it would be a lie about what it does.
 
-`actorKinds: ["system"]`, `skills: []`, `actedUpon: true`.
+`actorKinds: ["system"]`, `skills: []`, `actedUpon: true` — as written then.
+Since 2026-10-16 (owner) a role played by a mechanical actor is a real role
+whose skills are its **contract**, `actedUpon` is retired, and this role gains
+a contract skill in bootstrap. The paragraph below is the earlier reading.
 
 **This is why "writable interface *if* writable datastore" is a real
 conditional rather than hedging.** The store is a git repository, so writing

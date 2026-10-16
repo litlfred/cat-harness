@@ -11,6 +11,7 @@
     "corpus-grep",
     "data-modelling",
     "directory-conventions",
+    "external-registry-contract",
     "flushable-containers",
     "fsh-guts",
     "harness-requirements",

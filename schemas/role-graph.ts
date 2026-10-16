@@ -7,18 +7,19 @@
  * - **Actor** — a concrete participant. Human or agentic. `litlfred` is an
  *   actor; so is the ingestion engine. An actor exists independently of any
  *   process and persists across all of them.
- * - **Role** — *the swimlane*. A persona an actor **takes on** because of the
- *   lane it is acting in. `Reviewer` is a role; nobody *is* a reviewer outside
- *   a process, they are acting as one inside it. A role carries a collection
- *   of **Skills**.
- * - **Skill** — an instruction body. What the actor needs to know to perform
- *   the task it has been handed.
+ * - **Role** — a persona an actor **takes on** because of the lane it is
+ *   acting in. `Reviewer` is a role; nobody *is* a reviewer outside a process,
+ *   they are acting as one inside it. A role carries a collection of
+ *   **Skills**. A lane is not the role: **a lane names the Role its tasks are
+ *   performed in** (owner, 2026-10-16: *"Lane names Role, not Actor"*).
+ * - **Skill** — a responsibility an actor carries out to complete a task: as
+ *   instructions to follow, as a contract to be tested against, or both.
  *
  * So: **an actor performs a task in a process as a role, using that role's
  * skills.** Every word in that sentence is a distinct object here, and the
  * audit in `scripts/kg-audit.ts` checks each join in it.
  *
- * ## Why a role is the lane and not the person
+ * ## Why a lane names a role and not the person
  *
  * Because the same actor is a different thing in two diagrams, and because two
  * different actors are the same thing in one. In `crdm-requirements.bpmn` the
@@ -75,13 +76,26 @@
  * no tool could answer "which skills does this task's performer have" and no
  * check could find a lane nobody had defined.
  *
- * A LANE therefore names the role it binds, with `<bootstrap.processes:role ref="…"/>` —
- * see {@link laneRoleRef}. The role does not list its lanes: a role is the
- * general node and a lane the dependent one, and a general node never names its
- * users (`data-modelling` step 8; owner, 2026-09-23, #1168). Until then roles
- * carried a `lanes[]` of exact lane names, and about 140 lanes bound only by
- * that name match; every one was migrated to an explicit ref, so an unbound
- * lane is a finding rather than a silence.
+ * A LANE therefore names the role it binds — see {@link laneRoleRef}. The role
+ * does not list its lanes: a role is the general node and a lane the dependent
+ * one, and a general node never names its users (`data-modelling` step 8;
+ * owner, 2026-09-23, #1168). Until then roles carried a `lanes[]` of exact lane
+ * names, and about 140 lanes bound only by that name match; every one was
+ * migrated to an explicit ref, so an unbound lane is a finding rather than a
+ * silence.
+ *
+ * The binding is BPMN's own since 2026-10-16 (owner): the lane's
+ * `partitionElementRef` points at a top-level `<bpmn:resource>` whose `id` IS
+ * the role id. `<bootstrap.processes:role ref>` said the same thing in an
+ * extension no BPMN tool reads; it is accepted for one release with a warning.
+ *
+ * ## Roles played by mechanical actors are real roles
+ *
+ * A build pipeline, a data store, a log or a registry plays a role, and that
+ * role's skills are its **contract**: the responsibilities it must perform,
+ * which a test can hold it to (owner, 2026-10-16). There used to be an
+ * `actedUpon` flag saying such a lane "takes no part"; it contradicted the
+ * diagrams, which hand those lanes tasks, and it is retired.
  *
  * ## Three states
  *
@@ -230,12 +244,16 @@ export interface ActorDef {
 
 // ── Roles ───────────────────────────────────────────────────────
 
-/** A role — a BPMN swimlane, as a declared object. */
+/** A role — the part a BPMN lane names, as a declared object. */
 export interface RoleDef {
-  /** Stable id. Referenced by `<bootstrap.processes:role ref>` and by `inherits`. */
+  /**
+   * Stable id. It is the `id` of the `<bpmn:resource>` a lane's
+   * `partitionElementRef` points at, verbatim, and what `inherits` names.
+   */
   id: string;
   /**
-   * Display text. Not used for matching: a lane binds by `<bootstrap.processes:role ref>`.
+   * Display text, and the `name` of that `<bpmn:resource>`. Not used for
+   * matching: a lane binds by id.
    *
    * `title` and `description` rather than `name` and `summary`: they are the
    * two labels EVERY knowledge-graph node carries (`schemas/kg-node.ts`), and a
@@ -278,7 +296,7 @@ export interface RoleDef {
    * standard to judge against.
    *
    * This is the audience. It is NOT restated per block: a block sits in a
-   * lane, the lane is the role, the role carries the persona. Copying it onto
+   * lane, the lane names the role, the role carries the persona. Copying it onto
    * every block would invite the two to disagree, and a per-block audience
    * that contradicts its lane is worse than none — it looks authoritative.
    */
@@ -311,25 +329,13 @@ export interface RoleDef {
   /** Roles this one IS-A. Skills are unioned transitively; cycles rejected. */
   inherits?: string[];
   /**
-   * This lane is **acted upon**, not performed by anybody.
-   *
-   * `Work plan — beans`, `Corpus (versioned store)` and `Publish — GitHub
-   * Pages` are drawn as lanes because tasks act ON them and a reader needs to
-   * see where the plan or the corpus is touched. No actor takes them on. The
-   * flag exists so the audit can record `role-has-actor` as **n/a** for them
-   * rather than as a failure: reporting "no actor can fill the corpus" would
-   * be a finding nobody can act on, and a check that produces those is a check
-   * somebody switches off.
-   */
-  actedUpon?: boolean;
-  /**
    * The role PERFORMS, but by judgement — no instruction body implements its
    * steps, and naming one would be a lie about what the role does.
    *
-   * Distinct from `actedUpon`, and the distinction is the point. A corpus is
-   * written to and takes no part; a stakeholder acts, deliberates and is
-   * accountable for the outcome — they simply cannot be handed a procedure
-   * that produces the answer. `stakeholder`'s own summary has said so in
+   * A stakeholder acts, deliberates and is accountable for the outcome — they
+   * simply cannot be handed a procedure that produces the answer. That is not
+   * a mechanical role's case: a store or a pipeline has no judgement to
+   * exercise, and its skills are a contract it can be tested against. `stakeholder`'s own summary has said so in
    * prose since the role graph was written:
    *
    *   > Carries no skills deliberately: sign-off is a judgement, not a
@@ -457,7 +463,6 @@ export const RoleDefSchema = z.object({
    * @ref RoleDefSchema
    */
   inherits: z.array(z.string()).optional(),
-  actedUpon: z.boolean().optional(),
   judgementOnly: z.boolean().optional(),
   requiredCapabilities: ModelCapabilitiesSchema.optional(),
   // STRICT: an unknown key is an ERROR, not something to drop quietly.
@@ -482,6 +487,28 @@ export const RoleDefSchema = z.object({
   // declaration that silently means less than it says is worse than one that
   // refuses to load and names the key.
 }).strict();
+
+/**
+ * The retired `actedUpon` (owner, 2026-10-16), dropped with a warning for one
+ * release rather than refused by the strict schema. Layers migrate in their
+ * own PRs and are mounted at their pinned commits, so a lower layer still
+ * carrying the flag (bootstrap's `roles.json` before its migration lands and
+ * is re-pinned) must not stop every graph that reads it from loading. It
+ * means nothing now: a mechanical role is a role, and its skills are its
+ * contract.
+ */
+function withoutRetiredKeys(raw: unknown, p: string): unknown {
+  if (typeof raw !== "object" || raw === null || !Array.isArray((raw as { roles?: unknown }).roles)) return raw;
+  const carrying: string[] = [];
+  const roles = ((raw as { roles: unknown[] }).roles).map((r) => {
+    if (typeof r !== "object" || r === null || !("actedUpon" in r)) return r;
+    const { actedUpon: _retired, ...rest } = r as Record<string, unknown>;
+    carrying.push(String(rest["id"] ?? "?"));
+    return rest;
+  });
+  if (carrying.length) console.warn(`${p}: \`actedUpon\` is retired and ignored (roles: ${carrying.join(", ")}); remove it`);
+  return { ...(raw as object), roles };
+}
 
 /**
  * A pointer AT a role, from whatever depends on one — a voice addressed to
@@ -679,7 +706,7 @@ export function readRoleGraph(kgRoot: string, lower: ReadonlySet<string> = lower
   } catch (e) {
     throw new Error(`${p} is not valid JSON: ${e instanceof Error ? e.message : String(e)}`);
   }
-  const parsed = RoleGraphSchema.safeParse(withoutComments(raw));
+  const parsed = RoleGraphSchema.safeParse(withoutRetiredKeys(withoutComments(raw), p));
   if (!parsed.success) throw new Error(`${p} is not a valid role graph: ${parsed.error.message}`);
 
   const graph = parsed.data as RoleGraph;
@@ -979,11 +1006,11 @@ export function resolveRoleStack(graph: RoleGraph, path: string[]): RoleStack {
 /**
  * The role a BPMN lane binds.
  *
- * Only the lane's own `<bootstrap.processes:role ref="…"/>` binds it. There is no fallback
- * to matching the lane's display name against the roles: that fallback needed
- * a `lanes[]` on every role, which is a general node naming its users
- * (`data-modelling` step 8, #1168). `laneName` is kept for callers' sake and
- * no longer consulted.
+ * Only the lane's own declaration binds it — the ref {@link laneRoleRef} reads.
+ * There is no fallback to matching the lane's display name against the roles:
+ * that fallback needed a `lanes[]` on every role, which is a general node
+ * naming its users (`data-modelling` step 8, #1168). `laneName` is kept for
+ * callers' sake and no longer consulted.
  */
 export function roleForLane(
   graph: RoleGraph,
@@ -992,6 +1019,81 @@ export function roleForLane(
 ): RoleDef | undefined {
   void laneName;
   return explicitRef ? findRole(graph, explicitRef) : undefined;
+}
+
+/**
+ * A BPMN lane as a reader holds it — the bpmn-moddle shape, structurally, so
+ * this schema module imports no parser. `partitionElementRef` arrives from
+ * moddle as the resolved `<bpmn:resource>` element, and as its id string from
+ * a reader that does not resolve references; both are accepted.
+ */
+export interface LaneLike {
+  id?: string;
+  partitionElementRef?: string | { id?: string; $type?: string };
+  extensionElements?: { values?: ReadonlyArray<{ $type?: string; ref?: string; variable?: string }> };
+}
+
+/** What {@link laneRoleRef} read off a lane. */
+export interface LaneRoleRead {
+  /** The role id the lane names, when it names one. */
+  ref?: string;
+  /** Which declaration supplied {@link ref}. */
+  source: "partitionElementRef" | "legacy-role-ref" | "none";
+  /** `<bootstrap.processes:role variable="true"/>`: the performer is whoever invoked the process. */
+  performerVaries: boolean;
+  /** Set when the lane still uses the deprecated binding, or carries two that disagree. */
+  warning?: string;
+}
+
+/**
+ * The role a lane names, read the BPMN way first (owner, 2026-10-16).
+ *
+ * 1. **`partitionElementRef`** → the `<bpmn:resource>` it points at, whose
+ *    `id` is the role id verbatim. BPMN 2.0's own mechanism for "this lane is
+ *    the partition of that resource", so every BPMN tool round-trips it.
+ * 2. **`<bootstrap.processes:role ref>`** — the legacy extension, accepted for
+ *    one release with a `warning`, and read ONLY when (1) is absent. The QA
+ *    report lists such a lane as `lane-role-legacy-binding`.
+ *
+ * `<bootstrap.processes:role variable="true"/>` is not legacy and stays: it
+ * DECLARES that no role is named because the performer is whoever invoked the
+ * process, which `partitionElementRef` has no way to say.
+ *
+ * The extension element is matched by its local name, `role`, whatever prefix
+ * the reader registered for bootstrap's namespace (`folio:` in
+ * cat-harness-tools, `bootstrap.processes:` unregistered): a reader matches by
+ * namespace, never by prefix text (`processes/ns.jsonld`).
+ */
+export function laneRoleRef(lane: LaneLike): LaneRoleRead {
+  const pe = lane.partitionElementRef;
+  const peRef = typeof pe === "string" ? pe : pe?.id;
+  const roleEl = (lane.extensionElements?.values ?? []).find((v) => /(^|:)role$/.test(v.$type ?? ""));
+  const performerVaries = roleEl?.variable === "true";
+  const where = lane.id ? `lane "${lane.id}"` : "a lane";
+  if (peRef) {
+    if (roleEl?.ref && roleEl.ref !== peRef) {
+      return {
+        ref: peRef,
+        source: "partitionElementRef",
+        performerVaries,
+        warning:
+          `${where} names role "${peRef}" by partitionElementRef and "${roleEl.ref}" by the deprecated ` +
+          `<bootstrap.processes:role ref>; partitionElementRef wins. Remove the extension element.`,
+      };
+    }
+    return { ref: peRef, source: "partitionElementRef", performerVaries };
+  }
+  if (roleEl?.ref) {
+    return {
+      ref: roleEl.ref,
+      source: "legacy-role-ref",
+      performerVaries,
+      warning:
+        `${where} binds role "${roleEl.ref}" with the deprecated <bootstrap.processes:role ref>; ` +
+        `declare <bpmn:resource id="${roleEl.ref}"/> and set partitionElementRef="${roleEl.ref}" on the lane.`,
+    };
+  }
+  return { source: "none", performerVaries };
 }
 
 /**
@@ -1113,31 +1215,47 @@ export function toJsonLd(graph: RoleGraph): Record<string, unknown> {
 // ── Audience ────────────────────────────────────────────────────
 
 /**
+ * Whether only a mechanical or an external actor can take this role on —
+ * `actorKinds` holds nothing but `system` and `external`.
+ *
+ * Such a role is real (owner, 2026-10-16): its skills are its contract, and
+ * the QA report's `mechanical-role-untested` asks whether any of them names a
+ * test (`tested-by:`). What it is not is a READER — see {@link audienceProblem}.
+ * Derived from `actorKinds` rather than flagged, so it cannot disagree with
+ * them the way the retired `actedUpon` could.
+ */
+export function isMechanicalRole(role: RoleDef): boolean {
+  return role.actorKinds.every((k) => k === "system" || k === "external");
+}
+
+/**
  * Why a role id cannot be an audience, or undefined when it can.
  *
  * Two rejections, and the second is the one that is easy to miss:
  *
  * - **unknown** — not a role in this instance's KG. A mistyped audience
  *   scopes QA to nobody, which reads as "no findings" rather than as an error.
- * - **acted upon** — `Work plan — beans`, `Corpus (versioned store)` and
- *   `Publish — GitHub Pages` are lanes because tasks act ON them, not because
- *   anybody performs them. Nothing reads prose written for the corpus. An
- *   audience must be a role an ACTOR can take on.
+ * - **mechanical** — `Work plan (beans)`, `Corpus` and `Build pipeline` are
+ *   roles a machine plays ({@link isMechanicalRole}). Their skills are a
+ *   contract to be tested, not prose to be read, so nothing reads prose
+ *   written for them. An audience must be a role a person or an agent takes on.
+ *   This was the `actedUpon` flag until 2026-10-16, and asked the same
+ *   question of a hand-set boolean instead of the role's own `actorKinds`.
  */
 export function audienceProblem(graph: RoleGraph, id: string): string | undefined {
   const role = findRole(graph, id);
   if (!role) {
     return `"${id}" is not a role in this instance's KG. Known roles: ${graph.roles.map((r) => r.id).join(", ")}`;
   }
-  if (role.actedUpon) {
-    return `"${id}" is acted upon, not performed — nothing reads prose written for it`;
+  if (isMechanicalRole(role)) {
+    return `"${id}" is played only by a mechanical or external actor — nothing reads prose written for it`;
   }
   return undefined;
 }
 
 /** Role ids that may be declared as an audience. */
 export function audienceRoles(graph: RoleGraph): RoleDef[] {
-  return graph.roles.filter((r) => !r.actedUpon);
+  return graph.roles.filter((r) => !isMechanicalRole(r));
 }
 
 // ── Permissions ─────────────────────────────────────────────────

@@ -7,6 +7,12 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_KgSeparation" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="administrator" name="Administrator"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
+  <bpmn:resource id="platform-authoring-agent" name="Platform authoring agent"/>
+  <bpmn:resource id="publication-manager" name="Publication manager"/>
   <bpmn:collaboration id="Collaboration_Process_KgSeparation">
     <bpmn:participant id="Participant_Process_KgSeparation" name="A knowledge graph leaves for its own repositories" processRef="Process_KgSeparation"/>
   </bpmn:collaboration>
@@ -22,11 +28,8 @@ VERSIONS: the pair starts at the content's version at the split, then each is ve
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_KgSeparation">
-      <bpmn:lane id="Lane_Agent" name="Authoring agent">
+      <bpmn:lane id="Lane_Agent" name="Authoring agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Briefs, measures the signals, runs declare-detangle-isolate, reports what would move, seeds the repositories once they exist, and adopts each later release. Verification is always by re-running a gate, never by a change looking right.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="authoring-agent"/>
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Trigger</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Brief</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Measure</bpmn:flowNodeRef>
@@ -35,29 +38,20 @@ VERSIONS: the pair starts at the content's version at the split, then each is ve
         <bpmn:flowNodeRef>Task_Drain</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Seed</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Platform" name="Platform authoring agent">
+      <bpmn:lane id="Lane_Platform" name="Platform authoring agent" partitionElementRef="platform-authoring-agent">
         <bpmn:documentation>The platform-side stages: the graph's identity (version, iriBase, nodeSchemas), moving harness output about it into the host, splitting the content from its tools, and making the parent consume the pair additively.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="platform-authoring-agent"/>
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_Identity</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Hosted</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Split</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Consume</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Publication" name="Publication manager">
+      <bpmn:lane id="Lane_Publication" name="Publication manager" partitionElementRef="publication-manager">
         <bpmn:documentation>Owns where things are published: every identifier the content mints must be a file some step publishes, at /&lt;version&gt;/ for programs and /v&lt;major&gt;/ for people; and the first release.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="publication-manager"/>
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_Plan</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Release</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Pipeline" name="Build pipeline">
+      <bpmn:lane id="Lane_Pipeline" name="Build pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>Runs the checks that decide the gateways: the tools' import closure and the content's lack of code, node identifiers against file paths, the standalone rehearsal, and dereferencing after release. A gate that cannot tell stops the process; it never reads as clean.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="build-pipeline"/>
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>GW_Closed</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Ids</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Rehearse</bpmn:flowNodeRef>
@@ -70,11 +64,8 @@ VERSIONS: the pair starts at the content's version at the split, then each is ve
         <bpmn:flowNodeRef>GW_CutoverComplete</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_CutoverUnknown</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Admin" name="Administrator">
+      <bpmn:lane id="Lane_Admin" name="Administrator" partitionElementRef="administrator">
         <bpmn:documentation>The person's decisions: whether to separate at all, authorising the extraction, creating the repositories, and the cutover that retires the parent's copy. An agent reports and waits at each; none of them may be relaxed by a package.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="administrator"/>
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_Decide</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Stays</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Authorise</bpmn:flowNodeRef>

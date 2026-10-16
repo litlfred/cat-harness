@@ -7,6 +7,8 @@
                   id="Definitions_QaPublish"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="0.1.0">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
 
   <!-- ═══════════════════════════════════════════════════════════════════
        Publishing and keeping QA results on the orphan `qa-reports` branch.
@@ -52,11 +54,8 @@ The record it writes is what a later `--against &lt;ref&gt;` reads as a baseline
     </bpmn:extensionElements>
 
     <bpmn:laneSet id="LaneSet_QaPublish">
-      <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline">
+      <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>Runs both paths as fixed programs. It decides nothing that needs judgement: whether a token can write is read from the event, whether a push was accepted is the push's exit code (never its stderr — spike `3ds9` measured a harmless "push negotiation failed; proceeding anyway"), and what retention removes is `planPrune`'s rule. A PR whose state cannot be read is KEPT: could-not-determine never deletes.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="build-pipeline" />
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_GatesDone</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_DeriveKey</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_CanWrite</bpmn:flowNodeRef>

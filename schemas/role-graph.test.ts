@@ -17,6 +17,10 @@ import {
   resolveRoleSkills,
   resolveRoleStack,
   roleForLane,
+  laneRoleRef,
+  laneBinding,
+  isMechanicalRole,
+  audienceProblem,
   readPermissions,
   findRole,
   toJsonLd,
@@ -208,7 +212,7 @@ describe("roleForLane", () => {
     expect(roleForLane(g, "Reviewer")).toBeUndefined();
   });
 
-  test("the lane's explicit <folio:role ref> is what binds it", () => {
+  test("the lane's explicit role ref is what binds it", () => {
     expect(roleForLane(g, "Review Committee", "editor")?.id).toBe("editor");
   });
 
@@ -218,6 +222,75 @@ describe("roleForLane", () => {
 
   test("an unbound lane name is undefined, which is the finding the audit reports", () => {
     expect(roleForLane(g, "Some New Lane")).toBeUndefined();
+  });
+});
+
+describe("laneRoleRef — a lane names its Role by partitionElementRef (owner, 2026-10-16)", () => {
+  test("partitionElementRef, resolved by moddle to the <bpmn:resource>, is the role id", () => {
+    const r = laneRoleRef({ id: "L", partitionElementRef: { $type: "bpmn:Resource", id: "build-pipeline" } });
+    expect(r).toEqual({ ref: "build-pipeline", source: "partitionElementRef", performerVaries: false });
+  });
+
+  test("an unresolved partitionElementRef id string reads the same", () => {
+    expect(laneRoleRef({ partitionElementRef: "editor" }).ref).toBe("editor");
+  });
+
+  test("the legacy <bootstrap.processes:role ref> is still read, with a warning", () => {
+    const r = laneRoleRef({ id: "L", extensionElements: { values: [{ $type: "bootstrap.processes:role", ref: "editor" }] } });
+    expect(r.ref).toBe("editor");
+    expect(r.source).toBe("legacy-role-ref");
+    expect(r.warning).toContain("deprecated");
+  });
+
+  test("the legacy element is matched by local name, whatever prefix the reader registered", () => {
+    expect(laneRoleRef({ extensionElements: { values: [{ $type: "folio:role", ref: "editor" }] } }).source).toBe("legacy-role-ref");
+  });
+
+  test("partitionElementRef wins over a disagreeing legacy ref, and says so", () => {
+    const r = laneRoleRef({
+      partitionElementRef: "editor",
+      extensionElements: { values: [{ $type: "folio:role", ref: "reviewer" }] },
+    });
+    expect(r.ref).toBe("editor");
+    expect(r.warning).toContain("partitionElementRef wins");
+  });
+
+  test("variable=\"true\" is a declaration, not a legacy binding", () => {
+    const r = laneRoleRef({ extensionElements: { values: [{ $type: "bootstrap.processes:role", variable: "true" }] } });
+    expect(r).toEqual({ source: "none", performerVaries: true });
+  });
+
+  test("feeds laneBinding unchanged", () => {
+    const g = base as unknown as RoleGraph;
+    const r = laneRoleRef({ partitionElementRef: "editor" });
+    expect(laneBinding(g, { roleRef: r.ref, performerVaries: r.performerVaries }).kind).toBe("bound");
+  });
+});
+
+describe("mechanical roles are real roles (owner, 2026-10-16)", () => {
+  const g = readRoleGraph(join(import.meta.dir, "..", "scenarios"))!;
+
+  test("no role carries the retired `actedUpon`; a layer still carrying it loads, with the flag dropped", () => {
+    expect(g.roles.some((r) => "actedUpon" in r)).toBe(false);
+    const dir = mkdtempSync(join(tmpdir(), "roles-"));
+    writeFileSync(
+      join(dir, "roles.json"),
+      JSON.stringify({ name: "t", roles: [{ id: "c", title: "C", description: "a store", actorKinds: ["system"], skills: ["s"], actedUpon: true }] }),
+    );
+    const read = readRoleGraph(dir)!;
+    expect(read.roles.map((r) => r.id)).toEqual(["c"]);
+    expect("actedUpon" in read.roles[0]!).toBe(false);
+    rmSync(dir, { recursive: true, force: true });
+  });
+
+  test("every mechanical role carries at least one skill — its contract", () => {
+    const empty = g.roles.filter((r) => isMechanicalRole(r) && r.skills.length === 0).map((r) => r.id);
+    expect(empty).toEqual([]);
+  });
+
+  test("a mechanical role is not an audience; a performed one is", () => {
+    expect(audienceProblem(g, "corpus")).toContain("mechanical");
+    expect(audienceProblem(g, "author")).toBeUndefined();
   });
 });
 
@@ -270,10 +343,16 @@ describe("this repository's actor registry, after the roles[] migration", () => 
     expect(bad).toEqual([]);
   });
 
-  test("every role that is performed has at least one actor who can take it on", () => {
+  test("every role has an actor who can take it on, but for the known mechanical gaps", () => {
+    // Until 2026-10-16 these six were `actedUpon` and exempt. A mechanical
+    // role is a real role now (owner, 2026-10-16), so "what plays the corpus"
+    // is a fair question — and nothing in `scenarios/actors/` answers it yet.
+    // `role-has-actor` reports each one; this list makes a NEW gap fail here
+    // rather than join them unnoticed. Shrink it as actors are declared.
+    const KNOWN = ["corpus", "external-registry", "log", "publish-target", "session-record", "work-plan"];
     const covered = new Set(actors.flatMap((a) => a.roles ?? []));
-    const uncovered = g.roles.filter((r) => !r.actedUpon && !covered.has(r.id)).map((r) => r.id);
-    expect(uncovered).toEqual([]);
+    const uncovered = g.roles.filter((r) => !covered.has(r.id)).map((r) => r.id).sort();
+    expect(uncovered).toEqual(KNOWN);
   });
 
   test("`roles: []` is kept distinct from an absent `roles`", () => {

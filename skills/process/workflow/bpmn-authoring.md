@@ -47,10 +47,18 @@ is not enabled**. That has consequences for how you author:
   plan. `bun run cat check:workflow-refs` fails on a ref that resolves to nothing,
   and `bun run cat kg:audit` additionally fails when the named skill exists but no
   package can **serve** it.
-- **Every lane is a role.** Bind it with `<bootstrap.processes:role ref="…"/>` against
-  `scenarios/roles.json`. Lane names are free text and sixty of them once
-  spelled two dozen positions; an explicit ref is the join that does not depend
-  on spelling.
+- **Every lane names a role.** Declare the role once as a top-level
+  `<bpmn:resource id="<role id>" name="<title>"/>` (before the collaboration
+  and the process), and set `partitionElementRef="<role id>"` on the lane; the
+  id is the role's in `scenarios/roles.json`, verbatim. Lane names are free
+  text and sixty of them once spelled two dozen positions; an explicit ref is
+  the join that does not depend on spelling. `<bootstrap.processes:role ref>`
+  is the deprecated form (owner, 2026-10-16). A diagram using any
+  `bootstrap.processes:` element declares the namespace as the first child of
+  `<bpmn:definitions>`: `<bpmn:import
+  namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
+  location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld"
+  importType="http://www.w3.org/ns/json-ld"/>`.
 - **The process's own `bpmn:documentation` opens with what it is for.** Its
   first sentence is the diagram's row on the publication-workflow page.
   `kg-export` carries it on the `Process` node as `summary` (the whole text as

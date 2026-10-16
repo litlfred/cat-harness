@@ -7,6 +7,10 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_CRDM_Close" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="business-analyst" name="Business analyst"/>
+  <bpmn:resource id="stakeholder" name="Stakeholder"/>
   <bpmn:collaboration id="Collaboration_Process_CRDM_Close">
     <bpmn:participant id="Participant_Process_CRDM_Close" name="CRDM close-out" processRef="Process_CRDM_Close"/>
   </bpmn:collaboration>
@@ -16,14 +20,12 @@
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_CRDM_Close">
-      <bpmn:lane id="Lane_BA" name="BA / Feature Requestor">
+      <bpmn:lane id="Lane_BA" name="BA / Feature Requestor" partitionElementRef="business-analyst">
         <bpmn:documentation>Stands between stakeholder sign-off and the agent's close as an independent check against defined criteria — decision-audit, not a re-ask of the same yes/no the stakeholders already gave — and A_Close's own documentation says it is reachable ONLY through this confirmation, so the agent has no path to closing that bypasses it.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="business-analyst"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>BA_Confirm</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Agent" name="Agent">
+      <bpmn:lane id="Lane_Agent" name="Agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Holds no judgement in this diagram: both prior lanes already decided — sign-off, then confirmation against criteria — so this lane's only accountability is executing the close exactly when authorised and never before, on an issue that is the stakeholder's record rather than the agent's to close on its own reading of the thread.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>A_RecordSignoff</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_SignoffRecorded</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_NotAccepted</bpmn:flowNodeRef>
@@ -31,9 +33,8 @@
         <bpmn:flowNodeRef>A_Close</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Process_CRDM_Close</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Stakeholders" name="Stakeholders">
+      <bpmn:lane id="Lane_Stakeholders" name="Stakeholders" partitionElementRef="stakeholder">
         <bpmn:documentation>The first of three sequential checks this diagram exists to enforce in order — sign off, confirm, close, never any other sequence — and what is being signed off here is the delivered FEATURE on the issue, not the requirement model that crdm-requirements-definition.bpmn's Lane_Stakeholders approved earlier in the process.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="stakeholder"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Process_CRDM_Close</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>S_FeatureSignoff</bpmn:flowNodeRef>
       </bpmn:lane>

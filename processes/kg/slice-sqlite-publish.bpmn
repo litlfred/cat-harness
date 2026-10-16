@@ -7,6 +7,9 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_SliceSqlitePublish" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
+  <bpmn:resource id="platform-authoring-agent" name="Platform authoring agent"/>
   <bpmn:collaboration id="Collaboration_Process_SliceSqlitePublish">
     <bpmn:participant id="Participant_Process_SliceSqlitePublish" name="Build and publish a per-slice SQLite file" processRef="Process_SliceSqlitePublish"/>
   </bpmn:collaboration>
@@ -23,9 +26,8 @@ NO BINARY IS COMMITTED. The file is built at deploy from the tree being publishe
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_SliceSqlitePublish">
-      <bpmn:lane id="Lane_Author" name="Platform authoring agent">
+      <bpmn:lane id="Lane_Author" name="Platform authoring agent" partitionElementRef="platform-authoring-agent">
         <bpmn:documentation>Whoever adds or changes a slice: writes its definition in the builder's slice table, measures the built file against the budget, wires it when it fits, and looks at the published search once it has deployed. The judgement in this process is theirs, at the budget gateway.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="platform-authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Need</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Define</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Measure</bpmn:flowNodeRef>
@@ -36,9 +38,8 @@ NO BINARY IS COMMITTED. The file is built at deploy from the tree being publishe
         <bpmn:flowNodeRef>A_Verify</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Shipped</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline">
+      <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>The gate and the deploy. `code-quality-gates.yml` runs `slice:sqlite:check` on every pull request; `docs-site.yml` and `feature-staging.yml` build each slice into `_site/` from the tree they publish, one line per slice.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>A_Check</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Green</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Red</bpmn:flowNodeRef>

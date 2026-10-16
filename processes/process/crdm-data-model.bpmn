@@ -7,6 +7,10 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_CRDM_DataModel" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="business-analyst" name="Business analyst"/>
+  <bpmn:resource id="stakeholder" name="Stakeholder"/>
   <!-- ═══════════════════════════════════════════════════════════════
        CRDM data-modelling phase. Owner, 2026-09-20: "and to data
        modeling guidance in skills for CRDM when data modelling comes
@@ -49,14 +53,12 @@
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_CRDM_DataModel">
-      <bpmn:lane id="Lane_BA" name="BA / Feature Requestor">
+      <bpmn:lane id="Lane_BA" name="BA / Feature Requestor" partitionElementRef="business-analyst">
         <bpmn:documentation>Confirms naming only — are these the entities meant — and stops there: Lane_Stakeholders asks the separate, operational question about cardinality next, and the two are kept apart on purpose, because collapsing them into one review is how a wrong cardinality ships invisibly.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="business-analyst"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>BA_ConfirmEntities</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Agent" name="Agent">
+      <bpmn:lane id="Lane_Agent" name="Agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Does the actual modelling — entities, relations, and the declaration that makes the model machine-readable rather than prose — and absorbs the entire cost of a revise: the gate loops back to A_Entities whichever confirmation failed, BA's or the stakeholders', so this lane cannot assume a cardinality objection leaves its entities untouched.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Process_CRDM_DataModel</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Entities</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Relations</bpmn:flowNodeRef>
@@ -64,9 +66,8 @@
         <bpmn:flowNodeRef>GW_Model</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Process_CRDM_DataModel</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Stakeholders" name="Stakeholders">
+      <bpmn:lane id="Lane_Stakeholders" name="Stakeholders" partitionElementRef="stakeholder">
         <bpmn:documentation>Answers the operational half the BA cannot — not what a thing is but how many of it there really is — because that is knowable only to the people who run the process day to day. It is also the step this process's STRICT policy exists for: skipped under time pressure, a model looks finished without it, which is exactly how a hole where the exceptions live would ship unnoticed.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="stakeholder"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>S_ConfirmCardinality</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>

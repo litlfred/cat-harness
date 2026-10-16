@@ -147,15 +147,14 @@ re-introduces the leak `instance-graph-isolation.test.ts` exists to stop
   omitting them would be `dh4f`, a glossary silently short of the
   vocabulary it claims to index. The report says **which walk** found
   nothing ("no swimlane in `<instance>/` draws") and splits the list:
-  a role a lane in ANOTHER instance binds by `<folio:role ref>` is named
+  a role a lane in ANOTHER instance binds (`partitionElementRef`) is named
   with that diagram (`drawnElsewhere`), apart from roles no diagram in the
   repository draws. Bean `nafz`: unsplit, a role drawn in
   the content core read exactly like eleven drawn nowhere — a fact
   about the walk phrased as a fact about the corpus. Reporting it is not
   widening the scan: nothing outside the instance is bound or emitted.
 - **A lane binding naming a lane no diagram contains** (`fd6i`). Distinct
-  from a role whose lane exists but holds no task, which is not a defect:
-  an `actedUpon` lane holds none by construction.
+  from a role whose lane exists but holds no task, which is not a defect.
 - **A lane whose binding is dangling, contradictory or unbound.**
 
 A lane declaring `<bootstrap.processes:role variable="true"/>` is none of these. It
@@ -168,8 +167,8 @@ must never be reachable as `unbound`.
 
 - `glossary-build` — the paper glossary, a different
   mechanism on a different corpus.
-- [`role-model`](role-model.md) — what a role is, and why `actedUpon`
-  means a reader must not be told `Corpus` is a persona.
+- [`role-model`](role-model.md) — what a role is, and why a lane names a
+  role rather than being one.
 - [`directory-conventions`](../../kg/kg-core/directory-conventions.md) — why the ledger's
   directory is declared rather than hidden.
 - [`deletion-requires-confirmation`](../../conduct/conduct-core/deletion-requires-confirmation.md) —

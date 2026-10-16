@@ -7,6 +7,9 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_MergeBase" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
   <bpmn:collaboration id="Collaboration_Process_MergeBase">
     <bpmn:participant id="Participant_Process_MergeBase" name="Merge the base branch in" processRef="Process_MergeBase"/>
   </bpmn:collaboration>
@@ -24,9 +27,8 @@ ALL OR NOTHING: every conflicted path is classified before any is touched, and o
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_MergeBase">
-      <bpmn:lane id="Lane_Command" name="merge:main command">
+      <bpmn:lane id="Lane_Command" name="merge:main command" partitionElementRef="build-pipeline">
         <bpmn:documentation>Mechanical. Decides nothing a declaration has not decided: a path no pattern names is refused, and the gate set, not this lane, judges the result.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Merge</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Merge</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Conflicts</bpmn:flowNodeRef>
@@ -44,9 +46,8 @@ ALL OR NOTHING: every conflicted path is classified before any is touched, and o
         <bpmn:flowNodeRef>End_Notified</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Recorded</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Agent" name="Authoring agent">
+      <bpmn:lane id="Lane_Agent" name="Authoring agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Reached only when the command refused: an authored conflict, an undeclared path, or a resolution the gates could not reproduce. The refused paths are listed for it; what to do with an authored conflict is judgement.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_ByHand</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_ByHand</bpmn:flowNodeRef>
       </bpmn:lane>

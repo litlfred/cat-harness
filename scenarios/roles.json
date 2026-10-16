@@ -1,5 +1,5 @@
 {
-  "_comment": "The ROLE GRAPH. A role is a BPMN swimlane \u2014 a persona an actor takes on because of the lane it is acting in \u2014 and it carries the skills needed to perform that lane's tasks. Actors (who) are in cat-harness/scenarios/actors/; skills (what they need to know) are the packages beside this directory. Schema and rationale: schemas/role-graph.ts. A lane binds its role with <folio:role ref=\"...\"/>; the role lists no lanes. Nor does a role name its voice or its stories: a voice profile points at the roles it addresses (`activeIn.roles`) and a user story at the role it is told as (scenarios/stories.json). Each dependent holds the pointer, so the role is added to without being edited (#1168). `bun run cat kg:audit` reports any role no lane binds and any activity whose skill its lane's role does not carry.",
+  "_comment": "The ROLE GRAPH. A role is a persona an actor takes on because of the lane it is acting in, and it carries the skills needed to perform that lane's tasks. A lane is not the role: a lane names the Role its tasks are performed in (owner, 2026-10-16). A role played by a mechanical or external actor is a real role, and its skills are its contract \u2014 what it must do, which a test (`tested-by:` in the skill) can hold it to; the `actedUpon` flag that exempted such roles is retired. Actors (who) are in cat-harness/scenarios/actors/; skills (what they need to know) are the packages beside this directory. Schema and rationale: schemas/role-graph.ts. A lane binds its role with BPMN partitionElementRef, pointing at a top-level <bpmn:resource> whose id is the role id (the legacy <bootstrap.processes:role ref> is read with a warning for one release); the role lists no lanes. Nor does a role name its voice or its stories: a voice profile points at the roles it addresses (`activeIn.roles`) and a user story at the role it is told as (scenarios/stories.json). Each dependent holds the pointer, so the role is added to without being edited (#1168). `bun run cat kg:audit` reports any role no lane binds and any activity whose skill its lane's role does not carry.",
   "name": "folio-assistant",
   "roles": [
     {
@@ -592,7 +592,6 @@
       "actorKinds": [
         "system"
       ],
-      "actedUpon": true,
       "skills": [
         "getting-started"
       ]
@@ -604,7 +603,9 @@
       "actorKinds": [
         "system"
       ],
-      "skills": []
+      "skills": [
+        "lean-toolchain-contract"
+      ]
     },
     {
       "id": "ig-publisher-service",
@@ -613,7 +614,9 @@
       "actorKinds": [
         "system"
       ],
-      "skills": []
+      "skills": [
+        "ig-publisher-service-contract"
+      ]
     },
     {
       "id": "attestation-service",
@@ -630,11 +633,10 @@
     {
       "id": "work-plan",
       "title": "Work plan (beans)",
-      "description": "The shared store, modelled as a lane because tasks act ON it and a reader needs to see where the plan is touched. No actor takes this role on; it is acted upon.",
+      "description": "The shared store. A MECHANICAL role: tasks act ON it and a reader needs to see where the plan is touched, and its skills are the contract the store is held to.",
       "actorKinds": [
         "system"
       ],
-      "actedUpon": true,
       "skills": [
         "todo-manager",
         "content-feedback"
@@ -643,11 +645,10 @@
     {
       "id": "corpus",
       "title": "Corpus",
-      "description": "The versioned content store and the L1 source knowledge graph. Like the work plan, a lane that is written to rather than a participant that acts.",
+      "description": "The versioned content store and the L1 source knowledge graph. Like the work plan, a MECHANICAL role: written to, deciding nothing, and held to the contract its skills state.",
       "actorKinds": [
         "system"
       ],
-      "actedUpon": true,
       "skills": [
         "kg-subscription",
         "materialize-remote"
@@ -656,21 +657,21 @@
     {
       "id": "external-registry",
       "title": "External registry",
-      "description": "Trusted registries and observatories outside this instance's control. Carries no skills because nothing here instructs it.",
+      "description": "Trusted registries and observatories outside this instance's control. Nothing here instructs it; its skill is the contract the diagrams rely on it for.",
       "actorKinds": [
         "external"
       ],
-      "actedUpon": true,
-      "skills": []
+      "skills": [
+        "external-registry-contract"
+      ]
     },
     {
       "id": "log",
       "title": "Activity log",
-      "description": "The agent activity log. A MECHANICAL role and an `actedUpon` one: it is written to at task start and task end, and emptied by an actor \u2014 one entry, all of them, or on a periodic sweep \u2014 and it decides nothing. Modelled on `work-plan` and `corpus`, the two existing stores that are acted upon rather than acting. Its entries are held in the instance's unpublished store and never reach a published graph; the `activity-log` skill names the location, which is deliberately not repeated here because a role description IS published.",
+      "description": "The agent activity log. A MECHANICAL role: it is written to at task start and task end, and emptied by an actor \u2014 one entry, all of them, or on a periodic sweep \u2014 and it decides nothing. Modelled on `work-plan` and `corpus`, the two existing stores; its skill is the contract it is held to. Its entries are held in the instance's unpublished store and never reach a published graph; the `activity-log` skill names the location, which is deliberately not repeated here because a role description IS published.",
       "actorKinds": [
         "system"
       ],
-      "actedUpon": true,
       "skills": [
         "activity-log"
       ]
@@ -678,11 +679,10 @@
     {
       "id": "session-record",
       "title": "Session record",
-      "description": "A session's context \u2014 who is acting, which instances are open, what it waits on. A MECHANICAL role and an `actedUpon` one: written to as the session moves and read by a sibling deciding whether a claim is live, and it decides nothing. Modelled on `work-plan`, `corpus` and `log`, the stores that are acted upon rather than acting. It carries `session-context` because the shape of what is written IS the discipline here \u2014 unlike `work-plan`, whose store has a CLI, this one is written by a machine that may be an LLM playing the part, so the schema is the contract.",
+      "description": "A session's context \u2014 who is acting, which instances are open, what it waits on. A MECHANICAL role: written to as the session moves and read by a sibling deciding whether a claim is live, and it decides nothing. Modelled on `work-plan`, `corpus` and `log`, the other stores. It carries `session-context` because the shape of what is written IS the discipline here \u2014 unlike `work-plan`, whose store has a CLI, this one is written by a machine that may be an LLM playing the part, so the schema is the contract.",
       "actorKinds": [
         "system"
       ],
-      "actedUpon": true,
       "skills": [
         "session-context"
       ]

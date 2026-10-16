@@ -7,6 +7,10 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_StalledAgentTriage" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="session-coordinator" name="Session coordinator"/>
+  <bpmn:resource id="user" name="User"/>
   <bpmn:collaboration id="Collaboration_Process_StalledAgentTriage">
     <bpmn:participant id="Participant_Process_StalledAgentTriage" name="Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route" processRef="Process_StalledAgentTriage"/>
   </bpmn:collaboration>
@@ -16,9 +20,8 @@
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_StalledAgentTriage">
-      <bpmn:lane id="Lane_Triage" name="Triage agent">
+      <bpmn:lane id="Lane_Triage" name="Triage agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Reads the footprint the stalled agents left, collects or reconstructs a handover report per agent, groups the work into 2-4 themes, and recommends. It never finishes, closes or deletes another agent's work.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_SAT</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Footprint</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Collect</bpmn:flowNodeRef>
@@ -26,14 +29,12 @@
         <bpmn:flowNodeRef>A_Record</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_SAT</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Steward" name="Merge steward">
+      <bpmn:lane id="Lane_Steward" name="Merge steward" partitionElementRef="session-coordinator">
         <bpmn:documentation>Receives the open PRs that lost their driver: which are green and ready, which are mid-merge, which must be re-driven from their PR head.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="session-coordinator"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>S_Reroute</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_User" name="User">
+      <bpmn:lane id="Lane_User" name="User" partitionElementRef="user">
         <bpmn:documentation>Decides one theme at a time: continue, fold into the plan, new epic, park, or scrap.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="user"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>U_Decide</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
