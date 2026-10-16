@@ -9,6 +9,8 @@ description: >
   next", "run a merge train", "why was my PR ejected", "move this PR up", and
   when tuning the train's order or size.
 user_invocable: false
+uses-methodology:
+  - agentic-pre-merge-review
 ---
 
 # Merge queue — what lands next, and as what

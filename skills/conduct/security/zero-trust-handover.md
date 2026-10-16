@@ -7,6 +7,8 @@ description: >
   the remote-mount trust gate, per-tool risk read from a tool's sinks, and
   the release security gate. A house application, not a methodology: read the
   node for the method, read this for what to do at a boundary.
+uses-methodology:
+  - zero-trust-architecture
 ---
 
 # Zero-trust handover

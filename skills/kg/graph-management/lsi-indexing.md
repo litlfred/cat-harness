@@ -11,6 +11,8 @@ graph-typologies:
   - skills
   - beans
   - docs
+uses-methodology:
+  - lsi
 ---
 
 # LSI indexing — the platform's application of `methodologies/lsi.md`
