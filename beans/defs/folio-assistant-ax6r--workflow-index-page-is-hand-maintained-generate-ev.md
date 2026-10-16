@@ -1,11 +1,12 @@
 ---
 # folio-assistant-ax6r
+$schema: bean/1.0.0
 title: 'Workflow index page is hand-maintained: generate every-workflow-in-the-repo from the process KG, strip drift; aggregate across KGs'
-status: in-progress
+status: completed
 type: feature
 priority: normal
 created_at: 2026-10-02T20:42:54Z
-updated_at: 2026-10-03T11:17:12Z
+updated_at: 2026-10-16T10:10:00Z
 parent: folio-assistant-whlc
 ---
 
@@ -17,7 +18,7 @@ Today the page is a hand-written table: every new BPMN needs a manual row (#1894
 - [x] the page body is generated from the process KG (the JSON-LD the diagrams already export: id, name, concern group, documentation, called elements, owning instance), with a `--check` gate; hand rows are gone
 - [x] row text is the diagram's own `bpmn:documentation` (first sentence) — no PM status, no bean/issue chatter in the table; anything editorial that must stay moves to the diagram's documentation or a skill
 - [x] grouped by concern group and owning instance
-- [ ] after separation: aggregates across instances' KGs (each instance's process graph, resolved through the declared dependencies), not by walking one checkout
+- [x] after separation: aggregates across instances' KGs (each instance's process graph, resolved through the declared dependencies), not by walking one checkout — completed via `4ak5` item 2 (`gen-subgraph-jsonld.ts` frames each instance from its own per-instance export) and `t8c4` (`seeAlso` links for unframed instances `bootstrap` and `bootstrap-tools`); verified post-separation (`bun run cat subgraph:jsonld && bun run cat check:process-index`: `104 of 104 declared diagram(s) are documented Process nodes in the published subgraphs (6 in the subgraphs of instances this graph does not frame, linked by seeAlso); 0 not covered; page mount present`)
 - [x] the drift found today is listed in the PR (#1955 body, §"Drift found in the old hand table")
 
 ## What was built (2026-10-03)
@@ -58,3 +59,12 @@ Selected 'Move to JSON-LD': the KG export carries each process's `bpmn:documenta
 - gen-subgraph-jsonld: an instance kg-export overlays (folio-assistant-core, fhir-harness, folio-assistant-sci, smart-base, ...) heads its own tree `subgraph/<instance>/`; `subgraph/index.jsonld` is the repository's level, listing every root. Before this, overlaid processes fell to the root, which has no hydrated file.
 - The page walks `subgraph/index.jsonld` down to each `processes/index.hydrated.jsonld`; `assets/processes/index.json`, its schema and writer are gone. `check:process-index` reads the JSON-LD.
 - Coverage: 78 of 84 declared diagrams. Bootstrap's 5 and bootstrap-tools' 1 are listed as not covered: `pve3`/#432 keeps them out of this graph, and bootstrap's own graph frames no subgraphs and carries no documentation. Closing that needs bootstrap-tools' `export-graph.ts` to publish subgraph files with documentation (upstream).
+
+## Done when
+- [x] the page body is generated from the process KG (the JSON-LD the diagrams already export: id, name, concern group, documentation, called elements, owning instance), with a `--check` gate; hand rows are gone
+- [x] row text is the diagram's own `bpmn:documentation` (first sentence) — no PM status, no bean/issue chatter in the table; anything editorial that must stay moves to the diagram's documentation or a skill
+- [x] grouped by concern group and owning instance
+- [ ] after separation: aggregates across instances' KGs (each instance's process graph, resolved through the declared dependencies), not by walking one checkout
+- [x] the drift found today is listed in the PR (#1955 body, §"Drift found in the old hand table")
+
+_2026-10-16T10:10:00Z_ — Store sync (owner, 2026-10-16 10:05Z, "1 2"): front matter taken from the folio-assistant copy, which carries the later evidence-backed change; notes only the cat-harness copy had are kept above. Session https://claude.ai/code/session_01K9Xi9QSxCNYju8QNu7EuHg.

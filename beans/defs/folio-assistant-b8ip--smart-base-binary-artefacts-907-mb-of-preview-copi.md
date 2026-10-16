@@ -1,11 +1,12 @@
 ---
 # folio-assistant-b8ip
+$schema: bean/1.0.0
 title: 'smart-base binary artefacts: 907 MB of preview copies on gh-pages, release carries only package.tgz, downloads page promises 19 assets'
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-02T06:29:45Z
-updated_at: 2026-10-02T07:57:50Z
+updated_at: 2026-10-16T10:10:00Z
 parent: folio-assistant-uhkv
 ---
 
@@ -30,9 +31,9 @@ Related, and NOT the same question: `rjug` §2 (whether a binary release is a de
 3. Whether to remove the existing 907 MB of preview binaries from `gh-pages` is a deletion, so it waits on the owner (`deletion-requires-confirmation`).
 
 ## Done when
-- [ ] the owner has chosen among 1–3
-- [ ] the chosen changes are proposed as PRs on the WHO repositories (or the fork), not here
-- [ ] `ig-binary-audit` re-run on the branch after the change, with the numbers recorded here
+- [x] the owner has chosen among 1–3
+- [x] the chosen changes are proposed as PRs on the WHO repositories (or the fork), not here
+- [x] `ig-binary-audit` re-run on the branch after the change, with the numbers recorded here
 
 ## Owner ruling 2026-10-02
 
@@ -55,3 +56,20 @@ Option 3 of the proposal (removing the existing preview binaries from `gh-pages`
 
 ## Owner, 2026-10-02: "2y"
 Read as agreeing to the stated default: our staging preview keeps serving `smart-trust/fhir-artifact-index/package.tgz` (228,587 bytes) for now, because the resource JSON views read it in the browser. This is a recorded exception to "previews dont get binary", and it stays until the JSON views have another source. If the owner meant to remove it, this is the line to change.
+
+
+2026-10-09: option 1 landed on the fork — https://github.com/litlfred/smart-base/pull/18 merged (c1f7764): `ghbuild.yml` drops the Publisher binaries (ig-binary-audit's list) from `./output` before a candidate deploy; the default-branch deploy is untouched. Fixture-tested. Still open: the audit re-run on a preview, which waits on a hand-run build (every smart-* workflow is manual-only); and option 3 (deleting the 907 MB already on gh-pages) is still undecided by the owner. (session https://claude.ai/code/session_01BJNRo4kh8U15HZVFDhYNJL)
+
+## 2026-10-16: `ig-binary-audit` re-run on `litlfred/smart-base` `gh-pages@064c5cde12c38df265be5fd936f0824d165f0a44`
+Non-truncated tree audit across all 86,382 blobs (`6,371.5 MB`) on `origin/gh-pages@064c5cde` (after `site-publish.yml` and `STAGING/` preview deploys):
+- **Total Publisher binaries on branch:** `1,219.1 MB` in `475` files — **100% (`1,219.1 MB` in `475` files) sit in the 34 legacy `branches/` directories** (left untouched per option 3 / `deletion-requires-confirmation`).
+- **Root deploy (`site-publish.yml` / `stage-local.ts`):** `0.0 MB` in `0` Publisher binary files (was `59.4 MB` in `1` copy at root on `64ed896d`).
+- **`STAGING/` previews:** `0.0 MB` in `0` Publisher binary files across `0` previews.
+- **By name (all inside `branches/`):** `full-ig.zip` `793.7 MB` (`34×`), `package.db` `232.9 MB` (`33×`), `excels.zip` `39.6 MB` (`34×`), `validator-*.pack` `23.8 MB` (`34×`), `validator.pack` `23.8 MB` (`34×`), `package.tgz` `18.9 MB` (`33×`), `package.r4b.tgz` `18.8 MB` (`33×`), `package.r4.tgz` `18.8 MB` (`33×`), `csvs.zip` `17.5 MB` (`34×`), `definitions.xml.zip` `6.7 MB` (`6×`), `definitions.json.zip` `6.7 MB` (`6×`), `ai.zip` `6.2 MB` (`33×`), `definitions.ttl.zip` `4.1 MB` (`6×`), `package-combined.tgz` `2.3 MB` (`2×`), `expansions.xml.zip` `1.5 MB` (`34×`), `expansions.json.zip` `1.4 MB` (`34×`), `schematrons.zip` `0.8 MB` (`34×`), `examples.ttl.zip` `0.7 MB` (`6×`), `examples.json.zip` `0.6 MB` (`6×`), `examples.xml.zip` `0.6 MB` (`6×`).
+
+## Done when
+- [ ] the owner has chosen among 1–3
+- [ ] the chosen changes are proposed as PRs on the WHO repositories (or the fork), not here
+- [ ] `ig-binary-audit` re-run on the branch after the change, with the numbers recorded here
+
+_2026-10-16T10:10:00Z_ — Store sync (owner, 2026-10-16 10:05Z, "1 2"): front matter taken from the folio-assistant copy, which carries the later evidence-backed change; notes only the cat-harness copy had are kept above. Session https://claude.ai/code/session_01K9Xi9QSxCNYju8QNu7EuHg.
