@@ -60,7 +60,7 @@ import { PROPERTY_GLOSSES, REPLACEMENT_PREFIXES, type TermLayer, termLayer } fro
 // `module: ES2022` cannot spell that attribute. Bun accepted the bare import,
 // so every local run passed while the e2e job could not load the module.
 import { readFileSync } from "node:fs";
-import { releaseIris } from "@litlfred/bootstrap-tools/schemas/release-iri.js";
+import { releaseIris } from "@litlfred/bootstrap-tools/schemas/release-iri.ts";
 
 const ownNamespaces = JSON.parse(
   readFileSync(new URL("../code-lists/own-namespaces.json", import.meta.url), "utf-8"),
