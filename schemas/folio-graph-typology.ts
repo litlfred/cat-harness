@@ -46,7 +46,9 @@ export const FOLIO_GRAPH_TYPOLOGY: GraphTypologyDef = {
     description:
       "authored content an AUTHOR creates using the graph — a note, a visualization, a paper. The who-iris catalogue is `library/`; a note about it is a `folio`; the page explaining how ingestion works is `docs`.",
     renderableNote: "just-the-docs renders it to a website",
-  layer: "core",
+  // A harness kind since folio-assistant#2598 (owner, 2026-10-16, "1a"): the
+  // harness declares a `folio/` of its own and renders it, so it names the
+  // kind in its own namespace rather than in the content layer's.
   renderable: true,
   // The subject matter itself — a folio IS the thing a reader came for, which
   // is also why it is the only renderable kind. The two axes are independent

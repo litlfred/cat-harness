@@ -61,7 +61,6 @@
  * has loaded core; it does not excuse production from loading it.
  */
 import "./folio-graph-typology.js";
-import "./glossary-graph-typology.js";
 
 /*
  * THE SUITE'S DEFAULT TIMEOUT — bean `61n5`.

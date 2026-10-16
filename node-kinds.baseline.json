@@ -41,9 +41,6 @@
       "typology": "code-list"
     },
     {
-      "typology": "computation-witness"
-    },
-    {
       "typology": "content-adapters",
       "family": "folio-content-adapter/v1"
     },
@@ -109,10 +106,6 @@
     },
     {
       "typology": "fsh-guts"
-    },
-    {
-      "typology": "glossary",
-      "family": "folio-glossary/v1"
     },
     {
       "typology": "health"

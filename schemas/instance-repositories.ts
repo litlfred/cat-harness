@@ -20,8 +20,7 @@ import { spawnSync } from "node:child_process";
 import { relative, resolve } from "node:path";
 import { instanceRootsIn, readDeclaration, type InstanceLocation } from "./cat-harness.js";
 import { declarationChain } from "./harness-config.js";
-import { LEGACY_FOLIO_NS } from "./namespaces.js";
-import { releaseIris } from "@litlfred/bootstrap-tools/schemas/release-iri.js";
+import { instanceNamespaceOf } from "./namespaces.js";
 import { mountScopeFor } from "./remote-mount.js";
 import { RepoFullNameSchema, type RepoFullName } from "./repo-full-name.js";
 
@@ -92,9 +91,6 @@ export function instanceRepositories(checkoutRoot: string, folioRoot?: string): 
   return { entries, byRepository, byName, undeclared };
 }
 
-/** The platform's publication root: the stem every non-releasing namespace sits under. */
-const NS_STEM = LEGACY_FOLIO_NS.replace(/ns#$/, "");
-
 /**
  * The namespace an instance's terms are minted under — ONE rule, so the
  * glossary, the vocabulary and the `owner/repo → IRI` map cannot disagree.
@@ -106,8 +102,7 @@ const NS_STEM = LEGACY_FOLIO_NS.replace(/ns#$/, "");
  * declaration here rather than listed.
  */
 export function instanceNamespace(decl: { name: string; stub?: string; iriBase?: string; version?: string }): string {
-  const release = releaseIris(decl);
-  return release ? `${release.agent}ns#` : `${NS_STEM}${decl.stub ?? decl.name}/ns#`;
+  return instanceNamespaceOf(decl);
 }
 
 /**
