@@ -528,7 +528,7 @@
 
     function node(b, depth) {
       var ks = shownKids(b.id);
-      var li = el("li", { class: "fa-workplan-tree-item" });
+      var li = el("li", { class: "fa-workplan-tree-item", "data-bean": b.id });
       if (!ks.length) {
         var leaf = el("div", { class: "fa-workplan-tree-row is-leaf" });
         rowParts(leaf, b);
@@ -938,11 +938,19 @@
       // rows have no control to wrap. Restyling the shared classes to suit
       // this shape would move the chart underneath it.
       var li = el("li", { class: "fa-workplan-bar-row fa-workplan-bar-row--progress" });
+      // The title OPENS THE GOAL in the tree below (owner, 2026-10-16: it
+      // looked openable and only went to the source file). The file is the
+      // small link beside it, under its own name.
       var href = viewHref(m.file);
-      var label = href
-        ? el("a", { class: "fa-workplan-bar-label", href: href, title: m.title }, m.title)
-        : el("span", { class: "fa-workplan-bar-label", title: m.title }, m.title);
-      li.appendChild(label);
+      var label = el("button", { type: "button", class: "fa-workplan-bar-label", title: "Show this goal's epics in the tree" }, m.title);
+      label.setAttribute("data-goto", m.id);
+      var head = el("span", { class: "fa-workplan-bar-label-wrap" });
+      head.appendChild(label);
+      if (href) {
+        head.appendChild(document.createTextNode(" "));
+        head.appendChild(el("a", { class: "fa-workplan-bar-file", href: href }, "source"));
+      }
+      li.appendChild(head);
       var track = el("span", { class: "fa-workplan-bar-track" });
       var fill = el("span", { class: "fa-workplan-bar-fill" });
       // PART-TO-WHOLE: 100% means done, so the width IS the share. A
@@ -1204,6 +1212,27 @@
       if (again) again.focus();
     });
     host.addEventListener("click", function (ev) {
+      // A goal's title in the milestone panel: open that goal in the tree.
+      var goto = ev.target.closest ? ev.target.closest("[data-goto]") : null;
+      if (goto) {
+        var id = goto.getAttribute("data-goto");
+        var sel = '.fa-workplan-tree [data-bean="' + id.replace(/["\\]/g, "") + '"] > details';
+        var det = host.querySelector(sel);
+        if (!det) {
+          // Filtered or scoped out of the tree: clear, so the goal is there.
+          SCOPE = ""; TYPE_SCOPE = ""; QUERY = "";
+          saveQuery();
+          renderBoard(host);
+          det = host.querySelector(sel);
+        }
+        if (det) {
+          det.open = true;
+          var sum = det.querySelector("summary");
+          det.scrollIntoView({ block: "start" });
+          if (sum) sum.focus();
+        }
+        return;
+      }
       // Type filter buttons — check FIRST because the "Show everything"
       // button carries BOTH data-scope and data-type-scope
       var typer = ev.target.closest ? ev.target.closest("[data-type-scope]") : null;
