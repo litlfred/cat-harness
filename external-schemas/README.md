@@ -16,11 +16,16 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `external-schemas`, holdi
 | [`omg-bpmn-2.0.json`](omg-bpmn-2.0.json) | Business [Process](https://litlfred.github.io/bootstrap/schemas/#process) Model and Notation (BPMN) |  |
 | [`omg-dd-1.0.json`](omg-dd-1.0.json) | Diagram Definition (DD) |  |
 | [`omg-dmn-1.3.json`](omg-dmn-1.3.json) | Decision Model and Notation (DMN) |  |
+| [`opengroup-archimate-3.0.json`](opengroup-archimate-3.0.json) | ArchiMate® Model Exchange File Format |  |
+| [`purl-bibo.json`](purl-bibo.json) | The Bibliographic Ontology (BIBO) |  |
 | [`schema-org.json`](schema-org.json) | Schema.org |  |
 | [`spar-doco-deo-cito.json`](spar-doco-deo-cito.json) | SPAR Ontologies: DoCO, DEO and CiTO |  |
+| [`spar-fabio.json`](spar-fabio.json) | SPAR Ontologies: FaBiO, the FRBR-aligned Bibliographic Ontology |  |
 | [`spdx-license-list.json`](spdx-license-list.json) | SPDX License List |  |
 | [`spdx-license-list.terminology.json`](spdx-license-list.terminology.json) | data |  |
 | [`w3c-csvw.json`](w3c-csvw.json) | Metadata Vocabulary for Tabular Data |  |
+| [`w3c-hydra.json`](w3c-hydra.json) | Hydra Core Vocabulary |  |
+| [`w3c-n-quads.json`](w3c-n-quads.json) | RDF 1.1 N-Quads: A line-based syntax for RDF datasets |  |
 | [`w3c-odrl.json`](w3c-odrl.json) | ODRL Information Model 2.2 |  |
 | [`w3c-owl2.json`](w3c-owl2.json) | OWL 2 Web Ontology Language Document Overview (Second Edition) |  |
 | [`w3c-prov-jsonld.json`](w3c-prov-jsonld.json) | The PROV-JSONLD Serialization: A JSON-LD Representation for the PROV Data Model |  |
@@ -29,6 +34,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `external-schemas`, holdi
 | [`w3c-rdf.json`](w3c-rdf.json) | RDF 1.1 Concepts and Abstract Syntax |  |
 | [`w3c-rdfs.json`](w3c-rdfs.json) | RDF Schema 1.1 |  |
 | [`w3c-skos.json`](w3c-skos.json) | SKOS Simple Knowledge Organization System [Reference](https://litlfred.github.io/bootstrap/schemas/#reference) |  |
+| [`w3c-sparql-1.1-query.json`](w3c-sparql-1.1-query.json) | SPARQL 1.1 Query Language |  |
 | [`w3c-web-annotation.json`](w3c-web-annotation.json) | Web Annotation Vocabulary |  |
 | [`w3c-xsd11-datatypes.json`](w3c-xsd11-datatypes.json) | XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes |  |
 | [`w3c-xsd11-structures.json`](w3c-xsd11-structures.json) | W3C XML Schema Definition Language (XSD) 1.1 Part 1: Structures |  |
