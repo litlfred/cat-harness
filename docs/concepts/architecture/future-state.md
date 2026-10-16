@@ -27,10 +27,10 @@ Five folio-assistant instances, composed through the
 ```mermaid
 flowchart TD
     AH[cat-harness<br/><i>Roles · Skills · Tools · BPMN</i><br/>does nothing itself]
-    CORE[folio-assistant-core<br/><i>document/webpage schema + KG</i><br/>authoring · ingestion · render · QA]
-    SCI[folio-assistant-sci<br/><i>Lean · LaTeX · proofs</i>]
+    CORE[content core<br/><i>document/webpage schema + KG</i><br/>authoring · ingestion · render · QA]
+    SCI[science layer<br/><i>Lean · LaTeX · proofs</i>]
     KG[smart-kg<br/><i>WHO L1 document + KG schemas</i>]
-    BASE[smart-base<br/><i>L2–L3 skills · adaptation · OCL</i>]
+    BASE[DAK layer<br/><i>L2–L3 skills · adaptation · OCL</i>]
 
     CORE --> AH
     SCI --> CORE
@@ -82,7 +82,7 @@ That last pair is the sharpest boundary in the whole split, and the easiest to
 get wrong. The harness owns *that* QA findings are sidecar JSON with severities
 and axes; it must not own *which* findings exist.
 
-### `folio-assistant-core`
+### The content core
 
 **Authoritative for:** the base, generic document / webpage / etc. schema and
 its knowledge graph; the authoring pipeline; base workflows; ingestion; and the
@@ -94,45 +94,45 @@ the pipeline that serves them.
 
 | today | lands in |
 |---|---|
-| `schemas/{types,constraints,builders,block-kinds}.ts`, `schemas/jsonld.ts`, `schemas/webpage.ts` | `folio-assistant-core` |
-| `adapters/document/` | `folio-assistant-core` |
-| `content/pipeline/` minus the Lean/TeX files | `folio-assistant-core` |
-| `content/pipeline/render-markdown.ts` + `document_render_{md,html,pdf}` | `folio-assistant-core` |
-| ingestion (`docs/document-ingestion.md` and its pipeline) | `folio-assistant-core` |
-| `content/pipeline/readme-sections.ts`, `readme-links.ts`, `src/tools/readme-*.ts` | `folio-assistant-core` |
-| `skills/{folio-core,folio-document-adapter,content-lifecycle}/` | `folio-assistant-core` |
-| `translations/`, `schemas/translation.ts`, `src/tools/translation.ts` | `folio-assistant-core` |
-| `ui/`, `viewer/`, `blueprint/` | `folio-assistant-core` (**judgement call** — see below) |
+| `schemas/{types,constraints,builders,block-kinds}.ts`, `schemas/jsonld.ts`, `schemas/webpage.ts` | the content core |
+| `adapters/document/` | the content core |
+| `content/pipeline/` minus the Lean/TeX files | the content core |
+| `content/pipeline/render-markdown.ts` + `document_render_{md,html,pdf}` | the content core |
+| ingestion (`docs/document-ingestion.md` and its pipeline) | the content core |
+| `content/pipeline/readme-sections.ts`, `readme-links.ts`, `src/tools/readme-*.ts` | the content core |
+| `skills/{folio-core,folio-document-adapter,content-lifecycle}/` | the content core |
+| `translations/`, `schemas/translation.ts`, `src/tools/translation.ts` | the content core |
+| `ui/`, `viewer/`, `blueprint/` | the content core (**judgement call** — see below) |
 
 **Judgement call on the viewer.** `ui/`, `viewer/` and `blueprint/` render the
 content-object model, which is core's. But `blueprint/` is an interactive
 *graph* of a formal dependency structure, which is a scientific-authoring
 concern. Splitting the viewer by content type is plausible and probably wrong —
-more likely core owns a viewer with a registration point, and `folio-assistant-sci`
+more likely core owns a viewer with a registration point, and the science layer
 registers into it. That mechanism does not exist today.
 
-### `folio-assistant-sci`
+### The science layer
 
 **Authoritative for:** the Lean, LaTeX and simulator content types, and the
 scientific-authoring skills. Per the issue, it depends **only** on
-`folio-assistant-core`.
+the content core.
 
 | today | lands in |
 |---|---|
-| the seven `MATH_BLOCK_KINDS` in `schemas/block-kinds.ts` | `folio-assistant-sci` |
-| `adapters/paper/` and `PaperContentAdapter` | `folio-assistant-sci` |
-| the Lean lifecycle tools — `lean_setup` / `build` / `check` / `status` | `folio-assistant-sci` |
-| `paper_render_pdf` / `paper_render_html` / `formula_render`, `latex/`, `scripts/render-tex/`, `scripts/docker-latex-build/` | `folio-assistant-sci` |
-| `computations/`, `src/sage-mcp-server.py` | `folio-assistant-sci` |
-| `schemas/{formalization-types,lean-packages,precision-scalar,refactor-strategy}.ts` | `folio-assistant-sci` |
-| `skills/{authoring-math,folio-paper-adapter}/` | `folio-assistant-sci` |
-| witness/proof-status tooling, `scripts/lean-*` (16 files) | `folio-assistant-sci` |
+| the seven `MATH_BLOCK_KINDS` in `schemas/block-kinds.ts` | the science layer |
+| `adapters/paper/` and `PaperContentAdapter` | the science layer |
+| the Lean lifecycle tools — `lean_setup` / `build` / `check` / `status` | the science layer |
+| `paper_render_pdf` / `paper_render_html` / `formula_render`, `latex/`, `scripts/render-tex/`, `scripts/docker-latex-build/` | the science layer |
+| `computations/`, `src/sage-mcp-server.py` | the science layer |
+| `schemas/{formalization-types,lean-packages,precision-scalar,refactor-strategy}.ts` | the science layer |
+| `skills/{authoring-math,folio-paper-adapter}/` | the science layer |
+| witness/proof-status tooling, `scripts/lean-*` (16 files) | the science layer |
 
 **This repo is the acid test for the dependency model**, because it needs to
 contribute all three of: a **block kind** (a schema), an **adapter** (code), and
 **MCP tools** (`lean_build`). Until 2026-09-18 the dependency model resolved
 [none of the three](current-state.html#what-the-model-used-to-rule-out--resolved-2026-09-18),
-which made `folio-assistant-sci` unbuildable outright.
+which made the science layer unbuildable outright.
 [Phase 0.1](migration-plan.html#01--make-the-dependency-model-able-to-carry-the-split--decided-and-built)
 has since been decided and built — load-time registration, with collisions
 refused rather than resolved by order — so the blocker is cleared. The acid
@@ -146,36 +146,36 @@ skills and QA checks that go with them.
 
 L1 is narrative guidance — the published guideline as a structured document. It
 is a *document* folio in the existing profile sense, with a WHO-specific schema
-layered on. It therefore depends on `folio-assistant-core` and not on
+layered on. It therefore depends on the content core and not on
 `cat-harness` directly.
 
 | today | lands in |
 |---|---|
 | WHO L1 document structure, `docs/guides/who-smart-dak.md` (L1 portions) | `smart-kg` |
 | L1 QA criteria | `smart-kg` |
-| `smart-base/skills/content/authoring-who-smart-guidelines/` (L1 portions) | `smart-kg` |
+| the DAK layer's `skills/content/authoring-who-smart-guidelines/` (L1 portions) | `smart-kg` |
 
 **This is the thinnest mapping on the page**, because L1 is the least-built part
 of the current repo. Most WHO material here is L2 (DAK) and L3 (FHIR IG). The
 L1/L2 line needs drawing by someone with the WHO SMART Guidelines context before
 the split; this page should not invent it.
 
-### `smart-base`
+### The DAK layer
 
 **Authoritative for:** SMART Guidelines skills, services and QA checks across
 L2–L3; adaptation skills; OCL skills.
 
 | today | lands in |
 |---|---|
-| `schemas/dak-blocks.ts`, the `dak` adapter's kinds | `smart-base` |
-| `content/pipeline/fsh-cone.ts`, FHIR/FSH tooling | `smart-base` |
-| `processes/l2-dak-authoring.bpmn` (**moved** 2026-10-01 to `smart-base/processes/`, issue #1772), `l3-fhir-pipeline.bpmn` | `smart-base` |
-| `docs/guides/who-smart-{dak,ig}.md`, `smart-base/skills/content/authoring-who-smart-guidelines/` (L2–L3) | `smart-base` |
+| `schemas/dak-blocks.ts`, the `dak` adapter's kinds | the DAK layer |
+| `content/pipeline/fsh-cone.ts`, FHIR/FSH tooling | the DAK layer |
+| `processes/l2-dak-authoring.bpmn` (**moved** 2026-10-01 to the DAK layer's `processes/`, issue #1772), `l3-fhir-pipeline.bpmn` | the DAK layer |
+| `docs/guides/who-smart-{dak,ig}.md`, the DAK layer's `skills/content/authoring-who-smart-guidelines/` (L2–L3) | the DAK layer |
 | the DAK translation extractors (PlantUML, ArchiMate, Excel, BPMN) from [PR #237](https://github.com/litlfred/folio-assistant/pull/237) | `smart-base` |
-| OCL skills, adaptation skills | `smart-base` (**mostly not yet written**) |
-| DAK QA criteria (bean `sopq`, the WHO IG starter-kit SOPs) | `smart-base` |
+| OCL skills, adaptation skills | the DAK layer (**mostly not yet written**) |
+| DAK QA criteria (bean `sopq`, the WHO IG starter-kit SOPs) | the DAK layer |
 
-`smart-base` depends on `smart-kg` because an L2 DAK is an operationalisation of
+The DAK layer depends on `smart-kg` because an L2 DAK is an operationalisation of
 an L1 guideline: the DAK's business processes cite L1 recommendations, so the L2
 tooling needs L1's schema to resolve them.
 
@@ -190,10 +190,10 @@ Applying the [taxonomy's splitting rule](repo-taxonomy.html#splitting-a-mixed-re
 | candidate | split? | why |
 |---|---|---|
 | `smart-kg` / `smart-kg-tools` | **likely yes** | L1 guidance changes on WHO's cadence; the tooling changes on the platform's. Different reviewers entirely. |
-| `smart-base` / `smart-base-tools` | **likely yes** | same argument, and L2–L3 tooling (FSH, OCL, ArchiMate) is heavy and independently versioned |
-| `folio-assistant-core` | **no** | its schemas and its pipeline always change together; splitting gives two repos with one changelog |
+| the DAK layer / `smart-base-tools` | **likely yes** | same argument, and L2–L3 tooling (FSH, OCL, ArchiMate) is heavy and independently versioned |
+| the content core | **no** | its schemas and its pipeline always change together; splitting gives two repos with one changelog |
 | `cat-harness` | **no** | it is already a Tool repo whose content is its own manual |
-| `folio-assistant-sci` | **defer** | plausible later (`-sci-tools` for the Lean/LaTeX toolchain) but not before the extraction itself is proven |
+| the science layer | **defer** | plausible later (`-sci-tools` for the Lean/LaTeX toolchain) but not before the extraction itself is proven |
 
 **Test repos are additive, not extractions.** No Test repo exists today
 ([current state](current-state.html#what-this-repo-is-authoritative-for-today)),
@@ -212,7 +212,7 @@ healthworker- or individual-facing workflow (immunizations is the issue's
 example) composes exactly the three or four instances it needs.
 
 That is the test to hold the boundary against. If a new consumer-facing folio
-has to depend on `folio-assistant-sci` to get a working install, the split has not
+has to depend on the science layer to get a working install, the split has not
 achieved anything.
 
 ---

@@ -331,7 +331,7 @@ would lose:
 | **R29** | todos and sticky notes MAY reference things **across** KG libraries | *"todo, etc can refernces cross KG library"* |
 
 **A content library is not a folio, and the distinction is what R24 buys.**
-`who-iris` and the `smart-*` instances are things a reader *browses*; each may
+the IRIS replica and the `smart-*` instances are things a reader *browses*; each may
 implement its own landing page and its own harness. What travels with the
 reader between them is the folio — their notes, their materialised assets,
 their links — and it looks and behaves the same in each because it belongs to
@@ -478,7 +478,7 @@ in the corpus in three places, none of which had been read as answering it:
 
 | | |
 |---|---|
-| `folio-assistant-core/schemas/materialization.ts` | **three states** — `referenced` (we know where, we hold no bytes), `materialized` (the bytes are here), `unknown` (we have not established which) — with **no default**, plus five gates, and `localPath` present **iff** `materialized` |
+| the content core's `schemas/materialization.ts` | **three states** — `referenced` (we know where, we hold no bytes), `materialized` (the bytes are here), `unknown` (we have not established which) — with **no default**, plus five gates, and `localPath` present **iff** `materialized` |
 | `cat-harness/processes/library/materialize-remote.bpmn` | the act itself, as an executable **STRICT** process running five gates in a fixed order; `unknown` on any one keeps the node `referenced` |
 | `skills/kg/kg-core/directory-conventions.md` | the `catalogue` graph typology — *"a remote catalogue modelled BY REFERENCE … Distinct from `library`: that is content which IS here, this is the shape of a collection of which almost none is"* |
 
@@ -488,7 +488,7 @@ Question 1 needed no decision — it needed reading.
 
 #### Where the bytes land — the part that DID need deciding
 
-R27 says *"materialized should live in folio"*, and `who-iris` materialises
+R27 says *"materialized should live in folio"*, and the IRIS replica materialises
 into `library/` (items and covers) and `uploads/` (source PDFs). **Neither is
 `folio/`.** Three readings were put to the owner; they chose **the folio is
 the reader's REPOSITORY**, of which `library/` and `uploads/` are already
@@ -517,7 +517,7 @@ so because this had not been measured yet.
 additionally have put a 40 MB PDF into the site build.
 
 **R27 is therefore already satisfied, and already gated.**
-`folio-assistant-core/scripts/check-catalogue.ts` checks that a `materialized` claim names
+the content core's `scripts/check-catalogue.ts` checks that a `materialized` claim names
 bytes that exist, with `local-path.ts`'s three states (`ok` / `missing` /
 `unknown`) and bean `yl5w`'s scar behind it: *three claims resolved to nothing
 and the gate said clean*.
@@ -535,7 +535,7 @@ no-default rule honoured at the render layer rather than only in the type. On
 `state referenced` ×1.
 
 **The first look was misleading and the trap is worth recording**: the source
-tree holds three committed `who-iris/docs/` pages and the badges appear on
+tree holds three committed the IRIS replica's `docs/` pages and the badges appear on
 only one of them — `kg-to-portal.html`, the *legend*. The catalogue pages are
 generated at build time, so a source-tree grep says "almost nowhere" about
 something that is in fact everywhere. **This had to be measured on the
@@ -559,7 +559,7 @@ already says which items are held. So the glass and its pull-out action are
 **F8/F9 is blocked on R25, structurally rather than by scheduling** — bean
 `jpjt`, settled 2026-09-21.
 
-The gap is measured: on the deployed preview `who-iris/index.html` loads
+The gap is measured: on the deployed preview the IRIS replica's `index.html` loads
 `docs-ui.js` **0** times and carries **0** boards and **0** tiles, against
 9 / 1 / 28 on the folio-assistant landing page. A reader browsing that library
 has **no folio at all**, not a degraded one.
@@ -569,7 +569,7 @@ chose an **exported mount fragment plus a gate**, the shape
 `staging-banner.ts` already proves, reusing `bodyInsertionPoint()` so that
 `ur84` cannot recur.
 
-**What blocks it is that nothing would mount.** `who-iris` pages are complete
+**What blocks it is that nothing would mount.** the IRIS replica pages are complete
 standalone HTML from their own generator — their own `<style>` built from the
 captured IRIS theme, no Jekyll, no `head_custom.html` — because the page is a
 **faithful replica** and the *"ingested copy — not WHO, not live"* banner is
@@ -584,7 +584,7 @@ themselves and return without their markers), and that is the whole problem:
 
 **Every visible folio surface today is bound to just-the-docs page
 furniture**, and giving a library page that furniture means making it look
-like folio-assistant — the one thing who-iris exists not to do.
+like folio-assistant — the one thing the IRIS replica exists not to do.
 
 **R25 is therefore the unblock rather than the next item.** A pull-down glass
 comes down OVER what is being browsed, so it is the only folio surface that

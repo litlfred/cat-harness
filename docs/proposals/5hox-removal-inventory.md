@@ -35,9 +35,9 @@ to pick its roots, so the set that leaves `main` is the set the branch receives.
 Twelve instances declare a `qa` directory, all at `<instance>/test/results/`:
 
 ```
-cat-harness  fhir-harness  folio-assistant-core  folio-assistant-sci
-smart-base   smart-dak     smart-ig              smart-immunizations
-smart-l1     smart-trust   who-iris              who-style-guide
+cat-harness  <fhir-ig-layer>  <content-core>  <science-layer>
+<dak-layer>  smart-dak        smart-ig        <immunizations-ig>
+smart-l1     <trust-ig>       <iris-replica>  who-style-guide
 ```
 
 The working tree under those twelve directories holds exactly the tracked
@@ -79,7 +79,7 @@ When each file last changed, by day:
 | `cat-harness/test/results/block-qa/` | 122 | 3,604,913 | 2026-09-19 | 2026-09-26 |
 | `cat-harness/test/results/bootstrap-tools/` | 7 | 15,178 | 2026-09-30 | 2026-10-01 |
 | `cat-harness/test/results/bootstrap/` | 22 | 43,222 | 2026-09-29 | 2026-09-30 |
-| `cat-harness/test/results/cat-harness-tools/` | 2 | 5,925 | 2026-10-01 | 2026-10-01 |
+| `cat-harness/test/results/<tools-layer>/` | 2 | 5,925 | 2026-10-01 | 2026-10-01 |
 | `cat-harness/test/results/detangle/` | 61 | 18,566 | 2026-09-23 | 2026-09-30 |
 | `cat-harness/test/results/kg-qa/` | 504 | 781,380 | 2026-09-19 | 2026-09-26 |
 | `cat-harness/test/results/large-datasets/` | 2 | 5,586 | 2026-10-01 | 2026-10-02 |
@@ -89,16 +89,16 @@ When each file last changed, by day:
 | `cat-harness/test/results/translation-qa/` | 35 | 116,181 | 2026-09-21 | 2026-10-01 |
 | `cat-harness/test/results/viewer-nav/` | 1 | 10,635 | 2026-09-23 | 2026-10-02 |
 | `cat-harness/test/results/witnesses/` | 163 | 2,309,468 | 2026-09-19 | 2026-09-26 |
-| `fhir-harness/test/results/` | 33 | 41,455 | 2026-09-27 | 2026-09-30 |
-| `folio-assistant-core/test/results/` | 15 | 25,099 | 2026-09-27 | 2026-09-30 |
-| `folio-assistant-sci/test/results/` | 81 | 127,267 | 2026-09-27 | 2026-10-01 |
-| `smart-base/test/results/` | 20 | 34,174 | 2026-09-27 | 2026-09-30 |
+| the FHIR IG layer's `test/results/` | 33 | 41,455 | 2026-09-27 | 2026-09-30 |
+| the content core's `test/results/` | 15 | 25,099 | 2026-09-27 | 2026-09-30 |
+| the science layer's `test/results/` | 81 | 127,267 | 2026-09-27 | 2026-10-01 |
+| the DAK layer's `test/results/` | 20 | 34,174 | 2026-09-27 | 2026-09-30 |
 | `smart-dak/test/results/` | 3 | 7,854 | 2026-09-27 | 2026-10-01 |
 | `smart-ig/test/results/` | 3 | 7,845 | 2026-09-27 | 2026-10-01 |
-| `smart-immunizations/test/results/` | 3 | 7,944 | 2026-09-27 | 2026-10-01 |
+| the immunizations IG's `test/results/` | 3 | 7,944 | 2026-09-27 | 2026-10-01 |
 | `smart-l1/test/results/` | 3 | 7,845 | 2026-09-27 | 2026-10-01 |
-| `smart-trust/test/results/` | 3 | 7,872 | 2026-09-27 | 2026-10-01 |
-| `who-iris/test/results/` | 4 | 10,968 | 2026-09-27 | 2026-10-01 |
+| the trust IG's `test/results/` | 3 | 7,872 | 2026-09-27 | 2026-10-01 |
+| the IRIS replica's `test/results/` | 4 | 10,968 | 2026-09-27 | 2026-10-01 |
 | `who-style-guide/test/results/` | 6 | 11,096 | 2026-09-27 | 2026-10-01 |
 | **total** | **1,186** | **8,520,910** | | |
 

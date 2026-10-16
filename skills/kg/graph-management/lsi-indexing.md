@@ -38,9 +38,9 @@ own label (`latent only` vs `lexical+latent`) — refusal 1.
 ## Commands
 
 ```sh
-bun run cat lsi index --instance who-iris --graph library      # build + write the sidecar
-bun run cat lsi index --instance who-iris --graph library --doc 9789241548960-eng   # one document
-bun run cat lsi query "certainty of the evidence" --instance who-iris --graph library
+bun run cat lsi index --instance <instance> --graph library      # build + write the sidecar
+bun run cat lsi index --instance <instance> --graph library --doc 9789241548960-eng   # one document
+bun run cat lsi query "certainty of the evidence" --instance <instance> --graph library
 bun run cat lsi:audit                                          # which graphs need one; is each fresh?
 bun run cat lsi:epics --out <file.md> [--prs <open-prs.json>]  # epic-filing proposal
 bun run cat lsi:near "<planned bean title>"                    # before `beans create`
@@ -49,7 +49,7 @@ bun run cat-harness-tools/pipeline/graph-search.ts "<q>" --latent   # lexical + 
 
 **From an MCP host**: the `lsi_query` tool (Tool node `lsi-query`), with the
 query as `text` and optional `instance` / `graph`. On a shell the query goes on
-STDIN (`echo "<q>" | bun run cat lsi query --instance who-iris --graph library`),
+STDIN (`echo "<q>" | bun run cat lsi query --instance <iris-replica> --graph library`),
 because free text never goes on a command line.
 
 A **unit** is the graph's own chunk: a library **section** (what ingestion
@@ -61,12 +61,12 @@ skipped — too little vocabulary to place.
 `bun run cat lsi links --instance <i> --graph <g>` proposes links between units of
 DIFFERENT documents in one graph: each unit's best other-document match, only
 at cosine ≥ 0.5 (`LINK_FLOOR`), with the units that are "nearest" to many
-others listed as **hubs** to discount. On who-iris it proposes 12 links and
+others listed as **hubs** to discount. On the IRIS replica it proposes 12 links and
 leaves 326 of 342 sections with none — the honest answer when the median best
 match is ~0.2.
 
 **Why there is no hub PENALTY (bean `9udd`).** A CSLS-style penalty
-(`2·cos − r(a) − r(b)`) was measured on the 15 strongest who-iris pairs a
+(`2·cos − r(a) − r(b)`) was measured on the 15 strongest the IRIS replica pairs a
 reader labelled, and made ranking worse: real-vs-spurious AUC 0.96 with plain
 cosine, 0.75–0.79 with the penalty at K = 5, 10, 20. The page it demoted most
 (HQ p36, mark-up) is central because it is genuinely on-topic. The floor alone
@@ -211,7 +211,7 @@ verdict for the same reason, three days later.
   negative poles together. Refusal 2: it is not a topic until a person names
   it.
 - **`narrowDimensions`** — a dimension ≥ 80 % of whose mass sits on ≤ 3 units
-  (or 1 %). Almost always non-prose: in who-iris it found two different
+  (or 1 %). Almost always non-prose: in the IRIS replica it found two different
   kinds of placeholder text in the WPRO style guide on the first run —
   Lorem-ipsum layout filler (pp. 21, 29–31) and pseudo-Latin font specimens
   (pp. 14–15, 28). Treat as an ingestion finding.

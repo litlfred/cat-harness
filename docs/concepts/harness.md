@@ -31,7 +31,7 @@ Workflows and Tools an Agent works the graph with. The Knowledge Graph says what
 true; the Harness is how anybody reaches it.
 
 A checkout holds several. They stack, bottom to top — `bootstrap`, then
-`cat-harness`, then `folio-assistant-core`, then `folio-assistant` — and each
+`cat-harness`, then the content core, then `folio-assistant` — and each
 inherits what the ones below it declare. That stacking is the subject of this
 page, along with the two things a Harness owes anything it takes charge of.
 
@@ -98,7 +98,7 @@ last precisely so that it can.
 The order is **declared, not computed**, in each instance's `needs` array:
 
 ```json
-{ "name": "folio-assistant-core", "needs": ["bootstrap", "cat-harness"] }
+{ "name": "<content-core>", "needs": ["bootstrap", "cat-harness"] }
 ```
 
 It is declared for a measured reason. The layering was real before it was

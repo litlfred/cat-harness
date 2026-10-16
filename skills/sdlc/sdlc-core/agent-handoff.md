@@ -196,13 +196,13 @@ step reads, the toolchain branch, and the base it builds from. The executor
 prints what it actually has and **stops on a mismatch**:
 
 ```
-expected  smart-base main = e151a4d   have 5891a22   → STOP, report, do not build
+expected  <dak-layer> main = e151a4d   have 5891a22   → STOP, report, do not build
 ```
 
 Where the claim is reproducibility (a cache, a digest, a release), do the
 step **from a fresh clone**. A long-lived checkout carries untracked files,
 local edits and line-ending conversions that a clean clone does not, and the
-consumer will have a clean clone. In `mac1`, smart-trust's recorded digest
+consumer will have a clean clone. In `mac1`, the trust IG's recorded digest
 (`e9eb867e…`) matched nothing a clean clone of the same commit computes
 (`c1023d82…`).
 

@@ -90,7 +90,7 @@ closes the gap.** Neither method is shown better at filing beans, so the
 filing default stays `lsi` and this node is a parallel track, not a
 replacement.
 
-**Two observations on the who-iris library (342 sections)**, recorded as
+**Two observations on the IRIS replica library (342 sections)**, recorded as
 observed here, not as claims from a held source:
 
 - LSI's dimension 1 places **all 342** sections on one side — a margin, as Qi

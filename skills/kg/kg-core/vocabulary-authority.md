@@ -66,7 +66,7 @@ version. That graph validates, publishes, and is wrong the next release.
 
 | | |
 |---|---|
-| **Pro** | ISO 15836. Qualified, repeatable and language-tagged as IRIS actually uses it — `folio-assistant-core/schemas/dublin-core.ts` is shaped by one measured record that does all three |
+| **Pro** | ISO 15836. Qualified, repeatable and language-tagged as IRIS actually uses it — the content core's `schemas/dublin-core.ts` is shaped by one measured record that does all three |
 | **Con** | Two predicates overlap SKOS (below) |
 
 ### schema.org — **kept at 3 predicates; never a source of truth**
@@ -166,7 +166,7 @@ the other as absent.
 ## Related
 
 - [`schema-management`](schema-management.md) — the registry's own discipline.
-- `terminology-management` (fhir-harness) —
+- `terminology-management` (the FHIR IG layer) —
   the FHIR half, for a folio's clinical terminology.
-- `folio-assistant-core/schemas/external-schema.ts` — the record contract, and
+- The content core's `schemas/external-schema.ts` — the record contract, and
   why `conforms` / `reads` / `cites` are different answers.

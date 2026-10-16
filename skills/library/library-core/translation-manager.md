@@ -157,7 +157,7 @@ configured granularity.
 
 Options, in order of preference:
 
-1. **Existing `.po` from smart-base** — if the DAK already has translations
+1. **Existing `.po` from SMART Base** — if the DAK already has translations
    from Weblate/Crowdin, use them.
 2. **FHIR/translation-utils** — the `po-translate` CLI for batch machine
    translation via DeepL/Google Translate. Tags results `# fuzzy`.
@@ -663,7 +663,7 @@ pipeline (IG Publisher) are complementary and independent.
   nav is built once, for every reader, before anybody has chosen a locale.
 - **Do not put non-PO files in translations/.** Only `.pot`, `.po`, and `.ts`
   manifests belong there. Rendered `.md` goes in `docs/<locale>/`.
-- **Do not vendor smart-base translation scripts.** Load from checkout.
+- **Do not vendor SMART Base translation scripts.** Load from checkout.
 - **Do not translate math, labels, or code.** Exclude in extraction.
 - **Do not auto-sign-off.** Official status requires a human.
 - **Do not treat staleness as "wrong".** A stale translation is still useful;
@@ -692,7 +692,7 @@ owned by layers above it (bean `0r7u`). Today's profiles:
 
 The generic pipeline (`pot-extract.ts`, `po-inject.ts`) handles Markdown.
 Adapter-specific tools extend it with format-specific extractors. The
-Python originals from smart-base live in `scripts/translation/` and are
+Python originals from SMART Base live in `scripts/translation/` and are
 referenced in the registry.
 
 ### RTL support

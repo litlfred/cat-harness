@@ -12,7 +12,7 @@ description: >
 
 | caller | remote source | held locally | refresh today |
 |---|---|---|---|
-| `who-iris` | IRIS — 1,057,223 files, 361.55 GB | three items | nothing |
+| the IRIS replica | IRIS — 1,057,223 files, 361.55 GB | three items | nothing |
 | `bootstrap` | a harness | the `cat-harness` checkout | `upstream-pins.json` |
 
 `bootstrap/workflows/initialize-harness.bpmn` fetches a harness that **is**

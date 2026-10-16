@@ -60,7 +60,7 @@ Owner, 2026-10-02 (#1881), in order: *"404 githubpages is a hack. does not work
 according to stanrds"*; *"each link/page needs to be materialized on the CDN
 (gh-pagees), just load the content from the KG json(ld) assets already
 published"*; *"no query strings... each asset gets its own IRI"*. It started
-with `/cat-harness/library/smart-base/smart-trust` returning 404.
+with `/cat-harness/library/<dak-layer>/<trust-ig>` returning 404.
 
 Four rules, for every viewer that shows addressable things:
 
@@ -112,7 +112,7 @@ skills point here.
   the asset. The library does exactly this: each entry in the GENERATED
   projection (`assets/library/index.json`) carries `view` — the site-root path
   of the page that renders it (another instance's declared root route for an
-  entry that instance renders, e.g. smart-trust's `/smart-trust/`; else the
+  entry that instance renders, e.g. the trust IG's `/<trust-ig>/`; else the
   entry's own library page) — and the row's slug links there. Owner,
   2026-10-02: *"click on "smart-trust" slug and open up the visualizer"*.
 

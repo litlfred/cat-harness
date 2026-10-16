@@ -216,7 +216,7 @@ honest:
   measured in previews.
 
 Measured on 2026-10-04: a skill-only change carries no IG; a change to
-`gen-ig-pages.ts` or to `smart-base/themes/chrome.json` carries all three.
+`gen-ig-pages.ts` or to the DAK layer's `themes/chrome.json` carries all three.
 Before the cone, those last two changes dropped every IG from the preview that
 existed to review them. `staging-cone.test.ts` holds all three as tests.
 
@@ -306,7 +306,7 @@ When an author requests a content change:
    `<pages-url>/STAGING/<slug>/`
 6. **Iterate** — each push updates the staging deployment with a new SHA
 
-The BPMN for this workflow is `folio-assistant-core/processes/content/content-change-review.bpmn`.
+The BPMN for this workflow is the content core's `processes/content/content-change-review.bpmn`.
 
 ### Publishing without a runner — `stage-local.ts`, one command (#2410)
 

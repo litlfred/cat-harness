@@ -94,7 +94,7 @@ from the declarations alone, and a directory listing is not the question a
 reader is asking.
 
 Dependencies keep a group of their own rather than disappearing. Making the
-distinction a **disappearance** would answer *"where did who-iris go"* with
+distinction a **disappearance** would answer *"where did the IRIS replica go"* with
 silence.
 
 **A harness a KG subscription chose is instantiated by the same file**, with
@@ -141,19 +141,19 @@ and by the owner, for something else:
 | **2 — a layer others instantiate** | a base a *downstream* repo stands up | nothing in this checkout. It is a statement about the layer's role in the stack |
 
 **No count is given for either sense, on purpose.** The first draft of this
-section said "5 of 19" and was stale within the hour: `smart-base` was
+section said "5 of 19" and was stale within the hour: the DAK layer was
 instantiated by #1129 while this page sat in review, making it 6. That is the
 rule this corpus states everywhere and keeps paying for — *a count in prose is
 a claim nothing checks* — caught here only because the merge that broke it
 happened to land in the same session. Ask the filesystem.
 
-Sense 2 is not loose talk. `fhir-harness`'s own description says *"what
+Sense 2 is not loose talk. The FHIR IG layer's own description says *"what
 a non-WHO implementation guide instantiates"*, and the WHO layer describes its
 own base harness the same way; the owner's bean titles use it —
 `2yyh` **SMART-BASE HARNESS**, `wm63` **FHIR-HARNESS**.
 
 **So a thing can carry the word and not satisfy this page's rule, and be
-right.** `fhir-harness` is the clearest case: declared, not instantiated, and
+right.** the FHIR IG layer is the clearest case: declared, not instantiated, and
 it declares no visualiser either, so by the rule above it owes no tile and gets
 none — while being exactly what a downstream IG instantiates.
 
@@ -514,7 +514,7 @@ own Pages site (an IG repository's `folio-site.yml`, a document folio's
 counts baked in (beans 916, todos 3), its icon row, its rail scopes and its
 title, every path root-relative to the **platform's** site. The icon row's
 badges fetched `assets/beans/count.json` from the page's own site, where the
-shell had copied the platform's. So smart-trust showed folio-assistant's 537
+shell had copied the platform's. So the trust IG showed folio-assistant's 537
 open beans, and 109 rail and tile links on one page resolved to 404s.
 
 `cat-harness-tools/scripts/lib/foreign-site-scope.ts` applies the rule to the data,
@@ -534,12 +534,12 @@ once, for both passes (`compose-docs --shell --instance`, and
 absent is a third state, never `0`. A folio that declares no `beans` graph has
 not said it has no beans; it has said nothing. Showing `0` would be a claim,
 and showing the platform's number, or a link to the platform's work plan
-under a bare "Beans" icon, answers *"where are smart-trust's beans"* with
+under a bare "Beans" icon, answers *"where are the trust IG's beans"* with
 somebody else's. The icon keeps its place and its accessible name says
-*"smart-trust declares no beans graph"*, per §"An inert row SAYS why".
+*"the trust IG declares no beans graph"*, per §"An inert row SAYS why".
 
 **Ownership is decided by where the link points, never by a kind of the same
-name.** smart-trust declares a `qa` directory; the platform's QA tile
+name.** the trust IG declares a `qa` directory; the platform's QA tile
 (`/lsi/`, 1,002 items) is still the platform's QA, and borrowing it because
 the word matched would put the platform's number back on the folio's page.
 
@@ -554,16 +554,16 @@ same way it already blanked `_includes/generated/` (#2235 F1). A badge whose
 file 404s renders as ABSENT, with no number, which is the honest answer.
 
 **A figure that is not a tile follows the same rule.** Two outlived the
-first fix, both found on the same smart-trust page: the title's translation
+first fix, both found on the same the trust IG page: the title's translation
 badge read *"Swept 49/689"*, which is the platform's sweep of its own 689
 pages, and the fsh-guts fish read *"?"*. Each is in the table below with what
 the folio's site shows instead.
 
 | figure | it came from | on a folio's site it | count |
 |---|---|---|---|
-| the translation sweep badge | `_data/translation-qa.json`, the platform's | the shell leaves the file out; the badge stays, inert, reading *"QA: not published"*, and says why: *"smart-trust publishes no translation QA sweep on this site"* | **none**, and not *"not run"*, which would be a claim about the folio |
+| the translation sweep badge | `_data/translation-qa.json`, the platform's | the shell leaves the file out; the badge stays, inert, reading *"QA: not published"*, and says why: *"the trust IG publishes no translation QA sweep on this site"* | **none**, and not *"not run"*, which would be a claim about the folio |
 | the navbar's locale swap | `_data/translations.json`, the platform's index of its own pages | the shell leaves the file out; the index reads as `null`, *"could not determine"*, and the navbar stays as built (it had rewritten the folio's Home to `/<folio>/fr/`, a 404) | n/a |
-| the fsh-guts fish | a button whose count is fetched from **this** site's `/fsh-guts.json` | the button is drawn only when the folio links its OWN fsh-guts; otherwise the fish is the row's re-based link, named *"the platform's: smart-trust declares no fsh-guts graph"*, or an inert icon with the note | **none**, never *"?"*: `?` means the read failed, and nothing was there to read |
+| the fsh-guts fish | a button whose count is fetched from **this** site's `/fsh-guts.json` | the button is drawn only when the folio links its OWN fsh-guts; otherwise the fish is the row's re-based link, named *"the platform's: the trust IG declares no fsh-guts graph"*, or an inert icon with the note | **none**, never *"?"*: `?` means the read failed, and nothing was there to read |
 
 A folio that publishes its own sweep, or its own fsh-guts document, gets its
 own figure back with no further change: the chrome reads whatever the site

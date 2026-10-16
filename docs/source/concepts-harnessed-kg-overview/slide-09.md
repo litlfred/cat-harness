@@ -19,7 +19,7 @@ to L3, tools to L3 and L4, tests to L2 to L4, apps to L4.
 
 > **Misaligned — target, not current:** none of these repositories exists under
 > these names. Today it is one monorepo, `litlfred/folio-assistant`, with
-> instance directories (`cat-harness`, `folio-assistant-core`, `smart-base`,
-> `smart-immunizations`, `who-iris`, …).
+> instance directories (`cat-harness`, the content core, the DAK layer,
+> the IG instances, the IRIS replica, …).
 > [Current state](architecture/current-state.html) is the measured picture, and
 > the slide is the [future state](architecture/future-state.html).

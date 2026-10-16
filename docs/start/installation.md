@@ -172,15 +172,16 @@ launches the server over **stdio**.
 
 ### Claude Code
 
-Add folio-assistant as an MCP server. Project-scoped config lives in `.mcp.json`
-at the root of your content repo:
+Add folio-assistant as an MCP server. `<tools-layer>` below is the directory of
+the layer that implements this harness's tools in your checkout. Project-scoped
+config lives in `.mcp.json` at the root of your content repo:
 
 ```json
 {
   "mcpServers": {
     "folio-assistant": {
       "command": "bun",
-      "args": ["run", "/path/to/folio-assistant/cat-harness-tools/src/index.ts", "--stdio", "--repo", "."]
+      "args": ["run", "/path/to/folio-assistant/<tools-layer>/src/index.ts", "--stdio", "--repo", "."]
     }
   }
 }
@@ -189,7 +190,7 @@ at the root of your content repo:
 Or register it from the CLI:
 
 ```sh
-claude mcp add folio-assistant -- bun run /path/to/folio-assistant/cat-harness-tools/src/index.ts --stdio --repo .
+claude mcp add folio-assistant -- bun run /path/to/folio-assistant/<tools-layer>/src/index.ts --stdio --repo .
 ```
 
 Claude Code also reads `AGENTS.md` / `CLAUDE.md` natively and honours the
@@ -207,7 +208,7 @@ shared with Gemini CLI):
   "mcpServers": {
     "folio-assistant": {
       "command": "bun",
-      "args": ["run", "/path/to/folio-assistant/cat-harness-tools/src/index.ts", "--stdio", "--repo", "."]
+      "args": ["run", "/path/to/folio-assistant/<tools-layer>/src/index.ts", "--stdio", "--repo", "."]
     }
   }
 }
@@ -228,7 +229,7 @@ its settings and reuse the same `SessionStart` script:
   "mcpServers": {
     "folio-assistant": {
       "command": "bun",
-      "args": ["run", "/path/to/folio-assistant/cat-harness-tools/src/index.ts", "--stdio", "--repo", "."]
+      "args": ["run", "/path/to/folio-assistant/<tools-layer>/src/index.ts", "--stdio", "--repo", "."]
     }
   }
 }

@@ -19,10 +19,10 @@ from each label, not from the drawing:
 
 | from | relation | to |
 |---|---|---|
-| `who/smart-kg` | depends on | `who/smart-base` |
-| `who/smart-immz` | depends on | `who/smart-base` |
+| `who/smart-kg` | depends on | `who/<dak-layer>` |
+| `who/smart-immz` | depends on | `who/<dak-layer>` |
 | `who/smart-kg` | references | `who/smart-kg-tools` |
-| `who/smart-base` | references | `who/smart-base-tools` |
+| `who/<dak-layer>` | references | `who/smart-base-tools` |
 | `who/smart-immz` | references | `who/smart-imz-test` |
 | `who/smart-kg-tools` | utilizes | `who/smart-base-tools` |
 | `who/smart-imz-test` | utilizes | `who/smart-base-tools` |

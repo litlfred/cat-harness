@@ -69,7 +69,7 @@ relative path; the DAK view pages fetch
 `../fhir-artifact-index/dak/<file>`.
 
 **Never copy the file into `docs/` beside the page instead.** That was the
-first version: 19 schema files duplicated under `smart-trust/docs/artifact/`,
+first version: 19 schema files duplicated under the trust IG's `docs/artifact/`,
 which a gate flagged as an unknown file family in a docs directory. The owner
 chose serving the graph (2026-10-01, bean `680p`). A generator whose data is
 not served writes no page that would fetch it, and says why.
@@ -81,7 +81,7 @@ not served writes no page that would fetch it, and says why.
   §"The page is generated, not committed").
 - **One shared loader per visualizer kind**, published once and referenced by
   every page, never inlined in each page. The IG API view pages share
-  `assets/ig-api-view.js` (source: `fhir-harness/scripts/templates/ig-pages/`).
+  `assets/ig-api-view.js` (source: the FHIR IG layer's `scripts/templates/ig-pages/`).
 - **No dependencies:** no CDN or framework. Same reason as `kg-viewer`: the
   data is this repository's, and a third party in its trust boundary is at
   odds with that.
@@ -98,7 +98,7 @@ and then check it.
 
 The worked case: the Publisher's DAK view page shows its file as
 `JSON.stringify(parsed, null, 2)`, not as the file's own bytes. JavaScript
-orders integer-like keys first, so for 3 of smart-trust's 33 files the two
+orders integer-like keys first, so for 3 of the trust IG's 33 files the two
 differ. Showing the raw bytes would have looked right and been wrong. The
 loader now does what the Publisher's page does.
 

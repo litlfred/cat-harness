@@ -82,7 +82,7 @@ JSON parser reads records; a consumer with a JSON-LD processor reads a graph.
    of expressing an IRI using a prefix and suffix separated by a colon"*, and
    *"If the prefix is not defined in the active context … the value is
    interpreted as IRI instead"* (`sec-034`). The context binds
-   `folio-assistant-core`, `doco`, `deo`, `cito`, `oa`, `prov`, `skos`,
+   the content core, `doco`, `deo`, `cito`, `oa`, `prov`, `skos`,
    `dcterms`, `fhir`, `csvw`. That second sentence is exactly the hazard
    `jsonld.ts` documents: a folio label like `paper:thm:bar` has compact-IRI
    shape, would parse as an absolute IRI with scheme `paper`, and join with
@@ -122,7 +122,7 @@ JSON parser reads records; a consumer with a JSON-LD processor reads a graph.
 ## The voice that holds code to this node
 
 What this node adopts is enforced on CODE through the `linked-data` voice
-(`folio-assistant-core/skills/voices/linked-data/voice.json`, owner 2026-10-01: *"a voice
+(the content core's `skills/voices/linked-data/voice.json`, owner 2026-10-01: *"a voice
 for a coding agent, in a code authoring or review task"*). It is in force for the
 `authoring-agent` and `code-reviewer` roles in `Process_CodeChangeReview` and
 `Process_CodeReview`, and each of its seven rules quotes the held text — object

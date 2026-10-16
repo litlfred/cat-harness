@@ -165,7 +165,7 @@ Owner, 2026-09-21, sharpening the ruling:
 **`docs/` is not one place.** It is a declared graph, and an instance that owns
 a feature owns the record of why that feature is shaped as it is. Measured in
 this repository on the day of the ruling: `cat-harness/docs/` and
-`who-iris/docs/` both exist, and `who-iris` declares `docs` among its own
+the IRIS replica's `docs/` both exist, and the IRIS replica declares `docs` among its own
 graphs — so this is already a real distinction rather than a future one.
 
 The question is the same one [`placement`](placement.md) Step 1 asks of every

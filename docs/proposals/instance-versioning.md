@@ -324,7 +324,7 @@ and §3.3 leaves it alone.
    Two things this section got wrong are worth recording rather than quietly
    fixing. It said **19 instances**; there are **17** — a count in prose,
    falsified, which is the failure `directory-conventions` and `ylj7` have both
-   already paid for. And it named `cat-harness`, `who-iris` and
+   already paid for. And it named `cat-harness`, the IRIS replica and
    `who-style-guide` as *"plainly"* or *"probably"* publishable, which under
    the ruling is not a head start: they are draft like everything else, and
    guessing at them was the inference the third state existed to prevent.

@@ -42,7 +42,7 @@ value as *data* and never parses it as program.
         BRANCH="$HEAD_REF"          # data, always
 ```
 
-`WorldHealthOrganization/smart-base` does exactly this across its
+WHO's SMART Base repository does exactly this across its
 slash-command workflows, with the comment *"Pass the branch name via env to
 avoid script injection from untrusted data"* — worth reading, since a DAK
 repository has the same fork-PR exposure this one does.

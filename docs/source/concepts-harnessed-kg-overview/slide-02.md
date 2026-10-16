@@ -18,7 +18,7 @@ the slide as Cloudflare R2 storage and the Cloudflare edge network.
 
 **Sources:** [`kg-to-portal`]({{ '/reference/skill-instructions/kg-to-portal.html' | relative_url }})
 (package and per-asset signatures; "a CDN is a LAYER");
-`large-datasets` (the WHO IRIS source descriptor); `who-iris` (the DSpace skill).
+`large-datasets` (the WHO IRIS source descriptor); the IRIS replica (the DSpace skill).
 
 > **Misaligned — proposal, not decision:** the repository treats the CDN as a
 > swappable layer. `kg-to-portal` and `large-datasets`' artifact store name
