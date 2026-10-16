@@ -4,10 +4,9 @@ title: 'Separation stage 1b: Zod moves to cat-harness-tools; generated JSON Sche
 status: todo
 type: task
 created_at: 2026-10-01T06:58:01Z
-updated_at: 2026-10-01T06:58:01Z
+updated_at: 2026-10-16T06:55:00Z
 parent: folio-assistant-iirv
 blocked_by:
-    - folio-assistant-70lx
     - folio-assistant-f8wp
 ---
 
@@ -25,3 +24,5 @@ Plans (session scratchpad, 2026-10-01; to be committed with stage 0): `cat-harne
 - [ ] `graph-kind-registry.ts` names no module in a higher instance
 - [ ] `cat-harness/cat-harness.json` `needs` is `[bootstrap]`; `check:import-direction --all` green
 - [ ] `bun run cat gates` green
+
+_2026-10-16T06:55:00Z_ — Block lifted: `70lx` is completed. Owner ruling 2026-10-16 06:50Z (question 4, option 1): the part-by-part measurement stands in for `bun run cat gates --all` and for falsifier 2, so 70lx is closed. Session https://claude.ai/code/session_01K9Xi9QSxCNYju8QNu7EuHg.
