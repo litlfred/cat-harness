@@ -7,6 +7,8 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_PrChecksPresent" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
   <bpmn:collaboration id="Collaboration_Process_PrChecksPresent">
     <bpmn:participant id="Participant_Process_PrChecksPresent" name="Which open pull requests have no CI run on their head?" processRef="Process_PrChecksPresent"/>
   </bpmn:collaboration>
@@ -30,9 +32,8 @@ TWO CHANNELS, ON THE OWNER'S INSTRUCTION, AND THEY BEHAVE DIFFERENTLY. The track
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_PrChecksPresent">
-      <bpmn:lane id="Lane_Ci" name="Scheduled log sweep">
+      <bpmn:lane id="Lane_Ci" name="Scheduled log sweep" partitionElementRef="build-pipeline">
         <bpmn:documentation>Three exit states, and the job's own colour tracks none of them the way a reader would expect: a finding is fully recorded — issue tracked, PR commented — and the job still ends GREEN, because the finding is the repository's problem to see in the tracking issue, not this lane's to fail on. Only UNKNOWN turns the job itself RED, and one unreadable PR is enough to fail the whole sweep — this lane never reports a partial clean.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Sweep</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Sweep</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Determined</bpmn:flowNodeRef>

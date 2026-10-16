@@ -7,6 +7,11 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_MergeTrain" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
+  <bpmn:resource id="merge-steward" name="Merge steward"/>
+  <bpmn:resource id="sibling-session" name="Sibling session"/>
+  <bpmn:resource id="user" name="User"/>
   <bpmn:collaboration id="Collaboration_Process_MergeTrain">
     <bpmn:participant id="Participant_Process_MergeTrain" name="A merge train" processRef="Process_MergeTrain"/>
   </bpmn:collaboration>
@@ -24,9 +29,8 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_MergeTrain">
-      <bpmn:lane id="Lane_Steward" name="Merge steward">
+      <bpmn:lane id="Lane_Steward" name="Merge steward" partitionElementRef="merge-steward">
         <bpmn:documentation>Composes the train from the queue, decides nothing the placement table or the owner has not, attributes and ejects on red, and lands at the tested SHA.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="merge-steward"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Train</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_ReadLive</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_TakeNext</bpmn:flowNodeRef>
@@ -44,15 +48,13 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
         <bpmn:flowNodeRef>Call_MergeToMain</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Landed</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Sibling" name="Sibling session">
+      <bpmn:lane id="Lane_Sibling" name="Sibling session" partitionElementRef="sibling-session">
         <bpmn:documentation>The session that owns a handed-back PR. Fixes it on its own branch and re-signals ready; never merged on its behalf.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="sibling-session"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_SiblingFix</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Requeued</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Pipeline" name="Build pipeline">
+      <bpmn:lane id="Lane_Pipeline" name="Build pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>Mechanical: merges, regenerates and runs the gates, and reports. Judges nothing a declaration has not decided.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Call_ChecksPresent</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_MergeMembers</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_AllMerged</bpmn:flowNodeRef>
@@ -61,9 +63,8 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
         <bpmn:flowNodeRef>Task_RetryFlaky</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_StillRed</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Owner" name="Owner">
+      <bpmn:lane id="Lane_Owner" name="Owner" partitionElementRef="user">
         <bpmn:documentation>May override a placement, always with a reason. Releasing a merge to `main` is no longer drawn here: it is the Owner lane of `merge-to-main.bpmn`, which `Call_MergeToMain` descends into, so the owner's release has one definition for every process that merges rather than one per diagram.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="user"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Override</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Override</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_OverrideRecorded</bpmn:flowNodeRef>

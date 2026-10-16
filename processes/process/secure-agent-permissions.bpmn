@@ -7,6 +7,9 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_SecureAgentPermissions" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="user" name="User"/>
   <bpmn:collaboration id="Collaboration_Process_SecureAgentPermissions">
     <bpmn:participant id="Participant_Process_SecureAgentPermissions" name="Secure agent permissions" processRef="Process_SecureAgentPermissions"/>
   </bpmn:collaboration>
@@ -25,9 +28,8 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_SecureAgentPermissions">
-      <bpmn:lane id="Lane_Agent" name="Agent">
+      <bpmn:lane id="Lane_Agent" name="Agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Finds out which agent Tool is acting, what the harness's processes need it to be allowed to do, and what is already granted; explains each missing permission; records and applies what the owner granted. Grants nothing to itself.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Secure</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_IdentifyTools</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_ReadGrants</bpmn:flowNodeRef>
@@ -40,9 +42,8 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
         <bpmn:flowNodeRef>Task_WriteConfig</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Granted</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Owner" name="Owner">
+      <bpmn:lane id="Lane_Owner" name="Owner" partitionElementRef="user">
         <bpmn:documentation>Grants, narrows or refuses each permission, having been told what it allows and why. The only lane that can grant.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="user"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_OwnerGrants</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>

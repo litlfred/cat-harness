@@ -8,6 +8,12 @@
                   id="Definitions_TestPlanExecution"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="0.1.0">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="attestation-service" name="Attestation service"/>
+  <bpmn:resource id="certifier" name="Certifier"/>
+  <bpmn:resource id="test-requester" name="Test requester"/>
+  <bpmn:resource id="tester" name="Tester"/>
+  <bpmn:resource id="untainted-checker" name="Untainted checker"/>
 
   <!-- ═══════════════════════════════════════════════════════════════════
        Test-plan execution — a system under test, a plan, a certification.
@@ -56,36 +62,24 @@ The run, the report and the certification are three records, and they point back
     </bpmn:extensionElements>
 
     <bpmn:laneSet id="LaneSet_TestPlanExecution">
-      <bpmn:lane id="Lane_Requester" name="Requester / system under test">
+      <bpmn:lane id="Lane_Requester" name="Requester / system under test" partitionElementRef="test-requester">
         <bpmn:documentation>The system under test, or whoever speaks for it, asking for certification against plan P at a named version. Its only task is the request, and that is the design rather than an omission: the system under test never writes a verdict about itself, so after this lane it is the SUBJECT of the process and never a performer in it.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="test-requester" />
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Request</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Request</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Tester" name="Tester">
+      <bpmn:lane id="Lane_Tester" name="Tester" partitionElementRef="tester">
         <bpmn:documentation>Runs the plan against the system: resolves it, binds its fixed or generated test data, executes every case or skips it with a reason, and writes the `folio-test-run/v1` and the `test-report/v1`. Untainted from the system under test — never the same actor — and it does not certify: what it writes is what the certifier decides on.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="tester" />
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>A_ResolvePlan</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_BindData</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Execute</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_WriteRun</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Checker" name="Untainted checker">
+      <bpmn:lane id="Lane_Checker" name="Untainted checker" partitionElementRef="untainted-checker">
         <bpmn:documentation>A second party re-executing a sample of the cases from the plan and the data alone, never from the tester's verdicts. It rules on nothing: whether it agrees is a fact the certification table reads. One party doing both halves is not this check — it would compare a run with its own paraphrase of itself.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="untainted-checker" />
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>A_ReExecuteSample</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Certifier" name="Certifier">
+      <bpmn:lane id="Lane_Certifier" name="Certifier" partitionElementRef="certifier">
         <bpmn:documentation>The accountable party for the decision, a specialisation of the stakeholder. The gateway is computed from the plan's exit-criteria table; what the certifier adds, and what makes it a judgement, is recording the decision under their name. Never the tester and never the system under test.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="certifier" />
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>GW_ExitCriteria</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_RecordCertification</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_RecordRefusal</bpmn:flowNodeRef>
@@ -93,11 +87,8 @@ The run, the report and the certification are three records, and they point back
         <bpmn:flowNodeRef>End_Refused</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Undetermined</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Attestation" name="Attestation service">
+      <bpmn:lane id="Lane_Attestation" name="Attestation service" partitionElementRef="attestation-service">
         <bpmn:documentation>Signs the certification and files it. Reached only from `certified`: a refusal and an undetermined result are recorded by the certifier and signed by nobody. The signature itself is `qa-report-signing.bpmn`, called unchanged, whose own gateway chooses the API or a human release authority by the signer's reach.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="attestation-service" />
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>Call_Sign</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_FileCertification</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Certified</bpmn:flowNodeRef>

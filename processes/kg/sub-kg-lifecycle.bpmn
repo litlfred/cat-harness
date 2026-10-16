@@ -32,6 +32,11 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_SubKgLifecycle" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="administrator" name="Administrator"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
+  <bpmn:resource id="platform-authoring-agent" name="Platform authoring agent"/>
   <bpmn:collaboration id="Collaboration_Process_SubKgLifecycle">
     <bpmn:participant id="Participant_Process_SubKgLifecycle" name="A sub-KG is staged in place, then leaves for its own repository" processRef="Process_SubKgLifecycle"/>
   </bpmn:collaboration>
@@ -43,11 +48,8 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_SubKgLifecycle">
-      <bpmn:lane id="Lane_Agent" name="Authoring agent">
+      <bpmn:lane id="Lane_Agent" name="Authoring agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Declares the sub-KG in place and grows it, reports what would move before each irreversible step, drains the open pull requests that keep the source from settling, and copies the staged contents into the new repository with their history.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="authoring-agent"/>
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Wanted</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Brief</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Declare</bpmn:flowNodeRef>
@@ -56,20 +58,14 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
         <bpmn:flowNodeRef>Task_Drain</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Seed</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Platform" name="Platform authoring agent">
+      <bpmn:lane id="Lane_Platform" name="Platform authoring agent" partitionElementRef="platform-authoring-agent">
         <bpmn:documentation>The platform-side stages: pushing generic code and declarations down into the harness below, routing every climb out of the sub-KG through its one import seam, and re-pointing the declaration, the seam and the host's consumption once the new repository exists.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="platform-authoring-agent"/>
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_PushDown</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Seam</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Repoint</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Pipeline" name="Build pipeline">
+      <bpmn:lane id="Lane_Pipeline" name="Build pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>Runs the checks that decide the gateways: the separation guard and the three direction checks, the self-contained rehearsal, the seed-readiness table at seed time, and the gates of the new repository from a fresh clone. A check that could not run stops the process; it is never read as a pass.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="build-pipeline"/>
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>GW_Guard</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Rehearse</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Alone</bpmn:flowNodeRef>
@@ -80,11 +76,8 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
         <bpmn:flowNodeRef>GW_Fresh</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_FreshUnknown</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Admin" name="Administrator (owner)">
+      <bpmn:lane id="Lane_Admin" name="Administrator (owner)" partitionElementRef="administrator">
         <bpmn:documentation>The person's decisions: whether the sub-KG leaves at all, whether the new repository may be created, and whether the in-repo copy may be deleted. An agent reports and waits at each, asks with numbered options and a default that changes nothing, and none of the three may be relaxed by a package.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="administrator"/>
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_DecideLeave</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Stays</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_ConfirmCreate</bpmn:flowNodeRef>

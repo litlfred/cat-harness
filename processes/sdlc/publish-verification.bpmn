@@ -7,6 +7,8 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_PublishVerification" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
   <bpmn:collaboration id="Collaboration_Process_PublishVerification">
     <bpmn:participant id="Participant_Process_PublishVerification" name="Verify the export before it is deployed" processRef="Process_PublishVerification"/>
   </bpmn:collaboration>
@@ -14,9 +16,8 @@
     <bpmn:documentation>Run the verifier set over the built tree between the export and the deploy, blocking it: pass, fail or could-not-tell, and the caller deploys only on a pass. Bean vigi, owner 2026-09-23: a set of post-processing tools that verify what the build produced, run BEFORE deployment and blocking — &quot;a failure triggers an alert to the publisher manager&quot;. This process only verifies and says how it went; the caller (docs-site-publish) blocks the deploy on anything but a pass and routes the failure through Process_PublishAlert, the one alert every step after the publish button shares.</bpmn:documentation>
     <bpmn:extensionElements><cat-harness.processes:policy enforcement="strict"/></bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_PublishVerification">
-      <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline">
+      <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>Runs every verifier over the exported documents before anything is deployed, and reports pass, fail or could-not-tell. It decides nothing about the release: the caller blocks on anything but a pass.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Exported</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Verify</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Determined</bpmn:flowNodeRef>

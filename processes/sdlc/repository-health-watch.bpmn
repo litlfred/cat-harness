@@ -7,6 +7,8 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_RepoHealth" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
   <bpmn:collaboration id="Collaboration_Process_RepoHealth">
     <bpmn:participant id="Participant_Process_RepoHealth" name="Is the repository itself healthy?" processRef="Process_RepoHealth"/>
   </bpmn:collaboration>
@@ -34,9 +36,8 @@ ONE TRACKING ISSUE, EDITED IN PLACE, never a comment and never a second issue â€
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_RepoHealth">
-      <bpmn:lane id="Lane_Ci" name="Scheduled log sweep">
+      <bpmn:lane id="Lane_Ci" name="Scheduled log sweep" partitionElementRef="build-pipeline">
         <bpmn:documentation>The only lane in this diagram, and everything it does is either checking or recording â€” never removing, which is deletion-requires-confirmation applied to the shape most tempted to break it. It is also where the inversion lives: a real finding leaves the job GREEN and speaks through one tracking issue edited in place, while "could not tell" is the only outcome that turns the job RED and leaves that issue deliberately untouched.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Sweep</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Check</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Determined</bpmn:flowNodeRef>

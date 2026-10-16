@@ -7,6 +7,9 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_ThemeUIReview" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="ingestion-agent" name="Ingestion engine"/>
+  <bpmn:resource id="reviewer" name="Reviewer / SME"/>
   <bpmn:collaboration id="Collaboration_Process_ThemeUIReview">
     <bpmn:participant id="Participant_Process_ThemeUIReview" name="Theme and UI review — at ingestion" processRef="Process_ThemeUIReview"/>
   </bpmn:collaboration>
@@ -24,14 +27,12 @@ WHAT DID NOT MOVE. There is still no role-to-theme mapping — theme choice rema
       <cat-harness.processes:policy enforcement="advisory"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_ThemeUIReview">
-      <bpmn:lane id="Lane_Reviewer" name="Reviewer">
+      <bpmn:lane id="Lane_Reviewer" name="Reviewer" partitionElementRef="reviewer">
         <bpmn:documentation>The single point in this process where a person looks rather than a tool measures, reached only after all four agent passes are done — so what this lane judges is the ingested assets as a whole, in the design they are for — not any one axis in isolation. Its finding is the only thing that can send the process to A_RaiseFindings; a clean ingest, a passing accessibility check and a correct branding pass can each be true and still miss what only laying the assets out and looking catches.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="reviewer"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>R_Judge</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Agent" name="Agent">
+      <bpmn:lane id="Lane_Agent" name="Agent" partitionElementRef="ingestion-agent">
         <bpmn:documentation>Four measured passes into R_Judge — inventory, accessibility, branding, locales — each one required to MEASURE rather than assert, because an automated pass alone missed three defects a rendered look caught outright. If GW_Findings comes back yes, this lane still does not fix anything: A_RaiseFindings sends the finding back to whoever authored the theme choice, since picking it was a judgement call this lane does not get to override.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="ingestion-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_TUR</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Inventory</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Accessibility</bpmn:flowNodeRef>

@@ -7,6 +7,9 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_NamedQueryExecution" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
   <bpmn:collaboration id="Collaboration_Process_NamedQueryExecution">
     <bpmn:participant id="Participant_Process_NamedQueryExecution" name="Execute audited named queries over partitioned W3C N-Quads distributions" processRef="Process_NamedQueryExecution"/>
   </bpmn:collaboration>
@@ -22,9 +25,8 @@ CRITICAL INVARIANTS:
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_NamedQueryExecution">
-      <bpmn:lane id="Lane_Caller" name="Query Caller (CLI / MCP / Web)">
+      <bpmn:lane id="Lane_Caller" name="Query Caller (CLI / MCP / Web)" partitionElementRef="authoring-agent">
         <bpmn:documentation>The invoking entity (agent, CLI command, MCP tool call, or browser web client) requesting execution of an audited named query with typed arguments.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_QueryRequest</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_ValidateParams</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_ValidParams</bpmn:flowNodeRef>
@@ -32,9 +34,8 @@ CRITICAL INVARIANTS:
         <bpmn:flowNodeRef>End_InvalidParams</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Success</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Engine" name="Universal Query Engine Runtime">
+      <bpmn:lane id="Lane_Engine" name="Universal Query Engine Runtime" partitionElementRef="build-pipeline">
         <bpmn:documentation>The Oxigraph in-memory RDF store runtime (Node/Bun oxigraph or browser oxigraph.js WASM) enforcing graph availability, parameter binding, and query evaluation.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>A_CheckSubgraphs</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_SubgraphsLoaded</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_AutoFetch</bpmn:flowNodeRef>

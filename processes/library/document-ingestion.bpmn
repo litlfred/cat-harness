@@ -19,6 +19,9 @@
                   id="Definitions_Ingestion"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="ingestion-agent" name="Ingestion engine"/>
+  <bpmn:resource id="user" name="User"/>
   <bpmn:collaboration id="Collaboration_Ingestion">
     <bpmn:participant id="Participant_Ingestion" name="Basic ingestion — an upload to an asset catalogued in library/" processRef="Process_Ingestion" />
   </bpmn:collaboration>
@@ -40,21 +43,19 @@ THE ID `Process_Ingestion` IS KEPT ON PURPOSE: `methodology-from-source.bpmn`'s 
       <cat-harness.processes:policy enforcement="advisory" />
     </bpmn:extensionElements>
     <bpmn:laneSet id="Process_Ingestion_LaneSet">
-      <bpmn:lane id="Lane_0" name="Contributor (human or agent)">
+      <bpmn:lane id="Lane_0" name="Contributor (human or agent)" partitionElementRef="user">
         <bpmn:documentation>Whoever puts the file in the queue. UNDOCUMENTED UNTIL 2026-09-30, and legitimately so until then: the lane held nothing but a start event, and a lane with no activity has no performer to describe. Task_Place gave it one.
 
 "HUMAN OR AGENT" IS A MEASUREMENT, NOT A HEDGE. Over this repository's own history both have stood here: files have reached a queue in commits authored by `Carl Leitner` (including 16 made through the forge's web form, committer `GitHub`) and in commits authored by `Claude`. That is why Task_Place is a plain `bpmn:task` rather than a `userTask` — asserting a human performs it would contradict the lane's own role graph, which is what `activity-fulfilment-kind` exists to catch.
 
 WHAT THE LANE IS ACCOUNTABLE FOR, and where it ends. Choosing a route, writing the bytes into the DECLARED queue of the instance that will own them, and discharging afterwards whatever that route could not — the web form has no working tree, so no pre-commit hook and no generator runs on it. The lane does NOT ingest and does not clean the queue: it hands over, and Lane_1 takes it from there. `upload-routes` carries the routes and their obligations.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="user"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>StartEvent_Dropped</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Place</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_1" name="Ingestion Engine (agent, runs unattended)">
+      <bpmn:lane id="Lane_1" name="Ingestion Engine (agent, runs unattended)" partitionElementRef="ingestion-agent">
         <bpmn:documentation>Runs the basic flow from the metadata step to the placement in library/, unattended: every decision in it is decidable from the material and its declarations. It asks one question — is the asset materialized? — and that is answered from the materialization state vocabulary (`schemas/materialization-state.ts`, placement PR5), not by judgement. It does NOT choose a reader for the bytes, derive sections or blocks, or describe images: those are a refining process's work, which calls this flow first.
 
 THE FLOW ENDS IN THIS LANE. The asset catalogued in library/ — held, or recorded as referenced — is the terminal state, and every knowledge-graph reference to it resolves through library/ from here; a refining process continues from it rather than being drawn into this one. There is no separate corpus lane: it would hold only the end event, and a lane with no activity has no performer to describe.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="ingestion-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_ExtractMetadata</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_Materialized</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_PlaceInLibrary</bpmn:flowNodeRef>

@@ -7,6 +7,9 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_SwotAnalysis" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="business-analyst" name="Business analyst"/>
+  <bpmn:resource id="stakeholder" name="Stakeholder"/>
   <bpmn:collaboration id="Collaboration_Process_SwotAnalysis">
     <bpmn:participant id="Participant_Process_SwotAnalysis" name="SWOT situation analysis" processRef="Process_SwotAnalysis"/>
   </bpmn:collaboration>
@@ -22,8 +25,7 @@ WHAT IT DOES NOT DO: it does not rank the factors it finds. The source is explic
       <cat-harness.processes:policy enforcement="advisory"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_SwotAnalysis">
-      <bpmn:lane id="Lane_BusinessAnalyst" name="Business analyst">
-        <bpmn:extensionElements><bootstrap.processes:role ref="business-analyst"/></bpmn:extensionElements>
+      <bpmn:lane id="Lane_BusinessAnalyst" name="Business analyst" partitionElementRef="business-analyst">
         <bpmn:documentation>Performs the scan and the crossing. This lane owns the analysis and owns nothing else: it does not authorise, and it does not choose between options. Its deliverable is four lists, the four matched strategies, and an explicit record of what could not be classified.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_Process_SwotAnalysis</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_FrameSubject</bpmn:flowNodeRef>
@@ -36,14 +38,13 @@ WHAT IT DOES NOT DO: it does not rank the factors it finds. The source is explic
         <bpmn:flowNodeRef>End_SituationRecorded</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_HandedToDecision</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Stakeholder" name="Stakeholder">
+      <bpmn:lane id="Lane_Stakeholder" name="Stakeholder" partitionElementRef="stakeholder">
         <!-- Bound EXPLICITLY even though the lane name matches the role id.
              `code-change-review.bpmn` states the reason on its own reviewer
              lane: "a binding that works by coincidence of wording is one
              rename from silently unbinding." This lane proved it — the
              glossary check reported it unbound while the sibling lane, whose
              wording happened to match, passed. -->
-        <bpmn:extensionElements><bootstrap.processes:role ref="stakeholder"/></bpmn:extensionElements>
         <bpmn:documentation>Consulted, in a lane of their own because the source names group discussion as a property of the method rather than as good practice around it: SWOT "promotes group discussion about strategic issues" and pools knowledge through participatory techniques. It is also the mitigation for the limitation the source states most sharply — that a list of strengths is "bound up with aspirations, biases, and hope of the individuals involved". A single analyst producing four lists alone has performed the technique's shape without the part that checks it.</bpmn:documentation>
         <bpmn:flowNodeRef>A_GroupReview</bpmn:flowNodeRef>
       </bpmn:lane>

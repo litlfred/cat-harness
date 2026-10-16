@@ -7,6 +7,10 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_WireframeDesignReview" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="adjudicator" name="Adjudicator"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="feedback-provider" name="Feedback provider"/>
   <bpmn:collaboration id="Collaboration_Process_WireframeDesignReview">
     <bpmn:participant id="Participant_Process_WireframeDesignReview" name="Wireframe design review" processRef="Process_WireframeDesignReview"/>
   </bpmn:collaboration>
@@ -16,24 +20,21 @@
       <cat-harness.processes:policy enforcement="advisory"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_WireframeDesignReview">
-      <bpmn:lane id="Lane_Designer" name="Designer">
+      <bpmn:lane id="Lane_Designer" name="Designer" partitionElementRef="authoring-agent">
         <bpmn:documentation>Writes the intent, produces candidates with real content, and runs the mechanical checks. Does not review its own candidates.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_WDR</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>D_Intent</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>D_Candidates</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>D_Check</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Checks</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Reviewers" name="Feedback providers">
+      <bpmn:lane id="Lane_Reviewers" name="Feedback providers" partitionElementRef="feedback-provider">
         <bpmn:documentation>One or more reviewers (agent and human) who see candidates shuffled, without their author, and record pass, warn or fail per criterion with a reason. There are no scores and no averages.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="feedback-provider"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>R_Review</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Agree</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Adjudicator" name="Adjudicator">
+      <bpmn:lane id="Lane_Adjudicator" name="Adjudicator" partitionElementRef="adjudicator">
         <bpmn:documentation>Reached only when entries for one criterion disagree. Settles the disagreement with a reason, and decides between surviving candidates through options analysis.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="adjudicator"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Call_Adjudicate</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Choose</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Iterate</bpmn:flowNodeRef>

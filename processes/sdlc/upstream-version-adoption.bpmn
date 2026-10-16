@@ -7,6 +7,11 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_UpstreamAdoption" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
+  <bpmn:resource id="publication-manager" name="Publication manager"/>
+  <bpmn:resource id="reviewer" name="Reviewer / SME"/>
   <bpmn:collaboration id="Collaboration_Process_UpstreamAdoption">
     <bpmn:participant id="Participant_Process_UpstreamAdoption" name="Adopting an upstream version bump" processRef="Process_UpstreamAdoption"/>
   </bpmn:collaboration>
@@ -20,9 +25,8 @@ Shaped after `crdm-requirements.bpmn` because the question is the same one: some
       <cat-harness.processes:policy enforcement="strict" />
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_UpstreamAdoption">
-      <bpmn:lane id="Lane_Agent" name="Agent">
+      <bpmn:lane id="Lane_Agent" name="Agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Owns the whole MVP loop end to end except the two calls it cannot make: SF_UA_8 re-enters this lane's own A_Impact on a fixable finding rather than escalating, so a defect gets fixed and re-evidenced here before anyone outside the lane sees it, and Call_OptionsAnalysis sits here specifically because framing the options is not deciding among them — that judgement belongs to PM_Decide in a different lane entirely.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Adopt</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Scope</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Impact</bpmn:flowNodeRef>
@@ -32,21 +36,18 @@ Shaped after `crdm-requirements.bpmn` because the question is the same one: some
         <bpmn:flowNodeRef>A_RecordOutcome</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Adopt</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Build" name="CI/CD Pipeline">
+      <bpmn:lane id="Lane_Build" name="CI/CD Pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>Produces evidence, not verdicts: Task_Gates going red does not end the process or loop by itself — "this version breaks us" is a finding the decider needs to see, not a reason for this lane to stop the run — and Task_Mvp exists so that finding is checked against a real deployed build rather than a description of one.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_Mvp</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Gates</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Review" name="Reviewer / SME">
+      <bpmn:lane id="Lane_Review" name="Reviewer / SME" partitionElementRef="reviewer">
         <bpmn:documentation>Narrower than a general release review: the question is only whether what upstream-pins.json lists as bound still holds against the deployed MVP, not whether the new version is good on its own terms, and a finding here (GW_Findings) sends the run back to the Agent lane's own impact analysis rather than stopping it.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="reviewer"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>R_Review</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Findings</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Publication" name="Publication manager">
+      <bpmn:lane id="Lane_Publication" name="Publication manager" partitionElementRef="publication-manager">
         <bpmn:documentation>Holds the one call in this subprocess that policy marks unrelaxable: PM_Decide's lane admits a person only, because a pin change is not an edit to the corpus but a change to what the published artefact is BUILT FROM — the fact that puts this decision in the publication manager's lane rather than the editor's, which owns corpus changes elsewhere in this repository.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="publication-manager"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>PM_Decide</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Adopt</bpmn:flowNodeRef>
       </bpmn:lane>

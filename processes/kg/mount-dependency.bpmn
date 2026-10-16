@@ -7,6 +7,9 @@
                    xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_MountDependency"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="author" name="Author"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
 
   <!-- ═══════════════════════════════════════════════════════════
        Remote-mount a harness and its dependency closure — bean 0mpw.
@@ -33,15 +36,13 @@ Every instance reached ends in one of three states — mounted, missing, could-n
     </bpmn:extensionElements>
 
     <bpmn:laneSet id="LaneSet_MountDependency">
-      <bpmn:lane id="Lane_Author" name="Downstream author">
+      <bpmn:lane id="Lane_Author" name="Downstream author" partitionElementRef="author">
         <bpmn:documentation>A person decides WHICH harness and WHICH pin, and whether to override a default. Nothing below chooses a pin: a branch name is refused, and so is an abbreviated SHA.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="author"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_LayerNeeded</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_DeclareMount</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Pipeline" name="Build pipeline">
+      <bpmn:lane id="Lane_Pipeline" name="Build pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>Mechanical from the declaration on: the same declaration mounts the same bytes in every container, and only an override by id changes where or what.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_ResolveClosure</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_MountInstances</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_WriteLock</bpmn:flowNodeRef>

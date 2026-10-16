@@ -7,6 +7,8 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_NarrativeCodeReview"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="reviewer" name="Reviewer / SME"/>
 
   <!-- ═══════════════════════════════════════════════════════════
        Prose and the code it describes — folio-assistant
@@ -42,9 +44,8 @@ Three outcomes, each leaving a record: the prose holds (attested, with a reason)
     </bpmn:extensionElements>
 
     <bpmn:laneSet id="LaneSet_NarrativeCodeReview">
-      <bpmn:lane id="Lane_PairReviewer" name="Reviewer">
+      <bpmn:lane id="Lane_PairReviewer" name="Reviewer" partitionElementRef="reviewer">
         <bpmn:documentation>The generic reviewer, taking this lane for the call path only: it reads what the pair checks left open and settles each item one of three ways. It can attest and raise findings but cannot overrule a checker on its own say-so — that is what the call into adjudication is for.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="reviewer"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_PairChanged</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_ReadPairFindings</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Open</bpmn:flowNodeRef>

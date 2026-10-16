@@ -7,6 +7,8 @@
                    xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_CRDM_Issue" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
   <bpmn:collaboration id="Collaboration_Process_CRDM_Issue">
     <bpmn:participant id="Participant_Process_CRDM_Issue" name="CRDM — link the work to an issue" processRef="Process_CRDM_Issue"/>
   </bpmn:collaboration>
@@ -16,9 +18,8 @@
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_CRDM_Issue">
-      <bpmn:lane id="Lane_Agent" name="Agent">
+      <bpmn:lane id="Lane_Agent" name="Agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>The only CRDM sub-diagram in this slice where the BA has no lane of its own: A_AskCreate is still an Agent-lane activity, so the permission this process exists to enforce is obtained out of band rather than modelled as a cross-lane handoff, unlike crdm-requirements-definition.bpmn and crdm-close.bpmn elsewhere in the same methodology.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Process_CRDM_Issue</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_RelatedWork</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_ScanIssues</bpmn:flowNodeRef>
