@@ -975,6 +975,7 @@
     {"id": "content-adapters", "renderedBy": "state-viewer", "coversKinds": ["content-adapters"], "subgraphs": "instance", "title": "Content adapters"},
     {"id": "code-lists", "renderedBy": "state-viewer", "coversKinds": ["code-list"], "subgraphs": "instance", "title": "Code lists"},
     {"id": "code", "renderedBy": "state-viewer", "coversKinds": ["code"], "subgraphs": "instance", "title": "Code", "alias": "code"},
+    {"id": "memory", "renderedBy": "state-viewer", "coversKinds": ["memory"], "subgraphs": "instance", "title": "Memory"},
     {"id": "swimlane-glossary", "renderedBy": "state-viewer", "covers": ["swimlane-glossary"], "alias": "swimlane-glossary"},
     {"id": "uploads-queue", "renderedBy": "state-viewer", "covers": ["uploads"], "title": "Uploads queue", "alias": "uploads"},
     {"id": "fsh-guts", "renderedBy": "staging-graph-viewer", "covers": ["fsh-guts"], "title": "fsh-guts", "publish": "staging-only", "writer": ["scripts/gen-fsh-guts-viz.ts"]}
@@ -1081,6 +1082,7 @@
     {"path": "docs/en/cat-harness/code/folio-assistant-sci/", "writer": ["state:visualizer"], "because": "checkout", "reason": "an instance's code page (bean folio-assistant-svgx): one per instance in the checkout declaring a code directory, listing its files linked to GitHub at the commit the index pins"},
     {"path": "docs/en/cat-harness/code/smart-base/", "writer": ["state:visualizer"], "because": "checkout", "reason": "an instance's code page (bean folio-assistant-svgx): one per instance in the checkout declaring a code directory, listing its files linked to GitHub at the commit the index pins"},
     {"path": "docs/en/cat-harness/code/who-iris/", "writer": ["state:visualizer"], "because": "checkout", "reason": "an instance's code page (bean folio-assistant-svgx): one per instance in the checkout declaring a code directory, listing its files linked to GitHub at the commit the index pins"},
+    {"path": "docs/en/cat-harness/memory/", "writer": ["state:visualizer"], "because": "checkout", "reason": "the memory viewer: a hub and one page per instance in the checkout declaring a memory directory, listing its lessons, interaction node and waivers linked to GitHub at the commit the index pins; memory was the library page's last \"no viewer yet\" row"},
     {"path": "docs/todos.json", "writer": ["docs:pages"], "because": "state", "from": ["todos"], "reason": "the todos graph's projection"},
     {"path": "docs/todos.jsonld", "writer": ["docs:pages"], "because": "state", "from": ["todos"], "reason": "the same, as JSON-LD"},
     {"path": "docs/todos/", "writer": ["docs:pages"], "because": "state", "from": ["todos"], "reason": "one page and node per todo"},
