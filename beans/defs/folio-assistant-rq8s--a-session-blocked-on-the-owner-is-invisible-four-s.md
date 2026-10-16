@@ -1,11 +1,11 @@
 ---
 # folio-assistant-rq8s
 title: 'A SESSION BLOCKED ON THE OWNER IS INVISIBLE: four sessions held verbatim questions that only the session API could see, and nothing durable records one'
-status: todo
+status: in-progress
 type: bug
 priority: normal
 created_at: 2026-09-21T06:30:04Z
-updated_at: 2026-09-29T20:50:32Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-ahvw
 ---
 
@@ -301,3 +301,5 @@ decision — **put to the owner rather than invented here.**
 ## Claim released 2026-09-29
 
 Released `in-progress` → `todo` on the owner's instruction (review session https://claude.ai/code/session_014Qj8wncQhqV52QGN1yZDnj). No git change to this bean since before 2026-09-26, no holder recorded, and no open working branch touches it; the sessions that held theme B (CI reliability, QA instruments, process) work stopped on the 2026-09-25 weekly usage limit. Nothing in the body was changed: re-claim with `bun run cat beans:claim <id>`.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `in-progress` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: in-progress, cat-harness: todo). Evidence: owner ruling 2026-10-10 "timestamp"; cat-harness#166 and cat-harness-tools#150 merged; the store marks node is still open. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

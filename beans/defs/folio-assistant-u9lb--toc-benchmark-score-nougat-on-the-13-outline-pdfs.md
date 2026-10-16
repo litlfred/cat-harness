@@ -1,11 +1,11 @@
 ---
 # folio-assistant-u9lb
 title: 'TOC benchmark: score Nougat on the 13 outline PDFs (needs huggingface.co) (#2302)'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-06T18:05:01Z
-updated_at: 2026-10-07T10:57:08Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-cp3v
 ---
 
@@ -23,3 +23,5 @@ Branch from claude/compassionate-johnson-rzv00r and open a PR INTO that branch (
 
 ## Done when
 The report carries measured Nougat numbers next to layout's 0.86 title F1, with the run conditions stated, or says exactly what prevented the run.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-12); cat-harness#168 merged 2026-10-12. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

@@ -1,10 +1,10 @@
 ---
 # folio-assistant-cy4p
 title: 'BPMN ENGINE: a Tool node, with downcompilation per coding agent'
-status: todo
+status: completed
 type: task
 created_at: 2026-09-19T17:04:01Z
-updated_at: 2026-09-19T17:04:01Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-ahvw
 ---
 
@@ -55,3 +55,5 @@ answer is "read XML", the fix may be a projection rather than a compiler.
       by `kg:audit`
 - [ ] any downcompiled artefact is generated, with a `--check` gate, and
       carries in its own text that it is generated
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-11); cat-harness#132 merged 2026-10-11, cat-harness-tools#106 merged 2026-10-11. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

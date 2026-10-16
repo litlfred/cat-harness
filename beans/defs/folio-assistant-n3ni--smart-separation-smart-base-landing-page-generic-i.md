@@ -1,11 +1,11 @@
 ---
 # folio-assistant-n3ni
 title: 'SMART-* SEPARATION: /smart-base/ landing page, generic IG page generator into fhir-harness, staged smart-* dirs into litlfred forks'
-status: in-progress
+status: completed
 type: feature
 priority: normal
 created_at: 2026-10-01T08:10:21Z
-updated_at: 2026-10-04T12:46:42Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-uhkv
 ---
 
@@ -37,3 +37,5 @@ Stages B, C and D are ticked on evidence: r939 (#1782), y4t4 (#1783) and kg83 (#
 - litlfred/smart-trust#5 (draft): `smart-base/` seeded from folio-assistant's `smart-trust/`, with history carried (378 commits, git subtree split + add), plus a root `smart-base.config.json`. The IG source is untouched.
 - **The falsifier, measured:** nothing in the seed runs standalone. `smart-base/scripts/tests/pages-markdown.test.ts` fails with "Cannot find module '../../../fhir-harness/...'". The fork needs the platform: either stage F's subscription or a folio-assistant submodule (owner's choice, asked).
 - Not yet done: smart-base and smart-immunizations, which wait on the layout being accepted. Nothing in folio-assistant has been deleted (F).
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-09); folio-assistant#2320 merged 2026-10-08. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

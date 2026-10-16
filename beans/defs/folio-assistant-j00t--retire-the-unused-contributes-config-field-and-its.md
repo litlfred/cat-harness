@@ -1,11 +1,11 @@
 ---
 # folio-assistant-j00t
 title: Retire the unused contributes config field and its module loader path
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-05T11:38:54Z
-updated_at: 2026-10-05T11:39:01Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-zzmr
 ---
 
@@ -18,3 +18,5 @@ The loader still reads it:
 ## Done when
 - [ ] The field, its loader branch and the example entry are gone, or the owner rules to keep it as an extension point.
 - [ ] RendererContribution is decided. No renderer is contributed today: either renderers get a node graph like checkers have, or the shape goes along with the field.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09); commit ec68a7a0 is on cat-harness main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

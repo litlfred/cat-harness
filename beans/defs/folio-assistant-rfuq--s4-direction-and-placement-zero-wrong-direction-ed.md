@@ -5,10 +5,8 @@ status: todo
 type: task
 priority: normal
 created_at: 2026-10-01T08:14:34Z
-updated_at: 2026-10-01T12:54:09Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-7x5n
-blocked_by:
-    - folio-assistant-hx65
 ---
 
 Absorbs zlmp, yj6r, zhg2, r3gy, 2j2r, iirv pzwb/63wl/4fv8/tlat/apcg/8fq9/f8wp/p9bu, 9umr finale. Placement PRs run ONE AT A TIME.
@@ -33,3 +31,7 @@ R5 26->0, R6 md 12->0, large-datasets core import 1->0, reference-direction 1667
 Q1 watchers->sci (generic integration-watcher stays); Q2 editorial graph split; Q3 Milnor->sci, render-check split; Q4 maths pipeline split in S5; Q5 dissolve large-datasets/agent-skills into concern groups; Q6 rename skills/authoring->skills/content (PR2); Q7 core catalogue/dublin-core/fhir-artifact-index split.
 
 Post-merge (main c7505917, #1776): reference-direction 1697 -> 1670 wrong-direction occurrences (388 -> 379 files); markdown-link scan UP 0 / ROOT 0; check:reference-direction:check green with the regenerated sidecar. No done-when box is met yet: 1670 name occurrences remain (mostly names, not links), and large-datasets/agent-skills folding waits on the needs change.
+
+_2026-10-15T16:49Z_ — Block lifted: `hx65` is completed (main green, #1774 merged). The edge was the work plan's "Block never lifted" finding (owner, 2026-10-15). Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.
+
+_2026-10-16T06:30:00Z_ — The note above is mirrored from the folio-assistant store (commit 0b8d249), where this edge was lifted on 2026-10-15; lifted here too (Owner ruling 2026-10-16, item 9). Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

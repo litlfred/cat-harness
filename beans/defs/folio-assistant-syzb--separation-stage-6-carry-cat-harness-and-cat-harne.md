@@ -1,10 +1,10 @@
 ---
 # folio-assistant-syzb
 title: 'Separation stage 6: carry cat-harness and cat-harness-tools as submodules at the same paths'
-status: todo
+status: scrapped
 type: task
 created_at: 2026-10-01T06:58:02Z
-updated_at: 2026-10-01T06:58:02Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-iirv
 blocked_by:
     - folio-assistant-w1gy
@@ -21,3 +21,5 @@ Plans (session scratchpad, 2026-10-01; to be committed with stage 0): `cat-harne
 - [ ] falsifier: `bun run cat gates --all` on the submodule checkout matches the pre-cutover run gate for gate, with no path edits; the rehearsal and `check:published-refs` pass
 - [ ] `fsh-guts/retired/cat-harness-split.md` exists (manifest only)
 - [ ] `migration-plan.md` Phase II points at `kg-separation` for bootstrap and cat-harness
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `scrapped` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: scrapped, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09); folio-assistant#2470 merged 2026-10-07, folio-assistant#2517 merged 2026-10-08, cat-harness#52 merged 2026-10-09, cat-harness-tools#16 merged 2026-10-09. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

@@ -1,10 +1,10 @@
 ---
 # folio-assistant-5ulq
 title: 'STRICT IN NAME ONLY: 9 workflow instances against 755 merges, and no gate reads beans/workflows at all'
-status: todo
+status: completed
 type: bug
 created_at: 2026-10-02T23:49:21Z
-updated_at: 2026-10-02T23:49:21Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-0ipy
 ---
 
@@ -62,3 +62,4 @@ devalues it everywhere else in the file, including where it is enforced.
 - [ ] either way, the number is computed by a command rather than quoted in
       prose — 54 was quoted and went stale by ~14×
 
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-12); commit 2ee9ba6 is on cat-harness-tools main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

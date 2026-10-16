@@ -1,11 +1,11 @@
 ---
 # folio-assistant-4kq7
 title: 'Adopt github/spec-kit: spec-before-code gate, one spec template, specs as issue comments, change-size splitting'
-status: in-progress
+status: completed
 type: feature
 priority: normal
 created_at: 2026-09-21T14:46:51Z
-updated_at: 2026-10-09T19:33:45Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-ahvw
 ---
 
@@ -59,3 +59,5 @@ instance of "adopt it whole" colliding with a rule already paid for here.
 Released `in-progress` → `todo` on the owner's instruction (review session https://claude.ai/code/session_014Qj8wncQhqV52QGN1yZDnj). No git change to this bean since before 2026-09-26, no holder recorded, and no open working branch touches it; the sessions that held theme B (CI reliability, QA instruments, process) work stopped on the 2026-09-25 weekly usage limit. Nothing in the body was changed: re-claim with `bun run cat beans:claim <id>`.
 
 _2026-10-09T19:33:45Z_ — Claimed by claude/4kq7-spec-before-code — pushed to cat/cat-harness/beans so sibling sessions see it before this branch has a PR (bean 35nj).
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-09); commit 4c3eb4af is on cat-harness main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

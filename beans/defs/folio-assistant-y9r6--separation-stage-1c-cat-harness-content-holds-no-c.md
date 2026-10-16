@@ -4,7 +4,7 @@ title: 'Separation stage 1c: cat-harness content holds no code — block manifes
 status: todo
 type: task
 created_at: 2026-10-01T06:58:01Z
-updated_at: 2026-10-09T18:00:00Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-iirv
 blocked_by:
     - folio-assistant-8lcl
@@ -35,3 +35,5 @@ of the Done-when items is ticked, and measured on `litlfred/cat-harness` main
 remain under `content/docs/` (the exact count this bean set out to convert),
 plus 21 under `docs/assets/`. `check:content-code-free` does not exist.
 Still blocked by `8lcl` and, in practice, by `70lx` (reopened the same day).
+
+_2026-10-16T06:30:00Z_ — Confirmed open (Owner ruling 2026-10-16, item 5); the folio-assistant store copy is reopened to match. The block on `vj2p` stays. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

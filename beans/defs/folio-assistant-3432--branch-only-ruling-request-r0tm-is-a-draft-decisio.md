@@ -1,11 +1,11 @@
 ---
 # folio-assistant-3432
 title: 'BRANCH-ONLY RULING REQUEST: r0tm is a draft decision with a recommendation and a safe default, reachable from no ancestor of main'
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-30T11:33:55Z
-updated_at: 2026-10-01T06:51:19Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-ahvw
 ---
 
@@ -258,3 +258,5 @@ declared marker beyond the one the schema has carried all along.
        green (`dh4f`).
 3. [x] `bean-coordination` records the convention — to be amended with the
        `status: draft` half, which it currently does not name.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-09); commit fad1fc08 is on cat-harness main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

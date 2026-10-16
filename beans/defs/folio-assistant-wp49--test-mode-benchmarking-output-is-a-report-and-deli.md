@@ -1,11 +1,11 @@
 ---
 # folio-assistant-wp49
 title: 'TEST MODE: benchmarking output is a report, and deliberately not KG content'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-19T08:55:36Z
-updated_at: 2026-09-19T08:55:36Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-5a3l
 ---
 
@@ -51,3 +51,5 @@ and a different lifetime.
 test/results` — the sibling bean, and the opposite disposition. QA review output
 IS graph content because it is an assertion about the folio. Keeping the two
 beans adjacent is deliberate: the distinction is the interesting part.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09); commit 4898da1d is on cat-harness main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

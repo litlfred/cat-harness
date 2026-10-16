@@ -1,10 +1,10 @@
 ---
 # folio-assistant-xeer
 title: 'ISSUES ARE A THIRD TODO SOURCE: a queryable bean-issue link, and a QA report scoped to beans that OWE one'
-status: in-progress
+status: completed
 type: task
 created_at: 2026-09-20T17:16:01Z
-updated_at: 2026-10-09T19:34:03Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-8jt6
 ---
 
@@ -105,3 +105,5 @@ and the permission rule), `8jt6` (this epic), and `aazi` — which wants beans
 mapped to BPMNs, a second missing edge on the same node.
 
 _2026-10-09T19:34:03Z_ — Claimed by claude/xeer-bean-issue-links — pushed to cat/cat-harness/beans so sibling sessions see it before this branch has a PR (bean 35nj).
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed 2026-10-09; scripts/check-bean-issues.ts and scripts/tests/bean-issues.test.ts are on cat-harness-tools main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

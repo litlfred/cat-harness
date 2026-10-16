@@ -1,10 +1,10 @@
 ---
 # folio-assistant-81vy
 title: 'DEPLOYMENT AWARENESS: the agent must know its UI surface — gh-pages, local server, MCP or chat-only — because it decides which tools apply'
-status: todo
+status: completed
 type: task
 created_at: 2026-09-20T17:17:15Z
-updated_at: 2026-09-20T17:17:15Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-5a3l
 ---
 
@@ -89,3 +89,5 @@ about reach versus probing. **Decide that before adding probes.**
 capability; same degradation rule), `deployment-auth` (the existing skill on
 this surface), and the `github-api` / `github-connector` capabilities declared
 this session.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09); commit 213622e8 is on cat-harness main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

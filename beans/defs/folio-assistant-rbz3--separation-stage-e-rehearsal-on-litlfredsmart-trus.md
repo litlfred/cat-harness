@@ -1,11 +1,11 @@
 ---
 # folio-assistant-rbz3
 title: 'Separation stage E rehearsal on litlfred/smart-trust: gates run with 23 platform files; directory name is the instance identity'
-status: in-progress
+status: scrapped
 type: task
 priority: normal
 created_at: 2026-10-02T07:57:50Z
-updated_at: 2026-10-02T08:08:25Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-n3ni
 ---
 
@@ -46,3 +46,5 @@ Owner, verbatim: *"2"*, then *"do smart-base and smart-[trust]. also start movin
   - The page check **passes**: 299 pages.
   - `menu.json` is ingested from the fork's own `sushi-config.yaml`: 4 groups.
 - **Next:** move the smart-base harness definition to the repository root, per plan Q1(a). This waits on stage D (#1795).
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `scrapped` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: scrapped, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-09); folio-assistant#2320 merged 2026-10-08, folio-assistant#2518 merged 2026-10-10. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

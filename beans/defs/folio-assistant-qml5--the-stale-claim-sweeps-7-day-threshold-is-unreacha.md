@@ -1,12 +1,12 @@
 ---
 # folio-assistant-qml5
 title: The stale-claim sweep's 7-day threshold is unreachable — and three things it structurally cannot see
-status: todo
+status: completed
 type: bug
 priority: normal
 parent: folio-assistant-ahvw
 created_at: 2026-10-02T06:39:03Z
-updated_at: 2026-10-02T06:39:03Z
+updated_at: 2026-10-16T06:30:00Z
 ---
 
 Measured 2026-09-22 against `origin/main` @ `937c8d84`, by a dispatched sweep
@@ -83,3 +83,5 @@ Named rather than folded into the clean count, per the third-state rule:
 Each is a judgement rather than a defect to fix, which is why this is filed and
 not implemented. Related: `fgnw`, `cvab`, `zldg` (the block record this sweep
 was run to check, landed in #951).
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09) — Closed 2026-10-09: All three architectural decisions have been decided, documented, and codified in. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

@@ -1,11 +1,11 @@
 ---
 # folio-assistant-2yyh
 title: 'SMART-BASE HARNESS: the WHO digital-health corpus, its methodologies and its voices'
-status: in-progress
+status: completed
 type: epic
 priority: high
 created_at: 2026-09-22T08:35:00Z
-updated_at: 2026-09-22T08:58:46Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-vuip
 ---
 
@@ -30,3 +30,5 @@ A `voices` rule carries `{ libraryId, sectionId, pages, quote }` and `check:voic
 - [ ] the digital-transformation processes executable as BPMN
 - [ ] one or more voice profiles, every rule citing an ingested section
 - [ ] `qou/uploads/` cleared once the bytes have a home
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: all six boxes ticked 2026-10-10, re-measured on litlfred/smart-base main (folio-assistant store copy). Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

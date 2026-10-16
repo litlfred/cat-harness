@@ -1,10 +1,10 @@
 ---
 # folio-assistant-1dre
 title: 'PAGES SERVING PROBE: the instrument pages-publish-health counts, and it can only be built in CI because egress refuses every route from an agent'
-status: todo
+status: in-progress
 type: feature
 created_at: 2026-09-26T03:55:45Z
-updated_at: 2026-09-26T03:55:45Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-1xhc
 ---
 
@@ -89,3 +89,5 @@ check names a person.
 - [ ] The enforcement question above is answered from evidence, and
       `STAGING_WARN_BYTES`' basis says which of the two readings is true
 - [ ] It is NOT wired into `gates`, and the exemption states why
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `in-progress` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: todo, cat-harness: todo, cat-harness-tools: in-progress). Evidence: owner ruling 2026-10-11 (option 1, qa-reports) and lane progress: cat-harness#141 merged, cat-harness-tools#117/#140 and folio-assistant#2538 in flight. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

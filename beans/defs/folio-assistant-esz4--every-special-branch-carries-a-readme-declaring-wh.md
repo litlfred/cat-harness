@@ -1,10 +1,10 @@
 ---
 # folio-assistant-esz4
 title: Every special branch carries a README declaring what it is, how and when it was generated — and it is KG, not just prose
-status: todo
+status: completed
 type: feature
 created_at: 2026-10-03T08:19:43Z
-updated_at: 2026-10-03T08:19:43Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-fs43
 ---
 
@@ -129,3 +129,5 @@ had appended the owner's ruling to earlier the same day — already said not to
 centralise. **A file being where the data currently sits is not an argument for
 it being where the data belongs**, and an agent's own earlier record is
 evidence it is obliged to re-read before quoting the owner.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-12); commit 4e341b5 is on folio-assistant main, commit 63417923 is on cat-harness-tools main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

@@ -1,10 +1,10 @@
 ---
 # folio-assistant-3q47
 title: 'PROCESS WALK: deterministically set an agent''s context from the KG at each task'
-status: todo
+status: completed
 type: task
 created_at: 2026-09-19T17:04:01Z
-updated_at: 2026-09-19T17:04:01Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-ahvw
 ---
 
@@ -51,3 +51,5 @@ Without determinism there is nothing to compare against.
 - [ ] two runs at the same task under the same role produce the same
       context, asserted rather than observed
 - [ ] the bean(s) carried at a task are part of that context
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09); commit 92ce3e14 is on cat-harness main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

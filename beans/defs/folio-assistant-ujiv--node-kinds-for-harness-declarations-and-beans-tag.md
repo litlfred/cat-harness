@@ -1,10 +1,10 @@
 ---
 # folio-assistant-ujiv
 title: 'Node kinds for harness declarations and beans: tag the files (#2248 follow-up)'
-status: completed
+status: in-progress
 type: feature
 created_at: 2026-10-06T06:21:38Z
-updated_at: 2026-10-07T17:32:00Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-zzmr
 ---
 
@@ -30,3 +30,5 @@ Split out of #2248 on 2026-10-06, when the owner put repo separation first. #224
 
 ## Completed on landed evidence
 Landed on main in PR #2248 (Document kinds are node kinds; coverage counts only comments that owe a change-set (#2195 follow-up)).
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `completed` → `in-progress` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: in-progress, cat-harness: completed). Evidence: reopened 2026-10-10 on measurement (no bean carried $schema, no beans:retag); cat-harness#89/#90 and cat-harness-tools#36 merged since. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

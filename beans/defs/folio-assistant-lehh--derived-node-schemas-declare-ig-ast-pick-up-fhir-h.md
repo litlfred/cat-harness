@@ -1,11 +1,11 @@
 ---
 # folio-assistant-lehh
 title: 'DERIVED NODE SCHEMAS: declare ig-ast (pick up fhir-harness/schemas/ig-ast.ts), lake-cache and gh-pages as graphs with schemas'
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-04T13:52:13Z
-updated_at: 2026-10-05T17:18:13Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-nama
 ---
 
@@ -52,3 +52,5 @@ So:
 - The builds: `site-build-local` and `pages-publish` both satisfy `docs-generation`.
 
 _2026-10-05_ — Boxes 1, 2 and 5 restated to the owner's rulings and ticked (see each box; original text kept). One deviation to note plainly: box 2 originally asked for a schema of a cache branch's contents; the kind instead declares `validatorNotApplicable` (branch content is Lake's binary build output, and `derived`). Box 4 (ig-docs, uml-overview `storage`) is left to beans lbz8 and xsrv, which own those branches and are claimed.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-09); commit 8f55441e is on folio-assistant main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

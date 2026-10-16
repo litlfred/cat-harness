@@ -1,11 +1,11 @@
 ---
 # folio-assistant-h8ig
 title: beans:claim must write the claim through the branch store — after the cutover claiming is impossible, not just unsafe
-status: todo
+status: completed
 type: task
 priority: high
 created_at: 2026-10-04T07:12:15Z
-updated_at: 2026-10-04T07:12:15Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-fs43
 ---
 
@@ -35,3 +35,5 @@ A claim pushed to `main` today is a commit on a branch every session already fet
 - [ ] the `fell-back` state has an answer that does not assume the PR branch can hold the bean
 - [ ] staleness: a claim read against a mount says how old the mount is, or re-reads the tip — decided, not left implicit
 - [ ] measured as `2h76` measured its sibling case: two sessions claiming the same bean, and neither claim lost nor both reported success
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09); commit da3d5dfa is on folio-assistant main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

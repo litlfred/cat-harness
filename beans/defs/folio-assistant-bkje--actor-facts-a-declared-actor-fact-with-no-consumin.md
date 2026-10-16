@@ -1,10 +1,10 @@
 ---
 # folio-assistant-bkje
 title: 'ACTOR FACTS: a declared actor fact with no consuming process'
-status: in-progress
+status: completed
 type: task
 created_at: 2026-09-20T03:12:36Z
-updated_at: 2026-10-09T16:41:16Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-ahvw
 ---
 
@@ -44,3 +44,5 @@ a field ends an ambiguity; it does not create a consumer.**
 - [ ] the count it reports is recorded, so later runs can be compared
 
 _2026-10-09T16:41:16Z_ — Claimed by claude/bkje-actor-fact-consumer — pushed to cat/cat-harness/beans so sibling sessions see it before this branch has a PR (bean 35nj).
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed 2026-10-09; its test scripts/tests/actor-facts-audit.test.ts is on cat-harness-tools main (it moved there with the code). Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

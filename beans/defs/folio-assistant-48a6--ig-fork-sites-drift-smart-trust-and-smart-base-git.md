@@ -1,11 +1,11 @@
 ---
 # folio-assistant-48a6
 title: 'IG FORK SITES DRIFT: smart-trust and smart-base GitHub Pages lack the current harness chrome that smart-immunizations has'
-status: todo
+status: in-progress
 type: bug
 priority: high
 created_at: 2026-10-06T06:17:40Z
-updated_at: 2026-10-06T06:27:41Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-uhkv
 ---
 
@@ -37,3 +37,5 @@ Reported by the owner, 2026-10-06 (session https://claude.ai/code/session_012qoy
 - **#2237 is NOT the cause.** Even smart-immunizations is pinned before it, so all three need a pin bump past #2237 to match.
 - **Fix (outside folio-assistant):** add folio-site.yml and a pin bump to smart-trust's seed branch; seed smart-base; bump smart-immunizations' pin.
 - That writes to three other repositories and replaces their public gh-pages, so it waits for the owner's go. Session C has put the question to the owner.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `in-progress` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: in-progress, cat-harness: todo). Evidence: folio-assistant copy (2026-10-11) records the measurement and cause (items 1-3); the ch copy predates it. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

@@ -4,10 +4,8 @@ title: 'Separation stage 5: QA both new repositories from fresh sibling clones'
 status: todo
 type: task
 created_at: 2026-10-01T06:58:02Z
-updated_at: 2026-10-01T06:58:02Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-iirv
-blocked_by:
-    - folio-assistant-iai8
 ---
 
 Stage 5 of the split plan: QA from scratch. Fresh clones of bootstrap, bootstrap-tools, cat-harness, cat-harness-tools as siblings in an empty directory: `bun install --frozen-lockfile`, `tsc`, `bun test`, closure, the rehearsal, every `:check` in `cat-harness-tools/package.json`; link audit (0 broken, 0 leaving except declared URLs); names-outside audit (every remaining mention of folio-assistant or a higher instance intentional); licence files. Fixes found go to the new repositories, not back into the staged copies.
@@ -17,3 +15,7 @@ Plans (session scratchpad, 2026-10-01; to be committed with stage 0): `cat-harne
 ## Done when
 - [ ] `QA-cat-harness.md` and `QA-cat-harness-tools.md` written in the `QA-bootstrap{,-tools}.md` format, both passing
 - [ ] every fix QA found is a commit in the new repository, listed in the QA report
+
+_2026-10-15T16:49Z_ — Block lifted: `iai8` is completed (cutover PR #2517 merged 2026-10-08). The edge was the work plan's "Block never lifted" finding (owner, 2026-10-15). Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.
+
+_2026-10-16T06:30:00Z_ — The note above is mirrored from the folio-assistant store (commit 0b8d249), where this edge was lifted on 2026-10-15; lifted here too (Owner ruling 2026-10-16, item 9). Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

@@ -1,11 +1,11 @@
 ---
 # folio-assistant-p3ny
 title: 'STATE BRANCH P6: remove the moved state files from main — ONLY on the owner''s explicit go'
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-02T10:58:10Z
-updated_at: 2026-10-06T18:12:35Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-fs43
 blocked_by:
     - folio-assistant-h8ig
@@ -50,3 +50,5 @@ Everything else is ready and verified. `bun run cat state:seed --id beans --auth
 
 
 _2026-10-06_ — **OWNER'S EXPLICIT GO** (session_012qoycyCSGidZqW245vXhze): "remove todos/ beans/ whatever is in state branch". Sequenced after the repo-root cleanup PR (bean yywu); the remaining 9ofm prerequisites (h8ig claim writer, i8wf re-creation hazard, fwtz site rebuild) are checked first.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-10); commit 8f55441e is on folio-assistant main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

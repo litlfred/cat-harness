@@ -1,11 +1,11 @@
 ---
 # folio-assistant-hupw
 title: 'SMART separation cutover: retire smart-trust, smart-base, smart-immunizations, smart-ig to fsh-guts/separated and repair main'
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-06T19:10:49Z
-updated_at: 2026-10-07T19:48:41Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-n3ni
 ---
 
@@ -74,3 +74,5 @@ From #2326's author (0mpw), relayed by the coordinator:
 - Pages: `smart:pages` gate; `smart:pages:publish` in docs-site and feature-staging. Pages built from the mounts are byte-identical to main's committed copies (docs/README.md aside); OpenAPI pages identical too.
 - **Blocker: the smart-base fork pin 8e16a06d22fe lags main.** 1155 files differ from main's last smart-base (block-kinds still `folio-assistant-core:` namespaced, pre-#2307), and 4 files main had are absent (dak-l1-library.md, smart-guideline-create.md, extract-dak-l1-references.ts + test). smart-trust differs in 2 files (platform.ts, scripts/tests/pages-markdown.test.ts); smart-immunizations matches. Four bun tests stay red until the fork is synced to main's retired state and re-pinned: block-kind namespace, paper typing, context emission (fhir), the process-index committed page.
 - Subscriptions: all three need #2330 (on main kg:subscribe judges only the root declaration; smart-base dry run: not-a-substrate).
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-09); folio-assistant#2518 merged 2026-10-10. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

@@ -1,11 +1,11 @@
 ---
 # folio-assistant-q885
 title: 'DOCBLOCK CLAIMS: check:agents-claims reaches AGENTS.md but not script docblocks — check-theme-art.ts says nothing runs --check in CI, and CI runs it'
-status: todo
+status: completed
 type: task
 created_at: 2026-09-30T11:33:55Z
 parent: folio-assistant-ahvw
-updated_at: 2026-09-30T11:33:55Z
+updated_at: 2026-10-16T06:30:00Z
 ---
 
 ## The finding, and how it was measured
@@ -85,3 +85,5 @@ named script *is* or *is not* run by CI, cross-read against
 validate a detector against. Writing one now would be a detector whose only
 test case is the defect it was written from, which is the `vq8g` failure: it
 recognises one phrasing and reports the corpus clean.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09) — Closed 2026-10-09: - **Status**: Completed on evidence. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

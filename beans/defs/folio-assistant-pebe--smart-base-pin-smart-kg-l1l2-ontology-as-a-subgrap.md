@@ -1,11 +1,11 @@
 ---
 # folio-assistant-pebe
 title: 'smart-base: pin smart-kg (L1/L2 ontology) as a subgraph; document kinds cite its classes'
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-02T06:15:59Z
-updated_at: 2026-10-06T08:27:17Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-qvxh
 ---
 
@@ -26,3 +26,5 @@ smart-kg (fork of WorldHealthOrganization/smart-kg) is a T-Box only: L1 (16 clas
 - Item 4 stays open: dth.json cites 7 classes, l1-guideline.json 6, **l1.json 0** (and dak.json 0, which is not in this item).
 - Pin freshness: litlfred/smart-kg HEAD and WorldHealthOrganization/smart-kg HEAD are both `66a9b13` today, so the pin is current.
 - Note: the check needs the `bootstrap` / `bootstrap-tools` submodules; on a checkout without them it exits 1 on *Cannot find module ../../bootstrap-tools/scripts/check-closure.js* before reading any kind.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-09) — Closed 2026-10-09 (session https://claude.ai/code/session_01BJNRo4kh8U15HZVFDhYNJL): https://github.com/litlfred/smart-base/pull/16 merged (c4f8abe): l1.json's five sections carry modelledBy (4× `sgkg-l1#publication-sect. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

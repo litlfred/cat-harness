@@ -1,11 +1,11 @@
 ---
 # folio-assistant-2j2r
 title: 'cmsl follow-up: ~44 readers of decl.directories miss entries declared from within'
-status: todo
+status: completed
 type: bug
 priority: normal
 created_at: 2026-09-30T17:24:45Z
-updated_at: 2026-09-30T19:49:40Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-vke6
 ---
 
@@ -43,3 +43,5 @@ Method: every line mentioning `voices` REMOVED between origin/main and HEAD, per
 - INTENDED: voices index count 45 → 46 (the OpenAI voice).
 NOT fixable here: `bootstrap-tools/scripts/subgraph-readmes.ts` and `readme-graph-sections.ts` read the declaration through bootstrap's own reader, and `bootstrap-tools imports nothing above bootstrap` forbids reaching `instanceDirectories`. Today neither loses output (their gates are current); the helper would need a bootstrap-level twin if a from-within entry ever matters there.
 Remaining unaffected by construction: sites filtering a kind nothing declares from within (processes, code, uploads, docs, state kinds, the site dir).
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09); commit df35cf56 is on cat-harness main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

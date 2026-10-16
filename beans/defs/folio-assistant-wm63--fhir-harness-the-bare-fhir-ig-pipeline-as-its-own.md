@@ -1,11 +1,11 @@
 ---
 # folio-assistant-wm63
 title: 'FHIR-HARNESS: the bare FHIR IG pipeline as its own harness layer, between core and smart-base'
-status: in-progress
+status: completed
 type: feature
 priority: high
 created_at: 2026-09-22T19:07:23Z
-updated_at: 2026-10-04T12:41:46Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-uhkv
 ---
 
@@ -75,3 +75,5 @@ The unexpected one: `fhir-harness/tools/index.ts` declares Tools for DAK post-pr
 ## 2026-10-04
 
 #2062 merged 2026-10-04 with every gating check green on 572f7c2 (17 success, 2 skipped). That includes the Library strippers placed in fhir-harness/scripts/library-strip/ and izx8's baseline entries cleared. One item remains: the non-WHO IG demo, which is directed to the owner's local agent because the cloud container cannot reach packages.fhir.org.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-10); folio-assistant#2062 merged 2026-10-04, folio-assistant#2078 merged 2026-10-04, folio-assistant#2518 merged 2026-10-10. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

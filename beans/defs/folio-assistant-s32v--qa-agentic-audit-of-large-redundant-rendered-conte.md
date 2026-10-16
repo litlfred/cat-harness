@@ -1,10 +1,10 @@
 ---
 # folio-assistant-s32v
 title: 'QA: agentic audit of large redundant rendered content that can load from the KG'
-status: todo
+status: completed
 type: task
 created_at: 2026-10-01T16:16:36Z
-updated_at: 2026-10-01T16:16:36Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-uhkv
 ---
 
@@ -19,3 +19,5 @@ Owner, 2026-10-01, verbatim: "(need audit of large redundant rendered cotnet tha
 - [ ] an agentic review step that classifies each candidate as move / keep server-side / unsure, with a reason, against the visualizer skill
 - [ ] run once on the smart-trust site and the platform docs site, with the findings recorded here
 - [ ] wired as a QA axis or workflow step, so it is not a one-off script
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09); commit 9fc125f1 is on cat-harness main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

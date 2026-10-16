@@ -1,11 +1,11 @@
 ---
 # folio-assistant-ha24
 title: 'PHASE P1: IG navigation derived from sushi pages:/menu:, diffed against the Publisher''s — per IG and combined'
-status: todo
+status: completed
 type: feature
 priority: normal
 created_at: 2026-10-01T12:32:20Z
-updated_at: 2026-10-02T18:00:38Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-uhkv
 ---
 
@@ -45,3 +45,5 @@ In the owner's words: *"see bean about QA that every harness viewer needs to hav
 
 ## 2026-10-02: unblocked
 The second IG landed: `qrnz` is completed, and smart-immunizations is ingested at `smart-immunizations/fhir-artifact-index/`. The combined report is now ordinary work, no longer blocked, so the Done-when names the two IGs instead of the closed bean (`check:stale-paths`).
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09) — Owner ruling 2026-10-01: every phase renders equivalent to the standard IG render: In the owner's words: *"each phase needs to render equivalent to existing IG standard render"*. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

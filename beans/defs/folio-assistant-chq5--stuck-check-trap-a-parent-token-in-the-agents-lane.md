@@ -1,11 +1,11 @@
 ---
 # folio-assistant-chq5
 title: 'STUCK-CHECK TRAP: a parent token in the agent''s lane, a live position two lanes away — and one instance commits an absolute path'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-21T11:10:26Z
-updated_at: 2026-09-29T20:52:41Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-ahvw
 ---
 
@@ -209,3 +209,5 @@ re-entry, so the explanation is here rather than in a session log.
 
 
 _2026-09-29_ — **Re-parented `yj32` → `ahvw`** by subject, per todo-manager §"WHICH parent" (owner choice '1 2 3' on the LSI epic-filing proposal, bean ansc). A parent token in the wrong lane is BPMN process state, which ahvw owns.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09) — Closed 2026-10-09: - **Status**: Completed on verified evidence. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

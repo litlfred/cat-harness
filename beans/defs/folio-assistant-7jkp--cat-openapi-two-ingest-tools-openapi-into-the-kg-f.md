@@ -1,11 +1,11 @@
 ---
 # folio-assistant-7jkp
 title: 'cat-openapi: two ingest tools — OpenAPI into the KG from SOURCE (a repo) or from RENDERED (a published spec/site); smart-trust''s example comes from WHO smart-trust-network-gateway'
-status: todo
+status: completed
 type: feature
 priority: normal
 created_at: 2026-10-04T18:50:39Z
-updated_at: 2026-10-04T18:50:43Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-uhkv
 ---
 
@@ -27,3 +27,5 @@ Owner, 2026-10-04, verbatim: *"note for openapi bean: source code for openapi in
 - [ ] ingest-from-source reads the gateway repository's spec into `openapi` nodes
 - [ ] ingest-from-rendered reads a published spec or site into the same node shape
 - [ ] smart-trust's example records which source it came from
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-11); cat-harness#129 merged 2026-10-11, cat-harness#130 merged 2026-10-11, cat-harness-tools#101 merged 2026-10-11. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

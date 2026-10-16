@@ -1,11 +1,11 @@
 ---
 # folio-assistant-qzsq
 title: 'Subscriptions vs remote mounts of the same instance: kg:subscribe on cat-harness trips reference-direction; on the root it is refused because root needs the instance'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-07T12:46:47Z
-updated_at: 2026-10-07T14:07:32Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-fnx4
 ---
 
@@ -34,3 +34,5 @@ If no, then the mount is the relation, and the subscription plan for these forks
 
 - The owner has ruled.
 - Then either the three subscriptions are recorded with `kg:subscribe:check` green and no new reference-direction finding, or this bean is closed as "mount only" with that ruling cited.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-10); folio-assistant#2320 merged 2026-10-08. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

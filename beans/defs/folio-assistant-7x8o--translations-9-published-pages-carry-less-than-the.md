@@ -1,11 +1,11 @@
 ---
 # folio-assistant-7x8o
 title: 'TRANSLATIONS: 8 pairs may carry less than their source — but 7 of the original 9 were the extractor''s hard wrap, not the translators (see lvk9)'
-status: todo
+status: completed
 type: bug
 priority: normal
 created_at: 2026-09-26T08:57:09Z
-updated_at: 2026-10-06T19:40:00Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-bzyu
 ---
 
@@ -205,3 +205,5 @@ protects. **Blocked on the owner**, with one pair named rather than nine.
 `lvk9` was closed `completed` on 2026-10-06 (7x5n bookkeeping, PR #2317), on re-run evidence: `bun run cat translation:obsolete:check` exits 0 on main. Its fix is the list-item and blockquote extraction plus the 41 obsoleted msgids. The `blocked_by` edge is removed because it can never lift on its own (`check:bean-bodies` dead-blocker).
 
 **Nothing else changes.** The section above ("down to ONE pair") already records the re-measurement that `lvk9` was blocking, and what remains is **blocked on the owner's** call on that one pair, not on a bean. Status stays `todo`.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-11); folio-assistant#99 merged 2026-08-10, cat-harness#128 merged 2026-10-11, cat-harness-tools#99 merged 2026-10-11. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

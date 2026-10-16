@@ -1,11 +1,11 @@
 ---
 # folio-assistant-9wb0
 title: 'PUBLICATION IS A STATE, NOT A BOOLEAN: every asset carries id + version and sits in draft; formal publication is an undefined process'
-status: todo
+status: completed
 type: feature
 priority: normal
 created_at: 2026-09-23T21:29:44Z
-updated_at: 2026-10-05T13:39:00Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-vke6
 ---
 
@@ -67,3 +67,5 @@ Released `in-progress` → `todo` on the owner's instruction (review session htt
 ## 2026-10-05 — the publication rules now have one home (bean `4ak5` item 4)
 
 Which graph each instance publishes, where, under which IRI and schema, and what is stripped (fsh-guts, `published: false` skills, state-graph nodes) now live in `cat-harness/skills/kg/kg-core/instance-publication.md` §"What each instance publishes — graph, address, schema, and what is stripped". This bean's body is left as written; where it and that section disagree, the section is current.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09) — Closed 2026-10-09: - Verifiable Evidence:. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

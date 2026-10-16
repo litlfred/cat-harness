@@ -1,7 +1,7 @@
 ---
 # folio-assistant-kx0p
 title: 'catalogue visualiser: 6 wireframe findings'
-status: in-progress
+status: completed
 type: task
 priority: normal
 tags:
@@ -9,7 +9,7 @@ tags:
     - ui
     - visualiser-catalogue
 created_at: 2026-09-23T10:36:14Z
-updated_at: 2026-10-09T19:05:00Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-4ccr
 ---
 
@@ -81,3 +81,5 @@ Published: gh-pages `9255288` carries `cat-harness/catalogue/who-iris/index.html
 - who-iris's site was republished from ced6dff: gh-pages 402af64, 57 pages, 0 unresolved links, Pages run 38139255901 succeeded. `catalogue/` now carries the filter and sort.
 - cat-harness#157 (merged, 0a79e9c) re-draws `docs/wireframes/catalogue/` as the page is now. intent.md records the state of all six findings: each is fixed or gone. `wireframe:check` passes at both viewports.
 - The one thing left on this bean is a library viewer on who-iris's own site, so that "held as" can link somewhere. That is turh's work, and the bean can close with it.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-11); commit d09d0a84 is on cat-harness main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

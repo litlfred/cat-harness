@@ -1,10 +1,10 @@
 ---
 # folio-assistant-f1e1
 title: Identity of the person typing, outside a GitHub environment — needs WAY more work
-status: todo
+status: in-progress
 type: feature
 created_at: 2026-10-06T18:50:25Z
-updated_at: 2026-10-06T18:50:25Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-7x5n
 ---
 
@@ -23,3 +23,5 @@ What landed (bean ar1s P1, this session): interaction preferences are keyed by G
 
 ## Done when
 On every supported host, with or without a forge token, the session states who it is talking to (or that it could not determine) from one resolver shared by preferences and permissions.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `in-progress` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: in-progress, cat-harness: todo). Evidence: owner ruling 2026-10-10; cat-harness-tools#157 (28c6dc4) and cat-harness#178 merged; parts still open. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

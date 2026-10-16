@@ -1,10 +1,10 @@
 ---
 # folio-assistant-smbc
 title: 'Separation stage 3: owner authorises seeding litlfred/cat-harness and litlfred/cat-harness-tools'
-status: todo
+status: scrapped
 type: task
 created_at: 2026-10-01T06:58:02Z
-updated_at: 2026-10-01T06:58:02Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-iirv
 blocked_by:
     - folio-assistant-ho66
@@ -23,3 +23,7 @@ Plans (session scratchpad, 2026-10-01; to be committed with stage 0): `cat-harne
 ## Measured 2026-10-04 — `litlfred/cat-harness` is empty
 
 `git clone --depth 1 https://github.com/litlfred/cat-harness` → *"warning: You appear to have cloned an empty repository"*; `git rev-parse HEAD` fails (no commits). Same result for `litlfred/cat-harness-test`, which the `zmdo` proof then used. Recorded by session https://claude.ai/code/session_01Ga3HjmX3ag9vTgZWDSmsFi. (`litlfred/cat-harness-tools` is not re-measured here.)
+
+## Reasons for Scrapping
+
+Superseded by `iai8` (Owner ruling 2026-10-16, item 8: "8b"). What this stage was to authorise has happened: `iai8` seeded litlfred/cat-harness and litlfred/cat-harness-tools (PR #2517, merged 2026-10-08), and the owner has since consented to pins past the seed (`trust.consent` in `index.config.json`, 2026-10-09). The owner chose to scrap this bean rather than to supply the dated quote its first box asks for, so the box stays unticked and the bean closes as superseded, not completed. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

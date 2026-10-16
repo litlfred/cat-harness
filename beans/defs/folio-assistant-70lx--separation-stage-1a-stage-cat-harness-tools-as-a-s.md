@@ -5,7 +5,7 @@ status: in-progress
 type: task
 priority: normal
 created_at: 2026-10-01T06:58:00Z
-updated_at: 2026-10-10T12:00:00Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-iirv
 blocked_by:
     - folio-assistant-pyds
@@ -145,3 +145,10 @@ Still open:
 - who-iris's five gates and 97 tests at the repinned closure (who-iris #27).
 
 Closing the box needs one of two things: a gate list the gates runner reads from the declarations rather than from a workflow file, or an owner ruling that the per-part measurement stands in for it.
+
+## 2026-10-16 — investigated, stays in progress (Owner ruling 2026-10-16, item 4)
+
+The copies disagreed (folio-assistant store: completed 2026-10-07 "on landed evidence"; cat-harness store: reopened 2026-10-09). Reconciled to **in-progress** in both. What is unresolved, precisely:
+- **Falsifier 2** (`bun test` pass count equal to the stage-0 baseline) is unticked: the 2026-10-09 measurement found 4 new failures; the two `harness-state` ones were fixed by cat-harness#83, and `layout-norms` "at least one pair" and `graph-index` were explained but not shown pre-existing on the base SHA.
+- **`bun run cat gates --all`** is unticked. On cat-harness-tools main `scripts/gates.ts` still derives its gate list from `.github/workflows/code-quality-gates.yml` (`scripts/lib/gates-workflow.ts`). No owner ruling accepting the part-by-part measurement in its place was found in any bean store, in the PRs or in the commits of cat-harness, cat-harness-tools or folio-assistant main. Closing needs that ruling, or a `gates --all` run (for example from the folio-assistant index checkout, which carries the workflow) with each failure shown pre-existing.
+Its blocks on other beans stay until then. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

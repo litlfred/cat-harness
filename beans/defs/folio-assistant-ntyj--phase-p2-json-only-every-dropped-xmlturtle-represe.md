@@ -1,11 +1,11 @@
 ---
 # folio-assistant-ntyj
 title: 'PHASE P2: JSON-only — every dropped XML/Turtle representation recorded as a refusal, per IG and combined'
-status: in-progress
+status: completed
 type: feature
 priority: normal
 created_at: 2026-10-01T12:32:21Z
-updated_at: 2026-10-02T18:00:38Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-uhkv
 ---
 
@@ -54,3 +54,5 @@ In the owner's words: *"Keep P2 as approved: drop XML and Turtle, and treat the 
 
 ## 2026-10-02: unblocked
 The second IG landed: `qrnz` is completed, and smart-immunizations is ingested at `smart-immunizations/fhir-artifact-index/`. The combined report is now ordinary work, no longer blocked, so the Done-when names the two IGs instead of the closed bean (`check:stale-paths`).
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-09) — Owner ruling 2026-10-01: every phase renders equivalent to the standard IG render: In the owner's words: *"each phase needs to render equivalent to existing IG standard render"*. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

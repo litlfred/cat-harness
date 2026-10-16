@@ -1,11 +1,11 @@
 ---
 # folio-assistant-r5wu
 title: 'SUBGRAPH NODE PATTERN, follow-up: convert the other publishers of a declared subgraph''s contents to the declared Subgraph node + inSubgraph'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-03T08:58:19Z
-updated_at: 2026-10-03T10:06:52Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-fs43
 ---
 
@@ -24,3 +24,5 @@ Audit (2026-10-03) of generators that mint their OWN container for a declared di
 
 ## Done when
 Every publisher above either follows the pattern (its row in subgraph-node.test.ts passes) or carries a recorded reason it is not a subgraph's contents.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09); commit 5dbddae8 is on cat-harness main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

@@ -1,11 +1,11 @@
 ---
 # folio-assistant-2ngl
 title: 'MODE: developer — local server, CLI tools, one model for every workflow'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-19T08:55:36Z
-updated_at: 2026-09-19T08:55:36Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-5a3l
 ---
 
@@ -55,3 +55,5 @@ than refusing.
 ## Not doing
 
 Building a CLI for anything. Measuring first — the gap may be empty.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09); commit b158ec54 is on cat-harness main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

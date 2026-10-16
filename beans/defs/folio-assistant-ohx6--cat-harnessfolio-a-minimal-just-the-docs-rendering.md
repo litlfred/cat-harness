@@ -1,11 +1,11 @@
 ---
 # folio-assistant-ohx6
 title: 'CAT-HARNESS/FOLIO: a minimal just-the-docs rendering describing folio, and folio/render for the rendering skills and tools'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-20T14:28:56Z
-updated_at: 2026-09-20T15:09:14Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-vke6
 ---
 
@@ -65,3 +65,5 @@ folio repository. The [platform-boundary rule](../../AGENTS.md) is the test.
 - [ ] `cat-harness/folio/render/` holds the rendering skills and tools, declared
       as a subgraph
 - [ ] The direction question above is answered by the owner rather than assumed
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-12); cat-harness#161 merged 2026-10-12, cat-harness-tools#144 merged 2026-10-12. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

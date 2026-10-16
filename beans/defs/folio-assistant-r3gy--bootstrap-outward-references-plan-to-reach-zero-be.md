@@ -1,11 +1,11 @@
 ---
 # folio-assistant-r3gy
 title: 'BOOTSTRAP OUTWARD REFERENCES: plan to reach zero before the repo split'
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-29T18:18:26Z
-updated_at: 2026-09-29T22:15:52Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-vke6
 ---
 
@@ -127,3 +127,5 @@ Verbatim: *"skill determine the installed harnesses in a repo (intput = repo loc
 - **D2:** bootstrap `$schema` tags resolve inside bootstrap; ledger schema added; leak test allows no `folio-*/v1`.
 - **E:** owner's SEMVER rule, 2026-09-29: *"2 used for human narrative centric content, 3 for agentic … make variables of version available to minimize drift. include in json/jsonld/schema rendering pipeline too"*. `iriBase` in bootstrap.json (one place); agent IRIs `<iriBase><version>/`, person-facing `<iriBase>v<major>/`; `iri:sync` + gate; `$schema` tags carry the schema's semver (`model-registry/1.0.0`); `release` variables in templates and `site.data.harness.releases`. Skills updated.
 - **Deliberately not moved:** the exported document `@id` (`bootstrap.jsonld`) — kg-export mints it from where it is served; moves when litlfred/bootstrap publishes (`40fl`). GitHub tree links in bootstrap.json also switch at seeding.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-09); commit 28283d2b is on folio-assistant main, commit c16e4613 is on bootstrap-tools main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

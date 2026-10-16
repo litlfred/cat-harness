@@ -1,11 +1,11 @@
 ---
 # folio-assistant-xpcu
 title: 'REGEN + GATES SPEED-UP: input-hash staleness skipping and a parallel worker pool for regen-after-merge and gates'
-status: in-progress
+status: completed
 type: feature
 priority: high
 created_at: 2026-10-01T17:26:24Z
-updated_at: 2026-10-06T19:35:03Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-7x5n
 ---
 
@@ -87,3 +87,5 @@ The first regen of the warm round 'regenerated' uml:overview from a QA copy it h
 - **regen warm:** 179 s with 62 of 121 pairs skipped (231 s and 13 before). Cold: 404 s.
 - **gates on the same tree:** 136 of 251 gates skipped (10 before).
 - **gates wall time:** 1840 s, nearly unchanged. `bun test` (935 s) and `check:cat-harness-standalone` (338 s) are serial and not skippable, and together they are 1273 s of that. The next speed-up is theirs: v3nf, and test sharding. Details are in bean f017.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-10) — Closed 2026-10-10 on landed evidence: All 4 child beans completed and landed on main:. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

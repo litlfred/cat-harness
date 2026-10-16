@@ -1,11 +1,11 @@
 ---
 # folio-assistant-2osx
 title: Each instance publishes its own ns document for the block-kind classes it mints
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-06T16:41:00Z
-updated_at: 2026-10-06T17:23:55Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-7x5n
 ---
 
@@ -19,3 +19,5 @@ Follow-up to the vocabulary move (bean 0r7u, owner rulings 2026-10-06): block-ki
 
 ## Done when
 Dereferencing any block-kind class IRI returns a document defining it, published by the instance that owns the kind.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo). Evidence: closed in the folio-assistant store copy (2026-10-09); commit 3ca44abd is on cat-harness main, commit d9deb7f6 is on folio-assistant main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

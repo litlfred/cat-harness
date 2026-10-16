@@ -1,11 +1,11 @@
 ---
 # folio-assistant-c65n
 title: 'VALIDATE incremental IG rebuild on smart-immunizations: BCG schedule test change — AST rebuild, cone, just-the-docs incremental re-render, before/after screenshots'
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-06T06:29:03Z
-updated_at: 2026-10-06T06:35:41Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-uhkv
 ---
 
@@ -80,3 +80,5 @@ The rendered page loads the compiled resource in the browser (`ast-resource.js`)
 - jekyll incremental re-render: **3.0 s**, down from 7.0 s (full build 13.7 s).
 
 All six `*:pages:check` gates show the committed pages unchanged; they come from published indexes, not AST builds.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-09); commit 5efdb2a4 is on folio-assistant main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.

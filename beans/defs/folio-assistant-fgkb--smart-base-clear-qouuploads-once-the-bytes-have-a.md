@@ -1,11 +1,11 @@
 ---
 # folio-assistant-fgkb
 title: 'smart-base: clear qou/uploads once the bytes have a home'
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-22T08:35:28Z
-updated_at: 2026-10-03T15:59:20Z
+updated_at: 2026-10-16T06:30:00Z
 parent: folio-assistant-2yyh
 ---
 
@@ -135,3 +135,5 @@ Re-verified on folio-assistant main `f10ad6db4107fb6c5c9f0d8ee7766436206db3f9` b
 Every digest starts with the prefix the 2026-09-22 pass recorded for the qou file.
 
 **Still owed before anything is removed from qou:** the full sha256 of each of the eight qou files must equal the digest above. This session cannot reach litlfred/qou: `add_repo` was refused by the permission classifier. Steps (b, qou side) and (c, the qou PR, which the owner merges personally) are **blocked on qou access**. If any digest differs, nothing is removed.
+
+_2026-10-16T06:30:00Z_ — Store reconciliation: status `in-progress` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: in-progress). Evidence: closed in the folio-assistant store copy (2026-10-10); commit 88da63c is on folio-assistant main. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.
