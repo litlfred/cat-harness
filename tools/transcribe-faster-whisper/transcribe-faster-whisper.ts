@@ -1,0 +1,33 @@
+import { toolFactory } from "../../schemas/tool-folders.js";
+import { defineTool } from "../../schemas/tool.js";
+
+export default toolFactory((t) =>
+  defineTool({
+    id: "transcribe-faster-whisper",
+    title: "Transcribe audio — faster-whisper (option, not installed)",
+    description:
+      "Transcribe an audio file with faster-whisper (the Whisper models on CTranslate2), from Python. A declared OPTION: not installed in this repository.",
+    install: { cli: "pip install faster-whisper (model weights download on first use)" },
+    invoke: { shell: "python3 -m faster_whisper" },
+    requires: { runtime: ["python3", "faster-whisper"], network: true },
+    remedies: [
+      { host: "huggingface.co", tool: "transcribe-whisper-cpp" },
+      { host: "pypi.org", tool: "transcribe-whisper-cpp" },
+    ],
+    io: {
+      inputs: [
+        { name: "file", schema: t("RepoPath"), required: true, arg: { positional: 0 } },
+        { name: "language", schema: t("Locale"), required: false, arg: { flag: "--language" } },
+      ],
+      outputs: [{ name: "transcript", schema: t("RepoPath") }],
+    },
+    satisfies: ["library-ingestion"],
+    selection: {
+      when:
+        "When the ingestion pipeline should stay in Python beside the PDF arms and `schemas/python-deps.ts` is the one place dependencies are declared. Same models as whisper.cpp, typically faster on CPU.",
+      limits:
+        "Weights download on first use unless pre-fetched — a network dependency in a gate that must run offline. A heavier wheel set than anything in `requirements.txt` today.",
+      cost: "Not installed. A pip install of several wheels plus the model; the CI install time must be re-measured before it is gated (`r279`).",
+    },
+  }),
+);

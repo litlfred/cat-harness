@@ -105,9 +105,12 @@ export const ToolRenderSchema = z
   });
 export type ToolRender = z.infer<typeof ToolRenderSchema>;
 
-/** The last segment of a schema IRI — `…#Url` or `…/Url` both give `Url`. */
+/**
+ * The last segment of a schema IRI — `…#Url`, `…/Url` and the per-type
+ * document `…/tool-types/Url.schema.json` (bean `tdir`) all give `Url`.
+ */
 export function schemaTypeName(iri: string): string {
-  return iri.split(/[#/]/).filter(Boolean).pop() ?? iri;
+  return (iri.split(/[#/]/).filter(Boolean).pop() ?? iri).replace(/\.schema\.json$/, "");
 }
 
 /** A schema type a hint may only be declared on, where it is restricted. */
@@ -212,6 +215,16 @@ export const ToolInstallSchema = z.object({
  * and the refinement on the schema below.
  */
 export const ToolInvokeSchema = z.object({
+  /**
+   * The command a caller types, from the repository root.
+   *
+   * When the command is code of a layer ABOVE the one defining the Tool, it is
+   * named by a script KEY, `bun run cat <key> [args…]`, and the implementing
+   * layer declares the command for that key in its `package.json`
+   * `checkoutScripts` (`schemas/script-table.ts`). Owner, 2026-10-15 ("J2"):
+   * the definition never names the layer above it, and the key is resolved
+   * from that declaration when the command runs.
+   */
   shell: z.string().optional(),
   container: z.string().optional(),
   mcp: z.object({ tool: z.string().min(1) }).optional(),

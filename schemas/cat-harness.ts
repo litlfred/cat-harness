@@ -113,7 +113,7 @@ import {
 } from "./kg-node";
 import { NS_PREFIXES, propertyIri, termIri } from "./namespaces";
 import { StickyContributionSchema, type StickyContribution } from "./sticky-contribution";
-import { BuiltAtPublishListSchema, type BuiltAtPublish } from "./built-at-publish";
+import { BuiltAtPublishListSchema, isBuiltAtPublish, type BuiltAtPublish } from "./built-at-publish";
 import { JsonldPrefixTableSchema, type JsonldPrefixTable } from "./jsonld-prefixes";
 import { BranchPrefixSchema, KeyedBySchema, SubgraphSourceSchema, contentIsOffCheckout, type SubgraphSource } from "./subgraph-source";
 
@@ -5488,6 +5488,14 @@ export const AGENT_INSTRUCTIONS_ROLE = "agent-instructions";
 export const INSTANCE_README_ROLE = "instance-readme";
 
 /**
+ * The role of an instance's node-kind ratchet baseline: the families IT owns
+ * that may stay unkinded (`schemas/node-kind-index.ts`, {@link UnkindedBaselineKind}
+ * there). Owner, 2026-10-15: one baseline per layer, so a layer's own families
+ * are judged by its own commit, and the cross-layer table is built at publish.
+ */
+export const UNKINDED_BASELINE_ROLE = "unkinded-baseline";
+
+/**
  * How a declared asset REACHES the agent that needs it.
  *
  * Two values, and the line between them is mechanical rather than a matter of
@@ -5586,6 +5594,15 @@ export const ASSET_ROLES: Readonly<Record<string, AssetRoleDef>> = {
   [AGENT_INSTRUCTIONS_ROLE]: {
     purpose:
       "What a cold agent DOES here, in order — augmenting the README rather than restating it, and read as a file so no injection budget truncates it.",
+    layer: "context",
+    delivery: "file",
+  },
+  // `context`: no process writes it. It shrinks when an author runs
+  // `node-kinds` after kinding a family, and grows only by the deliberate
+  // `--accept-unkinded` — both authoring acts, outside any process.
+  [UNKINDED_BASELINE_ROLE]: {
+    purpose:
+      "The families THIS instance owns that may stay without a node kind — the ratchet `node-kinds:check` holds them to, so a new unkinded family fails.",
     layer: "context",
     delivery: "file",
   },
@@ -6160,6 +6177,15 @@ export function isPerInstance(
  * marker: it is not at risk of vanishing, so a file explaining that it might
  * would be both redundant and wrong.
  */
+/** The instance's declared publish-time artefacts; none when it declares none or cannot be read. */
+function publishTimeOf(instanceRoot: string): BuiltAtPublish[] {
+  try {
+    return readDeclaration(instanceRoot)?.builtAtPublish ?? [];
+  } catch {
+    return [];
+  }
+}
+
 export function materialiseDirectories(
   dirs: ResolvedDirectory[],
   instanceRoot: string,
@@ -6202,6 +6228,12 @@ export function materialiseDirectories(
     // is not "missing", so `--check` does not list it either.
     // Any source off the checkout, not only `storage` (bean `l4ay`).
     if (contentIsOffCheckout(dir)) continue;
+    // BUILT AT PUBLISH (owner, 2026-10-14, "B1"): the instance declares it
+    // never commits this directory, and `derive:publish` writes it. Creating
+    // it here would commit a keep marker into a path the instance's own
+    // `.gitignore` keeps out, and its absence before a publish build is its
+    // correct state, so `--check` does not list it as missing either.
+    if (dir.own === true && dir.scope !== "repository" && isBuiltAtPublish(publishTimeOf(rootAbs), dir.path.replace(/\/*$/, "/"))) continue;
     const base = rootForScope(rootAbs, dir.scope);
     const abs = resolve(base, dir.path);
     const rel = relative(base, abs);

@@ -213,8 +213,11 @@ const ContextUrl = z.string().url();
 /**
  * The file's own statement that a generator wrote it — a top-level
  * `_generated`, the convention `check:reference-direction` reads (bean
- * `ws99`). Top level only: a member node never carries it. Not a JSON-LD
- * term, so a JSON-LD reader drops it on expansion and the graph is unchanged.
+ * `ws99`). Top level only: a member node never carries it. It IS a JSON-LD
+ * term — `ns/subgraph/v1.jsonld` maps `_generated` to `ns#generatedNote`,
+ * `@type: @json` — because an unmapped key is not silently dropped: a
+ * processor reports it as an `invalid property`, and `publish-verify`'s
+ * `jsonld-expand` failed every subgraph file on it (folio-assistant#2545).
  */
 const GeneratedNote = z.string().min(1);
 

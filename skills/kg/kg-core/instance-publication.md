@@ -254,6 +254,45 @@ Three rules follow from the table:
   output never takes the instance's identity
   ([`kg-separation`](../graph-management/kg-separation.md) §"The pair").
 
+### The JSON-LD context: `<iriBase>ns/context/v1.jsonld`, published by the instance
+
+One path sits outside the versioned tree: the instance's `@context`, generated
+from the prefixes its own documents use (`gen-instance-contexts.ts`). It is
+`@protected`, so a change that rebinds a term is a new `v2` beside it, never an
+edit under a cached URL. **Owner, 2026-10-15** (bean `folio-assistant-63q4`):
+each repository publishes its own context, through ONE reusable workflow, and
+**the initiation process sets that up**.
+
+**Where its `ns` is a document, the context goes beside it.** Owner,
+2026-10-15 ("D1"): an instance holding its vocabulary as `ns.jsonld` at its
+root (bootstrap) has `ns` staged as a FILE (the extensionless `ns`, and
+`<version>/ns`), so `ns/` cannot also be the directory `ns/context/v1.jsonld`
+needs, and a static host cannot serve both. Its context is
+`<iriBase>ns.context.v1.jsonld`, same `v1` rule. The generator decides by what
+the instance holds (`contextPathFor` in `gen-instance-contexts.ts`), the
+instance's `builtAtPublish` and `.gitignore` name that path, and the workflow
+publishes at the path the build reports.
+
+- **The workflow** is cat-harness-tools'
+  `.github/workflows/layer-publish-context.yml`. A repository calls it from a
+  `publish-context.yml` of one `uses:` line, on push to `main`, with
+  `contents: write` (`path-in-repo:` when the instance is a sub-directory, as
+  smart-base's is). It builds only the caller's context, judges only the
+  caller's findings, and writes that one path to the caller's `gh-pages`. It
+  skips with a notice when the instance declares no `iriBase` or has no
+  `.jsonld` documents, and it creates `gh-pages` when it is absent.
+- **A site that rebuilds `gh-pages` must keep `ns/`.** An IG deploy or a
+  folio site that cleans the branch lists `ns` in its `clean-exclude`, or the
+  next deploy deletes the context.
+- **Initiation.** `init-folio --instance` writes the caller and declares
+  `iriBase` as `https://<owner>.github.io/<repo>/` from a github.com `origin`
+  (`--iri-base` to choose another). With no such remote it invents none: the
+  workflow skips until one is declared.
+- **The one step that stays the owner's.** `GITHUB_TOKEN` cannot switch Pages
+  on. After the first run: Settings → Pages → *Deploy from a branch:
+  `gh-pages`, `/ (root)`*. Then `curl -sI <iriBase>ns/context/v1.jsonld`
+  answers 200 with `content-type: application/ld+json`.
+
 `publish-instance-files.ts` is the step that copies an instance's files into a
 site today — each file as it sits, `.md` also as `.html`, `README.md` as
 `index.html`. It serves bootstrap under this site until bootstrap's own

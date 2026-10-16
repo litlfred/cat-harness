@@ -29,7 +29,7 @@
   So, FIRST THING in this include, before every stylesheet it emits:
 
   1. decide the scheme -- the reader's stored choice (`fa-color-scheme`, the
-     key `docs-ui.js` writes), else the OS, else DARK -- and put it on
+     key `docs-ui.js` writes), else the OS, else LIGHT -- and put it on
      `<html data-fa-scheme>` before the body is parsed, so no rule keyed on
      it ever paints the wrong way first;
   2. if that is not the configured scheme, switch the theme's sheet NOW,
@@ -50,6 +50,10 @@
   on the critical path of every page. It interpolates nothing into markup,
   and a CSP added later needs this block's hash.
 
+  ELSE LIGHT -- owner, 2026-10-15, "follow os else light". The declared
+  `color_scheme` only names the sheet shipped first. The ONE source: tools'
+  `scheme-css.ts` lifts this script; `docs-ui.js` reads its attribute.
+
   NO LIQUID between the markers. `first-paint-scheme.e2e.ts` lifts these
   exact bytes into a replica page, so the spec tests what ships.
 
@@ -63,7 +67,7 @@
   own piece of work, not a side effect of this one.
 -->
 <!-- fa-first-paint:begin -->
-<script>(function(){var d=document.documentElement,s=null,c="dark";try{s=localStorage.getItem("fa-color-scheme")}catch(e){}if(s!=="light"&&s!=="dark"){s=window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}try{var n=document.getElementById("fa-site-scheme");if(n)c=JSON.parse(n.textContent).scheme==="light"?"light":"dark"}catch(e){}d.setAttribute("data-fa-scheme",s);var j=window.jtd;if(s!==c&&j&&typeof j.setTheme==="function"){try{j.setTheme(s)}catch(e){}}})();</script>
+<script>(function(){var d=document.documentElement,s=null,c="dark";try{s=localStorage.getItem("fa-color-scheme")}catch(e){}if(s!=="light"&&s!=="dark"){s="light";try{if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)s="dark"}catch(e){}}try{var n=document.getElementById("fa-site-scheme");if(n)c=JSON.parse(n.textContent).scheme==="light"?"light":"dark"}catch(e){}d.setAttribute("data-fa-scheme",s);var j=window.jtd;if(s!==c&&j&&typeof j.setTheme==="function"){try{j.setTheme(s)}catch(e){}}})();</script>
 <style>html{background-color:#27262b}html[data-fa-scheme="light"]{background-color:#ffffff}</style>
 <!-- fa-first-paint:end -->
 <!-- PROSE HERE IS NOT FREE: these are HTML comments, so every byte ships on
@@ -352,21 +356,9 @@
 -->
 <script type="application/json" id="fa-navbar-row">{{ site.data.harness.navbar | jsonify }}</script>
 {%- comment -%}
-  THE INSTANCE THIS PAGE IS INSIDE, for the rail's PAGES and FOLDERS (#1902).
-  `railScopes` is sorted longest href first by `sync-docs-harness.ts`, so the
-  first prefix of `page.url` that matches is the innermost instance. `page.url`
-  carries no baseurl, so a staging prefix cannot make it miss. Nothing is
-  emitted on a page inside no instance: the rail then lists the whole site.
+  `#fa-rail-scope` (#1902) is gone (2026-10-15): the rail pass scopes Pages and
+  Folders on the server (cat-harness-tools `railScopesOf`).
 {%- endcomment -%}
-{%- assign _fa_scope = nil -%}
-{%- for _s in site.data.harness.railScopes -%}
-{%- assign _n = _s.href | size -%}
-{%- assign _pre = page.url | slice: 0, _n -%}
-{%- if _pre == _s.href -%}{%- assign _fa_scope = _s -%}{%- break -%}{%- endif -%}
-{%- endfor -%}
-{%- if _fa_scope %}
-<script type="application/json" id="fa-rail-scope">{{ _fa_scope | jsonify }}</script>
-{%- endif %}
 
 <!-- NOT MOVED, deliberately. Measured, with the reason and the condition for
      moving it, in assets/harness/site.json's front matter. -->

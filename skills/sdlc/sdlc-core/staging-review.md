@@ -43,7 +43,11 @@ features being edited or shown"*, and the request it repeats, beans `u1os`,
    the change sits (`…/STAGING/<slug>/<path>#<anchor>`), each with the same
    page on main as **before** (or "new page"). The site root is the right link
    only for a change to the landing page itself.
-3. **The pages come from the change, not from judgement.** Read
+3. **The pages come from the change, not from judgement.** Start from the
+   preview's changes page, `…/STAGING/<slug>/changes/`, when the build wrote
+   one: the changed sources, the rendered files in their dependency cone, and
+   the files that differ from the published root but were NOT in the cone
+   (each of those is a page to list, and a cone defect to report). Otherwise read
    `rendered-impact.json` beside the preview when the staging build wrote one
    (skill [`rendered-impact`](rendered-impact.md)), or run the renderer's
    impact Tool for the branch. Never build a URL from a source path: look each

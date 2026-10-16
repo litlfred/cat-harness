@@ -434,7 +434,12 @@ export const LibraryDocumentViewSchema = z
     $schema: z.literal("folio-library-document/v1"),
     id: z.string().min(1),
     title: z.string().nullable(),
-    pages: z.number().int(),
+    /** Which structure variant: only a PDF has pages and a TOC (library-document.ts). */
+    variant: z.enum(["pdf", "notebook", "text"]).optional(),
+    /** Unknown is not zero: an older ingestion records no page count. */
+    pages: z.number().int().nullable(),
+    /** When `pages` is unknown, the last page a section reaches. */
+    pagesCovered: z.number().int().optional(),
     tocSource: z.string().nullable(),
     tocMethod: z.string().nullable(),
     toc: z.array(
@@ -607,7 +612,21 @@ export const VoicesIndexSchema = z
 export const FolioGraphProjectionSchema = z
   .object({
     ...envelope("folio-graph-projection/v1"),
-    directories: z.array(z.object({ dir: z.string(), present: z.boolean(), nodes: Count }).strict()),
+    directories: z.array(
+      z
+        .object({
+          dir: z.string(),
+          present: z.boolean(),
+          nodes: Count,
+          /**
+           * The list view (bean ohx6): every file the directory holds, as the
+           * harness's own `folioFileList` answers, with a formatted size. Empty
+           * for an absent directory.
+           */
+          files: z.array(z.object({ path: z.string(), bytes: Count, size: z.string() }).strict()),
+        })
+        .strict(),
+    ),
     nodes: z.array(
       z
         .object({
