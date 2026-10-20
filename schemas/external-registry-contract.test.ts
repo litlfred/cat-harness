@@ -23,6 +23,8 @@ import { XMLParser } from "fast-xml-parser";
 const ROOT = resolve(import.meta.dir, "..");
 
 interface Role { id: string; actorKinds: string[]; skills: string[] }
+// declared-path-literal: a contract test whose subject IS these named nodes — the role,
+// actor, capabilities and requirement set one external party's contract is made of.
 const role = JSON.parse(readFileSync(join(ROOT, "scenarios/roles.json"), "utf-8")).roles.find((r: Role) => r.id === "external-registry") as Role;
 
 type Node = Record<string, unknown>;
@@ -51,6 +53,8 @@ function bpmnFiles(dir: string): string[] {
   });
 }
 
+// declared-path-literal: a contract test whose subject IS these named nodes — the role,
+// actor, capabilities and requirement set one external party's contract is made of.
 const doc = parser.parse(readFileSync(join(ROOT, "processes/kg/kg-to-portal.bpmn"), "utf-8"));
 const lanes = all(doc, "lane");
 const portal = lanes.find((l) => l["@partitionElementRef"] === "external-registry")!;
