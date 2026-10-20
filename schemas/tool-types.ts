@@ -112,6 +112,23 @@ export const ChangeProposalNumberSchema = z
   .describe("A change-proposal number — a pull request on GitHub, a merge request on GitLab");
 
 /**
+ * A review thread on a change proposal, as the forge names it: a GitHub
+ * review-thread node id (`PRRT_kwDO…`), or a GitLab discussion id (40 hex, or
+ * a prefix of 8 or more) or note id. Owner, 2026-10-20 (bean
+ * `folio-assistant-4dbr`, "Add the type"), so that resolving a thread can be a
+ * Tool node with the id on the command line.
+ *
+ * Letters, digits, underscore and hyphen only, and it cannot start with a
+ * hyphen, so no value can be read as a flag or carry a shell metacharacter.
+ * Wide enough for both forges' shapes and no wider; the length cap bounds an
+ * opaque token, not a known format.
+ */
+export const ReviewThreadIdSchema = z
+  .string()
+  .regex(/^[A-Za-z0-9][A-Za-z0-9_-]{6,127}$/, "a review thread id is 7 to 128 letters, digits, underscores and hyphens, not starting with a hyphen")
+  .describe("A review thread id — a GitHub review-thread node id or a GitLab discussion id");
+
+/**
  * Free prose — a bean body, a comment, a note. **Deliberately unconstrained, and
  * therefore not admissible as a command-line argument.**
  *
@@ -650,6 +667,7 @@ export const TOOL_TYPES = {
   ScriptName: ScriptNameSchema,
   RepoFullName: RepoFullNameSchema,
   ChangeProposalNumber: ChangeProposalNumberSchema,
+  ReviewThreadId: ReviewThreadIdSchema,
   Markdown: MarkdownSchema,
   Text: TextSchema,
   FilesystemPath: FilesystemPathSchema,
@@ -819,6 +837,7 @@ export const INJECTION_SAFE: ReadonlySet<ToolTypeName> = new Set<ToolTypeName>([
   "ScriptName",
   "RepoFullName",
   "ChangeProposalNumber",
+  "ReviewThreadId",
   "Slug",
   "DocId",
   "MountSeed",
