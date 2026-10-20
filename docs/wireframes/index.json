@@ -85,6 +85,11 @@
         "cat-harness/schemas"
       ]
     },
+    "site": {
+      "covers": [
+        "cat-harness/site"
+      ]
+    },
     "skills-index": {
       "covers": [
         "cat-harness/auto-docs/index/skills"
