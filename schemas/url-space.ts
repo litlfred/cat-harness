@@ -23,6 +23,7 @@
  * resolved, so the same answer comes back in a test, a generator and a
  * workflow.
  *
+ * @graphNode schema
  * @module schemas/url-space
  */
 

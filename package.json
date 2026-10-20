@@ -22,8 +22,7 @@
     "test": "bun test",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "folio:render": "bun run folio-render/file-list.ts",
-    "folio:render:check": "bun run folio-render/file-list.ts --check",
-    "check:adversarial-review": "bun run scripts/check-adversarial-review.ts"
+    "folio:render:check": "bun run folio-render/file-list.ts --check"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.127.0",
