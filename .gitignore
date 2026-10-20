@@ -45,7 +45,12 @@ node_modules/
 /docs/assets/img/uml/overview/
 /docs/subgraph/
 /docs/payload/
-/docs/assets/library/jsonld/smart-base/9789240116191-eng/l1-extraction/
+/docs/assets/library/
+/docs/en/cat-harness/library/
+/docs/assets/voices/index.json
+/docs/en/cat-harness/voices/
+/docs/en/cat-harness/uploads/
+/docs/en/cat-harness/document-kinds/
 /docs/reference/skill-instructions/
 /docs/en/cat-harness/tools/
 /docs/en/cat-harness/lsi/
@@ -61,6 +66,8 @@ node_modules/
 /docs/en/cat-harness/cat-harness-declaration/
 /docs/en/cat-harness/document-kind/
 /docs/en/cat-harness/document-kind-coverage/
+/docs/en/folio-assistant-core/changeset/
+/docs/en/folio-assistant-core/public-comment/
 /docs/assets/glossary/cat-harness-tools--kg-tools.skos.jsonld
 /docs/assets/glossary/fhir-harness--kg-bpmn-activities.skos.jsonld
 /docs/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld
