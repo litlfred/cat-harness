@@ -558,6 +558,15 @@ export const AVATARS: Readonly<Record<string, Avatar>> = {
     tone: 224,
     reads: "a spoken preference, already recorded — do not ask again",
   },
+  "merge-reviews": {
+    // A magnifier over a check mark: something was READ closely and judged,
+    // and the judgement is what the file holds. Not a shield (that would claim
+    // the change is safe) and not a gavel (an override is a separate decision
+    // by a person with standing, recorded on the finding).
+    glyph: "M10 4a6 6 0 104.24 10.24L20 20M7.5 10l2 2 3.5-3.5",
+    tone: 4,
+    reads: "a close reading of one change, with its verdict",
+  },
   "issue-marks": {
     // A bookmark at a place in a list — how far this agent has read, and
     // nothing about what it read. Deliberately not a speech bubble: these

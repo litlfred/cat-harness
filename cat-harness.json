@@ -945,6 +945,21 @@
         "keyedBy": "tip"
       },
       "description": "How far an agent has read an issue: `lastCommentId`, `lastUpdatedAt` and `checkedAt`, one file per issue — the marks say what was seen, never the comments. Two marks rather than one because an EDITED comment keeps its id (`issue-working`). `state`: a running process writes one each time it checks. REPOSITORY-scoped for the reason `beans/` and `todos/` are."
+    },
+    {
+      "id": "merge-reviews",
+      "_source_comment": "MOUNTED, owner 2026-10-20 (\"State branch\", bean w8jq): a verdict committed into the pull request moves the head it is bound to, so it is kept on its own per-graph branch like beans, todos and issue-marks.",
+      "path": "merge-reviews/",
+      "scope": "repository",
+      "graphTypologies": [
+        "merge-reviews"
+      ],
+      "source": {
+        "kind": "branch",
+        "branch": "cat/cat-harness/merge-reviews",
+        "keyedBy": "tip"
+      },
+      "description": "The adversarial review verdict on each pull request's head: `<head sha>.json`, one `merge-review/v1` file per head. Written by a reviewing session that is not the author (`adversarial-code-review`) and read by `check:adversarial-review`. REPOSITORY-scoped for the reason `beans/` and `issue-marks/` are."
     }
   ],
   "_visualisers_comment": "THE VISUALISERS THIS HARNESS DECLARES, at its own level — owner, 2026-10-09: \"I still want the harness to be where specific visualizers/pages are declared for the harness at the level. And that they are all compliant of <base URL>/<harness>/<visualizer> (which is for the full KG) and <base URL>/<harness>/<visualizer>/<sub-graph>, <base URL>/<harness>/<visualizer>/<sub-graph>/<path to asset> rules … Need harness to declare visualizer is renderedBy\". Each entry is published at <base>/cat-harness/<id>/ — computed by visualiserRoute (schemas/visualiser-route.ts) and by nothing else — and drawn by the Tool `renderedBy` names. A page no longer says what it renders (the `renders:` front matter and <meta name=\"renders\"> of #1168 B7a-2b are retired); `check:visualiser-routes` refuses two declarations on one route and a page outside its Tool's declared routes. `alias` is bean t4xb's opt-in <base>/<alias>/: a redirect composed into the site, never where the page is drawn — kept here for every visualiser that was published at the short URL before 2026-10-09, so no existing link breaks. The state dashboard of `uploads` is `uploads-queue` because `uploads` is the uploads viewer's route: two visualisers of one directory need two ids, which is exactly the contention the owner named.",

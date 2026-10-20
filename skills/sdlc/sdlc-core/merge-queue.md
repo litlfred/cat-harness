@@ -70,6 +70,11 @@ To submit, do all of these on YOUR PR:
    `main` by hand, remove the label, and say why in a comment.
 6. **The body has no unticked box**, and there is no open question to the
    owner or the steward.
+7. **An agent-touched PR has an adversarial review on its head**, recorded on
+   the `merge-reviews` state branch by a session that is not the author
+   ([`adversarial-code-review`](adversarial-code-review.md)). The gate is
+   warn-only for now, so a missing verdict is reported, not refused. A train
+   keeps each PR's verdict, because the review is per head.
 
 ### Watch status after submitting — never fire-and-forget
 
