@@ -6,7 +6,8 @@ allowed-tools: Read, Grep, Glob, Bash, Edit, Write, Agent, ToolSearch, AskUserQu
 
 # Pickup Skill
 
-Continue work on existing open PRs with minimal wasted tokens. This skill
+Continue work on existing open change proposals — pull requests (PRs) —
+with minimal wasted tokens. This skill
 exists because the expensive failure mode is **acting on a remembered or
 assumed branch name / scope** and then re-discovering reality mid-task.
 The cure is: resolve ground truth first, in one batch, then dispatch.
@@ -22,7 +23,7 @@ The cure is: resolve ground truth first, in one batch, then dispatch.
    the only stable handle. `git ls-remote` / a branch you "recall" is
    not — branch names drift and a PR number you were given may map to a
    *different* PR than its scope suggests. Always resolve `head.ref`,
-   `title`, and body checklist from `mcp__github__pull_request_read get`
+   `title`, and body checklist by reading the PR through the `github` Tool
    for the literal number before doing anything. (Observed: PRs briefed
    with invented branch names cause sub-agents to burn ~10 min each
    discovering the mismatch and stopping.)
@@ -61,21 +62,25 @@ The cure is: resolve ground truth first, in one batch, then dispatch.
 ```
 
 With **no arg**, ask the user which open PR(s) to pick up (offer the
-recently-updated `claude/*` PRs from `list_pull_requests`).
+recently-updated `claude/*` PRs, listed through the `github` Tool).
 
 ## Procedure
 
 ### Step 0 — Load tools
 
-`ToolSearch` for: `mcp__github__pull_request_read`,
-`mcp__github__list_pull_requests`, `mcp__github__add_issue_comment`,
-`mcp__github__request_copilot_review`. (GitHub MCP tools are deferred.)
+Resolve the `github` Tool from the `tools` graph
+([`skills-and-tools`](../../folio-core/skills-and-tools.md)). This skill uses
+it to *read change proposal* (details, check runs, reviews, review comments),
+*list change proposals*, *comment on change proposal* and *request review*.
+Where the session offers the Tool's MCP arm, those tools are deferred — load
+them before Step 1; otherwise its shell arm serves. If neither is reachable,
+say so and stop: a PR not resolved is not ground truth.
 
 ### Step 1 — Resolve ground truth (ONE batched pass per PR)
 
 For each PR number, in a single message issue parallel calls:
 
-- `pull_request_read get` → `head.ref` (the REAL branch), `title`,
+- *read change proposal* → `head.ref` (the REAL branch), `title`,
   `body` (checklist), `base.ref`, `mergeable_state`, `state`.
   **Act on `mergeable_state` only when it reads `dirty`.** Bean `fx5r`
   measured this endpoint serving a merged PR's PRE-MERGE view for 45
@@ -83,8 +88,8 @@ For each PR number, in a single message issue parallel calls:
   already gone; `unknown` additionally means *not computed yet* rather
   than *cannot be determined* (`h2s9`). For "has this landed?", ask git:
   `git merge-base --is-ancestor origin/<head> origin/<base>`.
-- `pull_request_read get_check_runs` → CI state.
-- `pull_request_read get_reviews` and `get_review_comments` → review
+- its check runs → CI state.
+- its reviews and review comments → review
   bodies + inline threads (these are often rate-limited; tolerate
   failure and proceed with what you have).
 
@@ -158,7 +163,7 @@ Commit body ends with the session URL line (AGENTS.md).
   question — be frugal. For "already fixed in a later
   commit" nits, one short note is enough; don't reply per-nit.
 - If Copilot's review errored ("unable to review"),
-  `request_copilot_review` to re-trigger.
+  request its review again (the `github` Tool, *request review*).
 - Report per PR: resolved branch, what was done / dispatched, commit
   SHAs, CI verdict, blob URLs (`.md` primary), and any blocked items
   with reasons. Never claim a formal artifact compiles/verifies unless a
