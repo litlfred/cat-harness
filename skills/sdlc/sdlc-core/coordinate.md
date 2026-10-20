@@ -20,7 +20,8 @@ context.  Without coordination they will:
   the others need),
 - accept inconsistent findings without flagging them to the author,
 - accept review-tool feedback without checking it against the actual
-  artifact / sibling PR's framing (e.g. accepting an off-by-one "fix"
+  artifact / sibling change proposal's — pull request's (PR's) —
+  framing (e.g. accepting an off-by-one "fix"
   that contradicts a definition another PR is also using),
 - miss new sibling PRs that opened mid-session (new branches landing
   on `main` with overlapping scope).
@@ -87,7 +88,7 @@ commit.
 
 - The current PR number (your branch).
 - A list of sibling branch names or PR numbers (the user gives this,
-  or read `gh pr list --label "in-flight"`).
+  or list the open PRs labelled `in-flight` through the `github` Tool).
 - The shared goal in 1–2 sentences.
 
 
@@ -205,7 +206,7 @@ Model:
 Signals:
 
 - The queue entry has `co_assignees` populated, OR
-- A sibling PR (from `mcp__github__list_pull_requests`) has commits
+- A sibling PR (listed through the `github` Tool) has commits
   touching your task's scope files within the last 24h, OR
 - The ledger session log shows another agent declared intent on
   the same task ID.
@@ -439,9 +440,8 @@ is why it gets the full review and does not rely on either trigger.
 
 ### The five steps, in order, before any file is edited
 
-1. **List the open PRs and the files they change.** Use
-   `gh pr list --state open --json number,title,headRefName,files`, or
-   `pull_request_read` with the `get_files` method for each PR. Intersect the
+1. **List the open PRs and the files they change.** Use the `github` Tool
+   (*list change proposals*, then *list changed files* for each PR). Intersect the
    result with the files your work will touch. A PR that changes only
    **generated** files you will also regenerate is not a collision; say so
    and move on.
