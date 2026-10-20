@@ -128,16 +128,39 @@ export const BeanIndexSchema = z
 
 // ── folio-translation-status/v1 — scripts/gen-translation-status.ts ──
 
+const CatalogueCountsShape = {
+  entries: Count,
+  translated: Count,
+  fuzzy: Count,
+  untranslated: Count,
+};
+
 const LocaleStatusSchema = z
   .object({
     locale: z.string().min(1),
     templates: Count,
     catalogues: Count,
-    entries: Count,
-    translated: Count,
-    fuzzy: Count,
-    untranslated: Count,
+    ...CatalogueCountsShape,
     unreadable: StringList,
+    // `CatalogueRow` and `LocaleOfficiality` in cat-harness-tools'
+    // `scripts/gen-translation-status.ts` (bean `cat-tools-bbnd`, tools #466):
+    // the translation drawer's per-catalogue rows, and who signed the locale
+    // off, read from both the PO headers and `status.json`. The generator has
+    // written both since #466 and this strict schema never learned them.
+    // Optional: a projection written before #466 has neither.
+    files: z
+      .array(z.object({ path: z.string(), official: z.string().optional(), ...CatalogueCountsShape }).strict())
+      .optional(),
+    officiality: z
+      .object({
+        state: z.enum(["official", "unofficial", "disagree", "unreadable"]),
+        signedOffBy: z.string().optional(),
+        signedOffAt: z.string().optional(),
+        officialCatalogues: Count,
+        findings: Count,
+      })
+      .strict()
+      .optional(),
   })
   .strict();
 
@@ -256,6 +279,53 @@ export const SchemaGraphIndexSchema = z
             subclasses: StringList.optional(),
             typologies: StringList,
             page: z.string().optional(),
+            note: z.string().optional(),
+          })
+          .strict(),
+      )
+      .optional(),
+    // `SourceDescriptorRow` in cat-harness-tools' `scripts/gen-schema-viz.ts`
+    // (bean `folio-assistant-1nu0`): the source descriptors in the declared
+    // schema directories, a separate table on the page and never folded into
+    // `decls`. Written by the generator and never learned here, so every
+    // projection failed with `Unrecognized key: "sources"`. Optional: an
+    // index written before the field existed is still valid.
+    sources: z
+      .array(
+        z
+          .object({
+            id: z.string(),
+            file: z.string(),
+            instance: z.string(),
+            title: z.string().optional(),
+            system: z.string().optional(),
+            baseUrl: z.string().optional(),
+            nodeKind: z.string().optional(),
+            subsetStrategies: StringList.optional(),
+            subsetIsSelfContained: z.boolean().optional(),
+            identifiers: z
+              .array(z.object({ name: z.string(), authoritative: z.boolean(), example: z.string().optional() }).strict())
+              .optional(),
+            enumeration: z
+              .object({
+                method: z.string(),
+                pageSize: z.number().optional(),
+                totalNodes: z.number().optional(),
+                requests: z.number().optional(),
+              })
+              .strict()
+              .optional(),
+            termsUrl: z.string().optional(),
+            character: z
+              .object({
+                remote: z.boolean(),
+                large: z.boolean(),
+                volatility: z.string(),
+                availability: z.string(),
+                hasOwnSearch: z.boolean(),
+              })
+              .strict()
+              .optional(),
             note: z.string().optional(),
           })
           .strict(),
