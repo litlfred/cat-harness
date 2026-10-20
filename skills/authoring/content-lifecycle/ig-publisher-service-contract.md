@@ -5,6 +5,8 @@ description: >
   services an IG build shells out to must produce, and how a caller tells a
   pass from a run that never happened. A mechanical role's skill is a contract
   to test against, not instructions to read.
+tested-by:
+  - schemas/ig-publisher-service-contract.test.ts
 ---
 
 # IG publisher + validator — the role's contract
@@ -38,6 +40,7 @@ is read off what the repository already says.
   (its description): it reports what the publisher found; whether a warning
   matters is the QC reviewer's or the FHIR modeller's call.
 
-No test in this repository exercises the services — they run in a folio's
-build, not here — so this skill names no `tested-by:` yet, and the QA report's
-`mechanical-role-untested` entry says so.
+No test in this repository runs the services — they run in a folio's build,
+not here. The test in `tested-by:` holds lines 1–4 to what this repository
+declares: the actor and its ODRL grant, the two capabilities and their
+detection, and the requirement statement the publisher satisfies.
