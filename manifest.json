@@ -1,0 +1,16 @@
+{
+  "$schema": "state-manifest/v1",
+  "status": "active",
+  "authoritative": true,
+  "subgraph": "merge-reviews",
+  "note": "Authoritative branch store for merge-reviews/, seeded empty 2026-10-20. Owner, 2026-10-20 (bean w8jq): the adversarial review verdict lives on its own state branch, never in the pull request it names.",
+  "seededAt": "2026-10-20T19:20:00Z",
+  "keyedBy": "tip",
+  "graphs": [
+    {
+      "path": "merge-reviews",
+      "tree": "3e7fbc9659493c47090e559bbeb555680f8088c6",
+      "files": 1
+    }
+  ]
+}
