@@ -102,6 +102,8 @@ node_modules/
 /docs/_data/harness.json
 /docs/_includes/generated/navbar-footer.html
 /site-chrome/assets/css/avatars.css
+/site-chrome/assets/css/themes.css
+/docs/_data/instance-themes.json
 /docs/cat-harness/kind-table.md
 /docs/assets/beans/
 /docs/assets/todos/count.json
