@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ci-health-watch\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.358Z\n"
+"POT-Creation-Date: 2026-10-20T13:30:49.892Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: processes/sdlc/ci-health-watch.bpmn:80
+#: processes/sdlc/ci-health-watch.bpmn:88
 #. Diagram label
 msgid "Anything red on main?"
 msgstr ""
@@ -24,22 +24,22 @@ msgstr ""
 msgid "Asked of the `verdict` output that the `check` step of .github/workflows/ci-health.yml writes, not of the raw exit code. `check:ci-health` exits 0 clean, 1 live failure(s), 2 could not check; an exit 1 with no report file is a crash and is reclassified as could-not-check, as is any other code. `no` is verdict == 'unknown': the last step runs `exit 1` and no issue step runs, so the tracking issue is left untouched. `yes` is verdict != 'unknown', the guard on the label step and so on both issue paths."
 msgstr ""
 
-#: processes/sdlc/ci-health-watch.bpmn:81
+#: processes/sdlc/ci-health-watch.bpmn:89
 #. Diagram element documentation
 msgid "Asked of the same `verdict`, once it is known. `clean` is verdict == 'clean' (exit 0): the open `ci-health` issue, if there is one, is closed saying main is clean. `not clean` is verdict == 'red' (exit 1 with a report): the one open issue labelled `ci-health` is edited in place with the report as its body, or created if there is none. Neither branch fails the job — a red main speaks through the issue, not through this workflow's status."
 msgstr ""
 
-#: processes/sdlc/ci-health-watch.bpmn:113
+#: processes/sdlc/ci-health-watch.bpmn:138
 #. Diagram label
 msgid "clean"
 msgstr ""
 
-#: processes/sdlc/ci-health-watch.bpmn:87
+#: processes/sdlc/ci-health-watch.bpmn:95
 #. Diagram element documentation
-msgid "Clean: close the open ci-health issue, if any, saying why (main is clean). Runs only on a clean verdict — on unknown the issue is left untouched and the job fails instead, because could-not-check is never rendered as clean."
+msgid "Clean here means main is clean."
 msgstr ""
 
-#: processes/sdlc/ci-health-watch.bpmn:86
+#: processes/sdlc/ci-health-watch.bpmn:94
 #. Diagram label
 msgid "Close the tracking issue"
 msgstr ""
@@ -49,19 +49,9 @@ msgstr ""
 msgid "Could we tell?"
 msgstr ""
 
-#: processes/sdlc/ci-health-watch.bpmn:73
-#. Diagram element documentation
-msgid "Create the ci-health label with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet. Skipped on an unknown verdict."
-msgstr ""
-
 #: processes/sdlc/ci-health-watch.bpmn:72
 #. Diagram label
 msgid "Ensure the tracking label exists"
-msgstr ""
-
-#: processes/sdlc/ci-health-watch.bpmn:98
-#. Diagram element documentation
-msgid "Findings: EDIT the one open issue labelled ci-health if there is one, otherwise create it, with the report as the body. One issue edited in place, never a new issue or a comment per run, so the tracking issue never becomes a feed."
 msgstr ""
 
 #: processes/sdlc/ci-health-watch.bpmn:16
@@ -74,7 +64,7 @@ msgstr ""
 msgid "Is CI actually working on the default branch?"
 msgstr ""
 
-#: processes/sdlc/ci-health-watch.bpmn:94
+#: processes/sdlc/ci-health-watch.bpmn:111
 #. Diagram label
 msgid "main is green"
 msgstr ""
@@ -84,22 +74,22 @@ msgstr ""
 msgid "Named a 'sweep' but every path through it writes something — the report file, the tracking label, and the issue itself (opened, edited or closed) — and keeping all three in one lane is what makes 'one tracking issue, edited in place' enforceable: a write split across lanes would leave two different actors able to touch the same issue with no ordering between them."
 msgstr ""
 
-#: processes/sdlc/ci-health-watch.bpmn:110
+#: processes/sdlc/ci-health-watch.bpmn:135
 #. Diagram label
 msgid "no"
 msgstr ""
 
-#: processes/sdlc/ci-health-watch.bpmn:115
+#: processes/sdlc/ci-health-watch.bpmn:140
 #. Diagram label
 msgid "not clean"
 msgstr ""
 
-#: processes/sdlc/ci-health-watch.bpmn:97
+#: processes/sdlc/ci-health-watch.bpmn:114
 #. Diagram label
 msgid "Open or EDIT the one tracking issue"
 msgstr ""
 
-#: processes/sdlc/ci-health-watch.bpmn:105
+#: processes/sdlc/ci-health-watch.bpmn:130
 #. Diagram label
 msgid "Recorded — job stays GREEN"
 msgstr ""
@@ -134,7 +124,7 @@ msgstr ""
 msgid "Weekly (Mon 09:17 UTC), a FAILING gating run on main, or on dispatch"
 msgstr ""
 
-#: processes/sdlc/ci-health-watch.bpmn:111
+#: processes/sdlc/ci-health-watch.bpmn:136
 #. Diagram label
 msgid "yes"
 msgstr ""

@@ -83,7 +83,8 @@ Part of a repository wants to leave, for size or a semantic reason: four gated s
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `deletion-requires-confirmation`.
-- What: The agent reports and waits.
+- What: The agent reports and waits: what would move, how large, what in the parent breaks, and the rollback.
+- Shared step `GT_ReportWhatMoves`.
 - Record it: `workflow_complete` with `node: "Task_Propose"`.
 - next: → `Task_Authorise` (Authorise the extraction)
 
@@ -91,7 +92,8 @@ Part of a repository wants to leave, for size or a semantic reason: four gated s
 
 - Who: the `Administrator` lane (role `administrator`).
 - Skill: `deletion-requires-confirmation`.
-- What: The one step no package may relax.
+- What: A repository cut changes the substrate every other process's lanes bind to, and that is a person's decision.
+- Shared step `GT_AuthoriseExtraction`.
 - Record it: `workflow_complete` with `node: "Task_Authorise"`.
 - next: → `Task_Extract` (4 · Extract — a directory move, not a file-by-file sift), → `End_Declined` (Stays where it is — declared, detangled, isolated)
 

@@ -94,15 +94,11 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:documentation>A content type's creation skill asked whether the new graph goes in a new repository or inside this one, and the answer was inside this one. Or a graph already staged here is to be taken through the rest of its lifecycle.</bpmn:documentation>
       <bpmn:outgoing>F0</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Task_Brief" name="Brief, and claim&#10;the bean">
-      <bpmn:documentation>What the sub-KG is and why it is staged here rather than in a repository of its own, what is already measured, and what would falsify the plan. Claim the bean so a sibling session sees the work.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="opening-brief"/>
-        <cat-harness.processes:bean op="claim"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_Brief" name="Brief, and claim&#10;the bean" calledElement="GT_BriefAndClaim">
+      <bpmn:documentation>Here the work is a sub-KG: what it is, and why it is staged here rather than in a repository of its own.</bpmn:documentation>
       <bpmn:incoming>F0</bpmn:incoming>
       <bpmn:outgoing>F1</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:callActivity>
     <bpmn:task id="Task_Declare" name="1 · Declare it in place,&#10;with its seam">
       <bpmn:documentation>`&lt;name&gt;/&lt;name&gt;.json` with name, version, `repository` (the planned home), `livesAt` (where it sits today), `needs`, and only the directories that exist, each declared with its files in one commit (bean dh4f). `&lt;name&gt;/platform.ts` from the first commit, so no climb out of the directory ever needs rerouting. Scaffolded by `init-folio --staged &lt;path&gt;`, which writes those two files and nothing at the host root; never `--instance`, which writes a whole repository.</bpmn:documentation>
       <bpmn:extensionElements>
@@ -224,16 +220,13 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:outgoing>F20</bpmn:outgoing>
       <bpmn:outgoing>F21</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Task_Drain" name="Drain: land, close or&#10;re-target the open PRs">
-      <bpmn:documentation>Work the pull requests seed:ready named until the source settles, then ask again.</bpmn:documentation>
+    <bpmn:callActivity id="Task_Drain" name="Drain: land, close or&#10;re-target the open PRs" calledElement="GT_Drain">
       <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="kg-separation"/>
         <cat-harness.processes:no-call reason="Uses only kg-separation's drain rule for the seed-readiness gateway the two processes share. Calling kg-separation.bpmn would run the content/tools pair split this process exists to avoid."/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>F18</bpmn:incoming>
       <bpmn:outgoing>F19</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_SeedUnknown" name="UNKNOWN: do not&#10;seed. Not clean">
       <bpmn:documentation>A readiness criterion could not be decided. Nothing is copied.</bpmn:documentation>
       <bpmn:incoming>F20</bpmn:incoming>

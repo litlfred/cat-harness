@@ -1335,6 +1335,22 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
       "`skill-in-role-or-process`, which is a much larger number and not a defect list.",
   },
   {
+    // Spec §7 of the lane / role / skill model, and the owner's rulings of
+    // 2026-10-20 ("a1 b1 c1"): a step two or more processes reuse is a BPMN
+    // global task in the layer's one shared `.bpmn` that holds no process,
+    // called by bare id. A report entry, not a gate — see the note above
+    // `lane-role-legacy-binding`. The audit that computes it is
+    // cat-harness-tools' (`scripts/lib/global-task-criteria.ts`).
+    id: "global-task-shared",
+    applies: ["graph"],
+    scope: "instance",
+    severity: "minor",
+    summary:
+      "A global task is called by fewer than two of this instance's processes. A step only one process performs " +
+      "is a plain task of that process, and one no process calls is dead (spec §7: global tasks only for steps " +
+      "that 2 or more processes reuse).",
+  },
+  {
     id: "skill-in-role-or-process",
     applies: ["graph"],
     scope: "instance",

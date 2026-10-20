@@ -59,7 +59,8 @@ Every change to the publish branch appends an entry to `_render-log/<day>.jsonl`
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `render-logging`.
-- What: THE ENTRY THAT MAKES THE LOG WORTH READING.
+- What: The entry that makes the log worth reading.
+- Shared step `GT_LogRetained`.
 - Record it: `workflow_complete` with `node: "A_LogRetained"`.
 - next: → `End_Process_RenderLog` (Entry appended; history intact)
 

@@ -92,7 +92,8 @@ no label» → `Task_LogRetained` (Append `retained`, with why it stays)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `render-logging`.
-- What: The event that makes the log worth reading.
+- What: The entry that makes the log worth reading.
+- Shared step `GT_LogRetained`.
 - Record it: `workflow_complete` with `node: "Task_LogRetained"`.
 - next: → `Task_Notice` (Post the retention notice on the PR)
 
