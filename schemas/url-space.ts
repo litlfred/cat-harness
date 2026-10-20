@@ -14,13 +14,13 @@
  *   published FILES (`<stub>.jsonld`), the name names the instance.
  * - The declared graph is a segment, because an instance may declare more
  *   than one renderable graph and two would otherwise collide on one URL.
-- A locale is a segment of VIEWER pages only (owner, 2026-10-20, "Viewers
-  only", recorded on `o7eq`), placed first as the 2026-10-05 ruling places it
-  for every visualiser page (`/<locale>/<declaring>/<kind>/…`,
-  folio-assistant#2527). The root and an instance as itself carry none, so an
-  instance's `.jsonld` identifier does not change with a reader's language.
-  With a locale the viewer case is exactly `visualiserRoute`'s route, which
-  its test asserts.
+ * - A locale is a segment of VIEWER pages only (owner, 2026-10-20, "Viewers
+ *   only", recorded on `o7eq`), placed first as the 2026-10-05 ruling places it
+ *   for every visualiser page (`/<locale>/<declaring>/<kind>/…`,
+ *   folio-assistant#2527). The root and an instance as itself carry none, so an
+ *   instance's `.jsonld` identifier does not change with a reader's language.
+ *   With a locale the viewer case is exactly `visualiserRoute`'s route, which
+ *   its test asserts.
  *
  * Paths here are site-relative and start with `/` unless `base` is given;
  * a directory path ends with `/` exactly when the caller's `path` does (or is
