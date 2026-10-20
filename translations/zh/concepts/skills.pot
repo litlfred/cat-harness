@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: folio\n"
-"POT-Creation-Date: 2026-09-27T07:10:14.997Z\n"
+"POT-Creation-Date: 2026-10-20T16:09:53.671Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -320,7 +320,7 @@ msgid "plan"
 msgstr ""
 
 #: docs/concepts/skills.md:157
-msgid "Platform skill bundles (, , )"
+msgid "Platform skill bundles (, the content core's , the science layer's )"
 msgstr ""
 
 #: docs/concepts/skills.md:231
