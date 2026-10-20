@@ -11,7 +11,7 @@ export default toolFactory((t) =>
       description:
         "Render each declared voices directory as a page per subject instance.",
       script: "voices:viz",
-      renders: ["voices"],
+      renders: ["voices", "voice-vendors"],
     }),
   ),
 );

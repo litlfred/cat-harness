@@ -11,7 +11,7 @@ export default toolFactory((t) =>
       description:
         "Render index pages for the declared skills, docs and swimlane-glossary directories, one per directory.",
       script: "auto:docs",
-      renders: ["skills", "docs", "swimlane-glossary"],
+      renders: ["skills", "docs", "swimlane-glossary", "uml"],
     }),
   ),
 );

@@ -152,6 +152,12 @@ node_modules/
 /docs/en/cat-harness/memory/
 /docs/en/cat-harness/pipeline-plugins/
 /docs/en/cat-harness/editor-checkers/
+/docs/en/cat-harness/scenarios/
+/docs/en/cat-harness/policies/
+/docs/en/cat-harness/test-plans/
+/docs/en/cat-harness/tool-releases/
+/docs/en/cat-harness/vocab-mappings/
+/docs/en/cat-harness/substrate-snapshots/
 /docs/todos.json
 /docs/todos.jsonld
 /docs/todos/
