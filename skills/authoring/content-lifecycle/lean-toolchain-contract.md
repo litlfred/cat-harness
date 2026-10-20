@@ -5,6 +5,8 @@ description: >
   must answer when a paper folio's formal half is built, and what it must not
   be asked. A mechanical role's skill is a contract to test against, not
   instructions to read.
+tested-by:
+  - schemas/lean-toolchain-contract.test.ts
 ---
 
 # Lean toolchain — the role's contract
@@ -40,6 +42,7 @@ off what the repository already says.
   diagnostics and proof state.
 - To run in this repository. The platform carries no folio and no Lean
   install, so the mechanism is exercised downstream, in a folio
-  (`lean-build.ts`'s own header). That is why this skill names no
-  `tested-by:` yet — and the QA report's `mechanical-role-untested` entry says
-  so rather than staying silent.
+  (`lean-build.ts`'s own header). The test in `tested-by:` holds lines 2–4 to
+  what this repository declares — the capability, the requirement statement
+  it satisfies, its detection and fallback, and the `lean-build` Tool's status
+  output — and does not run `lake build`.

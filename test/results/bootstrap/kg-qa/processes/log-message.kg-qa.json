@@ -5,7 +5,7 @@
     "id": "Process_LogMessage",
     "path": "processes/log-message.bpmn"
   },
-  "source_hash": "sha256:5ee0fd85d6302058642cf09c182473d1728767ed40f8c0cd44275379a1e1f3ee",
+  "source_hash": "sha256:06571f572977d7cbe7c9bc00cbf91f87d19e0d8be3416b76d3300707c4176fbc",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -32,8 +32,13 @@
       "findings": []
     },
     "activity-skill-has-tool": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "A_Record",
+          "detail": "names skill \"logger\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
+        }
+      ]
     },
     "decision-ref-resolves": {
       "result": "n/a",
@@ -56,13 +61,16 @@
       "findings": []
     },
     "role-carries-activity-skill": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "A_Record",
-          "detail": "needs skill \"log-message\", but its lane's role \"logger\" does not carry it."
-        }
-      ]
+      "result": "pass",
+      "findings": []
+    },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
     },
     "activity-names-skill": {
       "result": "pass",
@@ -119,7 +127,7 @@
     }
   },
   "totals": {
-    "pass": 14,
+    "pass": 16,
     "fail": 2,
     "n/a": 9,
     "unknown": 0
