@@ -81,6 +81,8 @@
  */
 import { z } from "zod";
 
+import { NarrativeSchema } from "./narrative";
+
 /** How a value was arrived at. `undetermined` is a finding, never a default. */
 export const DETERMINATION = ["measured", "declared", "undetermined"] as const;
 export type Determination = (typeof DETERMINATION)[number];
@@ -213,6 +215,20 @@ export const TabularCsvwSchema = z.object({
   doc_id: z.string().min(1),
   /** One per sheet. A CSV has exactly one; a workbook is a `csvw:TableGroup`. */
   tables: z.array(CsvwTableSchema),
+  /**
+   * The technical-metadata block every ingest sidecar carries (`file`,
+   * `sha256`, `mimetype_sniffed`, ...), the same record
+   * `folio-tabular-records/v1` holds as `source` — bean `urat`. It is how
+   * `check-l1-complete` (`sourceBlockOf`) and `check-library-qa` learn what
+   * the entry was made from. Optional until the committed records are
+   * re-emitted, then required. Not a CSVW key: {@link toCsvw} never emits it.
+   */
+  source: z.record(z.string(), z.unknown()).optional(),
+  /**
+   * What the data is about, under bean `ju0u`'s state machine, the same
+   * record v1 carries. Optional on the same terms as `source`.
+   */
+  narrative: NarrativeSchema.optional(),
 });
 export type TabularCsvw = z.infer<typeof TabularCsvwSchema>;
 
