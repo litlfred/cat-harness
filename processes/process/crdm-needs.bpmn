@@ -7,6 +7,10 @@
                    xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_CRDM_Needs" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="business-analyst" name="Business analyst"/>
+  <bpmn:resource id="stakeholder" name="Stakeholder"/>
   <bpmn:collaboration id="Collaboration_Process_CRDM_Needs">
     <bpmn:participant id="Participant_Process_CRDM_Needs" name="CRDM Phase 1 — needs" processRef="Process_CRDM_Needs"/>
   </bpmn:collaboration>
@@ -16,23 +20,20 @@
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_CRDM_Needs">
-      <bpmn:lane id="Lane_BA" name="BA / Feature Requestor">
+      <bpmn:lane id="Lane_BA" name="BA / Feature Requestor" partitionElementRef="business-analyst">
         <bpmn:documentation>The single review here is what GW_Needs is literally named for — "BA approves?" — even though Lane_Stakeholders' confirmation sits between this task and that gateway in the flow; the phase's own documentation makes clear the loop needs both, so reading the gate label alone would miss half of what it takes to exit it.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="business-analyst"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>BA_ReviewNeeds</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Agent" name="Agent">
+      <bpmn:lane id="Lane_Agent" name="Agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Drafts the needs statement but never decides it is right — A_Synthesise is the sole target when GW_Needs loops back — and this process's own documentation calls an unconfirmed synthesis "an agent's summary, not a requirement," which is exactly what this lane alone produces before the two lanes below it look at it.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Process_CRDM_Needs</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Stakeholders</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Synthesise</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Needs</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Process_CRDM_Needs</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Stakeholders" name="Stakeholders">
+      <bpmn:lane id="Lane_Stakeholders" name="Stakeholders" partitionElementRef="stakeholder">
         <bpmn:documentation>The task itself carries no documentation of its own, so this lane's entry is the only place recording what "confirm" means in Phase 1: recognising the synthesised needs statement as actually theirs, immediately before the loop gate — not, as in the later data-model phase, judging a cardinality, because there is no model yet to have one.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="stakeholder"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>S_ConfirmNeeds</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>

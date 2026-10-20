@@ -107,7 +107,7 @@ decides it.
 
 **The table of every kind is a published page, not this skill.** Each row is a
 kind's `description`, and the rows span every instance in the checkout:
-fhir-harness, folio-assistant-sci and smart-base each declare kinds of their own.
+The FHIR IG layer, the science layer and the DAK layer each declare kinds of their own.
 So the table is built at publish, by `bun run cat kind:table`, at
 `<base>/cat-harness/kind-table/` (`docs/cat-harness/kind-table.md`, declared in
 cat-harness's `builtAtPublish`). When it lived in this skill, the skill went stale
@@ -311,15 +311,15 @@ a person looks for first were the two hardest to find.
 ## The conventional layout
 
 ```
-agentic-harness/          folio-assistant-core/
-  cat-harness.json    folio-assistant-core.json
+agentic-harness/          <content-core>/
+  cat-harness.json    <content-core>.json
   tools/     → tools        folio/     → folio
   kg/        → kg           (inherits tools/, kg/, schemas/)
   schemas/   → schemas
 ```
 
 `agentic-harness` declares `tools/`, `kg/` and `schemas/`.
-`folio-assistant-core` declares **only** `folio/` and inherits the other three.
+The content core declares **only** `folio/` and inherits the other three.
 
 ### Where a NEW instance puts its code: `<stub>/src` (bean `ylj7`)
 
@@ -389,7 +389,7 @@ under `vendors/` loads, a voice under any other nested directory does not.
 
 **A declared directory never sits inside another declared directory.** An
 instance's assets hang directly off its stub — `cat-harness/skills/`,
-`who-iris/library/`, `smart-base/methodologies/` — and a package inside one of
+the IRIS replica's `library/`, the DAK layer's `methodologies/` — and a package inside one of
 those is a package, not a second graph.
 
 The owner, 2026-09-22: *"dont bury sub-graph assets. same for `<stub>/skills`,
@@ -418,7 +418,7 @@ etc."* and *"follow established norms on layout. qa to enforce."*
 > finding against a sanctioned structure.
 
 **Depth is not the test, and reaching for it produces false findings
-immediately.** `who-iris/library/` is two segments from the repository root and
+immediately.** the IRIS replica's `library/` is two segments from the repository root and
 is exactly right. `test/results/` is two segments from its instance root and is
 also right, because `test/` is not a graph. What is wrong is *containment*: a
 declared directory inside another declared directory, which forces a consumer
@@ -525,8 +525,8 @@ own, each with a committed keep marker: `dh4f` shipped downstream.
 
 Owner, 2026-09-30 (bean `cmsl`, round 3, option A), built by placement PR0
 (bean `ejye`). Until then `cat-harness.json` carried 19 `scope: "repository"`
-entries naming its **dependents'** directories (`folio-assistant-core/skills/`,
-`who-iris/library/`, …) so that a corpus-wide tool asking the platform for
+entries naming its **dependents'** directories (the content core's `skills/`,
+the IRIS replica's `library/`, …) so that a corpus-wide tool asking the platform for
 "every library" got every library. Every owner `needs` cat-harness, so the
 platform was naming its users — and 5 of the 19 had already drifted from the
 owner's own id.
@@ -545,7 +545,7 @@ The rule now:
   `checkoutDirectories` / `checkoutDirectoriesForGraph` in
   `schemas/harness-config.ts` resolve every staged instance through its OWN
   chain and union the members — per instance, because one long chain would
-  override sibling ids (`smart-base`'s `processes` would replace the
+  override sibling ids (the DAK layer's `processes` would replace the
   harness's). A tool shipped BY an instance asks
   `corpusDirectoriesForGraph(instance, kind)`: that instance plus everything
   stacked on it, never its own dependencies (those are its overlay).
@@ -602,7 +602,7 @@ instance list, exactly as before.
 `skills/skills.json` is the worked case. It is one node with two lists:
 `topics` (subdirectories that hold skill packages, bean `9umr`) and
 `directories` (instance directories inside `skills/`: `voices/` in five
-instances, and `lean/` in folio-assistant-sci). Moving the five `voices`
+instances, and `lean/` in the science layer). Moving the five `voices`
 entries inward cleared all five of the baselined `skills contains
 skills/voices` pairs. Every `directoriesForGraph(…, "voices")` answer was
 identical before and after, compared instance by instance.
@@ -928,7 +928,7 @@ The owner's three rulings (bean `nama`; design note
 2. **Generated pages and ingested indexes are in the `derived` layer**, as `library/` is,
    so a QA finding against them goes to their generator.
 3. **An edge across a missing `needs` path is a RATCHET, not an error.** Example: an IG's
-   pages are styled by smart-base's chrome, but the IG does not `need` smart-base. The
+   pages are styled by the DAK layer's chrome, but the IG does not `need` the DAK layer. The
    gate holds such an edge as a baselined layering gap with a reason. The dependency
    stays declared and the gap stays visible.
 
@@ -1090,7 +1090,7 @@ copy of the same rot.
 
 What is still true and worth reading off it: its `cat-harness` id points at
 `skills/` — **ids are stable across a relocation, paths are not** — and it
-declares nothing it does not have. A `library` entry appears in `who-iris`'s
+declares nothing it does not have. A `library` entry appears in the IRIS replica's
 declaration only when the corpus moves there, because a declared-but-absent
 directory makes every consumer scan nothing and report a clean run over it.
 
@@ -1235,11 +1235,11 @@ The declaration carries three publication fields beside `name`:
 | `canonicalUrl` | where those artefacts live — the base every `@id`/`$id` is minted against |
 | `previewUrl` | where CI previews are served, when that differs |
 
-Modelled on `WorldHealthOrganization/smart-base`'s `dak.json` (ours is
+Modelled on WHO's SMART Base repository's `dak.json` (ours is
 `dak.config.json` since 2026-09-22; upstream's spelling is unchanged), which carries
 `canonicalUrl`, `publicationUrl` and `previewUrl` and derives its stub by
-stripping the repository's prefix (`smart-base` → `base` →
-`https://smart.who.int/base`), so stub, directory and published path are one
+stripping the repository's prefix (`smart-<stub>` → `<stub>` →
+`https://smart.who.int/<stub>`), so stub, directory and published path are one
 word.
 
 **The rule, and it is enforced by test:**
@@ -1269,7 +1269,7 @@ publishes — graph, address, schema, and what is stripped".
 
 `name` is what `needs` edges and filenames resolve against, but it is not an
 identity outside the instance: it names no forge or owner, and two owners may
-each publish a `smart-base`. So the declaration also says which repository the
+each publish an instance of the same name. So the declaration also says which repository the
 instance **is**:
 
 | field | meaning |
@@ -1314,7 +1314,7 @@ what the declaration derives. So moving an instance's IRIs is one edit, to
 its declaration's `iriBase`, and the list follows.
 
 Since 2026-09-30 (bean `yn2k`, the owner's decision), `cat-harness` and
-`folio-assistant-core` declare an `iriBase` on their planned repositories'
+the content core declare an `iriBase` on their planned repositories'
 hosts, versioned as bootstrap's is:
 - `https://litlfred.github.io/cat-harness/0.1.0/ns#`
 - `https://litlfred.github.io/folio-assistant-core/0.1.0/ns#`
@@ -1332,7 +1332,7 @@ and there cannot be one:
 | marker | who owns the name |
 |---|---|
 | `sushi-config.yaml` | SUSHI reads that exact name, and it is YAML |
-| `dak.config.json` | **ours** — bean `cz17`. Renamed from `dak.json` on 2026-09-22, for consistency with `<name>.config.json`. WHO's `smart-base` still writes and reads `dak.json`, and nothing upstream has been renamed; that divergence is deliberate pre-work, recorded on `DAK_MARKER_FILENAME` |
+| `dak.config.json` | **ours** — bean `cz17`. Renamed from `dak.json` on 2026-09-22, for consistency with `<name>.config.json`. WHO's SMART Base still writes and reads `dak.json`, and nothing upstream has been renamed; that divergence is deliberate pre-work, recorded on `DAK_MARKER_FILENAME` |
 | `<name>.json`, `<name>.config.json` | ours |
 | `beans.json`, `todos.json` | ours, and named after the graph TYPOLOGY |
 
@@ -1447,8 +1447,8 @@ skills/                         ← this instance's `kg`
 and the processes those roles act in — `processes/**/*.bpmn` and
 `processes/**/decisions/*.dmn` — are reached **through the skill that
 describes them**, not as standalone artefacts. A BPMN activity names the skill
-that implements it (`<bootstrap.processes:skill ref>`); a lane names the role that performs it
-(`<bootstrap.processes:role ref>`, or an exact lane-name match in `roles.json`); a role carries
+that implements it (`<bootstrap.processes:skill ref>`); a lane names the role its tasks are performed in
+(`partitionElementRef` → a `<bpmn:resource>` whose id is the role id); a role carries
 the skills its lane's activities need. `bun run cat kg:audit` checks every one of
 those joins and writes a sidecar per node. Model and resolution rules:
 [`role-model.md`](../../process/process-core/role-model.md); schema: `schemas/role-graph.ts`.
@@ -1463,7 +1463,7 @@ silently miss half its instructions.
 
 The declaration schema needs the platform's IRI namespace to mint `@type`
 values. That namespace used to live in `schemas/jsonld.ts`, which is
-`folio-assistant-core`'s **content** vocabulary — block kinds, DoCO structural
+the content core's **content** vocabulary — block kinds, DoCO structural
 types, SPAR citation terms. Importing it would have made `agentic-harness`
 depend on the content model for its own type IRIs: a `harness → core` edge,
 already the largest wrong-direction group `bun run cat check:partition` reports.

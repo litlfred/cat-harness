@@ -117,7 +117,7 @@ Since 2026-10-02 each scheme's SKOS JSON-LD publishes what the check found:
 `skos:exactMatch` for an exact match and `skos:closeMatch` for a
 concept-only one. They sit in a **named graph** (`<scheme>/_automated-matches`)
 whose PROV says a program produced it (see `toSkos` in
-`folio-assistant-core/schemas/glossary.ts`). The default graph holds only
+the content core's `schemas/glossary.ts`). The default graph holds only
 what people wrote.
 
 That is why `local-term` is the one route to a CONFIRMED mapping. The

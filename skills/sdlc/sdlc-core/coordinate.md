@@ -2,6 +2,8 @@
 name: coordinate
 description: Coordinate work across multiple in-flight Claude PRs working toward a shared goal. Post intent + asks on related PRs, identify cherry-pickable work, respond to code-review comments on your own PR, periodically triage sibling PR activity (new comments, CI status, new commits), watch main + newly created branches/PRs, escalate inconsistent findings to the author, and keep a coordination ledger up to date.
 user_invocable: true
+uses-methodology:
+  - sdlc-agentic-landscape
 ---
 
 # /coordinate — multi-agent / multi-PR coordination
@@ -300,7 +302,7 @@ ground still holds **for a checker** — a gate that guesses replaces a stale
 belief with an invented one. It does **not** hold for a session that has
 re-measured the goal's whole surface. Stream 3 repaired `yg29` and found two
 defects a path detector structurally cannot see: `hqku` carried as a live
-"blocked on the owner" for two days after it completed, and *"`who-iris/` has no
+"blocked on the owner" for two days after it completed, and *"the IRIS replica has no
 `docs/`"* against a directory holding three rendered pages.
 
 So the line is **checker vs. session**, not owner vs. non-owner. A session
@@ -449,8 +451,8 @@ layout file the plan needed**:
 | sibling | its PRs | shared files | `gp2f` phases affected |
 |---|---|---|---|
 | navbar session (bean `ob3m`) | #1804, #1805, #1808, #1819 | `docs-ui.css`, `docs-ui.js`, `_includes/generated/navbar-footer.html`, `harness_details.html`, `head_custom.html`, `harness-tiles.md` | B, C, D, E |
-| fhir-ast session (bean `wnhh`) | #1816 | `fhir-harness/scripts/gen-ig-pages.ts` | A |
-| smart-trust IG session | #1766 | the `gen-ig-pages` area | A |
+| fhir-ast session (bean `wnhh`) | #1816 | the FHIR IG layer's `scripts/gen-ig-pages.ts` | A |
+| the trust IG IG session | #1766 | the `gen-ig-pages` area | A |
 
 If the review had been skipped, five PRs would have been rebased into a
 refactor of the files they were editing.

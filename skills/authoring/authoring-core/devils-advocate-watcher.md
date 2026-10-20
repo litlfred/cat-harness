@@ -20,6 +20,8 @@ description: >
   author-ask, watch-prepared-PRs, witness-drift recovery,
   billing-quick-fail flake) from `integration-watcher`.
 allowed-tools: Read Edit Write Bash Grep Glob Agent Monitor Skill
+uses-methodology:
+  - consensus-grounded-subject-evaluation
 ---
 
 # /devils-advocate-watcher

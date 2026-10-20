@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { mountTrust, MountTrustBasisSchema, MountTrustSchema, withConsent, type MountTrust } from "./mount-trust.ts";
+import { mountTrust, MountTrustBasisSchema, MountTrustSchema, standingCovers, withConsent, withStandingConsent, type MountTrust, type StandingConsent } from "./mount-trust.ts";
 
 /** A mount as `withConsent` sees it: `trust` optional, so a bare literal still type-checks its result. */
 type Mount = { harness: string; ref: string; trust?: MountTrust };
@@ -95,5 +95,63 @@ describe("withConsent: seeding writes consent for the pin it writes (task #10, g
 
   test("`on` defaults to today", () => {
     expect(withConsent<Mount>({ harness: "x", ref: PIN }, { by: "b", evidence: "e" }).trust?.consent?.on).toBe(new Date().toISOString().slice(0, 10));
+  });
+});
+
+describe("standing consent (cat-harness-tools#401): a declared rule re-pins, by name, and nothing else moves a pin", () => {
+  const rule: StandingConsent = { follows: "main", consentBy: "litlfred", consentAt: "2026-10-16", require: "green" };
+  const standingAt = (ref: string, r: StandingConsent = rule): Mount => withStandingConsent<Mount>({ harness: "x", ref: OTHER, trust: { ...consent(OTHER), standing: r } }, ref, "2026-10-17");
+
+  test("the repin writes a per-pin consent BY the rule's person, marked with the rule, and it mounts", () => {
+    const m = standingAt(PIN);
+    expect(m.ref).toBe(PIN);
+    expect(m.trust?.consent).toMatchObject({ by: "litlfred", on: "2026-10-17", ref: PIN, standing: { follows: "main", consentAt: "2026-10-16", require: "green" } });
+    expect(MountTrustSchema.safeParse(m.trust).success).toBe(true);
+    const v = mountTrust(m, "mount", ["litlfred"]);
+    expect(v).toMatchObject({ ok: true, basis: "consent", record: { by: "litlfred", ref: PIN, standing: { follows: "main" } } });
+    expect(v.ok && MountTrustBasisSchema.safeParse(v.record).success).toBe(true);
+  });
+
+  test("a hand-moved pin is still refused even with a standing rule declared", () => {
+    const v = mountTrust({ harness: "x", ref: PIN, trust: { ...consent(OTHER), standing: rule } }, "mount");
+    expect(v).toMatchObject({ ok: false, state: "refused" });
+    expect(v.detail).toContain("a moved pin asks again");
+  });
+
+  test("withdrawing or editing the rule re-asks every pin recorded under it", () => {
+    const m = standingAt(PIN);
+    const { standing: _s, ...withdrawn } = m.trust!;
+    expect(mountTrust({ ...m, trust: withdrawn }, "mount")).toMatchObject({ ok: false, state: "refused" });
+    for (const edit of [{ consentBy: "someone" }, { consentAt: "2026-11-01" }, { follows: "dev" }, { require: undefined }]) {
+      expect(mountTrust({ ...m, trust: { ...m.trust!, standing: { ...rule, ...edit } } }, "mount")).toMatchObject({ ok: false, state: "refused" });
+    }
+  });
+
+  test("declared approvers still apply to the rule's person", () => {
+    expect(mountTrust(standingAt(PIN), "mount", ["someone-else"])).toMatchObject({ ok: false, state: "refused" });
+  });
+
+  test("no rule, no repin: withStandingConsent throws", () => {
+    expect(() => withStandingConsent<Mount>({ harness: "x", ref: OTHER, trust: consent(OTHER) }, PIN)).toThrow();
+  });
+
+  test("coverage: the followed branch, and green when the rule requires it", () => {
+    const m: Mount = { harness: "x", ref: OTHER, trust: { ...consent(OTHER), standing: rule } };
+    expect(standingCovers(m, { branch: "main", sha: PIN, verdict: "green" })).toMatchObject({ covered: true });
+    expect(standingCovers(m, { branch: "main", sha: PIN, verdict: "pending" })).toMatchObject({ covered: false });
+    expect(standingCovers(m, { branch: "main", sha: PIN, verdict: "red" })).toMatchObject({ covered: false });
+    expect(standingCovers(m, { branch: "dev", sha: PIN, verdict: "green" })).toMatchObject({ covered: false });
+    expect(standingCovers(m, { branch: "main", sha: OTHER, verdict: "green" })).toMatchObject({ covered: false });
+    expect(standingCovers(m, { branch: "main", sha: "abc", verdict: "green" })).toMatchObject({ covered: false });
+    const head = { ...m, trust: { ...m.trust!, standing: { ...rule, require: undefined } } };
+    expect(standingCovers(head, { branch: "main", sha: PIN })).toMatchObject({ covered: true });
+    expect(standingCovers({ harness: "x", ref: OTHER, trust: consent(OTHER) }, { branch: "main", sha: PIN, verdict: "green" })).toMatchObject({ covered: false });
+  });
+
+  test("the rule is strict: an unknown key or a refs/ branch does not validate", () => {
+    expect(MountTrustSchema.safeParse({ standing: rule }).success).toBe(true);
+    expect(MountTrustSchema.safeParse({ standing: { ...rule, anyone: true } }).success).toBe(false);
+    expect(MountTrustSchema.safeParse({ standing: { ...rule, follows: "refs/heads/main" } }).success).toBe(false);
+    expect(MountTrustSchema.safeParse({ standing: { ...rule, require: "red" } }).success).toBe(false);
   });
 });

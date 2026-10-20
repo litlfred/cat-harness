@@ -16,7 +16,7 @@ export default toolFactory((t) =>
       ],
       outputs: [
         // `embed` is exported by cat-harness-tools/scripts/pdf-viewer.ts.
-        { name: "fragment", schema: t("Text"), description: "The HTML fragment on stdout. TypeScript callers import `embed` from the module that implements this Tool instead, as `who-iris/scripts/gen-iris-pages.ts` does." },
+        { name: "fragment", schema: t("Text"), description: "The HTML fragment on stdout. TypeScript callers import `embed` from the module that implements this Tool instead, as the IRIS replica's `scripts/gen-iris-pages.ts` does." },
       ],
     },
     satisfies: ["pdf-inline-viewer"],

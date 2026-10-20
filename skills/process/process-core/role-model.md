@@ -35,7 +35,7 @@ Architecture's conformance model (§3.7.2, an abstract information-processing
 role) and a DAK generic persona each map to a folio-assistant **Role**, never
 to an Actor. The RA's system *realising* an actor maps to a mechanical Actor
 taking on that role. Owner, 2026-10-03 (#1984); the comparison is on
-`smart-base/findings/dth-terms.md`.
+the DAK layer's `findings/dth-terms.md`.
 
 Schema: [`schemas/role-graph.ts`](../../../schemas/role-graph.ts). Audit:
 `scripts/kg-audit.ts`, sidecar schema
@@ -126,7 +126,10 @@ original skipped.
 to no role or process) is blocked on the answer, because the obvious
 evidence for that triage is exactly this field.
 
-## Why a role is the lane and not the person
+## Why a lane names a role, and the role is not the person
+
+A lane is not itself a role: **a lane names the Role its tasks are performed
+in** (owner, 2026-10-16: *"Lane names Role, not Actor"*).
 
 Because the same actor is a different thing in two diagrams, and two different
 actors are the same thing in one.
@@ -157,21 +160,23 @@ for the duration of a lane.
 > The `actor-is-not-a-role` criterion stays even though it now passes, because
 > the next registry written by hand will reach for `inherits` again.
 
-> **Some lanes are acted upon, not performed.** `Work plan — beans`, `Corpus`,
-> `Publish — GitHub Pages` and the external registries are drawn as lanes
-> because tasks act ON them, and a reader needs to see where the plan or the
-> corpus is touched. Nobody takes them on, so they carry `actedUpon: true` and
-> `role-has-actor` records **n/a** rather than failing. Reporting "no actor can
-> fill the corpus" is a finding nobody can act on, and a check that produces
-> those is a check somebody switches off.
+> **Roles played by mechanical actors are real roles** (owner, 2026-10-16).
+> `Work plan (beans)`, `Corpus`, `Publish target`, a build pipeline and the
+> external registries are roles a machine or an outside party plays. Their
+> skills are their **contract**: the responsibilities they must perform, which
+> a test can hold them to — a contract skill names its tests in front matter as
+> `tested-by:`. These roles used to carry `actedUpon: true`, which said they
+> "take no part"; the diagrams hand them tasks, so the flag is retired. The QA
+> report lists a mechanical role whose skills name no test as
+> `mechanical-role-untested`, and `role-has-actor` now asks the fair question
+> of what plays the corpus.
 
 > **Some roles perform, but by judgement.** `stakeholder` carries
 > `judgementOnly: true`: somebody really does sign off, deliberates and is
 > accountable — they simply cannot be handed a procedure that produces the
-> answer. That is a different thing from `actedUpon`, where nobody acts at all,
-> and the two must not be merged: marking the stakeholder `actedUpon` would say
-> no one signs off, which is false and would take the lane out of every
-> actor-coverage question it belongs in.
+> answer. That is a different thing from a mechanical role, which has no
+> judgement to exercise and whose skills are a contract it can be tested
+> against.
 >
 > The flag exists because prose did not hold. The role's own summary has said
 > "carries no skills deliberately: sign-off is a judgement, not a procedure, and
@@ -260,8 +265,7 @@ An empty list would read as *"no kind may perform this"* and fail every
 activity drawn as a plain task — the third state, in the place it is easiest
 to lose.
 
-**Scoped like `activity-names-skill`.** An `actedUpon` lane records `n/a`:
-"the corpus cannot perform a serviceTask" is a finding nobody can act on. An
+**Scoped like `activity-names-skill`.** An
 activity whose lane is unbound or absent is already reported by
 `lane-binds-role` and `activity-in-lane`, so it is not reported twice here.
 
@@ -450,8 +454,8 @@ way a voice points at the role it addresses and a story at the role it is
 told as (#1168):
 
 ```jsonc
-// folio-assistant-core/scenarios/roles.json
-{ "name": "folio-assistant-core", "roles": [],
+// <content-core>/scenarios/roles.json
+{ "name": "<content-core>", "roles": [],
   "extensions": [{ "role": "librarian", "skills": ["filing-dublin-core"] }] }
 ```
 
@@ -487,18 +491,25 @@ the pointer on the wrong node: a role is the general node, a lane the dependent
 one, and a general node never names its users (`data-modelling` step 8; owner,
 2026-09-23, #1168). So every one of the ~140 lanes that bound by name was given
 an explicit reference, and `lanes[]` was removed. **A lane binds its role
-itself, and only this way:**
+itself, with BPMN's own `partitionElementRef`** (owner, 2026-10-16): the role
+is declared once per diagram as a top-level `<bpmn:resource>` whose `id` is
+the role id verbatim and whose `name` is its title, before the collaboration
+and the process.
 
 ```xml
-<bpmn:lane id="Lane_Reviewer" name="Reviewer">
-  <bpmn:extensionElements>
-    <bootstrap.processes:role ref="reviewer" />
-  </bpmn:extensionElements>
+<bpmn:resource id="reviewer" name="Reviewer"/>
+...
+<bpmn:lane id="Lane_Reviewer" name="Reviewer" partitionElementRef="reviewer">
   ...
 </bpmn:lane>
 ```
 
-An explicit `<bootstrap.processes:role ref>` **wins** over name matching: a diagram that has
+The older `<bootstrap.processes:role ref="reviewer"/>` in the lane's
+`extensionElements` is read for one release, with a warning, and only when
+`partitionElementRef` is absent (`laneRoleRef` in `schemas/role-graph.ts`); the
+QA report lists it as `lane-role-legacy-binding`. `<bootstrap.processes:role
+variable="true"/>` stays: it declares a performer who is whoever invoked the
+process. An explicit binding **wins** over name matching: a diagram that has
 said which role it means must not be second-guessed by a string table. A ref
 naming no declared role is a `critical` finding — it is *not* quietly
 name-matched instead.
@@ -676,8 +687,9 @@ uniquely was had no picture.
    > instruction type-checks, parses, and silently loses the field. That is
    > bean `zdrf`'s failure class, and it happened — the three roles added in
    > #453 each carry a `summary` that reaches no graph.
-2. Bind its lanes: each lane that this role plays carries
-   `<bootstrap.processes:role ref="<role id>">`. The role lists no lanes, since a role is the
+2. Bind its lanes: each diagram declares `<bpmn:resource id="<role id>"
+   name="<title>"/>` once, and each lane that names this role carries
+   `partitionElementRef="<role id>"`. The role lists no lanes, since a role is the
    general node and a lane the dependent one (`data-modelling` step 8, #1168).
    A lane with no ref is unbound, whatever its name.
 3. Give it the skills its lane's activities name. `role-carries-activity-skill`

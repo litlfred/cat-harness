@@ -7,6 +7,9 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Adjudication"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="adjudicator" name="Adjudicator"/>
+  <bpmn:resource id="feedback-provider" name="Feedback provider"/>
 
   <!-- ═══════════════════════════════════════════════════════════
        Adjudication — folio-assistant
@@ -52,19 +55,17 @@ What stays shared is what must not vary: the entry condition nobody may declare 
     </bpmn:extensionElements>
 
     <bpmn:laneSet id="LaneSet_Adjudication">
-      <bpmn:lane id="Lane_FeedbackProvider" name="Feedback provider">
+      <bpmn:lane id="Lane_FeedbackProvider" name="Feedback provider" partitionElementRef="feedback-provider">
         <bpmn:documentation>Drawn once for any number of providers — the owner's "Judgment of &gt;= 1 Feedback Provider's feedback" — because the process does not change with the count and a lane per provider would say it did. A script checker, a review agent, a reader and an SME all act here, which is why the role admits person, agent and system alike.
 
 This lane knows the one thing the lane below does not: WHAT IT ACTUALLY LOOKED AT. A_StateFinding exists to move that across, and without it the adjudicator cannot tell a real disagreement from two parties reading different things — which looks identical from the sidecar and is not the same defect at all. The lane holds no gateway and reaches no end event on purpose: a provider states a finding and has no entitlement to settle it.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="feedback-provider"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Disagreement</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_StateFinding</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Adjudicator" name="Adjudicator">
+      <bpmn:lane id="Lane_Adjudicator" name="Adjudicator" partitionElementRef="adjudicator">
         <bpmn:documentation>Every decision and every write is here, and that concentration is the accountability: a reviewer reports, an adjudicator settles, and a process where the settling were spread across lanes would have no way to say who decided. The role admits person and agent — `refresh-materialized` already states the reason, "a human or agentic decision, never a merge rule" — and the judgement steps are drawn as plain tasks rather than user tasks so the diagram does not assert a person where an agent is legitimate.
 
 A_Dispatch is in this lane although the adjudicator is its SUBJECT rather than its performer, and that is deliberate: whoever composes the brief chooses what the adjudicator may see, so putting it anywhere else would let the composing party grade its own input. `untainted-verification` states the rule the step enforces — the adjudicator is given the checker's output and never the artefact.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="adjudicator"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>GW_Adjudicable</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Dispatch</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Adjudicate</bpmn:flowNodeRef>

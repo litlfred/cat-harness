@@ -59,6 +59,8 @@ node_modules/
 /docs/_data/node-kinds.json
 /docs/en/cat-harness/node-kind-index/
 /docs/en/cat-harness/cat-harness-declaration/
+/docs/en/cat-harness/document-kind/
+/docs/en/cat-harness/document-kind-coverage/
 /docs/assets/glossary/cat-harness-tools--kg-tools.skos.jsonld
 /docs/assets/glossary/fhir-harness--kg-bpmn-activities.skos.jsonld
 /docs/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld

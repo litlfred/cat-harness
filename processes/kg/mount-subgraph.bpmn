@@ -7,6 +7,8 @@
                    xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_MountSubgraph"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
 
   <!-- ═══════════════════════════════════════════════════════════
        Mount a declared subgraph — ONE process for every content source.
@@ -34,9 +36,8 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
     </bpmn:extensionElements>
 
     <bpmn:laneSet id="LaneSet_MountSubgraph">
-      <bpmn:lane id="Lane_MountPipeline" name="Build pipeline">
+      <bpmn:lane id="Lane_MountPipeline" name="Build pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>Mechanical: every decision on this lane is read off the resolved source, so the same declaration mounts the same way in every container, and an override in the instance config is the only thing that changes it.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_SubgraphWanted</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_ResolveSource</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_SourceKind</bpmn:flowNodeRef>

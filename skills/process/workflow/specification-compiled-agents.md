@@ -6,6 +6,8 @@ description: >
   control plane — typed node contracts and per-node context scope — what to do
   before either exists, and the three things not to adopt with the method.
 consulted: true
+uses-methodology:
+  - specification-compiled-agents
 ---
 
 # Specification-compiled agents

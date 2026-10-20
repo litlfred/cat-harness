@@ -111,7 +111,7 @@ third and fourth were found only after the first two had been "corrected":
 | 1 | **nine** sources to retire | **28**, across five harnesses — it had resolved `cat-harness/library/` alone, 14 of the corpus's entries |
 | 2 | **five sources RESTORED** from `4b10661cdde` after an earlier session deleted them | **none had been deleted.** All five were at `cat-harness/uploads/` continuously and are in that commit at that path. The sweep `git show`-ed a second copy of each into the archive |
 | 3 | 28 relocated | three of them were **copied, not moved** — the original stayed in `uploads/` |
-| 4 | who-iris among the five harnesses swept | **three ingested sources still in its queue** — that queue keeps a DIRECTORY per source, and the sweep listed only the top level |
+| 4 | the IRIS replica among the five harnesses swept | **three ingested sources still in its queue** — that queue keeps a DIRECTORY per source, and the sweep listed only the top level |
 
 Eight files in two places, and a recovery claim with nothing recovered.
 
@@ -140,10 +140,10 @@ called that unarchived and minted a ninth duplicate. Two families:
   archived. Those two are distinguished, because conflating them is exactly
   how eight files ended up in two places.
 - **advisory** — an already-ingested file inside a **per-source intake
-  directory** (`who-iris/uploads/<slug>/` holds the PDF beside an
+  directory** (the IRIS replica's `uploads/<slug>/` holds the PDF beside an
   `intake.json` and an `iris-capture/`). Moving the PDF alone would leave that
   record naming a file that is not there, so whether such a source retires as
-  a file or as a directory is a who-iris layout decision. Reported on every
+  a file or as a directory is a IRIS replica layout decision. Reported on every
   run with its count; **not** exempted, because a family that goes quiet is a
   family nobody revisits.
 
@@ -162,12 +162,12 @@ It reports and never moves anything: `deletion-requires-confirmation`.
 |---|---:|
 | sources archived in `fsh-guts/uploads/` | **41** |
 | duplicates removed from queues (identical bytes already archived) | 8 |
-| retired late, missed by the sweep | 1 (`milnorlink.pdf`, ingested to `folio-assistant-sci`) |
+| retired late, missed by the sweep | 1 (`milnorlink.pdf`, ingested to the science layer) |
 | still queued, none of them ingested | 32 |
-| advisory, inside a who-iris intake directory | 3 |
+| advisory, inside a IRIS replica intake directory | 3 |
 
 `milnorlink.pdf` is the cleanest statement of the whole class: it was ingested
-to `folio-assistant-sci/library/`, so a sweep matching against
+to the science layer's `library/`, so a sweep matching against
 `cat-harness/library/` found no match and read it as still queued. Nobody was
 careless; the method could not see it.
 

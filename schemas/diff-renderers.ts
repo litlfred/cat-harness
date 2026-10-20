@@ -47,7 +47,7 @@ export const DIFF_RENDERER_INPUTS = ["text", "pages", "screenshots", "structure"
  * A `defaultFor` entry that names no kind: any block the build published
  * STRUCTURED sides for (`changeset-structure.json`, its manifest's fields
  * before and after). The structured kinds — a DAK persona, requirement, data
- * element — are declared by the layers above this one (smart-base's
+ * element — are declared by the layers above this one (a DAK layer's
  * `block-kinds/`), which this layer may not name, so the renderer is the
  * default by what the block HAS rather than by a list of kinds (bean f327).
  */

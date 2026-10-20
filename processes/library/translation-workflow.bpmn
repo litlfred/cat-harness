@@ -6,6 +6,10 @@
              xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
              id="Definitions_Translation"
              targetNamespace="https://litlfred.github.io/folio-assistant/workflows">
+  <import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <resource id="author" name="Author"/>
+  <resource id="authoring-agent" name="Authoring agent"/>
+  <resource id="translation-adjudicator" name="Translation adjudicator"/>
 
   <!-- ═══════════════════════════════════════════════════════════
        Translation Workflow — folio-assistant
@@ -14,7 +18,7 @@
        Stages:
          1. Content authored (source locale)
          2. POT extracted (translatable strings)
-         3. Translation produced (agent / human / smart-base PO)
+         3. Translation produced (agent / human / SMART Base PO)
          4. PO injected → translated .md
          5. Round-trip QA (bean ktt2)
          6. Drift gateway → human adjudication if needed
@@ -40,15 +44,13 @@ Staleness is an END state that re-enters at the beginning, not a failure. A sour
          therefore sits with the platform even though what it reads is a
          human decision.  ──────────────────────────────────────── -->
     <laneSet id="LaneSet_Translation">
-      <lane id="Lane_Author" name="Author (source content)">
-        <extensionElements><bootstrap.processes:role ref="author"/></extensionElements>
+      <lane id="Lane_Author" name="Author (source content)" partitionElementRef="author">
         <flowNodeRef>Start_ContentAuthored</flowNodeRef>
       </lane>
-      <lane id="Lane_Platform" name="Agent / platform (automated)">
+      <lane id="Lane_Platform" name="Agent / platform (automated)" partitionElementRef="authoring-agent">
         <documentation>Everything in this process that runs without asking: extraction to a template, injection of a catalogue, the staleness comparison, and writing the official rendering once sign-off exists. It decides nothing a person would disagree about — every branch it takes is computed from a hash or a file's presence.
 
 It is one lane rather than two because agentic and mechanical is a judgement rather than a line (see the role model), and nothing in THIS process turns on which of the two ran a step. Where that distinction does matter, the process says so by putting the step in the reviewer's lane instead.</documentation>
-        <extensionElements><bootstrap.processes:role ref="authoring-agent"/></extensionElements>
         <flowNodeRef>Task_PotExtract</flowNodeRef>
         <flowNodeRef>Task_Translate</flowNodeRef>
         <flowNodeRef>Task_PoInject</flowNodeRef>
@@ -62,11 +64,10 @@ It is one lane rather than two because agentic and mechanical is a judgement rat
         <flowNodeRef>End_TranslationComplete</flowNodeRef>
         <flowNodeRef>End_Stale</flowNodeRef>
       </lane>
-      <lane id="Lane_Reviewer" name="Human reviewer / adjudicator">
+      <lane id="Lane_Reviewer" name="Human reviewer / adjudicator" partitionElementRef="translation-adjudicator">
         <documentation>The only lane here that JUDGES. Mechanical translation QA produces candidates — a flagged passage, a terminology miss, a staleness verdict — and a candidate is not a finding until somebody decides it is. This lane is where that decision is made, and it is the lane that signs the translation off, because the actor who resolves a disputed passage is the one who can say the whole is fit to publish.
 
 Adjudicator rather than reviewer alone, and the distinction is the accountability: a reviewer reports, an adjudicator settles. The word is used here because the passage reaching this lane is one where a checker and a translator disagree, and somebody has to choose between them WITH a reason. That reason is the record, not the choice.</documentation>
-        <extensionElements><bootstrap.processes:role ref="translation-adjudicator"/></extensionElements>
         <flowNodeRef>Task_Adjudicate</flowNodeRef>
         <flowNodeRef>Task_EditTranslation</flowNodeRef>
         <flowNodeRef>Task_Signoff</flowNodeRef>
@@ -97,7 +98,7 @@ Tool: translation_extract MCP tool or bun run content/pipeline/pot-extract.ts</d
       </extensionElements>
 
       <documentation>Translation of .pot → .po by one of:
-1. Existing PO from smart-base (Weblate/Crowdin/Launchpad)
+1. Existing PO from the WHO SMART Base IG (Weblate/Crowdin/Launchpad)
 2. FHIR/translation-utils po-translate CLI (DeepL/Google, tagged #fuzzy)
 3. Agent (LLM) translation
 4. Human translator

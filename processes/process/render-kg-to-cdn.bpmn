@@ -7,6 +7,8 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_RenderKgToCdn" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
   <bpmn:collaboration id="Collaboration_Process_RenderKgToCdn">
     <bpmn:participant id="Participant_Process_RenderKgToCdn" name="Render a Knowledge Graph to a CDN" processRef="Process_RenderKgToCdn"/>
   </bpmn:collaboration>
@@ -23,9 +25,8 @@ TOOL-AGNOSTIC ON PURPOSE. Owner, 2026-09-30: &quot;tools can describe their own 
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_RenderKgToCdn">
-      <bpmn:lane id="Lane_Ci" name="Build pipeline">
+      <bpmn:lane id="Lane_Ci" name="Build pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>Whoever renders: a workflow running the Tool's commands, or an agent running the same ones. A fixed program either way — the judgement about whether to publish was made by the caller before it got here.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Render</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Resolve</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Tool</bpmn:flowNodeRef>

@@ -834,8 +834,8 @@
       "role": {
         "role": "user"
       },
-      "want": "Subscribe a WHO-facing folio to who-iris at a pinned commit and materialise only its catalogue subgraph, leaving every other subgraph and the binary library referenced",
-      "soThat": "the folio cites the catalogue from local, fixity-checked bytes that passed the five gates, while still showing everything else who-iris offers"
+      "want": "Subscribe a WHO-facing folio to the IRIS replica at a pinned commit and materialise only its catalogue subgraph, leaving every other subgraph and the binary library referenced",
+      "soThat": "the folio cites the catalogue from local, fixity-checked bytes that passed the five gates, while still showing everything else the IRIS replica offers"
     },
     {
       "id": "user-5",

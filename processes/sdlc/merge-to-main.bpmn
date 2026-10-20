@@ -7,6 +7,10 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_MergeToMain" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="build-pipeline" name="Build pipeline"/>
+  <bpmn:resource id="merge-steward" name="Merge steward"/>
+  <bpmn:resource id="user" name="User"/>
   <bpmn:collaboration id="Collaboration_Process_MergeToMain">
     <bpmn:participant id="Participant_Process_MergeToMain" name="Merge to main" processRef="Process_MergeToMain"/>
   </bpmn:collaboration>
@@ -28,14 +32,12 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_MergeToMain">
-      <bpmn:lane id="Lane_Pipeline" name="Build pipeline">
+      <bpmn:lane id="Lane_Pipeline" name="Build pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>CI, not an agent. Regenerates the harness projections of the knowledge graph on the PR head and commits them to the PR branch, so the head whose evidence is read next is the head that would land. Judges nothing.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="build-pipeline"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_RegenProjections</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Merger" name="Merging session">
+      <bpmn:lane id="Lane_Merger" name="Merging session" partitionElementRef="merge-steward">
         <bpmn:documentation>The merge steward while a Merge Manager is active; with none active, the PR's own session takes this lane (owner ruling 2026-10-06). Reads evidence, finds and records authorisation, merges and follows through. Never authorises: that is the owner's lane, and no reading of an instruction moves it here.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="merge-steward"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Merge</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_ReadEvidence</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Evidence</bpmn:flowNodeRef>
@@ -54,9 +56,8 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
         <bpmn:flowNodeRef>Task_Report</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Merged</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Owner" name="Owner">
+      <bpmn:lane id="Lane_Owner" name="Owner" partitionElementRef="user">
         <bpmn:documentation>The repository owner. The only lane that can say `merge`. Answers a question that carried the evidence; a person, never an agent, a sibling session or a bot.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="user"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_OwnerDecides</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Owner</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Held</bpmn:flowNodeRef>

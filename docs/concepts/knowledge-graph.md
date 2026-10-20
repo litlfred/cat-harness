@@ -261,7 +261,7 @@ be followed mechanically rather than inferred:
 | Voice | `activeIn.roles` | Role |
 | User Story | `role` | Role |
 | Workflow activity | `<bootstrap.processes:skill ref>` | Skill |
-| Workflow lane | `<bootstrap.processes:role ref>` | Role |
+| Workflow lane | `partitionElementRef` → `<bpmn:resource>` | Role |
 | Workflow activity | `<cat-harness.processes:bean op>` | a work-plan operation |
 | Tool | `satisfies` | Skill |
 | Skill, Capability | `satisfies` | Requirement statement |
@@ -463,7 +463,7 @@ pruned.
 **How a dependent contributes into a shared body of knowledge.** Through the
 **kind**, and that is the mechanism rather than a stopgap — settled by the
 owner, 2026-09-21. Three instances — `agent-skills`, `cat-harness` and
-`who-style-guide` (since folded into `who-iris`, bean `qsx4`) — each declared their own `voices/` directory of kind
+`who-style-guide` (since folded into the IRIS replica, bean `qsx4`) — each declared their own `voices/` directory of kind
 `voices`, and the overlay resolves all three together. A fourth instance
 wanting to contribute a Voice declares a directory, names the kind, and is
 done: no nesting, no subgraph declaration, nothing added to the schema.

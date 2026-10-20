@@ -164,6 +164,27 @@ defaults:
       path: "research-and-analysis"
     values:
       parent: "Research and analysis"
+  # A FOLDER'S GENERATED README IS NOT A SITE PAGE. `readme:subgraphs`
+  # (bootstrap-tools `scripts/subgraph-readmes.ts`) writes a README.md into
+  # each declared docs folder for someone browsing the repository; the folder's
+  # site page is its `index.md`. With no front matter such a README was a
+  # static file Jekyll copied as it is, outside the nav and the search index.
+  # A README it writes WHOLLY now opens with `generated:` front matter (owner,
+  # 2026-10-16, decision 4a; bootstrap-tools#24), which makes Jekyll render it
+  # as a page -- and a page with a title from its `# <folder>` heading joins
+  # the folder's nav group. These two keys keep it out of the nav and the
+  # search index, as before. No site page links to these READMEs (the links
+  # in `docs/README.md` are for the repository view, and compose-docs does not
+  # publish that file), so the README.md -> README.html change breaks nothing.
+  #
+  # One segment deep on purpose: the folders with a generated README are
+  # top-level ones, and `compose-docs` expands this glob into one exact-path
+  # scope per README actually present, like the permalink globs below.
+  - scope:
+      path: "*/README.md"
+    values:
+      nav_exclude: true
+      search_exclude: true
   # THE DOCS-FOLDER PAGES PUBLISH UNDER /docs/cat-harness/ — owner, 2026-10-05
   # (issue #2188, PR #2189, bean `kc7k`): "only cat-harness's own docs-folder
   # pages move", with no redirects at the old addresses. That is the pages
@@ -190,7 +211,7 @@ defaults:
   # "Explicit scopes"). Jekyll re-runs a glob scope's `Dir.glob`, and a
   # `Pathname#relative_path_from` per match, on EVERY `to_liquid` of EVERY
   # page: on the folio-assistant docs tree these seven were ~68% of the build's
-  # CPU. So `compose-docs` (cat-harness-tools `scripts/lib/default-scope-globs.ts`)
+  # CPU. So `compose-docs` (the tools layer's `scripts/lib/default-scope-globs.ts`)
   # replaces each one, in the COMPOSED `_config.yml`, by one exact-path scope
   # per path the glob matches in the composed tree -- a locale folder such as
   # `start/fr` stays one scope, as the glob treats it -- which is the same set

@@ -7,6 +7,8 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_OptionsAnalysis" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="business-analyst" name="Business analyst"/>
   <bpmn:collaboration id="Collaboration_Process_OptionsAnalysis">
     <bpmn:participant id="Participant_Process_OptionsAnalysis" name="Options analysis" processRef="Process_OptionsAnalysis"/>
   </bpmn:collaboration>
@@ -22,9 +24,8 @@ WHAT IT DOES NOT DO: it does not decide. It produces the options, their trade-of
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_OptionsAnalysis">
-      <bpmn:lane id="Lane_BusinessAnalyst" name="Business analyst">
+      <bpmn:lane id="Lane_BusinessAnalyst" name="Business analyst" partitionElementRef="business-analyst">
         <bpmn:documentation>This lane's deliverable is the recommendation together with the rejected options — a rejected option with no record is a dead end the next agent walks back into — but it never authorises anything; A_Record hands both to whoever called the subprocess, and the decision stays theirs. Answering GW_Trigger `no` is not a skipped step either: End_TriggerNotMet is recorded as a distinct outcome from a completed comparison, because a caller unable to tell "not needed" from "we chose X" cannot audit either one.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="business-analyst"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Process_OptionsAnalysis</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Frame</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Trigger</bpmn:flowNodeRef>

@@ -7,6 +7,8 @@
                    xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_CodeReview"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="code-reviewer" name="Code reviewer"/>
 
   <!-- ═══════════════════════════════════════════════════════════
        Code node review — a SUBPROCESS, called never inherited.
@@ -38,9 +40,8 @@ The gateway picks by node KIND because the questions differ. A Tool is judged on
     </bpmn:extensionElements>
 
     <bpmn:laneSet id="LaneSet_CodeReview">
-      <bpmn:lane id="Lane_CodeReviewer" name="Code reviewer">
+      <bpmn:lane id="Lane_CodeReviewer" name="Code reviewer" partitionElementRef="code-reviewer">
         <bpmn:documentation>Forks on node kind but never on verdict: Task_ReviewTool catches a skill that is satisfied but whose mechanism is reachable from nowhere, Task_ReviewSchema catches a visual fact with two homes instead of one, and both branches converge on the same Task_RecordVerdict — so whichever kind of node changed, the reader of the finding sees one recording discipline, not two.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="code-reviewer"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_CodeNodes</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_RunNodeAudits</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_NodeKind</bpmn:flowNodeRef>

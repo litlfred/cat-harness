@@ -215,10 +215,6 @@ msgstr "folio-assistant 通过 MCP 暴露其工具，因此任何支持 MCP 的�
 msgid "Claude Code"
 msgstr "Claude Code"
 
-#: docs/start/installation.md:175
-msgid "Add folio-assistant as an MCP server. Project-scoped config lives in  at the root of your content repo:"
-msgstr "将 folio-assistant 添加为 MCP 服务器。项目级配置位于内容仓库根目录下的  中："
-
 #: docs/start/installation.md:189
 msgid "Or register it from the CLI:"
 msgstr "或者从 CLI 注册："
@@ -258,3 +254,6 @@ msgstr "将你的客户端指向上述 stdio 命令，或者运行 HTTP 传输�
 #: docs/start/installation.md:244
 msgid "Why this works across harnesses. The discipline lives in  (a Linux Foundation agent standard read natively by Claude Code, Gemini CLI, Antigravity, Cursor, Copilot, and others); the live state is exposed both as a per-harness  hook over one shared script and as the  MCP tool. See the architecture page."
 msgstr "为什么这能在不同 harness 之间通用。 规程存在于  中（这是一个由 Linux 基金会制定的智能体标准，可被 Claude Code、Gemini CLI、Antigravity、Cursor、Copilot 等原生读取）；实时状态既通过单个共享脚本作为针对不同 harness 的  钩子暴露，也作为  MCP 工具暴露。参见架构页面。"
+
+#~ msgid "Add folio-assistant as an MCP server. Project-scoped config lives in  at the root of your content repo:"
+#~ msgstr "将 folio-assistant 添加为 MCP 服务器。项目级配置位于内容仓库根目录下的  中："

@@ -6,6 +6,8 @@ description: >
   answer has to name, what is measured today, and the three research questions
   — which are open, and marked as open.
 consulted: true
+uses-methodology:
+  - hybrid-llm-deterministic
 ---
 
 # The deterministic-to-agentic spectrum

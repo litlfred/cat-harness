@@ -29,8 +29,8 @@ harness, and each layer gains a Tools sibling:
 ```mermaid
 flowchart TD
     AH["<b>cat-harness</b><br/>workflow state · guardrails<br/><i>not self-documenting</i><br/>one tool: beans"]
-    AHT["<b>cat-harness-tools</b><br/>beans CLI Tool node"]
-    C["<b>folio-assistant-core</b><br/>justthedocs pipeline · webpage<br/><i>self-documenting</i>"]
+    AHT["<b>tools layer</b><br/>beans CLI Tool node"]
+    C["<b>content core</b><br/>justthedocs pipeline · webpage<br/><i>self-documenting</i>"]
     CT["<b>folio-assistant-core-tools</b><br/>BPMN/DMN/Todo renderers"]
     FA["<b>folio-assistant</b><br/>(what remains today)"]
 
@@ -54,7 +54,7 @@ This is the load-bearing sentence in the revision, and it is worth converting
 into a test rather than a slogan.
 
 **The harness cannot render a website.** The just-the-docs pipeline, the
-`webpage` content type, and every renderer belong to `folio-assistant-core`. So
+`webpage` content type, and every renderer belong to the content core. So
 the harness cannot document itself *as a folio* — its documentation is prose
 files an agent reads, not pages a reader browses.
 
@@ -66,7 +66,7 @@ Applied honestly it removes a great deal from the 16:13 list. The webpage
 content type, the sticky-note Todo rendering, the QR code, dark/light mode, the
 six UN languages, the audit-sidecar iconography, "links to edit in GitHub" —
 all of these are **things a reader sees**, so all of them are
-`folio-assistant-core` or `folio-assistant-core-tools`, not the minimum harness.
+the content core or `folio-assistant-core-tools`, not the minimum harness.
 
 What survives in the harness is the part with no pixels: **schemas, process
 definitions, and skills that tell an agent how to behave.**
@@ -213,7 +213,7 @@ downstream instance may offer, and assumed nowhere.
 bootstrappable: it can describe its own tools in its own vocabulary, with no
 renderer and no server.
 
-## `cat-harness-tools` — the minimum
+## The tools layer — the minimum
 
 Almost empty by construction, and that is the point.
 
@@ -391,9 +391,9 @@ already uses) is what makes that enforceable rather than merely stated.
 Measured on `main` at `d8632b6`: **18 top-level pages, 8 guides, 20 BPMN
 processes, 115 skills across 9 packages.**
 
-Legend — **AH** `cat-harness` · **AHT** `cat-harness-tools` ·
-**C** `folio-assistant-core` · **CT** `folio-assistant-core-tools` ·
-**S** `folio-assistant-sci` · **W** `smart-base`/`smart-kg` · **FA** stays put
+Legend — **AH** `cat-harness` · **AHT** the tools layer ·
+**C** the content core · **CT** `folio-assistant-core-tools` ·
+**S** the science layer · **W** the DAK layer/`smart-kg` · **FA** stays put
 
 ### Top-level pages (`docs/*.md`)
 

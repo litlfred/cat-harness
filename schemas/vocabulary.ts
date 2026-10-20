@@ -57,8 +57,12 @@ import { BOOTSTRAP_TERMS } from "@litlfred/bootstrap-tools/schemas/graph.ts";
  *   needs. Nothing here may require the harness.
  * - `harness` — the agentic machinery: tools, capabilities, requirements,
  *   work plan, process detail.
- * - `core` — authored content and what surrounds it: voices, library,
- *   uploads, todos, the folio itself.
+ * - `core` — authored content, declared by an instance above the harness and
+ *   minted in THAT instance's namespace (`<iriBase><version>/ns#` from its
+ *   declaration). The harness glosses no `core` term: since
+ *   folio-assistant#2598 (owner, 2026-10-16, "1a") the kinds it uses itself —
+ *   todos, library, uploads, voices, the folio — are harness terms, and the
+ *   rest are declared as nodes in the content instance's `typologies/` graph.
  *
  * The direction rule holds here as everywhere: core may name a harness term,
  * harness may name a bootstrap term, and never the reverse.
@@ -164,7 +168,7 @@ export const CLASS_GLOSSES: Readonly<Record<string, TermGloss>> = {
    * The two CONTENT-TYPE markers — what a repository asserts it is.
    *
    * Distinct from a graph typology, which says what is in a DIRECTORY. These say
-   * what the REPOSITORY is, and a repository is a set of them: `smart-base` is
+   * what the REPOSITORY is, and a repository is a set of them: a DAK repository is
    * a DAK and a SUSHI project at once. `DAK` is not here because it is WHO's
    * term in WHO's namespace, which is the point — a marker's type IRI belongs
    * to whoever defines the type, and only the ones we mint need glossing here.
@@ -201,9 +205,10 @@ export const CLASS_GLOSSES: Readonly<Record<string, TermGloss>> = {
   },
   Lane: {
     gloss:
-      "A swimlane of one BPMN process: part of that process, binding the Role " +
-      "that acts in it (`bindsRole`). Not itself a role — a role is a " +
-      "registry node, and many lanes in many processes bind it (#1168, B9b).",
+      "A swimlane of one BPMN process: part of that process, naming the Role " +
+      "its tasks are performed in (`bindsRole`, BPMN's `partitionElementRef`). " +
+      "Not itself a role — a role is a registry node, and many lanes in many " +
+      "processes name it (#1168, B9b; owner, 2026-10-16).",
   },
   LaneUsage: {
     gloss:
@@ -244,7 +249,6 @@ export const CLASS_GLOSSES: Readonly<Record<string, TermGloss>> = {
     gloss: "Something an actor's environment provides — a binary, a service, a credential — probed rather than assumed.",
   },
   Image: {
-    layer: "core",
     gloss: "A declared picture belonging to an instance, carrying its role, its layout and any text region.",
   },
   RoleGraph: {
@@ -252,16 +256,13 @@ export const CLASS_GLOSSES: Readonly<Record<string, TermGloss>> = {
   },
   // Registered outside BASE_GRAPH_TYPOLOGIES — `folio-graph-typology.ts` adds the first
   // and the other two are reporting states — so they carry no `summary` for
-  // `ns-export` to read and are glossed here instead.
+  // `ns-export` to read and are glossed here instead. Harness terms since
+  // folio-assistant#2598 (owner, 2026-10-16, "1a"): the harness mints them for
+  // its own declaration and graphs, so they are in its namespace. The glossary
+  // kind's class went up with the kind, to the instance that declares it.
   FolioGraph: {
-    layer: "core",
     gloss: "Authored content — the folio itself, rendered to a website.",
     seeAlso: "/concepts/content-types.html",
-  },
-  GlossaryGraph: {
-    layer: "core",
-    gloss:
-      "A graph of SKOS terms (folio-glossary/v1): local terms with definitions and codes, linked to external SKOS concepts rather than copying them. Registered by core, not the harness.",
   },
   // A DOCUMENT class, not a kind class: it types the published fsh-guts
   // export, as RoleGraph and PreviewGraph type theirs. It was defined only
@@ -272,11 +273,9 @@ export const CLASS_GLOSSES: Readonly<Record<string, TermGloss>> = {
       "The published export of an instance's fsh-guts tree: deprecated and throwaway structured content, reachable by name only.",
   },
   PreviewGraph: {
-    layer: "core",
     gloss: "A staging target: the same folio built for review rather than for release.",
   },
   UnknownGraph: {
-    layer: "core",
     gloss:
       "A declared graph typology nothing recognises — reported as its own state, never silently treated as empty.",
   },
@@ -456,16 +455,21 @@ export const PROPERTY_GLOSSES: Readonly<Record<string, TermGloss>> = {
       "which is not `internet`.",
   },
   hasSkill: { gloss: "A skill this role carries." },
-  // The two declared exemptions, and they are NOT one flag under two names.
-  // `actedUpon` says the role never acts, so `role-has-actor` is `n/a`;
-  // `judgementOnly` says it acts but no procedure yields its answer, so
-  // `activity-names-skill` is. Collapsing them would give a store an actor,
-  // or a stakeholder a skill.
-  actedUpon: { gloss: "Whether this role is written to rather than performed, so no actor takes it on." },
+  // The one declared exemption: `judgementOnly` says the role acts but no
+  // procedure yields its answer, so `activity-names-skill` is `n/a`. Its
+  // sibling `actedUpon` ("written to rather than performed") was retired on
+  // 2026-10-16 (owner): a role a machine plays is a real role, and its skills
+  // are its contract.
   judgementOnly: { gloss: "Whether this role acts by judgement, so no skill can be named for its tasks." },
+  // Retired 2026-10-16, kept so a reader not yet migrated still resolves it.
+  actedUpon: { gloss: "Retired (owner, 2026-10-16): whether a role was written to rather than performed. A role a machine plays is a real role, and its skills are its contract; readers ignore it." },
   declaresSkill: { gloss: "A skill this package declares." },
   declaresRole: { gloss: "A role this registry declares." },
-  bindsRole: { gloss: "The role a BPMN lane binds: the lane's own <bootstrap.processes:role ref>. On the lane, never on the role (#1168).", replacedBy: "processes:role" },
+  bindsRole: {
+    gloss:
+      "The role a BPMN lane names: the lane's own partitionElementRef, pointing at a <bpmn:resource> whose id is the role id. On the lane, never on the role (#1168; owner, 2026-10-16).",
+    replacedBy: "bpmn:partitionElementRef",
+  },
   hasLaneUsage: {
     gloss:
       "One appearance of this glossary concept as a swimlane in one process. " +
@@ -491,7 +495,10 @@ export const PROPERTY_GLOSSES: Readonly<Record<string, TermGloss>> = {
   satisfiesStatement: { gloss: "A requirement statement this node discharges, as `req:<requirement>#<statement key>`." },
   performedBy: { gloss: "The role that performs this activity: the registry Role its lane binds." },
   inLane: { gloss: "The BPMN lane this activity sits in, a Lane node of the same process." },
-  implementedBy: { gloss: "The skill that implements this activity.", replacedBy: "processes:skill" },
+  // Renamed from `implementedBy` (owner, 2026-10-16): a skill does not
+  // implement a task; the task, the dependent node, requires the skill.
+  requires: { gloss: "A skill this activity requires: the activity's own <bootstrap.processes:skill ref>.", replacedBy: "dcterms:requires" },
+  implementedBy: { gloss: "Retired (owner, 2026-10-16): the old name of `requires`.", replacedBy: "dcterms:requires" },
   assignments: { gloss: "The role-to-lane bindings a diagram carries." },
   permissionName: { gloss: "A permission's name, as an actor holds it." },
   hasCapability: { gloss: "A capability this actor's environment provides." },

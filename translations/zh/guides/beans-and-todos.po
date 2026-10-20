@@ -261,10 +261,6 @@ msgstr "本页面的其余部分阐述了 bean 是什么。本节则说明了存
 msgid "Until 2026-09-20 there was nothing to put here.  had a reader, a published index and a board over it;  had none of the three, though it is the larger store by two orders of magnitude. A work plan nobody can look at is one nobody checks."
 msgstr "在 2026-09-20 之前，这里无物可放。 拥有读取器、公开发布的索引以及基于它的看板；而  这三者皆无，尽管后者的存储规模要大上两个数量级。一个无人能查阅的工作计划，就是一个无人会去核验的计划。"
 
-#: docs/guides/beans-and-todos.md:195
-msgid "What the dashboard shows, and why each panel is the shape it is. The counts are a headline, so they are numbers rather than a chart of four bars saying the same thing. The epic distribution is magnitude across identities with long names, so it is a horizontal bar. The findings are three or four rows, so they are a list — with an icon and a label on every row, because a status colour never carries meaning alone."
-msgstr "仪表盘展示的内容，以及为何每个面板呈现在其当前形态。 计数是核心概要，因此直接以数字呈现，而不是用四根表达相同含义的柱状图。史诗（epic）分布展示的是带有长名称的各个标识的量级，因此采用横向条形图。发现项只有三四行，因此采用列表形式——每一行都带有图标和标签，因为仅凭状态颜色永远无法独自传达含义。"
-
 #: docs/guides/beans-and-todos.md:202
 msgid "The findings are computed from committed data only, and one of them is missing on purpose. A stale  detector would have to read the clock, and the projection is gated on exact content — anything computed against the clock changes the file on every build and the staleness gate then fires forever. So the projection publishes each bean's  as a fact and the page computes age when you open it. Age therefore moves without the file moving, which is the right way round."
 msgstr "各项发现仅根据已提交的数据计算得出，且其中特意缺少了一项。 陈旧的  检测器必须读取时钟，而投影受精确内容的门禁控制——任何根据时钟计算的内容都会在每次构建时更改文件，从而导致陈旧度门禁永久触发。因此，投影仅将每个 bean 的  作为事实发布，并在你打开页面时由页面计算其存在时长。这样一来，时长随时间推移而变化，却无需文件发生变动，这才是合理的运作方式。"
@@ -312,3 +308,6 @@ msgstr "实时工作计划仪表盘需要 JavaScript。其读取的投影是 一
 
 #~ msgid "✎ Edit{: .fa-node-edit title=\"Edit content/docs/guides-beans-and-todos/work-plan-state.md\" } QA TR"
 #~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit content/docs/guides-beans-and-todos/work-plan-state.md\" } QA TR"
+
+#~ msgid "What the dashboard shows, and why each panel is the shape it is. The counts are a headline, so they are numbers rather than a chart of four bars saying the same thing. The epic distribution is magnitude across identities with long names, so it is a horizontal bar. The findings are three or four rows, so they are a list — with an icon and a label on every row, because a status colour never carries meaning alone."
+#~ msgstr "仪表盘展示的内容，以及为何每个面板呈现在其当前形态。 计数是核心概要，因此直接以数字呈现，而不是用四根表达相同含义的柱状图。史诗（epic）分布展示的是带有长名称的各个标识的量级，因此采用横向条形图。发现项只有三四行，因此采用列表形式——每一行都带有图标和标签，因为仅凭状态颜色永远无法独自传达含义。"

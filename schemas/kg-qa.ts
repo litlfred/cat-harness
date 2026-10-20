@@ -93,8 +93,8 @@ export const KG_QA_MANIFEST_SCHEMA = "kg-qa-manifest/v1";
  * declared instance made it a defect: `kg-audit.ts` writes this file
  * unconditionally, so running the audit against an instance with no skills
  * CREATED a `skills/` directory holding nothing but this manifest. Measured on
- * the first full sweep: six instances (`smart-dak`, `smart-ig`,
- * `smart-immunizations`, `smart-l1`, `smart-trust`, `agent-skills`) gained one,
+ * the first full sweep: six instances (`smart-dak`, `smart-ig`, `smart-l1`,
+ * `agent-skills` and two IG instances above this layer) gained one,
  * and the generated UML and navbar both moved to report a skills graph that
  * holds no skills.
  *
@@ -219,7 +219,7 @@ export function kgQaSidecarPath(
 /**
  * Does `subjectDir` lie outside the instance at `repoRoot`?
  *
- * `relative` rather than a string prefix: `/repo/cat-harness-tools` starts with
+ * `relative` rather than a string prefix: `/repo/cat-harness-x` starts with
  * `/repo/cat-harness` and is not inside it. An absolute answer from `relative`
  * (a different drive on Windows) is outside too.
  */
@@ -725,6 +725,36 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
     summary:
       "An activity names a skill its lane's role does not carry — the task demands something the performer was never given.",
   },
+  // ── The lane/role/skill report entries (owner, 2026-10-16) ─────
+  //
+  // Agreed with the owner in "BPMN lane, role and skill modelling": a lane
+  // names a Role through BPMN `partitionElementRef`, and a mechanical role's
+  // skills are its contract. The three entries below are REPORT entries, not
+  // gates — hence `minor`, which `kg:audit` prints and neither `--check` nor
+  // `--strict` fails on. The audit that computes them is cat-harness-tools'.
+  {
+    id: "lane-role-legacy-binding",
+    applies: ["process"],
+    scope: "instance",
+    severity: "minor",
+    summary:
+      "A lane still binds its role with the deprecated `<bootstrap.processes:role ref>` instead of " +
+      "`partitionElementRef` → a top-level `<bpmn:resource>` whose id is the role id. Read, with a warning, for one " +
+      "release (`laneRoleRef` in `role-graph.ts`). `<bootstrap.processes:role variable=\"true\"/>` is a declaration, not legacy.",
+  },
+  {
+    // The same join as `role-carries-activity-skill`, stated as the spec
+    // states it so the report carries the agreed name: roles reached through
+    // `inherits` count, and a `variable="true"` lane, which names no role, is
+    // skipped rather than reported. The gating criterion above is unchanged.
+    id: "task-skill-outside-lane-role",
+    applies: ["process"],
+    scope: "instance",
+    severity: "minor",
+    summary:
+      "A task names a skill that is not among the skills of the Role its lane names, counting roles inherited " +
+      "through `inherits`. Lanes declaring `variable=\"true\"` are skipped.",
+  },
   {
     id: "skill-servable",
     applies: ["process"],
@@ -765,9 +795,10 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
     // It was `minor` because it had legitimate instances it could not tell
     // from real gaps — a stakeholder's sign-off and an unwritten skill both
     // showed up as "names no skill", so gating would have forced a fake ref
-    // onto a real step. That is no longer true: an `actedUpon` lane, a
-    // `judgementOnly` lane and `<cat-harness.processes:no-skill reason>` each SAY SO, and are
-    // recorded `n/a`. What remains is an activity whose performer is handed
+    // onto a real step. That is no longer true: a `judgementOnly` lane and
+    // `<cat-harness.processes:no-skill reason>` each SAY SO, and are recorded
+    // `n/a`. (A third exemption, the `actedUpon` lane, was retired on
+    // 2026-10-16: a mechanical role's tasks name its contract skills.) What remains is an activity whose performer is handed
     // nothing and which has not said why — a missing join, which is `major`.
     //
     // Not `critical`: nothing dangles. Every reference that exists resolves;
@@ -775,8 +806,8 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
     severity: "major",
     summary:
       "An activity names no skill and declares no reason for having none. Exempt: a call activity (implemented " +
-      "by the process it calls), a lane whose role is `actedUpon` (written to, never acts) or `judgementOnly` " +
-      "(acts, but no procedure yields the answer), and an activity carrying `<cat-harness.processes:no-skill reason=\"…\"/>`.",
+      "by the process it calls), a lane whose role is `judgementOnly` (acts, but no procedure yields the answer), " +
+      "and an activity carrying `<cat-harness.processes:no-skill reason=\"…\"/>`.",
   },
   {
     id: "activity-skill-has-tool",
@@ -881,8 +912,7 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
       "An activity's lane is filled by an actor kind that cannot perform it. A `userTask` is performed by a " +
       "human (BPMN: \"by a human being with the assistance of a software application\"); a `serviceTask` runs " +
       "without one, so an agentic or mechanical actor performs it. `bpmn:Task` and a call activity assert " +
-      "nothing and are `n/a`, as is a lane whose role is `actedUpon` — a store is written to, never asked to " +
-      "perform. Override the derived answer with `<cat-harness.processes:fulfilment kinds=\"…\" reason=\"…\"/>`; the reason is " +
+      "nothing and are `n/a`. Override the derived answer with `<cat-harness.processes:fulfilment kinds=\"…\" reason=\"…\"/>`; the reason is " +
       "required at load time, because widening `kinds` is the cheapest way to make this criterion pass.",
   },
   {
@@ -1107,6 +1137,18 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
       "role is too narrow or the actor cannot take it on.",
   },
   {
+    // A mechanical role is a real role whose skills are its contract (owner,
+    // 2026-10-16); a contract nothing tests is a promise nobody checks. A
+    // report entry, not a gate — see the note above `lane-role-legacy-binding`.
+    id: "mechanical-role-untested",
+    applies: ["role"],
+    scope: "instance",
+    severity: "minor",
+    summary:
+      "A role whose `actorKinds` are only `system` and/or `external` has no skill carrying a non-empty " +
+      "`tested-by:` — its contract is stated and nothing holds it to it.",
+  },
+  {
     id: "requirement-statement-satisfied",
     applies: ["requirement"],
     scope: "instance",
@@ -1143,14 +1185,16 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
   },
   // ── Is this role WRITABLE FOR? ────────────────────────────────
   //
-  // A lane is the audience: a block sits in a lane, the lane is a role, and
-  // the role is who the prose is for. That only works if the role says enough
-  // to write for and to review against. `summary` says what the role DOES,
-  // which is enough to draw a swimlane and not enough to author against.
+  // A lane is the audience: a block sits in a lane, the lane names a role,
+  // and the role is who the prose is for. That only works if the role says
+  // enough to write for and to review against. `summary` says what the role
+  // DOES, which is enough to draw a swimlane and not enough to author against.
   //
-  // Both are `n/a` for an `actedUpon` role — the corpus and the work plan
-  // are lanes because tasks act ON them, and asking who the corpus is or what
-  // it came to do is not a question.
+  // Both are `n/a` for a mechanical role (`isMechanicalRole` in
+  // `role-graph.ts`) — asking who the corpus is or what it came to do is not a
+  // question. Its skills are a contract, and `mechanical-role-untested` asks
+  // the question that does apply. This was the `actedUpon` flag until
+  // 2026-10-16.
   {
     id: "role-has-persona",
     applies: ["role"],
@@ -1626,7 +1670,7 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
     // "QA warning. not failure.. ok b/c small # tools" (bean `eayu`; separation
     // arc S0, #1770). It was `major` on the argument that FR-7 admits no
     // exception; the owner overruled that for the tolerated case: the five
-    // IRIS-specific files STAY in who-iris/ and no who-iris-tools repository is
+    // IRIS-specific files STAY in the IRIS replica and no tools repository for it is
     // authorised. `minor` still records `fail` and still names every file, so
     // the detection is kept and the violation stays visible — it simply fails
     // neither `kg:audit --check` nor `--strict`. The ruling's warrant is that

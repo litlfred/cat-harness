@@ -9,7 +9,7 @@ description: >
 # KG export — publishing the graph as linked data, not as a page
 
 **`agentic-harness` has no renderer.** `folio` is the only `renderable` graph
-kind and it belongs to `folio-assistant-core`, so the harness cannot put its
+kind and it belongs to the content core, so the harness cannot put its
 knowledge graph on a page the way a folio puts a chapter on one. That boundary
 is deliberate and this does not move it.
 
@@ -31,19 +31,19 @@ this skill names a host, and nothing in it should.
 
 ## It is JSON-LD, and the `@type: @id` coercion is the whole point
 
-Modelled on `WorldHealthOrganization/smart-base`'s
+Modelled on WHO's SMART Base repository's
 `input/scripts/generate_jsonld_vocabularies.py`. Four things carry the weight,
 and the first is the one that is cheap to lose and invisible when you do:
 
 **1. Every edge term is declared `{"@type": "@id"}`.** Without that coercion,
-`implementedBy`, `performedBy` and `partOf` are **string literals** to any
+`requires`, `performedBy` and `partOf` are **string literals** to any
 JSON-LD processor, and the document is a list of records that merely *looks*
 linked to a human reading the JSON. Declaring them costs one line each and is
 the difference between 900 records and a traversable graph. A test asserts it.
 
 **2. The document's `@id` is the URL it is served from**, with
 `@type: prov:Entity` and a `generatedAt` typed `xsd:dateTime`. Fetch the `@id`,
-get the document. smart-base's type-usage note is explicit about this and it is
+get the document. WHO SMART Base's type-usage note is explicit about this and it is
 what makes the graph mergeable with anyone else's.
 
 **3. Node IRIs are fragments of that document** —
@@ -104,10 +104,11 @@ Five questions, in this order. The worked call for each term is in
    `dcterms:isPartOf`, `holdsGraph` is `dcterms:type`, `conformsTo` is
    `dcterms:conformsTo`; a sequence flow's `from`/`to` are BPMN's own
    `sourceRef`/`targetRef` and a node's `incoming`/`outgoing` BPMN's
-   attributes of those names; `implementedBy` and `bindsRole` are bootstrap's
-   `processes:skill` and `processes:role`, the extension attributes the
-   diagram itself carries. bootstrap's own graph (bootstrap-tools'
-   `export-graph.ts`) uses the same IRIs, so the two graphs agree.
+   attributes of those names; a task's skill is `requires`, which is
+   `dcterms:requires` (the task, the dependent node, requires the skill), and
+   a lane's role (`bindsRole`) is BPMN's own `partitionElementRef` (owner,
+   2026-10-16). bootstrap's own graph (bootstrap-tools' `export-graph.ts`)
+   uses the same IRIs, so the two graphs agree.
 
    **How, so it cannot drift:** a term that restated a standard keeps its
    gloss in `schemas/vocabulary.ts` and gains `replacedBy`, a CURIE.
@@ -165,7 +166,7 @@ Owner, 2026-09-23: *"prefix -> match stub"*. Each of our namespaces is
 |---|---|
 | `https://litlfred.github.io/bootstrap/0.1.0/ns#` | `bootstrap` |
 | `…/folio-assistant/cat-harness/ns#` | `cat-harness` |
-| `…/folio-assistant/folio-assistant-core/ns#` | `folio-assistant-core` |
+| `…/folio-assistant/<content-core>/ns#` | the content core |
 
 bootstrap's row is the exception to the `<canonical>/<stub>/` shape, and says
 so: its namespace sits under bootstrap's own `iriBase` and carries the
@@ -395,8 +396,8 @@ filename stem of everything this instance publishes: `<stub>.jsonld`,
 `<stub>.schema.json`. One helper, `artefactStub()`, computes it, so the two
 exporters cannot disagree about what this instance is called.
 
-smart-base does the same and derives its stub by stripping a prefix
-(`smart-base` → `base` → `https://smart.who.int/base`), so stub, directory and
+WHO SMART Base does the same and derives its stub by stripping a prefix
+(`smart-<stub>` → `<stub>` → `https://smart.who.int/<stub>`), so stub, directory and
 published path are one word.
 
 **The declaration file is named for the instance's `name`, not its `stub`.**
@@ -406,7 +407,7 @@ fixed word either, and the argument that used to stand here was reversed on
 
 That argument ran: a consumer bootstrapping into a repository it knows nothing
 about needs **one fixed filename to open first**, so the declaration stays
-`harness.json` exactly as smart-base's config stays `dak.json`; renaming it
+`harness.json` exactly as WHO SMART Base's config stays `dak.json`; renaming it
 per-repo buys consistency and costs discovery.
 
 (The `dak.json` half of that quoted argument has since gone too: the DAK
@@ -586,7 +587,7 @@ Rules for the pair:
   the deepest subgraph directory that contains its source path, and in every
   ancestor of that one, transitively.
 - **An overlaid instance heads its own tree** (bean `ax6r`). kg-export reads
-  the corpus of every instance stacked on this one, so `folio-assistant-core`'s
+  the corpus of every instance stacked on this one, so the content core's
   processes and skills are nodes of this graph. Until then they all fell to
   the root, which has no hydrated file, so "every process of this graph"
   could not be fetched at all. A directory belongs to the instance that

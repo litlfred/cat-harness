@@ -7,6 +7,8 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_CriterionAdjudication"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="adjudicator" name="Adjudicator"/>
 
   <!-- ═══════════════════════════════════════════════════════════
        Criterion adjudication — the QA-criterion SPECIALISATION
@@ -54,11 +56,10 @@ ADVISORY at the process level, for the reason the adjudication itself is: a judg
     </bpmn:extensionElements>
 
     <bpmn:laneSet id="LaneSet_CriterionAdjudication">
-      <bpmn:lane id="Lane_CriterionAdjudicator" name="Adjudicator">
+      <bpmn:lane id="Lane_CriterionAdjudicator" name="Adjudicator" partitionElementRef="adjudicator">
         <bpmn:documentation>One lane, because every step here is the adjudicator's: asking the question, choosing among the answers, and writing the entry. The feedback provider's lane is in `adjudication.bpmn`, where stating a finding happens — a provider has no entitlement to settle what it reported, and drawing it here would suggest otherwise.
 
 The role admits person and agent. `refresh-materialized` already gives the reason in its own words — "a human or agentic decision, never a merge rule" — and the steps are plain tasks rather than user tasks so the diagram does not assert a person where an agent is legitimate.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="adjudicator"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_CriterionDisagreement</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Adjudicate</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Outcome</bpmn:flowNodeRef>

@@ -131,7 +131,7 @@ declaration error, refused by `check:visualiser-routes`; see
 Case 3 is why `docs/` has two roles at once — the owner, asked which it was,
 answered **"both are right"**. It is a directory cat-harness instantiates AND a
 namespace under which the docs-kind assets of another subgraph are rendered:
-`<base>/cat-harness/docs/who-iris/`.
+`<base>/cat-harness/docs/<iris-replica>/`.
 
 Case 3 is the **canonical** address, and a bare `<base>/<visualizer>/` is an
 opt-in alias (`alias` on the declaration, composed as a redirect). That rule

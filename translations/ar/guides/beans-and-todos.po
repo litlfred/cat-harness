@@ -261,10 +261,6 @@ msgstr "توضح بقية هذه الصفحة ماهية الـ bean. أما ه�
 msgid "Until 2026-09-20 there was nothing to put here.  had a reader, a published index and a board over it;  had none of the three, though it is the larger store by two orders of magnitude. A work plan nobody can look at is one nobody checks."
 msgstr "حتى تاريخ 2026-09-20 لم يكن هناك شيء يمكن وضعه هنا. كان لـ  قارئ وفهرس منشور ولوحة تعرضه؛ بينما لم يكن لـ  أي من الثلاثة، على الرغم من أنه المخزن الأكبر برتبتي مقدار. وخطة العمل التي لا يستطيع أحد الاطلاع عليها هي خطة لا يدققها أحد."
 
-#: docs/guides/beans-and-todos.md:195
-msgid "What the dashboard shows, and why each panel is the shape it is. The counts are a headline, so they are numbers rather than a chart of four bars saying the same thing. The epic distribution is magnitude across identities with long names, so it is a horizontal bar. The findings are three or four rows, so they are a list — with an icon and a label on every row, because a status colour never carries meaning alone."
-msgstr "ما تعرضه لوحة المعلومات، ولماذا اتخذت كل لوحة شكلها الحالي. تُعد الأعداد بمثابة عنوان رئيسي، لذا فهي أرقام وليست رسمًا بيانيًا من أربعة أعمدة يقول الشيء نفسه. وتوزيع الملاحم (epic distribution) يمثل الحجم عبر هويات ذات أسماء طويلة، لذا فهو شريط أفقي. والنتائج (findings) عبارة عن ثلاثة أو أربعة صفوف، لذا فهي قائمة — مع أيقونة وتسمية في كل صف، لأن لون الحالة لا يحمل المعنى بمفرده أبدًا."
-
 #: docs/guides/beans-and-todos.md:202
 msgid "The findings are computed from committed data only, and one of them is missing on purpose. A stale  detector would have to read the clock, and the projection is gated on exact content — anything computed against the clock changes the file on every build and the staleness gate then fires forever. So the projection publishes each bean's  as a fact and the page computes age when you open it. Age therefore moves without the file moving, which is the right way round."
 msgstr "تُحسب النتائج من البيانات المودعة (committed) فقط، وأحدها غائب عن قصد. إن كاشف عناصر  الراكدة سيتعين عليه قراءة الساعة، والإسقاط مشروط بالمحتوى الدقيق — فأي شيء يُحسب مقابل الساعة يغير الملف في كل عملية بناء ومن ثم تنطلق بوابة الركود (staleness gate) باستمرار إلى الأبد. لذا ينشر الإسقاط حقل  لكل bean كحقيقة ثابتة، وتقوم الصفحة بحساب العمر عند فتحها. وبالتالي يتحرك العمر دون أن يتحرك الملف أو يتغير، وهو الترتيب السليم للأمور."
@@ -312,3 +308,6 @@ msgstr "تتطلب لوحة معلومات خطة العمل المباشرة ت
 
 #~ msgid "✎ Edit{: .fa-node-edit title=\"Edit content/docs/guides-beans-and-todos/work-plan-state.md\" } QA TR"
 #~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit content/docs/guides-beans-and-todos/work-plan-state.md\" } QA TR"
+
+#~ msgid "What the dashboard shows, and why each panel is the shape it is. The counts are a headline, so they are numbers rather than a chart of four bars saying the same thing. The epic distribution is magnitude across identities with long names, so it is a horizontal bar. The findings are three or four rows, so they are a list — with an icon and a label on every row, because a status colour never carries meaning alone."
+#~ msgstr "ما تعرضه لوحة المعلومات، ولماذا اتخذت كل لوحة شكلها الحالي. تُعد الأعداد بمثابة عنوان رئيسي، لذا فهي أرقام وليست رسمًا بيانيًا من أربعة أعمدة يقول الشيء نفسه. وتوزيع الملاحم (epic distribution) يمثل الحجم عبر هويات ذات أسماء طويلة، لذا فهو شريط أفقي. والنتائج (findings) عبارة عن ثلاثة أو أربعة صفوف، لذا فهي قائمة — مع أيقونة وتسمية في كل صف، لأن لون الحالة لا يحمل المعنى بمفرده أبدًا."

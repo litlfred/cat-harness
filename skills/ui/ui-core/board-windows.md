@@ -212,7 +212,7 @@ writes with.
 
 ## The folio belongs to the HARNESS, not to the library
 
-A **content library** is something a reader browses — `who-iris`, the `smart-*`
+A **content library** is something a reader browses — the IRIS replica, the `smart-*`
 instances, any folio published as a site. A **folio** is the reader's own
 surface: their notes, the assets they have materialised, the documents they
 created or linked. The library is the place; the folio is what they carry into
@@ -220,7 +220,7 @@ it.
 
 So the folio visualisation is `cat-harness`'s, **available by convention on
 any harness**, and a library never implements its own. A library may implement
-its own landing page and may have its own harness — `who-iris` does — and
+its own landing page and may have its own harness — the IRIS replica does — and
 neither of those is licence to build a second folio.
 
 **Consistency is the requirement, not quality.** Two harnesses that each build
@@ -266,7 +266,7 @@ reader's own copy*. `folio/` is a different graph typology: **renderable** autho
 content.
 
 Reading it as the directory would break a consumer that exists.
-folio-assistant-core's `schemas/materialization.ts` states the dependency outright — ***`corpus-grep`
+The content core's `schemas/materialization.ts` states the dependency outright — ***`corpus-grep`
 searches `library/` only***, so a node materialised anywhere else reads as
 ABSENT to every consumer. That is the same defect the schema already forbids
 one state up, where collapsing `referenced` into `materialized` hides a node
@@ -360,4 +360,4 @@ the other panel and that focus lands on its heading.
 The layout layer and why a note carries no coordinates:
 [`board-diagram-interchange`](board-diagram-interchange.md). Relocating content
 out of a folio is `deletion-requires-confirmation`, applied by
-`folio-assistant-core/processes/ui/board-relocate.bpmn` rather than restated here.
+the content core's `processes/ui/board-relocate.bpmn` rather than restated here.

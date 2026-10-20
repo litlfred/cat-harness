@@ -9,6 +9,8 @@ description: >
   candidate back to that skill's step 2.
 input: schemas/skills/wireframe-viewport-check/input.schema.json
 output: schemas/skills/wireframe-viewport-check/output.schema.json
+uses-methodology:
+  - wiregen
 ---
 
 # Wireframe viewport check

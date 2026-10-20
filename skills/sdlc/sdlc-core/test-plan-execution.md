@@ -47,7 +47,7 @@ runs and systems, so a back-pointer would turn authored content into live
 state. Same direction for the report → run and the certification → report.
 
 **The platform model is FHIR-free.** FHIR R5 TestPlan *informed* `test-plan/v1`
-and is a DOWNSTREAM export target (bean `18p1`, in fhir-harness). Never read a
+and is a DOWNSTREAM export target (bean `18p1`, in the FHIR IG layer). Never read a
 FHIR TestPlan as the source of a plan here.
 
 ## The system under test is a facet, not a role

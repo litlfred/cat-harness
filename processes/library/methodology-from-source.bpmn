@@ -7,6 +7,9 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_MethodologyFromSource" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="user" name="User"/>
   <bpmn:collaboration id="Collaboration_Process_MethodologyFromSource">
     <bpmn:participant id="Participant_Process_MethodologyFromSource" name="Adopt a methodology from a source document" processRef="Process_MethodologyFromSource"/>
   </bpmn:collaboration>
@@ -16,17 +19,15 @@
       <cat-harness.processes:policy enforcement="advisory"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_MethodologyFromSource">
-      <bpmn:lane id="Lane_Owner" name="Owner">
+      <bpmn:lane id="Lane_Owner" name="Owner" partitionElementRef="user">
         <bpmn:documentation>Shares the source and the intent in chat, answers the coordination question, and decides the adoption. Only the owner accepts an adoption or moves a proposal's status.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="user"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_MFS</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>O_Review</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Decision</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Adopted</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Agent" name="Agent">
+      <bpmn:lane id="Lane_Agent" name="Agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Does every step between the share and the review, and records each decision it made with its reason, so the owner reviews a record rather than an impression.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>A_Origin</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Ingest</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_RelatedWork</bpmn:flowNodeRef>

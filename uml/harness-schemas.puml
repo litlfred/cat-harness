@@ -33,7 +33,6 @@ package scenario {
     formerNames [0..*] : {name, retiredOn}[]
     skills [0..*] : string[]
     inherits [0..*] : string[]
-    actedUpon [0..1] : boolean
     judgementOnly [0..1] : boolean
     requiredCapabilities.reasoning_tier [0..1] : low | medium | high | expert
     requiredCapabilities.tool_use [0..1] : boolean

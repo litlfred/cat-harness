@@ -11,7 +11,7 @@
  * they are, as `contentAdapters` data in each `<instance>.json`, and this node
  * replaces the two central tables keyed on the vocabulary: `CONTENT_ADAPTERS`
  * in `block-kinds.ts` and `ADAPTER_COMPANION_ROLES` in `block-qa.ts`, plus the
- * `adapter` smart-base contributed through code.
+ * `adapter` the DAK layer contributed through code.
  *
  * A LEAF: Zod only, so `block-kinds.ts` and `block-qa.ts` can parse with it.
  *

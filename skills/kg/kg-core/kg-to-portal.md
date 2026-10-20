@@ -12,7 +12,7 @@ description: >
 A knowledge graph is in a repository. A portal — a Moodle site, a ministry's
 intranet, a department page — needs to show what is in it, to readers the
 repository never hears about. **This is the shape of that path**, and it is
-written as a pattern because who-iris built it by accident first and nothing
+written as a pattern because the IRIS replica built it by accident first and nothing
 named it, so the next instance would have rebuilt it.
 
 Owner, 2026-09-20:
@@ -110,7 +110,7 @@ argued with:
 |---|---|---|
 | **money** | cost per GB served, and per GB stored | the host's price list; a free tier is a number too |
 | **network traffic** | bytes × requests, per publication period | the package's own size and the portal's reader count |
-| **graph size** | nodes and edges, and bytes of the serialization | `kg-export` reports it; who-iris's catalogue reports items, files and bytes separately |
+| **graph size** | nodes and edges, and bytes of the serialization | `kg-export` reports it; the IRIS replica's catalogue reports items, files and bytes separately |
 | **latency** | where the readers are against where the origin is | the deployment's own geography |
 
 **A constraint with no denominator is a preference.** "The graph is too big" is
@@ -121,14 +121,14 @@ keeps — *"3 items of 361.55 GB is a fraction, and '3 items' alone is not"*.
 **Measure, and say when you could not.** `cdn.jsdelivr.net` is egress-blocked
 from this repository's own CI container, so no figure about it can be measured
 here. A figure taken from a vendor's documentation is a *quoted* figure and
-says so; one taken from a chat message is neither, and the who-iris catalogue
+says so; one taken from a chat message is neither, and the IRIS replica catalogue
 carries the worked example — every note in a branch said "0.7 TB", sourced from
 a chat message, and the measured figure was about half.
 
 ## Trust: GDHCN, distributed as WHO SMART Trust DID trustlists
 
 Owner, 2026-09-20, in two messages: **`propsal signing = GDHCN`**, then
-**`smart-trust`**. The second names where the first is specified — the
+**the trust IG**. The second names where the first is specified — the
 [WHO SMART Trust Implementation Guide](https://smart.who.int/trust)
 (`smart.who.int.trust`, FHIR R5, v1.8.0 at the time of reading, support address
 `gdhcn-support@who.int`).
@@ -237,4 +237,4 @@ above, and it is the one that decides stage 4.
   — the ten axes, four of them declared, and why absent is a third state.
 - [`asset-extraction`](../../library/library-core/asset-extraction.md) §"Derived renderings" — what a
   package may contain that the source never supplied, and how it must say so.
-- `who-iris/` — the worked example, with its own page under `who-iris/docs/`.
+- The IRIS replica — the worked example, with its own page under the IRIS replica's `docs/`.

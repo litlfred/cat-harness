@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bootstrap--terms\n"
-"POT-Creation-Date: 2026-09-30T17:48:01.426Z\n"
+"POT-Creation-Date: 2026-10-16T13:23:59.670Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -70,13 +70,13 @@ msgid "A Node Instance holding a BPMN process that coordinates Tasks: its Proces
 msgstr ""
 
 #: bootstrap/schemas/graph.schema.json:1
-#. Glossary term definition: https://litlfred.github.io/bootstrap/0.1.0/ns#Skill
-msgid "A Node Instance holding natural-language instructions an Actor follows to carry out a Task."
+#. Glossary term definition: https://litlfred.github.io/bootstrap/0.1.0/ns#Role
+msgid "A Node Instance naming a part an Actor takes on to carry out Tasks, and listing the Skills that part needs."
 msgstr ""
 
 #: bootstrap/schemas/graph.schema.json:1
-#. Glossary term definition: https://litlfred.github.io/bootstrap/0.1.0/ns#Role
-msgid "A Node Instance naming a part an Actor takes on to carry out Tasks, and listing the Skills that part needs."
+#. Glossary term definition: https://litlfred.github.io/bootstrap/0.1.0/ns#Skill
+msgid "A Node Instance stating a responsibility an Actor carries out to complete a Task: as natural-language instructions to follow, as a contract to be tested against, or both."
 msgstr ""
 
 #: bootstrap/schemas/graph.schema.json:1

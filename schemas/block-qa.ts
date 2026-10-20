@@ -934,7 +934,7 @@ export interface QaCriterionDefinition {
    * Core owns the RULE — what the criterion asserts about content — while the
    * tooling that answers it may live in the layer whose subject it is;
    * elaboration cost is a Lean measurement, so its checkers are
-   * `folio-assistant-sci`'s. The owner's cut: *"f-a-core has high level
+   * the science layer's. The owner's cut: *"f-a-core has high level
    * processes only, no tooling"*.
    *
    * It is a flag rather than an absent `source_file` because absence is not

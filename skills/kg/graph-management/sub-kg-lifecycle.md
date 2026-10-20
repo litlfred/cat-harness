@@ -321,5 +321,5 @@ directory. The page shows it as one row in the `via sidecar` state.
    into another (e.g. `cat-openapi` into `cat-harness`), downstreams that still
    reference the folded layer fail unless `FOLDED_INSTANCE_ALIASES` maps them.
 8. **Separating before resolving withheld asset clearance.** If library items
-   are withheld or unpermitted in the separated repository (as with `who-iris`),
+   are withheld or unpermitted in the separated repository (as with the IRIS replica),
    materialization results in broken links. Clearance must be verified at seed time.

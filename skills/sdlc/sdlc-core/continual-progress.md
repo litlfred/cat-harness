@@ -106,7 +106,7 @@ difficulty. Every extra click is a cost the agent chose not to pay and passed
 on.
 
 It also hides a real failure mode. An agent that links the root has not checked
-that its page is reachable at all: `/who-iris/` 404ed for an hour in that same
+that its page is reachable at all: `/<iris-replica>/` 404ed for an hour in that same
 session, under a root that loaded perfectly.
 
 So:
@@ -115,7 +115,7 @@ So:
   labelled with what to look for on it — not one root and a sentence of
   navigation.
 - **Deep-link past the index.** If the change is on
-  `/docs/who-iris/kg-to-portal.html`, that is the URL, not `/docs/who-iris/`.
+  `/docs/<iris-replica>/kg-to-portal.html`, that is the URL, not `/docs/<iris-replica>/`.
 - **Take it from the preview's page list**, never from memory or a source
   path: a branch slug is exactly the kind of string that is almost right. The
   rule, and where the list comes from, is

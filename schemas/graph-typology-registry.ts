@@ -50,10 +50,11 @@ import { fileURLToPath } from "node:url";
 import { HARNESS_SUBGRAPH_DECLARATION_FILE, declaredNodeFiles } from "./declared-nodes";
 import { GraphTypologyNodeSchema, kindDefOf } from "./graph-typology-node";
 import { ValidatorNodeSchema, type ValidatorNode } from "./validator-node";
-import { namespaceForLayer } from "./namespaces";
+import { instanceNamespaceOf, namespaceForLayer, NS_PREFIXES, OWN_NAMESPACE_VALUES } from "./namespaces";
 import type { NewInstanceSource } from "./subgraph-source";
 import { BOOTSTRAP_GRAPH_TYPOLOGIES } from "@litlfred/bootstrap-tools/schemas/graph.ts";
-import { instanceRootsIn } from "./instance-roots";
+import { findDeclarationFile, instanceRootsIn } from "./instance-roots";
+import { readFileSync } from "node:fs";
 
 
 // ── Graph typologies ─────────────────────────────────────────────────
@@ -171,7 +172,12 @@ export type NodeSchemaRef = (
 export interface GraphTypologyDef {
   /**
    * Whose namespace the kind is named in, when it is not the harness's:
-   * `core` for the folio's own furniture (`voices`, `library`, `todos`, …).
+   * `core` for a kind the content layer above the harness declares as a node
+   * in its own `typologies/` graph, named in THAT instance's namespace
+   * ({@link graphTypologyIri}, {@link DECLARED_BY}). The harness registers no
+   * `core` kind in code since folio-assistant#2598 (owner, 2026-10-16, "1a"):
+   * the ones it uses itself (`todos`, `library`, `uploads`, `voices`, `folio`,
+   * …) are its own.
    * A kind bootstrap defines is bootstrap's whatever this says
    * (`BOOTSTRAP_GRAPH_TYPOLOGIES`). The kind IS its individual,
    * `<ns>graphTypology/<name>` ({@link graphTypologyIri}); there is no class per kind.
@@ -237,7 +243,7 @@ export interface GraphTypologyDef {
    *
    * **Narrower than `holds: "state"`, and the difference was measured rather
    * than assumed.** The first attempt read "declares any state graph", which
-   * made the repository root and `who-iris` ACTIVE on `uploads` alone — an
+   * made the repository root and the IRIS replica ACTIVE on `uploads` alone — an
    * ingestion queue is live state and is not work anybody is partway through.
    * An agent told "this KG is active" on that basis arrives, looks for
    * something to prioritise, and finds a directory of unprocessed files.
@@ -679,7 +685,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // every instance; no module lists them.
   "block-kinds": {
     description:
-      "the block kinds a harness's content adapter owns, one `folio-block-kind/v1` node each (`schemas/block-kind-node.ts`): the kind string, its adapter and narrowest profile, label prefix, RDF types, builder and English heading. `schemas/block-kinds.ts` discovers them across every instance's declared graph, so no module lists the kinds. Owner, 2026-10-04: *\"kinds need to be discoverable … not centrally managed\"*; document kinds live in folio-assistant-core and the math kinds in folio-assistant-sci (option 2 of 3). Bean `riit`, step 2; sod4 finding #1.",
+      "the block kinds a harness's content adapter owns, one `folio-block-kind/v1` node each (`schemas/block-kind-node.ts`): the kind string, its adapter and narrowest profile, label prefix, RDF types, builder and English heading. `schemas/block-kinds.ts` discovers them across every instance's declared graph, so no module lists the kinds. Owner, 2026-10-04: *\"kinds need to be discoverable … not centrally managed\"*; document kinds live in the content core and the math kinds in the science layer (option 2 of 3). Bean `riit`, step 2; sod4 finding #1.",
     title: "Block kinds",
     renderable: false,
     holds: "content",
@@ -794,7 +800,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     // THE FROM-WITHIN NODE for a skills directory (bean cmsl, owner
     // 2026-09-30, round 4): `skills/skills.json` names the instance
     // directories declared inside `skills/` — `voices/`, and `lean/` in
-    // folio-assistant-sci — so the nesting is declared where the #980 ruling
+    // the science layer — so the nesting is declared where the #980 ruling
     // says it must be, never by a root declaration reaching down.
     declarationFile: "skills.json",
     // Its `topics` ARE its concern groups (bean 9umr) — the first kind that
@@ -910,7 +916,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   //    would misrepresent the standard.
   //
   // Any layer may declare a directory of this kind: the harness carries the
-  // domain-neutral ones, `smart-base` carries DIIG and core carries
+  // domain-neutral ones, the DAK layer carries DIIG and core carries
   // Doc-Researcher. GRADE is not a methodology node: since 2026-09-24 (bean
   // `wg7r`) it is the `grade` skill with its vocabularies as code lists.
   methodology: {
@@ -1030,7 +1036,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "Documentation ABOUT the knowledge graph — how the harness works, what its " +
       "directories hold, how a process runs. Rendered by the plain just-the-docs " +
       "pipeline. Distinct from `folio`, which is content an author CREATES using " +
-      "the graph; the difference is the SUBJECT, not the format. The who-iris " +
+      "the graph; the difference is the SUBJECT, not the format. An L1 library's " +
       "catalogue is `library/`; a note about it is a `folio`; the page explaining " +
       "how ingestion works is `docs`.",
   },
@@ -1247,7 +1253,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   schemas: {
     tileIcon: "schemas",
     description:
-      "schema definitions, self-declared in the smart-base manner",
+      "schema definitions, self-declared in the WHO SMART Base manner",
     title: "Schemas",
     // Grouped by concern from within (`schemas/schemas.json`), PR0c.
     declarationFile: "schemas.json",
@@ -1632,7 +1638,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // and the #263 version it supersedes is preserved there too. PR #266 changed
   // the map and left that comment describing the old five-kind design.
   // RENAMED from `glossary` on 2026-09-23 (owner: "Rename harness one"). The
-  // name `glossary` now belongs to folio-assistant-core's kind: local SKOS
+  // name `glossary` now belongs to the content core's kind: local SKOS
   // terms plus references to external SKOS schemes, rendered on every
   // instance's glossary/ page. This is the harness's swimlane-role ledger, one
   // source that page reads.
@@ -1909,7 +1915,6 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     // A NEW instance keeps its own on `cat/<instance>/todos`, branch-mounted
     // (owner, 2026-10-06, bean `hp54`). folio_init only — see the field.
     newInstanceSource: { kind: "branch", keyedBy: "tip" },
-    layer: "core",
     renderable: false,
     // A person's outstanding items. Outstanding is the word that settles it —
     // an item records a position, not a fact.
@@ -1988,7 +1993,6 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     description:
       "todo nodes — one file each, `\"$schema\": \"todo/1.0.0\"`. Authored by people, and by agents on their behalf.",
     title: "Todo items",
-    layer: "core",
     renderable: false,
     // As `todos`.
     holds: "state",
@@ -2001,7 +2005,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   },
 
   // BACK IN THE BASE LAYER, 2026-10-04 (bean riit). dmx1 moved this kind to
-  // folio-assistant-core's typologies/ graph the same day; that broke the invariant
+  // the content core's typologies/ graph the same day; that broke the invariant
   // DEFAULT_DIRECTORIES states ("the harness cannot default a directory to a
   // kind it does not know"), because the harness defaults `uploads/` beside
   // `library/` — and the two are ONE pipeline, so they belong in one place.
@@ -2027,7 +2031,6 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     description: "the incoming queue — raw files as dropped, before ingestion. NOT L1, and not greppable as corpus.",
     title: "Uploads",
     perInstance: true,
-    layer: "core",
     renderable: false,
     holds: "state",
     nodeSchemas: {"folio-extraction/v1": {}, "folio-intake/v1": {}, "folio-dublin-core/v1": {}, "https://json-schema.org/draft/2020-12/schema": {"external": "JSON Schema 2020-12"}},
@@ -2049,7 +2052,6 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     // declaration is what lets a walker tell a group from a source.
     declarationFile: "library.json",
     concernGroups: true,
-    layer: "core",
     renderable: false,
     // DERIVED, not content — bean `hqku`, and the owner's ruling of
     // 2026-09-20: *"library is static (only if we materialize assets or
@@ -2117,37 +2119,12 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "knowledge-graph reference to a source resolves through here, never to a loose path " +
       "or a bare URL.",
   },
-  // What a folio's computations recorded — bean `qou-qb6t` (story T1 of the
-  // qou tools migration), and the owner's ruling of 2026-10-04: "all witnesses
-  // tools will need to go into the KG". A witness is the output node of a
-  // producer Tool; this kind is what makes that output a graph node.
-  //
-  // `derived` on `library`'s reasoning: a witness is written by its producer
-  // and regenerated by re-running it, never edited in place, so a finding
-  // against one is a finding against its producer. `core` because the
-  // `computation.witness` field that wires a witness to a content block is a
-  // core block field, and nothing about a witness is specific to mathematics.
-  //
-  // One `validator`, not per-tag `nodeSchemas`: witnesses carry no reliable
-  // `$schema` (22 of qou's carry one, in seven spellings), so they are selected
-  // by their `.witness.json` suffix. The validator is the ENVELOPE every
-  // witness meets; the producer contract is a separate schema whose failures
-  // `witness:conformance` reports as findings. Both are documented in
-  // `schemas/computation-witness.ts`.
-  "computation-witness": {
-    title: "Computation witnesses",
-    layer: "core",
-    renderable: false,
-    holds: "derived",
-    schema: "schemas/computation-witness.ts",
-    // Its validator is `validators/computation-witness.json` (bean riit, step
-    // 1c: no authored kind carries validator code).
-    summary:
-      "What a folio's computations recorded: one `<name>.witness.json` per producer run, naming the " +
-      "engine, the script and its hash, the commit, and each assertion with its computed and expected " +
-      "values. Written by the producer and regenerated by re-running it; addressable from prose and " +
-      "wired to a content block through `computation.witness`.",
-  },
+  // `computation-witness` was registered here until folio-assistant#2598
+  // (owner, 2026-10-16, "1a"): a `core` kind, so it is now a
+  // `folio-graph-typology/v1` node in the content instance's `typologies/`
+  // graph and is named in that instance's namespace. Its envelope schema
+  // (`schemas/computation-witness.ts`) and validator node stay here, where the
+  // witness tools below the content layer read them.
   // Binary releases — WHAT WAS PUBLISHED, under what version, with what
   // digest. Never the bytes.
   //
@@ -2286,7 +2263,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // A published static site, as a graph (bean `lehh`, owner 2026-10-05). Two
   // capability tiers, both declared now so a real CDN has a kind to land in:
   // `basic-cdn-site` serves files by path and nothing more (GitHub Pages);
-  // `cdn-site` adds media types, redirects and headers (who-iris's CDN, beans
+  // `cdn-site` adds media types, redirects and headers (the IRIS replica's CDN, beans
   // l9v6 and xies). A site is an archive with routes: its files reuse
   // ArchiveEntrySchema, and the kind adds the route layout.
   "basic-cdn-site": {
@@ -2307,7 +2284,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   },
   "cdn-site": {
     description:
-      "a published site on a CDN that also controls media types, redirects and response headers. One `cdn-site/1.0.0` document: everything a `basic-cdn-site` carries, plus `mimeTypes`, `redirects` and `headers`. Declared ahead of its first instance so a CDN deployment (who-iris, beans l9v6 and xies) lands in a kind rather than widening `basic-cdn-site`, whose point is what it cannot do.",
+      "a published site on a CDN that also controls media types, redirects and response headers. One `cdn-site/1.0.0` document: everything a `basic-cdn-site` carries, plus `mimeTypes`, `redirects` and `headers`. Declared ahead of its first instance so a CDN deployment (the IRIS replica, beans l9v6 and xies) lands in a kind rather than widening `basic-cdn-site`, whose point is what it cannot do.",
     title: "CDN site",
     renderable: false,
     holds: "derived",
@@ -2330,7 +2307,6 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "editorial voice profiles — one JSON each, `\"$schema\": \"folio-voice/v1\"`. Every rule cites its source. **Opt-in**: shipping a voice does not apply it.",
     title: "Voices",
     perInstance: true,
-    layer: "core",
     renderable: false,
     // THE FROM-WITHIN NODE, as on `docs` (owner 2026-09-30, bean `rkqp`:
     // "vendors/<id>/ should be declared subgraphs along with vendors/").
@@ -2357,7 +2333,6 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     description:
       "a base voice specialised for one agent vendor — `folio-voice/v1` with `extends` naming the base. A **sub-graph of `voices`** (`within: \"voices\"`), declared from within: `voices/voices.json` names `vendors/`, and `vendors/vendors.json` names each `<id>/`. `loadVoices` descends only where a declaration says to and **refuses** an undeclared voice directory rather than skipping it. Bean `rkqp`, owner 2026-09-30.",
     title: "Voice vendors",
-    layer: "core",
     renderable: false,
     within: "voices",
     declarationFile: "vendors.json",
@@ -2423,7 +2398,6 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     description:
       "feedback items — todos raised against a specific block, carrying the submitter's identity. Read by `todo-review`.",
     title: "Todo feedback",
-    layer: "core",
     renderable: false,
     // As `todos`, plus a submitter's identity — which makes it more obviously
     // a record OF something rather than the something.
@@ -2455,7 +2429,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // rule could not apply to them. Now delete means relocate, and relocate is
   // reversible.
   //
-  // On the name: `.fsh` is FHIR Shorthand in this codebase (`smart-base/schemas/dak.ts`,
+  // On the name: `.fsh` is FHIR Shorthand in this codebase (the DAK layer's `schemas/dak.ts`,
   // `jsonld.ts`, `translation-tools.ts`, `block-qa.ts`) and throughout the
   // WHO SMART folios this platform targets. The collision was raised and the
   // owner confirmed the spelling; it is recorded here so the overlap is met
@@ -2702,7 +2676,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     // A SECOND family now lives here too, and the validator does not cover it:
     // the `folio-kg-materialization/v1` part records `kg:materialize` writes
     // (slices 5-6). Their schema embeds core's `MaterializationSchema`, so it
-    // is core's (`folio-assistant-core/schemas/kg-materialization.ts`) and
+    // is core's (its `schemas/kg-materialization.ts`) and
     // this registry cannot name it without pointing up the arrow. They are
     // JUDGED by `kg:materialize:check` instead; `kg:validate` on one reports
     // it against the snapshot schema, which is a known gap, not a verdict.
@@ -2814,7 +2788,6 @@ export const REGISTRATION_MODULE: Readonly<Record<string, string>> = {
   // pasted. It resolves through the module graph, not through the declaration,
   // so routing it through a directory resolver would be a category error.
   folio: "schemas/folio-graph-typology.js",
-  glossary: "schemas/glossary-graph-typology.js",
 };
 
 export const GRAPH_TYPOLOGY_ALIASES: Readonly<Record<string, string>> = {
@@ -2873,9 +2846,114 @@ export function graphTypologyLayer(name: string, def?: Pick<GraphTypologyDef, "l
   return def?.layer ?? "harness";
 }
 
-/** A kind's identity: its `GraphTypology` individual, `<layer ns>graphTypology/<name>`. */
+/**
+ * The instance that declared a kind loaded from a `typologies/` graph: its
+ * name (the prefix its terms are written with), root and namespace. Carried on
+ * the def under a symbol rather than as a `GraphTypologyDef` field, because it
+ * is a fact about WHERE the node was read, which a node cannot declare about
+ * itself; a symbol-keyed property survives the `{ ...def }` copies the
+ * registry makes when it joins validators.
+ */
+export const DECLARED_BY: unique symbol = Symbol("graph-typology declared-by");
+
+export interface DeclaringInstance {
+  /** The declaration's `stub`, else its `name`: the prefix its terms are written with. */
+  readonly prefix: string;
+  readonly name: string;
+  readonly root: string;
+  /** `<iriBase><version>/ns#` — {@link instanceNamespaceOf}. */
+  readonly namespace: string;
+}
+
+type WithDeclarer = { [DECLARED_BY]?: DeclaringInstance };
+
+/** Who declared `def`, when it was read from a `typologies/` graph. */
+export function declaringInstanceOf(def: object | undefined): DeclaringInstance | undefined {
+  return (def as WithDeclarer | undefined)?.[DECLARED_BY];
+}
+
+/** The instance whose declaration holds the node file `file`: the nearest directory up with a declaration. */
+function declaringInstanceFor(file: string): DeclaringInstance | undefined {
+  for (let dir = dirname(file); dir !== dirname(dir); dir = dirname(dir)) {
+    const decl = findDeclarationFile(dir);
+    if (decl === undefined) continue;
+    const raw = JSON.parse(readFileSync(resolve(dir, decl), "utf-8")) as { name?: string; stub?: string; iriBase?: string; version?: string };
+    if (typeof raw.name !== "string") return undefined;
+    const d = { name: raw.name, stub: raw.stub, iriBase: raw.iriBase, version: raw.version };
+    return { prefix: d.stub ?? d.name, name: d.name, root: dir, namespace: instanceNamespaceOf(d) };
+  }
+  return undefined;
+}
+
+/**
+ * A kind's identity: its `GraphTypology` individual, `<ns>graphTypology/<name>`.
+ *
+ * `<ns>` is the layer's namespace for a bootstrap or harness kind. A `core`
+ * kind is named in the namespace of the instance that DECLARED it, read from
+ * that instance's declaration (folio-assistant#2598, owner 2026-10-16): this
+ * layer does not know the content layer's address, so a `core` def with no
+ * declaring instance throws rather than inventing one.
+ */
 export function graphTypologyIri(name: string, def?: Pick<GraphTypologyDef, "layer">): string {
-  return `${namespaceForLayer(graphTypologyLayer(name, def))}graphTypology/${name}`;
+  const layer = graphTypologyLayer(name, def);
+  if (layer === "core") {
+    const by = declaringInstanceOf(def);
+    if (by === undefined) {
+      throw new Error(`graph typology "${name}" is a core kind with no declaring instance: declare it as a node in that instance's typologies/ graph`);
+    }
+    return `${by.namespace}graphTypology/${name}`;
+  }
+  return `${namespaceForLayer(layer)}graphTypology/${name}`;
+}
+
+/**
+ * The instance that declares the `core` layer's kinds in this registry — the
+ * content layer above the harness — or `undefined` when none is composed (the
+ * harness standing alone). Read from where the kinds were declared, so no
+ * layer below it has to spell its name. Throws when two instances both
+ * declare `core` kinds: which one "the content layer" means would then be a
+ * guess.
+ */
+export function contentLayerInstance(registry: GraphTypologyRegistry = defaultGraphTypologies): DeclaringInstance | undefined {
+  const found = new Map<string, DeclaringInstance>();
+  for (const name of registry.names()) {
+    const def = registry.get(name);
+    if (def === undefined || graphTypologyLayer(name, def) !== "core") continue;
+    const by = declaringInstanceOf(def);
+    if (by !== undefined) found.set(by.root, by);
+  }
+  const all = [...found.values()];
+  if (all.length > 1) {
+    // The same instance read twice (a checkout and the fixture copy of it) is one instance.
+    const names = new Set(all.map((i) => i.name));
+    if (names.size > 1) throw new Error(`contentLayerInstance: core kinds are declared by ${[...names].join(", ")}`);
+  }
+  return all[0];
+}
+
+/**
+ * The own-prefix table a JSON-LD context binds: the harness's two
+ * ({@link NS_PREFIXES}) and, when a content layer is composed, its prefix and
+ * namespace as its declaration derives them ({@link contentLayerInstance}).
+ * In a composed checkout this is the three-entry table `NS_PREFIXES` held
+ * until folio-assistant#2598, key for key and in the same order, so a context
+ * built from it is byte-identical; standing alone it is the harness's two.
+ */
+export function ownPrefixTable(registry: GraphTypologyRegistry = defaultGraphTypologies): Readonly<Record<string, string>> {
+  const content = contentLayerInstance(registry);
+  return content === undefined ? { ...NS_PREFIXES } : { ...NS_PREFIXES, [content.prefix]: content.namespace };
+}
+
+/**
+ * Every IRI stem that is OURS: the harness's `own-namespaces` code list and,
+ * when a content layer is composed, its namespace and everything minted under
+ * `<namespace stem>/` (its DSpace fields, `…/ns/dspace#`). The content layer's
+ * were rows of that code list until folio-assistant#2598; a reconciler asking
+ * "is this namespace ours" gets the same answer from here as it did from them.
+ */
+export function ownNamespaceValues(registry: GraphTypologyRegistry = defaultGraphTypologies): readonly string[] {
+  const content = contentLayerInstance(registry);
+  return content === undefined ? OWN_NAMESPACE_VALUES : [...OWN_NAMESPACE_VALUES, content.namespace, content.namespace.replace(/ns#$/, "ns/")];
 }
 
 export class GraphTypologyRegistry {
@@ -2948,7 +3026,10 @@ export class GraphTypologyRegistry {
         if (prior !== undefined || this.kinds.has(node.kind)) {
           throw new GraphTypologyConflictError(node.kind, `declared by ${prior ?? "the base layer's code"} and by ${file}`);
         }
-        this.kinds.set(node.kind, kindDefOf(node));
+        const def = kindDefOf(node) as GraphTypologyDef & WithDeclarer;
+        const by = declaringInstanceFor(file);
+        if (by !== undefined) def[DECLARED_BY] = by;
+        this.kinds.set(node.kind, def);
         this.declaredIn.set(node.kind, file);
         kindRoot.set(node.kind, at);
       }

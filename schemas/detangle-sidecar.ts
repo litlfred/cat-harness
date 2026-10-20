@@ -41,7 +41,7 @@
  * **What that cost, measured 2026-09-26.** `j79e` records *"0 wrong-direction
  * outbound edges across 26 groups"* on 2026-09-23. Three days later it was
  * **1 across 28 groups** — `cat-harness/schemas/intake.ts` importing
- * `folio-assistant-core/schemas/materialization.js`, against a `cat-harness`
+ * the content core's `schemas/materialization.js`, against a `cat-harness`
  * that declares only `bootstrap`. An inversion reached `main` and `kg:detangle
  * --check` could not fail on it, because the field it would have had to
  * compare was not in the file. That is bean `1xhc` exactly: a gate that cannot

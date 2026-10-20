@@ -7,6 +7,10 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_MergeRefusal" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="session-coordinator" name="Session coordinator"/>
+  <bpmn:resource id="sibling-session" name="Sibling session"/>
   <bpmn:collaboration id="Collaboration_Process_MergeRefusal">
     <bpmn:participant id="Participant_Process_MergeRefusal" name="A refused merge-train member" processRef="Process_MergeRefusal"/>
   </bpmn:collaboration>
@@ -18,9 +22,8 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_MergeRefusal">
-      <bpmn:lane id="Lane_Steward" name="Merge steward">
+      <bpmn:lane id="Lane_Steward" name="Merge steward" partitionElementRef="session-coordinator">
         <bpmn:documentation>Coordinator and verifier of the hand-back: records, hands back, takes back when the fail condition fires, and closes. Never edits the bean's instructions after the executor claims it; later facts go to the PR.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="session-coordinator"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Refused</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Record</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Comment</bpmn:flowNodeRef>
@@ -35,14 +38,12 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
         <bpmn:flowNodeRef>Task_Scrap</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Scrapped</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Owner" name="Owning session">
+      <bpmn:lane id="Lane_Owner" name="Owning session" partitionElementRef="sibling-session">
         <bpmn:documentation>The session named in the PR's `Claude-Session:` trailer. The executor of the hand-back: claims the refusal bean, fixes the PR, reports on the PR in the bean's one-line formats.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="sibling-session"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_Fix</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Dispatched" name="Dispatched agent">
+      <bpmn:lane id="Lane_Dispatched" name="Dispatched agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>ONE agent with a modest budget, reached only when no live owner can be. May do what a declared pattern would have done; may NOT decide an authored conflict, which goes to the owner as a question.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_AgentFix</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Authored</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_AskOwner</bpmn:flowNodeRef>

@@ -176,7 +176,7 @@ orientation"* (§4.1).
   Heijden (2023) show *"The initial dimensions extracted by latent semantic
   analysis (LSA) of a document-term matrix ... mainly display marginal effects,
   which are irrelevant for information retrieval"* — document length and
-  overall term frequency. Observed here: dimension 1 of both the who-iris and
+  overall term frequency. Observed here: dimension 1 of both the IRIS replica and
   skills indexes has **no negative pole at all**, the signature of a margin.
 - **Word order and negation.** A bag of words; the paper lists *"a method of
   handling negation"* among refinements it did not add (§5.3).

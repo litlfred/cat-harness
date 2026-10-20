@@ -5,7 +5,7 @@
  *
  * It was, and that placement inverted a dependency. `jsonld.ts` is the
  * **content** vocabulary: block kinds, DoCO structural types, SPAR citation
- * terms, the FHIR and smart-base namespaces. It belongs to
+ * terms, the FHIR and WHO SMART Base namespaces. It belongs to
  * `folio-assist-core`, and it imports `./block-kinds` to build its projection
  * tables.
  *
@@ -60,6 +60,7 @@ import { PROPERTY_GLOSSES, REPLACEMENT_PREFIXES, type TermLayer, termLayer } fro
 // `module: ES2022` cannot spell that attribute. Bun accepted the bare import,
 // so every local run passed while the e2e job could not load the module.
 import { readFileSync } from "node:fs";
+import { releaseIris } from "@litlfred/bootstrap-tools/schemas/release-iri.ts";
 
 const ownNamespaces = JSON.parse(
   readFileSync(new URL("../code-lists/own-namespaces.json", import.meta.url), "utf-8"),
@@ -108,7 +109,11 @@ export const LEGACY_FOLIO_NS = ownNamespace("legacy-folio");
  */
 export const CAT_BOOTSTRAP_NS = ownNamespace("cat-bootstrap");
 export const CAT_HARNESS_NS = ownNamespace("cat-harness");
-export const CORE_NS = ownNamespace("folio-assistant-core");
+// The content layer's namespace is NOT here (folio-assistant#2598, owner
+// 2026-10-16, "2a" then "1a"). An instance above this one mints into its own
+// namespace, `<iriBase><version>/ns#` from its declaration
+// (`instanceNamespace`), and a kind it declares in its `typologies/` graph is
+// named in that namespace by the registry (`GraphTypologyDef.namespace`).
 
 /**
  * The XML namespace our BPMN EXTENSION elements bind to — `folio:skill`,
@@ -290,11 +295,27 @@ export function ownElementPattern(xml: string, local: string, rest = "", flags =
 export const NS_PREFIXES = {
   bootstrap: CAT_BOOTSTRAP_NS,
   "cat-harness": CAT_HARNESS_NS,
-  "folio-assistant-core": CORE_NS,
 } as const;
 
 /** One of our own prefixes — each the stub of the instance declaring it. */
 export type NsPrefix = keyof typeof NS_PREFIXES;
+
+/**
+ * The namespace a DECLARATION mints under — the one rule every instance's own
+ * namespace follows, so the content layer's is derived from its declaration
+ * rather than listed here (folio-assistant#2598, owner 2026-10-16).
+ *
+ * An instance that declares an `iriBase` mints under its own release,
+ * `<iriBase><version>/ns#` (`release-iri.ts`). One that declares none mints
+ * under the platform's site, `<stem><stub>/ns#`. `instanceNamespace` in
+ * `instance-repositories.ts` is this function; it lives here because the
+ * graph-typology registry needs it and cannot import that module (a cycle
+ * through `cat-harness.ts`).
+ */
+export function instanceNamespaceOf(decl: { name: string; stub?: string; iriBase?: string; version?: string }): string {
+  const release = releaseIris(decl);
+  return release ? `${release.agent}ns#` : `${LEGACY_FOLIO_NS.replace(/ns#$/, "")}${decl.stub ?? decl.name}/ns#`;
+}
 
 /** The instance stub a namespace of ours names — the segment before `/ns#`. */
 export function stubOfNamespace(ns: string): string | undefined {
@@ -304,15 +325,28 @@ export function stubOfNamespace(ns: string): string | undefined {
   return /\/([^/]+)\/(?:(?:\d+\.\d+\.\d+|v\d+)\/)?ns#$/.exec(ns)?.[1];
 }
 
-/** The namespace a layer's terms hang off. */
+/**
+ * The namespace a layer's terms hang off — for the two layers this module can
+ * name. The `core` layer has no namespace of its own here: a content layer
+ * above the harness mints into the namespace its declaration derives, so a
+ * caller asks the instance that declares the term (`contentLayerInstance` in
+ * `graph-typology-registry.ts`), not this function. Throws for `core`, rather
+ * than answering with a namespace that is not the declaring instance's.
+ */
 export function namespaceForLayer(layer: TermLayer): string {
-  return layer === "bootstrap" ? CAT_BOOTSTRAP_NS : layer === "core" ? CORE_NS : CAT_HARNESS_NS;
+  if (layer === "core") throw new Error(CORE_LAYER_UNNAMED);
+  return layer === "bootstrap" ? CAT_BOOTSTRAP_NS : CAT_HARNESS_NS;
 }
 
-/** The prefix a layer's terms are written with. */
+/** The prefix a layer's terms are written with. Throws for `core`, as {@link namespaceForLayer} does. */
 export function prefixForLayer(layer: TermLayer): NsPrefix {
-  return layer === "bootstrap" ? "bootstrap" : layer === "core" ? "folio-assistant-core" : "cat-harness";
+  if (layer === "core") throw new Error(CORE_LAYER_UNNAMED);
+  return layer === "bootstrap" ? "bootstrap" : "cat-harness";
 }
+
+const CORE_LAYER_UNNAMED =
+  "namespaces: the core layer's namespace is its declaring instance's (<iriBase><version>/ns#); " +
+  "ask contentLayerInstance() in graph-typology-registry.ts, or the kind's GraphTypologyDef.namespace";
 
 /**
  * A term's full IRI — the single call every minting site makes.

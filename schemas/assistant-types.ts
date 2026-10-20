@@ -40,7 +40,7 @@
  * resource model: each requirement contains statements with conformance
  * verbs (SHALL/SHOULD/MAY). FHIR's `satisfiedBy` is the inverse of the
  * `satisfies` a skill or capability declares, and is derived from it. This enables
- * cross-repository interoperability with WHO SMART Guidelines (smart-base).
+ * cross-repository interoperability with WHO SMART Guidelines (the DAK layer).
  *
  * @module assistant-types
  * @graphNode schema
@@ -265,7 +265,7 @@ export interface CapabilityDefinition {
  *
  * **It can, exactly.** The diagram already carries it, executably:
  * `Gateway_SigningRoute` branches to `Task_HumanSign`, a `userTask`, in
- * `Lane_Human`, which binds `<bootstrap.processes:role ref="publication-manager"/>`. So
+ * `Lane_Human`, which names role `publication-manager` (`partitionElementRef`). So
  * the fallback role is *the role of a lane holding a task only a person can
  * fill* — `fulfilmentKindsForBpmnType`, which the diagram's own
  * documentation already relies on to stop the air-gapped route quietly

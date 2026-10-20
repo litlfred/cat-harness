@@ -161,7 +161,7 @@ const RAW = [
     // a sled with the reins in paw, pulled by four robot cats in harness — the
     // name drawn literally. Named by the owner: "grumpy-cyborg-agents" — the
     // robot cats are the agents doing the pulling. `grumpy-cat` is unchanged and moves to
-    // folio-assistant-core, which keeps "each harness its own theme" true.
+    // the content core, which keeps "each harness its own theme" true.
     //
     // All three crops declare their own `textRegion`, measured by rendering
     // boxes over them: the @ mark sits at the cloud's top centre, so the words
@@ -436,7 +436,7 @@ const RAW = [
  *
  * None of these eleven inherits from anything, so resolving them is a parse
  * with `kind` defaulted to `sticky`. They go through the same function a
- * who-iris theme will, rather than a shortcut that would stop exercising the
+ * content instance's theme will, rather than a shortcut that would stop exercising the
  * path the moment it mattered.
  */
 export const THEMES: readonly ResolvedTheme[] = RAW.map((t) => {

@@ -7,6 +7,9 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_Process_GraphDetanglement" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="administrator" name="Administrator"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
   <bpmn:collaboration id="Collaboration_Process_GraphDetanglement">
     <bpmn:participant id="Participant_Process_GraphDetanglement" name="A sub-graph wants to leave" processRef="Process_GraphDetanglement"/>
   </bpmn:collaboration>
@@ -28,7 +31,7 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_GraphDetanglement">
-      <bpmn:lane id="Lane_Agent" name="Authoring agent">
+      <bpmn:lane id="Lane_Agent" name="Authoring agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Runs every stage up to the edge of authorisation — brief, declare, measure, move-and-remeasure, isolate — and Task_Propose is the last thing it does off its own judgement: reporting sizes and what would break, then waiting. Verification here is always by RE-RUNNING the measurement rather than by an assignment being locally reasonable, which is why Task_Move loops back to Task_Measure and not to the gate — a move that looks right is not yet a move that measured right.</bpmn:documentation>
         <!-- Bound EXPLICITLY rather than by name. "Authoring agent" is not in
              the role's `lanes` aliases, and the audit caught that on the first
@@ -38,9 +41,6 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
              And the role is REUSED rather than minted: `role-model` says a role
              is never invented to make a diagram drawable, so there is no
              "graph steward" here. -->
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="authoring-agent"/>
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Wants</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Brief</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Declare</bpmn:flowNodeRef>
@@ -55,11 +55,8 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
         <bpmn:flowNodeRef>End_Extracted</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Unknown</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Admin" name="Administrator">
+      <bpmn:lane id="Lane_Admin" name="Administrator" partitionElementRef="administrator">
         <bpmn:documentation>Reached only after Declared, Detangled and Isolated have each independently cleared — so this lane is never asked to judge the measurement, only whether an already-clean extraction may proceed. Declining is not a refusal back to unknown: End_Declined leaves the sub-graph declared, detangled and isolated in place, which is a real outcome of this process and not merely the absence of one.</bpmn:documentation>
-        <bpmn:extensionElements>
-          <bootstrap.processes:role ref="administrator"/>
-        </bpmn:extensionElements>
         <bpmn:flowNodeRef>Task_Authorise</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Declined</bpmn:flowNodeRef>
       </bpmn:lane>

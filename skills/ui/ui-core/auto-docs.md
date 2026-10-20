@@ -58,8 +58,8 @@ to drift and the copy a reader finds first is the one with no generator behind
 it.
 
 The worked example in this repository is
-[`who-iris/docs/ingestion-notes.html`](../../../../who-iris/docs/ingestion-notes.html):
-its requirements table is **parsed out of** `who-iris/skills/iris-dspace.md`
+the IRIS replica's `docs/ingestion-notes.html`:
+its requirements table is **parsed out of** the IRIS replica's `skills/iris-dspace.md`
 rather than typed beside it, and it **refuses rather than rendering an empty
 table** when the source moves. Do that, not a transcription.
 

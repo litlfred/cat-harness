@@ -31,7 +31,7 @@ the choices, and a view that shows them.
 |---|---|---|
 | `remoteGraphs` (`schemas/cat-harness.ts`) | a graph "known but not held"; declared nowhere, and its one reader filters it out | the **referenced** state of a subscribed subgraph |
 | `associatedHarnesses` (#1146, #1158) | a harness "referenced, never loaded"; one use, `ihris` | the harnesses a subscribed KG uses, **before** any is instantiated |
-| `MaterializationSchema` (`folio-assistant-core/schemas/materialization.ts`) | three states per node (unknown / referenced / materialized), five three-valued gates, fixity, expiry, upstream version | the **record** for every subgraph or asset copied locally |
+| `MaterializationSchema` (the content core's `schemas/materialization.ts`) | three states per node (unknown / referenced / materialized), five three-valued gates, fixity, expiry, upstream version | the **record** for every subgraph or asset copied locally |
 | `Process_MaterializeRemote` (`large-datasets/processes/`, #476) | the shared process with five gates: size, restrictions, retention, source loss, purpose | the **only** way bytes arrive |
 | `sync-remote-skills.ts` | pin a 40-character SHA, write byte-for-byte, record fixity, and `--check` it | the **pattern**, generalised from skills to subgraphs and assets |
 | `harness-tiles.ts` | a harness is *instantiated* when `<name>.config.json` sits at the repository root, which puts it in the navbar's bottom region | what **instantiating** a subscribed harness means |
@@ -66,12 +66,12 @@ repository: the declaration file alone answers both points.
 // in the subscriber's <instance>.json
 "subscriptions": [
   {
-    "id": "who-iris",
-    "repository": "litlfred/who-iris",          // RepoFullName (#1652)
+    "id": "<iris-replica>",
+    "repository": "litlfred/<iris-replica>",    // RepoFullName (#1652)
     "ref": "<40-char sha>",                     // pinned; a tag once releases exist
     "subgraphs": ["catalogue"],                 // CHOSEN for materialisation; everything else stays referenced
     "assets": { "policy": "on-demand" },        // none | on-demand | all — each copy still passes the gates
-    "harnesses": ["who-iris"]                   // CHOSEN for instantiation
+    "harnesses": ["<iris-replica>"]             // CHOSEN for instantiation
   }
 ]
 ```
@@ -108,8 +108,8 @@ per substrate:
 | substrate | repository | status | source of the row |
 |---|---|---|---|
 | iHRIS | `litlfred/ihris` | **exists** | `associatedHarnesses` in `cat-harness.json` |
-| WHO IRIS | `litlfred/who-iris` | **exists, empty**; the staged instance is `who-iris/` | `who-iris.json` → `repository` |
-| WHO style guide | none; **merging into who-iris as a subgraph** | owner, 2026-09-30: *"who voices style guide is derivative KG content from who-iris, merge content into subgraph. including docs."* | not a separate substrate |
+| WHO IRIS | the IRIS replica's repository | **exists, empty**; the staged instance is the IRIS replica | `<iris-replica>.json` → `repository` |
+| WHO style guide | none; **merging into the IRIS replica as a subgraph** | owner, 2026-09-30, paraphrased: the WHO voice style guide is KG content derived from the IRIS replica, so merge it, docs included, into a subgraph there | not a separate substrate |
 | WHO World Health Data Hub | none yet | proposed (owner, 2026-09-30) | hand-entered, `status: proposed` |
 | every other staged instance | its planned `repository` | planned | `instanceRepositories()` |
 
@@ -122,8 +122,8 @@ entered by hand, and it carries a `status`: `proposed`, `planned`, `exists` or
 
 The same registry is where the **`<stub>-tools` pairing** is recorded
 (`kg-separation`: content repository plus tools repository). Per the owner on
-2026-09-30, for who-iris: generic DSpace tools belong to the platform, and
-IRIS-specific tools may stay in `who-iris/` for now, but must show as a
+2026-09-30, for the IRIS replica: generic DSpace tools belong to the platform, and
+IRIS-specific tools may stay in the IRIS replica for now, but must show as a
 failing QA finding.
 
 ## The visualizer
@@ -149,7 +149,7 @@ or refresh.
 ## MVP — inside the folio separation
 
 The separation is making exactly these substrates: `bootstrap` is out, and
-`who-iris`, `cat-harness` and the others are staged. The MVP makes the parent
+the IRIS replica, `cat-harness` and the others are staged. The MVP makes the parent
 able to **consume** one of them the same way any subscriber would, instead of
 by sibling directory. That is `kg-separation` stage 11 ("parent consumes,
 additively") done by a general mechanism rather than one-off wiring.
@@ -157,7 +157,7 @@ additively") done by a general mechanism rather than one-off wiring.
 | # | slice | done when |
 |---|---|---|
 | 1 | **Schema**: `subscriptions` on the declaration (strict items, `ref` a SHA, `repository` a `RepoFullName`); may not overlap `needs` or `associatedHarnesses` | Zod plus QA check; a malformed entry fails |
-| 2 | **Known substrates** registry: derived rows plus hand rows with `status` | generated file plus `:check`; iHRIS and who-iris present |
+| 2 | **Known substrates** registry: derived rows plus hand rows with `status` | generated file plus `:check`; iHRIS and the IRIS replica present |
 | 3 | **Visualizer** page (read-only, generated) | renders the registry and every subscription; `?` for unknown |
 | 4 | **subscribe** tool: fetch and validate a substrate's declaration at a pin (a sparse, shallow fetch of the root declaration only) | `bun run cat kg:subscribe <repo>@<sha>` records the entry and cached declaration; a non-substrate is refused with its reason |
 | 5 | **materialise a subgraph**: `sync-remote-skills` generalised, through `Process_MaterializeRemote` | bytes plus `materialization.json`; `check:materialized-fixity` covers them |
@@ -166,7 +166,7 @@ additively") done by a general mechanism rather than one-off wiring.
 | 8 | **process, skill, scenarios**: `subscribe-kg.bpmn` (calls `Process_MaterializeRemote`), a `kg-subscription` skill, stories and roles | registered (`skill:register`), and `kg:audit` shows its lanes bound |
 
 **First real subscription: `litlfred/ihris`**, because it exists and is
-already associated. **who-iris** follows once its repository is seeded, which
+already associated. **the IRIS replica** follows once its repository is seeded, which
 stage 10 holds until the owner says so (2026-09-30: "Hold").
 
 Slices 1–3 need **no network and no new repository**, so they can land now.

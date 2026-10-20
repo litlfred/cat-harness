@@ -7,6 +7,10 @@
                   xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
                   id="Definitions_SessionStateMachine"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="session-record" name="Session record"/>
+  <bpmn:resource id="user" name="User"/>
 
   <!-- ═══════════════════════════════════════════════════════════
        An agent PLAYING a state machine — folio-assistant
@@ -62,9 +66,8 @@ The distinction between refreshing a timestamp and writing what changed is the d
     </bpmn:extensionElements>
 
     <bpmn:laneSet id="LaneSet_SessionStateMachine">
-      <bpmn:lane id="Lane_Machine" name="Agent (playing the machine)">
+      <bpmn:lane id="Lane_Machine" name="Agent (playing the machine)" partitionElementRef="authoring-agent">
         <bpmn:documentation>Classifies every turn into exactly one of three effects at Gateway_TurnEffect — nothing changed, state changed, ending — a fresh judgement each time because a table cannot key on intent and a wrong read is corrected by the next turn. It records that a bean was claimed or an instance closed, at A_UpdateSession, but performs none of those actions itself: the record and the thing it describes are kept deliberately separate.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="authoring-agent"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Session</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_IdentifyActor</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_ActorKnown</bpmn:flowNodeRef>
@@ -77,15 +80,13 @@ The distinction between refreshing a timestamp and writing what changed is the d
         <bpmn:flowNodeRef>A_CloseSession</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Session</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Human" name="Human actor">
+      <bpmn:lane id="Lane_Human" name="Human actor" partitionElementRef="user">
         <bpmn:documentation>Entered only when Gateway_ActorKnown cannot confirm an actor — the one fact in this whole record that the machine cannot recover by reading the repository — and answered once: the response is recorded so this lane is never re-entered for the same session, which is what keeps asking who is acting from becoming a repeated interruption.</bpmn:documentation>
-        <bpmn:extensionElements><bootstrap.processes:role ref="user"/></bpmn:extensionElements>
         <bpmn:flowNodeRef>A_AskWhoIsActing</bpmn:flowNodeRef>
       </bpmn:lane>
       <!-- Written to, decides nothing. No flowNodeRef, which is what
            `actedUpon` means. -->
-      <bpmn:lane id="Lane_Record" name="Session record">
-        <bpmn:extensionElements><bootstrap.processes:role ref="session-record"/></bpmn:extensionElements>
+      <bpmn:lane id="Lane_Record" name="Session record" partitionElementRef="session-record">
       </bpmn:lane>
     </bpmn:laneSet>
 

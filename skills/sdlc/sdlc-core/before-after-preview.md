@@ -257,7 +257,7 @@ shots. The counts are in section 3.
 
 ### Papers (LaTeX → PDF)
 
-- **Build:** the paper render path. See `build-pdf` (folio-assistant-sci) and the
+- **Build:** the paper render path. See `build-pdf` (the science layer) and the
   `paper_render_pdf` tool, or `document_render_pdf` for a document folio with
   no TeX. Build base and head with the **same TeX Live and the same class
   files**. A PDF cannot be toggled in place, so this is always case 2 of
@@ -278,8 +278,8 @@ shots. The counts are in section 3.
 
 - **Order:** **sushi must pass first.** A red sushi run has no IG to preview.
   Then run the IG Publisher, and compare the rendered `output/` pages
-  (`ig-publication` (fhir-harness),
-  `fhir-validation` (fhir-harness)).
+  (`ig-publication` (the FHIR IG layer),
+  `fhir-validation` (the FHIR IG layer)).
 - **Build:** two builds with identical tooling. The Publisher jar floats to
   the latest release on every run (bean `dhvf`), so **record its version for
   both sides**. If the versions differ, some differences in the pictures may
