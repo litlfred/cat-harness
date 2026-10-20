@@ -1012,6 +1012,11 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "node-kind-index/1.1.0": { generated: true },
       "folio-translation-status/v1": { generated: true },
       "folio-schema-graph/v1": { generated: true },
+      // GENERATOR OUTPUT: `processes:viz` writes one task-panel document per
+      // process page, `docs/en/<instance>/processes/<stem>.tasks.json`, which
+      // the page's task drawer fetches. Published since the processes pages
+      // became built at publish, and unmapped here until now.
+      "process-task-panel/v1": { shape: "cat-harness-tools:scripts/lib/task-panel.ts#PanelData", generated: true },
       "folio-library-index/v1": { generated: true },
       // The per-entry block graph, one file per library entry (bean `7nvr`).
       // Same writer as the index and deliberately a SEPARATE family: the index
