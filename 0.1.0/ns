@@ -269,6 +269,21 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:Image",
+      "@type": [
+        "rdfs:Class",
+        "skos:Concept"
+      ],
+      "label": "Image",
+      "comment": "A declared picture belonging to an instance, carrying its role, its layout and any text region.",
+      "prefLabel": "Image",
+      "definition": "A declared picture belonging to an instance, carrying its role, its layout and any text region.",
+      "notation": "cat-harness:Image",
+      "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:RoleGraph",
       "@type": [
         "rdfs:Class",
@@ -284,6 +299,22 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:FolioGraph",
+      "@type": [
+        "rdfs:Class",
+        "skos:Concept"
+      ],
+      "label": "FolioGraph",
+      "comment": "Authored content — the folio itself, rendered to a website.",
+      "prefLabel": "FolioGraph",
+      "definition": "Authored content — the folio itself, rendered to a website.",
+      "notation": "cat-harness:FolioGraph",
+      "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "layer": "harness",
+      "seeAlso": "https://litlfred.github.io/folio-assistant/ns/docs/cat-harness/concepts/content-types.html"
+    },
+    {
       "@id": "cat-harness:FshGutsGraph",
       "@type": [
         "rdfs:Class",
@@ -294,6 +325,36 @@
       "prefLabel": "FshGutsGraph",
       "definition": "The published export of an instance's fsh-guts tree: deprecated and throwaway structured content, reachable by name only.",
       "notation": "cat-harness:FshGutsGraph",
+      "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "layer": "harness"
+    },
+    {
+      "@id": "cat-harness:PreviewGraph",
+      "@type": [
+        "rdfs:Class",
+        "skos:Concept"
+      ],
+      "label": "PreviewGraph",
+      "comment": "A staging target: the same folio built for review rather than for release.",
+      "prefLabel": "PreviewGraph",
+      "definition": "A staging target: the same folio built for review rather than for release.",
+      "notation": "cat-harness:PreviewGraph",
+      "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "layer": "harness"
+    },
+    {
+      "@id": "cat-harness:UnknownGraph",
+      "@type": [
+        "rdfs:Class",
+        "skos:Concept"
+      ],
+      "label": "UnknownGraph",
+      "comment": "A declared graph typology nothing recognises — reported as its own state, never silently treated as empty.",
+      "prefLabel": "UnknownGraph",
+      "definition": "A declared graph typology nothing recognises — reported as its own state, never silently treated as empty.",
+      "notation": "cat-harness:UnknownGraph",
       "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
       "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
       "layer": "harness"
@@ -704,6 +765,21 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:graphTypology/folio",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "folio",
+      "comment": "Authored content, rendered to a website by the just-the-docs pipeline.",
+      "prefLabel": "folio",
+      "definition": "Authored content, rendered to a website by the just-the-docs pipeline.",
+      "notation": "cat-harness:graphTypology/folio",
+      "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:graphTypology/health",
       "@type": [
         "bootstrap:GraphTypology",
@@ -849,6 +925,21 @@
       "prefLabel": "lean",
       "definition": "A folio's Lean 4 formalisation: Lake packages, their modules and the declarations in them. Declared by the folio that holds the packages; this harness owns the kind, the Lean tools and the rendering (doc-gen4 HTML wrapped in the harness rail).",
       "notation": "cat-harness:graphTypology/lean",
+      "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "layer": "harness"
+    },
+    {
+      "@id": "cat-harness:graphTypology/library",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "library",
+      "comment": "L1 source content — one `<bib-slug>/` per ingested document, holding `sections/*.md`, `structure.json` and, where the source was scanned, `ocr/page-NNN.txt`. Every knowledge-graph reference to a source resolves through here, never to a loose path or a bare URL.",
+      "prefLabel": "library",
+      "definition": "L1 source content — one `<bib-slug>/` per ingested document, holding `sections/*.md`, `structure.json` and, where the source was scanned, `ocr/page-NNN.txt`. Every knowledge-graph reference to a source resolves through here, never to a loose path or a bare URL.",
+      "notation": "cat-harness:graphTypology/library",
       "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
       "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
       "layer": "harness"
@@ -1169,6 +1260,51 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:graphTypology/todo-feedback",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "todo-feedback",
+      "comment": "Feedback items — todos raised against a specific block, carrying the submitter's identity. Read by the `todo-review` skill.",
+      "prefLabel": "todo-feedback",
+      "definition": "Feedback items — todos raised against a specific block, carrying the submitter's identity. Read by the `todo-review` skill.",
+      "notation": "cat-harness:graphTypology/todo-feedback",
+      "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "layer": "harness"
+    },
+    {
+      "@id": "cat-harness:graphTypology/todo-items",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "todo-items",
+      "comment": "Todo nodes — one file each, carrying `\"$schema\": \"todo/1.0.0\"`. Authored by people and by agents on their behalf.",
+      "prefLabel": "todo-items",
+      "definition": "Todo nodes — one file each, carrying `\"$schema\": \"todo/1.0.0\"`. Authored by people and by agents on their behalf.",
+      "notation": "cat-harness:graphTypology/todo-items",
+      "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "layer": "harness"
+    },
+    {
+      "@id": "cat-harness:graphTypology/todos",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "todos",
+      "comment": "Human actors' outstanding work — content, owned by the folio, tagged by role, process, task and identity. Its inner directories are declared by `todos/todos.json`.",
+      "prefLabel": "todos",
+      "definition": "Human actors' outstanding work — content, owned by the folio, tagged by role, process, task and identity. Its inner directories are declared by `todos/todos.json`.",
+      "notation": "cat-harness:graphTypology/todos",
+      "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:graphTypology/tool-release",
       "@type": [
         "bootstrap:GraphTypology",
@@ -1244,6 +1380,21 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:graphTypology/uploads",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "uploads",
+      "comment": "The incoming queue — raw files as dropped, before ingestion. NOT L1, and not greppable as corpus: a document here reads as absent to every consumer.",
+      "prefLabel": "uploads",
+      "definition": "The incoming queue — raw files as dropped, before ingestion. NOT L1, and not greppable as corpus: a document here reads as absent to every consumer.",
+      "notation": "cat-harness:graphTypology/uploads",
+      "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:graphTypology/validators",
       "@type": [
         "bootstrap:GraphTypology",
@@ -1269,6 +1420,36 @@
       "prefLabel": "vocab-mapping",
       "definition": "Vocabulary mappings — which source field becomes which target predicate, with its stated relationship, one ConceptMap-shaped table per source and target; representable from and producible as a FHIR ConceptMap.",
       "notation": "cat-harness:graphTypology/vocab-mapping",
+      "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "layer": "harness"
+    },
+    {
+      "@id": "cat-harness:graphTypology/voice-vendors",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "voice-vendors",
+      "comment": "Vendor voice profiles — a base voice specialised for one agent vendor, `folio-voice/v1` with `extends` naming the base. A sub-graph of `voices`, declared from within by `voices.json`, each vendor declared by `vendors.json`.",
+      "prefLabel": "voice-vendors",
+      "definition": "Vendor voice profiles — a base voice specialised for one agent vendor, `folio-voice/v1` with `extends` naming the base. A sub-graph of `voices`, declared from within by `voices.json`, each vendor declared by `vendors.json`.",
+      "notation": "cat-harness:graphTypology/voice-vendors",
+      "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
+      "layer": "harness"
+    },
+    {
+      "@id": "cat-harness:graphTypology/voices",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "voices",
+      "comment": "Editorial voice profiles — one JSON each, carrying `\"$schema\": \"folio-voice/v1\"`. Every rule cites the ingested source or KG node it was derived from. Opt-in per folio.",
+      "prefLabel": "voices",
+      "definition": "Editorial voice profiles — one JSON each, carrying `\"$schema\": \"folio-voice/v1\"`. Every rule cites the ingested source or KG node it was derived from. Opt-in per folio.",
+      "notation": "cat-harness:graphTypology/voices",
       "inScheme": "https://litlfred.github.io/cat-harness/0.1.0/ns",
       "isDefinedBy": "https://litlfred.github.io/cat-harness/0.1.0/ns",
       "layer": "harness"
