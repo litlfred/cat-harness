@@ -312,7 +312,14 @@
     "totalPages": {{ site.data.translation-qa.totalPages | default: 0 }},
     "pagesWithTranslations": {{ site.data.translation-qa.pagesWithTranslations | default: 0 }},
     "complete": {% if site.data.translation-qa.complete %}true{% else %}false{% endif %}
-  }
+  },
+  "statusSrc": {%- comment -%}
+    The instance's translation-status projection (`folio-translation-status/v1`,
+    written by `gen-translation-status.ts`), which the translation drawer reads
+    (bean `cat-tools-bbnd`). A PATH only: per-locale coverage and officiality
+    are fetched when the drawer opens, never baked into the page. A site that
+    publishes none gets a 404, which the drawer reports as "not published".
+  {%- endcomment -%}"{{ '/assets/translation-status/index.json' | relative_url }}"
 }</script>
 <!--
   Where the action tiles point.
