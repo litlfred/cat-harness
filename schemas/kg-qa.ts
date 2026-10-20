@@ -731,7 +731,7 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
   // names a Role through BPMN `partitionElementRef`, and a mechanical role's
   // skills are its contract. The three entries below are REPORT entries, not
   // gates — hence `minor`, which `kg:audit` prints and neither `--check` nor
-  // `--strict` fails on. The audit that computes them is cat-harness-tools'.
+  // `--strict` fails on. The audit that computes them lives in the tools layer.
   {
     id: "lane-role-legacy-binding",
     applies: ["process"],
