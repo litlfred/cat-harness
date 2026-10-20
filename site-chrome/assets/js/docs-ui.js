@@ -10954,6 +10954,76 @@
     });
   }
 
+  /**
+   * THE STATUS PAGE'S PER-ROW DRAWER (bean `cat-tools-bbnd`): each locale row
+   * the translation-status visualiser draws (`tr[data-fa-tr-locale]`) gets a
+   * control that opens, under it, the catalogues behind the row's numbers,
+   * each with its own counts and `X-Folio-Official` header. Read from the same
+   * projection as every other scope, so the row and its drawer cannot differ.
+   */
+  function mountTranslationStatusRows() {
+    var rows = document.querySelectorAll(".ts-page tr[data-fa-tr-locale]");
+    if (!rows.length) return;
+    var meta = getTranslationMeta() || {};
+    rows.forEach(function (row) {
+      var locale = row.getAttribute("data-fa-tr-locale");
+      var cell = row.querySelector("th");
+      if (!cell || row.querySelector(".fa-tr-row-toggle")) return;
+      var btn = chromeText(el("button", {
+        type: "button", class: "fa-tr-drawer-toggle fa-tr-row-toggle", "aria-expanded": "false",
+        title: "Catalogues behind the " + locale + " numbers"
+      }, "ⓘ Details"));
+      cell.appendChild(document.createTextNode(" "));
+      cell.appendChild(btn);
+      btn.addEventListener("click", function () {
+        var next = row.nextElementSibling;
+        if (next && next.classList.contains("fa-tr-row-drawer")) {
+          next.parentNode.removeChild(next);
+          btn.setAttribute("aria-expanded", "false");
+          btn.focus();
+          return;
+        }
+        btn.setAttribute("aria-expanded", "true");
+        trStatusFetch(meta.statusSrc, function (status, err) {
+          var tr = el("tr", { class: "fa-tr-row-drawer" });
+          var td = el("td", { colspan: String(row.children.length) });
+          var panel = chromeText(el("div", { class: "fa-qa-panel fa-tr-drawer", role: "region", "aria-label": "Catalogues for " + locale, tabindex: "-1" }));
+          var loc = null;
+          ((status && status.locales) || []).forEach(function (x) { if (x.locale === locale) loc = x; });
+          if (err || !loc) {
+            panel.appendChild(el("p", { class: "fa-qa-absent" }, err ? "Could not load the catalogue detail (" + err + ")." : "The status projection has no row for " + locale + "."));
+          } else if (!loc.files) {
+            panel.appendChild(el("p", { class: "fa-qa-absent" }, "This projection predates per-catalogue detail; regenerate it with translation:status."));
+          } else {
+            panel.appendChild(el("p", null, trOfficialityLabel(loc.officiality)));
+            var t = el("table", { class: "fa-tr-drawer__table" });
+            var h = el("tr");
+            ["catalogue", "translated", "fuzzy", "X-Folio-Official"].forEach(function (x) { h.appendChild(el("th", { scope: "col" }, x)); });
+            var th = el("thead"); th.appendChild(h); t.appendChild(th);
+            var tb = el("tbody");
+            loc.files.forEach(function (f) {
+              var r = el("tr");
+              r.appendChild(el("th", { scope: "row" }, f.path));
+              r.appendChild(el("td", null, f.translated + " / " + f.entries + " (" + trPct(f.translated, f.entries) + ")"));
+              r.appendChild(el("td", null, String(f.fuzzy)));
+              r.appendChild(el("td", null, f.official || "(absent)"));
+              tb.appendChild(r);
+            });
+            t.appendChild(tb);
+            panel.appendChild(t);
+            if (loc.unreadable && loc.unreadable.length) {
+              panel.appendChild(el("p", { class: "fa-qa-absent" }, "Unreadable, so not counted: " + loc.unreadable.join(", ")));
+            }
+          }
+          td.appendChild(panel);
+          tr.appendChild(td);
+          row.parentNode.insertBefore(tr, row.nextSibling);
+          panel.focus();
+        });
+      });
+    });
+  }
+
   function mountTranslationBadges() {
     var meta = getTranslationMeta();
     if (!meta) return;
@@ -12326,6 +12396,7 @@
     // was a preference about paint rather than a dependency.
     withSiteIndex(mountNavLocale);
     mountTranslationBadges();
+    mountTranslationStatusRows();
     mountQaPanels();
     paintQaBadges();
     // THE GLASS FIRST, and unconditionally. It is the reader's folio rather
