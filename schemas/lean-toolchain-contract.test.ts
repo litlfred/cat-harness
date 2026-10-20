@@ -26,6 +26,8 @@ interface Role { id: string; actorKinds: string[]; skills: string[] }
 interface Capability { id: string; detection?: { method: string; command?: string; endpoint?: string }; fallbackTo?: string; requires?: string[]; satisfies?: string[] }
 interface Statement { key: string; requirement: string; successCriteria?: { criterion: string; verification: string }[] }
 
+// declared-path-literal: a contract test whose subject IS these named nodes — the role,
+// actor, capabilities and requirement set one external party's contract is made of.
 const role = json<{ roles: Role[] }>("scenarios/roles.json").roles.find((r) => r.id === "lean-toolchain")!;
 const actor = json<{ id: string; kind: string; roles: string[]; capabilities: string[] }>("scenarios/actors/lean-mcp.json");
 const toolchain = json<Capability>("scenarios/capabilities/lean-toolchain.json");

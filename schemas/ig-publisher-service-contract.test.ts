@@ -26,6 +26,8 @@ interface Role { id: string; actorKinds: string[]; skills: string[] }
 interface Capability { id: string; detection?: { method: string; command?: string }; requires?: string[]; satisfies?: string[] }
 interface Statement { key: string; requirement: string; dependsOn?: string[] }
 
+// declared-path-literal: a contract test whose subject IS these named nodes — the role,
+// actor, capabilities and requirement set one external party's contract is made of.
 const role = json<{ roles: Role[] }>("scenarios/roles.json").roles.find((r) => r.id === "ig-publisher-service")!;
 const actor = json<{ id: string; kind: string; description: string; roles: string[]; capabilities: string[] }>("scenarios/actors/ig-publisher-service.json");
 const publisher = json<Capability>("scenarios/capabilities/ig-publisher.json");
