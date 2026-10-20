@@ -171,6 +171,12 @@ export const TranslationStatusSchema = z
     changedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     /** The translations directory counted, repository-relative. */
     scope: z.string(),
+    /**
+     * The status page, site-relative, which the translation drawer links as
+     * "Full translation status" (bean `cat-tools-bbnd`). Optional: an index
+     * written before the drawer existed has none.
+     */
+    page: z.string().optional(),
     locales: z.array(LocaleStatusSchema),
     /**
      * Every OTHER instance's declared `translation-sources` directory, each

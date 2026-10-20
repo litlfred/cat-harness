@@ -28,6 +28,11 @@ describe("folio-translation-status/v1 carries the drawer's fields", () => {
     expect(r.error?.issues ?? []).toEqual([]);
   });
 
+  test("the status page the drawer links parses", () => {
+    const r = TranslationStatusSchema.safeParse({ ...status({}), page: "en/cat-harness/translation-status/index.md" });
+    expect(r.error?.issues ?? []).toEqual([]);
+  });
+
   test("an index written before the fields existed still parses", () => {
     expect(TranslationStatusSchema.safeParse(status({})).success).toBe(true);
   });
