@@ -6,6 +6,8 @@ description: >
   received, and what the verifier does when it cannot. The narrowest contract
   the diagrams require. A mechanical role's skill is a contract to test
   against, not instructions to read.
+tested-by:
+  - schemas/external-registry-contract.test.ts
 ---
 
 # External registry — the role's contract
@@ -43,6 +45,9 @@ it routes a mismatch, to the last good version (`End_Rejected`). This side of
 the contract is ours, and it is what makes relying on a party we do not
 control safe.
 
-**Needs the owner's review:** this contract is inferred from one diagram. No
-test in this repository exercises it, so it names no `tested-by:`, and the QA
-report's `mechanical-role-untested` entry says so.
+**Needs the owner's review:** this contract is inferred from one diagram.
+The test in `tested-by:` holds the side of it that is ours: one lane names
+this role, it holds `P_Verify` and `GW_Verified`, and `GW_Verified` serves the
+bytes only on a match, sending every other answer to `End_Rejected`. Lines 1
+and 2 above are the registry's own behaviour on a network this repository does
+not reach, and nothing here tests them.
