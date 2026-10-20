@@ -10854,6 +10854,78 @@
     return panel;
   }
 
+  /** The instance's status projection, fetched once per page: `cb(doc, err)`. */
+  function trStatusFetch(src, cb) {
+    if (!src) { cb(null, "no status path on this page"); return; }
+    if (TR_STATUS[src]) { cb(TR_STATUS[src].doc || null, TR_STATUS[src].err || null); return; }
+    fetch(src, { credentials: "same-origin" })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (doc) { TR_STATUS[src] = { doc: doc }; cb(doc, null); })
+      .catch(function (e) { TR_STATUS[src] = { err: e.message }; cb(null, e.message); });
+  }
+
+  /**
+   * THE BLOCK SCOPE (bean `cat-tools-bbnd`): what a `TR` panel adds, per
+   * locale its verdicts cover. Whether the verdict is STALE (a witness whose
+   * `freshness` is not `fresh` judged a source that has since moved), and the
+   * locale's signed-off state from the same projection the page drawer reads.
+   * Plus the control that opens the page drawer, so a block reaches the rest.
+   */
+  function trBlockSection(doc) {
+    var byLocale = {};
+    (doc.criteria || []).forEach(function (c) {
+      if (!c.locale) return;
+      var e = byLocale[c.locale] || (byLocale[c.locale] = { stale: 0, witnesses: 0 });
+      (c.witnesses || []).forEach(function (w) {
+        e.witnesses += 1;
+        if (w.freshness && w.freshness !== "fresh") e.stale += 1;
+      });
+    });
+    var locales = Object.keys(byLocale).sort();
+    var sec = el("section", { class: "fa-tr-drawer__block" });
+    sec.appendChild(el("h3", null, "Translation of this block"));
+    if (!locales.length) {
+      sec.appendChild(el("p", { class: "fa-qa-absent" }, "No verdict here names a locale."));
+      return sec;
+    }
+    var dl = el("dl", { class: "fa-tr-drawer__facts" });
+    var cells = {};
+    locales.forEach(function (l) {
+      var e = byLocale[l];
+      dl.appendChild(el("dt", null, l));
+      var dd = el("dd", { "data-fa-tr-locale": l });
+      dd.appendChild(el("span", { class: "fa-tr-drawer__fresh", "data-fa-tr-fresh": e.stale ? "stale" : "fresh" },
+        e.stale
+          ? "stale: the source changed after " + e.stale + " of " + e.witnesses + " verdict(s) were reached"
+          : "current: every verdict was reached on the source as it is now"));
+      var off = el("span", { class: "fa-tr-drawer__official" }, " \u00B7 signed off: \u2026");
+      dd.appendChild(off);
+      cells[l] = off;
+      dl.appendChild(dd);
+    });
+    sec.appendChild(dl);
+    var meta = getTranslationMeta() || {};
+    trStatusFetch(meta.statusSrc, function (status, err) {
+      var byL = {};
+      ((status && status.locales) || []).forEach(function (x) { byL[x.locale] = x; });
+      locales.forEach(function (l) {
+        var x = byL[l];
+        cells[l].textContent = " \u00B7 signed off: " +
+          (err ? (err === "HTTP 404" ? "not published for this site" : "could not determine (" + err + ")")
+               : x ? trOfficialityLabel(x.officiality) : "this site has no catalogue for " + l);
+        if (x && x.officiality) cells[l].setAttribute("data-fa-tr-officiality", x.officiality.state);
+      });
+    });
+    var open = el("button", { type: "button", class: "fa-translation-warning__details" }, "Open translation details");
+    open.addEventListener("click", function () {
+      var t = document.querySelector(".fa-tr-drawer-toggle");
+      if (t && t.getAttribute("aria-expanded") !== "true") t.click();
+      else if (t) { var d = document.getElementById(t.getAttribute("aria-controls")); if (d) d.focus(); }
+    });
+    sec.appendChild(open);
+    return sec;
+  }
+
   /** Open or close the drawer: `qaToggle`'s contract, so one behaviour for both. */
   function trToggle(toggle, meta, available, supported) {
     var panelId = toggle.getAttribute("aria-controls");
@@ -10876,20 +10948,10 @@
       else anchor.parentNode.appendChild(node);
       node.focus();
     }
-    var src = meta.statusSrc;
-    if (!src) { mount(trBuildDrawer(meta, available, supported, panelId, toggle, null, "no status path on this page")); return; }
-    if (TR_STATUS[src]) { mount(trBuildDrawer(meta, available, supported, panelId, toggle, TR_STATUS[src].doc, TR_STATUS[src].err)); return; }
     toggle.setAttribute("aria-busy", "true");
-    fetch(src, { credentials: "same-origin" })
-      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-      .then(function (doc) {
-        TR_STATUS[src] = { doc: doc };
-        mount(trBuildDrawer(meta, available, supported, panelId, toggle, doc, null));
-      })
-      .catch(function (e) {
-        TR_STATUS[src] = { err: e.message };
-        mount(trBuildDrawer(meta, available, supported, panelId, toggle, null, e.message));
-      });
+    trStatusFetch(meta.statusSrc, function (doc, err) {
+      mount(trBuildDrawer(meta, available, supported, panelId, toggle, doc, err));
+    });
   }
 
   function mountTranslationBadges() {
@@ -11583,6 +11645,12 @@
     if (!doc.criteria || doc.criteria.length === 0) {
       panel.appendChild(el("p", { class: "fa-qa-absent" },
         "The sidecar holds no criteria — nothing about this subject has been checked."));
+    }
+    // A TRANSLATION panel is also the translation drawer's block scope (bean
+    // `cat-tools-bbnd`): staleness and officiality per locale, one more control.
+    if (doc.family === "translation" || badge.getAttribute("data-qa-family") === "translation") {
+      panel.classList.add("fa-tr-drawer");
+      panel.appendChild(trBlockSection(doc));
     }
     return panel;
   }
