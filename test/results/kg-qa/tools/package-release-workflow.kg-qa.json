@@ -5,7 +5,7 @@
     "id": "package-release-workflow",
     "path": null
   },
-  "source_hash": "78aa59d3fe43",
+  "source_hash": "2ee8ab46ee95",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

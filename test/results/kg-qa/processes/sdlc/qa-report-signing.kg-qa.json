@@ -5,7 +5,7 @@
     "id": "Process_QaReportSigning",
     "path": "processes/sdlc/qa-report-signing.bpmn"
   },
-  "source_hash": "sha256:6f8477e9fd80df1c387f10ba28bfbe68a3a441e392f57f48f8a6118386095ffc",
+  "source_hash": "sha256:c9b296141a78db1d9a540e280790df72a07a1de8e24fa876e122de8b2be8b56d",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -97,6 +97,27 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Task_BuildRun",
+          "detail": "task \"Build the test run [folio-test-run/v1]\" requires skill \"qa-report-signing\", which role \"validation-pipeline\" (named by lane \"Validation and QA (mechanical + agents)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_ResolveReach",
+          "detail": "task \"Resolve the performer's reach [effectiveReach + signing-api probe]\" requires skill \"qa-report-signing\", which role \"validation-pipeline\" (named by lane \"Validation and QA (mechanical + agents)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_RecordAttestation",
+          "detail": "task \"Record which route signed it\" requires skill \"qa-report-signing\", which role \"validation-pipeline\" (named by lane \"Validation and QA (mechanical + agents)\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -147,8 +168,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 2,
+    "pass": 16,
+    "fail": 3,
     "n/a": 8,
     "unknown": 0
   }

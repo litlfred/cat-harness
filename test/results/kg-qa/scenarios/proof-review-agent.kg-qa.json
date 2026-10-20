@@ -5,7 +5,7 @@
     "id": "proof-review-agent",
     "path": "scenarios/roles.json"
   },
-  "source_hash": "sha256:66abbc76e0e0168c2a8cce71e34e844c5d2a68d39c90bf6830fa68605987b0b8",
+  "source_hash": "sha256:a55d7dc2c4aa2377e869486e635707736801f42d2ca8ac8ff161da564a51edd4",
   "criteria": {
     "role-skills-resolve": {
       "result": "pass",
@@ -20,9 +20,13 @@
       "findings": [
         {
           "where": "proof-review-agent",
-          "detail": "role \"proof-review-agent\" is bound by no lane's <bootstrap.processes:role ref> in any diagram — nothing can enter it. Either a lane lost its ref, or the role is dead."
+          "detail": "role \"proof-review-agent\" is named by no lane's partitionElementRef (or legacy <bootstrap.processes:role ref>) in any diagram — nothing can enter it. Either a lane lost its binding, or the role is dead."
         }
       ]
+    },
+    "mechanical-role-untested": {
+      "result": "n/a",
+      "findings": []
     },
     "role-has-persona": {
       "result": "pass",
@@ -44,7 +48,7 @@
   "totals": {
     "pass": 6,
     "fail": 1,
-    "n/a": 0,
+    "n/a": 1,
     "unknown": 0
   }
 }

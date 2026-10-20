@@ -5,7 +5,7 @@
     "id": "pin-actions",
     "path": null
   },
-  "source_hash": "2d17374fc821",
+  "source_hash": "c3a4c9fb1840",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

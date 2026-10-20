@@ -5,7 +5,7 @@
     "id": "Process_PrChecksPresent",
     "path": "processes/sdlc/pr-checks-present.bpmn"
   },
-  "source_hash": "sha256:523b7482e77b6c77c9767ee8a68b0583c63a7fc4248d50152c9160c66967340a",
+  "source_hash": "sha256:c74cace9f5f55599900a99d929d8a911684ffd4bf5f2e0a1bf99df17835d7060",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -69,6 +69,19 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Task_Comment",
+          "detail": "task \"Comment ONCE per (PR, head sha)\" requires skill \"issue-working\", which role \"build-pipeline\" (named by lane \"Scheduled log sweep\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -82,8 +95,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_PrChecksPresent",
+          "detail": "pr-checks-present.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -110,13 +128,8 @@
       "findings": []
     },
     "prose-reviewed-since-code-changed": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": ".github/workflows/pr-checks-present.yml",
-          "detail": ".github/workflows/pr-checks-present.yml changed since cat-harness/processes/sdlc/pr-checks-present.bpmn was last attested (agent), and the prose did not. Re-read it; if it still holds, run pairs:attest with a reason."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "prose-claims-resolve": {
       "result": "pass",
@@ -124,8 +137,8 @@
     }
   },
   "totals": {
-    "pass": 14,
-    "fail": 3,
+    "pass": 15,
+    "fail": 4,
     "n/a": 8,
     "unknown": 0
   }

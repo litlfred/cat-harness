@@ -5,7 +5,7 @@
     "id": "Process_CRDM_Issue",
     "path": "processes/process/crdm-issue-linking.bpmn"
   },
-  "source_hash": "sha256:94d51084a2374e42c2875288d12877f9389825699a65bc57092bf8e659c380da",
+  "source_hash": "sha256:106b5c9c9ada7a042bd2a4eb323f56dd3c186f14c7a78ffd1dbd13a96728b581",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -72,6 +72,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -85,8 +93,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_CRDM_Issue",
+          "detail": "crdm-issue-linking.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -122,8 +135,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 1,
+    "pass": 16,
+    "fail": 2,
     "n/a": 9,
     "unknown": 0
   }

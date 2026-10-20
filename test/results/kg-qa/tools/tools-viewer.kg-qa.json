@@ -5,7 +5,7 @@
     "id": "tools-viewer",
     "path": null
   },
-  "source_hash": "5c8280ea2e46",
+  "source_hash": "ca337938eda8",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "Process_NarrativeCodeReview",
     "path": "processes/sdlc/narrative-code-review.bpmn"
   },
-  "source_hash": "sha256:26dca9850442f93e03735f576a853350010003767145ffa9a1e7e317cd317f03",
+  "source_hash": "sha256:2fa9a86ccff2b6402a79efe9771e1f8cd15086b98c409cbcabd612033e826282",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -76,6 +76,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -89,8 +97,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_NarrativeCodeReview",
+          "detail": "narrative-code-review.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -126,8 +139,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 1,
+    "pass": 16,
+    "fail": 2,
     "n/a": 9,
     "unknown": 0
   }

@@ -5,7 +5,7 @@
     "id": "state-viewer",
     "path": null
   },
-  "source_hash": "4bb12fbaf36c",
+  "source_hash": "6023a66fb4b6",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "docs-generation",
     "path": "skills/ui/ui-core/docs-generation.md"
   },
-  "source_hash": "a0b592a10f4c",
+  "source_hash": "73bb204c2d11",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "Process_BeanLifecycle",
     "path": "processes/sdlc/bean-lifecycle.bpmn"
   },
-  "source_hash": "sha256:f73b3465dd925f3f177eb1877415924d7166854db89aa7d16953381ad2f173fc",
+  "source_hash": "sha256:51e7c31ebf9c675c542832d7b80e836bcf988e9a57458e42c05841a664993c91",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -59,6 +59,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -109,7 +117,7 @@
     }
   },
   "totals": {
-    "pass": 15,
+    "pass": 17,
     "fail": 0,
     "n/a": 10,
     "unknown": 0

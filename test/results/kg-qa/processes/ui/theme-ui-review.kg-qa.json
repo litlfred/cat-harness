@@ -5,7 +5,7 @@
     "id": "Process_ThemeUIReview",
     "path": "processes/ui/theme-ui-review.bpmn"
   },
-  "source_hash": "sha256:f195fd22d845f80b068ddb34680c5593068451aa09e92ce8ae32d9887ff3f59c",
+  "source_hash": "sha256:7c01801ca14f25c7d73d196b6683b7bba30f2e92dcbdeab192311af6c5b8850f",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -80,6 +80,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -130,7 +138,7 @@
     }
   },
   "totals": {
-    "pass": 14,
+    "pass": 16,
     "fail": 1,
     "n/a": 10,
     "unknown": 0

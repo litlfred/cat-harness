@@ -167,7 +167,7 @@
     },
     "stated": {
       "summary": "The licence is known, and the record says where it is stated.",
-      "count": 22,
+      "count": 25,
       "entries": [
         {
           "entry": "cat-harness/library/arxiv-2505.10399v1",
@@ -278,12 +278,27 @@
           "entry": "smart-base/library/who-dpi-h-reference-architecture-draft-v1",
           "id": "CC-BY-NC-SA-3.0-IGO",
           "basis": "The owner (litlfred), 2026-10-01, in session chat: 'CC BY-NC-SA 3.0 IGO, = the draft Reference Architecture.  i am responsible'. The PDF itself states no licence: all 254 pages were searched for licence/Creative Commons/CC BY/copyright/© on 2026-10-01, and the only matches are about third-party works (SNOMED CT, Archi, World Bank) cited inside it."
+        },
+        {
+          "entry": "smart-immunizations/library/9789240016514-eng",
+          "id": "CC-BY-NC-SA-3.0-IGO",
+          "basis": "https://iris.who.int/items/58333fc5-9ec5-4d14-b341-5ae257dd0ad1 item metadata: dc.rights = 'CC BY-NC-SA 3.0 IGO', dc.rights.uri = 'https://creativecommons.org/licenses/by-nc-sa/3.0/igo'"
+        },
+        {
+          "entry": "smart-immunizations/library/9789240099456-eng",
+          "id": "CC-BY-NC-SA-3.0-IGO",
+          "basis": "The PDF's imprint page (p. 2): '© World Health Organization 2024. Some rights reserved. This work is available under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 IGO licence (CC BY-NC-SA 3.0 IGO)', and the suggested citation 'Licence: CC BY-NC-SA 3.0 IGO', read 2026-10-06"
+        },
+        {
+          "entry": "smart-immunizations/library/who-2019-ncov-digital-certificates-vaccination-20211-eng",
+          "id": "CC-BY-NC-SA-3.0-IGO",
+          "basis": "https://iris.who.int/items/96b90d2c-5e33-404d-b7a5-5601bac140bc item metadata: dc.rights = 'CC BY-NC-SA 3.0 IGO', dc.rights.uri = 'https://creativecommons.org/licenses/by-nc-sa/3.0/igo'"
         }
       ]
     },
     "unknown": {
       "summary": "Somebody looked and could not establish the licence. Each entry records where it searched. Holding the source may still be the owner's call, but a reader must not assume it is openly licensed.",
-      "count": 17,
+      "count": 20,
       "entries": [
         {
           "entry": "cat-harness/library/arxiv-2203.02010v1",
@@ -346,7 +361,17 @@
           "note": "OWNER INSTRUCTION 2026-10-08: committed to main (commit b87e64d) for issue #2513. Standing clearance of 2026-10-02 ok on arxiv sourced papers applies."
         },
         {
+          "entry": "folio-assistant-sci/library/arxiv-2003.08005v1",
+          "searched": 2,
+          "note": "Next place to look: the arXiv abstract page's licence link, from an environment that can reach arxiv.org."
+        },
+        {
           "entry": "folio-assistant-sci/library/arxiv-2406.01940v2",
+          "searched": 2,
+          "note": "Next place to look: the arXiv abstract page's licence link, from an environment that can reach arxiv.org."
+        },
+        {
+          "entry": "folio-assistant-sci/library/arxiv-2512.09874v3",
           "searched": 2,
           "note": "Next place to look: the arXiv abstract page's licence link, from an environment that can reach arxiv.org."
         },
@@ -357,6 +382,11 @@
         },
         {
           "entry": "folio-assistant-sci/library/arxiv-2602.16554v1",
+          "searched": 2,
+          "note": "Next place to look: the arXiv abstract page's licence link, from an environment that can reach arxiv.org."
+        },
+        {
+          "entry": "folio-assistant-sci/library/arxiv-2604.00554v1",
           "searched": 2,
           "note": "Next place to look: the arXiv abstract page's licence link, from an environment that can reach arxiv.org."
         },
@@ -373,5 +403,5 @@
       ]
     }
   },
-  "total": 84
+  "total": 90
 }

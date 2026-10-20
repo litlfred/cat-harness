@@ -5,7 +5,7 @@
     "id": "archimate-pages",
     "path": null
   },
-  "source_hash": "be34b906179a",
+  "source_hash": "bbc995f9119e",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

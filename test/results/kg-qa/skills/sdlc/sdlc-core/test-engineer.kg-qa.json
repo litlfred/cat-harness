@@ -5,7 +5,7 @@
     "id": "test-engineer",
     "path": "skills/sdlc/sdlc-core/test-engineer.md"
   },
-  "source_hash": "a94cb6ec0c20",
+  "source_hash": "a5c817568389",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "Process_MergeRefusal",
     "path": "processes/sdlc/merge-refusal.bpmn"
   },
-  "source_hash": "sha256:edc82f0464387f2184956d0f7ef8a3a772592be5e04f20ccf6aa2764f22f3e3e",
+  "source_hash": "sha256:fe35034e940a51eb51c89f3211c764d2b6ef676bbf11f1cf574d2810866ef8cf",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -92,12 +92,45 @@
           "detail": "needs skill \"merge-conflict-patterns\", but its lane's role \"authoring-agent\" does not carry it."
         },
         {
-          "where": "Task_AskOwner",
-          "detail": "needs skill \"interaction-modality\", but its lane's role \"authoring-agent\" does not carry it."
+          "where": "Task_Retrain",
+          "detail": "needs skill \"merge-conflict-patterns\", but its lane's role \"session-coordinator\" does not carry it."
+        }
+      ]
+    },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Task_Record",
+          "detail": "task \"Record the refusal on the bean\" requires skill \"merge-conflict-patterns\", which role \"session-coordinator\" (named by lane \"Merge steward\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_Comment",
+          "detail": "task \"Comment on the PR once, linking the bean\" requires skill \"merge-conflict-patterns\", which role \"session-coordinator\" (named by lane \"Merge steward\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_HandBack",
+          "detail": "task \"Hand back, with a fail condition\" requires skill \"merge-conflict-patterns\", which role \"session-coordinator\" (named by lane \"Merge steward\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_Fix",
+          "detail": "task \"Fix the PR, report on the PR\" requires skill \"prepare-merge\", which role \"sibling-session\" (named by lane \"Owning session\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_Dispatch",
+          "detail": "task \"Dispatch one agent, recorded on the bean\" requires skill \"dispatch-agent\", which role \"session-coordinator\" (named by lane \"Merge steward\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_AgentFix",
+          "detail": "task \"Merge main in, regenerate, fix mechanical gates\" requires skill \"merge-conflict-patterns\", which role \"authoring-agent\" (named by lane \"Dispatched agent\") does not list, directly or through `inherits`."
         },
         {
           "where": "Task_Retrain",
-          "detail": "needs skill \"merge-conflict-patterns\", but its lane's role \"session-coordinator\" does not carry it."
+          "detail": "task \"Re-enter a train on the new head\" requires skill \"merge-conflict-patterns\", which role \"session-coordinator\" (named by lane \"Merge steward\") does not list, directly or through `inherits`."
         }
       ]
     },
@@ -114,8 +147,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_MergeRefusal",
+          "detail": "merge-refusal.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "fail",
@@ -170,7 +208,7 @@
   },
   "totals": {
     "pass": 11,
-    "fail": 4,
+    "fail": 6,
     "n/a": 10,
     "unknown": 0
   }
