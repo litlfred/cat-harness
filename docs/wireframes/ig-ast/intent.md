@@ -2,11 +2,11 @@
 
 ## Covers
 
-`fhir-harness/ig-ast`: the kind viewer for every `ig-ast` directory an instance in the checkout declares (owner, 2026-10-16: "ig-ast is fhir-harness"). Drawn by Tool `ig-ast-pages` (`fhir-harness/scripts/gen-ig-ast-pages.ts`): a hub at `<locale>/fhir-harness/ig-ast/` and one page per declaring instance under it (fhir-harness#112, cat-harness-tools#386).
+The `ig-ast` kind viewer, declared by the FHIR IG layer (owner, 2026-10-16: the kind belongs to that layer), for every `ig-ast` directory an instance in the checkout declares. Drawn by that layer's Tool `ig-ast-pages` (`scripts/gen-ig-ast-pages.ts` there): a hub at `<locale>/<fhir-ig-layer>/ig-ast/` and one page per declaring instance under it. The route key is the one `index.json` records for this wireframe.
 
 ### How this was drawn
 
-From the pages `gen-ig-ast-pages --site` writes in a checkout of the index with fhir-harness#112 overlaid, not from a built site. Only smart-trust declares an `ig-ast` directory, and its branch family is not restored in a checkout, so the drawing is the hub and the "unknown" instance page.
+From the pages `gen-ig-ast-pages --site` writes in a checkout of the index with the pull request that adds the viewer overlaid, not from a built site. Only one instance, an IG layer above this one, declares an `ig-ast` directory, and its branch family is not restored in a checkout, so the drawing is the hub and the "unknown" instance page.
 
 ## Who it is for, and what they need to do
 

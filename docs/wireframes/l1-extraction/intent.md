@@ -2,11 +2,11 @@
 
 ## Covers
 
-`smart-base/l1-extraction`: the kind viewer for every `l1-extraction` directory an instance in the checkout declares (owner, 2026-10-16: "l1-extraction is part of smart-base"). Drawn by Tool `l1-extraction-pages` (`smart-base/scripts/gen-l1-extraction-pages.ts`): a hub at `<locale>/smart-base/l1-extraction/` and one page per declaring instance under it (smart-base#102, cat-harness-tools#386).
+The `l1-extraction` kind viewer, declared by the SMART Guidelines base layer (owner, 2026-10-16: the kind belongs to that layer), for every `l1-extraction` directory an instance in the checkout declares. Drawn by that layer's Tool `l1-extraction-pages` (`scripts/gen-l1-extraction-pages.ts` there): a hub at `<locale>/<smart-guidelines-base>/l1-extraction/` and one page per declaring instance under it. The route key is the one `index.json` records for this wireframe.
 
 ### How this was drawn
 
-From the pages `gen-l1-extraction-pages --site` writes in a checkout of the index with smart-base#102 overlaid, not from a built site. The drawing is the hub, then the smart-base page with its long tables trimmed to one or two rows. The smart-immunizations page has the same sections, with 75 statements and no candidate-sentence file.
+From the pages `gen-l1-extraction-pages --site` writes in a checkout of the index with the pull request that adds the viewer overlaid, not from a built site. The drawing is the hub, then the base layer's own page with its long tables trimmed to one or two rows. The page of the immunizations guideline above it has the same sections, with 75 statements and no candidate-sentence file.
 
 ## Who it is for, and what they need to do
 
