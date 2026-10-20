@@ -11,7 +11,7 @@ export default toolFactory((t) =>
       description:
         "Render each declared state graph with a projection as a dashboard page: what the work plan holds, and what state it is in.",
       script: "state:visualizer",
-      renders: ["beans", "bean-defs", "bean-notes", "workflow-state", "todos", "issue-marks", "qa", "health", "attestations", "swimlane-glossary", "uploads", "code", "typologies", "validators", "qa-checkers", "block-kinds", "content-adapters", "code-list", "memory", "pipeline-plugins", "editor-checkers"],
+      renders: ["beans", "bean-defs", "bean-notes", "workflow-state", "merge-queue", "todos", "issue-marks", "qa", "health", "attestations", "swimlane-glossary", "uploads", "code", "typologies", "validators", "qa-checkers", "block-kinds", "content-adapters", "code-list", "memory", "pipeline-plugins", "editor-checkers"],
     }),
   ),
 );
