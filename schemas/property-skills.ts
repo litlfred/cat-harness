@@ -55,6 +55,10 @@ export const PROPERTY_SKILLS = {
   // count a path into one as upward.
   seedsWith: { skills: ["kg-separation"] },
   stub: { skills: ["directory-conventions"] },
+  enabled: {
+    skills: [],
+    gap: "no skill edits `enabled` yet: the default (enabled) and the URL cases are documented only in the schema (cat-harness.ts, schemas/url-space.ts; bean nbal)",
+  },
   canonicalUrl: { skills: ["directory-conventions"] },
   previewUrl: { skills: ["directory-conventions"] },
   // Where identifiers are minted, before the version — and the rule for which

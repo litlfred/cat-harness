@@ -725,6 +725,12 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
   seedsWith?: string[];
   stub?: string;
   /**
+   * Whether this instance is published on the site. Defaults to enabled; only
+   * `false` disables it. Read through `isPublished` (`schemas/url-space.ts`,
+   * bean `nbal`).
+   */
+  enabled?: boolean;
+  /**
    * Where this instance's artefacts are published — the base every `@id` in
    * the exported graph is minted against.
    *
@@ -3456,6 +3462,14 @@ const catHarnessDeclarationShape = {
    */
   seedsWith: z.array(z.string().min(1)).optional(),
   stub: z.string().min(1).optional(),
+  /**
+   * Whether this instance is PUBLISHED on the site — served at
+   * `<base>/<name>/…` (`schemas/url-space.ts`, bean `nbal`). Defaults to
+   * enabled (owner, 2026-09-20: *"instantiated and enabled (by default
+   * enabled)"*), so not publishing is a declaration, `false`, never an
+   * absence. Read it through `isPublished`.
+   */
+  enabled: z.boolean().optional(),
   canonicalUrl: z.string().url().optional(),
   /**
    * The address this instance's IRIs are minted under, BEFORE the version —
