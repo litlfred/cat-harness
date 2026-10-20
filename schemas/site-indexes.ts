@@ -586,10 +586,12 @@ export const VoicesIndexSchema = z
                 commonError: z.string().optional(),
                 // Where a LIBRARY citation links (bean `qgjh`,
                 // `scripts/lib/library-links.ts`): each present only where it
-                // resolves. `viewer` is site-relative; the others absolute.
+                // resolves. `viewer` and `entry` are site-relative; the
+                // others absolute.
                 links: z
                   .object({
                     viewer: z.string().optional(),
+                    entry: z.string().optional(),
                     readme: z.string().url().optional(),
                     source: z.string().url().optional(),
                   })
