@@ -50,6 +50,9 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-validators`,
 | [`library-entry.json`](library-entry.json) | data |  |
 | [`library-index.json`](library-index.json) | data |  |
 | [`library-keywords.json`](library-keywords.json) | data |  |
+| [`library-notebook-structure.json`](library-notebook-structure.json) | data |  |
+| [`library-pdf-structure.json`](library-pdf-structure.json) | data |  |
+| [`library-text-structure.json`](library-text-structure.json) | data |  |
 | [`memory-node.json`](memory-node.json) | data |  |
 | [`merge-queue-merge-queue-entry.json`](merge-queue-merge-queue-entry.json) | data |  |
 | [`node-kind-index.json`](node-kind-index.json) | data |  |

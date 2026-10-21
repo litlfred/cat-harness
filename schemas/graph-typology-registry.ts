@@ -2078,6 +2078,13 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       // The FROM-WITHIN node naming this directory's concern groups
       // (placement PR0c): `concern-groups/v1`.
       "concern-groups/v1": {},
+      // Each ingested source's `structure.json`, one family per format it was
+      // read as. These three tag themselves `_schema`, not `$schema` (the
+      // format predates the convention), so routing reads either:
+      // `nodeFamilyTag` in kind-validator.ts.
+      "pdf-structure/v1": {},
+      "notebook-structure/v1": {},
+      "text-structure/v1": {},
       "folio-document-images/v1": {},
       "folio-image-verdicts/v1": { shape: "cat-harness-tools:scripts/apply-image-verdicts.ts#VerdictFile" },
       // The section analogue of image verdicts (bean `fnqn`): which sections are
