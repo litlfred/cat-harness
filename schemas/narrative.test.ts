@@ -7,7 +7,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { NOT_AUTHORED, NarrativeSchema, NarrativeSlotSchema, narrativesOfSlot, type Narrative } from "./narrative.ts";
+import { NOT_AUTHORED, NarrativeSchema, NarrativeSlotSchema, narrativeFor, narrativesOfSlot, type Narrative } from "./narrative.ts";
 
 const person = { kind: "human" as const, id: "reviewer" };
 const draft = (lang?: string): Narrative => ({
@@ -60,5 +60,29 @@ describe("a slot holds one narrative, or one per language", () => {
   test("each entry is still a narrative: an agent cannot confirm, whatever the language", () => {
     const agentConfirmed = { ...draft("fr"), state: "confirmed", confirmed_by: { kind: "agent", id: "a", model: "m" } };
     expect(NarrativeSlotSchema.safeParse([draft("en"), agentConfirmed]).success).toBe(false);
+  });
+});
+
+describe("narrativeFor: the one entry a single-text display shows (locale match, else first)", () => {
+  const slot = NarrativeSlotSchema.parse([draft("en"), draft("fr-CA"), draft("pt")]);
+
+  test("the reader's language wins, exactly and case-insensitively", () => {
+    expect(narrativeFor(slot, "pt").lang).toBe("pt");
+    expect(narrativeFor(slot, "FR-ca").lang).toBe("fr-CA");
+  });
+
+  test("a regional locale finds its language, and a language finds its regional entry", () => {
+    expect(narrativeFor(slot, "en-GB").lang).toBe("en");
+    expect(narrativeFor(slot, "fr").lang).toBe("fr-CA");
+  });
+
+  test("no locale, or one the slot does not hold, gives the first entry", () => {
+    expect(narrativeFor(slot).lang).toBe("en");
+    expect(narrativeFor(slot, "ar").lang).toBe("en");
+  });
+
+  test("the single form is returned as it is", () => {
+    const one = NarrativeSlotSchema.parse(draft());
+    expect(narrativeFor(one, "fr")).toEqual(draft());
   });
 });
