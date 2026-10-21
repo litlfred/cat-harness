@@ -15,16 +15,19 @@
   "file": "../images/img-p003-1.png",
   "pageStart": 3,
   "pageEnd": 3,
-  "narrative": {
-    "text": "Figure 2: Evaluation Tasks by Public Health Area. Hierarchical tree organizing the 16 benchmark tasks into Burden (disease symptoms, surveillance), Risk Factors (causal claims, PubMedQA, risk classification), and Interventions (guidance topic, guidance recommendations, contact classification).",
-    "state": "draft",
-    "drafted_by": {
-      "kind": "agent",
-      "id": "claude",
-      "model": "claude-opus-5"
-    },
-    "drafted_at": "2026-09-29"
-  },
+  "narrative": [
+    {
+      "text": "Figure 2: Evaluation Tasks by Public Health Area. Hierarchical tree organizing the 16 benchmark tasks into Burden (disease symptoms, surveillance), Risk Factors (causal claims, PubMedQA, risk classification), and Interventions (guidance topic, guidance recommendations, contact classification).",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude",
+        "model": "claude-opus-5"
+      },
+      "drafted_at": "2026-09-29",
+      "lang": "en"
+    }
+  ],
   "derivedFrom": "library/arxiv-2405.14766v2/sections/sec-001",
   "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2405.14766v2/manifest.jsonld",
   "provenance": "ingested"
