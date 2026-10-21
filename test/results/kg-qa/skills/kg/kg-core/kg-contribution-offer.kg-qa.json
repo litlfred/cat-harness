@@ -5,7 +5,7 @@
     "id": "kg-contribution-offer",
     "path": "skills/kg/kg-core/kg-contribution-offer.md"
   },
-  "source_hash": "8e7027866032",
+  "source_hash": "ed5203f16fdc",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

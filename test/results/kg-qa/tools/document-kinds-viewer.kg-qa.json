@@ -5,7 +5,7 @@
     "id": "document-kinds-viewer",
     "path": null
   },
-  "source_hash": "1ec598511a50",
+  "source_hash": "41c4a6c6387d",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

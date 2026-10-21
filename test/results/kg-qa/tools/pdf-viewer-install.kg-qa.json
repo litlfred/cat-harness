@@ -5,7 +5,7 @@
     "id": "pdf-viewer-install",
     "path": null
   },
-  "source_hash": "af7234978dd3",
+  "source_hash": "eca4df32e29c",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

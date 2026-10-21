@@ -5,7 +5,7 @@
     "id": "skill-registration",
     "path": "skills/kg/kg-core/skill-registration.md"
   },
-  "source_hash": "b0c330e74cf1",
+  "source_hash": "c326a72634e5",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "Process_MountSubgraph",
     "path": "processes/kg/mount-subgraph.bpmn"
   },
-  "source_hash": "sha256:ff97dd97476305b8ff829b9b8ef408909f91cd3b3d55a5bf1b1717bdd5d589c4",
+  "source_hash": "sha256:609bf24f22435fe4c93361122c7752751321e989868f031bec0a24b9619255bf",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -64,6 +64,19 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Task_RetrieveNpmPackage",
+          "detail": "task \"Retrieve the npm package or tarball\" requires skill \"npm-kg-distribution\", which role \"build-pipeline\" (named by lane \"Build pipeline\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -77,8 +90,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_MountSubgraph",
+          "detail": "mount-subgraph.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -115,7 +133,7 @@
   },
   "totals": {
     "pass": 14,
-    "fail": 1,
+    "fail": 3,
     "n/a": 10,
     "unknown": 0
   }

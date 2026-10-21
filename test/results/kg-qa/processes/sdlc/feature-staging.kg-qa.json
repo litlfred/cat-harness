@@ -5,7 +5,7 @@
     "id": "Process_FeatureStaging",
     "path": "processes/sdlc/feature-staging.bpmn"
   },
-  "source_hash": "sha256:365f079184772c54a12fe6020862413e92fae27aece99a30dd010ae0e114926c",
+  "source_hash": "sha256:9388446cd2a66b366d6e4d1a88cbd9f3389a07ce00a3571e6077af7ff7cba8c2",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -117,6 +117,51 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Task_LogRendered",
+          "detail": "task \"Append `rendered` to the render log\" requires skill \"render-logging\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_Comment",
+          "detail": "task \"Comment the preview URL on the PR\" requires skill \"staging-review\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_Remove",
+          "detail": "task \"Remove the preview AND append `removed` — one commit\" requires skill \"deletion-requires-confirmation\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_LogRetained",
+          "detail": "task \"Append `retained`, with why it stays\" requires skill \"render-logging\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_Notice",
+          "detail": "task \"Post the retention notice on the PR\" requires skill \"staging-review\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_Validate",
+          "detail": "task \"Check the slug's SHAPE and that the confirmation repeats it\" requires skill \"deletion-requires-confirmation\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_Preflight",
+          "detail": "task \"Re-evaluate liveness AT REMOVAL TIME\" requires skill \"deletion-requires-confirmation\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_RemoveDisp",
+          "detail": "task \"Remove it AND append `removed` — one commit\" requires skill \"deletion-requires-confirmation\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "H_Confirm",
+          "detail": "task \"Repeat the slug, exactly, to confirm\" requires skill \"deletion-requires-confirmation\", which role \"user\" (named by lane \"Human actor\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -172,8 +217,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 3,
+    "pass": 17,
+    "fail": 4,
     "n/a": 6,
     "unknown": 0
   }

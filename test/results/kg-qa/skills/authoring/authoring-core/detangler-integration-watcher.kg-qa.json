@@ -5,7 +5,7 @@
     "id": "detangler-integration-watcher",
     "path": "skills/authoring/authoring-core/detangler-integration-watcher.md"
   },
-  "source_hash": "9d0f4fec44b3",
+  "source_hash": "fa287a9868fb",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "log",
     "path": "scenarios/roles.json"
   },
-  "source_hash": "sha256:66abbc76e0e0168c2a8cce71e34e844c5d2a68d39c90bf6830fa68605987b0b8",
+  "source_hash": "sha256:a55d7dc2c4aa2377e869486e635707736801f42d2ca8ac8ff161da564a51edd4",
   "criteria": {
     "role-skills-resolve": {
       "result": "pass",
@@ -19,6 +19,15 @@
       "result": "pass",
       "findings": []
     },
+    "mechanical-role-untested": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "log",
+          "detail": "role \"log\" is played only by system actors, and none of its 1 skill(s) (activity-log) names a test in `tested-by:`."
+        }
+      ]
+    },
     "role-has-persona": {
       "result": "n/a",
       "findings": []
@@ -28,18 +37,23 @@
       "findings": []
     },
     "role-has-actor": {
-      "result": "n/a",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "log",
+          "detail": "no declared actor lists role \"log\" as one it can take on."
+        }
+      ]
     },
     "actor-kind-fits-role": {
-      "result": "n/a",
+      "result": "pass",
       "findings": []
     }
   },
   "totals": {
-    "pass": 2,
-    "fail": 0,
-    "n/a": 5,
+    "pass": 3,
+    "fail": 2,
+    "n/a": 3,
     "unknown": 0
   }
 }

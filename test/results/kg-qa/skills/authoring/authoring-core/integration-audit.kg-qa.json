@@ -5,7 +5,7 @@
     "id": "integration-audit",
     "path": "skills/authoring/authoring-core/integration-audit.md"
   },
-  "source_hash": "ace659635e03",
+  "source_hash": "942a7b01d87e",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "Process_SubscribeKg",
     "path": "processes/library/subscribe-kg.bpmn"
   },
-  "source_hash": "sha256:d4f1bfe13cc5fd43d502cd339e55379a77c787e376550de106e0b390bfc16420",
+  "source_hash": "sha256:37ea771527ae50c0aed885624eb8a824162c28bf47a7dd5609a12b74e2eef4e2",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -109,6 +109,19 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Task_Instantiate",
+          "detail": "task \"Instantiate the harness: write its config\" requires skill \"index-config\", which role \"ingestion-agent\" (named by lane \"Ingestion Engine (agent, runs unattended)\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -122,8 +135,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_SubscribeKg",
+          "detail": "subscribe-kg.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -160,7 +178,7 @@
   },
   "totals": {
     "pass": 15,
-    "fail": 2,
+    "fail": 4,
     "n/a": 8,
     "unknown": 0
   }

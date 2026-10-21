@@ -5,7 +5,7 @@
     "id": "mount-from-lock",
     "path": null
   },
-  "source_hash": "cb2c2ae6a73a",
+  "source_hash": "375f0f44f6bd",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

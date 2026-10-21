@@ -5,7 +5,7 @@
     "id": "library-viewer",
     "path": null
   },
-  "source_hash": "66e5b4a3f407",
+  "source_hash": "0cb64ce69558",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

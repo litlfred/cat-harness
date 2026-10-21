@@ -5,7 +5,7 @@
     "id": "Process_CiHealth",
     "path": "processes/sdlc/ci-health-watch.bpmn"
   },
-  "source_hash": "sha256:1a2d51ec6edb2f6bffca94b286435fa7404c1340fab8de7ea95ac5daf67bb9bf",
+  "source_hash": "sha256:f1936a6801f035091f996958942fb68e006ce79de4f84cc660d0458d43e22ea4",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -59,6 +59,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -72,8 +80,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_CiHealth",
+          "detail": "ci-health-watch.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -100,13 +113,8 @@
       "findings": []
     },
     "prose-reviewed-since-code-changed": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": ".github/workflows/ci-health.yml",
-          "detail": ".github/workflows/ci-health.yml changed since cat-harness/processes/sdlc/ci-health-watch.bpmn was last attested (agent), and the prose did not. Re-read it; if it still holds, run pairs:attest with a reason."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "prose-claims-resolve": {
       "result": "pass",
@@ -114,7 +122,7 @@
     }
   },
   "totals": {
-    "pass": 16,
+    "pass": 18,
     "fail": 1,
     "n/a": 8,
     "unknown": 0

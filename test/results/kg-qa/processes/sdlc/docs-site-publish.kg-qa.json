@@ -5,7 +5,7 @@
     "id": "Process_DocsSite",
     "path": "processes/sdlc/docs-site-publish.bpmn"
   },
-  "source_hash": "sha256:e9a41f476450d9e2c1e692a4861f38d0145153d2af8aa9ee196b051cd41f48ba",
+  "source_hash": "sha256:f7234e957d6ab8c29cbc4855fea0a0c0937248f75f9d12a5392d1368d7dc56db",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -73,6 +73,19 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Task_SecurityGate",
+          "detail": "task \"Run the release security gate [security:gate]\" requires skill \"security\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -86,8 +99,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_DocsSite",
+          "detail": "docs-site-publish.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -129,7 +147,7 @@
   },
   "totals": {
     "pass": 15,
-    "fail": 3,
+    "fail": 5,
     "n/a": 7,
     "unknown": 0
   }

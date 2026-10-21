@@ -5,7 +5,7 @@
     "id": "external-schemas-viewer",
     "path": null
   },
-  "source_hash": "946cbce6a72c",
+  "source_hash": "9d8b4f96ba9e",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "raci",
     "path": "skills/process/raci/raci.md"
   },
-  "source_hash": "459d2785655c",
+  "source_hash": "a1ac65af0ebf",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",
