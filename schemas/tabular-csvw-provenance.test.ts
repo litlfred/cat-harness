@@ -1,6 +1,7 @@
 /**
- * `source` and `narrative` on a CSVW record (bean `urat`): accepted, still
- * optional, and never leaked into the derived CSVW document.
+ * `source` and `narrative` on a CSVW record (bean `urat`): required on the
+ * record, absent from what an extractor returns, and never leaked into the
+ * derived CSVW document.
  */
 import { describe, expect, it } from "bun:test";
 import { narrativeFor } from "./narrative";
@@ -22,8 +23,9 @@ const base = {
 };
 
 describe("provenance on a CSVW record", () => {
-  it("is optional, so records written before it still validate", () => {
-    expect(TabularCsvwSchema.safeParse(base).success).toBe(true);
+  it("is required: a record without it is refused (urat step 5)", () => {
+    expect(TabularCsvwSchema.safeParse(base).success).toBe(false);
+    expect(TabularCsvwSchema.safeParse({ ...base, source: { file: "p.csv" } }).success).toBe(false);
   });
 
   it("carries the same source and narrative blocks v1 does", () => {
@@ -37,7 +39,9 @@ describe("provenance on a CSVW record", () => {
   });
 
   it("rejects a narrative that breaks its own state machine", () => {
-    expect(TabularCsvwSchema.safeParse({ ...base, narrative: { text: null, state: "confirmed" } }).success).toBe(false);
+    expect(
+      TabularCsvwSchema.safeParse({ ...base, source: { file: "p.csv" }, narrative: { text: null, state: "confirmed" } }).success,
+    ).toBe(false);
   });
 
   it("never reaches the CSVW document a standard reader is handed", () => {

@@ -46,6 +46,7 @@ describe("an optional slot takes a per-language list", () => {
     const base = {
       $schema: "folio-tabular-csvw/v1",
       doc_id: "p",
+      source: { sha256: "0" },
       tables: [
         {
           url: "p.csv",
