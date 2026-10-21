@@ -5,7 +5,7 @@
 import { describe, expect, it } from "bun:test";
 import { narrativeFor } from "./narrative";
 
-import { CSVW_KEYS, TabularCsvwSchema, toCsvw } from "./tabular-csvw";
+import { CSVW_KEYS, TabularCsvwSchema, TabularCsvwTablesSchema, toCsvw } from "./tabular-csvw";
 
 const base = {
   $schema: "folio-tabular-csvw/v1",
@@ -44,5 +44,12 @@ describe("provenance on a CSVW record", () => {
     const out = toCsvw(TabularCsvwSchema.parse({ ...base, source: { file: "p.csv" }, narrative: { text: null, state: "not-authored" } }));
     for (const k of Object.keys(out)) expect(CSVW_KEYS.has(k)).toBe(true);
     expect(JSON.stringify(out)).not.toContain("sha256");
+  });
+
+  it("is not part of what an extractor returns", () => {
+    const tables = TabularCsvwTablesSchema.parse({ ...base, source: { file: "p.csv" }, narrative: { text: null, state: "not-authored" } });
+    expect("source" in tables).toBe(false);
+    expect("narrative" in tables).toBe(false);
+    expect(TabularCsvwTablesSchema.safeParse(base).success).toBe(true);
   });
 });

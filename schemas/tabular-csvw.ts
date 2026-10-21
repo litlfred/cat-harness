@@ -232,8 +232,17 @@ export const TabularCsvwSchema = z.object({
 });
 export type TabularCsvw = z.infer<typeof TabularCsvwSchema>;
 
+/**
+ * What an extractor returns: the tables, before the ingest runner adds
+ * `source` and `narrative` (bean `urat`, step 5). The extractors live in a
+ * content layer and never see the source file's technical metadata, so their
+ * type must not promise it once the record requires it.
+ */
+export const TabularCsvwTablesSchema = TabularCsvwSchema.omit({ source: true, narrative: true });
+export type TabularCsvwTables = z.infer<typeof TabularCsvwTablesSchema>;
+
 /** Is this record waiting on a tool nobody has written? */
-export function stubsIn(doc: TabularCsvw): TabularStub[] {
+export function stubsIn(doc: TabularCsvwTables): TabularStub[] {
   return doc.tables.flatMap((t) => (t["fac:stub"] ? [t["fac:stub"]] : []));
 }
 
@@ -278,6 +287,6 @@ export function csvwTable(table: z.infer<typeof CsvwTableSchema>): Record<string
  * needs placement reads the JSON record; a reader that needs a standard table
  * description reads this. Neither is handed the other's document.
  */
-export function toCsvw(doc: TabularCsvw): Record<string, unknown> {
+export function toCsvw(doc: TabularCsvwTables): Record<string, unknown> {
   return { "@context": CSVW_CONTEXT, tables: doc.tables.map(csvwTable) };
 }
