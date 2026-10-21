@@ -5,7 +5,7 @@
     "id": "sub-kg-lifecycle",
     "path": "skills/kg/graph-management/sub-kg-lifecycle.md"
   },
-  "source_hash": "d2654824b72b",
+  "source_hash": "81fb60c0c5d3",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

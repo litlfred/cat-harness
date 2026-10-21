@@ -5,7 +5,7 @@
     "id": "Process_CRDM_Requirements",
     "path": "processes/process/crdm-requirements-definition.bpmn"
   },
-  "source_hash": "sha256:dcd7fac3f8e911a1b522bd8cfb79955d94c1528886b07bb22550605bb64dc673",
+  "source_hash": "sha256:0ac21fca766bedd61122fdd35e208f65eb5aaf9ef5756d33674cfcaeeef73b2b",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -47,6 +47,10 @@
           "detail": "names skill \"data-modelling\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
         },
         {
+          "where": "Call_Wireframe",
+          "detail": "names skill \"wireframe-design-review\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
+        },
+        {
           "where": "A_CompareOptions",
           "detail": "names skill \"decision-comparison\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
         },
@@ -82,10 +86,19 @@
         {
           "where": "A_DefineReqs",
           "detail": "needs skill \"data-modelling\", but its lane's role \"authoring-agent\" does not carry it."
-        },
+        }
+      ]
+    },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
         {
-          "where": "A_CompareOptions",
-          "detail": "needs skill \"decision-comparison\", but its lane's role \"authoring-agent\" does not carry it."
+          "where": "A_DefineReqs",
+          "detail": "task \"Phases 3–4: Define requirements + impact\" requires skill \"data-modelling\", which role \"authoring-agent\" (named by lane \"Agent\") does not list, directly or through `inherits`."
         }
       ]
     },
@@ -98,12 +111,17 @@
       "findings": []
     },
     "call-activity-resolves": {
-      "result": "n/a",
+      "result": "pass",
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_CRDM_Requirements",
+          "detail": "crdm-requirements-definition.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -139,9 +157,9 @@
     }
   },
   "totals": {
-    "pass": 13,
-    "fail": 2,
-    "n/a": 10,
+    "pass": 14,
+    "fail": 4,
+    "n/a": 9,
     "unknown": 0
   }
 }

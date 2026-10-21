@@ -116,4 +116,14 @@ describe("pdf-structure/v1", () => {
     expect(PdfStructureSchema.safeParse({ ...d, duplicate_of: "" }).success).toBe(false);
     expect(PdfStructureSchema.safeParse({ ...d, duplicate_copies: "a" }).success).toBe(false);
   });
+  test("a bound volume, hand-supplied headings and a hand OCR say so in their own fields", () => {
+    const d = minimal();
+    expect(PdfStructureSchema.safeParse({ ...d, container: true, container_children: ["v-p01"], container_note: "bound issue" }).success).toBe(true);
+    expect(PdfStructureSchema.safeParse({ ...d, toc_note: "headings supplied by a reader" }).success).toBe(true);
+    const te = { route: "ocr", engine: "tesseract 5.3.4", psm: 4, intermediate_pdf_sha256: "a".repeat(64), quality: "math unreliable" };
+    expect(PdfStructureSchema.safeParse({ ...d, text_extraction: te }).success).toBe(true);
+    expect(PdfStructureSchema.safeParse({ ...d, text_extraction: { ...te, route: "guess" } }).success).toBe(false);
+    expect(PdfStructureSchema.safeParse({ ...d, text_extraction: { ...te, extra: 1 } }).success).toBe(false);
+    expect(PdfStructureSchema.safeParse({ ...d, container_children: [""] }).success).toBe(false);
+  });
 });

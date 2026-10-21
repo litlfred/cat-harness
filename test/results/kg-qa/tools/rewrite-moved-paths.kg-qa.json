@@ -5,7 +5,7 @@
     "id": "rewrite-moved-paths",
     "path": null
   },
-  "source_hash": "e4aecf920485",
+  "source_hash": "e2ccdd29fb22",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

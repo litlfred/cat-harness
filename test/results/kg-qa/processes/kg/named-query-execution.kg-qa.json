@@ -5,7 +5,7 @@
     "id": "Process_NamedQueryExecution",
     "path": "processes/kg/named-query-execution.bpmn"
   },
-  "source_hash": "sha256:6d705ffaf697fcb25f7935bb9de5c54a1757d2b959de530929dca96bfaaf19ae",
+  "source_hash": "sha256:a27ae3b3d74d08182ee62ecce8162739ee6f427e310bc25f71c9142c38370a1e",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -117,6 +117,43 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "A_ValidateParams",
+          "detail": "task \"Validate Arguments against Parameter Schema\" requires skill \"named-query-execution\", which role \"authoring-agent\" (named by lane \"Query Caller (CLI / MCP / Web)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_RejectInvalidArgs",
+          "detail": "task \"Reject Request with ValidationError\" requires skill \"named-query-execution\", which role \"authoring-agent\" (named by lane \"Query Caller (CLI / MCP / Web)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_CheckSubgraphs",
+          "detail": "task \"Check Graph Availability Guard (requiredSubgraphs)\" requires skill \"named-query-execution\", which role \"build-pipeline\" (named by lane \"Universal Query Engine Runtime\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_FetchPartitions",
+          "detail": "task \"Fetch & Ingest Missing Subgraphs (.nq.gz)\" requires skill \"named-query-execution\", which role \"build-pipeline\" (named by lane \"Universal Query Engine Runtime\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_RaiseMissingPartition",
+          "detail": "task \"Raise MissingPartitionError (Fail-Closed Guard)\" requires skill \"named-query-execution\", which role \"build-pipeline\" (named by lane \"Universal Query Engine Runtime\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_BindExecute",
+          "detail": "task \"Bind Typed Parameters & Execute SPARQL\" requires skill \"named-query-execution\", which role \"build-pipeline\" (named by lane \"Universal Query Engine Runtime\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_FormatResponse",
+          "detail": "task \"Format Universal Result Response Envelope\" requires skill \"named-query-execution\", which role \"build-pipeline\" (named by lane \"Universal Query Engine Runtime\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -180,8 +217,8 @@
     }
   },
   "totals": {
-    "pass": 12,
-    "fail": 3,
+    "pass": 13,
+    "fail": 4,
     "n/a": 10,
     "unknown": 0
   }

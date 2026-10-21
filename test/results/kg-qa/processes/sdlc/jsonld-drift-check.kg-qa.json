@@ -5,7 +5,7 @@
     "id": "Process_JsonLdDrift",
     "path": "processes/sdlc/jsonld-drift-check.bpmn"
   },
-  "source_hash": "sha256:167637b5931d3f9482bf75f24fc452ae092ed9ca874d9d9b8156e16d35103001",
+  "source_hash": "sha256:5215ef49c1c3f4acb036a38b39a3d50059c82be077aeaacb5d91298de1d77085",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -59,6 +59,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -72,8 +80,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_JsonLdDrift",
+          "detail": "jsonld-drift-check.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -114,8 +127,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 1,
+    "pass": 16,
+    "fail": 2,
     "n/a": 9,
     "unknown": 0
   }

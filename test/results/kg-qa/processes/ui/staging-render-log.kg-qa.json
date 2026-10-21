@@ -5,7 +5,7 @@
     "id": "Process_RenderLog",
     "path": "processes/ui/staging-render-log.bpmn"
   },
-  "source_hash": "sha256:1c8b873138019778a44ba4325f11b7b19dc7a58d98ef3b1d919ef612c0677709",
+  "source_hash": "sha256:c14d225645f4ed256a604ac2b3ad1a8d9dfacadbf2bd1e597ae2c39f06e1a270",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -84,6 +84,39 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "A_LogRendered",
+          "detail": "task \"Append `rendered`\" requires skill \"render-logging\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Preflight",
+          "detail": "task \"Preflight: is the preview live?\" requires skill \"render-logging\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_LogRetained",
+          "detail": "task \"Append `retained` with the reason\" requires skill \"render-logging\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_LogRemoved",
+          "detail": "task \"Append `removed` with the reason\" requires skill \"render-logging\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Remove",
+          "detail": "task \"Remove the artefact\" requires skill \"render-logging\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_LogRestored",
+          "detail": "task \"Append `restored`\" requires skill \"render-logging\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -97,8 +130,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_RenderLog",
+          "detail": "staging-render-log.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -135,7 +173,7 @@
   },
   "totals": {
     "pass": 14,
-    "fail": 1,
+    "fail": 3,
     "n/a": 10,
     "unknown": 0
   }

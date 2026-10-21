@@ -5,7 +5,7 @@
     "id": "rail-standalone-pages",
     "path": null
   },
-  "source_hash": "850cb05441f2",
+  "source_hash": "755a60f2fb8d",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

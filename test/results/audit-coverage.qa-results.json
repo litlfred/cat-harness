@@ -10,8 +10,8 @@
   },
   "families": {
     "coverage-measured": {
-      "summary": "Every declared kind with its four counts and its state. Not findings: the measurement itself, so the committed record answers \"what audits this kind\" without rerunning anything. The file COUNTS are printed rather than recorded — a census moves on any commit and a gate keyed on it is stale by default; `hasFiles` carries the only thing it decides. 83 of 83 declared kind(s), 263 gate(s), 88 criteria.",
-      "count": 83,
+      "summary": "Every declared kind with its four counts and its state. Not findings: the measurement itself, so the committed record answers \"what audits this kind\" without rerunning anything. The file COUNTS are printed rather than recorded — a census moves on any commit and a gate keyed on it is stale by default; `hasFiles` carries the only thing it decides. 82 of 82 declared kind(s), 263 gate(s), 88 criteria.",
+      "count": 82,
       "entries": [
         {
           "kind": "archimate",
@@ -364,7 +364,6 @@
             "bootstrap-tools/scripts",
             "cat-harness-tools/adapters",
             "cat-harness-tools/archimate/scripts",
-            "cat-harness-tools/content",
             "cat-harness-tools/deploy",
             "cat-harness-tools/id-lookup",
             "cat-harness-tools/openapi/scripts",
@@ -741,7 +740,7 @@
         },
         {
           "kind": "ig-pages",
-          "state": "covered",
+          "state": "unknown",
           "directories": [
             "smart-base/docs",
             "smart-trust/docs"
@@ -754,7 +753,7 @@
           ],
           "typed": false,
           "adversarial": "never",
-          "hasFiles": true
+          "hasFiles": false
         },
         {
           "kind": "interaction",
@@ -893,19 +892,6 @@
           "hasFiles": true
         },
         {
-          "kind": "merge-reviews",
-          "state": "typed-only",
-          "directories": [
-            "merge-reviews"
-          ],
-          "criteria": [],
-          "subjectKinds": [],
-          "gates": [],
-          "typed": true,
-          "adversarial": "never",
-          "hasFiles": true
-        },
-        {
           "kind": "methodology",
           "state": "covered",
           "directories": [
@@ -972,7 +958,6 @@
           "state": "covered",
           "directories": [
             "fhir-harness/pipeline-plugins",
-            "folio-assistant-core/pipeline-plugins",
             "folio-assistant-sci/pipeline-plugins"
           ],
           "criteria": [],
@@ -1851,15 +1836,8 @@
     },
     "kinds-typed-only": {
       "summary": "A declared kind whose nodes a declared validator TYPES and no criterion or gate JUDGES. Kept apart from kinds-unaudited because they are different pieces of work, and still a finding — `--strict` fails on it. Typing is not judging: a kind can parse perfectly against its schema while nothing has an opinion about what it says.",
-      "count": 1,
-      "entries": [
-        {
-          "kind": "merge-reviews",
-          "directories": [
-            "merge-reviews"
-          ]
-        }
-      ]
+      "count": 0,
+      "entries": []
     },
     "kinds-unaudited": {
       "summary": "A declared kind whose directories hold files that NOTHING reaches — no kg-audit criterion, no gate declaring @covers, and no declared validator. All 263 gate(s) have declared, so this is a verdict rather than an upper bound (bean `3srh`).",
@@ -1868,9 +1846,17 @@
     },
     "kinds-unknown": {
       "summary": "A declared directory of this kind is not in the checkout and declares no `storage`, and nothing else of the kind was counted — the census was not taken (bean `0dav`, readers-audit C8). Never `empty`: that would print an absent answer as a determined zero. Not gated: proposal §2.3.",
-      "count": 0,
-      "entries": []
+      "count": 1,
+      "entries": [
+        {
+          "kind": "ig-pages",
+          "directories": [
+            "smart-base/docs",
+            "smart-trust/docs"
+          ]
+        }
+      ]
     }
   },
-  "total": 99
+  "total": 98
 }

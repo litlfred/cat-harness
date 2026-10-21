@@ -5,7 +5,7 @@
     "id": "Process_ContentAcquisition",
     "path": "processes/library/content-acquisition.bpmn"
   },
-  "source_hash": "sha256:fbb11c4ba39a9413fde6cd486bdbb1f2bf8e2872474b285fead0e9b9c33f6c9e",
+  "source_hash": "sha256:73ebf6f75ce419038d760fb9f1cc42f00a9854a58ad035de350175d59226a2eb",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -81,6 +81,31 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "A_Ask",
+          "detail": "task \"Say what is needed, and ask for a link OR a description\" requires skill \"content-acquisition\", which role \"ingestion-agent\" (named by lane \"Agent\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_PointToUpload",
+          "detail": "task \"Point at the upload target [scripts/upload-url.ts]\" requires skill \"content-acquisition\", which role \"ingestion-agent\" (named by lane \"Agent\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Accept",
+          "detail": "task \"Accept it, and record where it came from\" requires skill \"content-acquisition\", which role \"ingestion-agent\" (named by lane \"Agent\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Route",
+          "detail": "task \"Route it, and watch the queue\" requires skill \"uploads-watch\", which role \"ingestion-agent\" (named by lane \"Agent\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -131,8 +156,8 @@
     }
   },
   "totals": {
-    "pass": 13,
-    "fail": 2,
+    "pass": 14,
+    "fail": 3,
     "n/a": 10,
     "unknown": 0
   }

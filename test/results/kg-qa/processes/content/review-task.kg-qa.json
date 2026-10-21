@@ -5,7 +5,7 @@
     "id": "Process_Review",
     "path": "processes/content/review-task.bpmn"
   },
-  "source_hash": "sha256:23d63c6d820526d9f56b87e6ddbbdfdec03bde210ae5fd647a5ace39b0ae7070",
+  "source_hash": "sha256:e12292168973365f2ca78e7112da61dd85d0bde268255917b98b865db130b7de",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -68,6 +68,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -81,8 +89,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_Review",
+          "detail": "review-task.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -118,8 +131,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 1,
+    "pass": 16,
+    "fail": 2,
     "n/a": 9,
     "unknown": 0
   }

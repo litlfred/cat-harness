@@ -5,7 +5,7 @@
     "id": "build-pipeline",
     "path": "scenarios/roles.json"
   },
-  "source_hash": "sha256:66abbc76e0e0168c2a8cce71e34e844c5d2a68d39c90bf6830fa68605987b0b8",
+  "source_hash": "sha256:a55d7dc2c4aa2377e869486e635707736801f42d2ca8ac8ff161da564a51edd4",
   "criteria": {
     "role-skills-resolve": {
       "result": "pass",
@@ -18,6 +18,15 @@
     "role-binds-a-lane": {
       "result": "pass",
       "findings": []
+    },
+    "mechanical-role-untested": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "build-pipeline",
+          "detail": "role \"build-pipeline\" is played only by system actors, and none of its 32 skill(s) (build-docs, build-pdf, ci-health, compiled-artefact-cache, content-publish, content-test, content-validate, document-publishing, feature-staging, fhir-validation, harness-projections, ig-ast-delta, ig-publication, kg-separation, l3-fhir-authoring, latex-authoring, latex-build-cache, latex-compilation, latex-validation, platform-gates, prepare-merge, publish-verification, qa-reports, quality-control, remote-mount, render-kg-to-cdn, smart-base-tools, sub-kg-lifecycle, todo-manager, translation-manager, upstream-version-adoption, watch) names a test in `tested-by:`."
+        }
+      ]
     },
     "role-has-persona": {
       "result": "n/a",
@@ -38,7 +47,7 @@
   },
   "totals": {
     "pass": 4,
-    "fail": 0,
+    "fail": 1,
     "n/a": 3,
     "unknown": 0
   }

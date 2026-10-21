@@ -5,7 +5,7 @@
     "id": "Process_PublishAlert",
     "path": "processes/sdlc/publish-alert.bpmn"
   },
-  "source_hash": "sha256:5e465804a6f04ac8d63a910d1cfd431848d414912133114960b4798d56305a40",
+  "source_hash": "sha256:b9cf9df6275fd2fa030908f42f93daf110d62c801882d113f52f4e045ed789ce",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -64,6 +64,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -77,8 +85,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_PublishAlert",
+          "detail": "publish-alert.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -119,8 +132,8 @@
     }
   },
   "totals": {
-    "pass": 14,
-    "fail": 2,
+    "pass": 15,
+    "fail": 3,
     "n/a": 9,
     "unknown": 0
   }

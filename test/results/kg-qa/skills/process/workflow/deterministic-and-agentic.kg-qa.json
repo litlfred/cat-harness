@@ -5,7 +5,7 @@
     "id": "deterministic-and-agentic",
     "path": "skills/process/workflow/deterministic-and-agentic.md"
   },
-  "source_hash": "e1bfe2e47f88",
+  "source_hash": "c531dea751de",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

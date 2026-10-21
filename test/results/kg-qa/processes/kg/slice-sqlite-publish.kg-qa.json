@@ -5,7 +5,7 @@
     "id": "Process_SliceSqlitePublish",
     "path": "processes/kg/slice-sqlite-publish.bpmn"
   },
-  "source_hash": "sha256:763f2bc31867c5fe7981605bca112da0999a1ed978b25b25ce7954a0ac4bedb3",
+  "source_hash": "sha256:68d0dbd97056b858bb65392a40af92539b5f9820d1c7292be78b1fa296357116",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -72,6 +72,27 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "A_Check",
+          "detail": "task \"Gate every slice: slice:sqlite:check\" requires skill \"kg-export\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Deploy",
+          "detail": "task \"Build each slice into _site at deploy\" requires skill \"kg-export\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Verify",
+          "detail": "task \"Search the published slice in a browser\" requires skill \"rendered-verification\", which role \"platform-authoring-agent\" (named by lane \"Platform authoring agent\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -85,8 +106,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_SliceSqlitePublish",
+          "detail": "slice-sqlite-publish.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -123,7 +149,7 @@
   },
   "totals": {
     "pass": 15,
-    "fail": 1,
+    "fail": 3,
     "n/a": 9,
     "unknown": 0
   }

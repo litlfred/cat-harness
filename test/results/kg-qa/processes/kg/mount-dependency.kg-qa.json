@@ -5,7 +5,7 @@
     "id": "Process_MountDependency",
     "path": "processes/kg/mount-dependency.bpmn"
   },
-  "source_hash": "sha256:31558fdac83a7da3dbc754d37d50da370370cb2a4a3cddc4ccc5bb8aed435385",
+  "source_hash": "sha256:f2dd0a5679bcac5fbc964a55892b9cc83db039830766df751b3dc953877357ce",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -72,6 +72,27 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Task_DeclareMount",
+          "detail": "task \"Declare the mount: harness, repository, pin\" requires skill \"remote-mount\", which role \"author\" (named by lane \"Downstream author\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_DeclareMount",
+          "detail": "task \"Declare the mount: harness, repository, pin\" requires skill \"index-config\", which role \"author\" (named by lane \"Downstream author\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_RenderAgentSurface",
+          "detail": "task \"Re-render the agent surface\" requires skill \"agent-memory\", which role \"build-pipeline\" (named by lane \"Build pipeline\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -85,8 +106,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_MountDependency",
+          "detail": "mount-dependency.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -123,7 +149,7 @@
   },
   "totals": {
     "pass": 14,
-    "fail": 1,
+    "fail": 3,
     "n/a": 10,
     "unknown": 0
   }

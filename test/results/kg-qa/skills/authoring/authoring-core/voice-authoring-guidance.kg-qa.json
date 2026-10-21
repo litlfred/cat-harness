@@ -5,7 +5,7 @@
     "id": "voice-authoring-guidance",
     "path": "skills/authoring/authoring-core/voice-authoring-guidance.md"
   },
-  "source_hash": "a2029331828d",
+  "source_hash": "73f6c440c204",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",
