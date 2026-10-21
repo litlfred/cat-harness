@@ -4,6 +4,7 @@
  * derived CSVW document.
  */
 import { describe, expect, it } from "bun:test";
+import { narrativeFor } from "./narrative";
 
 import { CSVW_KEYS, TabularCsvwSchema, TabularCsvwTablesSchema, toCsvw } from "./tabular-csvw";
 
@@ -34,7 +35,7 @@ describe("provenance on a CSVW record", () => {
       narrative: { text: null, state: "not-authored" },
     });
     expect(r.source?.file).toBe("p.csv");
-    expect(r.narrative?.state).toBe("not-authored");
+    expect(r.narrative && narrativeFor(r.narrative).state).toBe("not-authored");
   });
 
   it("rejects a narrative that breaks its own state machine", () => {

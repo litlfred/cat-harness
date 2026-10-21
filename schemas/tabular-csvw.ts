@@ -81,7 +81,7 @@
  */
 import { z } from "zod";
 
-import { NarrativeSchema } from "./narrative";
+import { NarrativeSlotSchema } from "./narrative";
 
 /** How a value was arrived at. `undetermined` is a finding, never a default. */
 export const DETERMINATION = ["measured", "declared", "undetermined"] as const;
@@ -230,7 +230,7 @@ export const TabularCsvwSchema = z.object({
    * What the data is about, under bean `ju0u`'s state machine, the same
    * record v1 carries. Required on the same terms as `source`.
    */
-  narrative: NarrativeSchema,
+  narrative: NarrativeSlotSchema,
 });
 export type TabularCsvw = z.infer<typeof TabularCsvwSchema>;
 
