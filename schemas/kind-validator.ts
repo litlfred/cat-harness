@@ -56,6 +56,7 @@ import {
   type GraphTypologyRegistry,
 } from "./cat-harness.js";
 import type { NodeSchemaRef } from "./graph-typology-registry.js";
+import { libraryNodeClass } from "./library-nodes.js";
 import { isNodeKind } from "./node-kind.js";
 
 /** A validator reference, split from its `module#Export` form. */
@@ -247,12 +248,14 @@ export function stripAnnotations(node: unknown): unknown {
 /**
  * The `$schema` family a node is routed by. A `structure.json` tags itself
  * `_schema` instead (`pdf-structure/v1` and its siblings predate the
- * convention), so a node with no `$schema` is routed by that.
+ * convention), so a node with no `$schema` is routed by that; and a library's
+ * JSON-LD node, which carries neither, by the content-model class it
+ * instantiates (`library-nodes.ts`).
  */
 export function nodeFamilyTag(node: unknown): unknown {
   if (node === null || typeof node !== "object" || Array.isArray(node)) return undefined;
   const n = node as { $schema?: unknown; _schema?: unknown };
-  return n.$schema ?? n._schema;
+  return n.$schema ?? n._schema ?? libraryNodeClass(node);
 }
 
 /**

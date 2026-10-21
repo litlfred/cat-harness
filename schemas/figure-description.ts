@@ -42,14 +42,14 @@
  * ## Only a human confirms
  *
  * Same rule as every other narrative here: the state machine is
- * {@link NarrativeSchema}'s, `confirmed_by.kind` must be `"human"`, and an
+ * `NarrativeSchema`'s, `confirmed_by.kind` must be `"human"`, and an
  * agent cannot confirm its own draft. This file carries the draft and the
  * basis; nothing in it is settled until a person says so.
  */
 import { z } from "zod";
 
 import { AttributionSchema } from "./attribution.ts";
-import { NarrativeSchema, NarrativeSlotSchema, narrativeFor } from "./narrative.ts";
+import { NarrativeSlotSchema, narrativeFor } from "./narrative.ts";
 
 /**
  * How much the describer actually looked at.

@@ -2085,6 +2085,12 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "pdf-structure/v1": {},
       "notebook-structure/v1": {},
       "text-structure/v1": {},
+      // The entry's JSON-LD nodes: its manifest, its sections and sheets, and
+      // its blocks. They carry no `$schema`, so each family is the class the
+      // node instantiates (`schemas/library-nodes.ts` says how one is told).
+      "cat-harness:SourceDocument": {},
+      "doco:Section": {},
+      "cat-harness:Block": {},
       "folio-document-images/v1": {},
       "folio-image-verdicts/v1": { shape: "cat-harness-tools:scripts/apply-image-verdicts.ts#VerdictFile" },
       // The section analogue of image verdicts (bean `fnqn`): which sections are
