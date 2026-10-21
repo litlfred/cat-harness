@@ -3,7 +3,7 @@ import { defineTool } from "../../schemas/tool.js";
 
 // `gh` has no command for this: it is the GraphQL mutation `resolveReviewThread`,
 // whose text carries `$id`, which a shell would expand. So the command is a
-// script key, and the script (in cat-harness-tools) calls `gh` with an argument
+// script key, and the script (in the tools layer) calls `gh` with an argument
 // array. No query text is ever typed into a shell.
 
 export default toolFactory((t) =>
