@@ -220,15 +220,17 @@ export const TabularCsvwSchema = z.object({
    * `sha256`, `mimetype_sniffed`, ...), the same record
    * `folio-tabular-records/v1` holds as `source` — bean `urat`. It is how
    * `check-l1-complete` (`sourceBlockOf`) and `check-library-qa` learn what
-   * the entry was made from. Optional until the committed records are
-   * re-emitted, then required. Not a CSVW key: {@link toCsvw} never emits it.
+   * the entry was made from. Required (urat step 5): no committed record
+   * predates it, and an extractor's output, which has none, is
+   * {@link TabularCsvwTablesSchema}. Not a CSVW key: {@link toCsvw} never
+   * emits it.
    */
-  source: z.record(z.string(), z.unknown()).optional(),
+  source: z.record(z.string(), z.unknown()),
   /**
    * What the data is about, under bean `ju0u`'s state machine, the same
-   * record v1 carries. Optional on the same terms as `source`.
+   * record v1 carries. Required on the same terms as `source`.
    */
-  narrative: NarrativeSchema.optional(),
+  narrative: NarrativeSchema,
 });
 export type TabularCsvw = z.infer<typeof TabularCsvwSchema>;
 
