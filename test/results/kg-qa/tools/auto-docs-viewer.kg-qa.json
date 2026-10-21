@@ -5,7 +5,7 @@
     "id": "auto-docs-viewer",
     "path": null
   },
-  "source_hash": "dc4cbadbbab3",
+  "source_hash": "0a1023e2a576",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

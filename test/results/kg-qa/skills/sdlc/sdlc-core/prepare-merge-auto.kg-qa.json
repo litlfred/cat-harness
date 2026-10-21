@@ -5,7 +5,7 @@
     "id": "prepare-merge-auto",
     "path": "skills/sdlc/sdlc-core/prepare-merge-auto.md"
   },
-  "source_hash": "60a3d7591343",
+  "source_hash": "621e69bfb202",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

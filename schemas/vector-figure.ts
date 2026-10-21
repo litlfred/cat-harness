@@ -62,7 +62,7 @@ import { z } from "zod";
 
 import { AttributionSchema } from "./attribution.ts";
 import { DESCRIBABLE_ROLES, IMAGE_ROLES, InspectionBasisSchema } from "./document-image.ts";
-import { NarrativeSchema } from "./narrative.ts";
+import { NarrativeSlotSchema } from "./narrative.ts";
 import { BBoxSchema } from "./vector-labels.ts";
 
 /** What the extractor did. Names itself; asserts no role. */
@@ -147,7 +147,7 @@ export const VectorFigureSchema = z
     assembly: VectorAssemblySchema,
     /** Which declared figures the render shows. Inspection only — see the module docblock. */
     shows: z.array(z.string().min(1)).min(1).optional(),
-    narrative: NarrativeSchema.optional(),
+    narrative: NarrativeSlotSchema.optional(),
   })
   .strict()
   .superRefine((f, ctx) => {

@@ -56,6 +56,7 @@ import {
   type GraphTypologyRegistry,
 } from "./cat-harness.js";
 import type { NodeSchemaRef } from "./graph-typology-registry.js";
+import { libraryNodeClass } from "./library-nodes.js";
 import { isNodeKind } from "./node-kind.js";
 
 /** A validator reference, split from its `module#Export` form. */
@@ -242,6 +243,31 @@ async function loadValidator(
 export function stripAnnotations(node: unknown): unknown {
   if (node === null || typeof node !== "object" || Array.isArray(node)) return node;
   return Object.fromEntries(Object.entries(node as Record<string, unknown>).filter(([k]) => !k.startsWith("_")));
+}
+
+/**
+ * The `$schema` family a node is routed by. A `structure.json` tags itself
+ * `_schema` instead (`pdf-structure/v1` and its siblings predate the
+ * convention), so a node with no `$schema` is routed by that; and a library's
+ * JSON-LD node, which carries neither, by the content-model class it
+ * instantiates (`library-nodes.ts`).
+ */
+export function nodeFamilyTag(node: unknown): unknown {
+  if (node === null || typeof node !== "object" || Array.isArray(node)) return undefined;
+  const n = node as { $schema?: unknown; _schema?: unknown };
+  return n.$schema ?? n._schema ?? libraryNodeClass(node);
+}
+
+/**
+ * What a family's schema parses: the node with its annotations removed, but
+ * keeping a `_schema` tag the node is routed by, since that tag is part of the
+ * family's shape and not a comment.
+ */
+export function familyBody(node: unknown): unknown {
+  const body = stripAnnotations(node);
+  const n = node as { $schema?: unknown; _schema?: unknown };
+  if (body === node || n.$schema !== undefined || n._schema === undefined) return body;
+  return { ...(body as Record<string, unknown>), _schema: n._schema };
 }
 
 // ── Instance-qualified references (bean `quda`) ──────────────────────────

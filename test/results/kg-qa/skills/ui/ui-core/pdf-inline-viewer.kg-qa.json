@@ -5,7 +5,7 @@
     "id": "pdf-inline-viewer",
     "path": "skills/ui/ui-core/pdf-inline-viewer.md"
   },
-  "source_hash": "aa7550184761",
+  "source_hash": "1581119ad99d",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

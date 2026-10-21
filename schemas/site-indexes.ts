@@ -142,7 +142,7 @@ const LocaleStatusSchema = z
     catalogues: Count,
     ...CatalogueCountsShape,
     unreadable: StringList,
-    // `CatalogueRow` and `LocaleOfficiality` in cat-harness-tools'
+    // `CatalogueRow` and `LocaleOfficiality` in the tools layer's
     // `scripts/gen-translation-status.ts` (bean `cat-tools-bbnd`, tools #466):
     // the translation drawer's per-catalogue rows, and who signed the locale
     // off, read from both the PO headers and `status.json`. The generator has
@@ -290,7 +290,7 @@ export const SchemaGraphIndexSchema = z
           .strict(),
       )
       .optional(),
-    // `SourceDescriptorRow` in cat-harness-tools' `scripts/gen-schema-viz.ts`
+    // `SourceDescriptorRow` in the tools layer's `scripts/gen-schema-viz.ts`
     // (bean `folio-assistant-1nu0`): the source descriptors in the declared
     // schema directories, a separate table on the page and never folded into
     // `decls`. Written by the generator and never learned here, so every

@@ -5,7 +5,7 @@
     "id": "graph-detanglement",
     "path": "skills/kg/graph-management/graph-detanglement.md"
   },
-  "source_hash": "f2c944139709",
+  "source_hash": "416443920268",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

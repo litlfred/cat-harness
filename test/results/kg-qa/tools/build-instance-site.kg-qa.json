@@ -5,7 +5,7 @@
     "id": "build-instance-site",
     "path": null
   },
-  "source_hash": "ab3a345e2d96",
+  "source_hash": "4e56aabbb993",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

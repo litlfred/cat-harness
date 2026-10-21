@@ -5,7 +5,7 @@
     "id": "Process_Ingestion",
     "path": "processes/library/document-ingestion.bpmn"
   },
-  "source_hash": "sha256:75dcf1b435badcbee3898ce093d71b9ac6d99f8cf925dd3e9b127bcb0da386f4",
+  "source_hash": "sha256:fb8f372735b76b3a811ddedc879fae155f616b1a1fcd031cba128886b592ce73",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -64,6 +64,19 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Task_Place",
+          "detail": "task \"Place it in uploads/ by a declared route\" requires skill \"upload-routes\", which role \"user\" (named by lane \"Contributor (human or agent)\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -114,8 +127,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 1,
+    "pass": 16,
+    "fail": 2,
     "n/a": 9,
     "unknown": 0
   }

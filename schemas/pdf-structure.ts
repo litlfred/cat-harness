@@ -333,6 +333,37 @@ export const PdfStructureSchema = z
     duplicate_of: z.string().min(1).optional(),
     duplicate_note: z.string().optional(),
     duplicate_copies: z.array(z.string().min(1)).optional(),
+    /**
+     * A bound volume split into its papers by qou's `split-bound-volume.py`:
+     * the volume keeps `container: true`, names the per-paper entries in
+     * `container_children` and says why in `container_note`. Ranking and the
+     * library index skip a container, so its pages are not counted twice.
+     */
+    container: z.boolean().optional(),
+    container_children: z.array(z.string().min(1)).optional(),
+    container_note: z.string().optional(),
+    /** Where the headings came from when a person supplied them, not the producer. */
+    toc_note: z.string().optional(),
+    /**
+     * How the text was obtained when it was done by hand, outside the
+     * producer: the route, why, which engine and settings, and how far the
+     * result can be trusted. Written for scans OCR'd before `source.runContext`
+     * existed; a producer run records `source.runContext` instead.
+     */
+    text_extraction: z
+      .object({
+        route: z.enum(["ocr", "embedded"]),
+        reason: z.string().optional(),
+        engine: z.string().optional(),
+        render: z.string().optional(),
+        psm: z.number().int().optional(),
+        lang: z.string().optional(),
+        intermediate_pdf_sha256: Sha256.optional(),
+        quality: z.string().optional(),
+        metadata_note: z.string().optional(),
+      })
+      .strict()
+      .optional(),
   })
   .strict();
 

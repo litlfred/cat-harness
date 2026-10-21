@@ -178,6 +178,31 @@ export function narrativesOfSlot(slot: NarrativeSlot): Narrative[] {
   return Array.isArray(slot) ? slot : [slot];
 }
 
+/**
+ * The ONE narrative a single-text display shows from a slot: the entry in the
+ * reader's language, else the first. Owner ruling 2026-10-20 (bean
+ * `cat-tools-e1lo`, stage 3, "locale match, else first").
+ *
+ * Match order, so a regional locale still finds its language:
+ * 1. an entry whose `lang` is exactly `lang` (case-insensitive, as BCP 47 is);
+ * 2. an entry whose primary subtag matches (`fr-CA` finds `fr`, and `fr` finds `fr-CA`);
+ * 3. the first entry.
+ *
+ * The single form has no choice to make and is returned as it is, `lang` or
+ * not. A build with no locale passes none and gets the first entry.
+ */
+export function narrativeFor(slot: NarrativeSlot, lang?: string): Narrative {
+  const all = narrativesOfSlot(slot);
+  if (lang === undefined || all.length === 1) return all[0]!;
+  const want = lang.toLowerCase();
+  const primary = (t: string) => t.toLowerCase().split("-")[0];
+  return (
+    all.find((n) => n.lang?.toLowerCase() === want) ??
+    all.find((n) => n.lang !== undefined && primary(n.lang) === primary(want)) ??
+    all[0]!
+  );
+}
+
 /** The empty slot every record starts with. */
 export const NOT_AUTHORED: Narrative = { text: null, state: "not-authored" };
 

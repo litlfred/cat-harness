@@ -1,6 +1,6 @@
 {
   "$schema": "folio-detangle-sidecar/v1",
-  "group": "cat-harness/tools/github",
+  "group": "cat-harness/tools/github-pr-checks",
   "size": 1,
   "internal": 0,
   "inbound": 0,

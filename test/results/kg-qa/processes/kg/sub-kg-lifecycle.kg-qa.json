@@ -5,7 +5,7 @@
     "id": "Process_SubKgLifecycle",
     "path": "processes/kg/sub-kg-lifecycle.bpmn"
   },
-  "source_hash": "sha256:f2d1564c0b4bdb3dfea59a8756421e61946106087f5017cdf85ae837e8476a77",
+  "source_hash": "sha256:ba6c89cb5429769725d533e6bf04574f54838639ecc3ef60f2bdb661ef882a1a",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -88,6 +88,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -138,7 +146,7 @@
     }
   },
   "totals": {
-    "pass": 16,
+    "pass": 18,
     "fail": 1,
     "n/a": 8,
     "unknown": 0

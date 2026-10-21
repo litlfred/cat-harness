@@ -5,7 +5,7 @@
     "id": "term-disagreement",
     "path": "skills/library/library-core/term-disagreement.md"
   },
-  "source_hash": "ab65c7f76c74",
+  "source_hash": "1bdec1b13f5d",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

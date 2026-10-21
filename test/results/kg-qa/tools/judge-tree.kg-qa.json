@@ -2,10 +2,10 @@
   "$schema": "kg-qa/v1",
   "subject": {
     "kind": "tool",
-    "id": "github",
+    "id": "judge-tree",
     "path": null
   },
-  "source_hash": "015633c37b83",
+  "source_hash": "19f9aa0ced15",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

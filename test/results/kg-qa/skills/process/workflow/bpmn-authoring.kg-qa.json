@@ -5,7 +5,7 @@
     "id": "bpmn-authoring",
     "path": "skills/process/workflow/bpmn-authoring.md"
   },
-  "source_hash": "edd7b3a2089a",
+  "source_hash": "792f751258e9",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

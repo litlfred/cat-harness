@@ -51,7 +51,7 @@ import { createHash } from "node:crypto";
 
 import { z } from "zod";
 
-import { NarrativeSchema } from "./narrative.ts";
+import { NarrativeSchema, NarrativeSlotSchema, narrativesOfSlot } from "./narrative.ts";
 
 /** The `$schema` tag every summaries sidecar carries. */
 export const BLOCK_SUMMARIES_SCHEMA = "folio-block-summaries/v1" as const;
@@ -111,8 +111,11 @@ export const BlockSummarySchema = z
     source: z.string().min(1),
     /** sha256 of {@link proseBody} of `source` when the summary was drafted. */
     source_hash: z.string().regex(SHA256_HEX, "`source_hash` is a 64-hex sha256"),
-    /** The summary itself, with its state and its author. */
-    narrative: NarrativeSchema,
+    /**
+     * The summary itself, with its state and its author: one narrative, or one
+     * per language (bean `cat-tools-e1lo`, stage 3).
+     */
+    narrative: NarrativeSlotSchema,
     /**
      * Earlier narratives this one replaced — a rejected draft, or one whose
      * source changed. Kept so a rejection's reason is not lost when the block
@@ -121,7 +124,7 @@ export const BlockSummarySchema = z
      */
     superseded: z.array(NarrativeSchema).optional(),
   })
-  .refine((s) => s.narrative.state !== "not-authored", {
+  .refine((s) => narrativesOfSlot(s.narrative).every((n) => n.state !== "not-authored"), {
     message: "a summary record must hold a summary — absence of a record already means not summarised",
     path: ["narrative", "state"],
   });
@@ -184,9 +187,14 @@ export function summaryStatus(record: BlockSummary | undefined, body: string | n
   if (!record) return "not-summarised";
   // Rejected is checked BEFORE stale: either way the block is back in the
   // backlog, and the rejection is the more useful thing to tell the drafter.
-  if (record.narrative.state === "rejected") return "rejected";
+  //
+  // With one narrative per language: rejected if ANY language was rejected,
+  // and confirmed only when EVERY language is — a summary half of whose
+  // languages nobody has read is not confirmed.
+  const states = narrativesOfSlot(record.narrative).map((n) => n.state);
+  if (states.includes("rejected")) return "rejected";
   if (record.source_hash !== bodyHash(body)) return "stale";
-  if (record.narrative.state === "confirmed") return "confirmed";
+  if (states.every((s) => s === "confirmed")) return "confirmed";
   return "draft";
 }
 

@@ -5,7 +5,7 @@
     "id": "kg-subscription",
     "path": "skills/library/large-datasets/kg-subscription.md"
   },
-  "source_hash": "21379bf7ab53",
+  "source_hash": "1ce4632a58ff",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

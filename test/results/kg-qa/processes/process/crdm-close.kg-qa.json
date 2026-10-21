@@ -5,7 +5,7 @@
     "id": "Process_CRDM_Close",
     "path": "processes/process/crdm-close.bpmn"
   },
-  "source_hash": "sha256:1366f8e1c2fa4705b47e8470e7b04b2a7513ccf614ba07e24757fb86df01c5a7",
+  "source_hash": "sha256:c84a178991bb23e33372a17b5bca9fb7937d8014d334124f6c75055843f1f418",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -85,6 +85,23 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "BA_Confirm",
+          "detail": "task \"Confirm all criteria met\" requires skill \"adjudication\", which role \"business-analyst\" (named by lane \"BA / Feature Requestor\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_RecordSignoff",
+          "detail": "task \"Record the sign-off as a requirement-signoff attestation\" requires skill \"adjudication\", which role \"authoring-agent\" (named by lane \"Agent\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -98,8 +115,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_CRDM_Close",
+          "detail": "crdm-close.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -136,7 +158,7 @@
   },
   "totals": {
     "pass": 16,
-    "fail": 2,
+    "fail": 4,
     "n/a": 7,
     "unknown": 0
   }

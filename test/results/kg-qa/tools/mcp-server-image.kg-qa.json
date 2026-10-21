@@ -5,7 +5,7 @@
     "id": "mcp-server-image",
     "path": null
   },
-  "source_hash": "40ad36760fd9",
+  "source_hash": "b68b22a19834",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",
