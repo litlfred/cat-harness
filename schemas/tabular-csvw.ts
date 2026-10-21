@@ -81,7 +81,7 @@
  */
 import { z } from "zod";
 
-import { NarrativeSchema } from "./narrative";
+import { NarrativeSlotSchema } from "./narrative";
 
 /** How a value was arrived at. `undetermined` is a finding, never a default. */
 export const DETERMINATION = ["measured", "declared", "undetermined"] as const;
@@ -220,20 +220,31 @@ export const TabularCsvwSchema = z.object({
    * `sha256`, `mimetype_sniffed`, ...), the same record
    * `folio-tabular-records/v1` holds as `source` — bean `urat`. It is how
    * `check-l1-complete` (`sourceBlockOf`) and `check-library-qa` learn what
-   * the entry was made from. Optional until the committed records are
-   * re-emitted, then required. Not a CSVW key: {@link toCsvw} never emits it.
+   * the entry was made from. Required (urat step 5): no committed record
+   * predates it, and an extractor's output, which has none, is
+   * {@link TabularCsvwTablesSchema}. Not a CSVW key: {@link toCsvw} never
+   * emits it.
    */
-  source: z.record(z.string(), z.unknown()).optional(),
+  source: z.record(z.string(), z.unknown()),
   /**
    * What the data is about, under bean `ju0u`'s state machine, the same
-   * record v1 carries. Optional on the same terms as `source`.
+   * record v1 carries. Required on the same terms as `source`.
    */
-  narrative: NarrativeSchema.optional(),
+  narrative: NarrativeSlotSchema,
 });
 export type TabularCsvw = z.infer<typeof TabularCsvwSchema>;
 
+/**
+ * What an extractor returns: the tables, before the ingest runner adds
+ * `source` and `narrative` (bean `urat`, step 5). The extractors live in a
+ * content layer and never see the source file's technical metadata, so their
+ * type must not promise it once the record requires it.
+ */
+export const TabularCsvwTablesSchema = TabularCsvwSchema.omit({ source: true, narrative: true });
+export type TabularCsvwTables = z.infer<typeof TabularCsvwTablesSchema>;
+
 /** Is this record waiting on a tool nobody has written? */
-export function stubsIn(doc: TabularCsvw): TabularStub[] {
+export function stubsIn(doc: TabularCsvwTables): TabularStub[] {
   return doc.tables.flatMap((t) => (t["fac:stub"] ? [t["fac:stub"]] : []));
 }
 
@@ -278,6 +289,6 @@ export function csvwTable(table: z.infer<typeof CsvwTableSchema>): Record<string
  * needs placement reads the JSON record; a reader that needs a standard table
  * description reads this. Neither is handed the other's document.
  */
-export function toCsvw(doc: TabularCsvw): Record<string, unknown> {
+export function toCsvw(doc: TabularCsvwTables): Record<string, unknown> {
   return { "@context": CSVW_CONTEXT, tables: doc.tables.map(csvwTable) };
 }

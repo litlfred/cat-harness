@@ -128,7 +128,19 @@
     },
     {
       "typology": "library",
+      "family": "cat-harness:Block"
+    },
+    {
+      "typology": "library",
+      "family": "cat-harness:SourceDocument"
+    },
+    {
+      "typology": "library",
       "family": "concern-groups/v1"
+    },
+    {
+      "typology": "library",
+      "family": "doco:Section"
     },
     {
       "typology": "library",
@@ -173,6 +185,18 @@
     {
       "typology": "library",
       "family": "folio-withheld/v1"
+    },
+    {
+      "typology": "library",
+      "family": "notebook-structure/v1"
+    },
+    {
+      "typology": "library",
+      "family": "pdf-structure/v1"
+    },
+    {
+      "typology": "library",
+      "family": "text-structure/v1"
     },
     {
       "typology": "memory"

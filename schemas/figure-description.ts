@@ -42,14 +42,14 @@
  * ## Only a human confirms
  *
  * Same rule as every other narrative here: the state machine is
- * {@link NarrativeSchema}'s, `confirmed_by.kind` must be `"human"`, and an
+ * `NarrativeSchema`'s, `confirmed_by.kind` must be `"human"`, and an
  * agent cannot confirm its own draft. This file carries the draft and the
  * basis; nothing in it is settled until a person says so.
  */
 import { z } from "zod";
 
 import { AttributionSchema } from "./attribution.ts";
-import { NarrativeSchema } from "./narrative.ts";
+import { NarrativeSlotSchema, narrativeFor } from "./narrative.ts";
 
 /**
  * How much the describer actually looked at.
@@ -88,7 +88,7 @@ export const FigureDescriptionSchema = z
      *
      * An agent writes `draft`; only a human may move it to `confirmed`.
      */
-    narrative: NarrativeSchema,
+    narrative: NarrativeSlotSchema,
     /**
      * What the describer could NOT read, in their own words.
      *
@@ -149,7 +149,7 @@ export const FigureDescriptionsFileSchema = z
         // gains a field — that is the owner's call, not this branch's.
         const key =
           d.figure === undefined
-            ? `${d.page}\u0000\u0000${d.narrative.text ?? ""}`
+            ? `${d.page}\u0000\u0000${narrativeFor(d.narrative).text ?? ""}`
             : `${d.page}\u0000${d.figure}`;
         if (seen.has(key)) {
           ctx.addIssue({
