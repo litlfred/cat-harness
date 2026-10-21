@@ -119,6 +119,10 @@
       "family": "folio-issue-mark/v1"
     },
     {
+      "typology": "merge-reviews",
+      "family": "merge-review/v1"
+    },
+    {
       "typology": "library",
       "family": "concern-groups/v1"
     },
