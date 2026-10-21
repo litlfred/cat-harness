@@ -5,7 +5,7 @@
     "id": "materialize-on-demand",
     "path": "skills/library/large-datasets/materialize-on-demand.md"
   },
-  "source_hash": "d0408790d734",
+  "source_hash": "7f5336543737",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

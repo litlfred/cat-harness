@@ -5,7 +5,7 @@
     "id": "Process_QaPublish",
     "path": "processes/sdlc/qa-publish.bpmn"
   },
-  "source_hash": "sha256:d4989b020a6f32515a98fd3e55fe906e495ae5d82a4c13c3d25b55bf9ee9c499",
+  "source_hash": "sha256:fa548fb281ba25357a692ff0512a9f294d595fc86ff3fa6c96affd7b776228cf",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -88,6 +88,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -101,8 +109,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_QaPublish",
+          "detail": "qa-publish.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -129,13 +142,8 @@
       "findings": []
     },
     "prose-reviewed-since-code-changed": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": ".github/workflows/qa-reports-prune.yml",
-          "detail": ".github/workflows/qa-reports-prune.yml changed since cat-harness/processes/sdlc/qa-publish.bpmn was last seen, and the prose did not. Re-read it; if it still holds, run pairs:attest with a reason."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "prose-claims-resolve": {
       "result": "pass",
@@ -143,7 +151,7 @@
     }
   },
   "totals": {
-    "pass": 16,
+    "pass": 18,
     "fail": 2,
     "n/a": 7,
     "unknown": 0

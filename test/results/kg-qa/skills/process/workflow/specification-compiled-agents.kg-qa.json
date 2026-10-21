@@ -5,7 +5,7 @@
     "id": "specification-compiled-agents",
     "path": "skills/process/workflow/specification-compiled-agents.md"
   },
-  "source_hash": "302e3835ac33",
+  "source_hash": "af5fa6e2f8a1",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

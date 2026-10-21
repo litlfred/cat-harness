@@ -5,7 +5,7 @@
     "id": "pr-description",
     "path": "skills/sdlc/sdlc-core/pr-description.md"
   },
-  "source_hash": "02ecd2cd3771",
+  "source_hash": "62cdcdc24259",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

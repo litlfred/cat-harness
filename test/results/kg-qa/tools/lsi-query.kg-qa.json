@@ -5,7 +5,7 @@
     "id": "lsi-query",
     "path": null
   },
-  "source_hash": "ed76d8c98086",
+  "source_hash": "9b7d3bc323aa",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "crdm-requirements-template",
     "path": "skills/sdlc/crdm/crdm-requirements-template.md"
   },
-  "source_hash": "38a66e26df50",
+  "source_hash": "981806f33e7a",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

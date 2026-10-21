@@ -5,7 +5,7 @@
     "id": "process-state",
     "path": "skills/process/workflow/process-state.md"
   },
-  "source_hash": "aa61a5dacfce",
+  "source_hash": "a55bdad39289",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

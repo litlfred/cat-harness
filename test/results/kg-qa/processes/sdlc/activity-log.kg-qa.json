@@ -5,7 +5,7 @@
     "id": "Process_ActivityLog",
     "path": "processes/sdlc/activity-log.bpmn"
   },
-  "source_hash": "sha256:f414eb0ae7618d33f8b95813f6d770cf85ab2bb86afce3c70127d6aed0daab30",
+  "source_hash": "sha256:8bf660d4c3c45537692cf2578dcea335f95fe6b143521556f1ede292bc31c951",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -117,6 +117,43 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "A_LogStart",
+          "detail": "task \"Log task-start\" requires skill \"activity-log\", which role \"authoring-agent\" (named by lane \"Agent (this session)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_LogMessage",
+          "detail": "task \"Log a message or an error\" requires skill \"activity-log\", which role \"authoring-agent\" (named by lane \"Agent (this session)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_LogEnd",
+          "detail": "task \"Log task-end\" requires skill \"activity-log\", which role \"authoring-agent\" (named by lane \"Agent (this session)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_PersistLog",
+          "detail": "task \"Persist the log to the data store\" requires skill \"activity-log\", which role \"authoring-agent\" (named by lane \"Agent (this session)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_ReportCaptureState",
+          "detail": "task \"Report the capture state\" requires skill \"activity-log\", which role \"authoring-agent\" (named by lane \"Agent (this session)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_EmptyOne",
+          "detail": "task \"Discard one entry by id\" requires skill \"activity-log\", which role \"user\" (named by lane \"Log operator (human)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_EmptyAll",
+          "detail": "task \"Discard all entries, or a whole session\" requires skill \"activity-log\", which role \"user\" (named by lane \"Log operator (human)\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -167,8 +204,8 @@
     }
   },
   "totals": {
-    "pass": 13,
-    "fail": 2,
+    "pass": 14,
+    "fail": 3,
     "n/a": 10,
     "unknown": 0
   }

@@ -5,7 +5,7 @@
     "id": "bpmn-processes",
     "path": "skills/process/workflow/bpmn-processes.md"
   },
-  "source_hash": "01d3eb8d1c83",
+  "source_hash": "1dca12f59750",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "Process_KgToPortal",
     "path": "processes/kg/kg-to-portal.bpmn"
   },
-  "source_hash": "sha256:c317fd4152d7b9bb5657fb58aa4343782bed5dc086193b7b761ee981302aa711",
+  "source_hash": "sha256:fa1a7ef38cdae4be21851e75dabeffd8fccb4dc135638aebbc91acbb4dddc583",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -125,6 +125,51 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "D_Constraints",
+          "detail": "task \"State the constraints, with denominators\" requires skill \"kg-to-portal\", which role \"publication-manager\" (named by lane \"Deployment owner\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "E_Scope",
+          "detail": "task \"Decide what may leave the repository\" requires skill \"kg-to-portal\", which role \"editor\" (named by lane \"Editorial\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Select",
+          "detail": "task \"Cut the subgraph that leaves\" requires skill \"kg-to-portal\", which role \"build-pipeline\" (named by lane \"Build pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Serialize",
+          "detail": "task \"Serialize to JSON-LD\" requires skill \"kg-export\", which role \"build-pipeline\" (named by lane \"Build pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Package",
+          "detail": "task \"Package: files plus a manifest of digests\" requires skill \"kg-to-portal\", which role \"build-pipeline\" (named by lane \"Build pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "S_Sign",
+          "detail": "task \"Sign the package and/or each asset\" requires skill \"kg-to-portal\", which role \"attestation-service\" (named by lane \"Attestation (GDHCN / WHO SMART Trust)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "E_HumanEyes",
+          "detail": "task \"Human eyes on the rendered artefact\" requires skill \"continual-progress\", which role \"editor\" (named by lane \"Editorial\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Distribute",
+          "detail": "task \"Publish to the origin (a cache may front it)\" requires skill \"kg-to-portal\", which role \"publish-target\" (named by lane \"Publish target\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "P_Verify",
+          "detail": "task \"Verify what arrived against what was signed\" requires skill \"kg-to-portal\", which role \"external-registry\" (named by lane \"Portal (external consumer)\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -175,8 +220,8 @@
     }
   },
   "totals": {
-    "pass": 14,
-    "fail": 2,
+    "pass": 15,
+    "fail": 3,
     "n/a": 9,
     "unknown": 0
   }

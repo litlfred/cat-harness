@@ -5,7 +5,7 @@
     "id": "fsh-guts",
     "path": "skills/kg/kg-core/fsh-guts.md"
   },
-  "source_hash": "b6b66ca02d16",
+  "source_hash": "eb4885236fc1",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

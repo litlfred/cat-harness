@@ -5,7 +5,7 @@
     "id": "repo-conversion",
     "path": "skills/conduct/conduct-core/repo-conversion.md"
   },
-  "source_hash": "0eefeb3f9d74",
+  "source_hash": "289de306060d",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

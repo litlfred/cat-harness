@@ -5,7 +5,7 @@
     "id": "Process_StalledAgentTriage",
     "path": "processes/sdlc/stalled-agent-triage.bpmn"
   },
-  "source_hash": "sha256:0dd5d109fdb1b78f64db484c6d446200db9c003bd99cba8f4c8bfc4c596b1e01",
+  "source_hash": "sha256:1a7684d0d06b8258cdcf241e1c858400e92524b91b5bc4825d32f877eba592cd",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -85,6 +85,27 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "A_Footprint",
+          "detail": "task \"Find the footprint\" requires skill \"stalled-agent-triage\", which role \"authoring-agent\" (named by lane \"Triage agent\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Collect",
+          "detail": "task \"Collect or reconstruct a handover report per agent\" requires skill \"handover-report\", which role \"authoring-agent\" (named by lane \"Triage agent\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Consolidate",
+          "detail": "task \"Consolidate into 2-4 themes, with a recommendation each\" requires skill \"stalled-agent-triage\", which role \"authoring-agent\" (named by lane \"Triage agent\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -140,8 +161,8 @@
     }
   },
   "totals": {
-    "pass": 10,
-    "fail": 3,
+    "pass": 11,
+    "fail": 4,
     "n/a": 12,
     "unknown": 0
   }

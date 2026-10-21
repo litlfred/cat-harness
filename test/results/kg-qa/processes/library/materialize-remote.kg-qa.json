@@ -5,7 +5,7 @@
     "id": "Process_MaterializeRemote",
     "path": "processes/library/materialize-remote.bpmn"
   },
-  "source_hash": "sha256:4ddedaa08a3c5c903d795bb07f3b4e75621bd2ba7438dc6d8e931b288e3d28ba",
+  "source_hash": "sha256:5a0512478f37dcf361c57eece840147e94c4f18bea04837d3ac23904bfdfebf5",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -100,6 +100,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -167,7 +175,7 @@
     }
   },
   "totals": {
-    "pass": 14,
+    "pass": 16,
     "fail": 2,
     "n/a": 9,
     "unknown": 0

@@ -5,7 +5,7 @@
     "id": "wireframe-check",
     "path": null
   },
-  "source_hash": "78dd661c31ae",
+  "source_hash": "2bbb138416f9",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

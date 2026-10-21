@@ -1,7 +1,7 @@
 {
   "$schema": "folio-detangle-sidecar/v1",
   "group": "cat-harness/skills/requirements",
-  "size": 7,
+  "size": 8,
   "internal": 0,
   "inbound": 0,
   "outbound": 1,
