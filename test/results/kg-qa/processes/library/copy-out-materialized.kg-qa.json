@@ -5,7 +5,7 @@
     "id": "Process_CopyOutMaterialized",
     "path": "processes/library/copy-out-materialized.bpmn"
   },
-  "source_hash": "sha256:db20a913ce04b5204c79b9dff3a63d0f8fe23405cd3256f4b751625a2ce705bd",
+  "source_hash": "sha256:6cde1c16bb45ad8b6f4b16a01e7ef22d7804b8736295b90e049683412f42dd8f",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -101,6 +101,35 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Task_EditDirectly",
+          "detail": "task \"Edit it in place — it is your own content\" requires skill \"copy-out-materialized\", which role \"user\" (named by lane \"Reader (any actor)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_ReadSource",
+          "detail": "task \"Read the original — and write nothing\" requires skill \"copy-out-materialized\", which role \"corpus\" (named by lane \"Source graph — read-only\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_Land",
+          "detail": "task \"Land the bytes in the copier's own folio/\" requires skill \"copy-out-materialized\", which role \"author\" (named by lane \"Copier's own folio/\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_RecordProvenance",
+          "detail": "task \"Record provenance.local — what this is a copy OF\" requires skill \"copy-out-materialized\", which role \"author\" (named by lane \"Copier's own folio/\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_VerifySourceUntouched",
+          "detail": "task \"Verify the ORIGINAL still hashes to its digest\" requires skill \"copy-out-materialized\", which role \"validation-pipeline\" (named by lane \"Verification\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -160,8 +189,8 @@
     }
   },
   "totals": {
-    "pass": 13,
-    "fail": 3,
+    "pass": 14,
+    "fail": 4,
     "n/a": 9,
     "unknown": 0
   }

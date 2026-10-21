@@ -5,7 +5,7 @@
     "id": "Process_TestPlanExecution",
     "path": "processes/sdlc/test-plan-execution.bpmn"
   },
-  "source_hash": "sha256:1fb38479517aee7d92f813322765a44c7fd9e3e8a1707757107bb02246481981",
+  "source_hash": "sha256:450e0eb82125e48e666d847b18335c54a8aa28777b7fb734aee17e9664ba412d",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -112,6 +112,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -162,7 +170,7 @@
     }
   },
   "totals": {
-    "pass": 17,
+    "pass": 19,
     "fail": 1,
     "n/a": 7,
     "unknown": 0

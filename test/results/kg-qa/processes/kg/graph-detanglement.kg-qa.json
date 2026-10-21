@@ -5,7 +5,7 @@
     "id": "Process_GraphDetanglement",
     "path": "processes/kg/graph-detanglement.bpmn"
   },
-  "source_hash": "sha256:918a3e7d410473537d0245a50f2a38b97b85d67b429c4775036aaa7bd582e91c",
+  "source_hash": "sha256:f150eda537a2d87afa64dcdc7e2858322707dd9836b555103c2f49a2fb21614f",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -92,6 +92,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -142,7 +150,7 @@
     }
   },
   "totals": {
-    "pass": 16,
+    "pass": 18,
     "fail": 1,
     "n/a": 8,
     "unknown": 0

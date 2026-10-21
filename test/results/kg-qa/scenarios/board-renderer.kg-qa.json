@@ -5,7 +5,7 @@
     "id": "board-renderer",
     "path": "scenarios/roles.json"
   },
-  "source_hash": "sha256:66abbc76e0e0168c2a8cce71e34e844c5d2a68d39c90bf6830fa68605987b0b8",
+  "source_hash": "sha256:a55d7dc2c4aa2377e869486e635707736801f42d2ca8ac8ff161da564a51edd4",
   "criteria": {
     "role-skills-resolve": {
       "result": "pass",
@@ -18,6 +18,15 @@
     "role-binds-a-lane": {
       "result": "pass",
       "findings": []
+    },
+    "mechanical-role-untested": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "board-renderer",
+          "detail": "role \"board-renderer\" is played only by system actors, and none of its 8 skill(s) (board-diagram-interchange, board-windows, deletion-requires-confirmation, harness-tiles, incremental-render, liquid-templates, pdf-inline-viewer, visualizer-loading) names a test in `tested-by:`."
+        }
+      ]
     },
     "role-has-persona": {
       "result": "n/a",
@@ -38,7 +47,7 @@
   },
   "totals": {
     "pass": 4,
-    "fail": 0,
+    "fail": 1,
     "n/a": 3,
     "unknown": 0
   }

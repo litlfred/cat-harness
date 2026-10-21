@@ -21,6 +21,30 @@
         "result": "warn",
         "reviewer": {
           "kind": "script",
+          "id": "pipeline/translation-block-qa.ts",
+          "actor": "ci-pipeline",
+          "version": "v1",
+          "script_hash": "46151d68efaa",
+          "script_commit_sha": "unknown"
+        },
+        "reviewed_at": "2026-10-21T07:29:30.195Z",
+        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "severity": "minor",
+        "metrics": {
+          "translated": 59,
+          "total": 60,
+          "pct": 98
+        },
+        "notes": "1 of 60 strings carry no translation in this locale."
+      },
+      {
+        "field_hash": {
+          "md": "01478fd992a8",
+          "po": "5fee93369ffe"
+        },
+        "result": "warn",
+        "reviewer": {
+          "kind": "script",
           "id": "content/pipeline/translation-block-qa.ts",
           "actor": "local-sweep",
           "version": "v1",
@@ -39,6 +63,38 @@
       }
     ],
     "translation-terms-preserved": [
+      {
+        "field_hash": {
+          "md": "01478fd992a8",
+          "po": "5fee93369ffe"
+        },
+        "result": "warn",
+        "reviewer": {
+          "kind": "script",
+          "id": "pipeline/translation-block-qa.ts",
+          "actor": "ci-pipeline",
+          "version": "v1",
+          "script_hash": "46151d68efaa",
+          "script_commit_sha": "unknown"
+        },
+        "reviewed_at": "2026-10-21T07:29:30.198Z",
+        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "severity": "minor",
+        "evidence": [
+          {
+            "text": "IS — absent from: \"实例的本质是什么 —— 原理图、可视化、工具；四个目录；默认渲染\""
+          }
+        ],
+        "metrics": {
+          "checked": 59,
+          "missing": 1,
+          "missing_strict": 0,
+          "missing_acronyms": 1,
+          "glossary_broken": 0,
+          "glossary_resolved": 0
+        },
+        "notes": "1 acronym(s) from the source do not appear verbatim in the translation and no glossary entry speaks for them. That is right for one the target language localises — WHO is OMS in French — and wrong for one silently dropped, and this check cannot tell the two apart. Add them to translations/zh/glossary.po: a pinned msgstr says what the term must become, and a \"#, localised\" flag says it is rendered in the target language without pinning how."
+      },
       {
         "field_hash": {
           "md": "01478fd992a8",
@@ -81,6 +137,27 @@
         "result": "pass",
         "reviewer": {
           "kind": "script",
+          "id": "pipeline/translation-block-qa.ts",
+          "actor": "ci-pipeline",
+          "version": "v1",
+          "script_hash": "46151d68efaa",
+          "script_commit_sha": "unknown"
+        },
+        "reviewed_at": "2026-10-21T07:29:30.202Z",
+        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "metrics": {
+          "echoed": 0,
+          "translated": 59
+        }
+      },
+      {
+        "field_hash": {
+          "md": "01478fd992a8",
+          "po": "5fee93369ffe"
+        },
+        "result": "pass",
+        "reviewer": {
+          "kind": "script",
           "id": "content/pipeline/translation-block-qa.ts",
           "actor": "local-sweep",
           "version": "v1",
@@ -97,5 +174,5 @@
     ],
     "translation-semantic-roundtrip": []
   },
-  "updated_at": "2026-10-10T22:03:16.227Z"
+  "updated_at": "2026-10-21T07:29:30.203Z"
 }

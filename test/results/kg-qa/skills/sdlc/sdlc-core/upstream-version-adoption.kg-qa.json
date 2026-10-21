@@ -5,7 +5,7 @@
     "id": "upstream-version-adoption",
     "path": "skills/sdlc/sdlc-core/upstream-version-adoption.md"
   },
-  "source_hash": "4808ddad8a0b",
+  "source_hash": "df161c0aa44e",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

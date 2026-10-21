@@ -5,7 +5,7 @@
     "id": "Process_CodeChangeReview",
     "path": "processes/sdlc/code-change-review.bpmn"
   },
-  "source_hash": "sha256:b1a4e52e946094053f6a7f8241307155d561d99fc730c66d50572828a46f563e",
+  "source_hash": "sha256:34aea7f7cc4e7829ea7580c28f4aac11c4ce902939c08427f10858160cd9c5cf",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -68,6 +68,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -81,8 +89,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_CodeChangeReview",
+          "detail": "code-change-review.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -118,8 +131,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 1,
+    "pass": 17,
+    "fail": 2,
     "n/a": 8,
     "unknown": 0
   }

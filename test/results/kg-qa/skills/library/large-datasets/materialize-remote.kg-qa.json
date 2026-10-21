@@ -5,7 +5,7 @@
     "id": "materialize-remote",
     "path": "skills/library/large-datasets/materialize-remote.md"
   },
-  "source_hash": "85ac53475fa0",
+  "source_hash": "6b6736ad5ffd",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

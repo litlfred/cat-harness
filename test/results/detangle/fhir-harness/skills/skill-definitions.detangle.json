@@ -1,13 +1,13 @@
 {
   "$schema": "folio-detangle-sidecar/v1",
   "group": "fhir-harness/skills/skill-definitions",
-  "size": 4,
+  "size": 5,
   "internal": 0,
   "inbound": 0,
-  "outbound": 5,
+  "outbound": 8,
   "cohesion": 0,
   "enforcedBoundary": 0,
-  "recordedBoundary": 5,
+  "recordedBoundary": 8,
   "proseMentions": 0,
   "wrongDirection": 0,
   "undeterminedDirection": 0

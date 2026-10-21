@@ -5,7 +5,7 @@
     "id": "Process_MergeBase",
     "path": "processes/sdlc/merge-base.bpmn"
   },
-  "source_hash": "sha256:b067072b22591fc12746cfc058b1b128a7a2cf06a558335798c50d989075e644",
+  "source_hash": "sha256:52b6be6788bfa0c6e8d5961c0014a4275d2f2873c05b461f908ad0a7cefcedac",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -76,6 +76,31 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Task_Classify",
+          "detail": "task \"Classify every conflicted path against the declared patterns\" requires skill \"merge-conflict-patterns\", which role \"build-pipeline\" (named by lane \"merge:main command\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_Resolve",
+          "detail": "task \"Resolve each by its declared strategy\" requires skill \"merge-conflict-patterns\", which role \"build-pipeline\" (named by lane \"merge:main command\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_Commit",
+          "detail": "task \"Commit the merge\" requires skill \"continual-progress\", which role \"build-pipeline\" (named by lane \"merge:main command\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_Abort",
+          "detail": "task \"Abort, restore the tree, list what was refused\" requires skill \"merge-conflict-patterns\", which role \"build-pipeline\" (named by lane \"merge:main command\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -89,8 +114,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_MergeBase",
+          "detail": "merge-base.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "fail",
@@ -136,7 +166,7 @@
   },
   "totals": {
     "pass": 15,
-    "fail": 2,
+    "fail": 4,
     "n/a": 8,
     "unknown": 0
   }

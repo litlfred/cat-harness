@@ -5,7 +5,7 @@
     "id": "delivery-summary",
     "path": "skills/sdlc/sdlc-core/delivery-summary.md"
   },
-  "source_hash": "bbe8c69e2282",
+  "source_hash": "7d796dd9a783",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

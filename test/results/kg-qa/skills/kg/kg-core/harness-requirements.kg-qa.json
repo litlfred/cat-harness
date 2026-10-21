@@ -5,7 +5,7 @@
     "id": "harness-requirements",
     "path": "skills/kg/kg-core/harness-requirements.md"
   },
-  "source_hash": "2f817d05c8e7",
+  "source_hash": "13c8379e4510",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

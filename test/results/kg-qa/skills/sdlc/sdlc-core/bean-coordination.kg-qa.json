@@ -5,7 +5,7 @@
     "id": "bean-coordination",
     "path": "skills/sdlc/sdlc-core/bean-coordination.md"
   },
-  "source_hash": "075183e087ef",
+  "source_hash": "6b90673760f8",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

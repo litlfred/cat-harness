@@ -5,7 +5,7 @@
     "id": "lean-audit",
     "path": null
   },
-  "source_hash": "5ac419173897",
+  "source_hash": "efb487423644",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

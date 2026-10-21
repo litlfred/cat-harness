@@ -5,7 +5,7 @@
     "id": "Process_CRDM_Needs",
     "path": "processes/process/crdm-needs.bpmn"
   },
-  "source_hash": "sha256:ebf4365d8fdd11422d567226baab3008bbe36e5732be3e9afff90bed7853d851",
+  "source_hash": "sha256:15763d968d326ed95f7851ccb6ee0b38e1328904b114408177d191dbe54c05f3",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -72,6 +72,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -85,8 +93,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_CRDM_Needs",
+          "detail": "crdm-needs.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -122,8 +135,8 @@
     }
   },
   "totals": {
-    "pass": 14,
-    "fail": 1,
+    "pass": 15,
+    "fail": 2,
     "n/a": 10,
     "unknown": 0
   }

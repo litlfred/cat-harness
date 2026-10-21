@@ -5,7 +5,7 @@
     "id": "Process_WireframeDesignReview",
     "path": "processes/ui/wireframe-design-review.bpmn"
   },
-  "source_hash": "sha256:d59a8ca711dd1f8ad922499e4490e1ddcfb6e980a72aeeb222148fd7c93bfa6e",
+  "source_hash": "sha256:2f3e7d5db945465d98e98a89cef68b4ecc6a25b15cb2f43ac1b8788e7317718f",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -32,8 +32,25 @@
       "findings": []
     },
     "activity-skill-has-tool": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "D_Intent",
+          "detail": "names skill \"wireframe-design-review\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
+        },
+        {
+          "where": "D_Candidates",
+          "detail": "names skill \"wireframe-design-review\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
+        },
+        {
+          "where": "D_Check",
+          "detail": "names skill \"wireframe-design-review\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
+        },
+        {
+          "where": "R_Review",
+          "detail": "names skill \"wireframe-design-review\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
+        }
+      ]
     },
     "decision-ref-resolves": {
       "result": "n/a",
@@ -56,6 +73,14 @@
       "findings": []
     },
     "role-carries-activity-skill": {
+      "result": "pass",
+      "findings": []
+    },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
       "result": "pass",
       "findings": []
     },
@@ -109,8 +134,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 0,
+    "pass": 17,
+    "fail": 1,
     "n/a": 9,
     "unknown": 0
   }
