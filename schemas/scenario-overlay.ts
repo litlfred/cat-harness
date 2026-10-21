@@ -46,12 +46,16 @@
  * instances that depend on it ({@link checkoutDependentsOf}), deepest first.
  * Resolved alone, an instance sees only its own graph — the cmsl falsifier:
  * a split checkout sees less.
+ *
+ * Auditing ONE instance asks the other direction: which actors may its
+ * requirements and lanes name? Those are the platform's, every instance it
+ * `needs`, and its own ({@link neededActors}) — never a dependent's.
  */
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 import { ownDirectoryById } from "./cat-harness";
-import { checkoutDependentsOf } from "./harness-config";
+import { checkoutDependentsOf, instanceConfigFor, orderedDependencies } from "./harness-config";
 import {
   ACTORS_DIRNAME,
   CAPABILITIES_DIRNAME,
@@ -302,4 +306,50 @@ export function checkoutCapabilities(instanceRoot: string, ownCapabilitiesDir: s
     dir: join(l.dir, CAPABILITIES_DIRNAME),
   }));
   return overlayCapabilities(ownCapabilitiesDir, layers);
+}
+
+/**
+ * The `scenarios` directories of every instance `instanceRoot` needs, deepest
+ * first, then its own: the layers below an instance, as
+ * {@link scenarioLayersAbove} gives the layers above one.
+ */
+export function scenarioLayersBelow(instanceRoot: string): ScenarioLayer[] {
+  const out: ScenarioLayer[] = [];
+  const seen = new Set<string>();
+  const add = (instance: string, root: string): void => {
+    // declared-path-literal: the convention fallback, as scenarioLayersAbove.
+    const dir = resolve(ownDirectoryById(root, "scenarios", "scenarios"));
+    if (seen.has(dir) || !existsSync(dir)) return;
+    seen.add(dir);
+    out.push({ instance, dir });
+  };
+  for (const d of orderedDependencies(instanceRoot)) add(d.dependency.name, d.rootPath);
+  add(instanceConfigFor(instanceRoot)?.name ?? instanceRoot, instanceRoot);
+  return out;
+}
+
+/**
+ * The actors an instance's requirements and lanes may name: the platform's
+ * registry, overlaid with the `scenarios/actors/` of every instance it needs
+ * and then its own.
+ *
+ * Before this, an instance audit read the platform's registry alone, so a
+ * downstream that declared the actors of its own domain (the IHE ITI VHL
+ * Sharer and Receiver, say) saw every requirement naming them fail
+ * `requirement-actors-resolve`, and every role they take on fail
+ * `role-has-actor` — while the platform's own run, which overlays its
+ * dependents, found them. The same rules apply as in the checkout overlay: a
+ * new id is added, `extends` adds roles and capabilities, a redeclared id is
+ * refused.
+ */
+export function neededActors(
+  instanceRoot: string,
+  platformActorsDir: string,
+  grants?: ReadonlyMap<string, readonly string[]>,
+): LoadedActor[] {
+  const platformScenarios = resolve(platformActorsDir, "..");
+  const layers = scenarioLayersBelow(instanceRoot)
+    .filter((l) => l.dir !== platformScenarios)
+    .map((l) => ({ instance: l.instance, dir: join(l.dir, ACTORS_DIRNAME) }));
+  return overlayActors(readActors(platformActorsDir, grants), layers, grants);
 }
