@@ -69,26 +69,16 @@
       "findings": []
     },
     "role-carries-activity-skill": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Task_Review",
-          "detail": "needs skill \"adversarial-code-review\", but its lane's role \"code-reviewer\" does not carry it."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "lane-role-legacy-binding": {
       "result": "pass",
       "findings": []
     },
     "task-skill-outside-lane-role": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Task_Review",
-          "detail": "task \"Review the change\" requires skill \"adversarial-code-review\", which role \"code-reviewer\" (named by lane \"Code reviewer\") does not list, directly or through `inherits`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-names-skill": {
       "result": "pass",
@@ -103,8 +93,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_CodeChangeReview",
+          "detail": "code-change-review.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -140,8 +135,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 3,
+    "pass": 17,
+    "fail": 2,
     "n/a": 8,
     "unknown": 0
   }

@@ -2,7 +2,7 @@
   "$schema": "qa-results/v1",
   "producer": {
     "script": "cat-harness-tools/scripts/check-wireframes.ts",
-    "script_hash": "f004eb64da9b"
+    "script_hash": "891d941d1b66"
   },
   "subject": {
     "kind": "corpus",
@@ -11,7 +11,7 @@
   "families": {
     "covered": {
       "summary": "A declared visualiser with a wireframe whose checks pass at both viewports.",
-      "count": 36,
+      "count": 44,
       "entries": [
         {
           "ref": "cat-harness/attestations",
@@ -74,6 +74,10 @@
           "wireframe": "state-dashboard"
         },
         {
+          "ref": "cat-harness/kg",
+          "wireframe": "kg-viewer"
+        },
+        {
           "ref": "cat-harness/library",
           "wireframe": "library"
         },
@@ -94,6 +98,10 @@
           "wireframe": "state-registry"
         },
         {
+          "ref": "cat-harness/policies",
+          "wireframe": "state-registry"
+        },
+        {
           "ref": "cat-harness/processes",
           "wireframe": "processes"
         },
@@ -106,16 +114,36 @@
           "wireframe": "state-registry"
         },
         {
+          "ref": "cat-harness/scenarios",
+          "wireframe": "state-registry"
+        },
+        {
           "ref": "cat-harness/schemas",
           "wireframe": "schemas"
+        },
+        {
+          "ref": "cat-harness/site",
+          "wireframe": "site"
+        },
+        {
+          "ref": "cat-harness/substrate-snapshots",
+          "wireframe": "state-registry"
         },
         {
           "ref": "cat-harness/swimlane-glossary",
           "wireframe": "state-dashboard"
         },
         {
+          "ref": "cat-harness/test-plans",
+          "wireframe": "state-registry"
+        },
+        {
           "ref": "cat-harness/todos",
           "wireframe": "todos"
+        },
+        {
+          "ref": "cat-harness/tool-releases",
+          "wireframe": "state-registry"
         },
         {
           "ref": "cat-harness/tools",
@@ -135,6 +163,10 @@
         },
         {
           "ref": "cat-harness/validators",
+          "wireframe": "state-registry"
+        },
+        {
+          "ref": "cat-harness/vocab-mappings",
           "wireframe": "state-registry"
         },
         {
@@ -185,5 +217,5 @@
       "entries": []
     }
   },
-  "total": 36
+  "total": 44
 }
