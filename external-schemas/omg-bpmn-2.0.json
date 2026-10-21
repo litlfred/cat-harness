@@ -45,6 +45,10 @@
       "operative": "Reference connecting a process activity or gateway into a specific lane."
     },
     {
+      "term": "bpmn:import",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "bpmn:incoming",
       "operative": "Incoming sequence flow connection entering an activity or gateway."
     },
@@ -71,6 +75,10 @@
     {
       "term": "bpmn:process",
       "operative": "Top-level executable workflow definition containing activity flow nodes."
+    },
+    {
+      "term": "bpmn:resource",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
       "term": "bpmn:sequenceFlow",

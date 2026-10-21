@@ -97,6 +97,10 @@
       "family": "folio-voices-index/v1"
     },
     {
+      "typology": "docs",
+      "family": "process-task-panel/v1"
+    },
+    {
       "typology": "external-schema",
       "family": "folio-external-schema/v1"
     },
