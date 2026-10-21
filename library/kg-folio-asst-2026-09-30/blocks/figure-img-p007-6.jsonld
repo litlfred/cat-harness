@@ -15,17 +15,20 @@
   "file": "../images/img-p007-6.png",
   "pageStart": 7,
   "pageEnd": 7,
-  "narrative": {
-    "text": "A perspective rendering of the same folio-lifecycle BPMN diagram (lanes now left to right: publication manager, review team and SMEs, validation and QA, editors and authoring agents, work plan, programme manager) with dark beans scattered freely across every lane — the swarm picture, in which agents do not stay in their swimlanes.",
-    "state": "draft",
-    "drafted_by": {
-      "kind": "agent",
-      "id": "claude",
-      "model": "not-disclosed",
-      "session": "https://claude.ai/code/session_019rLS387FZZzjPJsNQhfALA"
-    },
-    "drafted_at": "2026-09-30"
-  },
+  "narrative": [
+    {
+      "text": "A perspective rendering of the same folio-lifecycle BPMN diagram (lanes now left to right: publication manager, review team and SMEs, validation and QA, editors and authoring agents, work plan, programme manager) with dark beans scattered freely across every lane — the swarm picture, in which agents do not stay in their swimlanes.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_019rLS387FZZzjPJsNQhfALA"
+      },
+      "drafted_at": "2026-09-30",
+      "lang": "en"
+    }
+  ],
   "derivedFrom": "library/kg-folio-asst-2026-09-30/sections/slide-007",
   "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/kg-folio-asst-2026-09-30/manifest.jsonld",
   "provenance": "ingested"
