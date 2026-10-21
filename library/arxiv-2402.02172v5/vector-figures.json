@@ -524,16 +524,19 @@
       "shows": [
         "1"
       ],
-      "narrative": {
-        "text": "Figure 1: A Schematic diagram of role data cards of simulated code review team and their conversations within CodeAgent.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 1: A Schematic diagram of role data cards of simulated code review team and their conversations within CodeAgent.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p004",
@@ -1039,16 +1042,19 @@
         "2",
         "3"
       ],
-      "narrative": {
-        "text": "Figure 2: CodeAgent pipeline scenario across review roles, and Figure 3: Architecture of the Self-Improving Chain-of-Thought with QA-Checker.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 2: CodeAgent pipeline scenario across review roles, and Figure 3: Architecture of the Self-Improving Chain-of-Thought with QA-Checker.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p007",
@@ -2185,16 +2191,19 @@
       "shows": [
         "4"
       ],
-      "narrative": {
-        "text": "Figure 4: Overlap of vulnerability detection among CodeBERT, GPT-3.5, GPT-4.0, and CodeAgent.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 4: Overlap of vulnerability detection among CodeBERT, GPT-3.5, GPT-4.0, and CodeAgent.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p016",
@@ -2444,16 +2453,19 @@
       "shows": [
         "5"
       ],
-      "narrative": {
-        "text": "Figure 5: Specialization of the six main character agent personas in CodeAgent.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 5: Specialization of the six main character agent personas in CodeAgent.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p017",
@@ -2576,16 +2588,19 @@
       "shows": [
         "6"
       ],
-      "narrative": {
-        "text": "Figure 6: Execution time of CodeAgent across different programming languages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 6: Execution time of CodeAgent across different programming languages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p019",
@@ -6521,16 +6536,19 @@
         "7",
         "8"
       ],
-      "narrative": {
-        "text": "Figures 7 and 8: Distribution of merged and closed code review dataset samples across 9 programming languages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figures 7 and 8: Distribution of merged and closed code review dataset samples across 9 programming languages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p022",
@@ -7874,16 +7892,19 @@
       "shows": [
         "9"
       ],
-      "narrative": {
-        "text": "Figure 9: Comparison of models on merged data across 9 languages on the Consistency Analysis (CA) task.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 9: Comparison of models on merged data across 9 languages on the Consistency Analysis (CA) task.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p023",
@@ -9820,16 +9841,19 @@
         "10",
         "11"
       ],
-      "narrative": {
-        "text": "Figures 10 and 11: Comparison of models on closed data for Consistency Analysis and on merged data for Format Analysis.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figures 10 and 11: Comparison of models on closed data for Consistency Analysis and on merged data for Format Analysis.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p024",
@@ -10811,16 +10835,19 @@
       "shows": [
         "12"
       ],
-      "narrative": {
-        "text": "Figure 12: Comparison of models on closed data across 9 languages on the Format Analysis (FA) task.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 12: Comparison of models on closed data across 9 languages on the Format Analysis (FA) task.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p025",
@@ -11412,16 +11439,19 @@
       "shows": [
         "13"
       ],
-      "narrative": {
-        "text": "Figure 13: Example code review dialogue in a Python project commit (sha: 0d3b94bbd7528ed8649cdab4370a62e508bad82c).",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 13: Example code review dialogue in a Python project commit (sha: 0d3b94bbd7528ed8649cdab4370a62e508bad82c).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p026",
@@ -12247,16 +12277,19 @@
       "shows": [
         "14"
       ],
-      "narrative": {
-        "text": "Figure 14: Example code review dialogue in a Java project commit (sha: 6e3c6d17d943f5ac70b421653eb167e0c34b119f).",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 14: Example code review dialogue in a Java project commit (sha: 6e3c6d17d943f5ac70b421653eb167e0c34b119f).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p027",
@@ -12728,16 +12761,19 @@
       "shows": [
         "15"
       ],
-      "narrative": {
-        "text": "Figure 15: Example code review dialogue in a Go project commit (sha: a6b00b097b1a8140bd8b60177247dc830374c8ed).",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 15: Example code review dialogue in a Go project commit (sha: a6b00b097b1a8140bd8b60177247dc830374c8ed).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p028",
@@ -13537,16 +13573,19 @@
       "shows": [
         "16"
       ],
-      "narrative": {
-        "text": "Figure 16: Example code review dialogue in a C++ project commit (sha: 09e88c7c20347cdf513323fa8c616aba0a1b9ea7).",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 16: Example code review dialogue in a C++ project commit (sha: 09e88c7c20347cdf513323fa8c616aba0a1b9ea7).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p029",
@@ -14158,16 +14197,19 @@
       "shows": [
         "17"
       ],
-      "narrative": {
-        "text": "Figure 17: Example code review dialogue in a JavaScript project commit (sha: 6e9a80d93b470aef4978677ed0b7c9996fddbe20).",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 17: Example code review dialogue in a JavaScript project commit (sha: 6e9a80d93b470aef4978677ed0b7c9996fddbe20).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p030",
@@ -14599,16 +14641,19 @@
       "shows": [
         "18"
       ],
-      "narrative": {
-        "text": "Figure 18: Example code review dialogue in a C project commit (sha: 5f93cf43dd6f809d7927abb79884285ad77e8a58).",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 18: Example code review dialogue in a C project commit (sha: 5f93cf43dd6f809d7927abb79884285ad77e8a58).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p031",
@@ -14994,16 +15039,19 @@
       "shows": [
         "19"
       ],
-      "narrative": {
-        "text": "Figure 19: Example code review dialogue in a C# project commit (sha: 0e231c7a81b318e9eade972f7b877e66128ed67d).",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 19: Example code review dialogue in a C# project commit (sha: 0e231c7a81b318e9eade972f7b877e66128ed67d).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p032",
@@ -15463,16 +15511,19 @@
       "shows": [
         "20"
       ],
-      "narrative": {
-        "text": "Figure 20: Example code review dialogue in a PHP project commit (sha: 6679f059b9a0972a90df198471188da652f5c547).",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 20: Example code review dialogue in a PHP project commit (sha: 6679f059b9a0972a90df198471188da652f5c547).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p033",
@@ -15932,16 +15983,19 @@
       "shows": [
         "21"
       ],
-      "narrative": {
-        "text": "Figure 21: Example code review dialogue in a Ruby project commit (sha: 584f72e7f4c65066ccbd2183af76bf380b6eb974).",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 21: Example code review dialogue in a Ruby project commit (sha: 584f72e7f4c65066ccbd2183af76bf380b6eb974).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p034",
@@ -16679,16 +16733,19 @@
       "shows": [
         "22"
       ],
-      "narrative": {
-        "text": "Figure 22: Comparison of review dialogue between CodeAgent-3.5 and CodeAgent-4.0 on a Java project commit.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 22: Comparison of review dialogue between CodeAgent-3.5 and CodeAgent-4.0 on a Java project commit.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p035",

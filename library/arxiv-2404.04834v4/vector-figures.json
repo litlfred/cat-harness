@@ -202,16 +202,19 @@
       "shows": [
         "1"
       ],
-      "narrative": {
-        "text": "Figure 1 compares the Waterfall model (sequential phases: Requirements, Design, Development, Testing, Maintenance) with the Agile model (iterative sprints: Sprint Backlog, Planning, Development, Testing, Review) adapted for LLM-based multi-agent software engineering systems.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 1 compares the Waterfall model (sequential phases: Requirements, Design, Development, Testing, Maintenance) with the Agile model (iterative sprints: Sprint Backlog, Planning, Development, Testing, Review) adapted for LLM-based multi-agent software engineering systems.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p011",
@@ -367,16 +370,19 @@
         ],
         "outside": 10
       },
-      "narrative": {
-        "text": "Prompt specification text boxes on page 11 providing the exact requirements fed to ChatDev for generating the Snake and Tetris games.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Prompt specification text boxes on page 11 providing the exact requirements fed to ChatDev for generating the Snake and Tetris games.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "vfig-p013",
@@ -590,16 +596,19 @@
       "shows": [
         "4"
       ],
-      "narrative": {
-        "text": "Figure 4 outlines the research agenda for LLM-based multi-agent systems in software engineering, divided into Phase 1 (Enhancing Individual Agent Capabilities: refining role-playing capabilities, designing robust and adaptable prompting frameworks) and Phase 2 (Optimizing Agent Synergy: human-agent collaboration, benchmarking, scaling up for complex projects, leveraging industry principles, dynamic adaptation of agents and resources, secure and responsible data management).",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 4 outlines the research agenda for LLM-based multi-agent systems in software engineering, divided into Phase 1 (Enhancing Individual Agent Capabilities: refining role-playing capabilities, designing robust and adaptable prompting frameworks) and Phase 2 (Optimizing Agent Synergy: human-agent collaboration, benchmarking, scaling up for complex projects, leveraging industry principles, dynamic adaptation of agents and resources, secure and responsible data management).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     }
   ]
 }
