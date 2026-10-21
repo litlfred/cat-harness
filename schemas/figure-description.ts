@@ -49,7 +49,7 @@
 import { z } from "zod";
 
 import { AttributionSchema } from "./attribution.ts";
-import { NarrativeSchema } from "./narrative.ts";
+import { NarrativeSchema, NarrativeSlotSchema, narrativeFor } from "./narrative.ts";
 
 /**
  * How much the describer actually looked at.
@@ -88,7 +88,7 @@ export const FigureDescriptionSchema = z
      *
      * An agent writes `draft`; only a human may move it to `confirmed`.
      */
-    narrative: NarrativeSchema,
+    narrative: NarrativeSlotSchema,
     /**
      * What the describer could NOT read, in their own words.
      *
@@ -149,7 +149,7 @@ export const FigureDescriptionsFileSchema = z
         // gains a field — that is the owner's call, not this branch's.
         const key =
           d.figure === undefined
-            ? `${d.page}\u0000\u0000${d.narrative.text ?? ""}`
+            ? `${d.page}\u0000\u0000${narrativeFor(d.narrative).text ?? ""}`
             : `${d.page}\u0000${d.figure}`;
         if (seen.has(key)) {
           ctx.addIssue({

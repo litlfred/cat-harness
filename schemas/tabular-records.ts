@@ -32,7 +32,7 @@ import { z } from "zod";
 
 import { ContentContextSchema } from "./jsonld";
 
-import { NarrativeSchema } from "./narrative";
+import { NarrativeSlotSchema } from "./narrative";
 
 /** Sniffed/declared types that route to the tabular rung. */
 export const TABULAR_MIMETYPES = [
@@ -82,7 +82,7 @@ export const TabularRecordsSchema = z
     // needed a cross-field refinement here to stop them contradicting each
     // other, and had nowhere to record WHO drafted or confirmed the text —
     // which is the whole substance of the owner's choice.
-    narrative: NarrativeSchema,
+    narrative: NarrativeSlotSchema,
   })
   .refine((d) => d.n_sheets === d.sheets.length, {
     message: "`n_sheets` disagrees with `sheets.length` — one of them is wrong",
