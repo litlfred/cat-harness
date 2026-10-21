@@ -8,12 +8,19 @@
  * |---|---|---|
  * | `root` | `<base>/<path>` | the root's rendering — its `docs/` is installed by cat-harness, so it has no segment |
  * | `instance` | `<base>/<instance>/<path>` | the instance presented as itself, on its own theme |
- * | `viewer` | `<base>/<owner>/<graph>/<subject>/<path>` | a viewer of one instance's assets, rendered by another instance's machinery |
+ * | `viewer` | `<base>/<locale>/<owner>/<graph>/<subject>/<path>` | a viewer of one instance's assets, rendered by another instance's machinery; `<locale>/` only when one is given |
  *
  * - The segment is the instance's `name`, never its `stub`: the stub names
  *   published FILES (`<stub>.jsonld`), the name names the instance.
  * - The declared graph is a segment, because an instance may declare more
  *   than one renderable graph and two would otherwise collide on one URL.
+ * - A locale is a segment of VIEWER pages only (owner, 2026-10-20, "Viewers
+ *   only", recorded on `o7eq`), placed first as the 2026-10-05 ruling places it
+ *   for every visualiser page (`/<locale>/<declaring>/<kind>/…`,
+ *   folio-assistant#2527). The root and an instance as itself carry none, so an
+ *   instance's `.jsonld` identifier does not change with a reader's language.
+ *   With a locale the viewer case is exactly `visualiserRoute`'s route, which
+ *   its test asserts.
  *
  * Paths here are site-relative and start with `/` unless `base` is given;
  * a directory path ends with `/` exactly when the caller's `path` does (or is
@@ -31,7 +38,7 @@
 export type PublishedLocation =
   | { case: "root"; path?: string }
   | { case: "instance"; instance: string; path?: string }
-  | { case: "viewer"; owner: string; graph: string; subject?: string; path?: string };
+  | { case: "viewer"; owner: string; graph: string; subject?: string; path?: string; locale?: string };
 
 /** A segment as given, with no slash at either end; refuses an empty or a traversing one. */
 function segment(label: string, s: string): string {
@@ -67,6 +74,7 @@ export function publishedPath(loc: PublishedLocation, base = ""): string {
       dirs.push(segment("instance", loc.instance));
       break;
     case "viewer":
+      if (loc.locale !== undefined) dirs.push(segment("locale", loc.locale));
       dirs.push(segment("owner", loc.owner), segment("graph", loc.graph));
       if (loc.subject !== undefined) dirs.push(segment("subject", loc.subject));
       break;

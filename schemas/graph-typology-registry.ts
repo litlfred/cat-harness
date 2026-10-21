@@ -2549,6 +2549,30 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // Two marks rather than one, because a comment EDITED after being read
   // keeps its id: the id alone would call it seen, and an edited requirement
   // is a changed requirement (`issue-working`).
+  // The adversarial review verdict on a pull request's head (bean `w8jq`).
+  //
+  // `state`: a reviewing session writes one per PR head it reviews, and the
+  // merge gate (`check:adversarial-review`) reads it. On its OWN branch, by
+  // the owner's ruling of 2026-10-20 ("State branch"): a verdict committed
+  // INTO the pull request moves the head it names, so it was stale the moment
+  // it landed and no pull request could reach `clean`. Keyed by head sha, so a
+  // push after the review leaves the old verdict naming a commit that is no
+  // longer the head, which is exactly what `stale` should mean.
+  "merge-reviews": {
+    description:
+      "the adversarial review verdict on a pull request's HEAD — one `merge-review/v1` file per head, `<head sha>.json`, naming `base_sha`, `head_sha` and the reviews with their RED FLAG findings. Written by a reviewing session that is not the author, read by `check:adversarial-review`. On its own branch so that recording a verdict never moves the head it is bound to. Method: [`adversarial-code-review`](../../sdlc/sdlc-core/adversarial-code-review.md); shape in `schemas/red-flag.ts`.",
+    title: "Merge reviews",
+    renderable: false,
+    holds: "state",
+    recordsWork: false, // a verdict, not work anybody is partway through
+    schema: "cat-harness:schemas/red-flag.ts",
+    // declared-path-literal: this table IS the declaration, as on `issue-marks`.
+    nodeSchemas: {
+      "merge-review/v1": {},
+    },
+    summary: "The adversarial review verdict on a pull request's head, one file per head sha.",
+  },
+
   "issue-marks": {
     description:
       "how far an agent has read an issue — `lastCommentId`, `lastUpdatedAt`, `checkedAt`, one file per issue. **Not the comments**: an id and two timestamps, never a body. Two marks because a comment EDITED after being read keeps its id. Read with [`issue-working`](../../sdlc/sdlc-core/issue-working.md); shape in `src/issue-watch/seen-comments.ts`.",

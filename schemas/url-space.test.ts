@@ -6,6 +6,7 @@
 import { describe, expect, test } from "bun:test";
 
 import { isPublished, publishedPath } from "./url-space.ts";
+import { visualiserRoute } from "./visualiser-route.ts";
 
 describe("publishedPath: the three cases", () => {
   test("the root has no segment", () => {
@@ -23,6 +24,26 @@ describe("publishedPath: the three cases", () => {
       "/cat-harness/docs/who-iris/",
     );
     expect(publishedPath({ case: "viewer", owner: "cat-harness", graph: "library" })).toBe("/cat-harness/library/");
+  });
+
+  test("a locale leads a viewer page, and only a viewer page (owner, 2026-10-20)", () => {
+    expect(publishedPath({ case: "viewer", locale: "en", owner: "cat-harness", graph: "todos" })).toBe(
+      "/en/cat-harness/todos/",
+    );
+    expect(() => publishedPath({ case: "viewer", locale: "", owner: "a", graph: "b" })).toThrow(/not a path segment/);
+  });
+
+  test("with a locale, the viewer case is visualiserRoute's route: two resolvers, one answer", () => {
+    const cases = [
+      { locale: "en", harness: "cat-harness", visualiser: "library" },
+      { locale: "en", harness: "cat-harness", visualiser: "library", subgraph: "who-iris" },
+      { locale: "fr", harness: "smart-base", visualiser: "dak", subgraph: "smart-immunizations", asset: "data.json" },
+    ];
+    for (const c of cases) {
+      expect(
+        publishedPath({ case: "viewer", locale: c.locale, owner: c.harness, graph: c.visualiser, subject: c.subgraph, path: c.asset }),
+      ).toBe(`/${visualiserRoute(c)}`);
+    }
   });
 
   test("two renderable graphs of one instance do not collide", () => {

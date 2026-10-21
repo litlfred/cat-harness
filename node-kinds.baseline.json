@@ -202,6 +202,10 @@
       "family": "folio-merge-queue-entry/v1"
     },
     {
+      "typology": "merge-reviews",
+      "family": "merge-review/v1"
+    },
+    {
       "typology": "models"
     },
     {
