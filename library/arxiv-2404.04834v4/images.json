@@ -17,16 +17,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 9,
@@ -80,16 +83,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-9",
@@ -106,16 +112,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-10",
@@ -132,16 +141,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-11",
@@ -158,16 +170,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-12",
@@ -184,16 +199,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 9,
@@ -222,16 +240,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-15",
@@ -248,16 +269,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 9,
@@ -311,16 +335,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-23",
@@ -337,16 +364,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 9,
@@ -400,16 +430,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-31",
@@ -426,16 +459,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-32",
@@ -452,16 +488,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 9,
@@ -490,16 +529,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-35",
@@ -516,16 +558,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-36",
@@ -542,16 +587,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-37",
@@ -568,16 +616,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-38",
@@ -594,16 +645,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-39",
@@ -620,16 +674,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 9,
@@ -683,16 +740,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-47",
@@ -709,16 +769,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 9,
@@ -772,16 +835,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-55",
@@ -798,16 +864,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-56",
@@ -824,16 +893,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-57",
@@ -850,16 +922,19 @@
         "saw": "Component icon, banner box, or phase marker inside Figure 1 (Waterfall vs Agile multi-agent models); the overall figure diagram is captured as vector figure vfig-p009, so this raster is a constituent graphical element, not an independent figure.",
         "page": 9
       },
-      "narrative": {
-        "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Constituent graphical element of Figure 1 depicting phases and role avatars in the Waterfall vs Agile multi-agent development comparison.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p011-1",
@@ -876,16 +951,19 @@
         "saw": "Figure 2 subplot 1: GUI screenshot of the starting state of the Snake Game generated by ChatDev",
         "page": 11
       },
-      "narrative": {
-        "text": "Initial startup graphical user interface of the Snake Game generated by ChatDev, displaying grid boundary, starting snake position, score counter, and start prompt.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Initial startup graphical user interface of the Snake Game generated by ChatDev, displaying grid boundary, starting snake position, score counter, and start prompt.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p011-2",
@@ -902,16 +980,19 @@
         "saw": "Figure 2 subplot 2: GUI screenshot of the active in-game state of the Snake Game generated by ChatDev",
         "page": 11
       },
-      "narrative": {
-        "text": "In-game gameplay screenshot of the Snake Game generated by ChatDev, showing snake movement, length growth after food consumption, and updated score.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "In-game gameplay screenshot of the Snake Game generated by ChatDev, showing snake movement, length growth after food consumption, and updated score.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p011-3",
@@ -928,16 +1009,19 @@
         "saw": "Figure 2 subplot 3: GUI screenshot of the game-over state of the Snake Game generated by ChatDev",
         "page": 11
       },
-      "narrative": {
-        "text": "Game-over screen of the Snake Game generated by ChatDev, showing collision with boundary/body, final score display, and restart prompt.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Game-over screen of the Snake Game generated by ChatDev, showing collision with boundary/body, final score display, and restart prompt.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p012-1",
@@ -954,16 +1038,19 @@
         "saw": "Figure 3 subplot 1: GUI screenshot of the starting state of the Tetris Game generated by ChatDev",
         "page": 12
       },
-      "narrative": {
-        "text": "Initial starting state GUI of the Tetris Game generated by ChatDev, showing empty well, dropping tetromino piece, and control instructions.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Initial starting state GUI of the Tetris Game generated by ChatDev, showing empty well, dropping tetromino piece, and control instructions.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p012-2",
@@ -980,16 +1067,19 @@
         "saw": "Figure 3 subplot 2: GUI screenshot of active in-game state of the Tetris Game generated by ChatDev",
         "page": 12
       },
-      "narrative": {
-        "text": "In-game gameplay screenshot of the Tetris Game generated by ChatDev, showing player controlling tetromino rotation and descent onto accumulated blocks.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "In-game gameplay screenshot of the Tetris Game generated by ChatDev, showing player controlling tetromino rotation and descent onto accumulated blocks.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p012-3",
@@ -1006,16 +1096,19 @@
         "saw": "Figure 3 subplot 3: GUI screenshot of in-game state of the Tetris Game illustrating lack of line clearing functionality",
         "page": 12
       },
-      "narrative": {
-        "text": "In-game screenshot of the Tetris Game generated by ChatDev, highlighting the implementation limitation where complete rows fail to clear upon placement.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "In-game screenshot of the Tetris Game generated by ChatDev, highlighting the implementation limitation where complete rows fail to clear upon placement.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p012-4",
@@ -1032,16 +1125,19 @@
         "saw": "Figure 3 subplot 4: GUI screenshot of the game-over state of the Tetris Game generated by ChatDev",
         "page": 12
       },
-      "narrative": {
-        "text": "Game-over screen of the Tetris Game generated by ChatDev, showing full board blocking new tetromino spawning and game over announcement.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-1.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Game-over screen of the Tetris Game generated by ChatDev, showing full board blocking new tetromino spawning and game over announcement.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-1.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     }
   ]
 }
