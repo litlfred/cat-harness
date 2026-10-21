@@ -123,10 +123,6 @@
       "family": "folio-issue-mark/v1"
     },
     {
-      "typology": "merge-reviews",
-      "family": "merge-review/v1"
-    },
-    {
       "typology": "library",
       "family": "cat-harness:Block"
     },
@@ -204,6 +200,10 @@
     {
       "typology": "merge-queue",
       "family": "folio-merge-queue-entry/v1"
+    },
+    {
+      "typology": "merge-reviews",
+      "family": "merge-review/v1"
     },
     {
       "typology": "models"
