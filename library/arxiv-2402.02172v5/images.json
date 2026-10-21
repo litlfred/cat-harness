@@ -17,16 +17,19 @@
         "saw": "CodeAgent project mascot/logo icon placed beside the title on page 1",
         "page": 1
       },
-      "narrative": {
-        "text": "The CodeAgent project logo: a cartoon mascot of a coding agent with headphones beside the paper title 'CodeAgent: Autonomous Communicative Agents for Code Review'.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "The CodeAgent project logo: a cartoon mascot of a coding agent with headphones beside the paper title 'CodeAgent: Autonomous Communicative Agents for Code Review'.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-1",
@@ -43,16 +46,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -81,16 +87,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -119,16 +128,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -157,16 +169,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -335,16 +350,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-38",
@@ -361,16 +379,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -409,16 +430,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -447,16 +471,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -550,16 +577,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -588,16 +618,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-62",
@@ -614,16 +647,19 @@
         "saw": "review output panel text rasterized inside Figure 1 pipeline diagram",
         "page": 3
       },
-      "narrative": {
-        "text": "Sample review comment panel inside Figure 1, illustrating four analysis categories: Semantic Consistency Analysis, Security Analysis, Format Analysis, and Code Alignment/Revision Suggestions.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Sample review comment panel inside Figure 1, illustrating four analysis categories: Semantic Consistency Analysis, Security Analysis, Format Analysis, and Code Alignment/Revision Suggestions.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-63",
@@ -640,16 +676,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -678,16 +717,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -726,16 +768,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -789,16 +834,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -847,16 +895,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -905,16 +956,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -978,16 +1032,19 @@
         "saw": "code revision suggestion box inside Figure 1 pipeline diagram",
         "page": 3
       },
-      "narrative": {
-        "text": "Code revision suggestion box inside Figure 1 showing a proposed modification to the assertEquals method using java.util.Objects.equals.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Code revision suggestion box inside Figure 1 showing a proposed modification to the assertEquals method using java.util.Objects.equals.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-98",
@@ -1004,16 +1061,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-99",
@@ -1030,16 +1090,19 @@
         "saw": "icon glyph inside Figure 1 (the pipeline schematic)",
         "page": 3
       },
-      "narrative": {
-        "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat clip-art icon embedded inside Figure 1 representing an agent persona, git commit, document, or status indicator; it carries no independent data beyond the vector diagram.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -1133,16 +1196,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1181,16 +1247,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1219,16 +1288,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1307,16 +1379,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1385,16 +1460,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1428,16 +1506,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1466,16 +1547,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1504,16 +1588,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1542,16 +1629,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1580,16 +1670,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-41",
@@ -1606,16 +1699,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-42",
@@ -1632,16 +1728,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-43",
@@ -1658,16 +1757,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1761,16 +1863,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1849,16 +1954,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1927,16 +2035,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1970,16 +2081,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -2013,16 +2127,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -2061,16 +2178,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -2164,16 +2284,19 @@
         "saw": "icon glyph inside Figure 2 or Figure 3 (role card and dialogue schematics)",
         "page": 4
       },
-      "narrative": {
-        "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A flat avatar icon or status glyph inside Figure 2 or Figure 3 representing role card definitions and communicative dialogue flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -2252,16 +2375,19 @@
         "saw": "character avatar illustration inside Figure 5",
         "page": 16
       },
-      "narrative": {
-        "text": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p016-2",
@@ -2278,16 +2404,19 @@
         "saw": "character avatar illustration inside Figure 5",
         "page": 16
       },
-      "narrative": {
-        "text": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p016-3",
@@ -2304,16 +2433,19 @@
         "saw": "character avatar illustration inside Figure 5",
         "page": 16
       },
-      "narrative": {
-        "text": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p016-4",
@@ -2330,16 +2462,19 @@
         "saw": "character avatar illustration inside Figure 5",
         "page": 16
       },
-      "narrative": {
-        "text": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p016-5",
@@ -2356,16 +2491,19 @@
         "saw": "character avatar illustration inside Figure 5",
         "page": 16
       },
-      "narrative": {
-        "text": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p016-6",
@@ -2382,16 +2520,19 @@
         "saw": "character avatar illustration inside Figure 5",
         "page": 16
       },
-      "narrative": {
-        "text": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p016-7",
@@ -2408,16 +2549,19 @@
         "saw": "character avatar illustration inside Figure 5",
         "page": 16
       },
-      "narrative": {
-        "text": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A cartoon avatar icon representing one of the six specialized review agent personas in Figure 5.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p025-1",
@@ -2434,16 +2578,19 @@
         "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
         "page": 25
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 25,
@@ -2477,16 +2624,19 @@
         "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
         "page": 25
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 25,
@@ -2520,16 +2670,19 @@
         "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
         "page": 25
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 25,
@@ -2558,16 +2711,19 @@
         "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
         "page": 25
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p025-10",
@@ -2584,16 +2740,19 @@
         "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
         "page": 25
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p025-11",
@@ -2610,16 +2769,19 @@
         "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
         "page": 25
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 25,
@@ -2653,16 +2815,19 @@
         "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
         "page": 25
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p025-15",
@@ -2679,16 +2844,19 @@
         "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
         "page": 25
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 25,
@@ -2722,16 +2890,19 @@
         "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
         "page": 25
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 25,
@@ -2765,16 +2936,19 @@
         "saw": "speaker avatar icon on page 25 in case study dialogue transcripts",
         "page": 25
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 25 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 25,
@@ -2808,16 +2982,19 @@
         "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
         "page": 26
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 26,
@@ -2851,16 +3028,19 @@
         "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
         "page": 26
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 26,
@@ -2889,16 +3069,19 @@
         "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
         "page": 26
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p026-7",
@@ -2915,16 +3098,19 @@
         "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
         "page": 26
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p026-8",
@@ -2941,16 +3127,19 @@
         "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
         "page": 26
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 26,
@@ -2984,16 +3173,19 @@
         "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
         "page": 26
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p026-12",
@@ -3010,16 +3202,19 @@
         "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
         "page": 26
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 26,
@@ -3053,16 +3248,19 @@
         "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
         "page": 26
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 26,
@@ -3096,16 +3294,19 @@
         "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
         "page": 26
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 26,
@@ -3139,16 +3340,19 @@
         "saw": "speaker avatar icon on page 26 in case study dialogue transcripts",
         "page": 26
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 26 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 26,
@@ -3182,16 +3386,19 @@
         "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
         "page": 27
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 27,
@@ -3225,16 +3432,19 @@
         "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
         "page": 27
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 27,
@@ -3263,16 +3473,19 @@
         "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
         "page": 27
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p027-7",
@@ -3289,16 +3502,19 @@
         "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
         "page": 27
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p027-8",
@@ -3315,16 +3531,19 @@
         "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
         "page": 27
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 27,
@@ -3358,16 +3577,19 @@
         "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
         "page": 27
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 27,
@@ -3401,16 +3623,19 @@
         "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
         "page": 27
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 27,
@@ -3444,16 +3669,19 @@
         "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
         "page": 27
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p027-18",
@@ -3470,16 +3698,19 @@
         "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
         "page": 27
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 27,
@@ -3513,16 +3744,19 @@
         "saw": "speaker avatar icon on page 27 in case study dialogue transcripts",
         "page": 27
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 27 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 27,
@@ -3556,16 +3790,19 @@
         "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
         "page": 28
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 28,
@@ -3599,16 +3836,19 @@
         "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
         "page": 28
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 28,
@@ -3637,16 +3877,19 @@
         "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
         "page": 28
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p028-7",
@@ -3663,16 +3906,19 @@
         "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
         "page": 28
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p028-8",
@@ -3689,16 +3935,19 @@
         "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
         "page": 28
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 28,
@@ -3737,16 +3986,19 @@
         "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
         "page": 28
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 28,
@@ -3780,16 +4032,19 @@
         "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
         "page": 28
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 28,
@@ -3828,16 +4083,19 @@
         "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
         "page": 28
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 28,
@@ -3871,16 +4129,19 @@
         "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
         "page": 28
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 28,
@@ -3914,16 +4175,19 @@
         "saw": "speaker avatar icon on page 28 in case study dialogue transcripts",
         "page": 28
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 28 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 28,
@@ -3957,16 +4221,19 @@
         "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
         "page": 29
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 29,
@@ -4000,16 +4267,19 @@
         "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
         "page": 29
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 29,
@@ -4038,16 +4308,19 @@
         "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
         "page": 29
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p029-7",
@@ -4064,16 +4337,19 @@
         "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
         "page": 29
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p029-8",
@@ -4090,16 +4366,19 @@
         "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
         "page": 29
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 29,
@@ -4133,16 +4412,19 @@
         "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
         "page": 29
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 29,
@@ -4176,16 +4458,19 @@
         "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
         "page": 29
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p029-15",
@@ -4202,16 +4487,19 @@
         "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
         "page": 29
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 29,
@@ -4245,16 +4533,19 @@
         "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
         "page": 29
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 29,
@@ -4288,16 +4579,19 @@
         "saw": "speaker avatar icon on page 29 in case study dialogue transcripts",
         "page": 29
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 29 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 29,
@@ -4331,16 +4625,19 @@
         "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
         "page": 30
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 30,
@@ -4374,16 +4671,19 @@
         "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
         "page": 30
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 30,
@@ -4412,16 +4712,19 @@
         "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
         "page": 30
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p030-7",
@@ -4438,16 +4741,19 @@
         "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
         "page": 30
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p030-8",
@@ -4464,16 +4770,19 @@
         "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
         "page": 30
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 30,
@@ -4507,16 +4816,19 @@
         "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
         "page": 30
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 30,
@@ -4550,16 +4862,19 @@
         "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
         "page": 30
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p030-15",
@@ -4576,16 +4891,19 @@
         "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
         "page": 30
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 30,
@@ -4619,16 +4937,19 @@
         "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
         "page": 30
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 30,
@@ -4662,16 +4983,19 @@
         "saw": "speaker avatar icon on page 30 in case study dialogue transcripts",
         "page": 30
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 30 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 30,
@@ -4705,16 +5029,19 @@
         "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
         "page": 31
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 31,
@@ -4748,16 +5075,19 @@
         "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
         "page": 31
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 31,
@@ -4786,16 +5116,19 @@
         "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
         "page": 31
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p031-7",
@@ -4812,16 +5145,19 @@
         "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
         "page": 31
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p031-8",
@@ -4838,16 +5174,19 @@
         "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
         "page": 31
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 31,
@@ -4881,16 +5220,19 @@
         "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
         "page": 31
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 31,
@@ -4924,16 +5266,19 @@
         "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
         "page": 31
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 31,
@@ -4967,16 +5312,19 @@
         "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
         "page": 31
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p031-18",
@@ -4993,16 +5341,19 @@
         "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
         "page": 31
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 31,
@@ -5036,16 +5387,19 @@
         "saw": "speaker avatar icon on page 31 in case study dialogue transcripts",
         "page": 31
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 31 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 31,
@@ -5079,16 +5433,19 @@
         "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
         "page": 32
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 32,
@@ -5137,16 +5494,19 @@
         "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
         "page": 32
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 32,
@@ -5185,16 +5545,19 @@
         "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
         "page": 32
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 32,
@@ -5223,16 +5586,19 @@
         "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
         "page": 32
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 32,
@@ -5261,16 +5627,19 @@
         "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
         "page": 32
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 32,
@@ -5319,16 +5688,19 @@
         "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
         "page": 32
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 32,
@@ -5377,16 +5749,19 @@
         "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
         "page": 32
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 32,
@@ -5435,16 +5810,19 @@
         "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
         "page": 32
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 32,
@@ -5473,16 +5851,19 @@
         "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
         "page": 32
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 32,
@@ -5531,16 +5912,19 @@
         "saw": "speaker avatar icon on page 32 in case study dialogue transcripts",
         "page": 32
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 32 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 32,
@@ -5589,16 +5973,19 @@
         "saw": "speaker avatar icon on page 34 in case study dialogue transcripts",
         "page": 34
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p034-2",
@@ -5615,16 +6002,19 @@
         "saw": "speaker avatar icon on page 34 in case study dialogue transcripts",
         "page": 34
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 34,
@@ -5658,16 +6048,19 @@
         "saw": "speaker avatar icon on page 34 in case study dialogue transcripts",
         "page": 34
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 34,
@@ -5696,16 +6089,19 @@
         "saw": "speaker avatar icon on page 34 in case study dialogue transcripts",
         "page": 34
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 34,
@@ -5739,16 +6135,19 @@
         "saw": "speaker avatar icon on page 34 in case study dialogue transcripts",
         "page": 34
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 34,
@@ -5777,16 +6176,19 @@
         "saw": "speaker avatar icon on page 34 in case study dialogue transcripts",
         "page": 34
       },
-      "narrative": {
-        "text": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "A small avatar icon placed beside a speaker role turn on page 34 in the multi-agent code review case study dialogue.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 34,
@@ -5815,16 +6217,19 @@
         "saw": "Figure 23, screenshot of the CodeAgent website interface at https://code-agent-new.vercel.app/index.html",
         "page": 35
       },
-      "narrative": {
-        "text": "Figure 23, website of CodeAgent. The interface provides a web-based code review portal with input panels for code changes (diffs), commit messages, and repository context, alongside response panels presenting multi-agent review outputs categorized into semantic consistency, vulnerability detection, code style validation, and code revision suggestions.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "antigravity",
-          "model": "gemini-2.5-pro"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Figure 23, website of CodeAgent. The interface provides a web-based code review portal with input panels for code changes (diffs), commit messages, and repository context, alongside response panels presenting multi-agent review outputs categorized into semantic consistency, vulnerability detection, code style validation, and code revision suggestions.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     }
   ]
 }
