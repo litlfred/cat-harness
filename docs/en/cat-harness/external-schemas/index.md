@@ -36,7 +36,7 @@ depends on it**, and **which of its terms this repository branches on**.
 
 <div class="xs-grid">
 <div class="xs-stat"><b>28</b><span>specifications</span></div>
-<div class="xs-stat"><b>107</b><span>operative terms in graph (65 described, 42 pending)</span></div>
+<div class="xs-stat"><b>109</b><span>operative terms in graph (65 described, 44 pending)</span></div>
 <div class="xs-stat"><b>284</b><span>declared uses</span></div>
 <div class="xs-stat"><b>0</b><span>declarations naming no record</span></div>
 </div>
@@ -250,9 +250,11 @@ The `MODEL#` form is the RDF spelling of the same namespace: OMG publishes no RD
 | `smart-base/methodologies/processes/*.bpmn (1)` | `xmlns` binding |
 | `smart-base/processes/content/*.bpmn (5)` | `xmlns` binding |
 
-**Operative terms (21).** The terms this repository acts on —
+**Operative terms (23).** The terms this repository acts on —
 derived by the tooling from the corpus, never hand-listed, and deliberately
 a subset of the edition rather than a transcription of it.
+
+*Terms marked pending description are derived from the corpus and await detailed operational description.*
 
 | term | what it means here |
 |---|---|
@@ -264,6 +266,7 @@ a subset of the edition rather than a transcription of it.
 | `bpmn:exclusiveGateway` | Conditional XOR decision branching or converging control flow. |
 | `bpmn:extensionElements` | Extension container holding role bindings, skills, and preconditions. |
 | `bpmn:flowNodeRef` | Reference connecting a process activity or gateway into a specific lane. |
+| `bpmn:import` | *(pending description)* |
 | `bpmn:incoming` | Incoming sequence flow connection entering an activity or gateway. |
 | `bpmn:lane` | Process swimlane establishing the role persona responsible for activities. |
 | `bpmn:laneSet` | Container partitioning a process into one or more participant swimlanes. |
@@ -271,6 +274,7 @@ a subset of the edition rather than a transcription of it.
 | `bpmn:parallelGateway` | Concurrent AND fork or join synchronization of parallel execution paths. |
 | `bpmn:participant` | Swimlane participant representing a collaboration role or system boundary. |
 | `bpmn:process` | Top-level executable workflow definition containing activity flow nodes. |
+| `bpmn:resource` | *(pending description)* |
 | `bpmn:sequenceFlow` | Directed transition connecting source and target flow nodes. |
 | `bpmn:serviceTask` | Automated system task invoked during workflow execution. |
 | `bpmn:startEvent` | Entry node initiating execution of a workflow process. |
