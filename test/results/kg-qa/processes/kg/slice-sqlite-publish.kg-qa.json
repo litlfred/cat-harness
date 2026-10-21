@@ -106,13 +106,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_SliceSqlitePublish",
-          "detail": "slice-sqlite-publish.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -148,8 +143,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 3,
+    "pass": 16,
+    "fail": 2,
     "n/a": 9,
     "unknown": 0
   }

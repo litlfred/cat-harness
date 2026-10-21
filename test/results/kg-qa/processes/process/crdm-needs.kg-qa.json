@@ -93,13 +93,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_CRDM_Needs",
-          "detail": "crdm-needs.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -135,8 +130,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 2,
+    "pass": 16,
+    "fail": 1,
     "n/a": 10,
     "unknown": 0
   }

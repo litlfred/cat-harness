@@ -101,13 +101,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_NarrativeReview",
-          "detail": "review-narrative.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -143,8 +138,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 2,
+    "pass": 17,
+    "fail": 1,
     "n/a": 9,
     "unknown": 0
   }

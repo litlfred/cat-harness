@@ -80,13 +80,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_CiHealth",
-          "detail": "ci-health-watch.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -122,8 +117,8 @@
     }
   },
   "totals": {
-    "pass": 18,
-    "fail": 1,
+    "pass": 19,
+    "fail": 0,
     "n/a": 8,
     "unknown": 0
   }

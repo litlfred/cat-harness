@@ -15,16 +15,19 @@
   "file": "../images/img-p027-1.png",
   "pageStart": 27,
   "pageEnd": 27,
-  "narrative": {
-    "text": "Five grey arrows feed one large downward arrow labelled 'Trust Algorithm'. From top to bottom they are: 'Access Request'; 'Subject Database and History'; 'Asset Database'; 'Resource Policy Requirements', each of the last three drawn beside a database cylinder; and 'Threat Intelligence and Logs', beside a cloud. These are the inputs the trust algorithm weighs for each access decision.",
-    "state": "draft",
-    "drafted_by": {
-      "kind": "agent",
-      "id": "claude",
-      "model": "claude-opus-5"
-    },
-    "drafted_at": "2026-09-29"
-  },
+  "narrative": [
+    {
+      "text": "Five grey arrows feed one large downward arrow labelled 'Trust Algorithm'. From top to bottom they are: 'Access Request'; 'Subject Database and History'; 'Asset Database'; 'Resource Policy Requirements', each of the last three drawn beside a database cylinder; and 'Threat Intelligence and Logs', beside a cloud. These are the inputs the trust algorithm weighs for each access decision.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude",
+        "model": "claude-opus-5"
+      },
+      "drafted_at": "2026-09-29",
+      "lang": "en"
+    }
+  ],
   "derivedFrom": "library/nist-sp-800-207/sections/sec-016",
   "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/nist-sp-800-207/manifest.jsonld",
   "provenance": "ingested"

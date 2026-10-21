@@ -69,7 +69,7 @@ Getting a change to the PLATFORM from "this is needed" to merged: claim the work
 ### 7. Review the change (`Task_Review`)
 
 - Who: the `Code reviewer` lane (role `code-reviewer`).
-- Skill: `code-node-review`, `staging-review`.
+- Skill: `code-node-review`, `adversarial-code-review`, `staging-review`.
 - What: A human or an agent acting AS reviewer.
 - Record it: `workflow_complete` with `node: "Task_Review"`.
 - next: → `GW_ReviewClear` (Review clear?)

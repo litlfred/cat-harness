@@ -328,578 +328,382 @@
     ]
   },
   "neighbours": {
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-000-introduction.md": [
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-000-abstract.md": [
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
-        0.422
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
+        0.671
       ],
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md",
-        0.417
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
+        0.444
       ],
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
-        0.412
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-028-9-conclusion.md",
+        0.397
       ]
     ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-001-related-work.md": [
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-001-1-introduction.md": [
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
-        0.457
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md",
+        0.328
       ],
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-000-introduction.md",
-        0.32
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-018-more-related-works.md",
-        0.296
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
-        0.738
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
-        0.499
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-018-more-related-works.md",
-        0.48
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md",
-        0.738
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-006-comparing-forml4-with-existing-autoformalization.md",
-        0.484
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-043-data-postprocessing.md",
-        0.439
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md",
-        0.499
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
-        0.436
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-030-human-evaluation-autoformalization-performance-e.md",
-        0.4
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-006-comparing-forml4-with-existing-autoformalization.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-003-33-metrics.md",
-        0.488
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
-        0.484
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-037-detailed-dataset-comparison-analysis.md",
-        0.459
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md",
-        0.568
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-009-further-enhancement-with-back-propagated-process.md",
-        0.502
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-017-future-directions.md",
-        0.487
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-008-verification-model.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
-        0.433
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md",
-        0.227
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-009-further-enhancement-with-back-propagated-process.md",
-        0.214
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-009-further-enhancement-with-back-propagated-process.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
-        0.502
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md",
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-000-abstract.md",
         0.324
       ],
       [
         "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.255
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-012-experimental-setup.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-046-preprocessing-and-evaluation.md",
-        0.476
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
-        0.412
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md",
-        0.367
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-013-enhanced-autoformalizer-performance.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
-        0.427
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-017-future-directions.md",
-        0.363
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md",
-        0.304
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-014-further-enhanced-verifier-performance.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
-        0.457
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md",
-        0.388
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-017-future-directions.md",
-        0.32
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-015-human-evaluation-on-autoformalizer-performances.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
-        0.3
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-030-human-evaluation-autoformalization-performance-e.md",
-        0.298
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-014-further-enhanced-verifier-performance.md",
-        0.271
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-016-conclusion.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-012-limitations.md",
-        0.523
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2602.16554v1/sections/sec-011-conclusion.md",
-        0.497
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-029-references.md",
-        0.389
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-017-future-directions.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
-        0.487
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-013-enhanced-autoformalizer-performance.md",
-        0.363
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-014-further-enhanced-verifier-performance.md",
-        0.32
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-018-more-related-works.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md",
-        0.48
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-001-related-work.md",
-        0.296
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
-        0.28
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-019-detailed-decomposition-strategy.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
-        0.597
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
-        0.513
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
-        0.287
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-020-prompt-for-informalization.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
-        0.553
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
-        0.314
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-019-detailed-decomposition-strategy.md",
-        0.216
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-026-quality-criteria.md",
-        0.714
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-025-file-structure.md",
-        0.693
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
-        0.588
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-025-file-structure.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-026-quality-criteria.md",
-        0.827
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-027-annotation-results-for-informalization-model-com.md",
-        0.762
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
-        0.693
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-026-quality-criteria.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-025-file-structure.md",
-        0.827
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
-        0.714
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-027-annotation-results-for-informalization-model-com.md",
-        0.643
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-027-annotation-results-for-informalization-model-com.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-025-file-structure.md",
-        0.762
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-026-quality-criteria.md",
-        0.643
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-036-model-selection-process.md",
-        0.643
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-028-human-evaluation-pda-dataset-quality.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-027-annotation-results-for-informalization-model-com.md",
-        0.347
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-030-human-evaluation-autoformalization-performance-e.md",
-        0.343
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
-        0.318
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-029-case-visualization-in-comparision-with-existing.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
-        0.436
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
-        0.433
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-006-comparing-forml4-with-existing-autoformalization.md",
-        0.267
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-030-human-evaluation-autoformalization-performance-e.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-036-model-selection-process.md",
-        0.773
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-027-annotation-results-for-informalization-model-com.md",
-        0.566
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
-        0.4
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-032-training-settings.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
-        0.269
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-029-case-visualization-in-comparision-with-existing.md",
-        0.245
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
-        0.238
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-033-generation-settings.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-046-preprocessing-and-evaluation.md",
-        0.755
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md",
         0.313
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-039-autoformalization-on-real-world-mathematical-rea.md",
-        0.239
       ]
     ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-034-lean-4-compilation.md": [
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md": [
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-030-human-evaluation-autoformalization-performance-e.md",
-        0.34
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-000-abstract.md",
+        0.671
       ],
       [
-        "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-004-environment-extension.md",
-        0.223
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-003-overview.md",
-        0.146
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
-        0.568
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-014-further-enhanced-verifier-performance.md",
-        0.388
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-012-experimental-setup.md",
-        0.367
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-036-model-selection-process.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-030-human-evaluation-autoformalization-performance-e.md",
-        0.773
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-027-annotation-results-for-informalization-model-com.md",
-        0.643
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-025-file-structure.md",
-        0.318
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-037-detailed-dataset-comparison-analysis.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-006-comparing-forml4-with-existing-autoformalization.md",
-        0.459
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
-        0.413
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
-        0.335
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-038-analysis-for-training-and-test-data-in-forml4.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-039-autoformalization-on-real-world-mathematical-rea.md",
-        0.465
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
-        0.301
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md",
-        0.296
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-039-autoformalization-on-real-world-mathematical-rea.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-038-analysis-for-training-and-test-data-in-forml4.md",
-        0.465
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
-        0.347
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-012-experimental-setup.md",
-        0.281
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-041-data-preprocessing.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-030-human-evaluation-autoformalization-performance-e.md",
-        0.281
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
-        0.256
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
-        0.251
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-042-dataset-split.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
-        0.389
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-038-analysis-for-training-and-test-data-in-forml4.md",
-        0.293
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-041-data-preprocessing.md",
-        0.209
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-043-data-postprocessing.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
-        0.439
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md",
-        0.32
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-004-2-related-work.md",
+        0.441
       ],
       [
         "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
-        0.309
+        0.405
       ]
     ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md": [
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-003-33-metrics.md": [
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-019-detailed-decomposition-strategy.md",
-        0.597
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
+        0.53
       ],
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
-        0.588
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-006-comparing-forml4-with-existing-autoformalization.md",
+        0.488
       ],
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-026-quality-criteria.md",
-        0.449
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-028-9-conclusion.md",
+        0.373
       ]
     ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-046-preprocessing-and-evaluation.md": [
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-004-2-related-work.md": [
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-033-generation-settings.md",
-        0.755
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
+        0.441
       ],
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-012-experimental-setup.md",
-        0.476
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md",
+        0.36
       ],
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-047-detailed-analyses-of-existing-llms-on-forml4.md",
-        0.27
+        "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-front-matter.md",
+        0.231
       ]
     ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-047-detailed-analyses-of-existing-llms-on-forml4.md": [
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-007-31-zbmath-open-dataset.md": [
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-046-preprocessing-and-evaluation.md",
-        0.27
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
+        0.223
       ],
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-012-experimental-setup.md",
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-016-6-llm-voting-based-document-splitting.md",
+        0.184
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-001-1-introduction.md",
+        0.175
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-009-53-challenges.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
+        0.4
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-026-84-error-detection-hypotheses.md",
         0.265
       ],
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
-        0.245
+        "folio-assistant-sci/library/arxiv-2512.09874v3/sections/sec-000-document.md",
+        0.255
       ]
     ],
-    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-front-matter.md": [
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-010-41-ocr-comparison.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-027-annotation-results-for-informalization-model-com.md",
+        0.318
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-003-33-metrics.md",
+        0.24
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md",
+        0.21
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-011-42-conversion-and-challenges.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md",
+        0.384
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-001-1-introduction.md",
+        0.223
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-000-abstract.md",
+        0.193
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-024-82-evaluation-results.md",
+        0.634
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
+        0.395
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-011-42-conversion-and-challenges.md",
+        0.384
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-014-54-results.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-016-6-llm-voting-based-document-splitting.md",
+        0.434
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-015-52-exclusion-of-documents-from-consideration.md",
+        0.276
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md",
+        0.242
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-015-52-exclusion-of-documents-from-consideration.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md",
+        0.326
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-014-54-results.md",
+        0.276
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
+        0.253
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-016-6-llm-voting-based-document-splitting.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
+        0.435
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-014-54-results.md",
+        0.434
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
+        0.35
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-017-62-base-models.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
+        0.271
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
+        0.217
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2512.09874v3/sections/sec-000-document.md",
+        0.168
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-018-63-fine-tuning.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-032-training-settings.md",
+        0.23
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-019-64-majority-voting-approach.md",
+        0.225
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-020-65-llm-baseline.md",
+        0.15
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-019-64-majority-voting-approach.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
+        0.322
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-024-82-evaluation-results.md",
+        0.238
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-026-84-error-detection-hypotheses.md",
+        0.238
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-020-65-llm-baseline.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
+        0.348
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
+        0.203
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-026-quality-criteria.md",
+        0.193
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-021-7-computer-vision-based-baseline.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
+        0.277
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-014-54-results.md",
+        0.203
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-025-83-errors-analysis.md",
+        0.202
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-023-81-evaluation-of-base-models.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
+        0.238
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-024-82-evaluation-results.md",
+        0.214
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
+        0.205
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-024-82-evaluation-results.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md",
+        0.634
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
+        0.474
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
+        0.253
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-025-83-errors-analysis.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
+        0.307
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-026-84-error-detection-hypotheses.md",
+        0.232
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
+        0.213
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-026-84-error-detection-hypotheses.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
+        0.358
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
+        0.346
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-009-53-challenges.md",
+        0.265
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-003-33-metrics.md",
+        0.53
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-028-9-conclusion.md",
+        0.492
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-024-82-evaluation-results.md",
+        0.474
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-028-9-conclusion.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
+        0.492
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-000-abstract.md",
+        0.397
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-003-33-metrics.md",
+        0.373
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-029-references.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-000-references.md",
+        0.493
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-016-conclusion.md",
+        0.389
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2512.09874v3/sections/sec-000-document.md",
+        0.329
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-front-matter.md": [
       [
         "folio-assistant-sci/library/arxiv-2602.16554v1/sections/sec-000-framework.md",
-        0.599
+        0.576
       ],
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-000-introduction.md",
-        0.252
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-029-references.md",
+        0.161
       ],
       [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
-        0.247
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-007-31-zbmath-open-dataset.md",
+        0.074
       ]
     ],
     "folio-assistant-sci/library/milnorlink/sections/page-001.md": [
       [
         "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-026-quality-criteria.md",
-        0.122
+        0.121
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2602.16554v1/sections/sec-000-framework.md",
+        0.103
       ],
       [
         "folio-assistant-sci/library/milnorlink/sections/page-177.md",
         0.102
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2602.16554v1/sections/sec-000-framework.md",
-        0.098
       ]
     ],
     "folio-assistant-sci/library/milnorlink/sections/page-177.md": [
@@ -993,11 +797,11 @@
       ],
       [
         "folio-assistant-sci/library/milnorlink/sections/page-189.md",
-        0.314
+        0.313
       ],
       [
         "folio-assistant-sci/library/milnorlink/sections/page-186.md",
-        0.233
+        0.232
       ]
     ],
     "folio-assistant-sci/library/milnorlink/sections/page-184.md": [
@@ -1168,38 +972,10 @@
         0.243
       ]
     ],
-    "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-000-references.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-029-references.md",
-        0.493
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-front-matter.md",
-        0.331
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2512.09874v3/sections/sec-000-document.md",
-        0.319
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-front-matter.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2512.09874v3/sections/sec-000-document.md",
-        0.397
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-000-references.md",
-        0.331
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-001-1-introduction.md",
-        0.24
-      ]
-    ],
     "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-000-introduction.md": [
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-004-environment-extension.md",
-        0.529
+        0.533
       ],
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-003-overview.md",
@@ -1213,7 +989,7 @@
     "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-001-related-work.md": [
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-004-environment-extension.md",
-        0.466
+        0.47
       ],
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-003-overview.md",
@@ -1231,25 +1007,25 @@
       ],
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-007-project-management-using-leanarchitect.md",
-        0.613
+        0.612
       ],
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-004-environment-extension.md",
-        0.553
+        0.558
       ]
     ],
     "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-004-environment-extension.md": [
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-front-matter.md",
-        0.577
+        0.583
       ],
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-003-overview.md",
-        0.553
+        0.558
       ],
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-000-introduction.md",
-        0.529
+        0.533
       ]
     ],
     "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-005-blueprint-attribute.md": [
@@ -1277,17 +1053,17 @@
       ],
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-004-environment-extension.md",
-        0.37
+        0.373
       ]
     ],
     "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-007-project-management-using-leanarchitect.md": [
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-003-overview.md",
-        0.613
+        0.612
       ],
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-004-environment-extension.md",
-        0.497
+        0.499
       ],
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-015-implementation.md",
@@ -1301,7 +1077,7 @@
       ],
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-004-environment-extension.md",
-        0.266
+        0.268
       ],
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-001-related-work.md",
@@ -1311,7 +1087,7 @@
     "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-010-converting-existing-projects-to-leanarchitect-fo.md": [
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-003-overview.md",
-        0.279
+        0.28
       ],
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-007-project-management-using-leanarchitect.md",
@@ -1381,7 +1157,7 @@
     "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-front-matter.md": [
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-004-environment-extension.md",
-        0.577
+        0.583
       ],
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-000-introduction.md",
@@ -1392,18 +1168,620 @@
         0.407
       ]
     ],
+    "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-000-references.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-029-references.md",
+        0.493
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-front-matter.md",
+        0.331
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2512.09874v3/sections/sec-000-document.md",
+        0.319
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-front-matter.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2512.09874v3/sections/sec-000-document.md",
+        0.397
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-000-references.md",
+        0.331
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-001-1-introduction.md",
+        0.24
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2512.09874v3/sections/sec-000-document.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-front-matter.md",
+        0.397
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-029-references.md",
+        0.329
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-000-references.md",
+        0.319
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-000-introduction.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
+        0.422
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md",
+        0.417
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
+        0.414
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-001-related-work.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
+        0.458
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-000-introduction.md",
+        0.32
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-018-more-related-works.md",
+        0.296
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
+        0.736
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
+        0.5
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-018-more-related-works.md",
+        0.481
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md",
+        0.736
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-006-comparing-forml4-with-existing-autoformalization.md",
+        0.487
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-029-case-visualization-in-comparision-with-existing.md",
+        0.44
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md",
+        0.5
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
+        0.438
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-030-human-evaluation-autoformalization-performance-e.md",
+        0.401
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-006-comparing-forml4-with-existing-autoformalization.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-003-33-metrics.md",
+        0.488
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
+        0.487
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-037-detailed-dataset-comparison-analysis.md",
+        0.459
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md",
+        0.572
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-009-further-enhancement-with-back-propagated-process.md",
+        0.502
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-017-future-directions.md",
+        0.482
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-008-verification-model.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
+        0.434
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md",
+        0.227
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-009-further-enhancement-with-back-propagated-process.md",
+        0.214
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-009-further-enhancement-with-back-propagated-process.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
+        0.502
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md",
+        0.324
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
+        0.255
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-012-experimental-setup.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-046-preprocessing-and-evaluation.md",
+        0.476
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
+        0.412
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md",
+        0.367
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-013-enhanced-autoformalizer-performance.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
+        0.428
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-017-future-directions.md",
+        0.363
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md",
+        0.304
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-014-further-enhanced-verifier-performance.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
+        0.458
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md",
+        0.388
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-017-future-directions.md",
+        0.32
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-015-human-evaluation-on-autoformalizer-performances.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
+        0.3
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-030-human-evaluation-autoformalization-performance-e.md",
+        0.298
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-014-further-enhanced-verifier-performance.md",
+        0.271
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-016-conclusion.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-012-limitations.md",
+        0.523
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2602.16554v1/sections/sec-011-conclusion.md",
+        0.497
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-029-references.md",
+        0.389
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-017-future-directions.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
+        0.482
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-013-enhanced-autoformalizer-performance.md",
+        0.363
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-014-further-enhanced-verifier-performance.md",
+        0.32
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-018-more-related-works.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md",
+        0.481
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-001-related-work.md",
+        0.296
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
+        0.28
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-019-detailed-decomposition-strategy.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
+        0.597
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
+        0.512
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
+        0.287
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-020-prompt-for-informalization.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
+        0.552
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
+        0.315
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-019-detailed-decomposition-strategy.md",
+        0.216
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-026-quality-criteria.md",
+        0.716
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-025-file-structure.md",
+        0.69
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
+        0.587
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-025-file-structure.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-026-quality-criteria.md",
+        0.827
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-027-annotation-results-for-informalization-model-com.md",
+        0.764
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
+        0.69
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-026-quality-criteria.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-025-file-structure.md",
+        0.827
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
+        0.716
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-027-annotation-results-for-informalization-model-com.md",
+        0.643
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-027-annotation-results-for-informalization-model-com.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-025-file-structure.md",
+        0.764
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-036-model-selection-process.md",
+        0.647
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-026-quality-criteria.md",
+        0.643
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-028-human-evaluation-pda-dataset-quality.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-027-annotation-results-for-informalization-model-com.md",
+        0.347
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-030-human-evaluation-autoformalization-performance-e.md",
+        0.344
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
+        0.318
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-029-case-visualization-in-comparision-with-existing.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
+        0.44
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
+        0.435
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-006-comparing-forml4-with-existing-autoformalization.md",
+        0.267
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-030-human-evaluation-autoformalization-performance-e.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-036-model-selection-process.md",
+        0.771
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-027-annotation-results-for-informalization-model-com.md",
+        0.573
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
+        0.403
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-032-training-settings.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
+        0.269
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-029-case-visualization-in-comparision-with-existing.md",
+        0.245
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
+        0.238
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-033-generation-settings.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-046-preprocessing-and-evaluation.md",
+        0.755
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md",
+        0.315
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-039-autoformalization-on-real-world-mathematical-rea.md",
+        0.237
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-034-lean-4-compilation.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-030-human-evaluation-autoformalization-performance-e.md",
+        0.342
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-004-environment-extension.md",
+        0.223
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-003-overview.md",
+        0.146
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-035-comprehensive-evaluation-of-the-enhanced-autofor.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
+        0.572
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-014-further-enhanced-verifier-performance.md",
+        0.388
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-012-experimental-setup.md",
+        0.367
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-036-model-selection-process.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-030-human-evaluation-autoformalization-performance-e.md",
+        0.771
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-027-annotation-results-for-informalization-model-com.md",
+        0.647
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-025-file-structure.md",
+        0.318
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-037-detailed-dataset-comparison-analysis.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-006-comparing-forml4-with-existing-autoformalization.md",
+        0.459
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
+        0.416
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
+        0.335
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-038-analysis-for-training-and-test-data-in-forml4.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-039-autoformalization-on-real-world-mathematical-rea.md",
+        0.464
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
+        0.301
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md",
+        0.296
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-039-autoformalization-on-real-world-mathematical-rea.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-038-analysis-for-training-and-test-data-in-forml4.md",
+        0.464
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
+        0.349
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-012-experimental-setup.md",
+        0.281
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-041-data-preprocessing.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-030-human-evaluation-autoformalization-performance-e.md",
+        0.278
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
+        0.254
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
+        0.252
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-042-dataset-split.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-005-curation-process.md",
+        0.389
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-038-analysis-for-training-and-test-data-in-forml4.md",
+        0.293
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-041-data-preprocessing.md",
+        0.209
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-043-data-postprocessing.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
+        0.437
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md",
+        0.315
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
+        0.311
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-019-detailed-decomposition-strategy.md",
+        0.597
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
+        0.587
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-026-quality-criteria.md",
+        0.444
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-046-preprocessing-and-evaluation.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-033-generation-settings.md",
+        0.755
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-012-experimental-setup.md",
+        0.476
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-047-detailed-analyses-of-existing-llms-on-forml4.md",
+        0.27
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-047-detailed-analyses-of-existing-llms-on-forml4.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-046-preprocessing-and-evaluation.md",
+        0.27
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-012-experimental-setup.md",
+        0.265
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
+        0.245
+      ]
+    ],
+    "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-front-matter.md": [
+      [
+        "folio-assistant-sci/library/arxiv-2602.16554v1/sections/sec-000-framework.md",
+        0.6
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-000-introduction.md",
+        0.252
+      ],
+      [
+        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-007-method-process-driven-autoformalization.md",
+        0.247
+      ]
+    ],
     "folio-assistant-sci/library/arxiv-2602.16554v1/sections/sec-000-framework.md": [
       [
         "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-front-matter.md",
-        0.599
+        0.6
       ],
       [
         "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-front-matter.md",
-        0.584
+        0.576
       ],
       [
         "folio-assistant-sci/library/arxiv-2601.22554v1/sections/sec-front-matter.md",
-        0.264
+        0.268
       ]
     ],
     "folio-assistant-sci/library/arxiv-2602.16554v1/sections/sec-001-autoformalization.md": [
@@ -1417,7 +1795,7 @@
       ],
       [
         "folio-assistant-sci/library/arxiv-2602.16554v1/sections/sec-000-framework.md",
-        0.258
+        0.261
       ]
     ],
     "folio-assistant-sci/library/arxiv-2602.16554v1/sections/sec-002-introduction.md": [
@@ -1427,7 +1805,7 @@
       ],
       [
         "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.312
+        0.313
       ],
       [
         "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-002-forml4-dataset-construction.md",
@@ -1459,13 +1837,13 @@
       ],
       [
         "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
-        0.208
+        0.21
       ]
     ],
     "folio-assistant-sci/library/arxiv-2602.16554v1/sections/sec-005-results.md": [
       [
         "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-024-task.md",
-        0.277
+        0.275
       ],
       [
         "folio-assistant-sci/library/arxiv-2602.16554v1/sections/sec-004-autoinformalization.md",
@@ -1529,7 +1907,7 @@
       ],
       [
         "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-003-informalization.md",
-        0.212
+        0.213
       ]
     ],
     "folio-assistant-sci/library/arxiv-2602.16554v1/sections/sec-011-conclusion.md": [
@@ -1572,384 +1950,6 @@
       [
         "folio-assistant-sci/library/milnorlink/sections/page-179.md",
         0.14
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-000-abstract.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.671
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
-        0.445
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-028-9-conclusion.md",
-        0.397
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-001-1-introduction.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md",
-        0.328
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-000-abstract.md",
-        0.324
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.314
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-000-abstract.md",
-        0.671
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-004-2-related-work.md",
-        0.441
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
-        0.402
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-003-33-metrics.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
-        0.531
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-006-comparing-forml4-with-existing-autoformalization.md",
-        0.488
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-028-9-conclusion.md",
-        0.373
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-004-2-related-work.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.441
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md",
-        0.361
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-front-matter.md",
-        0.231
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-007-31-zbmath-open-dataset.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
-        0.224
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-016-6-llm-voting-based-document-splitting.md",
-        0.184
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-001-1-introduction.md",
-        0.175
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-009-53-challenges.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.399
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-026-84-error-detection-hypotheses.md",
-        0.265
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2512.09874v3/sections/sec-000-document.md",
-        0.255
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-010-41-ocr-comparison.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-027-annotation-results-for-informalization-model-com.md",
-        0.324
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-003-33-metrics.md",
-        0.241
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md",
-        0.211
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-011-42-conversion-and-challenges.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md",
-        0.384
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-001-1-introduction.md",
-        0.223
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-000-abstract.md",
-        0.193
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-024-82-evaluation-results.md",
-        0.633
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.397
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-011-42-conversion-and-challenges.md",
-        0.384
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-014-54-results.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-016-6-llm-voting-based-document-splitting.md",
-        0.434
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-015-52-exclusion-of-documents-from-consideration.md",
-        0.276
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md",
-        0.243
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-015-52-exclusion-of-documents-from-consideration.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md",
-        0.327
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-014-54-results.md",
-        0.276
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.253
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-016-6-llm-voting-based-document-splitting.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
-        0.437
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-014-54-results.md",
-        0.434
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.349
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-017-62-base-models.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.27
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
-        0.218
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2512.09874v3/sections/sec-000-document.md",
-        0.168
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-018-63-fine-tuning.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-032-training-settings.md",
-        0.23
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-019-64-majority-voting-approach.md",
-        0.225
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-020-65-llm-baseline.md",
-        0.15
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-019-64-majority-voting-approach.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
-        0.322
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-024-82-evaluation-results.md",
-        0.238
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-026-84-error-detection-hypotheses.md",
-        0.238
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-020-65-llm-baseline.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
-        0.34
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.205
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-026-quality-criteria.md",
-        0.194
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-021-7-computer-vision-based-baseline.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.277
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-014-54-results.md",
-        0.204
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-025-83-errors-analysis.md",
-        0.202
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-023-81-evaluation-of-base-models.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-045-prompt.md",
-        0.245
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-024-82-evaluation-results.md",
-        0.214
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.192
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-024-82-evaluation-results.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-012-5-regular-expressions-approach.md",
-        0.633
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
-        0.474
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.256
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-025-83-errors-analysis.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.307
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-026-84-error-detection-hypotheses.md",
-        0.232
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
-        0.213
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-026-84-error-detection-hypotheses.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-002-4-document-splitting.md",
-        0.358
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
-        0.346
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-009-53-challenges.md",
-        0.265
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-003-33-metrics.md",
-        0.531
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-028-9-conclusion.md",
-        0.493
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-024-82-evaluation-results.md",
-        0.474
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-028-9-conclusion.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-027-86-all-data-processing.md",
-        0.493
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-000-abstract.md",
-        0.397
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-003-33-metrics.md",
-        0.373
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-029-references.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-000-references.md",
-        0.493
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2406.01940v2/sections/sec-016-conclusion.md",
-        0.389
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2512.09874v3/sections/sec-000-document.md",
-        0.329
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-front-matter.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2602.16554v1/sections/sec-000-framework.md",
-        0.584
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-029-references.md",
-        0.161
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-007-31-zbmath-open-dataset.md",
-        0.074
-      ]
-    ],
-    "folio-assistant-sci/library/arxiv-2512.09874v3/sections/sec-000-document.md": [
-      [
-        "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-front-matter.md",
-        0.397
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2604.00554v1/sections/sec-029-references.md",
-        0.329
-      ],
-      [
-        "folio-assistant-sci/library/arxiv-2003.08005v1/sections/sec-000-references.md",
-        0.319
       ]
     ]
   }

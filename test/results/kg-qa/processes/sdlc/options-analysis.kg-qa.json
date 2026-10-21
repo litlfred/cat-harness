@@ -107,13 +107,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_OptionsAnalysis",
-          "detail": "options-analysis.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -149,8 +144,8 @@
     }
   },
   "totals": {
-    "pass": 13,
-    "fail": 4,
+    "pass": 14,
+    "fail": 3,
     "n/a": 10,
     "unknown": 0
   }

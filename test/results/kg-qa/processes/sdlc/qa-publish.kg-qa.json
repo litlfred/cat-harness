@@ -109,13 +109,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_QaPublish",
-          "detail": "qa-publish.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -151,8 +146,8 @@
     }
   },
   "totals": {
-    "pass": 18,
-    "fail": 2,
+    "pass": 19,
+    "fail": 1,
     "n/a": 7,
     "unknown": 0
   }

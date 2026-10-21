@@ -95,13 +95,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_PrChecksPresent",
-          "detail": "pr-checks-present.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -137,8 +132,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 4,
+    "pass": 16,
+    "fail": 3,
     "n/a": 8,
     "unknown": 0
   }

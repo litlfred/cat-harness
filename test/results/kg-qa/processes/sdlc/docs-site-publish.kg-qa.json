@@ -99,13 +99,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_DocsSite",
-          "detail": "docs-site-publish.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -146,8 +141,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 5,
+    "pass": 16,
+    "fail": 4,
     "n/a": 7,
     "unknown": 0
   }

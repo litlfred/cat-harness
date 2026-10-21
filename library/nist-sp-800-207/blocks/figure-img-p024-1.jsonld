@@ -15,16 +15,19 @@
   "file": "../images/img-p024-1.png",
   "pageStart": 24,
   "pageEnd": 24,
-  "narrative": {
-    "text": "The same planes as Figure 3, but the Gateway sits at the edge of a cloud-shaped 'Resource Enclave' holding a stack of several 'Resource' boxes. The Subject's Enterprise System, with its Agent, reaches them through that one gateway, and both the agent and the gateway link to the Policy Administrator. One gateway protects a group of resources rather than one.",
-    "state": "draft",
-    "drafted_by": {
-      "kind": "agent",
-      "id": "claude",
-      "model": "claude-opus-5"
-    },
-    "drafted_at": "2026-09-29"
-  },
+  "narrative": [
+    {
+      "text": "The same planes as Figure 3, but the Gateway sits at the edge of a cloud-shaped 'Resource Enclave' holding a stack of several 'Resource' boxes. The Subject's Enterprise System, with its Agent, reaches them through that one gateway, and both the agent and the gateway link to the Policy Administrator. One gateway protects a group of resources rather than one.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude",
+        "model": "claude-opus-5"
+      },
+      "drafted_at": "2026-09-29",
+      "lang": "en"
+    }
+  ],
   "derivedFrom": "library/nist-sp-800-207/sections/sec-013",
   "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/nist-sp-800-207/manifest.jsonld",
   "provenance": "ingested"

@@ -95,13 +95,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_RepoHealth",
-          "detail": "repository-health-watch.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -128,8 +123,13 @@
       "findings": []
     },
     "prose-reviewed-since-code-changed": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": ".github/workflows/health-check.yml",
+          "detail": ".github/workflows/health-check.yml changed since cat-harness/processes/sdlc/repository-health-watch.bpmn was last attested (agent), and the prose did not. Re-read it; if it still holds, run pairs:attest with a reason."
+        }
+      ]
     },
     "prose-claims-resolve": {
       "result": "pass",
