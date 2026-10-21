@@ -5,7 +5,7 @@
     "id": "Process_CRDM_DataModel",
     "path": "processes/process/crdm-data-model.bpmn"
   },
-  "source_hash": "sha256:c351695b13f6fb68538cb22eab4ce032d2ac7ce5f523e3121ca7c21c32589d53",
+  "source_hash": "sha256:0a2a935900cbcf655ad028459a7547ca07624db709f949ca745774fb8c4243bf",
   "criteria": {
     "raci-role-resolves": {
       "result": "pass",
@@ -101,6 +101,35 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "A_Entities",
+          "detail": "task \"Identify entities from the BPA and requirements\" requires skill \"crdm-data-model\", which role \"authoring-agent\" (named by lane \"Agent\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Relations",
+          "detail": "task \"Relations and cardinalities, both ways\" requires skill \"crdm-data-model\", which role \"authoring-agent\" (named by lane \"Agent\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "BA_ConfirmEntities",
+          "detail": "task \"Confirm the entities are the ones meant\" requires skill \"crdm-data-model\", which role \"business-analyst\" (named by lane \"BA / Feature Requestor\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "S_ConfirmCardinality",
+          "detail": "task \"Confirm the cardinalities\" requires skill \"crdm-data-model\", which role \"stakeholder\" (named by lane \"Stakeholders\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Declare",
+          "detail": "task \"Declare the model where a tool can read it\" requires skill \"crdm-data-model\", which role \"authoring-agent\" (named by lane \"Agent\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -151,8 +180,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 2,
+    "pass": 17,
+    "fail": 3,
     "n/a": 7,
     "unknown": 0
   }

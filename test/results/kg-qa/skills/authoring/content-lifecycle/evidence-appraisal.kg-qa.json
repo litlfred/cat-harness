@@ -5,7 +5,7 @@
     "id": "evidence-appraisal",
     "path": "skills/authoring/content-lifecycle/evidence-appraisal.md"
   },
-  "source_hash": "fc30dfb6ffae",
+  "source_hash": "23578763e916",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

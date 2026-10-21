@@ -5,7 +5,7 @@
     "id": "Process_OptionsAnalysis",
     "path": "processes/sdlc/options-analysis.bpmn"
   },
-  "source_hash": "sha256:1402c5d8b61ef45d59599cc564b0c8431ae6b9cc89835547544eb9a3336d1e14",
+  "source_hash": "sha256:e3ce358f2ff5030ef5b580f1e22bb16db1eb0556493556357516be747a5da77a",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -81,6 +81,19 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "A_CheckEvidence",
+          "detail": "task \"Check the selected methodology's evidence base\" requires skill \"literature-search\", which role \"business-analyst\" (named by lane \"Business analyst\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -94,8 +107,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_OptionsAnalysis",
+          "detail": "options-analysis.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -132,7 +150,7 @@
   },
   "totals": {
     "pass": 13,
-    "fail": 2,
+    "fail": 4,
     "n/a": 10,
     "unknown": 0
   }

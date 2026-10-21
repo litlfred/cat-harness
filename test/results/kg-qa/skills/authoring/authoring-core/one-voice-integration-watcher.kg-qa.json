@@ -5,7 +5,7 @@
     "id": "one-voice-integration-watcher",
     "path": "skills/authoring/authoring-core/one-voice-integration-watcher.md"
   },
-  "source_hash": "ba7cb4ab5cf9",
+  "source_hash": "0706e9170680",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

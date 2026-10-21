@@ -5,7 +5,7 @@
     "id": "Process_SecureAgentPermissions",
     "path": "processes/process/secure-agent-permissions.bpmn"
   },
-  "source_hash": "sha256:bb856433ed9ec6cef8c8749e076db8b59bc519b14a024511f80fd8382f319dee",
+  "source_hash": "sha256:6122b15a97a31248458267001c9699c92d930ed0a923fb1bc37e00909acab67c",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -84,6 +84,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -97,8 +105,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_SecureAgentPermissions",
+          "detail": "secure-agent-permissions.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -134,8 +147,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 1,
+    "pass": 16,
+    "fail": 2,
     "n/a": 9,
     "unknown": 0
   }

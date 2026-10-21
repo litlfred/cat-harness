@@ -5,7 +5,7 @@
     "id": "narrative-asserts-code",
     "path": "skills/sdlc/sdlc-core/narrative-asserts-code.md"
   },
-  "source_hash": "16366bc86410",
+  "source_hash": "3cc79ec953ba",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

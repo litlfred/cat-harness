@@ -5,7 +5,7 @@
     "id": "Process_CRDM",
     "path": "processes/process/crdm-requirements.bpmn"
   },
-  "source_hash": "sha256:aed0d43867b1a81f4f2e8991fec49620289442341938da3972c5400bcf1b80be",
+  "source_hash": "sha256:f937cee31cbb7566d18a37274431d9ead979fdbd0deeee0388c742c695778b56",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -96,6 +96,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -146,7 +154,7 @@
     }
   },
   "totals": {
-    "pass": 15,
+    "pass": 17,
     "fail": 1,
     "n/a": 9,
     "unknown": 0

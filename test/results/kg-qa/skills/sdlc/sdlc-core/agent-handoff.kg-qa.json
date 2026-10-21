@@ -5,7 +5,7 @@
     "id": "agent-handoff",
     "path": "skills/sdlc/sdlc-core/agent-handoff.md"
   },
-  "source_hash": "c26eb129e4a1",
+  "source_hash": "59c49407e6f5",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

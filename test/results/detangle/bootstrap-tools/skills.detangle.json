@@ -1,7 +1,7 @@
 {
   "$schema": "folio-detangle-sidecar/v1",
   "group": "bootstrap-tools/skills",
-  "size": 3,
+  "size": 4,
   "internal": 2,
   "inbound": 0,
   "outbound": 0,

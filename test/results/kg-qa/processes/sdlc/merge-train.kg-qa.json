@@ -5,7 +5,7 @@
     "id": "Process_MergeTrain",
     "path": "processes/sdlc/merge-train.bpmn"
   },
-  "source_hash": "sha256:8c966aff9631a0959f745a15b9416d614d191db2fd8ed5f5577ab91c808a5d31",
+  "source_hash": "sha256:f76649012c3c84508f7e999787a64463fb14ae873405ec43dba726342f13fb8b",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -92,6 +92,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -105,8 +113,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_MergeTrain",
+          "detail": "merge-train.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -142,8 +155,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 1,
+    "pass": 17,
+    "fail": 2,
     "n/a": 8,
     "unknown": 0
   }

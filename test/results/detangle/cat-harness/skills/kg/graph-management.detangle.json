@@ -3,11 +3,11 @@
   "group": "cat-harness/skills/kg/graph-management",
   "size": 11,
   "internal": 10,
-  "inbound": 73,
+  "inbound": 74,
   "outbound": 27,
   "cohesion": 0.09,
   "enforcedBoundary": 0,
-  "recordedBoundary": 100,
+  "recordedBoundary": 101,
   "proseMentions": 65,
   "wrongDirection": 0,
   "undeterminedDirection": 0

@@ -5,7 +5,7 @@
     "id": "compiled-artefact-cache",
     "path": "skills/process/process-core/compiled-artefact-cache.md"
   },
-  "source_hash": "88a67ef7e232",
+  "source_hash": "00c1a7e7eac0",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

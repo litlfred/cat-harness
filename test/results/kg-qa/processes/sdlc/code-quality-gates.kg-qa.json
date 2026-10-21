@@ -5,7 +5,7 @@
     "id": "Process_CodeQualityGates",
     "path": "processes/sdlc/code-quality-gates.bpmn"
   },
-  "source_hash": "sha256:327d94f72c3603b6492524c475940afbbd6b3d989d07077340e5cc09d40d68b3",
+  "source_hash": "sha256:7cbe8c4c427892eecb8647996cd99dfc171961e2c0c0926038240f7f086a4cbe",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -68,6 +68,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -81,8 +89,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_CodeQualityGates",
+          "detail": "code-quality-gates.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -123,8 +136,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 2,
+    "pass": 17,
+    "fail": 3,
     "n/a": 7,
     "unknown": 0
   }

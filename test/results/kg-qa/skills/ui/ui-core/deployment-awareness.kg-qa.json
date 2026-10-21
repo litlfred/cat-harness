@@ -5,7 +5,7 @@
     "id": "deployment-awareness",
     "path": "skills/ui/ui-core/deployment-awareness.md"
   },
-  "source_hash": "5421413edd96",
+  "source_hash": "2e7f53b3f880",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",
