@@ -5,7 +5,7 @@
     "id": "Process_CRDM_Signoff",
     "path": "processes/process/crdm-signoff.bpmn"
   },
-  "source_hash": "sha256:a3c4fe37344c5fc3a0df3acfeaf968fee9942381cb6e50948838b3f0cb87bad4",
+  "source_hash": "sha256:e219907b3384b385465c4c3efc6ad889be885b110820c797844ee8ef10e46451",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -101,6 +101,31 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "BA_Signoff",
+          "detail": "task \"Sign off on requirements\" requires skill \"adjudication\", which role \"business-analyst\" (named by lane \"BA / Feature Requestor\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_RecordSignoff",
+          "detail": "task \"Record the sign-off as a requirement-signoff attestation\" requires skill \"adjudication\", which role \"authoring-agent\" (named by lane \"Agent\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_OfferKg",
+          "detail": "task \"Offer the knowledge-graph destinations for the agreed set\" requires skill \"kg-contribution-offer\", which role \"authoring-agent\" (named by lane \"Agent\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "BA_ChooseKg",
+          "detail": "task \"Choose a destination, or none\" requires skill \"kg-contribution-offer\", which role \"business-analyst\" (named by lane \"BA / Feature Requestor\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -114,8 +139,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_CRDM_Signoff",
+          "detail": "crdm-signoff.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -152,7 +182,7 @@
   },
   "totals": {
     "pass": 16,
-    "fail": 2,
+    "fail": 4,
     "n/a": 7,
     "unknown": 0
   }

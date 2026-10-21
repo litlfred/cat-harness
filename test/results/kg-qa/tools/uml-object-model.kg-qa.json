@@ -5,7 +5,7 @@
     "id": "uml-object-model",
     "path": null
   },
-  "source_hash": "d22a9e08e7b7",
+  "source_hash": "f6151a047198",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

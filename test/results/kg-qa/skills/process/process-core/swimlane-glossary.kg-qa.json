@@ -5,7 +5,7 @@
     "id": "swimlane-glossary",
     "path": "skills/process/process-core/swimlane-glossary.md"
   },
-  "source_hash": "e6cb3bf704a1",
+  "source_hash": "f0cf3c8c2d26",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

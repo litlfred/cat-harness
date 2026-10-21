@@ -5,7 +5,7 @@
     "id": "lean-build",
     "path": null
   },
-  "source_hash": "782df3a20d34",
+  "source_hash": "02c4fcd816f7",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

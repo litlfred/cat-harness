@@ -5,7 +5,7 @@
     "id": "tool-types-schema",
     "path": null
   },
-  "source_hash": "1a220590551f",
+  "source_hash": "2b9ef0d0a473",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

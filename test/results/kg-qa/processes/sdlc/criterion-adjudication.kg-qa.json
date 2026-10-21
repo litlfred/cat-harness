@@ -5,7 +5,7 @@
     "id": "Process_CriterionAdjudication",
     "path": "processes/sdlc/criterion-adjudication.bpmn"
   },
-  "source_hash": "sha256:098af11965b3a12acd07fa9ad4f222defceaf308884c816058039d23fbac163d",
+  "source_hash": "sha256:43092681e58cdef5fc9f78da6c9083ab64cb6a531070813b1533eef4912bbbf8",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -76,6 +76,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -89,8 +97,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_CriterionAdjudication",
+          "detail": "criterion-adjudication.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -126,8 +139,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 1,
+    "pass": 17,
+    "fail": 2,
     "n/a": 8,
     "unknown": 0
   }

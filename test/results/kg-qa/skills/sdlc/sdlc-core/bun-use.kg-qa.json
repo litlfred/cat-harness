@@ -5,7 +5,7 @@
     "id": "bun-use",
     "path": "skills/sdlc/sdlc-core/bun-use.md"
   },
-  "source_hash": "f23fc49a6479",
+  "source_hash": "0833b2b4c3a4",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

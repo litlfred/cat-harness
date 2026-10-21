@@ -5,7 +5,7 @@
     "id": "pickup",
     "path": "skills/sdlc/sdlc-core/pickup.md"
   },
-  "source_hash": "d789de5966ef",
+  "source_hash": "b09de91f9b29",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

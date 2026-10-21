@@ -5,7 +5,7 @@
     "id": "processes-viewer",
     "path": null
   },
-  "source_hash": "29f5f2031ed1",
+  "source_hash": "0cc72fb19ae6",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

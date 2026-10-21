@@ -5,7 +5,7 @@
     "id": "Process_HumanTranslation",
     "path": "processes/library/human-translation-workflow.bpmn"
   },
-  "source_hash": "sha256:80dcb91f1fc13ce7506a9a2dfb3ecdb5e30c5f93bd4ffe08bc454ffb1f50fba3",
+  "source_hash": "sha256:273e8e84cd5ed00c8b52378337e3c7812b830c33effb76971b17c58c06bd4952",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -59,6 +59,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -72,8 +80,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_HumanTranslation",
+          "detail": "human-translation-workflow.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -109,8 +122,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 0,
+    "pass": 17,
+    "fail": 1,
     "n/a": 9,
     "unknown": 0
   }

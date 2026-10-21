@@ -5,7 +5,7 @@
     "id": "rendered-verification",
     "path": "skills/sdlc/sdlc-core/rendered-verification.md"
   },
-  "source_hash": "d3a763c327ab",
+  "source_hash": "be3c9fc5a38d",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

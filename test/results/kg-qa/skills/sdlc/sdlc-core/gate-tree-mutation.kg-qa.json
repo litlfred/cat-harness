@@ -5,7 +5,7 @@
     "id": "gate-tree-mutation",
     "path": "skills/sdlc/sdlc-core/gate-tree-mutation.md"
   },
-  "source_hash": "27798c5d9e19",
+  "source_hash": "a95539fd443b",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",
