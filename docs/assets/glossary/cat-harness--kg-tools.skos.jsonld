@@ -874,6 +874,26 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/github-pr-resolve-thread",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Resolve a review thread on a pull request (GitHub)"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Mark one review thread on a pull request as resolved. A GitHub thread id names its pull request, so no number is needed."
+        }
+      ],
+      "skos:notation": "github-pr-resolve-thread",
+      "dcterms:source": "cat-harness/tools/github-pr-resolve-thread/github-pr-resolve-thread.ts#github-pr-resolve-thread",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-tools/github-pr-view",
       "@type": "skos:Concept",
       "skos:inScheme": {

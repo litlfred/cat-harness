@@ -58,6 +58,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`github-pr-files/`](github-pr-files/) | _nothing declares what this holds_ | |
 | [`github-pr-list/`](github-pr-list/) | _nothing declares what this holds_ | |
 | [`github-pr-request-review/`](github-pr-request-review/) | _nothing declares what this holds_ | |
+| [`github-pr-resolve-thread/`](github-pr-resolve-thread/) | _nothing declares what this holds_ | |
 | [`github-pr-view/`](github-pr-view/) | _nothing declares what this holds_ | |
 | [`gitlab-branches/`](gitlab-branches/) | _nothing declares what this holds_ | |
 | [`gitlab-mr-comment/`](gitlab-mr-comment/) | _nothing declares what this holds_ | |
