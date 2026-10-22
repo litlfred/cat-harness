@@ -709,7 +709,7 @@ export interface DefinitionBlock extends BlockBase {
  * Base interface for provable blocks (theorems, lemmas, propositions, corollaries).
  * Lean is expected but may be WIP — missing lean triggers a warning, not an error.
  */
-interface ProvableBase extends BlockBase {
+export interface ProvableBase extends BlockBase {
   /** Optional Lean formalization of the result. */
   lean?: LeanRef;
   /** Labels of proof blocks for this result (like examples[]). */

@@ -87,7 +87,12 @@ const PROVABLE_LABEL_PREFIXES: readonly string[] = [
   ...new Set(BLOCK_KIND_NODES.filter((n) => n.provable).map((n) => `${n.labelPrefix}:`)),
 ];
 
-function labelForKind(kind: string) {
+/**
+ * The label schema for a block of `kind`: its node's prefix when the node
+ * enforces one. Exported for a vocabulary module (`vocabulary-modules.ts`),
+ * whose kinds' schemas are built the same way.
+ */
+export function labelForKind(kind: string) {
   const prefix = LABEL_PREFIXES[kind];
   if (!prefix) return z.string().min(1);
   return z.string().startsWith(prefix, {
@@ -284,7 +289,7 @@ export const DefinitionSchema = BlockBaseSchema.extend({
   examples: z.array(z.string()).optional(),
 });
 
-const ProvableBaseSchema = BlockBaseSchema.extend({
+export const ProvableBaseSchema = BlockBaseSchema.extend({
   // TS `ProvableBase` declares `lean?: LeanRef`; only `DefinitionSchema`
   // declared it here, so a theorem / lemma / proposition / corollary /
   // algorithm writing `lean: { ref: … }` had it SILENTLY STRIPPED at the
