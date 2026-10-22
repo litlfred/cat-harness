@@ -45,6 +45,7 @@ import type { z } from "zod";
 import { DISCOVERED_BLOCK_KIND_NODES, discoverContentAdapterFiles } from "./block-kinds";
 import { findInstanceRoot } from "./cat-harness";
 import { BlockSchema, CONSTRAINT_RULES, type ConstraintRule, typedBlockKinds } from "./constraints";
+import type { Block } from "./types";
 
 const require = createRequire(import.meta.url);
 
@@ -124,9 +125,12 @@ export function blockSchemaFor(kind: unknown): z.ZodTypeAny {
   return BlockSchema;
 }
 
+/** What {@link parseBlock} returns: the block, typed, or why it is not one. */
+export type ParsedBlock = { success: true; data: Block } | { success: false; error: z.ZodError };
+
 /** Parse a block with the schema its kind is typed by. */
-export function parseBlock(block: unknown): ReturnType<z.ZodTypeAny["safeParse"]> {
-  return blockSchemaFor((block as { kind?: unknown } | null)?.kind).safeParse(block);
+export function parseBlock(block: unknown): ParsedBlock {
+  return blockSchemaFor((block as { kind?: unknown } | null)?.kind).safeParse(block) as ParsedBlock;
 }
 
 /** Every typed kind: `BlockSchema`'s members and every vocabulary module's. */
