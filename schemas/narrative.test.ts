@@ -22,8 +22,9 @@ describe("a narrative names its language", () => {
     for (const lang of ["en", "fr", "zh-Hant", "pt-BR"]) expect(NarrativeSchema.safeParse(draft(lang)).success).toBe(true);
   });
 
-  test("a narrative stored before `lang` existed is still valid", () => {
-    expect(NarrativeSchema.safeParse(draft()).success).toBe(true);
+  test("a written narrative must name its language; the empty slot claims none (stage 4, ruling 1A)", () => {
+    expect(NarrativeSchema.safeParse(draft()).success).toBe(false);
+    expect(NarrativeSchema.safeParse(draft("en")).success).toBe(true);
     expect(NarrativeSchema.safeParse(NOT_AUTHORED).success).toBe(true);
   });
 
@@ -35,9 +36,10 @@ describe("a narrative names its language", () => {
 });
 
 describe("a slot holds one narrative, or one per language", () => {
-  test("the single form every record has today parses, and reads as one narrative", () => {
-    const slot = NarrativeSlotSchema.parse(draft());
-    expect(narrativesOfSlot(slot)).toHaveLength(1);
+  test("the bare object is the empty slot only; a written one must be a list (stage 4)", () => {
+    expect(narrativesOfSlot(NarrativeSlotSchema.parse(NOT_AUTHORED))).toEqual([NOT_AUTHORED]);
+    expect(NarrativeSlotSchema.safeParse(draft("en")).success).toBe(false);
+    expect(NarrativeSlotSchema.safeParse(draft()).success).toBe(false);
   });
 
   test("a list with one entry per language parses, and reads back in order", () => {
@@ -81,8 +83,7 @@ describe("narrativeFor: the one entry a single-text display shows (locale match,
     expect(narrativeFor(slot, "ar").lang).toBe("en");
   });
 
-  test("the single form is returned as it is", () => {
-    const one = NarrativeSlotSchema.parse(draft());
-    expect(narrativeFor(one, "fr")).toEqual(draft());
+  test("the empty slot is returned as it is", () => {
+    expect(narrativeFor(NarrativeSlotSchema.parse(NOT_AUTHORED), "fr")).toEqual(NOT_AUTHORED);
   });
 });

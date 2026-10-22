@@ -18,7 +18,7 @@ import type { Block } from "./types.js";
 // Leaf module — importing the kind list from `types.js` would be a runtime
 // cycle, and `appliesTo` is built at module init, exactly when that bites.
 import { BLOCK_KIND_NODES, BLOCK_KINDS } from "./block-kinds.js";
-import { NarrativeSchema } from "./narrative.ts";
+import { NarrativeSlotSchema } from "./narrative.ts";
 
 
 
@@ -483,7 +483,9 @@ export const FigureSchema = BlockBaseSchema.extend({
   file: z.string().min(1),
   caption: z.string().optional(),
   page: z.number().int().min(1).optional(),
-  narrative: NarrativeSchema.optional(),
+  // A slot like every other narrative record (bean `cat-tools-e1lo`, owner
+  // ruling 2026-10-22, 3A): one entry per language, or the empty slot.
+  narrative: NarrativeSlotSchema.optional(),
 });
 
 /** A code in a declared code list; see `CodeRef` in `types.ts`. */
