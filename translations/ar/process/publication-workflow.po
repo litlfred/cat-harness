@@ -53,101 +53,6 @@ msgstr "— (خاضع لمتطلب )"
 msgid ", home — \"What it does\""
 msgstr "، الصفحة الرئيسية — \"ما يفعله\""
 
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:259
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/activities-and-the-skills-that-implement-them.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/activities-and-the-skills-that-implement-them.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/activities-and-the-skills-that-implement-them.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/activities-and-the-skills-that-implement-them.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:434
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/agents-and-system-actors.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/agents-and-system-actors.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/agents-and-system-actors.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/agents-and-system-actors.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:456
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/changing-these-diagrams.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/changing-these-diagrams.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/changing-these-diagrams.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/changing-these-diagrams.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:39
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/every-workflow-in-the-repo.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/every-workflow-in-the-repo.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/every-workflow-in-the-repo.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/every-workflow-in-the-repo.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:191
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/how-to-read-them.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/how-to-read-them.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/how-to-read-them.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/how-to-read-them.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:237
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/mechanical-vs-non-mechanical-validation.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/mechanical-vs-non-mechanical-validation.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/mechanical-vs-non-mechanical-validation.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/mechanical-vs-non-mechanical-validation.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:28
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/overview.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/overview.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/overview.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/overview.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:413
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/people.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/people.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/people.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/people.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:505
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/see-also.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/see-also.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/see-also.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/see-also.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:131
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/some-decisions-are-computed-not-judged.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/some-decisions-are-computed-not-judged.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/some-decisions-are-computed-not-judged.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/some-decisions-are-computed-not-judged.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:156
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/the-base-processes-are-strict.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/the-base-processes-are-strict.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/the-base-processes-are-strict.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/the-base-processes-are-strict.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:225
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/the-one-rule-this-diagram-exists-to-state.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/the-one-rule-this-diagram-exists-to-state.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/the-one-rule-this-diagram-exists-to-state.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/the-one-rule-this-diagram-exists-to-state.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:365
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/the-work-plan-tasks-as-beans.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/the-work-plan-tasks-as-beans.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/the-work-plan-tasks-as-beans.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/the-work-plan-tasks-as-beans.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:114
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/they-also-run.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/they-also-run.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/they-also-run.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/they-also-run.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:481
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/which-diagrams-are-bpmn-and-which-are-not.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/which-diagrams-are-bpmn-and-which-are-not.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/which-diagrams-are-bpmn-and-which-are-not.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/which-diagrams-are-bpmn-and-which-are-not.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:400
-msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/who-is-who.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/who-is-who.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/who-is-who.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/who-is-who.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:342
-msgid "✎ Edit{: .fa-node-edit title=\"Edit folio-assistant-core/processes/content/content-lifecycle.bpmn\" data-fa-link=\"edit\" data-src=\"folio-assistant-core/processes/content/content-lifecycle.bpmn\" data-repo=\"litlfred/folio-assistant\" } QA… TR… KG…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit folio-assistant-core/processes/content/content-lifecycle.bpmn\" data-fa-link=\"edit\" data-src=\"folio-assistant-core/processes/content/content-lifecycle.bpmn\" data-repo=\"litlfred/folio-assistant\" } QA… TR… KG…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:291
-msgid "✎ Edit{: .fa-node-edit title=\"Edit folio-assistant-core/processes/content/draft-to-publication.bpmn\" data-fa-link=\"edit\" data-src=\"folio-assistant-core/processes/content/draft-to-publication.bpmn\" data-repo=\"litlfred/folio-assistant\" } QA… TR… KG…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit folio-assistant-core/processes/content/draft-to-publication.bpmn\" data-fa-link=\"edit\" data-src=\"folio-assistant-core/processes/content/draft-to-publication.bpmn\" data-repo=\"litlfred/folio-assistant\" } QA… TR… KG…"
-
-# page chrome (edit link / QA badges): copied verbatim, as the published pages do
-#: docs/process/publication-workflow.md:210
-msgid "✎ Edit{: .fa-node-edit title=\"Edit folio-assistant-core/processes/content/editing-hci-validation.bpmn\" data-fa-link=\"edit\" data-src=\"folio-assistant-core/processes/content/editing-hci-validation.bpmn\" data-repo=\"litlfred/folio-assistant\" } KG…"
-msgstr "✎ Edit{: .fa-node-edit title=\"Edit folio-assistant-core/processes/content/editing-hci-validation.bpmn\" data-fa-link=\"edit\" data-src=\"folio-assistant-core/processes/content/editing-hci-validation.bpmn\" data-repo=\"litlfred/folio-assistant\" } KG…"
-
 #: docs/process/publication-workflow.md:164
 msgid "A content package may relax a base step by declaring it in  with a reason — an unexplained relaxation does not load, so the file is the record of what was waived and why. Five steps refuse to be relaxed at all: ,  and  (the editor seeing the findings, the decision, the write), plus  and  (the  SHALL). If those were negotiable the base would not be strict, it would be a suggestion."
 msgstr "يجوز لحزمة المحتوى التخفيف من خطوة أساسية عن طريق التصريح بذلك في  مع ذكر السبب — فالتخفيف غير المبرر لا يتم تحميله، وبالتالي يعد الملف سجلاً لما تم التنازل عنه وسبب ذلك. وترفض خمس خطوات أي تخفيف على الإطلاق: ، و، و (اطلاع المحرر على النتائج، والقرار، والكتابة)، بالإضافة إلى  و (شرط SHALL الإلزامي لـ ). ولو كانت هذه الخطوات قابلة للتفاوض، لما كان الأساس صارمًا، بل لكان مجرد اقتراح."
@@ -929,3 +834,60 @@ msgstr "خطة العمل"
 #: docs/process/publication-workflow.md:495
 msgid "Writing a paper — the Lean session"
 msgstr "كتابة ورقة بحثية — جلسة Lean"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/activities-and-the-skills-that-implement-them.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/activities-and-the-skills-that-implement-them.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/activities-and-the-skills-that-implement-them.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/activities-and-the-skills-that-implement-them.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/agents-and-system-actors.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/agents-and-system-actors.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/agents-and-system-actors.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/agents-and-system-actors.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/changing-these-diagrams.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/changing-these-diagrams.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/changing-these-diagrams.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/changing-these-diagrams.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/every-workflow-in-the-repo.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/every-workflow-in-the-repo.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/every-workflow-in-the-repo.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/every-workflow-in-the-repo.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/how-to-read-them.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/how-to-read-them.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/how-to-read-them.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/how-to-read-them.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/mechanical-vs-non-mechanical-validation.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/mechanical-vs-non-mechanical-validation.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/mechanical-vs-non-mechanical-validation.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/mechanical-vs-non-mechanical-validation.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/overview.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/overview.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/overview.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/overview.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/people.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/people.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/people.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/people.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/see-also.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/see-also.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/see-also.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/see-also.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/some-decisions-are-computed-not-judged.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/some-decisions-are-computed-not-judged.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/some-decisions-are-computed-not-judged.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/some-decisions-are-computed-not-judged.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/the-base-processes-are-strict.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/the-base-processes-are-strict.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/the-base-processes-are-strict.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/the-base-processes-are-strict.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/the-one-rule-this-diagram-exists-to-state.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/the-one-rule-this-diagram-exists-to-state.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/the-one-rule-this-diagram-exists-to-state.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/the-one-rule-this-diagram-exists-to-state.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/the-work-plan-tasks-as-beans.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/the-work-plan-tasks-as-beans.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/the-work-plan-tasks-as-beans.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/the-work-plan-tasks-as-beans.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/they-also-run.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/they-also-run.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/they-also-run.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/they-also-run.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/which-diagrams-are-bpmn-and-which-are-not.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/which-diagrams-are-bpmn-and-which-are-not.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/which-diagrams-are-bpmn-and-which-are-not.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/which-diagrams-are-bpmn-and-which-are-not.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/who-is-who.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/who-is-who.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit docs/source/process-publication-workflow/who-is-who.md\" data-fa-link=\"edit\" data-src=\"docs/source/process-publication-workflow/who-is-who.md\" data-repo=\"litlfred/folio-assistant\" } QA… TR…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit folio-assistant-core/processes/content/content-lifecycle.bpmn\" data-fa-link=\"edit\" data-src=\"folio-assistant-core/processes/content/content-lifecycle.bpmn\" data-repo=\"litlfred/folio-assistant\" } QA… TR… KG…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit folio-assistant-core/processes/content/content-lifecycle.bpmn\" data-fa-link=\"edit\" data-src=\"folio-assistant-core/processes/content/content-lifecycle.bpmn\" data-repo=\"litlfred/folio-assistant\" } QA… TR… KG…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit folio-assistant-core/processes/content/draft-to-publication.bpmn\" data-fa-link=\"edit\" data-src=\"folio-assistant-core/processes/content/draft-to-publication.bpmn\" data-repo=\"litlfred/folio-assistant\" } QA… TR… KG…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit folio-assistant-core/processes/content/draft-to-publication.bpmn\" data-fa-link=\"edit\" data-src=\"folio-assistant-core/processes/content/draft-to-publication.bpmn\" data-repo=\"litlfred/folio-assistant\" } QA… TR… KG…"
+
+#~ msgid "✎ Edit{: .fa-node-edit title=\"Edit folio-assistant-core/processes/content/editing-hci-validation.bpmn\" data-fa-link=\"edit\" data-src=\"folio-assistant-core/processes/content/editing-hci-validation.bpmn\" data-repo=\"litlfred/folio-assistant\" } KG…"
+#~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit folio-assistant-core/processes/content/editing-hci-validation.bpmn\" data-fa-link=\"edit\" data-src=\"folio-assistant-core/processes/content/editing-hci-validation.bpmn\" data-repo=\"litlfred/folio-assistant\" } KG…"
