@@ -111,6 +111,14 @@ Getting a change to the PLATFORM from "this is needed" to merged: claim the work
 - Skill: `todo-manager`.
 - What: A closed work item is read later by somebody deciding whether to reopen the subject, so "completed" with nothing behind it cannot be audited.
 - Record it: `workflow_complete` with `node: "Task_CloseBean"`.
+- next: → `Task_ArchiveBean` (Archive the bean)
+
+### 12. Archive the bean (`Task_ArchiveBean`)
+
+- Who: the `Authoring agent` lane (role `authoring-agent`).
+- Skill: `todo-manager`.
+- What: Move the bean, now completed, into the archive, with a line saying which process closed it.
+- Record it: `workflow_complete` with `node: "Task_ArchiveBean"`.
 - next: → `End_Merged` (Merged)
 
 ## Done — Merged (`End_Merged`)
