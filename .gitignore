@@ -130,6 +130,7 @@ node_modules/
 /docs/en/cat-harness/qa/folio-assistant-core/
 /docs/en/cat-harness/qa/folio-assistant-sci/
 /docs/en/cat-harness/qa/smart-base/
+/docs/en/cat-harness/qa/smart-immunizations/
 /docs/en/cat-harness/qa/who-iris/
 /docs/en/cat-harness/health/cat-harness/
 /docs/en/cat-harness/health/cat-harness-tools/
@@ -150,6 +151,8 @@ node_modules/
 /docs/en/cat-harness/code/folio-assistant-core/
 /docs/en/cat-harness/code/folio-assistant-sci/
 /docs/en/cat-harness/code/smart-base/
+/docs/en/cat-harness/code/smart-immunizations/
+/docs/en/cat-harness/code/index.html
 /docs/en/cat-harness/code/who-iris/
 /docs/en/cat-harness/memory/
 /docs/en/cat-harness/pipeline-plugins/
