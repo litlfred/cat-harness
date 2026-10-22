@@ -35,7 +35,8 @@ Is CI actually working on the default branch: record each workflow's state on on
 
 - Who: the `Scheduled log sweep` lane (role `build-pipeline`).
 - Skill: `ci-health`.
-- What: Create the ci-health label with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet.
+- What: Create the tracking label (the `label` input) with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet.
+- Shared step `GT_EnsureTrackingLabel`, with `label` = `ci-health`.
 - Record it: `workflow_complete` with `node: "Task_Label"`.
 - next: → `GW_Finding` (Anything red on main?)
 
@@ -50,7 +51,8 @@ Is CI actually working on the default branch: record each workflow's state on on
 
 - Who: the `Scheduled log sweep` lane (role `build-pipeline`).
 - Skill: `ci-health`.
-- What: Clean: close the open ci-health issue, if any, saying why (main is clean).
+- What: Clean: close the open issue carrying the tracking label (the `label` input), if any, saying why the verdict is clean.
+- Shared step `GT_CloseTrackingIssue`, with `label` = `ci-health`.
 - Record it: `workflow_complete` with `node: "Task_Close"`.
 - next: → `End_Clean` (main is green)
 
@@ -58,7 +60,8 @@ Is CI actually working on the default branch: record each workflow's state on on
 
 - Who: the `Scheduled log sweep` lane (role `build-pipeline`).
 - Skill: `ci-health`.
-- What: Findings: EDIT the one open issue labelled ci-health if there is one, otherwise create it, with the report as the body.
+- What: Findings: EDIT the one open issue carrying the tracking label (the `label` input) if there is one, otherwise create it, with the report as the body.
+- Shared step `GT_TrackIssue`, with `label` = `ci-health`.
 - Record it: `workflow_complete` with `node: "Task_Track"`.
 - next: → `End_Found` (Recorded — job stays GREEN)
 

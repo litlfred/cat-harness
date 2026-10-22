@@ -32,6 +32,7 @@ The stakeholders sign off, the BA confirms every criterion is met, the feature l
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `adjudication`.
 - What: THE RECORD, and not relaxable: a judgement nobody wrote down is indistinguishable from one never made (`adjudication`, A_RecordEntry).
+- Shared step `GT_RecordSignoff`.
 - Record it: `workflow_complete` with `node: "A_RecordSignoff"`.
 - next: → `GW_SignoffRecorded` (Sign-off on the record?)
 
