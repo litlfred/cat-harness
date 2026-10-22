@@ -5,7 +5,7 @@
 import { describe, expect, test } from "bun:test";
 import { z } from "zod";
 
-import { BlockBaseSchema, typedBlockKinds } from "./constraints.ts";
+import { BlockBaseSchema, BlockSchema, CONSTRAINT_RULES, typedBlockKinds } from "./constraints.ts";
 import { allConstraintRules, allTypedBlockKinds, blockSchemaFor, readVocabulary, vocabularies } from "./vocabulary-modules.ts";
 
 const Widget = BlockBaseSchema.extend({ kind: z.literal("widget"), size: z.number() });
@@ -27,21 +27,23 @@ describe("readVocabulary holds a module to the contract", () => {
   });
 });
 
-describe("allConstraintRules", () => {
-  test("a module's rule replaces a built-in rule with the same id, so it never runs twice", async () => {
-    const { CONSTRAINT_RULES } = await import("./constraints.ts");
-    const id = CONSTRAINT_RULES[0]!.id;
-    const ids = allConstraintRules().map((r) => r.id);
-    expect(ids.filter((x) => x === id)).toHaveLength(1);
+describe("composition, in whatever checkout this runs", () => {
+  // Which modules are discovered depends on the instances beside cat-harness
+  // (the science layer's is, in the index), so these hold for any answer.
+  test("every built-in kind stays typed, and a module's kinds are added", () => {
+    const all = new Set(allTypedBlockKinds());
+    for (const k of typedBlockKinds()) expect(all.has(k)).toBe(true);
+    for (const v of vocabularies()) for (const k of v.schemas.keys()) expect(all.has(k)).toBe(true);
   });
-});
 
-describe("with no vocabulary module discovered", () => {
-  test("every kind is BlockSchema's, and the rule list is the built-in one", () => {
-    // No typed adapter in this checkout names a module yet.
-    expect(vocabularies()).toEqual([]);
-    expect(allTypedBlockKinds().sort()).toEqual(typedBlockKinds().sort());
-    expect(allConstraintRules().length).toBeGreaterThan(0);
-    expect(blockSchemaFor("prose")).toBe(blockSchemaFor("no-such-kind"));
+  test("a block is parsed by its module's schema when one types its kind, else by BlockSchema", () => {
+    for (const v of vocabularies()) for (const [k, s] of v.schemas) expect(blockSchemaFor(k)).toBe(s);
+    expect(blockSchemaFor("no-such-kind")).toBe(BlockSchema);
+  });
+
+  test("a module's rule replaces a built-in rule with the same id, so no rule runs twice", () => {
+    const ids = allConstraintRules().map((r) => r.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const r of CONSTRAINT_RULES) expect(ids).toContain(r.id);
   });
 });
