@@ -5631,7 +5631,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "The summary itself, with its state and its author."
+          "@value": "The summary itself, with its state and its author: one narrative, or one per language (bean `cat-tools-e1lo`, stage 3)."
         }
       ],
       "dcterms:source": "cat-harness/schemas/block-summary.ts#BlockSummarySchema.narrative",
@@ -10647,7 +10647,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "The vocabulary's own module, `path.ts`, relative to the declaring instance — for an untyped vocabulary, the code that defines its blocks."
+          "@value": "The vocabulary's own module, `path.ts`, relative to the declaring instance: the code that defines its blocks. For a TYPED vocabulary it exports the kinds' schemas (`blockSchemas`), and may export `constraintRules` and `builders` — the contract and its loader are `vocabulary-modules.ts`. So a layer above cat-harness types its own kinds, and a composition that does not mount it neither discovers nor types them."
         }
       ],
       "dcterms:source": "cat-harness/schemas/content-adapter-node.ts#ContentAdapterNodeSchema.vocabulary",
@@ -22693,7 +22693,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "The language of `text`, as a BCP 47 tag. Optional until stage 4 (see the module docstring); required on every entry of a list slot."
+          "@value": "The language of `text`, as a BCP 47 tag. Required on every narrative that has text; the empty `not-authored` slot claims no language (owner ruling 2026-10-22, 1A)."
         }
       ],
       "dcterms:source": "cat-harness/schemas/narrative.ts#NarrativeSchema.lang",
@@ -24068,6 +24068,25 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/pdf-structure.pdfstructureschema.container",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "PdfStructureSchema.container"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "A bound volume split into its papers by qou's `split-bound-volume.py`: the volume keeps `container: true`, names the per-paper entries in `container_children` and says why in `container_note`. Ranking and the library index skip a container, so its pages are not counted twice."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/pdf-structure.ts#PdfStructureSchema.container",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/pdf-structure.pdfstructureschema.duplicate_of",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -24160,6 +24179,44 @@
         }
       ],
       "dcterms:source": "cat-harness/schemas/pdf-structure.ts#PdfStructureSchema.structure_note",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/pdf-structure.pdfstructureschema.text_extraction",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "PdfStructureSchema.text_extraction"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "How the text was obtained when it was done by hand, outside the producer: the route, why, which engine and settings, and how far the result can be trusted. Written for scans OCR'd before `source.runContext` existed; a producer run records `source.runContext` instead."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/pdf-structure.ts#PdfStructureSchema.text_extraction",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields/pdf-structure.pdfstructureschema.toc_note",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "PdfStructureSchema.toc_note"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Where the headings came from when a person supplied them, not the producer."
+        }
+      ],
+      "dcterms:source": "cat-harness/schemas/pdf-structure.ts#PdfStructureSchema.toc_note",
       "skos:note": "candidate"
     },
     {
@@ -31566,7 +31623,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "What the data is about, under bean `ju0u`'s state machine, the same record v1 carries. Optional on the same terms as `source`."
+          "@value": "What the data is about, under bean `ju0u`'s state machine, the same record v1 carries. Required on the same terms as `source`."
         }
       ],
       "dcterms:source": "cat-harness/schemas/tabular-csvw.ts#TabularCsvwSchema.narrative",
@@ -31585,7 +31642,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "The technical-metadata block every ingest sidecar carries (`file`, `sha256`, `mimetype_sniffed`, ...), the same record `folio-tabular-records/v1` holds as `source` — bean `urat`. It is how `check-l1-complete` (`sourceBlockOf`) and `check-library-qa` learn what the entry was made from. Optional until the committed records are re-emitted, then required. Not a CSVW key: {@link toCsvw} never emits it."
+          "@value": "The technical-metadata block every ingest sidecar carries (`file`, `sha256`, `mimetype_sniffed`, ...), the same record `folio-tabular-records/v1` holds as `source` — bean `urat`. It is how `check-l1-complete` (`sourceBlockOf`) and `check-library-qa` learn what the entry was made from. Required (urat step 5): no committed record predates it, and an extractor's output, which has none, is {@link TabularCsvwTablesSchema}. Not a CSVW key: {@link toCsvw} never emits it."
         }
       ],
       "dcterms:source": "cat-harness/schemas/tabular-csvw.ts#TabularCsvwSchema.source",
@@ -36715,7 +36772,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "The authored description and its state. See `schemas/narrative.ts`."
+          "@value": "The authored description per language, or the empty slot. See `schemas/narrative.ts`."
         }
       ],
       "dcterms:source": "cat-harness/schemas/types.ts#FigureBlock.narrative",

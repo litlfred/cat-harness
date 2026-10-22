@@ -5,7 +5,7 @@
     "id": "clinical-sme",
     "path": "scenarios/roles.json"
   },
-  "source_hash": "sha256:a55d7dc2c4aa2377e869486e635707736801f42d2ca8ac8ff161da564a51edd4",
+  "source_hash": "sha256:a441c6d955cb251f2f7be3c8b93633d71324e74eac7be4e3b7941d995349ccd5",
   "criteria": {
     "role-skills-resolve": {
       "result": "pass",
