@@ -26,8 +26,9 @@
  * - `builders` (optional) — the manifest builders for its kinds, by name.
  *
  * A kind is typed either by `BlockSchema` or by a module. While one moves, a
- * module's schema takes precedence over a built-in one for the same kind, so
- * the layer above can take a kind over before cat-harness deletes its copy.
+ * module's schema takes precedence over a built-in one for the same kind, and
+ * a module's rule over a built-in rule with the same `id`, so the layer above
+ * can take a kind over before cat-harness deletes its copy.
  *
  * ## Loaded lazily
  *
@@ -140,7 +141,13 @@ export function allTypedBlockKinds(): string[] {
   return [...kinds];
 }
 
-/** `CONSTRAINT_RULES` and every vocabulary module's rules, in that order. */
+/**
+ * `CONSTRAINT_RULES` and every vocabulary module's rules. A module's rule
+ * replaces a built-in one with the same `id`, as its schemas do, so a rule
+ * moving to the layer that owns its kinds never runs twice.
+ */
 export function allConstraintRules(): readonly ConstraintRule[] {
-  return [...CONSTRAINT_RULES, ...vocabularies().flatMap((v) => v.constraintRules)];
+  const contributed = vocabularies().flatMap((v) => v.constraintRules);
+  const replaced = new Set(contributed.map((r) => r.id));
+  return [...CONSTRAINT_RULES.filter((r) => !replaced.has(r.id)), ...contributed];
 }

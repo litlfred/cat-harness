@@ -27,6 +27,15 @@ describe("readVocabulary holds a module to the contract", () => {
   });
 });
 
+describe("allConstraintRules", () => {
+  test("a module's rule replaces a built-in rule with the same id, so it never runs twice", async () => {
+    const { CONSTRAINT_RULES } = await import("./constraints.ts");
+    const id = CONSTRAINT_RULES[0]!.id;
+    const ids = allConstraintRules().map((r) => r.id);
+    expect(ids.filter((x) => x === id)).toHaveLength(1);
+  });
+});
+
 describe("with no vocabulary module discovered", () => {
   test("every kind is BlockSchema's, and the rule list is the built-in one", () => {
     // No typed adapter in this checkout names a module yet.
