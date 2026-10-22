@@ -103,16 +103,19 @@
         "between": [],
         "outside": 13
       },
-      "narrative": {
-        "text": "Vector figure render of Figures 1 and 2 on page 4 showing estimation bias and ranking accuracy.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-09-29"
-      }
+      "narrative": [
+        {
+          "text": "Vector figure render of Figures 1 and 2 on page 4 showing estimation bias and ranking accuracy.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-09-29",
+          "lang": "en"
+        }
+      ]
     }
   ]
 }

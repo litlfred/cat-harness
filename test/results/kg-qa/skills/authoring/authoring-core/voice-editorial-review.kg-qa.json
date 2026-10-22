@@ -5,7 +5,7 @@
     "id": "voice-editorial-review",
     "path": "skills/authoring/authoring-core/voice-editorial-review.md"
   },
-  "source_hash": "79367f483c26",
+  "source_hash": "e4c686bba2b3",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

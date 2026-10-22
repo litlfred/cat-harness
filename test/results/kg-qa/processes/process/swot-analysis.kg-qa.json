@@ -5,7 +5,7 @@
     "id": "Process_SwotAnalysis",
     "path": "processes/process/swot-analysis.bpmn"
   },
-  "source_hash": "sha256:5e3ef7c6dce436fcf4e43d07e09474528ee466af016bc8c1f1394df199dc7fd1",
+  "source_hash": "sha256:cfc0c7841ed5391fae6658b7f5a25eb456f24c632aa998f5c2a5fbf1d5811796",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -113,6 +113,39 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "A_FrameSubject",
+          "detail": "task \"Name the subject and the level\" requires skill \"swot-analysis\", which role \"business-analyst\" (named by lane \"Business analyst\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_ScanExternal",
+          "detail": "task \"Scan the environment opportunities and threats\" requires skill \"swot-analysis\", which role \"business-analyst\" (named by lane \"Business analyst\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_ScanInternal",
+          "detail": "task \"Scan the subject strengths and weaknesses\" requires skill \"swot-analysis\", which role \"business-analyst\" (named by lane \"Business analyst\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_GroupReview",
+          "detail": "task \"Pool knowledge across participants\" requires skill \"swot-analysis\", which role \"stakeholder\" (named by lane \"Stakeholder\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_RecordAmbiguous",
+          "detail": "task \"Record what did not classify cleanly\" requires skill \"swot-analysis\", which role \"business-analyst\" (named by lane \"Business analyst\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_Cross",
+          "detail": "task \"Cross the axes into SO, WO, ST, WT\" requires skill \"swot-analysis\", which role \"business-analyst\" (named by lane \"Business analyst\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -163,8 +196,8 @@
     }
   },
   "totals": {
-    "pass": 13,
-    "fail": 2,
+    "pass": 14,
+    "fail": 3,
     "n/a": 10,
     "unknown": 0
   }

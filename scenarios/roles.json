@@ -126,6 +126,7 @@
       ],
       "skills": [
         "code-node-review",
+        "adversarial-code-review",
         "covered-is-not-reachable",
         "placement",
         "site-presentation-assets",

@@ -17,16 +17,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-1 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-1 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-2",
@@ -43,16 +46,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-2 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-2 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-3",
@@ -69,16 +75,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-3 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-3 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-4",
@@ -95,16 +104,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-4 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-4 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-5",
@@ -121,16 +133,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-5 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-5 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-6",
@@ -147,16 +162,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-6 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-6 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-7",
@@ -173,16 +191,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-7 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-7 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-8",
@@ -199,16 +220,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-8 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-8 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -237,16 +261,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-10 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-10 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-11",
@@ -263,16 +290,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-11 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-11 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-12",
@@ -289,16 +319,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-12 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-12 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-13",
@@ -315,16 +348,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-13 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-13 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-14",
@@ -341,16 +377,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-14 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-14 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-15",
@@ -367,16 +406,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-15 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-15 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -445,16 +487,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-25 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-25 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -523,16 +568,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-35 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-35 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-36",
@@ -549,16 +597,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-36 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-36 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-37",
@@ -575,16 +626,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-37 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-37 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-38",
@@ -601,16 +655,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-38 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-38 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-39",
@@ -627,16 +684,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-39 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-39 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-40",
@@ -653,16 +713,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-40 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-40 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-41",
@@ -679,16 +742,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-41 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-41 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-42",
@@ -705,16 +771,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-42 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-42 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -748,16 +817,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-45 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-45 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-46",
@@ -774,16 +846,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-46 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-46 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-47",
@@ -800,16 +875,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-47 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-47 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-48",
@@ -826,16 +904,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-48 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-48 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -869,16 +950,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-51 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-51 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -912,16 +996,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-54 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-54 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -950,16 +1037,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-56 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-56 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p003-57",
@@ -976,16 +1066,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-57 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-57 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -1014,16 +1107,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-59 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-59 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -1052,16 +1148,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-61 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-61 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -1130,16 +1229,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-71 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-71 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -1208,16 +1310,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-81 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-81 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -1286,16 +1391,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-91 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-91 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -1364,16 +1472,19 @@
         "saw": "Glyph icon / code box fragment inside Figure 1 on page 3 (motivating example comparing Individual Exploration vs Competitive Debate on Django-11999).",
         "page": 3
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p003-101 in Figure 1 illustrating code structure and debate workflow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p003-101 in Figure 1 illustrating code structure and debate workflow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 3,
@@ -1442,16 +1553,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-1 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-1 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-2",
@@ -1468,16 +1582,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-2 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-2 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1511,16 +1628,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-5 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-5 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1554,16 +1674,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-8 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-8 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-9",
@@ -1580,16 +1703,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-9 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-9 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-10",
@@ -1606,16 +1732,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-10 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-10 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1649,16 +1778,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-13 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-13 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-14",
@@ -1675,16 +1807,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-14 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-14 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1718,16 +1853,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-17 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-17 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1786,16 +1924,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-25 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-25 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -1854,16 +1995,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-33 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-33 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-34",
@@ -1880,16 +2024,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-34 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-34 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-35",
@@ -1906,16 +2053,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-35 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-35 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-36",
@@ -1932,16 +2082,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-36 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-36 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-37",
@@ -1958,16 +2111,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-37 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-37 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-38",
@@ -1984,16 +2140,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-38 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-38 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-39",
@@ -2010,16 +2169,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-39 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-39 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-40",
@@ -2036,16 +2198,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-40 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-40 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -2074,16 +2239,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-42 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-42 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -2142,16 +2310,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-50 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-50 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -2210,16 +2381,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-58 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-58 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -2253,16 +2427,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-61 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-61 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -2321,16 +2498,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-69 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-69 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -2359,16 +2539,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-71 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-71 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -2402,16 +2585,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-74 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-74 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -2445,16 +2631,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-77 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-77 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -2513,16 +2702,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-85 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-85 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -2581,16 +2773,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-93 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-93 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-94",
@@ -2607,16 +2802,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-94 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-94 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-95",
@@ -2633,16 +2831,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-95 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-95 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-96",
@@ -2659,16 +2860,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-96 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-96 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-97",
@@ -2685,16 +2889,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-97 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-97 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-98",
@@ -2711,16 +2918,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-98 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-98 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-99",
@@ -2737,16 +2947,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-99 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-99 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-100",
@@ -2763,16 +2976,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-100 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-100 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-101",
@@ -2789,16 +3005,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-101 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-101 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-102",
@@ -2815,16 +3034,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-102 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-102 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-103",
@@ -2841,16 +3063,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-103 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-103 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-104",
@@ -2867,16 +3092,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-104 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-104 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-105",
@@ -2893,16 +3121,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-105 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-105 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-106",
@@ -2919,16 +3150,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-106 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-106 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-107",
@@ -2945,16 +3179,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-107 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-107 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-108",
@@ -2971,16 +3208,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-108 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-108 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-109",
@@ -2997,16 +3237,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-109 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-109 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-110",
@@ -3023,16 +3266,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-110 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-110 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -3066,16 +3312,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-113 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-113 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-114",
@@ -3092,16 +3341,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-114 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-114 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-115",
@@ -3118,16 +3370,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-115 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-115 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-116",
@@ -3144,16 +3399,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-116 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-116 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-117",
@@ -3170,16 +3428,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-117 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-117 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-118",
@@ -3196,16 +3457,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-118 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-118 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-119",
@@ -3222,16 +3486,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-119 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-119 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-120",
@@ -3248,16 +3515,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-120 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-120 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-121",
@@ -3274,16 +3544,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-121 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-121 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-122",
@@ -3300,16 +3573,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-122 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-122 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -3343,16 +3619,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-125 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-125 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -3381,16 +3660,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-127 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-127 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-128",
@@ -3407,16 +3689,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-128 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-128 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-129",
@@ -3433,16 +3718,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-129 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-129 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-130",
@@ -3459,16 +3747,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-130 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-130 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-131",
@@ -3485,16 +3776,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-131 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-131 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-132",
@@ -3511,16 +3805,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-132 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-132 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -3549,16 +3846,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-134 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-134 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -3592,16 +3892,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-137 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-137 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -3630,16 +3933,19 @@
         "saw": "Glyph icon / workflow arrow element inside Figure 2 on page 4 (overview of the SWE-Debate three-stage framework).",
         "page": 4
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p004-139 in Figure 2 illustrating graph traversal and debate stages.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p004-139 in Figure 2 illustrating graph traversal and debate stages.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 4,
@@ -3668,16 +3974,19 @@
         "saw": "Marker / chart element inside Figure 3 on page 6 (impact of chain depth on Acc@1).",
         "page": 6
       },
-      "narrative": {
-        "text": "Decorative chart element img-p006-1 in Figure 3 illustrating localization accuracy.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative chart element img-p006-1 in Figure 3 illustrating localization accuracy.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 6,
@@ -3781,16 +4090,19 @@
         "saw": "Marker / chart element inside Figure 3 on page 6 (impact of chain depth on Acc@1).",
         "page": 6
       },
-      "narrative": {
-        "text": "Decorative chart element img-p006-8 in Figure 3 illustrating localization accuracy.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative chart element img-p006-8 in Figure 3 illustrating localization accuracy.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 6,
@@ -3864,16 +4176,19 @@
         "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
         "page": 9
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p009-1 in Figure 4 illustrating tensor product modification flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p009-1 in Figure 4 illustrating tensor product modification flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-2",
@@ -3890,16 +4205,19 @@
         "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
         "page": 9
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p009-2 in Figure 4 illustrating tensor product modification flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p009-2 in Figure 4 illustrating tensor product modification flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 9,
@@ -3928,16 +4246,19 @@
         "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
         "page": 9
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p009-4 in Figure 4 illustrating tensor product modification flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p009-4 in Figure 4 illustrating tensor product modification flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 9,
@@ -3971,16 +4292,19 @@
         "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
         "page": 9
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p009-7 in Figure 4 illustrating tensor product modification flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p009-7 in Figure 4 illustrating tensor product modification flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-8",
@@ -3997,16 +4321,19 @@
         "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
         "page": 9
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p009-8 in Figure 4 illustrating tensor product modification flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p009-8 in Figure 4 illustrating tensor product modification flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-9",
@@ -4023,16 +4350,19 @@
         "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
         "page": 9
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p009-9 in Figure 4 illustrating tensor product modification flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p009-9 in Figure 4 illustrating tensor product modification flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-10",
@@ -4049,16 +4379,19 @@
         "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
         "page": 9
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p009-10 in Figure 4 illustrating tensor product modification flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p009-10 in Figure 4 illustrating tensor product modification flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 9,
@@ -4092,16 +4425,19 @@
         "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
         "page": 9
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p009-13 in Figure 4 illustrating tensor product modification flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p009-13 in Figure 4 illustrating tensor product modification flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-14",
@@ -4118,16 +4454,19 @@
         "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
         "page": 9
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p009-14 in Figure 4 illustrating tensor product modification flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p009-14 in Figure 4 illustrating tensor product modification flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-15",
@@ -4144,16 +4483,19 @@
         "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
         "page": 9
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p009-15 in Figure 4 illustrating tensor product modification flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      }
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p009-15 in Figure 4 illustrating tensor product modification flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p009-16",
@@ -4170,16 +4512,19 @@
         "saw": "Glyph icon / code box element inside Figure 4 on page 9 (SymPy-13974 case study).",
         "page": 9
       },
-      "narrative": {
-        "text": "Decorative diagram element img-p009-16 in Figure 4 illustrating tensor product modification flow.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-10-09"
-      },
+      "narrative": [
+        {
+          "text": "Decorative diagram element img-p009-16 in Figure 4 illustrating tensor product modification flow.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-10-09",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 9,

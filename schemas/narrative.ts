@@ -29,6 +29,23 @@
  * demand one layer over: at least one note saying why this outcome, not
  * another.
  *
+ * ## One narrative per language (owner ruling 2026-10-20, bean `cat-tools-e1lo`)
+ *
+ * A narrative carries its language as a BCP 47 `lang`, and a slot holds one
+ * narrative PER language, each with its own author, model version and review
+ * state: a translation is drafted and confirmed like any other narrative, and
+ * a missing language is visibly absent rather than silently the source text.
+ *
+ * Landing in stages, so no stored record is invalid at any point:
+ *
+ * 1. (here) `lang` is optional on {@link NarrativeSchema}, and
+ *    {@link NarrativeSlotSchema} accepts the old single narrative OR a list of
+ *    them with distinct languages. {@link narrativesOfSlot} reads either.
+ * 2. Readers (the review queue, `narrativesIn`) go through `narrativesOfSlot`.
+ * 3. The slot schemas switch to `NarrativeSlotSchema`, and stored narratives
+ *    are migrated to lists.
+ * 4. The single form is removed, and `lang` becomes required.
+ *
  * ## Not a second review model
  *
  * `Attribution` and its `script | agent | human` vocabulary come from
@@ -64,10 +81,22 @@ export const STATES_WITH_TEXT: readonly NarrativeState[] = NARRATIVE_STATES.filt
   (s): s is NarrativeState => s !== "not-authored",
 );
 
+/**
+ * A BCP 47 language tag, in the shape this repository uses (`en`, `fr`,
+ * `zh-Hant`, `pt-BR`): a 2–3 letter primary subtag and optional subtags.
+ * A shape check, not a registry lookup.
+ */
+export const LANGUAGE_TAG = /^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$/;
+
 export const NarrativeSchema = z
   .object({
     /** The narrative itself, or null when nobody has written one. */
     text: z.string().min(1).nullable(),
+    /**
+     * The language of `text`, as a BCP 47 tag. Optional until stage 4 (see the
+     * module docstring); required on every entry of a list slot.
+     */
+    lang: z.string().regex(LANGUAGE_TAG).optional(),
     state: z.enum(NARRATIVE_STATES),
     /** Who wrote the words. An `agent` must name its `model` — see `attribution.ts`. */
     drafted_by: AttributionSchema.optional(),
@@ -116,6 +145,63 @@ export const NarrativeSchema = z
   });
 
 export type Narrative = z.infer<typeof NarrativeSchema>;
+
+/**
+ * Where a record keeps its narrative: the single narrative it has today, or a
+ * list with one entry per language.
+ *
+ * In a list every entry names its `lang`, and no language appears twice: two
+ * `fr` narratives would leave a reviewer confirming one while the other is
+ * shown, which is the state the review queue exists to prevent.
+ */
+export const NarrativeSlotSchema = z.union([
+  NarrativeSchema,
+  z
+    .array(NarrativeSchema)
+    .min(1)
+    .refine((ns) => ns.every((n) => n.lang !== undefined), {
+      message: "every narrative in a list must name its `lang`",
+    })
+    .refine((ns) => new Set(ns.map((n) => n.lang)).size === ns.length, {
+      message: "a language may appear only once in a narrative list",
+    }),
+]);
+
+export type NarrativeSlot = z.infer<typeof NarrativeSlotSchema>;
+
+/**
+ * Every narrative in a slot, in order: one for the single form, each entry for
+ * a list. The one way to read a slot, so no reader has to know which form a
+ * record is in.
+ */
+export function narrativesOfSlot(slot: NarrativeSlot): Narrative[] {
+  return Array.isArray(slot) ? slot : [slot];
+}
+
+/**
+ * The ONE narrative a single-text display shows from a slot: the entry in the
+ * reader's language, else the first. Owner ruling 2026-10-20 (bean
+ * `cat-tools-e1lo`, stage 3, "locale match, else first").
+ *
+ * Match order, so a regional locale still finds its language:
+ * 1. an entry whose `lang` is exactly `lang` (case-insensitive, as BCP 47 is);
+ * 2. an entry whose primary subtag matches (`fr-CA` finds `fr`, and `fr` finds `fr-CA`);
+ * 3. the first entry.
+ *
+ * The single form has no choice to make and is returned as it is, `lang` or
+ * not. A build with no locale passes none and gets the first entry.
+ */
+export function narrativeFor(slot: NarrativeSlot, lang?: string): Narrative {
+  const all = narrativesOfSlot(slot);
+  if (lang === undefined || all.length === 1) return all[0]!;
+  const want = lang.toLowerCase();
+  const primary = (t: string) => t.toLowerCase().split("-")[0];
+  return (
+    all.find((n) => n.lang?.toLowerCase() === want) ??
+    all.find((n) => n.lang !== undefined && primary(n.lang) === primary(want)) ??
+    all[0]!
+  );
+}
 
 /** The empty slot every record starts with. */
 export const NOT_AUTHORED: Narrative = { text: null, state: "not-authored" };

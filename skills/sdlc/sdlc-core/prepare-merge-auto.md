@@ -18,12 +18,9 @@ Runs the full `/prepare-merge` workflow PLUS:
 
 ### Phase 0: Sibling coordination
 
-Before starting the merge pipeline, identify sibling PRs whose scope
-overlaps this branch's files:
-
-```
-mcp__github__list_pull_requests(owner, repo, state="open")
-```
+Before starting the merge pipeline, identify sibling change proposals
+(pull requests, PRs) whose scope overlaps this branch's files: list the open
+ones with the *list change proposals* [forge-operation Tool](../../folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each).
 
 For each sibling PR that touches the same files or content domain:
 - Post a brief coordination comment: "Starting prepare-merge on
@@ -46,10 +43,8 @@ Do NOT skip ahead — the reviews are the input to Phase 2.
 **Wait protocol (15-minute window):**
 
 1. After requesting reviews in Phase 1, poll for Copilot's
-   check-run status every 30 seconds (up to 15 minutes):
-   ```
-   mcp__github__pull_request_read(method="get_check_runs", ...)
-   ```
+   check-run status every 30 seconds (up to 15 minutes) — the `github`
+   Tool, *read change proposal* (check runs).
    Look for the `copilot-pull-request-reviewer` check run:
    - `"status": "queued"` or `"status": "in_progress"` → reviewer
      has noticed the PR; keep polling every 30s
@@ -58,8 +53,8 @@ Do NOT skip ahead — the reviews are the input to Phase 2.
      this file type (e.g. skill-only PRs with no code); proceed
      with 0 comments
 
-2. For Gemini: check PR issue comments via
-   `mcp__github__pull_request_read(method="get_comments", ...)`.
+2. For Gemini: check the PR's issue comments with the *read change proposal*
+   [forge-operation Tool](../../folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each) (comments).
    If a `gemini-code-assist[bot]` comment contains "daily quota
    limit", note "Gemini: quota exhausted" and proceed without
    waiting further.

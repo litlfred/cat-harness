@@ -15,17 +15,20 @@
   "file": "../../../docs/assets/img/kg-deck/img-p001-12.webp",
   "pageStart": 1,
   "pageEnd": 1,
-  "narrative": {
-    "text": "Screenshot of FHIR XML from a MeasureReport: type summary, a measure URL for HIV indicators, a reporter, a period in January 2018, and a group with coded strata and measureScore values. It illustrates the L3 machine-readable layer: an indicator expressed as FHIR.",
-    "state": "draft",
-    "drafted_by": {
-      "kind": "agent",
-      "id": "claude",
-      "model": "not-disclosed",
-      "session": "https://claude.ai/code/session_019rLS387FZZzjPJsNQhfALA"
-    },
-    "drafted_at": "2026-09-30"
-  },
+  "narrative": [
+    {
+      "text": "Screenshot of FHIR XML from a MeasureReport: type summary, a measure URL for HIV indicators, a reporter, a period in January 2018, and a group with coded strata and measureScore values. It illustrates the L3 machine-readable layer: an indicator expressed as FHIR.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_019rLS387FZZzjPJsNQhfALA"
+      },
+      "drafted_at": "2026-09-30",
+      "lang": "en"
+    }
+  ],
   "derivedFrom": "library/kg-folio-asst-2026-09-30/sections/slide-001",
   "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/kg-folio-asst-2026-09-30/manifest.jsonld",
   "provenance": "ingested"

@@ -5,7 +5,7 @@
     "id": "upload-naming",
     "path": "skills/library/library-core/upload-naming.md"
   },
-  "source_hash": "505d09c00522",
+  "source_hash": "f6bdf41f078b",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

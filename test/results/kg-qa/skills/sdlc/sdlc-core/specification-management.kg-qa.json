@@ -5,7 +5,7 @@
     "id": "specification-management",
     "path": "skills/sdlc/sdlc-core/specification-management.md"
   },
-  "source_hash": "eb914a5dedfe",
+  "source_hash": "e6e51880a133",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

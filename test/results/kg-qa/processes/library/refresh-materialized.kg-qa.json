@@ -5,7 +5,7 @@
     "id": "Process_RefreshMaterialized",
     "path": "processes/library/refresh-materialized.bpmn"
   },
-  "source_hash": "sha256:01bf2dc2773de15064181a5df0de02f2bac45868b30faf92cd17644930147d9e",
+  "source_hash": "sha256:10d90539c1a8688fdae21a53f1966da88c7a3758304368a77167abb8a2c0062a",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -96,6 +96,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -109,8 +117,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_RefreshMaterialized",
+          "detail": "refresh-materialized.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -146,8 +159,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 1,
+    "pass": 17,
+    "fail": 2,
     "n/a": 8,
     "unknown": 0
   }

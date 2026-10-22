@@ -37,7 +37,7 @@
 import { z } from "zod";
 
 import { AttributionSchema } from "./attribution.ts";
-import { NarrativeSchema, NOT_AUTHORED, type Narrative } from "./narrative.ts";
+import { NarrativeSlotSchema, NOT_AUTHORED, type Narrative } from "./narrative.ts";
 
 /**
  * What an image IS, as distinct from what it depicts.
@@ -368,7 +368,7 @@ export const DocumentImageSchema = z
     /** Why `role` says what it says. Absent only when nothing could be read. */
     basis: ImageBasisSchema.optional(),
     /** Present only where a description is worth having — see `role`. */
-    narrative: NarrativeSchema.optional(),
+    narrative: NarrativeSlotSchema.optional(),
     /**
      * Every place this image appears, the first one included.
      *

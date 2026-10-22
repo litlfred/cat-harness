@@ -5,7 +5,7 @@
     "id": "lean-toolchain",
     "path": "scenarios/roles.json"
   },
-  "source_hash": "sha256:66abbc76e0e0168c2a8cce71e34e844c5d2a68d39c90bf6830fa68605987b0b8",
+  "source_hash": "sha256:a55d7dc2c4aa2377e869486e635707736801f42d2ca8ac8ff161da564a51edd4",
   "criteria": {
     "role-skills-resolve": {
       "result": "pass",
@@ -16,6 +16,10 @@
       "findings": []
     },
     "role-binds-a-lane": {
+      "result": "pass",
+      "findings": []
+    },
+    "mechanical-role-untested": {
       "result": "pass",
       "findings": []
     },
@@ -37,7 +41,7 @@
     }
   },
   "totals": {
-    "pass": 4,
+    "pass": 5,
     "fail": 0,
     "n/a": 3,
     "unknown": 0

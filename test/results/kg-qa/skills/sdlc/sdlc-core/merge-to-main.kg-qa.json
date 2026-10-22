@@ -5,7 +5,7 @@
     "id": "merge-to-main",
     "path": "skills/sdlc/sdlc-core/merge-to-main.md"
   },
-  "source_hash": "5971f2dd6c38",
+  "source_hash": "fef3352c1966",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

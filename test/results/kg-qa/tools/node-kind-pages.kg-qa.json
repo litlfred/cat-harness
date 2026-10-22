@@ -5,7 +5,7 @@
     "id": "node-kind-pages",
     "path": null
   },
-  "source_hash": "98dcd28cc1d5",
+  "source_hash": "9ffa085d2208",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

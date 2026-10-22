@@ -5,7 +5,7 @@
     "id": "sample-import",
     "path": "skills/library/large-datasets/sample-import.md"
   },
-  "source_hash": "7fec3795661f",
+  "source_hash": "827182c3be03",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

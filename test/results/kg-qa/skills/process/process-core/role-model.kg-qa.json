@@ -5,7 +5,7 @@
     "id": "role-model",
     "path": "skills/process/process-core/role-model.md"
   },
-  "source_hash": "da80ffd5ae06",
+  "source_hash": "e49157fb9b34",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",
@@ -16,7 +16,7 @@
       "findings": [
         {
           "where": "skills/process/process-core/role-model.md",
-          "detail": "712 lines; p75 of the skill corpus is 279."
+          "detail": "724 lines; p75 of the skill corpus is 279."
         }
       ]
     },
@@ -25,7 +25,7 @@
       "findings": [
         {
           "where": "skills/process/process-core/role-model.md",
-          "detail": "712 lines; p90 is 391. At this length it is a document."
+          "detail": "724 lines; p90 is 391. At this length it is a document."
         }
       ]
     },

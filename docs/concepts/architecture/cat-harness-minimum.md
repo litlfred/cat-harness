@@ -519,9 +519,9 @@ things that are not actually separable at that grain. The skills are already
 forge-neutral; only their invocations are not.
 
 **Isolate at the Tool layer instead.** A skill states the capability
-generically; a `github` Tool node carries the invocations and names the skills
-it satisfies. Adding GitLab later is a second Tool node against the same
-skills — not a repository, not a fork, not a rewrite. The SOP is
+generically; Tool nodes, one per forge operation, carry the invocations and
+name the skills they satisfy. Adding GitLab is more Tool nodes against the
+same skills — not a repository, not a fork, not a rewrite. The SOP is
 [`skills-and-tools`](../../../skills/folio-core/skills-and-tools.md); the Tool
 schema is the strawperson above, whose `satisfies` field is exactly this edge.
 

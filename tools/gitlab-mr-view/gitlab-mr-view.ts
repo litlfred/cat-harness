@@ -1,0 +1,28 @@
+import { toolFactory } from "../../schemas/tool-folders.js";
+import { defineTool } from "../../schemas/tool.js";
+
+export default toolFactory((t) =>
+  defineTool({
+    id: "gitlab-mr-view",
+    title: "Read a merge request (GitLab)",
+    description: "Read one merge request: title, state, body, and its comments and reviews.",
+    install: { cli: "glab" },
+    invoke: { shell: "glab mr view --comments" },
+    io: {
+      inputs: [
+        { name: "number", schema: t("ChangeProposalNumber"), required: false, description: "Absent: the change proposal of the current branch.", arg: { positional: 0 } }
+      ],
+      outputs: [
+        { name: "proposal", schema: t("Markdown"), description: "The proposal as the forge prints it, comments included." }
+      ],
+    },
+    satisfies: ["prepare-merge-auto", "pickup", "watch", "coordinate"],
+    selection: {
+      when: "The change proposals live on GitLab — the checkout's remote is a GitLab project.",
+      limits: "GitLab only. For a GitHub repository use `github-pr-view`.",
+      cost: "`glab`, authenticated (`glab auth login` or `GITLAB_TOKEN`), and one API round trip per call.",
+    },
+    requires: { network: true },
+    remedies: [{ host: "gitlab.com", none: "No declared Tool reaches the GitLab API another way. A self-managed GitLab answers on its own host, which this record cannot name; `glab` reaches it once `glab auth login --hostname` has been run for that host." }],
+  }),
+);

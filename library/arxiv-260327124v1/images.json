@@ -17,16 +17,19 @@
         "saw": "Figure 1: comparison of RWT vs proposed hybrid approach for NSR estimation bias and standard deviation across ground-truth sample sizes.",
         "page": 4
       },
-      "narrative": {
-        "text": "Figure 1 displays average absolute normalized bias (A) and normalized standard deviation (B) in NSR estimation.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-09-29"
-      }
+      "narrative": [
+        {
+          "text": "Figure 1 displays average absolute normalized bias (A) and normalized standard deviation (B) in NSR estimation.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-09-29",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p004-2",
@@ -43,16 +46,19 @@
         "saw": "Figure 2: ranking accuracy and precision identification for RWT vs proposed hybrid approach.",
         "page": 4
       },
-      "narrative": {
-        "text": "Figure 2 shows percentage of correctly ranking all QI methods (A) and identifying the most precise method (B).",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-09-29"
-      }
+      "narrative": [
+        {
+          "text": "Figure 2 shows percentage of correctly ranking all QI methods (A) and identifying the most precise method (B).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-09-29",
+          "lang": "en"
+        }
+      ]
     }
   ]
 }

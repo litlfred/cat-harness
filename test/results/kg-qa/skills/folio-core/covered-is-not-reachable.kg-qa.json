@@ -5,7 +5,7 @@
     "id": "covered-is-not-reachable",
     "path": "skills/folio-core/covered-is-not-reachable.md"
   },
-  "source_hash": "3aea6063a535",
+  "source_hash": "6eaa103fc705",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

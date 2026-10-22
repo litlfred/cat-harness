@@ -5,7 +5,7 @@
     "id": "content-context",
     "path": null
   },
-  "source_hash": "e98441d3da3f",
+  "source_hash": "491daaada251",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "branch-freshness",
     "path": "skills/process/workflow/branch-freshness.md"
   },
-  "source_hash": "fda7ad72f770",
+  "source_hash": "4c77f3f8db2f",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

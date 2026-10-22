@@ -5,7 +5,7 @@
     "id": "Process_ActorRoleAdministration",
     "path": "processes/process/actor-role-administration.bpmn"
   },
-  "source_hash": "sha256:fecb9a766022b74949fd5b1a40ed28591d1453104a22dccd89c63a0341c37f86",
+  "source_hash": "sha256:12591d5f5ed912ec07f5627c719131ab734931044537f498467a1396f5e386a1",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -77,6 +77,27 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "CallActivity_CodeChangeReview",
+          "detail": "task \"Branch, gates, PR and review\" requires skill \"prepare-merge\", which role \"administrator\" (named by lane \"Administrator\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "CallActivity_CodeChangeReview",
+          "detail": "task \"Branch, gates, PR and review\" requires skill \"continual-progress\", which role \"administrator\" (named by lane \"Administrator\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_RunKgAudit",
+          "detail": "task \"Audit the graph [kg:audit]\" requires skill \"role-model\", which role \"build-pipeline\" (named by lane \"Graph audit (system)\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -90,8 +111,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_ActorRoleAdministration",
+          "detail": "actor-role-administration.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -128,7 +154,7 @@
   },
   "totals": {
     "pass": 15,
-    "fail": 2,
+    "fail": 4,
     "n/a": 8,
     "unknown": 0
   }

@@ -5,7 +5,7 @@
     "id": "ingest-extended",
     "path": null
   },
-  "source_hash": "19ed9f1405aa",
+  "source_hash": "0873a44daf5e",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

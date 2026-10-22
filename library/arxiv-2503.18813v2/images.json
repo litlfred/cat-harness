@@ -17,16 +17,19 @@
         "saw": "the title-page mascot beside the paper's title, on page 1",
         "page": 1
       },
-      "narrative": {
-        "text": "A soft, felt-textured 3D cartoon camel with one hump, standing in three-quarter view, with three small tortoises riding on it: one on its head and two along its back. It is the paper's CaMeL mascot and carries no technical content. Shown on a white background.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-09-29"
-      },
+      "narrative": [
+        {
+          "text": "A soft, felt-textured 3D cartoon camel with one hump, standing in three-quarter view, with three small tortoises riding on it: one on its head and two along its back. It is the paper's CaMeL mascot and carries no technical content. Shown on a white background.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-09-29",
+          "lang": "en"
+        }
+      ],
       "placements": [
         {
           "page": 1,
@@ -670,16 +673,19 @@
         "saw": "an affiliation logo in the title-page header, on page 1",
         "page": 1
       },
-      "narrative": {
-        "text": "The Google DeepMind wordmark: 'Google' in its four brand colours, followed by 'DeepMind' in grey. An affiliation mark only.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-09-29"
-      }
+      "narrative": [
+        {
+          "text": "The Google DeepMind wordmark: 'Google' in its four brand colours, followed by 'DeepMind' in grey. An affiliation mark only.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-09-29",
+          "lang": "en"
+        }
+      ]
     },
     {
       "id": "img-p007-2",
@@ -696,16 +702,19 @@
         "saw": "the same mascot, repeated on page 7 on a transparent (black-rendered) background",
         "page": 7
       },
-      "narrative": {
-        "text": "A soft, felt-textured 3D cartoon camel with one hump, standing in three-quarter view, with three small tortoises riding on it: one on its head and two along its back. It is the paper's CaMeL mascot and carries no technical content. A repeat of the title-page image.",
-        "state": "draft",
-        "drafted_by": {
-          "kind": "agent",
-          "id": "claude",
-          "model": "claude-opus-5"
-        },
-        "drafted_at": "2026-09-29"
-      }
+      "narrative": [
+        {
+          "text": "A soft, felt-textured 3D cartoon camel with one hump, standing in three-quarter view, with three small tortoises riding on it: one on its head and two along its back. It is the paper's CaMeL mascot and carries no technical content. A repeat of the title-page image.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude",
+            "model": "claude-opus-5"
+          },
+          "drafted_at": "2026-09-29",
+          "lang": "en"
+        }
+      ]
     }
   ]
 }

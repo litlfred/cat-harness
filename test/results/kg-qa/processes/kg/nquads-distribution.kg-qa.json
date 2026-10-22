@@ -5,7 +5,7 @@
     "id": "Process_NQuadsDistribution",
     "path": "processes/kg/nquads-distribution.bpmn"
   },
-  "source_hash": "sha256:e2c6c2cc85af93af4ada3ba5e4782861985aa85c264adb41ce8224e12688ba0d",
+  "source_hash": "sha256:0532364e207c99cb5fda728f3456b82cd3343ceaaf06e1cec57118b32769cbaa",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -125,6 +125,47 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "A_ExtractSkolemize",
+          "detail": "task \"Extract & Skolemize RDF Dataset\" requires skill \"nquads-distribution\", which role \"platform-authoring-agent\" (named by lane \"Knowledge Graph Engineer\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_PartitionQuads",
+          "detail": "task \"Stream W3C N-Quads into Subgraph Partitions\" requires skill \"nquads-distribution\", which role \"platform-authoring-agent\" (named by lane \"Knowledge Graph Engineer\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_ReportBudgetExcess",
+          "detail": "task \"Report Budget Finding; Refine Subgraph Splitting\" requires skill \"nquads-distribution\", which role \"platform-authoring-agent\" (named by lane \"Knowledge Graph Engineer\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_DeclareManifest",
+          "detail": "task \"Declare Distribution Manifest & Named Queries\" requires skill \"nquads-distribution\", which role \"platform-authoring-agent\" (named by lane \"Knowledge Graph Engineer\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_DeclareManifest",
+          "detail": "task \"Declare Distribution Manifest & Named Queries\" requires skill \"named-query-execution\", which role \"platform-authoring-agent\" (named by lane \"Knowledge Graph Engineer\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_VerifyQueries",
+          "detail": "task \"Verify Queries via CLI & Test Graph Availability\" requires skill \"named-query-execution\", which role \"platform-authoring-agent\" (named by lane \"Knowledge Graph Engineer\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_GateCheck",
+          "detail": "task \"CI Gate Verification: Audit Manifest & Schemas\" requires skill \"named-query-execution\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "A_DeployPages",
+          "detail": "task \"Publish Distribution via 'served: true' to Pages\" requires skill \"nquads-distribution\", which role \"build-pipeline\" (named by lane \"CI/CD Pipeline\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -180,8 +221,8 @@
     }
   },
   "totals": {
-    "pass": 13,
-    "fail": 3,
+    "pass": 14,
+    "fail": 4,
     "n/a": 9,
     "unknown": 0
   }

@@ -5,7 +5,7 @@
     "id": "Process_SampleImport",
     "path": "processes/library/sample-import.bpmn"
   },
-  "source_hash": "sha256:102b125f294154246f0a9b9b7ba3461d5d20a4f49a7ce0a7b398200266df740d",
+  "source_hash": "sha256:9ffaea0a993e4a49ea804152fe7553611a1e4c3df716fca395b9565e9973a7f2",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -125,6 +125,43 @@
         }
       ]
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Task_Scope",
+          "detail": "task \"Scope the sample: which items, which store, and is it PERMANENT?\" requires skill \"sample-import\", which role \"user\" (named by lane \"Contributor (human or agent)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Call_Materialize",
+          "detail": "task \"Materialize remote content (the five gates)\" requires skill \"sample-import\", which role \"ingestion-agent\" (named by lane \"Ingestion Engine (agent, runs unattended)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_Library",
+          "detail": "task \"Land it in library/\" requires skill \"sample-import\", which role \"ingestion-agent\" (named by lane \"Ingestion Engine (agent, runs unattended)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_Trial",
+          "detail": "task \"Keep it as a trial: the unpublished trashcan\" requires skill \"sample-import\", which role \"ingestion-agent\" (named by lane \"Ingestion Engine (agent, runs unattended)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_ImportTest",
+          "detail": "task \"Import into the store, and test the import\" requires skill \"sample-import\", which role \"ingestion-agent\" (named by lane \"Ingestion Engine (agent, runs unattended)\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Task_RecordFindings",
+          "detail": "task \"Record what failed\" requires skill \"sample-import\", which role \"corpus\" (named by lane \"Corpus — L1 source knowledge graph\") does not list, directly or through `inherits`."
+        },
+        {
+          "where": "Call_Refresh",
+          "detail": "task \"Refresh materialized content\" requires skill \"sample-import\", which role \"ingestion-agent\" (named by lane \"Ingestion Engine (agent, runs unattended)\") does not list, directly or through `inherits`."
+        }
+      ]
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -175,8 +212,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 2,
+    "pass": 16,
+    "fail": 3,
     "n/a": 8,
     "unknown": 0
   }

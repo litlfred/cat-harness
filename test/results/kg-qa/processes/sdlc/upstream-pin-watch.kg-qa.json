@@ -5,7 +5,7 @@
     "id": "Process_UpstreamPinWatch",
     "path": "processes/sdlc/upstream-pin-watch.bpmn"
   },
-  "source_hash": "sha256:25f55242cc0c76183962bbd4ac5e7282269a681e2c27f16115a9a598fbb6cc9c",
+  "source_hash": "sha256:39984e90c7fe17d048e5fedb49afd92a29882336be8e7bbc3b28807c81c765cb",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -84,6 +84,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -97,8 +105,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_UpstreamPinWatch",
+          "detail": "upstream-pin-watch.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -134,8 +147,8 @@
     }
   },
   "totals": {
-    "pass": 18,
-    "fail": 1,
+    "pass": 19,
+    "fail": 2,
     "n/a": 6,
     "unknown": 0
   }

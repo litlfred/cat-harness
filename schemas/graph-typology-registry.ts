@@ -1012,6 +1012,11 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "node-kind-index/1.1.0": { generated: true },
       "folio-translation-status/v1": { generated: true },
       "folio-schema-graph/v1": { generated: true },
+      // GENERATOR OUTPUT: `processes:viz` writes one task-panel document per
+      // process page, `docs/en/<instance>/processes/<stem>.tasks.json`, which
+      // the page's task drawer fetches. Published since the processes pages
+      // became built at publish, and unmapped here until now.
+      "process-task-panel/v1": { shape: "cat-harness-tools:scripts/lib/task-panel.ts#PanelData", generated: true },
       "folio-library-index/v1": { generated: true },
       // The per-entry block graph, one file per library entry (bean `7nvr`).
       // Same writer as the index and deliberately a SEPARATE family: the index
@@ -2073,6 +2078,19 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       // The FROM-WITHIN node naming this directory's concern groups
       // (placement PR0c): `concern-groups/v1`.
       "concern-groups/v1": {},
+      // Each ingested source's `structure.json`, one family per format it was
+      // read as. These three tag themselves `_schema`, not `$schema` (the
+      // format predates the convention), so routing reads either:
+      // `nodeFamilyTag` in kind-validator.ts.
+      "pdf-structure/v1": {},
+      "notebook-structure/v1": {},
+      "text-structure/v1": {},
+      // The entry's JSON-LD nodes: its manifest, its sections and sheets, and
+      // its blocks. They carry no `$schema`, so each family is the class the
+      // node instantiates (`schemas/library-nodes.ts` says how one is told).
+      "cat-harness:SourceDocument": {},
+      "doco:Section": {},
+      "cat-harness:Block": {},
       "folio-document-images/v1": {},
       "folio-image-verdicts/v1": { shape: "cat-harness-tools:scripts/apply-image-verdicts.ts#VerdictFile" },
       // The section analogue of image verdicts (bean `fnqn`): which sections are
@@ -2531,6 +2549,30 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // Two marks rather than one, because a comment EDITED after being read
   // keeps its id: the id alone would call it seen, and an edited requirement
   // is a changed requirement (`issue-working`).
+  // The adversarial review verdict on a pull request's head (bean `w8jq`).
+  //
+  // `state`: a reviewing session writes one per PR head it reviews, and the
+  // merge gate (`check:adversarial-review`) reads it. On its OWN branch, by
+  // the owner's ruling of 2026-10-20 ("State branch"): a verdict committed
+  // INTO the pull request moves the head it names, so it was stale the moment
+  // it landed and no pull request could reach `clean`. Keyed by head sha, so a
+  // push after the review leaves the old verdict naming a commit that is no
+  // longer the head, which is exactly what `stale` should mean.
+  "merge-reviews": {
+    description:
+      "the adversarial review verdict on a pull request's HEAD — one `merge-review/v1` file per head, `<head sha>.json`, naming `base_sha`, `head_sha` and the reviews with their RED FLAG findings. Written by a reviewing session that is not the author, read by `check:adversarial-review`. On its own branch so that recording a verdict never moves the head it is bound to. Method: [`adversarial-code-review`](../../sdlc/sdlc-core/adversarial-code-review.md); shape in `schemas/red-flag.ts`.",
+    title: "Merge reviews",
+    renderable: false,
+    holds: "state",
+    recordsWork: false, // a verdict, not work anybody is partway through
+    schema: "cat-harness:schemas/red-flag.ts",
+    // declared-path-literal: this table IS the declaration, as on `issue-marks`.
+    nodeSchemas: {
+      "merge-review/v1": {},
+    },
+    summary: "The adversarial review verdict on a pull request's head, one file per head sha.",
+  },
+
   "issue-marks": {
     description:
       "how far an agent has read an issue — `lastCommentId`, `lastUpdatedAt`, `checkedAt`, one file per issue. **Not the comments**: an id and two timestamps, never a body. Two marks because a comment EDITED after being read keeps its id. Read with [`issue-working`](../../sdlc/sdlc-core/issue-working.md); shape in `src/issue-watch/seen-comments.ts`.",

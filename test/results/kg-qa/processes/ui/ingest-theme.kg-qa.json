@@ -5,7 +5,7 @@
     "id": "Process_IngestTheme",
     "path": "processes/ui/ingest-theme.bpmn"
   },
-  "source_hash": "sha256:0941cd24e5551f48a34eee0cfe9798af3312804e204141e72897ce328f0aa56c",
+  "source_hash": "sha256:6647d661c468348b5a739d8cb04e5b5ed89b5a63280741386915ca3b3c78eb50",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -80,6 +80,14 @@
       "result": "pass",
       "findings": []
     },
+    "lane-role-legacy-binding": {
+      "result": "pass",
+      "findings": []
+    },
+    "task-skill-outside-lane-role": {
+      "result": "pass",
+      "findings": []
+    },
     "activity-names-skill": {
       "result": "pass",
       "findings": []
@@ -130,7 +138,7 @@
     }
   },
   "totals": {
-    "pass": 16,
+    "pass": 18,
     "fail": 1,
     "n/a": 8,
     "unknown": 0

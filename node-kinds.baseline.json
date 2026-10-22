@@ -97,6 +97,10 @@
       "family": "folio-voices-index/v1"
     },
     {
+      "typology": "docs",
+      "family": "process-task-panel/v1"
+    },
+    {
       "typology": "external-schema",
       "family": "folio-external-schema/v1"
     },
@@ -120,7 +124,19 @@
     },
     {
       "typology": "library",
+      "family": "cat-harness:Block"
+    },
+    {
+      "typology": "library",
+      "family": "cat-harness:SourceDocument"
+    },
+    {
+      "typology": "library",
       "family": "concern-groups/v1"
+    },
+    {
+      "typology": "library",
+      "family": "doco:Section"
     },
     {
       "typology": "library",
@@ -167,11 +183,27 @@
       "family": "folio-withheld/v1"
     },
     {
+      "typology": "library",
+      "family": "notebook-structure/v1"
+    },
+    {
+      "typology": "library",
+      "family": "pdf-structure/v1"
+    },
+    {
+      "typology": "library",
+      "family": "text-structure/v1"
+    },
+    {
       "typology": "memory"
     },
     {
       "typology": "merge-queue",
       "family": "folio-merge-queue-entry/v1"
+    },
+    {
+      "typology": "merge-reviews",
+      "family": "merge-review/v1"
     },
     {
       "typology": "models"
