@@ -17,17 +17,9 @@ import type {
   DockerRequirements,
   SkillPackageManifest,
   RemotePackageRef,
-  DefinitionBlock,
-  LeanRef,
-  TheoremBlock,
-  LemmaBlock,
-  PropositionBlock,
-  CorollaryBlock,
   AlgorithmBlock,
-  ConjectureBlock,
   ExampleBlock,
   RemarkBlock,
-  ProofBlock,
   SimulatorBlock,
   ProseBlock,
   EquationBlock,
@@ -56,16 +48,9 @@ import {
   DockerRequirementsSchema,
   SkillPackageManifestSchema,
   RemotePackageRefSchema,
-  DefinitionSchema,
-  TheoremSchema,
-  LemmaSchema,
-  PropositionSchema,
-  CorollarySchema,
   AlgorithmSchema,
-  ConjectureSchema,
   ExampleSchema,
   RemarkSchema,
-  ProofSchema,
   SimulatorSchema,
   ProseSchema,
   EquationSchema,
@@ -129,38 +114,6 @@ function validated<T>(schema: { parse: (v: unknown) => unknown }, data: T): T {
 
 // ── Block builders ───────────────────────────────────────────────
 
-// `DefinitionBlock.lean` is required, so `Omit<…, "kind">` could not express
-// the very case this builder exists to handle — a partially-authored
-// definition with no ref yet. The `as any` below was standing in for that.
-export function definition(
-  data: Omit<DefinitionBlock, "kind" | "lean"> & { lean?: LeanRef },
-): DefinitionBlock {
-  // Provide default lean ref so partially-authored definitions
-  // load instead of crashing the viewer/MCP server with Zod errors.
-  // Uses the qou package by default; callers working in other papers
-  // must pass an explicit `lean.ref`.
-  const label = data.label || "def:unknown";
-  const defaultDecl = "QOU." + label.replace(/^def:/, "").replace(/-./g, m => m[1].toUpperCase()).replace(/^./, c => c.toUpperCase());
-  const lean = data.lean ?? { ref: `qou:${defaultDecl}` };
-  return validated(DefinitionSchema, { kind: "definition" as const, ...data, lean });
-}
-
-export function theorem(data: Omit<TheoremBlock, "kind">): TheoremBlock {
-  return validated(TheoremSchema, { kind: "theorem" as const, ...data });
-}
-
-export function lemma(data: Omit<LemmaBlock, "kind">): LemmaBlock {
-  return validated(LemmaSchema, { kind: "lemma" as const, ...data });
-}
-
-export function proposition(data: Omit<PropositionBlock, "kind">): PropositionBlock {
-  return validated(PropositionSchema, { kind: "proposition" as const, ...data });
-}
-
-export function corollary(data: Omit<CorollaryBlock, "kind">): CorollaryBlock {
-  return validated(CorollarySchema, { kind: "corollary" as const, ...data });
-}
-
 export function algorithm(data: Omit<AlgorithmBlock, "kind">): AlgorithmBlock {
   const block = validated(AlgorithmSchema, { kind: "algorithm" as const, ...data });
   // Per "downstream of math" invariant (also enforced by
@@ -176,20 +129,12 @@ export function algorithm(data: Omit<AlgorithmBlock, "kind">): AlgorithmBlock {
   return block;
 }
 
-export function conjecture(data: Omit<ConjectureBlock, "kind">): ConjectureBlock {
-  return validated(ConjectureSchema, { kind: "conjecture" as const, ...data });
-}
-
 export function example(data: Omit<ExampleBlock, "kind">): ExampleBlock {
   return validated(ExampleSchema, { kind: "example" as const, ...data });
 }
 
 export function remark(data: Omit<RemarkBlock, "kind">): RemarkBlock {
   return validated(RemarkSchema, { kind: "remark" as const, ...data });
-}
-
-export function proof(data: Omit<ProofBlock, "kind">): ProofBlock {
-  return validated(ProofSchema, { kind: "proof" as const, ...data });
 }
 
 export function simulator(data: Omit<SimulatorBlock, "kind">): SimulatorBlock {
