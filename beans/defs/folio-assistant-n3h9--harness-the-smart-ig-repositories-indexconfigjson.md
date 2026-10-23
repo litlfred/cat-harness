@@ -5,7 +5,7 @@ status: in-progress
 type: epic
 priority: high
 created_at: 2026-10-10T14:06:53Z
-updated_at: 2026-10-16T10:45:00Z
+updated_at: 2026-10-23T14:10:00Z
 parent: folio-assistant-vuip
 ---
 
@@ -119,3 +119,12 @@ Still open:
 - Breaks: the old root `review/` is now `en/review/`, so links to /smart-ra/review/ 404. Root `_main-site.json` (the reusable staging workflow's before-manifest) is gone with that workflow.
 
 _2026-10-16T10:45:00Z_ — Parented to `vuip` (GOAL 1) by subject: it had no parent, so it sat under no epic or goal and failed the parent check on main (https://claude.ai/code/session_01NUrhvvMEwU5MmPW4L2w9jP).
+
+## Owner ruling 2026-10-23: scope of the move to WHO
+
+Owner, 2026-10-23, asked "what goes to WHO: a) IG content only, b) content plus harness wiring, c) everything with the shared layers moved to the WHO org": *"5 b for now. willl move elsewhere later"*. So:
+- **What goes to WHO/smart-\*:** the IG content and each repo's harness wiring (`<name>.json`, `index.config.json`, `index.lock.json`, AGENTS.md, workflows).
+- **What stays in litlfred for now:** the shared layers (cat-harness, cat-harness-tools, fhir-harness, folio-assistant-core, bootstrap). WHO repos pointing at them is accepted for now. The layers may later move somewhere other than WHO.
+- **Not yet:** a migration bean, issue, or upstream PRs. The forks pull in all of WHO's changes first (smart-base#121, smart-trust#66). WHO repos are never changed without the owner's permission.
+
+Measured 2026-10-23, fork main against WHO main: smart-base 773 ahead and 3 behind, still carrying the folio-assistant submodule; smart-trust 94 ahead and 11 behind; smart-immunizations 109 ahead; smart-ra 213 ahead; smart-hiv 39 ahead; smart-base-clinical 8 ahead; smart-core 8 ahead (on `master`). Thread "FHIR beans and WHO migration" (https://claude.ai/code/session_01Bye99WLJxQpyCxh2eMgW19).
