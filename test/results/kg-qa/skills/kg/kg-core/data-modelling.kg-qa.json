@@ -5,7 +5,7 @@
     "id": "data-modelling",
     "path": "skills/kg/kg-core/data-modelling.md"
   },
-  "source_hash": "7f9052055300",
+  "source_hash": "98bfbed947bb",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",
