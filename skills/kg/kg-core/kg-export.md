@@ -97,12 +97,21 @@ It is the form Tools already use, `<doc dir>/tools/<id>.jsonld` (bean `tdir`).
 | ❌ replaced | `https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#globalTask/GT_SeedWorkPlan` |
 | ❌ unservable | `…/folio-assistant-core/folio-assistant-core.jsonld/globalTask/GT_SeedWorkPlan`: a static host cannot hold a file and a directory under one name |
 
-**Not decided yet: a process's parts.** Whether a process's nodes, flows and
-lanes are `…/process/P/node/T` or stay fragments of the process,
-`…/process/P#node/T`, is pending the owner's call
-([#435](https://github.com/litlfred/cat-harness/issues/435)). Do not
-settle it in content or code before then. Mint them with the generator, as
-today.
+**A process's parts** (owner, 2026-10-23T14:56Z, picking one of three options: *"Steps
+and lanes get pages, and flows stay fragments of the process page … Everything
+anyone cites (a step, a role's lane) is a real resource, and the arrows, which
+only matter inside their diagram, stay on the process page."*):
+
+| part | IRI | |
+|---|---|---|
+| a step (any flow node) | `<doc dir>/process/P/node/T` | a subject: its own page and `.jsonld` |
+| a lane | `<doc dir>/process/P/lane/L` | a subject: its own page and `.jsonld` |
+| a sequence flow | `<doc dir>/process/P#flow/F` | a fragment of the process's page |
+
+**A flow is the one `#` this rule allows for instance data**; the other is the
+vocabulary exception below. It is allowed because nothing cites an arrow on
+its own. Any other part of a subject that people cite is itself a subject and
+takes a path.
 
 ### Why
 
@@ -113,10 +122,10 @@ today.
   history and cache, linkable on its own.
 - **`#` already means "a place on this HTML page".** Using it for identity
   mixes identity with navigation.
-- **Slash paths nest**; fragments do not.
+- **Slash paths nest** (`…/process/P/node/T`); fragments do not.
 - **It is the FHIR convention** the owner already uses: `<base>/<Type>/<id>`.
 
-### The exception: vocabulary terms keep `#`
+### The other exception: vocabulary terms keep `#`
 
 `#` stays right for **vocabulary and namespace terms** (`…/ns#Term`): one
 small document holds every term, and fetching it is what a consumer wants.
@@ -135,6 +144,12 @@ carrying the node as JSON-LD, plus `<id>.jsonld` beside it, as Tools are
 served. Whoever mints the path also publishes the file, in the same change.
 A slash IRI with nothing behind it brings back the twenty-three 404s from the
 README generator that `AGENTS.md` records.
+
+**Every rendered link to a subject uses its subject IRI**, meaning its page,
+and never a fragment of the instance document. That covers the ⓘ panel and
+the icons on a rendered BPMN diagram, step tables and role links. Owner,
+2026-10-23T14:57Z: *"and things like the info button/icons in the bpmn
+rendering should point to those new IRIs"*.
 
 bootstrap states the same rule for its own graph, in its own terms, in
 [`bootstrap-graph-publication`](../../../../bootstrap/skills/bootstrap-graph-publication.md)
