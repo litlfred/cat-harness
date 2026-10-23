@@ -21,6 +21,7 @@ import {
 import { ProvActivitySchema } from "./prov.ts";
 import { readActors, readPermissions } from "./role-graph.ts";
 import { actorsDir } from "./role-graph.ts";
+import { checkoutActors, checkoutPolicies } from "./scenario-overlay.ts";
 
 const INSTANCE = resolve(import.meta.dir, "..");
 const REPO = resolve(INSTANCE, "..");
@@ -104,6 +105,19 @@ describe("the policies in this repository", () => {
       ...(r.assignee === ANYONE || ids.has(r.assignee) ? [] : [`assignee ${r.assignee}`]),
       ...(GRAPH.has(r.action) ? [] : [`action ${r.action}`]),
     ]);
+    expect(bad).toEqual([]);
+  });
+
+  test("in the checkout, every assignee of every instance's policy is an actor the checkout declares", () => {
+    // A dependent that adds an actor writes its grants in its own policies/;
+    // read alone, this instance sees neither, and the check above is the same.
+    const all = checkoutPolicies(INSTANCE, POLICY_DIR);
+    const ids = new Set(checkoutActors(INSTANCE, ACTOR_DIR).map((a) => a.id));
+    const bad = [...all.values()].flatMap((p) =>
+      [...p.permission, ...p.prohibition]
+        .filter((r) => r.assignee !== ANYONE && !ids.has(r.assignee))
+        .map((r) => `${p.uid}: ${r.assignee}`),
+    );
     expect(bad).toEqual([]);
   });
 
