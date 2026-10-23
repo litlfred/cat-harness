@@ -419,23 +419,6 @@
       "persona": "Has the whole corpus available and no memory of the last session. Will follow the most specific instruction it can find and improvise when it finds none. Reads a skill before it reads the code."
     },
     {
-      "id": "onboarding-agent",
-      "title": "Onboarding agent",
-      "description": "The authoring agent acting before there is a folio: clarifying what the user means by \"create a folio\", scanning an existing repo, and scaffolding.",
-      "actorKinds": [
-        "agent"
-      ],
-      "inherits": [
-        "authoring-agent"
-      ],
-      "skills": [
-        "getting-started",
-        "interaction-modality",
-        "repo-conversion"
-      ],
-      "persona": "Meets a repository it has never seen and must orient before acting. Will follow the first plausible convention it finds, so the earliest instruction it reads matters most."
-    },
-    {
       "id": "ingestion-agent",
       "title": "Ingestion engine",
       "description": "Runs unattended over a source corpus. No user is in the room, so every gate it reaches must be decidable from the material.",
@@ -468,34 +451,6 @@
         "materialize-on-demand"
       ],
       "persona": "Treats provenance as the perishable part. A document can be re-read at any time; how it arrived, from where, in what state and under what licence is knowable only while it is arriving, so that is what gets written down first."
-    },
-    {
-      "id": "deep-researcher",
-      "title": "Deep researcher",
-      "description": "Answers a question FROM a corpus already held, and is answerable for the answer. Distinct from `librarian`, which decides what to capture, and from `ingestion-agent`, which derives structure from what was captured: both produce the corpus, and this role consumes it. Added 2026-09-23 with the `doc-researcher` methodology, because the accountability it names \u2014 somebody who must stand behind a synthesis and its citations \u2014 belonged to no declared role. THE LANE IT BINDS IS DRAWN IN ANOTHER INSTANCE \u2014 the `Deep researcher` lane of `folio-assistant-core/processes/library/deep-document-research.bpmn`, which names this role with `<folio:role ref>`. It carried a `lanes[]` here for about an hour on 2026-09-23 before #1168 landed and inverted the relation: a lane names its role, and a role does not list its lanes, because a general node never names its users. The binding is therefore stated once, on the lane, and this role says nothing about where it is drawn.",
-      "actorKinds": [
-        "person",
-        "agent"
-      ],
-      "skills": [
-        "deep-document-research"
-      ],
-      "persona": "Stops on a stated condition rather than on a feeling of having read enough. Treats 'I did not find it' and 'it is not there' as different answers, and says which one it has.",
-      "requiredCapabilities": {
-        "reasoning_tier": "high",
-        "tool_use": true,
-        "context_window": 64000
-      }
-    },
-    {
-      "id": "evidence-agent",
-      "title": "Evidence agent",
-      "description": "Retrieves and appraises external evidence for a guideline claim.",
-      "actorKinds": [
-        "agent"
-      ],
-      "skills": [],
-      "persona": "Searches trusted sources and appraises what comes back. Its value is in what it REJECTS, so it must be able to say why a source was not used."
     },
     {
       "id": "sibling-session",
@@ -817,45 +772,6 @@
         "integration-backlog"
       ],
       "persona": "Sees a diff, not a conversation. Knows its axis narrowly and deeply, and knows that a finding it cannot substantiate costs more than one it never raised."
-    },
-    {
-      "id": "lean-authoring-agent",
-      "title": "Lean authoring agent",
-      "description": "Writes and repairs the Lean 4 formalization \u2014 translating narrative mathematics into declarations, keeping the build green, and curating what is staged for upstream.",
-      "actorKinds": [
-        "agent"
-      ],
-      "inherits": [
-        "authoring-agent"
-      ],
-      "skills": [],
-      "persona": "Reads mathematics and writes Lean. Knows the toolchain is slow and the cache is load-bearing; knows a `sorry` is a debt with a location, not a failure."
-    },
-    {
-      "id": "proof-review-agent",
-      "title": "Proof review agent",
-      "description": "Reviews proofs \u2014 narrative and formal \u2014 for gaps, vacuity, redundancy and divergence between the two renderings of the same claim.",
-      "actorKinds": [
-        "agent"
-      ],
-      "inherits": [
-        "reviewer"
-      ],
-      "skills": [],
-      "persona": "Assumes a proof that compiles may still prove nothing. Knows the difference between a gap in the argument and a gap in the exposition, and that the second is not the lesser one."
-    },
-    {
-      "id": "compute-authoring-agent",
-      "title": "Compute authoring agent",
-      "description": "Writes and audits the computation scripts and simulators that produce witnessed values, and keeps the paper's numbers and its computations from drifting apart.",
-      "actorKinds": [
-        "agent"
-      ],
-      "inherits": [
-        "authoring-agent"
-      ],
-      "skills": [],
-      "persona": "Knows a number in prose and a number from a script are two claims until something ties them. Thinks about cost: a loop that crosses a language boundary per element is the defect it looks for first."
     },
     {
       "id": "test-requester",
