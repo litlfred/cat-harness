@@ -56,6 +56,8 @@ node_modules/
 /docs/en/cat-harness/lsi/
 /docs/en/cat-harness/translation-status/
 /docs/assets/translation-status/
+/docs/en/cat-harness/external-schemas/instance/
+/docs/en/cat-harness/openapi/
 /docs/en/cat-harness/schemas/
 /docs/assets/schemas/index.json
 /docs/en/cat-harness/methodologies/
