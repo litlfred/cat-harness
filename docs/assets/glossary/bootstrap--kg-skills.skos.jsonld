@@ -46,7 +46,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Where bootstrap's Knowledge Graph file is published, why its `@id` must be exactly that address, why a `.json` copy sits beside the `.jsonld`, and why the file is not kept in the repository."
+          "@value": "Where bootstrap's Knowledge Graph file is published, why its `@id` must be exactly that address, why a `.json` copy sits beside the `.jsonld`, and why the file is not kept in the repository. Also what each subject in it is named: a path under the Harness's address, never a `#fragment` of the file."
         }
       ],
       "skos:notation": "bootstrap-graph-publication",
