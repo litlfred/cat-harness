@@ -2,11 +2,11 @@
 # folio-assistant-8jur
 $schema: bean/1.0.0
 title: 'FHIR / IG kinds have no viewer: IG AST, OpenAPI, external schemas, L1 extraction, themes'
-status: todo
+status: in-progress
 type: feature
 priority: normal
 created_at: 2026-10-15T16:53:28Z
-updated_at: 2026-10-15T16:53:28Z
+updated_at: 2026-10-23T13:45:00Z
 parent: folio-assistant-46ob
 ---
 
@@ -25,3 +25,5 @@ Each kind therefore closes one of three ways — pick per kind, with the owner:
 1. **Declare a viewer** that already exists elsewhere (cheapest; often a scope fix).
 2. **Build a viewer** (a Tool + page writer + `builtAtPublish` entry).
 3. **Exempt it**: `renderExemption.of: ["visualiser"]` on the instance, when the kind is internal plumbing a reader never browses — the row then reads "no viewer by design".
+
+_2026-10-23T13:45:00Z_ — Status synced from `todo` to `in-progress` to match the folio-assistant copy of this bean, which is newer and records the work as done there. Only the status changed; the body here is kept as it was. Owner OK in thread "FHIR beans and WHO migration" (https://claude.ai/code/session_01Bye99WLJxQpyCxh2eMgW19).

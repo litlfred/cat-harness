@@ -1,11 +1,11 @@
 ---
 # folio-assistant-w0at
 title: 'S8 cut over: submodule if imported, subscription if read; in-tree copy removed only on owner OK'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-01T08:14:34Z
-updated_at: 2026-10-06T19:00:43Z
+updated_at: 2026-10-23T13:45:00Z
 parent: folio-assistant-7x5n
 blocked_by:
     - folio-assistant-mgxw
@@ -29,3 +29,5 @@ Cutover mechanism replaced, following the remote-mount ruling (bean 0mpw):
 
 
 **Owner 2026-10-06: cutover directories go to fsh-guts.** When an instance's in-tree copy leaves this repository at cutover, it is MOVED into the fsh-guts graph (deprecated/throwaway structured content, mounted from branch cat/cat-harness/fsh-guts via state:mount and written with state:push) rather than deleted — still only on the owner's OK per instance, and with a fsh-guts node recording where the live copy now lives (repository + pinned SHA).
+
+_2026-10-23T13:45:00Z_ — Status synced from `todo` to `completed` to match the folio-assistant copy of this bean, which is newer and records the work as done there. Only the status changed; the body here is kept as it was. Owner OK in thread "FHIR beans and WHO migration" (https://claude.ai/code/session_01Bye99WLJxQpyCxh2eMgW19).

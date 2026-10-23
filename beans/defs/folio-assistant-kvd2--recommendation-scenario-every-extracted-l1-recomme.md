@@ -1,11 +1,11 @@
 ---
 # folio-assistant-kvd2
 title: 'RECOMMENDATION SCENARIO: every extracted L1 recommendation gets a user-scenario candidate (persona, process, domain), reusing existing vocabulary and warning when none fits'
-status: in-progress
+status: completed
 type: feature
 priority: high
 created_at: 2026-10-10T14:07:07Z
-updated_at: 2026-10-16T10:45:00Z
+updated_at: 2026-10-23T13:45:00Z
 parent: folio-assistant-slw1
 ---
 
@@ -63,3 +63,5 @@ Sibling beans: 4nfs (ontologist/terminologist), 398x (guideline domain), 2ipj (p
 - The DTH NPC demo now has 22 practices and 26 scenario warnings.
 
 _2026-10-16T10:45:00Z_ — Parented to `slw1` (INGEST) by subject: it had no parent, so it sat under no epic or goal and failed the parent check on main (https://claude.ai/code/session_01NUrhvvMEwU5MmPW4L2w9jP).
+
+_2026-10-23T13:45:00Z_ — Status synced from `in-progress` to `completed` to match the folio-assistant copy of this bean, which is newer and records the work as done there. Only the status changed; the body here is kept as it was. Owner OK in thread "FHIR beans and WHO migration" (https://claude.ai/code/session_01Bye99WLJxQpyCxh2eMgW19).

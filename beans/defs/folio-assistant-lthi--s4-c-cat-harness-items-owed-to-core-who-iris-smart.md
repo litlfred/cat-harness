@@ -1,11 +1,11 @@
 ---
 # folio-assistant-lthi
 title: 'S4-c: cat-harness items owed to core, who-iris, smart-base, fhir-harness or the root (~45 rows)'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-01T12:16:24Z
-updated_at: 2026-10-16T07:00:00Z
+updated_at: 2026-10-23T13:45:00Z
 parent: folio-assistant-7x5n
 ---
 
@@ -27,3 +27,5 @@ Story S4 (rfuq). Rows: cat-harness/docs/proposals/placement-audit-2026-10-01.jso
 - Status stays **todo**. Its box is unticked: no row was resolved.
 
 _2026-10-16T07:00:00Z_ — Block lifted (owner ruling 2026-10-16, items 1 and 9): `hx65` has been completed since 2026-10-01, and the folio-assistant copy lifted this edge on 2026-10-09. Session https://claude.ai/code/session_01K9Xi9QSxCNYju8QNu7EuHg.
+
+_2026-10-23T13:45:00Z_ — Status synced from `todo` to `completed` to match the folio-assistant copy of this bean, which is newer and records the work as done there. Only the status changed; the body here is kept as it was. Owner OK in thread "FHIR beans and WHO migration" (https://claude.ai/code/session_01Bye99WLJxQpyCxh2eMgW19).

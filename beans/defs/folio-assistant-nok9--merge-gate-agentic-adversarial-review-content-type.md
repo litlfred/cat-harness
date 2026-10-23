@@ -1,11 +1,11 @@
 ---
 # folio-assistant-nok9
 title: 'MERGE GATE: agentic adversarial review + content-type compile gates, and per-content-block QA backfill'
-status: todo
+status: completed
 type: feature
 priority: normal
 created_at: 2026-10-02T16:29:09Z
-updated_at: 2026-10-16T07:15:00Z
+updated_at: 2026-10-23T13:45:00Z
 parent: folio-assistant-hfag
 ---
 
@@ -147,3 +147,5 @@ Owner, 2026-10-03, session_01AxhsSvodhTgaioG1nUBWkh, selected option "Retype to 
 _2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `completed` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: completed, cat-harness: todo, cat-harness-tools: todo). Evidence: closed in the folio-assistant store copy (2026-10-10) — Closed 2026-10-10 on landed evidence: All 12 child beans completed and merged into main:. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.
 
 _2026-10-16T07:15:00Z_ — Reopened: status `completed` → `todo`. Its child `w8jq` was reopened at 06:30Z by the store reconciliation (merge-train composition unverified; Task_Review still names code-node-review), so `check:bean-rollup` failed on a completed container with an open child. Owner chose "Fix the bean first" (Folio Assistant project, theme snippet thread). Session https://claude.ai/code/session_01VkiCsBur8gXoBfdFRjADFd.
+
+_2026-10-23T13:45:00Z_ — Status synced from `todo` to `completed` to match the folio-assistant copy of this bean, which is newer and records the work as done there. Only the status changed; the body here is kept as it was. Owner OK in thread "FHIR beans and WHO migration" (https://claude.ai/code/session_01Bye99WLJxQpyCxh2eMgW19).

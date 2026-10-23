@@ -1,11 +1,11 @@
 ---
 # folio-assistant-8pzh
 title: 'smart-base: extract smart-kg L1 instance documents (publication, section, recommendation) from ingested guideline PDFs'
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-02T06:16:07Z
-updated_at: 2026-10-12T18:55:00Z
+updated_at: 2026-10-23T13:45:00Z
 parent: folio-assistant-qvxh
 ---
 
@@ -49,3 +49,4 @@ Owner 2026-10-02: 'keep going' after the storage question went unanswered, so th
   - The manifest is not changed: the content context has no term for related graphs. The L1 graph points back to its source with `wasDerivedFrom`.
 - **Republishing is still the owner's step.** Nothing was deployed. Both PRs must land, then `library:viz` must run in a checkout holding both, then smart-base's `folio-site.yml` must be dispatched on `claude/seed-smart-base` with its folio-assistant submodule bumped.
 
+_2026-10-23T13:45:00Z_ — Status synced from `in-progress` to `completed` to match the folio-assistant copy of this bean, which is newer and records the work as done there. Only the status changed; the body here is kept as it was. Owner OK in thread "FHIR beans and WHO migration" (https://claude.ai/code/session_01Bye99WLJxQpyCxh2eMgW19).

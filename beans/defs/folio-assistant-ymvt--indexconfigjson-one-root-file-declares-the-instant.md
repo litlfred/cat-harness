@@ -1,11 +1,11 @@
 ---
 # folio-assistant-ymvt
 title: 'INDEX.CONFIG.JSON: one root file declares the instantiated harnesses, their sources and which one controls <base>/index.html'
-status: in-progress
+status: completed
 type: feature
 priority: high
 created_at: 2026-10-07T22:20:18Z
-updated_at: 2026-10-14T20:30:00Z
+updated_at: 2026-10-23T13:45:00Z
 parent: folio-assistant-7x5n
 ---
 
@@ -54,3 +54,5 @@ When the file is present it is authoritative. When it is absent, today's behavio
   - [x] Skill and process text that said to create `<name>.config.json`: cat-harness#222 (index-config, feature-staging, kg-subscription, directory-conventions, voice and QA skills), fhir-harness#64 (`ig-build-pipeline`), folio-assistant-core#93 (getting-started.bpmn, folio-intent.dmn, pages-live-gate.dmn, document-authoring).
   - [ ] Other repositories still carrying a root `<name>.config.json` beside an index (none measured on 2026-10-14 beyond the three above; re-measure, e.g. `index-config:inline:check` per repo), and wiring `index-config:inline:check` as a gate once a repository is clean.
   - [ ] Generated copies (`cat-harness/docs/reference/skill-instructions/`, process pages) regenerate from the corrected sources.
+
+_2026-10-23T13:45:00Z_ — Status synced from `in-progress` to `completed` to match the folio-assistant copy of this bean, which is newer and records the work as done there. Only the status changed; the body here is kept as it was. Owner OK in thread "FHIR beans and WHO migration" (https://claude.ai/code/session_01Bye99WLJxQpyCxh2eMgW19).

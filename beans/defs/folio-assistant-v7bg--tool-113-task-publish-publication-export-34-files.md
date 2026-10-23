@@ -1,11 +1,11 @@
 ---
 # folio-assistant-v7bg
 title: 'TOOL 1/13: Task_Publish — publication & export (34 files, 19 entry points)'
-status: in-progress
+status: completed
 type: task
 priority: high
 created_at: 2026-09-20T04:34:11Z
-updated_at: 2026-09-20T16:39:06Z
+updated_at: 2026-10-23T13:45:00Z
 parent: folio-assistant-d308
 ---
 
@@ -270,3 +270,5 @@ Done the same day: `package-release` (folio-core), and two Tool nodes that
 satisfy it as alternatives — `release-please` (declared, NOT configured here;
 `frq2` still holds) and `package-release-manual`. The other open items on this
 bean (kg-viewer's skill, the site half) are unchanged.
+
+_2026-10-23T13:45:00Z_ — Status synced from `in-progress` to `completed` to match the cat-harness-tools copy of this bean, which is newer and records the work as done there. Only the status changed; the body here is kept as it was. Owner OK in thread "FHIR beans and WHO migration" (https://claude.ai/code/session_01Bye99WLJxQpyCxh2eMgW19).

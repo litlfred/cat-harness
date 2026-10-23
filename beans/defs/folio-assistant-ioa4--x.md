@@ -1,11 +1,11 @@
 ---
 # folio-assistant-ioa4
 title: Immunizations L1 knowledge graph from DAK Component 1; smart-kg L1 schema to Zod in smart-base
-status: in-progress
+status: completed
 type: feature
 priority: normal
 created_at: 2026-10-06T08:57:58Z
-updated_at: 2026-10-06T08:58:14Z
+updated_at: 2026-10-23T13:45:00Z
 parent: folio-assistant-uhkv
 ---
 
@@ -14,3 +14,5 @@ User request 2026-10-06 (ritikarawlani): (1) use folio-assistant to extract an L
 Related: 8pzh (L1 extraction from PDFs), pebe (smart-kg pin), slw1 (uploads → complete L1 library).
 
 (This bean was first created by a malformed probe titled "x" and repurposed here rather than left as a stray; nothing referenced it in between.)
+
+_2026-10-23T13:45:00Z_ — Status synced from `in-progress` to `completed` to match the folio-assistant copy of this bean, which is newer and records the work as done there. Only the status changed; the body here is kept as it was. Owner OK in thread "FHIR beans and WHO migration" (https://claude.ai/code/session_01Bye99WLJxQpyCxh2eMgW19).

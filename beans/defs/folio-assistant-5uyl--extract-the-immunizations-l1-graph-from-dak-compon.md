@@ -1,11 +1,11 @@
 ---
 # folio-assistant-5uyl
 title: Extract the immunizations L1 graph from DAK Component 1 into smart-immunizations/library
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-06T08:58:14Z
-updated_at: 2026-10-06T09:39:52Z
+updated_at: 2026-10-23T13:45:00Z
 parent: folio-assistant-ioa4
 ---
 
@@ -18,3 +18,5 @@ parent: folio-assistant-ioa4
 ## Progress 2026-10-06
 - litlfred/smart-immunizations@a43629c (branch claude/happy-pasteur-pav8ba): library/ holds the DAK + (31) + (28); graph smart-kg-l1-dak-references.json, 52 nodes / 53 edges, conforms under smart-kg validate.mjs (WHO main 66a9b13) and the smart-base Zod validator.
 - Item 4 open: (15) PAHO IRIS returned 403 and (26) (32) are on www.who.int, both denied by this session's network policy; (24) (29) are web pages, (30) a spreadsheet. Each is recorded in the graph with its URL.
+
+_2026-10-23T13:45:00Z_ — Status synced from `in-progress` to `completed` to match the folio-assistant copy of this bean, which is newer and records the work as done there. Only the status changed; the body here is kept as it was. Owner OK in thread "FHIR beans and WHO migration" (https://claude.ai/code/session_01Bye99WLJxQpyCxh2eMgW19).

@@ -1,11 +1,11 @@
 ---
 # folio-assistant-jut3
 title: 'SMART-* VIA JUST-THE-DOCS: stop mounting IG Publisher HTML; render input/pages from post-processed JSON-LD + metadata through the Jekyll pipeline'
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-21T19:10:00Z
-updated_at: 2026-10-01T12:37:45Z
+updated_at: 2026-10-23T13:45:00Z
 parent: folio-assistant-uhkv
 ---
 
@@ -713,3 +713,5 @@ Owner, on converting `qa.xml` to JSON for a client-side QA page: *"fhir qa.xml? 
 - **The QA files are the Publisher's own, so this pipeline does not re-render, convert or drop them.** That covers `qa.html`, `qa.min.html`, `qa.xml`, `qa.json`, `qa.txt`, `qa.compare.txt`, `qa-tx`, `qa-txservers`, `qa-dep` and `qa-ipreview`. Where a Publisher run exists, they are published from its output byte for byte.
 - **Parity table:** the `qa*` pages move from "missing" to **passed through from the Publisher, by owner ruling**. They are not a render this pipeline owes.
 - **Still open:** `searchform` and `history` among the IG-level pages.
+
+_2026-10-23T13:45:00Z_ — Status synced from `in-progress` to `completed` to match the folio-assistant copy of this bean, which is newer and records the work as done there. Only the status changed; the body here is kept as it was. Owner OK in thread "FHIR beans and WHO migration" (https://claude.ai/code/session_01Bye99WLJxQpyCxh2eMgW19).
