@@ -610,7 +610,7 @@
 <meta name="fa-fsh-guts-src" content="{{ '/fsh-guts.json' | relative_url }}">
 {%- endunless %}
 <!--
-  ?v=<build time> ON EVERY FIRST-PARTY ASSET — and the reason is a REVIEW
+  ?v=<content hash> ON EVERY FIRST-PARTY ASSET — and the reason is a REVIEW
   failure, not a performance one.
 
   These five are served from stable paths with no hash in the name, so a
@@ -623,42 +623,43 @@
   2026-09-21 on this branch: every byte of the change was verified present in
   the publish ref while the page rendered the previous build.
 
-  `site.time` is the BUILD's timestamp, so the query changes exactly when the
-  bytes might have, and never between two readers of the same build. A
-  content hash would be tighter and needs a pipeline step; this needs none
-  and closes the case that costs review time.
+  The query is a HASH OF THE ASSET (`fa_asset_version`,
+  `_plugins/fa-asset-version.rb`), so it changes exactly when the served bytes
+  do. It was `site.time` until 2026-10-23, and the build time is new on every
+  build: every page then differed on every rebuild, so each re-push of a
+  preview stored a whole new copy of its HTML (bean `g196`).
 
   NOT a cache-busting strategy for third-party assets, and not applied to
   them: those are versioned in their own URLs already.
 -->
 <!-- The harness icon row's own style, which railed pages load without docs-ui.css (beans `lhvt`, `9rq1`). -->
-<link rel="stylesheet" href="{{ '/assets/css/navbar-row.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-<link rel="stylesheet" href="{{ '/assets/css/docs-ui.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="{{ '/assets/css/navbar-row.css' | relative_url }}?v={{ '/assets/css/navbar-row.css' | fa_asset_version }}">
+<link rel="stylesheet" href="{{ '/assets/css/docs-ui.css' | relative_url }}?v={{ '/assets/css/docs-ui.css' | fa_asset_version }}">
 <!-- Narrow viewports: wide content scrolls in its own box, never the page
      (bean `2r2n`). The standalone viewers inline the same file through
      `withViewerNav`, so both kinds of page read one set of rules. -->
-<link rel="stylesheet" href="{{ '/assets/css/narrow-viewport.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="{{ '/assets/css/narrow-viewport.css' | relative_url }}?v={{ '/assets/css/narrow-viewport.css' | fa_asset_version }}">
 
 <!--
   The work-plan dashboard's styles, split from docs-ui.css so that
   `state-visualizer.ts` can inline exactly these bytes into the generated
   `<base>/<stub>/state-visualizer/` pages. One rule, two surfaces.
 -->
-<link rel="stylesheet" href="{{ '/assets/css/work-plan.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="{{ '/assets/css/work-plan.css' | relative_url }}?v={{ '/assets/css/work-plan.css' | fa_asset_version }}">
 <!-- Sticky themes. GENERATED from the theme nodes in `schemas/themes.ts` by
      `bun run cat themes:css`; `themes:css:check` fails the build when it is stale.
      Loaded AFTER docs-ui.css deliberately: it supplies the `--fa-sticky-*`
      roles that docs-ui.css consumes, and a custom property has to be set on a
      matching element before the rule reading it takes effect. -->
-<link rel="stylesheet" href="{{ '/assets/css/themes.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="{{ '/assets/css/themes.css' | relative_url }}?v={{ '/assets/css/themes.css' | fa_asset_version }}">
 <!-- UML overview colours: one class per graph typology, set on the Mermaid nodes
      that `scripts/gen-uml-overview.ts` writes into docs/uml/overview/. -->
-<link rel="stylesheet" href="{{ '/assets/css/uml.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="{{ '/assets/css/uml.css' | relative_url }}?v={{ '/assets/css/uml.css' | fa_asset_version }}">
 <!-- Kind avatars. GENERATED from `schemas/avatars.ts` by `bun run cat avatars:css`;
      `avatars:css:check` fails the build when it is stale. One stylesheet
      rather than 68 assets: the glyph is a mask and the colour is a property,
      so a scheme swap is a custom property and the trash state is a selector. -->
-<link rel="stylesheet" href="{{ '/assets/css/avatars.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="{{ '/assets/css/avatars.css' | relative_url }}?v={{ '/assets/css/avatars.css' | fa_asset_version }}">
 
 <!--
   The kinds THIS INSTANCE DECLARES, for the avatar fan.
@@ -674,19 +675,29 @@
 -->
 <!-- NOT MOVED: same reason as fa-site-links above. -->
 <script type="application/json" id="fa-declared-kinds">{{ site.data.harness.declaredKinds | jsonify }}</script>
-<!-- FIRST of the deferred scripts: it fills `#fa-navbar-row` and `meta[name=fa-tiles]` before any reader runs (bean `gp2f`). -->
-<script src="{{ '/assets/js/harness-data.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+<!--
+  FIRST of the deferred scripts: it fills `#fa-navbar-row` and
+  `meta[name=fa-tiles]` before any reader runs (bean `gp2f`).
+
+  NO VERSION QUERY, unlike every other first-party asset here. This file carries LIVE
+  COUNTS (open beans, todos), so it changes whenever one bean opens or closes.
+  A version query naming its content would write that change into every page: two
+  previews built 25 minutes apart differed on 1,351 pages for one count going
+  133 -> 132 (bean `g196`, 2026-10-23). Unversioned, a stale copy lives only as
+  long as GitHub Pages' cache (about 10 minutes), and the pages stay the same.
+-->
+<script src="{{ '/assets/js/harness-data.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/vendor/qrcode.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/vendor/qrcode_UTF8.js' | relative_url }}" defer></script>
 <!-- BEFORE docs-ui.js and work-plan.js: both read window.faRender. -->
 <script src="{{ '/assets/js/kg-render.js' | relative_url }}" defer></script>
 <!-- BEFORE docs-ui.js, which calls it: the one drawing of the harness icon row (beans `lhvt`, `9rq1`). -->
-<script src="{{ '/assets/js/navbar-row.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
-<script src="{{ '/assets/js/docs-ui.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+<script src="{{ '/assets/js/navbar-row.js' | relative_url }}?v={{ '/assets/js/navbar-row.js' | fa_asset_version }}" defer></script>
+<script src="{{ '/assets/js/docs-ui.js' | relative_url }}?v={{ '/assets/js/docs-ui.js' | fa_asset_version }}" defer></script>
 <!-- The edit, source and feedback links of every page, from the platform's one
   recipe (cat-harness-tools/src/core/edit-links.ts, bean v433): links carry their
   facts and this builds the hrefs. -->
-<script src="{{ '/assets/js/edit-links.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+<script src="{{ '/assets/js/edit-links.js' | relative_url }}?v={{ '/assets/js/edit-links.js' | fa_asset_version }}" defer></script>
 
 <!--
   The work-plan dashboard. SELF-MOUNTING on any page carrying
