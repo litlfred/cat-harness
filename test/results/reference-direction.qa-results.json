@@ -16,7 +16,7 @@
     },
     "multi-destination-unlisted": {
       "summary": "A file holding a wrong-direction reference to MORE THAN ONE instance above it, which `PENDING` does not list. `names > 1` is the whole membership rule, so an unlisted one is an unrecorded question rather than a finding somebody can act on: \"move it up\" has no single destination. This is the set the script exits 1 on, and recording it is not resolving it — whether these join `PENDING` or are ruled on is issue #1219's question.",
-      "count": 23,
+      "count": 3,
       "entries": [
         {
           "file": "cat-harness/docs/source/concepts-content-types/concepts-content-types.ts",
@@ -27,87 +27,7 @@
           "names": 2
         },
         {
-          "file": "fhir-harness/fhir-harness.json",
-          "names": 3
-        },
-        {
-          "file": "fhir-harness/schemas/fhir-artifact-index.ts",
-          "names": 2
-        },
-        {
-          "file": "fhir-harness/schemas/ig-chrome.ts",
-          "names": 2
-        },
-        {
-          "file": "fhir-harness/scripts/ast-to-artifact-index.ts",
-          "names": 3
-        },
-        {
-          "file": "fhir-harness/scripts/build-ig-site.ts",
-          "names": 3
-        },
-        {
-          "file": "fhir-harness/scripts/gen-ig-pages.ts",
-          "names": 3
-        },
-        {
-          "file": "fhir-harness/scripts/ingest-ig-artifacts.ts",
-          "names": 3
-        },
-        {
-          "file": "fhir-harness/scripts/ingest-ig-chrome.ts",
-          "names": 2
-        },
-        {
-          "file": "fhir-harness/scripts/stage-ig-sites.ts",
-          "names": 2
-        },
-        {
-          "file": "fhir-harness/scripts/stage-local-ig.ts",
-          "names": 2
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-build-pipeline.md",
-          "names": 3
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-publisher-fork.md",
-          "names": 2
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-publisher-reduction.md",
-          "names": 3
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-site-links.md",
-          "names": 3
-        },
-        {
-          "file": "fhir-harness/tools/ig-ast-measure-real-igs/ig-ast-measure-real-igs.ts",
-          "names": 2
-        },
-        {
-          "file": "smart-base/AGENTS.md",
-          "names": 2
-        },
-        {
           "file": "smart-base/document-kinds/README.md",
-          "names": 2
-        },
-        {
-          "file": "smart-base/README.md",
-          "names": 2
-        },
-        {
-          "file": "smart-base/skills/content/authoring-who-smart-guidelines/dak-postprocessing.md",
-          "names": 2
-        },
-        {
-          "file": "smart-base/skills/content/authoring-who-smart-guidelines/toolchain-ownership.md",
-          "names": 2
-        },
-        {
-          "file": "smart-base/smart-base.json",
           "names": 2
         }
       ]
@@ -128,11 +48,11 @@
       "entries": [
         {
           "instances": 11,
-          "occurrences": 5905,
+          "occurrences": 5729,
           "allowed": 0,
-          "wrongDirection": 244,
-          "wrongDirectionFiles": 79,
-          "exempt": 5661,
+          "wrongDirection": 49,
+          "wrongDirectionFiles": 26,
+          "exempt": 5680,
           "namesRepository": 0,
           "undetermined": 0,
           "pendingFiles": 0,
@@ -142,16 +62,8 @@
     },
     "wrong-direction": {
       "summary": "A.10 (owner, Q-B 2026-10-01): every file holding a wrong-direction reference — naming ONE instance above it or several — one entry per file and per instance it names. The backlog, recorded so that `--check` can tell an inherited pair from a NEW one: a file newly naming an instance above it, single destination or not, fails; one that stops is resolved. The fix is to REWORD in place (Q1), not to move the file.",
-      "count": 111,
+      "count": 30,
       "entries": [
-        {
-          "file": "bootstrap-tools/.github/workflows/harness-pr-checks.yml",
-          "target": "cat-harness-tools"
-        },
-        {
-          "file": "bootstrap/.github/workflows/harness-pr-checks.yml",
-          "target": "cat-harness-tools"
-        },
         {
           "file": "cat-harness-tools/scripts/build-instance-site.ts",
           "target": "smart-base"
@@ -159,6 +71,10 @@
         {
           "file": "cat-harness-tools/scripts/dak-pdf.ts",
           "target": "smart-base"
+        },
+        {
+          "file": "cat-harness-tools/scripts/harness-tiles.ts",
+          "target": "folio-assistant-sci"
         },
         {
           "file": "cat-harness-tools/templates/paper/github/actions/lake-cache-restore/action.yml",
@@ -178,10 +94,6 @@
         },
         {
           "file": "cat-harness/cat-harness.json",
-          "target": "who-iris"
-        },
-        {
-          "file": "cat-harness/docs/README.md",
           "target": "who-iris"
         },
         {
@@ -261,335 +173,19 @@
           "target": "smart-base"
         },
         {
-          "file": "fhir-harness/AGENTS.md",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/fhir-harness.json",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/fhir-harness.json",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "fhir-harness/fhir-harness.json",
-          "target": "smart-trust"
-        },
-        {
           "file": "fhir-harness/processes/content/ig-incremental-build.checklist.md",
           "target": "smart-immunizations"
         },
         {
-          "file": "fhir-harness/schemas/fhir-artifact-index.ts",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "fhir-harness/schemas/fhir-artifact-index.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/schemas/ig-chrome.ts",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/schemas/ig-chrome.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/schemas/ig-menu.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/scripts/ast-to-artifact-index.ts",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/scripts/ast-to-artifact-index.ts",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "fhir-harness/scripts/ast-to-artifact-index.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/scripts/build-ig-site.ts",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/scripts/build-ig-site.ts",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "fhir-harness/scripts/build-ig-site.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/scripts/check-artifact-index.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/scripts/gen-ig-pages.ts",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/scripts/gen-ig-pages.ts",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "fhir-harness/scripts/gen-ig-pages.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/scripts/ig-ast.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/scripts/ig-binary-audit.ts",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/scripts/ig-dependencies.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/scripts/ig-globals.ts",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/scripts/ig-search.ts",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "fhir-harness/scripts/ig-site-data.ts",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/scripts/ingest-ig-artifacts.ts",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/scripts/ingest-ig-artifacts.ts",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "fhir-harness/scripts/ingest-ig-artifacts.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/scripts/ingest-ig-chrome.ts",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/scripts/ingest-ig-chrome.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/scripts/ingest-ig-menu.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/scripts/ingest-ig-releases.ts",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/scripts/p2-refusals.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/scripts/pin-ig-terminology.ts",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/scripts/publish-served.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/scripts/questionnaire-form.ts",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "fhir-harness/scripts/resource-views.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/scripts/stage-ig-sites.ts",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/scripts/stage-ig-sites.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/scripts/stage-local-ig.ts",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "fhir-harness/scripts/stage-local-ig.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/fhir-ig-create.md",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-ast-delta.md",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-binary-artefacts.md",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-build-pipeline.md",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-build-pipeline.md",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-build-pipeline.md",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-publisher-fork.md",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-publisher-fork.md",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-publisher-reduction.md",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-publisher-reduction.md",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-publisher-reduction.md",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-site-links.md",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-site-links.md",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-site-links.md",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/skills/fhir-ig-base/ig-site-theme.md",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/templates/ig-repo-site/site-publish.yml",
-          "target": "smart-base"
-        },
-        {
-          "file": "fhir-harness/tools/ig-ast-measure-real-igs/ig-ast-measure-real-igs.ts",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "fhir-harness/tools/ig-ast-measure-real-igs/ig-ast-measure-real-igs.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "fhir-harness/tools/index.ts",
-          "target": "smart-base"
-        },
-        {
-          "file": "smart-base/AGENTS.md",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "smart-base/AGENTS.md",
-          "target": "smart-trust"
-        },
-        {
-          "file": "smart-base/document-kinds/dak.coverage.smart-immunizations.json",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "smart-base/document-kinds/dak.coverage.smart-trust.json",
-          "target": "smart-trust"
-        },
-        {
           "file": "smart-base/document-kinds/README.md",
           "target": "smart-immunizations"
         },
         {
           "file": "smart-base/document-kinds/README.md",
-          "target": "smart-trust"
-        },
-        {
-          "file": "smart-base/kg/generated/l1/l1.json",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "smart-base/kg/src/l1.ts",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "smart-base/pipeline/qa-checkers-dak.ts",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "smart-base/README.md",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "smart-base/README.md",
-          "target": "smart-trust"
-        },
-        {
-          "file": "smart-base/schemas/dak.ts",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "smart-base/scripts/ig-site-sidecars.ts",
-          "target": "smart-trust"
-        },
-        {
-          "file": "smart-base/skills/content/authoring-who-smart-guidelines/dak-postprocessing.md",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "smart-base/skills/content/authoring-who-smart-guidelines/dak-postprocessing.md",
-          "target": "smart-trust"
-        },
-        {
-          "file": "smart-base/skills/content/authoring-who-smart-guidelines/ig-artifact-ingestion.md",
-          "target": "smart-trust"
-        },
-        {
-          "file": "smart-base/skills/content/authoring-who-smart-guidelines/toolchain-ownership.md",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "smart-base/skills/content/authoring-who-smart-guidelines/toolchain-ownership.md",
-          "target": "smart-trust"
-        },
-        {
-          "file": "smart-base/smart-base.json",
-          "target": "smart-immunizations"
-        },
-        {
-          "file": "smart-base/smart-base.json",
-          "target": "smart-trust"
-        },
-        {
-          "file": "smart-base/themes/themes.ts",
           "target": "smart-trust"
         }
       ]
     }
   },
-  "total": 135
+  "total": 34
 }
