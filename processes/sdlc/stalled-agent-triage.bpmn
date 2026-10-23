@@ -51,9 +51,9 @@
       <bpmn:documentation>Group by what the work delivers, not by agent. Each theme gets its epic, members, dependencies, risk, and one of: continue, fold in, new epic, park, scrap (owner only).</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="stalled-agent-triage"/></bpmn:extensionElements>
     </bpmn:task>
-    <bpmn:task id="U_Decide" name="Decide each theme">
+    <bpmn:callActivity id="U_Decide" calledElement="Process_AskThePerson" name="Decide each theme">
       <bpmn:extensionElements><cat-harness.processes:no-skill reason="The user's decision. The triage agent presents each theme with context, options and a recommendation, one decision in full and a count of the rest."/></bpmn:extensionElements>
-    </bpmn:task>
+    </bpmn:callActivity>
     <bpmn:task id="A_Record" name="Record the triage and claim the picked-up work">
       <bpmn:documentation>A 'triage: &lt;date&gt;' bean note on each theme's epic; new or re-parented beans; claims via beans:claim. Owning sessions still alive are notified before their branches are touched.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="bean-coordination"/></bpmn:extensionElements>

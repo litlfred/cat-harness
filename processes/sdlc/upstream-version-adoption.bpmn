@@ -101,7 +101,7 @@ In the Agent lane, because this step produces the analysis and does not make the
 
 Reached through the loop as well as straight through: `SF_UA_8` re-enters at `A_Impact`, so a run where the reviewer found something fixable arrives here a second time with different evidence. That is a genuine re-analysis and its `op="note"` appends rather than deduping, which is the behaviour wanted — a second note records that the options were weighed again against changed inputs.</bpmn:documentation>
     </bpmn:callActivity>
-    <bpmn:userTask id="PM_Decide" name="Adopt, hold&#10;or decline">
+    <bpmn:callActivity id="PM_Decide" calledElement="Process_AskThePerson" name="Adopt, hold&#10;or decline">
       <bpmn:documentation>A PERSON decides. The lane admits `person` only, so `activity-fulfilment-kind` fails the moment somebody makes an agent the accepting party, and `relaxable="false"` means no package may relax the step.
 
 The publication manager rather than the editor because a pin is not a change to the corpus — it is a change to what the published artefact is BUILT FROM, and that role is the one accountable for what is live.
@@ -111,7 +111,7 @@ Deliberately NOT a DMN-backed gateway. Every computed gateway in this repository
         <bootstrap.processes:skill ref="decision-audit"/>
         <cat-harness.processes:policy relaxable="false" />
       </bpmn:extensionElements>
-    </bpmn:userTask>
+    </bpmn:callActivity>
     <bpmn:exclusiveGateway id="GW_Adopt" name="Adopt?">
       <bpmn:documentation>The project manager's decision. `yes` moves the pin and opens the PR; `no` records the hold or the decline.</bpmn:documentation>
     </bpmn:exclusiveGateway>

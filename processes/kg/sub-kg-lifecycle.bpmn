@@ -121,7 +121,7 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:incoming>F2</bpmn:incoming>
       <bpmn:outgoing>F3</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:userTask id="Task_DecideLeave" name="Should it leave&#10;now?">
+    <bpmn:callActivity id="Task_DecideLeave" calledElement="Process_AskThePerson" name="Should it leave&#10;now?">
       <bpmn:documentation>The owner decides, from what is measured, whether the sub-KG starts staging for separation now. Asked as numbered options with the recommended one first and a stated default: keeping it in place is the default, and is a real outcome.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sub-kg-lifecycle"/>
@@ -129,7 +129,7 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:incoming>F3</bpmn:incoming>
       <bpmn:outgoing>F4</bpmn:outgoing>
       <bpmn:outgoing>F5</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_Stays" name="Stays in place">
       <bpmn:documentation>The sub-KG stays staged in the host. Everything done so far is in place and reversible, and the process can be started again when it should leave.</bpmn:documentation>
       <bpmn:incoming>F4</bpmn:incoming>
@@ -190,7 +190,7 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:incoming>F13</bpmn:incoming>
       <bpmn:outgoing>F14</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:userTask id="Task_ConfirmCreate" name="7 · Owner confirms:&#10;create the repository">
+    <bpmn:callActivity id="Task_ConfirmCreate" calledElement="Process_AskThePerson" name="7 · Owner confirms:&#10;create the repository">
       <bpmn:documentation>Creating a repository is visible outside this one and is not undone by a revert. Numbered options, recommended first: (1) the owner creates it and says when it exists, (2) the agent creates it, only with that permission, (3) not yet. Default if there is no answer: (3), nothing is created. Non-relaxable.</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:policy relaxable="false"/>
@@ -199,7 +199,7 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:incoming>F14</bpmn:incoming>
       <bpmn:outgoing>F15</bpmn:outgoing>
       <bpmn:outgoing>F16</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_Declined" name="Staged, ready&#10;to leave">
       <bpmn:documentation>Not yet. The sub-KG stays in the host, staged and rehearsed; nothing outside the repository changed.</bpmn:documentation>
       <bpmn:incoming>F15</bpmn:incoming>
@@ -279,7 +279,7 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:documentation>The fresh clone could not be verified. Reported as could-not-check; the in-repo copy is not touched.</bpmn:documentation>
       <bpmn:incoming>F26</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:userTask id="Task_ConfirmCutover" name="12 · Owner confirms:&#10;freeze the in-repo copy">
+    <bpmn:callActivity id="Task_ConfirmCutover" calledElement="Process_AskThePerson" name="12 · Owner confirms:&#10;freeze the in-repo copy">
       <bpmn:documentation>The agent reports the files that would move, their size, the new repository and the commit the copy matches, then asks: (1) freeze it in the kept trashcan now, (2) keep in place until the first release, (3) show the file list first. Default if there is no answer: (2), nothing moves. A green fresh clone is the precondition for asking, not the answer. Non-relaxable. Owner ruling, 2026-10-06 (bean 3tza, "1"): the host keeps a FROZEN copy in the kept trashcan, not a refreshed mirror and not a deletion; the live copy is the submodule or subscription set up at stage 10.</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:policy relaxable="false"/>
@@ -288,7 +288,7 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:incoming>F27</bpmn:incoming>
       <bpmn:outgoing>F28</bpmn:outgoing>
       <bpmn:outgoing>F29</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_Kept" name="Consumed; in-repo&#10;copy kept">
       <bpmn:documentation>The host consumes the new repository and keeps its own copy, as the owner chose. The cutover can be asked again later.</bpmn:documentation>
       <bpmn:incoming>F28</bpmn:incoming>

@@ -33,7 +33,7 @@ Move part of a knowledge graph into repositories of its own: the content and the
 - Who: the `Administrator` lane (role `administrator`).
 - Skill: `kg-separation`.
 - What: The owner decides from the measured signals, and also decides the address base for its identifiers, where verdicts about it live, and what its tools repository owns.
-- Record it: `workflow_complete` with `node: "Task_Decide"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Stays` (Stays where it is), → `Task_Detangle` (1–3 · Declare, detangle, isolate)
 
 ## Done — Stays where it is (`End_Stays`)
@@ -127,7 +127,7 @@ Move part of a knowledge graph into repositories of its own: the content and the
 - Who: the `Administrator` lane (role `administrator`).
 - Skill: `deletion-requires-confirmation`.
 - What: A repository cut changes the substrate every other process binds to; that is a person's decision.
-- Record it: `workflow_complete` with `node: "Task_Authorise"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Declined` (Stays in place, ready to leave), → `Task_Create` (Create the repositories)
 
 ## Done — Stays in place, ready to leave (`End_Declined`)
