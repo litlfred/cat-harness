@@ -206,3 +206,46 @@ describe("the theme's markup passes leave <script> and <style> alone", () => {
     expect(readFileSync(join(chrome, "_includes/vendor/anchor_headings.html"), "utf-8")).toContain("include vendor/anchor_headings_core.html");
   });
 });
+
+/**
+ * `?v=` on a first-party asset is a hash of the asset, never the build time
+ * (bean `g196`, 2026-10-23). `site.time` is new on every build, so a page that
+ * prints it differs on every rebuild, and every re-push of a STAGING preview
+ * stored a whole new copy of its HTML. The hash itself is computed by
+ * `_plugins/fa-asset-version.rb` once Jekyll has rendered everything; this
+ * pins the templates' side of the contract, which is what an edit breaks.
+ */
+describe("first-party asset versions", () => {
+  const roots = ["site-chrome", "docs"].map((d) => join(HARNESS, d));
+  const walk = (dir: string): string[] =>
+    require("node:fs").readdirSync(dir, { withFileTypes: true }).flatMap((e: import("node:fs").Dirent) =>
+      e.isDirectory() ? walk(join(dir, e.name)) : /\.(html|md|liquid|scss|js|json)$/.test(e.name) ? [join(dir, e.name)] : [],
+    );
+
+  test("no template prints site.time, so a rebuild with no source change renders the same bytes", () => {
+    const offenders = roots.flatMap(walk).filter((f) => /\{\{[^}]*site\.time|\{%[^%]*site\.time/.test(readFileSync(f, "utf-8")));
+    expect(offenders).toEqual([]);
+  });
+
+  test("every ?v= in head_custom.html hashes the very asset its URL names", () => {
+    const head = readFileSync(join(HARNESS, "site-chrome/_includes/head_custom.html"), "utf-8");
+    const tags = [...head.matchAll(/\{\{ '([^']+)' \| relative_url \}\}\?v=\{\{ '([^']+)' \| ([a-z_]+) \}\}/g)];
+    expect(tags.length).toBeGreaterThanOrEqual(10);
+    for (const [, url, hashed, filter] of tags) {
+      expect({ url, filter }).toEqual({ url: hashed, filter: "fa_asset_version" });
+    }
+    // Any ?v= not in that shape would escape the check above.
+    expect((head.match(/\?v=/g) ?? []).length).toBe(tags.length + (head.match(/\?v=<content hash>/g) ?? []).length);
+  });
+
+  test("the filter is defined in the chrome, so every site that mounts the chrome has it", () => {
+    const plugin = readFileSync(join(HARNESS, "site-chrome/_plugins/fa-asset-version.rb"), "utf-8");
+    expect(plugin).toMatch(/def fa_asset_version\(/);
+    expect(plugin).toMatch(/register_filter\(FaAssetVersion::Filter\)/);
+    expect(plugin).toMatch(/Hooks\.register :site, :post_render/);
+    // Never falls back to the build time: that is the churn this replaced.
+    // Code only: the comments explain why, and naming site.time is how they do it.
+    const code = plugin.split("\n").filter((l) => !/^\s*#/.test(l)).join("\n");
+    expect(code).not.toMatch(/site\.time|Time\.now/);
+  });
+});
