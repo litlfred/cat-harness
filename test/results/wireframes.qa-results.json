@@ -11,7 +11,7 @@
   "families": {
     "covered": {
       "summary": "A declared visualiser with a wireframe whose checks pass at both viewports.",
-      "count": 42,
+      "count": 46,
       "entries": [
         {
           "ref": "cat-harness/attestations",
@@ -74,6 +74,10 @@
           "wireframe": "state-dashboard"
         },
         {
+          "ref": "cat-harness/kg",
+          "wireframe": "kg-viewer"
+        },
+        {
           "ref": "cat-harness/library",
           "wireframe": "library"
         },
@@ -84,6 +88,10 @@
         {
           "ref": "cat-harness/memory",
           "wireframe": "state-registry"
+        },
+        {
+          "ref": "cat-harness/merge-reviews",
+          "wireframe": "state-merge-reviews"
         },
         {
           "ref": "cat-harness/methodologies",
@@ -116,6 +124,10 @@
         {
           "ref": "cat-harness/schemas",
           "wireframe": "schemas"
+        },
+        {
+          "ref": "cat-harness/site",
+          "wireframe": "site"
         },
         {
           "ref": "cat-harness/substrate-snapshots",
@@ -178,6 +190,10 @@
           "wireframe": "fhir-artifact-index"
         },
         {
+          "ref": "smart-base/l1-extraction",
+          "wireframe": "smart-base/l1-extraction"
+        },
+        {
           "ref": "who-iris/catalogue",
           "wireframe": "who-iris/catalogue"
         }
@@ -209,5 +225,5 @@
       "entries": []
     }
   },
-  "total": 42
+  "total": 46
 }
