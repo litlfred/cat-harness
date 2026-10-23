@@ -214,7 +214,10 @@ should be KG reference."*
 
 So a field that names another node holds a **KG reference**: the target's
 kind and id, resolvable in the knowledge graph, and projected by `kg-export`
-as an `@id` link, never a literal. Use the helpers that already exist rather
+as an `@id` link, never a literal. The IRI that link carries is
+`<doc dir>/<kind>/<id>`, never `….jsonld#<kind>/<id>` — minted by the
+exporter, not by the model; [`kg-export`](kg-export.md) §"Subject IRIs — a
+path, not a `#fragment`" owns that rule. Use the helpers that already exist rather
 than inventing one:
 
 | helper | shape | for |
