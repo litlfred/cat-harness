@@ -34,11 +34,27 @@ nav_exclude: true
 </style>
 <div class="nk-page" data-fa-node-kind-page>
 <h1 id="nk-title">bean</h1>
-<p class="m">Node kind <code>bean/1.0.0</code>, declared by <b>cat-harness</b>. 0 node(s).</p>
+<p class="m">Node kind <code>bean/1.0.0</code>, declared by <b>cat-harness</b>. 1 node(s).</p>
+
+<h2 id="by-harness">By harness</h2><ul class="tiles"><li><b>1</b><a href="cat-harness-tools/">cat-harness-tools</a></li></ul>
 
 
-
-
-<p>No node of this kind on this site yet.</p>
+<h2 id="nodes">Nodes</h2>
+<p><span class="m"><span id="shown">1</span> of 1 shown</span></p>
+<div class="clip"><table>
+<thead><tr><th>Node</th><th>Harness</th><th>id</th><th>title</th><th>status</th><th>priority</th><th>type</th></tr></thead>
+<tbody>
+<tr data-kind="bean" data-harness="cat-harness-tools"><td class="p"><a href="cat-harness-tools/beans/defs/cat-tools-tk99--programme-progress-an-epic-burn-down-and-a-math-pr/">beans/defs/cat-tools-tk99--programme-progress-an-epic-burn-down-and-a-math-pr</a></td><td class="s">cat-harness-tools</td><td class="s"></td><td class="t">PROGRAMME PROGRESS: an epic burn-down and a math-progress heat map as a board feed</td><td class="s">in-progress</td><td class="s">normal</td><td class="t">feature</td></tr>
+</tbody></table></div>
 </div>
+<script>
+(function(){
+  var sels=document.querySelectorAll('select[data-filter]'), rows=document.querySelectorAll('tbody tr[data-kind]');
+  var out=document.getElementById('shown');
+  function apply(){ var n=0; rows.forEach(function(r){ var ok=true;
+    sels.forEach(function(s){ if(s.value && r.getAttribute('data-'+s.getAttribute('data-filter'))!==s.value) ok=false; });
+    r.hidden=!ok; if(ok) n++; }); if(out) out.textContent=String(n); }
+  sels.forEach(function(s){ s.addEventListener('change',apply); });
+})();
+</script>
 {% endraw %}
