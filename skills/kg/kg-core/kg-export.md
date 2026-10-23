@@ -88,14 +88,35 @@ from. That is the URL-space rule (bean `x0hj`, carried in the tools layer
 as `sthf`): `<baseurl>/<instantiated harness>/<path to rendered content>`.
 §"Which base an `@id` is minted against" in
 [`instance-publication`](instance-publication.md) says which base applies to
-the host, to a foreign instance, and to an instance with its own `canonicalUrl`.
+an instance on this site and to an instance with its own `canonicalUrl`.
 It is the form Tools already use, `<doc dir>/tools/<id>.jsonld` (bean `tdir`).
+
+**The host has no special case.** Owner, 2026-10-23 (decision 1b, option
+(i) "move all", on
+[cat-harness-tools#603](https://github.com/litlfred/cat-harness-tools/issues/603)):
+*"the host (cat-harness) is no longer special. Its document, its Tools and its
+subjects all move under `<site>/cat-harness/`"*. The reason: **one rule for
+every layer, with subjects beside their document.** So `<doc dir>` is
+`<site>/<instance>/` for every instance this site publishes, the host
+included:
 
 | | IRI |
 |---|---|
-| ✅ ruled | `https://litlfred.github.io/folio-assistant/folio-assistant-core/globalTask/GT_SeedWorkPlan` |
-| ❌ replaced | `https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#globalTask/GT_SeedWorkPlan` |
-| ❌ unservable | `…/folio-assistant-core/folio-assistant-core.jsonld/globalTask/GT_SeedWorkPlan`: a static host cannot hold a file and a directory under one name |
+| the host's document | `https://litlfred.github.io/folio-assistant/cat-harness/cat-harness.jsonld` |
+| a host subject | `https://litlfred.github.io/folio-assistant/cat-harness/skill/kg-export` |
+| a host Tool | `https://litlfred.github.io/folio-assistant/cat-harness/tools/beans-cli.jsonld` |
+| ❌ retired | `https://litlfred.github.io/folio-assistant/cat-harness.jsonld`, `…/folio-assistant/tools/<id>.jsonld`: the host at the site root |
+
+Do not mint, link or write anything at a root-level host path. The old root
+addresses keep a one-release tombstone
+([`instance-publication`](instance-publication.md) §"An `@id` that moved keeps
+a tombstone for ONE release").
+
+| | IRI |
+|---|---|
+| ✅ ruled | `https://litlfred.github.io/folio-assistant/<instance>/globalTask/GT_SeedWorkPlan` |
+| ❌ replaced | `https://litlfred.github.io/folio-assistant/<instance>/<instance>.jsonld#globalTask/GT_SeedWorkPlan` |
+| ❌ unservable | `…/<instance>/<instance>.jsonld/globalTask/GT_SeedWorkPlan`: a static host cannot hold a file and a directory under one name |
 
 **A process's parts** (owner, 2026-10-23T14:56Z, picking one of three options: *"Steps
 and lanes get pages, and flows stay fragments of the process page … Everything
@@ -166,8 +187,9 @@ in [`directory-conventions`](directory-conventions.md). The migration is
 tracked in [#435](https://github.com/litlfred/cat-harness/issues/435),
 which links the tools layer's migration issue and its plan: every minting
 site, every consumer that parses `#`, and the options. The migration is one
-replacement for `makeIri`, a page and a `.jsonld` per subject, and a
-one-release tombstone for each published hash `@id`
+replacement for `makeIri`, a page and a `.jsonld` per subject, the host's
+documents moved under `<site>/cat-harness/`, and a one-release tombstone for
+each published hash `@id` and each old root address
 ([`instance-publication`](instance-publication.md) §"An `@id` that moved keeps
 a tombstone for ONE release"). Until it lands:
 

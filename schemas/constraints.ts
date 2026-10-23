@@ -12,7 +12,6 @@ import { z } from "zod";
 import {
   formalRefPattern,
   formalRefPatternMessage,
-  resolveFormalRef,
 } from "./formal-ref.js";
 import type { Block } from "./types.js";
 // Leaf module — importing the kind list from `types.js` would be a runtime
@@ -282,15 +281,8 @@ export const BlockBaseSchema = z.object({
   poSources: z.array(z.string()).optional(),
 });
 
-export const DefinitionSchema = BlockBaseSchema.extend({
-  kind: z.literal("definition"),
-  label: labelForKind("definition"),
-  lean: LeanRefSchema,
-  examples: z.array(z.string()).optional(),
-});
-
 export const ProvableBaseSchema = BlockBaseSchema.extend({
-  // TS `ProvableBase` declares `lean?: LeanRef`; only `DefinitionSchema`
+  // TS `ProvableBase` declares `lean?: LeanRef`; only `DefinitionSchema` (now the science layer's)
   // declared it here, so a theorem / lemma / proposition / corollary /
   // algorithm writing `lean: { ref: … }` had it SILENTLY STRIPPED at the
   // validation boundary — the link into Lean, on exactly the kinds whose
@@ -299,26 +291,6 @@ export const ProvableBaseSchema = BlockBaseSchema.extend({
   lean: LeanRefSchema.optional(),
   proofs: z.array(z.string()).optional(),
   examples: z.array(z.string()).optional(),
-});
-
-export const TheoremSchema = ProvableBaseSchema.extend({
-  kind: z.literal("theorem"),
-  label: labelForKind("theorem"),
-});
-
-export const LemmaSchema = ProvableBaseSchema.extend({
-  kind: z.literal("lemma"),
-  label: labelForKind("lemma"),
-});
-
-export const PropositionSchema = ProvableBaseSchema.extend({
-  kind: z.literal("proposition"),
-  label: labelForKind("proposition"),
-});
-
-export const CorollarySchema = ProvableBaseSchema.extend({
-  kind: z.literal("corollary"),
-  label: labelForKind("corollary"),
 });
 
 /**
@@ -358,11 +330,6 @@ export function citesProvable(uses: string[] | undefined): boolean {
   });
 }
 
-export const ConjectureSchema = BlockBaseSchema.extend({
-  kind: z.literal("conjecture"),
-  label: labelForKind("conjecture"),
-  lean: LeanRefSchema.optional(),
-});
 
 export const ExampleSchema = BlockBaseSchema.extend({
   kind: z.literal("example"),
@@ -401,17 +368,6 @@ export const ComputationSchema = z.object({
   requires: z.array(z.string()).optional(),
 });
 
-export const ProofSchema = BlockBaseSchema.extend({
-  kind: z.literal("proof"),
-  label: labelForKind("proof"),
-  // The canonical reverse link to the provable this proof establishes
-  // (`ProvableBase.proofs[]` is the forward one). Declared on TS
-  // `ProofBlock`, missing here — so it was silently stripped. Eight proof
-  // blocks in qou carry it.
-  of: z.string().optional(),
-  lean: LeanRefSchema.optional(),
-  computation: ComputationSchema.optional(),
-});
 
 export const SimulatorSchema = BlockBaseSchema.extend({
   kind: z.literal("simulator"),
@@ -508,16 +464,9 @@ export const RecommendationSchema = BlockBaseSchema.extend({
 /** Discriminated union — validates any Block. */
 export const BlockSchema = z
   .discriminatedUnion("kind", [
-    DefinitionSchema,
-    TheoremSchema,
-    LemmaSchema,
-    PropositionSchema,
-    CorollarySchema,
     AlgorithmSchema,
-    ConjectureSchema,
     ExampleSchema,
     RemarkSchema,
-    ProofSchema,
     SimulatorSchema,
     ProseSchema,
     EquationSchema,
@@ -715,68 +664,12 @@ export const CONSTRAINT_RULES: ConstraintRule[] = [
   {
     id: "md-exists",
     description: "Every block must have a companion .md file",
-    appliesTo: [
-      "definition", "theorem", "lemma", "proposition", "corollary",
-      "conjecture", "example", "remark", "simulator", "prose", "recommendation",
-    ],
+    // cat-harness's own kinds; the science layer's vocabulary module carries
+    // the same check for its kinds (`mathpaper-md-exists`).
+    appliesTo: ["example", "remark", "simulator", "prose", "recommendation"],
     check: (_block, ctx) => {
       const mdPath = `${ctx.dir}/${ctx.rootName}.md`;
       return ctx.fileExists(mdPath) ? null : `Missing companion: ${mdPath}`;
-    },
-  },
-  {
-    id: "lean-file-exists",
-    description: "Definitions must have a Lean formalization: sibling .lean OR a resolvable Lake-tree file via lean.ref",
-    appliesTo: ["definition"],
-    check: (block, ctx) => {
-      const siblingPath = `${ctx.dir}/${ctx.rootName}.lean`;
-      if (ctx.fileExists(siblingPath)) return null;
-
-      // Per CLAUDE.md §0a, the resolver chain is:
-      // (1) sibling <rootName>.lean — checked above,
-      // (2) <lakeRoot>/<module-as-path>.lean under the package's Lake root
-      //     (when the Lean module path matches the lean.ref decl prefix), or
-      // (3) any <name>.lean under <lakeRoot>/ that matches the parsed ref's
-      //     bare declaration name (covers the cluster-migration case where
-      //     the module path was renamed but the lean.ref decl was kept —
-      //     e.g. lean.ref qou:QOU.Braiding.HeckeMassElement points at
-      //     lean/QOU/Torsion/HeckeMassElement.lean per the wire-in note).
-      const ref = (block as { lean?: { ref?: string } }).lean?.ref;
-      if (ref) {
-        // Resolution is the formalism layer's: it hands back candidate paths
-        // and a basename, and core tries them with its own `fileExists`. An
-        // unresolvable ref and an uninstalled layer both give `undefined`
-        // here, and BOTH fall through to the failure message below — which is
-        // a fail-CLOSED default: with no layer installed this rule reports
-        // "requires Lean formalization" for every `definition` whose
-        // formalisation lives in the library tree. That is the direction
-        // recorded in qou bean `qou-i2ed`, and it is preserved rather than
-        // fixed here, because changing it would change validator verdicts in
-        // the same commit that moves the layer boundary.
-        const res = resolveFormalRef(ref);
-        if (res) {
-          // (2) Candidate paths, in the layer's own priority order, then its
-          //     WEAK candidates. This rule accepted the direct module-path file
-          //     before the layer split and still does, even though that file may
-          //     be an import-only aggregator (the `qou-cu0a` trap) — so the weak
-          //     list is consulted here and by nothing else. Dropping it would be
-          //     a tightening, and tightening a validator in the same commit that
-          //     moves a layer boundary makes the two indistinguishable.
-          for (const candidate of [...res.candidatePaths, ...(res.fallbackPaths ?? [])]) {
-            if (ctx.fileExists(candidate)) return null;
-          }
-          // (3) Basename fallback under the package tree.
-          if (
-            res.treeRoot &&
-            ctx.lakeTreeContainsBasename?.(res.treeRoot, res.basename)
-          ) {
-            return null;
-          }
-        }
-      }
-
-      return `Definition "${block.label}" requires Lean formalization. Expected sibling file: ${siblingPath}` +
-        (ref ? ` (or Lake-tree resolution from lean.ref "${ref}")` : "");
     },
   },
   {
@@ -844,16 +737,6 @@ export const CONSTRAINT_RULES: ConstraintRule[] = [
       // bug rather than as the content defect it is.
       return missing.length === 0 ? null
         : `Unresolved uses: ${missing.map((u: string) => JSON.stringify(u)).join(", ")}`;
-    },
-  },
-  {
-    id: "provable-lean-warning",
-    description: "Theorems/lemmas/propositions/corollaries should have Lean (warning)",
-    appliesTo: ["theorem", "lemma", "proposition", "corollary"],
-    check: (block, _ctx) => {
-      if ("lean" in block && block.lean) return null;
-      // Return as warning-level message (prefix convention)
-      return `[warning] ${block.label}: no Lean declaration yet`;
     },
   },
   {
@@ -927,35 +810,6 @@ export const CONSTRAINT_RULES: ConstraintRule[] = [
       }
       return missing.length === 0 ? null
         : `[warning] Undefined cross-reference(s) in .md: ${missing.join(", ")}`;
-    },
-  },
-  {
-    id: "lean-stub-conjecture-kind-check",
-    description:
-      "If the sibling .lean stub is a §3b-cond conjectural class axiomatisation, " +
-      "the block kind must be conjecture() — not proposition()/theorem()/lemma()/corollary(). " +
-      "This catches the bigbang-heatdeath / appendix-surreals pattern (PR #1496, #1519) " +
-      "where the .ts declares a provable kind but the Lean side encodes the content as a " +
-      "sorry-as-conjecture class instance per CLAUDE.md §3b-cond.",
-    appliesTo: ["proposition", "theorem", "lemma", "corollary"],
-    check: (block, ctx) => {
-      if (!ctx.leanContent) return null;
-      // Match the §3b-cond stub signature.  Any of these three signals
-      // is sufficient on its own; the generator-emitted phrase
-      // "conjectural sibling stub" is the most reliable marker.
-      const signals = [
-        /\bconjectural sibling stub\b/,
-        /\bsorry\s*=\s*conjecture\b/,
-        /\*\*CONJECTURE\.\*\*/,
-      ];
-      const hit = signals.find((re) => re.test(ctx.leanContent!));
-      if (!hit) return null;
-      return `Kind mismatch: ${block.label} declares ${block.kind}() but the ` +
-        `sibling .lean stub is a §3b-cond conjectural class ` +
-        `(matched: ${hit.source}). ` +
-        `Demote to conjecture() and rename label prop:/thm:/lem:/cor: → conj: ` +
-        `per CLAUDE.md §3b-cond. See PR #1519 commit fix(appendix): ` +
-        `demote 5 propositions → conjectures for the migration pattern.`;
     },
   },
 ];

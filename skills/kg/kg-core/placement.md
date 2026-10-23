@@ -238,9 +238,15 @@ instance publishes**. `artefactStub()` is the one function that answers it
 derive the published paths from it:
 
 ```
-<base>/<stub>.jsonld     <base>/<stub>.json
+<base>/<name>/<stub>.jsonld     <base>/<name>/<stub>.json
 <base>/<stub>.schema.json     <base>/<stub>/     docs/<stub>/
 ```
+
+The graph document is under the instance's own directory, the host's
+included (owner, 2026-10-23: one rule for every layer, with subjects beside
+their document;
+[`instance-publication`](instance-publication.md) §"Which base an `@id` is
+minted against").
 
 **Compose nothing; resolve everything.** The knowledge-graph tile in the site
 navbar was hand-written as `/kg/` and **404'd from the day it was added** —

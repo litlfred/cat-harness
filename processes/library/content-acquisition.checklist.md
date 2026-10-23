@@ -24,7 +24,7 @@ How a resource gets into the graph in the first place.
 - Who: the `Agent` lane (role `ingestion-agent`).
 - Skill: `content-acquisition`.
 - What: Both forms, named together.
-- Record it: `workflow_complete` with `node: "A_Ask"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `P_Respond` (Give a link, a description, or neither)
 
 ### 2. Accept it, and record where it came from (`A_Accept`)

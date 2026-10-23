@@ -645,12 +645,23 @@ process that touches the work plan reaches `resolve` and stops —
 condition; none discharged it; **219 beans** accumulated until the owner
 asked for the sweep by hand.
 
-**Neither disposition is built yet**, and the first question is which —
-bean `folio-assistant-m8gz`, analysis in
-`cat-harness/docs/proposals/bean-archiving-in-bpmn.md`. Until then archiving is the
-owner's word and `beans archive`, run deliberately. Note the CLI prints
+**The per-activity op is built** (bean `folio-assistant-m8gz`; owner,
+2026-10-20: a step op, not a call into `Process_BeanLifecycle`). A step
+carrying `<cat-harness.processes:bean op="archive"/>` moves the instance's
+bean into `beans/defs/archive/`, with a line saying which process closed it.
+It does so only once the process has finished and the bean is `completed` or
+`scrapped`; otherwise it leaves the bean in place with a note saying why,
+because `check:bean-archive` allows only terminal beans in the archive. It is
+drawn as the last step of `draft-to-publication`, `crdm-close` and
+`code-change-review`, right after their `resolve`. `resolve` counts the
+process as finished when nothing but that closing archive step is left, so
+adding the step does not turn the resolve into a note.
+
+The sweep is still `beans archive`, run deliberately. Note the CLI prints
 `.beans/archive/` but honours `path:` from `.beans.yml`; here that means
-`beans/defs/archive/`.
+`beans/defs/archive/`. Analysis: `cat-harness/docs/proposals/bean-archiving-in-bpmn.md`.
+A step shared by several processes, such as this one, is a candidate global
+task once those exist (`bpmn-modelling` global-tasks plan).
 
 ## Status Display Format
 
