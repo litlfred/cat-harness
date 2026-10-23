@@ -39,7 +39,8 @@ Before new work takes shape, find the work it touches.
 ### 4. Coordinate? How? (`U_Coordinate`)
 
 - Who: the `User` lane (role `user`).
-- Record it: `workflow_complete` with `node: "U_Coordinate"`.
+- Skill: `interaction-modality`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `A_Record` (Record and act on the answer)
 
 ### 5. Record and act on the answer (`A_Record`)

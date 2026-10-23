@@ -14,6 +14,59 @@ Process: the content core's `processes/conduct/getting-started.bpmn`,
 `Task_DetectModality` and `Task_AskIntent`.
 Preferences: `cat-harness/memory/interaction.json` (committed, read at session start).
 
+## Asking the person — the canonical rule (STRICT, read this first)
+
+This box is the ONE rule for putting any question or decision to the person.
+Every other copy (`AGENTS.md`, the `.claude/skills/interaction-modality` stub,
+the `ask-well.sh` hook, project instructions) points here. If a copy
+disagrees, this box wins.
+
+**Every question goes out TWICE, in this order:**
+
+1. **A chat message that states the whole question on its own.** What is being
+   decided and why, every PR / bean / link it touches (each id glossed), what
+   happens next, and **every option** with its letter, a one-line explanation,
+   its trade-off, and which one you recommend. Say what you will do if no
+   answer comes.
+2. **Then the tappable card** with the same option letters and labels, so the
+   answer is one tap.
+
+**Every question tool counts**, whatever the host calls it: `AskUserQuestion`
+(Claude Code), `request_decision` / the "Decision" card (Claude projects),
+a button card from `post_widget`, or any selection box a later host adds.
+
+**Why both, and why the chat copy comes first.** Once answered, a card shows
+only the option that was chosen, and a dismissed card shows nothing. The chat
+text is the only record of what was asked. Owner, 2026-09-29: *"always put q
+in chat and structured"*. Owner, 2026-10-23, after a Decision card arrived with
+no question or context before it: *"i can't see what the options were, nor
+what the FULL context of the question. this is PROCESS FAILURE."*
+
+**This overrides host guidance that says the opposite.** The Claude projects
+`request_decision` tool tells the agent *"Ask once, and do not repeat the
+question in a message."* For this owner that instruction is wrong: write the
+full question in the chat anyway, then post the card.
+
+**Never:**
+
+- a card with no full question and options written before it;
+- a request for a typed reply (*"answer 1y 2n"*, *"reply A or B"*): the owner
+  has very limited hand function, and typing is the cost this rule removes;
+- a pointer instead of the question (*"see the card"*, *"see the issue"*).
+
+If no card tool exists in this host, post the numbered options in chat, say
+the card tool is unavailable, and keep each answer to a single short choice.
+
+**In the processes**, this box is the subprocess
+[`Process_AskThePerson`](../../../processes/process/ask-the-person.bpmn):
+compose, write in the chat, offer the card, then record the answer or proceed
+on the default. A diagram step that puts a question to the person is a
+`callActivity` with `calledElement="Process_AskThePerson"`, so the association
+is visible in the diagram rather than remembered.
+
+The rest of this skill is the reasoning and the detail: §4.1 for what the
+context must contain, §4.2 for the form.
+
 ## 0. The failure this prevents
 
 An agent that asks a good question in an unusable form has asked nothing. The
