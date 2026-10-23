@@ -73,10 +73,10 @@ flowchart LR
     D & E & F & H --> G[Published PDF / site / IG]
 
     click B "https://litlfred.github.io/folio-assistant/" "Docs home" _blank
-    click H "https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/writing-a-document.html" "Writing a document" _blank
-    click D "https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/writing-a-paper.html" "Writing a paper" _blank
-    click E "https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/who-smart-dak.html" "WHO SMART DAK (L2)" _blank
-    click F "https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/who-smart-ig.html" "WHO SMART IG (L3)" _blank
+    click H "https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html" "Writing a document" _blank
+    click D "https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html" "Writing a paper" _blank
+    click E "https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-dak.html" "WHO SMART DAK (L2)" _blank
+    click F "https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-ig.html" "WHO SMART IG (L3)" _blank
 ```
 
 | Content type | Artifacts | Skill package |
@@ -117,8 +117,8 @@ The editing and publication processes are **BPMN 2.0 swimlane diagrams**, and
 they are executable rather than illustrations; the pictures are generated from
 them by `bun run cat render:bpmn`. The full walk-through, with the roles and the
 skill each activity uses, is the
-**[publication workflow](docs/process/publication-workflow.md)**
-([published](https://litlfred.github.io/folio-assistant/docs/cat-harness/process/publication-workflow.html)).
+**[publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)**
+([published](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)).
 
 **One proposed change to one content block — the HCI validation gate.** An
 authoring agent produces a **proposed** change, never a commit. It fans out
@@ -164,8 +164,8 @@ here**, and ask it to *add a chapter*.
 
 Choose `document` unless the folio will actually carry formal mathematics —
 `paper` adds two large toolchains. Full walk-throughs:
-[writing a document](docs/guides/writing-a-document.md) ·
-[writing a paper](docs/guides/writing-a-paper.md).
+[writing a document](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html) ·
+[writing a paper](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html).
 
 ## Running it
 
@@ -222,8 +222,8 @@ instructions: [installation](docs/start/installation.md).
 |------|------|
 | [Installation](https://litlfred.github.io/folio-assistant/docs/cat-harness/start/installation.html) | prerequisites, harness setup |
 | [Getting started](https://litlfred.github.io/folio-assistant/docs/cat-harness/start/getting-started.html) | first skill run |
-| [Tutorial: writing a document](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/writing-a-document.html) | prose folios — policy guidance, standards, reports |
-| [Tutorial: writing a paper](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/writing-a-paper.html) | LLM-driven walk-through with a mock session |
+| [Tutorial: writing a document](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html) | prose folios — policy guidance, standards, reports |
+| [Tutorial: writing a paper](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html) | LLM-driven walk-through with a mock session |
 | [Content types](https://litlfred.github.io/folio-assistant/docs/cat-harness/concepts/content-types.html) | the authoring formalism per domain |
 | [Skills & roles](https://litlfred.github.io/folio-assistant/docs/cat-harness/concepts/skills.html) | all skills + roles, and how they work with the LLM |
 | [Skill schema reference](https://litlfred.github.io/folio-assistant/reference/skills/) | generated input/output contracts |

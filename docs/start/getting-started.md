@@ -343,8 +343,8 @@ The `SessionStart` hook surfaces the plan at the start of every session, and the
 
 - **[Accessibility](accessibility.html)** — how the agent asks, and the settings
   control on this site
-- **[Tutorial — writing a paper](../guides/writing-a-paper.html)**
-- **[Writing a document](../guides/writing-a-document.html)**
+- **[Tutorial — writing a paper](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)**
+- **[Writing a document](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html)**
 - **[Content types](../concepts/content-types.html)** — the formalism for each domain
-- **[Publication workflow](../process/publication-workflow.html)** — every process in the repo
+- **[Publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** — every process in the repo
 - **[Architecture](../concepts/architecture.html)** — adapters, skills, and the block model

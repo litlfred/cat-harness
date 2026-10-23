@@ -36,7 +36,7 @@ MCP. والمنصة نفسها لا تحتاج إلا إلى Bun؛ أما أنو
 | Git + git-lfs | مستودعات المحتوى | `apt install git git-lfs` | `winget install Git.Git GitHub.GitLFS` |
 | LaTeX (`latexmk`، و`texlive`) | تصيير الأوراق العلمية | `apt install texlive-full latexmk biber` | `winget install MiKTeX.MiKTeX` |
 | Lean 4 (عبر `elan`) | الصياغة الرياضية الرسمية للأوراق | `curl …/elan-init.sh \| sh -s -- -y` | راجع [إصدارات elan](https://github.com/leanprover/elan/releases) |
-| Java 21 + IG Publisher + SUSHI | أدلة تطبيق WHO SMART (المستوى L3) | راجع [دليل WHO SMART IG](../../guides/who-smart-ig.html) | `winget install EclipseAdoptium.Temurin.21.JDK`، ثم الدليل |
+| Java 21 + IG Publisher + SUSHI | أدلة تطبيق WHO SMART (المستوى L3) | راجع [دليل WHO SMART IG](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-ig.html) | `winget install EclipseAdoptium.Temurin.21.JDK`، ثم الدليل |
 | `pandoc`، و`ripgrep` | التحويلات، والبحث | `apt install pandoc ripgrep` | `winget install JohnMacFarlane.Pandoc BurntSushi.ripgrep.MSVC` |
 
 لست بحاجة إلى كل هذه المتطلبات — ثبّت فقط ما تتطلبه أنواع المحتوى التي تؤلفها.

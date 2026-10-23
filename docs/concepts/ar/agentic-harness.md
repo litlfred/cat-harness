@@ -150,20 +150,20 @@ _تم توليد هذه الصفحة من [`content/docs/agentic-harness/`](http
 يتبع الوكيل سير عمل BPMN المقابل. وتصف صفحات التوثيق الحالية
 هذه المسارات بالتفصيل:
 
-- **[سير عمل النشر](https://litlfred.github.io/folio-assistant/docs/cat-harness/process/publication-workflow.html)** —
+- **[سير عمل النشر](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** —
   دورة حياة المحتوى من المسودة وحتى التحقق والتصيير والنشر.
   وتغطي الأدوار (المؤلف، المراجع، المحرر)، والعمليات الأساسية،
   والأنشطة والمهارات.
 
-- **[استيعاب المستندات](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/document-ingestion.html)** —
+- **[استيعاب المستندات](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/document-ingestion.html)** —
   كيف يتحول الملف المُودَع إلى مصدر L1: استخراج الهيكل، واشتقاق المحتوى،
   وبناء الرسم البياني المعرفي لـ L1، وبوابة الاكتمال.
 
 - **أدلة الكتابة:**
-  - [كتابة ورقة بحثية](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/writing-a-paper.html)
-  - [كتابة مستند](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/writing-a-document.html)
-  - [WHO SMART DAK](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/who-smart-dak.html)
-  - [WHO SMART IG](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/who-smart-ig.html)
+  - [كتابة ورقة بحثية](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)
+  - [كتابة مستند](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html)
+  - [WHO SMART DAK](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-dak.html)
+  - [WHO SMART IG](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-ig.html)
 
 لا يعيد إطار العمل تعريف مسارات العمل هذه. بل يوفر **نقطة الدخول** —
 عبر تصنيف الطلب وتوجيهه إلى المسار الصحيح — و**نقطة الخروج** —

@@ -344,8 +344,8 @@ MCP `work_plan_prime` предоставляет этот же интерфей�
 
 - **[Доступность](accessibility.html)** — как агент задает вопросы, и элементы управления
   настройками на этом сайте
-- **[Руководство — написание статьи](../../guides/writing-a-paper.html)**
-- **[Написание документа](../../guides/writing-a-document.html)**
+- **[Руководство — написание статьи](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)**
+- **[Написание документа](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html)**
 - **[Типы контента](../../concepts/ru/content-types.html)** — формализм для каждого предметного домена
 - **[Процесс публикации](../../process/ru/publication-workflow.html)** — каждый процесс в репозитории
 - **[Архитектура](../../concepts/ru/architecture.html)** — адаптеры, навыки и блочная модель
