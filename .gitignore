@@ -77,7 +77,9 @@ node_modules/
 /docs/assets/glossary/folio-assistant-core--kg-dmn-decisions.skos.jsonld
 /docs/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld
 /docs/assets/glossary/folio-assistant-core--kg-skills.skos.jsonld
+/docs/assets/glossary/folio-assistant-core--guideline-domain.skos.jsonld
 /docs/assets/glossary/folio-assistant-core--kg-tools.skos.jsonld
+/docs/assets/glossary/folio-assistant-sci--kg-schema-fields.skos.jsonld
 /docs/assets/glossary/folio-assistant-core--platform.skos.jsonld
 /docs/assets/glossary/folio-assistant-sci--kg-bpmn-activities.skos.jsonld
 /docs/assets/glossary/folio-assistant-sci--kg-dmn-decisions.skos.jsonld
