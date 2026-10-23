@@ -58,6 +58,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`github-pr-files/`](github-pr-files/) | _nothing declares what this holds_ | |
 | [`github-pr-list/`](github-pr-list/) | _nothing declares what this holds_ | |
 | [`github-pr-request-review/`](github-pr-request-review/) | _nothing declares what this holds_ | |
+| [`github-pr-resolve-thread/`](github-pr-resolve-thread/) | _nothing declares what this holds_ | |
 | [`github-pr-view/`](github-pr-view/) | _nothing declares what this holds_ | |
 | [`gitlab-branches/`](gitlab-branches/) | _nothing declares what this holds_ | |
 | [`gitlab-mr-comment/`](gitlab-mr-comment/) | _nothing declares what this holds_ | |
@@ -75,6 +76,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`kg-graph-export/`](kg-graph-export/) | _nothing declares what this holds_ | |
 | [`kg-retrieve-npm/`](kg-retrieve-npm/) | _nothing declares what this holds_ | |
 | [`kg-validate/`](kg-validate/) | _nothing declares what this holds_ | |
+| [`kg-viewer/`](kg-viewer/) | _nothing declares what this holds_ | |
 | [`l1-complete-check/`](l1-complete-check/) | _nothing declares what this holds_ | |
 | [`latex-overfull/`](latex-overfull/) | _nothing declares what this holds_ | |
 | [`latex-preflight/`](latex-preflight/) | _nothing declares what this holds_ | |
@@ -141,6 +143,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`site-build-local/`](site-build-local/) | _nothing declares what this holds_ | |
 | [`site-search-index/`](site-search-index/) | _nothing declares what this holds_ | |
 | [`site-search-scopes/`](site-search-scopes/) | _nothing declares what this holds_ | |
+| [`site-viewer/`](site-viewer/) | _nothing declares what this holds_ | |
 | [`skill-docs/`](skill-docs/) | _nothing declares what this holds_ | |
 | [`skill-fetch/`](skill-fetch/) | _nothing declares what this holds_ | |
 | [`skill-list/`](skill-list/) | _nothing declares what this holds_ | |
