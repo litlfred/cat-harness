@@ -5,7 +5,7 @@
     "id": "Process_CRDM_Close",
     "path": "processes/process/crdm-close.bpmn"
   },
-  "source_hash": "sha256:c84a178991bb23e33372a17b5bca9fb7937d8014d334124f6c75055843f1f418",
+  "source_hash": "sha256:5bab8d8fe8fca787529f6b11e081f19f829d1b00f9b66dd679908aacccb60eb8",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

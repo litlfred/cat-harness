@@ -5,7 +5,7 @@
     "id": "crdm-requirements-workflow",
     "path": "skills/sdlc/crdm/crdm-requirements-workflow.md"
   },
-  "source_hash": "e9df3c6bda90",
+  "source_hash": "0a0777b50b55",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "integration-watcher",
     "path": "scenarios/roles.json"
   },
-  "source_hash": "sha256:a55d7dc2c4aa2377e869486e635707736801f42d2ca8ac8ff161da564a51edd4",
+  "source_hash": "sha256:619cea768840d85882db6ccfbe053d61d02aaaf00f2ad026c5381600b948c8cb",
   "criteria": {
     "role-skills-resolve": {
       "result": "pass",

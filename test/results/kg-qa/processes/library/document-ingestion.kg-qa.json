@@ -90,8 +90,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_Ingestion",
+          "detail": "document-ingestion.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -127,8 +132,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 2,
+    "pass": 15,
+    "fail": 3,
     "n/a": 9,
     "unknown": 0
   }

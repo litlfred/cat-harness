@@ -614,6 +614,26 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities/process_codechangereview.task_archivebean",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Archive the bean"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Move the bean, now completed, into the archive, with a line saying which process closed it. A bean still open stays where it is with a note saying why: only a completed or scrapped bean may be archived (check:bean-archive). The periodic sweep still archives anything this step leaves."
+        }
+      ],
+      "skos:notation": "Task_ArchiveBean",
+      "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_ArchiveBean",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities/process_codechangereview.task_branchandannounce",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -1471,6 +1491,26 @@
       ],
       "skos:notation": "Call_Signoff",
       "dcterms:source": "cat-harness/processes/process/crdm-requirements.bpmn#Call_Signoff",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities/process_crdm_close.a_archivebean",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Archive the bean"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Move the bean, now completed, into the archive, with a line saying which process closed it. A bean still open stays where it is with a note saying why: only a completed or scrapped bean may be archived (check:bean-archive). The periodic sweep still archives anything this step leaves."
+        }
+      ],
+      "skos:notation": "A_ArchiveBean",
+      "dcterms:source": "cat-harness/processes/process/crdm-close.bpmn#A_ArchiveBean",
       "skos:note": "candidate"
     },
     {
