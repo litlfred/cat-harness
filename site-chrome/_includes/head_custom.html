@@ -361,7 +361,15 @@
   visualisations plus `siteLinks`. Nothing about the row is decided in Liquid
   or in JavaScript.
 -->
-<script type="application/json" id="fa-navbar-row">{{ site.data.harness.navbar | jsonify }}</script>
+<!--
+  EMPTY HERE, FILLED BY `assets/js/harness-data.js` (bean `gp2f`, page weight).
+  The row is the same on every page of a build, so it is written once into a
+  cached file instead of into each page. `data-fa-row-src` is the contract the
+  railed pages already use (`withNavbarRow` in harness-rail.ts): the file drops
+  the name once it has filled the island, and a reader that finds it still
+  named and empty reports a failed load rather than "declared none".
+-->
+<script type="application/json" id="fa-navbar-row" data-fa-row-src="harness-data"></script>
 {%- comment -%}
   `#fa-rail-scope` (#1902) is gone (2026-10-15): the rail pass scopes Pages and
   Folders on the server (cat-harness-tools `railScopesOf`).
@@ -443,7 +451,14 @@
   otherwise close the attribute, and the quoting rule is Liquid's rather than
   something this comment has to be right about.
 -->
-<meta name="fa-tiles" content="{{ site.data.harness.tiles | jsonify | escape }}">
+<!--
+  THE CONTENT IS FILLED BY `assets/js/harness-data.js` (bean `gp2f`). The list
+  is the same on every page and was 12.5 KB of each one (measured on gh-pages
+  1ad53fa, 2026-10-23). That file is a deferred script ahead of `docs-ui.js`,
+  and deferred scripts run in document order, so the tiles are in place before
+  the first reader runs: no later paint than the inlined copy had.
+-->
+<meta name="fa-tiles" content="" data-fa-src="harness-data">
 <!--
   THE GLASS STRIP'S PINNED TILES, in order (owner, 2026-10-01, bean `ob3m`
   finding 10: "Pinned tiles first, plus '+N more'"). Resolved from the
@@ -659,6 +674,8 @@
 -->
 <!-- NOT MOVED: same reason as fa-site-links above. -->
 <script type="application/json" id="fa-declared-kinds">{{ site.data.harness.declaredKinds | jsonify }}</script>
+<!-- FIRST of the deferred scripts: it fills `#fa-navbar-row` and `meta[name=fa-tiles]` before any reader runs (bean `gp2f`). -->
+<script src="{{ '/assets/js/harness-data.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 <script src="{{ '/assets/js/vendor/qrcode.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/vendor/qrcode_UTF8.js' | relative_url }}" defer></script>
 <!-- BEFORE docs-ui.js and work-plan.js: both read window.faRender. -->
