@@ -1,6 +1,6 @@
 **Skill package:** `authoring-math` ·
 **Adapter:** `paper` ·
-**Guide:** [Writing a paper](../guides/writing-a-paper.html)
+**Guide:** [Writing a paper](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)
 
 Rigorous scientific papers and books where prose and mathematics are backed by a
 machine-checked **Lean 4** formalization and rendered through **LaTeX**.

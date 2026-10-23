@@ -71,7 +71,8 @@ stale at once (owner, 2026-10-20, "State branch").
 1. `bun run cat state:mount` mounts the `merge-reviews` graph at
    `merge-reviews/`.
 2. Write `merge-reviews/<head sha>.json`, a `merge-review/v1` document:
-   `pr`, `base_sha`, `head_sha` and `reviews[]`. Each review records:
+   `pr`, `repository` (`owner/repo`, so the store's viewer can link the pull
+   request), `base_sha`, `head_sha` and `reviews[]`. Each review records:
    - `reviewer {by, session, model}`;
    - `author_sessions`, from the trailers;
    - `skill_hash`, the sha256 of this file as you ran it;

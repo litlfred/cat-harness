@@ -151,20 +151,20 @@ Lorsqu'une requête est classée comme travail de contenu (rédaction, relecture
 l'agent suit le flux de travail BPMN correspondant. Les pages de documentation
 existantes décrivent ces flux en détail :
 
-- **[Flux de publication](https://litlfred.github.io/folio-assistant/docs/cat-harness/process/publication-workflow.html)** —
+- **[Flux de publication](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** —
   le cycle de vie du contenu, du brouillon à la validation, au rendu et à la
   publication. Couvre les rôles (auteur, relecteur, éditeur), les processus de base,
   les activités et les compétences.
 
-- **[Ingestion de documents](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/document-ingestion.html)** —
+- **[Ingestion de documents](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/document-ingestion.html)** —
   comment un fichier déposé devient une source L1 : extraire la structure, dériver le contenu,
   construire le graphe de connaissances L1, passerelle d'exhaustivité (completeness gate).
 
 - **Guides de rédaction :**
-  - [Rédiger un article](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/writing-a-paper.html)
-  - [Rédiger un document](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/writing-a-document.html)
-  - [DAK SMART de l'OMS](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/who-smart-dak.html)
-  - [IG SMART de l'OMS](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/who-smart-ig.html)
+  - [Rédiger un article](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)
+  - [Rédiger un document](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html)
+  - [DAK SMART de l'OMS](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-dak.html)
+  - [IG SMART de l'OMS](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-ig.html)
 
 Le harnais ne redéfinit pas ces flux de travail. Il fournit le **point d'entrée** —
 la classification de la requête et son acheminement vers le flux approprié — ainsi que le **point de sortie** —

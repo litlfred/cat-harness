@@ -21,6 +21,7 @@ import {
 import { ProvActivitySchema } from "./prov.ts";
 import { readActors, readPermissions } from "./role-graph.ts";
 import { actorsDir } from "./role-graph.ts";
+import { checkoutActors, checkoutPolicies } from "./scenario-overlay.ts";
 
 const INSTANCE = resolve(import.meta.dir, "..");
 const REPO = resolve(INSTANCE, "..");
@@ -32,6 +33,12 @@ const ACTOR_DIR = actorsDir(REPO)!;
  * migration (2026-09-23), copied from the files before they were edited.
  * The migration must reproduce it exactly: a permission lost or gained in a
  * file move is a permission change nobody decided.
+ *
+ * Two agent actors left this map with move M4 (2026-10-23): the evidence and
+ * onboarding agents, which listed `content-authoring` here, moved up to the
+ * dependent instance whose lanes they play, and their grants moved with them
+ * into that instance's own `policies/`. The grant is unchanged; it is read
+ * there, by the scenario overlay, not here.
  */
 const BEFORE: Record<string, string[]> = {
   admin: ["admin-settings", "role-management", "release-authorization"],
@@ -43,12 +50,10 @@ const BEFORE: Record<string, string[]> = {
   "clinical-sme": ["clinical-validation"],
   "content-reviewer": ["approval-authority", "adjudication"],
   "end-user": ["adjudication"],
-  "evidence-agent": ["content-authoring"],
   "ig-publisher-service": ["qa-reporting"],
   "ingestion-agent": ["content-authoring"],
   librarian: ["content-authoring"],
   "local-sweep": ["qa-reporting"],
-  "onboarding-agent": ["content-authoring"],
   "platform-boundary-guard": ["qa-reporting"],
   "programme-manager": ["project-governance", "release-authorization"],
   "publication-manager": ["release-management"],
@@ -104,6 +109,19 @@ describe("the policies in this repository", () => {
       ...(r.assignee === ANYONE || ids.has(r.assignee) ? [] : [`assignee ${r.assignee}`]),
       ...(GRAPH.has(r.action) ? [] : [`action ${r.action}`]),
     ]);
+    expect(bad).toEqual([]);
+  });
+
+  test("in the checkout, every assignee of every instance's policy is an actor the checkout declares", () => {
+    // A dependent that adds an actor writes its grants in its own policies/;
+    // read alone, this instance sees neither, and the check above is the same.
+    const all = checkoutPolicies(INSTANCE, POLICY_DIR);
+    const ids = new Set(checkoutActors(INSTANCE, ACTOR_DIR).map((a) => a.id));
+    const bad = [...all.values()].flatMap((p) =>
+      [...p.permission, ...p.prohibition]
+        .filter((r) => r.assignee !== ANYONE && !ids.has(r.assignee))
+        .map((r) => `${p.uid}: ${r.assignee}`),
+    );
     expect(bad).toEqual([]);
   });
 

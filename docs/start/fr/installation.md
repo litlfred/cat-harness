@@ -36,7 +36,7 @@ moment de l'exécution et peuvent être installées à la demande.
 | Git + git-lfs | dépôts de contenu | `apt install git git-lfs` | `winget install Git.Git GitHub.GitLFS` |
 | LaTeX (`latexmk`, `texlive`) | rendu des articles | `apt install texlive-full latexmk biber` | `winget install MiKTeX.MiKTeX` |
 | Lean 4 (via `elan`) | formalisation des articles | `curl …/elan-init.sh \| sh -s -- -y` | voir les [versions d'elan](https://github.com/leanprover/elan/releases) |
-| Java 21 + IG Publisher + SUSHI | IGs WHO SMART (L3) | voir le [guide WHO SMART IG](../../guides/who-smart-ig.html) | `winget install EclipseAdoptium.Temurin.21.JDK`, puis le guide |
+| Java 21 + IG Publisher + SUSHI | IGs WHO SMART (L3) | voir le [guide WHO SMART IG](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-ig.html) | `winget install EclipseAdoptium.Temurin.21.JDK`, puis le guide |
 | `pandoc`, `ripgrep` | conversions, recherche | `apt install pandoc ripgrep` | `winget install JohnMacFarlane.Pandoc BurntSushi.ripgrep.MSVC` |
 
 Vous n'avez pas besoin de tout cela — installez uniquement ce qu'exigent les types de contenu que vous

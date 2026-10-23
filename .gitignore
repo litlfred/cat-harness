@@ -57,9 +57,11 @@ node_modules/
 /docs/en/cat-harness/lsi/
 /docs/en/cat-harness/translation-status/
 /docs/assets/translation-status/
+/docs/en/cat-harness/openapi/
 /docs/en/cat-harness/schemas/
 /docs/assets/schemas/index.json
 /docs/en/cat-harness/methodologies/
+/docs/en/cat-harness/external-schemas/
 /docs/subscriptions/
 /docs/en/cat-harness/processes/
 /docs/_data/node-kinds.json
@@ -78,7 +80,9 @@ node_modules/
 /docs/assets/glossary/folio-assistant-core--kg-dmn-decisions.skos.jsonld
 /docs/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld
 /docs/assets/glossary/folio-assistant-core--kg-skills.skos.jsonld
+/docs/assets/glossary/folio-assistant-core--guideline-domain.skos.jsonld
 /docs/assets/glossary/folio-assistant-core--kg-tools.skos.jsonld
+/docs/assets/glossary/folio-assistant-sci--kg-schema-fields.skos.jsonld
 /docs/assets/glossary/folio-assistant-core--platform.skos.jsonld
 /docs/assets/glossary/folio-assistant-sci--kg-bpmn-activities.skos.jsonld
 /docs/assets/glossary/folio-assistant-sci--kg-dmn-decisions.skos.jsonld
@@ -120,6 +124,7 @@ node_modules/
 /docs/en/cat-harness/health/index.html
 /docs/en/cat-harness/attestations/index.html
 /docs/en/cat-harness/issue-marks/index.html
+/docs/en/cat-harness/merge-reviews/index.html
 /docs/en/cat-harness/swimlane-glossary/index.html
 /docs/en/cat-harness/uploads-queue/index.html
 /docs/en/cat-harness/beans/cat-harness/

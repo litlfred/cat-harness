@@ -16,7 +16,7 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `guides`, holding `doc
 | [`agent-onboarding.md`](agent-onboarding.md) | Agent onboarding |  |
 | [`beans-and-todos.md`](beans-and-todos.md) | Beans and todos |  |
 | [`detangle.md`](detangle.md) | detangle |  |
-| [`document-ingestion.md`](document-ingestion.md) | Document ingestion |  |
+| [`document-ingestion.md`](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/document-ingestion.html) | Document ingestion |  |
 | [`index.md`](index.md) | Authoring guides |  |
 | [`managing-agent-context.md`](managing-agent-context.md) | Managing agent context |  |
 | [`new-content-type.md`](new-content-type.md) | Adding a new content type |  |
@@ -24,10 +24,10 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `guides`, holding `doc
 | [`swarm-management.md`](swarm-management.md) | Swarm management |  |
 | [`translation-support.md`](translation-support.md) | Translation support |  |
 | [`voices.md`](voices.md) | Voices — editorial overlays |  |
-| [`who-smart-dak.md`](who-smart-dak.md) | Authoring a WHO SMART DAK (L2) |  |
-| [`who-smart-ig.md`](who-smart-ig.md) | Authoring a WHO SMART IG (L3) |  |
-| [`writing-a-document.md`](writing-a-document.md) | Writing a document with folio-assistant |  |
-| [`writing-a-paper.md`](writing-a-paper.md) | Tutorial — writing a paper with folio-assistant |  |
+| [`who-smart-dak.md`](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-dak.html) | Authoring a WHO SMART DAK (L2) |  |
+| [`who-smart-ig.md`](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-ig.html) | Authoring a WHO SMART IG (L3) |  |
+| [`writing-a-document.md`](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html) | Writing a document with folio-assistant |  |
+| [`writing-a-paper.md`](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html) | Tutorial — writing a paper with folio-assistant |  |
 | [`ar/`](ar/) | _nothing declares what this holds_ | |
 | [`es/`](es/) | _nothing declares what this holds_ | |
 | [`fr/`](fr/) | _nothing declares what this holds_ | |

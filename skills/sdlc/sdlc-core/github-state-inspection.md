@@ -258,6 +258,12 @@ The second was diagnosed as a flapping gate; it was not. One command settles it.
    From an agent container, treat a failure as a proxy result until proven
    otherwise.
 
+**From a cloud agent container, use REST.** The proxy blocks GraphQL, so
+`gh pr view` and other GraphQL-backed `gh` commands fail; `gh api repos/...`
+works. Actions log blob URLs return 403 through the same proxy, so read logs
+with the GitHub MCP `get_job_logs` (`return_content`, `tail_lines`), not by
+fetching the URL it would hand you.
+
 ## Where the agent goes wrong, measured
 
 2026-09-19. A new proposal page was published and I reported that I *could not
