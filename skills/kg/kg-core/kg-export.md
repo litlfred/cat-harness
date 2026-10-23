@@ -3,7 +3,9 @@ name: kg-export
 description: >
   Serialize an instance's knowledge graph to one JSON document, for
   publication and inspection. Read when asked to visualize, audit or share the
-  KG, and before adding a node type to the export.
+  KG, before adding a node type to the export, and before minting or
+  authoring any subject IRI — subjects are `<doc dir>/<kind>/<id>`,
+  never `#fragments`.
 ---
 
 # KG export — publishing the graph as linked data, not as a page
@@ -46,12 +48,12 @@ the difference between 900 records and a traversable graph. A test asserts it.
 get the document. WHO SMART Base's type-usage note is explicit about this and it is
 what makes the graph mergeable with anyone else's.
 
-**3. Node IRIs are fragments of that document** —
-`…/kg/<stub>.jsonld#skill/todo-manager`. The prettier
-`…/kg/skill/todo-manager` is a **lie**: nothing serves that path. `AGENTS.md`
-records the same defect in the README generator, which composed PDF links by
-convention and shipped twenty-three 404s. **An `@id` that looks dereferenceable
-and is not is worse than one that is obviously local.**
+**3. A subject's IRI is a path under its instance, never a `#fragment` of
+the document** — `<doc dir>/<kind>/<id>`, each served as its own file. This is the rule for every
+IRI an agent mints or authors; the reasons, the one exception and the
+migration are in §"Subject IRIs — a path, not a `#fragment`" below. It
+replaces the old point 3 (*"Node IRIs are fragments of that document"*), which
+is what the exporter still does today.
 
 **4. No `@vocab`, and `id`/`type` are aliased.** Every term carries its full
 namespace IRI, so an undeclared key stays undeclared instead of silently
@@ -64,6 +66,103 @@ not a property: a processor drops it. Measured before bean `ovkk`, 19 declared
 terms against 53 used — **34 names, 3583 occurrences**, every one of them
 visible when the file is read as plain JSON, which is why it went unnoticed for
 as long as the document had no consumer.
+
+## Subject IRIs — a path, not a `#fragment`
+
+**This section owns the rule.** Every other skill that names a subject's IRI
+points here rather than restating it.
+
+Owner, 2026-10-23: *"hashes not so good... why not `<instance doc>/<kind>/<id>`?"*
+— and, confirming the reasons below: *"yes that is correct. please update
+authoring KG skills appropriately so this doesnt happen again"*.
+
+### The rule
+
+A knowledge-graph **subject** (a skill, a process, a global task, a role, an
+actor, a decision, a directory, a package, a capability, an asset) is named
+
+    <doc dir>/<kind>/<id>
+
+where **`<doc dir>`** is the directory the instance's own document is served
+from. That is the URL-space rule (bean `x0hj`, carried in the tools layer
+as `sthf`): `<baseurl>/<instantiated harness>/<path to rendered content>`.
+§"Which base an `@id` is minted against" in
+[`instance-publication`](instance-publication.md) says which base applies to
+the host, to a foreign instance, and to an instance with its own `canonicalUrl`.
+It is the form Tools already use, `<doc dir>/tools/<id>.jsonld` (bean `tdir`).
+
+| | IRI |
+|---|---|
+| ✅ ruled | `https://litlfred.github.io/folio-assistant/folio-assistant-core/globalTask/GT_SeedWorkPlan` |
+| ❌ replaced | `https://litlfred.github.io/folio-assistant/folio-assistant-core/folio-assistant-core.jsonld#globalTask/GT_SeedWorkPlan` |
+| ❌ unservable | `…/folio-assistant-core/folio-assistant-core.jsonld/globalTask/GT_SeedWorkPlan`: a static host cannot hold a file and a directory under one name |
+
+**Not decided yet: a process's parts.** Whether a process's nodes, flows and
+lanes are `…/process/P/node/T` or stay fragments of the process,
+`…/process/P#node/T`, is pending the owner's call
+([#435](https://github.com/litlfred/cat-harness/issues/435)). Do not
+settle it in content or code before then. Mint them with the generator, as
+today.
+
+### Why
+
+- **A `#fragment` never reaches the server.** Dereferencing the subject
+  fetches the whole instance graph, and the subject cannot have a page or a
+  document of its own.
+- **A subject is a real resource**: its own page, its own JSON-LD, its own
+  history and cache, linkable on its own.
+- **`#` already means "a place on this HTML page".** Using it for identity
+  mixes identity with navigation.
+- **Slash paths nest**; fragments do not.
+- **It is the FHIR convention** the owner already uses: `<base>/<Type>/<id>`.
+
+### The exception: vocabulary terms keep `#`
+
+`#` stays right for **vocabulary and namespace terms** (`…/ns#Term`): one
+small document holds every term, and fetching it is what a consumer wants.
+That covers classes, properties, graph-typology individuals, and the SKOS
+glossary's concepts, which bean `xsqm` (*"one SKOS"*) puts in the layer's
+namespace. If a thing has instances, a page or a history of its own, it is a
+subject and takes a path.
+
+### Every `@id` still has to load
+
+The old point 3 had one thing right, and it stays: *"An `@id` that looks
+dereferenceable and is not is worse than one that is obviously local."* GitHub
+Pages has no redirects, no 303 and no content negotiation. So a path IRI is
+served by **a file of its own**: a small page at `<doc dir>/<kind>/<id>`
+carrying the node as JSON-LD, plus `<id>.jsonld` beside it, as Tools are
+served. Whoever mints the path also publishes the file, in the same change.
+A slash IRI with nothing behind it brings back the twenty-three 404s from the
+README generator that `AGENTS.md` records.
+
+bootstrap states the same rule for its own graph, in its own terms, in
+[`bootstrap-graph-publication`](../../../../bootstrap/skills/bootstrap-graph-publication.md)
+§"Each subject's own address".
+
+### Today, and the migration
+
+**The existing generators still mint hash IRIs.** These include `makeIri` in
+the tools layer's `scripts/kg-export.ts`, the document base it is given
+(`renderingPath`, near the URL-space comment), the glossary export that
+reuses `makeIri`, bootstrap's own export
+(`bootstrap-tools/scripts/export-graph.ts`), and the directory-container `@id`
+in [`directory-conventions`](directory-conventions.md). The migration is
+tracked in [#435](https://github.com/litlfred/cat-harness/issues/435),
+which links the tools layer's migration issue and its plan: every minting
+site, every consumer that parses `#`, and the options. The migration is one
+replacement for `makeIri`, a page and a `.jsonld` per subject, and a
+one-release tombstone for each published hash `@id`
+([`instance-publication`](instance-publication.md) §"An `@id` that moved keeps
+a tombstone for ONE release"). Until it lands:
+
+- **mint through the generator's one function** (`makeIri`), never by hand.
+  One function lets the migration change every IRI at once.
+- **do not add a new hash-IRI minter for subjects**, and do not hand-write a
+  `….jsonld#<kind>/<id>` IRI in new content. A new scheme takes the ruled form
+  and lands together with the files that serve it.
+- **remove this subsection** when the migration lands
+  ([#435](https://github.com/litlfred/cat-harness/issues/435)).
 
 ## Declaring a term is a decision, not a line of context
 
@@ -989,8 +1088,10 @@ Follow the `slice-sqlite-publish` process. In short:
    `beans/` is its own graph typology with its own nodes (`defs`, `workflows`), and
    folding the work plan into the KG re-merges exactly what was separated.
 2. **Mint its `@id` with `makeIri`, and give it an `@type`.** Both are asserted
-   by test. Never hand-build an IRI: `makeIri` is what keeps every node a
-   fragment of the published document rather than an invented path.
+   by test. Never hand-build an IRI: `makeIri` is the one place every node's
+   IRI is decided, so the move from `#fragment` to `<doc
+   dir>/<kind>/<id>` (§"Subject IRIs — a path, not a `#fragment`") changes
+   them all at once.
 3. **Report what you could not read**, in `problems[]`. Never `continue`
    silently past a parse failure.
 4. **Say which edges it carries, and declare each one in the context** with
