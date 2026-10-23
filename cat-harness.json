@@ -707,6 +707,8 @@
       "graphTypologies": [
         "health"
       ],
+      "scope": "repository",
+      "_scope_comment": "REPOSITORY-scoped, like `beans` and `todos` (owner, 2026-10-23, bean folio-assistant-kyrg: \"Yes, scope: repository\"). A health report is about the REPOSITORY the sweep runs in, so whatever checkout mounts this harness keeps it at its own root, on its own origin's `cat/cat-harness/health`. Unscoped, it bound to the mounted cat-harness instance, so the index's daily sweep pushed to litlfred/cat-harness's branch, which that workflow's token cannot write: a 403 on every run. Standalone, this checkout IS the root, so nothing here moves.",
       "_source_comment": "MOUNTED, owner 2026-10-11 (session_01UC1NuEuSy1MBNpEhnDuiGj, 05:58:12Z: \"move health to state branch now\"). The report is generated state, not reviewed content, so it is kept on its own per-graph branch (owner, 2026-10-03, bean laqs) and mounted at this path by `bun run cat state:mount`; main dropped it in the same commit that declared this source, because `mountTip` refuses a path the checkout still tracks.",
       "source": {
         "kind": "branch",
@@ -1038,11 +1040,13 @@
     {"path": "docs/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/folio-assistant-core--kg-skills.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/folio-assistant-core--kg-tools.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
+    {"path": "docs/assets/glossary/folio-assistant-core--guideline-domain.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/folio-assistant-core--platform.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/folio-assistant-sci--kg-bpmn-activities.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/folio-assistant-sci--kg-dmn-decisions.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/folio-assistant-sci--kg-skills.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/folio-assistant-sci--kg-tools.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
+    {"path": "docs/assets/glossary/folio-assistant-sci--kg-schema-fields.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/smart-base--kg-bpmn-activities.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/smart-base--kg-schema-fields.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
     {"path": "docs/assets/glossary/smart-base--kg-skills.skos.jsonld", "writer": ["glossary:page"], "because": "checkout", "reason": "the SKOS export of another instance's glossary, which sits above this layer"},
