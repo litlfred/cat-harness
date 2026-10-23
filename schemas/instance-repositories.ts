@@ -96,7 +96,7 @@ export function instanceRepositories(checkoutRoot: string, folioRoot?: string): 
  * glossary, the vocabulary and the `owner/repo → IRI` map cannot disagree.
  *
  * An instance that declares an `iriBase` mints under its own release,
- * `<iriBase><version>/ns#` (`release-iri.ts`). One that declares none mints
+ * `<iriBase>v<major>/ns#` (`release-iri.ts`). One that declares none mints
  * under the platform's site, `<stem><stub>/ns#`. Owner, 2026-09-30: the map
  * is "dynamic generated based on overlays", which is why it is read from each
  * declaration here rather than listed.

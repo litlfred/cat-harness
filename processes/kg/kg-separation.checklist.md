@@ -83,7 +83,7 @@ Move part of a knowledge graph into repositories of its own: the content and the
 
 - Who: the `Publication manager` lane (role `publication-manager`).
 - Skill: `instance-publication`.
-- What: Every identifier the content mints is a file some step publishes: /<version>/ for what programs read, kept for every version; /v<major>/ for pages people read.
+- What: Every identifier the content mints is a file some step publishes: /v<major>/, for what programs read and pages people read alike; the exact release is the pin's.
 - Record it: `workflow_complete` with `node: "Task_Plan"`.
 - next: → `GW_Ids` (Every identifier its file's path?)
 
@@ -182,7 +182,7 @@ Move part of a knowledge graph into repositories of its own: the content and the
 
 - Who: the `Publication manager` lane (role `publication-manager`).
 - Skill: `package-release`.
-- What: Tag each repository, publish /<version>/ and /v<major>/.
+- What: Tag each repository, publish /v<major>/.
 - Record it: `workflow_complete` with `node: "Task_Release"`.
 - next: → `Task_Verify` (Every identifier dereferences)
 

@@ -111,7 +111,7 @@ export const CAT_BOOTSTRAP_NS = ownNamespace("cat-bootstrap");
 export const CAT_HARNESS_NS = ownNamespace("cat-harness");
 // The content layer's namespace is NOT here (folio-assistant#2598, owner
 // 2026-10-16, "2a" then "1a"). An instance above this one mints into its own
-// namespace, `<iriBase><version>/ns#` from its declaration
+// namespace, `<iriBase>v<major>/ns#` from its declaration
 // (`instanceNamespace`), and a kind it declares in its `typologies/` graph is
 // named in that namespace by the registry (`GraphTypologyDef.namespace`).
 
@@ -306,7 +306,7 @@ export type NsPrefix = keyof typeof NS_PREFIXES;
  * rather than listed here (folio-assistant#2598, owner 2026-10-16).
  *
  * An instance that declares an `iriBase` mints under its own release,
- * `<iriBase><version>/ns#` (`release-iri.ts`). One that declares none mints
+ * `<iriBase>v<major>/ns#` (`release-iri.ts`). One that declares none mints
  * under the platform's site, `<stem><stub>/ns#`. `instanceNamespace` in
  * `instance-repositories.ts` is this function; it lives here because the
  * graph-typology registry needs it and cannot import that module (a cycle
@@ -319,9 +319,10 @@ export function instanceNamespaceOf(decl: { name: string; stub?: string; iriBase
 
 /** The instance stub a namespace of ours names — the segment before `/ns#`. */
 export function stubOfNamespace(ns: string): string | undefined {
-  // A release segment — `0.1.0` for what a program reads, `v0` for a page —
-  // sits between the stub and `ns#` once an instance declares an iriBase
-  // (`bootstrap-tools/schemas/release-iri.ts`); it is the version, never the stub.
+  // A release segment — `v0`, the major every address carries since the
+  // owner's 2026-10-23 ruling, or the full `0.1.0` an older copy may still
+  // spell — sits between the stub and `ns#` once an instance declares an
+  // iriBase (`bootstrap-tools/schemas/release-iri.ts`); it is never the stub.
   return /\/([^/]+)\/(?:(?:\d+\.\d+\.\d+|v\d+)\/)?ns#$/.exec(ns)?.[1];
 }
 
@@ -345,7 +346,7 @@ export function prefixForLayer(layer: TermLayer): NsPrefix {
 }
 
 const CORE_LAYER_UNNAMED =
-  "namespaces: the core layer's namespace is its declaring instance's (<iriBase><version>/ns#); " +
+  "namespaces: the core layer's namespace is its declaring instance's (<iriBase>v<major>/ns#); " +
   "ask contentLayerInstance() in graph-typology-registry.ts, or the kind's GraphTypologyDef.namespace";
 
 /**

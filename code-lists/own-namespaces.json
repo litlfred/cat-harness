@@ -12,7 +12,7 @@
       "code": "cat-bootstrap",
       "label": "bootstrap vocabulary",
       "definition": "JSON-LD terms the bootstrap instance declares; the prefix is the instance stub.",
-      "value": "https://litlfred.github.io/bootstrap/0.1.0/ns#",
+      "value": "https://litlfred.github.io/bootstrap/v0/ns#",
       "source": {
         "note": "schemas/namespaces.ts, where each was a constant until 2026-09-23"
       }
@@ -21,7 +21,7 @@
       "code": "cat-harness",
       "label": "cat-harness vocabulary",
       "definition": "JSON-LD terms the cat-harness instance declares; the prefix is the instance stub.",
-      "value": "https://litlfred.github.io/cat-harness/0.1.0/ns#",
+      "value": "https://litlfred.github.io/cat-harness/v0/ns#",
       "source": {
         "note": "schemas/namespaces.ts, where each was a constant until 2026-09-23"
       }
@@ -70,7 +70,7 @@
       "code": "bootstrap-processes",
       "label": "bootstrap's BPMN extension elements",
       "definition": "The XML namespace of the BPMN extension elements bootstrap declares for its own diagrams: skill, role and precondition. Its prefix names the declaring Subgraph, bootstrap.processes.",
-      "value": "https://litlfred.github.io/bootstrap/0.1.0/processes/ns#",
+      "value": "https://litlfred.github.io/bootstrap/v0/processes/ns#",
       "source": {
         "href": "https://github.com/litlfred/folio-assistant/issues/971",
         "note": "bean 12s9 stage 2, owner 2026-09-24: prefix = declaring Subgraph (dotted path), address option 1 (…/ns#)"
@@ -80,7 +80,7 @@
       "code": "cat-harness-processes",
       "label": "cat-harness's BPMN extension elements",
       "definition": "The XML namespace of the BPMN extension elements cat-harness declares for diagrams: bean, policy, adjudication, no-skill, no-call, job, implements, judgement, fulfilment, raci, involvement, link, decision, log and convention. Its prefix names the declaring Subgraph, cat-harness.processes.",
-      "value": "https://litlfred.github.io/cat-harness/0.1.0/processes/ns#",
+      "value": "https://litlfred.github.io/cat-harness/v0/processes/ns#",
       "source": {
         "href": "https://github.com/litlfred/folio-assistant/issues/971",
         "note": "bean 12s9 stage 3, owner 2026-09-24: prefix = declaring Subgraph, address <stub>/<subgraph>/ns#"
@@ -110,7 +110,7 @@
       "code": "fhir-harness-ig-ast",
       "label": "IG AST vocabulary",
       "definition": "The vocabulary the IG AST's JSON-LD export uses for what FHIR does not name (key, file, dependsOn, target, provisional ...), and the base of the generated IG AST JSON Schemas' $id. An identifier, following the <stub>/<instance>/<version>/ns/<vocab># pattern; not a resolvable address.",
-      "value": "https://litlfred.github.io/fhir-harness/0.1.0/ns/ig-ast#",
+      "value": "https://litlfred.github.io/fhir-harness/v0/ns/ig-ast#",
       "source": {
         "note": "bean l0lq"
       }

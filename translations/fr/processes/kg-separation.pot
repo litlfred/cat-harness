@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kg-separation\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.205Z\n"
+"POT-Creation-Date: 2026-10-23T19:07:55.098Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -201,7 +201,7 @@ msgstr ""
 
 #: processes/kg/kg-separation.bpmn:157
 #. Diagram element documentation
-msgid "Every identifier the content mints is a file some step publishes: /<version>/ for what programs read, kept for every version; /v<major>/ for pages people read. Name collisions between published files are resolved here."
+msgid "Every identifier the content mints is a file some step publishes: /v<major>/, for what programs read and pages people read alike; the exact release is the pin's. Name collisions between published files are resolved here."
 msgstr ""
 
 #: processes/kg/kg-separation.bpmn:325
@@ -341,7 +341,7 @@ msgstr ""
 
 #: processes/kg/kg-separation.bpmn:262
 #. Diagram element documentation
-msgid "Tag each repository, publish /<version>/ and /v<major>/. From here the two are versioned independently; a tools release lists the content majors it supports."
+msgid "Tag each repository, publish /v<major>/. From here the two are versioned independently; a tools release lists the content majors it supports."
 msgstr ""
 
 #: processes/kg/kg-separation.bpmn:192

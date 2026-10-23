@@ -1308,8 +1308,8 @@ resolves.
 **The `owner/repo → IRI` map is derived too.** `repositoryNamespaces()` gives
 each repository's vocabulary namespace. One rule, `instanceNamespace`,
 produces it, and the glossary uses the same rule:
-- an instance that declares `iriBase` mints under its own release,
-  `<iriBase><version>/ns#`;
+- an instance that declares `iriBase` mints under its own release's major,
+  `<iriBase>v<major>/ns#`;
 - one that declares none mints under the platform site, `<stem><stub>/ns#`.
 
 `code-lists/own-namespaces.json` still lists these namespaces, because code
@@ -1320,8 +1320,8 @@ its declaration's `iriBase`, and the list follows.
 Since 2026-09-30 (bean `yn2k`, the owner's decision), `cat-harness` and
 the content core declare an `iriBase` on their planned repositories'
 hosts, versioned as bootstrap's is:
-- `https://litlfred.github.io/cat-harness/0.1.0/ns#`
-- `https://litlfred.github.io/folio-assistant-core/0.1.0/ns#`
+- `https://litlfred.github.io/cat-harness/v0/ns#`
+- `https://litlfred.github.io/folio-assistant-core/v0/ns#`
 
 Their namespace documents are still published beside the site, as
 bootstrap's are.

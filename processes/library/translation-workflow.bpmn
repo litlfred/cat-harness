@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
- xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+<definitions xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+ xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
              xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
              xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
              xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
              id="Definitions_Translation"
              targetNamespace="https://litlfred.github.io/folio-assistant/workflows">
-  <import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
   <resource id="author" name="Author"/>
   <resource id="authoring-agent" name="Authoring agent"/>
   <resource id="translation-adjudicator" name="Translation adjudicator"/>
