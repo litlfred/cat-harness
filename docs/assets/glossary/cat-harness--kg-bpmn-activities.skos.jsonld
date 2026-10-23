@@ -1194,6 +1194,166 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_chooseasset",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Select upstream asset and target folio"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Name the upstream instance (`<owner>/<repo>`), the asset's declared path in that instance, the commit `ref` (when pinned), and the target folio declaration that will receive the copy."
+        }
+      ],
+      "skos:notation": "Task_ChooseAsset",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_ChooseAsset",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_copyanddeclareasset",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Copy asset into target folio and declare in assets[]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Write the asset bytes into a declared path inside the target folio and add the `KgAsset` entry to the target folio's `<name>.json` `assets[]` list (`directory-conventions`). Never drop the copy into an undeclared scratch directory."
+        }
+      ],
+      "skos:notation": "Task_CopyAndDeclareAsset",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_CopyAndDeclareAsset",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_inspectreadonly",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Browse in place and emit KgAsset snippet (read-only)"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Clean degradation when no write capability (`git-push`, `github-api`, `github-connector`) is present: inspect the asset in place through the zero-write `browse` affordance and output the ready-to-paste `KgAsset` entry (with `source: { instance, path, ref }` populated) so the author can apply it where they have write access."
+        }
+      ],
+      "skos:notation": "Task_InspectReadOnly",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_InspectReadOnly",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_probewritecapability",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Probe write capability (git-push, github-api, github-connector)"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Check whether the session holds at least one of the three write capabilities (`git-push`, `github-api`, or `github-connector` under `scenarios/capabilities/`). Keep available, absent and could-not-determine distinct."
+        }
+      ],
+      "skos:notation": "Task_ProbeWriteCapability",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_ProbeWriteCapability",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_readupstreamasset",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Read upstream asset and origin — write nothing"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Read the asset bytes and its origin coordinates (`instance` as `<owner>/<repo>`, `path` within that instance, and commit `ref`) from the source knowledge graph without modifying anything in the source lane."
+        }
+      ],
+      "skos:notation": "Task_ReadUpstreamAsset",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_ReadUpstreamAsset",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_stampassetsource",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Stamp KgAsset.source { instance, path, ref }"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Populate `source: { instance, path, ref }` (`AssetSourceSchema` in `schemas/kg-node.ts`) on the new `KgAsset` entry in the same change. Because `source` absent is a third state meaning \"authored locally in this instance\", omitting `source` on a copied asset is forbidden."
+        }
+      ],
+      "skos:notation": "Task_StampAssetSource",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_StampAssetSource",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_validatedeclaredasset",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Validate declared asset and provenance (check:declared-assets)"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Run `bun run cat check:declaration-resolution` (`check:declared-assets`) to verify that the copied asset exists at its declared path, its `KgAsset.source` conforms to `AssetSourceSchema`, and the upstream source graph remains untouched."
+        }
+      ],
+      "skos:notation": "Task_ValidateDeclaredAsset",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_ValidateDeclaredAsset",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_workoncopy",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Edit, comment or raise todos on the folio's copy"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The copied asset is now writable content of the target folio with recorded upstream provenance (`KgAsset.source`). The folio author may edit it in place, attach review comments, or raise todos (`todo-manager`) against it."
+        }
+      ],
+      "skos:notation": "Task_WorkOnCopy",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_WorkOnCopy",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/kg-bpmn-activities/process_copyoutmaterialized.task_editdirectly",
       "@type": "skos:Concept",
       "skos:inScheme": {

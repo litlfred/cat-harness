@@ -12,8 +12,10 @@
       "skills": [
         "adjudication",
         "dispatch-agent",
+        "folio-init",
         "getting-started",
         "interaction-modality",
+        "kg-affordances",
         "kg-subscription",
         "materialize-remote",
         "repo-conversion",
@@ -35,8 +37,10 @@
         "content-review",
         "decision-audit",
         "evidence-appraisal",
+        "kg-affordances",
         "milnor-exposition-standard",
         "staging-review",
+        "todo-manager",
         "voice-authoring-guidance"
       ],
       "persona": "Knows the subject and is mid-edit. Came to change one block, not to learn the system. Has the folio open and the schema only half in mind; will follow a convention if it is stated where they already are, and invent one if it is not."
@@ -384,11 +388,14 @@
         "decision-audit",
         "deletion-requires-confirmation",
         "delivery-summary",
+        "directory-conventions",
         "feature-staging",
+        "folio-init",
         "gate-tree-mutation",
         "github-state-inspection",
         "graph-detanglement",
         "issue-working",
+        "kg-affordances",
         "library-ingestion",
         "methodology-adoption",
         "opening-brief",
@@ -538,6 +545,7 @@
       "skills": [
         "content-test",
         "content-validate",
+        "kg-affordances",
         "qa-reports"
       ]
     },
@@ -606,6 +614,7 @@
         "system"
       ],
       "skills": [
+        "kg-affordances",
         "kg-subscription",
         "materialize-remote"
       ]
