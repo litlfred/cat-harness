@@ -200,6 +200,13 @@ jobs:
   and on the PR. Anything already red on main is listed, never hidden, and
   never counted against the PR.
 
+**A layer PR that declares a new directory is red on two index gates it
+cannot clear.** The index README lists every declared directory, so the PR
+leaves `index:render:check` and `readme:sync:root:check` stale, and only the
+index re-pin that takes the PR regenerates the README. Read those two as
+expected when they are the only new failures, and run them green in the
+index re-pin instead (2026-10-23, fhir-harness#112 with its IG AST viewer).
+
 **Disabling a repository's automatic builds is not disabling its checks.**
 When an IG repository's automatic gh-pages or IG Publisher triggers are
 switched off (the onboarding question in the FHIR IG layer's `ig-build-pipeline`),
