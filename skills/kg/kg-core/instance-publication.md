@@ -223,6 +223,19 @@ bootstrap's move off `litlfred.github.io/folio-assistant/bootstrap/` (bean
 `r3gy`, group E) — is `bun run iri:sync -- --from <old base>`, once. `beans/`
 is never rewritten: a bean records what was true when it was written.
 
+**Transition, one release — remove when every layer has migrated.** Until
+every litlfred layer carries `<iriBase>v<major>/` (bootstrap-tools#39 lists
+those that do not, with counts; added 2026-10-23), the CHECKS —
+`check:node-iris`, `iri:sync:check`, `vocabulary:check` — accept a legacy
+`<iriBase><semver>/` copy whose MAJOR is the declared major as
+**deprecated**: a warning naming the file, not a failure. Without it a
+layer's CI, which composes the others at `main`, could not go green before
+they move, and they cannot move before it merges. The WRITER, `iri:sync`,
+still moves every such copy to `v<major>/`; a full version of another major,
+or an id at the wrong path, still fails. The tolerance lives in
+`legacyExactSemver` / `withLegacyMoved` in `bootstrap-tools/schemas/release-iri.ts`;
+removing it and this paragraph is one commit, done when #39 closes.
+
 **A `$schema` tag carries its SCHEMA's semver**, not the instance's:
 `model-registry/1.0.0`. A reader accepts any tag of the same major
 (`tagCompatible`); a tag change that breaks a reader is a new major. An old
