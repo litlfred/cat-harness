@@ -15,7 +15,6 @@ A SUB-PROCESS of initialize-harness, never an entry point.
 ### 1. Determine where you are: process, roles, context (`A_DetermineWhere`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `discussion`, `human-agent-discussion`.
 - What: Before narrowing, say where this is happening, in the words you will use in the question.
 - Record it: `workflow_complete` with `node: "A_DetermineWhere"`.
 - next: → `A_ListHarnesses` (List the harnesses this could be)
@@ -23,7 +22,6 @@ A SUB-PROCESS of initialize-harness, never an entry point.
 ### 2. List the harnesses this could be (`A_ListHarnesses`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `confirm-harness`.
 - What: Zero or more.
 - Record it: `workflow_complete` with `node: "A_ListHarnesses"`.
 - next: → `A_ListLocations` (List the locations this could install to)
@@ -31,7 +29,6 @@ A SUB-PROCESS of initialize-harness, never an entry point.
 ### 3. List the locations this could install to (`A_ListLocations`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `confirm-harness`.
 - What: Zero or more.
 - Record it: `workflow_complete` with `node: "A_ListLocations"`.
 - next: → `A_AskRequestor` (Ask the Requestor: which harness, and where?)
@@ -39,7 +36,6 @@ A SUB-PROCESS of initialize-harness, never an entry point.
 ### 4. Ask the Requestor: which harness, and where? (`A_AskRequestor`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `confirm-harness`, `human-agent-discussion`.
 - What: The candidates go in as the options; the recommendation may name one; the default is NONE.
 - A subprocess (`Process_HumanAgentDiscussion`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `G_Settled` (One harness, and where it goes?)
@@ -54,7 +50,6 @@ A SUB-PROCESS of initialize-harness, never an entry point.
 ### 5. Record the determination (`A_RecordDetermination`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `discussion`.
 - What: Writes a document conforming to `discussion.output.schema.json`: the harness, the repositories as read-from / written-to pairs, `determinedBy: asked`, and who answered.
 - Record it: `workflow_complete` with `node: "A_RecordDetermination"`.
 - next: → `End_Settled` (Harness and repositories determined)
@@ -62,7 +57,6 @@ A SUB-PROCESS of initialize-harness, never an entry point.
 ### 6. Record what is still open (`A_RecordUnsettled`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `discussion`.
 - What: `outcome: unsettled` with what was asked and what is still open, so the next actor resumes rather than restarts.
 - Record it: `workflow_complete` with `node: "A_RecordUnsettled"`.
 - next: → `End_Unsettled` (Still open, and said so)

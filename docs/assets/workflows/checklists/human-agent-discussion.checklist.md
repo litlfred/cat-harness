@@ -15,7 +15,6 @@ A REUSABLE SUB-PROCESS, never an entry point.
 ### 1. Determine the context: what is known, and already decided (`A_DetermineContext`)
 
 - Who: the `Agent` lane.
-- Skill: `human-agent-discussion`.
 - What: Before composing anything: what is already known, each fact with where it came from; which declaration governs the matter (the instance's `<name>.json`, the diagram the caller is in, the Skill its task names); what state is recorded; and whether the question has ALREADY been decided — by the person 
 - Record it: `workflow_complete` with `node: "A_DetermineContext"`.
 - next: → `A_DetermineRoles` (Determine the roles: which you act as, and the person's)
@@ -23,7 +22,6 @@ A REUSABLE SUB-PROCESS, never an entry point.
 ### 2. Determine the roles: which you act as, and the person's (`A_DetermineRoles`)
 
 - Who: the `Agent` lane.
-- Skill: `human-agent-discussion`.
 - What: An Actor performs a task in a Process AS a Role.
 - Record it: `workflow_complete` with `node: "A_DetermineRoles"`.
 - next: → `A_DetermineProcess` (Determine the process and task, or that you are idle)
@@ -31,7 +29,6 @@ A REUSABLE SUB-PROCESS, never an entry point.
 ### 3. Determine the process and task, or that you are idle (`A_DetermineProcess`)
 
 - Who: the `Agent` lane.
-- Skill: `human-agent-discussion`.
 - What: Name the Process, the lane and the task the question belongs to, and say so in the message: "Process: Initialize a harness, at Determine the harness and repositories, as the Bootstrapping Agent".
 - Record it: `workflow_complete` with `node: "A_DetermineProcess"`.
 - next: → `GW_Determined` (Context, roles and process all determined?)
@@ -46,7 +43,6 @@ A REUSABLE SUB-PROCESS, never an entry point.
 ### 4. Say what is being decided, and why it matters now (`A_GiveContext`)
 
 - Who: the `Agent` lane.
-- Skill: `human-agent-discussion`.
 - What: First, and in the message itself: where you are (the Process and task, as which Role, asking whom — from the three determinations), what the decision is, what depends on it, and what is already known — each fact with where it came from.
 - Record it: `workflow_complete` with `node: "A_GiveContext"`.
 - next: → `A_LayOutOptions` (Lay out the options, with what each costs)
@@ -54,7 +50,6 @@ A REUSABLE SUB-PROCESS, never an entry point.
 ### 5. Ask first about what could not be determined (`A_AskUndeterminedFirst`)
 
 - Who: the `Agent` lane.
-- Skill: `human-agent-discussion`.
 - What: The caller's question waits, and is counted ("one more question after this").
 - Record it: `workflow_complete` with `node: "A_AskUndeterminedFirst"`.
 - next: → `A_GiveContext` (Say what is being decided, and why it matters now)
@@ -62,7 +57,6 @@ A REUSABLE SUB-PROCESS, never an entry point.
 ### 6. Lay out the options, with what each costs (`A_LayOutOptions`)
 
 - Who: the `Agent` lane.
-- Skill: `human-agent-discussion`.
 - What: Every option the agent could narrow the question to, each with what it costs and what it makes hard to undo.
 - Record it: `workflow_complete` with `node: "A_LayOutOptions"`.
 - next: → `A_Recommend` (Recommend one, and say what happens with no answer)
@@ -70,7 +64,6 @@ A REUSABLE SUB-PROCESS, never an entry point.
 ### 7. Recommend one, and say what happens with no answer (`A_Recommend`)
 
 - Who: the `Agent` lane.
-- Skill: `human-agent-discussion`.
 - What: Mark the option the agent would take and say why.
 - Record it: `workflow_complete` with `node: "A_Recommend"`.
 - next: → `A_PutQuestion` (Ask ONE question)
@@ -78,7 +71,6 @@ A REUSABLE SUB-PROCESS, never an entry point.
 ### 8. Ask ONE question (`A_PutQuestion`)
 
 - Who: the `Agent` lane.
-- Skill: `human-agent-discussion`.
 - What: One question, answerable by picking.
 - Record it: `workflow_complete` with `node: "A_PutQuestion"`.
 - next: → `A_Answer` (Answer, decline, or say nothing)
@@ -102,7 +94,6 @@ A REUSABLE SUB-PROCESS, never an entry point.
 ### 10. Record the answer, and who gave it (`A_RecordAnswer`)
 
 - Who: the `Agent` lane.
-- Skill: `human-agent-discussion`.
 - What: In the form the caller asked for — for bootstrap's harness question, a document conforming to discussion.output.schema.json with determinedBy asked.
 - Record it: `workflow_complete` with `node: "A_RecordAnswer"`.
 - next: → `GW_WhichQuestion` (Was that the caller's question, or a precondition?)
@@ -110,7 +101,6 @@ A REUSABLE SUB-PROCESS, never an entry point.
 ### 11. Follow up, narrower (`A_FollowUp`)
 
 - Who: the `Agent` lane.
-- Skill: `human-agent-discussion`.
 - What: The answer did not settle it: it named a kind rather than an option, or chose two.
 - Record it: `workflow_complete` with `node: "A_FollowUp"`.
 - next: → `A_Answer` (Answer, decline, or say nothing)
@@ -125,7 +115,6 @@ A REUSABLE SUB-PROCESS, never an entry point.
 ### 12. Record what is still open (`A_RecordUnsettled`)
 
 - Who: the `Agent` lane.
-- Skill: `human-agent-discussion`.
 - What: Declined, or silent where no default is allowed.
 - Record it: `workflow_complete` with `node: "A_RecordUnsettled"`.
 - next: → `End_Unsettled` (Still open, and said so)
@@ -140,7 +129,6 @@ A REUSABLE SUB-PROCESS, never an entry point.
 ### 13. Apply the stated default, and say so (`A_ApplyDefault`)
 
 - Who: the `Agent` lane.
-- Skill: `human-agent-discussion`.
 - What: Only the default stated in A_Recommend, only where the caller allows one, and recorded as assumed with the default named — never as the person's answer.
 - Record it: `workflow_complete` with `node: "A_ApplyDefault"`.
 - next: → `End_Defaulted` (Default applied, and said so)

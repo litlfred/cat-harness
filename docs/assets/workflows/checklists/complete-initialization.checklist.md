@@ -15,7 +15,6 @@ A SUB-PROCESS of initialize-harness, called after a harness is installed and als
 ### 1. Read the declaration, and each one it needs (`A_ReadDeclarations`)
 
 - Who: the `Knowledge Graph Data Store` lane (role `knowledge-graph-data-store`).
-- Skill: `bootstrap-kg-navigation`.
 - What: `<name>.json` at the root, then each name in its `needs`, from a sibling checkout `../<name>/<name>.json`.
 - Record it: `workflow_complete` with `node: "A_ReadDeclarations"`.
 - next: → `A_CheckDocuments` (Check the JSON Schemas and JSON-LD are at their IRIs)
@@ -23,7 +22,6 @@ A SUB-PROCESS of initialize-harness, called after a harness is installed and als
 ### 2. Check the JSON Schemas and JSON-LD are at their IRIs (`A_CheckDocuments`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `publish-documents`, `initialization-steps`.
 - What: THE PRIMARY STEP of initializing a Knowledge Graph harness (owner, 2026-09-30: "json(ld) is primary step in initializing KG harness"), and so the first one checked once the declarations are read.
 - Record it: `workflow_complete` with `node: "A_CheckDocuments"`.
 - next: → `A_ListSteps` (List the steps the declarations name)
@@ -31,7 +29,6 @@ A SUB-PROCESS of initialize-harness, called after a harness is installed and als
 ### 3. List the steps the declarations name (`A_ListSteps`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `initialization-steps`.
 - What: In the order of the table in `initialization-steps`: declaration, needs, each dependency's instructions, the documents at their IRIs (checked above, and listed first), directories, assets, README, README sections, site.
 - Record it: `workflow_complete` with `node: "A_ListSteps"`.
 - next: → `GW_NextStep` (A step not yet checked?)
@@ -45,7 +42,6 @@ A SUB-PROCESS of initialize-harness, called after a harness is installed and als
 ### 4. Check it (`A_CheckStep`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `initialization-steps`.
 - What: Look, do not remember.
 - Record it: `workflow_complete` with `node: "A_CheckStep"`.
 - next: → `GW_StepState` (What did the check find?)
@@ -53,7 +49,6 @@ A SUB-PROCESS of initialize-harness, called after a harness is installed and als
 ### 5. Report every step (`A_Report`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `log-message`.
 - What: One report, every step in its state, with counts: done, not done, could not determine, stated — led by the primary step, the JSON Schemas and JSON-LD at their IRIs.
 - A subprocess (`Process_LogMessage`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `GW_AllDone` (Every checkable step done?)
@@ -75,7 +70,6 @@ A SUB-PROCESS of initialize-harness, called after a harness is installed and als
 ### 6. Record the step in its state (`A_RecordStep`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `initialization-steps`.
 - What: The step, the declaration that named it, its state, what was seen, and — for anything not done — exactly what to do next.
 - Record it: `workflow_complete` with `node: "A_RecordStep"`.
 - next: → `GW_NextStep` (A step not yet checked?)
@@ -83,7 +77,6 @@ A SUB-PROCESS of initialize-harness, called after a harness is installed and als
 ### 7. Do it, then check again (`A_PerformStep`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `initialization-steps`, `publish-site`.
 - What: Only what the agent, or a tool it has, can do without replacing anything somebody wrote: regenerate a README section, add a missing Pages workflow, switch Pages on with an authenticated `gh`.
 - Record it: `workflow_complete` with `node: "A_PerformStep"`.
 - next: → `A_CheckStep` (Check it)
@@ -91,7 +84,6 @@ A SUB-PROCESS of initialize-harness, called after a harness is installed and als
 ### 8. Follow it, and say that you did (`A_FollowStated`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `initialization-steps`.
 - What: A stated step — a harness's own `docs/bootstrap/initialization.md`.
 - Record it: `workflow_complete` with `node: "A_FollowStated"`.
 - next: → `A_RecordStep` (Record the step in its state)
@@ -99,7 +91,6 @@ A SUB-PROCESS of initialize-harness, called after a harness is installed and als
 ### 9. Ask the person to do what only they can (`A_AskPerson`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `human-agent-discussion`, `publish-site`.
 - What: A step the agent cannot do or cannot check from here — switching Pages on without a signed-in `gh`, granting a permission, choosing between two ways of fixing a declaration.
 - A subprocess (`Process_HumanAgentDiscussion`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `A_RecordStep` (Record the step in its state)

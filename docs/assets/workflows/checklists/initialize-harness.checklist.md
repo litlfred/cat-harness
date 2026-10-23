@@ -15,7 +15,6 @@ THE ONLY PROCESS IN BOOTSTRAP AN ACTOR STARTS.
 ### 1. Determine which harness, and where (`A_DetermineHarness`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `confirm-harness`.
 - What: The candidates are listed and the Requestor is asked, in `discussion`, which asks through `human-agent-discussion`.
 - A subprocess (`Process_Discussion`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `GW_HarnessChosen` (One harness?)
@@ -29,7 +28,6 @@ THE ONLY PROCESS IN BOOTSTRAP AN ACTOR STARTS.
 ### 2. Log the failure (`A_LogFailure`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `log-message`.
 - What: Every failure path passes through here, so "logged as failed" is a step somebody performs rather than an adjective on an end event.
 - A subprocess (`Process_LogMessage`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Failed` (Failed)
@@ -37,7 +35,6 @@ THE ONLY PROCESS IN BOOTSTRAP AN ACTOR STARTS.
 ### 3. Read what each location already is (`A_ReadLocation`)
 
 - Who: the `Knowledge Graph Data Store` lane (role `knowledge-graph-data-store`).
-- Skill: `bootstrap-kg-navigation`.
 - What: Ask the location, not your memory of it: a Knowledge Graph Data Store that carries a declaration at its root is ALREADY an instance, and it says so itself.
 - Record it: `workflow_complete` with `node: "A_ReadLocation"`.
 - next: → `GW_AlreadyInitialized` (Already initialized?)
@@ -57,7 +54,6 @@ THE ONLY PROCESS IN BOOTSTRAP AN ACTOR STARTS.
 ### 4. Make sure every step is done (`A_CompleteInitialization`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `initialization-steps`.
 - What: Following a harness's instructions once is not the same as every step being done.
 - A subprocess (`Process_CompleteInitialization`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Installed` (Harness installed, every step checked)
@@ -65,7 +61,6 @@ THE ONLY PROCESS IN BOOTSTRAP AN ACTOR STARTS.
 ### 5. Read the harness's declaration and instructions (`A_ReadDeclaration`)
 
 - Who: the `Knowledge Graph Data Store` lane (role `knowledge-graph-data-store`).
-- Skill: `bootstrap-kg-navigation`.
 - What: Performed against the data store — a git repository, through the git CLI or a forge API.
 - Record it: `workflow_complete` with `node: "A_ReadDeclaration"`.
 - next: → `GW_InstructionsFound` (Instructions there?)
@@ -83,7 +78,6 @@ THE ONLY PROCESS IN BOOTSTRAP AN ACTOR STARTS.
 ### 6. Log the start of the install (`A_LogInstallStart`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `log-message`.
 - What: REQUIRED logging, which is what drawing the call says.
 - A subprocess (`Process_LogMessage`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `A_Install` (Follow them, at each location)
@@ -91,7 +85,6 @@ THE ONLY PROCESS IN BOOTSTRAP AN ACTOR STARTS.
 ### 7. Follow them, at each location (`A_Install`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `bootstrap-kg-navigation`.
 - What: The instructions belong to the harness being installed, not to bootstrap — bootstrap does not know what any Harness above it requires, and does not need to.
 - Record it: `workflow_complete` with `node: "A_Install"`.
 - next: → `A_WriteRootReadme` (Write the root README, if it is not there)
@@ -99,7 +92,6 @@ THE ONLY PROCESS IN BOOTSTRAP AN ACTOR STARTS.
 ### 8. Write the root README, if it is not there (`A_WriteRootReadme`)
 
 - Who: the `Bootstrapping Agent` lane (role `bootstrapping-agent`).
-- Skill: `root-readme`.
 - What: The repository now IS an instance of something, and nothing at its root says so.
 - Record it: `workflow_complete` with `node: "A_WriteRootReadme"`.
 - next: → `A_CompleteInitialization` (Make sure every step is done)

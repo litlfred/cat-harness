@@ -15,7 +15,6 @@ Render a Knowledge Graph — the whole of it, or a list of its Subgraphs — to 
 ### 1. Resolve the Subgraphs and the root URL (`A_ResolveInputs`)
 
 - Who: the `Site Publisher` lane (role `site-publisher`).
-- Skill: `render-kg-to-github-pages`.
 - What: Read the instance's declaration.
 - Record it: `workflow_complete` with `node: "A_ResolveInputs"`.
 - next: → `A_Provision` (Make sure gh-pages exists and Pages serves it)
@@ -23,7 +22,6 @@ Render a Knowledge Graph — the whole of it, or a list of its Subgraphs — to 
 ### 2. Make sure gh-pages exists and Pages serves it (`A_Provision`)
 
 - Who: the `GitHub Pages` lane (role `github-pages`).
-- Skill: `render-kg-to-github-pages`.
 - What: Provisioning the target, owned by this Tool's subprocess rather than by the general step (owner, 2026-10-01: "need to create gh-pages branch before can turn on").
 - Record it: `workflow_complete` with `node: "A_Provision"`.
 - next: → `A_Stage` (Stage the rendering)
@@ -31,7 +29,6 @@ Render a Knowledge Graph — the whole of it, or a list of its Subgraphs — to 
 ### 3. Stage the rendering (`A_Stage`)
 
 - Who: the `Site Publisher` lane (role `site-publisher`).
-- Skill: `render-kg-to-github-pages`.
 - What: site.ts --root <instance> --out <dir> [--subgraph <id>]…: every JSON Schema and JSON-LD document at the IRI it names, the files as they sit, the README page as README.md (served as README.html), and index.html as a redirect to it — the default landing page, which an index.html or index.md at the ins
 - Record it: `workflow_complete` with `node: "A_Stage"`.
 - next: → `A_CheckStaged` (Check what was staged)
@@ -39,7 +36,6 @@ Render a Knowledge Graph — the whole of it, or a list of its Subgraphs — to 
 ### 4. Check what was staged (`A_CheckStaged`)
 
 - Who: the `Site Publisher` lane (role `site-publisher`).
-- Skill: `render-kg-to-github-pages`.
 - What: site.ts --check and readme-book.ts --check: every document at its address, no address taken by another file, every link on the page landing.
 - Record it: `workflow_complete` with `node: "A_CheckStaged"`.
 - next: → `GW_Staged` (Staged tree passes?)
@@ -53,7 +49,6 @@ Render a Knowledge Graph — the whole of it, or a list of its Subgraphs — to 
 ### 5. Deploy the rendering (`A_Deploy`)
 
 - Who: the `GitHub Pages` lane (role `github-pages`).
-- Skill: `render-kg-to-github-pages`.
 - What: Commit the staged tree onto gh-pages as a full replace (the instance's Pages workflow on a push to main, or by hand); GitHub Pages then builds it from the branch.
 - Record it: `workflow_complete` with `node: "A_Deploy"`.
 - next: → `A_CheckServed` (Check what is served)
@@ -61,7 +56,6 @@ Render a Knowledge Graph — the whole of it, or a list of its Subgraphs — to 
 ### 6. Report the push: status and message (`A_Report`)
 
 - Who: the `Site Publisher` lane (role `site-publisher`).
-- Skill: `render-kg-to-github-pages`.
 - What: pages-status.ts: pushed, not-pushed or could-not-determine, and one line — the commit, the root URL, and the QA of both the staging and what is served.
 - Record it: `workflow_complete` with `node: "A_Report"`.
 - next: → `GW_Pushed` (Status is pushed?)
@@ -69,7 +63,6 @@ Render a Knowledge Graph — the whole of it, or a list of its Subgraphs — to 
 ### 7. Check what is served (`A_CheckServed`)
 
 - Who: the `Site Publisher` lane (role `site-publisher`).
-- Skill: `render-kg-to-github-pages`.
 - What: Ask the root URL and every document address.
 - Record it: `workflow_complete` with `node: "A_CheckServed"`.
 - next: → `A_Report` (Report the push: status and message)

@@ -301,6 +301,10 @@
       "@type": "@id"
     },
     "roleName": "https://litlfred.github.io/cat-harness/0.1.0/ns#roleName",
+    "sameAs": {
+      "@id": "http://www.w3.org/2002/07/owl#sameAs",
+      "@type": "@id"
+    },
     "satisfies": {
       "@id": "https://litlfred.github.io/cat-harness/0.1.0/ns#satisfies",
       "@type": "@id"
