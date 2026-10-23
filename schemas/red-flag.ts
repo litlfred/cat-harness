@@ -274,6 +274,13 @@ export function getReviewFindings(review: AdversarialReview): AdversarialFinding
 export const MergeReviewSchema = z.object({
   $schema: z.literal(MERGE_REVIEW_SCHEMA),
   pr: z.number().int().positive().optional(),
+  /**
+   * The repository `pr` is in, `owner/repo`. Optional, as `pr` is: the gate
+   * looks a verdict up by its head sha, but a reader of the store cannot link
+   * a pull request number without it. A reader links only an `owner/repo`
+   * spelling, so a malformed one costs the link, never the verdict.
+   */
+  repository: z.string().min(1).optional(),
   base_sha: z.string().min(1),
   head_sha: z.string().min(1),
   tree: z.string().optional(),
