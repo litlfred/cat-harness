@@ -289,7 +289,5 @@ The worked example is litlfred/test — an overlay with remote mounts, its
 
 These are tracked on bean `0mpw`:
 
-- `init-folio --link remote`;
-- pinning `skill_fetch`'s `REFERENCE_PACKAGES`;
 - the pilot (smart-ra drops its submodule);
 - the first real consumer, the cutover tracked by bean `g8jp`.

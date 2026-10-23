@@ -365,8 +365,8 @@ export const ContentTypeSchema = z
 
 /** How a scaffolded folio reaches the platform. */
 export const LinkModeSchema = z
-  .enum(["submodule", "sibling"])
-  .describe("How a new folio links the platform: a git submodule, or a sibling checkout.");
+  .enum(["submodule", "sibling", "remote"])
+  .describe("How a new folio links the platform: a git submodule, a sibling checkout, or pinned remote mounts in index.config.json.");
 
 /** What a preferences call does. */
 export const PreferenceActionSchema = z
