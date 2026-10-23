@@ -59,6 +59,7 @@ node_modules/
 /docs/en/cat-harness/schemas/
 /docs/assets/schemas/index.json
 /docs/en/cat-harness/methodologies/
+/docs/en/cat-harness/external-schemas/
 /docs/subscriptions/
 /docs/en/cat-harness/processes/
 /docs/_data/node-kinds.json
