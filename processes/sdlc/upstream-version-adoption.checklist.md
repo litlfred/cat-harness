@@ -79,7 +79,7 @@ A REUSABLE SUBPROCESS, entered once per pinned upstream dependency that has fall
 - Who: the `Publication manager` lane (role `publication-manager`).
 - Skill: `decision-audit`.
 - What: A PERSON decides.
-- Record it: `workflow_complete` with `node: "PM_Decide"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `GW_Adopt` (Adopt?)
 
 ### Decide — Adopt? (`GW_Adopt`)

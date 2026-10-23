@@ -58,13 +58,13 @@
       <bpmn:incoming>F_4</bpmn:incoming>
       <bpmn:outgoing>F_6</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:userTask id="U_Triage" name="Triage the failure:&#10;hold or fix forward">
+    <bpmn:callActivity id="U_Triage" calledElement="Process_AskThePerson" name="Triage the failure:&#10;hold or fix forward">
       <bpmn:documentation>The publication manager reads what failed and decides: hold the release, or fix forward and publish again. Nothing was deployed on a failure before the deploy; a failure after it (the deploy itself, or the previews lost) is live, and says so. The next successful publish closes the issue.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="publish-verification"/></bpmn:extensionElements>
       <bpmn:incoming>F_5</bpmn:incoming>
       <bpmn:incoming>F_6</bpmn:incoming>
       <bpmn:outgoing>F_7</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_Triaged" name="Triaged">
       <bpmn:incoming>F_7</bpmn:incoming>
     </bpmn:endEvent>

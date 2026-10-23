@@ -39,7 +39,7 @@ When agents stall (context exhausted, container lost, session timed out) their w
 ### 4. Decide each theme (`U_Decide`)
 
 - Who: the `User` lane (role `user`).
-- Record it: `workflow_complete` with `node: "U_Decide"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `A_Record` (Record the triage and claim the picked-up work)
 
 ### 5. Record the triage and claim the picked-up work (`A_Record`)
