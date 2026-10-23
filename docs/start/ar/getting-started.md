@@ -346,8 +346,8 @@ beans <id> --status in-progress   # claim an item
 ## الخطوات التالية
 
 - **[إمكانية الوصول](accessibility.html)** — كيف يسأل الوكيل، وأداة التحكم في الإعدادات على هذا الموقع
-- **[درس تعليمي — كتابة ورقة علمية](../../guides/writing-a-paper.html)**
-- **[كتابة مستند](../../guides/writing-a-document.html)**
+- **[درس تعليمي — كتابة ورقة علمية](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)**
+- **[كتابة مستند](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html)**
 - **[أنواع المحتوى](../../concepts/ar/content-types.html)** — الصياغة الشكلية لكل مجال
 - **[مسار عمل النشر](../../process/ar/publication-workflow.html)** — كل عملية في المستودع
 - **[البنية الهندسية](../../concepts/ar/architecture.html)** — المحولات، والمهارات، ونموذج الكتل البرمجية

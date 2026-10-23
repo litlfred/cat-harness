@@ -37,6 +37,7 @@
     "merge-conflict-patterns",
     "merge-queue",
     "merge-to-main",
+    "minimal-change",
     "narrative-asserts-code",
     "opening-brief",
     "package-release",

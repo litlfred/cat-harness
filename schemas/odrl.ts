@@ -337,7 +337,14 @@ export function unscopedGrants(
  * `readActors(dir, readPolicyGrants(policiesDir))` restores it for them.
  */
 export function readPolicyGrants(dir: string): Map<string, string[]> {
-  const all = readPolicies(dir);
+  return policyGrants(readPolicies(dir));
+}
+
+/**
+ * {@link readPolicyGrants} over policies already read — from one directory, or
+ * from several instances' directories overlaid into one map.
+ */
+export function policyGrants(all: ReadonlyMap<string, OdrlPolicy>): Map<string, string[]> {
   const out = new Map<string, string[]>();
   for (const policy of all.values()) {
     for (const [actor, actions] of unscopedGrants(policy, all)) {

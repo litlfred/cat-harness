@@ -177,7 +177,7 @@ The slide drew nine cards and put the tenth, **testing: test data and test harne
 
 **Sources:** the owner, 2026-09-30 (ten: the original eight plus scheduling
 logic and test scenarios); the SMART Base 1.0.0 `DAK` logical model;
-[the L2 artefacts and their skills](../guides/who-smart-dak.html).
+[the L2 artefacts and their skills](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-dak.html).
 
 > **Misaligned, in three directions:** the speaker notes said 8. The figure
 > shows 9 cards, with testing beside them. The SMART Base `DAK` logical model

@@ -462,12 +462,24 @@ told as (#1168):
 | a dependent's `scenarios/` may | it may NOT |
 |---|---|
 | add skills to a lower role (`extensions`) | change its title, description, `inherits`, `actorKinds` or persona |
-| add a NEW role, which may `inherits` a lower one | redeclare a lower id — refused, "extend it instead" |
+| add a NEW role, which may `inherits` a lower one | redeclare a lower id — refused, "extend it instead" (one exception, below) |
 | extend a lower actor: `actors/<f>.json` with `"extends": "<id>"`, adding `roles` / `capabilities` | carry any other field on an extension |
 | extend a capability: `"extends"` adding `requires`; or add a new probe | point an extension UP or sideways — only at an id declared below it |
 
+**The one exception — a move in flight** (owner, 2026-10-23, "Relax the
+rule"). Moving a role, actor, capability or policy up a layer is two pull
+requests: the higher layer adds it, then the lower layer removes it, and in
+between both declare the id. A redeclaration that **only adds** — every field
+the lower declaration carries is there unchanged (the same scalar, every
+member of an array, a nested object by the same rule), and it may carry more,
+such as the skills it used to add by extension — is accepted with a warning
+that names the id and both layers, and the higher declaration is used. The
+warning is the move's to-do: remove the lower copy. A redeclaration that
+changes or drops anything the lower one said is still refused.
+
 `schemas/scenario-overlay.ts` applies it (`checkoutRoleGraph`,
-`checkoutActors`, `checkoutCapabilities`); the layers are the checkout's
+`checkoutActors`, `checkoutCapabilities`, `checkoutPolicies`; the
+exception is `onlyAdds`); the layers are the checkout's
 instances that depend on the role's owner, deepest first. Resolved alone, the
 harness sees only its own roles. `kg:audit`, `check:raci`,
 `check:fallback-roles`, `check:actor-reach`, `kg-export` and the

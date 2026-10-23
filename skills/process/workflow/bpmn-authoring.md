@@ -75,8 +75,9 @@ is not enabled**. That has consequences for how you author:
 ## If it has actors, activities and a control flow, it is BPMN
 
 Not a Mermaid fence. Mermaid stays for the things that are *not* processes —
-component maps, lattices, navigation graphs. The audit of which is which is in
-`docs/process/publication-workflow.md`.
+component maps, lattices, navigation graphs. The audit of which is which is on
+the [publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html#which-diagrams-are-bpmn-and-which-are-not)
+page, which the content core authors.
 
 ## Why a DAK section sits in a platform package
 

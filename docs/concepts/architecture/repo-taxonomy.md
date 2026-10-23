@@ -79,7 +79,7 @@ It may:
 - instantiate instances of those Content types;
 - define Skills needed for publication and consumption of Content instances;
 - designate Skills as **mechanical** or **human** (see the
-  [HCI validation gate](../../process/publication-workflow.html));
+  [HCI validation gate](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html));
 - **must** constrain Skill I/O with schemas (JSON Schema, TypeScript).
 
 The `must` is the only hard requirement in the taxonomy, and it is what makes a

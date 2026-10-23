@@ -37,105 +37,6 @@ un **ensemble de compétences** (le formalisme de rédaction — ce qu'un auteur
 
 ---
 
-## Le cycle de vie du contenu
-{: #the-content-lifecycle data-fa-label="sec:content-types-the-content-lifecycle" }
-
-[✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/processes/content-lifecycle.bpmn){: .fa-node-edit title="Edit folio-assistant-core/processes/content/content-lifecycle.bpmn" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" data-qa-family="block" data-qa-key="the-content-lifecycle.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/content-types/the-content-lifecycle.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/content-types/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <span class="fa-qa-badge fa-qa-unswept fa-qa-fam-translation" title="Translation QA: not swept — no sidecar for this block" aria-label="Translation QA: not swept — no sidecar for this block"><span class="fa-qa-tag">TR</span></span> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-kg" data-qa-family="kg" data-qa-key="the-content-lifecycle.kg" data-qa-label="Knowledge-graph QA" data-qa-noun="diagram" data-qa-src="{{ '/assets/qa/content-types/the-content-lifecycle.kg.json' | relative_url }}" data-qa-index="{{ '/assets/qa/content-types/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Knowledge-graph QA: loading the verdict…" aria-label="Knowledge-graph QA: loading the verdict…"><span class="fa-qa-tag">KG</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
-
-Chaque type de contenu traverse le même cycle de vie, fourni par
-l'ensemble transversal de compétences **`content-lifecycle`** :
-
-<div class="bpmn-figure" id="figure-the-content-lifecycle">
-  <img src="{{ '/fr/assets/img/workflows/content-lifecycle.svg' | relative_url }}"
-       alt="Diagramme BPMN à couloirs d'un cycle de folio : le gestionnaire de programme planifie, le plan est initialisé sous forme de beans, l'édition et la validation IHM s'exécutent pour chaque modification proposée, un test d'intégration et un balayage QA suivent, puis brouillon-relecture-publication ; les retours sont triés et enregistrés sous forme de beans, et le cycle se répète ou le folio est retiré.">
-</div>
-
-[Source BPMN 2.0](https://github.com/litlfred/folio-assistant/blob/main/processes/content-lifecycle.bpmn) · [SVG en taille réelle]({{ '/assets/img/workflows/content-lifecycle.svg' | relative_url }})
-{: .bpmn-source }
-
-| Étape | Compétence | Ce qui se passe |
-|-------|-------|--------------|
-| plan | `content-plan` | Définir la portée du travail, identifier les artefacts et les acteurs |
-| author | `content-author` | Créer des artefacts structurés à partir du matériau source |
-| validate | `content-validate` | Vérifier par rapport au schéma + contraintes |
-| review | `content-review` | Relecture humaine / par un expert métier selon des critères |
-| test | `content-test` | QA automatisée, compilation réussie, preuves/validateurs validés |
-| publish | `content-publish` | Restituer et déployer la version publiée |
-| feedback | `content-feedback` | Recueillir et acheminer les retours des relecteurs |
-| retire | `content-retire` | Déprécier ou archiver un artefact |
-
-Les étapes du cycle de vie sont les mêmes quel que soit le type de contenu — ce qui
-diffère, ce sont les compétences de *rédaction* et les *artefacts* que chaque type produit. Pour la liste
-complète des compétences et les rôles qui les pilotent, voir **[Compétences & rôles](skills.html)**.
-
-Deux choses que les noms des huit étapes dissimulent, contrairement au diagramme : `author` et
-`validate` ne sont pas des phases consécutives mais une *boucle* — chaque modification proposée passe par
-la porte de validation IHM, et l'éditeur voit les conclusions avant que quoi que ce soit ne soit
-validé — et `review` intervient deux fois, une fois par modification et une fois sur le
-brouillon assemblé. Les deux se développent dans leurs propres diagrammes sur la
-page du **[flux de publication](../../process/fr/publication-workflow.html)**.
-
----
-
-## Documents & orientations politiques
-{: #documents-policy-guidance }
-
-[✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/processes/authoring-a-document.bpmn){: .fa-node-edit title="Edit folio-assistant-core/processes/content/authoring-a-document.bpmn" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-kg" data-qa-family="kg" data-qa-key="documents-policy-guidance.kg" data-qa-label="Knowledge-graph QA" data-qa-noun="diagram" data-qa-src="{{ '/assets/qa/content-types/documents-policy-guidance.kg.json' | relative_url }}" data-qa-index="{{ '/assets/qa/content-types/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Knowledge-graph QA: loading the verdict…" aria-label="Knowledge-graph QA: loading the verdict…"><span class="fa-qa-tag">KG</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
-
-**Ensemble de compétences :** `folio-document-adapter` ·
-**Adaptateur :** `document` ·
-**Guide :** [Rédiger un document](../../guides/writing-a-document.html)
-
-Prose structurée : orientations de politiques de santé (une ligne directrice L1, par exemple), une norme, un
-rapport, un manuel, un chapitre de livre. Tout ce qu'est un article, moins la couche
-formelle — et donc moins les deux chaînes d'outils qui la desservent.
-
-- **Modèle source** — le même arbre de *blocs* typés qu'un article, restreint aux
-  genres dont le contenu est de la prose plutôt qu'une affirmation formelle : `prose`,
-  `example`, `remark`, `algorithm`, `simulator`, `equation`, `diagram`,
-  `table`.
-- **Rendu** — `document_render_md` assemble le folio en un unique fichier
-  Markdown ; `document_render_html` et `document_render_pdf` le passent par
-  pandoc. Le chemin PDF utilise un moteur HTML (weasyprint, prince, wkhtmltopdf)
-  et ne bascule **jamais** vers `latexmk`, de sorte que « aucun TeX requis » reste vrai plutôt
-  que de devenir vrai-jusqu'à-ce-que-quelqu'un-ait-TeX-d'installé.
-- **Application des règles** — `content_profile_check` rejette tout genre mathématique, tout champ
-  `lean` ou fichier frère `.lean`, et s'exécute à chaque `content_validate`.
-
-Schémas de compétences pertinents :
-[`document-authoring`]({{ '/reference/skills/document-authoring.html' | relative_url }}),
-[`document-structure`]({{ '/reference/skills/document-structure.html' | relative_url }}),
-[`normative-statements`]({{ '/reference/skills/normative-statements.html' | relative_url }}),
-[`document-publishing`]({{ '/reference/skills/document-publishing.html' | relative_url }}).
-
-<div class="bpmn-figure" id="figure-documents-policy-guidance">
-  <img src="{{ '/fr/assets/img/workflows/authoring-a-document.svg' | relative_url }}"
-       alt="Diagramme BPMN à couloirs de la rédaction d'un document : l'auteur planifie, le plan est initialisé sous forme de beans, un agent échafaude le folio et rédige les blocs, le pipeline de compilation vérifie le profil déclaré avant de valider et de restituer en Markdown, HTML et PDF, et un relecteur contrôle l'accès à la publication.">
-</div>
-
-[Source BPMN 2.0](https://github.com/litlfred/folio-assistant/blob/main/processes/authoring-a-document.bpmn) · [SVG en taille réelle]({{ '/assets/img/workflows/authoring-a-document.svg' | relative_url }})
-{: .bpmn-source }
-
-### Porter un énoncé normatif
-{: #carrying-a-normative-statement data-fa-label="sec:content-types-carrying-a-normative-statement" }
-
-[✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/content/docs/content-types/carrying-a-normative-statement.md){: .fa-node-edit title="Edit content/docs/content-types/carrying-a-normative-statement.md" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" data-qa-family="block" data-qa-key="carrying-a-normative-statement.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/content-types/carrying-a-normative-statement.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/content-types/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <span class="fa-qa-badge fa-qa-unswept fa-qa-fam-translation" title="Translation QA: not swept — no sidecar for this block" aria-label="Translation QA: not swept — no sidecar for this block"><span class="fa-qa-tag">TR</span></span></span>
-
-Une recommandation, une exigence ou une règle est le bloc que les lecteurs citent et
-auquel les responsables de mise en œuvre se réfèrent. Il a besoin d'une étiquette, d'une identité stable et d'une place dans le
-graphe de dépendances — tout ce que possède un `theorem` — et ce n'est catégoriquement pas un
-théorème, car rien ne le prouve.
-
-Il n'existe **pas de genre de bloc `recommendation` de premier ordre**. Aujourd'hui, le support est un
-bloc `prose` doté d'une étiquette et d'un titre ; la compétence
-[`normative-statements`]({{ '/reference/skill-instructions/normative-statements.html' | relative_url }})
-énonce la convention et ses limites. Les directives antérieures dans
-`document-intake` faisaient correspondre les recommandations des lignes directrices à `definition` — cela
-précédait ce type de contenu et s'avère incorrect pour un folio de type document, où
-`definition` est un genre mathématique dont le champ `lean` est obligatoire.
-
----
-
 ## Articles scientifiques et livres
 {: #scientific-papers-books data-fa-label="sec:content-types-scientific-papers-books" }
 
@@ -143,7 +44,7 @@ précédait ce type de contenu et s'avère incorrect pour un folio de type docum
 
 **Ensemble de compétences :** `authoring-math` ·
 **Adaptateur :** `paper` ·
-**Guide :** [Rédiger un article](../../guides/writing-a-paper.html)
+**Guide :** [Rédiger un article](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)
 
 Articles scientifiques et livres rigoureux où la prose et les mathématiques sont appuyées par une
 formalisation **Lean 4** vérifiée par machine et restituées via **LaTeX**.
@@ -193,72 +94,6 @@ Schémas de compétences pertinents :
 [`latex-authoring`]({{ '/reference/skills/latex-authoring.html' | relative_url }}),
 [`lean-formalization`]({{ '/reference/skills/lean-formalization.html' | relative_url }}),
 [`proof-verification`]({{ '/reference/skills/proof-verification.html' | relative_url }}).
-
----
-
-## DAK des Lignes directrices SMART de l'OMS (L2)
-{: #who-smart-guidelines-daks-l2 data-fa-label="sec:content-types-who-smart-guidelines-daks-l2" }
-
-[✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/processes/l2-dak-authoring.bpmn){: .fa-node-edit title="Edit processes/l2-dak-authoring.bpmn" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" data-qa-family="block" data-qa-key="who-smart-guidelines-daks-l2.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/content-types/who-smart-guidelines-daks-l2.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/content-types/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <span class="fa-qa-badge fa-qa-unswept fa-qa-fam-translation" title="Translation QA: not swept — no sidecar for this block" aria-label="Translation QA: not swept — no sidecar for this block"><span class="fa-qa-tag">TR</span></span> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-kg" data-qa-family="kg" data-qa-key="who-smart-guidelines-daks-l2.kg" data-qa-label="Knowledge-graph QA" data-qa-noun="diagram" data-qa-src="{{ '/assets/qa/content-types/who-smart-guidelines-daks-l2.kg.json' | relative_url }}" data-qa-index="{{ '/assets/qa/content-types/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Knowledge-graph QA: loading the verdict…" aria-label="Knowledge-graph QA: loading the verdict…"><span class="fa-qa-tag">KG</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
-
-**Ensemble de compétences :** `authoring-who-smart-guidelines` ·
-**Guide :** [Rédiger un DAK SMART de l'OMS](../../guides/who-smart-dak.html)
-
-Un **kit d'adaptation numérique (DAK - Digital Adaptation Kit)** est la représentation *L2* (lisible
-par machine, mais neutre quant à l'implémentation) d'une ligne directrice de l'OMS. folio-assistant
-rédige les artefacts L2 :
-
-- **Processus métier** — flux de travail BPMN 2.0 (`bpmn-authoring`)
-- **Logique de décision** — tables de décision DMN (`dmn-authoring`)
-- **Dictionnaires de données / éléments de données fondamentaux** — Excel / tableaux structurés
-- **Terminologie** — systèmes de codage et jeux de valeurs (`terminology-management`)
-- **Personas, scénarios, indicateurs, exigences**
-
-Schémas de compétences pertinents :
-[`l2-dak-authoring`]({{ '/reference/skills/l2-dak-authoring.html' | relative_url }}),
-[`bpmn-authoring`]({{ '/reference/skills/bpmn-authoring.html' | relative_url }}),
-[`dmn-authoring`]({{ '/reference/skills/dmn-authoring.html' | relative_url }}),
-[`terminology-management`]({{ '/reference/skills/terminology-management.html' | relative_url }}).
-
-<div class="bpmn-figure" id="figure-who-smart-guidelines-daks-l2">
-  <img src="{{ '/fr/assets/img/workflows/l2-dak-authoring.svg' | relative_url }}"
-       alt="Diagramme BPMN à couloirs de la rédaction d'un DAK L2 : une passerelle parallèle distribue les personas, les processus BPMN, la logique de décision DMN, le dictionnaire de données et les indicateurs sur le couloir de l'analyste métier aux côtés des liaisons du terminologue, puis la validation par l'expert métier clinique contrôle l'assemblage du DAK.">
-</div>
-
-[Source BPMN 2.0](https://github.com/litlfred/folio-assistant/blob/main/processes/l2-dak-authoring.bpmn) · [SVG en taille réelle]({{ '/assets/img/workflows/l2-dak-authoring.svg' | relative_url }})
-{: .bpmn-source }
-
----
-
-## Guides d'implémentation SMART de l'OMS (L3)
-{: #who-smart-implementation-guides-l3 data-fa-label="sec:content-types-who-smart-implementation-guides-l3" }
-
-[✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/processes/l3-fhir-pipeline.bpmn){: .fa-node-edit title="Edit fhir-harness/processes/content/l3-fhir-pipeline.bpmn" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" data-qa-family="block" data-qa-key="who-smart-implementation-guides-l3.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/content-types/who-smart-implementation-guides-l3.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/content-types/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <span class="fa-qa-badge fa-qa-unswept fa-qa-fam-translation" title="Translation QA: not swept — no sidecar for this block" aria-label="Translation QA: not swept — no sidecar for this block"><span class="fa-qa-tag">TR</span></span> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-kg" data-qa-family="kg" data-qa-key="who-smart-implementation-guides-l3.kg" data-qa-label="Knowledge-graph QA" data-qa-noun="diagram" data-qa-src="{{ '/assets/qa/content-types/who-smart-implementation-guides-l3.kg.json' | relative_url }}" data-qa-index="{{ '/assets/qa/content-types/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Knowledge-graph QA: loading the verdict…" aria-label="Knowledge-graph QA: loading the verdict…"><span class="fa-qa-tag">KG</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
-
-**Ensemble de compétences :** `authoring-who-smart-guidelines` ·
-**Guide :** [Rédiger un IG SMART de l'OMS](../../guides/who-smart-ig.html)
-
-La couche *L3* transforme un DAK L2 en un **Guide d'implémentation FHIR** calculable :
-
-- **Ressources FHIR** rédigées en **FSH** (FHIR Shorthand) et compilées avec
-  **SUSHI** (`l3-fhir-authoring`)
-- **Validation** par rapport aux profils FHIR (`fhir-validation`)
-- **Publication** avec le **HL7 FHIR IG Publisher** (`ig-publication`)
-- Portes de **contrôle qualité** (`quality-control`)
-
-Schémas de compétences pertinents :
-[`l3-fhir-authoring`]({{ '/reference/skills/l3-fhir-authoring.html' | relative_url }}),
-[`fhir-validation`]({{ '/reference/skills/fhir-validation.html' | relative_url }}),
-[`ig-publication`]({{ '/reference/skills/ig-publication.html' | relative_url }}),
-[`quality-control`]({{ '/reference/skills/quality-control.html' | relative_url }}).
-
-<div class="bpmn-figure" id="figure-who-smart-implementation-guides-l3">
-  <img src="{{ '/fr/assets/img/workflows/l3-fhir-pipeline.svg' | relative_url }}"
-       alt="Diagramme BPMN à couloirs du pipeline L3 : mapper L2 vers L3, rédiger en FSH, compiler avec SUSHI, valider par rapport aux profils avec une boucle de retour vers FSH en cas d'échec, portes de contrôle qualité qui enregistrent les anomalies sous forme de beans, compilation avec l'IG Publisher, et publication du site de l'IG.">
-</div>
-
-[Source BPMN 2.0](https://github.com/litlfred/folio-assistant/blob/main/processes/l3-fhir-pipeline.bpmn) · [SVG en taille réelle]({{ '/assets/img/workflows/l3-fhir-pipeline.svg' | relative_url }})
-{: .bpmn-source }
 
 ---
 
