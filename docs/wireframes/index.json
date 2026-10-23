@@ -155,6 +155,11 @@
       "covers": [
         "cat-harness/voices"
       ]
+    },
+    "openapi": {
+      "covers": [
+        "cat-harness/openapi"
+      ]
     }
   }
 }
