@@ -476,6 +476,12 @@
   block means the day it goes missing every tile silently points at the origin
   again — which is this defect, with a second way to reach it. Two reasons for
   one answer now.
+
+  RELATIVE TO THIS PAGE since bean `g196` (2026-10-23): `.` at the root,
+  `../..` two levels down, never the deploy's path, so the page is the same
+  bytes in every preview. `_plugins/fa-root-relative.rb` does that to every
+  `site.baseurl` and `relative_url` on an HTML page; `siteBaseurl()` in
+  `docs-ui.js` and `navbar-row.js` resolves it back to an absolute path.
 -->
 <meta name="fa-baseurl" content="{{ site.baseurl }}">
 
@@ -503,8 +509,12 @@
   the tile. That matches `compose-docs.ts`, which withholds unless positively
   told `--staging` — one direction in both places, so the page and its tile
   cannot disagree about which deploy they are on.
+
+  A CONSTANT, `preview`, rather than the slug (bean `g196`, 2026-10-23): every
+  reader asks only whether it is empty, and the slug made every page differ
+  between previews. The branch is in `staging.json`, which the banner reads.
 -->
-<meta name="fa-staging" content="{{ site.data.build.staging_slug }}">
+<meta name="fa-staging" content="{% if site.data.build.staging_slug %}preview{% endif %}">
 
 <!--
   WHICH SEARCH INDEX THIS PAGE IS SERVING.
