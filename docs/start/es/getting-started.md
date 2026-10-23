@@ -346,8 +346,8 @@ MCP `work_plan_prime` expone la misma interfaz a cualquier agente conectado.
 
 - **[Accesibilidad](accessibility.html)** — cómo pregunta el agente y el control
   de configuración en este sitio
-- **[Tutorial — redactar un artículo](../../guides/writing-a-paper.html)**
-- **[Redactar un documento](../../guides/writing-a-document.html)**
+- **[Tutorial — redactar un artículo](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)**
+- **[Redactar un documento](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html)**
 - **[Tipos de contenido](../../concepts/es/content-types.html)** — el formalismo para cada dominio
 - **[Flujo de publicación](../../process/es/publication-workflow.html)** — cada proceso en el repositorio
 - **[Arquitectura](../../concepts/es/architecture.html)** — adaptadores, habilidades y el modelo de bloques

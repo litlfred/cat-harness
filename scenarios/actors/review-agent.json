@@ -6,7 +6,6 @@
   "roles": [
     "reviewer",
     "integration-watcher",
-    "proof-review-agent",
     "feedback-provider"
   ],
   "capabilities": [],
@@ -15,6 +14,6 @@
       "validate",
       "review"
     ],
-    "workflow": "folio-assistant-core/processes/content/editing-hci-validation.bpmn#Lane_NonMechanical"
+    "workflow": "processes/content/review-task.bpmn#Lane_Reviewer"
   }
 }

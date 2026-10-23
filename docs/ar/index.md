@@ -97,14 +97,14 @@ flowchart LR
 | نوع المحتوى | المخرجات | حزمة المهارات |
 |-------------|----------|---------------|
 | **الأوراق والكتب العلمية** | الصياغة الرسمية بـ Lean 4 + LaTeX/Markdown | [`authoring-math`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#scientific-papers--books) |
-| **حزم التكيف الرقمي (DAK) لإرشادات منظمة الصحة العالمية SMART** | مخرجات المستوى L2 — مخططات BPMN وDMN وقواميس بيانات Excel وشخصيات المستخدمين | [`authoring-who-smart-guidelines`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#who-smart-guidelines-daks-l2) |
-| **أدلة تطبيق إرشادات منظمة الصحة العالمية SMART** | موارد FHIR للمستوى L3، وFSH، ومخرجات IG Publisher | [`authoring-who-smart-guidelines`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#who-smart-implementation-guides-l3) |
+| **حزم التكيف الرقمي (DAK) لإرشادات منظمة الصحة العالمية SMART** | مخرجات المستوى L2 — مخططات BPMN وDMN وقواميس بيانات Excel وشخصيات المستخدمين | [`authoring-who-smart-guidelines`](https://litlfred.github.io/folio-assistant/smart-base/concepts/who-smart-content-types.html#who-smart-guidelines-daks-l2) |
+| **أدلة تطبيق إرشادات منظمة الصحة العالمية SMART** | موارد FHIR للمستوى L3، وFSH، ومخرجات IG Publisher | [`authoring-who-smart-guidelines`](https://litlfred.github.io/folio-assistant/smart-base/concepts/who-smart-content-types.html#who-smart-implementation-guides-l3) |
 | **أخرى** | قابل للتوسيع — أضف محولاً جديدًا + حزمة مهارات | [إضافة نوع محتوى]({{ site.baseurl }}/docs/cat-harness/guides/new-content-type.html) |
 
 تنطبق الحزمة الشاملة [`content-lifecycle`]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }}#the-content-lifecycle)
 (تخطيط → تأليف → تحقق → مراجعة → اختبار → نشر → ملاحظات → إحالة للتقاعد)
 على كل نوع محتوى.
-وينمذجها [مسار عمل النشر]({{ '/docs/cat-harness/process/publication-workflow.html' | relative_url }}) بدقة —
+وينمذجها [مسار عمل النشر](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) بدقة —
 في مخططات مسارات BPMN، مع تحديد الأدوار، وبوابة التحقق من التفاعل البشري الحاسوبي (HCI)،
 وخطة العمل المشتركة.
 
@@ -112,14 +112,14 @@ flowchart LR
 
 - **[التثبيت]({{ '/docs/cat-harness/start/installation.html' | relative_url }})** — المتطلبات الأساسية، والاستنساخ، و`bun install`، والتحقق من القدرات.
 - **[البدء]({{ '/docs/cat-harness/start/getting-started.html' | relative_url }})** — توصيل خادم MCP بنموذجك اللغوي وتشغيل مهاراتك الأولى.
-- **[درس تعليمي: كتابة ورقة بحثية باستخدام folio-assistant]({{ '/docs/cat-harness/guides/writing-a-paper.html' | relative_url }})** — دليل تطبيقي كامل مدفوع بالنموذج اللغوي مع جلسة محادثة تجريبية.
+- **[درس تعليمي: كتابة ورقة بحثية باستخدام folio-assistant](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)** — دليل تطبيقي كامل مدفوع بالنموذج اللغوي مع جلسة محادثة تجريبية.
 - **[أنواع المحتوى]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }})** — الصياغة الرسمية لكل مجال من مجالات التأليف.
-- **[مسار عمل النشر]({{ '/docs/cat-harness/process/publication-workflow.html' | relative_url }})** — مخططات مسارات BPMN لعمليات التحرير والنشر: بوابة التحقق من التفاعل البشري الحاسوبي (HCI)، وتوزيع مهام المراجعة، وخطة العمل المشتركة.
+- **[مسار عمل النشر](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** — مخططات مسارات BPMN لعمليات التحرير والنشر: بوابة التحقق من التفاعل البشري الحاسوبي (HCI)، وتوزيع مهام المراجعة، وخطة العمل المشتركة.
 - **[توجيه الوكيل]({{ '/docs/cat-harness/guides/agent-onboarding.html' | relative_url }})** — تدريب تمهيدي لوكيل الذكاء الاصطناعي عند دمجه في ملف المحتوى: الخطوات الأولى، واكتشاف المهارات، ونموذج كائنات المحتوى، وملفات ضمان الجودة المرافقة (QA sidecars).
 - **[المهارات والأدوار]({{ '/docs/cat-harness/concepts/skills.html' | relative_url }})** — جميع المهارات والأدوار، وكيفية عملها مع النموذج اللغوي الكبير.
 - **[Beans والمهام (Beans and todos)]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})** — خطة العمل المشتركة، ولماذا هي خاضعة لإدارة الإصدارات ومحفوظة في المستودع.
-- **[استيعاب الوثائق (Document ingestion)]({{ '/docs/cat-harness/guides/document-ingestion.html' | relative_url }})** — مسار تحويل uploads/ إلى المصادر الأولية L1: استخراج البنية، وتوليد المحتوى المشتق، وبناء رسم المعرفة البياني L1، وبوابة الاكتمال.
-- **[الأدلة (Evidence)]({{ '/docs/cat-harness/process/evidence.html' | relative_url }})** — استرجاع الأدلة واستخراجها ومراجعتها من المصادر إلى الادعاءات.
+- **[استيعاب الوثائق (Document ingestion)](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/document-ingestion.html)** — مسار تحويل uploads/ إلى المصادر الأولية L1: استخراج البنية، وتوليد المحتوى المشتق، وبناء رسم المعرفة البياني L1، وبوابة الاكتمال.
+- **[الأدلة (Evidence)](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/evidence.html)** — استرجاع الأدلة واستخراجها ومراجعتها من المصادر إلى الادعاءات.
 - **[مرجع مخططات المهارات](../reference/skills/)** — عقود المدخلات والمخرجات المُنشأة لكل مهارة.
 - **[مرجع واجهة برمجة تطبيقات TypeScript](../api/)** — نموذج كائنات المحتوى (`Block` و`Chapter` و`Paper`، وبناة الكائنات، وقيود Zod).
 - **[البنية الهندسية]({{ '/docs/cat-harness/concepts/architecture.html' | relative_url }})** — المحولات، وخادم MCP، والتحكم في الوصول القائم على الأدوار (RBAC)، ونموذج الكتل.

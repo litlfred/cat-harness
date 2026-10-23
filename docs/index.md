@@ -113,23 +113,23 @@ folio-assistant is **pluggable** — each content type is handled by a content
 | Content type | Artifacts | Skill package |
 |--------------|-----------|---------------|
 | **Scientific papers & books** | Lean 4 formalization + LaTeX/Markdown | [`authoring-math`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#scientific-papers--books) |
-| **WHO SMART Guidelines DAKs** | L2 artifacts — BPMN, DMN, Excel data dictionaries, personas | [`authoring-who-smart-guidelines`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#who-smart-guidelines-daks-l2) |
-| **WHO SMART Implementation Guides** | L3 FHIR resources, FSH, IG Publisher output | [`authoring-who-smart-guidelines`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#who-smart-implementation-guides-l3) |
+| **WHO SMART Guidelines DAKs** | L2 artifacts — BPMN, DMN, Excel data dictionaries, personas | [`authoring-who-smart-guidelines`](https://litlfred.github.io/folio-assistant/smart-base/concepts/who-smart-content-types.html#who-smart-guidelines-daks-l2) |
+| **WHO SMART Implementation Guides** | L3 FHIR resources, FSH, IG Publisher output | [`authoring-who-smart-guidelines`](https://litlfred.github.io/folio-assistant/smart-base/concepts/who-smart-content-types.html#who-smart-implementation-guides-l3) |
 | **Others** | Pluggable — add a new adapter + skill package | [Adding a content type]({{ site.baseurl }}/docs/cat-harness/guides/new-content-type.html) |
 
 The cross-cutting [`content-lifecycle`]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }}#the-content-lifecycle)
 package (plan → author → validate → review → test → publish → feedback → retire)
 applies to every content type. The
-[publication workflow]({{ '/docs/cat-harness/process/publication-workflow.html' | relative_url }}) models it properly — as BPMN
+[publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) models it properly — as BPMN
 swimlanes, with the roles, the HCI validation gate, and the shared work plan.
 
 ## Where to go next
 
 - **[Installation]({{ '/docs/cat-harness/start/installation.html' | relative_url }})** — prerequisites, clone, `bun install`, capability check.
 - **[Getting started]({{ '/docs/cat-harness/start/getting-started.html' | relative_url }})** — connect the MCP server to your LLM and run your first skill.
-- **[Tutorial: Writing a paper with folio-assistant]({{ '/docs/cat-harness/guides/writing-a-paper.html' | relative_url }})** — a full, LLM-driven walk-through with a mock chat session.
+- **[Tutorial: Writing a paper with folio-assistant](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)** — a full, LLM-driven walk-through with a mock chat session.
 - **[Content types]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }})** — the formalism of each authoring domain.
-- **[Publication workflow]({{ '/docs/cat-harness/process/publication-workflow.html' | relative_url }})** — BPMN swimlane diagrams of the editing and publication processes: the HCI validation gate, who reviews what, and the shared work plan.
+- **[Publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** — BPMN swimlane diagrams of the editing and publication processes: the HCI validation gate, who reviews what, and the shared work plan.
 - **[Agent onboarding]({{ '/docs/cat-harness/guides/agent-onboarding.html' | relative_url }})** — orientation for an LLM agent dropped into a folio: first steps, finding skills, the content-object model, QA sidecars.
 - **[Skills & roles]({{ '/docs/cat-harness/concepts/skills.html' | relative_url }})** — every skill and role, and how they work together with the LLM.
 - **[Skill schema reference](reference/skills/)** — generated input/output contracts for every skill.

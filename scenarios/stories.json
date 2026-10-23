@@ -171,55 +171,6 @@
       "want": "Tell a node that is unreachable from one that is reached by direct invocation"
     },
     {
-      "id": "compute-authoring-agent-1",
-      "role": {
-        "role": "compute-authoring-agent"
-      },
-      "want": "Eliminate drift between a value in the prose and the script that computes it"
-    },
-    {
-      "id": "compute-authoring-agent-2",
-      "role": {
-        "role": "compute-authoring-agent"
-      },
-      "want": "Audit a compute script for a per-element FFI round trip"
-    },
-    {
-      "id": "compute-authoring-agent-3",
-      "role": {
-        "role": "compute-authoring-agent"
-      },
-      "want": "Check a simulator against the mathematics it claims to illustrate"
-    },
-    {
-      "id": "deep-researcher-1",
-      "role": {
-        "role": "deep-researcher"
-      },
-      "want": "Answer a question whose evidence is spread across several held documents"
-    },
-    {
-      "id": "deep-researcher-2",
-      "role": {
-        "role": "deep-researcher"
-      },
-      "want": "Decide, per question, whether summaries or chunks are the right granularity to search"
-    },
-    {
-      "id": "deep-researcher-3",
-      "role": {
-        "role": "deep-researcher"
-      },
-      "want": "Stop an iterative search on a stated sufficiency condition rather than on exhaustion"
-    },
-    {
-      "id": "deep-researcher-4",
-      "role": {
-        "role": "deep-researcher"
-      },
-      "want": "Report an answer with citations a reader can verify at the page it came from"
-    },
-    {
       "id": "docs-authoring-agent-1",
       "role": {
         "role": "docs-authoring-agent"
@@ -281,27 +232,6 @@
         "role": "editorial-authoring-agent"
       },
       "want": "Decide whether a reference has been verified or merely cited"
-    },
-    {
-      "id": "evidence-agent-1",
-      "role": {
-        "role": "evidence-agent"
-      },
-      "want": "Frame a searchable question from a vague one"
-    },
-    {
-      "id": "evidence-agent-2",
-      "role": {
-        "role": "evidence-agent"
-      },
-      "want": "Appraise source quality rather than just retrieve"
-    },
-    {
-      "id": "evidence-agent-3",
-      "role": {
-        "role": "evidence-agent"
-      },
-      "want": "Report an empty result as a real answer"
     },
     {
       "id": "feedback-provider-1",
@@ -396,27 +326,6 @@
       "want": "Refuse to report a finding the diff does not support"
     },
     {
-      "id": "lean-authoring-agent-1",
-      "role": {
-        "role": "lean-authoring-agent"
-      },
-      "want": "Turn a narrative theorem into a Lean declaration that elaborates"
-    },
-    {
-      "id": "lean-authoring-agent-2",
-      "role": {
-        "role": "lean-authoring-agent"
-      },
-      "want": "Get a red Lake build green without weakening a statement"
-    },
-    {
-      "id": "lean-authoring-agent-3",
-      "role": {
-        "role": "lean-authoring-agent"
-      },
-      "want": "Triage which `sorry` to discharge next"
-    },
-    {
       "id": "librarian-1",
       "role": {
         "role": "librarian"
@@ -466,27 +375,6 @@
       "want": "Decide whether a translation says what the source says, not merely what it means"
     },
     {
-      "id": "onboarding-agent-1",
-      "role": {
-        "role": "onboarding-agent"
-      },
-      "want": "Tell which repository it is in and what that implies"
-    },
-    {
-      "id": "onboarding-agent-2",
-      "role": {
-        "role": "onboarding-agent"
-      },
-      "want": "Run the right first commands before touching anything"
-    },
-    {
-      "id": "onboarding-agent-3",
-      "role": {
-        "role": "onboarding-agent"
-      },
-      "want": "Find the skill that governs the task instead of improvising"
-    },
-    {
       "id": "platform-authoring-agent-1",
       "role": {
         "role": "platform-authoring-agent"
@@ -527,27 +415,6 @@
         "role": "programme-manager"
       },
       "want": "Report outward without reading the diffs"
-    },
-    {
-      "id": "proof-review-agent-1",
-      "role": {
-        "role": "proof-review-agent"
-      },
-      "want": "Find a Lean declaration that is true only because its hypotheses are unsatisfiable"
-    },
-    {
-      "id": "proof-review-agent-2",
-      "role": {
-        "role": "proof-review-agent"
-      },
-      "want": "Detect where the narrative proof and the formal proof have drifted apart"
-    },
-    {
-      "id": "proof-review-agent-3",
-      "role": {
-        "role": "proof-review-agent"
-      },
-      "want": "Consolidate propositions that say the same thing twice"
     },
     {
       "id": "publication-manager-1",
