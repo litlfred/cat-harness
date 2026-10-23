@@ -9,7 +9,7 @@
  * settings the single file had (ruling D1, parse-equal).
  */
 import { describe, expect, test } from "bun:test";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { type Dirent, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { Liquid } from "liquidjs";
@@ -218,7 +218,7 @@ describe("the theme's markup passes leave <script> and <style> alone", () => {
 describe("first-party asset versions", () => {
   const roots = ["site-chrome", "docs"].map((d) => join(HARNESS, d));
   const walk = (dir: string): string[] =>
-    require("node:fs").readdirSync(dir, { withFileTypes: true }).flatMap((e: import("node:fs").Dirent) =>
+    readdirSync(dir, { withFileTypes: true }).flatMap((e: Dirent) =>
       e.isDirectory() ? walk(join(dir, e.name)) : /\.(html|md|liquid|scss|js|json)$/.test(e.name) ? [join(dir, e.name)] : [],
     );
 
