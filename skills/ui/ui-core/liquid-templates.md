@@ -68,17 +68,18 @@ one level down.
 A version typed into a template is stale on the next bump. Read it:
 
 - **README templates** get `release`: `version` (every instance declares one),
-  and — for an instance declaring an `iriBase` — `major`, `agent`
-  (`<iriBase><version>/`, for identifiers) and `human` (`<iriBase>v<major>/`,
-  for pages). Empty strings where not declared: test with `!= ""`, and show
-  nothing rather than a guess.
+  and — for an instance declaring an `iriBase` — `major`, `agent` (for
+  identifiers) and `human` (for pages), both `<iriBase>v<major>/` since the
+  owner's 2026-10-23 ruling. Empty strings where not declared: test with
+  `!= ""`, and show nothing rather than a guess.
 - **Site templates** read `site.data.harness.releases.<instance>` — the same
   four fields for every instance, written by `sync-docs-harness` into
   `_data/harness.json` under the `docs:harness:check` gate.
 
-Link a person to `human`, never `agent`: the full-version address is for
-programs, which pin exactly ([`instance-publication`](../../kg/kg-core/instance-publication.md)
-§"Release IRIs").
+Link a person to `human` and name an identifier with `agent`. They are one
+address today — every address carries the major only, and the pin, not the
+address, fixes the exact release ([`instance-publication`](../../kg/kg-core/instance-publication.md)
+§"Release IRIs") — but the field still says which audience a link is for.
 
 ## The leading comment IS the file's description
 

@@ -66,7 +66,7 @@ consumer already keys on.
 
 Published IRIs are **not** at risk, which is worth stating because it is the
 thing the ruling names first. The SKOS exports mint
-`https://litlfred.github.io/cat-harness/0.1.0/ns#glossary/<ledger>/<local>` —
+`https://litlfred.github.io/cat-harness/v0/ns#glossary/<ledger>/<local>` —
 no filesystem path appears in any `@id` (the `docssite` that looks like one is
 the `docs-site.yml` **process** id). Moving files rots no minted IRI.
 

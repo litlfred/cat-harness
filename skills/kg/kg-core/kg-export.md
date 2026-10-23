@@ -164,17 +164,18 @@ Owner, 2026-09-23: *"prefix -> match stub"*. Each of our namespaces is
 
 | namespace | prefix |
 |---|---|
-| `https://litlfred.github.io/bootstrap/0.1.0/ns#` | `bootstrap` |
+| `https://litlfred.github.io/bootstrap/v0/ns#` | `bootstrap` |
 | `…/folio-assistant/cat-harness/ns#` | `cat-harness` |
 | `…/folio-assistant/<content-core>/ns#` | the content core |
 
 bootstrap's row is the exception to the `<canonical>/<stub>/` shape, and says
 so: its namespace sits under bootstrap's own `iriBase` and carries the
-release version (bean `r3gy` E), because bootstrap is published from its own
-repository and an agent reading it pins a release. The prefix is still the
+release's MAJOR (bean `r3gy` E; owner, 2026-10-23, the major and not the full
+version), because bootstrap is published from its own repository; the exact
+release an agent reads is its pin's. The prefix is still the
 stub. The address is written once, in `cat-harness/code-lists/own-namespaces.json` (read as
 `CAT_BOOTSTRAP_NS`), and `iri:sync` keeps every literal copy — this table's
-included — at bootstrap's declared version.
+included — at bootstrap's declared major.
 
 One word in three places — path segment, stub, prefix — instead of three
 words that must agree.
@@ -183,7 +184,7 @@ words that must agree.
 
 **A namespace document is published where its identifiers point**, so its file
 name IS its address: `bootstrap/ns.jsonld` is what makes
-`…/bootstrap/0.1.0/ns#Node` resolve, and `check:node-iris` fails the day they
+`…/bootstrap/v0/ns#Node` resolve, and `check:node-iris` fails the day they
 differ. Renaming the file renames every term.
 
 The owner asked whether `ns` should be a friendlier name (`vocabulary.jsonld`,
