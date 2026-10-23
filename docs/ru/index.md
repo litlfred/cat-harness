@@ -87,14 +87,14 @@ folio-assistant **расширяем** — каждый тип контента 
 | Тип контента | Артефакты | Пакет навыков |
 |--------------|-----------|---------------|
 | **Научные статьи и книги** | Формализация Lean 4 + LaTeX/Markdown | [`authoring-math`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#scientific-papers--books) |
-| **Комплекты цифровой адаптации (DAK) руководств ВОЗ SMART Guidelines** | Артефакты L2 — BPMN, DMN, словари данных Excel, персоны | [`authoring-who-smart-guidelines`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#who-smart-guidelines-daks-l2) |
-| **Руководства по реализации ВОЗ SMART Guidelines** | Ресурсы FHIR L3, FSH, выходные данные IG Publisher | [`authoring-who-smart-guidelines`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#who-smart-implementation-guides-l3) |
+| **Комплекты цифровой адаптации (DAK) руководств ВОЗ SMART Guidelines** | Артефакты L2 — BPMN, DMN, словари данных Excel, персоны | [`authoring-who-smart-guidelines`](https://litlfred.github.io/folio-assistant/smart-base/concepts/who-smart-content-types.html#who-smart-guidelines-daks-l2) |
+| **Руководства по реализации ВОЗ SMART Guidelines** | Ресурсы FHIR L3, FSH, выходные данные IG Publisher | [`authoring-who-smart-guidelines`](https://litlfred.github.io/folio-assistant/smart-base/concepts/who-smart-content-types.html#who-smart-implementation-guides-l3) |
 | **Другие** | Расширяемость — добавьте новый адаптер + пакет навыков | [Добавление типа контента]({{ site.baseurl }}/docs/cat-harness/guides/new-content-type.html) |
 
 Сквозной пакет [`content-lifecycle`]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }}#the-content-lifecycle)
 (планирование → написание → валидация → рецензирование → тестирование → публикация → обратная связь → вывод из эксплуатации)
 применим ко всем типам контента.
-[Процесс публикации]({{ '/docs/cat-harness/process/publication-workflow.html' | relative_url }}) моделирует его должным образом —
+[Процесс публикации](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) моделирует его должным образом —
 в виде дорожек BPMN (swimlanes), с ролями, этапом валидации HCI и общим
 планом работ.
 
@@ -102,9 +102,9 @@ folio-assistant **расширяем** — каждый тип контента 
 
 - **[Установка]({{ '/docs/cat-harness/start/installation.html' | relative_url }})** — предварительные требования, клонирование, `bun install`, проверка возможностей.
 - **[Начало работы]({{ '/docs/cat-harness/start/getting-started.html' | relative_url }})** — подключите MCP-сервер к вашей LLM и запустите свой первый навык.
-- **[Руководство: Написание статьи с помощью folio-assistant]({{ '/docs/cat-harness/guides/writing-a-paper.html' | relative_url }})** — пошаговое руководство под управлением LLM с имитацией сессии чата.
+- **[Руководство: Написание статьи с помощью folio-assistant](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)** — пошаговое руководство под управлением LLM с имитацией сессии чата.
 - **[Типы контента]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }})** — формализм каждого предметного домена создания контента.
-- **[Процесс публикации]({{ '/docs/cat-harness/process/publication-workflow.html' | relative_url }})** — диаграммы дорожек BPMN процессов редактирования и публикации: этап валидации HCI, кто что рецензирует и общий план работ.
+- **[Процесс публикации](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** — диаграммы дорожек BPMN процессов редактирования и публикации: этап валидации HCI, кто что рецензирует и общий план работ.
 - **[Онбординг агента]({{ '/docs/cat-harness/guides/agent-onboarding.html' | relative_url }})** — вводный инструктаж для LLM-агента, подключенного к фолио: первые шаги, поиск навыков, объектная модель контента, вспомогательные QA-файлы.
 - **[Навыки и роли]({{ '/docs/cat-harness/concepts/skills.html' | relative_url }})** — описание каждого навыка и роли и их совместная работа с LLM.
 - **[Справочник схем навыков](../reference/skills/)** — сгенерированные контракты входных и выходных данных для каждого навыка.

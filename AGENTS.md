@@ -117,7 +117,7 @@ A new folio is `bun run cat init-folio --help` or the `folio_init` tool, which
 is registered among the **generic** tools because it runs before a folio has a
 content type; why block manifests import a builder shim rather than the
 platform is in [`memory/`](memory/the-builder-shim-and-why-folio-init-is-generic.md),
-and the walk-through is [`writing-a-document`](docs/guides/writing-a-document.md).
+and the walk-through is [`writing-a-document`](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html).
 
 ### Commands, and the gate set
 
@@ -280,7 +280,7 @@ doing ([`opening-brief`](skills/sdlc/sdlc-core/opening-brief.md)).
 - **Every process is BPMN, and the diagrams are executable**
   ([`bpmn-processes`](skills/process/workflow/bpmn-processes.md),
   [`workflow-state`](skills/process/workflow/workflow-state.md),
-  [the publication-workflow page](docs/process/publication-workflow.md)).
+  [the publication-workflow page](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)).
   `bun run cat render:bpmn` regenerates the pictures.
 - **Process state, blocking and swarms** —
   [`process-state`](skills/process/workflow/process-state.md),
