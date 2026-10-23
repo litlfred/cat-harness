@@ -100,6 +100,7 @@ The loop back through "root-cause the failure" is the point of drawing this at a
         <bpmn:flowNodeRef>Task_AddressReview</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_PrepareMerge</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_CloseBean</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_ArchiveBean</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Merged</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Pipeline" name="CI/CD pipeline" partitionElementRef="build-pipeline">
@@ -275,8 +276,17 @@ The loop back through "root-cause the failure" is the point of drawing this at a
       <bpmn:outgoing>f17</bpmn:outgoing>
     </bpmn:task>
 
-    <bpmn:endEvent id="End_Merged" name="Merged">
+    <bpmn:task id="Task_ArchiveBean" name="Archive the bean">
+      <bpmn:documentation>Move the bean, now completed, into the archive, with a line saying which process closed it. A bean still open stays where it is with a note saying why: only a completed or scrapped bean may be archived (check:bean-archive). The periodic sweep still archives anything this step leaves.</bpmn:documentation>
+      <bpmn:extensionElements>
+        <bootstrap.processes:skill ref="todo-manager"/>
+        <cat-harness.processes:bean op="archive"/>
+      </bpmn:extensionElements>
       <bpmn:incoming>f17</bpmn:incoming>
+      <bpmn:outgoing>f18</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="End_Merged" name="Merged">
+      <bpmn:incoming>f18</bpmn:incoming>
     </bpmn:endEvent>
 
     <!-- ═══ Pipeline lane ═══ -->
@@ -329,22 +339,23 @@ The loop back through "root-cause the failure" is the point of drawing this at a
     <bpmn:sequenceFlow id="f14" sourceRef="Task_AddressReview"    targetRef="Task_Implement" />
     <bpmn:sequenceFlow id="f15" name="clear"     sourceRef="GW_ReviewClear" targetRef="Task_PrepareMerge" />
     <bpmn:sequenceFlow id="f16" sourceRef="Task_PrepareMerge"     targetRef="Task_CloseBean" />
-    <bpmn:sequenceFlow id="f17" sourceRef="Task_CloseBean"        targetRef="End_Merged" />
+    <bpmn:sequenceFlow id="f17" sourceRef="Task_CloseBean"        targetRef="Task_ArchiveBean" />
+    <bpmn:sequenceFlow id="f18" sourceRef="Task_ArchiveBean" targetRef="End_Merged"/>
   </bpmn:process>
 
   <bpmndi:BPMNDiagram id="Diagram_CodeChangeReview">
     <bpmndi:BPMNPlane id="Plane_CodeChangeReview" bpmnElement="Collaboration_CodeChangeReview">
       <bpmndi:BPMNShape id="Shape_Participant_CodeChangeReview" bpmnElement="Participant_CodeChangeReview" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1700" height="520" />
+        <dc:Bounds x="160" y="80" width="1920" height="520" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1670" height="300" />
+        <dc:Bounds x="190" y="80" width="1890" height="300" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Pipeline" bpmnElement="Lane_Pipeline" isHorizontal="true">
-        <dc:Bounds x="190" y="380" width="1670" height="110" />
+        <dc:Bounds x="190" y="380" width="1890" height="110" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Reviewer" bpmnElement="Lane_Reviewer" isHorizontal="true">
-        <dc:Bounds x="190" y="490" width="1670" height="110" />
+        <dc:Bounds x="190" y="490" width="1890" height="110" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_Change" bpmnElement="Start_Change">
@@ -387,8 +398,11 @@ The loop back through "root-cause the failure" is the point of drawing this at a
         <dc:Bounds x="1550" y="250" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Merged" bpmnElement="End_Merged">
-        <bpmndi:BPMNLabel><dc:Bounds x="1784" y="326" width="48" height="14" /></bpmndi:BPMNLabel>
-        <dc:Bounds x="1770" y="272" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2004" y="326" width="48" height="14" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="1990" y="272" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_ArchiveBean" bpmnElement="Task_ArchiveBean">
+        <dc:Bounds x="1770" y="250" width="140" height="80" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Task_RunCI" bpmnElement="Task_RunCI">
@@ -448,7 +462,12 @@ The loop back through "root-cause the failure" is the point of drawing this at a
         <di:waypoint x="1620" y="210" /><di:waypoint x="1620" y="250" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f17" bpmnElement="f17">
-        <di:waypoint x="1690" y="290" /><di:waypoint x="1770" y="290" />
+        <di:waypoint x="1690" y="290" />
+        <di:waypoint x="1770" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_f18" bpmnElement="f18">
+        <di:waypoint x="1910" y="290" />
+        <di:waypoint x="1990" y="290" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

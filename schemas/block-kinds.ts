@@ -335,12 +335,14 @@ export type ContentInteractivity = (typeof CONTENT_INTERACTIVITY)[number];
  * required two-valued field, so this and {@link DOCUMENT_BLOCK_KINDS} can
  * never overlap or leave a kind unclassified.
  */
-export const MATH_BLOCK_KINDS: readonly BlockKind[] = BLOCK_KIND_NODES.filter((n) => n.profile === "paper").map(
-  (n) => n.kind as BlockKind,
-);
+export const MATH_BLOCK_KINDS: readonly string[] = BLOCK_KIND_NODES.filter((n) => n.profile === "paper").map((n) => n.kind);
 
-/** A math kind. The split is DATA (each node's `profile`), so the type cannot narrow below {@link BlockKind}. */
-export type MathBlockKind = BlockKind;
+/**
+ * A math kind. A string, not a {@link BlockKind}: the math kinds are typed by
+ * the science layer's vocabulary module, not by cat-harness's `Block`
+ * (owner, 2026-10-22), so no type here names them.
+ */
+export type MathBlockKind = string;
 
 /**
  * Everything a document folio may contain: the paper vocabulary minus

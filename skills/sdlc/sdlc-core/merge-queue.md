@@ -234,9 +234,9 @@ steward can answer on the same bean. The PR state above stays the intake
 signal either way: the bean is where the conversation is kept.
 
 **Not GitHub's merge queue.** It is not offered on a personal-account
-repository (bean `1hjm`). The `merge-guard` commit status (bean `uoob`) checks
-the six submission points mechanically; once it lands, run it against your own
-PR before you announce.
+repository (bean `1hjm`). The merge guard (`bun run cat merge:guard <pr>`,
+bean `uoob`) checks the six submission points mechanically; run it against
+your own PR before you announce.
 
 ## Where the queue is GOING, and the tool that will write it (bean `najo`)
 
@@ -512,13 +512,11 @@ owed CI and a clean merge are all still required. The verdict says the
 separation was lifted, so the landing is auditable.
 
 **Where the guard cannot run** (for example a cloud sandbox whose `gh` has
-no usable token), read its verdict instead. The `merge-guard` workflow posts
-it as the `merge-guard` commit status on every head. Merge only when that
-status on the **exact current head** is `success`, and pin the merge to that
-sha (`expectedHeadSha` / `sha=`), which is the same pin the guard's own PUT
-uses. Say on the PR that the status was read rather than re-run. Any other
-state (`pending`, `failure`, or a status on an older head) is a refusal, as
-it would be from the script.
+no usable token), do not merge: hand the landing to a session that can run
+it, or ask the owner. No workflow posts a `merge-guard` commit status any
+more (owner, 2026-10-23: "i dont want the merge guard check";
+folio-assistant#2662 removed `.github/workflows/merge-guard.yml`), so there
+is no posted verdict to read in its place.
 
 How to tell whether a Merge Manager is active: the owner says so, or a live
 session holds the `merge-steward` lane (§"Address the ROLE, never a session",
@@ -587,8 +585,8 @@ The eight checks, each named in a refusal by number and id:
    GitHub has not computed it yet: the guard re-asks for up to 14 s, then
    reports **unknown**, never a pass. `unstable` and `blocked` pass here,
    because they are about checks and reviews, which check 5 and the owner
-   judge. The status workflow does not fire when `main` moves, so a posted
-   `success` can go stale on exactly this check; `--merge` re-evaluates live.
+   judge. A verdict is a snapshot and can go stale on exactly this check
+   when `main` moves; `--merge` re-evaluates live.
 
 Exit 0 is pass (or merged), 1 refused, **2 could not determine — never a
 pass.** A refusal is handed back to the owning session through
@@ -603,29 +601,19 @@ token, so the timeline's actor is always the owner and cannot tell sessions
 apart; **the signature is the only thing that can**. An unsigned marker,
 like #1937's, is refused.
 
-**The status has four states, and red means wrong, not unfinished.** A PR
+**A verdict has four states, and red means wrong, not unfinished.** A PR
 that is merely not ready yet (a draft, no marker, no label, an unticked box,
-CI still running, an open question, a conflict with `main`) posts `pending`. Only a defect posts
+CI still running, an open question, a conflict with `main`) is `pending`. Only a defect is
 `failure`: a base that is not `main` or is dead, `needs-merge-human`, red CI
 on the head, or a marker or ready-flip by a session other than the PR's own.
-`success` is pass and `error` is could-not-determine. The status is posted on
-every open PR, and red on every draft would teach readers to ignore red. A
-required check blocks the merge in every state but `success`.
+`success` is pass and `error` is could-not-determine. Red on every draft
+would teach readers to ignore red. Only `success` lands.
 
-**The status is the backstop, not the gate.** `.github/workflows/merge-guard.yml`
-runs the evaluate mode on label, draft, body, comment and CI-completion
-events and posts a `merge-guard` commit status on the head. Making that
-context REQUIRED is a ruleset the owner adds; this skill does not, and no
-agent changes repository settings.
-
-It runs only on events that **can change a verdict** (#2099: ~25 runs in the
-6 min after #2000). A comment counts only when it carries text a check reads
-— `ready:`, a `?`, a `claude.ai/code/session_` footer, or merge-main's
-marker; a CI completion only on a PR head; an `edited` only when the body or
-base changed. So **a check that starts reading a comment for anything else
-must add its text to the workflow's `if:`**, or the status goes stale on
-exactly that comment. Evaluations collapse per PR. The status is a snapshot
-either way, and `--merge` re-evaluates live; never land on a status alone.
+**No workflow runs it.** `.github/workflows/merge-guard.yml` once ran the
+evaluate mode on PR events and posted the verdict as a `merge-guard` commit
+status. The owner removed it on 2026-10-23 ("i dont want the merge guard
+check"; folio-assistant#2662), so the guard is the script alone, and
+`--merge` evaluates live at the moment it lands.
 
 `Rule_NotReady` in
 [`merge-priority.dmn`](../../../processes/sdlc/decisions/merge-priority.dmn)

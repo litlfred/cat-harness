@@ -688,21 +688,6 @@ export interface BlockBase {
 
 // ── Blocks that REQUIRE Lean ─────────────────────────────────────
 
-/**
- * Definition — MUST have a Lean declaration.
- *
- * Pipeline validates:
- *   - .lean sibling exists (or companions.lean resolves)
- *   - lean.decl is a valid Lean identifier
- */
-export interface DefinitionBlock extends BlockBase {
-  kind: "definition";
-  /** Required: every definition must be formalized. */
-  lean: LeanRef;
-  /** Labels of example blocks illustrating this definition. */
-  examples?: string[];
-}
-
 // ── Blocks where Lean is expected but may be WIP ─────────────────
 
 /**
@@ -716,26 +701,6 @@ export interface ProvableBase extends BlockBase {
   proofs?: string[];
   /** Labels of example blocks illustrating this result. */
   examples?: string[];
-}
-
-/** Theorem — a major result. Lean expected; proof may be inline or in .lean. */
-export interface TheoremBlock extends ProvableBase {
-  kind: "theorem";
-}
-
-/** Lemma — auxiliary result supporting a theorem. */
-export interface LemmaBlock extends ProvableBase {
-  kind: "lemma";
-}
-
-/** Proposition — a result of moderate significance. */
-export interface PropositionBlock extends ProvableBase {
-  kind: "proposition";
-}
-
-/** Corollary — a consequence of a theorem or proposition. */
-export interface CorollaryBlock extends ProvableBase {
-  kind: "corollary";
 }
 
 /**
@@ -770,13 +735,6 @@ export interface AlgorithmBlock extends ProvableBase {
    * propositions in `uses[]`.
    */
   interprets?: string;
-}
-
-/** Conjecture — an unproven statement. Lean stub optional. */
-export interface ConjectureBlock extends BlockBase {
-  kind: "conjecture";
-  /** Optional Lean stub for the conjecture statement. */
-  lean?: LeanRef;
 }
 
 // ── Blocks where Lean is optional ────────────────────────────────
@@ -823,31 +781,6 @@ export interface RemarkBlock extends BlockBase {
   computation?: Computation;
 }
 
-/**
- * Proof — a standalone proof of a theorem/lemma/proposition/corollary.
- *
- * Multiple proofs can be linked to a single provable block via its
- * `proofs: ["prf:foo", "prf:bar"]` field, similar to how examples work.
- * Each proof is its own content object with .ts + .md + optional .lean files.
- *
- * A proof can optionally include a `computation` field for claims that
- * are verified by running an external script (SnapPea, sympy, mpmath, etc.).
- * The script produces a JSON witness file with inputs, outputs, and error
- * bounds.  Lean accepts these as axioms with `-- Ref: [computation]`.
- */
-export interface ProofBlock extends BlockBase {
-  kind: "proof";
-  /**
-   * Label of the provable block this proof establishes (reverse link of
-   * `ProvableBase.proofs[]`). Canonical field name — use in preference to
-   * `proves`.
-   */
-  of?: string;
-  /** Optional Lean formalization of the proof. */
-  lean?: LeanRef;
-  /** Optional computational verification (Python/SnapPea/sympy/etc.). */
-  computation?: Computation;
-}
 
 // ── Simulators ───────────────────────────────────────────────────
 
@@ -1087,17 +1020,16 @@ export interface RecommendationBlock extends BlockBase {
 
 // ── The discriminated union ──────────────────────────────────────
 
+/**
+ * The kinds cat-harness's own code types. A layer above types its own kinds in
+ * its vocabulary module (`vocabulary-modules.ts`): the science layer's
+ * `definition`, `theorem`, `lemma`, `proposition`, `corollary`, `conjecture`
+ * and `proof` moved there on the owner's ruling of 2026-10-22.
+ */
 export type Block =
-  | DefinitionBlock
-  | TheoremBlock
-  | LemmaBlock
-  | PropositionBlock
-  | CorollaryBlock
   | AlgorithmBlock
-  | ConjectureBlock
   | ExampleBlock
   | RemarkBlock
-  | ProofBlock
   | SimulatorBlock
   | ProseBlock
   | EquationBlock
@@ -1117,24 +1049,12 @@ export type { BlockKind } from "./block-kinds.js";
 
 
 
-/** Blocks that represent theorem-like environments. */
+/** Blocks that represent theorem-like environments (the science layer's add its own). */
 export type EnvironmentBlock =
-  | DefinitionBlock
-  | TheoremBlock
-  | LemmaBlock
-  | PropositionBlock
-  | CorollaryBlock
   | AlgorithmBlock
-  | ConjectureBlock
   | ExampleBlock
   | RemarkBlock
-  | ProofBlock
   | SimulatorBlock;
-
-/** Blocks that can (or must) have Lean declarations. */
-export type FormalizableBlock =
-  | DefinitionBlock
-  | ProofBlock;
 
 // ── Cross-reference helpers ─────────────────────────────────────
 
