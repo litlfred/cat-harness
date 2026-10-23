@@ -94,7 +94,7 @@ Land ONE pull request on `main`, in any repository, as its own step with its own
 - Who: the `Merging session` lane (role `merge-steward`).
 - Skill: `merge-to-main`.
 - What: Context, options, recommendation, question (interaction-modality §4.1).
-- Record it: `workflow_complete` with `node: "Task_Ask"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `Task_OwnerDecides` (Merge, hold or refuse)
 
 ### 8. Merge, pinned to the evaluated head (`Task_Merge`)

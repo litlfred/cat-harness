@@ -57,6 +57,13 @@ full question in the chat anyway, then post the card.
 If no card tool exists in this host, post the numbered options in chat, say
 the card tool is unavailable, and keep each answer to a single short choice.
 
+**In the processes**, this box is the subprocess
+[`Process_AskThePerson`](../../../processes/process/ask-the-person.bpmn):
+compose, write in the chat, offer the card, then record the answer or proceed
+on the default. A diagram step that puts a question to the person is a
+`callActivity` with `calledElement="Process_AskThePerson"`, so the association
+is visible in the diagram rather than remembered.
+
 The rest of this skill is the reasoning and the detail: §4.1 for what the
 context must contain, §4.2 for the form.
 
