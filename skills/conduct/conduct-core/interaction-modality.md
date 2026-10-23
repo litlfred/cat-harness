@@ -57,7 +57,7 @@ full question in the chat anyway, then post the card.
 If no card tool exists in this host, post the numbered options in chat, say
 the card tool is unavailable, and keep each answer to a single short choice.
 
-**In the processes**, this box is the subprocess
+**In the processes**, this box is the skill [`ask-the-person`](ask-the-person.md) (input and output schemas) and the subprocess
 [`Process_AskThePerson`](../../../processes/process/ask-the-person.bpmn):
 compose, write in the chat, offer the card, then record the answer or proceed
 on the default. A diagram step that puts a question to the person is a
