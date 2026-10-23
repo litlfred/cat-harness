@@ -200,9 +200,10 @@ sites are third-party comments, and those are treated as data:
   `folio-staging.yml`. Nothing reads them as instruction there; the model
   reads them later through `guardUntrusted` (feedback triage, the chat's open
   todos; §"Where the screen is wired").
-- `merge-guard.yml` reacts to `issue_comment`, but the comment text goes to a
-  deterministic checker (`cat-harness-tools/scripts/merge-guard.ts`), which reads a
-  `ready:` marker and never a model.
+- The merge guard (`cat-harness-tools/scripts/merge-guard.ts`) reads PR
+  comments, but only as a deterministic checker: it reads a `ready:` marker
+  and never puts the text in front of a model. (Its `issue_comment` workflow,
+  `merge-guard.yml`, was removed on 2026-10-23, folio-assistant#2662.)
 
 ## Where the screen is wired (bean `cztn`)
 
