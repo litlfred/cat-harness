@@ -18,7 +18,7 @@ import type { Block } from "./types.js";
 // Leaf module — importing the kind list from `types.js` would be a runtime
 // cycle, and `appliesTo` is built at module init, exactly when that bites.
 import { BLOCK_KIND_NODES, BLOCK_KINDS } from "./block-kinds.js";
-import { NarrativeSchema } from "./narrative.ts";
+import { NarrativeSlotSchema } from "./narrative.ts";
 
 
 
@@ -87,7 +87,12 @@ const PROVABLE_LABEL_PREFIXES: readonly string[] = [
   ...new Set(BLOCK_KIND_NODES.filter((n) => n.provable).map((n) => `${n.labelPrefix}:`)),
 ];
 
-function labelForKind(kind: string) {
+/**
+ * The label schema for a block of `kind`: its node's prefix when the node
+ * enforces one. Exported for a vocabulary module (`vocabulary-modules.ts`),
+ * whose kinds' schemas are built the same way.
+ */
+export function labelForKind(kind: string) {
   const prefix = LABEL_PREFIXES[kind];
   if (!prefix) return z.string().min(1);
   return z.string().startsWith(prefix, {
@@ -284,7 +289,7 @@ export const DefinitionSchema = BlockBaseSchema.extend({
   examples: z.array(z.string()).optional(),
 });
 
-const ProvableBaseSchema = BlockBaseSchema.extend({
+export const ProvableBaseSchema = BlockBaseSchema.extend({
   // TS `ProvableBase` declares `lean?: LeanRef`; only `DefinitionSchema`
   // declared it here, so a theorem / lemma / proposition / corollary /
   // algorithm writing `lean: { ref: … }` had it SILENTLY STRIPPED at the
@@ -483,7 +488,9 @@ export const FigureSchema = BlockBaseSchema.extend({
   file: z.string().min(1),
   caption: z.string().optional(),
   page: z.number().int().min(1).optional(),
-  narrative: NarrativeSchema.optional(),
+  // A slot like every other narrative record (bean `cat-tools-e1lo`, owner
+  // ruling 2026-10-22, 3A): one entry per language, or the empty slot.
+  narrative: NarrativeSlotSchema.optional(),
 });
 
 /** A code in a declared code list; see `CodeRef` in `types.ts`. */
