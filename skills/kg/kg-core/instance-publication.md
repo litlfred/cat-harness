@@ -368,6 +368,12 @@ owner's DOCUMENT. A node with no home, or two, is a `problems[]` entry, and
 the export exits non-zero rather than publish a tombstone that points
 nowhere.
 
+The same mechanism carries the move from `….jsonld#<kind>/<id>` to
+`<doc dir>/<kind>/<id>` subject IRIs: one tombstone per published hash `@id`,
+for one release
+([`kg-export`](kg-export.md) §"Subject IRIs — a path, not a `#fragment`";
+[#435](https://github.com/litlfred/cat-harness/issues/435)).
+
 **Removal is due one release after the split** (`tombstonesFor`'s banner:
 *"ONE RELEASE ONLY; REMOVE IN THE NEXT"*). Delete `tombstonesFor`, its call in
 `buildExport`, the two context terms, and the test in `kg-export.test.ts` that
@@ -392,6 +398,11 @@ publication identity, `url` is where this site stages it. Anything that names a
 node in another instance's document mints with `publishedIdentity`, or it
 names a document nobody writes. `iriBase` is a different field, for
 identifiers that carry the release (§"Release IRIs" above).
+
+**What goes after the base** is a path, not a `#fragment`: a subject is
+`<doc dir>/<kind>/<id>` (owner, 2026-10-23), served as its own file. The rule, its reasons,
+the `ns#Term` exception and the migration of today's `….jsonld#…` IRIs are in
+[`kg-export`](kg-export.md) §"Subject IRIs — a path, not a `#fragment`".
 
 ### The schema
 

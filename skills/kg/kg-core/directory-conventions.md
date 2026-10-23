@@ -1008,7 +1008,11 @@ graph, a library index) does NOT mint its own collection node for them. It:
 1. uses the **declared Subgraph node's IRI** as the container `@id` —
    `<declaring instance>.jsonld#directory/<id>`, from `declaredSubgraphNode`
    in `kg-export.ts`, which is the same function the node itself is minted by
-   — typed `Subgraph`, with `hasPart` to each member;
+   — typed `Subgraph`, with `hasPart` to each member. That `#directory/<id>`
+   form is what the generator mints TODAY; the ruled form is
+   `<doc dir>/directory/<id>` ([`kg-export`](kg-export.md)
+   §"Subject IRIs — a path, not a `#fragment`"), so take the IRI from
+   `declaredSubgraphNode`, never by composing it;
 2. gives **every member `inSubgraph`** → that IRI (`dcterms:isPartOf`, the
    same term the KG export uses for the same edge);
 3. carries the subgraph's resolved **`contentSource`**, so a branch-sourced
