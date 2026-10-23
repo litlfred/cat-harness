@@ -257,3 +257,35 @@ describe("first-party asset versions", () => {
     expect(code).not.toMatch(/site\.time|Time\.now/);
   });
 });
+
+/**
+ * Same-site links on an HTML page are relative to the page (bean `g196`,
+ * 2026-10-23), so a page that did not change is the same bytes in every
+ * STAGING preview. `_plugins/fa-root-relative.rb` does the work at build
+ * time; this pins the pieces an edit could quietly undo.
+ */
+describe("page-relative links", () => {
+  const plugin = readFileSync(join(HARNESS, "site-chrome/_plugins/fa-root-relative.rb"), "utf-8");
+  const head = readFileSync(join(HARNESS, "site-chrome/_includes/head_custom.html"), "utf-8");
+
+  test("the plugin swaps the base for a token before rendering and resolves it after", () => {
+    expect(plugin).toMatch(/Hooks\.register :site, :pre_render[\s\S]*swap_in/);
+    expect(plugin).toMatch(/Hooks\.register :site, :post_render[\s\S]*resolve/);
+    // The real base is put back however resolving ends, or `jekyll serve`
+    // would go on serving under the token.
+    expect(plugin).toMatch(/ensure\s+site\.config\["baseurl"\] = @real\.delete/);
+  });
+
+  test("an absolute URL keeps the real base: an identity is never relativized", () => {
+    expect(plugin).toMatch(/origin \? "#\{origin\}#\{base\}" : root/);
+  });
+
+  test("404.html keeps the real base: GitHub Pages serves it at whatever depth was missing", () => {
+    expect(plugin).toMatch(/return false if item\.url == "\/404\.html"/);
+  });
+
+  test("fa-staging says only WHETHER this is a preview, never which one", () => {
+    const meta = head.split("\n").find((l) => l.includes('name="fa-staging"'))!;
+    expect(meta).toBe('<meta name="fa-staging" content="{% if site.data.build.staging_slug %}preview{% endif %}">');
+  });
+});
