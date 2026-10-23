@@ -3,7 +3,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import { neededActors, scenarioLayersBelow } from "./scenario-overlay";
+import { checkoutPolicies, neededActors, neededPolicies, scenarioLayersBelow } from "./scenario-overlay";
 
 /**
  * An instance audit resolves actors from the platform, every instance the
@@ -15,6 +15,14 @@ const SCENARIOS = [{ id: "scenarios", path: "scenarios/", graphTypologies: ["sce
 function actor(root: string, inst: string, file: string, body: object): void {
   mkdirSync(join(root, inst, "scenarios", "actors"), { recursive: true });
   writeFileSync(join(root, inst, "scenarios", "actors", `${file}.json`), JSON.stringify(body));
+}
+
+function policy(root: string, inst: string, file: string, uid: string, permission: object[]): void {
+  mkdirSync(join(root, inst, "policies"), { recursive: true });
+  writeFileSync(
+    join(root, inst, "policies", `${file}.jsonld`),
+    JSON.stringify({ "@context": "http://www.w3.org/ns/odrl.jsonld", "@type": "Set", uid, profile: "urn:folio-odrl", permission }),
+  );
 }
 
 function checkout(): string {
@@ -32,6 +40,9 @@ function checkout(): string {
   actor(root, "top", "vhl-receiver", { id: "vhl-receiver", title: "VHL Receiver", kind: "system", capabilities: [] });
   actor(root, "top", "sharer-ext", { extends: "vhl-sharer", roles: ["key-holder"] });
   actor(root, "sibling", "stranger", { id: "stranger", title: "Stranger", kind: "person", capabilities: [] });
+  policy(root, "cat-harness", "defaults", "urn:p:defaults", [{ assignee: "admin", action: "role-management" }]);
+  policy(root, "mid", "sharing", "urn:p:mid", [{ assignee: "vhl-sharer", action: "content-authoring" }]);
+  policy(root, "sibling", "stranger", "urn:p:sibling", [{ assignee: "stranger", action: "content-authoring" }]);
   return root;
 }
 
@@ -71,6 +82,40 @@ describe("neededActors — the actors one instance may name", () => {
     try {
       const names = scenarioLayersBelow(join(root, "top")).map((l) => l.instance);
       expect(names).toEqual(["cat-harness", "mid", "top"]);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+});
+
+describe("policies travel with the actors they grant", () => {
+  const PLATFORM = (root: string) => join(root, "cat-harness", "policies");
+
+  test("an instance's own audit reads the platform's, every needed instance's and its own; not a sibling's", () => {
+    const root = checkout();
+    try {
+      expect([...neededPolicies(join(root, "top"), PLATFORM(root)).keys()].sort()).toEqual(["urn:p:defaults", "urn:p:mid"]);
+      expect([...neededPolicies(join(root, "mid"), PLATFORM(root)).keys()].sort()).toEqual(["urn:p:defaults", "urn:p:mid"]);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  test("the platform's checkout reads every dependent's", () => {
+    const root = checkout();
+    try {
+      const uids = [...checkoutPolicies(join(root, "cat-harness"), PLATFORM(root)).keys()].sort();
+      expect(uids).toEqual(["urn:p:defaults", "urn:p:mid", "urn:p:sibling"]);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  test("a higher instance redeclaring a lower policy's uid is refused, not merged", () => {
+    const root = checkout();
+    try {
+      policy(root, "top", "takeover", "urn:p:defaults", []);
+      expect(() => neededPolicies(join(root, "top"), PLATFORM(root))).toThrow(/already declared below/);
     } finally {
       rmSync(root, { recursive: true, force: true });
     }

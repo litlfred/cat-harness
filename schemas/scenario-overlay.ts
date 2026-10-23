@@ -29,6 +29,7 @@
  * | add an ACTOR | `actors/<file>.json` without `extends`, a NEW id | its own actor |
  * | extend a CAPABILITY | `capabilities/<file>.json` with `"extends": "<capability id>"` | adds `requires`; nothing else |
  * | add a CAPABILITY | `capabilities/<file>.json`, a NEW id | its own probe |
+ * | add a POLICY | `policies/<file>.jsonld`, a NEW `uid` | its own ODRL rules, e.g. the grants of the actors it adds |
  *
  * Id-matching is the same rule as a directory override and as `inherits`.
  * **Redeclaring a lower id is refused**, not merged: an override that could
@@ -50,12 +51,22 @@
  * Auditing ONE instance asks the other direction: which actors may its
  * requirements and lanes name? Those are the platform's, every instance it
  * `needs`, and its own ({@link neededActors}) — never a dependent's.
+ *
+ * ## Policies travel with the actors they grant
+ *
+ * An actor a higher instance adds holds its grants in THAT instance's
+ * `policies/`, not in a rule the harness's policy would have to carry for an
+ * actor it does not declare. {@link checkoutPolicies} and
+ * {@link neededPolicies} read the same layers as the actor overlay, by the
+ * same rule: a new `uid` is added, a redeclared one is refused. A policy may
+ * `inheritFrom` a lower one; it cannot edit it.
  */
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 import { ownDirectoryById } from "./cat-harness";
 import { checkoutDependentsOf, instanceConfigFor, orderedDependencies } from "./harness-config";
+import { POLICY_DIR, readPolicies, type OdrlPolicy } from "./odrl";
 import {
   ACTORS_DIRNAME,
   CAPABILITIES_DIRNAME,
@@ -352,4 +363,78 @@ export function neededActors(
     .filter((l) => l.dir !== platformScenarios)
     .map((l) => ({ instance: l.instance, dir: join(l.dir, ACTORS_DIRNAME) }));
   return overlayActors(readActors(platformActorsDir, grants), layers, grants);
+}
+
+/**
+ * The `policies` directories of every checkout instance that depends on
+ * `instanceRoot`, deepest first — {@link scenarioLayersAbove}, one graph over.
+ */
+export function policyLayersAbove(instanceRoot: string): ScenarioLayer[] {
+  const out: ScenarioLayer[] = [];
+  for (const dep of checkoutDependentsOf(instanceRoot)) {
+    // declared-path-literal: the convention fallback, at the call site, as
+    // scenarioLayersAbove reads a dependent's scenarios.
+    const dir = ownDirectoryById(dep.root, POLICY_DIR, POLICY_DIR);
+    if (existsSync(dir)) out.push({ instance: dep.name, dir: resolve(dir) });
+  }
+  return out;
+}
+
+/**
+ * The `policies` directories of every instance `instanceRoot` needs, deepest
+ * first, then its own — {@link scenarioLayersBelow}, one graph over.
+ */
+export function policyLayersBelow(instanceRoot: string): ScenarioLayer[] {
+  const out: ScenarioLayer[] = [];
+  const seen = new Set<string>();
+  const add = (instance: string, root: string): void => {
+    // declared-path-literal: the convention fallback, as policyLayersAbove.
+    const dir = resolve(ownDirectoryById(root, POLICY_DIR, POLICY_DIR));
+    if (seen.has(dir) || !existsSync(dir)) return;
+    seen.add(dir);
+    out.push({ instance, dir });
+  };
+  for (const d of orderedDependencies(instanceRoot)) add(d.dependency.name, d.rootPath);
+  add(instanceConfigFor(instanceRoot)?.name ?? instanceRoot, instanceRoot);
+  return out;
+}
+
+/**
+ * Overlay higher instances' policies onto `base`, keyed by `uid`. A layer adds
+ * policies; a `uid` already declared below is refused, as a redeclared role or
+ * actor is: a higher instance that could replace a lower policy could take a
+ * grant away without the lower instance's own audit seeing it.
+ */
+export function overlayPolicies(
+  base: ReadonlyMap<string, OdrlPolicy>,
+  layers: ReadonlyArray<{ instance: string; dir: string }>,
+): Map<string, OdrlPolicy> {
+  const out = new Map(base);
+  for (const { instance, dir } of layers) {
+    for (const [uid, p] of readPolicies(dir)) {
+      if (out.has(uid)) {
+        throw new Error(
+          `${dir} (${instance}): policy "${uid}" is already declared below. A higher instance writes its own ` +
+            `policy with a new uid, and may \`inheritFrom\` the lower one; it never redeclares it.`,
+        );
+      }
+      out.set(uid, p);
+    }
+  }
+  return out;
+}
+
+/** The policies in force for `instanceRoot`'s checkout: its own, then every dependent's. */
+export function checkoutPolicies(instanceRoot: string, ownPoliciesDir: string): Map<string, OdrlPolicy> {
+  return overlayPolicies(readPolicies(ownPoliciesDir), policyLayersAbove(instanceRoot));
+}
+
+/**
+ * The policies an instance's own audit may read: the platform's, every
+ * instance it needs, and its own — {@link neededActors}, one graph over.
+ */
+export function neededPolicies(instanceRoot: string, platformPoliciesDir: string): Map<string, OdrlPolicy> {
+  const platform = resolve(platformPoliciesDir);
+  const layers = policyLayersBelow(instanceRoot).filter((l) => l.dir !== platform);
+  return overlayPolicies(readPolicies(platformPoliciesDir), layers);
 }
