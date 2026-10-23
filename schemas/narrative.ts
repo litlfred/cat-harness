@@ -44,7 +44,12 @@
  * 2. Readers (the review queue, `narrativesIn`) go through `narrativesOfSlot`.
  * 3. The slot schemas switch to `NarrativeSlotSchema`, and stored narratives
  *    are migrated to lists.
- * 4. The single form is removed, and `lang` becomes required.
+ * 4. (here) `lang` becomes required on every WRITTEN narrative, and the single
+ *    form survives only as the empty slot, {@link NOT_AUTHORED}. Owner ruling
+ *    2026-10-22, "1A 2A 3A": an empty slot claims no language (1A); the
+ *    `superseded` history of block summaries requires `lang` like any written
+ *    narrative (2A); and authored figures carry a slot like every other
+ *    record (3A, `constraints.ts`).
  *
  * ## Not a second review model
  *
@@ -93,8 +98,9 @@ export const NarrativeSchema = z
     /** The narrative itself, or null when nobody has written one. */
     text: z.string().min(1).nullable(),
     /**
-     * The language of `text`, as a BCP 47 tag. Optional until stage 4 (see the
-     * module docstring); required on every entry of a list slot.
+     * The language of `text`, as a BCP 47 tag. Required on every narrative
+     * that has text; the empty `not-authored` slot claims no language (owner
+     * ruling 2026-10-22, 1A).
      */
     lang: z.string().regex(LANGUAGE_TAG).optional(),
     state: z.enum(NARRATIVE_STATES),
@@ -142,20 +148,36 @@ export const NarrativeSchema = z
   .refine((n) => !(n.confirmed_by && n.rejected_by), {
     message: "a narrative cannot be both confirmed and rejected",
     path: ["state"],
+  })
+  // Words are in a language. Bean `cat-tools-e1lo`, stage 4: a reviewer asked
+  // to confirm a translation must know which one, and a missing language must
+  // be visibly absent rather than silently the source text.
+  .refine((n) => n.state === "not-authored" || n.lang !== undefined, {
+    message: "a written narrative must name its `lang`",
+    path: ["lang"],
   });
 
 export type Narrative = z.infer<typeof NarrativeSchema>;
 
 /**
- * Where a record keeps its narrative: the single narrative it has today, or a
- * list with one entry per language.
+ * Where a record keeps its narrative: a list with one entry per language, or
+ * the empty slot {@link NOT_AUTHORED} when nothing has been written.
  *
  * In a list every entry names its `lang`, and no language appears twice: two
  * `fr` narratives would leave a reviewer confirming one while the other is
  * shown, which is the state the review queue exists to prevent.
+ *
+ * The single form is the empty slot ONLY (stage 4, owner ruling 2026-10-22,
+ * 1A). A written single narrative is refused: every one stored was migrated
+ * to a one-entry list (`bun run cat narratives:migrate-lang`), and every
+ * writer writes the list.
  */
 export const NarrativeSlotSchema = z.union([
-  NarrativeSchema,
+  NarrativeSchema.refine((n) => n.state === "not-authored", {
+    message:
+      "a written narrative goes in a list naming its language, `[{ …, lang }]`; " +
+      "only the empty `not-authored` slot is a bare object",
+  }),
   z
     .array(NarrativeSchema)
     .min(1)
@@ -188,8 +210,8 @@ export function narrativesOfSlot(slot: NarrativeSlot): Narrative[] {
  * 2. an entry whose primary subtag matches (`fr-CA` finds `fr`, and `fr` finds `fr-CA`);
  * 3. the first entry.
  *
- * The single form has no choice to make and is returned as it is, `lang` or
- * not. A build with no locale passes none and gets the first entry.
+ * The empty slot has no choice to make and is returned as it is. A build with
+ * no locale passes none and gets the first entry.
  */
 export function narrativeFor(slot: NarrativeSlot, lang?: string): Narrative {
   const all = narrativesOfSlot(slot);

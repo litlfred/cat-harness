@@ -22,8 +22,8 @@ const record = (narrative: unknown) =>
   BlockSummarySchema.parse({ block: "library/x/blocks/prose-sec-000", source: "sections/a.md", source_hash: bodyHash(body), narrative });
 
 describe("a summary's status reads every language", () => {
-  test("the single form behaves as before", () => {
-    expect(summaryStatus(record({ ...n("en", "confirmed"), lang: undefined }), body)).toBe("confirmed");
+  test("a one-entry list reads as its one narrative", () => {
+    expect(summaryStatus(record([n("en", "confirmed")]), body)).toBe("confirmed");
   });
 
   test("confirmed only when every language is", () => {

@@ -14,7 +14,7 @@ export { isCrossPaperRef, KNOWN_LABEL_PREFIXES } from "./constraints.js";
  * @graphNode schema
  */
 
-import type { Narrative } from "./narrative.ts";
+import type { NarrativeSlot } from "./narrative.ts";
 
 // The skill-framework vocabulary moved to `skill-package.ts` — see that
 // module's header. Re-exported so existing importers are unaffected; harness
@@ -709,7 +709,7 @@ export interface DefinitionBlock extends BlockBase {
  * Base interface for provable blocks (theorems, lemmas, propositions, corollaries).
  * Lean is expected but may be WIP — missing lean triggers a warning, not an error.
  */
-interface ProvableBase extends BlockBase {
+export interface ProvableBase extends BlockBase {
   /** Optional Lean formalization of the result. */
   lean?: LeanRef;
   /** Labels of proof blocks for this result (like examples[]). */
@@ -1034,8 +1034,8 @@ export interface FigureBlock extends OptionalLabelBlockBase {
   caption?: string;
   /** Which page of the source document it sits on, 1-based as a reader counts. */
   page?: number;
-  /** The authored description and its state. See `schemas/narrative.ts`. */
-  narrative?: Narrative;
+  /** The authored description per language, or the empty slot. See `schemas/narrative.ts`. */
+  narrative?: NarrativeSlot;
 }
 
 // ── Recommendations (document folios) ───────────────────────────
