@@ -347,8 +347,8 @@ Le hook `SessionStart` présente le plan au début de chaque session, et l'outil
 
 - **[Accessibilité](accessibility.html)** — comment l'agent pose ses questions, et le contrôle
   des paramètres sur ce site
-- **[Tutoriel — rédiger un article](../../guides/writing-a-paper.html)**
-- **[Rédiger un document](../../guides/writing-a-document.html)**
+- **[Tutoriel — rédiger un article](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)**
+- **[Rédiger un document](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html)**
 - **[Types de contenu](../../concepts/fr/content-types.html)** — le formalisme propre à chaque domaine
 - **[Flux de publication](../../process/fr/publication-workflow.html)** — chaque processus au sein du dépôt
 - **[Architecture](../../concepts/fr/architecture.html)** — adaptateurs, compétences, et le modèle de blocs

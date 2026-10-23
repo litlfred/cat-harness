@@ -98,23 +98,23 @@ folio-assistant es **extensible** — cada tipo de contenido es gestionado por u
 | Tipo de contenido | Artefactos | Paquete de habilidades |
 |-------------------|------------|------------------------|
 | **Artículos científicos y libros** | Formalización Lean 4 + LaTeX/Markdown | [`authoring-math`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#scientific-papers--books) |
-| **Kits de adaptación digital (DAK) de las Directrices SMART de la OMS** | Artefactos L2 — BPMN, DMN, diccionarios de datos Excel, personas | [`authoring-who-smart-guidelines`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#who-smart-guidelines-daks-l2) |
-| **Guías de implementación SMART de la OMS** | Recursos FHIR L3, FSH, salida de IG Publisher | [`authoring-who-smart-guidelines`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#who-smart-implementation-guides-l3) |
+| **Kits de adaptación digital (DAK) de las Directrices SMART de la OMS** | Artefactos L2 — BPMN, DMN, diccionarios de datos Excel, personas | [`authoring-who-smart-guidelines`](https://litlfred.github.io/folio-assistant/smart-base/concepts/who-smart-content-types.html#who-smart-guidelines-daks-l2) |
+| **Guías de implementación SMART de la OMS** | Recursos FHIR L3, FSH, salida de IG Publisher | [`authoring-who-smart-guidelines`](https://litlfred.github.io/folio-assistant/smart-base/concepts/who-smart-content-types.html#who-smart-implementation-guides-l3) |
 | **Otros** | Extensible — añade un nuevo adaptador + paquete de habilidades | [Añadir un tipo de contenido]({{ site.baseurl }}/docs/cat-harness/guides/new-content-type.html) |
 
 El paquete transversal [`content-lifecycle`]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }}#the-content-lifecycle)
 (planificar → redactar → validar → revisar → probar → publicar → retroalimentación → retirar)
 se aplica a cada tipo de contenido. El
-[flujo de publicación]({{ '/docs/cat-harness/process/publication-workflow.html' | relative_url }}) lo modela adecuadamente — como
+[flujo de publicación](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) lo modela adecuadamente — como
 carriles BPMN, con los roles, la puerta de validación HCI y el plan de trabajo compartido.
 
 ## A dónde ir a continuación
 
 - **[Instalación]({{ '/docs/cat-harness/start/installation.html' | relative_url }})** — requisitos previos, clonación, `bun install`, verificación de capacidades.
 - **[Primeros pasos]({{ '/docs/cat-harness/start/getting-started.html' | relative_url }})** — conecta el servidor MCP a tu LLM y ejecuta tu primera habilidad.
-- **[Tutorial: Redactar un artículo con folio-assistant]({{ '/docs/cat-harness/guides/writing-a-paper.html' | relative_url }})** — un recorrido completo guiado por LLM con una sesión de chat simulada.
+- **[Tutorial: Redactar un artículo con folio-assistant](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)** — un recorrido completo guiado por LLM con una sesión de chat simulada.
 - **[Tipos de contenido]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }})** — el formalismo de cada dominio de autoría.
-- **[Flujo de publicación]({{ '/docs/cat-harness/process/publication-workflow.html' | relative_url }})** — diagramas de carriles BPMN de los procesos de edición y publicación: la puerta de validación de HCI, quién revisa qué y el plan de trabajo compartido.
+- **[Flujo de publicación](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** — diagramas de carriles BPMN de los procesos de edición y publicación: la puerta de validación de HCI, quién revisa qué y el plan de trabajo compartido.
 - **[Incorporación del agente]({{ '/docs/cat-harness/guides/agent-onboarding.html' | relative_url }})** — orientación para un agente LLM situado en un folio: primeros pasos, búsqueda de habilidades, el modelo de objetos de contenido, sidecars de QA.
 - **[Habilidades y roles]({{ '/docs/cat-harness/concepts/skills.html' | relative_url }})** — cada habilidad y rol, y cómo interactúan junto con el LLM.
 - **[Referencia del esquema de habilidades](../reference/skills/)** — contratos de entrada/salida generados para cada habilidad.

@@ -36,7 +36,7 @@ tiempo de ejecución y se pueden instalar bajo demanda.
 | Git + git-lfs | repositorios de contenido | `apt install git git-lfs` | `winget install Git.Git GitHub.GitLFS` |
 | LaTeX (`latexmk`, `texlive`) | renderizado de artículos | `apt install texlive-full latexmk biber` | `winget install MiKTeX.MiKTeX` |
 | Lean 4 (mediante `elan`) | formalización de artículos | `curl …/elan-init.sh \| sh -s -- -y` | consulta las [versiones de elan](https://github.com/leanprover/elan/releases) |
-| Java 21 + IG Publisher + SUSHI | IGs SMART de la OMS (L3) | consulta la [guía de IG SMART de la OMS](../../guides/who-smart-ig.html) | `winget install EclipseAdoptium.Temurin.21.JDK`, luego la guía |
+| Java 21 + IG Publisher + SUSHI | IGs SMART de la OMS (L3) | consulta la [guía de IG SMART de la OMS](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-ig.html) | `winget install EclipseAdoptium.Temurin.21.JDK`, luego la guía |
 | `pandoc`, `ripgrep` | conversiones, búsqueda | `apt install pandoc ripgrep` | `winget install JohnMacFarlane.Pandoc BurntSushi.ripgrep.MSVC` |
 
 No necesitas todos estos requisitos — instala solo lo que requieran los tipos de contenido

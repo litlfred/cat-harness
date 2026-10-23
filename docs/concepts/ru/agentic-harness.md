@@ -151,20 +151,20 @@ _Эта страница сгенерирована из [`content/docs/agentic-
 агент следует соответствующему рабочему процессу BPMN. Существующие страницы
 документации описывают их подробно:
 
-- **[Процесс публикации](https://litlfred.github.io/folio-assistant/docs/cat-harness/process/publication-workflow.html)** —
+- **[Процесс публикации](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** —
   жизненный цикл контента от черновика через валидацию, рендеринг и
   публикацию. Охватывает роли (автор, рецензент, редактор), базовые процессы,
   действия и навыки.
 
-- **[Импорт документов](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/document-ingestion.html)** —
+- **[Импорт документов](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/document-ingestion.html)** —
   как добавленный файл становится источником L1: извлечение структуры, извлечение контента,
   построение графа знаний L1, шлюз полноты.
 
 - **Руководства по написанию:**
-  - [Написание статьи](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/writing-a-paper.html)
-  - [Написание документа](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/writing-a-document.html)
-  - [WHO SMART DAK](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/who-smart-dak.html)
-  - [WHO SMART IG](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/who-smart-ig.html)
+  - [Написание статьи](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)
+  - [Написание документа](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html)
+  - [WHO SMART DAK](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-dak.html)
+  - [WHO SMART IG](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-ig.html)
 
 Оснастка не переопределяет эти рабочие процессы. Она обеспечивает **точку входа** —
 классификацию запроса и маршрутизацию к нужному процессу — и **точку выхода** —

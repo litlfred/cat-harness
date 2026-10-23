@@ -184,7 +184,7 @@ do (RBAC). Roles **inherit** (e.g. `author` inherits `reviewer`).
 
 > To see these roles *as lanes* — who edits, who reviews, who signs off, and
 > which steps an agent may take on its own — read
-> [Publication workflow → Who is who](../process/publication-workflow.html#who-is-who).
+> [Publication workflow → Who is who](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html#who-is-who).
 
 ```mermaid
 flowchart LR
@@ -221,7 +221,7 @@ flowchart LR
 
 Where each of these sits in the process — and what an agent may and may not
 decide — is modelled in the
-[publication workflow](../process/publication-workflow.html) BPMN diagrams.
+[publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) BPMN diagrams.
 
 ### Role assignment
 
@@ -254,7 +254,7 @@ by priority. The shipped defaults:
 
 ## See also
 
-- [Publication workflow](../process/publication-workflow.html) — BPMN swimlanes: which skill runs at which step, and who decides
+- [Publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) — BPMN swimlanes: which skill runs at which step, and who decides
 - [Skill instructions]({{ '/reference/skill-instructions/' | relative_url }}) — the prose how-to bodies the LLM loads
 - [Skill schema reference]({{ '/reference/skills/' | relative_url }}) — typed input/output for each skill
 - [Content types](content-types.html) — which skills each content type uses

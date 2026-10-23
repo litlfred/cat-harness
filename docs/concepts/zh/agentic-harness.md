@@ -117,17 +117,17 @@ _本页面生成自 [`content/docs/agentic-harness/`](https://github.com/litlfre
 
 当请求被归类为内容工作（撰写、评审、摄取）时，智能体将遵循相应的 BPMN 工作流。现有文档页面对此进行了详细阐述：
 
-- **[发布工作流](https://litlfred.github.io/folio-assistant/docs/cat-harness/process/publication-workflow.html)** —
+- **[发布工作流](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** —
   从草稿到验证、渲染和发布的内容生命周期。涵盖各个角色（作者、评审人、编辑）、基础流程、活动及技能。
 
-- **[文档摄取](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/document-ingestion.html)** —
+- **[文档摄取](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/document-ingestion.html)** —
   放入的文件如何转化为 L1 源：提取结构、派生内容、构建 L1 知识图谱以及完整性关卡。
 
 - **撰写指南：**
-  - [撰写论文](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/writing-a-paper.html)
-  - [撰写文档](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/writing-a-document.html)
-  - [WHO SMART DAK](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/who-smart-dak.html)
-  - [WHO SMART IG](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/who-smart-ig.html)
+  - [撰写论文](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)
+  - [撰写文档](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html)
+  - [WHO SMART DAK](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-dak.html)
+  - [WHO SMART IG](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-ig.html)
 
 本框架并未重新定义这些工作流。它提供了**入口点**——对请求进行分类并路由至正确的工作流——以及**出口点**——在工作流完成时返回空闲状态，或在用户切换上下文时予以挂起。
 
