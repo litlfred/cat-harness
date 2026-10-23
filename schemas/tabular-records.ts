@@ -25,6 +25,14 @@
  * reporting `0 × 0` would say it is empty — a different fact, and one a reader
  * would act on.
  *
+ * ## No longer written for csv, xlsx or ods — bean `urat`
+ *
+ * Delimited text and workbooks are read as CSVW (`folio-tabular-csvw/v1`) by
+ * core's extractors through the `tabular-csvw` slot, and the tools' v1 writer
+ * is retired (5c-ii, option 1). This schema still accepts those formats so
+ * that records folios already committed keep validating; the one format
+ * still written as v1 is `fixed-width`.
+ *
  * @module schemas/tabular-records
  * @graphNode schema
  */
@@ -71,7 +79,8 @@ export const TabularRecordsSchema = z
     source: z.record(z.string(), z.unknown()),
     // `fixed-width`: a published text table such as NIST's CODATA allascii,
     // parsed by `codata-ingest` (bean uyp8). Named for what it is rather than
-    // passed off as CSV, which it is not.
+    // passed off as CSV, which it is not. `xlsx`, `ods` and `csv` are legacy:
+    // read for committed records, no longer written (bean `urat`, 5c-ii).
     format: z.enum(["xlsx", "ods", "csv", "fixed-width"]),
     sheets: z.array(TabularSheetSchema),
     n_sheets: z.number().int().nonnegative(),

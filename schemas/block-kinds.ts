@@ -80,6 +80,15 @@ const PLATFORM_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..
  * none does not, since the harness alone owns no vocabulary.
  */
 export function discoverContentAdapters(repoRoot: string = PLATFORM_ROOT): ContentAdapterNode[] {
+  return discoverContentAdapterFiles(repoRoot).map((v) => v.node);
+}
+
+/**
+ * {@link discoverContentAdapters} with the file each node was read from, which
+ * a vocabulary's `vocabulary` module is resolved against
+ * (`vocabulary-modules.ts`).
+ */
+export function discoverContentAdapterFiles(repoRoot: string = PLATFORM_ROOT): { file: string; node: ContentAdapterNode }[] {
   const byName = new Map<string, { file: string; node: ContentAdapterNode }>();
   for (const { file, raw } of declaredNodeFiles(repoRoot, "content-adapters")) {
     const parsed = ContentAdapterNodeSchema.safeParse(raw);
@@ -92,7 +101,7 @@ export function discoverContentAdapters(repoRoot: string = PLATFORM_ROOT): Conte
   // vocabulary, and it must still load (bean `zmdo`: generic tools only).
   // What would make "none" a lie is caught elsewhere — a malformed node throws
   // above, and a declared directory that is missing is check:declared-dirs'.
-  return [...byName.values()].map((v) => v.node).sort((a, b) => a.adapter.localeCompare(b.adapter));
+  return [...byName.values()].sort((a, b) => a.node.adapter.localeCompare(b.node.adapter));
 }
 
 /** Every discovered content-adapter node, typed or contributed. */

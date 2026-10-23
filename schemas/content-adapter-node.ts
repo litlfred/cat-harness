@@ -62,7 +62,11 @@ export const ContentAdapterNodeSchema = z
     companionRoles: z.array(z.enum(COMPANION_ROLES)).min(1),
     /**
      * The vocabulary's own module, `path.ts`, relative to the declaring
-     * instance — for an untyped vocabulary, the code that defines its blocks.
+     * instance: the code that defines its blocks. For a TYPED vocabulary it
+     * exports the kinds' schemas (`blockSchemas`), and may export
+     * `constraintRules` and `builders` — the contract and its loader are
+     * `vocabulary-modules.ts`. So a layer above cat-harness types its own kinds,
+     * and a composition that does not mount it neither discovers nor types them.
      */
     vocabulary: z.string().regex(/^(?![a-z][a-z0-9-]*:)(?!\/)(?!\.\.)[^#\s]+\.ts$/).optional(),
     rationale: z.string().optional(),
