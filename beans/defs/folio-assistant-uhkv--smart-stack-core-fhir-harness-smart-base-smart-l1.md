@@ -1,11 +1,11 @@
 ---
 # folio-assistant-uhkv
 title: 'SMART STACK: core → fhir-harness → smart-base → {smart-l1, smart-dak, smart-ig}'
-status: in-progress
+status: completed
 type: epic
 priority: high
 created_at: 2026-09-22T19:07:23Z
-updated_at: 2026-09-22T19:07:55Z
+updated_at: 2026-10-23T14:55:00Z
 parent: folio-assistant-vuip
 ---
 
@@ -123,3 +123,12 @@ test and the write-up-as-skills criterion.
 
 Saying so here rather than letting a merged PR read as a finished epic: a
 merge is evidence that code landed, never that a criterion was satisfied.
+
+## Closed, 2026-10-23
+
+Owner, 2026-10-23: "F c, dont need smart-ig as a layer". smart-l1 and
+smart-dak became document kinds on 2026-10-01 (#1767), and smart-ig is not
+made a layer or a document kind. An IG such as smart-trust or
+smart-immunizations instantiates smart-base directly. The stack is
+core → fhir-harness → smart-base, with the L1 and DAK document kinds in
+smart-base.
