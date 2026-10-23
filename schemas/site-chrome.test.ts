@@ -238,6 +238,14 @@ describe("first-party asset versions", () => {
     expect((head.match(/\?v=/g) ?? []).length).toBe(tags.length + (head.match(/\?v=<content hash>/g) ?? []).length);
   });
 
+  test("harness-data.js, which carries live counts, is loaded with no ?v", () => {
+    // A ?v naming its content would put every count change into every page
+    // (1,351 pages for one bean count, measured 2026-10-23).
+    const head = readFileSync(join(HARNESS, "site-chrome/_includes/head_custom.html"), "utf-8");
+    const tag = /<script src="\{\{ '\/assets\/js\/harness-data\.js' \| relative_url \}\}([^"]*)"/.exec(head);
+    expect(tag?.[1]).toBe("");
+  });
+
   test("the filter is defined in the chrome, so every site that mounts the chrome has it", () => {
     const plugin = readFileSync(join(HARNESS, "site-chrome/_plugins/fa-asset-version.rb"), "utf-8");
     expect(plugin).toMatch(/def fa_asset_version\(/);

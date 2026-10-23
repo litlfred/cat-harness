@@ -675,8 +675,18 @@
 -->
 <!-- NOT MOVED: same reason as fa-site-links above. -->
 <script type="application/json" id="fa-declared-kinds">{{ site.data.harness.declaredKinds | jsonify }}</script>
-<!-- FIRST of the deferred scripts: it fills `#fa-navbar-row` and `meta[name=fa-tiles]` before any reader runs (bean `gp2f`). -->
-<script src="{{ '/assets/js/harness-data.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+<!--
+  FIRST of the deferred scripts: it fills `#fa-navbar-row` and
+  `meta[name=fa-tiles]` before any reader runs (bean `gp2f`).
+
+  NO VERSION QUERY, unlike every other first-party asset here. This file carries LIVE
+  COUNTS (open beans, todos), so it changes whenever one bean opens or closes.
+  A version query naming its content would write that change into every page: two
+  previews built 25 minutes apart differed on 1,351 pages for one count going
+  133 -> 132 (bean `g196`, 2026-10-23). Unversioned, a stale copy lives only as
+  long as GitHub Pages' cache (about 10 minutes), and the pages stay the same.
+-->
+<script src="{{ '/assets/js/harness-data.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/vendor/qrcode.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/vendor/qrcode_UTF8.js' | relative_url }}" defer></script>
 <!-- BEFORE docs-ui.js and work-plan.js: both read window.faRender. -->
