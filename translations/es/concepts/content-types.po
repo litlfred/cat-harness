@@ -41,138 +41,6 @@ msgstr "folio-assistant es independiente del contenido: la plataforma no sabe na
 msgid "This page describes the formalism of each content type. It is intentionally kept separate from any concrete content; concrete artifacts live in their own content repository."
 msgstr "Esta página describe el formalismo de cada tipo de contenido. Se mantiene intencionalmente separada de cualquier contenido concreto; los artefactos concretos residen en su propio repositorio de contenido."
 
-#: docs/concepts/content-types.md:40
-msgid "The content lifecycle"
-msgstr "El ciclo de vida del contenido"
-
-#: docs/concepts/content-types.md:53
-msgid "BPMN 2.0 source · full-size SVG"
-msgstr "Fuente BPMN 2.0 · SVG a tamaño completo"
-
-#: docs/concepts/content-types.md:56
-msgid "Stage"
-msgstr "Etapa"
-
-#: docs/concepts/content-types.md:56
-msgid "Skill"
-msgstr "Habilidad"
-
-#: docs/concepts/content-types.md:56
-msgid "What happens"
-msgstr "Qué ocurre"
-
-#: docs/concepts/content-types.md:58
-msgid "plan"
-msgstr "plan"
-
-#: docs/concepts/content-types.md:58
-msgid "Scope the work, identify artifacts and actors"
-msgstr "Delimitar el alcance del trabajo, identificar artefactos y actores"
-
-#: docs/concepts/content-types.md:59
-msgid "author"
-msgstr "author"
-
-#: docs/concepts/content-types.md:59
-msgid "Create structured artifacts from source material"
-msgstr "Crear artefactos estructurados a partir del material fuente"
-
-#: docs/concepts/content-types.md:60
-msgid "validate"
-msgstr "validate"
-
-#: docs/concepts/content-types.md:60
-msgid "Check against schema + constraints"
-msgstr "Verificar frente al esquema y las restricciones"
-
-#: docs/concepts/content-types.md:61
-msgid "review"
-msgstr "review"
-
-#: docs/concepts/content-types.md:61
-msgid "Human / SME review against criteria"
-msgstr "Revisión humana / por expertos (SME) frente a criterios"
-
-#: docs/concepts/content-types.md:62
-msgid "test"
-msgstr "test"
-
-#: docs/concepts/content-types.md:62
-msgid "Automated QA, build green, proofs/validators pass"
-msgstr "QA automatizado, compilación en verde, demostraciones/validadores aprobados"
-
-#: docs/concepts/content-types.md:63
-msgid "publish"
-msgstr "publish"
-
-#: docs/concepts/content-types.md:63
-msgid "Render and deploy the published form"
-msgstr "Renderizar y desplegar la versión publicada"
-
-#: docs/concepts/content-types.md:64
-msgid "feedback"
-msgstr "feedback"
-
-#: docs/concepts/content-types.md:64
-msgid "Capture and route reviewer feedback"
-msgstr "Capturar y canalizar la retroalimentación de los revisores"
-
-#: docs/concepts/content-types.md:65
-msgid "retire"
-msgstr "retire"
-
-#: docs/concepts/content-types.md:65
-msgid "Deprecate or archive an artifact"
-msgstr "Desaprobar o archivar un artefacto"
-
-#: docs/concepts/content-types.md:67
-msgid "The lifecycle stages are the same regardless of content type — what differs is the authoring skills and the artifacts each type produces. For the full list of skills and the roles that drive them, see Skills & roles."
-msgstr "Las etapas del ciclo de vida son las mismas independientemente del tipo de contenido; lo que varía son las habilidades de autoría y los artefactos que produce cada tipo. Para consultar la lista completa de habilidades y los roles que las impulsan, consulta Habilidades y roles."
-
-#: docs/concepts/content-types.md:71
-msgid "Two things the eight stage names hide, and the diagram does not:  and  are not consecutive phases but a loop — every proposed change runs the HCI validation gate, and the editor sees the findings before anything is committed — and  happens twice, once per change and once over the assembled draft. Both expand into their own diagrams on the publication workflow page."
-msgstr "Dos cosas que los ocho nombres de etapa ocultan, y el diagrama no:  y  no son fases consecutivas sino un bucle —cada cambio propuesto pasa por la compuerta de validación de HCI, y el editor ve los hallazgos antes de que se confirme nada—, y  ocurre dos veces, una por cambio y otra sobre el borrador ensamblado. Ambos se amplían en sus propios diagramas en la página del flujo de publicación."
-
-#: docs/concepts/content-types.md:80
-msgid "Documents & policy guidance"
-msgstr "Documentos y directrices de políticas"
-
-#: docs/concepts/content-types.md:85
-msgid "Skill package:  · Adapter:  · Guide: Writing a document"
-msgstr "Paquete de habilidades:  · Adaptador:  · Guía: Redacción de un documento"
-
-#: docs/concepts/content-types.md:89
-msgid "Structured prose: health-policy guidance (an L1 guideline, say), a standard, a report, a handbook, a book chapter. Everything a paper is, minus the formal layer — and therefore minus the two toolchains that serve it."
-msgstr "Prosa estructurada: directrices de políticas de salud (por ejemplo, una guía L1), un estándar, un informe, un manual, el capítulo de un libro. Todo lo que es un artículo, menos la capa formal —y, por lo tanto, menos las dos cadenas de herramientas que la atienden—."
-
-#: docs/concepts/content-types.md:93
-msgid "Source model — the same tree of typed blocks as a paper, restricted to the kinds whose content is prose rather than a formal claim: , , , , , , , ."
-msgstr "Modelo fuente — el mismo árbol de bloques tipados que un artículo, restringido a los tipos cuyo contenido es prosa en lugar de una afirmación formal: , , , , , , , ."
-
-#: docs/concepts/content-types.md:97
-msgid "Rendering —  assembles the folio into one Markdown file;  and  take it through pandoc. The PDF path uses an HTML engine (weasyprint, prince, wkhtmltopdf) and never falls back to , so \"no TeX required\" stays true rather than becoming true-until-someone-has-TeX-installed."
-msgstr "Renderizado —  ensambla el folio en un único archivo Markdown;  y  lo procesan a través de pandoc. La ruta para PDF utiliza un motor HTML (weasyprint, prince, wkhtmltopdf) y nunca recurre a , de modo que «no se requiere TeX» se mantiene verdadero en lugar de convertirse en «verdadero hasta que alguien instale TeX»."
-
-#: docs/concepts/content-types.md:102
-msgid "Enforcement —  rejects a math kind, a  field or a  sibling, and runs on every ."
-msgstr "Control de cumplimiento —  rechaza cualquier tipo matemático, campo  o archivo hermano , y se ejecuta en cada ."
-
-#: docs/concepts/content-types.md:105
-msgid "Relevant skill schemas: , , , ."
-msgstr "Esquemas de habilidades pertinentes: , , , ."
-
-#: docs/concepts/content-types.md:119
-msgid "Carrying a normative statement"
-msgstr "Portar una declaración normativa"
-
-#: docs/concepts/content-types.md:124
-msgid "A recommendation, requirement or rule is the block readers cite and implementers trace to. It wants a label, a stable identity and a place in the dependency graph — everything a  has — and it is emphatically not a theorem, because nothing proves it."
-msgstr "Una recomendación, requisito o regla es el bloque que los lectores citan y al que los implementadores dan seguimiento. Requiere una etiqueta, una identidad estable y un lugar en el grafo de dependencias —todo lo que tiene un — y enfáticamente no es un teorema, porque nada lo demuestra."
-
-#: docs/concepts/content-types.md:129
-msgid "There is no first-class  block kind. Today the carrier is a  block with a label and a title; the  skill states the convention and its limits. Earlier guidance in  mapped guideline recommendations onto  — that predates this content type and is wrong for a document folio, where  is a math kind whose  field is required."
-msgstr "No existe un tipo de bloque  de primera clase. Hoy en día, el portador es un bloque  con una etiqueta y un título; la habilidad  establece la convención y sus límites. Las orientaciones anteriores en  mapeaban las recomendaciones de las guías a  —eso es anterior a este tipo de contenido y es incorrecto para un folio de documento, donde  es un tipo matemático cuyo campo  es obligatorio."
-
 #: docs/concepts/content-types.md:139
 msgid "Scientific papers & books"
 msgstr "Artículos científicos y libros"
@@ -257,66 +125,6 @@ msgstr "Dos de esas filas merecen una segunda mirada.  es el punto más estricto
 msgid "Relevant skill schemas: , , ."
 msgstr "Esquemas de habilidades pertinentes: , , ."
 
-#: docs/concepts/content-types.md:199
-msgid "WHO SMART Guidelines DAKs (L2)"
-msgstr "DAK de Directrices SMART de la OMS (L2)"
-
-#: docs/concepts/content-types.md:204
-msgid "Skill package:  · Guide: Authoring a WHO SMART DAK"
-msgstr "Paquete de habilidades:  · Guía: Autoría de un DAK de SMART de la OMS"
-
-#: docs/concepts/content-types.md:207
-msgid "A Digital Adaptation Kit (DAK) is the L2 (machine-readable, but implementation-neutral) representation of a WHO guideline. folio-assistant authors the L2 artifacts:"
-msgstr "Un Kit de Adaptación Digital (DAK) es la representación L2 (legible por máquina, pero neutra respecto a la implementación) de una directriz de la OMS. folio-assistant genera los artefactos L2:"
-
-#: docs/concepts/content-types.md:211
-msgid "Business processes — BPMN 2.0 workflows ()"
-msgstr "Procesos de negocio — flujos de trabajo BPMN 2.0 ()"
-
-#: docs/concepts/content-types.md:212
-msgid "Decision logic — DMN decision tables ()"
-msgstr "Lógica de decisión — tablas de decisión DMN ()"
-
-#: docs/concepts/content-types.md:213
-msgid "Data dictionaries / core data elements — Excel / structured tables"
-msgstr "Diccionarios de datos / elementos de datos esenciales — tablas estructuradas / Excel"
-
-#: docs/concepts/content-types.md:214
-msgid "Terminology — code systems and value sets ()"
-msgstr "Terminología — sistemas de códigos y conjuntos de valores ()"
-
-#: docs/concepts/content-types.md:215
-msgid "Personas, scenarios, indicators, requirements"
-msgstr "Personas, escenarios, indicadores, requisitos"
-
-#: docs/concepts/content-types.md:233
-msgid "WHO SMART Implementation Guides (L3)"
-msgstr "Guías de Implementación SMART de la OMS (L3)"
-
-#: docs/concepts/content-types.md:238
-msgid "Skill package:  · Guide: Authoring a WHO SMART IG"
-msgstr "Paquete de habilidades:  · Guía: Autoría de una IG SMART de la OMS"
-
-#: docs/concepts/content-types.md:241
-msgid "The L3 layer turns an L2 DAK into a computable FHIR Implementation Guide:"
-msgstr "La capa L3 convierte un DAK L2 en una Guía de Implementación FHIR computable:"
-
-#: docs/concepts/content-types.md:243
-msgid "FHIR resources authored as FSH (FHIR Shorthand) and compiled with SUSHI ()"
-msgstr "Recursos FHIR creados como FSH (FHIR Shorthand) y compilados con SUSHI ()"
-
-#: docs/concepts/content-types.md:245
-msgid "Validation against FHIR profiles ()"
-msgstr "Validación frente a perfiles FHIR ()"
-
-#: docs/concepts/content-types.md:246
-msgid "Publication with the HL7 FHIR IG Publisher ()"
-msgstr "Publicación con el HL7 FHIR IG Publisher ()"
-
-#: docs/concepts/content-types.md:247
-msgid "Quality control gates ()"
-msgstr "Compuertas de control de calidad ()"
-
 #: docs/concepts/content-types.md:265
 msgid "Others — extending folio-assistant"
 msgstr "Otros — extender folio-assistant"
@@ -354,3 +162,147 @@ msgstr "Los nuevos tipos de contenido son de primera clase: agrega un adaptador 
 
 #~ msgid "✎ Edit{: .fa-node-edit title=\"Edit content/docs/concepts-content-types/others-extending-folio-assistant.md\" } QA… TR"
 #~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit content/docs/concepts-content-types/others-extending-folio-assistant.md\" } QA… TR"
+
+#~ msgid "The content lifecycle"
+#~ msgstr "El ciclo de vida del contenido"
+
+#~ msgid "BPMN 2.0 source · full-size SVG"
+#~ msgstr "Fuente BPMN 2.0 · SVG a tamaño completo"
+
+#~ msgid "Stage"
+#~ msgstr "Etapa"
+
+#~ msgid "Skill"
+#~ msgstr "Habilidad"
+
+#~ msgid "What happens"
+#~ msgstr "Qué ocurre"
+
+#~ msgid "plan"
+#~ msgstr "plan"
+
+#~ msgid "Scope the work, identify artifacts and actors"
+#~ msgstr "Delimitar el alcance del trabajo, identificar artefactos y actores"
+
+#~ msgid "author"
+#~ msgstr "author"
+
+#~ msgid "Create structured artifacts from source material"
+#~ msgstr "Crear artefactos estructurados a partir del material fuente"
+
+#~ msgid "validate"
+#~ msgstr "validate"
+
+#~ msgid "Check against schema + constraints"
+#~ msgstr "Verificar frente al esquema y las restricciones"
+
+#~ msgid "review"
+#~ msgstr "review"
+
+#~ msgid "Human / SME review against criteria"
+#~ msgstr "Revisión humana / por expertos (SME) frente a criterios"
+
+#~ msgid "test"
+#~ msgstr "test"
+
+#~ msgid "Automated QA, build green, proofs/validators pass"
+#~ msgstr "QA automatizado, compilación en verde, demostraciones/validadores aprobados"
+
+#~ msgid "publish"
+#~ msgstr "publish"
+
+#~ msgid "Render and deploy the published form"
+#~ msgstr "Renderizar y desplegar la versión publicada"
+
+#~ msgid "feedback"
+#~ msgstr "feedback"
+
+#~ msgid "Capture and route reviewer feedback"
+#~ msgstr "Capturar y canalizar la retroalimentación de los revisores"
+
+#~ msgid "retire"
+#~ msgstr "retire"
+
+#~ msgid "Deprecate or archive an artifact"
+#~ msgstr "Desaprobar o archivar un artefacto"
+
+#~ msgid "The lifecycle stages are the same regardless of content type — what differs is the authoring skills and the artifacts each type produces. For the full list of skills and the roles that drive them, see Skills & roles."
+#~ msgstr "Las etapas del ciclo de vida son las mismas independientemente del tipo de contenido; lo que varía son las habilidades de autoría y los artefactos que produce cada tipo. Para consultar la lista completa de habilidades y los roles que las impulsan, consulta Habilidades y roles."
+
+#~ msgid "Two things the eight stage names hide, and the diagram does not:  and  are not consecutive phases but a loop — every proposed change runs the HCI validation gate, and the editor sees the findings before anything is committed — and  happens twice, once per change and once over the assembled draft. Both expand into their own diagrams on the publication workflow page."
+#~ msgstr "Dos cosas que los ocho nombres de etapa ocultan, y el diagrama no:  y  no son fases consecutivas sino un bucle —cada cambio propuesto pasa por la compuerta de validación de HCI, y el editor ve los hallazgos antes de que se confirme nada—, y  ocurre dos veces, una por cambio y otra sobre el borrador ensamblado. Ambos se amplían en sus propios diagramas en la página del flujo de publicación."
+
+#~ msgid "Documents & policy guidance"
+#~ msgstr "Documentos y directrices de políticas"
+
+#~ msgid "Skill package:  · Adapter:  · Guide: Writing a document"
+#~ msgstr "Paquete de habilidades:  · Adaptador:  · Guía: Redacción de un documento"
+
+#~ msgid "Structured prose: health-policy guidance (an L1 guideline, say), a standard, a report, a handbook, a book chapter. Everything a paper is, minus the formal layer — and therefore minus the two toolchains that serve it."
+#~ msgstr "Prosa estructurada: directrices de políticas de salud (por ejemplo, una guía L1), un estándar, un informe, un manual, el capítulo de un libro. Todo lo que es un artículo, menos la capa formal —y, por lo tanto, menos las dos cadenas de herramientas que la atienden—."
+
+#~ msgid "Source model — the same tree of typed blocks as a paper, restricted to the kinds whose content is prose rather than a formal claim: , , , , , , , ."
+#~ msgstr "Modelo fuente — el mismo árbol de bloques tipados que un artículo, restringido a los tipos cuyo contenido es prosa en lugar de una afirmación formal: , , , , , , , ."
+
+#~ msgid "Rendering —  assembles the folio into one Markdown file;  and  take it through pandoc. The PDF path uses an HTML engine (weasyprint, prince, wkhtmltopdf) and never falls back to , so \"no TeX required\" stays true rather than becoming true-until-someone-has-TeX-installed."
+#~ msgstr "Renderizado —  ensambla el folio en un único archivo Markdown;  y  lo procesan a través de pandoc. La ruta para PDF utiliza un motor HTML (weasyprint, prince, wkhtmltopdf) y nunca recurre a , de modo que «no se requiere TeX» se mantiene verdadero en lugar de convertirse en «verdadero hasta que alguien instale TeX»."
+
+#~ msgid "Enforcement —  rejects a math kind, a  field or a  sibling, and runs on every ."
+#~ msgstr "Control de cumplimiento —  rechaza cualquier tipo matemático, campo  o archivo hermano , y se ejecuta en cada ."
+
+#~ msgid "Relevant skill schemas: , , , ."
+#~ msgstr "Esquemas de habilidades pertinentes: , , , ."
+
+#~ msgid "Carrying a normative statement"
+#~ msgstr "Portar una declaración normativa"
+
+#~ msgid "A recommendation, requirement or rule is the block readers cite and implementers trace to. It wants a label, a stable identity and a place in the dependency graph — everything a  has — and it is emphatically not a theorem, because nothing proves it."
+#~ msgstr "Una recomendación, requisito o regla es el bloque que los lectores citan y al que los implementadores dan seguimiento. Requiere una etiqueta, una identidad estable y un lugar en el grafo de dependencias —todo lo que tiene un — y enfáticamente no es un teorema, porque nada lo demuestra."
+
+#~ msgid "There is no first-class  block kind. Today the carrier is a  block with a label and a title; the  skill states the convention and its limits. Earlier guidance in  mapped guideline recommendations onto  — that predates this content type and is wrong for a document folio, where  is a math kind whose  field is required."
+#~ msgstr "No existe un tipo de bloque  de primera clase. Hoy en día, el portador es un bloque  con una etiqueta y un título; la habilidad  establece la convención y sus límites. Las orientaciones anteriores en  mapeaban las recomendaciones de las guías a  —eso es anterior a este tipo de contenido y es incorrecto para un folio de documento, donde  es un tipo matemático cuyo campo  es obligatorio."
+
+#~ msgid "WHO SMART Guidelines DAKs (L2)"
+#~ msgstr "DAK de Directrices SMART de la OMS (L2)"
+
+#~ msgid "Skill package:  · Guide: Authoring a WHO SMART DAK"
+#~ msgstr "Paquete de habilidades:  · Guía: Autoría de un DAK de SMART de la OMS"
+
+#~ msgid "A Digital Adaptation Kit (DAK) is the L2 (machine-readable, but implementation-neutral) representation of a WHO guideline. folio-assistant authors the L2 artifacts:"
+#~ msgstr "Un Kit de Adaptación Digital (DAK) es la representación L2 (legible por máquina, pero neutra respecto a la implementación) de una directriz de la OMS. folio-assistant genera los artefactos L2:"
+
+#~ msgid "Business processes — BPMN 2.0 workflows ()"
+#~ msgstr "Procesos de negocio — flujos de trabajo BPMN 2.0 ()"
+
+#~ msgid "Decision logic — DMN decision tables ()"
+#~ msgstr "Lógica de decisión — tablas de decisión DMN ()"
+
+#~ msgid "Data dictionaries / core data elements — Excel / structured tables"
+#~ msgstr "Diccionarios de datos / elementos de datos esenciales — tablas estructuradas / Excel"
+
+#~ msgid "Terminology — code systems and value sets ()"
+#~ msgstr "Terminología — sistemas de códigos y conjuntos de valores ()"
+
+#~ msgid "Personas, scenarios, indicators, requirements"
+#~ msgstr "Personas, escenarios, indicadores, requisitos"
+
+#~ msgid "WHO SMART Implementation Guides (L3)"
+#~ msgstr "Guías de Implementación SMART de la OMS (L3)"
+
+#~ msgid "Skill package:  · Guide: Authoring a WHO SMART IG"
+#~ msgstr "Paquete de habilidades:  · Guía: Autoría de una IG SMART de la OMS"
+
+#~ msgid "The L3 layer turns an L2 DAK into a computable FHIR Implementation Guide:"
+#~ msgstr "La capa L3 convierte un DAK L2 en una Guía de Implementación FHIR computable:"
+
+#~ msgid "FHIR resources authored as FSH (FHIR Shorthand) and compiled with SUSHI ()"
+#~ msgstr "Recursos FHIR creados como FSH (FHIR Shorthand) y compilados con SUSHI ()"
+
+#~ msgid "Validation against FHIR profiles ()"
+#~ msgstr "Validación frente a perfiles FHIR ()"
+
+#~ msgid "Publication with the HL7 FHIR IG Publisher ()"
+#~ msgstr "Publicación con el HL7 FHIR IG Publisher ()"
+
+#~ msgid "Quality control gates ()"
+#~ msgstr "Compuertas de control de calidad ()"
