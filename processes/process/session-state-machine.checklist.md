@@ -32,7 +32,7 @@ The shape of a session from the outside: establish who is acting, open a record 
 - Who: the `Human actor` lane (role `user`).
 - Skill: `interaction-modality`.
 - What: The one step that needs a person.
-- Record it: `workflow_complete` with `node: "A_AskWhoIsActing"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `A_IdentifyActor` (Establish who is acting)
 
 ### 3. Open the session record (`A_OpenSession`)
