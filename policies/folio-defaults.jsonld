@@ -55,14 +55,6 @@
       "action": "adjudication"
     },
     {
-      "assignee": "deep-researcher",
-      "action": "content-authoring"
-    },
-    {
-      "assignee": "evidence-agent",
-      "action": "content-authoring"
-    },
-    {
       "assignee": "ig-publisher-service",
       "action": "qa-reporting"
     },
@@ -77,10 +69,6 @@
     {
       "assignee": "local-sweep",
       "action": "qa-reporting"
-    },
-    {
-      "assignee": "onboarding-agent",
-      "action": "content-authoring"
     },
     {
       "assignee": "platform-boundary-guard",

@@ -6,10 +6,8 @@
   "roles": [
     "authoring-agent",
     "sibling-session",
-    "compute-authoring-agent",
     "docs-authoring-agent",
     "editorial-authoring-agent",
-    "lean-authoring-agent",
     "platform-authoring-agent",
     "session-coordinator",
     "merge-steward"
@@ -19,6 +17,6 @@
     "lifecycle": [
       "author"
     ],
-    "workflow": "folio-assistant-core/processes/content/editing-hci-validation.bpmn#Lane_Agent"
+    "workflow": "processes/sdlc/code-change-review.bpmn#Lane_Agent"
   }
 }
