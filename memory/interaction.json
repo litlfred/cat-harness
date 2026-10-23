@@ -9,7 +9,7 @@
       "profiles": [
         "low-dexterity"
       ],
-      "note": "Very limited hand function. Every question is to be answerable by selecting: numbered options, four or fewer, the recommended one first and marked, and a stated default that the work proceeds on if no answer comes. Free text always available, never required.",
+      "note": "Very limited hand function. Every question is to be answerable by selecting: numbered options, four or fewer, the recommended one first and marked, and a stated default that the work proceeds on if no answer comes. Free text always available, never required. Every question is written in full in the chat (context, every option, recommendation) AND then offered as a tappable card; never a card alone, never a typed reply like 1y 2n. Canonical rule: skills/conduct/conduct-core/interaction-modality.md, the box at the top.",
       "source": "stated by the user"
     }
   },

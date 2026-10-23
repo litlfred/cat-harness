@@ -255,7 +255,12 @@ should not be built. The interaction model as a whole is
 ### Context before the question (STRICT)
 
 **Order: context → options → recommendation → question.** Can the reader answer
-without opening anything?
+without opening anything? **Every question goes out twice: first the full
+question, context and every option in the chat, then the tappable card**
+(`AskUserQuestion`, `request_decision`, or any other selection tool). Never a
+card alone, never a request for a typed reply. The one canonical statement is
+the box at the top of
+[`interaction-modality`](skills/conduct/conduct-core/interaction-modality.md).
 ([`interaction-modality`](skills/conduct/conduct-core/interaction-modality.md) §4.1,
 [`turn-reporting`](skills/sdlc/sdlc-core/turn-reporting.md)).
 
