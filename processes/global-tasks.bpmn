@@ -8,9 +8,9 @@
   defined here once and each process calls it with a callActivity whose
   calledElement is the global task's bare id (b1). The calling lane names the
   Role; the global task names the Skill. A global task may take inputs, which
-  each call gives a value (c1), and is shared within this layer only. The file
-  is named after the layer, because diagrams are found by basename across the
-  composition and two layers' `global-tasks.bpmn` would collide.
+  each call gives a value (c1), and is shared within this layer only. Every
+  layer names its file plainly processes/global-tasks.bpmn: a diagram's identity
+  is its instance plus its path, and its IRIs carry the instance.
 -->
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
                   xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
