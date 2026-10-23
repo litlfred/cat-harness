@@ -1002,6 +1002,16 @@ A stacked PR is not admitted to the main queue. Either its base lands first and
 the PR is re-measured against `main`, or it is rebased onto `main` by its
 author. The steward's job is to notice, not to resolve it.
 
+**GitHub does not retarget a stacked PR when its base PR merges.** It retargets
+only when the base BRANCH is deleted, and these repositories keep merged
+branches. So "stacked on #N, GitHub retargets to `main` when #N merges", a
+sentence a PR body may well carry, is false here. Read `base.ref` again after
+the lower PR merges, and retarget it yourself (`PATCH .../pulls/<n>` with
+`base=main`) before merging. **Measured, 2026-10-23.** cat-harness#439 was
+stacked on #432's branch, and its body said exactly that. #432 merged, then
+#439 merged eight seconds later: into #432's branch, not `main`. The same head
+commit had to be re-landed as #478.
+
 ## `git add -A` after a merge silently reverts the submodule gitlinks
 
 **And `git submodule status` does not catch it.** This is bean `ygga` one layer
