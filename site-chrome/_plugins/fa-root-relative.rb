@@ -12,7 +12,11 @@
 # source, for every site). Written relative to the page, a page that did not
 # change is byte-identical in every preview and on the live site.
 #
-# HOW. While pages render, `baseurl` is a token. Every way a template reaches
+# HOW. From the moment the site has been read until every page is rendered,
+# `baseurl` is a token: generators too (jekyll-relative-links turns a `.md`
+# link into `relative_url` of its page at generate time, so a swap at
+# `pre_render` missed every one of them; measured on a deployed preview,
+# 2026-10-23). Every way a template reaches
 # the base (`relative_url`, `absolute_url`, `site.baseurl`, a theme's or a
 # plugin's own use of the config) yields the token, including inside an
 # `include_cached` fragment that is rendered once and reused by every page:
@@ -79,7 +83,7 @@ module FaRootRelative
   end
 end
 
-Jekyll::Hooks.register :site, :pre_render do |site, _payload|
+Jekyll::Hooks.register :site, :post_read do |site|
   FaRootRelative.swap_in(site)
 end
 

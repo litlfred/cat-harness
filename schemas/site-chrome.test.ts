@@ -260,8 +260,10 @@ describe("page-relative links", () => {
   const plugin = readFileSync(join(HARNESS, "site-chrome/_plugins/fa-root-relative.rb"), "utf-8");
   const head = readFileSync(join(HARNESS, "site-chrome/_includes/head_custom.html"), "utf-8");
 
-  test("the plugin swaps the base for a token before rendering and resolves it after", () => {
-    expect(plugin).toMatch(/Hooks\.register :site, :pre_render[\s\S]*swap_in/);
+  test("the plugin swaps the base for a token once the site is read, before generators run, and resolves it after rendering", () => {
+    // Not `pre_render`: jekyll-relative-links rewrites `.md` links at GENERATE
+    // time, and a swap after that left every one of them absolute.
+    expect(plugin).toMatch(/Hooks\.register :site, :post_read[\s\S]*swap_in/);
     expect(plugin).toMatch(/Hooks\.register :site, :post_render[\s\S]*resolve/);
     // The real base is put back however resolving ends, or `jekyll serve`
     // would go on serving under the token.
