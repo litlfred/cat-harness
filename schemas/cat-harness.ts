@@ -3478,10 +3478,11 @@ const catHarnessDeclarationShape = {
    * Not `canonicalUrl`, and the difference is the version. `canonicalUrl`
    * says where documents are PUBLISHED, and `kg-export` mints a document's
    * `@id` from it; `iriBase` says what the vocabulary's identifiers ARE, and
-   * those carry the release: `<iriBase><version>/…` for anything an agent
-   * reads (namespaces, schema `$id`s), `<iriBase>v<major>/…` for pages a
-   * person reads (owner, 2026-09-29). `releaseIris` in `bootstrap-tools/schemas/release-iri.ts`
-   * composes both; `iri:sync` keeps every literal copy at the declared version.
+   * those carry the release's MAJOR: `<iriBase>v<major>/…`, for anything an
+   * agent reads (namespaces, schema `$id`s) and for pages a person reads alike
+   * (owner, 2026-10-23; the exact release is the pin's). `releaseIris` in
+   * `bootstrap-tools/schemas/release-iri.ts` composes it; `iri:sync` keeps
+   * every literal copy at the declared major.
    */
   iriBase: z.string().url().optional(),
   /**

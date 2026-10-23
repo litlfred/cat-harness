@@ -23,7 +23,7 @@
  * ## Where a link points
  *
  * At the node's release address, the rule `check:node-iris` enforces:
- * `<iriBase><version>/<path in its knowledge graph>[#fragment]`, read through
+ * `<iriBase>v<major>/<path in its knowledge graph>[#fragment]`, read through
  * the OWNING instance's declaration (`releaseIris`). An actor is
  * `scenarios/actors/<id>`, a role `scenarios/roles#<id>`, a plan
  * `<dir>/<process file stem>#<task>`.

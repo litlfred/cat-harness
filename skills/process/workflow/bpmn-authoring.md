@@ -56,8 +56,8 @@ is not enabled**. That has consequences for how you author:
   is the deprecated form (owner, 2026-10-16). A diagram using any
   `bootstrap.processes:` element declares the namespace as the first child of
   `<bpmn:definitions>`: `<bpmn:import
-  namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
-  location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld"
+  namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+  location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld"
   importType="http://www.w3.org/ns/json-ld"/>`.
 - **The process's own `bpmn:documentation` opens with what it is for.** Its
   first sentence is the diagram's row on the publication-workflow page.
