@@ -324,7 +324,7 @@ such lists do, missing every instance added since `l4ay`.
 
 | instance | document on this site | built by |
 |---|---|---|
-| the host, `cat-harness` | `<site>/<stub>.jsonld` | `kg-export.ts --scope instance`, its own line in `docs-site.yml` |
+| the host, `cat-harness` | `<site>/<stub>/<stub>.jsonld` | `kg-export.ts --scope instance`, its own line in `docs-site.yml` |
 | the checkout root, `folio-assistant` | `<site>/<stub>/<stub>.jsonld` | `kg-export.ts --instance .` (bean `l4ay`) |
 | `bootstrap` | `<site>/bootstrap/bootstrap.jsonld` | `bootstrap-tools/scripts/export-graph.ts` (owner, 2026-09-30, bean `xsqm`) |
 | every other declared instance | `<site>/<stub>/<stub>.jsonld` | `cat-harness-tools/scripts/instance-exports.ts` |
@@ -333,6 +333,14 @@ such lists do, missing every instance added since `l4ay`.
   `.jsonld` as octet-stream, and `.json` is the only way to get a correct
   `Content-Type` out of it. The `.jsonld` stays canonical, since it is what
   every `@id` names.
+- **The host is in the same place as every other layer.** Its document sat
+  at the site root, `<site>/<stub>.jsonld`, until the owner's ruling of
+  2026-10-23 (decision 1b on
+  [cat-harness-tools#603](https://github.com/litlfred/cat-harness-tools/issues/603)):
+  *the host is no longer special*. Its document, its Tools, its subjects and
+  its glossary moved under `<site>/<name>/`, because there should be **one
+  rule for every layer, with subjects beside their document**. A separate
+  line in the deploy is the only thing still different about it.
 - **The first three rows are the only exemptions**, and they are
   `PUBLISHED_ELSEWHERE` in `instance-exports.ts`, each with its reason. No
   other list exists.
@@ -370,9 +378,22 @@ nowhere.
 
 The same mechanism carries the move from `….jsonld#<kind>/<id>` to
 `<doc dir>/<kind>/<id>` subject IRIs: one tombstone per published hash `@id`,
-for one release
+flows included (owner decision 5a, 2026-10-23), each also `owl:sameAs` the
+path, for one release
 ([`kg-export`](kg-export.md) §"Subject IRIs — a path, not a `#fragment`";
 [#435](https://github.com/litlfred/cat-harness/issues/435)).
+
+**A document that moved is a tombstone at its old address.** When the host
+moved under `<site>/<name>/` (2026-10-23, decision 1b), each old root address
+became a small document: the old `<site>/<stub>.jsonld`, each old
+`<site>/tools/<id>.jsonld`, and the old glossary and code-list documents.
+Each one says `deprecated`, `isReplacedBy` and `sameAs` for its new address,
+and its `@graph` holds one tombstone for each `@id` it used to carry. A
+consumer holding an old `@id` fetches the old document, so that is where the
+new name has to be. The root `.json` aliases are copies of those tombstones.
+The exporters write them (`writeLegacyDocuments` in `kg-export.ts`, and
+`legacyGlossaryDocuments` in `glossary-export.ts`), and they go with the
+other tombstones.
 
 **Removal is due one release after the split** (`tombstonesFor`'s banner:
 *"ONE RELEASE ONLY; REMOVE IN THE NEXT"*). Delete `tombstonesFor`, its call in
@@ -385,10 +406,18 @@ holds every tombstone to a replacement the deploy writes.
 given; else the instance's own `canonicalUrl`; else, for an instance this
 repository publishes, the host's. With no base at all the `@id` is
 document-relative and a problem is reported, never a guessed absolute one
-(bean `40fl`). The host sits at `<base>/<stub>.jsonld` and a foreign instance
-at `<base>/<stub>/<stub>.jsonld` (bean `dyd3`). **An instance declaring its
-own `canonicalUrl` is the host of its own base**, so its `@id` is
-`<canonicalUrl>/<stub>.jsonld` (#1548), and the deploy passes it no
+(bean `40fl`). **Every instance this site publishes, the host included,
+sits at `<base>/<name>/<stub>.jsonld`** (bean `dyd3`; the host since the
+owner's ruling of 2026-10-23, decision 1b on
+[cat-harness-tools#603](https://github.com/litlfred/cat-harness-tools/issues/603):
+one rule for every layer, with subjects beside their document). Nothing about
+the host is special, so `<doc dir>` for its subjects and Tools is
+`<base>/cat-harness/`, never the site root. **The one case left open is an
+instance declaring its own `canonicalUrl`.** Today it is the host of its own
+base, so its `@id` is `<canonicalUrl>/<stub>.jsonld` (#1548). Where its
+document and subjects go under the one rule is phase 2 of #603,
+[cat-harness-tools#638](https://github.com/litlfred/cat-harness-tools/issues/638).
+The deploy passes such an instance no
 `--base-url` (`declaresOwnCanonical` in `instance-exports.ts`). Measured
 2026-10-05, those are the tools layer, `cat-openapi`, the FHIR IG layer and
 the DAK layer. **This site serves their bytes at `<site>/<stub>/<stub>.jsonld`,

@@ -62,7 +62,7 @@ The approved requirements become work-plan items, the BA signs off, and the bran
 - Who: the `BA / Feature Requestor` lane (role `business-analyst`).
 - Skill: `kg-contribution-offer`.
 - What: A PERSON'S STEP, and `none` is one of the answers rather than a refusal to answer.
-- Record it: `workflow_complete` with `node: "BA_ChooseKg"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `GW_KgChosen` (A destination?)
 
 ### Decide — A destination? (`GW_KgChosen`)

@@ -45,7 +45,7 @@ One alert for every failure after the publish button — an incomplete export, a
 - Who: the `Publication manager` lane (role `publication-manager`).
 - Skill: `publish-verification`.
 - What: The publication manager reads what failed and decides: hold the release, or fix forward and publish again.
-- Record it: `workflow_complete` with `node: "U_Triage"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Triaged` (Triaged)
 
 ## Done — Triaged (`End_Triaged`)

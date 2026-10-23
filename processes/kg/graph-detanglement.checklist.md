@@ -92,9 +92,8 @@ Part of a repository wants to leave, for size or a semantic reason: four gated s
 
 - Who: the `Administrator` lane (role `administrator`).
 - Skill: `deletion-requires-confirmation`.
-- What: A repository cut changes the substrate every other process's lanes bind to, and that is a person's decision.
-- Shared step `GT_AuthoriseExtraction`.
-- Record it: `workflow_complete` with `node: "Task_Authorise"`.
+- What: The one step no package may relax.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `Task_Extract` (4 · Extract — a directory move, not a file-by-file sift), → `End_Declined` (Stays where it is — declared, detangled, isolated)
 
 ### 8. 4 · Extract — a directory move, not a file-by-file sift (`Task_Extract`)

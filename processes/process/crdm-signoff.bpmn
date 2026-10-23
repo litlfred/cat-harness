@@ -103,7 +103,7 @@ The options are DERIVED from the graphs this instance declares in `&lt;name&gt;.
       <bpmn:incoming>SF_Signoff_Proceed</bpmn:incoming>
       <bpmn:outgoing>SF_Kg_1</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:userTask id="BA_ChooseKg" name="Choose a destination,&#10;or none">
+    <bpmn:callActivity id="BA_ChooseKg" calledElement="Process_AskThePerson" name="Choose a destination,&#10;or none">
       <bpmn:documentation>A PERSON'S STEP, and `none` is one of the answers rather than a refusal to answer. A requirement whose whole content is carried by the code becomes a commit and nothing else; a graph that acquires a node for it is a graph with a node nobody will ever read.
 
 The default creates NOTHING. An agent that decides on its own that a requirement "is really a skill" has manufactured a node nobody asked for, in a graph somebody else maintains — which is what this step exists to prevent.</bpmn:documentation>
@@ -113,7 +113,7 @@ The default creates NOTHING. An agent that decides on its own that a requirement
       </bpmn:extensionElements>
       <bpmn:incoming>SF_Kg_1</bpmn:incoming>
       <bpmn:outgoing>SF_Kg_2</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:callActivity>
     <bpmn:exclusiveGateway id="GW_KgChosen" name="A destination?">
       <bpmn:documentation>Drawn as a branch rather than folded into the task above, because `none` being a real outcome is the property worth being able to see. A diagram where every path ends in a created node is a diagram of a ritual.</bpmn:documentation>
       <bpmn:extensionElements>

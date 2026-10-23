@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: graph-detanglement\n"
-"POT-Creation-Date: 2026-10-22T17:11:43.202Z\n"
+"POT-Creation-Date: 2026-10-23T22:47:17.377Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "3 · Isolate — own declaration, namespace, artefact"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:158
+#: processes/kg/graph-detanglement.bpmn:161
 #. Diagram label
 msgid "4 · Extract — a directory move, not a file-by-file sift"
 msgstr ""
@@ -69,7 +69,7 @@ msgstr ""
 msgid "Authorise the extraction"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:190
+#: processes/kg/graph-detanglement.bpmn:193
 #. Diagram label
 msgid "authorised"
 msgstr ""
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Computed, not chosen: decisions/subgraph-declared-gate.dmn (hit policy FIRST) over three inputs — the declaration parsed (`readable`), an entry present for the sub-graph, and every declared path exists. Unparseable goes to `unknown`, a fault rather than 'not yet', and stops the process. No entry, or a declared path that does not exist (bean `dh4f`), goes to `not yet`, back to Declare. Otherwise `declared`, on to Measure."
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:179
+#: processes/kg/graph-detanglement.bpmn:182
 #. Diagram label
 msgid "declared"
 msgstr ""
@@ -104,12 +104,12 @@ msgstr ""
 msgid "Declared in place?"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:191
+#: processes/kg/graph-detanglement.bpmn:194
 #. Diagram label
 msgid "declined"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:185
+#: processes/kg/graph-detanglement.bpmn:188
 #. Diagram label
 msgid "detangled"
 msgstr ""
@@ -119,22 +119,22 @@ msgstr ""
 msgid "Detangled?"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:167
+#: processes/kg/graph-detanglement.bpmn:170
 #. Diagram label
 msgid "Extracted"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:188
+#: processes/kg/graph-detanglement.bpmn:191
 #. Diagram label
 msgid "isolated"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:183
+#: processes/kg/graph-detanglement.bpmn:186
 #. Diagram label
 msgid "keep detangling"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:180
+#: processes/kg/graph-detanglement.bpmn:183
 #. Diagram label
 msgid "not yet"
 msgstr ""
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Only once cross-edges measure zero: give the sub-graph its own declaration, its own namespace and its own published artefact, as bootstrap/ has (its own declaration, bs: namespace and graph document). Nothing moves yet; the sub-graph now stands alone in place."
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:159
+#: processes/kg/graph-detanglement.bpmn:162
 #. Diagram element documentation
 msgid "Only once edges are zero and the declaration stands alone: move the sub-graph out as one directory move, not a file-by-file sift. Its nested declaration resolves paths against its own directory, so moving the folder moves the graph. The five-point gate is in migration-plan.md Phase II."
 msgstr ""
@@ -179,14 +179,14 @@ msgstr ""
 msgid "Stands alone?"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:154
+#: processes/kg/graph-detanglement.bpmn:157
 #. Diagram label
 msgid "Stays where it is — declared, detangled, isolated"
 msgstr ""
 
 #: processes/kg/graph-detanglement.bpmn:149
 #. Diagram element documentation
-msgid "The one step no package may relax."
+msgid "The one step no package may relax. A repository cut changes the substrate every other diagram's lanes bind to, and that is a person's decision."
 msgstr ""
 
 #: processes/kg/graph-detanglement.bpmn:117
@@ -194,12 +194,12 @@ msgstr ""
 msgid "The only four moves. Move the shared TARGET first and the importers after; check the target's layer before the importer's; a schema moves with its script. The fix is never an exemption, it is the right owner."
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:178
+#: processes/kg/graph-detanglement.bpmn:181
 #. Diagram label
 msgid "unknown"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:170
+#: processes/kg/graph-detanglement.bpmn:173
 #. Diagram label
 msgid "UNKNOWN — stop. Not “not yet”, not clean"
 msgstr ""

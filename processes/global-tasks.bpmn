@@ -89,13 +89,6 @@ GW_SignoffRecorded after this reads the record back, so this step cannot be skip
       <bootstrap.processes:skill ref="deletion-requires-confirmation"/>
     </bpmn:extensionElements>
   </bpmn:globalTask>
-  <bpmn:globalUserTask id="GT_AuthoriseExtraction" name="Authorise the extraction">
-    <bpmn:documentation>A repository cut changes the substrate every other process's lanes bind to, and that is a person's decision.</bpmn:documentation>
-    <bpmn:extensionElements>
-      <bootstrap.processes:skill ref="deletion-requires-confirmation"/>
-    </bpmn:extensionElements>
-  </bpmn:globalUserTask>
-
   <!-- feature-staging and staging-render-log. -->
   <bpmn:globalScriptTask id="GT_LogRetained" name="Append `retained`&#10;with the reason">
     <bpmn:documentation>The entry that makes the log worth reading. A removal was considered and refused, or a preview still stands because a signal fired; without an entry that leaves no trace, and the next person asking "why is this preview still up" has nothing to consult. A reason is REQUIRED — the tool refuses without one.</bpmn:documentation>

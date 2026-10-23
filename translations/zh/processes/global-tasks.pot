@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: global-tasks\n"
-"POT-Creation-Date: 2026-10-23T15:30:58.702Z\n"
+"POT-Creation-Date: 2026-10-23T22:47:17.373Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -15,18 +15,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: processes/global-tasks.bpmn:93
-#. Diagram element documentation
-msgid "A repository cut changes the substrate every other process's lanes bind to, and that is a person's decision."
-msgstr ""
-
-#: processes/global-tasks.bpmn:100
 #. Diagram label
 msgid "Append `retained` with the reason"
-msgstr ""
-
-#: processes/global-tasks.bpmn:92
-#. Diagram label
-msgid "Authorise the extraction"
 msgstr ""
 
 #: processes/global-tasks.bpmn:70
@@ -84,7 +74,7 @@ msgstr ""
 msgid "The agent reports and waits: what would move, how large, what in the parent breaks, and the rollback. `deletion-requires-confirmation` is not a courtesy to waive: an agent never removes or relocates a durable artefact on its own initiative."
 msgstr ""
 
-#: processes/global-tasks.bpmn:101
+#: processes/global-tasks.bpmn:94
 #. Diagram element documentation
 msgid "The entry that makes the log worth reading. A removal was considered and refused, or a preview still stands because a signal fired; without an entry that leaves no trace, and the next person asking \"why is this preview still up\" has nothing to consult. A reason is REQUIRED — the tool refuses without one."
 msgstr ""

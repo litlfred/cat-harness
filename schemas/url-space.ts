@@ -10,6 +10,11 @@
  * | `instance` | `<base>/<instance>/<path>` | the instance presented as itself, on its own theme |
  * | `viewer` | `<base>/<locale>/<owner>/<graph>/<subject>/<path>` | a viewer of one instance's assets, rendered by another instance's machinery; `<locale>/` only when one is given |
  *
+ * - The host is no exception (owner, 2026-10-23, decision 1b of the
+ *   subject-IRI migration: one rule for every layer, subjects beside their
+ *   document): its graph document, Tools and subjects are the
+ *   `instance` case, `<base>/cat-harness/…`, like every layer's. `root` is the
+ *   index's own docs rendering, never a layer's graph.
  * - The segment is the instance's `name`, never its `stub`: the stub names
  *   published FILES (`<stub>.jsonld`), the name names the instance.
  * - The declared graph is a segment, because an instance may declare more
