@@ -84,8 +84,8 @@ repeats until the axis is exhausted or the author types "stop".
    - **Scored rater criteria** have no binary fail; instead order by
      **ascending `score`** (lowest quality first) and treat any block
      with `score.value < 0.66` as open. After the routed improver
-     (`proof-simplifier` / `proof-triage` /
-     `proposition-consolidation-audit`) runs, **re-rate** (re-dispatch
+     (the content type's simplifier, triage or consolidation skill)
+     runs, **re-rate** (re-dispatch
      the rater agent) and confirm `score` rose before closing — the
      rate→improve loop.
 2. Cluster the open list into **batches** with these constraints:
