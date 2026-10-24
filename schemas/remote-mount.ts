@@ -34,6 +34,12 @@
  * `hydrated`, and {@link mountedInstanceRoots} never offers it to the overlay
  * as somewhere to import from.
  *
+ * The file is read from the pin's git tree when a commit carries it, and
+ * otherwise from the pin's subgraph index PACKAGE (bean `mo75` G2b; owner,
+ * 2026-10-24, option A: published per pin in a package, never committed and
+ * never generated at mount). Such a directory's lock entry records the
+ * package's URL and sha256 ({@link LockedDirectorySchema}`.package`).
+ *
  * ## Why the default path is the harness's HOME path
  *
  * A mounted instance lands, by default, at the path it has in its own
@@ -244,6 +250,21 @@ export const LockedDirectorySchema = z
     /** SHA-256 over the sorted `<sha256>  <file>` listing — `treeDigest`. */
     treeDigest: z.string().regex(/^[0-9a-f]{64}$/),
     files: z.number().int().nonnegative(),
+    /**
+     * A hydrated directory whose `index.hydrated.jsonld` came from the pin's
+     * subgraph index PACKAGE rather than its git tree (bean `mo75` G2b; the
+     * contract is `subgraphIndexPackage` in `subgraph-manifest.ts`): the
+     * tarball's URL and sha256, and the file's path inside the package, so a
+     * replay fetches the same bytes and refuses any others.
+     */
+    package: z
+      .object({
+        url: z.string().url(),
+        sha256: z.string().regex(/^[0-9a-f]{64}$/),
+        member: z.string().min(1),
+      })
+      .strict()
+      .optional(),
   })
   .strict();
 

@@ -32,7 +32,7 @@ built on:
 | | where |
 |---|---|
 | the process | [`mount-dependency.bpmn`](../../../processes/kg/mount-dependency.bpmn); the per-subgraph view is the `remote` and `npm` flows of [`mount-subgraph.bpmn`](../../../processes/kg/mount-subgraph.bpmn) |
-| the schema | `cat-harness/schemas/remote-mount.ts`, plus the `remote` and `npm` members of `SubgraphSource` (`schemas/subgraph-source.ts`) |
+| the schema | `cat-harness/schemas/remote-mount.ts`, plus the `remote`, `npm` and `hydrated` members of `SubgraphSource` (`schemas/subgraph-source.ts`); the per-pin index package is `subgraphIndexPackage` in `schemas/subgraph-manifest.ts` |
 | the tool | `bun run cat mount:remote` (`--plan` to resolve without writing), and `bun run cat mount:remote:check` (offline) |
 | the entry point | `bun run cat state:mount`, which the session-start hook already runs |
 
@@ -108,6 +108,43 @@ index-config:migrate --write` moves the entries across.
   directory as one file: its published `index.hydrated.jsonld` at the pin, a
   `hydrated` source (bean `mo75`). Read what is there, then choose what to
   mount as files. No declaration is laid down, and `needs` is not followed.
+  Where that file comes from is the next section.
+
+## Hydrated: the index files are published per pin, in a package
+
+Owner, 2026-10-24 (decision card, option A): **a pin's subgraph index files
+(`index.jsonld`, `index.hydrated.jsonld` under `<docs>/subgraph/<HARNESS>/`)
+are published per pin in a package**, and a hydrated mount fetches them
+through the Tool its source names (the `hydrated` source's `tool`, which is
+`remote-mount` unless it says otherwise; bean `j9cs`).
+
+Why neither of the other two:
+
+- **Not committed in each repository (B).** The files are `builtAtPublish`:
+  they are computed over the checkout's other instances, so no commit can
+  hold them current, and a committed copy turns every re-pin's check red
+  (owner, 2026-10-14, "B1").
+- **Not generated at mount time (C).** The downstream would need the whole
+  index, kg-export and the framing toolchain to read one file of metadata,
+  which is the cost a hydrated mount exists to avoid, and two downstreams
+  could frame two different files for one pin.
+
+What that means in practice:
+
+| | |
+|---|---|
+| the package | `<harness>-subgraph-index@0.0.0-pin.<sha>`: the index files at their published paths, and `subgraph-index.json` (`folio-subgraph-index/v1`) giving each file's sha256 and the repository, pin and harness |
+| where | assets of the GitHub release `subgraph-index-<sha>` in the instance's repository, with the tarball's `folio-binary-release/v1` record beside it. Every name is computed (`subgraphIndexPackage` in `schemas/subgraph-manifest.ts`) |
+| who publishes | the `subgraph-index-package` Tool, run on every push to `main` by the reusable workflow `layer-publish-subgraph-index.yml` (cat-harness-tools); a harness opts in with one `uses:` line |
+| what a mount checks | the pin's git tree first (a commit that does carry the file still works); otherwise the package: the tarball against its record (size, sha256), the manifest against the repository, pin and harness asked for, each file against its sha256, then the same schema and subgraph-IRI check a tree file gets |
+| the lock | a directory that came from the package records the tarball's URL and sha256 and the file's path in it (`package`), so `mount:lock` fetches the same bytes and refuses any others |
+
+No release for the pin is `missing`, and the detail says the package was
+looked for. A package that fails a check is `missing`; one that could not be
+fetched is `could-not-determine`. Neither is ever an empty mount. The record
+travels with the tarball, so its digest proves the transfer, not the
+publisher: who may publish is the repository's write access, the same trust
+the git tree at the pin already rests on.
 
 ## Why the default path is the home path
 
