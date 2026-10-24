@@ -459,7 +459,7 @@ export const LinkStyleSchema = z.enum(["blob", "pages", "raw"]).describe("How a 
 
 /** One generated README region, named by its marker. */
 export const ReadmeSectionSchema = z
-  .enum(["folio:toc", "folio:lean-coverage", "folio:lean-modules", "folio:simulators", "folio:workflows"])
+  .enum(["folio:toc", "folio:lean-coverage", "folio:lean-modules", "folio:simulators", "folio:workflows", "cat-harness:skills"])
   .describe("A generated README section, named by its marker.");
 
 /**
