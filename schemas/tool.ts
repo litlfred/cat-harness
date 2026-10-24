@@ -3,7 +3,7 @@
  *
  * A **skill** states a capability generically; a **Tool** is one concrete way
  * to exercise it, and names the skills it satisfies. That separation is the
- * SOP in `skills/folio-core/skills-and-tools.md`; this is the schema that makes
+ * SOP in `skills/tools/folio-core/skills-and-tools.md`; this is the schema that makes
  * it something a machine can check rather than a convention prose asserts.
  *
  * ## Authoritative, and the only authority

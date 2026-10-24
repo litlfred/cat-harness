@@ -20,7 +20,7 @@ coordination; the parent says when to invoke it and what it is for.
 
 For each sibling change proposal (pull request, PR), read its number,
 title, body, state, head branch and last update, and the paths of every file
-it changes — the *read change proposal* and *list changed files* [forge-operation Tool](../../../folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)s.
+it changes — the *read change proposal* and *list changed files* [forge-operation Tool](../../../tools/folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)s.
 Read the **full** file list, not a truncated head — partial scope
 maps cause silent overlaps later. File paths are cheap.
 
@@ -142,7 +142,7 @@ guess.
 #### 5c.  Post one consolidated status comment
 
 After triaging all threads from one review pass, post a **single**
-PR-level summary (the *comment on change proposal* [forge-operation Tool](../../../folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)):
+PR-level summary (the *comment on change proposal* [forge-operation Tool](../../../tools/folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)):
 
 ```markdown
 Thanks @<reviewer> — addressed all <N> threads in [`<sha>`](<commit-url>).
@@ -159,7 +159,7 @@ Thanks @<reviewer> — addressed all <N> threads in [`<sha>`](<commit-url>).
 
 This avoids per-thread reply storms while still giving a paper
 trail for every verdict.  Threads marked `accept` /
-`accept-with-modification` should be resolved (the *resolve review thread* [forge-operation Tool](../../../folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each))
+`accept-with-modification` should be resolved (the *resolve review thread* [forge-operation Tool](../../../tools/folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each))
 once the reviewer acknowledges or after a one-day cooling period.
 
 #### 5d.  When the reviewer pushes back
@@ -351,7 +351,7 @@ Decision matrix:
 | `3..10` | **fetch and triage**: list each new main commit; for any touching files in your branch's diff, classify per §2 (rebase-now, defer, escalate) BEFORE pushing |
 | `> 10` | **stop**: announce to the user. Long-discharge sessions risk substantial divergence; offer prepare-merge rebase OR continue + flag |
 
-Additionally, list PRs with the *list change proposals* [forge-operation Tool](../../../folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each), filtered to
+Additionally, list PRs with the *list change proposals* [forge-operation Tool](../../../tools/folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each), filtered to
 `state:open updated since <session_start>` and check for sibling PRs
 that opened mid-session. Each new sibling enters scope per §3.
 
@@ -380,7 +380,7 @@ hooks-busy window, do NOT just "re-arm and continue":
 
 Each triage cycle, list open PRs (number, title, head branch, creation
 time) and branches — the *list change proposals* and *list branches*
-[forge-operation Tool](../../../folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)s; branches alone are also listable with `git ls-remote
+[forge-operation Tool](../../../tools/folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)s; branches alone are also listable with `git ls-remote
 --heads origin`, which needs no forge.
 
 If a **new** PR or branch appears since the last triage and its

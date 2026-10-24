@@ -12,8 +12,10 @@
       "skills": [
         "adjudication",
         "dispatch-agent",
+        "folio-init",
         "getting-started",
         "interaction-modality",
+        "kg-affordances",
         "kg-subscription",
         "materialize-remote",
         "repo-conversion",
@@ -35,8 +37,9 @@
         "content-review",
         "decision-audit",
         "evidence-appraisal",
-        "milnor-exposition-standard",
+        "kg-affordances",
         "staging-review",
+        "todo-manager",
         "voice-authoring-guidance"
       ],
       "persona": "Knows the subject and is mid-edit. Came to change one block, not to learn the system. Has the folio open and the schema only half in mind; will follow a convention if it is stated where they already are, and invent one if it is not."
@@ -53,7 +56,6 @@
       ],
       "skills": [
         "content-validate",
-        "milnor-exposition-standard",
         "voice-authoring-guidance"
       ],
       "persona": "Author plus the authority to accept. Sees QA findings and decides which are real. Under time pressure and accountable for what lands, so they need the evidence before the argument."
@@ -71,7 +73,6 @@
         "content-feedback",
         "content-review",
         "decision-audit",
-        "milnor-exposition-standard",
         "narrative-asserts-code",
         "rendered-impact",
         "staging-review",
@@ -108,7 +109,6 @@
         "adjudication",
         "content-feedback",
         "content-review",
-        "milnor-exposition-standard",
         "translation-manager",
         "uses-editorial-review",
         "voice-editorial-review",
@@ -384,11 +384,14 @@
         "decision-audit",
         "deletion-requires-confirmation",
         "delivery-summary",
+        "directory-conventions",
         "feature-staging",
+        "folio-init",
         "gate-tree-mutation",
         "github-state-inspection",
         "graph-detanglement",
         "issue-working",
+        "kg-affordances",
         "library-ingestion",
         "methodology-adoption",
         "opening-brief",
@@ -458,7 +461,7 @@
     {
       "id": "sibling-session",
       "title": "Sibling session",
-      "description": "Another agent or human working the same store. Present in bean-lifecycle precisely to mark what is NOT yours to close.",
+      "description": "Another agent or human working the same store. Present in bean-open (Process_BeanOpen) precisely to mark what is NOT yours to close.",
       "actorKinds": [
         "agent"
       ],
@@ -541,6 +544,7 @@
       "skills": [
         "content-test",
         "content-validate",
+        "kg-affordances",
         "qa-reports"
       ]
     },
@@ -553,17 +557,6 @@
       ],
       "skills": [
         "getting-started"
-      ]
-    },
-    {
-      "id": "lean-toolchain",
-      "title": "Lean toolchain",
-      "description": "Elaborates and checks the formal half of a paper folio. Answers only what Lean can answer.",
-      "actorKinds": [
-        "system"
-      ],
-      "skills": [
-        "lean-toolchain-contract"
       ]
     },
     {
@@ -609,6 +602,7 @@
         "system"
       ],
       "skills": [
+        "kg-affordances",
         "kg-subscription",
         "materialize-remote"
       ]
@@ -766,8 +760,6 @@
       ],
       "skills": [
         "canonical-watcher",
-        "compute-integration-watcher",
-        "detangler-integration-watcher",
         "devils-advocate-watcher",
         "one-voice-integration-watcher",
         "integration-watch",

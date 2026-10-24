@@ -223,12 +223,13 @@ bootstrap an initial set by scanning for issues:
 
 ## Integration with Other Skills
 
+A content type's own skills are named by the layer that ships the type (for a paper folio, the science layer), which links down to this skill; this table does not name them.
+
 | Skill | Integration |
 |-------|-------------|
 | `editor` | Session start triage includes feedback check |
-| `formalizer` | Creates feedback when formal-layer gaps need attention |
-| `proof-status-tracking` | Feedback tracks formalization gaps |
-| `content-validation` | Validation errors seed feedback |
+| A content type's formalization skills | Create feedback when formal-layer gaps need attention, and track those gaps |
+| A content type's validation skill | Validation errors seed feedback |
 | `scientific-accuracy` | Review comments become feedback |
-| `proof-triage` | Formal-layer gap stubs generate high-priority feedback |
-| `content-block-review` | Cross-reference issues become feedback |
+| A content type's gap-triage skill | Formal-layer gap stubs generate high-priority feedback |
+| A content type's block-review skill | Cross-reference issues become feedback |

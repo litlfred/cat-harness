@@ -34,7 +34,7 @@ export default toolFactory((t) =>
       ],
       outputs: [{ name: "report", schema: t("Markdown"), description: "What was written, or what would have been under --dry-run." }],
     },
-    satisfies: ["repo-conversion", "getting-started"],
+    satisfies: ["repo-conversion", "getting-started", "folio-init"],
     requires: { network: false },
   }),
 );

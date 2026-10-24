@@ -522,7 +522,7 @@ forge-neutral; only their invocations are not.
 generically; Tool nodes, one per forge operation, carry the invocations and
 name the skills they satisfy. Adding GitLab is more Tool nodes against the
 same skills — not a repository, not a fork, not a rewrite. The SOP is
-[`skills-and-tools`](../../../skills/folio-core/skills-and-tools.md); the Tool
+[`skills-and-tools`](../../../skills/tools/folio-core/skills-and-tools.md); the Tool
 schema is the strawperson above, whose `satisfies` field is exactly this edge.
 
 The two consolidations also considered — `repo-conversion` into

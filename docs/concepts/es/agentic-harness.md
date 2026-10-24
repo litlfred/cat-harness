@@ -394,7 +394,7 @@ con sus fuentes autorizadas.
 | Comportamiento | Habilidad / documento de origen | Ubicación |
 |---|---|---|
 | Barrido de inicio de sesión | `AGENTS.md § At session start` | [`AGENTS.md`](../../../AGENTS.md) |
-| Protocolo de beans | `todo-manager.md`, `bean-coordination.md` | [`skills/folio-core/`](../../../skills/folio-core/) |
+| Protocolo de beans | `todo-manager.md`, `bean-coordination.md` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 | Disciplina de commits y PR | `AGENTS.md § Commit early, commit often` | [`AGENTS.md`](../../../AGENTS.md) |
 | Detección de solicitudes de funcionalidad | `crdm-detect.md` | [`skills/sdlc/crdm/crdm-detect.md`](../../../skills/sdlc/crdm/crdm-detect.md) |
 | Flujo de trabajo de requisitos CRDM | `crdm-requirements-workflow.md` | [`skills/sdlc/crdm/crdm-requirements-workflow.md`](../../../skills/sdlc/crdm/crdm-requirements-workflow.md) |
@@ -402,9 +402,9 @@ con sus fuentes autorizadas.
 | Autoría de contenido (document) | habilidades folio-document-adapter | `skill_list` → `folio-document-adapter` |
 | Ciclo de vida de contenido | habilidades content-lifecycle | [`skills/authoring/content-lifecycle/`](../../../skills/authoring/content-lifecycle/) |
 | Ingesta de documentos | `docs-generation.md` | [`skills/ui/ui-core/docs-generation.md`](../../../skills/ui/ui-core/docs-generation.md) |
-| Despacho y coordinación | `dispatch-agent.md`, `coordinate.md` | [`skills/folio-core/`](../../../skills/folio-core/) |
+| Despacho y coordinación | `dispatch-agent.md`, `coordinate.md` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 | Tipos de contenido y adaptadores | `AGENTS.md § Content types` | [`AGENTS.md`](../../../AGENTS.md) |
-| Autoría de diagramas BPMN | habilidad `bpmn-authoring` | [`skills/folio-core/`](../../../skills/folio-core/) |
+| Autoría de diagramas BPMN | habilidad `bpmn-authoring` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 
 **Cuando una habilidad y esta página discrepen, la habilidad prevalece.** Esta página es una
 consolidación, no una nueva autoridad. Si encuentras una discrepancia, corrige esta página.

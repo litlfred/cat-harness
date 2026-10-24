@@ -45,7 +45,7 @@ git rev-parse "origin/<BRANCH>" > "/tmp/_watch_baseline_${SAFE_BRANCH}.sha"
 ```
 
 For PR mode, instead capture the latest PR head SHA: read PR N with the
-*read change proposal* [forge-operation Tool](../../folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each) and stash its head commit SHA.
+*read change proposal* [forge-operation Tool](../../tools/folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each) and stash its head commit SHA.
 
 ## 2.  Arm the watcher
 

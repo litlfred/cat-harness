@@ -79,12 +79,25 @@ per-target budgets:
 | Antigravity per-agent skill | `.agents/skills/<agent>-memory/SKILL.md` (+ `detail/<slug>.md`) | nodes referencing `<agent>` or agent-less | 24,000 bytes |
 | Antigravity workspace rule | `.agents/rules/agent-memory.md` | all agents, grouped under `## <agent>` | 24,000 bytes |
 | Repo-wide `AGENTS.md` | `AGENTS.md` (`<!-- cat-harness:agent-memory:begin/end -->`) | live **agent-less** nodes (`tags.references` has no `kind: "agent"`) | 32,768 bytes (32 KiB) |
+| Gemini CLI per-agent | `.gemini/agents/<agent>.md` | the Claude agent's prompt + nodes referencing `<agent>` or agent-less | 32,768 bytes |
+| OpenAI Codex per-agent | `.codex/agents/<agent>.toml` (`developer_instructions`) | same | 32,768 bytes |
+| Cursor per-agent | `.cursor/agents/<agent>.md` | same | 32,768 bytes |
+| GitHub Copilot per-agent | `.github/agents/<agent>.agent.md` | same | 30,000 characters (vendor limit) |
 
 **Agent-less nodes feed the repo-wide `AGENTS.md` section** when `AGENTS.md`
 opts in with memory markers (`missing` and `no-markers` remain distinct third
-states). Vendor-specific per-agent targets for Gemini CLI, OpenAI Codex CLI,
-Cursor and GitHub Copilot remain parked (`4682`, `5zs1`, `uvfs`, `xxh4`); those
-tools read `AGENTS.md` natively.
+states).
+
+**Only Claude has per-agent memory; the other hosts get a whole definition.**
+Gemini CLI, Codex, Cursor and Copilot read per-agent *definition* files whose
+body is the prompt (`4682`, `5zs1`, `uvfs`, `xxh4`). So each
+`.claude/agents/<agent>.md` is projected into one file per host: its prompt,
+then its memory nodes inline, because imports are not portable. Tools map only
+where the host documents an equivalent. Cursor also reads `.claude/agents/`,
+but `.cursor/` wins on a name clash, which is why Cursor still gets its own
+file: the Claude copy carries no memory. An agent with memory but no
+definition gets no file and is reported `no-definition`. The formats and their
+sources are in the header of `cat-harness-tools/scripts/agent-memory-vendors.ts`.
 
 **Byte-budgeted targets drop whole nodes lowest-priority first, never mid-entry.**
 When a target exceeds its byte budget, the assembler drops `baseline` before
