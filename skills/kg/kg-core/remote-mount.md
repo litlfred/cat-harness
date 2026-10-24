@@ -101,14 +101,26 @@ index-config:migrate --write` moves the entries across.
 `overrides` is keyed by instance name, then by directory id:
 
 - `path` moves an instance.
-- `directories` replaces its default list. An id the instance does not declare
-  is refused, not dropped.
+- `directories` replaces its default list. An id may be one the instance
+  declares in its `<name>.json` **or from within** one of those directories
+  (a `"subgraph": true` entry of `skills/skills.json`, such as `voices`);
+  both are resolved at the pin through `instanceDirectories`, the resolver
+  every on-disk reader uses (bean `mo75` G3, after `2j2r`). A nested id mounts
+  its own path alone. An id declared in neither place is refused, not dropped,
+  and the refusal says where it looked. The same holds for the harness's own
+  `mountDefaults.directories`.
 - `skip` leaves it unmounted, and the lock records it as an answer.
 - `hydrated: true` (here, or on the entry for its harness) mounts each chosen
   directory as one file: its published `index.hydrated.jsonld` at the pin, a
   `hydrated` source (bean `mo75`). Read what is there, then choose what to
   mount as files. No declaration is laid down, and `needs` is not followed.
-  Where that file comes from is the next section.
+  Where that file comes from is the next section. With no `directories`, a
+  hydrated mount offers **every** top-level in-checkout subgraph and ignores
+  `mountDefaults.directories` on purpose: that list chooses which FILES a
+  downstream gets, and a hydrated mount is the step before choosing ("hydrated
+  metadata first, then a chosen set"). Each top-level file already carries its
+  nested subgraphs inline (`hasSubgraph`), so a nested one is named only when
+  you want it on its own.
 
 ## Hydrated: the index files are published per pin, in a package
 
