@@ -110,6 +110,9 @@ index-config:migrate --write` moves the entries across.
   and the refusal says where it looked. The same holds for the harness's own
   `mountDefaults.directories`.
 - `skip` leaves it unmounted, and the lock records it as an answer.
+- `tools` names Tools this instance declares, by id, and mounts each one
+  **runnable**: its definition, its implementation and their import closure.
+  The next section but one says what that brings.
 - `hydrated: true` (here, or on the entry for its harness) mounts each chosen
   directory as one file: its published `index.hydrated.jsonld` at the pin, a
   `hydrated` source (bean `mo75`). Read what is there, then choose what to
@@ -157,6 +160,67 @@ fetched is `could-not-determine`. Neither is ever an empty mount. The record
 travels with the tarball, so its digest proves the transfer, not the
 publisher: who may publish is the repository's write access, the same trust
 the git tree at the pin already rests on.
+
+## Tools: choose by id, mount runnable
+
+The owner's workflow (bean `mo75`): load the Tools' metadata, review it,
+then materialise a chosen set. The first step is a hydrated mount of the
+declaring instance's `tools` directory. Its `index.hydrated.jsonld` holds every
+Tool whole, and each Tool is its own `tools/<id>/` subgraph. The last step is
+`tools` on that instance's override:
+
+```json
+"overrides": { "cat-harness": { "tools": ["bean-query", "bpmn-checklist", "agent-memory"] } }
+```
+
+Owner, 2026-10-24 (decision card on cat-harness-tools#744, all four as
+recommended). Three of the rulings govern this step:
+
+1. **A Tool brings both halves.** Its **definition** is
+   `<tools dir>/<id>/<id>.ts` in the instance that declares it, by the folder
+   convention in `schemas/tool-folders.ts`. Its **implementation** is what its
+   `invoke` names:
+   - `inProcess.module`, found in the declarer or in an instance whose `needs`
+     names it (`resolveImplementingPath`'s rule; two holders is refused);
+   - the script a `bun run cat <key>` command resolves to through the
+     instances' `checkoutScripts`.
+
+   A bare runtime command (`gh`, `beans`) or `manual` brings no code. Both
+   halves arrive **with their import closure**. A definition without its code
+   is not a Tool you can run, and code without the modules it imports does
+   not load: either way the checkout is half-working.
+2. **One closure walker.** The closure is bootstrap-tools' `importClosure`
+   (`scripts/check-closure.ts`). `check:tools-closure` and the staging cone
+   use the same walk. Do not write a second walker: two of them give two
+   answers to "what does this code load".
+3. **Directory granularity.** The mount brings every **declared** directory
+   the closure touches, whole. It takes the most specific declared directory
+   (a nested one such as `skills/voices` mounts alone) and never a single
+   file, so the lock schema is unchanged. A closure file in no declared
+   directory, and an import that resolves to nothing, are refused with the
+   file named. Neither is ever dropped.
+
+With `tools` named anywhere in a mount entry, each instance of that entry
+mounts the directories the closure touches, plus any its override names in
+`directories`. It does **not** mount its default list. A `whole` instance
+stays whole. A Tool id the instance does not declare at the pin is refused at
+plan time. `tools` together with `hydrated` is refused, because metadata
+brings no code.
+
+**What it costs, measured** on cat-harness main (2026-10-24). A Tool folder is
+not a declared directory: `tools/` is, and most definitions import its
+`lib.ts`. So a definition arrives with the whole `tools` directory, which
+holds every Tool's definition (about 170 folders, all of which load from
+`tools` + `schemas`). The cost that matters falls on the implementation side:
+
+| Tools | cat-harness | cat-harness-tools | bootstrap-tools |
+|---|---|---|---|
+| `bean-query` | `schemas`, `tools` | `scripts`, `src` | whole |
+| `agent-memory` | `schemas`, `tools` | `scripts` | whole |
+
+Without `tools`, cat-harness-tools mounts every in-checkout directory it declares.
+The end-to-end check is the `remote-mount` test "load tools metadata, choose
+three Tools, materialise them" in cat-harness-tools.
 
 ## Why the default path is the home path
 
