@@ -248,6 +248,7 @@ export type SubgraphHydrated = z.infer<typeof SubgraphHydratedSchema>;
  * root, and published, relative to the base URL — the same path for both,
  * beside `ns/content/v1.jsonld`.
  */
+// declared-path-literal: this constant DEFINES the published, dereferenceable IRI path of the context; it is fixed by that URL, not by where the `ns/` declaration points.
 export const SUBGRAPH_CONTEXT_PATH = "ns/subgraph/v1.jsonld";
 
 /** The two file names under every subgraph IRI. The root has the first only. */
