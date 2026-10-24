@@ -1,11 +1,12 @@
 ---
 # folio-assistant-rnfl
-title: 'Phase I.3 — rename `content/` → `folio/` (2,408 occurrences, 429 files) (#223)'
-status: todo
+$schema: bean/1.0.0
+title: Phase I.3 — rename `content/` → `folio/` (2,408 occurrences, 429 files) (#223)
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-18T15:00:27Z
-updated_at: 2026-09-18T15:00:27Z
+updated_at: 2026-10-21T18:55:00Z
 parent: folio-assistant-vke6
 ---
 
@@ -104,3 +105,37 @@ now that `folio/` is taken and the directory holds docs + pipeline rather than
 content — which is a design question with the owner, not a rename. **No files
 were renamed and no code was changed**, per the standing rule against
 speculative changes without the author's consent.
+
+## Owner ruling (2026-10-10, drain session ml9h)
+
+**Split.** cat-harness/content/ does not become folio/: its docs move to docs/ and its pipeline code to pipeline/, beside their siblings. Now workable.
+
+## Split plan 2026-10-12 (lane C proposal, under the owner's ruling "split")
+Measured: cat-harness no longer has `content/`. What remains is cat-harness-tools `content/pipeline/` (163 files) → `pipeline/`, plus every reference to it. Consumers import it by relative path, so a package `exports` alias would not cover them.
+
+One PR per line, in this order:
+1. tools: the move (`git mv`, internal refs, `cat-harness-tools.json`, package.json scripts), plus a transitional undeclared symlink `content/pipeline -> ../pipeline`.
+2. tools: scripts/tests and test/coordinator.
+3. tools: the rest of scripts/, src, adapters, schemas, templates.
+4. cat-harness: skills, translations, tools/index.ts, schemas; then regenerate test/results.
+5. core.
+6. sci.
+7. smart-ra.
+8. folio-assistant (lane A).
+9. tools: remove the symlink, and add a guard that fails on any `content/pipeline` literal. This includes the dh4f gate: a synthetic-folio run proving each moved tool still reads a non-empty corpus.
+
+Risk to check in PR 1: whether check:declared-paths and check:undeclared-files accept the undeclared symlink, and whether realpath discovery double-counts it. If either breaks, the fallback is to land PRs 1–8 together in one window with a single re-pin.
+
+## Progress 2026-10-12 15:3x (lane C)
+PR 1 of 9 is merged: cat-harness-tools#146 (c4efa71). `content/pipeline` became `pipeline/`, together with all tools-internal references (planned PRs 2 and 3 folded in, because tsc does not follow a symlinked directory for relative imports), plus the transitional symlink. Next: cat-harness, core, sci and smart-ra (lane C); folio-assistant (lane A).
+
+## Progress 2026-10-12 16:0x (lane C)
+- Merged: cat-harness#170 (71 files), core#69 (dfeb2b4), sci#17 (62c4b29). All now name `cat-harness-tools/pipeline/` and must be pinned together with tools ≥ c4efa71.
+- smart-ra#46 is a draft. It waits for smart-ra's own tools pin to reach ≥ c4efa71.
+- Left on `content/pipeline` on purpose, until the final symlink-removal PR: input-site globs, translations and translation-workflow.bpmn (which feed the .pot templates), generated pages, and init-folio templates.
+- folio-assistant (lane A): the root references are rewritten to `cat-harness-tools/…` by the re-pin (#2529). The `content/pipeline` → `pipeline` step follows #2529, and the symlink covers the gap.
+
+## Closed 2026-10-21
+All 9 steps of the split plan under the 2026-10-10 owner ruling ("Split") are merged and live on `main`:
+- `cat-harness-tools#146` (`c4efa71`), `cat-harness#170`, `folio-assistant-core#69` (`dfeb2b4`), `folio-assistant-sci#17` (`62c4b29`), `fhir-harness#87` (`918fc1e8`) & `#118` (`dc057a26`), `who-iris#76` (`2032043b`), `folio-assistant#2608` (`bb61e9b6`), `cat-harness-tools#461` (`8408cbcc`), and final symlink + directory-declaration removal `cat-harness-tools#473` (`1776c9cc`, re-pinned in `folio-assistant#2611`).
+- Verified on `main` (`3d586f5794`): `cat-harness/content` and `cat-harness-tools/content` are both absent (`cat-harness/docs/source/` holds the 14 doc subgraphs; `cat-harness-tools/pipeline/` holds the pipeline code), and `remote-mount-gaps.test.ts` and `check-command-paths.test.ts` pass.

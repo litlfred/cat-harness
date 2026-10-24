@@ -2,11 +2,11 @@
 # folio-assistant-jbvi
 $schema: bean/1.0.0
 title: 'LIBRARY NODES: outside libraries the platform uses become graph nodes'
-status: todo
+status: in-progress
 type: feature
 priority: normal
 created_at: 2026-10-24T07:53:21Z
-updated_at: 2026-10-24T07:54:28Z
+updated_at: 2026-10-24T08:26:00Z
 parent: folio-assistant-zzmr
 ---
 
@@ -40,3 +40,9 @@ Session https://claude.ai/code/session_01FUCxDH4Xeea4eUzZ5TaPL5.
 What is NOT covered is a library that code IMPORTS rather than RUNS, installed by a package manager: bpmn-moddle, dmn-moddle, katex, playwright. Those appear only in `package.json`, `THIRD-PARTY-NOTICES.md` and type shims.
 
 The likely answer is therefore not a new kind but an extension of `tool-release`: role `library` and kind `npm-package` (or `pip-package`), with the type shim, where one exists, as a field. The proposal must weigh that against a separate kind.
+
+_2026-10-24_ — CLAIMED by the library viewers thread (session https://claude.ai/code/session_01LM4btvYuBEuq57QqgwCrtu). The proposal is written (/mnt/project-files/library-nodes/jbvi-proposal.md) and the owner was asked to choose A (extend tool-release), B (new generated `library` kind, recommended) or C (hand-declare a few). Nothing is built.
+
+_2026-10-24 08:25Z_ — OWNER CHOSE D ("Shared core"), after asking to merge A and B. One core schema (name, version, SPDX licence, digest, source) is shared by `tool-release` (rules unchanged: sha256 and entry still required) and a new `library` kind (core plus range, dev, used-by and type shim). Library nodes are generated from each layer's bun.lock by `libraries:derive` and gated by `libraries:check`; a library digest may be sha512. Proposal: /mnt/project-files/library-nodes/jbvi-proposal.md. Building in the library viewers thread.
+
+_2026-10-24 12:35Z_ — BUILT AND MERGED. cat-harness#523 (3941401): shared core `schemas/outside-software.ts`, `tool-release` extends it unchanged, new kind `software-library` (tag `software-library/1.0.0`). cat-harness-tools#714 (51b9583): `libraries:derive` and `libraries:check`, 44 nodes under `cat-harness-tools/libraries/`. Remaining as follow-ups: re-pin folio-assistant and name `libraries:check` in `code-quality-gates.yml` (then drop the tools `OWN_SCRIPT_EXEMPTIONS` entry); generate `libraries/` in cat-harness, bootstrap-tools, fhir-harness, folio-assistant-sci, folio-assistant-core and who-iris (the last two need a bun.lock first).

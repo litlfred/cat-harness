@@ -1,11 +1,12 @@
 ---
 # folio-assistant-m4s1
+$schema: bean/1.0.0
 title: 'TRANSLATION CATALOGUES: 36 (locale, page) .po files must be AUTHORED — the templates now exist, nobody has been ASKED, and #1399 is held on it'
-status: todo
+status: completed
 type: bug
 priority: normal
 created_at: 2026-09-26T16:58:29Z
-updated_at: 2026-10-16T10:30:00Z
+updated_at: 2026-10-21T19:35:00Z
 parent: folio-assistant-bzyu
 ---
 
@@ -99,19 +100,33 @@ list — the same act as quarantining a test.
 
 ## Done when
 
-- [ ] the owner has chosen between (a) agentic unofficial `.po` authored from the
+- [x] the owner has chosen between (a) agentic unofficial `.po` authored from the
       `.pot`, pending their sign-off, and (b) waiting for human translation.
       MEASURED AFTER: the choice is recorded here in their words, with a date
-- [ ] if (a): the catalogue agrees with a stated one of {the `.pot`, the
+- [x] if (a): the catalogue agrees with a stated one of {the `.pot`, the
       published page}, and which one is recorded. Not left to whichever the tool
       happened to produce
-- [ ] `bun run cat translation:drift:check` exits 0 with `UNCATALOGED` no longer than
+- [x] `bun run cat translation:drift:check` exits 0 with `UNCATALOGED` no longer than
       it is today. MEASURED AFTER: the count of `UNCATALOGED` entries before and
       after are equal
-- [ ] PR #1399 is unblocked — it is held on this bean by the owner's decision of
-      2026-09-26 and on nothing else; 2 of 162 gates red, both this one cause
+- [x] PR #1399 is unblocked — it is held on this bean by the owner's decision of
+      2026-09-26 and on nothing else; 2 of 162 gates red, both this one cause (PR #1399 merged at `a2b03050c2`, and `litlfred/cat-harness#379` + `litlfred/cat-harness-tools#469` are merged and re-pinned on `folio-assistant` `main` via `#2611` `674a1b8113`; `bun run cat translation:drift:check` exits 0 with 0 newly drifted)
 
 
 _2026-09-29_ — **Re-parented `1xhc` → `bzyu`** by subject, per todo-manager §"WHICH parent" (owner choice '1 2 3' on the LSI epic-filing proposal, bean ansc). The work is authoring .po catalogues; the red PR it holds is the symptom, not the subject.
 
 _2026-10-16T10:30:00Z_ — Dead block removed: `blocking: tbdg`, which is already closed. Recorded on the `fsh-guts` state branch (`retired/bean-blocks-2026-10-16.md`) (owner choice, https://claude.ai/code/session_01NUrhvvMEwU5MmPW4L2w9jP).
+
+## OWNER, 2026-10-20 (session https://claude.ai/code/session_01BiusQ9uAZiHP6TUhfwZ2h6)
+
+Chose **(a) agentic unofficial `.po` authored from the `.pot`, pending their sign-off** ("Agent, unofficial (Recommended)" in a structured question that stated: marked unofficial until sign-off; clears the drift gate and unblocks #1399). Box 1 ticked by this note.
+
+## 2026-10-20 — catalogues written (drain coordinator, session https://claude.ai/code/session_01BiusQ9uAZiHP6TUhfwZ2h6)
+
+litlfred/cat-harness#379 (commit 62b4b445): seven unofficial `.po` (`X-Folio-Official: no`) — es/zh agent-onboarding, ar architecture, ar/zh skills, ar/zh publication-workflow — plus four refreshed and two new `.pot`. litlfred/cat-harness-tools#469: `UNCATALOGED` 7 → 0. Composed-index checks: `translation:drift:check` exit 0, uncatalogued 17 → 10 (the remaining 10 are glossary pages, a different mechanism); pot/obsolete/catalogue/officiality checks pass; 259 translation tests pass.
+
+- Box 2: the catalogues agree with the **`.pot`** (current source segmentation); recorded in every file header.
+- Box 3: holds — the register is shorter (7 → 0), not longer.
+- Box 4 (#1399): to re-check once both PRs merge and are pinned.
+- msgctxt: page catalogues cannot carry it (`po-inject.ts parsePo` keys by msgid); first rendering kept, the other noted on the entry (zh/skills 1, publication-workflow 5 each).
+- Found: `translation:pot:check` misses page `.pot`s in subfolders once a `.po` exists — that is how four went stale unseen.

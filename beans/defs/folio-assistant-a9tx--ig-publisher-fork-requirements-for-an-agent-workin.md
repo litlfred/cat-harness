@@ -1,11 +1,12 @@
 ---
 # folio-assistant-a9tx
+$schema: bean/1.0.0
 title: 'IG PUBLISHER FORK: requirements for an agent working a local experimental fork, and what the AST must carry'
-status: todo
+status: completed
 type: feature
 priority: normal
 created_at: 2026-09-22T19:07:23Z
-updated_at: 2026-10-23T14:20:00Z
+updated_at: 2026-10-24T11:25:00Z
 parent: folio-assistant-uhkv
 ---
 
@@ -39,13 +40,13 @@ the logic layer**. Re-derive these before quoting them.
 
 ## What the AST must carry, as acceptance criteria
 
-- [ ] per-resource structured dump, keyed by canonical URL and version
-- [ ] **dependency edges among Library / PlanDefinition / Measure** — the gap above
-- [ ] page-fragment provenance: which source produced which output fragment
-- [ ] the resolved dependency closure with pinned versions
-- [ ] terminology expansion provenance — which server, which version
-- [ ] a `toolchain` object: publisher version, core version, SUSHI version
-- [ ] emitted behind a flag; default behaviour byte-identical without it
+- [x] per-resource structured dump, keyed by canonical URL and version. smart-immunizations has 748 resources and 748 unique keys; the 36 examples without a canonical are keyed `Type/id` (measured: bean qzex round 2, `ast-results/2026-10-23-r2` @ `2aa23dd`, tx.fhir.org)
+- [x] **dependency edges among Library / PlanDefinition / Measure** — the gap above. 458 of 458 have a logic edge in either direction (owner's reading, 2026-10-23) (measured: bean qzex round 2, `ast-results/2026-10-23-r2` @ `2aa23dd`, tx.fhir.org)
+- [x] page-fragment provenance: which source produced which output fragment. At fragment level (owner, option A): `pages.json` holds 12931 fragments and 5691 pages, 5029 of them written by a source. The 660 pages with no fragments are the self-contained `comparison-v1.0.0/` pages. 106 includes built from a variable are counted, not resolved (measured: bean w3r2, `ast-results/2026-10-24-w3r2` @ `d646b97`, fork `ce950d2`)
+- [x] the resolved dependency closure with pinned versions: manifest `packages`, 17 packages, the same in the incremental and full builds (measured: bean w3r2, `ast-results/2026-10-24-w3r2` @ `d646b97`, fork `ce950d2`)
+- [x] terminology expansion provenance — which server, which version: manifest `terminology`, tx.fhir.org/r4 0.17.0 and 192 expansions. 2 carry `used-codesystem`, and 190 list `codeSystems` from their codes. The same in the incremental and full builds (measured: bean w3r2, `ast-results/2026-10-24-w3r2` @ `d646b97`, fork `ce950d2`)
+- [x] a `toolchain` object: publisher version, core version, SUSHI version. Recorded as publisher 3.0.0, core 7.0.1, SUSHI 3.20.1, java 21.0.3 (measured: bean qzex round 2, `ast-results/2026-10-23-r2` @ `2aa23dd`, tx.fhir.org)
+- [x] emitted behind a flag; default behaviour byte-identical without it. Met by construction, since a separate launcher changes no Publisher code. Its output vs stock smart-trust: 4080 files differ, every one being XML/Turtle (excised), a timestamp, a per-run UUID, timing, the working-directory path, or the entry-point frame in 5 stack traces. **0 semantic differences** (measured: bean qzex round 2, `ast-results/2026-10-23-r2` @ `2aa23dd`, tx.fhir.org)
 
 ## Which repositories
 
@@ -61,8 +62,8 @@ this environment.
   are invalid until a full run. Anything reading it says so.
 
 ## Done when
-- [ ] the requirements above are approved by the owner
-- [ ] a brief exists an agent can start from without this bean's context
+- [x] the requirements above are approved by the owner (decision cards 2026-10-23/24; closed by the owner 2026-10-24, option A)
+- [x] a brief exists an agent can start from without this bean's context: the fork README, `litlfred/fhir-ig-publisher` `claude/ast-export` `ast-export/README.md`
 
 
 
@@ -109,10 +110,10 @@ What already exists, all in the publisher:
 
 Work plan, each step small and upstreamable:
 
-- [ ] **W1** criteria 7, 1, 6: flag, `AstExporter`, per-resource dump, toolchain are BUILT; the byte-identical check and a real-IG run are **not yet measured** (both need the package registry)
-- [ ] **W2** criterion 2 — measure on smart-immunizations: 458 of 458, cross-checked against `fsh-cone`'s source count
-- [ ] **W3** criteria 4, 5
-- [ ] **W4** criterion 3 — scoped separately; the only step needing the core fork
+- [x] **W1** criteria 7, 1, 6 (round 2 of qzex measured them; see the criteria above): flag, `AstExporter`, per-resource dump, toolchain are BUILT; the byte-identical check and a real-IG run are **not yet measured** (both need the package registry)
+- [x] **W2** criterion 2 — measure on smart-immunizations: 458 of 458, cross-checked against `fsh-cone`'s source count. That gives Library 279 = 279 `.cql` files in fsh-cone (2026-10-23), PlanDefinition 138, Measure 41. `ig-ast.ts validity` returns `valid` on both IGs (measured: bean qzex round 2, `ast-results/2026-10-23-r2` @ `2aa23dd`, tx.fhir.org)
+- [x] **W3** criteria 4, 5. PASSED in bean `w3r2` (fork `ce950d2`): `packages` and `terminology` are filled, and the incremental and full builds match.
+- [x] **W4** criterion 3, at fragment level (owner, 2026-10-24, option A). PASSED in bean `w3r2`: `pages.json` is filled in the base, incremental and full builds, and the incremental and full builds match (0 differences). Element level is out of scope.
 
 Not started: this session has read access only, and Maven/JDK availability is
 unchecked. The owner chose to record the plan first (2026-09-30).
@@ -155,11 +156,8 @@ based on delta file changes... then add in the changed files and recompute AST"*
 
 - [x] **W5** delta → resources
 - [x] **W6** cone (forward = rebuild, backward = load) and decision
-- [~] **W7** rebuild, BUILT but **not run end to end** (fork `638e9af`, 19 unit tests). First choice: pack `loadFromCache` as a local NPM package and run
-      the stock Publisher on a temporary IG holding only `rebuild`. The cone is
-      computed on base edges, so recompute it after the rebuild and repeat until it
-      stops growing.
-- [ ] **W8** diff a full build against the incremental AST, plus the threshold
+- [x] **W7** rebuild, PASSED in round 6 (bean `w7r6`, fork `8c2d917`): both probes converged in 1 round, exit 0. The fpmn round (2026-10-23) was decided `full` both times: the guard, and a base built over 202 leftover template pages. Fork `140e494` adds `-verify-incremental` (owner, option A). Round 2 (bean `wv7r`) acted on an incremental plan for the first time; its temporary IG failed in Jekyll (no `menu.xml`), fixed in `e3c7119` and `d2d4bfe`. Round 3 (`w7r3`) converged in 1 round for both probes; the W8 review (bean `w8rv`) found two causes of difference, fixed in `72b2ba9` and `3896c6c`. Round 4 (`w7r4`) matched the full build in content and edges; only narrative links to cached resources differed, fixed in `6abb8a5`. Round 5 (`w7r5`) crashed in that fix, fixed in `cf45726` and `8c2d917`.
+- [x] **W8** diff a full build against the incremental AST, plus the threshold. PASSED in round 6: on both probes the diff is noise only, the same 649 date and temp-file changes that two full builds show; 0 edges and 0 resources added or removed. Both cones were under the 40% threshold (cql 11.2%, fml 0.3%).
 
 
 ## W7 built, 2026-09-30, untested end to end
@@ -366,4 +364,150 @@ This is an invariant across **all** phases, not just P0's exit criterion. Whatev
 
 **Open tension, put to the owner:** P2 as approved drops XML/Turtle ("recorded as a refusal"). Under this invariant, a refused representation is a difference from the standard render.
 
-_2026-10-23T14:20:00Z_ — **The open P2 tension is settled.** Owner, 2026-10-23: *"excise XML and ttl everywhere for now"*. So dropping XML and Turtle is not a difference the "render equivalent to the standard IG render" invariant counts. fhir-harness branch `claude/excise-xml-ttl-links` (69344b4) also stops linking the Publisher's `.xml` and `.ttl` copies. Thread "FHIR beans and WHO migration" (https://claude.ai/code/session_01Bye99WLJxQpyCxh2eMgW19).
+## First real builds, 2026-10-23
+
+Session https://claude.ai/code/session_01UWbMcgvAqQvoE7H4hrB5nG. **Nothing has been measured yet**, so no box is ticked.
+
+- The mirror `litlfred/fhir-package-mirror` exists, at `eead24e`. Seeding from it plus npm reports 0 missing for both IGs' declared dependencies.
+- Fork `claude/ast-export` `1b23e27`: the seeder now keeps a repo template's own layout, and `run-real-igs.sh` gains `--no-tx`. 58 Java tests and 17 seeder tests pass, and fhir-harness `ig-ast` has 25 passing tests.
+- Both IGs get through SUSHI (0 errors) and the template load. They then stop on packages the Publisher loads by itself. Bean `53rv` is fetching them on the owner's device. What these packages are is recorded in the `ig-publisher-fork` skill (fhir-harness#121), not here.
+- **Owner, 2026-10-23:** build *with* a terminology server, so a `-tx n/a` run is diagnostic only. XML and Turtle are excised everywhere for now. That settles the P2 tension above, and the byte-identical check (W1) leaves those representations out.
+- **Open, put to the owner:** the Publisher warns that `fhir.base.template` is *"no longer considered secure"*. It cites the fhir.org security notice `2026-03-npm-dependencies`, which cloud sessions can't fetch. This conflicts with the 2026-10-01 trust ruling.
+- **Next:** the builds must run where `tx.fhir.org` is reachable. That means the owner's device (Remote Control), unless the network policy changes. Then do Step 1 of the HANDOVER.
+
+## Measured, round 1 of bean qzex (2026-10-23): what holds and what doesn't
+
+Provenance: bean `qzex`, Results 2026-10-23, branch `ast-results/2026-10-23` of the fork. The
+**AST builds ran without a terminology server** because of a launcher bug, fixed in fork `ebb4bdd`.
+So round 2 of `qzex` is the measurement. No box is ticked on round 1.
+
+- **Step 2, cross-language check:** `ig-ast.ts validity` returns `valid` on both IGs. The input
+  digests were computed in Java on the owner's Mac and recomputed in TypeScript on Linux, and they
+  agree. Inputs don't depend on the terminology server, so this result stands.
+- **W1, layout:** smart-trust has 682 of 682 resources under `fsh-generated/resources/`.
+  smart-immunizations has 732 of 748. The other 16 are StructureMaps from `input/maps/*.fml`.
+  `IncrementalPlan` must map `.fml` sources before W7 can be trusted on that IG.
+- **W1, byte-identical:** 4081 files differ in round 1. Of those, 1504 are `.xml`/`.ttl`
+  (excised) and 316 are timestamps. The other 2261 all come from the launcher bug, so round 2
+  re-measures this.
+- **W2:** 458 of 458 smart-immunizations logic resources have a logic-to-logic edge in either
+  direction. 454 have one going out, and the 4 without are concept libraries. The criterion is
+  the gap of 458 artefacts *"with no dependency edges at all"*, so **either direction** is the
+  reading recorded here, pending the owner.
+- **Security:** the HL7 notice of 17 March 2026 retires `fhir.base.template` in favour of
+  `fhir2.base.template`, and the Publisher will soon refuse to build IGs that depend on the old
+  one. The WHO template `who.template.root` depends on it, so the 2026-10-01 trust ruling needs
+  revisiting.
+
+**Owner, 2026-10-23 (after round 1):**
+- W2 is measured as no isolated logic vertex: an edge in either direction counts. That reading is in the `ig-publisher-fork` skill (fhir-harness#121). Round 1 scores 458 of 458 on it, and round 2 is what gets ticked.
+- The template issue was posted, with the owner's OK, as [WorldHealthOrganization/smart-ig-template#70](https://github.com/WorldHealthOrganization/smart-ig-template/issues/70): move to `fhir2.base.template`.
+- `.fml` sources are covered in the incremental plan (fork `dbfdb03`). Run W7 with `w7-round.sh <work> fml` as well as `cql`, resetting the IG clone to its base revision between probes.
+
+## W7/W8 review of bean fpmn (2026-10-23, `ast-results/2026-10-23-w7w8` @ `eaef931`)
+
+The W7/W8 ticks of commit `c04156be58` are taken back. Both plans were `decision: full`, so no incremental build ran:
+1. `INCREMENTAL_GUARD`, which forces full until W7 passes.
+2. The base AST's `inputDigest` (e199bea) covered 202 placeholder pages in `input/pagecontent/`, left there by an earlier build (the WHO template's post-SUSHI step). The IG does not ignore them. A clean checkout of bd7fa72 digests to 3910eeb. Both values were reproduced exactly on Linux.
+
+`ig-ast.ts diff` (the cloud thread):
+- W7 vs W8, which is full against full on one commit: 649 resources changed, all noise (`*.date`, a temp-file name in the Library narratives, a rendered date in the PlanDefinition narratives). 0 semantic changes, 0 edge changes.
+- Base vs W8 for `cql`: exactly 1 semantic change, `Library/IMMZAgeConcepts` `content[0].data`. It is inside the plan's rebuild set of 41.
+- Base vs W8 for `fml`: 0 semantic changes. The probe added a comment, which compiles away.
+- Side finding: all 279 Library narratives are "Exception parsing generated Narrative ... Unable to Parse" (a liquid template error).
+
+Fixes on the fork, all 64 tests passing:
+- `b4ae1b1`: `inputsNotAtRevision` is recorded and named in the plan's reason. `run-real-igs.sh` resets and cleans its scratch clone. The FML probe renames a rule. `w7-round.sh` runs W8 from a clean tree.
+- `11fcc42`: `IncrementalBuildCli` uses the Publisher's terminology server rule on both branches. Before this, a run without `-tx` had no server at all.
+- `140e494`: `-verify-incremental` (owner, option A). It acts on the plan while the guard stays on, stamps the output `unverifiedIncremental`, and `BaseAstCheck` refuses such an AST as a base.
+
+## W7 round 2 (bean wv7r, 2026-10-23, `ast-results/2026-10-23-w7r2` @ `d195a78`)
+
+- The base was clean: there was no "differ from the committed revision" warning, so `BaseAstCheck` passed.
+- Both plans were computed `incremental`, and `-verify-incremental` acted on them:
+  - `cql`: seeds 1, rebuild 41, load 95, cone 0.055;
+  - `fml`: seeds 1, rebuild 2, load 5, cone 0.003.
+- The cache package was written, the temporary IG was assembled, and the Publisher loaded, validated and generated. Jekyll then failed: `Could not locate the included file 'menu.xml'`, which SUSHI writes to `fsh-generated/includes/`. No AST was exported or merged, and `set -e` stopped the script before W8.
+- `fml` also reported `path '.../input/cql' is not a valid directory`, because no Library was in its rebuild set.
+- `Unknown FHIRTypes code 'Any'` (ELM generation) also appears 139 times in the full base build. It is the IG's or translator's issue, not the incremental path's.
+- Fixes, 65 tests passing:
+  - `e3c7119`: `TempIgAssembler` copies `input/includes/` and `fsh-generated/includes/`, and `w7-round.sh` runs W8 after a failed W7;
+  - `d2d4bfe`: every `path-*` directory exists in the temporary IG.
+- I checked the WHO template's layouts: they include no other static file that the IG supplies.
+
+## W7 round 3 and the W8 review (beans w7r3 and w8rv, 2026-10-24, `ast-results/2026-10-23-w7r3` @ `539c086`)
+
+**W7:** the incremental build converged in 1 round for both probes, and W8 ran (exit 0).
+- `cql`: rebuild 41, load 95, 748 resources merged.
+- `fml`: rebuild 2, load 5.
+
+**W8**, `ig-ast.ts diff`, full against incremental:
+- `fml`: 649 resources changed. All of it is noise (`*.date`, temp-file names in narratives, rendered dates), except 2 StructureMap narratives. Their links to cached resources went to `https://simplifier.net/resolve?scope=<cache package>` instead of `StructureMap-X.html`. 0 edge changes.
+- `cql`: the same noise, plus 39 Measures that lost `contained` (the effective-data-requirements Library) and the `crmi-effectiveDataRequirements` extension. 460 edges were removed, all `relatedArtifact.depends-on` from those requirements.
+
+**Causes and fixes:**
+1. `IMMZIND01Logic` and its siblings name `http://smart.who.int/immunizations/Library/IMMZIndicatorElements`, but that library's url is `.../immunizations-measles/...`. The edge did not resolve, so the cone stopped and the Logic libraries came from the cache. The Publisher compiles a Measure's data requirements only from a library it compiles in the same run (`CqlSubSystem.getLibraryInfo` → `getCqlInfo`, by name). Fixed in `72b2ba9`:
+   - an unresolved edge binds by `Type/name` when the name is unique (`edgesResolvedByName`);
+   - each rebuilt artifact's primary library is compiled with it (`compiledWith`). Such a library does not widen the cone, and the merger seeds no growth from it.
+   On the real full-build AST, the cql probe now plans 84 resources (43 Libraries, 41 Measures), with 82 edges bound by name.
+2. The cache package had no `other/spec.internals`, so the Publisher linked its resources through simplifier.net. Fixed in `3896c6c`: a spec.internals maps each canonical to `Type-id.html`, with an empty package url so the link stays relative. The test drives `SpecMapManager` the way `loadIGPackage` does.
+
+66 tests pass. Round 4 is bean `w7r4`.
+
+**IG finding (WHO content, not changed here):** smart-immunizations' indicator Logic libraries reference `IMMZIndicatorElements` under `.../immunizations/Library/`, but the library is published as `.../immunizations-measles/Library/IMMZIndicatorElements`.
+
+**Tooling note:** `ig-ast.ts diff` reports the noise as changes. Normalising `*.date` and the temp-file names would make W8 read 0 directly. That belongs in fhir-harness, as its own PR.
+
+## W8 review of round 4 (bean w7r4, 2026-10-24, `ast-results/2026-10-24-w7r4` @ `2389671`)
+
+**W7:** both probes converged in 1 round.
+- `cql`: rebuild 84 (43 Libraries, 41 Measures), load 56, 82 edges bound by name.
+- `fml`: rebuild 2, load 5.
+
+**W8**, `ig-ast.ts diff`, full against incremental:
+- **0 edge changes** in both probes.
+- No resource added or removed.
+- The Measures keep their effective data requirements.
+
+What still differs:
+- **Noise**, the same as between two full builds: `*.date`; the temp-file name in the 279 Library narratives ("Exception parsing generated Narrative", the template's liquid error); and the rendered date in 138 PlanDefinition narratives.
+- **Narrative links to cached resources**, in 41 Measures and 2 StructureMaps:
+  - the href was `/ValueSet-X.html` (pathToSpec `""` + `/` + page), not `ValueSet-X.html`;
+  - the library link text showed the canonical, because a dependency's resource resolves through its spec map, which loads content only for examples.
+
+  Fixed in `6abb8a5`, with 67 tests passing. `AstPublisher.checkDependencies` drops the leading `/` from cached web paths before rendering, and `AstPublisher.resolve` adds the cached content, so the name shows.
+
+Round 5 (bean `w7r5`) checks that fix. If round 5 shows nothing but noise, W7 and W8 pass.
+
+## Round 5 (bean w7r5, 2026-10-24, `ast-results/2026-10-24-w7r5` @ `a759fd9`)
+
+Both incremental builds crashed in `AstPublisher.checkDependencies`: `fetchResourcesByType(Resource.class)` refuses to list ValueSets (`java.lang.Error`). The two W8 full builds passed. The plans were as before: cql rebuilds 84 and loads 56 from cache, fml rebuilds 2 and loads 5.
+
+Fixed in `cf45726` and `8c2d917`, with 67 tests passing. The step fetches each cached canonical on its own, and nothing it throws can fail the build. Round 6 is bean `w7r6`.
+
+## Round 6: W7 and W8 pass (bean w7r6, 2026-10-24, `ast-results/2026-10-24-w7r6` @ `38f8557`)
+
+Fork `8c2d917`, 67 tests. Both incremental builds converged in 1 round with exit 0. `checkDependencies` made 250 (cql) and 289 (fml) cached links relative, with no warnings.
+
+`ig-ast.ts diff`, the W8 full build against the incremental AST, for each probe: 0 added, 0 removed, 0 edge changes, 649 changed and 99 unchanged. Every one of the 649 changes is noise. Each is a `*.date`, a `liquid-<uuid>` temp-file name in the Library narratives, or the rendered build time in the PlanDefinition narratives. Once those are normalised, nothing is left. Two full builds on one commit differ in the same 649 (fpmn review), so the incremental build is as good as a full one on these probes.
+
+`INCREMENTAL_GUARD` was lifted by the owner on 2026-10-24 (option A), in fork `1fffc3e`, 67 tests. Incremental is now the default, and a plan that cannot tell still decides `full`. `-verify-incremental` is accepted and ignored, and `w7-round.sh` no longer passes it.
+
+## W3/W4 round 1 (bean w3r1, 2026-10-24, `ast-results/2026-10-24-w3r1` @ `347a251`)
+
+Fork `0c3b0ca`. The base, the incremental build and W8 all exit 0, and the incremental build converged in 1 round.
+- `terminology` is the same in the incremental and full builds: tx.fhir.org/r4 0.17.0 and 192 expansions. Only 2 carry `used-codesystem`.
+- `packages` differed: one cache names core `@hl7/hl7.fhir.r4.core`, the other `hl7.fhir.r4.core`.
+- `pages.json` failed in both full builds (`MalformedInputException`: one page is not UTF-8). The incremental round's own pages.json had 1103 fragments and 588 pages, with 0 unresolved includes.
+
+Fixed in `ce950d2`: pages are read byte for byte, package ids drop the npm scope, and each expansion lists its `codeSystems`. Round 2 is bean `w3r2`.
+
+## W3/W4 round 2: pass (bean w3r2, 2026-10-24, `ast-results/2026-10-24-w3r2` @ `d646b97`)
+
+Fork `ce950d2`, 72 tests. Base, incremental (1 round) and W8 all exit 0. I checked the tarball myself:
+- `packages`: the incremental and full builds are equal, 17 packages.
+- `terminology`: equal.
+- `pages.json`: equal, in both its fragments and its pages.
+
+The 660 pages with no fragments are all under `comparison-v1.0.0/`, the self-contained version-comparison pages. W3 and W4 pass, so every acceptance criterion above is now met.
+

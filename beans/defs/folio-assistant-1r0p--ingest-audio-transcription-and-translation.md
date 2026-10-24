@@ -1,11 +1,12 @@
 ---
 # folio-assistant-1r0p
+$schema: bean/1.0.0
 title: 'INGEST: audio — transcription and translation'
-status: todo
+status: in-progress
 type: task
 priority: normal
 created_at: 2026-09-16T06:43:50Z
-updated_at: 2026-10-06T06:37:28Z
+updated_at: 2026-10-24T10:30:15Z
 parent: folio-assistant-slw1
 ---
 
@@ -131,3 +132,93 @@ Owner ruling, relayed by the coordinating session (session_012qoycyCSGidZqW245vX
 Asked in https://claude.ai/code/session_012qoycyCSGidZqW245vXhze, with three options (recommended first): defer until audio exists; faster-whisper (local); hosted API. **The owner chose "Defer until audio exists".**
 
 The transcription backend is chosen when the first real recording arrives, so it is tested on real speech in a real language. Until then this bean stays parked.
+
+
+## 2026-10-10: audio exists, the default tool is ruled, and the run is blocked on the network
+
+The owner, 2026-10-10: *"there is audio in smart-ra (video w/ audio to
+extract). there are two i think transcripts to compare extract tools. what
+options do we have for Tools? we should describe skills and when different
+(open-source) Tools are usable when"*. The deferral's condition ("until real
+audio exists") is met.
+
+**The recording, measured** (smart-ra `5a2b76d`):
+- `uploads/output.mp4`: 17:09, AAC mono 16 kHz, English, two speakers.
+- Two transcripts, both Microsoft Teams auto-recognition and so **one
+  opinion**: a `.vtt` (275 cues) and a `.docx` export. They agree on 98.0% of
+  words and share the same errors.
+- An earlier Vosk run (bean `uphx`, skill `crdm-recorded-walkthrough`) agreed
+  on 80.2% and corrected those errors. Its output was never committed.
+
+**Owner ruling 2026-10-10: the default independent recogniser is whisper.cpp**
+(chosen from whisper.cpp, faster-whisper, WhisperX + pyannote, and Vosk).
+
+**Done:** the skill `skills/library/ingestion/audio-transcription.md` says
+which open-source recogniser to use when. It covers:
+- audio extraction;
+- the one-opinion rule;
+- a constraint table: whisper.cpp, faster-whisper, Vosk, WhisperX + pyannote,
+  Parakeet/Canary, Distil-Whisper;
+- translation as a separate step;
+- WER, CER and DER;
+- what blocks a run.
+
+**Blocked:** every recogniser's weights are on **huggingface.co** (Vosk's on
+alphacephei.com), and this environment's network policy refuses both. Running
+whisper.cpp on the smart-ra audio needs huggingface.co added to the
+environment's allowed domains. Nothing was substituted for the run.
+
+## 2026-10-11: stays blocked; the owner cannot allow huggingface.co
+
+The owner, 2026-10-11: *"i cant unblock huggingface.co"*. Probed from this
+environment:
+- `openaipublic.azureedge.net` (reference Whisper weights): refused.
+- `download.pytorch.org`: refused.
+- GitHub release downloads: refused.
+- PyPI is reachable, but no package checked ships recogniser weights in its
+  wheel. `pywhispercpp` downloads from huggingface.co at run time.
+
+So no recogniser can run in a cloud session with this network policy. No
+transcript was substituted.
+
+**What unblocks it (option 1, recommended to the owner):** on any machine
+with ordinary internet, run:
+
+```sh
+ffmpeg -i smart-ra/uploads/output.mp4 -vn -ac 1 -ar 16000 -c:a pcm_s16le output.wav
+git clone https://github.com/ggml-org/whisper.cpp && cd whisper.cpp && cmake -B build && cmake --build build -j
+sh ./models/download-ggml-model.sh base
+./build/bin/whisper-cli -m models/ggml-base.bin -f ../output.wav -oj -of output.whisper-base
+```
+
+Then commit `output.whisper-base.json` to smart-ra `uploads/`, noting the tool,
+model and the WAV's SHA-256. The comparison with the Teams `.vtt` (agreement,
+plus a name and term list) needs no network, and any session can do it from
+there.
+
+## 2026-10-24: `whisper.cpp` (`ggml-base.bin`) run on `smart-ra/uploads/output.mp4` + comparison (`litlfred/smart-ra#91`)
+
+Executed the commands above on the connected machine and opened [`litlfred/smart-ra#91`](https://github.com/litlfred/smart-ra/pull/91) (`052cb21fc04b0f057047c5405e3aebef9da7f44d`) committing `uploads/output.whisper-base.json` and `uploads/README.md`:
+
+### Provenance & SHA-256 Digests
+| Artefact | SHA-256 | Details |
+|---|---|---|
+| `uploads/output.mp4` | `5cdd6c09ef690a0f516f4277fefdb000fee849292ff04ca6ef7d8c85116cabb3` | 24,776,789 bytes (17:09, AAC mono 16 kHz) |
+| `output.wav` | `e63fba5ee95c5c2e973ed8cc1739bb409978713c6f883c2cc374132fe49fef01` | 32,927,822 bytes (`ffmpeg -i uploads/output.mp4 -vn -ac 1 -ar 16000 -c:a pcm_s16le output.wav`, FFmpeg 9.0.2 / `Lavf63.1.102`, 1,028.992 s) |
+| `ggml-org/whisper.cpp` (`./build/bin/whisper-cli`) | commit `231638a0717b7822784297e5980965ffcec05810` | Tool node `transcribe-whisper-cpp` |
+| `models/ggml-base.bin` | `60ed5bc3dd14eea856493d334349b405782ddcaf0028d4b5df4088345fba2efe` | 147,951,465 bytes (`base`, multilingual) |
+| `uploads/output.whisper-base.json` | `d72b592bd85f9e1b4e5ffb674b692f2517c47e989154dffe05a52cdd26e6bd2c` | 35,950 bytes (139 timed segments, 2,395 words) |
+
+### Word-Level Agreement (`difflib.SequenceMatcher` + word edit distance)
+| Pair | Words (A vs B) | Matched words | Word similarity (`SequenceMatcher`) | Word edits (S / D / I) | Edit rate vs A (WER-style) |
+|---|---:|---:|---:|---:|---:|
+| Teams `.vtt` vs `output.whisper-base.json` | 2,474 vs 2,395 | 2,269 | **0.932** (`0.9320`, 93.2%) | 66 / 139 / 60 | **10.71%** (89.29% exact word match) |
+| Teams `.docx` vs `output.whisper-base.json` | 2,469 vs 2,395 | 2,250 | **0.925** (`0.9252`, 92.5%) | 76 / 143 / 69 | **11.66%** (88.34% exact word match) |
+| Teams `.vtt` vs Teams `.docx` (same recogniser) | 2,474 vs 2,469 | 2,421 | **0.980** (`0.9796`, 98.0%) | 5 / 48 / 43 | **3.88%** |
+| Teams `.vtt` vs Vosk `small-en` (`uphx`) | 2,474 vs 2,610 | — | **0.802** (80.2%) | — | — |
+
+### Key Domain Terms, Names & Recovered Utterance
+- **Recovered 12-second utterance (`9:56–10:08`):** Teams omitted 12 seconds of speech in both `.vtt` and `.docx` right before `10:11`; `whisper.cpp` captured: *"So, for example, we have the GDHP comments. Actually, to share the couple of ones that went into the reference architecture, I think it went to the reference architecture. Sorry, it went to the smart email mailbox."*
+- **Agreed terms:** `CRDM` (`0:12`), `change sets` (`2:21`, `2:26`), `CS-001` / `CS-164` (`2:28`, `3:34`), `Saroop` (`3:45`), `Copilot` (`4:18`), `reviewed by the editorial team in terms of WHO` (`7:53`), `WHO` / `WHO IRIS` (`15:43`, `16:28`).
+- **Corrections by `whisper.cpp`:** `"filters"` (`14:14`, where Teams wrote `"philtres"`), plus final 5.3 seconds (`17:03–17:09`).
+- **Names needing glossary/prompting:** `Carl Leitner` (both `"Carl Lightner"` at `0:05`), `Chinni Eyetan` (`"Chinni Eyetan"` / `"Tini"` / `"Jiun"` in Teams vs `"Ginny Aie turn"` / `"Ginny"` in `whisper.cpp`), `DPI-F` (`"DPIF"` vs `"DPI F"` at `2:45`), `Swarupu` / `Saroop` (`14:49`).

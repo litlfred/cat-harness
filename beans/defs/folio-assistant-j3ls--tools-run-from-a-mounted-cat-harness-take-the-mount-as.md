@@ -1,11 +1,12 @@
 ---
 # folio-assistant-j3ls
+$schema: bean/1.0.0
 title: 'MOUNTED ROOT: harness tools run from a remote-mounted cat-harness take the MOUNT as their root, not the instance being worked on'
-status: todo
+status: completed
 type: bug
 priority: high
 created_at: 2026-10-09T18:20:00Z
-updated_at: 2026-10-09T18:20:00Z
+updated_at: 2026-10-20T15:05:15Z
 parent: folio-assistant-iirv
 ---
 
@@ -42,3 +43,14 @@ split; this is the same cause seen from the other side, and it is live today.
 - who-iris#43 (merged, 6b50625) mounts sci at 5bc2c90.
 - So done-when 2 holds for who-iris, through the mount rather than through `needs`. The real fix is still bzwk.
 - New finding: the generator names the instance after the checkout DIRECTORY (`…/jsonld/<dir>/…` in every derivedFrom). In a clone not named `who-iris`, all 813 nodes change. That is the same resolver defect as done-when 1.
+
+_2026-10-20T15:05:15Z_ — Claimed by claude/amazing-einstein-2v47a4 — pushed to cat/cat-harness/beans so sibling sessions see it before this branch has a PR (bean 35nj).
+- New finding: the generator names the instance after the checkout DIRECTORY (`…/jsonld/<dir>/…` in every derivedFrom). In a clone not named `who-iris`, all 813 nodes change. That is the same resolver defect as done-when 1.
+
+## 2026-10-20 — fix in review (session https://claude.ai/code/session_01BiusQ9uAZiHP6TUhfwZ2h6)
+
+litlfred/cat-harness-tools#463: `resolveWorkingInstanceRoot` in `scripts/lib/roots.ts` (flag → env → the checkout the harness is mounted in → harness); skill-register and ingest-document use it; fixture test with a mounted harness. Close when it merges.
+
+## Summary of Changes
+
+Merged 2026-10-20 as litlfred/cat-harness-tools#463 (4f33b67), on the owner's "merge green PRs, keep draining". `scripts/lib/roots.ts` gained `resolveWorkingInstanceRoot` (`--instance` → `$CAT_INSTANCE_ROOT` → the checkout the harness is MOUNTED in, when it declares an instance → the harness) and `runnerRootFor`; skill-register's instance root and `bun run cat` cwd, and ingest-document's default instance, use them. `roots.test.ts` covers a mounted harness and the three layouts that keep the harness. Index, harness-repo and standalone-tools behaviour unchanged. The `needs`-driven contribution registration stays with bean `bzwk`. The index re-pin of cat-harness-tools is not part of this bean.

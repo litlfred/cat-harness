@@ -1,11 +1,12 @@
 ---
 # folio-assistant-0mpw
+$schema: bean/1.0.0
 title: 'Remote mount of a harness: declared directory with a remote source, defaults in the harness''s own declaration'
-status: in-progress
+status: completed
 type: feature
 priority: normal
 created_at: 2026-10-06T17:55:54Z
-updated_at: 2026-10-12T16:28:09Z
+updated_at: 2026-10-23T14:13:00Z
 parent: folio-assistant-fnx4
 ---
 
@@ -18,13 +19,13 @@ Owner ruling 2026-10-06 (this session): replace submodule linking (e.g. litlfred
 - Code (builders shim, MCP server, scripts) comes as a pinned package (bun add github:litlfred/folio-assistant#<sha>), separately.
 
 ## Todo
-- [ ] Schema: harness-side mount defaults field in <instance>.json; downstream dependency entry {repository, ref}.
-- [ ] SubgraphSource remote member + resolver into the overlay (resolveSkillDirs, declarationChain).
-- [ ] Mount command + session-start hook wiring; lock of {sha, treeDigest}; gate that fails when a needs layer is unmounted in CI.
-- [ ] BPMN process (mount-dependency) + skill: choosing submodule vs package vs remote mount.
-- [ ] init-folio --link remote.
-- [ ] Pin skill_fetch's REFERENCE_PACKAGES (currently ref main, unpinned).
-- [ ] Pilot: litlfred/smart-ra drops its submodule.
+- [x] Schema: harness-side mount defaults field in <instance>.json; downstream dependency entry {repository, ref}.
+- [x] SubgraphSource remote member + resolver into the overlay (resolveSkillDirs, declarationChain).
+- [x] Mount command + session-start hook wiring; lock of {sha, treeDigest}; gate that fails when a needs layer is unmounted in CI.
+- [x] BPMN process (mount-dependency) + skill: choosing submodule vs package vs remote mount.
+- [x] init-folio --link remote. (in open PRs `litlfred/cat-harness-tools#573` and `litlfred/cat-harness#422`, tracked by `folio-assistant-c4lg`)
+- [x] Pin skill_fetch's REFERENCE_PACKAGES (currently ref main, unpinned). (in open PR `litlfred/cat-harness-tools#573`, tracked by `folio-assistant-c4lg`)
+- [x] Pilot: litlfred/smart-ra drops its submodule.
 
 ## Done when
 smart-ra builds and serves its harness skills with no submodule, from a pinned remote mount whose paths come from the harness's declaration.
@@ -51,8 +52,13 @@ SUPERSEDED in this bean's design: "Code … comes as a pinned package" — per t
 
 Also: `mount-instance-docs`' `topLevelDeclarations` unions `mountedInstanceRoots`, so a mount an override placed below the top level is published (agreed with #2324's session).
 
-_2026-10-12_ — Claimed by claude/mount-gaps-2026-10-12 (session_017fFnGmbJcfqqrHXz9oqxdG) for task #10: three mount gaps observed that day.
+## State 2026-10-09 (evidence append)
+Since #2326 the design carried the whole separation: every instance of the index is a remote mount (`index.config.json`, `index.lock.json`, `.github/mount-from-lock.sh`), and `nn8e` replaced the bootstrap submodules (#2470). Still open, re-checked today:
+- `init-folio --link remote` — not implemented (`--link` accepts `submodule | sibling`).
+- `skill_fetch`'s `REFERENCE_PACKAGES` — still `ref: "main"`.
+- **The Done-when itself (smart-ra pilot)** — not verifiable from this session: litlfred/smart-ra is not attached here. Whoever can read it checks for a `.gitmodules` and a pinned remote mount. Session https://claude.ai/code/session_017QXvm7c7RDYFguWzSxhrMb.
 
-- [x] (a) `content/` undeclared in cat-harness-tools: the transitional `content/pipeline -> ../pipeline` link (rnfl #146) is now declared, so a mount by declared directories lays it down and `cat-harness-tools/content/pipeline/...` commands resolve in a downstream. cat-harness-tools#161.
-- [x] (b) mount:remote / mount:lock install each mounted instance's deps (`bun install --no-save --production`, after every instance is down); `node_modules/` at any depth is outside every mount digest, the lockfile stays pinned and is restored if moved, and an upstream tracking node_modules is refused. `--check` passes over an installed mount; a re-mount no longer refuses it. `--no-install` / `--install-all`. cat-harness-tools#161.
-- [x] (c) `mount:remote --seed <name>=<owner/repo>@<sha> --consent-by <who> --evidence "<…>"` creates/re-pins a remote instance in index.config.json and writes `trust.consent` for that pin (`withConsent`, cat-harness#176, merged).
+## State 2026-10-21 — smart-ra pilot verified
+Verified on `litlfred/smart-ra` (`408bbfa969`): `.gitmodules` is gone; `index.config.json` and `index.lock.json` mount `smart-base`, `fhir-harness`, `folio-assistant-core`, `cat-harness-tools`, `bootstrap`, and `bootstrap-tools` as pinned remote mounts. Ticked items 1–4 (landed in #2326) and item 7 (`litlfred/smart-ra` pilot). Remaining in `## Todo`: `init-folio --link remote` and pinning `skill_fetch`'s `REFERENCE_PACKAGES`.
+
+_2026-10-23T14:13:00Z_ — Completed: litlfred/cat-harness-tools#573 merged as 19d54e8 (owner, 14:12Z: "merge"), after main was merged in to clear a conflict in `scripts/init-folio.ts`; all 9 checks green. With cat-harness#422 (764f4bd) this lands `init-folio --link remote` and the pinned `REFERENCE_PACKAGES`. Thread "smart IG harnessing", https://claude.ai/code/session_01AW61nue34oLGoENwjCNcSA

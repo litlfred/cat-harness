@@ -1,11 +1,12 @@
 ---
 # folio-assistant-k8rc
+$schema: bean/1.0.0
 title: 'The TypeScript prose backlog: 344 mentions, and the exemption does not cover all of them'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-21T20:25:00Z
-updated_at: 2026-10-16T10:30:00Z
+updated_at: 2026-10-20T19:03:00Z
 parent: folio-assistant-vke6
 ---
 
@@ -69,7 +70,7 @@ reads), which is why it is worth counting rather than assuming.
       not 344** — see below.
 - [x] Every **user-visible output** mention names the file actually used, or
       the placeholder form where no path is in hand.
-- [ ] A decision recorded on whether `check:declaration-filename` grows a
+- [x] A decision recorded on whether `check:declaration-filename` grows a
       fifth class for user-visible strings — distinct from its `prose` class,
       whose exemption argument does not reach them. **The backlog is now
       clear, so this is only the owner's call**; put to them on
@@ -148,3 +149,23 @@ occurrences would have destroyed that property. Its own commit, so a
 base-branch breakage is not buried in this diff.
 
 _2026-10-16T10:30:00Z_ — Back to `todo`: nobody is holding this; its last note says it is parked (waiting on a trigger, a ruling or a deferred row), and an untouched `in-progress` claim misleads sibling sessions (owner choice, https://claude.ai/code/session_01NUrhvvMEwU5MmPW4L2w9jP).
+
+## Owner decision (recorded 2026-10-20 by the drain coordinator, session https://claude.ai/code/session_01BiusQ9uAZiHP6TUhfwZ2h6, from lane B2's measurement)
+
+Should `check:declaration-filename` (cat-harness-tools/scripts/check-declaration-filename.ts) add a fifth class — user-visible output (log lines, thrown Error messages, MCP tool descriptions) — that FAILS, separate from the exempt prose class? (Also on folio-assistant#788.)
+
+1. **(recommended)** Yes, failing: those 40 mentions were wrong at runtime, and the backlog is cleared to the 4 correct ones, so landing it adds no red.
+2. Yes, but counted, warn-only first.
+3. No — keep it all under prose, and rely on review.
+
+Default if no answer: 1.
+
+## OWNER, 2026-10-20 (in lane B2's session, session_01Kymnx79TxWvxVoLzcAjBRr, relayed and recorded by the drain coordinator)
+
+On the decision above: **"3 as recommend"** → option 1 — user-visible output (log lines, thrown Error messages, MCP tool descriptions) is a fifth class that FAILS. Implemented in litlfred/cat-harness-tools#484. Close when it merges.
+
+## Summary of Changes
+
+check:declaration-filename has a userVisible class that fails on any non-literal, non-comment line naming the retired file outside tests and _data contexts. It matches on both boundaries so cat-harness.json is not mistaken for harness.json. check-nav-names' message was corrected. Tests: 37 pass. cat-harness-tools#484.
+
+_2026-10-20T19:03:00Z_ — Closed by the drain coordinator (https://claude.ai/code/session_01BiusQ9uAZiHP6TUhfwZ2h6) on lane B2's report (session https://claude.ai/code/session_01Kymnx79TxWvxVoLzcAjBRr) that every Done-when item is met. The last item, the user-visible class, was decided by the owner (option 1) in B2's session, recorded above, and implemented by litlfred/cat-harness-tools#484 (09eab40, merged).

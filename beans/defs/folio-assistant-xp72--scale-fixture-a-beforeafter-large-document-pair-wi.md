@@ -1,11 +1,12 @@
 ---
 # folio-assistant-xp72
+$schema: bean/1.0.0
 title: 'SCALE FIXTURE: a before/after large-document pair with a golden ChangeSet and a measured performance budget'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-22T21:02:55Z
-updated_at: 2026-10-24T07:55:00Z
+updated_at: 2026-10-24T13:20:00Z
 parent: folio-assistant-q4jm
 ---
 
@@ -31,7 +32,7 @@ measured, not a fact.
 ## Done when
 - [x] the fixture is committed, with its expected ChangeSet as a golden file (`folio-assistant-core/scripts/test-fixtures/scale-pair.ts` + `scale-pair.changeset.json` + `schemas/changeset-scale.test.ts`)
 - [x] the budget is measured and recorded, then enforced in the browser gate (`cat-harness-tools#104`, `test/review-budget.e2e.ts` + `gen-review-page.ts` `content-visibility: auto`)
-- [ ] the lx2s committee scenario has been walked through the review page, with screenshots on the PR
+- [x] the lx2s committee scenario has been walked through the review page, with screenshots on the PR (smart-immunizations-uganda#12, 2026-10-24; see lx2s)
 
 
 ## Roast correction 2026-09-22 (epic q4jm, R7)
@@ -116,3 +117,7 @@ immunization-schedule before/after pair exists in any checkout.
 _2026-10-15T16:49Z_ — Block lifted: `jwox` is completed (PRs #981, #982, #992 merged). The edge was the work plan's "Block never lifted" finding (owner, 2026-10-15). Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.
 
 _2026-10-24T07:55:00Z_ — **Owner decision: option 1.** The owner chose "A. Keep waiting on lx2s" by card on 2026-10-24 07:45Z. Done-when 3 is walked on lx2s staging with a real immunization-schedule change. The bean stays `todo` until then. Session https://claude.ai/code/session_01AnAGBDDY8TMwCApxe4b3pX.
+
+_2026-10-24T09:00:00Z_ — Claimed by the Preview storage thread for the #215 walk on a never-merged smart-immunizations-uganda branch (owner Q8 "A"). No agy claim found. Session https://claude.ai/code/session_01GQmP3RJREp5xXnAFSYYMi9.
+
+_2026-10-24T09:10:00Z_ — **Done-when 3 cannot be walked yet.** The lx2s walk on smart-immunizations-uganda#12 found that an IG repository's preview has no review page: the IG route (`stage-local-ig.ts`) writes no ChangeSet, `staging.json` or banner, and the hosted publish refuses the branch outright (stale AST). See lx2s, "The #215 walk", breaks 4 to 6. Stays `todo` behind that fix. Session https://claude.ai/code/session_01GQmP3RJREp5xXnAFSYYMi9.

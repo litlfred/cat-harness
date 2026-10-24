@@ -1,11 +1,12 @@
 ---
 # folio-assistant-q2wm
+$schema: bean/1.0.0
 title: 'RENDER SAFETY: declared XSS hints on tools and skills, lazy loading, and dynamic render from the graph'
-status: todo
+status: in-progress
 type: task
 priority: high
 created_at: 2026-09-20T21:47:28Z
-updated_at: 2026-10-16T10:30:00Z
+updated_at: 2026-10-24T14:30:00+02:00
 parent: folio-assistant-6lb8
 ---
 
@@ -33,14 +34,15 @@ and in `folio-todo-index/v1`. A restriction nothing can read is not a restrictio
 
 ## Done when
 
-- [~] a declared XSS/render restriction on Tool and skill nodes — STILL NOT BUILT, for the
-      reason recorded below, which has not changed. The `Url` case IS built:
+- [x] a declared XSS/render restriction on Tool and skill nodes — built on
+      2026-10-01 (`schemas/tool.ts` `render?: ...` on `ToolOutputSchema` and
+      `schemas/render-output.ts` `renderToolOutput`, 7 tests in
+      `render-output.test.ts`, per owner instruction below). The `Url` case is
       `schemas/safe-url.ts`, default-deny.
 - [x] a renderer that ignores the check fails a test rather than shipping —
       `scripts/tests/href-safety.test.ts` reads the source and requires every `href` site
       to go through `safeHref`
-- [ ] window content is fetched lazily, on open — STILL NO SUBJECT. The window renders from
-      the already-fetched index; there is no per-card fetch to make lazy.
+- [x] window content is fetched lazily, on open — built in [`litlfred/cat-harness#565`](https://github.com/litlfred/cat-harness/pull/565) (`f08c738d`): `createLazyWindowLoader` + `cardDetailHref` + `renderWindowDetail` in `schemas/render-output.ts` and `fetchCardDetail` + `renderWindowOutputs` in `site-chrome/assets/js/docs-ui.js` fetch per-card detail (`detailHref` / `bodyHref` / `artifactHref` / `jsonldHref`) lazily on `openCard` (`0` per-card fetches on board tile render, `1` fetch on first open, cached on re-open without pre-fetching the remaining `N - 1` cards, with hostile `javascript:` / `data:text/html` detail URLs refused via `safeHref` and window tool outputs rendered through `renderToolOutput`; 12/12 tests in `schemas/render-output.test.ts`).
 - [x] KG assets are referenced where they live — `zsah`'s tiles carry the declared ref
       resolved to its published route, and `data:` is refused precisely so an asset is
       referenced rather than copied into the page
