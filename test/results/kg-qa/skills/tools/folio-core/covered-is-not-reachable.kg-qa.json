@@ -2,10 +2,10 @@
   "$schema": "kg-qa/v1",
   "subject": {
     "kind": "skill",
-    "id": "mcp-projection",
-    "path": "skills/folio-core/mcp-projection.md"
+    "id": "covered-is-not-reachable",
+    "path": "skills/tools/folio-core/covered-is-not-reachable.md"
   },
-  "source_hash": "4327b15b0993",
+  "source_hash": "6eaa103fc705",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

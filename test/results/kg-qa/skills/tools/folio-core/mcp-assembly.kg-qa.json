@@ -2,10 +2,10 @@
   "$schema": "kg-qa/v1",
   "subject": {
     "kind": "skill",
-    "id": "tool-authoring",
-    "path": "skills/folio-core/tool-authoring.md"
+    "id": "mcp-assembly",
+    "path": "skills/tools/folio-core/mcp-assembly.md"
   },
-  "source_hash": "ffada77b2e7e",
+  "source_hash": "f5067e9af840",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

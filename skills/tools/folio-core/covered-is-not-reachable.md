@@ -89,7 +89,7 @@ Where the enum duplicates a union declared elsewhere, guard it in both
 directions: `satisfies` catches a member that stops being valid, and a
 conditional type catches a member added to the union and not here. An unavoidable
 duplicate is fine; an unchecked one is not — see
-[`directory-conventions`](../kg/kg-core/directory-conventions.md).
+[`directory-conventions`](../../kg/kg-core/directory-conventions.md).
 
 ## The third case: a mechanism with no skill at all
 
@@ -144,7 +144,7 @@ Authoring the skill is a **design act** — a claim about the platform's capabil
 vocabulary, inherited by every dependent instance — so it goes to the owner rather
 than being decided in passing. Bean `yean` carried the two candidates.
 
-**Settled 2026-09-20:** [`site-presentation-assets`](../ui/theming/site-presentation-assets.md)
+**Settled 2026-09-20:** [`site-presentation-assets`](../../ui/theming/site-presentation-assets.md)
 was authored, and `themes-css` / `avatars-css` are in the graph satisfying it. The
 resolution is recorded here because the alternative — leaving the gap notice
 standing — is worse than never having written one: an agent that believes a stale
@@ -261,7 +261,7 @@ get the case that cost the owner's time rather than an agent's: an agent counted
 
 That is this skill's opening sentence one level out — **coverage is a relation
 between an instrument and the question it was built for** — and it is
-[`audit-coverage`](../kg/kg-core/audit-coverage.md), with `bun run cat audit:coverage` as the
+[`audit-coverage`](../../kg/kg-core/audit-coverage.md), with `bun run cat audit:coverage` as the
 second question.
 
 ## Why this is its own skill

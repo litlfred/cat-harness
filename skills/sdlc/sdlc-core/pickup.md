@@ -24,7 +24,7 @@ The cure is: resolve ground truth first, in one batch, then dispatch.
    not — branch names drift and a PR number you were given may map to a
    *different* PR than its scope suggests. Always resolve `head.ref`,
    `title`, and body checklist by reading the PR (the *read change proposal*
-   [forge-operation Tool](../../folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)) for the literal number before doing anything. (Observed: PRs briefed
+   [forge-operation Tool](../../tools/folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)) for the literal number before doing anything. (Observed: PRs briefed
    with invented branch names cause sub-agents to burn ~10 min each
    discovering the mismatch and stopping.)
 
@@ -62,7 +62,7 @@ The cure is: resolve ground truth first, in one batch, then dispatch.
 ```
 
 With **no arg**, ask the user which open PR(s) to pick up (offer the
-recently-updated `claude/*` PRs, listed with the *list change proposals* [forge-operation Tool](../../folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)).
+recently-updated `claude/*` PRs, listed with the *list change proposals* [forge-operation Tool](../../tools/folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)).
 
 ## Procedure
 
@@ -70,7 +70,7 @@ recently-updated `claude/*` PRs, listed with the *list change proposals* [forge-
 
 Resolve the forge-operation Tools from the `tools` graph, picking the node for
 the forge the checkout's remote is on
-([`skills-and-tools`](../../folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)).
+([`skills-and-tools`](../../tools/folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)).
 This skill uses *read change proposal* (details, check runs, reviews, review
 comments), *list change proposals*, *comment on change proposal* and *request
 review*.
@@ -165,7 +165,7 @@ Commit body ends with the session URL line (AGENTS.md).
   question — be frugal. For "already fixed in a later
   commit" nits, one short note is enough; don't reply per-nit.
 - If Copilot's review errored ("unable to review"),
-  request its review again (the *request review* [forge-operation Tool](../../folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)).
+  request its review again (the *request review* [forge-operation Tool](../../tools/folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)).
 - Report per PR: resolved branch, what was done / dispatched, commit
   SHAs, CI verdict, blob URLs (`.md` primary), and any blocked items
   with reasons. Never claim a formal artifact compiles/verifies unless a
