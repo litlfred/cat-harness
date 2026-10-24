@@ -1,10 +1,10 @@
 ---
 # folio-assistant-pzwb
 title: 'Placement PR2: finish splitting folio-core and regroup the harness skill topics'
-status: todo
+status: in-progress
 type: task
 created_at: 2026-10-01T06:58:00Z
-updated_at: 2026-10-24T08:05:00Z
+updated_at: 2026-10-24T08:16:00Z
 parent: folio-assistant-iirv
 ---
 
@@ -25,3 +25,5 @@ Waits on PR1 (`ybwt`, not yet on main — link when it lands).
 ## 2026-10-24 — re-measured (separation drain, session https://claude.ai/code/session_01X14WfP6kHutkCyB8dpmj4e)
 
 Re-measured by file name: 14 of 28 rows are in their target, 14 still in cat-harness.
+
+_2026-10-24T08:16:00Z_ — Claimed by https://claude.ai/code/session_01WJw1NBGSTLWvBnyQzJHXjx (bean drain, stalled-triage thread).
