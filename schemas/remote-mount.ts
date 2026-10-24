@@ -22,6 +22,18 @@
  * - code arrives through the mounted code directories, so imports resolve
  *   through mounted paths.
  *
+ * ## Hydrated: metadata first (bean `mo75` G2)
+ *
+ * `hydrated: true` on a mount entry, or on `overrides.<instance>`, mounts each
+ * chosen directory as ONE file: that subgraph's published
+ * `index.hydrated.jsonld` at the pin (`SubgraphSource` → `kind: "hydrated"`),
+ * so a downstream can read what `tools/` or `skills/` holds before it decides
+ * which of it to materialise. No code arrives, so the instance is not laid
+ * down as an instance: no `<name>.json` is written (discovery would otherwise
+ * read every absent directory as empty — `dh4f`), the lock marks it
+ * `hydrated`, and {@link mountedInstanceRoots} never offers it to the overlay
+ * as somewhere to import from.
+ *
  * ## Why the default path is the harness's HOME path
  *
  * A mounted instance lands, by default, at the path it has in its own
@@ -123,6 +135,14 @@ export const MountOverrideSchema = z
     /** Overrides the harness's `mountDefaults.whole` either way; `directories` is then ignored. */
     whole: z.boolean().optional(),
     /**
+     * Mount this instance's directories as their published
+     * `index.hydrated.jsonld` only — metadata, no files (bean `mo75` G2).
+     * Overrides the mount entry's own `hydrated` either way. `directories`
+     * still chooses which subgraphs; `whole` and `hydrated` together are
+     * refused at plan time, since one asks for every file and the other for none.
+     */
+    hydrated: z.boolean().optional(),
+    /**
      * Consent for THIS instance at its own pin. Required for an instance
      * reached through a GITLINK: that is another repository at another
      * commit, and the parent mount's consent does not cover it (roast `1ygp`
@@ -148,6 +168,12 @@ export const RemoteMountSchema = z
     ref: CommitShaSchema,
     /** Per-instance overrides across the closure, keyed by instance name. */
     overrides: z.record(InstanceNameSchema, MountOverrideSchema).optional(),
+    /**
+     * Mount every instance this entry reaches as hydrated metadata
+     * ({@link MountOverrideSchema}`.hydrated`), unless its override says
+     * `hydrated: false`. Bean `mo75` G2.
+     */
+    hydrated: z.literal(true).optional(),
     note: z.string().min(1).optional(),
     /**
      * What makes this mount trusted: a person's consent for THIS pin, or a
@@ -255,6 +281,14 @@ export const LockedInstanceSchema = z
      * and says so.
      */
     trust: MountTrustBasisSchema.optional(),
+    /**
+     * Mounted as hydrated metadata (bean `mo75` G2): each directory holds one
+     * `index.hydrated.jsonld`, read from the `upstreamPath` directory the
+     * instance publishes it in, and the declaration is recorded (it fixed
+     * those paths) but NOT laid down — so nothing discovers a code-less
+     * instance there.
+     */
+    hydrated: z.literal(true).optional(),
   })
   .strict();
 export type LockedInstance = z.infer<typeof LockedInstanceSchema>;
@@ -323,6 +357,8 @@ export function mountedInstanceRoots(scope: string): Map<string, string> {
     const lock = readMountLock(join(dir, n));
     if (!lock.ok) continue;
     for (const inst of lock.lock.instances) {
+      // Metadata only: nothing there to import from or resolve `needs` to.
+      if (inst.hydrated) continue;
       const abs = join(dir, inst.path);
       if (!out.has(inst.instance) && existsSync(abs)) out.set(inst.instance, abs);
     }

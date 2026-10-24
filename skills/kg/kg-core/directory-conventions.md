@@ -1444,7 +1444,7 @@ skills/                         ← this instance's `kg`
   requirements/*.json           conformance obligations pointing at the rest
   permissions/permissions.json  the actions an actor may be permitted (the ODRL profile; who holds them is policies/)
   <area>/kg-qa/*.kg-qa.json     audit sidecars, beside what they audit
-  folio-core/*.md               skills
+  <topic>/<pkg>/*.md            skills
   <pkg>/package-manifest.json   which skills a package publishes
 ```
 

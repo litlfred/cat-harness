@@ -248,8 +248,31 @@ export type SubgraphHydrated = z.infer<typeof SubgraphHydratedSchema>;
  * root, and published, relative to the base URL — the same path for both,
  * beside `ns/content/v1.jsonld`.
  */
+// declared-path-literal: this constant DEFINES the published, dereferenceable IRI path of the context; it is fixed by that URL, not by where the `ns/` declaration points.
 export const SUBGRAPH_CONTEXT_PATH = "ns/subgraph/v1.jsonld";
 
 /** The two file names under every subgraph IRI. The root has the first only. */
 export const SUBGRAPH_INDEX_FILE = "index.jsonld";
 export const SUBGRAPH_HYDRATED_FILE = "index.hydrated.jsonld";
+
+/**
+ * Where an instance PUBLISHES one subgraph's two files, relative to its own
+ * root: `<docs>/subgraph/<HARNESS>/<PATH>/` — `gen-subgraph-jsonld`'s output
+ * layout, and the directory `kg:materialize --nodes` and a hydrated mount
+ * (bean `mo75` G2) read `index.hydrated.jsonld` from. `docsPath` is the
+ * instance's declared `docs` directory, read from ITS declaration by the
+ * caller, never spelled.
+ *
+ * Throws on the root (`""`, `.`): a harness root publishes `index.jsonld`
+ * only, and a hydrated file there would be the monolith `f233` forbids.
+ * Returns no trailing slash.
+ */
+export function publishedSubgraphDir(docsPath: string, harness: string, subgraph: string): string {
+  const sub = subgraph.trim().replace(/^\/+|\/+$/g, "");
+  if (sub === "" || sub === ".") {
+    throw new Error(`the root of \`${harness}\` publishes ${SUBGRAPH_INDEX_FILE} only: a hydrated file there would be the whole graph in one document (f233)`);
+  }
+  if (sub.split("/").some((seg) => seg === ".." || seg.startsWith("."))) throw new Error(`subgraph path \`${subgraph}\` climbs or is dot-prefixed`);
+  const docs = docsPath.replace(/^\.\//, "").replace(/\/+$/, "");
+  return [docs, "subgraph", harness, sub].filter(Boolean).join("/");
+}

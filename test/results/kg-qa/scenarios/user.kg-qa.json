@@ -5,7 +5,7 @@
     "id": "user",
     "path": "scenarios/roles.json"
   },
-  "source_hash": "sha256:a55d7dc2c4aa2377e869486e635707736801f42d2ca8ac8ff161da564a51edd4",
+  "source_hash": "sha256:15867fe3359d171b3e087b2b4b3d563126803ffb268dabe0e5d168db7ff213ea",
   "criteria": {
     "role-skills-resolve": {
       "result": "pass",

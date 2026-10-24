@@ -26,6 +26,7 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `proposals`, holding `
 | [`credentials-needs-and-supply.md`](credentials-needs-and-supply.md) | Credentials: needs declared, supply chosen by deployment |  |
 | [`dak-kinds-contribution-2026-10-02.md`](dak-kinds-contribution-2026-10-02.md) | DAK block kinds as a smart-base contribution |  |
 | [`declaration-gap.md`](declaration-gap.md) | Which top-level directories are not declared subgraphs? |  |
+| [`deployment-descriptions.md`](deployment-descriptions.md) | Deployment descriptions: placing actors, matching Tools |  |
 | [`deployment-topologies.md`](deployment-topologies.md) | Deployment topologies and operating modes |  |
 | [`derived-graph-dependencies-2026-10-04.md`](derived-graph-dependencies-2026-10-04.md) | Derived-graph dependencies |  |
 | [`dth-candidates-2026-10-02.json`](dth-candidates-2026-10-02.json) | data |  |
@@ -35,6 +36,7 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `proposals`, holding `
 | [`instance-versioning.md`](instance-versioning.md) | Instance versioning and dependency resolution |  |
 | [`kg-subscriptions.md`](kg-subscriptions.md) | KG subscriptions |  |
 | [`lsi-applicability.md`](lsi-applicability.md) | Latent Semantic Indexing: where it applies here, measured |  |
+| [`lsi-cross-graph-near-2026-10-24.md`](lsi-cross-graph-near-2026-10-24.md) | Cross-graph lsi:near — design draft (ec2a step 3) |  |
 | [`lsi-epic-filing-2026-09-29.md`](lsi-epic-filing-2026-09-29.md) | LSI epic-filing proposal — 2026-09-29 |  |
 | [`lsi-who-iris-2026-09-29.md`](lsi-who-iris-2026-09-29.md) | LSI and correspondence analysis on who-iris |  |
 | [`merge-gate-2026-10-02.md`](merge-gate-2026-10-02.md) | Merge gate: adversarial review and compile gates |  |
