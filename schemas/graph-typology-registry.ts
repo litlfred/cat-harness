@@ -2995,6 +2995,7 @@ export function ownPrefixTable(registry: GraphTypologyRegistry = defaultGraphTyp
  */
 export function ownNamespaceValues(registry: GraphTypologyRegistry = defaultGraphTypologies): readonly string[] {
   const content = contentLayerInstance(registry);
+  // declared-path-literal: `ns/` here is a segment of a namespace IRI, not a directory.
   return content === undefined ? OWN_NAMESPACE_VALUES : [...OWN_NAMESPACE_VALUES, content.namespace, content.namespace.replace(/ns#$/, "ns/")];
 }
 

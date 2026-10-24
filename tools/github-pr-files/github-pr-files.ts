@@ -16,8 +16,13 @@ export default toolFactory((t) =>
         { name: "files", schema: t("Markdown"), description: "One repository path per line." }
       ],
     },
+    selection: {
+      when: "The change proposals live on GitHub — the checkout's remote is a GitHub project.",
+      limits: "GitHub only. For a GitLab project use `gitlab-mr-files`.",
+      cost: "`gh`, authenticated (`gh auth login` or `GH_TOKEN`), and one API round trip per call.",
+    },
     satisfies: ["coordinate"],
-        requires: { network: true },
+    requires: { network: true },
     remedies: [{ host: "api.github.com", none: "No declared Tool reaches the GitHub API another way. A session that provides the GitHub MCP server can use it instead." }],
   }),
 );

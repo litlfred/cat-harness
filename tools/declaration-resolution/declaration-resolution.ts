@@ -21,7 +21,7 @@ export default toolFactory((t) =>
         { name: "findings", schema: t("Count"), description: "Unresolved references per instance and field, and what could not be determined; entries examined per field." },
       ],
     },
-    satisfies: ["kg-separation"],
+    satisfies: ["kg-separation", "kg-affordances"],
     requires: { runtime: ["bun"], network: false },
   }),
 );

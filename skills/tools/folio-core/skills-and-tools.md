@@ -225,16 +225,19 @@ pair is a derived alternative carrying `selection` (`check:tools` holds it).
 | *list change proposals* | `github-pr-list` | `gitlab-mr-list` |
 | *read change proposal* (body, comments, reviews) | `github-pr-view` | `gitlab-mr-view` |
 | *read change proposal* (check runs) | `github-pr-checks` | — |
-| *list changed files* | `github-pr-files` | — |
+| *list changed files* | `github-pr-files` | `gitlab-mr-files` |
 | *comment on change proposal* | `github-pr-comment` | `gitlab-mr-comment` |
-| *request review* | `github-pr-request-review` | — |
+| *request review* | `github-pr-request-review` | `gitlab-mr-request-review` |
 | *resolve review thread* | `github-pr-resolve-thread` | `gitlab-mr-resolve-thread` |
 | *list branches* | `github-branches` | `gitlab-branches` |
 
-A dash is a gap, not an oversight; each is recorded on the bean.
-- `glab mr diff` has no `--name-only`.
-- `glab mr update --reviewer` replaces the existing reviewers rather than
-  adding to them, and GitLab usernames do not fit `Login`.
+A dash is a gap, not an oversight; each is recorded on the bean. Two
+GitLab nodes run a script rather than `glab` directly (owner, 2026-10-24,
+"Fill both gaps"): `glab mr diff` has no `--name-only`, so `gitlab-mr-files`
+reads the paths out of the raw diff; and `glab mr update --reviewer NAME`
+replaces the reviewers, so `gitlab-mr-request-review` passes `+NAME`, which
+adds one. Its names are `GitLabUsername`s, since GitLab usernames do not fit
+`Login`.
 
 Branches alone are also listable with `git ls-remote --heads origin`, which
 needs no forge.
