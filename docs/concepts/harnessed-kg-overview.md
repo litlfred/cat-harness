@@ -214,12 +214,14 @@ On the slide the JSON Schema is drawn over the list as a callout of one entry,
 `DecisionSupportLogicSource`, so it reads as "this is what one of these
 entries holds". The QR code beside it points at the API page.
 
-**Source:** <https://smart.who.int/base/dak-api.html>; the ingested index
-the DAK layer's `fhir-artifact-index`.
+**Source:** <https://smart.who.int/base/dak-api.html>; the artefact index
+in the DAK layer's `fhir-artifact-index`, built at publish from the IG's
+source.
 
 > **Aligned in count, not checked item by item:** the slide shows "Logical
-> Model Schemas (25 available)", and the ingested index holds 25
-> StructureDefinition pages.
+> Model Schemas (25 available)". The index is built from the IG's source at
+> publish, so it holds at least those 25 logical models and may hold more
+> (45 on 2026-10-24).
 
 ## 5 — Tie the L1/L2/L3 models into the larger KG
 {: #slide-05 data-fa-label="sec:harnessed-kg-overview-slide-05" }
