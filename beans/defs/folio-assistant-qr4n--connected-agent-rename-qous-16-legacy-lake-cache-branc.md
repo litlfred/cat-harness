@@ -1,11 +1,11 @@
 ---
 # folio-assistant-qr4n
 title: 'CONNECTED AGENT: rename qou''s 16 legacy lake-cache/* branches to cat/folio-assistant-sci/lake-cache/* with the GitHub rename API'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-24T07:58:00Z
-updated_at: 2026-10-24T07:58:00Z
+updated_at: 2026-10-24T08:12:00Z
 parent: folio-assistant-fs43
 ---
 
@@ -53,8 +53,10 @@ should answer with the new name.
 
 ## Done when
 
-- [ ] 16 heads under `cat/folio-assistant-sci/lake-cache/`, 0 under `lake-cache/` (step 3 output pasted below)
-- [ ] the redirect check answers with the new name
-- [ ] Log line with the time; status `completed`
+- [x] 16 heads under `cat/folio-assistant-sci/lake-cache/`, 0 under `lake-cache/` (step 3 output pasted below)
+- [x] the redirect check answers with the new name
+- [x] Log line with the time; status `completed`
 
 ## Log
+- 2026-10-24T08:09Z — The owner ran it on their machine: all 16 renamed through the rename API, 0 failures.
+- 2026-10-24T08:12Z — Verified from the cloud (`git ls-remote --heads` on litlfred/qou): **16** `cat/folio-assistant-sci/lake-cache/*` heads and **0** `lake-cache/*`. The redirect check `gh api repos/litlfred/qou/branches/lake-cache%2Fqou-v4-24-0` answers `cat/folio-assistant-sci/lake-cache/qou-v4-24-0`. All three boxes are met. Session https://claude.ai/code/session_01AnAGBDDY8TMwCApxe4b3pX.
