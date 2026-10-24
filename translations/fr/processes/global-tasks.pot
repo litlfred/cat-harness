@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: global-tasks\n"
-"POT-Creation-Date: 2026-10-23T22:47:17.373Z\n"
+"POT-Creation-Date: 2026-10-24T08:43:21.601Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -14,14 +14,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: processes/global-tasks.bpmn:93
+#: processes/global-tasks.bpmn:92
 #. Diagram label
 msgid "Append `retained` with the reason"
 msgstr ""
 
 #: processes/global-tasks.bpmn:70
 #. Diagram label
-msgid "Brief, and claim the bean"
+msgid "Brief the work"
 msgstr ""
 
 #: processes/global-tasks.bpmn:47
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Create the tracking label (the `label` input) with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet. Skipped on an unknown verdict."
 msgstr ""
 
-#: processes/global-tasks.bpmn:77
+#: processes/global-tasks.bpmn:76
 #. Diagram label
 msgid "Drain: land, close or re-target the open PRs"
 msgstr ""
@@ -64,17 +64,17 @@ msgstr ""
 msgid "Record the sign-off as a requirement-signoff attestation"
 msgstr ""
 
-#: processes/global-tasks.bpmn:86
+#: processes/global-tasks.bpmn:85
 #. Diagram label
 msgid "Report what would move — sizes, and what breaks"
 msgstr ""
 
-#: processes/global-tasks.bpmn:87
+#: processes/global-tasks.bpmn:86
 #. Diagram element documentation
 msgid "The agent reports and waits: what would move, how large, what in the parent breaks, and the rollback. `deletion-requires-confirmation` is not a courtesy to waive: an agent never removes or relocates a durable artefact on its own initiative."
 msgstr ""
 
-#: processes/global-tasks.bpmn:94
+#: processes/global-tasks.bpmn:93
 #. Diagram element documentation
 msgid "The entry that makes the log worth reading. A removal was considered and refused, or a preview still stands because a signal fired; without an entry that leaves no trace, and the next person asking \"why is this preview still up\" has nothing to consult. A reason is REQUIRED — the tool refuses without one."
 msgstr ""
@@ -86,10 +86,10 @@ msgstr ""
 
 #: processes/global-tasks.bpmn:71
 #. Diagram element documentation
-msgid "What the work is and why, what is already measured with its provenance, how it will be done, and what would falsify the approach. Claim the bean so a sibling session sees the work."
+msgid "What the work is and why, what is already measured with its provenance, how it will be done, and what would falsify the approach. The bean is already claimed by the Process_BeanOpen call before this step (bean m8gz), so a sibling session sees the work before the brief is written."
 msgstr ""
 
-#: processes/global-tasks.bpmn:78
+#: processes/global-tasks.bpmn:77
 #. Diagram element documentation
 msgid "Work the PRs `seed:ready` named until the source settles: land or close the heavy movers and the next layer's PRs, bring the layer's open PRs to five or fewer, and finish any move in flight. Fix a red rehearsal or a discovery miss where it is. Nothing is seeded from here; it goes back to the gateway, which re-asks."
 msgstr ""

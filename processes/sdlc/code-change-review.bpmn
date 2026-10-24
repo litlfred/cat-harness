@@ -90,6 +90,8 @@ The loop back through "root-cause the failure" is the point of drawing this at a
         </bpmn:extensionElements>
         <bpmn:flowNodeRef>Start_Change</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_ClaimBean</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GW_BeanYours</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_BeanNotYours</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_BranchAndAnnounce</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Implement</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_RunGates</bpmn:flowNodeRef>
@@ -122,19 +124,12 @@ The loop back through "root-cause the failure" is the point of drawing this at a
       <bpmn:outgoing>f1</bpmn:outgoing>
     </bpmn:startEvent>
 
-    <bpmn:task id="Task_ClaimBean" name="Claim the work item">
-      <bpmn:documentation>
-        Claim before you work. A claim ANNOUNCES rather than reserves until
-        the PR exists, which is why the branch is announced at the next
-        step and not at the end.
-      </bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="bean-coordination"/>
-        <cat-harness.processes:bean op="claim"/>
-      </bpmn:extensionElements>
-      <bpmn:incoming>f1</bpmn:incoming>
-      <bpmn:outgoing>f2</bpmn:outgoing>
-    </bpmn:task>
+    <bpmn:callActivity id="Task_ClaimBean" name="Open the bean&#10;[bean-open]" calledElement="Process_BeanOpen">
+      <bpmn:documentation>Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="bean-coordination"/></bpmn:extensionElements>
+          <bpmn:incoming>f1</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_1</bpmn:outgoing>
+    </bpmn:callActivity>
 
     <bpmn:task id="Task_BranchAndAnnounce" name="Branch, and announce it">
       <bpmn:documentation>
@@ -262,7 +257,7 @@ The loop back through "root-cause the failure" is the point of drawing this at a
       <bpmn:outgoing>f16</bpmn:outgoing>
     </bpmn:callActivity>
 
-    <bpmn:task id="Task_CloseBean" name="Record what was done, and close">
+    <bpmn:task id="Task_CloseBean" name="Record what was done">
       <bpmn:documentation>
         A closed work item is read later by somebody deciding whether to
         reopen the subject, so "completed" with nothing behind it cannot be
@@ -270,21 +265,17 @@ The loop back through "root-cause the failure" is the point of drawing this at a
       </bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="todo-manager"/>
-        <cat-harness.processes:bean op="resolve"/>
       </bpmn:extensionElements>
       <bpmn:incoming>f16</bpmn:incoming>
       <bpmn:outgoing>f17</bpmn:outgoing>
     </bpmn:task>
 
-    <bpmn:task id="Task_ArchiveBean" name="Archive the bean">
-      <bpmn:documentation>Move the bean, now completed, into the archive, with a line saying which process closed it. A bean still open stays where it is with a note saying why: only a completed or scrapped bean may be archived (check:bean-archive). The periodic sweep still archives anything this step leaves.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="todo-manager"/>
-        <cat-harness.processes:bean op="archive"/>
-      </bpmn:extensionElements>
-      <bpmn:incoming>f17</bpmn:incoming>
-      <bpmn:outgoing>f18</bpmn:outgoing>
-    </bpmn:task>
+    <bpmn:callActivity id="Task_ArchiveBean" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+      <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
+          <bpmn:incoming>f17</bpmn:incoming>
+          <bpmn:outgoing>f18</bpmn:outgoing>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_Merged" name="Merged">
       <bpmn:incoming>f18</bpmn:incoming>
     </bpmn:endEvent>
@@ -324,8 +315,18 @@ The loop back through "root-cause the failure" is the point of drawing this at a
     </bpmn:task>
 
     <!-- ═══ Sequence flows ═══ -->
+    <bpmn:exclusiveGateway id="GW_BeanYours" name="Bean claimed?">
+      <bpmn:documentation>Reads which end Process_BeanOpen reached. `claimed`: the bean is in progress and this process works it. `not yours`: a sibling session or a human holds it, nothing was written to it, and this process stops here rather than work a bean it does not own (bean-coordination).</bpmn:documentation>
+      <bpmn:outgoing>f2</bpmn:outgoing>
+      <bpmn:incoming>SF_Bean_1</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_2</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="End_BeanNotYours" name="Not yours —&#10;left alone">
+      <bpmn:documentation>Someone else holds the bean; this run stops without touching it.</bpmn:documentation>
+      <bpmn:incoming>SF_Bean_2</bpmn:incoming>
+    </bpmn:endEvent>
     <bpmn:sequenceFlow id="f1"  sourceRef="Start_Change"          targetRef="Task_ClaimBean" />
-    <bpmn:sequenceFlow id="f2"  sourceRef="Task_ClaimBean"        targetRef="Task_BranchAndAnnounce" />
+    <bpmn:sequenceFlow id="f2" name="claimed"  sourceRef="GW_BeanYours"        targetRef="Task_BranchAndAnnounce" />
     <bpmn:sequenceFlow id="f3"  sourceRef="Task_BranchAndAnnounce" targetRef="Task_Implement" />
     <bpmn:sequenceFlow id="f4"  sourceRef="Task_Implement"        targetRef="Task_RunGates" />
     <bpmn:sequenceFlow id="f5"  sourceRef="Task_RunGates"         targetRef="Task_CommitAndOpenPR" />
@@ -341,21 +342,23 @@ The loop back through "root-cause the failure" is the point of drawing this at a
     <bpmn:sequenceFlow id="f16" sourceRef="Task_PrepareMerge"     targetRef="Task_CloseBean" />
     <bpmn:sequenceFlow id="f17" sourceRef="Task_CloseBean"        targetRef="Task_ArchiveBean" />
     <bpmn:sequenceFlow id="f18" sourceRef="Task_ArchiveBean" targetRef="End_Merged"/>
+    <bpmn:sequenceFlow id="SF_Bean_1" sourceRef="Task_ClaimBean" targetRef="GW_BeanYours"/>
+    <bpmn:sequenceFlow id="SF_Bean_2" name="not yours" sourceRef="GW_BeanYours" targetRef="End_BeanNotYours"/>
   </bpmn:process>
 
   <bpmndi:BPMNDiagram id="Diagram_CodeChangeReview">
     <bpmndi:BPMNPlane id="Plane_CodeChangeReview" bpmnElement="Collaboration_CodeChangeReview">
       <bpmndi:BPMNShape id="Shape_Participant_CodeChangeReview" bpmnElement="Participant_CodeChangeReview" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1920" height="520" />
+        <dc:Bounds x="160" y="80" width="2030" height="520" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1890" height="300" />
+        <dc:Bounds x="190" y="80" width="2000" height="300" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Pipeline" bpmnElement="Lane_Pipeline" isHorizontal="true">
-        <dc:Bounds x="190" y="380" width="1890" height="110" />
+        <dc:Bounds x="190" y="380" width="2000" height="110" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Reviewer" bpmnElement="Lane_Reviewer" isHorizontal="true">
-        <dc:Bounds x="190" y="490" width="1890" height="110" />
+        <dc:Bounds x="190" y="490" width="2000" height="110" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_Change" bpmnElement="Start_Change">
@@ -366,109 +369,111 @@ The loop back through "root-cause the failure" is the point of drawing this at a
         <dc:Bounds x="330" y="130" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_BranchAndAnnounce" bpmnElement="Task_BranchAndAnnounce">
-        <dc:Bounds x="520" y="130" width="140" height="80" />
+        <dc:Bounds x="630" y="130" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Implement" bpmnElement="Task_Implement">
-        <dc:Bounds x="710" y="130" width="140" height="80" />
+        <dc:Bounds x="820" y="130" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_RunGates" bpmnElement="Task_RunGates">
-        <dc:Bounds x="900" y="130" width="140" height="80" />
+        <dc:Bounds x="1010" y="130" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_CommitAndOpenPR" bpmnElement="Task_CommitAndOpenPR">
-        <dc:Bounds x="1090" y="130" width="140" height="80" />
+        <dc:Bounds x="1200" y="130" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_CIGreen" bpmnElement="GW_CIGreen" isMarkerVisible="true">
-        <bpmndi:BPMNLabel><dc:Bounds x="1290" y="112" width="60" height="14" /></bpmndi:BPMNLabel>
-        <dc:Bounds x="1295" y="145" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1400" y="112" width="60" height="14" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="1405" y="145" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Diagnose" bpmnElement="Task_Diagnose">
-        <dc:Bounds x="1250" y="250" width="140" height="80" />
+        <dc:Bounds x="1360" y="250" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_ReviewClear" bpmnElement="GW_ReviewClear" isMarkerVisible="true">
-        <bpmndi:BPMNLabel><dc:Bounds x="1435" y="112" width="70" height="14" /></bpmndi:BPMNLabel>
-        <dc:Bounds x="1445" y="145" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1545" y="112" width="70" height="14" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="1555" y="145" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_AddressReview" bpmnElement="Task_AddressReview">
-        <dc:Bounds x="1400" y="250" width="140" height="80" />
+        <dc:Bounds x="1510" y="250" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_PrepareMerge" bpmnElement="Task_PrepareMerge">
-        <dc:Bounds x="1550" y="130" width="140" height="80" />
+        <dc:Bounds x="1660" y="130" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_CloseBean" bpmnElement="Task_CloseBean">
-        <dc:Bounds x="1550" y="250" width="140" height="80" />
+        <dc:Bounds x="1660" y="250" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Merged" bpmnElement="End_Merged">
-        <bpmndi:BPMNLabel><dc:Bounds x="2004" y="326" width="48" height="14" /></bpmndi:BPMNLabel>
-        <dc:Bounds x="1990" y="272" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2114" y="326" width="48" height="14" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="2100" y="272" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_ArchiveBean" bpmnElement="Task_ArchiveBean">
-        <dc:Bounds x="1770" y="250" width="140" height="80" />
+        <dc:Bounds x="1880" y="250" width="140" height="80" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Task_RunCI" bpmnElement="Task_RunCI">
-        <dc:Bounds x="1090" y="395" width="180" height="80" />
+        <dc:Bounds x="1200" y="395" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Review" bpmnElement="Task_Review">
-        <dc:Bounds x="1320" y="505" width="140" height="80" />
+        <dc:Bounds x="1430" y="505" width="140" height="80" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNEdge id="Edge_f1" bpmnElement="f1">
         <di:waypoint x="276" y="170" /><di:waypoint x="330" y="170" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_f2" bpmnElement="f2">
-        <di:waypoint x="470" y="170" /><di:waypoint x="520" y="170" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_f2" bpmnElement="f2"><di:waypoint x="550" y="170"/><di:waypoint x="630" y="170"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f3" bpmnElement="f3">
-        <di:waypoint x="660" y="170" /><di:waypoint x="710" y="170" />
+        <di:waypoint x="770" y="170" /><di:waypoint x="820" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f4" bpmnElement="f4">
-        <di:waypoint x="850" y="170" /><di:waypoint x="900" y="170" />
+        <di:waypoint x="960" y="170" /><di:waypoint x="1010" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f5" bpmnElement="f5">
-        <di:waypoint x="1040" y="170" /><di:waypoint x="1090" y="170" />
+        <di:waypoint x="1150" y="170" /><di:waypoint x="1200" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f6" bpmnElement="f6">
-        <di:waypoint x="1160" y="210" /><di:waypoint x="1160" y="395" />
+        <di:waypoint x="1270" y="210" /><di:waypoint x="1270" y="395" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f7" bpmnElement="f7">
-        <di:waypoint x="1270" y="435" /><di:waypoint x="1320" y="435" /><di:waypoint x="1320" y="170" />
+        <di:waypoint x="1380" y="435" /><di:waypoint x="1430" y="435" /><di:waypoint x="1430" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f8" bpmnElement="f8">
-        <bpmndi:BPMNLabel><dc:Bounds x="1330" y="330" width="40" height="14" /></bpmndi:BPMNLabel>
-        <di:waypoint x="1345" y="170" /><di:waypoint x="1390" y="170" /><di:waypoint x="1390" y="545" /><di:waypoint x="1320" y="545" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1440" y="330" width="40" height="14" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1455" y="170" /><di:waypoint x="1500" y="170" /><di:waypoint x="1500" y="545" /><di:waypoint x="1430" y="545" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f9" bpmnElement="f9">
-        <bpmndi:BPMNLabel><dc:Bounds x="1300" y="212" width="30" height="14" /></bpmndi:BPMNLabel>
-        <di:waypoint x="1320" y="195" /><di:waypoint x="1320" y="250" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1410" y="212" width="30" height="14" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1430" y="195" /><di:waypoint x="1430" y="250" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f11" bpmnElement="f11">
-        <di:waypoint x="1250" y="290" /><di:waypoint x="780" y="290" /><di:waypoint x="780" y="210" />
+        <di:waypoint x="1360" y="290" /><di:waypoint x="890" y="290" /><di:waypoint x="890" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f12" bpmnElement="f12">
-        <di:waypoint x="1460" y="545" /><di:waypoint x="1520" y="545" /><di:waypoint x="1520" y="170" /><di:waypoint x="1495" y="170" />
+        <di:waypoint x="1570" y="545" /><di:waypoint x="1630" y="545" /><di:waypoint x="1630" y="170" /><di:waypoint x="1605" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f13" bpmnElement="f13">
-        <bpmndi:BPMNLabel><dc:Bounds x="1448" y="212" width="50" height="14" /></bpmndi:BPMNLabel>
-        <di:waypoint x="1470" y="195" /><di:waypoint x="1470" y="250" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1558" y="212" width="50" height="14" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1580" y="195" /><di:waypoint x="1580" y="250" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f14" bpmnElement="f14">
-        <di:waypoint x="1400" y="290" /><di:waypoint x="780" y="290" /><di:waypoint x="780" y="210" />
+        <di:waypoint x="1510" y="290" /><di:waypoint x="890" y="290" /><di:waypoint x="890" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f15" bpmnElement="f15">
-        <bpmndi:BPMNLabel><dc:Bounds x="1500" y="150" width="40" height="14" /></bpmndi:BPMNLabel>
-        <di:waypoint x="1495" y="170" /><di:waypoint x="1550" y="170" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1610" y="150" width="40" height="14" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1605" y="170" /><di:waypoint x="1660" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f16" bpmnElement="f16">
-        <di:waypoint x="1620" y="210" /><di:waypoint x="1620" y="250" />
+        <di:waypoint x="1730" y="210" /><di:waypoint x="1730" y="250" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f17" bpmnElement="f17">
-        <di:waypoint x="1690" y="290" />
-        <di:waypoint x="1770" y="290" />
+        <di:waypoint x="1800" y="290" />
+        <di:waypoint x="1880" y="290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f18" bpmnElement="f18">
-        <di:waypoint x="1910" y="290" />
-        <di:waypoint x="1990" y="290" />
+        <di:waypoint x="2020" y="290" />
+        <di:waypoint x="2100" y="290" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="GW_BeanYours_di" bpmnElement="GW_BeanYours" isMarkerVisible="true"><dc:Bounds x="500" y="145" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_BeanNotYours_di" bpmnElement="End_BeanNotYours"><dc:Bounds x="507" y="225" width="36" height="36"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_1_di" bpmnElement="SF_Bean_1"><di:waypoint x="470" y="170"/><di:waypoint x="500" y="170"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SF_Bean_2_di" bpmnElement="SF_Bean_2"><di:waypoint x="525" y="195"/><di:waypoint x="525" y="225"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
