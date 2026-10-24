@@ -60,13 +60,28 @@ Has a pinned upstream dependency fallen behind a release: check each pin, keep o
 - Skill: `upstream-version-adoption`.
 - What: One issue, edited in place.
 - Record it: `workflow_complete` with `node: "Task_TrackIssue"`.
-- next: → `A_PickUp` (Pick up the stale pin claim a bean)
+- next: → `Call_BeanOpen` (Open the bean)
 
 ## Done — Every pin current (`End_Current`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 5. Pick up the stale pin claim a bean (`A_PickUp`)
+### 5. Open the bean (`Call_BeanOpen`)
+
+- Who: the `Agent` lane (role `authoring-agent`).
+- Skill: `bean-coordination`.
+- What: Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's.
+- A subprocess (`Process_BeanOpen`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `GW_BeanYours` (Bean claimed?)
+
+### Decide — Bean claimed? (`GW_BeanYours`)
+
+- Reads which end Process_BeanOpen reached.
+- Call `workflow_complete` with `node: "GW_BeanYours"` and `outcome` set to the label that holds:
+  - «claimed» → `A_PickUp` (Pick up the stale pin)
+  - «not yours» → `End_BeanNotYours` (Not yours — left alone)
+
+### 6. Pick up the stale pin (`A_PickUp`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `upstream-version-adoption`.
@@ -74,12 +89,24 @@ Has a pinned upstream dependency fallen behind a release: check each pin, keep o
 - Record it: `workflow_complete` with `node: "A_PickUp"`.
 - next: → `Call_Adopt` (Adopt the version bump)
 
-### 6. Adopt the version bump (`Call_Adopt`)
+## Done — Not yours — left alone (`End_BeanNotYours`)
+
+- The instance completes here: Someone else holds the bean; this run stops without touching it. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 7. Adopt the version bump (`Call_Adopt`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `upstream-version-adoption`.
 - What: The reusable subprocess.
 - A subprocess (`Process_UpstreamAdoption`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `Call_BeanClose` (Close the bean)
+
+### 8. Close the bean (`Call_BeanClose`)
+
+- Who: the `Agent` lane (role `authoring-agent`).
+- Skill: `todo-manager`.
+- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
+- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Handled` (Decision recorded)
 
 ## Done — Decision recorded (`End_Handled`)

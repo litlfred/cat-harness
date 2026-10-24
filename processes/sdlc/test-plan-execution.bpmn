@@ -66,6 +66,9 @@ The run, the report and the certification are three records, and they point back
         <bpmn:documentation>The system under test, or whoever speaks for it, asking for certification against plan P at a named version. Its only task is the request, and that is the design rather than an omission: the system under test never writes a verdict about itself, so after this lane it is the SUBJECT of the process and never a performer in it.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_Request</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Request</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_BeanOpen</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GW_BeanYours</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_BeanNotYours</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Tester" name="Tester" partitionElementRef="tester">
         <bpmn:documentation>Runs the plan against the system: resolves it, binds its fixed or generated test data, executes every case or skips it with a reason, and writes the `folio-test-run/v1` and the `test-report/v1`. Untainted from the system under test — never the same actor — and it does not certify: what it writes is what the certifier decides on.</bpmn:documentation>
@@ -85,13 +88,16 @@ The run, the report and the certification are three records, and they point back
         <bpmn:flowNodeRef>A_RecordRefusal</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_RecordUndetermined</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Refused</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_BeanClose_2</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Undetermined</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_BeanClose_3</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Attestation" name="Attestation service" partitionElementRef="attestation-service">
         <bpmn:documentation>Signs the certification and files it. Reached only from `certified`: a refusal and an undetermined result are recorded by the certifier and signed by nobody. The signature itself is `qa-report-signing.bpmn`, called unchanged, whose own gateway chooses the API or a human release authority by the signer's reach.</bpmn:documentation>
         <bpmn:flowNodeRef>Call_Sign</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_FileCertification</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Certified</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_BeanClose</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
 
@@ -103,10 +109,10 @@ The run, the report and the certification are three records, and they point back
       <bpmn:documentation>Name the plan by id AND version, and the system under test by actor id. The actor must carry the `systemUnderTest` facet: an actor that has not said it can be tested is not run against a plan by default. The bean this instance tracks is claimed here.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-plan-execution" />
-        <cat-harness.processes:bean op="claim" />
+        <cat-harness.processes:bean op="note" />
       </bpmn:extensionElements>
-      <bpmn:incoming>F01</bpmn:incoming>
       <bpmn:outgoing>F02</bpmn:outgoing>
+      <bpmn:incoming>SF_Bean_1</bpmn:incoming>
     </bpmn:task>
 
     <bpmn:task id="A_ResolvePlan" name="Resolve the plan&#10;[test-plan/v1]">
@@ -187,7 +193,7 @@ The run, the report and the certification are three records, and they point back
       <bpmn:documentation>A complete, trusted run in which a case failed. The refusal names the failing cases and is the end of this request; nothing is signed. The bean resolves here because the process has finished — what to do about the failure is a new piece of work.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-plan-execution" />
-        <cat-harness.processes:bean op="resolve" />
+        <cat-harness.processes:bean op="note" />
       </bpmn:extensionElements>
       <bpmn:incoming>F_Refused</bpmn:incoming>
       <bpmn:outgoing>F09</bpmn:outgoing>
@@ -217,23 +223,57 @@ The run, the report and the certification are three records, and they point back
       <bpmn:documentation>The signed certification goes under the declared `attestations` graph on main (owner ruling D2 (a), D5 default), pointing at the report it certifies. The bean resolves here, once the process has actually finished.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-plan-execution" />
-        <cat-harness.processes:bean op="resolve" />
+        <cat-harness.processes:bean op="note" />
       </bpmn:extensionElements>
       <bpmn:incoming>F11</bpmn:incoming>
       <bpmn:outgoing>F12</bpmn:outgoing>
     </bpmn:serviceTask>
 
     <bpmn:endEvent id="End_Certified" name="Certified and signed">
-      <bpmn:incoming>F12</bpmn:incoming>
+      <bpmn:incoming>SF_Bean_4</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:endEvent id="End_Refused" name="Refused">
-      <bpmn:incoming>F09</bpmn:incoming>
+      <bpmn:incoming>SF_Bean_5</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:endEvent id="End_Undetermined" name="Undetermined — nothing signed">
-      <bpmn:incoming>F10</bpmn:incoming>
+      <bpmn:incoming>SF_Bean_6</bpmn:incoming>
     </bpmn:endEvent>
 
-    <bpmn:sequenceFlow id="F01" sourceRef="Start_Request" targetRef="A_Request" />
+    <bpmn:callActivity id="Call_BeanOpen" name="Open the bean&#10;[bean-open]" calledElement="Process_BeanOpen">
+      <bpmn:documentation>Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="bean-coordination"/></bpmn:extensionElements>
+      <bpmn:incoming>F01</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_2</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:exclusiveGateway id="GW_BeanYours" name="Bean claimed?">
+      <bpmn:documentation>Reads which end Process_BeanOpen reached. `claimed`: the bean is in progress and this process works it. `not yours`: a sibling session or a human holds it, nothing was written to it, and this process stops here rather than work a bean it does not own (bean-coordination).</bpmn:documentation>
+      <bpmn:outgoing>SF_Bean_1</bpmn:outgoing>
+      <bpmn:incoming>SF_Bean_2</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_3</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="End_BeanNotYours" name="Not yours —&#10;left alone">
+      <bpmn:documentation>Someone else holds the bean; this run stops without touching it.</bpmn:documentation>
+      <bpmn:incoming>SF_Bean_3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:callActivity id="Call_BeanClose" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+      <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
+      <bpmn:incoming>F12</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_4</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="Call_BeanClose_2" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+      <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
+      <bpmn:incoming>F09</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_5</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="Call_BeanClose_3" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+      <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
+      <bpmn:incoming>F10</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_6</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:sequenceFlow id="F01" sourceRef="Start_Request" targetRef="Call_BeanOpen" />
     <bpmn:sequenceFlow id="F02" sourceRef="A_Request" targetRef="A_ResolvePlan" />
     <bpmn:sequenceFlow id="F03" sourceRef="A_ResolvePlan" targetRef="A_BindData" />
     <bpmn:sequenceFlow id="F04" sourceRef="A_BindData" targetRef="A_Execute" />
@@ -244,151 +284,157 @@ The run, the report and the certification are three records, and they point back
     <bpmn:sequenceFlow id="F_Refused" name="refused" sourceRef="GW_ExitCriteria" targetRef="A_RecordRefusal" />
     <bpmn:sequenceFlow id="F_Undetermined" name="undetermined" sourceRef="GW_ExitCriteria" targetRef="A_RecordUndetermined" />
     <bpmn:sequenceFlow id="F08" sourceRef="A_RecordCertification" targetRef="Call_Sign" />
-    <bpmn:sequenceFlow id="F09" sourceRef="A_RecordRefusal" targetRef="End_Refused" />
-    <bpmn:sequenceFlow id="F10" sourceRef="A_RecordUndetermined" targetRef="End_Undetermined" />
+    <bpmn:sequenceFlow id="F09" sourceRef="A_RecordRefusal" targetRef="Call_BeanClose_2" />
+    <bpmn:sequenceFlow id="F10" sourceRef="A_RecordUndetermined" targetRef="Call_BeanClose_3" />
     <bpmn:sequenceFlow id="F11" sourceRef="Call_Sign" targetRef="A_FileCertification" />
-    <bpmn:sequenceFlow id="F12" sourceRef="A_FileCertification" targetRef="End_Certified" />
+    <bpmn:sequenceFlow id="F12" sourceRef="A_FileCertification" targetRef="Call_BeanClose" />
+    <bpmn:sequenceFlow id="SF_Bean_1" name="claimed" sourceRef="GW_BeanYours" targetRef="A_Request"/>
+    <bpmn:sequenceFlow id="SF_Bean_2" sourceRef="Call_BeanOpen" targetRef="GW_BeanYours"/>
+    <bpmn:sequenceFlow id="SF_Bean_3" name="not yours" sourceRef="GW_BeanYours" targetRef="End_BeanNotYours"/>
+    <bpmn:sequenceFlow id="SF_Bean_4" sourceRef="Call_BeanClose" targetRef="End_Certified"/>
+    <bpmn:sequenceFlow id="SF_Bean_5" sourceRef="Call_BeanClose_2" targetRef="End_Refused"/>
+    <bpmn:sequenceFlow id="SF_Bean_6" sourceRef="Call_BeanClose_3" targetRef="End_Undetermined"/>
   </bpmn:process>
 
   <!-- Layout only. Nothing below changes what the process does. -->
   <bpmndi:BPMNDiagram id="BPMNDiagram_TestPlanExecution">
     <bpmndi:BPMNPlane id="BPMNPlane_TestPlanExecution" bpmnElement="Collab_TestPlanExecution">
       <bpmndi:BPMNShape id="Shape_Participant_TestPlanExecution" bpmnElement="Participant_TestPlanExecution" isHorizontal="true">
-        <dc:Bounds x="160" y="60" width="1960" height="840" />
+        <dc:Bounds x="160" y="60" width="2400" height="840" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Requester" bpmnElement="Lane_Requester" isHorizontal="true">
-        <dc:Bounds x="190" y="60" width="1930" height="140" />
+        <dc:Bounds x="190" y="60" width="2370" height="140" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Tester" bpmnElement="Lane_Tester" isHorizontal="true">
-        <dc:Bounds x="190" y="200" width="1930" height="140" />
+        <dc:Bounds x="190" y="200" width="2370" height="140" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Checker" bpmnElement="Lane_Checker" isHorizontal="true">
-        <dc:Bounds x="190" y="340" width="1930" height="140" />
+        <dc:Bounds x="190" y="340" width="2370" height="140" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Certifier" bpmnElement="Lane_Certifier" isHorizontal="true">
-        <dc:Bounds x="190" y="480" width="1930" height="280" />
+        <dc:Bounds x="190" y="480" width="2370" height="280" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Attestation" bpmnElement="Lane_Attestation" isHorizontal="true">
-        <dc:Bounds x="190" y="760" width="1930" height="140" />
+        <dc:Bounds x="190" y="760" width="2370" height="140" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_Request" bpmnElement="Start_Request">
         <dc:Bounds x="230" y="112" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Request" bpmnElement="A_Request">
-        <dc:Bounds x="300" y="90" width="150" height="80" />
+        <dc:Bounds x="580" y="90" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_ResolvePlan" bpmnElement="A_ResolvePlan">
-        <dc:Bounds x="500" y="230" width="150" height="80" />
+        <dc:Bounds x="780" y="230" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_BindData" bpmnElement="A_BindData">
-        <dc:Bounds x="680" y="230" width="150" height="80" />
+        <dc:Bounds x="960" y="230" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Execute" bpmnElement="A_Execute">
-        <dc:Bounds x="860" y="230" width="150" height="80" />
+        <dc:Bounds x="1140" y="230" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_WriteRun" bpmnElement="A_WriteRun">
-        <dc:Bounds x="1040" y="230" width="150" height="80" />
+        <dc:Bounds x="1320" y="230" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_ReExecuteSample" bpmnElement="A_ReExecuteSample">
-        <dc:Bounds x="1220" y="370" width="150" height="80" />
+        <dc:Bounds x="1500" y="370" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_ExitCriteria" bpmnElement="GW_ExitCriteria" isMarkerVisible="true">
-        <dc:Bounds x="1270" y="505" width="50" height="50" />
+        <dc:Bounds x="1550" y="505" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_RecordCertification" bpmnElement="A_RecordCertification">
-        <dc:Bounds x="1400" y="490" width="150" height="80" />
+        <dc:Bounds x="1680" y="490" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_RecordRefusal" bpmnElement="A_RecordRefusal">
-        <dc:Bounds x="1400" y="580" width="150" height="80" />
+        <dc:Bounds x="1680" y="580" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_RecordUndetermined" bpmnElement="A_RecordUndetermined">
-        <dc:Bounds x="1400" y="670" width="150" height="80" />
+        <dc:Bounds x="1680" y="670" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Refused" bpmnElement="End_Refused">
-        <dc:Bounds x="1600" y="602" width="36" height="36" />
+        <dc:Bounds x="2040" y="602" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Undetermined" bpmnElement="End_Undetermined">
-        <dc:Bounds x="1600" y="692" width="36" height="36" />
+        <dc:Bounds x="2040" y="692" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Sign" bpmnElement="Call_Sign">
-        <dc:Bounds x="1650" y="790" width="150" height="80" />
+        <dc:Bounds x="1930" y="790" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_FileCertification" bpmnElement="A_FileCertification">
-        <dc:Bounds x="1850" y="790" width="150" height="80" />
+        <dc:Bounds x="2130" y="790" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Certified" bpmnElement="End_Certified">
-        <dc:Bounds x="2050" y="812" width="36" height="36" />
+        <dc:Bounds x="2490" y="812" width="36" height="36" />
       </bpmndi:BPMNShape>
 
-      <bpmndi:BPMNEdge id="Edge_F01" bpmnElement="F01">
-        <di:waypoint x="266" y="130" />
-        <di:waypoint x="300" y="130" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F01" bpmnElement="F01"><di:waypoint x="266" y="130"/><di:waypoint x="300" y="130"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F02" bpmnElement="F02">
-        <di:waypoint x="450" y="130" />
-        <di:waypoint x="475" y="130" />
-        <di:waypoint x="475" y="270" />
-        <di:waypoint x="500" y="270" />
+        <di:waypoint x="730" y="130" />
+        <di:waypoint x="755" y="130" />
+        <di:waypoint x="755" y="270" />
+        <di:waypoint x="780" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F03" bpmnElement="F03">
-        <di:waypoint x="650" y="270" />
-        <di:waypoint x="680" y="270" />
+        <di:waypoint x="930" y="270" />
+        <di:waypoint x="960" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F04" bpmnElement="F04">
-        <di:waypoint x="830" y="270" />
-        <di:waypoint x="860" y="270" />
+        <di:waypoint x="1110" y="270" />
+        <di:waypoint x="1140" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F05" bpmnElement="F05">
-        <di:waypoint x="1010" y="270" />
-        <di:waypoint x="1040" y="270" />
+        <di:waypoint x="1290" y="270" />
+        <di:waypoint x="1320" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F06" bpmnElement="F06">
-        <di:waypoint x="1190" y="270" />
-        <di:waypoint x="1205" y="270" />
-        <di:waypoint x="1205" y="410" />
-        <di:waypoint x="1220" y="410" />
+        <di:waypoint x="1470" y="270" />
+        <di:waypoint x="1485" y="270" />
+        <di:waypoint x="1485" y="410" />
+        <di:waypoint x="1500" y="410" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F07" bpmnElement="F07">
-        <di:waypoint x="1295" y="450" />
-        <di:waypoint x="1295" y="505" />
+        <di:waypoint x="1575" y="450" />
+        <di:waypoint x="1575" y="505" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_Certified" bpmnElement="F_Certified">
-        <di:waypoint x="1320" y="530" />
-        <di:waypoint x="1400" y="530" />
+        <di:waypoint x="1600" y="530" />
+        <di:waypoint x="1680" y="530" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_Refused" bpmnElement="F_Refused">
-        <di:waypoint x="1295" y="555" />
-        <di:waypoint x="1295" y="620" />
-        <di:waypoint x="1400" y="620" />
+        <di:waypoint x="1575" y="555" />
+        <di:waypoint x="1575" y="620" />
+        <di:waypoint x="1680" y="620" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_Undetermined" bpmnElement="F_Undetermined">
-        <di:waypoint x="1270" y="530" />
-        <di:waypoint x="1245" y="530" />
-        <di:waypoint x="1245" y="710" />
-        <di:waypoint x="1400" y="710" />
+        <di:waypoint x="1550" y="530" />
+        <di:waypoint x="1525" y="530" />
+        <di:waypoint x="1525" y="710" />
+        <di:waypoint x="1680" y="710" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F08" bpmnElement="F08">
-        <di:waypoint x="1550" y="530" />
-        <di:waypoint x="1725" y="530" />
-        <di:waypoint x="1725" y="790" />
+        <di:waypoint x="1830" y="530" />
+        <di:waypoint x="2005" y="530" />
+        <di:waypoint x="2005" y="790" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_F09" bpmnElement="F09">
-        <di:waypoint x="1550" y="620" />
-        <di:waypoint x="1600" y="620" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_F10" bpmnElement="F10">
-        <di:waypoint x="1550" y="710" />
-        <di:waypoint x="1600" y="710" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F09" bpmnElement="F09"><di:waypoint x="1830" y="620"/><di:waypoint x="1880" y="620"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F10" bpmnElement="F10"><di:waypoint x="1830" y="710"/><di:waypoint x="1880" y="710"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F11" bpmnElement="F11">
-        <di:waypoint x="1800" y="830" />
-        <di:waypoint x="1850" y="830" />
+        <di:waypoint x="2080" y="830" />
+        <di:waypoint x="2130" y="830" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_F12" bpmnElement="F12">
-        <di:waypoint x="2000" y="830" />
-        <di:waypoint x="2050" y="830" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F12" bpmnElement="F12"><di:waypoint x="2280" y="830"/><di:waypoint x="2330" y="830"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanOpen_di" bpmnElement="Call_BeanOpen"><dc:Bounds x="300" y="90" width="120" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_1_di" bpmnElement="SF_Bean_1"><di:waypoint x="500" y="130"/><di:waypoint x="580" y="130"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="GW_BeanYours_di" bpmnElement="GW_BeanYours" isMarkerVisible="true"><dc:Bounds x="450" y="105" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_BeanNotYours_di" bpmnElement="End_BeanNotYours"><dc:Bounds x="457" y="39" width="36" height="36"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_2_di" bpmnElement="SF_Bean_2"><di:waypoint x="420" y="130"/><di:waypoint x="450" y="130"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SF_Bean_3_di" bpmnElement="SF_Bean_3"><di:waypoint x="475" y="105"/><di:waypoint x="475" y="75"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanClose_di" bpmnElement="Call_BeanClose"><dc:Bounds x="2330" y="790" width="120" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_4_di" bpmnElement="SF_Bean_4"><di:waypoint x="2450" y="830"/><di:waypoint x="2490" y="830"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanClose_2_di" bpmnElement="Call_BeanClose_2"><dc:Bounds x="1880" y="580" width="120" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_5_di" bpmnElement="SF_Bean_5"><di:waypoint x="2000" y="620"/><di:waypoint x="2040" y="620"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanClose_3_di" bpmnElement="Call_BeanClose_3"><dc:Bounds x="1880" y="670" width="120" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_6_di" bpmnElement="SF_Bean_6"><di:waypoint x="2000" y="710"/><di:waypoint x="2040" y="710"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

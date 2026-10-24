@@ -10,15 +10,22 @@ Getting a change to the PLATFORM from "this is needed" to merged: claim the work
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_CodeChangeReview"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_ClaimBean` (Claim the work item)
+- next: → `Task_ClaimBean` (Open the bean)
 
-### 1. Claim the work item (`Task_ClaimBean`)
+### 1. Open the bean (`Task_ClaimBean`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `bean-coordination`.
-- What: Claim before you work.
-- Record it: `workflow_complete` with `node: "Task_ClaimBean"`.
-- next: → `Task_BranchAndAnnounce` (Branch, and announce it)
+- What: Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's.
+- A subprocess (`Process_BeanOpen`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `GW_BeanYours` (Bean claimed?)
+
+### Decide — Bean claimed? (`GW_BeanYours`)
+
+- Reads which end Process_BeanOpen reached.
+- Call `workflow_complete` with `node: "GW_BeanYours"` and `outcome` set to the label that holds:
+  - «claimed» → `Task_BranchAndAnnounce` (Branch, and announce it)
+  - «not yours» → `End_BeanNotYours` (Not yours — left alone)
 
 ### 2. Branch, and announce it (`Task_BranchAndAnnounce`)
 
@@ -27,6 +34,10 @@ Getting a change to the PLATFORM from "this is needed" to merged: claim the work
 - What: Announce the branch WHEN IT IS CREATED, not when the work is done.
 - Record it: `workflow_complete` with `node: "Task_BranchAndAnnounce"`.
 - next: → `Task_Implement` (Make the change)
+
+## Done — Not yours — left alone (`End_BeanNotYours`)
+
+- The instance completes here: Someone else holds the bean; this run stops without touching it. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
 ### 3. Make the change (`Task_Implement`)
 
@@ -103,22 +114,22 @@ Getting a change to the PLATFORM from "this is needed" to merged: claim the work
 - Skill: `prepare-merge`.
 - What: `prepare-merge` brings the base in, re-runs the gates and pushes — it does NOT merge.
 - A subprocess (`Process_MergeBase`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Task_CloseBean` (Record what was done, and close)
+- next: → `Task_CloseBean` (Record what was done)
 
-### 11. Record what was done, and close (`Task_CloseBean`)
+### 11. Record what was done (`Task_CloseBean`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `todo-manager`.
 - What: A closed work item is read later by somebody deciding whether to reopen the subject, so "completed" with nothing behind it cannot be audited.
 - Record it: `workflow_complete` with `node: "Task_CloseBean"`.
-- next: → `Task_ArchiveBean` (Archive the bean)
+- next: → `Task_ArchiveBean` (Close the bean)
 
-### 12. Archive the bean (`Task_ArchiveBean`)
+### 12. Close the bean (`Task_ArchiveBean`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `todo-manager`.
-- What: Move the bean, now completed, into the archive, with a line saying which process closed it.
-- Record it: `workflow_complete` with `node: "Task_ArchiveBean"`.
+- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
+- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Merged` (Merged)
 
 ## Done — Merged (`End_Merged`)

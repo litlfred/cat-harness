@@ -458,7 +458,7 @@
     {
       "id": "sibling-session",
       "title": "Sibling session",
-      "description": "Another agent or human working the same store. Present in bean-lifecycle precisely to mark what is NOT yours to close.",
+      "description": "Another agent or human working the same store. Present in bean-open (Process_BeanOpen) precisely to mark what is NOT yours to close.",
       "actorKinds": [
         "agent"
       ],
