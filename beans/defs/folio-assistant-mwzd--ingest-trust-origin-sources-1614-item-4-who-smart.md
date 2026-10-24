@@ -1,11 +1,11 @@
 ---
 # folio-assistant-mwzd
 title: 'INGEST trust + origin sources (#1614 item 4): WHO SMART Trust IG, C2PA spec, DSpace 7 REST contract'
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-10-01T06:42:36Z
-updated_at: 2026-10-16T07:00:00Z
+updated_at: 2026-10-24T07:20:00Z
 parent: folio-assistant-scfh
 ---
 
@@ -25,3 +25,5 @@ Issue #1614 item 4, slides 2 of the KG/folio-asst deck: signed assets and the tr
 Library placement is decided by apcg (library/<group>/<slug>/, owner ruling 2026-09-30). Moving sources now would move them twice.
 
 _2026-10-16T07:00:00Z_ — Block lifted (owner ruling 2026-10-16, items 1 and 9): `apcg` is completed, and the folio-assistant copy lifted this edge on 2026-10-09. Session https://claude.ai/code/session_01K9Xi9QSxCNYju8QNu7EuHg.
+
+_2026-10-24T07:20:00Z_ — **Completed** (drain, session https://claude.ai/code/session_01CLVaA6b8XQ5xhvqNZCqc4R). Every "Done when" box was already ticked with evidence. The SMART Trust IG narrative pages are held as L1 library entries `who-smart-trust-*` in litlfred/smart-trust-tools `library/`; C2PA v2.5 and the DSpace 7 REST contract are in folio-assistant-core#186 (`110feca3`).
