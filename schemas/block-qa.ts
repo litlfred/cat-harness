@@ -27,6 +27,7 @@ import type { ContentAdapter, ContentProfile } from "./block-kinds";
 import type { ContributionRegistry } from "./contributions";
 import { QaScriptSidecar as QaScriptSidecarSchema } from "./block-qa-schema/js/index.ts";
 import { nodeKind } from "./node-kind.ts";
+import type { RunContextRef } from "./run-context";
 
 /**
  * The kind of reviewer that produced this finding.
@@ -693,6 +694,12 @@ export interface BlockQaReport {
   criteria: Record<string, QaCriterionEntry[]>;
   /** Report creation / last-update timestamp (ISO-8601 UTC). */
   updated_at: string;
+  /**
+   * Content-addressed reference to the `folio-run-context/v1` record of the
+   * run that wrote this report (`docs/proposals/tool-releases-2026-10-07.md`,
+   * owner C1 = a).
+   */
+  runContext?: RunContextRef;
 }
 
 /**
