@@ -19,6 +19,60 @@ independent queues `amom` defines.
 **Stage: `draft`.** Every requirement below is proposed. None is approved.
 The owner answered Q2–Q5 on 2026-10-24 (below); Q1 is open.
 
+## Consolidation: the benchmark is the test process (owner, 2026-10-24)
+
+The owner asked whether QA results, at least the machine ones, can feed the
+task bank and spec-kit, and whether the infrastructure can be shared. **Most of
+what this draft asks for already exists as the test process** (arc `3fva`,
+proposal `qa-reports-branch-and-test-process-2026-10-01`). Beans `ygzh`, `3o5b`
+and `ff09` are completed. So the benchmark should be built on it, not beside
+it.
+
+| this draft needs | already on main | status |
+|---|---|---|
+| a task bank | `test-plan/v1` (`schemas/test-plan.ts`): cases, assertions, fixed or seeded test data, `requirements[]` | ✅ built; one plan, `test/plans/crdm-detect-evaluation.test-plan.json` |
+| one record per run | `folio-test-run/v1`: separate data and process hashes, `plan` and `sut` refs | ✅ built; this covers **REQ-009** (replay) |
+| the result is a report (REQ-006) | `test-report/v1`: per-case verdicts and a rollup per plan, written to `qa-reports` under `tests/<plan>/<sut>/<run>/` | ✅ built; it replaces the `wp49` report location |
+| who scores (Q3 = D) | reviewer `kind`: `script`, `agent` or `human` (`TestReviewerSchema`, `QaWitness`) | ✅ built |
+| asking before a run (REQ-007) | `test-plan-execution.bpmn`: requester, tester, untainted checker, certifier; `test-certification.dmn` | ✅ built |
+| **which model ran** (REQ-002) | `sut` is `{actor, version, reach}`, with **no model and no configuration** | ❌ **gap 1** |
+| with vs without the harness (REQ-004) | nothing marks a configuration | ❌ **gap 1** (same field) |
+| independent queues (N1) | one plan executed against several SUTs; the rollup stays per plan, so comparing SUTs on one plan is allowed | ⚠️ **gap 2**: no multi-SUT run or side-by-side view |
+| outcome and cost (REQ-005) | the run records outcome; cost and tokens have no field | ❌ **gap 3** |
+
+**Machine QA results as test cases.** Test-plan assertion ids are criterion
+ids (proposal §3.2), so every machine (`script`) QA criterion can already
+serve as an assertion, and its producer as the scorer.
+
+The QA history also gives tasks with known answers. Take a machine finding
+that was later fixed: the artefact before the fix and the finding become the
+case, and "the checker passes" is the assertion. 1,249 result files sit under
+`test/results/` on main, and git history holds the before and after of each
+fix.
+
+That is **gap 4**: a generator that turns fixed machine findings into
+`test-plan/v1` cases. It belongs with `vm6m` (test data, in progress, agy's).
+Agent and human verdicts are not used as ground truth, only machine ones, as
+the owner said.
+
+**spec-kit and CRDM.** A plan's `requirements[]` takes `req:` ids, so a
+**graduated** requirement links to its tests already. A spec-kit spec in
+draft has only `FR-`/`SC-` ids in an issue comment, so its success criteria
+cannot point at a plan case yet. That is **gap 5**, and it is the same
+missing link as Q1 gap 2.
+
+**What is left for `amom` and `oz9e`.** Five gaps instead of nine
+requirements:
+
+1. `sut` gains `model` and `configuration`.
+2. A run of one plan against N SUTs, with a side-by-side view.
+3. Cost and token fields on a run, with unknown recorded as `unknown`.
+4. A generator from fixed machine findings to plan cases.
+5. A spec-kit `SC-` to plan-case link.
+
+The shared-queue mode stays today's swarm (Phase 2). REQ-001 to REQ-009 below
+are kept for the record. The mapping above says which ones are already met.
+
 ## Phase 1 — needs
 
 | # | need, in the owner's words | bean |
