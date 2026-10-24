@@ -35,7 +35,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`content-graph-analysis/`](content-graph-analysis/) | _nothing declares what this holds_ | |
 | [`content-graph-build/`](content-graph-build/) | _nothing declares what this holds_ | |
 | [`content-graph-uml/`](content-graph-uml/) | _nothing declares what this holds_ | |
-| [`content-manifest-validate/`](content-manifest-validate/) | _nothing declares what this holds_ | |
 | [`context-prefixes/`](context-prefixes/) | _nothing declares what this holds_ | |
 | [`corpus-search/`](corpus-search/) | _nothing declares what this holds_ | |
 | [`declaration-resolution/`](declaration-resolution/) | _nothing declares what this holds_ | |
@@ -78,12 +77,8 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`kg-validate/`](kg-validate/) | _nothing declares what this holds_ | |
 | [`kg-viewer/`](kg-viewer/) | _nothing declares what this holds_ | |
 | [`l1-complete-check/`](l1-complete-check/) | _nothing declares what this holds_ | |
-| [`latex-overfull/`](latex-overfull/) | _nothing declares what this holds_ | |
-| [`latex-preflight/`](latex-preflight/) | _nothing declares what this holds_ | |
 | [`latexmk-compile/`](latexmk-compile/) | _nothing declares what this holds_ | |
-| [`lean-audit/`](lean-audit/) | _nothing declares what this holds_ | |
 | [`lean-build/`](lean-build/) | _nothing declares what this holds_ | |
-| [`lean-coverage/`](lean-coverage/) | _nothing declares what this holds_ | |
 | [`lean-toolchain-setup/`](lean-toolchain-setup/) | _nothing declares what this holds_ | |
 | [`library-viewer/`](library-viewer/) | _nothing declares what this holds_ | |
 | [`log-message/`](log-message/) | _nothing declares what this holds_ | |
@@ -111,7 +106,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`package-release-workflow/`](package-release-workflow/) | _nothing declares what this holds_ | |
 | [`pages-index/`](pages-index/) | _nothing declares what this holds_ | |
 | [`pages-publish/`](pages-publish/) | _nothing declares what this holds_ | |
-| [`paper-latex-build/`](paper-latex-build/) | _nothing declares what this holds_ | |
 | [`paper-preferences/`](paper-preferences/) | _nothing declares what this holds_ | |
 | [`paper-preview/`](paper-preview/) | _nothing declares what this holds_ | |
 | [`pdf-cover/`](pdf-cover/) | _nothing declares what this holds_ | |
@@ -120,9 +114,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`pin-actions/`](pin-actions/) | _nothing declares what this holds_ | |
 | [`pin-spdx-license-list/`](pin-spdx-license-list/) | _nothing declares what this holds_ | |
 | [`processes-viewer/`](processes-viewer/) | _nothing declares what this holds_ | |
-| [`proof-dependency-graph/`](proof-dependency-graph/) | _nothing declares what this holds_ | |
-| [`proof-objects-extract/`](proof-objects-extract/) | _nothing declares what this holds_ | |
-| [`proof-status-update/`](proof-status-update/) | _nothing declares what this holds_ | |
 | [`qa-sweep/`](qa-sweep/) | _nothing declares what this holds_ | |
 | [`rail-standalone-pages/`](rail-standalone-pages/) | _nothing declares what this holds_ | |
 | [`readme-audit/`](readme-audit/) | _nothing declares what this holds_ | |
@@ -156,8 +147,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`sub-kg-verify-clone/`](sub-kg-verify-clone/) | _nothing declares what this holds_ | |
 | [`subgraph-readmes/`](subgraph-readmes/) | _nothing declares what this holds_ | |
 | [`subgraph-resolve/`](subgraph-resolve/) | _nothing declares what this holds_ | |
-| [`tex-snippet-validate/`](tex-snippet-validate/) | _nothing declares what this holds_ | |
-| [`tex-source-audit/`](tex-source-audit/) | _nothing declares what this holds_ | |
+| [`theme-viewer/`](theme-viewer/) | _nothing declares what this holds_ | |
 | [`themes-css/`](themes-css/) | _nothing declares what this holds_ | |
 | [`tool-coverage/`](tool-coverage/) | _nothing declares what this holds_ | |
 | [`tool-schema/`](tool-schema/) | _nothing declares what this holds_ | |
