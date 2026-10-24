@@ -35,6 +35,7 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `proposals`, holding `
 | [`instance-versioning.md`](instance-versioning.md) | Instance versioning and dependency resolution |  |
 | [`kg-subscriptions.md`](kg-subscriptions.md) | KG subscriptions |  |
 | [`lsi-applicability.md`](lsi-applicability.md) | Latent Semantic Indexing: where it applies here, measured |  |
+| [`lsi-cross-graph-near-2026-10-24.md`](lsi-cross-graph-near-2026-10-24.md) | Cross-graph lsi:near — design draft (ec2a step 3) |  |
 | [`lsi-epic-filing-2026-09-29.md`](lsi-epic-filing-2026-09-29.md) | LSI epic-filing proposal — 2026-09-29 |  |
 | [`lsi-who-iris-2026-09-29.md`](lsi-who-iris-2026-09-29.md) | LSI and correspondence analysis on who-iris |  |
 | [`merge-gate-2026-10-02.md`](merge-gate-2026-10-02.md) | Merge gate: adversarial review and compile gates |  |
