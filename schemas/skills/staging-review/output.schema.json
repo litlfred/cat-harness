@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://litlfred.github.io/folio-assistant/skills/staging-review/output.schema.json",
+  "$id": "https://litlfred.github.io/folio-assistant/cat-harness/skills/staging-review/output.schema.json",
   "title": "Staging Review Output",
   "description": "The reviewable list: a narrative of what changed, where to start, and the staging links, one deep link per changed page with its before. Every other skill that asks for feedback carries this same `stagingLinks` shape.",
   "type": "object",

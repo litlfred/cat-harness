@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://litlfred.github.io/folio-assistant/skills/ask-the-person/output.schema.json",
+  "$id": "https://litlfred.github.io/folio-assistant/cat-harness/skills/ask-the-person/output.schema.json",
   "title": "Ask The Person Output",
   "description": "What the calling step gets back: proof the question went out twice, and the person's answer or the default taken. A dismissed card is not an answer.",
   "type": "object",

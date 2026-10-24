@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://litlfred.github.io/folio-assistant/skills/wireframe-design-review/output.schema.json",
+  "$id": "https://litlfred.github.io/folio-assistant/cat-harness/skills/wireframe-design-review/output.schema.json",
   "title": "Wireframe Design Review Output",
   "description": "The wireframe renderings and the choice: each candidate's source HTML and its web and mobile screenshots, its check and review entries, the chosen candidate and who chose it, the same files as changed assets of the branch, and the staging deep links the requester or BA reviewed them at.",
   "type": "object",

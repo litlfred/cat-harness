@@ -17,7 +17,7 @@ export default toolFactory((t) =>
     },
     satisfies: ["kg-export"],
     maintains: [
-      { source: "schemas/tool-types.ts", artefact: "tool-types.schema.json", format: "json-schema" },
+      { source: "schemas/tool-types.ts", artefact: "cat-harness/tool-types.schema.json", format: "json-schema" },
     ],
   }),
 );
