@@ -352,6 +352,16 @@ export const DocIdSchema = z
   .describe("A library document id, e.g. WPR-RDO-2020-003-eng");
 
 /**
+ * A repository at one pin: `<owner/repo>@<40-hex sha>`, e.g. the checkout a
+ * Tool's output was built in, recorded as provenance. The same shape as the
+ * right-hand side of `MountSeed`, so no shell metacharacter can parse.
+ */
+export const PinnedRepoSchema = z
+  .string()
+  .regex(/^[A-Za-z0-9][A-Za-z0-9-]*\/[A-Za-z0-9._-]+@[0-9a-f]{40}$/, "a pinned repository is <owner/repo>@<40-hex sha>")
+  .describe("A repository at one commit, e.g. <owner>/<repo>@<40-hex sha>");
+
+/**
  * One `mount:remote --seed`: `<name>=<owner/repo>@<40-hex sha>`, the instance to
  * create or re-pin in `index.config.json`. Constrained to that exact shape, so
  * no shell metacharacter can parse.
@@ -691,6 +701,7 @@ export const TOOL_TYPES = {
   Slug: SlugSchema,
   DocId: DocIdSchema,
   MountSeed: MountSeedSchema,
+  PinnedRepo: PinnedRepoSchema,
   Login: LoginSchema,
   ContentType: ContentTypeSchema,
   LinkMode: LinkModeSchema,
@@ -859,6 +870,7 @@ export const INJECTION_SAFE: ReadonlySet<ToolTypeName> = new Set<ToolTypeName>([
   "Slug",
   "DocId",
   "MountSeed",
+  "PinnedRepo",
   "Login",
   // Every enum below is injection-safe by construction: a value outside the
   // member list does not parse, and no member contains a shell metacharacter.
