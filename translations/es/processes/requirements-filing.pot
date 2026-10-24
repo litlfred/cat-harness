@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: requirements-filing\n"
-"POT-Creation-Date: 2026-10-23T18:41:16.439Z\n"
+"POT-Creation-Date: 2026-10-24T09:47:02.535Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -109,6 +109,11 @@ msgstr ""
 msgid "git mv proposal to docs/requirements/<slug>.md and record proposedIn"
 msgstr ""
 
+#: processes/sdlc/requirements-filing.bpmn:18
+#. Diagram element documentation
+msgid "How a proposal in docs/proposals/<slug>.md is promoted into docs/requirements/<slug>.md when its feature ships, or how an existing filed requirement is amended in place, superseded by a new requirement (status: superseded + supersededBy: req:<new-slug>), or retired (status: retired) without deleting historical records. Every filed requirement keeps its flat path docs/requirements/<slug>.md (id: req:<slug>) and is organised in docs/requirements/index.md under its canonical concern group from code-lists/concern-group.json, verified by check:requirements, and signed off by the Business Analyst / Owner."
+msgstr ""
+
 #: processes/sdlc/requirements-filing.bpmn:75
 #. Diagram label
 msgid "Mark superseded or retired record in place and update RequirementSet"
@@ -132,11 +137,6 @@ msgstr ""
 #: processes/sdlc/requirements-filing.bpmn:133
 #. Diagram label
 msgid "promote"
-msgstr ""
-
-#: processes/sdlc/requirements-filing.bpmn:18
-#. Diagram element documentation
-msgid "Proposed filing process for bean folio-assistant-qh1s (issue #1164): how a proposal in docs/proposals/<slug>.md is promoted into docs/requirements/<slug>.md when its feature ships, or how an existing filed requirement is amended in place, superseded by a new requirement (status: superseded + supersededBy: req:<new-slug>), or retired (status: retired) without deleting historical records. Every filed requirement keeps its flat path docs/requirements/<slug>.md (id: req:<slug>) and is organised in docs/requirements/index.md under its canonical concern group from code-lists/concern-group.json, verified by check:requirements, and signed off by the Business Analyst / Owner."
 msgstr ""
 
 #: processes/sdlc/requirements-filing.bpmn:113
