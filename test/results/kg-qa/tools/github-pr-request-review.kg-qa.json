@@ -5,7 +5,7 @@
     "id": "github-pr-request-review",
     "path": null
   },
-  "source_hash": "f07c980ff790",
+  "source_hash": "7a6c567bdab8",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

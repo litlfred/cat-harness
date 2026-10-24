@@ -5,7 +5,7 @@
     "id": "Process_UpstreamPinWatch",
     "path": "processes/sdlc/upstream-pin-watch.bpmn"
   },
-  "source_hash": "sha256:39984e90c7fe17d048e5fedb49afd92a29882336be8e7bbc3b28807c81c765cb",
+  "source_hash": "sha256:9a709bfc09526364ca4acbb00185e68338b4011bf2810fa6f5f7aa0b77864686",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

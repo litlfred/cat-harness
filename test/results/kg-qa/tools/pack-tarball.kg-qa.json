@@ -5,7 +5,7 @@
     "id": "pack-tarball",
     "path": null
   },
-  "source_hash": "b64b5f5f1b0e",
+  "source_hash": "97500a4a7a90",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "Process_SwotAnalysis",
     "path": "processes/process/swot-analysis.bpmn"
   },
-  "source_hash": "sha256:cfc0c7841ed5391fae6658b7f5a25eb456f24c632aa998f5c2a5fbf1d5811796",
+  "source_hash": "sha256:97d9a8685ecdfcf2747b678bc557f33722af6c7a2a42fe8df46f381a5866ac74",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

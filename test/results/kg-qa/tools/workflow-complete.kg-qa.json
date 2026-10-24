@@ -5,7 +5,7 @@
     "id": "workflow-complete",
     "path": null
   },
-  "source_hash": "921bc78ceb0a",
+  "source_hash": "cfedda5054b6",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

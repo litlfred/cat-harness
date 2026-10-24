@@ -5,7 +5,7 @@
     "id": "Process_RenderLog",
     "path": "processes/ui/staging-render-log.bpmn"
   },
-  "source_hash": "sha256:c14d225645f4ed256a604ac2b3ad1a8d9dfacadbf2bd1e597ae2c39f06e1a270",
+  "source_hash": "sha256:fb7168730dab6b9726c704ece2daa9119d01704aa1413bebe7ec9ed53237389e",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -122,7 +122,7 @@
       "findings": []
     },
     "activity-fulfilment-kind": {
-      "result": "n/a",
+      "result": "pass",
       "findings": []
     },
     "call-activity-resolves": {
@@ -172,9 +172,9 @@
     }
   },
   "totals": {
-    "pass": 14,
+    "pass": 15,
     "fail": 3,
-    "n/a": 10,
+    "n/a": 9,
     "unknown": 0
   }
 }

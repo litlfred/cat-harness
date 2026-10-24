@@ -5,7 +5,7 @@
     "id": "merge-overlap",
     "path": null
   },
-  "source_hash": "0dbcafb0aac0",
+  "source_hash": "87c27ab411ca",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

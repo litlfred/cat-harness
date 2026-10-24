@@ -5,7 +5,7 @@
     "id": "workflow-start",
     "path": null
   },
-  "source_hash": "b58ff51c421f",
+  "source_hash": "beba47502fc1",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

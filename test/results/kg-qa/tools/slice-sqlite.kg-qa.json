@@ -5,7 +5,7 @@
     "id": "slice-sqlite",
     "path": null
   },
-  "source_hash": "56eb10a795fc",
+  "source_hash": "777bd3379b4f",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "ns-vocabulary",
     "path": null
   },
-  "source_hash": "479145c68396",
+  "source_hash": "23bfb3043fc1",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

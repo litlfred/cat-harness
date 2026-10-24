@@ -5,7 +5,7 @@
     "id": "github-pr-comment",
     "path": null
   },
-  "source_hash": "0088c7ca6fcf",
+  "source_hash": "da6bbfea86ab",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "github-pr-list",
     "path": null
   },
-  "source_hash": "d7c66d7d2775",
+  "source_hash": "fa09b449a9a3",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

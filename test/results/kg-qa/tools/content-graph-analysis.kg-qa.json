@@ -5,7 +5,7 @@
     "id": "content-graph-analysis",
     "path": null
   },
-  "source_hash": "7e0ff29a3cf0",
+  "source_hash": "625f2c14598c",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "bpmn-checklist",
     "path": null
   },
-  "source_hash": "f7d44941a556",
+  "source_hash": "e191f9549c77",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "kg-validate",
     "path": null
   },
-  "source_hash": "7c36bde28105",
+  "source_hash": "914097bbeeee",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

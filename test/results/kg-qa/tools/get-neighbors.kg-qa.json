@@ -5,7 +5,7 @@
     "id": "get-neighbors",
     "path": null
   },
-  "source_hash": "10a6cc49d8ba",
+  "source_hash": "e9031330e215",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "bpmn-render",
     "path": null
   },
-  "source_hash": "b746776a7b3f",
+  "source_hash": "a5102a726f43",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

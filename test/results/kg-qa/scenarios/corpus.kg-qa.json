@@ -5,7 +5,7 @@
     "id": "corpus",
     "path": "scenarios/roles.json"
   },
-  "source_hash": "sha256:a55d7dc2c4aa2377e869486e635707736801f42d2ca8ac8ff161da564a51edd4",
+  "source_hash": "sha256:cef50d087cae3c56d36a07b8ffc827527f8b4356b84b41794e1f40b930410d24",
   "criteria": {
     "role-skills-resolve": {
       "result": "pass",
@@ -20,13 +20,8 @@
       "findings": []
     },
     "mechanical-role-untested": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "corpus",
-          "detail": "role \"corpus\" is played only by system actors, and none of its 3 skill(s) (document-intake, kg-subscription, materialize-remote) names a test in `tested-by:`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "role-has-persona": {
       "result": "n/a",
@@ -51,8 +46,8 @@
     }
   },
   "totals": {
-    "pass": 3,
-    "fail": 2,
+    "pass": 4,
+    "fail": 1,
     "n/a": 3,
     "unknown": 0
   }

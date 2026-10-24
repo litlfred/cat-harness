@@ -5,7 +5,7 @@
     "id": "paper-preferences",
     "path": null
   },
-  "source_hash": "09f195833292",
+  "source_hash": "990d310e6992",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

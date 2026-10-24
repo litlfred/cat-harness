@@ -5,7 +5,7 @@
     "id": "github-branches",
     "path": null
   },
-  "source_hash": "e00822e39bf7",
+  "source_hash": "64124bc7efc8",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

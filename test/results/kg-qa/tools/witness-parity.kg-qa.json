@@ -5,7 +5,7 @@
     "id": "witness-parity",
     "path": null
   },
-  "source_hash": "054b23f86fe2",
+  "source_hash": "9a55d8eeaeea",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

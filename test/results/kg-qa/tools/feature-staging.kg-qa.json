@@ -5,7 +5,7 @@
     "id": "feature-staging",
     "path": null
   },
-  "source_hash": "a0bc1c109ab3",
+  "source_hash": "c81c9aeadce3",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

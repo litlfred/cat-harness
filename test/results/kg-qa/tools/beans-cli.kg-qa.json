@@ -5,7 +5,7 @@
     "id": "beans-cli",
     "path": null
   },
-  "source_hash": "fc07b4170ada",
+  "source_hash": "fddb9f2f3cf2",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "gitlab-branches",
     "path": null
   },
-  "source_hash": "7bd437e8d82c",
+  "source_hash": "bc602dd3a408",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

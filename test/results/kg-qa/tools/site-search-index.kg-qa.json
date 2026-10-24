@@ -5,7 +5,7 @@
     "id": "site-search-index",
     "path": null
   },
-  "source_hash": "8fcf0267be54",
+  "source_hash": "e7d017ed3541",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

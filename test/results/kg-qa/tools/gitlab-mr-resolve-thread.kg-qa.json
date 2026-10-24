@@ -5,7 +5,7 @@
     "id": "gitlab-mr-resolve-thread",
     "path": null
   },
-  "source_hash": "711f7ee411a4",
+  "source_hash": "e5aa7bd42b3b",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

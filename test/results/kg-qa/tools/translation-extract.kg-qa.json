@@ -5,7 +5,7 @@
     "id": "translation-extract",
     "path": null
   },
-  "source_hash": "5e0f3ea28cad",
+  "source_hash": "e66f9d139ac1",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

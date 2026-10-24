@@ -5,7 +5,7 @@
     "id": "kg-viewer",
     "path": null
   },
-  "source_hash": "4873a07bc4f2",
+  "source_hash": "4a90f07ecb4b",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

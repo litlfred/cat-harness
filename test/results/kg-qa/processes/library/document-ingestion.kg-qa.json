@@ -5,7 +5,7 @@
     "id": "Process_Ingestion",
     "path": "processes/library/document-ingestion.bpmn"
   },
-  "source_hash": "sha256:fb8f372735b76b3a811ddedc879fae155f616b1a1fcd031cba128886b592ce73",
+  "source_hash": "sha256:afab9a1016416c43ad5f97b79f32ce165d021b9b95192d421067b3427ae4da37",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -90,8 +90,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_Ingestion",
+          "detail": "document-ingestion.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -127,8 +132,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 2,
+    "pass": 15,
+    "fail": 3,
     "n/a": 9,
     "unknown": 0
   }

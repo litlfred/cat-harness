@@ -5,7 +5,7 @@
     "id": "corpus-search",
     "path": null
   },
-  "source_hash": "69bee2d7c789",
+  "source_hash": "66f15d704131",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

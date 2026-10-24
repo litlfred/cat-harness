@@ -5,7 +5,7 @@
     "id": "compose-docs",
     "path": null
   },
-  "source_hash": "943a2fd0da94",
+  "source_hash": "5a7cf07d04f1",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

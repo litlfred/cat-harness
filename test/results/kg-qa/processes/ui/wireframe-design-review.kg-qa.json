@@ -5,7 +5,7 @@
     "id": "Process_WireframeDesignReview",
     "path": "processes/ui/wireframe-design-review.bpmn"
   },
-  "source_hash": "sha256:2f3e7d5db945465d98e98a89cef68b4ecc6a25b15cb2f43ac1b8788e7317718f",
+  "source_hash": "sha256:dc9a9de89fb5bce5f738dc11b45e678bbfd4e2e7be54a54e3860b57e36ddd229",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

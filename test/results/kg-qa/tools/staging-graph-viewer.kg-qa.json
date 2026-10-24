@@ -5,7 +5,7 @@
     "id": "staging-graph-viewer",
     "path": null
   },
-  "source_hash": "aa339f84944d",
+  "source_hash": "a49e1383d07a",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",
