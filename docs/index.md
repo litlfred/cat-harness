@@ -130,6 +130,7 @@ swimlanes, with the roles, the HCI validation gate, and the shared work plan.
 - **[Tutorial: Writing a paper with folio-assistant](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)** — a full, LLM-driven walk-through with a mock chat session.
 - **[Content types]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }})** — the formalism of each authoring domain.
 - **[Publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** — BPMN swimlane diagrams of the editing and publication processes: the HCI validation gate, who reviews what, and the shared work plan.
+- **[Processes]({{ '/processes/' | relative_url }})** — every executable BPMN diagram, searchable, each with the workflow instances running it: open one to see where its token sits, what is stuck, and the beans and todos it names.
 - **[Agent onboarding]({{ '/docs/cat-harness/guides/agent-onboarding.html' | relative_url }})** — orientation for an LLM agent dropped into a folio: first steps, finding skills, the content-object model, QA sidecars.
 - **[Skills & roles]({{ '/docs/cat-harness/concepts/skills.html' | relative_url }})** — every skill and role, and how they work together with the LLM.
 - **[Skill schema reference](reference/skills/)** — generated input/output contracts for every skill.
