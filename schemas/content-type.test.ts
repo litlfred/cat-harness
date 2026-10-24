@@ -92,3 +92,14 @@ describe("index.config.json carries the sections without knowing what they hold"
     expect(IndexConfigSchema.safeParse(JSON.parse(index({ Widget: {} }))).success).toBe(false);
   });
 });
+
+describe("index.config.json is never itself a harness marker", () => {
+  test("a repository carrying only an index is not a harness", async () => {
+    const { registerBaseContentTypes } = await import("./content-types-base");
+    const r = new ContentTypeRegistry();
+    registerBaseContentTypes(r);
+    repo({ "index.config.json": index({ widget: {} }) }, (root) => {
+      expect(describeRepository(root, r).types.map((t) => t.id)).toEqual([]);
+    });
+  });
+});
