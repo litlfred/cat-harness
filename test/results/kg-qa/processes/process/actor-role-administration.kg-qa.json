@@ -5,7 +5,7 @@
     "id": "Process_ActorRoleAdministration",
     "path": "processes/process/actor-role-administration.bpmn"
   },
-  "source_hash": "sha256:12591d5f5ed912ec07f5627c719131ab734931044537f498467a1396f5e386a1",
+  "source_hash": "sha256:48e84c45ae1224fedbe423dec73e6457704c4044877b0b3335bed088e1383d1e",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -111,13 +111,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_ActorRoleAdministration",
-          "detail": "actor-role-administration.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -153,8 +148,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 4,
+    "pass": 16,
+    "fail": 3,
     "n/a": 8,
     "unknown": 0
   }

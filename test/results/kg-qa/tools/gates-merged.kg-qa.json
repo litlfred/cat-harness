@@ -5,7 +5,7 @@
     "id": "gates-merged",
     "path": null
   },
-  "source_hash": "d79016519e91",
+  "source_hash": "a61f97681391",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

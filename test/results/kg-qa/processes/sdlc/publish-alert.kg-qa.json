@@ -5,7 +5,7 @@
     "id": "Process_PublishAlert",
     "path": "processes/sdlc/publish-alert.bpmn"
   },
-  "source_hash": "sha256:b9cf9df6275fd2fa030908f42f93daf110d62c801882d113f52f4e045ed789ce",
+  "source_hash": "sha256:512c2eed5592ae531c25e101a326dd67e702e99df5b3292266c994a8c3085885",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -77,34 +77,24 @@
       "findings": []
     },
     "activity-fulfilment-kind": {
-      "result": "pass",
-      "findings": []
-    },
-    "call-activity-resolves": {
       "result": "n/a",
       "findings": []
     },
+    "call-activity-resolves": {
+      "result": "pass",
+      "findings": []
+    },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_PublishAlert",
-          "detail": "publish-alert.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
       "findings": []
     },
     "activity-calls-skill-process": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "U_Triage",
-          "detail": "\"Triage the failure: hold or fix forward\" names skill \"publish-verification\", which owns publish-verification.bpmn, but is a plain task. Make it a <bpmn:callActivity calledElement=\"…\"> so the diagram descends into that process, or declare <cat-harness.processes:no-call reason=\"…\"/> saying why it only uses the skill."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "gateway-documented": {
       "result": "pass",
@@ -132,8 +122,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 3,
+    "pass": 17,
+    "fail": 1,
     "n/a": 9,
     "unknown": 0
   }

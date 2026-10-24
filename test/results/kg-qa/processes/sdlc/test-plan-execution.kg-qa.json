@@ -5,7 +5,7 @@
     "id": "Process_TestPlanExecution",
     "path": "processes/sdlc/test-plan-execution.bpmn"
   },
-  "source_hash": "sha256:450e0eb82125e48e666d847b18335c54a8aa28777b7fb734aee17e9664ba412d",
+  "source_hash": "sha256:21a6acfd362f4ad008eedd47fa4e5b8ed4932d11735af0c88b44fcdf7588f5a2",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

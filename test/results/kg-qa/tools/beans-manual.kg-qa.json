@@ -5,7 +5,7 @@
     "id": "beans-manual",
     "path": null
   },
-  "source_hash": "8584154e4cad",
+  "source_hash": "1d4ad0ccfb8e",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

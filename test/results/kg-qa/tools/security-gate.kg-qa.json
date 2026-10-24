@@ -5,7 +5,7 @@
     "id": "security-gate",
     "path": null
   },
-  "source_hash": "ec300d0e7e89",
+  "source_hash": "4051ba15a954",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

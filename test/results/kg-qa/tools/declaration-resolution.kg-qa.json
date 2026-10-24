@@ -5,7 +5,7 @@
     "id": "declaration-resolution",
     "path": null
   },
-  "source_hash": "5eca24e7b310",
+  "source_hash": "589b81e6961c",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

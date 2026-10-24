@@ -5,7 +5,7 @@
     "id": "Process_RepoHealth",
     "path": "processes/sdlc/repository-health-watch.bpmn"
   },
-  "source_hash": "sha256:7240d6be7be354d54211c5dfb4fab028659a9bc21edb987e9f8dc9899446615f",
+  "source_hash": "sha256:485a7dc527533480f706186b504de7b9c10489c0b6c8d9a2d50d9031c5911ccd",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -95,13 +95,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_RepoHealth",
-          "detail": "repository-health-watch.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -137,8 +132,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 4,
+    "pass": 16,
+    "fail": 3,
     "n/a": 8,
     "unknown": 0
   }

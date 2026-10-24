@@ -5,7 +5,7 @@
     "id": "Process_DocsSite",
     "path": "processes/sdlc/docs-site-publish.bpmn"
   },
-  "source_hash": "sha256:f7234e957d6ab8c29cbc4855fea0a0c0937248f75f9d12a5392d1368d7dc56db",
+  "source_hash": "sha256:e3470bf3e57f52a74639437eb3a79e1aab2a1ed436e3044d46bca008441d9243",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -99,13 +99,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_DocsSite",
-          "detail": "docs-site-publish.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -132,13 +127,8 @@
       "findings": []
     },
     "prose-reviewed-since-code-changed": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": ".github/workflows/docs-site.yml",
-          "detail": ".github/workflows/docs-site.yml changed since cat-harness/processes/sdlc/docs-site-publish.bpmn was last seen, and the prose did not. Re-read it; if it still holds, run pairs:attest with a reason."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "prose-claims-resolve": {
       "result": "pass",
@@ -146,8 +136,8 @@
     }
   },
   "totals": {
-    "pass": 15,
-    "fail": 5,
+    "pass": 17,
+    "fail": 3,
     "n/a": 7,
     "unknown": 0
   }

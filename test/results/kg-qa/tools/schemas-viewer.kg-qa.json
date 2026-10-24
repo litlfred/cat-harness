@@ -5,7 +5,7 @@
     "id": "schemas-viewer",
     "path": null
   },
-  "source_hash": "58c6d3e67929",
+  "source_hash": "137c18416367",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

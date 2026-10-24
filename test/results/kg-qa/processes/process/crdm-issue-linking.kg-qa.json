@@ -5,7 +5,7 @@
     "id": "Process_CRDM_Issue",
     "path": "processes/process/crdm-issue-linking.bpmn"
   },
-  "source_hash": "sha256:106b5c9c9ada7a042bd2a4eb323f56dd3c186f14c7a78ffd1dbd13a96728b581",
+  "source_hash": "sha256:79065799e3aecc2ba11b89bedfdeee01cbf3424d2da901c1d3e1edc3d4f7b5df",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -93,13 +93,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_CRDM_Issue",
-          "detail": "crdm-issue-linking.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -135,8 +130,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 2,
+    "pass": 17,
+    "fail": 1,
     "n/a": 9,
     "unknown": 0
   }

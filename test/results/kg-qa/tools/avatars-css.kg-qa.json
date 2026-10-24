@@ -5,7 +5,7 @@
     "id": "avatars-css",
     "path": null
   },
-  "source_hash": "a3bddb2e6084",
+  "source_hash": "ccf5f7f6da4d",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

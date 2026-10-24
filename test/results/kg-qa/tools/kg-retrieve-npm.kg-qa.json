@@ -5,7 +5,7 @@
     "id": "kg-retrieve-npm",
     "path": null
   },
-  "source_hash": "ec1e43e261e0",
+  "source_hash": "cd535a103b1b",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

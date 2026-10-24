@@ -6,8 +6,8 @@
   "inbound": 1,
   "outbound": 110,
   "cohesion": 0.1,
-  "enforcedBoundary": 3,
-  "recordedBoundary": 108,
+  "enforcedBoundary": 9,
+  "recordedBoundary": 102,
   "proseMentions": 48,
   "wrongDirection": 0,
   "undeterminedDirection": 0

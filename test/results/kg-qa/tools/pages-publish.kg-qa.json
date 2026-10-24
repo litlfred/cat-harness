@@ -5,7 +5,7 @@
     "id": "pages-publish",
     "path": null
   },
-  "source_hash": "617b826d6b91",
+  "source_hash": "ad05ecd1ff13",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

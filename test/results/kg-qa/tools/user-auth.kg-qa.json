@@ -5,7 +5,7 @@
     "id": "user-auth",
     "path": null
   },
-  "source_hash": "c010a67f3962",
+  "source_hash": "1184d8c487ac",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

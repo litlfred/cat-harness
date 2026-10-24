@@ -5,7 +5,7 @@
     "id": "gitlab-mr-comment",
     "path": null
   },
-  "source_hash": "5f26e0386b00",
+  "source_hash": "76a7161947ad",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

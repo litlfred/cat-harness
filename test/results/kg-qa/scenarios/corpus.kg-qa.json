@@ -5,7 +5,7 @@
     "id": "corpus",
     "path": "scenarios/roles.json"
   },
-  "source_hash": "sha256:15867fe3359d171b3e087b2b4b3d563126803ffb268dabe0e5d168db7ff213ea",
+  "source_hash": "sha256:9a25976b385b93cc72c176c951cc00d437e5ca6094eb601e8b7579c27b58a72d",
   "criteria": {
     "role-skills-resolve": {
       "result": "pass",

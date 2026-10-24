@@ -5,7 +5,7 @@
     "id": "folio-init",
     "path": null
   },
-  "source_hash": "8691e092c53c",
+  "source_hash": "1f1bf6209e42",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

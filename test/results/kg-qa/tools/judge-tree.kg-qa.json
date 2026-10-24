@@ -5,7 +5,7 @@
     "id": "judge-tree",
     "path": null
   },
-  "source_hash": "19f9aa0ced15",
+  "source_hash": "bb58e2965496",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "Process_PublishVerification",
     "path": "processes/sdlc/publish-verification.bpmn"
   },
-  "source_hash": "sha256:28d15f8cd9361dc4ab5d4e60738b338e35b58974810f401c4e09f6f42247e16d",
+  "source_hash": "sha256:f540ce4b5bf991929bc064e57bbf4027a4c9994e894f421175017a243b5caf0c",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

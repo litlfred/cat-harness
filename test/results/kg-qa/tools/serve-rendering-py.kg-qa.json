@@ -5,7 +5,7 @@
     "id": "serve-rendering-py",
     "path": null
   },
-  "source_hash": "11e9332c13e9",
+  "source_hash": "49d670a57cda",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

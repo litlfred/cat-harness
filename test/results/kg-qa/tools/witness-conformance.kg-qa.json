@@ -5,7 +5,7 @@
     "id": "witness-conformance",
     "path": null
   },
-  "source_hash": "1cde1ffce854",
+  "source_hash": "837daac01b2f",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

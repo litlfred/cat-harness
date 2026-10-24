@@ -5,7 +5,7 @@
     "id": "Process_KgToPortal",
     "path": "processes/kg/kg-to-portal.bpmn"
   },
-  "source_hash": "sha256:fa1a7ef38cdae4be21851e75dabeffd8fccb4dc135638aebbc91acbb4dddc583",
+  "source_hash": "sha256:8262e0543eac03016b4ade269ae694bcd634db85e03d4ef6df0ca69019eb087e",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

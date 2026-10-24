@@ -5,7 +5,7 @@
     "id": "readme-sync",
     "path": null
   },
-  "source_hash": "c98c5bc9144d",
+  "source_hash": "372bd027c465",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "Process_OptionsAnalysis",
     "path": "processes/sdlc/options-analysis.bpmn"
   },
-  "source_hash": "sha256:e3ce358f2ff5030ef5b580f1e22bb16db1eb0556493556357516be747a5da77a",
+  "source_hash": "sha256:572e2d064524ecead35ec396836b85136a72494b6ed0d76932b448f851cc0976",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -107,13 +107,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_OptionsAnalysis",
-          "detail": "options-analysis.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -149,8 +144,8 @@
     }
   },
   "totals": {
-    "pass": 13,
-    "fail": 4,
+    "pass": 14,
+    "fail": 3,
     "n/a": 10,
     "unknown": 0
   }

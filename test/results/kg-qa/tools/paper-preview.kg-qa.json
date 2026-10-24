@@ -5,7 +5,7 @@
     "id": "paper-preview",
     "path": null
   },
-  "source_hash": "40d521baf79d",
+  "source_hash": "8d72ec1aac8e",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "l1-complete-check",
     "path": null
   },
-  "source_hash": "904b541bd60b",
+  "source_hash": "643f37be8461",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "uploads-viewer",
     "path": null
   },
-  "source_hash": "bf02e6c4d152",
+  "source_hash": "2250fbc4d039",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

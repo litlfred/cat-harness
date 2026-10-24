@@ -5,7 +5,7 @@
     "id": "context-prefixes",
     "path": null
   },
-  "source_hash": "9610e9c55cef",
+  "source_hash": "19955f26503d",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

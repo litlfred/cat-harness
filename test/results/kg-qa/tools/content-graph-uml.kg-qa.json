@@ -5,7 +5,7 @@
     "id": "content-graph-uml",
     "path": null
   },
-  "source_hash": "dea6e2b763c7",
+  "source_hash": "e25e43ed562d",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

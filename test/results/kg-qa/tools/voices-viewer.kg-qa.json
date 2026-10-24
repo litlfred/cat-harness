@@ -5,7 +5,7 @@
     "id": "voices-viewer",
     "path": null
   },
-  "source_hash": "5ea8e90a666a",
+  "source_hash": "24f9c3f499e6",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

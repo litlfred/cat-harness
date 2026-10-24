@@ -5,7 +5,7 @@
     "id": "Process_MaterializeRemote",
     "path": "processes/library/materialize-remote.bpmn"
   },
-  "source_hash": "sha256:5a0512478f37dcf361c57eece840147e94c4f18bea04837d3ac23904bfdfebf5",
+  "source_hash": "sha256:1ee736ffdbee09bf7279fe3550d0eacb395e590c8d7334357cc12c8467a2eae0",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

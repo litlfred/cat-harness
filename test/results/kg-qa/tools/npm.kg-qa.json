@@ -5,7 +5,7 @@
     "id": "npm",
     "path": null
   },
-  "source_hash": "cddba83b58f4",
+  "source_hash": "10e4ff239b13",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

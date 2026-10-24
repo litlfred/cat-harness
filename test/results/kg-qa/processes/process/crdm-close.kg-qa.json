@@ -5,7 +5,7 @@
     "id": "Process_CRDM_Close",
     "path": "processes/process/crdm-close.bpmn"
   },
-  "source_hash": "sha256:c84a178991bb23e33372a17b5bca9fb7937d8014d334124f6c75055843f1f418",
+  "source_hash": "sha256:081cd99c658f7d6f4166ef95eaa9d72afbf554988b3dc9a704e507f916e91522",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -115,13 +115,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_CRDM_Close",
-          "detail": "crdm-close.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -157,8 +152,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 4,
+    "pass": 17,
+    "fail": 3,
     "n/a": 7,
     "unknown": 0
   }

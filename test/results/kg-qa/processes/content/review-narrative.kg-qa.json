@@ -5,7 +5,7 @@
     "id": "Process_NarrativeReview",
     "path": "processes/content/review-narrative.bpmn"
   },
-  "source_hash": "sha256:1f2cdbd1c24674bdaaf791f43a52d97985ce6d96a7091d06fc7c1fc6297e23a5",
+  "source_hash": "sha256:e059bae2f0772717754536cf9e5813d4a36412438e5b0bb5b97bfefb4fef87ff",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -101,13 +101,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_NarrativeReview",
-          "detail": "review-narrative.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -143,8 +138,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 2,
+    "pass": 17,
+    "fail": 1,
     "n/a": 9,
     "unknown": 0
   }

@@ -2,7 +2,7 @@
   "$schema": "qa-results/v1",
   "producer": {
     "script": "cat-harness-tools/scripts/lsi.ts",
-    "script_hash": "07e491c7d711"
+    "script_hash": "0cbe429a092b"
   },
   "subject": {
     "kind": "corpus",
@@ -17,9 +17,9 @@
           "instance": "cat-harness",
           "graph": "docs",
           "path": "cat-harness/docs",
-          "units": 786,
-          "words": 619211,
-          "detail": "needs an index (786 units, 619211 words) and has none"
+          "units": 1050,
+          "words": 716509,
+          "detail": "needs an index (1050 units, 716509 words) and has none"
         }
       ]
     },

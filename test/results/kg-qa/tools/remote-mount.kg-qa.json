@@ -5,7 +5,7 @@
     "id": "remote-mount",
     "path": null
   },
-  "source_hash": "39bce612eb1c",
+  "source_hash": "7f89c7a4379e",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "skill-fetch",
     "path": null
   },
-  "source_hash": "c0f0e7b6a9a3",
+  "source_hash": "f139b86e1970",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

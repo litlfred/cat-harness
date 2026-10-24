@@ -5,7 +5,7 @@
     "id": "sibling-sessions",
     "path": null
   },
-  "source_hash": "96ea5758e800",
+  "source_hash": "6167eeb03888",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

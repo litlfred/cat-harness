@@ -5,7 +5,7 @@
     "id": "vocab-map",
     "path": null
   },
-  "source_hash": "955cb9d08ea1",
+  "source_hash": "1706b229e056",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

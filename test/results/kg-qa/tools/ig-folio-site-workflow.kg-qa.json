@@ -5,7 +5,7 @@
     "id": "ig-folio-site-workflow",
     "path": null
   },
-  "source_hash": "a07b98e9c7a4",
+  "source_hash": "61ca10373bc8",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

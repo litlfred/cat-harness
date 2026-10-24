@@ -5,7 +5,7 @@
     "id": "Process_CodeQualityGates",
     "path": "processes/sdlc/code-quality-gates.bpmn"
   },
-  "source_hash": "sha256:7cbe8c4c427892eecb8647996cd99dfc171961e2c0c0926038240f7f086a4cbe",
+  "source_hash": "sha256:3d470d842e96caca6301f1ff97dc9cee722bb3f8ef4189cc0c8de1ba715d1e2c",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -89,13 +89,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_CodeQualityGates",
-          "detail": "code-quality-gates.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -122,13 +117,8 @@
       "findings": []
     },
     "prose-reviewed-since-code-changed": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": ".github/workflows/code-quality-gates.yml",
-          "detail": ".github/workflows/code-quality-gates.yml changed since cat-harness/processes/sdlc/code-quality-gates.bpmn was last seen, and the prose did not. Re-read it; if it still holds, run pairs:attest with a reason."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "prose-claims-resolve": {
       "result": "pass",
@@ -136,8 +126,8 @@
     }
   },
   "totals": {
-    "pass": 17,
-    "fail": 3,
+    "pass": 19,
+    "fail": 1,
     "n/a": 7,
     "unknown": 0
   }

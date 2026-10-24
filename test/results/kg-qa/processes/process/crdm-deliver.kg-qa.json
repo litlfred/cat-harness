@@ -5,7 +5,7 @@
     "id": "Process_CRDM_Deliver",
     "path": "processes/process/crdm-deliver.bpmn"
   },
-  "source_hash": "sha256:e2587359d6a77cc414bc4df92f6db8c6865df10ccb653c432b22be999e94ef8f",
+  "source_hash": "sha256:beb43ec6c7dbf958499bdabec29678db02cef1d244f96ac5dbcc57705f808daf",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -97,13 +97,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_CRDM_Deliver",
-          "detail": "crdm-deliver.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -139,8 +134,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 2,
+    "pass": 17,
+    "fail": 1,
     "n/a": 9,
     "unknown": 0
   }

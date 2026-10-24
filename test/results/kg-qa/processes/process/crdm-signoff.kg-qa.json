@@ -5,7 +5,7 @@
     "id": "Process_CRDM_Signoff",
     "path": "processes/process/crdm-signoff.bpmn"
   },
-  "source_hash": "sha256:e219907b3384b385465c4c3efc6ad889be885b110820c797844ee8ef10e46451",
+  "source_hash": "sha256:95db0e39bed38d0880815553b70bfc5447978f30332ed9576ce2cfba95fb3485",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -139,13 +139,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_CRDM_Signoff",
-          "detail": "crdm-signoff.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -181,8 +176,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 4,
+    "pass": 17,
+    "fail": 3,
     "n/a": 7,
     "unknown": 0
   }

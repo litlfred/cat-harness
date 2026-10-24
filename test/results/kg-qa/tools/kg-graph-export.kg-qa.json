@@ -5,7 +5,7 @@
     "id": "kg-graph-export",
     "path": null
   },
-  "source_hash": "0321543ffece",
+  "source_hash": "694808f537d7",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

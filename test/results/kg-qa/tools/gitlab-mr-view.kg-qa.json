@@ -5,7 +5,7 @@
     "id": "gitlab-mr-view",
     "path": null
   },
-  "source_hash": "903f94457f79",
+  "source_hash": "01d268582162",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

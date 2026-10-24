@@ -5,7 +5,7 @@
     "id": "site-viewer",
     "path": null
   },
-  "source_hash": "8e885aa12f40",
+  "source_hash": "eae4a90ae72c",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

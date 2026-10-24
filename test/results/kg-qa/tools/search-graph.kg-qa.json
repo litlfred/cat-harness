@@ -5,7 +5,7 @@
     "id": "search-graph",
     "path": null
   },
-  "source_hash": "8b45e94cbf04",
+  "source_hash": "caa4f9df373a",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

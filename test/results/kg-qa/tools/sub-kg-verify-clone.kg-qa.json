@@ -5,7 +5,7 @@
     "id": "sub-kg-verify-clone",
     "path": null
   },
-  "source_hash": "8c37d0dc6558",
+  "source_hash": "5b7b2f051974",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

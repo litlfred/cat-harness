@@ -5,7 +5,7 @@
     "id": "log-message",
     "path": null
   },
-  "source_hash": "e4aa3b602fa4",
+  "source_hash": "8a37a63fae41",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

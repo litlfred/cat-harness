@@ -5,7 +5,7 @@
     "id": "Process_QaPublish",
     "path": "processes/sdlc/qa-publish.bpmn"
   },
-  "source_hash": "sha256:fa548fb281ba25357a692ff0512a9f294d595fc86ff3fa6c96affd7b776228cf",
+  "source_hash": "sha256:e3875df5a3014093849135998bb7a95f368e366ee389a4fd4cdbb2ecf1f12bc4",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -109,13 +109,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_QaPublish",
-          "detail": "qa-publish.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -151,8 +146,8 @@
     }
   },
   "totals": {
-    "pass": 18,
-    "fail": 2,
+    "pass": 19,
+    "fail": 1,
     "n/a": 7,
     "unknown": 0
   }

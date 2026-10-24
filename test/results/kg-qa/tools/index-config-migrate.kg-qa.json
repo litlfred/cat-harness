@@ -5,7 +5,7 @@
     "id": "index-config-migrate",
     "path": null
   },
-  "source_hash": "f24f1c81d026",
+  "source_hash": "307b04e206ae",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

@@ -5,7 +5,7 @@
     "id": "archimate-check",
     "path": null
   },
-  "source_hash": "20b1570ff8b0",
+  "source_hash": "8a9eec4416e6",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

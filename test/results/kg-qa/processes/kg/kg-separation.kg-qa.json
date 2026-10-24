@@ -5,7 +5,7 @@
     "id": "Process_KgSeparation",
     "path": "processes/kg/kg-separation.bpmn"
   },
-  "source_hash": "sha256:b159787c4019e4842aee3b1d9607aacc51eecfb73d3530b58fb753a1b5b4ad4c",
+  "source_hash": "sha256:d29260e7eadefa3d8ab397cf97438c188b2767323b4d0ccfdffd2fa7b5722518",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

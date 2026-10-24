@@ -5,7 +5,7 @@
     "id": "serve-rendering",
     "path": null
   },
-  "source_hash": "9555418c011b",
+  "source_hash": "141b7fce0f23",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

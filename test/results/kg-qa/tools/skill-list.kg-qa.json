@@ -5,7 +5,7 @@
     "id": "skill-list",
     "path": null
   },
-  "source_hash": "b94009bb6b63",
+  "source_hash": "861b9b20e36b",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

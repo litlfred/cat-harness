@@ -5,7 +5,7 @@
     "id": "Process_MountDependency",
     "path": "processes/kg/mount-dependency.bpmn"
   },
-  "source_hash": "sha256:f2dd0a5679bcac5fbc964a55892b9cc83db039830766df751b3dc953877357ce",
+  "source_hash": "sha256:ff300e89ef42b36a3123e6784d2e2cebde5f28fdbcc862df262183ce4553acd0",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -106,13 +106,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_MountDependency",
-          "detail": "mount-dependency.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -148,8 +143,8 @@
     }
   },
   "totals": {
-    "pass": 14,
-    "fail": 3,
+    "pass": 15,
+    "fail": 2,
     "n/a": 10,
     "unknown": 0
   }

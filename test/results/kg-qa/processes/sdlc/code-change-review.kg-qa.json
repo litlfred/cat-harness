@@ -5,7 +5,7 @@
     "id": "Process_CodeChangeReview",
     "path": "processes/sdlc/code-change-review.bpmn"
   },
-  "source_hash": "sha256:e83017a44a98935a89e5208609e0bc5b25dead6124fcc5e868ce5d8ff05931e7",
+  "source_hash": "sha256:e10426ef2220707c2280ef22ca4037414b99c58cb44f5f883fb60e9e1dd78196",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -93,13 +93,8 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "Process_CodeChangeReview",
-          "detail": "code-change-review.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "activity-documented": {
       "result": "pass",
@@ -135,8 +130,8 @@
     }
   },
   "totals": {
-    "pass": 17,
-    "fail": 2,
+    "pass": 18,
+    "fail": 1,
     "n/a": 8,
     "unknown": 0
   }

@@ -5,7 +5,7 @@
     "id": "kg-audit",
     "path": null
   },
-  "source_hash": "06395596b1e8",
+  "source_hash": "fb3fa363022f",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

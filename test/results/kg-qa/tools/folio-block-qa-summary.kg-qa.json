@@ -5,7 +5,7 @@
     "id": "folio-block-qa-summary",
     "path": null
   },
-  "source_hash": "32529e032cd0",
+  "source_hash": "5ae601a0c905",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",

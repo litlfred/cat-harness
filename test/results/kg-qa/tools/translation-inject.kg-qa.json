@@ -5,7 +5,7 @@
     "id": "translation-inject",
     "path": null
   },
-  "source_hash": "27d471d58ed9",
+  "source_hash": "b782f2077a5f",
   "criteria": {
     "tool-invoke-path-resolves": {
       "result": "pass",
