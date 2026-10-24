@@ -26,6 +26,66 @@
       },
       "drafted_at": "2026-09-23",
       "lang": "en"
+    },
+    {
+      "text": "Schéma intitulé « Bundling additional content ». pdf/SKILL.md à gauche, comme dans la figure précédente ; à droite, deux autres fichiers vers lesquels il renvoie — pdf/reference.md (fonctionnalités PDF avancées et bibliothèques absentes des instructions principales) et pdf/forms.md (comment distinguer un formulaire PDF remplissable d'un formulaire non remplissable). Deux flèches partent de liens relatifs surlignés dans le corps de SKILL.md, `./reference.md` et `./forms.md`, vers le fichier que chacun désigne. L'idée est qu'un skill référence des fichiers voisins par chemin relatif au lieu de les intégrer.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "fr"
+    },
+    {
+      "text": "Diagrama titulado «Bundling additional content». pdf/SKILL.md a la izquierda, como en la figura anterior; a la derecha, dos archivos más a los que remite — pdf/reference.md (funciones PDF avanzadas y bibliotecas que no están en las instrucciones principales) y pdf/forms.md (cómo distinguir un formulario PDF rellenable de uno no rellenable). Dos flechas van desde enlaces relativos resaltados en el cuerpo de SKILL.md, `./reference.md` y `./forms.md`, hasta el archivo que nombra cada uno. La idea es que un skill hace referencia a archivos hermanos por ruta relativa en lugar de incluirlos en línea.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "es"
+    },
+    {
+      "text": "مخطط بعنوان \"Bundling additional content\". يظهر pdf/SKILL.md على اليسار كما في الشكل السابق؛ وعلى اليمين ملفان آخران يشير إليهما — pdf/reference.md (ميزات PDF المتقدمة ومكتبات غير مذكورة في التعليمات الرئيسية) وpdf/forms.md (كيفية التمييز بين نموذج PDF قابل للتعبئة وآخر غير قابل لها). ويمتد سهمان من رابطين نسبيين مظلّلين في متن SKILL.md، هما `./reference.md` و`./forms.md`، إلى الملف الذي يسمّيه كل منهما. والفكرة أن المهارة تشير إلى الملفات المجاورة بمسار نسبي بدلًا من تضمينها.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ar"
+    },
+    {
+      "text": "Схема под названием «Bundling additional content». Слева pdf/SKILL.md, как на предыдущем рисунке; справа — ещё два файла, на которые он ссылается: pdf/reference.md (расширенные возможности PDF и библиотеки, которых нет в основных инструкциях) и pdf/forms.md (как отличить заполняемую PDF-форму от незаполняемой). Две стрелки идут от выделенных относительных ссылок в теле SKILL.md, `./reference.md` и `./forms.md`, к файлу, который каждая называет. Идея в том, что навык ссылается на соседние файлы по относительному пути, а не встраивает их.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ru"
+    },
+    {
+      "text": "标题为“Bundling additional content”的示意图。左侧是 pdf/SKILL.md，与上一张图相同；右侧是它所指向的另外两个文件——pdf/reference.md（主指令中没有的高级 PDF 功能和库）和 pdf/forms.md（如何区分可填写和不可填写的 PDF 表单）。两支箭头从 SKILL.md 正文中高亮的相对链接 `./reference.md` 和 `./forms.md` 分别指向各自所指的文件。要点是：技能通过相对路径引用同级文件，而不是把它们内嵌进来。",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "zh"
     }
   ],
   "derivedFrom": "library/equipping-agents-for-the-real-world-with-agent-skills-anthro/sections/page-004",
