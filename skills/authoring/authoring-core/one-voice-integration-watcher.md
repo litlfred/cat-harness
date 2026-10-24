@@ -105,6 +105,8 @@ notation`, OR cites a content-block label.
 
 ## Slot C — §4b dispatch table
 
+Where a row says "the content type's", the skill is supplied by the layer that ships that content type and names this watcher from its side (for a paper folio, the science layer).
+
 | Specialist | When to run |
 |------------|-------------|
 | `pipeline/qa-sweep.ts` | Always (re-runs every automated criterion on the changed-block set; refreshes sidecar JSON) |
@@ -113,8 +115,8 @@ notation`, OR cites a content-block label.
 | `one-voice-style-guide` (skill, agent dispatch) | For `voice-scholarly-default`, `voice-ai-slop` adjudication — non-automated; agent reads the .md + proof file and writes a reviewer entry |
 | `chapter-complexity-review` (skill, agent dispatch) | For `fit-section-chapter` adjudication — agent compares block topic + kind against section/chapter context |
 | `ontologist` (skill) | If `notation-canonical` fires — disambiguates which canonical symbol is intended |
-| `critical-path-analysis` (skill) | If `domain-boundary-correct` fires — re-runs the cross-domain dependency trace |
-| `remark-audit` | If kind is `remark` and `fit-section-chapter` fires (often a dangling remark) |
+| the content type's dependency-trace skill | If `domain-boundary-correct` fires — re-runs the cross-domain dependency trace |
+| the content type's remark audit | If kind is `remark` and `fit-section-chapter` fires (often a dangling remark) |
 
 **Proof ↔ narrative coupling rule:** for every block where a proof
 file exists, `voice-scholarly-default` covers both files; for
