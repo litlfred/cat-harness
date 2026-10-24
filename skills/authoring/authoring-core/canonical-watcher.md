@@ -67,12 +67,14 @@ numerology, magic number, rationalization, tautology, or back-fit.
 
 ## Slot C — §4b dispatch table
 
+Where a row says "the content type's", the skill is supplied by the layer that ships that content type and names this watcher from its side (for a paper folio, the science layer).
+
 | Specialist | When to run | What it checks |
 |------------|-------------|----------------|
-| `compute-audit` scanner | any changed compute script | hidden-literal leakage, numerology, reproducibility, structured-witness emission |
+| the content type's compute-audit scanner | any changed compute script | hidden-literal leakage, numerology, reproducibility, structured-witness emission |
 | calibration-input audit | any changed compute script | declared-input vs over-count classification |
 | derivation-chain validator | any changed witness referencing a derivation chain | every numerical claim traces to first principles |
-| `witnessed-values` | any changed block quoting numerical literals | every literal uses the value-citation directive; no hardcoded drift |
+| the content type's value-citation check | any changed block quoting numerical literals | every literal uses the value-citation directive; no hardcoded drift |
 | `scientific-accuracy` | any changed provable block with numerical claims | claim is derived, not justified; no rationalization |
 | `one-voice-audit` | any changed block | status leaks, work-tracker words |
 | `ontologist` | any new symbol introduced | notation-register compliance |
