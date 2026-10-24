@@ -4,8 +4,8 @@ user_invocable: true
 description: >
   Dispatcher for the `/integration-watch` slash command. Routes to
   one or more of the concrete integration watchers / audits
-  (proof, canonical, compute, detangler, one-voice, consolidation,
-  bibliography, devils-advocate, …). With no argument, lists the
+  (canonical, one-voice, consolidation, bibliography, devils-advocate,
+  and those a content type's layer adds, …). With no argument, lists the
   available watchers and asks the user which to invoke. With
   arguments, dispatches the named watchers in parallel (each gets
   its own Monitor, queue, ledger, and PR-subscription set).
@@ -19,18 +19,17 @@ A thin dispatcher in front of [`integration-watcher`](integration-watcher.md)
 without arguments), this skill resolves the argument to one or more
 concrete child watchers and invokes them. The set of children is
 project-defined; a project enables the watchers relevant to its
-content axes.
+content axes. Each child declares its keyword as `watch_arg` in its
+frontmatter, so a content type's layer adds keywords without this
+dispatcher naming them (for a paper folio, the science layer's `proof`,
+`compute` and detangler watchers).
 
 ## Argument grammar
 
 ```
 /integration-watch                              → ask which (no auto-pick)
-/integration-watch proof                        → just proof-integration-watcher
+/integration-watch <watch_arg>                  → just the child declaring it
 /integration-watch canonical                    → just canonical-watcher
-/integration-watch compute                      → just compute-integration-watcher
-/integration-watch compute-integration          → same as `compute`
-/integration-watch detangler                    → just detangler-integration-watcher
-/integration-watch detanglement                 → same as `detangler`
 /integration-watch one-voice                    → just one-voice-integration-watcher
 /integration-watch voice                        → same as `one-voice`
 /integration-watch consolidation                → proposition-consolidation-audit (find similar statements)
@@ -41,9 +40,9 @@ content axes.
 /integration-watch da                           → same as `devils-advocate`
 /integration-watch adversarial                  → same as `devils-advocate`
 /integration-watch all                          → all enabled watchers in parallel
-/integration-watch proof,canonical              → those two in parallel
-/integration-watch proof canonical              → same (space-separated)
-/integration-watch proof detanglement canonical → three in parallel
+/integration-watch canonical,one-voice          → those two in parallel
+/integration-watch canonical one-voice          → same (space-separated)
+/integration-watch canonical voice da           → three in parallel
 /integration-watch <unknown>                    → reject, re-prompt
 ```
 
@@ -56,18 +55,11 @@ Per `integration-watcher §0` + `§4e` (full-context preamble):
    watcher's domain) or all in parallel (more events but full
    coverage). Summarise each enabled watcher in one line — for example:
 
-   > - **proof** — proof-integration-watcher: no bare gaps, no axiom
-   >   growth, formal-layer compile check, naked-conjecture handling.
    > - **canonical** — canonical-watcher: derivation discipline — no
    >   undisclosed free parameters, no numerology, no fits (per the
    >   project's derivation-discipline statement).
-   > - **compute** — compute-integration-watcher: every provable/derived
-   >   block has a probe + production consumer.
-   > - **detangler** — detangler-integration-watcher: no new forward
-   >   refs, sections within the block-count band, no new cross-chapter
-   >   forward edges.
    > - **one-voice** — one-voice-integration-watcher: scholarly voice
-   >   (narrative + proof bodies), no AI slop, block fit to
+   >   (narrative bodies), no AI slop, block fit to
    >   section/chapter, canonical-vs-deprecated notation. Persists
    >   per-block `<block>.qa.json` audit reports (multi-reviewer,
    >   hash-keyed staleness).
@@ -88,7 +80,7 @@ Per `integration-watcher §0` + `§4e` (full-context preamble):
 
 2. **Role-gate the chip set.** Before composing the `AskUserQuestion`,
    detect the user's role (`reader` / `collaborator` / `owner`).
-   Write-side watchers (e.g. `compute`, `one-voice`) require
+   Write-side watchers (e.g. `one-voice`) require
    `collaborator`+; the `all` chip transitively requires
    `collaborator`+ when it includes any of them. Read-only audit
    watchers are `reader`-accessible.
@@ -102,8 +94,9 @@ Per `integration-watcher §0` + `§4e` (full-context preamble):
      read-only watchers most relevant to the current session. The
      dispatcher MAY rotate which two individual watchers are surfaced
      based on session context (e.g. when a formal-layer change just
-     landed, surface `proof` + `one-voice`; when a provable block was
-     added, surface `compute` + `canonical`). Watchers not surfaced as
+     landed, surface the content type's formal watcher + `one-voice`;
+     when a claim-bearing block was added, surface `canonical` +
+     `devils-advocate`). Watchers not surfaced as
      a chip remain reachable via direct slash invocation or via `all`.
 
 3. **AskUserQuestion** with up to 4 chips (role-gated), `multiSelect:
@@ -131,9 +124,9 @@ When multiple watchers are dispatched in parallel:
 ## Integration
 
 - **Built on**: `integration-watcher` (the abstract parent)
-- **Dispatches to**: the project's enabled concrete watchers (proof /
-  canonical / compute / detangler / one-voice / consolidation /
-  bibliography / devils-advocate / …)
+- **Dispatches to**: the project's enabled concrete watchers (canonical /
+  one-voice / consolidation / bibliography / devils-advocate / those a
+  content type's layer adds by `watch_arg` / …)
 - **Inherits everything**: §0-§9 of the parent
 - **Write-side counterpart**: [`integration-backlog`](integration-backlog.md)
   — same argument grammar, but DRAINS the open findings into
@@ -145,18 +138,14 @@ When multiple watchers are dispatched in parallel:
 User: /integration-watch
 → Preamble + 4-chip AskUserQuestion; user picks one or more.
 
-User: /integration-watch proof
-→ Direct dispatch to proof-integration-watcher; resume protocol runs
+User: /integration-watch canonical
+→ Direct dispatch to canonical-watcher; resume protocol runs
   and surfaces "Triage unreviewed commits / Continue backlog / Dispatch
   chapter / Just watch" 4-chip AskUserQuestion.
 
-User: /integration-watch detangler
-→ Direct dispatch to detangler-integration-watcher; resume protocol
-  runs (graph baseline cached, structural QA dispatch).
-
-User: /integration-watch proof detanglement canonical
-→ Parallel dispatch to three (detanglement charitably maps to
-  detangler); each surfaces its own resume prompt sequentially.
+User: /integration-watch canonical voice da
+→ Parallel dispatch to three (voice maps to one-voice, da to
+  devils-advocate); each surfaces its own resume prompt sequentially.
 
 User: /integration-watch all
 → Parallel dispatch to every enabled watcher; each surfaces its own
