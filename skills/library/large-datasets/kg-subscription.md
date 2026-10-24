@@ -105,7 +105,9 @@ taken". Then follow
 context, options, recommendation, question.
 
 - **Subgraphs** — by the substrate's `directories[].id`. Choose the smallest set
-  that serves the folio; each is a separate trip through the gates.
+  that serves the folio; each is a separate trip through the gates. A
+  **nested** subgraph is chosen by its **parent's** id and materialised by
+  its **path** (next section).
 - **Assets** — `none`, `on-demand` (each asset through the gates when first
   asked for), or `all` (every referenced asset walked now). `on-demand` is the
   sensible default for a large binary library; `all` on a catalogue the size of
@@ -135,6 +137,25 @@ working, not failing: record the refusing gate's basis and **continue with the
 next part** — one part refused is not the subscription refused. The bytes that
 do arrive carry a `materialization.json` with fixity, and
 `check:materialized-fixity` covers them.
+
+### A nested subgraph: chosen by its parent, materialised by its path
+
+Some subgraphs are declared from within another directory. `skills/voices`,
+for example, is declared in `skills/skills.json`. To hold only that part,
+choose its parent's id in `subgraphs` and ask for the part by path:
+
+```sh
+bun run cat kg:materialize <subscription> skills/voices   # `skills` is chosen
+```
+
+Owner, 2026-10-24 (cat-harness-tools#744, ruling 4). The snapshot is not
+changed and nobody re-subscribes. The snapshot holds the root declaration
+only, so a nested **id** cannot be checked against it offline. The parent's
+id can be, and the path is checked against the parent's declared path. The
+part goes through the same five gates and its record names the parent's `id`
+and the nested `path`. It is held beside the parent's own part, which it
+never disturbs. A path under no declared directory is refused, and so is a
+path whose parent is not chosen.
 
 ## A subgraph's nodes without its bytes: metadata mode
 
