@@ -1,7 +1,7 @@
 {
   "$schema": "folio-detangle-sidecar/v1",
   "group": "cat-harness/scenarios/actors",
-  "size": 37,
+  "size": 34,
   "internal": 0,
   "inbound": 0,
   "outbound": 8,

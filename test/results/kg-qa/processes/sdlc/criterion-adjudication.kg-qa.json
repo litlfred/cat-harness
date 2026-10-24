@@ -5,7 +5,7 @@
     "id": "Process_CriterionAdjudication",
     "path": "processes/sdlc/criterion-adjudication.bpmn"
   },
-  "source_hash": "sha256:43092681e58cdef5fc9f78da6c9083ab64cb6a531070813b1533eef4912bbbf8",
+  "source_hash": "sha256:fc2cb90d6f1ae7756812f2bebe0e3e594c3818b58c3813bb81560a22ef6b9731",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

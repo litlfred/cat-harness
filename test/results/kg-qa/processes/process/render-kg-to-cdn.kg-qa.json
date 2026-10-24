@@ -5,7 +5,7 @@
     "id": "Process_RenderKgToCdn",
     "path": "processes/process/render-kg-to-cdn.bpmn"
   },
-  "source_hash": "sha256:dff5fb497a712a84eb809817f23a03e2203fae3c0515018d4b9bd7a357b46f79",
+  "source_hash": "sha256:f0a49ba2f36bbacec1ee7e38323616471581cbbe1df6a13017c37a7b2a1e470a",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

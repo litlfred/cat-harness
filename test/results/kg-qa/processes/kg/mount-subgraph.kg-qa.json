@@ -5,7 +5,7 @@
     "id": "Process_MountSubgraph",
     "path": "processes/kg/mount-subgraph.bpmn"
   },
-  "source_hash": "sha256:609bf24f22435fe4c93361122c7752751321e989868f031bec0a24b9619255bf",
+  "source_hash": "sha256:e7471da87f1039024f417be6a88a2f5566da428cefb3dff6c31ce93ee18ec632",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

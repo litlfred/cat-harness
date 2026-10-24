@@ -5,7 +5,7 @@
     "id": "Process_NarrativeCodeReview",
     "path": "processes/sdlc/narrative-code-review.bpmn"
   },
-  "source_hash": "sha256:2fa9a86ccff2b6402a79efe9771e1f8cd15086b98c409cbcabd612033e826282",
+  "source_hash": "sha256:6c12aafefff1f7e4946ae095a62bd7be726295c31b974c4366b15fe720cb2305",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

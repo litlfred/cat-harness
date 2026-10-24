@@ -5,7 +5,7 @@
     "id": "Process_MergeTrain",
     "path": "processes/sdlc/merge-train.bpmn"
   },
-  "source_hash": "sha256:f76649012c3c84508f7e999787a64463fb14ae873405ec43dba726342f13fb8b",
+  "source_hash": "sha256:342581c440e06a947ba04436eaee4af4e651479151a269da10e700736f5aa2ce",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

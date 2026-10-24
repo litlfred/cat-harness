@@ -5,7 +5,7 @@
     "id": "Process_UpstreamAdoption",
     "path": "processes/sdlc/upstream-version-adoption.bpmn"
   },
-  "source_hash": "sha256:ae69c91d4c2840c7c39b35ac3b482328c20d933ce4f68df5690f2e68480c1f9b",
+  "source_hash": "sha256:ec9d6375fe76143520f65857e074c5d443f366205e725b5fddaf640d57af9d83",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

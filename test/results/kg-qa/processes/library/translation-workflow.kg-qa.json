@@ -5,7 +5,7 @@
     "id": "Process_Translation",
     "path": "processes/library/translation-workflow.bpmn"
   },
-  "source_hash": "sha256:f9fdbecf08887577b1380b1b5a6555be0e7e23fa81663e1d365acf0614b162e6",
+  "source_hash": "sha256:cf707a5914fc9244cae47ea7298268e1e145d950ff6a656d758cceb64e8d85f6",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

@@ -5,7 +5,7 @@
     "id": "Process_CopyOutMaterialized",
     "path": "processes/library/copy-out-materialized.bpmn"
   },
-  "source_hash": "sha256:6cde1c16bb45ad8b6f4b16a01e7ef22d7804b8736295b90e049683412f42dd8f",
+  "source_hash": "sha256:153cbd06010ba0c948ff8019458bf565075626ca674d05b467f6d744d603e26e",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
