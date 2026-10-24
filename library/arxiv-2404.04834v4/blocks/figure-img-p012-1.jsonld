@@ -26,6 +26,66 @@
       },
       "drafted_at": "2026-10-09",
       "lang": "en"
+    },
+    {
+      "text": "Interface graphique de l'état initial du jeu Tetris généré par ChatDev, montrant le puits vide, une pièce tétromino qui tombe et les instructions de commande.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "fr"
+    },
+    {
+      "text": "Interfaz gráfica del estado inicial del juego Tetris generado por ChatDev, que muestra el pozo vacío, una pieza tetrominó cayendo y las instrucciones de control.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "es"
+    },
+    {
+      "text": "واجهة الحالة الابتدائية للعبة Tetris التي ولّدها ChatDev، تُظهر البئر الفارغة وقطعة تيترومينو تسقط وتعليمات التحكم.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ar"
+    },
+    {
+      "text": "Графический интерфейс начального состояния игры Tetris, сгенерированной ChatDev: пустой стакан, падающая фигура-тетромино и инструкции по управлению.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ru"
+    },
+    {
+      "text": "ChatDev 生成的 Tetris 游戏初始状态界面，显示空的游戏井、正在下落的四格方块以及操作说明。",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "zh"
     }
   ],
   "derivedFrom": "library/arxiv-2404.04834v4/sections/sec-013",
