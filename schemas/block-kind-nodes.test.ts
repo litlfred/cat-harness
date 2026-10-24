@@ -14,7 +14,8 @@ import {
   adapterForKind, discoverBlockKinds, discoverContentAdapters, kindForBuilder, type ContentAdapter,
 } from "./block-kinds";
 import { ADAPTER_COMPANION_ROLES } from "./block-qa";
-import { KNOWN_LABEL_PREFIXES, LABEL_PREFIXES, typedBlockKinds } from "./constraints";
+import { KNOWN_LABEL_PREFIXES, LABEL_PREFIXES } from "./constraints";
+import { allTypedBlockKinds } from "./vocabulary-modules";
 import { BLOCK_KIND_TO_FOLIO_TYPE, KIND_PREFIXES, assertPrefixesInSync } from "./jsonld";
 import { kindHeading } from "./translation";
 
@@ -35,11 +36,13 @@ function withoutFixture<T>(fn: () => T): T {
 
 describe("block kinds are discovered, not listed", () => {
   test("every typed kind is discovered, and every discovered kind is typed", () => {
-    expect([...BLOCK_KINDS].map(String).sort()).toEqual(typedBlockKinds().sort());
+    // Typed by BlockSchema or by a vocabulary module: the science layer types
+    // its own kinds (vocabulary-modules.ts).
+    expect([...BLOCK_KINDS].map(String).sort()).toEqual(allTypedBlockKinds().sort());
   });
 
   test("the math kinds are the paper adapter's, declared by folio-assistant-sci; the rest by folio-assistant-core", () => {
-    expect([...MATH_BLOCK_KINDS].sort()).toEqual(
+    expect([...MATH_BLOCK_KINDS].map(String).sort()).toEqual(
       ["conjecture", "corollary", "definition", "lemma", "proof", "proposition", "theorem"],
     );
     expect(MATH_BLOCK_KINDS.length + DOCUMENT_BLOCK_KINDS.length).toBe(BLOCK_KINDS.length);

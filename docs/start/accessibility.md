@@ -217,5 +217,5 @@ Four ways to do this, in increasing order of ambition. Only the first is built.
 
 - [Getting started](getting-started.html) — the intent decision table in use
 - [`interaction-modality` skill]({{ '/reference/skill-instructions/interaction-modality.html' | relative_url }})
-- [Publication workflow](../process/publication-workflow.html) — every process in the repo
+- [Publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) — every process in the repo
 - [Options for workflow state in beans]({{ '/proposals/workflow-state-in-beans.html' | relative_url }})

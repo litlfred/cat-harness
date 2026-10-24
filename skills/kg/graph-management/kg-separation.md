@@ -123,12 +123,12 @@ the work looks finished.
 | 4 | **Identity**: `name`, `version`, `iriBase`, `needs`, `nodeSchemas` in the declaration; move the base once | `platform-authoring-agent` | `iri:sync -- --from <old base>` then `iri:sync:check`; `check:node-iris` |
 | 5 | **Hosted outputs out** of the content | `platform-authoring-agent` | the content leak test's pending list is empty |
 | 6 | **Split content from tools**: create `<name>-tools/` as a sibling, move the code, cut its import cone | `platform-authoring-agent` | FR-7 (content holds no code); `check:tools-closure`; generated files byte-identical before and after |
-| 7 | **Publication plan**: every identifier the content mints is a file some step publishes, at `/<version>/` and `/v<major>/` | `publication-manager` | `check:node-iris`; the site layout in [`instance-publication`](../kg-core/instance-publication.md) §"The release site" |
+| 7 | **Publication plan**: every identifier the content mints is a file some step publishes, at `/v<major>/` | `publication-manager` | `check:node-iris`; the site layout in [`instance-publication`](../kg-core/instance-publication.md) §"The release site" |
 | 8 | **Rehearse standalone**: copy content + tools alone into a temporary directory and run the tools' checks there | `build-pipeline` | green with nothing else on the path; an empty tree exits non-zero |
 | 9 | **Authorise** — report what moves, sizes, what breaks, and wait | `administrator` | the owner's answer ([`deletion-requires-confirmation`](../../conduct/conduct-core/deletion-requires-confirmation.md)) |
 | 10 | **Seed**: the owner creates the repositories; once the source has settled, seed `main`, then the content and tools as reviewed PRs, with history | `administrator`, then `authoring-agent` | `bun run cat seed:ready --layer <name> --rehearse` answers `settled` for each layer, at seed time; then the seeding PRs reviewed and green |
 | 11 | **Parent consumes, additively**: pin (a SHA while staging, a version once released), repoint imports, keep the parent's copy. After any move of files between the pair, run the post-move sweep first ([below](#after-a-move-lands--the-post-move-sweep)) | `platform-authoring-agent` | the parent green with the dependency declared; `check:published-refs`; every gate in the sweep table |
-| 12 | **First release**: tag, publish `/<version>/` and `/v<major>/` | `publication-manager` | `check:version-bump`; every identifier dereferences ([`publish-verification`](../../sdlc/sdlc-core/publish-verification.md)) |
+| 12 | **First release**: tag, publish `/v<major>/` | `publication-manager` | `check:version-bump`; every identifier dereferences ([`publish-verification`](../../sdlc/sdlc-core/publish-verification.md)) |
 | 13 | **Cutover**: the one commit retiring the parent's copy into [`fsh-guts`](../kg-core/fsh-guts.md) as a verified archive (the deposit `state:seed --cutover` makes: it must extract to the exact tree removed, with a provenance note), deposited into the PARENT's fsh-guts before the removal, frozen, never refreshed or rendered: a relocation, not a deletion (owner, 2026-10-06; [`sub-kg-lifecycle`](sub-kg-lifecycle.md) stage 13 has the steps) | `administrator` | only after 11 and 12 are green; DONE only when `bun run cat separation:cutover:check --site`, run in the separated repository, exits 0 (Tool `separation-cutover-check`: mounts, declarations resolve, no monorepo wiring, layer direction, the site builds from the mounts alone) |
 | 14 | **Independent refinement**: each new release adopted by the parent as a reviewed step | `authoring-agent` | [`upstream-version-adoption`](../../sdlc/sdlc-core/upstream-version-adoption.md) |
 
@@ -261,8 +261,8 @@ An agent asks these; it does not settle them.
 ## Identifiers and versions
 
 One `iriBase` and one `version` in the declaration. Identifiers a program reads
-are `<iriBase><version>/…`; pages a person reads are `<iriBase>v<major>/…`
-(`bootstrap-tools/schemas/release-iri.ts`). A base move is
+and pages a person reads are both `<iriBase>v<major>/…`; the exact release is
+the pin's (owner, 2026-10-23; `bootstrap-tools/schemas/release-iri.ts`). A base move is
 `bun run iri:sync -- --from <old base>`, once. A `$schema` tag carries its
 schema's own semver. The exported graph's own `@id` moves only when the new
 repository actually publishes (`40fl`). A published node's identifier must be

@@ -33,7 +33,7 @@ Draft the data model from the BPA and the requirements, have the BA confirm the 
 - Who: the `BA / Feature Requestor` lane (role `business-analyst`).
 - Skill: `crdm-data-model`.
 - What: A naming question.
-- Record it: `workflow_complete` with `node: "BA_ConfirmEntities"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `S_ConfirmCardinality` (Confirm the cardinalities)
 
 ### 4. Confirm the cardinalities (`S_ConfirmCardinality`)
@@ -41,7 +41,7 @@ Draft the data model from the BPA and the requirements, have the BA confirm the 
 - Who: the `Stakeholders` lane (role `stakeholder`).
 - Skill: `crdm-data-model`.
 - What: An operational question, asked of the people who run the process because they know where the exceptions are.
-- Record it: `workflow_complete` with `node: "S_ConfirmCardinality"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `GW_Model` (Entities recognised and every cardinality answered?)
 
 ### Decide — Entities recognised and every cardinality answered? (`GW_Model`)

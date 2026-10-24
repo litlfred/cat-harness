@@ -3,11 +3,11 @@
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
-                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
-                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
+                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#"
                   id="Definitions_Process_ContentAcquisition" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
-  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
   <bpmn:resource id="ingestion-agent" name="Ingestion engine"/>
   <bpmn:resource id="user" name="User"/>
   <bpmn:collaboration id="Collaboration_Process_ContentAcquisition">
@@ -44,10 +44,10 @@
     <bpmn:exclusiveGateway id="GW_Offered" name="Offered already?">
       <bpmn:documentation>Did the resource arrive with the request? `no`: say what is needed and ask for a link or a description. `yes`: accept it and record where it came from.</bpmn:documentation>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="A_Ask" name="Say what is needed, and ask&#10;for a link OR a description">
+    <bpmn:callActivity id="A_Ask" calledElement="Process_AskThePerson" name="Say what is needed, and ask&#10;for a link OR a description">
       <bpmn:documentation>Both forms, named together. A person who cannot find the file often knows exactly what it is, and a description in their own words is an acquired resource rather than a consolation prize. Asking for the upload first demands the one thing they may not have, before the cheaper answers have been offered. Say what happens if they do nothing.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="content-acquisition"/></bpmn:extensionElements>
-    </bpmn:task>
+    </bpmn:callActivity>
     <bpmn:task id="P_Respond" name="Give a link,&#10;a description, or neither">
       <bpmn:documentation>"Or neither" is a real outcome, not a failure. The ask says what happens if nothing comes, and then that happens — the work proceeds without the resource and says so.</bpmn:documentation>
       <bpmn:extensionElements>

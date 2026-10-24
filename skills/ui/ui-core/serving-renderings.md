@@ -25,8 +25,9 @@ per-repository: after the split, an overlying instance depending on
 `cat-harness` means both are present, and both publish.
 
 ```
-<base>/<stub>.jsonld             the knowledge graph        application/ld+json
-<base>/<stub>.json               the same bytes             application/json
+<base>/<name>/<stub>.jsonld      the knowledge graph        application/ld+json
+<base>/<name>/<stub>.json        the same bytes             application/json
+<base>/<name>/<kind>/<id>        each subject's page        text/html
 <base>/<stub>.schema.json        its declaration's schema   application/schema+json
 <base>/<stub>/                   the viewer                 text/html
 ```
@@ -36,16 +37,25 @@ rendering, served from a tree whose root happens to be `folio-assistant`. A
 consumer asking for one instance's graph must not be handed another's because
 the paths collided.
 
-**They sit at the base, not in a subdirectory.** An instance's repository IS its
-declaration that it holds a graph — `<name>.json` at the root says which
-graphs are here — so there is nothing left for a `kg/` segment to distinguish it
-from, and the stub is already doing the separating that a directory would have
-been doing. The renderings lived under `kg/` until 2026-09-19 and were moved.
+**The graph sits under the instance's own directory, the host's included.**
+The renderings lived under `kg/` until 2026-09-19. After that the host's
+graph sat at the base, as `<base>/<stub>.jsonld`, while every other instance's
+sat under `<base>/<name>/`. That changed with the owner's ruling of
+2026-10-23 (decision 1b on
+[cat-harness-tools#603](https://github.com/litlfred/cat-harness-tools/issues/603)):
+*the host is no longer special*. There is one rule for every layer, with
+subjects beside their document, so a subject's page `<base>/<name>/<kind>/<id>`
+sits next to the document that names it. The old root `<base>/<stub>.jsonld`
+is a one-release tombstone. Where each document goes:
+[`instance-publication`](../../kg/kg-core/instance-publication.md) §"What each
+instance publishes".
 
 **`<stub>/` is a directory because an extensionless URL has to be.** GitHub
 Pages resolves `<base>/<stub>` only to a directory index, so the viewer is what
-makes the bare stub openable. It reads `../<stub>.jsonld` — its PARENT, not its
-sibling, which is the one thing about it that changed with the layout.
+makes the bare stub openable. It climbs to the site root and reads the
+document's own path, `<name>/<stub>.jsonld` (`exportIdentity`'s `docPath`).
+It never composes a neighbour's name, because that relation has changed
+with each layout.
 
 **One function computes all of this**, `renderingPath()` in
 `schemas/cat-harness.ts`. The path was written out in six template literals

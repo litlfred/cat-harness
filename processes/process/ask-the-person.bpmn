@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#"
+                  id="Definitions_Process_AskThePerson" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
+                  exporter="folio-assistant" exporterVersion="1">
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:resource id="authoring-agent" name="Authoring agent"/>
+  <bpmn:resource id="user" name="User"/>
+  <bpmn:collaboration id="Collaboration_Process_AskThePerson">
+    <bpmn:participant id="Participant_Process_AskThePerson" name="Ask the person" processRef="Process_AskThePerson"/>
+  </bpmn:collaboration>
+  <bpmn:process id="Process_AskThePerson" name="Ask the person" isExecutable="false">
+    <bpmn:documentation>The ONE way a question or decision is put to a person. Called as a subprocess from every step that asks; never run on its own. The rule it carries out is the box at the top of `interaction-modality`.
+
+WHY A SUBPROCESS. The asking rule lived only in a skill, and every diagram had its own ask step with no link to it. Each enforcement was keyed to one tool name (`AskUserQuestion`), so a host with a different question tool (the Claude projects `request_decision` Decision card) asked without the rule, and the owner got bare cards with no question or options (owner, 2026-10-23: "this is PROCESS FAILURE ... maybe need better subprocess etc associations"). One subprocess, called by every asking step, makes the association visible in the diagrams and checkable.
+
+THE ORDER IS THE RULE: the full question goes in the chat FIRST, then the card. Once answered, a card shows only the chosen option; the chat text is the only lasting record of what was asked. This holds whatever the host's own tool guidance says.
+
+INPUT AND OUTPUT: the `ask-the-person` skill's schemas, schemas/skills/ask-the-person/input.schema.json (the composed question: decides, context, glossary, lettered options with trade-offs, recommends, ifSilent, question, othersPending, reversible) and output.schema.json (asked.chat and asked.card, outcome, chosen, quote, defaultTaken). A calling step supplies the input and receives the output.
+
+WHAT IT DOES NOT DO: decide. The caller owns the decision; this subprocess only gets an answer back to it, or the stated default when none comes.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <cat-harness.processes:policy enforcement="strict"/>
+    </bpmn:extensionElements>
+    <bpmn:laneSet id="LaneSet_Process_AskThePerson">
+      <bpmn:lane id="Lane_Agent" name="Agent" partitionElementRef="authoring-agent">
+        <bpmn:documentation>Composes, writes and offers the question, then acts on the answer or the default. Never treats a dismissed card as a choice.</bpmn:documentation>
+        <bpmn:flowNodeRef>Start_Process_AskThePerson</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_Compose</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_WriteInChat</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_OfferCard</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GW_Answered</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_Record</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_ProceedOnDefault</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_Answered</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_Default</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Person" name="Person" partitionElementRef="user">
+        <bpmn:documentation>Answers with one tap. Typing is never required: the person this was written for has very limited hand function.</bpmn:documentation>
+        <bpmn:flowNodeRef>U_Choose</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Start_Process_AskThePerson" name="A question is due"/>
+    <bpmn:task id="A_Compose" name="Compose the full question">
+      <bpmn:documentation>What is being decided, stated as what will differ; every id, path and coined name glossed; every option with its letter, a one-line explanation and its trade-off; the recommendation, first and marked; what will happen if no answer comes. Can the reader answer without opening anything? If not, it is not ready. More than one decision open: ask the next one in full and give a count for the rest.</bpmn:documentation>
+      <bpmn:extensionElements>
+        <bootstrap.processes:skill ref="ask-the-person"/>
+        <bootstrap.processes:skill ref="decision-comparison"/>
+      </bpmn:extensionElements>
+    </bpmn:task>
+    <bpmn:task id="A_WriteInChat" name="Write it in the chat">
+      <bpmn:documentation>Post the whole composed question as ordinary chat text BEFORE any card. This is the copy that survives: a card, once answered, shows only the chosen option, and a dismissed card shows nothing. Never "see the card", never a request for a typed reply such as "1y 2n".</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="ask-the-person"/></bpmn:extensionElements>
+    </bpmn:task>
+    <bpmn:task id="A_OfferCard" name="Offer the same options&#10;as a tappable card">
+      <bpmn:documentation>Whatever the host calls its selection tool (`AskUserQuestion`, `request_decision`, a button card): the same letters and labels as the chat text, the recommended option marked. No host card tool: say so in the chat and keep each answer to one short choice.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="ask-the-person"/></bpmn:extensionElements>
+    </bpmn:task>
+    <bpmn:userTask id="U_Choose" name="Choose an option">
+      <bpmn:documentation>One tap on the card, or any answer the person prefers to give. Free text is always available and never required.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="interaction-modality"/></bpmn:extensionElements>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_Answered" name="Answered?">
+      <bpmn:documentation>`yes` when the person chose an option. `no` when nothing came, or the card was dismissed. A dismissal is NOT an answer and never selects the default as a choice; the question stays open in the chat.</bpmn:documentation>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="A_Record" name="Record the answer">
+      <bpmn:documentation>Hand the answer back to the calling step, quoted. If it settles how a kind of thing is decided, it is a rule: write it into the governing skill in the same turn.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="ask-the-person"/><bootstrap.processes:skill ref="symbiotic-interaction"/></bpmn:extensionElements>
+    </bpmn:task>
+    <bpmn:task id="A_ProceedOnDefault" name="Proceed on the stated default,&#10;question left open">
+      <bpmn:documentation>Do what the question said would happen with no answer, and say so. Nothing irreversible proceeds on a default: such a step waits for the person.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="ask-the-person"/></bpmn:extensionElements>
+    </bpmn:task>
+    <bpmn:endEvent id="End_Answered" name="Answer returned to the caller"/>
+    <bpmn:endEvent id="End_Default" name="Default taken, question still open"/>
+    <bpmn:sequenceFlow id="SF_Ask_1" sourceRef="Start_Process_AskThePerson" targetRef="A_Compose"/>
+    <bpmn:sequenceFlow id="SF_Ask_2" sourceRef="A_Compose" targetRef="A_WriteInChat"/>
+    <bpmn:sequenceFlow id="SF_Ask_3" sourceRef="A_WriteInChat" targetRef="A_OfferCard"/>
+    <bpmn:sequenceFlow id="SF_Ask_4" sourceRef="A_OfferCard" targetRef="U_Choose"/>
+    <bpmn:sequenceFlow id="SF_Ask_5" sourceRef="U_Choose" targetRef="GW_Answered"/>
+    <bpmn:sequenceFlow id="SF_Ask_6" name="yes" sourceRef="GW_Answered" targetRef="A_Record"/>
+    <bpmn:sequenceFlow id="SF_Ask_7" name="no" sourceRef="GW_Answered" targetRef="A_ProceedOnDefault"/>
+    <bpmn:sequenceFlow id="SF_Ask_8" sourceRef="A_Record" targetRef="End_Answered"/>
+    <bpmn:sequenceFlow id="SF_Ask_9" sourceRef="A_ProceedOnDefault" targetRef="End_Default"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_Process_AskThePerson">
+    <bpmndi:BPMNPlane id="Plane_Process_AskThePerson" bpmnElement="Collaboration_Process_AskThePerson">
+      <bpmndi:BPMNShape id="Shape_Participant_Process_AskThePerson" bpmnElement="Participant_Process_AskThePerson" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="1180" height="380" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Lane_Agent" bpmnElement="Lane_Agent" isHorizontal="true">
+        <dc:Bounds x="190" y="80" width="1150" height="240" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Lane_Person" bpmnElement="Lane_Person" isHorizontal="true">
+        <dc:Bounds x="190" y="320" width="1150" height="140" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Start_Process_AskThePerson" bpmnElement="Start_Process_AskThePerson">
+        <dc:Bounds x="232" y="152" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_A_Compose" bpmnElement="A_Compose">
+        <dc:Bounds x="310" y="130" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_A_WriteInChat" bpmnElement="A_WriteInChat">
+        <dc:Bounds x="470" y="130" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_A_OfferCard" bpmnElement="A_OfferCard">
+        <dc:Bounds x="630" y="130" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_U_Choose" bpmnElement="U_Choose">
+        <dc:Bounds x="630" y="350" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_Answered" bpmnElement="GW_Answered" isMarkerVisible="true">
+        <dc:Bounds x="800" y="145" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_A_Record" bpmnElement="A_Record">
+        <dc:Bounds x="910" y="100" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_A_ProceedOnDefault" bpmnElement="A_ProceedOnDefault">
+        <dc:Bounds x="910" y="220" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_Answered" bpmnElement="End_Answered">
+        <dc:Bounds x="1100" y="122" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_Default" bpmnElement="End_Default">
+        <dc:Bounds x="1100" y="242" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_SF_Ask_1" bpmnElement="SF_Ask_1">
+        <di:waypoint x="268" y="170" /><di:waypoint x="310" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Ask_2" bpmnElement="SF_Ask_2">
+        <di:waypoint x="430" y="170" /><di:waypoint x="470" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Ask_3" bpmnElement="SF_Ask_3">
+        <di:waypoint x="590" y="170" /><di:waypoint x="630" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Ask_4" bpmnElement="SF_Ask_4">
+        <di:waypoint x="690" y="210" /><di:waypoint x="690" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Ask_5" bpmnElement="SF_Ask_5">
+        <di:waypoint x="750" y="390" /><di:waypoint x="825" y="390" /><di:waypoint x="825" y="195" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Ask_6" bpmnElement="SF_Ask_6">
+        <di:waypoint x="825" y="145" /><di:waypoint x="825" y="140" /><di:waypoint x="910" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Ask_7" bpmnElement="SF_Ask_7">
+        <di:waypoint x="850" y="170" /><di:waypoint x="880" y="170" /><di:waypoint x="880" y="260" /><di:waypoint x="910" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Ask_8" bpmnElement="SF_Ask_8">
+        <di:waypoint x="1030" y="140" /><di:waypoint x="1100" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Ask_9" bpmnElement="SF_Ask_9">
+        <di:waypoint x="1030" y="260" /><di:waypoint x="1100" y="260" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

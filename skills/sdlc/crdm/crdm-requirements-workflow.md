@@ -418,12 +418,9 @@ names a derivative's content model, layer names, organisation or interchange
 standard. A harness that follows a particular standard maps that standard's
 fields onto these fields **in its own layer**, never in the base.
 
-**Not yet decided, and not to be improvised:** how filed requirements are
-*organised* beyond one page per feature: grouping, numbering across features,
-traceability between requirements, retirement. The owner asked for a process
-and methodologies, and those wait on the literature search (bean `qh1s`) and on
-the assessment of open requirements standards (bean `1gf7`). Until then, file
-one page per shipped feature and use no further structure.
+**How filed requirements are organised, traced, superseded, and retired:**
+- The assessment of open requirements standards is in [`methodologies/requirements-standards-assessment.md`](../../../methodologies/requirements-standards-assessment.md) (bean `folio-assistant-1gf7`), and the literature search, adopted/rejected methodologies, and proposed BPMN filing workflow (`Process_RequirementsFiling`, [`processes/sdlc/requirements-filing.bpmn`](../../../processes/sdlc/requirements-filing.bpmn)) are in [`methodologies/requirements-filing-and-organisation.md`](../../../methodologies/requirements-filing-and-organisation.md) and [`docs/proposals/requirements-filing-organisation.md`](../../../docs/proposals/requirements-filing-organisation.md) (bean `folio-assistant-qh1s`, issue #1164).
+- Physical files stay flat at `docs/requirements/<slug>.md` (`id: req:<slug>`, statement keys `req:<slug>#<key>`), organised in `docs/requirements/index.md` under the eight canonical concern groups (`code-lists/concern-group.json`), with three-axis traceability (`proposedIn`, `derivedFrom`, `dependsOn`, `beans`, `skills`, `processes`, `test/attestations/`) and an immutable lifecycle (`proposed → in-force → superseded | retired`, never `git rm`).
 
 **A folio's features are not filed here.** This applies to the harness's own
 feature work. A folio's subject matter lives in the folio, as Phase 5 already
@@ -521,7 +518,7 @@ When a round of implementation is complete (one or more beans resolved):
 - [`todo-manager.md`](../sdlc-core/todo-manager.md) — bean creation protocol
 - [`bean-coordination.md`](../sdlc-core/bean-coordination.md) — cross-session bean coordination
 - [`coordinate.md`](../sdlc-core/coordinate.md) — session coordination
-- [Publication workflow](https://litlfred.github.io/folio-assistant/docs/cat-harness/process/publication-workflow.html) — the content lifecycle this fits within
+- [Publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) — the content lifecycle this fits within
 - Issue [#203](https://github.com/litlfred/folio-assistant/issues/203)
 
 ## Staging links

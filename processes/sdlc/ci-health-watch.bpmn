@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
-                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
-                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
+                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#"
                   id="Definitions_Process_CiHealth" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
-  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
   <bpmn:resource id="build-pipeline" name="Build pipeline"/>
   <bpmn:collaboration id="Collaboration_Process_CiHealth">
     <bpmn:participant id="Participant_Process_CiHealth" name="Is CI actually working on the default branch?" processRef="Process_CiHealth"/>
@@ -69,39 +69,64 @@ ONE TRACKING ISSUE, EDITED IN PLACE, never a comment and never a second issue �
     <bpmn:endEvent id="End_Unknown" name="Unknown — job RED,&#10;issue UNTOUCHED">
       <bpmn:incoming>Flow_2</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Task_Label" name="Ensure the tracking&#10;label exists">
-      <bpmn:documentation>Create the ci-health label with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet. Skipped on an unknown verdict.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="ci-health"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_Label" name="Ensure the tracking&#10;label exists" calledElement="GT_EnsureTrackingLabel">
       <bpmn:incoming>Flow_3</bpmn:incoming>
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
-    </bpmn:task>
+      <bpmn:ioSpecification id="Task_Label_label_IO">
+        <bpmn:dataInput id="Task_Label_label" name="label"/>
+        <bpmn:inputSet id="Task_Label_label_In"><bpmn:dataInputRefs>Task_Label_label</bpmn:dataInputRefs></bpmn:inputSet>
+        <bpmn:outputSet id="Task_Label_label_Out"/>
+      </bpmn:ioSpecification>
+      <bpmn:dataInputAssociation id="Task_Label_label_Value">
+        <bpmn:targetRef>Task_Label_label</bpmn:targetRef>
+        <bpmn:assignment id="Task_Label_label_Assign">
+          <bpmn:from xsi:type="bpmn:tFormalExpression">ci-health</bpmn:from>
+          <bpmn:to xsi:type="bpmn:tFormalExpression">Task_Label_label</bpmn:to>
+        </bpmn:assignment>
+      </bpmn:dataInputAssociation>
+    </bpmn:callActivity>
     <bpmn:exclusiveGateway id="GW_Finding" name="Anything red&#10;on main?">
       <bpmn:documentation>Asked of the same `verdict`, once it is known. `clean` is verdict == 'clean' (exit 0): the open `ci-health` issue, if there is one, is closed saying main is clean. `not clean` is verdict == 'red' (exit 1 with a report): the one open issue labelled `ci-health` is edited in place with the report as its body, or created if there is none. Neither branch fails the job — a red main speaks through the issue, not through this workflow's status.</bpmn:documentation>
       <bpmn:incoming>Flow_4</bpmn:incoming>
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
       <bpmn:outgoing>Flow_7</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Task_Close" name="Close the&#10;tracking issue">
-      <bpmn:documentation>Clean: close the open ci-health issue, if any, saying why (main is clean). Runs only on a clean verdict — on unknown the issue is left untouched and the job fails instead, because could-not-check is never rendered as clean.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="ci-health"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_Close" name="Close the&#10;tracking issue" calledElement="GT_CloseTrackingIssue">
+      <bpmn:documentation>Clean here means main is clean.</bpmn:documentation>
       <bpmn:incoming>Flow_5</bpmn:incoming>
       <bpmn:outgoing>Flow_6</bpmn:outgoing>
-    </bpmn:task>
+      <bpmn:ioSpecification id="Task_Close_label_IO">
+        <bpmn:dataInput id="Task_Close_label" name="label"/>
+        <bpmn:inputSet id="Task_Close_label_In"><bpmn:dataInputRefs>Task_Close_label</bpmn:dataInputRefs></bpmn:inputSet>
+        <bpmn:outputSet id="Task_Close_label_Out"/>
+      </bpmn:ioSpecification>
+      <bpmn:dataInputAssociation id="Task_Close_label_Value">
+        <bpmn:targetRef>Task_Close_label</bpmn:targetRef>
+        <bpmn:assignment id="Task_Close_label_Assign">
+          <bpmn:from xsi:type="bpmn:tFormalExpression">ci-health</bpmn:from>
+          <bpmn:to xsi:type="bpmn:tFormalExpression">Task_Close_label</bpmn:to>
+        </bpmn:assignment>
+      </bpmn:dataInputAssociation>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_Clean" name="main is green">
       <bpmn:incoming>Flow_6</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Task_Track" name="Open or EDIT the one&#10;tracking issue">
-      <bpmn:documentation>Findings: EDIT the one open issue labelled ci-health if there is one, otherwise create it, with the report as the body. One issue edited in place, never a new issue or a comment per run, so the tracking issue never becomes a feed.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="ci-health"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_Track" name="Open or EDIT the one&#10;tracking issue" calledElement="GT_TrackIssue">
       <bpmn:incoming>Flow_7</bpmn:incoming>
       <bpmn:outgoing>Flow_8</bpmn:outgoing>
-    </bpmn:task>
+      <bpmn:ioSpecification id="Task_Track_label_IO">
+        <bpmn:dataInput id="Task_Track_label" name="label"/>
+        <bpmn:inputSet id="Task_Track_label_In"><bpmn:dataInputRefs>Task_Track_label</bpmn:dataInputRefs></bpmn:inputSet>
+        <bpmn:outputSet id="Task_Track_label_Out"/>
+      </bpmn:ioSpecification>
+      <bpmn:dataInputAssociation id="Task_Track_label_Value">
+        <bpmn:targetRef>Task_Track_label</bpmn:targetRef>
+        <bpmn:assignment id="Task_Track_label_Assign">
+          <bpmn:from xsi:type="bpmn:tFormalExpression">ci-health</bpmn:from>
+          <bpmn:to xsi:type="bpmn:tFormalExpression">Task_Track_label</bpmn:to>
+        </bpmn:assignment>
+      </bpmn:dataInputAssociation>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_Found" name="Recorded — job stays GREEN">
       <bpmn:incoming>Flow_8</bpmn:incoming>
     </bpmn:endEvent>

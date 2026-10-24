@@ -47,6 +47,7 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `proposals`, holding `
 | [`public-comment-round-2-crd-2026-10-06.md`](public-comment-round-2-crd-2026-10-06.md) | Public comment, round 2: requirements from the chief-editor walkthrough |  |
 | [`qa-readers-audit-2026-10-01.md`](qa-readers-audit-2026-10-01.md) | QA readers audit: who reads test/results/, and what happens when it is gone |  |
 | [`qa-reports-branch-and-test-process-2026-10-01.md`](qa-reports-branch-and-test-process-2026-10-01.md) | QA and test evidence off main, and a test process that certifies |  |
+| [`requirements-filing-organisation.md`](requirements-filing-organisation.md) | Requirements filing and organisation: literature search, adopted methodologies, and filing process |  |
 | [`sdlc-process-audit.md`](sdlc-process-audit.md) | SDLC process audit — which diagram owns which phase |  |
 | [`semantic-subgraphs-2026-10-09.md`](semantic-subgraphs-2026-10-09.md) | Semantic subgraphs: site chrome, themes, and concern groups a downstream can mount |  |
 | [`separation-arc-2026-10-01.md`](separation-arc-2026-10-01.md) | Separation arc — one workplan for GOAL 1 |  |

@@ -11,10 +11,10 @@
       "kind": "implements",
       "prose": "cat-harness/processes/sdlc/feature-staging.bpmn",
       "code": ".github/workflows/feature-staging.yml",
-      "prose_hash": "9388446cd2a6",
+      "prose_hash": "7c1cda2e72d5",
       "code_hash": "02cbd89a1f8c",
       "by": "agent",
-      "reason": "This branch changed 12 workflow files in ONE way: an `oven-sh/setup-bun@v2` step's `bun-version` literal went from `latest` (or from absent) to `1.3.14`. Re-read all six paired documentations: none mentions the runtime, `setup-bun\\', `bun-version` or `latest` — grepped, not assumed — so none of them describes the thing that changed. `upstream-pin-watch` was read most closely because this branch also adds Bun to `upstream-pins.json`, and its prose is tenant-agnostic by design: it names no pin, gives no count, and says a new tenant is 'a registry row and a call — never a second diagram'. Adding a row is what it prescribes, so the prose holds a fortiori. Bean `3ozg`."
+      "reason": "Re-hashed after cat-harness#375's global tasks (owner 2026-10-20, a1 b1 c1): the step that appends a `retained` entry with why it stays became a call activity naming GT_LogRetained, shared with staging-render-log; its documentation moved to the global task unchanged in meaning, and the call keeps its id, lane and name. Nothing the workflow does changed. Lane A, session https://claude.ai/code/session_01Kymnx79TxWvxVoLzcAjBRr."
     }
   ]
 }

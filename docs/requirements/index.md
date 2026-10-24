@@ -27,4 +27,28 @@ A test run names the statements it checks, in its `requirements` array (`folio-t
 
 ## How filing is organised
 
-This is still open. The owner asked for a process and methodologies for organising requirements as they are filed, and the literature search is a bean of its own. So is the assessment of open requirements standards. Until those land, one page per shipped feature is the rule. The schema is the only structure beyond that.
+The assessment of open requirements standards is recorded in [`methodologies/requirements-standards-assessment.md`](../../methodologies/requirements-standards-assessment.md) (bean `folio-assistant-1gf7`), and the literature search, candidate methodologies, and proposed BPMN filing process (`Process_RequirementsFiling`, [`processes/sdlc/requirements-filing.bpmn`](../../processes/sdlc/requirements-filing.bpmn)) are recorded in [`methodologies/requirements-filing-and-organisation.md`](../../methodologies/requirements-filing-and-organisation.md) and [Requirements filing and organisation]({{ '/proposals/requirements-filing-organisation.html' | relative_url }}) (bean `folio-assistant-qh1s`, issue #1164):
+
+1. **Flat physical paths, two-level semantic IDs** (Doorstop + MADR): Every filed requirement lives at `docs/requirements/<slug>.md` with `id: req:<slug>` and statement keys `req:<slug>#<key>`. Physical files stay flat so `git mv docs/proposals/<slug>.md docs/requirements/<slug>.md` is 1:1 and `check:requirements` checks slug uniqueness across `docs/proposals/` and `docs/requirements/`.
+2. **Faceted organisation by canonical concern group** (Volere + IREB CPRE): Filed `in-force` requirements are indexed on this page under the eight canonical concern groups declared in [`code-lists/concern-group.json`](../../code-lists/concern-group.json) (`sdlc`, `process`, `tools`, `kg`, `library`, `content`, `ui`, `conduct`).
+3. **Three-axis bidirectional traceability** (ISO/IEC/IEEE 29148 Clause 5.2.7 + IREB + W3C PROV-O): Backward lineage (`proposedIn`, `derivedFrom`), horizontal dependencies (`dependsOn`), and forward links (`beans`, `skills`, `processes`, `RequirementSet`, and `test/attestations/` + `test/runs/`).
+4. **Immutable lifecycle for change, supersession, and retirement** (`proposed → in-force → superseded | retired`): Filed requirements are never deleted with `git rm`. In-scope clarifications edit `docs/requirements/<slug>.md` in place; scope-changing replacements file `docs/requirements/<new-slug>.md` and flip the old record to `status: superseded` (`supersededBy: req:<new-slug>`); obsolete requirements flip to `status: retired` and move to the **Superseded and Retired Requirements** table below.
+
+### In-force requirements by concern group (`code-lists/concern-group.json`)
+
+| Concern group (`code`) | Filed `in-force` requirements |
+|---|---|
+| **Software delivery lifecycle** (`sdlc`) | _None filed yet._ |
+| **Process model and execution** (`process`) | _None filed yet._ |
+| **Tools and MCP** (`tools`) | _None filed yet._ |
+| **Knowledge graph** (`kg`) | _None filed yet._ |
+| **Library and information management** (`library`) | _None filed yet._ |
+| **Content authoring** (`content`) | _None filed yet._ |
+| **Rendering, UI and publication surfaces** (`ui`) | _None filed yet._ |
+| **Agent conduct** (`conduct`) | _None filed yet._ |
+
+### Superseded and retired requirements
+
+| Requirement (`id`) | Status (`superseded` \| `retired`) | Superseded by / Retirement note |
+|---|---|---|
+| _None yet._ | — | — |

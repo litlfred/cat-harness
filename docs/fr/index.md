@@ -95,14 +95,14 @@ actuellement pris en charge :
 | Type de contenu | Artefacts | Ensemble de compétences |
 |-----------------|-----------|-------------------------|
 | **Articles scientifiques et livres** | Formalisation Lean 4 + LaTeX/Markdown | [`authoring-math`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#scientific-papers--books) |
-| **Kits d'adaptation numérique (DAK) des Lignes directrices SMART de l'OMS** | Artefacts L2 — BPMN, DMN, dictionnaires de données Excel, personas | [`authoring-who-smart-guidelines`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#who-smart-guidelines-daks-l2) |
-| **Guides d'implémentation SMART de l'OMS** | Ressources FHIR L3, FSH, sortie de l'éditeur d'IG | [`authoring-who-smart-guidelines`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#who-smart-implementation-guides-l3) |
+| **Kits d'adaptation numérique (DAK) des Lignes directrices SMART de l'OMS** | Artefacts L2 — BPMN, DMN, dictionnaires de données Excel, personas | [`authoring-who-smart-guidelines`](https://litlfred.github.io/folio-assistant/smart-base/concepts/who-smart-content-types.html#who-smart-guidelines-daks-l2) |
+| **Guides d'implémentation SMART de l'OMS** | Ressources FHIR L3, FSH, sortie de l'éditeur d'IG | [`authoring-who-smart-guidelines`](https://litlfred.github.io/folio-assistant/smart-base/concepts/who-smart-content-types.html#who-smart-implementation-guides-l3) |
 | **Autres** | Extensible — ajoutez un nouvel adaptateur + ensemble de compétences | [Ajouter un type de contenu]({{ site.baseurl }}/docs/cat-harness/guides/new-content-type.html) |
 
 Le cycle transversal [`content-lifecycle`]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }}#the-content-lifecycle)
 (planifier → rédiger → valider → réviser → tester → publier → retour → retirer)
 s'applique à chaque type de contenu. Le
-[flux de publication]({{ '/docs/cat-harness/process/publication-workflow.html' | relative_url }}) le modélise correctement —
+[flux de publication](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) le modélise correctement —
 en diagrammes BPMN à couloirs, avec les rôles, la porte de validation IHM, et le
 plan de travail partagé.
 
@@ -110,9 +110,9 @@ plan de travail partagé.
 
 - **[Installation]({{ '/docs/cat-harness/start/installation.html' | relative_url }})** — prérequis, clonage, `bun install`, vérification des capacités.
 - **[Démarrage]({{ '/docs/cat-harness/start/getting-started.html' | relative_url }})** — connectez le serveur MCP à votre LLM et exécutez votre première compétence.
-- **[Tutoriel : Rédiger un article avec folio-assistant]({{ '/docs/cat-harness/guides/writing-a-paper.html' | relative_url }})** — un guide complet piloté par LLM avec une session de chat simulée.
+- **[Tutoriel : Rédiger un article avec folio-assistant](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)** — un guide complet piloté par LLM avec une session de chat simulée.
 - **[Types de contenu]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }})** — le formalisme de chaque domaine de rédaction.
-- **[Flux de publication]({{ '/docs/cat-harness/process/publication-workflow.html' | relative_url }})** — diagrammes BPMN à couloirs des processus d'édition et de publication : la porte de validation IHM, qui révise quoi, et le plan de travail partagé.
+- **[Flux de publication](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** — diagrammes BPMN à couloirs des processus d'édition et de publication : la porte de validation IHM, qui révise quoi, et le plan de travail partagé.
 - **[Intégration de l'agent]({{ '/docs/cat-harness/guides/agent-onboarding.html' | relative_url }})** — orientation pour un agent LLM intégré dans un folio : premières étapes, recherche de compétences, modèle d'objets de contenu, side-cars d'assurance qualité.
 - **[Compétences et rôles]({{ '/docs/cat-harness/concepts/skills.html' | relative_url }})** — chaque compétence et rôle, et comment ils fonctionnent ensemble avec le LLM.
 - **[Référence du schéma de compétences](../reference/skills/)** — contrats d'entrée/sortie générés pour chaque compétence.

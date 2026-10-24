@@ -41,138 +41,6 @@ msgstr "إن folio-assistant مستقل عن المحتوى: فالمنصة لا
 msgid "This page describes the formalism of each content type. It is intentionally kept separate from any concrete content; concrete artifacts live in their own content repository."
 msgstr "تصف هذه الصفحة الصياغة الرسمية لكل نوع محتوى. وقد تم فصلها عمدًا عن أي محتوى ملموس؛ حيث تعيش المخرجات الملموسة في مستودع المحتوى الخاص بها."
 
-#: docs/concepts/content-types.md:40
-msgid "The content lifecycle"
-msgstr "دورة حياة المحتوى"
-
-#: docs/concepts/content-types.md:53
-msgid "BPMN 2.0 source · full-size SVG"
-msgstr "مصدر BPMN 2.0 · ملف SVG بالحجم الكامل"
-
-#: docs/concepts/content-types.md:56
-msgid "Stage"
-msgstr "المرحلة"
-
-#: docs/concepts/content-types.md:56
-msgid "Skill"
-msgstr "المهارة"
-
-#: docs/concepts/content-types.md:56
-msgid "What happens"
-msgstr "ما يجري"
-
-#: docs/concepts/content-types.md:58
-msgid "plan"
-msgstr "plan (تخطيط)"
-
-#: docs/concepts/content-types.md:58
-msgid "Scope the work, identify artifacts and actors"
-msgstr "تحديد نطاق العمل، وتحديد المخرجات والجهات الفاعلة"
-
-#: docs/concepts/content-types.md:59
-msgid "author"
-msgstr "author (تأليف)"
-
-#: docs/concepts/content-types.md:59
-msgid "Create structured artifacts from source material"
-msgstr "إنشاء مخرجات مهيكلة من المادة المصدر"
-
-#: docs/concepts/content-types.md:60
-msgid "validate"
-msgstr "validate (تحقق)"
-
-#: docs/concepts/content-types.md:60
-msgid "Check against schema + constraints"
-msgstr "التحقق مقابل المخطط + القيود"
-
-#: docs/concepts/content-types.md:61
-msgid "review"
-msgstr "review (مراجعة)"
-
-#: docs/concepts/content-types.md:61
-msgid "Human / SME review against criteria"
-msgstr "مراجعة بشرية / خبير موضوعي (SME) مقابل المعايير"
-
-#: docs/concepts/content-types.md:62
-msgid "test"
-msgstr "test (اختبار)"
-
-#: docs/concepts/content-types.md:62
-msgid "Automated QA, build green, proofs/validators pass"
-msgstr "ضمان جودة مؤتمت، بناء سليم، نجاح البراهين/أدوات التحقق"
-
-#: docs/concepts/content-types.md:63
-msgid "publish"
-msgstr "publish (نشر)"
-
-#: docs/concepts/content-types.md:63
-msgid "Render and deploy the published form"
-msgstr "تصيير الشكل المنشور وتوزيعه"
-
-#: docs/concepts/content-types.md:64
-msgid "feedback"
-msgstr "feedback (ملاحظات)"
-
-#: docs/concepts/content-types.md:64
-msgid "Capture and route reviewer feedback"
-msgstr "التقاط ملاحظات المراجعين وتوجيهها"
-
-#: docs/concepts/content-types.md:65
-msgid "retire"
-msgstr "retire (إحالة للتقاعد)"
-
-#: docs/concepts/content-types.md:65
-msgid "Deprecate or archive an artifact"
-msgstr "إيقاف استخدام مخرج أو أرشفته"
-
-#: docs/concepts/content-types.md:67
-msgid "The lifecycle stages are the same regardless of content type — what differs is the authoring skills and the artifacts each type produces. For the full list of skills and the roles that drive them, see Skills & roles."
-msgstr "مراحل دورة الحياة هي نفسها بغض النظر عن نوع المحتوى — ما يختلف هو مهارات التأليف والمخرجات التي ينتجها كل نوع. للاطلاع على القائمة الكاملة للمهارات والأدوار التي تديرها، راجع المهارات والأدوار."
-
-#: docs/concepts/content-types.md:71
-msgid "Two things the eight stage names hide, and the diagram does not:  and  are not consecutive phases but a loop — every proposed change runs the HCI validation gate, and the editor sees the findings before anything is committed — and  happens twice, once per change and once over the assembled draft. Both expand into their own diagrams on the publication workflow page."
-msgstr "أمران تخفيهما أسماء المراحل الثمانية، ولا يخفيهما المخطط: لا تمثل المرحلتان  و مرحلتين متتاليتين بل هما حلقة تكرارية — فكل تغيير مقترح يمر عبر بوابة التحقق من التفاعل البشري الحاسوبي (HCI)، ويرى المحرر النتائج قبل تثبيت أي شيء — وتتم مرحلة  مرتين، مرة لكل تغيير ومرة على المسودة المجمعة ككل. ويتوسع كلاهما في مخططاتهما الخاصة على صفحة مسار عمل النشر."
-
-#: docs/concepts/content-types.md:80
-msgid "Documents & policy guidance"
-msgstr "المستندات وإرشادات السياسات"
-
-#: docs/concepts/content-types.md:85
-msgid "Skill package:  · Adapter:  · Guide: Writing a document"
-msgstr "حزمة المهارات:  · المحول:  · الدليل الإرشادي: كتابة مستند"
-
-#: docs/concepts/content-types.md:89
-msgid "Structured prose: health-policy guidance (an L1 guideline, say), a standard, a report, a handbook, a book chapter. Everything a paper is, minus the formal layer — and therefore minus the two toolchains that serve it."
-msgstr "نثر مهيكل: إرشادات السياسات الصحية (دليل إرشادي من المستوى L1، على سبيل المثال)، أو معيار، أو تقرير، أو كتيب، أو فصل من كتاب. كل ما تمثله الورقة البحثية، باستثناء الطبقة الرسمية — وبالتالي باستثناء سلسلتي الأدوات اللتين تخدمانها."
-
-#: docs/concepts/content-types.md:93
-msgid "Source model — the same tree of typed blocks as a paper, restricted to the kinds whose content is prose rather than a formal claim: , , , , , , , ."
-msgstr "نموذج المصدر — شجرة الكتل المصنفة نفسها كما في الورقة البحثية، وتقتصر على الأنواع التي يكون محتواها نثرًا بدلاً من ادعاء رسمي: ، و، و، و، و، و، و، و."
-
-#: docs/concepts/content-types.md:97
-msgid "Rendering —  assembles the folio into one Markdown file;  and  take it through pandoc. The PDF path uses an HTML engine (weasyprint, prince, wkhtmltopdf) and never falls back to , so \"no TeX required\" stays true rather than becoming true-until-someone-has-TeX-installed."
-msgstr "التصيير — تقوم أداة  بتجميع الـ folio في ملف Markdown واحد؛ بينما تنقله أداتا  و عبر pandoc. يستخدم مسار إنشاء PDF محرك HTML (مثل weasyprint أو prince أو wkhtmltopdf) ولا يلجأ أبدًا إلى  كحل بديل، بحيث تظل عبارة \"لا يلزم تثبيت TeX\" صحيحة بدلاً من أن تصبح صحيحة حتى يقوم شخص ما بتثبيت TeX."
-
-#: docs/concepts/content-types.md:102
-msgid "Enforcement —  rejects a math kind, a  field or a  sibling, and runs on every ."
-msgstr "فرض القيود — ترفض أداة  أي نوع رياضي، أو حقل  أو ملف مجاور بامتداد ، وتعمل عند كل استدعاء لـ ."
-
-#: docs/concepts/content-types.md:105
-msgid "Relevant skill schemas: , , , ."
-msgstr "مخططات المهارات ذات الصلة: ، ، ، ."
-
-#: docs/concepts/content-types.md:119
-msgid "Carrying a normative statement"
-msgstr "حمل العبارات المعيارية"
-
-#: docs/concepts/content-types.md:124
-msgid "A recommendation, requirement or rule is the block readers cite and implementers trace to. It wants a label, a stable identity and a place in the dependency graph — everything a  has — and it is emphatically not a theorem, because nothing proves it."
-msgstr "التوصية أو المتطلب أو القاعدة هي الكتلة التي يستشهد بها القراء ويتتبعها المنفذون. وهي تتطلب تسمية، وهوية مستقرة، ومكانًا في مخطط التبعيات — كل ما تمتلكه كتلة  — إلا أنها بالتأكيد ليست مبرهنة، لأنه لا يوجد ما يثبتها ببرهان."
-
-#: docs/concepts/content-types.md:129
-msgid "There is no first-class  block kind. Today the carrier is a  block with a label and a title; the  skill states the convention and its limits. Earlier guidance in  mapped guideline recommendations onto  — that predates this content type and is wrong for a document folio, where  is a math kind whose  field is required."
-msgstr "لا يوجد نوع كتلة  من الدرجة الأولى. في الوقت الحالي، الحامل لها هو كتلة  ذات تسمية وعنوان؛ وتوضح مهارة  هذا العرف وحدوده. وكانت الإرشادات السابقة في  قد ربطت توصيات الأدلة الإرشادية بكتلة  — وهو ما يسبق إنشاء نوع المحتوى هذا ويعد غير صحيح بالنسبة لـ folio المستند، حيث تكون  نوعًا رياضيًا يتطلب وجود حقل ."
-
 #: docs/concepts/content-types.md:139
 msgid "Scientific papers & books"
 msgstr "الأوراق والكتب العلمية"
@@ -257,66 +125,6 @@ msgstr "يستحق اثنان من تلك الصفوف نظرة فاحصة. فا
 msgid "Relevant skill schemas: , , ."
 msgstr "مخططات المهارات ذات الصلة: ، ، ."
 
-#: docs/concepts/content-types.md:199
-msgid "WHO SMART Guidelines DAKs (L2)"
-msgstr "حزم التكيف الرقمي (DAK) لإرشادات منظمة الصحة العالمية SMART (المستوى L2)"
-
-#: docs/concepts/content-types.md:204
-msgid "Skill package:  · Guide: Authoring a WHO SMART DAK"
-msgstr "حزمة المهارات:  · الدليل الإرشادي: تأليف حزمة التكيف الرقمي (DAK) لإرشادات منظمة الصحة العالمية SMART"
-
-#: docs/concepts/content-types.md:207
-msgid "A Digital Adaptation Kit (DAK) is the L2 (machine-readable, but implementation-neutral) representation of a WHO guideline. folio-assistant authors the L2 artifacts:"
-msgstr "تعد حزمة التكيف الرقمي (Digital Adaptation Kit - DAK) التمثيل من المستوى L2 (المقروء آليًا، ولكنه محايد تجاه التنفيذ) لإرشادات منظمة الصحة العالمية. يتولى folio-assistant تأليف مخرجات المستوى L2:"
-
-#: docs/concepts/content-types.md:211
-msgid "Business processes — BPMN 2.0 workflows ()"
-msgstr "عمليات الأعمال — مسارات عمل BPMN 2.0 ()"
-
-#: docs/concepts/content-types.md:212
-msgid "Decision logic — DMN decision tables ()"
-msgstr "منطق اتخاذ القرار — جداول قرارات DMN ()"
-
-#: docs/concepts/content-types.md:213
-msgid "Data dictionaries / core data elements — Excel / structured tables"
-msgstr "قواميس البيانات / عناصر البيانات الأساسية — Excel / جداول مهيكلة"
-
-#: docs/concepts/content-types.md:214
-msgid "Terminology — code systems and value sets ()"
-msgstr "المصطلحات — أنظمة الرموز ومجموعات القيم ()"
-
-#: docs/concepts/content-types.md:215
-msgid "Personas, scenarios, indicators, requirements"
-msgstr "شخصيات المستخدمين، والسيناريوهات، والمؤشرات، والمتطلبات"
-
-#: docs/concepts/content-types.md:233
-msgid "WHO SMART Implementation Guides (L3)"
-msgstr "أدلة تطبيق إرشادات منظمة الصحة العالمية SMART (المستوى L3)"
-
-#: docs/concepts/content-types.md:238
-msgid "Skill package:  · Guide: Authoring a WHO SMART IG"
-msgstr "حزمة المهارات:  · الدليل الإرشادي: تأليف دليل تطبيق (IG) لإرشادات منظمة الصحة العالمية SMART"
-
-#: docs/concepts/content-types.md:241
-msgid "The L3 layer turns an L2 DAK into a computable FHIR Implementation Guide:"
-msgstr "تحوّل طبقة المستوى L3 حزمة DAK من المستوى L2 إلى دليل تطبيق FHIR قابل للحوسبة:"
-
-#: docs/concepts/content-types.md:243
-msgid "FHIR resources authored as FSH (FHIR Shorthand) and compiled with SUSHI ()"
-msgstr "موارد FHIR تُؤلف باستخدام FSH (اختزال FHIR / FHIR Shorthand) وتُترجم بواسطة SUSHI ()"
-
-#: docs/concepts/content-types.md:245
-msgid "Validation against FHIR profiles ()"
-msgstr "التحقق مقابل ملفات تعريف FHIR ()"
-
-#: docs/concepts/content-types.md:246
-msgid "Publication with the HL7 FHIR IG Publisher ()"
-msgstr "النشر باستخدام HL7 FHIR IG Publisher ()"
-
-#: docs/concepts/content-types.md:247
-msgid "Quality control gates ()"
-msgstr "بوابات مراقبة الجودة ()"
-
 #: docs/concepts/content-types.md:265
 msgid "Others — extending folio-assistant"
 msgstr "أنواع أخرى — توسيع folio-assistant"
@@ -354,3 +162,147 @@ msgstr "أنواع المحتوى الجديدة مواطنون من الدرج�
 
 #~ msgid "✎ Edit{: .fa-node-edit title=\"Edit content/docs/concepts-content-types/others-extending-folio-assistant.md\" } QA… TR"
 #~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit content/docs/concepts-content-types/others-extending-folio-assistant.md\" } QA… TR"
+
+#~ msgid "The content lifecycle"
+#~ msgstr "دورة حياة المحتوى"
+
+#~ msgid "BPMN 2.0 source · full-size SVG"
+#~ msgstr "مصدر BPMN 2.0 · ملف SVG بالحجم الكامل"
+
+#~ msgid "Stage"
+#~ msgstr "المرحلة"
+
+#~ msgid "Skill"
+#~ msgstr "المهارة"
+
+#~ msgid "What happens"
+#~ msgstr "ما يجري"
+
+#~ msgid "plan"
+#~ msgstr "plan (تخطيط)"
+
+#~ msgid "Scope the work, identify artifacts and actors"
+#~ msgstr "تحديد نطاق العمل، وتحديد المخرجات والجهات الفاعلة"
+
+#~ msgid "author"
+#~ msgstr "author (تأليف)"
+
+#~ msgid "Create structured artifacts from source material"
+#~ msgstr "إنشاء مخرجات مهيكلة من المادة المصدر"
+
+#~ msgid "validate"
+#~ msgstr "validate (تحقق)"
+
+#~ msgid "Check against schema + constraints"
+#~ msgstr "التحقق مقابل المخطط + القيود"
+
+#~ msgid "review"
+#~ msgstr "review (مراجعة)"
+
+#~ msgid "Human / SME review against criteria"
+#~ msgstr "مراجعة بشرية / خبير موضوعي (SME) مقابل المعايير"
+
+#~ msgid "test"
+#~ msgstr "test (اختبار)"
+
+#~ msgid "Automated QA, build green, proofs/validators pass"
+#~ msgstr "ضمان جودة مؤتمت، بناء سليم، نجاح البراهين/أدوات التحقق"
+
+#~ msgid "publish"
+#~ msgstr "publish (نشر)"
+
+#~ msgid "Render and deploy the published form"
+#~ msgstr "تصيير الشكل المنشور وتوزيعه"
+
+#~ msgid "feedback"
+#~ msgstr "feedback (ملاحظات)"
+
+#~ msgid "Capture and route reviewer feedback"
+#~ msgstr "التقاط ملاحظات المراجعين وتوجيهها"
+
+#~ msgid "retire"
+#~ msgstr "retire (إحالة للتقاعد)"
+
+#~ msgid "Deprecate or archive an artifact"
+#~ msgstr "إيقاف استخدام مخرج أو أرشفته"
+
+#~ msgid "The lifecycle stages are the same regardless of content type — what differs is the authoring skills and the artifacts each type produces. For the full list of skills and the roles that drive them, see Skills & roles."
+#~ msgstr "مراحل دورة الحياة هي نفسها بغض النظر عن نوع المحتوى — ما يختلف هو مهارات التأليف والمخرجات التي ينتجها كل نوع. للاطلاع على القائمة الكاملة للمهارات والأدوار التي تديرها، راجع المهارات والأدوار."
+
+#~ msgid "Two things the eight stage names hide, and the diagram does not:  and  are not consecutive phases but a loop — every proposed change runs the HCI validation gate, and the editor sees the findings before anything is committed — and  happens twice, once per change and once over the assembled draft. Both expand into their own diagrams on the publication workflow page."
+#~ msgstr "أمران تخفيهما أسماء المراحل الثمانية، ولا يخفيهما المخطط: لا تمثل المرحلتان  و مرحلتين متتاليتين بل هما حلقة تكرارية — فكل تغيير مقترح يمر عبر بوابة التحقق من التفاعل البشري الحاسوبي (HCI)، ويرى المحرر النتائج قبل تثبيت أي شيء — وتتم مرحلة  مرتين، مرة لكل تغيير ومرة على المسودة المجمعة ككل. ويتوسع كلاهما في مخططاتهما الخاصة على صفحة مسار عمل النشر."
+
+#~ msgid "Documents & policy guidance"
+#~ msgstr "المستندات وإرشادات السياسات"
+
+#~ msgid "Skill package:  · Adapter:  · Guide: Writing a document"
+#~ msgstr "حزمة المهارات:  · المحول:  · الدليل الإرشادي: كتابة مستند"
+
+#~ msgid "Structured prose: health-policy guidance (an L1 guideline, say), a standard, a report, a handbook, a book chapter. Everything a paper is, minus the formal layer — and therefore minus the two toolchains that serve it."
+#~ msgstr "نثر مهيكل: إرشادات السياسات الصحية (دليل إرشادي من المستوى L1، على سبيل المثال)، أو معيار، أو تقرير، أو كتيب، أو فصل من كتاب. كل ما تمثله الورقة البحثية، باستثناء الطبقة الرسمية — وبالتالي باستثناء سلسلتي الأدوات اللتين تخدمانها."
+
+#~ msgid "Source model — the same tree of typed blocks as a paper, restricted to the kinds whose content is prose rather than a formal claim: , , , , , , , ."
+#~ msgstr "نموذج المصدر — شجرة الكتل المصنفة نفسها كما في الورقة البحثية، وتقتصر على الأنواع التي يكون محتواها نثرًا بدلاً من ادعاء رسمي: ، و، و، و، و، و، و، و."
+
+#~ msgid "Rendering —  assembles the folio into one Markdown file;  and  take it through pandoc. The PDF path uses an HTML engine (weasyprint, prince, wkhtmltopdf) and never falls back to , so \"no TeX required\" stays true rather than becoming true-until-someone-has-TeX-installed."
+#~ msgstr "التصيير — تقوم أداة  بتجميع الـ folio في ملف Markdown واحد؛ بينما تنقله أداتا  و عبر pandoc. يستخدم مسار إنشاء PDF محرك HTML (مثل weasyprint أو prince أو wkhtmltopdf) ولا يلجأ أبدًا إلى  كحل بديل، بحيث تظل عبارة \"لا يلزم تثبيت TeX\" صحيحة بدلاً من أن تصبح صحيحة حتى يقوم شخص ما بتثبيت TeX."
+
+#~ msgid "Enforcement —  rejects a math kind, a  field or a  sibling, and runs on every ."
+#~ msgstr "فرض القيود — ترفض أداة  أي نوع رياضي، أو حقل  أو ملف مجاور بامتداد ، وتعمل عند كل استدعاء لـ ."
+
+#~ msgid "Relevant skill schemas: , , , ."
+#~ msgstr "مخططات المهارات ذات الصلة: ، ، ، ."
+
+#~ msgid "Carrying a normative statement"
+#~ msgstr "حمل العبارات المعيارية"
+
+#~ msgid "A recommendation, requirement or rule is the block readers cite and implementers trace to. It wants a label, a stable identity and a place in the dependency graph — everything a  has — and it is emphatically not a theorem, because nothing proves it."
+#~ msgstr "التوصية أو المتطلب أو القاعدة هي الكتلة التي يستشهد بها القراء ويتتبعها المنفذون. وهي تتطلب تسمية، وهوية مستقرة، ومكانًا في مخطط التبعيات — كل ما تمتلكه كتلة  — إلا أنها بالتأكيد ليست مبرهنة، لأنه لا يوجد ما يثبتها ببرهان."
+
+#~ msgid "There is no first-class  block kind. Today the carrier is a  block with a label and a title; the  skill states the convention and its limits. Earlier guidance in  mapped guideline recommendations onto  — that predates this content type and is wrong for a document folio, where  is a math kind whose  field is required."
+#~ msgstr "لا يوجد نوع كتلة  من الدرجة الأولى. في الوقت الحالي، الحامل لها هو كتلة  ذات تسمية وعنوان؛ وتوضح مهارة  هذا العرف وحدوده. وكانت الإرشادات السابقة في  قد ربطت توصيات الأدلة الإرشادية بكتلة  — وهو ما يسبق إنشاء نوع المحتوى هذا ويعد غير صحيح بالنسبة لـ folio المستند، حيث تكون  نوعًا رياضيًا يتطلب وجود حقل ."
+
+#~ msgid "WHO SMART Guidelines DAKs (L2)"
+#~ msgstr "حزم التكيف الرقمي (DAK) لإرشادات منظمة الصحة العالمية SMART (المستوى L2)"
+
+#~ msgid "Skill package:  · Guide: Authoring a WHO SMART DAK"
+#~ msgstr "حزمة المهارات:  · الدليل الإرشادي: تأليف حزمة التكيف الرقمي (DAK) لإرشادات منظمة الصحة العالمية SMART"
+
+#~ msgid "A Digital Adaptation Kit (DAK) is the L2 (machine-readable, but implementation-neutral) representation of a WHO guideline. folio-assistant authors the L2 artifacts:"
+#~ msgstr "تعد حزمة التكيف الرقمي (Digital Adaptation Kit - DAK) التمثيل من المستوى L2 (المقروء آليًا، ولكنه محايد تجاه التنفيذ) لإرشادات منظمة الصحة العالمية. يتولى folio-assistant تأليف مخرجات المستوى L2:"
+
+#~ msgid "Business processes — BPMN 2.0 workflows ()"
+#~ msgstr "عمليات الأعمال — مسارات عمل BPMN 2.0 ()"
+
+#~ msgid "Decision logic — DMN decision tables ()"
+#~ msgstr "منطق اتخاذ القرار — جداول قرارات DMN ()"
+
+#~ msgid "Data dictionaries / core data elements — Excel / structured tables"
+#~ msgstr "قواميس البيانات / عناصر البيانات الأساسية — Excel / جداول مهيكلة"
+
+#~ msgid "Terminology — code systems and value sets ()"
+#~ msgstr "المصطلحات — أنظمة الرموز ومجموعات القيم ()"
+
+#~ msgid "Personas, scenarios, indicators, requirements"
+#~ msgstr "شخصيات المستخدمين، والسيناريوهات، والمؤشرات، والمتطلبات"
+
+#~ msgid "WHO SMART Implementation Guides (L3)"
+#~ msgstr "أدلة تطبيق إرشادات منظمة الصحة العالمية SMART (المستوى L3)"
+
+#~ msgid "Skill package:  · Guide: Authoring a WHO SMART IG"
+#~ msgstr "حزمة المهارات:  · الدليل الإرشادي: تأليف دليل تطبيق (IG) لإرشادات منظمة الصحة العالمية SMART"
+
+#~ msgid "The L3 layer turns an L2 DAK into a computable FHIR Implementation Guide:"
+#~ msgstr "تحوّل طبقة المستوى L3 حزمة DAK من المستوى L2 إلى دليل تطبيق FHIR قابل للحوسبة:"
+
+#~ msgid "FHIR resources authored as FSH (FHIR Shorthand) and compiled with SUSHI ()"
+#~ msgstr "موارد FHIR تُؤلف باستخدام FSH (اختزال FHIR / FHIR Shorthand) وتُترجم بواسطة SUSHI ()"
+
+#~ msgid "Validation against FHIR profiles ()"
+#~ msgstr "التحقق مقابل ملفات تعريف FHIR ()"
+
+#~ msgid "Publication with the HL7 FHIR IG Publisher ()"
+#~ msgstr "النشر باستخدام HL7 FHIR IG Publisher ()"
+
+#~ msgid "Quality control gates ()"
+#~ msgstr "بوابات مراقبة الجودة ()"

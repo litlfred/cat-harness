@@ -30,6 +30,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `methodologies`, holding 
 | [`prov-o-provenance.md`](prov-o-provenance.md) | PROV-O: provenance as a shared record, not a house log format |  |
 | [`raci.md`](raci.md) | RACI — involvement, in four kinds |  |
 | [`rasci.md`](rasci.md) | RASCI — the fifth letter, and when it earns its place |  |
+| [`requirements-filing-and-organisation.md`](requirements-filing-and-organisation.md) | Requirements filing and organisation — literature search, candidate methodologies, and filing process |  |
 | [`requirements-standards-assessment.md`](requirements-standards-assessment.md) | Assessment of open standards for requirements and bootstrap mapping |  |
 | [`sdlc-agentic-landscape.md`](sdlc-agentic-landscape.md) | SDLC Agentic Landscape — Mapping LLM Multi-Agent Systems to the Software Lifecycle |  |
 | [`skill-pipeline-subject-indexing.md`](skill-pipeline-subject-indexing.md) | [Skill](https://litlfred.github.io/bootstrap/schemas/#skill)-pipeline subject indexing: decompose the cataloguer's stages and validate each |  |

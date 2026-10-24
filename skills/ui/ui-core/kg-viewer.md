@@ -32,7 +32,9 @@ So the exporter, which already knows the stub, writes it into the page. The
 page resolves nothing.
 
 **It fetches the document relative to its own location.** The page is
-`<site>/<stub>/index.html` and reads `../<stub>.jsonld`, so the same bytes
+`<site>/<stub>/index.html` and reads `../<name>/<stub>.jsonld` (the document's
+own path, under its instance's directory, the host's included, since
+2026-10-23), so the same bytes
 work on the canonical site and under `STAGING/<slug>/` with no configuration,
 no `--base-url`, and no build-time branch. A staging build that needed a
 different page would be a staging build testing something other than what

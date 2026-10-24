@@ -32,6 +32,7 @@ The stakeholders sign off, the BA confirms every criterion is met, the feature l
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `adjudication`.
 - What: THE RECORD, and not relaxable: a judgement nobody wrote down is indistinguishable from one never made (`adjudication`, A_RecordEntry).
+- Shared step `GT_RecordSignoff`.
 - Record it: `workflow_complete` with `node: "A_RecordSignoff"`.
 - next: → `GW_SignoffRecorded` (Sign-off on the record?)
 
@@ -61,6 +62,14 @@ The stakeholders sign off, the BA confirms every criterion is met, the feature l
 - Skill: `crdm-requirements-workflow`.
 - What: Reachable only through BA_Confirm, which is the BA saying every criterion is met.
 - Record it: `workflow_complete` with `node: "A_Close"`.
+- next: → `A_ArchiveBean` (Archive the bean)
+
+### 6. Archive the bean (`A_ArchiveBean`)
+
+- Who: the `Agent` lane (role `authoring-agent`).
+- Skill: `todo-manager`.
+- What: Move the bean, now completed, into the archive, with a line saying which process closed it.
+- Record it: `workflow_complete` with `node: "A_ArchiveBean"`.
 - next: → `End_Process_CRDM_Close` (Phase complete)
 
 ## Done — Phase complete (`End_Process_CRDM_Close`)

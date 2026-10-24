@@ -58,6 +58,16 @@
     }
   })();
 
+  /* The address this document was fetched from: what a page-relative base
+   * resolves against, even after a `history.replaceState` (see `absoluteBase`). */
+  var LOADED_FROM = (function () {
+    try {
+      var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+      if (nav && nav.name) return nav.name;
+    } catch (_e) { /* older engines: the address bar at load is the best there is */ }
+    return location.href;
+  })();
+
   var ZOOM_STEPS = [0.5, 0.67, 0.8, 1, 1.25, 1.5, 2, 3, 4];
   var DEFAULT_STEP = 3; // index of 1.0
 
@@ -3104,7 +3114,36 @@
   function siteBaseurl() {
     var meta = document.querySelector('meta[name="fa-baseurl"]');
     var v = (meta && meta.getAttribute("content")) || "";
-    return v ? v.replace(/\/+$/, "") : (baseurlFromTodoSrc() || SCRIPT_BASE);
+    return v ? absoluteBase(v) : (absoluteBase(baseurlFromTodoSrc()) || SCRIPT_BASE);
+  }
+
+  /**
+   * A base the page wrote RELATIVE to itself (`.`, `../..`), as the absolute
+   * path every caller of `siteBaseurl` has always been given.
+   *
+   * Since bean `g196` (2026-10-23) a Jekyll page writes its same-site links
+   * relative to itself, so a page that did not change is byte-identical in
+   * every STAGING preview and on the live site; `fa-baseurl` and
+   * `fa-todo-src` are relative too. Resolving here, once, keeps every
+   * consumer's arithmetic as it was (`withBase`, `baseurlResolved`'s
+   * prefix guard, `navKey`'s strip).
+   *
+   * Resolved against the address the document was LOADED from, not the
+   * address bar: a page may `history.replaceState` to a different depth
+   * before this runs, and a relative base resolved after that is one level
+   * off (the same trap `navbar-row.js`'s `loadedFrom` records).
+   * An absolute value, or `""`, comes back as it was, trailing slash dropped.
+   */
+  function absoluteBase(v) {
+    if (!v) return "";
+    if (v.charAt(0) === "/" || /^[a-z][a-z0-9+.-]*:/i.test(v)) return v.replace(/\/+$/, "");
+    try {
+      var u = new URL(v.replace(/\/*$/, "/"), LOADED_FROM);
+      var path = u.pathname.replace(/\/+$/, "");
+      return u.origin === location.origin ? path : u.origin + path;
+    } catch (_e) {
+      return v.replace(/\/+$/, "");
+    }
   }
 
   /* ── Is this a STAGING preview? ──────────────────────────────────────
@@ -3246,6 +3285,13 @@
   function declaredTilesFromMeta() {
     var meta = document.querySelector('meta[name="fa-tiles"]');
     var raw = meta && meta.getAttribute("content");
+    // Filled by `assets/js/harness-data.js` (bean `gp2f`). Still named and
+    // empty: that file did not load, which is not "declared no tiles".
+    if (!raw && meta && meta.hasAttribute("data-fa-src")) {
+      console.warn("docs-ui: the tiles' shared data (" + meta.getAttribute("data-fa-src") +
+                   ".js) did not load; no tiles were mounted.");
+      return null;
+    }
     if (!raw) return null;
     try {
       var tiles = JSON.parse(raw);

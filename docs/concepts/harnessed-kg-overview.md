@@ -177,7 +177,7 @@ The slide drew nine cards and put the tenth, **testing: test data and test harne
 
 **Sources:** the owner, 2026-09-30 (ten: the original eight plus scheduling
 logic and test scenarios); the SMART Base 1.0.0 `DAK` logical model;
-[the L2 artefacts and their skills](../guides/who-smart-dak.html).
+[the L2 artefacts and their skills](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-dak.html).
 
 > **Misaligned, in three directions:** the speaker notes said 8. The figure
 > shows 9 cards, with testing beside them. The SMART Base `DAK` logical model
@@ -214,12 +214,14 @@ On the slide the JSON Schema is drawn over the list as a callout of one entry,
 `DecisionSupportLogicSource`, so it reads as "this is what one of these
 entries holds". The QR code beside it points at the API page.
 
-**Source:** <https://smart.who.int/base/dak-api.html>; the ingested index
-the DAK layer's `fhir-artifact-index`.
+**Source:** <https://smart.who.int/base/dak-api.html>; the artefact index
+in the DAK layer's `fhir-artifact-index`, built at publish from the IG's
+source.
 
 > **Aligned in count, not checked item by item:** the slide shows "Logical
-> Model Schemas (25 available)", and the ingested index holds 25
-> StructureDefinition pages.
+> Model Schemas (25 available)". The index is built from the IG's source at
+> publish, so it holds at least those 25 logical models and may hold more
+> (45 on 2026-10-24).
 
 ## 5 — Tie the L1/L2/L3 models into the larger KG
 {: #slide-05 data-fa-label="sec:harnessed-kg-overview-slide-05" }

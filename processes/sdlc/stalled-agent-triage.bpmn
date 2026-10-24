@@ -3,11 +3,11 @@
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
-                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
-                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
+                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#"
                   id="Definitions_Process_StalledAgentTriage" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
-  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
   <bpmn:resource id="authoring-agent" name="Authoring agent"/>
   <bpmn:resource id="session-coordinator" name="Session coordinator"/>
   <bpmn:resource id="user" name="User"/>
@@ -51,9 +51,9 @@
       <bpmn:documentation>Group by what the work delivers, not by agent. Each theme gets its epic, members, dependencies, risk, and one of: continue, fold in, new epic, park, scrap (owner only).</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="stalled-agent-triage"/></bpmn:extensionElements>
     </bpmn:task>
-    <bpmn:task id="U_Decide" name="Decide each theme">
+    <bpmn:callActivity id="U_Decide" calledElement="Process_AskThePerson" name="Decide each theme">
       <bpmn:extensionElements><cat-harness.processes:no-skill reason="The user's decision. The triage agent presents each theme with context, options and a recommendation, one decision in full and a count of the rest."/></bpmn:extensionElements>
-    </bpmn:task>
+    </bpmn:callActivity>
     <bpmn:task id="A_Record" name="Record the triage and claim the picked-up work">
       <bpmn:documentation>A 'triage: &lt;date&gt;' bean note on each theme's epic; new or re-parented beans; claims via beans:claim. Owning sessions still alive are notified before their branches are touched.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="bean-coordination"/></bpmn:extensionElements>

@@ -3,11 +3,11 @@
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
-                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
-                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
+                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#"
                   id="Definitions_Process_PublishAlert" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
-  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
   <bpmn:resource id="build-pipeline" name="Build pipeline"/>
   <bpmn:resource id="publication-manager" name="Publication manager"/>
   <bpmn:collaboration id="Collaboration_Process_PublishAlert">
@@ -58,13 +58,13 @@
       <bpmn:incoming>F_4</bpmn:incoming>
       <bpmn:outgoing>F_6</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:userTask id="U_Triage" name="Triage the failure:&#10;hold or fix forward">
+    <bpmn:callActivity id="U_Triage" calledElement="Process_AskThePerson" name="Triage the failure:&#10;hold or fix forward">
       <bpmn:documentation>The publication manager reads what failed and decides: hold the release, or fix forward and publish again. Nothing was deployed on a failure before the deploy; a failure after it (the deploy itself, or the previews lost) is live, and says so. The next successful publish closes the issue.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="publish-verification"/></bpmn:extensionElements>
       <bpmn:incoming>F_5</bpmn:incoming>
       <bpmn:incoming>F_6</bpmn:incoming>
       <bpmn:outgoing>F_7</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_Triaged" name="Triaged">
       <bpmn:incoming>F_7</bpmn:incoming>
     </bpmn:endEvent>

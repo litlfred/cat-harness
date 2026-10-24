@@ -3,11 +3,11 @@
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
-                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
-                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
+                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#"
                   id="Definitions_Process_RelatedWork" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
-  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
   <bpmn:resource id="authoring-agent" name="Authoring agent"/>
   <bpmn:resource id="user" name="User"/>
   <bpmn:collaboration id="Collaboration_Process_RelatedWork">
@@ -46,9 +46,9 @@
       <bpmn:documentation>Each hit gets a category (overlaps: coordinate; affected by; out of scope; unrelated) and a one-line summary with its state. Judgement, not a keyword score: say why each is in its category.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="related-work-coordination"/></bpmn:extensionElements>
     </bpmn:task>
-    <bpmn:task id="U_Coordinate" name="Coordinate? How?">
-      <bpmn:extensionElements><cat-harness.processes:no-skill reason="The user's decision. The agent presents context, options and a recommendation as a structured question."/></bpmn:extensionElements>
-    </bpmn:task>
+    <bpmn:callActivity id="U_Coordinate" calledElement="Process_AskThePerson" name="Coordinate? How?">
+      <bpmn:extensionElements><bootstrap.processes:skill ref="interaction-modality"/></bpmn:extensionElements>
+    </bpmn:callActivity>
     <bpmn:task id="A_Record" name="Record and act on the answer">
       <bpmn:documentation>Write the chosen coordination where it will be found: bean links (--blocked-by, --parent), a line in the issue or PR body, or 'note only'. A declined coordination is recorded too.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="related-work-coordination"/></bpmn:extensionElements>

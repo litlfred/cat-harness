@@ -421,7 +421,10 @@
         "blocked-build-dependencies",
         "merge-to-main",
         "agent-permissions",
-        "staging-review"
+        "staging-review",
+        "ask-the-person",
+        "decision-comparison",
+        "symbiotic-interaction"
       ],
       "persona": "Has the whole corpus available and no memory of the last session. Will follow the most specific instruction it can find and improvise when it finds none. Reads a skill before it reads the code."
     },

@@ -56,8 +56,8 @@ is not enabled**. That has consequences for how you author:
   is the deprecated form (owner, 2026-10-16). A diagram using any
   `bootstrap.processes:` element declares the namespace as the first child of
   `<bpmn:definitions>`: `<bpmn:import
-  namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
-  location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld"
+  namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+  location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld"
   importType="http://www.w3.org/ns/json-ld"/>`.
 - **The process's own `bpmn:documentation` opens with what it is for.** Its
   first sentence is the diagram's row on the publication-workflow page.
@@ -75,8 +75,9 @@ is not enabled**. That has consequences for how you author:
 ## If it has actors, activities and a control flow, it is BPMN
 
 Not a Mermaid fence. Mermaid stays for the things that are *not* processes —
-component maps, lattices, navigation graphs. The audit of which is which is in
-`docs/process/publication-workflow.md`.
+component maps, lattices, navigation graphs. The audit of which is which is on
+the [publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html#which-diagrams-are-bpmn-and-which-are-not)
+page, which the content core authors.
 
 ## Why a DAK section sits in a platform package
 

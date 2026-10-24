@@ -16,7 +16,8 @@ Move part of a knowledge graph into repositories of its own: the content and the
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `opening-brief`.
-- What: What is separating and why, what is already measured with its provenance, how it will be done, and what would falsify the approach.
+- What: What the work is and why, what is already measured with its provenance, how it will be done, and what would falsify the approach.
+- Shared step `GT_BriefAndClaim`.
 - Record it: `workflow_complete` with `node: "Task_Brief"`.
 - next: → `Task_Measure` (Measure the signals)
 
@@ -33,7 +34,7 @@ Move part of a knowledge graph into repositories of its own: the content and the
 - Who: the `Administrator` lane (role `administrator`).
 - Skill: `kg-separation`.
 - What: The owner decides from the measured signals, and also decides the address base for its identifiers, where verdicts about it live, and what its tools repository owns.
-- Record it: `workflow_complete` with `node: "Task_Decide"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Stays` (Stays where it is), → `Task_Detangle` (1–3 · Declare, detangle, isolate)
 
 ## Done — Stays where it is (`End_Stays`)
@@ -83,7 +84,7 @@ Move part of a knowledge graph into repositories of its own: the content and the
 
 - Who: the `Publication manager` lane (role `publication-manager`).
 - Skill: `instance-publication`.
-- What: Every identifier the content mints is a file some step publishes: /<version>/ for what programs read, kept for every version; /v<major>/ for pages people read.
+- What: Every identifier the content mints is a file some step publishes: /v<major>/, for what programs read and pages people read alike; the exact release is the pin's.
 - Record it: `workflow_complete` with `node: "Task_Plan"`.
 - next: → `GW_Ids` (Every identifier its file's path?)
 
@@ -118,7 +119,8 @@ Move part of a knowledge graph into repositories of its own: the content and the
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `deletion-requires-confirmation`.
-- What: The agent reports and waits: what moves, how large, what in the parent breaks, and the rollback.
+- What: The agent reports and waits: what would move, how large, what in the parent breaks, and the rollback.
+- Shared step `GT_ReportWhatMoves`.
 - Record it: `workflow_complete` with `node: "Task_Propose"`.
 - next: → `Task_Authorise` (9 · Authorise the extraction)
 
@@ -127,7 +129,7 @@ Move part of a knowledge graph into repositories of its own: the content and the
 - Who: the `Administrator` lane (role `administrator`).
 - Skill: `deletion-requires-confirmation`.
 - What: A repository cut changes the substrate every other process binds to; that is a person's decision.
-- Record it: `workflow_complete` with `node: "Task_Authorise"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Declined` (Stays in place, ready to leave), → `Task_Create` (Create the repositories)
 
 ## Done — Stays in place, ready to leave (`End_Declined`)
@@ -155,6 +157,7 @@ Move part of a knowledge graph into repositories of its own: the content and the
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `kg-separation`.
 - What: Work the PRs `seed:ready` named until the source settles: land or close the heavy movers and the next layer's PRs, bring the layer's open PRs to five or fewer, and finish any move in flight.
+- Shared step `GT_Drain`.
 - Record it: `workflow_complete` with `node: "Task_Drain"`.
 - next: → `GW_SeedReady` (Ready to seed?)
 
@@ -182,7 +185,7 @@ Move part of a knowledge graph into repositories of its own: the content and the
 
 - Who: the `Publication manager` lane (role `publication-manager`).
 - Skill: `package-release`.
-- What: Tag each repository, publish /<version>/ and /v<major>/.
+- What: Tag each repository, publish /v<major>/.
 - Record it: `workflow_complete` with `node: "Task_Release"`.
 - next: → `Task_Verify` (Every identifier dereferences)
 

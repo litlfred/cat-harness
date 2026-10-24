@@ -3,11 +3,11 @@
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
-                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
-                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
+                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#"
                   id="Definitions_Process_FeatureStaging" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
-  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
   <bpmn:resource id="build-pipeline" name="Build pipeline"/>
   <bpmn:resource id="user" name="User"/>
   <bpmn:collaboration id="Collaboration_Process_FeatureStaging">
@@ -126,14 +126,10 @@ The branch taken is emitted as `reason=merged | labelled | closed-unmerged-and-u
     <bpmn:endEvent id="End_Removed" name="Preview gone,&#10;with its reason">
       <bpmn:incoming>Flow_8</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:serviceTask id="Task_LogRetained" name="Append `retained`,&#10;with why it stays">
-      <bpmn:documentation>The event that makes the log worth reading. A removal was CONSIDERED and refused; without an entry that leaves no trace on the branch at all, and the next person asking *&quot;why is this preview still up&quot;* has only a comment on a pull request that may itself be closed.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="render-logging"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_LogRetained" name="Append `retained`,&#10;with why it stays" calledElement="GT_LogRetained">
       <bpmn:incoming>Flow_9</bpmn:incoming>
       <bpmn:outgoing>Flow_10</bpmn:outgoing>
-    </bpmn:serviceTask>
+    </bpmn:callActivity>
     <bpmn:serviceTask id="Task_Notice" name="Post the retention&#10;notice on the PR">
       <bpmn:documentation>Removal was not confirmed, so the preview stays: post a retention notice on the PR giving its URL and saying it has NOT been removed, and the two ways to remove it: the staging:cleanup label while the PR is open, or, once it is closed, a Run workflow dispatch with cleanup_slug and a matching cleanup_confirm.</bpmn:documentation>
       <bpmn:extensionElements>

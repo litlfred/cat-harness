@@ -83,26 +83,26 @@ folio-assistant 是**可插拔的**——每种内容类型都由一个内容*�
 | 内容类型 | 制品 | 技能包 |
 |--------------|-----------|---------------|
 | **科学论文与专著** | Lean 4 形式化 + LaTeX/Markdown | [`authoring-math`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#scientific-papers--books) |
-| **WHO SMART 指南 DAK** | L2 制品——BPMN、DMN、Excel 数据字典、用户画像（personas） | [`authoring-who-smart-guidelines`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#who-smart-guidelines-daks-l2) |
-| **WHO SMART 实施指南** | L3 FHIR 资源、FSH、IG Publisher 输出 | [`authoring-who-smart-guidelines`]({{ site.baseurl }}/docs/cat-harness/concepts/content-types.html#who-smart-implementation-guides-l3) |
+| **WHO SMART 指南 DAK** | L2 制品——BPMN、DMN、Excel 数据字典、用户画像（personas） | [`authoring-who-smart-guidelines`](https://litlfred.github.io/folio-assistant/smart-base/concepts/who-smart-content-types.html#who-smart-guidelines-daks-l2) |
+| **WHO SMART 实施指南** | L3 FHIR 资源、FSH、IG Publisher 输出 | [`authoring-who-smart-guidelines`](https://litlfred.github.io/folio-assistant/smart-base/concepts/who-smart-content-types.html#who-smart-implementation-guides-l3) |
 | **其他** | 可插拔——添加新适配器 + 技能包 | [添加内容类型]({{ site.baseurl }}/docs/cat-harness/guides/new-content-type.html) |
 
 通用横切 [`content-lifecycle`]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }}#the-content-lifecycle)
 包（规划 → 创作 → 验证 → 审阅 → 测试 → 发布 → 反馈 → 归档）适用于每种内容类型。
-[发布工作流]({{ '/docs/cat-harness/process/publication-workflow.html' | relative_url }})对其进行了规范建模——采用 BPMN 泳道图形式，涵盖各项角色、HCI 验证关卡以及共享工作计划。
+[发布工作流](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)对其进行了规范建模——采用 BPMN 泳道图形式，涵盖各项角色、HCI 验证关卡以及共享工作计划。
 
 ## 后续指引
 
 - **[安装 (Installation)]({{ '/docs/cat-harness/start/installation.html' | relative_url }})** — 前置要求、克隆、`bun install`、能力检查。
 - **[快速入门 (Getting started)]({{ '/docs/cat-harness/start/getting-started.html' | relative_url }})** — 将 MCP 服务器连接至您的 LLM 并运行您的第一个技能。
-- **[教程：使用 folio-assistant 撰写论文 (Tutorial: Writing a paper with folio-assistant)]({{ '/docs/cat-harness/guides/writing-a-paper.html' | relative_url }})** — 包含模拟对话会话的完整 LLM 驱动演练。
+- **[教程：使用 folio-assistant 撰写论文 (Tutorial: Writing a paper with folio-assistant)](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)** — 包含模拟对话会话的完整 LLM 驱动演练。
 - **[内容类型 (Content types)]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }})** — 各个创作领域的形式化规范。
-- **[发布工作流 (Publication workflow)]({{ '/docs/cat-harness/process/publication-workflow.html' | relative_url }})** — 编辑与发布流程的 BPMN 泳道图：HCI 验证关卡、人员分工审阅以及共享工作计划。
+- **[发布工作流 (Publication workflow)](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** — 编辑与发布流程的 BPMN 泳道图：HCI 验证关卡、人员分工审阅以及共享工作计划。
 - **[智能体引导 (Agent onboarding)]({{ '/docs/cat-harness/guides/agent-onboarding.html' | relative_url }})** — 针对接入 folio 的 LLM 智能体指引：入门步骤、查找技能、内容对象模型、QA 伴随文件。
 - **[技能与角色 (Skills & roles)]({{ '/docs/cat-harness/concepts/skills.html' | relative_url }})** — 详述各项技能与角色，以及它们如何与 LLM 协同工作。
 - **[工作计划与待办事项 (Beans and todos)]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})** — 共享工作计划，以及为何将其纳入版本控制。
-- **[文档摄取 (Document ingestion)]({{ '/docs/cat-harness/guides/document-ingestion.html' | relative_url }})** — 上传文件如何转化为 L1 源：提取结构、衍生内容、构建 L1 知识图谱与完整性关卡。
-- **[证据评估 (Evidence)]({{ '/docs/cat-harness/process/evidence.html' | relative_url }})** — 证据检索、提取与审阅流程。
+- **[文档摄取 (Document ingestion)](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/document-ingestion.html)** — 上传文件如何转化为 L1 源：提取结构、衍生内容、构建 L1 知识图谱与完整性关卡。
+- **[证据评估 (Evidence)](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/evidence.html)** — 证据检索、提取与审阅流程。
 - **[技能模式参考 (Skill schema reference)](../reference/skills/)** — 为每项技能生成的输入/输出契约。
 - **[TypeScript API 参考 (TypeScript API reference)](../api/)** — 内容对象模型（`Block`、`Chapter`、`Paper`、构建器、Zod 约束）。
 - **[架构 (Architecture)]({{ '/docs/cat-harness/concepts/architecture.html' | relative_url }})** — 适配器、MCP 服务器、RBAC、块模型。

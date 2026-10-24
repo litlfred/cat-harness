@@ -3,11 +3,11 @@
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
-                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
-                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
+                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#"
                   id="Definitions_Process_GraphDetanglement" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
-  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
   <bpmn:resource id="administrator" name="Administrator"/>
   <bpmn:resource id="authoring-agent" name="Authoring agent"/>
   <bpmn:collaboration id="Collaboration_Process_GraphDetanglement">
@@ -141,15 +141,11 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
       <bpmn:outgoing>G12</bpmn:outgoing>
     </bpmn:exclusiveGateway>
 
-    <bpmn:task id="Task_Propose" name="Report what would move&#10;— sizes, and what breaks">
-      <bpmn:documentation>The agent reports and waits. `deletion-requires-confirmation` is not a courtesy to waive: an agent never removes or relocates a durable artefact on its own initiative.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="deletion-requires-confirmation"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_Propose" name="Report what would move&#10;— sizes, and what breaks" calledElement="GT_ReportWhatMoves">
       <bpmn:incoming>G12</bpmn:incoming>
       <bpmn:outgoing>G13</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:userTask id="Task_Authorise" name="Authorise the extraction">
+    </bpmn:callActivity>
+    <bpmn:callActivity id="Task_Authorise" calledElement="Process_AskThePerson" name="Authorise the extraction">
       <bpmn:documentation>The one step no package may relax. A repository cut changes the substrate every other diagram's lanes bind to, and that is a person's decision.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="deletion-requires-confirmation"/>
@@ -157,7 +153,7 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
       <bpmn:incoming>G13</bpmn:incoming>
       <bpmn:outgoing>G14</bpmn:outgoing>
       <bpmn:outgoing>G15</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_Declined" name="Stays where it is&#10;— declared, detangled, isolated">
       <bpmn:incoming>G15</bpmn:incoming>
     </bpmn:endEvent>

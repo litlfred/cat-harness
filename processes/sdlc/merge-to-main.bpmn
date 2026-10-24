@@ -3,11 +3,11 @@
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
-                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
-                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
+                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#"
                   id="Definitions_Process_MergeToMain" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
-  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
   <bpmn:resource id="build-pipeline" name="Build pipeline"/>
   <bpmn:resource id="merge-steward" name="Merge steward"/>
   <bpmn:resource id="user" name="User"/>
@@ -143,7 +143,7 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       <bpmn:outgoing>m12</bpmn:outgoing>
       <bpmn:outgoing>m13</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Task_Ask" name="Put the merge to&#10;the owner, evidence&#10;first">
+    <bpmn:callActivity id="Task_Ask" calledElement="Process_AskThePerson" name="Put the merge to&#10;the owner, evidence&#10;first">
       <bpmn:documentation>Context, options, recommendation, question (interaction-modality §4.1). One row per PR: repo, PR, head, CI on head, mergeable, review, local gates. A repository with no CI is named as such, in words. One question may cover a batch, provided every PR in it is a row.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>
@@ -151,7 +151,7 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       </bpmn:extensionElements>
       <bpmn:incoming>m13</bpmn:incoming>
       <bpmn:outgoing>m14</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:callActivity>
     <bpmn:task id="Task_OwnerDecides" name="Merge, hold&#10;or refuse">
       <bpmn:documentation>The owner's answer to the question Task_Ask asked. Their words are quoted verbatim in the record, so the answer is given in the conversation or on the PR, not inferred from tone.</bpmn:documentation>
       <bpmn:extensionElements>

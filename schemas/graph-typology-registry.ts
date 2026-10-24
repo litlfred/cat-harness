@@ -2903,7 +2903,7 @@ export interface DeclaringInstance {
   readonly prefix: string;
   readonly name: string;
   readonly root: string;
-  /** `<iriBase><version>/ns#` — {@link instanceNamespaceOf}. */
+  /** `<iriBase>v<major>/ns#` — {@link instanceNamespaceOf}. */
   readonly namespace: string;
 }
 

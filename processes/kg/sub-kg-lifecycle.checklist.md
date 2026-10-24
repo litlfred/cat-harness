@@ -16,7 +16,8 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `opening-brief`.
-- What: What the sub-KG is and why it is staged here rather than in a repository of its own, what is already measured, and what would falsify the plan.
+- What: What the work is and why, what is already measured with its provenance, how it will be done, and what would falsify the approach.
+- Shared step `GT_BriefAndClaim`.
 - Record it: `workflow_complete` with `node: "Task_Brief"`.
 - next: → `Task_Declare` (1 · Declare it in place, with its seam)
 
@@ -41,7 +42,7 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 - Who: the `Administrator (owner)` lane (role `administrator`).
 - Skill: `sub-kg-lifecycle`.
 - What: The owner decides, from what is measured, whether the sub-KG starts staging for separation now.
-- Record it: `workflow_complete` with `node: "Task_DecideLeave"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Stays` (Stays in place), → `Task_PushDown` (3 · Push generic down first)
 
 ## Done — Stays in place (`End_Stays`)
@@ -104,7 +105,7 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 - Who: the `Administrator (owner)` lane (role `administrator`).
 - Skill: `deletion-requires-confirmation`.
 - What: Creating a repository is visible outside this one and is not undone by a revert.
-- Record it: `workflow_complete` with `node: "Task_ConfirmCreate"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Declined` (Staged, ready to leave), → `Task_CreateRepo` (8 · Create the repository)
 
 ## Done — Staged, ready to leave (`End_Declined`)
@@ -131,7 +132,8 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `kg-separation`.
-- What: Work the pull requests seed:ready named until the source settles, then ask again.
+- What: Work the PRs `seed:ready` named until the source settles: land or close the heavy movers and the next layer's PRs, bring the layer's open PRs to five or fewer, and finish any move in flight.
+- Shared step `GT_Drain`.
 - Record it: `workflow_complete` with `node: "Task_Drain"`.
 - next: → `GW_SeedReady` (Ready to seed?)
 
@@ -180,7 +182,7 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 - Who: the `Administrator (owner)` lane (role `administrator`).
 - Skill: `deletion-requires-confirmation`.
 - What: The agent reports the files that would move, their size, the new repository and the commit the copy matches, then asks: (1) freeze it in the kept trashcan now, (2) keep in place until the first release, (3) show the file list first.
-- Record it: `workflow_complete` with `node: "Task_ConfirmCutover"`.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Kept` (Consumed; in-repo copy kept), → `Task_Cutover` (13 · Cutover: freeze the copy in the kept trashcan)
 
 ## Done — Consumed; in-repo copy kept (`End_Kept`)

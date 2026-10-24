@@ -167,25 +167,41 @@ as an instance's identity is the conflation the owner named: it would mint ids
 that change the day the artefact is published, which is exactly what a
 publication identity exists to prevent.
 
-## Release IRIs — one address, two audiences, derived from the version
+## Release IRIs — one address, the major, derived from the version
 
-Owner, 2026-09-29: the version is **semver**, and it appears in an IRI in one
-of two forms depending on **who reads it**:
+**Owner, 2026-10-23 (option "B. Major in address"):** every address an
+instance mints carries its **major version only** — `<iriBase>v<major>/…` —
+whoever reads it. A namespace, a schema `$id`, a BPMN `xmlns` and
+`bpmn:import`, a JSON-LD `@id`, a code-list value, and a page a person reads
+all take the one form:
 
-| reader | form | example (bootstrap `0.1.0`) |
+| reader | form | example (bootstrap `0.1.1`) |
 |---|---|---|
-| a program or agent — a namespace, a schema `$id`, a BPMN `xmlns`, a JSON-LD `@id` | `<iriBase><version>/…` | `https://litlfred.github.io/bootstrap/0.1.0/ns#` |
+| a program or agent — a namespace, a schema `$id`, a BPMN `xmlns`, a JSON-LD `@id` | `<iriBase>v<major>/…` | `https://litlfred.github.io/bootstrap/v0/ns#` |
 | a person — a page to read | `<iriBase>v<major>/…` | `https://litlfred.github.io/bootstrap/v0/` |
 
-A program pins exactly, because a reader built against `0.1.0` must not be
-handed `0.2.0` silently. A person's link lasts a major version, because prose
-is not re-checked on every patch.
+**The exact release comes from the pin, not the address.** A reader is handed
+a commit by `index.lock.json` and the `needs` pins, which already name it
+exactly; an address that also named the patch said the same thing a second
+time. Within one major a minor or patch adds and never breaks — the promise a
+`$schema` tag already makes, where a reader accepts any tag of the same major
+(`tagCompatible`, below) — so **only a breaking change, a new major, changes an
+address.**
+
+Why it changed: until this ruling (owner, 2026-09-29) a program-read address
+carried the full semver, `…/bootstrap/0.1.0/ns#`, on the reasoning that a
+program pins exactly. The pin already pinned it, and the cost was every patch
+release rewriting every literal copy of the instance's addresses — for one
+bootstrap patch about a thousand across eight repositories, 877 in this one
+alone, two thirds of them in generated glossaries and translations and a
+hundred and forty in BPMN headers. The person-facing form,
+`v<major>`, had the property wanted all along, and it is now the only form.
 
 **`iriBase` and `version` are written ONCE, in the declaration** — the owner's
 "ONE PLACE" rule above, which a fork edits and nothing else. `iriBase` is not
 `canonicalUrl`: `canonicalUrl` says where documents are *published* and
 `kg-export` mints a document `@id` from it; `iriBase` says what the
-*identifiers* are, and those carry the release.
+*identifiers* are, and those carry the release's major.
 
 **Never type an address or a version.** Ask for it:
 
@@ -197,12 +213,28 @@ is not re-checked on every patch.
 
 **The copies that cannot ask are synced, and the sync is a gate.** An `xmlns`
 attribute, a code-list value and a fixture string are literal by nature.
-`bun run iri:sync` rewrites every `<iriBase><semver>/` and `<iriBase>v<N>/` in
-the tree to the declared version; `iri:sync:check` fails CI and the pre-commit
-hook on any that is not. Moving the base itself — a fork, or bootstrap's move
-off `litlfred.github.io/folio-assistant/bootstrap/` (bean `r3gy`, group E) — is
-`bun run iri:sync -- --from <old base>`, once. `beans/` is never rewritten: a
-bean records what was true when it was written.
+`bun run iri:sync` rewrites every `<iriBase><semver>/` — the full-version form
+every program-read address carried before 2026-10-23, whatever the semver — and
+every `<iriBase>v<N>/` of another major, to `<iriBase>v<major>/`;
+`iri:sync:check` fails CI and the pre-commit hook on any that is not. A minor
+or patch release therefore leaves every copy as it is, and the sync has work to
+do only on a new major or a move. Moving the base itself — a fork, or
+bootstrap's move off `litlfred.github.io/folio-assistant/bootstrap/` (bean
+`r3gy`, group E) — is `bun run iri:sync -- --from <old base>`, once. `beans/`
+is never rewritten: a bean records what was true when it was written.
+
+**Transition, one release — remove when every layer has migrated.** Until
+every litlfred layer carries `<iriBase>v<major>/` (bootstrap-tools#39 lists
+those that do not, with counts; added 2026-10-23), the CHECKS —
+`check:node-iris`, `iri:sync:check`, `vocabulary:check` — accept a legacy
+`<iriBase><semver>/` copy whose MAJOR is the declared major as
+**deprecated**: a warning naming the file, not a failure. Without it a
+layer's CI, which composes the others at `main`, could not go green before
+they move, and they cannot move before it merges. The WRITER, `iri:sync`,
+still moves every such copy to `v<major>/`; a full version of another major,
+or an id at the wrong path, still fails. The tolerance lives in
+`legacyExactSemver` / `withLegacyMoved` in `bootstrap-tools/schemas/release-iri.ts`;
+removing it and this paragraph is one commit, done when #39 closes.
 
 **A `$schema` tag carries its SCHEMA's semver**, not the instance's:
 `model-registry/1.0.0`. A reader accepts any tag of the same major
@@ -225,9 +257,15 @@ identifier pointing at an address nothing yet served.
 
 | path | holds | changes |
 |---|---|---|
-| `<iriBase><version>/` | every file of that release exactly where it sits in the repository — schemas, JSON-LD, BPMN, the declaration — plus an extension-less alias for a vocabulary document (`processes/ns` beside `processes/ns.jsonld`) | **never**, once published: an agent pinned to `0.1.0` must keep getting `0.1.0`, so every released version stays |
-| `<iriBase>v<major>/` | the person-facing pages — READMEs rendered as HTML, the drawn schema page, the diagrams | moves forward with each minor or patch release of that major |
+| `<iriBase>v<major>/` | every file of the latest release of that major exactly where it sits in the repository — schemas, JSON-LD, BPMN, the declaration — plus an extension-less alias for a vocabulary document (`processes/ns` beside `processes/ns.jsonld`), and the person-facing pages beside them: READMEs rendered as HTML, the drawn schema page, the diagrams | moves forward with each minor or patch release of that major; a release of a NEW major is a new directory beside it, and the old major's stays |
 | `<iriBase>` | an index naming the current release of each major, and the versions available | with every release |
+
+Since the 2026-10-23 ruling one directory serves both audiences, as one
+address does. A reader that needs the exact bytes of an older patch reads
+them from the commit its pin names, never from the site. The old full-version
+directories (`<iriBase>0.1.0/`) are not republished: a site staged by a full
+replace drops them at its next publish, and any copy still served under
+`0.1.0/` is a leftover, not a release.
 
 Three rules follow from the table:
 
@@ -265,7 +303,7 @@ each repository publishes its own context, through ONE reusable workflow, and
 **Where its `ns` is a document, the context goes beside it.** Owner,
 2026-10-15 ("D1"): an instance holding its vocabulary as `ns.jsonld` at its
 root (bootstrap) has `ns` staged as a FILE (the extensionless `ns`, and
-`<version>/ns`), so `ns/` cannot also be the directory `ns/context/v1.jsonld`
+`v<major>/ns`), so `ns/` cannot also be the directory `ns/context/v1.jsonld`
 needs, and a static host cannot serve both. Its context is
 `<iriBase>ns.context.v1.jsonld`, same `v1` rule. The generator decides by what
 the instance holds (`contextPathFor` in `gen-instance-contexts.ts`), the
@@ -303,8 +341,9 @@ A standalone repository — one instance, declared at its root — tags a releas
 plainly, `v<major>.<minor>.<patch>`; a repository of several instances tags
 `<name>-v<major>.<minor>.<patch>`, because a plain tag could not say which
 instance it released (owner, 2026-09-30). `check:version-bump` reads both
-accordingly. The tag is what a site deploy writes `/<version>/` from, so an
-untagged commit is never an agent-facing release.
+accordingly. The tag is what a site deploy writes `/v<major>/` from, so an
+untagged commit is never an agent-facing release; the tag, like the pin, names
+the exact version that the address no longer does.
 
 ## What each instance publishes — graph, address, schema, and what is stripped
 
@@ -324,7 +363,7 @@ such lists do, missing every instance added since `l4ay`.
 
 | instance | document on this site | built by |
 |---|---|---|
-| the host, `cat-harness` | `<site>/<stub>.jsonld` | `kg-export.ts --scope instance`, its own line in `docs-site.yml` |
+| the host, `cat-harness` | `<site>/<stub>/<stub>.jsonld` | `kg-export.ts --scope instance`, its own line in `docs-site.yml` |
 | the checkout root, `folio-assistant` | `<site>/<stub>/<stub>.jsonld` | `kg-export.ts --instance .` (bean `l4ay`) |
 | `bootstrap` | `<site>/bootstrap/bootstrap.jsonld` | `bootstrap-tools/scripts/export-graph.ts` (owner, 2026-09-30, bean `xsqm`) |
 | every other declared instance | `<site>/<stub>/<stub>.jsonld` | `cat-harness-tools/scripts/instance-exports.ts` |
@@ -333,6 +372,14 @@ such lists do, missing every instance added since `l4ay`.
   `.jsonld` as octet-stream, and `.json` is the only way to get a correct
   `Content-Type` out of it. The `.jsonld` stays canonical, since it is what
   every `@id` names.
+- **The host is in the same place as every other layer.** Its document sat
+  at the site root, `<site>/<stub>.jsonld`, until the owner's ruling of
+  2026-10-23 (decision 1b on
+  [cat-harness-tools#603](https://github.com/litlfred/cat-harness-tools/issues/603)):
+  *the host is no longer special*. Its document, its Tools, its subjects and
+  its glossary moved under `<site>/<name>/`, because there should be **one
+  rule for every layer, with subjects beside their document**. A separate
+  line in the deploy is the only thing still different about it.
 - **The first three rows are the only exemptions**, and they are
   `PUBLISHED_ELSEWHERE` in `instance-exports.ts`, each with its reason. No
   other list exists.
@@ -368,6 +415,25 @@ owner's DOCUMENT. A node with no home, or two, is a `problems[]` entry, and
 the export exits non-zero rather than publish a tombstone that points
 nowhere.
 
+The same mechanism carries the move from `….jsonld#<kind>/<id>` to
+`<doc dir>/<kind>/<id>` subject IRIs: one tombstone per published hash `@id`,
+flows included (owner decision 5a, 2026-10-23), each also `owl:sameAs` the
+path, for one release
+([`kg-export`](kg-export.md) §"Subject IRIs — a path, not a `#fragment`";
+[#435](https://github.com/litlfred/cat-harness/issues/435)).
+
+**A document that moved is a tombstone at its old address.** When the host
+moved under `<site>/<name>/` (2026-10-23, decision 1b), each old root address
+became a small document: the old `<site>/<stub>.jsonld`, each old
+`<site>/tools/<id>.jsonld`, and the old glossary and code-list documents.
+Each one says `deprecated`, `isReplacedBy` and `sameAs` for its new address,
+and its `@graph` holds one tombstone for each `@id` it used to carry. A
+consumer holding an old `@id` fetches the old document, so that is where the
+new name has to be. The root `.json` aliases are copies of those tombstones.
+The exporters write them (`writeLegacyDocuments` in `kg-export.ts`, and
+`legacyGlossaryDocuments` in `glossary-export.ts`), and they go with the
+other tombstones.
+
 **Removal is due one release after the split** (`tombstonesFor`'s banner:
 *"ONE RELEASE ONLY; REMOVE IN THE NEXT"*). Delete `tombstonesFor`, its call in
 `buildExport`, the two context terms, and the test in `kg-export.test.ts` that
@@ -379,10 +445,18 @@ holds every tombstone to a replacement the deploy writes.
 given; else the instance's own `canonicalUrl`; else, for an instance this
 repository publishes, the host's. With no base at all the `@id` is
 document-relative and a problem is reported, never a guessed absolute one
-(bean `40fl`). The host sits at `<base>/<stub>.jsonld` and a foreign instance
-at `<base>/<stub>/<stub>.jsonld` (bean `dyd3`). **An instance declaring its
-own `canonicalUrl` is the host of its own base**, so its `@id` is
-`<canonicalUrl>/<stub>.jsonld` (#1548), and the deploy passes it no
+(bean `40fl`). **Every instance this site publishes, the host included,
+sits at `<base>/<name>/<stub>.jsonld`** (bean `dyd3`; the host since the
+owner's ruling of 2026-10-23, decision 1b on
+[cat-harness-tools#603](https://github.com/litlfred/cat-harness-tools/issues/603):
+one rule for every layer, with subjects beside their document). Nothing about
+the host is special, so `<doc dir>` for its subjects and Tools is
+`<base>/cat-harness/`, never the site root. **The one case left open is an
+instance declaring its own `canonicalUrl`.** Today it is the host of its own
+base, so its `@id` is `<canonicalUrl>/<stub>.jsonld` (#1548). Where its
+document and subjects go under the one rule is phase 2 of #603,
+[cat-harness-tools#638](https://github.com/litlfred/cat-harness-tools/issues/638).
+The deploy passes such an instance no
 `--base-url` (`declaresOwnCanonical` in `instance-exports.ts`). Measured
 2026-10-05, those are the tools layer, `cat-openapi`, the FHIR IG layer and
 the DAK layer. **This site serves their bytes at `<site>/<stub>/<stub>.jsonld`,
@@ -392,6 +466,11 @@ publication identity, `url` is where this site stages it. Anything that names a
 node in another instance's document mints with `publishedIdentity`, or it
 names a document nobody writes. `iriBase` is a different field, for
 identifiers that carry the release (§"Release IRIs" above).
+
+**What goes after the base** is a path, not a `#fragment`: a subject is
+`<doc dir>/<kind>/<id>` (owner, 2026-10-23), served as its own file. The rule, its reasons,
+the `ns#Term` exception and the migration of today's `….jsonld#…` IRIs are in
+[`kg-export`](kg-export.md) §"Subject IRIs — a path, not a `#fragment`".
 
 ### The schema
 

@@ -3,11 +3,11 @@
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
-                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#"
-                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/0.1.0/processes/ns#"
+                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#"
                   id="Definitions_SessionStateMachine"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows">
-  <bpmn:import namespace="https://litlfred.github.io/bootstrap/0.1.0/processes/ns#" location="https://litlfred.github.io/bootstrap/0.1.0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
   <bpmn:resource id="authoring-agent" name="Authoring agent"/>
   <bpmn:resource id="session-record" name="Session record"/>
   <bpmn:resource id="user" name="User"/>
@@ -112,12 +112,12 @@ The distinction between refreshing a timestamp and writing what changed is the d
       <bpmn:outgoing>F_5</bpmn:outgoing>
     </bpmn:exclusiveGateway>
 
-    <bpmn:userTask id="A_AskWhoIsActing" name="Ask who is acting">
+    <bpmn:callActivity id="A_AskWhoIsActing" calledElement="Process_AskThePerson" name="Ask who is acting">
       <bpmn:documentation>The one step that needs a person. Asked ONCE and recorded, never re-asked: `cat-harness/memory/interaction.json` and the record exist so that a preference stated once is not requested again, which is WCAG 2.2 SC 3.3.7.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="interaction-modality"/></bpmn:extensionElements>
       <bpmn:incoming>F_3</bpmn:incoming>
       <bpmn:outgoing>F_4</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:callActivity>
 
     <bpmn:task id="A_OpenSession" name="Open the session record">
       <bpmn:documentation>Writes `id`, `actor` and `startedAt`, with `open` and `claimed` empty. An empty `open` is the NORMAL state, not an unfinished one: an agent reading, answering or deciding is in no process at all.</bpmn:documentation>
