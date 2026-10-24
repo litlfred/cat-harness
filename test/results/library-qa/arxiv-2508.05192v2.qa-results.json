@@ -2,7 +2,7 @@
   "$schema": "qa-results/v1",
   "producer": {
     "script": "scripts/check-l1-complete.ts",
-    "script_hash": "dc817162e646"
+    "script_hash": "aa2fa9ec00c9"
   },
   "subject": {
     "kind": "library-document",

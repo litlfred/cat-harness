@@ -1,14 +1,14 @@
 {
   "$schema": "folio-detangle-sidecar/v1",
   "group": "cat-harness/skills/sdlc/sdlc-core",
-  "size": 75,
-  "internal": 70,
-  "inbound": 429,
-  "outbound": 77,
-  "cohesion": 0.12,
+  "size": 77,
+  "internal": 72,
+  "inbound": 475,
+  "outbound": 93,
+  "cohesion": 0.11,
   "enforcedBoundary": 3,
-  "recordedBoundary": 503,
-  "proseMentions": 247,
+  "recordedBoundary": 565,
+  "proseMentions": 239,
   "wrongDirection": 0,
   "undeterminedDirection": 0
 }

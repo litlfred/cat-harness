@@ -3,12 +3,12 @@
   "group": "cat-harness/skills/kg/kg-core",
   "size": 31,
   "internal": 29,
-  "inbound": 146,
-  "outbound": 63,
+  "inbound": 147,
+  "outbound": 70,
   "cohesion": 0.12,
   "enforcedBoundary": 1,
-  "recordedBoundary": 208,
-  "proseMentions": 142,
+  "recordedBoundary": 216,
+  "proseMentions": 144,
   "wrongDirection": 0,
   "undeterminedDirection": 0
 }
