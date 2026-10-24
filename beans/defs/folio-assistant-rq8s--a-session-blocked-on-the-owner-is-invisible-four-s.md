@@ -1,11 +1,12 @@
 ---
 # folio-assistant-rq8s
+$schema: bean/1.0.0
 title: 'A SESSION BLOCKED ON THE OWNER IS INVISIBLE: four sessions held verbatim questions that only the session API could see, and nothing durable records one'
-status: in-progress
+status: completed
 type: bug
 priority: normal
 created_at: 2026-09-21T06:30:04Z
-updated_at: 2026-10-16T06:30:00Z
+updated_at: 2026-10-24T07:25:00Z
 parent: folio-assistant-ahvw
 ---
 
@@ -63,15 +64,15 @@ waiting.
 
 ## Done when
 
-- [ ] A stopping agent that is blocked on the owner records the question
+- [x] A stopping agent that is blocked on the owner records the question
       somewhere durable, and the skill that says so is named here — whether
       that is `bean-blocking` extended to sessions, or a new one
-- [ ] The owner can see every outstanding question in **one** place without
+- [x] The owner can see every outstanding question in **one** place without
       reading 343 beans or seven transcripts — the surface is chosen, with
       the reason, rather than defaulted to "a bean"
-- [ ] The question carries its session id, so answering it can reach the
+- [x] The question carries its session id, so answering it can reach the
       agent that asked rather than a fresh one re-deriving the context
-- [ ] The four above are surfaced to the owner (this bean does not answer
+- [x] The four above are surfaced to the owner (this bean does not answer
       them, and two belong to `z634` / `s8nu`)
 
 ---
@@ -135,16 +136,16 @@ found any of these five — four of them never asked one.
 
 ## Done when
 
-- [ ] A check reports sessions in `REQUIRES_ACTION` past an idle threshold,
+- [x] A check reports sessions in `REQUIRES_ACTION` past an idle threshold,
       and `FAILED` sessions carrying `unread`, with the threshold's **basis**
       stated the way `test/health/` requires rather than as a bare number
-- [ ] The question in `task_summary` is printed with the finding — a count
+- [x] The question in `task_summary` is printed with the finding — a count
       cannot be acted on, and this one is answerable in a sentence
-- [ ] **Could-not-determine is never rendered as clean**: the session API is
+- [x] **Could-not-determine is never rendered as clean**: the session API is
       external, so a failed query is `unknown`, never "no blocked sessions"
-- [ ] The five above are surfaced to the owner (done 2026-09-21; the `qou`
+- [x] The five above are surfaced to the owner (done 2026-09-21; the `qou`
       one is a **math** question and this session has no `qou` access)
-- [ ] The stale-snapshot lesson lands somewhere durable: this bean asserted a
+- [x] The stale-snapshot lesson lands somewhere durable: this bean asserted a
       live-system reading as fact and it was false four hours later
 
 ## Built, 2026-09-21 — and it is deliberately NOT a gate
@@ -212,10 +213,10 @@ stdin, and hung. Fixed, with the reason at the call site.
       arrayless payload is `unknown` and exits non-zero, and a row with no
       usable timestamp is skipped rather than read as fresh
 - [x] The five are surfaced to the owner, with links (2026-09-21)
-- [ ] The session-start sweep runs it, which needs the agent-side fetch wired
+- [x] The session-start sweep runs it, which needs the agent-side fetch wired
       in — `session-start-coord-sweep.sh` calls scripts, and this one needs a
       listing piped to it
-- [ ] The owner's four `qou` items are theirs: **this session works
+- [x] The owner's four `qou` items are theirs: **this session works
       folio-assistant only, on their instruction, and has no `qou` access**,
       so no bean could be left there. Recorded here instead
 
@@ -290,11 +291,12 @@ decision — **put to the owner rather than invented here.**
       is `unknown` rather than none. It asks for the input rather than fetching
       it, and the 401/403 probe is quoted in place so the next reader does not
       "fix" that by wiring a fetch in.
-- [ ] The owner's `qou` items are theirs: this session works folio-assistant
+- [x] The owner's `qou` items are theirs: this session works folio-assistant
       only and has no `qou` access. Four fresh unread failures (7–7.9 days)
       surfaced on #956 2026-09-22.
-- [ ] **Owner decision:** whether the skip should leave a durable trace, which
-      needs a new `state` artefact and a declaration. Not invented here.
+- [x] **Owner decision:** whether the skip should leave a durable trace, which
+      needs a new `state` artefact and a declaration. Ruled 2026-10-10
+      ("timestamp"); built, declared and verified 2026-10-20 (note below).
 
 
 
@@ -302,4 +304,45 @@ decision — **put to the owner rather than invented here.**
 
 Released `in-progress` → `todo` on the owner's instruction (review session https://claude.ai/code/session_014Qj8wncQhqV52QGN1yZDnj). No git change to this bean since before 2026-09-26, no holder recorded, and no open working branch touches it; the sessions that held theme B (CI reliability, QA instruments, process) work stopped on the 2026-09-25 weekly usage limit. Nothing in the body was changed: re-claim with `bun run cat beans:claim <id>`.
 
-_2026-10-16T06:30:00Z_ — Store reconciliation: status `todo` → `in-progress` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: in-progress, cat-harness: todo). Evidence: owner ruling 2026-10-10 "timestamp"; cat-harness#166 and cat-harness-tools#150 merged; the store marks node is still open. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.
+## Owner ruling (2026-10-10, drain session ml9h)
+
+**Timestamp.** The session-staleness sweep writes a last-checked timestamp to the state branch, so a skipped sweep is visible after the terminal scrolls.
+
+## Progress 2026-10-12 (lane B; owner ruling: timestamp)
+- cat-harness#166 (merged): the `sweep-marks` kind, with schema `folio-sweep-mark/v1`.
+- cat-harness-tools#150 (in CI): `check:session-staleness` writes `<marks>/session-staleness.json` after any run that read a listing, and the coord sweep reads it back.
+- Pending: declaring the `marks` node in beans.json, once the pins that read this store carry the sweep-marks kind (lane A).
+
+## Code side complete 2026-10-12 (lane B): cat-harness#166 and cat-harness-tools#150 merged
+- Owner ruling 2026-10-10, "timestamp": `check:session-staleness` writes `<sweep-marks>/session-staleness.json` (`folio-sweep-mark/v1`: check, checkedAt, by, read, findings) after any run that read a listing. It writes nothing for a run that read nothing, found it empty, or was filtered by `--repo`.
+- The session-start coord sweep reads the mark back as "Last checked … (N h ago) by …". It reports no-mark, undeclared, unreachable or corrupt as exactly that.
+- Still open: this store's `marks` node, held until the pins reading cat/cat-harness/beans include #166 (lane A). The qou box stays the owner's.
+
+## `marks` node declared, 2026-10-20 (session https://claude.ai/code/session_01JkK6uP3iU2etyMbrw7v3cu)
+- `beans.json` now declares `marks` (`sweep-marks`, path `marks/`). folio-assistant#2529 merged on 2026-10-15, so the index pins that read this store carry cat-harness#166. `check:harness-dirs` reports consistent, and `resolveBeanGraphNode(".", "sweep-marks")` resolves to `beans/marks` as declared.
+- End-to-end: the session listing of 2026-10-20 ~15:20Z (14 sessions) was passed to `check:session-staleness`. It wrote `marks/session-staleness.json` (`folio-sweep-mark/v1`, read 14, findings 2). Both findings are `FAILED` with unread output since 2026-10-12 (the weekly-limit stops of "Smart-ra CI and post-build rerender" and "iHRIS migration"). Both were reported to the owner.
+- Left open: only the owner's `qou` box. Closing this bean is the owner's call.
+
+
+## The first mark turned every PR red, 2026-10-20
+
+_2026-10-20T16:00:00Z_ — `beans/marks/session-staleness.json` was the first
+file of kind `sweep-marks` anywhere, and `audit:coverage:require-all` read it
+as a NEW `kinds-typed-only` finding: `cat-harness/validators/sweep-marks-sweep-mark.json`
+types the node, and no criterion or gate with `@covers sweep-marks` judges it.
+The state branch is shared, so the finding landed on main and on every open PR
+(seen on folio-assistant#2608, job 118724239542). The mark was removed; the
+node and its `.gitkeep` stay (an empty directory is `empty`, not a finding).
+
+**Not done until** a gate judges `sweep-marks` (e.g. `sweep:mark --read` as a
+gate: a mark that does not parse, names a check no sweep runs, or is dated in
+the future fails) and declares `@covers sweep-marks`. Until then any session
+whose sweep writes a mark reds every PR again.
+
+_2026-10-20T18:20:00Z_ — The judge is up: litlfred/cat-harness-tools#492 adds `sweep:mark:check` (`sweep-mark.ts --check`, `@covers sweep-marks`). A mark must parse, name its file's check, and not be dated in the future. Locally, with the gate line added to `code-quality-gates.yml` and a mark on disk, `audit:coverage:require-all` reports 0 new findings. Remaining: merge #492, re-pin cat-harness-tools here, and add the gate line (patch prepared). Only then may sweeps write marks again.
+
+_2026-10-21T17:50:00Z_ — The judge is live. folio-assistant#2610 merged, so `gates-unrun` now runs `sweep:mark:check` (from cat-harness-tools#492, pinned by #2611). A sweep mark no longer reads as a typed-only finding, so marks may be written again. cat-harness-tools#538 drops the temporary script exemption (merged and re-pinned onto `folio-assistant` `main` in `#2614` at `8e465bea76f7`). Only the owner's `qou` box remains open.
+
+## Closed 2026-10-24 (owner choice A)
+
+Owner closed it by card on 2026-10-24 07:22Z ("A. Close both"), session https://claude.ai/code/session_01WJw1NBGSTLWvBnyQzJHXjx. Every built box stands: `check:session-staleness`, the session-start sweep, and the last-checked mark. The one open box, the owner's `qou` sessions, stays with the owner. This project has no `qou` access, so it is recorded here and not done here.

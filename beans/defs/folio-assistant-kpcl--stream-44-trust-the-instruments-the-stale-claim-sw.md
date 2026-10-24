@@ -1,11 +1,12 @@
 ---
 # folio-assistant-kpcl
+$schema: bean/1.0.0
 title: 'STREAM 4/4: trust the instruments — the stale-claim sweep, CI that does not fire, and the QA record (1xhc + 1swy + ahvw, 43 open beans)'
-status: todo
+status: completed
 type: task
 priority: high
 created_at: 2026-09-22T18:29:28Z
-updated_at: 2026-09-29T20:50:31Z
+updated_at: 2026-10-24T07:25:00Z
 parent: folio-assistant-ahvw
 ---
 
@@ -122,13 +123,13 @@ because sweeping is its job.
       claim is TRUE, 14 leaves an open PR names, 47 candidates. Nothing swept.
 - [x] `in-progress` means something again — `check:bean-rollup` judges a status
       against its own subtree and owns no clock
-- [ ] `rq8s` closed: a session blocked on the owner is visible to the owner —
+- [x] `rq8s` closed: a session blocked on the owner is visible to the owner —
       the sweep fires, but one box remains and it is the owner's
 - [x] The 31 no-run workflows each judged — 30 dispatch-only, 1 path-filtered,
       0 auto-triggered, 0 undetermined, re-derived every run
 - [x] The two failures from this consolidation's own first commit written down
       where the next agent meets them — `platform-gates.md`
-- [ ] `u9r9` — **owner-blocked**, four fields written, expiry is a re-ask date
+- [x] `u9r9` — **completed** (2026-10-07, PR #1389 `54e4ead3c3cf`: working-directory paths corrected in both workflows and TypeDoc installs pinned)
 
 ## The falsifier fired — the 76 are four populations, not one
 
@@ -345,3 +346,7 @@ once ticked and once not. The canonical list above now carries the ticks.*
 ## Claim released 2026-09-29
 
 Released `in-progress` → `todo` on the owner's instruction (review session https://claude.ai/code/session_014Qj8wncQhqV52QGN1yZDnj). No git change to this bean since before 2026-09-26, no holder recorded, and no open working branch touches it; the sessions that held theme B (CI reliability, QA instruments, process) work stopped on the 2026-09-25 weekly usage limit. Nothing in the body was changed: re-claim with `bun run cat beans:claim <id>`.
+
+## Closed 2026-10-24 (owner choice A)
+
+Its last open box was "rq8s closed". The owner closed rq8s and this stream together by card on 2026-10-24 07:22Z ("A. Close both"), session https://claude.ai/code/session_01WJw1NBGSTLWvBnyQzJHXjx.
