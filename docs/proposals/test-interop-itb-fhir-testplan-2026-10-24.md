@@ -7,7 +7,7 @@ parent: Proposals
 
 **Draft, 2026-10-24. Not built.**
 
-**Owner decisions, 2026-10-24:** D1 = S2 (a `system/v1` record). D3 = cat-harness-tools (the ITB export and TAR import live in the tools layer). D2, D4 and D5 are open; D2 gained options B4 (a bindings section in the plan), B5 (on the `system/v1` record), B6 (only in the run) and B7 (tags in the test code, written onto the record by a Tool).
+**Owner decisions, 2026-10-24:** D1 = S2 (a `system/v1` record). D3 = cat-harness-tools (the ITB export and TAR import live in the tools layer). D4 = I1 (plans reach the ITB through OpenTestBed Gherkin). D2 and D5 are open; D2 gained options B4 (a bindings section in the plan), B5 (on the `system/v1` record), B6 (only in the run) and B7 (tags in the test code, written onto the record by a Tool).
 
 It answers four owner questions of
 2026-10-24:
