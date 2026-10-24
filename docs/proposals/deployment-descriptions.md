@@ -120,7 +120,7 @@ contradict it, and a check says so.
 
 ### 3.2 A resolver
 
-The resolver reads the description, the Tool graph and the process graph, and
+The resolver reads the descriptions in `deployments/` (§5 question 1), the Tool graph and the process graph, and
 answers three questions:
 
 1. **Who may run a task here:** placements whose actor holds the task's lane
@@ -131,8 +131,9 @@ answers three questions:
 3. **Which route a gateway takes:** the `signing-route` pattern made general,
    so a DMN table reads placement facts.
 
-Its output is a report per deployment. Its one gate: **a declared process with
-a task that no placement can run** is a finding. Undeclared facts route as
+Its output is a report per deployment. It flags **a declared process with a
+task that no placement can run**. That is reported only and never fails CI
+(owner, 2026-10-24, §5 question 3). Undeclared facts route as
 `actor-reach.ts` rules: unknown is never "reachable".
 
 ### 3.3 The scenarios as examples
@@ -162,14 +163,19 @@ first is the deployment this project runs now, because it is real:
 
 ## 5. Open questions for the owner
 
-1. **Where descriptions live.** (a) one `deployment` block in `<name>.json`, or
-   (b) a `deployments/` subgraph holding several per instance. (b) fits today,
-   where one instance runs in at least two deployments (cloud sessions and a
-   workstation).
-2. **Jurisdiction now or later.** Its four fields come from bean `4y2i`. No
-   deployment declares one yet.
-3. **Gate strength at first.** Whether "a task no placement can run" fails CI
-   at once or reports first.
+1. **Where descriptions live.** **Decided 2026-10-24 (owner, option A): a
+   `deployments/` subgraph holding several descriptions per instance.** One
+   instance already runs in at least two deployments (cloud sessions and a
+   workstation). The alternatives were one `deployment` block in `<name>.json`,
+   or both.
+2. **Jurisdiction now or later.** **Decided 2026-10-24 (owner, option A): now,
+   as four optional fields** (§3.1), so the sovereign-cloud example can be
+   written in full. The alternatives were to wait until a jurisdiction asks, or
+   to point to a document.
+3. **Gate strength.** **Decided 2026-10-24 (owner, option C): report only,
+   never fail.** "A task no placement can run" appears in the resolver's report
+   and never blocks a merge. The alternatives were to report first and fail
+   later, or to fail at once.
 
 ## 6. Work items
 
@@ -177,7 +183,7 @@ first is the deployment this project runs now, because it is real:
 |---|---|
 | `o1by` | this proposal (feature) |
 | `23a3` | schema: `DeploymentDescription`, `Placement`, `Jurisdiction`, and the placement-contradicts-actor check |
-| `v3zw` | resolver and its report; the "task no placement can run" gate |
+| `v3zw` | resolver and its report, including "a task no placement can run" (report only) |
 | `jog4` | example descriptions: today's setup first, then the #363 scenarios, loaded by tests |
 | `4y2i` | sovereign cloud: the jurisdiction fields and the artefacts-only example |
 | `61tg` | self-sovereign: the offline run, and the air-gapped example |
