@@ -5,7 +5,7 @@
     "id": "Process_SubscribeKg",
     "path": "processes/library/subscribe-kg.bpmn"
   },
-  "source_hash": "sha256:37ea771527ae50c0aed885624eb8a824162c28bf47a7dd5609a12b74e2eef4e2",
+  "source_hash": "sha256:e211511bf1d21d0e4f37802405768633c5e58b190e3a90b0fd1b28c05edf4b17",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

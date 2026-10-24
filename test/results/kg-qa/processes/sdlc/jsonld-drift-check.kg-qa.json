@@ -5,7 +5,7 @@
     "id": "Process_JsonLdDrift",
     "path": "processes/sdlc/jsonld-drift-check.bpmn"
   },
-  "source_hash": "sha256:5215ef49c1c3f4acb036a38b39a3d50059c82be077aeaacb5d91298de1d77085",
+  "source_hash": "sha256:7600f1c9b9d9e815dd650ca6e87919956baf9b6da04351bfe1c9e3e1e52888bd",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -113,13 +113,8 @@
       "findings": []
     },
     "prose-reviewed-since-code-changed": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": ".github/workflows/jsonld-gen-check.yml",
-          "detail": ".github/workflows/jsonld-gen-check.yml changed since cat-harness/processes/sdlc/jsonld-drift-check.bpmn was last attested (agent), and the prose did not. Re-read it; if it still holds, run pairs:attest with a reason."
-        }
-      ]
+      "result": "pass",
+      "findings": []
     },
     "prose-claims-resolve": {
       "result": "pass",
@@ -127,8 +122,8 @@
     }
   },
   "totals": {
-    "pass": 16,
-    "fail": 2,
+    "pass": 17,
+    "fail": 1,
     "n/a": 9,
     "unknown": 0
   }

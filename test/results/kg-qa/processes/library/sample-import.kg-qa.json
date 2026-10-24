@@ -5,7 +5,7 @@
     "id": "Process_SampleImport",
     "path": "processes/library/sample-import.bpmn"
   },
-  "source_hash": "sha256:9ffaea0a993e4a49ea804152fe7553611a1e4c3df716fca395b9565e9973a7f2",
+  "source_hash": "sha256:5799890feafc6a5f6405c2dd593ba8eb6aced3ba56e6429d624787768e2beae3",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

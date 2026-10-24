@@ -5,7 +5,7 @@
     "id": "Process_MergeBase",
     "path": "processes/sdlc/merge-base.bpmn"
   },
-  "source_hash": "sha256:52b6be6788bfa0c6e8d5961c0014a4275d2f2873c05b461f908ad0a7cefcedac",
+  "source_hash": "sha256:b99635bba02990f2f418fbc4d325e85bbf0e98a5ffe31abcaa829567f4399681",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

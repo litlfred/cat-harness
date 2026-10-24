@@ -11,8 +11,8 @@
       "kind": "implements",
       "prose": "cat-harness/processes/sdlc/repository-health-watch.bpmn",
       "code": ".github/workflows/health-check.yml",
-      "prose_hash": "583be8f25dff",
-      "code_hash": "41fdeb3e87cb",
+      "prose_hash": "485a7dc52753",
+      "code_hash": "6ade695d3b0b",
       "by": "agent",
       "reason": "Re-hashed after cat-harness#375's global tasks (owner 2026-10-20, a1 b1 c1): the label, close and edit-in-place steps became call activities naming GT_EnsureTrackingLabel, GT_CloseTrackingIssue and GT_TrackIssue, each passing label=repo-health. Their documentation moved to the shared global tasks unchanged in meaning, and each call keeps its id, lane and name. Nothing the workflow does changed: the prose still describes the same three steps, in the same order, on the same label. Lane A, session https://claude.ai/code/session_01Kymnx79TxWvxVoLzcAjBRr."
     }

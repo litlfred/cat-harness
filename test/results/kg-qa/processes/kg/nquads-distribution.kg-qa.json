@@ -5,7 +5,7 @@
     "id": "Process_NQuadsDistribution",
     "path": "processes/kg/nquads-distribution.bpmn"
   },
-  "source_hash": "sha256:0532364e207c99cb5fda728f3456b82cd3343ceaaf06e1cec57118b32769cbaa",
+  "source_hash": "sha256:37353c59d2995cae2d52e245d0c851fe0a9633605e7aaa088e461bc9f045c805",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

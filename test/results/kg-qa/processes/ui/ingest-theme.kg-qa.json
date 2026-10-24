@@ -5,7 +5,7 @@
     "id": "Process_IngestTheme",
     "path": "processes/ui/ingest-theme.bpmn"
   },
-  "source_hash": "sha256:6647d661c468348b5a739d8cb04e5b5ed89b5a63280741386915ca3b3c78eb50",
+  "source_hash": "sha256:5e1113a72c38cea2dad8e9861661740c27ddad6e78808f398881871faac6ea5a",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -101,8 +101,13 @@
       "findings": []
     },
     "process-diagram-published": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "Process_IngestTheme",
+          "detail": "ingest-theme.svg is rendered but no docs page shows it — run `bun run cat processes:viz`."
+        }
+      ]
     },
     "activity-documented": {
       "result": "pass",
@@ -138,8 +143,8 @@
     }
   },
   "totals": {
-    "pass": 18,
-    "fail": 1,
+    "pass": 17,
+    "fail": 2,
     "n/a": 8,
     "unknown": 0
   }

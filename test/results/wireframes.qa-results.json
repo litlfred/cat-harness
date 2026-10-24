@@ -11,7 +11,7 @@
   "families": {
     "covered": {
       "summary": "A declared visualiser with a wireframe whose checks pass at both viewports.",
-      "count": 42,
+      "count": 49,
       "entries": [
         {
           "ref": "cat-harness/attestations",
@@ -74,6 +74,10 @@
           "wireframe": "state-dashboard"
         },
         {
+          "ref": "cat-harness/kg",
+          "wireframe": "kg-viewer"
+        },
+        {
           "ref": "cat-harness/library",
           "wireframe": "library"
         },
@@ -86,8 +90,16 @@
           "wireframe": "state-registry"
         },
         {
+          "ref": "cat-harness/merge-reviews",
+          "wireframe": "state-merge-reviews"
+        },
+        {
           "ref": "cat-harness/methodologies",
           "wireframe": "methodologies"
+        },
+        {
+          "ref": "cat-harness/openapi",
+          "wireframe": "openapi"
         },
         {
           "ref": "cat-harness/pipeline-plugins",
@@ -118,6 +130,10 @@
           "wireframe": "schemas"
         },
         {
+          "ref": "cat-harness/site",
+          "wireframe": "site"
+        },
+        {
           "ref": "cat-harness/substrate-snapshots",
           "wireframe": "state-registry"
         },
@@ -128,6 +144,10 @@
         {
           "ref": "cat-harness/test-plans",
           "wireframe": "state-registry"
+        },
+        {
+          "ref": "cat-harness/themes",
+          "wireframe": "themes"
         },
         {
           "ref": "cat-harness/todos",
@@ -166,16 +186,24 @@
           "wireframe": "voices"
         },
         {
+          "ref": "fhir-harness/ig-ast",
+          "wireframe": "fhir-harness/ig-ast"
+        },
+        {
           "ref": "folio-assistant-core/bibliography",
-          "wireframe": "bibliography"
+          "wireframe": "folio-assistant-core/bibliography"
         },
         {
           "ref": "folio-assistant-core/glossary",
-          "wireframe": "glossary-page"
+          "wireframe": "folio-assistant-core/glossary-page"
         },
         {
           "ref": "smart-base/artifact-index",
-          "wireframe": "fhir-artifact-index"
+          "wireframe": "smart-base/fhir-artifact-index"
+        },
+        {
+          "ref": "smart-base/l1-extraction",
+          "wireframe": "smart-base/l1-extraction"
         },
         {
           "ref": "who-iris/catalogue",
@@ -209,5 +237,5 @@
       "entries": []
     }
   },
-  "total": 42
+  "total": 49
 }
