@@ -1339,8 +1339,8 @@ export const KG_CRITERIA: readonly KgCriterionDefinition[] = [
     // 2026-10-20 ("a1 b1 c1"): a step two or more processes reuse is a BPMN
     // global task in the layer's one shared `.bpmn` that holds no process,
     // called by bare id. A report entry, not a gate — see the note above
-    // `lane-role-legacy-binding`. The audit that computes it is
-    // cat-harness-tools' (`scripts/lib/global-task-criteria.ts`).
+    // `lane-role-legacy-binding`. The audit that computes it lives with
+    // the code that implements this layer's Tool definitions.
     id: "global-task-shared",
     applies: ["graph"],
     scope: "instance",
