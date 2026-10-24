@@ -17,6 +17,7 @@ are drafted together because `oz9e` cannot be measured without the
 independent queues `amom` defines.
 
 **Stage: `draft`.** Every requirement below is proposed. None is approved.
+The owner answered Q2–Q5 on 2026-10-24 (below); Q1 is open.
 
 ## Phase 1 — needs
 
@@ -137,22 +138,120 @@ The proposed BPMN shape (for the BA to confirm before it is drawn):
 Not applicable in this draft. The report's page, if it gets one, goes
 through `wireframe-design-review` before it is built.
 
-## Open questions for the owner (the BA)
+## Owner answers, 2026-10-24
 
-These need the owner's answer before sign-off. They are not decided here.
+| # | question | answer |
+|---|---|---|
+| 1 | which methodology governs? | **open**: analysis below |
+| 2 | which task bank? | **B, maybe A**: harness-native tasks first; a public set only if it fits. Candidate list below |
+| 3 | who scores? | **D**: mechanical checks first, an LLM judge only where no check exists. The judge carries its own attribution (REQ-002) |
+| 4 | which models? | **B, other vendors too.** Gemini already runs through another agent. **Manual multi-model runs now**: a person or agent runs each model and records its result. Coordinated API runs come later. **Open-weight models are in scope** |
+| 5 | budget per run? | **D**: no ceiling. Each run is asked for with its own estimate (REQ-007) |
 
-1. **Which methodology governs?** `crdm-detect` routes tool-developer,
-   content-agnostic work to `spec-kit`, and this is that kind of work. The
-   owner chose a CRDM draft. Keep CRDM, or move it to spec-kit?
-2. **Which task bank?** Public benchmarks (MMLU, GSM8K, HumanEval…) for
-   comparability with ARG-Designer, a bank of harness-native tasks (for
-   example closed beans with known outcomes), or both. `oz9e` names this as
-   a CRDM question.
-3. **Who scores?** A mechanical check, an LLM judge, or a person. An LLM
-   judge is itself a model and would need its own attribution.
-4. **Which models are in the stack?** Only Claude models, or other vendors
-   too. Other vendors need credentials this platform does not hold today.
-5. **Budget per run.** A ceiling the ask in REQ-007 can be held to.
+What the answers change:
+
+- **REQ-002** must hold for a manual run: a result typed in by hand still
+  carries its `model`. `ModelIdSchema` accepts any runtime id, but the registry
+  (`bootstrap/models/models.json`) lists only Claude and Gemini models today.
+  An open-weight model needs an entry there, `validation: unverified` at
+  least, before its results can be attributed.
+- **REQ-005**: a manual run's cost may be unknown. It is recorded as
+  `unknown`, never as 0.
+- **REQ-007**: the ask before each run states its own estimate. There is no
+  fixed ceiling.
+
+## Q1 — spec-kit or CRDM: what a rewrite means
+
+**What the house router says.** `crdm-detect` sends a change to the
+platform's own capability, raised by a tool developer and with a
+content-agnostic answer, to `spec-kit`. It sends stakeholder-facing WHO/IG
+work to `crdm`. The two are never blended (`methodology-adoption`).
+
+**How this work splits.** The machinery is content-agnostic: the two queue
+modes, attribution, scoring and the report. That is spec-kit's by the
+router. A **smart-\* task bank** (Q2) is not: what counts as a correct DAK
+or IG artefact is WHO content. If it needs WHO stakeholder sign-off, that is
+CRDM's.
+
+**Recommended: split, not blended.** A spec-kit spec for the machinery
+(`amom` + `oz9e`), and later a separate CRDM requirement set for the smart-\*
+task bank, only if it needs stakeholder sign-off.
+
+**What a spec-kit rewrite involves:**
+
+| | now (this CRDM draft) | as a spec-kit spec |
+|---|---|---|
+| where it lives | committed, `docs/proposals/` | a **comment on the governing issue**, not committed (FR-013); this PR would close unmerged |
+| shape | REQ-001…009, open questions | **User Scenarios** (P1, P2… with Given-When-Then), **FR-001…**, **SC-001…** (technology-agnostic), Edge Cases, Assumptions |
+| open questions | a list | `[NEEDS CLARIFICATION]` markers, which block `Adjudicated` until a person settles them |
+| check | none | `check:spec --issue <n>` |
+| after delivery | beans under `5a3l` | FRs graduate into `req:*` statements in the governing skill (`swarm-management`), with tests |
+
+The answers to Q2–Q5 carry over unchanged, and nothing built depends on the
+current form.
+
+**How spec-kit is used today, measured on main (2026-10-24).**
+`check:spec` exists (`cat-harness-tools/scripts/check-spec.ts`), but **no CI
+workflow runs it**. `processes/` holds **no spec-kit process**. CRDM has nine
+(`crdm-needs` … `crdm-close`). `docs/requirements/` holds only its README and
+index, so no CRDM requirement set has been filed either.
+
+**Linkages that exist:** one requirement definition shared by both
+(`specification-management`, bootstrap `requirement.schema.json`); the same
+sign-off codes (`adjudication`, `adjudication-requirement-set`); the router
+(`crdm-detect`); beans as the work plan.
+
+**Linkages that are missing:**
+
+1. **spec-kit has no BPMN.** Its cycle (specify → plan → tasks → implement →
+   converge) is only in a skill. No Task ties its steps to beans or to a
+   sign-off the way `crdm-signoff.bpmn` does.
+2. **No shared terminal store.** A CRDM set ends in `docs/requirements/` as a
+   `RequirementSet` that `check:requirements` gates. A spec-kit spec ends as
+   `req:*` statements in a skill. No process step moves either into the
+   other, so "one requirement definition" is not checked end to end.
+3. **No hand-off between tracks.** The router picks one at the start. Nothing
+   says what happens when a spec-kit spec finds a part that needs stakeholder
+   sign-off, which is exactly the smart-\* task bank case.
+4. **`check:spec` is not a gate.** A spec can skip the template and nothing
+   fails.
+5. **This draft sits in `docs/proposals/`**, which is neither track's home: a
+   symptom of 1–3.
+
+Each gap is a candidate bean under the SDLC epic. None is fixed here.
+
+## Q2 — candidate benchmarks for smart-\* authoring and consumption
+
+Searched 2026-10-24. **No published benchmark covers WHO SMART Guidelines or
+DAK authoring**, so a harness-native bank (answer B) is needed whatever
+happens. The public ones below are partial fits, listed for answer A.
+
+| benchmark | what it tests | fit |
+|---|---|---|
+| [FHIR-AgentBench](https://arxiv.org/abs/2509.19319) (Verily, 2025) | agents answering clinical questions over MIMIC-IV on FHIR | **consumption**: querying FHIR data |
+| [MedAgentBench](https://arxiv.org/abs/2501.14654) (Stanford, 2025) | agent tasks in a virtual FHIR EHR | **consumption**: acting through a FHIR API |
+| [Flexpa LLM FHIR eval](https://www.flexpa.com/eval) / [JMIR 2025](https://www.jmir.org/2025/1/e73540) | FHIR knowledge and resource handling, open source | **authoring**: closest to FHIR resource and profile work |
+| [MedGUIDE](https://neurips.cc/virtual/2025/124905) (NeurIPS 2025) | following clinical guideline decision trees | **consumption**: guideline logic, like DAK decision tables |
+| [CPGPrompt](https://arxiv.org/html/2601.03475v1) | turning clinical guidelines into executable decision support | **authoring**: guideline → logic, the L2 → L3 step |
+| [Kourani et al. 2024](https://arxiv.org/pdf/2412.00023) | LLMs generating process models from text | **authoring**: DAK business processes (BPMN) |
+| [BPMN Assistant](https://arxiv.org/pdf/2509.24592) | LLM-based BPMN editing and generation | **authoring**: BPMN |
+| [HealthBench](https://arxiv.org/abs/2505.08775) (OpenAI, 2025) | 5,000 health conversations scored against physician-written rubrics | **general health**: not SMART-specific, but rubric scoring fits answer D |
+
+Not found: a public benchmark for **CQL authoring**, or for **terminology
+mapping** to SNOMED CT, ICD-11 or LOINC. Studies exist, but there is no
+shared task set.
+
+**A harness-native bank could draw on** (answer B):
+
+- Closed beans with known outcomes.
+- The SUSHI and IG Publisher builds of the smart-\* IGs: does generated FSH
+  compile? (a mechanical check, answer D).
+- DAK decision tables against their published test cases.
+- `check:*` gates as scorers.
+
+**Comparability with ARG-Designer** (REQ-008) needs its public set (MMLU,
+GSM8K, HumanEval). None of the rows above is in it, so REQ-008 is weak under
+answer B. That is for the owner to keep or drop.
 
 ## What happens after sign-off
 
