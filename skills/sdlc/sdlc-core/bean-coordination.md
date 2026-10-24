@@ -117,6 +117,12 @@ so:
 Always claim with `bun run cat beans:claim <id>`. Do not use `beans update --status in-progress`
 (which writes no holder note and does not push to the branch store).
 
+**When several agents drain at once, or the store has more than one copy**, the
+claim is [`bean-drain`](bean-drain.md) step 2 instead: check recent commits and
+open PRs first, then a plain commit on every copy (the `bean-claim-check`
+Tool). `beans:claim` writes one copy and reads status only, and on 2026-10-24
+that let two agents start f1e1 minutes apart.
+
 ### Linking PRs to beans with `Closes-bean:` and recording closure evidence
 
 Code changes on `main` and work-plan state on the state branch are separate git
@@ -615,6 +621,10 @@ head. When the claim is *"nobody has built this"*, check the open branches too;
 this session started building `ankg`, `s8nu` and a `viewer-prune` module that
 siblings had already landed or had in flight, **five times**, and the check that
 would have prevented each is one `git diff --name-only origin/main...<branch>`.
+That check is now the [`open-work-lookup`](../../../tools/open-work-lookup/open-work-lookup.ts)
+Tool: a path, a prefix or a bean id, against `main` and every open PR head
+(bean `pomp`, reopened 2026-10-24 after the f1e1 duplicate in
+[`bean-drain`](bean-drain.md) §"The measured case").
 
 **The cost is asymmetric, which is why this is STRICT.** A missed finding is a
 bean that stays open one more day. A false one about a sibling's work is a
