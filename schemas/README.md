@@ -28,6 +28,12 @@ around it, and they are read by tools rather than rendered.
   a BPMN swimlane**; `inherits` is a static IS-A closure and the subprocess stack
   is a scoped union along a call path, and the two are deliberately not merged.
   Declared in `scenarios/roles.json`.
+- **[deployment-description.ts](./deployment-description.ts)** — **where**
+  declared actors run in one deployment: `DeploymentDescription`, `Placement`,
+  `Jurisdiction`, and the checks that a placement names a declared actor,
+  contradicts none of its own facts, and reaches no further than its
+  deployment. Read from `scenarios/deployments/`. Proposal:
+  `docs/proposals/deployment-descriptions.md`.
 - **[kg-qa.ts](./kg-qa.ts)** — the QA sidecar for that graph: 14 criteria, one
   per join, written to `kg-qa/` beside each audited node by
   `scripts/kg-audit.ts`. The third QA subject kind, after blocks and scripts.
