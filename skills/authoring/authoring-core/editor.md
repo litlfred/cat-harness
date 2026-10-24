@@ -4,31 +4,14 @@ name: editor
 
 # Editor Skill
 
-## Heavy-proof discipline (MANDATORY)
+## A content type's own editing discipline
 
-If the project carries a formal-proof layer: whenever you add or modify
-a formal theorem in a content block, you **MUST** also add or update a
-matching `**Proof.**` narrative block in the sibling `.md` file. See
-`formalizer.md` and `proof-narrative-lean-equivalence.md` for the
-canonical format.
-
-Anti-pattern (FORBIDDEN): touching the formal-proof file without
-touching `.md`, or vice versa. The formal theorem and the narrative
-proof move together in a single coherent change. A `.md` that describes
-the **claim** but omits the **proof** is incomplete — the reader must be
-able to follow the argument from the `.md` alone.
-
-For every formal theorem `foo` proved in the sibling, the `.md` must
-contain:
-
-```markdown
-**Proposition (formal: `foo`).** <statement>
-*Proof.* <narrative sketch citing key lemmas / tactics> $\square$
-```
-
-When editing existing blocks, run the `proof-narrative-lean-equivalence`
-audit to surface any formal theorems without narrative counterparts and
-backfill them.
+A content type with a formal layer adds rules the editor must follow: how a
+formal statement and its narrative move together, how proofs are filed, the
+sub-editors that route its formal requests, and its pre-merge audits. For a
+paper folio they are the science layer's `formal-layer-editing`
+(`skill_fetch formal-layer-editing`), and they are **mandatory** whenever that
+layer is present.
 
 ## Role
 
@@ -90,17 +73,9 @@ them.
 | Request type | Sub-editor(s) | Notes |
 |-------------|---------------|-------|
 | Write / edit chapter text | `scientific-accuracy` + `readability-editing` | Author approves content decisions |
-| Fill in / prove / remove proof gap | `formalizer` + domain skill | Formal-layer aware |
-| Define / formalize / add structure | `formalizer` + `lean-generation` | Cross-ref narrative ↔ formal |
-| Review / check / audit formal source | `lean-proof-review` | Gap audit, coherency |
-| Status / tracking / manifest | `proof-status-tracking` | proof-objects manifest |
-| Witness staleness | `lean-completeness-audit` | Formal + compute witness audit |
-| What next / priority / triage | `proof-triage` | Decision support |
 | Build / CI / publish | `docs-generation` | Workflow YAML, scripts |
 | Generate docs / schema docs | `docs-generation` | API/schema/dependency docs |
 | Build manuscript / render output | `docs-generation` | Content → output pipeline |
-| Fix formal build | `lean-build-fix` | Iterative error diagnosis + fix |
-| Simplify proofs | `proof-simplifier` | Clusters of connected proofs |
 | Domain question | `scientific-accuracy` + domain skill | Research, don't edit |
 | Write / run / review tests | `test-engineer` | |
 | Validate content objects | `content-validation` | Schema + constraints + AST |
@@ -109,6 +84,7 @@ them.
 | Work on todos / process feedback | `todo-review` | Context-aware selection |
 | Critical path / context audit | `critical-path-analysis` | Dependency tracing |
 | Review / audit chapter or paper | See §External review | Tiered escalation |
+| Formal-layer request (prove, formalize, triage, fix the formal build) | the content type's routing rows | For a paper folio, `formal-layer-editing` |
 | **End-of-task review** (automatic) | `scientific-accuracy` + `readability-editing` + `content-validation` | **Mandatory** when any content changed |
 
 ## External review (tiered model)
@@ -172,7 +148,7 @@ Content change detected
    first-person work tone, and date-stamped notes (it applies mechanical
    fixes and files todos for substantive items).
 5. **Formal-layer coverage**: when adding/modifying formally-annotated
-   definitions/theorems, ensure a corresponding formal declaration
+   definitions or statements, ensure a corresponding formal declaration
    exists; create missing stubs before commit.
 6. **Dependency management**: when an agent modifies the formal-layer
    build manifest, fetch/update deps, rebuild, and never commit build
@@ -270,31 +246,10 @@ each queued item choose: **action** (small, confident, in-scope fix,
 committed to the PR branch), **reply-only** (explain on the thread), or
 **no-op** (duplicate/outdated/superseded). Never silently drop an event.
 
-## Proof workflow (narrative and formal)
+## Witnessed values
 
-If the project carries a formal-proof layer: every theorem, lemma,
-proposition, and corollary **must** have a standalone proof block
-(`*-proof.ts` + `*-proof.md`), or it will not appear in output. For
-every provable block:
-
-1. **Separate statement from proof**: the statement `.md` holds only the
-   statement; proof content lives in `*-proof.md`.
-2. **Files per proof**: `*-proof.ts` (manifest), `*-proof.md`
-   (narrative), optional formal-proof sibling.
-3. **Link via `proofs:`** on the parent `.ts`.
-4. **List in the chapter manifest** immediately after the parent.
-5. **No prose in formal-source files**: narrative belongs in `.md`;
-   formal files carry code, brief docstrings, and reference citations.
-6. **Witnessed values**: any computed numerical literal in a statement,
-   proof step, example, or remark uses the value-citation directive, not
-   a hard-coded number. See `witnessed-values`.
-
-To create a narrative proof: check for an existing proof block; if none,
-ask the author (provide a sketch, or have the agent draft one for
-review); create the `.ts` + `.md` pair, link via `proofs[]`, add to the
-chapter manifest. For formal proofs: prefer writing the narrative first,
-then route to the formalizer with the narrative as context; route
-existing gap stubs to `proof-triage`.
+Any computed numerical literal in a block, whatever its kind, uses the
+value-citation directive, not a hard-coded number. See `witnessed-values`.
 
 ## Glossary routing
 
@@ -322,8 +277,7 @@ delegates the correctness audit and intake.
 
 ## Pre-merge checklist
 
-Before merging a branch: run content validation; run the formal-layer
-audit (zero uncited gaps, zero trivial truths, every new gap has a
-reference citation); run the witness-staleness audit (re-run/re-stamp
-stale witnesses); run the formal build if available; re-run affected
-compute scripts (new scripts use the structured-witness base).
+Before merging a branch: run content validation; run the witness-staleness
+audit (re-run/re-stamp stale witnesses); re-run affected compute scripts
+(new scripts use the structured-witness base); and run the content type's own
+pre-merge audits and build (for a paper folio, `formal-layer-editing`).

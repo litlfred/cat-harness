@@ -20,12 +20,14 @@ skill is about the first one:
 | Relation | Source | Answers | Maintained by |
 |---|---|---|---|
 | **editorial** | `uses[]` | "what must a reader have read to follow this?" | agent / human — it is authored content |
-| **formal** | `lean.ref` → Lean dep graph | "what does this proof actually invoke?" | machine-derived, never hand-written |
+| **formal** | the content type's formal reference → its dependency graph | "what does this block's formal layer actually invoke?" | machine-derived, never hand-written |
 
-They diverge in both directions, legitimately: a proof invokes `simp`
-lemmas nobody needs to read about; a theorem is motivated by an example
-it never formally cites. **Never populate `uses[]` from Lean** — it
-destroys the editorial signal every heuristic below is computed from.
+They diverge in both directions, legitimately: a formal layer invokes
+helpers nobody needs to read about; a claim is motivated by an example
+it never formally cites. **Never populate `uses[]` from a formal graph**
+— it destroys the editorial signal every heuristic below is computed
+from. For a paper folio, the formal relation is Lean's: see the science
+layer's `lean-formal-graph`.
 
 The reorganisation heuristics in this skill (forward references,
 coupling, section balance) are **editorial-only** by design: reading
@@ -150,10 +152,10 @@ section or chapter, or may be dead content.
 
 ### H7 — Remark / example ratio (severity: INFO)
 
-Sections where `remark + example` blocks outnumber provable blocks
-(`definition + theorem + lemma + proposition + corollary + conjecture`)
-by more than 2:1 may have too much interpretation and too little formal
-content — or vice versa.
+Sections where `remark + example` blocks outnumber the content type's
+claim-bearing blocks (for a paper folio, `definition + theorem + lemma +
+proposition + corollary + conjecture`) by more than 2:1 may have too much
+interpretation and too little substance — or vice versa.
 
 ## Placement Principles for New/Changed Content
 
@@ -452,12 +454,13 @@ Directory names are **descriptive slugs** with NO chapter numbers:
 
 ## Drawing it
 
-`bun run cat content:graph:uml --root <content dir> --out <dir> [--status proof-objects.json]`
+`bun run cat content:graph:uml --root <content dir> --out <dir> [--status <status file>]`
 (Tool `content-graph-uml`) draws this graph under the
 [`graph-rendering`](../../kg/graph-management/graph-rendering.md) rules:
 - chapters as packages;
-- `uses[]` and `interprets` solid, Lean `type` and `value` dashed purple;
-- status fills from `proof-objects.json`;
+- `uses[]` and `interprets` solid, the content type's formal edges dashed
+  purple (for a paper folio, Lean `type` and `value`: `lean-formal-graph`);
+- status fills from the content type's status file;
 - one diagram per chapter, with blocks in other chapters as dashed stubs;
 - portrait and landscape views, and a `--check` that needs no Java.
 
