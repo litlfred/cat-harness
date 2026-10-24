@@ -26,6 +26,7 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `proposals`, holding `
 | [`credentials-needs-and-supply.md`](credentials-needs-and-supply.md) | Credentials: needs declared, supply chosen by deployment |  |
 | [`dak-kinds-contribution-2026-10-02.md`](dak-kinds-contribution-2026-10-02.md) | DAK block kinds as a smart-base contribution |  |
 | [`declaration-gap.md`](declaration-gap.md) | Which top-level directories are not declared subgraphs? |  |
+| [`deployment-descriptions.md`](deployment-descriptions.md) | Deployment descriptions: placing actors, matching Tools |  |
 | [`deployment-topologies.md`](deployment-topologies.md) | Deployment topologies and operating modes |  |
 | [`derived-graph-dependencies-2026-10-04.md`](derived-graph-dependencies-2026-10-04.md) | Derived-graph dependencies |  |
 | [`dth-candidates-2026-10-02.json`](dth-candidates-2026-10-02.json) | data |  |
