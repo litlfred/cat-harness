@@ -163,14 +163,41 @@ It prints every identity the session can see, each bare and as
 
 | provider | read from | vouched for by |
 |---|---|---|
-| `github` | the auth Tool's own resolver: a token, or `GITHUB_ACTOR` in Actions | GitHub |
+| `github` | the auth Tool's own resolver: a token, or `GITHUB_ACTOR` in Actions (plus `GITHUB_USER` outside Actions, self-asserted) | GitHub (when via token or Actions) |
 | `gitlab` | `GITLAB_USER_LOGIN`, only inside GitLab CI | GitLab |
-| `claude` | the agent host's signed-in account | the agent host |
-| any | the user-level store's `identities` | nobody: the person says so |
+| `claude` | `CLAUDE_CODE_USER_EMAIL`, the agent host's signed-in account | the agent host |
+| `gemini` | `GEMINI_USER_EMAIL`, `GOOGLE_CLOUD_ACCOUNT` | nobody: self-asserted |
+| `antigravity` | `ANTIGRAVITY_USER_EMAIL`, `ANTIGRAVITY_USER` | nobody: self-asserted |
+| `copilot` | `COPILOT_USER` | nobody: self-asserted |
+| `codex` | `CODEX_USER_EMAIL`, `OPENAI_USER_EMAIL` | nobody: self-asserted |
+| `cursor` | `CURSOR_USER_EMAIL` | nobody: self-asserted |
+| any | `CAT_HARNESS_IDENTITY` (`<provider>:<handle>` or comma-separated list) | nobody: self-asserted session override |
+| any | the user-level store's `identities` / `profiles` | nobody: the person says so |
 | `git` | `git config user.email`, then `user.name` | nobody: self-asserted |
 
-So an entry may list `gitlab:<handle>` or `claude:<email>` among its
-`aliases`, and a person with no GitHub token is still recognised.
+So an entry may list `gitlab:<handle>`, `claude:<email>`, `gemini:<email>`,
+`antigravity:<email>`, `copilot:<handle>`, `codex:<email>`, or `cursor:<email>`
+among its `aliases`, and a person with no GitHub token is still recognised.
+
+#### What each agent host exposes, and whether it runs the session-start sweep
+
+Not every agent host runs `.claude/settings.json` `SessionStart` hooks
+automatically, and not every host injects its signed-in account into the shell
+environment:
+
+| agent host | login / identity variable exposed | runs `SessionStart` hook (`session-start-coord-sweep.sh`)? | how identity & preferences reach the session |
+|---|---|---|---|
+| **Claude Code** | `CLAUDE_CODE_USER_EMAIL` | **Yes, automatically** via `.claude/settings.json` `SessionStart` | Hook runs the sweep before the first turn; `resolveIdentities` reads `CLAUDE_CODE_USER_EMAIL`, `GH_TOKEN`, user config and `git config`. |
+| **Gemini CLI** | `GEMINI_USER_EMAIL`, `GOOGLE_CLOUD_ACCOUNT` (when set in shell / gcloud env) | **No** native `.claude/settings.json` hook; reads `GEMINI.md` → `AGENTS.md` | Cold-start instructions in `AGENTS.md` direct the agent to read `cat-harness/memory/interaction.json` and run `bun run cat auth:login --all` (or `session-start-coord-sweep.sh`). |
+| **Antigravity** | `ANTIGRAVITY_USER_EMAIL`, `ANTIGRAVITY_USER` (when set in environment) | **No** automatic `SessionStart` shell hook; loads `AGENTS.md` / `.agents/rules/` natively | Cold-start rules in `AGENTS.md` require reading `cat-harness/memory/interaction.json` and resolving identity via `auth:login --all` or `CAT_HARNESS_IDENTITY`. |
+| **GitHub Copilot** | `COPILOT_USER`, `GITHUB_USER`, or `GH_TOKEN` / `GITHUB_TOKEN` | **No** `SessionStart` hook; reads `AGENTS.md` | Cold-start `AGENTS.md` flow; `resolveIdentities` checks `GH_TOKEN` (vouched) and `COPILOT_USER` / `GITHUB_USER` (self-asserted). |
+| **OpenAI Codex CLI** | `CODEX_USER_EMAIL`, `OPENAI_USER_EMAIL` (when set in environment) | **No** `SessionStart` hook; reads `AGENTS.md` | Cold-start `AGENTS.md` flow; `resolveIdentities` reads `CODEX_USER_EMAIL` / `OPENAI_USER_EMAIL`, `CAT_HARNESS_IDENTITY`, user config and `git config`. |
+| **Cursor** | `CURSOR_USER_EMAIL` (when set in environment) | **No** `.claude/settings.json` hook; reads `AGENTS.md` / rules | Cold-start `AGENTS.md` flow; `resolveIdentities` reads `CURSOR_USER_EMAIL`, `CAT_HARNESS_IDENTITY`, user config and `git config`. |
+
+When a host does not expose a login variable of its own, setting
+`CAT_HARNESS_IDENTITY="<provider>:<handle>"` (or declaring `identities` in
+`~/.config/cat-harness/identity.json`) gives `resolveIdentities` an explicit
+self-asserted identity for the session.
 
 **A self-asserted identity is enough to choose how to TALK to someone, never
 enough to AUTHORIZE them.** Permissions take only what GitHub vouched for
@@ -182,10 +209,37 @@ nor a guess. The session-start sweep says it could not determine who is
 typing, and applies the strictest profile on record until told otherwise, so
 an account switch never drops an accommodation.
 
+#### Several accounts per provider, and several people on one machine or session
+
+A person often holds more than one account on the same provider (for example,
+personal and work GitHub handles or multiple Claude/Google emails), and a
+workstation or container may be shared by several people:
+
+1. **Several accounts per provider for one person.** In
+   `~/.config/cat-harness/identity.json`, `identities` accepts a map of
+   `string | string[]` per provider (`{ "github": ["litlfred", "litlfred-bot"], "claude": ["a@example.org", "b@example.org"] }`)
+   as well as an array of `{ provider, handle: string | string[], active? }`
+   (and the single-handle `{ "github": "handle" }` form). Every declared handle
+   is emitted by `matchKeys`, so switching between personal and work accounts
+   on the same provider still resolves to the person's profile.
+2. **Several people on one machine or session.** `identity.json` may declare
+   named per-person profiles under `profiles: { "<name>": { identities, interaction } }`,
+   with the active person chosen by `CAT_HARNESS_PROFILE`, `CAT_HARNESS_USER`,
+   `CAT_HARNESS_IDENTITY`, or `activeProfile`.
+3. **Ambiguous multi-user is a third state (`ambiguous-multi-user`).** When
+   multiple people's profiles exist in `identity.json` (or multiple people in
+   `interaction.json` match the session's environment signals) with **no**
+   disambiguator (`CAT_HARNESS_PROFILE`, `CAT_HARNESS_USER`, or
+   `CAT_HARNESS_IDENTITY`) and their interaction profiles conflict, the
+   resolver reports `ambiguous-multi-user` and falls back to the **strictest**
+   profile on record — never silently picking whichever person's looser
+   profile happened to be listed first.
+
 **A preference that must not be committed** lives in the user-level store,
 `~/.config/cat-harness/identity.json` (or `$XDG_CONFIG_HOME/…`, or the path
-in `CAT_HARNESS_USER_CONFIG`), under `interaction`. It is per machine and
-never in the repository. The sweep prints it, marked as not committed.
+in `CAT_HARNESS_USER_CONFIG`), under `interaction` (or `profiles.<name>.interaction`).
+It is per machine and never in the repository. The sweep prints it, marked as
+not committed.
 
 ## 4. Asking a question well
 
