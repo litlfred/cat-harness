@@ -62,6 +62,7 @@
     "staging-review",
     "stalled-agent-triage",
     "swarm-management",
+    "test-data-sets",
     "test-engineer",
     "test-plan-execution",
     "todo-manager",
