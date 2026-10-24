@@ -94,6 +94,9 @@ export {
 
 export const INDEX_CONFIG_SCHEMA = "folio-index-config/v1";
 
+/** A content-type id as a key of {@link IndexConfigSchema}'s `contentTypes`. */
+export const IndexContentTypeIdSchema = z.string().regex(/^[a-z][a-z0-9-]*$/, "a content-type id: lowercase letters, digits and hyphens");
+
 /** The landing value that asks for the neutral hub rather than one harness. */
 export const HUB_LANDING = "hub";
 
@@ -205,6 +208,20 @@ export const IndexConfigSchema = z
      * in the same change as the step — never ahead of it in a layer.
      */
     gateExemptions: GateExemptionsSchema.optional(),
+    /**
+     * Sections that registered CONTENT TYPES declare about this repository,
+     * keyed by the type's id: `"contentTypes": { "dak": { ... } }`.
+     *
+     * The platform knows only that each value is an object. What goes inside
+     * is the business of the layer that registered the type, which reads and
+     * validates its own section (owner, 2026-10-24: a DAK's metadata moves
+     * into `index.config.json` and WHO adopts the file). A section's PRESENCE
+     * is the marker, the same assertion a marker file makes: see
+     * `IndexSectionMarker` in `content-type.ts`. It sits on the index for the
+     * reason `site.agentRun` does: an IG repository may declare no instance
+     * of its own, so its index is all it has.
+     */
+    contentTypes: z.record(IndexContentTypeIdSchema, z.record(z.string(), z.unknown())).optional(),
   })
   .strict()
   .superRefine((c, ctx) => {
