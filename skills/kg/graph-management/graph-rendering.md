@@ -1,8 +1,8 @@
 ---
 name: graph-rendering
 description: >-
-  Draw any graph in a harness (schemas, processes, a paper's block graph, a
-  Lean proof's dependencies, a detangle partition) so the picture is derived,
+  Draw any graph in a harness (schemas, processes, a folio's block graph and
+  any formal relation its content type adds, a detangle partition) so the picture is derived,
   checkable and readable. Ten rules learned on the UML overview, which engine
   to lay a graph out with and why, and how each graph typology here applies them.
 ---
@@ -20,7 +20,7 @@ This skill is the general part. It says what any drawing of a graph owes its
 reader. The per-graph skills say how one generator meets it:
 [`uml-overview`](../kg-core/uml-overview.md) for schemas,
 [`bpmn-authoring`](../../process/workflow/bpmn-authoring.md) for processes, and
-[`content-graph`](../../authoring/authoring-core/content-graph.md) for a paper's blocks.
+[`content-graph`](../../authoring/authoring-core/content-graph.md) for a folio's blocks.
 
 A drawing is how a person READS a graph. [`graph-detanglement`](graph-detanglement.md)
 is how the graph is RESTRUCTURED, and it needs the drawing: a partition you
@@ -33,7 +33,7 @@ prevents is stated beside it.
 
 1. **Draw from a declared graph, never by hand.** Every node and edge in the
    picture is read from a source: a schema, a declaration, a BPMN file, a
-   `uses[]` list, a Lean dependency cache. A wrong picture is fixed at its
+   `uses[]` list, a dependency cache. A wrong picture is fixed at its
    source. A hand-edited diagram is overwritten on the next run, and a check
    fails while it is stale.
 2. **Groups are declared sub-graphs.** A box around nodes is a named
@@ -47,7 +47,7 @@ prevents is stated beside it.
    quiet empty shape. The UML overview went from 242 empty boxes to 0.
 4. **Edge kinds are drawn distinctly and never merged.** A graph has more
    than one kind of edge ([`edge-kinds-and-blast-radius`](edge-kinds-and-blast-radius.md)).
-   Editorial `uses[]` and formal Lean edges, enforced and prose-only
+   Editorial `uses[]` and a content type's formal edges, enforced and prose-only
    references, and a field-carried link versus one declared elsewhere (the
    UML's dashed `bootstrap.processes:skill` edge) each get their own line style and a
    legend. Merging two kinds into one line destroys the signal every metric
@@ -140,26 +140,23 @@ a different graph.
 |---|---|---|---|---|---|
 | **schemas** | graph-typology registry, Zod schemas | `<instance>/<sub-graph>` | composition; field-carried vs declared elsewhere | `gen-uml-overview.ts` (PlantUML, Mermaid and the DOT of the Interactive view), `gen-object-model-uml.ts` | meets all ten |
 | **processes** | `.bpmn` files | pools and lanes | sequence, message, call | `render-bpmn.ts` (stored layout) | rule 6 (orientation) does not apply: the author placed it |
-| **paper blocks** and **Lean proofs** | `buildContentGraph` in `pipeline/content-graph.ts`; status from `proof-objects.json` | chapters | `editorial` (`uses[]`, `interprets`), solid, vs `formal` (Lean `type` / `value`), dashed purple | `gen-content-graph-uml.ts` (Tool `content-graph-uml`), run from a folio | meets rules 1 to 8. Rule 9 waits on a folio page to show it; rule 10 on detangle scanning a paper |
+| **folio blocks** and any **formal relation** the content type adds | `buildContentGraph` in `pipeline/content-graph.ts`; status from the content type's status source | chapters | `editorial` (`uses[]`, `interprets`), solid, vs `formal` (the content type's own edges), dashed purple | `gen-content-graph-uml.ts` (Tool `content-graph-uml`), run from a folio | meets rules 1 to 8. Rule 9 waits on a folio page to show it; rule 10 on detangle scanning a folio |
 | **detangle partition** | the sidecars under `detangleResultsDir` | detangle groups | enforced / recorded / prose | numbers only; the UML pages show them (rule 10) | a drawing of the cross-group edges themselves |
 
-A paper or a Lean project is **content**, and content lives in a folio
-repository, not here. Apply the rules there through the platform's generator,
-and ask the owner before a PR in a mathematics repository.
+A folio is **content**, and content lives in a folio repository, not here.
+Apply the rules there through the platform's generator, and ask the owner
+before a PR in a content repository the owner has said to ask about.
 
-**Papers and Lean are one drawing, not two.** `buildContentGraph` already holds
-both relations over the same blocks, so `gen-content-graph-uml.ts` draws them
-together and keeps them apart by line style. The two drawings it supersedes
-each re-parsed the sources and drew only one relation:
-`content-graph-analysis.py` (blocks) and `.github/scripts/generate_dependency_graph.py`
-(Lean, still `qou`-specific: it imports `qou_lib`). Neither has been removed:
-`qou` still runs the second in CI, and retiring it is the owner's call.
+**The editorial and formal relations are one drawing, not two.**
+`buildContentGraph` holds both over the same blocks, so `gen-content-graph-uml.ts`
+draws them together and keeps them apart by line style. Status fills come from
+the same stylesheet as the family colours (`--fa-uml-status-*` in `uml.css`). A
+human review outranks an agentic one, which outranks a machine-derived status.
+For a paper folio, where the formal relation is Lean's, the science layer's
+`lean-formal-graph` (`skill_fetch lean-formal-graph`) says what that edge and
+status source are, and which older drawings this one supersedes.
 
-Status fills come from the same stylesheet as the family colours
-(`--fa-uml-status-*` in `uml.css`). A human review outranks an agentic one,
-which outranks the Lean status: the order the CI graph used.
-
-**Never populate `uses[]` from the formal graph to make a drawing look
+**Never populate `uses[]` from a formal graph to make a drawing look
 connected.** The editorial relation is authored; see `AGENTS.md` and
 [`uses-editorial-review`](../../authoring/authoring-core/uses-editorial-review.md). Rule 4 is how
 the drawing keeps them apart.
