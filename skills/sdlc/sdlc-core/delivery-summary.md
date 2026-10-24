@@ -25,13 +25,15 @@ with a clickable viewer link and a short explanation of what changed.
 
 ### How to find changed blocks
 
-Extract labels from changed content `.ts`/`.md`/`.lean` triples
-(a `.md`-only edit is still a block change):
+Extract labels from changed content blocks: the `.ts` manifest, the `.md`
+content and whatever sibling file the content type adds (a `.md`-only edit is
+still a block change). Add the content type's sibling extensions to the
+pathspec; a paper folio, for example, adds `'content/**/*.lean'`:
 
 ```bash
 # Collect changed content files (any sibling triggers the block)
 changed=$(git diff origin/main..HEAD --name-only -- \
-  'content/**/*.ts' 'content/**/*.md' 'content/**/*.lean' \
+  'content/**/*.ts' 'content/**/*.md' \
   | grep -v '/rendered/' | grep -v 'schema/' | grep -v 'pipeline/')
 
 # For each, resolve to the sibling .ts and pull the label
@@ -45,7 +47,8 @@ done | sort -u
 
 ### Link format
 
-The viewer runs on `localhost:<viewer_port>` (from `lean-mcp.config.json`).
+The viewer runs on `localhost:<viewer_port>` (from the instance's viewer
+configuration).
 Each block links via its label anchor:
 
 ```
@@ -56,17 +59,17 @@ http://localhost:8080/assistant/#<label>
 
 Group by chapter. Use a markdown table with columns: **Block** (clickable
 link — ALWAYS to the `.md` file), **Siblings** (GitHub blob links to
-`.ts`/`.lean`/etc. that **also changed**), **What changed** (1-line
+`.ts` or the content type's other siblings that **also changed**), **What changed** (1-line
 description).
 
 **Rule: the Block column always links to the `.md` file.** Sibling
-links (`.ts`, `.lean`, `.tex`) appear in a separate column and only
+links (`.ts` and any other sibling) appear in a separate column and only
 when that sibling was actually modified in this delivery.
 
 | Block | Siblings changed | What changed |
 |-------|------------------|-------------|
-| [def:central-object](https://github.com/<owner>/<repo>/blob/<branch>/content/.../central-object.md) | [ts](https://github.com/<owner>/<repo>/blob/<branch>/content/.../central-object.ts) · [lean](https://github.com/<owner>/<repo>/blob/<branch>/content/.../central-object.lean) | Updated notation |
-| [prf:main-lemma](https://github.com/<owner>/<repo>/blob/<branch>/content/.../main-lemma.md) | — | Added first SVG render |
+| [def:central-object](https://github.com/<owner>/<repo>/blob/<branch>/content/.../central-object.md) | [ts](https://github.com/<owner>/<repo>/blob/<branch>/content/.../central-object.ts) | Updated notation |
+| [sec:scope](https://github.com/<owner>/<repo>/blob/<branch>/content/.../scope.md) | — | Added first SVG render |
 
 Viewer anchor links (`http://localhost:8080/assistant/#<label>`) may be
 included as an additional row-end column when the folio-assistant is
@@ -82,12 +85,12 @@ https://github.com/<owner>/<repo>/blob/<branch>/<relative-path>
 ```
 
 **The primary link for a block is always the `.md` file.** Sibling
-files (`.ts`, `.lean`, `.tex`) are listed only if they were actually
-modified.  Never make the `.ts` or `.lean` the primary clickable link
+files (`.ts` and the content type's others) are listed only if they were
+actually modified.  Never make a sibling the primary clickable link
 for a block reference — readers want narrative first.
 
-This applies to **all** file kinds: `.md`, `.ts`, `.lean`, `.tex`, config
-files, etc.  Never report "created/edited `foo.md`" without also
+This applies to **all** file kinds: `.md`, `.ts`, the content type's
+siblings, config files, etc.  Never report "created/edited `foo.md`" without also
 giving its clickable GitHub blob link on the pushed branch.
 
 If the branch is not yet pushed, say so explicitly — do not fabricate a
@@ -99,7 +102,7 @@ Explain the nature of changes — don't just list files. Common categories:
 - **Narrative edit**: `.md` content was modified
 - **Re-rendered SVG**: notation/style change caused SVG hash update
 - **New SVG render**: block got its first rendered SVG
-- **Structural change**: label, uses[], lean ref, or kind changed
+- **Structural change**: label, uses[], a sibling reference, or kind changed
 - **New block**: entirely new content block added
 
 ### Remote/deployed links
@@ -132,12 +135,12 @@ After pushing changes to `claude/feature-xyz`:
 >
 > | Block | What changed |
 > |-------|-------------|
-> | [def:central-object](http://localhost:8080/assistant/#def:central-object) | Rewrote axiom 3 for clarity |
-> | [prop:main-relation](http://localhost:8080/assistant/#prop:main-relation) | Re-rendered SVG (notation update) |
-> | [prf:main-lemma](http://localhost:8080/assistant/#prf:main-lemma) | Added first SVG render |
+> | [def:central-object](http://localhost:8080/assistant/#def:central-object) | Rewrote point 3 for clarity |
+> | [rule:main-criterion](http://localhost:8080/assistant/#rule:main-criterion) | Re-rendered SVG (notation update) |
+> | [sec:scope](http://localhost:8080/assistant/#sec:scope) | Added first SVG render |
 >
 > **Commits:**
-> - [Rewrite axiom 3](https://github.com/<owner>/<repo>/commit/abc123)
+> - [Rewrite point 3](https://github.com/<owner>/<repo>/commit/abc123)
 > - [Re-render SVGs](https://github.com/<owner>/<repo>/commit/def456)
 >
 > **Full diff:** [main...claude/feature-xyz](https://github.com/<owner>/<repo>/compare/main...claude/feature-xyz)
