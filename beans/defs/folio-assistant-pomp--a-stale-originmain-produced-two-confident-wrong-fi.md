@@ -1,11 +1,11 @@
 ---
 # folio-assistant-pomp
 title: A stale origin/main produced two confident wrong findings in one session — 'not in my checkout' is not 'does not exist'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-21T06:43:56Z
-updated_at: 2026-10-16T10:30:00Z
+updated_at: 2026-10-24T07:47:00Z
 parent: folio-assistant-ahvw
 ---
 
@@ -69,7 +69,7 @@ checked against whatever the checker happens to have.
       occurrences and the two distinct guards, and `issue-working` §"Before
       you publish that something does not exist" carries the short form,
       because an issue comment is where one of the two was published
-- [ ] a ruling on whether this ALSO wants a tool — see below
+- [x] a ruling on whether this ALSO wants a tool — see below
 - [ ] if a tool: something that answers "does `<path>` exist anywhere reachable
       — this branch, `origin/main`, or an open PR's head" in one call, since
       the third case is the one neither guard above catches
@@ -121,3 +121,7 @@ came from.
 _2026-09-29_ — **Re-parented `vke6` → `ahvw`** by subject, per todo-manager §"WHICH parent" (owner choice '1 2 3' on the LSI epic-filing proposal, bean ansc). A stale origin/main producing confident wrong findings is about how an agent verifies before it reports — process; nothing here is the split. (LSI's first guess was 1xhc.)
 
 _2026-10-16T10:30:00Z_ — Back to `todo`: nobody is holding this; its last note says it is parked (waiting on a trigger, a ruling or a deferred row), and an untouched `in-progress` claim misleads sibling sessions (owner choice, https://claude.ai/code/session_01NUrhvvMEwU5MmPW4L2w9jP).
+
+## Closed 2026-10-24 (owner choice B)
+
+Ruling: no tool. The owner closed this bean on 2026-10-24 rather than build an "exists on main or any open PR head" checker, so the "if a tool" item does not apply. The two occurrences stay recorded in this bean.
