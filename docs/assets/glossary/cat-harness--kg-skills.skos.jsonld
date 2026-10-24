@@ -2349,26 +2349,6 @@
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/lean-toolchain-contract",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "lean-toolchain-contract"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "The contract the `lean-toolchain` role is held to: what a Lean toolchain must answer when a paper folio's formal half is built, and what it must not be asked. A mechanical role's skill is a contract to test against, not instructions to read."
-        }
-      ],
-      "skos:notation": "lean-toolchain-contract",
-      "dcterms:source": "cat-harness/skills/authoring/content-lifecycle/lean-toolchain-contract.md",
-      "skos:note": "candidate"
-    },
-    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/library-ingestion",
       "@type": "skos:Concept",
       "skos:inScheme": {
