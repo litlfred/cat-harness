@@ -9,8 +9,10 @@ This is step 3 of bean `ec2a`, under epic `zzmr`. Steps 1 and 2 are merged:
 folio-assistant-core#66 (`scripts/lsi-blocks.ts`) and folio-assistant-sci#18
 (`scripts/lsi-lean-decls.ts`).
 
-**This is a design draft for the owner to review. Nothing here is built,** and
-every choice below is a proposal. The open questions are listed at the end.
+**Owner decision, 2026-10-24: option A, one list per graph.** The joint index
+(B) is not planned. It comes back only if the owner asks for it after A is in
+use. Questions 2 to 4 below take their recommended answers. Nothing is built
+yet.
 
 ## What step 3 is for
 
