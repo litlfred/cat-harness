@@ -5,7 +5,11 @@ parent: Proposals
 
 # Test plans, FHIR TestPlan and the ITB: one model, several exports
 
-**Draft, 2026-10-24. Not built.** It answers four owner questions of
+**Draft, 2026-10-24. Not built.**
+
+**Owner decisions, 2026-10-24:** D1 = S2 (a `system/v1` record). D2 to D5 are open.
+
+It answers four owner questions of
 2026-10-24:
 
 1. How do `test-plan/v1`, FHIR R5 TestPlan and the Interoperability Test Bed
