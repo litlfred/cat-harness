@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://litlfred.github.io/folio-assistant/skills/wireframe-viewport-check/output.schema.json",
+  "$id": "https://litlfred.github.io/folio-assistant/cat-harness/skills/wireframe-viewport-check/output.schema.json",
   "title": "Wireframe Viewport Check Output",
   "description": "Per candidate, per viewport (web 1280x800, mobile 390x844), a pass or fail entry for each mechanical criterion (renders, no-overflow, no-placeholder) with a note, and a screenshot per viewport. Pass/fail entries only, never a score (the wiregen methodology).",
   "type": "object",
