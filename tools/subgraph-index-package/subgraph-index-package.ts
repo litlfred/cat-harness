@@ -21,7 +21,7 @@ export default toolFactory((t) =>
         { name: "repository", schema: t("RepoFullName"), required: true, arg: { flag: "--repository" }, description: "owner/name of the repository the pin is a commit of." },
         { name: "ref", schema: t("CommitSha"), required: true, arg: { flag: "--ref" }, description: "The pin: the full 40-character commit the files were built from." },
         { name: "outDir", schema: t("RepoPath"), required: true, arg: { flag: "--out-dir" }, description: "Where the tarball and its release record are written." },
-        { name: "builtIn", schema: t("Text"), required: false, arg: { flag: "--built-in" }, description: "`<owner/name>@<ref>` of the checkout the files were built in, recorded as provenance." },
+        { name: "builtIn", schema: t("PinnedRepo"), required: false, arg: { flag: "--built-in" }, description: "`<owner/name>@<40-char sha>` of the checkout the files were built in, recorded as provenance." },
       ],
       outputs: [
         { name: "tarball", schema: t("RepoPath"), description: "The package `.tgz`." },
