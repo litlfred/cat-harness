@@ -5,7 +5,7 @@
     "id": "Process_RepoHealth",
     "path": "processes/sdlc/repository-health-watch.bpmn"
   },
-  "source_hash": "sha256:7240d6be7be354d54211c5dfb4fab028659a9bc21edb987e9f8dc9899446615f",
+  "source_hash": "sha256:4606c0f66f516a735f7c5d11c74aea34d980a8076dda0dc125ebd92d1f519fab",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

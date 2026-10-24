@@ -5,7 +5,7 @@
     "id": "Process_StalledAgentTriage",
     "path": "processes/sdlc/stalled-agent-triage.bpmn"
   },
-  "source_hash": "sha256:1a7684d0d06b8258cdcf241e1c858400e92524b91b5bc4825d32f877eba592cd",
+  "source_hash": "sha256:f744746bdeb32f30309471f05cbb547b87a506526e2ab65432cadadb8fef94d3",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -115,7 +115,7 @@
       "findings": []
     },
     "call-activity-resolves": {
-      "result": "n/a",
+      "result": "pass",
       "findings": []
     },
     "process-diagram-published": {
@@ -161,9 +161,9 @@
     }
   },
   "totals": {
-    "pass": 11,
+    "pass": 12,
     "fail": 4,
-    "n/a": 12,
+    "n/a": 11,
     "unknown": 0
   }
 }

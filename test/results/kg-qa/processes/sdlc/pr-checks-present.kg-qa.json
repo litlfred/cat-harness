@@ -5,7 +5,7 @@
     "id": "Process_PrChecksPresent",
     "path": "processes/sdlc/pr-checks-present.bpmn"
   },
-  "source_hash": "sha256:c74cace9f5f55599900a99d929d8a911684ffd4bf5f2e0a1bf99df17835d7060",
+  "source_hash": "sha256:434798039997d2917d994aa64814b09b8a617ce497633931a5f5f12d7352e6f4",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

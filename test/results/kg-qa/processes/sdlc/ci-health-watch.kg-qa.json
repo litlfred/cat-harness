@@ -5,7 +5,7 @@
     "id": "Process_CiHealth",
     "path": "processes/sdlc/ci-health-watch.bpmn"
   },
-  "source_hash": "sha256:f1936a6801f035091f996958942fb68e006ce79de4f84cc660d0458d43e22ea4",
+  "source_hash": "sha256:7f597d9d554b660bd0300adc4cb283d18c0dd6f0faffc26cea759de5d17ebf59",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

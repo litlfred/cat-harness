@@ -5,7 +5,7 @@
     "id": "Process_Adjudication",
     "path": "processes/sdlc/adjudication.bpmn"
   },
-  "source_hash": "sha256:324b465972eff7d09668c308a5386e9e9d5a6a0fe89cd623980e97d00ffa9c06",
+  "source_hash": "sha256:ad1bb6702ed7887ca6f16e3cba1e412f18b0a24b7eb5cb931e819879ef76d3c2",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

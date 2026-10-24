@@ -5,7 +5,7 @@
     "id": "qc-reviewer",
     "path": "scenarios/roles.json"
   },
-  "source_hash": "sha256:a55d7dc2c4aa2377e869486e635707736801f42d2ca8ac8ff161da564a51edd4",
+  "source_hash": "sha256:cef50d087cae3c56d36a07b8ffc827527f8b4356b84b41794e1f40b930410d24",
   "criteria": {
     "role-skills-resolve": {
       "result": "pass",
@@ -16,8 +16,13 @@
       "findings": []
     },
     "role-binds-a-lane": {
-      "result": "pass",
-      "findings": []
+      "result": "fail",
+      "findings": [
+        {
+          "where": "qc-reviewer",
+          "detail": "role \"qc-reviewer\" is named by no lane's partitionElementRef (or legacy <bootstrap.processes:role ref>) in any diagram — nothing can enter it. Either a lane lost its binding, or the role is dead."
+        }
+      ]
     },
     "mechanical-role-untested": {
       "result": "n/a",
@@ -50,8 +55,8 @@
     }
   },
   "totals": {
-    "pass": 6,
-    "fail": 1,
+    "pass": 5,
+    "fail": 2,
     "n/a": 1,
     "unknown": 0
   }
