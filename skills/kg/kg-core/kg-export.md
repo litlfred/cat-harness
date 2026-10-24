@@ -21,7 +21,7 @@ external tool, or nothing at all. Publishing data does not make the harness
 self-documenting — it makes it *inspectable*, which is the thing that was
 missing.
 
-Per [`skills-and-tools`](../../folio-core/skills-and-tools.md):
+Per [`skills-and-tools`](../../tools/folio-core/skills-and-tools.md):
 
 | | |
 |---|---|

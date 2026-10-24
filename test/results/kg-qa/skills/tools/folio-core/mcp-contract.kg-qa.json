@@ -2,10 +2,10 @@
   "$schema": "kg-qa/v1",
   "subject": {
     "kind": "skill",
-    "id": "mcp-assembly",
-    "path": "skills/folio-core/mcp-assembly.md"
+    "id": "mcp-contract",
+    "path": "skills/tools/folio-core/mcp-contract.md"
   },
-  "source_hash": "f5067e9af840",
+  "source_hash": "1bf57b0e0983",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

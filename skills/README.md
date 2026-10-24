@@ -17,7 +17,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `skills`, holding `skills
 | [`authoring/`](authoring/) | How content is written, reviewed and validated: the content-type adapters, the content lifecycle, editorial and voice review, and domain authoring (math, WHO SMART guidelines). | |
 | [`conduct/`](conduct/) | How an agent behaves in the harness: interaction, confirmation, memory, security, and what it may and may not do on its own. | |
 | [`conventions/`](conventions/) | _nothing declares what this holds_ | |
-| [`folio-core/`](folio-core/) | _nothing declares what this holds_ | |
 | [`framework/`](framework/) | _nothing declares what this holds_ | |
 | [`kg/`](kg/) | How the graph is declared, placed, read, restructured, exported and audited. | |
 | [`library/`](library/) | How sources are acquired, ingested, archived, catalogued and described. | |
@@ -26,6 +25,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `skills`, holding `skills
 | [`requirements/`](requirements/) | _nothing declares what this holds_ | |
 | [`sdlc/`](sdlc/) | How work is planned, claimed, reviewed, merged, released and coordinated: the work plan, issues and PRs, CI and gates, requirements (CRDM, spec-kit), and multi-session coordination. | |
 | [`skill-definitions/`](skill-definitions/) | _nothing declares what this holds_ | |
+| [`tools/`](tools/) | How the harness's Tools are defined, assembled and served: the MCP contract, assembly and projection, how a skill names the Tool it uses, and why a covered Tool is not yet a reachable one. | |
 | [`ui/`](ui/) | How the corpus is rendered, published and presented: the docs site, viewers, boards, themes, and their QC. | |
 | [`voices/`](voices/README.md) | described in its own README | |
 

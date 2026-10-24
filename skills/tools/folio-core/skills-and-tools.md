@@ -22,7 +22,7 @@ makes a layer un-portable.
 Decided 2026-09-18 by the repository owner. Schema for the Tool node:
 `docs/architecture/cat-harness-minimum.md` §"Strawperson"; carrier
 convention (Zod authoritative, JSON-LD and JSON Schema generated) in
-[`directory-conventions`](../kg/kg-core/directory-conventions.md) §"What lives in the
+[`directory-conventions`](../../kg/kg-core/directory-conventions.md) §"What lives in the
 `schemas` graph".
 
 ## The test, in one line
@@ -51,7 +51,7 @@ one exists will stop. What it must not do is spell out the edit.
 needed to not bog down general skills"*). The Tool node names the BPMN in
 `subprocesses` (process ids, checked by `check:tools`), conventionally under
 `processes/tools/`; the skill keeps the portable sentence. See
-[`bpmn-processes`](../process/workflow/bpmn-processes.md).
+[`bpmn-processes`](../../process/workflow/bpmn-processes.md).
 
 ## Every bean skill has (at least) two Tools
 
@@ -74,7 +74,7 @@ equal standing, and the skill must present it that way.
 somebody asks whether another project could do a skill's job — Beads for the
 work plan, say — that survey is research, not a proposal and not a skill edit:
 it files under `<instance>/docs/research-and-analysis/` per
-[`placement`](../kg/kg-core/placement.md), dated, with each project's health measured rather
+[`placement`](../../kg/kg-core/placement.md), dated, with each project's health measured rather
 than recalled. The first one is `research-and-analysis/prior-art.md`
 (2026-09-23), and the choice it raised is a bean (`b91x`), not a paragraph
 here. Only if a candidate is adopted does it become a Tool node, with the
@@ -282,7 +282,7 @@ not fine for the only statement of what to do to be `gh pr create`.
    being replaced.
 2b. **If an input reaches a command line, give it a type that cannot be a
    payload** — and put free prose on stdin. See
-   [`untrusted-input`](../conduct/conduct-core/untrusted-input.md); `check:tools` fails CI on a
+   [`untrusted-input`](../../conduct/conduct-core/untrusted-input.md); `check:tools` fails CI on a
    violation.
 3. **Say a mechanism exists and where to find it** — never inline it. A Tool is
    reached the same way a skill is: resolve the `kg` graph from the instance's
@@ -431,7 +431,7 @@ that is eventually wrong.
 For the end-to-end guide on authoring, implementing, packaging, and registering
 concrete tools across separated repositories, see [`tool-authoring`](tool-authoring.md).
 For runtime conventions, test preloading, and TypeScript configuration, see
-[`bun-use`](../sdlc/sdlc-core/bun-use.md).
+[`bun-use`](../../sdlc/sdlc-core/bun-use.md).
 
 ## Covered is not reachable — see its own skill
 

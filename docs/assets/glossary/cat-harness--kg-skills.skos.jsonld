@@ -1040,7 +1040,7 @@
         }
       ],
       "skos:notation": "covered-is-not-reachable",
-      "dcterms:source": "cat-harness/skills/folio-core/covered-is-not-reachable.md",
+      "dcterms:source": "cat-harness/skills/tools/folio-core/covered-is-not-reachable.md",
       "skos:note": "candidate"
     },
     {
@@ -2560,7 +2560,7 @@
         }
       ],
       "skos:notation": "mcp-assembly",
-      "dcterms:source": "cat-harness/skills/folio-core/mcp-assembly.md",
+      "dcterms:source": "cat-harness/skills/tools/folio-core/mcp-assembly.md",
       "skos:note": "candidate"
     },
     {
@@ -2580,7 +2580,7 @@
         }
       ],
       "skos:notation": "mcp-contract",
-      "dcterms:source": "cat-harness/skills/folio-core/mcp-contract.md",
+      "dcterms:source": "cat-harness/skills/tools/folio-core/mcp-contract.md",
       "skos:note": "candidate"
     },
     {
@@ -2600,7 +2600,7 @@
         }
       ],
       "skos:notation": "mcp-projection",
-      "dcterms:source": "cat-harness/skills/folio-core/mcp-projection.md",
+      "dcterms:source": "cat-harness/skills/tools/folio-core/mcp-projection.md",
       "skos:note": "candidate"
     },
     {
@@ -3765,7 +3765,7 @@
         }
       ],
       "skos:notation": "skills-and-tools",
-      "dcterms:source": "cat-harness/skills/folio-core/skills-and-tools.md",
+      "dcterms:source": "cat-harness/skills/tools/folio-core/skills-and-tools.md",
       "skos:note": "candidate"
     },
     {
@@ -4295,7 +4295,7 @@
         }
       ],
       "skos:notation": "tool-authoring",
-      "dcterms:source": "cat-harness/skills/folio-core/tool-authoring.md",
+      "dcterms:source": "cat-harness/skills/tools/folio-core/tool-authoring.md",
       "skos:note": "candidate"
     },
     {

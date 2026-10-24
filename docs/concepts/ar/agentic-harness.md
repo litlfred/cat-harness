@@ -396,7 +396,7 @@ _تم توليد هذه الصفحة من [`content/docs/agentic-harness/`](http
 | السلوك | المهارة / الوثيقة المصدر | الموقع |
 |---|---|---|
 | مسح بدء الجلسة | `AGENTS.md § At session start` | [`AGENTS.md`](../../../AGENTS.md) |
-| بروتوكول Bean | `todo-manager.md`، و`bean-coordination.md` | [`skills/folio-core/`](../../../skills/folio-core/) |
+| بروتوكول Bean | `todo-manager.md`، و`bean-coordination.md` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 | انضباط التثبيت وطلبات السحب | `AGENTS.md § Commit early, commit often` | [`AGENTS.md`](../../../AGENTS.md) |
 | اكتشاف طلبات الميزات | `crdm-detect.md` | [`skills/sdlc/crdm/crdm-detect.md`](../../../skills/sdlc/crdm/crdm-detect.md) |
 | سير عمل متطلبات CRDM | `crdm-requirements-workflow.md` | [`skills/sdlc/crdm/crdm-requirements-workflow.md`](../../../skills/sdlc/crdm/crdm-requirements-workflow.md) |
@@ -404,9 +404,9 @@ _تم توليد هذه الصفحة من [`content/docs/agentic-harness/`](http
 | تأليف المحتوى (document) | مهارات folio-document-adapter | `skill_list` → `folio-document-adapter` |
 | دورة حياة المحتوى | مهارات content-lifecycle | [`skills/authoring/content-lifecycle/`](../../../skills/authoring/content-lifecycle/) |
 | استيعاب المستندات | `docs-generation.md` | [`skills/ui/ui-core/docs-generation.md`](../../../skills/ui/ui-core/docs-generation.md) |
-| الإرسال والتنسيق | `dispatch-agent.md`، و`coordinate.md` | [`skills/folio-core/`](../../../skills/folio-core/) |
+| الإرسال والتنسيق | `dispatch-agent.md`، و`coordinate.md` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 | أنواع المحتوى والمحولات | `AGENTS.md § Content types` | [`AGENTS.md`](../../../AGENTS.md) |
-| تأليف مخططات BPMN | مهارة `bpmn-authoring` | [`skills/folio-core/`](../../../skills/folio-core/) |
+| تأليف مخططات BPMN | مهارة `bpmn-authoring` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 
 **عندما تختلف إحدى المهارات مع هذه الصفحة، تسود المهارة.** فهذه الصفحة هي
 تجميع وتوحيد، وليست سلطة جديدة بحد ذاتها. وإذا وجدت تعارضًا، فقم بإصلاح هذه الصفحة.
