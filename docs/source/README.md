@@ -18,8 +18,6 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `docs-source`, holding
 | [`concepts-harness/`](concepts-harness/) | _nothing declares what this holds_ | |
 | [`concepts-harnessed-kg-overview/`](concepts-harnessed-kg-overview/) | _nothing declares what this holds_ | |
 | [`concepts-knowledge-graph/`](concepts-knowledge-graph/) | _nothing declares what this holds_ | |
-| [`fhir-fhir-content/`](fhir-fhir-content/) | _nothing declares what this holds_ | |
-| [`fhir-ig-publisher/`](fhir-ig-publisher/) | _nothing declares what this holds_ | |
 | [`guides-beans-and-todos/`](guides-beans-and-todos/) | _nothing declares what this holds_ | |
 | [`guides-document-ingestion/`](guides-document-ingestion/) | _nothing declares what this holds_ | |
 | [`guides-managing-agent-context/`](guides-managing-agent-context/) | _nothing declares what this holds_ | |
