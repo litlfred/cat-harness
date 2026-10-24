@@ -126,16 +126,16 @@ export const TermMappingSchema = z
   .object({
     /** The candidate's id, as its glossary scheme records it. */
     term: z.string().min(1),
+    /**
+     * The instance that owns the scheme. A scheme id such as `kg-tools` is
+     * shared by every instance's extraction, so a scheme is keyed by
+     * (instance, scheme): bean `q3n9`, owner ruling A, 2026-10-24. The
+     * instance is derived from the scheme's source, never from where its
+     * glossary file sits, so a file that moves keeps its key.
+     */
+    instance: z.string().min(1),
     /** The scheme the candidate came from — `kg-skills`, `kg-tools`, … */
     scheme: z.string().min(1),
-    /**
-     * The scheme's glossary file, repository-relative. A scheme id such as
-     * `kg-tools` is shared by every instance's extraction, so `scheme` alone
-     * does not name one scheme (bean `wvzp`, owner ruling B, 2026-10-24: a
-     * clean break now; the proper key is worked out under GOAL 1). Optional
-     * so records written before it still parse.
-     */
-    file: z.string().min(1).optional(),
     target: z.enum(MAPPING_TARGETS),
     exact: z.enum(MATCH_STATES),
     concept: z.enum(MATCH_STATES),
