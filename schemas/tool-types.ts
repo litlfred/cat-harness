@@ -129,6 +129,22 @@ export const ReviewThreadIdSchema = z
   .describe("A review thread id — a GitHub review-thread node id or a GitLab discussion id");
 
 /**
+ * A GitLab username, e.g. `litlfred` or `jane.doe`. Owner, 2026-10-24 (bean
+ * `folio-assistant-4dbr`, "Fill both gaps"), so that requesting review on a
+ * merge request can be a Tool node: GitLab usernames may hold `.` and `_` and
+ * run past GitHub's 39 characters, so `Login` refuses some of them.
+ *
+ * GitLab's own rule: letters, digits, `_`, `-` and `.`; not starting with `-`
+ * or `.`, not ending with `.`, `.git` or `.atom`, at most 255 long. No value
+ * can be read as a flag or carry a shell metacharacter.
+ */
+export const GitLabUsernameSchema = z
+  .string()
+  .regex(/^[A-Za-z0-9_](?:[A-Za-z0-9_.-]{0,253}[A-Za-z0-9_-])?$/, "a GitLab username is letters, digits, '_', '-' and '.', not starting with '-' or '.' and not ending with '.'")
+  .refine((u) => !/\.(git|atom)$/i.test(u), "a GitLab username does not end with .git or .atom")
+  .describe("A GitLab username, e.g. jane.doe");
+
+/**
  * Free prose — a bean body, a comment, a note. **Deliberately unconstrained, and
  * therefore not admissible as a command-line argument.**
  *
@@ -668,6 +684,7 @@ export const TOOL_TYPES = {
   RepoFullName: RepoFullNameSchema,
   ChangeProposalNumber: ChangeProposalNumberSchema,
   ReviewThreadId: ReviewThreadIdSchema,
+  GitLabUsername: GitLabUsernameSchema,
   Markdown: MarkdownSchema,
   Text: TextSchema,
   FilesystemPath: FilesystemPathSchema,
@@ -838,6 +855,7 @@ export const INJECTION_SAFE: ReadonlySet<ToolTypeName> = new Set<ToolTypeName>([
   "RepoFullName",
   "ChangeProposalNumber",
   "ReviewThreadId",
+  "GitLabUsername",
   "Slug",
   "DocId",
   "MountSeed",
