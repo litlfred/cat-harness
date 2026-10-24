@@ -560,17 +560,6 @@
       ]
     },
     {
-      "id": "lean-toolchain",
-      "title": "Lean toolchain",
-      "description": "Elaborates and checks the formal half of a paper folio. Answers only what Lean can answer.",
-      "actorKinds": [
-        "system"
-      ],
-      "skills": [
-        "lean-toolchain-contract"
-      ]
-    },
-    {
       "id": "ig-publisher-service",
       "title": "IG publisher + validator",
       "description": "The JVM services an IG build shells out to. External in behaviour, internal in configuration.",
