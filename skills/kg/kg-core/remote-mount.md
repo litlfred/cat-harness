@@ -104,6 +104,10 @@ index-config:migrate --write` moves the entries across.
 - `directories` replaces its default list. An id the instance does not declare
   is refused, not dropped.
 - `skip` leaves it unmounted, and the lock records it as an answer.
+- `hydrated: true` (here, or on the entry for its harness) mounts each chosen
+  directory as one file: its published `index.hydrated.jsonld` at the pin, a
+  `hydrated` source (bean `mo75`). Read what is there, then choose what to
+  mount as files. No declaration is laid down, and `needs` is not followed.
 
 ## Why the default path is the home path
 

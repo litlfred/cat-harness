@@ -214,3 +214,38 @@ describe("a remote source tool option and npm package source (skills npm-kg-dist
     });
   });
 });
+
+describe("the hydrated member (bean `mo75` G2)", () => {
+  const PIN = "0123456789abcdef0123456789abcdef01234567";
+  const HYD_ENTRY = { id: "ch-tools", path: "cat-harness/tools/" };
+  const HYD = { kind: "hydrated", repository: "litlfred/cat-harness", ref: PIN, harness: "cat-harness", subgraph: "tools" } as const;
+
+  test("resolves with the mounting Tool defaulting to remote-mount, and is off checkout", () => {
+    const r = resolveSubgraphSource({ ...HYD_ENTRY, source: HYD });
+    expect(r).toEqual({ kind: "hydrated", id: "ch-tools", path: "cat-harness/tools/", repository: "litlfred/cat-harness", ref: PIN, harness: "cat-harness", subgraph: "tools", tool: "remote-mount", declaredIn: "declaration" });
+    expect(contentIsOffCheckout({ source: HYD })).toBe(true);
+  });
+
+  test("an instance config can turn a directory into a hydrated mount, matched on id", () => {
+    expect(resolveSubgraphSource({ id: "ch-tools", path: "x/" }, { "ch-tools": HYD }).declaredIn).toBe("config");
+  });
+
+  test("a pin, never a branch; never the root; never `..`", () => {
+    expect(SubgraphSourceSchema.safeParse({ ...HYD, ref: "main" }).success).toBe(false);
+    expect(SubgraphSourceSchema.safeParse({ ...HYD, subgraph: "" }).success).toBe(false);
+    expect(SubgraphSourceSchema.safeParse({ ...HYD, subgraph: "skills/../x" }).success).toBe(false);
+    expect(SubgraphSourceSchema.safeParse({ ...HYD, subgraph: "skills/sdlc" }).success).toBe(true);
+  });
+
+  test("a qa subgraph is never somebody else's metadata", () => {
+    expect(() => resolveSubgraphSource({ id: "qa", path: "qa/", graphTypologies: ["qa"], source: HYD })).toThrow(/qa/);
+  });
+
+  test("its JSON-LD names the tree at the pin", () => {
+    expect(contentSourceJsonLd(resolveSubgraphSource({ ...HYD_ENTRY, source: HYD }))).toEqual({
+      "@id": `https://github.com/litlfred/cat-harness/tree/${PIN}`,
+      kind: "hydrated",
+      declaredIn: "declaration",
+    });
+  });
+});
