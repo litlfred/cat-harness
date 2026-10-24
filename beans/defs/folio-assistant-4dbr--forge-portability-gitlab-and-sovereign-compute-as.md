@@ -1,11 +1,11 @@
 ---
 # folio-assistant-4dbr
 title: 'Forge portability: GitLab and sovereign-compute as additional Tool nodes, not a sixth repo'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-18T18:46:11Z
-updated_at: 2026-09-29T20:52:41Z
+updated_at: 2026-10-24T09:20:00Z
 parent: folio-assistant-5a3l
 ---
 
@@ -73,3 +73,10 @@ makes in its architecture documentation and has not yet tested.
 
 
 _2026-09-29_ — **Re-parented `vke6` → `5a3l`** by subject, per todo-manager §"WHICH parent" (owner choice '1 2 3' on the LSI epic-filing proposal, bean ansc). Forge portability (GitLab, sovereign compute) is a deployment topology; the bean itself rejects the sixth-repo reading that put it under SPLIT.
+
+_2026-10-24T09:20:00Z_ — **Completed** by the Claude drain thread (session https://claude.ai/code/session_01CLVaA6b8XQ5xhvqNZCqc4R). The owner chose "A. Fill both gaps". Both GitLab gaps are now filled with API-backed scripts, so step 3's portability claim is whole:
+- litlfred/cat-harness#491, which adds the argv-safe GitLab username type.
+- litlfred/cat-harness-tools#677 (91ad794), which adds `gitlab:mr-files` (changed files from the MR changes API) and `gitlab:request-review` (it adds a reviewer and keeps the existing ones). The owner chose "B. Merge both now" despite the shared corpus-test timeouts, whose cause the CI speed thread owns.
+- litlfred/cat-harness#499 (2e668b2), which adds the Tool nodes gitlab-mr-files and gitlab-mr-request-review and their selection records.
+
+Sovereign compute, the other half of this bean's title, continues as deployment descriptions: bean `o1by` (proposal litlfred/cat-harness#514) with `4y2i` and `61tg` under it.
