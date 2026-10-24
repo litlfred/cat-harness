@@ -39,6 +39,7 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `proposals`, holding `
 | [`lsi-who-iris-2026-09-29.md`](lsi-who-iris-2026-09-29.md) | LSI and correspondence analysis on who-iris |  |
 | [`merge-gate-2026-10-02.md`](merge-gate-2026-10-02.md) | Merge gate: adversarial review and compile gates |  |
 | [`merge-gate-reading-list.md`](merge-gate-reading-list.md) | Merge gate reading list |  |
+| [`model-swarm-and-benchmark-2026-10-24.md`](model-swarm-and-benchmark-2026-10-24.md) | Model swarm and harness benchmark — requirements draft (amom, oz9e) |  |
 | [`narrative-asserts-code.md`](narrative-asserts-code.md) | Does the prose say what the artefact does? |  |
 | [`odrl-prov-actor-model.md`](odrl-prov-actor-model.md) | [Actors](https://litlfred.github.io/bootstrap/schemas/#actor), ODRL and PROV-O: one permission language, one execution log |  |
 | [`placement-audit-2026-10-01.json`](placement-audit-2026-10-01.json) | data |  |
