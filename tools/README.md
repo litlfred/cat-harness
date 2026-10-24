@@ -42,8 +42,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`document-kinds-viewer/`](document-kinds-viewer/) | _nothing declares what this holds_ | |
 | [`external-schemas-viewer/`](external-schemas-viewer/) | _nothing declares what this holds_ | |
 | [`feature-staging/`](feature-staging/) | _nothing declares what this holds_ | |
-| [`folio-block-qa-summary/`](folio-block-qa-summary/) | _nothing declares what this holds_ | |
-| [`folio-block-screenshots/`](folio-block-screenshots/) | _nothing declares what this holds_ | |
 | [`folio-init/`](folio-init/) | _nothing declares what this holds_ | |
 | [`folio-viewer/`](folio-viewer/) | _nothing declares what this holds_ | |
 | [`gates/`](gates/) | _nothing declares what this holds_ | |
