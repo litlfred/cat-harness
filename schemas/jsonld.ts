@@ -135,6 +135,7 @@ export const CONTENT_CONTEXT_URL =
  * The `v1` is load-bearing: its terms are `@protected`, so a change that
  * rebinds one is a `v2` beside it, never an edit under a cached URL.
  */
+// declared-path-literal: this constant DEFINES the published, dereferenceable IRI path of the context; it is fixed by that URL, not by where the `ns/` declaration points.
 export const INSTANCE_CONTEXT_PATH = "ns/context/v1.jsonld";
 
 /** An instance's context URL from its declared `iriBase` (with or without the trailing `/`). */

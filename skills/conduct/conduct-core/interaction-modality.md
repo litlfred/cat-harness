@@ -166,6 +166,7 @@ It prints every identity the session can see, each bare and as
 | `github` | the auth Tool's own resolver: a token, or `GITHUB_ACTOR` in Actions | GitHub |
 | `gitlab` | `GITLAB_USER_LOGIN`, only inside GitLab CI | GitLab |
 | `claude` | the agent host's signed-in account | the agent host |
+| any | `CAT_HARNESS_PERSON`, `provider:handle[,…]`, for this session only | nobody: the person says so |
 | any | the user-level store's `identities` | nobody: the person says so |
 | `git` | `git config user.email`, then `user.name` | nobody: self-asserted |
 
@@ -181,6 +182,24 @@ enough to AUTHORIZE them.** Permissions take only what GitHub vouched for
 nor a guess. The session-start sweep says it could not determine who is
 typing, and applies the strictest profile on record until told otherwise, so
 an account switch never drops an accommodation.
+
+**Which agent host runs the session is reported too**
+(`cat-harness-tools/src/core/agent-host.ts`), because most hosts tell a
+command nothing about the person. Of Claude Code, Gemini CLI, Codex, Cursor,
+Antigravity and the Copilot CLI and coding agent, only Claude Code passes the
+account (`CLAUDE_CODE_USER_EMAIL`, in its cloud sessions). On the others the
+resolver adds a note saying the host passes no account, and the person is
+found from a forge token, `CAT_HARNESS_PERSON`, the user-level store or the git
+author. The markers are the ones two independent detectors agree on; a new
+host is one row in that file's table.
+
+**Several people.** On a shared machine each person has their own home
+directory, so their own user-level store. In a shared session or under a
+shared login, `CAT_HARNESS_PERSON` names who is typing now. A person with
+several accounts on one provider lists each one in the store; every one is a
+match key. When the keys match more than one person on record, the sweep says
+so and the session applies the **strictest** of their profiles, never the
+first one listed.
 
 **A preference that must not be committed** lives in the user-level store,
 `~/.config/cat-harness/identity.json` (or `$XDG_CONFIG_HOME/…`, or the path

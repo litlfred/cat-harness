@@ -67,6 +67,31 @@ those are the agent's own running notes, and a whole-file regenerator deletes
 them. A file with no markers is reported as *not opted in*, left alone, and
 never counted as up to date.
 
+## Vendor target mapping — one memory source, generated per target
+
+Every declared `memory` directory is the single source of truth; the assembler
+projects it into each active vendor target, and `--check` gates both drift and
+per-target budgets:
+
+| target | path | scope | budget |
+|---|---|---|---|
+| Claude Code per-agent | `.claude/agent-memory/<agent>/MEMORY.md` (+ `detail/<slug>.md`) | nodes referencing `<agent>` or agent-less | 200 lines |
+| Antigravity per-agent skill | `.agents/skills/<agent>-memory/SKILL.md` (+ `detail/<slug>.md`) | nodes referencing `<agent>` or agent-less | 24,000 bytes |
+| Antigravity workspace rule | `.agents/rules/agent-memory.md` | all agents, grouped under `## <agent>` | 24,000 bytes |
+| Repo-wide `AGENTS.md` | `AGENTS.md` (`<!-- cat-harness:agent-memory:begin/end -->`) | live **agent-less** nodes (`tags.references` has no `kind: "agent"`) | 32,768 bytes (32 KiB) |
+
+**Agent-less nodes feed the repo-wide `AGENTS.md` section** when `AGENTS.md`
+opts in with memory markers (`missing` and `no-markers` remain distinct third
+states). Vendor-specific per-agent targets for Gemini CLI, OpenAI Codex CLI,
+Cursor and GitHub Copilot remain parked (`4682`, `5zs1`, `uvfs`, `xxh4`); those
+tools read `AGENTS.md` natively.
+
+**Byte-budgeted targets drop whole nodes lowest-priority first, never mid-entry.**
+When a target exceeds its byte budget, the assembler drops `baseline` before
+`trap` and `trap` before `stable` (oldest `createdAt` first), names every
+dropped node per target, and fails `--check` until entries are split into
+`detail/` or archived.
+
 ## The budget truncates silently, so it is checked two ways
 
 **Keep the injected file under the line budget.** The harness drops the

@@ -607,6 +607,14 @@
       ]
     },
     {
+      "id": "cat-harness-ns",
+      "path": "ns/",
+      "description": "The JSON-LD @contexts this instance publishes, one per namespace, served at `<iriBase>ns/<name>/v1.jsonld`: `content/` (the shared content context, written by `scripts/gen-jsonld-context.ts`) and `subgraph/` (the subgraph context the docs JSON-LD names). Both are committed. `context/v1.jsonld`, the instance context, is NOT committed and stays listed under `builtAtPublish`, because it is computed over the checkout's other instances. Declared 2026-10-24 under bean `0uu2` (owner, card \"A. Declare and keep\"): before this only `ns/context/v1.jsonld` was named, so the two committed contexts sat in a present-but-undeclared directory that no consumer scanning the declaration could see.",
+      "graphTypologies": [
+        "schemas"
+      ]
+    },
+    {
       "id": "uml",
       "path": "uml/",
       "description": "UML class diagrams of every named sub-graph a harness declares — uml/overview/<instance>.puml|.mmd and uml/overview/<instance>/<sub-graph>.puml|.mmd — written from one model by scripts/gen-uml-overview.ts. The groupings are the declaration entries themselves and the classes are read from each graph typology's registered validator, so nothing here is authored. The rendered pages are docs/uml/overview/, which show the PlantUML rendering (docs/assets/img/uml/overview/, stamped with its source's hash) with the Mermaid beneath it, and link both sources. Owner, 2026-09-23.",
