@@ -143,6 +143,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`stakeholder-map/`](stakeholder-map/) | _nothing declares what this holds_ | |
 | [`state-viewer/`](state-viewer/) | _nothing declares what this holds_ | |
 | [`sub-kg-verify-clone/`](sub-kg-verify-clone/) | _nothing declares what this holds_ | |
+| [`subgraph-index-package/`](subgraph-index-package/) | _nothing declares what this holds_ | |
 | [`subgraph-readmes/`](subgraph-readmes/) | _nothing declares what this holds_ | |
 | [`subgraph-resolve/`](subgraph-resolve/) | _nothing declares what this holds_ | |
 | [`theme-viewer/`](theme-viewer/) | _nothing declares what this holds_ | |
