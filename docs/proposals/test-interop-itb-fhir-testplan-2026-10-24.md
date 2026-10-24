@@ -7,7 +7,13 @@ parent: Proposals
 
 **Draft, 2026-10-24. Not built.**
 
-**Owner decisions, 2026-10-24:** D1 = S2 (a `system/v1` record). D3 = cat-harness-tools (the ITB export and TAR import live in the tools layer). D4 = I1 (plans reach the ITB through OpenTestBed Gherkin). D5 = P3 first (smart-trust-tools tries the fields locally; the schemas move into cat-harness once proven). D2 is open; D2 gained options B4 (a bindings section in the plan), B5 (on the `system/v1` record), B6 (only in the run) and B7 (tags in the test code, written onto the record by a Tool).
+**Owner decisions, 2026-10-24 (all five answered):**
+
+- **D1 = S2.** The system under test is a `system/v1` record, and runs point at it.
+- **D2 = B7 → B5**, an option added after the first draft. Each test is tagged in its own code with the assertions it verifies (for example `@verifies("req:stt-ver-001#statement/test")`). A Tool reads the tags and writes the assertion-to-test map onto each `system/v1` record, and CI fails when the map is stale. There is no separate `test-binding/v1` node, and the plan never names an implementation. Where section 4 below says `test-binding/v1`, read "the bindings on the `system/v1` record".
+- **D3: cat-harness-tools.** The ITB export and the TAR import live in the tools layer.
+- **D4 = I1.** Plans reach the ITB through OpenTestBed Gherkin.
+- **D5 = P3 first.** smart-trust-tools tries the fields locally first. The schemas move into cat-harness once they are proven there.
 
 It answers four owner questions of
 2026-10-24:
