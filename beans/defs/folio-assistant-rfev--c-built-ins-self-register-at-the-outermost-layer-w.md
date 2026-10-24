@@ -1,11 +1,12 @@
 ---
 # folio-assistant-rfev
+$schema: bean/1.0.0
 title: 'C: built-ins self-register at the outermost layer — wire the ContributionRegistry for the first time'
-status: todo
+status: completed
 type: task
 priority: normal
 created_at: 2026-09-21T13:21:31Z
-updated_at: 2026-10-16T10:30:00Z
+updated_at: 2026-10-24T07:46:00Z
 parent: folio-assistant-vke6
 ---
 
@@ -90,11 +91,11 @@ Falsified: removing the root pin fails exactly the one test that asserts it.
 
 ## Done when
 
-- [ ] No core module names a `sci` or `base` path, in an import or a
-      declaration
-- [ ] Every contributed checker is freshness-hashed like a built-in one, pinned
+- [x] No core module names a `sci` or `base` path, in an import or a
+      declaration (`litlfred/smart-base#137` `c2b47fd5` and `litlfred/folio-assistant-core#187` `25b1e26d`: moved `glossary/generated/smart-base/` to `smart-base/glossary/generated/smart-base/` and updated `folio-assistant-core/scripts/glossary-page.ts` to resolve each instance's own `glossary/generated/` directory)
+- [x] Every contributed checker is freshness-hashed like a built-in one, pinned
       by a test that fails if it is not
-- [ ] `bun run cat check:partition` still 0, and the five runtime edges `zlmp`
+- [x] `bun run cat check:partition` still 0, and the five runtime edges `zlmp`
       measured are gone rather than relocated
 
 ## Where the next step actually stands — checked, not assumed
@@ -272,3 +273,23 @@ simpler reason: there is **no `smart-base` instance** in this checkout at all.
 them. Creating one is a bigger decision than this bean's.
 
 _2026-10-16T10:30:00Z_ — Back to `todo`: nobody is holding this; its last note says it is parked (waiting on a trigger, a ruling or a deferred row), and an untouched `in-progress` claim misleads sibling sessions (owner choice, https://claude.ai/code/session_01NUrhvvMEwU5MmPW4L2w9jP).
+
+## 2026-10-20 — re-measured on the composed index (drain coordinator, session https://claude.ai/code/session_01BiusQ9uAZiHP6TUhfwZ2h6; lane B2 session_01Kymnx79TxWvxVoLzcAjBRr read it on main)
+
+The title's "for the first time" is stale: `qa-checker-discovery` takes a ContributionRegistry and goes through `resolveCriterionSource`; sci contributes the cost checkers, the DAK checkers are a contribution (bean 1335), 8 criteria carry `checker_contributed: true`; `src/server.ts` SERVER_ROUTES is a declared table with a `layer:` per route.
+
+- Box 3 holds: `bun run cat check:partition` reads 0 wrong-direction edges and 0 unassigned; `kg:detangle:direction` reads 0 across the scanned instances.
+- Box 2 holds: `qa-criterion-source-file.test.ts` "the cascade REFUSES a checker_contributed criterion" pins it (6 tests, 0 fail, with the sci-checkout variant).
+- Box 1 holds for imports and the declaration (core's `folio-assistant-core.json` names sci/base only in prose). One residue to rule on: `folio-assistant-core/glossary/generated/smart-base/kg-tools.glossary.json` is a generated glossary of SMART Base's tools, sources `smart-base/tools/index.ts#…`, kept in core. Either it moves to smart-base (it is base's vocabulary) or it is accepted as generated data rather than a declaration. Also still open per lane B2: `render-latex.ts` in cat-harness-tools/pipeline, and script-sweep's hardcoded SCRIPT_CHECKERS (guarded).
+
+## OWNER, 2026-10-20 (session https://claude.ai/code/session_01BiusQ9uAZiHP6TUhfwZ2h6)
+
+On the residue (core holds `glossary/generated/smart-base/`, a generated glossary of SMART Base's tools): **"Move to smart-base"** — smart-base generates its own tool glossary and core stops holding it. That is box 1's last item.
+
+## 2026-10-23 — moved `glossary/generated/smart-base/` to `smart-base` (`litlfred/smart-base#137`, `litlfred/folio-assistant-core#187`)
+- `litlfred/smart-base#137` (`c2b47fd5`): declared `glossary/` (`id: "glossary"`, `graphTypologies: ["glossary"]`) in `smart-base.json` and moved `glossary/generated/smart-base/{kg-bpmn-activities,kg-schema-fields,kg-skills,kg-tools}.glossary.json` into `smart-base/glossary/generated/smart-base/`.
+- `litlfred/folio-assistant-core#187` (`25b1e26d`): removed `glossary/generated/smart-base/` from `folio-assistant-core` and updated `scripts/glossary-page.ts` (`generatedDirFor`, `allGeneratedDirs`) to write and prune each instance's extracted glossary under its own `glossary/generated/` directory when declared, leaving 0 references to `smart-base` or `folio-assistant-sci` in `folio-assistant-core`.
+
+## 2026-10-24 — completed (drain thread, session https://claude.ai/code/session_01X14WfP6kHutkCyB8dpmj4e)
+
+Both PRs merged green on the owner's tap: `litlfred/smart-base#137` (merge `5229b261`) and `litlfred/folio-assistant-core#187` (merge `f51954e1`). All three boxes ticked. Left for other beans, not this one: `render-latex.ts` in cat-harness-tools/pipeline waits on the wholesale sci move (`saqd`), and `script-sweep.ts`'s `SCRIPT_CHECKERS` table is guarded by the cascade throw.
