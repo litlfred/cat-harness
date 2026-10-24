@@ -2699,26 +2699,6 @@
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/milnor-exposition-standard",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "milnor-exposition-standard"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "The eight hallmarks of mathematical exposition, scored 0-2 with sixteen the only passing total, derived from John Milnor's \"Link Groups\" (1954). The author-facing half of the `expo-milnor-clarity` strict gate; three of its findings contradict the general house voice and say so."
-        }
-      ],
-      "skos:notation": "milnor-exposition-standard",
-      "dcterms:source": "cat-harness/skills/authoring/authoring-core/milnor-exposition-standard.md",
-      "skos:note": "candidate"
-    },
-    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/named-query-execution",
       "@type": "skos:Concept",
       "skos:inScheme": {

@@ -38,7 +38,6 @@
         "decision-audit",
         "evidence-appraisal",
         "kg-affordances",
-        "milnor-exposition-standard",
         "staging-review",
         "todo-manager",
         "voice-authoring-guidance"
@@ -57,7 +56,6 @@
       ],
       "skills": [
         "content-validate",
-        "milnor-exposition-standard",
         "voice-authoring-guidance"
       ],
       "persona": "Author plus the authority to accept. Sees QA findings and decides which are real. Under time pressure and accountable for what lands, so they need the evidence before the argument."
@@ -75,7 +73,6 @@
         "content-feedback",
         "content-review",
         "decision-audit",
-        "milnor-exposition-standard",
         "narrative-asserts-code",
         "rendered-impact",
         "staging-review",
@@ -112,7 +109,6 @@
         "adjudication",
         "content-feedback",
         "content-review",
-        "milnor-exposition-standard",
         "translation-manager",
         "uses-editorial-review",
         "voice-editorial-review",
