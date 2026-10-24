@@ -27,7 +27,8 @@ opts in through its config, inline in its `index.config.json` entry:
 Without that, the axis's criteria are **absent from the registry** — not
 registered-and-skipped, absent. There is nothing to run and nothing to report.
 
-`q-usage-watcher` states its own fencing, and it is the model to copy:
+A folio-optional watcher in the science layer states its own fencing, and it
+is the model to copy:
 
 > "**Folio-optional axis.** The `q-usage` criteria encode a substrate
 > deformation parameter `q` and its regimes — **one folio's mathematics, not a
@@ -187,28 +188,32 @@ repository's exception list inlined into a tool whose algorithm is generic.
 
 ## The test for whether a rule generalizes
 
+The examples below are drawn from the science layer's audits. They are
+described here, not named: that layer names this skill from its side, and
+lists which of its skills each example comes from (bean `syiq`).
+
 Three questions, in order, and the first one that answers settles it:
 
-1. **Does the rationale survive translation?** `proof-gap-audit` §J's reasons
+1. **Does the rationale survive translation?** A proof-gap audit's reasons
    for extracting a shared sub-derivation — *inconsistent edits later, inflated
    graph energy, hiding that the shared thing is worth naming* — are the
    duplicate-module argument word for word. It generalizes.
 2. **Is the domain in the mechanism, or only in the vocabulary?**
-   `proposition-consolidation-audit` H3 is set-overlap arithmetic with a kind
-   list bolted on; strip the list and the rule stands. H2 normalises boxed
+   A proposition-consolidation audit's overlap rule is set-overlap arithmetic with a kind
+   list bolted on; strip the list and the rule stands. Its near-duplicate rule normalises boxed
    LaTeX with bound-variable renaming and Levenshtein distance — the *shape*
    generalizes, the detection does not.
 3. **Would the platform need the domain installed to run it?**
-   `lean-completeness-audit` needs Lake, imports, sorries and axioms. No.
+   A Lean completeness audit needs Lake, imports, sorries and axioms. No.
 
 A rule that fails all three is not a failure to be fixed. It is a folio's rule,
 correctly located, and the honest move is to fence it and say so — which is
-what `q-usage-watcher` does in its first paragraph.
+what that watcher does in its first paragraph.
 
 ## Record the residue, do not quietly drop it
 
 When a rule is lifted, the part left behind is a finding, not waste.
-`critical-path-analysis` splits cleanly: its union-of-two-relations model
+A critical-path analysis splits cleanly: its union-of-two-relations model
 generalizes and now lives in `edge-kinds-and-blast-radius.md`; its
 GENERAL / SPECIALIZED-STATEMENT / SPECIALIZED-PROOF / MIXED taxonomy does not,
 and stays where it is.

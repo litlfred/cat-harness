@@ -463,7 +463,7 @@ describe("the actor kind is three-way: human, agentic, mechanical", () => {
     // function from issue text to a classification, nothing to decide.
     expect(by("system")).toEqual([
       "attestation-service", "board-renderer", "ci-health-watcher", "ci-pipeline",
-      "crdm-detect-signals", "ig-publisher-service", "lean-mcp", "local-sweep",
+      "crdm-detect-signals", "ig-publisher-service", "local-sweep",
     ]);
   });
 

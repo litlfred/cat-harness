@@ -6,7 +6,7 @@ movedOn: 2026-09-23
 issue: 200
 bean: folio-assistant-m8gz
 summary: >-
-  Every process that touches the work plan reaches `resolve` and stops. Archiving is drawn in no diagram, named in no skill, and unsupported by the engine — and `Process_BeanLifecycle`, the one diagram that models bean state at all, is called by NOTHING. That is mechanically why 219 completed beans sat inline until 2026-09-20.
+  Every process that touches the work plan reached `resolve` and stopped, and `Process_BeanLifecycle` was called by nothing — mechanically why 219 completed beans sat inline until 2026-09-20. Settled 2026-10-24: the lifecycle is split into Process_BeanOpen and Process_BeanClose, which every bean-touching process calls; claim, resolve and archive live only there.
 ---
 
 # Bean archiving in BPMN — the terminal state nothing draws
@@ -23,6 +23,30 @@ and the more interesting finding is the second one below.
 
 1. TOC
 {:toc}
+
+## Outcome — where the ops live now (2026-10-24)
+
+All four questions below are settled. **Archiving is a per-activity op**
+(owner, 2026-10-20) — the sweep stays the floor. **`Process_BeanLifecycle` is
+called, and consolidated** (owner, 2026-10-24, option A): its two halves are
+now called processes, and every process that works on a bean calls both.
+
+| | process | file | ops |
+|---|---|---|---|
+| OPEN | `Process_BeanOpen` | `processes/sdlc/bean-open.bpmn` | `claim` — after check, create, whose bean; or leave it alone |
+| CLOSE | `Process_BeanClose` | `processes/sdlc/bean-close.bpmn` | `resolve`, then `archive` on one activity shared by the done and scrapped outcomes; a blocker is noted and handed back |
+
+`Process_BeanLifecycle` is OPEN → work → CLOSE. Each bean-touching process
+calls OPEN where the bean becomes its own (then a `claimed` / `not yours`
+gateway, since the engine does not hand a called process's end event back)
+and CLOSE straight before each end it reaches from there. The CRDM phases run
+on `crdm-requirements.bpmn`'s bean, which opens and closes it. Measured on
+main before the change: 19 `claim` ops in 18 diagrams, 13 `resolve` in 11,
+3 `archive` in 3; after it, one of each, all inside OPEN and CLOSE.
+`check:bean-calls` (run within `check:workflow-refs`) keeps it that way, and
+`todo-manager` § "Where the bean ops live" says how to call them.
+
+The sections below are the 2026-09-20 analysis, kept as the record of why.
 
 ## What the engine supports
 

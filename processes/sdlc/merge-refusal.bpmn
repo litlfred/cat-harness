@@ -26,6 +26,9 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
         <bpmn:documentation>Coordinator and verifier of the hand-back: records, hands back, takes back when the fail condition fires, and closes. Never edits the bean's instructions after the executor claims it; later facts go to the PR.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_Refused</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Record</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_BeanOpen</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GW_BeanYours</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_BeanNotYours</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Comment</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Owner</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_HandBack</bpmn:flowNodeRef>
@@ -35,8 +38,10 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
         <bpmn:flowNodeRef>GW_Fate</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Close</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Closed</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_BeanClose_2</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Scrap</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Scrapped</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_BeanClose_3</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Owner" name="Owning session" partitionElementRef="sibling-session">
         <bpmn:documentation>The session named in the PR's `Claude-Session:` trailer. The executor of the hand-back: claims the refusal bean, fixes the PR, reports on the PR in the bean's one-line formats.</bpmn:documentation>
@@ -48,6 +53,7 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
         <bpmn:flowNodeRef>GW_Authored</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_AskOwner</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_AwaitOwner</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_BeanClose</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="Start_Refused" name="Member dropped&#10;from a train">
@@ -59,9 +65,9 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
         <bootstrap.processes:skill ref="merge-conflict-patterns"/>
         <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
-      <bpmn:incoming>r1</bpmn:incoming>
       <bpmn:incoming>r17</bpmn:incoming>
       <bpmn:outgoing>r2</bpmn:outgoing>
+      <bpmn:incoming>SF_Bean_1</bpmn:incoming>
     </bpmn:task>
     <bpmn:task id="Task_Comment" name="Comment on the PR&#10;once, linking the bean">
       <bpmn:documentation>One comment per refused PR, edited in place on every later event.</bpmn:documentation>
@@ -123,7 +129,7 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
       <bpmn:outgoing>r14</bpmn:outgoing>
     </bpmn:task>
     <bpmn:endEvent id="End_AwaitOwner" name="Waiting on the&#10;owner's ruling">
-      <bpmn:incoming>r14</bpmn:incoming>
+      <bpmn:incoming>SF_Bean_4</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:task id="Task_Retrain" name="Re-enter a train&#10;on the new head">
       <bpmn:documentation>The next train is the verifier: the executor's own log is evidence, not the close.</bpmn:documentation>
@@ -138,16 +144,15 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
       <bpmn:outgoing>r17</bpmn:outgoing>
       <bpmn:outgoing>r18</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Task_Close" name="Close the bean,&#10;merge commit&#10;as evidence">
+    <bpmn:task id="Task_Close" name="Record the merge commit as evidence">
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="bean-coordination"/>
-        <cat-harness.processes:bean op="resolve"/>
       </bpmn:extensionElements>
       <bpmn:incoming>r16</bpmn:incoming>
       <bpmn:outgoing>r19</bpmn:outgoing>
     </bpmn:task>
     <bpmn:endEvent id="End_Closed" name="Landed">
-      <bpmn:incoming>r19</bpmn:incoming>
+      <bpmn:incoming>SF_Bean_5</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:task id="Task_Scrap" name="Scrap the bean,&#10;with the reason">
       <bpmn:documentation>The agent's own `beans update --status scrapped`; never deleted.</bpmn:documentation>
@@ -156,9 +161,43 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
       <bpmn:outgoing>r20</bpmn:outgoing>
     </bpmn:task>
     <bpmn:endEvent id="End_Scrapped" name="PR closed&#10;unmerged">
-      <bpmn:incoming>r20</bpmn:incoming>
+      <bpmn:incoming>SF_Bean_6</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="r1" sourceRef="Start_Refused" targetRef="Task_Record"/>
+    <bpmn:callActivity id="Call_BeanOpen" name="Open the bean&#10;[bean-open]" calledElement="Process_BeanOpen">
+      <bpmn:documentation>Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="bean-coordination"/></bpmn:extensionElements>
+      <bpmn:incoming>r1</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_2</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:exclusiveGateway id="GW_BeanYours" name="Bean claimed?">
+      <bpmn:documentation>Reads which end Process_BeanOpen reached. `claimed`: the bean is in progress and this process works it. `not yours`: a sibling session or a human holds it, nothing was written to it, and this process stops here rather than work a bean it does not own (bean-coordination).</bpmn:documentation>
+      <bpmn:outgoing>SF_Bean_1</bpmn:outgoing>
+      <bpmn:incoming>SF_Bean_2</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_3</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="End_BeanNotYours" name="Not yours —&#10;left alone">
+      <bpmn:documentation>Someone else holds the bean; this run stops without touching it.</bpmn:documentation>
+      <bpmn:incoming>SF_Bean_3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:callActivity id="Call_BeanClose" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+      <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
+      <bpmn:incoming>r14</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_4</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="Call_BeanClose_2" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+      <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
+      <bpmn:incoming>r19</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_5</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="Call_BeanClose_3" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+      <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
+      <bpmn:incoming>r20</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_6</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:sequenceFlow id="r1" sourceRef="Start_Refused" targetRef="Call_BeanOpen"/>
     <bpmn:sequenceFlow id="r2" sourceRef="Task_Record" targetRef="Task_Comment"/>
     <bpmn:sequenceFlow id="r3" sourceRef="Task_Comment" targetRef="GW_Owner"/>
     <bpmn:sequenceFlow id="r4" name="yes" sourceRef="GW_Owner" targetRef="Task_HandBack"/>
@@ -171,66 +210,84 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
     <bpmn:sequenceFlow id="r11" sourceRef="Task_AgentFix" targetRef="GW_Authored"/>
     <bpmn:sequenceFlow id="r12" name="yes" sourceRef="GW_Authored" targetRef="Task_AskOwner"/>
     <bpmn:sequenceFlow id="r13" name="no" sourceRef="GW_Authored" targetRef="Task_Retrain"/>
-    <bpmn:sequenceFlow id="r14" sourceRef="Task_AskOwner" targetRef="End_AwaitOwner"/>
+    <bpmn:sequenceFlow id="r14" sourceRef="Task_AskOwner" targetRef="Call_BeanClose"/>
     <bpmn:sequenceFlow id="r15" sourceRef="Task_Retrain" targetRef="GW_Fate"/>
     <bpmn:sequenceFlow id="r16" name="landed" sourceRef="GW_Fate" targetRef="Task_Close"/>
     <bpmn:sequenceFlow id="r17" name="refused again" sourceRef="GW_Fate" targetRef="Task_Record"/>
     <bpmn:sequenceFlow id="r18" name="closed unmerged" sourceRef="GW_Fate" targetRef="Task_Scrap"/>
-    <bpmn:sequenceFlow id="r19" sourceRef="Task_Close" targetRef="End_Closed"/>
-    <bpmn:sequenceFlow id="r20" sourceRef="Task_Scrap" targetRef="End_Scrapped"/>
+    <bpmn:sequenceFlow id="r19" sourceRef="Task_Close" targetRef="Call_BeanClose_2"/>
+    <bpmn:sequenceFlow id="r20" sourceRef="Task_Scrap" targetRef="Call_BeanClose_3"/>
+    <bpmn:sequenceFlow id="SF_Bean_1" name="claimed" sourceRef="GW_BeanYours" targetRef="Task_Record"/>
+    <bpmn:sequenceFlow id="SF_Bean_2" sourceRef="Call_BeanOpen" targetRef="GW_BeanYours"/>
+    <bpmn:sequenceFlow id="SF_Bean_3" name="not yours" sourceRef="GW_BeanYours" targetRef="End_BeanNotYours"/>
+    <bpmn:sequenceFlow id="SF_Bean_4" sourceRef="Call_BeanClose" targetRef="End_AwaitOwner"/>
+    <bpmn:sequenceFlow id="SF_Bean_5" sourceRef="Call_BeanClose_2" targetRef="End_Closed"/>
+    <bpmn:sequenceFlow id="SF_Bean_6" sourceRef="Call_BeanClose_3" targetRef="End_Scrapped"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_MergeRefusal">
     <bpmndi:BPMNPlane id="Plane_Process_MergeRefusal" bpmnElement="Collaboration_Process_MergeRefusal">
       <bpmndi:BPMNShape id="Shape_Participant" bpmnElement="Participant_Process_MergeRefusal" isHorizontal="true">
-        <dc:Bounds x="0" y="0" width="1680" height="600"/>
+        <dc:Bounds x="0" y="0" width="2280" height="600"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Steward" bpmnElement="Lane_Steward" isHorizontal="true">
-        <dc:Bounds x="30" y="0" width="1650" height="260"/>
+        <dc:Bounds x="30" y="0" width="2250" height="260"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Owner" bpmnElement="Lane_Owner" isHorizontal="true">
-        <dc:Bounds x="30" y="260" width="1650" height="160"/>
+        <dc:Bounds x="30" y="260" width="2250" height="160"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Dispatched" bpmnElement="Lane_Dispatched" isHorizontal="true">
-        <dc:Bounds x="30" y="420" width="1650" height="180"/>
+        <dc:Bounds x="30" y="420" width="2250" height="180"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Refused" bpmnElement="Start_Refused"><dc:Bounds x="100" y="82" width="36" height="36"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_Record" bpmnElement="Task_Record"><dc:Bounds x="170" y="60" width="140" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_Comment" bpmnElement="Task_Comment"><dc:Bounds x="350" y="60" width="140" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GW_Owner" bpmnElement="GW_Owner" isMarkerVisible="true"><dc:Bounds x="530" y="75" width="50" height="50"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_HandBack" bpmnElement="Task_HandBack"><dc:Bounds x="620" y="60" width="140" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_Dispatch" bpmnElement="Task_Dispatch"><dc:Bounds x="800" y="165" width="140" height="70"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GW_FailCond" bpmnElement="GW_FailCond" isMarkerVisible="true"><dc:Bounds x="1000" y="75" width="50" height="50"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_Retrain" bpmnElement="Task_Retrain"><dc:Bounds x="1100" y="60" width="140" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GW_Fate" bpmnElement="GW_Fate" isMarkerVisible="true"><dc:Bounds x="1290" y="75" width="50" height="50"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_Close" bpmnElement="Task_Close"><dc:Bounds x="1390" y="60" width="140" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_End_Closed" bpmnElement="End_Closed"><dc:Bounds x="1580" y="82" width="36" height="36"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_Scrap" bpmnElement="Task_Scrap"><dc:Bounds x="1390" y="165" width="140" height="70"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_End_Scrapped" bpmnElement="End_Scrapped"><dc:Bounds x="1580" y="182" width="36" height="36"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_Fix" bpmnElement="Task_Fix"><dc:Bounds x="620" y="300" width="140" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_AgentFix" bpmnElement="Task_AgentFix"><dc:Bounds x="800" y="470" width="140" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GW_Authored" bpmnElement="GW_Authored" isMarkerVisible="true"><dc:Bounds x="990" y="485" width="50" height="50"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_AskOwner" bpmnElement="Task_AskOwner"><dc:Bounds x="1100" y="470" width="140" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_End_AwaitOwner" bpmnElement="End_AwaitOwner"><dc:Bounds x="1290" y="492" width="36" height="36"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_Record" bpmnElement="Task_Record"><dc:Bounds x="450" y="60" width="140" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_Comment" bpmnElement="Task_Comment"><dc:Bounds x="630" y="60" width="140" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_Owner" bpmnElement="GW_Owner" isMarkerVisible="true"><dc:Bounds x="810" y="75" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_HandBack" bpmnElement="Task_HandBack"><dc:Bounds x="900" y="60" width="140" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_Dispatch" bpmnElement="Task_Dispatch"><dc:Bounds x="1080" y="165" width="140" height="70"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_FailCond" bpmnElement="GW_FailCond" isMarkerVisible="true"><dc:Bounds x="1280" y="75" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_Retrain" bpmnElement="Task_Retrain"><dc:Bounds x="1380" y="60" width="140" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_Fate" bpmnElement="GW_Fate" isMarkerVisible="true"><dc:Bounds x="1570" y="75" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_Close" bpmnElement="Task_Close"><dc:Bounds x="1670" y="60" width="140" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_Closed" bpmnElement="End_Closed"><dc:Bounds x="2180" y="82" width="36" height="36"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_Scrap" bpmnElement="Task_Scrap"><dc:Bounds x="1670" y="165" width="140" height="70"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_Scrapped" bpmnElement="End_Scrapped"><dc:Bounds x="2180" y="182" width="36" height="36"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_Fix" bpmnElement="Task_Fix"><dc:Bounds x="900" y="300" width="140" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_AgentFix" bpmnElement="Task_AgentFix"><dc:Bounds x="1080" y="470" width="140" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_Authored" bpmnElement="GW_Authored" isMarkerVisible="true"><dc:Bounds x="1270" y="485" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_AskOwner" bpmnElement="Task_AskOwner"><dc:Bounds x="1380" y="470" width="140" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_AwaitOwner" bpmnElement="End_AwaitOwner"><dc:Bounds x="1730" y="492" width="36" height="36"/></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_r1" bpmnElement="r1"><di:waypoint x="136" y="100"/><di:waypoint x="170" y="100"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r2" bpmnElement="r2"><di:waypoint x="310" y="100"/><di:waypoint x="350" y="100"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r3" bpmnElement="r3"><di:waypoint x="490" y="100"/><di:waypoint x="530" y="100"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r4" bpmnElement="r4"><di:waypoint x="580" y="100"/><di:waypoint x="620" y="100"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r5" bpmnElement="r5"><di:waypoint x="555" y="125"/><di:waypoint x="555" y="200"/><di:waypoint x="800" y="200"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r6" bpmnElement="r6"><di:waypoint x="690" y="140"/><di:waypoint x="690" y="300"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r7" bpmnElement="r7"><di:waypoint x="760" y="340"/><di:waypoint x="1025" y="340"/><di:waypoint x="1025" y="125"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r8" bpmnElement="r8"><di:waypoint x="1050" y="100"/><di:waypoint x="1100" y="100"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r9" bpmnElement="r9"><di:waypoint x="1000" y="100"/><di:waypoint x="870" y="100"/><di:waypoint x="870" y="165"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r10" bpmnElement="r10"><di:waypoint x="870" y="235"/><di:waypoint x="870" y="470"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r11" bpmnElement="r11"><di:waypoint x="940" y="510"/><di:waypoint x="990" y="510"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r12" bpmnElement="r12"><di:waypoint x="1040" y="510"/><di:waypoint x="1100" y="510"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r13" bpmnElement="r13"><di:waypoint x="1015" y="485"/><di:waypoint x="1015" y="445"/><di:waypoint x="1170" y="445"/><di:waypoint x="1170" y="140"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r14" bpmnElement="r14"><di:waypoint x="1240" y="510"/><di:waypoint x="1290" y="510"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r15" bpmnElement="r15"><di:waypoint x="1240" y="100"/><di:waypoint x="1290" y="100"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r16" bpmnElement="r16"><di:waypoint x="1340" y="100"/><di:waypoint x="1390" y="100"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r17" bpmnElement="r17"><di:waypoint x="1315" y="75"/><di:waypoint x="1315" y="30"/><di:waypoint x="240" y="30"/><di:waypoint x="240" y="60"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r18" bpmnElement="r18"><di:waypoint x="1315" y="125"/><di:waypoint x="1315" y="200"/><di:waypoint x="1390" y="200"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r19" bpmnElement="r19"><di:waypoint x="1530" y="100"/><di:waypoint x="1580" y="100"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_r20" bpmnElement="r20"><di:waypoint x="1530" y="200"/><di:waypoint x="1580" y="200"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r2" bpmnElement="r2"><di:waypoint x="590" y="100"/><di:waypoint x="630" y="100"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r3" bpmnElement="r3"><di:waypoint x="770" y="100"/><di:waypoint x="810" y="100"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r4" bpmnElement="r4"><di:waypoint x="860" y="100"/><di:waypoint x="900" y="100"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r5" bpmnElement="r5"><di:waypoint x="835" y="125"/><di:waypoint x="835" y="200"/><di:waypoint x="1080" y="200"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r6" bpmnElement="r6"><di:waypoint x="970" y="140"/><di:waypoint x="970" y="300"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r7" bpmnElement="r7"><di:waypoint x="1040" y="340"/><di:waypoint x="1305" y="340"/><di:waypoint x="1305" y="125"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r8" bpmnElement="r8"><di:waypoint x="1330" y="100"/><di:waypoint x="1380" y="100"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r9" bpmnElement="r9"><di:waypoint x="1280" y="100"/><di:waypoint x="1150" y="100"/><di:waypoint x="1150" y="165"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r10" bpmnElement="r10"><di:waypoint x="1150" y="235"/><di:waypoint x="1150" y="470"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r11" bpmnElement="r11"><di:waypoint x="1220" y="510"/><di:waypoint x="1270" y="510"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r12" bpmnElement="r12"><di:waypoint x="1320" y="510"/><di:waypoint x="1380" y="510"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r13" bpmnElement="r13"><di:waypoint x="1295" y="485"/><di:waypoint x="1295" y="445"/><di:waypoint x="1450" y="445"/><di:waypoint x="1450" y="140"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r14" bpmnElement="r14"><di:waypoint x="1520" y="510"/><di:waypoint x="1570" y="510"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r15" bpmnElement="r15"><di:waypoint x="1520" y="100"/><di:waypoint x="1570" y="100"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r16" bpmnElement="r16"><di:waypoint x="1620" y="100"/><di:waypoint x="1670" y="100"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r17" bpmnElement="r17"><di:waypoint x="1595" y="75"/><di:waypoint x="1595" y="30"/><di:waypoint x="520" y="30"/><di:waypoint x="520" y="60"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r18" bpmnElement="r18"><di:waypoint x="1595" y="125"/><di:waypoint x="1595" y="200"/><di:waypoint x="1670" y="200"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r19" bpmnElement="r19"><di:waypoint x="1810" y="100"/><di:waypoint x="1860" y="100"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_r20" bpmnElement="r20"><di:waypoint x="1810" y="200"/><di:waypoint x="2020" y="200"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanOpen_di" bpmnElement="Call_BeanOpen"><dc:Bounds x="170" y="60" width="120" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_1_di" bpmnElement="SF_Bean_1"><di:waypoint x="370" y="100"/><di:waypoint x="450" y="100"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="GW_BeanYours_di" bpmnElement="GW_BeanYours" isMarkerVisible="true"><dc:Bounds x="320" y="75" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_BeanNotYours_di" bpmnElement="End_BeanNotYours"><dc:Bounds x="327" y="155" width="36" height="36"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_2_di" bpmnElement="SF_Bean_2"><di:waypoint x="290" y="100"/><di:waypoint x="320" y="100"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SF_Bean_3_di" bpmnElement="SF_Bean_3"><di:waypoint x="345" y="125"/><di:waypoint x="345" y="155"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanClose_di" bpmnElement="Call_BeanClose"><dc:Bounds x="1570" y="470" width="120" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_4_di" bpmnElement="SF_Bean_4"><di:waypoint x="1690" y="510"/><di:waypoint x="1730" y="510"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanClose_2_di" bpmnElement="Call_BeanClose_2"><dc:Bounds x="1860" y="60" width="120" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_5_di" bpmnElement="SF_Bean_5"><di:waypoint x="1980" y="100"/><di:waypoint x="2180" y="100"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanClose_3_di" bpmnElement="Call_BeanClose_3"><dc:Bounds x="2020" y="160" width="120" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_6_di" bpmnElement="SF_Bean_6"><di:waypoint x="2140" y="200"/><di:waypoint x="2180" y="200"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

@@ -461,7 +461,7 @@
     {
       "id": "sibling-session",
       "title": "Sibling session",
-      "description": "Another agent or human working the same store. Present in bean-lifecycle precisely to mark what is NOT yours to close.",
+      "description": "Another agent or human working the same store. Present in bean-open (Process_BeanOpen) precisely to mark what is NOT yours to close.",
       "actorKinds": [
         "agent"
       ],
@@ -557,17 +557,6 @@
       ],
       "skills": [
         "getting-started"
-      ]
-    },
-    {
-      "id": "lean-toolchain",
-      "title": "Lean toolchain",
-      "description": "Elaborates and checks the formal half of a paper folio. Answers only what Lean can answer.",
-      "actorKinds": [
-        "system"
-      ],
-      "skills": [
-        "lean-toolchain-contract"
       ]
     },
     {
@@ -771,8 +760,6 @@
       ],
       "skills": [
         "canonical-watcher",
-        "compute-integration-watcher",
-        "detangler-integration-watcher",
         "devils-advocate-watcher",
         "one-voice-integration-watcher",
         "integration-watch",

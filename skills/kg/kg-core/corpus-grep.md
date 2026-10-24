@@ -26,20 +26,20 @@ allowed-tools: Grep Glob Read Bash
 
 Gate every "this is open / unresolved / a gap" declaration behind a
 mechanical four-path search of the corpus. The originating source
-file's status note (`## Status`, `Open math`, `Phase 3 open`, a Lean
-`-- TODO`, a PR-description "still open") is **not authoritative** —
+file's status note (`## Status`, `Open question`, `Phase 3 open`, a
+`TODO` in a code or formal-source file, a PR-description "still open") is **not authoritative** —
 prior agents routinely land a resolution as an audit doc, an adjacent
-chapter's conjecture, an implemented Python witness, or a coordination
+chapter's block, an implemented witness script, or a coordination
 ledger entry *weeks before* the source file's note is updated. This
 skill catches that lag.
 
 ## When to run this skill (STRICT)
 
 Run the checklist **before** any of the following land in a durable
-artifact (audit doc, content block `.md`/`.ts`, Lean comment, PR
+artifact (audit doc, content block `.md`/`.ts`, code or formal-source comment, PR
 description, coordination ledger) **or** are asserted as fact in chat:
 
-- "X is open" / "Open Math X" / "open problem" / "open question"
+- "X is open" / "Open X" / "open problem" / "open question"
 - "TODO: derive X" / "pending derivation" / "still missing"
 - "this is a gap" / "no proof exists" / "not yet implemented"
 - "X is not wired into compute" / "nothing computes X"
@@ -98,9 +98,9 @@ a `glob`) over shell `grep` when running inside an agent — results
 integrate with the permission UI and file links. The shell snippet
 above is the portable fallback.
 
-Widen the topic if the first pass is empty: try a synonym, the Lean
-decl name, the `prop:`/`conj:`/`def:` label, the Python function name,
-and the witness-JSON key. A single spelling is not a clearing.
+Widen the topic if the first pass is empty: try a synonym, the formal
+declaration name, the block label, the function name, and the
+witness-JSON key. A single spelling is not a clearing.
 
 ## Decision procedure
 
@@ -122,30 +122,18 @@ and the witness-JSON key. A single spelling is not a clearing.
 This skill is the canonical, self-contained statement. It is invoked
 by, and consistent with, these codified instances:
 
-- **`CLAUDE.md` §"Before declaring 'open' math / questions / gaps
-  (STRICT)"** — the originating rule.
-- **`local/proof-gap-audit` §K** — applies the checklist to proof-gap
-  declarations specifically (gap classes A–J).
-- **`local/compute-author`** and **`local/compute-audit`** — apply it
-  before declaring a prop "not wired into compute".
-- **`local/lean-environment-setup`** — generalizes it to "before
-  declaring a capability unavailable, grep what's known".
+- **The folio's own `AGENTS.md` or `CLAUDE.md`**, where it states the rule
+  for its corpus.
+- **A content type's own audits**, which apply the checklist to their
+  declarations. For a paper folio these are the science layer's
+  `proof-gap-audit` §K (proof-gap declarations), `compute-author` and
+  `compute-audit` (before declaring a statement "not wired into compute")
+  and `lean-environment-setup` (before declaring a capability unavailable).
 
 ## History — why this exists
 
-Three consecutive items in May 2026 (PRs
-[#1515](https://github.com/litlfred/qou/pull/1515),
-[#1532](https://github.com/litlfred/qou/pull/1532),
-[#1543](https://github.com/litlfred/qou/pull/1543)) were declared
-open against a source file's status note; each was found in subsequent
-reanalysis to be **already implemented**:
-
-- Track B Gap #2 in `canonical_tr_m_via_branching.py`
-- α_shift A=4 in `lightNucleiForceCarrierKnot`
-- ρ_F derivation in `conj:kashaev-density-equals-sdp-multiplicity`
-- p/n asymmetry in `closed_form_tau_M.py::bring_color_weighted`
-
-Source-file status notes lag the corpus by weeks; the corpus is the
-source of truth. Post-mortem:
-`docs/audits/2026-05-31-binding-magic-A-wireup.md` §"Why was the
-resolution missed?".
+In May 2026, three consecutive items in a mathematics folio were declared open
+against a source file's status note, and each was found on reanalysis to be
+**already implemented**. Source-file status notes lag the corpus by weeks; the
+corpus is the source of truth. The cases are recorded with the science layer's
+`proof-gap-audit` §K.

@@ -2278,6 +2278,60 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "it, and the runtimes that release needs, injected rather than inherited -- and the named " +
       "`folio-tool-profile/v1` sets a run selects. A profile never names a runtime.",
   },
+  // Software libraries -- the outside libraries a layer's code IMPORTS, one
+  // node per library per layer, at the version that layer's lockfile pins.
+  //
+  // Option D of bean `jbvi` (owner, 2026-10-24 08:25Z, "D. Shared core"):
+  // `tool-release` and this kind both extend `schemas/outside-software.ts`'s
+  // core (name, version, digest, source, SPDX licence), and each adds what
+  // only it has. A tool release is RUN and keeps its entry and its sha256; a
+  // library is IMPORTED, has no entry, and carries the sha512 `bun.lock`
+  // records. Folding the two into one kind (option A) would have bent two of
+  // `tool-release`'s four rules, so they stay two kinds on one core.
+  //
+  // cat-harness OWNS the kind; each NODE lives in the layer that imports the
+  // library, under that layer's own `libraries/`, declared in that layer's
+  // `<name>.json`. A library several layers share has one node in each,
+  // because each layer pins its own version.
+  //
+  // `derived`, by `library`'s argument: a node is produced from the layer's
+  // `package.json`, `bun.lock` and the installed package, and regenerated
+  // (`libraries:derive`) rather than re-authored, so a finding against one is
+  // a finding against its writer -- or against the lockfile it read. NOT
+  // `content` as `tool-release` is: a tool pin is a decision a person makes;
+  // a library node restates a decision already made in `package.json`.
+  //
+  // NOT `perInstance`: no layer gets an empty `libraries/` made for it. A
+  // layer that imports nothing has nothing to declare, and a layer that does
+  // declares its own directory in its own declaration.
+  //
+  // NOT renderable: the site build does not read it.
+  "software-library": {
+    description:
+      "the outside libraries a layer's code imports (`libraries/`) — one `software-library/1.0.0` node per library, in the layer whose `package.json` declares it, carrying the outside-software core it shares with `tool-release` (name, the version `bun.lock` pins, the digest `bun.lock` records — sha512 — the registry tarball it came from, and the SPDX licence read from the installed package's own `package.json`) plus the `range` the layer asks for, whether it is a dev dependency, `usedBy` (the layer's files that import it) and `shim` (the `types/*.d.ts` that types it, when one exists). Option D of bean `jbvi` (owner, 2026-10-24): one shared core, two kinds. A library several layers share has one node per layer, because each layer pins its own version. `derived`: written by `libraries:derive` from the layer's `package.json`, `bun.lock` and installed packages, and gated by `libraries:check`, which fails on a stale node, an import no node names, and a shim no node names. Shapes in `schemas/software-library.ts` (a node kind whose parent is the `outside-software` mixin) and `schemas/outside-software.ts`.",
+    title: "Software libraries",
+    renderable: false,
+    holds: "derived",
+    // declared-path-literal: this table IS the declaration, as on `tool-release`.
+    schema: "schemas/software-library.ts",
+    // The validator is `validators/software-library.json` (bean riit: no
+    // authored kind carries validator code). Every node is written by
+    // `libraries:derive`, hence `generated`.
+    nodeSchemas: {
+      "software-library/1.0.0": { generated: true },
+    },
+    summary:
+      "Outside libraries a layer imports -- one generated `software-library/1.0.0` node per library per layer, " +
+      "with the version and sha512 its `bun.lock` pins, its SPDX licence, its range, whether it is a dev " +
+      "dependency, the files that import it and the shim that types it. Shares its core with `tool-release`.",
+    // A cube on a hook: a package pulled in by an import. Tool-release's tone,
+    // because the two kinds are one family on one core.
+    avatar: {
+      glyph: "M12 7l7 4v7l-7 4-7-4v-7l7-4zm0 0v15m-7-11l7 4 7-4M12 7V5a2 2 0 1 1 2 2",
+      tone: 60,
+      reads: "a package on a hook — a library pulled in by an import, at the version its lockfile pins",
+    },
+  },
   // A published static site, as a graph (bean `lehh`, owner 2026-10-05). Two
   // capability tiers, both declared now so a real CDN has a kind to land in:
   // `basic-cdn-site` serves files by path and nothing more (GitHub Pages);

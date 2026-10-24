@@ -18,7 +18,8 @@ this layer, so they are linked here rather than there:
 2. **Claim before you work.** `bun run cat beans:claim <id>` — not
    `beans update --status in-progress`, which writes no holder note. A claim
    announces rather than reserves until your PR exists — see
-   `bean-coordination`.
+   `bean-coordination`. When other agents drain the same beans, or there is
+   more than one bean copy, follow `bean-drain` step 2 instead.
 3. **Ask for the skill that governs the task** — `skill_list`, then
    `skill_fetch`. Do not open a path under `skills/` from memory: the graph an
    instance declares is what resolves, and a hardcoded path is how a skill
