@@ -4,7 +4,7 @@ title: 'Placement PR2: finish splitting folio-core and regroup the harness skill
 status: todo
 type: task
 created_at: 2026-10-01T06:58:00Z
-updated_at: 2026-10-01T06:58:00Z
+updated_at: 2026-10-24T08:05:00Z
 parent: folio-assistant-iirv
 ---
 
@@ -21,3 +21,7 @@ Waits on PR1 (`ybwt`, not yet on main — link when it lands).
 - [ ] every topic in `skills/skills.json` holds at least one package; the harness holds no skill placed above it by proposal §1.2
 - [ ] `knownSkills(checkout)` equals PR1's set plus `block-change-summary`
 - [ ] `skill:register:check`, `kg:audit:check`, `check:agents-xref`, `bun run cat gates` green
+
+## 2026-10-24 — re-measured (separation drain, session https://claude.ai/code/session_01X14WfP6kHutkCyB8dpmj4e)
+
+Re-measured by file name: 14 of 28 rows are in their target, 14 still in cat-harness.

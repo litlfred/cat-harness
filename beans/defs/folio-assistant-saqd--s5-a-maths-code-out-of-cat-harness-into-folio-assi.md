@@ -5,7 +5,7 @@ status: todo
 type: task
 priority: normal
 created_at: 2026-10-01T12:16:24Z
-updated_at: 2026-10-16T06:55:00Z
+updated_at: 2026-10-24T08:05:00Z
 parent: folio-assistant-7x5n
 ---
 
@@ -14,3 +14,7 @@ Story S5 (txue), with/after 70lx. Rows: cat-harness/docs/proposals/placement-aud
 - [ ] rows moved/split; typecheck program conserved; gates green; merged
 
 _2026-10-16T06:55:00Z_ — Block lifted: `70lx` is completed. Owner ruling 2026-10-16 06:50Z (question 4, option 1): the part-by-part measurement stands in for `bun run cat gates --all` and for falsifier 2, so 70lx is closed. Session https://claude.ai/code/session_01K9Xi9QSxCNYju8QNu7EuHg.
+
+## 2026-10-24 — re-measured (separation drain, session https://claude.ai/code/session_01X14WfP6kHutkCyB8dpmj4e)
+
+Re-measured by file name across cat-harness, cat-harness-tools, core and sci: of 73 rows, 49 MOVE and all 10 AMBIGUOUS are still in the harness layers; 7 are in their target, 7 are found nowhere (renamed or deleted). Still the 39-module sci cluster `rfev` describes; not started.

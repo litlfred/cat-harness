@@ -5,7 +5,7 @@ status: todo
 type: task
 priority: normal
 created_at: 2026-10-01T08:14:34Z
-updated_at: 2026-10-01T08:49:00Z
+updated_at: 2026-10-24T08:05:00Z
 parent: folio-assistant-7x5n
 blocked_by:
     - folio-assistant-ybsz
@@ -18,3 +18,7 @@ Mirrors n3ni. G6: litlfred/{folio-assistant-core,folio-assistant-sci,fhir-harnes
 - [ ] owner authorisation (smbc)
 - [ ] seed PR per repo; fresh-clone QA (w1gy)
 - [x] missing repos created by owner: litlfred/{folio-assistant-core,folio-assistant-sci,fhir-harness}, verified empty 2026-10-01
+
+## 2026-10-24 — re-measured (separation drain, session https://claude.ai/code/session_01X14WfP6kHutkCyB8dpmj4e)
+
+Re-measured: unchanged. Only box left is `w1gy` (fresh-clone QA); closes with it.
