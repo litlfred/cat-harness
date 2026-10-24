@@ -1,6 +1,5 @@
 ---
 # folio-assistant-rq8s
-$schema: bean/1.0.0
 title: 'A SESSION BLOCKED ON THE OWNER IS INVISIBLE: four sessions held verbatim questions that only the session API could see, and nothing durable records one'
 status: completed
 type: bug
