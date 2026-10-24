@@ -1,10 +1,10 @@
 ---
 # folio-assistant-dp1j
 title: 'KG AFFORDANCES: browse, materialise, instantiate, copy-into-my-folio — as processes and skills, gated by write capability'
-status: todo
+status: completed
 type: task
 created_at: 2026-09-20T17:13:19Z
-updated_at: 2026-09-20T17:13:19Z
+updated_at: 2026-10-24T09:26:00Z
 parent: folio-assistant-yj32
 ---
 
@@ -79,11 +79,11 @@ than a read-only one.
 
 ## Done when
 
-- [ ] The four verbs are written down as the affordances of a conformant KG
-- [ ] A `folio-init` skill exists, so the instantiate tool is reachable
-- [ ] A BPMN process for copy-into-folio that stamps `KgAsset.source`
-- [ ] Each writing verb declares its capability requirement and degrades
-- [ ] Browse is provably useful with zero write capability
+- [x] The four verbs are written down as the affordances of a conformant KG (`litlfred/cat-harness#465` @ `22e2e904`, `skills/kg/kg-core/kg-affordances.md`)
+- [x] A `folio-init` skill exists, so the instantiate tool is reachable (`litlfred/cat-harness#465` @ `22e2e904`, `skills/kg/kg-core/folio-init.md`, `tools/folio-init/folio-init.ts`)
+- [x] A BPMN process for copy-into-folio that stamps `KgAsset.source` (`litlfred/cat-harness#465` @ `22e2e904`, `processes/kg/copy-into-folio.bpmn`)
+- [x] Each writing verb declares its capability requirement and degrades (`litlfred/cat-harness#465` @ `22e2e904`)
+- [x] Browse is provably useful with zero write capability (`litlfred/cat-harness#465` @ `22e2e904`, `schemas/kg-affordances.test.ts`)
 
 ## Relates to
 
@@ -92,3 +92,7 @@ than a read-only one.
 verbs), `d308` (Tool nodes — `folio_init` is one), `yj32` (the harness as an
 interface these verbs act through), and the `github-api` /
 `github-connector` capabilities declared this session.
+
+## Closed 2026-10-24 (cloud drain thread)
+
+`litlfred/cat-harness#465` merged as `bf87e969` after main was merged in. The glossary namespaces moved from `/0.1.0/` to `/v0/`. All checks were green.
