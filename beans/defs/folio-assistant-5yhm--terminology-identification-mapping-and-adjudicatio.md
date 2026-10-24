@@ -1,11 +1,12 @@
 ---
 # folio-assistant-5yhm
+$schema: bean/1.0.0
 title: 'TERMINOLOGY: identification, mapping and adjudication — a glossary term is CHECKED against an existing terminology, never only minted'
 status: in-progress
 type: feature
 priority: normal
 created_at: 2026-09-25T04:51:06Z
-updated_at: 2026-10-02T08:01:23Z
+updated_at: 2026-10-24T07:50:00Z
 parent: folio-assistant-0lmb
 ---
 
@@ -22,7 +23,7 @@ answered**, so what remains is narrower and sharper than the title suggests:
 
 | the ask | where it now lives | still open? |
 |---|---|---|
-| **identification** — what IS a term | `glossary-extract.ts` + [`glossary-terms`](../../cat-harness/skills/library/library-core/glossary-terms.md) §"Extracted terms": per asset type, one `kg-` scheme each, `candidate` status, and a stated exclusion (BPMN lanes and roles go to the swimlane ledger) | **no** — `a13a` is scrapped |
+| **identification** — what IS a term | `glossary-extract.ts` + `glossary-terms` (now `folio-assistant-core/skills/library/cataloguing/glossary-terms.md`) §"Extracted terms": per asset type, one `kg-` scheme each, `candidate` status, and a stated exclusion (BPMN lanes and roles go to the swimlane ledger) | **no** — `a13a` is scrapped |
 | **which vocabulary owns a fact** | [`vocabulary-authority`](../../cat-harness/skills/kg/kg-core/vocabulary-authority.md): SKOS authoritative for meaning, DC for resources, FHIR for clinical codes, DCAT for a release, with `exactMatch`/`closeMatch`/`broadMatch`/`relatedMatch` as the declared mapping | **no** |
 | **mapping** — is this candidate ALREADY a concept somewhere authoritative? | nothing | **yes** — `7wou` |
 | **adjudication** — the extractor and the terminology disagree | nothing | **yes** — `2i5f` |
@@ -135,3 +136,6 @@ Claimed by claude/terminology-followups (session https://claude.ai/code/session_
       wrote. `exactMatch` targets only the record's new `exactConcepts`; an
       in-repo `<scheme>:<id>` that names two authored terms is left out and
       reported. Today 0 terms map, so no committed SKOS file changes.
+
+## 2026-10-24 — re-measured
+`bun run cat check:term-mapping` at the folio-assistant lock: 3751 candidates, **0 mapped** on both `skos` and `fhir`, 0 adjudication files. So `2i5f` leg 2's entry condition is still unmet. The open slices are unchanged: key the record by instance as well as scheme id (buildable now), and 7wou's FHIR collections (needs OCL). Session https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU.
