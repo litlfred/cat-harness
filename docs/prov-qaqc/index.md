@@ -18,7 +18,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 
 ## Totals
 
-12 instance(s), 149 step(s) checked, 149 `prov:Activity` emitted, 124 finding(s). Policies evaluated: `https://litlfred.github.io/folio-assistant-core/policies/content-agents`, `https://litlfred.github.io/folio-assistant/policies/folio-defaults`, `https://litlfred.github.io/folio-assistant/policies/http-gateway`.
+12 instance(s), 149 step(s) checked, 149 `prov:Activity` emitted, 124 finding(s). Policies evaluated: `https://litlfred.github.io/folio-assistant/policies/folio-defaults`, `https://litlfred.github.io/folio-assistant/policies/http-gateway`.
 
 | finding | count | means |
 |---|---|---|

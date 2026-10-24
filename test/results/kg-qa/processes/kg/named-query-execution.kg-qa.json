@@ -5,7 +5,7 @@
     "id": "Process_NamedQueryExecution",
     "path": "processes/kg/named-query-execution.bpmn"
   },
-  "source_hash": "sha256:a27ae3b3d74d08182ee62ecce8162739ee6f427e310bc25f71c9142c38370a1e",
+  "source_hash": "sha256:e488bebc422db162c939a647a252f47925a85003417812d4ad34b9faf204f66f",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

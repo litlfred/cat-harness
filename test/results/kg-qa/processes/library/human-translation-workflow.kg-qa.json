@@ -5,7 +5,7 @@
     "id": "Process_HumanTranslation",
     "path": "processes/library/human-translation-workflow.bpmn"
   },
-  "source_hash": "sha256:273e8e84cd5ed00c8b52378337e3c7812b830c33effb76971b17c58c06bd4952",
+  "source_hash": "sha256:9250488532c17c5310e305d9c2a7f2bd59041791aeb430009f477baf6b2f2e9e",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

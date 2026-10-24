@@ -5,7 +5,7 @@
     "id": "adversarial-code-review",
     "path": "skills/sdlc/sdlc-core/adversarial-code-review.md"
   },
-  "source_hash": "84386ae58b4c",
+  "source_hash": "733c5dd868f5",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

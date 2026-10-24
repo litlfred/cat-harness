@@ -5,7 +5,7 @@
     "id": "Process_MergeRefusal",
     "path": "processes/sdlc/merge-refusal.bpmn"
   },
-  "source_hash": "sha256:fe35034e940a51eb51c89f3211c764d2b6ef676bbf11f1cf574d2810866ef8cf",
+  "source_hash": "sha256:5ab58da4ee3b08b717e1e68f596368f86ff7b15f4cff8e0d8db0874a8382d269",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

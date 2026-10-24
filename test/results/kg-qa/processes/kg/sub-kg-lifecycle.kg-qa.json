@@ -5,7 +5,7 @@
     "id": "Process_SubKgLifecycle",
     "path": "processes/kg/sub-kg-lifecycle.bpmn"
   },
-  "source_hash": "sha256:ba6c89cb5429769725d533e6bf04574f54838639ecc3ef60f2bdb661ef882a1a",
+  "source_hash": "sha256:488680a60d88b1802bdf55a1b03e94d5560eb0cf004f596c487c0d703f0b1ea9",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -105,7 +105,7 @@
       "findings": []
     },
     "call-activity-resolves": {
-      "result": "n/a",
+      "result": "pass",
       "findings": []
     },
     "process-diagram-published": {
@@ -146,9 +146,9 @@
     }
   },
   "totals": {
-    "pass": 18,
+    "pass": 19,
     "fail": 1,
-    "n/a": 8,
+    "n/a": 7,
     "unknown": 0
   }
 }
