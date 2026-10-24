@@ -5,7 +5,7 @@
     "id": "agent-memory",
     "path": "skills/conduct/conduct-core/agent-memory.md"
   },
-  "source_hash": "d768279b68ae",
+  "source_hash": "a32b30c7304e",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",
