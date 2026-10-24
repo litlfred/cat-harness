@@ -83,7 +83,8 @@ Part of a repository wants to leave, for size or a semantic reason: four gated s
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `deletion-requires-confirmation`.
-- What: The agent reports and waits.
+- What: The agent reports and waits: what would move, how large, what in the parent breaks, and the rollback.
+- Shared step `GT_ReportWhatMoves`.
 - Record it: `workflow_complete` with `node: "Task_Propose"`.
 - next: → `Task_Authorise` (Authorise the extraction)
 

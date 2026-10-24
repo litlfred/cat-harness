@@ -35,7 +35,8 @@ Find the open pull requests whose head has no CI run, past an age gate, and say 
 
 - Who: the `Scheduled log sweep` lane (role `build-pipeline`).
 - Skill: `ci-health`.
-- What: Create the pr-no-checks label with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet.
+- What: Create the tracking label (the `label` input) with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet.
+- Shared step `GT_EnsureTrackingLabel`, with `label` = `pr-no-checks`.
 - Record it: `workflow_complete` with `node: "Task_Label"`.
 - next: → `GW_Finding` (Any head with no run?)
 
@@ -50,7 +51,8 @@ Find the open pull requests whose head has no CI run, past an age gate, and say 
 
 - Who: the `Scheduled log sweep` lane (role `build-pipeline`).
 - Skill: `ci-health`.
-- What: Clean: close the open pr-no-checks issue, if any, saying why (every open pull request's head now has a CI run).
+- What: Clean: close the open issue carrying the tracking label (the `label` input), if any, saying why the verdict is clean.
+- Shared step `GT_CloseTrackingIssue`, with `label` = `pr-no-checks`.
 - Record it: `workflow_complete` with `node: "Task_Close"`.
 - next: → `End_Clean` (Every head has a run)
 
@@ -58,7 +60,8 @@ Find the open pull requests whose head has no CI run, past an age gate, and say 
 
 - Who: the `Scheduled log sweep` lane (role `build-pipeline`).
 - Skill: `ci-health`.
-- What: Findings: EDIT the one open issue labelled pr-no-checks if there is one, otherwise create it, with the sweep's report as the body.
+- What: Findings: EDIT the one open issue carrying the tracking label (the `label` input) if there is one, otherwise create it, with the report as the body.
+- Shared step `GT_TrackIssue`, with `label` = `pr-no-checks`.
 - Record it: `workflow_complete` with `node: "Task_Track"`.
 - next: → `Task_Comment` (Comment ONCE per (PR, head sha))
 

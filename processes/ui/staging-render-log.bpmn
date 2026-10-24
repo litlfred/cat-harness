@@ -59,11 +59,8 @@ signal fired?">
       <bpmn:documentation>Answered by the preflight: did any liveness signal fire for this preview? `yes — refuse` keeps it and appends `retained` with the reason; `no` removes it and appends `removed` with the reason.</bpmn:documentation>
     </bpmn:exclusiveGateway>
 
-    <bpmn:task id="A_LogRetained" name="Append `retained`
-with the reason">
-      <bpmn:documentation>THE ENTRY THAT MAKES THE LOG WORTH READING. A preview still standing because a signal fired leaves no trace otherwise, and the next person asking "why is this still up" has nothing to consult. A reason is REQUIRED — the tool refuses without one.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="render-logging"/></bpmn:extensionElements>
-    </bpmn:task>
+    <bpmn:callActivity id="A_LogRetained" name="Append `retained`
+with the reason" calledElement="GT_LogRetained"/>
 
     <bpmn:task id="A_LogRemoved" name="Append `removed`
 with the reason">

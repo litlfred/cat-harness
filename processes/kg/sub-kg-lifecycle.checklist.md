@@ -16,7 +16,8 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `opening-brief`.
-- What: What the sub-KG is and why it is staged here rather than in a repository of its own, what is already measured, and what would falsify the plan.
+- What: What the work is and why, what is already measured with its provenance, how it will be done, and what would falsify the approach.
+- Shared step `GT_BriefAndClaim`.
 - Record it: `workflow_complete` with `node: "Task_Brief"`.
 - next: → `Task_Declare` (1 · Declare it in place, with its seam)
 
@@ -131,7 +132,8 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `kg-separation`.
-- What: Work the pull requests seed:ready named until the source settles, then ask again.
+- What: Work the PRs `seed:ready` named until the source settles: land or close the heavy movers and the next layer's PRs, bring the layer's open PRs to five or fewer, and finish any move in flight.
+- Shared step `GT_Drain`.
 - Record it: `workflow_complete` with `node: "Task_Drain"`.
 - next: → `GW_SeedReady` (Ready to seed?)
 

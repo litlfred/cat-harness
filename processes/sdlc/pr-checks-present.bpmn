@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
@@ -67,39 +67,65 @@ TWO CHANNELS, ON THE OWNER'S INSTRUCTION, AND THEY BEHAVE DIFFERENTLY. The track
     <bpmn:endEvent id="End_Unknown" name="Unknown — job RED,&#10;issue UNTOUCHED">
       <bpmn:incoming>Flow_2</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Task_Label" name="Ensure the tracking&#10;label exists">
-      <bpmn:documentation>Create the pr-no-checks label with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet. Skipped on an unknown verdict.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="ci-health"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_Label" name="Ensure the tracking&#10;label exists" calledElement="GT_EnsureTrackingLabel">
       <bpmn:incoming>Flow_3</bpmn:incoming>
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
-    </bpmn:task>
+      <bpmn:ioSpecification id="Task_Label_label_IO">
+        <bpmn:dataInput id="Task_Label_label" name="label"/>
+        <bpmn:inputSet id="Task_Label_label_In"><bpmn:dataInputRefs>Task_Label_label</bpmn:dataInputRefs></bpmn:inputSet>
+        <bpmn:outputSet id="Task_Label_label_Out"/>
+      </bpmn:ioSpecification>
+      <bpmn:dataInputAssociation id="Task_Label_label_Value">
+        <bpmn:targetRef>Task_Label_label</bpmn:targetRef>
+        <bpmn:assignment id="Task_Label_label_Assign">
+          <bpmn:from xsi:type="bpmn:tFormalExpression">pr-no-checks</bpmn:from>
+          <bpmn:to xsi:type="bpmn:tFormalExpression">Task_Label_label</bpmn:to>
+        </bpmn:assignment>
+      </bpmn:dataInputAssociation>
+    </bpmn:callActivity>
     <bpmn:exclusiveGateway id="GW_Finding" name="Any head&#10;with no run?">
       <bpmn:documentation>Asked of the same `verdict`. `none` is verdict == 'clean': every open PR's head older than 15 minutes has a run, and the tracking issue is closed. `one or more` is verdict == 'findings': the one tracking issue is opened or edited in place, and the workflow also comments once on each affected pull request.</bpmn:documentation>
       <bpmn:incoming>Flow_4</bpmn:incoming>
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
       <bpmn:outgoing>Flow_7</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Task_Close" name="Close the&#10;tracking issue">
-      <bpmn:documentation>Clean: close the open pr-no-checks issue, if any, saying why (every open pull request's head now has a CI run). Runs only on a clean verdict — on unknown the issue is left untouched and the job fails instead, because could-not-check is never rendered as clean.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="ci-health"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_Close" name="Close the&#10;tracking issue" calledElement="GT_CloseTrackingIssue">
+      <bpmn:documentation>Clean here means every open pull request's head now has a CI run.</bpmn:documentation>
       <bpmn:incoming>Flow_5</bpmn:incoming>
       <bpmn:outgoing>Flow_6</bpmn:outgoing>
-    </bpmn:task>
+      <bpmn:ioSpecification id="Task_Close_label_IO">
+        <bpmn:dataInput id="Task_Close_label" name="label"/>
+        <bpmn:inputSet id="Task_Close_label_In"><bpmn:dataInputRefs>Task_Close_label</bpmn:dataInputRefs></bpmn:inputSet>
+        <bpmn:outputSet id="Task_Close_label_Out"/>
+      </bpmn:ioSpecification>
+      <bpmn:dataInputAssociation id="Task_Close_label_Value">
+        <bpmn:targetRef>Task_Close_label</bpmn:targetRef>
+        <bpmn:assignment id="Task_Close_label_Assign">
+          <bpmn:from xsi:type="bpmn:tFormalExpression">pr-no-checks</bpmn:from>
+          <bpmn:to xsi:type="bpmn:tFormalExpression">Task_Close_label</bpmn:to>
+        </bpmn:assignment>
+      </bpmn:dataInputAssociation>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_Clean" name="Every head has a run">
       <bpmn:incoming>Flow_6</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Task_Track" name="Open or EDIT the one&#10;tracking issue">
-      <bpmn:documentation>Findings: EDIT the one open issue labelled pr-no-checks if there is one, otherwise create it, with the sweep's report as the body. One issue edited in place, never a new issue or a comment per run, so the tracking issue never becomes a feed.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="ci-health"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_Track" name="Open or EDIT the one&#10;tracking issue" calledElement="GT_TrackIssue">
+      <bpmn:documentation>The body is the sweep's report.</bpmn:documentation>
       <bpmn:incoming>Flow_7</bpmn:incoming>
       <bpmn:outgoing>Flow_8</bpmn:outgoing>
-    </bpmn:task>
+      <bpmn:ioSpecification id="Task_Track_label_IO">
+        <bpmn:dataInput id="Task_Track_label" name="label"/>
+        <bpmn:inputSet id="Task_Track_label_In"><bpmn:dataInputRefs>Task_Track_label</bpmn:dataInputRefs></bpmn:inputSet>
+        <bpmn:outputSet id="Task_Track_label_Out"/>
+      </bpmn:ioSpecification>
+      <bpmn:dataInputAssociation id="Task_Track_label_Value">
+        <bpmn:targetRef>Task_Track_label</bpmn:targetRef>
+        <bpmn:assignment id="Task_Track_label_Assign">
+          <bpmn:from xsi:type="bpmn:tFormalExpression">pr-no-checks</bpmn:from>
+          <bpmn:to xsi:type="bpmn:tFormalExpression">Task_Track_label</bpmn:to>
+        </bpmn:assignment>
+      </bpmn:dataInputAssociation>
+    </bpmn:callActivity>
     <bpmn:task id="Task_Comment" name="Comment ONCE per&#10;(PR, head sha)">
       <bpmn:documentation>Comment on each affected open PR once per (PR, head sha): a hidden marker carrying the sha is checked first, so a re-run on the same head stays silent and a new push can be reported again. A PR that is no longer open is skipped.</bpmn:documentation>
       <bpmn:extensionElements>

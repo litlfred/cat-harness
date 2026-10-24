@@ -141,14 +141,10 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
       <bpmn:outgoing>G12</bpmn:outgoing>
     </bpmn:exclusiveGateway>
 
-    <bpmn:task id="Task_Propose" name="Report what would move&#10;— sizes, and what breaks">
-      <bpmn:documentation>The agent reports and waits. `deletion-requires-confirmation` is not a courtesy to waive: an agent never removes or relocates a durable artefact on its own initiative.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="deletion-requires-confirmation"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_Propose" name="Report what would move&#10;— sizes, and what breaks" calledElement="GT_ReportWhatMoves">
       <bpmn:incoming>G12</bpmn:incoming>
       <bpmn:outgoing>G13</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:callActivity>
     <bpmn:callActivity id="Task_Authorise" calledElement="Process_AskThePerson" name="Authorise the extraction">
       <bpmn:documentation>The one step no package may relax. A repository cut changes the substrate every other diagram's lanes bind to, and that is a person's decision.</bpmn:documentation>
       <bpmn:extensionElements>

@@ -79,15 +79,11 @@ VERSIONS: the pair starts at the content's version at the split, then each is ve
     <bpmn:startEvent id="Start_Trigger" name="Too large, or readers&#10;and cadence differ">
       <bpmn:outgoing>F0</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Task_Brief" name="Brief, and claim&#10;the bean">
-      <bpmn:documentation>What is separating and why, what is already measured with its provenance, how it will be done, and what would falsify the approach. Claim the bean so a sibling session sees the work.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="opening-brief"/>
-        <cat-harness.processes:bean op="claim"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_Brief" name="Brief, and claim&#10;the bean" calledElement="GT_BriefAndClaim">
+      <bpmn:documentation>Here the work is a separation: what is separating, and why.</bpmn:documentation>
       <bpmn:incoming>F0</bpmn:incoming>
       <bpmn:outgoing>F1</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:callActivity>
     <bpmn:task id="Task_Measure" name="Measure the signals">
       <bpmn:documentation>Files and bytes per instance, clone cost (`bun run cat health`), gate time, merge contention, the candidate's cohesion and cut (`kg:detangle`), wrong-direction edges, and the would-be tools package's import cone. Recorded in the bean; none alone is a trigger.</bpmn:documentation>
       <bpmn:extensionElements>
@@ -188,15 +184,13 @@ VERSIONS: the pair starts at the content's version at the split, then each is ve
     <bpmn:endEvent id="End_Unknown" name="UNKNOWN — stop.&#10;Not clean">
       <bpmn:incoming>F16</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Task_Propose" name="Report what moves&#10;— sizes, what breaks">
-      <bpmn:documentation>The agent reports and waits: what moves, how large, what in the parent breaks, and the rollback. It never relocates a durable artefact on its own initiative.</bpmn:documentation>
+    <bpmn:callActivity id="Task_Propose" name="Report what moves&#10;— sizes, what breaks" calledElement="GT_ReportWhatMoves">
       <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="deletion-requires-confirmation"/>
         <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>F17</bpmn:incoming>
       <bpmn:outgoing>F18</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:callActivity>
     <bpmn:callActivity id="Task_Authorise" calledElement="Process_AskThePerson" name="9 · Authorise&#10;the extraction">
       <bpmn:documentation>A repository cut changes the substrate every other process binds to; that is a person's decision. Declining leaves the graph declared, detangled, isolated and split in place.</bpmn:documentation>
       <bpmn:extensionElements>
@@ -228,15 +222,10 @@ VERSIONS: the pair starts at the content's version at the split, then each is ve
       <bpmn:outgoing>F29</bpmn:outgoing>
       <bpmn:outgoing>F30</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Task_Drain" name="Drain: land, close or&#10;re-target the open PRs">
-      <bpmn:documentation>Work the PRs `seed:ready` named until the source settles: land or close the heavy movers and the next layer's PRs, bring the layer's open PRs to five or fewer, and finish any move in flight. Fix a red rehearsal or a discovery miss where it is. Nothing is seeded from here; it goes back to the gateway, which re-asks.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="kg-separation"/>
-        <cat-harness.processes:bean op="note"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_Drain" name="Drain: land, close or&#10;re-target the open PRs" calledElement="GT_Drain">
       <bpmn:incoming>F27</bpmn:incoming>
       <bpmn:outgoing>F28</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_SeedUnknown" name="UNKNOWN — do not&#10;seed. Not clean">
       <bpmn:incoming>F29</bpmn:incoming>
     </bpmn:endEvent>

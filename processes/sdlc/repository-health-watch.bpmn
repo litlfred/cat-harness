@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
@@ -70,39 +70,65 @@ ONE TRACKING ISSUE, EDITED IN PLACE, never a comment and never a second issue �
     <bpmn:endEvent id="End_Unknown" name="Unknown — job RED,&#10;issue UNTOUCHED">
       <bpmn:incoming>Flow_2</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Task_Label" name="Ensure the tracking&#10;label exists">
-      <bpmn:documentation>Create the repo-health label with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet. Skipped on an unknown verdict.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="ci-health"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_Label" name="Ensure the tracking&#10;label exists" calledElement="GT_EnsureTrackingLabel">
       <bpmn:incoming>Flow_3</bpmn:incoming>
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
-    </bpmn:task>
+      <bpmn:ioSpecification id="Task_Label_label_IO">
+        <bpmn:dataInput id="Task_Label_label" name="label"/>
+        <bpmn:inputSet id="Task_Label_label_In"><bpmn:dataInputRefs>Task_Label_label</bpmn:dataInputRefs></bpmn:inputSet>
+        <bpmn:outputSet id="Task_Label_label_Out"/>
+      </bpmn:ioSpecification>
+      <bpmn:dataInputAssociation id="Task_Label_label_Value">
+        <bpmn:targetRef>Task_Label_label</bpmn:targetRef>
+        <bpmn:assignment id="Task_Label_label_Assign">
+          <bpmn:from xsi:type="bpmn:tFormalExpression">repo-health</bpmn:from>
+          <bpmn:to xsi:type="bpmn:tFormalExpression">Task_Label_label</bpmn:to>
+        </bpmn:assignment>
+      </bpmn:dataInputAssociation>
+    </bpmn:callActivity>
     <bpmn:exclusiveGateway id="GW_Finding" name="Any&#10;findings?">
       <bpmn:documentation>Asked of the same `verdict`. `clean` is verdict == 'clean': the `repo-health` tracking issue is closed. `not clean` is verdict == 'findings': the one tracking issue is opened or edited in place with the report. A finding does not fail the job; only `unknown` does.</bpmn:documentation>
       <bpmn:incoming>Flow_4</bpmn:incoming>
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
       <bpmn:outgoing>Flow_7</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Task_Close" name="Close the&#10;tracking issue">
-      <bpmn:documentation>Clean: close the open repo-health issue, if any, saying why (every check ran and none had anything to report). Runs only on a clean verdict — on unknown the issue is left untouched and the job fails instead, because could-not-check is never rendered as clean.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="ci-health"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_Close" name="Close the&#10;tracking issue" calledElement="GT_CloseTrackingIssue">
+      <bpmn:documentation>Clean here means every check ran and none had anything to report.</bpmn:documentation>
       <bpmn:incoming>Flow_5</bpmn:incoming>
       <bpmn:outgoing>Flow_6</bpmn:outgoing>
-    </bpmn:task>
+      <bpmn:ioSpecification id="Task_Close_label_IO">
+        <bpmn:dataInput id="Task_Close_label" name="label"/>
+        <bpmn:inputSet id="Task_Close_label_In"><bpmn:dataInputRefs>Task_Close_label</bpmn:dataInputRefs></bpmn:inputSet>
+        <bpmn:outputSet id="Task_Close_label_Out"/>
+      </bpmn:ioSpecification>
+      <bpmn:dataInputAssociation id="Task_Close_label_Value">
+        <bpmn:targetRef>Task_Close_label</bpmn:targetRef>
+        <bpmn:assignment id="Task_Close_label_Assign">
+          <bpmn:from xsi:type="bpmn:tFormalExpression">repo-health</bpmn:from>
+          <bpmn:to xsi:type="bpmn:tFormalExpression">Task_Close_label</bpmn:to>
+        </bpmn:assignment>
+      </bpmn:dataInputAssociation>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_Clean" name="Repository clean">
       <bpmn:incoming>Flow_6</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Task_Track" name="Open or EDIT the one&#10;tracking issue">
-      <bpmn:documentation>Findings: EDIT the one open issue labelled repo-health if there is one, otherwise create it, with the report as the body. One issue edited in place, never a new issue or a comment per run, so the tracking issue never becomes a feed. The body states that nothing in it has been acted on.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="ci-health"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_Track" name="Open or EDIT the one&#10;tracking issue" calledElement="GT_TrackIssue">
+      <bpmn:documentation>The body states that nothing in it has been acted on.</bpmn:documentation>
       <bpmn:incoming>Flow_7</bpmn:incoming>
       <bpmn:outgoing>Flow_8</bpmn:outgoing>
-    </bpmn:task>
+      <bpmn:ioSpecification id="Task_Track_label_IO">
+        <bpmn:dataInput id="Task_Track_label" name="label"/>
+        <bpmn:inputSet id="Task_Track_label_In"><bpmn:dataInputRefs>Task_Track_label</bpmn:dataInputRefs></bpmn:inputSet>
+        <bpmn:outputSet id="Task_Track_label_Out"/>
+      </bpmn:ioSpecification>
+      <bpmn:dataInputAssociation id="Task_Track_label_Value">
+        <bpmn:targetRef>Task_Track_label</bpmn:targetRef>
+        <bpmn:assignment id="Task_Track_label_Assign">
+          <bpmn:from xsi:type="bpmn:tFormalExpression">repo-health</bpmn:from>
+          <bpmn:to xsi:type="bpmn:tFormalExpression">Task_Track_label</bpmn:to>
+        </bpmn:assignment>
+      </bpmn:dataInputAssociation>
+    </bpmn:callActivity>
     <bpmn:endEvent id="End_Found" name="Recorded — job stays GREEN">
       <bpmn:incoming>Flow_8</bpmn:incoming>
     </bpmn:endEvent>
