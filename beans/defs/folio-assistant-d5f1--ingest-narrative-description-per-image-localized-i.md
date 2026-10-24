@@ -1,11 +1,12 @@
 ---
 # folio-assistant-d5f1
+$schema: bean/1.0.0
 title: 'INGEST: narrative description per image, localized, including images extracted from PDFs'
 status: todo
 type: task
 priority: normal
 created_at: 2026-09-16T06:43:50Z
-updated_at: 2026-10-06T06:36:50Z
+updated_at: 2026-10-24T08:16:00Z
 parent: folio-assistant-slw1
 ---
 
@@ -278,3 +279,26 @@ After the content split, in this order:
 4. Each draft goes to the review queue for human confirmation.
 
 The work lands in folio-assistant-core.
+
+## Progress from `cat-tools-e1lo` (2026-10-21)
+
+Every figure block has an agent draft narrative: 274 in total across the `cat-harness`, `folio-assistant-core`, `folio-assistant-sci` and `who-iris` libraries. What remains is a narrative per language and human confirmation through the review queue.
+
+### Owner ruling 2026-10-21: a display shows the reader's language, else the first
+
+Asked in the `cat-harness-tools` drain session: when a slot holds several languages, which entry does a single-text display show? The owner chose **"Locale match, else first"**. Stage 3 is split so no layer's typecheck breaks when the slot types widen:
+
+- [x] **1–2**: PDF image extraction + 274 agent draft narratives across the 4 library instances
+- [x] **3a**, `cat-harness#396`: `narrativeFor(slot, lang?)` (matches exact `lang`, then primary subtag, then falls back to first entry)
+- [x] **3b**, `cat-harness-tools` + `folio-assistant-core#169` (`lsi-blocks.ts:88`) + `smart-base#117`
+- [x] **3c**, `cat-harness#400`: the six slot schemas switch to `NarrativeSlotSchema`, and `block-summary` / `figure-description` read through it
+- [x] **3d**: stored narratives migrated to one-entry lists tagged `lang: "en"` across `cat-harness` (#405, #407: 609), `folio-assistant-core` (#173: 50), `folio-assistant-sci` (#48: 50), `who-iris` (#78: 418), `smart-base` (#118) and `smart-immunizations` (#67), plus `cat-harness-tools` #537, #539, #540
+
+### Stage 4 — merged (`cat-tools-e1lo`, `cat-harness-tools#548` `85a3446e6f` + `cat-harness#413` `ee172f2d13`)
+- [x] Stage 4: make `lang` required on every written narrative and keep the bare object only as the empty `NOT_AUTHORED` slot (owner ruled `"1A 2A 3A"` on 2026-10-22; tools readiness merged in `cat-harness-tools#548` `85a3446e6f`, schema change merged in `cat-harness#413` `ee172f2d13`):
+  1. **1A**: `NOT_AUTHORED` (`{ text: null, state: "not-authored" }`) kept as the one single-form value with no `lang`,
+  2. **2A**: `superseded` history in block summaries requires `lang` too (0 entries exist today),
+  3. **3A**: `FigureSchema.narrative` on authored paper figure blocks becomes a `NarrativeSlotSchema` slot like every other (0 authored figure blocks carry a narrative today).
+- [ ] Draft localized narratives for each configured non-English language and queue each draft for human confirmation.
+
+_2026-10-24T08:16:00Z_ — Claimed by the cloud drain thread "Drain content model and ingest beans" (session https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU). Open work: French pilot in litlfred/folio-assistant-core#202, then the other locales.
