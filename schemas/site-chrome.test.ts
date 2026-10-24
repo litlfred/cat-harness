@@ -228,7 +228,7 @@ describe("first-party asset versions", () => {
   });
 
   test("every ?v= in head_custom.html hashes the very asset its URL names", () => {
-    const head = readFileSync(join(HARNESS, "site-chrome/_includes/head_custom.html"), "utf-8");
+    const head = readFileSync(join(HARNESS, siteChromeDirFor(HARNESS), "_includes/head_custom.html"), "utf-8");
     const tags = [...head.matchAll(/\{\{ '([^']+)' \| relative_url \}\}\?v=\{\{ '([^']+)' \| ([a-z_]+) \}\}/g)];
     expect(tags.length).toBeGreaterThanOrEqual(10);
     for (const [, url, hashed, filter] of tags) {
@@ -241,13 +241,13 @@ describe("first-party asset versions", () => {
   test("harness-data.js, which carries live counts, is loaded with no ?v", () => {
     // A ?v naming its content would put every count change into every page
     // (1,351 pages for one bean count, measured 2026-10-23).
-    const head = readFileSync(join(HARNESS, "site-chrome/_includes/head_custom.html"), "utf-8");
+    const head = readFileSync(join(HARNESS, siteChromeDirFor(HARNESS), "_includes/head_custom.html"), "utf-8");
     const tag = /<script src="\{\{ '\/assets\/js\/harness-data\.js' \| relative_url \}\}([^"]*)"/.exec(head);
     expect(tag?.[1]).toBe("");
   });
 
   test("the filter is defined in the chrome, so every site that mounts the chrome has it", () => {
-    const plugin = readFileSync(join(HARNESS, "site-chrome/_plugins/fa-asset-version.rb"), "utf-8");
+    const plugin = readFileSync(join(HARNESS, siteChromeDirFor(HARNESS), "_plugins/fa-asset-version.rb"), "utf-8");
     expect(plugin).toMatch(/def fa_asset_version\(/);
     expect(plugin).toMatch(/register_filter\(FaAssetVersion::Filter\)/);
     expect(plugin).toMatch(/Hooks\.register :site, :post_render/);
@@ -265,8 +265,8 @@ describe("first-party asset versions", () => {
  * time; this pins the pieces an edit could quietly undo.
  */
 describe("page-relative links", () => {
-  const plugin = readFileSync(join(HARNESS, "site-chrome/_plugins/fa-root-relative.rb"), "utf-8");
-  const head = readFileSync(join(HARNESS, "site-chrome/_includes/head_custom.html"), "utf-8");
+  const plugin = readFileSync(join(HARNESS, siteChromeDirFor(HARNESS), "_plugins/fa-root-relative.rb"), "utf-8");
+  const head = readFileSync(join(HARNESS, siteChromeDirFor(HARNESS), "_includes/head_custom.html"), "utf-8");
 
   test("the plugin swaps the base for a token once the site is read, before generators run, and resolves it after rendering", () => {
     // Not `pre_render`: jekyll-relative-links rewrites `.md` links at GENERATE
