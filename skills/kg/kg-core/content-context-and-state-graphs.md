@@ -360,20 +360,22 @@ without a word.
 **Creation at INITIALISATION is not a process write.** A `context` asset that
 does not exist yet has to come from somewhere, and bootstrap writing one when
 it is absent is not the write this rule forbids: **initialisation is not
-process runtime.** The rule governs a process operating on an instance that
-exists; initialisation is the act that brings one into being, so *"never
-written by a process"* cannot mean *"never created"* without leaving every
-instance without one.
+process runtime.** `initialize-harness.bpmn` ends with `A_WriteRootReadme`
+(`bootstrap/skills/root-readme.md`), which writes the root `README.md` when
+there is none and **never replaces** one that exists — an existing README is
+authored content, and the link and install status go in a marker pair that
+`readme_sync` owns from then on (bean `7sfm`).
 
-That is not hypothetical. `initialize-harness.bpmn` ends with
-`A_WriteRootReadme`, whose skill (`bootstrap/skills/root-readme.md`) writes
-the root `README.md` when there is none — an `instance-readme`, which is
-`context`. It **never replaces** one that exists: an existing README is
-authored content, and the link and install status go in a marker pair the
-harness's `readme_sync` owns from then on. Bean `7sfm`.
+**A process may CREATE or REPAIR the declaration (`<name>.json`) or config
+(`<name>.config.json`). It never maintains it.** Every `state` graph is one a
+running process keeps current (beans, QA witnesses, workflow tokens). Neither
+`<name>.json` nor `<name>.config.json` is that: `init-folio` writes them once
+when there is no folio yet, and `ensure-landing-sticky` inserts one missing
+`folio` directory entry on `!already` and returns on `already` thereafter — a
+one-time repair, never ongoing state maintenance (bean `b5f0`).
 
-Where this page and that skill disagree, **this page wins** and the skill is
-the copy that drifted — it says so itself.
+Where this page and a skill disagree, **this page wins** and the skill is the
+copy that drifted — it says so itself.
 
 ## See also
 
