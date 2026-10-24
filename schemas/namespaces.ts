@@ -237,9 +237,35 @@ export const OWN_BPMN_EXTENSION_NAMESPACES: readonly string[] = [BOOTSTRAP_PROCE
  */
 export const CANONICAL_EXTENSION_PREFIX = "folio";
 
-/** True when `uri` is one of {@link OWN_BPMN_EXTENSION_NAMESPACES}. */
+// ── TRANSITION: legacy exact-semver addresses (bootstrap-tools#39) ──────
+//
+// REMOVE with the tolerance in `bootstrap-tools/schemas/release-iri.ts`, once
+// every litlfred layer binds `<iriBase>v<major>/` (owner ruling 2026-10-23,
+// option B). Until then a layer composed at its own `main` still writes
+// `xmlns:cat-harness.processes="…/cat-harness/0.1.0/processes/ns#"`, and the
+// checks accept that same-major spelling as deprecated. The READER must too:
+// without this, every extension in such a diagram — its skills, lanes'
+// roles, policy and gateways — is silently not ours, which is the failure
+// bean `12s9` exists to prevent. Another major is a different release and is
+// still foreign.
+
+const escRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** Each own extension namespace, as `<iriBase>`, its major, and the path after `v<major>/`. */
+const LEGACY_EXTENSION_FORMS = OWN_BPMN_EXTENSION_NAMESPACES.flatMap((ns) => {
+  const m = /^(.*\/)v(\d+)\/(.*)$/.exec(ns);
+  return m ? [{ re: new RegExp(`^${escRe(m[1]!)}(\\d+)\\.\\d+\\.\\d+/${escRe(m[3]!)}$`), major: Number(m[2]) }] : [];
+});
+
+/**
+ * True when `uri` is one of {@link OWN_BPMN_EXTENSION_NAMESPACES} — or, for
+ * the transition above, its legacy `<iriBase><semver>/…` spelling of the same
+ * major.
+ */
 export function isOwnExtensionNamespace(uri: string | undefined): boolean {
-  return uri !== undefined && OWN_BPMN_EXTENSION_NAMESPACES.includes(uri);
+  if (uri === undefined) return false;
+  if (OWN_BPMN_EXTENSION_NAMESPACES.includes(uri)) return true;
+  return LEGACY_EXTENSION_FORMS.some(({ re, major }) => Number(re.exec(uri)?.[1] ?? NaN) === major);
 }
 
 /**
