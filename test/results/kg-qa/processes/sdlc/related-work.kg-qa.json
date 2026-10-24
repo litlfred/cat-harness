@@ -5,7 +5,7 @@
     "id": "Process_RelatedWork",
     "path": "processes/sdlc/related-work.bpmn"
   },
-  "source_hash": "sha256:8cac4c51fcdbeed9b454ca4e02748a137ff9b058b6b9630167c5669d741ca975",
+  "source_hash": "sha256:4425d95105c6bc833d6c65f48739ed10c996bd62c8767ef52eb8d5a50fb21a57",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -45,6 +45,10 @@
         {
           "where": "A_Categorize",
           "detail": "names skill \"related-work-coordination\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
+        },
+        {
+          "where": "U_Coordinate",
+          "detail": "names skill \"interaction-modality\", which no Tool declares `satisfies` for — the step's mechanism is still prose."
         },
         {
           "where": "A_Record",
@@ -93,7 +97,7 @@
       "findings": []
     },
     "call-activity-resolves": {
-      "result": "n/a",
+      "result": "pass",
       "findings": []
     },
     "process-diagram-published": {
@@ -144,9 +148,9 @@
     }
   },
   "totals": {
-    "pass": 12,
+    "pass": 13,
     "fail": 3,
-    "n/a": 12,
+    "n/a": 11,
     "unknown": 0
   }
 }

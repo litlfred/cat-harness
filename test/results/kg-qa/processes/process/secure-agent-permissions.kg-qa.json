@@ -5,7 +5,7 @@
     "id": "Process_SecureAgentPermissions",
     "path": "processes/process/secure-agent-permissions.bpmn"
   },
-  "source_hash": "sha256:6122b15a97a31248458267001c9699c92d930ed0a923fb1bc37e00909acab67c",
+  "source_hash": "sha256:45b60b5729dfae5bddb614eedf8875dac2d6b36a0ca6e63d61aca0881c3a759d",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

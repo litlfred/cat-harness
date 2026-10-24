@@ -7,14 +7,14 @@
     "md": "docs/source/concepts-harnessed-kg-overview/slide-03.md"
   },
   "source_hashes": {
-    "md": "e96e6b3aaee7",
+    "md": "dbabdf2827a7",
     "ts": "0556d754fc77"
   },
   "criteria": {
     "voice-status-leak": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -27,14 +27,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "e7148867194b"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "voice-probe-narrative": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -47,14 +47,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "2cfefc829099"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "cite-named-theorem": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -67,14 +67,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "340b4b0dd5c5"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "voice-agent-speak": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -87,14 +87,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "2cfefc829099"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "voice-emoji-content": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -107,14 +107,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "2cfefc829099"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "voice-first-person-work": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -127,14 +127,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "2cfefc829099"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "voice-time-stamped-notes": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -147,14 +147,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "2cfefc829099"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "voice-unicode-crash": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -167,15 +167,15 @@
           "script_commit_sha": "unknown",
           "def_hash": "63a6e57fead9"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "criterion applies to the paper profile; this folio is document (index.config.json entry \"cat-harness\" contentType: \"document\")"
       }
     ],
     "voice-editorializing": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -188,14 +188,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "340b4b0dd5c5"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "voice-scholarly-default": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -208,15 +208,15 @@
           "script_commit_sha": "unknown",
           "def_hash": "90af5388e1e9"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "criterion applies to the paper profile; this folio is document (index.config.json entry \"cat-harness\" contentType: \"document\")"
       }
     ],
     "voice-title-scholarly": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -229,14 +229,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "a88562c76c07"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "voice-ai-slop": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -249,14 +249,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "440226b73b33"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "voice-author-notes-pollution": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "fail",
@@ -269,8 +269,8 @@
           "script_commit_sha": "unknown",
           "def_hash": "2cfefc829099"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "severity": "major",
         "evidence": "cat-harness/docs/source/concepts-harnessed-kg-overview/slide-03.md:18: P4:date-ref: <details markdown=\"1\"><summary>The figure as it appeared on the slide (2026-09-30): nine cards</summary> | cat-harness/docs/source/concepts-harnessed-kg-overview/slide-03.md:24: P4:date-ref: **Sources:** the owner, 2026-09-30 (ten: the original eight plus scheduling"
       }
@@ -278,7 +278,7 @@
     "voice-status-section": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -291,14 +291,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "2cfefc829099"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "render-math-mode-envelope": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -311,8 +311,8 @@
           "script_commit_sha": "unknown",
           "def_hash": "440226b73b33"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "proof-no-trivial-skeleton": [
@@ -340,7 +340,7 @@
     "canonical-calibration-count": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -353,14 +353,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "e7148867194b"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "canonical-witness-pinned": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -373,8 +373,8 @@
           "script_commit_sha": "unknown",
           "def_hash": "5d8325c49fea"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "canonical-script-not-deprecated": [
@@ -400,7 +400,7 @@
     "canonical-dilogarithm-context": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -413,14 +413,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "5d8325c49fea"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "canonical-no-hardcoded-observable": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -433,14 +433,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "2cfefc829099"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "canonical-no-negative-result-in-paper": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "pass",
@@ -453,8 +453,8 @@
           "script_commit_sha": "unknown",
           "def_hash": "791b80875ca1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "compute-witness-exists": [
@@ -500,7 +500,7 @@
     "detangler-no-forward-ref": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77",
           "graph": "e3b0c44298fc"
         },
@@ -514,14 +514,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "f0a866b13629"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "foreshadows-point-forward": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77",
           "graph": "e3b0c44298fc"
         },
@@ -535,14 +535,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "f0a866b13629"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "detangler-section-band": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77",
           "graph": "e3b0c44298fc"
         },
@@ -556,14 +556,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "a88562c76c07"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "detangler-no-xchapter-fwd": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77",
           "graph": "e3b0c44298fc"
         },
@@ -577,15 +577,15 @@
           "script_commit_sha": "unknown",
           "def_hash": "f0a866b13629"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "not implemented: stub checker"
       }
     ],
     "detangler-block-tanglement": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77",
           "graph": "e3b0c44298fc"
         },
@@ -599,14 +599,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "f0a866b13629"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "detangler-graph-energy": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77",
           "graph": "e3b0c44298fc"
         },
@@ -620,14 +620,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "f0a866b13629"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "detangler-topic-coherence": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77",
           "graph": "e3b0c44298fc"
         },
@@ -641,14 +641,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "340b4b0dd5c5"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "detangler-no-dependency-cycle": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77",
           "graph": "e3b0c44298fc"
         },
@@ -662,14 +662,14 @@
           "script_commit_sha": "unknown",
           "def_hash": "f0a866b13629"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173"
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e"
       }
     ],
     "uses-editorial-hygiene": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -683,8 +683,8 @@
           "deps_hash": "e43a2b30e261",
           "def_hash": "f0a866b13629"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "content graph unavailable (no folio/ root found)"
       }
     ],
@@ -713,7 +713,7 @@
     "lean-ref-owns-decl": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -727,15 +727,15 @@
           "deps_hash": "e43a2b30e261",
           "def_hash": "d292915cbf8a"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "criterion applies to the paper profile; this folio is document (index.config.json entry \"cat-harness\" contentType: \"document\")"
       }
     ],
     "bib-cite-resolves": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -749,15 +749,15 @@
           "deps_hash": "3b50a96e80ae",
           "def_hash": "e703243fe06f"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "bib-cited-ref-has-url": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -771,15 +771,15 @@
           "deps_hash": "3b50a96e80ae",
           "def_hash": "e08cc9c741f6"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "bib-cited-ref-metadata-ok": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -793,15 +793,15 @@
           "deps_hash": "3b50a96e80ae",
           "def_hash": "e08cc9c741f6"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "bib-cited-ref-has-screenshot": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -815,15 +815,15 @@
           "deps_hash": "3b50a96e80ae",
           "def_hash": "17f40a4ba0f4"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "dak-companion-present": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -836,8 +836,8 @@
           "script_commit_sha": "unknown",
           "def_hash": "a348222a93f0"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "criterion applies to dak; block kind \"prose\" is document"
       }
     ],
@@ -907,7 +907,7 @@
     "dak-label-prefix-matches-kind": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -920,15 +920,15 @@
           "script_commit_sha": "unknown",
           "def_hash": "83efbe1fdf9d"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "criterion applies to dak; block kind \"prose\" is document"
       }
     ],
     "id-unique": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -941,8 +941,8 @@
           "script_commit_sha": "unknown",
           "def_hash": "bcd452a1177c"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "no folio content root to index — uniqueness undetermined"
       }
     ],
@@ -970,7 +970,7 @@
     "da-false-claim": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -980,15 +980,15 @@
           "actor": "ci-pipeline",
           "version": "v1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "da-vacuous": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -998,15 +998,15 @@
           "actor": "ci-pipeline",
           "version": "v1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "da-circular": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -1016,15 +1016,15 @@
           "actor": "ci-pipeline",
           "version": "v1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "da-overclaim": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -1034,15 +1034,15 @@
           "actor": "ci-pipeline",
           "version": "v1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "da-hidden-dof": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -1052,15 +1052,15 @@
           "actor": "ci-pipeline",
           "version": "v1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "da-non-sequitur": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -1070,15 +1070,15 @@
           "actor": "ci-pipeline",
           "version": "v1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "da-arity-conflation": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -1088,15 +1088,15 @@
           "actor": "ci-pipeline",
           "version": "v1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "da-lean-narrative-divergence": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -1106,15 +1106,15 @@
           "actor": "ci-pipeline",
           "version": "v1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "criterion applies to the paper profile; this folio is document (index.config.json entry \"cat-harness\" contentType: \"document\")"
       }
     ],
     "da-citation-misuse": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -1124,15 +1124,15 @@
           "actor": "ci-pipeline",
           "version": "v1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "da-definitional-ambiguity": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -1142,15 +1142,15 @@
           "actor": "ci-pipeline",
           "version": "v1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "da-empirical-fragility": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -1160,15 +1160,15 @@
           "actor": "ci-pipeline",
           "version": "v1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "da-physical-implausibility": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -1178,15 +1178,15 @@
           "actor": "ci-pipeline",
           "version": "v1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "da-reproducibility": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -1196,15 +1196,15 @@
           "actor": "ci-pipeline",
           "version": "v1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ],
     "da-referee-verdict": [
       {
         "field_hash": {
-          "md": "e96e6b3aaee7",
+          "md": "dbabdf2827a7",
           "ts": "0556d754fc77"
         },
         "result": "n/a",
@@ -1214,11 +1214,11 @@
           "actor": "ci-pipeline",
           "version": "v1"
         },
-        "reviewed_at": "2026-10-21T08:48:38.528Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-24T02:26:56.659Z",
+        "reviewed_sha": "b5a65aa423dec3753677a4abfd807af02727a83e",
         "notes": "block has no .lean sibling"
       }
     ]
   },
-  "updated_at": "2026-10-21T08:48:38.528Z"
+  "updated_at": "2026-10-24T02:26:56.659Z"
 }

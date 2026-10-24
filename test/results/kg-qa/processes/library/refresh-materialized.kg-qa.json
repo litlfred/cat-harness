@@ -5,7 +5,7 @@
     "id": "Process_RefreshMaterialized",
     "path": "processes/library/refresh-materialized.bpmn"
   },
-  "source_hash": "sha256:10d90539c1a8688fdae21a53f1966da88c7a3758304368a77167abb8a2c0062a",
+  "source_hash": "sha256:a82dd3ed1d50f2adf406a56a00653aaefa707c465887e398e422b89b12c8a0e1",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

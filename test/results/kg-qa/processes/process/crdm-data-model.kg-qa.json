@@ -5,7 +5,7 @@
     "id": "Process_CRDM_DataModel",
     "path": "processes/process/crdm-data-model.bpmn"
   },
-  "source_hash": "sha256:0a2a935900cbcf655ad028459a7547ca07624db709f949ca745774fb8c4243bf",
+  "source_hash": "sha256:707a31415b31878168b0f44f3405a4fbeb828dab40baae355234239d9fe118a6",
   "criteria": {
     "raci-role-resolves": {
       "result": "pass",
@@ -139,7 +139,7 @@
       "findings": []
     },
     "call-activity-resolves": {
-      "result": "n/a",
+      "result": "pass",
       "findings": []
     },
     "process-diagram-published": {
@@ -180,9 +180,9 @@
     }
   },
   "totals": {
-    "pass": 17,
+    "pass": 18,
     "fail": 3,
-    "n/a": 7,
+    "n/a": 6,
     "unknown": 0
   }
 }

@@ -5,7 +5,7 @@
     "id": "Process_QaPublish",
     "path": "processes/sdlc/qa-publish.bpmn"
   },
-  "source_hash": "sha256:fa548fb281ba25357a692ff0512a9f294d595fc86ff3fa6c96affd7b776228cf",
+  "source_hash": "sha256:e3875df5a3014093849135998bb7a95f368e366ee389a4fd4cdbb2ecf1f12bc4",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

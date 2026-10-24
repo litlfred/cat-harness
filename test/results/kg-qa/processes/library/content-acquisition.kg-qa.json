@@ -5,7 +5,7 @@
     "id": "Process_ContentAcquisition",
     "path": "processes/library/content-acquisition.bpmn"
   },
-  "source_hash": "sha256:73ebf6f75ce419038d760fb9f1cc42f00a9854a58ad035de350175d59226a2eb",
+  "source_hash": "sha256:b5b8e8f278845b0fb77d8dcdd503256073b3db63f92e02139f568d6dd274033f",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
@@ -115,7 +115,7 @@
       "findings": []
     },
     "call-activity-resolves": {
-      "result": "n/a",
+      "result": "pass",
       "findings": []
     },
     "process-diagram-published": {
@@ -156,9 +156,9 @@
     }
   },
   "totals": {
-    "pass": 14,
+    "pass": 15,
     "fail": 3,
-    "n/a": 10,
+    "n/a": 9,
     "unknown": 0
   }
 }

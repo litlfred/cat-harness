@@ -5,7 +5,7 @@
     "id": "Process_MergeToMain",
     "path": "processes/sdlc/merge-to-main.bpmn"
   },
-  "source_hash": "sha256:fbf9f3808b05ca3266b5259a6197c1c9aa056b2046c98b45737f4ae65ebb624b",
+  "source_hash": "sha256:643418a3359ef3eea42eeffa3fec58cb2cf189961f2fafb44423b4aa68f4b47a",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

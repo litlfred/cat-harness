@@ -5,7 +5,7 @@
     "id": "test-requester",
     "path": "scenarios/roles.json"
   },
-  "source_hash": "sha256:a55d7dc2c4aa2377e869486e635707736801f42d2ca8ac8ff161da564a51edd4",
+  "source_hash": "sha256:cef50d087cae3c56d36a07b8ffc827527f8b4356b84b41794e1f40b930410d24",
   "criteria": {
     "role-skills-resolve": {
       "result": "pass",

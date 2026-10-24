@@ -5,7 +5,7 @@
     "id": "Process_ActivityLog",
     "path": "processes/sdlc/activity-log.bpmn"
   },
-  "source_hash": "sha256:8bf660d4c3c45537692cf2578dcea335f95fe6b143521556f1ede292bc31c951",
+  "source_hash": "sha256:662ebb611a8cd18bede83c6b4e3614a5ba81b616d2265ffde744369e90182514",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",

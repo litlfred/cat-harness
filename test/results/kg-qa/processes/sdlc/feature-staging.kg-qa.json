@@ -5,7 +5,7 @@
     "id": "Process_FeatureStaging",
     "path": "processes/sdlc/feature-staging.bpmn"
   },
-  "source_hash": "sha256:9388446cd2a66b366d6e4d1a88cbd9f3389a07ce00a3571e6077af7ff7cba8c2",
+  "source_hash": "sha256:d08c8f54bb290f79ff883dd7839f2d4155dabcb80945317a4144fdf640b07405",
   "criteria": {
     "raci-role-resolves": {
       "result": "n/a",
