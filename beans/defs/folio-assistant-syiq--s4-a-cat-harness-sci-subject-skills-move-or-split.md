@@ -1,11 +1,11 @@
 ---
 # folio-assistant-syiq
 title: 'S4-a: cat-harness sci-subject skills move or split to folio-assistant-sci (watchers, editorial graph, Milnor; ~48 rows)'
-status: todo
+status: in-progress
 type: task
 priority: normal
 created_at: 2026-10-01T12:16:24Z
-updated_at: 2026-10-24T08:05:00Z
+updated_at: 2026-10-24T09:40:00Z
 parent: folio-assistant-7x5n
 ---
 
@@ -21,3 +21,5 @@ _2026-10-16T06:30:00Z_ — The note above is mirrored from the folio-assistant s
 ## 2026-10-24 — re-measured (separation drain, session https://claude.ai/code/session_01X14WfP6kHutkCyB8dpmj4e)
 
 Re-measured against cat-harness main: 34 of the 48 rows are still at their original path (was 47 on 2026-10-09). Only 2 are plain MOVEs (`authoring-core/editor.md`, `graph-management/edge-kinds-and-blast-radius.md`); 22 are SPLITs and 10 AMBIGUOUS, each needing a per-file edit.
+
+_2026-10-24T09:40:00Z_ — Claimed by https://claude.ai/code/session_01WJw1NBGSTLWvBnyQzJHXjx (agy released it at 09:06Z).
