@@ -1,14 +1,14 @@
 {
   "$schema": "folio-detangle-sidecar/v1",
   "group": "cat-harness/skills/authoring/content-lifecycle",
-  "size": 12,
-  "internal": 11,
-  "inbound": 55,
+  "size": 11,
+  "internal": 10,
+  "inbound": 54,
   "outbound": 6,
-  "cohesion": 0.15,
+  "cohesion": 0.14,
   "enforcedBoundary": 0,
-  "recordedBoundary": 61,
-  "proseMentions": 16,
+  "recordedBoundary": 60,
+  "proseMentions": 15,
   "wrongDirection": 1,
   "undeterminedDirection": 0
 }
