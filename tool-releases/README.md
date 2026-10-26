@@ -13,9 +13,16 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tool-releases`, holding 
 
 | file | what it is | used by |
 |---|---|---|
+| [`ci-2026-10.profile.json`](ci-2026-10.profile.json) | Named CI tool profile for October 2026: PlantUML (with Temurin 21 JRE and Graphviz), Graphviz, FSH SUSHI (with [Node](https://litlfred.github.io/bootstrap/schemas/#node) 22 LTS), TeX Live (OCI by digest), and Le… |  |
 | [`default.profile.json`](default.profile.json) | The tools this platform's own renders need: PlantUML, which brings its JRE and graphviz in as runtimes, and graphviz for direct `dot` use. |  |
+| [`fsh-sushi-3.13.0.json`](fsh-sushi-3.13.0.json) | data |  |
 | [`graphviz-16.1.0-linux-x64-ubuntu-24.04.json`](graphviz-16.1.0-linux-x64-ubuntu-24.04.json) | data |  |
+| [`lean-4.12-test.profile.json`](lean-4.12-test.profile.json) | Test profile for Lean 4.12 formalisation and diagram rendering. |  |
+| [`lean-toolchain-4.12.0.json`](lean-toolchain-4.12.0.json) | data |  |
+| [`node-22.11.0-linux-x64.json`](node-22.11.0-linux-x64.json) | data |  |
 | [`plantuml-1.2024.7.json`](plantuml-1.2024.7.json) | data |  |
+| [`temurin-jre-17.0.12_7-linux-x64.json`](temurin-jre-17.0.12_7-linux-x64.json) | data |  |
 | [`temurin-jre-21.0.4_7-linux-x64.json`](temurin-jre-21.0.4_7-linux-x64.json) | data |  |
+| [`texlive-2024.2-oci.json`](texlive-2024.2-oci.json) | data |  |
 
 <!-- kg:subgraph:end -->
