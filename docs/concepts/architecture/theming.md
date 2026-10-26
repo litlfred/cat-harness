@@ -65,7 +65,7 @@ could not reach through `skill_fetch`.
 
 ## What moved, and what deliberately did not
 
-`theme-art-intake` moved from `skills/folio-core/` and **kept its name**. Ids
+`theme-art-intake` moved from `skills/tools/folio-core/` and **kept its name**. Ids
 are stable across a relocation while paths are not, so `skill_fetch` and
 `roles.json` resolve unchanged.
 

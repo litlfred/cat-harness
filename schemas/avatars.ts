@@ -455,6 +455,28 @@ export const AVATARS: Readonly<Record<string, Avatar>> = {
     tone: 110,
     reads: "the plan's checklist filled in — one run's verdicts against one plan, never a tally across plans",
   },
+  "test-data-fixed": {
+    // A pinned specimen card with a seal: curated records committed to the
+    // repo and reviewed as audit evidence, distinct from `test-data-generated`'s
+    // die-and-template recipe.
+    glyph: "M5 5h14v14H5zM8 9h8M8 12h5M15 14a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM12 3v3",
+    tone: 152,
+    reads: "a pinned specimen card with a seal — curated, committed fixed test data usable as evidence once reviewed",
+  },
+  "test-data-generated": {
+    // A die beside a template frame: a deterministic recipe (template + params +
+    // seed) that synthesises test records at run time and is never stored materialised.
+    glyph: "M4 5h9v9H4zM6.5 7.5h.01M10.5 7.5h.01M8.5 9.5h.01M6.5 11.5h.01M10.5 11.5h.01M15 9h5v10h-5zM17 12h1M17 15h1",
+    tone: 172,
+    reads: "a five-pip die beside a template — a deterministic recipe that synthesises test inputs from template, params and seed",
+  },
+  "sme-case-verdict": {
+    // A clipboard with a stethoscope/magnifying loop and a signed checkmark:
+    // an attributable human SME's case or cohort judgement.
+    glyph: "M6 4h12v16H6zM9 4V2h6v2M9 10a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0zM13.5 12l2.5 2.5M9 17l1.5 1.5 3-3",
+    tone: 128,
+    reads: "a clipboard with a lens and a signed tick — an attributable human SME's verdict on a worked case or indicator cohort",
+  },
   library: {
     glyph: "M5 4h4v16H5zM11 4h3v16h-3zM16 5l3 15-2 .4L14 5.4z",
     tone: 36,

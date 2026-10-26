@@ -119,6 +119,8 @@ export const PROPERTY_SKILLS = {
   // reports an unclassified step.
   gateExemptions: { skills: ["prepare-merge"] },
   contentAdapters: { skills: ["content-profiles"] },
+  // Bean `ec2a` step 3: the graphs `lsi:near` searches beside the beans.
+  lsiUnitProviders: { skills: ["lsi-indexing"] },
   // Bean `0r7u`: each instance's translation profile per content type it owns.
   contentTranslations: { skills: ["translation-manager"] },
   liquid: { skills: ["witnessed-values"] },

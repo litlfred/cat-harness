@@ -37,7 +37,7 @@ references `${NAME}`. Files at `beans/devils-advocate-watcher-queue.json`
 and `beans/devils-advocate-watcher-ledger.md`.
 
 **Standing authority.** This watcher is the operational arm of the
-**Critical-distance license** (the folio's own `AGENTS.md` — `litlfred/qou` `AGENTS.md`
+**Critical-distance license** (the folio's own `AGENTS.md`,
 §"Critical-distance license"):
 agents have standing permission — and an affirmative duty when asked for
 assessment — to challenge the project's claims on the merits, flag
@@ -58,9 +58,9 @@ durable artifact (sidecar `verdict`, audit doc, ledger, PR):
      stated." The default. Constrains magnitudes/combinations, not
      ingredients.
    - `scope: structural` — "this cannot hold in any closure." Permitted
-     **only** when a *proved invariant* forbids it (a parity/sign,
-     dimension/degree/count bound, a formally-proved impossibility, an
-     entropy/precision bound). **Must cite the invariant** in
+     **only** when a *proved invariant* forbids it (a bound, a
+     conservation rule, a formally-proved impossibility, or whatever the
+     content type counts as one). **Must cite the invariant** in
      `evidence`. Without one, downgrade to `limited`.
 2. **corpus-grep checklist** (§"Before declaring 'open'"). Before a
    finding asserts an item is *unresolved/open in the corpus*, run the
@@ -108,15 +108,20 @@ changed=$(git diff-tree --no-commit-id --name-only -r "$SHA")
 
 is_da_event=false
 
-# (i) Any provable / definitional / conjecture content block touched.
+# The content type supplies two patterns: KINDS, its claim-bearing block
+# kinds, and FORMAL, the path of its formal-layer siblings (empty when it
+# has none). For a paper folio see the science layer's
+# `devils-advocate-paper`.
+
+# (i) Any claim-bearing content block touched.
 for f in $(echo "$changed" | grep -E 'content/.*\.(md|ts)$'); do
   ts="${f%.*}.ts"
-  [ -f "$ts" ] && grep -qE '^export default (theorem|lemma|proposition|corollary|conjecture|definition|remark|example)\(' "$ts" \
+  [ -f "$ts" ] && grep -qE "^export default ($KINDS)\\(" "$ts" \
     && is_da_event=true
 done
 
-# (ii) Any formal-layer sibling under a paper's formal tree.
-echo "$changed" | grep -qE 'content/.*/(lean|formal)/.*\.(lean|v|thy)$' && is_da_event=true
+# (ii) Any formal-layer sibling.
+[ -n "$FORMAL" ] && echo "$changed" | grep -qE "$FORMAL" && is_da_event=true
 
 # (iii) Any witness / derivation JSON that a block's number is pinned to
 #       (the empirical-fragility + reproducibility lenses consume these).
@@ -141,7 +146,7 @@ partial`.
 
 | Lens (agent) | When to run | What it attacks | Primary taxonomy (Slot D) |
 |--------------|-------------|-----------------|---------------------------|
-| **L1 Formalist** | always | Logical structure: is `S(B)` actually entailed by its `uses[]`? missing lemma? quantifier slip? Does `F(B)` prove `S(B)` or something weaker/vacuous (`: True`, self-assuming projection, decision-procedure mask)? | `da-false-claim`, `da-non-sequitur`, `da-vacuous`, `da-formal-narrative-divergence` |
+| **L1 Formalist** | always | Logical structure: is `S(B)` actually entailed by its `uses[]`? missing lemma? quantifier slip? Does `F(B)` establish `S(B)` or something weaker or vacuous (the content type lists its vacuity shapes)? | `da-false-claim`, `da-non-sequitur`, `da-vacuous`, `da-formal-narrative-divergence` |
 | **L2 Skeptical domain expert** | block states a numerical/empirical/domain claim, or `uses[]` touches a calibration / measured-quantity block | Numerology, overfitting, hidden degrees of freedom, an undisclosed swing the prose hides, unit/conservation errors, contradiction with a known measurement | `da-hidden-dof`, `da-overclaim`, `da-empirical-fragility`, `da-domain-implausibility`, `da-circular` |
 | **L3 Structural / theory critic** | provable or definitional kind | Counterexample hunt; is the construction well-defined (the "unique X" without uniqueness)? domain/regime error? is a claim secretly about a different regime than it says? | `da-false-claim`, `da-definitional-ambiguity`, `da-overclaim` |
 | **L4 Reproducibility / citation auditor** | block has `cites[]`, a `-- Ref:` in `F(B)`, or a pinned witness number | Does the cited reference actually contain the result? Is the witness reproducible, fresh (not stale), and does its number match the prose `≈`? | `da-citation-misuse`, `da-reproducibility`, `da-empirical-fragility` |
@@ -226,7 +231,7 @@ In a single adversarial pass, each lens agent (Formalist, Skeptic, Structural Cr
 ### 2. When to Elevate to Structured Debate
 
 A single-pass fan-out remains appropriate for standard remarks, simple examples, and routine maintenance blocks. The watcher elevates to a structured **3-round competitive debate** under three explicit trigger conditions:
-1. **High blast radius & headline proximity (Slot H items 1 & 2):** Any block on the manuscript's central derivation chain, headline theorems, or global calibration parameters.
+1. **High blast radius & headline proximity (Slot H items 1 & 2):** Any block on the manuscript's central derivation chain, headline results, or global calibration parameters.
 2. **Multi-lens contention / divergent rulings:** When independent lenses produce conflicting assessments (e.g., L1 flags `da-false-claim` while L3 assesses the construction as well-defined, or L2 flags `da-empirical-fragility` on a number L4 considers reproducible).
 3. **Multi-hop dependency ambiguity:** When a defect could stem from the immediate block statement or any of its transitive `uses[]` dependencies within depth $L \le 5$.
 
@@ -247,7 +252,7 @@ criterion that fired; the `da-referee-verdict` is the rollup.
 | Criterion id | "Why a referee says it's wrong" |
 |--------------|---------------------------------|
 | `da-false-claim` | The stated proposition is false — a counterexample exists, a quantifier is wrong, or a special case fails. |
-| `da-vacuous` | True but content-free: `: True := trivial`, a self-assuming projection (`:= ctx.claim`), a tautology (`x = x`), or a hypothesis so strong the conclusion is immediate. Proves nothing of interest. |
+| `da-vacuous` | True but content-free: a formal layer that states nothing (the content type lists the shapes), a self-assuming projection, a tautology (`x = x`), or a hypothesis so strong the conclusion is immediate. Proves nothing of interest. |
 | `da-circular` | The derivation assumes its conclusion: the target value is back-fitted, a calibration is smuggled in, or `S(B)` is used (directly/transitively) in its own justification. |
 | `da-overclaim` | Conclusion stronger than the argument supports: a scope-limited negative written as a structural exclusion, "derived" where it is "fitted", "proved" where it is "conditional", absolute where it is approximate. |
 | `da-hidden-dof` | An undisclosed free parameter — an off-menu coefficient, a constant with no derivation-chain origin, a tuned exponent whose source is unstated (numerology). |
@@ -291,11 +296,11 @@ the sidecars conform once the platform validator adopts them.
 
 | Band | Devil's-advocate shape | Action |
 |------|------------------------|--------|
-| **Auto-discharge** | The objection has a mechanical fix the watcher may apply without author judgement: a `da-vacuous` `: True` stub that should resolve to a real library decl; a `da-overclaim` durable "REFUTED" missing the (a)/(b) scope (re-scope to `limited`, cite the supporting note); a `da-citation-misuse` where the correct ref exists in `references.ts`; a `da-reproducibility` stale-witness refresh; a stale-`≈`-vs-`=` notation fix. Apply, re-run the relevant checker, commit. |
-| **Author-assist** | The objection is *substantive* and needs the author's judgement: a `da-false-claim` / `da-non-sequitur` / `da-circular` that, if real, changes the math; a `da-hidden-dof` candidate undisclosed parameter; a `da-empirical-fragility` that questions a headline number; a `da-formal-narrative-divergence` requiring a re-statement. Open one author ask per stuck block (§4e) with the referee argument verbatim. |
-| **Defer** | The objection is `rebutted` by the block's own materials or the corpus-grep checklist, OR is a known/acknowledged open item already tracked (a `conj:` kind, an acknowledged-stub, a documented gate blocker). Record `verdict: rebutted` (or `wontfix` with the tracking artifact) so it is not re-raised. |
+| **Auto-discharge** | The objection has a mechanical fix the watcher may apply without author judgement: a `da-vacuous` formal stub that should resolve to a real library declaration; a `da-overclaim` durable "REFUTED" missing the (a)/(b) scope (re-scope to `limited`, cite the supporting note); a `da-citation-misuse` where the correct ref exists in `references.ts`; a `da-reproducibility` stale-witness refresh; a stale-`≈`-vs-`=` notation fix. Apply, re-run the relevant checker, commit. |
+| **Author-assist** | The objection is *substantive* and needs the author's judgement: a `da-false-claim` / `da-non-sequitur` / `da-circular` that, if real, changes the claim; a `da-hidden-dof` candidate undisclosed parameter; a `da-empirical-fragility` that questions a headline number; a `da-formal-narrative-divergence` requiring a re-statement. Open one author ask per stuck block (§4e) with the referee argument verbatim. |
+| **Defer** | The objection is `rebutted` by the block's own materials or the corpus-grep checklist, OR is a known/acknowledged open item already tracked (an admitted-open kind such as a paper's `conj:`, an acknowledged-stub, a documented gate blocker). Record `verdict: rebutted` (or `wontfix` with the tracking artifact) so it is not re-raised. |
 
-**Critical do-not.** This watcher **never edits the math to make an
+**Critical do-not.** This watcher **never edits the claim to make an
 objection go away.** Auto-discharge is limited to scope/notation/
 citation/witness *hygiene*; any change to a statement, a proof, or a
 number is Author-assist. A devil's advocate that "fixes" the claim it
@@ -322,18 +327,18 @@ attacked has destroyed its own evidence.
 Lead with the full context in chat (per parent §4e), then mirror a tight
 `AskUserQuestion` (🟡 prefix, `multiSelect: true` per §0d). The referee
 argument goes in the chat prose, not the structured option `description`
-(math legibility, AGENTS.md §User accessibility).
+(legibility, AGENTS.md §User accessibility).
 
 ## Slot G — §5a backlog discovery
 
-The backlog is **every provable, definitional, and conjecture block in
-the corpus that has no current `da-referee-verdict` entry**, plus every
+The backlog is **every claim-bearing block in the corpus (the content
+type's `KINDS`, Slot B) that has no current `da-referee-verdict` entry**, plus every
 block whose verdict is stale (hash drift) or `open-objection`.
 
 ```bash
 # All blocks of an adversarially-auditable kind.
 for ts in $(git ls-files 'content/**/*.ts'); do
-  grep -qE '^export default (theorem|lemma|proposition|corollary|conjecture|definition)\(' "$ts" || continue
+  grep -qE "^export default ($KINDS)\\(" "$ts" || continue
   qa="${ts%.ts}.qa.json"
   # Needs audit if no sidecar, no da-referee-verdict, stale hash, or open verdict.
   if [ ! -f "$qa" ] || ! grep -q '"da-referee-verdict"' "$qa"; then
@@ -356,8 +361,8 @@ report-only (`--strict` to gate), agent-free, and do **not** write
   `hollow-verification` (empty-`assertions` success claims).
 - **Status-label overclaim:** a status-label-overclaim audit — a closure
   label (`proved`/`closed-form`/`no-fit`/`RESOLVED`/`gap-free`) over a
-  non-closure signal (a formal-layer gap/`:True`/`:=trivial`,
-  `validation:not_checked|stub`, `kind:conjecture`). The *sharp* subset
+  non-closure signal (a formal-layer gap or vacuity shape,
+  `validation:not_checked|stub`, a kind that admits being open). The *sharp* subset
   (label over a vacuous formal layer) is the actionable backlog.
 
 A block flagged by either checker jumps the §5b priority queue (a
@@ -374,9 +379,9 @@ Rank the backlog by *blast radius × headline-proximity × novelty*:
    damaging.
 2. **Most downstream dependents** (via `uses[]`) — a false upstream
    claim poisons everything that uses it.
-3. **Provable kinds before definitions before conjectures** — a
-   `theorem` carries a truth claim a referee can falsify; a `conjecture`
-   already admits it is unproved (lower adversarial yield).
+3. **Claims before definitions before admitted-open kinds** — a claim
+   a referee can falsify comes first; a kind that already admits it is
+   unproved comes last (lower adversarial yield).
 4. **Never-audited before stale or no-objection-raised before previously-clean-rebutted.**
 5. Alphabetical tie-break.
 
@@ -389,7 +394,7 @@ heuristic.
 
 ## Slot I — §6 invariants (per-commit, on this watcher's own branch)
 
-1. **No math edits in a finding commit.** A commit that records findings
+1. **No content edits in a finding commit.** A commit that records findings
    (sidecar entries, audit doc, ledger) must not also change a
    statement/proof/number. Hygiene auto-discharges (scope re-label,
    citation fix, witness refresh, `≈` fix) ride separate `chore`/`fix`
@@ -451,11 +456,11 @@ respect axis boundaries):
 
 | Sibling | They check | The adversary additionally asks |
 |---------|-----------|----------------------------------|
-| `proof-integration-watcher` | no bare gaps, no axiom growth, formal layer compiles | *is the thing it proves the thing it claims, and is the claim even true?* |
 | `canonical-watcher` | no undisclosed parameters, no numerology (pattern-based) | *where exactly does this constant come from, and would a skeptic buy the derivation?* |
-| `compute-integration-watcher` | every statement has a probe + consumer | *does the probe actually support the claim, or just co-vary with it?* |
 | `one-voice-integration-watcher` | scholarly voice, AI-slop, fit | *strip the confident voice — does the argument still stand?* |
-| `proof-narrative-lean-equivalence` | formal ≟ narrative (equivalence) | *if they diverge, which one is the overclaim?* |
+
+A content type adds rows for its own watchers; for a paper folio, see
+`devils-advocate-paper`.
 
 Where a sibling already has a `pass` sidecar entry, the adversary may
 *cite* it as a rebuttal — but a `pass` on `framework-canonical` does not
@@ -475,7 +480,7 @@ The adjudicator decides what counts as a rebuttal.
   `structural`-scope refutation without a proved invariant — the same
   over-narrowing the (a)/(b) rule forbids in the corpus, now committed
   by the auditor. The adversary is held to the discipline it enforces.
-- **Editing the math to win the argument.** See Slot I item 1 / Slot E
+- **Editing the claim to win the argument.** See Slot I item 1 / Slot E
   "Critical do-not". Auto-discharge is hygiene only.
 - **Treating a verdict as a disproof.** `open-objection` = "a referee
   argument is open", not "the block is false." Keep the modality.

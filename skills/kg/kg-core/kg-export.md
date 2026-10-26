@@ -21,7 +21,7 @@ external tool, or nothing at all. Publishing data does not make the harness
 self-documenting — it makes it *inspectable*, which is the thing that was
 missing.
 
-Per [`skills-and-tools`](../../folio-core/skills-and-tools.md):
+Per [`skills-and-tools`](../../tools/folio-core/skills-and-tools.md):
 
 | | |
 |---|---|
@@ -716,6 +716,32 @@ Rules for the pair:
   serves at the subgraph IRI, plus the context at `ns/subgraph/v1.jsonld`.
   `subgraph:jsonld:check` is the gate. The file shape is
   `schemas/subgraph-manifest.ts`.
+
+### Published per pin, in a package
+
+**Owner, 2026-10-24 (decision card, option A; bean `mo75` G2b).** The files
+are built at publish (`builtAtPublish`: `docs/subgraph/`), so no commit holds
+them. For a consumer that reads them at a PIN rather than from the Pages site,
+**each pin's index files are published in a package**: an npm package,
+`<harness>-subgraph-index@0.0.0-pin.<sha>`, holding every `index.jsonld` and
+`index.hydrated.jsonld` under `<docs>/subgraph/<HARNESS>/` at the paths above
+and a `subgraph-index.json` manifest (`folio-subgraph-index/v1`: repository,
+pin, harness, each file's sha256). It is attached, with its
+`folio-binary-release/v1` record, to the GitHub release `subgraph-index-<sha>`.
+
+- **Not committed (B, rejected):** a committed copy of a build over other
+  instances is stale on the next re-pin.
+- **Not generated at mount (C, rejected):** reading one file of metadata must
+  not need the build toolchain, and one pin must have one set of files.
+- **Every name is computed** from repository, pin and harness
+  (`subgraphIndexPackage`, `schemas/subgraph-manifest.ts`), so a consumer never
+  lists releases.
+- **Who builds it:** `layer-publish-subgraph-index.yml` (cat-harness-tools),
+  on each push to `main`: `subgraph:jsonld`, then the `subgraph-index-package`
+  Tool. A release that already exists for a pin is never replaced.
+- **Who reads it:** a hydrated mount (`remote-mount`), when the pin's tree
+  holds no file. [`remote-mount`](remote-mount.md) §"Hydrated: the index files
+  are published per pin, in a package" has the checks.
 
 ### Membership is declared, not inferred
 

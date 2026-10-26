@@ -58,6 +58,7 @@
 import { z } from "zod";
 
 import { ATTRIBUTION_KINDS } from "./attribution";
+import { RunContextRefSchema } from "./run-context";
 import type { TestPlan } from "./test-plan";
 import { SutRefSchema, TestPlanRefSchema } from "./test-run";
 
@@ -136,6 +137,12 @@ export const TestReportSchema = z
     /** Case id → reviewer entries, oldest first. The last is current. */
     cases: z.record(z.string().min(1), z.array(TestCaseVerdictSchema).min(1)),
     rollup: TestReportRollupSchema,
+    /**
+     * Content-addressed reference to the `folio-run-context/v1` record of the
+     * run that produced this report (`docs/proposals/tool-releases-2026-10-07.md`,
+     * owner C1 = a).
+     */
+    runContext: RunContextRefSchema.optional(),
   })
   .superRefine((r, ctx) => {
     // 1. The rollup may not disagree with the cases it counts.
