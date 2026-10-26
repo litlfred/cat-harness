@@ -63,8 +63,8 @@ bun install
 ```powershell
 git clone https://github.com/litlfred/folio-assistant.git
 cd folio-assistant
-.\cat-harness\scripts\bootstrap.ps1 -CheckOnly   # только отчет, ничего не устанавливает
-.\cat-harness\scripts\bootstrap.ps1              # выполнить установку
+.\cat-harness-tools\scripts\bootstrap.ps1 -CheckOnly   # только отчет, ничего не устанавливает
+.\cat-harness-tools\scripts\bootstrap.ps1              # выполнить установку
 ```
 
 Он устанавливает Bun и ничего больше — LaTeX, Lean, Java и IG Publisher остаются
@@ -74,15 +74,15 @@ cd folio-assistant
 который устанавливается вместе с [Git for Windows](https://git-scm.com/download/win), поэтому `git` —
 единственное дополнительное предварительное требование. Рядом с каждым скриптом, который пользователь
 запускает вручную или прописывает в конфигурации, находится файл `.bat` —
-`cat-harness\scripts\install-beans.bat`, `cat-harness\scripts\start-folio-assistant.bat`,
-`cat-harness\scripts\git-hooks\install.bat`, `cat-harness\scripts\session-start-coord-sweep.bat`
+`cat-harness-tools\scripts\install-beans.bat`, `cat-harness-tools\scripts\start-folio-assistant.bat`,
+`cat-harness-tools\scripts\git-hooks\install.bat`, `cat-harness-tools\scripts\session-start-coord-sweep.bat`
 и так далее. Этот файл находит Git Bash (ни в коем случае не лаунчер WSL в `System32`) и
 запускает соседний `.sh` с теми же аргументами. Используйте их из `cmd.exe`, PowerShell,
 Task Scheduler или параметров конфигурации MCP:
 
 ```bat
-cat-harness\scripts\install-beans.bat
-cat-harness\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
+cat-harness-tools\scripts\install-beans.bat
+cat-harness-tools\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
 ```
 
 Все, что требуется скриптам `.sh` — `bun`, `curl`, `gh`, `elan` — должно быть доступно
