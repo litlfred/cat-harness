@@ -28,6 +28,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Logo du projet CodeAgent : une mascotte de dessin animé représentant un agent de codage portant un casque audio, placée à côté du titre de l'article « CodeAgent: Autonomous Communicative Agents for Code Review ».",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Logotipo del proyecto CodeAgent: una mascota de dibujos animados de un agente de programación con auriculares junto al título del artículo «CodeAgent: Autonomous Communicative Agents for Code Review».",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "شعار مشروع CodeAgent: تميمة كرتونية لوكيل برمجة يرتدي سماعات رأس بجانب عنوان الورقة البحثية «CodeAgent: Autonomous Communicative Agents for Code Review».",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Логотип проекта CodeAgent: мультяшный талисман агента программирования в наушниках рядом с заголовком статьи «CodeAgent: Autonomous Communicative Agents for Code Review».",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "CodeAgent 项目徽标：论文标题“CodeAgent: Autonomous Communicative Agents for Code Review”旁佩戴耳机的编码智能体卡通吉祥物。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ]
     },
@@ -57,6 +117,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -98,6 +218,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -139,6 +319,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -180,6 +420,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -361,6 +661,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ]
     },
@@ -390,6 +750,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -441,6 +861,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -482,6 +962,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -588,6 +1128,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -629,6 +1229,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ]
     },
@@ -658,6 +1318,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Panneau d'exemple de commentaires de revue de code intégré à la Figure 1, illustrant quatre catégories d'analyse : analyse de cohérence sémantique (Semantic Consistency Analysis), analyse de sécurité (Security Analysis), analyse de formatage (Format Analysis) et alignement du code / suggestions de révision (Code Alignment/Revision Suggestions).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Panel de ejemplo de comentarios de revisión dentro de la Figura 1, que ilustra cuatro categorías de análisis: análisis de consistencia semántica (Semantic Consistency Analysis), análisis de seguridad (Security Analysis), análisis de formato (Format Analysis) y alineación de código / sugerencias de revisión (Code Alignment/Revision Suggestions).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "لوحة نموذجية لتعليقات مراجعة الشيفرة داخل الشكل 1، توضّح أربع فئات للتحليل: تحليل الاتساق الدلالي (Semantic Consistency Analysis)، وتحليل الأمان (Security Analysis)، وتحليل التنسيق (Format Analysis)، ومحاذاة الشيفرة ومقترحات المراجعة (Code Alignment/Revision Suggestions).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Панель примеров комментариев ревью кода внутри рисунка 1, иллюстрирующая четыре категории анализа: анализ семантической согласованности (Semantic Consistency Analysis), анализ безопасности (Security Analysis), анализ форматирования (Format Analysis) и выравнивание кода / предложения по исправлению (Code Alignment/Revision Suggestions).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "图 1 内的示例评审意见面板，展示四类分析：语义一致性分析（Semantic Consistency Analysis）、安全性分析（Security Analysis）、格式分析（Format Analysis）以及代码对齐与修订建议（Code Alignment/Revision Suggestions）。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ]
     },
@@ -687,6 +1407,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -728,6 +1508,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -779,6 +1619,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -845,6 +1745,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -906,6 +1866,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -967,6 +1987,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -1043,6 +2123,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Encadré de suggestion de révision de code dans la Figure 1 montrant une proposition de modification de la méthode assertEquals à l'aide de java.util.Objects.equals.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Cuadro de sugerencia de revisión de código dentro de la Figura 1 que muestra una modificación propuesta para el método assertEquals mediante java.util.Objects.equals.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "مربع اقتراح تعديل الشيفرة داخل الشكل 1 يعرض تعديلًا مقترحًا على الدالة assertEquals باستخدام java.util.Objects.equals.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Блок предложения по исправлению кода внутри рисунка 1, показывающий предлагаемую модификацию метода assertEquals с использованием java.util.Objects.equals.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "图 1 内的代码修订建议框，展示使用 java.util.Objects.equals 修改 assertEquals 方法的建议方案。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ]
     },
@@ -1072,6 +2212,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ]
     },
@@ -1101,6 +2301,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône clip-art plate intégrée dans la Figure 1 représentant un persona d'agent, un commit git, un document ou un indicateur d'état ; elle ne porte aucune donnée indépendante au-delà du schéma vectoriel.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono plano de tipo clip-art integrado en la Figura 1 que representa un perfil de agente, un commit de git, un documento o un indicador de estado; no aporta datos independientes más allá del diagrama vectorial.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة رسومية مسطحة مدمجة داخل الشكل 1 تمثّل شخصية وكيل أو إيداع git أو مستندًا أو مؤشر حالة؛ ولا تحمل أي بيانات مستقلة خارج المخطط المتجهي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская клип-арт иконка, встроенная в рисунок 1 и представляющая роль агента, коммит git, документ или индикатор состояния; не несёт самостоятельных данных вне векторной диаграммы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "嵌入在图 1 中的扁平剪贴画图标，代表智能体角色、git 提交、文档或状态指示符；除矢量图本身外不承载独立数据。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -1207,6 +2467,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône d'avatar plate ou glyphe d'état intégré à la Figure 2 ou à la Figure 3, représentant les définitions de fiches de rôle et le flux de dialogue communicatif.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono de avatar plano o glifo de estado dentro de la Figura 2 o la Figura 3 que representa las definiciones de tarjetas de rol y el flujo de diálogo comunicativo.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية مسطحة أو رمز حالة داخل الشكل 2 أو الشكل 3 يمثّل تعريفات بطاقات الأدوار وتدفق الحوار التواصلي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская иконка аватара или глиф состояния на рисунке 2 или рисунке 3, представляющий определения карточек ролей и поток коммуникативного диалога.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 或图 3 内的扁平头像图标或状态符号，代表角色卡定义与通信对话流程。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -1258,6 +2578,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône d'avatar plate ou glyphe d'état intégré à la Figure 2 ou à la Figure 3, représentant les définitions de fiches de rôle et le flux de dialogue communicatif.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono de avatar plano o glifo de estado dentro de la Figura 2 o la Figura 3 que representa las definiciones de tarjetas de rol y el flujo de diálogo comunicativo.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية مسطحة أو رمز حالة داخل الشكل 2 أو الشكل 3 يمثّل تعريفات بطاقات الأدوار وتدفق الحوار التواصلي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская иконка аватара или глиф состояния на рисунке 2 или рисунке 3, представляющий определения карточек ролей и поток коммуникативного диалога.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 或图 3 内的扁平头像图标或状态符号，代表角色卡定义与通信对话流程。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -1299,6 +2679,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône d'avatar plate ou glyphe d'état intégré à la Figure 2 ou à la Figure 3, représentant les définitions de fiches de rôle et le flux de dialogue communicatif.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono de avatar plano o glifo de estado dentro de la Figura 2 o la Figura 3 que representa las definiciones de tarjetas de rol y el flujo de diálogo comunicativo.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية مسطحة أو رمز حالة داخل الشكل 2 أو الشكل 3 يمثّل تعريفات بطاقات الأدوار وتدفق الحوار التواصلي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская иконка аватара или глиф состояния на рисунке 2 или рисунке 3, представляющий определения карточек ролей и поток коммуникативного диалога.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 或图 3 内的扁平头像图标或状态符号，代表角色卡定义与通信对话流程。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -1390,6 +2830,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Icône d'avatar plate ou glyphe d'état intégré à la Figure 2 ou à la Figure 3, représentant les définitions de fiches de rôle et le flux de dialogue communicatif.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "fr"
+        },
+        {
+          "text": "Icono de avatar plano o glifo de estado dentro de la Figura 2 o la Figura 3 que representa las definiciones de tarjetas de rol y el flujo de diálogo comunicativo.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية مسطحة أو رمز حالة داخل الشكل 2 أو الشكل 3 يمثّل تعريفات بطاقات الأدوار وتدفق الحوار التواصلي.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ar"
+        },
+        {
+          "text": "Плоская иконка аватара или глиф состояния на рисунке 2 или рисунке 3, представляющий определения карточек ролей и поток коммуникативного диалога.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 或图 3 内的扁平头像图标或状态符号，代表角色卡定义与通信对话流程。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://20f1cb45-fc12-4d3e-89ce-e271cde5de7e"
+          },
+          "drafted_at": "2026-10-26",
+          "lang": "zh"
         }
       ],
       "placements": [
