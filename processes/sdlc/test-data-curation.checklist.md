@@ -1,0 +1,89 @@
+<!-- GENERATED from cat-harness/processes/sdlc/test-data-curation.bpmn by cat-harness-tools/scripts/bpmn-checklist.ts. Do not edit: change the diagram and regenerate (bun run cat bpmn:checklist). -->
+
+# Checklist — Test Data Curation — Fixed Sets and Generated Recipes
+
+> **Generated, and not the authority.** This is `cat-harness/processes/sdlc/test-data-curation.bpmn` (process `Process_TestDataCuration`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
+
+General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`test-data-generated/1.0.0`) test data sets — bean `folio-assistant-vm6m`, companion `folio-assistant-vljz`, proposal `docs/proposals/qa-reports-branch-and-test-process-2026-10-01.md` §3.2.
+
+## Begin — Test data needed for a test plan case (`Start_Curation`)
+
+- Begin here.
+- Call `workflow_start` with `process: "Process_TestDataCuration"` and the subject this run is about; keep the instance id it returns.
+- next: → `Task_ClassifySet` (Classify data set: fixed (curated) or generated (recipe))
+
+### 1. Classify data set: fixed (curated) or generated (recipe) (`Task_ClassifySet`)
+
+- Who: the `Authoring agent` lane (role `authoring-agent`).
+- Skill: `test-data-sets`.
+- What: Decide whether the test case requires a small, committed, cited fixed data set (`test-data-fixed/1.0.0`, usable as certification evidence once reviewed) or a deterministic generated recipe (`test-data-generated/1.0.0`, `template` + `params` + `seed`, never stored materialised).
+- Record it: `workflow_complete` with `node: "Task_ClassifySet"`.
+- next: → `GW_SetKind` (Fixed or generated?)
+
+### Decide — Fixed or generated? (`GW_SetKind`)
+
+- Routes to the fixed-set curation branch (`fixed`) or the generated-recipe synthesis branch (`generated`).
+- Call `workflow_complete` with `node: "GW_SetKind"` and `outcome` set to the label that holds:
+  - «fixed» → `Task_CurateFixed` (Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0)
+  - «generated» → `Call_ContentTypeSpecialisation` (Synthesise recipe via content-type specialisation [its own subprocess])
+
+### 2. Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0 (`Task_CurateFixed`)
+
+- Who: the `Authoring agent` lane (role `authoring-agent`).
+- Skill: `test-data-sets`.
+- What: Write the curated `records` and optional `citations` with `$schema: "test-data-fixed/1.0.0"` and `kind: "fixed"` into the instance's declared `test-data-fixed` directory (`schemas/test-data.ts`).
+- Record it: `workflow_complete` with `node: "Task_CurateFixed"`.
+- next: → `GW_NeedsSmeReview` (Exercises decision support or indicator definition?)
+
+### 3. Synthesise recipe via content-type specialisation [its own subprocess] (`Call_ContentTypeSpecialisation`)
+
+- Who: the `Authoring agent` lane (role `authoring-agent`).
+- Skill: `test-data-sets`.
+- What: BOUND BY THE CONTENT TYPE (`contentType` and `specialisation` in `schemas/test-data.ts`), so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess.
+- Record it: `workflow_complete` with `node: "Call_ContentTypeSpecialisation"`.
+- next: → `Task_WriteRecipe` (Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0)
+
+### Decide — Exercises decision support or indicator definition? (`GW_NeedsSmeReview`)
+
+- When the fixed data set exercises clinical/scientific decision support or an indicator definition (`bean vljz`), it must pass SME review (`Process_SmeTestDataReview`) before `review` is recorded and the set can stand as certification evidence.
+- Call `workflow_complete` with `node: "GW_NeedsSmeReview"` and `outcome` set to the label that holds:
+  - «yes» → `Call_SmeReview` (SME review of cases or cohorts)
+  - «no» → `GW_JoinFixed` (Fixed set ready)
+
+### 4. Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0 (`Task_WriteRecipe`)
+
+- Who: the `Authoring agent` lane (role `authoring-agent`).
+- Skill: `test-data-sets`.
+- What: Record `contentType`, `specialisation`, `template`, `params`, `seed`, and the canonical `sha256` digest (`computeGeneratedSetDigest`) with `$schema: "test-data-generated/1.0.0"` and `kind: "generated"` in the instance's declared `test-data-generated` directory.
+- Record it: `workflow_complete` with `node: "Task_WriteRecipe"`.
+- next: → `GW_MergeKind` (Data set written)
+
+### 5. SME review of cases or cohorts (`Call_SmeReview`)
+
+- Who: the `Authoring agent` lane (role `authoring-agent`).
+- Skill: `test-data-sets`.
+- What: Calls `Process_SmeTestDataReview` (`processes/sdlc/sme-test-data-review.bpmn`) so a human SME in a `judgementOnly` lane reviews each worked case (`decision-support`) or cohort plus expected value (`indicator-definition`) and records an attributable `sme-case-verdict/1.0.0` node.
+- A subprocess (`Process_SmeTestDataReview`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `GW_JoinFixed` (Fixed set ready)
+
+### Merge — Fixed set ready (`GW_JoinFixed`)
+
+- Nothing to do or decide: the paths meet here and the engine passes through.
+- next: → `GW_MergeKind` (Data set written)
+
+### Merge — Data set written (`GW_MergeKind`)
+
+- Nothing to do or decide: the paths meet here and the engine passes through.
+- next: → `Task_VerifySelfIdentifying` (Verify file self-identifies by $schema and kind and bind into test plan)
+
+### 6. Verify file self-identifies by $schema and kind and bind into test plan (`Task_VerifySelfIdentifying`)
+
+- Who: the `Tester` lane (role `tester`).
+- Skill: `test-data-sets`.
+- What: Parse the file with `discriminateTestDataSet` (`schemas/test-data.ts`) to confirm a consumer can tell fixed from generated from the file content alone (never the path), verify `verifyGeneratedSetDigest` on generated sets, and bind the resulting `TestDataRef` (`toTestDataRef`) into the `test-plan/v1`
+- Record it: `workflow_complete` with `node: "Task_VerifySelfIdentifying"`.
+- next: → `End_Curated` (Test data set curated and bound into plan)
+
+## Done — Test data set curated and bound into plan (`End_Curated`)
+
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.

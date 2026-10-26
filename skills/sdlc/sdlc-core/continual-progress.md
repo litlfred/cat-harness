@@ -230,8 +230,9 @@ than a question:
    MCP merge tool, not after a green run, not under a standing "merge it"
    from earlier in the session.
 2. **When CI is green on EVERY job** (the run list, not the PR page — see
-   `prepare-merge` §"NO CHECKS IS NOT GREEN"): mark the PR **Ready for
-   review**, add the label **`ready-to-merge`**, and comment
+   `prepare-merge` §"NO CHECKS IS NOT GREEN"; on a draft, the fast tier),
+   and when the queue allows (§"Pace the ready marking" below): mark the PR
+   **Ready for review**, add the label **`ready-to-merge`**, and comment
    **`ready: <head sha>`** — the full sha of the head that went green, so a
    push after it is visibly not what was declared ready.
 3. **The Merge Steward session ("Separation") merges.** It brings `main` in,
@@ -247,6 +248,29 @@ So "merge anyway" in §"What to do with the thing you could not verify" reads
 here as **mark it ready anyway**, and "merge it as soon as it is green" in the
 fix-forward section below reads as **hand it over as soon as it is green**.
 The point of both is unchanged: a green PR is not held back.
+
+### Pace the ready marking — the runner pool is shared
+
+**The owner's ruling, 2026-10-24 ("C. Pace agents").** The Actions runner pool
+is shared across the owner's repositories. A draft PR runs only the fast tier,
+and marking it ready starts the full tier, about 10 jobs (bean `dft1`). So the
+number of PRs marked ready at once is what fills the queue:
+
+1. **Open every PR as a draft.**
+2. **Mark it ready only when its own change is done and its fast checks pass.**
+3. **Check the queue first:**
+   `gh api "repos/<owner>/<repo>/actions/runs?status=queued" --jq .total_count`.
+   If it is more than about 2 queued runs per runner (5 runners on 2026-10-24,
+   so more than about 10), hold the marking and check again later.
+4. **At most 3 ready, CI-pending PRs per agent per repository.** Hand one over
+   or let it finish before you mark another.
+5. **A fix that unblocks other work may jump the line**: a link in the repin
+   chain, or a fix for a red `main`.
+
+Holding a PR as a draft for pacing is not holding back a green PR: the fast
+tier is green, and the hand-off above waits for the full tier. Measured on
+2026-10-24: 28 queued PR runs against 5 runners, from 28 different PRs opened
+within an hour, mostly agent branches. A fix PR waited hours behind them.
 
 ### Two green PRs can merge into a red main, and the answer is to fix forward
 

@@ -134,6 +134,11 @@ question's link in the bean. Keep the claim while the question is open, and take
 the next bean meanwhile. A bean that will wait long goes back to `todo` with the
 question recorded, so that it does not hold the queue.
 
+When the question is about changed pages, it carries the staging preview: one
+deep link per changed page, with the same page on main, in the output
+contract's `stagingLinks` field
+([`staging-review`](staging-review.md) §"The deep-link rule").
+
 ## 5. Close it, and refill
 
 Close on evidence ([`bean-coordination`](bean-coordination.md) §"Closing a bean

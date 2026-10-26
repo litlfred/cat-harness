@@ -24,7 +24,10 @@
  * - `range` — the version range the layer's `package.json` asks for;
  * - `dev` — whether it is a `devDependencies` entry;
  * - `usedBy` — the layer's files that import it, layer-relative and sorted;
- * - `shim` — the `types/*.d.ts` that declares it, when one exists.
+ * - `shim` — the `types/*.d.ts` that declares it, when one exists;
+ * - `vendored` (1.1.0) — the directory its bytes are kept in, for a bundle the
+ *   layer keeps rather than installs, which then has no `range` and no `dev`
+ *   (§"A vendored bundle is a library too").
  *
  * It is a NODE KIND (`nodeKind()`, issue #2195) whose one parent is the core's
  * mixin, {@link OutsideSoftwareKind}, so the class it belongs to is declared
@@ -60,10 +63,40 @@
  * recognise an instance declaration (`directory-conventions`, §"Every other
  * marker"). The version is not in the file name, so a bump rewrites one file
  * rather than renaming it.
+ *
+ * ## A vendored bundle is a library too (1.1.0)
+ *
+ * Bean `jbvi`, owner 2026-10-26 ("A. Record as vendored"). Some layers keep a
+ * library's prebuilt bytes in the repository rather than installing them —
+ * fhir-harness serves LHC-Forms and the NLM Form Builder from
+ * `scripts/assets/vendor/<name>/<version>/` so a page makes no request to a
+ * CDN. No `package.json` declares such a bundle, so before 1.1.0 there was
+ * nothing to record it as, and the imports INSIDE its bytes (a polyfill the
+ * bundle was built with) read as imports the layer forgot to declare.
+ *
+ * A vendored node is the same kind with `vendored: { path }` — the bundle's
+ * directory, layer-relative — and the same core: the name and version the
+ * bundle was taken at, the registry tarball it was taken from, that tarball's
+ * digest, and its licence with where that was read. What it does NOT have is
+ * what only a `package.json` entry has: no `range` and no `dev`, because no
+ * manifest asks for it. The refinement holds that both ways — a vendored node
+ * carries neither, and any other node carries both — so a missing `range` is
+ * never silently "vendored".
+ *
+ * `vendored` is a 1.1.0 field, so a vendored node is stamped 1.1.0 and the
+ * refinement refuses one stamped 1.0.0 (a file cannot use a field its version
+ * does not have). Every other node is still stamped 1.0.0
+ * ({@link librarySchemaTag}): its fields are all 1.0.0 fields, so a layer's
+ * existing nodes do not churn when the kind gains one. Both families are
+ * listed in the typology, each with its validator.
+ *
+ * Its file is {@link vendoredLibraryFileName} — the version IS in the name,
+ * because a layer may keep two versions of one bundle side by side, and a
+ * vendored copy is never "bumped" in place: a new version is a new directory.
  */
 import { z } from "zod";
 
-import { nodeKind } from "./node-kind";
+import { nodeKind, parseSchemaTag } from "./node-kind";
 import { OutsideSoftwareKind, SoftwareUrlSourceSchema, outsideSoftwareLicenceProblem } from "./outside-software";
 import type { SpdxLicenseList } from "./spdx-license-expression";
 
@@ -71,8 +104,23 @@ import type { SpdxLicenseList } from "./spdx-license-expression";
  * The tag a library node carries, so it is identified by declaration. A short
  * SemVer name, the owner's convention for node kinds since 2026-10-05
  * (`schemas/node-kind.ts`): the name is the kind, the version lives in the tag.
+ *
+ * Still 1.0.0, and on purpose: it is the tag a node of a `package.json`
+ * dependency is stamped with, and every such node uses only 1.0.0 fields
+ * ({@link librarySchemaTag}). A writer built before 1.1.0 stamps this constant,
+ * so keeping its value is what lets the kind gain a version without making
+ * every existing node read as stale, in whichever order the layers merge.
  */
 export const SOFTWARE_LIBRARY_SCHEMA_TAG = "software-library/1.0.0";
+
+/**
+ * The kind's CURRENT version, 1.1.0, which added `vendored`: what a vendored
+ * bundle's node is stamped with.
+ */
+export const SOFTWARE_LIBRARY_VENDORED_TAG = "software-library/1.1.0";
+
+/** The suffix a vendored bundle's node file ends in, before {@link LIBRARY_FILE_SUFFIX}. */
+export const VENDORED_INFIX = ".vendored";
 
 /** The suffix every library node's file name ends in. */
 export const LIBRARY_FILE_SUFFIX = ".library.json";
@@ -95,27 +143,42 @@ const LayerPathSchema = z
   .refine((p) => !p.startsWith("/") && !p.includes("\\") && !p.split("/").includes(".."), "layer-relative and POSIX, never above the layer");
 
 /**
- * One library a layer imports, as a `software-library/1.0.0` node kind: a
+ * Where a vendored bundle's bytes are kept: its directory, layer-relative.
+ * Strict, so a second field is added by a version bump, not by a writer.
+ */
+export const VendoredSchema = z
+  .object({
+    /** The bundle's directory, layer-relative (`scripts/assets/vendor/jquery/3.6.0`). */
+    path: LayerPathSchema,
+  })
+  .strict();
+export type Vendored = z.infer<typeof VendoredSchema>;
+
+/**
+ * One library a layer imports, as a `software-library/1.1.0` node kind: a
  * SUBCLASS of the {@link OutsideSoftwareKind} mixin, narrowing `name` and
  * `source` (declared in `overrides`, so neither shadows the core by accident)
  * and adding what only an imported library has. Strict, because its writer
  * emits exactly these keys and an extra one is a defect.
  */
 export const SoftwareLibraryKind = nodeKind(
-  SOFTWARE_LIBRARY_SCHEMA_TAG,
+  SOFTWARE_LIBRARY_VENDORED_TAG,
   [OutsideSoftwareKind],
   {
     /** Narrowed from the core: an npm package name, as the layer's `package.json` names it. */
     name: LibraryNameSchema,
     /** Narrowed from the core: the registry tarball the lockfile resolved. */
     source: SoftwareUrlSourceSchema,
-    /** The range the layer's `package.json` asks for (`^10.2.0`, `npm:typescript@^7.0.2`). */
+    /** The range the layer's `package.json` asks for (`^10.2.0`, `npm:typescript@^7.0.2`). Absent exactly when `vendored`. */
     range: z
       .string()
       .min(1)
-      .refine((r) => !/[\r\n]/.test(r), "a range is one line"),
-    /** A `devDependencies` entry rather than a `dependencies` one. */
-    dev: z.boolean(),
+      .refine((r) => !/[\r\n]/.test(r), "a range is one line")
+      .optional(),
+    /** A `devDependencies` entry rather than a `dependencies` one. Absent exactly when `vendored`. */
+    dev: z.boolean().optional(),
+    /** 1.1.0: the library's bytes are kept in the layer, at this directory, rather than installed. */
+    vendored: VendoredSchema.optional(),
     /** The layer's files that import it, layer-relative, sorted and unique. Empty for a library reached another way (a CLI, a `types` entry). */
     usedBy: z.array(LayerPathSchema),
     /** The ambient declaration that types it, when the package ships none of its own. */
@@ -129,11 +192,24 @@ export const SoftwareLibraryKind = nodeKind(
       if (sorted.length !== l.usedBy.length || sorted.some((p, i) => p !== l.usedBy[i])) {
         ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["usedBy"], message: "`usedBy` is sorted and names each file once, so a regeneration diffs cleanly" });
       }
+      if (l.vendored) {
+        for (const k of ["range", "dev"] as const) {
+          if (l[k] !== undefined) ctx.addIssue({ code: z.ZodIssueCode.custom, path: [k], message: `a vendored bundle has no \`${k}\`: no package.json asks for it` });
+        }
+        const t = parseSchemaTag(String(l.$schema));
+        if (t && t.major === 1 && t.minor < 1) {
+          ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["$schema"], message: "`vendored` is a 1.1.0 field, so a vendored node is stamped `software-library/1.1.0` or newer" });
+        }
+      } else {
+        for (const k of ["range", "dev"] as const) {
+          if (l[k] === undefined) ctx.addIssue({ code: z.ZodIssueCode.custom, path: [k], message: `\`${k}\` is required unless the library is \`vendored\`` });
+        }
+      }
     },
   },
 );
 
-/** The schema a `software-library/1.0.0` file is parsed with. */
+/** The schema a `software-library/1.x` file is parsed with. */
 export const SoftwareLibrarySchema = SoftwareLibraryKind.schema;
 export type SoftwareLibrary = z.infer<typeof SoftwareLibrarySchema>;
 
@@ -148,6 +224,27 @@ export type SoftwareLibrary = z.infer<typeof SoftwareLibrarySchema>;
 export function libraryFileName(name: string): string {
   const stem = name.startsWith("@") ? name.slice(1).replace("/", "__") : name;
   return `${stem}${LIBRARY_FILE_SUFFIX}`;
+}
+
+/**
+ * The file a vendored bundle's node is kept in: `jquery-3.6.0.vendored.library.json`,
+ * `lhncbc__ucum-lhc-8.0.0.vendored.library.json` for `@lhncbc/ucum-lhc` 8.0.0.
+ *
+ * The version is in the name, unlike {@link libraryFileName}, because a layer
+ * may keep two versions of one bundle; and the `.vendored` infix keeps it
+ * apart from the node of a `package.json` dependency of the same name.
+ */
+export function vendoredLibraryFileName(name: string, version: string): string {
+  return libraryFileName(name).replace(LIBRARY_FILE_SUFFIX, `-${version}${VENDORED_INFIX}${LIBRARY_FILE_SUFFIX}`);
+}
+
+/**
+ * The tag a node is stamped with: the OLDEST version that has every field it
+ * uses. `software-library/1.1.0` for a vendored node, `software-library/1.0.0`
+ * for any other, so gaining a field rewrites none of a layer's existing nodes.
+ */
+export function librarySchemaTag(l: { vendored?: unknown }): string {
+  return l.vendored !== undefined ? SOFTWARE_LIBRARY_VENDORED_TAG : SOFTWARE_LIBRARY_SCHEMA_TAG;
 }
 
 /**

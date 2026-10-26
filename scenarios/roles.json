@@ -159,13 +159,14 @@
     {
       "id": "clinical-sme",
       "title": "Clinical / scientific SME",
-      "description": "Reviewer whose judgement is about the subject matter rather than the artefact.",
+      "description": "Reviewer whose judgement is about the subject matter rather than the artefact. Acts by domain judgement (`judgementOnly`: no procedure yields the answer, which is why a person is in the lane; bean `vljz`).",
       "actorKinds": [
         "person"
       ],
       "inherits": [
         "reviewer"
       ],
+      "judgementOnly": true,
       "skills": [],
       "persona": "Expert in the subject, not in the system. Judges whether the content is clinically right; is not interested in FHIR profiles or schema fields and should not have to be."
     },
@@ -420,7 +421,8 @@
         "staging-review",
         "ask-the-person",
         "decision-comparison",
-        "symbiotic-interaction"
+        "symbiotic-interaction",
+        "test-data-sets"
       ],
       "persona": "Has the whole corpus available and no memory of the last session. Will follow the most specific instruction it can find and improvise when it finds none. Reads a skill before it reads the code."
     },
@@ -793,6 +795,7 @@
       ],
       "skills": [
         "test-plan-execution",
+        "test-data-sets",
         "test-engineer",
         "content-test"
       ],

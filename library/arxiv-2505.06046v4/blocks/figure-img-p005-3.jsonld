@@ -26,6 +26,66 @@
       },
       "drafted_at": "2026-09-29",
       "lang": "en"
+    },
+    {
+      "text": "Figure 6 : écart moyen par rapport à la performance globale des modèles sur PubHealthBench-Full, par thème de recommandation (gauche) et par public de la recommandation (droite). Elle met en évidence la difficulté relative des recommandations cliniques par rapport aux messages généraux de santé publique.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "fr"
+    },
+    {
+      "text": "Figura 6: desviación media respecto al rendimiento global de los modelos en PubHealthBench-Full, por tema de la guía (izquierda) y por público de la guía (derecha). Destaca la dificultad relativa de la guía clínica frente a los mensajes generales de salud pública.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "es"
+    },
+    {
+      "text": "الشكل 6: متوسط الانحراف عن الأداء الكلي للنماذج على PubHealthBench-Full بحسب موضوع الإرشاد (يسار) وجمهور الإرشاد (يمين). يُبرز الصعوبة النسبية للإرشادات السريرية مقارنةً برسائل الصحة العامة العامة.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ar"
+    },
+    {
+      "text": "Рисунок 6: среднее отклонение от общей результативности моделей на PubHealthBench-Full по теме рекомендаций (слева) и по их аудитории (справа). Подчёркивает относительную сложность клинических рекомендаций по сравнению с общими сообщениями в области общественного здравоохранения.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ru"
+    },
+    {
+      "text": "图 6：按指南主题（左）和指南受众（右）划分的、相对 PubHealthBench-Full 上模型整体表现的平均偏差。突出显示临床指南相对一般公共卫生信息的难度。",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "zh"
     }
   ],
   "derivedFrom": "library/arxiv-2505.06046v4/sections/sec-009",

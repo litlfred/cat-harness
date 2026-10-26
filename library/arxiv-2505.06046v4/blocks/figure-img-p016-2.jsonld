@@ -26,6 +26,66 @@
       },
       "drafted_at": "2026-09-29",
       "lang": "en"
+    },
+    {
+      "text": "Figure 11 : comparaison des types d'erreurs sur PubHealthBench-FreeForm classés avec Llama-3.3-70B : (1) informations superflues non contradictoires, (2) omission de points ou de critères requis, et (3) contradiction ou énoncé erroné de la recommandation officielle.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "fr"
+    },
+    {
+      "text": "Figura 11: comparación de los tipos de error en PubHealthBench-FreeForm clasificados con Llama-3.3-70B: (1) información superflua no contradictoria, (2) omisión de puntos o criterios requeridos y (3) contradicción o enunciado erróneo de la guía oficial.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "es"
+    },
+    {
+      "text": "الشكل 11: مقارنة أنواع الأخطاء في PubHealthBench-FreeForm المصنَّفة باستخدام Llama-3.3-70B: (1) معلومات زائدة غير متناقضة، (2) إغفال نقاط أو معايير مطلوبة، (3) تناقض مع الإرشاد الرسمي أو صياغة خاطئة له.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ar"
+    },
+    {
+      "text": "Рисунок 11: сравнение типов ошибок на PubHealthBench-FreeForm, классифицированных с помощью Llama-3.3-70B: (1) лишняя непротиворечащая информация, (2) пропуск обязательных пунктов или критериев, (3) противоречие официальной рекомендации или её неверное изложение.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ru"
+    },
+    {
+      "text": "图 11：用 Llama-3.3-70B 分类的 PubHealthBench-FreeForm 错误类型比较：(1) 多余但不矛盾的信息，(2) 遗漏必需的要点或标准，(3) 与官方指南相矛盾或误述官方指南。",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "zh"
     }
   ],
   "derivedFrom": "library/arxiv-2505.06046v4/sections/sec-027",
