@@ -62,6 +62,8 @@ export const GraphTypologyNodeSchema = z
     perInstance: z.literal(true).optional(),
     newInstanceSource: NewInstanceSourceSchema.optional(),
     renderable: z.boolean(),
+    /** Its markdown is shown on a published page (an IG annex appended to its page), so its links address that page. */
+    shownOnPublishedPages: z.literal(true).optional(),
     recordsWork: z.boolean().optional(),
     holds: z.enum(["content", "context", "state", "derived"]),
     summary: z.string().min(1),

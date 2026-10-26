@@ -233,6 +233,22 @@ export interface GraphTypologyDef {
    */
   renderable: boolean;
   /**
+   * Is a graph of this kind's markdown SHOWN ON a published page, though the
+   * kind is not renderable itself?
+   *
+   * An IG annex (fhir-harness's `ig-annex`) is the case that asked: a `.md`
+   * annex is appended to its host page `input/pagecontent/<page>` as written,
+   * so `business-processes.html#…` in `annexes/` names the page the IG
+   * renders, and resolving it from `annexes/` reports a correct link as
+   * broken (smart-immunizations#81; owner 2026-10-26, option A). Neither
+   * `renderable` (it is no site of its own) nor `within` (a sub-graph of a
+   * kind, which the navbar folds) says this. `check:subgraphs` routes such a
+   * kind's unresolved links to `siteResolved`, as it does a renderable
+   * graph's, and the kind's owner judges them from the page that shows them
+   * (fhir-harness's `check:ig-annex-links`). Absent means no.
+   */
+  shownOnPublishedPages?: true;
+  /**
    * Does a graph of this kind record WORK — something somebody is partway
    * through, that an arriving agent could pick up?
    *
