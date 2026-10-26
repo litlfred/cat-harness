@@ -1,0 +1,956 @@
+{
+  "$schema": "folio-block-summaries/v1",
+  "entry": "omg-2024-spdx-3-0",
+  "summaries": [
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-000",
+      "source": "sections/sec-000-the-system-package-data-exchange-spdx-specificat.md",
+      "source_hash": "35e3db9abd71d55c825ed94e05dc3590962ee093d9bebf20c45bc26a10272b09",
+      "narrative": [
+        {
+          "text": "Copyright notice for the System Package Data Exchange (SPDX) Specification Version 3.0 (2010–2024, The Linux Foundation and its Contributors, including SPDX Model contributions from OMG and its Contributors).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-001",
+      "source": "sections/sec-001-use-of-specification---terms-conditions-notices.md",
+      "source_hash": "b7d0e9e1713dc028ff7b6b35798a190efe03e52e292a98de490f3a7fa034f238",
+      "narrative": [
+        {
+          "text": "Licensing terms for the specification under the Community Specification License 1.0 (Community-Spec-1.0), with pre-existing uncontributed portions provided under the Creative Commons Attribution License 3.0 Unported (CC-BY-3.0).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-002",
+      "source": "sections/sec-002-trademarks.md",
+      "source_hash": "940c85c0c96f36ab07b2be67c10adeb0ee9a17d85aa8684fd1741441bc763d92",
+      "narrative": [
+        {
+          "text": "Trademark notice stating that SPDX is a registered trademark of The Linux Foundation.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-003",
+      "source": "sections/sec-003-compliance.md",
+      "source_hash": "81451ebbb9294d4d49fdceea3d2024d88fdf59c0f5a96baab05bcdc2e621d670",
+      "narrative": [
+        {
+          "text": "Trademark compliance condition for software claiming conformance to the specification, followed by the full Table of Contents covering the Preface, Sections 1–18 (Scope, References, Symbols, Terms, Conformance, Model and serializations, Additional information, Core, Software, Security, Licensing, SimpleLicensing, ExpandedLicensing, Dataset, AI, Build, Lite, and Extension), and Annexes A–F.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-004",
+      "source": "sections/sec-004-omg.md",
+      "source_hash": "b7e9aadaa653b0642b9c6b391e94a79c7100a0e03a7024e643f6bb157fd099e1",
+      "narrative": [
+        {
+          "text": "Continuation of the Table of Contents listing Annex F, Annex G (Community Specification License 1.0), and Annex H (Creative Commons Attribution License 3.0 Unported).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-005",
+      "source": "sections/sec-005-preface.md",
+      "source_hash": "0a472182382ebc0dcbf6c1eaacdbfe0b1165f3aaed9a44a6069be81642a99dbf",
+      "narrative": [
+        {
+          "text": "Preface introducing the Object Management Group (OMG), founded in 1989 as an open-membership standards consortium whose specifications implement Model Driven Architecture (MDA), including UML, CORBA, and CWM.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-006",
+      "source": "sections/sec-006-omg-specifications.md",
+      "source_hash": "f9f3e43a2122518260f456fe96c5e6af13710f99325722f88de298c7cd27569d",
+      "narrative": [
+        {
+          "text": "Overview of OMG specification availability, headquarters contact details in Milford, Massachusetts, ISO standard availability, and OMG's continuous review and issue reporting procedure.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-007",
+      "source": "sections/sec-007-scope.md",
+      "source_hash": "dc92ea4a227b142c468aa2c34f1343a685f3684636633e6f723ddea68cd74be9",
+      "narrative": [
+        {
+          "text": "Section 1 (Scope): Defines SPDX as an open standard data model and set of serialization formats for communicating bill of materials (BOM) metadata across software composition (Packages, Files, Snippets), builds, AI models, datasets, identities, provenance, integrity, licensing, security vulnerabilities, element relationships, lifecycle, and annotations.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-008",
+      "source": "sections/sec-008-references.md",
+      "source_hash": "ad78cfa0ead35ff9d0d6de11ae996a470b257a7342d2a53073df0ce8cda04c4d",
+      "narrative": [
+        {
+          "text": "Section 2 (References) heading and subsection number 2.1 introducing the specification's reference clauses.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-009",
+      "source": "sections/sec-009-normative-references.md",
+      "source_hash": "81f23f762c5b9f8be672591eb6e1df4e7eed490214954b43cf09dd4db0552ccb",
+      "narrative": [
+        {
+          "text": "Section 2.1 (Normative References): Lists the normative standards and specifications referenced by SPDX 3.0, including CPE 2.2/2.3, CVSS v3.0/v3.1/v4.0, EPSS, SSVC, IEEE POSIX.1-2017, W3C RDF, IETF RFCs for hash digests (MD2, MD4, MD5, SHA-1, SHA-224, SHA-2, BLAKE2), ZLIB, MIME media types, URIs, ABNF, JSON, and CoSWID, SemVer 2.0.0, SLSA Provenance v0.2, SWHID, the SPDX RDF Ontology and License List, and CISA SBOM types.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-010",
+      "source": "sections/sec-010-non-normative-references.md",
+      "source_hash": "de09f1e8b1ffaa462eaaef11877c5e6638d18b121cc99e17578873f9be3af62e",
+      "narrative": [
+        {
+          "text": "Section 2.2 (Non-normative References): Lists 11 informative references covering the CISQ 3T-SBOM project, USENIX and congressional testimony on SBOMs, MITRE software supply chain publications, NTIA multistakeholder SBOM documents, OSI Approved Licenses, prior SPDX specification versions 1.0–2.3, and the May 2021 US Executive Order 14028 on cybersecurity.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-011",
+      "source": "sections/sec-011-symbols.md",
+      "source_hash": "4a99f5225b8103f351bde2c3a6e769620ded22b4aeb83597cd3a764f9ebe5bfc",
+      "narrative": [
+        {
+          "text": "Section 3 (Symbols): Defines 31 abbreviations and acronyms used throughout the specification, from 3T-SBOM, ABNF, AI, and BOM through CVSS, EPSS, JSON-LD, KEV, OWL, PURL, RDF, SBOM, SHACL, SPDX, SSVC, SWHID, and VEX.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-012",
+      "source": "sections/sec-012-terms-and-definitions.md",
+      "source_hash": "935ae2e098158be2d1ce0ccd53039707bd267ccc2c353adeadf73a53238a2e75",
+      "narrative": [
+        {
+          "text": "Section 4 (Terms and definitions): Cites the ISO Online Browsing Platform and IEC Electropedia terminological databases and defines the term 'profile' as a targeted scope of SPDX usage identifying the namespaces, classes, properties, and custom constraints for a specific use case.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-013",
+      "source": "sections/sec-013-conformance.md",
+      "source_hash": "77065cda8fe1551871ba934cfef4df0f9e8a5f7fb63909b25bf0ccebbe807e18",
+      "narrative": [
+        {
+          "text": "Section 5 (Conformance) heading and subsection number 5.1 introducing the conformance requirements.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-014",
+      "source": "sections/sec-014-alternate-notation-for-some-conformance-requirem.md",
+      "source_hash": "cac9b9676e5b8f640da1e65b43c7a094388a9c4ff5604a8c580b28cb7cf7ad3a",
+      "narrative": [
+        {
+          "text": "Section 5.1 (Alternate notation for some conformance requirements): Explains how property cardinality assertions are expressed using `minCount` (minimum 0) and `maxCount` (unbounded `*`), alongside `0..1`, `0..*`, `1..1`, and `1..*` range notations.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-015",
+      "source": "sections/sec-015-introduction-to-profiles.md",
+      "source_hash": "6be47ee588f5eba0e49259a6bee2df7174d5dbc329c0793668ab61b04b16556d",
+      "narrative": [
+        {
+          "text": "Section 5.2 (Introduction to Profiles): Lists the nine SPDX compliance points (Core, Software, Security, Licensing, Dataset, AI, Build, Lite, and Extension Profiles), specifying that the Core Profile is mandatory and all others are optional.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-016",
+      "source": "sections/sec-016-core-profile-compliance-point.md",
+      "source_hash": "359018e030b2a042da2ba60f8a900354cf9083efe7ad24d2760c4df80f6aa04a",
+      "narrative": [
+        {
+          "text": "Section 5.3 (Core Profile compliance point): Specifies the mandatory Core Profile providing foundational classes, properties, and vocabularies across all SPDX profiles, requiring conforming software to import and export documents in at least one defined SPDX serialization format.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-017",
+      "source": "sections/sec-017-software-profile-compliance-point.md",
+      "source_hash": "c60cfcc0c105d60799f99fe310277744a0f4430306819856782a3cd85513810c",
+      "narrative": [
+        {
+          "text": "Section 5.4 (Software Profile compliance point): Specifies conformance requirements for the Software Profile covering classes, properties, and vocabularies for software artifacts, which together with the Core Profile forms the baseline for SBOM interchange without requiring support for other optional profiles.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-018",
+      "source": "sections/sec-018-security-profile-compliance-point.md",
+      "source_hash": "3808974a025515182ea46efd9cade43a1bb950b5707baf3c55ea606de222f7ac",
+      "narrative": [
+        {
+          "text": "Section 5.5 (Security Profile compliance point): Specifies conformance requirements for exchanging software vulnerability, severity, exploitability, and remediation information under the Security Profile without entailing support for other optional profiles.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-019",
+      "source": "sections/sec-019-licensing-profile-compliance-point.md",
+      "source_hash": "b942d302f26c52ff2c303a7a8c18792c5f72fa6e87f14f4de0b09b8d3d1f5f4b",
+      "narrative": [
+        {
+          "text": "Section 5.6 (Licensing Profile compliance point): Specifies conformance requirements for exchanging software licensing and intellectual property metadata—encompassing both the SimpleLicensing and ExpandedLicensing profiles, SPDX License Expressions, and the SPDX License List—independently of other optional profiles.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-020",
+      "source": "sections/sec-020-dataset-profile-compliance-point.md",
+      "source_hash": "b3ed1fed25aa214f0a46dfa15986c86c2c693df8220f9915595c01e995d820d4",
+      "narrative": [
+        {
+          "text": "Section 5.7 (Dataset Profile compliance point): Specifies conformance requirements for exchanging dataset metadata, provenance, structure, licensing, and statistical characteristics for AI systems or other applications under the Dataset Profile.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-021",
+      "source": "sections/sec-021-ai-profile-compliance-point.md",
+      "source_hash": "c60790f2e28e24eb6b79406636395d42b58fd72b23195a2b224fb1dfc38a5f37",
+      "narrative": [
+        {
+          "text": "Section 5.8 (AI Profile compliance point): Specifies conformance requirements for exchanging inventories of AI/ML models, frameworks, libraries, versions, licenses, and ethical and security considerations under the AI Profile.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-022",
+      "source": "sections/sec-022-build-profile-compliance-point.md",
+      "source_hash": "c51bffeba4b3146871444f733a6cc42f73fc2bb6e0fba8372a01af130701209b",
+      "narrative": [
+        {
+          "text": "Section 5.9 (Build Profile compliance point): Specifies conformance requirements for capturing and exchanging software build inputs, outputs, instructions, environments, actors, and evidence under the Build Profile.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-023",
+      "source": "sections/sec-023-lite-profile-compliance-point.md",
+      "source_hash": "cacc26a0ab33908df9a81e1024c7f15875226c5b0b761779e5ccd515fa796552",
+      "narrative": [
+        {
+          "text": "Section 5.10 (Lite Profile compliance point): Specifies conformance requirements for the Lite Profile, which captures the minimum SBOM, package, licensing, and relationship information needed for software supply chain license compliance.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-024",
+      "source": "sections/sec-024-extension-profile-compliance-point.md",
+      "source_hash": "3bdb872b87f9aa47a7e6a675f21d435629be02e3f130bd3584aa615b35820fcf",
+      "narrative": [
+        {
+          "text": "Section 5.11 (Extension Profile compliance point): Specifies conformance requirements for the Extension Profile, enabling profile-based element characterization extensions, community-specific metadata, and structured solutions for coverage gaps via subclasses of the abstract `Extension` class.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-025",
+      "source": "sections/sec-025-trademark-compliance.md",
+      "source_hash": "ec5db5701c2382eabd0fbb1f0077c040ed4f21c95ab38a95c17bfffaef370d59",
+      "narrative": [
+        {
+          "text": "Section 5.12 (Trademark Compliance): Specifies compliance with the SPDX Trademark License and provides the exact mandatory copyright notices for verbatim and non-verbatim reproductions or distributions of SPDX Specification 3.0.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-026",
+      "source": "sections/sec-026-model-and-serializations.md",
+      "source_hash": "5798758bbc833df09bceba3fb38dfa95dbe82d1a51b94ea300392654fc2b2665",
+      "narrative": [
+        {
+          "text": "Section 6 (Model and serializations) heading and subsection number 6.1 introducing the data model and serialization clauses.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-027",
+      "source": "sections/sec-027-overview.md",
+      "source_hash": "2159d1b795b08e60fb0e756cfabf61bf903e60098f4a125c4bf254c76edd1204",
+      "narrative": [
+        {
+          "text": "Section 6.1 (Overview): States that the SPDX data model is based on the Resource Description Framework (RDF) extensible knowledge representation model and can be serialized in multiple formats for storage and transmission.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-028",
+      "source": "sections/sec-028-rdf-serialization.md",
+      "source_hash": "6e1e8f924aa1ef3e955918d1827bd6b7ed1744e5f2c6ffc5c5a8672ab24ba7a2",
+      "narrative": [
+        {
+          "text": "Section 6.2 (RDF serialization): Lists supported RDF serialization formats—including JSON-LD 1.1, RDF 1.1 Turtle, N-Triples, and RDF/XML—and notes the accompanying JSON-LD context file for human-readable JSON-LD serialization.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-029",
+      "source": "sections/sec-029-canonical-serialization.md",
+      "source_hash": "9b2ced12e4e41e326f776a9c6fb966b88bfa0ebc4f4f64727e11ba1c4da67221",
+      "narrative": [
+        {
+          "text": "Section 6.3 (Canonical serialization): Defines the deterministic, single-line RFC 8259 JSON canonical form for SPDX JSON-LD data, specifying rules for double-quoted keys, no external whitespace, lowercase literals (`true`, `false`, `null`), base-10 integers without leading zeros, UTF-8 string escaping, arrays, and lexicographically ordered ASCII object keys.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-030",
+      "source": "sections/sec-030-serialization-information.md",
+      "source_hash": "cd9d8221792ef40a9d7b376d65cd425c8e4e907de01284116536bcbe485f226d",
+      "narrative": [
+        {
+          "text": "Section 6.4 (Serialization information): Explains how an `SpdxDocument` element represents a logical collection of elements across formats while an `Artifact` linked via `serializedInArtifact` represents the physical bytes, allows native format mechanisms such as `@context` prefixes, and requires at most one `SpdxDocument` per serialization instance.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-031",
+      "source": "sections/sec-031-serialization-in-json-ld.md",
+      "source_hash": "5f9c7fe01f460e9f86207dcde264283bbc6dcf459495957cb03ee8e70bd670e0",
+      "narrative": [
+        {
+          "text": "Section 6.5 (Serialization in JSON-LD) heading and subsection number 6.5.1 introducing the JSON-LD serialization rules.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-032",
+      "source": "sections/sec-032-json-ld-context-file.md",
+      "source_hash": "b1eaebbec62713c4f30f5b4ee8e07c5b0f82c1d5a6a7e849137f9d3aeaf4b1e3",
+      "narrative": [
+        {
+          "text": "Section 6.5.1 (JSON-LD context file): Requires all SPDX 3.0.1 JSON-LD documents to reference `\"@context\": \"https://spdx.org/rdf/3.0.1/spdx-context.jsonld\"` at the top level, which aliases `@id` as `spdxId` and `@type` as `type` and permits additional namespace mappings.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-033",
+      "source": "sections/sec-033-json-ld-validation.md",
+      "source_hash": "895a593bd787e4cc38681681990a2be2c9da84e0231bd3dbe6f943e64fc57c7c",
+      "narrative": [
+        {
+          "text": "Section 6.5.2 (JSON-LD validation): Defines the two conformance criteria for SPDX JSON-LD documents—structural validation against the SPDX JSON Schema (`spdx-json-schema.json`) and semantic validation against the SPDX OWL ontology and SHACL shapes (`spdx-model.ttl`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-034",
+      "source": "sections/sec-034-additional-information.md",
+      "source_hash": "772444a00dc21159ebfb1b6487a9a00977d12a9da5bdcb06a872f0faa9cc0a95",
+      "narrative": [
+        {
+          "text": "Section 7 (Additional information) heading and subsection number 7.1 introducing the acknowledgements clause.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-035",
+      "source": "sections/sec-035-author-acknowledgements.md",
+      "source_hash": "84f665defb481dcacbb37e9a88259602c937d2fd8e9185eff49e86d6ffde0260",
+      "narrative": [
+        {
+          "text": "Section 7.1 (Author acknowledgements): Lists the contributors who authored the SPDX 3.0 specification.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-036",
+      "source": "sections/sec-036-core.md",
+      "source_hash": "a2eea34c25ac7b4dff8564342bd94e92057060794d32417fc1017ee28b320557",
+      "narrative": [
+        {
+          "text": "Section 8 (Core): Introduces the `Core` namespace (`https://spdx.org/rdf/3.0.1/terms/Core`) as the foundational basis for all SPDX 3.0 profiles.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-037",
+      "source": "sections/sec-037-classes.md",
+      "source_hash": "051b4cb7077c9f887296ab8d02c3175a0acdb72ea2379b05b8448f3287daa7d9",
+      "narrative": [
+        {
+          "text": "Section 8.1 (Classes) heading and subsection number 8.1.1 introducing the Core profile class definitions.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-038",
+      "source": "sections/sec-038-agent.md",
+      "source_hash": "076545b0e5634cd7d65ddf50d1f612fda0ac73bb5c08f7f5c959f8c85ff7d279",
+      "narrative": [
+        {
+          "text": "Section 8.1.1 (`Agent`): Defines the concrete `/Core/Agent` class (subclass of `/Core/Element`) representing any entity with the potential to act on a system—such as a person, organization, or software agent, distinct from tools—along with its inherited properties (`comment`, `creationInfo`, `description`, `extension`, `externalIdentifier`, `externalRef`, `name`, `spdxId`, `summary`, `verifiedUsing`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-039",
+      "source": "sections/sec-039-annotation.md",
+      "source_hash": "dc87e4561897d111d82ef5a6365275ef7551c72f726797d6cd87e31e118059d2",
+      "narrative": [
+        {
+          "text": "Section 8.1.2 (`Annotation`): Defines the concrete `/Core/Annotation` class (subclass of `/Core/Element`) for assertions made in relation to an element, specifying direct properties `annotationType` (`1..1`), `contentType` (`0..1`), `statement` (`0..1`), and `subject` (`1..1`) plus inherited `Element` properties.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-040",
+      "source": "sections/sec-040-artifact.md",
+      "source_hash": "2b6136ee30b0c6f64e48d9a3d940b777ba0271b0164a566be6be2c3bdfebfe23",
+      "narrative": [
+        {
+          "text": "Section 8.1.3 (`Artifact`): Defines the abstract `/Core/Artifact` class (subclass of `/Core/Element`) representing a distinct digital article or unit (file, package, device, or data element), with properties `builtTime`, `originatedBy`, `releaseTime`, `standardName`, `suppliedBy`, `supportLevel`, and `validUntilTime` plus inherited `Element` properties.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-041",
+      "source": "sections/sec-041-bom.md",
+      "source_hash": "87e004fa88bcba8f4a0a96ab2b0ed75b4f99e3dbcb2c2815f89e5686a9d0563a",
+      "narrative": [
+        {
+          "text": "Section 8.1.4 (`Bom`): Defines the concrete `/Core/Bom` class as a Bill of Materials container grouping SPDX 3.0 content that characterizes a product's composition, provenance, licensing, and quality or security details.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-042",
+      "source": "sections/sec-042-bundle.md",
+      "source_hash": "5f702b4dd0cc0240add5b0aaed175052abc2d959c109e13cc52318b3c674bfe1",
+      "narrative": [
+        {
+          "text": "Continuation of Section 8.1.4 (`Bom`): Lists the superclasses of `/Core/Bom` (`/Core/Bundle`, `/Core/ElementCollection`, and `/Core/Element`) and the beginning of its informative property table (`comment` and `context`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-043",
+      "source": "sections/sec-043-creationinfo.md",
+      "source_hash": "2015e24f4cb04a5049598d30bc957fbf5cfb27deb01bfe58bfee1d0ba191e2f5",
+      "narrative": [
+        {
+          "text": "Completes the informative property table for `/Core/Bom` and defines Section 8.1.5 (`Bundle`), the concrete `/Core/Bundle` class (subclass of `ElementCollection` and `Element`) representing a collection of elements sharing a common `context` (`0..1`), along with its full property table.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-044",
+      "source": "sections/sec-044-element.md",
+      "source_hash": "9e0a4c8af8e50f82312375892d602c2c01e33e9f279ab29ac61871405e089ff8",
+      "narrative": [
+        {
+          "text": "Section 8.1.6 (`CreationInfo`): Defines the concrete `/Core/CreationInfo` class recording who created an element and when and how it was created (noting that `created` often reflects the last artifact change date for reproducible builds), with properties `comment` (`0..1`), `created` (`1..1`), `createdBy` (`1..*`), `createdUsing` (`0..*`), and `specVersion` (`1..1`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-045",
+      "source": "sections/sec-045-dictionaryentry.md",
+      "source_hash": "d06ddedf22b3ff421e0057c72e48f4bf71cf9cc0e2fac8570e3f1f1f317d2581",
+      "narrative": [
+        {
+          "text": "Defines Section 8.1.7 (`DictionaryEntry`), a concrete key-value pair class (`key` `1..1`, `value` `0..1`) for string mappings, and begins Section 8.1.8 (`Element`), the abstract base domain class `/Core/Element` from which all SPDX 3.0 domain classes derive.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-046",
+      "source": "sections/sec-046-externalidentifier.md",
+      "source_hash": "f21cd211ac347aa298f880a3f950eb012f4e7ae56ff02d99dc5dcabd4f40e0ab",
+      "narrative": [
+        {
+          "text": "Completes the direct and informative property tables for Section 8.1.8 (`/Core/Element`), covering `comment`, `creationInfo` (`1..1`), `description`, `extension`, `externalIdentifier`, `externalRef`, `name`, `spdxId` (`1..1`), `summary`, and `verifiedUsing`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-047",
+      "source": "sections/sec-047-elementcollection.md",
+      "source_hash": "6203ac847cc9ec6f506e733e283d93d0371efcec3c17b49a82abbc3dc4d75d3b",
+      "narrative": [
+        {
+          "text": "Section 8.1.9 (`ElementCollection`): Defines the abstract `/Core/ElementCollection` class (subclass of `/Core/Element`) for collections of elements defaulting to `core` profile conformance, requiring at least one `rootElement` when `element` is non-empty and forbidding `SpdxDocument` in `element` or `rootElement`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-048",
+      "source": "sections/sec-048-externalref.md",
+      "source_hash": "6e7b913fa087fe88c704e06631f309d5e9a3260f4d8adf28c004f1310e3631c9",
+      "narrative": [
+        {
+          "text": "Completes the informative property table for `/Core/ElementCollection` and defines Section 8.1.10 (`ExternalIdentifier`), the concrete `/Core/ExternalIdentifier` class for referencing an external resource identifier that uniquely identifies an `Element` via `externalIdentifierType` (`1..1`), `identifier` (`1..1`), `identifierLocator` (`0..*`), `issuingAuthority` (`0..1`), and `comment` (`0..1`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-front-matter",
+      "source": "sections/sec-front-matter.md",
+      "source_hash": "48d2c7ed4809951e560cb5df771b604b1b97ae446bb2fdd38c2b10f8674c0d16",
+      "narrative": [
+        {
+          "text": "Cover and publication metadata for the OMG System Package Data Exchange (SPDX) Specification Version 3.0 (OMG Document Number Formal/24-11-01, release date March 2025, normative reference https://www.omg.org/spec/SPDX).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://60bf5d72-a28c-4963-be20-fa0922d95bc2"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    }
+  ]
+}
