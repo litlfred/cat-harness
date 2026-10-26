@@ -1,11 +1,11 @@
 ---
 # folio-assistant-2upx
 title: 'DOCUMENTATION: one SDO voice, RFC 2119 requirement levels, and the pages the knowledge graph is missing'
-status: in-progress
+status: completed
 type: epic
 priority: high
 created_at: 2026-09-21T16:21:34Z
-updated_at: 2026-10-04T15:12:15Z
+updated_at: 2026-10-26T13:10:00Z
 parent: folio-assistant-rwmf
 ---
 
@@ -24,3 +24,5 @@ Owner, 2026-09-21. A large body of direction on documentation, captured here as 
 
 ## Not duplicating
 `lqo9` already owns the Glossary content kind; this epic ALIGNS to it rather than restating it. `j79e` owns the detangler. `rkqp` owns model-specific voices. `zzmr` owns the KG's structure. `x3bd` owns top-level topical KG directories. `b5f0` owns what instantiation means. `3q47` owns setting agent context from the KG per task.
+
+**Closed 2026-10-26.** All 15 children are completed and the RFC 2119 source is ingested (`cat-harness/library/rfc2119-key-words-requirement-levels`), so nothing in this subtree is open (check:bean-rollup).
