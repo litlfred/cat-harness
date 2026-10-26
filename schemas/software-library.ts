@@ -104,15 +104,20 @@ import type { SpdxLicenseList } from "./spdx-license-expression";
  * The tag a library node carries, so it is identified by declaration. A short
  * SemVer name, the owner's convention for node kinds since 2026-10-05
  * (`schemas/node-kind.ts`): the name is the kind, the version lives in the tag.
+ *
+ * Still 1.0.0, and on purpose: it is the tag a node of a `package.json`
+ * dependency is stamped with, and every such node uses only 1.0.0 fields
+ * ({@link librarySchemaTag}). A writer built before 1.1.0 stamps this constant,
+ * so keeping its value is what lets the kind gain a version without making
+ * every existing node read as stale, in whichever order the layers merge.
  */
-export const SOFTWARE_LIBRARY_SCHEMA_TAG = "software-library/1.1.0";
+export const SOFTWARE_LIBRARY_SCHEMA_TAG = "software-library/1.0.0";
 
 /**
- * The first version, 1.0.0: what every node that uses no 1.1.0 field is still
- * stamped with ({@link librarySchemaTag}), so adding `vendored` rewrote no
- * existing node.
+ * The kind's CURRENT version, 1.1.0, which added `vendored`: what a vendored
+ * bundle's node is stamped with.
  */
-export const SOFTWARE_LIBRARY_1_0_TAG = "software-library/1.0.0";
+export const SOFTWARE_LIBRARY_VENDORED_TAG = "software-library/1.1.0";
 
 /** The suffix a vendored bundle's node file ends in, before {@link LIBRARY_FILE_SUFFIX}. */
 export const VENDORED_INFIX = ".vendored";
@@ -157,7 +162,7 @@ export type Vendored = z.infer<typeof VendoredSchema>;
  * emits exactly these keys and an extra one is a defect.
  */
 export const SoftwareLibraryKind = nodeKind(
-  SOFTWARE_LIBRARY_SCHEMA_TAG,
+  SOFTWARE_LIBRARY_VENDORED_TAG,
   [OutsideSoftwareKind],
   {
     /** Narrowed from the core: an npm package name, as the layer's `package.json` names it. */
@@ -239,7 +244,7 @@ export function vendoredLibraryFileName(name: string, version: string): string {
  * for any other, so gaining a field rewrites none of a layer's existing nodes.
  */
 export function librarySchemaTag(l: { vendored?: unknown }): string {
-  return l.vendored !== undefined ? SOFTWARE_LIBRARY_SCHEMA_TAG : SOFTWARE_LIBRARY_1_0_TAG;
+  return l.vendored !== undefined ? SOFTWARE_LIBRARY_VENDORED_TAG : SOFTWARE_LIBRARY_SCHEMA_TAG;
 }
 
 /**

@@ -22,8 +22,8 @@ import {
 } from "./outside-software.ts";
 import {
   LIBRARY_FILE_SUFFIX,
-  SOFTWARE_LIBRARY_1_0_TAG,
   SOFTWARE_LIBRARY_SCHEMA_TAG,
+  SOFTWARE_LIBRARY_VENDORED_TAG,
   SoftwareLibrarySchema,
   librarySchemaTag,
   libraryFileName,
@@ -40,7 +40,7 @@ const SHA256 = "a".repeat(64);
 
 function library(over: Record<string, unknown> = {}): Record<string, unknown> {
   return {
-    $schema: SOFTWARE_LIBRARY_1_0_TAG,
+    $schema: SOFTWARE_LIBRARY_SCHEMA_TAG,
     name: "bpmn-moddle",
     version: "10.3.1",
     digest: { algorithm: "sha512", digest: SHA512 },
@@ -111,7 +111,7 @@ function vendoredLibrary(over: Record<string, unknown> = {}): Record<string, unk
   const { range: _r, dev: _d, shim: _s, ...rest } = library();
   return {
     ...rest,
-    $schema: SOFTWARE_LIBRARY_SCHEMA_TAG,
+    $schema: SOFTWARE_LIBRARY_VENDORED_TAG,
     name: "jquery",
     version: "3.6.0",
     source: { type: "url", url: "https://registry.npmjs.org/jquery/-/jquery-3.6.0.tgz" },
@@ -203,7 +203,7 @@ describe("software-library/1.1.0 — a vendored bundle", () => {
   });
 
   test("`vendored` is a 1.1.0 field: a vendored node stamped 1.0.0 is refused", () => {
-    expect(ok(vendoredLibrary({ $schema: SOFTWARE_LIBRARY_1_0_TAG }))).toBe(false);
+    expect(ok(vendoredLibrary({ $schema: SOFTWARE_LIBRARY_SCHEMA_TAG }))).toBe(false);
   });
 
   test("keeps the core: a digest and a registry tarball over https are still required", () => {
@@ -213,8 +213,8 @@ describe("software-library/1.1.0 — a vendored bundle", () => {
   });
 
   test("a node is stamped the OLDEST version with every field it uses", () => {
-    expect(librarySchemaTag(library())).toBe(SOFTWARE_LIBRARY_1_0_TAG);
-    expect(librarySchemaTag(vendoredLibrary())).toBe(SOFTWARE_LIBRARY_SCHEMA_TAG);
+    expect(librarySchemaTag(library())).toBe(SOFTWARE_LIBRARY_SCHEMA_TAG);
+    expect(librarySchemaTag(vendoredLibrary())).toBe(SOFTWARE_LIBRARY_VENDORED_TAG);
   });
 
   test("its file names the version, and never collides with a dependency's node", () => {
@@ -251,7 +251,7 @@ describe("the software-library graph typology", () => {
 
   test("names both families — 1.0.0 and the vendored 1.1.0 — as generator output", () => {
     const def = defaultGraphTypologies.get("software-library");
-    expect(Object.keys(def?.nodeSchemas ?? {}).sort()).toEqual([SOFTWARE_LIBRARY_1_0_TAG, SOFTWARE_LIBRARY_SCHEMA_TAG]);
-    for (const tag of [SOFTWARE_LIBRARY_1_0_TAG, SOFTWARE_LIBRARY_SCHEMA_TAG]) expect(def?.nodeSchemas?.[tag]?.generated).toBe(true);
+    expect(Object.keys(def?.nodeSchemas ?? {}).sort()).toEqual([SOFTWARE_LIBRARY_SCHEMA_TAG, SOFTWARE_LIBRARY_VENDORED_TAG]);
+    for (const tag of [SOFTWARE_LIBRARY_SCHEMA_TAG, SOFTWARE_LIBRARY_VENDORED_TAG]) expect(def?.nodeSchemas?.[tag]?.generated).toBe(true);
   });
 });
