@@ -1,0 +1,956 @@
+{
+  "$schema": "folio-block-summaries/v1",
+  "entry": "w3c-2020-json-ld-1-1",
+  "summaries": [
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-000",
+      "source": "sections/sec-000-json-ld-11.md",
+      "source_hash": "7f3647dda5af400df54bbaa06f81958d6d4580ff2a7e1af1c9c7f601a0f83a85",
+      "narrative": [
+        {
+          "text": "Title block and abstract for the W3C Recommendation JSON-LD 1.1 (16 July 2020), listing version links, test suite and implementation report URIs, current and former editors and authors (Gregg Kellogg, Pierre-Antoine Champin, Dave Longley, Manu Sporny, Markus Lanthaler, Niklas Lindström), and repository links. The abstract defines JSON-LD 1.1 as a JSON-based serialization format for Linked Data that integrates into existing JSON systems and is a backwards-compatible superset of JSON-LD 1.0.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-004",
+      "source": "sections/sec-004-status-of-this-document.md",
+      "source_hash": "ca6a4897103546ba9fa28279fc08d438541e387902e492801968b2d40b78f21a",
+      "narrative": [
+        {
+          "text": "Status of This Document and opening of the Table of Contents. Notes the live JSON-LD playground, states that this W3C Recommendation produced by the JSON-LD Working Group under the W3C Patent Policy and 1 March 2019 Process Document supersedes JSON-LD 1.0 as one of three JSON-LD 1.1 Recommendations (alongside Processing Algorithms and API, and Framing), and begins the Table of Contents from Section 1 (Introduction) through Section 4.3 (Value Ordering).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-006",
+      "source": "sections/sec-006-table-of-contents.md",
+      "source_hash": "cf64221bd082f7a3c365a20532dfcd50801d7d74298dad08865ad7f7b183b76b",
+      "narrative": [
+        {
+          "text": "Continuation of the Table of Contents (Section 4.4 Nested Properties through Appendix J References) followed by the non-normative Section 1 Introduction and Section 1.1 How to Read this Document. Introduces Linked Data and JSON-LD's additions to JSON (universal IRI identifiers, context-based key disambiguation, cross-site resource links, language annotations, datatyped values, and named graphs), explains how JSON-LD works both as idiomatic JSON and as an RDF syntax, identifies target developer audiences, and notes the preference for the term IRI over URL or URI.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-007",
+      "source": "sections/sec-007-14-terminology.md",
+      "source_hash": "8c9cc114a9cd20bb2cb24662ecc7a493f6fd68782980b933a103cadba86188ce",
+      "narrative": [
+        {
+          "text": "Interactive note at the end of Section 1.1 stating that the specification can highlight changes since the JSON-LD 1.0 Recommendation, plus the non-normative marker opening Section 1.2 (Contributing).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-010",
+      "source": "sections/sec-010-12-contributing.md",
+      "source_hash": "ee280c2f80eae5354a3a0b6ae0cd3e6132e385b1d8c5aafdd6888dc988e9872c",
+      "narrative": [
+        {
+          "text": "Section 1.2 (Contributing) and Section 1.3 (Typographical conventions). Lists the public-json-ld-wg@w3.org mailing list and #json-ld IRC channels for participation, and defines the typographical conventions used across the specification for markup, variables, definitions, internal and external definition references, hyperlinks, bracketed bibliographic references, and change highlighting.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-011",
+      "source": "sections/sec-011-note.md",
+      "source_hash": "8a5ba28931a2976d02c43196bdfb6ddd52ced0dff2c2f840a9fd7c988a16603c",
+      "narrative": [
+        {
+          "text": "Informative Note styling convention in Section 1.3 followed by the opening of Section 1.4 (Terminology), importing terms from ECMAScript, RFC 8259 (JSON), the WHATWG Infra Standard, and Web IDL: array (unordered by default in JSON-LD unless specified as a list), boolean (true and false), and JSON object (curly-bracketed unique name/value pairs).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-012",
+      "source": "sections/sec-012-13-typographical-conventions.md",
+      "source_hash": "c2e5c321d039ddf6eeacafaa57169d974b85212ebf6e76b8049adc3e7e8cca37",
+      "narrative": [
+        {
+          "text": "Example 1 box in Section 1.3 illustrating how informative examples are formatted in monospace with optional syntax coloring and tabbed navigation buttons for transformed representations, followed by the Section 1.4 Terminology heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-013",
+      "source": "sections/sec-013-terms-imported-from-other-specifications.md",
+      "source_hash": "47f40f615c90fa4b938e39319efcf3e50a62c327a3d21054eeea83322a893044",
+      "narrative": [
+        {
+          "text": "Section 1.4 Terminology definitions imported from external specifications (INFRA map, Web IDL record, null, number, scalar, string; RFC 3987 IRI, IRI reference, and relative IRI reference; RDF 1.1 Concepts, RDF Schema, and Linked Data Design Issues terms from base IRI and blank node through RDF graph, resource, subject, and triple) and the first half of JSON-LD-specific term definitions from active context and base direction through JSON-LD document and JSON-LD internal representation.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-014",
+      "source": "sections/sec-014-json-ld-specific-term-definitions.md",
+      "source_hash": "de73e3c411cc6cb638f515d8d411e688b061c6193246fd395c457b0cd384daa3",
+      "narrative": [
+        {
+          "text": "Continuation of Section 1.4 JSON-LD Specific Term Definitions (JSON-LD Processor, JSON-LD value, keyword, language map, list object, local context, nested property, node object, node reference, prefix, processing mode, scoped context, set object, term, term definition, type map, typed value, value object, and vocabulary mapping) followed by the opening of Section 1.5 (Design Goals and Rationale) introducing the Simplicity goal.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-015",
+      "source": "sections/sec-015-15-design-goals-and-rationale.md",
+      "source_hash": "09bc49e0439468d924dc795134a0ad2ee65e13533813e8e1195e251969cd1759",
+      "narrative": [
+        {
+          "text": "Remainder of Section 1.5 (Design Goals and Rationale) and Section 1.6 (Data Model Overview). Summarizes the design goals of Compatibility, Expressiveness, Terseness, Zero Edits (most of the time), and Usable as RDF, and gives a non-normative overview of the JSON-LD labeled directed graph data model (nodes, blank nodes, node objects vs. value objects, relationship to the RDF data model, and the JSON-LD internal representation).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-016",
+      "source": "sections/sec-016-note.md",
+      "source_hash": "ff3af1bc53e613310968e4d33cf46e64363f6826215f2788e126bddcb041b3f4",
+      "narrative": [
+        {
+          "text": "Informative Note at the end of Section 1.6 noting that non-JSON surface syntaxes such as YAML 1.2 and CBOR can map into the JSON-LD internal representation, followed by the opening of Section 1.7 (Syntax Tokens and Keywords) defining the colon separator (:), @base, @container, and @context.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-018",
+      "source": "sections/sec-018-17-syntax-tokens-and-keywords.md",
+      "source_hash": "d820b46de1aac9df0e50f9057761237067f78813b82fbdb75237a29a40321824",
+      "narrative": [
+        {
+          "text": "Continuation of Section 1.7 (Syntax Tokens and Keywords), summarizing the purpose and section references for @context, @direction, @graph, @id, @import, @included, @index, @json, @language, @list, @nest, @none, @prefix, @propagate, @protected, @reverse, @set, @type, @value, @version, and @vocab, noting that all keys, keywords, and values in JSON-LD are case-sensitive and explaining why @version takes the numeric value 1.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-019",
+      "source": "sections/sec-019-2-conformance.md",
+      "source_hash": "f8e830eb4bfcb1f80db38bd2bd92177d4a24ea7815d965c30cd87286b72e638b",
+      "narrative": [
+        {
+          "text": "Section 2 (Conformance) and the opening of Section 3 (Basic Concepts). Specifies BCP 14 (RFC 2119 / RFC 8174) keyword interpretation, document conformance via the Section 9 JSON-LD Grammar or Section 6.1 HTTP Link interpretation, and the table of compact IRI namespace prefixes (dc11, dcterms, cred, foaf, geojson, prov, i18n, rdf, schema, skos, xsd), then introduces how IRIs disambiguate JSON keys such as name and homepage using the schema.org vocabulary.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-020",
+      "source": "sections/sec-020-3-basic-concepts.md",
+      "source_hash": "cca4a60dadbda3c8de67f2409aa246fbce0f2f0bf3c65204ad0ad82b0c214477",
+      "narrative": [
+        {
+          "text": "Examples 2 and 3 in Section 3 (Basic Concepts) and the opening of Section 3.1 (The Context). Contrasts a plain JSON person object (Example 2) with a verbose JSON-LD document using full schema.org IRIs and @id value objects (Example 3), then introduces the JSON-LD @context mechanism for mapping case-sensitive shortcut terms to IRIs through simple string mappings or expanded term definitions.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-021",
+      "source": "sections/sec-021-32-iris.md",
+      "source_hash": "73310d85ed75050e163a1ef62a3f5a4b0e4dee1a4e7cb8777abbcbf0a5d06636",
+      "narrative": [
+        {
+          "text": "Continuation of Example 3's http://schema.org/image entry and prose in Section 3.1 explaining that contexts can either be embedded directly in a document or referenced externally via a URL such as https://json-ld.org/contexts/person.jsonld.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-022",
+      "source": "sections/sec-022-31-the-context.md",
+      "source_hash": "4786c5804713c6ca9be1a8bcd829c611a73684ee0669d116a5de8aba930be554",
+      "narrative": [
+        {
+          "text": "Examples 4 and 5 in Section 3.1 (The Context) showing an inline context definition that maps name, image, and homepage to schema.org IRIs with @type: @id coercion (Example 4) and a compact JSON-LD document referencing that context by URL (Example 5), followed by prose explaining that non-@context keys in external context documents are ignored and that remote contexts can be referenced using relative URLs.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-023",
+      "source": "sections/sec-023-note.md",
+      "source_hash": "1a8d1e27dae0a4e7ab5ae79382ba7335ab30e4b59d94e53769231e9551998b76",
+      "narrative": [
+        {
+          "text": "Conclusion of Section 3.1 (with Examples 6 and 7), all of Section 3.2 (IRIs, with Examples 8–12), Section 3.3 (Node Identifiers), and the first half of Section 3.4 (Uses of JSON Objects). Covers relative and inline contexts, how IRIs are expressed via context terms, @id/@type values, or @type coercion (ignoring unmapped JSON keys like status), identifying nodes with @id, and how JSON-LD uses JSON objects for node objects, value objects, list/set objects, and map objects.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-024",
+      "source": "sections/sec-024-33-node-identifiers.md",
+      "source_hash": "c55475036c2373f3c906b60f28c24e05867e6093a93d5aa365ba4af43dc91310",
+      "narrative": [
+        {
+          "text": "Example 13 in Section 3.3 (Node Identifiers), showing a compacted JSON-LD node object identified by \"@id\": \"http://me.markus-lanthaler.com/\" with a schema.org name property.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-025",
+      "source": "sections/sec-025-34-uses-of-json-objects.md",
+      "source_hash": "c24e8eb616cf1d97f47f5e2a14d51d511db469575dd34789ebc7442e4fc71600",
+      "narrative": [
+        {
+          "text": "Remainder of Section 3.4 (Uses of JSON Objects) and the opening of Section 3.5 (Specifying the Type). Summarizes Language Maps, Index Maps, Id Maps, Type Maps, Named Graph Indexing, Graph objects, and Context Definitions, and introduces specifying node types explicitly with @type using an IRI, an array of IRIs, or a term from the active context.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-026",
+      "source": "sections/sec-026-35-specifying-the-type.md",
+      "source_hash": "2e7cc8f7cb9a27a53cf0a1dbaf9f15b302ff138799e1926f882707d1ceb8046c",
+      "narrative": [
+        {
+          "text": "Examples 14–16 in Section 3.5 (Specifying the Type) and the opening of Section 4 (Advanced Concepts). Illustrates assigning a single IRI type (Example 14), an array of multiple types (Example 15), and a context term as a type (Example 16), notes the use of @type for typed values and type coercion, and introduces advanced JSON-LD concepts including describing values, value ordering, property nesting, referencing objects across the Web, and object embedding.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-027",
+      "source": "sections/sec-027-4-advanced-concepts.md",
+      "source_hash": "0113574799a8418efe31e550892f051600cd46c4e92ed7ca395424b13ec78539",
+      "narrative": [
+        {
+          "text": "Examples 17 and 18 in Section 4 (Advanced Concepts) showing cross-document IRI references and embedded node objects with FOAF, followed by summaries of indexed values and reverse properties and the opening of Section 4.1 (Advanced Context Usage) explaining where @context may appear and how top-level arrays or @graph describe disconnected nodes.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-028",
+      "source": "sections/sec-028-41-advanced-context-usage.md",
+      "source_hash": "708fc67c6dd1b615dbdceda920be3d74995c75aa66a5110f5723d0279319af7e",
+      "narrative": [
+        {
+          "text": "Examples 19 and 20 in Section 4.1 (Advanced Context Usage) and prose explaining context overriding and composition. Shows separate contexts in a top-level array (Example 19) and an array of contexts combined with @graph (Example 20), explains most-recently-defined-wins term overriding, removing terms by mapping them to null, resetting the active context with \"@context\": null, and previews scoped contexts, context propagation, imported contexts, and protected terms.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-029",
+      "source": "sections/sec-029-note.md",
+      "source_hash": "a0b5f191cccf26c79df974e6e0d0d2a72b6de03dd43855a910b4b1c27a35d1c4",
+      "narrative": [
+        {
+          "text": "Informative Notes and Examples 21 and 22 in Section 4.1 (Advanced Context Usage). Recommends placing @context at the top of a document for readability and streaming parsers, warns against custom @-prefixed ALPHA terms and disallows empty-string terms (\"\"), and shows embedded contexts overriding a term in a nested object (Example 21) and layering a local context onto an external context in an array (Example 22).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-030",
+      "source": "sections/sec-030-411-json-ld-11-processing-mode.md",
+      "source_hash": "7f79d3d5768ad2338e1774a41ec88d29ebc043405b64ff596ebb3db835b88f54",
+      "narrative": [
+        {
+          "text": "Section 4.1.1 (JSON-LD 1.1 Processing Mode), explaining that JSON-LD 1.1 features are enabled unless the processing mode is set to json-ld-1.0 via the API, and that setting \"@version\": 1.1 in the first versioned context (or via the API) explicitly locks the processing mode to json-ld-1.1 and prevents JSON-LD 1.0 processors from misprocessing the document.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-031",
+      "source": "sections/sec-031-note.md",
+      "source_hash": "a3dcaa3366d6cd0579193de8c0e2fe595d05697c48577662fc7f30b0c9ef0469",
+      "narrative": [
+        {
+          "text": "Informative Note and Example 23 in Section 4.1.1 recommending explicit \"@version\": 1.1 in contexts, followed by the prose of Section 4.1.2 (Default Vocabulary) explaining how @vocab sets a common IRI prefix for unmapped properties and types, how mapping a term to null suppresses expansion under @vocab, and how JSON-LD 1.1 allows relative IRI references in @vocab to concatenate with a prior active vocabulary mapping.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-032",
+      "source": "sections/sec-032-412-default-vocabulary.md",
+      "source_hash": "7291b8f7d7498e57b2437f5b4e8da80c87f36ab0040bbd2ab7a82b8a2280172d",
+      "narrative": [
+        {
+          "text": "Examples 24 and 25 in Section 4.1.2 (Default Vocabulary) showing a @vocab prefix for Restaurant properties and setting databaseId to null so it is ignored during expansion, an informative note that terms used as the value of @vocab must already be in scope, and the opening sentence of Section 4.1.3 (Base IRI).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-033",
+      "source": "sections/sec-033-413-base-iri.md",
+      "source_hash": "b0611b032dcbf57ceb36d8229315fe5b829a39c44fce50a25adeaf74cf63b4db",
+      "narrative": [
+        {
+          "text": "Section 4.1.3 (Base IRI, with Examples 27 and 28), Example 26 from Section 4.1.2, and the prose of Section 4.1.4 (Using the Document Base for the Default Vocabulary). Explains resolving relative IRI references (including empty \"@id\": \"\") against the document location or an explicit @base in a local context, notes that setting @base to null disables relative IRI expansion and that @base is ignored in external contexts, and introduces resolving a relative @vocab against the base IRI when no vocabulary mapping is in scope.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-034",
+      "source": "sections/sec-034-414-using-the-document-base-for-the-default-voca.md",
+      "source_hash": "d944252bd53bb2e35f97dd5bba040d186c5fa150f51469492c887169ff1faa18",
+      "narrative": [
+        {
+          "text": "Opening of Example 29 in Section 4.1.4 and the introductory prose of Section 4.1.5 (Compact IRIs). Explains compact IRIs of the form prefix:suffix (such as foaf:name and foaf:Person) and the expansion rules requiring the prefix to match a term in the active context and the suffix not to start with // (while a leading underscore _ denotes a blank node identifier).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-035",
+      "source": "sections/sec-035-415-compact-iris.md",
+      "source_hash": "7f31da9aaea4981af728c85bb5b7f5bd98f7851c312e0ead6437faa09b4f30eb",
+      "narrative": [
+        {
+          "text": "Completion of Example 29 and Example 30 in Section 4.1.4 (showing \"@vocab\": \"#\" resolved against @base), followed by Examples 31 and 32 and the compact IRI prefix eligibility rules in Section 4.1.5 (Compact IRIs). Explains that in JSON-LD 1.1 a term is used as a compact IRI prefix only if its simple term definition ends with an RFC 3986 gen-delim character or its expanded term definition sets \"@prefix\": true (whereas \"@prefix\": false disables prefix use).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-036",
+      "source": "sections/sec-036-note.md",
+      "source_hash": "dc30aad593f977ea27c48321525e5298fb704dc677ad60c59f6c406fdc62bbf7",
+      "narrative": [
+        {
+          "text": "Informative Note and Examples 33–37 in Section 4.1.5 illustrating the JSON-LD 1.0 errata change to compact IRI term selection and how \"@prefix\": true restores prefix compaction in JSON-LD 1.1, followed by Section 4.1.6 (Aliasing Keywords) and the opening of Section 4.1.7 (IRI Expansion within a Context). Explains aliasing keywords other than @context (with restrictions on expanded term definitions for keyword aliases) and using defined terms as prefixes inside the same context.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-037",
+      "source": "sections/sec-037-416-aliasing-keywords.md",
+      "source_hash": "fd74988ecbd654a9c4990ed7f78d399d0b36f315561a7b7b0bcd3a0e3e17824f",
+      "narrative": [
+        {
+          "text": "Example 38 in Section 4.1.6 (Aliasing Keywords), demonstrating a context that aliases @id to url and @type to a in a compacted person node object.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-038",
+      "source": "sections/sec-038-417-iri-expansion-within-a-context.md",
+      "source_hash": "0582274a88fc5a52d109ea016351aa3ead0f83bef6ceb88cb6c0ad94543a8946",
+      "narrative": [
+        {
+          "text": "Opening of Example 39 and prose in Section 4.1.7 (IRI Expansion within a Context) explaining how a context term such as xsd can be used in @type coercion of another term within the same context, and how compact IRIs and full IRIs can appear on the left-hand side of term definitions.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-039",
+      "source": "sections/sec-039-warning.md",
+      "source_hash": "68b039bdc7d5a90cb425e80975bf6654eef70a8199b29b789661392f61c842f5",
+      "narrative": [
+        {
+          "text": "Warnings and Examples 39–44 in Section 4.1.7 (IRI Expansion within a Context) plus the opening prose of Section 4.1.8 (Scoped Contexts). Warns that in JSON-LD 1.1 a compact IRI or IRI used as a term key must expand to the same IRI it would expand to on its own (Example 42), explains exact string matching before prefix lookup when IRIs are used as term keys (Example 43), forbids circular term definitions (Example 44), and introduces property-scoped contexts via @context inside an expanded term definition.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-040",
+      "source": "sections/sec-040-418-scoped-contexts.md",
+      "source_hash": "0fe640a43ce637714905a2ced9c358d355fc159ad2fa38b6dc2ed1410a5f4296",
+      "narrative": [
+        {
+          "text": "Example 45 and prose in Section 4.1.8 (Scoped Contexts), demonstrating a property-scoped context on the interest term that switches the default vocabulary to FOAF for its value, and explaining type-scoped contexts defined on terms used as values of @type (which by default do not propagate into nested node objects).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-041",
+      "source": "sections/sec-041-note.md",
+      "source_hash": "b2f9a632056839a8ef5f5d225b914e957cbdbec3d67b03e2885e7b6488c55a9e",
+      "narrative": [
+        {
+          "text": "Informative Notes and Examples 46 and 47 in Section 4.1.8 (Scoped Contexts). Explains that property-scoped and local contexts remain in effect across nested node objects while type-scoped contexts are applied in lexicographical order of @type values, and states the processing order: property-scoped context first, embedded context second, and type-scoped contexts last.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-042",
+      "source": "sections/sec-042-note.md",
+      "source_hash": "8ad00c53d706c63d84b2324bc82e7754db64cc58ca424ce387de48ff7c6bf056",
+      "narrative": [
+        {
+          "text": "Informative Notes and completion of Examples 47 and 48 in Section 4.1.8 (Scoped Contexts) showing the equivalent array of embedded contexts corresponding to property-scoped, embedded, and type-scoped contexts, followed by the opening of Section 4.1.9 (Context Propagation) introducing the @propagate keyword for controlling whether a context survives descent into nested node objects.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-043",
+      "source": "sections/sec-043-419-context-propagation.md",
+      "source_hash": "c4a2bb2a1f3f45faf35d312d142959bb142ae9f4420ce51477d76c59e9825592",
+      "narrative": [
+        {
+          "text": "Informative Note and Example 49 in Section 4.1.9 (Context Propagation) showing a property-scoped context with \"@propagate\": false reverting in deeper node objects, followed by the prose of Section 4.1.10 (Imported Contexts) explaining how a wrapping context uses @import to load a remote context and merge local overrides into it before processing.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-044",
+      "source": "sections/sec-044-4110-imported-contexts.md",
+      "source_hash": "94045c9b88b1ac6d90cc7eed5ed949b139c36e781444e331417f366c0df3d52c",
+      "narrative": [
+        {
+          "text": "Examples 50–54 and concluding rules in Section 4.1.10 (Imported Contexts). Illustrates importing a remote context inside a type-scoped context to set \"@propagate\": true (Examples 50–52) and importing a remote context to override @vocab and a term definition prior to processing (Examples 53–54), noting that an imported context document must resolve to a single context definition map and may not itself contain @import.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-045",
+      "source": "sections/sec-045-4111-protected-term-definitions.md",
+      "source_hash": "db04a2a23abae467a8c8885643c5587e5da360cccfc4d38abfbfdbd8f7d81cd3",
+      "narrative": [
+        {
+          "text": "Section 4.1.11 (Protected Term Definitions, with Examples 55–57). Explains using \"@protected\": true on individual term definitions or on a whole @context (with \"@protected\": false exceptions) so embedded contexts or \"@context\": null cannot override terms relied upon by plain-JSON consumers, and details the two exceptions where overriding is permitted: identical redefinitions (Example 57) and property-scoped contexts.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-046",
+      "source": "sections/sec-046-note.md",
+      "source_hash": "17d9b670e64fb5a15ff7c4e11d94ef6c3ea32e4a7c9b91578cffe959565fbe64",
+      "narrative": [
+        {
+          "text": "Completion of Example 57 and Example 58 in Section 4.1.11 (Protected Term Definitions), illustrating how a property-scoped context on employee can override a protected name term and how a property-scoped context on location can clear all protected terms using null before introducing a new @vocab.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-047",
+      "source": "sections/sec-047-note.md",
+      "source_hash": "957304065dfe5127427b3fbd13bf09f328c2394113bca35c40f4ae6314bad78a",
+      "narrative": [
+        {
+          "text": "Informative Notes closing Section 4.1.11 (warning that term protection prevents downstream adaptation in general-purpose contexts), Section 4.2 (Describing Values), and the prose of Section 4.2.1 (Typed Values) explaining the three ways to express typed values in JSON-LD: @type coercion in a term definition, an expanded value object with @value and @type, or native JSON booleans and numbers.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-049",
+      "source": "sections/sec-049-421-typed-values.md",
+      "source_hash": "5a7583be59331276146b459f83bffd9cccfc297ff8d6fd90310d023f765ceb19",
+      "narrative": [
+        {
+          "text": "Examples 59 and 60 in Section 4.2.1 (Typed Values), showing an xsd:dateTime typed value expressed via @type coercion on the modified term in the context (Example 59) and via an explicit value object with @value and @type in the document body (Example 60).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-050",
+      "source": "sections/sec-050-note.md",
+      "source_hash": "d22c995812a330f9d7c2289f9e5fd4c14f0dd014b751ecdca2c5d0a497a96d8d",
+      "narrative": [
+        {
+          "text": "Context-sensitivity discussion and Note in Section 4.2.1 distinguishing node types from value types (when @value and @type appear in the same map, @type denotes a value datatype; otherwise it denotes a node type, and type coercion applies only to string values), followed by the opening of Section 4.2.2 (JSON Literals) motivating preserving raw JSON data across JSON-LD transformations.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-051",
+      "source": "sections/sec-051-warning.md",
+      "source_hash": "20d996e9fd92e86d50dd9fe9d93afe713221ca6375847a09d0818b4a15cf4a5d",
+      "narrative": [
+        {
+          "text": "Warning and prose in Section 4.2.2 (JSON Literals) alongside Examples 61 and 62 from Section 4.2.1. Warns that JSON literals create opaque blobs and should only be used when JSON cannot be modeled as JSON-LD, explains that \"@type\": \"@json\" produces an rdf:JSON literal serialized in canonical JSON form when converted to RDF, and shows Examples 61–62 contrasting a schema:BlogPosting node type with an xsd:dateTime value type.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-052",
+      "source": "sections/sec-052-422-json-literals.md",
+      "source_hash": "3624e7e2693fcc40b3c8f50956cdb68b95ad21b0cb6fd2e0831f826659499903",
+      "narrative": [
+        {
+          "text": "Caption and tab header for Example 63 (JSON Literal) in Section 4.2.2.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-053",
+      "source": "sections/sec-053-note.md",
+      "source_hash": "a2e19aa44d653f462a17e491eff9d8fc028d11ad48df0473cf3f5f4a10ff1914",
+      "narrative": [
+        {
+          "text": "Informative Note and Example 63 payload in Section 4.2.2 (noting that null values inside an @json literal are preserved rather than stripped), followed by the prose of Section 4.2.3 (Type Coercion) explaining how expanded term definitions coerce string values using a datatype IRI, @id (document-relative IRI expansion), or @vocab (term and vocabulary-relative IRI expansion).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-054",
+      "source": "sections/sec-054-423-type-coercion.md",
+      "source_hash": "f3bbe8206672db5400ba0340e6dcae2880ed2517ec3ab3b3b3b9a068aa0f680d",
+      "narrative": [
+        {
+          "text": "Example 64 and prose for Example 65 in Section 4.2.3 (Type Coercion). Shows coercing age to xsd:integer and homepage to @id (Example 64), and explains why the string \"barney\" expands to different IRIs when used as a document-relative @id value versus a vocabulary-relative \"@type\": \"@vocab\" property value (Example 65).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-055",
+      "source": "sections/sec-055-note.md",
+      "source_hash": "42b3ea671f059873091cd32ca9777e2c1c1a940201b69717a38fdd280a75ac6b",
+      "narrative": [
+        {
+          "text": "Informative Note and Examples 65–67 in Section 4.2.3 (Type Coercion). Notes that duplicate triples emitted when @id and @vocab resolve to the same IRI collapse in the output dataset, contrasts \"@type\": \"@vocab\" (Example 65) with \"@type\": \"@id\" (Example 66), and shows defining type coercion on compact IRIs and full IRIs in the context (Example 67), where lookup matches the unexpanded key.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-056",
+      "source": "sections/sec-056-note.md",
+      "source_hash": "d6d2e7f51b5ec774760600e4789d3ee7b39f1a5e1232881fa2713c5d6a89597d",
+      "narrative": [
+        {
+          "text": "Informative Note closing Section 4.2.3 (noting that multiple context terms such as dog and cat can expand to the same IRI with different coercion or language rules) followed by the opening of Section 4.2.4 (String Internationalization), introducing document-wide default language tags via @language in the context, clearing @language with null in a scoped context, and associating a language with a specific term.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-front-matter",
+      "source": "sections/sec-front-matter.md",
+      "source_hash": "777ae8e1fd6d241119cd248017f858924a01ee77712588dab6659d10ddb17843",
+      "narrative": [
+        {
+          "text": "Front-matter masthead header containing the W3C mark on page 1 of the JSON-LD 1.1 Recommendation.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://06bea140-d38a-452e-ad75-a5e8e9f8af00"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    }
+  ]
+}
