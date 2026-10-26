@@ -78,6 +78,7 @@
  *    when `status` is terminal.
  */
 import { z } from "zod";
+import { RunContextRefSchema } from "./run-context";
 
 /** The tag a `qa-report` document carries, so it is identified by declaration. */
 export const QA_REPORT_SCHEMA_TAG = "qa-report/v1";
@@ -194,6 +195,13 @@ export const QaReportSchema = z
     status: QaReportStatusSchema,
     summary: SummaryShape,
     details: DetailsShape,
+    /**
+     * Content-addressed reference to the `folio-run-context/v1` record of the
+     * run that produced this report (`docs/proposals/tool-releases-2026-10-07.md`,
+     * owner C1 = a). When present, `toolchain` is a projection of it via
+     * `toolchainFromRunContext`.
+     */
+    runContext: RunContextRefSchema.optional(),
   })
   .superRefine((r, ctx) => {
     // 1. A summary may not disagree with the details it summarises.

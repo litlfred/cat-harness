@@ -564,6 +564,39 @@ export const ContentAdapterDeclarationSchema = z
   })
   .strict();
 
+/**
+ * One LSI unit provider an instance ships: the code that turns one of this
+ * instance's graphs into text units for `lsi:near` (bean `ec2a` step 3,
+ * proposal `lsi-cross-graph-near-2026-10-24`, owner decision A).
+ *
+ * `graphKind` names the graph in the output (`blocks`, `lean-decl`). `module`
+ * is relative to the DECLARING instance's root, and `export` is the function
+ * to call. The tools layer finds providers by reading these declarations, as
+ * it finds content adapters, so it never imports a layer above it
+ * (`check:import-direction`). The function's contract is the tools layer's
+ * (`pipeline/lsi-near-across.ts`).
+ */
+export interface LsiUnitProviderDeclaration {
+  /** The graph's name in `lsi:near` output and in `--graphs`. */
+  graphKind: string;
+  /** Instance-relative module path. */
+  module: string;
+  /** The exported provider function. */
+  export: string;
+}
+
+/** Zod form of {@link LsiUnitProviderDeclaration}, exported on its own for the same reason as {@link ContentAdapterDeclarationSchema}. */
+export const LsiUnitProviderDeclarationSchema = z
+  .object({
+    graphKind: z.string().regex(/^[a-z][a-z0-9-]*$/, "a lower-case kebab name"),
+    module: z
+      .string()
+      .min(1)
+      .refine((m) => !m.startsWith("/") && !m.split("/").includes(".."), "instance-relative, never absolute or escaping"),
+    export: z.string().regex(/^[A-Za-z_$][A-Za-z0-9_$]*$/, "an identifier"),
+  })
+  .strict();
+
 // ── Content-type translation profiles (moved from translation-tools.ts, bean `0r7u`) ───────────────────────────────────────────
 
 /**
@@ -901,6 +934,11 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
    * root discovers rather than names. See {@link ContentAdapterDeclaration}.
    */
   contentAdapters?: ContentAdapterDeclaration[];
+  /**
+   * The LSI unit providers this instance SHIPS, which `lsi:near` discovers
+   * rather than names. See {@link LsiUnitProviderDeclaration}.
+   */
+  lsiUnitProviders?: LsiUnitProviderDeclaration[];
   /**
    * The translation profile of each content type THIS instance owns: which
    * formats it can extract and inject, and which diagrams need re-rendering.
@@ -3644,6 +3682,8 @@ const catHarnessDeclarationShape = {
    * (`check:import-direction`, bean `p11x`).
    */
   contentAdapters: z.array(ContentAdapterDeclarationSchema).optional(),
+  /** See {@link CatHarnessDeclaration.lsiUnitProviders}. */
+  lsiUnitProviders: z.array(LsiUnitProviderDeclarationSchema).optional(),
   contentTranslations: z.array(ContentTypeTranslationSchema).optional(),
   /** See {@link CatHarnessDeclaration.liquid}. */
   liquid: z

@@ -704,26 +704,6 @@
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/compute-integration-watcher",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "compute-integration-watcher"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Cross-layer wiring auditor — watches for newly-landed formal/analytic improvements (proofs, propositions, lemmas, axiom→theorem upgrades, witness data) on the default branch AND on open PRs, and checks whether each one has been wired into the production compute chain. Complements `local/compute-audit` (which scans for performance/correctness antipatterns inside scripts). Runs in two modes: REACTIVE (watch new commits / PR events) and IDLE-SWEEP (walk all existing content blocks and audit wiring)."
-        }
-      ],
-      "skos:notation": "compute-integration-watcher",
-      "dcterms:source": "cat-harness/skills/authoring/authoring-core/compute-integration-watcher.md",
-      "skos:note": "candidate"
-    },
-    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/confirmation-waiver",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -1040,7 +1020,7 @@
         }
       ],
       "skos:notation": "covered-is-not-reachable",
-      "dcterms:source": "cat-harness/skills/folio-core/covered-is-not-reachable.md",
+      "dcterms:source": "cat-harness/skills/tools/folio-core/covered-is-not-reachable.md",
       "skos:note": "candidate"
     },
     {
@@ -1351,26 +1331,6 @@
       ],
       "skos:notation": "deployment-awareness",
       "dcterms:source": "cat-harness/skills/ui/ui-core/deployment-awareness.md",
-      "skos:note": "candidate"
-    },
-    {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/detangler-integration-watcher",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "detangler-integration-watcher"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Structural-QA integration watcher — watches the default branch + open active PRs + newly-opened PRs for organisational changes (paper / chapter manifest edits, new blocks, edited `uses[]` / `kind` / `label` / `interprets` / `defines` / `tags`, block renames) and runs the editor's detanglement skill suite (`content-graph`, `chapter-complexity-review`, `block-density`, `critical-path-analysis`) on every detected change. Queues findings, auto-discharges mechanical fixes (table extraction), routes block reorderings through narrative review before applying them, and escalates section splits / merges / cross-chapter moves / new sections to the author. Inherits shared mechanics from `local/integration-watcher`."
-        }
-      ],
-      "skos:notation": "detangler-integration-watcher",
-      "dcterms:source": "cat-harness/skills/authoring/authoring-core/detangler-integration-watcher.md",
       "skos:note": "candidate"
     },
     {
@@ -2389,26 +2349,6 @@
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/lean-toolchain-contract",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "lean-toolchain-contract"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "The contract the `lean-toolchain` role is held to: what a Lean toolchain must answer when a paper folio's formal half is built, and what it must not be asked. A mechanical role's skill is a contract to test against, not instructions to read."
-        }
-      ],
-      "skos:notation": "lean-toolchain-contract",
-      "dcterms:source": "cat-harness/skills/authoring/content-lifecycle/lean-toolchain-contract.md",
-      "skos:note": "candidate"
-    },
-    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/library-ingestion",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -2560,7 +2500,7 @@
         }
       ],
       "skos:notation": "mcp-assembly",
-      "dcterms:source": "cat-harness/skills/folio-core/mcp-assembly.md",
+      "dcterms:source": "cat-harness/skills/tools/folio-core/mcp-assembly.md",
       "skos:note": "candidate"
     },
     {
@@ -2580,7 +2520,7 @@
         }
       ],
       "skos:notation": "mcp-contract",
-      "dcterms:source": "cat-harness/skills/folio-core/mcp-contract.md",
+      "dcterms:source": "cat-harness/skills/tools/folio-core/mcp-contract.md",
       "skos:note": "candidate"
     },
     {
@@ -2600,7 +2540,7 @@
         }
       ],
       "skos:notation": "mcp-projection",
-      "dcterms:source": "cat-harness/skills/folio-core/mcp-projection.md",
+      "dcterms:source": "cat-harness/skills/tools/folio-core/mcp-projection.md",
       "skos:note": "candidate"
     },
     {
@@ -3765,7 +3705,7 @@
         }
       ],
       "skos:notation": "skills-and-tools",
-      "dcterms:source": "cat-harness/skills/folio-core/skills-and-tools.md",
+      "dcterms:source": "cat-harness/skills/tools/folio-core/skills-and-tools.md",
       "skos:note": "candidate"
     },
     {
@@ -4295,7 +4235,7 @@
         }
       ],
       "skos:notation": "tool-authoring",
-      "dcterms:source": "cat-harness/skills/folio-core/tool-authoring.md",
+      "dcterms:source": "cat-harness/skills/tools/folio-core/tool-authoring.md",
       "skos:note": "candidate"
     },
     {

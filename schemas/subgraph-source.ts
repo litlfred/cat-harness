@@ -22,6 +22,7 @@
  * | `branch` | a declared repository branch, keyed by `commit` or `tip` | where a mount of it lands |
  * | `family` | a family of branches, one per key | where a mount of ONE member lands |
  * | `remote` | another repository's tree, at a pinned 40-character commit | where the remote mount lands |
+| `hydrated` | another instance's published `index.hydrated.jsonld` for one subgraph, at a pinned commit — metadata, no files | where that one file lands |
  *
  * A third kind (a graph database) is a new MEMBER of the union — an additive
  * change every `switch` on `kind` is then forced by the compiler to answer —
@@ -280,6 +281,51 @@ export const NpmSourceSchema = z
 export type NpmSource = z.infer<typeof NpmSourceSchema>;
 
 /**
+ * The content is ONE FILE OF METADATA: another instance's published
+ * `index.hydrated.jsonld` for one of its subgraphs, at a pinned commit — every
+ * node of that subgraph inline, typed, labelled and described, its heavy
+ * bodies as payload pointers, and not one byte of the subgraph itself (bean
+ * `mo75` G2; the contract is `skills/kg/kg-core/kg-export.md` §"Named
+ * subgraphs"). The entry's `path` is the directory that one file lands in.
+ *
+ * It is a source KIND, not a flag on `remote`, for the reason `family` is not
+ * a `keyedBy` on `branch`: a consumer that took the `remote` arm would copy a
+ * directory that is not there and read the result as the subgraph. A new
+ * member is a compile error at every such consumer instead (bean `l4ay`).
+ *
+ * `harness` and `subgraph` name the file rather than spell its path: where an
+ * instance publishes is `<its docs dir>/subgraph/<harness>/<subgraph>/` and
+ * the docs directory is read from ITS declaration at the pin, so the path is
+ * the mounting tool's to compute ({@link publishedSubgraphDir} in
+ * `subgraph-manifest.ts`). `subgraph` is never the instance root: a hydrated
+ * file there would be the whole graph in one document (`f233`).
+ *
+ * `tool` names the declared Tool that fetches it (bean `j9cs`: the subgraph
+ * names its mounter; there is no central one). Absent is `remote-mount`, the
+ * Tool that lays it down when a mount entry or override asks for
+ * `hydrated: true` (`schemas/remote-mount.ts`).
+ */
+export const HydratedSourceSchema = z
+  .object({
+    kind: z.literal("hydrated"),
+    repository: RemoteSourceSchema.shape.repository,
+    ref: RemoteSourceSchema.shape.ref,
+    /** The upstream instance's name — the `<HARNESS>` segment of the subgraph IRI. */
+    harness: z.string().regex(/^[a-z0-9][a-z0-9-]*$/, "an instance name"),
+    /** The subgraph's path in that instance, e.g. `tools` or `skills/sdlc`; never the root. */
+    subgraph: z
+      .string()
+      .regex(/^[A-Za-z0-9_-][A-Za-z0-9._-]*(?:\/[A-Za-z0-9_-][A-Za-z0-9._-]*)*\/?$/, "an instance-relative subgraph path, no dot-prefixed segment, never the root")
+      .refine((p) => !p.split("/").includes(".."), "may not climb with `..`"),
+    tool: z.string().regex(/^[a-z0-9][a-z0-9-]*$/, "a Tool node id").optional(),
+  })
+  .strict();
+export type HydratedSource = z.infer<typeof HydratedSourceSchema>;
+
+/** The Tool that lays a `hydrated` source down when the source names none. */
+export const DEFAULT_HYDRATED_TOOL = "remote-mount";
+
+/**
  * A declared subgraph's content source. A discriminated union, so a new kind
  * is a new member here and a compile error at every consumer that has not
  * decided what to do with it.
@@ -290,6 +336,7 @@ export const SubgraphSourceSchema = z.discriminatedUnion("kind", [
   FamilySourceSchema,
   RemoteSourceSchema,
   NpmSourceSchema,
+  HydratedSourceSchema,
 ]);
 export type SubgraphSource = z.infer<typeof SubgraphSourceSchema>;
 export type SubgraphSourceKind = SubgraphSource["kind"];
@@ -338,7 +385,7 @@ export function instanceStateBranch(instance: string, id: string): string {
 }
 
 /** Every kind the union knows — for a reader that must refuse the rest (`branch-store mount`'s exit code). */
-export const SUBGRAPH_SOURCE_KINDS: readonly SubgraphSourceKind[] = ["directory", "branch", "family", "remote", "npm"];
+export const SUBGRAPH_SOURCE_KINDS: readonly SubgraphSourceKind[] = ["directory", "branch", "family", "remote", "npm", "hydrated"];
 
 /** The config half: `<instance>.config.json` → `subgraphSources`, keyed by directory id. */
 export const SubgraphSourceOverridesSchema = z.record(z.string().min(1), SubgraphSourceSchema);
@@ -412,6 +459,21 @@ export type ResolvedSubgraphSource =
       integrity?: string;
       /** Where the bytes are in the extracted package. */
       upstreamPath: string;
+      tool: string;
+      declaredIn: SourceDeclaredIn;
+    }
+  | {
+      kind: "hydrated";
+      id: string;
+      /** The entry's `path` — the directory the one hydrated file lands in. */
+      path: string;
+      repository: string;
+      /** The pinned 40-character commit. */
+      ref: string;
+      harness: string;
+      /** The subgraph's instance-relative path, no trailing slash. */
+      subgraph: string;
+      /** The mounting Tool: the source's own, else {@link DEFAULT_HYDRATED_TOOL}. */
       tool: string;
       declaredIn: SourceDeclaredIn;
     };
@@ -555,6 +617,23 @@ export function resolveSubgraphSource(
         declaredIn,
       };
     }
+    case "hydrated": {
+      // Metadata about somebody else's subgraph judges no commit of this one.
+      if ((entry.graphTypologies ?? []).includes("qa")) {
+        throw new Error(`directory "${entry.id}" is a \`qa\` subgraph: it is keyed by this repository's commits, and another instance's published metadata is not.`);
+      }
+      return {
+        kind: "hydrated",
+        id: entry.id,
+        path: entry.path,
+        repository: src.repository,
+        ref: src.ref,
+        harness: src.harness,
+        subgraph: src.subgraph.replace(/\/+$/, ""),
+        tool: src.tool ?? DEFAULT_HYDRATED_TOOL,
+        declaredIn,
+      };
+    }
   }
 }
 
@@ -608,6 +687,13 @@ export function contentSourceJsonLd(src: ResolvedSubgraphSource, repository?: st
         tool: src.tool,
         declaredIn: src.declaredIn,
       };
+    }
+    case "hydrated": {
+      // The tree at the pin names the repository and the commit; the subgraph
+      // is identified by the hydrated file's own root `@id`, which the
+      // mounting tool checks, so no term is minted for it here.
+      const web = forgeTreeUrl(src.repository, src.ref);
+      return { ...(web ? { "@id": web } : {}), kind: "hydrated", declaredIn: src.declaredIn };
     }
   }
 }

@@ -58,6 +58,7 @@ import { z } from "zod";
 import { KG_GRAPH_TYPOLOGY } from "./cat-harness";
 import { portableSegment } from "./portable-path";
 import { AdversarialReviewSchema, type AdversarialReview } from "./qa-review";
+import { RunContextRefSchema, type RunContextRef } from "./run-context";
 
 /** Marker value carried by every sidecar written by `scripts/kg-audit.ts`. */
 export const KG_QA_SCHEMA = "kg-qa/v1";
@@ -1792,6 +1793,12 @@ export interface KgAuditor {
 export interface KgQaManifest {
   $schema: typeof KG_QA_MANIFEST_SCHEMA;
   auditor: KgAuditor;
+  /**
+   * Content-addressed reference to the `folio-run-context/v1` record of the
+   * run that wrote this manifest (`docs/proposals/tool-releases-2026-10-07.md`,
+   * owner C1 = a).
+   */
+  runContext?: RunContextRef;
 }
 
 export interface KgQaReport {
@@ -1804,6 +1811,12 @@ export interface KgQaReport {
   totals: Record<KgResult, number>;
   // Optional adversarial reviews, compatible with kg-qa/v1 (folio-assistant-abmq)
   adversarial_reviews?: AdversarialReview[];
+  /**
+   * Content-addressed reference to the `folio-run-context/v1` record of the
+   * run that wrote this report (`docs/proposals/tool-releases-2026-10-07.md`,
+   * owner C1 = a).
+   */
+  runContext?: RunContextRef;
   // NO judgements here. `pair_attestations` and `voice_reviews` lived in this
   // report until bean `2gst` (2026-10-01): they are what an earlier run or a
   // reviewer recorded, so they cannot be regenerated, and owner ruling D2 (a)
@@ -1838,6 +1851,7 @@ export const KgQaReportSchema = z.object({
   pair_attestations: z.never({ error: "pair_attestations belong in the attestation store (schemas/qa-attestations.ts), not a kg-qa sidecar" }).optional(),
   voice_reviews: z.never({ error: "voice_reviews belong in the attestation store (schemas/qa-attestations.ts), not a kg-qa sidecar" }).optional(),
   adversarial_reviews: z.array(AdversarialReviewSchema).optional(),
+  runContext: RunContextRefSchema.optional(),
 });
 
 
@@ -1848,6 +1862,7 @@ export const KgQaManifestSchema = z.object({
     script_hash: z.string(),
     engine_version: z.string(),
   }),
+  runContext: RunContextRefSchema.optional(),
 });
 
 /** Criteria applying to a subject kind, in registry order. */

@@ -58,6 +58,24 @@ A **unit** is the graph's own chunk: a library **section** (what ingestion
 already produced), otherwise one markdown file. Units under 20 tokens are
 skipped — too little vocabulary to place.
 
+## Beyond the beans: other graphs in `lsi:near` (bean `ec2a`)
+
+`lsi:near` also searches every graph an instance declares under
+`lsiUnitProviders` in its `<instance>.json`: content **blocks** (core) and
+**Lean declarations** (sci). It prints **one list per graph**. Scores from two
+separately built indexes are not comparable, so the lists are never merged
+into one ranking (owner decision A, 2026-10-24; proposal
+`docs/proposals/lsi-cross-graph-near-2026-10-24.md`).
+
+Each list starts with **explicit** references: a block `@id` or a Lean name
+written in the query text. These are deterministic and unscored. The latent
+hits come after them, labelled `lexical+latent` or `latent only`. A graph
+that could not be indexed is shown as **not searched**, never as "no hits".
+
+```sh
+bun run cat lsi:near "<planned bean title>" --graphs blocks,lean-decl --root lean-decl=<lean dir>
+```
+
 ## Cross-document links — a floor, and hubs reported, not penalised
 
 `bun run cat lsi links --instance <i> --graph <g>` proposes links between units of

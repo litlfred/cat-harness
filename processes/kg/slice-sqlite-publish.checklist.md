@@ -10,9 +10,24 @@ Build one named slice of a knowledge graph as a SQLite file a browser mounts wit
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_SliceSqlitePublish"` and the subject this run is about; keep the instance id it returns.
-- next: → `A_Define` (Write the slice definition)
+- next: → `Call_BeanOpen` (Open the bean)
 
-### 1. Write the slice definition (`A_Define`)
+### 1. Open the bean (`Call_BeanOpen`)
+
+- Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
+- Skill: `bean-coordination`.
+- What: Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's.
+- A subprocess (`Process_BeanOpen`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `GW_BeanYours` (Bean claimed?)
+
+### Decide — Bean claimed? (`GW_BeanYours`)
+
+- Reads which end Process_BeanOpen reached.
+- Call `workflow_complete` with `node: "GW_BeanYours"` and `outcome` set to the label that holds:
+  - «claimed» → `A_Define` (Write the slice definition)
+  - «not yours» → `End_BeanNotYours` (Not yours — left alone)
+
+### 2. Write the slice definition (`A_Define`)
 
 - Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
 - Skill: `kg-export`.
@@ -20,7 +35,11 @@ Build one named slice of a knowledge graph as a SQLite file a browser mounts wit
 - Record it: `workflow_complete` with `node: "A_Define"`.
 - next: → `A_Measure` (Build it locally and measure the file)
 
-### 2. Build it locally and measure the file (`A_Measure`)
+## Done — Not yours — left alone (`End_BeanNotYours`)
+
+- The instance completes here: Someone else holds the bean; this run stops without touching it. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 3. Build it locally and measure the file (`A_Measure`)
 
 - Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
 - Skill: `kg-export`.
@@ -35,7 +54,7 @@ Build one named slice of a knowledge graph as a SQLite file a browser mounts wit
   - «yes — under» → `A_Wire` (Wire it: gate, deploy line, search, tests)
   - «no — over» → `A_Report` (Report the measurement; ship nothing)
 
-### 3. Wire it: gate, deploy line, search, tests (`A_Wire`)
+### 4. Wire it: gate, deploy line, search, tests (`A_Wire`)
 
 - Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
 - Skill: `kg-export`.
@@ -43,15 +62,15 @@ Build one named slice of a knowledge graph as a SQLite file a browser mounts wit
 - Record it: `workflow_complete` with `node: "A_Wire"`.
 - next: → `A_Check` (Gate every slice: slice:sqlite:check)
 
-### 4. Report the measurement; ship nothing (`A_Report`)
+### 5. Report the measurement; ship nothing (`A_Report`)
 
 - Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
 - Skill: `kg-export`.
 - What: Write the measurement and what was tried onto the bean, and ask the owner whether the slice should ship at that size, be cut further, or not exist.
 - Record it: `workflow_complete` with `node: "A_Report"`.
-- next: → `End_Stopped` (Stopped, with its measurement)
+- next: → `Call_BeanClose_3` (Close the bean)
 
-### 5. Gate every slice: slice:sqlite:check (`A_Check`)
+### 6. Gate every slice: slice:sqlite:check (`A_Check`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `kg-export`.
@@ -59,18 +78,26 @@ Build one named slice of a knowledge graph as a SQLite file a browser mounts wit
 - Record it: `workflow_complete` with `node: "A_Check"`.
 - next: → `GW_Green` (Every slice green?)
 
-## Done — Stopped, with its measurement (`End_Stopped`)
+### 7. Close the bean (`Call_BeanClose_3`)
 
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+- Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
+- Skill: `todo-manager`.
+- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
+- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `End_Stopped` (Stopped, with its measurement)
 
 ### Decide — Every slice green? (`GW_Green`)
 
 - Answered by the exit code of `slice:sqlite:check`, one line per slice.
 - Call `workflow_complete` with `node: "GW_Green"` and `outcome` set to the label that holds:
   - «yes — green» → `A_Deploy` (Build each slice into _site at deploy)
-  - «no — red» → `End_Red` (Job RED)
+  - «no — red» → `Call_BeanClose` (Close the bean)
 
-### 6. Build each slice into _site at deploy (`A_Deploy`)
+## Done — Stopped, with its measurement (`End_Stopped`)
+
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 8. Build each slice into _site at deploy (`A_Deploy`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `kg-export`.
@@ -78,16 +105,32 @@ Build one named slice of a knowledge graph as a SQLite file a browser mounts wit
 - Record it: `workflow_complete` with `node: "A_Deploy"`.
 - next: → `A_Verify` (Search the published slice in a browser)
 
-## Done — Job RED (`End_Red`)
+### 9. Close the bean (`Call_BeanClose`)
 
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+- Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
+- Skill: `todo-manager`.
+- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
+- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `End_Red` (Job RED)
 
-### 7. Search the published slice in a browser (`A_Verify`)
+### 10. Search the published slice in a browser (`A_Verify`)
 
 - Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
 - Skill: `rendered-verification`.
 - What: Open `slices/search.html?slice=<name>` on the deployed site, run a phrase search for a known row, open it so its payload is fetched, and look at the result; send the screenshot rather than a description of it.
 - Record it: `workflow_complete` with `node: "A_Verify"`.
+- next: → `Call_BeanClose_2` (Close the bean)
+
+## Done — Job RED (`End_Red`)
+
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 11. Close the bean (`Call_BeanClose_2`)
+
+- Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
+- Skill: `todo-manager`.
+- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
+- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Shipped` (Slice searchable on the site)
 
 ## Done — Slice searchable on the site (`End_Shipped`)

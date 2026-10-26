@@ -28,6 +28,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Un rectangle d'ombre portée derrière l'encadré décrivant les limites du routage par prompt seul dans la figure 1. Un artefact de rendu décoratif.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "Un rectángulo de sombra paralela detrás del recuadro que describe las limitaciones del enrutamiento solo por prompt en la figura 1. Un artefacto decorativo de renderizado.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "مستطيل ظلّ خلف مربع التعليق الذي يصف حدود التوجيه بالموجّه وحده في الشكل 1. أثر زخرفي من آثار العرض.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Прямоугольник отбрасываемой тени за выноской, описывающей ограничения маршрутизации только по промпту, на рисунке 1. Декоративный артефакт отрисовки.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "图 1 中描述仅靠提示词路由之局限的标注框背后的投影矩形。一个装饰性的渲染伪影。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ]
     },
@@ -57,6 +117,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Un rectangle d'ombre portée derrière l'encadré décrivant le routage par tête de valeur de SWE-Router dans la figure 1. Un artefact de rendu décoratif.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "Un rectángulo de sombra paralela detrás del recuadro que describe el enrutamiento por cabeza de valor de SWE-Router en la figura 1. Un artefacto decorativo de renderizado.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "مستطيل ظلّ خلف مربع التعليق الذي يصف توجيه SWE-Router برأس القيمة في الشكل 1. أثر زخرفي من آثار العرض.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Прямоугольник отбрасываемой тени за выноской, описывающей маршрутизацию SWE-Router через голову ценности, на рисунке 1. Декоративный артефакт отрисовки.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "图 1 中描述 SWE-Router 价值头路由的标注框背后的投影矩形。一个装饰性的渲染伪影。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ]
     }
