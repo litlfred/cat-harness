@@ -26,10 +26,8 @@ axes (a project picks the ones it needs):
 
 | Child | Domain | Goal |
 |-------|--------|------|
-| `proof-integration-watcher` | Proof QA (narrative + formal layer) | No bare gaps, no axiom growth, formal-layer compile check, no naked conjectures with provable scaffolding |
+| children a content type's layer ships | e.g. for a paper folio: proof QA, cross-layer compute wiring, structural QA (graph + density) | That layer names this parent from its side and lists its children; this table does not name them |
 | `canonical-watcher` | Derivation discipline | No undisclosed free parameters, no numerology, no coefficient fits (per the project's derivation-discipline statement) |
-| `compute-integration-watcher` | Cross-layer compute wiring | Every provable/derived block has a probe + production consumer |
-| `detangler-integration-watcher` | Structural QA (graph + density) | No new forward refs, sections within the block-count band, no new cross-chapter forward edges |
 | `one-voice-integration-watcher` | Content-block voice + fit + framework | Scholarly voice (narrative + proof bodies), zero AI-slop, block fit to section/chapter, canonical-vs-deprecated notation; persists per-block `<block>.qa.json` audit reports (multi-reviewer, hash-keyed staleness) |
 | `devils-advocate-watcher` | Adversarial "why is this wrong" review | For every block + formal sibling, construct the strongest referee objection; multiple adversarial lenses + adjudicator; emits `da-*` sidecars; gated by the refutation-scope rule + corpus-grep checklist |
 

@@ -26,6 +26,66 @@
       },
       "drafted_at": "2026-09-29",
       "lang": "en"
+    },
+    {
+      "text": "La figure 1 montre la borne supérieure dérivée de la CRB (traits pleins) et la précision empirique RWT (traits pointillés) en fonction de la taille de l'échantillon de patients P.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "fr"
+    },
+    {
+      "text": "La figura 1 muestra la cota superior derivada de la CRB (líneas continuas) y la precisión empírica de RWT (líneas discontinuas) en función del tamaño de la muestra de pacientes P.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "es"
+    },
+    {
+      "text": "يُظهر الشكل 1 الحدّ الأعلى المشتق من CRB (خطوط متصلة) والدقة التجريبية لـ RWT (خطوط متقطعة) بدلالة حجم عيّنة المرضى P.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ar"
+    },
+    {
+      "text": "На рисунке 1 показаны верхняя граница, выведенная из CRB (сплошные линии), и эмпирическая точность RWT (пунктир) в зависимости от размера выборки пациентов P.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ru"
+    },
+    {
+      "text": "图 1 展示了由 CRB 推导出的上界（实线）和 RWT 的经验准确率（虚线）随患者样本量 P 的变化。",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "zh"
     }
   ],
   "derivedFrom": "library/arxiv-2403.16873v1/sections/sec-004",

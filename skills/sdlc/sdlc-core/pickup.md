@@ -14,7 +14,7 @@ The cure is: resolve ground truth first, in one batch, then dispatch.
 
 > Read repo-root `AGENTS.md` first. This skill operates under the
 > branch/PR workflow, the project's production-vs-exploratory and
-> content-validation discipline, and CI-billing-failure rules. It does
+> content validation discipline, and CI-billing-failure rules. It does
 > not override them.
 
 ## Hard rules (learned the expensive way)
@@ -113,7 +113,7 @@ review nits. Stop.
 **Unsafe class (never auto-apply — `AskUserQuestion` or defer):**
 - Anything touching math/numerics, a witness value, or a canonical
   formula (production-vs-exploratory discipline applies).
-- Anything changing a formal statement, a proof, or a content-validation
+- Anything changing a formal statement, a proof, or a content validation
   invariant.
 - Architectural / multi-file refactors, API changes.
 - A reviewer suggestion that conflicts with the PR's stated intent.
@@ -128,7 +128,7 @@ contain (filled from Step 1, not assumed):
   `git checkout -B <ref> origin/<ref>`; "do NOT create a new branch");
 - the literal PR title + the unchecked checklist items;
 - the relevant AGENTS.md discipline pointers for that PR's domain
-  (content-validation / production-vs-exploratory / formal-proof /
+  (content validation / production-vs-exploratory / formal-proof /
   precision-goals — whichever apply);
 - **commit-early-and-push** instruction (Hard Rule 4) with the session
   URL line for commit bodies and 4× exp-backoff push retry;

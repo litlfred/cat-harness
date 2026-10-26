@@ -26,6 +26,66 @@
       },
       "drafted_at": "2026-09-22",
       "lang": "en"
+    },
+    {
+      "text": "Schéma en blocs décomposant SWOT : une seule boîte « SWOT Analysis » se divise en « Internal Factors — Strengths, Weaknesses » et « External Factors — Opportunities, Threats ». C'est l'axe sur lequel repose la méthode : les deux premiers sont des attributs de l'organisation, les deux seconds de son environnement.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "fr"
+    },
+    {
+      "text": "Diagrama de bloques que descompone el SWOT: un único recuadro «SWOT Analysis» se divide en «Internal Factors — Strengths, Weaknesses» y «External Factors — Opportunities, Threats». Es el eje sobre el que gira el método: los dos primeros son atributos de la organización y los dos segundos, de su entorno.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "es"
+    },
+    {
+      "text": "مخطط كتلي يفكّك تحليل SWOT: مربع واحد \"SWOT Analysis\" ينقسم إلى \"Internal Factors — Strengths, Weaknesses\" و\"External Factors — Opportunities, Threats\". وهذا هو المحور الذي يقوم عليه الأسلوب: فالأولان من سمات المنظمة، والآخران من سمات بيئتها.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ar"
+    },
+    {
+      "text": "Блок-схема, раскладывающая SWOT: единый блок «SWOT Analysis» делится на «Internal Factors — Strengths, Weaknesses» и «External Factors — Opportunities, Threats». На этом разделении держится метод: первые два — свойства организации, вторые два — свойства её среды.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ru"
+    },
+    {
+      "text": "分解 SWOT 的框图：一个“SWOT Analysis”框分为“Internal Factors — Strengths, Weaknesses”和“External Factors — Opportunities, Threats”。这是该方法的核心轴线：前两者是组织自身的属性，后两者是其环境的属性。",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "zh"
     }
   ],
   "derivedFrom": "library/gurel-tat-2017-swot-analysis/sections/page-002",

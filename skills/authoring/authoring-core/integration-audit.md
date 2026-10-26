@@ -116,7 +116,7 @@ invalidate.
 | `one-voice` | Most common — re-audit voice + fit + framework criteria. Risk: low; sweep is fast even at corpus scale. |
 | `proof` | Re-audit the proof criteria. Risk: medium — `proof-build-green` requires the formal-layer toolchain; `proof-lean-compiles` uses an LSP diagnostics cache; falls back to last cached artefacts. |
 | `canonical` | Re-audit derivation-discipline criteria. Risk: low. |
-| `compute` | Re-audit compute-wiring criteria. Risk: low — runs the compute-audit scan. |
+| `compute` | Re-audit compute-wiring criteria. Risk: low — runs the content type's compute audit scan. |
 | `detangler` | Re-audit structural criteria. Risk: low. |
 | `bibliography` | Re-audit block-level bib criteria. Risk: low — reads `bib-qa.json`. |
 | `all` | Full re-audit across all axes. Risk: medium — sweep takes longer. |

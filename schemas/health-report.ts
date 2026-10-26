@@ -44,6 +44,7 @@
 import { join } from "node:path";
 
 import { z } from "zod";
+import { RunContextRefSchema } from "./run-context";
 
 /** Marker value carried by every report this family writes. */
 export const HEALTH_REPORT_SCHEMA = "health-report/v1";
@@ -238,6 +239,12 @@ export const HealthReportSchema = z
     updated_at: z.string().min(1),
     verdict: z.enum(HEALTH_VERDICTS),
     checks: z.array(HealthCheckResultSchema).min(1),
+    /**
+     * Content-addressed reference to the `folio-run-context/v1` record of the
+     * run that wrote this report (`docs/proposals/tool-releases-2026-10-07.md`,
+     * owner C1 = a).
+     */
+    runContext: RunContextRefSchema.optional(),
   })
   .superRefine((r, ctx) => {
     const derived = healthVerdict(r.checks);

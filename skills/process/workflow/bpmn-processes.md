@@ -260,27 +260,27 @@ An activity carrying a bean operation **does it** when you complete the step:
 |---|---|
 | `claim` | sets in-progress, idempotent |
 | `note` | appends what you pass |
-| `resolve` | completes the bean **only once the instance itself has completed** |
+| `resolve` | completes the bean **only once the instance itself has completed** (or has nothing left but archive steps) |
+| `archive` | moves a completed or scrapped bean into the archive, **only once the instance has completed** |
 
-**That last row is a judgement guard, not a sequencing detail.** A still-running
+**That `resolve` row is a judgement guard, not a sequencing detail.** A still-running
 process gets a note instead, because whether work is done is a judgement and a
 bean is never closed on someone else's say-so — the same rule that stops you
 resolving a sibling's.
 
-**There is no fourth op, and `resolve` is NOT the end of the bean's life.**
-`resolve` sets `completed`; `completed` is what `beans archive` moves; and
-nothing in any diagram archives. Measured 2026-09-20: `draft-to-publication`
-does claim → note → resolve, `crdm-close` does resolve, `code-change-review`
-does claim → resolve — every one manufactures the condition and none
-discharges it, which is how **219** beans accumulated.
-
-Before reaching for an `archive` op, read
-[`todo-manager`](../../sdlc/sdlc-core/todo-manager.md) §"Archiving — two dispositions": an op and
-a periodic sweep answer different questions, and for most processes the
-answer is the sweep. An op is worth an edge on your diagram only where your
-process's completion is *itself* the reason a bean is finished — and then the
-archive records **why**, which a sweep cannot. Bean `folio-assistant-m8gz`
-decides which this instance builds.
+**You do not draw `claim`, `resolve` or `archive` yourself.** They live in two
+called processes and nowhere else (bean `folio-assistant-m8gz`, owner
+2026-10-24): `Process_BeanOpen` (`processes/sdlc/bean-open.bpmn`: check,
+create, whose bean, claim or leave alone) and `Process_BeanClose`
+(`processes/sdlc/bean-close.bpmn`: complete or scrap, then one shared archive
+step; or record the blocker and hand back). A process that works on a bean
+calls OPEN where the bean becomes its own, follows it with a `claimed` /
+`not yours` gateway, and calls CLOSE straight before each end it reaches from
+there. `note` stays on the steps where the work happens. `check:bean-calls`
+(run inside `check:workflow-refs`) refuses the three ops anywhere else, and a
+process that calls one of the pair without the other. Why: 219 beans resolved
+and never archived, and 7 processes that claimed and never closed —
+[`todo-manager`](../../sdlc/sdlc-core/todo-manager.md) §"Archiving — two dispositions".
 
 Work-plan priming reports every instance's position next to its bean, so the
 plan and the process are one answer rather than two.

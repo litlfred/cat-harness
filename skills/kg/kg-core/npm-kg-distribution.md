@@ -184,6 +184,16 @@ The complete, materialized Knowledge Graph artifacts and binary assets:
   deployments that require immediate access without installing compilation toolchains
   or running offline export pipelines.
 
+#### 3. The subgraph index package — one per pin
+
+A third, narrow package carries a pin's subgraph index files and nothing
+else: `<harness>-subgraph-index@0.0.0-pin.<sha>`, built by the
+`subgraph-index-package` Tool through `pack-tarball` and released as
+`subgraph-index-<sha>` on every push to `main` (owner, 2026-10-24, bean
+`mo75`). A hydrated remote mount reads it; see
+[`remote-mount`](remote-mount.md) §"Hydrated: the index files are published
+per pin, in a package".
+
 ### Using `kg-retrieve-npm`
 
 To retrieve and inspect a remote Knowledge Graph tarball or package:
