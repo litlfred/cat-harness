@@ -1239,8 +1239,9 @@ The declaration carries three publication fields beside `name`:
 | `canonicalUrl` | where those artefacts live — the base every `@id`/`$id` is minted against |
 | `previewUrl` | where CI previews are served, when that differs |
 
-Modelled on WHO's SMART Base repository's `dak.json` (ours is
-`dak.config.json` since 2026-09-22; upstream's spelling is unchanged), which carries
+Modelled on WHO's SMART Base repository's `dak.json` (ours is the `dak`
+section of `index.config.json`'s `contentTypes` since 2026-10-24; upstream's
+spelling is unchanged), which carries
 `canonicalUrl`, `publicationUrl` and `previewUrl` and derives its stub by
 stripping the repository's prefix (`smart-<stub>` → `<stub>` →
 `https://smart.who.int/<stub>`), so stub, directory and published path are one
@@ -1336,13 +1337,14 @@ and there cannot be one:
 | marker | who owns the name |
 |---|---|
 | `sushi-config.yaml` | SUSHI reads that exact name, and it is YAML |
-| `dak.config.json` | **ours** — bean `cz17`. Renamed from `dak.json` on 2026-09-22, for consistency with `<name>.config.json`. WHO's SMART Base still writes and reads `dak.json`, and nothing upstream has been renamed; that divergence is deliberate pre-work, recorded on `DAK_MARKER_FILENAME` |
+| `index.config.json` `contentTypes.dak` | **ours** — bean `cz17`. Was `dak.json`; the owner moved it into the index on 2026-10-24 ("WHO will adopt harness file"). It is a SECTION, not a file: the content type declares `{ indexSection: "dak" }` (`IndexSectionMarker`). WHO's SMART Base still writes and reads `dak.json`; smart-base's build reads that file into the index for one build, with a warning, until an IG moves it |
 | `<name>.json`, `<name>.config.json` | ours |
 | `beans.json`, `todos.json` | ours, and named after the graph TYPOLOGY |
 
 One of those is not ours to rename — `sushi-config.yaml`, whose name SUSHI
 owns — so any rule claiming to cover the set would still be false on arrival.
-It was two until 2026-09-22, when `dak.json` was renamed on the owner's word;
+It was two until 2026-09-22, when `dak.json` was renamed on the owner's word
+(and on 2026-10-24 became a section of the index);
 that it *could* be renamed is what bean `cz17` settled, against this table's
 own earlier claim. **So the type declares its filename, and the
 convention is that rule rather than a spelling.** What a new type copies is
