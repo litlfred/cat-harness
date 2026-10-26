@@ -31,7 +31,7 @@ The instrument was not broken. `kg-qa` sidecars measure `kg-audit`'s criteria
 exactly, and `KG_SUBJECT_KINDS` has no `bean` — so zero was the right answer to
 *"how many criteria reach this kind"* and no answer at all to *"is this kind
 audited"*. This is
-[`covered-is-not-reachable`](../../folio-core/covered-is-not-reachable.md) one level out:
+[`covered-is-not-reachable`](../../tools/folio-core/covered-is-not-reachable.md) one level out:
 **coverage is a relation between an instrument and the question it was built
 for**, and the signal in reach is rarely the signal you need.
 
@@ -266,7 +266,7 @@ is a gate that gets switched off within a week.
 
 Bean `folio-assistant-xutg`, written 2026-09-24 after the failure at the top of
 this file. Split out of
-[`covered-is-not-reachable`](../../folio-core/covered-is-not-reachable.md) the same day: added
+[`covered-is-not-reachable`](../../tools/folio-core/covered-is-not-reachable.md) the same day: added
 there as a fifth case, it took that skill to 321 lines against a corpus p75 of
 279 and turned its own `skill-is-brief` criterion from a pass into a fail. That
 skill's footer already says what to do — *"the remedy for a skill that has grown

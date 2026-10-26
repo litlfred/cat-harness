@@ -31,7 +31,6 @@
         <bpmn:flowNodeRef>End_NotAccepted</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_MergeToMain</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Close</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>A_ArchiveBean</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Process_CRDM_Close</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Stakeholders" name="Stakeholders" partitionElementRef="stakeholder">
@@ -77,14 +76,7 @@ that explicit authorisation — the gate is the preceding task, and this name
 says so rather than leaving a reader to trace the flow for it.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="crdm-requirements-workflow"/>
-        <cat-harness.processes:bean op="resolve"/>
-      </bpmn:extensionElements>
-    </bpmn:task>
-    <bpmn:task id="A_ArchiveBean" name="Archive the bean">
-      <bpmn:documentation>Move the bean, now completed, into the archive, with a line saying which process closed it. A bean still open stays where it is with a note saying why: only a completed or scrapped bean may be archived (check:bean-archive). The periodic sweep still archives anything this step leaves.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="todo-manager"/>
-        <cat-harness.processes:bean op="archive"/>
+        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
     </bpmn:task>
     <bpmn:endEvent id="End_Process_CRDM_Close" name="Phase complete"/>
@@ -96,8 +88,7 @@ says so rather than leaving a reader to trace the flow for it.</bpmn:documentati
     <bpmn:sequenceFlow id="SF_Close_Merged" sourceRef="Call_MergeToMain" targetRef="A_Close"/>
     <bpmn:sequenceFlow id="SF_Close_Stop" name="stop" sourceRef="GW_SignoffRecorded" targetRef="End_NotAccepted"/>
     <bpmn:sequenceFlow id="SF_Close_Missing" name="missing" sourceRef="GW_SignoffRecorded" targetRef="A_RecordSignoff"/>
-    <bpmn:sequenceFlow id="SF_Process_CRDM_Close_4" sourceRef="A_Close" targetRef="A_ArchiveBean"/>
-    <bpmn:sequenceFlow id="SF_Close_Archive" sourceRef="A_ArchiveBean" targetRef="End_Process_CRDM_Close"/>
+    <bpmn:sequenceFlow id="SF_Process_CRDM_Close_4" sourceRef="A_Close" targetRef="End_Process_CRDM_Close"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_CRDM_Close">
     <bpmndi:BPMNPlane id="Plane_Process_CRDM_Close" bpmnElement="Collaboration_Process_CRDM_Close">
@@ -130,9 +121,6 @@ says so rather than leaving a reader to trace the flow for it.</bpmn:documentati
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Process_CRDM_Close" bpmnElement="End_Process_CRDM_Close">
         <dc:Bounds x="1710" y="317" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_A_ArchiveBean" bpmnElement="A_ArchiveBean">
-        <dc:Bounds x="1470" y="295" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Close_1" bpmnElement="SF_Process_CRDM_Close_1">
         <di:waypoint x="346" y="505" />
@@ -179,14 +167,7 @@ says so rather than leaving a reader to trace the flow for it.</bpmn:documentati
         <di:waypoint x="820" y="270" />
         <di:waypoint x="820" y="295" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Close_4" bpmnElement="SF_Process_CRDM_Close_4">
-        <di:waypoint x="1390" y="335" />
-        <di:waypoint x="1470" y="335" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_SF_Close_Archive" bpmnElement="SF_Close_Archive">
-        <di:waypoint x="1610" y="335" />
-        <di:waypoint x="1710" y="335" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Close_4" bpmnElement="SF_Process_CRDM_Close_4"><di:waypoint x="1390" y="335"/><di:waypoint x="1710" y="335"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

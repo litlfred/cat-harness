@@ -45,6 +45,7 @@
 import { z } from "zod";
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
+import { RunContextRefSchema, RunReleaseSchema } from "./run-context";
 
 /** The `$schema` tag every run record carries. */
 export const TOOL_RUN_SCHEMA_ID = "folio-tool-run/v1";
@@ -66,6 +67,17 @@ export const ToolRunRecordSchema = z.object({
   inputFingerprint: z.string().min(1),
   /** For a failure: what went wrong, for a reader who has only the file. */
   detail: z.string().optional(),
+  /**
+   * Tool releases and runtimes resolved for this invocation (`folio-run-context/v1`,
+   * issue #2481, bean `3sbm`).
+   */
+  releases: z.array(RunReleaseSchema).optional(),
+  /**
+   * Content-addressed reference to the `folio-run-context/v1` record of the
+   * run that executed this tool (`docs/proposals/tool-releases-2026-10-07.md`,
+   * owner C1 = a: referenced by sha256, never inlined).
+   */
+  runContext: RunContextRefSchema.optional(),
 });
 export type ToolRunRecord = z.infer<typeof ToolRunRecordSchema>;
 

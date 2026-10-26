@@ -23,17 +23,12 @@ reader must know before the definition. Same discipline — AUTHORED, never
 inferred, with a text matcher kept only as a guard that list and prose agree
 (`glossary-terms` §"Ordered glossaries").
 
-It is **not** the formal dependency graph. What a proof actually
-invokes is machine-derived from `lean.ref` (see
-`pipeline/content-graph.ts`). The two relations are different
-questions and they diverge in both directions, correctly:
-
-| Situation | Formal edge | Editorial edge | Correct? |
-|---|---|---|---|
-| Proof calls a `simp` lemma / typeclass instance | yes | no | **yes** — nobody reads about it |
-| Theorem motivated by an example it never cites | no | yes | **yes** — the reader needs the motivation |
-| Definition the statement is phrased in terms of | yes | yes | yes |
-| Library lemma pasted into `uses[]` from Lean | yes | yes | **no** — pollution, see below |
+It is **not** any machine-derived dependency graph. A content type with a
+formal layer also derives a formal relation, from what its proofs actually
+invoke, and the two relations answer different questions and diverge in both
+directions, correctly. The layer that ships such a content type holds that
+comparison and names this skill from its side (for a paper folio, the science
+layer; bean `syiq`).
 
 ## `interprets` is the same relation under a second field name
 
@@ -66,14 +61,14 @@ content graph's accessors, which default to it.
 
 ## The prime directive
 
-**Never populate `uses[]` from the Lean dependency graph.** Copying
-formal dependencies in destroys the editorial signal and inflates every
-ordering metric computed from it (graph energy, forward refs, cone
-size, PageRank). If you are tempted to "sync" the two, stop — that is
-the failure mode this axis exists to prevent.
+**Never populate `uses[]` from a machine-derived dependency graph.**
+Copying derived dependencies in destroys the editorial signal and inflates
+every ordering metric computed from it (graph energy, forward refs, cone
+size, PageRank). If you are tempted to "sync" the two, stop — that is the
+failure mode this axis exists to prevent.
 
-When reviewing, do not open the Lean file to decide what belongs in
-`uses[]`. The question is about the reader, not the proof term.
+When reviewing, do not open a block's formal or generated sibling to decide
+what belongs in `uses[]`. The question is about the reader.
 
 ## Workflow
 
@@ -98,8 +93,8 @@ When reviewing, do not open the Lean file to decide what belongs in
 5. **Judge editorial fitness.** For each listed entry, ask: *would a
    reader be worse off having not read this first?*
    - Yes ⇒ fine.
-   - No, and it looks like a formal artefact (a `simp` lemma, an
-     instance, a library lemma the prose never mentions) ⇒ **fail
+   - No, and it looks like a derived artefact (an entry the prose never
+     mentions, copied from a generated dependency list) ⇒ **fail
      (major)**. This is the pollution case.
    - No, but it is defensible context ⇒ **warn**.
 
@@ -113,7 +108,7 @@ When reviewing, do not open the Lean file to decide what belongs in
 |---|---|
 | `pass` | List reads as a deliberate editorial judgement; nothing a reader needs is missing; nothing present is dead weight. |
 | `warn` | A marginal entry, or a missing dependency a reader could shrug off. |
-| `fail` | A missing dependency a reader would stumble over, **or** an entry that is plainly a copied-in formal dependency. |
+| `fail` | A missing dependency a reader would stumble over, **or** an entry that is plainly a copied-in derived dependency. |
 
 ## Forward references and `foreshadows[]`
 
@@ -286,28 +281,16 @@ bun run pipeline/qa-checkers-uses.ts   # via qa-sweep --axis uses
 |---|---|
 | `uses-editorial-hygiene` **fail** — unresolvable label | A dangling reference. Fix the label or add the missing block *before* judging completeness; the graph is wrong until you do. |
 | `uses-editorial-hygiene` **warn** — transitive redundancy | Tidiness only. The graph is correct, just not minimal. Do not let it distract from the completeness question. |
-| `uses-formal-coverage` **warn** — formal-only targets | **Advisory.** A list of blocks the proof leans on that the narrative never introduces. Read each one and ask whether the narrative owes the reader an introduction. Most will not — that is the expected answer. Never bulk-apply these to `uses[]`. |
 
-`uses-formal-coverage` is the one place formal structure informs this
-review, and it informs it as a *question*, never an instruction. It
-returns `n/a` when the Lean Atlas cache is absent; an empty formal edge
-set means the data was unavailable, not that the block is clean.
-
-## When an exposition gap is real
-
-If `uses-formal-coverage` surfaces a formal dependency and, reading the
-narrative, you agree a reader is left stranded — the fix is usually
-**prose, not a `uses[]` entry**: introduce the object, or cite the
-result inline. Add to `uses[]` only when the reader genuinely must go
-read that other block first. Record the reasoning in the sidecar
-`notes` either way, so the next reviewer does not re-litigate it.
+A content type with a formal layer adds its own advisory finding here; the
+layer that ships it says how to read it.
 
 ## Interaction with other skills
 
 | Skill | Interaction |
 |---|---|
 | `content-graph` | Owns the graph the mechanical checks read |
-| `detangler-integration-watcher` | Consumes the editorial relation for ordering metrics — a polluted `uses[]` corrupts its output |
-| `proof-gap-audit` | An exposition gap here often coincides with an inter-proof gap there |
-| `proof-simplifier` | Extracts shared lemmas; new blocks need `uses[]` entries authored, not derived |
 | `prepare-merge` | Runs the `uses` axis as part of the content gates |
+
+A content type's own skills that consume or extend this relation are named by
+the layer that ships the type, which links down to this skill.

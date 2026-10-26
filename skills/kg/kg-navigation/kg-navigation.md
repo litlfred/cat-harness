@@ -103,7 +103,7 @@ content, no server:
 Both Tools serve the same nodes. Neither is the skill: *knowing that a fallback
 exists* is the capability, and an agent that only knows the MCP route is an
 agent that stops when the server is absent. See
-[`skills-and-tools`](../../folio-core/skills-and-tools.md) for why that distinction is enforced
+[`skills-and-tools`](../../tools/folio-core/skills-and-tools.md) for why that distinction is enforced
 rather than merely preferred, and [`directory-conventions`](../kg-core/directory-conventions.md)
 for the declaration's schema and the full list of graph typologies.
 
@@ -123,7 +123,7 @@ so they cannot disagree.
   `folio-memory/v1`. Without this rule the audit treated all 25 as skills and
   wrote 25 bogus QA sidecars beside them. Declaration over location.
 - **Some skills exist in three copies and only two are checked.**
-  `skills/folio-core/<name>.md` is hand-authored;
+  `skills/tools/folio-core/<name>.md` is hand-authored;
   `docs/reference/skill-instructions/<name>.md` is **generated** from it and
   CI-gated, so editing the source without running
   `bun run scripts/gen-skill-docs.ts` takes `main` red — it has;

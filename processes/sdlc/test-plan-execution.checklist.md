@@ -10,9 +10,24 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_TestPlanExecution"` and the subject this run is about; keep the instance id it returns.
-- next: → `A_Request` (Request certification of the system against plan P)
+- next: → `Call_BeanOpen` (Open the bean)
 
-### 1. Request certification of the system against plan P (`A_Request`)
+### 1. Open the bean (`Call_BeanOpen`)
+
+- Who: the `Requester / system under test` lane (role `test-requester`).
+- Skill: `bean-coordination`.
+- What: Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's.
+- A subprocess (`Process_BeanOpen`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `GW_BeanYours` (Bean claimed?)
+
+### Decide — Bean claimed? (`GW_BeanYours`)
+
+- Reads which end Process_BeanOpen reached.
+- Call `workflow_complete` with `node: "GW_BeanYours"` and `outcome` set to the label that holds:
+  - «claimed» → `A_Request` (Request certification of the system against plan P)
+  - «not yours» → `End_BeanNotYours` (Not yours — left alone)
+
+### 2. Request certification of the system against plan P (`A_Request`)
 
 - Who: the `Requester / system under test` lane (role `test-requester`).
 - Skill: `test-plan-execution`.
@@ -20,7 +35,11 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 - Record it: `workflow_complete` with `node: "A_Request"`.
 - next: → `A_ResolvePlan` (Resolve the plan [test-plan/v1])
 
-### 2. Resolve the plan [test-plan/v1] (`A_ResolvePlan`)
+## Done — Not yours — left alone (`End_BeanNotYours`)
+
+- The instance completes here: Someone else holds the bean; this run stops without touching it. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 3. Resolve the plan [test-plan/v1] (`A_ResolvePlan`)
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `test-plan-execution`.
@@ -28,7 +47,7 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 - Record it: `workflow_complete` with `node: "A_ResolvePlan"`.
 - next: → `A_BindData` (Bind the test data [fixed or generated])
 
-### 3. Bind the test data [fixed or generated] (`A_BindData`)
+### 4. Bind the test data [fixed or generated] (`A_BindData`)
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `test-plan-execution`.
@@ -36,7 +55,7 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 - Record it: `workflow_complete` with `node: "A_BindData"`.
 - next: → `A_Execute` (Execute every case, or skip it with a reason)
 
-### 4. Execute every case, or skip it with a reason (`A_Execute`)
+### 5. Execute every case, or skip it with a reason (`A_Execute`)
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `test-plan-execution`, `test-engineer`.
@@ -44,7 +63,7 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 - Record it: `workflow_complete` with `node: "A_Execute"`.
 - next: → `A_WriteRun` (Write the test run and the test report [folio-test-run/v1 + test-report/v1])
 
-### 5. Write the test run and the test report [folio-test-run/v1 + test-report/v1] (`A_WriteRun`)
+### 6. Write the test run and the test report [folio-test-run/v1 + test-report/v1] (`A_WriteRun`)
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `test-plan-execution`.
@@ -52,7 +71,7 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 - Record it: `workflow_complete` with `node: "A_WriteRun"`.
 - next: → `A_ReExecuteSample` (Re-execute a sample, blind to the tester's verdicts)
 
-### 6. Re-execute a sample, blind to the tester's verdicts (`A_ReExecuteSample`)
+### 7. Re-execute a sample, blind to the tester's verdicts (`A_ReExecuteSample`)
 
 - Who: the `Untainted checker` lane (role `untainted-checker`).
 - Skill: `untainted-verification`, `test-plan-execution`.
@@ -68,7 +87,7 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
   - «refused» → `A_RecordRefusal` (Record the refusal, with the failing cases)
   - «undetermined» → `A_RecordUndetermined` (Record why it could not be decided)
 
-### 7. Record the certification decision (`A_RecordCertification`)
+### 8. Record the certification decision (`A_RecordCertification`)
 
 - Who: the `Certifier` lane (role `certifier`).
 - Skill: `test-plan-execution`.
@@ -76,29 +95,53 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 - Record it: `workflow_complete` with `node: "A_RecordCertification"`.
 - next: → `Call_Sign` (Sign the certification)
 
-### 8. Record the refusal, with the failing cases (`A_RecordRefusal`)
+### 9. Record the refusal, with the failing cases (`A_RecordRefusal`)
 
 - Who: the `Certifier` lane (role `certifier`).
 - Skill: `test-plan-execution`.
 - What: A complete, trusted run in which a case failed.
 - Record it: `workflow_complete` with `node: "A_RecordRefusal"`.
-- next: → `End_Refused` (Refused)
+- next: → `Call_BeanClose_2` (Close the bean)
 
-### 9. Record why it could not be decided (`A_RecordUndetermined`)
+### 10. Record why it could not be decided (`A_RecordUndetermined`)
 
 - Who: the `Certifier` lane (role `certifier`).
 - Skill: `test-plan-execution`.
 - What: The third state: which fact kept the table from deciding — a run not finished, an unknown data hash, an unexecuted case, a checker that disagreed or could not run, or nothing passed.
 - Record it: `workflow_complete` with `node: "A_RecordUndetermined"`.
-- next: → `End_Undetermined` (Undetermined — nothing signed)
+- next: → `Call_BeanClose_3` (Close the bean)
 
-### 10. Sign the certification (`Call_Sign`)
+### 11. Sign the certification (`Call_Sign`)
 
 - Who: the `Attestation service` lane (role `attestation-service`).
 - Skill: `qa-report-signing`.
 - What: `qa-report-signing.bpmn`, unchanged: it builds the signable run record, resolves the signer's reach, and routes the signature to the API or to a human release authority.
 - A subprocess (`Process_QaReportSigning`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `A_FileCertification` (File the signed certification [qa-attestations/v1])
+
+### 12. Close the bean (`Call_BeanClose_2`)
+
+- Who: the `Certifier` lane (role `certifier`).
+- Skill: `todo-manager`.
+- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
+- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `End_Refused` (Refused)
+
+### 13. Close the bean (`Call_BeanClose_3`)
+
+- Who: the `Certifier` lane (role `certifier`).
+- Skill: `todo-manager`.
+- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
+- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `End_Undetermined` (Undetermined — nothing signed)
+
+### 14. File the signed certification [qa-attestations/v1] (`A_FileCertification`)
+
+- Who: the `Attestation service` lane (role `attestation-service`).
+- Skill: `test-plan-execution`.
+- What: The signed certification goes under the declared `attestations` graph on main (owner ruling D2 (a), D5 default), pointing at the report it certifies.
+- Record it: `workflow_complete` with `node: "A_FileCertification"`.
+- next: → `Call_BeanClose` (Close the bean)
 
 ## Done — Refused (`End_Refused`)
 
@@ -108,12 +151,12 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 11. File the signed certification [qa-attestations/v1] (`A_FileCertification`)
+### 15. Close the bean (`Call_BeanClose`)
 
 - Who: the `Attestation service` lane (role `attestation-service`).
-- Skill: `test-plan-execution`.
-- What: The signed certification goes under the declared `attestations` graph on main (owner ruling D2 (a), D5 default), pointing at the report it certifies.
-- Record it: `workflow_complete` with `node: "A_FileCertification"`.
+- Skill: `todo-manager`.
+- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
+- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Certified` (Certified and signed)
 
 ## Done — Certified and signed (`End_Certified`)

@@ -26,6 +26,66 @@
       },
       "drafted_at": "2026-09-29",
       "lang": "en"
+    },
+    {
+      "text": "Figure 1 (gauche) : exactitude des modèles sur PubHealthBench Full et Reviewed pour 24 LLM. Les modèles propriétaires (GPT-4.5, GPT-4.1, o1) dépassent 90 % d'exactitude et font mieux que les références de recherche humaine (88 %), tandis que les modèles à poids ouverts vont de 45 % à 85 %.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "fr"
+    },
+    {
+      "text": "Figura 1 (izquierda): exactitud de los modelos en PubHealthBench Full y Reviewed para 24 LLM. Los modelos propietarios (GPT-4.5, GPT-4.1, o1) superan el 90 % de exactitud y mejoran las referencias de búsqueda humana (88 %), mientras que los modelos de pesos abiertos van del 45 % al 85 %.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "es"
+    },
+    {
+      "text": "الشكل 1 (يسار): دقة النماذج على PubHealthBench Full وReviewed لـ24 نموذجًا لغويًا كبيرًا. تتجاوز النماذج المملوكة (GPT-4.5 وGPT-4.1 وo1) دقة 90% وتتفوق على خطوط الأساس للبحث البشري (88%)، بينما تتراوح النماذج ذات الأوزان المفتوحة بين 45% و85%.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ar"
+    },
+    {
+      "text": "Рисунок 1 (слева): точность моделей на PubHealthBench Full и Reviewed для 24 LLM. Проприетарные модели (GPT-4.5, GPT-4.1, o1) превышают 90 % точности и опережают базовый уровень поиска человеком (88 %), а модели с открытыми весами показывают от 45 % до 85 %.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ru"
+    },
+    {
+      "text": "图 1（左）：24 个大语言模型在 PubHealthBench Full 和 Reviewed 上的准确率。专有模型（GPT-4.5、GPT-4.1、o1）准确率超过 90%，高于人工检索基线（88%），而开放权重模型在 45% 到 85% 之间。",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "zh"
     }
   ],
   "derivedFrom": "library/arxiv-2505.06046v4/sections/sec-front-matter",

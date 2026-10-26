@@ -77,21 +77,6 @@ peer-review practices.
 - Conclusions follow from the presented evidence.
 - Internal consistency is maintained across the changeset.
 
-### 4a. Consequence vs. Axiom Audit
-
-- When a condition inside a definition looks like it might follow from
-  other axioms or from the ambient structure, investigate before
-  restructuring:
-  1. Identify the **hypotheses** the candidate consequence would need.
-  2. Check whether those hypotheses are already supplied by the other
-     axioms in the definition or by the ambient structure.
-  3. If the condition is **genuinely independent**, leave it in the
-     definition. If it is **derivable**, extract it into a proposition
-     or lemma with a proof.
-- When multiple objects across chapters share similar-sounding names,
-  verify they refer to the same object before renaming. Trace the home
-  of each.
-
 ### 4b. Calibration / input discipline
 
 A project that produces predictions from a small number of external
@@ -122,35 +107,17 @@ is owned by the `production-vs-exploratory-discipline` skill.
 - Magic numbers are explained or referenced.
 - Algorithms are correctly implemented.
 
-### 6. Formalization Cross-References
+## Content types with a formal layer
 
-If the project carries a formal-proof layer alongside the narrative:
+A content type that carries a formal-proof layer beside the narrative adds
+its own accuracy checks on top of these: the consequence-versus-axiom audit,
+formal cross-references, and validation across the content-object triple.
+The layer that ships that content type holds them and names this skill from
+its side (for a paper folio, the science layer; bean `syiq`).
 
-- Numerical constants in the manuscript must match the corresponding
-  constants in the formal source exactly.
-- Every claim citing external data must have a citation whose
-  bibliographic entry includes a DOI or URL to the original source.
-- Reference annotations on formal-proof gaps must cite the correct
-  foundational reference for the gap.
-- External reference URLs in formal-source docstrings must resolve.
+## Glossary terms
 
-## Content Object Integration
-
-When the project uses a content-object triple architecture (a `.ts`
-manifest + `.md` narrative + a formal-proof sibling), use it for
-cross-validation:
-
-- The formal-reference URI in each `.ts` manifest names the
-  corresponding formal declaration. Verify the declaration exists, that
-  its type signature matches the statement in `.md`, and that numerical
-  constants agree across files.
-- For `definition` blocks, all sibling files should exist and be
-  consistent; for `theorem`/`lemma` blocks, a missing formal sibling is
-  a warning.
-- The `uses[]` dependency graph helps trace which upstream definitions a
-  claim relies on — verify those are formalized too.
-
-**Glossary terms.** Every term registered in a block's `defines: [...]`
+Every term registered in a block's `defines: [...]`
 must appear wrapped at every mention — once at the canonical definition
 site and as a reference everywhere else. Bare-text or emphasized
 mentions of a defined term break the canonical-name → canonical

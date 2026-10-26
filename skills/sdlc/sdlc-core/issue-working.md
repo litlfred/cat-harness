@@ -146,7 +146,9 @@ and a `git fetch` earlier in the same compound command is not a barrier when
 siblings merge every few minutes. Both failures happened in one session on
 2026-09-21, one of them in a comment accusing a bean of exactly this error:
 [`bean-coordination`](bean-coordination.md) §"Re-derive from the REMOTE" has
-the measurements and the two guards.
+the measurements and the two guards. For the third case, a path that exists
+only on an open PR's head, ask the
+[`open-work-lookup`](../../../tools/open-work-lookup/open-work-lookup.ts) Tool.
 
 ## When the work has a BEAN and no issue (STRICT)
 

@@ -159,13 +159,14 @@
     {
       "id": "clinical-sme",
       "title": "Clinical / scientific SME",
-      "description": "Reviewer whose judgement is about the subject matter rather than the artefact.",
+      "description": "Reviewer whose judgement is about the subject matter rather than the artefact. Acts by domain judgement (`judgementOnly`: no procedure yields the answer, which is why a person is in the lane; bean `vljz`).",
       "actorKinds": [
         "person"
       ],
       "inherits": [
         "reviewer"
       ],
+      "judgementOnly": true,
       "skills": [],
       "persona": "Expert in the subject, not in the system. Judges whether the content is clinically right; is not interested in FHIR profiles or schema fields and should not have to be."
     },
@@ -420,7 +421,8 @@
         "staging-review",
         "ask-the-person",
         "decision-comparison",
-        "symbiotic-interaction"
+        "symbiotic-interaction",
+        "test-data-sets"
       ],
       "persona": "Has the whole corpus available and no memory of the last session. Will follow the most specific instruction it can find and improvise when it finds none. Reads a skill before it reads the code."
     },
@@ -461,7 +463,7 @@
     {
       "id": "sibling-session",
       "title": "Sibling session",
-      "description": "Another agent or human working the same store. Present in bean-lifecycle precisely to mark what is NOT yours to close.",
+      "description": "Another agent or human working the same store. Present in bean-open (Process_BeanOpen) precisely to mark what is NOT yours to close.",
       "actorKinds": [
         "agent"
       ],
@@ -557,17 +559,6 @@
       ],
       "skills": [
         "getting-started"
-      ]
-    },
-    {
-      "id": "lean-toolchain",
-      "title": "Lean toolchain",
-      "description": "Elaborates and checks the formal half of a paper folio. Answers only what Lean can answer.",
-      "actorKinds": [
-        "system"
-      ],
-      "skills": [
-        "lean-toolchain-contract"
       ]
     },
     {
@@ -771,8 +762,6 @@
       ],
       "skills": [
         "canonical-watcher",
-        "compute-integration-watcher",
-        "detangler-integration-watcher",
         "devils-advocate-watcher",
         "one-voice-integration-watcher",
         "integration-watch",
@@ -806,6 +795,7 @@
       ],
       "skills": [
         "test-plan-execution",
+        "test-data-sets",
         "test-engineer",
         "content-test"
       ],

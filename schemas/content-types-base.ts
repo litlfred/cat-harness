@@ -79,6 +79,7 @@ import { join } from "node:path";
 import { defaultContentTypes, type ContentTypeRegistry } from "./content-type";
 import { CONFIG_SUFFIX, findDeclarationFile } from "./cat-harness";
 import { instanceConfigFilename, instanceConfigFor } from "./harness-config";
+import { isReservedIndexFile } from "./instance-roots";
 import { termIri } from "./namespaces";
 
 /** The `@type` a harness declaration projects to. */
@@ -214,7 +215,13 @@ function harnessMarkerFilename(repoRoot: string): string | undefined {
     return readdirSync(repoRoot)
       .filter(
         (e) =>
-          e.endsWith(CONFIG_SUFFIX) && e.length > CONFIG_SUFFIX.length && !owned.has(e),
+          e.endsWith(CONFIG_SUFFIX) &&
+          e.length > CONFIG_SUFFIX.length &&
+          !owned.has(e) &&
+          // `index.config.json` is the platform's, never a harness marker: an
+          // IG repository may carry only an index (and, since 2026-10-24, a
+          // DAK section in it), and reading that as "a harness" was wrong.
+          !isReservedIndexFile(e),
       )
       .sort()[0];
   } catch {

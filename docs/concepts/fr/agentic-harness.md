@@ -397,7 +397,7 @@ dispersés à travers le dépôt. Cette section rattache le comportement consoli
 | Comportement | Compétence / document source | Emplacement |
 |---|---|---|
 | Balayage au début de session | `AGENTS.md § At session start` | [`AGENTS.md`](../../../AGENTS.md) |
-| Protocole des beans | `todo-manager.md`, `bean-coordination.md` | [`skills/folio-core/`](../../../skills/folio-core/) |
+| Protocole des beans | `todo-manager.md`, `bean-coordination.md` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 | Discipline des commits et PR | `AGENTS.md § Commit early, commit often` | [`AGENTS.md`](../../../AGENTS.md) |
 | Détection des demandes de fonctionnalités | `crdm-detect.md` | [`skills/sdlc/crdm/crdm-detect.md`](../../../skills/sdlc/crdm/crdm-detect.md) |
 | Flux de travail des exigences CRDM | `crdm-requirements-workflow.md` | [`skills/sdlc/crdm/crdm-requirements-workflow.md`](../../../skills/sdlc/crdm/crdm-requirements-workflow.md) |
@@ -405,9 +405,9 @@ dispersés à travers le dépôt. Cette section rattache le comportement consoli
 | Rédaction de contenu (document) | compétences folio-document-adapter | `skill_list` → `folio-document-adapter` |
 | Cycle de vie du contenu | compétences content-lifecycle | [`skills/authoring/content-lifecycle/`](../../../skills/authoring/content-lifecycle/) |
 | Ingestion de documents | `docs-generation.md` | [`skills/ui/ui-core/docs-generation.md`](../../../skills/ui/ui-core/docs-generation.md) |
-| Répartition et coordination | `dispatch-agent.md`, `coordinate.md` | [`skills/folio-core/`](../../../skills/folio-core/) |
+| Répartition et coordination | `dispatch-agent.md`, `coordinate.md` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 | Types de contenu et adaptateurs | `AGENTS.md § Content types` | [`AGENTS.md`](../../../AGENTS.md) |
-| Conception de diagrammes BPMN | compétence `bpmn-authoring` | [`skills/folio-core/`](../../../skills/folio-core/) |
+| Conception de diagrammes BPMN | compétence `bpmn-authoring` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 
 **En cas de désaccord entre une compétence et cette page, la compétence l'emporte.** Cette page est une
 consolidation, non une nouvelle autorité. Si vous constatez une divergence, corrigez cette page.

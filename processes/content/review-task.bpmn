@@ -75,8 +75,8 @@ The accept-or-send-back decision lives here and nowhere beneath it. The subproce
         the role that lane binds.
 
         Binds `content-review`, the same skill as Task_Consolidate in this lane,
-        since placement PR3 (bean `63wl`): it named `semantic-review-scoping`,
-        a paper skill the science layer owns, which this harness diagram
+        since placement PR3 (bean `63wl`): it named a paper skill the science
+        layer owns, which this harness diagram
         cannot reach. A paper process that wants semantic scoping adds it by
         calling this process.
       </bpmn:documentation>

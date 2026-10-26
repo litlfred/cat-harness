@@ -28,6 +28,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "La figure 1 présente le biais normalisé absolu moyen (A) et l'écart-type normalisé (B) dans l'estimation du NSR.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "La figura 1 muestra el sesgo normalizado absoluto medio (A) y la desviación estándar normalizada (B) en la estimación del NSR.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "يعرض الشكل 1 متوسط الانحياز المطلق المُطبَّع (A) والانحراف المعياري المُطبَّع (B) في تقدير NSR.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "На рисунке 1 показаны среднее абсолютное нормированное смещение (A) и нормированное стандартное отклонение (B) при оценке NSR.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "图 1 展示了 NSR 估计中的平均绝对归一化偏差（A）和归一化标准差（B）。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ]
     },
@@ -57,6 +117,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "La figure 2 montre le pourcentage de classements corrects de toutes les méthodes QI (A) et d'identification de la méthode la plus précise (B).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "La figura 2 muestra el porcentaje de veces que se ordenan correctamente todos los métodos QI (A) y que se identifica el método más preciso (B).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "يُظهر الشكل 2 نسبة الترتيب الصحيح لجميع طرق QI (A) ونسبة تحديد الطريقة الأكثر دقة (B).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "На рисунке 2 показана доля случаев, когда все методы QI ранжированы верно (A) и когда верно определён наиболее точный метод (B).",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 展示了对所有 QI 方法正确排序的百分比（A）以及识别出最精确方法的百分比（B）。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ]
     }

@@ -76,8 +76,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`kg-viewer/`](kg-viewer/) | _nothing declares what this holds_ | |
 | [`l1-complete-check/`](l1-complete-check/) | _nothing declares what this holds_ | |
 | [`latexmk-compile/`](latexmk-compile/) | _nothing declares what this holds_ | |
-| [`lean-build/`](lean-build/) | _nothing declares what this holds_ | |
-| [`lean-toolchain-setup/`](lean-toolchain-setup/) | _nothing declares what this holds_ | |
 | [`library-viewer/`](library-viewer/) | _nothing declares what this holds_ | |
 | [`log-message/`](log-message/) | _nothing declares what this holds_ | |
 | [`lsi-index/`](lsi-index/) | _nothing declares what this holds_ | |
@@ -143,6 +141,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`stakeholder-map/`](stakeholder-map/) | _nothing declares what this holds_ | |
 | [`state-viewer/`](state-viewer/) | _nothing declares what this holds_ | |
 | [`sub-kg-verify-clone/`](sub-kg-verify-clone/) | _nothing declares what this holds_ | |
+| [`subgraph-index-package/`](subgraph-index-package/) | _nothing declares what this holds_ | |
 | [`subgraph-readmes/`](subgraph-readmes/) | _nothing declares what this holds_ | |
 | [`subgraph-resolve/`](subgraph-resolve/) | _nothing declares what this holds_ | |
 | [`theme-viewer/`](theme-viewer/) | _nothing declares what this holds_ | |

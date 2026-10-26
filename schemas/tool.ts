@@ -3,7 +3,7 @@
  *
  * A **skill** states a capability generically; a **Tool** is one concrete way
  * to exercise it, and names the skills it satisfies. That separation is the
- * SOP in `skills/folio-core/skills-and-tools.md`; this is the schema that makes
+ * SOP in `skills/tools/folio-core/skills-and-tools.md`; this is the schema that makes
  * it something a machine can check rather than a convention prose asserts.
  *
  * ## Authoritative, and the only authority
@@ -42,13 +42,12 @@
  */
 import { z } from "zod";
 
+import { ToolIdSchema } from "./tool-id.js";
 import { ProcessIdSchema, SkillNameSchema } from "./tool-types.js";
 
-/** A lowercase, hyphenated id. It is also the MCP tool name stem. */
-const ToolId = z
-  .string()
-  .min(1)
-  .regex(/^[a-z][a-z0-9-]*$/, "a tool id is lowercase letters, digits and hyphens");
+/** A lowercase, hyphenated id; `tool-id.ts` says why it is its own module. */
+const ToolId = ToolIdSchema;
+export { ToolIdSchema };
 
 /**
  * An absolute IRI naming the schema of one input or output.

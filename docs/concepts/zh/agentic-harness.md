@@ -283,7 +283,7 @@ CRDM 工作流在满足以下条件时退出：
 | 行为 | 源技能 / 文档 | 位置 |
 |---|---|---|
 | 会话启动巡检 | `AGENTS.md § At session start` | [`AGENTS.md`](../../../AGENTS.md) |
-| Bean 协议 | `todo-manager.md`、`bean-coordination.md` | [`skills/folio-core/`](../../../skills/folio-core/) |
+| Bean 协议 | `todo-manager.md`、`bean-coordination.md` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 | 提交与 PR 纪律 | `AGENTS.md § Commit early, commit often` | [`AGENTS.md`](../../../AGENTS.md) |
 | 功能需求检测 | `crdm-detect.md` | [`skills/sdlc/crdm/crdm-detect.md`](../../../skills/sdlc/crdm/crdm-detect.md) |
 | CRDM 需求工作流 | `crdm-requirements-workflow.md` | [`skills/sdlc/crdm/crdm-requirements-workflow.md`](../../../skills/sdlc/crdm/crdm-requirements-workflow.md) |
@@ -291,9 +291,9 @@ CRDM 工作流在满足以下条件时退出：
 | 内容撰写（文档） | folio-document-adapter 技能 | `skill_list` → `folio-document-adapter` |
 | 内容生命周期 | content-lifecycle 技能 | [`skills/authoring/content-lifecycle/`](../../../skills/authoring/content-lifecycle/) |
 | 文档摄取 | `docs-generation.md` | [`skills/ui/ui-core/docs-generation.md`](../../../skills/ui/ui-core/docs-generation.md) |
-| 调度与协调 | `dispatch-agent.md`、`coordinate.md` | [`skills/folio-core/`](../../../skills/folio-core/) |
+| 调度与协调 | `dispatch-agent.md`、`coordinate.md` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 | 内容类型与适配器 | `AGENTS.md § Content types` | [`AGENTS.md`](../../../AGENTS.md) |
-| BPMN 图绘制 | `bpmn-authoring` 技能 | [`skills/folio-core/`](../../../skills/folio-core/) |
+| BPMN 图绘制 | `bpmn-authoring` 技能 | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 
 **当某项技能与本页面存在分歧时，以技能为准。** 本页面属于综合汇编，并非新的权威源。如果您发现差异，请修正本页面。
 
