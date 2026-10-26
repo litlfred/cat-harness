@@ -1,6 +1,6 @@
 /**
- * The outside-software core and the ``software-library/1.0.0`` kind on it (bean
- * `jbvi`, option D).
+ * The outside-software core and the ``software-library`` kind on it (bean
+ * `jbvi`, option D), with its 1.1.0 vendored nodes (owner, 2026-10-26).
  *
  * Each fixture test changes ONE thing, so it cannot pass because of a second
  * violation elsewhere. The tool-release half proves the core did not loosen
@@ -22,10 +22,13 @@ import {
 } from "./outside-software.ts";
 import {
   LIBRARY_FILE_SUFFIX,
+  SOFTWARE_LIBRARY_1_0_TAG,
   SOFTWARE_LIBRARY_SCHEMA_TAG,
   SoftwareLibrarySchema,
+  librarySchemaTag,
   libraryFileName,
   libraryLicenceProblem,
+  vendoredLibraryFileName,
 } from "./software-library.ts";
 import { loadSpdxLicenseList } from "./spdx-license-expression.ts";
 import { TOOL_RELEASE_SCHEMA_TAG, ToolReleaseSchema, toolReleaseLicenceProblem } from "./tool-release.ts";
@@ -37,7 +40,7 @@ const SHA256 = "a".repeat(64);
 
 function library(over: Record<string, unknown> = {}): Record<string, unknown> {
   return {
-    $schema: SOFTWARE_LIBRARY_SCHEMA_TAG,
+    $schema: SOFTWARE_LIBRARY_1_0_TAG,
     name: "bpmn-moddle",
     version: "10.3.1",
     digest: { algorithm: "sha512", digest: SHA512 },
@@ -103,6 +106,22 @@ describe("tool-release keeps its four rules on the core", () => {
   });
 });
 
+/** A vendored bundle's node: 1.1.0, `vendored`, no `range` and no `dev`. */
+function vendoredLibrary(over: Record<string, unknown> = {}): Record<string, unknown> {
+  const { range: _r, dev: _d, shim: _s, ...rest } = library();
+  return {
+    ...rest,
+    $schema: SOFTWARE_LIBRARY_SCHEMA_TAG,
+    name: "jquery",
+    version: "3.6.0",
+    source: { type: "url", url: "https://registry.npmjs.org/jquery/-/jquery-3.6.0.tgz" },
+    licenceSource: "scripts/assets/vendor/jquery/3.6.0/LICENSE.txt",
+    usedBy: [],
+    vendored: { path: "scripts/assets/vendor/jquery/3.6.0" },
+    ...over,
+  };
+}
+
 describe("software-library/1.0.0", () => {
   test("a valid library parses", () => {
     expect(ok(library())).toBe(true);
@@ -149,7 +168,8 @@ describe("software-library/1.0.0", () => {
 
   test("its `$schema` is the kind's tag, at no newer minor than the kind", () => {
     expect(ok(library({ $schema: "software-library/1.0.0" }))).toBe(true);
-    expect(ok(library({ $schema: "software-library/1.1.0" }))).toBe(false);
+    expect(ok(library({ $schema: "software-library/1.1.0" }))).toBe(true);
+    expect(ok(library({ $schema: "software-library/1.2.0" }))).toBe(false);
     expect(ok(library({ $schema: "folio-library/v1" }))).toBe(false);
   });
 
@@ -161,6 +181,47 @@ describe("software-library/1.0.0", () => {
     expect(libraryFileName("zod")).toBe(`zod${LIBRARY_FILE_SUFFIX}`);
     expect(libraryFileName("@types/mdast")).toBe("types__mdast.library.json");
     expect(libraryFileName("@types/mdast")).not.toContain("/");
+  });
+});
+
+describe("software-library/1.1.0 — a vendored bundle", () => {
+  test("a vendored node parses, with no range and no dev", () => {
+    const v = SoftwareLibrarySchema.safeParse(vendoredLibrary());
+    expect(v.success ? "" : v.error.message).toBe("");
+  });
+
+  test("a vendored node carries neither `range` nor `dev`", () => {
+    expect(ok(vendoredLibrary({ range: "3.6.0" }))).toBe(false);
+    expect(ok(vendoredLibrary({ dev: false }))).toBe(false);
+  });
+
+  test("an empty `vendored` is not a way to drop `range` — its path is required, layer-relative", () => {
+    expect(ok(vendoredLibrary({ vendored: {} }))).toBe(false);
+    expect(ok(vendoredLibrary({ vendored: { path: "/abs/vendor/jquery/3.6.0" } }))).toBe(false);
+    expect(ok(vendoredLibrary({ vendored: { path: "../other/vendor/jquery/3.6.0" } }))).toBe(false);
+    expect(ok(vendoredLibrary({ vendored: { path: "vendor/jquery/3.6.0", tarball: "x" } }))).toBe(false);
+  });
+
+  test("`vendored` is a 1.1.0 field: a vendored node stamped 1.0.0 is refused", () => {
+    expect(ok(vendoredLibrary({ $schema: SOFTWARE_LIBRARY_1_0_TAG }))).toBe(false);
+  });
+
+  test("keeps the core: a digest and a registry tarball over https are still required", () => {
+    const { digest: _d, ...noDigest } = vendoredLibrary();
+    expect(ok(noDigest)).toBe(false);
+    expect(ok(vendoredLibrary({ source: { type: "url", url: "http://registry.npmjs.org/jquery.tgz" } }))).toBe(false);
+  });
+
+  test("a node is stamped the OLDEST version with every field it uses", () => {
+    expect(librarySchemaTag(library())).toBe(SOFTWARE_LIBRARY_1_0_TAG);
+    expect(librarySchemaTag(vendoredLibrary())).toBe(SOFTWARE_LIBRARY_SCHEMA_TAG);
+  });
+
+  test("its file names the version, and never collides with a dependency's node", () => {
+    expect(vendoredLibraryFileName("jquery", "3.6.0")).toBe("jquery-3.6.0.vendored.library.json");
+    expect(vendoredLibraryFileName("@lhncbc/ucum-lhc", "8.0.0")).toBe("lhncbc__ucum-lhc-8.0.0.vendored.library.json");
+    expect(vendoredLibraryFileName("jquery", "3.6.0")).not.toBe(libraryFileName("jquery"));
+    expect(vendoredLibraryFileName("jquery", "3.6.0").endsWith(LIBRARY_FILE_SUFFIX)).toBe(true);
   });
 });
 
@@ -188,9 +249,9 @@ describe("the software-library graph typology", () => {
     expect(isRenderable("software-library")).toBe(false);
   });
 
-  test("names the `software-library/1.0.0` family, as generator output", () => {
+  test("names both families — 1.0.0 and the vendored 1.1.0 — as generator output", () => {
     const def = defaultGraphTypologies.get("software-library");
-    expect(Object.keys(def?.nodeSchemas ?? {})).toEqual([SOFTWARE_LIBRARY_SCHEMA_TAG]);
-    expect(def?.nodeSchemas?.[SOFTWARE_LIBRARY_SCHEMA_TAG]?.generated).toBe(true);
+    expect(Object.keys(def?.nodeSchemas ?? {}).sort()).toEqual([SOFTWARE_LIBRARY_1_0_TAG, SOFTWARE_LIBRARY_SCHEMA_TAG]);
+    for (const tag of [SOFTWARE_LIBRARY_1_0_TAG, SOFTWARE_LIBRARY_SCHEMA_TAG]) expect(def?.nodeSchemas?.[tag]?.generated).toBe(true);
   });
 });
