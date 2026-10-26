@@ -1638,6 +1638,64 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     schema: "schemas/test-report.ts",
     // declared-path-literal: this table IS the declaration, as for `health`.
   },
+  // Fixed test data sets (`test-data-fixed/1.0.0`, bean `vm6m`) — small, curated
+  // or hand-authored records committed to the repository, cited to a source or
+  // guideline where applicable, and reviewed by an SME when they exercise
+  // domain logic (`bean vljz`). Declared as its own graph typology separate
+  // from `test-data-generated` so fixed sets never share a declared directory
+  // with synthetic recipes, while every file carries `$schema: "test-data-fixed/1.0.0"`
+  // and `kind: "fixed"` so a consumer tells which it is reading from the file
+  // content, never from the directory path.
+  "test-data-fixed": {
+    description:
+      "fixed test data sets — one `test-data-fixed/1.0.0` document per curated set (`kind: \"fixed\"`, committed records, citations, and optional SME review sign-off). Separate graph typology from `test-data-generated` (bean `vm6m`) so fixed sets live in their own declared directory, and self-identifying from the file content (`$schema` and `kind`) rather than from the path. `content`: a test run reads a fixed set and never overwrites it, and once SME-reviewed it stands as certification evidence. Shape in `schemas/test-data.ts`; curated via `processes/sdlc/test-data-curation.bpmn`.",
+    title: "Fixed test data sets",
+    renderable: false,
+    holds: "content",
+    summary:
+      "Fixed test data sets — one `test-data-fixed/1.0.0` document per curated set (`kind: \"fixed\"`), " +
+      "living in its own declared directory separate from `test-data-generated` and self-identifying from " +
+      "the file content rather than the path (bean `vm6m`).",
+    schema: "schemas/test-data.ts",
+    // declared-path-literal: this table IS the declaration, as for `test-plan`.
+  },
+  // Generated test data set recipes (`test-data-generated/1.0.0`, bean `vm6m`) —
+  // `contentType`, `specialisation`, `template`, `params`, `seed`, and the
+  // canonical `sha256` digest of that recipe. Never stored materialised: the
+  // test run synthesises the records from the recipe at execution time via the
+  // content-type specialisation subprocess (`processes/sdlc/test-data-curation.bpmn`).
+  // FHIR templating (`specialisation: "fhir-templating"`) is one named
+  // specialisation, not the platform design.
+  "test-data-generated": {
+    description:
+      "generated test data set recipes — one `test-data-generated/1.0.0` document per recipe (`kind: \"generated\"`, `contentType`, `specialisation`, `template`, `params`, `seed`, and canonical `sha256`), never stored materialised. Separate graph typology from `test-data-fixed` (bean `vm6m`) so synthetic recipes live in their own declared directory, and self-identifying from the file content (`$schema` and `kind`) rather than from the path. FHIR templating (`specialisation: \"fhir-templating\"`) is one named content-type specialisation, not the design. `content`: a test run reads the recipe to synthesise inputs and records the digest on `folio-test-run/v1`. Shape in `schemas/test-data.ts`; curated via `processes/sdlc/test-data-curation.bpmn`.",
+    title: "Generated test data recipes",
+    renderable: false,
+    holds: "content",
+    summary:
+      "Generated test data recipes — one `test-data-generated/1.0.0` document per recipe (`kind: \"generated\"`, " +
+      "`template`, `params`, `seed`, `specialisation`, `sha256`), never stored materialised, living in a " +
+      "declared directory separate from `test-data-fixed` (bean `vm6m`).",
+    schema: "schemas/test-data.ts",
+    // declared-path-literal: this table IS the declaration, as for `test-plan`.
+  },
+  // SME case/cohort review verdicts (`sme-case-verdict/1.0.0`, bean `vljz`) —
+  // attributable human SME judgements on decision-support worked cases
+  // (`subjectKind: "decision-support"`) and indicator-definition cohorts
+  // (`subjectKind: "indicator-definition"`).
+  "sme-case-verdict": {
+    description:
+      "SME review case/verdict pairs for decision support (worked `case`) and indicator definitions (`cohort` plus `expectedValue`) — one `sme-case-verdict/1.0.0` document per reviewed unit, recording the attributable human SME identity (`reviewer`) and review date (`reviewedAt`) alongside `verdict` and `rationale` (bean `vljz`). `content`: authored by a person in the `judgementOnly` SME lane of `processes/sdlc/sme-test-data-review.bpmn` so a fixed test data set can stand as audited evidence. Shape in `schemas/test-data.ts`.",
+    title: "SME case/verdict pairs",
+    renderable: false,
+    holds: "content",
+    summary:
+      "SME review case/verdict pairs — one `sme-case-verdict/1.0.0` document per reviewed decision-support " +
+      "worked case or indicator-definition cohort, recording attributable human SME identity and review date " +
+      "(bean `vljz`).",
+    schema: "schemas/test-data.ts",
+    // declared-path-literal: this table IS the declaration, as for `test-plan`.
+  },
   // ONE kind for the whole work plan, not one per store. It replaced `workplan`
   // + `process-state` in #266; the rationale is in this map's doc comment above,
   // and the #263 version it supersedes is preserved there too. PR #266 changed
