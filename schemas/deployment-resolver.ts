@@ -28,6 +28,15 @@
  *
  * A Tool with no `requires` works for every placement.
  *
+ * ## A skill with no Tool is judgement, not a gap
+ *
+ * Most skills have no Tool node, and that is by design: they are exercised by
+ * the actor in the lane (`check:tools` reports uncovered skills and does not
+ * fail on them). So only a skill that HAS Tools is judged here, and a task is
+ * held up only when every Tool of one of its skills fails for every candidate.
+ * A skill with no Tool is listed under `judgement`, never counted against the
+ * task: a deployment cannot change whether a Tool exists.
+ *
  * @graphNode schema
  * @module folio-assistant/schemas/deployment-resolver
  */
@@ -79,10 +88,17 @@ export interface PlacementVerdict {
   actor: string;
   host?: Placement["host"];
   reach: EffectiveReach;
-  /** One entry per skill the task needs, with each Tool satisfying it. */
+  /** One entry per needed skill that has Tools, with each Tool satisfying it. */
   skills: { skill: string; tools: ToolVerdict[] }[];
-  /** Every needed skill has a Tool that works here. */
+  /** Needed skills no Tool satisfies: the actor exercises them, so they hold nothing up. */
+  judgement: string[];
+  /** Every needed skill that has Tools has one that works here. */
   runnable: boolean;
+  /**
+   * Not runnable, but every failing skill has a Tool whose fit could not be
+   * determined. So it is not known to be blocked either.
+   */
+  undetermined: boolean;
 }
 
 export interface TaskVerdict {
@@ -93,6 +109,8 @@ export interface TaskVerdict {
   candidates: PlacementVerdict[];
   /** No candidate can run it: no one may take the role, or no Tool works for any who may. */
   unrunnable: boolean;
+  /** No candidate is known to run it, and at least one might: an OS or runtime nobody declared. */
+  undetermined: boolean;
 }
 
 export interface DeploymentReport {
@@ -100,6 +118,11 @@ export interface DeploymentReport {
   tasks: TaskVerdict[];
   /** The report's own headline: tasks no placement can run. Reported, never a failure. */
   unrunnable: { process: string; task: string; why: string }[];
+  /**
+   * Tasks whose only possible runners wait on a fact no placement declares.
+   * Kept apart from `unrunnable`: could not determine is neither yes nor no.
+   */
+  undetermined: { process: string; task: string; why: string }[];
 }
 
 /**
@@ -158,17 +181,22 @@ export function resolveDeployment(
       if (task.kinds && !task.kinds.includes(actor.kind)) return;
       if (!mayTake(actor, task.role, isA)) return;
       const reach = placementReach(deployment, p, actor);
-      const skills = (task.skills ?? []).map((skill) => ({
-        skill,
-        tools: toolsFor(skill).map((t) => toolFit(t, reach)),
-      }));
+      const needed = task.skills ?? [];
+      const skills = needed
+        .filter((skill) => toolsFor(skill).length > 0)
+        .map((skill) => ({ skill, tools: toolsFor(skill).map((t) => toolFit(t, reach)) }));
+      const judgement = needed.filter((skill) => toolsFor(skill).length === 0);
       candidates.push({
         placement: i,
         actor: p.actor,
         host: p.host,
         reach,
         skills,
+        judgement,
         runnable: skills.every((s) => s.tools.some((t) => t.fit === "works")),
+        undetermined:
+          !skills.every((s) => s.tools.some((t) => t.fit === "works")) &&
+          skills.every((s) => s.tools.some((t) => t.fit !== "needs-network")),
       });
     });
     return {
@@ -176,7 +204,8 @@ export function resolveDeployment(
       task: task.task,
       role: task.role,
       candidates,
-      unrunnable: !candidates.some((c) => c.runnable),
+      unrunnable: !candidates.some((c) => c.runnable || c.undetermined),
+      undetermined: !candidates.some((c) => c.runnable) && candidates.some((c) => c.undetermined),
     };
   });
 
@@ -193,5 +222,20 @@ export function resolveDeployment(
               .join("; ")}`,
     }));
 
-  return { deployment: deployment.id, tasks: verdicts, unrunnable };
+  const undetermined = verdicts
+    .filter((v) => v.undetermined)
+    .map((v) => ({
+      process: v.process,
+      task: v.task,
+      why: `could not determine: ${v.candidates
+        .filter((c) => c.undetermined)
+        .flatMap((c) =>
+          c.skills
+            .filter((s) => !s.tools.some((t) => t.fit === "works"))
+            .map((s) => `${c.actor}: ${s.skill} (${s.tools.filter((t) => t.fit === "could-not-determine").map((t) => t.tool).join(", ")})`),
+        )
+        .join("; ")}`,
+    }));
+
+  return { deployment: deployment.id, tasks: verdicts, unrunnable, undetermined };
 }

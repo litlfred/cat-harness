@@ -79,7 +79,18 @@ describe("resolveDeployment", () => {
     const task: ResolverTask = { process: "p", task: "prove", role: "authoring-agent", skills: ["prove"] };
     const r = resolveDeployment(d, actors, [task], tools);
     expect(r.tasks[0].candidates[0].skills[0].tools[0].fit).toBe("could-not-determine");
-    expect(r.unrunnable).toHaveLength(1);
+    // Neither runnable nor unrunnable: reported apart, never counted as either.
+    expect(r.unrunnable).toEqual([]);
+    expect(r.undetermined).toEqual([{ process: "p", task: "prove", why: "could not determine: claude: prove (lean-build)" }]);
+  });
+
+  test("a skill no Tool satisfies is judgement and holds nothing up", () => {
+    const d = deployment("air-gapped", [{ actor: "claude" }]);
+    const task: ResolverTask = { process: "p", task: "review", role: "authoring-agent", skills: ["content-review"] };
+    const r = resolveDeployment(d, actors, [task], tools);
+    expect(r.unrunnable).toEqual([]);
+    expect(r.tasks[0].candidates[0].judgement).toEqual(["content-review"]);
+    expect(r.tasks[0].candidates[0].skills).toEqual([]);
   });
 
   test("one actor placed twice is judged per placement", () => {
