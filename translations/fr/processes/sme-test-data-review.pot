@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sme-test-data-review\n"
-"POT-Creation-Date: 2026-10-24T08:05:36.869Z\n"
+"POT-Creation-Date: 2026-10-26T13:04:31.892Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -81,7 +81,7 @@ msgstr ""
 
 #: processes/sdlc/sme-test-data-review.bpmn:94
 #. Diagram element documentation
-msgid "Performed by the human SME in `Lane_SME` (`clinical-sme`, `judgementOnly: true`). The SME inspects the worked case (for decision support) or the cohort and expected vs computed value (for an indicator definition) and renders a domain verdict (`pass`, `fail`, or `needs-revision`) with rationale. Deliberately carries no skill reference: no procedure yields the answer, which is the whole reason a person is in this lane (`bean vljz`)."
+msgid "Performed by the human SME in `Lane_SME` (`clinical-sme`, `judgementOnly: true`). The SME inspects the worked case (for decision support) or the cohort and expected vs computed value (for an indicator definition) and renders a domain verdict (`pass`, `fail`, or `needs-revision`) with rationale. Deliberately carries no skill reference: no procedure yields the answer, which is the whole reason a person is in this lane."
 msgstr ""
 
 #: processes/sdlc/sme-test-data-review.bpmn:77
@@ -131,7 +131,7 @@ msgstr ""
 
 #: processes/sdlc/sme-test-data-review.bpmn:19
 #. Diagram element documentation
-msgid "SME review of fixed test data for clinical or scientific decision support and indicator definitions — bean `folio-assistant-vljz`, companion `folio-assistant-vm6m`, proposal `docs/proposals/qa-reports-branch-and-test-process-2026-10-01.md` §3.2. TWO UNITS OF REVIEW (`SmeCaseVerdictKind`, `$schema: \"sme-case-verdict/1.0.0\"` in `schemas/test-data.ts`): - `decision-support`: the unit of review is a **worked case** (`case`: input state, `decisionLogicRef`, `systemOutput`, optional `expectedGuidance`). - `indicator-definition`: the unit of review is a **cohort plus an expected value** (`cohort`: `indicatorRef`, `populationSize`, `inputs`, `expectedValue`, `computedValue`, optional `period`, `numerator`, `denominator`). JUDGEMENT-ONLY SME LANE. `Lane_SME` binds `clinical-sme`, which is declared `judgementOnly: true` in `scenarios/roles.json`. `Task_SmeJudge` carries no skill reference because no mechanical procedure yields the clinical or scientific answer — that is the whole reason a person is in the lane. ATTRIBUTABLE REVIEWER AND DATE. `Task_RecordCaseVerdict` writes the `sme-case-verdict/1.0.0` node with the SME's attributable human identity (`reviewer: { kind: \"human\", provider, handle, role }`) and ISO-8601 review date (`reviewedAt`), because an audited review without an attributable reviewer and date is not audited."
+msgid "SME review of fixed test data for clinical or scientific decision support and indicator definitions. It runs on its caller's bean (Process_TestDataCuration calls it), so it opens and closes none: every step that touches the plan notes on it. TWO UNITS OF REVIEW (`SmeCaseVerdictKind`, `$schema: \"sme-case-verdict/1.0.0\"` in `schemas/test-data.ts`): - `decision-support`: the unit of review is a **worked case** (`case`: input state, `decisionLogicRef`, `systemOutput`, optional `expectedGuidance`). - `indicator-definition`: the unit of review is a **cohort plus an expected value** (`cohort`: `indicatorRef`, `populationSize`, `inputs`, `expectedValue`, `computedValue`, optional `period`, `numerator`, `denominator`). JUDGEMENT-ONLY SME LANE. `Lane_SME` binds `clinical-sme`, which is declared `judgementOnly: true` in `scenarios/roles.json`. `Task_SmeJudge` carries no skill reference because no mechanical procedure yields the clinical or scientific answer — that is the whole reason a person is in the lane. ATTRIBUTABLE REVIEWER AND DATE. `Task_RecordCaseVerdict` writes the `sme-case-verdict/1.0.0` node with the SME's attributable human identity (`reviewer: { kind: \"human\", provider, handle, role }`) and ISO-8601 review date (`reviewedAt`), because an audited review without an attributable reviewer and date is not audited."
 msgstr ""
 
 #: processes/sdlc/sme-test-data-review.bpmn:112

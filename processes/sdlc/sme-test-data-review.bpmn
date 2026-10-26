@@ -16,7 +16,7 @@
     <bpmn:participant id="Participant_SmeTestDataReview" name="SME Review of Decision Support and Indicator Test Data" processRef="Process_SmeTestDataReview"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_SmeTestDataReview" name="SME Review of Decision Support and Indicator Test Data" isExecutable="false">
-    <bpmn:documentation>SME review of fixed test data for clinical or scientific decision support and indicator definitions — bean `folio-assistant-vljz`, companion `folio-assistant-vm6m`, proposal `docs/proposals/qa-reports-branch-and-test-process-2026-10-01.md` §3.2.
+    <bpmn:documentation>SME review of fixed test data for clinical or scientific decision support and indicator definitions. It runs on its caller's bean (Process_TestDataCuration calls it), so it opens and closes none: every step that touches the plan notes on it.
 
 TWO UNITS OF REVIEW (`SmeCaseVerdictKind`, `$schema: &quot;sme-case-verdict/1.0.0&quot;` in `schemas/test-data.ts`):
 - `decision-support`: the unit of review is a **worked case** (`case`: input state, `decisionLogicRef`, `systemOutput`, optional `expectedGuidance`).
@@ -68,7 +68,7 @@ ATTRIBUTABLE REVIEWER AND DATE. `Task_RecordCaseVerdict` writes the `sme-case-ve
       <bpmn:documentation>Assemble the `DecisionSupportWorkedCase` (`id`, `summary`, `decisionLogicRef`, structured `input`, `systemOutput`, and optional `expectedGuidance`) from the fixed data set so the SME can judge clinical/scientific correctness without reading raw schema internals.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
-        <cat-harness.processes:work-plan op="start"/>
+        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_DecisionSupport</bpmn:incoming>
       <bpmn:outgoing>Flow_2</bpmn:outgoing>
@@ -78,7 +78,7 @@ ATTRIBUTABLE REVIEWER AND DATE. `Task_RecordCaseVerdict` writes the `sme-case-ve
       <bpmn:documentation>Assemble the `IndicatorCohortCase` (`id`, `summary`, `indicatorRef`, `populationSize`, `inputs`, `expectedValue`, `computedValue`, and optional `period`, `numerator`, `denominator`) from the fixed data set for SME review.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
-        <cat-harness.processes:work-plan op="start"/>
+        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_Indicator</bpmn:incoming>
       <bpmn:outgoing>Flow_3</bpmn:outgoing>
@@ -91,9 +91,9 @@ ATTRIBUTABLE REVIEWER AND DATE. `Task_RecordCaseVerdict` writes the `sme-case-ve
     </bpmn:exclusiveGateway>
 
     <bpmn:userTask id="Task_SmeJudge" name="Judge domain correctness&#10;of worked case or&#10;indicator cohort">
-      <bpmn:documentation>Performed by the human SME in `Lane_SME` (`clinical-sme`, `judgementOnly: true`). The SME inspects the worked case (for decision support) or the cohort and expected vs computed value (for an indicator definition) and renders a domain verdict (`pass`, `fail`, or `needs-revision`) with rationale. Deliberately carries no skill reference: no procedure yields the answer, which is the whole reason a person is in this lane (`bean vljz`).</bpmn:documentation>
+      <bpmn:documentation>Performed by the human SME in `Lane_SME` (`clinical-sme`, `judgementOnly: true`). The SME inspects the worked case (for decision support) or the cohort and expected vs computed value (for an indicator definition) and renders a domain verdict (`pass`, `fail`, or `needs-revision`) with rationale. Deliberately carries no skill reference: no procedure yields the answer, which is the whole reason a person is in this lane.</bpmn:documentation>
       <bpmn:extensionElements>
-        <cat-harness.processes:work-plan op="note"/>
+        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_4</bpmn:incoming>
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
@@ -103,7 +103,7 @@ ATTRIBUTABLE REVIEWER AND DATE. `Task_RecordCaseVerdict` writes the `sme-case-ve
       <bpmn:documentation>Write the `sme-case-verdict/1.0.0` node (`SmeCaseVerdictKind` in `schemas/test-data.ts`) recording `dataSetRef`, `subjectKind`, the worked `case` or `cohort`, `verdict`, `rationale`, the SME's attributable human identity (`reviewer: { kind: &quot;human&quot;, provider, handle, role }`), and `reviewedAt` (ISO-8601 date/timestamp).</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
-        <cat-harness.processes:work-plan op="close"/>
+        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_5</bpmn:incoming>
       <bpmn:outgoing>Flow_6</bpmn:outgoing>

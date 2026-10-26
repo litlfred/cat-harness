@@ -15,7 +15,7 @@
     <bpmn:participant id="Participant_TestDataCuration" name="Test Data Curation — Fixed Sets and Generated Recipes" processRef="Process_TestDataCuration"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_TestDataCuration" name="Test Data Curation — Fixed Sets and Generated Recipes" isExecutable="false">
-    <bpmn:documentation>General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`test-data-generated/1.0.0`) test data sets — bean `folio-assistant-vm6m`, companion `folio-assistant-vljz`, proposal `docs/proposals/qa-reports-branch-and-test-process-2026-10-01.md` §3.2.
+    <bpmn:documentation>General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`test-data-generated/1.0.0`) test data sets. It opens its bean with Process_BeanOpen before any work and closes it with Process_BeanClose before it ends; the steps between note on it.
 
 SEPARATE GRAPH DIRECTORIES, SELF-IDENTIFYING FILES. Fixed sets live in a declared `test-data-fixed` directory and generated recipes live in a declared `test-data-generated` directory (`schemas/graph-typology-registry.ts`). Every file carries both its `$schema` tag (`test-data-fixed/1.0.0` vs `test-data-generated/1.0.0`) and `kind: &quot;fixed&quot; | &quot;generated&quot;` (`schemas/test-data.ts`), so a consumer (`discriminateTestDataSet`) tells which it is reading from the file content, never from the directory path.
 
@@ -27,6 +27,9 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
       <bpmn:lane id="Lane_Author" name="Authoring agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Authors or curates the test data set: classifies whether the case requires a fixed curated set or a deterministic generated recipe, invokes the content-type specialisation subprocess on the generated branch or SME review on the fixed branch, and writes the self-identifying node into its declared graph directory.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_Curation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_BeanOpen</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GW_BeanYours</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_BeanNotYours</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_ClassifySet</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_SetKind</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_CurateFixed</bpmn:flowNodeRef>
@@ -40,6 +43,7 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
         <bpmn:documentation>Verifies that the curated fixed set or generated recipe self-identifies from its file content (`discriminateTestDataSet`) rather than from its directory path, verifies the canonical SHA-256 digest, and binds the `TestDataRef` into the `test-plan/v1` test case.</bpmn:documentation>
         <bpmn:flowNodeRef>GW_MergeKind</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_VerifySelfIdentifying</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_BeanClose</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Curated</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
@@ -52,9 +56,9 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
       <bpmn:documentation>Decide whether the test case requires a small, committed, cited fixed data set (`test-data-fixed/1.0.0`, usable as certification evidence once reviewed) or a deterministic generated recipe (`test-data-generated/1.0.0`, `template` + `params` + `seed`, never stored materialised).</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
-        <cat-harness.processes:work-plan op="start"/>
+        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1</bpmn:incoming>
+      <bpmn:incoming>SF_Bean_1</bpmn:incoming>
       <bpmn:outgoing>Flow_2</bpmn:outgoing>
     </bpmn:task>
 
@@ -72,14 +76,14 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
       <bpmn:documentation>Write the curated `records` and optional `citations` with `$schema: &quot;test-data-fixed/1.0.0&quot;` and `kind: &quot;fixed&quot;` into the instance's declared `test-data-fixed` directory (`schemas/test-data.ts`). Recipe fields (`template`, `params`, `seed`) are refused by the strict schema.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
-        <cat-harness.processes:work-plan op="note"/>
+        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_Fixed</bpmn:incoming>
       <bpmn:outgoing>Flow_3</bpmn:outgoing>
     </bpmn:task>
 
     <bpmn:exclusiveGateway id="GW_NeedsSmeReview" name="Exercises decision&#10;support or indicator&#10;definition?">
-      <bpmn:documentation>When the fixed data set exercises clinical/scientific decision support or an indicator definition (`bean vljz`), it must pass SME review (`Process_SmeTestDataReview`) before `review` is recorded and the set can stand as certification evidence.</bpmn:documentation>
+      <bpmn:documentation>When the fixed data set exercises clinical/scientific decision support or an indicator definition, it must pass SME review (`Process_SmeTestDataReview`) before `review` is recorded and the set can stand as certification evidence.</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:judgement reason="Whether the fixed set exercises domain decision support or an indicator definition determines if attributable SME review is required before the set can stand as evidence."/>
       </bpmn:extensionElements>
@@ -92,7 +96,7 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
       <bpmn:documentation>Calls `Process_SmeTestDataReview` (`processes/sdlc/sme-test-data-review.bpmn`) so a human SME in a `judgementOnly` lane reviews each worked case (`decision-support`) or cohort plus expected value (`indicator-definition`) and records an attributable `sme-case-verdict/1.0.0` node.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
-        <cat-harness.processes:work-plan op="note"/>
+        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_SmeYes</bpmn:incoming>
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
@@ -108,7 +112,7 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
       <bpmn:documentation>BOUND BY THE CONTENT TYPE (`contentType` and `specialisation` in `schemas/test-data.ts`), so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess. `fhir-templating` (`FHIR_TEMPLATING_SPECIALISATION`) is one named specialisation for FHIR IG / DAK content (MeasureReport cohorts, questionnaire responses, bundle templates) — named as such, not the platform design; document folios (`markdown-fixture`), proof folios (`lean-counterexample`), and tabular cohorts (`tabular-cohort`) supply their own.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
-        <cat-harness.processes:work-plan op="note"/>
+        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_Generated</bpmn:incoming>
       <bpmn:outgoing>Flow_6</bpmn:outgoing>
@@ -118,7 +122,7 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
       <bpmn:documentation>Record `contentType`, `specialisation`, `template`, `params`, `seed`, and the canonical `sha256` digest (`computeGeneratedSetDigest`) with `$schema: &quot;test-data-generated/1.0.0&quot;` and `kind: &quot;generated&quot;` in the instance's declared `test-data-generated` directory. Never store materialised records.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
-        <cat-harness.processes:work-plan op="note"/>
+        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_6</bpmn:incoming>
       <bpmn:outgoing>Flow_7</bpmn:outgoing>
@@ -134,17 +138,43 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
       <bpmn:documentation>Parse the file with `discriminateTestDataSet` (`schemas/test-data.ts`) to confirm a consumer can tell fixed from generated from the file content alone (never the path), verify `verifyGeneratedSetDigest` on generated sets, and bind the resulting `TestDataRef` (`toTestDataRef`) into the `test-plan/v1` case.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
-        <cat-harness.processes:work-plan op="close"/>
+        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_8</bpmn:incoming>
       <bpmn:outgoing>Flow_9</bpmn:outgoing>
     </bpmn:task>
 
     <bpmn:endEvent id="End_Curated" name="Test data set curated&#10;and bound into plan">
-      <bpmn:incoming>Flow_9</bpmn:incoming>
+      <bpmn:incoming>SF_Bean_4</bpmn:incoming>
     </bpmn:endEvent>
 
-    <bpmn:sequenceFlow id="Flow_1" sourceRef="Start_Curation" targetRef="Task_ClassifySet"/>
+    <bpmn:callActivity id="Call_BeanOpen" name="Open the bean&#10;[bean-open]" calledElement="Process_BeanOpen">
+      <bpmn:documentation>Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn; the gateway after this reads which end it reached.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="bean-coordination"/></bpmn:extensionElements>
+      <bpmn:incoming>Flow_1</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_2</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:exclusiveGateway id="GW_BeanYours" name="Bean claimed?">
+      <bpmn:documentation>Reads which end Process_BeanOpen reached. `claimed`: the bean is in progress and this process works it. `not yours`: a sibling session or a human holds it, nothing was written to it, and this process stops here rather than work a bean it does not own (bean-coordination).</bpmn:documentation>
+      <bpmn:incoming>SF_Bean_2</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_1</bpmn:outgoing>
+      <bpmn:outgoing>SF_Bean_3</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="End_BeanNotYours" name="Not yours —&#10;left alone">
+      <bpmn:documentation>Someone else holds the bean; this run stops without touching it.</bpmn:documentation>
+      <bpmn:incoming>SF_Bean_3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:callActivity id="Call_BeanClose" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+      <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn; placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
+      <bpmn:incoming>Flow_9</bpmn:incoming>
+      <bpmn:outgoing>SF_Bean_4</bpmn:outgoing>
+    </bpmn:callActivity>
+
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="Start_Curation" targetRef="Call_BeanOpen"/>
+    <bpmn:sequenceFlow id="SF_Bean_2" sourceRef="Call_BeanOpen" targetRef="GW_BeanYours"/>
+    <bpmn:sequenceFlow id="SF_Bean_1" name="claimed" sourceRef="GW_BeanYours" targetRef="Task_ClassifySet"/>
+    <bpmn:sequenceFlow id="SF_Bean_3" name="not yours" sourceRef="GW_BeanYours" targetRef="End_BeanNotYours"/>
     <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_ClassifySet" targetRef="GW_SetKind"/>
     <bpmn:sequenceFlow id="Flow_Fixed" name="fixed" sourceRef="GW_SetKind" targetRef="Task_CurateFixed"/>
     <bpmn:sequenceFlow id="Flow_Generated" name="generated" sourceRef="GW_SetKind" targetRef="Call_ContentTypeSpecialisation"/>
@@ -156,114 +186,143 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
     <bpmn:sequenceFlow id="Flow_6" sourceRef="Call_ContentTypeSpecialisation" targetRef="Task_WriteRecipe"/>
     <bpmn:sequenceFlow id="Flow_7" sourceRef="Task_WriteRecipe" targetRef="GW_MergeKind"/>
     <bpmn:sequenceFlow id="Flow_8" sourceRef="GW_MergeKind" targetRef="Task_VerifySelfIdentifying"/>
-    <bpmn:sequenceFlow id="Flow_9" sourceRef="Task_VerifySelfIdentifying" targetRef="End_Curated"/>
+    <bpmn:sequenceFlow id="Flow_9" sourceRef="Task_VerifySelfIdentifying" targetRef="Call_BeanClose"/>
+    <bpmn:sequenceFlow id="SF_Bean_4" sourceRef="Call_BeanClose" targetRef="End_Curated"/>
   </bpmn:process>
 
   <bpmndi:BPMNDiagram id="BPMNDiagram_TestDataCuration">
     <bpmndi:BPMNPlane id="BPMNPlane_TestDataCuration" bpmnElement="Collaboration_TestDataCuration">
       <bpmndi:BPMNShape id="Shape_Participant_TestDataCuration" bpmnElement="Participant_TestDataCuration" isHorizontal="true">
-        <dc:Bounds x="120" y="60" width="1420" height="460"/>
+        <dc:Bounds x="120" y="60" width="1800" height="460"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Author" bpmnElement="Lane_Author" isHorizontal="true">
-        <dc:Bounds x="150" y="60" width="1390" height="300"/>
+        <dc:Bounds x="150" y="60" width="1770" height="300"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Tester" bpmnElement="Lane_Tester" isHorizontal="true">
-        <dc:Bounds x="150" y="360" width="1390" height="160"/>
+        <dc:Bounds x="150" y="360" width="1770" height="160"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Curation" bpmnElement="Start_Curation">
         <dc:Bounds x="200" y="192" width="36" height="36"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_ClassifySet" bpmnElement="Task_ClassifySet">
-        <dc:Bounds x="280" y="170" width="150" height="80"/>
+        <dc:Bounds x="500" y="170" width="150" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_SetKind" bpmnElement="GW_SetKind" isMarkerVisible="true">
-        <dc:Bounds x="475" y="185" width="50" height="50"/>
+        <dc:Bounds x="695" y="185" width="50" height="50"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_CurateFixed" bpmnElement="Task_CurateFixed">
-        <dc:Bounds x="570" y="95" width="170" height="80"/>
+        <dc:Bounds x="790" y="95" width="170" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_NeedsSmeReview" bpmnElement="GW_NeedsSmeReview" isMarkerVisible="true">
-        <dc:Bounds x="785" y="110" width="50" height="50"/>
+        <dc:Bounds x="1005" y="110" width="50" height="50"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_SmeReview" bpmnElement="Call_SmeReview">
-        <dc:Bounds x="880" y="95" width="170" height="80"/>
+        <dc:Bounds x="1100" y="95" width="170" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_JoinFixed" bpmnElement="GW_JoinFixed" isMarkerVisible="true">
-        <dc:Bounds x="1095" y="110" width="50" height="50"/>
+        <dc:Bounds x="1315" y="110" width="50" height="50"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_ContentTypeSpecialisation" bpmnElement="Call_ContentTypeSpecialisation">
-        <dc:Bounds x="570" y="245" width="180" height="80"/>
+        <dc:Bounds x="790" y="245" width="180" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_WriteRecipe" bpmnElement="Task_WriteRecipe">
-        <dc:Bounds x="800" y="245" width="180" height="80"/>
+        <dc:Bounds x="1020" y="245" width="180" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_MergeKind" bpmnElement="GW_MergeKind" isMarkerVisible="true">
-        <dc:Bounds x="1095" y="415" width="50" height="50"/>
+        <dc:Bounds x="1315" y="415" width="50" height="50"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_VerifySelfIdentifying" bpmnElement="Task_VerifySelfIdentifying">
-        <dc:Bounds x="1195" y="400" width="190" height="80"/>
+        <dc:Bounds x="1415" y="400" width="190" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Curated" bpmnElement="End_Curated">
-        <dc:Bounds x="1440" y="422" width="36" height="36"/>
+        <dc:Bounds x="1820" y="422" width="36" height="36"/>
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNEdge id="Edge_Flow_1" bpmnElement="Flow_1">
         <di:waypoint x="236" y="210"/>
-        <di:waypoint x="280" y="210"/>
+        <di:waypoint x="270" y="210"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_2" bpmnElement="Flow_2">
-        <di:waypoint x="430" y="210"/>
-        <di:waypoint x="475" y="210"/>
+        <di:waypoint x="650" y="210"/>
+        <di:waypoint x="695" y="210"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_Fixed" bpmnElement="Flow_Fixed">
-        <di:waypoint x="500" y="185"/>
-        <di:waypoint x="500" y="135"/>
-        <di:waypoint x="570" y="135"/>
+        <di:waypoint x="720" y="185"/>
+        <di:waypoint x="720" y="135"/>
+        <di:waypoint x="790" y="135"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_Generated" bpmnElement="Flow_Generated">
-        <di:waypoint x="500" y="235"/>
-        <di:waypoint x="500" y="285"/>
-        <di:waypoint x="570" y="285"/>
+        <di:waypoint x="720" y="235"/>
+        <di:waypoint x="720" y="285"/>
+        <di:waypoint x="790" y="285"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_3" bpmnElement="Flow_3">
-        <di:waypoint x="740" y="135"/>
-        <di:waypoint x="785" y="135"/>
+        <di:waypoint x="960" y="135"/>
+        <di:waypoint x="1005" y="135"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_SmeYes" bpmnElement="Flow_SmeYes">
-        <di:waypoint x="835" y="135"/>
-        <di:waypoint x="880" y="135"/>
+        <di:waypoint x="1055" y="135"/>
+        <di:waypoint x="1100" y="135"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_SmeNo" bpmnElement="Flow_SmeNo">
-        <di:waypoint x="810" y="160"/>
-        <di:waypoint x="810" y="200"/>
-        <di:waypoint x="1120" y="200"/>
-        <di:waypoint x="1120" y="160"/>
+        <di:waypoint x="1030" y="160"/>
+        <di:waypoint x="1030" y="200"/>
+        <di:waypoint x="1340" y="200"/>
+        <di:waypoint x="1340" y="160"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_4" bpmnElement="Flow_4">
-        <di:waypoint x="1050" y="135"/>
-        <di:waypoint x="1095" y="135"/>
+        <di:waypoint x="1270" y="135"/>
+        <di:waypoint x="1315" y="135"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5">
-        <di:waypoint x="1120" y="160"/>
-        <di:waypoint x="1120" y="415"/>
+        <di:waypoint x="1340" y="160"/>
+        <di:waypoint x="1340" y="415"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_6" bpmnElement="Flow_6">
-        <di:waypoint x="750" y="285"/>
-        <di:waypoint x="800" y="285"/>
+        <di:waypoint x="970" y="285"/>
+        <di:waypoint x="1020" y="285"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_7" bpmnElement="Flow_7">
-        <di:waypoint x="980" y="285"/>
-        <di:waypoint x="1040" y="285"/>
-        <di:waypoint x="1040" y="440"/>
-        <di:waypoint x="1095" y="440"/>
+        <di:waypoint x="1200" y="285"/>
+        <di:waypoint x="1260" y="285"/>
+        <di:waypoint x="1260" y="440"/>
+        <di:waypoint x="1315" y="440"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_8" bpmnElement="Flow_8">
-        <di:waypoint x="1145" y="440"/>
-        <di:waypoint x="1195" y="440"/>
+        <di:waypoint x="1365" y="440"/>
+        <di:waypoint x="1415" y="440"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_9" bpmnElement="Flow_9">
-        <di:waypoint x="1385" y="440"/>
-        <di:waypoint x="1440" y="440"/>
+        <di:waypoint x="1605" y="440"/>
+        <di:waypoint x="1650" y="440"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_Call_BeanOpen" bpmnElement="Call_BeanOpen">
+        <dc:Bounds x="270" y="170" width="120" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_BeanYours" bpmnElement="GW_BeanYours" isMarkerVisible="true">
+        <dc:Bounds x="425" y="185" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_BeanNotYours" bpmnElement="End_BeanNotYours">
+        <dc:Bounds x="432" y="90" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Call_BeanClose" bpmnElement="Call_BeanClose">
+        <dc:Bounds x="1650" y="400" width="120" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_SF_Bean_2" bpmnElement="SF_Bean_2">
+        <di:waypoint x="390" y="210"/>
+        <di:waypoint x="425" y="210"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Bean_1" bpmnElement="SF_Bean_1">
+        <di:waypoint x="475" y="210"/>
+        <di:waypoint x="500" y="210"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Bean_3" bpmnElement="SF_Bean_3">
+        <di:waypoint x="450" y="185"/>
+        <di:waypoint x="450" y="126"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Bean_4" bpmnElement="SF_Bean_4">
+        <di:waypoint x="1770" y="440"/>
+        <di:waypoint x="1820" y="440"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -4,21 +4,40 @@
 
 > **Generated, and not the authority.** This is `cat-harness/processes/sdlc/test-data-curation.bpmn` (process `Process_TestDataCuration`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`test-data-generated/1.0.0`) test data sets — bean `folio-assistant-vm6m`, companion `folio-assistant-vljz`, proposal `docs/proposals/qa-reports-branch-and-test-process-2026-10-01.md` §3.2.
+General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`test-data-generated/1.0.0`) test data sets.
 
 ## Begin — Test data needed for a test plan case (`Start_Curation`)
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_TestDataCuration"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_ClassifySet` (Classify data set: fixed (curated) or generated (recipe))
+- next: → `Call_BeanOpen` (Open the bean)
 
-### 1. Classify data set: fixed (curated) or generated (recipe) (`Task_ClassifySet`)
+### 1. Open the bean (`Call_BeanOpen`)
+
+- Who: the `Authoring agent` lane (role `authoring-agent`).
+- Skill: `bean-coordination`.
+- What: Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's.
+- A subprocess (`Process_BeanOpen`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `GW_BeanYours` (Bean claimed?)
+
+### Decide — Bean claimed? (`GW_BeanYours`)
+
+- Reads which end Process_BeanOpen reached.
+- Call `workflow_complete` with `node: "GW_BeanYours"` and `outcome` set to the label that holds:
+  - «claimed» → `Task_ClassifySet` (Classify data set: fixed (curated) or generated (recipe))
+  - «not yours» → `End_BeanNotYours` (Not yours — left alone)
+
+### 2. Classify data set: fixed (curated) or generated (recipe) (`Task_ClassifySet`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
 - What: Decide whether the test case requires a small, committed, cited fixed data set (`test-data-fixed/1.0.0`, usable as certification evidence once reviewed) or a deterministic generated recipe (`test-data-generated/1.0.0`, `template` + `params` + `seed`, never stored materialised).
 - Record it: `workflow_complete` with `node: "Task_ClassifySet"`.
 - next: → `GW_SetKind` (Fixed or generated?)
+
+## Done — Not yours — left alone (`End_BeanNotYours`)
+
+- The instance completes here: Someone else holds the bean; this run stops without touching it. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
 ### Decide — Fixed or generated? (`GW_SetKind`)
 
@@ -27,7 +46,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
   - «fixed» → `Task_CurateFixed` (Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0)
   - «generated» → `Call_ContentTypeSpecialisation` (Synthesise recipe via content-type specialisation [its own subprocess])
 
-### 2. Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0 (`Task_CurateFixed`)
+### 3. Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0 (`Task_CurateFixed`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
@@ -35,7 +54,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 - Record it: `workflow_complete` with `node: "Task_CurateFixed"`.
 - next: → `GW_NeedsSmeReview` (Exercises decision support or indicator definition?)
 
-### 3. Synthesise recipe via content-type specialisation [its own subprocess] (`Call_ContentTypeSpecialisation`)
+### 4. Synthesise recipe via content-type specialisation [its own subprocess] (`Call_ContentTypeSpecialisation`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
@@ -45,12 +64,12 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 
 ### Decide — Exercises decision support or indicator definition? (`GW_NeedsSmeReview`)
 
-- When the fixed data set exercises clinical/scientific decision support or an indicator definition (`bean vljz`), it must pass SME review (`Process_SmeTestDataReview`) before `review` is recorded and the set can stand as certification evidence.
+- When the fixed data set exercises clinical/scientific decision support or an indicator definition, it must pass SME review (`Process_SmeTestDataReview`) before `review` is recorded and the set can stand as certification evidence.
 - Call `workflow_complete` with `node: "GW_NeedsSmeReview"` and `outcome` set to the label that holds:
   - «yes» → `Call_SmeReview` (SME review of cases or cohorts)
   - «no» → `GW_JoinFixed` (Fixed set ready)
 
-### 4. Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0 (`Task_WriteRecipe`)
+### 5. Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0 (`Task_WriteRecipe`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
@@ -58,7 +77,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 - Record it: `workflow_complete` with `node: "Task_WriteRecipe"`.
 - next: → `GW_MergeKind` (Data set written)
 
-### 5. SME review of cases or cohorts (`Call_SmeReview`)
+### 6. SME review of cases or cohorts (`Call_SmeReview`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
@@ -76,12 +95,20 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 - Nothing to do or decide: the paths meet here and the engine passes through.
 - next: → `Task_VerifySelfIdentifying` (Verify file self-identifies by $schema and kind and bind into test plan)
 
-### 6. Verify file self-identifies by $schema and kind and bind into test plan (`Task_VerifySelfIdentifying`)
+### 7. Verify file self-identifies by $schema and kind and bind into test plan (`Task_VerifySelfIdentifying`)
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `test-data-sets`.
 - What: Parse the file with `discriminateTestDataSet` (`schemas/test-data.ts`) to confirm a consumer can tell fixed from generated from the file content alone (never the path), verify `verifyGeneratedSetDigest` on generated sets, and bind the resulting `TestDataRef` (`toTestDataRef`) into the `test-plan/v1`
 - Record it: `workflow_complete` with `node: "Task_VerifySelfIdentifying"`.
+- next: → `Call_BeanClose` (Close the bean)
+
+### 8. Close the bean (`Call_BeanClose`)
+
+- Who: the `Tester` lane (role `tester`).
+- Skill: `todo-manager`.
+- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
+- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Curated` (Test data set curated and bound into plan)
 
 ## Done — Test data set curated and bound into plan (`End_Curated`)
