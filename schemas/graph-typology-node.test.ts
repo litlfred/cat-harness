@@ -44,6 +44,11 @@ describe("a declared kind", () => {
     expect(r.declaredBy("widget")).toBe(join(root, "alpha", "typologies", "widget.json"));
     expect(r.names()).toContain("widget");
   });
+  test("carries `shownOnPublishedPages`, and the schema takes only `true` for it", () => {
+    const root = checkout({ alpha: [{ ...node("annex", "content"), shownOnPublishedPages: true }] });
+    expect(new GraphTypologyRegistry({}, root).get("annex")?.shownOnPublishedPages).toBe(true);
+    expect(GraphTypologyNodeSchema.safeParse({ ...node("annex"), shownOnPublishedPages: false }).success).toBe(false);
+  });
   test("is unknown to a registry that declares no checkout", () => {
     expect(new GraphTypologyRegistry({}).has("widget")).toBe(false);
   });
