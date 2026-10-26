@@ -26,6 +26,66 @@
       },
       "drafted_at": "2026-10-09",
       "lang": "en"
+    },
+    {
+      "text": "Figure 2 : architectures du pipeline d'exécution. (a) Solo Agent : le routeur choisit un seul agent solveur, qui répond directement à la requête. (b) Refining Agent : le routeur choisit des agents solveurs candidats (Solver Agent A, B, C) qui s'exécutent en parallèle, et un Refining Agent en aval agrège et concilie les réponses partielles en une Final Answer unifiée.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "fr"
+    },
+    {
+      "text": "Figura 2: arquitecturas del pipeline de ejecución. (a) Solo Agent: el enrutador elige un único agente solucionador que responde directamente a la consulta. (b) Refining Agent: el enrutador elige agentes solucionadores candidatos (Solver Agent A, B, C) que se ejecutan en paralelo, y un Refining Agent posterior agrega y concilia las respuestas parciales en una Final Answer unificada.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "es"
+    },
+    {
+      "text": "الشكل 2: بُنى خط التنفيذ. (a) Solo Agent: يختار الموجّه وكيل حلّ واحدًا يجيب عن الاستعلام مباشرة. (b) Refining Agent: يختار الموجّه وكلاء حلّ مرشّحين (Solver Agent A وB وC) يعملون بالتوازي، ثم يجمع Refining Agent لاحقٌ الإجاباتِ الجزئية ويوفّق بينها في Final Answer موحّدة.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ar"
+    },
+    {
+      "text": "Рисунок 2: архитектуры конвейера выполнения. (a) Solo Agent: маршрутизатор выбирает одного агента-решателя, который отвечает на запрос напрямую. (b) Refining Agent: маршрутизатор выбирает агентов-решателей-кандидатов (Solver Agent A, B, C), работающих параллельно, а следующий за ними Refining Agent объединяет и согласует частичные ответы в единый Final Answer.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ru"
+    },
+    {
+      "text": "图 2：执行流水线架构。(a) Solo Agent：路由器选择单个求解智能体直接回答查询。(b) Refining Agent：路由器选择并行运行的候选求解智能体（Solver Agent A、B、C），下游的 Refining Agent 将部分回答汇总、协调为统一的 Final Answer。",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "zh"
     }
   ],
   "derivedFrom": "library/arxiv-2601.04544v1/sections/sec-006",

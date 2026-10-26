@@ -37,6 +37,8 @@
  * runs until a block is first parsed.
  *
  * @module schemas/vocabulary-modules
+ *
+ * @graphNode none — a loader for the vocabulary modules layers above ship, not a schema
  */
 import { existsSync } from "node:fs";
 import { createRequire } from "node:module";

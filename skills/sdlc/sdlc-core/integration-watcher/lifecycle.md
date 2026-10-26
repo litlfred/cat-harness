@@ -390,7 +390,7 @@ Cap each agent's report at ~400 words.
 
 ### 4c. Synthesize findings
 
-Apply the `proof-editor` §3 "Synthesize" rules (same in every domain):
+Apply these synthesis rules (the same in every domain):
 
 1. **Deduplicate** across specialists.
 2. **Cluster** by affected block/script.

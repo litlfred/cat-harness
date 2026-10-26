@@ -397,7 +397,7 @@ _Эта страница сгенерирована из [`content/docs/agentic-
 | Поведение | Исходный навык / документ | Расположение |
 |---|---|---|
 | Стартовый обзор сессии | `AGENTS.md § At session start` | [`AGENTS.md`](../../../AGENTS.md) |
-| Протокол beans | `todo-manager.md`, `bean-coordination.md` | [`skills/folio-core/`](../../../skills/folio-core/) |
+| Протокол beans | `todo-manager.md`, `bean-coordination.md` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 | Дисциплина коммитов и PR | `AGENTS.md § Commit early, commit often` | [`AGENTS.md`](../../../AGENTS.md) |
 | Обнаружение запросов функциональности | `crdm-detect.md` | [`skills/sdlc/crdm/crdm-detect.md`](../../../skills/sdlc/crdm/crdm-detect.md) |
 | Рабочий процесс требований CRDM | `crdm-requirements-workflow.md` | [`skills/sdlc/crdm/crdm-requirements-workflow.md`](../../../skills/sdlc/crdm/crdm-requirements-workflow.md) |
@@ -405,9 +405,9 @@ _Эта страница сгенерирована из [`content/docs/agentic-
 | Создание контента (document) | навыки folio-document-adapter | `skill_list` → `folio-document-adapter` |
 | Жизненный цикл контента | навыки content-lifecycle | [`skills/authoring/content-lifecycle/`](../../../skills/authoring/content-lifecycle/) |
 | Импорт документов | `docs-generation.md` | [`skills/ui/ui-core/docs-generation.md`](../../../skills/ui/ui-core/docs-generation.md) |
-| Диспетчеризация и координация | `dispatch-agent.md`, `coordinate.md` | [`skills/folio-core/`](../../../skills/folio-core/) |
+| Диспетчеризация и координация | `dispatch-agent.md`, `coordinate.md` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 | Типы контента и адаптеры | `AGENTS.md § Content types` | [`AGENTS.md`](../../../AGENTS.md) |
-| Разработка диаграмм BPMN | навык `bpmn-authoring` | [`skills/folio-core/`](../../../skills/folio-core/) |
+| Разработка диаграмм BPMN | навык `bpmn-authoring` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
 
 **При расхождении между навыком и этой страницей приоритет имеет навык.** Эта страница представляет собой
 сводный материал, а не новый первоисточник. Если вы обнаружите расхождение, исправьте эту страницу.

@@ -43,6 +43,18 @@
  * also how PlantUML finds `dot` — so a `runtimes[]` entry may point at either
  * role; what it needs is an `entry.home` to inject.
  *
+ * ## The shared core — what changed in bean `jbvi`, and what did not
+ *
+ * The fields every record of outside software has — name, version, digest,
+ * source, licence and `licenceSource` — are
+ * {@link module:schemas/outside-software | `outside-software`}'s core, and
+ * {@link ToolReleaseSchema} EXTENDS it (option D, owner 2026-10-24). The
+ * other kind on the core is `software-library`, for a library code IMPORTS
+ * rather than runs. This module narrows two core fields so that nothing below
+ * changes: `name` to a tool name, and `digest` to sha256 alone — the core also
+ * accepts sha512, because a lockfile records that, and a tool release does
+ * not. Every rule, every message and every seeded file is as it was.
+ *
  * ## Four things enforced structurally
  *
  * 1. **A digest is required.** The resolver (step 2) refuses a download whose
@@ -67,7 +79,14 @@
 import { z } from "zod";
 
 import { ReleaseDigestSchema } from "./binary-release";
-import { checkLicenceExpression, type SpdxLicenseList } from "./spdx-license-expression";
+import {
+  OCI_BY_DIGEST,
+  OutsideSoftwareCoreSchema,
+  SoftwareSourceSchema,
+  SoftwareVersionSchema,
+  outsideSoftwareLicenceProblem,
+} from "./outside-software";
+import type { SpdxLicenseList } from "./spdx-license-expression";
 
 /** The tag a tool-release document carries, so it is identified by declaration. */
 export const TOOL_RELEASE_SCHEMA_TAG = "folio-tool-release/v1";
@@ -78,7 +97,7 @@ export const ToolNameSchema = z
   .regex(/^[a-z0-9][a-z0-9._-]*$/, "a tool name: lowercase letters, digits, `.`, `_` and `-`, starting with a letter or digit");
 
 /** A version as the publisher spells it (`21.0.4+7`, `1.2024.7`). No whitespace, `@` or `/`. */
-export const ToolVersionSchema = z.string().regex(/^[^\s@/]+$/, "a version: no whitespace, `@` or `/`");
+export const ToolVersionSchema = SoftwareVersionSchema;
 
 /**
  * A reference to one tool release: `<name>@<version>`.
@@ -153,32 +172,15 @@ export const ToolRuntimeRefSchema = z
   .strict();
 export type ToolRuntimeRef = z.infer<typeof ToolRuntimeRefSchema>;
 
-/** `<registry>/<repository>@sha256:<64 hex>` — the only OCI form a record accepts. */
-const OCI_BY_DIGEST = /^[a-z0-9][a-z0-9.-]*(:[0-9]+)?(\/[a-z0-9._-]+)+@sha256:([0-9a-f]{64})$/;
-
 /**
  * Where the artefact is fetched from.
  *
  * A URL for a file; an OCI reference for an image. The OCI form is accepted
  * ONLY by digest: `ghcr.io/x/y:1.0` is refused, because the bytes behind a
- * tag can change and the record would go on vouching for them.
+ * tag can change and the record would go on vouching for them. The core's
+ * {@link SoftwareSourceSchema}, unchanged.
  */
-export const ToolReleaseSourceSchema = z.discriminatedUnion("type", [
-  z
-    .object({
-      type: z.literal("url"),
-      url: z.string().url().refine((u) => u.startsWith("https://"), "fetch over https"),
-    })
-    .strict(),
-  z
-    .object({
-      type: z.literal("oci"),
-      reference: z
-        .string()
-        .regex(OCI_BY_DIGEST, "an OCI image is identified by its digest — `<registry>/<repository>@sha256:<64 hex>`, never by a tag"),
-    })
-    .strict(),
-]);
+export const ToolReleaseSourceSchema = SoftwareSourceSchema;
 export type ToolReleaseSource = z.infer<typeof ToolReleaseSourceSchema>;
 
 /**
@@ -244,24 +246,20 @@ export const ToolEntrySchema = z
   });
 export type ToolEntry = z.infer<typeof ToolEntrySchema>;
 
-/** One tool release, as a `folio-tool-release/v1` document. */
-export const ToolReleaseSchema = z
-  .object({
+/**
+ * One tool release, as a `folio-tool-release/v1` document: the
+ * outside-software core (`version`, `source`, `licence`, `licenceSource` as
+ * the core states them), narrowed and extended.
+ */
+export const ToolReleaseSchema = OutsideSoftwareCoreSchema
+  .extend({
     $schema: z.literal(TOOL_RELEASE_SCHEMA_TAG),
+    /** Narrowed from the core: a tool name, with no `@`. */
     name: ToolNameSchema,
-    version: ToolVersionSchema,
     role: ToolReleaseRoleSchema,
     kind: ToolReleaseKindSchema,
-    /** Required: the resolver's one refusal is a mismatch against this. */
+    /** Required, and narrowed from the core to sha256: the resolver's one refusal is a mismatch against this. */
     digest: ReleaseDigestSchema,
-    source: ToolReleaseSourceSchema,
-    /** An SPDX licence expression, one line. Checked against the pinned list by {@link toolReleaseLicenceProblem}. */
-    licence: z
-      .string()
-      .min(1)
-      .refine((l) => !/[\r\n]/.test(l), "a licence expression is one line"),
-    /** Where the licence was read from — the jar's own `-license`, the archive's `legal/`, the repository's `LICENSE`. */
-    licenceSource: z.string().min(1),
     platform: ToolPlatformSchema.optional(),
     /** Every runtime this release needs. Required, so "needs none" is stated rather than omitted. */
     runtimes: z.array(ToolRuntimeRefSchema),
@@ -310,5 +308,5 @@ export type ToolRelease = z.infer<typeof ToolReleaseSchema>;
  * and NOT refused here, matching `check:source-licence`.
  */
 export function toolReleaseLicenceProblem(r: Pick<ToolRelease, "licence">, list: SpdxLicenseList): string | undefined {
-  return checkLicenceExpression(r.licence, list).problem;
+  return outsideSoftwareLicenceProblem(r, list);
 }

@@ -85,7 +85,7 @@ result recorded in the bean before the first edit.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="crdm-requirements-workflow"/>
         <bootstrap.processes:skill ref="coordinate"/>
-        <cat-harness.processes:bean op="claim"/>
+        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
     </bpmn:task>
     <bpmn:endEvent id="End_Process_CRDM_Signoff" name="Phase complete"/>

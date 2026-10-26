@@ -27,6 +27,66 @@
       },
       "drafted_at": "2026-10-03",
       "lang": "en"
+    },
+    {
+      "text": "Diagramme de classes UML du profil Dataset : une seule classe, DatasetPackage, qui spécialise Software/Package. Elle rend obligatoires des propriétés héritées (builtTime, originatedBy, releaseTime, downloadLocation, primaryPurpose, chacune [1]) et ajoute anonymizationMethodUsed, confidentialityLevel, dataCollectionProcess, dataPreprocessing, datasetAvailability, datasetNoise, datasetSize, datasetType DatasetType[1], datasetUpdateMechanism, hasSensitivePersonalInformation, intendedUse, knownBias et sensor. Énumérations : ConfidentialityLevelType, DatasetAvailabilityType, DatasetType.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "fr"
+    },
+    {
+      "text": "Diagrama de clases UML del perfil Dataset: una sola clase, DatasetPackage, que especializa Software/Package. Hace obligatorias propiedades heredadas (builtTime, originatedBy, releaseTime, downloadLocation, primaryPurpose, cada una [1]) y añade anonymizationMethodUsed, confidentialityLevel, dataCollectionProcess, dataPreprocessing, datasetAvailability, datasetNoise, datasetSize, datasetType DatasetType[1], datasetUpdateMechanism, hasSensitivePersonalInformation, intendedUse, knownBias y sensor. Enumeraciones: ConfidentialityLevelType, DatasetAvailabilityType, DatasetType.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "es"
+    },
+    {
+      "text": "مخطط أصناف UML لملف التعريف Dataset: صنف واحد هو DatasetPackage، ويخصّص Software/Package. يجعل خصائص موروثة إلزامية (builtTime، originatedBy، releaseTime، downloadLocation، primaryPurpose، كلٌّ منها [1]) ويضيف anonymizationMethodUsed وconfidentialityLevel وdataCollectionProcess وdataPreprocessing وdatasetAvailability وdatasetNoise وdatasetSize وdatasetType DatasetType[1] وdatasetUpdateMechanism وhasSensitivePersonalInformation وintendedUse وknownBias وsensor. التعدادات: ConfidentialityLevelType وDatasetAvailabilityType وDatasetType.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ar"
+    },
+    {
+      "text": "Диаграмма классов UML профиля Dataset: единственный класс DatasetPackage, специализирующий Software/Package. Он делает обязательными унаследованные свойства (builtTime, originatedBy, releaseTime, downloadLocation, primaryPurpose, каждое [1]) и добавляет anonymizationMethodUsed, confidentialityLevel, dataCollectionProcess, dataPreprocessing, datasetAvailability, datasetNoise, datasetSize, datasetType DatasetType[1], datasetUpdateMechanism, hasSensitivePersonalInformation, intendedUse, knownBias и sensor. Перечисления: ConfidentialityLevelType, DatasetAvailabilityType, DatasetType.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ru"
+    },
+    {
+      "text": "Dataset 配置文件的 UML 类图：只有一个类 DatasetPackage，它特化 Software/Package。它将继承的属性设为必填（builtTime、originatedBy、releaseTime、downloadLocation、primaryPurpose，均为 [1]），并增加 anonymizationMethodUsed、confidentialityLevel、dataCollectionProcess、dataPreprocessing、datasetAvailability、datasetNoise、datasetSize、datasetType DatasetType[1]、datasetUpdateMechanism、hasSensitivePersonalInformation、intendedUse、knownBias 和 sensor。枚举：ConfidentialityLevelType、DatasetAvailabilityType、DatasetType。",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "zh"
     }
   ],
   "derivedFrom": "library/omg-2024-spdx-3-0/sections/sec-325",

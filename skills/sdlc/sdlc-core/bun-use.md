@@ -14,7 +14,7 @@ governs:
 # Bun Runtime, Toolchain, and Multi-Repo Conventions
 
 > Skill id: `bun-use` · Package: `sdlc-core`
-> Related: [`package-release`](package-release.md), [`npm-kg-distribution`](../../kg/kg-core/npm-kg-distribution.md), [`tool-authoring`](../../folio-core/tool-authoring.md)
+> Related: [`package-release`](package-release.md), [`npm-kg-distribution`](../../kg/kg-core/npm-kg-distribution.md), [`tool-authoring`](../../tools/folio-core/tool-authoring.md)
 
 **Bun is the primary JavaScript/TypeScript runtime, test runner, and package
 manager across the platform.** In the separated repository architecture, each

@@ -104,10 +104,12 @@ The script reports three categories:
 
 ## Integration
 
+A content type's own skills are named by the layer that ships the type, which links down to this one; this table names only what every folio has.
+
 | After this skill | Use next |
 |-----------------|----------|
 | Before creating a block | `content-graph` PR1–PR7 — placement checklist |
 | Feature branch ready to merge | `/prepare-merge` (slash command) — upstream check + density audit + one-voice |
-| Split a block | `content-validation` (check new blocks validate) |
+| Split a block | the content type's validation skill (check the new blocks validate) |
 | Move a child block | `content-graph` (check forward refs improved) |
-| Extract a table | `content-validation` + `rendering-auditor` |
+| Extract a table | the content type's validation and rendering-audit skills |

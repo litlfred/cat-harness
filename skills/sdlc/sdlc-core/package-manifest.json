@@ -9,6 +9,7 @@
     "agent-handoff",
     "bean-blocking",
     "bean-coordination",
+    "bean-drain",
     "before-after-preview",
     "benchmarking-mode",
     "blocked-build-dependencies",

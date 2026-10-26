@@ -95,7 +95,7 @@ actor (the cat at the laptop). **How am I verifiable?** is drawn on the right,
 over L5, beside the agentic actor (the robot cat). The slide pairs each question
 with an actor by position only; it states no pairing in words.
 
-**Sources:** [FHIR content — the five layers](../fhir/fhir-content.html#the-three-layers);
+**Sources:** [WHO SMART content types — the five layers](https://litlfred.github.io/folio-assistant/smart-base/concepts/who-smart-content-types.html#the-three-layers);
 the DAK layer's `library/mehl-2021-who-smart-guidelines` (the primary source, Lancet
 Digital Health 2021); the DAK layer's `library/9789240093362-eng` §1.2 (WHO's handbook
 restating them).
@@ -240,7 +240,7 @@ larger graph.
 <a href="{{ '/assets/img/kg-deck/img-p005-1.webp' | relative_url }}"><img src="{{ '/assets/img/kg-deck/img-p005-1.webp' | relative_url }}" alt="Screenshot of the SMART Base 1.0.0 release page for the logical model Decision Support Logic Source (http://smart.who.int/base/StructureDefinition/DecisionSupportLogicSource, active as of 2026-08-27): the source reference must be exactly one of url, canonical or instance, it is used by the Digital Adaptation Kit (DAK) model, and its key-elements table lists url (0..1), canonical (0..1) and instance (0..1)." loading="lazy"></a>
 
 **Sources:** <https://smart.who.int/base/StructureDefinition-DAK.html>;
-[FHIR content — the DAK API surface](../fhir/fhir-content.html#the-dak-surface).
+[WHO SMART content types — the DAK API surface](https://litlfred.github.io/folio-assistant/smart-base/concepts/who-smart-content-types.html#the-dak-surface).
 
 ## 6 — Roles, tasks, skills and tests in the publication lifecycle
 {: #slide-06 data-fa-label="sec:harnessed-kg-overview-slide-06" }

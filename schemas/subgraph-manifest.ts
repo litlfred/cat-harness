@@ -248,8 +248,149 @@ export type SubgraphHydrated = z.infer<typeof SubgraphHydratedSchema>;
  * root, and published, relative to the base URL — the same path for both,
  * beside `ns/content/v1.jsonld`.
  */
+// declared-path-literal: this constant DEFINES the published, dereferenceable IRI path of the context; it is fixed by that URL, not by where the `ns/` declaration points.
 export const SUBGRAPH_CONTEXT_PATH = "ns/subgraph/v1.jsonld";
 
 /** The two file names under every subgraph IRI. The root has the first only. */
 export const SUBGRAPH_INDEX_FILE = "index.jsonld";
 export const SUBGRAPH_HYDRATED_FILE = "index.hydrated.jsonld";
+
+/**
+ * Where an instance PUBLISHES one subgraph's two files, relative to its own
+ * root: `<docs>/subgraph/<HARNESS>/<PATH>/` — `gen-subgraph-jsonld`'s output
+ * layout, and the directory `kg:materialize --nodes` and a hydrated mount
+ * (bean `mo75` G2) read `index.hydrated.jsonld` from. `docsPath` is the
+ * instance's declared `docs` directory, read from ITS declaration by the
+ * caller, never spelled.
+ *
+ * Throws on the root (`""`, `.`): a harness root publishes `index.jsonld`
+ * only, and a hydrated file there would be the monolith `f233` forbids.
+ * Returns no trailing slash.
+ */
+export function publishedSubgraphDir(docsPath: string, harness: string, subgraph: string): string {
+  const sub = subgraph.trim().replace(/^\/+|\/+$/g, "");
+  if (sub === "" || sub === ".") {
+    throw new Error(`the root of \`${harness}\` publishes ${SUBGRAPH_INDEX_FILE} only: a hydrated file there would be the whole graph in one document (f233)`);
+  }
+  if (sub.split("/").some((seg) => seg === ".." || seg.startsWith("."))) throw new Error(`subgraph path \`${subgraph}\` climbs or is dot-prefixed`);
+  const docs = docsPath.replace(/^\.\//, "").replace(/\/+$/, "");
+  return [docs, "subgraph", harness, sub].filter(Boolean).join("/");
+}
+
+/**
+ * ## The subgraph index PACKAGE: the two files, published per pin (bean `mo75` G2b)
+ *
+ * Owner, 2026-10-24 (decision card, option A): *the subgraph index files are
+ * published per pin in a package*, and a hydrated mount fetches them through
+ * the Tool its source names (`HydratedSource.tool`, bean `j9cs`). Rejected:
+ * committing them in each repository (B) — they are `builtAtPublish`, computed
+ * over the checkout's other instances, so no commit could hold them current
+ * and every re-pin would turn a committed-bytes check red (owner, 2026-10-14,
+ * "B1"); and generating them at mount time (C) — a mount would then need the
+ * whole index, kg-export and the framing toolchain to read one file of
+ * metadata, which is the cost a hydrated mount exists to avoid.
+ *
+ * What a pin publishes, for each instance that builds `<docs>/subgraph/`:
+ *
+ * - ONE npm package (`bun pm pack`), `<harness>-subgraph-index` at version
+ *   `0.0.0-pin.<sha>`, holding every `index.jsonld` and
+ *   `index.hydrated.jsonld` under `<docs>/subgraph/<harness>/` at the paths
+ *   the instance publishes them (instance-relative), plus the manifest
+ *   {@link SUBGRAPH_INDEX_MANIFEST_FILE} at the package root;
+ * - the package's `folio-binary-release/v1` record beside it
+ *   (`<tarball>.release.json`, `schemas/binary-release.ts`), with the
+ *   tarball's size and sha256;
+ * - both as assets of the GitHub release tagged
+ *   {@link subgraphIndexPackage}`.tag` in the instance's repository — the host
+ *   `npm-kg-distribution` §3 already names, downloadable without a token.
+ *
+ * Every name is a function of (repository, pin, harness) alone, so a consumer
+ * computes where to look and never lists releases.
+ */
+
+/** The tag a subgraph index package's manifest carries. */
+export const SUBGRAPH_INDEX_PACKAGE_SCHEMA_TAG = "folio-subgraph-index/v1";
+/** The manifest at the package root. */
+export const SUBGRAPH_INDEX_MANIFEST_FILE = "subgraph-index.json";
+
+const Sha40 = z.string().regex(/^[0-9a-f]{40}$/, "a full 40-character commit SHA");
+const Sha256Hex = z.string().regex(/^[0-9a-f]{64}$/, "a sha256 digest is 64 lowercase hex characters");
+
+/** One published file in the package. */
+export const SubgraphIndexFileSchema = z
+  .object({
+    /** Package-relative and instance-relative: `<docs>/subgraph/<harness>/<subgraph>/<file>`. */
+    path: z.string().min(1),
+    /** The subgraph's instance-relative path, no trailing slash; `""` is the harness root (index only). */
+    subgraph: z.string(),
+    file: z.enum([SUBGRAPH_INDEX_FILE, SUBGRAPH_HYDRATED_FILE]),
+    bytes: z.number().int().nonnegative(),
+    sha256: Sha256Hex,
+  })
+  .strict();
+export type SubgraphIndexFile = z.infer<typeof SubgraphIndexFileSchema>;
+
+/**
+ * `subgraph-index.json`: which pin of which instance the files are, and a
+ * sha256 per file. A consumer refuses a package whose manifest names another
+ * repository, pin or harness than the one it fetched for, and a file whose
+ * bytes do not hash to its entry.
+ */
+export const SubgraphIndexManifestSchema = z
+  .object({
+    $schema: z.literal(SUBGRAPH_INDEX_PACKAGE_SCHEMA_TAG),
+    repository: z.string().regex(/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/, "owner/name"),
+    ref: Sha40,
+    harness: z.string().regex(/^[a-z0-9][a-z0-9-]*$/, "an instance name"),
+    /** The instance's declared `docs` directory, no trailing slash. */
+    docs: z.string().min(1),
+    /** What the files were built in — they are computed over a checkout's instances, so the checkout is provenance. */
+    builtIn: z.object({ repository: z.string().min(1), ref: z.string().min(1) }).strict().optional(),
+    files: z.array(SubgraphIndexFileSchema).min(1),
+  })
+  .strict()
+  .superRefine((m, ctx) => {
+    const seen = new Set<string>();
+    m.files.forEach((f, i) => {
+      if (seen.has(f.path)) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["files", i, "path"], message: `\`${f.path}\` is listed twice` });
+      seen.add(f.path);
+      const want = f.subgraph === "" ? `${m.docs}/subgraph/${m.harness}/${f.file}` : `${publishedSubgraphDir(m.docs, m.harness, f.subgraph)}/${f.file}`;
+      if (f.path !== want) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["files", i, "path"], message: `\`${f.path}\` is not where \`${f.subgraph || "(root)"}\` publishes \`${f.file}\` (\`${want}\`)` });
+      if (f.subgraph === "" && f.file === SUBGRAPH_HYDRATED_FILE) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["files", i], message: "the root publishes index.jsonld only (f233)" });
+    });
+  });
+export type SubgraphIndexManifest = z.infer<typeof SubgraphIndexManifestSchema>;
+
+/** Where one pin's subgraph index package is published: every name, computed. */
+export interface SubgraphIndexPackageRef {
+  /** npm package name. */
+  name: string;
+  /** npm version: `0.0.0-pin.<sha>`. */
+  version: string;
+  /** The GitHub release tag holding it. */
+  tag: string;
+  /** The `.tgz` asset — `bun pm pack`'s name for `name@version`. */
+  tarball: string;
+  /** Its `folio-binary-release/v1` record. */
+  record: string;
+  tarballUrl: string;
+  recordUrl: string;
+}
+
+/**
+ * Every name of the subgraph index package `harness` publishes at `ref` in
+ * `repository`. Throws on a ref that is not a full 40-character SHA: a branch
+ * or a short SHA is not a pin.
+ */
+export function subgraphIndexPackage(repository: string, ref: string, harness: string): SubgraphIndexPackageRef {
+  if (!Sha40.safeParse(ref).success) throw new Error(`\`${ref}\` is not a pin: a subgraph index package is published per full 40-character commit`);
+  if (!/^[a-z0-9][a-z0-9-]*$/.test(harness)) throw new Error(`\`${harness}\` is not an instance name`);
+  if (!/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository)) throw new Error(`\`${repository}\` is not owner/name`);
+  const name = `${harness}-subgraph-index`;
+  const version = `0.0.0-pin.${ref}`;
+  const tag = `subgraph-index-${ref}`;
+  const tarball = `${name}-${version}.tgz`;
+  const record = `${tarball}.release.json`;
+  const base = `https://github.com/${repository}/releases/download/${tag}`;
+  return { name, version, tag, tarball, record, tarballUrl: `${base}/${tarball}`, recordUrl: `${base}/${record}` };
+}
