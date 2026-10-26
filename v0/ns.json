@@ -1185,6 +1185,21 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:graphTypology/sme-case-verdict",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "sme-case-verdict",
+      "comment": "SME review case/verdict pairs — one `sme-case-verdict/1.0.0` document per reviewed decision-support worked case or indicator-definition cohort, recording attributable human SME identity and review date (bean `vljz`).",
+      "prefLabel": "sme-case-verdict",
+      "definition": "SME review case/verdict pairs — one `sme-case-verdict/1.0.0` document per reviewed decision-support worked case or indicator-definition cohort, recording attributable human SME identity and review date (bean `vljz`).",
+      "notation": "cat-harness:graphTypology/sme-case-verdict",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:graphTypology/software-library",
       "@type": [
         "bootstrap:GraphTypology",
@@ -1240,6 +1255,36 @@
       "prefLabel": "swimlane-glossary",
       "definition": "A Subgraph recording every term a Knowledge Graph's Processes have ever named, and when each stopped being used, so a retired term is never silently reused.",
       "notation": "cat-harness:graphTypology/swimlane-glossary",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns",
+      "layer": "harness"
+    },
+    {
+      "@id": "cat-harness:graphTypology/test-data-fixed",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "test-data-fixed",
+      "comment": "Fixed test data sets — one `test-data-fixed/1.0.0` document per curated set (`kind: \"fixed\"`), living in its own declared directory separate from `test-data-generated` and self-identifying from the file content rather than the path (bean `vm6m`).",
+      "prefLabel": "test-data-fixed",
+      "definition": "Fixed test data sets — one `test-data-fixed/1.0.0` document per curated set (`kind: \"fixed\"`), living in its own declared directory separate from `test-data-generated` and self-identifying from the file content rather than the path (bean `vm6m`).",
+      "notation": "cat-harness:graphTypology/test-data-fixed",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns",
+      "layer": "harness"
+    },
+    {
+      "@id": "cat-harness:graphTypology/test-data-generated",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "test-data-generated",
+      "comment": "Generated test data recipes — one `test-data-generated/1.0.0` document per recipe (`kind: \"generated\"`, `template`, `params`, `seed`, `specialisation`, `sha256`), never stored materialised, living in a declared directory separate from `test-data-fixed` (bean `vm6m`).",
+      "prefLabel": "test-data-generated",
+      "definition": "Generated test data recipes — one `test-data-generated/1.0.0` document per recipe (`kind: \"generated\"`, `template`, `params`, `seed`, `specialisation`, `sha256`), never stored materialised, living in a declared directory separate from `test-data-fixed` (bean `vm6m`).",
+      "notation": "cat-harness:graphTypology/test-data-generated",
       "inScheme": "https://litlfred.github.io/cat-harness/v0/ns",
       "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns",
       "layer": "harness"
