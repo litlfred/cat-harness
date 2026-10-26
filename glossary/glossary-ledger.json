@@ -57,6 +57,11 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/compute-authoring-agent": {
+      "prefLabel": "Compute authoring agent",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
     "role/corpus": {
       "prefLabel": "Corpus",
       "firstSeen": "2026-09-21",
@@ -122,6 +127,16 @@
       "firstSeen": "2026-10-15",
       "retiredOn": null
     },
+    "role/lean-authoring-agent": {
+      "prefLabel": "Lean authoring agent",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/lean-toolchain": {
+      "prefLabel": "Lean toolchain",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
     "role/librarian": {
       "prefLabel": "Librarian",
       "firstSeen": "2026-09-22",
@@ -154,6 +169,11 @@
     },
     "role/programme-manager": {
       "prefLabel": "Programme manager",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/proof-review-agent": {
+      "prefLabel": "Proof review agent",
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
@@ -251,26 +271,6 @@
       "prefLabel": "Work plan (beans)",
       "firstSeen": "2026-09-21",
       "retiredOn": null
-    },
-    "role/compute-authoring-agent": {
-      "prefLabel": "Compute authoring agent",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-24"
-    },
-    "role/lean-authoring-agent": {
-      "prefLabel": "Lean authoring agent",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-24"
-    },
-    "role/lean-toolchain": {
-      "prefLabel": "Lean toolchain",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-24"
-    },
-    "role/proof-review-agent": {
-      "prefLabel": "Proof review agent",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-24"
     }
   }
 }
