@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/processes/sdlc/sme-test-data-review.bpmn` (process `Process_SmeTestDataReview`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-SME review of fixed test data for clinical or scientific decision support and indicator definitions — bean `folio-assistant-vljz`, companion `folio-assistant-vm6m`, proposal `docs/proposals/qa-reports-branch-and-test-process-2026-10-01.md` §3.2.
+SME review of fixed test data for clinical or scientific decision support and indicator definitions.
 
 ## Begin — Fixed test data set for decision support or indicator definition (`Start_SmeReview`)
 
