@@ -1231,13 +1231,6 @@
   ],
   "knownSubstrates": [
     {
-      "name": "who-iris",
-      "title": "WHO IRIS",
-      "repository": "litlfred/who-iris",
-      "status": "exists",
-      "note": "Repository created 2026-09-30 and empty; the staged instance sits in the checkout under the same name. Seeding is held (kg-separation stage 10) until the owner says so. The WHO voices style guide merges into it as a subgraph."
-    },
-    {
       "name": "who-world-health-data-hub",
       "title": "WHO World Health Data Hub",
       "status": "proposed",
