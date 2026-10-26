@@ -1191,9 +1191,9 @@
         "skos:Concept"
       ],
       "label": "software-library",
-      "comment": "Outside libraries a layer imports -- one generated `software-library/1.0.0` node per library per layer, with the version and sha512 its `bun.lock` pins, its SPDX licence, its range, whether it is a dev dependency, the files that import it and the shim that types it. Shares its core with `tool-release`.",
+      "comment": "Outside libraries a layer imports or vendors -- one generated `software-library` node per library per layer, with the version and sha512 its `bun.lock` pins, its SPDX licence, its range, whether it is a dev dependency, the files that import it and the shim that types it. Shares its core with `tool-release`.",
       "prefLabel": "software-library",
-      "definition": "Outside libraries a layer imports -- one generated `software-library/1.0.0` node per library per layer, with the version and sha512 its `bun.lock` pins, its SPDX licence, its range, whether it is a dev dependency, the files that import it and the shim that types it. Shares its core with `tool-release`.",
+      "definition": "Outside libraries a layer imports or vendors -- one generated `software-library` node per library per layer, with the version and sha512 its `bun.lock` pins, its SPDX licence, its range, whether it is a dev dependency, the files that import it and the shim that types it. Shares its core with `tool-release`.",
       "notation": "cat-harness:graphTypology/software-library",
       "inScheme": "https://litlfred.github.io/cat-harness/v0/ns",
       "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns",
