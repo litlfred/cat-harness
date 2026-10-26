@@ -34,6 +34,9 @@ around it, and they are read by tools rather than rendered.
   contradicts none of its own facts, and reaches no further than its
   deployment. Read from `scenarios/deployments/`. Proposal:
   `docs/proposals/deployment-descriptions.md`.
+- **[deployment-resolver.ts](./deployment-resolver.ts)** — for each process
+  task, which placements may run it and with which Tool, and the tasks no
+  placement can run. **Reports only; never fails** (owner, 2026-10-24).
 - **[kg-qa.ts](./kg-qa.ts)** — the QA sidecar for that graph: 14 criteria, one
   per join, written to `kg-qa/` beside each audited node by
   `scripts/kg-audit.ts`. The third QA subject kind, after blocks and scripts.
