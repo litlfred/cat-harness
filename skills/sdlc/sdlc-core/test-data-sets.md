@@ -1,6 +1,6 @@
 ---
 id: test-data-sets
-name: Test Data Sets & SME Case/Verdict Review
+name: test-data-sets
 description: Curating fixed (committed, cited, SME-reviewed) and generated (template + params + seed recipe, never stored materialised) test data sets in separately declared graph directories, with per-content-type specialisation as a called subprocess and attributable SME review of decision support and indicator definitions.
 depends-on:
   - test-plan-execution
