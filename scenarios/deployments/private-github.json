@@ -5,19 +5,53 @@
   "topology": {
     "forge": "github",
     "visibility": "private",
+    "network": "internet",
     "compute": "vendor-cloud",
     "modelProvenance": "hosted",
     "toolSurface": "both",
-    "dataStores": ["none"],
+    "dataStores": [
+      "none"
+    ],
     "outwardFacing": false
   },
   "publicationHost": "local-server",
-  "modes": ["author", "develop", "test", "qa-review"],
-  "placements": [
-    { "actor": "claude", "host": "claude-code", "compute": "vendor-cloud", "identity": { "provider": "github" } },
-    { "actor": "ci-pipeline", "host": "github-actions", "compute": "vendor-cloud", "credentials": { "push-branch": "GITHUB_TOKEN" } },
-    { "actor": "owner", "host": "local", "compute": "workstation", "identity": { "provider": "github" } }
+  "modes": [
+    "author",
+    "develop",
+    "test",
+    "qa-review"
   ],
-  "jurisdiction": { "audience": "operator-only" },
+  "placements": [
+    {
+      "actor": "claude",
+      "host": "claude-code",
+      "reach": "internet",
+      "compute": "vendor-cloud",
+      "identity": {
+        "provider": "github"
+      }
+    },
+    {
+      "actor": "ci-pipeline",
+      "host": "github-actions",
+      "reach": "internet",
+      "compute": "vendor-cloud",
+      "credentials": {
+        "push-branch": "GITHUB_TOKEN"
+      }
+    },
+    {
+      "actor": "owner",
+      "host": "local",
+      "reach": "internet",
+      "compute": "workstation",
+      "identity": {
+        "provider": "github"
+      }
+    }
+  ],
+  "jurisdiction": {
+    "audience": "operator-only"
+  },
   "liveData": "artefacts-only"
 }
