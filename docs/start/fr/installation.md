@@ -62,8 +62,8 @@ sonde de capacités :
 ```powershell
 git clone https://github.com/litlfred/folio-assistant.git
 cd folio-assistant
-.\cat-harness\scripts\bootstrap.ps1 -CheckOnly   # rapport uniquement, n'installe rien
-.\cat-harness\scripts\bootstrap.ps1              # exécuter l'installation
+.\cat-harness-tools\scripts\bootstrap.ps1 -CheckOnly   # rapport uniquement, n'installe rien
+.\cat-harness-tools\scripts\bootstrap.ps1              # exécuter l'installation
 ```
 
 Il installe Bun et rien d'autre — LaTeX, Lean, Java et l'IG Publisher restent
@@ -72,16 +72,16 @@ propres à chaque type de contenu, signalés par `check-deps` avec des indicatio
 Les scripts shell de la plateforme sont en bash. Sur Windows, ils s'exécutent sous **Git Bash**,
 que [Git pour Windows](https://git-scm.com/download/win) installe, `git`
 est donc le seul prérequis supplémentaire. Chaque script qu'un utilisateur exécute manuellement ou intègre dans
-une configuration dispose d'un `.bat` à ses côtés — `cat-harness\scripts\install-beans.bat`,
-`cat-harness\scripts\start-folio-assistant.bat`, `cat-harness\scripts\git-hooks\install.bat`,
-`cat-harness\scripts\session-start-coord-sweep.bat`, etc. — qui localise Git Bash
+une configuration dispose d'un `.bat` à ses côtés — `cat-harness-tools\scripts\install-beans.bat`,
+`cat-harness-tools\scripts\start-folio-assistant.bat`, `cat-harness-tools\scripts\git-hooks\install.bat`,
+`cat-harness-tools\scripts\session-start-coord-sweep.bat`, etc. — qui localise Git Bash
 (jamais le lanceur WSL dans `System32`) et exécute le script `.sh` jumeau avec les mêmes
 arguments. Utilisez-les depuis `cmd.exe`, PowerShell, le Planificateur de tâches ou une entrée de
 configuration MCP :
 
 ```bat
-cat-harness\scripts\install-beans.bat
-cat-harness\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
+cat-harness-tools\scripts\install-beans.bat
+cat-harness-tools\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
 ```
 
 Tout ce dont le script `.sh` a besoin — `bun`, `curl`, `gh`, `elan` — doit se trouver dans le

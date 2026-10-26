@@ -56,17 +56,17 @@ bun install
 ```powershell
 git clone https://github.com/litlfred/folio-assistant.git
 cd folio-assistant
-.\cat-harness\scripts\bootstrap.ps1 -CheckOnly   # 仅报告，不安装任何内容
-.\cat-harness\scripts\bootstrap.ps1              # 执行安装
+.\cat-harness-tools\scripts\bootstrap.ps1 -CheckOnly   # 仅报告，不安装任何内容
+.\cat-harness-tools\scripts\bootstrap.ps1              # 执行安装
 ```
 
 它仅安装 Bun，而不安装其他任何内容——LaTeX、Lean、Java 和 IG Publisher 仍然按内容类型区分，由 `check-deps` 报告并附带安装提示。
 
-该平台的 shell 脚本均为 bash。在 Windows 上，它们在 **Git Bash** 下运行，[Git for Windows](https://git-scm.com/download/win) 会安装 Git Bash，因此 `git` 是唯一的额外前置要求。用户手动运行或接入配置的每个脚本旁边都有一个对应的 `.bat` 文件——例如 `cat-harness\scripts\install-beans.bat`、`cat-harness\scripts\start-folio-assistant.bat`、`cat-harness\scripts\git-hooks\install.bat`、`cat-harness\scripts\session-start-coord-sweep.bat` 等——它会寻找 Git Bash（绝不会使用 `System32` 中的 WSL 启动器）并以相同的参数运行同级 `.sh` 脚本。你可以从 `cmd.exe`、PowerShell、任务计划程序（Task Scheduler）或 MCP 配置条目中使用它们：
+该平台的 shell 脚本均为 bash。在 Windows 上，它们在 **Git Bash** 下运行，[Git for Windows](https://git-scm.com/download/win) 会安装 Git Bash，因此 `git` 是唯一的额外前置要求。用户手动运行或接入配置的每个脚本旁边都有一个对应的 `.bat` 文件——例如 `cat-harness-tools\scripts\install-beans.bat`、`cat-harness-tools\scripts\start-folio-assistant.bat`、`cat-harness-tools\scripts\git-hooks\install.bat`、`cat-harness-tools\scripts\session-start-coord-sweep.bat` 等——它会寻找 Git Bash（绝不会使用 `System32` 中的 WSL 启动器）并以相同的参数运行同级 `.sh` 脚本。你可以从 `cmd.exe`、PowerShell、任务计划程序（Task Scheduler）或 MCP 配置条目中使用它们：
 
 ```bat
-cat-harness\scripts\install-beans.bat
-cat-harness\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
+cat-harness-tools\scripts\install-beans.bat
+cat-harness-tools\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
 ```
 
 `.sh` 所需的任何工具——`bun`、`curl`、`gh`、`elan`——都必须位于 Windows 的 `PATH` 中，因为 Git Bash 会从调用方继承环境变量。特意未为仅在 Linux 主机上有意义的脚本（`deploy/`、`install-tex.sh`、`setup-sage.sh`、`setup-singular.sh`）提供包装器。脚本列表维护在 `cat-harness-tools/scripts/gen-bat-wrappers.sh` 中；`bun run cat bat:sync` 会重新生成这些包装器，如果缺少或过期，`bun run cat bat:sync:check` 会导致 CI 失败。
