@@ -2308,7 +2308,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // NOT renderable: the site build does not read it.
   "software-library": {
     description:
-      "the outside libraries a layer's code imports (`libraries/`) — one `software-library/1.0.0` node per library, in the layer whose `package.json` declares it, carrying the outside-software core it shares with `tool-release` (name, the version `bun.lock` pins, the digest `bun.lock` records — sha512 — the registry tarball it came from, and the SPDX licence read from the installed package's own `package.json`) plus the `range` the layer asks for, whether it is a dev dependency, `usedBy` (the layer's files that import it) and `shim` (the `types/*.d.ts` that types it, when one exists). Option D of bean `jbvi` (owner, 2026-10-24): one shared core, two kinds. A library several layers share has one node per layer, because each layer pins its own version. `derived`: written by `libraries:derive` from the layer's `package.json`, `bun.lock` and installed packages, and gated by `libraries:check`, which fails on a stale node, an import no node names, and a shim no node names. Shapes in `schemas/software-library.ts` (a node kind whose parent is the `outside-software` mixin) and `schemas/outside-software.ts`.",
+      "the outside libraries a layer's code imports (`libraries/`) — one `software-library/1.0.0` node per library, in the layer whose `package.json` declares it, carrying the outside-software core it shares with `tool-release` (name, the version `bun.lock` pins, the digest `bun.lock` records — sha512 — the registry tarball it came from, and the SPDX licence read from the installed package's own `package.json`) plus the `range` the layer asks for, whether it is a dev dependency, `usedBy` (the layer's files that import it) and `shim` (the `types/*.d.ts` that types it, when one exists). A bundle the layer keeps rather than installs (`vendor/<name>/<version>/`) is a node too, `software-library/1.1.0` with `vendored: { path }` and no `range` or `dev`, its name, version, tarball and digest read from the bundle's manifest and its licence from the bundle's own files (owner, 2026-10-26: \"A. Record as vendored\"); every other node is still stamped 1.0.0, the oldest version with every field it uses. Option D of bean `jbvi` (owner, 2026-10-24): one shared core, two kinds. A library several layers share has one node per layer, because each layer pins its own version. `derived`: written by `libraries:derive` from the layer's `package.json`, `bun.lock` and installed packages, and gated by `libraries:check`, which fails on a stale node, an import no node names, and a shim no node names. Shapes in `schemas/software-library.ts` (a node kind whose parent is the `outside-software` mixin) and `schemas/outside-software.ts`.",
     title: "Software libraries",
     renderable: false,
     holds: "derived",
@@ -2317,11 +2317,15 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     // The validator is `validators/software-library.json` (bean riit: no
     // authored kind carries validator code). Every node is written by
     // `libraries:derive`, hence `generated`.
+    // Two families of one kind: 1.0.0 for a node of a `package.json`
+    // dependency, 1.1.0 for a vendored bundle (`librarySchemaTag`), each with
+    // its own validator node, both on `SoftwareLibraryKind`.
     nodeSchemas: {
       "software-library/1.0.0": { generated: true },
+      "software-library/1.1.0": { generated: true },
     },
     summary:
-      "Outside libraries a layer imports -- one generated `software-library/1.0.0` node per library per layer, " +
+      "Outside libraries a layer imports or vendors -- one generated `software-library` node per library per layer, " +
       "with the version and sha512 its `bun.lock` pins, its SPDX licence, its range, whether it is a dev " +
       "dependency, the files that import it and the shim that types it. Shares its core with `tool-release`.",
     // A cube on a hook: a package pulled in by an import. Tool-release's tone,
