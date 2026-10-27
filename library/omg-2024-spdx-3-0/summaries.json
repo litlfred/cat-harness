@@ -6634,6 +6634,956 @@
       ]
     },
     {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-350",
+      "source": "sections/sec-350-guideline-quotes.md",
+      "source_hash": "23fcb65600be888a93af500c9ad77c04c6bb2c867379a8baf4b5f3d03377c831",
+      "narrative": [
+        {
+          "text": "Defines Section C.6.4 (`Guideline: Quotes`), stating that any variation of quotation marks (single, double, curly, etc.) should be considered equivalent during license matching, and introduces Section C.7.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-351",
+      "source": "sections/sec-351-code-comment-indicators-or-separators.md",
+      "source_hash": "cc10ae2ed81d6972d040d64b3ffac0eccb88e8a92c9ac819c040968450963b35",
+      "narrative": [
+        {
+          "text": "Serves as the heading stub for Section C.7 (`Code Comment Indicators or Separators`), introducing Section C.7.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-352",
+      "source": "sections/sec-352-purpose.md",
+      "source_hash": "45ed4ba82cfddda088e31e80e7991e16201b0ecfa9a33e0e37b38325fc6a109b",
+      "narrative": [
+        {
+          "text": "Defines Section C.7.1 (`Purpose`), Section C.7.2 (`Guideline`), and Section C.7.3 (`Guideline`), stating that line-leading code comment indicators and visual separator runs of three or more repeated non-letter characters (e.g., `---`, `===`, `___`, `***`) should be ignored during license matching without requiring XML markup, and introduces Section C.8.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-353",
+      "source": "sections/sec-353-bullets-and-numbering.md",
+      "source_hash": "48c72144e4b398894e86a2c7f572bb6e2a09748a1765e3a7e6583f9dbf056837",
+      "narrative": [
+        {
+          "text": "Introduces Section C.8 (`Bullets and numbering`) and defines Section C.8.1 (`Purpose`) and Section C.8.2 (`Guideline`), stating that line-leading list markers (bullets, numbers, or letters followed by a space) should be ignored during license matching and marked up with `<bullet>`, and introduces Section C.9.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-354",
+      "source": "sections/sec-354-varietal-word-spelling.md",
+      "source_hash": "8cab76d87b81992e2dc59839e1f09fe9d0b1486adaa6551724afbafe7ba29685",
+      "narrative": [
+        {
+          "text": "Introduces Section C.9 (`Varietal word spelling`) and defines Section C.9.1 (`Purpose`) and Section C.9.2 (`Guideline`), stating that English spelling variations listed on the SPDX equivalent words list are interchangeable without requiring XML markup, and introduces Section C.10.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-355",
+      "source": "sections/sec-355-copyright-symbol.md",
+      "source_hash": "c8663b3578298a019f54b16ac3d92789ee9735d99282fbda2ecd271f0a442364",
+      "narrative": [
+        {
+          "text": "Introduces Section C.10 (`Copyright symbol`) and defines Section C.10.1 (`Purpose`), explaining that treating `©`, `(c)`, and `copyright` as equivalent prevents mismatches caused by copyright symbol variations, and introduces Section C.10.2.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-356",
+      "source": "sections/sec-356-guideline.md",
+      "source_hash": "b26a6671d68ae5c7c11b354a8c4bfefc4124bfdd312be2120813681dbb0653d1",
+      "narrative": [
+        {
+          "text": "Defines Section C.10.2 (`Guideline`), stating that `©`, `(c)`, and `Copyright` should be considered equivalent and interchangeable without requiring XML markup and noting that the symbol is part of the copyright notice.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-357",
+      "source": "sections/sec-357-copyright-notice.md",
+      "source_hash": "7d5c266c7e5704ce1bda2fb169b9789c9dda5dcbd0c416b44dfeb307ee9a6fb1",
+      "narrative": [
+        {
+          "text": "Defines Section C.11 (`Copyright notice`), including Section C.11.1 (`Purpose`) and Section C.11.2 (`Guideline`), stating that copyright notices preceding license text should be ignored during license matching and marked up with `<copyrightText>`, and introduces Section C.12.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-358",
+      "source": "sections/sec-358-license-name-or-title.md",
+      "source_hash": "2900473f5d58a72904d8f1e072121edcd0c28651627cec78faf50603f7f63275",
+      "narrative": [
+        {
+          "text": "Introduces Section C.12 (`License name or title`) and defines Section C.12.1 (`Purpose`) and Section C.12.2 (`Guideline`), stating that license titles containing no substantive text should be ignored during matching and marked up with `<titleText>`, and introduces Section C.13.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-359",
+      "source": "sections/sec-359-extraneous-text-at-the-end-of-a-license.md",
+      "source_hash": "f6daa453c5cdc727bef975c18da90e38be853a34f3d7cefefeed184dffe57c71",
+      "narrative": [
+        {
+          "text": "Introduces Section C.13 (`Extraneous text at the end of a license`) and defines Section C.13.1 (`Purpose`) and Section C.13.2 (`Guideline`), stating that non-substantive trailing text after the end of license terms (such as application instructions or exhibits, but not additional license terms) should be ignored using `<optional>`, and introduces Section C.14.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-360",
+      "source": "sections/sec-360-http-protocol.md",
+      "source_hash": "0eb45d0ac79ff776b681354ccc1bae4865081326296a8459d67ba178ac9cc33e",
+      "narrative": [
+        {
+          "text": "Introduces Section C.14 (`HTTP protocol`) and defines Section C.14.1 (`Purpose`) and Section C.14.2 (`Guideline`), stating that `http://` and `https://` should be treated as equivalent without requiring XML markup, and introduces Section C.15.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-361",
+      "source": "sections/sec-361-spdx-license-list.md",
+      "source_hash": "d9a462a1eba2a32d0c525887317ccddda397940bf535ca59d15f680dbcfe8996",
+      "narrative": [
+        {
+          "text": "Serves as the heading stub for Section C.15 (`SPDX License List`), introducing Section C.15.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-362",
+      "source": "sections/sec-362-template-access.md",
+      "source_hash": "a937716c279c4b4f3124313e332a7c868a7c30a157c5b45691c8058858bda3df",
+      "narrative": [
+        {
+          "text": "Defines Section C.15.1 (`Template access`), stating that SPDX License List XML files are maintained in `license-list-XML` and published in tagged, stable release versions in the `license-list-data` repository, and introduces Section C.15.2.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-363",
+      "source": "sections/sec-363-license-list-xml-format.md",
+      "source_hash": "f83b67ab5345215591cebc987dd24a241e1e8d90183eade07c83850b92fa91fa",
+      "narrative": [
+        {
+          "text": "Defines Section C.15.2 (`License List XML format`), pointing to the `ListedLicense.xsd` XML schema for the SPDX License List, and introduces Section C.15.3.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-364",
+      "source": "sections/sec-364-legacy-text-template-format.md",
+      "source_hash": "9d732acd5bc199c6a87ec09540858e58446b5e348c27014d2fbcd2897c4cf8c9",
+      "narrative": [
+        {
+          "text": "Defines Section C.15.3 (`Legacy Text Template format`), specifying the legacy `<<...>>` rule syntax (`type` with `var` or `beginOptional`/`endOptional`, `name`, `original`, and POSIX ERE `match` with escaped semicolons and no bracket extensions), and introduces Annex D.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-365",
+      "source": "sections/sec-365-spdx-lite-normative.md",
+      "source_hash": "56fd56b3a6cb2e306e291528789bb501e7b34a6dae7a7c3ab3e6ff952c6586a2",
+      "narrative": [
+        {
+          "text": "Serves as the heading stub for normative Annex D (`SPDX Lite (Normative)`), introducing Section D.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-366",
+      "source": "sections/sec-366-explanation-of-the-lite-profile.md",
+      "source_hash": "91cb038754ea303835002a470435913f37f02764a850d9557a3164a89aa4b8ce",
+      "narrative": [
+        {
+          "text": "Defines Section D.1 (`Explanation of the Lite profile`), describing the Lite profile as a minimal set of SBOM creation, package, licensing, and relationship information required for software supply chain license compliance that can be used standalone or combined with other SPDX profiles, and introduces Section D.2.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-367",
+      "source": "sections/sec-367-mandatory-and-recommended-properties.md",
+      "source_hash": "7ab7b029a4d3c19737dbd765eef6489a7f3976e768eefd76d1a2539055207cd9",
+      "narrative": [
+        {
+          "text": "Defines Section D.2 (`Mandatory and recommended properties`), explaining that the subsections list mandatory (`MUST`) and recommended (`SHOULD`) properties in alphabetical order for each SPDX class in the Lite profile, and introduces Section D.2.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-368",
+      "source": "sections/sec-368-corespdxdocument.md",
+      "source_hash": "da6f285c75a3d9aafcd8a702c307599dbdda8ad0d6a266e8cbfe58b24fd3360e",
+      "narrative": [
+        {
+          "text": "Defines Section D.2.1 (`/Core/SpdxDocument`), listing the mandatory (`creationInfo`, `element` with at least one `/Core/Sbom`, `rootElement`, and `spdxId`) and recommended (`comment`, `dataLicense`, `name`, and `namespaceMap`) properties in the Lite profile.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-369",
+      "source": "sections/sec-369-corehash.md",
+      "source_hash": "5dca25c436c97abf0a21ef9ca98d1a7f9f1b41f4bc0d58e407f389e17f249a64",
+      "narrative": [
+        {
+          "text": "Serves as a heading stub in Annex D introducing Section D.2.2.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-370",
+      "source": "sections/sec-370-softwaresbom.md",
+      "source_hash": "f5a9083da1293c9bd16ead6ca856057ffb55f906f3028f8917fb86bb1cc03221",
+      "narrative": [
+        {
+          "text": "Defines the start of Section D.2.2 (`/Software/Sbom`), listing `creationInfo` as the first mandatory property of `/Software/Sbom` in the Lite profile.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-371",
+      "source": "sections/sec-371-softwarepackage.md",
+      "source_hash": "bc98700cc33c0e5fb938002119a7b6217d7a7a42edbabdc7728e39f3b1231244",
+      "narrative": [
+        {
+          "text": "Continues Section D.2.2 (`/Software/Sbom`) with `rootElement`, `spdxId`, and recommended `sbomType`, and defines Section D.2.3 (`/Software/Package`), listing its mandatory and recommended properties and requiring at least `downloadLocation` or `packageUrl`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-372",
+      "source": "sections/sec-372-corerelationship.md",
+      "source_hash": "489a77f0cc31e19cc963a4e48419e2ee7fdd62308e3dc119f95895e402564664",
+      "narrative": [
+        {
+          "text": "Completes the `/Software/Package` licensing relationship requirements in Section D.2.3 (requiring `hasDeclaredLicense` to `/SimpleLicensing/AnyLicenseInfo`), defines Section D.2.4 (`/Core/Hash`) with mandatory `algorithm` and `hashValue` and recommended `comment`, and introduces Section D.2.5.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-373",
+      "source": "sections/sec-373-simplelicensinglicenseexpression.md",
+      "source_hash": "5d11874de5a104d96f4e7df327967e9a2e1c4fd54973ff26d9eba52ad1fa1b61",
+      "narrative": [
+        {
+          "text": "Defines Section D.2.5 (`/SimpleLicensing/LicenseExpression`), listing mandatory (`creationInfo`, `licenseExpression`, `spdxId`) and recommended (`licenseListVersion`) properties in the Lite profile, and introduces Section D.2.6.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-374",
+      "source": "sections/sec-374-simplelicensingsimplelicensingtext.md",
+      "source_hash": "22ee69db34148f33137bd9961eda25eb979e195a721527255d74751835d464b8",
+      "narrative": [
+        {
+          "text": "Defines Section D.2.6 (`/SimpleLicensing/SimpleLicensingText`), listing mandatory (`creationInfo`, `licenseText`, `spdxId`) and recommended (`comment`) properties in the Lite profile, and introduces Section D.2.7.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-375",
+      "source": "sections/sec-375-coreagent-createdby-suppliedby-originatedby.md",
+      "source_hash": "f2b7a0d6429aed4c66ceb42f81caef871ecf35aa6801dbc3e74241951516c58a",
+      "narrative": [
+        {
+          "text": "Defines Section D.2.7 (`/Core/Agent (createdBy, suppliedBy, originatedBy)`), listing mandatory (`creationInfo` as `BlankNode`, `name`, `spdxId`) and recommended (`externalIdentifier`) properties in the Lite profile, and introduces Section D.2.8.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-376",
+      "source": "sections/sec-376-corecreationinfo.md",
+      "source_hash": "25955f8c7d1e169cebd207c7066f8b712cd999b8e4c01a70466d0f18e6c7aefc",
+      "narrative": [
+        {
+          "text": "Defines Section D.2.8 (`/Core/CreationInfo`), listing mandatory (`created`, `createdBy`, and `specVersion` fixed to `3.0.1`) and recommended (`comment`) properties in the Lite profile, and introduces Section D.2.9.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-377",
+      "source": "sections/sec-377-coreexternalidentifier.md",
+      "source_hash": "496a3ab78aa1077dd80dc690a51be405e43a1595073eb9059823091a3d365079",
+      "narrative": [
+        {
+          "text": "Defines Section D.2.9 (`/Core/ExternalIdentifier`), listing mandatory `externalIdentifierType` and `identifier` properties in the Lite profile, and introduces Section D.2.10.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-378",
+      "source": "sections/sec-378-corenamespacemap.md",
+      "source_hash": "df8482eb3b5943b007631e07c14292ab38da99f5f2d99ff4f5e6b65b9abd34ac",
+      "narrative": [
+        {
+          "text": "Defines Section D.2.10 (`/Core/NameSpaceMap`) with mandatory `namespace` and `prefix` properties and Section D.2.11 (`/Core/Relationship`) with mandatory `creationInfo`, `from`, `relationshipType`, `spdxId`, and `to` properties, and introduces Annex E.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-379",
+      "source": "sections/sec-379-package-url-specification-v1-normative.md",
+      "source_hash": "21069347782a3937d1315f93936003d239684329562fc85489eedd4ecc2769d7",
+      "narrative": [
+        {
+          "text": "Serves as the heading stub for normative Annex E (`Package URL specification v1 (Normative)`), introducing Section E.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-380",
+      "source": "sections/sec-380-introduction.md",
+      "source_hash": "9bfd42cd49874d60f135b7991868439c01ca1e124db8882144d0d1d618730e4f",
+      "narrative": [
+        {
+          "text": "Defines Section E.1 (`Introduction`), introducing the Package URL (`purl`) core specification as a standardized, universal URL syntax for identifying software package locations across languages, package managers, and tools, and introduces Section E.2.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-381",
+      "source": "sections/sec-381-syntax-definition.md",
+      "source_hash": "8f7920a7b65ae53b9bda11d05e43d36189bb7062c3b329952b648f5d1bc659ed",
+      "narrative": [
+        {
+          "text": "Defines Section E.2 (`Syntax definition`), specifying the seven hierarchical `purl` components (`scheme:type/namespace/name@version?qualifiers#subpath`), their definitions, RFC 3986 conformance without a URL Authority, and mapping to URL scheme, path, query, and fragment, and introduces Section E.3.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-382",
+      "source": "sections/sec-382-character-encoding.md",
+      "source_hash": "a724e91e39a1da9789623225568bbec3616e0d4c0b1f057094a9cd442a6948cb",
+      "narrative": [
+        {
+          "text": "Defines Section E.3 (`Character encoding`), specifying ASCII representation, UTF-8 and RFC 3986 percent-encoding rules for `purl` components and separators (`:`, `/`, `@`, `?`, `=`, `#`), and introduces Section E.4.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-383",
+      "source": "sections/sec-383-rules-for-each-component.md",
+      "source_hash": "53058b352fbef06d866f653029f7e384272abc5f558dc89f56b81f4c33cd866e",
+      "narrative": [
+        {
+          "text": "Introduces Section E.4 (`Rules for each component`), stating that `purl` strings are seven-component ASCII URLs with non-ASCII characters UTF-8 and percent-encoded, and introduces Section E.4.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-384",
+      "source": "sections/sec-384-rules-for-scheme.md",
+      "source_hash": "3e19394f69da68d7d8dcc4218bbbca6d288b6a33c25d863012788aae39a97e47",
+      "narrative": [
+        {
+          "text": "Defines Section E.4.1 (`Rules for scheme`), requiring the constant scheme `pkg` followed by `:` without `//` in canonical output while requiring parsers to accept and ignore `pkg://`, and introduces Section E.4.2.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-385",
+      "source": "sections/sec-385-rules-for-type.md",
+      "source_hash": "d8320f7dc6d7fe422cd205d4d0b8af2e740cd32bb5f349cf6d71766cd9c72cd1",
+      "narrative": [
+        {
+          "text": "Defines Section E.4.2 (`Rules for type`), specifying that package `type` consists of ASCII letters, digits, `.`, `+`, and `-` (not starting with a number, no spaces, never percent-encoded, case-insensitive with lowercase canonical form), and introduces Section E.4.3.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-386",
+      "source": "sections/sec-386-rules-for-namespace.md",
+      "source_hash": "94dce93a0cc18973d31a7b776b54b4499e6c4c478f26d0fc928f8ee79467cff0",
+      "narrative": [
+        {
+          "text": "Defines Section E.4.3 (`Rules for namespace`) and Section E.4.4 (`Rules for name`), specifying slash-separated percent-encoded segments, canonical stripping of leading and trailing slashes, prohibition of URL host/Authority as namespace, and percent-encoded `name` rules, and introduces Section E.4.5.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-387",
+      "source": "sections/sec-387-rules-for-version.md",
+      "source_hash": "b63f4590973cfc1c7891b890d1c63815f691313e815f3f2ee0107e5c656e5c5b",
+      "narrative": [
+        {
+          "text": "Defines Section E.4.5 (`Rules for version`), specifying that a non-empty `version` is prefixed by `@` and treated as a percent-encoded, plain opaque string with type-specific comparison conventions, and introduces Section E.4.6.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-388",
+      "source": "sections/sec-388-rules-for-qualifiers.md",
+      "source_hash": "6513bceda69a55158dbb757f6f6e62b132a536f442e491aad61ce16a6c858268",
+      "narrative": [
+        {
+          "text": "Defines Section E.4.6 (`Rules for qualifiers`), specifying `?`-prefixed, `&`-separated `key=value` pairs with unique lowercase ASCII keys (`[a-zA-Z0-9._-]`, not starting with a digit, unencoded) and non-empty percent-encoded values, and introduces Section E.4.7.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-389",
+      "source": "sections/sec-389-rules-for-subpath.md",
+      "source_hash": "0466c13c2ebc2bcb34af7d122559d9a68287a348115e1439a8a94e9a4c745946",
+      "narrative": [
+        {
+          "text": "Defines Section E.4.7 (`Rules for subpath`), specifying `#`-prefixed, `/`-separated percent-encoded segments relative to the package root with leading/trailing slashes stripped and empty, `.`, or `..` segments forbidden, and introduces Section E.5.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-390",
+      "source": "sections/sec-390-known-types.md",
+      "source_hash": "352b8e5fadb00dfbd7db91e38f1d48ec567782346c19e1bd64a00ea4caf7d52e",
+      "narrative": [
+        {
+          "text": "Defines Section E.5 (`Known types`), listing the known `purl` package types (`alpm` through `swift`) and referencing `PURL-TYPES.rst` in the `package-url/purl-spec` repository, and introduces Section E.6.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-391",
+      "source": "sections/sec-391-known-qualifiers-keyvalue-pairs.md",
+      "source_hash": "ea42009afec1285a424483ac96a8e1e2499c95c3926363a7d6d28facf915728d",
+      "narrative": [
+        {
+          "text": "Defines Section E.6 (`Known qualifiers key/value pairs`), recommending minimal qualifiers and defining the universal qualifier keys (`repository_url`, `download_url`, `vcs_url`, `file_name`, and comma-separated `checksum` in `algorithm:hex_value` format), and introduces Section E.7.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-392",
+      "source": "sections/sec-392-how-to-produce-and-consume-purl-data.md",
+      "source_hash": "be626ca43c42fb712478f436f1ec11e8e4b286c228bf12dcf16d7206f6b278d4",
+      "narrative": [
+        {
+          "text": "Introduces Section E.7 (`How to produce and consume purl data`), introducing the algorithms for building and parsing `purl` instances in Section E.7.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-393",
+      "source": "sections/sec-393-how-to-build-purl-string-from-its-components.md",
+      "source_hash": "440baf79c0ff818c23d2e94cd7bf4b905e3dff2231b013fc54c2c3f8182715b5",
+      "narrative": [
+        {
+          "text": "Defines Section E.7.1 (`How to build purl string from its components`), giving the 12-step left-to-right canonical construction algorithm from `pkg:` scheme and `type` through `namespace`, `name`, `version`, lexicographically sorted `qualifiers`, and filtered `subpath`, and introduces Section E.7.2.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-394",
+      "source": "sections/sec-394-how-to-parse-a-purl-string-to-its-components.md",
+      "source_hash": "7a10c2ff5ae064f7ada8eb4cfa8431887b64391c718c45644a84030ca1839b12",
+      "narrative": [
+        {
+          "text": "Defines Section E.7.2 (`How to parse a purl string to its components`), giving the 18-step canonical parsing and normalization algorithm that splits a `purl` string from right and left into `subpath`, `qualifiers`, `scheme`, `type`, `version`, `name`, and `namespace`, and introduces Section E.8.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-395",
+      "source": "sections/sec-395-examples.md",
+      "source_hash": "e21434f1da223b93171778d942f6d5590014c0674b708ff5c839eedc55d44ed9",
+      "narrative": [
+        {
+          "text": "Defines Section E.8 (`Examples`), providing ten valid `purl` examples across `bitbucket`, `deb`, `gem`, `github`, `golang`, `maven`, `npm`, `nuget`, `pypi`, and `rpm`, and introduces Section E.9.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-396",
+      "source": "sections/sec-396-original-license.md",
+      "source_hash": "0733e338ad380bc631a9e5752228e5bad84c453a4f4521f7d1df6d0d53dbf395",
+      "narrative": [
+        {
+          "text": "Defines Section E.9 (`Original license`), reproducing the MIT license and attribution notice for the `package-url/purl-spec` specification, and introduces Annex F.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-397",
+      "source": "sections/sec-397-history-with-omg-motivation-and-rational-informa.md",
+      "source_hash": "f717297f6e67a365410e5232cd784de8f29510953dc584e8ad019720cb6f2586",
+      "narrative": [
+        {
+          "text": "Presents informative Annex F (`History with OMG, Motivation and Rational (Informative)`), recounting the evolution of SBOM standardization from the 2018 NTIA transparency initiative, MITRE and CISQ/OMG 3T-SBOM Exchange, Executive Order 14028, and Linux Foundation SPDX 1.0–2.3 (ISO/IEC 5962:2021) to the merged 3T-SBOM and SPDX 3.0 model (Figures F.1–F.4), and introduces Annex G.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-398",
+      "source": "sections/sec-398-community-specification-license-10.md",
+      "source_hash": "11920a269452b557fe568e47d180c4bd8a9c8e7d8a0ead43ea64732ba55783f8",
+      "narrative": [
+        {
+          "text": "Presents Annex G (`Community Specification License 1.0`), reproducing the Joint Development Foundation Community Specification License 1.0 (copyright, patent licensing grants and exclusions, source code license, antitrust, disclaimers, and definitions) under CC-BY-4.0, and introduces Annex H.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-399",
+      "source": "sections/sec-399-creative-commons-attribution-license-30-unported.md",
+      "source_hash": "5a4352407d46301412a81d033ed96c4762a00a7983b4b68e872e5233fc4ad2f4",
+      "narrative": [
+        {
+          "text": "Presents Annex H (`Creative Commons Attribution License 3.0 Unported`), reproducing the full legal text of the Creative Commons Attribution 3.0 Unported (CCPL) license (definitions, fair dealing, license grant, restrictions, warranty disclaimer, liability limitation, termination, and miscellaneous provisions).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://8fdef7e6-c62c-449e-9e9e-6facfb6e1ec1"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
       "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-front-matter",
       "source": "sections/sec-front-matter.md",
       "source_hash": "48d2c7ed4809951e560cb5df771b604b1b97ae446bb2fdd38c2b10f8674c0d16",
