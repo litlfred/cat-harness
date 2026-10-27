@@ -4734,6 +4734,956 @@
       ]
     },
     {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-250",
+      "source": "sections/sec-250-subjectextendablelicense.md",
+      "source_hash": "155151c1c9e2c92cfd151e45cca08436ced618fcaf66e4b63fbae9116e2c4fb7",
+      "narrative": [
+        {
+          "text": "Defines Section 13.2.16 (`subjectExtendableLicense`), an `ExpandedLicensing` `ObjectProperty` with range `ExtendableLicense` on `/ExpandedLicensing/WithAdditionOperator` identifying the license subject to a 'with additional text' effect, and introduces the Section 13.2.17 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-251",
+      "source": "sections/sec-251-subjectlicense.md",
+      "source_hash": "288e553f2a97bbb66707a526b823aabbf567950d479fefd17828a26a335b1eee",
+      "narrative": [
+        {
+          "text": "Defines Section 13.2.17 (`subjectLicense`), an `ExpandedLicensing` `ObjectProperty` with range `License` on `/ExpandedLicensing/OrLaterOperator` identifying the license subject to an 'or later' effect, and introduces the Section 13.3 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-252",
+      "source": "sections/sec-252-individuals.md",
+      "source_hash": "55655d60c00c9d16ffdad7e7c296dfa7e84638cf1e4fab769c8ca61c7e8e55da",
+      "narrative": [
+        {
+          "text": "Introduces the Section 13.3 (`Individuals`) subsection heading (13.3.1) for the ExpandedLicensing profile.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-253",
+      "source": "sections/sec-253-noassertionlicense.md",
+      "source_hash": "5e038dcb09be832ea00783204c522dec1176a25d3e587795738c07976b5dce46",
+      "narrative": [
+        {
+          "text": "Defines Section 13.3.1 (`NoAssertionLicense`), an `ExpandedLicensing` individual value of type `IndividualLicensingInfo` (IRI `https://spdx.org/rdf/3.0.1/terms/Licensing/NoAssertion`) used when the SPDX creator cannot reach an objective determination, made no attempt, or intentionally provides no license information, and introduces the Section 13.3.2 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-254",
+      "source": "sections/sec-254-nonelicense.md",
+      "source_hash": "143da527833c76845110e848de4aea5277dc6f4ac7888177f425ad620657696f",
+      "narrative": [
+        {
+          "text": "Defines Section 13.3.2 (`NoneLicense`), an `ExpandedLicensing` individual value of type `IndividualLicensingInfo` (IRI `https://spdx.org/rdf/3.0.1/terms/Licensing/None`) used when the SPDX creator determines that no license is available for an artifact, and introduces the Clause 14 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-255",
+      "source": "sections/sec-255-dataset.md",
+      "source_hash": "0f864f0b1b2041d2b2139046f5c0c6d79217ad5f6570f470097d32bf3da65d72",
+      "narrative": [
+        {
+          "text": "Introduces Clause 14 (`Dataset`), defining the `https://spdx.org/rdf/3.0.1/terms/Dataset` profile namespace for dataset preparation, characteristics, and access methods based on the Software Profile, and begins the profile conformance requirements.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-256",
+      "source": "sections/sec-256-datasetpackage.md",
+      "source_hash": "04f04e52459964d76dfe5c25be35571227a5f4cb3a9d263183d42a284e2d4ebd",
+      "narrative": [
+        {
+          "text": "Completes the `Dataset` profile conformance rules requiring every `/Dataset/DatasetPackage` to have exactly one `hasConcludedLicense` and one `hasDeclaredLicense` `/Core/Relationship` to a `/SimpleLicensing/AnyLicenseInfo`, and introduces the Section 14.1 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-257",
+      "source": "sections/sec-257-classes.md",
+      "source_hash": "18ffe1d6d9766185d6537231031525705c1765b5c293cc2acaacd0507ac55534",
+      "narrative": [
+        {
+          "text": "Introduces Section 14.1 (`Classes`) and defines Section 14.1.1 (`DatasetPackage`), a concrete subclass of `/Software/Package` (inheriting from `/Software/SoftwareArtifact`, `/Core/Artifact`, and `/Core/Element`) specifying metadata for a dataset used in software or to train/test an AI package.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-258",
+      "source": "sections/sec-258-properties.md",
+      "source_hash": "61d21a54426b848db2cf3f121aa0730fd5fb834215e065270f8cfd92225473cf",
+      "narrative": [
+        {
+          "text": "Presents the column headers (`Property`, `Type`, `minCount`, `maxCount`) for the direct properties table of `/Dataset/DatasetPackage`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-259",
+      "source": "sections/sec-259-anonymizationmethodused.md",
+      "source_hash": "dbfd2525fc1e53aea9d084c4446f4bdb2ca80cac31879fa4f201711b4f4c80e0",
+      "narrative": [
+        {
+          "text": "Lists the direct properties of `/Dataset/DatasetPackage` (`anonymizationMethodUsed` through `sensor`), its external property cardinality updates (`builtTime`, `originatedBy`, `releaseTime`, `downloadLocation`, `primaryPurpose`), and the beginning of its informative all-properties table (`additionalPurpose` through `comment`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-260",
+      "source": "sections/sec-260-confidentialitylevel.md",
+      "source_hash": "792677290e7062676018488c9b905eef74776dd93e68ee68a02a8ee76d39ebce",
+      "narrative": [
+        {
+          "text": "Continues the informative all-properties table for `/Dataset/DatasetPackage`, listing `confidentialityLevel` (`ConfidentialityLevelType`, `0..1`), `contentIdentifier` (`ContentIdentifier`, `0..*`), `copyrightText` (`xsd:string`, `0..1`), and `creationInfo` (`CreationInfo`, `1..1`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-261",
+      "source": "sections/sec-261-datacollectionprocess.md",
+      "source_hash": "f254c6a27089c021e8e5a4e32504a9a1b25f05f2e256cbece7c400c5c23a8677",
+      "narrative": [
+        {
+          "text": "Continues the informative all-properties table for `/Dataset/DatasetPackage` with the type and cardinality (`xsd:string`, `0..1`) of `dataCollectionProcess`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-262",
+      "source": "sections/sec-262-datapreprocessing.md",
+      "source_hash": "a3e6f000f6af6dee1ba3b1b0f1cae989cf6a805167fb129edbf234eb90165892",
+      "narrative": [
+        {
+          "text": "Completes the informative all-properties table for `/Dataset/DatasetPackage` (`dataPreprocessing` through `verifiedUsing`), introduces Section 14.2 (`Properties`), and defines Sections 14.2.1 (`anonymizationMethodUsed`), 14.2.2 (`confidentialityLevel`), 14.2.3 (`dataCollectionProcess`), and 14.2.4 (`dataPreprocessing`) on `/Dataset/DatasetPackage`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-263",
+      "source": "sections/sec-263-datasetavailability.md",
+      "source_hash": "b133745c30189df67eae0cf71af63b21623eb5f1cd314a43f92442132463c1f7",
+      "narrative": [
+        {
+          "text": "Defines Section 14.2.5 (`datasetAvailability`), a `Dataset` `ObjectProperty` with range `DatasetAvailabilityType` on `/Dataset/DatasetPackage` describing whether a dataset can be downloaded directly or requires a clickthrough or registration form, and introduces the Section 14.2.6 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-264",
+      "source": "sections/sec-264-datasetnoise.md",
+      "source_hash": "dc88352324d1c5f6dced09aac6f6bbcfc02315772672179884004bd1b01e59df",
+      "narrative": [
+        {
+          "text": "Defines Section 14.2.6 (`datasetNoise`), a `Dataset` `DataProperty` with range `xsd:string` on `/Dataset/DatasetPackage` providing free-form text describing noisy fields, samples, or dataset-wide noise, and introduces the Section 14.2.7 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-265",
+      "source": "sections/sec-265-datasetsize.md",
+      "source_hash": "a0bfc72e45de2dbb33553c830e1916f64d67b4cafc9c14df15ef679cfe4f96c2",
+      "narrative": [
+        {
+          "text": "Defines Section 14.2.7 (`datasetSize`), a `Dataset` `DataProperty` with range `xsd:nonNegativeInteger` on `/Dataset/DatasetPackage` capturing the size of the dataset in bytes, and introduces the Section 14.2.8 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-266",
+      "source": "sections/sec-266-datasettype.md",
+      "source_hash": "8cd4ebc63e65890ed4a8a47035cb4f802196ef108152e006be026cf7fcef3ae4",
+      "narrative": [
+        {
+          "text": "Defines Section 14.2.8 (`datasetType`), a `Dataset` `ObjectProperty` with range `DatasetType` on `/Dataset/DatasetPackage` describing the datatype(s) contained in the dataset (such as image, text, or multimodal data), and introduces the Section 14.2.9 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-267",
+      "source": "sections/sec-267-datasetupdatemechanism.md",
+      "source_hash": "7132e4566006c17977fc5fedffd413a25caa8d0e4066396934d05ddb50a31004",
+      "narrative": [
+        {
+          "text": "Defines Section 14.2.9 (`datasetUpdateMechanism`), a `Dataset` `DataProperty` with range `xsd:string` on `/Dataset/DatasetPackage` providing free-form text describing the mechanism used to update the dataset, and introduces the Section 14.2.10 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-268",
+      "source": "sections/sec-268-hassensitivepersonalinformation.md",
+      "source_hash": "c8d09352b8303783491fbc277f67fb5dea3f9f723767c8f777716a1809e42da9",
+      "narrative": [
+        {
+          "text": "Defines Section 14.2.10 (`hasSensitivePersonalInformation`), a `Dataset` `ObjectProperty` with range `/Core/PresenceType` on `/Dataset/DatasetPackage` indicating whether sensitive personal data allowing conclusions about a person's identity is present, and introduces the Section 14.2.11 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-269",
+      "source": "sections/sec-269-intendeduse.md",
+      "source_hash": "f04828a37f91e4b9c1ef6478db3f5a8e43daa19ce67f6103fe5f70c800a535f4",
+      "narrative": [
+        {
+          "text": "Defines Section 14.2.11 (`intendedUse`), a `Dataset` `DataProperty` with range `xsd:string` on `/Dataset/DatasetPackage` describing the intended purpose or demographic applicability of the dataset, and introduces the Section 14.2.12 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-270",
+      "source": "sections/sec-270-knownbias.md",
+      "source_hash": "60fd5778b12bdd7b25eb63cb3c23cbca8be77185765b5b0d138922905ea2a7df",
+      "narrative": [
+        {
+          "text": "Defines Section 14.2.12 (`knownBias`), a `Dataset` `DataProperty` with range `xsd:string` on `/Dataset/DatasetPackage` recording known biases encompassed by the dataset in free-form text, and introduces the Section 14.2.13 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-271",
+      "source": "sections/sec-271-sensor.md",
+      "source_hash": "9f38e76a879e7f268b6941d0398540d7734e05b500ad20bd0cbcefcd10d7d315",
+      "narrative": [
+        {
+          "text": "Defines Section 14.2.13 (`sensor`), a `Dataset` `ObjectProperty` with range `/Core/DictionaryEntry` on `/Dataset/DatasetPackage` recording a sensor used for data collection and its calibration value as a key-value pair, and introduces the Section 14.3 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-272",
+      "source": "sections/sec-272-vocabularies.md",
+      "source_hash": "3238b26b52682a0bcc1e874d5e4e2ff66f55e0f0476d737d5d56ccd182f0e9b5",
+      "narrative": [
+        {
+          "text": "Introduces the Section 14.3 (`Vocabularies`) subsection heading (14.3.1) for the Dataset profile.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-273",
+      "source": "sections/sec-273-confidentialityleveltype.md",
+      "source_hash": "5940d45d4bf941b49e08a60bfb89bb4cd616447ec203c8a6815c39dcf3f435b8",
+      "narrative": [
+        {
+          "text": "Defines Section 14.3.1 (`ConfidentialityLevelType`), a `Dataset` vocabulary classifying dataset confidentiality according to the Traffic Light Protocol (`amber`, `clear`, `green`, `red`), and introduces the Section 14.3.2 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-274",
+      "source": "sections/sec-274-datasetavailabilitytype.md",
+      "source_hash": "1c1b6e79e23b6ef2473042183c51b8863b6f1a40fe6d1882d706af2eb5c9f2d0",
+      "narrative": [
+        {
+          "text": "Defines Section 14.3.2 (`DatasetAvailabilityType`), a `Dataset` vocabulary enumerating dataset access mechanisms (`clickthrough`, `directDownload`, `query`, `registration`, `scrapingScript`), and introduces the Section 14.3.3 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-275",
+      "source": "sections/sec-275-datasettype.md",
+      "source_hash": "e9d910a3e7a85a2d8cd26e3d337745821ac253b134b9fe06f813c098e78948b3",
+      "narrative": [
+        {
+          "text": "Defines Section 14.3.3 (`DatasetType`), a `Dataset` vocabulary enumerating dataset structural types (`audio`, `categorical`, `graph`, `image`, `noAssertion`, `numeric`, `other`, `sensor`, `structured`, `syntactic`, `text`, `timeseries`, `timestamp`, `video`), and introduces the Clause 15 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-276",
+      "source": "sections/sec-276-ai.md",
+      "source_hash": "30cca77ede0e4afbc1303b7950a719d43088a78d4cdac1a64bb7d1730c8126c5",
+      "narrative": [
+        {
+          "text": "Introduces Clause 15 (`AI`), defining the `https://spdx.org/rdf/3.0.1/terms/AI` profile namespace for documenting AI software packages, systems, and models, and begins the profile conformance requirements.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-277",
+      "source": "sections/sec-277-aipackage.md",
+      "source_hash": "324033228f36b8cbfaa02fccc5c54de45b538ae6cf750c1d780d8845050ca211",
+      "narrative": [
+        {
+          "text": "Completes the `AI` profile conformance rules requiring every `/AI/AIPackage` to have a `hasConcludedLicense` and a `hasDeclaredLicense` `/Core/Relationship` to a `/SimpleLicensing/AnyLicenseInfo`, and introduces the Section 15.1 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-278",
+      "source": "sections/sec-278-classes.md",
+      "source_hash": "d6438141a5d5d9dbb450b899ab9f67034921bc74e48447ea0ce5875a300087e1",
+      "narrative": [
+        {
+          "text": "Introduces Section 15.1 (`Classes`) and defines Section 15.1.1 (`AIPackage`), a concrete subclass of `/Software/Package` describing an AI application or trained model, along with the first entries (`autonomyType`, `domain`) of its direct properties table.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-279",
+      "source": "sections/sec-279-energyconsumption.md",
+      "source_hash": "edb99475d298c7d86a9831a94c02d152a8514aa79a6d8df58eb0fc031a21232c",
+      "narrative": [
+        {
+          "text": "Completes the direct properties table (`energyConsumption` through `useSensitivePersonalInformation`), external property cardinality updates, and informative all-properties table for `/AI/AIPackage`, and begins Section 15.1.2 (`EnergyConsumption`) with an example JSON-LD snippet.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-280",
+      "source": "sections/sec-280-energyconsumptiondescription.md",
+      "source_hash": "40083359bb80265d1200daf34bd5b97670e9eba3c35c4bd079ebafedad982732",
+      "narrative": [
+        {
+          "text": "Continues the JSON-LD example for `/AI/EnergyConsumption` showing `ai_trainingEnergyConsumption` with `ai_energyQuantity` (`36.5`) and `ai_energyUnit` (`kilowattHour`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-281",
+      "source": "sections/sec-281-energyconsumption.md",
+      "source_hash": "1551de0c04c3cf207fd2891abd13c81d9f3c474fe6a486c67f0a9d184c417053",
+      "narrative": [
+        {
+          "text": "Completes the JSON-LD example and records the class metadata (`https://spdx.org/rdf/3.0.1/terms/AI/EnergyConsumption`, concrete instantiability) for Section 15.1.2 (`EnergyConsumption`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-282",
+      "source": "sections/sec-282-properties.md",
+      "source_hash": "962d9d4e81b9337842d900ccc3f1a778306ef57b4ac705cf6267765a7679e7c8",
+      "narrative": [
+        {
+          "text": "Lists the properties of `/AI/EnergyConsumption` (`finetuningEnergyConsumption`, `inferenceEnergyConsumption`, `trainingEnergyConsumption`), and defines Section 15.1.3 (`EnergyConsumptionDescription`), a concrete class pairing `energyQuantity` (`xsd:decimal`, `1..1`) and `energyUnit` (`EnergyUnitType`, `1..1`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-283",
+      "source": "sections/sec-283-energyquantity.md",
+      "source_hash": "6f8f2db3d176e3e97bd11d21a25b2a5e83a84b666d888200cc00d362a0d0375d",
+      "narrative": [
+        {
+          "text": "Lists the type and cardinality (`xsd:decimal`, `1..1`) for `energyQuantity` in the informative all-properties table of `/AI/EnergyConsumptionDescription`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-284",
+      "source": "sections/sec-284-energyunit.md",
+      "source_hash": "0bab6b9ba0209ca3356da48619d619ea9c44294af01e6d620b3cf59dfbd6c4f0",
+      "narrative": [
+        {
+          "text": "Lists the type and cardinality (`EnergyUnitType`, `1..1`) for `energyUnit` in the informative all-properties table of `/AI/EnergyConsumptionDescription`, and introduces Section 15.2 (`Properties`) and Section 15.2.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-285",
+      "source": "sections/sec-285-autonomytype.md",
+      "source_hash": "e590cc4b9eae9278344a54de7ae1ae32188732a67edbef64f208ba50dc988446",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.1 (`autonomyType`), an `AI` `ObjectProperty` with range `/Core/PresenceType` on `/AI/AIPackage` indicating whether the AI system operates autonomously (`yes`), involves human participation (`no`), or makes no assertion (`noAssertion`), and introduces the Section 15.2.2 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-286",
+      "source": "sections/sec-286-domain.md",
+      "source_hash": "eb65a28460d76e73ec25d061670319bb79162bdd1c51049c24425c54b44ef3b8",
+      "narrative": [
+        {
+          "text": "Defines Sections 15.2.2 (`domain`, `xsd:string` on `/AI/AIPackage`), 15.2.3 (`energyConsumption`, `EnergyConsumption` on `/AI/AIPackage`), 15.2.4 (`energyQuantity`, `xsd:decimal` on `/AI/EnergyConsumptionDescription`), and 15.2.5 (`energyUnit`, `EnergyUnitType` on `/AI/EnergyConsumptionDescription`), and introduces the Section 15.2.6 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-287",
+      "source": "sections/sec-287-finetuningenergyconsumption.md",
+      "source_hash": "f28f922d7c817a1f85f70c6cf33590a2883b1f97b9330577d215e597c958afd6",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.6 (`finetuningEnergyConsumption`), an `AI` `ObjectProperty` with range `EnergyConsumptionDescription` on `/AI/EnergyConsumption` specifying the energy consumed when fine-tuning the AI model, and introduces the Section 15.2.7 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-288",
+      "source": "sections/sec-288-hyperparameter.md",
+      "source_hash": "e2e291a714a9a6209b633015b9e3fa399ef8510d66a6f072027411a0bbf0e9f5",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.7 (`hyperparameter`), an `AI` `ObjectProperty` with range `/Core/DictionaryEntry` on `/AI/AIPackage` recording a pre-training hyperparameter setting (such as learning rate, batch size, or layer count), and introduces the Section 15.2.8 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-289",
+      "source": "sections/sec-289-inferenceenergyconsumption.md",
+      "source_hash": "d6fb256fab3030b4d5015a7837e1ea98a34ed1245a2ba3b647558de437c0916a",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.8 (`inferenceEnergyConsumption`), an `AI` `ObjectProperty` with range `EnergyConsumptionDescription` on `/AI/EnergyConsumption` specifying the energy consumed by the AI model during inference time, and introduces the Section 15.2.9 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-290",
+      "source": "sections/sec-290-informationaboutapplication.md",
+      "source_hash": "e0b076effb4aae8c2bc3c250e2dacfb22a24db73078e60449a8e67c101a2cf01",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.9 (`informationAboutApplication`), an `AI` `DataProperty` with range `xsd:string` on `/AI/AIPackage` describing how the AI model is used within the application, including input preprocessing, third-party APIs, and hardware/software dependencies, and introduces the Section 15.2.10 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-291",
+      "source": "sections/sec-291-informationabouttraining.md",
+      "source_hash": "d73627edf6bfbe406a04d91f3f4bb08adb3592add8c2b395d30628d323310400",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.10 (`informationAboutTraining`), an `AI` `DataProperty` with range `xsd:string` on `/AI/AIPackage` detailing the training data, algorithms, techniques (such as transfer learning or fine-tuning), and evaluation metrics used during model training, and introduces the Section 15.2.11 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-292",
+      "source": "sections/sec-292-limitation.md",
+      "source_hash": "c1dbf7af25dd88464a7be06dccbb0677c9585fc3843117f682e41b97c7355122",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.11 (`limitation`), an `AI` `DataProperty` with range `xsd:string` on `/AI/AIPackage` capturing known non-exhaustive limitations of the AI package or its models (such as demographic restrictions), and introduces the Section 15.2.12 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-293",
+      "source": "sections/sec-293-metric.md",
+      "source_hash": "8989e15c64ae76570034fda2875a4ecb31d1019188e76ad053c04f82b517e48b",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.12 (`metric`), an `AI` `ObjectProperty` with range `/Core/DictionaryEntry` on `/AI/AIPackage` recording model evaluation measurements such as prediction quality, uncertainty, accuracy, fairness, explainability, and robustness, and introduces the Section 15.2.13 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-294",
+      "source": "sections/sec-294-metricdecisionthreshold.md",
+      "source_hash": "e585d8753659a0357a2ae2a88b10e7bbdf6d8931e9e7c240a1b38081ce42949f",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.13 (`metricDecisionThreshold`), an `AI` `ObjectProperty` with range `/Core/DictionaryEntry` on `/AI/AIPackage` capturing the decision threshold corresponding to a metric defined on the AI package, and introduces the Section 15.2.14 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-295",
+      "source": "sections/sec-295-modeldatapreprocessing.md",
+      "source_hash": "f8ee97522a48cd38413ea9c1d732c0795d52e284f01c7b2c091c02d24c905836",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.14 (`modelDataPreprocessing`), an `AI` `DataProperty` with range `xsd:string` on `/AI/AIPackage` describing preprocessing steps applied to training data prior to model training, and introduces the Section 15.2.15 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-296",
+      "source": "sections/sec-296-modelexplainability.md",
+      "source_hash": "58ef808784b84281ac3b94862d774c14f7a5aa168a067fe33bcfd978d5f04a50",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.15 (`modelExplainability`), an `AI` `DataProperty` with range `xsd:string` on `/AI/AIPackage` listing model-agnostic (such as SHAP or LIME) or model-specific explainability mechanisms used to explain model results, and introduces the Section 15.2.16 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-297",
+      "source": "sections/sec-297-safetyriskassessment.md",
+      "source_hash": "631d2df84d8a5527afab7c5d689b7e100a349a1756bbabc5e86e41cf67f6c142",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.16 (`safetyRiskAssessment`), an `AI` `ObjectProperty` with range `SafetyRiskAssessmentType` on `/AI/AIPackage` recording the general safety risk assessment result categorized according to the EU general risk assessment methodology (Regulation (EC) No 765/2008, Article 20), and introduces the Section 15.2.17 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-298",
+      "source": "sections/sec-298-standardcompliance.md",
+      "source_hash": "73bf740389d325cd9dde4e0f4279cb22cd7b39c9c41d33162a8a4642cfa99509",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.17 (`standardCompliance`), an `AI` `DataProperty` with range `xsd:string` on `/AI/AIPackage` capturing published or unpublished standards (such as ISO, IEEE, or ETSI standards) with which the AI software complies, and introduces the Section 15.2.18 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-299",
+      "source": "sections/sec-299-trainingenergyconsumption.md",
+      "source_hash": "835515df3dbf2c7d1fdf78b8d99bc3a52c605f36b77420d2563de3f697c02654",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.18 (`trainingEnergyConsumption`), an `AI` `ObjectProperty` with range `EnergyConsumptionDescription` on `/AI/EnergyConsumption` specifying the amount of energy consumed when training the AI model, and introduces the Section 15.2.19 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://b1f0ce75-ce7e-43c4-a5f9-27d50e6d2c96"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
       "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-front-matter",
       "source": "sections/sec-front-matter.md",
       "source_hash": "48d2c7ed4809951e560cb5df771b604b1b97ae446bb2fdd38c2b10f8674c0d16",
