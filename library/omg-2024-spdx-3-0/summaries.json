@@ -934,6 +934,956 @@
       ]
     },
     {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-049",
+      "source": "sections/sec-049-externalmap.md",
+      "source_hash": "b53a8c8004dafa8274707d1a1784b8527d6f3f4a5969ffb40b0aa5c9677d8e5e",
+      "narrative": [
+        {
+          "text": "Defines Section 8.1.11 (`ExternalMap`), a concrete `/Core/ExternalMap` class mapping external `Element` identifiers used within an `SpdxDocument` (`definingArtifact` `0..1`, `externalSpdxId` `1..1`, `locationHint` `0..1`, `verifiedUsing` `0..*`), and Section 8.1.12 (`ExternalRef`), a concrete `/Core/ExternalRef` class pointing to external resources related to an `Element` (`comment` `0..1`, `contentType` `0..1`, `externalRefType` `0..1`, `locator` `0..*`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-050",
+      "source": "sections/sec-050-hash.md",
+      "source_hash": "01602926b90329ccb8d250cb9d3e00317ab2bb43f41389f85f4544b65e2080c5",
+      "narrative": [
+        {
+          "text": "Begins Section 8.1.13 (`Hash`), defining the concrete `/Core/Hash` class for one-way mathematical hash representations used in data integrity verification.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-051",
+      "source": "sections/sec-051-integritymethod.md",
+      "source_hash": "2631495d0d3af43d6525f4387ca948e967f25152fc5335e7248212159cef0418",
+      "narrative": [
+        {
+          "text": "Completes Section 8.1.13 (`/Core/Hash`, subclass of `/Core/IntegrityMethod`), specifying its direct and inherited properties (`algorithm` `1..1` of type `HashAlgorithm`, `hashValue` `1..1`, and `comment` `0..1`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-052",
+      "source": "sections/sec-052-individualelement.md",
+      "source_hash": "a2956762f4770a736226e91747b6ae919557c92242d7ff90d9232713291743d6",
+      "narrative": [
+        {
+          "text": "Defines Section 8.1.14 (`IndividualElement`), a concrete `/Core/IndividualElement` subclass of `/Core/Element` providing the type for Core profile individuals such as `NoneElement` and `NoAssertionElement`, and Section 8.1.15 (`IntegrityMethod`), the abstract `/Core/IntegrityMethod` base class (`comment` `0..1`) for independently reproducible element verification mechanisms.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-053",
+      "source": "sections/sec-053-lifecyclescopedrelationship.md",
+      "source_hash": "056178e54f35177b603bf15fad91ca1910e9ffe15be36353b1072fbf28499066",
+      "narrative": [
+        {
+          "text": "Section 8.1.16 (`LifecycleScopedRelationship`): Defines the concrete `/Core/LifecycleScopedRelationship` subclass of `/Core/Relationship` (and `/Core/Element`), adding an optional `scope` (`0..1` of type `LifecycleScopeType`) to parameterize lifecycle-sensitive relationships.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-054",
+      "source": "sections/sec-054-namespacemap.md",
+      "source_hash": "8ee4fda49ac77843036e525691823335c2639328b328be37de13919738dec6d5",
+      "narrative": [
+        {
+          "text": "Section 8.1.17 (`NamespaceMap`): Defines the concrete `/Core/NamespaceMap` class (`namespace` `1..1` of type `xsd:anyURI`, `prefix` `1..1` of type `xsd:string`) for mapping short prefixes to namespace partial URIs in SPDX serializations, along with three producer/consumer and round-tripping use cases.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-055",
+      "source": "sections/sec-055-organization.md",
+      "source_hash": "a2fdce9f8898e2e144c8e5beca9528a018fe48ee2ce37a87cde64bebffbc761e",
+      "narrative": [
+        {
+          "text": "Section 8.1.18 (`Organization`): Defines the concrete `/Core/Organization` subclass of `/Core/Agent` (and `/Core/Element`) representing a group of people working together in an organized way for a shared purpose, along with its inherited `/Core/Element` property table.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-056",
+      "source": "sections/sec-056-packageverificationcode.md",
+      "source_hash": "4852345f599b2e0222ab757e1062d9df749cb4be494dd92258e5d4ef3dcac699",
+      "narrative": [
+        {
+          "text": "Section 8.1.19 (`PackageVerificationCode`): Defines the concrete `/Core/PackageVerificationCode` subclass of `/Core/IntegrityMethod` for SPDX 2.X-compatible package verification (`algorithm` `1..1`, `hashValue` `1..1`, `packageVerificationCodeExcludedFile` `0..*`), including the ASCII-sorted file hash aggregation algorithm and guidance discouraging its use when `Artifact` `contentIdentifier` applies.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-057",
+      "source": "sections/sec-057-person.md",
+      "source_hash": "488c281a4ba61f71beaaf4106646feca4a6d1b900ee1c4c1af0c664e30926ca8",
+      "narrative": [
+        {
+          "text": "Section 8.1.20 (`Person`): Defines the concrete `/Core/Person` subclass of `/Core/Agent` (and `/Core/Element`) representing an individual human being, along with its inherited `/Core/Element` property table.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-058",
+      "source": "sections/sec-058-positiveintegerrange.md",
+      "source_hash": "5e20da225de0145158286d61c3c3a427bc3df0c1acec91bdfdca4f96cb5d1e8f",
+      "narrative": [
+        {
+          "text": "Section 8.1.21 (`PositiveIntegerRange`): Defines the concrete `/Core/PositiveIntegerRange` class representing an ordered pair of positive integers (`beginIntegerRange` `1..1` and `endIntegerRange` `1..1` of type `xsd:positiveInteger`, where `beginIntegerRange <= endIntegerRange`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-059",
+      "source": "sections/sec-059-relationship.md",
+      "source_hash": "973e45f1f582ea886d5819ef7722bdaf36f599ffdf1feb2556cfca90ab59c0a0",
+      "narrative": [
+        {
+          "text": "Section 8.1.22 (`Relationship`): Defines the concrete `/Core/Relationship` subclass of `/Core/Element` asserting directed relationships from one `Element` (`from` `1..1`) to one or more `Element`s (`to` `1..*`) with `relationshipType` (`1..1`), optional `completeness` (`0..1`), `startTime` (`0..1`), and `endTime` (`0..1`), and rules for using `NoneElement` and `NoAssertionElement` in `to`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-060",
+      "source": "sections/sec-060-softwareagent.md",
+      "source_hash": "efaa28e2c3cfb07f652282634423dfb111d974da40a681264987abc6962db244",
+      "narrative": [
+        {
+          "text": "Section 8.1.23 (`SoftwareAgent`): Defines the concrete `/Core/SoftwareAgent` subclass of `/Core/Agent` (and `/Core/Element`) representing a software program authorized to act on a system, along with its inherited `/Core/Element` property table.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-061",
+      "source": "sections/sec-061-spdxdocument.md",
+      "source_hash": "200ba0d9584408147dde6b6ea4894bb025beb3120a93d5521a1cae8f6214454a",
+      "narrative": [
+        {
+          "text": "Begins Section 8.1.24 (`SpdxDocument`), defining the concrete `/Core/SpdxDocument` subclass of `/Core/ElementCollection` for collections of SPDX Elements serializable as complete units, and requiring that any serialization instance contain at most one `SpdxDocument` element definition.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-062",
+      "source": "sections/sec-062-properties.md",
+      "source_hash": "40262502238dfb45ca53b43eac4c0c01cef575d571970d9f03fad0a875dacf42",
+      "narrative": [
+        {
+          "text": "Completes Section 8.1.24 (`/Core/SpdxDocument`), listing its direct properties (`dataLicense` `0..1` of type `/SimpleLicensing/AnyLicenseInfo`, `import` `0..*` of type `ExternalMap`, `namespaceMap` `0..*` of type `NamespaceMap`) and its full informative property table.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-063",
+      "source": "sections/sec-063-tool.md",
+      "source_hash": "9478f76661774bd52ac5f94317e7dccf46fb39d123d38d9ee51abda8b49dc105",
+      "narrative": [
+        {
+          "text": "Begins Section 8.1.25 (`Tool`), defining the concrete `/Core/Tool` subclass of `/Core/Element` representing hardware and/or software utilized to carry out a particular function.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-064",
+      "source": "sections/sec-064-comment.md",
+      "source_hash": "9cfa7c79e26e3205c3941f90333d2155b33cd95eb8d741bda5adf4494145df48",
+      "narrative": [
+        {
+          "text": "Completes the informative property table for Section 8.1.25 (`/Core/Tool`) and opens Section 8.2 (`Properties`), which defines the properties of the Core profile starting with Section 8.2.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-065",
+      "source": "sections/sec-065-algorithm.md",
+      "source_hash": "935e7a300b37532e3326940ef01aaa6cd898c82d060befbfe32f9d5701eadedc",
+      "narrative": [
+        {
+          "text": "Section 8.2.1 (`algorithm`): Defines the `/Core/algorithm` object property (range `HashAlgorithm`, referenced by `/Core/Hash` and `/Core/PackageVerificationCode`) specifying the hash calculation algorithm.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-066",
+      "source": "sections/sec-066-annotationtype.md",
+      "source_hash": "a9f93ec590abc2d208c2684c55b8bc6f717f2a253d6eceef8909ea474d2219ff",
+      "narrative": [
+        {
+          "text": "Section 8.2.2 (`annotationType`): Defines the `/Core/annotationType` object property (range `AnnotationType`, referenced by `/Core/Annotation`) describing the type of an annotation.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-067",
+      "source": "sections/sec-067-beginintegerrange.md",
+      "source_hash": "4071905c8ba6342a6e35a5fd21282d92e548a9b2c759a3d200543ca8c0c5e9ad",
+      "narrative": [
+        {
+          "text": "Section 8.2.3 (`beginIntegerRange`): Defines the `/Core/beginIntegerRange` data property (range `xsd:positiveInteger`, referenced by `/Core/PositiveIntegerRange`) specifying the start of an integer range.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-068",
+      "source": "sections/sec-068-builttime.md",
+      "source_hash": "daec21dcebc0ae472a1a3487b913e9d4e98336dfe1a1e87e167b3c3c4cc4f02c",
+      "narrative": [
+        {
+          "text": "Defines Section 8.2.4 (`builtTime`), the `/Core/builtTime` data property (range `DateTime`, referenced by `/Core/Artifact`) specifying when an artifact was built, and Section 8.2.5 (`comment`), the `/Core/comment` data property (range `xsd:string`, referenced by `CreationInfo`, `Element`, `ExternalIdentifier`, `ExternalRef`, and `IntegrityMethod`) for creator comments to readers/reviewers.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-069",
+      "source": "sections/sec-069-completeness.md",
+      "source_hash": "63fd902954dd759e3d7b0bbe4e03ef898804203f2ef7eb03dfc8b6adb6693f6f",
+      "narrative": [
+        {
+          "text": "Section 8.2.6 (`completeness`): Defines the `/Core/completeness` object property (range `RelationshipCompleteness`, referenced by `/Core/Relationship`) indicating whether a relationship assertion is complete, incomplete, or makes no assertion.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-070",
+      "source": "sections/sec-070-contenttype.md",
+      "source_hash": "3dac301b6f554060840f815b2b39bc9ba9ebd27888f20ade5916222ba53b63df",
+      "narrative": [
+        {
+          "text": "Section 8.2.7 (`contentType`): Defines the `/Core/contentType` data property (range `MediaType`, referenced by `/Core/Annotation`, `/Core/ExternalRef`, and `/Software/File`) estimating the intrinsic media content type of an `Element` or `Property`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-071",
+      "source": "sections/sec-071-context.md",
+      "source_hash": "c336536bbc785f590d0051ef10a20a4acb1c1fbf06bfbfaf2f7afdec78a611f9",
+      "narrative": [
+        {
+          "text": "Section 8.2.8 (`context`): Defines the `/Core/context` data property (range `xsd:string`, referenced by `/Core/Bundle`) describing the circumstances or unifying properties under which a `Bundle`'s elements were assembled.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-072",
+      "source": "sections/sec-072-created.md",
+      "source_hash": "9ffb45906109c5cc366e6b231b466f6badfde62918c4ea4d463db31fa668d106",
+      "narrative": [
+        {
+          "text": "Section 8.2.9 (`created`): Defines the `/Core/created` data property (range `DateTime`) identifying when an `Element` was originally created (often the date of last change, such as a git commit date, to support reproducible builds).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-073",
+      "source": "sections/sec-073-creationinfo.md",
+      "source_hash": "62bcb782db8a3fce8677e35300aa7fa857782fed7cc0f0be9a1a04cbcfca6d58",
+      "narrative": [
+        {
+          "text": "Section heading stub `8.2.10` separating the `/Core/created` property definition from `/Core/createdBy`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-074",
+      "source": "sections/sec-074-createdby.md",
+      "source_hash": "52d62136111e7262d444c2627bab422cfa580c40b5f112dd11ca1fe3dbefcb7d",
+      "narrative": [
+        {
+          "text": "Section 8.2.10 (`createdBy`): Defines the `/Core/createdBy` object property (range `Agent`, referenced by `/Core/CreationInfo`) identifying who or what created the `Element`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-075",
+      "source": "sections/sec-075-createdusing.md",
+      "source_hash": "717168249d6dae578f8f665915bc22f7b073b8ef42466b0fbf0c7e024906ac82",
+      "narrative": [
+        {
+          "text": "Begins Section 8.2.11 (`createdUsing`), stating the summary for the property that identifies the tooling used during `Element` creation.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-076",
+      "source": "sections/sec-076-description.md",
+      "source_hash": "63f7872930319cf13aac0f4ef80f6f5b8128782414f37d8b53de588431e606d3",
+      "narrative": [
+        {
+          "text": "Completes Section 8.2.11 (`/Core/createdUsing`, object property with range `Tool`, referenced by `/Core/CreationInfo`) and defines Section 8.2.12 (`creationInfo`), the `/Core/creationInfo` object property (range `CreationInfo`, referenced by `/Core/Element`) providing creation metadata for an `Element`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-077",
+      "source": "sections/sec-077-datalicense.md",
+      "source_hash": "81f8d2e461dee3811b59331a778dbb14969da40450c331943df9f4a851f5dff6",
+      "narrative": [
+        {
+          "text": "Section 8.2.13 (`dataLicense`): Defines the `/Core/dataLicense` object property (range `/SimpleLicensing/AnyLicenseInfo`, referenced by `/Core/SpdxDocument`) specifying the license for SPDX metadata, including the agreement that copyrightable explanatory text in `SPDX-Metadata` is subject to CC0 1.0 Universal and provided \"as-is\" without warranty.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-078",
+      "source": "sections/sec-078-definingartifact.md",
+      "source_hash": "8e76a94ac8320d515375e625bef1829238b097ecbd33611b59eeefd4ffefebfb",
+      "narrative": [
+        {
+          "text": "Begins Section 8.2.14 (`definingArtifact`) with the `Summary` heading for the external element defining artifact property.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-079",
+      "source": "sections/sec-079-element.md",
+      "source_hash": "9e0a78c23df2635cd4e74d056eda09f999177719cecec402a88f6038df8675a9",
+      "narrative": [
+        {
+          "text": "Completes Section 8.2.14 (`/Core/definingArtifact`, object property with range `Artifact`, referenced by `/Core/ExternalMap`), defines Section 8.2.15 (`description`), the `/Core/description` data property (range `xsd:string`, referenced by `/Core/Element`) for detailed technical descriptions of an `Element`, and defines Section 8.2.16 (`element`), the `/Core/element` object property (range `Element`, referenced by `/Core/ElementCollection`) referring to member elements of an `ElementCollection`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-080",
+      "source": "sections/sec-080-endintegerrange.md",
+      "source_hash": "71803f4308eafc8ddf56c75d49dbff4e04400b298e276dad33acde279248ff14",
+      "narrative": [
+        {
+          "text": "Section 8.2.17 (`endIntegerRange`): Defines the `/Core/endIntegerRange` data property (range `xsd:positiveInteger`, referenced by `/Core/PositiveIntegerRange`) specifying the end of an integer range.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-081",
+      "source": "sections/sec-081-endtime.md",
+      "source_hash": "9fa492c04f925012a13cc97db7ad329905389074ea89f909c78b71232e02f75f",
+      "narrative": [
+        {
+          "text": "Section 8.2.18 (`endTime`): Defines the `/Core/endTime` data property (range `DateTime`, referenced by `/Core/Relationship`) specifying the time from which an element or relationship is no longer applicable or valid.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-082",
+      "source": "sections/sec-082-extension.md",
+      "source_hash": "e9dae1a7a66319254eb3e2de6442c75b7ca31819e4cee9710b93f8952bd2598c",
+      "narrative": [
+        {
+          "text": "Section 8.2.19 (`extension`): Defines the `/Core/extension` object property (range `/Extension/Extension`, referenced by `/Core/Element`) specifying an `Extension`-based characterization of an aspect of an `Element`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-083",
+      "source": "sections/sec-083-externalidentifier.md",
+      "source_hash": "ba3e7b759d5611528526e8b93917586b28eae201e87082b8e672389b72f079b3",
+      "narrative": [
+        {
+          "text": "Section 8.2.20 (`externalIdentifier`): Defines the `/Core/externalIdentifier` object property (range `ExternalIdentifier`, referenced by `/Core/Element`) referencing an external resource that uniquely identifies an `Element`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-084",
+      "source": "sections/sec-084-externalidentifiertype.md",
+      "source_hash": "81c97379d376efd9f535f9eba606f4c0aa8480174ad4e6ae4ed79b7fdad395d6",
+      "narrative": [
+        {
+          "text": "Section 8.2.21 (`externalIdentifierType`): Defines the `/Core/externalIdentifierType` object property (range `ExternalIdentifierType`, referenced by `/Core/ExternalIdentifier`) specifying the type of an external identifier.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-085",
+      "source": "sections/sec-085-externalref.md",
+      "source_hash": "e5cb9f7c3750b18e275d0f36dea1af622e4f1644fb9e8673eccf12e68413b85d",
+      "narrative": [
+        {
+          "text": "Section 8.2.22 (`externalRef`): Defines the `/Core/externalRef` object property (range `ExternalRef`, referenced by `/Core/Element`) pointing to an external resource that provides additional characteristics of an `Element`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-086",
+      "source": "sections/sec-086-externalreftype.md",
+      "source_hash": "f68e6b812da7c38a3872b0133a49d4237109f5fbd5311166b0c23076918da1a2",
+      "narrative": [
+        {
+          "text": "Section 8.2.23 (`externalRefType`): Defines the `/Core/externalRefType` object property (range `ExternalRefType`, referenced by `/Core/ExternalRef`) specifying the type of an external reference.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-087",
+      "source": "sections/sec-087-externalspdxid.md",
+      "source_hash": "5b5cafba650f3084a39db46557261a6c6476789870cf58400a9ea70d6e66210e",
+      "narrative": [
+        {
+          "text": "Section 8.2.24 (`externalSpdxId`): Defines the `/Core/externalSpdxId` data property (range `xsd:anyURI`, referenced by `/Core/ExternalMap`) identifying an `Element` used within an `SpdxDocument` but defined externally.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-088",
+      "source": "sections/sec-088-from.md",
+      "source_hash": "1dd487f2fef77c032ce405ce5a2e287295df83f8e9538b1a03dac17f99e31207",
+      "narrative": [
+        {
+          "text": "Section 8.2.25 (`from`): Defines the `/Core/from` object property (range `Element`, referenced by `/Core/Relationship`) referencing the left-hand (source) `Element` of a relationship.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-089",
+      "source": "sections/sec-089-hashvalue.md",
+      "source_hash": "d0b386ea3049167e3f92081145c92627a175a2a0f647751c4ff744272bcd09fd",
+      "narrative": [
+        {
+          "text": "Section 8.2.26 (`hashValue`): Defines the `/Core/hashValue` data property (range `xsd:string`, referenced by `/Core/Hash` and `/Core/PackageVerificationCode`) recording the string result of applying a hash algorithm to an `Element`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-090",
+      "source": "sections/sec-090-identifier.md",
+      "source_hash": "96e76ecafba34b2c9b06b623d3055d41dff194bc7f66d0786dc933824d87eb7d",
+      "narrative": [
+        {
+          "text": "Section 8.2.27 (`identifier`): Defines the `/Core/identifier` data property (range `xsd:string`, referenced by `/Core/ExternalIdentifier`) uniquely identifying an external element.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-091",
+      "source": "sections/sec-091-identifierlocator.md",
+      "source_hash": "04fef0a5a20864892a6a6d303d4074afb122b0f07f339befcac30563ee6ef4ef",
+      "narrative": [
+        {
+          "text": "Section 8.2.28 (`identifierLocator`): Defines the `/Core/identifierLocator` data property (range `xsd:anyURI`, referenced by `/Core/ExternalIdentifier`) providing a URL location hint for contextual information about an external identifier.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-092",
+      "source": "sections/sec-092-import.md",
+      "source_hash": "4f480bf6d18ba52cf592aeb2d7268d18426f6aaee44db736c5fdd98ca869b622",
+      "narrative": [
+        {
+          "text": "Section 8.2.29 (`import`): Defines the `/Core/import` object property (range `ExternalMap`, referenced by `/Core/SpdxDocument`) providing an `ExternalMap` of externally defined `Element` identifiers used within a document.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-093",
+      "source": "sections/sec-093-issuingauthority.md",
+      "source_hash": "a75b51d92d8d643f2565149203d1f7986f020fbedfbee589a3bcdc58b3f845b9",
+      "narrative": [
+        {
+          "text": "Section 8.2.30 (`issuingAuthority`): Defines the `/Core/issuingAuthority` data property (range `xsd:string`, referenced by `/Core/ExternalIdentifier`) identifying the entity (government, non-profit, educational institution, or commercial enterprise) authorized to issue identification credentials.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-094",
+      "source": "sections/sec-094-key.md",
+      "source_hash": "a34e08832f1fea105c60e6b94c38eeaf18b83133988c7e2f1f86a03497b4b22d",
+      "narrative": [
+        {
+          "text": "Begins Section 8.2.31 (`key`), giving the summary, description, and URI (`https://spdx.org/rdf/3.0.1/terms/Core/key`) for the key of a generic key-value pair in a dictionary.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-095",
+      "source": "sections/sec-095-name.md",
+      "source_hash": "b0dfefe65c80d456c54539bcb2a4f47505c484e2415cbd0f9bf692d6613ec76d",
+      "narrative": [
+        {
+          "text": "Completes the metadata for Section 8.2.31 (`/Core/key`, data property with range `xsd:string`, referenced by `/Core/DictionaryEntry`) and opens Section 8.2.32.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-096",
+      "source": "sections/sec-096-locationhint.md",
+      "source_hash": "c36c6814b8dcfe61aba046cea2c933ea93556b7cb94e1205e56727cab7414b40",
+      "narrative": [
+        {
+          "text": "Defines Section 8.2.32 (`locationHint`), the `/Core/locationHint` data property (range `xsd:anyURI`, referenced by `/Core/ExternalMap`) indicating where to retrieve an external `Element`; Section 8.2.33 (`locator`), the `/Core/locator` data property (range `xsd:string`, referenced by `/Core/ExternalRef`) giving the location of an external reference; and Section 8.2.34 (`name`), the `/Core/name` data property (range `xsd:string`, referenced by `/Core/Element`) for the creator-designated human-readable name of an `Element`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-097",
+      "source": "sections/sec-097-namespace.md",
+      "source_hash": "c5edf8989e1a13528061bc0c8bf82673843d154339ab6e167fbdabf8b11f905d",
+      "narrative": [
+        {
+          "text": "Begins Section 8.2.35 (`namespace`), defining the `/Core/namespace` data property (range `xsd:anyURI`) for conveying the unambiguous URI namespace portion of an `Element` ID.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-098",
+      "source": "sections/sec-098-namespacemap.md",
+      "source_hash": "39a86ef1543f70a0f4512712a70fac692bb3969a61e16282ae76d474cf5b2edb",
+      "narrative": [
+        {
+          "text": "Section heading stub `8.2.36` (`namespaceMap`) introducing the `Summary` heading for the `/Core/namespaceMap` property.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://fb5e9aad-2a1c-4139-af26-2bd5ea10f938"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
       "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-front-matter",
       "source": "sections/sec-front-matter.md",
       "source_hash": "48d2c7ed4809951e560cb5df771b604b1b97ae446bb2fdd38c2b10f8674c0d16",
