@@ -353,7 +353,9 @@ things to know (roast `1ygp` L4.2):
   `overrides.<name>.trust`, for the gitlink's SHA.
 - **Who may consent.** Declare `mountApprovers` and a `consent.by` not on the
   list is refused. Without the list, mounts report `unverified-approver`: exit
-  0, but never shown as clean.
+  0, but never shown as clean. A checkout whose mounts `index.config.json`
+  lists declares the list there, as its top-level `mountApprovers`; declaring
+  it on the instance declaration as well is an error.
 - **A refused mount is not current.** Its old bytes stay on disk (an agent
   does not delete them). The lock records them under `unmounted` as
   `leftOnDisk`, and the check reports them as not mounted.

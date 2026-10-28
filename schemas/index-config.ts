@@ -222,6 +222,19 @@ export const IndexConfigSchema = z
      * of its own, so its index is all it has.
      */
     contentTypes: z.record(IndexContentTypeIdSchema, z.record(z.string(), z.unknown())).optional(),
+    /**
+     * Who may consent to a remote mount in this checkout: `consent.by` on an
+     * instance's `trust` must be one of them (`schemas/mount-trust.ts`, roast
+     * `1ygp` L4.2). The same field an instance declaration carries, here for
+     * the checkout whose mounts the index lists and which may declare no
+     * instance of its own (folio-assistant#2389). Declaring it in both is an
+     * error, never a pick.
+     */
+    mountApprovers: z
+      .array(z.string().min(1))
+      .min(1)
+      .refine((xs) => new Set(xs).size === xs.length, { message: "mountApprovers: a name appears twice" })
+      .optional(),
   })
   .strict()
   .superRefine((c, ctx) => {
@@ -446,7 +459,7 @@ export function addIndexInstance(root: string, entry: IndexInstance): boolean {
 
 /** The canonical text of an index: two-space JSON, `$schema` first, a trailing newline. */
 export function formatIndexConfig(config: IndexConfig): string {
-  const { $schema, _comment, title, description, instances, site, gateExemptions } = config;
+  const { $schema, _comment, title, description, instances, site, gateExemptions, contentTypes, mountApprovers } = config;
   const ordered = {
     $schema,
     ...(_comment !== undefined ? { _comment } : {}),
@@ -457,6 +470,11 @@ export function formatIndexConfig(config: IndexConfig): string {
       return { name, ...(c !== undefined ? { _comment: c } : {}), ...(imp !== undefined ? { import: imp } : {}), ...(source !== undefined ? { source } : {}), ...rest };
     }),
     ...(site !== undefined ? { site } : {}),
+    // Kept, like the exemptions below: a re-pin rewrites the index, and
+    // dropping these would delete who may consent and what the content
+    // types declare (folio-assistant#2389).
+    ...(mountApprovers !== undefined ? { mountApprovers } : {}),
+    ...(contentTypes !== undefined ? { contentTypes } : {}),
     // Last, and kept: dropping it here would make every rewrite of the index
     // silently delete the exemptions of its own workflows.
     ...(gateExemptions !== undefined ? { gateExemptions } : {}),
