@@ -1335,7 +1335,7 @@ and there cannot be one:
 | marker | who owns the name |
 |---|---|
 | `sushi-config.yaml` | SUSHI reads that exact name, and it is YAML |
-| `index.config.json` `contentTypes.dak` | **ours** — bean `cz17`. Was `dak.json`; the owner moved it into the index on 2026-10-24 ("WHO will adopt harness file"). It is a SECTION, not a file: the content type declares `{ indexSection: "dak" }` (`IndexSectionMarker`). WHO's SMART Base still writes and reads `dak.json`; smart-base's build reads that file into the index for one build, with a warning, until an IG moves it |
+| `index.config.json` `contentTypes.dak` | **ours** — bean `cz17`. Was `dak.json`; the owner moved it into the index on 2026-10-24 ("WHO will adopt harness file"). It is a SECTION, not a file: the content type declares `{ indexSection: "dak" }` (`IndexSectionMarker`). WHO's SMART Base still writes and reads `dak.json`; that IG's build reads that file into the index for one build, with a warning, until an IG moves it |
 | `<name>.json`, `<name>.config.json` | ours |
 | `beans.json`, `todos.json` | ours, and named after the graph TYPOLOGY |
 

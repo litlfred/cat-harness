@@ -68,7 +68,7 @@
  *
  * Bean `jbvi`, owner 2026-10-26 ("A. Record as vendored"). Some layers keep a
  * library's prebuilt bytes in the repository rather than installing them —
- * fhir-harness serves LHC-Forms and the NLM Form Builder from
+ * the FHIR layer serves LHC-Forms and the NLM Form Builder from
  * `scripts/assets/vendor/<name>/<version>/` so a page makes no request to a
  * CDN. No `package.json` declares such a bundle, so before 1.1.0 there was
  * nothing to record it as, and the imports INSIDE its bytes (a polyfill the

@@ -16,7 +16,7 @@
  *
  * It takes the description, the actors, the tasks and the Tools as values and
  * reads no files. Reading the process and Tool graphs is the job of the layer
- * that implements commands (cat-harness-tools); the rule for matching them is
+ * that implements commands (the tools layer); the rule for matching them is
  * here, where it can be tested without a corpus.
  *
  * ## What it can decide, and what it says it cannot

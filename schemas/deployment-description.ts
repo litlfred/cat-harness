@@ -73,7 +73,7 @@ export type OperatingMode = (typeof OPERATING_MODES)[number];
 /**
  * What runs an actor in a placement: an agent host, or a runner.
  *
- * The agent hosts are the ones cat-harness-tools' `src/core/agent-host.ts`
+ * The agent hosts are the ones the tools layer's `src/core/agent-host.ts`
  * detects (bean `f1e1`). That module sits below this one's consumers but above
  * this layer, so the list is written here and the tools layer may import it.
  * `local` is a person's own shell, with no agent host and no runner.

@@ -191,7 +191,7 @@ Two things still mint fragments:
   publishes it, so `subjectIri` keeps `bootstrap.jsonld#<kind>/<id>` for a link
   into that document (`FRAGMENT_DOCUMENT_STUBS`). The entry goes in the PR that
   moves that publisher to paths.
-- **own-canonical instances** (smart-base and others), whose subject IRIs do
+- **own-canonical instances** (the SMART IGs and others), whose subject IRIs do
   not load yet:
   [cat-harness-tools#638](https://github.com/litlfred/cat-harness-tools/issues/638).
 
@@ -737,7 +737,7 @@ pin, harness, each file's sha256). It is attached, with its
 - **Every name is computed** from repository, pin and harness
   (`subgraphIndexPackage`, `schemas/subgraph-manifest.ts`), so a consumer never
   lists releases.
-- **Who builds it:** `layer-publish-subgraph-index.yml` (cat-harness-tools),
+- **Who builds it:** `layer-publish-subgraph-index.yml` (the tools layer),
   on each push to `main`: `subgraph:jsonld`, then the `subgraph-index-package`
   Tool. A release that already exists for a pin is never replaced.
 - **Who reads it:** a hydrated mount (`remote-mount`), when the pin's tree
