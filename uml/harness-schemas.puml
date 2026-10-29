@@ -96,6 +96,8 @@ package process {
     process [1] : string
     task [1] : string
     bpmn:callActivity : element
+    bpmn:globalScriptTask : element
+    bpmn:globalTask : element
     bpmn:serviceTask : element
     bpmn:task : element
     bpmn:userTask : element
