@@ -311,3 +311,32 @@ doing ([`opening-brief`](skills/sdlc/sdlc-core/opening-brief.md)).
 [`bootstrap/AGENTS.md`](../bootstrap/AGENTS.md). The checkout root's
 `AGENTS.md` quotes that file as its cold start, and is rendered rather than
 declared (`scripts/index-render.ts`). Issue #592.*
+
+## The skills this layer publishes
+
+<!-- cat-harness:skills:begin -->
+
+_249 skills in 18 directories. The full list, with what each skill is for, is in [`SKILLS.md`](SKILLS.md): here it would take this file past 32 KiB, the most of an `AGENTS.md` some agents read. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+
+| Directory | Skills |
+|---|---|
+| [`skills/authoring/authoring-core/`](skills/authoring/authoring-core/) | 24 |
+| [`skills/authoring/content-lifecycle/`](skills/authoring/content-lifecycle/) | 10 |
+| [`skills/conduct/conduct-core/`](skills/conduct/conduct-core/) | 16 |
+| [`skills/conduct/security/`](skills/conduct/security/) | 4 |
+| [`skills/kg/graph-management/`](skills/kg/graph-management/) | 10 |
+| [`skills/kg/kg-core/`](skills/kg/kg-core/) | 29 |
+| [`skills/kg/kg-navigation/`](skills/kg/kg-navigation/) | 1 |
+| [`skills/library/large-datasets/`](skills/library/large-datasets/) | 5 |
+| [`skills/library/library-core/`](skills/library/library-core/) | 11 |
+| [`skills/process/process-core/`](skills/process/process-core/) | 7 |
+| [`skills/process/raci/`](skills/process/raci/) | 1 |
+| [`skills/process/workflow/`](skills/process/workflow/) | 10 |
+| [`skills/sdlc/crdm/`](skills/sdlc/crdm/) | 7 |
+| [`skills/sdlc/sdlc-core/`](skills/sdlc/sdlc-core/) | 74 |
+| [`skills/sdlc/spec-kit/`](skills/sdlc/spec-kit/) | 3 |
+| [`skills/tools/folio-core/`](skills/tools/folio-core/) | 7 |
+| [`skills/ui/theming/`](skills/ui/theming/) | 8 |
+| [`skills/ui/ui-core/`](skills/ui/ui-core/) | 22 |
+
+<!-- cat-harness:skills:end -->
