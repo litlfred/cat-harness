@@ -1,11 +1,11 @@
 ---
 # folio-assistant-hf2q
 title: 'PROGRAMME PROGRESS: an epic burn-down and a math-progress heat map as a board feed'
-status: in-progress
+status: completed
 type: feature
 priority: normal
 created_at: 2026-10-04T15:10:08Z
-updated_at: 2026-10-24T15:25:00Z
+updated_at: 2026-10-29T07:38:38Z
 parent: folio-assistant-6lb8
 ---
 
@@ -29,3 +29,5 @@ _2026-10-24T15:25:00Z_ — The owner chose option C: the board's history is read
 ## 2026-10-24 19:21Z
 
 The docs-site flag landed: folio-assistant#2686 (277511f). It takes effect once cat-harness-tools is repinned past af98510 (#768). Next: slice 4, where the board draws the series.
+
+_2026-10-29T07:38:38Z_ — Completed: slice 4, the board draws each goal's burn-down line from assets/beans/burndown.json, merged as cat-harness#665 (c35d6bc). It shows on the live site once folio-assistant re-pins cat-harness past c35d6bc. Session https://claude.ai/code/session_01Qmmkt62KVMxDU9gjVV1mm2
