@@ -53,8 +53,8 @@ devrait être des données fournies par le folio. Voir §7.
 
 ```sh
 beans prime && beans list      # le plan de travail — voir §6
-scripts/session-start-coord-sweep.sh   # équivalent indépendant du CLI
-bun run src/index.ts --check-deps      # ce que cet environnement peut faire
+cat-harness-tools/scripts/session-start-coord-sweep.sh  # équivalent indépendant du CLI
+bun run cat check-deps                     # ce que cet environnement peut faire
 ```
 
 `--check-deps` importe plus qu'il n'y paraît. De nombreuses vérifications
