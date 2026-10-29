@@ -146,3 +146,5 @@ _2026-10-24T08:15:00Z_ — **Owner ruled: call it, and consolidate (option A).**
 ## Closed 2026-10-29
 
 All done-when boxes met. cat-harness-tools#723 (check:bean-calls) merged 2026-10-29; the OPEN/CLOSE diagrams and test updates landed earlier (cat-harness#528, tools#784). (Lane B drain thread.)
+
+_2026-10-29T07:40:00Z_ — **Completed.** `litlfred/cat-harness-tools#723` (`check:bean-calls`, run inside `check:workflow-refs`) merged as `3c34be3`; every done-when box is ticked. The drain loop built on OPEN/CLOSE is bean `bssi`. Session https://claude.ai/code/session_01UbCbH19GrhqDNakmbgQTF3.
