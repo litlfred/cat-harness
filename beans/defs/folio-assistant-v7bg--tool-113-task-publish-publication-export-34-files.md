@@ -5,7 +5,7 @@ status: completed
 type: task
 priority: high
 created_at: 2026-09-20T04:34:11Z
-updated_at: 2026-10-23T13:45:00Z
+updated_at: 2026-10-29T08:00:00Z
 parent: folio-assistant-d308
 ---
 
@@ -272,3 +272,7 @@ satisfy it as alternatives — `release-please` (declared, NOT configured here;
 bean (kg-viewer's skill, the site half) are unchanged.
 
 _2026-10-23T13:45:00Z_ — Status synced from `in-progress` to `completed` to match the cat-harness-tools copy of this bean, which is newer and records the work as done there. Only the status changed; the body here is kept as it was. Owner OK in thread "FHIR beans and WHO migration" (https://claude.ai/code/session_01Bye99WLJxQpyCxh2eMgW19).
+
+## Closed 2026-10-29
+
+16/16 boxes met; it flips with its parent d308 now that cat-harness-tools#767 retired the epic-under-epic baseline entry (merged 2026-10-29). (Lane B drain thread.)
