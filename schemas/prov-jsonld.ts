@@ -55,7 +55,7 @@ import { basename, join, relative } from "node:path";
 import { releaseIris, releaseIri } from "@litlfred/bootstrap-tools/schemas/release-iri.ts";
 import { instanceDirectoryForGraph, instanceRootsIn, readDeclaration } from "./kg/cat-harness.ts";
 import { CAT_HARNESS_NS, FOLIO_BASE } from "./namespaces.ts";
-import { PROV_CONTEXT, type ProvActivity } from "./prov.ts";
+import { PROV_CONTEXT, type ProvActivity } from "./content/prov.ts";
 
 /**
  * Where the PROV-JSONLD context is published — the address the owner

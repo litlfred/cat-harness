@@ -3,7 +3,7 @@
  * role's skills" — one test per join, plus the two compositions that are
  * deliberately NOT the same thing.
  */
-import { readPolicyGrants } from "../odrl.ts";
+import { readPolicyGrants } from "../content/odrl.ts";
 import { describe, expect, test } from "bun:test";
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";

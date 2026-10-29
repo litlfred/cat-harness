@@ -8,7 +8,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import { ContentTypeConflictError, ContentTypeRegistry, describeRepository } from "./content-type";
-import { IndexConfigSchema, INDEX_CONFIG_SCHEMA } from "./index-config";
+import { IndexConfigSchema, INDEX_CONFIG_SCHEMA } from "../index-config";
 
 function repo(files: Record<string, string>, run: (root: string) => void): void {
   const root = mkdtempSync(join(tmpdir(), "content-type-"));

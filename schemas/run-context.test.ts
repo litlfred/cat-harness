@@ -16,7 +16,7 @@ import { QA_REPORT_SCHEMA_TAG, QaReportSchema } from "./qa-report";
 import { KG_QA_MANIFEST_SCHEMA, KgQaManifestSchema } from "./kg-qa";
 import { HEALTH_REPORT_SCHEMA, HealthReportSchema } from "./health-report";
 import { addressBook, provJsonldDocument } from "./prov-jsonld";
-import type { ProvActivity } from "./prov";
+import type { ProvActivity } from "./content/prov";
 import { resolve } from "node:path";
 
 const SHA = "a".repeat(64);

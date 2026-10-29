@@ -47,7 +47,7 @@
  * it would churn every consumer to no effect: the IRI is what is published,
  * and that does not change.
  */
-import { PROPERTY_GLOSSES, REPLACEMENT_PREFIXES, type TermLayer, termLayer } from "./vocabulary";
+import { PROPERTY_GLOSSES, REPLACEMENT_PREFIXES, type TermLayer, termLayer } from "./content/vocabulary";
 // The VALUES live in a code list, not here (owner, 2026-09-23: "list of codes
 // and corresponding narrative desc and source should be part of a
 // node/asset"). Each code there carries what the namespace names and where

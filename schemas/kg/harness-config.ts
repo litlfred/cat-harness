@@ -36,7 +36,7 @@
  * This table states what is WIRED, not what is intended. It was previously
  * optimistic in both directions — it claimed content blocks resolve (no such
  * function has ever existed) and that schemas and MCP tools never can (issue
- * #223 needs them to, and `schemas/contributions.ts` is how). Measured
+ * #223 needs them to, and `schemas/content/contributions.ts` is how). Measured
  * 2026-09-18; re-measure before quoting it.
  *
  * | Resource | Resolved? | How |
@@ -45,7 +45,7 @@
  * | Kind headings | ✅ | `kindHeading` in `schemas/translation.ts`: English on each block-kind node, other locales in its owner's `translations/<lang>/block-kinds.po` |
  * | Skills | ✅ | {@link resolveSkillDirs} reads each instance's DECLARATION, and `LOCAL_PACKAGES` in `src/tools/skill-fetch.ts` is built from it, so a dependency's packages are served. Two nearby call sites stay root-only on purpose — see its docs |
  * | Declared directories | ✅ | {@link declarationChain} + `resolveDirectories`, materialised by {@link materialiseDeclaredDirectories} |
- * | Block kinds | ✅ | {@link loadContributions} → `schemas/contributions.ts` |
+ * | Block kinds | ✅ | {@link loadContributions} → `schemas/content/contributions.ts` |
  * | Adapters | ✅ | {@link loadContributions}, as a module specifier |
  * | MCP tools | ✅ | {@link loadContributions}, as registrar callbacks |
  * | Content blocks | ❌ | no resolver — the directory overlay was never written |
@@ -408,7 +408,7 @@ import {
   type ContentTypeDisagreement,
   type ContentTypeMembership,
   type ContentTypeRegistry,
-} from "../content-type";
+} from "../content/content-type";
 import { INDEX_CONFIG_FILENAME, LEGACY_HARNESS_CONFIG, rootConfigStems } from "../instance-roots";
 import {
   HUB_LANDING,
@@ -2053,7 +2053,7 @@ export function resolveTranslationDirs(folioRoot: string): string[] {
  * **Order is significant, and collisions still do not resolve by it.** That is
  * the deliberate shape of this mechanism: registration is cheap and familiar,
  * but a kind claimed twice throws rather than letting whoever loaded last
- * win. See `schemas/contributions.ts` for why last-writer-wins was refused.
+ * win. See `schemas/content/contributions.ts` for why last-writer-wins was refused.
  *
  * @param folioRoot - Absolute path to the ROOT folio.
  * @param registry - Optional existing registry to accumulate into.
@@ -2257,7 +2257,7 @@ export interface ClosedRepositoryDescription {
  *
  * ## Why it lives here and not beside `describeRepository`
  *
- * `schemas/content-type.ts` reads a root and nothing else, on purpose: the
+ * `schemas/content/content-type.ts` reads a root and nothing else, on purpose: the
  * dependency resolver lives in THIS module, and importing it there would make
  * the type registry depend on the thing that should depend on it. So closure
  * is composed at the layer that already owns the walk — `resolveInstanceGraph`

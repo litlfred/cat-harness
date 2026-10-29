@@ -17,7 +17,7 @@ export default toolFactory((t) =>
     },
     satisfies: ["site-presentation-assets"],
     maintains: [
-      { source: "schemas/avatars.ts", artefact: "assets/css/avatars.css", format: "css" },
+      { source: "schemas/content/avatars.ts", artefact: "assets/css/avatars.css", format: "css" },
     ],
     requires: { runtime: ["bun"], network: false },
   }),

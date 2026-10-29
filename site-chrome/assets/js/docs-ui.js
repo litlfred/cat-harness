@@ -3017,7 +3017,7 @@
    * persists. It is session state, like the window stack, and the absence is
    * the design rather than an omission.
    *
-   * Mirrors `schemas/reader-filter.ts`, which this file cannot import — same
+   * Mirrors `schemas/content/reader-filter.ts`, which this file cannot import — same
    * cost and same mitigation as its siblings: the e2e checks the browser's
    * answer against the model's.
    */
@@ -3429,7 +3429,7 @@
    * A todo's values for one property, as a list. MULTI-VALUED properties — the
    * assignees and beans `todos.jsonld` gives a todo — are lists already; a
    * single value is a list of one; absent or empty is the empty list.
-   * Mirrors `haveOf` in `schemas/reader-filter.ts`.
+   * Mirrors `haveOf` in `schemas/content/reader-filter.ts`.
    */
   function valuesOf(todo, name) {
     var v = todo[name];

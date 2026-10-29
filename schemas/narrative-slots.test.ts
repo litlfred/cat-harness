@@ -3,7 +3,7 @@
  * `cat-tools-e1lo`, stage 3c), and a summary's status reads every language.
  */
 import { describe, expect, test } from "bun:test";
-import { BlockSummarySchema, bodyHash, summaryStatus } from "./block-summary.ts";
+import { BlockSummarySchema, bodyHash, summaryStatus } from "./content/block-summary.ts";
 import { TabularCsvwSchema } from "./library/tabular-csvw.ts";
 
 const by = { kind: "agent" as const, id: "a", model: "m" };

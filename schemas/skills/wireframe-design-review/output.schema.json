@@ -180,7 +180,7 @@
     },
     "changedAsset": {
       "title": "Changed asset",
-      "description": "One wireframe file the branch adds, changes or removes, in the record shape of a staging preview graph's `changedAssets` (cat-harness-tools scripts/kg-changed-assets.ts `ChangedAsset`; glosses in schemas/vocabulary.ts: assetChange, assetKind, beforeVersion, afterVersion, assetSource, renderedPage, renderedPagesUnknown).",
+      "description": "One wireframe file the branch adds, changes or removes, in the record shape of a staging preview graph's `changedAssets` (cat-harness-tools scripts/kg-changed-assets.ts `ChangedAsset`; glosses in schemas/content/vocabulary.ts: assetChange, assetKind, beforeVersion, afterVersion, assetSource, renderedPage, renderedPagesUnknown).",
       "type": "object",
       "required": [
         "change"

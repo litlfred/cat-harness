@@ -26,7 +26,7 @@
  */
 import { z } from "zod";
 
-import type { TermLayer } from "../vocabulary.js";
+import type { TermLayer } from "../content/vocabulary.js";
 
 import { renderingPath } from "../kg/cat-harness.js";
 
@@ -504,7 +504,7 @@ export const ReadmeSectionSchema = z
  *
  * ## Why it is guarded rather than merely copied
  *
- * The members duplicate `TermLayer` in `schemas/vocabulary.ts`, and zod needs a
+ * The members duplicate `TermLayer` in `schemas/content/vocabulary.ts`, and zod needs a
  * literal tuple so the duplication cannot be avoided. What CAN be avoided is the
  * duplication going stale silently, which is the only reason a duplicate is
  * dangerous — `directory-conventions` puts it as: an unavoidable duplicate is

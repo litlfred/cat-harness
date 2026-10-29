@@ -5,5 +5,5 @@
     "kind": "library",
     "family": "folio-document-images/v1"
   },
-  "schema": "schemas/document-image.ts#ImagesSidecarSchema"
+  "schema": "schemas/content/document-image.ts#ImagesSidecarSchema"
 }

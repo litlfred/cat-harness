@@ -28,7 +28,7 @@ applies-when: >
 
 **Adopted 2026-09-23** (issue #1180), on the owner's choice of permission
 language: *"W3C ODRL 2.2 and W3C PROV-O for logging"* — quoted from the
-docblock of `schemas/odrl.ts`. This node was written after the fact, against
+docblock of `schemas/content/odrl.ts`. This node was written after the fact, against
 the held Recommendation, so the platform's subset could be checked against the
 standard rather than against its own description of it.
 
@@ -84,7 +84,7 @@ creating *"an instance of an Action and define its includedIn parent Action"*
 |---|---|---|
 | **Policy** (`Set`, `Offer`, `Agreement`), `uid`, `profile`, `inheritFrom`, `conflict` | adopted; both live policies are `Set`s with `conflict: odrl:prohibit` | `OdrlPolicySchema`, `policies/*.jsonld` |
 | **Permission** | adopted: one rule per (actor, action), migrated from the old per-actor lists | `policies/folio-defaults.jsonld`, `policies/http-gateway.jsonld` |
-| **Prohibition** | adopted in the schema and the evaluator; **no live policy states one** — both files' `prohibition` is `[]` or absent | `permits()` in `schemas/odrl.ts` |
+| **Prohibition** | adopted in the schema and the evaluator; **no live policy states one** — both files' `prohibition` is `[]` or absent | `permits()` in `schemas/content/odrl.ts` |
 | **Action** + `includedIn` | adopted: the folio profile's actions each name a broader action, ending at ODRL's `odrl:display`/`modify`/`annotate`/`derive`/`translate`/`execute` under `odrl:use` | `skills/permissions/permissions.json`, `ODRL_ACTIONS`, `broaderOrSelf()` |
 | **Party** — `assignee`, `assigner` | adopted as the `assignee` of each rule, an actor id from `scenarios/actors/`, plus the profile party `cat-harness:anyone` for an unauthenticated reader | `OdrlRuleSchema`, `ANYONE` |
 | **Asset** — `target` | adopted as an optional `target` string | `ruleApplies()` |
@@ -104,7 +104,7 @@ stated so nobody reads `@conformsTo w3c-odrl` as full conformance.**
 1. **Duty, obligation, consequence, remedy — refused.** No reader exists, and
    `.strict()` rejects the keys *"because a rule that silently means less than
    it says is exactly the failure a permission file must not have"*
-   (`schemas/odrl.ts`). A Permission carrying an unfulfilled duty would be read
+   (`schemas/content/odrl.ts`). A Permission carrying an unfulfilled duty would be read
    as unconditional, which is worse than refusing it.
 2. **Refinements, AssetCollection, PartyCollection, LogicalConstraint,
    `rightOperandReference`, `dataType`, `unit`, `status`, `implies`, `partOf`,
@@ -135,7 +135,7 @@ stated so nobody reads `@conformsTo w3c-odrl` as full conformance.**
    profile actions is a departure, not a reading.)
 7. **No-match answers `unknown`, a third value.** This node found no held text
    that defines the outcome when no rule matches; `unknown` — never permit,
-   never deny — is the platform's rule (`Decision` in `schemas/odrl.ts`), so
+   never deny — is the platform's rule (`Decision` in `schemas/content/odrl.ts`), so
    `task-authorization` can report it as a finding.
 8. **Role eligibility is added on top.** `permits()` denies a permitted request
    whose `cat-harness:role` the actor is not eligible for. That is
@@ -161,11 +161,11 @@ stated so nobody reads `@conformsTo w3c-odrl` as full conformance.**
   by `bun run cat check:source-licence` (`scripts/check-source-licence.ts`).
 - **Not for identity.** Which login is which actor is GitHub's answer
   (`src/core/github-auth.ts`), never a policy's — `policies/README.md`.
-- **Not for logging.** That is PROV-O (`schemas/prov.ts`), chosen alongside it.
+- **Not for logging.** That is PROV-O (`schemas/content/prov.ts`), chosen alongside it.
 
 ## Where it runs
 
-Schema and evaluator `schemas/odrl.ts` (tests `schemas/odrl.test.ts`);
+Schema and evaluator `schemas/content/odrl.ts` (tests `schemas/odrl.test.ts`);
 policies `policies/` (graph typology `policies`, validator registered in
 `schemas/kg/graph-typology-registry.ts`); the action profile
 `skills/permissions/permissions.json`; external-schema entry

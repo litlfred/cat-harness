@@ -5,5 +5,5 @@
     "kind": "library",
     "family": "folio-vector-labels/v1"
   },
-  "schema": "schemas/vector-labels.ts#VectorLabelsSidecarSchema"
+  "schema": "schemas/content/vector-labels.ts#VectorLabelsSidecarSchema"
 }

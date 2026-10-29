@@ -25,7 +25,7 @@
  *
  * ## The rename is not cosmetic — it resolves a real collision
  *
- * `cat-harness/schemas/attribution.ts` already exports a `ProvenanceSchema`,
+ * `cat-harness/schemas/content/attribution.ts` already exports a `ProvenanceSchema`,
  * and it is a DIFFERENT shape: `INGESTED | Attribution`, answering *who wrote
  * this*. This one answers *where these bytes came from*. While they sat in
  * different instances the clash was survivable; bringing this one into

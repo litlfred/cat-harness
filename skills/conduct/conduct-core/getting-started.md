@@ -104,7 +104,7 @@ skill exists to prevent. A user who says "I want to add a chapter" has stated
 that sentence is what the five requests have in common.
 
 > **`isFolio` is ONE MEMBERSHIP of a set, and the set is what a repository
-> is.** `describeRepository()` (`schemas/content-type.ts`) returns every
+> is.** `describeRepository()` (`schemas/content/content-type.ts`) returns every
 > marker a repository carries — `folio`, `harness`, `dak`, `sushi` — with the
 > facts each states and any disagreement between them.
 > `describeRepositoryClosure()` (`schemas/kg/harness-config.ts`) extends that

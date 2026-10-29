@@ -22,9 +22,9 @@
 
 import { CONTENT_ADAPTER_NODES, CONTENT_ADAPTERS, CONTENT_PROFILES } from "./block-kinds";
 
-import type { AttributionKind } from "./attribution";
+import type { AttributionKind } from "./content/attribution";
 import type { ContentAdapter, ContentProfile } from "./block-kinds";
-import type { ContributionRegistry } from "./contributions";
+import type { ContributionRegistry } from "./content/contributions";
 import { QaScriptSidecar as QaScriptSidecarSchema } from "./block-qa-schema/js/index.ts";
 import { nodeKind } from "./kg/node-kind.ts";
 import type { RunContextRef } from "./run-context";
@@ -44,7 +44,7 @@ import type { RunContextRef } from "./run-context";
  * vocabulary: the same three participants author narrative content (bean
  * `iqim`), and two spellings of one set is what `rlp5` records the cost of.
  */
-export { ATTRIBUTION_KINDS as QA_REVIEWER_KINDS } from "./attribution";
+export { ATTRIBUTION_KINDS as QA_REVIEWER_KINDS } from "./content/attribution";
 export type QaReviewerKind = AttributionKind;
 
 /**
@@ -199,7 +199,7 @@ export type CheckerPaths = Partial<Record<CompanionRole, string>>;
  * Moved here from `pipeline/qa-checkers-extended.ts` on 2026-09-18, to
  * sit beside {@link CheckerPaths} — a checker's input and its output belong
  * together, and `CheckerPaths` was already here. The move is what lets
- * `schemas/contributions.ts` type a CONTRIBUTED checker: a dependency that
+ * `schemas/content/contributions.ts` type a CONTRIBUTED checker: a dependency that
  * adds QA criteria has to describe them in a shape the registry can hold, and
  * the registry cannot import the pipeline.
  */

@@ -543,7 +543,7 @@ export interface GraphTypologyDef {
   within?: string;
   /**
    * The kind's mark, when the kind is DECLARED as a node (bean dmx1) rather
-   * than listed here: it travels with the kind, so `schemas/avatars.ts` does
+   * than listed here: it travels with the kind, so `schemas/content/avatars.ts` does
    * not have to be a second central table. A kind listed here keeps its entry
    * in `AVATARS`.
    */
@@ -902,7 +902,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     title: "Policies",
     renderable: false,
     holds: "content",
-    schema: "schemas/odrl.ts",
+    schema: "schemas/content/odrl.ts",
     // declared-path-literal: this table IS the declaration, as on `health`.
     summary:
       "W3C ODRL 2.2 policies: which Actor may do which action, scoped by Process, Task and Role " +
@@ -2907,7 +2907,7 @@ export class GraphTypologyConflictError extends Error {
  * accepts an explicit one.
  *
  * Registration is **idempotent for an identical definition** and throws on a
- * conflicting one, the same rule `schemas/contributions.ts` uses: a diamond
+ * conflicting one, the same rule `schemas/content/contributions.ts` uses: a diamond
  * dependency graph reaches core twice and must not fail for it, while two
  * different layers claiming one name is a real collision.
  */

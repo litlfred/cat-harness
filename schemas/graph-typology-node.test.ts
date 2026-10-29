@@ -81,7 +81,7 @@ describe("the node schema", () => {
 describe("this checkout", () => {
   test("fhir-harness declares ig-pages and ig-ast, with their avatars", async () => {
     const { defaultGraphTypologies } = await import("./kg/graph-typology-registry");
-    const { hasAvatar } = await import("./avatars");
+    const { hasAvatar } = await import("./content/avatars");
     for (const k of ["ig-pages", "ig-ast"]) {
       expect(defaultGraphTypologies.declaredBy(k)).toMatch(/fhir-harness[/\\]typologies[/\\]/);
       expect(hasAvatar(k)).toBe(true);

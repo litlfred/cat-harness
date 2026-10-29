@@ -78,7 +78,7 @@
 import { z } from "zod";
 
 import { RequirementRefSchema } from "@litlfred/bootstrap-tools/schemas/requirement.ts";
-import { ATTRIBUTION_KINDS } from "./attribution";
+import { ATTRIBUTION_KINDS } from "./content/attribution";
 
 /** The tag a test plan carries, so it is identified by declaration. */
 export const TEST_PLAN_SCHEMA_ID = "test-plan/v1";

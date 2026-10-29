@@ -5,5 +5,5 @@
     "kind": "library",
     "family": "folio-section-verdicts/v1"
   },
-  "schema": "schemas/section-verdicts.ts#SectionVerdictFileSchema"
+  "schema": "schemas/content/section-verdicts.ts#SectionVerdictFileSchema"
 }

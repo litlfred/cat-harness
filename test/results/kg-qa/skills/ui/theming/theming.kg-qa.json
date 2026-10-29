@@ -5,7 +5,7 @@
     "id": "theming",
     "path": "skills/ui/theming/theming.md"
   },
-  "source_hash": "c3a2eec88a16",
+  "source_hash": "70ff051edb31",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

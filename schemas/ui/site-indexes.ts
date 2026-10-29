@@ -25,9 +25,9 @@
  */
 import { z } from "zod";
 
-import { SUMMARY_STATUSES } from "../block-summary.js";
+import { SUMMARY_STATUSES } from "../content/block-summary.js";
 import { TileCountsSchema } from "./tile-count.js";
-import { WithheldEntrySchema } from "../withheld.js";
+import { WithheldEntrySchema } from "../content/withheld.js";
 import { BeanIdSchema } from "../tools/tool-types.js";
 import { ModelIdSchema } from "@litlfred/bootstrap-tools/schemas/model-registry.ts";
 
