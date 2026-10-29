@@ -36,6 +36,9 @@
     "schemas/code-list.ts",
     "schemas/computation-witness.ts",
     "schemas/concern-groups.ts",
+    "schemas/conduct/interaction.ts",
+    "schemas/conduct/memory.ts",
+    "schemas/conduct/waiver.ts",
     "schemas/constraints.ts",
     "schemas/content-adapter-node.ts",
     "schemas/contribution-nodes.ts",
@@ -58,7 +61,6 @@
     "schemas/id-lookup.ts",
     "schemas/index-config.ts",
     "schemas/intake.ts",
-    "schemas/interaction.ts",
     "schemas/jsonld-prefixes.ts",
     "schemas/jsonld.ts",
     "schemas/kg-node.ts",
@@ -69,7 +71,6 @@
     "schemas/library-nodes.ts",
     "schemas/log-entry.ts",
     "schemas/materialization-state.ts",
-    "schemas/memory.ts",
     "schemas/merge-queue.ts",
     "schemas/methodology.ts",
     "schemas/model-capabilities.ts",
@@ -156,7 +157,6 @@
     "schemas/vocabulary-modules.ts",
     "schemas/voice-skill.ts",
     "schemas/voices.ts",
-    "schemas/waiver.ts",
     "schemas/withheld.ts",
     "test/fixtures/standalone-checkout/folio-assistant-sci/schemas/mathpaper-vocabulary.ts"
   ]

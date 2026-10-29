@@ -17,7 +17,7 @@
  *
  * - **A threshold, with the basis it was chosen on.** A number with no basis
  *   is received wisdom wearing a decimal point. {@link HealthThreshold}
- *   requires `basis`, structurally, for the same reason `schemas/memory.ts`
+ *   requires `basis`, structurally, for the same reason `schemas/conduct/memory.ts`
  *   refuses a `baseline` with no `measured`: the rule was prose, and prose
  *   does not fail a build.
  * - **Three states.** `ok`, `finding` and **`unknown`** are different answers,
