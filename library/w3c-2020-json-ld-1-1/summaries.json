@@ -1789,6 +1789,842 @@
       ]
     },
     {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-103",
+      "source": "sections/sec-103-72-restrictions-for-contents-of-json-ld-script-e.md",
+      "source_hash": "df8ae23f7196579fe2610f5b876d7cbd2c8ae66aa1daaf541733b745732fc493",
+      "narrative": [
+        {
+          "text": "Example 147 in Section 7.2 (Escaping Character Sequences in Script Elements), showing an HTML <script type=\"application/ld+json\"> block whose description property escapes </script> and --> as HTML character references (&lt;/script&gt; and --&gt;) when embedding HTML-containing JSON-LD inside HTML.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-104",
+      "source": "sections/sec-104-73-locating-a-specific-json-ld-script-element.md",
+      "source_hash": "c326c92047b28a6b8f1ff49411cc6b282117924f435bc0d4320c419b000a13d8",
+      "narrative": [
+        {
+          "text": "Example 148 in Section 7.3 (Locating a Specific JSON-LD Script Element) and opening of Section 8 (Data Model). Illustrates targeting a specific HTML <script type=\"application/ld+json\"> element by its id attribute (\"gregg\" vs. \"dave\") and introduces the distinction between JSON-LD syntax (RFC 8259) and its data model extending the RDF 1.1 data model.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-105",
+      "source": "sections/sec-105-8-data-model.md",
+      "source_hash": "d10a1878e6d99722e65b8e5c466b199583e0ffd2843e00408c36ef8d6bdfd5da",
+      "narrative": [
+        {
+          "text": "Opening bullets of Section 8 (Data Model). Summarizes the JSON-LD data model as an RDF Dataset comprising one default graph (which has no name and may be empty) and zero or more named graphs identified by an IRI or blank node identifier, where each graph is a labeled directed graph whose directed arcs (properties) are labeled with IRIs or blank node identifiers.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-106",
+      "source": "sections/sec-106-note.md",
+      "source_hash": "0e09c8a66384e042fe5fd445a493c39b6da71be00063a4daed8cf9c0dc559a7e",
+      "narrative": [
+        {
+          "text": "Continuation of Section 8 (Data Model), including normative notes, Example 149, and the Figure 1 caption. Marks blank node property labels as obsolete, defines graph nodes (IRIs, blank nodes with _: identifiers, typed and native JSON-LD values, language-tagged strings with BCP 47 tags and optional base direction, and RDF lists), prohibits unconnected nodes (Example 149), notes that unmapped properties are ignored and JSON is represented via the JSON-LD internal representation, and introduces Figure 1 illustrating a Linked Data dataset.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-107",
+      "source": "sections/sec-107-note.md",
+      "source_hash": "cc3161c0c76899616cc30bcf2776591a2ae29a4350a479fcf75ebe7bc3c9b8d4",
+      "narrative": [
+        {
+          "text": "Example 150 in Section 8 (Data Model) and opening of Section 9 (JSON-LD Grammar) and Section 9.1 (Terms). Shows a JSON-LD serialization of a dataset with a default graph and two named graphs using @graph (Example 150), states the formal top-level document and unique-key requirements of the JSON-LD grammar (including keyword aliasing), and specifies syntactic constraints on terms (forbidding keywords other than @type and empty strings, and discouraging IANA URI schemes, colons, and @ALPHA forms).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-108",
+      "source": "sections/sec-108-91-terms.md",
+      "source_hash": "aa540803cfd611f6dc7eff6ee3b93f9561f320c61b59c916da80e6d8bfb11ab5",
+      "narrative": [
+        {
+          "text": "Opening of Section 9.2 (Node Objects). Defines when a map outside a context is a node object, explains merging of node properties across multiple node objects, lists the permitted keywords (@context, @id, @included, @graph, @nest, @type, @reverse, @index), and specifies the normative value constraints for @context, @id, and @graph.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-110",
+      "source": "sections/sec-110-9-json-ld-grammar.md",
+      "source_hash": "470105d8cecaa27d040bcd054eb5de80805fba0955e8119fa6a72021cd98c7bf",
+      "narrative": [
+        {
+          "text": "Remainder of Section 9.2 (Node Objects) and Section 9.3 (Frame Objects). Specifies value constraints on @type, @reverse, @included, @index, @nest, and IRI-expanding property keys in node objects, and defines the grammar extensions permitted in frame objects during framing (@default with @null, wildcard or match-none maps/arrays for @id and @type, @embed, boolean flags @explicit/@omitDefault/@requireAll, and value patterns).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-111",
+      "source": "sections/sec-111-93-frame-objects.md",
+      "source_hash": "f3915d282f171a77c1363dd7c05df2e4d32380d88b11765866ba63fda40d3aed",
+      "narrative": [
+        {
+          "text": "Section 9.4 (Graph Objects) and opening sentence of Section 9.5 (Value Objects). Defines the grammar for graph objects (maps outside a context containing @graph and optionally @index, @id, and @context, including simple graph objects without an explicit @id) and introduces value objects for associating a type, language tag, or base direction with a value.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-113",
+      "source": "sections/sec-113-95-value-objects.md",
+      "source_hash": "a5585fc63cc455d04a33aaf83fb6d74bd5152b70cabe782c62a5484dca18a89c",
+      "narrative": [
+        {
+          "text": "Section 9.5 (Value Objects), Section 9.6 (Value Patterns), Section 9.7 (Lists and Sets), and Section 9.8 (Language Maps). Specifies the normative grammar for value objects (@value with mutually exclusive @type vs. @language/@direction, plus @json literals), framing value patterns, list and set objects (@list and @set with allowed element types), and language maps keyed by BCP 47 language tags or @none.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-114",
+      "source": "sections/sec-114-98-language-maps.md",
+      "source_hash": "aa966b16a306a1b344d61b3d7cbd5a83a39819c8d49c19b3b4557e021bcabd04",
+      "narrative": [
+        {
+          "text": "Opening of Section 9.9 (Index Maps). Defines index maps for preserving non-semantic index keys when a term is declared with @container set to @index (or [@index, @set]) and begins listing the permitted entry value types.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-116",
+      "source": "sections/sec-116-97-lists-and-sets.md",
+      "source_hash": "f79563053dad58ddf7b0f95c78fc18d8a1789b438e701d91d69c5a6bfdd6a7a3",
+      "narrative": [
+        {
+          "text": "Section heading stub for Section 9.8 (Language Maps) split across the page 77 boundary.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-117",
+      "source": "sections/sec-117-99-index-maps.md",
+      "source_hash": "402bb06769f7fcf6f9a69246184601a7bace28d68a4c553f5487c1b290a4fa13",
+      "narrative": [
+        {
+          "text": "Continuation of Section 9.9 (Index Maps) and Sections 9.10 (Property-based Index Maps), 9.11 (Id Maps), 9.12 (Type Maps), and 9.13 (Included Blocks). Completes the allowed value types and named-graph indexing rules for index maps, and specifies the grammar and expansion rules for property-based index maps, id maps (including @graph/@id containers), type maps, and @included blocks.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-118",
+      "source": "sections/sec-118-913-included-blocks.md",
+      "source_hash": "913e720f5c9021bf54c177a4371f628c368894242ed28b683df3c06501d071d6",
+      "narrative": [
+        {
+          "text": "Section 9.14 (Property Nesting) and opening sentence of Section 9.15 (Context Definitions). Defines nested properties as semantically transparent maps (or arrays of maps excluding value objects) that group node properties recursively and are flattened into the containing node object during expansion, and introduces context definitions.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-121",
+      "source": "sections/sec-121-912-type-maps.md",
+      "source_hash": "6ecb6f21aba6d1c6987bbc3c1caf848cca18eccf26df2dd212856ae371aa7919",
+      "narrative": [
+        {
+          "text": "Section heading stub for Section 9.13 (Included Blocks) on page 78.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-123",
+      "source": "sections/sec-123-915-context-definitions.md",
+      "source_hash": "aa194b7e196a052618b26e2282ef9a802eb48a0fae0b7e720bb9dd990eaf2e2d",
+      "narrative": [
+        {
+          "text": "Section 9.15 (Context Definitions) and opening of Section 9.15.1 (Expanded term definition). Specifies the normative grammar for a context definition map and its allowed keyword entries (@base, @direction, @import, @language, @propagate, @protected, @type, @version, @vocab) and non-keyword term mappings, and introduces expanded term definitions.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-124",
+      "source": "sections/sec-124-9151-expanded-term-definition.md",
+      "source_hash": "2047fea491369a59e51821abbc509bcf9cce8c9d49aa3791040ad711b12747c6",
+      "narrative": [
+        {
+          "text": "Remainder of Section 9.15.1 (Expanded term definition), Section 9.16 (Keywords), and opening of Section 10 (Relationship to RDF). Specifies the grammar constraints on expanded term definitions (including non-circularity and rules for @id, @reverse, @type, @language, @index, @container, @context, @nest, @prefix, @propagate, and @protected), summarizes where every JSON-LD keyword (@base through @vocab) may appear and whether it can be aliased, and details how JSON-LD extends the RDF 1.1 data model (blank node predicates, native lists and JSON scalars, and literal base direction).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-125",
+      "source": "sections/sec-125-note.md",
+      "source_hash": "4d5c2aecac511fa98d97fb1cd9f1c76e8ec415e622a13bcc36ad5adf125b3da7",
+      "narrative": [
+        {
+          "text": "Normative and informative notes in Section 10 (Relationship to RDF) and opening of Section 10.1 (Serializing/Deserializing RDF). Encourages relative IRIs, URNs, or Skolem IRIs instead of obsolete blank-node predicates, requires graph-only consumers to read the default graph, and outlines the three-step procedure (expand, flatten, emit triples) for deserializing JSON-LD to RDF.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-127",
+      "source": "sections/sec-127-101-serializingdeserializing-rdf.md",
+      "source_hash": "7fe3f1d3a71b0b04d0b56a6db768fcc240a3359fcf41443c744695926735d2e5",
+      "narrative": [
+        {
+          "text": "Continuation of Section 10.1 (Serializing/Deserializing RDF) and opening of Section 10.2 (The rdf:JSON Datatype). Explains how expanded and flattened JSON-LD maps directly to Turtle triples and how the inverse serialization from RDF can be framed, and introduces the rdf:JSON datatype for embedding JSON literals in RDF graphs.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-128",
+      "source": "sections/sec-128-102-the-rdfjson-datatype.md",
+      "source_hash": "624217ca2956ae8a9804a969ce1e19fbfc47374fe1c34a3885368e880f5f13b1",
+      "narrative": [
+        {
+          "text": "Examples 151–153 in Section 10.1 and normative definition of the rdf:JSON datatype in Section 10.2. Shows a compact JSON-LD document (Example 151), its expanded/flattened form (Example 152), and the resulting Turtle triples (Example 153), and specifies the datatype IRI (http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON), RFC 8259 lexical space, and canonical value-space constraints (no extra whitespace, lexicographic object keys, ECMAScript numeric serialization, and control-character escaping).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-129",
+      "source": "sections/sec-129-issue.md",
+      "source_hash": "25cf84724831614a9b687670bc71d6c78576fad8a122cd2c83de9fdc6306ce46",
+      "narrative": [
+        {
+          "text": "Remainder of Section 10.2 (The rdf:JSON Datatype, including an editorial note on JCS RFC 8785) and Section 10.3 (The i18n Namespace). Defines the lexical-to-value and canonical mappings for rdf:JSON, and describes the non-normative https://www.w3.org/ns/i18n# datatype mechanism (rdfDirection: i18n-datatype) that encodes lowercase BCP 47 language tags and base directions (e.g., i18n:ar-eg_rtl) for RDF round-tripping.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-130",
+      "source": "sections/sec-130-note.md",
+      "source_hash": "c3b18c5ab623d7c0f957d55c691cf7dd375389f4d85ef27964586977a4582647",
+      "narrative": [
+        {
+          "text": "Continuation of the Turtle example in Section 10.3 (The i18n Namespace) and opening of Section 10.4 (The rdf:CompoundLiteral class and the rdf:language and rdf:direction properties). Shows Turtle statements using the i18n:ar-eg_rtl datatype and defines the non-normative rdf:CompoundLiteral class with rdf:language and rdf:direction properties used when rdfDirection is set to compound-literal.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-132",
+      "source": "sections/sec-132-104-the-rdfcompoundliteral-class-and-the-rdflang.md",
+      "source_hash": "f776f12404852d08e6060ec573da9937a51c672b572ead04f36ffa19ef7765e0",
+      "narrative": [
+        {
+          "text": "Remainder of Section 10.4 (The rdf:CompoundLiteral class and the rdf:language and rdf:direction properties). Notes lowercase normalization of language tags and gives a Turtle example representing Arabic right-to-left strings via blank node compound literals with rdf:value, rdf:language \"ar-eg\", and rdf:direction \"rtl\".",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-133",
+      "source": "sections/sec-133-11-security-considerations.md",
+      "source_hash": "c5e9124e118dba2c1dfa0ed078fce7e2ffe70a13a6fb1314689b9ffb0b299372",
+      "narrative": [
+        {
+          "text": "Section 11 (Security Considerations), Section 12 (Internationalization Considerations), and opening of Appendix A / Section A.1 (Linked Data Dataset). Discusses external context retrieval risks (fingerprinting, MITM attacks, caching/documentLoader mitigations, and potential future Subresource Integrity support), explains RDF's lack of native base direction on language-tagged strings alongside Unicode UAX9 and string-meta guidance, and begins the accessible text description of Figure 1's default graph.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-137",
+      "source": "sections/sec-137-a1-linked-data-dataset.md",
+      "source_hash": "f43d0599604764710cfdcad58d1e9704a8f11792361c13cb558e0fe89909772a",
+      "narrative": [
+        {
+          "text": "Remainder of Section A.1 (Linked Data Dataset) and opening of Appendix B (Relationship to Other Linked Data Formats), Section B.1 (Turtle), Section B.1.1 (Prefix definitions), and Section B.1.2 (Embedding). Completes the long description of the literals and two named graphs in Figure 1, and introduces the informative comparison between JSON-LD and Turtle, RDFa, and Microdata, starting with prefix mappings and node embedding.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-140",
+      "source": "sections/sec-140-b11-prefix-definitions.md",
+      "source_hash": "91427d9871cef75735070eed37a62d5202e4b8245aa03cf9d133f3d29fa31bf5",
+      "narrative": [
+        {
+          "text": "Examples 154 and 155 in Section B.1.1 (Prefix definitions), comparing a Turtle @prefix foaf: declaration and Person statements (Example 154) with the equivalent JSON-LD @context prefix definition and node object (Example 155).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-141",
+      "source": "sections/sec-141-b12-embedding.md",
+      "source_hash": "154188d601e92f4346f4bbf68ac4d8b7001a99212aeeb305ea4616a1cae779a7",
+      "narrative": [
+        {
+          "text": "Example 156 in Section B.1.2 (Embedding) and opening prose of Section B.1.3 (Conversion of native data types). Shows blank-node embedding in Turtle (Example 156) and explains how JSON-LD native numbers and booleans convert to canonical xsd:integer, xsd:double, and xsd:boolean RDF literals for round-tripping.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-142",
+      "source": "sections/sec-142-note.md",
+      "source_hash": "7bcefa2ec801db0eac6683de4c20295830479c65cea6ed5317575a22f5ce5ef0",
+      "narrative": [
+        {
+          "text": "Informative Note in Section B.1.3 (Conversion of native data types), opening sentence of Section B.1.4 (Lists), and Example 157 from Section B.1.2 (Embedding). Explains why fractional JSON numbers map to xsd:double rather than Turtle's xsd:decimal, introduces list representation across JSON-LD and Turtle, and shows the JSON-LD counterpart of the embedded blank-node example (Example 157).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-143",
+      "source": "sections/sec-143-b13-conversion-of-native-data-types.md",
+      "source_hash": "87d3c45ca274da443df471a5cff5e71ae6c3302d98132e1a6c4828e7293f3fee",
+      "narrative": [
+        {
+          "text": "Examples 158 and 159 in Section B.1.3 (Conversion of native data types), comparing JSON-LD arrays of native numbers and booleans (Example 158) with their canonical xsd:integer, xsd:double, and xsd:boolean typed literals in Turtle (Example 159).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-144",
+      "source": "sections/sec-144-b14-lists.md",
+      "source_hash": "64b80818570d488f871300aebaad5ed4f193f23c2d215820c6d2baaa30d5c4f2",
+      "narrative": [
+        {
+          "text": "Examples 160 and 161 in Section B.1.4 (Lists) and introductory prose of Sections B.2 (RDFa) and B.3 (Microdata). Compares a Turtle collection list (Example 160) with a JSON-LD @list object (Example 161), and introduces the RDFa and HTML Microdata comparison examples.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-145",
+      "source": "sections/sec-145-b2-rdfa.md",
+      "source_hash": "c4fdba5bbd7b141c87ba945240bf41c9bee43aefaabaa267dbfef4073ca5849a",
+      "narrative": [
+        {
+          "text": "Examples 162 and 163 in Section B.2 (RDFa), showing an HTML RDFa fragment describing three foaf:Person resources (Example 162) and the equivalent JSON-LD document sharing a single @context across a @graph array (Example 163).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-146",
+      "source": "sections/sec-146-b3-microdata.md",
+      "source_hash": "4a348896584a0626853374f1bdf86644211693ea3e9f7df1c93d6bcca328b19d",
+      "narrative": [
+        {
+          "text": "Examples 164 and 165 in Section B.3 (Microdata) and opening of Appendix C (IANA Considerations). Compares an HTML Microdata description of a book and its print/ebook expressions (Example 164) with a context-free expanded JSON-LD representation using full IRIs (Example 165), and begins the IANA media type registration for application/ld+json including its optional RFC 6906 profile parameter and the #expanded, #compacted, and #context profile URIs.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-148",
+      "source": "sections/sec-148-applicationldjson.md",
+      "source_hash": "fe44ac49ef845383b3c6dec4fbc5aae9e272df345142feb4d7b518296b5cd658",
+      "narrative": [
+        {
+          "text": "Remainder of Appendix C (IANA Considerations: application/ld+json media type registration). Lists the #flattened, #frame, and #framed profile URIs, HTTP Accept header quoting and URI/IRI conversion rules, encoding and security considerations (avoiding eval(), privacy and MITM risks of remote contexts/frames, resource exhaustion from expansion, and malicious IRI schemes), file extension (.jsonld), contact/author metadata, and RDF fragment identifier semantics.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-149",
+      "source": "sections/sec-149-c1-examples.md",
+      "source_hash": "e5b95736a8ba0e203e01f1cc2ed3623a6dbcda6ff8b5488668c6d21ac7ac7eac",
+      "narrative": [
+        {
+          "text": "Prose of Section C.1 (Examples) and opening sentence of Appendix D (Open Issues). Describes three HTTP Accept header examples using the application/ld+json profile parameter (#expanded, #compacted, and quoted combined #flattened #compacted profiles) and introduces the list of open issues at publication time.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-150",
+      "source": "sections/sec-150-issue-108-consider-context-by-reference-with-met.md",
+      "source_hash": "0af36875f0e17034e78358f8625bb9b2f420dc28d7172d1d82f6cbe4b1d2ae5e",
+      "narrative": [
+        {
+          "text": "Entry in Appendix D (Open Issues) for Issue 108: considering context by reference with metadata (deferred to a future version; privacy and security tracker).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-151",
+      "source": "sections/sec-151-issue-191-compact-iri-expansion-support-for-non.md",
+      "source_hash": "01687ab4c9d31809ed849eea0e0e7f3029f5d0be5796e46fd80649c782fac3fa",
+      "narrative": [
+        {
+          "text": "Entry in Appendix D (Open Issues) for Issue 191: compact IRI expansion support for non-trivial prefix term definitions (deferred to a future version as a specification enhancement).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-152",
+      "source": "sections/sec-152-issue-280-language-maps-dont-allow-separate-base.md",
+      "source_hash": "9212fe07830a771626c399c8e44c9f89509ebdd6621f69f95c7cb5a8fdd235ca",
+      "narrative": [
+        {
+          "text": "Entry in Appendix D (Open Issues) for Issue 280: noting that language maps do not allow a separate base direction (deferred to a future version).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-153",
+      "source": "sections/sec-153-issue-328-default-in-context-in-json-ld-core-syn.md",
+      "source_hash": "1c8c514293d414defcf07166f805b2f17e92133aa01cc80ac879d3408b339001",
+      "narrative": [
+        {
+          "text": "Entries in Appendix D (Open Issues) for Issue 328 (@default in @context in JSON-LD core syntax) and Issue 329 (suggestion about @prefix), both deferred to a future version.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-154",
+      "source": "sections/sec-154-issue-335-type-coercion-node-conversion-coerce-k.md",
+      "source_hash": "a8b01d076753038237ee14bf119a8d5145f70feede3b9f52da57bf03cfa6f874",
+      "narrative": [
+        {
+          "text": "Entry in Appendix D for Issue 335 (Type Coercion / Node Conversion via @coerce or similar), opening bullets of Appendix E (Changes since 1.0 Recommendation of 16 January 2014) covering @version and property-scoped @context, and Examples 166–168 from Section C.1 showing HTTP GET requests with application/ld+json profile parameters.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-155",
+      "source": "sections/sec-155-d-open-issues.md",
+      "source_hash": "3512915c2e95a454e6ab4e27f79e572159d8d0b87f8012d71e5ceced610b9610",
+      "narrative": [
+        {
+          "text": "Issue tracker label tags (defer-future-version, privacy-tracker, security-tracker, spec:enhancement) extracted from the open-issues list in Appendix D on page 91.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-156",
+      "source": "sections/sec-156-e-changes-since-10-recommendation-of-16-january.md",
+      "source_hash": "9304b004b42e6584b6e438c2ae035dc50ee4715560605a67114b6d9f0a4cbfe1",
+      "narrative": [
+        {
+          "text": "Continuation of Appendix E (Changes since 1.0 Recommendation of 16 January 2014). Summarizes new features introduced since JSON-LD 1.0: @id/@graph/@type containers, @nest property nesting, the abstract internal representation, node identifier and type indexing, @none keys in language and index maps, array @container combinations with @set, @prefix restrictions on compact IRI compaction, and @graph container combinations.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-157",
+      "source": "sections/sec-157-f-changes-since-json-ld-community-group-final-re.md",
+      "source_hash": "69e1e637c8aca700c68d0d746c54ffffdb888772acfa22dc0a4bd6d7d5546d10",
+      "narrative": [
+        {
+          "text": "Appendix F (Changes since JSON-LD Community Group Final Report) and Appendix G (Changes since Candidate Recommendation Release of 12 December 2019). Summarizes changes made after the CG Final Report (nested lists, @type with @set container, deprecating blank-node predicates, relative @vocab mappings, \"@type\": \"@none\", rdf:JSON, HTML frame scripts, @protected, type-scoped contexts, @propagate, @import, @included, alternate link relation, @direction, default json-ld-1.1 mode, and lowercase language tags) and changes since the December 2019 CR (\"@prefix\": false behavior, @index in expanded term definitions, canonical rdf:JSON, and lowercase language tag normalization in RDF).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-159",
+      "source": "sections/sec-159-h-changes-since-proposed-recommendation-release.md",
+      "source_hash": "ea119594e933dcd053737add835616c193871d4683280831862a8b5fcd05c275",
+      "narrative": [
+        {
+          "text": "Appendix H (Changes since Proposed Recommendation Release of 7 May 2020), Appendix I (Acknowledgements), and opening of Appendix J.1 (Normative references). Notes the removal of remaining at-risk notes, update of the JCS citation to RFC 8785, and a @embed typo fix in Section 9.3, acknowledges editors, Working Group members, and Community Group contributors, and begins the normative bibliography ([BCP47] through [JSON-LD11-FRAMING]).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-162",
+      "source": "sections/sec-162-j1-normative-references.md",
+      "source_hash": "98e1888f1325ee4d3cdbb1eb386ff7da1e0eaa2e8a5f997a23d81256a23142b5",
+      "narrative": [
+        {
+          "text": "Remainder of Appendix J.1 (Normative references, from [JSON-LD11-FRAMING] through [UNICODE]) and opening of Appendix J.2 (Informative references, from [fingerprinting-guidance] through [RFC7049]).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-163",
+      "source": "sections/sec-163-j2-informative-references.md",
+      "source_hash": "e4a1ca05501c9fd8c5200012064dc074ef3de1a37ed6e617402a0fdf8bc986ca",
+      "narrative": [
+        {
+          "text": "Remainder of Appendix J.2 (Informative references), listing bibliographic entries from [RFC7049] (CBOR) through [YAML] (YAML 1.2).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://9e5d59e6-d716-4bc8-bfef-31d95b29b55c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
       "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-front-matter",
       "source": "sections/sec-front-matter.md",
       "source_hash": "777ae8e1fd6d241119cd248017f858924a01ee77712588dab6659d10ddb17843",
