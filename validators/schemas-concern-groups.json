@@ -5,5 +5,5 @@
     "kind": "schemas",
     "family": "concern-groups/v1"
   },
-  "schema": "schemas/concern-groups.ts#ConcernGroupsSchema"
+  "schema": "schemas/kg/concern-groups.ts#ConcernGroupsSchema"
 }

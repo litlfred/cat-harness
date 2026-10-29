@@ -42,7 +42,7 @@ id in the instance overrides the inherited one.
 | consumer | how | checked by |
 |---|---|---|
 | an adjudication step | `<cat-harness.processes:adjudication codes="…" list="<id>"/>` | the engine, at load: the codes must equal the list's active codes |
-| `schemas/namespaces.ts` | `own-namespaces.json`, by code | `code-list.test.ts`; `external-schemas:check` treats every value as ours |
+| `schemas/kg/namespaces.ts` | `own-namespaces.json`, by code | `code-list.test.ts`; `external-schemas:check` treats every value as ours |
 
 `bun run cat code-lists:check` refuses a malformed list and an adjudication that
 declares codes with no `list`. `bun run cat glossary:export` publishes every list

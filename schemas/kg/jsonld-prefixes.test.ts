@@ -7,11 +7,11 @@ import { describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
-import { CatHarnessDeclarationSchema } from "./kg/cat-harness.ts";
-import { CONTENT_CONTEXT } from "./kg/jsonld.ts";
+import { CatHarnessDeclarationSchema } from "./cat-harness.ts";
+import { CONTENT_CONTEXT } from "./jsonld.ts";
 import { JsonldPrefixTableSchema, mergePrefixTables } from "./jsonld-prefixes.ts";
 
-const ROOT = resolve(import.meta.dir, "..");
+const ROOT = resolve(import.meta.dir, "..", "..");
 
 describe("the shape", () => {
   test("a prefix → namespace table is valid", () => {

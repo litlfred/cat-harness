@@ -3,7 +3,7 @@
  *
  * @module schemas/memory
  *
- * The agent half of the memory column. See `schemas/carried-note.ts` for the
+ * The agent half of the memory column. See `schemas/kg/carried-note.ts` for the
  * shared base and for why a todo and a memory entry are the same thing wearing
  * different storage.
  *
@@ -76,7 +76,7 @@
 
 import { z } from "zod";
 
-import { CarriedNoteSchema } from "../carried-note.js";
+import { CarriedNoteSchema } from "../kg/carried-note.js";
 
 /**
  * What kind of thing this entry is. The three labels agent memories already

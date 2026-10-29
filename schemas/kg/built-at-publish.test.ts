@@ -9,9 +9,9 @@ import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 import { BuiltAtPublishListSchema, BuiltAtPublishSchema, ignoreLineFor, isBuiltAtPublish } from "./built-at-publish.ts";
-import { CatHarnessDeclarationSchema } from "./kg/cat-harness.ts";
+import { CatHarnessDeclarationSchema } from "./cat-harness.ts";
 
-const ROOT = resolve(import.meta.dir, "..");
+const ROOT = resolve(import.meta.dir, "..", "..");
 const entry = (extra: Record<string, unknown>) => ({ path: "docs/x/", writer: ["x:gen"], because: "checkout", reason: "r", ...extra });
 
 describe("the shape", () => {

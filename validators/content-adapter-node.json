@@ -5,5 +5,5 @@
     "kind": "content-adapters",
     "family": "folio-content-adapter/v1"
   },
-  "schema": "schemas/content-adapter-node.ts#ContentAdapterNodeSchema"
+  "schema": "schemas/kg/content-adapter-node.ts#ContentAdapterNodeSchema"
 }

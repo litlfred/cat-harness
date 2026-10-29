@@ -5,7 +5,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { INDEX_CONFIG_SCHEMA, IndexConfigSchema, formatIndexConfig } from "./index-config";
+import { INDEX_CONFIG_SCHEMA, IndexConfigSchema, formatIndexConfig } from "./kg/index-config";
 
 const base = { $schema: INDEX_CONFIG_SCHEMA, instances: [{ name: "a" }] };
 

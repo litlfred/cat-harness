@@ -5,5 +5,5 @@
     "kind": "cdn-site",
     "family": "cdn-site/1.0.0"
   },
-  "schema": "schemas/site.ts#CdnSiteKind"
+  "schema": "schemas/kg/site.ts#CdnSiteKind"
 }

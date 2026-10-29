@@ -30,7 +30,7 @@ Accepts an upload, records its extracted metadata in the knowledge graph, and ca
 
 ### Decide — Materialized? (`Gateway_Materialized`)
 
-- Answered from the materialization state (`schemas/materialization-state.ts`): `materialized` means the bytes are here; `referenced` means we know where they are and hold none.
+- Answered from the materialization state (`schemas/kg/materialization-state.ts`): `materialized` means the bytes are here; `referenced` means we know where they are and hold none.
 - Call `workflow_complete` with `node: "Gateway_Materialized"` and `outcome` set to the label that holds:
   - «materialized» → `Task_PlaceInLibrary` (Place the asset in library/<slug>/)
   - «referenced» → `Task_CatalogueReference` (Record it in library/ as referenced)

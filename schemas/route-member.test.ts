@@ -15,7 +15,7 @@
  */
 import { describe, expect, test } from "bun:test";
 import { DirectoryStorageSchema } from "./kg/cat-harness.ts";
-import { KeyedBySchema, RouteMemberSchema } from "./subgraph-source.ts";
+import { KeyedBySchema, RouteMemberSchema } from "./kg/subgraph-source.ts";
 
 const ok = (m: string) => RouteMemberSchema.safeParse(m).success;
 

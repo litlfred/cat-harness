@@ -380,7 +380,7 @@ export const PROPERTY_GLOSSES: Readonly<Record<string, TermGloss>> = {
   // A declared subgraph's content SOURCE (bean `l4ay`, owner 2026-10-03: "A sub
   // graph declares where it's getting its content"). Three of the five are
   // standard properties under a scoped name; two are minted because no
-  // published vocabulary says them. `schemas/subgraph-source.ts`.
+  // published vocabulary says them. `schemas/kg/subgraph-source.ts`.
   contentSource: {
     gloss:
       "Where a declared subgraph gets its content — the checkout's own directory, a declared repository branch, or " +

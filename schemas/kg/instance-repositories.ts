@@ -20,9 +20,9 @@ import { spawnSync } from "node:child_process";
 import { relative, resolve } from "node:path";
 import { instanceRootsIn, readDeclaration, type InstanceLocation } from "./cat-harness.js";
 import { declarationChain } from "./harness-config.js";
-import { instanceNamespaceOf } from "../namespaces.js";
-import { mountScopeFor } from "../remote-mount.js";
-import { RepoFullNameSchema, type RepoFullName } from "../repo-full-name.js";
+import { instanceNamespaceOf } from "./namespaces.js";
+import { mountScopeFor } from "./remote-mount.js";
+import { RepoFullNameSchema, type RepoFullName } from "./repo-full-name.js";
 
 export interface InstanceRepository {
   /** The declaration's machine name — what `needs` resolves against. */

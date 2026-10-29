@@ -14,7 +14,7 @@
     <bpmn:participant id="Participant_Process_NamedQueryExecution" name="Execute audited named queries over partitioned W3C N-Quads distributions" processRef="Process_NamedQueryExecution"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_NamedQueryExecution" name="Execute audited named queries over partitioned W3C N-Quads distributions" isExecutable="false">
-    <bpmn:documentation>Universal execution of audited named SPARQL queries against W3C RDF 1.1 N-Quads distributions across CLI, MCP, and Web runtimes. Governed by skill `named-query-execution` and schema `schemas/nquads-distribution.ts`.
+    <bpmn:documentation>Universal execution of audited named SPARQL queries against W3C RDF 1.1 N-Quads distributions across CLI, MCP, and Web runtimes. Governed by skill `named-query-execution` and schema `schemas/kg/nquads-distribution.ts`.
 
 CRITICAL INVARIANTS:
 1. FAIL-CLOSED GRAPH AVAILABILITY GUARD: Execution verifies all declared requiredSubgraphs are present in the Oxigraph store before SPARQL evaluation; missing partitions raise MissingPartitionError rather than returning silently incomplete results.

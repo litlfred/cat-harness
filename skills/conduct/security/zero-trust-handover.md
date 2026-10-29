@@ -400,5 +400,5 @@ researched or held. Nothing in this skill describes it.
 | silent stripping of injected spans | DataFilter | **refused**: refuse-never-repair; quarantine with the original kept instead |
 | provider-released defensive tokens | DefensiveTokens | **refused**: needs access to model embeddings this instance does not have |
 | "strip the defence in trusted interactions" | DefensiveTokens (`sec-005`) | **refused**: no interaction is trusted by position |
-| mount a remote KG only on signed provenance (e.g. GDHCN) or explicit consent | the owner, 2026-10-07 | **the owner's ruling**, applied as H8 and built in `schemas/mount-trust.ts` |
+| mount a remote KG only on signed provenance (e.g. GDHCN) or explicit consent | the owner, 2026-10-07 | **the owner's ruling**, applied as H8 and built in `schemas/kg/mount-trust.ts` |
 | H1–H9, the sink-based risk table, the release gate | ours | **this skill**: a house application, not part of any adopted method |

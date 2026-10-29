@@ -10,7 +10,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { CatHarnessDeclarationSchema } from "./kg/cat-harness.ts";
+import { CatHarnessDeclarationSchema } from "./cat-harness.ts";
 import { PROPERTY_SKILLS } from "./property-skills.ts";
 
 function declarationKeys(): string[] {

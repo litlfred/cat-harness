@@ -19,7 +19,7 @@ consulted: true
 The owner, 2026-10-07: *"migration to index.config.json
 importing `<harness>.config.json` information as needed"*, and later that day *"go ahead
 and start the migration NOW"*. The schema is `folio-index-config/v1` in
-`cat-harness/schemas/index-config.ts`, and the proposal with the full
+`cat-harness/schemas/kg/index-config.ts`, and the proposal with the full
 argument is `cat-harness/docs/proposals/index-config.md`.
 
 **The index is the ONE config.** Owner, bean `ymvt`, restated 2026-10-14:

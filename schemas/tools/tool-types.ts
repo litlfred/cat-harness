@@ -101,7 +101,7 @@ export const ScriptNameSchema = z
   .regex(/^[A-Za-z0-9][A-Za-z0-9:._-]*$/, "a script name is alphanumerics, colon, dot, underscore and hyphen")
   .describe("A package script name");
 
-import { RepoFullNameSchema } from "../repo-full-name.js";
+import { RepoFullNameSchema } from "../kg/repo-full-name.js";
 export { RepoFullNameSchema };
 
 /** A pull/merge request number. */

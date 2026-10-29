@@ -46,7 +46,7 @@ message:
 instance stack each `<instance>.json` declares in `needs`.
 
 The repository and knowledge-graph scales share ONE verdict function,
-`schemas/layer-direction.ts` (bean `j79e`). An edge is **wrong-direction**
+`schemas/kg/layer-direction.ts` (bean `j79e`). An edge is **wrong-direction**
 exactly when its target layer is not among what the source layer declares it
 may reach — `ALLOWED` for repos, `needs` plus itself for instances — and no
 reasoned permit names it. An instance with no `needs` is **undetermined**,
@@ -92,7 +92,7 @@ plan now needs both.
 **At term scale** — a glossary declared `ordered` (owner, 2026-09-29, of
 bootstrap's terms: *"logically tight, non self-referential"*). Each term's
 `requires` must point UP, and `checkDeclaredOrder` in
-`schemas/dependency-order.ts` names every forward, self and missing use. It is
+`schemas/kg/dependency-order.ts` names every forward, self and missing use. It is
 the block-scale rule with terms for blocks: a forward `requires` is a forward
 edge, and two terms defined by each other are a cycle **no ordering removes**,
 so the moves are the same three — drop the use, merge the two terms, or factor
@@ -346,5 +346,5 @@ auto-dischargeable — they rename things and ripple through every reference.
   repository's own five-repo cut, including the Phase II per-repo gate.
 - `scripts/repo-partition.ts` — the instrument. Its comment prose is where much
   of the above was recorded first.
-- `schemas/layer-direction.ts` — the one wrong-direction verdict both
+- `schemas/kg/layer-direction.ts` — the one wrong-direction verdict both
   `check:partition` and `kg:detangle` call.

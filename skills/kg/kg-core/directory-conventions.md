@@ -736,7 +736,7 @@ declaration several sessions are editing at once:
 
 A "directory subgraph" and a "branch subgraph" are **one thing with two
 sources**, so there is one field and one resolver, never a branch concept
-beside a directory concept. Bean `l4ay`; schema `schemas/subgraph-source.ts`.
+beside a directory concept. Bean `l4ay`; schema `schemas/kg/subgraph-source.ts`.
 
 - **`source`** on a `directories[]` entry is a discriminated union on `kind`.
   `{ "kind": "directory" }` — the default, so absent means it — says the
@@ -820,7 +820,7 @@ so nothing could say where its work plan lived. The scaffold never asked the
   instance whose entry declares no source. This repository's own `beans/`
   and `todos/` stay where they are until their cutover (`fs43`).
 - **The branch name is `cat/<instance>/<directory-id>`**, built by
-  `instanceStateBranch` in `schemas/subgraph-source.ts`. For example, the
+  `instanceStateBranch` in `schemas/kg/subgraph-source.ts`. For example, the
   `dpi-h-ra` instance's branches are `cat/dpi-h-ra/beans` and
   `cat/dpi-h-ra/todos`. This is the owner's
   `cat/<harness>/<name>` ruling (2026-10-02) applied to a folio. One name does
@@ -1101,7 +1101,7 @@ directory makes every consumer scan nothing and report a clean run over it.
 A `ContentDirectory` may declare where its contents are KEPT when that is not
 the checkout (bean `16ei`, arc `3fva`, and proposal `state-branch-2026-10-02`;
 schema `DirectoryStorageSchema` in `schemas/kg/cat-harness.ts`, or its modern
-`source: { kind: "branch", ... }` spelling in `schemas/subgraph-source.ts`):
+`source: { kind: "branch", ... }` spelling in `schemas/kg/subgraph-source.ts`):
 
 ```jsonc
 // Derived / QA: commit-keyed
@@ -1162,7 +1162,7 @@ They are KG already, in two places, and the README is rendered from both by
   table of branches: owner, 2026-10-03 (`rva2`), *"each harness declares it,
   (and each instance can also declare), why centralize?"*;
 - the branch's root **`manifest.json`**, `state-manifest/v1`, whose field set
-  is `schemas/state-manifest.ts`: one shape for a tip-keyed branch (seed
+  is `schemas/kg/state-manifest.ts`: one shape for a tip-keyed branch (seed
   commit, `graphs`) and one for a route-keyed branch (`writer`, `gate`).
 
 `branch:readme:check` reports each declared branch `current`, `stale`
@@ -1472,7 +1472,7 @@ types, SPAR citation terms. Importing it would have made `agentic-harness`
 depend on the content model for its own type IRIs: a `harness → core` edge,
 already the largest wrong-direction group `bun run cat check:partition` reports.
 
-It is now `schemas/namespaces.ts`, a leaf that imports nothing, classified to
+It is now `schemas/kg/namespaces.ts`, a leaf that imports nothing, classified to
 the harness. The direction only works one way round — **core may import the
 harness; the harness may not import core** — so a constant both layers need has
 to live at or below the harness. Putting it in core reintroduces the edge.
@@ -1607,7 +1607,7 @@ the tag is the key. The three reference forms record three different facts:
 
 - **`validator`**: a Zod schema. Runnable.
 - **`shape`**: a TypeScript interface, `module#Name`. Its fields can be read from
-  source (`readShape` in `schemas/kind-validator.ts`), but nothing can check a
+  source (`readShape` in `schemas/kg/kind-validator.ts`), but nothing can check a
   node against it.
 - **`writtenBy`**: nothing types the family. Name the module that writes it
   (or, for an authored file, the one that consumes it), so the gap is recorded

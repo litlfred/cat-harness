@@ -5,7 +5,7 @@
     "id": "nquads-distribution",
     "path": "skills/kg/graph-management/nquads-distribution.md"
   },
-  "source_hash": "fa2b1c5878df",
+  "source_hash": "1368a7d4b1e6",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

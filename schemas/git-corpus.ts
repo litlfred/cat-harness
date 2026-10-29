@@ -76,9 +76,9 @@ import { Glob } from "bun";
 import { spawnSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { basename, join, relative, resolve, sep } from "node:path";
-import { lockFilesIn } from "./instance-roots";
+import { lockFilesIn } from "./kg/instance-roots";
 
-import { mountedInstanceRoots } from "./remote-mount.js";
+import { mountedInstanceRoots } from "./kg/remote-mount.js";
 
 /**
  * Room for a whole-checkout `ls-files -z`; node's 1 MiB default is not.

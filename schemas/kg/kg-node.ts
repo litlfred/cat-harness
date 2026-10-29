@@ -48,7 +48,7 @@
  */
 
 import { z } from "zod";
-import { RepoFullNameSchema } from "../repo-full-name.js";
+import { RepoFullNameSchema } from "./repo-full-name.js";
 
 /** The fields a translation pass may offer, in the order a reader meets them. */
 export const KG_NODE_LABEL_FIELDS = ["title", "description"] as const;

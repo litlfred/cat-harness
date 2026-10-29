@@ -178,8 +178,8 @@ export interface QaReviewer {
  */
 // Declared in the content-adapter node's leaf schema, so a node's
 // `companionRoles` is validated against this same list (bean riit, step 5).
-export { COMPANION_ROLES } from "../content-adapter-node";
-import type { COMPANION_ROLES } from "../content-adapter-node";
+export { COMPANION_ROLES } from "../kg/content-adapter-node";
+import type { COMPANION_ROLES } from "../kg/content-adapter-node";
 
 export type CompanionRole = (typeof COMPANION_ROLES)[number];
 

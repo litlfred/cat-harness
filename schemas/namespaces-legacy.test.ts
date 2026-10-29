@@ -5,7 +5,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { CAT_HARNESS_PROCESSES_NS, OWN_BPMN_EXTENSION_NAMESPACES, isOwnExtensionNamespace, ownExtensionPrefixes } from "./namespaces";
+import { CAT_HARNESS_PROCESSES_NS, OWN_BPMN_EXTENSION_NAMESPACES, isOwnExtensionNamespace, ownExtensionPrefixes } from "./kg/namespaces";
 
 /** `ns` with its `v<major>/` segment respelt as `version/`. */
 const respelt = (ns: string, version: string): string => ns.replace(/\/v\d+\//, `/${version}/`);

@@ -113,13 +113,13 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { kgNodeLabelShape } from "../kg/kg-node";
 import { join } from "node:path";
 import { z } from "zod";
-import { RepoFullNameSchema } from "../repo-full-name.js";
+import { RepoFullNameSchema } from "../kg/repo-full-name.js";
 import { ODRL_ACTIONS } from "../content/odrl";
 
-import { termIri } from "../namespaces";
+import { termIri } from "../kg/namespaces";
 import { ACTOR_KINDS, SUT_ACTOR_KINDS, SystemUnderTestFacetSchema, type ActorKind, type SystemUnderTestFacet } from "../kg/skill-package";
 import { NETWORK_REACHES, directoryForGraph, findInstanceRoot, ownPrefixTable, type NetworkReach } from "../kg/cat-harness";
-import { findDeclarationFile, instanceRootNamed, repoRootFor } from "../instance-roots";
+import { findDeclarationFile, instanceRootNamed, repoRootFor } from "../kg/instance-roots";
 import { SkillNameSchema } from "../tools/tool-types";
 import { ModelCapabilitiesSchema, type ModelCapabilities } from "../model-capabilities.js";
 

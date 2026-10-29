@@ -5,5 +5,5 @@
     "kind": "typologies",
     "family": "folio-graph-typology/v1"
   },
-  "schema": "schemas/graph-typology-node.ts#GraphTypologyNodeSchema"
+  "schema": "schemas/kg/graph-typology-node.ts#GraphTypologyNodeSchema"
 }

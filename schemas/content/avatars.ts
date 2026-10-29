@@ -49,7 +49,7 @@ import { fileURLToPath } from "node:url";
 
 import { BLANK_AVATAR } from "../blank-avatar";
 import { defaultGraphTypologies } from "../kg/graph-typology-registry";
-import { findDeclarationFile, instanceRootsIn } from "../instance-roots";
+import { findDeclarationFile, instanceRootsIn } from "../kg/instance-roots";
 
 export { BLANK_AVATAR };
 

@@ -78,7 +78,7 @@ import type { ContributionRegistry } from "../content/contributions";
  */
 import { z } from "zod";
 
-import { CAT_HARNESS_NS, FOLIO_BASE, ownNamespace, termCurie } from "../namespaces";
+import { CAT_HARNESS_NS, FOLIO_BASE, ownNamespace, termCurie } from "./namespaces";
 
 // The content layer's namespace is no longer re-exported here
 // (folio-assistant#2598): it is derived from that instance's declaration

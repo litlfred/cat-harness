@@ -70,7 +70,7 @@
  */
 import { z } from "zod";
 
-import { NoteTagsSchema } from "../carried-note.js";
+import { NoteTagsSchema } from "../kg/carried-note.js";
 import { TileCountsSchema } from "../ui/tile-count.js";
 
 /** The document's own declaration of what it is, inside the file. */

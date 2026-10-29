@@ -5,7 +5,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { MountOverrideSchema, RemoteMountSchema } from "./remote-mount.ts";
+import { MountOverrideSchema, RemoteMountSchema } from "./kg/remote-mount.ts";
 
 describe("MountOverrideSchema.tools", () => {
   test("names Tools by id, beside the other override fields", () => {

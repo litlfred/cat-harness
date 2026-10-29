@@ -32,7 +32,7 @@ built on:
 | | where |
 |---|---|
 | the process | [`mount-dependency.bpmn`](../../../processes/kg/mount-dependency.bpmn); the per-subgraph view is the `remote` and `npm` flows of [`mount-subgraph.bpmn`](../../../processes/kg/mount-subgraph.bpmn) |
-| the schema | `cat-harness/schemas/remote-mount.ts`, plus the `remote`, `npm` and `hydrated` members of `SubgraphSource` (`schemas/subgraph-source.ts`); the per-pin index package is `subgraphIndexPackage` in `schemas/subgraph-manifest.ts` |
+| the schema | `cat-harness/schemas/kg/remote-mount.ts`, plus the `remote`, `npm` and `hydrated` members of `SubgraphSource` (`schemas/kg/subgraph-source.ts`); the per-pin index package is `subgraphIndexPackage` in `schemas/kg/subgraph-manifest.ts` |
 | the tool | `bun run cat mount:remote` (`--plan` to resolve without writing), and `bun run cat mount:remote:check` (offline) |
 | the entry point | `bun run cat state:mount`, which the session-start hook already runs |
 
@@ -90,7 +90,7 @@ are [`index-config`](index-config.md)'s rule. This skill covers only what a
 
 The fields are a `remoteMounts` entry without its `harness`, because the
 instance's `name` is the harness (`RemoteSourceSchema` in
-`schemas/index-config.ts`). A folio with no index still reads `remoteMounts` on
+`schemas/kg/index-config.ts`). A folio with no index still reads `remoteMounts` on
 its declaration. **Declaring a mount in both places is an error**:
 `readDeclaredMounts` throws and names both files. `bun run cat
 index-config:migrate --write` moves the entries across.
@@ -160,7 +160,7 @@ What that means in practice:
 | | |
 |---|---|
 | the package | `<harness>-subgraph-index@0.0.0-pin.<sha>`: the index files at their published paths, and `subgraph-index.json` (`folio-subgraph-index/v1`) giving each file's sha256 and the repository, pin and harness |
-| where | assets of the GitHub release `subgraph-index-<sha>` in the instance's repository, with the tarball's `folio-binary-release/v1` record beside it. Every name is computed (`subgraphIndexPackage` in `schemas/subgraph-manifest.ts`) |
+| where | assets of the GitHub release `subgraph-index-<sha>` in the instance's repository, with the tarball's `folio-binary-release/v1` record beside it. Every name is computed (`subgraphIndexPackage` in `schemas/kg/subgraph-manifest.ts`) |
 | who publishes | the `subgraph-index-package` Tool, run on every push to `main` by the reusable workflow `layer-publish-subgraph-index.yml` (the tools layer); a harness opts in with one `uses:` line |
 | what a mount checks | the pin's git tree first (a commit that does carry the file still works); otherwise the package: the tarball against its record (size, sha256), the manifest against the repository, pin and harness asked for, each file against its sha256, then the same schema and subgraph-IRI check a tree file gets |
 | the lock | a directory that came from the package records the tarball's URL and sha256 and the file's path in it (`package`), so `mount:lock` fetches the same bytes and refuses any others |
@@ -287,7 +287,7 @@ override lands at `<name>/` in the downstream root, beside the downstream's own
 directories, and its site routes sit beside the site-wide ones. To prevent collisions on disk
 and in route space:
 
-1. **Reserved names:** `RESERVED_ROOT_AND_ROUTE_NAMES` in `schemas/remote-mount.ts` declares
+1. **Reserved names:** `RESERVED_ROOT_AND_ROUTE_NAMES` in `schemas/kg/remote-mount.ts` declares
    the one authoritative list of reserved root directories and site route names:
    `["skills", "tools", "docs", "assets", "glossary", "api", "payload", "STAGING", "beans", "todos", "fsh-guts", "uploads", "test", "build", "_site", "_docs", "_kg"]`.
 2. **Mount path check:** `checkMountPathCollisions` (run during planning in `mount:remote`
@@ -367,7 +367,7 @@ between writing the lock and checking against it.
 ## Trust: what lets a mount proceed (H8)
 
 A real mount needs a person's consent for that pin (`trust.consent`); a
-`--staging` mount needs none. `schemas/mount-trust.ts` has the rules. Four
+`--staging` mount needs none. `schemas/kg/mount-trust.ts` has the rules. Four
 things to know (roast `1ygp` L4.2):
 
 - **The lock records the basis** for each instance: `staging`, or `consent`

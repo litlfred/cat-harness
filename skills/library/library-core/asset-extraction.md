@@ -177,7 +177,7 @@ file's `localPath`, which exists only once somebody asked for it.
   the harness's own.
 - `schemas/materialization.ts` in the content core — `materializedAt`, the
   timestamp this one is most often confused with; its state vocabulary is
-  `schemas/materialization-state.ts` here.
+  `schemas/kg/materialization-state.ts` here.
 - `cat-harness-tools/scripts/pdf-cover.py` — the generic page raster, and
   the content core's `scripts/gen-covers.ts` the catalogue wiring (any instance; the catalogue decides which
   documents get one) that checks every claim it makes about them.

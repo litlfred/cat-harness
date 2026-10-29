@@ -13,7 +13,7 @@ import {
   CatHarnessDeclarationSchema,
   defaultGraphTypologies,
 } from "./kg/cat-harness";
-import { nodeKindIndex } from "./node-kind-index";
+import { nodeKindIndex } from "./kg/node-kind-index";
 
 describe("the bean kind", () => {
   test("is `bean/1.0.0`, and the tag constant says the same", () => {
