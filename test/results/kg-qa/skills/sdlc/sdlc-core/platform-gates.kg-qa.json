@@ -5,7 +5,7 @@
     "id": "platform-gates",
     "path": "skills/sdlc/sdlc-core/platform-gates.md"
   },
-  "source_hash": "4b44a01ea698",
+  "source_hash": "d33344dc57f4",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

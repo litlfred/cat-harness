@@ -65,7 +65,7 @@ something to act on rather than a bare step name.
 
 **Say which permission you are acting under.** Entering a task in a lane
 means performing it as that lane's role, and since issue #1180 that needs an
-ODRL rule that permits it there (`permits()` in `schemas/odrl.ts`: the actor,
+ODRL rule that permits it there (`permits()` in `schemas/content/odrl.ts`: the actor,
 the action, and the process, task and role as scope). If the answer is
 `unknown` or `deny`, you are out of process for that task: route it to a lane
 whose actor holds the permission, or stop and ask. The engine enforces this

@@ -39,7 +39,7 @@ export default toolFactory((t) =>
     // led with "conformance test" would invert that and invite someone to
     // drop the document once CI was satisfied another way.
     maintains: [
-      { source: "schemas/vocabulary.ts", artefact: "cat-harness/ns.jsonld", format: "json-ld" },
+      { source: "schemas/content/vocabulary.ts", artefact: "cat-harness/ns.jsonld", format: "json-ld" },
     ],
     requires: { runtime: ["bun"], network: false },
   }),

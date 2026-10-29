@@ -81,7 +81,7 @@
  */
 import { z } from "zod";
 
-import { NarrativeSlotSchema } from "../narrative";
+import { NarrativeSlotSchema } from "../content/narrative";
 
 /** How a value was arrived at. `undetermined` is a finding, never a default. */
 export const DETERMINATION = ["measured", "declared", "undetermined"] as const;

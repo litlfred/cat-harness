@@ -48,7 +48,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { PinnedTerminologySchema } from "./pinned-terminology.ts";
+import { PinnedTerminologySchema } from "./content/pinned-terminology.ts";
 
 /** The pin record, repository-relative. */
 export const SPDX_LICENSE_LIST_PIN = "cat-harness/external-schemas/spdx-license-list.json";

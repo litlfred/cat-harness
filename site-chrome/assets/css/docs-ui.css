@@ -5542,7 +5542,7 @@ html:has(.fa-glass-band[data-fa-band-tools]) .main-content * {
  * pointer-target floor at the default root size.
  *
  * THEMED means the avatar's declared hue, passed in as `--fa-tile-tone` by
- * `harness-tiles.ts` from `schemas/avatars.ts`. It is the mechanism this
+ * `harness-tiles.ts` from `schemas/content/avatars.ts`. It is the mechanism this
  * repository already has: one declared hue, from which both schemes are
  * derived, so no tile can be authored legible in one mode and invisible in
  * the other. A per-instance palette would have been a second colour
@@ -5751,7 +5751,7 @@ html:has(.fa-glass-band[data-fa-band-tools]) .main-content * {
  * presentation of a fact rather than a fact of its own.
  *
  * THEMED means the avatar's declared hue, passed in as `--fa-tile-tone` by
- * `harness-tiles.ts` from `schemas/avatars.ts`: one declared hue from which
+ * `harness-tiles.ts` from `schemas/content/avatars.ts`: one declared hue from which
  * both schemes are derived, so no tab can be authored legible in one mode and
  * invisible in the other.
  * ───────────────────────────────────────────────────────────────────────── */

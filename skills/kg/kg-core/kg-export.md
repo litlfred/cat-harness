@@ -248,7 +248,7 @@ Five questions, in this order. The worked call for each term is in
    uses the same IRIs, so the two graphs agree.
 
    **How, so it cannot drift:** a term that restated a standard keeps its
-   gloss in `schemas/vocabulary.ts` and gains `replacedBy`, a CURIE.
+   gloss in `schemas/content/vocabulary.ts` and gains `replacedBy`, a CURIE.
    `buildContext()` maps each such key through `propertyIri()`
    (`schemas/namespaces.ts`), which reads that field, so the exporter cannot
    name one IRI while the vocabulary names another. The published vocabulary

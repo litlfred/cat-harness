@@ -112,7 +112,7 @@ import {
   type KgNodeLabels,
 } from "./kg-node";
 import { propertyIri, termIri } from "../namespaces";
-import { StickyContributionSchema, type StickyContribution } from "../sticky-contribution";
+import { StickyContributionSchema, type StickyContribution } from "../content/sticky-contribution";
 import { BuiltAtPublishListSchema, isBuiltAtPublish, type BuiltAtPublish } from "../built-at-publish";
 import { JsonldPrefixTableSchema, type JsonldPrefixTable } from "../jsonld-prefixes";
 import { BranchPrefixSchema, KeyedBySchema, SubgraphSourceSchema, contentIsOffCheckout, type SubgraphSource } from "../subgraph-source";
@@ -2319,7 +2319,7 @@ export const DEFAULT_DIRECTORIES: readonly ContentDirectory[] = [
   // `skills/voices/`, not `voices/`, since 2026-09-21 — a voice IS a skill, and
   // the four this repository ships moved under `skills/` with the rest of the
   // `kg` graph (bean `btuv`). The convention stated here and the fallback
-  // `VOICES_DIR` in `schemas/voices.ts` are ONE fact, and they disagreed for a
+  // `VOICES_DIR` in `schemas/content/voices.ts` are ONE fact, and they disagreed for a
   // day: this said `voices/` while that said `skills/voices`.
   //
   // The disagreement was harmless only by accident — `resolveDirectories`
@@ -3425,7 +3425,7 @@ const catHarnessDeclarationShape = {
   skillPrefix: z.string().regex(/^[a-z][a-z0-9]*$/).optional(),
   /**
    * The instance's mark — the same shape a kind node carries (bean sod4 #4).
-   * It sat in `schemas/avatars.ts`'s AVATARS beside the kinds' until
+   * It sat in `schemas/content/avatars.ts`'s AVATARS beside the kinds' until
    * 2026-10-05, so a new instance needed an edit to cat-harness to get a face;
    * declared here, it brings its own. `avatarFor(name)` reads it.
    */

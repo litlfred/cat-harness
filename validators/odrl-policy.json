@@ -4,5 +4,5 @@
   "validates": {
     "kind": "policies"
   },
-  "schema": "schemas/odrl.ts#OdrlPolicySchema"
+  "schema": "schemas/content/odrl.ts#OdrlPolicySchema"
 }

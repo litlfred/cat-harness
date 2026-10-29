@@ -60,10 +60,10 @@
  */
 import { z } from "zod";
 
-import { AttributionSchema } from "./attribution.ts";
-import { DESCRIBABLE_ROLES, IMAGE_ROLES, InspectionBasisSchema } from "./document-image.ts";
-import { NarrativeSlotSchema } from "./narrative.ts";
-import { BBoxSchema } from "./vector-labels.ts";
+import { AttributionSchema } from "./content/attribution.ts";
+import { DESCRIBABLE_ROLES, IMAGE_ROLES, InspectionBasisSchema } from "./content/document-image.ts";
+import { NarrativeSlotSchema } from "./content/narrative.ts";
+import { BBoxSchema } from "./content/vector-labels.ts";
 
 /** What the extractor did. Names itself; asserts no role. */
 export const AssemblyBasisSchema = z

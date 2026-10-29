@@ -63,7 +63,7 @@ The target, per the owner's 2026-09-23 decisions:
    to an **actor id**. That mapping lives in the data store only; no actor file
    and no policy carries a login.
 2. **It authorizes with the instance's ODRL policies** in `policies/`, by
-   calling `permits()` (`schemas/odrl.ts`) with the actor, the action and the
+   calling `permits()` (`schemas/content/odrl.ts`) with the actor, the action and the
    scope. `unknown` is a refusal, never a pass.
 3. **An unauthenticated request is `cat-harness:anyone`**, which the policies allow to
    `visualize` and `render`, and nothing else.

@@ -13,8 +13,8 @@ import {
   readerShows,
   visibleOn,
 } from "./reader-filter.js";
-import { BoardSchema, boardContent } from "./board.js";
-import { BoardPositionsSchema, place, renderPositions } from "./board-positions.js";
+import { BoardSchema, boardContent } from "../board.js";
+import { BoardPositionsSchema, place, renderPositions } from "../board-positions.js";
 
 type Node = { page: string; node: string; kind?: string; properties?: Record<string, string> };
 

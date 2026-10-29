@@ -40,7 +40,7 @@ import { z } from "zod";
 
 import { ContentContextSchema } from "../kg/jsonld";
 
-import { NarrativeSlotSchema } from "../narrative";
+import { NarrativeSlotSchema } from "../content/narrative";
 
 /** Sniffed/declared types that route to the tabular rung. */
 export const TABULAR_MIMETYPES = [

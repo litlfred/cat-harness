@@ -383,7 +383,7 @@ found by reading the reader when the layout was chosen rather than after
 shipping into it, and `voices-viz.test.ts` asserts both directions: a voice
 under `vendors/` loads, a voice under any other nested directory does not.
 
-`VOICE_VENDORS_DIR` in `schemas/voices.ts` is the one spelling of the name.
+`VOICE_VENDORS_DIR` in `schemas/content/voices.ts` is the one spelling of the name.
 
 ## Assets sit at `<stub>/<asset>` — no declaration reaches down (ENFORCED)
 

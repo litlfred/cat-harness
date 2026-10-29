@@ -317,7 +317,7 @@ one. What this buys:
   in it. The graph need not be a tree and may have cycles.
 - **Scope.** A rule may be limited to a Process, a Task or a Role. No
   constraint means everywhere.
-- **One question, three answers.** `permits()` in `schemas/odrl.ts` returns
+- **One question, three answers.** `permits()` in `schemas/content/odrl.ts` returns
   `permit`, `deny` or `unknown`, and `unknown` is never permit. Performing a
   task in a lane needs the permission **and** the lane's role, so eligibility
   (`roles`) and permission stay separate, as below.

@@ -672,7 +672,7 @@ list, never inline.
 **A harness's sticky shows the same text.** The owner's ruling on `ob3m`
 finding 3 (2026-10-01): *"Stickies show the same text as the landing page"*.
 A sticky contribution declares `bodyFrom: "summary"`, and the card's words are
-`readerText` in `schemas/sticky-contribution.ts`: the `summary` (else the
+`readerText` in `schemas/content/sticky-contribution.ts`: the `summary` (else the
 description), then the `alsoWritten` spellings after "Also written:". That is
 the rule `docs/_includes/harness_details.html` applies, read from the same two
 declaration fields, so there is no copy of the text to keep in step. Before

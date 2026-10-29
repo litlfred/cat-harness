@@ -114,7 +114,7 @@ import { kgNodeLabelShape } from "../kg/kg-node";
 import { join } from "node:path";
 import { z } from "zod";
 import { RepoFullNameSchema } from "../repo-full-name.js";
-import { ODRL_ACTIONS } from "../odrl";
+import { ODRL_ACTIONS } from "../content/odrl";
 
 import { termIri } from "../namespaces";
 import { ACTOR_KINDS, SUT_ACTOR_KINDS, SystemUnderTestFacetSchema, type ActorKind, type SystemUnderTestFacet } from "../kg/skill-package";
@@ -885,7 +885,7 @@ function grantsFor(grants: ReadonlyMap<string, readonly string[]> | undefined, i
  * Read the actor directory.
  *
  * `grants` supplies each actor's permissions from the ODRL policies
- * ({@link readPolicyGrants} in `schemas/odrl.ts`, issue #1180). An actor file
+ * ({@link readPolicyGrants} in `schemas/content/odrl.ts`, issue #1180). An actor file
  * that still carries its own `permissions` list keeps it: that is an
  * unmigrated downstream registry, and reading it is better than dropping it.
  */
@@ -1292,7 +1292,7 @@ export interface PermissionDef {
   description: string;
   /**
    * The broader actions this one is part of: another action here, or one of
-   * ODRL's common vocabulary (`schemas/odrl.ts#ODRL_ACTIONS`). This is what
+   * ODRL's common vocabulary (`schemas/content/odrl.ts#ODRL_ACTIONS`). This is what
    * makes the vocabulary an ODRL profile (issue #1180): a permission to a
    * broader action permits every action included in it. Required and
    * non-empty, so every action has a way up to `odrl:use`.

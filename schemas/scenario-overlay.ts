@@ -82,7 +82,7 @@ import { join, resolve } from "node:path";
 
 import { ownDirectoryById } from "./kg/cat-harness";
 import { checkoutDependentsOf, instanceConfigFor, orderedDependencies } from "./kg/harness-config";
-import { POLICY_DIR, readPolicies, type OdrlPolicy } from "./odrl";
+import { POLICY_DIR, readPolicies, type OdrlPolicy } from "./content/odrl";
 import {
   ACTORS_DIRNAME,
   CAPABILITIES_DIRNAME,

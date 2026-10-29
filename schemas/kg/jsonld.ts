@@ -64,7 +64,7 @@
  */
 
 import { BLOCK_KIND_NODES, BLOCK_KINDS, type BlockKind } from "../block-kinds";
-import type { ContributionRegistry } from "../contributions";
+import type { ContributionRegistry } from "../content/contributions";
 
 // ── Namespaces ───────────────────────────────────────────────────
 

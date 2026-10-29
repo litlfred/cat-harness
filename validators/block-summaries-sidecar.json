@@ -5,5 +5,5 @@
     "kind": "library",
     "family": "folio-block-summaries/v1"
   },
-  "schema": "schemas/block-summary.ts#BlockSummariesSidecarSchema"
+  "schema": "schemas/content/block-summary.ts#BlockSummariesSidecarSchema"
 }

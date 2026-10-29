@@ -36,7 +36,7 @@ const NodeSchemaRefSchema = z.union([
   z.object({ generated: z.literal(true).optional() }).strict(),
 ]);
 
-/** A kind's mark: SVG path data in a 24×24 box, a hue angle, and why. As `schemas/avatars.ts` `Avatar`. */
+/** A kind's mark: SVG path data in a 24×24 box, a hue angle, and why. As `schemas/content/avatars.ts` `Avatar`. */
 export const KindAvatarSchema = z
   .object({
     glyph: z.string().min(1),
