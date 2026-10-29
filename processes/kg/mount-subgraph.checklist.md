@@ -66,7 +66,7 @@ Making a declared subgraph's content available at its declared path, whatever it
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
 - Skill: `npm-kg-distribution`.
-- What: An `npm` source (`schemas/subgraph-source.ts`, `npm-kg-distribution`): an npm package specifier or tarball path (`.tgz`).
+- What: An `npm` source (`schemas/kg/subgraph-source.ts`, `npm-kg-distribution`): an npm package specifier or tarball path (`.tgz`).
 - Record it: `workflow_complete` with `node: "Task_RetrieveNpmPackage"`.
 - next: → `GW_Join`
 

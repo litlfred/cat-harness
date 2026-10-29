@@ -36,7 +36,7 @@ uploaded asset has extracted metadata inserted into KG and asset in library/
    [`uploads-watch`](uploads-watch.md)).
 2. **Extract metadata into the KG** — [`asset-extraction`](asset-extraction.md):
    a container's INDEX goes in, its contents do not unless asked for.
-3. **Materialized?** — the state vocabulary is `schemas/materialization-state.ts`
+3. **Materialized?** — the state vocabulary is `schemas/kg/materialization-state.ts`
    (placement PR5): `referenced`, `materialized` or `unknown`, with no default.
 4. **Place in `library/<slug>/`** — this skill. A `referenced` asset is still
    catalogued: its record says where the bytes are and that we hold none.

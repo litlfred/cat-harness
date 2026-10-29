@@ -56,7 +56,7 @@
  * @graphNode schema
  */
 
-import { KindAvatarSchema, type KindAvatar } from "../graph-typology-node";
+import { KindAvatarSchema, type KindAvatar } from "./graph-typology-node";
 import {
   existsSync,
   mkdirSync,
@@ -67,8 +67,8 @@ import {
 import { isAbsolute, join, relative, resolve, basename } from "node:path";
 import { z } from "zod";
 import { acceptsSchemaTag, nodeKind } from "./node-kind";
-import { RepoFullNameSchema, type RepoFullName } from "../repo-full-name.js";
-import { SubscriptionKindSchema, type SubscriptionKind } from "../substrate-snapshot.js";
+import { RepoFullNameSchema, type RepoFullName } from "./repo-full-name.js";
+import { SubscriptionKindSchema, type SubscriptionKind } from "./substrate-snapshot.js";
 import {
   MountDefaultsSchema,
   RemoteMountsSchema,
@@ -85,7 +85,7 @@ import {
   type MountCollisionFinding,
   type RouteCollisionFinding,
   type ReservedRootAndRouteName,
-} from "../remote-mount.js";
+} from "./remote-mount.js";
 
 export {
   RESERVED_ROOT_AND_ROUTE_NAMES,
@@ -111,11 +111,11 @@ import {
   type KgImage,
   type KgNodeLabels,
 } from "./kg-node";
-import { propertyIri, termIri } from "../namespaces";
+import { propertyIri, termIri } from "./namespaces";
 import { StickyContributionSchema, type StickyContribution } from "../content/sticky-contribution";
-import { BuiltAtPublishListSchema, isBuiltAtPublish, type BuiltAtPublish } from "../built-at-publish";
-import { JsonldPrefixTableSchema, type JsonldPrefixTable } from "../jsonld-prefixes";
-import { BranchPrefixSchema, KeyedBySchema, SubgraphSourceSchema, contentIsOffCheckout, type SubgraphSource } from "../subgraph-source";
+import { BuiltAtPublishListSchema, isBuiltAtPublish, type BuiltAtPublish } from "./built-at-publish";
+import { JsonldPrefixTableSchema, type JsonldPrefixTable } from "./jsonld-prefixes";
+import { BranchPrefixSchema, KeyedBySchema, SubgraphSourceSchema, contentIsOffCheckout, type SubgraphSource } from "./subgraph-source";
 
 
 
@@ -426,7 +426,7 @@ export interface ContentDirectory extends GraphNodeDirectory {
 
   /**
    * Where this subgraph gets its content. Absent is `{ kind: "directory" }`.
-   * Read it through `resolveSubgraphSource` (`schemas/subgraph-source.ts`),
+   * Read it through `resolveSubgraphSource` (`schemas/kg/subgraph-source.ts`),
    * which applies the instance config's override by id.
    */
   source?: SubgraphSource;
@@ -759,7 +759,7 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
   stub?: string;
   /**
    * Whether this instance is published on the site. Defaults to enabled; only
-   * `false` disables it. Read through `isPublished` (`schemas/url-space.ts`,
+   * `false` disables it. Read through `isPublished` (`schemas/kg/url-space.ts`,
    * bean `nbal`).
    */
   enabled?: boolean;
@@ -834,11 +834,11 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
   subscriptions?: Subscription[];
   /** Substrates known to exist or planned that NO declaration here names — {@link KnownSubstrate}. Issue #1719. */
   knownSubstrates?: KnownSubstrate[];
-  /** What a downstream remote-mounts of this instance by default — `schemas/remote-mount.ts`, bean `0mpw`. */
+  /** What a downstream remote-mounts of this instance by default — `schemas/kg/remote-mount.ts`, bean `0mpw`. */
   mountDefaults?: MountDefaults;
-  /** Harnesses this instance remote-mounts at a pin, transitively — `schemas/remote-mount.ts`, bean `0mpw`. */
+  /** Harnesses this instance remote-mounts at a pin, transitively — `schemas/kg/remote-mount.ts`, bean `0mpw`. */
   remoteMounts?: RemoteMount[];
-  /** Who may consent to a remote mount here — `schemas/mount-trust.ts`, roast `1ygp` L4.2. */
+  /** Who may consent to a remote mount here — `schemas/kg/mount-trust.ts`, roast `1ygp` L4.2. */
   mountApprovers?: string[];
   /**
    * Sticky notes this layer contributes to the landing board.
@@ -1647,7 +1647,7 @@ export type Tile = z.infer<typeof TileSchema>;
  * could stop two pages answering at one URL, because neither said where the
  * URL came from. Here it comes from the declaration and nothing else:
  * `visualiserRoute({ harness: <this instance's name>, visualiser: id })`
- * (`schemas/visualiser-route.ts`), so two claims on one URL are two
+ * (`schemas/kg/visualiser-route.ts`), so two claims on one URL are two
  * declarations of one `(harness, id)` pair — refused by
  * `check:visualiser-routes` before anything is drawn.
  *
@@ -1773,13 +1773,13 @@ export type HarnessVisualiser = z.infer<typeof HarnessVisualiserSchema>;
  * - `route-family` — one entry per MEMBER of a family under the directory's
  *   path, the member supplied at publish time rather than declared. Bean
  *   `xp5j`. **Its reasoning lives with the enum**, in
- *   `schemas/subgraph-source.ts`: a keying is documented where its one
+ *   `schemas/kg/subgraph-source.ts`: a keying is documented where its one
  *   definition is, which is the same rule that put the enum there (`1j3q`).
  *   {@link RouteMemberSchema} there validates the untrusted member key.
  *
  * The field is an enum, not a string, so a FIFTH keying is a schema change
  * somebody has to make rather than a reinterpretation of an existing value. The
- * enum itself is `KeyedBySchema` in `schemas/subgraph-source.ts`, IMPORTED and
+ * enum itself is `KeyedBySchema` in `schemas/kg/subgraph-source.ts`, IMPORTED and
  * not restated: this field held its own `z.enum([...])` until the two drifted —
  * `route` was added here with bean `1j3q` and not there, so a route-keyed
  * declaration parsed and then threw a ZodError inside `resolveSubgraphSource`.
@@ -2183,7 +2183,7 @@ const ContentDirectoryShape = GraphNodeDirectoryShape.extend({
    * branch, with room for a later kind. The instance config may override it
    * by id. Resolve it with `resolveSubgraphSource`, never by reading this
    * field: the override and #1764's `storage` are folded in there, once.
-   * See `schemas/subgraph-source.ts` — bean `l4ay`, owner 2026-10-03.
+   * See `schemas/kg/subgraph-source.ts` — bean `l4ay`, owner 2026-10-03.
    */
   source: SubgraphSourceSchema.optional(),
 });
@@ -2691,7 +2691,7 @@ export class TopologyConflictError extends Error {
  *
  * ## It is `materialization` at the graph level
  *
- * `schemas/materialization-state.ts` already names the states a
+ * `schemas/kg/materialization-state.ts` already names the states a
  * body of content is in, and a declared graph is in the same ones: a
  * `ContentDirectory` is **materialized** (bytes here), a `RemoteGraph` is
  * **referenced** (we know it exists and where, we hold none of it).
@@ -2826,7 +2826,7 @@ export const SubscriptionSchema = z
      * when that is not the root — `shared` for a fork whose declaration
      * is `shared/<name>.json` (bean `437w`). Absent: the root. The
      * same name and meaning as `upstreamPath` on a remote subgraph source
-     * (`schemas/subgraph-source.ts`, PR #2326), so one word means one thing
+     * (`schemas/kg/subgraph-source.ts`, PR #2326), so one word means one thing
      * across both, and the same pattern (a trailing slash is admitted and
      * means nothing). Recorded so `kg:subscribe:check` and a re-subscribe judge
      * the same subtree that was judged the first time.
@@ -2843,7 +2843,7 @@ export const SubscriptionSchema = z
      * unchanged; a content subscription is a separate kind, written
      * explicitly, and contributes no skills, processes or roles — so it may
      * choose no `harnesses`. `SUBSCRIPTION_KINDS` in
-     * `schemas/substrate-snapshot.ts` carries the rule once.
+     * `schemas/kg/substrate-snapshot.ts` carries the rule once.
      */
     kind: SubscriptionKindSchema.optional(),
     subgraphs: uniqueStrings("subgraphs").optional(),
@@ -3502,7 +3502,7 @@ const catHarnessDeclarationShape = {
   stub: z.string().min(1).optional(),
   /**
    * Whether this instance is PUBLISHED on the site — served at
-   * `<base>/<name>/…` (`schemas/url-space.ts`, bean `nbal`). Defaults to
+   * `<base>/<name>/…` (`schemas/kg/url-space.ts`, bean `nbal`). Defaults to
    * enabled (owner, 2026-09-20: *"instantiated and enabled (by default
    * enabled)"*), so not publishing is a declaration, `false`, never an
    * absence. Read it through `isPublished`.
@@ -3545,9 +3545,9 @@ const catHarnessDeclarationShape = {
    * `.optional()`: absent means this instance declares none.
    */
   visualisers: z.array(HarnessVisualiserSchema).optional(),
-  /** See {@link CatHarnessDeclaration.builtAtPublish} and `schemas/built-at-publish.ts`. Absent: this instance builds nothing at publish. */
+  /** See {@link CatHarnessDeclaration.builtAtPublish} and `schemas/kg/built-at-publish.ts`. Absent: this instance builds nothing at publish. */
   builtAtPublish: BuiltAtPublishListSchema.optional(),
-  /** See {@link CatHarnessDeclaration.jsonldPrefixes} and `schemas/jsonld-prefixes.ts`. Absent: this instance speaks no external vocabulary of its own. */
+  /** See {@link CatHarnessDeclaration.jsonldPrefixes} and `schemas/kg/jsonld-prefixes.ts`. Absent: this instance speaks no external vocabulary of its own. */
   jsonldPrefixes: JsonldPrefixTableSchema.optional(),
   /**
    * Graphs this instance knows about and does not hold — see {@link RemoteGraph}.
@@ -3577,7 +3577,7 @@ const catHarnessDeclarationShape = {
     .optional(),
   /**
    * What a DOWNSTREAM mounts of this instance by default, and where — see
-   * `schemas/remote-mount.ts` (bean `0mpw`). Owner, 2026-10-06: the defaults
+   * `schemas/kg/remote-mount.ts` (bean `0mpw`). Owner, 2026-10-06: the defaults
    * live in the harness's own declaration, so a downstream names only the
    * harness and its pin and never restates the paths. Absent is the stated
    * default (home path, every in-checkout directory), not "unmountable".
@@ -5572,7 +5572,7 @@ export const INSTANCE_README_ROLE = "instance-readme";
 
 /**
  * The role of an instance's node-kind ratchet baseline: the families IT owns
- * that may stay unkinded (`schemas/node-kind-index.ts`, {@link UnkindedBaselineKind}
+ * that may stay unkinded (`schemas/kg/node-kind-index.ts`, {@link UnkindedBaselineKind}
  * there). Owner, 2026-10-15: one baseline per layer, so a layer's own families
  * are judged by its own commit, and the cross-layer table is built at publish.
  */
@@ -7401,8 +7401,8 @@ import "./folio-graph-typology.js";
 // is now a node in the content instance's own `typologies/` graph (owner
 // 2026-09-23, "put glossary into" the content layer).
 import { ThemeRefSchema, type ThemeRef } from "../ui/theme";
-import { CONFIG_SUFFIX, DECLARATION_SUFFIX, findDeclarationFile, instanceRootsIn, isForeignCheckout, lockFilesIn } from "../instance-roots";
+import { CONFIG_SUFFIX, DECLARATION_SUFFIX, findDeclarationFile, instanceRootsIn, isForeignCheckout, lockFilesIn } from "./instance-roots";
 // Instance DISCOVERY lives in a leaf module (bean dmx1), so the graph-typology
 // registry can find each harness's declared `kinds/` without importing this
 // file, which imports the registry. Re-exported here so no caller moves.
-export { CONFIG_SUFFIX, DECLARATION_SUFFIX, findDeclarationFile, instanceRootsIn, isForeignCheckout } from "../instance-roots";
+export { CONFIG_SUFFIX, DECLARATION_SUFFIX, findDeclarationFile, instanceRootsIn, isForeignCheckout } from "./instance-roots";

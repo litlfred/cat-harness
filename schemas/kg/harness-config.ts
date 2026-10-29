@@ -61,7 +61,7 @@ import {
   resolveSubgraphSource,
   type ResolvedSubgraphSource,
   type SubgraphSourceOverrides,
-} from "../subgraph-source";
+} from "./subgraph-source";
 
 // ── Dependency types ────────────────────────────────────────────
 
@@ -389,7 +389,7 @@ export const HarnessConfigSchema = z.object({
    * keyed by the directory's `id` (never its path). The owner, 2026-10-03:
    * *"That same information can be overwritten by the harness instance
    * config."* Applied by `resolveSubgraphSource` and nowhere else
-   * (`schemas/subgraph-source.ts`, bean `l4ay`).
+   * (`schemas/kg/subgraph-source.ts`, bean `l4ay`).
    */
   subgraphSources: SubgraphSourceOverridesSchema.optional(),
 });
@@ -398,18 +398,18 @@ export const HarnessConfigSchema = z.object({
 
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { basename, dirname, join, resolve, sep } from "node:path";
-import { flattenDependencies as flattenSteps } from "../dependency-order";
-import { mountScopeFor, mountedInstanceRoots } from "../remote-mount";
-import { BlockKindNodeSchema, builderOf } from "../block-kind-node";
-import { ContentAdapterNodeSchema } from "../content-adapter-node";
-import { PipelinePluginNodeSchema, QaCheckerNodeSchema, splitOwnCodeRef } from "../contribution-nodes";
+import { flattenDependencies as flattenSteps } from "./dependency-order";
+import { mountScopeFor, mountedInstanceRoots } from "./remote-mount";
+import { BlockKindNodeSchema, builderOf } from "./block-kind-node";
+import { ContentAdapterNodeSchema } from "./content-adapter-node";
+import { PipelinePluginNodeSchema, QaCheckerNodeSchema, splitOwnCodeRef } from "./contribution-nodes";
 import {
   describeRepository,
   type ContentTypeDisagreement,
   type ContentTypeMembership,
   type ContentTypeRegistry,
 } from "../content/content-type";
-import { INDEX_CONFIG_FILENAME, LEGACY_HARNESS_CONFIG, rootConfigStems } from "../instance-roots";
+import { INDEX_CONFIG_FILENAME, LEGACY_HARNESS_CONFIG, rootConfigStems } from "./instance-roots";
 import {
   HUB_LANDING,
   importedConfigFilename,
@@ -417,7 +417,7 @@ import {
   readIndexConfig,
   type IndexConfig,
   type IndexInstance,
-} from "../index-config";
+} from "./index-config";
 import {
   directoriesForGraph,
   ExactVersionSchema,
@@ -1155,7 +1155,7 @@ export interface InstanceGraph {
  * The owner, 2026-09-23 (bean `a1lq`): *"once depedencies of (orderd)
  * dependecy tree are full resolve, walk tree in order starting w/ deepest
  * depenencies (bootstreap/)"*. Two passes, and the second is the platform's
- * one flattener, `schemas/dependency-order.ts`, the same one the render
+ * one flattener, `schemas/kg/dependency-order.ts`, the same one the render
  * pipeline and the harness tiles order with.
  *
  * ## What the single interleaved pass got wrong

@@ -5,7 +5,7 @@
     "id": "security",
     "path": "skills/conduct/security/security.md"
   },
-  "source_hash": "d5e02a85f66c",
+  "source_hash": "9593b94e51f5",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

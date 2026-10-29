@@ -30,8 +30,8 @@
  */
 import { resolve } from "node:path";
 
-import { ownDeclaredDirectories } from "./declared-nodes";
-import { instanceRootsIn, repoRootFor } from "./instance-roots";
+import { ownDeclaredDirectories } from "./kg/declared-nodes";
+import { instanceRootsIn, repoRootFor } from "./kg/instance-roots";
 
 /** The checkout this preload's harness sits in. */
 const CHECKOUT = repoRootFor(resolve(import.meta.dir, ".."));

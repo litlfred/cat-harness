@@ -7,7 +7,7 @@
 import { describe, expect, test } from "bun:test";
 import { join } from "node:path";
 
-import { familyBody, nodeFamilyTag, resolveNodeSchemas, stripAnnotations } from "./kind-validator.ts";
+import { familyBody, nodeFamilyTag, resolveNodeSchemas, stripAnnotations } from "./kg/kind-validator.ts";
 
 const HARNESS = join(import.meta.dir, "..");
 const text = {

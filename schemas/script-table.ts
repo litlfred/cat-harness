@@ -34,7 +34,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
-import { instanceRootsIn } from "./instance-roots.ts";
+import { instanceRootsIn } from "./kg/instance-roots.ts";
 
 /** The key a layer's `package.json` carries its checkout-root scripts under. */
 export const CHECKOUT_SCRIPTS_KEY = "checkoutScripts";

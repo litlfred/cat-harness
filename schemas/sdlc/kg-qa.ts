@@ -56,7 +56,7 @@ import { isAbsolute, join, relative, resolve, sep } from "node:path";
 import { z } from "zod";
 
 import { KG_GRAPH_TYPOLOGY } from "../kg/cat-harness";
-import { portableSegment } from "../portable-path";
+import { portableSegment } from "../kg/portable-path";
 import { AdversarialReviewSchema, type AdversarialReview } from "./qa-review";
 import { RunContextRefSchema, type RunContextRef } from "../run-context";
 
@@ -187,7 +187,7 @@ export const KG_QA_RESULTS_DIR = join("test", "results", "kg-qa");
  *
  * {@link portableSegment} encodes it reversibly rather than substituting,
  * because substitution would collide — the one guarantee this whole tree
- * exists to provide. See `schemas/portable-path.ts`.
+ * exists to provide. See `schemas/kg/portable-path.ts`.
  *
  * @param repoRoot   absolute instance root
  * @param subjectDir absolute directory the subject itself lives in

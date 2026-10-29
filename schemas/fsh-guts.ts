@@ -30,7 +30,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { z } from "zod";
 
 import { type ResolvedDirectory, resolveDirectories } from "./kg/cat-harness.ts";
-import { type FrontMatter, parseFrontMatter, scalar } from "./front-matter.ts";
+import { type FrontMatter, parseFrontMatter, scalar } from "./kg/front-matter.ts";
 import { checkoutDirectories } from "./kg/harness-config.ts";
 import { BeanIdSchema } from "./tools/tool-types.ts";
 
@@ -142,7 +142,7 @@ export function readFshGutsNode(
 
     // A JSON node of THIS graph is now read rather than only named.
     //
-    // `schemas/front-matter.ts` parses to a FLAT map, so a nested block in
+    // `schemas/kg/front-matter.ts` parses to a FLAT map, so a nested block in
     // YAML comes back as `[]` — measured. A record a workflow writes and a
     // tool reads cannot use that carrier, and `staging-preview` (bean `6pfo`)
     // is the first that needs it.

@@ -98,7 +98,7 @@
  * returns the clauses, not a boolean, precisely so the adjudicator can answer
  * them one at a time.
  */
-import type { DirectionVerdict } from "../layer-direction.js";
+import type { DirectionVerdict } from "./layer-direction.js";
 
 /** A node in whatever graph is being detangled. Deliberately not a file: modules, skills, blocks and Lean declarations are all nodes. */
 export interface DetangleNode {

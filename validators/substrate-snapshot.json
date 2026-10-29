@@ -4,5 +4,5 @@
   "validates": {
     "kind": "substrate-snapshot"
   },
-  "schema": "schemas/substrate-snapshot.ts#SubstrateSnapshotSchema"
+  "schema": "schemas/kg/substrate-snapshot.ts#SubstrateSnapshotSchema"
 }

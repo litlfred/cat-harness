@@ -250,7 +250,7 @@ Five questions, in this order. The worked call for each term is in
    **How, so it cannot drift:** a term that restated a standard keeps its
    gloss in `schemas/content/vocabulary.ts` and gains `replacedBy`, a CURIE.
    `buildContext()` maps each such key through `propertyIri()`
-   (`schemas/namespaces.ts`), which reads that field, so the exporter cannot
+   (`schemas/kg/namespaces.ts`), which reads that field, so the exporter cannot
    name one IRI while the vocabulary names another. The published vocabulary
    keeps the old term, `owl:deprecated` and `dcterms:isReplacedBy` the
    standard property: data already holding the old IRI still dereferences to
@@ -354,7 +354,7 @@ where it should live for findability, the answer came from who reads it: a
 program follows a term's IRI to its layer document; a person looking for terms
 goes to the Glossary, which lists every term and publishes SKOS for every
 scheme. The union served neither, linked from no page, and was a third copy of
-the same terms — so it is gone, rather than moved. `NS_PREFIXES` in `schemas/namespaces.ts` is the one
+the same terms — so it is gone, rather than moved. `NS_PREFIXES` in `schemas/kg/namespaces.ts` is the one
 list; `stubOfNamespace()` reads the stub back off an IRI. The abbreviations
 `bs`, `cat` and `fac` were retired the same day, for a measured reason
 rather than taste.
@@ -716,7 +716,7 @@ Rules for the pair:
   writes `docs/subgraph/<HARNESS>/<PATH>/index[.hydrated].jsonld`, which Pages
   serves at the subgraph IRI, plus the context at `ns/subgraph/v1.jsonld`.
   `subgraph:jsonld:check` is the gate. The file shape is
-  `schemas/subgraph-manifest.ts`.
+  `schemas/kg/subgraph-manifest.ts`.
 
 ### Published per pin, in a package
 
@@ -735,7 +735,7 @@ pin, harness, each file's sha256). It is attached, with its
 - **Not generated at mount (C, rejected):** reading one file of metadata must
   not need the build toolchain, and one pin must have one set of files.
 - **Every name is computed** from repository, pin and harness
-  (`subgraphIndexPackage`, `schemas/subgraph-manifest.ts`), so a consumer never
+  (`subgraphIndexPackage`, `schemas/kg/subgraph-manifest.ts`), so a consumer never
   lists releases.
 - **Who builds it:** `layer-publish-subgraph-index.yml` (the tools layer),
   on each push to `main`: `subgraph:jsonld`, then the `subgraph-index-package`
@@ -854,7 +854,7 @@ means what its pointers name:
 | Schema | `module` (.ts) | 161 | 2.5 MB | no — code, not content |
 
 No deep provenance is in the graph today, so none moves. The table that decides
-this is `HEAVY_POINTERS` in `schemas/subgraph-manifest.ts`, and adding a row
+this is `HEAVY_POINTERS` in `schemas/kg/subgraph-manifest.ts`, and adding a row
 there is the whole change to make a field heavy.
 
 ### Building and checking
@@ -871,7 +871,7 @@ there is the whole change to make a field heavy.
   - bytes that do not hash to their name;
   - a payload without its sidecar, or a sidecar without its payload.
 - The schema is `PayloadLinkSchema` and `PayloadSidecarSchema` in
-  `schemas/subgraph-manifest.ts`.
+  `schemas/kg/subgraph-manifest.ts`.
 
 ## Per-slice SQLite — a named subgraph as one file a browser mounts
 

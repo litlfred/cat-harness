@@ -14,7 +14,7 @@
     <bpmn:participant id="Participant_Process_NQuadsDistribution" name="Package and distribute partitioned W3C N-Quads and named queries" processRef="Process_NQuadsDistribution"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_NQuadsDistribution" name="Package and distribute partitioned W3C N-Quads and named queries" isExecutable="false">
-    <bpmn:documentation>Extract, partition, package, and distribute knowledge graph datasets as W3C RDF 1.1 N-Quads with pre-compiled named SPARQL queries. Governed by skills `nquads-distribution` and `named-query-execution`, grounded in `schemas/nquads-distribution.ts`.
+    <bpmn:documentation>Extract, partition, package, and distribute knowledge graph datasets as W3C RDF 1.1 N-Quads with pre-compiled named SPARQL queries. Governed by skills `nquads-distribution` and `named-query-execution`, grounded in `schemas/kg/nquads-distribution.ts`.
 
 CRITICAL INVARIANTS:
 1. 2-TIER SUBGRAPH ARCHITECTURE: A lightweight Spine backbone partition is loaded on startup, while bulky subgraphs (communities, workflow domains) are lazily fetched on demand.

@@ -3,8 +3,8 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
-import { readDeclaration } from "./kg/cat-harness";
-import { GraphTypologyRegistry } from "./kg/graph-typology-registry";
+import { readDeclaration } from "./cat-harness";
+import { GraphTypologyRegistry } from "./graph-typology-registry";
 import {
   kindAndSubclasses,
   newUnkinded,
@@ -120,7 +120,7 @@ describe("who owns a family", () => {
   test("a typology this layer lists in code belongs to this module's own instance", () => {
     // `widgets` is a test seed, not a base typology: the rule is the base table, so it is unattributed.
     expect(typologyOwner(reg, "widgets")).toBeUndefined();
-    expect(typologyOwner(new GraphTypologyRegistry(), "beans")).toBe(readDeclaration(resolve(import.meta.dir, ".."))!.name);
+    expect(typologyOwner(new GraphTypologyRegistry(), "beans")).toBe(readDeclaration(resolve(import.meta.dir, "..", ".."))!.name);
   });
 
   test("one registered in code by a module nothing here knows is NOT attributed to a guess", () => {

@@ -30,9 +30,9 @@
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { BlockKindNodeSchema, builderOf, type BlockKindNode } from "./block-kind-node";
-import { ContentAdapterNodeSchema, type ContentAdapterNode } from "./content-adapter-node";
-import { declaredNodeFiles } from "./declared-nodes";
+import { BlockKindNodeSchema, builderOf, type BlockKindNode } from "./kg/block-kind-node";
+import { ContentAdapterNodeSchema, type ContentAdapterNode } from "./kg/content-adapter-node";
+import { declaredNodeFiles } from "./kg/declared-nodes";
 import type { Block } from "./types";
 
 /**

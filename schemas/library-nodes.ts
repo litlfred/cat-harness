@@ -35,7 +35,7 @@
  */
 import { z } from "zod";
 
-import { termCurie } from "./namespaces";
+import { termCurie } from "./kg/namespaces";
 
 const Context = z.union([z.string(), z.record(z.string(), z.unknown()), z.array(z.unknown())]);
 const Iri = z.string().min(1);

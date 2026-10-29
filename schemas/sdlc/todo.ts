@@ -57,10 +57,10 @@ import {
   CarriedNoteKind,
   NoteTagsSchema,
   type NoteTags,
-} from "../carried-note.js";
+} from "../kg/carried-note.js";
 
 /**
- * The reference vocabulary now lives in `schemas/carried-note.ts`, shared with
+ * The reference vocabulary now lives in `schemas/kg/carried-note.ts`, shared with
  * agent memory — see that module for why a todo and a memory entry are the
  * same thing with different storage. Re-exported here so every existing
  * importer of `schemas/todo` keeps working: the types did not change, only
@@ -72,8 +72,8 @@ export {
   KgRefSchema,
   ArtefactRefSchema,
   ARTEFACT_KINDS,
-} from "../carried-note.js";
-export type { TaskRef, ExternalIdentity, KgRef, ArtefactRef } from "../carried-note.js";
+} from "../kg/carried-note.js";
+export type { TaskRef, ExternalIdentity, KgRef, ArtefactRef } from "../kg/carried-note.js";
 
 /**
  * The knowledge-graph edges a todo carries.

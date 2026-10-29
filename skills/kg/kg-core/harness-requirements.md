@@ -123,7 +123,7 @@ Case 3 is the owner's rule of 2026-10-09: *"`<base URL>/<harness>/<visualizer>`
 (which is for the full KG) and `<base URL>/<harness>/<visualizer>/<sub-graph>`,
 `<base URL>/<harness>/<visualizer>/<sub-graph>/<path to asset>`"*. The
 segments come from the harness's `visualisers` declaration and are computed by
-`visualiserRoute` (`schemas/visualiser-route.ts`) — never composed by a
+`visualiserRoute` (`schemas/kg/visualiser-route.ts`) — never composed by a
 generator, never claimed by a page. Two declarations on one route are a
 declaration error, refused by `check:visualiser-routes`; see
 [`harness-tiles`](../../ui/ui-core/harness-tiles.md) §"Where a tile goes".

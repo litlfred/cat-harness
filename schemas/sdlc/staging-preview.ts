@@ -62,7 +62,7 @@
  *    dropped unknown keys and `readFshGutsNode` returned a node with no
  *    `staging` at all, silently. It now carries `.passthrough()`: `kind` is
  *    open, so the field set could not stay closed.
- * 2. **STILL TRUE.** `schemas/front-matter.ts` is a FLAT parser
+ * 2. **STILL TRUE.** `schemas/kg/front-matter.ts` is a FLAT parser
  *    (`Record<string, string | string[]>`). A nested `staging:` block parses
  *    to `[]` before any schema sees it — so a markdown node survives the
  *    schema and still loses the data, which is worse than losing it outright
@@ -245,7 +245,7 @@ export function isRetired(node: StagingPreviewNode): boolean {
  * Serialise. **JSON, not markdown front matter**, and that is forced rather
  * than chosen.
  *
- * `schemas/front-matter.ts` parses to `Record<string, string | string[]>` — a
+ * `schemas/kg/front-matter.ts` parses to `Record<string, string | string[]>` — a
  * FLAT map. A nested `staging:` block comes back as `[]`, measured, so every
  * structured field would be lost before any schema saw it. The trashcan's
  * markdown carrier was built for a note somebody dropped in; this record is

@@ -15,7 +15,7 @@ import {
   isRenderable,
   processMayWrite,
 } from "./kg/cat-harness";
-import { resolveKindValidator } from "./kind-validator";
+import { resolveKindValidator } from "./kg/kind-validator";
 import { readRoleGraph } from "./process/role-graph";
 import {
   FHIR_TEMPLATING_SPECIALISATION,

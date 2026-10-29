@@ -222,8 +222,8 @@ than inventing one:
 
 | helper | shape | for |
 |---|---|---|
-| `KgRefSchema` (`schemas/carried-note.ts`) | `{kind, id, note?}` | any KG node |
-| `TaskRefSchema` (`schemas/carried-note.ts`) | `{process, task}` | a BPMN task: the pair, never a bare task id |
+| `KgRefSchema` (`schemas/kg/carried-note.ts`) | `{kind, id, note?}` | any KG node |
+| `TaskRefSchema` (`schemas/kg/carried-note.ts`) | `{process, task}` | a BPMN task: the pair, never a bare task id |
 | `VoiceRefSchema` (`schemas/content/voices.ts`) | `{instance?, voiceId}` | a voice, possibly in another instance |
 | `SkillNameSchema` (`schemas/tools/tool-types.ts`) | kebab id | a skill id, where a whole ref is not needed |
 | `module#Export`, `instance:module#Export` (`parseValidatorRef`) | string with a checked grammar | a schema |

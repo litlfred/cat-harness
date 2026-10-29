@@ -33,7 +33,7 @@
  * @module schemas/library-iri
  * @graphNode none — a mint rule, not a schema
  */
-import { ownNamespace } from "./namespaces.ts";
+import { ownNamespace } from "./kg/namespaces.ts";
 
 /** The published site's root — `_config.yml` `url` + `baseurl`, from the own-namespaces code list. */
 export const DOCS_SITE = ownNamespace("docs-site");

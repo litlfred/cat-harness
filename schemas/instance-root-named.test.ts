@@ -12,7 +12,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import { instanceRootNamed } from "./instance-roots";
+import { instanceRootNamed } from "./kg/instance-roots";
 
 const made: string[] = [];
 afterAll(() => {

@@ -6,7 +6,7 @@ import { defineTool } from "../../schemas/tools/tool.js";
 // fetches them through the Tool its source names. This is the PUBLISH half;
 // the fetch half is `remote-mount`, the default `tool` of a `hydrated` source.
 // The package's names are `subgraphIndexPackage` in
-// `schemas/subgraph-manifest.ts`.
+// `schemas/kg/subgraph-manifest.ts`.
 export default toolFactory((t) =>
   defineTool({
     id: "subgraph-index-package",

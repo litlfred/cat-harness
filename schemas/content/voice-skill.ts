@@ -40,7 +40,7 @@
  */
 
 import { z } from "zod";
-import { RepoFullNameSchema } from "../repo-full-name.js";
+import { RepoFullNameSchema } from "../kg/repo-full-name.js";
 
 import {
   VoiceRuleSchema,

@@ -15,7 +15,7 @@ import { TEST_REPORT_SCHEMA_ID, TestReportSchema } from "./test-report";
 import { QA_REPORT_SCHEMA_TAG, QaReportSchema } from "./sdlc/qa-report";
 import { KG_QA_MANIFEST_SCHEMA, KgQaManifestSchema } from "./sdlc/kg-qa";
 import { HEALTH_REPORT_SCHEMA, HealthReportSchema } from "./sdlc/health-report";
-import { addressBook, provJsonldDocument } from "./prov-jsonld";
+import { addressBook, provJsonldDocument } from "./kg/prov-jsonld";
 import type { ProvActivity } from "./content/prov";
 import { resolve } from "node:path";
 

@@ -80,7 +80,7 @@
  */
 import { z } from "zod";
 
-import { CarriedNoteSchema } from "../carried-note.js";
+import { CarriedNoteSchema } from "../kg/carried-note.js";
 import { PageAnchorSchema } from "../note-anchor.js";
 import {
   InitiationSchema,

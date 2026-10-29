@@ -79,8 +79,8 @@ import { join } from "node:path";
 import { defaultContentTypes, type ContentTypeRegistry } from "./content-type";
 import { CONFIG_SUFFIX, findDeclarationFile } from "../kg/cat-harness";
 import { instanceConfigFilename, instanceConfigFor } from "../kg/harness-config";
-import { isReservedIndexFile } from "../instance-roots";
-import { termIri } from "../namespaces";
+import { isReservedIndexFile } from "../kg/instance-roots";
+import { termIri } from "../kg/namespaces";
 
 /** The `@type` a harness declaration projects to. */
 export const HARNESS_TYPE = termIri("Instance");

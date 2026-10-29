@@ -61,7 +61,7 @@ import { createHash } from "node:crypto";
 import { z } from "zod";
 
 import { ReleaseDigestSchema } from "./sdlc/binary-release";
-import { CommitShaSchema, LockedInstanceSchema } from "./remote-mount";
+import { CommitShaSchema, LockedInstanceSchema } from "./kg/remote-mount";
 import { ActorKindSchema } from "./kg/skill-package";
 import { HashBasisSchema, UNKNOWN_HASH } from "./sdlc/test-run";
 import { ToolReleaseRefSchema } from "./tools/tool-release";

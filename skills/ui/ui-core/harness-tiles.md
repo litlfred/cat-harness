@@ -53,7 +53,7 @@ So each visualiser is ONE declaration in the harness that owns it:
   directory of them in the checkout. A harness never names another instance's directory — that
   would be a lower layer naming a higher one.
 - **The URL is computed, never chosen.** `visualiserRoute` in
-  `schemas/visualiser-route.ts` is the ONE function every generator and reader
+  `schemas/kg/visualiser-route.ts` is the ONE function every generator and reader
   uses: `<harness>/<id>/` for the full KG, `<harness>/<id>/<sub-graph>/` for
   one sub-graph (`subgraphs: "instance"` — one per covered instance — or
   `"directory"`, nested under `subgraphUnder[kind]` where the visualiser

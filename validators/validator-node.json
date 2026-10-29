@@ -5,5 +5,5 @@
     "kind": "validators",
     "family": "folio-validator/v1"
   },
-  "schema": "schemas/validator-node.ts#ValidatorNodeSchema"
+  "schema": "schemas/kg/validator-node.ts#ValidatorNodeSchema"
 }

@@ -3,7 +3,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { EMPTY_NOTE_TAGS } from "../carried-note.js";
+import { EMPTY_NOTE_TAGS } from "../kg/carried-note.js";
 import {
   MEMORY_SCHEMA_TAG,
   MemoryNodeSchema,

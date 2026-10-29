@@ -125,7 +125,7 @@
  * a geometry, not a licence to remove a non-colour channel.
  */
 import { z } from "zod";
-import { RepoFullNameSchema } from "../repo-full-name.js";
+import { RepoFullNameSchema } from "../kg/repo-full-name.js";
 
 import { nodeKind } from "../kg/node-kind.js";
 

@@ -72,7 +72,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { blockKindNode } from "./block-kinds";
-import { declaredDirectories } from "./declared-nodes";
+import { declaredDirectories } from "./kg/declared-nodes";
 import { poKey, readPoStrings } from "./po-strings";
 import { z } from "zod";
 

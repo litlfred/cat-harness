@@ -21,7 +21,7 @@
  * ## The rule is the instances' rule, from the same module
  *
  * A kind DECLARES its parents. {@link nodeKind} resolves every ancestor, orders
- * them with `flattenDependencies` from `schemas/dependency-order.ts` (deepest
+ * them with `flattenDependencies` from `schemas/kg/dependency-order.ts` (deepest
  * first, ties on declared parent order), and composes each ancestor's OWN shape
  * in that order. The instance resolver in `harness-config.ts` calls the same
  * flattener. Two answers to "what order do layers compose in" would be free to
@@ -50,7 +50,7 @@
  */
 import { z } from "zod";
 
-import { findConflicts, flattenDependencies } from "../dependency-order";
+import { findConflicts, flattenDependencies } from "./dependency-order";
 
 /** A node kind: its declared parents, its own fields, and the composed schema. */
 export interface NodeKind<S extends z.ZodRawShape = z.ZodRawShape> {

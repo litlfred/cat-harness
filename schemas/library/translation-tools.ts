@@ -44,7 +44,7 @@ import {
   type TranslatableFormat,
 } from "../kg/cat-harness.ts";
 import { declarationChain, resolveImplementingPath } from "../kg/harness-config.ts";
-import { instanceRootsIn } from "../instance-roots.ts";
+import { instanceRootsIn } from "../kg/instance-roots.ts";
 
 // The two profile schemas live with the declaration that carries them
 // (`contentTranslations`, bean `0r7u`); re-exported so callers keep one import.

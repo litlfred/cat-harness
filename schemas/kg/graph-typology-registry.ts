@@ -47,13 +47,13 @@
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { HARNESS_SUBGRAPH_DECLARATION_FILE, declaredNodeFiles } from "../declared-nodes";
-import { GraphTypologyNodeSchema, kindDefOf } from "../graph-typology-node";
-import { ValidatorNodeSchema, type ValidatorNode } from "../validator-node";
-import { instanceNamespaceOf, namespaceForLayer, NS_PREFIXES, OWN_NAMESPACE_VALUES } from "../namespaces";
-import type { NewInstanceSource } from "../subgraph-source";
+import { HARNESS_SUBGRAPH_DECLARATION_FILE, declaredNodeFiles } from "./declared-nodes";
+import { GraphTypologyNodeSchema, kindDefOf } from "./graph-typology-node";
+import { ValidatorNodeSchema, type ValidatorNode } from "./validator-node";
+import { instanceNamespaceOf, namespaceForLayer, NS_PREFIXES, OWN_NAMESPACE_VALUES } from "./namespaces";
+import type { NewInstanceSource } from "./subgraph-source";
 import { BOOTSTRAP_GRAPH_TYPOLOGIES } from "@litlfred/bootstrap-tools/schemas/graph.ts";
-import { findDeclarationFile, instanceRootsIn } from "../instance-roots";
+import { findDeclarationFile, instanceRootsIn } from "./instance-roots";
 import { readFileSync } from "node:fs";
 
 
@@ -383,7 +383,7 @@ export interface GraphTypologyDef {
    *
    * | kind | `schema` | `validator` |
    * |---|---|---|
-   * | `qa` | `schemas/qa-record-shapes.ts` | **none** — that module exports TypeScript INTERFACES; no Zod schema for `qa-witness/v1` exists anywhere |
+   * | `qa` | `schemas/kg/qa-record-shapes.ts` | **none** — that module exports TypeScript INTERFACES; no Zod schema for `qa-witness/v1` exists anywhere |
    *
    * So overloading `schema` would have made its one substantial use a lie:
    * a consumer that imported it expecting something parseable would get a
@@ -637,7 +637,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // reader needs it to find all the others.
   typologies: {
     description:
-      "the graph typologies a harness declares it OWNS, one `folio-graph-typology/v1` node per file (`schemas/graph-typology-node.ts`), loaded by the registry on first use across every instance; a name two files declare is refused. Owner, 2026-10-04: *\"there should not be a central registry for declaring mount tools and subgraph types\"*, and a `typologies/` graph rather than a contributions hook or a field in `<instance>.json` (option 1 of 3). The base layer lists only this one kind in code, because a reader needs it to find the rest. Bean `dmx1`.",
+      "the graph typologies a harness declares it OWNS, one `folio-graph-typology/v1` node per file (`schemas/kg/graph-typology-node.ts`), loaded by the registry on first use across every instance; a name two files declare is refused. Owner, 2026-10-04: *\"there should not be a central registry for declaring mount tools and subgraph types\"*, and a `typologies/` graph rather than a contributions hook or a field in `<instance>.json` (option 1 of 3). The base layer lists only this one kind in code, because a reader needs it to find the rest. Bean `dmx1`.",
     title: "Graph typologies",
     renderable: false,
     holds: "content",
@@ -655,7 +655,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // validator names the family.
   validators: {
     description:
-      "the validators a harness's code provides, one `folio-validator/v1` node each (`schemas/validator-node.ts`), naming the graph typology and `$schema` family it checks and the Zod export that checks it; the registry joins each onto its kind on first use, and refuses a second answer for one family. Owner, 2026-10-04: validators are KG nodes, and the validator names the family (option 1 of 2). Bean `riit`.",
+      "the validators a harness's code provides, one `folio-validator/v1` node each (`schemas/kg/validator-node.ts`), naming the graph typology and `$schema` family it checks and the Zod export that checks it; the registry joins each onto its kind on first use, and refuses a second answer for one family. Owner, 2026-10-04: validators are KG nodes, and the validator names the family (option 1 of 2). Bean `riit`.",
     title: "Validators",
     renderable: false,
     holds: "content",
@@ -672,7 +672,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // contribution is a node, one graph per contribution type.
   "qa-checkers": {
     description:
-      "the QA checkers a harness's code provides, one `folio-qa-checker/v1` node each (`schemas/contribution-nodes.ts`): the criterion it answers, and the dispatch table (`path#Export`, keyed by the criterion) that holds the code. `loadContributions` registers them for every folio whose dependency tree includes the harness. Owner, 2026-10-04: every contribution is a node, one graph per type (option 1 of 2), scoped by the dependency tree (option 1 of 3). Bean `riit`, step 3b.",
+      "the QA checkers a harness's code provides, one `folio-qa-checker/v1` node each (`schemas/kg/contribution-nodes.ts`): the criterion it answers, and the dispatch table (`path#Export`, keyed by the criterion) that holds the code. `loadContributions` registers them for every folio whose dependency tree includes the harness. Owner, 2026-10-04: every contribution is a node, one graph per type (option 1 of 2), scoped by the dependency tree (option 1 of 3). Bean `riit`, step 3b.",
     title: "QA checkers",
     renderable: false,
     holds: "content",
@@ -685,7 +685,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   },
   "pipeline-plugins": {
     description:
-      "the generic pipeline's slots a harness fills, one `folio-pipeline-plugin/v1` node each (`schemas/contribution-nodes.ts`): the slot (`pipeline/pipeline-plugins.ts`), and the table of implementations (`path#Export`, keyed by slot, typed against the slots' contract). `loadContributions` registers them for every folio whose dependency tree includes the harness. Bean `riit`, step 3b; the slots themselves are bean `squu`'s.",
+      "the generic pipeline's slots a harness fills, one `folio-pipeline-plugin/v1` node each (`schemas/kg/contribution-nodes.ts`): the slot (`pipeline/pipeline-plugins.ts`), and the table of implementations (`path#Export`, keyed by slot, typed against the slots' contract). `loadContributions` registers them for every folio whose dependency tree includes the harness. Bean `riit`, step 3b; the slots themselves are bean `squu`'s.",
     title: "Pipeline plugins",
     renderable: false,
     holds: "content",
@@ -702,7 +702,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // every instance; no module lists them.
   "block-kinds": {
     description:
-      "the block kinds a harness's content adapter owns, one `folio-block-kind/v1` node each (`schemas/block-kind-node.ts`): the kind string, its adapter and narrowest profile, label prefix, RDF types, builder and English heading. `schemas/block-kinds.ts` discovers them across every instance's declared graph, so no module lists the kinds. Owner, 2026-10-04: *\"kinds need to be discoverable … not centrally managed\"*; document kinds live in the content core and the math kinds in the science layer (option 2 of 3). Bean `riit`, step 2; sod4 finding #1.",
+      "the block kinds a harness's content adapter owns, one `folio-block-kind/v1` node each (`schemas/kg/block-kind-node.ts`): the kind string, its adapter and narrowest profile, label prefix, RDF types, builder and English heading. `schemas/block-kinds.ts` discovers them across every instance's declared graph, so no module lists the kinds. Owner, 2026-10-04: *\"kinds need to be discoverable … not centrally managed\"*; document kinds live in the content core and the math kinds in the science layer (option 2 of 3). Bean `riit`, step 2; sod4 finding #1.",
     title: "Block kinds",
     renderable: false,
     holds: "content",
@@ -718,7 +718,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // CONTENT_ADAPTERS from the typed ones; no module lists the vocabularies.
   "content-adapters": {
     description:
-      "the block VOCABULARIES a harness owns, one `folio-content-adapter/v1` node each (`schemas/content-adapter-node.ts`): the name every block-kind node's `adapter` names, the companion roles its blocks can have, whether cat-harness's code types it, and for an untyped one its vocabulary module. `schemas/block-kinds.ts` derives `CONTENT_ADAPTERS` from the typed nodes and `schemas/sdlc/block-qa.ts` derives `ADAPTER_COMPANION_ROLES`; an untyped vocabulary reaches a folio through its dependency tree. Owner, 2026-10-05, option 1 of 3: the vocabulary is a node and the server adapter CLASS is not, since the two do not line up (`document` has a class and no vocabulary, `dak` a vocabulary and no class). Bean `riit`, step 5.",
+      "the block VOCABULARIES a harness owns, one `folio-content-adapter/v1` node each (`schemas/kg/content-adapter-node.ts`): the name every block-kind node's `adapter` names, the companion roles its blocks can have, whether cat-harness's code types it, and for an untyped one its vocabulary module. `schemas/block-kinds.ts` derives `CONTENT_ADAPTERS` from the typed nodes and `schemas/sdlc/block-qa.ts` derives `ADAPTER_COMPANION_ROLES`; an untyped vocabulary reaches a folio through its dependency tree. Owner, 2026-10-05, option 1 of 3: the vocabulary is a node and the server adapter CLASS is not, since the two do not line up (`document` has a class and no vocabulary, `dak` a vocabulary and no class). Bean `riit`, step 5.",
     title: "Content adapters",
     renderable: false,
     holds: "content",
@@ -1242,10 +1242,10 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // should be part of a node/asset". `content`, by the same argument
   // `external-schema` makes: the subject matter is a DECISION — which answers
   // an adjudication may give, which namespaces are ours — and a person makes
-  // it. Diagrams and `schemas/namespaces.ts` READ these; nothing writes them.
+  // it. Diagrams and `schemas/kg/namespaces.ts` READ these; nothing writes them.
   "code-list": {
     description:
-      "closed sets of codes (`code-lists/`) — one `folio-code-list/v1` file per list, each code with a label, a definition, a source and, where it stands for one, a value; published as SKOS concept schemes. `content`, by the same argument as `external-schema`: the subject matter is a DECISION — which answers an adjudication may give, which namespaces are ours — and a person makes it. Diagrams (`<cat-harness.processes:adjudication list>`) and `schemas/namespaces.ts` READ these. Owner, 2026-09-23. Governed by [`code-lists`](../../library/library-core/code-lists.md).",
+      "closed sets of codes (`code-lists/`) — one `folio-code-list/v1` file per list, each code with a label, a definition, a source and, where it stands for one, a value; published as SKOS concept schemes. `content`, by the same argument as `external-schema`: the subject matter is a DECISION — which answers an adjudication may give, which namespaces are ours — and a person makes it. Diagrams (`<cat-harness.processes:adjudication list>`) and `schemas/kg/namespaces.ts` READ these. Owner, 2026-09-23. Governed by [`code-lists`](../../library/library-core/code-lists.md).",
     title: "Code lists",
     renderable: false,
     holds: "content",
@@ -1353,7 +1353,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "and test runs; every `$schema` family is named in `nodeSchemas`, which is the list " +
       "— a count here would be a second one, and it was already wrong by one before " +
       "`viewer-nav-qa/v1` was added. Generated; never hand-edited.",
-    schema: "schemas/qa-record-shapes.ts",
+    schema: "schemas/kg/qa-record-shapes.ts",
     // declared-path-literal: this table IS the declaration, as on `health`.
     nodeSchemas: {
       "kg-qa/v1": {},
@@ -1368,12 +1368,12 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "kg-qa-manifest/v1": {},
       "block-qa/v1": {},
       "folio-test-run/v1": {},
-      "qa-witness/v1": { shape: "schemas/qa-record-shapes.ts#QaWitness" },
-      "qa-results/v1": { shape: "schemas/qa-record-shapes.ts#QaResult" },
+      "qa-witness/v1": { shape: "schemas/kg/qa-record-shapes.ts#QaWitness" },
+      "qa-results/v1": { shape: "schemas/kg/qa-record-shapes.ts#QaResult" },
       // Per-checker freshness sidecars (`<criterion>.script.json`), written by the
       // QA sweep; validated by `validators/qa-script.json` (the block-qa schema package's Zod).
       "qa-script/v1": { generated: true },
-      "translation-qa/v1": { shape: "schemas/qa-record-shapes.ts#TranslationBlockQaReport" },
+      "translation-qa/v1": { shape: "schemas/kg/qa-record-shapes.ts#TranslationBlockQaReport" },
       // Written inline by two call sites and typed by neither — recorded,
       // not invented. `qa-graph-index.ts` names the tag only to say it is
       // NOT its own (`NOT_TO_BE_CONFUSED_WITH`).
@@ -1388,7 +1388,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "folio-detangle-sidecar/v1": { shape: "schemas/kg/detangle-sidecar.ts#DetangleSidecar" },
       // The per-graph LSI index sidecar (bean `ansc`): fingerprint, pole terms,
       // neighbours and findings — never the vectors.
-      "folio-lsi-index/v1": { shape: "schemas/qa-record-shapes.ts#LsiSidecar" },
+      "folio-lsi-index/v1": { shape: "schemas/kg/qa-record-shapes.ts#LsiSidecar" },
       // A downstream tool's run record (bean `fq5u`): outcome and input
       // fingerprint, read by kg:audit's `tool-downstream-fresh`.
       "folio-tool-run/v1": {},
@@ -2428,7 +2428,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     renderable: false,
     holds: "derived",
     // declared-path-literal: this table IS the declaration, as on `binary-release`.
-    schema: "schemas/site.ts",
+    schema: "schemas/kg/site.ts",
     nodeSchemas: {
       "basic-cdn-site/1.0.0": {},
     },
@@ -2444,7 +2444,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     renderable: false,
     holds: "derived",
     // declared-path-literal: this table IS the declaration.
-    schema: "schemas/site.ts",
+    schema: "schemas/kg/site.ts",
     nodeSchemas: {
       "cdn-site/1.0.0": {},
     },

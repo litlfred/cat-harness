@@ -18,7 +18,7 @@ subtly different and none tested.
 
 | | |
 |---|---|
-| the rules + the flattener | `cat-harness/schemas/dependency-order.ts` |
+| the rules + the flattener | `cat-harness/schemas/kg/dependency-order.ts` |
 | the pipeline that uses it | `cat-harness-tools/scripts/render-pipeline.ts` |
 | see the order without running it | `bun run cat render:order` |
 | run it | `bun run cat render` |
