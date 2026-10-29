@@ -10,9 +10,8 @@
  * @module cat-harness/schemas/declared-nodes
  * @graphNode none — a function library over the declared directories; it defines no schema
  */
-import { readdirSync, readFileSync, realpathSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { readdirSync, readFileSync } from "node:fs";
+import { join, resolve } from "node:path";
 
 import { findDeclarationFile, instanceRootsIn } from "./instance-roots";
 
@@ -29,17 +28,6 @@ import { findDeclarationFile, instanceRootsIn } from "./instance-roots";
  */
 const FIXTURE_ENV = "FOLIO_FIXTURE_CHECKOUT";
 
-/**
- * The platform checkout this module sits in: the directory above
- * `cat-harness/`. Every scan of "the instances beside the harness" starts
- * here — block kinds, content adapters, and the instance prefixes and
- * contexts that bind their types (cat-harness#181: `content-context.ts` used
- * `checkoutRootFor`, which stops at a sibling clone's own `.git`, while
- * `block-kinds.ts` scanned the parent, so a sibling-clone index found a
- * block kind whose prefix nothing bound).
- */
-export const PLATFORM_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
-
 /** Every directory declared with `graphTypology`, across the instances of a checkout (absolute paths, declaration order). */
 export function declaredDirectories(repoRoot: string, graphTypology: string): string[] {
   // input-site: env-unset FOLIO_FIXTURE_CHECKOUT #d3ac43d3 — a test-only override naming a checkout OUTSIDE the tree
@@ -52,20 +40,7 @@ export function declaredDirectories(repoRoot: string, graphTypology: string): st
   // ig-metadata-index, the todo kinds), so four tests failed standalone. The
   // fixture is set only when the checkout holds no vocabulary, never in a
   // composed checkout, so there a scan is unchanged.
-  // De-duplicated by real path (cat-harness#181): a fixture that IS this
-  // checkout, or holds the same clones, must not scan an instance twice.
-  const seen = new Set<string>();
-  const roots = (fixture ? [...ownRoots, ...instanceRootsIn(fixture)] : ownRoots).filter((r) => {
-    let real: string;
-    try {
-      real = realpathSync(r);
-    } catch {
-      real = resolve(r);
-    }
-    if (seen.has(real)) return false;
-    seen.add(real);
-    return true;
-  });
+  const roots = fixture ? [...ownRoots, ...instanceRootsIn(fixture)] : ownRoots;
   return roots.flatMap((root) => ownDeclaredDirectories(root, graphTypology, repoRoot));
 }
 

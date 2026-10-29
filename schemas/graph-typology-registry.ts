@@ -2664,7 +2664,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     // its shape. A pointer to where a fact is NOT written is worse than none,
     // because a reader who follows it concludes the shape is undeclared on
     // purpose. Bean `3oqj`; `audit-coverage` is what surfaced it.
-    schema: "schemas/interaction.ts",
+    schema: "schemas/conduct/interaction.ts",
     // declared-path-literal: this table IS the declaration, as on `health`.
     nodeSchemas: {
       "folio-interaction/v1": {},
@@ -2761,7 +2761,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     title: "Waivers",
     renderable: false,
     holds: "context",
-    schema: "schemas/waiver.ts",
+    schema: "schemas/conduct/waiver.ts",
     // declared-path-literal: as on `health` and `translation-sources` — this
     // table IS the declaration, so resolving `validator` through one would be
     // reading it from here. `check:kind-validators` proves it still loads.
