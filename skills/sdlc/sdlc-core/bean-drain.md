@@ -23,6 +23,13 @@ bean in it still goes through the ordinary lifecycle
 wrong only when **several agents drain the same store at once**: two of them
 starting the same bean.
 
+The drain is drawn as a process: `Process_BeanDrain`
+([`processes/sdlc/bean-drain.bpmn`](../../../processes/sdlc/bean-drain.bpmn),
+bean `bssi`). It builds the queue (the `drain-queue` Tool), then for each bean
+calls OPEN (`Process_BeanOpen`, whose check is the `bean-claim-check` Tool),
+works it, calls CLOSE (`Process_BeanClose`), and refills. The steps below are
+the same loop in prose.
+
 ## Roles
 
 | role | does | holds |
