@@ -10,7 +10,7 @@ import {
   effectiveReach,
   reachConflict,
 } from "./actor-reach";
-import { NETWORK_REACHES } from "./kg/cat-harness";
+import { NETWORK_REACHES } from "../kg/cat-harness";
 
 describe("effectiveReach composes two levels, asymmetrically", () => {
   test("an air-gapped deployment determines an undeclared actor", () => {

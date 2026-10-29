@@ -187,7 +187,7 @@ export const ActorDefinitionSchema = z.object({
   capabilities: z.array(z.string()),
   /**
    * Network reach — see `ActorDefinition.reach` in `assistant-types.ts`, and
-   * `schemas/actor-reach.ts` for how it composes with the deployment's.
+   * `schemas/process/actor-reach.ts` for how it composes with the deployment's.
    */
   reach: z.enum(NETWORK_REACHES).optional(),
   /**

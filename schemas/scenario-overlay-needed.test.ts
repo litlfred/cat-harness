@@ -12,7 +12,7 @@ import {
   onlyAdds,
   overlayRoleGraphs,
   scenarioLayersBelow,
-} from "./scenario-overlay";
+} from "./process/scenario-overlay";
 
 /**
  * An instance audit resolves actors from the platform, every instance the

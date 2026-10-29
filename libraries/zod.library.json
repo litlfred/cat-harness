@@ -17,7 +17,6 @@
   "usedBy": [
     "archimate/schemas/archimate.ts",
     "openapi/schemas/openapi.ts",
-    "schemas/actor-reach.ts",
     "schemas/computation-witness.ts",
     "schemas/conduct/interaction.ts",
     "schemas/conduct/memory.ts",
@@ -49,8 +48,6 @@
     "schemas/content/voice-skill.ts",
     "schemas/content/voices.ts",
     "schemas/content/withheld.ts",
-    "schemas/convention.ts",
-    "schemas/deployment-description.ts",
     "schemas/fsh-guts.ts",
     "schemas/kg/block-kind-node.ts",
     "schemas/kg/built-at-publish.ts",
@@ -103,11 +100,15 @@
     "schemas/library/tabular-records.ts",
     "schemas/library/theme-art-intake.ts",
     "schemas/precision-scalar.ts",
+    "schemas/process/actor-reach.ts",
+    "schemas/process/convention.ts",
     "schemas/process/decision-methodology-context.ts",
     "schemas/process/decision-request.ts",
+    "schemas/process/deployment-description.ts",
     "schemas/process/methodology.ts",
     "schemas/process/process-element-id.ts",
     "schemas/process/role-graph.ts",
+    "schemas/process/user-story.ts",
     "schemas/sdlc/adversarial-checklist.ts",
     "schemas/sdlc/artifact-store.ts",
     "schemas/sdlc/bean-graph.ts",
@@ -158,7 +159,6 @@
     "schemas/ui/slides-accessibility.ts",
     "schemas/ui/theme.ts",
     "schemas/ui/tile-count.ts",
-    "schemas/user-story.ts",
     "test/fixtures/standalone-checkout/folio-assistant-sci/schemas/mathpaper-vocabulary.ts"
   ]
 }

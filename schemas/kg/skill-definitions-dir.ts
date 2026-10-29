@@ -18,7 +18,7 @@ import { existsSync } from "node:fs";
 import { basename, join, resolve } from "node:path";
 import { instanceDirectoriesForGraph, instanceRootsIn, ownDirectoryById } from "./cat-harness.js";
 import { instanceRootNamed } from "./instance-roots";
-import { CONVENTION_GROUP } from "../convention.js";
+import { CONVENTION_GROUP } from "../process/convention.js";
 
 /** The subdirectory of a declared `skills` graph that holds JSON `SkillDefinition`s. */
 export const SKILL_DEFINITIONS_DIRNAME = "skill-definitions";

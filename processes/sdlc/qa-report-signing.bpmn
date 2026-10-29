@@ -123,7 +123,7 @@ A signature whose route is unrecorded is a signature whose weight cannot be judg
     </bpmn:serviceTask>
 
     <bpmn:serviceTask id="Task_ResolveReach" name="Resolve the performer's reach&#10;[effectiveReach + signing-api probe]">
-      <bpmn:documentation>Compute the two facts the gateway reads: effectiveReach(deployment, actor) from schemas/actor-reach.ts, and whether the signing-api capability is configured. Undeclared reach resolves to "unknown" rather than to the deployment's value — an aggregate does not determine a member.</bpmn:documentation>
+      <bpmn:documentation>Compute the two facts the gateway reads: effectiveReach(deployment, actor) from schemas/process/actor-reach.ts, and whether the signing-api capability is configured. Undeclared reach resolves to "unknown" rather than to the deployment's value — an aggregate does not determine a member.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="qa-report-signing" />
       </bpmn:extensionElements>
