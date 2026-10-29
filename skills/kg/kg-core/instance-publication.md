@@ -366,7 +366,7 @@ such lists do, missing every instance added since `l4ay`.
 | the host, `cat-harness` | `<site>/<stub>/<stub>.jsonld` | `kg-export.ts --scope instance`, its own line in `docs-site.yml` |
 | the checkout root, `folio-assistant` | `<site>/<stub>/<stub>.jsonld` | `kg-export.ts --instance .` (bean `l4ay`) |
 | `bootstrap` | `<site>/bootstrap/bootstrap.jsonld` | `bootstrap-tools/scripts/export-graph.ts` (owner, 2026-09-30, bean `xsqm`) |
-| every other declared instance | `<site>/<stub>/<stub>.jsonld` | `cat-harness-tools/scripts/instance-exports.ts` |
+| every other declared instance | `<site>/<stub>/<stub>.jsonld` | [`cat-harness-tools/scripts/instance-exports.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/scripts/instance-exports.ts) |
 
 - **Each document has a `.json` copy beside it**, the same bytes. Pages serves
   `.jsonld` as octet-stream, and `.json` is the only way to get a correct
@@ -480,7 +480,7 @@ host. That is the JSON Schema of the declaration itself, which every
 `tool-types.schema.json`, `tool-types/<Name>.schema.json` and each skill's I/O
 contract (`skills/<skill>/<io>.schema.json`) in the same directory, each at the
 URL its `$id` names. They sit under the host's own directory, beside its
-document, like everything else it publishes (litlfred/cat-harness-tools#676,
+document, like everything else it publishes ([litlfred/cat-harness-tools#676](https://github.com/litlfred/cat-harness-tools/issues/676),
 #603 decision 1b(i)). Each old site-root address holds a tombstone for one
 release, as a moved document's does (above): the old
 `$id`, `deprecated`, `isReplacedBy` the new one, and `allOf: [{ "$ref": <new> }]`,
