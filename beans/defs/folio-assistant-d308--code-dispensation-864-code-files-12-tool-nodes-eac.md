@@ -1,11 +1,11 @@
 ---
 # folio-assistant-d308
 title: 'CODE DISPENSATION: 868 code files → 13 Tool nodes, each bound to a BPMN task'
-status: in-progress
+status: completed
 type: epic
 priority: normal
 created_at: 2026-09-20T04:08:50Z
-updated_at: 2026-09-20T04:33:51Z
+updated_at: 2026-10-29T07:40:00Z
 parent: folio-assistant-zzmr
 ---
 
@@ -379,3 +379,7 @@ into an import path.
 
 Remaining, in verifiable-here order: `shzs` the audit family (12 run here — now
 the highest), then the six that need a folio to prove.
+
+## Closed 2026-10-29
+
+All done-when boxes met. cat-harness-tools#767 retired the epic-under-epic baseline entry, merged 2026-10-29. (Lane B drain thread.)
