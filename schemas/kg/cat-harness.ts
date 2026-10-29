@@ -4744,7 +4744,7 @@ export function isPublishedSkill(name: string): boolean {
 /**
  * Is this schema module allowed into a published graph?
  *
- * The FOURTH emitter, and it was not exercised until a `schemas/fsh-guts.ts`
+ * The FOURTH emitter, and it was not exercised until a `schemas/kg/fsh-guts.ts`
  * existed — which is to say the gap was latent from the day the strip was
  * written and only became visible when somebody added the module. The
  * blanket test in `fsh-guts-unpublished.test.ts` caught it on the first run,

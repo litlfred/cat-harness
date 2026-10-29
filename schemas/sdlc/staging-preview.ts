@@ -81,7 +81,7 @@
 
 import { z } from "zod";
 
-import { FshGutsNodeSchema, FSH_GUTS_SCHEMA_ID } from "../fsh-guts";
+import { FshGutsNodeSchema, FSH_GUTS_SCHEMA_ID } from "../kg/fsh-guts";
 
 /** The `kind` a trashcan node carries when it describes a staging preview. */
 export const STAGING_PREVIEW_KIND = "staging-preview";

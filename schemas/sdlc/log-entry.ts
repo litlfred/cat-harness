@@ -40,7 +40,7 @@ import { z } from "zod";
 
 import { BeanIdSchema } from "../tools/tool-types.ts";
 import { ProcessElementIdSchema } from "../process/process-element-id.ts";
-import { fshGutsDirectories } from "../fsh-guts.ts";
+import { fshGutsDirectories } from "../kg/fsh-guts.ts";
 
 /** The `$schema` tag every log entry carries, per the declare-yourself rule. */
 export const LOG_ENTRY_SCHEMA_ID = "folio-log/v1";
