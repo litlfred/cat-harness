@@ -16,7 +16,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { z } from "zod";
-import { RoleRefSchema, type RoleGraph } from "./role-graph";
+import { RoleRefSchema, type RoleGraph } from "./process/role-graph";
 
 /** The file holding an instance's user stories, inside its `scenarios` graph. */
 export const USER_STORIES_FILENAME = "stories.json";

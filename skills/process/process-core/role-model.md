@@ -37,7 +37,7 @@ to an Actor. The RA's system *realising* an actor maps to a mechanical Actor
 taking on that role. Owner, 2026-10-03 (#1984); the comparison is on
 the DAK layer's `findings/dth-terms.md`.
 
-Schema: [`schemas/role-graph.ts`](../../../schemas/role-graph.ts). Audit:
+Schema: [`schemas/process/role-graph.ts`](../../../schemas/role-graph.ts). Audit:
 `scripts/kg-audit.ts`, sidecar schema
 [`schemas/kg-qa.ts`](../../../schemas/kg-qa.ts).
 
@@ -229,7 +229,7 @@ again — a load-bearing rule kept only in a summary is one the next pass
 re-litigates.
 
 **It was also already in a schema — the wrong one of two.** `ACTOR_KINDS` in
-`schemas/role-graph.ts` has read all four values since the role graph was
+`schemas/process/role-graph.ts` has read all four values since the role graph was
 written, while `ActorTypeSchema` in `schemas/skill-package.ts` read
 `["person", "system"]` — and the registry validated the actor files against the
 narrower one, so the four-kind vocabulary could not be used by the files it
@@ -518,7 +518,7 @@ and the process.
 
 The older `<bootstrap.processes:role ref="reviewer"/>` in the lane's
 `extensionElements` is read for one release, with a warning, and only when
-`partitionElementRef` is absent (`laneRoleRef` in `schemas/role-graph.ts`); the
+`partitionElementRef` is absent (`laneRoleRef` in `schemas/process/role-graph.ts`); the
 QA report lists it as `lane-role-legacy-binding`. `<bootstrap.processes:role
 variable="true"/>` stays: it declares a performer who is whoever invoked the
 process. An explicit binding **wins** over name matching: a diagram that has

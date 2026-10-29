@@ -16,7 +16,7 @@
  * The cost was measured. Four harness modules imported `constraints.ts` or
  * `types.ts` for these symbols alone — `scripts/validate-skills.ts`,
  * `scripts/generate-registry.ts`, `schemas/assistant-types.ts`,
- * `schemas/assistant-workflow.ts` — and every one of those reads, in the
+ * `schemas/process/assistant-workflow.ts` — and every one of those reads, in the
  * repository split, as the harness depending on the content layer. It does
  * not: it is the harness depending on its own vocabulary, filed in the
  * content layer's drawer.
@@ -52,7 +52,7 @@ import { SutKindSchema } from "./test-plan";
  *
  * `person` names the human, `agent` the agentic and `system` the mechanical.
  * The prose reading, the table and the argument for the split live on the
- * re-export in `schemas/role-graph.ts`; the values live HERE, because this
+ * re-export in `schemas/process/role-graph.ts`; the values live HERE, because this
  * module is the dependency-free base (zod only) that both the registry schema
  * and the role graph can import.
  *

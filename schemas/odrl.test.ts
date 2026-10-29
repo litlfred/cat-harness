@@ -19,8 +19,8 @@ import {
   type OdrlPolicy,
 } from "./odrl.ts";
 import { ProvActivitySchema } from "./prov.ts";
-import { readActors, readPermissions } from "./role-graph.ts";
-import { actorsDir } from "./role-graph.ts";
+import { readActors, readPermissions } from "./process/role-graph.ts";
+import { actorsDir } from "./process/role-graph.ts";
 import { checkoutActors, checkoutPolicies } from "./scenario-overlay.ts";
 
 const INSTANCE = resolve(import.meta.dir, "..");

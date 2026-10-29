@@ -56,7 +56,7 @@
  * @graphNode schema
  */
 
-import { RoleRefSchema } from "./role-graph";
+import { RoleRefSchema } from "./process/role-graph";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { resolveHarnessConfigPath, readEffectiveConfig } from "./harness-config";
 import { join, relative, resolve } from "node:path";
@@ -66,7 +66,7 @@ import { RepoFullNameSchema } from "./repo-full-name.js";
 import { kgNodeLabelShape, type KgNodeLabels } from "./kg-node";
 import { defaultGraphTypologies, directoryForGraph } from "./cat-harness.js";
 import { BLOCK_KINDS } from "./block-kinds.js";
-import { ProcessElementIdSchema } from "./process-element-id.js";
+import { ProcessElementIdSchema } from "./process/process-element-id.js";
 
 /** Which aspect of the prose (or of its presentation) a rule governs. */
 export const VOICE_RULE_CATEGORIES = [

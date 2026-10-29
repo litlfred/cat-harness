@@ -61,7 +61,7 @@ import { z } from "zod";
 
 import { AlsoAboutSchema, NoteAnchorSchema } from "./note-anchor.js";
 import { nodeKind } from "./node-kind.js";
-import { ProcessElementIdSchema } from "./process-element-id.js";
+import { ProcessElementIdSchema } from "./process/process-element-id.js";
 
 /**
  * A task, addressed as the pair it actually is.

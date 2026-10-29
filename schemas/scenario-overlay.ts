@@ -91,7 +91,7 @@ import {
   type LoadedActor,
   type RoleDef,
   type RoleGraph,
-} from "./role-graph";
+} from "./process/role-graph";
 
 function deepEqual(a: unknown, b: unknown): boolean {
   if (a === b) return true;

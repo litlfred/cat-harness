@@ -44,7 +44,7 @@
  * @graphNode schema
  */
 import { z } from "zod";
-import { ProcessElementIdSchema } from "./process-element-id.js";
+import { ProcessElementIdSchema } from "./process/process-element-id.js";
 
 /** The `$schema` tag a session record carries. Files declare what they are. */
 export const SESSION_CONTEXT_SCHEMA_TAG = "folio-session-context/v1";

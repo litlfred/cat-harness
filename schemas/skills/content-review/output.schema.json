@@ -109,7 +109,7 @@
         },
         "role": {
           "type": "string",
-          "description": "Role id from schemas/role-graph.ts — the lane this was decided in."
+          "description": "Role id from schemas/process/role-graph.ts — the lane this was decided in."
         },
         "by": {
           "type": "object",

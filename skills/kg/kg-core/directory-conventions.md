@@ -1455,7 +1455,7 @@ that implements it (`<bootstrap.processes:skill ref>`); a lane names the role it
 (`partitionElementRef` → a `<bpmn:resource>` whose id is the role id); a role carries
 the skills its lane's activities need. `bun run cat kg:audit` checks every one of
 those joins and writes a sidecar per node. Model and resolution rules:
-[`role-model.md`](../../process/process-core/role-model.md); schema: `schemas/role-graph.ts`.
+[`role-model.md`](../../process/process-core/role-model.md); schema: `schemas/process/role-graph.ts`.
 
 **Not yet true end to end.** `resolveSkillDirs` (`schemas/harness-config.ts`)
 computes the cross-instance overlay and has **no caller**, so skill discovery is

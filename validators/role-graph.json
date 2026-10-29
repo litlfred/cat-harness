@@ -4,5 +4,5 @@
   "validates": {
     "kind": "scenarios"
   },
-  "schema": "schemas/role-graph.ts#RoleGraphSchema"
+  "schema": "schemas/process/role-graph.ts#RoleGraphSchema"
 }

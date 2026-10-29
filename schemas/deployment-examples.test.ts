@@ -9,7 +9,7 @@ import { join } from "node:path";
 
 import { topologyConflicts } from "./cat-harness";
 import { DEPLOYMENTS_DIRNAME, deploymentProblems, placementReach, readDeployments } from "./deployment-description";
-import { readActors } from "./role-graph";
+import { readActors } from "./process/role-graph";
 
 const scenarios = join(import.meta.dir, "..", "scenarios");
 const deployments = readDeployments(join(scenarios, DEPLOYMENTS_DIRNAME));
