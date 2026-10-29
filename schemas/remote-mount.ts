@@ -22,6 +22,48 @@
  * - code arrives through the mounted code directories, so imports resolve
  *   through mounted paths.
  *
+ * ## Tools: a chosen set, runnable (bean `mo75` G3)
+ *
+ * `overrides.<instance>.tools` names Tools by id, and the mount brings each
+ * one RUNNABLE. The owner's rulings, 2026-10-24 (decision card,
+ * https://github.com/litlfred/cat-harness-tools/issues/744):
+ *
+ * 1. **A Tool brings its definition AND its implementation**, each with its
+ *    import closure: the definition is `<tools dir>/<id>/<id>.ts` in the
+ *    instance that declares it (the folder convention, `tool-folders.ts`);
+ *    the implementation is the module its `invoke` names — `inProcess.module`
+ *    in the declarer or an instance that needs it (`resolveImplementingPath`'s
+ *    rule), or the script a `bun run cat <key>` command resolves to through
+ *    the instances' `checkoutScripts`.
+ * 2. **One closure walker**: bootstrap-tools' `importClosure`
+ *    (`scripts/check-closure.ts`), the walk `check:tools-closure` itself runs.
+ * 3. **Directory granularity**: every DECLARED directory the closure touches
+ *    is mounted whole — the most specific one, so a nested directory mounts
+ *    alone. The lock is unchanged: it records directories, as it always has,
+ *    and never a single file.
+ *
+ * With `tools` named anywhere in a mount entry, the entry's instances mount
+ * what the closure touches plus the directories their override names, and
+ * not their default list; a `whole` instance stays whole.
+ *
+ * ## Hydrated: metadata first (bean `mo75` G2)
+ *
+ * `hydrated: true` on a mount entry, or on `overrides.<instance>`, mounts each
+ * chosen directory as ONE file: that subgraph's published
+ * `index.hydrated.jsonld` at the pin (`SubgraphSource` → `kind: "hydrated"`),
+ * so a downstream can read what `tools/` or `skills/` holds before it decides
+ * which of it to materialise. No code arrives, so the instance is not laid
+ * down as an instance: no `<name>.json` is written (discovery would otherwise
+ * read every absent directory as empty — `dh4f`), the lock marks it
+ * `hydrated`, and {@link mountedInstanceRoots} never offers it to the overlay
+ * as somewhere to import from.
+ *
+ * The file is read from the pin's git tree when a commit carries it, and
+ * otherwise from the pin's subgraph index PACKAGE (bean `mo75` G2b; owner,
+ * 2026-10-24, option A: published per pin in a package, never committed and
+ * never generated at mount). Such a directory's lock entry records the
+ * package's URL and sha256 ({@link LockedDirectorySchema}`.package`).
+ *
  * ## Why the default path is the harness's HOME path
  *
  * A mounted instance lands, by default, at the path it has in its own
@@ -53,6 +95,7 @@ import { z } from "zod";
 import { INDEX_LOCK_FILENAME, LEGACY_MOUNT_LOCK_SUFFIX, lockFilesIn } from "./instance-roots.js";
 import { MountTrustBasisSchema, MountTrustSchema } from "./mount-trust.js";
 import { RepoFullNameSchema } from "./repo-full-name.js";
+import { ToolIdSchema } from "./tool-id.js";
 
 /** An instance name — the same rule `cat-harness.ts` applies to `needs` and subscriptions. */
 const InstanceNameSchema = z.string().regex(/^[a-z0-9][a-z0-9-]*$/, "an instance name: lowercase, digits and dashes");
@@ -120,8 +163,28 @@ export const MountOverrideSchema = z
       .refine((xs) => new Set(xs).size === xs.length, { message: "override directories: an id appears twice" })
       .optional(),
     skip: z.literal(true).optional(),
+    /**
+     * Tool ids THIS instance declares, each mounted runnable: its definition,
+     * its implementation and their import closure, as the declared
+     * directories that closure touches (module note, §"Tools"). An id the
+     * instance does not declare at the pin is refused at plan time, never
+     * dropped. Not with `hydrated` (metadata brings no code) or `skip`.
+     */
+    tools: z
+      .array(ToolIdSchema)
+      .min(1)
+      .refine((xs) => new Set(xs).size === xs.length, { message: "override tools: an id appears twice" })
+      .optional(),
     /** Overrides the harness's `mountDefaults.whole` either way; `directories` is then ignored. */
     whole: z.boolean().optional(),
+    /**
+     * Mount this instance's directories as their published
+     * `index.hydrated.jsonld` only — metadata, no files (bean `mo75` G2).
+     * Overrides the mount entry's own `hydrated` either way. `directories`
+     * still chooses which subgraphs; `whole` and `hydrated` together are
+     * refused at plan time, since one asks for every file and the other for none.
+     */
+    hydrated: z.boolean().optional(),
     /**
      * Consent for THIS instance at its own pin. Required for an instance
      * reached through a GITLINK: that is another repository at another
@@ -148,6 +211,12 @@ export const RemoteMountSchema = z
     ref: CommitShaSchema,
     /** Per-instance overrides across the closure, keyed by instance name. */
     overrides: z.record(InstanceNameSchema, MountOverrideSchema).optional(),
+    /**
+     * Mount every instance this entry reaches as hydrated metadata
+     * ({@link MountOverrideSchema}`.hydrated`), unless its override says
+     * `hydrated: false`. Bean `mo75` G2.
+     */
+    hydrated: z.literal(true).optional(),
     note: z.string().min(1).optional(),
     /**
      * What makes this mount trusted: a person's consent for THIS pin, or a
@@ -218,6 +287,21 @@ export const LockedDirectorySchema = z
     /** SHA-256 over the sorted `<sha256>  <file>` listing — `treeDigest`. */
     treeDigest: z.string().regex(/^[0-9a-f]{64}$/),
     files: z.number().int().nonnegative(),
+    /**
+     * A hydrated directory whose `index.hydrated.jsonld` came from the pin's
+     * subgraph index PACKAGE rather than its git tree (bean `mo75` G2b; the
+     * contract is `subgraphIndexPackage` in `subgraph-manifest.ts`): the
+     * tarball's URL and sha256, and the file's path inside the package, so a
+     * replay fetches the same bytes and refuses any others.
+     */
+    package: z
+      .object({
+        url: z.string().url(),
+        sha256: z.string().regex(/^[0-9a-f]{64}$/),
+        member: z.string().min(1),
+      })
+      .strict()
+      .optional(),
   })
   .strict();
 
@@ -255,6 +339,14 @@ export const LockedInstanceSchema = z
      * and says so.
      */
     trust: MountTrustBasisSchema.optional(),
+    /**
+     * Mounted as hydrated metadata (bean `mo75` G2): each directory holds one
+     * `index.hydrated.jsonld`, read from the `upstreamPath` directory the
+     * instance publishes it in, and the declaration is recorded (it fixed
+     * those paths) but NOT laid down — so nothing discovers a code-less
+     * instance there.
+     */
+    hydrated: z.literal(true).optional(),
   })
   .strict();
 export type LockedInstance = z.infer<typeof LockedInstanceSchema>;
@@ -323,6 +415,8 @@ export function mountedInstanceRoots(scope: string): Map<string, string> {
     const lock = readMountLock(join(dir, n));
     if (!lock.ok) continue;
     for (const inst of lock.lock.instances) {
+      // Metadata only: nothing there to import from or resolve `needs` to.
+      if (inst.hydrated) continue;
       const abs = join(dir, inst.path);
       if (!out.has(inst.instance) && existsSync(abs)) out.set(inst.instance, abs);
     }

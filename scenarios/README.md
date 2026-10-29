@@ -17,5 +17,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `scenarios`, holding `sce
 | [`stories.json`](stories.json) | data |  |
 | [`actors/`](actors/) | _nothing declares what this holds_ | |
 | [`capabilities/`](capabilities/) | _nothing declares what this holds_ | |
+| [`deployments/`](deployments/) | _nothing declares what this holds_ | |
 
 <!-- kg:subgraph:end -->

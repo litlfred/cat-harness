@@ -129,6 +129,22 @@ export const ReviewThreadIdSchema = z
   .describe("A review thread id — a GitHub review-thread node id or a GitLab discussion id");
 
 /**
+ * A GitLab username, e.g. `litlfred` or `jane.doe`. Owner, 2026-10-24 (bean
+ * `folio-assistant-4dbr`, "Fill both gaps"), so that requesting review on a
+ * merge request can be a Tool node: GitLab usernames may hold `.` and `_` and
+ * run past GitHub's 39 characters, so `Login` refuses some of them.
+ *
+ * GitLab's own rule: letters, digits, `_`, `-` and `.`; not starting with `-`
+ * or `.`, not ending with `.`, `.git` or `.atom`, at most 255 long. No value
+ * can be read as a flag or carry a shell metacharacter.
+ */
+export const GitLabUsernameSchema = z
+  .string()
+  .regex(/^[A-Za-z0-9_](?:[A-Za-z0-9_.-]{0,253}[A-Za-z0-9_-])?$/, "a GitLab username is letters, digits, '_', '-' and '.', not starting with '-' or '.' and not ending with '.'")
+  .refine((u) => !/\.(git|atom)$/i.test(u), "a GitLab username does not end with .git or .atom")
+  .describe("A GitLab username, e.g. jane.doe");
+
+/**
  * Free prose — a bean body, a comment, a note. **Deliberately unconstrained, and
  * therefore not admissible as a command-line argument.**
  *
@@ -334,6 +350,16 @@ export const DocIdSchema = z
   .min(1)
   .regex(/^[A-Za-z0-9][A-Za-z0-9._-]*$/, "a document id is letters, digits, dot, underscore and hyphen, starting with a letter or digit")
   .describe("A library document id, e.g. WPR-RDO-2020-003-eng");
+
+/**
+ * A repository at one pin: `<owner/repo>@<40-hex sha>`, e.g. the checkout a
+ * Tool's output was built in, recorded as provenance. The same shape as the
+ * right-hand side of `MountSeed`, so no shell metacharacter can parse.
+ */
+export const PinnedRepoSchema = z
+  .string()
+  .regex(/^[A-Za-z0-9][A-Za-z0-9-]*\/[A-Za-z0-9._-]+@[0-9a-f]{40}$/, "a pinned repository is <owner/repo>@<40-hex sha>")
+  .describe("A repository at one commit, e.g. <owner>/<repo>@<40-hex sha>");
 
 /**
  * One `mount:remote --seed`: `<name>=<owner/repo>@<40-hex sha>`, the instance to
@@ -668,12 +694,14 @@ export const TOOL_TYPES = {
   RepoFullName: RepoFullNameSchema,
   ChangeProposalNumber: ChangeProposalNumberSchema,
   ReviewThreadId: ReviewThreadIdSchema,
+  GitLabUsername: GitLabUsernameSchema,
   Markdown: MarkdownSchema,
   Text: TextSchema,
   FilesystemPath: FilesystemPathSchema,
   Slug: SlugSchema,
   DocId: DocIdSchema,
   MountSeed: MountSeedSchema,
+  PinnedRepo: PinnedRepoSchema,
   Login: LoginSchema,
   ContentType: ContentTypeSchema,
   LinkMode: LinkModeSchema,
@@ -838,9 +866,11 @@ export const INJECTION_SAFE: ReadonlySet<ToolTypeName> = new Set<ToolTypeName>([
   "RepoFullName",
   "ChangeProposalNumber",
   "ReviewThreadId",
+  "GitLabUsername",
   "Slug",
   "DocId",
   "MountSeed",
+  "PinnedRepo",
   "Login",
   // Every enum below is injection-safe by construction: a value outside the
   // member list does not parse, and no member contains a shell metacharacter.

@@ -39,6 +39,12 @@
       "description": "How content is written, reviewed and validated: the content-type adapters, the content lifecycle, editorial and voice review, and domain authoring (math, WHO SMART guidelines)."
     },
     {
+      "id": "tools",
+      "path": "tools",
+      "title": "The tool surface",
+      "description": "How the harness's Tools are defined, assembled and served: the MCP contract, assembly and projection, how a skill names the Tool it uses, and why a covered Tool is not yet a reachable one."
+    },
+    {
       "id": "sdlc",
       "path": "sdlc",
       "title": "Software delivery practice",

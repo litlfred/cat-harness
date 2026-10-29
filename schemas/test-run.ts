@@ -89,6 +89,12 @@ import { RequirementRefSchema } from "@litlfred/bootstrap-tools/schemas/requirem
 import { NETWORK_REACHES, REACH_UNKNOWN } from "./actor-reach";
 import { inputSiteReached } from "./input-trace.ts";
 
+const RunContextRefFieldSchema = z
+  .object({
+    sha256: z.string().regex(/^[0-9a-f]{64}$/, "a sha256 digest is 64 lowercase hex characters"),
+  })
+  .strict();
+
 /** The `$schema` tag every test run carries. */
 export const TEST_RUN_SCHEMA_ID = "folio-test-run/v1";
 
@@ -220,6 +226,11 @@ export const TestRunSchema = z
   plan: TestPlanRefSchema.optional(),
   /** The system under test (bean `ygzh`). Required whenever `plan` is set. */
   sut: SutRefSchema.optional(),
+  /**
+   * Content-addressed reference to the `folio-run-context/v1` record of this
+   * test run (`docs/proposals/tool-releases-2026-10-07.md`, owner C1 = a).
+   */
+  runContext: RunContextRefFieldSchema.optional(),
   })
   .superRefine((r, ctx) => {
     // A plan is executed AGAINST something. A run naming a plan and no system

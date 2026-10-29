@@ -4331,6 +4331,139 @@
     if (last < text.length) parent.appendChild(document.createTextNode(text.slice(last)));
   }
 
+  /**
+   * Browser mirror of `schemas/render-output.ts` (`renderToolOutput`, bean
+   * `q2wm`, R17): renders one tool/skill output value according to its declared
+   * `RENDER_AS` hint (`text`, `url`, `markdown`, `json`) as DOM nodes with no
+   * raw HTML injection.
+   */
+  function renderToolOutput(value, hint) {
+    var str = String(value == null ? "" : value);
+    var as = (hint && hint.as) || "text";
+    if (as === "url") {
+      var outUrl = safeHref(str);
+      return outUrl
+        ? el("a", { href: outUrl, rel: "noopener noreferrer" }, str)
+        : el("span", { class: "fa-tool-output-refused" }, str);
+    }
+    if (as === "markdown") {
+      var md = el("div", { class: "fa-tool-output-markdown" });
+      renderMarkdownInto(md, str);
+      return md;
+    }
+    if (as === "json") {
+      return el("pre", { class: "fa-tool-output-json" }, str);
+    }
+    return el("span", { class: "fa-tool-output-text" }, str);
+  }
+
+  function renderWindowOutputs(outputs) {
+    if (!Array.isArray(outputs) || outputs.length === 0) return null;
+    var box = el("div", { class: "fa-sticky-outputs" });
+    for (var i = 0; i < outputs.length; i++) {
+      var item = outputs[i];
+      if (!item) continue;
+      var as = (item.render && item.render.as) || "text";
+      var row = el("div", { class: "fa-sticky-output", "data-render-as": as });
+      if (item.name) {
+        row.appendChild(el("span", { class: "fa-sticky-output-name" }, String(item.name)));
+      }
+      row.appendChild(renderToolOutput(item.value, item.render));
+      box.appendChild(row);
+    }
+    return box;
+  }
+
+  /**
+   * Lazy window detail fetch — bean `q2wm`:
+   *
+   * Rendering the board with `N` cards makes 0 per-card detail fetches up
+   * front (`todoSlot` renders only the avatar/tile). When a reader opens a
+   * card window (`openCard`), `fetchCardDetail` fetches that card's detail URL
+   * once, caches the result by `todo.id`, and renders any body/tool outputs
+   * through `renderBody(..., { markdown: true })` and `renderToolOutput`.
+   */
+  var cardDetailCache = {};
+  var cardDetailPending = {};
+
+  function cardDetailUrl(todo) {
+    if (!todo) return undefined;
+    return (
+      todo.detailHref ||
+      todo.bodyHref ||
+      todo.artifactHref ||
+      (!todo.comment ? todo.jsonldHref : undefined)
+    );
+  }
+
+  function fetchCardDetail(todo, done) {
+    if (!todo || !todo.id) return done(null, false);
+    if (Object.prototype.hasOwnProperty.call(cardDetailCache, todo.id)) {
+      return done(cardDetailCache[todo.id], true);
+    }
+    var rawUrl = cardDetailUrl(todo);
+    if (!rawUrl) return done(null, false);
+    var safeUrl = safeHref(rawUrl);
+    if (!safeUrl) {
+      var refused = {
+        outputs: [{ name: "detail", value: rawUrl, render: { as: "url" } }],
+      };
+      cardDetailCache[todo.id] = refused;
+      return done(refused, false);
+    }
+    if (cardDetailPending[todo.id]) {
+      cardDetailPending[todo.id].push(done);
+      return;
+    }
+    cardDetailPending[todo.id] = [done];
+    fetch(safeUrl, { credentials: "same-origin" })
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.text();
+      })
+      .then(function (raw) {
+        var parsed;
+        var trimmed = String(raw || "").trim();
+        if (trimmed.charAt(0) === "{") {
+          try {
+            parsed = JSON.parse(trimmed);
+          } catch (_e) {
+            parsed = { body: raw };
+          }
+        } else {
+          parsed = { body: raw };
+        }
+        cardDetailCache[todo.id] = parsed;
+        var waiters = cardDetailPending[todo.id] || [];
+        delete cardDetailPending[todo.id];
+        for (var w = 0; w < waiters.length; w++) waiters[w](parsed, false);
+      })
+      .catch(function (e) {
+        console.warn("docs-ui: could not read detail for " + todo.id + " (" + e.message + ")");
+        var waiters = cardDetailPending[todo.id] || [];
+        delete cardDetailPending[todo.id];
+        for (var w = 0; w < waiters.length; w++) waiters[w](null, false);
+      });
+  }
+
+  function applyWindowDetail(cardEl, todo, detail) {
+    var bodyText =
+      (detail && (detail.comment || detail.description || detail.body)) ||
+      todo.comment ||
+      "";
+    var oldBody = cardEl.querySelector(".fa-sticky-body");
+    if (bodyText && oldBody && oldBody.parentNode) {
+      var nextBody = renderBody(bodyText, { markdown: true });
+      if (oldBody.hasAttribute("hidden")) nextBody.setAttribute("hidden", "hidden");
+      oldBody.parentNode.replaceChild(nextBody, oldBody);
+    }
+    var outputs = (detail && detail.outputs) || todo.outputs;
+    var oldOut = cardEl.querySelector(".fa-sticky-outputs");
+    if (oldOut && oldOut.parentNode) oldOut.parentNode.removeChild(oldOut);
+    var outBox = renderWindowOutputs(outputs);
+    if (outBox) cardEl.appendChild(outBox);
+  }
+
 
   /**
    * Board order: todos stacked by the BPMN subprocess hierarchy.
@@ -9578,7 +9711,18 @@
       // already carries the frame's `[x]` — a second Close inside it would be
       // two controls for one act, and they would not agree about what they
       // close. Which controls a kind may declare here is `t4my`'s.
-      panel.appendChild(buildSticky(todo));
+      var cardEl = buildSticky(todo);
+      panel.appendChild(cardEl);
+      if (todo.outputs && todo.outputs.length) {
+        applyWindowDetail(cardEl, todo, null);
+      }
+      if (cardDetailUrl(todo)) {
+        panel.setAttribute("data-fa-detail-state", "loading");
+        fetchCardDetail(todo, function (detail, fromCache) {
+          if (detail) applyWindowDetail(cardEl, todo, detail);
+          panel.setAttribute("data-fa-detail-state", fromCache ? "cached" : "loaded");
+        });
+      }
       // SELECTING ANY PART RAISES — the owner's words, so the listener is on
       // the panel rather than on its title bar. `mousedown` and not `click`,
       // so the raise happens before a control inside the panel acts on it.

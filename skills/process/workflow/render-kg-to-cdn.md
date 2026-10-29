@@ -46,7 +46,7 @@ the publication-manager alert — around the call.
 The general process has one call activity, **bound by the Tool**: the
 activity names this skill, the Tool for the chosen target `satisfies` it, and
 the Tool lists its own `subprocesses` — the diagram of *its* steps
-([`skills-and-tools`](../../folio-core/skills-and-tools.md),
+([`skills-and-tools`](../../tools/folio-core/skills-and-tools.md),
 [`bpmn-processes`](bpmn-processes.md)). The general skill never lists them.
 
 | target | Tool | its subprocess | its message |
@@ -69,5 +69,5 @@ Not the verification of what a build produced — that is
 [`publish-verification`](../../sdlc/sdlc-core/publish-verification.md), and it runs
 *before* a caller hands its tree over. Not the decision to release —
 [`content-publish`](../../authoring/content-lifecycle/content-publish.md) and
-[`release-lifecycle`](release-lifecycle.md). This step renders, pushes, and says
+[`release-lifecycle`](../../sdlc/sdlc-core/release-lifecycle.md). This step renders, pushes, and says
 whether the push landed.

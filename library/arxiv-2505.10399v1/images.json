@@ -28,6 +28,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "Élément de schéma img-p002-1 de la figure 2, qui représente le flux de génération et d'évaluation des explications.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "Componente de diagrama img-p002-1 de la figura 2, que representa el flujo de generación y evaluación de explicaciones.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "مكوّن المخطط img-p002-1 من الشكل 2 الذي يصوّر تدفق توليد التفسيرات وتقييمها.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Элемент схемы img-p002-1 рисунка 2, изображающего процесс генерации и оценки объяснений.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 中的图示组件 img-p002-1，该图描绘了解释的生成与评估流程。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ]
     },
@@ -57,6 +117,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "Élément de schéma img-p002-2 de la figure 2, qui représente le flux de génération et d'évaluation des explications.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "Componente de diagrama img-p002-2 de la figura 2, que representa el flujo de generación y evaluación de explicaciones.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "مكوّن المخطط img-p002-2 من الشكل 2 الذي يصوّر تدفق توليد التفسيرات وتقييمها.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Элемент схемы img-p002-2 рисунка 2, изображающего процесс генерации и оценки объяснений.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 中的图示组件 img-p002-2，该图描绘了解释的生成与评估流程。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ]
     },
@@ -86,6 +206,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "Élément de schéma img-p002-3 de la figure 2, qui représente le flux de génération et d'évaluation des explications.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "Componente de diagrama img-p002-3 de la figura 2, que representa el flujo de generación y evaluación de explicaciones.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "مكوّن المخطط img-p002-3 من الشكل 2 الذي يصوّر تدفق توليد التفسيرات وتقييمها.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Элемент схемы img-p002-3 рисунка 2, изображающего процесс генерации и оценки объяснений.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 中的图示组件 img-p002-3，该图描绘了解释的生成与评估流程。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ]
     },
@@ -115,6 +295,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "Élément de schéma img-p002-4 de la figure 2, qui représente le flux de génération et d'évaluation des explications.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "Componente de diagrama img-p002-4 de la figura 2, que representa el flujo de generación y evaluación de explicaciones.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "مكوّن المخطط img-p002-4 من الشكل 2 الذي يصوّر تدفق توليد التفسيرات وتقييمها.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Элемент схемы img-p002-4 рисунка 2, изображающего процесс генерации и оценки объяснений.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 中的图示组件 img-p002-4，该图描绘了解释的生成与评估流程。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ]
     },
@@ -144,6 +384,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "Élément de schéma img-p002-5 de la figure 2, qui représente le flux de génération et d'évaluation des explications.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "Componente de diagrama img-p002-5 de la figura 2, que representa el flujo de generación y evaluación de explicaciones.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "مكوّن المخطط img-p002-5 من الشكل 2 الذي يصوّر تدفق توليد التفسيرات وتقييمها.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Элемент схемы img-p002-5 рисунка 2, изображающего процесс генерации и оценки объяснений.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 中的图示组件 img-p002-5，该图描绘了解释的生成与评估流程。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ]
     },
@@ -173,6 +473,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "Élément de schéma img-p002-6 de la figure 2, qui représente le flux de génération et d'évaluation des explications.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "Componente de diagrama img-p002-6 de la figura 2, que representa el flujo de generación y evaluación de explicaciones.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "مكوّن المخطط img-p002-6 من الشكل 2 الذي يصوّر تدفق توليد التفسيرات وتقييمها.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Элемент схемы img-p002-6 рисунка 2, изображающего процесс генерации и оценки объяснений.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 中的图示组件 img-p002-6，该图描绘了解释的生成与评估流程。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ]
     },
@@ -202,6 +562,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "Élément de schéma img-p002-7 de la figure 2, qui représente le flux de génération et d'évaluation des explications.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "Componente de diagrama img-p002-7 de la figura 2, que representa el flujo de generación y evaluación de explicaciones.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "مكوّن المخطط img-p002-7 من الشكل 2 الذي يصوّر تدفق توليد التفسيرات وتقييمها.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Элемент схемы img-p002-7 рисунка 2, изображающего процесс генерации и оценки объяснений.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 中的图示组件 img-p002-7，该图描绘了解释的生成与评估流程。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ]
     },
@@ -231,6 +651,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "Élément de schéma img-p002-8 de la figure 2, qui représente le flux de génération et d'évaluation des explications.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "Componente de diagrama img-p002-8 de la figura 2, que representa el flujo de generación y evaluación de explicaciones.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "مكوّن المخطط img-p002-8 من الشكل 2 الذي يصوّر تدفق توليد التفسيرات وتقييمها.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Элемент схемы img-p002-8 рисунка 2, изображающего процесс генерации и оценки объяснений.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 中的图示组件 img-p002-8，该图描绘了解释的生成与评估流程。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -277,6 +757,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "Élément de schéma img-p002-11 de la figure 2, qui représente le flux de génération et d'évaluation des explications.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "Componente de diagrama img-p002-11 de la figura 2, que representa el flujo de generación y evaluación de explicaciones.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "مكوّن المخطط img-p002-11 من الشكل 2 الذي يصوّر تدفق توليد التفسيرات وتقييمها.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Элемент схемы img-p002-11 рисунка 2, изображающего процесс генерации и оценки объяснений.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 中的图示组件 img-p002-11，该图描绘了解释的生成与评估流程。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -323,6 +863,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "Élément de schéma img-p002-14 de la figure 2, qui représente le flux de génération et d'évaluation des explications.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "Componente de diagrama img-p002-14 de la figura 2, que representa el flujo de generación y evaluación de explicaciones.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "مكوّن المخطط img-p002-14 من الشكل 2 الذي يصوّر تدفق توليد التفسيرات وتقييمها.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Элемент схемы img-p002-14 рисунка 2, изображающего процесс генерации и оценки объяснений.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "图 2 中的图示组件 img-p002-14，该图描绘了解释的生成与评估流程。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ],
       "placements": [

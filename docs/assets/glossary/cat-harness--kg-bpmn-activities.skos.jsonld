@@ -14,6 +14,166 @@
       "dcterms:source": "BPMN activities of cat-harness"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/globaltask.gt_brief",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Brief the work"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "What the work is and why, what is already measured with its provenance, how it will be done, and what would falsify the approach. The bean is already claimed by the Process_BeanOpen call before this step (bean m8gz), so a sibling session sees the work before the brief is written."
+        }
+      ],
+      "skos:notation": "GT_Brief",
+      "dcterms:source": "cat-harness/processes/global-tasks.bpmn#GT_Brief",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/globaltask.gt_closetrackingissue",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the tracking issue"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Clean: close the open issue carrying the tracking label (the `label` input), if any, saying why the verdict is clean. Runs only on a clean verdict — on unknown the issue is left untouched and the job fails instead, because could-not-check is never rendered as clean."
+        }
+      ],
+      "skos:notation": "GT_CloseTrackingIssue",
+      "dcterms:source": "cat-harness/processes/global-tasks.bpmn#GT_CloseTrackingIssue",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/globaltask.gt_drain",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Drain: land, close or re-target the open PRs"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Work the PRs `seed:ready` named until the source settles: land or close the heavy movers and the next layer's PRs, bring the layer's open PRs to five or fewer, and finish any move in flight. Fix a red rehearsal or a discovery miss where it is. Nothing is seeded from here; it goes back to the gateway, which re-asks."
+        }
+      ],
+      "skos:notation": "GT_Drain",
+      "dcterms:source": "cat-harness/processes/global-tasks.bpmn#GT_Drain",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/globaltask.gt_ensuretrackinglabel",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Ensure the tracking label exists"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Create the tracking label (the `label` input) with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet. Skipped on an unknown verdict."
+        }
+      ],
+      "skos:notation": "GT_EnsureTrackingLabel",
+      "dcterms:source": "cat-harness/processes/global-tasks.bpmn#GT_EnsureTrackingLabel",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/globaltask.gt_logretained",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Append `retained` with the reason"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The entry that makes the log worth reading. A removal was considered and refused, or a preview still stands because a signal fired; without an entry that leaves no trace, and the next person asking \"why is this preview still up\" has nothing to consult. A reason is REQUIRED — the tool refuses without one."
+        }
+      ],
+      "skos:notation": "GT_LogRetained",
+      "dcterms:source": "cat-harness/processes/global-tasks.bpmn#GT_LogRetained",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/globaltask.gt_recordsignoff",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Record the sign-off as a requirement-signoff attestation"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "THE RECORD, and not relaxable: a judgement nobody wrote down is indistinguishable from one never made (`adjudication`, A_RecordEntry). Append one `requirement-signoff` record to `test/attestations/requirement-signoff/<set slug>.attestations.json` — who (kind, id, actor), at, scope (the set or one member), the outcome from the requirement-set code list, the stage it moves the set to, the reason, and the permalink to the issue comment where it was decided — and set the set's `stage` to match. Issue #2405 FR-011 / FR-012. GW_SignoffRecorded after this reads the record back, so this step cannot be skipped by completing it: a sign-off that left no attestation loops here again."
+        }
+      ],
+      "skos:notation": "GT_RecordSignoff",
+      "dcterms:source": "cat-harness/processes/global-tasks.bpmn#GT_RecordSignoff",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/globaltask.gt_reportwhatmoves",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Report what would move — sizes, and what breaks"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The agent reports and waits: what would move, how large, what in the parent breaks, and the rollback. `deletion-requires-confirmation` is not a courtesy to waive: an agent never removes or relocates a durable artefact on its own initiative."
+        }
+      ],
+      "skos:notation": "GT_ReportWhatMoves",
+      "dcterms:source": "cat-harness/processes/global-tasks.bpmn#GT_ReportWhatMoves",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/globaltask.gt_trackissue",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Open or EDIT the one tracking issue"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Findings: EDIT the one open issue carrying the tracking label (the `label` input) if there is one, otherwise create it, with the report as the body. One issue edited in place, never a new issue or a comment per run, so the tracking issue never becomes a feed."
+        }
+      ],
+      "skos:notation": "GT_TrackIssue",
+      "dcterms:source": "cat-harness/processes/global-tasks.bpmn#GT_TrackIssue",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_activitylog.a_dowork",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -354,47 +514,147 @@
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanlifecycle.task_checkexists",
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_asktheperson.a_compose",
       "@type": "skos:Concept",
       "skos:inScheme": {
         "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
       },
       "skos:prefLabel": [
         {
-          "@value": "Check before you create (exact-title search)"
+          "@value": "Compose the full question"
         }
       ],
       "skos:definition": [
         {
-          "@value": "STRICT. `beans create` is not idempotent: it mints a fresh id every call and dedupes on nothing, so re-entering a step duplicates the plan instead of no-op'ing. In the qou folio an unguarded re-run produced 14,688 duplicate beans — 92% of every open bean — which starved the idle-backlog policy of signal and collided with 15 real ids."
+          "@value": "What is being decided, stated as what will differ; every id, path and coined name glossed; every option with its letter, a one-line explanation and its trade-off; the recommendation, first and marked; what will happen if no answer comes. Can the reader answer without opening anything? If not, it is not ready. More than one decision open: ask the next one in full and give a count for the rest."
         }
       ],
-      "skos:notation": "Task_CheckExists",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-lifecycle.bpmn#Task_CheckExists",
+      "skos:notation": "A_Compose",
+      "dcterms:source": "cat-harness/processes/process/ask-the-person.bpmn#A_Compose",
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanlifecycle.task_claim",
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_asktheperson.a_offercard",
       "@type": "skos:Concept",
       "skos:inScheme": {
         "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
       },
       "skos:prefLabel": [
         {
-          "@value": "Claim it (status: in-progress)"
+          "@value": "Offer the same options as a tappable card"
         }
       ],
       "skos:definition": [
         {
-          "@value": "Idempotent. Claim BEFORE working, and note the branch, so a sibling session can see the item is taken rather than discovering it by collision."
+          "@value": "Whatever the host calls its selection tool (`AskUserQuestion`, `request_decision`, a button card): the same letters and labels as the chat text, the recommended option marked. No host card tool: say so in the chat and keep each answer to one short choice."
         }
       ],
-      "skos:notation": "Task_Claim",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-lifecycle.bpmn#Task_Claim",
+      "skos:notation": "A_OfferCard",
+      "dcterms:source": "cat-harness/processes/process/ask-the-person.bpmn#A_OfferCard",
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanlifecycle.task_complete",
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_asktheperson.a_proceedondefault",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Proceed on the stated default, question left open"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Do what the question said would happen with no answer, and say so. Nothing irreversible proceeds on a default: such a step waits for the person."
+        }
+      ],
+      "skos:notation": "A_ProceedOnDefault",
+      "dcterms:source": "cat-harness/processes/process/ask-the-person.bpmn#A_ProceedOnDefault",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_asktheperson.a_record",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Record the answer"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Hand the answer back to the calling step, quoted. If it settles how a kind of thing is decided, it is a rule: write it into the governing skill in the same turn."
+        }
+      ],
+      "skos:notation": "A_Record",
+      "dcterms:source": "cat-harness/processes/process/ask-the-person.bpmn#A_Record",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_asktheperson.a_writeinchat",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Write it in the chat"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Post the whole composed question as ordinary chat text BEFORE any card. This is the copy that survives: a card, once answered, shows only the chosen option, and a dismissed card shows nothing. Never \"see the card\", never a request for a typed reply such as \"1y 2n\"."
+        }
+      ],
+      "skos:notation": "A_WriteInChat",
+      "dcterms:source": "cat-harness/processes/process/ask-the-person.bpmn#A_WriteInChat",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_asktheperson.u_choose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Choose an option"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "One tap on the card, or any answer the person prefers to give. Free text is always available and never required."
+        }
+      ],
+      "skos:notation": "U_Choose",
+      "dcterms:source": "cat-harness/processes/process/ask-the-person.bpmn#U_Choose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanclose.close_archive",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Archive the bean (completed or scrapped)"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Move the bean, now completed or scrapped, into the archive, with a line saying which process closed it. A bean still open stays where it is with a note saying why: only a completed or scrapped bean may be archived (check:bean-archive), and only once the calling process has finished. The periodic sweep (`beans archive`) still archives anything this step leaves — it stays the floor, this op the exception (`todo-manager` § Archiving). The owner's 2026-10-20 ruling keeps archive a per-activity op; this is that activity, shared by both terminal outcomes and by every caller."
+        }
+      ],
+      "skos:notation": "Close_Archive",
+      "dcterms:source": "cat-harness/processes/sdlc/bean-close.bpmn#Close_Archive",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanclose.close_complete",
       "@type": "skos:Concept",
       "skos:inScheme": {
         "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
@@ -406,55 +666,15 @@
       ],
       "skos:definition": [
         {
-          "@value": "Only once nothing is unchecked, and with a summary of what changed. The engine's `resolve` completes a bean only after the instance itself has completed — whether work is done is a judgement, and a bean is not closed on someone else's say-so."
+          "@value": "Only once nothing is unchecked, and with a summary of what changed. The engine's `resolve` completes a bean only after the instance itself has completed, or has nothing left but archive steps — whether work is done is a judgement, and a bean is not closed on someone else's say-so. The only `resolve` op in the corpus (`check:bean-calls`)."
         }
       ],
-      "skos:notation": "Task_Complete",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-lifecycle.bpmn#Task_Complete",
+      "skos:notation": "Close_Complete",
+      "dcterms:source": "cat-harness/processes/sdlc/bean-close.bpmn#Close_Complete",
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanlifecycle.task_create",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "Create the bean (agent CLI, not an engine op)"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "`beans create \"<title>\"`. This is the AGENT's call. The workflow engine has no `create` op — its vocabulary is claim, note and resolve, all of which act on an instance's existing bean."
-        }
-      ],
-      "skos:notation": "Task_Create",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-lifecycle.bpmn#Task_Create",
-      "skos:note": "candidate"
-    },
-    {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanlifecycle.task_leavealone",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "Leave it alone (coordinate instead)"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Never resolve, scrap or delete a bean another session or a human owns. Claiming is how two sessions avoid picking the same item; closing someone else's is how one of them loses work it had not finished reporting."
-        }
-      ],
-      "skos:notation": "Task_LeaveAlone",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-lifecycle.bpmn#Task_LeaveAlone",
-      "skos:note": "candidate"
-    },
-    {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanlifecycle.task_recordblocker",
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanclose.close_recordblocker",
       "@type": "skos:Concept",
       "skos:inScheme": {
         "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
@@ -466,15 +686,15 @@
       ],
       "skos:definition": [
         {
-          "@value": "Blocked is not scrapped. Set `--blocked-by`, say in the body what would unblock it, and return it to `todo` so it is visible to whoever can act. An in-progress bean nobody is progressing reads as active work."
+          "@value": "Blocked is not scrapped. Set `--blocked-by`, say in the body what would unblock it, and return it to `todo` so it is visible to whoever can act. An in-progress bean nobody is progressing reads as active work. Not archived: the work is still wanted."
         }
       ],
-      "skos:notation": "Task_RecordBlocker",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-lifecycle.bpmn#Task_RecordBlocker",
+      "skos:notation": "Close_RecordBlocker",
+      "dcterms:source": "cat-harness/processes/sdlc/bean-close.bpmn#Close_RecordBlocker",
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanlifecycle.task_scrap",
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanclose.close_scrap",
       "@type": "skos:Concept",
       "skos:inScheme": {
         "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
@@ -486,11 +706,51 @@
       ],
       "skos:definition": [
         {
-          "@value": "`status: scrapped`, plus a \"Reasons for Scrapping\" section. This is what \"disable\" means here — the CLI has no disabled state; its vocabulary is draft, todo, in-progress, completed, scrapped. DELETION IS NEVER THE ANSWER, even though `beans delete` exists. A scrapped bean records that the work was considered and rejected, and why; a deleted one leaves a sibling session unable to tell abandonment from accident, and leaves the next agent free to re-open the same dead end."
+          "@value": "`status: scrapped`, plus a \"Reasons for Scrapping\" section. This is what \"disable\" means here — the CLI has no disabled state; its vocabulary is draft, todo, in-progress, completed, scrapped. The agent's own `beans update`; the engine has no scrap op. DELETION IS NEVER THE ANSWER, even though `beans delete` exists. A scrapped bean records that the work was considered and rejected, and why; a deleted one leaves a sibling session unable to tell abandonment from accident, and leaves the next agent free to re-open the same dead end."
         }
       ],
-      "skos:notation": "Task_Scrap",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-lifecycle.bpmn#Task_Scrap",
+      "skos:notation": "Close_Scrap",
+      "dcterms:source": "cat-harness/processes/sdlc/bean-close.bpmn#Close_Scrap",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanlifecycle.call_beanclose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "End the bean in a state that says why: done is completed and archived, not wanted is scrapped with its reasons and archived, blocked records what it waits on and goes back to `todo`. Process_BeanClose is the one place resolve and archive are drawn."
+        }
+      ],
+      "skos:notation": "Call_BeanClose",
+      "dcterms:source": "cat-harness/processes/sdlc/bean-lifecycle.bpmn#Call_BeanClose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanlifecycle.call_beanopen",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Open the bean [bean-open]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Check before you create (exact-title search), create the bean when none exists, find out whose it is, and claim it — or leave it alone when a sibling holds it. Process_BeanOpen is the one place a claim is drawn."
+        }
+      ],
+      "skos:notation": "Call_BeanOpen",
+      "dcterms:source": "cat-harness/processes/sdlc/bean-lifecycle.bpmn#Call_BeanOpen",
       "skos:note": "candidate"
     },
     {
@@ -511,6 +771,86 @@
       ],
       "skos:notation": "Task_Work",
       "dcterms:source": "cat-harness/processes/sdlc/bean-lifecycle.bpmn#Task_Work",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanopen.open_checkexists",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Check before you create (exact-title search)"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "STRICT. `beans create` is not idempotent: it mints a fresh id every call and dedupes on nothing, so re-entering a step duplicates the plan instead of no-op'ing. In the qou folio an unguarded re-run produced 14,688 duplicate beans — 92% of every open bean — which starved the idle-backlog policy of signal and collided with 15 real ids."
+        }
+      ],
+      "skos:notation": "Open_CheckExists",
+      "dcterms:source": "cat-harness/processes/sdlc/bean-open.bpmn#Open_CheckExists",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanopen.open_claim",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Claim it (status: in-progress)"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Idempotent. Claim BEFORE working, and note the branch, so a sibling session can see the item is taken rather than discovering it by collision. The only `claim` op in the corpus: every process that claims calls this process (`check:bean-calls`)."
+        }
+      ],
+      "skos:notation": "Open_Claim",
+      "dcterms:source": "cat-harness/processes/sdlc/bean-open.bpmn#Open_Claim",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanopen.open_create",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Create the bean (agent CLI, not an engine op)"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "`beans create \"<title>\"`. This is the AGENT's call. The workflow engine has no `create` op — its vocabulary is claim, note, resolve and archive, all of which act on an instance's existing bean."
+        }
+      ],
+      "skos:notation": "Open_Create",
+      "dcterms:source": "cat-harness/processes/sdlc/bean-open.bpmn#Open_Create",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_beanopen.open_leavealone",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Leave it alone (coordinate instead)"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Never resolve, scrap or delete a bean another session or a human owns. Claiming is how two sessions avoid picking the same item; closing someone else's is how one of them loses work it had not finished reporting."
+        }
+      ],
+      "skos:notation": "Open_LeaveAlone",
+      "dcterms:source": "cat-harness/processes/sdlc/bean-open.bpmn#Open_LeaveAlone",
       "skos:note": "candidate"
     },
     {
@@ -546,7 +886,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Clean: close the open ci-health issue, if any, saying why (main is clean). Runs only on a clean verdict — on unknown the issue is left untouched and the job fails instead, because could-not-check is never rendered as clean."
+          "@value": "Clean: close the open issue carrying the tracking label (the `label` input), if any, saying why the verdict is clean. Runs only on a clean verdict — on unknown the issue is left untouched and the job fails instead, because could-not-check is never rendered as clean. Clean here means main is clean."
         }
       ],
       "skos:notation": "Task_Close",
@@ -566,7 +906,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Create the ci-health label with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet. Skipped on an unknown verdict."
+          "@value": "Create the tracking label (the `label` input) with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet. Skipped on an unknown verdict."
         }
       ],
       "skos:notation": "Task_Label",
@@ -586,7 +926,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Findings: EDIT the one open issue labelled ci-health if there is one, otherwise create it, with the report as the body. One issue edited in place, never a new issue or a comment per run, so the tracking issue never becomes a feed."
+          "@value": "Findings: EDIT the one open issue carrying the tracking label (the `label` input) if there is one, otherwise create it, with the report as the body. One issue edited in place, never a new issue or a comment per run, so the tracking issue never becomes a feed."
         }
       ],
       "skos:notation": "Task_Track",
@@ -611,6 +951,26 @@
       ],
       "skos:notation": "Task_AddressReview",
       "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_AddressReview",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_codechangereview.task_archivebean",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Task_ArchiveBean",
+      "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_ArchiveBean",
       "skos:note": "candidate"
     },
     {
@@ -641,12 +1001,12 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Claim the work item"
+          "@value": "Open the bean [bean-open]"
         }
       ],
       "skos:definition": [
         {
-          "@value": "Claim before you work. A claim ANNOUNCES rather than reserves until the PR exists, which is why the branch is announced at the next step and not at the end."
+          "@value": "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
         }
       ],
       "skos:notation": "Task_ClaimBean",
@@ -661,7 +1021,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Record what was done, and close"
+          "@value": "Record what was done"
         }
       ],
       "skos:definition": [
@@ -1194,6 +1554,166 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_chooseasset",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Select upstream asset and target folio"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Name the upstream instance (`<owner>/<repo>`), the asset's declared path in that instance, the commit `ref` (when pinned), and the target folio declaration that will receive the copy."
+        }
+      ],
+      "skos:notation": "Task_ChooseAsset",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_ChooseAsset",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_copyanddeclareasset",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Copy asset into target folio and declare in assets[]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Write the asset bytes into a declared path inside the target folio and add the `KgAsset` entry to the target folio's `<name>.json` `assets[]` list (`directory-conventions`). Never drop the copy into an undeclared scratch directory."
+        }
+      ],
+      "skos:notation": "Task_CopyAndDeclareAsset",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_CopyAndDeclareAsset",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_inspectreadonly",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Browse in place and emit KgAsset snippet (read-only)"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Clean degradation when no write capability (`git-push`, `github-api`, `github-connector`) is present: inspect the asset in place through the zero-write `browse` affordance and output the ready-to-paste `KgAsset` entry (with `source: { instance, path, ref }` populated) so the author can apply it where they have write access."
+        }
+      ],
+      "skos:notation": "Task_InspectReadOnly",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_InspectReadOnly",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_probewritecapability",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Probe write capability (git-push, github-api, github-connector)"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Check whether the session holds at least one of the three write capabilities (`git-push`, `github-api`, or `github-connector` under `scenarios/capabilities/`). Keep available, absent and could-not-determine distinct."
+        }
+      ],
+      "skos:notation": "Task_ProbeWriteCapability",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_ProbeWriteCapability",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_readupstreamasset",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Read upstream asset and origin — write nothing"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Read the asset bytes and its origin coordinates (`instance` as `<owner>/<repo>`, `path` within that instance, and commit `ref`) from the source knowledge graph without modifying anything in the source lane."
+        }
+      ],
+      "skos:notation": "Task_ReadUpstreamAsset",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_ReadUpstreamAsset",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_stampassetsource",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Stamp KgAsset.source { instance, path, ref }"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Populate `source: { instance, path, ref }` (`AssetSourceSchema` in `schemas/kg-node.ts`) on the new `KgAsset` entry in the same change. Because `source` absent is a third state meaning \"authored locally in this instance\", omitting `source` on a copied asset is forbidden."
+        }
+      ],
+      "skos:notation": "Task_StampAssetSource",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_StampAssetSource",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_validatedeclaredasset",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Validate declared asset and provenance (check:declared-assets)"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Run `bun run cat check:declaration-resolution` (`check:declared-assets`) to verify that the copied asset exists at its declared path, its `KgAsset.source` conforms to `AssetSourceSchema`, and the upstream source graph remains untouched."
+        }
+      ],
+      "skos:notation": "Task_ValidateDeclaredAsset",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_ValidateDeclaredAsset",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_copyintofolio.task_workoncopy",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Edit, comment or raise todos on the folio's copy"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The copied asset is now writable content of the target folio with recorded upstream provenance (`KgAsset.source`). The folio author may edit it in place, attach review comments, or raise todos (`todo-manager`) against it."
+        }
+      ],
+      "skos:notation": "Task_WorkOnCopy",
+      "dcterms:source": "cat-harness/processes/kg/copy-into-folio.bpmn#Task_WorkOnCopy",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_copyoutmaterialized.task_editdirectly",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -1331,6 +1851,46 @@
       ],
       "skos:notation": "BA_Submit",
       "dcterms:source": "cat-harness/processes/process/crdm-requirements.bpmn#BA_Submit",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_crdm.call_beanclose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose",
+      "dcterms:source": "cat-harness/processes/process/crdm-requirements.bpmn#Call_BeanClose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_crdm.call_beanopen",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Open the bean [bean-open]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
+        }
+      ],
+      "skos:notation": "Call_BeanOpen",
+      "dcterms:source": "cat-harness/processes/process/crdm-requirements.bpmn#Call_BeanOpen",
       "skos:note": "candidate"
     },
     {
@@ -1826,7 +2386,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "On the single edge from `Start_Process_CRDM_Deliver` into `A_Implement`, so the approach is chosen before any code exists. By Phase 6 the needs, requirements and data model are signed off, which is exactly the evidence an options analysis needs and the reason it belongs here rather than earlier: at `Call_Needs` there is nothing to weigh, and after `A_Implement` the choice has been made in code. Note where this is NOT. The work-plan named `crdm-requirements-workflow`, and `A_Implement` is not in that diagram — `crdm-requirements.bpmn` is the orchestrator, seven call activities and a gateway, and Phase 6 lives here in `crdm-deliver.bpmn`. The call goes where the step is, not where the plan said to look. The three loop-backs into `A_Implement` — `_5` (increment rejected), `_7` (MVP not ready), `_13` (feedback translated) — deliberately BYPASS this call. Routing them through it would run the subprocess on every iteration of the inner loop, which is the ceremony this design refuses: a gate invoked on every pass stops being read. An iteration reworks an approach already chosen; if the APPROACH is what is wrong, that is not a loop iteration and it belongs to the calling step in `crdm-requirements.bpmn`. Contrast `upstream-version-adoption`, where the loop DOES re-enter the analysis. There the loop-back returns to `A_Impact`, which re-gathers the evidence, so the second pass weighs genuinely different inputs. Here the loop returns to implementation with the evidence unchanged. `A_Implement` carries `cat-harness.processes:bean op=\"claim\"`; this step carries no bean op, because `Process_OptionsAnalysis` ends with its own `decision-audit` note on the bean the caller claimed."
+          "@value": "On the single edge from `Start_Process_CRDM_Deliver` into `A_Implement`, so the approach is chosen before any code exists. By Phase 6 the needs, requirements and data model are signed off, which is exactly the evidence an options analysis needs and the reason it belongs here rather than earlier: at `Call_Needs` there is nothing to weigh, and after `A_Implement` the choice has been made in code. Note where this is NOT. The work-plan named `crdm-requirements-workflow`, and `A_Implement` is not in that diagram — `crdm-requirements.bpmn` is the orchestrator, seven call activities and a gateway, and Phase 6 lives here in `crdm-deliver.bpmn`. The call goes where the step is, not where the plan said to look. The three loop-backs into `A_Implement` — `_5` (increment rejected), `_7` (MVP not ready), `_13` (feedback translated) — deliberately BYPASS this call. Routing them through it would run the subprocess on every iteration of the inner loop, which is the ceremony this design refuses: a gate invoked on every pass stops being read. An iteration reworks an approach already chosen; if the APPROACH is what is wrong, that is not a loop iteration and it belongs to the calling step in `crdm-requirements.bpmn`. Contrast `upstream-version-adoption`, where the loop DOES re-enter the analysis. There the loop-back returns to `A_Impact`, which re-gathers the evidence, so the second pass weighs genuinely different inputs. Here the loop returns to implementation with the evidence unchanged. `A_Implement` carries a `note` on the bean (its claim is the OPEN that `Process_CRDM` calls first); this step carries no bean op, because `Process_OptionsAnalysis` ends with its own `decision-audit` note on the bean the caller claimed."
         }
       ],
       "skos:notation": "Call_OptionsAnalysis",
@@ -2646,7 +3206,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "The event that makes the log worth reading. A removal was CONSIDERED and refused; without an entry that leaves no trace on the branch at all, and the next person asking *\"why is this preview still up\"* has only a comment on a pull request that may itself be closed."
+          "@value": "The entry that makes the log worth reading. A removal was considered and refused, or a preview still stands because a signal fired; without an entry that leaves no trace, and the next person asking \"why is this preview still up\" has nothing to consult. A reason is REQUIRED — the tool refuses without one."
         }
       ],
       "skos:notation": "Task_LogRetained",
@@ -2771,6 +3331,86 @@
       ],
       "skos:notation": "Task_Validate",
       "dcterms:source": "cat-harness/processes/sdlc/feature-staging.bpmn#Task_Validate",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_graphdetanglement.call_beanclose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose",
+      "dcterms:source": "cat-harness/processes/kg/graph-detanglement.bpmn#Call_BeanClose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_graphdetanglement.call_beanclose_2",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_2",
+      "dcterms:source": "cat-harness/processes/kg/graph-detanglement.bpmn#Call_BeanClose_2",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_graphdetanglement.call_beanclose_3",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_3",
+      "dcterms:source": "cat-harness/processes/kg/graph-detanglement.bpmn#Call_BeanClose_3",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_graphdetanglement.call_beanopen",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Open the bean [bean-open]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
+        }
+      ],
+      "skos:notation": "Call_BeanOpen",
+      "dcterms:source": "cat-harness/processes/kg/graph-detanglement.bpmn#Call_BeanOpen",
       "skos:note": "candidate"
     },
     {
@@ -2926,7 +3566,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "The agent reports and waits. `deletion-requires-confirmation` is not a courtesy to waive: an agent never removes or relocates a durable artefact on its own initiative."
+          "@value": "The agent reports and waits: what would move, how large, what in the parent breaks, and the rollback. `deletion-requires-confirmation` is not a courtesy to waive: an agent never removes or relocates a durable artefact on its own initiative."
         }
       ],
       "skos:notation": "Task_Propose",
@@ -3454,6 +4094,146 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_kgseparation.call_beanclose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose",
+      "dcterms:source": "cat-harness/processes/kg/kg-separation.bpmn#Call_BeanClose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_kgseparation.call_beanclose_2",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_2",
+      "dcterms:source": "cat-harness/processes/kg/kg-separation.bpmn#Call_BeanClose_2",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_kgseparation.call_beanclose_3",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_3",
+      "dcterms:source": "cat-harness/processes/kg/kg-separation.bpmn#Call_BeanClose_3",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_kgseparation.call_beanclose_4",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_4",
+      "dcterms:source": "cat-harness/processes/kg/kg-separation.bpmn#Call_BeanClose_4",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_kgseparation.call_beanclose_5",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_5",
+      "dcterms:source": "cat-harness/processes/kg/kg-separation.bpmn#Call_BeanClose_5",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_kgseparation.call_beanclose_6",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_6",
+      "dcterms:source": "cat-harness/processes/kg/kg-separation.bpmn#Call_BeanClose_6",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_kgseparation.call_beanopen",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Open the bean [bean-open]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
+        }
+      ],
+      "skos:notation": "Call_BeanOpen",
+      "dcterms:source": "cat-harness/processes/kg/kg-separation.bpmn#Call_BeanOpen",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_kgseparation.task_authorise",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -3481,12 +4261,12 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Brief, and claim the bean"
+          "@value": "Brief the work"
         }
       ],
       "skos:definition": [
         {
-          "@value": "What is separating and why, what is already measured with its provenance, how it will be done, and what would falsify the approach. Claim the bean so a sibling session sees the work."
+          "@value": "What the work is and why, what is already measured with its provenance, how it will be done, and what would falsify the approach. The bean is already claimed by the Process_BeanOpen call before this step (bean m8gz), so a sibling session sees the work before the brief is written. Here the work is a separation: what is separating, and why."
         }
       ],
       "skos:notation": "Task_Brief",
@@ -3726,7 +4506,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "The agent reports and waits: what moves, how large, what in the parent breaks, and the rollback. It never relocates a durable artefact on its own initiative."
+          "@value": "The agent reports and waits: what would move, how large, what in the parent breaks, and the rollback. `deletion-requires-confirmation` is not a courtesy to waive: an agent never removes or relocates a durable artefact on its own initiative."
         }
       ],
       "skos:notation": "Task_Propose",
@@ -4384,6 +5164,86 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_mergerefusal.call_beanclose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose",
+      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Call_BeanClose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_mergerefusal.call_beanclose_2",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_2",
+      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Call_BeanClose_2",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_mergerefusal.call_beanclose_3",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_3",
+      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Call_BeanClose_3",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_mergerefusal.call_beanopen",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Open the bean [bean-open]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
+        }
+      ],
+      "skos:notation": "Call_BeanOpen",
+      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Call_BeanOpen",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_mergerefusal.task_agentfix",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -4426,7 +5286,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean, merge commit as evidence"
+          "@value": "Record the merge commit as evidence"
         }
       ],
       "skos:notation": "Task_Close",
@@ -6101,7 +6961,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Clean: close the open pr-no-checks issue, if any, saying why (every open pull request's head now has a CI run). Runs only on a clean verdict — on unknown the issue is left untouched and the job fails instead, because could-not-check is never rendered as clean."
+          "@value": "Clean: close the open issue carrying the tracking label (the `label` input), if any, saying why the verdict is clean. Runs only on a clean verdict — on unknown the issue is left untouched and the job fails instead, because could-not-check is never rendered as clean. Clean here means every open pull request's head now has a CI run."
         }
       ],
       "skos:notation": "Task_Close",
@@ -6141,7 +7001,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Create the pr-no-checks label with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet. Skipped on an unknown verdict."
+          "@value": "Create the tracking label (the `label` input) with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet. Skipped on an unknown verdict."
         }
       ],
       "skos:notation": "Task_Label",
@@ -6181,7 +7041,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Findings: EDIT the one open issue labelled pr-no-checks if there is one, otherwise create it, with the sweep's report as the body. One issue edited in place, never a new issue or a comment per run, so the tracking issue never becomes a feed."
+          "@value": "Findings: EDIT the one open issue carrying the tracking label (the `label` input) if there is one, otherwise create it, with the report as the body. One issue edited in place, never a new issue or a comment per run, so the tracking issue never becomes a feed. The body is the sweep's report."
         }
       ],
       "skos:notation": "Task_Track",
@@ -6936,7 +7796,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "THE ENTRY THAT MAKES THE LOG WORTH READING. A preview still standing because a signal fired leaves no trace otherwise, and the next person asking \"why is this still up\" has nothing to consult. A reason is REQUIRED — the tool refuses without one."
+          "@value": "The entry that makes the log worth reading. A removal was considered and refused, or a preview still stands because a signal fired; without an entry that leaves no trace, and the next person asking \"why is this preview still up\" has nothing to consult. A reason is REQUIRED — the tool refuses without one."
         }
       ],
       "skos:notation": "A_LogRetained",
@@ -7016,7 +7876,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Clean: close the open repo-health issue, if any, saying why (every check ran and none had anything to report). Runs only on a clean verdict — on unknown the issue is left untouched and the job fails instead, because could-not-check is never rendered as clean."
+          "@value": "Clean: close the open issue carrying the tracking label (the `label` input), if any, saying why the verdict is clean. Runs only on a clean verdict — on unknown the issue is left untouched and the job fails instead, because could-not-check is never rendered as clean. Clean here means every check ran and none had anything to report."
         }
       ],
       "skos:notation": "Task_Close",
@@ -7036,7 +7896,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Create the repo-health label with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet. Skipped on an unknown verdict."
+          "@value": "Create the tracking label (the `label` input) with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet. Skipped on an unknown verdict."
         }
       ],
       "skos:notation": "Task_Label",
@@ -7056,11 +7916,171 @@
       ],
       "skos:definition": [
         {
-          "@value": "Findings: EDIT the one open issue labelled repo-health if there is one, otherwise create it, with the report as the body. One issue edited in place, never a new issue or a comment per run, so the tracking issue never becomes a feed. The body states that nothing in it has been acted on."
+          "@value": "Findings: EDIT the one open issue carrying the tracking label (the `label` input) if there is one, otherwise create it, with the report as the body. One issue edited in place, never a new issue or a comment per run, so the tracking issue never becomes a feed. The body states that nothing in it has been acted on."
         }
       ],
       "skos:notation": "Task_Track",
       "dcterms:source": "cat-harness/processes/sdlc/repository-health-watch.bpmn#Task_Track",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_requirementsfiling.a_bindfrontmatter",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Bind Requirement front matter, statements, and 3-axis lineage"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Author or update the YAML front matter conforming to bootstrap/schemas/requirement.schema.json: `id: req:<slug>`, `title`, `status`, `statements[]` (each with stable `#<key>`, RFC 2119 modality MUST/SHOULD/MAY, normative statement, and measurable successCriteria), backward lineage (`proposedIn`, `derivedFrom`), horizontal dependencies (`dependsOn`), and forward links (`beans`, `skills`, `processes`)."
+        }
+      ],
+      "skos:notation": "A_BindFrontMatter",
+      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#A_BindFrontMatter",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_requirementsfiling.a_classifyfiling",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Classify filing mode, concern group, and req:<slug> ID"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Determine whether this filing promotes a proposal from docs/proposals/<slug>.md (promote), amends an existing requirement or replaces it with a new requirement (amend-or-supersede), or retires an obsolete requirement (retire). Assign the primary semantic concern group from code-lists/concern-group.json (sdlc, process, tools, kg, library, content, ui, conduct) and verify that req:<slug> does not collide across docs/proposals/ and docs/requirements/."
+        }
+      ],
+      "skos:notation": "A_ClassifyFiling",
+      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#A_ClassifyFiling",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_requirementsfiling.a_promoteorupdate",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "git mv proposal to docs/requirements/<slug>.md and record proposedIn"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Record the last commit SHA touching docs/proposals/<slug>.md, execute `git mv docs/proposals/<slug>.md docs/requirements/<slug>.md` so git log --follow preserves the proposal's history, and record `proposedIn: { commit, path: \"docs/proposals/<slug>.md\" }` in the YAML front matter."
+        }
+      ],
+      "skos:notation": "A_PromoteOrUpdate",
+      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#A_PromoteOrUpdate",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_requirementsfiling.a_recordfilingsignoff",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Record requirement-signoff attestation and set stage"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Append the human sign-off decision to `test/attestations/requirement-signoff/<set-slug>.attestations.json` (recording who, at, scope, outcome, stage, reason, and issue comment permalink) and update the `RequirementSet` stage to match."
+        }
+      ],
+      "skos:notation": "A_RecordFilingSignoff",
+      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#A_RecordFilingSignoff",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_requirementsfiling.a_runcheck",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Run check:requirements schema, collision, and lineage gate"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Run `bun run cat check:requirements` to verify schema conformance (`bootstrap/schemas/requirement.schema.json`), slug uniqueness across `docs/proposals/` and `docs/requirements/`, acyclicity of `derivedFrom`, existence of all referenced `derivedFrom` / `dependsOn` / `supersededBy` / `skills` / `processes` targets, and `RequirementSet` sign-off invariants."
+        }
+      ],
+      "skos:notation": "A_RunCheck",
+      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#A_RunCheck",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_requirementsfiling.a_updateindex",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Organise entry in docs/requirements/index.md by concern group & status"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Add or update the requirement's row in `docs/requirements/index.md` under its canonical concern group (`sdlc`, `process`, `tools`, `kg`, `library`, `content`, `ui`, `conduct` from `code-lists/concern-group.json`) for `in-force` requirements, or move it to the Superseded and Retired Requirements table when superseded or retired."
+        }
+      ],
+      "skos:notation": "A_UpdateIndex",
+      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#A_UpdateIndex",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_requirementsfiling.a_updatelifecycle",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Mark superseded or retired record in place and update RequirementSet"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Never delete (`git rm`) a superseded or retired requirement. When superseding `req:<old-slug>`, set `status: superseded` and `supersededBy: req:<new-slug>` on `docs/requirements/<old-slug>.md`. When retiring, set `status: retired` and document the retirement reason and authorising issue in prose. Update any `RequirementSet` (`docs/requirements/*.set.json`) so approved/accepted sets hold only `in-force` members."
+        }
+      ],
+      "skos:notation": "A_UpdateLifecycle",
+      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#A_UpdateLifecycle",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_requirementsfiling.ba_reviewfiling",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Review filed requirement, organisation, and sign off"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The Business Analyst / Owner reviews the filed requirement in `docs/requirements/<slug>.md`, its concern-group organisation in `docs/requirements/index.md`, its three-axis traceability, and any supersession or retirement update, deciding `approve`, `amend`, `reject`, `defer`, or `cancel`."
+        }
+      ],
+      "skos:notation": "BA_ReviewFiling",
+      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#BA_ReviewFiling",
       "skos:note": "candidate"
     },
     {
@@ -7136,7 +8156,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Prose, code nodes, or both. This is the only decision the generic lane makes on its own: everything after it is made inside a subprocess by the role that lane binds. Binds `content-review`, the same skill as Task_Consolidate in this lane, since placement PR3 (bean `63wl`): it named `semantic-review-scoping`, a paper skill the science layer owns, which this harness diagram cannot reach. A paper process that wants semantic scoping adds it by calling this process."
+          "@value": "Prose, code nodes, or both. This is the only decision the generic lane makes on its own: everything after it is made inside a subprocess by the role that lane binds. Binds `content-review`, the same skill as Task_Consolidate in this lane, since placement PR3 (bean `63wl`): it named a paper skill the science layer owns, which this harness diagram cannot reach. A paper process that wants semantic scoping adds it by calling this process."
         }
       ],
       "skos:notation": "Task_ClassifyChange",
@@ -7744,6 +8764,166 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_slicesqlitepublish.call_beanclose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose",
+      "dcterms:source": "cat-harness/processes/kg/slice-sqlite-publish.bpmn#Call_BeanClose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_slicesqlitepublish.call_beanclose_2",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_2",
+      "dcterms:source": "cat-harness/processes/kg/slice-sqlite-publish.bpmn#Call_BeanClose_2",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_slicesqlitepublish.call_beanclose_3",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_3",
+      "dcterms:source": "cat-harness/processes/kg/slice-sqlite-publish.bpmn#Call_BeanClose_3",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_slicesqlitepublish.call_beanopen",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Open the bean [bean-open]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
+        }
+      ],
+      "skos:notation": "Call_BeanOpen",
+      "dcterms:source": "cat-harness/processes/kg/slice-sqlite-publish.bpmn#Call_BeanOpen",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_smetestdatareview.task_preparecohort",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Prepare cohort: inputs, indicatorRef, expected & computed value"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Assemble the `IndicatorCohortCase` (`id`, `summary`, `indicatorRef`, `populationSize`, `inputs`, `expectedValue`, `computedValue`, and optional `period`, `numerator`, `denominator`) from the fixed data set for SME review."
+        }
+      ],
+      "skos:notation": "Task_PrepareCohort",
+      "dcterms:source": "cat-harness/processes/sdlc/sme-test-data-review.bpmn#Task_PrepareCohort",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_smetestdatareview.task_prepareworkedcase",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Prepare worked case: input, decisionLogicRef and systemOutput"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Assemble the `DecisionSupportWorkedCase` (`id`, `summary`, `decisionLogicRef`, structured `input`, `systemOutput`, and optional `expectedGuidance`) from the fixed data set so the SME can judge clinical/scientific correctness without reading raw schema internals."
+        }
+      ],
+      "skos:notation": "Task_PrepareWorkedCase",
+      "dcterms:source": "cat-harness/processes/sdlc/sme-test-data-review.bpmn#Task_PrepareWorkedCase",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_smetestdatareview.task_recordcaseverdict",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Record sme-case-verdict/1.0.0 with SME identity, date, verdict and rationale"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Write the `sme-case-verdict/1.0.0` node (`SmeCaseVerdictKind` in `schemas/test-data.ts`) recording `dataSetRef`, `subjectKind`, the worked `case` or `cohort`, `verdict`, `rationale`, the SME's attributable human identity (`reviewer: { kind: \"human\", provider, handle, role }`), and `reviewedAt` (ISO-8601 date/timestamp)."
+        }
+      ],
+      "skos:notation": "Task_RecordCaseVerdict",
+      "dcterms:source": "cat-harness/processes/sdlc/sme-test-data-review.bpmn#Task_RecordCaseVerdict",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_smetestdatareview.task_smejudge",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Judge domain correctness of worked case or indicator cohort"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Performed by the human SME in `Lane_SME` (`clinical-sme`, `judgementOnly: true`). The SME inspects the worked case (for decision support) or the cohort and expected vs computed value (for an indicator definition) and renders a domain verdict (`pass`, `fail`, or `needs-revision`) with rationale. Deliberately carries no skill reference: no procedure yields the answer, which is the whole reason a person is in this lane."
+        }
+      ],
+      "skos:notation": "Task_SmeJudge",
+      "dcterms:source": "cat-harness/processes/sdlc/sme-test-data-review.bpmn#Task_SmeJudge",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_stalledagenttriage.a_collect",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -7859,6 +9039,166 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_subkglifecycle.call_beanclose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose",
+      "dcterms:source": "cat-harness/processes/kg/sub-kg-lifecycle.bpmn#Call_BeanClose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_subkglifecycle.call_beanclose_2",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_2",
+      "dcterms:source": "cat-harness/processes/kg/sub-kg-lifecycle.bpmn#Call_BeanClose_2",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_subkglifecycle.call_beanclose_3",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_3",
+      "dcterms:source": "cat-harness/processes/kg/sub-kg-lifecycle.bpmn#Call_BeanClose_3",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_subkglifecycle.call_beanclose_4",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_4",
+      "dcterms:source": "cat-harness/processes/kg/sub-kg-lifecycle.bpmn#Call_BeanClose_4",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_subkglifecycle.call_beanclose_5",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_5",
+      "dcterms:source": "cat-harness/processes/kg/sub-kg-lifecycle.bpmn#Call_BeanClose_5",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_subkglifecycle.call_beanclose_6",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_6",
+      "dcterms:source": "cat-harness/processes/kg/sub-kg-lifecycle.bpmn#Call_BeanClose_6",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_subkglifecycle.call_beanclose_7",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_7",
+      "dcterms:source": "cat-harness/processes/kg/sub-kg-lifecycle.bpmn#Call_BeanClose_7",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_subkglifecycle.call_beanopen",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Open the bean [bean-open]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
+        }
+      ],
+      "skos:notation": "Call_BeanOpen",
+      "dcterms:source": "cat-harness/processes/kg/sub-kg-lifecycle.bpmn#Call_BeanOpen",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_subkglifecycle.task_brief",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -7866,12 +9206,12 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Brief, and claim the bean"
+          "@value": "Brief the work"
         }
       ],
       "skos:definition": [
         {
-          "@value": "What the sub-KG is and why it is staged here rather than in a repository of its own, what is already measured, and what would falsify the plan. Claim the bean so a sibling session sees the work."
+          "@value": "What the work is and why, what is already measured with its provenance, how it will be done, and what would falsify the approach. The bean is already claimed by the Process_BeanOpen call before this step (bean m8gz), so a sibling session sees the work before the brief is written. Here the work is a sub-KG: what it is, and why it is staged here rather than in a repository of its own."
         }
       ],
       "skos:notation": "Task_Brief",
@@ -8011,7 +9351,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Work the pull requests seed:ready named until the source settles, then ask again."
+          "@value": "Work the PRs `seed:ready` named until the source settles: land or close the heavy movers and the next layer's PRs, bring the layer's open PRs to five or fewer, and finish any move in flight. Fix a red rehearsal or a discovery miss where it is. Nothing is seeded from here; it goes back to the gateway, which re-asks."
         }
       ],
       "skos:notation": "Task_Drain",
@@ -8176,6 +9516,66 @@
       ],
       "skos:notation": "Task_Seed",
       "dcterms:source": "cat-harness/processes/kg/sub-kg-lifecycle.bpmn#Task_Seed",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_subscribekg.call_beanclose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose",
+      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Call_BeanClose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_subscribekg.call_beanclose_2",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_2",
+      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Call_BeanClose_2",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_subscribekg.call_beanopen",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Open the bean [bean-open]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
+        }
+      ],
+      "skos:notation": "Call_BeanOpen",
+      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Call_BeanOpen",
       "skos:note": "candidate"
     },
     {
@@ -8539,6 +9939,166 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.call_beanclose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn; placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Call_BeanClose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.call_beanopen",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Open the bean [bean-open]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn; the gateway after this reads which end it reached."
+        }
+      ],
+      "skos:notation": "Call_BeanOpen",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Call_BeanOpen",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.call_contenttypespecialisation",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Synthesise recipe via content-type specialisation [its own subprocess]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "BOUND BY THE CONTENT TYPE (`contentType` and `specialisation` in `schemas/test-data.ts`), so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess. `fhir-templating` (`FHIR_TEMPLATING_SPECIALISATION`) is one named specialisation for FHIR IG / DAK content (MeasureReport cohorts, questionnaire responses, bundle templates) — named as such, not the platform design; document folios (`markdown-fixture`), proof folios (`lean-counterexample`), and tabular cohorts (`tabular-cohort`) supply their own."
+        }
+      ],
+      "skos:notation": "Call_ContentTypeSpecialisation",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Call_ContentTypeSpecialisation",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.call_smereview",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "SME review of cases or cohorts [sme-test-data-review]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Calls `Process_SmeTestDataReview` (`processes/sdlc/sme-test-data-review.bpmn`) so a human SME in a `judgementOnly` lane reviews each worked case (`decision-support`) or cohort plus expected value (`indicator-definition`) and records an attributable `sme-case-verdict/1.0.0` node."
+        }
+      ],
+      "skos:notation": "Call_SmeReview",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Call_SmeReview",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.task_classifyset",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Classify data set: fixed (curated) or generated (recipe)"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Decide whether the test case requires a small, committed, cited fixed data set (`test-data-fixed/1.0.0`, usable as certification evidence once reviewed) or a deterministic generated recipe (`test-data-generated/1.0.0`, `template` + `params` + `seed`, never stored materialised)."
+        }
+      ],
+      "skos:notation": "Task_ClassifySet",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_ClassifySet",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.task_curatefixed",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Write the curated `records` and optional `citations` with `$schema: \"test-data-fixed/1.0.0\"` and `kind: \"fixed\"` into the instance's declared `test-data-fixed` directory (`schemas/test-data.ts`). Recipe fields (`template`, `params`, `seed`) are refused by the strict schema."
+        }
+      ],
+      "skos:notation": "Task_CurateFixed",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_CurateFixed",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.task_verifyselfidentifying",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Verify file self-identifies by $schema and kind and bind into test plan"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Parse the file with `discriminateTestDataSet` (`schemas/test-data.ts`) to confirm a consumer can tell fixed from generated from the file content alone (never the path), verify `verifyGeneratedSetDigest` on generated sets, and bind the resulting `TestDataRef` (`toTestDataRef`) into the `test-plan/v1` case."
+        }
+      ],
+      "skos:notation": "Task_VerifySelfIdentifying",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_VerifySelfIdentifying",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.task_writerecipe",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Record `contentType`, `specialisation`, `template`, `params`, `seed`, and the canonical `sha256` digest (`computeGeneratedSetDigest`) with `$schema: \"test-data-generated/1.0.0\"` and `kind: \"generated\"` in the instance's declared `test-data-generated` directory. Never store materialised records."
+        }
+      ],
+      "skos:notation": "Task_WriteRecipe",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_WriteRecipe",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testplanexecution.a_binddata",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -8736,6 +10296,86 @@
       ],
       "skos:notation": "A_WriteRun",
       "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#A_WriteRun",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testplanexecution.call_beanclose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose",
+      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#Call_BeanClose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testplanexecution.call_beanclose_2",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_2",
+      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#Call_BeanClose_2",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testplanexecution.call_beanclose_3",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose_3",
+      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#Call_BeanClose_3",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testplanexecution.call_beanopen",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Open the bean [bean-open]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
+        }
+      ],
+      "skos:notation": "Call_BeanOpen",
+      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#Call_BeanOpen",
       "skos:note": "candidate"
     },
     {
@@ -9179,6 +10819,46 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_upstreamadoption.call_beanclose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose",
+      "dcterms:source": "cat-harness/processes/sdlc/upstream-version-adoption.bpmn#Call_BeanClose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_upstreamadoption.call_beanopen",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Open the bean [bean-open]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
+        }
+      ],
+      "skos:notation": "Call_BeanOpen",
+      "dcterms:source": "cat-harness/processes/sdlc/upstream-version-adoption.bpmn#Call_BeanOpen",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_upstreamadoption.call_optionsanalysis",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -9286,7 +10966,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Pick up the stale pin claim a bean"
+          "@value": "Pick up the stale pin"
         }
       ],
       "skos:definition": [
@@ -9316,6 +10996,46 @@
       ],
       "skos:notation": "Call_Adopt",
       "dcterms:source": "cat-harness/processes/sdlc/upstream-pin-watch.bpmn#Call_Adopt",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_upstreampinwatch.call_beanclose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose",
+      "dcterms:source": "cat-harness/processes/sdlc/upstream-pin-watch.bpmn#Call_BeanClose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_upstreampinwatch.call_beanopen",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Open the bean [bean-open]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
+        }
+      ],
+      "skos:notation": "Call_BeanOpen",
+      "dcterms:source": "cat-harness/processes/sdlc/upstream-pin-watch.bpmn#Call_BeanOpen",
       "skos:note": "candidate"
     },
     {

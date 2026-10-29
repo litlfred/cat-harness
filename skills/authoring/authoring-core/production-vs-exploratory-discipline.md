@@ -60,7 +60,7 @@ backlog, the status dashboards, the calibration-anchor registry.)
 
 ### EXPLORATORY
 
-What it is — shape-probing, hypothesis-generation work. May contain
+What it is — shape-probing, hypothesis generation work. May contain
 empirical fits, near-matches, ansatz tests, "what shape is this?"
 computations. Lives in `probe_*` / `*_alt_*` / `*_refinement_*` /
 `spike_*` scripts and dated audit docs.
@@ -205,7 +205,7 @@ dashboard, run this BEFORE the commit:
 6. **Witness assertion** — falsification probes assert the *refutation*
    so the witness reports passing on the expected-negative outcome.
 7. **Banner** — every exploratory probe carries a header banner stating
-   it is exploratory hypothesis-generation and NOT for production
+   it is exploratory hypothesis generation and NOT for production
    without (locality gate + derivation-menu trace + owner authorisation
    if off-menu). The banner is the bright line a post-hoc audit looks
    for.
@@ -253,11 +253,16 @@ docstring banner should agree; a mismatch is a review red flag.
 
 ## Where this skill connects
 
-- **`compute-author`** — sibling pre-work skill (precision and authoring
-  patterns). This skill covers the discipline AFTER authoring (where
-  does the result go?).
-- **`compute-audit`** — post-hoc audit; uses the 3-category
-  classification here to flag empirical fits that ended up in production.
+- **The content type's compute-authoring skill** — sibling pre-work
+  skill (precision and authoring patterns). This skill covers the
+  discipline AFTER authoring (where does the result go?).
+- **The content type's compute audit** — post-hoc audit; uses the
+  3-category classification here to flag empirical fits that ended up in
+  production.
+
+Both are shipped by the layer that defines a computational content type
+(for a paper folio, the science layer), which names this skill from its
+side.
 - **`canonical-watcher`** — the integration watcher that catches
   hidden-input promotions; this skill is the rule it enforces.
 - **`prepare-merge`** — the standardized rebase / witness-drift pattern.

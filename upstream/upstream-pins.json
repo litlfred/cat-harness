@@ -61,6 +61,72 @@
         "cat-harness/scripts/pdf-viewer.ts `patchViewerHtml` — anchors on `<script src=\"../build/pdf.mjs\" type=\"module\">` in `web/viewer.html`, and throws if it moved.",
         "cat-harness/scripts/pdf-viewer.ts `KEEP` — the release paths copied into the site; `install` throws on any that is missing."
       ]
+    },
+    {
+      "id": "plantuml",
+      "title": "PlantUML diagram renderer (tool-release)",
+      "repo": "https://github.com/plantuml/plantuml",
+      "pinnedIn": "tool-releases/plantuml-1.2024.7.json",
+      "pattern": "^\\s*\"version\":\\s*\"([^\"]+)\"",
+      "tagPattern": "^v\\d+\\.\\d{4}\\.\\d+$",
+      "tagPrefix": "v",
+      "binds": [
+        "cat-harness/tool-releases/plantuml-1.2024.7.json — `digest.digest` and `source.url` must be updated to the new release's jar and sha256, and the file renamed to match the version.",
+        "cat-harness/tool-releases/default.profile.json — `tools.plantuml` selects `plantuml@<version>`.",
+        "cat-harness-tools/scripts/plantuml-render.ts — `PLANTUML` re-exports the release pin and resolves it through `tool-releases.ts`."
+      ]
+    },
+    {
+      "id": "graphviz",
+      "title": "Graphviz dot layout engine (tool-release)",
+      "repo": "https://gitlab.com/graphviz/graphviz",
+      "pinnedIn": "tool-releases/graphviz-16.1.0-linux-x64-ubuntu-24.04.json",
+      "pattern": "^\\s*\"version\":\\s*\"([^\"]+)\"",
+      "tagPattern": "^\\d+\\.\\d+\\.\\d+$",
+      "binds": [
+        "cat-harness/tool-releases/graphviz-16.1.0-linux-x64-ubuntu-24.04.json — `digest.digest` and `source.url` must be updated to the new `.deb` and sha256.",
+        "cat-harness/tool-releases/plantuml-1.2024.7.json — `runtimes[]` injects `graphviz@<version>` onto `PATH` so `plantuml` finds `dot`.",
+        "cat-harness/tool-releases/default.profile.json — `tools.graphviz` selects `graphviz@<version>`."
+      ]
+    },
+    {
+      "id": "fsh-sushi",
+      "title": "FHIR Shorthand SUSHI compiler (tool-release)",
+      "repo": "https://github.com/FHIR/sushi",
+      "pinnedIn": "tool-releases/fsh-sushi-3.13.0.json",
+      "pattern": "^\\s*\"version\":\\s*\"([^\"]+)\"",
+      "tagPattern": "^v\\d+\\.\\d+\\.\\d+$",
+      "tagPrefix": "v",
+      "binds": [
+        "cat-harness/tool-releases/fsh-sushi-3.13.0.json — `digest.digest` and `source.url` must be updated to the new npm tarball and sha256.",
+        "cat-harness/tool-releases/ci-2026-10.profile.json — `tools[\"fsh-sushi\"]` selects `fsh-sushi@<version>`."
+      ]
+    },
+    {
+      "id": "node-22",
+      "title": "Node.js 22 LTS runtime (tool-release)",
+      "repo": "https://github.com/nodejs/node",
+      "pinnedIn": "tool-releases/node-22.11.0-linux-x64.json",
+      "pattern": "^\\s*\"version\":\\s*\"([^\"]+)\"",
+      "tagPattern": "^v22\\.\\d+\\.\\d+$",
+      "tagPrefix": "v",
+      "binds": [
+        "cat-harness/tool-releases/node-22.11.0-linux-x64.json — `digest.digest`, `source.url` and `entry.home` must be updated to the new Node 22 LTS tarball and sha256.",
+        "cat-harness/tool-releases/fsh-sushi-3.13.0.json — `runtimes[]` injects `node@<version>` onto `PATH`."
+      ]
+    },
+    {
+      "id": "lean-toolchain",
+      "title": "Lean 4 toolchain (tool-release)",
+      "repo": "https://github.com/leanprover/lean4",
+      "pinnedIn": "tool-releases/lean-toolchain-4.12.0.json",
+      "pattern": "^\\s*\"version\":\\s*\"([^\"]+)\"",
+      "tagPattern": "^v\\d+\\.\\d+\\.\\d+$",
+      "tagPrefix": "v",
+      "binds": [
+        "cat-harness/tool-releases/lean-toolchain-4.12.0.json — `digest.digest` and `source.url` must be updated to the new `lean-toolchain` file and sha256.",
+        "cat-harness/tool-releases/ci-2026-10.profile.json and lean-4.12-test.profile.json — `tools[\"lean-toolchain\"]` selects `lean-toolchain@<version>`."
+      ]
     }
   ]
 }

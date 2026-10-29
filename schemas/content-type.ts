@@ -84,8 +84,15 @@ export interface ContentTypeDef {
    *
    * Every other type stays a plain string, because every other type really
    * does own its spelling.
+   *
+   * ## A SECTION of `index.config.json` instead of a file
+   *
+   * {@link IndexSectionMarker}: the assertion is the key
+   * `contentTypes.<indexSection>` in the root `index.config.json`, not a file
+   * of its own (owner, 2026-10-24, for the DAK). Absent key, not a member,
+   * exactly as an absent file.
    */
-  filename: string | ((repoRoot: string) => string | undefined);
+  filename: string | ((repoRoot: string) => string | undefined) | IndexSectionMarker;
   /** The `@type` IRI this membership projects to. Must dereference. */
   type: string;
   /** One line: what carrying this marker claims about the repository. */
@@ -101,6 +108,22 @@ export interface ContentTypeDef {
   facts?: (declaration: unknown) => Record<string, string | undefined>;
 }
 
+/**
+ * A marker that is a section of the root `index.config.json` rather than a
+ * file: membership is the presence of `contentTypes.<indexSection>`, and that
+ * section is the declaration `facts` reads.
+ */
+export interface IndexSectionMarker {
+  indexSection: string;
+}
+
+/** The root file an {@link IndexSectionMarker} lives in. */
+export const INDEX_SECTION_FILE = "index.config.json";
+
+function isIndexSection(f: ContentTypeDef["filename"]): f is IndexSectionMarker {
+  return typeof f === "object" && f !== null;
+}
+
 /** Raised when two definitions claim one type id and disagree. */
 export class ContentTypeConflictError extends Error {
   constructor(id: string) {
@@ -114,7 +137,11 @@ export class ContentTypeConflictError extends Error {
 }
 
 function sameType(a: ContentTypeDef, b: ContentTypeDef): boolean {
-  return a.filename === b.filename && a.type === b.type;
+  const sameMarker =
+    isIndexSection(a.filename) && isIndexSection(b.filename)
+      ? a.filename.indexSection === b.filename.indexSection
+      : a.filename === b.filename;
+  return sameMarker && a.type === b.type;
 }
 
 export class ContentTypeRegistry {
@@ -155,7 +182,10 @@ export interface ContentTypeMembership {
   id: string;
   /** The IRI a consumer dereferences to learn what this membership means. */
   type: string;
-  /** The marker file that made the assertion, repo-relative. */
+  /**
+   * The marker that made the assertion: a repo-relative file, or
+   * `index.config.json#contentTypes.<id>` for an {@link IndexSectionMarker}.
+   */
   marker: string;
   /**
    * Whether the marker PARSED.
@@ -208,6 +238,11 @@ export function describeRepository(
 ): RepositoryDescription {
   const types: ContentTypeMembership[] = [];
   for (const [id, def] of registry.entries()) {
+    if (isIndexSection(def.filename)) {
+      const m = sectionMembership(repoRoot, id, def, def.filename);
+      if (m) types.push(m);
+      continue;
+    }
     const marker = typeof def.filename === "function" ? def.filename(repoRoot) : def.filename;
     // No name to compose a marker from ⇒ not a member. Distinct from "the
     // marker is absent" only in cause, and neither is a finding.
@@ -250,4 +285,39 @@ export function describeRepository(
   }
 
   return { types, disagreements };
+}
+
+/**
+ * The membership an {@link IndexSectionMarker} asserts, or `undefined` when
+ * the section is absent.
+ *
+ * An index that is present but unreadable reports the type with
+ * `parsed: false`, rather than dropping it: the section may well be there,
+ * and silence would read as "not a member". An index that is readable and
+ * lacks the key is plainly not a member.
+ */
+function sectionMembership(
+  repoRoot: string,
+  id: string,
+  def: ContentTypeDef,
+  m: IndexSectionMarker,
+): ContentTypeMembership | undefined {
+  const path = join(repoRoot, INDEX_SECTION_FILE);
+  if (!existsSync(path)) return undefined;
+  const marker = `${INDEX_SECTION_FILE}#contentTypes.${m.indexSection}`;
+  let doc: unknown;
+  try {
+    doc = JSON.parse(readFileSync(path, "utf-8"));
+  } catch {
+    return { id, type: def.type, marker, parsed: false, facts: {} };
+  }
+  const sections = (doc as { contentTypes?: unknown } | null)?.contentTypes;
+  const section =
+    sections !== null && typeof sections === "object" ? (sections as Record<string, unknown>)[m.indexSection] : undefined;
+  if (section === null || typeof section !== "object" || Array.isArray(section)) return undefined;
+  const facts: Record<string, string> = {};
+  for (const [k, v] of Object.entries(def.facts?.(section) ?? {})) {
+    if (typeof v === "string" && v.length > 0) facts[k] = v;
+  }
+  return { id, type: def.type, marker, parsed: true, facts };
 }

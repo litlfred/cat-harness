@@ -178,6 +178,6 @@ directory for it. Name the gap instead.
 - **Delete, prune or close anything.** Not branches, not PRs, not beans.
 - **Judge whether unique work is wanted.** `unlanded` means "not on main", not
   "should be on main". That call belongs to the owner, through salvage review.
-- **Replace [`branch-freshness`](../../process/workflow/branch-freshness.md)**
+- **Replace [`branch-freshness`](branch-freshness.md)**
   (your own branch against main) or [`coordinate`](coordinate.md) (live sibling
   PRs). This skill is the census of everything else.

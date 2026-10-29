@@ -646,22 +646,63 @@ condition; none discharged it; **219 beans** accumulated until the owner
 asked for the sweep by hand.
 
 **The per-activity op is built** (bean `folio-assistant-m8gz`; owner,
-2026-10-20: a step op, not a call into `Process_BeanLifecycle`). A step
-carrying `<cat-harness.processes:bean op="archive"/>` moves the instance's
-bean into `beans/defs/archive/`, with a line saying which process closed it.
-It does so only once the process has finished and the bean is `completed` or
-`scrapped`; otherwise it leaves the bean in place with a note saying why,
-because `check:bean-archive` allows only terminal beans in the archive. It is
-drawn as the last step of `draft-to-publication`, `crdm-close` and
-`code-change-review`, right after their `resolve`. `resolve` counts the
-process as finished when nothing but that closing archive step is left, so
-adding the step does not turn the resolve into a note.
+2026-10-20: a step op). A step carrying
+`<cat-harness.processes:bean op="archive"/>` moves the instance's bean into
+`beans/defs/archive/`, with a line saying which process closed it. It does so
+only once the process has finished and the bean is `completed` or `scrapped`;
+otherwise it leaves the bean in place with a note saying why, because
+`check:bean-archive` allows only terminal beans in the archive.
 
-The sweep is still `beans archive`, run deliberately. Note the CLI prints
-`.beans/archive/` but honours `path:` from `.beans.yml`; here that means
-`beans/defs/archive/`. Analysis: `cat-harness/docs/proposals/bean-archiving-in-bpmn.md`.
-A step shared by several processes, such as this one, is a candidate global
-task once those exist (`bpmn-modelling` global-tasks plan).
+### Where the bean ops live — OPEN and CLOSE, called by every process
+
+Owner, 2026-10-24 (option A, bean `m8gz`): *call it, and consolidate.* The
+claim, resolve and archive ops were hand copies — 19 claims in 18 diagrams, 13
+resolves in 11, 3 archives in 3 — and they had drifted: seven processes opened
+a bean they never closed, eight closed one without archiving it. They now live
+in two called processes, and nowhere else:
+
+| | process | what it does | ops it carries |
+|---|---|---|---|
+| **OPEN** | `Process_BeanOpen` (`processes/sdlc/bean-open.bpmn`) | check before you create, create, whose bean, claim — or leave it alone | `claim` |
+| **CLOSE** | `Process_BeanClose` (`processes/sdlc/bean-close.bpmn`) | outcome: complete, or scrap with reasons, then **one shared archive step**; or record the blocker and hand back | `resolve`, `archive` (and a `note` for the blocker) |
+
+`Process_BeanLifecycle` is now OPEN → work → CLOSE, calling both.
+`Process_BeanDrain` (`processes/sdlc/bean-drain.bpmn`, bean `bssi`) is the
+same over a queue: build the queue grouped by owner, then for each bean OPEN →
+work → CLOSE, and refill when a drainer's list runs dry. A bean OPEN finds is
+someone else's is marked skip on the queue, not worked.
+
+**How a process uses them.** Call `Process_BeanOpen` where the bean becomes
+the process's own — usually its first step — and follow it with a gateway
+(`claimed` / `not yours`): the engine hands a called process the caller's
+bean but not its end event, so the caller reads which end OPEN reached, and
+`not yours` stops at an end of its own without touching the bean. Call
+`Process_BeanClose` straight before **each** end the process reaches after
+OPEN. Straight before matters: `resolve` counts the process as finished when
+nothing but archive steps is left (`onlyArchiveLeft`), and a CLOSE followed
+by more work turns its resolve into a note. `note` ops stay where the work
+happens.
+
+**A called phase does not open or close again.** A process only ever called
+by another (the CRDM phases under `crdm-requirements.bpmn`) runs on its
+caller's bean, so the caller opens and closes it. A process that is both run
+on its own and called (`code-change-review`, `upstream-version-adoption`,
+`editing-hci-validation`) keeps its own pair: nested, OPEN's claim is
+idempotent and CLOSE notes instead of closing while the outer process still
+has work.
+
+**The check.** `check:bean-calls` (also run inside `check:workflow-refs`,
+which CI gates) fails on a `claim`, `resolve` or `archive` op outside OPEN
+and CLOSE, on a process that calls one of them without the other, and on an
+entry process that names a bean by `ref` without calling both. A process
+whose only marks are `note` (or a bare `<cat-harness.processes:bean/>`) and
+that nothing calls is **reported, not failed**: it writes on whatever bean
+its instance was started with and never decides that bean's fate.
+
+The sweep is still `beans archive`, run deliberately — the floor under every
+process that never reached CLOSE. Note the CLI prints `.beans/archive/` but
+honours `path:` from `.beans.yml`; here that means `beans/defs/archive/`.
+Analysis: `cat-harness/docs/proposals/bean-archiving-in-bpmn.md`.
 
 ## Status Display Format
 

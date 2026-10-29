@@ -36,6 +36,9 @@
         <bpmn:flowNodeRef>GW_Feature</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Content</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Issue</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_BeanOpen</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GW_BeanYours</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_BeanNotYours</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Needs</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Requirements</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_DataModel</bpmn:flowNodeRef>
@@ -43,6 +46,7 @@
         <bpmn:flowNodeRef>Call_Deliver</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Close</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_CRDM</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_BeanClose</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="Start_BA" name="Need identified"/>
@@ -90,29 +94,47 @@ They do not need to know it is called CRDM.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="crdm-requirements-workflow"/></bpmn:extensionElements>
     </bpmn:callActivity>
     <bpmn:endEvent id="End_CRDM" name="Feature delivered"/>
+    <bpmn:callActivity id="Call_BeanOpen" name="Open the bean&#10;[bean-open]" calledElement="Process_BeanOpen">
+      <bpmn:documentation>Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="bean-coordination"/></bpmn:extensionElements>
+    </bpmn:callActivity>
+    <bpmn:exclusiveGateway id="GW_BeanYours" name="Bean claimed?">
+      <bpmn:documentation>Reads which end Process_BeanOpen reached. `claimed`: the bean is in progress and this process works it. `not yours`: a sibling session or a human holds it, nothing was written to it, and this process stops here rather than work a bean it does not own (bean-coordination).</bpmn:documentation>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="End_BeanNotYours" name="Not yours —&#10;left alone">
+      <bpmn:documentation>Someone else holds the bean; this run stops without touching it.</bpmn:documentation>
+    </bpmn:endEvent>
+    <bpmn:callActivity id="Call_BeanClose" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+      <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
+    </bpmn:callActivity>
     <bpmn:sequenceFlow id="SF_Process_CRDM_1" sourceRef="Start_BA" targetRef="BA_Submit"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_2" sourceRef="BA_Submit" targetRef="A_Detect"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_3" sourceRef="A_Detect" targetRef="GW_Feature"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_4" name="no" sourceRef="GW_Feature" targetRef="End_Content"/>
-    <bpmn:sequenceFlow id="SF_Process_CRDM_5" name="yes" sourceRef="GW_Feature" targetRef="Call_Issue"/>
+    <bpmn:sequenceFlow id="SF_Process_CRDM_5" name="yes" sourceRef="GW_Feature" targetRef="Call_BeanOpen"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_6" sourceRef="Call_Issue" targetRef="Call_Needs"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_7" sourceRef="Call_Needs" targetRef="Call_Requirements"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_8" sourceRef="Call_Requirements" targetRef="Call_DataModel"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_12" sourceRef="Call_DataModel" targetRef="Call_Signoff"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_9" sourceRef="Call_Signoff" targetRef="Call_Deliver"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_10" sourceRef="Call_Deliver" targetRef="Call_Close"/>
-    <bpmn:sequenceFlow id="SF_Process_CRDM_11" sourceRef="Call_Close" targetRef="End_CRDM"/>
+    <bpmn:sequenceFlow id="SF_Process_CRDM_11" sourceRef="Call_Close" targetRef="Call_BeanClose"/>
+    <bpmn:sequenceFlow id="SF_Bean_1" name="claimed" sourceRef="GW_BeanYours" targetRef="Call_Issue"/>
+    <bpmn:sequenceFlow id="SF_Bean_2" sourceRef="Call_BeanOpen" targetRef="GW_BeanYours"/>
+    <bpmn:sequenceFlow id="SF_Bean_3" name="not yours" sourceRef="GW_BeanYours" targetRef="End_BeanNotYours"/>
+    <bpmn:sequenceFlow id="SF_Bean_4" sourceRef="Call_BeanClose" targetRef="End_CRDM"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_CRDM">
     <bpmndi:BPMNPlane id="Plane_Process_CRDM" bpmnElement="Collaboration_Process_CRDM">
       <bpmndi:BPMNShape id="Shape_Participant_Process_CRDM" bpmnElement="Participant_Process_CRDM" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="2666" height="380" />
+        <dc:Bounds x="160" y="80" width="3106" height="380" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_BA_Process_CRDM" bpmnElement="Lane_BA" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="2636" height="170" />
+        <dc:Bounds x="190" y="80" width="3076" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent_Process_CRDM" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="250" width="2636" height="170" />
+        <dc:Bounds x="190" y="250" width="3076" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_BA" bpmnElement="Start_BA">
         <dc:Bounds x="310" y="147" width="36" height="36" />
@@ -130,28 +152,28 @@ They do not need to know it is called CRDM.</bpmn:documentation>
         <dc:Bounds x="1110" y="317" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Issue" bpmnElement="Call_Issue">
-        <dc:Bounds x="1310" y="295" width="140" height="80" />
+        <dc:Bounds x="1590" y="295" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Needs" bpmnElement="Call_Needs">
-        <dc:Bounds x="1510" y="295" width="140" height="80" />
+        <dc:Bounds x="1790" y="295" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Requirements" bpmnElement="Call_Requirements">
-        <dc:Bounds x="1710" y="295" width="140" height="80" />
+        <dc:Bounds x="1990" y="295" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_DataModel" bpmnElement="Call_DataModel">
-        <dc:Bounds x="1910" y="295" width="140" height="80" />
+        <dc:Bounds x="2190" y="295" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Signoff" bpmnElement="Call_Signoff">
-        <dc:Bounds x="2110" y="295" width="140" height="80" />
+        <dc:Bounds x="2390" y="295" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Deliver" bpmnElement="Call_Deliver">
-        <dc:Bounds x="2310" y="295" width="140" height="80" />
+        <dc:Bounds x="2590" y="295" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Close" bpmnElement="Call_Close">
-        <dc:Bounds x="2510" y="295" width="140" height="80" />
+        <dc:Bounds x="2790" y="295" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_CRDM" bpmnElement="End_CRDM">
-        <dc:Bounds x="2710" y="317" width="36" height="36" />
+        <dc:Bounds x="3150" y="317" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_1" bpmnElement="SF_Process_CRDM_1">
         <di:waypoint x="346" y="165" />
@@ -171,38 +193,40 @@ They do not need to know it is called CRDM.</bpmn:documentation>
         <di:waypoint x="960" y="335" />
         <di:waypoint x="1110" y="335" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_5" bpmnElement="SF_Process_CRDM_5">
-        <di:waypoint x="960" y="335" />
-        <di:waypoint x="1310" y="335" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_5" bpmnElement="SF_Process_CRDM_5"><di:waypoint x="960" y="335"/><di:waypoint x="1310" y="335"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_6" bpmnElement="SF_Process_CRDM_6">
-        <di:waypoint x="1450" y="335" />
-        <di:waypoint x="1510" y="335" />
+        <di:waypoint x="1730" y="335" />
+        <di:waypoint x="1790" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_7" bpmnElement="SF_Process_CRDM_7">
-        <di:waypoint x="1650" y="335" />
-        <di:waypoint x="1710" y="335" />
+        <di:waypoint x="1930" y="335" />
+        <di:waypoint x="1990" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_8" bpmnElement="SF_Process_CRDM_8">
-        <di:waypoint x="1850" y="335" />
-        <di:waypoint x="1910" y="335" />
+        <di:waypoint x="2130" y="335" />
+        <di:waypoint x="2190" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_12" bpmnElement="SF_Process_CRDM_12">
-        <di:waypoint x="2050" y="335" />
-        <di:waypoint x="2110" y="335" />
+        <di:waypoint x="2330" y="335" />
+        <di:waypoint x="2390" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_9" bpmnElement="SF_Process_CRDM_9">
-        <di:waypoint x="2250" y="335" />
-        <di:waypoint x="2310" y="335" />
+        <di:waypoint x="2530" y="335" />
+        <di:waypoint x="2590" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_10" bpmnElement="SF_Process_CRDM_10">
-        <di:waypoint x="2450" y="335" />
-        <di:waypoint x="2510" y="335" />
+        <di:waypoint x="2730" y="335" />
+        <di:waypoint x="2790" y="335" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_11" bpmnElement="SF_Process_CRDM_11">
-        <di:waypoint x="2650" y="335" />
-        <di:waypoint x="2710" y="335" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_11" bpmnElement="SF_Process_CRDM_11"><di:waypoint x="2930" y="335"/><di:waypoint x="2990" y="335"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanOpen_di" bpmnElement="Call_BeanOpen"><dc:Bounds x="1310" y="295" width="120" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_1_di" bpmnElement="SF_Bean_1"><di:waypoint x="1510" y="335"/><di:waypoint x="1590" y="335"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="GW_BeanYours_di" bpmnElement="GW_BeanYours" isMarkerVisible="true"><dc:Bounds x="1460" y="310" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_BeanNotYours_di" bpmnElement="End_BeanNotYours"><dc:Bounds x="1467" y="244" width="36" height="36"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_2_di" bpmnElement="SF_Bean_2"><di:waypoint x="1430" y="335"/><di:waypoint x="1460" y="335"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SF_Bean_3_di" bpmnElement="SF_Bean_3"><di:waypoint x="1485" y="310"/><di:waypoint x="1485" y="280"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanClose_di" bpmnElement="Call_BeanClose"><dc:Bounds x="2990" y="295" width="120" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_4_di" bpmnElement="SF_Bean_4"><di:waypoint x="3110" y="335"/><di:waypoint x="3150" y="335"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

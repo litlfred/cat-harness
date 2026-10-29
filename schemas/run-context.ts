@@ -197,3 +197,31 @@ export function runContextRef(c: RunContext): RunContextRef {
 export function unprovisioned(c: RunContext): Extract<RunRelease, { state: "could-not-provision" }>[] {
   return c.releases.filter((r): r is Extract<RunRelease, { state: "could-not-provision" }> => r.state === "could-not-provision");
 }
+
+/**
+ * Project `QaReport.toolchain` (`{ publisher?, sushi?, fhirVersion? }`) from a
+ * {@link RunContext}'s provisioned releases (Step 7 of
+ * `docs/proposals/tool-releases-2026-10-07.md`, C2: `QaReport.toolchain` is a
+ * projection of `RunContext.releases[]` rather than a hand-maintained second
+ * version list).
+ */
+export function toolchainFromRunContext(
+  c: Pick<RunContext, "releases">,
+  extra?: { fhirVersion?: string },
+): { publisher?: string; sushi?: string; fhirVersion?: string } {
+  const out: { publisher?: string; sushi?: string; fhirVersion?: string } = {};
+  for (const r of c.releases) {
+    if (r.state !== "provisioned") continue;
+    const at = r.release.indexOf("@");
+    if (at < 0) continue;
+    const name = r.release.slice(0, at);
+    const version = r.release.slice(at + 1);
+    if (name === "fhir-ig-publisher" || name === "ig-publisher" || name === "publisher") {
+      out.publisher = version;
+    } else if (name === "fsh-sushi" || name === "sushi") {
+      out.sushi = version;
+    }
+  }
+  if (extra?.fhirVersion) out.fhirVersion = extra.fhirVersion;
+  return out;
+}

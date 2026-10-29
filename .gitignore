@@ -66,6 +66,8 @@ node_modules/
 /docs/en/cat-harness/processes/
 /docs/_data/node-kinds.json
 /docs/en/cat-harness/node-kind-index/
+/docs/en/cat-harness/bean/
+/docs/en/cat-harness/software-library/
 /docs/en/cat-harness/cat-harness-declaration/
 /docs/en/cat-harness/document-kind/
 /docs/en/cat-harness/document-kind-coverage/
@@ -145,7 +147,9 @@ node_modules/
 /docs/en/cat-harness/health/folio-assistant-core/
 /docs/en/cat-harness/health/who-iris/
 /docs/en/cat-harness/attestations/cat-harness/
+/docs/en/cat-harness/attestations/folio-assistant-core/
 /docs/en/cat-harness/attestations/folio-assistant-sci/
+/docs/en/cat-harness/attestations/smart-base/
 /docs/en/cat-harness/graph-typologies/
 /docs/en/cat-harness/validators/
 /docs/en/cat-harness/qa-checkers/
@@ -185,6 +189,7 @@ node_modules/
 /docs/assets/img/workflows/board-open-close.svg
 /docs/assets/img/workflows/board-place-note.svg
 /docs/assets/img/workflows/board-relocate.svg
+/docs/assets/img/workflows/classify-and-code-content.svg
 /docs/assets/img/workflows/complete-initialization.svg
 /docs/assets/img/workflows/content-change-review.svg
 /docs/assets/img/workflows/content-lifecycle.svg

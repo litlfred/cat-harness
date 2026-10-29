@@ -60,7 +60,7 @@ applies:
 
 Defaults are the ones this repository already states:
 [`todo-manager`](todo-manager.md) for goals, subjects and *a session is a
-log*, and [`release-epic-planning`](../../process/workflow/release-epic-planning.md)
+log*, and [`release-epic-planning`](release-epic-planning.md)
 for epic → feature → task. **The types must be the ones `.beans.yml` lets the
 CLI write.** A level the store cannot hold, such as a `story` type it does not
 configure, is a proposal to the owner. It is not a row.
