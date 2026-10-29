@@ -277,3 +277,5 @@ consulted it; `workflow_gate` only answers agents that ask.
   package may relax, and the commit-boundary gate.
 - [`content-context-and-state-graphs`](../../kg/kg-core/content-context-and-state-graphs.md)
   — the layer that makes "a controlled overlay of context" a thing you can name.
+- [`bpmn-forced-vs-managed`](../../../docs/research-and-analysis/bpmn-forced-vs-managed.md)
+  — two-arm harness (bean `folio-assistant-502c`, `bun run cat eval:bpmn-forced-vs-managed`) for token-machine step enforcement (`forced`) against full-diagram self-management (`self-managed`) on `test-plan-execution.bpmn`; so far run only with a simulated agent, so it has no results about models yet.
