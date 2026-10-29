@@ -268,7 +268,7 @@ describe("laneRoleRef — a lane names its Role by partitionElementRef (owner, 2
 });
 
 describe("mechanical roles are real roles (owner, 2026-10-16)", () => {
-  const g = readRoleGraph(join(import.meta.dir, "..", "scenarios"))!;
+  const g = readRoleGraph(join(import.meta.dir, "..", "..", "scenarios"))!;
 
   test("no role carries the retired `actedUpon`; a layer still carrying it loads, with the flag dropped", () => {
     expect(g.roles.some((r) => "actedUpon" in r)).toBe(false);
@@ -311,7 +311,7 @@ describe("readActors", () => {
 });
 
 describe("this repository's own role graph", () => {
-  const g = readRoleGraph(join(import.meta.dir, "..", "scenarios"));
+  const g = readRoleGraph(join(import.meta.dir, "..", "..", "scenarios"));
 
   test("is declared and loads", () => {
     expect(g).toBeDefined();
@@ -330,8 +330,8 @@ describe("this repository's own role graph", () => {
 });
 
 describe("this repository's actor registry, after the roles[] migration", () => {
-  const actors = readActors(actorsDir(join(import.meta.dir, "..", ".."))!);
-  const g = readRoleGraph(join(import.meta.dir, "..", "scenarios"))!;
+  const actors = readActors(actorsDir(join(import.meta.dir, "..", "..", ".."))!);
+  const g = readRoleGraph(join(import.meta.dir, "..", "..", "scenarios"))!;
 
   test("no entry still carries the deprecated `inherits`", () => {
     expect(actors.filter((a) => a.looksLikeRole).map((a) => a.id)).toEqual([]);
@@ -365,8 +365,8 @@ describe("this repository's actor registry, after the roles[] migration", () => 
 });
 
 describe("permissions are an actor property, not a role property", () => {
-  const kg = join(import.meta.dir, "..", "skills");
-  const actorsDirPath = actorsDir(join(import.meta.dir, "..", ".."))!;
+  const kg = join(import.meta.dir, "..", "..", "skills");
+  const actorsDirPath = actorsDir(join(import.meta.dir, "..", "..", ".."))!;
 
   test("the vocabulary is declared and every id is unique", () => {
     const v = readPermissions(kg);
@@ -385,7 +385,7 @@ describe("permissions are an actor property, not a role property", () => {
   test("`capabilities[]` now holds probes only — no permission and no skill leaked back in", async () => {
     const { readdirSync } = await import("node:fs");
     const probes = new Set(
-      readdirSync(capabilitiesDir(join(import.meta.dir, "..", ".."))!).map((f: string) =>
+      readdirSync(capabilitiesDir(join(import.meta.dir, "..", "..", ".."))!).map((f: string) =>
         f.replace(/\.json$/, ""),
       ),
     );
@@ -400,7 +400,7 @@ describe("permissions are an actor property, not a role property", () => {
     // change makes every permission role-uniform, revisit the model; until
     // then, moving them to Role reintroduces the 36 conflicts. The grants are
     // read from the ODRL policies since issue #1180; the measurement is the same.
-    const actors = readActors(actorsDirPath, readPolicyGrants(join(import.meta.dir, "..", "policies")));
+    const actors = readActors(actorsDirPath, readPolicyGrants(join(import.meta.dir, "..", "..", "policies")));
     const rolesOf = (perm: string) =>
       new Set(actors.filter((a) => (a.permissions ?? []).includes(perm)).flatMap((a) => a.roles ?? []));
     expect(rolesOf("content-authoring").size).toBeGreaterThan(1);
@@ -417,7 +417,7 @@ describe("permissions are an actor property, not a role property", () => {
 });
 
 describe("the actor kind is three-way: human, agentic, mechanical", () => {
-  const actorsDirPath = actorsDir(join(import.meta.dir, "..", ".."))!;
+  const actorsDirPath = actorsDir(join(import.meta.dir, "..", "..", ".."))!;
 
   function withActor(entry: unknown): string {
     const dir = mkdtempSync(join(tmpdir(), "actors-"));

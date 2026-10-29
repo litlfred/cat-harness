@@ -11,7 +11,7 @@ import { describe, expect, test } from "bun:test";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 
-import { readDeclaration } from "./cat-harness.js";
+import { readDeclaration } from "../cat-harness.js";
 import {
   THEME_LAYOUTS,
   ResolvedThemeSchema,
@@ -163,7 +163,7 @@ describe("every shipped backdrop resolves against THIS instance's declaration", 
   // theme shipped palette-only until the owner supplied the portrait crop on
   // 2026-09-24. Adding a backdrop before that failed here, which is the point:
   // a theme must never serve a landscape crop to a phone.
-  const decl = readDeclaration(resolve(import.meta.dir, ".."));
+  const decl = readDeclaration(resolve(import.meta.dir, "..", ".."));
   const themed = THEMES.filter((t) => t.backdrop !== undefined);
 
   test("there are backdrops to check — otherwise this proves nothing", () => {
@@ -182,7 +182,7 @@ describe("every shipped backdrop resolves against THIS instance's declaration", 
     // it, reports success, and serves a 404.
     const theme = themeById(id)!;
     for (const img of resolveThemeBackdrop(theme, decl?.images).art.values()) {
-      expect({ id, src: img.src, exists: existsSync(resolve(import.meta.dir, "..", img.src)) })
+      expect({ id, src: img.src, exists: existsSync(resolve(import.meta.dir, "..", "..", img.src)) })
         .toEqual({ id, src: img.src, exists: true });
     }
   });

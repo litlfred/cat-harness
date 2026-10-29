@@ -2502,13 +2502,13 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // available.
   //
   // The platform's own twelve themes are NOT this graph. They are furniture in
-  // `cat-harness/schemas/themes.ts`, and the root AGENTS.md draws the line they
+  // `cat-harness/schemas/ui/themes.ts`, and the root AGENTS.md draws the line they
   // would cross: a palette read off a WHO style guide is subject matter, and
   // subject matter does not live in the platform. This kind is what gives it
   // somewhere else to live that a declaration-driven consumer can still find.
   themes: {
     description:
-      "themes an instance DERIVED from a source it holds — a served stylesheet, or a style guide's stated rules. One Theme node each, carrying `kind: sticky \\| webpage \\| publication`; the palette vocabulary is shared across every kind and only the geometry varies. Every value cites where it was measured. NOT the platform's own twelve themes, which are furniture in `cat-harness/schemas/themes.ts` — a palette read off a WHO style guide is subject matter.",
+      "themes an instance DERIVED from a source it holds — a served stylesheet, or a style guide's stated rules. One Theme node each, carrying `kind: sticky \\| webpage \\| publication`; the palette vocabulary is shared across every kind and only the geometry varies. Every value cites where it was measured. NOT the platform's own twelve themes, which are furniture in `cat-harness/schemas/ui/themes.ts` — a palette read off a WHO style guide is subject matter.",
     title: "Themes",
     renderable: false,
     // Authored-from-a-source, like `voices` and for the same reason: a theme is

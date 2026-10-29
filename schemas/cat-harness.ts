@@ -7400,7 +7400,7 @@ import "./folio-graph-typology.js";
 // The `glossary` kind was registered here too until folio-assistant#2598: it
 // is now a node in the content instance's own `typologies/` graph (owner
 // 2026-09-23, "put glossary into" the content layer).
-import { ThemeRefSchema, type ThemeRef } from "./theme";
+import { ThemeRefSchema, type ThemeRef } from "./ui/theme";
 import { CONFIG_SUFFIX, DECLARATION_SUFFIX, findDeclarationFile, instanceRootsIn, isForeignCheckout, lockFilesIn } from "./instance-roots";
 // Instance DISCOVERY lives in a leaf module (bean dmx1), so the graph-typology
 // registry can find each harness's declared `kinds/` without importing this

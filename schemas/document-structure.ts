@@ -35,7 +35,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { z } from "zod";
 
-import { PDF_STRUCTURE_SCHEMA_ID, PdfStructureSchema, type PdfStructure } from "./pdf-structure.ts";
+import { PDF_STRUCTURE_SCHEMA_ID, PdfStructureSchema, type PdfStructure } from "./ui/pdf-structure.ts";
 
 export const NOTEBOOK_STRUCTURE_SCHEMA_ID = "notebook-structure/v1" as const;
 

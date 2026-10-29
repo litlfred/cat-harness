@@ -21,7 +21,7 @@ import {
   type ArtCandidate,
 } from "./theme-art-intake.js";
 import { CatHarnessDeclarationSchema, declarationPathIn } from "./cat-harness.js";
-import { THEME_LAYOUTS, type ThemeLayout } from "./theme.js";
+import { THEME_LAYOUTS, type ThemeLayout } from "./ui/theme.js";
 
 const INSTANCE = join(import.meta.dir, "..");
 

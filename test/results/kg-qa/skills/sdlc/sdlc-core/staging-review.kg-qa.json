@@ -5,7 +5,7 @@
     "id": "staging-review",
     "path": "skills/sdlc/sdlc-core/staging-review.md"
   },
-  "source_hash": "126bc663175f",
+  "source_hash": "2fba3e73def7",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

@@ -5,5 +5,5 @@
     "kind": "library",
     "family": "folio-slides-accessibility/v1"
   },
-  "schema": "schemas/slides-accessibility.ts#SlidesAccessibilitySchema"
+  "schema": "schemas/ui/slides-accessibility.ts#SlidesAccessibilitySchema"
 }

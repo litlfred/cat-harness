@@ -34,7 +34,7 @@ happened once.
 ## Why a comment carries the number
 
 A contrast ratio asserted in prose is a **claim**. The numbers live beside the
-values in `schemas/themes.ts` because the alternative is a reader trusting a
+values in `schemas/ui/themes.ts` because the alternative is a reader trusting a
 sentence, and `themes.test.ts` **computes** them rather than restating them:
 
 > Parsing proves a theme is well-formed. It does not prove the palette is

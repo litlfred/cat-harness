@@ -51,7 +51,7 @@
  * So a move is written to a bean as a **note**, which `workflow/bean-link.ts`
  * already does and which needs no new field. Giving a bean an `anchor` would
  * put a rendering position in the work plan, which is the same conflation
- * `schemas/theme.ts` refuses for themed todos — two stores with one vocabulary
+ * `schemas/ui/theme.ts` refuses for themed todos — two stores with one vocabulary
  * is the drift this repository keeps paying for.
  *
  * Practically, too: a bean's front matter is written by a **third-party CLI**

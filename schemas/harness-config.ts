@@ -2090,7 +2090,7 @@ export async function loadContributions<C extends { name: string }, S extends Co
  * hot loop, a module-load side effect, a build step. Threading an awaited
  * registry through every one of them would change the checker signatures the
  * dispatch tables are keyed on. Bun's `require` loads a `.ts` module
- * synchronously — the same property `schemas/theme-by-ref.ts` relies on.
+ * synchronously — the same property `schemas/ui/theme-by-ref.ts` relies on.
  */
 export function loadContributionsSync<C extends { name: string }, S extends ContributionSink<C>>(
   folioRoot: string,

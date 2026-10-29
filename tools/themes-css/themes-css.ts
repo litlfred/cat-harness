@@ -17,7 +17,7 @@ export default toolFactory((t) =>
     },
     satisfies: ["site-presentation-assets"],
     maintains: [
-      { source: "schemas/themes.ts", artefact: "assets/css/themes.css", format: "css" },
+      { source: "schemas/ui/themes.ts", artefact: "assets/css/themes.css", format: "css" },
     ],
     requires: { runtime: ["bun"], network: false },
   }),

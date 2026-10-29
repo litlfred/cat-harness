@@ -3257,7 +3257,7 @@
    *
    * ## Absent is not zero, and this function is where that is enforced
    *
-   * `schemas/tile-count.ts` carries the argument: a projection that declares
+   * `schemas/ui/tile-count.ts` carries the argument: a projection that declares
    * no count, declares a malformed one, or could not be read is NOT a
    * projection over an empty graph. They are opposite facts, and `dh4f` is
    * this repository's name for scanning nothing and calling it clean.

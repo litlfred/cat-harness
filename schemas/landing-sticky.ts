@@ -92,7 +92,7 @@ import {
   type Initiation,
   type StickyLink,
 } from "./sticky-contribution.js";
-import { ThemeRefSchema } from "./theme.js";
+import { ThemeRefSchema } from "./ui/theme.js";
 
 /**
  * The link shape, and the external-link test, **re-exported**.

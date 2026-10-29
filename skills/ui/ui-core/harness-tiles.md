@@ -529,7 +529,7 @@ once, for both passes (`compose-docs --shell --instance`, and
 | a kind nothing classifies | is treated as state | none |
 
 **Why the state row is unlinked rather than shown at zero or re-based.**
-`schemas/tile-count.ts` and §"A TILE IS ONE OF TWO KINDS" already settle it:
+`schemas/ui/tile-count.ts` and §"A TILE IS ONE OF TWO KINDS" already settle it:
 absent is a third state, never `0`. A folio that declares no `beans` graph has
 not said it has no beans; it has said nothing. Showing `0` would be a claim,
 and showing the platform's number, or a link to the platform's work plan

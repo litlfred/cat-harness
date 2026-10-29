@@ -510,7 +510,7 @@ at the top applies to every block:
   `localStorage`. A private window just gets the defaults.
 - **The renderers and the registry** are `cat-harness-tools/scripts/review-renderers.ts`,
   `cat-harness-tools/scripts/word-diff.ts` (no diff library; about forty lines,
-  tested) and `cat-harness/schemas/diff-renderers.ts`. To add one, declare it
+  tested) and `cat-harness/schemas/ui/diff-renderers.ts`. To add one, declare it
   in the registry with what it needs and which kinds it defaults for, add its
   function to `review-renderers.ts`, and add a case to the page's
   `renderInto`.

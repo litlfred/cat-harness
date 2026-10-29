@@ -15,7 +15,7 @@ written down about it.
 
 ## A theme is a palette AND a geometry
 
-`schemas/theme.ts` — `ThemeSchema`. Four palette roles, never colour names:
+`schemas/ui/theme.ts` — `ThemeSchema`. Four palette roles, never colour names:
 `surface`, `ink`, `edge`, `accent`, plus an optional gradient pair. A rule reads
 as what it does and a theme swap touches one file.
 

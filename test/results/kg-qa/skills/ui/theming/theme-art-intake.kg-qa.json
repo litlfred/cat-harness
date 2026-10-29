@@ -5,7 +5,7 @@
     "id": "theme-art-intake",
     "path": "skills/ui/theming/theme-art-intake.md"
   },
-  "source_hash": "3bbf674966e7",
+  "source_hash": "746c43d75a41",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

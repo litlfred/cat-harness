@@ -5,5 +5,5 @@
     "kind": "docs",
     "family": "folio-translation-status/v1"
   },
-  "schema": "schemas/site-indexes.ts#TranslationStatusSchema"
+  "schema": "schemas/ui/site-indexes.ts#TranslationStatusSchema"
 }

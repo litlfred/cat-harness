@@ -71,7 +71,7 @@
 import { z } from "zod";
 
 import { NoteTagsSchema } from "./carried-note.js";
-import { TileCountsSchema } from "./tile-count.js";
+import { TileCountsSchema } from "./ui/tile-count.js";
 
 /** The document's own declaration of what it is, inside the file. */
 export const TODO_INDEX_SCHEMA_TAG = "folio-todo-index/v1";
