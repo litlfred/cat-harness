@@ -5,7 +5,7 @@
     "id": "incremental-render",
     "path": "skills/ui/ui-core/incremental-render.md"
   },
-  "source_hash": "bf714e792523",
+  "source_hash": "08597681cab5",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",
