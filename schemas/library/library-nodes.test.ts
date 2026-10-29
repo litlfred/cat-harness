@@ -6,10 +6,10 @@
 import { describe, expect, test } from "bun:test";
 import { join } from "node:path";
 
-import { familyBody, nodeFamilyTag, resolveNodeSchemas } from "./kg/kind-validator.ts";
+import { familyBody, nodeFamilyTag, resolveNodeSchemas } from "../kg/kind-validator.ts";
 import { LIBRARY_NODE_FAMILIES, LibraryBlockSchema, LibrarySectionSchema, LibrarySourceDocumentSchema, libraryNodeClass } from "./library-nodes.ts";
 
-const HARNESS = join(import.meta.dir, "..");
+const HARNESS = join(import.meta.dir, "..", "..");
 const ctx = ["https://example.org/ns/context/v1.jsonld", { "@base": "https://example.org/" }];
 const doc = "https://example.org/library/d/manifest.jsonld";
 const untyped = { "@context": ctx, "@id": "library/d/blocks/prose-s024", kind: "prose", title: "11. Automation", text: "../sections/s024.md", derivedFrom: doc, sourceDocument: doc, provenance: "ingested" };

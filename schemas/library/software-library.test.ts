@@ -13,7 +13,7 @@ import { describe, expect, test } from "bun:test";
 import { readdirSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
-import { defaultGraphTypologies, graphLayer, isRenderable } from "./kg/cat-harness.ts";
+import { defaultGraphTypologies, graphLayer, isRenderable } from "../kg/cat-harness.ts";
 import {
   OutsideSoftwareCoreSchema,
   SoftwareDigestSchema,
@@ -31,9 +31,9 @@ import {
   vendoredLibraryFileName,
 } from "./software-library.ts";
 import { loadSpdxLicenseList } from "./spdx-license-expression.ts";
-import { TOOL_RELEASE_SCHEMA_TAG, ToolReleaseSchema, toolReleaseLicenceProblem } from "./tools/tool-release.ts";
+import { TOOL_RELEASE_SCHEMA_TAG, ToolReleaseSchema, toolReleaseLicenceProblem } from "../tools/tool-release.ts";
 
-const HARNESS = resolve(import.meta.dir, "..");
+const HARNESS = resolve(import.meta.dir, "..", "..");
 const CHECKOUT = resolve(HARNESS, "..");
 const SHA512 = "b".repeat(128);
 const SHA256 = "a".repeat(64);

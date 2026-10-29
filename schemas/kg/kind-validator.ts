@@ -56,7 +56,7 @@ import {
   type GraphTypologyRegistry,
 } from "./cat-harness.js";
 import type { NodeSchemaRef } from "./graph-typology-registry.js";
-import { libraryNodeClass } from "../library-nodes.js";
+import { libraryNodeClass } from "../library/library-nodes.js";
 import { isNodeKind } from "./node-kind.js";
 
 /** A validator reference, split from its `module#Export` form. */

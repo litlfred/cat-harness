@@ -3,7 +3,7 @@
  *
  * WHERE IT LIVES: the attestation store's `bib-verification` family, one
  * file per reference (`schemas/qa-attestations.ts`), read and written only
- * through `schemas/bib-attestations.ts`. Before a folio is migrated
+ * through `schemas/library/bib-attestations.ts`. Before a folio is migrated
  * (`cat-harness-tools/scripts/migrate-bib-attestations.ts`) it is the single
  * file `<folio>/bib-qa-verifications.json`, and the same reader falls back to
  * it. The shapes below are the ROW shape either way.
