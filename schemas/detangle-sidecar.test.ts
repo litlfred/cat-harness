@@ -5,7 +5,7 @@
  * the owner ruled what the sidecar pins. Nobody went back, so for three days
  * `kg:detangle --check` compared nine fields and the two that answer "is the
  * layering inverted" were printed and dropped. In that window
- * `cat-harness/schemas/intake.ts` began importing `folio-assistant-core` and
+ * `cat-harness/schemas/library/intake.ts` began importing `folio-assistant-core` and
  * the check stayed green, because the field it would have had to compare was
  * not in the file.
  *

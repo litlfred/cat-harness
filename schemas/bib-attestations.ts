@@ -55,7 +55,7 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, sep } from "node:path";
 
-import type { LedgerEntry, SourceLedger } from "./bib-verification";
+import type { LedgerEntry, SourceLedger } from "./library/bib-verification";
 import { folioDir } from "./cat-harness";
 import {
   ATTESTATIONS_SUFFIX,

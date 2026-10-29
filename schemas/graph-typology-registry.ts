@@ -1237,7 +1237,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "and, beside a record, the pinned edition's own codes where something resolves against them.",
   },
   // Code lists — a closed set of codes, each with a label, a definition and a
-  // source, published as a SKOS concept scheme (schemas/code-list.ts). Owner,
+  // source, published as a SKOS concept scheme (schemas/library/code-list.ts). Owner,
   // 2026-09-23: "list of codes and corresponding narrative desc and source
   // should be part of a node/asset". `content`, by the same argument
   // `external-schema` makes: the subject matter is a DECISION — which answers
@@ -2820,7 +2820,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // "narrative/audio/visual content with text should be translatable. its not
   // so much the node schema itself but its content (e.g. markdown, bpmn)
   // should be translatable" — translatability is a property of a FORMAT
-  // within a content type, which `schemas/translation-tools.ts` already
+  // within a content type, which `schemas/library/translation-tools.ts` already
   // declares, not a property of a directory.
   //
   // `.po` catalogues are different: they are not content in any language, and

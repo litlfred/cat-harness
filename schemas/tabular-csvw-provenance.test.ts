@@ -6,7 +6,7 @@
 import { describe, expect, it } from "bun:test";
 import { narrativeFor } from "./narrative";
 
-import { CSVW_KEYS, TabularCsvwSchema, TabularCsvwTablesSchema, toCsvw } from "./tabular-csvw";
+import { CSVW_KEYS, TabularCsvwSchema, TabularCsvwTablesSchema, toCsvw } from "./library/tabular-csvw";
 
 const base = {
   $schema: "folio-tabular-csvw/v1",

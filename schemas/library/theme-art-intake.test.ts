@@ -20,10 +20,10 @@ import {
   measureImage,
   type ArtCandidate,
 } from "./theme-art-intake.js";
-import { CatHarnessDeclarationSchema, declarationPathIn } from "./cat-harness.js";
-import { THEME_LAYOUTS, type ThemeLayout } from "./ui/theme.js";
+import { CatHarnessDeclarationSchema, declarationPathIn } from "../cat-harness.js";
+import { THEME_LAYOUTS, type ThemeLayout } from "../ui/theme.js";
 
-const INSTANCE = join(import.meta.dir, "..");
+const INSTANCE = join(import.meta.dir, "..", "..");
 
 /** A synthetic PNG header with the dimensions asked for. Enough to measure. */
 function png(width: number, height: number, pad = 0): Uint8Array {

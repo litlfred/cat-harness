@@ -22,7 +22,7 @@ entry, not editing code.
 
 The `code-list` graph typology, declared in `<instance>.json` (here
 `cat-harness/code-lists/`). One file per list, `"$schema":
-"folio-code-list/v1"`; the shape is `schemas/code-list.ts`. An instance sees
+"folio-code-list/v1"`; the shape is `schemas/library/code-list.ts`. An instance sees
 its own lists and every dependency's (`codeListDirs`), and a list with the same
 id in the instance overrides the inherited one.
 

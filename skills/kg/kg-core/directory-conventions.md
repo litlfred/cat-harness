@@ -172,7 +172,7 @@ change a row, edit the kind.
 > so much the node schema itself but its content (e.g. markdown, bpmn) should
 > be translatable"*: translatability is a property of a **format within a
 > content type**, which the owning instance declares under
-> `contentTranslations` (collected by `schemas/translation-tools.ts`) and
+> `contentTranslations` (collected by `schemas/library/translation-tools.ts`) and
 > `isTranslatable` already answers, not a property of a directory.
 >
 > `.po` catalogues are the genuine exception, and that is what
