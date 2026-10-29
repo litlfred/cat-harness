@@ -81,7 +81,7 @@
 import { z } from "zod";
 
 import { CarriedNoteSchema } from "../kg/carried-note.js";
-import { PageAnchorSchema } from "../note-anchor.js";
+import { PageAnchorSchema } from "../ui/note-anchor.js";
 import {
   InitiationSchema,
   StickyLinkSchema,

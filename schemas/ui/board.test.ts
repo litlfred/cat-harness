@@ -21,7 +21,7 @@ import {
   type Board,
 } from "./board.js";
 
-const ROOT = resolve(import.meta.dir, "..");
+const ROOT = resolve(import.meta.dir, "..", "..");
 
 const NODES = [
   { page: "index", node: "intro", kind: "prose" },
@@ -130,7 +130,7 @@ describe("the arrows run one way — a board reaches no lower than content ids",
     // `folio -> board -> position -> note`. A board names content by page and
     // node id and names notes not at all; the positions layer does that, one
     // level down. Checked at the import level, as `board-positions` is.
-    const src = readFileSync(join(ROOT, "schemas", "board.ts"), "utf-8");
+    const src = readFileSync(join(ROOT, "schemas", "ui", "board.ts"), "utf-8");
     const imports = [...src.matchAll(/^import .*? from "([^"]+)";$/gm)].map((m) => m[1]!);
     expect(imports).toEqual(["zod"]);
   });
@@ -138,7 +138,7 @@ describe("the arrows run one way — a board reaches no lower than content ids",
   test("a board carries no note ids", () => {
     // Structural, against the source: a board listing its notes would be a
     // second answer to a question `board-positions.ts` already answers.
-    const src = readFileSync(join(ROOT, "schemas", "board.ts"), "utf-8");
+    const src = readFileSync(join(ROOT, "schemas", "ui", "board.ts"), "utf-8");
     const fields = [...src.matchAll(/^\s{4}(\w+)[?]?:\s/gm)].map((m) => m[1]!);
     expect(fields.filter((n) => ["notes", "note", "positions", "x", "y"].includes(n))).toEqual([]);
   });

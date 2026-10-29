@@ -59,7 +59,7 @@
 
 import { z } from "zod";
 
-import { AlsoAboutSchema, NoteAnchorSchema } from "../note-anchor.js";
+import { AlsoAboutSchema, NoteAnchorSchema } from "../ui/note-anchor.js";
 import { nodeKind } from "./node-kind.js";
 import { ProcessElementIdSchema } from "../process/process-element-id.js";
 

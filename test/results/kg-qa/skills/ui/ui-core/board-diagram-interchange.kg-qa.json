@@ -5,7 +5,7 @@
     "id": "board-diagram-interchange",
     "path": "skills/ui/ui-core/board-diagram-interchange.md"
   },
-  "source_hash": "e54ac914afee",
+  "source_hash": "14c5265eba80",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

@@ -14,7 +14,7 @@ import {
   renderToolOutput,
   renderWindowDetail,
 } from "./render-output.js";
-import { ToolOutputSchema, ToolRenderSchema } from "./tools/tool.js";
+import { ToolOutputSchema, ToolRenderSchema } from "../tools/tool.js";
 
 const SCRIPT = `<script>alert(1)</script><img src=x onerror="alert(2)">`;
 
@@ -197,7 +197,7 @@ describe("lazy window content fetch on open — bean q2wm", () => {
 
   it("docs-ui.js wires lazy fetchCardDetail on openCard (not todoSlot) and renders tool outputs via renderToolOutput", () => {
     const docsUi = readFileSync(
-      resolve(import.meta.dir, "../site-chrome/assets/js/docs-ui.js"),
+      resolve(import.meta.dir, "../../site-chrome/assets/js/docs-ui.js"),
       "utf8",
     );
     expect(docsUi).toContain("function renderToolOutput(value, hint)");

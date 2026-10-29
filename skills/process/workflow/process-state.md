@@ -176,7 +176,7 @@ Steps 1–3 reconstruct **where you were**. They do not reconstruct **what you
 changed position of**, and for notes and stickies that is a separate problem
 with a sharper edge:
 
-> **A move is not self-documenting.** `moveNote` (`schemas/note-anchor.ts`)
+> **A move is not self-documenting.** `moveNote` (`schemas/ui/note-anchor.ts`)
 > returns the note with its new anchor and *nothing about the old one*. A note
 > that has been moved cannot say where it was.
 

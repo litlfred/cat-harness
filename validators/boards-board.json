@@ -4,5 +4,5 @@
   "validates": {
     "kind": "boards"
   },
-  "schema": "schemas/board.ts#BoardSchema"
+  "schema": "schemas/ui/board.ts#BoardSchema"
 }

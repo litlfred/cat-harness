@@ -5,7 +5,7 @@
     "id": "rendered-impact",
     "path": "skills/sdlc/sdlc-core/rendered-impact.md"
   },
-  "source_hash": "e04a7af7bd6d",
+  "source_hash": "5e257194c495",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

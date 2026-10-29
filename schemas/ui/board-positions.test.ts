@@ -34,7 +34,7 @@ import {
   type BoardPositions,
 } from "./board-positions.js";
 
-const ROOT = resolve(import.meta.dir, "..");
+const ROOT = resolve(import.meta.dir, "..", "..");
 
 const doc = (): BoardPositions => ({
   $schema: BOARD_POSITIONS_SCHEMA_TAG,
@@ -201,7 +201,7 @@ describe("the arrow runs ONE way — a note knows nothing about a board", () => 
     // rather than against a value, because the failure it guards is somebody
     // later adding `x`/`y` to a note "for convenience". That would make a
     // content node carry state and give one note two answers on two boards.
-    for (const f of ["todo.ts", "carried-note.ts", "landing-sticky.ts", "note-anchor.ts"]) {
+    for (const f of ["sdlc/todo.ts", "kg/carried-note.ts", "content/landing-sticky.ts", "ui/note-anchor.ts"]) {
       const src = readFileSync(join(ROOT, "schemas", f), "utf-8");
       const fields = [...src.matchAll(/^\s{2}(\w+)[?]?:\s/gm)].map((m) => m[1]!);
       expect({ f, offending: fields.filter((n) => ["x", "y", "board", "position"].includes(n)) }).toEqual({
@@ -215,7 +215,7 @@ describe("the arrow runs ONE way — a note knows nothing about a board", () => 
     // The dependency direction, checked at the import level. `board-positions`
     // may not reach DOWN into a note's schema: it names notes by id, and an
     // id needs no type from the layer below.
-    const src = readFileSync(join(ROOT, "schemas", "board-positions.ts"), "utf-8");
+    const src = readFileSync(join(ROOT, "schemas", "ui", "board-positions.ts"), "utf-8");
     const imports = [...src.matchAll(/^import .*? from "([^"]+)";$/gm)].map((m) => m[1]!);
     expect(imports).toEqual(["zod"]);
   });

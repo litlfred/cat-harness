@@ -47,7 +47,7 @@ import { readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { BLANK_AVATAR } from "../blank-avatar";
+import { BLANK_AVATAR } from "../ui/blank-avatar";
 import { defaultGraphTypologies } from "../kg/graph-typology-registry";
 import { findDeclarationFile, instanceRootsIn } from "../kg/instance-roots";
 
