@@ -95,7 +95,7 @@ import { z } from "zod";
 import { INDEX_LOCK_FILENAME, LEGACY_MOUNT_LOCK_SUFFIX, lockFilesIn } from "./instance-roots.js";
 import { MountTrustBasisSchema, MountTrustSchema } from "./mount-trust.js";
 import { RepoFullNameSchema } from "./repo-full-name.js";
-import { ToolIdSchema } from "./tool-id.js";
+import { ToolIdSchema } from "./tools/tool-id.js";
 
 /** An instance name — the same rule `cat-harness.ts` applies to `needs` and subscriptions. */
 const InstanceNameSchema = z.string().regex(/^[a-z0-9][a-z0-9-]*$/, "an instance name: lowercase, digits and dashes");

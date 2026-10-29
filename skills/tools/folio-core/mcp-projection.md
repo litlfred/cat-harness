@@ -26,7 +26,7 @@ Because the pieces already line up, and that is not a coincidence — it is what
 the carrier decision bought:
 
 ```
-schemas/tool.ts  (Zod, authoritative)
+schemas/tools/tool.ts  (Zod, authoritative)
   └─→ JSON Schema                    ← already generated; MCP speaks JSON Schema
         └─→ MCP tool.inputSchema
 ToolDefinition.io.inputs/outputs      ← already the I/O contract
@@ -120,7 +120,7 @@ Same rule as everywhere here, and it is easy to lose in a generator:
   [`untrusted-input`](../../conduct/conduct-core/untrusted-input.md).
 - **Do not let the projection become the source of truth.** The generated
   server is a rendering, like the JSON Schema and the JSON-LD. A fix lands in
-  `schemas/tool.ts` or the Tool node, never in the emitted server — see
+  `schemas/tools/tool.ts` or the Tool node, never in the emitted server — see
   [`directory-conventions`](../../kg/kg-core/directory-conventions.md) §"What lives in the
   `schemas` graph".
 

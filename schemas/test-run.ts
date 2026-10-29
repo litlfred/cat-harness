@@ -83,7 +83,7 @@ import { z } from "zod";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { SkillNameSchema } from "./tool-types";
+import { SkillNameSchema } from "./tools/tool-types";
 
 import { RequirementRefSchema } from "@litlfred/bootstrap-tools/schemas/requirement.ts";
 import { NETWORK_REACHES, REACH_UNKNOWN } from "./actor-reach";

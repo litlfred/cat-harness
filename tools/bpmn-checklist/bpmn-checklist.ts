@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // ── The BPMN engine's checklist projection — bean `folio-assistant-cy4p`,
 // owner ruling 2026-10-10 ("both"). The engine itself, `bpmn-engine`, is

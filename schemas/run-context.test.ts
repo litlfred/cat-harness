@@ -9,7 +9,7 @@ import {
   unprovisioned,
   type RunContext,
 } from "./run-context";
-import { TOOL_RUN_SCHEMA_ID, ToolRunRecordSchema } from "./tool-run";
+import { TOOL_RUN_SCHEMA_ID, ToolRunRecordSchema } from "./tools/tool-run";
 import { TEST_RUN_SCHEMA_ID, TestRunSchema } from "./test-run";
 import { TEST_REPORT_SCHEMA_ID, TestReportSchema } from "./test-report";
 import { QA_REPORT_SCHEMA_TAG, QaReportSchema } from "./qa-report";

@@ -64,7 +64,7 @@ import { ReleaseDigestSchema } from "./binary-release";
 import { CommitShaSchema, LockedInstanceSchema } from "./remote-mount";
 import { ActorKindSchema } from "./skill-package";
 import { HashBasisSchema, UNKNOWN_HASH } from "./test-run";
-import { ToolReleaseRefSchema } from "./tool-release";
+import { ToolReleaseRefSchema } from "./tools/tool-release";
 
 /** The tag a run-context document carries. */
 export const RUN_CONTEXT_SCHEMA_TAG = "folio-run-context/v1";

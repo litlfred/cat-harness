@@ -32,7 +32,7 @@ import { z } from "zod";
 import { type ResolvedDirectory, resolveDirectories } from "./cat-harness.ts";
 import { type FrontMatter, parseFrontMatter, scalar } from "./front-matter.ts";
 import { checkoutDirectories } from "./harness-config.ts";
-import { BeanIdSchema } from "./tool-types.ts";
+import { BeanIdSchema } from "./tools/tool-types.ts";
 
 /** The `$schema` tag every node of the trashcan carries. */
 export const FSH_GUTS_SCHEMA_ID = "folio-fsh-guts/v1";

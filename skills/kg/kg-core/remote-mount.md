@@ -190,7 +190,7 @@ recommended). Three of the rulings govern this step:
 
 1. **A Tool brings both halves.** Its **definition** is
    `<tools dir>/<id>/<id>.ts` in the instance that declares it, by the folder
-   convention in `schemas/tool-folders.ts`. Its **implementation** is what its
+   convention in `schemas/tools/tool-folders.ts`. Its **implementation** is what its
    `invoke` names:
    - `inProcess.module`, found in the declarer or in an instance whose `needs`
      names it (`resolveImplementingPath`'s rule; two holders is refused);

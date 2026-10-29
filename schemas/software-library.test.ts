@@ -31,7 +31,7 @@ import {
   vendoredLibraryFileName,
 } from "./software-library.ts";
 import { loadSpdxLicenseList } from "./spdx-license-expression.ts";
-import { TOOL_RELEASE_SCHEMA_TAG, ToolReleaseSchema, toolReleaseLicenceProblem } from "./tool-release.ts";
+import { TOOL_RELEASE_SCHEMA_TAG, ToolReleaseSchema, toolReleaseLicenceProblem } from "./tools/tool-release.ts";
 
 const HARNESS = resolve(import.meta.dir, "..");
 const CHECKOUT = resolve(HARNESS, "..");

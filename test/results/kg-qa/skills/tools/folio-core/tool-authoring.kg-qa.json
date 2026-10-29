@@ -5,7 +5,7 @@
     "id": "tool-authoring",
     "path": "skills/tools/folio-core/tool-authoring.md"
   },
-  "source_hash": "ffada77b2e7e",
+  "source_hash": "3402d6c73e57",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

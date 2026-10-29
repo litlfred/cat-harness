@@ -313,7 +313,7 @@ what a tile IS, and the two kinds are not interchangeable:
 | what empty means | **a gap to report** — a skill nothing implements is unreachable | **a real state** — "nothing outstanding" is not "broken" |
 
 **A functional tile names the SKILL, never the tool**, and that is the
-operative rule rather than a distinction for its own sake. `schemas/tool-types.ts`
+operative rule rather than a distinction for its own sake. `schemas/tools/tool-types.ts`
 exists to make tools interchangeable — *"Two tools satisfying one skill —
 `beans-cli` and `beans-manual` — must declare the same input type, or 'these
 are interchangeable' is an assertion nothing can verify"* — so a tile bound to

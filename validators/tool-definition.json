@@ -4,5 +4,5 @@
   "validates": {
     "kind": "tools"
   },
-  "schema": "schemas/tool.ts#ToolDefinitionSchema"
+  "schema": "schemas/tools/tool.ts#ToolDefinitionSchema"
 }

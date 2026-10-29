@@ -156,7 +156,7 @@ and PR #1581 — not because anyone found the bean.
 **What the check reads, and what it must not — both measured over the whole store:**
 
 - **`status: draft` in front matter is the marker — claimed 2026-10-01, on the owner's ruling.**
-  It was already legal (`schemas/tool-types.ts` has
+  It was already legal (`schemas/tools/tool-types.ts` has
   `.enum(["draft", "todo", "in-progress", "completed", "scrapped"])`, and
   `beans create --status` offers it) and used by **0 of 542** beans. An enum
   member nothing uses is free to adopt, so a decision bean awaiting a ruling is
@@ -662,7 +662,7 @@ $ beans update <id> --tag ready-to-close
 Updated <id>
 ```
 
-and `BeanStatusSchema` in `schemas/tool-types.ts` is defined as *"exactly what
+and `BeanStatusSchema` in `schemas/tools/tool-types.ts` is defined as *"exactly what
 `beans update --status` accepts"*. A sixth status here would desync the schema
 from the tool it documents on the next `beans` release.
 

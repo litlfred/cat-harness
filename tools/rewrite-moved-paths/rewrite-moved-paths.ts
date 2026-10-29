@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // The 70lx sweep's rewrite rule, as a Tool (owner, 2026-10-10: "any
 // generalizations to add to skills/can we reuse in future subgraph

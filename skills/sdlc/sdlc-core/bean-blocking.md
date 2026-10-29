@@ -59,7 +59,7 @@ record below was never created even once.
 > | source | accepts |
 > |---|---|
 > | `beans update --help` | *"in-progress, todo, draft, completed, scrapped"* |
-> | `schemas/tool-types.ts` | the same five — *"Exactly what `beans update --status` accepts"* |
+> | `schemas/tools/tool-types.ts` | the same five — *"Exactly what `beans update --status` accepts"* |
 >
 > Measured across the 99 in-progress beans on `main` that day: **0** carried
 > `expires`, **0** carried `status: blocked` (it does not parse), 4 asserted a

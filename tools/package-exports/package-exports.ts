@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // Owner, 2026-10-14 (bean 7pvn, mo75 exports item, option 1): a layer is
 // imported by package name, and what it exports is what it DECLARES as

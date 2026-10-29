@@ -74,8 +74,8 @@ check does not have.
 
 ## Status
 
-**The source side exists now; the served side does not.** `schemas/tool.ts`,
-`schemas/tool-types.ts` and four Tool nodes are real, and `bun run cat check:tools`
+**The source side exists now; the served side does not.** `schemas/tools/tool.ts`,
+`schemas/tools/tool-types.ts` and four Tool nodes are real, and `bun run cat check:tools`
 already does the *satisfaction* check in this table's third row: every
 `satisfies` resolves to a skill that exists.
 

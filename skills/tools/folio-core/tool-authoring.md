@@ -37,7 +37,7 @@ The platform splits content/schemas from tool implementations:
 
 | layer | repository | role & contents |
 |---|---|---|
-| **Graph & Schemas** | `litlfred/cat-harness` | Declarative Tool nodes in `tools/` (using `defineTool` from `schemas/tool.ts`), schema definitions, and skill contracts. |
+| **Graph & Schemas** | `litlfred/cat-harness` | Declarative Tool nodes in `tools/` (using `defineTool` from `schemas/tools/tool.ts`), schema definitions, and skill contracts. |
 | **Tool Execution** | the tools layer's repository | Executable TypeScript implementations in `src/tools/`, MCP server in `src/server.ts`, ambient moddle/type definitions in `types/`, standalone `package.json` (`@litlfred/<tools-layer>`), `tsconfig.json`, and `bunfig.toml`. |
 
 This split guarantees that a content-only consumer or reader does not drag
@@ -93,9 +93,9 @@ In `cat-harness-tools/src/tools/` or `cat-harness-tools/src/server.ts`:
 ### Step 4: Declare the Tool Node in the Knowledge Graph
 
 In `tools/<id>/<id>.ts`, one folder per Tool (Step 4b):
-- Default-export `toolFactory((t) => defineTool({ … }))` (`schemas/tool-folders.ts`, `schemas/tool.ts`).
+- Default-export `toolFactory((t) => defineTool({ … }))` (`schemas/tools/tool-folders.ts`, `schemas/tools/tool.ts`).
 - Link to the skill via `satisfies: ["<skill-id>"]`.
-- Map I/O ports to shared vocabulary in `schemas/tool-types.ts` via absolute IRIs.
+- Map I/O ports to shared vocabulary in `schemas/tools/tool-types.ts` via absolute IRIs.
 - Specify invocation target:
   - In-process: `invoke: { inProcess: "@litlfred/<tools-layer>#<export>" }`
   - CLI: `invoke: { command: "bun run ...", args: [...] }`
@@ -159,7 +159,7 @@ A Tool is declared in `tools/<id>/<id>.ts` inside the harness's declared
 string, the file default-exports `toolFactory((t) => defineTool({ … }))`, and
 the folder also holds whatever is that Tool's alone (its script, fixtures,
 tests). `tools/index.ts` only calls `toolsFromFolders`
-(`schemas/tool-folders.ts`), which refuses a folder that breaks the
+(`schemas/tools/tool-folders.ts`), which refuses a folder that breaks the
 convention, so discovery is unchanged. Helpers several Tools share go in
 `tools/lib.ts`, which declares no Tool. A `defineTool(` anywhere else in the
 directory is an inline declaration, and `check:tools` reports it.

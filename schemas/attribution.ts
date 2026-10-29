@@ -39,7 +39,7 @@
  * @graphNode schema
  */
 import { z } from "zod";
-import { SkillRefSchema } from "./tool-types.js";
+import { SkillRefSchema } from "./tools/tool-types.js";
 import { ModelIdSchema } from "@litlfred/bootstrap-tools/schemas/model-registry.ts";
 
 /**

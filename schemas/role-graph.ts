@@ -120,7 +120,7 @@ import { termIri } from "./namespaces";
 import { ACTOR_KINDS, SUT_ACTOR_KINDS, SystemUnderTestFacetSchema, type ActorKind, type SystemUnderTestFacet } from "./skill-package";
 import { NETWORK_REACHES, directoryForGraph, findInstanceRoot, ownPrefixTable, type NetworkReach } from "./cat-harness";
 import { findDeclarationFile, instanceRootNamed, repoRootFor } from "./instance-roots";
-import { SkillNameSchema } from "./tool-types";
+import { SkillNameSchema } from "./tools/tool-types";
 import { ModelCapabilitiesSchema, type ModelCapabilities } from "./model-capabilities.js";
 
 /** Directory, relative to the `kg` graph root, holding the role declaration. */

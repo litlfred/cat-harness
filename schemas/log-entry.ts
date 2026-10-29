@@ -38,7 +38,7 @@ import { join } from "node:path";
 
 import { z } from "zod";
 
-import { BeanIdSchema } from "./tool-types.ts";
+import { BeanIdSchema } from "./tools/tool-types.ts";
 import { ProcessElementIdSchema } from "./process-element-id.ts";
 import { fshGutsDirectories } from "./fsh-guts.ts";
 

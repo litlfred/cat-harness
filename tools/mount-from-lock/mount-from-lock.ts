@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // `mount-from-lock.ts` had no Tool node, so the one step every CI job and
 // every folio's staging build runs FIRST was invisible to an agent looking

@@ -1,7 +1,7 @@
 /**
  * The ONE implementation of a Tool output's render hint — bean `q2wm`, R17.
  *
- * `schemas/tool.ts` declares what a renderer MAY do with an output
+ * `schemas/tools/tool.ts` declares what a renderer MAY do with an output
  * ({@link RENDER_AS}); this does exactly that and no more, so a renderer that
  * puts a tool's output into a page calls this rather than deciding for itself.
  * A hint nothing reads is not a restriction — this is what reads it.
@@ -24,7 +24,7 @@ import { remark } from "remark";
 import remarkHtml from "remark-html";
 
 import { safeHref } from "./safe-url.js";
-import type { ToolRender } from "./tool.js";
+import type { ToolRender } from "./tools/tool.js";
 
 /** Escape for HTML text and attribute content alike. */
 export function escapeForHtml(value: string): string {

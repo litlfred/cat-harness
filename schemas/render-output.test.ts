@@ -14,7 +14,7 @@ import {
   renderToolOutput,
   renderWindowDetail,
 } from "./render-output.js";
-import { ToolOutputSchema, ToolRenderSchema } from "./tool.js";
+import { ToolOutputSchema, ToolRenderSchema } from "./tools/tool.js";
 
 const SCRIPT = `<script>alert(1)</script><img src=x onerror="alert(2)">`;
 
