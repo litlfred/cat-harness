@@ -127,7 +127,7 @@ the word finds them; only the activity list above is the process.
 
 ## What makes a disagreement ADJUDICABLE
 
-Not "somebody is unhappy". `schemas/block-qa.ts` already declares the three
+Not "somebody is unhappy". `schemas/sdlc/block-qa.ts` already declares the three
 reviewer kinds — `script`, `agent`, `human` — and allows **multiple entries per
 criterion**, which makes the entry condition computable rather than declared:
 
@@ -273,5 +273,5 @@ deliberately stops short of it.
 - [`code-node-review`](../../kg/kg-core/code-node-review.md), [`voice-editorial-review`](../../authoring/authoring-core/voice-editorial-review.md),
   [`voice-overlay-review`](../../authoring/authoring-core/voice-overlay-review.md) — the reviews that produce
   the findings this settles.
-- `schemas/block-qa.ts` — the reviewer kinds, and why a model's own claim is
+- `schemas/sdlc/block-qa.ts` — the reviewer kinds, and why a model's own claim is
   not the same kind of evidence as a person's.

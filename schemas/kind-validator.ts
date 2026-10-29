@@ -88,7 +88,7 @@ export class ValidatorRefError extends Error {}
  * Split `module#Export`.
  *
  * The `#` half is REQUIRED rather than defaulting to a conventional name. A
- * module exports many schemas — `schemas/health-report.ts` exports five — and
+ * module exports many schemas — `schemas/sdlc/health-report.ts` exports five — and
  * a default would pick one silently, which is how a validator ends up
  * checking the wrong shape and passing.
  */

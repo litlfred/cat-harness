@@ -1267,7 +1267,7 @@ export type TodoOrigin =
  * comment, because it is quoted.
  *
  * Where todos actually live: the `todos` graph
- * (`schemas/todo-graph.ts`), declared by a folio's `todos/todos.json`. The
+ * (`schemas/sdlc/todo-graph.ts`), declared by a folio's `todos/todos.json`. The
  * feedback store is one of its nodes; see `FeedbackItem` below.
  *
  * **This is not the agent work plan.** That is `beans/`, and `AGENTS.md`
@@ -1276,7 +1276,7 @@ export type TodoOrigin =
  * carves out beside beans.
  *
  * Knowledge-graph tagging — by role, process, task and identity — is
- * `TodoTags` in `schemas/todo.ts`, kept there rather than added here so this
+ * `TodoTags` in `schemas/sdlc/todo.ts`, kept there rather than added here so this
  * shape stays what the existing store and the `todo-review` skill already read.
  */
 export interface TodoItem {

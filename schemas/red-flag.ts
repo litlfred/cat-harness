@@ -8,7 +8,7 @@
  *
  * A RED FLAG is a finding the reviewer asserts **would block the merge**
  * (amended 2026-10-03 by owner ruling; it asserted "blocks the merge" until
- * the warn-only ruling). It reuses the two existing axes in `schemas/qa-review.ts`:
+ * the warn-only ruling). It reuses the two existing axes in `schemas/sdlc/qa-review.ts`:
  * - `FindingSeverity` (critical | major | minor: what kind of breakage)
  * - `FindingWeight` (blocking | suggestion | praise: what the reviewer asks of the gate)
  *
@@ -42,7 +42,7 @@
 
 import { z } from "zod";
 
-import { QA_REVIEWER_KINDS, type QaReviewerKind } from "./block-qa";
+import { QA_REVIEWER_KINDS, type QaReviewerKind } from "./sdlc/block-qa";
 
 export const FINDING_SEVERITIES = ["critical", "major", "minor"] as const;
 export type FindingSeverity = (typeof FINDING_SEVERITIES)[number];

@@ -10,7 +10,7 @@ import {
   releaseBytes,
   type BinaryRelease,
 } from "./binary-release";
-import { defaultGraphTypologies, graphTypologyIri, graphLayer, isDerivedGraph, isRenderable, processMayWrite } from "./kg/cat-harness";
+import { defaultGraphTypologies, graphTypologyIri, graphLayer, isDerivedGraph, isRenderable, processMayWrite } from "../kg/cat-harness";
 
 const SHA = "a".repeat(64);
 

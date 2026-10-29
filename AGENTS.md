@@ -132,7 +132,7 @@ is not the gate set** ([`platform-gates`](skills/sdlc/sdlc-core/platform-gates.m
 ### Where the harness keeps its state — `beans/` is a graph
 
 `beans/` is a graph with named nodes, declared by `beans/beans.json` (schema
-`schemas/bean-graph.ts`), and a file declares what it is: a bean by its front
+`schemas/sdlc/bean-graph.ts`), and a file declares what it is: a bean by its front
 matter, a workflow instance by `"$schema": "folio-workflow-instance/v1"`.
 **Extension is a coincidence; a declaration inside the file is the contract.**
 The two duplicates of the layout that cannot be removed are both checked by

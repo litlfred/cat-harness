@@ -24,14 +24,14 @@ facts that belong to the actor — and the idle session, which is most of them,
 becomes unrepresentable. So it is its own record, **referencing** instances
 rather than containing them.
 
-Shape: `schemas/session-context.ts`. Graph typology: `session-state`, layer
+Shape: `schemas/sdlc/session-context.ts`. Graph typology: `session-state`, layer
 `state` — a session writes its own record as it goes, which is exactly what
 [`content-context-and-state-graphs`](../../kg/kg-core/content-context-and-state-graphs.md)
 means by live state.
 
 ## The fields — read them off the schema, never off this page
 
-`SessionContextSchema` in `schemas/session-context.ts` is authoritative. This
+`SessionContextSchema` in `schemas/sdlc/session-context.ts` is authoritative. This
 description said *"the six fields"* until 2026-09-24, by which point there were
 **eight** — `waitingOn` and `$schema` had joined `id`, `actor`, `startedAt`,
 `updatedAt`, `open`, `claimed`. Bean `s8mo` carried the same "six" and drifted

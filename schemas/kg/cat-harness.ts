@@ -6246,7 +6246,7 @@ export function isPerInstance(
  * equivalent of creating folders inside `node_modules`.
  *
  * A path that escapes the root its SCOPE names is REFUSED rather than created,
- * the same rule `schemas/bean-graph.ts` applies to its node paths: a directory
+ * the same rule `schemas/sdlc/bean-graph.ts` applies to its node paths: a directory
  * outside that root is not a directory of it. A `repository`-scoped entry is
  * materialised at the repository root — `beans/` and `todos/` belong to the
  * checkout rather than to any instance in it, so creating them inside the

@@ -16,7 +16,7 @@ archived: true
 
 `<block>.qa.json` (block-qa/v1) carries per-criterion reviewer entries;
 `<criterion-id>.script.json` is qa-script/v1. Producing types are
-`schemas/block-qa.ts`. `qa-staleness.ts` reports; `qa-sweep.ts` repairs.
+`schemas/sdlc/block-qa.ts`. `qa-staleness.ts` reports; `qa-sweep.ts` repairs.
 
 <!-- detail -->
 

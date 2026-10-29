@@ -289,7 +289,7 @@ The `da-referee-verdict` aggregates objections across all activated lenses:
 When multiple lenses agree that no objection exists or agree on an evaluation, note that **same-family agreement is not corroboration**. Per [`cat-harness/methodologies/consensus-grounded-subject-evaluation.md`](../../../methodologies/consensus-grounded-subject-evaluation.md), consensus must be grounded in independent judges, disagreement must be retained rather than smoothed over, and unanimous agreement among copies of the same model family provides weak epistemic backing.
 
 The producing types are owned by the folio-assistant platform's
-`schemas/block-qa.ts`; the watcher emits the structured fields now so
+`schemas/sdlc/block-qa.ts`; the watcher emits the structured fields now so
 the sidecars conform once the platform validator adopts them.
 
 ## Slot E — §4d discharge bands

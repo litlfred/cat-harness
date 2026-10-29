@@ -298,7 +298,7 @@ export function publishedSubgraphDir(docsPath: string, harness: string, subgraph
  *   the instance publishes them (instance-relative), plus the manifest
  *   {@link SUBGRAPH_INDEX_MANIFEST_FILE} at the package root;
  * - the package's `folio-binary-release/v1` record beside it
- *   (`<tarball>.release.json`, `schemas/binary-release.ts`), with the
+ *   (`<tarball>.release.json`, `schemas/sdlc/binary-release.ts`), with the
  *   tarball's size and sha256;
  * - both as assets of the GitHub release tagged
  *   {@link subgraphIndexPackage}`.tag` in the instance's repository — the host

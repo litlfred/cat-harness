@@ -17,7 +17,8 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { StagingComparisonSchema } from "./staging";
 
-const HERE = import.meta.dir;
+// The schemas root: the canonical contract and `skills/` stay there.
+const HERE = join(import.meta.dir, "..");
 const canon = JSON.parse(readFileSync(join(HERE, "staging-comparison.schema.json"), "utf-8"));
 const { $schema: _s, $id: _i, ...canonDef } = canon;
 

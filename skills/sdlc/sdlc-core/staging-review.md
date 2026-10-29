@@ -68,7 +68,7 @@ features being edited or shown"*, and the request it repeats, beans `u1os`,
    a request contains, not a list of places it must be posted.
 
 A skill whose output asks for feedback declares it: its output schema carries a
-`stagingLinks` field of type `StagingComparison` (`schemas/staging.ts`), and
+`stagingLinks` field of type `StagingComparison` (`schemas/sdlc/staging.ts`), and
 a skill that consumes feedback takes the same field as input, so the links
 travel with the request rather than being rebuilt.
 

@@ -10,7 +10,7 @@
  * @module cat-harness/schemas/qa-record-shapes
  * @graphNode schema
  */
-import type { QaCriterionEntry, QaFieldHash } from "./block-qa.ts";
+import type { QaCriterionEntry, QaFieldHash } from "./sdlc/block-qa.ts";
 
 // ── from the tools layer's pipeline/qa-witness.ts ──
 

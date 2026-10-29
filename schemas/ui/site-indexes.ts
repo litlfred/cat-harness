@@ -72,7 +72,7 @@ export const BeanIndexItemSchema = z
 // the content core — core depends on harness, so the declaration has to
 // sit on the side that `scripts/milestone-rollup.ts` can reach. Measured by
 // `check:partition`, which refused the other direction outright.
-import { MilestonePlanSchema, MilestoneRollupSchema } from "../bean-graph.ts";
+import { MilestonePlanSchema, MilestoneRollupSchema } from "../sdlc/bean-graph.ts";
 
 export { MilestonePlanSchema, MilestoneRollupSchema };
 

@@ -55,7 +55,7 @@
  * @graphNode schema
  */
 
-import type { CheckerPaths, CheckerResult, CompanionRole } from "../block-qa";
+import type { CheckerPaths, CheckerResult, CompanionRole } from "../sdlc/block-qa";
 import {
   ADAPTER_BLOCK_KINDS,
   CONTENT_ADAPTERS,
@@ -115,7 +115,7 @@ export interface AdapterContribution {
   module: string;
   /**
    * Which companion roles this adapter's blocks can have — the contributed
-   * half of `ADAPTER_COMPANION_ROLES` in `schemas/block-qa.ts`, which lists the
+   * half of `ADAPTER_COMPANION_ROLES` in `schemas/sdlc/block-qa.ts`, which lists the
    * built-in adapters only. Read by `incompatibleCompanions`, so a criterion
    * scoped to a contributed adapter is checked against what that adapter's
    * blocks can actually carry. Absent means none are declared, and a

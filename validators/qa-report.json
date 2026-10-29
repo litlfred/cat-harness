@@ -4,5 +4,5 @@
   "validates": {
     "kind": "qa-report"
   },
-  "schema": "schemas/qa-report.ts#QaReportSchema"
+  "schema": "schemas/sdlc/qa-report.ts#QaReportSchema"
 }

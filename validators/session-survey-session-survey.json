@@ -5,5 +5,5 @@
     "kind": "session-survey",
     "family": "folio-session-survey/v1"
   },
-  "schema": "schemas/session-survey.ts#SessionSurveySchema"
+  "schema": "schemas/sdlc/session-survey.ts#SessionSurveySchema"
 }

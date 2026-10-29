@@ -230,7 +230,7 @@ export const EMPTY_NOTE_TAGS: NoteTags = {
 /**
  * The metadata a todo and a memory entry share.
  *
- * Extended rather than used directly — see `schemas/todo.ts` and
+ * Extended rather than used directly — see `schemas/sdlc/todo.ts` and
  * `schemas/conduct/memory.ts`. What is here is what a consumer can read without
  * knowing which actor kind left the note.
  */

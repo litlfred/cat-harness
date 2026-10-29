@@ -17,7 +17,7 @@
  * ## The vocabulary is the QA reviewer's, not a second one
  *
  * `script | agent | human` is already how this repository names the three sorts
- * of participant, in `schemas/block-qa.ts`. That constant now lives here and is
+ * of participant, in `schemas/sdlc/block-qa.ts`. That constant now lives here and is
  * re-exported there, so there is ONE spelling. `rlp5` is the standing record of
  * what a second spelling costs: three copies of `slugify`, already drifted, one
  * of them producing a different document id from the same filename.

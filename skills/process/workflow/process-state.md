@@ -216,7 +216,7 @@ audit trail has to be.
 Bean `5oai`, 2026-09-19, is one, and the episode is an agent's rather than a
 sticky's — which is the point: the mechanism does not care what moved.
 
-The bean opened by asserting *"`schemas/todo.ts` carries no block field at
+The bean opened by asserting *"`schemas/sdlc/todo.ts` carries no block field at
 all"*. That was wrong: `TodoNodeSchema` extends `CarriedNoteSchema`, which
 declares `targetLabel`, and `test/sticky-todos.e2e.ts` exercises it across two
 pages and an orphan label. The agent had grepped the file and not the base it
