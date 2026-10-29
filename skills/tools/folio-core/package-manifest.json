@@ -58,7 +58,7 @@
     "retire"
   ],
   "schemas": [
-    "schemas/assistant-types.ts",
+    "schemas/conduct/assistant-types.ts",
     "schemas/formalization-types.ts"
   ]
 }

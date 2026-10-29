@@ -121,7 +121,7 @@ import { ACTOR_KINDS, SUT_ACTOR_KINDS, SystemUnderTestFacetSchema, type ActorKin
 import { NETWORK_REACHES, directoryForGraph, findInstanceRoot, ownPrefixTable, type NetworkReach } from "../kg/cat-harness";
 import { findDeclarationFile, instanceRootNamed, repoRootFor } from "../kg/instance-roots";
 import { SkillNameSchema } from "../tools/tool-types";
-import { ModelCapabilitiesSchema, type ModelCapabilities } from "../model-capabilities.js";
+import { ModelCapabilitiesSchema, type ModelCapabilities } from "../conduct/model-capabilities.js";
 
 /** Directory, relative to the `kg` graph root, holding the role declaration. */
 export const ROLE_GRAPH_DIR = "roles";
