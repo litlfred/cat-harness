@@ -109,6 +109,12 @@ index-config:migrate --write` moves the entries across.
   its own path alone. An id declared in neither place is refused, not dropped,
   and the refusal says where it looked. The same holds for the harness's own
   `mountDefaults.directories`.
+  An id may also be a **concern name**, a code from
+  `code-lists/concern-group.json` such as `sdlc`. It expands to every
+  kind-first member the instance declares, such as `processes/sdlc/` and
+  `skills/sdlc/`, read from each grouping kind's own declaration file at the
+  pin. Each member is locked as `<directory id>/<code>`. A code that none of
+  the instance's kinds declares is refused like any other unknown id.
 - `skip` leaves it unmounted, and the lock records it as an answer.
 - `tools` names Tools this instance declares, by id, and mounts each one
   **runnable**: its definition, its implementation and their import closure.
