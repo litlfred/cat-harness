@@ -189,6 +189,12 @@ export const LIBRARY_BLOCK_ORIGIN: Record<string, "extracted" | "authored"> = {
   // extracted exactly as prose is; a dataset narrative, when one is written,
   // carries its own attribution, as a figure's does.
   table: "extracted",
+  // A recording's transcript, one block per language (bean
+  // `folio-assistant-1r0p`). Authored: a recogniser's output is its account
+  // of the speech, and a translation is a translator's, so each block names
+  // who drafted it. Its text and review state are in `transcript/<lang>.json`
+  // (`schemas/library/recording.ts`).
+  transcript: "authored",
 };
 
 /** True when blocks of this kind are somebody's account rather than the source's text. */
