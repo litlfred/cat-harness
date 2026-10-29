@@ -11,6 +11,14 @@
       ]
     },
     {
+      "id": "skill-update",
+      "title": "Edit a skill",
+      "description": "May change a skill's instruction file through the `skill_update` Tool (folio-assistant#875). Separate from `content-authoring` on purpose: a skill tells every later agent what to do, so it is the highest-stakes write in the harness. No default policy grants it; the owner grants it to a Role explicitly (owner, 2026-10-29).",
+      "includedIn": [
+        "odrl:modify"
+      ]
+    },
+    {
       "id": "review-comments",
       "title": "Leave review comments",
       "description": "May record findings on a change. Deliberately distinct from accepting one — see `approval-authority`.",
