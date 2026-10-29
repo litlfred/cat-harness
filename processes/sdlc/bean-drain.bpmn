@@ -17,7 +17,7 @@
        model the drain as BPMN once m8gz's OPEN and CLOSE exist).
 
        Precedent: epic ml9h, the 2026-10-10 three-lane drain, which the
-       unlinked-beans report (cat-harness-tools#703) found with no
+       unlinked-beans report (https://github.com/litlfred/cat-harness-tools/pull/703) found with no
        process. This is that process.
 
        EACH BEAN GOES THROUGH THE SHARED OPEN AND CLOSE. Nothing here

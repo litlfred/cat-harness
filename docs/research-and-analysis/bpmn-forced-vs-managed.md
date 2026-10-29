@@ -25,7 +25,7 @@ as such.
 
 ## 0. What was actually run (read this first)
 
-Checked against `cat-harness-tools#739` on 2026-10-26:
+Checked against [`cat-harness-tools#739`](https://github.com/litlfred/cat-harness-tools/pull/739) on 2026-10-26:
 
 - **The "agent" is a fixed script.** Each bank case carries an
   `agentProposal.proposedSteps` list written by hand
@@ -61,7 +61,7 @@ manage workflow").
 Both arms execute against the same normative diagram pair and the same independent 10-case task bank, and each arm emits a [`folio-test-run/v1`](../../schemas/test-run.ts) record:
 
 - **Diagram under test**: [`processes/sdlc/test-plan-execution.bpmn`](../../processes/sdlc/test-plan-execution.bpmn) (`Process_TestPlanExecution`, 5 swimlanes), which opens its bean through [`bean-open.bpmn`](../../processes/sdlc/bean-open.bpmn) and closes it through [`bean-close.bpmn`](../../processes/sdlc/bean-close.bpmn) (bean `m8gz`), evaluates [`processes/sdlc/decisions/test-certification.dmn`](../../processes/sdlc/decisions/test-certification.dmn) at `GW_ExitCriteria` (`certified` | `refused` | `undetermined`) and, on the `certified` branch, enters [`processes/sdlc/qa-report-signing.bpmn`](../../processes/sdlc/qa-report-signing.bpmn) (`Process_QaReportSigning`, 3 swimlanes) via call activity `Call_Sign`, which in turn evaluates [`processes/sdlc/decisions/signing-route.dmn`](../../processes/sdlc/decisions/signing-route.dmn) at `Gateway_SigningRoute` (`api` | `human`).
-- **Independent task bank**: `cat-harness-tools/scripts/eval/bpmn-forced-vs-managed-bank.json` (`bpmn-forced-vs-managed-v1`, 10 cases: 5 disciplined scenarios covering every DMN branch and 5 temptation scenarios targeting the failure modes documented in the two diagrams). Each case's facts and expected path are usable as-is with a real model; its `agentProposal` is the simulated agent's script.
+- **Independent task bank**: [`cat-harness-tools/scripts/eval/bpmn-forced-vs-managed-bank.json`](https://github.com/litlfred/cat-harness-tools/blob/main/scripts/eval/bpmn-forced-vs-managed-bank.json) (`bpmn-forced-vs-managed-v1`, 10 cases: 5 disciplined scenarios covering every DMN branch and 5 temptation scenarios targeting the failure modes documented in the two diagrams). Each case's facts and expected path are usable as-is with a real model; its `agentProposal` is the simulated agent's script.
 - **Run command** (simulated agent; first run 2026-10-24, re-run 2026-10-26 after bean `m8gz` added the bean-open/close steps):
   ```bash
   bun run cat eval:bpmn-forced-vs-managed
