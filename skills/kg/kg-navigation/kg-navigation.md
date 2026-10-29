@@ -45,7 +45,7 @@ change. Ask for the graph; do not navigate to the path.
 > **`kg` is the old name for the kind and still reads.** It was renamed to
 > `cat-harness` on 2026-09-19 so the kind is named for the layer that defines
 > it, like `CatHarness` itself. `GRAPH_TYPOLOGY_ALIASES` in
-> `schemas/cat-harness.ts` maps `kg` → `cat-harness`, so a declaration or a
+> `schemas/kg/cat-harness.ts` maps `kg` → `cat-harness`, so a declaration or a
 > query using `kg` resolves and is marked deprecated. **Do not read `kg` as a
 > directory `id`** — in this instance the id is `skills`, and text that
 > tells you otherwise predates the rename.
@@ -53,7 +53,7 @@ change. Ask for the graph; do not navigate to the path.
 > **A Subgraph id is its name inside its Harness**, and the Harness name
 > qualifies it: `cat-harness.skills`, `bootstrap.skills`. The id was
 > `cat-harness` until 2026-09-23. `RENAMED_DIRECTORY_IDS` in
-> `schemas/cat-harness.ts` still reads that id as `skills`, so an older
+> `schemas/kg/cat-harness.ts` still reads that id as `skills`, so an older
 > declaration keeps overriding the entry it meant.
 
 ## Tool 1 — the MCP pair
@@ -82,7 +82,7 @@ its skills, so `workflow_next` handed an agent `content-validate` and
 process. `kg:audit`'s `skill-servable` criterion exists to keep that shut.
 
 **Known gap, so you are not surprised.** `resolveSkillDirs` in
-`schemas/harness-config.ts` computes the cross-instance overlay from the
+`schemas/kg/harness-config.ts` computes the cross-instance overlay from the
 declarations — the thing that would make the registry unnecessary — and **has
 no caller** outside its own test. Skill discovery is therefore root-only in
 practice, and a dependency's skills are not yet reachable. Outstanding Phase 0.1

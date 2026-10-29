@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 export default toolFactory((t) =>
   defineTool({
@@ -17,7 +17,7 @@ export default toolFactory((t) =>
     },
     satisfies: ["kg-export"],
     maintains: [
-      { source: "schemas/tool-types.ts", artefact: "tool-types.schema.json", format: "json-schema" },
+      { source: "schemas/tools/tool-types.ts", artefact: "cat-harness/tool-types.schema.json", format: "json-schema" },
     ],
   }),
 );

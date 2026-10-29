@@ -26,8 +26,8 @@
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import type { ToolDefinition } from "../schemas/tool.js";
-import { toolsFromFolders } from "../schemas/tool-folders.js";
+import type { ToolDefinition } from "../schemas/tools/tool.js";
+import { toolsFromFolders } from "../schemas/tools/tool-folders.js";
 import { base } from "./lib.js";
 
 export function tools(baseUrl?: string): ToolDefinition[] {

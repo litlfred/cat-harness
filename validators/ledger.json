@@ -5,5 +5,5 @@
     "kind": "swimlane-glossary",
     "family": "glossary-ledger/1.0.0"
   },
-  "schema": "schemas/glossary-ledger.ts#LedgerSchema"
+  "schema": "schemas/library/glossary-ledger.ts#LedgerSchema"
 }

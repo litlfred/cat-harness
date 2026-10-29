@@ -4,5 +4,5 @@
   "validates": {
     "kind": "binary-release"
   },
-  "schema": "schemas/binary-release.ts#BinaryReleaseSchema"
+  "schema": "schemas/sdlc/binary-release.ts#BinaryReleaseSchema"
 }

@@ -168,5 +168,5 @@ the other as absent.
 - [`schema-management`](schema-management.md) — the registry's own discipline.
 - `terminology-management` (the FHIR IG layer) —
   the FHIR half, for a folio's clinical terminology.
-- The content core's `schemas/external-schema.ts` — the record contract, and
+- The content core's `schemas/kg/external-schema.ts` — the record contract, and
   why `conforms` / `reads` / `cites` are different answers.

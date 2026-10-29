@@ -224,8 +224,8 @@ than inventing one:
 |---|---|---|
 | `KgRefSchema` (`schemas/carried-note.ts`) | `{kind, id, note?}` | any KG node |
 | `TaskRefSchema` (`schemas/carried-note.ts`) | `{process, task}` | a BPMN task: the pair, never a bare task id |
-| `VoiceRefSchema` (`schemas/voices.ts`) | `{instance?, voiceId}` | a voice, possibly in another instance |
-| `SkillNameSchema` (`schemas/tool-types.ts`) | kebab id | a skill id, where a whole ref is not needed |
+| `VoiceRefSchema` (`schemas/content/voices.ts`) | `{instance?, voiceId}` | a voice, possibly in another instance |
+| `SkillNameSchema` (`schemas/tools/tool-types.ts`) | kebab id | a skill id, where a whole ref is not needed |
 | `module#Export`, `instance:module#Export` (`parseValidatorRef`) | string with a checked grammar | a schema |
 
 A reference that crosses into another instance says which instance. And a

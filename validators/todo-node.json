@@ -4,5 +4,5 @@
   "validates": {
     "kind": "todo-items"
   },
-  "schema": "schemas/todo.ts#TodoNodeKind"
+  "schema": "schemas/sdlc/todo.ts#TodoNodeKind"
 }

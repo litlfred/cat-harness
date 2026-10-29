@@ -115,7 +115,7 @@ Format as a markdown checklist:
 
 - [ ] **REQ-002** (SHALL) — Release lifecycle skill
   - _Source:_ needs statement §3
-  - _Acceptance:_ `SC-1` (inspection) — Skill exists at `cat-harness/skills/process/workflow/release-lifecycle.md`
+  - _Acceptance:_ `SC-1` (inspection) — Skill exists at `cat-harness/skills/sdlc/sdlc-core/release-lifecycle.md`
   - _Sign-off owner:_ the BA
   - _Scope:_ 1 bean, 1 PR
 

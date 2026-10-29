@@ -37,9 +37,9 @@ to an Actor. The RA's system *realising* an actor maps to a mechanical Actor
 taking on that role. Owner, 2026-10-03 (#1984); the comparison is on
 the DAK layer's `findings/dth-terms.md`.
 
-Schema: [`schemas/role-graph.ts`](../../../schemas/role-graph.ts). Audit:
+Schema: [`schemas/process/role-graph.ts`](../../../schemas/role-graph.ts). Audit:
 `scripts/kg-audit.ts`, sidecar schema
-[`schemas/kg-qa.ts`](../../../schemas/kg-qa.ts).
+[`schemas/sdlc/kg-qa.ts`](../../../schemas/kg-qa.ts).
 
 ### Not every skill is PERFORMED — `consulted: true`
 
@@ -229,8 +229,8 @@ again — a load-bearing rule kept only in a summary is one the next pass
 re-litigates.
 
 **It was also already in a schema — the wrong one of two.** `ACTOR_KINDS` in
-`schemas/role-graph.ts` has read all four values since the role graph was
-written, while `ActorTypeSchema` in `schemas/skill-package.ts` read
+`schemas/process/role-graph.ts` has read all four values since the role graph was
+written, while `ActorTypeSchema` in `schemas/kg/skill-package.ts` read
 `["person", "system"]` — and the registry validated the actor files against the
 narrower one, so the four-kind vocabulary could not be used by the files it
 existed for. There is now one declaration, in `skill-package.ts` (the zod-only
@@ -317,7 +317,7 @@ one. What this buys:
   in it. The graph need not be a tree and may have cycles.
 - **Scope.** A rule may be limited to a Process, a Task or a Role. No
   constraint means everywhere.
-- **One question, three answers.** `permits()` in `schemas/odrl.ts` returns
+- **One question, three answers.** `permits()` in `schemas/content/odrl.ts` returns
   `permit`, `deny` or `unknown`, and `unknown` is never permit. Performing a
   task in a lane needs the permission **and** the lane's role, so eligibility
   (`roles`) and permission stay separate, as below.
@@ -518,7 +518,7 @@ and the process.
 
 The older `<bootstrap.processes:role ref="reviewer"/>` in the lane's
 `extensionElements` is read for one release, with a warning, and only when
-`partitionElementRef` is absent (`laneRoleRef` in `schemas/role-graph.ts`); the
+`partitionElementRef` is absent (`laneRoleRef` in `schemas/process/role-graph.ts`); the
 QA report lists it as `lane-role-legacy-binding`. `<bootstrap.processes:role
 variable="true"/>` stays: it declares a performer who is whoever invoked the
 process. An explicit binding **wins** over name matching: a diagram that has
@@ -529,7 +529,7 @@ name-matched instead.
 ## The audit — `bun run cat kg:audit`
 
 One criterion per join in the sentence at the top. The list below is the
-actor→role→skill→task core; **`KG_CRITERIA` in `schemas/kg-qa.ts` is the
+actor→role→skill→task core; **`KG_CRITERIA` in `schemas/sdlc/kg-qa.ts` is the
 registry**, and it is longer — it also covers requirements, skill bodies and
 the graph as a whole. This said "Fourteen criteria" while the registry held
 **32**, which is the same defect the audit exists to catch, one level up: a
@@ -574,7 +574,7 @@ block sweep's `*.qa.json` and the script sweep's `*.script-qa.json`.
 ### Where the sidecars for another instance go — hosted, not written into it
 
 An instance that declares no `qa` directory does not receive sidecars inside
-its own tree: `kgQaHomeFor` (`schemas/cat-harness.ts`) puts them in the
+its own tree: `kgQaHomeFor` (`schemas/kg/cat-harness.ts`) puts them in the
 auditing harness's `qa` directory under the instance's stub —
 `cat-harness/test/results/bootstrap/` for bootstrap (a working copy, stored
 on the `qa-reports` branch with the rest of that `qa` directory; a JUDGEMENT

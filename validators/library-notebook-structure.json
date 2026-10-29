@@ -5,5 +5,5 @@
     "kind": "library",
     "family": "notebook-structure/v1"
   },
-  "schema": "schemas/document-structure.ts#NotebookStructureSchema"
+  "schema": "schemas/content/document-structure.ts#NotebookStructureSchema"
 }

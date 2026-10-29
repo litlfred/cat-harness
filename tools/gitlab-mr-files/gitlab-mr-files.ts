@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // `glab mr diff` has no `--name-only`, so the command is a script key: the
 // script (in the tools layer) runs `glab mr diff --raw` and reads the paths

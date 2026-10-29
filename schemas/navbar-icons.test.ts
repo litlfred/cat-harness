@@ -34,7 +34,7 @@ import {
   readDeclaration,
   resolveNavbarIcons,
   type NavbarIcon,
-} from "./cat-harness.js";
+} from "./kg/cat-harness.js";
 
 const ROOT = resolve(import.meta.dir, "..");
 

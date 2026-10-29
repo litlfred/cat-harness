@@ -70,7 +70,7 @@
  */
 import { z } from "zod";
 
-import { MAPPING_TARGETS } from "./term-mapping.ts";
+import { MAPPING_TARGETS } from "./content/term-mapping.ts";
 
 export const TERM_ADJUDICATIONS_SCHEMA_ID = "folio-term-adjudications/v1";
 

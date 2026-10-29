@@ -14,7 +14,7 @@ import {
   topmost,
   zIndexOf,
 } from "./window-stack.js";
-import { SemanticZoomSchema, rendersAvatar, zoomThresholdFor } from "./semantic-zoom.js";
+import { SemanticZoomSchema, rendersAvatar, zoomThresholdFor } from "./kg/semantic-zoom.js";
 
 describe("a board starts with nothing open", () => {
   test("`start everyrting in avatar` is the initial state, not a first render", () => {

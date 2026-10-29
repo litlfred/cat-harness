@@ -5,7 +5,7 @@
     "id": "untrusted-input",
     "path": "skills/conduct/conduct-core/untrusted-input.md"
   },
-  "source_hash": "f2a2f8ad59c4",
+  "source_hash": "c7865a9e3a67",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

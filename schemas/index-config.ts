@@ -61,7 +61,7 @@ import { join, relative } from "node:path";
 
 import { z } from "zod";
 
-import { GateExemptionsSchema, readDeclaration } from "./cat-harness";
+import { GateExemptionsSchema, readDeclaration } from "./kg/cat-harness";
 import {
   CONFIG_SUFFIX,
   INDEX_CONFIG_FILENAME,
@@ -93,6 +93,9 @@ export {
 
 
 export const INDEX_CONFIG_SCHEMA = "folio-index-config/v1";
+
+/** A content-type id as a key of {@link IndexConfigSchema}'s `contentTypes`. */
+export const IndexContentTypeIdSchema = z.string().regex(/^[a-z][a-z0-9-]*$/, "a content-type id: lowercase letters, digits and hyphens");
 
 /** The landing value that asks for the neutral hub rather than one harness. */
 export const HUB_LANDING = "hub";
@@ -205,6 +208,33 @@ export const IndexConfigSchema = z
      * in the same change as the step — never ahead of it in a layer.
      */
     gateExemptions: GateExemptionsSchema.optional(),
+    /**
+     * Sections that registered CONTENT TYPES declare about this repository,
+     * keyed by the type's id: `"contentTypes": { "dak": { ... } }`.
+     *
+     * The platform knows only that each value is an object. What goes inside
+     * is the business of the layer that registered the type, which reads and
+     * validates its own section (owner, 2026-10-24: a DAK's metadata moves
+     * into `index.config.json` and WHO adopts the file). A section's PRESENCE
+     * is the marker, the same assertion a marker file makes: see
+     * `IndexSectionMarker` in `content-type.ts`. It sits on the index for the
+     * reason `site.agentRun` does: an IG repository may declare no instance
+     * of its own, so its index is all it has.
+     */
+    contentTypes: z.record(IndexContentTypeIdSchema, z.record(z.string(), z.unknown())).optional(),
+    /**
+     * Who may consent to a remote mount in this checkout: `consent.by` on an
+     * instance's `trust` must be one of them (`schemas/mount-trust.ts`, roast
+     * `1ygp` L4.2). The same field an instance declaration carries, here for
+     * the checkout whose mounts the index lists and which may declare no
+     * instance of its own (folio-assistant#2389). Declaring it in both is an
+     * error, never a pick.
+     */
+    mountApprovers: z
+      .array(z.string().min(1))
+      .min(1)
+      .refine((xs) => new Set(xs).size === xs.length, { message: "mountApprovers: a name appears twice" })
+      .optional(),
   })
   .strict()
   .superRefine((c, ctx) => {
@@ -429,7 +459,7 @@ export function addIndexInstance(root: string, entry: IndexInstance): boolean {
 
 /** The canonical text of an index: two-space JSON, `$schema` first, a trailing newline. */
 export function formatIndexConfig(config: IndexConfig): string {
-  const { $schema, _comment, title, description, instances, site, gateExemptions } = config;
+  const { $schema, _comment, title, description, instances, site, gateExemptions, contentTypes, mountApprovers } = config;
   const ordered = {
     $schema,
     ...(_comment !== undefined ? { _comment } : {}),
@@ -440,6 +470,11 @@ export function formatIndexConfig(config: IndexConfig): string {
       return { name, ...(c !== undefined ? { _comment: c } : {}), ...(imp !== undefined ? { import: imp } : {}), ...(source !== undefined ? { source } : {}), ...rest };
     }),
     ...(site !== undefined ? { site } : {}),
+    // Kept, like the exemptions below: a re-pin rewrites the index, and
+    // dropping these would delete who may consent and what the content
+    // types declare (folio-assistant#2389).
+    ...(mountApprovers !== undefined ? { mountApprovers } : {}),
+    ...(contentTypes !== undefined ? { contentTypes } : {}),
     // Last, and kept: dropping it here would make every rewrite of the index
     // silently delete the exemptions of its own workflows.
     ...(gateExemptions !== undefined ? { gateExemptions } : {}),

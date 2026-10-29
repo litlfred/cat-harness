@@ -1,0 +1,25 @@
+{
+  "$schema": "folio-tool-release/v1",
+  "name": "node",
+  "version": "22.11.0",
+  "role": "runtime",
+  "kind": "archive",
+  "digest": {
+    "algorithm": "sha256",
+    "digest": "6f7fb0f9a2d5a066aa8c3e12d83a76a12f1db47bf86ff1f251b771eb73be63bf",
+    "verifiedAt": "2026-10-07"
+  },
+  "source": {
+    "type": "url",
+    "url": "https://nodejs.org/dist/v22.11.0/node-v22.11.0-linux-x64.tar.xz"
+  },
+  "licence": "MIT",
+  "licenceSource": "the archive's `node-v22.11.0-linux-x64/LICENSE`: MIT License",
+  "platform": { "os": "linux", "arch": "x64" },
+  "runtimes": [],
+  "entry": {
+    "template": "{home}/bin/node",
+    "home": "node-v22.11.0-linux-x64"
+  },
+  "note": "Node.js 22.11.0 LTS ('Jod') Linux x64 binary tarball from nodejs.org (`SHASUMS256.txt`), injected onto `PATH` for Node-based CLI tools such as `fsh-sushi`."
+}

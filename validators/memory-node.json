@@ -4,5 +4,5 @@
   "validates": {
     "kind": "memory"
   },
-  "schema": "schemas/memory.ts#MemoryNodeSchema"
+  "schema": "schemas/conduct/memory.ts#MemoryNodeSchema"
 }

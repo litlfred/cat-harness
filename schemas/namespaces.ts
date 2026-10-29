@@ -1,7 +1,7 @@
 /**
  * The platform's own IRI namespace — a leaf module, imported by nothing.
  *
- * ## Why this is not in `schemas/jsonld.ts`
+ * ## Why this is not in `schemas/kg/jsonld.ts`
  *
  * It was, and that placement inverted a dependency. `jsonld.ts` is the
  * **content** vocabulary: block kinds, DoCO structural types, SPAR citation
@@ -9,7 +9,7 @@
  * `folio-assist-core`, and it imports `./block-kinds` to build its projection
  * tables.
  *
- * But `schemas/cat-harness.ts` — the root declaration every instance
+ * But `schemas/kg/cat-harness.ts` — the root declaration every instance
  * carries, including a Tool repo or a Test repo that holds no content at all —
  * also needs the platform namespace, to mint the `@type` IRIs for its graph
  * kinds. Importing it from `jsonld.ts` would have made `agentic-harness`
@@ -47,7 +47,7 @@
  * it would churn every consumer to no effect: the IRI is what is published,
  * and that does not change.
  */
-import { PROPERTY_GLOSSES, REPLACEMENT_PREFIXES, type TermLayer, termLayer } from "./vocabulary";
+import { PROPERTY_GLOSSES, REPLACEMENT_PREFIXES, type TermLayer, termLayer } from "./content/vocabulary";
 // The VALUES live in a code list, not here (owner, 2026-09-23: "list of codes
 // and corresponding narrative desc and source should be part of a
 // node/asset"). Each code there carries what the namespace names and where

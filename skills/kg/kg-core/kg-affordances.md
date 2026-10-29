@@ -38,7 +38,7 @@ front and **degrades cleanly** rather than failing halfway through a procedure.
 |---|---|---|---|---|---|
 | **`browse`** | **none** (`git-read` or published HTTP/files only) | — (stateless read) | [`kg-navigation`](../kg-navigation/kg-navigation.md), [`directory-conventions`](directory-conventions.md) | `skill-list`, `skill-fetch`, `search-graph`, `get-neighbors`, `kg-graph-export` | *none needed* — `browse` is the read-only floor and must remain completely useful with zero write capabilities |
 | **`materialise`** | one of `git-push`, `github-api`, `github-connector` (to persist lock/record changes; local worktree write for `--staging`) | [`mount-dependency.bpmn`](../../../processes/kg/mount-dependency.bpmn), [`materialize-remote.bpmn`](../../../processes/library/materialize-remote.bpmn) | [`remote-mount`](remote-mount.md), [`materialize-remote`](../../library/large-datasets/materialize-remote.md), [`kg-subscription`](../../library/large-datasets/kg-subscription.md) | `remote-mount` (`mount:remote`), `mount-from-lock`, `kg-retrieve-npm` | run `bun run cat mount:remote --plan` or `mount:remote:check` to inspect the resolved closure and digests without writing |
-| **`instantiate`** | one of `git-push`, `github-api`, `github-connector` | [`getting-started.bpmn`](../../../processes/onboarding/getting-started.bpmn), [`repo-conversion.bpmn`](../../../processes/onboarding/repo-conversion.bpmn) | [`folio-init`](folio-init.md), [`getting-started`](../../onboarding/onboarding-core/getting-started.md), [`repo-conversion`](../../onboarding/onboarding-core/repo-conversion.md) | `folio-init` (`folio_init` / `bun run cat init-folio`) | run `folio-init` with `--dry-run` (`dry_run: true`) to emit the full manifest and file plan as Markdown without touching disk or remote refs |
+| **`instantiate`** | one of `git-push`, `github-api`, `github-connector` | `getting-started.bpmn`, `repo-conversion.bpmn` | [`folio-init`](folio-init.md), [`getting-started`](../../conduct/conduct-core/getting-started.md), [`repo-conversion`](../../conduct/conduct-core/repo-conversion.md) | `folio-init` (`folio_init` / `bun run cat init-folio`) | run `folio-init` with `--dry-run` (`dry_run: true`) to emit the full manifest and file plan as Markdown without touching disk or remote refs |
 | **`copy-into-folio`** | one of `git-push`, `github-api`, `github-connector` | [`copy-into-folio.bpmn`](../../../processes/kg/copy-into-folio.bpmn) (for KG assets); [`copy-out-materialized.bpmn`](../../../processes/library/copy-out-materialized.bpmn) (for materialized library items) | `kg-affordances`, [`copy-out-materialized`](../../library/large-datasets/copy-out-materialized.md), [`directory-conventions`](directory-conventions.md) | `declaration-resolution` (`check:declared-assets`), `witness-conformance` | inspect the upstream asset in place via `browse`, and emit the target `KgAsset` declaration snippet (with `source` pre-filled) so the user can apply it where they have write access |
 
 ## Why `browse` requires zero write capability
@@ -96,7 +96,7 @@ copying a knowledge-graph asset into a folio is **two writes and a refusal**:
 2. **Copy the bytes and declare the asset in the target folio's `<name>.json`
    `assets[]`.** A file copied into an undeclared scratch path is invisible to
    `check:declared-assets` and to the folio's visualisers.
-3. **Stamp `KgAsset.source` (`AssetSourceSchema` in `schemas/kg-node.ts`)** on
+3. **Stamp `KgAsset.source` (`AssetSourceSchema` in `schemas/kg/kg-node.ts`)** on
    the target folio's `KgAsset` entry:
 
 ```json
@@ -105,7 +105,7 @@ copying a knowledge-graph asset into a folio is **two writes and a refusal**:
   "src": "assets/adapted-guideline-table.json",
   "role": "guideline-table",
   "source": {
-    "instance": "litlfred/smart-base",
+    "instance": "litlfred/example-ig",
     "path": "assets/guideline-table.json",
     "ref": "0123456789abcdef0123456789abcdef01234567"
   }

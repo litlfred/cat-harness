@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://litlfred.github.io/folio-assistant/skills/wireframe-design-review/input.schema.json",
+  "$id": "https://litlfred.github.io/folio-assistant/cat-harness/skills/wireframe-design-review/input.schema.json",
   "title": "Wireframe Design Review Input",
   "description": "What is to be wireframed and why: the use (design of a new or changed surface, or as-is drawing of an existing visualiser), the surface, and where the drawings are kept. Called from Process_CRDM_Requirements (Call_Wireframe) for Design use, when a requirement changes a rendered surface.",
   "type": "object",

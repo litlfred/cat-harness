@@ -23,6 +23,13 @@ bean in it still goes through the ordinary lifecycle
 wrong only when **several agents drain the same store at once**: two of them
 starting the same bean.
 
+The drain is drawn as a process: `Process_BeanDrain`
+([`processes/sdlc/bean-drain.bpmn`](../../../processes/sdlc/bean-drain.bpmn),
+bean `bssi`). It builds the queue (the `drain-queue` Tool), then for each bean
+calls OPEN (`Process_BeanOpen`, whose check is the `bean-claim-check` Tool),
+works it, calls CLOSE (`Process_BeanClose`), and refills. The steps below are
+the same loop in prose.
+
 ## Roles
 
 | role | does | holds |
@@ -61,7 +68,7 @@ and the `coordinate` section above.
 
 Read **every** bean copy, not the one this checkout mounts. While the store has
 more than one copy (today the `cat/cat-harness/beans` branch on folio-assistant
-and on cat-harness, plus cat-harness-tools' beans on `main`), the copies can
+and on cat-harness, plus the tools layer's beans on `main`), the copies can
 disagree. Where they do, the newest `updated_at` wins and the disagreement is
 listed, so somebody can sync it.
 
@@ -134,6 +141,11 @@ question's link in the bean. Keep the claim while the question is open, and take
 the next bean meanwhile. A bean that will wait long goes back to `todo` with the
 question recorded, so that it does not hold the queue.
 
+When the question is about changed pages, it carries the staging preview: one
+deep link per changed page, with the same page on main, in the output
+contract's `stagingLinks` field
+([`staging-review`](staging-review.md) §"The deep-link rule").
+
 ## 5. Close it, and refill
 
 Close on evidence ([`bean-coordination`](bean-coordination.md) §"Closing a bean
@@ -150,10 +162,10 @@ copies:
 | UTC | what |
 |---|---|
 | 07:46:28 | agy's first commit for f1e1 |
-| 07:47:35 | agy opens cat-harness-tools#686 |
+| 07:47:35 | agy opens [cat-harness-tools#686](https://github.com/litlfred/cat-harness-tools/pull/686) |
 | 07:49:20 | agy opens cat-harness#502 |
 | 07:50:08 | a cloud thread's first commit for f1e1 |
-| 07:50:22 | the cloud thread opens cat-harness-tools#688, merged 08:04 |
+| 07:50:22 | the cloud thread opens [cat-harness-tools#688](https://github.com/litlfred/cat-harness-tools/pull/688), merged 08:04 |
 | 07:50:29 | the cloud thread opens cat-harness#503 |
 | 07:52:57 | agy's first commit to f1e1 on a bean branch |
 
@@ -176,9 +188,12 @@ Run from an index checkout, with one `--copy` per bean copy checkout:
 ```sh
 bun run cat beans:drain-queue --copy folio-assistant --copy cat-harness --holdings holdings.json
 bun run cat beans:claim-check <id> --copy folio-assistant --copy cat-harness \
-  --repo litlfred/cat-harness --repo litlfred/cat-harness-tools --session <your session link>
+  --repo litlfred/cat-harness --repo <tools-layer-repo> --session <your session link>
 bun run cat lookup:open-work --bean <id> --repo litlfred/cat-harness   # or --path / --prefix
 ```
+
+Pass one `--repo` per repository the bean's work can land in: for f1e1, the
+harness and its tools layer.
 
 `--dry-run` on the claim check says what it would do and writes nothing.
 `--json` on any of them emits the contract below. The claim check exits 0

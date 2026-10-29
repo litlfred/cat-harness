@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // The MCP server's image is part of THIS Tool (bean `ar1s`, phase 2):
 // `install.container` is its build line — a script key, whose declared

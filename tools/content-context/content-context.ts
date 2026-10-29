@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 export default toolFactory((t) =>
   defineTool({
@@ -26,7 +26,7 @@ export default toolFactory((t) =>
     // node is worth having before the gap is closed rather than after.
     maintains: [
       {
-        source: "schemas/jsonld.ts",
+        source: "schemas/kg/jsonld.ts",
         // declared-path-literal: this Tool node IS the declaration of the artefact it maintains, at the path its published URL fixes.
         artefact: "ns/content/v1.jsonld",
         format: "json-ld",

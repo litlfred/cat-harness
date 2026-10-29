@@ -1,12 +1,12 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // ── Downstream outputs ─────────────────────────────────────────────
 //
 // Bean `fq5u`: a Tool that keeps a derived output current declares it,
 // with its inputs, so `kg:audit`'s `tool-downstream-fresh` can say whether
 // the last run SUCCEEDED over the current inputs — and never reads "no
-// run recorded" as green. See `schemas/tool.ts#ToolDownstreamSchema`.
+// run recorded" as green. See `schemas/tools/tool.ts#ToolDownstreamSchema`.
 export default toolFactory((t) =>
   defineTool({
     id: "lsi-index",

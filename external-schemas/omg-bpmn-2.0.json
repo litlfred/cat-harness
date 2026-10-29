@@ -13,12 +13,28 @@
   "use": "conforms",
   "terms": [
     {
+      "term": "bpmn:assignment",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "bpmn:callActivity",
       "operative": "Reusable sub-process invocation referencing another diagram by QName."
     },
     {
       "term": "bpmn:collaboration",
       "operative": "Collaboration diagram container binding participants and message flows."
+    },
+    {
+      "term": "bpmn:dataInput",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "bpmn:dataInputAssociation",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "bpmn:dataInputRefs",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
       "term": "bpmn:definitions",
@@ -45,12 +61,32 @@
       "operative": "Reference connecting a process activity or gateway into a specific lane."
     },
     {
+      "term": "bpmn:from",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "bpmn:globalScriptTask",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "bpmn:globalTask",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "bpmn:import",
       "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
       "term": "bpmn:incoming",
       "operative": "Incoming sequence flow connection entering an activity or gateway."
+    },
+    {
+      "term": "bpmn:inputSet",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "bpmn:ioSpecification",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
       "term": "bpmn:lane",
@@ -63,6 +99,10 @@
     {
       "term": "bpmn:outgoing",
       "operative": "Outgoing sequence flow connection leaving an activity or gateway."
+    },
+    {
+      "term": "bpmn:outputSet",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
       "term": "bpmn:parallelGateway",
@@ -93,12 +133,20 @@
       "operative": "Entry node initiating execution of a workflow process."
     },
     {
+      "term": "bpmn:targetRef",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "bpmn:task",
       "operative": "Base unit of atomic work within a business process flow."
     },
     {
       "term": "bpmn:timerEventDefinition",
       "operative": "Timer schedule trigger defining timeouts or delayed transitions."
+    },
+    {
+      "term": "bpmn:to",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
       "term": "bpmn:userTask",

@@ -495,7 +495,7 @@ framing is what settles it:
 Translatability is a property of a **format within a content type**, and that
 model already exists: each instance that owns a content type declares, under
 `contentTranslations` in its own `<instance>.json`, which formats have an
-extract/inject pair, and `schemas/translation-tools.ts` collects them (bean
+extract/inject pair, and `schemas/library/translation-tools.ts` collects them (bean
 `0r7u`) — Markdown, LaTeX, PlantUML,
 SVG, ArchiMate, Excel, BPMN, FSH, FHIR JSON — and `isTranslatable(contentType,
 extension)` is the predicate. The index asks it rather than inventing a second
@@ -609,7 +609,7 @@ Rendered output lives in `docs/<locale>/`; QA and status are properties of
 the TranslationNode manifest.
 
 **An instance with no `translations` directory of its own is hosted.**
-`translationsHomeFor` (`schemas/cat-harness.ts`) puts its templates in the
+`translationsHomeFor` (`schemas/kg/cat-harness.ts`) puts its templates in the
 extracting harness's `translations/<locale>/<stub>/` —
 `cat-harness/translations/<locale>/bootstrap/processes/*.pot` for bootstrap's
 three diagrams — rather than inside the instance, which holds no translation
@@ -657,7 +657,7 @@ pipeline (IG Publisher) are complementary and independent.
 - **Do not add a graph typology for translated content.** It is the same kind of
   thing as the page it translates, differing by a field the file declares.
   Translatability is a property of a FORMAT within a content type —
-  `schemas/translation-tools.ts` and `isTranslatable` — not of a directory.
+  `schemas/library/translation-tools.ts` and `isTranslatable` — not of a directory.
 - **Do not leave a translated page in the static nav.** `nav_exclude: true` is
   what keeps it out, and no amount of client-side work substitutes for it: the
   nav is built once, for every reader, before anybody has chosen a locale.
@@ -677,7 +677,7 @@ pipeline (IG Publisher) are complementary and independent.
 Each content type declares what formats it can translate and what scripts
 handle each format. The declaration belongs to the instance that OWNS the
 content type, under `contentTranslations` in its `<instance>.json`;
-`schemas/translation-tools.ts` collects every present instance's profiles and
+`schemas/library/translation-tools.ts` collects every present instance's profiles and
 refuses a content type declared twice. A module or diagram path in a profile
 resolves from the declaring instance, then down its `needs` chain. Until
 2026-10-06 this was a literal table in cat-harness, naming four content types
@@ -710,7 +710,7 @@ provides smooth 0.4s transitions for sidebar and content layout:
 
 When presenting translated content for review, use the `staging-review`
 skill to provide before/after URL comparison tables. See
-`schemas/staging.ts` for the `StagingComparison` schema.
+`schemas/sdlc/staging.ts` for the `StagingComparison` schema.
 
 ## Staging links
 

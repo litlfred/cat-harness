@@ -86,7 +86,7 @@ A pair like that is **substitutable**: same job, different mechanism, pick one.
 Nobody declares it. Two Tools are alternatives when they **satisfy a common
 skill AND have the same I/O signature** — the same input names, types and
 required flags, the same outputs, the same `renders` and `maintains`
-(`deriveAlternatives` in `schemas/tool.ts`; #1168, B9a). A shared skill alone
+(`deriveAlternatives` in `schemas/tools/tool.ts`; #1168, B9a). A shared skill alone
 is not enough: most skills with several Tools have complementary ones, steps
 rather than choices, and their I/O is what tells them apart.
 
@@ -172,6 +172,21 @@ Where a downstream instance runs a server, `skill_list` / `skill_fetch` /
 accordingly declares `invoke.mcp` as **one optional arm** beside `shell` and
 `container`. A Tool whose *only* invocation is an MCP call is not usable by the
 harness that defines it.
+
+**Editing a skill goes through `skill_update`, not a raw file write**
+(folio-assistant#875). Where the server runs, it is the write side of
+`skill_fetch`. It refuses unless every gate passes:
+
+- the skill resolves as `skill_fetch` serves it;
+- the file is tracked in this repository, so not another layer's skill and not a mounted copy;
+- the file is not generated;
+- a policy grants `skill-update` to the actor (no default policy does);
+- the file is unchanged since it was read;
+- the front matter parses and keeps the skill's name;
+- every link the edit adds resolves.
+
+A gate that cannot decide refuses. The Tool writes the working tree, and the
+caller commits the change.
 
 **That is a statement about dependency, not about ignorance.** MCP is an
 *output* of this harness: [`mcp-projection`](mcp-projection.md) is how an agent
@@ -296,7 +311,7 @@ not fine for the only statement of what to do to be `gh pr create`.
 
 ## Where this stands — the schema is real, the migration is half done
 
-**`schemas/tool.ts` exists**, `tools/` holds **24** nodes, and
+**`schemas/tools/tool.ts` exists**, `tools/` holds **24** nodes, and
 `bun run cat check:tools` fails when a `satisfies` names a skill that does not exist.
 So a Tool is something you can reach for rather than a shape described in prose.
 
@@ -424,7 +439,7 @@ Authoring a Tool node: `tools/<id>/<id>.ts`, one folder per Tool, default-export
 (bean `tdir`). It is TypeScript
 rather than JSON so a malformed node fails at `tsc` and in the editor, which is
 the carrier decision applied to instances as well as to the schema. `io` ports
-reference the shared vocabulary in `schemas/tool-types.ts` by absolute IRI —
+reference the shared vocabulary in `schemas/tools/tool-types.ts` by absolute IRI —
 never a hand-written string, because a reference nothing checks is a reference
 that is eventually wrong.
 

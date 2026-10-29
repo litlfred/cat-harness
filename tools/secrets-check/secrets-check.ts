@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // Bean `jzba` (credentials proposal §6.2): the MCP and CLI parity of axis
 // 6 — this node is what `src/mcp/project.ts` projects onto MCP, so the CLI

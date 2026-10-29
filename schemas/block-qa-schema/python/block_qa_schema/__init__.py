@@ -7,7 +7,7 @@ The canonical schemas are ``schemas/block-qa-schema/schema/block-qa.schema.json`
 Pydantic v2 models that validate against the same shapes. Used by any Python
 consumer that reads the QA sidecars emitted by the folio qa-sweep pipeline
 (``pipeline/qa-sweep.ts``; producing types in
-``schemas/block-qa.ts``).
+``schemas/sdlc/block-qa.ts``).
 
 Example::
 

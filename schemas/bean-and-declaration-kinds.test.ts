@@ -6,13 +6,13 @@
 import { describe, expect, test } from "bun:test";
 import { join } from "node:path";
 
-import { BEAN_SCHEMA_TAG, BeanKind } from "./bean-graph";
+import { BEAN_SCHEMA_TAG, BeanKind } from "./sdlc/bean-graph";
 import {
   CAT_HARNESS_DECLARATION_SCHEMA_TAG,
   CatHarnessDeclarationKind,
   CatHarnessDeclarationSchema,
   defaultGraphTypologies,
-} from "./cat-harness";
+} from "./kg/cat-harness";
 import { nodeKindIndex } from "./node-kind-index";
 
 describe("the bean kind", () => {

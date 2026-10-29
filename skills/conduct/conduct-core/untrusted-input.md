@@ -109,7 +109,7 @@ template literal. A constrained **type** survives that refactor:
   argv discipline prevents it.
 
 So: **a Tool input that reaches argv may not reference an unconstrained type.**
-`scripts/check-tools.ts` enforces it; `schemas/tool-types.ts` marks which types
+`scripts/check-tools.ts` enforces it; `schemas/tools/tool-types.ts` marks which types
 qualify.
 
 ### Free prose is the honest exception

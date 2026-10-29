@@ -457,7 +457,7 @@ const KIND_TO_ADAPTER: ReadonlyMap<string, ContentAdapter> = new Map(BLOCK_KIND_
  *
  * A CONTRIBUTED kind is also `undefined` here. A caller holding a registry
  * asks `composedKindOwner(kind, registry, adapterForKind)` in
- * `schemas/contributions.ts`, which consults this first and the registry
+ * `schemas/content/contributions.ts`, which consults this first and the registry
  * second.
  */
 export function adapterForKind(kind: string): ContentAdapter | undefined {

@@ -23,7 +23,7 @@
  */
 import { z } from "zod";
 
-import type { GraphTypologyDef } from "./graph-typology-registry";
+import type { GraphTypologyDef } from "./kg/graph-typology-registry";
 import { NewInstanceSourceSchema } from "./subgraph-source";
 
 export const GRAPH_TYPOLOGY_NODE_TAG = "folio-graph-typology/v1" as const;
@@ -36,7 +36,7 @@ const NodeSchemaRefSchema = z.union([
   z.object({ generated: z.literal(true).optional() }).strict(),
 ]);
 
-/** A kind's mark: SVG path data in a 24×24 box, a hue angle, and why. As `schemas/avatars.ts` `Avatar`. */
+/** A kind's mark: SVG path data in a 24×24 box, a hue angle, and why. As `schemas/content/avatars.ts` `Avatar`. */
 export const KindAvatarSchema = z
   .object({
     glyph: z.string().min(1),
@@ -62,6 +62,8 @@ export const GraphTypologyNodeSchema = z
     perInstance: z.literal(true).optional(),
     newInstanceSource: NewInstanceSourceSchema.optional(),
     renderable: z.boolean(),
+    /** Its markdown is shown on a published page (an IG annex appended to its page), so its links address that page. */
+    shownOnPublishedPages: z.literal(true).optional(),
     recordsWork: z.boolean().optional(),
     holds: z.enum(["content", "context", "state", "derived"]),
     summary: z.string().min(1),

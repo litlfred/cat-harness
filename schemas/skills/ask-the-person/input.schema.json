@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://litlfred.github.io/folio-assistant/skills/ask-the-person/input.schema.json",
+  "$id": "https://litlfred.github.io/folio-assistant/cat-harness/skills/ask-the-person/input.schema.json",
   "title": "Ask The Person Input",
-  "description": "One question for a person, complete enough to answer without opening anything. The same fields as DecisionRequestSchema in schemas/decision-request.ts, plus a letter per option so the chat text and the card use the same handles. Every field is required: a question with no comparison, no recommendation or no default does not validate.",
+  "description": "One question for a person, complete enough to answer without opening anything. The same fields as DecisionRequestSchema in schemas/process/decision-request.ts, plus a letter per option so the chat text and the card use the same handles. Every field is required: a question with no comparison, no recommendation or no default does not validate.",
   "type": "object",
   "required": ["decides", "context", "glossary", "options", "recommends", "because", "ifSilent", "question", "othersPending", "reversible"],
   "properties": {

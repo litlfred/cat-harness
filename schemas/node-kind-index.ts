@@ -52,11 +52,11 @@ import { existsSync } from "node:fs";
 import { z } from "zod";
 import { join, relative, resolve } from "node:path";
 
-import { CatHarnessDeclarationKind, declaredAssetPath, readDeclaration, resolveGraphTypology, UNKINDED_BASELINE_ROLE, type GraphTypologyRegistry } from "./cat-harness.js";
-import { BASE_GRAPH_TYPOLOGIES, REGISTRATION_MODULE, type NodeSchemaRef } from "./graph-typology-registry.js";
+import { CatHarnessDeclarationKind, declaredAssetPath, readDeclaration, resolveGraphTypology, UNKINDED_BASELINE_ROLE, type GraphTypologyRegistry } from "./kg/cat-harness.js";
+import { BASE_GRAPH_TYPOLOGIES, REGISTRATION_MODULE, type NodeSchemaRef } from "./kg/graph-typology-registry.js";
 import { instanceRootsIn } from "./instance-roots.js";
 import { parseValidatorRef, rootOf } from "./kind-validator.js";
-import { isNodeKind, nodeKind, type NodeKind } from "./node-kind.js";
+import { isNodeKind, nodeKind, type NodeKind } from "./kg/node-kind.js";
 
 /** One node kind, as the index records it. */
 export interface NodeKindEntry {

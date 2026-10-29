@@ -15,7 +15,7 @@ produced; what keeps going wrong is that the *serving* forgets to say so, and a
 
 ## One stub, several endpoints, per instance in the tree
 
-`artefactStub()` in `schemas/cat-harness.ts` is the stem: `stub` when declared,
+`artefactStub()` in `schemas/kg/cat-harness.ts` is the stem: `stub` when declared,
 otherwise `name`. Every artefact an instance publishes is named with it, so a
 reader who knows the repository knows the filename.
 
@@ -28,7 +28,7 @@ per-repository: after the split, an overlying instance depending on
 <base>/<name>/<stub>.jsonld      the knowledge graph        application/ld+json
 <base>/<name>/<stub>.json        the same bytes             application/json
 <base>/<name>/<kind>/<id>        each subject's page        text/html
-<base>/<stub>.schema.json        its declaration's schema   application/schema+json
+<base>/<name>/<stub>.schema.json its declaration's schema   application/schema+json
 <base>/<stub>/                   the viewer                 text/html
 ```
 
@@ -58,7 +58,7 @@ It never composes a neighbour's name, because that relation has changed
 with each layout.
 
 **One function computes all of this**, `renderingPath()` in
-`schemas/cat-harness.ts`. The path was written out in six template literals
+`schemas/kg/cat-harness.ts`. The path was written out in six template literals
 across two exporters, a type vocabulary and two workflows — five of them
 minting an `$id`, which is an identity rather than a link. Moving the
 renderings meant editing all six, and the sixth was found only because 95
@@ -142,7 +142,7 @@ the server reads it, instead of the server becoming the contract.
 bun run cat serve:rendering --dir docs/_site --port 4000
 ```
 
-`RENDERING_MEDIA_TYPES` and `renderingMediaType()` in `schemas/cat-harness.ts`
+`RENDERING_MEDIA_TYPES` and `renderingMediaType()` in `schemas/kg/cat-harness.ts`
 are the table, beside `renderingPath()` — where a rendering LIVES and what it
 IS are the same kind of fact. Before this, the table existed only as prose on
 this page: `grep` for `ld+json` across the repository's TypeScript returned

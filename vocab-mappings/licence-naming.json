@@ -32,7 +32,7 @@
             {
               "code": "licenceRecord",
               "relationship": "related-to",
-              "comment": "A library item's authored licence.json, verbatim (schemas/source-licence.ts): the record check:source-licence judges. An @json literal on purpose, by the split CONTENT_CONTEXT states: a fact queried across documents gets a real term (dcterms:license, above); a nested structure that is ours keeps its nulls and its `unknown` state only as @json. A glossary has no such record and writes nothing here."
+              "comment": "A library item's authored licence.json, verbatim (schemas/library/source-licence.ts): the record check:source-licence judges. An @json literal on purpose, by the split CONTENT_CONTEXT states: a fact queried across documents gets a real term (dcterms:license, above); a nested structure that is ours keeps its nulls and its `unknown` state only as @json. A glossary has no such record and writes nothing here."
             }
           ]
         }

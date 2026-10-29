@@ -5,5 +5,5 @@
     "kind": "library",
     "family": "folio-figure-descriptions/v1"
   },
-  "schema": "schemas/figure-description.ts#FigureDescriptionsFileSchema"
+  "schema": "schemas/content/figure-description.ts#FigureDescriptionsFileSchema"
 }

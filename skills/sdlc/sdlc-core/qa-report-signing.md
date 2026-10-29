@@ -5,7 +5,7 @@ name: qa-report-signing
 # QA report signing — two routes, chosen by the performer's reach
 
 A QA report becomes **evidence** when a third party can establish what was
-measured and who vouches for it. `folio-test-run/v1` (`schemas/test-run.ts`)
+measured and who vouches for it. `folio-test-run/v1` (`schemas/sdlc/test-run.ts`)
 answers the first: a data hash and a process hash, each all-or-nothing, plus
 the `skill` it tests, whose contract its recorded `cases` are checked against
 (`test-run-conforms`, #1168). This

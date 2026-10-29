@@ -78,7 +78,7 @@ orchestrator) must say **how** it knows who the actor is. A `Principal` carries
 | value | meaning | today |
 |---|---|---|
 | `github` | GitHub authenticated the caller | a GitHub Actions run (`GITHUB_ACTOR`, set by the runner) |
-| `http-gateway` | the auth-gateway's OAuth session, as headers | the HTTP routes, once deployed ([`deployment-auth`](../../sdlc/sdlc-core/deployment-auth.md)) |
+| `http-gateway` | the auth-gateway's OAuth session, as headers | the HTTP routes, once deployed ([`deployment-auth`](../../tools/folio-core/deployment-auth.md)) |
 | `asserted` | an actor id the caller typed | **every local agent session** |
 | `none` | nobody named | a step recorded with no `actor` |
 
@@ -315,7 +315,7 @@ policy is checked **after**, from the record (issue #1180, step 5;
 `scripts/prov-qaqc.ts` reads every instance in `beans/workflows/`, including
 its subprocesses, and for each history entry on an activity or decision:
 
-- writes one `prov:Activity` (`schemas/prov.ts`): `prov:agent` is the entry's
+- writes one `prov:Activity` (`schemas/content/prov.ts`): `prov:agent` is the entry's
   actor, `prov:hadRole` is the role the lane binds (`laneBinding`),
   `prov:hadPlan` is `<process file stem>#<node id>`, and
   `cat-harness:underPolicy` is every policy evaluated. One log per instance
@@ -351,7 +351,7 @@ error. Quote the counts from a run, not from the page you remember.
 - `src/core/rbac.ts`: `principalOf`, `authorize`, `allows`, `forbidden`
 - `src/core/github-auth.ts`: `githubIdentity`, `principalFromGithub`, `GITHUB_ROLE_ACTOR`
 - `src/tools/auth.ts`: `auth_whoami` (Tool node `user-auth`), `whoami`, `grainNote`
-- `schemas/odrl.ts`: `decide` (every policy; any `deny` wins), `PERFORM_TASK`
+- `schemas/content/odrl.ts`: `decide` (every policy; any `deny` wins), `PERFORM_TASK`
 - `src/workflow/prov-record.ts`: `provActivityFor` (the engine's record)
 - `scripts/prov-qaqc.ts`: `buildReport`, `reportInstance` (the after-check)
 - tests: `scripts/tests/task-authorization.test.ts`, `scripts/tests/task-authorization-strict.test.ts`, `scripts/tests/user-auth.test.ts`, `scripts/tests/prov-qaqc.test.ts`, `scripts/tests/prov-record.test.ts`

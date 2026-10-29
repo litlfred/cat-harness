@@ -4,5 +4,5 @@
   "validates": {
     "kind": "voice-vendors"
   },
-  "schema": "schemas/voices.ts#VoiceProfileSchema"
+  "schema": "schemas/content/voices.ts#VoiceProfileSchema"
 }

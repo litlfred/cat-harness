@@ -30,7 +30,7 @@ Measured 2026-09-22 over `processes/*.bpmn` and `src/`:
 | `review-narrative` · `Task_AdjudicateVoice` | *"Three outcomes, all legitimate: the register is wrong for this genre; the criterion does not belong in this genre; or the block is a stated exception and a reviewer entry records why."* |
 | `voice-review` · `Task_Adjudicate` | *"The same three outcomes … fix the prose; scope it on the voice; or the rule applies and this block is an exception."* |
 | `src/routes/relevance.ts` | *"writing `human_adjudicated` alongside — never overwriting — the agent's `assessed_by`. Both survive."* |
-| `schemas/bib-verification.ts` | a discriminated `Verifier` union, agent-only vs human-adjudicated, *"and *also* carry `human_adjudicated` if a human has subsequently"* ruled |
+| `schemas/library/bib-verification.ts` | a discriminated `Verifier` union, agent-only vs human-adjudicated, *"and *also* carry `human_adjudicated` if a human has subsequently"* ruled |
 
 The first two are the same sentence twice, written by different hands about
 different subjects. The last two are an HTTP route and a schema that share no
@@ -127,7 +127,7 @@ the word finds them; only the activity list above is the process.
 
 ## What makes a disagreement ADJUDICABLE
 
-Not "somebody is unhappy". `schemas/block-qa.ts` already declares the three
+Not "somebody is unhappy". `schemas/sdlc/block-qa.ts` already declares the three
 reviewer kinds — `script`, `agent`, `human` — and allows **multiple entries per
 criterion**, which makes the entry condition computable rather than declared:
 
@@ -273,5 +273,5 @@ deliberately stops short of it.
 - [`code-node-review`](../../kg/kg-core/code-node-review.md), [`voice-editorial-review`](../../authoring/authoring-core/voice-editorial-review.md),
   [`voice-overlay-review`](../../authoring/authoring-core/voice-overlay-review.md) — the reviews that produce
   the findings this settles.
-- `schemas/block-qa.ts` — the reviewer kinds, and why a model's own claim is
+- `schemas/sdlc/block-qa.ts` — the reviewer kinds, and why a model's own claim is
   not the same kind of evidence as a person's.

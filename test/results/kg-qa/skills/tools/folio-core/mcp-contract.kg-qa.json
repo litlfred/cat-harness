@@ -5,7 +5,7 @@
     "id": "mcp-contract",
     "path": "skills/tools/folio-core/mcp-contract.md"
   },
-  "source_hash": "1bf57b0e0983",
+  "source_hash": "a8eed6e2ca4d",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

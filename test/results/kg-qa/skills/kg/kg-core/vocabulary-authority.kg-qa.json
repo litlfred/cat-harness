@@ -5,7 +5,7 @@
     "id": "vocabulary-authority",
     "path": "skills/kg/kg-core/vocabulary-authority.md"
   },
-  "source_hash": "396f1e692323",
+  "source_hash": "7d90158b0c62",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

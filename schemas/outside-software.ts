@@ -13,7 +13,7 @@
  * | kind | `$schema` | what the platform does with it | adds |
  * |---|---|---|---|
  * | `tool-release` | `folio-tool-release/v1` | RUNS it | `role`, `kind`, `entry`, `runtimes`, `platform`, `note` |
- * | `software-library` | `software-library/1.0.0` | IMPORTS it | `range`, `dev`, `usedBy`, `shim` |
+ * | `software-library` | `software-library/1.1.0` | IMPORTS it, or keeps it vendored | `range`, `dev`, `usedBy`, `shim`, `vendored` |
  *
  * ## Why a core, and not one kind
  *
@@ -39,8 +39,8 @@
  */
 import { z } from "zod";
 
-import { ReleaseDigestSchema } from "./binary-release";
-import { nodeKind } from "./node-kind";
+import { ReleaseDigestSchema } from "./sdlc/binary-release";
+import { nodeKind } from "./kg/node-kind";
 import { checkLicenceExpression, type SpdxLicenseList } from "./spdx-license-expression";
 
 /** A version as the publisher spells it (`21.0.4+7`, `1.2024.7`, `3.53.4-build2`). No whitespace, `@` or `/`. */
@@ -135,7 +135,7 @@ export const OutsideSoftwareCoreSchema = z.object({
 export type OutsideSoftwareCore = z.infer<typeof OutsideSoftwareCoreSchema>;
 
 /**
- * The core as a node-kind MIXIN (`schemas/node-kind.ts`): unversioned, so it
+ * The core as a node-kind MIXIN (`schemas/kg/node-kind.ts`): unversioned, so it
  * has no `$schema` of its own, and a kind that names it as a parent inherits
  * every field above. `software-library` does. `tool-release` predates node
  * kinds and extends {@link OutsideSoftwareCoreSchema} directly.

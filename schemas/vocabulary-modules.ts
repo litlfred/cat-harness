@@ -37,6 +37,8 @@
  * runs until a block is first parsed.
  *
  * @module schemas/vocabulary-modules
+ *
+ * @graphNode none — a loader for the vocabulary modules layers above ship, not a schema
  */
 import { existsSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -44,7 +46,7 @@ import { dirname, join } from "node:path";
 import type { z } from "zod";
 
 import { DISCOVERED_BLOCK_KIND_NODES, discoverContentAdapterFiles } from "./block-kinds";
-import { findInstanceRoot } from "./cat-harness";
+import { findInstanceRoot } from "./kg/cat-harness";
 import { BlockSchema, CONSTRAINT_RULES, type ConstraintRule, typedBlockKinds } from "./constraints";
 import type { Block } from "./types";
 

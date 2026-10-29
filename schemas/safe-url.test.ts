@@ -6,7 +6,7 @@
 import { describe, expect, test } from "bun:test";
 
 import { ALLOWED_URL_SCHEMES, checkHref, safeHref } from "./safe-url.js";
-import { TodoRelationSchema } from "./todo-index.js";
+import { TodoRelationSchema } from "./sdlc/todo-index.js";
 
 describe("the allowed schemes pass", () => {
   test("http, https, mailto, tel", () => {

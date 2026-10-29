@@ -54,10 +54,10 @@ import {
   siblingScopeFor,
   resolveGraphTypology,
   type GraphTypologyRegistry,
-} from "./cat-harness.js";
-import type { NodeSchemaRef } from "./graph-typology-registry.js";
+} from "./kg/cat-harness.js";
+import type { NodeSchemaRef } from "./kg/graph-typology-registry.js";
 import { libraryNodeClass } from "./library-nodes.js";
-import { isNodeKind } from "./node-kind.js";
+import { isNodeKind } from "./kg/node-kind.js";
 
 /** A validator reference, split from its `module#Export` form. */
 export interface ValidatorRef {
@@ -88,7 +88,7 @@ export class ValidatorRefError extends Error {}
  * Split `module#Export`.
  *
  * The `#` half is REQUIRED rather than defaulting to a conventional name. A
- * module exports many schemas — `schemas/health-report.ts` exports five — and
+ * module exports many schemas — `schemas/sdlc/health-report.ts` exports five — and
  * a default would pick one silently, which is how a validator ends up
  * checking the wrong shape and passing.
  */

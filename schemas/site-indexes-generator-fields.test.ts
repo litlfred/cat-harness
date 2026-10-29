@@ -6,7 +6,7 @@
  * built-at-publish pages were validated (folio-assistant#2611).
  */
 import { describe, expect, test } from "bun:test";
-import { SchemaGraphIndexSchema, TranslationStatusSchema } from "./site-indexes.ts";
+import { SchemaGraphIndexSchema, TranslationStatusSchema } from "./ui/site-indexes.ts";
 
 const counts = { entries: 4, translated: 3, fuzzy: 0, untranslated: 1 };
 

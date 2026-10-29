@@ -14,7 +14,7 @@ export { isCrossPaperRef, KNOWN_LABEL_PREFIXES } from "./constraints.js";
  * @graphNode schema
  */
 
-import type { NarrativeSlot } from "./narrative.ts";
+import type { NarrativeSlot } from "./content/narrative.ts";
 
 // The skill-framework vocabulary moved to `skill-package.ts` — see that
 // module's header. Re-exported so existing importers are unaffected; harness
@@ -46,7 +46,7 @@ export type {
   SkillPackageManifest,
   RemoteSyncConfig,
   RemotePackageRef,
-} from "./skill-package.js";
+} from "./kg/skill-package.js";
 
 
 // ─── Core Types ──────────────────────────────────────────────────────────────
@@ -950,10 +950,10 @@ export interface TableBlock extends OptionalLabelBlockBase {
  * 164 placed images measured across this corpus on 2026-09-20, **140 are page
  * scans** — one near-full-bleed image per page, which is the page itself —
  * against 24 figures. `scripts/pdf-images.py` makes that call and records the
- * numbers it made it from; see `schemas/document-image.ts`.
+ * numbers it made it from; see `schemas/content/document-image.ts`.
  *
  * `narrative` is deliberately NOT a string. A description has a state and an
- * author, and only a human may confirm one — `schemas/narrative.ts` enforces
+ * author, and only a human may confirm one — `schemas/content/narrative.ts` enforces
  * that an agent cannot accept its own draft.
  */
 export interface FigureBlock extends OptionalLabelBlockBase {
@@ -967,7 +967,7 @@ export interface FigureBlock extends OptionalLabelBlockBase {
   caption?: string;
   /** Which page of the source document it sits on, 1-based as a reader counts. */
   page?: number;
-  /** The authored description per language, or the empty slot. See `schemas/narrative.ts`. */
+  /** The authored description per language, or the empty slot. See `schemas/content/narrative.ts`. */
   narrative?: NarrativeSlot;
 }
 
@@ -1267,7 +1267,7 @@ export type TodoOrigin =
  * comment, because it is quoted.
  *
  * Where todos actually live: the `todos` graph
- * (`schemas/todo-graph.ts`), declared by a folio's `todos/todos.json`. The
+ * (`schemas/sdlc/todo-graph.ts`), declared by a folio's `todos/todos.json`. The
  * feedback store is one of its nodes; see `FeedbackItem` below.
  *
  * **This is not the agent work plan.** That is `beans/`, and `AGENTS.md`
@@ -1276,7 +1276,7 @@ export type TodoOrigin =
  * carves out beside beans.
  *
  * Knowledge-graph tagging — by role, process, task and identity — is
- * `TodoTags` in `schemas/todo.ts`, kept there rather than added here so this
+ * `TodoTags` in `schemas/sdlc/todo.ts`, kept there rather than added here so this
  * shape stays what the existing store and the `todo-review` skill already read.
  */
 export interface TodoItem {

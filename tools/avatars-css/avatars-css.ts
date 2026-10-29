@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 export default toolFactory((t) =>
   defineTool({
@@ -17,7 +17,7 @@ export default toolFactory((t) =>
     },
     satisfies: ["site-presentation-assets"],
     maintains: [
-      { source: "schemas/avatars.ts", artefact: "assets/css/avatars.css", format: "css" },
+      { source: "schemas/content/avatars.ts", artefact: "assets/css/avatars.css", format: "css" },
     ],
     requires: { runtime: ["bun"], network: false },
   }),

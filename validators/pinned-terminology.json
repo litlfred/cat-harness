@@ -5,5 +5,5 @@
     "kind": "external-schema",
     "family": "folio-pinned-terminology/v1"
   },
-  "schema": "schemas/pinned-terminology.ts#PinnedTerminologySchema"
+  "schema": "schemas/content/pinned-terminology.ts#PinnedTerminologySchema"
 }

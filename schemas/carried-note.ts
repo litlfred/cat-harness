@@ -60,8 +60,8 @@
 import { z } from "zod";
 
 import { AlsoAboutSchema, NoteAnchorSchema } from "./note-anchor.js";
-import { nodeKind } from "./node-kind.js";
-import { ProcessElementIdSchema } from "./process-element-id.js";
+import { nodeKind } from "./kg/node-kind.js";
+import { ProcessElementIdSchema } from "./process/process-element-id.js";
 
 /**
  * A task, addressed as the pair it actually is.
@@ -230,8 +230,8 @@ export const EMPTY_NOTE_TAGS: NoteTags = {
 /**
  * The metadata a todo and a memory entry share.
  *
- * Extended rather than used directly — see `schemas/todo.ts` and
- * `schemas/memory.ts`. What is here is what a consumer can read without
+ * Extended rather than used directly — see `schemas/sdlc/todo.ts` and
+ * `schemas/conduct/memory.ts`. What is here is what a consumer can read without
  * knowing which actor kind left the note.
  */
 export const CarriedNoteSchema = z.object({
@@ -296,7 +296,7 @@ export const CarriedNoteSchema = z.object({
 
 /**
  * The carried note as a node KIND, so a kind built on it (a todo) declares it
- * as a parent and is composed by the one walk (`schemas/node-kind.ts`, bean
+ * as a parent and is composed by the one walk (`schemas/kg/node-kind.ts`, bean
  * `a1lq`) instead of `.extend()`ing it.
  */
 export const CarriedNoteKind = nodeKind("carried-note", [], CarriedNoteSchema.shape);

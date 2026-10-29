@@ -98,7 +98,7 @@ no MCP, resolve the `kg` graph from the declaration
 ([`kg-navigation`](skills/kg/kg-navigation/kg-navigation.md),
 [`directory-conventions`](skills/kg/kg-core/directory-conventions.md)).
 **A dependency's skills ARE reachable** — `resolveSkillDirs` in
-`schemas/harness-config.ts` computes the cross-instance overlay and
+`schemas/kg/harness-config.ts` computes the cross-instance overlay and
 `LOCAL_PACKAGES` in `scripts/skill-packages.ts` is built from it. Two nearby
 call sites stay root-only on purpose, and the reasons are on the overlay
 function itself: `kgDirectories` composes repo-relative skill ids, and
@@ -132,7 +132,7 @@ is not the gate set** ([`platform-gates`](skills/sdlc/sdlc-core/platform-gates.m
 ### Where the harness keeps its state — `beans/` is a graph
 
 `beans/` is a graph with named nodes, declared by `beans/beans.json` (schema
-`schemas/bean-graph.ts`), and a file declares what it is: a bean by its front
+`schemas/sdlc/bean-graph.ts`), and a file declares what it is: a bean by its front
 matter, a workflow instance by `"$schema": "folio-workflow-instance/v1"`.
 **Extension is a coincidence; a declaration inside the file is the contract.**
 The two duplicates of the layout that cannot be removed are both checked by

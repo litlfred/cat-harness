@@ -7,9 +7,9 @@
  * existing import keeps working.
  *
  * @module schemas/blank-avatar
- * @graphNode none — one constant, re-exported by schemas/avatars.ts
+ * @graphNode none — one constant, re-exported by schemas/content/avatars.ts
  */
-import type { Avatar } from "./avatars";
+import type { Avatar } from "./content/avatars";
 
 /**
  * What an instance, role or kind with no declared avatar gets.

@@ -2,7 +2,8 @@
  * The Tool node for the drain's check-then-claim step.
  *
  * Bean `n7x7`, skill `bean-drain` step 2. The measured case is f1e1 on
- * 2026-10-24: agy opened cat-harness-tools#686 at 07:47:35Z, a cloud thread
+ * 2026-10-24: agy opened the tools layer's PR #686 at 07:47:35Z
+ * (https://github.com/litlfred/cat-harness-tools/pull/686), a cloud thread
  * made its first commit at 07:50:08Z and opened #688, and neither had claimed.
  * Both bean copies said `in-progress` since 2026-10-16 with no newer commit, so
  * a status check would have said nothing. The open PR said everything, which is
@@ -17,8 +18,8 @@
  * @module tools/bean-claim-check
  */
 
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 export default toolFactory((t) =>
   defineTool({

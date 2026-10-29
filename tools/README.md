@@ -63,7 +63,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`gitlab-mr-resolve-thread/`](gitlab-mr-resolve-thread/) | _nothing declares what this holds_ | |
 | [`gitlab-mr-view/`](gitlab-mr-view/) | _nothing declares what this holds_ | |
 | [`handover-screen/`](handover-screen/) | _nothing declares what this holds_ | |
-| [`headless-render-qc/`](headless-render-qc/) | _nothing declares what this holds_ | |
 | [`ig-folio-site-workflow/`](ig-folio-site-workflow/) | _nothing declares what this holds_ | |
 | [`index-config-migrate/`](index-config-migrate/) | _nothing declares what this holds_ | |
 | [`ingest-extended/`](ingest-extended/) | _nothing declares what this holds_ | |
@@ -135,6 +134,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`skill-docs/`](skill-docs/) | _nothing declares what this holds_ | |
 | [`skill-fetch/`](skill-fetch/) | _nothing declares what this holds_ | |
 | [`skill-list/`](skill-list/) | _nothing declares what this holds_ | |
+| [`skill-update/`](skill-update/) | _nothing declares what this holds_ | |
 | [`slice-sqlite/`](slice-sqlite/) | _nothing declares what this holds_ | |
 | [`stage-local/`](stage-local/) | _nothing declares what this holds_ | |
 | [`staging-graph-viewer/`](staging-graph-viewer/) | _nothing declares what this holds_ | |

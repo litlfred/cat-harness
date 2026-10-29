@@ -80,9 +80,9 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join, resolve } from "node:path";
 
-import { ownDirectoryById } from "./cat-harness";
-import { checkoutDependentsOf, instanceConfigFor, orderedDependencies } from "./harness-config";
-import { POLICY_DIR, readPolicies, type OdrlPolicy } from "./odrl";
+import { ownDirectoryById } from "./kg/cat-harness";
+import { checkoutDependentsOf, instanceConfigFor, orderedDependencies } from "./kg/harness-config";
+import { POLICY_DIR, readPolicies, type OdrlPolicy } from "./content/odrl";
 import {
   ACTORS_DIRNAME,
   CAPABILITIES_DIRNAME,
@@ -91,7 +91,7 @@ import {
   type LoadedActor,
   type RoleDef,
   type RoleGraph,
-} from "./role-graph";
+} from "./process/role-graph";
 
 function deepEqual(a: unknown, b: unknown): boolean {
   if (a === b) return true;
@@ -248,15 +248,30 @@ export function checkoutRoleGraph(
   own: RoleGraph | undefined,
 ): { graph: RoleGraph; extensions: RoleExtensionRecord[] } | undefined {
   if (own === undefined) return undefined;
+  const baseName = instanceConfigFor(instanceRoot)?.name ?? own.name;
   const layers: Array<{ instance: string; graph: RoleGraph }> = [];
   const known = new Set(own.roles.map((r) => r.id));
   for (const layer of scenarioLayersAbove(instanceRoot)) {
     const g = readRoleGraph(layer.dir, known);
     if (g === undefined) continue;
-    layers.push({ instance: layer.instance, graph: g });
-    for (const r of g.roles) known.add(r.id);
+    const roles = g.roles.map((r) => ({ ...r, skills: [...(r.skills ?? [])] }));
+    const byOwnId = new Map(roles.map((r) => [r.id, r]));
+    const extensions = (g.extensions ?? []).filter((ext) => {
+      if (known.has(ext.role)) return true;
+      // Move in flight across repositories: the lower instance removed `ext.role`
+      // while the mounted dependent either still pins the pre-move `extensions`
+      // entry or carries both `roles` and `extensions` before folding them.
+      const movedHere = byOwnId.get(ext.role);
+      if (movedHere !== undefined) {
+        movedHere.skills = union(movedHere.skills, ext.skills) ?? [];
+      }
+      warnMoveInFlight("role extension", ext.role, baseName, layer.instance);
+      return false;
+    });
+    layers.push({ instance: layer.instance, graph: { ...g, roles, extensions } });
+    for (const r of roles) known.add(r.id);
   }
-  return overlayRoleGraphs(own, layers, instanceConfigFor(instanceRoot)?.name ?? own.name);
+  return overlayRoleGraphs(own, layers, baseName);
 }
 
 /** The fields an actor or capability EXTENSION may carry besides its pointer. */

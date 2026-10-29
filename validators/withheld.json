@@ -5,5 +5,5 @@
     "kind": "library",
     "family": "folio-withheld/v1"
   },
-  "schema": "schemas/withheld.ts#WithheldSchema"
+  "schema": "schemas/content/withheld.ts#WithheldSchema"
 }

@@ -5,5 +5,5 @@
     "kind": "docs",
     "family": "folio-graph-projection/v1"
   },
-  "schema": "schemas/site-indexes.ts#FolioGraphProjectionSchema"
+  "schema": "schemas/ui/site-indexes.ts#FolioGraphProjectionSchema"
 }

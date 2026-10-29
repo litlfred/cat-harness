@@ -115,7 +115,7 @@ prevents is stated beside it.
 10. **Put the measurement on the drawing.** When a graph is being partitioned,
     show each group's detangle numbers (size, cohesion, links in and out)
     beside the group, so the picture and the metric are read together. The UML
-    overview pages do this through `detangleResultsDir` (`schemas/detangle-sidecar.ts`),
+    overview pages do this through `detangleResultsDir` (`schemas/kg/detangle-sidecar.ts`),
     the same function the detangler writes through. A number shown without its
     picture invites arguing about the number.
 

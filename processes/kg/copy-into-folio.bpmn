@@ -31,7 +31,7 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
 
 1. Check whether the session holds a write capability (`git-push`, `github-api`, or `github-connector`). When none is available, degrade cleanly to read-only inspection (`browse`) and emit the `KgAsset` declaration snippet with `source` pre-filled rather than failing mid-procedure.
 2. Read the asset and its origin (`instance`, `path`, `ref`) from the source knowledge graph without mutating the source.
-3. Copy the asset into the target folio, declare it in the folio's `assets[]`, and stamp `KgAsset.source` (`{ instance, path, ref }` — `AssetSourceSchema` in `schemas/kg-node.ts`). `source` absent means authored locally (a third state), so omitting `source` on a copy is the defect this process exists to prevent.
+3. Copy the asset into the target folio, declare it in the folio's `assets[]`, and stamp `KgAsset.source` (`{ instance, path, ref }` — `AssetSourceSchema` in `schemas/kg/kg-node.ts`). `source` absent means authored locally (a third state), so omitting `source` on a copy is the defect this process exists to prevent.
 4. Verify the declared asset via `check:declaration-resolution` (`check:declared-assets`), then hand off to the folio author to edit, comment or raise todos on their copy.</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="strict"/>
@@ -127,7 +127,7 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
     </bpmn:serviceTask>
 
     <bpmn:serviceTask id="Task_StampAssetSource" name="Stamp KgAsset.source&#10;{ instance, path, ref }">
-      <bpmn:documentation>Populate `source: { instance, path, ref }` (`AssetSourceSchema` in `schemas/kg-node.ts`) on the new `KgAsset` entry in the same change. Because `source` absent is a third state meaning "authored locally in this instance", omitting `source` on a copied asset is forbidden.</bpmn:documentation>
+      <bpmn:documentation>Populate `source: { instance, path, ref }` (`AssetSourceSchema` in `schemas/kg/kg-node.ts`) on the new `KgAsset` entry in the same change. Because `source` absent is a third state meaning "authored locally in this instance", omitting `source` on a copied asset is forbidden.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-affordances"/>
         <bootstrap.processes:skill ref="directory-conventions"/>

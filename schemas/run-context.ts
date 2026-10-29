@@ -60,11 +60,11 @@ import { createHash } from "node:crypto";
 
 import { z } from "zod";
 
-import { ReleaseDigestSchema } from "./binary-release";
+import { ReleaseDigestSchema } from "./sdlc/binary-release";
 import { CommitShaSchema, LockedInstanceSchema } from "./remote-mount";
-import { ActorKindSchema } from "./skill-package";
-import { HashBasisSchema, UNKNOWN_HASH } from "./test-run";
-import { ToolReleaseRefSchema } from "./tool-release";
+import { ActorKindSchema } from "./kg/skill-package";
+import { HashBasisSchema, UNKNOWN_HASH } from "./sdlc/test-run";
+import { ToolReleaseRefSchema } from "./tools/tool-release";
 
 /** The tag a run-context document carries. */
 export const RUN_CONTEXT_SCHEMA_TAG = "folio-run-context/v1";
@@ -196,4 +196,32 @@ export function runContextRef(c: RunContext): RunContextRef {
 /** Releases the run needed and did not get. A non-empty answer is a logged fact, not a pass. */
 export function unprovisioned(c: RunContext): Extract<RunRelease, { state: "could-not-provision" }>[] {
   return c.releases.filter((r): r is Extract<RunRelease, { state: "could-not-provision" }> => r.state === "could-not-provision");
+}
+
+/**
+ * Project `QaReport.toolchain` (`{ publisher?, sushi?, fhirVersion? }`) from a
+ * {@link RunContext}'s provisioned releases (Step 7 of
+ * `docs/proposals/tool-releases-2026-10-07.md`, C2: `QaReport.toolchain` is a
+ * projection of `RunContext.releases[]` rather than a hand-maintained second
+ * version list).
+ */
+export function toolchainFromRunContext(
+  c: Pick<RunContext, "releases">,
+  extra?: { fhirVersion?: string },
+): { publisher?: string; sushi?: string; fhirVersion?: string } {
+  const out: { publisher?: string; sushi?: string; fhirVersion?: string } = {};
+  for (const r of c.releases) {
+    if (r.state !== "provisioned") continue;
+    const at = r.release.indexOf("@");
+    if (at < 0) continue;
+    const name = r.release.slice(0, at);
+    const version = r.release.slice(at + 1);
+    if (name === "fhir-ig-publisher" || name === "ig-publisher" || name === "publisher") {
+      out.publisher = version;
+    } else if (name === "fsh-sushi" || name === "sushi") {
+      out.sushi = version;
+    }
+  }
+  if (extra?.fhirVersion) out.fhirVersion = extra.fhirVersion;
+  return out;
 }

@@ -26,8 +26,8 @@ import {
   type CertificationEntry,
   type KgAttestations,
 } from "./qa-attestations";
-import { defaultGraphTypologies } from "./cat-harness";
-import { KgQaReportSchema } from "./kg-qa";
+import { defaultGraphTypologies } from "./kg/cat-harness";
+import { KgQaReportSchema } from "./sdlc/kg-qa";
 
 const pair = {
   kind: "implements" as const,

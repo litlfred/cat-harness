@@ -6,7 +6,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { defaultGraphTypologies, graphTypologyIri, graphLayer, isRenderable, processMayWrite } from "./cat-harness";
+import { defaultGraphTypologies, graphTypologyIri, graphLayer, isRenderable, processMayWrite } from "./kg/cat-harness";
 import { TEST_PLAN_SCHEMA_ID, TestPlanSchema } from "./test-plan";
 import {
   TEST_REPORT_SCHEMA_ID,

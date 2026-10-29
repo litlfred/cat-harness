@@ -3,8 +3,8 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
-import { readDeclaration } from "./cat-harness";
-import { GraphTypologyRegistry } from "./graph-typology-registry";
+import { readDeclaration } from "./kg/cat-harness";
+import { GraphTypologyRegistry } from "./kg/graph-typology-registry";
 import {
   kindAndSubclasses,
   newUnkinded,

@@ -1,5 +1,5 @@
 {
-  "_comment": "The ROLE GRAPH. A role is a persona an actor takes on because of the lane it is acting in, and it carries the skills needed to perform that lane's tasks. A lane is not the role: a lane names the Role its tasks are performed in (owner, 2026-10-16). A role played by a mechanical or external actor is a real role, and its skills are its contract \u2014 what it must do, which a test (`tested-by:` in the skill) can hold it to; the `actedUpon` flag that exempted such roles is retired. Actors (who) are in cat-harness/scenarios/actors/; skills (what they need to know) are the packages beside this directory. Schema and rationale: schemas/role-graph.ts. A lane binds its role with BPMN partitionElementRef, pointing at a top-level <bpmn:resource> whose id is the role id (the legacy <bootstrap.processes:role ref> is read with a warning for one release); the role lists no lanes. Nor does a role name its voice or its stories: a voice profile points at the roles it addresses (`activeIn.roles`) and a user story at the role it is told as (scenarios/stories.json). Each dependent holds the pointer, so the role is added to without being edited (#1168). `bun run cat kg:audit` reports any role no lane binds and any activity whose skill its lane's role does not carry.",
+  "_comment": "The ROLE GRAPH. A role is a persona an actor takes on because of the lane it is acting in, and it carries the skills needed to perform that lane's tasks. A lane is not the role: a lane names the Role its tasks are performed in (owner, 2026-10-16). A role played by a mechanical or external actor is a real role, and its skills are its contract \u2014 what it must do, which a test (`tested-by:` in the skill) can hold it to; the `actedUpon` flag that exempted such roles is retired. Actors (who) are in cat-harness/scenarios/actors/; skills (what they need to know) are the packages beside this directory. Schema and rationale: schemas/process/role-graph.ts. A lane binds its role with BPMN partitionElementRef, pointing at a top-level <bpmn:resource> whose id is the role id (the legacy <bootstrap.processes:role ref> is read with a warning for one release); the role lists no lanes. Nor does a role name its voice or its stories: a voice profile points at the roles it addresses (`activeIn.roles`) and a user story at the role it is told as (scenarios/stories.json). Each dependent holds the pointer, so the role is added to without being edited (#1168). `bun run cat kg:audit` reports any role no lane binds and any activity whose skill its lane's role does not carry.",
   "name": "folio-assistant",
   "roles": [
     {
@@ -159,13 +159,14 @@
     {
       "id": "clinical-sme",
       "title": "Clinical / scientific SME",
-      "description": "Reviewer whose judgement is about the subject matter rather than the artefact.",
+      "description": "Reviewer whose judgement is about the subject matter rather than the artefact. Acts by domain judgement (`judgementOnly`: no procedure yields the answer, which is why a person is in the lane; bean `vljz`).",
       "actorKinds": [
         "person"
       ],
       "inherits": [
         "reviewer"
       ],
+      "judgementOnly": true,
       "skills": [],
       "persona": "Expert in the subject, not in the system. Judges whether the content is clinically right; is not interested in FHIR profiles or schema fields and should not have to be."
     },
@@ -420,7 +421,8 @@
         "staging-review",
         "ask-the-person",
         "decision-comparison",
-        "symbiotic-interaction"
+        "symbiotic-interaction",
+        "test-data-sets"
       ],
       "persona": "Has the whole corpus available and no memory of the last session. Will follow the most specific instruction it can find and improvise when it finds none. Reads a skill before it reads the code."
     },
@@ -793,6 +795,7 @@
       ],
       "skills": [
         "test-plan-execution",
+        "test-data-sets",
         "test-engineer",
         "content-test"
       ],

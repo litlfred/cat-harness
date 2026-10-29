@@ -104,10 +104,10 @@ skill exists to prevent. A user who says "I want to add a chapter" has stated
 that sentence is what the five requests have in common.
 
 > **`isFolio` is ONE MEMBERSHIP of a set, and the set is what a repository
-> is.** `describeRepository()` (`schemas/content-type.ts`) returns every
+> is.** `describeRepository()` (`schemas/content/content-type.ts`) returns every
 > marker a repository carries — `folio`, `harness`, `dak`, `sushi` — with the
 > facts each states and any disagreement between them.
-> `describeRepositoryClosure()` (`schemas/harness-config.ts`) extends that
+> `describeRepositoryClosure()` (`schemas/kg/harness-config.ts`) extends that
 > through the dependency tree, attributing each membership to the instance
 > that carried it. Bean `79t3`.
 >
@@ -185,6 +185,22 @@ Record the answer as `statedIntent` and evaluate the table again. **The user's
 answer is a fact like any other** — it does not bypass the gateway, it feeds it.
 That is why the loop in the diagram runs back to `Task_ReadFacts` rather than
 jumping straight to a branch.
+
+**When a remote repository is involved, ask which mode — and never infer it from
+push access.** A remote git repository is assumed **read-only (`read-from`)**.
+Having push access to a remote is never permission to modify it, and
+instantiating on a remote repository writes nothing there without the user's
+explicit permission for that repository. Ask which mode they want, with
+**materialize-or-reference** as its own question:
+
+1. **Keep it here (`read-from`) — build and render from the remote KG in this
+   repository** (`stage-ig-sites` into `/<instance>/`), and ask **whether to
+   materialize its assets locally or reference it in place**
+   (`materialize-remote` / `materialize-on-demand`).
+2. **Put a harness on the remote repository (`written-to`)** — instantiate the
+   harness in that remote repository itself and build in its own CI
+   (`stage-ig-sites --only <instance> --source .`), only after explicit
+   permission for that repository. Bean `b5f0`.
 
 ## 4. Route
 

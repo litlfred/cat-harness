@@ -27,6 +27,66 @@
       },
       "drafted_at": "2026-10-03",
       "lang": "en"
+    },
+    {
+      "text": "Capture d'écran d'un canevas d'éditeur de graphes centré sur un nœud vert mis en évidence, HarvestAction « Mine Graphite ». Des arêtes en pointillés « from » le relient à quatre nœuds Relationship : « hasInput » (au-dessus), « conformsTo » (à gauche), « performedBy » (en haut à droite) et « hasOutput » (en bas à gauche). Des arêtes pleines partent de ce nœud vers l'Organization « Graphite Mineing LLD » (étiquetée « originatedBy ») et vers la PhysicalLocation « Mine Site A » (étiquetée « action_location »). D'autres nœuds sont dessinés en estompé à l'arrière-plan et ne sont pas lisibles. Les graphies « Mineing LLD » et « action_location » sont reproduites telles quelles.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "conversation://97ee5591-2752-4fa2-8e96-eeba7d1d3046"
+      },
+      "drafted_at": "2026-10-26",
+      "lang": "fr"
+    },
+    {
+      "text": "Captura de pantalla de un lienzo de editor de grafos centrado en un nodo verde resaltado, HarvestAction «Mine Graphite». Aristas discontinuas «from» lo unen a cuatro nodos Relationship: «hasInput» (arriba), «conformsTo» (izquierda), «performedBy» (arriba a la derecha) y «hasOutput» (abajo a la izquierda). Aristas continuas van desde él hacia la Organization «Graphite Mineing LLD» (etiquetada «originatedBy») y hacia la PhysicalLocation «Mine Site A» (etiquetada «action_location»). Otros nodos aparecen atenuados en el fondo y no son legibles. Las grafías «Mineing LLD» y «action_location» aparecen tal como están dibujadas.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "conversation://97ee5591-2752-4fa2-8e96-eeba7d1d3046"
+      },
+      "drafted_at": "2026-10-26",
+      "lang": "es"
+    },
+    {
+      "text": "لقطة شاشة للوحة محرر مخططات بيانية تتمركز حول عقدة خضراء مميزة هي HarvestAction «Mine Graphite». تربطها حواف متقطعة معنونة «from» بأربع عُقَد Relationship: «hasInput» (في الأعلى)، و«conformsTo» (إلى اليسار)، و«performedBy» (أعلى اليمين)، و«hasOutput» (أسفل اليسار). وتمتد منها حواف متصلة إلى Organization «Graphite Mineing LLD» (معنونة «originatedBy») وإلى PhysicalLocation «Mine Site A» (معنونة «action_location»). وتظهر عُقَد أخرى باهتة في الخلفية وغير مقروءة. التهجئتان «Mineing LLD» و«action_location» هما كما وردتا في الرسم.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "conversation://97ee5591-2752-4fa2-8e96-eeba7d1d3046"
+      },
+      "drafted_at": "2026-10-26",
+      "lang": "ar"
+    },
+    {
+      "text": "Снимок экрана холста редактора графов, центрированный на выделенном зелёном узле HarvestAction «Mine Graphite». Пунктирные рёбра «from» соединяют его с четырьмя узлами Relationship: «hasInput» (сверху), «conformsTo» (слева), «performedBy» (вверху справа) и «hasOutput» (внизу слева). Сплошные рёбра идут от него к Organization «Graphite Mineing LLD» (с меткой «originatedBy») и к PhysicalLocation «Mine Site A» (с меткой «action_location»). Остальные узлы на заднем плане приглушены и нечитаемы. Написания «Mineing LLD» и «action_location» приведены так, как нарисовано.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "conversation://97ee5591-2752-4fa2-8e96-eeba7d1d3046"
+      },
+      "drafted_at": "2026-10-26",
+      "lang": "ru"
+    },
+    {
+      "text": "图编辑器画布的屏幕截图，中心为高亮显示的绿色节点 HarvestAction“Mine Graphite”。虚线“from”边将其连接到四个 Relationship 节点：“hasInput”（上方）、“conformsTo”（左侧）、“performedBy”（右上）和“hasOutput”（左下）。实线边从该节点连向 Organization“Graphite Mineing LLD”（标为“originatedBy”）和 PhysicalLocation“Mine Site A”（标为“action_location”）。背景中的其他节点呈淡化显示，无法辨认。拼写“Mineing LLD”和“action_location”均按原图所示。",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "conversation://97ee5591-2752-4fa2-8e96-eeba7d1d3046"
+      },
+      "drafted_at": "2026-10-26",
+      "lang": "zh"
     }
   ],
   "derivedFrom": "library/strauch-carbno-2025-spdx-3-1-supply-chain/sections/sec-000",

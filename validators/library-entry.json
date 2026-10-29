@@ -5,5 +5,5 @@
     "kind": "docs",
     "family": "folio-library-entry/v1"
   },
-  "schema": "schemas/site-indexes.ts#LibraryEntrySchema"
+  "schema": "schemas/ui/site-indexes.ts#LibraryEntrySchema"
 }

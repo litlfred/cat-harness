@@ -2,7 +2,7 @@
 #
 # Git tracks files, not directories, so this directory would vanish from
 # the next clone without a file in it. This is that file. It ignores
-# nothing on purpose — see `keepMarker` in schemas/cat-harness.ts.
+# nothing on purpose — see `keepMarker` in schemas/kg/cat-harness.ts.
 #
 # uploads/
 # The incoming queue of the document-ingestion pipeline — raw files as

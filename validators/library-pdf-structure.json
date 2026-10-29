@@ -5,5 +5,5 @@
     "kind": "library",
     "family": "pdf-structure/v1"
   },
-  "schema": "schemas/pdf-structure.ts#PdfStructureSchema"
+  "schema": "schemas/ui/pdf-structure.ts#PdfStructureSchema"
 }

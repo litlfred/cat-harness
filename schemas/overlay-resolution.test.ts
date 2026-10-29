@@ -3,8 +3,8 @@ import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
-import { repoRootFor, siblingScopeFor } from "./cat-harness";
-import { dependenciesFromNeeds, resolveInstanceGraph, resolveSkillDirs } from "./harness-config";
+import { repoRootFor, siblingScopeFor } from "./kg/cat-harness";
+import { dependenciesFromNeeds, resolveInstanceGraph, resolveSkillDirs } from "./kg/harness-config";
 
 /**
  * Throwaway trees, never the live repository.

@@ -5,7 +5,7 @@
     "id": "qa-witness",
     "path": "skills/sdlc/sdlc-core/qa-witness.md"
   },
-  "source_hash": "9eb3131ba44c",
+  "source_hash": "25b7a18673f6",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",
