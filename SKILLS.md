@@ -2,7 +2,7 @@
 
 The skills this repository publishes. Generated; edit each skill's front matter, not this file.
 
-<!-- cat-harness:skills:begin -->
+<!-- skills:index:begin -->
 
 _249 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
@@ -345,4 +345,4 @@ _249 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`wireframe-design-review`](skills/ui/ui-core/wireframe-design-review.md) | Design a user interface (a page, a visualiser, a navbar) by the WireGen methodology: a written design intent, at least two mid-fidelity HTML candidates, each with a web AND a mobile layout,… |
 | [`wireframe-viewport-check`](skills/ui/ui-core/wireframe-viewport-check.md) | Render wireframe candidates at a web viewport (1280x800) and a mobile viewport (390x844), and record, per candidate and viewport, a pass or fail entry with a note for each mechanical criterion:… |
 
-<!-- cat-harness:skills:end -->
+<!-- skills:index:end -->
