@@ -61,7 +61,7 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { z } from "zod";
 
-import { ownDirectories } from "./cat-harness.js";
+import { ownDirectories } from "./kg/cat-harness.js";
 
 /** The tag every table file carries, so the file declares what it is. */
 export const VOCAB_MAPPING_SCHEMA = "folio-vocab-mapping/v1";

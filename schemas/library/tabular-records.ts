@@ -38,7 +38,7 @@
  */
 import { z } from "zod";
 
-import { ContentContextSchema } from "../jsonld";
+import { ContentContextSchema } from "../kg/jsonld";
 
 import { NarrativeSlotSchema } from "../narrative";
 

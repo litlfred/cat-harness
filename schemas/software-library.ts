@@ -96,14 +96,14 @@
  */
 import { z } from "zod";
 
-import { nodeKind, parseSchemaTag } from "./node-kind";
+import { nodeKind, parseSchemaTag } from "./kg/node-kind";
 import { OutsideSoftwareKind, SoftwareUrlSourceSchema, outsideSoftwareLicenceProblem } from "./outside-software";
 import type { SpdxLicenseList } from "./spdx-license-expression";
 
 /**
  * The tag a library node carries, so it is identified by declaration. A short
  * SemVer name, the owner's convention for node kinds since 2026-10-05
- * (`schemas/node-kind.ts`): the name is the kind, the version lives in the tag.
+ * (`schemas/kg/node-kind.ts`): the name is the kind, the version lives in the tag.
  *
  * Still 1.0.0, and on purpose: it is the tag a node of a `package.json`
  * dependency is stamped with, and every such node uses only 1.0.0 fields

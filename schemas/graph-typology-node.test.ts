@@ -8,7 +8,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import { GraphTypologyNodeSchema } from "./graph-typology-node";
-import { GraphTypologyRegistry, defaultTypologyRoots } from "./graph-typology-registry";
+import { GraphTypologyRegistry, defaultTypologyRoots } from "./kg/graph-typology-registry";
 
 const made: string[] = [];
 afterAll(() => {
@@ -80,7 +80,7 @@ describe("the node schema", () => {
 
 describe("this checkout", () => {
   test("fhir-harness declares ig-pages and ig-ast, with their avatars", async () => {
-    const { defaultGraphTypologies } = await import("./graph-typology-registry");
+    const { defaultGraphTypologies } = await import("./kg/graph-typology-registry");
     const { hasAvatar } = await import("./avatars");
     for (const k of ["ig-pages", "ig-ast"]) {
       expect(defaultGraphTypologies.declaredBy(k)).toMatch(/fhir-harness[/\\]typologies[/\\]/);
@@ -173,7 +173,7 @@ describe("several checkouts, in precedence order (kg-separation lesson 6)", () =
   test("defaultTypologyRoots: $REPO_ROOT alone; else the inspected checkout first, then the module's", () => {
     const inspected = checkout({ downstream: [] });
     const own = checkout({ harness: [] });
-    const moduleDir = join(own, "harness", "schemas");
+    const moduleDir = join(own, "harness", "schemas", "kg");
     expect(defaultTypologyRoots({ REPO_ROOT: inspected }, own, moduleDir)).toEqual([inspected]);
     expect(defaultTypologyRoots({}, inspected, moduleDir)).toEqual([inspected, own]);
     expect(defaultTypologyRoots({}, own, moduleDir)).toEqual([own]);

@@ -98,7 +98,7 @@ no MCP, resolve the `kg` graph from the declaration
 ([`kg-navigation`](skills/kg/kg-navigation/kg-navigation.md),
 [`directory-conventions`](skills/kg/kg-core/directory-conventions.md)).
 **A dependency's skills ARE reachable** — `resolveSkillDirs` in
-`schemas/harness-config.ts` computes the cross-instance overlay and
+`schemas/kg/harness-config.ts` computes the cross-instance overlay and
 `LOCAL_PACKAGES` in `scripts/skill-packages.ts` is built from it. Two nearby
 call sites stay root-only on purpose, and the reasons are on the overlay
 function itself: `kgDirectories` composes repo-relative skill ids, and

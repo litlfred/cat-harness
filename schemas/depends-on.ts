@@ -36,8 +36,8 @@
 
 import { resolve } from "node:path";
 
-import { instanceRootsIn, readDeclaration, siblingScopeFor } from "./cat-harness";
-import { dependenciesFromNeeds } from "./harness-config";
+import { instanceRootsIn, readDeclaration, siblingScopeFor } from "./kg/cat-harness";
+import { dependenciesFromNeeds } from "./kg/harness-config";
 
 /**
  * One `ImplementationGuide.dependsOn` entry.

@@ -37,7 +37,7 @@
  */
 import { z } from "zod";
 
-import { kgNodeLabelShape, type KgNodeLabels } from "./kg-node";
+import { kgNodeLabelShape, type KgNodeLabels } from "./kg/kg-node";
 
 /**
  * Where a convention was bound, so a reader can tell a process-wide rule from

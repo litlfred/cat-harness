@@ -20,7 +20,7 @@ import {
   measureImage,
   type ArtCandidate,
 } from "./theme-art-intake.js";
-import { CatHarnessDeclarationSchema, declarationPathIn } from "../cat-harness.js";
+import { CatHarnessDeclarationSchema, declarationPathIn } from "../kg/cat-harness.js";
 import { THEME_LAYOUTS, type ThemeLayout } from "../ui/theme.js";
 
 const INSTANCE = join(import.meta.dir, "..", "..");

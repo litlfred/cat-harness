@@ -96,7 +96,7 @@ copying a knowledge-graph asset into a folio is **two writes and a refusal**:
 2. **Copy the bytes and declare the asset in the target folio's `<name>.json`
    `assets[]`.** A file copied into an undeclared scratch path is invisible to
    `check:declared-assets` and to the folio's visualisers.
-3. **Stamp `KgAsset.source` (`AssetSourceSchema` in `schemas/kg-node.ts`)** on
+3. **Stamp `KgAsset.source` (`AssetSourceSchema` in `schemas/kg/kg-node.ts`)** on
    the target folio's `KgAsset` entry:
 
 ```json

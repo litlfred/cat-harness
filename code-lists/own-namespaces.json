@@ -42,7 +42,7 @@
       "definition": "The @base every emitted content document resolves relative ids against. An IRI this project mints, but a base rather than a vocabulary: no term hangs off it.",
       "value": "https://litlfred.github.io/folio/",
       "source": {
-        "note": "schemas/jsonld.ts FOLIO_BASE, where it was a constant until 2026-09-23"
+        "note": "schemas/kg/jsonld.ts FOLIO_BASE, where it was a constant until 2026-09-23"
       }
     },
     {

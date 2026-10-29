@@ -3949,7 +3949,7 @@
    * The declared threshold for a kind, with where it came from — or null.
    *
    * Returns the SOURCE alongside the number for the reason
-   * `schemas/semantic-zoom.ts` gives: an inherited value is still a fact
+   * `schemas/kg/semantic-zoom.ts` gives: an inherited value is still a fact
    * somebody must be able to trace, and a reviewer looking at a card that
    * flipped too early needs to tell a deliberate override from the folio's
    * default landing somewhere it does not fit.

@@ -10,8 +10,8 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { ContentDirectorySchema } from "./cat-harness";
-import { HarnessConfigSchema } from "./harness-config";
+import { ContentDirectorySchema } from "./kg/cat-harness";
+import { HarnessConfigSchema } from "./kg/harness-config";
 import {
   SubgraphSourceSchema,
   contentIsOffCheckout,

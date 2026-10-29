@@ -13,7 +13,7 @@ import { describe, expect, test } from "bun:test";
 import { readdirSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
-import { defaultGraphTypologies, graphLayer, isRenderable } from "./cat-harness.ts";
+import { defaultGraphTypologies, graphLayer, isRenderable } from "./kg/cat-harness.ts";
 import {
   OutsideSoftwareCoreSchema,
   SoftwareDigestSchema,

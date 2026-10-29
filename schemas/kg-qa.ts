@@ -55,7 +55,7 @@ import { isAbsolute, join, relative, resolve, sep } from "node:path";
 
 import { z } from "zod";
 
-import { KG_GRAPH_TYPOLOGY } from "./cat-harness";
+import { KG_GRAPH_TYPOLOGY } from "./kg/cat-harness";
 import { portableSegment } from "./portable-path";
 import { AdversarialReviewSchema, type AdversarialReview } from "./qa-review";
 import { RunContextRefSchema, type RunContextRef } from "./run-context";

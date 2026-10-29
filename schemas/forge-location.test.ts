@@ -7,7 +7,7 @@ import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import { forgeLocation } from "./cat-harness.ts";
+import { forgeLocation } from "./kg/cat-harness.ts";
 
 const root = mkdtempSync(join(tmpdir(), "forge-location-"));
 afterAll(() => rmSync(root, { recursive: true, force: true }));

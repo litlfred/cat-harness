@@ -14,7 +14,7 @@ import {
   graphTypologyIri,
   isRenderable,
   processMayWrite,
-} from "./cat-harness";
+} from "./kg/cat-harness";
 import { resolveKindValidator } from "./kind-validator";
 import { readRoleGraph } from "./process/role-graph";
 import {

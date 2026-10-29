@@ -25,7 +25,7 @@ Governs how test data sets are authored, discriminated, specialized per content 
 
 ## Two kinds of test data, two declared graph directories (`vm6m`)
 
-Fixed and generated test data sets do not have the same provenance or audit standing, so they live in **separately declared graph directories** (`test-data-fixed` vs `test-data-generated` in [`schemas/graph-typology-registry.ts`](../../../schemas/graph-typology-registry.ts)) and carry self-identifying `$schema` and `kind` tags in [`schemas/test-data.ts`](../../../schemas/test-data.ts):
+Fixed and generated test data sets do not have the same provenance or audit standing, so they live in **separately declared graph directories** (`test-data-fixed` vs `test-data-generated` in [`schemas/kg/graph-typology-registry.ts`](../../../schemas/graph-typology-registry.ts)) and carry self-identifying `$schema` and `kind` tags in [`schemas/test-data.ts`](../../../schemas/test-data.ts):
 
 | Kind | Graph typology | `$schema` tag | Discriminator | What is stored | Audit standing |
 |---|---|---|---|---|---|

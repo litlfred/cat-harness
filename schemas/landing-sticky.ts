@@ -354,5 +354,5 @@ export function isLandingSticky(note: unknown): note is LandingSticky {
  * — a declared path to the URL that serves it — so both callers now point
  * downward at one answer instead of at each other.
  */
-export { sourceLinks } from "./cat-harness.js";
+export { sourceLinks } from "./kg/cat-harness.js";
 

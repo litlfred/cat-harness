@@ -609,7 +609,7 @@ Rendered output lives in `docs/<locale>/`; QA and status are properties of
 the TranslationNode manifest.
 
 **An instance with no `translations` directory of its own is hosted.**
-`translationsHomeFor` (`schemas/cat-harness.ts`) puts its templates in the
+`translationsHomeFor` (`schemas/kg/cat-harness.ts`) puts its templates in the
 extracting harness's `translations/<locale>/<stub>/` —
 `cat-harness/translations/<locale>/bootstrap/processes/*.pot` for bootstrap's
 three diagrams — rather than inside the instance, which holds no translation

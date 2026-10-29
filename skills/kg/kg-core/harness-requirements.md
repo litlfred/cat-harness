@@ -68,7 +68,7 @@ That is `holds !== "content"`, and the wording is not a coincidence: `content`
 is defined as *"authored nodes a reader or a tool consumes as the subject
 matter… It stands on its own"*. A graph that stands on its own needs no viewer
 to be legible. Everything else does. `owesVisualiser()` in
-`schemas/cat-harness.ts` is that sentence as code.
+`schemas/kg/cat-harness.ts` is that sentence as code.
 
 ### The rule this is NOT, and the ten minutes that proved it
 
@@ -281,7 +281,7 @@ Three rules for reading it, the same three every sweep here follows:
 - [`content-context-and-state-graphs`](content-context-and-state-graphs.md) —
   what `holds` means, and the one question that settles a kind
 - [`kg-viewer`](../../ui/ui-core/kg-viewer.md) — the viewer this repository already ships
-- `bun run cat check:subgraph-coverage` — the axis; `schemas/cat-harness.ts`
+- `bun run cat check:subgraph-coverage` — the axis; `schemas/kg/cat-harness.ts`
   `owesVisualiser()` — the visualiser obligation, and
   `SubgraphCoverageSchema.serialisations` — the one that takes no waiver
 - `url-space` — bean `o7eq` (`beans show folio-assistant-o7eq`) for where a

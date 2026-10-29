@@ -58,13 +58,13 @@
 
 import { RoleRefSchema } from "./process/role-graph";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { resolveHarnessConfigPath, readEffectiveConfig } from "./harness-config";
+import { resolveHarnessConfigPath, readEffectiveConfig } from "./kg/harness-config";
 import { join, relative, resolve } from "node:path";
 import { z } from "zod";
 import { RepoFullNameSchema } from "./repo-full-name.js";
 
-import { kgNodeLabelShape, type KgNodeLabels } from "./kg-node";
-import { defaultGraphTypologies, directoryForGraph } from "./cat-harness.js";
+import { kgNodeLabelShape, type KgNodeLabels } from "./kg/kg-node";
+import { defaultGraphTypologies, directoryForGraph } from "./kg/cat-harness.js";
 import { BLOCK_KINDS } from "./block-kinds.js";
 import { ProcessElementIdSchema } from "./process/process-element-id.js";
 

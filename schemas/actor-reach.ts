@@ -70,7 +70,7 @@
  */
 
 import { z } from "zod";
-import { NETWORK_REACHES, type NetworkReach } from "./cat-harness.js";
+import { NETWORK_REACHES, type NetworkReach } from "./kg/cat-harness.js";
 
 export { NETWORK_REACHES, type NetworkReach };
 

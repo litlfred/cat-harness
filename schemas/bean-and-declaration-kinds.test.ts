@@ -12,7 +12,7 @@ import {
   CatHarnessDeclarationKind,
   CatHarnessDeclarationSchema,
   defaultGraphTypologies,
-} from "./cat-harness";
+} from "./kg/cat-harness";
 import { nodeKindIndex } from "./node-kind-index";
 
 describe("the bean kind", () => {

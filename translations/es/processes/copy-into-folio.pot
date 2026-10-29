@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: copy-into-folio\n"
-"POT-Creation-Date: 2026-10-23T18:35:12.721Z\n"
+"POT-Creation-Date: 2026-10-29T08:39:28.695Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -86,7 +86,7 @@ msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:130
 #. Diagram element documentation
-msgid "Populate `source: { instance, path, ref }` (`AssetSourceSchema` in `schemas/kg-node.ts`) on the new `KgAsset` entry in the same change. Because `source` absent is a third state meaning \"authored locally in this instance\", omitting `source` on a copied asset is forbidden."
+msgid "Populate `source: { instance, path, ref }` (`AssetSourceSchema` in `schemas/kg/kg-node.ts`) on the new `KgAsset` entry in the same change. Because `source` absent is a third state meaning \"authored locally in this instance\", omitting `source` on a copied asset is forbidden."
 msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:81
@@ -131,7 +131,7 @@ msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:28
 #. Diagram element documentation
-msgid "Taking an asset from an upstream knowledge graph into your own folio so you can edit it, comment on it or raise todos against it — without touching the upstream source and without losing where it came from. This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordances`). Like `copy-out-materialized.bpmn` for held library items, it is TWO WRITES AND A REFUSAL, gated up front by write capability: 1. Check whether the session holds a write capability (`git-push`, `github-api`, or `github-connector`). When none is available, degrade cleanly to read-only inspection (`browse`) and emit the `KgAsset` declaration snippet with `source` pre-filled rather than failing mid-procedure. 2. Read the asset and its origin (`instance`, `path`, `ref`) from the source knowledge graph without mutating the source. 3. Copy the asset into the target folio, declare it in the folio's `assets[]`, and stamp `KgAsset.source` (`{ instance, path, ref }` — `AssetSourceSchema` in `schemas/kg-node.ts`). `source` absent means authored locally (a third state), so omitting `source` on a copy is the defect this process exists to prevent. 4. Verify the declared asset via `check:declaration-resolution` (`check:declared-assets`), then hand off to the folio author to edit, comment or raise todos on their copy."
+msgid "Taking an asset from an upstream knowledge graph into your own folio so you can edit it, comment on it or raise todos against it — without touching the upstream source and without losing where it came from. This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordances`). Like `copy-out-materialized.bpmn` for held library items, it is TWO WRITES AND A REFUSAL, gated up front by write capability: 1. Check whether the session holds a write capability (`git-push`, `github-api`, or `github-connector`). When none is available, degrade cleanly to read-only inspection (`browse`) and emit the `KgAsset` declaration snippet with `source` pre-filled rather than failing mid-procedure. 2. Read the asset and its origin (`instance`, `path`, `ref`) from the source knowledge graph without mutating the source. 3. Copy the asset into the target folio, declare it in the folio's `assets[]`, and stamp `KgAsset.source` (`{ instance, path, ref }` — `AssetSourceSchema` in `schemas/kg/kg-node.ts`). `source` absent means authored locally (a third state), so omitting `source` on a copy is the defect this process exists to prevent. 4. Verify the declared asset via `check:declaration-resolution` (`check:declared-assets`), then hand off to the folio author to edit, comment or raise todos on their copy."
 msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:150

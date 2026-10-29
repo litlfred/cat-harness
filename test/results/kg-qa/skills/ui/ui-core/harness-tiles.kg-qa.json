@@ -5,7 +5,7 @@
     "id": "harness-tiles",
     "path": "skills/ui/ui-core/harness-tiles.md"
   },
-  "source_hash": "ee7a9695425c",
+  "source_hash": "181dc409b17e",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

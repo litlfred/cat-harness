@@ -54,7 +54,7 @@ import {
   defaultGraphTypologies,
   type GraphNodeDirectory,
   type GraphTypologyRegistry,
-} from "./cat-harness";
+} from "./kg/cat-harness";
 
 /**
  * The graph typologies a todo graph's directories hold.

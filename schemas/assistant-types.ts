@@ -60,7 +60,7 @@
  *   executes a procedure and decides nothing.
  * - `external` — a participant outside this instance entirely.
  *
- * Re-exported from `schemas/skill-package.ts`, which holds the one vocabulary,
+ * Re-exported from `schemas/kg/skill-package.ts`, which holds the one vocabulary,
  * so this file does not become a second place the values can be edited.
  *
  * It read `"person" | "system"` until 2026-09-19, and that two-way split is
@@ -104,7 +104,7 @@ export type Conformance = "SHALL" | "SHOULD" | "MAY" | "SHALL NOT";
 export interface ActorDefinition {
   /** Unique identifier (used as reference key). */
   id: string;
-  /** Display text. `title`/`description`, like every KG node — see `schemas/kg-node.ts`. */
+  /** Display text. `title`/`description`, like every KG node — see `schemas/kg/kg-node.ts`. */
   title: string;
   /** Human, agentic or mechanical — see {@link ActorKind}. */
   kind: ActorKind;
@@ -355,8 +355,8 @@ export interface SkillDependency {
  * **Reinstating it means writing the consumer first.** A field whose only
  * justification is a generator that does not run is how this one lasted.
  */
-import type { ActorKind, LifecycleStage, SkillPackageManifest, SystemUnderTestFacet } from "./skill-package.js";
-import type { NetworkReach } from "./cat-harness.js";
+import type { ActorKind, LifecycleStage, SkillPackageManifest, SystemUnderTestFacet } from "./kg/skill-package.js";
+import type { NetworkReach } from "./kg/cat-harness.js";
 
 export interface SkillSchemaRef {
   /** Schema module (e.g., "schemas/types", "schemas/formalization-types"). */

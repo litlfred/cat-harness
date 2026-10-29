@@ -51,7 +51,7 @@
 
 import { z } from "zod";
 
-import { nodeKind } from "./node-kind.js";
+import { nodeKind } from "./kg/node-kind.js";
 import { ThemedKind } from "./ui/theme.js";
 import {
   CarriedNoteKind,

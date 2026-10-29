@@ -6,7 +6,7 @@ import { describe, expect, it } from "bun:test";
 import { z } from "zod";
 
 import { acceptsSchemaTag, nodeKind } from "./node-kind";
-import { TodoNodeKind, TodoNodeSchema, type TodoNode } from "./todo";
+import { TodoNodeKind, TodoNodeSchema, type TodoNode } from "../todo";
 
 const base = nodeKind("base", [], { id: z.string() });
 

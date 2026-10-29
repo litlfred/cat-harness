@@ -7,7 +7,7 @@
 import { describe, expect, test } from "bun:test";
 import { join } from "node:path";
 
-import { topologyConflicts } from "./cat-harness";
+import { topologyConflicts } from "./kg/cat-harness";
 import { DEPLOYMENTS_DIRNAME, deploymentProblems, placementReach, readDeployments } from "./deployment-description";
 import { readActors } from "./process/role-graph";
 

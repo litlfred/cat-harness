@@ -37,7 +37,7 @@ their halves — this one does not restate them.
 | node | schema | where it lives |
 |---|---|---|
 | the plan | `test-plan/v1` — `schemas/test-plan.ts` | authored content (`test-plan` kind) |
-| the system under test | the `systemUnderTest` facet on an actor — `schemas/skill-package.ts` | `scenarios/actors/*.json` |
+| the system under test | the `systemUnderTest` facet on an actor — `schemas/kg/skill-package.ts` | `scenarios/actors/*.json` |
 | the run | `folio-test-run/v1` with `plan` + `sut` — `schemas/test-run.ts` | the declared `qa` directory |
 | the report | `test-report/v1` — `schemas/test-report.ts` | the `qa-reports` branch, `tests/<plan>/<sut>/<run>/` |
 | the certification | a judgement, `qa-attestations/v1` | the declared `attestations` graph, on main (D2 (a), D5 default) |

@@ -344,7 +344,7 @@ export type ToolRemedy = z.infer<typeof ToolRemedySchema>;
  * json-ld is downstream."*
  *
  * That relation was real and written down nowhere a consumer could read it.
- * `scripts/harness-schema-export.ts` knew that `schemas/cat-harness.ts`
+ * `scripts/harness-schema-export.ts` knew that `schemas/kg/cat-harness.ts`
  * produces `<stub>.schema.json`, `schemas/tools/tool.ts` produces
  * `tool.schema.json` and `schemas/tools/tool-types.ts` produces
  * `tool-types.schema.json` — three facts living in one script's local array.
@@ -357,7 +357,7 @@ export type ToolRemedy = z.infer<typeof ToolRemedySchema>;
  * describes. `artefact` is the PUBLISHED path relative to the instance's base,
  * because the base differs per deployment — main, a STAGING preview, a local
  * checkout — and baking one in would make the node wrong everywhere else.
- * `renderingPath()` in `schemas/cat-harness.ts` is what joins the two, and is
+ * `renderingPath()` in `schemas/kg/cat-harness.ts` is what joins the two, and is
  * the single place that knows the layout.
  *
  * ## Declared, then checked both ways

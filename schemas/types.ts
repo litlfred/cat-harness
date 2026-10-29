@@ -46,7 +46,7 @@ export type {
   SkillPackageManifest,
   RemoteSyncConfig,
   RemotePackageRef,
-} from "./skill-package.js";
+} from "./kg/skill-package.js";
 
 
 // ─── Core Types ──────────────────────────────────────────────────────────────

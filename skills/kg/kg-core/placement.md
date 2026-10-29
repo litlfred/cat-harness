@@ -78,7 +78,7 @@ rest. The vocabulary is open.
 - **Ask for a skill, do not open a file.** `skill_list` for what exists here,
   `skill_fetch` to load one, `work_plan_prime` for the work plan. With no MCP,
   resolve the graph from the declaration (`readDeclaration` in
-  `schemas/cat-harness.ts`) and read the directory it names.
+  `schemas/kg/cat-harness.ts`) and read the directory it names.
 - **In *this* repository the `cat-harness` graph's path is `skills/`.** That is
   a fact about this instance, not a convention you may carry to another one.
   Ids are stable across a relocation; paths are not.
@@ -160,7 +160,7 @@ An instance is supposed to **inherit its dependencies' directories and skills**,
 deepest dependency first and root last so the root wins. For directories that
 works: `declarationChain` + `resolveDirectories` are wired.
 
-**For skills it does not.** `resolveSkillDirs` in `schemas/harness-config.ts`
+**For skills it does not.** `resolveSkillDirs` in `schemas/kg/harness-config.ts`
 computes the cross-instance skill overlay and **has no caller**, so skill
 discovery is **root-only in practice today** and a dependency's skills are not
 yet reachable. Outstanding Phase 0.1 work.

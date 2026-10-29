@@ -29,7 +29,7 @@ about it, or a record it may write from one it may not.
 **`content`'s example used to be "a library section" and that was wrong** —
 see §"The case that added `derived`" below. It is a folio chapter now.
 
-It is `holds` on `GraphTypologyDef` in `schemas/cat-harness.ts`, and it is
+It is `holds` on `GraphTypologyDef` in `schemas/kg/cat-harness.ts`, and it is
 **required**: `tsc` refuses a kind that has not said.
 
 **A step that writes to a `context` graph is a defect, not an update.** That is

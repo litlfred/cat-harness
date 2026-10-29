@@ -12,7 +12,7 @@ import { existsSync, readdirSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 import { ALL_ADVERSARIAL_CHECKLIST_ITEMS, AdversarialChecklistItemSchema } from "./adversarial-checklist";
-import { instanceDirectoriesForGraph } from "./cat-harness";
+import { instanceDirectoriesForGraph } from "./kg/cat-harness";
 
 const ROOT = resolve(import.meta.dir, "..");
 

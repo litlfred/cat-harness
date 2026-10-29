@@ -39,7 +39,7 @@
  */
 
 import { z } from "zod";
-import { GraphNodeDirectoryShape } from "./cat-harness.js";
+import { GraphNodeDirectoryShape } from "./kg/cat-harness.js";
 
 /**
  * A subgraph IRI: `<BASE_URL>/subgraph/<HARNESS>/<PATH>/` — always a directory.

@@ -33,7 +33,7 @@
 import { z } from "zod";
 
 import { ArchiveEntrySchema } from "./library/archive-contents.js";
-import { nodeKind } from "./node-kind.js";
+import { nodeKind } from "./kg/node-kind.js";
 
 /**
  * Node kinds since #2195's gate (`node-kinds:check` refuses a new family with

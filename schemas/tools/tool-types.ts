@@ -28,7 +28,7 @@ import { z } from "zod";
 
 import type { TermLayer } from "../vocabulary.js";
 
-import { renderingPath } from "../cat-harness.js";
+import { renderingPath } from "../kg/cat-harness.js";
 
 /** A bean's identifier, e.g. `folio-assistant-1dfh`. */
 export const BeanIdSchema = z.string().regex(/^[a-z0-9-]+$/).describe("A bean identifier, e.g. folio-assistant-1dfh");

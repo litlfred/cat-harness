@@ -5,7 +5,7 @@
     "id": "test-plan-execution",
     "path": "skills/sdlc/sdlc-core/test-plan-execution.md"
   },
-  "source_hash": "94f5a86d9155",
+  "source_hash": "74bc2ed47f5f",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

@@ -71,7 +71,7 @@ away.
 
 **Entry one** is `bun run cat ingest uploads/FILE` (`--dry-run` says what it would
 do, and why). **Entry two** starts from `remoteGraphs` in an instance's
-declaration (`schemas/cat-harness.ts`, `RemoteGraph`): assets listed there are
+declaration (`schemas/kg/cat-harness.ts`, `RemoteGraph`): assets listed there are
 `referenced` — we know they exist and where, and hold none.
 `materialize-remote.bpmn` asks **purpose** (`working` or `archival`), then the
 five gates, then fetches; the asset lands in `library/` with its provenance

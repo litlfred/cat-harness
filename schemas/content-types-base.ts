@@ -77,8 +77,8 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { defaultContentTypes, type ContentTypeRegistry } from "./content-type";
-import { CONFIG_SUFFIX, findDeclarationFile } from "./cat-harness";
-import { instanceConfigFilename, instanceConfigFor } from "./harness-config";
+import { CONFIG_SUFFIX, findDeclarationFile } from "./kg/cat-harness";
+import { instanceConfigFilename, instanceConfigFor } from "./kg/harness-config";
 import { isReservedIndexFile } from "./instance-roots";
 import { termIri } from "./namespaces";
 

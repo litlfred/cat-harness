@@ -80,8 +80,8 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join, resolve } from "node:path";
 
-import { ownDirectoryById } from "./cat-harness";
-import { checkoutDependentsOf, instanceConfigFor, orderedDependencies } from "./harness-config";
+import { ownDirectoryById } from "./kg/cat-harness";
+import { checkoutDependentsOf, instanceConfigFor, orderedDependencies } from "./kg/harness-config";
 import { POLICY_DIR, readPolicies, type OdrlPolicy } from "./odrl";
 import {
   ACTORS_DIRNAME,

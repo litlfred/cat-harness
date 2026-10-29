@@ -296,7 +296,7 @@ use — so a reader who lands mid-page is one click from the definition.
 ## Maintaining these files is memory work, not documentation work
 
 `README.md` and `AGENTS.md` are **declared assets with a declared purpose**
-(`ASSET_ROLES` in `schemas/cat-harness.ts` — one place, per ROLE, not
+(`ASSET_ROLES` in `schemas/kg/cat-harness.ts` — one place, per ROLE, not
 per asset). Keeping them true is part of
 [`agent-memory`](../../conduct/conduct-core/agent-memory.md), and the owner put them there:
 

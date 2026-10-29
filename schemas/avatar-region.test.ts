@@ -21,13 +21,13 @@ import {
   AVATAR_SQUARENESS_TOLERANCE_PX,
   KgImageSchema,
   type KgImage,
-} from "./kg-node.js";
+} from "./kg/kg-node.js";
 // `folio` is registered by a load-time side effect in core. `bunfig.toml`
 // preloads it for every test file on purpose — five files carried the same
 // latent order-dependence and the suite was green locally and red in CI on one
 // commit — so importing it here too would be a second answer to a question
 // already answered in one place.
-import { readDeclaration } from "./cat-harness.js";
+import { readDeclaration } from "./kg/cat-harness.js";
 
 const ROOT = resolve(import.meta.dir, "..");
 

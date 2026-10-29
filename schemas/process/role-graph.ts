@@ -110,15 +110,15 @@
  */
 
 import { existsSync, readFileSync, readdirSync } from "node:fs";
-import { kgNodeLabelShape } from "../kg-node";
+import { kgNodeLabelShape } from "../kg/kg-node";
 import { join } from "node:path";
 import { z } from "zod";
 import { RepoFullNameSchema } from "../repo-full-name.js";
 import { ODRL_ACTIONS } from "../odrl";
 
 import { termIri } from "../namespaces";
-import { ACTOR_KINDS, SUT_ACTOR_KINDS, SystemUnderTestFacetSchema, type ActorKind, type SystemUnderTestFacet } from "../skill-package";
-import { NETWORK_REACHES, directoryForGraph, findInstanceRoot, ownPrefixTable, type NetworkReach } from "../cat-harness";
+import { ACTOR_KINDS, SUT_ACTOR_KINDS, SystemUnderTestFacetSchema, type ActorKind, type SystemUnderTestFacet } from "../kg/skill-package";
+import { NETWORK_REACHES, directoryForGraph, findInstanceRoot, ownPrefixTable, type NetworkReach } from "../kg/cat-harness";
 import { findDeclarationFile, instanceRootNamed, repoRootFor } from "../instance-roots";
 import { SkillNameSchema } from "../tools/tool-types";
 import { ModelCapabilitiesSchema, type ModelCapabilities } from "../model-capabilities.js";
@@ -172,7 +172,7 @@ export const ROLE_GRAPH_FILENAME = "roles.json";
  *
  * ## One vocabulary, re-exported rather than restated
  *
- * The values live in `schemas/skill-package.ts`, the dependency-free base that
+ * The values live in `schemas/kg/skill-package.ts`, the dependency-free base that
  * the registry schema reads. They were declared TWICE until 2026-09-19 — four
  * kinds here, two (`person`, `system`) there — and the registry validated
  * `.claude/skills/actors/*.json` against the narrower one, so the four-kind
@@ -230,7 +230,7 @@ export function fulfilmentKindsForBpmnType(bpmnType: string): readonly ActorKind
  */
 export interface ActorDef {
   id: string;
-  /** Display text. See `schemas/kg-node.ts` — `title`/`description` everywhere. */
+  /** Display text. See `schemas/kg/kg-node.ts` — `title`/`description` everywhere. */
   title: string;
   kind: ActorKind;
   description?: string;
@@ -256,7 +256,7 @@ export interface RoleDef {
    * matching: a lane binds by id.
    *
    * `title` and `description` rather than `name` and `summary`: they are the
-   * two labels EVERY knowledge-graph node carries (`schemas/kg-node.ts`), and a
+   * two labels EVERY knowledge-graph node carries (`schemas/kg/kg-node.ts`), and a
    * role spelling them differently from a directory or a Tool meant a consumer
    * had to know which kind of node it held before it could print one.
    */
@@ -1287,7 +1287,7 @@ export const PERMISSION_FILENAME = "permissions.json";
  */
 export interface PermissionDef {
   id: string;
-  /** Display text and the sentence under it — `schemas/kg-node.ts`, like every node. */
+  /** Display text and the sentence under it — `schemas/kg/kg-node.ts`, like every node. */
   title: string;
   description: string;
   /**

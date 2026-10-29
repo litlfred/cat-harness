@@ -11,7 +11,7 @@ import { describe, expect, test } from "bun:test";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 
-import { readDeclaration } from "../cat-harness.js";
+import { readDeclaration } from "../kg/cat-harness.js";
 import {
   THEME_LAYOUTS,
   ResolvedThemeSchema,

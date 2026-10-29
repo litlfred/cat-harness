@@ -42,8 +42,8 @@ import {
   TranslatableFormatSchema,
   type ContentTypeTranslation,
   type TranslatableFormat,
-} from "../cat-harness.ts";
-import { declarationChain, resolveImplementingPath } from "../harness-config.ts";
+} from "../kg/cat-harness.ts";
+import { declarationChain, resolveImplementingPath } from "../kg/harness-config.ts";
 import { instanceRootsIn } from "../instance-roots.ts";
 
 // The two profile schemas live with the declaration that carries them
@@ -115,7 +115,7 @@ export function resolveTranslationPath(ct: DeclaredContentTypeTranslation, rel: 
 export const CONTENT_TYPE_TRANSLATIONS: DeclaredContentTypeTranslation[] = collectContentTypeTranslations(
   // `import.meta.url`, not Bun's `import.meta.dir`: Playwright loads this module
   // under Node, where `import.meta.dir` is undefined.
-  checkoutRootFor(dirname(dirname(fileURLToPath(import.meta.url)))),
+  checkoutRootFor(dirname(dirname(dirname(fileURLToPath(import.meta.url))))),
 );
 
 /**

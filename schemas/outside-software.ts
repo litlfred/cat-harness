@@ -40,7 +40,7 @@
 import { z } from "zod";
 
 import { ReleaseDigestSchema } from "./binary-release";
-import { nodeKind } from "./node-kind";
+import { nodeKind } from "./kg/node-kind";
 import { checkLicenceExpression, type SpdxLicenseList } from "./spdx-license-expression";
 
 /** A version as the publisher spells it (`21.0.4+7`, `1.2024.7`, `3.53.4-build2`). No whitespace, `@` or `/`. */
@@ -135,7 +135,7 @@ export const OutsideSoftwareCoreSchema = z.object({
 export type OutsideSoftwareCore = z.infer<typeof OutsideSoftwareCoreSchema>;
 
 /**
- * The core as a node-kind MIXIN (`schemas/node-kind.ts`): unversioned, so it
+ * The core as a node-kind MIXIN (`schemas/kg/node-kind.ts`): unversioned, so it
  * has no `$schema` of its own, and a kind that names it as a parent inherits
  * every field above. `software-library` does. `tool-release` predates node
  * kinds and extends {@link OutsideSoftwareCoreSchema} directly.

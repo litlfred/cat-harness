@@ -96,7 +96,7 @@ whether the Model Context Protocol (MCP) server is running:
   directly rather than scraping files or inventing shell workarounds.
 - **Without MCP (standard CLI or standalone container):**
   Tools cannot be called via RPC. The agent resolves skills directly from the
-  declared `kg` graph in `<instance>.json` (`schemas/cat-harness.ts`) and uses
+  declared `kg` graph in `<instance>.json` (`schemas/kg/cat-harness.ts`) and uses
   scripts (`bun run cat ...`) and filesystem reads.
 
 A skill must not fail simply because MCP is unavailable; it must specify both

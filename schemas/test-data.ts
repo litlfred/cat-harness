@@ -76,7 +76,7 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
 
-import { nodeKind } from "./node-kind";
+import { nodeKind } from "./kg/node-kind";
 import type { TestDataRef } from "./test-plan";
 
 // ── Schema tags & common identifiers ────────────────────────────────────────

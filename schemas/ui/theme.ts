@@ -127,7 +127,7 @@
 import { z } from "zod";
 import { RepoFullNameSchema } from "../repo-full-name.js";
 
-import { nodeKind } from "../node-kind.js";
+import { nodeKind } from "../kg/node-kind.js";
 
 /**
  * The three layouts a theme must define.

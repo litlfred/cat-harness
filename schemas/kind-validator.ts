@@ -54,10 +54,10 @@ import {
   siblingScopeFor,
   resolveGraphTypology,
   type GraphTypologyRegistry,
-} from "./cat-harness.js";
-import type { NodeSchemaRef } from "./graph-typology-registry.js";
+} from "./kg/cat-harness.js";
+import type { NodeSchemaRef } from "./kg/graph-typology-registry.js";
 import { libraryNodeClass } from "./library-nodes.js";
-import { isNodeKind } from "./node-kind.js";
+import { isNodeKind } from "./kg/node-kind.js";
 
 /** A validator reference, split from its `module#Export` form. */
 export interface ValidatorRef {

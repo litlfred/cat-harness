@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ingest-theme\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.518Z\n"
+"POT-Creation-Date: 2026-10-29T08:39:28.934Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -76,7 +76,7 @@ msgstr ""
 
 #: processes/ui/ingest-theme.bpmn:76
 #. Diagram element documentation
-msgid "Read the ROLE, never the prettiest value. Bootstrap's --blue is a scale entry and --primary is the role; DSpace sets them differently, and taking the brand-looking one is the hardcoding schemas/theme.ts exists to end. Column widths come from declared columns, never from breakpoints: a breakpoint is a viewport."
+msgid "Read the ROLE, never the prettiest value. Bootstrap's --blue is a scale entry and --primary is the role; DSpace sets them differently, and taking the brand-looking one is the hardcoding schemas/ui/theme.ts exists to end. Column widths come from declared columns, never from breakpoints: a breakpoint is a viewport."
 msgstr ""
 
 #: processes/ui/ingest-theme.bpmn:74

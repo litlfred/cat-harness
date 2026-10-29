@@ -23,7 +23,7 @@
  */
 import { z } from "zod";
 
-import type { GraphTypologyDef } from "./graph-typology-registry";
+import type { GraphTypologyDef } from "./kg/graph-typology-registry";
 import { NewInstanceSourceSchema } from "./subgraph-source";
 
 export const GRAPH_TYPOLOGY_NODE_TAG = "folio-graph-typology/v1" as const;

@@ -389,7 +389,7 @@ separately on a document's own inline bindings:
    published one by URL, or an array of both. The published context's own
    term targets are checked too, whether or not a document uses them. Plain
    string VALUES are not read as CURIEs: `label: "def:foo"` is an authored
-   label, which is exactly the hazard `schemas/jsonld.ts` opens with.
+   label, which is exactly the hazard `schemas/kg/jsonld.ts` opens with.
 2. **Own namespace ⇒ stub spelling.** A binding onto a `…/<stub>/ns#`
    namespace of ours must be spelt `<stub>`, and `<stub>` must be declared by
    an instance (`<stub>/<stub>.json`).
@@ -423,7 +423,7 @@ instance's declared directories become nodes in `<stub>.jsonld`, so declaring
 rule has no destination — put its id, path and description into the published
 document.
 
-`UNPUBLISHED_GRAPH_TYPOLOGIES` in `schemas/cat-harness.ts` is the one list, read by
+`UNPUBLISHED_GRAPH_TYPOLOGIES` in `schemas/kg/cat-harness.ts` is the one list, read by
 every emitter, so two filters cannot disagree about what is excluded.
 
 **Three emitters had to be filtered, and the third was found only because the

@@ -74,13 +74,13 @@
 
 import { z } from "zod";
 
-import { nodeKind } from "./node-kind";
+import { nodeKind } from "./kg/node-kind";
 import {
   GraphNodeDirectorySchema,
   defaultGraphTypologies,
   type GraphNodeDirectory,
   type GraphTypologyRegistry,
-} from "./cat-harness";
+} from "./kg/cat-harness";
 
 /**
  * The kinds of store a bean-graph node can be.
