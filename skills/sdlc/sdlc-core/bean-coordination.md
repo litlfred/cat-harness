@@ -469,7 +469,7 @@ commit, which a pull request number is not. A date-plus-finding name was
 refused: two sessions on the same finding on the same day pick the same slug.
 A second note from the same branch is a new `##` section in that branch's own
 file — found by its front matter, not by today's date — so only that branch
-ever writes it. Reasoning in full: `cat-harness/schemas/bean-note.ts`.
+ever writes it. Reasoning in full: `cat-harness/schemas/sdlc/bean-note.ts`.
 
 **What still conflicts, and why that is acceptable.** The index is rewritten
 by every pull request that adds a note, so two of them conflict on it. It is a

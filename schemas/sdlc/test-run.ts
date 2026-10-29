@@ -87,7 +87,7 @@ import { SkillNameSchema } from "../tools/tool-types";
 
 import { RequirementRefSchema } from "@litlfred/bootstrap-tools/schemas/requirement.ts";
 import { NETWORK_REACHES, REACH_UNKNOWN } from "../actor-reach";
-import { inputSiteReached } from "../input-trace.ts";
+import { inputSiteReached } from "./input-trace.ts";
 
 const RunContextRefFieldSchema = z
   .object({

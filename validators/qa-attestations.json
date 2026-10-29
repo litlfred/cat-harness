@@ -4,5 +4,5 @@
   "validates": {
     "kind": "attestations"
   },
-  "schema": "schemas/qa-attestations.ts#QaAttestationsSchema"
+  "schema": "schemas/sdlc/qa-attestations.ts#QaAttestationsSchema"
 }

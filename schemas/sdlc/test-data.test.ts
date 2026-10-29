@@ -14,9 +14,9 @@ import {
   graphTypologyIri,
   isRenderable,
   processMayWrite,
-} from "./kg/cat-harness";
-import { resolveKindValidator } from "./kg/kind-validator";
-import { readRoleGraph } from "./process/role-graph";
+} from "../kg/cat-harness";
+import { resolveKindValidator } from "../kg/kind-validator";
+import { readRoleGraph } from "../process/role-graph";
 import {
   FHIR_TEMPLATING_SPECIALISATION,
   FIXED_TEST_DATA_SET_SCHEMA_ID,
@@ -41,7 +41,7 @@ import {
 } from "./test-data";
 import { TestDataRefSchema, isEvidence } from "./test-plan";
 
-const ROOT = resolve(import.meta.dir, "..");
+const ROOT = resolve(import.meta.dir, "..", "..");
 const SHA_A = "a".repeat(64);
 
 const smeReviewer: SmeReviewerIdentity = {

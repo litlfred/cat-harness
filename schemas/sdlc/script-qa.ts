@@ -32,7 +32,7 @@ import type {
   QaCriterionEntry,
   QaCriterionDefinition,
 } from "./block-qa";
-import type { RunContextRef } from "../run-context";
+import type { RunContextRef } from "./run-context";
 
 /**
  * Source language of the audited script. Determines which checker

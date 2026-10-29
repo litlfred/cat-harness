@@ -7,7 +7,7 @@
  * | source ledger (`source-ledger/v1`) | `bib-qa-verifications.json` | `bib-verification` |
  * | human review | `schema/references.review.json` | `bib-human-review` |
  *
- * Shapes and layout are in `schemas/qa-attestations.ts` (§"The bibliography
+ * Shapes and layout are in `schemas/sdlc/qa-attestations.ts` (§"The bibliography
  * families"). Every platform reader and writer of either ledger goes through
  * this module; none opens a ledger file itself.
  *
@@ -66,7 +66,7 @@ import {
   jsonText,
   QA_ATTESTATIONS_SCHEMA,
   readAttestationFile,
-} from "../qa-attestations";
+} from "../sdlc/qa-attestations";
 
 export { BIB_REVIEW_STATUSES };
 

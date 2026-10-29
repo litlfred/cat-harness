@@ -179,7 +179,7 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       <bpmn:incoming>m18</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:task id="Task_RecordAuthorisation" name="Record who authorised,&#10;when, and the quote">
-      <bpmn:documentation>Before the merge, in the shape of `ReleaseSchema` (schemas/merge-queue.ts): verdict, decidedBy (the person), decidedAt, authority (explicit, standing ruling with its date, or waiver id), the quote verbatim with its source, releasedSha (the head approved; a later push voids it) and capturedBy (this session). Where the merge queue exists, `merge:queue:decide` writes and validates it; elsewhere it is a `merge-authorised:` comment on the PR and a note on the bean, with the CI state (green, or none with the local gate commands). A paraphrase is not evidence.</bpmn:documentation>
+      <bpmn:documentation>Before the merge, in the shape of `ReleaseSchema` (schemas/sdlc/merge-queue.ts): verdict, decidedBy (the person), decidedAt, authority (explicit, standing ruling with its date, or waiver id), the quote verbatim with its source, releasedSha (the head approved; a later push voids it) and capturedBy (this session). Where the merge queue exists, `merge:queue:decide` writes and validates it; elsewhere it is a `merge-authorised:` comment on the PR and a note on the bean, with the CI state (green, or none with the local gate commands). A paraphrase is not evidence.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>
         <cat-harness.processes:bean op="note"/>

@@ -18,7 +18,7 @@
   <bpmn:process id="Process_SmeTestDataReview" name="SME Review of Decision Support and Indicator Test Data" isExecutable="false">
     <bpmn:documentation>SME review of fixed test data for clinical or scientific decision support and indicator definitions. It runs on its caller's bean (Process_TestDataCuration calls it), so it opens and closes none: every step that touches the plan notes on it.
 
-TWO UNITS OF REVIEW (`SmeCaseVerdictKind`, `$schema: &quot;sme-case-verdict/1.0.0&quot;` in `schemas/test-data.ts`):
+TWO UNITS OF REVIEW (`SmeCaseVerdictKind`, `$schema: &quot;sme-case-verdict/1.0.0&quot;` in `schemas/sdlc/test-data.ts`):
 - `decision-support`: the unit of review is a **worked case** (`case`: input state, `decisionLogicRef`, `systemOutput`, optional `expectedGuidance`).
 - `indicator-definition`: the unit of review is a **cohort plus an expected value** (`cohort`: `indicatorRef`, `populationSize`, `inputs`, `expectedValue`, `computedValue`, optional `period`, `numerator`, `denominator`).
 
@@ -55,7 +55,7 @@ ATTRIBUTABLE REVIEWER AND DATE. `Task_RecordCaseVerdict` writes the `sme-case-ve
     </bpmn:startEvent>
 
     <bpmn:exclusiveGateway id="GW_SubjectKind" name="Subject kind:&#10;decision support or&#10;indicator definition?">
-      <bpmn:documentation>Selects the unit of review required by `SmeCaseVerdictKind` (`schemas/test-data.ts`): a worked `case` for `decision-support`, or a `cohort` plus `expectedValue` for `indicator-definition`.</bpmn:documentation>
+      <bpmn:documentation>Selects the unit of review required by `SmeCaseVerdictKind` (`schemas/sdlc/test-data.ts`): a worked `case` for `decision-support`, or a `cohort` plus `expectedValue` for `indicator-definition`.</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:judgement reason="Determined by whether the subject under review is a decision-support rule (worked case unit) or an indicator definition (cohort plus expected value unit)."/>
       </bpmn:extensionElements>
@@ -100,7 +100,7 @@ ATTRIBUTABLE REVIEWER AND DATE. `Task_RecordCaseVerdict` writes the `sme-case-ve
     </bpmn:userTask>
 
     <bpmn:task id="Task_RecordCaseVerdict" name="Record sme-case-verdict/1.0.0&#10;with SME identity, date,&#10;verdict and rationale">
-      <bpmn:documentation>Write the `sme-case-verdict/1.0.0` node (`SmeCaseVerdictKind` in `schemas/test-data.ts`) recording `dataSetRef`, `subjectKind`, the worked `case` or `cohort`, `verdict`, `rationale`, the SME's attributable human identity (`reviewer: { kind: &quot;human&quot;, provider, handle, role }`), and `reviewedAt` (ISO-8601 date/timestamp).</bpmn:documentation>
+      <bpmn:documentation>Write the `sme-case-verdict/1.0.0` node (`SmeCaseVerdictKind` in `schemas/sdlc/test-data.ts`) recording `dataSetRef`, `subjectKind`, the worked `case` or `cohort`, `verdict`, `rationale`, the SME's attributable human identity (`reviewer: { kind: &quot;human&quot;, provider, handle, role }`), and `reviewedAt` (ISO-8601 date/timestamp).</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
         <cat-harness.processes:bean op="note"/>

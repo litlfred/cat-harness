@@ -26,8 +26,8 @@ import {
   type CertificationEntry,
   type KgAttestations,
 } from "./qa-attestations";
-import { defaultGraphTypologies } from "./kg/cat-harness";
-import { KgQaReportSchema } from "./sdlc/kg-qa";
+import { defaultGraphTypologies } from "../kg/cat-harness";
+import { KgQaReportSchema } from "./kg-qa";
 
 const pair = {
   kind: "implements" as const,
@@ -88,7 +88,7 @@ describe("qa-attestations/v1", () => {
   test("the graph typology is registered, as state, with this validator", () => {
     const kind = defaultGraphTypologies.get("attestations");
     expect(kind?.holds).toBe("state");
-    expect(kind?.validator).toBe("schemas/qa-attestations.ts#QaAttestationsSchema");
+    expect(kind?.validator).toBe("schemas/sdlc/qa-attestations.ts#QaAttestationsSchema");
   });
 });
 

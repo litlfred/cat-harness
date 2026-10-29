@@ -10,7 +10,7 @@
  *
  * ## It is a SPECIALISATION of `folio-log/v1`, not a second logger
  *
- * `schemas/log-entry.ts` already answers "what does an entry look like":
+ * `schemas/sdlc/log-entry.ts` already answers "what does an entry look like":
  * `id`, `at`, `summary`, `detail`, `references`, and a three-state `capture`.
  * Re-spelling those here would be two vocabularies for one concept, and the
  * first divergence would be silent. So a render entry IS a log entry, with a
@@ -53,7 +53,7 @@
 
 import { z } from "zod";
 
-import { LOG_CAPTURE, LogReferenceSchema } from "../log-entry.ts";
+import { LOG_CAPTURE, LogReferenceSchema } from "../sdlc/log-entry.ts";
 import { ProcessElementIdSchema } from "../process/process-element-id.ts";
 
 /** The `$schema` every render-log entry carries. */

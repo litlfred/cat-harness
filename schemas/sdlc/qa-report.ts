@@ -78,7 +78,7 @@
  *    when `status` is terminal.
  */
 import { z } from "zod";
-import { RunContextRefSchema } from "../run-context";
+import { RunContextRefSchema } from "./run-context";
 
 /** The tag a `qa-report` document carries, so it is identified by declaration. */
 export const QA_REPORT_SCHEMA_TAG = "qa-report/v1";

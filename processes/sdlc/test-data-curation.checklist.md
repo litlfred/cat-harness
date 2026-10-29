@@ -50,7 +50,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
-- What: Write the curated `records` and optional `citations` with `$schema: "test-data-fixed/1.0.0"` and `kind: "fixed"` into the instance's declared `test-data-fixed` directory (`schemas/test-data.ts`).
+- What: Write the curated `records` and optional `citations` with `$schema: "test-data-fixed/1.0.0"` and `kind: "fixed"` into the instance's declared `test-data-fixed` directory (`schemas/sdlc/test-data.ts`).
 - Record it: `workflow_complete` with `node: "Task_CurateFixed"`.
 - next: → `GW_NeedsSmeReview` (Exercises decision support or indicator definition?)
 
@@ -58,7 +58,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
-- What: BOUND BY THE CONTENT TYPE (`contentType` and `specialisation` in `schemas/test-data.ts`), so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess.
+- What: BOUND BY THE CONTENT TYPE (`contentType` and `specialisation` in `schemas/sdlc/test-data.ts`), so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess.
 - Record it: `workflow_complete` with `node: "Call_ContentTypeSpecialisation"`.
 - next: → `Task_WriteRecipe` (Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0)
 
@@ -99,7 +99,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `test-data-sets`.
-- What: Parse the file with `discriminateTestDataSet` (`schemas/test-data.ts`) to confirm a consumer can tell fixed from generated from the file content alone (never the path), verify `verifyGeneratedSetDigest` on generated sets, and bind the resulting `TestDataRef` (`toTestDataRef`) into the `test-plan/v1`
+- What: Parse the file with `discriminateTestDataSet` (`schemas/sdlc/test-data.ts`) to confirm a consumer can tell fixed from generated from the file content alone (never the path), verify `verifyGeneratedSetDigest` on generated sets, and bind the resulting `TestDataRef` (`toTestDataRef`) into the `test-plan/v1`
 - Record it: `workflow_complete` with `node: "Task_VerifySelfIdentifying"`.
 - next: → `Call_BeanClose` (Close the bean)
 

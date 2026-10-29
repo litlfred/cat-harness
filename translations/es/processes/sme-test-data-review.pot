@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sme-test-data-review\n"
-"POT-Creation-Date: 2026-10-26T13:04:31.891Z\n"
+"POT-Creation-Date: 2026-10-29T13:02:26.653Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -121,7 +121,7 @@ msgstr ""
 
 #: processes/sdlc/sme-test-data-review.bpmn:58
 #. Diagram element documentation
-msgid "Selects the unit of review required by `SmeCaseVerdictKind` (`schemas/test-data.ts`): a worked `case` for `decision-support`, or a `cohort` plus `expectedValue` for `indicator-definition`."
+msgid "Selects the unit of review required by `SmeCaseVerdictKind` (`schemas/sdlc/test-data.ts`): a worked `case` for `decision-support`, or a `cohort` plus `expectedValue` for `indicator-definition`."
 msgstr ""
 
 #: processes/sdlc/sme-test-data-review.bpmn:16
@@ -131,7 +131,7 @@ msgstr ""
 
 #: processes/sdlc/sme-test-data-review.bpmn:19
 #. Diagram element documentation
-msgid "SME review of fixed test data for clinical or scientific decision support and indicator definitions. It runs on its caller's bean (Process_TestDataCuration calls it), so it opens and closes none: every step that touches the plan notes on it. TWO UNITS OF REVIEW (`SmeCaseVerdictKind`, `$schema: \"sme-case-verdict/1.0.0\"` in `schemas/test-data.ts`): - `decision-support`: the unit of review is a **worked case** (`case`: input state, `decisionLogicRef`, `systemOutput`, optional `expectedGuidance`). - `indicator-definition`: the unit of review is a **cohort plus an expected value** (`cohort`: `indicatorRef`, `populationSize`, `inputs`, `expectedValue`, `computedValue`, optional `period`, `numerator`, `denominator`). JUDGEMENT-ONLY SME LANE. `Lane_SME` binds `clinical-sme`, which is declared `judgementOnly: true` in `scenarios/roles.json`. `Task_SmeJudge` carries no skill reference because no mechanical procedure yields the clinical or scientific answer — that is the whole reason a person is in the lane. ATTRIBUTABLE REVIEWER AND DATE. `Task_RecordCaseVerdict` writes the `sme-case-verdict/1.0.0` node with the SME's attributable human identity (`reviewer: { kind: \"human\", provider, handle, role }`) and ISO-8601 review date (`reviewedAt`), because an audited review without an attributable reviewer and date is not audited."
+msgid "SME review of fixed test data for clinical or scientific decision support and indicator definitions. It runs on its caller's bean (Process_TestDataCuration calls it), so it opens and closes none: every step that touches the plan notes on it. TWO UNITS OF REVIEW (`SmeCaseVerdictKind`, `$schema: \"sme-case-verdict/1.0.0\"` in `schemas/sdlc/test-data.ts`): - `decision-support`: the unit of review is a **worked case** (`case`: input state, `decisionLogicRef`, `systemOutput`, optional `expectedGuidance`). - `indicator-definition`: the unit of review is a **cohort plus an expected value** (`cohort`: `indicatorRef`, `populationSize`, `inputs`, `expectedValue`, `computedValue`, optional `period`, `numerator`, `denominator`). JUDGEMENT-ONLY SME LANE. `Lane_SME` binds `clinical-sme`, which is declared `judgementOnly: true` in `scenarios/roles.json`. `Task_SmeJudge` carries no skill reference because no mechanical procedure yields the clinical or scientific answer — that is the whole reason a person is in the lane. ATTRIBUTABLE REVIEWER AND DATE. `Task_RecordCaseVerdict` writes the `sme-case-verdict/1.0.0` node with the SME's attributable human identity (`reviewer: { kind: \"human\", provider, handle, role }`) and ISO-8601 review date (`reviewedAt`), because an audited review without an attributable reviewer and date is not audited."
 msgstr ""
 
 #: processes/sdlc/sme-test-data-review.bpmn:112
@@ -151,5 +151,5 @@ msgstr ""
 
 #: processes/sdlc/sme-test-data-review.bpmn:103
 #. Diagram element documentation
-msgid "Write the `sme-case-verdict/1.0.0` node (`SmeCaseVerdictKind` in `schemas/test-data.ts`) recording `dataSetRef`, `subjectKind`, the worked `case` or `cohort`, `verdict`, `rationale`, the SME's attributable human identity (`reviewer: { kind: \"human\", provider, handle, role }`), and `reviewedAt` (ISO-8601 date/timestamp)."
+msgid "Write the `sme-case-verdict/1.0.0` node (`SmeCaseVerdictKind` in `schemas/sdlc/test-data.ts`) recording `dataSetRef`, `subjectKind`, the worked `case` or `cohort`, `verdict`, `rationale`, the SME's attributable human identity (`reviewer: { kind: \"human\", provider, handle, role }`), and `reviewedAt` (ISO-8601 date/timestamp)."
 msgstr ""

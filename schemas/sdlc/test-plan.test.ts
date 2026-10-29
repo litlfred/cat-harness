@@ -5,7 +5,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { defaultGraphTypologies, graphLayer, isRenderable, processMayWrite } from "./kg/cat-harness";
+import { defaultGraphTypologies, graphLayer, isRenderable, processMayWrite } from "../kg/cat-harness";
 import { TEST_PLAN_SCHEMA_ID, TestDataRefSchema, TestPlanSchema, isEvidence, type TestPlan } from "./test-plan";
 
 /** Plan #1 of the dogfood order (§3.3): `crdm-detect`, as a plan. */

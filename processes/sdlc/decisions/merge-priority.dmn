@@ -10,7 +10,7 @@
 
   FACTS ARE READ LIVE, NEVER STORED. Every input below is computed at decision
   time from GitHub and the checkout (`scripts/merge-queue.ts` `deriveFacts`,
-  names fixed by `MemberFactsSchema` in `schemas/merge-queue.ts`). The queue
+  names fixed by `MemberFactsSchema` in `schemas/sdlc/merge-queue.ts`). The queue
   entry stores only what this table RETURNED, the rule that fired, and who
   acted on it.
 
@@ -44,7 +44,7 @@
   Outputs:
 
     route   "admit" or "hand back" — the gateway's branch, so FIRST output.
-    class   one of PRIORITY_CLASSES in schemas/merge-queue.ts.
+    class   one of PRIORITY_CLASSES in schemas/sdlc/merge-queue.ts.
     rank    lower goes first; ties break on PR number, oldest first.
     train   "shared", or "alone" for a high-conflict-risk member, which T3
             says to put in a train of its own rather than risk the others.

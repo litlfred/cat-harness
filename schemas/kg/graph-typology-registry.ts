@@ -1460,7 +1460,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // `<attestations dir>/<family>/<mirrored subject path>.attestations.json`.
   attestations: {
     description:
-      "the JUDGEMENT half of a QA verdict, kept apart from the derived half: one `qa-attestations/v1` file per subject at `test/attestations/<family>/<mirrored subject path>.attestations.json`, where `<family>` is the derived family it sits beside (`kg-qa`, bean `2gst`; `block-qa` and `translation-qa`, bean `8wj1` — whose derived reports keep a projection composed from the store; `bib-verification` and `bib-human-review`, the folio's two bibliography judgement ledgers, one file per reference, read and written only through `schemas/library/bib-attestations.ts`). Split out of `qa` by owner ruling D2 (a), 2026-10-01 (bean `2gst`): derived verdicts move to the `qa-reports` branch, and judgements stay on main, where a `git rm` of derived results cannot reach them. A separate kind because the two answer the deletion question differently: a `qa` file can be regenerated, an attestation cannot. Every entry pins the hash it attested, so a stale one is detectable. `state`, like `review-verdicts`. Reads answer hit / miss / absent / corrupt / unknown. On a miss or an absent store a WRITER moves the judgements a prior derived file still carries into the store as it saves (owner ruling 2, 2026-10-01); a corrupt or unreadable store is `unknown` and refused. Shape in `schemas/qa-attestations.ts`.",
+      "the JUDGEMENT half of a QA verdict, kept apart from the derived half: one `qa-attestations/v1` file per subject at `test/attestations/<family>/<mirrored subject path>.attestations.json`, where `<family>` is the derived family it sits beside (`kg-qa`, bean `2gst`; `block-qa` and `translation-qa`, bean `8wj1` — whose derived reports keep a projection composed from the store; `bib-verification` and `bib-human-review`, the folio's two bibliography judgement ledgers, one file per reference, read and written only through `schemas/library/bib-attestations.ts`). Split out of `qa` by owner ruling D2 (a), 2026-10-01 (bean `2gst`): derived verdicts move to the `qa-reports` branch, and judgements stay on main, where a `git rm` of derived results cannot reach them. A separate kind because the two answer the deletion question differently: a `qa` file can be regenerated, an attestation cannot. Every entry pins the hash it attested, so a stale one is detectable. `state`, like `review-verdicts`. Reads answer hit / miss / absent / corrupt / unknown. On a miss or an absent store a WRITER moves the judgements a prior derived file still carries into the store as it saves (owner ruling 2, 2026-10-01); a corrupt or unreadable store is `unknown` and refused. Shape in `schemas/sdlc/qa-attestations.ts`.",
     renderable: false,
     holds: "state",
     recordsWork: false,
@@ -1469,7 +1469,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "reviews, agent and human verdicts, bibliography verifications and human reviews), one `qa-attestations/v1` file per subject, mirroring the " +
       "derived family's tree. Kept on main where deleting derived results cannot reach them; each " +
       "entry pins the hash it attested, so a stale one is detectable.",
-    schema: "schemas/qa-attestations.ts",
+    schema: "schemas/sdlc/qa-attestations.ts",
     // declared-path-literal: this table IS the declaration, as on `health`.
   },
   // Source code. Registered 2026-09-22 (bean `ylj7`) after a measurement the
@@ -1602,7 +1602,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // non-zero -- the row `qa-report` and `binary-release` also carry.
   "test-plan": {
     description:
-      "test plans — one `test-plan/v1` document per plan, shaped after the held FHIR R5 TestPlan source: the system-under-test kind and version range, the `req:` requirements it is evidence for, test cases whose assertion ids are criterion ids, test data that is either FIXED (committed, and evidence once reviewed) or GENERATED (template + params + seed, never stored materialised — bean `vm6m`), and the certification rule as a DMN reference. Strawperson, bean `ygzh`. `content`: a process reads a plan and never writes it, and it still says what is required when detached from every run. The run points at the plan and never the reverse, because a plan listing its runs would be rewritten by every execution. Declared, no directory. Shape in `schemas/test-plan.ts`.",
+      "test plans — one `test-plan/v1` document per plan, shaped after the held FHIR R5 TestPlan source: the system-under-test kind and version range, the `req:` requirements it is evidence for, test cases whose assertion ids are criterion ids, test data that is either FIXED (committed, and evidence once reviewed) or GENERATED (template + params + seed, never stored materialised — bean `vm6m`), and the certification rule as a DMN reference. Strawperson, bean `ygzh`. `content`: a process reads a plan and never writes it, and it still says what is required when detached from every run. The run points at the plan and never the reverse, because a plan listing its runs would be rewritten by every execution. Declared, no directory. Shape in `schemas/sdlc/test-plan.ts`.",
     renderable: false,
     holds: "content",
     summary:
@@ -1610,7 +1610,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "system-under-test kind and version range, the `req:` requirements it is evidence for, " +
       "test cases whose assertions are criterion ids, fixed (reviewed) or generated " +
       "(template + params + seed) test data, and the certification rule as a DMN reference.",
-    schema: "schemas/test-plan.ts",
+    schema: "schemas/sdlc/test-plan.ts",
     // declared-path-literal: this table IS the declaration, as for `health`.
   },
   // Test reports -- the verdicts ONE run of ONE plan reached against ONE
@@ -1643,7 +1643,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // (beans `ygzh` and the branch work in arc `3fva`).
   "test-report": {
     description:
-      "test reports — one `test-report/v1` document per run of a plan against a system under test, per-case verdicts in the block-qa entry shape, and a rollup for that ONE plan. **Never a total across plans** — the owner's `py74` ruling, enforced by a strict top level that has no field for a second plan or a total. Strawperson, bean `ygzh`. `state`: the run writes it, and re-running produces a new report rather than the same one. A separate kind from `qa-report` because the subject differs — that is a tool's account of its OWN run, this is a tester's finding about SOMEBODY ELSE, which is why the system under test may not write its own verdict. The rollup may not disagree with the cases, and `running` is never a pass. Written to the `qa-reports` branch under `tests/<plan-id>/<sut>/<run-id>/`; declared, no directory. Shape in `schemas/test-report.ts`.",
+      "test reports — one `test-report/v1` document per run of a plan against a system under test, per-case verdicts in the block-qa entry shape, and a rollup for that ONE plan. **Never a total across plans** — the owner's `py74` ruling, enforced by a strict top level that has no field for a second plan or a total. Strawperson, bean `ygzh`. `state`: the run writes it, and re-running produces a new report rather than the same one. A separate kind from `qa-report` because the subject differs — that is a tool's account of its OWN run, this is a tester's finding about SOMEBODY ELSE, which is why the system under test may not write its own verdict. The rollup may not disagree with the cases, and `running` is never a pass. Written to the `qa-reports` branch under `tests/<plan-id>/<sut>/<run-id>/`; declared, no directory. Shape in `schemas/sdlc/test-report.ts`.",
     renderable: false,
     holds: "state",
     recordsWork: false,
@@ -1652,7 +1652,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "test: per-case verdicts in the block-qa entry shape, a rollup for that ONE plan that may " +
       "not disagree with its cases, and never a total across plans. `running` is never a pass, " +
       "and the system under test never writes its own verdict. Generated by the run.",
-    schema: "schemas/test-report.ts",
+    schema: "schemas/sdlc/test-report.ts",
     // declared-path-literal: this table IS the declaration, as for `health`.
   },
   // Fixed test data sets (`test-data-fixed/1.0.0`, bean `vm6m`) — small, curated
@@ -1665,7 +1665,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // content, never from the directory path.
   "test-data-fixed": {
     description:
-      "fixed test data sets — one `test-data-fixed/1.0.0` document per curated set (`kind: \"fixed\"`, committed records, citations, and optional SME review sign-off). Separate graph typology from `test-data-generated` (bean `vm6m`) so fixed sets live in their own declared directory, and self-identifying from the file content (`$schema` and `kind`) rather than from the path. `content`: a test run reads a fixed set and never overwrites it, and once SME-reviewed it stands as certification evidence. Shape in `schemas/test-data.ts`; curated via `processes/sdlc/test-data-curation.bpmn`.",
+      "fixed test data sets — one `test-data-fixed/1.0.0` document per curated set (`kind: \"fixed\"`, committed records, citations, and optional SME review sign-off). Separate graph typology from `test-data-generated` (bean `vm6m`) so fixed sets live in their own declared directory, and self-identifying from the file content (`$schema` and `kind`) rather than from the path. `content`: a test run reads a fixed set and never overwrites it, and once SME-reviewed it stands as certification evidence. Shape in `schemas/sdlc/test-data.ts`; curated via `processes/sdlc/test-data-curation.bpmn`.",
     title: "Fixed test data sets",
     renderable: false,
     holds: "content",
@@ -1673,7 +1673,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "Fixed test data sets — one `test-data-fixed/1.0.0` document per curated set (`kind: \"fixed\"`), " +
       "living in its own declared directory separate from `test-data-generated` and self-identifying from " +
       "the file content rather than the path (bean `vm6m`).",
-    schema: "schemas/test-data.ts",
+    schema: "schemas/sdlc/test-data.ts",
     // declared-path-literal: this table IS the declaration, as for `test-plan`.
   },
   // Generated test data set recipes (`test-data-generated/1.0.0`, bean `vm6m`) —
@@ -1685,7 +1685,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // specialisation, not the platform design.
   "test-data-generated": {
     description:
-      "generated test data set recipes — one `test-data-generated/1.0.0` document per recipe (`kind: \"generated\"`, `contentType`, `specialisation`, `template`, `params`, `seed`, and canonical `sha256`), never stored materialised. Separate graph typology from `test-data-fixed` (bean `vm6m`) so synthetic recipes live in their own declared directory, and self-identifying from the file content (`$schema` and `kind`) rather than from the path. FHIR templating (`specialisation: \"fhir-templating\"`) is one named content-type specialisation, not the design. `content`: a test run reads the recipe to synthesise inputs and records the digest on `folio-test-run/v1`. Shape in `schemas/test-data.ts`; curated via `processes/sdlc/test-data-curation.bpmn`.",
+      "generated test data set recipes — one `test-data-generated/1.0.0` document per recipe (`kind: \"generated\"`, `contentType`, `specialisation`, `template`, `params`, `seed`, and canonical `sha256`), never stored materialised. Separate graph typology from `test-data-fixed` (bean `vm6m`) so synthetic recipes live in their own declared directory, and self-identifying from the file content (`$schema` and `kind`) rather than from the path. FHIR templating (`specialisation: \"fhir-templating\"`) is one named content-type specialisation, not the design. `content`: a test run reads the recipe to synthesise inputs and records the digest on `folio-test-run/v1`. Shape in `schemas/sdlc/test-data.ts`; curated via `processes/sdlc/test-data-curation.bpmn`.",
     title: "Generated test data recipes",
     renderable: false,
     holds: "content",
@@ -1693,7 +1693,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "Generated test data recipes — one `test-data-generated/1.0.0` document per recipe (`kind: \"generated\"`, " +
       "`template`, `params`, `seed`, `specialisation`, `sha256`), never stored materialised, living in a " +
       "declared directory separate from `test-data-fixed` (bean `vm6m`).",
-    schema: "schemas/test-data.ts",
+    schema: "schemas/sdlc/test-data.ts",
     // declared-path-literal: this table IS the declaration, as for `test-plan`.
   },
   // SME case/cohort review verdicts (`sme-case-verdict/1.0.0`, bean `vljz`) —
@@ -1702,7 +1702,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // (`subjectKind: "indicator-definition"`).
   "sme-case-verdict": {
     description:
-      "SME review case/verdict pairs for decision support (worked `case`) and indicator definitions (`cohort` plus `expectedValue`) — one `sme-case-verdict/1.0.0` document per reviewed unit, recording the attributable human SME identity (`reviewer`) and review date (`reviewedAt`) alongside `verdict` and `rationale` (bean `vljz`). `content`: authored by a person in the `judgementOnly` SME lane of `processes/sdlc/sme-test-data-review.bpmn` so a fixed test data set can stand as audited evidence. Shape in `schemas/test-data.ts`.",
+      "SME review case/verdict pairs for decision support (worked `case`) and indicator definitions (`cohort` plus `expectedValue`) — one `sme-case-verdict/1.0.0` document per reviewed unit, recording the attributable human SME identity (`reviewer`) and review date (`reviewedAt`) alongside `verdict` and `rationale` (bean `vljz`). `content`: authored by a person in the `judgementOnly` SME lane of `processes/sdlc/sme-test-data-review.bpmn` so a fixed test data set can stand as audited evidence. Shape in `schemas/sdlc/test-data.ts`.",
     title: "SME case/verdict pairs",
     renderable: false,
     holds: "content",
@@ -1710,7 +1710,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "SME review case/verdict pairs — one `sme-case-verdict/1.0.0` document per reviewed decision-support " +
       "worked case or indicator-definition cohort, recording attributable human SME identity and review date " +
       "(bean `vljz`).",
-    schema: "schemas/test-data.ts",
+    schema: "schemas/sdlc/test-data.ts",
     // declared-path-literal: this table IS the declaration, as for `test-plan`.
   },
   // ONE kind for the whole work plan, not one per store. It replaced `workplan`
@@ -1858,7 +1858,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     // describes is the bean's, and is counted there; an agent told this graph
     // is active would look for work to pick up and find a log.
     recordsWork: false,
-    schema: "schemas/bean-note.ts",
+    schema: "schemas/sdlc/bean-note.ts",
     validatorNotApplicable:
       "no instance declares a directory of this kind — it is nested inside `beans/`, declared by " +
       "`beans/beans.json`, and its nodes are Markdown with YAML front matter. `beans:notes:check` " +
@@ -1907,7 +1907,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     nodeSchemas: {
       "folio-sweep-mark/v1": {},
     },
-    schema: "schemas/sweep-mark.ts",
+    schema: "schemas/sdlc/sweep-mark.ts",
     recordsWork: false,
     summary:
       "When a sweep step last ran — one JSON per check, carrying `\"$schema\": \"folio-sweep-mark/v1\"`, " +
@@ -1941,7 +1941,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
 
   // The merge queue — what the merge STEWARD decided about an open pull
   // request. Bean `hfag`'s last open box, and the one that made the schema
-  // homeless: `schemas/merge-queue.ts` has existed since the epic's first
+  // homeless: `schemas/sdlc/merge-queue.ts` has existed since the epic's first
   // commit, `MergeQueueEntrySchema` validates an entry, and nothing declared
   // anywhere an entry could LIVE. A schema with no declared graph is reachable
   // only by the module that imports it, which is `dh4f` pointed the other way
@@ -1964,11 +1964,11 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // workflow-state). A held entry with an unexpired hold is open work.
   "merge-queue": {
     description:
-      "a merge steward's DECISIONS about an open pull request — one JSON each, `\"$schema\": \"folio-merge-queue-entry/v1\"`: priority class, rank or override with its reason, a hold with its expiry, the train it joined, an ejection with its evidence. **Never a fact GitHub owns** — CI, mergeability, labels and the head SHA are read live at decision time and refused BY NAME by the schema, because a stored copy is a second answer that goes stale on the next push. The one exception is an evidence snapshot on a FINISHED train run, which is history rather than a claim about now. Declared at `beans/queue/`, beside `workflow-state`: this holds the decisions, a finished run next door holds the evidence they met. `state` because a steward writes it as the train proceeds; `recordsWork: true` because a held entry is open work. Shape in `schemas/merge-queue.ts`; read with [`merge-queue`](../../sdlc/sdlc-core/merge-queue.md). Bean `hfag`.",
+      "a merge steward's DECISIONS about an open pull request — one JSON each, `\"$schema\": \"folio-merge-queue-entry/v1\"`: priority class, rank or override with its reason, a hold with its expiry, the train it joined, an ejection with its evidence. **Never a fact GitHub owns** — CI, mergeability, labels and the head SHA are read live at decision time and refused BY NAME by the schema, because a stored copy is a second answer that goes stale on the next push. The one exception is an evidence snapshot on a FINISHED train run, which is history rather than a claim about now. Declared at `beans/queue/`, beside `workflow-state`: this holds the decisions, a finished run next door holds the evidence they met. `state` because a steward writes it as the train proceeds; `recordsWork: true` because a held entry is open work. Shape in `schemas/sdlc/merge-queue.ts`; read with [`merge-queue`](../../sdlc/sdlc-core/merge-queue.md). Bean `hfag`.",
     renderable: false,
     holds: "state",
     recordsWork: true,
-    schema: "schemas/merge-queue.ts",
+    schema: "schemas/sdlc/merge-queue.ts",
     // declared-path-literal: this table IS the declaration, as on `health` and
     // `workflow-state`. The validator is the SAME export the steward's tooling
     // imports, so the kind and the writer cannot drift into two answers.
@@ -2330,7 +2330,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // session start, and a pin is itself the subject matter of a provisioning.
   // NOT `state`: what a run actually resolved is a different record, the
   // `folio-run-context/v1` that cites these by `name@version`
-  // (`schemas/run-context.ts`), produced per run and kept with the run.
+  // (`schemas/sdlc/run-context.ts`), produced per run and kept with the run.
   //
   // NOT renderable: the site build does not read it, which is what
   // `renderable` asks.
@@ -2697,12 +2697,12 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // longer the head, which is exactly what `stale` should mean.
   "merge-reviews": {
     description:
-      "the adversarial review verdict on a pull request's HEAD — one `merge-review/v1` file per head, `<head sha>.json`, naming `base_sha`, `head_sha` and the reviews with their RED FLAG findings. Written by a reviewing session that is not the author, read by `check:adversarial-review`. On its own branch so that recording a verdict never moves the head it is bound to. Method: [`adversarial-code-review`](../../sdlc/sdlc-core/adversarial-code-review.md); shape in `schemas/red-flag.ts`.",
+      "the adversarial review verdict on a pull request's HEAD — one `merge-review/v1` file per head, `<head sha>.json`, naming `base_sha`, `head_sha` and the reviews with their RED FLAG findings. Written by a reviewing session that is not the author, read by `check:adversarial-review`. On its own branch so that recording a verdict never moves the head it is bound to. Method: [`adversarial-code-review`](../../sdlc/sdlc-core/adversarial-code-review.md); shape in `schemas/sdlc/red-flag.ts`.",
     title: "Merge reviews",
     renderable: false,
     holds: "state",
     recordsWork: false, // a verdict, not work anybody is partway through
-    schema: "cat-harness:schemas/red-flag.ts",
+    schema: "cat-harness:schemas/sdlc/red-flag.ts",
     // declared-path-literal: this table IS the declaration, as on `issue-marks`.
     nodeSchemas: {
       "merge-review/v1": {},

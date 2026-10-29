@@ -17,9 +17,9 @@
   <bpmn:process id="Process_TestDataCuration" name="Test Data Curation — Fixed Sets and Generated Recipes" isExecutable="false">
     <bpmn:documentation>General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`test-data-generated/1.0.0`) test data sets. It opens its bean with Process_BeanOpen before any work and closes it with Process_BeanClose before it ends; the steps between note on it.
 
-SEPARATE GRAPH DIRECTORIES, SELF-IDENTIFYING FILES. Fixed sets live in a declared `test-data-fixed` directory and generated recipes live in a declared `test-data-generated` directory (`schemas/kg/graph-typology-registry.ts`). Every file carries both its `$schema` tag (`test-data-fixed/1.0.0` vs `test-data-generated/1.0.0`) and `kind: &quot;fixed&quot; | &quot;generated&quot;` (`schemas/test-data.ts`), so a consumer (`discriminateTestDataSet`) tells which it is reading from the file content, never from the directory path.
+SEPARATE GRAPH DIRECTORIES, SELF-IDENTIFYING FILES. Fixed sets live in a declared `test-data-fixed` directory and generated recipes live in a declared `test-data-generated` directory (`schemas/kg/graph-typology-registry.ts`). Every file carries both its `$schema` tag (`test-data-fixed/1.0.0` vs `test-data-generated/1.0.0`) and `kind: &quot;fixed&quot; | &quot;generated&quot;` (`schemas/sdlc/test-data.ts`), so a consumer (`discriminateTestDataSet`) tells which it is reading from the file content, never from the directory path.
 
-CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises test inputs or how a fixed payload is structured depends on the folio's `contentType`. `Call_ContentTypeSpecialisation` delegates that step to the content type's own subprocess (`specialisation` in `schemas/test-data.ts`). FHIR templating (`specialisation: &quot;fhir-templating&quot;`) is one named specialisation for FHIR IG / DAK content, not the platform design.</bpmn:documentation>
+CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises test inputs or how a fixed payload is structured depends on the folio's `contentType`. `Call_ContentTypeSpecialisation` delegates that step to the content type's own subprocess (`specialisation` in `schemas/sdlc/test-data.ts`). FHIR templating (`specialisation: &quot;fhir-templating&quot;`) is one named specialisation for FHIR IG / DAK content, not the platform design.</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
@@ -73,7 +73,7 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
     </bpmn:exclusiveGateway>
 
     <bpmn:task id="Task_CurateFixed" name="Author fixed set in&#10;test-data-fixed/ with&#10;$schema test-data-fixed/1.0.0">
-      <bpmn:documentation>Write the curated `records` and optional `citations` with `$schema: &quot;test-data-fixed/1.0.0&quot;` and `kind: &quot;fixed&quot;` into the instance's declared `test-data-fixed` directory (`schemas/test-data.ts`). Recipe fields (`template`, `params`, `seed`) are refused by the strict schema.</bpmn:documentation>
+      <bpmn:documentation>Write the curated `records` and optional `citations` with `$schema: &quot;test-data-fixed/1.0.0&quot;` and `kind: &quot;fixed&quot;` into the instance's declared `test-data-fixed` directory (`schemas/sdlc/test-data.ts`). Recipe fields (`template`, `params`, `seed`) are refused by the strict schema.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
         <cat-harness.processes:bean op="note"/>
@@ -109,7 +109,7 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
     </bpmn:exclusiveGateway>
 
     <bpmn:callActivity id="Call_ContentTypeSpecialisation" name="Synthesise recipe via&#10;content-type specialisation&#10;[its own subprocess]">
-      <bpmn:documentation>BOUND BY THE CONTENT TYPE (`contentType` and `specialisation` in `schemas/test-data.ts`), so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess. `fhir-templating` (`FHIR_TEMPLATING_SPECIALISATION`) is one named specialisation for FHIR IG / DAK content (MeasureReport cohorts, questionnaire responses, bundle templates) — named as such, not the platform design; document folios (`markdown-fixture`), proof folios (`lean-counterexample`), and tabular cohorts (`tabular-cohort`) supply their own.</bpmn:documentation>
+      <bpmn:documentation>BOUND BY THE CONTENT TYPE (`contentType` and `specialisation` in `schemas/sdlc/test-data.ts`), so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess. `fhir-templating` (`FHIR_TEMPLATING_SPECIALISATION`) is one named specialisation for FHIR IG / DAK content (MeasureReport cohorts, questionnaire responses, bundle templates) — named as such, not the platform design; document folios (`markdown-fixture`), proof folios (`lean-counterexample`), and tabular cohorts (`tabular-cohort`) supply their own.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
         <cat-harness.processes:bean op="note"/>
@@ -135,7 +135,7 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
     </bpmn:exclusiveGateway>
 
     <bpmn:task id="Task_VerifySelfIdentifying" name="Verify file self-identifies&#10;by $schema and kind&#10;and bind into test plan">
-      <bpmn:documentation>Parse the file with `discriminateTestDataSet` (`schemas/test-data.ts`) to confirm a consumer can tell fixed from generated from the file content alone (never the path), verify `verifyGeneratedSetDigest` on generated sets, and bind the resulting `TestDataRef` (`toTestDataRef`) into the `test-plan/v1` case.</bpmn:documentation>
+      <bpmn:documentation>Parse the file with `discriminateTestDataSet` (`schemas/sdlc/test-data.ts`) to confirm a consumer can tell fixed from generated from the file content alone (never the path), verify `verifyGeneratedSetDigest` on generated sets, and bind the resulting `TestDataRef` (`toTestDataRef`) into the `test-plan/v1` case.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
         <cat-harness.processes:bean op="note"/>

@@ -24,7 +24,7 @@ export default toolFactory((t) =>
     satisfies: ["library-ingestion"],
     selection: {
       when:
-        "When the ingestion pipeline should stay in Python beside the PDF arms and `schemas/python-deps.ts` is the one place dependencies are declared. Same models as whisper.cpp, typically faster on CPU.",
+        "When the ingestion pipeline should stay in Python beside the PDF arms and `schemas/sdlc/python-deps.ts` is the one place dependencies are declared. Same models as whisper.cpp, typically faster on CPU.",
       limits:
         "Weights download on first use unless pre-fetched — a network dependency in a gate that must run offline. A heavier wheel set than anything in `requirements.txt` today.",
       cost: "Not installed. A pip install of several wheels plus the model; the CI install time must be re-measured before it is gated (`r279`).",

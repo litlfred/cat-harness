@@ -45,7 +45,7 @@
 import { z } from "zod";
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
-import { RunContextRefSchema, RunReleaseSchema } from "../run-context";
+import { RunContextRefSchema, RunReleaseSchema } from "../sdlc/run-context";
 
 /** The `$schema` tag every run record carries. */
 export const TOOL_RUN_SCHEMA_ID = "folio-tool-run/v1";

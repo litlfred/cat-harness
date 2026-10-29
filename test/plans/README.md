@@ -7,7 +7,7 @@ generated: "scripts/subgraph-readmes.ts of the bootstrap toolset (https://github
 
 # test-plans
 
-Test plans this instance certifies against — one `test-plan/v1` document per plan (`schemas/test-plan.ts`). [Content](https://litlfred.github.io/bootstrap/schemas/#content), not state: a process reads a plan and never writes it, and the run points at the plan, never the reverse. The runs and reports a plan's execution produces go to the `qa-reports` branch with the rest of `test/results/`, and the certification decision to `test/attestations/` (owner ruling D2). First declared for dogfood plan #1, `crdm-detect-evaluation` (bean `folio-assistant-ff09`). Declared WITH its files, per bean dh4f.
+Test plans this instance certifies against — one `test-plan/v1` document per plan (`schemas/sdlc/test-plan.ts`). [Content](https://litlfred.github.io/bootstrap/schemas/#content), not state: a process reads a plan and never writes it, and the run points at the plan, never the reverse. The runs and reports a plan's execution produces go to the `qa-reports` branch with the rest of `test/results/`, and the certification decision to `test/attestations/` (owner ruling D2). First declared for dogfood plan #1, `crdm-detect-evaluation` (bean `folio-assistant-ff09`). Declared WITH its files, per bean dh4f.
 
 Part of [C@T Harness](../../README.md) 0.1.0, declared as `test-plans`, holding `test-plan`.
 

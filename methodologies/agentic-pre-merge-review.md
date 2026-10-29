@@ -118,7 +118,7 @@ A hard blocking gate destroys counterfactual evidence:
 3. Once the code is altered, it is impossible to determine whether the original flag was a **true positive** (prevented a real defect) or a **false positive** (blocked valid, harmless code).
 
 A warn-only review solves this counterfactual dilemma:
-- A `blocking`-severity finding is recorded as **"would have blocked"** (`WouldHaveBlockedRecordSchema` in `schemas/merge-queue.ts`), bound to the PR's exact 40-character `headSha`.
+- A `blocking`-severity finding is recorded as **"would have blocked"** (`WouldHaveBlockedRecordSchema` in `schemas/sdlc/merge-queue.ts`), bound to the PR's exact 40-character `headSha`.
 - The PR is allowed to merge into `main` (provided deterministic compile checks and CI pass).
 - The resulting deployment is observed against real repository health and defects.
 - A human judge subsequently annotates the finding with a `humanVerdict`:
@@ -216,7 +216,7 @@ folio-assistant establishes a four-tier pre-merge verification pipeline:
 ## 7. Pre-Registered Promotion Criteria
 
 To prevent post-hoc rationalization (choosing thresholds to fit collected data),
-the promotion criteria are pre-registered in `schemas/merge-queue.ts`
+the promotion criteria are pre-registered in `schemas/sdlc/merge-queue.ts`
 (`AgenticPromotionCriteriaSchema`):
 
 | Parameter | Threshold | Rationale |

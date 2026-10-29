@@ -5,7 +5,7 @@
     "id": "merge-priority",
     "path": "processes/sdlc/decisions/merge-priority.dmn"
   },
-  "source_hash": "sha256:dc61cab0d1a975296772d33243bc8b4c271fab3d73c08d4a6c6dcbdb1e1dee2e",
+  "source_hash": "sha256:9397b4c8782ce3d2bd080de4772bbc927770056351d961a50aae4a83f6dfaa09",
   "criteria": {
     "decision-outcomes-used": {
       "result": "pass",

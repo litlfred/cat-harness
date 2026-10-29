@@ -5,7 +5,7 @@
     "id": "qa-reports",
     "path": "skills/sdlc/sdlc-core/qa-reports.md"
   },
-  "source_hash": "5e6f6eda622c",
+  "source_hash": "4d8241cc6acd",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

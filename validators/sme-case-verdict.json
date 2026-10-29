@@ -4,5 +4,5 @@
   "validates": {
     "kind": "sme-case-verdict"
   },
-  "schema": "schemas/test-data.ts#SmeCaseVerdictKind"
+  "schema": "schemas/sdlc/test-data.ts#SmeCaseVerdictKind"
 }

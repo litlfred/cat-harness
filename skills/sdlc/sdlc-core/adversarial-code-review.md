@@ -46,7 +46,7 @@ pull request's description and the `## Done when` of the bean it names.
 
 ## What you look for
 
-The RED FLAG categories are closed and live in `schemas/red-flag.ts`:
+The RED FLAG categories are closed and live in `schemas/sdlc/red-flag.ts`:
 `security`, `data-loss`, `correctness`, `false-green`, `provenance`,
 `scope-breach`, `irreversible-action` and `licence`. Read the definitions
 there rather than from a copy: the proposal's own table already differs from
