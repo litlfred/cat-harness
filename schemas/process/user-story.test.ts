@@ -3,7 +3,7 @@ import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { danglingStoryRoles, readUserStories, UserStorySchema } from "./user-story";
-import type { RoleGraph } from "./process/role-graph";
+import type { RoleGraph } from "./role-graph";
 
 function withStories(body: unknown): string {
   const dir = mkdtempSync(join(tmpdir(), "stories-"));

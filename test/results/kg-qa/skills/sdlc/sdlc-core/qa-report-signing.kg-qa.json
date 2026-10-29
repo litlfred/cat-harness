@@ -5,7 +5,7 @@
     "id": "qa-report-signing",
     "path": "skills/sdlc/sdlc-core/qa-report-signing.md"
   },
-  "source_hash": "9b5809a42f2b",
+  "source_hash": "1958bb531394",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

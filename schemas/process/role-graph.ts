@@ -803,7 +803,7 @@ export interface LoadedActor extends ActorDef {
    * `capabilities` is where the environment facts already live.
    *
    * Absent means UNDECLARED, which is not `internet`. See
-   * `schemas/actor-reach.ts` for how it composes with the deployment's.
+   * `schemas/process/actor-reach.ts` for how it composes with the deployment's.
    */
   reach?: NetworkReach;
   /**

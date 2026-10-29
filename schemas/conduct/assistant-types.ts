@@ -170,7 +170,7 @@ export interface ActorDefinition {
    *
    * Absent means UNDECLARED, which is not `internet`. Composition with the
    * deployment value — asymmetric, and `unknown` as a third state — is in
-   * `schemas/actor-reach.ts`.
+   * `schemas/process/actor-reach.ts`.
    */
   reach?: NetworkReach;
   /**

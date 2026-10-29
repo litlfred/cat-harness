@@ -24,7 +24,7 @@ Attesting a QA report: build the test run, work out what the performer can actua
 
 - Who: the `Validation and QA (mechanical + agents)` lane (role `validation-pipeline`).
 - Skill: `qa-report-signing`.
-- What: Compute the two facts the gateway reads: effectiveReach(deployment, actor) from schemas/actor-reach.ts, and whether the signing-api capability is configured.
+- What: Compute the two facts the gateway reads: effectiveReach(deployment, actor) from schemas/process/actor-reach.ts, and whether the signing-api capability is configured.
 - Record it: `workflow_complete` with `node: "Task_ResolveReach"`.
 - next: → `Gateway_SigningRoute` (Which signing route?)
 

@@ -21,7 +21,7 @@ import {
 import { ProvActivitySchema } from "./prov.ts";
 import { readActors, readPermissions } from "../process/role-graph.ts";
 import { actorsDir } from "../process/role-graph.ts";
-import { checkoutActors, checkoutPolicies } from "../scenario-overlay.ts";
+import { checkoutActors, checkoutPolicies } from "../process/scenario-overlay.ts";
 
 const INSTANCE = resolve(import.meta.dir, "..", "..");
 const REPO = resolve(INSTANCE, "..");
