@@ -9,7 +9,7 @@ import { Glob } from "bun";
 
 import { PdfStructureSchema } from "./pdf-structure.ts";
 
-const REPO = resolve(import.meta.dir, "../..");
+const REPO = resolve(import.meta.dir, "../../..");
 const COMMITTED = [...new Glob("*/library/*/structure.json").scanSync({ cwd: REPO, onlyFiles: true })]
   .filter((p) => !p.includes("node_modules") && !p.includes("ingest-staging"))
   .sort();

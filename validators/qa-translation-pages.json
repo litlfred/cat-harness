@@ -5,5 +5,5 @@
     "kind": "qa",
     "family": "folio-qa-translation-pages/v1"
   },
-  "schema": "schemas/site-indexes.ts#QaTranslationPagesSchema"
+  "schema": "schemas/ui/site-indexes.ts#QaTranslationPagesSchema"
 }

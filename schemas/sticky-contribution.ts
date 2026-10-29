@@ -85,7 +85,7 @@
  * and is re-exported there, so nothing that imported it has to change.
  */
 import { z } from "zod";
-import { ThemeRefSchema } from "./theme.js";
+import { ThemeRefSchema } from "./ui/theme.js";
 
 /** The tag a declared contribution set is identified by, for documentation. */
 export const STICKY_CONTRIBUTION_SCHEMA_TAG = "folio-sticky-contribution/v1";

@@ -5,5 +5,5 @@
     "kind": "docs",
     "family": "folio-schema-graph/v1"
   },
-  "schema": "schemas/site-indexes.ts#SchemaGraphIndexSchema"
+  "schema": "schemas/ui/site-indexes.ts#SchemaGraphIndexSchema"
 }

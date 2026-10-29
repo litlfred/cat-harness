@@ -68,7 +68,7 @@ So there is no table to consult here, and adding one would contradict a ruling.
 Choose from what the note is *doing*: the shipped themes are `grumpy-cat`,
 `engineer`, `library`, `analyst`, plus the palette-only `pale-sage`,
 `dusty-carolina`, their `-fade` variants, and the two high-contrast themes.
-`schemas/themes.ts` is the list; **state the reason for the one you picked**, in
+`schemas/ui/themes.ts` is the list; **state the reason for the one you picked**, in
 a clause.
 
 Two mechanical facts worth knowing before choosing:

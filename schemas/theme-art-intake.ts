@@ -50,7 +50,7 @@
  */
 import { z } from "zod";
 
-import { THEME_LAYOUTS, type ThemeLayout } from "./theme.js";
+import { THEME_LAYOUTS, type ThemeLayout } from "./ui/theme.js";
 
 /** The three crops a theme backdrop needs. Re-exported so intake states its own set. */
 export const THEME_ART_LAYOUTS = THEME_LAYOUTS;

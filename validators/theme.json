@@ -4,5 +4,5 @@
   "validates": {
     "kind": "themes"
   },
-  "schema": "schemas/theme.ts#ThemeSchema"
+  "schema": "schemas/ui/theme.ts#ThemeSchema"
 }
