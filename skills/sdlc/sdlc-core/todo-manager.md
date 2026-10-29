@@ -667,6 +667,10 @@ in two called processes, and nowhere else:
 | **CLOSE** | `Process_BeanClose` (`processes/sdlc/bean-close.bpmn`) | outcome: complete, or scrap with reasons, then **one shared archive step**; or record the blocker and hand back | `resolve`, `archive` (and a `note` for the blocker) |
 
 `Process_BeanLifecycle` is now OPEN → work → CLOSE, calling both.
+`Process_BeanDrain` (`processes/sdlc/bean-drain.bpmn`, bean `bssi`) is the
+same over a queue: build the queue grouped by owner, then for each bean OPEN →
+work → CLOSE, and refill when a drainer's list runs dry. A bean OPEN finds is
+someone else's is marked skip on the queue, not worked.
 
 **How a process uses them.** Call `Process_BeanOpen` where the bean becomes
 the process's own — usually its first step — and follow it with a gateway
