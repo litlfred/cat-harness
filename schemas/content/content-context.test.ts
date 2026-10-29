@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { atInstanceContext, documentContext, instanceContext, instanceDocumentContext, serialisedAtInstanceContext } from "./content-context.ts";
-import { CONTENT_CONTEXT_URL, ContentContextSchema, FOLIO_BASE, INSTANCE_CONTEXT_PATH, instanceContextUrl } from "./kg/jsonld.ts";
+import { CONTENT_CONTEXT_URL, ContentContextSchema, FOLIO_BASE, INSTANCE_CONTEXT_PATH, instanceContextUrl } from "../kg/jsonld.ts";
 
 const prefixes = new Map([
   ["folio-assistant-core", "https://example.org/core/ns#"],

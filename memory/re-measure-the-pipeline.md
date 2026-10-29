@@ -18,7 +18,7 @@ archived: true
 |---|---|
 | the pipeline's actual entrypoints | `ls pipeline/` |
 | the scripts that exist on this side | `bun run` with no args, or read `package.json` |
-| block kinds and their classification | read `schemas/block-kinds.ts` |
+| block kinds and their classification | read `schemas/content/block-kinds.ts` |
 | sidecar staleness | `bun run pipeline/qa-staleness.ts <path>` |
 
 > Relabelled from BASELINE to STABLE, 2026-09-19. `AGENTS.md` defines a

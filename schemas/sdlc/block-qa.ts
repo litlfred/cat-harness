@@ -20,10 +20,10 @@
  * @graphNode schema
  */
 
-import { CONTENT_ADAPTER_NODES, CONTENT_ADAPTERS, CONTENT_PROFILES } from "../block-kinds";
+import { CONTENT_ADAPTER_NODES, CONTENT_ADAPTERS, CONTENT_PROFILES } from "../content/block-kinds";
 
 import type { AttributionKind } from "../content/attribution";
-import type { ContentAdapter, ContentProfile } from "../block-kinds";
+import type { ContentAdapter, ContentProfile } from "../content/block-kinds";
 import type { ContributionRegistry } from "../content/contributions";
 import { QaScriptSidecar as QaScriptSidecarSchema } from "../block-qa-schema/js/index.ts";
 import { nodeKind } from "../kg/node-kind.ts";

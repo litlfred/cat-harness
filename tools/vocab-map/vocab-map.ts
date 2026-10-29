@@ -6,7 +6,7 @@
  * ruled 2026-10-02: option 1, mapping tables as KG data applied by ONE
  * in-process Tool. This is that Tool. The tables are the `vocab-mapping`
  * graph (`vocab-mappings/`); the function is `applyVocabMapping` in
- * `schemas/vocab-mapping.ts`, and its ConceptMap boundary is
+ * `schemas/content/vocab-mapping.ts`, and its ConceptMap boundary is
  * `schemas/vocab-mapping-fhir.ts`.
  *
  * Its own module for the reason `sessions.ts` gives: `mcp.ts` holds the tools
@@ -26,7 +26,7 @@ export default toolFactory((t) =>
       "Carry one source record into a target vocabulary by a declared `folio-vocab-mapping/v1` table: each source field becomes the predicate its row names, in the table's order, with a DERIVED target (such as `dcterms:title` rendering `skos:prefLabel`) copied from its authoritative one so the two cannot drift. A table is shaped like a FHIR ConceptMap: an existing ConceptMap, R4 or R5, is representable as one without loss (`fromConceptMap`), and a table can be produced as a ConceptMap (`toConceptMap`), which returns every loss rather than dropping anything silently. First consumer: `glossary-export`.",
     install: { none: true },
     invoke: {
-      inProcess: { module: "schemas/vocab-mapping.ts", register: "applyVocabMapping" },
+      inProcess: { module: "schemas/content/vocab-mapping.ts", register: "applyVocabMapping" },
     },
     io: {
       inputs: [

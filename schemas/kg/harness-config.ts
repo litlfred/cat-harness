@@ -42,7 +42,7 @@
  * | Resource | Resolved? | How |
  * |---|---|---|
  * | PO translations | ✅ | `translations/<locale>/`, fallback chain step 4 — the only path with a live consumer (`pipeline/po-resolve.ts`) |
- * | Kind headings | ✅ | `kindHeading` in `schemas/translation.ts`: English on each block-kind node, other locales in its owner's `translations/<lang>/block-kinds.po` |
+ * | Kind headings | ✅ | `kindHeading` in `schemas/content/translation.ts`: English on each block-kind node, other locales in its owner's `translations/<lang>/block-kinds.po` |
  * | Skills | ✅ | {@link resolveSkillDirs} reads each instance's DECLARATION, and `LOCAL_PACKAGES` in `src/tools/skill-fetch.ts` is built from it, so a dependency's packages are served. Two nearby call sites stay root-only on purpose — see its docs |
  * | Declared directories | ✅ | {@link declarationChain} + `resolveDirectories`, materialised by {@link materialiseDeclaredDirectories} |
  * | Block kinds | ✅ | {@link loadContributions} → `schemas/content/contributions.ts` |
@@ -366,7 +366,7 @@ export const HarnessConfigSchema = z.object({
    * ## A STRING, not the enum, and the partition gate is why
    *
    * `check:partition` refuses `schemas/kg/harness-config.ts` [agentic-harness]
-   * importing `schemas/block-kinds.ts` [folio-assist-core]: the harness may
+   * importing `schemas/content/block-kinds.ts` [folio-assist-core]: the harness may
    * not depend on the content vocabulary. That is not an obstacle to route
    * around — it is the same reason `contentType` and `adapter` directly
    * above are `z.string()` rather than enums of `CONTENT_PROFILES` and

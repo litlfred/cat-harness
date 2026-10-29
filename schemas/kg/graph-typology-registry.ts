@@ -702,7 +702,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // every instance; no module lists them.
   "block-kinds": {
     description:
-      "the block kinds a harness's content adapter owns, one `folio-block-kind/v1` node each (`schemas/kg/block-kind-node.ts`): the kind string, its adapter and narrowest profile, label prefix, RDF types, builder and English heading. `schemas/block-kinds.ts` discovers them across every instance's declared graph, so no module lists the kinds. Owner, 2026-10-04: *\"kinds need to be discoverable … not centrally managed\"*; document kinds live in the content core and the math kinds in the science layer (option 2 of 3). Bean `riit`, step 2; sod4 finding #1.",
+      "the block kinds a harness's content adapter owns, one `folio-block-kind/v1` node each (`schemas/kg/block-kind-node.ts`): the kind string, its adapter and narrowest profile, label prefix, RDF types, builder and English heading. `schemas/content/block-kinds.ts` discovers them across every instance's declared graph, so no module lists the kinds. Owner, 2026-10-04: *\"kinds need to be discoverable … not centrally managed\"*; document kinds live in the content core and the math kinds in the science layer (option 2 of 3). Bean `riit`, step 2; sod4 finding #1.",
     title: "Block kinds",
     renderable: false,
     holds: "content",
@@ -718,7 +718,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // CONTENT_ADAPTERS from the typed ones; no module lists the vocabularies.
   "content-adapters": {
     description:
-      "the block VOCABULARIES a harness owns, one `folio-content-adapter/v1` node each (`schemas/kg/content-adapter-node.ts`): the name every block-kind node's `adapter` names, the companion roles its blocks can have, whether cat-harness's code types it, and for an untyped one its vocabulary module. `schemas/block-kinds.ts` derives `CONTENT_ADAPTERS` from the typed nodes and `schemas/sdlc/block-qa.ts` derives `ADAPTER_COMPANION_ROLES`; an untyped vocabulary reaches a folio through its dependency tree. Owner, 2026-10-05, option 1 of 3: the vocabulary is a node and the server adapter CLASS is not, since the two do not line up (`document` has a class and no vocabulary, `dak` a vocabulary and no class). Bean `riit`, step 5.",
+      "the block VOCABULARIES a harness owns, one `folio-content-adapter/v1` node each (`schemas/kg/content-adapter-node.ts`): the name every block-kind node's `adapter` names, the companion roles its blocks can have, whether cat-harness's code types it, and for an untyped one its vocabulary module. `schemas/content/block-kinds.ts` derives `CONTENT_ADAPTERS` from the typed nodes and `schemas/sdlc/block-qa.ts` derives `ADAPTER_COMPANION_ROLES`; an untyped vocabulary reaches a folio through its dependency tree. Owner, 2026-10-05, option 1 of 3: the vocabulary is a node and the server adapter CLASS is not, since the two do not line up (`document` has a class and no vocabulary, `dak` a vocabulary and no class). Bean `riit`, step 5.",
     title: "Content adapters",
     renderable: false,
     holds: "content",
@@ -1256,7 +1256,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   },
   // Vocabulary mappings — one value carried into several target vocabularies,
   // declared as data rather than as a line in a generator
-  // (schemas/vocab-mapping.ts). Bean `k74z`, owner 2026-10-02: option 1 of
+  // (schemas/content/vocab-mapping.ts). Bean `k74z`, owner 2026-10-02: option 1 of
   // `docs/proposals/vocabulary-mappings-2026-10-02.md`. `content`, by the
   // `code-list` argument: which predicate a field becomes, and which of two
   // is authoritative, is a DECISION somebody makes. Generators read these
@@ -2866,7 +2866,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   },
   "translation-sources": {
     description:
-      "the gettext side of translation — `.pot` templates, `.po` catalogues and their `TranslationNode` manifests, one directory per target locale. The INPUT to injection; there is deliberately **no kind for the rendered output**. Read with the [`translation-manager`](../../library/library-core/translation-manager.md) skill; shape in `schemas/translation.ts`.",
+      "the gettext side of translation — `.pot` templates, `.po` catalogues and their `TranslationNode` manifests, one directory per target locale. The INPUT to injection; there is deliberately **no kind for the rendered output**. Read with the [`translation-manager`](../../library/library-core/translation-manager.md) skill; shape in `schemas/content/translation.ts`.",
     title: "Translation sources",
     perInstance: true,
     renderable: false,
@@ -2877,7 +2877,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "POT templates, PO catalogues and their `TranslationNode` manifests, one directory " +
       "per target locale. The INPUT to injection; the rendered output is ordinary content " +
       "that declares its own `lang`.",
-    schema: "schemas/translation.ts",
+    schema: "schemas/content/translation.ts",
     // `TranslationConfigSchema`, not `TranslationNodeSchema`: this graph's
     // directory holds the CONFIG that declares the sources, and a node is
     // reached through it. Naming the node schema would validate the wrong

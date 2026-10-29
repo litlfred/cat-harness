@@ -25,7 +25,7 @@
  *
  * **Collisions do not resolve by order.** A kind claimed by two contributors
  * throws, naming both. Last-writer-wins would make `adapterForKind` ambiguous
- * — the one property `schemas/block-kinds.ts` states it must keep — and would
+ * — the one property `schemas/content/block-kinds.ts` states it must keep — and would
  * make the ambiguity depend on the order dependencies happen to be listed in,
  * which is exactly the failure that is hardest to reproduce from a bug report.
  *
@@ -61,7 +61,7 @@ import {
   CONTENT_ADAPTERS,
   isBuiltInBuilder,
   type ContentAdapter,
-} from "../block-kinds";
+} from "./block-kinds";
 
 // ── What a dependency may contribute ────────────────────────────
 

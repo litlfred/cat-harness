@@ -650,7 +650,7 @@ export interface BlockBase {
    *
    * This is the *source* language, not a translation. Translations of this
    * block live in `translations/<locale>/` as `.po` files alongside their
-   * `.ts` manifests (TranslationNode). See `schemas/translation.ts` for
+   * `.ts` manifests (TranslationNode). See `schemas/content/translation.ts` for
    * the schema and `docs/guides/translation-support.md` for the architecture.
    */
   lang?: string;
@@ -1044,8 +1044,8 @@ export type Block =
  * runtime cycle through this file. Re-exported here because that is
  * where every existing consumer looks for them.
  */
-export { BLOCK_KINDS, BLOCK_KIND_ALT } from "./block-kinds.js";
-export type { BlockKind } from "./block-kinds.js";
+export { BLOCK_KINDS, BLOCK_KIND_ALT } from "./content/block-kinds.js";
+export type { BlockKind } from "./content/block-kinds.js";
 
 
 

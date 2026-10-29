@@ -1,4 +1,4 @@
-import type { TranslationNode } from "../../schemas/translation";
+import type { TranslationNode } from "../../schemas/content/translation";
 
 /**
  * French translation of the landing page (docs/index.md).

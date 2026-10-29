@@ -45,7 +45,7 @@
  * @graphNode schema
  */
 
-import type { ContentProfile } from "../block-kinds";
+import type { ContentProfile } from "../content/block-kinds";
 
 /** Where a profile's renderer lives and what it exports. */
 export interface RenderTargetDeclaration {

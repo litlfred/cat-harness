@@ -30,13 +30,13 @@ unambiguous*, the **eight** shared kinds, and the separating question
 subclass) — as a row of a decision procedure rather than as prose. The
 derived-complement fact in the detail below is still reachable: the
 surviving "re-measure, do not quote" entry carries
-`read schemas/block-kinds.ts; DOCUMENT_BLOCK_KINDS must stay derived`, and
+`read schemas/content/block-kinds.ts; DOCUMENT_BLOCK_KINDS must stay derived`, and
 `AGENTS.md` §"Content types" states it in full. Retained as a node;
 injected into no prompt.
 
 <!-- detail -->
 
 `PaperContentAdapter` extends `DocumentContentAdapter`; `MATH_BLOCK_KINDS` is
-written out in `schemas/block-kinds.ts` and `DOCUMENT_BLOCK_KINDS` is its
+written out in `schemas/content/block-kinds.ts` and `DOCUMENT_BLOCK_KINDS` is its
 **derived** complement, so a kind added to `BLOCK_KINDS` cannot go
 unclassified. Keep that derivation — do not hand-maintain both lists.

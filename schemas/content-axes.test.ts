@@ -18,7 +18,7 @@ import {
   CONTENT_INTERACTIVITY,
   CONTENT_PROFILES,
   type ContentInteractivity,
-} from "./block-kinds.js";
+} from "./content/block-kinds.js";
 import { ContentDirectorySchema, VISUALISER_KINDS } from "./kg/cat-harness.js";
 import { HarnessConfigSchema } from "./kg/harness-config.js";
 

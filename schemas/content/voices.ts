@@ -65,7 +65,7 @@ import { RepoFullNameSchema } from "../kg/repo-full-name.js";
 
 import { kgNodeLabelShape, type KgNodeLabels } from "../kg/kg-node";
 import { defaultGraphTypologies, directoryForGraph } from "../kg/cat-harness.js";
-import { BLOCK_KINDS } from "../block-kinds.js";
+import { BLOCK_KINDS } from "./block-kinds.js";
 import { ProcessElementIdSchema } from "../process/process-element-id.js";
 
 /** Which aspect of the prose (or of its presentation) a rule governs. */

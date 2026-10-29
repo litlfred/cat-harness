@@ -32,7 +32,7 @@ the content core, the math kinds in the science layer (owner,
 2026-10-04: *"kinds need to be discoverable … not centrally managed"*; bean
 riit). Adding a kind is adding a node to the harness that owns it; the
 `BLOCK_KINDS`, `MATH_BLOCK_KINDS` and `DOCUMENT_BLOCK_KINDS` values in
-`schemas/block-kinds.ts` are computed from the nodes.
+`schemas/content/block-kinds.ts` are computed from the nodes.
 
 ## Two axes, and conflating them is the costly mistake
 
