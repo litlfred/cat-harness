@@ -5,5 +5,5 @@
     "kind": "schemas",
     "family": "folio-source-descriptor/v1"
   },
-  "schema": "cat-harness:schemas/source-descriptor.ts#SourceDescriptorSchema"
+  "schema": "cat-harness:schemas/library/source-descriptor.ts#SourceDescriptorSchema"
 }

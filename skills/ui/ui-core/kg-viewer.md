@@ -100,7 +100,7 @@ skills point here.
   says so: absolute, instance-qualified, under the site root the docs are
   served at, and it dereferences to that file. A library entry's is
   `<site>/assets/library/jsonld/<instance>/<id>/manifest.jsonld`, minted by
-  ONE function (`schemas/library-iri.ts`) that both the `@id`'s writer and
+  ONE function (`schemas/library/library-iri.ts`) that both the `@id`'s writer and
   the file's publisher call, so the two cannot drift.
 - **The rendering has its own IRI** — the viewer page — and it **points to the
   asset**: `rel=alternate type=application/ld+json`, and if the page ever

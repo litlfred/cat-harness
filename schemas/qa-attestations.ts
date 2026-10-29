@@ -260,7 +260,7 @@ export const TranslationAttestationsSchema = QaAttestationsBaseSchema.extend({
  * `verifier: "unknown"`, and the schema refuses the combination either way: a
  * row cannot be both unattributed and marked attributed, and the store never
  * guesses an agent or a human for one. Reading and writing — with the legacy
- * fallback — is `schemas/bib-attestations.ts`; nothing else opens these files.
+ * fallback — is `schemas/library/bib-attestations.ts`; nothing else opens these files.
  */
 export const BIB_REVIEW_STATUSES = ["unreviewed", "source-in-repo", "issue-open", "photo-uploaded", "validated"] as const;
 

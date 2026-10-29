@@ -5,5 +5,5 @@
     "kind": "library",
     "family": "doco:Section"
   },
-  "schema": "schemas/library-nodes.ts#LibrarySectionSchema"
+  "schema": "schemas/library/library-nodes.ts#LibrarySectionSchema"
 }
