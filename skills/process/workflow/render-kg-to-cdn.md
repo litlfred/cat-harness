@@ -69,5 +69,5 @@ Not the verification of what a build produced — that is
 [`publish-verification`](../../sdlc/sdlc-core/publish-verification.md), and it runs
 *before* a caller hands its tree over. Not the decision to release —
 [`content-publish`](../../authoring/content-lifecycle/content-publish.md) and
-[`release-lifecycle`](release-lifecycle.md). This step renders, pushes, and says
+[`release-lifecycle`](../../sdlc/sdlc-core/release-lifecycle.md). This step renders, pushes, and says
 whether the push landed.

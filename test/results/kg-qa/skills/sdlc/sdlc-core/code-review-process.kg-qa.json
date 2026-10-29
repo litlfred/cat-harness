@@ -2,10 +2,10 @@
   "$schema": "kg-qa/v1",
   "subject": {
     "kind": "skill",
-    "id": "branch-freshness",
-    "path": "skills/process/workflow/branch-freshness.md"
+    "id": "code-review-process",
+    "path": "skills/sdlc/sdlc-core/code-review-process.md"
   },
-  "source_hash": "4c77f3f8db2f",
+  "source_hash": "1a5075549e0f",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",
