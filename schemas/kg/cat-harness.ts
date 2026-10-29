@@ -3662,6 +3662,16 @@ const catHarnessDeclarationShape = {
           outputs: z.array(z.string().min(1)).optional(),
           writer: z.string().min(1).optional(),
           afterMerge: z.boolean().optional(),
+          /**
+           * The COMMITTED files this task writes, as globs: bare, relative to
+           * the declaring instance, or `<instance>:<glob>` for a file in
+           * another instance (a writer in a tools layer writing into the
+           * content layer below it). `check:generated-writers` warns on every
+           * file a glob matches that carries no generated marker
+           * (litlfred/cat-harness#693, owner 2026-10-29). Unrelated to
+           * `outputs`, which says only whether a CHECK writes at all.
+           */
+          writes: z.array(z.string().min(1)).nonempty().optional(),
           because: z.string().min(1).optional(),
         })
         .strict()
