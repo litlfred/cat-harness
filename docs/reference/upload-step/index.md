@@ -1,6 +1,6 @@
 ---
 layout: default
-generated: cat-harness/scripts/gen-upload-step-docs.ts — do not hand-edit; edit the Tool nodes
+generated: cat-harness-tools/scripts/gen-upload-step-docs.ts — do not hand-edit; edit the Tool nodes
 title: The upload step
 nav_order: 44
 ---
