@@ -16,7 +16,7 @@ import {
   processMayWrite,
 } from "./cat-harness";
 import { resolveKindValidator } from "./kind-validator";
-import { readRoleGraph } from "./role-graph";
+import { readRoleGraph } from "./process/role-graph";
 import {
   FHIR_TEMPLATING_SPECIALISATION,
   FIXED_TEST_DATA_SET_SCHEMA_ID,

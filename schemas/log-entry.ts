@@ -39,7 +39,7 @@ import { join } from "node:path";
 import { z } from "zod";
 
 import { BeanIdSchema } from "./tools/tool-types.ts";
-import { ProcessElementIdSchema } from "./process-element-id.ts";
+import { ProcessElementIdSchema } from "./process/process-element-id.ts";
 import { fshGutsDirectories } from "./fsh-guts.ts";
 
 /** The `$schema` tag every log entry carries, per the declare-yourself rule. */

@@ -471,7 +471,7 @@ tool's labels); and nothing sat between the agent and the question tool.
 |---|---|---|
 | `.claude/skills/interaction-modality/` | makes this skill **offerable by name**, which it was not — an agent looking for the rule found only the summary | triggering is probabilistic; it helps an agent already thinking about asking well |
 | `PreToolUse` on `AskUserQuestion` → `scripts/ask-well.sh` | prints the six parts at the one moment the rule certainly applies, on every agent and every session | it sees the tool call, not the prose written before it, so it REMINDS and never blocks — a gate that cannot tell must not refuse |
-| `schemas/decision-request.ts` | makes the comparison **unomittable**: no optionals, so a decision with two options and one comparison does not parse, and `renderDecision` emits the prose table and the selection from ONE object so they cannot drift | it cannot tell a good `con` from a lazy one, and does not try — it checks that the question was asked, never that the answer is honest |
+| `schemas/process/decision-request.ts` | makes the comparison **unomittable**: no optionals, so a decision with two options and one comparison does not parse, and `renderDecision` emits the prose table and the selection from ONE object so they cannot drift | it cannot tell a good `con` from a lazy one, and does not try — it checks that the question was asked, never that the answer is honest |
 
 | `Stop` → `scripts/decisions-named-not-asked.ts` | reads the turn that just ENDED and names the paragraph that handed decisions over bare — the one path the three above cannot see | it reads prose, so it is a heuristic; it reminds and never blocks, and a paragraph that happens to carry a comparison suppresses it |
 

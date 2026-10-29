@@ -213,7 +213,7 @@ export interface Overrule {
 export interface Decision {
   id: string;
   outcome: DecisionOutcome;
-  /** Role id from `schemas/role-graph.ts` — the lane this was decided in. */
+  /** Role id from `schemas/process/role-graph.ts` — the lane this was decided in. */
   role: string;
   by: ReviewerRef;
   /** Every finding weighed, overruled or not. {@link Finding.id}s. */

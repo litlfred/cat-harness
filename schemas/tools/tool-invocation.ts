@@ -5,7 +5,7 @@
  *
  * `schemas/qa-review.ts` already models "an act, by someone with the standing
  * to make it, with a rationale that cites its evidence" — `Decision`,
- * `AuditNote`, `ReviewerRef` — and `schemas/role-graph.ts` already models who
+ * `AuditNote`, `ReviewerRef` — and `schemas/process/role-graph.ts` already models who
  * may act: skills belong to the **lane** (what the performer must know),
  * permissions travel with the **actor** (what the participant may do).
  *
@@ -39,7 +39,7 @@
  */
 import { z } from "zod";
 import { SkillNameSchema } from "./tool-types.js";
-import { ProcessElementIdSchema } from "../process-element-id.js";
+import { ProcessElementIdSchema } from "../process/process-element-id.js";
 
 /** Whether the run was allowed, and if not, why not. */
 export const InvocationOutcomeSchema = z.enum([

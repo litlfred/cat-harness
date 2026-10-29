@@ -54,7 +54,7 @@
 import { z } from "zod";
 
 import { LOG_CAPTURE, LogReferenceSchema } from "./log-entry.ts";
-import { ProcessElementIdSchema } from "./process-element-id.ts";
+import { ProcessElementIdSchema } from "./process/process-element-id.ts";
 
 /** The `$schema` every render-log entry carries. */
 export const RENDER_LOG_SCHEMA_ID = "folio-render-log/v1";
