@@ -118,7 +118,7 @@ never the repository's name.
 Since 2026-10-07 the root `index.config.json` says it as `site.landing` — an
 instance name or `"hub"`. A folio without an index keeps the 2026-10-02
 per-config `site.landing` flag as its fallback. `resolveLandingInstance` in
-`schemas/harness-config.ts` is the one reader of both, and
+`schemas/kg/harness-config.ts` is the one reader of both, and
 `check:landing-instance` is the gate. Read the table of cases there, not a copy
 of it here.
 
@@ -481,7 +481,7 @@ landing one, because the ruling names the panel rather than a page.
 - **`board` stays a legal value in `TILE_SURFACES`, and nothing mounts it.**
   Retiring the value would turn every existing declaration that names it
   invalid on the commit that removed it — the cost the "every field but `ref`
-  is optional" rule in `schemas/cat-harness.ts` exists to avoid. A
+  is optional" rule in `schemas/kg/cat-harness.ts` exists to avoid. A
   declaration saying `["board"]` alone is valid and renders no tile; the
   graph-tiles e2e asserts both halves.
 - **A ruling that reverses an earlier one is cited where the old one was.**

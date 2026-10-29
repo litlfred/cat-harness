@@ -5,7 +5,7 @@
     "id": "instance-kinds",
     "path": "skills/kg/kg-core/instance-kinds.md"
   },
-  "source_hash": "5c298d18b1d2",
+  "source_hash": "5130cded48c8",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

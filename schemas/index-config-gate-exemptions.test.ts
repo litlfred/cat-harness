@@ -5,7 +5,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { GateExemptionsSchema } from "./cat-harness";
+import { GateExemptionsSchema } from "./kg/cat-harness";
 import { INDEX_CONFIG_SCHEMA, IndexConfigSchema, formatIndexConfig } from "./index-config";
 
 const base = { $schema: INDEX_CONFIG_SCHEMA, instances: [{ name: "a" }] };

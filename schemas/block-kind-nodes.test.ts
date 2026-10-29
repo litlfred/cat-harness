@@ -16,7 +16,7 @@ import {
 import { ADAPTER_COMPANION_ROLES } from "./block-qa";
 import { KNOWN_LABEL_PREFIXES, LABEL_PREFIXES } from "./constraints";
 import { allTypedBlockKinds } from "./vocabulary-modules";
-import { BLOCK_KIND_TO_FOLIO_TYPE, KIND_PREFIXES, assertPrefixesInSync } from "./jsonld";
+import { BLOCK_KIND_TO_FOLIO_TYPE, KIND_PREFIXES, assertPrefixesInSync } from "./kg/jsonld";
 import { kindHeading } from "./translation";
 
 /**

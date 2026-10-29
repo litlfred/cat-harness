@@ -48,7 +48,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { BLANK_AVATAR } from "./blank-avatar";
-import { defaultGraphTypologies } from "./graph-typology-registry";
+import { defaultGraphTypologies } from "./kg/graph-typology-registry";
 import { findDeclarationFile, instanceRootsIn } from "./instance-roots";
 
 export { BLANK_AVATAR };
@@ -154,7 +154,7 @@ export const AVATARS: Readonly<Record<string, Avatar>> = {
 
   // THE ONE RENDERABLE KIND, and the one this whole platform exists for.
   //
-  // Registered by `schemas/folio-graph-typology.ts` ON IMPORT rather than sitting
+  // Registered by `schemas/kg/folio-graph-typology.ts` ON IMPORT rather than sitting
   // in `BASE_GRAPH_TYPOLOGIES`, which is why it was missing from the first draft
   // of this registry and why `check-avatar-coverage` now seeds from the base
   // table explicitly: a check that reads only the live registry reports a

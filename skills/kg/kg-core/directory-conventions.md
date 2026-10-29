@@ -7,7 +7,7 @@ consulted: true
 Every instance carries a **declaration** at its repository root — a `*.json` whose `name` field equals its own filename stem, found with `findDeclarationFile` and never composed from a path. It declares the directories the instance scans for content,
 and what **kind of graph** each one holds.
 
-Schema and resolution: `schemas/cat-harness.ts`.
+Schema and resolution: `schemas/kg/cat-harness.ts`.
 
 **It is the *harness's* schema, not folio-assistant's.** `agentic-harness` is
 the layer that defines Roles, Skills, Tools and these conventions, and every
@@ -73,7 +73,7 @@ not decided does not compile.
 > reporting a clean run. That is the `dh4f` defect delivered to somebody
 > else's repository.
 >
-> So `GRAPH_TYPOLOGY_ALIASES` in `schemas/cat-harness.ts` maps `kg` →
+> So `GRAPH_TYPOLOGY_ALIASES` in `schemas/kg/cat-harness.ts` maps `kg` →
 > `cat-harness`, resolved once at the registry boundary and nowhere else.
 > `resolveGraphTypology` reports WHICH spelling was used, so a caller can warn —
 > an alias that resolves silently is an alias nobody ever removes.
@@ -459,7 +459,7 @@ while the check found four.
 ## Inheritance
 
 An instance inherits its dependencies' directories, walked depth-first through
-`dependencies.folioAssistant` — the same order `schemas/harness-config.ts` uses
+`dependencies.folioAssistant` — the same order `schemas/kg/harness-config.ts` uses
 for skills and translations. Deepest dependency first, root last, so the root
 wins.
 
@@ -543,7 +543,7 @@ The rule now:
   instance the root does not reach (`unstaged`).
 - **A corpus-wide question is asked of the checkout, not the platform.**
   `checkoutDirectories` / `checkoutDirectoriesForGraph` in
-  `schemas/harness-config.ts` resolve every staged instance through its OWN
+  `schemas/kg/harness-config.ts` resolve every staged instance through its OWN
   chain and union the members — per instance, because one long chain would
   override sibling ids (the DAK layer's `processes` would replace the
   harness's). A tool shipped BY an instance asks
@@ -763,7 +763,7 @@ beside a directory concept. Bean `l4ay`; schema `schemas/subgraph-source.ts`.
   content is mounted from is that kind of fact. Matched on `id`, never `path`
   — §"Inheritance". The checkout root's config has the last word.
 - **One resolver, and every consumer asks it**: `declaredSubgraph(start, id)`
-  in `schemas/harness-config.ts`, through `resolveSubgraphSource`. Precedence:
+  in `schemas/kg/harness-config.ts`, through `resolveSubgraphSource`. Precedence:
   config override → `source` → a legacy `storage` → `directory`. The answer
   carries `declaredIn`, so an override is never silent. Never read `source`
   off the declaration yourself — that skips the override.
@@ -985,7 +985,7 @@ What is checked, by `check:derived-from`:
 - `--list` on `derive:publish` prints what will be built and why.
 
 What the readers do: a visualisation built at publish **resolves by its
-writer**, not by the disk (`visualisationResolves` in `schemas/cat-harness.ts`).
+writer**, not by the disk (`visualisationResolves` in `schemas/kg/cat-harness.ts`).
 Subgraph coverage, harness tiles and viewer declarations all ask that one
 function, so the generated `docs/_data/harness.json` is the same whether or not a checkout
 happens to hold a locally built copy. Asking the disk would emit one answer
@@ -1100,7 +1100,7 @@ directory makes every consumer scan nothing and report a clean run over it.
 
 A `ContentDirectory` may declare where its contents are KEPT when that is not
 the checkout (bean `16ei`, arc `3fva`, and proposal `state-branch-2026-10-02`;
-schema `DirectoryStorageSchema` in `schemas/cat-harness.ts`, or its modern
+schema `DirectoryStorageSchema` in `schemas/kg/cat-harness.ts`, or its modern
 `source: { kind: "branch", ... }` spelling in `schemas/subgraph-source.ts`):
 
 ```jsonc
@@ -1287,7 +1287,7 @@ out asserts that the instance already sits at its own repository's root.
 
 **Never keep an `owner/repo` table by hand.**
 `instanceRepositories(checkoutRoot, folioRoot?)` in
-`schemas/instance-repositories.ts` derives the `owner/repo ↔ name ↔ root`
+`schemas/kg/instance-repositories.ts` derives the `owner/repo ↔ name ↔ root`
 map. It reads the declarations in the checkout and in the folio's dependency
 overlay, and it throws when two instances claim one repository.
 `instance-repositories.test.ts` is the gate. It checks three things:
@@ -1457,7 +1457,7 @@ the skills its lane's activities need. `bun run cat kg:audit` checks every one o
 those joins and writes a sidecar per node. Model and resolution rules:
 [`role-model.md`](../../process/process-core/role-model.md); schema: `schemas/process/role-graph.ts`.
 
-**Not yet true end to end.** `resolveSkillDirs` (`schemas/harness-config.ts`)
+**Not yet true end to end.** `resolveSkillDirs` (`schemas/kg/harness-config.ts`)
 computes the cross-instance overlay and has **no caller**, so skill discovery is
 root-only in practice today and a dependency's skills are not reachable. Stated
 here rather than implied, because an agent that assumes inheritance works will
@@ -1466,7 +1466,7 @@ silently miss half its instructions.
 ## Layering — a harness module must not import the content vocabulary
 
 The declaration schema needs the platform's IRI namespace to mint `@type`
-values. That namespace used to live in `schemas/jsonld.ts`, which is
+values. That namespace used to live in `schemas/kg/jsonld.ts`, which is
 the content core's **content** vocabulary — block kinds, DoCO structural
 types, SPAR citation terms. Importing it would have made `agentic-harness`
 depend on the content model for its own type IRIs: a `harness → core` edge,
@@ -1504,9 +1504,9 @@ something reads the stale one.
 
 Both renderings already have their mechanism, so adding a schema introduces no
 new machinery: `scripts/generate-schemas.ts` walks a map of Zod schemas through
-`schemas/to-json-schema.ts` (Zod 4's native `z.toJSONSchema`; the older
+`schemas/kg/to-json-schema.ts` (Zod 4's native `z.toJSONSchema`; the older
 `zodToJsonSchema` silently emptied its output under Zod 4) into
-`schemas/generated/`, and `toJsonLd()` in `schemas/cat-harness.ts` is the
+`schemas/generated/`, and `toJsonLd()` in `schemas/kg/cat-harness.ts` is the
 worked example of the graph projection.
 
 ### Why Zod — the grounds, and what kind of ground each is
@@ -1569,9 +1569,9 @@ everything else in the `schemas` graph. Worked through in
 
 Decide which layer owns it first — **if it renders, it is not the harness's.**
 
-- A harness kind: one entry in `BASE_GRAPH_TYPOLOGIES` (`schemas/cat-harness.ts`).
+- A harness kind: one entry in `BASE_GRAPH_TYPOLOGIES` (`schemas/kg/cat-harness.ts`).
 - A kind belonging to a layer above: a module like
-  `schemas/folio-graph-typology.ts` that calls `registry.register(name, def)` at
+  `schemas/kg/folio-graph-typology.ts` that calls `registry.register(name, def)` at
   import, so the harness never learns the name until that layer is loaded.
 
 Either way the definition is `@type` IRI + `renderable` + `holds` + summary,

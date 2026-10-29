@@ -62,7 +62,7 @@ import { z } from "zod";
 
 import { ReleaseDigestSchema } from "./binary-release";
 import { CommitShaSchema, LockedInstanceSchema } from "./remote-mount";
-import { ActorKindSchema } from "./skill-package";
+import { ActorKindSchema } from "./kg/skill-package";
 import { HashBasisSchema, UNKNOWN_HASH } from "./test-run";
 import { ToolReleaseRefSchema } from "./tools/tool-release";
 

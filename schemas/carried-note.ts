@@ -60,7 +60,7 @@
 import { z } from "zod";
 
 import { AlsoAboutSchema, NoteAnchorSchema } from "./note-anchor.js";
-import { nodeKind } from "./node-kind.js";
+import { nodeKind } from "./kg/node-kind.js";
 import { ProcessElementIdSchema } from "./process/process-element-id.js";
 
 /**
@@ -296,7 +296,7 @@ export const CarriedNoteSchema = z.object({
 
 /**
  * The carried note as a node KIND, so a kind built on it (a todo) declares it
- * as a parent and is composed by the one walk (`schemas/node-kind.ts`, bean
+ * as a parent and is composed by the one walk (`schemas/kg/node-kind.ts`, bean
  * `a1lq`) instead of `.extend()`ing it.
  */
 export const CarriedNoteKind = nodeKind("carried-note", [], CarriedNoteSchema.shape);

@@ -37,7 +37,7 @@ example `bootstrap/processes`. The generator never invents a grouping. Owner,
    [`directory-conventions`](directory-conventions.md) §"Node schemas, one per
    `$schema` family");
 2. the kind's `validator`: a Zod schema, converted by
-   `schemas/to-json-schema.ts`;
+   `schemas/kg/to-json-schema.ts`;
 3. the kind's `schema` field: an external-schema record (BPMN's terms), or a
    module named with no fields.
 
@@ -71,7 +71,7 @@ empty shape. Close it by registering a node schema, not by editing the diagram.
   sub-graphs, then the same model drawn by Mermaid, and links both source
   files. The table carries each sub-graph's detangle numbers (nodes,
   cohesion, links in and out), read from `detangleResultsDir` in
-  `schemas/detangle-sidecar.ts`, the same function the detangler writes
+  `schemas/kg/detangle-sidecar.ts`, the same function the detangler writes
   through, or *not measured* where the detangler does not
   scan. So a change to `detangle/results/` makes these pages stale, and
   `uml:overview` must be re-run with `kg:detangle`. Every page carries `layout: default`: without it the local build

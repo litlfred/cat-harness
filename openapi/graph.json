@@ -21,7 +21,7 @@
       "id": "openapi-typologies",
       "path": "typologies/",
       "subgraph": true,
-      "description": "The graph typologies the openapi subgraph owns, one folio-graph-typology/v1 node per file (bean dmx1) — today one, `openapi`. Owner, 2026-10-04: no central registry for subgraph types; a harness declares its own in a typologies/ graph. Moved here from cat-harness/schemas/graph-typology-registry.ts, with each entry's code comments kept as its rationale.",
+      "description": "The graph typologies the openapi subgraph owns, one folio-graph-typology/v1 node per file (bean dmx1) — today one, `openapi`. Owner, 2026-10-04: no central registry for subgraph types; a harness declares its own in a typologies/ graph. Moved here from cat-harness/schemas/kg/graph-typology-registry.ts, with each entry's code comments kept as its rationale.",
       "graphTypologies": [
         "typologies"
       ]

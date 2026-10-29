@@ -61,7 +61,7 @@ import {
   type PublicationHost,
   type Topology,
   type ToolSurface,
-} from "./cat-harness.js";
+} from "./kg/cat-harness.js";
 
 /**
  * The six operating modes of `deployment-topologies.md` §2, verbatim.

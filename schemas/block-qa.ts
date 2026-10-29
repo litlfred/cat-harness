@@ -26,7 +26,7 @@ import type { AttributionKind } from "./attribution";
 import type { ContentAdapter, ContentProfile } from "./block-kinds";
 import type { ContributionRegistry } from "./contributions";
 import { QaScriptSidecar as QaScriptSidecarSchema } from "./block-qa-schema/js/index.ts";
-import { nodeKind } from "./node-kind.ts";
+import { nodeKind } from "./kg/node-kind.ts";
 import type { RunContextRef } from "./run-context";
 
 /**

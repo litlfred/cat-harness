@@ -33,7 +33,7 @@
  */
 import { z } from "zod";
 
-import { nodeKind } from "./node-kind.js";
+import { nodeKind } from "./kg/node-kind.js";
 
 /**
  * A node kind since issue #2195 (owner, 2026-10-06), so every harness's

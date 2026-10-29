@@ -26,7 +26,7 @@ import {
   type CertificationEntry,
   type KgAttestations,
 } from "./qa-attestations";
-import { defaultGraphTypologies } from "./cat-harness";
+import { defaultGraphTypologies } from "./kg/cat-harness";
 import { KgQaReportSchema } from "./kg-qa";
 
 const pair = {

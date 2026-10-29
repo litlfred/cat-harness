@@ -91,7 +91,7 @@ That sentence is the QA/QC after-check, stated by the standard.
 | `prov:hadRole` | the role the BPMN lane binds | same |
 | `prov:hadPlan` | the BPMN task, written `<process>#<task id>` (`PLAN_REF`) — a task is *"a set of actions or steps intended by one or more agents"* (entry (52)), so no term is minted | same |
 | `prov:used` | the content a step acted on | the tools layer's `src/workflow/prov-record.ts` |
-| `prov:Entity`, `prov:wasDerivedFrom` | the exported graph is an Entity derived from its source commit | `cat-harness-tools/scripts/kg-export.ts`; also `derivedFrom` in `cat-harness/schemas/jsonld.ts` |
+| `prov:Entity`, `prov:wasDerivedFrom` | the exported graph is an Entity derived from its source commit | `cat-harness-tools/scripts/kg-export.ts`; also `derivedFrom` in `cat-harness/schemas/kg/jsonld.ts` |
 | `prov:alternateOf` (expanded) | a preview graph → the canonical one: *"Two alternate entities present aspects of the same thing"* (§4.2, entry (20), `sections/sec-017-…md`) | `cat-harness-tools/scripts/kg-export.ts`, chosen over `owl:sameAs` because sameAs would merge their statements |
 
 **One extension, by the route the Abstract allows** ("specialized to create new
@@ -128,7 +128,7 @@ Recorded so the next reader does not mistake them for adoption decisions:
 - **`PROV_CONTEXT` names the wrong namespace.** `schemas/prov.ts` exports
   `"http://www.w3.org/ns/prov-o"`; the Abstract says `http://www.w3.org/ns/prov#`.
   Nothing imports it — the emitters use the correct `PROV_NS`
-  (`prov-qaqc.ts`, `schemas/jsonld.ts`, `kg-export.ts`) — so it is latent.
+  (`prov-qaqc.ts`, `schemas/kg/jsonld.ts`, `kg-export.ts`) — so it is latent.
 - **`prov:actedOnBehalfOf` is allowed on an Activity.** `ProvActivitySchema`
   accepts it there; §4.1 entry (12) gives it *"has domain prov:Agent / has
   range prov:Agent"* (`sections/sec-016-41-starting-point-terms.md`). Neither

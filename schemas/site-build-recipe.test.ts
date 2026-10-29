@@ -5,7 +5,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { HarnessSiteSchema } from "./harness-config.ts";
+import { HarnessSiteSchema } from "./kg/harness-config.ts";
 
 describe("site.build", () => {
   test("holds the three step lists and an optional home page", () => {

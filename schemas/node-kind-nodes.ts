@@ -38,11 +38,11 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 
-import { readDeclaration, resolveDirectories, type ResolvedDirectory } from "./cat-harness.js";
+import { readDeclaration, resolveDirectories, type ResolvedDirectory } from "./kg/cat-harness.js";
 import { parse as parseYaml } from "yaml";
 import { findDeclarationFile, instanceRootsIn } from "./instance-roots.js";
 import { kindAndSubclasses, type NameRule, type NodeKindEntry, type NodeKindIndex } from "./node-kind-index.js";
-import { acceptsSchemaTag } from "./node-kind.js";
+import { acceptsSchemaTag } from "./kg/node-kind.js";
 import { contentIsOffCheckout } from "./subgraph-source.js";
 
 export interface KindNode {

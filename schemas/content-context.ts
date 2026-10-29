@@ -17,10 +17,10 @@
  */
 import { dirname, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
-import { instanceRootsIn, readDeclaration } from "./cat-harness.js";
-import { checkoutRootFor, declarationChain } from "./harness-config.js";
-import { instanceNamespace } from "./instance-repositories.js";
-import { CONTENT_CONTEXT, CONTENT_CONTEXT_URL, FOLIO_BASE, instanceContextUrl } from "./jsonld.js";
+import { instanceRootsIn, readDeclaration } from "./kg/cat-harness.js";
+import { checkoutRootFor, declarationChain } from "./kg/harness-config.js";
+import { instanceNamespace } from "./kg/instance-repositories.js";
+import { CONTENT_CONTEXT, CONTENT_CONTEXT_URL, FOLIO_BASE, instanceContextUrl } from "./kg/jsonld.js";
 
 /**
  * Every instance's prefix — its stub, else its name — mapped to its namespace,

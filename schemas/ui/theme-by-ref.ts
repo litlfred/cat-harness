@@ -35,7 +35,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 
-import { declaresInstance, instanceDirectoriesForGraph, instanceRootsIn, readDeclaration } from "../cat-harness.js";
+import { declaresInstance, instanceDirectoriesForGraph, instanceRootsIn, readDeclaration } from "../kg/cat-harness.js";
 import type { ResolvedTheme, ThemeRef } from "./theme.js";
 import { themeById } from "./themes.js";
 

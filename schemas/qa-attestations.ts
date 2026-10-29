@@ -123,7 +123,7 @@ import {
   readDeclaration,
   resolveDirectories,
   type GraphTypologyRegistry,
-} from "./cat-harness";
+} from "./kg/cat-harness";
 
 /** The `$schema` tag every attestation file carries. */
 export const QA_ATTESTATIONS_SCHEMA = "qa-attestations/v1" as const;
@@ -592,7 +592,7 @@ export type QaAttestations = z.infer<typeof QaAttestationsSchema>;
 
 /**
  * Where an instance's attestations live — the same three answers as
- * `kgQaHomeFor` (`schemas/cat-harness.ts`), for the same reason:
+ * `kgQaHomeFor` (`schemas/kg/cat-harness.ts`), for the same reason:
  *
  * - **own** — the instance declares an `attestations` directory;
  * - **hosted** — it does not, and `hostRoot` does: `<host dir>/<stub>`;

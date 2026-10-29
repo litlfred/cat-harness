@@ -68,7 +68,7 @@ JSON parser reads records; a consumer with a JSON-LD processor reads a graph.
 1. **A published, generated context referenced by URL.** The spec's §3.1
    shows a document carrying `"@context": "https://…/person.jsonld"`
    (Example 5, `sec-022-31-the-context.md`). Every emitted node does the
-   same with `CONTENT_CONTEXT_URL` (`cat-harness/schemas/jsonld.ts`), and the
+   same with `CONTENT_CONTEXT_URL` (`cat-harness/schemas/kg/jsonld.ts`), and the
    context file `cat-harness/ns/content/v1.jsonld` is generated from the
    TypeScript value `CONTENT_CONTEXT` by
    `cat-harness-tools/scripts/gen-jsonld-context.ts` and gated by
@@ -171,7 +171,7 @@ expanding to the `@base` address.
 
 | concern | file |
 |---|---|
-| the context, minting `@id`s, block kind → `@type` | `cat-harness/schemas/jsonld.ts` |
+| the context, minting `@id`s, block kind → `@type` | `cat-harness/schemas/kg/jsonld.ts` |
 | the generated context file | `cat-harness-tools/scripts/gen-jsonld-context.ts` → `cat-harness/ns/content/v1.jsonld` |
 | block / library / site siblings | `cat-harness-tools/pipeline/gen-block-jsonld.ts`, `gen-library-jsonld.ts`, `gen-site-jsonld.ts` (`gen:jsonld:check`) |
 | whole-graph export, aliasing, no `@vocab` | `cat-harness-tools/scripts/kg-export.ts` |

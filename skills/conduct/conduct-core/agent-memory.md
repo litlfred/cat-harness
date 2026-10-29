@@ -185,7 +185,7 @@ this skill (2026-09-20, issue #592):
 | agent memory | durable facts an agent must have without asking | `context` | **injected** |
 
 **This table is DECLARED, not described.** All three columns are `ASSET_ROLES`
-in `schemas/cat-harness.ts` — one record of objects, per ROLE, never per asset.
+in `schemas/kg/cat-harness.ts` — one record of objects, per ROLE, never per asset.
 Per asset would be eleven instances each spelling out what `instance-readme` is
 for and the eleventh saying something slightly different; three parallel
 `Record<string, …>` maps would be the same failure one level up, where a role

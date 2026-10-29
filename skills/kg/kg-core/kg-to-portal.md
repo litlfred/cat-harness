@@ -27,7 +27,7 @@ Owner, 2026-09-20:
 
 **A CDN is not a publication host. It is a layer in front of one.**
 
-`PUBLICATION_HOSTS` in `schemas/cat-harness.ts` is `github-pages`,
+`PUBLICATION_HOSTS` in `schemas/kg/cat-harness.ts` is `github-pages`,
 `local-server`, `jurisdiction-endpoint`, `none` — axis 3 of
 [`deployment-topologies`](../../../docs/proposals/deployment-topologies.md).
 Every value answers *what serves the rendering*. A CDN answers a different

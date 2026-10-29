@@ -103,7 +103,7 @@ and takes the same confirmation. The inverse is Restore in fsh-guts (`l4zi`).
 
 ## The threshold is declared, inherited, and traceable
 
-`schemas/semantic-zoom.ts`: a **folio default** with a **per-kind override** —
+`schemas/kg/semantic-zoom.ts`: a **folio default** with a **per-kind override** —
 this repository's inheritance rule applied unchanged (*inherit everything,
 override anything; a variant states only what it CHANGES*). So:
 

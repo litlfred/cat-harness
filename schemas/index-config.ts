@@ -61,7 +61,7 @@ import { join, relative } from "node:path";
 
 import { z } from "zod";
 
-import { GateExemptionsSchema, readDeclaration } from "./cat-harness";
+import { GateExemptionsSchema, readDeclaration } from "./kg/cat-harness";
 import {
   CONFIG_SUFFIX,
   INDEX_CONFIG_FILENAME,

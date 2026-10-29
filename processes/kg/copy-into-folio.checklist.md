@@ -67,7 +67,7 @@ Taking an asset from an upstream knowledge graph into your own folio so you can 
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `kg-affordances`, `directory-conventions`.
-- What: Populate `source: { instance, path, ref }` (`AssetSourceSchema` in `schemas/kg-node.ts`) on the new `KgAsset` entry in the same change.
+- What: Populate `source: { instance, path, ref }` (`AssetSourceSchema` in `schemas/kg/kg-node.ts`) on the new `KgAsset` entry in the same change.
 - Record it: `workflow_complete` with `node: "Task_StampAssetSource"`.
 - next: → `Task_ValidateDeclaredAsset` (Validate declared asset and provenance (check:declared-assets))
 

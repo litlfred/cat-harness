@@ -74,7 +74,7 @@ under-declaration.
 `render-pipeline.ts` is in the **harness** layer. Resolving a graph typology means
 `readDeclaration`, which validates **every** kind in the declaration — and this
 repository declares a `folio` directory whose kind is registered by **core**,
-on the argument (written on `schemas/folio-graph-typology.ts`) that a layer which
+on the argument (written on `schemas/kg/folio-graph-typology.ts`) that a layer which
 cannot render must not own the renderable kind. So the harness layer cannot
 resolve *any* kind in-process without importing core, which `check:partition`
 rejects.

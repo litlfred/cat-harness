@@ -167,7 +167,7 @@ stated so nobody reads `@conformsTo w3c-odrl` as full conformance.**
 
 Schema and evaluator `schemas/odrl.ts` (tests `schemas/odrl.test.ts`);
 policies `policies/` (graph typology `policies`, validator registered in
-`schemas/graph-typology-registry.ts`); the action profile
+`schemas/kg/graph-typology-registry.ts`); the action profile
 `skills/permissions/permissions.json`; external-schema entry
 `external-schemas/w3c-odrl.json`; the design
 `docs/proposals/odrl-prov-actor-model.md`. How it is applied — actors,

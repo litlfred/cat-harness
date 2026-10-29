@@ -148,8 +148,8 @@ export function loadCodeLists(dirs: readonly string[]): Map<string, CodeList> {
 export async function codeListDirs(instanceRoot: string): Promise<string[]> {
   // Imported lazily: `harness-config` pulls in the whole declaration machinery,
   // which a caller holding a list already has no need of.
-  const { orderedDependencies } = await import("../harness-config.js");
-  const { ownDirectories } = await import("../cat-harness.js");
+  const { orderedDependencies } = await import("../kg/harness-config.js");
+  const { ownDirectories } = await import("../kg/cat-harness.js");
   const dirs: string[] = [];
   const add = (name: string, root: string, own: boolean) => {
     for (const d of ownDirectories({ name, root, own })) {

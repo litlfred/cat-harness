@@ -7,7 +7,7 @@ generated: "scripts/subgraph-readmes.ts of the bootstrap toolset (https://github
 
 # openapi-typologies
 
-The graph typologies the openapi subgraph owns, one folio-graph-typology/v1 node per file (bean dmx1) — today one, `openapi`. Owner, 2026-10-04: no central registry for subgraph types; a harness declares its own in a typologies/ graph. Moved here from cat-harness/schemas/graph-typology-registry.ts, with each entry's code comments kept as its rationale.
+The graph typologies the openapi subgraph owns, one folio-graph-typology/v1 node per file (bean dmx1) — today one, `openapi`. Owner, 2026-10-04: no central registry for subgraph types; a harness declares its own in a typologies/ graph. Moved here from cat-harness/schemas/kg/graph-typology-registry.ts, with each entry's code comments kept as its rationale.
 
 Part of [C@T Harness](../../README.md) 0.1.0, declared as `openapi-typologies`, holding `typologies`.
 

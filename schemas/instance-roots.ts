@@ -326,7 +326,7 @@ function insideGitCheckout(dir: string): boolean {
 /**
  * The retired global config name. Not an instance called `harness`; kept so
  * `check:instance-config` can FIND it, never so a reader can fall back to it.
- * Defined here (a leaf) and re-exported by `schemas/harness-config.ts`, which
+ * Defined here (a leaf) and re-exported by `schemas/kg/harness-config.ts`, which
  * is where every existing importer looks for it.
  */
 export const LEGACY_HARNESS_CONFIG = "harness.config.json";
@@ -362,7 +362,7 @@ export const RESERVED_INSTANCE_NAMES: readonly string[] = ["index"];
  *
  * This is the FILE set, which is not always the INSTANTIATED set: when the
  * root carries `index.config.json` that file is authoritative, and
- * `instantiatedHarnessNames` in `schemas/harness-config.ts` is the answer.
+ * `instantiatedHarnessNames` in `schemas/kg/harness-config.ts` is the answer.
  */
 export function rootConfigStems(root: string): string[] {
   let entries: string[];

@@ -43,7 +43,7 @@
 
 import { canReachOut, type EffectiveReach } from "./actor-reach.js";
 import { placementReach, type DeploymentDescription, type Placement } from "./deployment-description.js";
-import type { ActorKind } from "./skill-package.js";
+import type { ActorKind } from "./kg/skill-package.js";
 
 /** The actor facts the resolver reads. `roles` empty or absent is unconstrained. */
 export interface ResolverActor {

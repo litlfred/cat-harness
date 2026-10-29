@@ -29,7 +29,7 @@
  */
 import { z } from "zod";
 
-import { ContentContextSchema } from "../jsonld";
+import { ContentContextSchema } from "../kg/jsonld";
 
 export const ARCHIVE_ENTRY_KINDS = ["file", "directory", "symlink", "special"] as const;
 export type ArchiveEntryKind = (typeof ARCHIVE_ENTRY_KINDS)[number];

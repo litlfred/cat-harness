@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mount-subgraph\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.222Z\n"
+"POT-Creation-Date: 2026-10-29T08:39:28.727Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -71,7 +71,7 @@ msgstr ""
 
 #: processes/kg/mount-subgraph.bpmn:29
 #. Diagram element documentation
-msgid "Making a declared subgraph's content available at its declared path, whatever its content source. You are in this process whenever a step is about to read or write the contents of a declared subgraph — beans, todos, fsh-guts, or any directory a declaration names. The source is resolved once, by `declaredSubgraph` (`schemas/harness-config.ts`) through `resolveSubgraphSource` (`schemas/subgraph-source.ts`): the instance config's `subgraphSources` override by id, then the entry's `source`, then a legacy `storage`, then the `directory` default. The gateway is on the source KIND, and its flows are the only places the kinds differ. A `directory` subgraph is already where its path says, and writing it is an ordinary commit. A `branch` subgraph is mounted from the declared branch's tip into its path, and written back by splicing onto the tip without force. A `remote` subgraph is another repository's tree at a pinned commit, laid down by `Process_MountDependency` and read-only here. An `npm` subgraph is an npm package or tarball retrieved via `kg-retrieve-npm` or `npm`. A kind with no flow here is refused."
+msgid "Making a declared subgraph's content available at its declared path, whatever its content source. You are in this process whenever a step is about to read or write the contents of a declared subgraph — beans, todos, fsh-guts, or any directory a declaration names. The source is resolved once, by `declaredSubgraph` (`schemas/kg/harness-config.ts`) through `resolveSubgraphSource` (`schemas/subgraph-source.ts`): the instance config's `subgraphSources` override by id, then the entry's `source`, then a legacy `storage`, then the `directory` default. The gateway is on the source KIND, and its flows are the only places the kinds differ. A `directory` subgraph is already where its path says, and writing it is an ordinary commit. A `branch` subgraph is mounted from the declared branch's tip into its path, and written back by splicing onto the tip without force. A `remote` subgraph is another repository's tree at a pinned commit, laid down by `Process_MountDependency` and read-only here. An `npm` subgraph is an npm package or tarball retrieved via `kg-retrieve-npm` or `npm`. A kind with no flow here is refused."
 msgstr ""
 
 #: processes/kg/mount-subgraph.bpmn:40

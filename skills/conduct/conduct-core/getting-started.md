@@ -107,7 +107,7 @@ that sentence is what the five requests have in common.
 > is.** `describeRepository()` (`schemas/content-type.ts`) returns every
 > marker a repository carries — `folio`, `harness`, `dak`, `sushi` — with the
 > facts each states and any disagreement between them.
-> `describeRepositoryClosure()` (`schemas/harness-config.ts`) extends that
+> `describeRepositoryClosure()` (`schemas/kg/harness-config.ts`) extends that
 > through the dependency tree, attributing each membership to the instance
 > that carried it. Bean `79t3`.
 >

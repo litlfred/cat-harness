@@ -87,7 +87,7 @@ describe("this instance's own declaration", () => {
     // portrait crop, and the square crop is pushed right by the cat. Sharing
     // one set of numbers puts the words on the cat at two of the three.
     const { readDeclaration } = await import("./cat-harness");
-    const decl = readDeclaration(new URL("..", import.meta.url).pathname);
+    const decl = readDeclaration(new URL("../..", import.meta.url).pathname);
     const variants = imagesForRole(decl?.images, "landing");
     expect([...variants.keys()].sort()).toEqual(["card", "laptop", "mobile"]);
     const regions = [...variants.values()].map((v) => JSON.stringify(v.textRegion));
@@ -104,7 +104,7 @@ describe("this instance's own declaration", () => {
     // at them — a later re-crop of the image must not silently keep a region
     // measured against the old one.
     const { readDeclaration } = await import("./cat-harness");
-    const decl = readDeclaration(new URL("..", import.meta.url).pathname);
+    const decl = readDeclaration(new URL("../..", import.meta.url).pathname);
     const p = pickLayout(decl?.images, "landing", "laptop");
     expect(p.image?.src).toContain("landing-laptop");
     // Moved right and up when the lead line grew to two wrapped lines: the
@@ -129,7 +129,7 @@ describe("the description survives Jekyll's markdown renderer", () => {
 
   const description = async (): Promise<string> => {
     const { readDeclaration } = await import("./cat-harness");
-    return readDeclaration(new URL("..", import.meta.url).pathname)?.description ?? "";
+    return readDeclaration(new URL("../..", import.meta.url).pathname)?.description ?? "";
   };
 
   test("blocks are separated by BLANK lines, not single newlines", async () => {

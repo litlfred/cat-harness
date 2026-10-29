@@ -230,7 +230,7 @@ re-litigates.
 
 **It was also already in a schema — the wrong one of two.** `ACTOR_KINDS` in
 `schemas/process/role-graph.ts` has read all four values since the role graph was
-written, while `ActorTypeSchema` in `schemas/skill-package.ts` read
+written, while `ActorTypeSchema` in `schemas/kg/skill-package.ts` read
 `["person", "system"]` — and the registry validated the actor files against the
 narrower one, so the four-kind vocabulary could not be used by the files it
 existed for. There is now one declaration, in `skill-package.ts` (the zod-only
@@ -574,7 +574,7 @@ block sweep's `*.qa.json` and the script sweep's `*.script-qa.json`.
 ### Where the sidecars for another instance go — hosted, not written into it
 
 An instance that declares no `qa` directory does not receive sidecars inside
-its own tree: `kgQaHomeFor` (`schemas/cat-harness.ts`) puts them in the
+its own tree: `kgQaHomeFor` (`schemas/kg/cat-harness.ts`) puts them in the
 auditing harness's `qa` directory under the instance's stub —
 `cat-harness/test/results/bootstrap/` for bootstrap (a working copy, stored
 on the `qa-reports` branch with the rest of that `qa` directory; a JUDGEMENT

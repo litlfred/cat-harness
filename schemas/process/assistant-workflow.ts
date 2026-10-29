@@ -32,7 +32,7 @@
  */
 
 import type { Conformance } from "../assistant-types";
-import type { LifecycleStage } from "../skill-package.js";
+import type { LifecycleStage } from "../kg/skill-package.js";
 
 // ---------------------------------------------------------------------------
 // Lifecycle stages

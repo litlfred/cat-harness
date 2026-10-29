@@ -16,7 +16,7 @@
  * records that whole section silently not printing after the repository split,
  * for a different reason and with the same shape.
  *
- * The kind declared `schema: "schemas/harness-config.ts"` and that was wrong in
+ * The kind declared `schema: "schemas/kg/harness-config.ts"` and that was wrong in
  * a way worth naming: `harness-config.ts` holds the PATH to this file
  * (`interaction: z.string().default("cat-harness/memory/interaction.json")`), not its
  * shape. A pointer to where a fact is *not* written is worse than none, because
