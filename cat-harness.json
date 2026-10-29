@@ -970,6 +970,15 @@
         "keyedBy": "tip"
       },
       "description": "The adversarial review verdict on each pull request's head: `<head sha>.json`, one `merge-review/v1` file per head. Written by a reviewing session that is not the author (`adversarial-code-review`) and read by `check:adversarial-review`. REPOSITORY-scoped for the reason `beans/` and `issue-marks/` are."
+    },
+    {
+      "id": "cat-harness-libraries",
+      "path": "libraries/",
+      "title": "Software libraries",
+      "description": "The outside libraries this layer's code imports, one `software-library` node each: the version and sha512 `bun.lock` pins, the registry tarball, the SPDX licence read from the installed package, the range, whether it is a dev dependency, and the files that import it (`usedBy`). GENERATED, never hand-edited: `bun run cat libraries:derive` writes it and `libraries:check` fails on a stale node, an import no node names, or a shim no node names. The kind is this layer's own (`schemas/software-library.ts`, bean `jbvi`); each layer keeps its own nodes because it pins its own versions.",
+      "graphTypologies": [
+        "software-library"
+      ]
     }
   ],
   "_visualisers_comment": "THE VISUALISERS THIS HARNESS DECLARES, at its own level — owner, 2026-10-09: \"I still want the harness to be where specific visualizers/pages are declared for the harness at the level. And that they are all compliant of <base URL>/<harness>/<visualizer> (which is for the full KG) and <base URL>/<harness>/<visualizer>/<sub-graph>, <base URL>/<harness>/<visualizer>/<sub-graph>/<path to asset> rules … Need harness to declare visualizer is renderedBy\". Each entry is published at <base>/cat-harness/<id>/ — computed by visualiserRoute (schemas/visualiser-route.ts) and by nothing else — and drawn by the Tool `renderedBy` names. A page no longer says what it renders (the `renders:` front matter and <meta name=\"renders\"> of #1168 B7a-2b are retired); `check:visualiser-routes` refuses two declarations on one route and a page outside its Tool's declared routes. `alias` is bean t4xb's opt-in <base>/<alias>/: a redirect composed into the site, never where the page is drawn — kept here for every visualiser that was published at the short URL before 2026-10-09, so no existing link breaks. The state dashboard of `uploads` is `uploads-queue` because `uploads` is the uploads viewer's route: two visualisers of one directory need two ids, which is exactly the contention the owner named.",
