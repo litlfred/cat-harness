@@ -58,7 +58,7 @@ import { z } from "zod";
 import { KG_GRAPH_TYPOLOGY } from "../kg/cat-harness";
 import { portableSegment } from "../kg/portable-path";
 import { AdversarialReviewSchema, type AdversarialReview } from "./qa-review";
-import { RunContextRefSchema, type RunContextRef } from "../run-context";
+import { RunContextRefSchema, type RunContextRef } from "./run-context";
 
 /** Marker value carried by every sidecar written by `scripts/kg-audit.ts`. */
 export const KG_QA_SCHEMA = "kg-qa/v1";
@@ -1822,7 +1822,7 @@ export interface KgQaReport {
   // reviewer recorded, so they cannot be regenerated, and owner ruling D2 (a)
   // keeps them on main while this derived report moves to the `qa-reports`
   // branch. They are in the attestation store now —
-  // `schemas/qa-attestations.ts`, `test/attestations/kg-qa/`.
+  // `schemas/sdlc/qa-attestations.ts`, `test/attestations/kg-qa/`.
 }
 
 export const KgFindingSchema = z.object({
@@ -1847,9 +1847,9 @@ export const KgQaReportSchema = z.object({
   totals: z.record(z.enum(KG_RESULTS), z.number()),
   // Refused, not merely dropped: a sidecar carrying a judgement is the mixed
   // file D2 split, and parsing it as clean would hide that it was written by
-  // a writer that never learned about the store. See `schemas/qa-attestations.ts`.
-  pair_attestations: z.never({ error: "pair_attestations belong in the attestation store (schemas/qa-attestations.ts), not a kg-qa sidecar" }).optional(),
-  voice_reviews: z.never({ error: "voice_reviews belong in the attestation store (schemas/qa-attestations.ts), not a kg-qa sidecar" }).optional(),
+  // a writer that never learned about the store. See `schemas/sdlc/qa-attestations.ts`.
+  pair_attestations: z.never({ error: "pair_attestations belong in the attestation store (schemas/sdlc/qa-attestations.ts), not a kg-qa sidecar" }).optional(),
+  voice_reviews: z.never({ error: "voice_reviews belong in the attestation store (schemas/sdlc/qa-attestations.ts), not a kg-qa sidecar" }).optional(),
   adversarial_reviews: z.array(AdversarialReviewSchema).optional(),
   runContext: RunContextRefSchema.optional(),
 });

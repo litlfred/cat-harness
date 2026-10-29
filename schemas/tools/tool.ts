@@ -220,7 +220,7 @@ export const ToolInvokeSchema = z.object({
    * When the command is code of a layer ABOVE the one defining the Tool, it is
    * named by a script KEY, `bun run cat <key> [args…]`, and the implementing
    * layer declares the command for that key in its `package.json`
-   * `checkoutScripts` (`schemas/script-table.ts`). Owner, 2026-10-15 ("J2"):
+   * `checkoutScripts` (`schemas/sdlc/script-table.ts`). Owner, 2026-10-15 ("J2"):
    * the definition never names the layer above it, and the key is resolved
    * from that declaration when the command runs.
    */

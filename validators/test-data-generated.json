@@ -4,5 +4,5 @@
   "validates": {
     "kind": "test-data-generated"
   },
-  "schema": "schemas/test-data.ts#GeneratedTestDataSetKind"
+  "schema": "schemas/sdlc/test-data.ts#GeneratedTestDataSetKind"
 }

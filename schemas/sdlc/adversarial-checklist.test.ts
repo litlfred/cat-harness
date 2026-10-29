@@ -12,9 +12,9 @@ import { existsSync, readdirSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 import { ALL_ADVERSARIAL_CHECKLIST_ITEMS, AdversarialChecklistItemSchema } from "./adversarial-checklist";
-import { instanceDirectoriesForGraph } from "./kg/cat-harness";
+import { instanceDirectoriesForGraph } from "../kg/cat-harness";
 
-const ROOT = resolve(import.meta.dir, "..");
+const ROOT = resolve(import.meta.dir, "..", "..");
 
 /** Every `.md` under the declared skills directories, by basename. */
 function skillNames(): Set<string> {

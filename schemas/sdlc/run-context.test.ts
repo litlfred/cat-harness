@@ -9,14 +9,14 @@ import {
   unprovisioned,
   type RunContext,
 } from "./run-context";
-import { TOOL_RUN_SCHEMA_ID, ToolRunRecordSchema } from "./tools/tool-run";
-import { TEST_RUN_SCHEMA_ID, TestRunSchema } from "./sdlc/test-run";
+import { TOOL_RUN_SCHEMA_ID, ToolRunRecordSchema } from "../tools/tool-run";
+import { TEST_RUN_SCHEMA_ID, TestRunSchema } from "./test-run";
 import { TEST_REPORT_SCHEMA_ID, TestReportSchema } from "./test-report";
-import { QA_REPORT_SCHEMA_TAG, QaReportSchema } from "./sdlc/qa-report";
-import { KG_QA_MANIFEST_SCHEMA, KgQaManifestSchema } from "./sdlc/kg-qa";
-import { HEALTH_REPORT_SCHEMA, HealthReportSchema } from "./sdlc/health-report";
-import { addressBook, provJsonldDocument } from "./kg/prov-jsonld";
-import type { ProvActivity } from "./content/prov";
+import { QA_REPORT_SCHEMA_TAG, QaReportSchema } from "./qa-report";
+import { KG_QA_MANIFEST_SCHEMA, KgQaManifestSchema } from "./kg-qa";
+import { HEALTH_REPORT_SCHEMA, HealthReportSchema } from "./health-report";
+import { addressBook, provJsonldDocument } from "../kg/prov-jsonld";
+import type { ProvActivity } from "../content/prov";
 import { resolve } from "node:path";
 
 const SHA = "a".repeat(64);
@@ -242,7 +242,7 @@ describe("the reference a report carries (C1: by sha256)", () => {
   });
 
   test("addressBook resolves tool-release refs (`<name>@<version>`) as `prov:Entity` IRIs for `prov:used` (Step 3)", () => {
-    const repo = resolve(import.meta.dir, "..", "..");
+    const repo = resolve(import.meta.dir, "..", "..", "..");
     const book = addressBook(repo);
     const plantuml = book.resolve("entity", "plantuml@1.2024.7");
     expect(plantuml).toEqual({ iri: "https://litlfred.github.io/cat-harness/v0/tool-releases/plantuml-1.2024.7" });

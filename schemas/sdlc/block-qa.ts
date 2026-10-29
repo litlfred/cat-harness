@@ -27,7 +27,7 @@ import type { ContentAdapter, ContentProfile } from "../content/block-kinds";
 import type { ContributionRegistry } from "../content/contributions";
 import { QaScriptSidecar as QaScriptSidecarSchema } from "../block-qa-schema/js/index.ts";
 import { nodeKind } from "../kg/node-kind.ts";
-import type { RunContextRef } from "../run-context";
+import type { RunContextRef } from "./run-context";
 
 /**
  * The kind of reviewer that produced this finding.

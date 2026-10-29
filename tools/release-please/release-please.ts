@@ -7,7 +7,7 @@ import { defineTool } from "../../schemas/tools/tool.js";
  * adopt: *"describe options as Tools fulfilling task but dont need to
  * materialize"*. So the three candidates are declared as Tool nodes —
  * substitutable siblings, each with when/limits/cost — and NONE is in
- * `schemas/python-deps.ts`, `requirements.txt` or CI. There is no audio in
+ * `schemas/sdlc/python-deps.ts`, `requirements.txt` or CI. There is no audio in
  * `uploads/` or `library/` to transcribe (measured 2026-09-20 and still
  * true); choosing one and installing it is `1r0p`'s first step when the
  * first recording arrives. `install.cli` says how, and is not run. */

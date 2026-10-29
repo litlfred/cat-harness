@@ -44,7 +44,7 @@
 import { join } from "node:path";
 
 import { z } from "zod";
-import { RunContextRefSchema } from "../run-context";
+import { RunContextRefSchema } from "./run-context";
 
 /** Marker value carried by every report this family writes. */
 export const HEALTH_REPORT_SCHEMA = "health-report/v1";

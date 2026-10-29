@@ -18,7 +18,7 @@ uses-methodology:
 `processes/sdlc/merge-train.bpmn` is the process. The ORDER is computed by
 `processes/sdlc/decisions/merge-priority.dmn`; the facts it reads are derived
 by `scripts/merge-queue.ts`; what the steward decided is recorded against
-`schemas/merge-queue.ts`. This page says what each piece is FOR. Bean `hfag`.
+`schemas/sdlc/merge-queue.ts`. This page says what each piece is FOR. Bean `hfag`.
 
 ## The rule everything else follows from
 
@@ -849,7 +849,7 @@ On a review, and at least once per working session:
    the table never placed it. Claiming the table did would be a fact the
    steward invented.
 3. **Triage each one into a status** (`QUEUE_STATUSES` in
-   `schemas/merge-queue.ts`), with the evidence in `reason`:
+   `schemas/sdlc/merge-queue.ts`), with the evidence in `reason`:
 
    | status | when |
    |---|---|
@@ -1091,7 +1091,7 @@ The decision to keep agentic code review warn-only is governed by empirical evid
 
 A blocking gate destroys the counterfactual: when a gate blocks, authors modify code, bypass checks, or abandon PRs. It is impossible to determine whether the flagged condition would have actually broken production or represented a false positive.
 
-By contrast, a warn-only gate records `blocking`-severity findings as **"would have blocked"** (`WouldHaveBlockedRecordSchema` in `schemas/merge-queue.ts`), pinned to the PR's `headSha`. The PR then merges to `main`. Subsequent monitoring observes whether any defect materialized, enabling humans to adjudicate findings:
+By contrast, a warn-only gate records `blocking`-severity findings as **"would have blocked"** (`WouldHaveBlockedRecordSchema` in `schemas/sdlc/merge-queue.ts`), pinned to the PR's `headSha`. The PR then merges to `main`. Subsequent monitoring observes whether any defect materialized, enabling humans to adjudicate findings:
 - `true_positive`: Finding correctly identified a genuine defect.
 - `false_positive`: Finding flagged benign, correct code.
 - `unknown`: Third state (inconclusive, unverified, or cannot be determined).

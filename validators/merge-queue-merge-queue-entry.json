@@ -5,5 +5,5 @@
     "kind": "merge-queue",
     "family": "folio-merge-queue-entry/v1"
   },
-  "schema": "schemas/merge-queue.ts#MergeQueueEntrySchema"
+  "schema": "schemas/sdlc/merge-queue.ts#MergeQueueEntrySchema"
 }

@@ -5,7 +5,7 @@
     "id": "activity-log",
     "path": "skills/sdlc/sdlc-core/activity-log.md"
   },
-  "source_hash": "8e51c340aba8",
+  "source_hash": "f7cf778a51b8",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

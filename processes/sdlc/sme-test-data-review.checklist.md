@@ -14,7 +14,7 @@ SME review of fixed test data for clinical or scientific decision support and in
 
 ### Decide — Subject kind: decision support or indicator definition? (`GW_SubjectKind`)
 
-- Selects the unit of review required by `SmeCaseVerdictKind` (`schemas/test-data.ts`): a worked `case` for `decision-support`, or a `cohort` plus `expectedValue` for `indicator-definition`.
+- Selects the unit of review required by `SmeCaseVerdictKind` (`schemas/sdlc/test-data.ts`): a worked `case` for `decision-support`, or a `cohort` plus `expectedValue` for `indicator-definition`.
 - Call `workflow_complete` with `node: "GW_SubjectKind"` and `outcome` set to the label that holds:
   - «decision-support» → `Task_PrepareWorkedCase` (Prepare worked case: input, decisionLogicRef and systemOutput)
   - «indicator-definition» → `Task_PrepareCohort` (Prepare cohort: inputs, indicatorRef, expected & computed value)
@@ -51,7 +51,7 @@ SME review of fixed test data for clinical or scientific decision support and in
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `test-data-sets`.
-- What: Write the `sme-case-verdict/1.0.0` node (`SmeCaseVerdictKind` in `schemas/test-data.ts`) recording `dataSetRef`, `subjectKind`, the worked `case` or `cohort`, `verdict`, `rationale`, the SME's attributable human identity (`reviewer: { kind: "human", provider, handle, role }`), and `reviewedAt` (ISO-
+- What: Write the `sme-case-verdict/1.0.0` node (`SmeCaseVerdictKind` in `schemas/sdlc/test-data.ts`) recording `dataSetRef`, `subjectKind`, the worked `case` or `cohort`, `verdict`, `rationale`, the SME's attributable human identity (`reviewer: { kind: "human", provider, handle, role }`), and `reviewedAt` (ISO-
 - Record it: `workflow_complete` with `node: "Task_RecordCaseVerdict"`.
 - next: → `GW_VerdictOutcome` (SME verdict outcome?)
 

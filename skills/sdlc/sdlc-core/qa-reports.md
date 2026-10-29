@@ -27,7 +27,7 @@ two on that line, by the owner's rulings of 2026-10-01:
 | graph typology | `qa` (and `health`) | `attestations` |
 | written to | `<instance>/test/results/**`, the **working copy** | `<instance>/test/attestations/<family>/<mirrored subject path>.attestations.json` |
 | record | the orphan **`qa-reports`** branch, `main/<sha>/` or `pr/<n>/<sha>/` | **`main`** (ruling D2 (a)) |
-| schema | the family's own | `qa-attestations/v1`, `schemas/qa-attestations.ts` |
+| schema | the family's own | `qa-attestations/v1`, `schemas/sdlc/qa-attestations.ts` |
 | on a merge conflict | regenerate (`qa:resolve-conflicts`) | a person reads both sides |
 
 **The derived files are still committed on `main` today.** Bean `5hox` removes

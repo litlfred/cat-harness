@@ -42,7 +42,7 @@ import {
 } from "@litlfred/bootstrap-tools/schemas/requirement.ts";
 import { NETWORK_REACHES } from "./cat-harness";
 import { SkillNameSchema } from "../tools/tool-types.js";
-import { SutKindSchema } from "../test-plan";
+import { SutKindSchema } from "../sdlc/test-plan";
 
 // ─── Enumerations ────────────────────────────────────────────────────────────
 

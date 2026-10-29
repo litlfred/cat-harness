@@ -127,7 +127,7 @@ and render order coincide only while nothing sorts above it.
 | drawn by | `site-chrome/assets/js/docs-ui.js` (`qaBuildPanel`) |
 | block verdicts | `content/**/*.qa.json` |
 | kg verdicts | `test/results/kg-qa/<subject-dir>/<stem>.kg-qa.json` — the tree MIRRORS the subject's path, because four basenames already collide across packages. Path from `kgQaSidecarPath` in `schemas/sdlc/kg-qa.ts`, never composed by hand. Auditor in `skills/kg-qa.manifest.json` |
-| judgements behind a verdict | `test/attestations/<family>/<mirrored subject path>.attestations.json` (`qa-attestations/v1`, the `attestations` graph): every agent, human and baseline-pair judgement, kept on `main` because regeneration cannot reproduce it (owner ruling D2 (a)). Schema `schemas/qa-attestations.ts` |
+| judgements behind a verdict | `test/attestations/<family>/<mirrored subject path>.attestations.json` (`qa-attestations/v1`, the `attestations` graph): every agent, human and baseline-pair judgement, kept on `main` because regeneration cannot reproduce it (owner ruling D2 (a)). Schema `schemas/sdlc/qa-attestations.ts` |
 
 The schema lives in `pipeline/` rather than `schemas/` because it is
 the pipeline's own output shape. Worth knowing when you go looking for it in

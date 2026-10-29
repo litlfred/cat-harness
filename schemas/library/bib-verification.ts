@@ -2,7 +2,7 @@
  * Bibliography verification schema — the source ledger.
  *
  * WHERE IT LIVES: the attestation store's `bib-verification` family, one
- * file per reference (`schemas/qa-attestations.ts`), read and written only
+ * file per reference (`schemas/sdlc/qa-attestations.ts`), read and written only
  * through `schemas/library/bib-attestations.ts`. Before a folio is migrated
  * (`cat-harness-tools/scripts/migrate-bib-attestations.ts`) it is the single
  * file `<folio>/bib-qa-verifications.json`, and the same reader falls back to

@@ -1,11 +1,6 @@
-#!/usr/bin/env bun
 /**
- * Agentic pre-merge review and would-have-blocked counterfactual schemas.
+ * Moved to `./sdlc/merge-review.ts` (bean `f8wp`, placement PR8).
  *
- * Re-exports the merge review, counterfactual record schemas, and promotion
- * criteria formalized for bean `folio-assistant-h1uq`.
- *
- * @module cat-harness/schemas/merge-review
- * @graphNode schema
+ * @graphNode none — a one-release re-export at the old path; import from `./sdlc/merge-review.js`
  */
-export * from "./merge-queue.ts";
+export * from "./sdlc/merge-review.js";

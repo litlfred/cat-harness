@@ -4753,7 +4753,7 @@ export function isPublishedSkill(name: string): boolean {
  * update.
  *
  * Matched on the module's BASENAME, since that is the node's `name` and what
- * a consumer reads. `schemas/log-entry.ts` stays published: it is named
+ * a consumer reads. `schemas/sdlc/log-entry.ts` stays published: it is named
  * after the log, not after the trashcan, and the rule is about naming the
  * trashcan rather than about anything that mentions it. By the same token a
  * schema whose subject is fsh-guts advertises it to every consumer of the

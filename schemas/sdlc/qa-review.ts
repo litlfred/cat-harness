@@ -498,6 +498,6 @@ export {
   type FindingGateEvaluation,
   type ReviewGateOptions,
   type ReviewGateEvaluation,
-} from "../red-flag";
+} from "./red-flag";
 
 

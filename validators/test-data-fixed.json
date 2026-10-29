@@ -4,5 +4,5 @@
   "validates": {
     "kind": "test-data-fixed"
   },
-  "schema": "schemas/test-data.ts#FixedTestDataSetKind"
+  "schema": "schemas/sdlc/test-data.ts#FixedTestDataSetKind"
 }

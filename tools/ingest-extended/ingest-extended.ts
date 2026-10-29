@@ -8,7 +8,7 @@ export default toolFactory((t) =>
     description:
       "Ingest a PDF into `library/` — embedded outline, page text, OCR for scans, and image extraction — using PyMuPDF, tesseract and pypdf with Pillow.",
     // The requirements file, NOT a pip line spelled out here. That line was
-    // a second spelling of `schemas/python-deps.ts` and would have drifted
+    // a second spelling of `schemas/sdlc/python-deps.ts` and would have drifted
     // from it — it already omitted `cryptography`, which the declaration's
     // own checker caught. `requirements.txt` is generated from the
     // declaration; the apt packages are not pip-installable and stay named.
@@ -30,7 +30,7 @@ export default toolFactory((t) =>
       limits:
         "It adds nothing for archives, spreadsheets or metadata — `ingest-stdlib` already does those, and does them where this cannot run. Its PDF rungs ARE testable in CI as of `68dt`, which installs the lean set; the table rung (`pdf-tables.py`, camelot) is the one part that still is not, and anything gated on THAT remains a path CI cannot exercise — the `5rfy` defect.",
       cost:
-        "Measured 2026-09-20: the lean set is 144 MB and CI installs it, so the PDF rungs ARE exercised there now. `camelot-py` for `pdf-tables.py` is the part CI still skips — 912 KB itself, but 323 MB with numpy, pandas and OpenCV, more than the whole lean set. The dependencies are not independent either: `pypdf` image extraction needs `Pillow`, and `cryptography` panics under pyo3 on IMPORT when `cffi` is missing. All of it is declared in `schemas/python-deps.ts`, so the cost is read rather than rediscovered.",
+        "Measured 2026-09-20: the lean set is 144 MB and CI installs it, so the PDF rungs ARE exercised there now. `camelot-py` for `pdf-tables.py` is the part CI still skips — 912 KB itself, but 323 MB with numpy, pandas and OpenCV, more than the whole lean set. The dependencies are not independent either: `pypdf` image extraction needs `Pillow`, and `cryptography` panics under pyo3 on IMPORT when `cffi` is missing. All of it is declared in `schemas/sdlc/python-deps.ts`, so the cost is read rather than rediscovered.",
     },
   }),
 );
