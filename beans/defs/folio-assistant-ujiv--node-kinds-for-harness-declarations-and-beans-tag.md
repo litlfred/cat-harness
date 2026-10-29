@@ -6,7 +6,7 @@ status: completed
 type: feature
 priority: normal
 created_at: 2026-10-06T06:21:38Z
-updated_at: 2026-10-16T10:10:00Z
+updated_at: 2026-10-29T12:00:00Z
 parent: folio-assistant-zzmr
 ---
 
@@ -73,3 +73,5 @@ Owner, 2026-10-10: "you own bean ujiv". The previous session no longer exists.
 _2026-10-16T06:30:00Z_ — Store reconciliation: status `completed` → `in-progress` (Owner ruling 2026-10-16, item 9: "based on semantic content"; the copies said folio-assistant: in-progress, cat-harness: completed). Evidence: reopened 2026-10-10 on measurement (no bean carried $schema, no beans:retag); cat-harness#89/#90 and cat-harness-tools#36 merged since. Session https://claude.ai/code/session_01Pc8vSeXCwp5Ckvmz56cMDs.
 
 _2026-10-16T10:10:00Z_ — Store sync (owner, 2026-10-16 10:05Z, "1 2"): front matter taken from the folio-assistant copy, which carries the later evidence-backed change; notes only the cat-harness copy had are kept above. Session https://claude.ai/code/session_01K9Xi9QSxCNYju8QNu7EuHg.
+
+_2026-10-29T12:00:00Z_ — Owner, 2026-10-29, on the bootstrap pair: "A. Don't tag bootstrap". This confirms the 2026-10-10 decision (cat-harness-tools#63). The draft PRs bootstrap#7 and bootstrap-tools#14 are closed unmerged. `declarations-retag.ts` already leaves the instances below the harness untagged, so no code change follows. Status stays `completed`; cat-harness#88 closed. Session https://claude.ai/code/session_01JfAupma139twp8D7kEeUYJ.
