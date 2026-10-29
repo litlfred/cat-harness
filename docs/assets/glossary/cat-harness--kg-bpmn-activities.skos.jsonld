@@ -8844,6 +8844,86 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_smetestdatareview.task_preparecohort",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Prepare cohort: inputs, indicatorRef, expected & computed value"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Assemble the `IndicatorCohortCase` (`id`, `summary`, `indicatorRef`, `populationSize`, `inputs`, `expectedValue`, `computedValue`, and optional `period`, `numerator`, `denominator`) from the fixed data set for SME review."
+        }
+      ],
+      "skos:notation": "Task_PrepareCohort",
+      "dcterms:source": "cat-harness/processes/sdlc/sme-test-data-review.bpmn#Task_PrepareCohort",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_smetestdatareview.task_prepareworkedcase",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Prepare worked case: input, decisionLogicRef and systemOutput"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Assemble the `DecisionSupportWorkedCase` (`id`, `summary`, `decisionLogicRef`, structured `input`, `systemOutput`, and optional `expectedGuidance`) from the fixed data set so the SME can judge clinical/scientific correctness without reading raw schema internals."
+        }
+      ],
+      "skos:notation": "Task_PrepareWorkedCase",
+      "dcterms:source": "cat-harness/processes/sdlc/sme-test-data-review.bpmn#Task_PrepareWorkedCase",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_smetestdatareview.task_recordcaseverdict",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Record sme-case-verdict/1.0.0 with SME identity, date, verdict and rationale"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Write the `sme-case-verdict/1.0.0` node (`SmeCaseVerdictKind` in `schemas/test-data.ts`) recording `dataSetRef`, `subjectKind`, the worked `case` or `cohort`, `verdict`, `rationale`, the SME's attributable human identity (`reviewer: { kind: \"human\", provider, handle, role }`), and `reviewedAt` (ISO-8601 date/timestamp)."
+        }
+      ],
+      "skos:notation": "Task_RecordCaseVerdict",
+      "dcterms:source": "cat-harness/processes/sdlc/sme-test-data-review.bpmn#Task_RecordCaseVerdict",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_smetestdatareview.task_smejudge",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Judge domain correctness of worked case or indicator cohort"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Performed by the human SME in `Lane_SME` (`clinical-sme`, `judgementOnly: true`). The SME inspects the worked case (for decision support) or the cohort and expected vs computed value (for an indicator definition) and renders a domain verdict (`pass`, `fail`, or `needs-revision`) with rationale. Deliberately carries no skill reference: no procedure yields the answer, which is the whole reason a person is in this lane."
+        }
+      ],
+      "skos:notation": "Task_SmeJudge",
+      "dcterms:source": "cat-harness/processes/sdlc/sme-test-data-review.bpmn#Task_SmeJudge",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_stalledagenttriage.a_collect",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -9856,6 +9936,166 @@
       ],
       "skos:notation": "A_ScanInternal",
       "dcterms:source": "cat-harness/processes/process/swot-analysis.bpmn#A_ScanInternal",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.call_beanclose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Close the bean [bean-close]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn; placed straight before the end so the engine's resolve sees nothing left but the archive step."
+        }
+      ],
+      "skos:notation": "Call_BeanClose",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Call_BeanClose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.call_beanopen",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Open the bean [bean-open]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn; the gateway after this reads which end it reached."
+        }
+      ],
+      "skos:notation": "Call_BeanOpen",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Call_BeanOpen",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.call_contenttypespecialisation",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Synthesise recipe via content-type specialisation [its own subprocess]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "BOUND BY THE CONTENT TYPE (`contentType` and `specialisation` in `schemas/test-data.ts`), so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess. `fhir-templating` (`FHIR_TEMPLATING_SPECIALISATION`) is one named specialisation for FHIR IG / DAK content (MeasureReport cohorts, questionnaire responses, bundle templates) — named as such, not the platform design; document folios (`markdown-fixture`), proof folios (`lean-counterexample`), and tabular cohorts (`tabular-cohort`) supply their own."
+        }
+      ],
+      "skos:notation": "Call_ContentTypeSpecialisation",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Call_ContentTypeSpecialisation",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.call_smereview",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "SME review of cases or cohorts [sme-test-data-review]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Calls `Process_SmeTestDataReview` (`processes/sdlc/sme-test-data-review.bpmn`) so a human SME in a `judgementOnly` lane reviews each worked case (`decision-support`) or cohort plus expected value (`indicator-definition`) and records an attributable `sme-case-verdict/1.0.0` node."
+        }
+      ],
+      "skos:notation": "Call_SmeReview",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Call_SmeReview",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.task_classifyset",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Classify data set: fixed (curated) or generated (recipe)"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Decide whether the test case requires a small, committed, cited fixed data set (`test-data-fixed/1.0.0`, usable as certification evidence once reviewed) or a deterministic generated recipe (`test-data-generated/1.0.0`, `template` + `params` + `seed`, never stored materialised)."
+        }
+      ],
+      "skos:notation": "Task_ClassifySet",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_ClassifySet",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.task_curatefixed",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Write the curated `records` and optional `citations` with `$schema: \"test-data-fixed/1.0.0\"` and `kind: \"fixed\"` into the instance's declared `test-data-fixed` directory (`schemas/test-data.ts`). Recipe fields (`template`, `params`, `seed`) are refused by the strict schema."
+        }
+      ],
+      "skos:notation": "Task_CurateFixed",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_CurateFixed",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.task_verifyselfidentifying",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Verify file self-identifies by $schema and kind and bind into test plan"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Parse the file with `discriminateTestDataSet` (`schemas/test-data.ts`) to confirm a consumer can tell fixed from generated from the file content alone (never the path), verify `verifyGeneratedSetDigest` on generated sets, and bind the resulting `TestDataRef` (`toTestDataRef`) into the `test-plan/v1` case."
+        }
+      ],
+      "skos:notation": "Task_VerifySelfIdentifying",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_VerifySelfIdentifying",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.task_writerecipe",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Record `contentType`, `specialisation`, `template`, `params`, `seed`, and the canonical `sha256` digest (`computeGeneratedSetDigest`) with `$schema: \"test-data-generated/1.0.0\"` and `kind: \"generated\"` in the instance's declared `test-data-generated` directory. Never store materialised records."
+        }
+      ],
+      "skos:notation": "Task_WriteRecipe",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_WriteRecipe",
       "skos:note": "candidate"
     },
     {

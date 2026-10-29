@@ -1,4 +1,4 @@
-folio-assistant
+cat-harness
 Copyright 2026 Carl Leitner
 
 This product includes software developed as part of the folio-assistant
@@ -25,15 +25,7 @@ Third-party components redistributed in this repository under their own terms:
   * @hpcc-js/wasm-graphviz 1.6.1 by HPCC Systems — Apache License 2.0, with
     Graphviz 12.1.2 compiled into its WebAssembly under the Eclipse Public
     License 1.0 (source: https://gitlab.com/graphviz/graphviz). Unmodified,
-    copied from the pinned devDependency by scripts/vendor-graphviz-wasm.ts:
+    copied from the pinned devDependency by cat-harness-tools'
+    scripts/vendor-graphviz-wasm.ts:
     site-chrome/assets/js/vendor/wasm-graphviz/index.js
     Licence and notice: site-chrome/assets/js/vendor/wasm-graphviz/LICENSE.txt
-
-  * claude-scientific-skills by K-Dense Inc. — MIT licence.
-    Synced, pinned and unmodified (issue #556), one package per skill:
-    folio-assistant-sci/skills/content/hypothesis-generation/
-    folio-assistant-sci/skills/content/scientific-critical-thinking/
-    folio-assistant-sci/skills/content/scientific-visualization/
-    Upstream: https://github.com/K-Dense-AI/claude-scientific-skills
-    at commit 49c6e97775eaa18ba791bebe23162a70ae601c18.
-    Full licence text: the LICENSE file in each package directory.

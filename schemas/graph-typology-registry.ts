@@ -233,6 +233,23 @@ export interface GraphTypologyDef {
    */
   renderable: boolean;
   /**
+   * Is a graph of this kind's markdown SHOWN ON a published page, though the
+   * kind is not renderable itself?
+   *
+   * An IG annex (the FHIR layer's `ig-annex`) is the case that asked: a `.md`
+   * annex is appended to its host page `input/pagecontent/<page>` as written,
+   * so `business-processes.html#…` in `annexes/` names the page the IG
+   * renders, and resolving it from `annexes/` reports a correct link as
+   * broken (owner 2026-10-26, option A, on an IG's annex PR:
+   * https://github.com/litlfred/smart-immunizations/pull/81). Neither
+   * `renderable` (it is no site of its own) nor `within` (a sub-graph of a
+   * kind, which the navbar folds) says this. `check:subgraphs` routes such a
+   * kind's unresolved links to `siteResolved`, as it does a renderable
+   * graph's, and the kind's owner judges them from the page that shows them
+   * (fhir-harness's `check:ig-annex-links`). Absent means no.
+   */
+  shownOnPublishedPages?: true;
+  /**
    * Does a graph of this kind record WORK — something somebody is partway
    * through, that an arriving agent could pick up?
    *
@@ -1638,6 +1655,64 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     schema: "schemas/test-report.ts",
     // declared-path-literal: this table IS the declaration, as for `health`.
   },
+  // Fixed test data sets (`test-data-fixed/1.0.0`, bean `vm6m`) — small, curated
+  // or hand-authored records committed to the repository, cited to a source or
+  // guideline where applicable, and reviewed by an SME when they exercise
+  // domain logic (`bean vljz`). Declared as its own graph typology separate
+  // from `test-data-generated` so fixed sets never share a declared directory
+  // with synthetic recipes, while every file carries `$schema: "test-data-fixed/1.0.0"`
+  // and `kind: "fixed"` so a consumer tells which it is reading from the file
+  // content, never from the directory path.
+  "test-data-fixed": {
+    description:
+      "fixed test data sets — one `test-data-fixed/1.0.0` document per curated set (`kind: \"fixed\"`, committed records, citations, and optional SME review sign-off). Separate graph typology from `test-data-generated` (bean `vm6m`) so fixed sets live in their own declared directory, and self-identifying from the file content (`$schema` and `kind`) rather than from the path. `content`: a test run reads a fixed set and never overwrites it, and once SME-reviewed it stands as certification evidence. Shape in `schemas/test-data.ts`; curated via `processes/sdlc/test-data-curation.bpmn`.",
+    title: "Fixed test data sets",
+    renderable: false,
+    holds: "content",
+    summary:
+      "Fixed test data sets — one `test-data-fixed/1.0.0` document per curated set (`kind: \"fixed\"`), " +
+      "living in its own declared directory separate from `test-data-generated` and self-identifying from " +
+      "the file content rather than the path (bean `vm6m`).",
+    schema: "schemas/test-data.ts",
+    // declared-path-literal: this table IS the declaration, as for `test-plan`.
+  },
+  // Generated test data set recipes (`test-data-generated/1.0.0`, bean `vm6m`) —
+  // `contentType`, `specialisation`, `template`, `params`, `seed`, and the
+  // canonical `sha256` digest of that recipe. Never stored materialised: the
+  // test run synthesises the records from the recipe at execution time via the
+  // content-type specialisation subprocess (`processes/sdlc/test-data-curation.bpmn`).
+  // FHIR templating (`specialisation: "fhir-templating"`) is one named
+  // specialisation, not the platform design.
+  "test-data-generated": {
+    description:
+      "generated test data set recipes — one `test-data-generated/1.0.0` document per recipe (`kind: \"generated\"`, `contentType`, `specialisation`, `template`, `params`, `seed`, and canonical `sha256`), never stored materialised. Separate graph typology from `test-data-fixed` (bean `vm6m`) so synthetic recipes live in their own declared directory, and self-identifying from the file content (`$schema` and `kind`) rather than from the path. FHIR templating (`specialisation: \"fhir-templating\"`) is one named content-type specialisation, not the design. `content`: a test run reads the recipe to synthesise inputs and records the digest on `folio-test-run/v1`. Shape in `schemas/test-data.ts`; curated via `processes/sdlc/test-data-curation.bpmn`.",
+    title: "Generated test data recipes",
+    renderable: false,
+    holds: "content",
+    summary:
+      "Generated test data recipes — one `test-data-generated/1.0.0` document per recipe (`kind: \"generated\"`, " +
+      "`template`, `params`, `seed`, `specialisation`, `sha256`), never stored materialised, living in a " +
+      "declared directory separate from `test-data-fixed` (bean `vm6m`).",
+    schema: "schemas/test-data.ts",
+    // declared-path-literal: this table IS the declaration, as for `test-plan`.
+  },
+  // SME case/cohort review verdicts (`sme-case-verdict/1.0.0`, bean `vljz`) —
+  // attributable human SME judgements on decision-support worked cases
+  // (`subjectKind: "decision-support"`) and indicator-definition cohorts
+  // (`subjectKind: "indicator-definition"`).
+  "sme-case-verdict": {
+    description:
+      "SME review case/verdict pairs for decision support (worked `case`) and indicator definitions (`cohort` plus `expectedValue`) — one `sme-case-verdict/1.0.0` document per reviewed unit, recording the attributable human SME identity (`reviewer`) and review date (`reviewedAt`) alongside `verdict` and `rationale` (bean `vljz`). `content`: authored by a person in the `judgementOnly` SME lane of `processes/sdlc/sme-test-data-review.bpmn` so a fixed test data set can stand as audited evidence. Shape in `schemas/test-data.ts`.",
+    title: "SME case/verdict pairs",
+    renderable: false,
+    holds: "content",
+    summary:
+      "SME review case/verdict pairs — one `sme-case-verdict/1.0.0` document per reviewed decision-support " +
+      "worked case or indicator-definition cohort, recording attributable human SME identity and review date " +
+      "(bean `vljz`).",
+    schema: "schemas/test-data.ts",
+    // declared-path-literal: this table IS the declaration, as for `test-plan`.
+  },
   // ONE kind for the whole work plan, not one per store. It replaced `workplan`
   // + `process-state` in #266; the rationale is in this map's doc comment above,
   // and the #263 version it supersedes is preserved there too. PR #266 changed
@@ -2308,7 +2383,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // NOT renderable: the site build does not read it.
   "software-library": {
     description:
-      "the outside libraries a layer's code imports (`libraries/`) — one `software-library/1.0.0` node per library, in the layer whose `package.json` declares it, carrying the outside-software core it shares with `tool-release` (name, the version `bun.lock` pins, the digest `bun.lock` records — sha512 — the registry tarball it came from, and the SPDX licence read from the installed package's own `package.json`) plus the `range` the layer asks for, whether it is a dev dependency, `usedBy` (the layer's files that import it) and `shim` (the `types/*.d.ts` that types it, when one exists). Option D of bean `jbvi` (owner, 2026-10-24): one shared core, two kinds. A library several layers share has one node per layer, because each layer pins its own version. `derived`: written by `libraries:derive` from the layer's `package.json`, `bun.lock` and installed packages, and gated by `libraries:check`, which fails on a stale node, an import no node names, and a shim no node names. Shapes in `schemas/software-library.ts` (a node kind whose parent is the `outside-software` mixin) and `schemas/outside-software.ts`.",
+      "the outside libraries a layer's code imports (`libraries/`) — one `software-library/1.0.0` node per library, in the layer whose `package.json` declares it, carrying the outside-software core it shares with `tool-release` (name, the version `bun.lock` pins, the digest `bun.lock` records — sha512 — the registry tarball it came from, and the SPDX licence read from the installed package's own `package.json`) plus the `range` the layer asks for, whether it is a dev dependency, `usedBy` (the layer's files that import it) and `shim` (the `types/*.d.ts` that types it, when one exists). A bundle the layer keeps rather than installs (`vendor/<name>/<version>/`) is a node too, `software-library/1.1.0` with `vendored: { path }` and no `range` or `dev`, its name, version, tarball and digest read from the bundle's manifest and its licence from the bundle's own files (owner, 2026-10-26: \"A. Record as vendored\"); every other node is still stamped 1.0.0, the oldest version with every field it uses. Option D of bean `jbvi` (owner, 2026-10-24): one shared core, two kinds. A library several layers share has one node per layer, because each layer pins its own version. `derived`: written by `libraries:derive` from the layer's `package.json`, `bun.lock` and installed packages, and gated by `libraries:check`, which fails on a stale node, an import no node names, and a shim no node names. Shapes in `schemas/software-library.ts` (a node kind whose parent is the `outside-software` mixin) and `schemas/outside-software.ts`.",
     title: "Software libraries",
     renderable: false,
     holds: "derived",
@@ -2317,11 +2392,15 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     // The validator is `validators/software-library.json` (bean riit: no
     // authored kind carries validator code). Every node is written by
     // `libraries:derive`, hence `generated`.
+    // Two families of one kind: 1.0.0 for a node of a `package.json`
+    // dependency, 1.1.0 for a vendored bundle (`librarySchemaTag`), each with
+    // its own validator node, both on `SoftwareLibraryKind`.
     nodeSchemas: {
       "software-library/1.0.0": { generated: true },
+      "software-library/1.1.0": { generated: true },
     },
     summary:
-      "Outside libraries a layer imports -- one generated `software-library/1.0.0` node per library per layer, " +
+      "Outside libraries a layer imports or vendors -- one generated `software-library` node per library per layer, " +
       "with the version and sha512 its `bun.lock` pins, its SPDX licence, its range, whether it is a dev " +
       "dependency, the files that import it and the shim that types it. Shares its core with `tool-release`.",
     // A cube on a hook: a package pulled in by an import. Tool-release's tone,

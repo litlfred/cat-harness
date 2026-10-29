@@ -474,11 +474,17 @@ the `ns#Term` exception and the migration of today's `….jsonld#…` IRIs are i
 
 ### The schema
 
-`harness-schema-export.ts` writes `<site>/<stub>.schema.json` for the host.
-That is the JSON Schema of the declaration itself, which every
+`harness-schema-export.ts` writes `<site>/<name>/<stub>.schema.json` for the
+host. That is the JSON Schema of the declaration itself, which every
 `<instance>.json` is validated against. It also writes `tool.schema.json`,
-`tool-types.schema.json` and each skill's I/O contract, each at the URL its
-`$id` names. `bootstrap`'s schemas are published as they sit, by
+`tool-types.schema.json`, `tool-types/<Name>.schema.json` and each skill's I/O
+contract (`skills/<skill>/<io>.schema.json`) in the same directory, each at the
+URL its `$id` names. They sit under the host's own directory, beside its
+document, like everything else it publishes (litlfred/cat-harness-tools#676,
+#603 decision 1b(i)). Each old site-root address holds a tombstone for one
+release, as a moved document's does (above): the old
+`$id`, `deprecated`, `isReplacedBy` the new one, and `allOf: [{ "$ref": <new> }]`,
+so it validates as the new document does. `bootstrap`'s schemas are published as they sit, by
 `publish-instance-files.ts`.
 
 **Every instance `instance-exports.ts` publishes also publishes
@@ -561,9 +567,9 @@ did render, then exits 1, which is how it treats a failed `kg-export`.
 Logging the failure and exiting 0 would publish a partial `zod/` that reads as
 complete.
 
-**The host is left out.** Its schema documents sit at the site root, not
-under a per-instance `<stub>/schema/`, and every existing host file must stay
-byte-identical, so it gets no `zod/`.
+**The host is left out.** Its schema documents sit directly in its own
+directory, `<site>/<name>/`, not in a per-instance `<name>/schema/`, so it
+gets no `zod/`.
 
 **The JSON-LD document drops `schemas` from its own `omitted` once it links
 the index** (bean `4ak5` follow-up, owner-approved 2026-10-05). Its module-level

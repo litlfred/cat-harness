@@ -26,7 +26,7 @@
  *
  * `overrides.<instance>.tools` names Tools by id, and the mount brings each
  * one RUNNABLE. The owner's rulings, 2026-10-24 (decision card,
- * cat-harness-tools#744):
+ * https://github.com/litlfred/cat-harness-tools/issues/744):
  *
  * 1. **A Tool brings its definition AND its implementation**, each with its
  *    import closure: the definition is `<tools dir>/<id>/<id>.ts` in the

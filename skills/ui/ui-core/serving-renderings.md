@@ -28,7 +28,7 @@ per-repository: after the split, an overlying instance depending on
 <base>/<name>/<stub>.jsonld      the knowledge graph        application/ld+json
 <base>/<name>/<stub>.json        the same bytes             application/json
 <base>/<name>/<kind>/<id>        each subject's page        text/html
-<base>/<stub>.schema.json        its declaration's schema   application/schema+json
+<base>/<name>/<stub>.schema.json its declaration's schema   application/schema+json
 <base>/<stub>/                   the viewer                 text/html
 ```
 

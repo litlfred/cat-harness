@@ -1,0 +1,26 @@
+{
+  "$schema": "folio-tool-release/v1",
+  "name": "fsh-sushi",
+  "version": "3.13.0",
+  "role": "tool",
+  "kind": "archive",
+  "digest": {
+    "algorithm": "sha256",
+    "digest": "2d7b3a194d90814f3c8c028372cf5a2f3a877d06b5fa316670296712352a96ef",
+    "verifiedAt": "2026-10-07"
+  },
+  "source": {
+    "type": "url",
+    "url": "https://registry.npmjs.org/fsh-sushi/-/fsh-sushi-3.13.0.tgz"
+  },
+  "licence": "MIT",
+  "licenceSource": "the package's `package/LICENSE.md` and `package/package.json` (`license: \"MIT\"`)",
+  "runtimes": [
+    { "release": "node@22.11.0", "inject": "PATH" }
+  ],
+  "entry": {
+    "template": "node {home}/dist/app.js",
+    "home": "package"
+  },
+  "note": "FHIR Shorthand (FSH) SUSHI compiler 3.13.0 published npm tarball, executed with its declared `node@22.11.0` runtime injected onto `PATH`."
+}

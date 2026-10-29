@@ -27,6 +27,66 @@
       },
       "drafted_at": "2026-10-03",
       "lang": "en"
+    },
+    {
+      "text": "Capture d'écran d'une fenêtre contextuelle de définition intitulée « Organization ». Résumé (Summary) : « A group of people who work together in an organized way for a shared purpose. » Description : « An Organization is a group of people who work together in an organized way for a shared purpose. » Métadonnées (Metadata) : « https://spdx.org/rdf/3.0.1/terms/Core/Organization » ; Instantiability « Concrete » ; SubclassOf « Agent ».",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "conversation://97ee5591-2752-4fa2-8e96-eeba7d1d3046"
+      },
+      "drafted_at": "2026-10-26",
+      "lang": "fr"
+    },
+    {
+      "text": "Captura de pantalla de una ventana emergente de definición titulada «Organization». Resumen (Summary): «A group of people who work together in an organized way for a shared purpose.». Descripción (Description): «An Organization is a group of people who work together in an organized way for a shared purpose.». Metadatos (Metadata): «https://spdx.org/rdf/3.0.1/terms/Core/Organization»; Instantiability «Concrete»; SubclassOf «Agent».",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "conversation://97ee5591-2752-4fa2-8e96-eeba7d1d3046"
+      },
+      "drafted_at": "2026-10-26",
+      "lang": "es"
+    },
+    {
+      "text": "لقطة شاشة لنافذة تعريف منبثقة بعنوان «Organization». الملخص (Summary): «A group of people who work together in an organized way for a shared purpose.». الوصف (Description): «An Organization is a group of people who work together in an organized way for a shared purpose.». البيانات الوصفية (Metadata): «https://spdx.org/rdf/3.0.1/terms/Core/Organization»؛ وقابلية الإنشاء (Instantiability) «Concrete»؛ والصنف الأب (SubclassOf) «Agent».",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "conversation://97ee5591-2752-4fa2-8e96-eeba7d1d3046"
+      },
+      "drafted_at": "2026-10-26",
+      "lang": "ar"
+    },
+    {
+      "text": "Снимок экрана всплывающего окна определения с заголовком «Organization». Краткое описание (Summary): «A group of people who work together in an organized way for a shared purpose.». Описание (Description): «An Organization is a group of people who work together in an organized way for a shared purpose.». Метаданные (Metadata): «https://spdx.org/rdf/3.0.1/terms/Core/Organization»; Instantiability «Concrete»; SubclassOf «Agent».",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "conversation://97ee5591-2752-4fa2-8e96-eeba7d1d3046"
+      },
+      "drafted_at": "2026-10-26",
+      "lang": "ru"
+    },
+    {
+      "text": "标题为“Organization”的定义弹出窗口截图。摘要（Summary）：“A group of people who work together in an organized way for a shared purpose.”。描述（Description）：“An Organization is a group of people who work together in an organized way for a shared purpose.”。元数据（Metadata）：“https://spdx.org/rdf/3.0.1/terms/Core/Organization”；Instantiability 为“Concrete”；SubclassOf 为“Agent”。",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "conversation://97ee5591-2752-4fa2-8e96-eeba7d1d3046"
+      },
+      "drafted_at": "2026-10-26",
+      "lang": "zh"
     }
   ],
   "derivedFrom": "library/strauch-carbno-2025-spdx-3-1-supply-chain/sections/sec-000",

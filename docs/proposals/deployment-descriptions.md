@@ -168,6 +168,9 @@ first is the deployment this project runs now, because it is real:
    instance already runs in at least two deployments (cloud sessions and a
    workstation). The alternatives were one `deployment` block in `<name>.json`,
    or both.
+   The folder sits in the declared `scenarios` graph, beside `actors/`, because
+   every placement names an actor there (`DEPLOYMENTS_DIRNAME` in
+   `schemas/deployment-description.ts`, bean `23a3`).
 2. **Jurisdiction now or later.** **Decided 2026-10-24 (owner, option A): now,
    as four optional fields** (§3.1), so the sovereign-cloud example can be
    written in full. The alternatives were to wait until a jurisdiction asks, or

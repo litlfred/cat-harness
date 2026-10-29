@@ -150,7 +150,7 @@ What that means in practice:
 |---|---|
 | the package | `<harness>-subgraph-index@0.0.0-pin.<sha>`: the index files at their published paths, and `subgraph-index.json` (`folio-subgraph-index/v1`) giving each file's sha256 and the repository, pin and harness |
 | where | assets of the GitHub release `subgraph-index-<sha>` in the instance's repository, with the tarball's `folio-binary-release/v1` record beside it. Every name is computed (`subgraphIndexPackage` in `schemas/subgraph-manifest.ts`) |
-| who publishes | the `subgraph-index-package` Tool, run on every push to `main` by the reusable workflow `layer-publish-subgraph-index.yml` (cat-harness-tools); a harness opts in with one `uses:` line |
+| who publishes | the `subgraph-index-package` Tool, run on every push to `main` by the reusable workflow `layer-publish-subgraph-index.yml` (the tools layer); a harness opts in with one `uses:` line |
 | what a mount checks | the pin's git tree first (a commit that does carry the file still works); otherwise the package: the tarball against its record (size, sha256), the manifest against the repository, pin and harness asked for, each file against its sha256, then the same schema and subgraph-IRI check a tree file gets |
 | the lock | a directory that came from the package records the tarball's URL and sha256 and the file's path in it (`package`), so `mount:lock` fetches the same bytes and refuses any others |
 
@@ -173,7 +173,8 @@ Tool whole, and each Tool is its own `tools/<id>/` subgraph. The last step is
 "overrides": { "cat-harness": { "tools": ["bean-query", "bpmn-checklist", "agent-memory"] } }
 ```
 
-Owner, 2026-10-24 (decision card on cat-harness-tools#744, all four as
+Owner, 2026-10-24 (decision card on
+[cat-harness-tools#744](https://github.com/litlfred/cat-harness-tools/issues/744), all four as
 recommended). Three of the rulings govern this step:
 
 1. **A Tool brings both halves.** Its **definition** is
@@ -213,14 +214,14 @@ not a declared directory: `tools/` is, and most definitions import its
 holds every Tool's definition (about 170 folders, all of which load from
 `tools` + `schemas`). The cost that matters falls on the implementation side:
 
-| Tools | cat-harness | cat-harness-tools | bootstrap-tools |
+| Tools | cat-harness | the tools layer | bootstrap-tools |
 |---|---|---|---|
 | `bean-query` | `schemas`, `tools` | `scripts`, `src` | whole |
 | `agent-memory` | `schemas`, `tools` | `scripts` | whole |
 
-Without `tools`, cat-harness-tools mounts every in-checkout directory it declares.
+Without `tools`, the tools layer mounts every in-checkout directory it declares.
 The end-to-end check is the `remote-mount` test "load tools metadata, choose
-three Tools, materialise them" in cat-harness-tools.
+three Tools, materialise them" in the tools layer.
 
 ## Why the default path is the home path
 
@@ -308,6 +309,19 @@ Every instance ends in exactly one state:
 Could-not-determine outranks missing, and missing outranks mounted. **A fetch
 that failed is never an empty layer.**
 
+### Re-pinning: from a checkout mounted from the lock
+
+A re-pin is `mount:remote --seed <name>=<owner/repo>@<sha>` (it writes the
+pin and its consent into `index.config.json`), then `mount:remote` (it lays
+the bytes down and rewrites the lock). Do it in a checkout whose mounts match
+the lock: a fresh one, or one replayed by `.github/mount-from-lock.sh`. A
+mount with local edits is left untouched by the next mount, at its old
+commit, while the lock's top-level pin moves; CI mounts from the instance
+entries, so it kept testing the old layer (folio-assistant#2682). `--seed`
+now refuses while a mount it moves has such edits, and `mount:check` reports
+an instance entry behind its pin as `missing`. After the re-pin, check that
+the moved instance's `sha` in `index.lock.json` is the new pin.
+
 ## A changed lock re-renders the agent surface
 
 **A mount is not done when the bytes are on disk.** A newly pinned layer can
@@ -353,7 +367,9 @@ things to know (roast `1ygp` L4.2):
   `overrides.<name>.trust`, for the gitlink's SHA.
 - **Who may consent.** Declare `mountApprovers` and a `consent.by` not on the
   list is refused. Without the list, mounts report `unverified-approver`: exit
-  0, but never shown as clean.
+  0, but never shown as clean. A checkout whose mounts `index.config.json`
+  lists declares the list there, as its top-level `mountApprovers`; declaring
+  it on the instance declaration as well is an error.
 - **A refused mount is not current.** Its old bytes stay on disk (an agent
   does not delete them). The lock records them under `unmounted` as
   `leftOnDisk`, and the check reports them as not mounted.

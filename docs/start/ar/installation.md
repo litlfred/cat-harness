@@ -63,8 +63,8 @@ bun install
 ```powershell
 git clone https://github.com/litlfred/folio-assistant.git
 cd folio-assistant
-.\cat-harness\scripts\bootstrap.ps1 -CheckOnly   # report only, installs nothing
-.\cat-harness\scripts\bootstrap.ps1              # do it
+.\cat-harness-tools\scripts\bootstrap.ps1 -CheckOnly   # report only, installs nothing
+.\cat-harness-tools\scripts\bootstrap.ps1              # do it
 ```
 
 وهو يثبت Bun ولا شيء غيره — وتبقى أدوات LaTeX وLean وJava وIG Publisher
@@ -73,16 +73,16 @@ cd folio-assistant
 البرامج النصية للمنصة مكتوبة بلغة bash. وعلى نظام Windows، تعمل هذه البرامج تحت **Git Bash**،
 الذي يقوم [Git for Windows](https://git-scm.com/download/win) بتثبيته، لذا فإن `git`
 هو المتطلب الإضافي الوحيد. وكل برنامج نصي يشغله المستخدم يدويًا أو يربطه في
-تكوين ما، يوجد ملف `.bat` بجانبه — مثل `cat-harness\scripts\install-beans.bat`،
-و`cat-harness\scripts\start-folio-assistant.bat`، و`cat-harness\scripts\git-hooks\install.bat`،
-و`cat-harness\scripts\session-start-coord-sweep.bat` وما إلى ذلك — حيث يعثر على Git Bash
+تكوين ما، يوجد ملف `.bat` بجانبه — مثل `cat-harness-tools\scripts\install-beans.bat`،
+و`cat-harness-tools\scripts\start-folio-assistant.bat`، و`cat-harness-tools\scripts\git-hooks\install.bat`،
+و`cat-harness-tools\scripts\session-start-coord-sweep.bat` وما إلى ذلك — حيث يعثر على Git Bash
 (ولا يستخدم أبدًا مشغّل WSL الموجود في `System32`) ويشغّل البرنامج النصي الشقيق `.sh` بنفس
 المعاملات. استخدم هذه الملفات من `cmd.exe` أو PowerShell أو Task Scheduler أو
 عنصر تكوين MCP:
 
 ```bat
-cat-harness\scripts\install-beans.bat
-cat-harness\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
+cat-harness-tools\scripts\install-beans.bat
+cat-harness-tools\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
 ```
 
 أي شيء يحتاجه ملف `.sh` — مثل `bun` و`curl` و`gh` و`elan` — يجب أن يكون موجودًا في
