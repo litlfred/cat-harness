@@ -5684,6 +5684,956 @@
       ]
     },
     {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-300",
+      "source": "sections/sec-300-typeofmodel.md",
+      "source_hash": "61d483cd9064d8575bf2bd07acaa3288541dd8ce65c13027e25619dc13013912",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.19 (`typeOfModel`), an `AI` `DataProperty` with range `xsd:string` on `/AI/AIPackage` recording the free-form type of the AI model(s) used in the software (such as supervised, unsupervised, reinforcement learning, or a combination), and introduces the Section 15.2.20 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-301",
+      "source": "sections/sec-301-usesensitivepersonalinformation.md",
+      "source_hash": "7f4a9aea6a673b357449d1afea443ef921f9d9655fc4f4ce38f80b44d1bc08c2",
+      "narrative": [
+        {
+          "text": "Defines Section 15.2.20 (`useSensitivePersonalInformation`), an `AI` `ObjectProperty` with range `/Core/PresenceType` on `/AI/AIPackage` indicating whether sensitive personal information (such as biometric data or addresses) is used during AI model training or inference, and introduces the Section 15.3 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-302",
+      "source": "sections/sec-302-vocabularies.md",
+      "source_hash": "38bff2c48beb11342b08e309300b4e147342f55d435dab54c01c46dabc23cd35",
+      "narrative": [
+        {
+          "text": "Section 15.3 heading (`Vocabularies`) for the AI profile vocabularies in the SPDX 3.0 specification, introducing subsection 15.3.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-303",
+      "source": "sections/sec-303-energyunittype.md",
+      "source_hash": "606aa3b08b36394fa87e43c6b5b9262ffad9280e3a4f40a2a754cc3b35369373",
+      "narrative": [
+        {
+          "text": "Defines Section 15.3.1 (`EnergyUnitType`), the `AI` vocabulary specifying units of energy consumption (`kilowattHour`, `megajoule`, and `other`), and introduces the Section 15.3.2 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-304",
+      "source": "sections/sec-304-safetyriskassessmenttype.md",
+      "source_hash": "778396a7354eee500ed0159e08e9dc18ce409520b914a0ffac72a68aece7e4d6",
+      "narrative": [
+        {
+          "text": "Defines Section 15.3.2 (`SafetyRiskAssessmentType`), the `AI` vocabulary specifying general safety risk levels (`high`, `low`, `medium`, and `serious`) based on the EU general risk assessment methodology implementing Article 20 of Regulation (EC) No 765/2008, and introduces the Section 16 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-305",
+      "source": "sections/sec-305-build.md",
+      "source_hash": "c2731e979291bbdf0d1af854d29f6b63f1e8e683976229623c1160f3ff38c8c4",
+      "narrative": [
+        {
+          "text": "Defines Section 16 (`Build`), overviewing the SPDX 3.0 Build profile (`https://spdx.org/rdf/3.0.1/terms/Build`), its `Build` subclass of `Element`, and the Core relationship types (`hasInput`, `hasOutput`, `invokedBy`, `hasHost`, `configures`, `ancestorOf`, `descendantOf`, and `usesTool`) scoped to the `build` `LifecycleScopeType`, and introduces the Section 16.1 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-306",
+      "source": "sections/sec-306-classes.md",
+      "source_hash": "ac9620ae218122abf4fbb42960cd40ff4b568cf04a2aefce425ef64a3a68b168",
+      "narrative": [
+        {
+          "text": "Introduces Section 16.1 (`Classes`) and Section 16.1.1 (`Build`), providing the summary and description of the `Build` class representing a build instance of software or artifacts and noting the use of `urlScheme` `ExternalIdentifier` with comment `LogReference` for build logs.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-307",
+      "source": "sections/sec-307-buildendtime.md",
+      "source_hash": "ea66ca0ee16262b8111876faea2b265c8810b65212afc46e38b2983a76bb584d",
+      "narrative": [
+        {
+          "text": "Lists the class metadata for `/Build/Build` (`https://spdx.org/rdf/3.0.1/terms/Build/Build`), specifying concrete instantiability and `/Core/Element` as its superclass.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-308",
+      "source": "sections/sec-308-properties.md",
+      "source_hash": "762781a670e7c3c204c13314dbaf567aa4a11cf9822c9b4eabc6fde23056045c",
+      "narrative": [
+        {
+          "text": "Begins the direct properties table for `/Build/Build`, listing `buildEndTime` with type `/Core/DateTime` and cardinality `0..1`.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-309",
+      "source": "sections/sec-309-buildid.md",
+      "source_hash": "f254c6a27089c021e8e5a4e32504a9a1b25f05f2e256cbece7c400c5c23a8677",
+      "narrative": [
+        {
+          "text": "Lists the type (`xsd:string`) and cardinality (`0..1`) for the `buildId` property in the `/Build/Build` properties table.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-310",
+      "source": "sections/sec-310-buildstarttime.md",
+      "source_hash": "73a15f5cea775f47a4c841c67ca72f83bf29bc2b7aab39b512daad22cc40df25",
+      "narrative": [
+        {
+          "text": "Lists the type (`/Core/DateTime`) and cardinality (`0..1`) for the `buildStartTime` property in the `/Build/Build` properties table.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-311",
+      "source": "sections/sec-311-buildtype.md",
+      "source_hash": "98f01656688138eae74d4dbeba5fe6be05dd5e4d3dd0b804daf2d0dcd473e80a",
+      "narrative": [
+        {
+          "text": "Completes the direct and inherited properties tables for `/Build/Build` (`buildType`, `configSourceDigest`, `configSourceEntrypoint`, `configSourceUri`, `environment`, `parameter`, and `/Core/Element` properties), and defines Section 16.2 (`Properties`) subsections 16.2.1 (`buildEndTime`), 16.2.2 (`buildId`), 16.2.3 (`buildStartTime`), and 16.2.4 (`buildType`), ending with the Section 16.2.5 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-312",
+      "source": "sections/sec-312-configsourcedigest.md",
+      "source_hash": "6e9fbfe4ed9d37c5e301d82496ec3e99249590e9610fb5645a9acfcbbd2df932",
+      "narrative": [
+        {
+          "text": "Defines Section 16.2.5 (`configSourceDigest`), a `Build` `ObjectProperty` with range `/Core/Hash` on `/Build/Build` recording the checksum of the build configuration file used by a builder to execute a build, and introduces the Section 16.2.6 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-313",
+      "source": "sections/sec-313-configsourceentrypoint.md",
+      "source_hash": "2fd1a408ea374390e590b3e47a601f9304d3e3ebe0fd09de0187bf9f8107a02f",
+      "narrative": [
+        {
+          "text": "Defines Section 16.2.6 (`configSourceEntrypoint`), a `Build` `DataProperty` with range `xsd:string` on `/Build/Build` specifying the invoked executable or configuration entrypoint of a build (illustrated with a GitHub Actions workflow example), and introduces the Section 16.2.7 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-314",
+      "source": "sections/sec-314-configsourceuri.md",
+      "source_hash": "12ae16a8f1cddadc20f911a58161c9c2ec510cd23d4bc16c115bd018598c5fb6",
+      "narrative": [
+        {
+          "text": "Defines Section 16.2.7 (`configSourceUri`), a `Build` `DataProperty` with range `xsd:anyURI` on `/Build/Build` recording the URI of the build configuration source file, and introduces the Section 16.2.8 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-315",
+      "source": "sections/sec-315-environment.md",
+      "source_hash": "8f3ddf32c6eb39f82d6f36c1b53422fbed2518fc248c42072a80f60d0dba20b9",
+      "narrative": [
+        {
+          "text": "Defines Section 16.2.8 (`environment`), a `Build` `ObjectProperty` with range `/Core/DictionaryEntry` describing the map of environment variables and values set before a build session is invoked.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-316",
+      "source": "sections/sec-316-parameter.md",
+      "source_hash": "8610b71e0fca9e57ce243b90550fc44db3df91c51c605a41ffa466f05015b23d",
+      "narrative": [
+        {
+          "text": "Completes the referenced classes for `environment` (`/Build/Build`), defines Section 16.2.9 (`parameter`) as a `Build` `ObjectProperty` with range `/Core/DictionaryEntry` on `/Build/Build` capturing key-value build parameters passed to the builder, and introduces the Section 17 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-317",
+      "source": "sections/sec-317-lite.md",
+      "source_hash": "213503d085e41ea6a98e0dd47f16f7ba6fbe218312709d448e261516544124c9",
+      "narrative": [
+        {
+          "text": "Defines Section 17 (`Lite`), specifying the SPDX Lite profile (`https://spdx.org/rdf/3.0.1/terms/Lite`) and its mandatory conformance rules for `/Software/Package` (including `copyrightText`, `packageVersion`, `suppliedBy`, `downloadLocation` or `packageUrl`, `hasConcludedLicense`, and `hasDeclaredLicense`), `/Core/SpdxDocument`, `/Software/Sbom`, and `/Core/Agent`, and introduces the Section 18 heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-318",
+      "source": "sections/sec-318-extension.md",
+      "source_hash": "b0bfdc2e9c062f3eae781694027cf04613b9d25e372feddf3ef75d6c464b3bf1",
+      "narrative": [
+        {
+          "text": "Provides the summary for Section 18 (`Extension`), introducing the SPDX Extension profile.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-319",
+      "source": "sections/sec-319-classes.md",
+      "source_hash": "182511e7169328923d7c460f8f7e5f27af9c0e88327a4c49e846dc2ec4485c0b",
+      "narrative": [
+        {
+          "text": "Lists the namespace metadata (`https://spdx.org/rdf/3.0.1/terms/Extension`) for the Extension profile and introduces the Section 18.1 (`Classes`) and Section 18.1.1 headings.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-320",
+      "source": "sections/sec-320-cdxpropertiesextension.md",
+      "source_hash": "013ef5010335b3c067bc879b97c5427a102a52397c0987ae21e697a61bab555f",
+      "narrative": [
+        {
+          "text": "Defines Section 18.1.1 (`CdxPropertiesExtension`), a concrete subclass of `/Extension/Extension` that provides a structured list of name-value pairs (`cdxProperty`) supporting duplicate names for CycloneDX property compatibility.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-321",
+      "source": "sections/sec-321-cdxpropertyentry.md",
+      "source_hash": "a82559c1f6a0011e6c3b8217b9e0d52d12bc1d3cc06a5b70527088affc6e776a",
+      "narrative": [
+        {
+          "text": "Completes the `cdxProperty` cardinality (`1..*` of `CdxPropertyEntry`) on `CdxPropertiesExtension` and introduces Section 18.1.2 (`CdxPropertyEntry`), describing a CycloneDX-compatible name-value pair entry.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-322",
+      "source": "sections/sec-322-cdxproperty.md",
+      "source_hash": "71ca20f2f8b1e91a0bd1f7ecced2c6ff9ab8b8fab61ca0417bf667385ce651a1",
+      "narrative": [
+        {
+          "text": "Lists the class metadata for `CdxPropertyEntry` (concrete instantiability) and opens its direct properties table header.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-323",
+      "source": "sections/sec-323-cdxpropname.md",
+      "source_hash": "a24d39d35ad05bbd760afcddb5c667181a200948d73e9618b60036c71d27c697",
+      "narrative": [
+        {
+          "text": "Lists the type (`xsd:string`) and cardinality (`1..1`) for the `cdxPropName` property in the `CdxPropertyEntry` properties table.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-324",
+      "source": "sections/sec-324-cdxpropvalue.md",
+      "source_hash": "53c0f485c24cc530a2cbb3fba10d51047d28c3ff991248cd02db273f4e1479ff",
+      "narrative": [
+        {
+          "text": "Completes the `CdxPropertyEntry` properties table (`cdxPropValue` with type `xsd:string` and cardinality `0..1`), defines Section 18.1.3 (`Extension`) as an abstract base class for generalized `Element` characterization extensions, defines Section 18.2 (`Properties`) subsections 18.2.1 (`cdxPropName`), 18.2.2 (`cdxPropValue`), and 18.2.3 (`cdxProperty`), and introduces the Annex A heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-325",
+      "source": "sections/sec-325-rdf-model-definition-and-diagrams-informative.md",
+      "source_hash": "55d1f945cc2e677617e2bc5ed092d9faf991a7f1fc5fb5568ceb4bb308a4889c",
+      "narrative": [
+        {
+          "text": "Presents Informative Annex A (`RDF model definition and diagrams`), referencing the online SPDX 3.0.1 RDF/OWL/SHACL ontology (`https://spdx.org/rdf/3.0.1/spdx-model.ttl`) in Section A.1 and providing profile class diagrams (Figures A.1 through A.8 for Core, Software, Security, Licensing, Dataset, AI, Build, and Extension) in Section A.2, ending with the Annex B heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-326",
+      "source": "sections/sec-326-spdx-license-expressions-normative.md",
+      "source_hash": "a09aaaf7dec7858303cde0a76c769907f1ea87fb63451d57102208a620d7bff8",
+      "narrative": [
+        {
+          "text": "Heading for Normative Annex B (`SPDX license expressions`), introducing Section B.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-327",
+      "source": "sections/sec-327-overview.md",
+      "source_hash": "42e5c58991df0f0ba9426efc2f94e9512404bc5c63b78e240e0e7a8c6d4258d2",
+      "narrative": [
+        {
+          "text": "Defines Section B.1 (`Overview`) of Annex B, motivating SPDX License Expressions, specifying their complete ABNF grammar (per RFC 5234 and RFC 7405) for simple and compound expressions (`+`, `WITH`, `AND`, `OR`, `LicenseRef-`, and `AdditionRef-`), stating whitespace and single-line formatting requirements, and introducing Section B.2.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-328",
+      "source": "sections/sec-328-case-sensitivity.md",
+      "source_hash": "53b62d15b670e35c1554ce8a7da4bd8c140a38bf9675f696c6b25dea1b2a8bdd",
+      "narrative": [
+        {
+          "text": "Defines Section B.2 (`Case sensitivity`), requiring license expression operators (`AND`/`and`, `OR`/`or`, `WITH`/`with`) and the `LicenseRef-` and `AdditionRef-` prefixes to be matched case-sensitively while matching SPDX license identifiers, exception identifiers, and user-defined identifier suffixes case-insensitively, and introduces Section B.3.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-329",
+      "source": "sections/sec-329-simple-license-expressions.md",
+      "source_hash": "ec84c964a4dea68622a07d30008082810e7e5a1150af5c25817b847b76d587d9",
+      "narrative": [
+        {
+          "text": "Defines Section B.3 (`Simple license expressions`), specifying the three forms of a simple `<license-expression>`—an SPDX License List short-form identifier, a short-form identifier with a unary `+` suffix (`or later`), or a user-defined `[DocumentRef-<idstring>:]LicenseRef-<idstring>` reference—and introduces Section B.4.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-330",
+      "source": "sections/sec-330-composite-license-expressions.md",
+      "source_hash": "cd6927e800f6229e70e7a8fdea4a2be861a474ec4d9fbd494e7dadae0c17bf7a",
+      "narrative": [
+        {
+          "text": "Section B.4 heading (`Composite license expressions`), introducing subsection B.4.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-331",
+      "source": "sections/sec-331-introduction.md",
+      "source_hash": "6bce37772ecbfe664d13329003002c3382ab6b283b83e03fd2ff7b4aede38293",
+      "narrative": [
+        {
+          "text": "Defines Sections B.4.1 (`Introduction`), B.4.2 (`Disjunctive \"OR\" operator`), B.4.3 (`Conjunctive \"AND\" operator`), and B.4.4 (`Additive \"WITH\" operator`) for constructing composite SPDX license expressions using `OR`, `AND`, and `WITH` (with SPDX License List exceptions or `AdditionRef-` references), and introduces Section B.4.5.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-332",
+      "source": "sections/sec-332-order-of-precedence-and-parentheses.md",
+      "source_hash": "2b408b20b259cc938f78cbed6476b5f498db7cbd0f2e7c8435baef8acec20ab0",
+      "narrative": [
+        {
+          "text": "Defines Section B.4.5 (`Order of precedence and parentheses`), specifying the default operator precedence order (`+`, `WITH`, `AND`, `OR` from highest to lowest) and the use of parentheses `( )` to override precedence in composite license expressions, and introduces Section B.4.6.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-333",
+      "source": "sections/sec-333-license-expressions-in-rdf.md",
+      "source_hash": "53db44c3e0a8c84385e6bc71ff641c4cbb2003d8f3f06d0cc0019dc19808c296",
+      "narrative": [
+        {
+          "text": "Defines Section B.4.6 (`License expressions in RDF`), illustrating how conjunctive license sets (`<spdx:ConjunctiveLicenseSet>`), disjunctive license sets (`<spdx:DisjunctiveLicenseSet>`), and license exceptions (`<spdx:LicenseException>`) are represented in RDF XML, and introduces the Annex C heading.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-334",
+      "source": "sections/sec-334-spdx-license-list-matching-guidelines-and-templa.md",
+      "source_hash": "c6a14b1d168bd265e58c46634d6b155a2dc0b75fb1c0f6aa922ddbf57d5fa7e9",
+      "narrative": [
+        {
+          "text": "Introduces Normative Annex C (`SPDX License List matching guidelines and templates`) and Section C.1 (`SPDX License List matching guidelines`), explaining how the guidelines ensure consistent identification of licenses and exceptions against the SPDX License List and its XML templates, and introduces Section C.2.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-335",
+      "source": "sections/sec-335-how-these-guidelines-are-applied.md",
+      "source_hash": "96de7d66450ae44390ac68572e8ced5a34e115f923cd988c9f052c4bde5febca",
+      "narrative": [
+        {
+          "text": "Section C.2 heading (`How these guidelines are applied`), introducing subsection C.2.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-336",
+      "source": "sections/sec-336-purpose.md",
+      "source_hash": "839ccbb2ee10554b6110b7b20f76d280404930cad378a0683df58c01c75d8556",
+      "narrative": [
+        {
+          "text": "Defines Section C.2.1 (`Purpose`), stating that the matching guidelines ensure consistent results across SPDX document creators and tools when matching license or exception text, official license headers, or SPDX License List short identifiers, and introduces Section C.2.2.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-337",
+      "source": "sections/sec-337-guideline-official-license-headers.md",
+      "source_hash": "ec8d8626b8fc50e0557728b0b83f74e4ff3164f7eb37947b786e5463a44aaccc",
+      "narrative": [
+        {
+          "text": "Defines Section C.2.2 (`Guideline: official license headers`), stating that the matching guidelines apply equally to official license headers marked up with `<standardLicenseHeader>` in the SPDX License List XML files, and introduces Section C.3.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-338",
+      "source": "sections/sec-338-substantive-text.md",
+      "source_hash": "28a3c31c504ea36c1701b3b03c14bc00bbcacec87f2086e2f71f9ade7e110a99",
+      "narrative": [
+        {
+          "text": "Introduces Section C.3 (`Substantive text`) and defines Section C.3.1 (`Purpose`), explaining the conservative balance between matching legally substantive license text and disregarding or replacing non-substantive text, and introduces Section C.3.2.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-339",
+      "source": "sections/sec-339-guideline-verbatim-text.md",
+      "source_hash": "d25df073e62f6609065551f815f5e232ebc45577165b46954a233a7e9b306530",
+      "narrative": [
+        {
+          "text": "Defines Section C.3.2 (`Guideline: verbatim text`), requiring matched license and exception text to be verbatim and in the same order except as permitted by the matching guidelines, and introduces Section C.3.3.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-340",
+      "source": "sections/sec-340-guideline-no-additional-text.md",
+      "source_hash": "17554d7af686132a9fedd47a6267daeb101ba66d64d14ab5f67ff6289c8c60a2",
+      "narrative": [
+        {
+          "text": "Defines Section C.3.3 (`Guideline: no additional text`), requiring matched license or exception text to contain only the vetted text without additional clauses, and introduces Section C.3.4.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-341",
+      "source": "sections/sec-341-guideline-replaceable-text.md",
+      "source_hash": "1ea544c6d4aab8465ee2c65fd7d7935f6649a52ebb9a8a219fabc6d81c92fed3",
+      "narrative": [
+        {
+          "text": "Defines Section C.3.4 (`Guideline: replaceable text`), allowing specific variable text such as copyright holder names, authors, or dates (for example in BSD or Apache-1.1 clauses and official license headers) to be substituted with similar values while still counting as a positive license match.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-342",
+      "source": "sections/sec-342-guideline.md",
+      "source_hash": "38bbb513b8193b36f7357dc2d56fc66b8d83557efb7d13f63abf588d78e7e384",
+      "narrative": [
+        {
+          "text": "Specifies the XML implementation for replaceable text in Section C.3.4 (`Guideline`), using `<alt match=\"...\" name=\"...\">` tags with a POSIX extended regular expression (`match`) and unique identifier (`name`), rendered in red text on the SPDX License List webpage, and introduces Section C.3.5.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-343",
+      "source": "sections/sec-343-guideline-omittable-text.md",
+      "source_hash": "ff1e8fd36a09fe17ab31817f05e582639963bc263c2b501f9a561302e06e081f",
+      "narrative": [
+        {
+          "text": "Defines Section C.3.5 (`Guideline: omittable text`), allowing superfluous or non-substantive text (such as appendices or instructions on how to apply a license) marked with `<optional>` in the SPDX License List XML files (and shown in blue on the webpage) to be either present or omitted without preventing a match, and introduces Section C.4.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-344",
+      "source": "sections/sec-344-whitespace.md",
+      "source_hash": "265592df74e4fac7906f441abb8fd1ed60b02ace7d433d37681ef98ff1e03648",
+      "narrative": [
+        {
+          "text": "Section C.4 heading (`Whitespace`), introducing subsection C.4.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-345",
+      "source": "sections/sec-345-purpose.md",
+      "source_hash": "79a8846630ca4de89dd4b9239100fb7f19a7a952b3d54f73b2d9e381048211d3",
+      "narrative": [
+        {
+          "text": "Defines Section C.4.1 (`Purpose`) and Section C.4.2 (`Guideline`) for whitespace matching, requiring all whitespace (spaces, line breaks, or paragraph breaks) to be treated as a single blank space without special XML markup, and introduces Section C.5.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-346",
+      "source": "sections/sec-346-capitalization.md",
+      "source_hash": "22e0b41427e7eb7943808249c69c842b4ccd6812b5b30706635fcca21973f5d4",
+      "narrative": [
+        {
+          "text": "Introduces Section C.5 (`Capitalization`) and defines Sections C.5.1 (`Purpose`) and C.5.2 (`Guideline`), requiring all uppercase and lowercase letters in license text to be matched case-insensitively without special XML markup, and introduces Section C.6.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-347",
+      "source": "sections/sec-347-punctuation.md",
+      "source_hash": "375aafdd9e443e7d3fe51a756e930ed445c377695e7d9a0166300be24dbd4ec2",
+      "narrative": [
+        {
+          "text": "Introduces Section C.6 (`Punctuation`) and defines Section C.6.1 (`Purpose`), stating that punctuation must be included in license matching because it can change sentence meaning, and introduces Section C.6.2.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-348",
+      "source": "sections/sec-348-guideline-punctuation.md",
+      "source_hash": "342f0ed1a4d05b84b4ee153b16ba3bd2af44dc11cd81255f0e4642db74856374",
+      "narrative": [
+        {
+          "text": "Defines Section C.6.2 (`Guideline: punctuation`), stating that punctuation must be matched unless otherwise specified by the matching guidelines or explicit XML markup, and introduces Section C.6.3.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-349",
+      "source": "sections/sec-349-guideline-hyphens-dashes.md",
+      "source_hash": "f444ac97d911723727010a19ad210b60edecaff901fbebbe8145a243a2ce6d14",
+      "narrative": [
+        {
+          "text": "Defines Section C.6.3 (`Guideline: hyphens, dashes`), stating that any hyphen, dash, en dash, em dash, or variation is considered equivalent during license matching, and introduces Section C.6.4.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://0ffe9ef8-dc9f-492f-8c39-1789e811352c"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
       "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-front-matter",
       "source": "sections/sec-front-matter.md",
       "source_hash": "48d2c7ed4809951e560cb5df771b604b1b97ae446bb2fdd38c2b10f8674c0d16",
