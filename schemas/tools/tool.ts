@@ -87,7 +87,7 @@ export const ToolPortSchema = z.object({
  * are allowed only on an output whose schema IS `Url` / `Markdown` — a hint
  * that disagrees with the type it describes is two answers to one question.
  *
- * `renderToolOutput` in `schemas/render-output.ts` is the one implementation;
+ * `renderToolOutput` in `schemas/ui/render-output.ts` is the one implementation;
  * `render-output.test.ts` holds each row of the table above to it.
  */
 export const RENDER_AS = ["text", "url", "markdown", "json"] as const;

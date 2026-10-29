@@ -2027,7 +2027,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
   // `content` — one is authored and the other is written by a running process
   // as people move things, and `content-context-and-state-graphs` refuses a
   // content node that carries state. It is the same reason a note may not
-  // hold `x` and `y`, which `schemas/board-positions.ts` asserts against the
+  // hold `x` and `y`, which `schemas/ui/board-positions.ts` asserts against the
   // source of four schemas.
   boards: {
     description:
@@ -2046,7 +2046,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     summary:
       "Boards — one JSON file each, carrying `\"$schema\": \"folio-board/v1\"`. " +
       "A board is a diagram OF a folio: it declares what it shows, and a folio with " +
-      "no board is complete. Schema: `schemas/board.ts`.",
+      "no board is complete. Schema: `schemas/ui/board.ts`.",
   },
   "board-positions": {
     description:
@@ -2067,7 +2067,7 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
     summary:
       "Where each note sits on each board — `board-positions.json`, keyed by board " +
       "then by note id, in board units. The layout layer, which points at notes and " +
-      "is never pointed back at. Schema: `schemas/board-positions.ts`.",
+      "is never pointed back at. Schema: `schemas/ui/board-positions.ts`.",
   },
   "todo-items": {
     description:

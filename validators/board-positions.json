@@ -4,5 +4,5 @@
   "validates": {
     "kind": "board-positions"
   },
-  "schema": "schemas/board-positions.ts#BoardPositionsSchema"
+  "schema": "schemas/ui/board-positions.ts#BoardPositionsSchema"
 }
