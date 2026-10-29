@@ -355,6 +355,21 @@ The same holds for any future pair of panels that share a word, such as two
 390×844. It covers the mouse and the keyboard, and checks that each link opens
 the other panel and that focus lands on its heading.
 
+## Lazy window content fetch and render safety
+
+Rendering the board with `N` cards makes **0** per-card detail fetches up
+front: each board slot (`todoSlot` / `renderBoardTiles`) renders only its
+summary tile/avatar. When a card carries a per-card detail or artifact URL
+(`detailHref`, `bodyHref`, `artifactHref`, or a non-inlined `jsonldHref`),
+opening its window (`openCard` / `createLazyWindowLoader.openWindow`) fetches
+that card's content **lazily on open**, caches the result by card `id` (so
+re-opening uses the cached result and never pre-fetches the other `N - 1`
+cards), and renders any body or tool/skill output through the declared
+`renderToolOutput` (`RENDER_AS`: `text`, `url`, `markdown`, `json`) and
+`safeHref` boundary (`schemas/render-output.ts`, `site-chrome/assets/js/docs-ui.js`).
+A refused URL scheme (such as `javascript:`) is never fetched and is shown as
+escaped text.
+
 ## Not this skill
 
 The layout layer and why a note carries no coordinates:
