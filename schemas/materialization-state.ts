@@ -18,7 +18,7 @@
  *
  * The split is the harness's own need, not tidiness: the harness already
  * spoke this vocabulary without being able to import it —
- * `schemas/referenced-source.ts` names state `referenced`, `cat-harness.ts`
+ * `schemas/library/referenced-source.ts` names state `referenced`, `cat-harness.ts`
  * names the three states, and `binary-release.ts` restates the fixity shape —
  * each by prose reference to a module one layer UP.
  *

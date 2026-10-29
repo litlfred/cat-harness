@@ -32,7 +32,7 @@
  */
 import { z } from "zod";
 
-import { ArchiveEntrySchema } from "./archive-contents.js";
+import { ArchiveEntrySchema } from "./library/archive-contents.js";
 import { nodeKind } from "./node-kind.js";
 
 /**

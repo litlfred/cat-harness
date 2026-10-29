@@ -942,7 +942,7 @@ export interface CatHarnessDeclaration extends KgNodeLabels {
   /**
    * The translation profile of each content type THIS instance owns: which
    * formats it can extract and inject, and which diagrams need re-rendering.
-   * Collected by `schemas/translation-tools.ts` from every present instance
+   * Collected by `schemas/library/translation-tools.ts` from every present instance
    * (bean `0r7u`, step 0 part 3), so cat-harness names no content type above
    * it. Module and diagram paths resolve from the declaring instance, then
    * down its `needs` chain.

@@ -4,7 +4,7 @@
  */
 import { describe, expect, test } from "bun:test";
 import { BlockSummarySchema, bodyHash, summaryStatus } from "./block-summary.ts";
-import { TabularCsvwSchema } from "./tabular-csvw.ts";
+import { TabularCsvwSchema } from "./library/tabular-csvw.ts";
 
 const by = { kind: "agent" as const, id: "a", model: "m" };
 const human = { kind: "human" as const, id: "h" };

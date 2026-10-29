@@ -28,7 +28,7 @@ disagree with the first.
 
 | | where |
 |---|---|
-| the check | `schemas/theme-art-intake.ts` — pure, no I/O, no clock |
+| the check | `schemas/library/theme-art-intake.ts` — pure, no I/O, no clock |
 | the CLI face | `scripts/check-theme-art.ts`, `bun run cat check:theme-art` |
 | the arrival | `uploads/`, per `content-acquisition` and `document-intake` |
 
@@ -168,7 +168,7 @@ re-litigate it.
 
 ## What is NOT here
 
-The theming **code** — `schemas/ui/themes.ts`, `schemas/theme-art-intake.ts`,
+The theming **code** — `schemas/ui/themes.ts`, `schemas/library/theme-art-intake.ts`,
 `scripts/check-theme-art.ts`, `scripts/gen-themes-css.ts`,
 `scripts/gen-avatars-css.ts` — stays where it is. This is the `kg` graph: the
 instructions an agent follows, not the implementation. A skill and the code it

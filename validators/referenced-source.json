@@ -5,5 +5,5 @@
     "kind": "library",
     "family": "folio-referenced-source/v1"
   },
-  "schema": "schemas/referenced-source.ts#ReferencedSourceSchema"
+  "schema": "schemas/library/referenced-source.ts#ReferencedSourceSchema"
 }
