@@ -4,11 +4,11 @@
   "size": 20,
   "internal": 5,
   "inbound": 0,
-  "outbound": 95,
+  "outbound": 102,
   "cohesion": 0.05,
-  "enforcedBoundary": 3,
-  "recordedBoundary": 92,
-  "proseMentions": 30,
+  "enforcedBoundary": 7,
+  "recordedBoundary": 95,
+  "proseMentions": 32,
   "wrongDirection": 0,
   "undeterminedDirection": 0
 }
