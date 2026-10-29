@@ -2056,7 +2056,7 @@
     ],
     "cat-harness/skills/process/process-core/task-authorization.md": [
       [
-        "cat-harness/skills/sdlc/sdlc-core/deployment-auth.md",
+        "cat-harness/skills/tools/folio-core/deployment-auth.md",
         0.537
       ],
       [
@@ -2600,7 +2600,7 @@
         0.654
       ]
     ],
-    "cat-harness/skills/sdlc/sdlc-core/deployment-auth.md": [
+    "cat-harness/skills/tools/folio-core/deployment-auth.md": [
       [
         "cat-harness/skills/process/process-core/task-authorization.md",
         0.537
@@ -3590,7 +3590,7 @@
         0.572
       ],
       [
-        "cat-harness/skills/sdlc/sdlc-core/deployment-auth.md",
+        "cat-harness/skills/tools/folio-core/deployment-auth.md",
         0.531
       ]
     ],

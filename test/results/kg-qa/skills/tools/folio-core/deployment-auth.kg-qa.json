@@ -3,7 +3,7 @@
   "subject": {
     "kind": "skill",
     "id": "deployment-auth",
-    "path": "skills/sdlc/sdlc-core/deployment-auth.md"
+    "path": "skills/tools/folio-core/deployment-auth.md"
   },
   "source_hash": "842ab385a35b",
   "criteria": {
