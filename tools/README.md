@@ -27,7 +27,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`bpmn-render/`](bpmn-render/) | _nothing declares what this holds_ | |
 | [`build-instance-site/`](build-instance-site/) | _nothing declares what this holds_ | |
 | [`cat-harness-schema/`](cat-harness-schema/) | _nothing declares what this holds_ | |
-| [`check-dependencies/`](check-dependencies/) | _nothing declares what this holds_ | |
 | [`check-tools/`](check-tools/) | _nothing declares what this holds_ | |
 | [`ci-health/`](ci-health/) | _nothing declares what this holds_ | |
 | [`compose-docs/`](compose-docs/) | _nothing declares what this holds_ | |
@@ -102,8 +101,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`package-release-workflow/`](package-release-workflow/) | _nothing declares what this holds_ | |
 | [`pages-index/`](pages-index/) | _nothing declares what this holds_ | |
 | [`pages-publish/`](pages-publish/) | _nothing declares what this holds_ | |
-| [`paper-preferences/`](paper-preferences/) | _nothing declares what this holds_ | |
-| [`paper-preview/`](paper-preview/) | _nothing declares what this holds_ | |
 | [`pdf-cover/`](pdf-cover/) | _nothing declares what this holds_ | |
 | [`pdf-viewer-embed/`](pdf-viewer-embed/) | _nothing declares what this holds_ | |
 | [`pdf-viewer-install/`](pdf-viewer-install/) | _nothing declares what this holds_ | |
