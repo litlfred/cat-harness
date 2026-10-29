@@ -91,6 +91,7 @@
     "schemas/library/code-list.ts",
     "schemas/library/glossary-ledger.ts",
     "schemas/library/intake.ts",
+    "schemas/library/recording.ts",
     "schemas/library/referenced-source.ts",
     "schemas/library/source-licence.ts",
     "schemas/library/source-provenance.ts",

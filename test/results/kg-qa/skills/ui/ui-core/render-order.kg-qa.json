@@ -5,7 +5,7 @@
     "id": "render-order",
     "path": "skills/ui/ui-core/render-order.md"
   },
-  "source_hash": "80bc61828881",
+  "source_hash": "8047872a1e05",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

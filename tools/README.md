@@ -134,6 +134,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`skill-docs/`](skill-docs/) | _nothing declares what this holds_ | |
 | [`skill-fetch/`](skill-fetch/) | _nothing declares what this holds_ | |
 | [`skill-list/`](skill-list/) | _nothing declares what this holds_ | |
+| [`skill-update/`](skill-update/) | _nothing declares what this holds_ | |
 | [`slice-sqlite/`](slice-sqlite/) | _nothing declares what this holds_ | |
 | [`stage-local/`](stage-local/) | _nothing declares what this holds_ | |
 | [`staging-graph-viewer/`](staging-graph-viewer/) | _nothing declares what this holds_ | |

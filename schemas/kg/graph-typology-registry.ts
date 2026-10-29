@@ -2205,6 +2205,10 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "folio-slides-accessibility/v1": {},
       // A source recorded and not held, its text withheld by licence (bean `scfh`).
       "folio-referenced-source/v1": {},
+      // A recorded meeting or talk, and one transcript per language
+      // (bean `folio-assistant-1r0p`, `schemas/library/recording.ts`).
+      "folio-recording/v1": {},
+      "folio-transcript/v1": {},
     },
     summary:
       "L1 source content — one `<bib-slug>/` per ingested document, holding `sections/*.md`, " +

@@ -350,7 +350,7 @@ const PageNumber = z.number().int().nullable();
  * there is a rung this index accepts. It was two lists until the `referenced`
  * rung (bean `scfh`) met an index that knew only three.
  */
-export const INGEST_RUNGS = ["paged", "tabular", "referenced", "none"] as const;
+export const INGEST_RUNGS = ["paged", "tabular", "referenced", "recording", "none"] as const;
 
 export const LibraryIndexEntrySchema = z
   .object({
