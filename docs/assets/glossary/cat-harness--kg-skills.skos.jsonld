@@ -189,6 +189,26 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/ask-the-person",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "ask-the-person"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Put one question or decision to a person: the full question, context and every option written in the chat FIRST, then the same options as a tappable card. Use before every AskUserQuestion, request_decision / Decision card, button card, or any ask that hands a choice to the owner. Input is the composed question; output is the answer, or the default taken."
+        }
+      ],
+      "skos:notation": "ask-the-person",
+      "dcterms:source": "cat-harness/skills/conduct/conduct-core/ask-the-person.md",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/asset-extraction",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -306,6 +326,26 @@
       ],
       "skos:notation": "bean-coordination",
       "dcterms:source": "cat-harness/skills/sdlc/sdlc-core/bean-coordination.md",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/bean-drain",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "bean-drain"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Drain open beans (stories, bugs, features) with several agents at once, as part of the SDLC: build the queue, group it by owner, check and claim each bean on every bean copy before any work, open the PR at the first commit, ask the owner through ask-the-person, close, and refill. Use when a thread or agent is asked to drain beans, when a coordinator spawns drain threads, or when an idle agent pulls from a shared queue next to other agents."
+        }
+      ],
+      "skos:notation": "bean-drain",
+      "dcterms:source": "cat-harness/skills/sdlc/sdlc-core/bean-drain.md",
       "skos:note": "candidate"
     },
     {
@@ -1806,7 +1846,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Draw any graph in a harness (schemas, processes, a paper's block graph, a Lean proof's dependencies, a detangle partition) so the picture is derived, checkable and readable. Ten rules learned on the UML overview, which engine to lay a graph out with and why, and how each graph typology here applies them."
+          "@value": "Draw any graph in a harness (schemas, processes, a folio's block graph and any formal relation its content type adds, a detangle partition) so the picture is derived, checkable and readable. Ten rules learned on the UML overview, which engine to lay a graph out with and why, and how each graph typology here applies them."
         }
       ],
       "skos:notation": "graph-rendering",
@@ -2101,7 +2141,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Dispatcher for the `/integration-watch` slash command. Routes to one or more of the concrete integration watchers / audits (proof, canonical, compute, detangler, one-voice, consolidation, bibliography, devils-advocate, …). With no argument, lists the available watchers and asks the user which to invoke. With arguments, dispatches the named watchers in parallel (each gets its own Monitor, queue, ledger, and PR-subscription set)."
+          "@value": "Dispatcher for the `/integration-watch` slash command. Routes to one or more of the concrete integration watchers / audits (canonical, one-voice, consolidation, bibliography, devils-advocate, and those a content type's layer adds, …). With no argument, lists the available watchers and asks the user which to invoke. With arguments, dispatches the named watchers in parallel (each gets its own Monitor, queue, ledger, and PR-subscription set)."
         }
       ],
       "skos:notation": "integration-watch",
@@ -2221,7 +2261,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Serialize an instance's knowledge graph to one JSON document, for publication and inspection. Read when asked to visualize, audit or share the KG, and before adding a node type to the export."
+          "@value": "Serialize an instance's knowledge graph to one JSON document, for publication and inspection. Read when asked to visualize, audit or share the KG, before adding a node type to the export, and before minting or authoring any subject IRI — subjects are `<doc dir>/<kind>/<id>`, never `#fragments`."
         }
       ],
       "skos:notation": "kg-export",
@@ -2346,26 +2386,6 @@
       ],
       "skos:notation": "kg-viewer",
       "dcterms:source": "cat-harness/skills/ui/ui-core/kg-viewer.md",
-      "skos:note": "candidate"
-    },
-    {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/lean-toolchain-contract",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "lean-toolchain-contract"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "The contract the `lean-toolchain` role is held to: what a Lean toolchain must answer when a paper folio's formal half is built, and what it must not be asked. A mechanical role's skill is a contract to test against, not instructions to read."
-        }
-      ],
-      "skos:notation": "lean-toolchain-contract",
-      "dcterms:source": "cat-harness/skills/authoring/content-lifecycle/lean-toolchain-contract.md",
       "skos:note": "candidate"
     },
     {
@@ -2656,6 +2676,26 @@
       ],
       "skos:notation": "methodology-adoption",
       "dcterms:source": "cat-harness/skills/process/process-core/methodology-adoption.md",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/minimal-change",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "minimal-change"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Three rules for any edit to a repository: make the smallest change that does the job and keep the diff minimal; read the repository's code-style files before writing code; and write Markdown without HTML tags. Use before writing a change and again when reviewing its diff."
+        }
+      ],
+      "skos:notation": "minimal-change",
+      "dcterms:source": "cat-harness/skills/sdlc/sdlc-core/minimal-change.md",
       "skos:note": "candidate"
     },
     {
@@ -4021,6 +4061,26 @@
       ],
       "skos:notation": "term-disagreement",
       "dcterms:source": "cat-harness/skills/library/library-core/term-disagreement.md",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills/test-data-sets",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-skills"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "test-data-sets"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Curating fixed (committed, cited, SME-reviewed) and generated (template + params + seed recipe, never stored materialised) test data sets in separately declared graph directories, with per-content-type specialisation as a called subprocess and attributable SME review of decision support and indicator definitions."
+        }
+      ],
+      "skos:notation": "test-data-sets",
+      "dcterms:source": "cat-harness/skills/sdlc/sdlc-core/test-data-sets.md",
       "skos:note": "candidate"
     },
     {

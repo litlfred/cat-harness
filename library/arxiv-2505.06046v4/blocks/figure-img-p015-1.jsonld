@@ -26,6 +26,66 @@
       },
       "drafted_at": "2026-09-29",
       "lang": "en"
+    },
+    {
+      "text": "Figure 9 : (gauche) échantillons de PubHealthBench-Full par type de document source ; (droite) annotations humaines de qualité classant les questions générées en « Good » (82 %), « Acceptable » (15 %) et « Poor » (3 %).",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "fr"
+    },
+    {
+      "text": "Figura 9: (izquierda) muestras de PubHealthBench-Full por tipo de documento de origen; (derecha) anotaciones humanas de calidad que clasifican las preguntas generadas en «Good» (82 %), «Acceptable» (15 %) y «Poor» (3 %).",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "es"
+    },
+    {
+      "text": "الشكل 9: (يسار) عينات PubHealthBench-Full بحسب نوع الوثيقة المصدر؛ (يمين) تعليقات الجودة البشرية التي تصنّف الأسئلة المولَّدة إلى «Good» (82%) و«Acceptable» (15%) و«Poor» (3%).",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ar"
+    },
+    {
+      "text": "Рисунок 9: (слева) примеры PubHealthBench-Full по типу исходного документа; (справа) оценки качества людьми, относящие сгенерированные вопросы к категориям «Good» (82 %), «Acceptable» (15 %) и «Poor» (3 %).",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ru"
+    },
+    {
+      "text": "图 9：（左）按来源文档类型划分的 PubHealthBench-Full 样本；（右）人工质量标注，将生成的题目分为“Good”（82%）、“Acceptable”（15%）和“Poor”（3%）。",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "zh"
     }
   ],
   "derivedFrom": "library/arxiv-2505.06046v4/sections/sec-027",

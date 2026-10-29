@@ -14,8 +14,8 @@ paths and line numbers.
 
 Located in `ui/app.js`. Processing order:
 
-1. Display math `$$...$$` → KaTeX display spans
-2. Inline math `$...$` → KaTeX inline spans
+1. Display math `$$...$$` → KaTeX display spans (content types with math)
+2. Inline math `$...$` → KaTeX inline spans (content types with math)
 3. Fenced code blocks `` ```lang `` → `<pre>` or `<div class="txb">`
 4. Tables `|...|` → `<table class="md-table">`
 5. Headings `##`, `###` → `<h3>`, `<h4>`
@@ -32,15 +32,13 @@ Located in `ui/app.js`. Processing order:
 
 | Pattern | Issue | Fix |
 |---------|-------|-----|
-| `` ```tex `` without rendered SVG | Shows raw LaTeX code | Run `bun run render-tex` then `bun run export-json` |
-| `\operatorname{X}` | KaTeX error | Use `\mathrm{X}` |
-| `$$` without preceding blank line | May parse as inline | Add blank line before `$$` |
 | `*italic*` spanning lines | Won't match (single-line regex) | Keep italic on one line |
 | Nested lists | Not supported | Flatten or use prose |
 | `\cite{key}` | No bibliography lookup | Accept `[key]` display |
-| `$...$` with newlines inside | Works (regex allows it) | OK |
-| Raw LaTeX outside math | Renders as text | Wrap in `$...$` |
-| `&` in prose (outside math) | LaTeX error in pipeline | Use `and` or wrap in math |
+
+A content type with math adds its own rows: for a paper folio, the science
+layer's `math-render-check` (`skill_fetch math-render-check`, "In the HTML
+viewer") lists the KaTeX, display-math and TeX ones.
 
 ## Interactive features
 
@@ -53,9 +51,9 @@ referenced block's content. The popup has:
 
 ### Copy button
 
-Blocks with stub status (`has_sorry`, `stated`, `not_started`, or
-missing source for provable kinds) show a 📋 button on hover.
-Copies block metadata + markdown + formal stub.
+Blocks whose status the content type marks as a stub (for example
+`stated` or `not_started`) show a 📋 button on hover. Copies block
+metadata + markdown + the stub the content type supplies.
 
 ### Index page
 
@@ -64,23 +62,11 @@ table row. Click again to collapse. Does not navigate away.
 
 ## Audit procedure
 
-1. Run `bun run pipeline/export-json.ts` to build the paper JSON
+1. Run `bun run pipeline/export-json.ts` to build the folio JSON
 2. Serve locally and inspect in browser
-3. For bulk checking, grep `.md` files for known problem patterns:
-
-```bash
-# Find \operatorname usage
-grep -rn '\\operatorname' content/**/*.md
-
-# Find $$ without preceding blank line
-grep -B1 '^\$\$' content/**/*.md | grep -v '^--$' | grep -v '^$'
-
-# Find raw LaTeX outside math
-grep -Pn '\\(?:mathrm|textbf|emph)\{' content/**/*.md | grep -v '\$'
-
-# Find unclosed bold/italic
-# (manual review needed — regex can't reliably detect this)
-```
+3. For bulk checking, grep `.md` files for the known problem patterns of
+   the table above and of the content type's own skill. Unclosed bold or
+   italic needs manual review: a regex can't reliably detect it.
 
 ## Sidebar behavior
 

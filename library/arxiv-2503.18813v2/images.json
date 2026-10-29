@@ -28,6 +28,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "Un chameau de dessin animé en 3D à une bosse, à la texture douce de feutre, vu de trois quarts, sur lequel voyagent trois petites tortues : une sur sa tête et deux sur son dos. C'est la mascotte CaMeL de l'article ; elle n'a aucun contenu technique. Présentée sur fond blanc.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "Un camello de dibujos animados en 3D con una joroba y textura suave de fieltro, de pie en vista de tres cuartos, sobre el que viajan tres tortugas pequeñas: una en la cabeza y dos en el lomo. Es la mascota CaMeL del artículo y no tiene contenido técnico. Se muestra sobre fondo blanco.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "جمل كرتوني ثلاثي الأبعاد بسنام واحد، ناعم بملمس اللبّاد، واقف بمنظر ثلاثة أرباع، تركبه ثلاث سلاحف صغيرة: واحدة على رأسه واثنتان على ظهره. وهو تميمة CaMeL الخاصة بالورقة ولا يحمل محتوى تقنيًا. معروض على خلفية بيضاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Мягкий, словно войлочный, трёхмерный мультяшный одногорбый верблюд в три четверти, на котором едут три маленькие черепахи: одна на голове и две на спине. Это талисман CaMeL из статьи; технического содержания в нём нет. Показан на белом фоне.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "一只柔软、毛毡质感的 3D 卡通单峰骆驼，以四分之三视角站立，背上骑着三只小乌龟：一只在头上，两只在背上。这是论文的 CaMeL 吉祥物，没有技术内容。白色背景。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -684,6 +744,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "Le logotype Google DeepMind : « Google » dans ses quatre couleurs de marque, suivi de « DeepMind » en gris. Une simple marque d'affiliation.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "El logotipo de Google DeepMind: «Google» en sus cuatro colores de marca, seguido de «DeepMind» en gris. Solo una marca de afiliación.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "شعار Google DeepMind النصي: «Google» بألوانها الأربعة، تليها «DeepMind» بالرمادي. علامة انتماء فقط.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Логотип Google DeepMind: «Google» в четырёх фирменных цветах, затем «DeepMind» серым. Только знак принадлежности.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "Google DeepMind 文字标志：四种品牌色的“Google”，后接灰色的“DeepMind”。仅为机构标识。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ]
     },
@@ -713,6 +833,66 @@
           },
           "drafted_at": "2026-09-29",
           "lang": "en"
+        },
+        {
+          "text": "Un chameau de dessin animé en 3D à une bosse, à la texture douce de feutre, vu de trois quarts, sur lequel voyagent trois petites tortues : une sur sa tête et deux sur son dos. C'est la mascotte CaMeL de l'article ; elle n'a aucun contenu technique. Une répétition de l'image de la page de titre.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "fr"
+        },
+        {
+          "text": "Un camello de dibujos animados en 3D con una joroba y textura suave de fieltro, de pie en vista de tres cuartos, sobre el que viajan tres tortugas pequeñas: una en la cabeza y dos en el lomo. Es la mascota CaMeL del artículo y no tiene contenido técnico. Una repetición de la imagen de la portada.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "es"
+        },
+        {
+          "text": "جمل كرتوني ثلاثي الأبعاد بسنام واحد، ناعم بملمس اللبّاد، واقف بمنظر ثلاثة أرباع، تركبه ثلاث سلاحف صغيرة: واحدة على رأسه واثنتان على ظهره. وهو تميمة CaMeL الخاصة بالورقة ولا يحمل محتوى تقنيًا. تكرار لصورة صفحة العنوان.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ar"
+        },
+        {
+          "text": "Мягкий, словно войлочный, трёхмерный мультяшный одногорбый верблюд в три четверти, на котором едут три маленькие черепахи: одна на голове и две на спине. Это талисман CaMeL из статьи; технического содержания в нём нет. Повтор изображения с титульной страницы.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "ru"
+        },
+        {
+          "text": "一只柔软、毛毡质感的 3D 卡通单峰骆驼，以四分之三视角站立，背上骑着三只小乌龟：一只在头上，两只在背上。这是论文的 CaMeL 吉祥物，没有技术内容。是标题页图片的重复。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+          },
+          "drafted_at": "2026-10-24",
+          "lang": "zh"
         }
       ]
     }

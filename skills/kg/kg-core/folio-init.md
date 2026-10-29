@@ -22,13 +22,13 @@ branches) linked back to the harness.
 | | where |
 |---|---|
 | the Tool node | [`tools/folio-init/folio-init.ts`](../../../tools/folio-init/folio-init.ts) (`id: "folio-init"`, MCP `folio_init`, CLI `bun run cat init-folio`) |
-| the entry processes | [`getting-started.bpmn`](../../../processes/onboarding/getting-started.bpmn) (`new-repo` and `add-folio` branches), [`repo-conversion.bpmn`](../../../processes/onboarding/repo-conversion.bpmn) (`overlay` branch) |
-| companion skills | [`getting-started`](../../onboarding/onboarding-core/getting-started.md), [`repo-conversion`](../../onboarding/onboarding-core/repo-conversion.md), [`index-config`](index-config.md), [`remote-mount`](remote-mount.md) |
+| the entry processes | `getting-started.bpmn` (`new-repo` and `add-folio` branches), `repo-conversion.bpmn` (`overlay` branch) |
+| companion skills | [`getting-started`](../../conduct/conduct-core/getting-started.md), [`repo-conversion`](../../conduct/conduct-core/repo-conversion.md), [`index-config`](index-config.md), [`remote-mount`](remote-mount.md) |
 
 ## When to use `folio-init`
 
-Reach for `folio-init` when triage in [`getting-started`](../../onboarding/onboarding-core/getting-started.md)
-or [`repo-conversion`](../../onboarding/onboarding-core/repo-conversion.md) has
+Reach for `folio-init` when triage in [`getting-started`](../../conduct/conduct-core/getting-started.md)
+or [`repo-conversion`](../../conduct/conduct-core/repo-conversion.md) has
 settled that a **new folio structure** should be created:
 
 - **`new-repo`** — a brand-new repository is being stood up to author a paper,
