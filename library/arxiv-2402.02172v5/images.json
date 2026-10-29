@@ -9194,6 +9194,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 28 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 28 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 28 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 28 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 28 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -9240,6 +9300,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 28 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 28 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 28 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 28 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 28 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -9286,6 +9406,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 28 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 28 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 28 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 28 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 28 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -9332,6 +9512,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 29 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 29 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 29 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 29 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 29 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -9378,6 +9618,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 29 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 29 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 29 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 29 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 29 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -9419,6 +9719,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 29 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 29 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 29 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 29 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 29 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ]
     },
@@ -9448,6 +9808,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 29 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 29 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 29 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 29 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 29 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ]
     },
@@ -9477,6 +9897,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 29 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 29 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 29 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 29 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 29 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -9523,6 +10003,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 29 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 29 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 29 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 29 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 29 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -9569,6 +10109,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 29 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 29 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 29 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 29 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 29 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ]
     },
@@ -9598,6 +10198,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 29 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 29 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 29 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 29 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 29 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -9644,6 +10304,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 29 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 29 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 29 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 29 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 29 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -9690,6 +10410,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 29 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 29 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 29 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 29 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 29 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -9736,6 +10516,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 30 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 30 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 30 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 30 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 30 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -9782,6 +10622,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 30 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 30 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 30 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 30 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 30 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -9823,6 +10723,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 30 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 30 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 30 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 30 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 30 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ]
     },
@@ -9852,6 +10812,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 30 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 30 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 30 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 30 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 30 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ]
     },
@@ -9881,6 +10901,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 30 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 30 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 30 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 30 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 30 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -9927,6 +11007,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 30 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 30 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 30 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 30 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 30 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -9973,6 +11113,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 30 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 30 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 30 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 30 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 30 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ]
     },
@@ -10002,6 +11202,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 30 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 30 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 30 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 30 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 30 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -10048,6 +11308,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 30 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 30 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 30 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 30 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 30 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -10094,6 +11414,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 30 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 30 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 30 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 30 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 30 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -10140,6 +11520,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 31 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 31 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 31 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 31 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 31 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
@@ -10186,6 +11626,66 @@
           },
           "drafted_at": "2026-10-09",
           "lang": "en"
+        },
+        {
+          "text": "Petite icône d'avatar placée à côté d'un tour de parole de rôle à la page 31 dans le dialogue d'étude de cas de revue de code multi-agents.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "fr"
+        },
+        {
+          "text": "Pequeño icono de avatar colocado junto a un turno de intervención de rol en la página 31 dentro del diálogo del estudio de caso de revisión de código multiagente.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "es"
+        },
+        {
+          "text": "أيقونة صورة رمزية صغيرة موضوعة بجانب دور المتحدث في الصفحة 31 ضمن حوار دراسة الحالة لمراجعة الكود متعددة الوكلاء.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ar"
+        },
+        {
+          "text": "Небольшая иконка аватара рядом с репликой роли говорящего на странице 31 в диалоге тематического исследования многоагентного ревью кода.",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "ru"
+        },
+        {
+          "text": "第 31 页多智能体代码审查案例研究对话中置于发言角色轮次旁的小型头像图标。",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://f6b81e75-dede-4de5-bb19-6b7b92f3353c"
+          },
+          "drafted_at": "2026-10-27",
+          "lang": "zh"
         }
       ],
       "placements": [
