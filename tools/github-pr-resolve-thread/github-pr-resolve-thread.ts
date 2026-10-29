@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // `gh` has no command for this: it is the GraphQL mutation `resolveReviewThread`,
 // whose text carries `$id`, which a shell would expand. So the command is a

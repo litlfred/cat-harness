@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // ── The site's visual assets, which had no SKILL until 2026-09-20 ─────
 //

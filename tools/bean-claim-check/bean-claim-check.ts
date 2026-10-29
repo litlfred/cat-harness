@@ -18,8 +18,8 @@
  * @module tools/bean-claim-check
  */
 
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 export default toolFactory((t) =>
   defineTool({

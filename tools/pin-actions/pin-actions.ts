@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // Bean `ieum`, owner 2026-10-07: "when published, make it unpinned on
 // staging". Pins third-party actions in every workflow but the declared

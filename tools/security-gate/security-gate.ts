@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // Bean `l4ay`, owner 2026-10-03: "A sub graph declares where it's getting
 // its content". The ONE resolver, from a shell — `branch-store

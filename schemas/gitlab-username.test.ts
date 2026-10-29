@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { GitLabUsernameSchema, LoginSchema, isInjectionSafe } from "./tool-types.js";
+import { GitLabUsernameSchema, LoginSchema, isInjectionSafe } from "./tools/tool-types.js";
 
 describe("GitLabUsername: a GitLab account name, safe on the command line (4dbr)", () => {
   test("GitLab's shapes parse, including ones Login refuses", () => {

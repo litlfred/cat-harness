@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // ── The round-trip RECORDER, and the two dispatch points it did not need ─
 //

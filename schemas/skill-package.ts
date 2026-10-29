@@ -41,7 +41,7 @@ import {
   refineStatement,
 } from "@litlfred/bootstrap-tools/schemas/requirement.ts";
 import { NETWORK_REACHES } from "./cat-harness";
-import { SkillNameSchema } from "./tool-types.js";
+import { SkillNameSchema } from "./tools/tool-types.js";
 import { SutKindSchema } from "./test-plan";
 
 // ─── Enumerations ────────────────────────────────────────────────────────────
@@ -313,7 +313,7 @@ export const SkillDefinitionSchema = z.object({
   // mechanism FROM the skill, the general node pointing at its dependents:
   // a new script meant editing the skill, and nothing read any of the three.
   // A mechanism is a Tool that names the skill it `satisfies`
-  // (`schemas/tool.ts`); a Tool reachable only over MCP is refused there.
+  // (`schemas/tools/tool.ts`); a Tool reachable only over MCP is refused there.
   routingPatterns: z.array(z.string()).optional(),
   tags: z.array(z.string()).optional(),
   package: z.string().optional(),

@@ -109,7 +109,7 @@ A Tool is declared in `tools/<id>/<id>.ts` inside the harness's declared
 string, the file default-exports `toolFactory((t) => defineTool({ … }))`, and
 the folder also holds whatever is that Tool's alone (its script, fixtures,
 tests). `tools/index.ts` only calls `toolsFromFolders`
-(`schemas/tool-folders.ts`), which refuses a folder that breaks the
+(`schemas/tools/tool-folders.ts`), which refuses a folder that breaks the
 convention, so discovery is unchanged. Helpers several Tools share go in
 `tools/lib.ts`, which declares no Tool. A `defineTool(` anywhere else in the
 directory is an inline declaration, and `check:tools` reports it.

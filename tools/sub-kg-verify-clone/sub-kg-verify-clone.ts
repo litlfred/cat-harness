@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // Bean `3tza`, owner ruling 2 (2026-10-06): stage 11 of `sub-kg-lifecycle`
 // ("Verify on a fresh clone") is a command, as `seed:ready` became one.

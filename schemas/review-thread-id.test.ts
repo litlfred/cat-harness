@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { ReviewThreadIdSchema, isInjectionSafe } from "./tool-types.js";
+import { ReviewThreadIdSchema, isInjectionSafe } from "./tools/tool-types.js";
 
 describe("ReviewThreadId: a forge's review-thread id, safe on the command line (4dbr)", () => {
   test("both forges' shapes parse", () => {

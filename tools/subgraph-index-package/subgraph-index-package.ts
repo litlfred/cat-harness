@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // Bean `mo75` G2b. Owner, 2026-10-24 (decision card, option A): the subgraph
 // index files are published per pin in a package, and a hydrated mount

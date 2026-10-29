@@ -80,7 +80,7 @@ could-not-determine kept distinct from present.
 ## Adding a Tool type is fail-closed, and that is deliberate
 
 `check:tools` refuses a command-line input whose type could express a shell
-payload, against the membership list in `schemas/tool-types.ts`. **A newly added
+payload, against the membership list in `schemas/tools/tool-types.ts`. **A newly added
 type is absent from that list and therefore unsafe by default.** Adding it is a
 deliberate step, not an oversight to route around — and the fix for an enumerable
 input is *the enum*, never a looser type that happens to pass.

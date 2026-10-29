@@ -10,7 +10,7 @@ import { join, resolve } from "node:path";
 
 import { AssetSourceSchema, KgAssetSchema } from "./kg-node.ts";
 import { readRoleGraph, resolveRoleSkills } from "./role-graph.ts";
-import { toolTypeIri } from "./tool-types.ts";
+import { toolTypeIri } from "./tools/tool-types.ts";
 import folioInitFactory from "../tools/folio-init/folio-init.ts";
 import declarationResolutionFactory from "../tools/declaration-resolution/declaration-resolution.ts";
 

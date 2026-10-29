@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // Bean `qou-qb6t`, owner 2026-10-04: "all witnesses tools will need to go
 // into the KG". The reader of the `computation-witness` kind: which

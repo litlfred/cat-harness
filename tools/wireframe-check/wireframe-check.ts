@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // Wireframes (issue #1023): `wireframe-viewport-check`, the mechanical step of `wireframe-design-review`.
 // It records per-viewport pass/fail entries and never a score, because the
