@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: qa-report-signing\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.476Z\n"
+"POT-Creation-Date: 2026-10-29T15:13:05.783Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #: processes/sdlc/qa-report-signing.bpmn:126
 #. Diagram element documentation
-msgid "Compute the two facts the gateway reads: effectiveReach(deployment, actor) from schemas/actor-reach.ts, and whether the signing-api capability is configured. Undeclared reach resolves to \"unknown\" rather than to the deployment's value — an aggregate does not determine a member."
+msgid "Compute the two facts the gateway reads: effectiveReach(deployment, actor) from schemas/process/actor-reach.ts, and whether the signing-api capability is configured. Undeclared reach resolves to \"unknown\" rather than to the deployment's value — an aggregate does not determine a member."
 msgstr ""
 
 #: processes/sdlc/qa-report-signing.bpmn:101
