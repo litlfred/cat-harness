@@ -239,7 +239,7 @@ derive the published paths from it:
 
 ```
 <base>/<name>/<stub>.jsonld     <base>/<name>/<stub>.json
-<base>/<stub>.schema.json     <base>/<stub>/     docs/<stub>/
+<base>/<name>/<stub>.schema.json     <base>/<stub>/     docs/<stub>/
 ```
 
 The graph document is under the instance's own directory, the host's

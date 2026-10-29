@@ -16,6 +16,6 @@ export default toolFactory((t) =>
       outputs: [{ name: "schema", schema: t("RepoPath") }],
     },
     satisfies: ["kg-export"],
-    maintains: [{ source: "schemas/tool.ts", artefact: "tool.schema.json", format: "json-schema" }],
+    maintains: [{ source: "schemas/tool.ts", artefact: "cat-harness/tool.schema.json", format: "json-schema" }],
   }),
 );
