@@ -39,6 +39,7 @@ node_modules/
 # Owner, 2026-10-14 (B1): computed over the checkout's other instances, or from a
 # branch-kept graph, so no commit of this instance can hold them current.
 /docs/cat-harness/auto-docs/
+/docs/assets/auto-docs/index.json
 /docs/cat-harness/published-graphs.md
 /uml/overview/
 /docs/uml/overview/
@@ -54,6 +55,7 @@ node_modules/
 /docs/en/cat-harness/document-kinds/
 /docs/reference/skill-instructions/
 /docs/en/cat-harness/tools/
+/docs/assets/tools/index.json
 /docs/en/cat-harness/lsi/
 /docs/en/cat-harness/translation-status/
 /docs/assets/translation-status/
@@ -64,6 +66,7 @@ node_modules/
 /docs/en/cat-harness/external-schemas/
 /docs/subscriptions/
 /docs/en/cat-harness/processes/
+/docs/assets/processes/index.json
 /docs/_data/node-kinds.json
 /docs/en/cat-harness/node-kind-index/
 /docs/en/cat-harness/bean/
