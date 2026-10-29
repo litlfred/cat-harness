@@ -4,5 +4,5 @@
   "validates": {
     "kind": "fsh-guts"
   },
-  "schema": "schemas/fsh-guts.ts#FshGutsNodeSchema"
+  "schema": "schemas/kg/fsh-guts.ts#FshGutsNodeSchema"
 }
