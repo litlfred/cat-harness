@@ -1,10 +1,10 @@
 ---
 # folio-assistant-xka5
 title: Pages grouped by harness, following the URL; each harness owns its sub-doc graphs
-status: in-progress
+status: completed
 type: task
 created_at: 2026-10-05T14:39:33Z
-updated_at: 2026-10-05T16:20:41Z
+updated_at: 2026-10-29T07:32:15Z
 parent: folio-assistant-9rq1
 ---
 
@@ -13,9 +13,11 @@ Owner, 2026-10-05, asked how to group the 79 top-level pages: 'dont want additio
 Measured today: just-the-docs 0.12, order by nav_order then title; 79 top-level entries, 42 with no nav_order (35 of them proposals/*.md), many ties.
 
 ## Done when
-- [ ] the Pages list's top level is the harnesses, derived from the URL, never a hand-kept list
-- [ ] below a harness, its own declared sub-doc graphs make the hierarchy
-- [ ] order within a level is alphabetical in the reader's locale
-- [ ] no category exists that someone has to maintain
+- [x] the Pages list's top level is the harnesses, derived from the URL, never a hand-kept list
+- [x] below a harness, its own declared sub-doc graphs make the hierarchy
+- [x] order within a level is alphabetical in the reader's locale
+- [x] no category exists that someone has to maintain
 
 _2026-10-05T16:20:38Z_ — Claimed by claude/vibrant-darwin-r6im60 — pushed to main so sibling sessions see it before this branch has a PR (bean 35nj).
+
+_2026-10-29T07:32:15Z_ — Completed: cat-harness-tools#627 merged (6bb02ad).
