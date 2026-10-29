@@ -146,7 +146,7 @@ change a row, edit the kind.
 > failure mode is a consumer that now scans nothing and reports clean, which
 > looks identical to success from inside. Three constants here composed their
 > path from segments — `join("tests", "health", "results")` in
-> `schemas/health-report.ts`, and the scan-root lists in
+> `schemas/sdlc/health-report.ts`, and the scan-root lists in
 > `scripts/repo-partition.ts` and `scripts/tests/site-dir-single-answer.test.ts`
 > — so a corpus grep for the moved path did not find any of them, and all three
 > fail **silently** when stale. What caught them was asking each tool to name
@@ -209,7 +209,7 @@ change a row, edit the kind.
 > already declared and inventing a fifth vocabulary for them would be the drift
 > this file exists to prevent. `AGENTS.md`: *an actor performs a task in a
 > process as a role.* A todo is that sentence left unfinished, so it is tagged
-> by `roles`, `processes`, `tasks` and `identities` (`schemas/todo.ts`).
+> by `roles`, `processes`, `tasks` and `identities` (`schemas/sdlc/todo.ts`).
 >
 > Two things about those tags are load-bearing rather than incidental:
 >
@@ -267,7 +267,7 @@ contract. Expressing the distinction as two sibling entries in a flat list
 misrepresented a containment relation.
 
 `beans/` is now a graph with named nodes, declared by `beans/beans.json`
-(schema: `schemas/bean-graph.ts`): `defs` holds the work plan, `workflows`
+(schema: `schemas/sdlc/bean-graph.ts`): `defs` holds the work plan, `workflows`
 holds running-instance state. So the harness says which directories exist and
 what kind of graph each holds, and the bean graph says what its own nodes are.
 **One fact, one place, at each level** — and the consumer that must not be

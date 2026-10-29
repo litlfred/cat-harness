@@ -71,7 +71,7 @@
  * > *"taste matters as judgement=human/agentic adjudication."*
  *
  * That is not a softening, it is the repository's existing model, and this
- * module was briefly at odds with it. `schemas/qa-review.ts` already separates
+ * module was briefly at odds with it. `schemas/sdlc/qa-review.ts` already separates
  * the two axes and says why: a `severity` is what a script can compute, a
  * `weight` is what only a reviewer with judgement can assign, and *"Only a
  * reviewer with judgement can speak here; a checker cannot, which is exactly
@@ -521,7 +521,7 @@ export function failingClauses(m: DetangleMetrics, t: Thresholds = DEFAULT_THRES
 }
 
 /**
- * A finding this scanner raises, in the shape `schemas/qa-review.ts` defines.
+ * A finding this scanner raises, in the shape `schemas/sdlc/qa-review.ts` defines.
  *
  * Deliberately NOT a bespoke verdict type. The review model already has a
  * reviewer kind for a script, a machine severity axis, and a `Decision` by

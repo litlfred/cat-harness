@@ -60,7 +60,7 @@ import { z } from "zod";
 import { ATTRIBUTION_KINDS } from "./content/attribution";
 import { RunContextRefSchema } from "./run-context";
 import type { TestPlan } from "./test-plan";
-import { SutRefSchema, TestPlanRefSchema } from "./test-run";
+import { SutRefSchema, TestPlanRefSchema } from "./sdlc/test-run";
 
 /** The tag a test report carries, so it is identified by declaration. */
 export const TEST_REPORT_SCHEMA_ID = "test-report/v1";

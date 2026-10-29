@@ -313,7 +313,7 @@ low-dexterity profile (`interaction/`) answers by choosing a number.
    reported **three**, and the owner authorised deleting "the 3 orphans". Two of
    the three were LIVE previews for open PRs #1337 and #914 — caught only
    because directory sizes were measured before deleting. `stagingSlug` was
-   already exported from `schemas/staging.ts` and already differentially tested
+   already exported from `schemas/sdlc/staging.ts` and already differentially tested
    against the real `sed`, one import away. Independently, 2026-09-27: an agent
    extending `check:anchor-names` probed its own narrower file set instead of
    quoting the check's own count, wrote **25** invisible ascents into a docblock

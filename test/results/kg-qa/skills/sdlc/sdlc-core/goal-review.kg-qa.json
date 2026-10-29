@@ -5,7 +5,7 @@
     "id": "goal-review",
     "path": "skills/sdlc/sdlc-core/goal-review.md"
   },
-  "source_hash": "e8f6fb0944ec",
+  "source_hash": "608b78f40f16",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

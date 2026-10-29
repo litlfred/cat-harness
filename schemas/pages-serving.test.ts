@@ -4,7 +4,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { PAGES_SERVING_SCHEMA, PagesServingObservationSchema } from "./health-report.js";
+import { PAGES_SERVING_SCHEMA, PagesServingObservationSchema } from "./sdlc/health-report.js";
 
 const ok = {
   $schema: PAGES_SERVING_SCHEMA,

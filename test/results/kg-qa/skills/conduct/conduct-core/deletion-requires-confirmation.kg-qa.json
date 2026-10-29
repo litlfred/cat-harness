@@ -5,7 +5,7 @@
     "id": "deletion-requires-confirmation",
     "path": "skills/conduct/conduct-core/deletion-requires-confirmation.md"
   },
-  "source_hash": "fb9e9a28a2bc",
+  "source_hash": "d409a9f0cc99",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

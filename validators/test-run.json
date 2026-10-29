@@ -5,5 +5,5 @@
     "kind": "qa",
     "family": "folio-test-run/v1"
   },
-  "schema": "schemas/test-run.ts#TestRunSchema"
+  "schema": "schemas/sdlc/test-run.ts#TestRunSchema"
 }

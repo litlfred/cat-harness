@@ -10,11 +10,11 @@ import {
   type RunContext,
 } from "./run-context";
 import { TOOL_RUN_SCHEMA_ID, ToolRunRecordSchema } from "./tools/tool-run";
-import { TEST_RUN_SCHEMA_ID, TestRunSchema } from "./test-run";
+import { TEST_RUN_SCHEMA_ID, TestRunSchema } from "./sdlc/test-run";
 import { TEST_REPORT_SCHEMA_ID, TestReportSchema } from "./test-report";
-import { QA_REPORT_SCHEMA_TAG, QaReportSchema } from "./qa-report";
-import { KG_QA_MANIFEST_SCHEMA, KgQaManifestSchema } from "./kg-qa";
-import { HEALTH_REPORT_SCHEMA, HealthReportSchema } from "./health-report";
+import { QA_REPORT_SCHEMA_TAG, QaReportSchema } from "./sdlc/qa-report";
+import { KG_QA_MANIFEST_SCHEMA, KgQaManifestSchema } from "./sdlc/kg-qa";
+import { HEALTH_REPORT_SCHEMA, HealthReportSchema } from "./sdlc/health-report";
 import { addressBook, provJsonldDocument } from "./prov-jsonld";
 import type { ProvActivity } from "./content/prov";
 import { resolve } from "node:path";

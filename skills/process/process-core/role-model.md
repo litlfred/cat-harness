@@ -39,7 +39,7 @@ the DAK layer's `findings/dth-terms.md`.
 
 Schema: [`schemas/process/role-graph.ts`](../../../schemas/role-graph.ts). Audit:
 `scripts/kg-audit.ts`, sidecar schema
-[`schemas/kg-qa.ts`](../../../schemas/kg-qa.ts).
+[`schemas/sdlc/kg-qa.ts`](../../../schemas/kg-qa.ts).
 
 ### Not every skill is PERFORMED — `consulted: true`
 
@@ -529,7 +529,7 @@ name-matched instead.
 ## The audit — `bun run cat kg:audit`
 
 One criterion per join in the sentence at the top. The list below is the
-actor→role→skill→task core; **`KG_CRITERIA` in `schemas/kg-qa.ts` is the
+actor→role→skill→task core; **`KG_CRITERIA` in `schemas/sdlc/kg-qa.ts` is the
 registry**, and it is longer — it also covers requirements, skill bodies and
 the graph as a whole. This said "Fourteen criteria" while the registry held
 **32**, which is the same defect the audit exists to catch, one level up: a

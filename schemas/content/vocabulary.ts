@@ -600,7 +600,7 @@ export const PROPERTY_GLOSSES: Readonly<Record<string, TermGloss>> = {
   // `cat-harness-tools/scripts/kg-changed-assets.ts`, declared in the export's
   // `buildContext` (owner, 2026-10-14: "a list of changed assets in the
   // staging knowledge graph"). `title`, `before` and `after` are the
-  // `StagingPageComparison` fields of `schemas/staging.ts`.
+  // `StagingPageComparison` fields of `schemas/sdlc/staging.ts`.
   changedAssets: { gloss: "The nodes a staging preview's graph adds, changes or removes against the graph main publishes, in node order." },
   changedAssetsComparedWith: { gloss: "The published main document a changed-assets list was computed against." },
   changedAssetsUnavailable: {

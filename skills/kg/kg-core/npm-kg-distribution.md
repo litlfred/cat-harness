@@ -30,7 +30,7 @@ packaging and retrieval:
 |---|---|
 | the packaging tool | `pack-tarball` (`bun run cat-harness-tools/scripts/pack-tarball.ts`) |
 | the retrieval tool | `kg-retrieve-npm` (`bun run cat-harness-tools/scripts/kg-retrieve-npm.ts`) |
-| the release schema | `schemas/binary-release.ts` (`folio-binary-release/v1`) |
+| the release schema | `schemas/sdlc/binary-release.ts` (`folio-binary-release/v1`) |
 | asset verification | `cat-harness-tools/scripts/check-declared-assets.ts` |
 | related skills | [`remote-mount`](remote-mount.md), [`kg-export`](kg-export.md), [`package-release`](../../sdlc/sdlc-core/package-release.md), [`kg-subscription`](../../library/large-datasets/kg-subscription.md) |
 
@@ -86,7 +86,7 @@ The packaging process:
 ### The `folio-binary-release/v1` state node
 
 A published tarball is represented in the Knowledge Graph as a `folio-binary-release/v1`
-document (`schemas/binary-release.ts`). A release record captures the **publication event**,
+document (`schemas/sdlc/binary-release.ts`). A release record captures the **publication event**,
 never the binary payload itself:
 
 ```json

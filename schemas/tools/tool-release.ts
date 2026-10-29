@@ -78,7 +78,7 @@
  */
 import { z } from "zod";
 
-import { ReleaseDigestSchema } from "../binary-release";
+import { ReleaseDigestSchema } from "../sdlc/binary-release";
 import {
   OCI_BY_DIGEST,
   OutsideSoftwareCoreSchema,

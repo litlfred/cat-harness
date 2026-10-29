@@ -39,7 +39,7 @@
  */
 import { z } from "zod";
 
-import { ReleaseDigestSchema } from "./binary-release";
+import { ReleaseDigestSchema } from "./sdlc/binary-release";
 import { nodeKind } from "./kg/node-kind";
 import { checkLicenceExpression, type SpdxLicenseList } from "./spdx-license-expression";
 

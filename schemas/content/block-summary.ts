@@ -30,7 +30,7 @@
  *
  * ## `source_hash` — so a changed source reads as STALE, not as right
  *
- * The kg-qa sidecars (`schemas/kg-qa.ts`) record the hash of the subject they
+ * The kg-qa sidecars (`schemas/sdlc/kg-qa.ts`) record the hash of the subject they
  * judged, because a verdict that outlives its subject silently describes
  * something else. A summary has the same failure: re-ingest a document, a
  * section's text changes, and the old summary goes on sitting beside the new

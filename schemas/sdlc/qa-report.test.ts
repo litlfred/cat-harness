@@ -7,7 +7,7 @@ import {
   qaReportVerdict,
   type QaReport,
 } from "./qa-report";
-import { defaultGraphTypologies, graphTypologyIri, graphLayer, isRenderable, processMayWrite } from "./kg/cat-harness";
+import { defaultGraphTypologies, graphTypologyIri, graphLayer, isRenderable, processMayWrite } from "../kg/cat-harness";
 
 /**
  * A report in the shape the upstream `QAReporter` writes, plus the wrapper

@@ -269,7 +269,7 @@ re-derive what a committed check already computes**, which is
 [`goal-review`](../../sdlc/sdlc-core/goal-review.md) rule 2's qualification, stated there for the
 reviewing side.
 
-`stagingSlug` was exported from `schemas/staging.ts` at the time, and
+`stagingSlug` was exported from `schemas/sdlc/staging.ts` at the time, and
 `test/health/checks.test.ts` already asserted it differentially against the real
 `sed` pipeline. A correct, tested implementation was one import away. So the gap
 was never duplication in the code — it was that nothing required the list's

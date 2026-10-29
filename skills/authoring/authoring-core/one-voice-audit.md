@@ -238,7 +238,7 @@ Report back with:
 ## QA report integration
 
 The watcher persists every finding to the block's sibling
-`<block>.qa.json` file (schema: `schemas/block-qa.ts`).
+`<block>.qa.json` file (schema: `schemas/sdlc/block-qa.ts`).
 Per-criterion staleness is keyed by SHA-256 prefix of the source
 files at audit time — when the `.md` (or `.ts` / proof file) is later
 edited, the recorded `field_hash` no longer matches, and the

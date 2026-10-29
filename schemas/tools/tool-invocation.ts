@@ -3,7 +3,7 @@
  *
  * ## Why this reuses the review vocabulary instead of inventing one
  *
- * `schemas/qa-review.ts` already models "an act, by someone with the standing
+ * `schemas/sdlc/qa-review.ts` already models "an act, by someone with the standing
  * to make it, with a rationale that cites its evidence" — `Decision`,
  * `AuditNote`, `ReviewerRef` — and `schemas/process/role-graph.ts` already models who
  * may act: skills belong to the **lane** (what the performer must know),

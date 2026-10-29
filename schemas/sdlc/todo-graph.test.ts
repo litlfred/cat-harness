@@ -14,7 +14,7 @@ import {
   DEFAULT_TODO_GRAPH_ROOT,
   TODO_NODE_KINDS,
 } from "./todo-graph";
-import { defaultGraphTypologies } from "./kg/cat-harness";
+import { defaultGraphTypologies } from "../kg/cat-harness";
 
 describe("the default layout", () => {
   test("it parses, and names both node kinds", () => {

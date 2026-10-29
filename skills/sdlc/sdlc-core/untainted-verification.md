@@ -51,7 +51,7 @@ its own paraphrase of itself.
 
 ## The context is declared, not composed
 
-`UntaintedDispatch` on the criterion (`schemas/block-qa.ts`) declares
+`UntaintedDispatch` on the criterion (`schemas/sdlc/block-qa.ts`) declares
 `checker_sees`, `checker_withheld`, `adjudicator_sees` and `drift`. A caller
 names a **subject** and a **criterion**; it does not hand-assemble a brief.
 

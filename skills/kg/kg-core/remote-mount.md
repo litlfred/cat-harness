@@ -215,19 +215,7 @@ recommended). Three of the rulings govern this step:
 With `tools` named anywhere in a mount entry, each instance of that entry
 mounts the directories the closure touches, plus any its override names in
 `directories`. It does **not** mount its default list. A `whole` instance
-stays whole.
-
-**Other entries the closure reaches shrink too** (owner, 2026-10-29, option
-B: "every touched entry"). In a per-repository layout each layer is its own
-mount entry, so the implementation of a chosen Tool usually sits in another
-entry's instance. That instance mounts only the directories the closures
-need from it, united across every entry that chooses Tools. Two settings on
-its own entry win: an explicit `directories` list, which then must already
-bring what the closure needs (else the choosing entry is refused, naming the
-directory), and `whole`. An instance no closure touches keeps its default
-list.
-
-A Tool id the instance does not declare at the pin is refused at
+stays whole. A Tool id the instance does not declare at the pin is refused at
 plan time. `tools` together with `hydrated` is refused, because metadata
 brings no code.
 
@@ -242,9 +230,7 @@ holds every Tool's definition (about 170 folders, all of which load from
 | `bean-query` | `schemas`, `tools` | `scripts`, `src` | whole |
 | `agent-memory` | `schemas`, `tools` | `scripts` | whole |
 
-Without `tools` chosen anywhere, the tools layer mounts every in-checkout
-directory it declares. With Tools chosen in cat-harness's entry, the tools
-layer's own entry shrinks to the right-hand columns above.
+Without `tools`, the tools layer mounts every in-checkout directory it declares.
 The end-to-end check is the `remote-mount` test "load tools metadata, choose
 three Tools, materialise them" in the tools layer.
 

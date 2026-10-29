@@ -13,7 +13,7 @@ import {
   ADAPTER_BLOCK_KINDS, BLOCK_KIND_NODES, BLOCK_KINDS, CONTENT_ADAPTERS, CONTENT_ADAPTER_NODES, DOCUMENT_BLOCK_KINDS, MATH_BLOCK_KINDS,
   adapterForKind, discoverBlockKinds, discoverContentAdapters, kindForBuilder, type ContentAdapter,
 } from "./block-kinds";
-import { ADAPTER_COMPANION_ROLES } from "./block-qa";
+import { ADAPTER_COMPANION_ROLES } from "./sdlc/block-qa";
 import { KNOWN_LABEL_PREFIXES, LABEL_PREFIXES } from "./constraints";
 import { allTypedBlockKinds } from "./vocabulary-modules";
 import { BLOCK_KIND_TO_FOLIO_TYPE, KIND_PREFIXES, assertPrefixesInSync } from "./kg/jsonld";

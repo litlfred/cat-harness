@@ -25,7 +25,7 @@
  * A rejected draft that is silently re-offered wastes the reviewer's time; one
  * that vanishes lets the next agent redraft the identical thing. That is the
  * argument `scrapped` wins on for beans — deletion loses the fact that someone
- * already decided — and `schemas/qa-review.ts`'s `Decision` makes the same
+ * already decided — and `schemas/sdlc/qa-review.ts`'s `Decision` makes the same
  * demand one layer over: at least one note saying why this outcome, not
  * another.
  *

@@ -710,7 +710,7 @@ provides smooth 0.4s transitions for sidebar and content layout:
 
 When presenting translated content for review, use the `staging-review`
 skill to provide before/after URL comparison tables. See
-`schemas/staging.ts` for the `StagingComparison` schema.
+`schemas/sdlc/staging.ts` for the `StagingComparison` schema.
 
 ## Staging links
 

@@ -4,5 +4,5 @@
   "validates": {
     "kind": "health"
   },
-  "schema": "schemas/health-report.ts#HealthReportSchema"
+  "schema": "schemas/sdlc/health-report.ts#HealthReportSchema"
 }
