@@ -309,6 +309,19 @@ Every instance ends in exactly one state:
 Could-not-determine outranks missing, and missing outranks mounted. **A fetch
 that failed is never an empty layer.**
 
+### Re-pinning: from a checkout mounted from the lock
+
+A re-pin is `mount:remote --seed <name>=<owner/repo>@<sha>` (it writes the
+pin and its consent into `index.config.json`), then `mount:remote` (it lays
+the bytes down and rewrites the lock). Do it in a checkout whose mounts match
+the lock: a fresh one, or one replayed by `.github/mount-from-lock.sh`. A
+mount with local edits is left untouched by the next mount, at its old
+commit, while the lock's top-level pin moves; CI mounts from the instance
+entries, so it kept testing the old layer (folio-assistant#2682). `--seed`
+now refuses while a mount it moves has such edits, and `mount:check` reports
+an instance entry behind its pin as `missing`. After the re-pin, check that
+the moved instance's `sha` in `index.lock.json` is the new pin.
+
 ## A changed lock re-renders the agent surface
 
 **A mount is not done when the bytes are on disk.** A newly pinned layer can
