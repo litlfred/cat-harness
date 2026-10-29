@@ -13,7 +13,7 @@
  * | kind | `$schema` | what the platform does with it | adds |
  * |---|---|---|---|
  * | `tool-release` | `folio-tool-release/v1` | RUNS it | `role`, `kind`, `entry`, `runtimes`, `platform`, `note` |
- * | `software-library` | `software-library/1.0.0` | IMPORTS it | `range`, `dev`, `usedBy`, `shim` |
+ * | `software-library` | `software-library/1.1.0` | IMPORTS it, or keeps it vendored | `range`, `dev`, `usedBy`, `shim`, `vendored` |
  *
  * ## Why a core, and not one kind
  *

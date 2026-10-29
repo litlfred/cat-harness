@@ -32,6 +32,7 @@ import type {
   QaCriterionEntry,
   QaCriterionDefinition,
 } from "./block-qa";
+import type { RunContextRef } from "./run-context";
 
 /**
  * Source language of the audited script. Determines which checker
@@ -104,6 +105,12 @@ export interface ScriptQaReport {
    * deps_hash on the reviewer apply identically here).
    */
   criteria: Record<string, QaCriterionEntry[]>;
+  /**
+   * Content-addressed reference to the `folio-run-context/v1` record of the
+   * run that wrote this report (`docs/proposals/tool-releases-2026-10-07.md`,
+   * owner C1 = a).
+   */
+  runContext?: RunContextRef;
 }
 
 /**

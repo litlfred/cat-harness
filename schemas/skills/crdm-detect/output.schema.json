@@ -1,5 +1,5 @@
 {
-  "$id": "https://litlfred.github.io/folio-assistant/skills/crdm-detect/output.schema.json",
+  "$id": "https://litlfred.github.io/folio-assistant/cat-harness/skills/crdm-detect/output.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "CRDM Detect Output",
   "description": "The verdict on one request. `fires` is the decision; `categories` and `excluded` are the evidence for it, so a reviewer can see why it fired or why it did not.",

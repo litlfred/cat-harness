@@ -18,7 +18,7 @@ export default toolFactory((t) =>
     },
     satisfies: ["kg-export"],
     maintains: [
-      { source: "schemas/cat-harness.ts", artefact: `${stub()}.schema.json`, format: "json-schema" },
+      { source: "schemas/cat-harness.ts", artefact: `cat-harness/${stub()}.schema.json`, format: "json-schema" },
     ],
   }),
 );

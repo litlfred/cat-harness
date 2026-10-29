@@ -61,8 +61,8 @@ capability probe:
 ```powershell
 git clone https://github.com/litlfred/folio-assistant.git
 cd folio-assistant
-.\cat-harness\scripts\bootstrap.ps1 -CheckOnly   # report only, installs nothing
-.\cat-harness\scripts\bootstrap.ps1              # do it
+.\cat-harness-tools\scripts\bootstrap.ps1 -CheckOnly   # report only, installs nothing
+.\cat-harness-tools\scripts\bootstrap.ps1              # do it
 ```
 
 It installs Bun and nothing else — LaTeX, Lean, Java and the IG Publisher stay
@@ -71,16 +71,16 @@ per content type, reported by `check-deps` with install hints.
 The platform's shell scripts are bash. On Windows they run under **Git Bash**,
 which [Git for Windows](https://git-scm.com/download/win) installs, so `git`
 is the only extra prerequisite. Every script a user runs by hand or wires into
-a config has a `.bat` beside it — `cat-harness\scripts\install-beans.bat`,
-`cat-harness\scripts\start-folio-assistant.bat`, `cat-harness\scripts\git-hooks\install.bat`,
-`cat-harness\scripts\session-start-coord-sweep.bat` and so on — which finds Git Bash
+a config has a `.bat` beside it — `cat-harness-tools\scripts\install-beans.bat`,
+`cat-harness-tools\scripts\start-folio-assistant.bat`, `cat-harness-tools\scripts\git-hooks\install.bat`,
+`cat-harness-tools\scripts\session-start-coord-sweep.bat` and so on — which finds Git Bash
 (never the WSL launcher in `System32`) and runs the sibling `.sh` with the same
 arguments. Use them from `cmd.exe`, PowerShell, Task Scheduler or an MCP
 config entry:
 
 ```bat
-cat-harness\scripts\install-beans.bat
-cat-harness\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
+cat-harness-tools\scripts\install-beans.bat
+cat-harness-tools\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
 ```
 
 Anything the `.sh` needs — `bun`, `curl`, `gh`, `elan` — must be on the

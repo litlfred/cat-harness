@@ -139,6 +139,7 @@ package test {
     sut.actor [1] : string
     sut.version [1] : string
     sut.reach [1] : internet | egress-restricted | air-gapped | unknown
+    runContext.sha256 [1] : string
   }
   class "KG QA Report" as KgQaReport <<json: KgQaReportSchema>> [[../../../en/folio-assistant-core/glossary/instance/cat-harness/#cat-harness--platform--kg-qa-report]] #f4e6e6 {
     $schema [1] : 'kg-qa/v1'
@@ -151,6 +152,7 @@ package test {
     pair_attestations [0..1] : any
     voice_reviews [0..1] : any
     adversarial_reviews [0..*] : {reviewer, author_sessions, skill_hash, at, coverage, result, flags, findings}[]
+    runContext.sha256 [1] : string
   }
 }
 

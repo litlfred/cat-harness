@@ -77,6 +77,9 @@ export const PROV_JSONLD_CONTEXT_HELD = {
 /** The `$schema` a catalogue record declares itself with. */
 const CATALOGUE_NODE_SCHEMA = "folio-catalogue-node/v1";
 
+/** The `$schema` a tool release record declares itself with. */
+const TOOL_RELEASE_SCHEMA = "folio-tool-release/v1";
+
 /** The global Handle System resolver. */
 const HANDLE_RESOLVER = "https://hdl.handle.net/";
 
@@ -181,6 +184,29 @@ export function addressBook(repo: string): AddressBook {
     const frag = fragment ?? o.fragment;
     return { iri: `${releaseIri(r, o.path, "agent")}${frag ? `#${frag}` : ""}` };
   };
+
+  // `prov:used` also names tool releases (`<name>@<version>` or
+  // `tool-releases/<stem>`) from an instance's declared `tool-release` graph
+  // (issue #2481, bean `3sbm`, step 3 of `docs/proposals/tool-releases-2026-10-07.md`).
+  for (const root of roots) {
+    const dir = instanceDirectoryForGraph(root, "tool-release");
+    if (!dir) continue;
+    for (const f of filesUnder(dir, ".json")) {
+      if (f.endsWith(".profile.json")) continue;
+      let n: { $schema?: unknown; name?: unknown; version?: unknown };
+      try {
+        n = JSON.parse(readFileSync(f, "utf-8")) as typeof n;
+      } catch {
+        continue;
+      }
+      if (n.$schema !== TOOL_RELEASE_SCHEMA || typeof n.name !== "string" || typeof n.version !== "string") continue;
+      const addr = addressOf({ root, path: rel(root, f) });
+      const ref = `${n.name}@${n.version}`;
+      if (!entities.has(ref)) entities.set(ref, addr);
+      const pathKey = rel(root, f);
+      if (!entities.has(pathKey)) entities.set(pathKey, addr);
+    }
+  }
 
   return {
     resolve(kind, value) {

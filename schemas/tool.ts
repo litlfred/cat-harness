@@ -42,13 +42,12 @@
  */
 import { z } from "zod";
 
+import { ToolIdSchema } from "./tool-id.js";
 import { ProcessIdSchema, SkillNameSchema } from "./tool-types.js";
 
-/** A lowercase, hyphenated id. It is also the MCP tool name stem. */
-const ToolId = z
-  .string()
-  .min(1)
-  .regex(/^[a-z][a-z0-9-]*$/, "a tool id is lowercase letters, digits and hyphens");
+/** A lowercase, hyphenated id; `tool-id.ts` says why it is its own module. */
+const ToolId = ToolIdSchema;
+export { ToolIdSchema };
 
 /**
  * An absolute IRI naming the schema of one input or output.

@@ -26,6 +26,66 @@
       },
       "drafted_at": "2026-09-29",
       "lang": "en"
+    },
+    {
+      "text": "La figure 1 illustre le modèle de contexte, la table de mots-clés des métanymes à travers les domaines et les contextes parallèles instanciés.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "fr"
+    },
+    {
+      "text": "La figura 1 ilustra la plantilla de contexto, la tabla de palabras clave de metanimos en los distintos dominios y los contextos paralelos instanciados.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "es"
+    },
+    {
+      "text": "يوضح الشكل 1 قالب السياق، وجدول الكلمات المفتاحية للميتانيمات عبر المجالات، والسياقات المتوازية المُنشأة منه.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ar"
+    },
+    {
+      "text": "Рисунок 1 иллюстрирует шаблон контекста, таблицу ключевых слов метанимов по предметным областям и созданные из него параллельные контексты.",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "ru"
+    },
+    {
+      "text": "图 1 展示了上下文模板、跨领域的元名（metanym）关键词表，以及实例化后的平行上下文。",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "claude-code",
+        "model": "not-disclosed",
+        "session": "https://claude.ai/code/session_01TkFVzHu3LN6P5Nj2psquPU"
+      },
+      "drafted_at": "2026-10-24",
+      "lang": "zh"
     }
   ],
   "derivedFrom": "library/arxiv-2606.21008v3/sections/sec-004",
