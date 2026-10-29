@@ -2834,6 +2834,956 @@
       ]
     },
     {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-150",
+      "source": "sections/sec-150-contentidentifier.md",
+      "source_hash": "5b8284df9d7e3b1dc2a4f72b8bd15ece48822a2109207e6b7b3a03f52073b745",
+      "narrative": [
+        {
+          "text": "Completes the informative all-properties table for `/Software/SoftwareArtifact` (Section 9.1.6, from `contentIdentifier` through `verifiedUsing`) and opens Section 9.2 (Software Profile Properties) with Section 9.2.1 (`additionalPurpose`, an `ObjectProperty` with range `SoftwarePurpose` on `/Software/SoftwareArtifact`) and Section 9.2.2 (`attributionText`, a `DataProperty` with range `xsd:string` on `/Software/SoftwareArtifact` for acknowledgement text).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-151",
+      "source": "sections/sec-151-byterange.md",
+      "source_hash": "eee734bb96057e40a017f9964d77856c21ee3dc2024249b5d2854d1cb5fd192d",
+      "narrative": [
+        {
+          "text": "Defines Section 9.2.3 (`byteRange`), a `DataProperty` with range `/Core/PositiveIntegerRange` on `/Software/Snippet` specifying the 1-based byte range in the original host file, and Section 9.2.4 (`contentIdentifier`), a `DataProperty` with range `ContentIdentifier` on `/Software/SoftwareArtifact` providing a canonical, unique, immutable identifier of artifact content.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-152",
+      "source": "sections/sec-152-contentidentifiertype.md",
+      "source_hash": "7c9513c18fbc7b79b2f0b99cd57e6de8e271d1c681f5309b14a3b702ce7afb7a",
+      "narrative": [
+        {
+          "text": "Defines Section 9.2.5 (`contentIdentifierType`), a Software Profile `ObjectProperty` with range `ContentIdentifierType` on `/Software/ContentIdentifier` that specifies the type of a content identifier.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-153",
+      "source": "sections/sec-153-contentidentifiervalue.md",
+      "source_hash": "44a8b51ae175a77f3d0fbb315d9aab68b796bfd34aac6dd4b5168573c2811750",
+      "narrative": [
+        {
+          "text": "Defines Section 9.2.6 (`contentIdentifierValue`), a Software Profile `DataProperty` with range `xsd:anyURI` on `/Software/ContentIdentifier` that specifies the value of a content identifier.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-154",
+      "source": "sections/sec-154-copyrighttext.md",
+      "source_hash": "835f9330829fe8efa8f556ed3e17b8bd92447ca1f1841cb141b42b274ffd57a5",
+      "narrative": [
+        {
+          "text": "Defines Section 9.2.7 (`copyrightText`), a Software Profile `DataProperty` with range `xsd:string` on `/Software/SoftwareArtifact` that records copyright notice text(s) for a software Package, File, or Snippet, including the semantics of `NONE`, `NOASSERTION`, and empty or whitespace-only strings.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-155",
+      "source": "sections/sec-155-downloadlocation.md",
+      "source_hash": "72ba9e6c25e89e26c5febb7c08348e231cc0b6ae8033f587821161f553b46d13",
+      "narrative": [
+        {
+          "text": "Defines Section 9.2.8 (`downloadLocation`), a Software Profile `DataProperty` with range `xsd:anyURI` on `/Software/Package` that identifies the download URI for the package at the time the document was created.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-156",
+      "source": "sections/sec-156-filekind.md",
+      "source_hash": "3048ed382b3c4076581f212935b5549f8ad4be01cbe63cfe168f5ec6955ae825",
+      "narrative": [
+        {
+          "text": "Defines Section 9.2.9 (`fileKind`), a Software Profile `ObjectProperty` with range `FileKindType` on `/Software/File` that indicates whether an SPDX file represents a directory or a non-directory file.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-157",
+      "source": "sections/sec-157-homepage.md",
+      "source_hash": "72cb9dd9644f150663c21b0af5637a3ce3d547d4bab7956436dc20c0b36c22f1",
+      "narrative": [
+        {
+          "text": "Defines Section 9.2.10 (`homePage`), a Software Profile `DataProperty` with range `xsd:anyURI` on `/Software/Package` that records the URI of the package's project home page.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-158",
+      "source": "sections/sec-158-linerange.md",
+      "source_hash": "ce806f0b328bb887425996634b160d544e52e2c2fd7051317fc143739f1bf654",
+      "narrative": [
+        {
+          "text": "Defines Section 9.2.11 (`lineRange`), a Software Profile `DataProperty` with range `/Core/PositiveIntegerRange` on `/Software/Snippet` that specifies the 1-based line range in the original host file (yielding precedence to `byteRange` in case of disagreement).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-159",
+      "source": "sections/sec-159-packageurl.md",
+      "source_hash": "67d05929e385b5d012282f7d3f57c034938bef3c98b9555125303ef6123d061a",
+      "narrative": [
+        {
+          "text": "Defines Section 9.2.12 (`packageUrl`), a Software Profile `DataProperty` with range `xsd:anyURI` on `/Software/Package` for recording a seven-component Package URL (`scheme:type/namespace/name@version?qualifiers#subpath`) in accordance with the Package URL specification.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-160",
+      "source": "sections/sec-160-packageversion.md",
+      "source_hash": "c3bab4c04a1ea06f2ed50a81ff2fc125a8c6bba1697c5222d4a0f11c7ca18787",
+      "narrative": [
+        {
+          "text": "Defines Section 9.2.13 (`packageVersion`), a Software Profile `DataProperty` with range `xsd:string` on `/Software/Package` that identifies the version of a package.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-161",
+      "source": "sections/sec-161-primarypurpose.md",
+      "source_hash": "41aaf137c81c324945e5dd6daea38f7431b8412397ba73435d20dd1b425065dc",
+      "narrative": [
+        {
+          "text": "Defines Section 9.2.14 (`primaryPurpose`), a Software Profile `ObjectProperty` with range `SoftwarePurpose` on `/Software/SoftwareArtifact` that specifies the primary purpose of the software artifact.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-162",
+      "source": "sections/sec-162-sbomtype.md",
+      "source_hash": "f8a17364c07223e10da5e85785de65ac050a413616d7c1788fa3f9199cb5dff2",
+      "narrative": [
+        {
+          "text": "Defines Section 9.2.15 (`sbomType`), a Software Profile `ObjectProperty` with range `SbomType` on `/Software/Sbom` that characterizes the type of SBOM created from a producer perspective.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-163",
+      "source": "sections/sec-163-snippetfromfile.md",
+      "source_hash": "fb7496c52fdb4e63bac5cbb6f6d9737e46a169b3ff1779df4197ab54edd76c30",
+      "narrative": [
+        {
+          "text": "Defines Section 9.2.16 (`snippetFromFile`), a Software Profile `ObjectProperty` with range `File` on `/Software/Snippet` that identifies the original host file containing the snippet.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-164",
+      "source": "sections/sec-164-sourceinfo.md",
+      "source_hash": "9ec53b712b4b1ce136b49e2963c4d6a08442fd5cb2cf71c0990ec9b16819dddb",
+      "narrative": [
+        {
+          "text": "Defines Section 9.2.17 (`sourceInfo`), a Software Profile `DataProperty` with range `xsd:string` on `/Software/Package` that records background information, anomalies, or comments about the origin of the package, and introduces Section 9.3 (`Vocabularies`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-165",
+      "source": "sections/sec-165-vocabularies.md",
+      "source_hash": "10ba73729037af18a205cb7f273f8676ef03aec9610e248d138c8f385457cda8",
+      "narrative": [
+        {
+          "text": "Section 9.3 (`Vocabularies`) heading stub introducing Section 9.3.1 (`ContentIdentifierType`) in the Software Profile.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-166",
+      "source": "sections/sec-166-contentidentifiertype.md",
+      "source_hash": "b35da5dae69fd810064e08f733d1ef46491fe7c54adf12e289d7f527a2e5fbaa",
+      "narrative": [
+        {
+          "text": "Defines Section 9.3.1 (`ContentIdentifierType`), the Software Profile vocabulary specifying content identifier types with entries `gitoid` (Git Object ID / OmniBOR blob hash) and `swhid` (SoftWare Hash IDentifier, ISO/IEC DIS 18670).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-167",
+      "source": "sections/sec-167-filekindtype.md",
+      "source_hash": "a7a88a20bc2802e8bc41e32299f0df22e9b1bf78468a9cfd086a07f56fb33ce4",
+      "narrative": [
+        {
+          "text": "Defines Section 9.3.2 (`FileKindType`), the Software Profile vocabulary enumerating kinds of SPDX files (`directory` for a directory and its contents, and `file` for a single file).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-168",
+      "source": "sections/sec-168-sbomtype.md",
+      "source_hash": "d2e2f52b7d134797d0de5aa409b5978eb5ee7420f5b76669e96e6c29447d5c98",
+      "narrative": [
+        {
+          "text": "Defines Section 9.3.3 (`SbomType`), the Software Profile vocabulary describing common SBOM types from the producer perspective (`analyzed`, `build`, `deployed`, `design`, `runtime`, and `source`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-169",
+      "source": "sections/sec-169-softwarepurpose.md",
+      "source_hash": "e5e9f7d9adf7e921b7304bd82d55980005703f7052d3339cfa9965715b539b39",
+      "narrative": [
+        {
+          "text": "Defines Section 9.3.4 (`SoftwarePurpose`), the Software Profile vocabulary of 28 software artifact purpose values (`application`, `archive`, `bom`, `configuration`, `container`, `data`, `device`, `deviceDriver`, `diskImage`, `documentation`, `evidence`, `executable`, `file`, `filesystemImage`, `firmware`, `framework`, `install`, `library`, `manifest`, `model`, `module`, `operatingSystem`, `other`, `patch`, `platform`, `requirement`, `source`, `specification`, and `test`), and opens Section 10 (`Security`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-170",
+      "source": "sections/sec-170-security.md",
+      "source_hash": "ffb0ee5e8f1923a9fc1eedd9f60a96993d2da2baa410c1b241124770939a4603",
+      "narrative": [
+        {
+          "text": "Defines Section 10 (`Security`), introducing the `/Security` profile namespace (`https://spdx.org/rdf/3.0.1/terms/Security`) for capturing security-related information, and opens Section 10.1 (`Classes`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-171",
+      "source": "sections/sec-171-classes.md",
+      "source_hash": "7cbb20e3695b1f346c9211554dc956dbf4e142dbad673b6d1f82822a8b86206a",
+      "narrative": [
+        {
+          "text": "Section 10.1 (`Classes`) heading stub introducing Section 10.1.1 (`CvssV2VulnAssessmentRelationship`) in the Security Profile.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-172",
+      "source": "sections/sec-172-cvssv2vulnassessmentrelationship.md",
+      "source_hash": "c664372b10397142bd213731cfd7fd219b0411122370687b4503306b6fc65f37",
+      "narrative": [
+        {
+          "text": "Defines Section 10.1.1 (`CvssV2VulnAssessmentRelationship`), a concrete subclass of `VulnAssessmentRelationship` constrained to `relationshipType` `hasAssessmentFor` that records a CVSS v2.0 vulnerability assessment via mandatory `score` (`xsd:decimal`) and `vectorString` (`xsd:string`) properties.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-173",
+      "source": "sections/sec-173-cvssv3vulnassessmentrelationship.md",
+      "source_hash": "8b3bf6dd2286b4d38cadcbb5624e4e6691c38aced0ee4dd89bfe9393afbdaa83",
+      "narrative": [
+        {
+          "text": "Defines Section 10.1.2 (`CvssV3VulnAssessmentRelationship`), a concrete subclass of `VulnAssessmentRelationship` constrained to `relationshipType` `hasAssessmentFor` that records a CVSS v3.0 or v3.1 vulnerability assessment via mandatory `score` (`xsd:decimal`), `severity` (`CvssSeverityType`), and `vectorString` (`xsd:string`) properties.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-174",
+      "source": "sections/sec-174-cvssv4vulnassessmentrelationship.md",
+      "source_hash": "37bf9d4ad9988d2459593e3c3f0b44d6889d05226854701f48e7abb4a28105e7",
+      "narrative": [
+        {
+          "text": "Defines Section 10.1.3 (`CvssV4VulnAssessmentRelationship`), a concrete subclass of `VulnAssessmentRelationship` constrained to `relationshipType` `hasAssessmentFor` that records a CVSS v4.0 vulnerability assessment via mandatory `score` (`xsd:decimal`), `severity` (`CvssSeverityType`), and `vectorString` (`xsd:string`) properties.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-175",
+      "source": "sections/sec-175-epssvulnassessmentrelationship.md",
+      "source_hash": "c48d74bb08e078b00920e5b60451cf00a3254b1a8d28e2e042786f35ca5cdd52",
+      "narrative": [
+        {
+          "text": "Defines Section 10.1.4 (`EpssVulnAssessmentRelationship`), a concrete subclass of `VulnAssessmentRelationship` constrained to `relationshipType` `hasAssessmentFor` that records an Exploit Prediction Scoring System (EPSS) assessment with mandatory `probability` (`0..1`), `percentile` (`0..1`), and `publishedTime` properties.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-176",
+      "source": "sections/sec-176-exploitcatalogvulnassessmentrelationship.md",
+      "source_hash": "82e6d528360653eb636a42025b098398d0e7d56d4d94b228bc1a20a995c98e1f",
+      "narrative": [
+        {
+          "text": "Defines Section 10.1.5 (`ExploitCatalogVulnAssessmentRelationship`), a concrete subclass of `VulnAssessmentRelationship` constrained to `relationshipType` `hasAssessmentFor` that records whether a vulnerability is listed in an exploit catalog (such as CISA KEV) via mandatory `catalogType` (`ExploitCatalogType`), `exploited` (`xsd:boolean`), and `locator` (`xsd:anyURI`) properties.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-177",
+      "source": "sections/sec-177-ssvcvulnassessmentrelationship.md",
+      "source_hash": "23b26f905071fdfdf0c17b269d5151f031c340f1d836a6313fa2d7005967f97e",
+      "narrative": [
+        {
+          "text": "Defines Section 10.1.6 (`SsvcVulnAssessmentRelationship`), a concrete subclass of `VulnAssessmentRelationship` constrained to `relationshipType` `hasAssessmentFor` that records a CISA Stakeholder-Specific Vulnerability Categorization (SSVC) decision via the mandatory `decisionType` (`SsvcDecisionType`) property.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-178",
+      "source": "sections/sec-178-vexaffectedvulnassessmentrelationship.md",
+      "source_hash": "f3e26449d985694f364aab2ce927ab26821bcafcef57f21eddcb88aeb28ea249",
+      "narrative": [
+        {
+          "text": "Defines Section 10.1.7 (`VexAffectedVulnAssessmentRelationship`), a concrete subclass of `VexVulnAssessmentRelationship` constrained to the `affects` relationship type that marks elements as VEX products affected by a vulnerability and defines mandatory `actionStatement` (`xsd:string`) and optional `actionStatementTime` (`/Core/DateTime`) properties.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-179",
+      "source": "sections/sec-179-vexfixedvulnassessmentrelationship.md",
+      "source_hash": "261488598ad9f8181e9af1c098807b76eb510ec3f673c11888e02ceb3e706d74",
+      "narrative": [
+        {
+          "text": "Defines Section 10.1.8 (`VexFixedVulnAssessmentRelationship`), a concrete subclass of `VexVulnAssessmentRelationship` constrained to the `fixedIn` relationship type (with `from` as a `/Security/Vulnerability`) that links a vulnerability to VEX product elements where a fix has been applied.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-180",
+      "source": "sections/sec-180-vexnotaffectedvulnassessmentrelationship.md",
+      "source_hash": "f79d0fb095eced8d55fc837018a22743ad63bfbd694fdd73271a04b63e2fcbf5",
+      "narrative": [
+        {
+          "text": "Defines Section 10.1.9 (`VexNotAffectedVulnAssessmentRelationship`), a concrete subclass of `VexVulnAssessmentRelationship` constrained to the `doesNotAffect` relationship type that marks VEX products as not affected by a vulnerability and defines `impactStatement`, `impactStatementTime`, and `justificationType` (requiring at least one of `impactStatement` or `justificationType`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-181",
+      "source": "sections/sec-181-vexunderinvestigationvulnassessmentrelationship.md",
+      "source_hash": "e87f6b343da9738b7ccfdba7ea92ef4eac58b3aabc9948e4b80e2b0d24003c3f",
+      "narrative": [
+        {
+          "text": "Defines the summary, description, constraints (`underInvestigationFor` relationship type with `from` as a `/Security/Vulnerability`), and JSON-LD example for Section 10.1.10 (`VexUnderInvestigationVulnAssessmentRelationship`), which designates VEX products for which a vulnerability's impact is under investigation.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-182",
+      "source": "sections/sec-182-vulnassessmentrelationship.md",
+      "source_hash": "a58bf8f1eabc6812ef59640b4855df41c887c609bedadb2b607e12be5586bbbe",
+      "narrative": [
+        {
+          "text": "Metadata fragment for Section 10.1.10 (`VexUnderInvestigationVulnAssessmentRelationship`) recording its class name, `Concrete` instantiability, and `SubclassOf:` label.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-183",
+      "source": "sections/sec-183-vexvulnassessmentrelationship.md",
+      "source_hash": "ab5eeb6a6cb626854da799af81ee3675ca29b7301f94b1be04c922779f717d4f",
+      "narrative": [
+        {
+          "text": "Completes the superclasses and informative all-properties table for `VexUnderInvestigationVulnAssessmentRelationship` (Section 10.1.10) and defines Section 10.1.11 (`VexVulnAssessmentRelationship`), the abstract ancestor class for all SPDX-VEX status relationships (with properties `statusNotes` and `vexVersion`, document-level inheritance rules, and constraints on `from` and `to`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-184",
+      "source": "sections/sec-184-vulnerability.md",
+      "source_hash": "f148f683ea7546a22f6dd462ee3565e2d732d1231642990e6fe0da0380c8c503",
+      "narrative": [
+        {
+          "text": "Defines Section 10.1.12 (`VulnAssessmentRelationship`), the abstract ancestor class common to all vulnerability assessment relationships (subclass of `/Core/Relationship` with direct properties `/Core/suppliedBy`, `assessedElement`, `modifiedTime`, `publishedTime`, and `withdrawnTime`), and defines the description, example, and metadata of Section 10.1.13 (`Vulnerability`, a concrete subclass of `/Core/Artifact`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-185",
+      "source": "sections/sec-185-properties.md",
+      "source_hash": "de206de2c623bc7563d2bece72bdcdae757dc869325b5acd22f13d42de0204b0",
+      "narrative": [
+        {
+          "text": "Lists the direct properties (`modifiedTime`, `publishedTime`, `withdrawnTime`) and informative all-properties table for `/Security/Vulnerability` (Section 10.1.13) and opens Section 10.2 (`Properties`) of the Security Profile.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-186",
+      "source": "sections/sec-186-actionstatement.md",
+      "source_hash": "a240878704d8fb7082a9d6965110d1eee2124bd3c8c8bc9913f5b34467abc543",
+      "narrative": [
+        {
+          "text": "Defines Section 10.2.1 (`actionStatement`), a Security Profile `DataProperty` with range `xsd:string` on `/Security/VexAffectedVulnAssessmentRelationship` that provides advice on how to mitigate or remediate a vulnerability affecting a VEX product.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-187",
+      "source": "sections/sec-187-actionstatementtime.md",
+      "source_hash": "ff5ed53dfe0332249334bd538c94266aa820e14d586a2c666e9c187065105afd",
+      "narrative": [
+        {
+          "text": "Defines Section 10.2.2 (`actionStatementTime`), a Security Profile `DataProperty` with range `/Core/DateTime` on `/Security/VexAffectedVulnAssessmentRelationship` that records when a recommended mitigation action statement was first communicated.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-188",
+      "source": "sections/sec-188-assessedelement.md",
+      "source_hash": "8cb568e1e1c5d85c37d223847865999f916498f8adf93e03877a48fdc015b1c7",
+      "narrative": [
+        {
+          "text": "Defines Section 10.2.3 (`assessedElement`), a Security Profile `ObjectProperty` with range `/Software/SoftwareArtifact` on `/Security/VulnAssessmentRelationship` that identifies the specific subpackage, file, or snippet where a vulnerability was found.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-189",
+      "source": "sections/sec-189-catalogtype.md",
+      "source_hash": "191aa424df2158588a4f278dfbb9e50d38f66b4f06ec27df59666cbd46290a4d",
+      "narrative": [
+        {
+          "text": "Defines Section 10.2.4 (`catalogType`), a mandatory Security Profile `ObjectProperty` with range `ExploitCatalogType` on `/Security/ExploitCatalogVulnAssessmentRelationship` that specifies the exploit catalog type.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-190",
+      "source": "sections/sec-190-decisiontype.md",
+      "source_hash": "40e4bda38c84464b77a6bca26259d69333e7ed70cff506f2f2552d0a70170c01",
+      "narrative": [
+        {
+          "text": "Defines Section 10.2.5 (`decisionType`), a mandatory Security Profile `ObjectProperty` with range `SsvcDecisionType` on `/Security/SsvcVulnAssessmentRelationship` that records a decision from the CISA Stakeholder-Specific Vulnerability Categorization (SSVC) decision tree.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-191",
+      "source": "sections/sec-191-exploited.md",
+      "source_hash": "3e419da54ab8e42b48f46498c7ae472fb4c9fdfe9510221466ea90d0ab63358e",
+      "narrative": [
+        {
+          "text": "Defines Section 10.2.6 (`exploited`), a Security Profile `DataProperty` with range `xsd:boolean` on `/Security/ExploitCatalogVulnAssessmentRelationship` indicating that a CVE is known to have an exploit in an exploit catalog.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-192",
+      "source": "sections/sec-192-impactstatement.md",
+      "source_hash": "531558bfd01ce05c8c399e4895e47228920acfd2663e92c9df56e360e2ac441d",
+      "narrative": [
+        {
+          "text": "Defines Section 10.2.7 (`impactStatement`), a Security Profile `DataProperty` with range `xsd:string` on `/Security/VexNotAffectedVulnAssessmentRelationship` that explains in prose why a VEX product is not affected by a vulnerability.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-193",
+      "source": "sections/sec-193-impactstatementtime.md",
+      "source_hash": "cda824616fb0883268ccc2c991d210189ce1b944cd7c373dd572d36905895a09",
+      "narrative": [
+        {
+          "text": "Defines Section 10.2.8 (`impactStatementTime`), a Security Profile `DataProperty` with range `/Core/DateTime` on `/Security/VexNotAffectedVulnAssessmentRelationship` specifying the timestamp when an impact statement was recorded.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-194",
+      "source": "sections/sec-194-justificationtype.md",
+      "source_hash": "3d4556e5e602c378829ee914e4f134f859f7897145d836e85c0773ed641e87ad",
+      "narrative": [
+        {
+          "text": "Defines Section 10.2.9 (`justificationType`), a Security Profile `ObjectProperty` with range `VexJustificationType` on `/Security/VexNotAffectedVulnAssessmentRelationship` providing a machine-readable justification label explaining why a VEX product is not affected by a vulnerability.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-195",
+      "source": "sections/sec-195-locator.md",
+      "source_hash": "0a5c6d8758e28ee40c739148dbfbaaacff2e7c4dc207b69a0305dcc601904733",
+      "narrative": [
+        {
+          "text": "Defines Section 10.2.10 (`locator`), a Security Profile `DataProperty` with range `xsd:anyURI` on `/Security/ExploitCatalogVulnAssessmentRelationship` that provides the URI location of an exploit catalog.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-196",
+      "source": "sections/sec-196-modifiedtime.md",
+      "source_hash": "b3f18a5737f8100ab3070688cc003bc9343bd9ce5a381129f84486aa83cc4114",
+      "narrative": [
+        {
+          "text": "Defines Section 10.2.11 (`modifiedTime`), a Security Profile `DataProperty` with range `/Core/DateTime` on `/Security/VulnAssessmentRelationship` and `/Security/Vulnerability` specifying when a vulnerability or assessment was last modified.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-197",
+      "source": "sections/sec-197-percentile.md",
+      "source_hash": "8e76a94ac8320d515375e625bef1829238b097ecbd33611b59eeefd4ffefebfb",
+      "narrative": [
+        {
+          "text": "Heading stub (`Summary`) for Section 10.2.12 (`percentile`) in the Security Profile.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-198",
+      "source": "sections/sec-198-probability.md",
+      "source_hash": "555437499a0932e815876846f2d5215d17eb3ab69933676284873dc945db274d",
+      "narrative": [
+        {
+          "text": "Completes Section 10.2.12 (`percentile`, a `DataProperty` with range `xsd:decimal` between 0 and 1 on `/Security/EpssVulnAssessmentRelationship` giving the EPSS percentile rank) and defines Section 10.2.13 (`probability`, a `DataProperty` with range `xsd:decimal` between 0 and 1 on `/Security/EpssVulnAssessmentRelationship` estimating 30-day exploitation likelihood).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-199",
+      "source": "sections/sec-199-publishedtime.md",
+      "source_hash": "3632d800d237cbfd0ee26350a33f1b45b3dd333880dc2cae9aae1d686753089a",
+      "narrative": [
+        {
+          "text": "Defines Section 10.2.14 (`publishedTime`), a Security Profile `DataProperty` with range `/Core/DateTime` on `/Security/VulnAssessmentRelationship` and `/Security/Vulnerability` specifying when a vulnerability or assessment was first published, and opens Section 10.2.15 (`score`).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://e928d99b-e57c-46d2-a3e7-acbfc28665b4"
+          },
+          "drafted_at": "2026-10-27"
+        }
+      ]
+    },
+    {
       "block": "library/omg-2024-spdx-3-0/blocks/prose-sec-front-matter",
       "source": "sections/sec-front-matter.md",
       "source_hash": "48d2c7ed4809951e560cb5df771b604b1b97ae446bb2fdd38c2b10f8674c0d16",
