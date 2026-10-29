@@ -52,8 +52,8 @@ ls content/          # pipeline/ only  ⇒ platform;  paper dirs ⇒ folio
 
 ```sh
 beans prime && beans list      # the work-plan — see §6
-scripts/session-start-coord-sweep.sh   # CLI-independent equivalent
-bun run src/index.ts --check-deps      # what this environment can do
+cat-harness-tools/scripts/session-start-coord-sweep.sh  # CLI-independent equivalent
+bun run cat check-deps                     # what this environment can do
 ```
 
 Флаг `--check-deps` важнее, чем кажется. Многие проверки деградируют до `n/a`,
