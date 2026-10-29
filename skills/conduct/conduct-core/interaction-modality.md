@@ -167,7 +167,7 @@ It prints every identity the session can see, each bare and as
 | `gitlab` | `GITLAB_USER_LOGIN`, only inside GitLab CI | GitLab |
 | `claude` | the agent host's signed-in account | the agent host |
 | any | `CAT_HARNESS_PERSON`, `provider:handle[,…]`, for this session only | nobody: the person says so |
-| any | the user-level store's `identities` | nobody: the person says so |
+| any | the user-level store's `identities`, and the chosen entry of its `profiles` | nobody: the person says so |
 | `git` | `git config user.email`, then `user.name` | nobody: self-asserted |
 
 So an entry may list `gitlab:<handle>` or `claude:<email>` among its
@@ -196,10 +196,21 @@ host is one row in that file's table.
 **Several people.** On a shared machine each person has their own home
 directory, so their own user-level store. In a shared session or under a
 shared login, `CAT_HARNESS_PERSON` names who is typing now. A person with
-several accounts on one provider lists each one in the store; every one is a
-match key. When the keys match more than one person on record, the sweep says
-so and the session applies the **strictest** of their profiles, never the
-first one listed.
+several accounts on one provider lists each one in the store, as entries or as
+`identities: { "github": ["litlfred", "litlfred-bot"] }`; every one is a match
+key, and an entry marked `active: true` comes first. When the keys match more
+than one person on record, the sweep says so and the session applies the
+**strictest** of their profiles, never the first one listed.
+
+**Several people in one store.** `identity.json` may hold named profiles,
+`profiles: { "<name>": { identities, interaction } }`. The one in use is the
+profile `CAT_HARNESS_PROFILE` names, else the store's `activeProfile`, else the
+one whose identities match `CAT_HARNESS_PERSON`, else the only one. With
+several profiles and nothing to choose between them, the resolver reports a
+third state, `ambiguous-multi-user`, and applies the **strictest** interaction
+profile on record until someone says who is typing. The same state is reported
+when the session matches several people in `interaction.json` whose profiles
+differ.
 
 **A preference that must not be committed** lives in the user-level store,
 `~/.config/cat-harness/identity.json` (or `$XDG_CONFIG_HOME/…`, or the path
