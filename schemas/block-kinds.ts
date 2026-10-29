@@ -27,12 +27,10 @@
  * @graphNode schema
  */
 
-import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
 
 import { BlockKindNodeSchema, builderOf, type BlockKindNode } from "./block-kind-node";
 import { ContentAdapterNodeSchema, type ContentAdapterNode } from "./content-adapter-node";
-import { declaredNodeFiles } from "./declared-nodes";
+import { PLATFORM_ROOT, declaredNodeFiles } from "./declared-nodes";
 import type { Block } from "./types";
 
 /**
@@ -69,8 +67,11 @@ export function discoverBlockKinds(repoRoot: string = PLATFORM_ROOT): BlockKindN
   return [...byKind.values()].map((v) => v.node).sort((a, b) => a.kind.localeCompare(b.kind));
 }
 
-/** The platform checkout this module sits in — where its instances are scanned from. */
-const PLATFORM_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
+
+/** The root block kinds and content adapters are scanned from by default: {@link PLATFORM_ROOT}. */
+export function blockKindsRoot(): string {
+  return PLATFORM_ROOT;
+}
 
 /**
  * Every content-adapter VOCABULARY node in the platform checkout, sorted by

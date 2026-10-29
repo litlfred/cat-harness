@@ -15,10 +15,10 @@
  * @module cat-harness/schemas/content-context
  * @graphNode none — a function library: it builds a document's context and defines no schema
  */
-import { dirname, resolve, sep } from "node:path";
-import { fileURLToPath } from "node:url";
+import { resolve, sep } from "node:path";
 import { instanceRootsIn, readDeclaration } from "./cat-harness.js";
-import { checkoutRootFor, declarationChain } from "./harness-config.js";
+import { declarationChain } from "./harness-config.js";
+import { PLATFORM_ROOT } from "./declared-nodes.js";
 import { instanceNamespace } from "./instance-repositories.js";
 import { CONTENT_CONTEXT, CONTENT_CONTEXT_URL, FOLIO_BASE, instanceContextUrl } from "./jsonld.js";
 
@@ -62,7 +62,7 @@ export function defaultInstancePrefixes(): Map<string, string> {
     const fixture = process.env.FOLIO_FIXTURE_CHECKOUT;
     checkoutPrefixes = new Map([
       ...(fixture ? instancePrefixes(fixture) : new Map<string, string>()),
-      ...instancePrefixes(checkoutRootFor(dirname(dirname(fileURLToPath(import.meta.url))))),
+      ...instancePrefixes(PLATFORM_ROOT),
     ]);
   }
   return checkoutPrefixes;
@@ -113,7 +113,7 @@ let checkoutInstances: InstanceContextDecl[] | undefined;
 /** Every instance in the checkout this module sits in, read once. */
 function defaultCheckoutInstances(): InstanceContextDecl[] {
   if (checkoutInstances === undefined) {
-    const checkout = checkoutRootFor(dirname(dirname(fileURLToPath(import.meta.url))));
+    const checkout = PLATFORM_ROOT;
     checkoutInstances = instanceRootsIn(checkout).flatMap((root) => {
       const decl = readDeclaration(root);
       if (decl === undefined) return [];
