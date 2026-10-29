@@ -32,7 +32,7 @@
  * reintroduce the edge this module exists to remove.
  *
  * It deliberately imports **nothing**, for the same reason
- * `schemas/block-kinds.ts` does: a leaf cannot participate in a cycle, and
+ * `schemas/content/block-kinds.ts` does: a leaf cannot participate in a cycle, and
  * cannot drag a vocabulary into a module that only wanted a string.
  *
  * @module schemas/namespaces

@@ -1,4 +1,4 @@
-import type { TranslationNode } from "../../schemas/translation";
+import type { TranslationNode } from "../../schemas/content/translation";
 
 /**
  * 中文 (zh) translation of the knowledge-graph viewer's chrome.

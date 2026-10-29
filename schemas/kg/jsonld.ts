@@ -63,7 +63,7 @@
  * @conformsTo w3c-xsd11-datatypes
  */
 
-import { BLOCK_KIND_NODES, BLOCK_KINDS, type BlockKind } from "../block-kinds";
+import { BLOCK_KIND_NODES, BLOCK_KINDS, type BlockKind } from "../content/block-kinds";
 import type { ContributionRegistry } from "../content/contributions";
 
 // ── Namespaces ───────────────────────────────────────────────────

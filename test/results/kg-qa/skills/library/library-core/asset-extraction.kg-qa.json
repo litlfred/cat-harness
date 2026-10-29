@@ -5,7 +5,7 @@
     "id": "asset-extraction",
     "path": "skills/library/library-core/asset-extraction.md"
   },
-  "source_hash": "b7a6f50c799a",
+  "source_hash": "9af09ad8ba8b",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

@@ -5,7 +5,7 @@
 import { describe, expect, test } from "bun:test";
 import { z } from "zod";
 
-import { BlockBaseSchema, BlockSchema, CONSTRAINT_RULES, typedBlockKinds } from "./constraints.ts";
+import { BlockBaseSchema, BlockSchema, CONSTRAINT_RULES, typedBlockKinds } from "../constraints.ts";
 import { allConstraintRules, allTypedBlockKinds, blockSchemaFor, readVocabulary, vocabularies } from "./vocabulary-modules.ts";
 
 const Widget = BlockBaseSchema.extend({ kind: z.literal("widget"), size: z.number() });

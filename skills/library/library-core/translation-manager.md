@@ -185,7 +185,7 @@ translations/<locale>/<stem>.ts
 ```
 
 The manifest carries status, coverage, and round-trip QA results inline.
-Validate with `TranslationNodeSchema` from `schemas/translation.ts`.
+Validate with `TranslationNodeSchema` from `schemas/content/translation.ts`.
 
 ### 5. Round-trip QA
 
@@ -407,7 +407,7 @@ permission, and each locale's file is read alone, so marking a term in French
 says nothing about Arabic. Every one of those is a test in
 `translation-block-qa.test.ts`.
 
-The file is hand-authored and has no POT — `schemas/translation.ts` declares
+The file is hand-authored and has no POT — `schemas/content/translation.ts` declares
 that slot, and `TranslationNode.potFile` is optional for exactly this. Bean
 `he0e`.
 

@@ -130,7 +130,7 @@ export type TranslationQaEntry = Omit<QaCriterionEntry, "field_hash"> & {
 
 export interface TranslationBlockQaReport {
   $schema: "translation-qa/v1";
-  /** `trans:<locale>/<stem>`, the convention `schemas/translation.ts` fixes. */
+  /** `trans:<locale>/<stem>`, the convention `schemas/content/translation.ts` fixes. */
   label: string;
   /** The content block this translates, by ITS label — a different identity. */
   block?: string;

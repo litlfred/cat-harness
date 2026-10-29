@@ -4,5 +4,5 @@
   "validates": {
     "kind": "vocab-mapping"
   },
-  "schema": "schemas/vocab-mapping.ts#VocabMappingSchema"
+  "schema": "schemas/content/vocab-mapping.ts#VocabMappingSchema"
 }

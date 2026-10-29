@@ -5,7 +5,7 @@
     "id": "code-node-review",
     "path": "skills/kg/kg-core/code-node-review.md"
   },
-  "source_hash": "f4c9850ef96b",
+  "source_hash": "84934b30db79",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",
