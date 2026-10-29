@@ -31,7 +31,7 @@
  * @graphNode schema
  */
 
-import type { Conformance } from "../assistant-types";
+import type { Conformance } from "../conduct/assistant-types";
 import type { LifecycleStage } from "../kg/skill-package.js";
 
 // ---------------------------------------------------------------------------

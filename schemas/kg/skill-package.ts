@@ -15,7 +15,7 @@
  *
  * The cost was measured. Four harness modules imported `constraints.ts` or
  * `types.ts` for these symbols alone — `scripts/validate-skills.ts`,
- * `scripts/generate-registry.ts`, `schemas/assistant-types.ts`,
+ * `scripts/generate-registry.ts`, `schemas/conduct/assistant-types.ts`,
  * `schemas/process/assistant-workflow.ts` — and every one of those reads, in the
  * repository split, as the harness depending on the content layer. It does
  * not: it is the harness depending on its own vocabulary, filed in the
