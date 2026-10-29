@@ -371,6 +371,26 @@ export const MountSeedSchema = z
   .regex(/^[a-z0-9][a-z0-9-]*=[A-Za-z0-9][A-Za-z0-9-]*\/[A-Za-z0-9._-]+@[0-9a-f]{40}$/, "a mount seed is <name>=<owner/repo>@<40-hex sha>")
   .describe("A remote instance to seed, e.g. <instance>=<owner>/<repo>@<40-hex sha>");
 
+/**
+ * One `mount:remote --choose`: `<harness>` or `<harness>:<instance>`, the mount
+ * entry (and closure instance) a review's choice is written to (bean `mo75`).
+ * Instance names only, so no shell metacharacter can parse.
+ */
+export const MountChoiceSchema = z
+  .string()
+  .regex(/^[a-z0-9][a-z0-9-]*(?::[a-z0-9][a-z0-9-]*)?$/, "a mount choice is <harness> or <harness>:<instance>")
+  .describe("A mount entry and instance to write a choice to, e.g. cat-harness or cat-harness:cat-harness-tools");
+
+/**
+ * A comma-separated list of ids — directory ids, nested ids such as
+ * `processes/sdlc`, concern names, Tool ids. Letters, digits, dot,
+ * underscore, hyphen and slash only, so no shell metacharacter can parse.
+ */
+export const IdListSchema = z
+  .string()
+  .regex(/^[A-Za-z0-9][A-Za-z0-9._/-]*(?:,[A-Za-z0-9][A-Za-z0-9._/-]*)*$/, "an id list is comma-separated ids of letters, digits, dot, underscore, hyphen and slash")
+  .describe("Comma-separated ids, e.g. skills,processes/sdlc or bean-query,agent-memory");
+
 /** A GitHub account name, as `consent.by` records who consented. */
 export const LoginSchema = z
   .string()
@@ -701,6 +721,8 @@ export const TOOL_TYPES = {
   Slug: SlugSchema,
   DocId: DocIdSchema,
   MountSeed: MountSeedSchema,
+  MountChoice: MountChoiceSchema,
+  IdList: IdListSchema,
   PinnedRepo: PinnedRepoSchema,
   Login: LoginSchema,
   ContentType: ContentTypeSchema,
@@ -870,6 +892,8 @@ export const INJECTION_SAFE: ReadonlySet<ToolTypeName> = new Set<ToolTypeName>([
   "Slug",
   "DocId",
   "MountSeed",
+  "MountChoice",
+  "IdList",
   "PinnedRepo",
   "Login",
   // Every enum below is injection-safe by construction: a value outside the

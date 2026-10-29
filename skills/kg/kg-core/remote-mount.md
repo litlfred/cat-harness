@@ -115,6 +115,11 @@ index-config:migrate --write` moves the entries across.
   `skills/sdlc/`, read from each grouping kind's own declaration file at the
   pin. Each member is locked as `<directory id>/<code>`. A code that none of
   the instance's kinds declares is refused like any other unknown id.
+- After a review of hydrated metadata, `mount:remote --choose
+  <harness>[:<instance>] --directories a,b --tools x,y` writes the choice
+  into `overrides.<instance>` (the choice, never the state), so a fresh clone
+  replays it. It ends the review: that instance mounts as files, so its
+  `hydrated` is dropped. The pin and consent do not move.
 - `skip` leaves it unmounted, and the lock records it as an answer.
 - `tools` names Tools this instance declares, by id, and mounts each one
   **runnable**: its definition, its implementation and their import closure.
