@@ -3,7 +3,7 @@
   "subject": {
     "kind": "skill",
     "id": "release-epic-planning",
-    "path": "skills/process/workflow/release-epic-planning.md"
+    "path": "skills/sdlc/sdlc-core/release-epic-planning.md"
   },
   "source_hash": "a4e305e98616",
   "criteria": {
