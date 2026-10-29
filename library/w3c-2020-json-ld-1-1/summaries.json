@@ -934,6 +934,861 @@
       ]
     },
     {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-057",
+      "source": "sections/sec-057-424-string-internationalization.md",
+      "source_hash": "dfe3e62c37879112a99cf622d06b246960772536a0641bd43a95633ae17f5fa9",
+      "narrative": [
+        {
+          "text": "Section 4.2.4 (String Internationalization, Examples 68–73) and opening of Section 4.2.4.1 (Base Direction, Examples 74–76). Demonstrates setting and clearing document-wide default @language tags (Examples 68–69), binding term-specific languages in expanded term definitions (Example 70), using @container: @language maps for multi-language properties (Example 71), overriding or clearing default language via value objects (Examples 72–73), and setting, clearing, or term-binding base text direction (rtl/ltr) with @direction (Examples 74–76).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-058",
+      "source": "sections/sec-058-note.md",
+      "source_hash": "534cfaf6fc4398be9f6f3a38141ffd7296b34159ce84affdeb70808ee207e27b",
+      "narrative": [
+        {
+          "text": "Continuation of Section 4.2.4.1 (Base Direction, Example 77) and introduction to Section 4.3 (Value Ordering). Notes that @direction applies only to plain and language-tagged strings (not typed or type-coerced values), illustrates overriding default language and clearing @direction in a value object (Example 77), and introduces Section 4.3 by explaining that JSON-LD arrays represent unordered multi-valued properties by default, including values of heterogeneous types.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-059",
+      "source": "sections/sec-059-43-value-ordering.md",
+      "source_hash": "306685ca6f7268cd2d2a4d672b3b9f11885a5f19c9f6838290fa29ef8180e9fc",
+      "narrative": [
+        {
+          "text": "Examples 78–80 in Section 4.3 (Value Ordering) and introduction to Section 4.3.1 (Lists). Shows unordered multi-valued properties in compact and expanded forms (Examples 78–80) and introduces ordered collections in JSON-LD via the @list keyword or @container: @list in the context, noting how RDF represents ordered lists using rdf:first, rdf:rest, and rdf:nil.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-060",
+      "source": "sections/sec-060-431-lists.md",
+      "source_hash": "8e8ad8f6a5d519109d4559f2b6bdbb06a57e1decb4a3adad867b1cd84ae2b4f2",
+      "narrative": [
+        {
+          "text": "Section 4.3.1 (Lists, Examples 81–84) and introduction to Section 4.3.2 (Sets). Demonstrates ordered lists using @list in the document body (Example 81) and @container: @list in the context (Example 82), highlights JSON-LD 1.1 support for nested lists of lists such as GeoJSON bbox and multi-level polygon coordinates (Examples 83–84), and introduces @set and @container: @set for explicitly unordered collections that always serialize as arrays in compact form.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-061",
+      "source": "sections/sec-061-432-sets.md",
+      "source_hash": "38640f183e31920a4791b6fea4bc89ead39302e0fdc1968ad6e94faa56b8edc2",
+      "narrative": [
+        {
+          "text": "Section 4.3.2 (Sets, Examples 85–86) and introductory prose for Section 4.3.3 (Using @set with @type) and Section 4.4 (Nested Properties). Shows unordered collections using @set in the body (Example 85) and @container: @set in the context (Example 86), notes that JSON-LD 1.1 allows combining @set with index container definitions and setting @container: @set on @type, and introduces nested properties grouped under an intermediate @nest object.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-062",
+      "source": "sections/sec-062-433-using-set-with-type.md",
+      "source_hash": "21e3d432372b71413b82f04b283fba3b5a3c86d9cc9aa9168d13e0a8720a242d",
+      "narrative": [
+        {
+          "text": "Example 87 in Section 4.3.3 (Using @set with @type), showing a JSON-LD 1.1 context defining @type with @container: @set so that a single @type value is compacted as an array.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-063",
+      "source": "sections/sec-063-44-nested-properties.md",
+      "source_hash": "072c8dba905b8a6943d4fc7f9b73444945ab8dfdc940823eb159825ef44fc769",
+      "narrative": [
+        {
+          "text": "Section 4.4 (Nested Properties, Examples 88–89). Illustrates aliasing a property (labels) to @nest so that nested properties (main_label and other_label) are folded into the containing node object during expansion, and explains using @nest in expanded term definitions so compaction nests those properties under the @nest-aliased term.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-064",
+      "source": "sections/sec-064-note.md",
+      "source_hash": "3343c5787263188f03cfe964b4ede6393c36a79455d2632969728500edc5c14c",
+      "narrative": [
+        {
+          "text": "Informative Note and Examples 90–92 in Section 4.4 (Nested Properties), plus the non-normative marker for Section 4.5 (Embedding). Notes that nested properties are new in JSON-LD 1.1 and shows the un-nested equivalent of Example 89 alongside the expanded input (Example 90), context with @nest term mappings (Example 91), and compacted output nesting main_label and other_label under labels (Example 92).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-065",
+      "source": "sections/sec-065-45-embedding.md",
+      "source_hash": "50433ac08499af3590a54b52b7267c0db33bb3d1ed7841e090c72e5608f99cb3",
+      "narrative": [
+        {
+          "text": "Section 4.5 (Embedding, Examples 93–95). Contrasts linking separate node objects by IRI reference (Example 93) with embedding a child node object directly as a property value (Example 94), and shows introducing a blank node identifier (_:b0) when an embedded node must link back to an otherwise unidentified parent node (Example 95).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-066",
+      "source": "sections/sec-066-451-identifying-blank-nodes.md",
+      "source_hash": "6d126684681c8da23356aff1dcce849d91f8458bb58dd490ae24038a81c4e397",
+      "narrative": [
+        {
+          "text": "Section 4.5.1 (Identifying Blank Nodes) and introductory paragraph of Section 4.6 (Indexed Values). Explains document-scoped blank node identifiers using the _: scheme to serialize cyclic graphs or mutual references between nodes without global IRIs, warns that blank node identifiers may be relabeled during processing, and introduces Section 4.6 on indexing property values via intermediate maps.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-067",
+      "source": "sections/sec-067-461-data-indexing.md",
+      "source_hash": "d250873b24c2b8f3b81f0433182ef3363cf61203a465fd4db7c965a20901232d",
+      "narrative": [
+        {
+          "text": "Overview of indexing mechanisms in Section 4.6 (Indexed Values), introduction to Section 4.6.1 (Data Indexing), and Example 96 from Section 4.5.1. Summarizes data indexing (@index), language indexing (@language), node identifier indexing (@id), and node type indexing (@type), introduces @container: @index maps for direct key-based lookup without mapping keys to IRIs, and includes Example 96 showing a cyclic knows relationship using blank node identifier _:n1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-068",
+      "source": "sections/sec-068-46-indexed-values.md",
+      "source_hash": "892a54d6a6acda986be259c7cdeefdb14714577dd4a01bbe817a118cfd130a96",
+      "narrative": [
+        {
+          "text": "Section 4.6.1 (Data Indexing) and opening of Example 97. Explains how marking the athletes term with @container: @index allows arbitrary map keys (such as catcher and pitcher) to be preserved syntactically during expansion and compaction for direct object property access while being ignored semantically in RDF statements.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-069",
+      "source": "sections/sec-069-warning.md",
+      "source_hash": "b0329f8abdf11f534607a69f072282ae8ec2ed77aab9b9b3777faef09e7dc480",
+      "narrative": [
+        {
+          "text": "Continuation of Section 4.6.1 (Data Indexing, Remainder of Example 97 and Example 98) and introduction to Section 4.6.1.1 (Property-based Data Indexing). Warns that plain data indexes are lost when round-tripping through RDF, describes combining @index and @set in @container and indexing unindexed values under @none in JSON-LD 1.1 (Example 98), and introduces property-based data indexing where an @index property IRI on an @container: @index term preserves map keys semantically.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-070",
+      "source": "sections/sec-070-note.md",
+      "source_hash": "c5250895475de232af3db65d36335f23a820477db2aed0d519993a7b80475ddb",
+      "narrative": [
+        {
+          "text": "Section 4.6.1.1 (Property-based Data Indexing, Example 99) and introduction to Section 4.6.2 (Language Indexing). Notes that property-based data indexing applies only to node objects (not value or graph objects), illustrates mapping map keys to schema:jobTitle via @container: @index and @index: schema:jobTitle (Example 99), and introduces @container: @language maps for indexing string values by language tag.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-071",
+      "source": "sections/sec-071-462-language-indexing.md",
+      "source_hash": "7fa14126f1751c849e6671a909cf5c56006858e12ece1b8077b32992caec7f9c",
+      "narrative": [
+        {
+          "text": "Section 4.6.2 (Language Indexing, Examples 100–102) and introduction to Section 4.6.3 (Node Identifier Indexing). Demonstrates indexing language-tagged strings with @container: @language (Example 100), forcing array values with @container: [@language, @set] (Example 101), indexing non-language-tagged strings with @none in JSON-LD 1.1 (Example 102), and introduces id maps (@container: @id) for indexing node objects by IRI.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-072",
+      "source": "sections/sec-072-463-node-identifier-indexing.md",
+      "source_hash": "7f9df66f1f193bf0ca46baca8b9998be76c892b231e5846bc0eda66268ae2bd1",
+      "narrative": [
+        {
+          "text": "Section 4.6.3 (Node Identifier Indexing, Examples 103–105). Illustrates structuring node objects in an id map using @container: @id where map keys resolve to each node's @id (Example 103), combining @id with @set in @container so compacted map values are always arrays (Example 104), and indexing unidentified node objects under @none or an alias of @none (Example 105).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-073",
+      "source": "sections/sec-073-note.md",
+      "source_hash": "ed64200a0a9dc74b2115ad2edbf170402432daf013c77bf46ba35789b8c3ea75",
+      "narrative": [
+        {
+          "text": "Remainder of Example 105 and Note closing Section 4.6.3 (noting that id maps are new in JSON-LD 1.1), followed by the introductory prose of Section 4.6.4 (Node Type Indexing) explaining type maps (@container: @type and [@type, @set]) where map keys specify the @type of the indexed node objects.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-074",
+      "source": "sections/sec-074-464-node-type-indexing.md",
+      "source_hash": "02184f6a0a396b1a73b35b7ac5c3ead3b372ff5fa2e1ab528db9a54ddd67319c",
+      "narrative": [
+        {
+          "text": "Section 4.6.4 (Node Type Indexing, Examples 106–108) and introduction to Section 4.7 (Included Nodes). Shows indexing node objects by @type using @container: @type (Example 106), forcing array values with @container: [@type, @set] (Example 107), and indexing untyped nodes under @none or an alias (Example 108), notes that type maps are new in JSON-LD 1.1, and introduces @included blocks for grouping secondary node objects.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-075",
+      "source": "sections/sec-075-47-included-nodes.md",
+      "source_hash": "200dcbb5a811a7a17124daf79fd45b31a01e7bcf6e2c21571baa108a702cf748",
+      "narrative": [
+        {
+          "text": "Section 4.7 (Included Nodes, Examples 109–111) and introduction to Section 4.8 (Reverse Properties). Demonstrates collecting secondary or disconnected node objects in an @included array alongside primary node properties (Example 109), flattening them into the top-level graph array (Example 110), using a top-level @included block without creating a named graph (Example 111), and introduces @reverse for serializing directed graph edges in the inverse direction.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-076",
+      "source": "sections/sec-076-48-reverse-properties.md",
+      "source_hash": "128cb450404f3bc39374c60b81cf86c75a7d144f96ca6d8a5e4da096003440fb",
+      "narrative": [
+        {
+          "text": "Section 4.8 (Reverse Properties, Examples 112–114), Section 4.9 (Named Graphs, Examples 115–117), and introduction to Section 4.9.1 (Graph Containers). Shows expressing parent-child relationships via child-to-parent links (Example 112), an inline @reverse map (Example 113), and a reverse term definition in the context (Example 114); demonstrates naming a graph and attaching metadata with @graph and @id (Example 115) or expressing the default graph under a shared context (Examples 116–117); and introduces implicit named graphs using @container: @graph.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-077",
+      "source": "sections/sec-077-note.md",
+      "source_hash": "6838b3c1fb1d099a34927e7b3cb4451144ab232f68ce973874b2e99b73f73842",
+      "narrative": [
+        {
+          "text": "Informative Note in Section 4.9.1 (Graph Containers) clarifying that the RDF value of a term defined with @container: @graph is the graph name associated with the named graph, while the named graph itself exists separately in the dataset.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-078",
+      "source": "sections/sec-078-491-graph-containers.md",
+      "source_hash": "d14a8caa8bb6bb67b97eb520fc59ea0ef3646790e83925e7cc6e448a13e9ecc7",
+      "narrative": [
+        {
+          "text": "Remainder of Example 117, Example 118 in Section 4.9.1 (Graph Containers), and introductory prose for Section 4.9.2 (Named Graph Data Indexing). Shows an implicitly named graph using @container: @graph (Example 118) and introduces indexing named graphs by non-IRI keys using @container: [@graph, @index].",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-079",
+      "source": "sections/sec-079-492-named-graph-data-indexing.md",
+      "source_hash": "e3ed8c792533ec2f04782de91b445d5dd68efa44caf7f3f2f2c718a0f322d73c",
+      "narrative": [
+        {
+          "text": "Section 4.9.2 (Named Graph Data Indexing, Examples 119–120). Explains combining @graph and @index (and optionally @set) in @container to index named graphs by arbitrary keys (Example 119), using @none for unindexed graphs while warning that compacting multiple unidentified named graphs under @none merges them (Example 120), and notes that Named Graph Data Indexing is new in JSON-LD 1.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-080",
+      "source": "sections/sec-080-493-named-graph-indexing.md",
+      "source_hash": "8717f1de3b9a0e8903d406f32e34ca49c9e720991799af23ec5ee7716c97ad74",
+      "narrative": [
+        {
+          "text": "Section 4.9.3 (Named Graph Indexing, Examples 121–122). Explains using @container: [@graph, @id] (and optionally @set) to index named graphs in a map keyed by their graph IRI identifiers (Example 121) or under @none for unnamed graphs, warning that multiple graphs without an @id under @none are merged on expansion (Example 122).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-081",
+      "source": "sections/sec-081-note.md",
+      "source_hash": "2e297ac3c3738cd85c1f84518a5ba4433f33686b48ab477bcdf2deec77cb5631",
+      "narrative": [
+        {
+          "text": "Informative Note closing Section 4.9.3 (noting that Graph Containers are new in JSON-LD 1.1), Section 4.10 (Remote Document and Context Retrieval), and opening paragraph of Section 5 (Forms of JSON-LD). Summarizes the role of documentLoader in JSON-LD 1.1 API for caching remote contexts, handling custom URL schemes, bundling static contexts, and protecting application privacy, and introduces JSON-LD document transformations.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-082",
+      "source": "sections/sec-082-51-expanded-document-form.md",
+      "source_hash": "5f4c32f9c7c15ae1ea3489ce728f08ccde2bf3e5ff58ff3eb2c2019375bc90a5",
+      "narrative": [
+        {
+          "text": "Brief summary of Expanded Document Form in Section 5 (Forms of JSON-LD), defining expansion as applying a context to a JSON-LD document so that @context is no longer needed and pointing to Section 5.1.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-083",
+      "source": "sections/sec-083-52-compacted-document-form.md",
+      "source_hash": "4f358737c1e9d41d69b1da74a14d3603bfaf62e89deef8e19ec5e725e454196b",
+      "narrative": [
+        {
+          "text": "Brief summaries of Compacted, Flattened, and Framed Document Forms in Section 5, introductory prose for Section 5.1 (Expanded Document Form), and the closing lines of Example 122 from Section 4.9.3.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-085",
+      "source": "sections/sec-085-5-forms-of-json-ld.md",
+      "source_hash": "7d3d1ae622c44919ddef65d355e46d0477bff195002e5c8a6d13772c52d34f66",
+      "narrative": [
+        {
+          "text": "Section 5.1 (Expanded Document Form, Examples 123–124), Section 5.2 (Compacted Document Form, Examples 125–127), and introduction to Section 5.2.1 (Shortening IRIs). Demonstrates expanding a document to eliminate @context and identifies the profile URI http://www.w3.org/ns/json-ld#expanded, illustrates compacting an expanded document with a supplied context and identifies the profile URI http://www.w3.org/ns/json-ld#compacted, and introduces shortening absolute IRIs during compaction via @vocab, @base, compact IRIs, and terms.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-086",
+      "source": "sections/sec-086-521-shortening-iris.md",
+      "source_hash": "0595bd115977723a233950310a13a3ce7e3b43d019d1f4413c0896ef857305f8",
+      "narrative": [
+        {
+          "text": "Section 5.2.1 (Shortening IRIs, Examples 128–129) and introduction to Section 5.2.2 (Representing Values as Strings). Shows compacting vocabulary-relative IRIs with @vocab (Example 128) and document-relative IRIs with @base (Example 129), and introduces how compaction simplifies single-element arrays and value/node objects into strings when term definitions specify the expected type or language.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-087",
+      "source": "sections/sec-087-522-representing-values-as-strings.md",
+      "source_hash": "e40ba34830b63822469ee7d460df569d861633b82ab2b85322d5f3d4c283277a",
+      "narrative": [
+        {
+          "text": "Section 5.2.2 (Representing Values as Strings, Example 130) and introductory prose for Section 5.2.3 (Representing Lists as Arrays) and Section 5.2.4 (Reversing Node Relationships). Demonstrates compacting typed values, language-tagged strings, and IRIs into plain strings when they match term definitions in the context (Example 130), and introduces compacting @list objects to arrays and compacting @reverse relationships.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-088",
+      "source": "sections/sec-088-523-representing-lists-as-arrays.md",
+      "source_hash": "18c01691e269c16ff79eb461dae8ec3b7710d81ace71362947f54ae7e681fedf",
+      "narrative": [
+        {
+          "text": "Example 131 in Section 5.2.3 (Representing Lists as Arrays), showing how a context term with @container: @list compacts an expanded @list object into a simple JSON array of strings.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-089",
+      "source": "sections/sec-089-524-reversing-node-relationships.md",
+      "source_hash": "14274487c95be3f0a41a9f627d85566903af49bee503b3c2a494d113d47790ca",
+      "narrative": [
+        {
+          "text": "Section 5.2.4 (Reversing Node Relationships, Example 132) and introduction to Section 5.2.5 (Indexing Values). Shows how a context term defined with @reverse compacts an expanded @reverse map into a direct property (children) on the parent node (Example 132), notes the synergy between reverse properties, framing, and container indexing, and introduces value indexing in Section 5.2.5.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-090",
+      "source": "sections/sec-090-525-indexing-values.md",
+      "source_hash": "4bfd242dcf26b02cdd0389c80600467ae09b694ea96201436abe606a8420deec",
+      "narrative": [
+        {
+          "text": "Section 5.2.5 (Indexing Values, Example 133) and introduction to Section 5.2.6 (Normalizing Values as Objects). Shows how @container: @language compacts an array of language-tagged value objects into a language-keyed map (Example 133), notes other index containers (@id, @type, @index), and introduces setting @type: @none on a term definition so compaction preserves value and node object representations.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-091",
+      "source": "sections/sec-091-526-normalizing-values-as-objects.md",
+      "source_hash": "b32d3f5ca6dc433729b4a00b06b0cd3973f8686894022af2f8c4069c44eb7a14",
+      "narrative": [
+        {
+          "text": "Section 5.2.6 (Normalizing Values as Objects, Example 134) and introductory prose for Section 5.2.7 (Representing Singular Values as Arrays) and Section 5.2.8 (Term Selection). Shows how defining a term with @type: @none forces compaction to retain value object and node object wrappers while still compacting datatype IRIs (Example 134), and introduces forcing array representation with @container: @set and splitting property values across specialized terms via term selection.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-092",
+      "source": "sections/sec-092-527-representing-singular-values-as-arrays.md",
+      "source_hash": "9450097cdf2cdaea4c8c49e7d0845bfaa5927a88e0ab96664cb1e16dc3923f70",
+      "narrative": [
+        {
+          "text": "Example 135 in Section 5.2.7 (Representing Singular Values as Arrays), showing how a term defined with @container: [@language, @set] compacts language-tagged strings into a language map whose values are always arrays even when a language has only one string.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-093",
+      "source": "sections/sec-093-528-term-selection.md",
+      "source_hash": "7ad353d4a683bddd62b6bb92d1421f59e22fef9e1d5b0d55473affd70022171b",
+      "narrative": [
+        {
+          "text": "Section 5.2.8 (Term Selection, Example 136) and introduction to Section 5.3 (Flattened Document Form). Demonstrates how compaction selects specific terms (integer, date, english, iri) whose @type or @language definitions match individual values of a shared property IRI while placing unmatched values under the compact IRI vocab:property (Example 136), and introduces flattening, which collects each node's properties into a flat top-level array and assigns blank node identifiers.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-094",
+      "source": "sections/sec-094-53-flattened-document-form.md",
+      "source_hash": "dc12b5ec3bedb4318eb7c4000a09a298f84438e7f5f61c9ee061c6fb669c8f1d",
+      "narrative": [
+        {
+          "text": "Section 5.3 (Flattened Document Form, Examples 137–138) and introduction to Section 5.4 (Framed Document Form). Shows flattening an embedded JSON-LD document into a top-level @graph array with blank node identifiers (Examples 137–138), specifies the flattened profile URI http://www.w3.org/ns/json-ld#flattened, and introduces JSON-LD Framing for reshaping flattened graph data according to a frame template.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-095",
+      "source": "sections/sec-095-54-framed-document-form.md",
+      "source_hash": "499b035c2342838eb44b122de538fc55604fb90443b8a4d86f9118eac8f0b022",
+      "narrative": [
+        {
+          "text": "Section 5.4 (Framed Document Form, Example 139 and opening of Example 140) and introductory lines of Section 6 (Modifying Behavior with Link Relationships). Presents a sample Library-Book-Chapter frame (Example 139) and flattened input graph (Example 140), defines the media type profile URIs http://www.w3.org/ns/json-ld#framed and http://www.w3.org/ns/json-ld#frame, and introduces using HTTP Link Headers (RFC 8288) when retrieving resources.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-096",
+      "source": "sections/sec-096-61-interpreting-json-as-json-ld.md",
+      "source_hash": "90b0243ff5b197f49f10a3976370272cfaa706c3c668bf5e74c92e249b9e8ceb",
+      "narrative": [
+        {
+          "text": "Introductory paragraph in Section 6 (Modifying Behavior with Link Relationships) explaining that when HTTP content negotiation cannot directly serve JSON-LD for a resource, an HTTP Link Header can advertise an alternate location for the JSON-LD representation.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-097",
+      "source": "sections/sec-097-62-alternate-document-location.md",
+      "source_hash": "cab51da2364aeb2ef6406b596d59352f4c311272353a81206aa9543523ccc610",
+      "narrative": [
+        {
+          "text": "Opening of Section 6.1 (Interpreting JSON as JSON-LD) alongside the remainder of Example 140 and Example 141 from Section 5.4. Specifies normative rules for interpreting ordinary application/json or +json documents as JSON-LD by fetching an external context referenced via an HTTP Link Header with rel=\"http://www.w3.org/ns/json-ld#context\" and type=\"application/ld+json\", and includes the framed Library-Book-Chapter output (Example 141).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-098",
+      "source": "sections/sec-098-6-modifying-behavior-with-link-relationships.md",
+      "source_hash": "033f80d168bf3d689be27b7b376deea1c22a15e750a9927d6b3a71eecadc5987",
+      "narrative": [
+        {
+          "text": "Continuation of Section 6.1 (Interpreting JSON as JSON-LD) and Section 6.2 (Alternate Document Location). States that responses must not contain multiple context Link Headers, notes the API expandContext option, requires application/ld+json documents to contain all context references in-body (ignoring context Link Headers), and specifies how non-JSON resources advertise a JSON-LD representation using at most one HTTP Link Header with rel=\"alternate\" and type=\"application/ld+json\".",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-099",
+      "source": "sections/sec-099-note.md",
+      "source_hash": "43b8cee2eb1d0a9bf3900d0b8c41f897003ca6198a3ca016ec5c06b6970ae55a",
+      "narrative": [
+        {
+          "text": "Examples 142 and 143 in Section 6 (Modifying Behavior with Link Relationships). Example 142 shows an HTTP response serving an application/json document with a Link Header pointing to an external JSON-LD context, and Example 143 shows a text/html response with a rel=\"alternate\" and type=\"application/ld+json\" Link Header pointing to alternate.jsonld.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-100",
+      "source": "sections/sec-100-note.md",
+      "source_hash": "7f2f507f2e49cb2bec3765d0c227ff8c2d8e44f526b46efbcc4d3b2e31286a77",
+      "narrative": [
+        {
+          "text": "Section 7 (Embedding JSON-LD in HTML Documents, Examples 144–145) and opening of Section 7.1 (Inheriting Base IRI from HTML's base element). Specifies embedding JSON-LD inside HTML <script type=\"application/ld+json\"> data blocks (Example 144), requires RDF extraction to expand and merge all untargeted JSON-LD script elements into a single RDF Dataset with shared blank node identifiers (Example 145), and states that the HTML Document Base URL establishes the default base IRI.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-101",
+      "source": "sections/sec-101-71-inheriting-base-iri-from-htmls-base-element.md",
+      "source_hash": "542be30795db6f23acaa06a52361d85480cd0c9f946cef1895bdd9711a6e57c6",
+      "narrative": [
+        {
+          "text": "Section 7.1 (Inheriting Base IRI from HTML's base element, Example 146) and Section 7.2 (Escaping Character Sequences in Script Elements). Shows an HTML <base> element establishing the default base IRI for an embedded JSON-LD script block (Example 146), advises authors to use explicit IRIs or @base because dynamic base URL changes are optional for processors, and warns against unescaped comment-open/close or script-open/close character sequences inside HTML <script> elements.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-102",
+      "source": "sections/sec-102-note.md",
+      "source_hash": "47d51a57d65e3012dc80b6ab1d7c0e49661edc58c12bbcfd96125139bf7b89b6",
+      "narrative": [
+        {
+          "text": "Informative Note in Section 7.2 (Escaping Character Sequences in Script Elements), Section 7.3 (Locating a Specific JSON-LD Script Element), and closing lines of Example 146. Lists HTML entity escapes (&amp;, &lt;, &gt;, &quot;, &apos;) noting they remain escaped after JSON-LD API processing, and specifies that a URL fragment identifier targeting a specific <script> element's id extracts only that standalone JSON-LD block without merging other script elements in the HTML document.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "claude-code",
+            "model": "not-disclosed",
+            "session": "conversation://058ee54f-ea98-4422-9a59-a587c16f4ca7"
+          },
+          "drafted_at": "2026-10-26"
+        }
+      ]
+    },
+    {
       "block": "library/w3c-2020-json-ld-1-1/blocks/prose-sec-front-matter",
       "source": "sections/sec-front-matter.md",
       "source_hash": "777ae8e1fd6d241119cd248017f858924a01ee77712588dab6659d10ddb17843",
