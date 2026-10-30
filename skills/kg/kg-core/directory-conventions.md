@@ -1336,7 +1336,7 @@ and there cannot be one:
 |---|---|
 | `sushi-config.yaml` | SUSHI reads that exact name, and it is YAML |
 | `index.config.json` `contentTypes.dak` | **ours** — bean `cz17`. Was `dak.json`; the owner moved it into the index on 2026-10-24 ("WHO will adopt harness file"). It is a SECTION, not a file: the content type declares `{ indexSection: "dak" }` (`IndexSectionMarker`). WHO's SMART Base still writes and reads `dak.json`; that IG's build reads that file into the index for one build, with a warning, until an IG moves it |
-| `index.config.json` `contentTypes.ig` | **fhir-harness's**: bean `cz17`, item 3. On 2026-10-30 the owner chose "A. ig section in index.config" over treating `sushi-config.yaml` as the marker. A repository declares itself the source of a FHIR IG with this section, registered as `{ indexSection: "ig" }` by `fhir-harness/schemas/ig-content-type.ts`. Carrying `sushi-config.yaml` alone does not declare an IG. The section's `include` lists the paths the harness reads. See "A marker declares what is read", below |
+| `index.config.json` `contentTypes.ig` | **The FHIR layer's**: bean `cz17`, item 3. On 2026-10-30 the owner chose "A. ig section in index.config" over treating `sushi-config.yaml` as the marker. A repository declares itself the source of a FHIR IG with this section, registered as `{ indexSection: "ig" }` by https://github.com/litlfred/fhir-harness/blob/main/schemas/ig-content-type.ts. Carrying `sushi-config.yaml` alone does not declare an IG. The section's `include` lists the paths the harness reads. See "A marker declares what is read", below |
 | `<name>.json`, `<name>.config.json` | ours |
 | `beans.json`, `todos.json` | ours, and named after the graph TYPOLOGY |
 
@@ -1394,11 +1394,18 @@ the repository it reads. It is not a flag that brings in the whole repository.
 `include` is a list of repository-relative POSIX paths, where an entry ending
 in `/` covers a directory. The rules:
 
-- `fhir-harness`'s `assertIgDeclares` refuses any path that is not on the list.
+- The FHIR layer's `assertIgDeclares` refuses any path that is not on the list.
 - A section with no `include`, or an empty one, declares nothing. It is never
   read as "everything".
 - The list bounds this harness only. SUSHI and the IG Publisher still read
   their own inputs.
+- A repository that declares no `contentTypes.ig` is a legacy IG: fhir-harness
+  reads it whole, as before, and warns once per repository per run that the
+  section is missing. The warning is the prompt to declare it, not noise to
+  silence.
+- Every IG reader in fhir-harness asks `scripts/ig-read-scope.ts` before it
+  reads a path. To make one see a path it skips, add the path to `include`;
+  fhir-harness's `ig-build-pipeline` §"What this layer reads" says how.
 
 A new section-shaped type should follow the same pattern: declare the paths
 it reads beside the marker, and read nothing else.

@@ -62,7 +62,7 @@
         "cat-harness/tool-releases/plantuml-1.2026.9.json — `digest.digest` and `source.url` must be updated to the new release's jar and sha256, and the file renamed to match the version.",
         "cat-harness/tool-releases/default.profile.json — `tools.plantuml` selects `plantuml@<version>`.",
         "cat-harness-tools/scripts/plantuml-render.ts — `PLANTUML` re-exports the release pin and resolves it through `tool-releases.ts`.",
-        "Copies outside this registry that do not read it, and so must move by hand: fhir-harness/scripts/ig-repo-site.ts `PLANTUML_VERSION`, and the jar URL in folio-assistant `.github/workflows/docs-site.yml` and `feature-staging.yml`."
+        "Copies outside this registry that do not read it, and so must move by hand: `PLANTUML_VERSION` in https://github.com/litlfred/fhir-harness/blob/main/scripts/ig-repo-site.ts, and the jar URL in folio-assistant `.github/workflows/docs-site.yml` and `feature-staging.yml`."
       ]
     },
     {

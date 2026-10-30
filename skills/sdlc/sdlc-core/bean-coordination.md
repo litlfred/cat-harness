@@ -889,8 +889,8 @@ exactly one store:
 
 | Bean | Its one home |
 |---|---|
-| `cat-tools-*`, and the beans cat-harness-tools took when it split off | `beans/defs` on `litlfred/cat-harness-tools` `main` |
-| `folio-core-*`, and the beans folio-assistant-core took | `beans/defs` on `litlfred/folio-assistant-core` `main` |
+| `cat-tools-*`, and the beans the tools layer took when it split off | `beans/defs` on `main` of https://github.com/litlfred/cat-harness-tools |
+| `folio-core-*`, and the beans the core content layer took | `beans/defs` on `main` of https://github.com/litlfred/folio-assistant-core |
 | every other bean | `litlfred/folio-assistant`, branch `cat/cat-harness/beans` |
 
 `litlfred/cat-harness`'s own `cat/cat-harness/beans` branch keeps its notes,
@@ -902,8 +902,8 @@ The tools hold the rule too: `state:push` refuses to write a bean file to the
 retired branch (deleting one is allowed), `beans:claim` there names the home
 instead of reporting the bean missing, and `bun run cat check:bean-one-home`
 fails when any bean id is in two stores or in the retired one. Run it after
-editing beans by hand. The table it reads is `scripts/lib/bean-homes.ts` in
-cat-harness-tools.
+editing beans by hand. The table it reads is
+https://github.com/litlfred/cat-harness-tools/blob/main/scripts/lib/bean-homes.ts.
 
 ## Which copy is canonical — `skills/sdlc/sdlc-core/`
 
