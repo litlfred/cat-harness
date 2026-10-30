@@ -4,24 +4,25 @@
  * ## The translations/ directory
  *
  * The top-level `translations/` directory contains **only** `.pot` templates,
- * `.po` translated files, and their `.ts` manifests (TranslationNode).
+ * `.po` translated files, and their `.json` manifests (TranslationNode,
+ * `$schema: "translation-node/v1"`; JSON data since bean `y9r6`).
  * Rendered output (`.md`), QA sidecars (`.qa.json`), and status metadata
  * are properties of the TranslationNode manifest, not loose files.
  *
  * ```
  * translations/
  *   fr/
- *     index.ts            ← TranslationNode manifest (KG node)
+ *     index.json          ← TranslationNode manifest (KG node)
  *     index.pot           ← POT template (extractable strings)
  *     index.po            ← PO translated strings
- *     agent-onboarding.ts
+ *     agent-onboarding.json
  *     agent-onboarding.pot
  *     agent-onboarding.po
- *     glossary.ts         ← shared glossary PO (no POT — hand-authored)
+ *     glossary.json       ← shared glossary PO (no POT — hand-authored)
  *     glossary.po
  * ```
  *
- * Each `.ts` file is a `TranslationNode` that references its `.po` and
+ * Each `.json` manifest is a `TranslationNode` that references its `.po` and
  * `.pot` siblings. This makes every translation file a **node in the
  * knowledge graph** — addressable by label, discoverable by the pipeline,
  * and validatable by the same content-object infrastructure that manages
@@ -216,10 +217,10 @@ export const TranslationStatusSchema = z.object({
   flagReason: z.string().min(1).optional(),
 });
 
-// ── TranslationNode — .ts manifest for PO/POT files ─────────────
+// ── TranslationNode — .json manifest for PO/POT files ───────────
 
 /**
- * A **TranslationNode** is a `.ts` manifest that wraps a `.po`/`.pot` pair
+ * A **TranslationNode** is a `.json` manifest that wraps a `.po`/`.pot` pair
  * as a first-class node in the knowledge graph.
  *
  * ## Why .ts manifests?
