@@ -29,10 +29,6 @@ msgstr "Arnés agéntico"
 msgid "On this page"
 msgstr "En esta página"
 
-#: docs/concepts/agentic-harness.md:25
-msgid "This page is generated from  — each section below links to its own source."
-msgstr "Esta página se genera a partir de  — cada sección a continuación enlaza a su propia fuente."
-
 #: docs/concepts/agentic-harness.md:29
 msgid "The agentic harness is the interaction model that folio-assistant runs on — the rules, states, and workflows that govern how an agent and a user collaborate inside this platform. Much of this behaviour is already described across individual skills and guidance documents; this page consolidates it into one reference so that an agent entering a session can look up the expected behaviour rather than reconstructing it from scattered rules."
 msgstr "El arnés agéntico es el modelo de interacción sobre el que se ejecuta folio-assistant: las reglas, estados y flujos de trabajo que rigen cómo colaboran un agente y un usuario dentro de esta plataforma. Gran parte de este comportamiento ya se describe a lo largo de habilidades individuales y documentos de orientación; esta página lo consolida en una sola referencia para que un agente que entra en una sesión pueda consultar el comportamiento esperado en lugar de reconstruirlo a partir de reglas dispersas."
@@ -52,10 +48,6 @@ msgstr "Una interacción usuario–agente se encuentra siempre exactamente en un
 #: docs/concepts/agentic-harness.md:50
 msgid "Idle state"
 msgstr "Estado inactivo"
-
-#: docs/concepts/agentic-harness.md:52
-msgid "The agent has no active workflow. It is waiting for a user request. On receiving one, it classifies the request (see Request classification) and transitions into the appropriate workflow state."
-msgstr "El agente no tiene ningún flujo de trabajo activo. Está esperando una solicitud del usuario. Al recibir una, clasifica la solicitud (consulta Clasificación de solicitudes) y realiza una transición al estado de flujo de trabajo correspondiente."
 
 #: docs/concepts/agentic-harness.md:56
 msgid "Workflow state"
@@ -109,10 +101,6 @@ msgstr "El contenido avanza a través de validar → renderizar → publicar"
 msgid "Document ingestion"
 msgstr "Ingesta de documentos"
 
-#: docs/concepts/agentic-harness.md:69
-msgid "User drops a file in"
-msgstr "El usuario deposita un archivo en"
-
 #: docs/concepts/agentic-harness.md:70
 msgid "Draft to publication"
 msgstr "De borrador a publicación"
@@ -153,10 +141,6 @@ msgstr "Ciclo de vida de la sesión"
 msgid "Every agent session follows the same lifecycle:"
 msgstr "Cada sesión de agente sigue el mismo ciclo de vida:"
 
-#: docs/concepts/agentic-harness.md:89
-msgid "Start — run the session-start sweep (, , ). This surfaces the current work-plan, how far the default branch has moved, and recent sibling branch activity. See ."
-msgstr "**Inicio (Start)** — ejecutar el barrido de inicio de sesión (, , ). Esto saca a la luz el plan de trabajo actual, cuánto ha avanzado la rama por defecto y la actividad reciente en ramas hermanas. Consulta ."
-
 #: docs/concepts/agentic-harness.md:94
 msgid "Classify — each user request is classified (see next section) and routed to the appropriate workflow."
 msgstr "**Clasificación (Classify)** — cada solicitud del usuario se clasifica (consulta la siguiente sección) y se enruta al flujo de trabajo correspondiente."
@@ -164,10 +148,6 @@ msgstr "**Clasificación (Classify)** — cada solicitud del usuario se clasific
 #: docs/concepts/agentic-harness.md:97
 msgid "Execute — the agent works within the active workflow, following its BPMN process. Each turn reports the bean being worked on and what is next."
 msgstr "**Ejecución (Execute)** — el agente trabaja dentro del flujo de trabajo activo, siguiendo su proceso BPMN. En cada turno se informa del bean en el que se está trabajando y de qué viene a continuación."
-
-#: docs/concepts/agentic-harness.md:100
-msgid "Commit — every meaningful unit of work gets its own commit and push. PRs are opened at the first commit, not the end. See ."
-msgstr "Commit — cada unidad de trabajo significativa recibe su propio commit y push. Los PR se abren en el primer commit, no al final. Consulta ."
 
 #: docs/concepts/agentic-harness.md:104
 msgid "Handoff — when the session ends (user leaves, context limit, token exhaustion), the agent's durable state is:"
@@ -250,10 +230,6 @@ msgid "Feature request"
 msgstr "**Solicitud de funcionalidad (feature request)**"
 
 #: docs/concepts/agentic-harness.md:124
-msgid "Request new platform capability (see crdm-detect)"
-msgstr "Solicitar una nueva capacidad de la plataforma (ver crdm-detect)"
-
-#: docs/concepts/agentic-harness.md:124
 msgid "CRDM requirements workflow"
 msgstr "Flujo de trabajo de requisitos CRDM"
 
@@ -272,10 +248,6 @@ msgstr "Sin flujo de trabajo — responder directamente"
 #: docs/concepts/agentic-harness.md:126
 msgid "Tool invocation"
 msgstr "Invocación de herramientas"
-
-#: docs/concepts/agentic-harness.md:126
-msgid "Run a specific tool (, , etc.)"
-msgstr "Ejecutar una herramienta específica (, , etc.)"
 
 #: docs/concepts/agentic-harness.md:126
 msgid "No workflow — execute and report"
@@ -305,10 +277,6 @@ msgstr "Triaje: corregir directamente si es pequeño, CRDM si requiere rediseño
 msgid "The feature-request detection rule"
 msgstr "La regla de detección de solicitudes de funcionalidad"
 
-#: docs/concepts/agentic-harness.md:132
-msgid "The critical classification boundary is between content authoring and feature request. The  skill () provides the detailed detection signals. The summary rule:"
-msgstr "El límite de clasificación crítico se sitúa entre la autoría de contenido y la solicitud de funcionalidad (feature request). La habilidad  () proporciona las señales detalladas de detección. La regla resumida:"
-
 #: docs/concepts/agentic-harness.md:137
 msgid "If implementing the request would require changes to folio-assistant (the platform repository) rather than to a folio repository, the request is a feature, and the agent should enter the CRDM workflow."
 msgstr "Si implementar la solicitud requeriría cambios en folio-assistant (el repositorio de la plataforma) en lugar de en un repositorio de folio, la solicitud es una funcionalidad (feature), y el agente debe ingresar al flujo de trabajo CRDM."
@@ -325,33 +293,9 @@ msgstr "Flujos de trabajo de contenido"
 msgid "When a request is classified as content work (authoring, review, ingestion), the agent follows the corresponding BPMN workflow. The existing documentation pages describe these in detail:"
 msgstr "Cuando una solicitud se clasifica como trabajo de contenido (autoría, revisión, ingesta), el agente sigue el flujo de trabajo BPMN correspondiente. Las páginas de documentación existentes los describen en detalle:"
 
-#: docs/concepts/agentic-harness.md:154
-msgid "Publication workflow — the content lifecycle from draft through validation, rendering, and publication. Covers roles (author, reviewer, editor), the base processes, activities and skills."
-msgstr "Flujo de trabajo de publicación — el ciclo de vida del contenido desde el borrador hasta la validación, renderizado y publicación. Cubre los roles (autor, revisor, editor), los procesos base, las actividades y las habilidades."
-
-#: docs/concepts/agentic-harness.md:159
-msgid "Document ingestion — how a dropped file becomes an L1 source: extract structure, derive content, build the L1 knowledge graph, completeness gate."
-msgstr "Ingesta de documentos — cómo un archivo depositado se convierte en una fuente L1: extraer estructura, derivar contenido, construir el grafo de conocimiento L1, control de completitud (completeness gate)."
-
 #: docs/concepts/agentic-harness.md:163
 msgid "Writing guides:"
 msgstr "Guías de redacción:"
-
-#: docs/concepts/agentic-harness.md:164
-msgid "Writing a paper"
-msgstr "Redacción de un paper"
-
-#: docs/concepts/agentic-harness.md:165
-msgid "Writing a document"
-msgstr "Redacción de un documento"
-
-#: docs/concepts/agentic-harness.md:166
-msgid "WHO SMART DAK"
-msgstr "WHO SMART DAK"
-
-#: docs/concepts/agentic-harness.md:167
-msgid "WHO SMART IG"
-msgstr "WHO SMART IG"
 
 #: docs/concepts/agentic-harness.md:169
 msgid "The harness does not redefine these workflows. It provides the entry point — classifying the request and routing to the right one — and the exit point — returning to idle state when the workflow completes, or suspending if the user switches context."
@@ -361,21 +305,9 @@ msgstr "El arnés no redefine estos flujos de trabajo. Proporciona el punto de e
 msgid "Deterministic and agentic processing"
 msgstr "Procesamiento determinista y agéntico"
 
-#: docs/concepts/agentic-harness.md:179
-msgid "Workflow processing here is a spectrum, not a switch, and the harness is already at four different points on it without ever having named the axis:  decides whether a step that is not enabled is refused or merely noted;  decides whether a package may negotiate a base step away;  decides whether a branch is computed from a table rather than chosen; and the commit-boundary gate refuses the write by something that is not the agent."
-msgstr "El procesamiento de flujos de trabajo aquí es un espectro, no un interruptor, y el arnés ya se encuentra en cuatro puntos diferentes de él sin haber nombrado nunca el eje:  decide si un paso que no está habilitado se rechaza o simplemente se anota;  decide si un paquete puede negociar la eliminación de un paso base;  decide si una bifurcación se calcula a partir de una tabla en lugar de elegirse; y el control de límite de commit (commit-boundary gate) rechaza la escritura realizada por algo que no sea el agente."
-
 #: docs/concepts/agentic-harness.md:187
 msgid "Those are not one axis, and treating them as one is the first thing to get wrong. At least three questions are being conflated — who decides the branch, what happens if the decision is wrong, and who enforces. A step can be fully agentic on the first and fully deterministic on the third: the commit boundary is exactly that, an agent deciding freely and a hook refusing the write regardless."
 msgstr "Esos no son un solo eje, y tratarlos como tal es el primer error que se comete. Se están combinando al menos tres preguntas: quién decide la bifurcación, qué sucede si la decisión es incorrecta y quién la hace cumplir. Un paso puede ser totalmente agéntico en la primera y totalmente determinista en la tercera: el límite de commit es exactamente eso, un agente que decide libremente y un hook que rechaza la escritura independientemente."
-
-#: docs/concepts/agentic-harness.md:194
-msgid "A gateway now says which it is.  means a table computes it and a hand-supplied outcome is refused;  means somebody's call, with the reason required. Before that marker, \"no table because this is a judgement\" and \"no table because nobody wrote one\" were indistinguishable — and  now prints the three-way split, so the question how much of this is decided by a model? has an answer that is counted rather than asserted."
-msgstr "Una compuerta (gateway) ahora indica cuál es.  significa que una tabla lo calcula y se rechaza un resultado proporcionado manualmente;  significa el criterio de alguien, exigiéndose el motivo. Antes de ese marcador, \"no hay tabla porque esto es un juicio subjetivo\" y \"no hay tabla porque nadie escribió una\" eran indistinguibles; y  ahora imprime la división tripartita, de modo que la pregunta ¿cuánto de esto lo decide un modelo? tiene una respuesta que se cuenta en lugar de meramente afirmarse."
-
-#: docs/concepts/agentic-harness.md:202
-msgid "What that count is for is research, and it is open. Which judgement points are safety risks, how much must be deterministic, and how models compare across sub-workflows under a controlled overlay of context and memories are three questions this repository can now ask and has not answered. The agenda, with each claim marked as measured, decided or hypothesis, is . Read it as an agenda: there is more hypothesis in it than measurement, and it says so."
-msgstr "El propósito de ese recuento es la investigación, y está abierto. Qué puntos de criterio son riesgos de seguridad, cuánto debe ser determinista y cómo se comparan los modelos a lo largo de subflujos de trabajo bajo una superposición controlada de contexto y recuerdos son tres preguntas que este repositorio ahora puede plantear y aún no ha respondido. La agenda, con cada afirmación marcada como medida, decidida o hipótesis, es . Léela como una agenda: contiene más hipótesis que mediciones, y así lo declara."
 
 #: docs/concepts/agentic-harness.md:211
 msgid "BPMN execution: one skill, two engines"
@@ -465,25 +397,9 @@ msgstr "el motor rechaza un paso antes de que ocurra"
 msgid "mechanical + agentic QA/QC reports find it after it happened"
 msgstr "informes de QA/QC mecánicos + agénticos lo detectan después de que haya ocurrido"
 
-#: docs/concepts/agentic-harness.md:236
-msgid "**The two ends differ in when a rule is checked, not in which rule. The same process, the same roles and the same permissions govern both. The engine checks them before a task starts and refuses; the swarm acts and a QA/QC report checks them after**, from the record of what was done. That only works if the rules and the record are data a report can read, which is the case for W3C ODRL 2.2 as the permission language and W3C PROV-O as the execution log (owner, 2026-09-23; the schema this implies is the actors, ODRL and PROV-O proposal)."
-msgstr "**Los dos extremos difieren en cuándo se comprueba una regla, no en cuál regla. El mismo proceso, los mismos roles y los mismos permisos rigen ambos. El motor los comprueba antes de que comience una tarea y la rechaza; el enjambre actúa y un informe de QA/QC los comprueba después**, a partir del registro de lo realizado. Eso solo funciona si las reglas y el registro son datos legibles por un informe, lo cual se cumple en W3C ODRL 2.2 como lenguaje de permisos y W3C PROV-O como registro de ejecución (responsable, 2026-09-23; el esquema que esto implica es la propuesta de actores, ODRL y PROV-O)."
-
-#: docs/concepts/agentic-harness.md:246
-msgid "Most real runs sit between the ends, and per task rather than per process: the previous section already counts which gateways are computed and which are judgement calls. A signing step can be engine-enforced inside an otherwise agentic run, and that is a property of the task, not of the whole diagram."
-msgstr "La mayoría de las ejecuciones reales se sitúan entre ambos extremos, y por tarea más que por proceso: la sección anterior ya contabiliza qué compuertas se calculan y cuáles son decisiones de criterio. Un paso de firma puede ser aplicado por el motor dentro de una ejecución por lo demás agéntica, y esa es una propiedad de la tarea, no de todo el diagrama."
-
-#: docs/concepts/agentic-harness.md:252
-msgid "Partly built. No BPMN engine is wired in. The mechanical QA/QC report now exists:  writes each workflow instance's history as a PROV-O log and re-checks every step against the ODRL policies, advisory (issue #1180, step 5; the  skill). The agentic QA/QC report does not exist yet. The rest of this section names the target so the proposal has something to be measured against."
-msgstr "Parcialmente construido. No hay ningún motor BPMN conectado aún. El informe mecánico de QA/QC ya existe:  escribe el historial de cada instancia de flujo de trabajo como un registro PROV-O y vuelve a comprobar cada paso contra las directivas ODRL, de carácter consultivo (issue #1180, paso 5; la habilidad ). El informe agéntico de QA/QC aún no existe. El resto de esta sección describe el objetivo para que la propuesta tenga algo con qué contrastarse."
-
 #: docs/concepts/agentic-harness.md:259
 msgid "Feature-request workflow (CRDM)"
 msgstr "Flujo de trabajo de solicitudes de funcionalidad (CRDM)"
-
-#: docs/concepts/agentic-harness.md:264
-msgid "When a request is classified as a feature request, the agent enters the CRDM requirements workflow (full documentation, BPMN)."
-msgstr "Cuando una solicitud se clasifica como solicitud de funcionalidad (feature request), el agente ingresa al flujo de trabajo de requisitos CRDM (documentación completa, BPMN)."
 
 #: docs/concepts/agentic-harness.md:269
 msgid "The feature-request workflow is where this harness document adds the most value, because it describes a behaviour that was previously implicit. The authoring and review workflows have been documented for months; the requirements workflow existed only as ad-hoc conversation."
@@ -492,10 +408,6 @@ msgstr "El flujo de trabajo de solicitudes de funcionalidad es donde este docume
 #: docs/concepts/agentic-harness.md:274
 msgid "How the agent enters CRDM"
 msgstr "Cómo ingresa el agente a CRDM"
-
-#: docs/concepts/agentic-harness.md:276
-msgid "The detection logic is in . Three scenarios:"
-msgstr "La lógica de detección se encuentra en . Tres escenarios:"
 
 #: docs/concepts/agentic-harness.md:279
 msgid "New session, first request is a feature: → Acknowledge, explain you will help work through requirements first, enter Phase 1."
@@ -562,10 +474,6 @@ msgid "Routed to"
 msgstr "Enrutado a"
 
 #: docs/concepts/agentic-harness.md:318
-msgid "directory"
-msgstr "Directorio"
-
-#: docs/concepts/agentic-harness.md:318
 msgid "User drops a Word doc, PDF, Excel file"
 msgstr "El usuario deposita un documento de Word, PDF, archivo de Excel"
 
@@ -574,24 +482,12 @@ msgid "Document ingestion pipeline"
 msgstr "Canalización de ingesta de documentos"
 
 #: docs/concepts/agentic-harness.md:319
-msgid "references"
-msgstr "Referencias en"
-
-#: docs/concepts/agentic-harness.md:319
 msgid "User references an already-ingested L1 source"
 msgstr "El usuario hace referencia a una fuente L1 ya ingerida"
 
 #: docs/concepts/agentic-harness.md:319
 msgid "Direct citation in content"
 msgstr "Citación directa en el contenido"
-
-#: docs/concepts/agentic-harness.md:320
-msgid "edits"
-msgstr "Ediciones en"
-
-#: docs/concepts/agentic-harness.md:320
-msgid "User edits a  block directly"
-msgstr "El usuario edita directamente un bloque"
 
 #: docs/concepts/agentic-harness.md:320
 msgid "Content authoring workflow"
@@ -616,10 +512,6 @@ msgstr "Subida en el chat"
 #: docs/concepts/agentic-harness.md:322
 msgid "User uploads a file in the LLM chat interface"
 msgstr "El usuario sube un archivo en la interfaz de chat del LLM"
-
-#: docs/concepts/agentic-harness.md:322
-msgid "Agent saves to  or processes inline"
-msgstr "El agente lo guarda en  o lo procesa en línea"
 
 #: docs/concepts/agentic-harness.md:323
 msgid "URL reference"
@@ -749,14 +641,6 @@ msgstr "Si no hay coincidencias abiertas, revisa los issues cerrados recientemen
 msgid "If no match at all, ask the user to create one. Do not create an issue without user permission."
 msgstr "Si no hay coincidencia en absoluto, pide al usuario que cree uno. No crees un issue sin el permiso del usuario."
 
-#: docs/concepts/agentic-harness.md:364
-msgid "Always feature branch + PR. No exceptions for feature work. The branch name should reference the issue number (e.g. )."
-msgstr "Siempre rama de funcionalidad + PR. Sin excepciones para el trabajo de funcionalidad. El nombre de la rama debe hacer referencia al número de issue (por ejemplo, )."
-
-#: docs/concepts/agentic-harness.md:367
-msgid "Always ask before merging to main. The user must explicitly confirm. This is stricter than the general  rule for content work, because feature changes affect the platform."
-msgstr "Preguntar siempre antes de fusionar en main. El usuario debe confirmar explícitamente. Esto es más estricto que la regla general de  para el trabajo de contenido, porque los cambios de funcionalidad afectan a la plataforma."
-
 #: docs/concepts/agentic-harness.md:371
 msgid "Post round summaries to the issue. After each round of implementation (one or more beans resolved), post a comment on the linked issue containing:"
 msgstr "Publicar resúmenes de ronda en el issue. Tras cada ronda de implementación (uno o más beans resueltos), publica un comentario en el issue vinculado que contenga:"
@@ -784,10 +668,6 @@ msgstr "Nunca cerrar un issue sin autorización explícita. El BA o la parte int
 #: docs/concepts/agentic-harness.md:382
 msgid "Requirements may span multiple issues. The agent should link to all relevant issues and note the relationships."
 msgstr "Los requisitos pueden abarcar múltiples issues. El agente debe enlazar a todos los issues pertinentes y señalar las relaciones."
-
-#: docs/concepts/agentic-harness.md:385
-msgid "Beans are not issues.  is for work-plan items. Issues are for stakeholder-facing requirements. Do not conflate them."
-msgstr "Los beans no son issues.  es para elementos del plan de trabajo. Los issues son para requisitos orientados a las partes interesadas. No los confundas."
 
 #: docs/concepts/agentic-harness.md:388
 msgid "Consolidated skill references"
@@ -857,10 +737,6 @@ msgstr "Tipos de contenido y adaptadores"
 msgid "BPMN diagram authoring"
 msgstr "Autoría de diagramas BPMN"
 
-#: docs/concepts/agentic-harness.md:410
-msgid "skill"
-msgstr "habilidad"
-
 #: docs/concepts/agentic-harness.md:412
 msgid "When a skill and this page disagree, the skill wins. This page is a consolidation, not a new authority. If you find a discrepancy, fix this page."
 msgstr "Cuando una habilidad y esta página discrepen, la habilidad prevalece. Esta página es una consolidación, no una nueva autoridad. Si encuentras una discrepancia, corrige esta página."
@@ -877,21 +753,9 @@ msgstr "Persistencia del estado del flujo de trabajo — el arnés describe la s
 msgid "Automated request classification — the classification table is a reference for agents to read; there is no classifier tool that routes automatically."
 msgstr "Clasificación automatizada de solicitudes — la tabla de clasificación es una referencia para que los agentes la consulten; no existe una herramienta clasificadora que enrute automáticamente."
 
-#: docs/concepts/agentic-harness.md:429
-msgid "BPMN for beans lifecycle — the beans work-plan has a lifecycle (create → claim → in-progress → resolve) that is discussed in  and the todo-manager skill but has no BPMN diagram."
-msgstr "BPMN para el ciclo de vida de los beans — el plan de trabajo de beans tiene un ciclo de vida (create → claim → in-progress → resolve) que se analiza en  y en la habilidad todo-manager, pero no cuenta con un diagrama BPMN."
-
 #: docs/concepts/agentic-harness.md:433
 msgid "BPMN for the agentic harness itself — a top-level BPMN diagram showing the idle/workflow state machine and the classification routing is not yet authored."
 msgstr "BPMN para el propio arnés agéntico — aún no se ha creado un diagrama BPMN de nivel superior que muestre la máquina de estados inactivo/flujo de trabajo y el enrutamiento de clasificación."
-
-#: docs/concepts/agentic-harness.md:437
-msgid "Session handoff protocol — the rules for what to commit before a session ends are in , but there is no structured handoff artefact that a new session can read to resume exactly where the previous one left off."
-msgstr "Protocolo de traspaso de sesión — las reglas sobre qué comitear antes de que termine una sesión están en , pero no existe un artefacto de traspaso estructurado que una nueva sesión pueda leer para reanudar el trabajo exactamente donde lo dejó la anterior."
-
-#: docs/concepts/agentic-harness.md:441
-msgid "Tracked in: #203"
-msgstr "Seguimiento en: #203"
 
 #~ msgid "TR"
 #~ msgstr "TR"
@@ -931,3 +795,105 @@ msgstr "Seguimiento en: #203"
 
 #~ msgid "✎ Edit{: .fa-node-edit title=\"Edit content/docs/concepts-agentic-harness/what-is-not-built-yet.md\" } QA… TR"
 #~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit content/docs/concepts-agentic-harness/what-is-not-built-yet.md\" } QA… TR"
+
+#~ msgid "This page is generated from  — each section below links to its own source."
+#~ msgstr "Esta página se genera a partir de  — cada sección a continuación enlaza a su propia fuente."
+
+#~ msgid "The agent has no active workflow. It is waiting for a user request. On receiving one, it classifies the request (see Request classification) and transitions into the appropriate workflow state."
+#~ msgstr "El agente no tiene ningún flujo de trabajo activo. Está esperando una solicitud del usuario. Al recibir una, clasifica la solicitud (consulta Clasificación de solicitudes) y realiza una transición al estado de flujo de trabajo correspondiente."
+
+#~ msgid "User drops a file in"
+#~ msgstr "El usuario deposita un archivo en"
+
+#~ msgid "Start — run the session-start sweep (, , ). This surfaces the current work-plan, how far the default branch has moved, and recent sibling branch activity. See ."
+#~ msgstr "**Inicio (Start)** — ejecutar el barrido de inicio de sesión (, , ). Esto saca a la luz el plan de trabajo actual, cuánto ha avanzado la rama por defecto y la actividad reciente en ramas hermanas. Consulta ."
+
+#~ msgid "Commit — every meaningful unit of work gets its own commit and push. PRs are opened at the first commit, not the end. See ."
+#~ msgstr "Commit — cada unidad de trabajo significativa recibe su propio commit y push. Los PR se abren en el primer commit, no al final. Consulta ."
+
+#~ msgid "Request new platform capability (see crdm-detect)"
+#~ msgstr "Solicitar una nueva capacidad de la plataforma (ver crdm-detect)"
+
+#~ msgid "Run a specific tool (, , etc.)"
+#~ msgstr "Ejecutar una herramienta específica (, , etc.)"
+
+#~ msgid "The critical classification boundary is between content authoring and feature request. The  skill () provides the detailed detection signals. The summary rule:"
+#~ msgstr "El límite de clasificación crítico se sitúa entre la autoría de contenido y la solicitud de funcionalidad (feature request). La habilidad  () proporciona las señales detalladas de detección. La regla resumida:"
+
+#~ msgid "Publication workflow — the content lifecycle from draft through validation, rendering, and publication. Covers roles (author, reviewer, editor), the base processes, activities and skills."
+#~ msgstr "Flujo de trabajo de publicación — el ciclo de vida del contenido desde el borrador hasta la validación, renderizado y publicación. Cubre los roles (autor, revisor, editor), los procesos base, las actividades y las habilidades."
+
+#~ msgid "Document ingestion — how a dropped file becomes an L1 source: extract structure, derive content, build the L1 knowledge graph, completeness gate."
+#~ msgstr "Ingesta de documentos — cómo un archivo depositado se convierte en una fuente L1: extraer estructura, derivar contenido, construir el grafo de conocimiento L1, control de completitud (completeness gate)."
+
+#~ msgid "Writing a paper"
+#~ msgstr "Redacción de un paper"
+
+#~ msgid "Writing a document"
+#~ msgstr "Redacción de un documento"
+
+#~ msgid "WHO SMART DAK"
+#~ msgstr "WHO SMART DAK"
+
+#~ msgid "WHO SMART IG"
+#~ msgstr "WHO SMART IG"
+
+#~ msgid "Workflow processing here is a spectrum, not a switch, and the harness is already at four different points on it without ever having named the axis:  decides whether a step that is not enabled is refused or merely noted;  decides whether a package may negotiate a base step away;  decides whether a branch is computed from a table rather than chosen; and the commit-boundary gate refuses the write by something that is not the agent."
+#~ msgstr "El procesamiento de flujos de trabajo aquí es un espectro, no un interruptor, y el arnés ya se encuentra en cuatro puntos diferentes de él sin haber nombrado nunca el eje:  decide si un paso que no está habilitado se rechaza o simplemente se anota;  decide si un paquete puede negociar la eliminación de un paso base;  decide si una bifurcación se calcula a partir de una tabla en lugar de elegirse; y el control de límite de commit (commit-boundary gate) rechaza la escritura realizada por algo que no sea el agente."
+
+#~ msgid "A gateway now says which it is.  means a table computes it and a hand-supplied outcome is refused;  means somebody's call, with the reason required. Before that marker, \"no table because this is a judgement\" and \"no table because nobody wrote one\" were indistinguishable — and  now prints the three-way split, so the question how much of this is decided by a model? has an answer that is counted rather than asserted."
+#~ msgstr "Una compuerta (gateway) ahora indica cuál es.  significa que una tabla lo calcula y se rechaza un resultado proporcionado manualmente;  significa el criterio de alguien, exigiéndose el motivo. Antes de ese marcador, \"no hay tabla porque esto es un juicio subjetivo\" y \"no hay tabla porque nadie escribió una\" eran indistinguibles; y  ahora imprime la división tripartita, de modo que la pregunta ¿cuánto de esto lo decide un modelo? tiene una respuesta que se cuenta en lugar de meramente afirmarse."
+
+#~ msgid "What that count is for is research, and it is open. Which judgement points are safety risks, how much must be deterministic, and how models compare across sub-workflows under a controlled overlay of context and memories are three questions this repository can now ask and has not answered. The agenda, with each claim marked as measured, decided or hypothesis, is . Read it as an agenda: there is more hypothesis in it than measurement, and it says so."
+#~ msgstr "El propósito de ese recuento es la investigación, y está abierto. Qué puntos de criterio son riesgos de seguridad, cuánto debe ser determinista y cómo se comparan los modelos a lo largo de subflujos de trabajo bajo una superposición controlada de contexto y recuerdos son tres preguntas que este repositorio ahora puede plantear y aún no ha respondido. La agenda, con cada afirmación marcada como medida, decidida o hipótesis, es . Léela como una agenda: contiene más hipótesis que mediciones, y así lo declara."
+
+#~ msgid "**The two ends differ in when a rule is checked, not in which rule. The same process, the same roles and the same permissions govern both. The engine checks them before a task starts and refuses; the swarm acts and a QA/QC report checks them after**, from the record of what was done. That only works if the rules and the record are data a report can read, which is the case for W3C ODRL 2.2 as the permission language and W3C PROV-O as the execution log (owner, 2026-09-23; the schema this implies is the actors, ODRL and PROV-O proposal)."
+#~ msgstr "**Los dos extremos difieren en cuándo se comprueba una regla, no en cuál regla. El mismo proceso, los mismos roles y los mismos permisos rigen ambos. El motor los comprueba antes de que comience una tarea y la rechaza; el enjambre actúa y un informe de QA/QC los comprueba después**, a partir del registro de lo realizado. Eso solo funciona si las reglas y el registro son datos legibles por un informe, lo cual se cumple en W3C ODRL 2.2 como lenguaje de permisos y W3C PROV-O como registro de ejecución (responsable, 2026-09-23; el esquema que esto implica es la propuesta de actores, ODRL y PROV-O)."
+
+#~ msgid "Most real runs sit between the ends, and per task rather than per process: the previous section already counts which gateways are computed and which are judgement calls. A signing step can be engine-enforced inside an otherwise agentic run, and that is a property of the task, not of the whole diagram."
+#~ msgstr "La mayoría de las ejecuciones reales se sitúan entre ambos extremos, y por tarea más que por proceso: la sección anterior ya contabiliza qué compuertas se calculan y cuáles son decisiones de criterio. Un paso de firma puede ser aplicado por el motor dentro de una ejecución por lo demás agéntica, y esa es una propiedad de la tarea, no de todo el diagrama."
+
+#~ msgid "Partly built. No BPMN engine is wired in. The mechanical QA/QC report now exists:  writes each workflow instance's history as a PROV-O log and re-checks every step against the ODRL policies, advisory (issue #1180, step 5; the  skill). The agentic QA/QC report does not exist yet. The rest of this section names the target so the proposal has something to be measured against."
+#~ msgstr "Parcialmente construido. No hay ningún motor BPMN conectado aún. El informe mecánico de QA/QC ya existe:  escribe el historial de cada instancia de flujo de trabajo como un registro PROV-O y vuelve a comprobar cada paso contra las directivas ODRL, de carácter consultivo (issue #1180, paso 5; la habilidad ). El informe agéntico de QA/QC aún no existe. El resto de esta sección describe el objetivo para que la propuesta tenga algo con qué contrastarse."
+
+#~ msgid "When a request is classified as a feature request, the agent enters the CRDM requirements workflow (full documentation, BPMN)."
+#~ msgstr "Cuando una solicitud se clasifica como solicitud de funcionalidad (feature request), el agente ingresa al flujo de trabajo de requisitos CRDM (documentación completa, BPMN)."
+
+#~ msgid "The detection logic is in . Three scenarios:"
+#~ msgstr "La lógica de detección se encuentra en . Tres escenarios:"
+
+#~ msgid "directory"
+#~ msgstr "Directorio"
+
+#~ msgid "references"
+#~ msgstr "Referencias en"
+
+#~ msgid "edits"
+#~ msgstr "Ediciones en"
+
+#~ msgid "User edits a  block directly"
+#~ msgstr "El usuario edita directamente un bloque"
+
+#~ msgid "Agent saves to  or processes inline"
+#~ msgstr "El agente lo guarda en  o lo procesa en línea"
+
+#~ msgid "Always feature branch + PR. No exceptions for feature work. The branch name should reference the issue number (e.g. )."
+#~ msgstr "Siempre rama de funcionalidad + PR. Sin excepciones para el trabajo de funcionalidad. El nombre de la rama debe hacer referencia al número de issue (por ejemplo, )."
+
+#~ msgid "Always ask before merging to main. The user must explicitly confirm. This is stricter than the general  rule for content work, because feature changes affect the platform."
+#~ msgstr "Preguntar siempre antes de fusionar en main. El usuario debe confirmar explícitamente. Esto es más estricto que la regla general de  para el trabajo de contenido, porque los cambios de funcionalidad afectan a la plataforma."
+
+#~ msgid "Beans are not issues.  is for work-plan items. Issues are for stakeholder-facing requirements. Do not conflate them."
+#~ msgstr "Los beans no son issues.  es para elementos del plan de trabajo. Los issues son para requisitos orientados a las partes interesadas. No los confundas."
+
+#~ msgid "skill"
+#~ msgstr "habilidad"
+
+#~ msgid "BPMN for beans lifecycle — the beans work-plan has a lifecycle (create → claim → in-progress → resolve) that is discussed in  and the todo-manager skill but has no BPMN diagram."
+#~ msgstr "BPMN para el ciclo de vida de los beans — el plan de trabajo de beans tiene un ciclo de vida (create → claim → in-progress → resolve) que se analiza en  y en la habilidad todo-manager, pero no cuenta con un diagrama BPMN."
+
+#~ msgid "Session handoff protocol — the rules for what to commit before a session ends are in , but there is no structured handoff artefact that a new session can read to resume exactly where the previous one left off."
+#~ msgstr "Protocolo de traspaso de sesión — las reglas sobre qué comitear antes de que termine una sesión están en , pero no existe un artefacto de traspaso estructurado que una nueva sesión pueda leer para reanudar el trabajo exactamente donde lo dejó la anterior."
+
+#~ msgid "Tracked in: #203"
+#~ msgstr "Seguimiento en: #203"

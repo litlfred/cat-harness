@@ -25,10 +25,6 @@ msgstr ""
 msgid "Accessibility"
 msgstr "Accesibilidad"
 
-#: docs/start/accessibility.md:12
-msgid "Two questions were asked on issue #232, and this page answers them:"
-msgstr "En el issue #232 se plantearon dos preguntas, y esta página las responde:"
-
 #: docs/start/accessibility.md:16
 msgid "What are the options for disability support here, and what is best practice?"
 msgstr "¿Cuáles son las opciones de soporte para discapacidades aquí y cuál es la mejor práctica?"
@@ -36,10 +32,6 @@ msgstr "¿Cuáles son las opciones de soporte para discapacidades aquí y cuál 
 #: docs/start/accessibility.md:17
 msgid "What are the options for forcing agentic Q&A into guided questions that follow DMN logic and can serve several interaction modalities?"
 msgstr "¿Cuáles son las opciones para forzar las preguntas y respuestas agénticas (Q&A) hacia preguntas guiadas que sigan la lógica DMN y puedan servir a diversas modalidades de interacción?"
-
-#: docs/start/accessibility.md:20
-msgid "They turn out to be the same question asked from two ends, which is why they share a page. The implementing skill is ."
-msgstr "Resulta que son la misma pregunta formulada desde dos extremos, razón por la cual comparten página. La habilidad que lo implementa es ."
 
 #: docs/start/accessibility.md:29
 msgid "1. The failure this is about"
@@ -285,10 +277,6 @@ msgstr "dónde"
 msgid "Agent-facing preferences, committed, read at session start"
 msgstr "Preferencias orientadas al agente, guardadas en el repositorio (committed), leídas al inicio de la sesión"
 
-#: docs/start/accessibility.md:123
-msgid ", surfaced by"
-msgstr ", expuestas por"
-
 #: docs/start/accessibility.md:124
 msgid "The rules an agent follows when asking"
 msgstr "Las reglas que sigue un agente al preguntar"
@@ -304,14 +292,6 @@ msgstr "el engranaje en el encabezado de la barra lateral —texto más grande, 
 #: docs/start/accessibility.md:126
 msgid "Reduced motion honoured without being asked"
 msgstr "Movimiento reducido respetado sin tener que solicitarlo"
-
-#: docs/start/accessibility.md:126
-msgid "media query, and it seeds the panel's default"
-msgstr "media query , que inicializa el valor predeterminado del panel"
-
-#: docs/start/accessibility.md:128
-msgid "The two preference stores are deliberately separate.  is committed, agent-facing, and about the conversation. The site control is per-viewer , never leaves the browser, and is about reading. A reader who is not the author choosing large type must not silently reconfigure how an agent talks to the author."
-msgstr "Los dos almacenes de preferencias están separados deliberadamente.  está en el repositorio, está orientado al agente y atañe a la conversación. El control del sitio reside en el  de cada visor, nunca sale del navegador y atañe a la lectura. Un lector que no sea el autor y que elija texto grande no debe reconfigurar de manera silenciosa cómo le habla el agente al autor."
 
 #: docs/start/accessibility.md:134
 msgid "2.7 What is not done"
@@ -349,10 +329,6 @@ msgstr "La segunda pregunta. La respuesta es una separación, y esa separación 
 msgid "3.1 Two things that look like one"
 msgstr "3.1 Dos cosas que parecen una sola"
 
-#: docs/start/accessibility.md:156
-msgid "What to ask next is a decision. Inputs are the facts known so far; output is the id of the next question, or  when enough is known. It belongs in a DMN table, is reviewable by whoever owns the process, and is identical for every user."
-msgstr "Qué preguntar a continuación es una decisión. Las entradas son los hechos conocidos hasta ahora; la salida es el id de la siguiente pregunta, o  cuando ya se sabe lo suficiente. Corresponde a una tabla DMN, puede ser revisada por quien sea dueño del proceso y es idéntica para cada usuario."
-
 #: docs/start/accessibility.md:161
 msgid "How to render the question is the modality. A numbered list in chat; spoken alternatives, one at a time, over audio; large-type radio buttons on a web page. The decision table never learns about any of this."
 msgstr "Cómo renderizar la pregunta es la modalidad. Una lista numerada en el chat; alternativas habladas, una por una, mediante audio; botones de opción (radio buttons) en tamaño grande en una página web. La tabla de decisiones nunca se entera de nada de esto."
@@ -368,14 +344,6 @@ msgstr "3.2 Cuatro propiedades que esto aporta"
 #: docs/start/accessibility.md:176
 msgid "The question set is finite and reviewable. You can read the table and know every question the agent is able to ask. An improvising agent offers no such guarantee, and cannot be reviewed before it meets a user."
 msgstr "El conjunto de preguntas es finito y revisable. Puedes leer la tabla y conocer cada pregunta que el agente es capaz de formular. Un agente que improvisa no ofrece tal garantía y no puede revisarse antes de interactuar con un usuario."
-
-#: docs/start/accessibility.md:179
-msgid "It terminates. A table whose output can be  has a stopping condition."
-msgstr "Termina. Una tabla cuya salida puede ser  tiene una condición de detención."
-
-#: docs/start/accessibility.md:181
-msgid "Asking becomes obligatory rather than optional. This is the trick  already uses:  is an outcome of the table, so the agent cannot route past it. An agent that decides for itself whether to ask will, under any pressure to seem helpful, decide not to."
-msgstr "Preguntar se vuelve obligatorio en lugar de opcional. Este es el truco que  ya utiliza:  es un resultado de la tabla, por lo que el agente no puede sortearlo. Un agente que decida por sí mismo si preguntar o no decidirá, ante cualquier presión por parecer servicial, no preguntar."
 
 #: docs/start/accessibility.md:186
 msgid "A skipped question is auditable. The facts are recorded; replay the table and see which rule fired."
@@ -406,20 +374,12 @@ msgid "A — decision-per-gateway (built)"
 msgstr "A — decisión por compuerta (decision-per-gateway) (construida)"
 
 #: docs/start/accessibility.md:195
-msgid "each ambiguous branch point in a BPMN carries ; the table returns the branch,  included"
-msgstr "cada punto de ramificación ambiguo en un BPMN incluye ; la tabla devuelve la rama, incluyendo"
-
-#: docs/start/accessibility.md:195
 msgid "no interview state machine — the process is the state. Cannot express \"ask these four in any order\""
 msgstr "sin máquina de estados para la entrevista — el proceso es el estado. No puede expresar «haz estas cuatro preguntas en cualquier orden»"
 
 #: docs/start/accessibility.md:196
 msgid "B — a question set behind one gateway"
 msgstr "B — un conjunto de preguntas detrás de una sola compuerta"
-
-#: docs/start/accessibility.md:196
-msgid "a  looping until it returns ; answers accumulate as facts"
-msgstr "un  en bucle hasta que devuelve ; las respuestas se acumulan como hechos"
 
 #: docs/start/accessibility.md:196
 msgid "one more table and a fact store; the loop is the process's own, so nothing new executes"
@@ -453,10 +413,6 @@ msgstr "trabajo real en el motor, y el subconjunto de FEEL tendría que ampliars
 msgid "3.4 Limits, stated plainly"
 msgstr "3.4 Límites, expresados con claridad"
 
-#: docs/start/accessibility.md:202
-msgid "The FEEL subset is small.  implements equality, comparison and one-of. Ranges,  and function calls are refused rather than silently mis-evaluated — a table that returns an answer and is not the table on the page is worse than one that throws."
-msgstr "El subconjunto de FEEL es pequeño.  implementa igualdad, comparación y pertenencia (one-of). Los rangos,  y las llamadas a funciones son rechazados en lugar de evaluarse incorrectamente de forma silenciosa: una tabla que devuelve una respuesta distinta a la esperada en la página es peor que una que lanza una excepción."
-
 #: docs/start/accessibility.md:206
 msgid "An open question is not a decision. \"What is this paper about?\" does not belong in a table, and forcing it there produces a worse interview."
 msgstr "Una pregunta abierta no es una decisión. «¿De qué trata este artículo?» no pertenece a una tabla, y forzarla allí produce una entrevista peor."
@@ -473,18 +429,47 @@ msgstr "Guiado no significa interrogar. La mayor victoria en accesibilidad dispo
 msgid "See also"
 msgstr "Véase también"
 
-#: docs/start/accessibility.md:218
-msgid "Getting started — the intent decision table in use"
-msgstr "Primeros pasos — la tabla de decisiones de intención en uso"
+#~ msgid "Two questions were asked on issue #232, and this page answers them:"
+#~ msgstr "En el issue #232 se plantearon dos preguntas, y esta página las responde:"
 
-#: docs/start/accessibility.md:219
-msgid "skill"
-msgstr "Habilidad"
+#~ msgid "They turn out to be the same question asked from two ends, which is why they share a page. The implementing skill is ."
+#~ msgstr "Resulta que son la misma pregunta formulada desde dos extremos, razón por la cual comparten página. La habilidad que lo implementa es ."
 
-#: docs/start/accessibility.md:220
-msgid "Publication workflow — every process in the repo"
-msgstr "Flujo de publicación — cada proceso en el repositorio"
+#~ msgid ", surfaced by"
+#~ msgstr ", expuestas por"
 
-#: docs/start/accessibility.md:221
-msgid "Options for workflow state in beans"
-msgstr "Opciones para el estado del flujo de trabajo en beans"
+#~ msgid "media query, and it seeds the panel's default"
+#~ msgstr "media query , que inicializa el valor predeterminado del panel"
+
+#~ msgid "The two preference stores are deliberately separate.  is committed, agent-facing, and about the conversation. The site control is per-viewer , never leaves the browser, and is about reading. A reader who is not the author choosing large type must not silently reconfigure how an agent talks to the author."
+#~ msgstr "Los dos almacenes de preferencias están separados deliberadamente.  está en el repositorio, está orientado al agente y atañe a la conversación. El control del sitio reside en el  de cada visor, nunca sale del navegador y atañe a la lectura. Un lector que no sea el autor y que elija texto grande no debe reconfigurar de manera silenciosa cómo le habla el agente al autor."
+
+#~ msgid "What to ask next is a decision. Inputs are the facts known so far; output is the id of the next question, or  when enough is known. It belongs in a DMN table, is reviewable by whoever owns the process, and is identical for every user."
+#~ msgstr "Qué preguntar a continuación es una decisión. Las entradas son los hechos conocidos hasta ahora; la salida es el id de la siguiente pregunta, o  cuando ya se sabe lo suficiente. Corresponde a una tabla DMN, puede ser revisada por quien sea dueño del proceso y es idéntica para cada usuario."
+
+#~ msgid "It terminates. A table whose output can be  has a stopping condition."
+#~ msgstr "Termina. Una tabla cuya salida puede ser  tiene una condición de detención."
+
+#~ msgid "Asking becomes obligatory rather than optional. This is the trick  already uses:  is an outcome of the table, so the agent cannot route past it. An agent that decides for itself whether to ask will, under any pressure to seem helpful, decide not to."
+#~ msgstr "Preguntar se vuelve obligatorio en lugar de opcional. Este es el truco que  ya utiliza:  es un resultado de la tabla, por lo que el agente no puede sortearlo. Un agente que decida por sí mismo si preguntar o no decidirá, ante cualquier presión por parecer servicial, no preguntar."
+
+#~ msgid "each ambiguous branch point in a BPMN carries ; the table returns the branch,  included"
+#~ msgstr "cada punto de ramificación ambiguo en un BPMN incluye ; la tabla devuelve la rama, incluyendo"
+
+#~ msgid "a  looping until it returns ; answers accumulate as facts"
+#~ msgstr "un  en bucle hasta que devuelve ; las respuestas se acumulan como hechos"
+
+#~ msgid "The FEEL subset is small.  implements equality, comparison and one-of. Ranges,  and function calls are refused rather than silently mis-evaluated — a table that returns an answer and is not the table on the page is worse than one that throws."
+#~ msgstr "El subconjunto de FEEL es pequeño.  implementa igualdad, comparación y pertenencia (one-of). Los rangos,  y las llamadas a funciones son rechazados en lugar de evaluarse incorrectamente de forma silenciosa: una tabla que devuelve una respuesta distinta a la esperada en la página es peor que una que lanza una excepción."
+
+#~ msgid "Getting started — the intent decision table in use"
+#~ msgstr "Primeros pasos — la tabla de decisiones de intención en uso"
+
+#~ msgid "skill"
+#~ msgstr "Habilidad"
+
+#~ msgid "Publication workflow — every process in the repo"
+#~ msgstr "Flujo de publicación — cada proceso en el repositorio"
+
+#~ msgid "Options for workflow state in beans"
+#~ msgstr "Opciones para el estado del flujo de trabajo en beans"
