@@ -24,7 +24,7 @@ built for.
 |---|---|---|
 | `openapi-validators` | [`validators/`](validators/) | `validators` |
 | `openapi-typologies` | [`typologies/`](typologies/) | `typologies` — the `openapi` kind |
-| `openapi-schemas` | [`schemas/`](schemas/) | `schemas` |
+| `cat-harness-tools-openapi-schemas` | `openapi/schemas/` in [cat-harness-tools](https://github.com/litlfred/cat-harness-tools/tree/main/openapi/schemas) | `schemas`, `code` — the Zod schema, moved by bean `8lcl` |
 
 ## The one rule
 

@@ -19,15 +19,6 @@
       "graphTypologies": [
         "typologies"
       ]
-    },
-    {
-      "id": "archimate-schemas",
-      "path": "schemas/",
-      "subgraph": true,
-      "description": "The subgraph's shapes: `cat-archimate.config.json` (what an instance names), the reader for Archi's native format (plain XML or zipped archive), and the normalised model — elements by layer, relationships, and views with absolute bounds — every page and drawing is made from.",
-      "graphTypologies": [
-        "schemas"
-      ]
     }
   ]
 }
