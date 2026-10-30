@@ -33,22 +33,25 @@ intra-chapter:
 - A **logical / expository backward edge** is a genuine defect: the
   source block *builds its argument on* the later block — the reader
   cannot follow the exposition in order. This happens iff **both** the
-  source and the target carry logical content
-  (`definition`/`proposition`/`theorem`/`lemma`/`corollary`/`proof`/
-  `conjecture`) AND the edge is a real `uses[]` reliance.
+  source and the target carry logical or assertional content (as
+  classified by the content type's `LOGICAL_SRC` and `LOGICAL_TGT`
+  block-kind sets, such as `definition` or formal claim kinds) AND the
+  edge is a real `uses[]` reliance.
 - A **storytelling backward edge** imposes no logical burden: the
-  source is narrative (`prose`/`remark`/`example`/`simulator`/
-  `equation`/`diagram`/`table`), or it merely *mentions* / *motivates*
-  / *interprets* the later block. A remark that foreshadows a later
-  result loses the reader nothing. **Benign — do not count as energy.**
+  source is narrative or illustrative (in the content type's
+  `NARRATIVE_SRC` set, such as `prose`, `remark`, `example`, `diagram`,
+  or `table`), or it merely *mentions* / *motivates* / *interprets* the
+  later block. A remark that foreshadows a later result loses the reader
+  nothing. **Benign — do not count as energy.**
 
 When computing energy, **weight logical backward edges heavily and
 storytelling backward edges at zero (or near-zero)**. Reordering to
 chase a storytelling backward edge churns the manifest for no
 expository gain, and can *worsen* a logical edge. Maintain a single
-authoritative classifier for the source/target-kind sets
-(`LOGICAL_SRC`, `LOGICAL_TGT`, `NARRATIVE_SRC`) and reuse it rather
-than re-deriving the kind lists here.
+authoritative classifier for the content type's source/target-kind sets
+(`LOGICAL_SRC`, `LOGICAL_TGT`, `NARRATIVE_SRC`) — supplied by the layer
+that ships the content type — and reuse it rather than re-deriving the
+kind lists here.
 
 The headline metric is the **logical backward-edge count**, not the
 raw backward-edge count. Storytelling and structural (appendix /
@@ -80,8 +83,8 @@ Read the chapter manifest `.ts` file to extract:
 - For each block `.ts` file: label and uses[] array
 
 Filter `uses[]` to **internal references only** — bare labels that match
-other blocks in the same chapter.  Ignore cross-paper refs (containing
-`:` prefix like `paper-dir:label` or URLs).
+other blocks in the same chapter.  Ignore cross-folio refs (containing
+`:` prefix like `<folio-dir>:<label>` or URLs).
 
 ### 2. Compute current energy
 

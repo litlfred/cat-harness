@@ -12,10 +12,13 @@ import {
   OdrlPolicySchema,
   actionGraph,
   broaderOrSelf,
+  decide,
   effectiveRules,
+  evaluatePcfConsent,
   permits,
   readPolicies,
   readPolicyGrants,
+  type FhirConsentLike,
   type OdrlPolicy,
 } from "./odrl.ts";
 import { ProvActivitySchema } from "./prov.ts";
@@ -50,7 +53,6 @@ const BEFORE: Record<string, string[]> = {
   "clinical-sme": ["clinical-validation"],
   "content-reviewer": ["approval-authority", "adjudication"],
   "end-user": ["adjudication"],
-  "ig-publisher-service": ["qa-reporting"],
   "ingestion-agent": ["content-authoring"],
   librarian: ["content-authoring"],
   "local-sweep": ["qa-reporting"],
@@ -232,11 +234,14 @@ describe("the schema refuses what it cannot mean", () => {
   }).success;
 
   test("an unknown key on a rule is refused, not dropped", () => {
+    expect(bad({ permission: [{ assignee: "a", action: "b", remedy: [] }] })).toBe(false);
     expect(bad({ permission: [{ assignee: "a", action: "b", duty: [] }] })).toBe(false);
   });
-  test("an Agreement names its assigner", () => {
+  test("an Agreement names both its assigner and its assignee (ODRL 2.2 §2.1.3)", () => {
     expect(bad({ "@type": "Agreement" })).toBe(false);
-    expect(bad({ "@type": "Agreement", assigner: "org:x" })).toBe(true);
+    expect(bad({ "@type": "Agreement", assigner: "org:x" })).toBe(false);
+    expect(bad({ "@type": "Agreement", assignee: "org:y" })).toBe(false);
+    expect(bad({ "@type": "Agreement", assigner: "org:x", assignee: "org:y" })).toBe(true);
   });
   test("isAnyOf takes a list and eq takes one value", () => {
     const c = (operator: string, rightOperand: unknown) =>
@@ -245,8 +250,471 @@ describe("the schema refuses what it cannot mean", () => {
     expect(c("odrl:isAnyOf", ["t"])).toBe(true);
     expect(c("odrl:eq", ["t"])).toBe(false);
   });
-  test("a scope outside Process, Task and Role is refused", () => {
+  test("a scope outside Process, Task, Role, purpose, dateTime and elapsedTime is refused", () => {
     expect(bad({ permission: [{ assignee: "a", action: "b", constraint: [{ leftOperand: "odrl:spatial", operator: "odrl:eq", rightOperand: "x" }] }] })).toBe(false);
+  });
+  test("a purpose constraint accepts HL7 PurposeOfUse codes and refuses draft vocabularies (DPV)", () => {
+    expect(
+      bad({
+        permission: [
+          {
+            assignee: "a",
+            action: "b",
+            constraint: [{ leftOperand: "odrl:purpose", operator: "odrl:isA", rightOperand: "HRESCH" }],
+          },
+        ],
+      }),
+    ).toBe(true);
+    expect(
+      bad({
+        permission: [
+          {
+            assignee: "a",
+            action: "b",
+            constraint: [{ leftOperand: "odrl:purpose", operator: "odrl:isA", rightOperand: "dpv:ResearchAndDevelopment" }],
+          },
+        ],
+      }),
+    ).toBe(false);
+  });
+  test("a duty accepts only the supported ODRL duty actions (delete, attribute, inform, obtainConsent)", () => {
+    for (const action of ["odrl:delete", "odrl:attribute", "odrl:inform", "odrl:obtainConsent"]) {
+      expect(bad({ permission: [{ assignee: "a", action: "b", duty: [{ action }] }] })).toBe(true);
+    }
+    expect(bad({ permission: [{ assignee: "a", action: "b", duty: [{ action: "odrl:compensate" }] }] })).toBe(false);
+  });
+});
+
+describe("computable DSA constraints and duties (bean s4v2)", () => {
+  const g = actionGraph([{ id: "read-dataset", includedIn: ["odrl:use"] }]);
+
+  test("purpose isA HL7 PurposeOfUse HRESCH permits a subclass purpose and denies an unrelated one", () => {
+    const dsa = policy({
+      "@type": "Agreement",
+      assigner: "org:who",
+      assignee: "org:ministry",
+      permission: [
+        {
+          assignee: "org:ministry",
+          action: "odrl:use",
+          constraint: [{ leftOperand: "odrl:purpose", operator: "odrl:isA", rightOperand: "HRESCH" }],
+        },
+      ],
+    });
+    const ask = (purpose?: string) =>
+      permits(
+        {
+          actor: "org:ministry",
+          action: "read-dataset",
+          scope: purpose ? { "odrl:purpose": purpose } : {},
+        },
+        dsa,
+        one(dsa),
+        g,
+      );
+    // HRESCH itself and its subclasses (direct and transitive) are permitted
+    expect(ask("HRESCH")).toBe("permit");
+    expect(ask("BIORCH")).toBe("permit");
+    expect(ask("CLINTRCH")).toBe("permit");
+    expect(ask("CLINTRCHPC")).toBe("permit");
+    // Unrelated HL7 PurposeOfUse codes are denied
+    expect(ask("TREAT")).toBe("deny");
+    expect(ask("PUBHLTH")).toBe("deny");
+    expect(ask("HMARKT")).toBe("deny");
+    // Absent purpose is unknown
+    expect(ask()).toBe("unknown");
+  });
+
+  test("dateTime lt permits before and denies after (and lteq/gt/gteq evaluate boundaries)", () => {
+    const dsa = policy({
+      "@type": "Agreement",
+      assigner: "org:who",
+      assignee: "org:ministry",
+      permission: [
+        {
+          assignee: "org:ministry",
+          action: "odrl:use",
+          constraint: [{ leftOperand: "odrl:dateTime", operator: "odrl:lt", rightOperand: "2026-12-31T00:00:00Z" }],
+        },
+      ],
+    });
+    const ask = (dateTime?: string) =>
+      permits(
+        {
+          actor: "org:ministry",
+          action: "read-dataset",
+          scope: dateTime ? { "odrl:dateTime": dateTime } : {},
+        },
+        dsa,
+        one(dsa),
+        g,
+      );
+    expect(ask("2026-06-15T12:00:00Z")).toBe("permit");
+    expect(ask("2026-12-31T00:00:00Z")).toBe("deny");
+    expect(ask("2027-01-01T00:00:00Z")).toBe("deny");
+    expect(ask()).toBe("unknown");
+  });
+
+  test("a 90-day delete duty: permit inside 90 days; after, deny without a deletion PROV record, permit with one, unknown when records are absent", () => {
+    const dsa = policy({
+      "@type": "Agreement",
+      uid: "urn:dsa:90d",
+      assigner: "org:who",
+      assignee: "org:ministry",
+      permission: [
+        {
+          assignee: "org:ministry",
+          action: "odrl:use",
+          target: "dataset: cholera-2026",
+          duty: [
+            {
+              action: "odrl:delete",
+              constraint: [{ leftOperand: "odrl:elapsedTime", operator: "odrl:lteq", rightOperand: "P90D" }],
+            },
+          ],
+        },
+      ],
+    });
+
+    const deletionProv = ProvActivitySchema.parse({
+      "@type": "prov:Activity",
+      "@id": "urn:run:delete-1",
+      "prov:startedAtTime": "2026-11-15T10:00:00Z",
+      "prov:qualifiedAssociation": {
+        "prov:agent": "org:ministry",
+        "prov:hadRole": "data-custodian",
+        "prov:hadPlan": "dsa-lifecycle#Task_delete",
+      },
+      "prov:used": ["dataset: cholera-2026"],
+      "cat-harness:underPolicy": "urn:dsa:90d",
+    });
+
+    const otherProv = ProvActivitySchema.parse({
+      "@type": "prov:Activity",
+      "@id": "urn:run:other-1",
+      "prov:startedAtTime": "2026-10-01T10:00:00Z",
+      "prov:qualifiedAssociation": {
+        "prov:agent": "org:ministry",
+        "prov:hadRole": "data-custodian",
+        "prov:hadPlan": "dsa-lifecycle#Task_analyze",
+      },
+      "prov:used": ["dataset: cholera-2026"],
+      "cat-harness:underPolicy": "urn:dsa:90d",
+    });
+
+    const ask = (elapsedTime: string, provRecords?: (typeof deletionProv)[]) =>
+      permits(
+        {
+          actor: "org:ministry",
+          action: "read-dataset",
+          scope: { target: "dataset: cholera-2026", "odrl:elapsedTime": elapsedTime },
+          provRecords,
+        },
+        dsa,
+        one(dsa),
+        g,
+      );
+
+    // Inside 90 days -> permit (even with no deletion PROV record yet)
+    expect(ask("P30D")).toBe("permit");
+    expect(ask("P90D", [])).toBe("permit");
+
+    // After 90 days -> deny without a deletion PROV record
+    expect(ask("P91D", [])).toBe("deny");
+    expect(ask("P100D", [otherProv])).toBe("deny");
+
+    // After 90 days -> permit with a deletion PROV record
+    expect(ask("P91D", [deletionProv])).toBe("permit");
+    expect(ask("P120D", [otherProv, deletionProv])).toBe("permit");
+
+    // After 90 days -> unknown when PROV records are absent
+    expect(ask("P91D", undefined)).toBe("unknown");
+  });
+
+  test("immediate duties (attribute, inform, obtainConsent): permit when fulfilled, deny when unmet, unknown when records are absent", () => {
+    const dsa = policy({
+      "@type": "Agreement",
+      uid: "urn:dsa:attr",
+      assigner: "org:who",
+      assignee: "org:ministry",
+      permission: [
+        {
+          assignee: "org:ministry",
+          action: "odrl:use",
+          duty: [{ action: "odrl:attribute" }, { action: "odrl:inform" }],
+        },
+      ],
+    });
+    const attrProv = ProvActivitySchema.parse({
+      "@type": "prov:Activity",
+      "@id": "urn:run:attr",
+      "prov:startedAtTime": "2026-10-01T10:00:00Z",
+      "prov:qualifiedAssociation": {
+        "prov:agent": "org:ministry",
+        "prov:hadRole": "recipient",
+        "prov:hadPlan": "dsa-lifecycle#Task_attribute",
+      },
+      "cat-harness:underPolicy": "urn:dsa:attr",
+    });
+    const informProv = ProvActivitySchema.parse({
+      "@type": "prov:Activity",
+      "@id": "urn:run:inform",
+      "prov:startedAtTime": "2026-10-01T10:05:00Z",
+      "prov:qualifiedAssociation": {
+        "prov:agent": "org:ministry",
+        "prov:hadRole": "recipient",
+        "prov:hadPlan": "dsa-lifecycle#Task_inform",
+      },
+      "cat-harness:underPolicy": "urn:dsa:attr",
+    });
+
+    expect(permits({ actor: "org:ministry", action: "read-dataset" }, dsa, one(dsa), g)).toBe("unknown");
+    expect(permits({ actor: "org:ministry", action: "read-dataset", provRecords: [attrProv] }, dsa, one(dsa), g)).toBe("deny");
+    expect(
+      permits({ actor: "org:ministry", action: "read-dataset", provRecords: [attrProv, informProv] }, dsa, one(dsa), g),
+    ).toBe("permit");
+  });
+});
+
+describe("odrl:obtainConsent duty met by a matching active PCF Consent (PCF6, bean a7c1)", () => {
+  const g = actionGraph([{ id: "read-dataset", includedIn: ["odrl:use"] }]);
+
+  const dsaWithConsentDuty = policy({
+    "@type": "Agreement",
+    uid: "urn:dsa:pcf6",
+    assigner: "org:who",
+    assignee: "org:ministry",
+    permission: [
+      {
+        assignee: "org:ministry",
+        action: "odrl:use",
+        target: "Patient/pat-1",
+        constraint: [{ leftOperand: "odrl:purpose", operator: "odrl:isA", rightOperand: "PurposeOfUse" }],
+        duty: [{ action: "odrl:obtainConsent" }],
+      },
+    ],
+  });
+
+  const activePermitConsentSet = policy({
+    "@type": "Set",
+    uid: "urn:ihe:pcf:consent:c-permit:v1",
+    profile: "https://profiles.ihe.net/ITI/PCF",
+    assigner: "Patient/pat-1",
+    permission: [
+      {
+        assignee: "org:ministry",
+        action: "odrl:use",
+        target: "Patient/pat-1",
+        constraint: [
+          { leftOperand: "odrl:purpose", operator: "odrl:isA", rightOperand: "TREAT" },
+          { leftOperand: "odrl:dateTime", operator: "odrl:gteq", rightOperand: "2026-01-01" },
+          { leftOperand: "odrl:dateTime", operator: "odrl:lteq", rightOperand: "2026-12-31" },
+        ],
+      },
+    ],
+  });
+
+  const activeDenyConsentSet = policy({
+    "@type": "Set",
+    uid: "urn:ihe:pcf:consent:c-deny:v1",
+    profile: "https://profiles.ihe.net/ITI/PCF",
+    assigner: "Patient/pat-1",
+    permission: [],
+    prohibition: [
+      {
+        assignee: ANYONE,
+        action: "odrl:use",
+        target: "Patient/pat-1",
+      },
+    ],
+  });
+
+  const inactiveEmptyConsentSet = policy({
+    "@type": "Set",
+    uid: "urn:ihe:pcf:consent:c-inactive:v1",
+    profile: "https://profiles.ihe.net/ITI/PCF",
+    assigner: "Patient/pat-1",
+    permission: [],
+    prohibition: [],
+  });
+
+  test("DSA + no Consent (or inactive/draft Consent) gives unknown, never permit or deny", () => {
+    const baseReq = {
+      actor: "org:ministry",
+      action: "read-dataset",
+      scope: {
+        target: "Patient/pat-1",
+        "odrl:purpose": "TREAT",
+        "odrl:dateTime": "2026-06-15T12:00:00Z",
+      },
+    };
+
+    // No Consent supplied at all -> unknown
+    expect(permits(baseReq, dsaWithConsentDuty, one(dsaWithConsentDuty), g)).toBe("unknown");
+    expect(decide(baseReq, one(dsaWithConsentDuty), g)).toBe("unknown");
+
+    // Explicit null / empty array -> unknown
+    expect(permits({ ...baseReq, consent: null }, dsaWithConsentDuty, one(dsaWithConsentDuty), g)).toBe("unknown");
+    expect(permits({ ...baseReq, consents: [] }, dsaWithConsentDuty, one(dsaWithConsentDuty), g)).toBe("unknown");
+
+    // Empty Set produced by consentToOdrl() for a non-active Consent -> unknown
+    expect(
+      permits({ ...baseReq, consent: inactiveEmptyConsentSet }, dsaWithConsentDuty, one(dsaWithConsentDuty), g),
+    ).toBe("unknown");
+
+    // Non-active FHIR R4 Consent (status: "inactive" or "draft") -> unknown
+    const inactiveFhirConsent: FhirConsentLike = {
+      resourceType: "Consent",
+      id: "c-inactive",
+      meta: { versionId: "1" },
+      status: "inactive",
+      patient: { reference: "Patient/pat-1" },
+      provision: {
+        type: "permit",
+        actor: [{ reference: { reference: "org:ministry" } }],
+        purpose: [{ system: "http://terminology.hl7.org/CodeSystem/v3-ActReason", code: "TREAT" }],
+      },
+    };
+    expect(
+      permits({ ...baseReq, consent: inactiveFhirConsent }, dsaWithConsentDuty, one(dsaWithConsentDuty), g),
+    ).toBe("unknown");
+    expect(
+      permits(
+        { ...baseReq, consent: { ...inactiveFhirConsent, status: "draft" } },
+        dsaWithConsentDuty,
+        one(dsaWithConsentDuty),
+        g,
+      ),
+    ).toBe("unknown");
+  });
+
+  test("DSA + deny Consent gives deny (explicit prohibition or violated Consent constraint)", () => {
+    const baseScope = {
+      target: "Patient/pat-1",
+      "odrl:purpose": "TREAT",
+      "odrl:dateTime": "2026-06-15T12:00:00Z",
+    };
+
+    // 1. Explicit prohibition in active Consent Set -> deny
+    expect(
+      permits(
+        { actor: "org:ministry", action: "read-dataset", scope: baseScope, consent: activeDenyConsentSet },
+        dsaWithConsentDuty,
+        one(dsaWithConsentDuty),
+        g,
+      ),
+    ).toBe("deny");
+
+    // Also when passed via the policy map `all` -> deny
+    const mapWithDeny = new Map<string, OdrlPolicy>([
+      [dsaWithConsentDuty.uid, dsaWithConsentDuty],
+      [activeDenyConsentSet.uid, activeDenyConsentSet],
+    ]);
+    expect(permits({ actor: "org:ministry", action: "read-dataset", scope: baseScope }, dsaWithConsentDuty, mapWithDeny, g)).toBe(
+      "deny",
+    );
+    expect(decide({ actor: "org:ministry", action: "read-dataset", scope: baseScope }, mapWithDeny, g)).toBe("deny");
+
+    // 2. Active permit Consent for TREAT, but request asks for HMARKT (purpose not permitted by Consent) -> deny
+    expect(
+      permits(
+        {
+          actor: "org:ministry",
+          action: "read-dataset",
+          scope: { ...baseScope, "odrl:purpose": "HMARKT" },
+          consent: activePermitConsentSet,
+        },
+        dsaWithConsentDuty,
+        one(dsaWithConsentDuty),
+        g,
+      ),
+    ).toBe("deny");
+
+    // 3. Active permit Consent expired at request dateTime -> deny
+    expect(
+      permits(
+        {
+          actor: "org:ministry",
+          action: "read-dataset",
+          scope: { ...baseScope, "odrl:dateTime": "2027-02-01T00:00:00Z" },
+          consent: activePermitConsentSet,
+        },
+        dsaWithConsentDuty,
+        one(dsaWithConsentDuty),
+        g,
+      ),
+    ).toBe("deny");
+
+    // 4. Active FHIR R4 Consent with root deny provision -> deny
+    const fhirDenyConsent: FhirConsentLike = {
+      resourceType: "Consent",
+      id: "c-dissent",
+      meta: { versionId: "2" },
+      status: "active",
+      patient: { reference: "Patient/pat-1" },
+      provision: {
+        type: "deny",
+      },
+    };
+    expect(
+      permits(
+        { actor: "org:ministry", action: "read-dataset", scope: baseScope, consent: fhirDenyConsent },
+        dsaWithConsentDuty,
+        one(dsaWithConsentDuty),
+        g,
+      ),
+    ).toBe("deny");
+  });
+
+  test("DSA + matching active permit Consent gives permit (for exact and subclass HL7 PurposeOfUse)", () => {
+    const reqForPurpose = (purpose: string) => ({
+      actor: "org:ministry",
+      action: "read-dataset",
+      scope: {
+        target: "Patient/pat-1",
+        "odrl:purpose": purpose,
+        "odrl:dateTime": "2026-06-15T12:00:00Z",
+      },
+    });
+
+    // Exact purpose TREAT and subclass ETREAT / BTG permitted by activePermitConsentSet
+    expect(
+      permits({ ...reqForPurpose("TREAT"), consent: activePermitConsentSet }, dsaWithConsentDuty, one(dsaWithConsentDuty), g),
+    ).toBe("permit");
+    expect(
+      permits({ ...reqForPurpose("ETREAT"), consent: activePermitConsentSet }, dsaWithConsentDuty, one(dsaWithConsentDuty), g),
+    ).toBe("permit");
+    expect(
+      permits({ ...reqForPurpose("BTG"), consent: activePermitConsentSet }, dsaWithConsentDuty, one(dsaWithConsentDuty), g),
+    ).toBe("permit");
+
+    // Also when the Consent Set is supplied in the policy map `all`
+    const mapWithPermit = new Map<string, OdrlPolicy>([
+      [dsaWithConsentDuty.uid, dsaWithConsentDuty],
+      [activePermitConsentSet.uid, activePermitConsentSet],
+    ]);
+    expect(permits(reqForPurpose("TREAT"), dsaWithConsentDuty, mapWithPermit, g)).toBe("permit");
+    expect(decide(reqForPurpose("TREAT"), mapWithPermit, g)).toBe("permit");
+
+    // Also when an active FHIR R4 Consent resource is supplied directly
+    const activeFhirConsent: FhirConsentLike = {
+      resourceType: "Consent",
+      id: "c-basic-treat",
+      meta: { versionId: "1" },
+      status: "active",
+      patient: { reference: "Patient/pat-1" },
+      provision: {
+        type: "permit",
+        period: { start: "2026-01-01", end: "2026-12-31" },
+        actor: [{ reference: { reference: "org:ministry" } }],
+        purpose: [{ system: "http://terminology.hl7.org/CodeSystem/v3-ActReason", code: "TREAT" }],
+        data: [{ meaning: "instance", reference: { reference: "Patient/pat-1" } }],
+      },
+    };
+    expect(
+      permits({ ...reqForPurpose("TREAT"), consent: activeFhirConsent }, dsaWithConsentDuty, one(dsaWithConsentDuty), g),
+    ).toBe("permit");
+    expect(evaluatePcfConsent(activeFhirConsent, reqForPurpose("TREAT"), g)).toBe("permit");
   });
 });
 

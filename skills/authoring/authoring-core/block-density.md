@@ -27,11 +27,16 @@ concrete splits.
 
 ## Rules
 
+**A content type supplies its own block-kind rules.** The layer that ships a
+content type specifies which statement kinds forbid inlined large tables and
+which long-form block kinds admit length exceptions, and links down to this
+skill from its side.
+
 ### R1 — Single-topic blocks
 
 A block should address **one** logical unit:
 - A definition defines one thing.
-- A proposition states one result.
+- A formal claim or rule block states one result or requirement.
 - A remark interprets one statement.
 
 If a block's `.md` content addresses multiple distinct topics (detectable
@@ -47,15 +52,16 @@ and section where topic B is the primary subject.
 ### R2 — Block length limit
 
 Blocks exceeding **40 non-blank lines** (~2/3 of a printed page) are
-candidates for splitting.  This is a soft limit — some blocks (worked
-examples, long proofs) legitimately need more space.  But any block
-over 40 lines should be reviewed.
+candidates for splitting.  This is a soft limit — some blocks (such as
+worked examples or extended derivations permitted by the content type)
+legitimately need more space.  But any block over 40 lines should be
+reviewed.
 
 ### R3 — Table extraction (STRICT)
 
 Tables with more than **5 data rows** (excluding header and separator)
-**must not** be inlined in a `remark`, `proposition`, `theorem`,
-`definition`, or `example` block.  Instead:
+**must not** be inlined in a `remark`, `definition`, `example`, or any of
+the content type's formal statement block kinds.  Instead:
 
 1. Extract the table to a new `table` block with `kind: "table"`.
 2. Give it a label like `tbl:<parent-block>-data`.
@@ -81,7 +87,7 @@ analysis to find the optimal placement.
 ## Analysis Script
 
 ```bash
-cd content && python3 pipeline/block-density-audit.py [paper-dir]
+cd content && python3 pipeline/block-density-audit.py [folio-dir]
 ```
 
 The script reports three categories:

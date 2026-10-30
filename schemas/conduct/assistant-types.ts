@@ -3,7 +3,7 @@
  *
  * Defines the typed registry model: actors, capabilities, skills,
  * requirements, and their relationships. This is the **authoritative**
- * schema source; `.claude/skills/framework/types.ts` re-exports from here.
+ * schema source; skill records import `SkillDefinition` from here.
  *
  * ## Concept overview
  *

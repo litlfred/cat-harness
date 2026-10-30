@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_249 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_248 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -35,7 +35,7 @@ _249 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`voice-editorial-review`](skills/authoring/authoring-core/voice-editorial-review.md) | Adjudicate a `voice-*` finding — read the flagged passage as a reader of THAT genre would and decide whether the register is wrong, the criterion is out of scope, or the block is a stated exception. |
 | [`voice-overlay-review`](skills/authoring/authoring-core/voice-overlay-review.md) | Review a block against the active voices' rules and record the verdict on its QA sidecar. |
 
-**`skills/authoring/content-lifecycle/`** (10)
+**`skills/authoring/content-lifecycle/`** (9)
 
 | Skill | What it is for |
 |---|---|
@@ -48,7 +48,6 @@ _249 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`content-test`](skills/authoring/content-lifecycle/content-test.md) | Content Testing |
 | [`content-validate`](skills/authoring/content-lifecycle/content-validate.md) | Content Validation |
 | [`evidence-appraisal`](skills/authoring/content-lifecycle/evidence-appraisal.md) | Evidence Appraisal |
-| [`ig-publisher-service-contract`](skills/authoring/content-lifecycle/ig-publisher-service-contract.md) | The contract the `ig-publisher-service` role is held to: what the JVM services an IG build shells out to must produce, and how a caller tells a pass from a run that never happened. |
 
 **`skills/conduct/conduct-core/`** (16)
 

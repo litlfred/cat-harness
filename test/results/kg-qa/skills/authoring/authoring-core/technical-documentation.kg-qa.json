@@ -5,7 +5,7 @@
     "id": "technical-documentation",
     "path": "skills/authoring/authoring-core/technical-documentation.md"
   },
-  "source_hash": "d9ee449fc168",
+  "source_hash": "f7274f36962a",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

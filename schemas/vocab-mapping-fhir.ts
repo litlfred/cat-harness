@@ -2,7 +2,7 @@
  * FHIR ConceptMap ⇄ vocabulary mapping tables: ι (represent) and π (produce).
  *
  * @module schemas/vocab-mapping-fhir
- * @graphNode schema
+ * @graphNode none — moved to the FHIR IG layer's schemas/vocab-mapping-fhir.ts (bean f8wp); retained for one release while lower-layer callers repoint to schemas/content/vocab-mapping.ts
  *
  * Owner, 2026-10-02 (bean `k74z`; all three statements verbatim in the
  * proposal's Decision section): *"we still want to able to produce FHIR
@@ -36,8 +36,10 @@
 import {
   R4_TO_R5_RELATIONSHIP,
   R5_TO_R4_EQUIVALENCE,
+  STANDARD_PREFIXES,
   VOCAB_MAPPING_SCHEMA,
   VocabMappingSchema,
+  expandCurie,
   type Dependency,
   type Element,
   type Group,
@@ -46,6 +48,8 @@ import {
   type TypedValue,
   type VocabMapping,
 } from "./content/vocab-mapping.js";
+
+export { STANDARD_PREFIXES, expandCurie };
 
 export type FhirRelease = "R4" | "R5";
 type Json = Record<string, unknown>;
@@ -271,25 +275,6 @@ export function fromConceptMap(cm: Json, release: FhirRelease = detectRelease(cm
 }
 
 // ── π : M → C ──────────────────────────────────────────────────────────
-
-/** Prefixes a table may write a system with. Callers add an instance's own (`NS_PREFIXES`). */
-export const STANDARD_PREFIXES: Readonly<Record<string, string>> = {
-  skos: "http://www.w3.org/2004/02/skos/core#",
-  dcterms: "http://purl.org/dc/terms/",
-  rdfs: "http://www.w3.org/2000/01/rdf-schema#",
-  rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-  owl: "http://www.w3.org/2002/07/owl#",
-  prov: "http://www.w3.org/ns/prov#",
-  schema: "https://schema.org/",
-};
-
-/** Expand a CURIE whose prefix is known; anything else (an IRI, a URN) is returned as written. */
-export function expandCurie(v: string, prefixes: Readonly<Record<string, string>>): string {
-  const m = /^([A-Za-z][\w.-]*):(.*)$/.exec(v);
-  if (m === null || m[2]!.startsWith("//")) return v;
-  const ns = prefixes[m[1]!];
-  return ns === undefined ? v : `${ns}${m[2]}`;
-}
 
 /**
  * π: produce a FHIR ConceptMap from a table, in `release`, with every loss.

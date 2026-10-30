@@ -7,8 +7,8 @@ description: >
   review state, Claude Approvals where the repository runs it), why a
   repository with no CI is never green, who may authorise a merge and what does
   NOT count as authorisation ("fix all issues until green" does not), how the
-  authorisation is recorded, and the post-merge steps: base green, downstream
-  re-pins, bean and issue. Use for "merge it", "land this PR", "merge the
+  authorisation is recorded, and the post-merge steps: base green, site
+  republished, downstream re-pins, bean and issue. Use for "merge it", "land this PR", "merge the
   green PRs", and before any write to a default branch in any repository.
 user_invocable: false
 ---
@@ -50,8 +50,8 @@ CI regenerates the harness projections on the head
 The merging session then reads the evidence, runs local gates if there is no
 CI, finds the authorisation and asks for it if it is missing. The owner
 answers: merge, hold or refuse. The merging session records the answer (not
-relaxable), merges pinned to the head, confirms `main`, re-pins downstream
-mounts and reports. Each step's own text is in the diagram.
+relaxable), merges pinned to the head, confirms `main`, republishes the
+repository's site, re-pins downstream mounts and reports. Each step's own text is in the diagram.
 
 The merging session is the `merge-steward` lane. With a Merge Manager active,
 that is the steward. With none active, the PR's own session takes the lane
@@ -243,7 +243,23 @@ commit unless told otherwise. **Never delete the branch**
    fix forward ([`continual-progress`](continual-progress.md) §"Two green PRs
    can merge into a red main"). With no CI, report "not verified: no CI". Do
    not report it as green.
-2. **`Task_Repin`: re-pin downstream mounts, as PRs, never as part of this
+2. **`Task_Republish`: rebuild and republish the repository's site.** A
+   merge that changes what a published site shows is not done until the site
+   shows it (owner, 2026-10-30: *"merged PRs by agent should trigger page
+   rebuild in process"*). When the merged repository's `index.config.json`
+   declares `site.build`, build from the merge commit and publish:
+
+   ```sh
+   bun run cat-harness-tools/scripts/build-instance-site.ts --root . \
+     --instance <name> --publish --remote https://github.com/<owner>/<repo>
+   ```
+
+   This is agent-run, never a GitHub Actions workflow. The build's gates stay
+   in force: an unresolved link refuses the publish, and that refusal goes on
+   the issue and is fixed forward, never published over. A repository whose
+   own workflow publishes its site (`docs-site-publish.bpmn`) needs nothing
+   here. With no `site.build`, record "no site to republish".
+3. **`Task_Repin`: re-pin downstream mounts, as PRs, never as part of this
    merge.** Find the instances whose `index.config.json` names this repository
    in `source.remote.repository`. For each, open a PR that moves `ref` to the
    merge commit, carries a `trust.consent` whose `evidence` quotes the owner's
@@ -254,7 +270,7 @@ commit unless told otherwise. **Never delete the branch**
    The merge authorisation covers the re-pin only if the owner's words named the
    re-pin. When no instance mounts the repository, record "no downstream mounts
    found" and say where you looked.
-3. **`Task_Report`: a note on the bean** with the merge SHA and the
+4. **`Task_Report`: a note on the bean** with the merge SHA and the
    authorisation block, and a round summary on the issue
    ([`issue-working`](issue-working.md)). **Do not close the issue.** In CRDM,
    `crdm-close.bpmn` closes it after this sub-process returns, and only on the
