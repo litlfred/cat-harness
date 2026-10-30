@@ -11,11 +11,11 @@ Package, version, and publish approved content.
 
 ## Responsibilities
 - Update version numbers (semantic versioning: major.minor.patch)
-- Create publication metadata (publication-request.json for FHIR IGs)
-- Build final artifacts (IG Publisher build, LaTeX compilation)
+- Create publication metadata required by the target content type
+- Build final artifacts using the content type's publication pipeline
 - Create release branches and tags
 - Create GitHub releases with release notes
-- Deploy to publication platform (smart.who.int, arXiv, etc.) — the push is
+- Deploy to the target publication platform — the push is
   the general [`render-kg-to-cdn`](../../process/workflow/render-kg-to-cdn.md)
   step with the release root as its publication root URL; the target's Tool
   (`gh-pages` for GitHub Pages) carries the platform-specific steps
@@ -31,7 +31,7 @@ Package, version, and publish approved content.
 - Release notes
 
 ## Outputs
-- Published artifacts (IG, PDF, etc.)
+- Published artifacts (HTML site, PDF, or content-type package)
 - GitHub release with tags
 - Publication URL
 - Updated version in development branch

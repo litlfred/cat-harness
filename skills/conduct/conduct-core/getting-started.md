@@ -209,7 +209,7 @@ explicit permission for that repository. Ask which mode they want, with
 | `new-repo` | Ask for the name. Create or use the empty directory, then `folio_init`. |
 | `overlay` | Hand off to [`repo-conversion`](repo-conversion.md) — scan first, import second, and never in the other order. The scan's `markers` are offered as picks (§2a, `Task_ChooseHarnessed`): the harness declares only what the person chose — declare, don't slurp. |
 | `add-folio` | `folio_init` against a new top-level slug in the existing instance. Do not re-link the platform; it is already linked. |
-| `new-content` | **Stop.** This process ends here. Hand off to `authoring-a-document` or `authoring-a-paper`. Scaffolding anything on this branch is the bug. |
+| `new-content` | **Stop.** This process ends here. Hand off to the active content type's authoring skill. Scaffolding anything on this branch is the bug. |
 
 **An empty repository gets `main` before any feature branch.** GitHub makes
 the first branch pushed to an empty repository its default, so run
@@ -217,15 +217,14 @@ the first branch pushed to an empty repository its default, so run
 anything else. litlfred/dth-hrh got a feature branch as its default this way
 (owner, 2026-10-14).
 
-**An IG or a SMART Guideline is routed by its own creation skill.** When the
-answer to step 3's second question is a FHIR IG or a WHO SMART IG, hand over
-to `fhir-ig-create` (ask `skill_list`; a harness that specialises it, such as
-`smart-guideline-create`, runs instead). It reads the same facts and adds the
-one answer this table has no branch for: **inside this repository, as a staged
-sub-KG that can move to its own repository later**, which is its default in a
-harnessed repository because nothing outside the repository changes until the
-owner confirms. `folio_init` has no IG type, so the new-repository route
-scaffolds with `--instance` there. Bean `3tza`.
+**A specialised content type is routed by its own creation skill.** When the
+answer to step 3's second question names a domain content type shipped by a
+higher harness layer, hand over to that layer's creation skill (discover it via
+`skill_list`). It reads the same facts and adds the in-repository staged
+sub-KG option — staging inside the current repository first so nothing outside
+the repository changes until the owner confirms. Where `folio_init` does not
+handle that content type directly, the new-repository route scaffolds with
+`--instance`. Bean `3tza`.
 
 **A second folio can leave later.** What `add-folio` creates, and any staged
 sub-KG, may later move to a repository of its own. That is

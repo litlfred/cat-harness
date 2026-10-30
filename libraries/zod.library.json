@@ -99,7 +99,6 @@
     "schemas/library/tabular-csvw.ts",
     "schemas/library/tabular-records.ts",
     "schemas/library/theme-art-intake.ts",
-    "schemas/precision-scalar.ts",
     "schemas/process/actor-reach.ts",
     "schemas/process/convention.ts",
     "schemas/process/decision-methodology-context.ts",

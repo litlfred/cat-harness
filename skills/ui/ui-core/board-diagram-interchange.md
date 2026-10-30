@@ -4,8 +4,6 @@ description: >
   A board is a DIAGRAM OF a folio, not a container of one. The OMG split
   between the semantic model and its layout, why the arrow runs one way, and
   what a note may never carry.
-adapters: [document, paper, dak]
-profiles: [document, paper]
 ---
 
 # Relationship first, visualisation later

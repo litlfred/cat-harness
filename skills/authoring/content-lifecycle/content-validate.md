@@ -11,18 +11,16 @@ Validate authored content against schemas, standards, and clinical accuracy.
 
 ## Responsibilities
 - Run schema validation against defined constraints
-- Validate FHIR resources (if applicable)
-- Run SUSHI compilation (if applicable)
-- Execute IG Publisher QA checks (if applicable)
-- Verify Lean proofs compile (if applicable)
+- Run the active content type's compiler, formal-layer, and package validators
+  (supplied by the layer that ships the content type)
 - Check cross-component consistency
-- Validate terminology bindings
+- Validate vocabulary and terminology bindings
 
 ## Actors
 - QC Reviewer (lead)
-- FHIR Modeller (technical validation)
-- Terminologist (terminology validation)
-- Clinical SME (clinical accuracy)
+- Technical Modeller / Formal Verifier (supplied by the content-type layer)
+- Terminologist / Ontology Specialist (supplied by the content-type layer)
+- Domain SME (domain accuracy, supplied by the content-type layer)
 
 ## Inputs
 - Authored content artifacts

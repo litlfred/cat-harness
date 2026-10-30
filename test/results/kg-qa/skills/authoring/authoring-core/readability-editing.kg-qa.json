@@ -5,7 +5,7 @@
     "id": "readability-editing",
     "path": "skills/authoring/authoring-core/readability-editing.md"
   },
-  "source_hash": "0774418f4654",
+  "source_hash": "d88e2af3c4fe",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

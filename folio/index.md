@@ -19,5 +19,5 @@ view.
 
 | file | size |
 |---|---|
-| [`README.md`](README.md) | 1.1 KB |
+| [`README.md`](README.md) | 1.4 KB |
 | [`cat-harness.json`](cat-harness.json) | 2.3 KB |

@@ -94,25 +94,23 @@ chapter):
 3. Formal definition or theorem
 4. Consequence or example (the running example)
 
-## The Milnor exposition standard — its own skill
+## Mathematical exposition standard — its own skill in the science layer
 
-The eight hallmarks, their 0/1/2 rubric, and the three places the measurement
-contradicts the profile above now live in the science layer's
-`milnor-exposition-standard` skill (`skill_fetch milnor-exposition-standard`;
-it moved there on 2026-10-24, bean `syiq`), because a standard
-with its own voice profile (`voices/milnor.json`), its own strict QA gate
-(`expo-milnor-clarity`) and three inbound references is a skill, not a section of
-another one. Extracting it also cleared the `skill-is-brief` finding this file
-picked up at 311 lines.
+The eight exposition hallmarks, their 0/1/2 rubric, and the places where the
+measured standard refines the profile above live in the science layer's
+exposition-standard skill (moved there on 2026-10-24, bean `syiq`; the science
+layer names this skill from its side), because a standard with its own voice
+profile, its own strict QA gate and three inbound references is a skill of the
+content type that uses it, not a section of this generic guide.
 
-**Two of its findings override rules stated above in this file**, so read it
-before applying §"Author Voice Profile" to mathematical prose:
+**Two of its findings override rules stated above when writing mathematical
+prose**, so consult the content type's exposition standard before applying
+§"Author Voice Profile" to a paper folio:
 
-- **`clearly` is proof economy, not editorializing.** Milnor uses it fourteen
-  times in 8899 words, every one routing the reader away from a routine
-  verification.
-- **"never `I`" is too blunt.** Exactly one first-person singular in the paper —
-  the acknowledgement — against twenty uses of "we".
+- **`clearly` is proof economy, not editorializing**, when it routes the reader
+  away from a routine verification.
+- **"never `I`" admits a narrow acknowledgement exception** against joint "we"
+  in the body.
 
 ## Project-Level Voice Rules
 

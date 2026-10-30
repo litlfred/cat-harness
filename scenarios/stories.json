@@ -255,27 +255,6 @@
       "want": "Offer feedback as a reader without holding any entitlement to settle it"
     },
     {
-      "id": "fhir-modeller-1",
-      "role": {
-        "role": "fhir-modeller"
-      },
-      "want": "Derive a profile from the L2 data dictionary"
-    },
-    {
-      "id": "fhir-modeller-2",
-      "role": {
-        "role": "fhir-modeller"
-      },
-      "want": "Find which element a requirement constrains"
-    },
-    {
-      "id": "fhir-modeller-3",
-      "role": {
-        "role": "fhir-modeller"
-      },
-      "want": "Validate the built IG against the model"
-    },
-    {
       "id": "ingestion-agent-1",
       "role": {
         "role": "ingestion-agent"

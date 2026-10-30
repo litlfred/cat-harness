@@ -11,10 +11,10 @@ polish.  This skill is less concerned with subject-matter correctness
 and more concerned with how well the text communicates ideas to its
 intended reader.
 
-**A content type adds its own checks.** For a paper folio, with math and a TeX
-pipeline, they are the science layer's `math-readability-editing`
-(`skill_fetch math-readability-editing`): math-specific style, the blueprint
-and formal-proof index cross-checks, and the mandatory TeX snippet validation
+**A content type adds its own checks.** A layer that ships a content type
+with mathematical notation or a TeX/formal pipeline supplies its own
+readability refinement skill (and links down to this skill from its side)
+covering notation style, formal-index cross-checks, and snippet validation
 after an edit.
 
 ## Checks

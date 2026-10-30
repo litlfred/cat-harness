@@ -36,9 +36,9 @@ Located in `ui/app.js`. Processing order:
 | Nested lists | Not supported | Flatten or use prose |
 | `\cite{key}` | No bibliography lookup | Accept `[key]` display |
 
-A content type with math adds its own rows: for a paper folio, the science
-layer's `math-render-check` (`skill_fetch math-render-check`, "In the HTML
-viewer") lists the KaTeX, display-math and TeX ones.
+A content type with math adds its own rows: the layer shipping that content
+type supplies its math-rendering check skill with the KaTeX, display-math, and
+TeX rules.
 
 ## Interactive features
 

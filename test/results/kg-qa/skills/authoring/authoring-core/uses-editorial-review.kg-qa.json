@@ -5,7 +5,7 @@
     "id": "uses-editorial-review",
     "path": "skills/authoring/authoring-core/uses-editorial-review.md"
   },
-  "source_hash": "e0f3880045d2",
+  "source_hash": "sha256:99b363fbc7f1072d562f8b608aed8b7b271a9fc1b9c3826c294a809c5108845a",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

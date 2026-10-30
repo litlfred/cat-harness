@@ -16,10 +16,10 @@ The register is an SDO's — W3C, IHE. The reader is an implementer who was not
 in the room and will not have had the discussion that produced the document.
 
 > **The voice is the enforceable half.**
-> `cat-harness/voices/technical-writer.json` carries eight rules, five citing
-> the ingested RFCs and three citing the owner's direction. It applies to
-> DRAFTING and to REVIEW QA. This skill is how a person runs it; the voice is
-> what a checker can read.
+> The technical-writer voice profile addressing the role carries the
+> machine-checkable rules citing the ingested RFCs and this skill. It applies
+> to DRAFTING and to REVIEW QA. This skill is how a person runs it; the voice
+> profile (which points down at this skill) is what a checker reads.
 
 ## Requirement levels are RFC 2119's, and only in UPPERCASE
 

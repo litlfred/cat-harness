@@ -5,7 +5,7 @@
     "id": "content-feedback",
     "path": "skills/authoring/content-lifecycle/content-feedback.md"
   },
-  "source_hash": "4eac0f98daa6",
+  "source_hash": "sha256:e2f03a701463b405890560ed308fb0c6a9bbcb34448b1a183817116428982951",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

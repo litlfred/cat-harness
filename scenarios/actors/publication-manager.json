@@ -9,7 +9,6 @@
   ],
   "capabilities": [
     "git-push",
-    "ig-publisher",
     "jekyll"
   ],
   "meta": {

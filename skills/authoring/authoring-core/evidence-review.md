@@ -80,7 +80,7 @@ questions, in order, first-to-answer wins:
 
 **Three rows earn a place on the platform and four do not**, and the four are
 not a backlog. They are a folio's methodology, correctly located. The honest
-move is to fence them and say so — which is what `q-usage-watcher` does in its
+move is to fence them and say so — which is what a parameter-usage watcher does in its
 first paragraph, and what this table does here.
 
 **Nothing is shipped for the fenced rows.** Declaring empty criteria for them

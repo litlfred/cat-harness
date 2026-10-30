@@ -5,7 +5,7 @@
     "id": "content-profiles",
     "path": "skills/authoring/authoring-core/content-profiles.md"
   },
-  "source_hash": "9fbe6be37223",
+  "source_hash": "sha256:8239211e33510c7b0d9dd66a48a78736f2b85bb69ef0b7715e673411a83c4d76",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

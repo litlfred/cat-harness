@@ -80,9 +80,10 @@ For a `MAIN <sha> <msg>` line (or PR commit event):
 SHA=<event sha>
 changed=$(git diff-tree --no-commit-id --name-only -r "$SHA")
 
-# Any content-block sibling triple change triggers.
+# Any content-block sibling change triggers (a content type adds its own
+# sibling extensions via its voice-watcher refinement skill).
 is_in_scope=false
-echo "$changed" | grep -qE '^content/.*\.(md|ts|lean)$' && is_in_scope=true
+echo "$changed" | grep -qE '^content/.*\.(md|ts)$' && is_in_scope=true
 
 # Skill-file changes that affect the audit rubric ALSO trigger
 # (one-voice-audit, one-voice-style-guide, the registry).
@@ -94,7 +95,7 @@ echo "$changed" | grep -qE '(one-voice-(audit|style-guide|integration-watcher)\.
 > `pipeline/qa-section-title-audit.ts` (criterion
 > `voice-section-title-coherence`), since titles live on chapter
 > manifests rather than block triples. A chapter-manifest change
-> (caught by the `^content/.*\.(md|ts|lean)$` trigger above) should
+> (caught by the `^content/.*\.(md|ts)$` trigger above) should
 > re-run that script and, for any flagged title, dispatch the agent
 > story-coherence pass per `one-voice-style-guide` §Title Conventions.
 
@@ -127,13 +128,13 @@ file exists, `voice-scholarly-default` covers both files; for
 | Finding | Severity | Description |
 |---------|----------|-------------|
 | `voice-status-leak` | critical | Status marker in body prose (`**Done**`, `(TODO)`, `(TBD)`, `**Pending.**`, `**Completed**`) |
-| `voice-unicode-crash` | critical | Unicode character outside fenced code that crashes `pdflatex` (`↦`, `⁻`, `─`, `✅`, …) |
+| `voice-unicode-crash` | critical | Unicode character outside fenced code that fails in the target rendering pipeline (`↦`, `⁻`, `─`, `✅`, …) |
 | `voice-ai-slop` | critical | Characteristic LLM tells: "Let me", "Here's what", "I'll go ahead", repeated First/Second/Third cadence, over-use of "essentially", "comprehensive", "leverage", "streamline" |
 | `domain-boundary-correct` | critical | Proof / content silently crosses a declared domain boundary, or specialises without declaring it |
 | `voice-emoji-content` | major | Emoji as content outside tables |
 | `voice-first-person-work` | major | First-person work tone in prose (`we'll add`, `let me`, `needs more work`) |
 | `voice-time-stamped-notes` | major | Time-stamped narration (`as of 2026-…`, `after the recent push`, `in the current draft`) |
-| `voice-scholarly-default` | major | Block prose / proof docstring not in scholarly third-person voice without author opt-out marker |
+| `voice-scholarly-default` | major | Block prose / expository sibling not in scholarly third-person voice without author opt-out marker |
 | `fit-section-chapter` | major | Block kind or topic does not fit its declared sub-section / section / chapter |
 | `notation-canonical` | major | Deprecated notation per the project's notation register |
 | `voice-editorializing` | minor | Forbidden phrases (`surprisingly`, `remarkably`, `it is worth noting that`, `a beautiful result`) |
@@ -142,7 +143,7 @@ file exists, `voice-scholarly-default` covers both files; for
 
 | Band | Examples |
 |------|----------|
-| **Auto-discharge** | `voice-status-leak` (delete the marker), `voice-emoji-content` (substitute words in body / leave ✓✗ in tables), `voice-unicode-crash` (replace with LaTeX math equivalents), `voice-time-stamped-notes` (delete the temporal qualifier), `notation-canonical` (mechanical rewrite per notation register), `voice-editorializing` (delete or rephrase) |
+| **Auto-discharge** | `voice-status-leak` (delete the marker), `voice-emoji-content` (substitute words in body / leave ✓✗ in tables), `voice-unicode-crash` (replace with target-pipeline equivalents), `voice-time-stamped-notes` (delete the temporal qualifier), `notation-canonical` (mechanical rewrite per notation register), `voice-editorializing` (delete or rephrase) |
 | **Author-assist** | `voice-scholarly-default` rewrites (substantive prose surgery, may need to preserve author intent), `voice-ai-slop` cleanup that touches > 5 sentences (mechanical first pass is fine; structural rewrite needs author), `fit-section-chapter` (move block, promote/demote kind, split section), `domain-boundary-correct` (move the specialisation to a sibling block on the correct side) |
 | **Defer** | `voice-editorializing` in a passage the author has explicitly marked acceptable, glossary-block status leaks where the marker is part of the term being defined, `notation-canonical` hits inside historical / deprecated-on-purpose remarks |
 
@@ -167,15 +168,16 @@ For `domain-boundary-correct`:
 ## Slot G — §5a backlog discovery
 
 ```bash
-# 1. Enumerate every content block under the project.
+# 1. Enumerate every content block under the project (a content type's
+#    refinement supplies its full builder list).
 find content -name '*.ts' \
-  | xargs grep -l 'export default (definition\|theorem\|lemma\|proposition\|corollary\|conjecture\|example\|remark\|proof\|prose\|equation\|diagram\|simulator)(' \
+  | xargs grep -lE 'export default [a-z]+\(' \
   | sort -u > /tmp/_ov_blocks.txt
 
 # 2. Run the staleness scanner; harvest blocks that are
 #    missing / stale / partial under the watcher's criteria.
 cd content && bun run pipeline/qa-staleness.ts \
-  <paper> --json > /tmp/_ov_staleness.json
+  <folio-dir> --json > /tmp/_ov_staleness.json
 
 # 3. Rank blocks by:
 #    - "missing-sidecar" first (never audited)
@@ -246,17 +248,17 @@ vice versa, but the audit trail is preserved.
 ```bash
 # Audit one section (writes <block>.qa.json files)
 cd content
-bun run pipeline/qa-sweep.ts <paper>/<chapter>
+bun run pipeline/qa-sweep.ts <folio-dir>/<chapter>
 
 # See the staleness map afterwards
-bun run pipeline/qa-staleness.ts <paper>/<chapter>
+bun run pipeline/qa-staleness.ts <folio-dir>/<chapter>
 
 # Restrict to one criterion
-bun run pipeline/qa-sweep.ts <paper>/<chapter> \
+bun run pipeline/qa-sweep.ts <folio-dir>/<chapter> \
   --only voice-status-leak,notation-canonical
 
 # CI gate (exits 1 on critical)
-bun run pipeline/qa-sweep.ts <paper> --ci
+bun run pipeline/qa-sweep.ts <folio-dir> --ci
 ```
 
 ## Domain-specific anti-patterns (extends parent)

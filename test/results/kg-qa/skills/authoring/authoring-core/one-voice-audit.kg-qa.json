@@ -5,7 +5,7 @@
     "id": "one-voice-audit",
     "path": "skills/authoring/authoring-core/one-voice-audit.md"
   },
-  "source_hash": "ceb992c95baa",
+  "source_hash": "0e032796f116",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

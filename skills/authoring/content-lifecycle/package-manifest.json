@@ -11,8 +11,7 @@
     "content-review",
     "content-test",
     "content-validate",
-    "evidence-appraisal",
-    "ig-publisher-service-contract"
+    "evidence-appraisal"
   ],
   "docker": {
     "baseImage": "ubuntu:24.04",

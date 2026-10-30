@@ -17,10 +17,10 @@ Content `.md` files are rendered by the HTML viewer (`ui/app.js` →
 pipelines the folio's content type adds. These conventions are the ones every
 content type shares.
 
-**A content type with math or a TeX pipeline adds its own rules.** For a paper
-folio they are the science layer's `math-md-authoring`
-(`skill_fetch math-md-authoring`): display and inline math, KaTeX limits, math
-in titles and table cells, and what the LaTeX pipeline does with tables.
+**A content type with math or a TeX pipeline adds its own rules.** The layer
+shipping that content type supplies its math-markdown skill covering display
+and inline math, KaTeX limits, math in titles and table cells, and what the
+LaTeX pipeline does with tables.
 
 ## Rules
 
@@ -118,7 +118,7 @@ Rendering: viewer → dotted underline; PDF → plain text with invisible
 hyperlink target. The validator (`bun run validate <paper>`) enforces
 declaration, resolution, and uniqueness; the codemod
 (`bun run pipeline/codemod-refterm.ts`) backfills `:refterm[…]` from
-bare-text mentions of known slugs. See `glossary-build`.
+bare-text mentions of known slugs (see the content layer's glossary-build skill).
 
 ## QC checklist
 
@@ -130,5 +130,4 @@ When reviewing `.md` content, check:
 - [ ] Tables have separator row (`|---|---|`)
 - [ ] Defined terms (slugs in any block's `defines[]`) wrapped in
       `:defterm` / `:refterm` directives, not plain text or `\emph{}`
-- [ ] The content type's own checklist, where it has one (for a paper
-      folio, `math-md-authoring`'s)
+- [ ] The content type's own markdown checklist, where its layer supplies one

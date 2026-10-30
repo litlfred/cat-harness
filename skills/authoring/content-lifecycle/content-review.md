@@ -10,17 +10,17 @@ output: schemas/skills/content-review/output.schema.json
 Formal review and approval of validated content before publication.
 
 ## Responsibilities
-- Review L2 content before L3 begins (phase gate)
-- Review L3 content before publication (phase gate)
+- Review structured domain models before machine-readable encoding begins (phase gate)
+- Review encoded artifacts before publication (phase gate)
 - Assess breaking vs. non-breaking changes
-- Ensure alignment with source guidelines
+- Ensure alignment with source material and requirements
 - Approve draft publications for stakeholder circulation
 - Provide final publication release sign-off
 
 ## Actors
 - Content Reviewer (lead, approval authority)
 - Technical Officer (first-pass review)
-- Clinical SME (clinical sign-off)
+- Domain SME (domain sign-off, supplied by the content-type layer)
 - Programme Manager (governance oversight)
 
 ## Inputs

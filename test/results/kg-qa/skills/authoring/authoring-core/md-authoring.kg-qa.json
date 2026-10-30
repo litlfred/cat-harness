@@ -5,7 +5,7 @@
     "id": "md-authoring",
     "path": "skills/authoring/authoring-core/md-authoring.md"
   },
-  "source_hash": "3751ffe86fa9",
+  "source_hash": "sha256:1556b37ede8a0c435e7e3da0191252a7c4a45bf4c1a41e7f09f96300b1535c49",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",
