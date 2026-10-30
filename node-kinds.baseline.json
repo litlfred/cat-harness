@@ -46,6 +46,10 @@
     },
     {
       "typology": "docs",
+      "family": "block-manifest/v1"
+    },
+    {
+      "typology": "docs",
       "family": "cat-harness-payload/v1"
     },
     {
