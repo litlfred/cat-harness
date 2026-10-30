@@ -28,7 +28,7 @@ Input schema for formal content review and approval workflow.
 
 ## Output
 
-What a review produces: findings, a decision about them, and the audit notes that justify it. A finding is an observation; a decision is an act about a set of findings; neither determines the other. Mirrors schemas/qa-review.ts — see skills/sdlc/sdlc-core/decision-audit.md.
+What a review produces: findings, a decision about them, and the audit notes that justify it. A finding is an observation; a decision is an act about a set of findings; neither determines the other. Mirrors schemas/sdlc/qa-review.ts — see skills/sdlc/sdlc-core/decision-audit.md.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -64,7 +64,7 @@ What a review produces: findings, a decision about them, and the audit notes tha
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | `outcome` | `"approve"` \| `"request-changes"` \| `"reject"` | **yes** |  |
-| `role` | string | **yes** | Role id from schemas/role-graph.ts — the lane this was decided in. |
+| `role` | string | **yes** | Role id from schemas/process/role-graph.ts — the lane this was decided in. |
 | `by` | object | **yes** |  |
 | `considered` | array<string> | **yes** | Finding ids weighed, overruled or not. |
 | `overrules` | array<object> | no | Findings the decision went against. The finding stays on the record; the note says why. |
