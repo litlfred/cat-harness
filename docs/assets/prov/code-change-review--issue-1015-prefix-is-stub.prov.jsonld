@@ -15,6 +15,18 @@
       },
       "cat-harness:underPolicy": {
         "@type": "@id"
+      },
+      "cred": "https://www.w3.org/2018/credentials#",
+      "dcat": "http://www.w3.org/ns/dcat#",
+      "dcat:downloadURL": {
+        "@type": "@id"
+      },
+      "spdx": "http://spdx.org/rdf/terms#",
+      "spdx:algorithm": {
+        "@type": "@id"
+      },
+      "spdx:checksumValue": {
+        "@type": "xsd:hexBinary"
       }
     }
   ],
