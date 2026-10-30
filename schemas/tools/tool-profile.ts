@@ -7,7 +7,7 @@
  * Step 1 of `docs/proposals/tool-releases-2026-10-07.md` (issue #2481, bean
  * `3sbm`), §2. The owner, 2026-10-07: *"in testing scenarios we will need to
  * load different sets/releases of tools easily"*. A test scenario selects a
- * profile (`default`, `ci-2026-10`, `lean-4.12-test`); the resolver (step 2,
+ * profile (`default`, `ci-2026-10`, `lean-4.35-test`); the resolver (step 2,
  * not built here) provisions every release it names.
  *
  * ## A profile names tools, never a runtime
