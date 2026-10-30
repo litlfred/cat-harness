@@ -232,11 +232,14 @@ describe("the schema refuses what it cannot mean", () => {
   }).success;
 
   test("an unknown key on a rule is refused, not dropped", () => {
+    expect(bad({ permission: [{ assignee: "a", action: "b", remedy: [] }] })).toBe(false);
     expect(bad({ permission: [{ assignee: "a", action: "b", duty: [] }] })).toBe(false);
   });
-  test("an Agreement names its assigner", () => {
+  test("an Agreement names both its assigner and its assignee (ODRL 2.2 §2.1.3)", () => {
     expect(bad({ "@type": "Agreement" })).toBe(false);
-    expect(bad({ "@type": "Agreement", assigner: "org:x" })).toBe(true);
+    expect(bad({ "@type": "Agreement", assigner: "org:x" })).toBe(false);
+    expect(bad({ "@type": "Agreement", assignee: "org:y" })).toBe(false);
+    expect(bad({ "@type": "Agreement", assigner: "org:x", assignee: "org:y" })).toBe(true);
   });
   test("isAnyOf takes a list and eq takes one value", () => {
     const c = (operator: string, rightOperand: unknown) =>
@@ -245,8 +248,229 @@ describe("the schema refuses what it cannot mean", () => {
     expect(c("odrl:isAnyOf", ["t"])).toBe(true);
     expect(c("odrl:eq", ["t"])).toBe(false);
   });
-  test("a scope outside Process, Task and Role is refused", () => {
+  test("a scope outside Process, Task, Role, purpose, dateTime and elapsedTime is refused", () => {
     expect(bad({ permission: [{ assignee: "a", action: "b", constraint: [{ leftOperand: "odrl:spatial", operator: "odrl:eq", rightOperand: "x" }] }] })).toBe(false);
+  });
+  test("a purpose constraint accepts HL7 PurposeOfUse codes and refuses draft vocabularies (DPV)", () => {
+    expect(
+      bad({
+        permission: [
+          {
+            assignee: "a",
+            action: "b",
+            constraint: [{ leftOperand: "odrl:purpose", operator: "odrl:isA", rightOperand: "HRESCH" }],
+          },
+        ],
+      }),
+    ).toBe(true);
+    expect(
+      bad({
+        permission: [
+          {
+            assignee: "a",
+            action: "b",
+            constraint: [{ leftOperand: "odrl:purpose", operator: "odrl:isA", rightOperand: "dpv:ResearchAndDevelopment" }],
+          },
+        ],
+      }),
+    ).toBe(false);
+  });
+  test("a duty accepts only the supported ODRL duty actions (delete, attribute, inform, obtainConsent)", () => {
+    for (const action of ["odrl:delete", "odrl:attribute", "odrl:inform", "odrl:obtainConsent"]) {
+      expect(bad({ permission: [{ assignee: "a", action: "b", duty: [{ action }] }] })).toBe(true);
+    }
+    expect(bad({ permission: [{ assignee: "a", action: "b", duty: [{ action: "odrl:compensate" }] }] })).toBe(false);
+  });
+});
+
+describe("computable DSA constraints and duties (bean s4v2)", () => {
+  const g = actionGraph([{ id: "read-dataset", includedIn: ["odrl:use"] }]);
+
+  test("purpose isA HL7 PurposeOfUse HRESCH permits a subclass purpose and denies an unrelated one", () => {
+    const dsa = policy({
+      "@type": "Agreement",
+      assigner: "org:who",
+      assignee: "org:ministry",
+      permission: [
+        {
+          assignee: "org:ministry",
+          action: "odrl:use",
+          constraint: [{ leftOperand: "odrl:purpose", operator: "odrl:isA", rightOperand: "HRESCH" }],
+        },
+      ],
+    });
+    const ask = (purpose?: string) =>
+      permits(
+        {
+          actor: "org:ministry",
+          action: "read-dataset",
+          scope: purpose ? { "odrl:purpose": purpose } : {},
+        },
+        dsa,
+        one(dsa),
+        g,
+      );
+    // HRESCH itself and its subclasses (direct and transitive) are permitted
+    expect(ask("HRESCH")).toBe("permit");
+    expect(ask("BIORCH")).toBe("permit");
+    expect(ask("CLINTRCH")).toBe("permit");
+    expect(ask("CLINTRCHPC")).toBe("permit");
+    // Unrelated HL7 PurposeOfUse codes are denied
+    expect(ask("TREAT")).toBe("deny");
+    expect(ask("PUBHLTH")).toBe("deny");
+    expect(ask("HMARKT")).toBe("deny");
+    // Absent purpose is unknown
+    expect(ask()).toBe("unknown");
+  });
+
+  test("dateTime lt permits before and denies after (and lteq/gt/gteq evaluate boundaries)", () => {
+    const dsa = policy({
+      "@type": "Agreement",
+      assigner: "org:who",
+      assignee: "org:ministry",
+      permission: [
+        {
+          assignee: "org:ministry",
+          action: "odrl:use",
+          constraint: [{ leftOperand: "odrl:dateTime", operator: "odrl:lt", rightOperand: "2026-12-31T00:00:00Z" }],
+        },
+      ],
+    });
+    const ask = (dateTime?: string) =>
+      permits(
+        {
+          actor: "org:ministry",
+          action: "read-dataset",
+          scope: dateTime ? { "odrl:dateTime": dateTime } : {},
+        },
+        dsa,
+        one(dsa),
+        g,
+      );
+    expect(ask("2026-06-15T12:00:00Z")).toBe("permit");
+    expect(ask("2026-12-31T00:00:00Z")).toBe("deny");
+    expect(ask("2027-01-01T00:00:00Z")).toBe("deny");
+    expect(ask()).toBe("unknown");
+  });
+
+  test("a 90-day delete duty: permit inside 90 days; after, deny without a deletion PROV record, permit with one, unknown when records are absent", () => {
+    const dsa = policy({
+      "@type": "Agreement",
+      uid: "urn:dsa:90d",
+      assigner: "org:who",
+      assignee: "org:ministry",
+      permission: [
+        {
+          assignee: "org:ministry",
+          action: "odrl:use",
+          target: "dataset: cholera-2026",
+          duty: [
+            {
+              action: "odrl:delete",
+              constraint: [{ leftOperand: "odrl:elapsedTime", operator: "odrl:lteq", rightOperand: "P90D" }],
+            },
+          ],
+        },
+      ],
+    });
+
+    const deletionProv = ProvActivitySchema.parse({
+      "@type": "prov:Activity",
+      "@id": "urn:run:delete-1",
+      "prov:startedAtTime": "2026-11-15T10:00:00Z",
+      "prov:qualifiedAssociation": {
+        "prov:agent": "org:ministry",
+        "prov:hadRole": "data-custodian",
+        "prov:hadPlan": "dsa-lifecycle#Task_delete",
+      },
+      "prov:used": ["dataset: cholera-2026"],
+      "cat-harness:underPolicy": "urn:dsa:90d",
+    });
+
+    const otherProv = ProvActivitySchema.parse({
+      "@type": "prov:Activity",
+      "@id": "urn:run:other-1",
+      "prov:startedAtTime": "2026-10-01T10:00:00Z",
+      "prov:qualifiedAssociation": {
+        "prov:agent": "org:ministry",
+        "prov:hadRole": "data-custodian",
+        "prov:hadPlan": "dsa-lifecycle#Task_analyze",
+      },
+      "prov:used": ["dataset: cholera-2026"],
+      "cat-harness:underPolicy": "urn:dsa:90d",
+    });
+
+    const ask = (elapsedTime: string, provRecords?: (typeof deletionProv)[]) =>
+      permits(
+        {
+          actor: "org:ministry",
+          action: "read-dataset",
+          scope: { target: "dataset: cholera-2026", "odrl:elapsedTime": elapsedTime },
+          provRecords,
+        },
+        dsa,
+        one(dsa),
+        g,
+      );
+
+    // Inside 90 days -> permit (even with no deletion PROV record yet)
+    expect(ask("P30D")).toBe("permit");
+    expect(ask("P90D", [])).toBe("permit");
+
+    // After 90 days -> deny without a deletion PROV record
+    expect(ask("P91D", [])).toBe("deny");
+    expect(ask("P100D", [otherProv])).toBe("deny");
+
+    // After 90 days -> permit with a deletion PROV record
+    expect(ask("P91D", [deletionProv])).toBe("permit");
+    expect(ask("P120D", [otherProv, deletionProv])).toBe("permit");
+
+    // After 90 days -> unknown when PROV records are absent
+    expect(ask("P91D", undefined)).toBe("unknown");
+  });
+
+  test("immediate duties (attribute, inform, obtainConsent): permit when fulfilled, deny when unmet, unknown when records are absent", () => {
+    const dsa = policy({
+      "@type": "Agreement",
+      uid: "urn:dsa:attr",
+      assigner: "org:who",
+      assignee: "org:ministry",
+      permission: [
+        {
+          assignee: "org:ministry",
+          action: "odrl:use",
+          duty: [{ action: "odrl:attribute" }, { action: "odrl:inform" }],
+        },
+      ],
+    });
+    const attrProv = ProvActivitySchema.parse({
+      "@type": "prov:Activity",
+      "@id": "urn:run:attr",
+      "prov:startedAtTime": "2026-10-01T10:00:00Z",
+      "prov:qualifiedAssociation": {
+        "prov:agent": "org:ministry",
+        "prov:hadRole": "recipient",
+        "prov:hadPlan": "dsa-lifecycle#Task_attribute",
+      },
+      "cat-harness:underPolicy": "urn:dsa:attr",
+    });
+    const informProv = ProvActivitySchema.parse({
+      "@type": "prov:Activity",
+      "@id": "urn:run:inform",
+      "prov:startedAtTime": "2026-10-01T10:05:00Z",
+      "prov:qualifiedAssociation": {
+        "prov:agent": "org:ministry",
+        "prov:hadRole": "recipient",
+        "prov:hadPlan": "dsa-lifecycle#Task_inform",
+      },
+      "cat-harness:underPolicy": "urn:dsa:attr",
+    });
+
+    expect(permits({ actor: "org:ministry", action: "read-dataset" }, dsa, one(dsa), g)).toBe("unknown");
+    expect(permits({ actor: "org:ministry", action: "read-dataset", provRecords: [attrProv] }, dsa, one(dsa), g)).toBe("deny");
+    expect(
+      permits({ actor: "org:ministry", action: "read-dataset", provRecords: [attrProv, informProv] }, dsa, one(dsa), g),
+    ).toBe("permit");
   });
 });
 

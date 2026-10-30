@@ -13,13 +13,13 @@
  * ## The subset, and why only this much
  *
  * ODRL is large. This is the part a folio reads today: a Policy (`Set`,
- * `Offer`, `Agreement`) holding `permission` and `prohibition` rules, each
- * naming an `assignee`, an `action`, an optional `target` and optional
- * `constraint`s. Duties, refinements and party collections are ODRL too; none
- * has a reader here yet, so none is accepted. A key outside the subset is
- * refused rather than dropped (`.strict()`), because a rule that silently
- * means less than it says is exactly the failure a permission file must not
- * have.
+ * `Offer`, `Agreement`) holding `permission` and `prohibition` rules (plus
+ * optional `duty` obligations), each naming an `assignee`, an `action`, an
+ * optional `target`, optional `constraint`s and optional `duty` rules.
+ * Refinements and party collections are ODRL too; none has a reader here yet,
+ * so none is accepted. A key outside the subset is refused rather than dropped
+ * (`.strict()`), because a rule that silently means less than it says is
+ * exactly the failure a permission file must not have.
  *
  * Terms are written as compact IRIs, as ODRL's own JSON-LD context writes
  * them: `odrl:display`, `cat-harness:perform-task`, and a bare action id for one
@@ -64,18 +64,162 @@ export const ODRL_ACTIONS: Readonly<Record<string, readonly string[]>> = {
   "odrl:modify": ["odrl:use"],
   "odrl:translate": ["odrl:use"],
   "odrl:execute": ["odrl:use"],
+  "odrl:delete": ["odrl:use"],
+  "odrl:attribute": ["odrl:use"],
+  "odrl:inform": ["odrl:use"],
+  "odrl:obtainConsent": ["odrl:use"],
 };
 
 /**
- * The folio profile's `leftOperand`s: the scope of a rule. Absent means
- * everywhere (owner: grants are scoped by Process, Task or Role, and no scope
- * means everywhere).
+ * The ODRL 2.2 duty actions supported for computable data sharing agreements
+ * (bean `s4v2`, issue #2702). Both `odrl:`-prefixed and bare ODRL JSON-LD
+ * spellings are accepted and normalized to `odrl:<action>`.
  */
-export const FOLIO_LEFT_OPERANDS = ["cat-harness:process", "cat-harness:task", "cat-harness:role"] as const;
+export const ODRL_DUTY_ACTIONS = [
+  "odrl:delete",
+  "odrl:attribute",
+  "odrl:inform",
+  "odrl:obtainConsent",
+  "delete",
+  "attribute",
+  "inform",
+  "obtainConsent",
+] as const;
+export type OdrlDutyAction = (typeof ODRL_DUTY_ACTIONS)[number];
+
+/**
+ * HL7 v3 `ActReason` code system (`PurposeOfUse` hierarchy).
+ *
+ * Owner rule, 2026-10-30 14:00Z (bean `s4v2`): no draft standards unless
+ * approved. W3C DPV is a Community Group report and is NOT used; `purpose`
+ * constraints use HL7 `PurposeOfUse` codes, with `isA` walking this hierarchy
+ * via {@link broaderOrSelf}.
+ */
+export const HL7_ACT_REASON_SYSTEM = "http://terminology.hl7.org/CodeSystem/v3-ActReason" as const;
+
+export const HL7_PURPOSE_OF_USE: Readonly<Record<string, readonly string[]>> = {
+  PurposeOfUse: [],
+  HMARKT: ["PurposeOfUse"],
+  HOPERAT: ["PurposeOfUse"],
+  CAREMGT: ["HOPERAT", "TREAT"],
+  DONAT: ["HOPERAT"],
+  FRAUD: ["HOPERAT"],
+  GOV: ["HOPERAT"],
+  HACCRED: ["HOPERAT"],
+  HCOMPL: ["HOPERAT"],
+  HDECD: ["HOPERAT"],
+  HDIRECT: ["HOPERAT"],
+  HDM: ["HOPERAT"],
+  HLEGAL: ["HOPERAT"],
+  HOUTCOMS: ["HOPERAT"],
+  HPRGRP: ["HOPERAT"],
+  HQUALIMP: ["HOPERAT"],
+  HSYSADMIN: ["HOPERAT"],
+  LABELING: ["HOPERAT"],
+  METAMGT: ["HOPERAT"],
+  MEMADMIN: ["HOPERAT"],
+  MILCDM: ["HOPERAT"],
+  PATADMIN: ["HOPERAT"],
+  PATSFTY: ["HOPERAT"],
+  PERFMSR: ["HOPERAT"],
+  RECORDMGT: ["HOPERAT"],
+  SYSDEV: ["HOPERAT"],
+  HTEST: ["HOPERAT"],
+  TRAIN: ["HOPERAT"],
+  HPAYMT: ["PurposeOfUse"],
+  CLMATTCH: ["HPAYMT"],
+  COVAUTH: ["HPAYMT"],
+  COVERAGE: ["HPAYMT"],
+  ELIGDTRM: ["COVERAGE"],
+  ELIGVER: ["COVERAGE"],
+  ENROLLM: ["COVERAGE"],
+  MILDCRG: ["COVERAGE"],
+  HAAUTH: ["HPAYMT"],
+  REMITADV: ["HPAYMT"],
+  HRESCH: ["PurposeOfUse"],
+  BIORCH: ["HRESCH"],
+  CLINTRCH: ["HRESCH"],
+  CLINTRCHNPC: ["CLINTRCH"],
+  CLINTRCHPC: ["CLINTRCH"],
+  PRECLINTRCH: ["CLINTRCH"],
+  DSRCH: ["HRESCH"],
+  POARCH: ["HRESCH"],
+  TRANSRCH: ["HRESCH"],
+  PATRQT: ["PurposeOfUse"],
+  FAMRQT: ["PATRQT"],
+  PWATRNY: ["PATRQT"],
+  SUPNWK: ["PATRQT"],
+  PUBHLTH: ["PurposeOfUse"],
+  DISASTER: ["PUBHLTH"],
+  THREAT: ["PUBHLTH"],
+  TREAT: ["PurposeOfUse"],
+  CLINTRL: ["TREAT"],
+  ETREAT: ["TREAT"],
+  BTG: ["ETREAT"],
+  ERTREAT: ["ETREAT"],
+  POPHLTH: ["TREAT"],
+};
+
+const PURPOSE_GRAPH: ReadonlyMap<string, readonly string[]> = new Map(Object.entries(HL7_PURPOSE_OF_USE));
+
+/** Normalize an HL7 PurposeOfUse code (stripping optional CodeSystem IRI or prefix). */
+export function normalizePurposeCode(code: string): string {
+  if (code.startsWith(`${HL7_ACT_REASON_SYSTEM}#`) || code.startsWith(`${HL7_ACT_REASON_SYSTEM}/`)) {
+    return code.slice(HL7_ACT_REASON_SYSTEM.length + 1);
+  }
+  if (code.startsWith("v3-ActReason:") || code.startsWith("hl7:")) {
+    return code.slice(code.indexOf(":") + 1);
+  }
+  return code;
+}
+
+/** Whether `code` is a known HL7 `PurposeOfUse` code (never a draft vocabulary such as `dpv:*`). */
+export function isValidPurposeOfUse(code: string): boolean {
+  if (code.startsWith("dpv:") || code.includes("/dpv")) return false;
+  return PURPOSE_GRAPH.has(normalizePurposeCode(code));
+}
+
+/**
+ * The folio profile's `leftOperand`s: BPMN scope (`cat-harness:process`,
+ * `cat-harness:task`, `cat-harness:role`) and ODRL 2.2 DSA constraints
+ * (`odrl:purpose`, `odrl:dateTime`, `odrl:elapsedTime` and their unprefixed
+ * JSON-LD forms). Absent scope on a rule means everywhere.
+ */
+export const FOLIO_LEFT_OPERANDS = [
+  "cat-harness:process",
+  "cat-harness:task",
+  "cat-harness:role",
+  "odrl:purpose",
+  "odrl:dateTime",
+  "odrl:elapsedTime",
+  "purpose",
+  "dateTime",
+  "elapsedTime",
+] as const;
 export type FolioLeftOperand = (typeof FOLIO_LEFT_OPERANDS)[number];
 
-/** The operators this subset evaluates: ODRL's `eq`, `neq`, `isAnyOf`, `isNoneOf`. */
-export const ODRL_OPERATORS = ["odrl:eq", "odrl:neq", "odrl:isAnyOf", "odrl:isNoneOf"] as const;
+/** The operators this subset evaluates: ODRL's `eq`, `neq`, `isAnyOf`, `isNoneOf`, `lt`, `lteq`, `gt`, `gteq`, `isA`. */
+export const ODRL_OPERATORS = [
+  "odrl:eq",
+  "odrl:neq",
+  "odrl:isAnyOf",
+  "odrl:isNoneOf",
+  "odrl:lt",
+  "odrl:lteq",
+  "odrl:gt",
+  "odrl:gteq",
+  "odrl:isA",
+  "eq",
+  "neq",
+  "isAnyOf",
+  "isNoneOf",
+  "lt",
+  "lteq",
+  "gt",
+  "gteq",
+  "isA",
+] as const;
+export type OdrlOperator = (typeof ODRL_OPERATORS)[number];
 
 /** Anyone, authenticated or not. Owner: such a reader may visualize and render, and nothing else. */
 export const ANYONE = "cat-harness:anyone" as const;
@@ -94,6 +238,9 @@ export const ANYONE = "cat-harness:anyone" as const;
 export const ODRL_CONFLICT = ["odrl:perm", "odrl:prohibit", "odrl:invalid"] as const;
 export const FOLIO_DEFAULT_CONFLICT = "odrl:prohibit" as const;
 
+const SET_OPERATORS = new Set<string>(["odrl:isAnyOf", "odrl:isNoneOf", "isAnyOf", "isNoneOf"]);
+const isPurposeLeftOperand = (op: string): boolean => op === "odrl:purpose" || op === "purpose";
+
 export const OdrlConstraintSchema = z
   .object({
     leftOperand: z.enum(FOLIO_LEFT_OPERANDS),
@@ -102,18 +249,45 @@ export const OdrlConstraintSchema = z
   })
   .strict()
   .refine(
-    (c) => (c.operator === "odrl:isAnyOf" || c.operator === "odrl:isNoneOf") === Array.isArray(c.rightOperand),
-    { message: "isAnyOf/isNoneOf take a list; eq/neq take one value" },
+    (c) => SET_OPERATORS.has(c.operator) === Array.isArray(c.rightOperand),
+    { message: "isAnyOf/isNoneOf take a list; eq/neq/lt/lteq/gt/gteq/isA take one value" },
+  )
+  .refine(
+    (c) =>
+      !isPurposeLeftOperand(c.leftOperand) ||
+      (Array.isArray(c.rightOperand) ? c.rightOperand : [c.rightOperand]).every(isValidPurposeOfUse),
+    {
+      message:
+        "purpose rightOperand must be an HL7 PurposeOfUse code (http://terminology.hl7.org/CodeSystem/v3-ActReason); draft standards such as W3C DPV are not accepted",
+      path: ["rightOperand"],
+    },
   );
+
+export type OdrlConstraint = z.infer<typeof OdrlConstraintSchema>;
+
+export const OdrlDutySchema = z
+  .object({
+    uid: z.string().min(1).optional(),
+    action: z.enum(ODRL_DUTY_ACTIONS),
+    target: z.string().min(1).optional(),
+    assigner: z.string().min(1).optional(),
+    assignee: z.string().min(1).optional(),
+    constraint: z.array(OdrlConstraintSchema).optional(),
+  })
+  .strict();
+
+export type OdrlDuty = z.infer<typeof OdrlDutySchema>;
 
 export const OdrlRuleSchema = z
   .object({
-    /** An actor id, or {@link ANYONE}. */
+    /** An actor id, a party IRI/DID, or {@link ANYONE}. */
     assignee: z.string().min(1),
     action: z.string().min(1),
     /** What the rule applies to; absent means the instance's whole graph. */
     target: z.string().min(1).optional(),
     constraint: z.array(OdrlConstraintSchema).optional(),
+    /** Duties attached to a Permission rule (ODRL 2.2 §2.6.5). */
+    duty: z.array(OdrlDutySchema).min(1).optional(),
   })
   .strict();
 
@@ -127,15 +301,23 @@ export const OdrlPolicySchema = z
     /** Policies whose rules this one inherits: ODRL's `inheritFrom`. */
     inheritFrom: z.array(z.string().min(1)).optional(),
     conflict: z.enum(ODRL_CONFLICT).optional(),
-    /** An Agreement names who grants it. A Set does not have to. */
+    /** An Agreement names who grants it (ODRL 2.2 §2.1.3). A Set does not have to. */
     assigner: z.string().min(1).optional(),
+    /** An Agreement names who receives it (ODRL 2.2 §2.1.3). A Set does not have to. */
+    assignee: z.string().min(1).optional(),
     permission: z.array(OdrlRuleSchema).default([]),
     prohibition: z.array(OdrlRuleSchema).default([]),
+    /** Policy-level duties (ODRL 2.2 §2.6.4). */
+    obligation: z.array(OdrlDutySchema).min(1).optional(),
   })
   .strict()
   .refine((p) => p["@type"] !== "Agreement" || !!p.assigner, {
     message: "an odrl:Agreement names its assigner",
     path: ["assigner"],
+  })
+  .refine((p) => p["@type"] !== "Agreement" || !!p.assignee, {
+    message: "an odrl:Agreement names its assignee",
+    path: ["assignee"],
   });
 
 export type OdrlPolicy = z.infer<typeof OdrlPolicySchema>;
@@ -220,30 +402,291 @@ export function broaderOrSelf(action: string, graph: ActionGraph): Set<string> {
   return out;
 }
 
+/**
+ * A PROV-O activity record (compatible with `ProvActivity` in `./prov.ts`)
+ * consulted to verify whether an ODRL Duty has been exercised.
+ */
+export interface ProvDutyRecord {
+  "@type"?: "prov:Activity" | string;
+  "@id"?: string;
+  "prov:startedAtTime"?: string;
+  "prov:endedAtTime"?: string;
+  "prov:qualifiedAssociation"?: {
+    "prov:agent": string;
+    "prov:hadRole"?: string;
+    "prov:hadPlan"?: string;
+  };
+  "prov:agent"?: string;
+  "prov:actedOnBehalfOf"?: string;
+  "prov:used"?: readonly string[];
+  "prov:generated"?: readonly string[];
+  "prov:invalidated"?: readonly string[];
+  "cat-harness:underPolicy"?: string | readonly string[];
+  "odrl:action"?: string;
+  action?: string;
+  target?: string;
+}
+
 /** The scope a request is made in. Every field is optional, and an absent one satisfies no constraint on it. */
 export interface RequestScope {
   "cat-harness:process"?: string;
   "cat-harness:task"?: string;
   "cat-harness:role"?: string;
+  "odrl:purpose"?: string;
+  purpose?: string;
+  "odrl:dateTime"?: string;
+  dateTime?: string;
+  "odrl:elapsedTime"?: string | number;
+  elapsedTime?: string | number;
   target?: string;
+  /** Optional PROV-O records for duty verification when passed inside scope. */
+  provRecords?: readonly ProvDutyRecord[];
 }
 
-function constraintHolds(c: z.infer<typeof OdrlConstraintSchema>, scope: RequestScope): boolean {
-  const v = scope[c.leftOperand];
+const DAY_MS = 86_400_000;
+const HOUR_MS = 3_600_000;
+const MIN_MS = 60_000;
+const SEC_MS = 1_000;
+
+/**
+ * Parse an ISO-8601 duration (`P90D`, `PT24H`, `P1Y2M3DT4H5M6S`) or unit
+ * shorthand (`90d`, `24h`, numeric ms) into milliseconds.
+ */
+export function parseDurationMs(value: string | number): number | undefined {
+  if (typeof value === "number") {
+    return Number.isFinite(value) && value >= 0 ? value : undefined;
+  }
+  const s = value.trim();
+  const iso =
+    /^P(?:(\d+(?:\.\d+)?)Y)?(?:(\d+(?:\.\d+)?)M)?(?:(\d+(?:\.\d+)?)W)?(?:(\d+(?:\.\d+)?)D)?(?:T(?:(\d+(?:\.\d+)?)H)?(?:(\d+(?:\.\d+)?)M)?(?:(\d+(?:\.\d+)?)S)?)?$/i.exec(
+      s,
+    );
+  if (iso && s.length > 1 && s.toUpperCase() !== "PT") {
+    const [, y, mo, w, d, h, m, sec] = iso;
+    return (
+      (y ? Number(y) * 365 * DAY_MS : 0) +
+      (mo ? Number(mo) * 30 * DAY_MS : 0) +
+      (w ? Number(w) * 7 * DAY_MS : 0) +
+      (d ? Number(d) * DAY_MS : 0) +
+      (h ? Number(h) * HOUR_MS : 0) +
+      (m ? Number(m) * MIN_MS : 0) +
+      (sec ? Number(sec) * SEC_MS : 0)
+    );
+  }
+  const unit =
+    /^(\d+(?:\.\d+)?)\s*(ms|s|sec|secs|second|seconds|m|min|mins|minute|minutes|h|hr|hrs|hour|hours|d|day|days|w|week|weeks)$/i.exec(
+      s,
+    );
+  if (unit) {
+    const n = Number(unit[1]!);
+    const u = unit[2]!.toLowerCase();
+    if (u === "ms") return n;
+    if (u.startsWith("s")) return n * SEC_MS;
+    if (u.startsWith("m")) return n * MIN_MS;
+    if (u.startsWith("h")) return n * HOUR_MS;
+    if (u.startsWith("d")) return n * DAY_MS;
+    if (u.startsWith("w")) return n * 7 * DAY_MS;
+  }
+  if (/^\d+(?:\.\d+)?$/.test(s)) return Number(s);
+  return undefined;
+}
+
+function canonicalLeftOperand(op: FolioLeftOperand): string {
+  if (op === "purpose" || op === "dateTime" || op === "elapsedTime") return `odrl:${op}`;
+  return op;
+}
+
+function canonicalOperator(op: OdrlOperator): string {
+  return op.startsWith("odrl:") ? op : `odrl:${op}`;
+}
+
+function scopeValue(leftOperand: FolioLeftOperand, scope: RequestScope): string | number | undefined {
+  switch (canonicalLeftOperand(leftOperand)) {
+    case "odrl:purpose":
+      return scope["odrl:purpose"] ?? scope.purpose;
+    case "odrl:dateTime":
+      return scope["odrl:dateTime"] ?? scope.dateTime;
+    case "odrl:elapsedTime":
+      return scope["odrl:elapsedTime"] ?? scope.elapsedTime;
+    case "cat-harness:process":
+      return scope["cat-harness:process"];
+    case "cat-harness:task":
+      return scope["cat-harness:task"];
+    case "cat-harness:role":
+      return scope["cat-harness:role"];
+    default:
+      return undefined;
+  }
+}
+
+function isBpmnScopeOperand(leftOperand: FolioLeftOperand): boolean {
+  const k = canonicalLeftOperand(leftOperand);
+  return k === "cat-harness:process" || k === "cat-harness:task" || k === "cat-harness:role";
+}
+
+function compareNumbers(lhs: number, rhs: number, op: string): boolean {
+  switch (op) {
+    case "odrl:eq":
+      return lhs === rhs;
+    case "odrl:neq":
+      return lhs !== rhs;
+    case "odrl:lt":
+      return lhs < rhs;
+    case "odrl:lteq":
+      return lhs <= rhs;
+    case "odrl:gt":
+      return lhs > rhs;
+    case "odrl:gteq":
+      return lhs >= rhs;
+    default:
+      return false;
+  }
+}
+
+function constraintHolds(c: OdrlConstraint, scope: RequestScope): boolean {
+  const raw = scopeValue(c.leftOperand, scope);
   // A constraint on something the request does not say is NOT met. Reading
   // "unknown process" as "any process" would widen every scoped grant.
-  if (v === undefined) return false;
+  if (raw === undefined) return false;
+  const left = canonicalLeftOperand(c.leftOperand);
+  const op = canonicalOperator(c.operator);
   const rhs = c.rightOperand;
-  switch (c.operator) {
+
+  if (left === "odrl:purpose") {
+    const v = String(raw);
+    if (!isValidPurposeOfUse(v)) return false;
+    const normV = normalizePurposeCode(v);
+    if (op === "odrl:isA") {
+      if (Array.isArray(rhs) || !isValidPurposeOfUse(rhs)) return false;
+      return broaderOrSelf(normV, PURPOSE_GRAPH).has(normalizePurposeCode(rhs));
+    }
+    if (op === "odrl:eq") return !Array.isArray(rhs) && normV === normalizePurposeCode(rhs);
+    if (op === "odrl:neq") return !Array.isArray(rhs) && normV !== normalizePurposeCode(rhs);
+    if (op === "odrl:isAnyOf") return (rhs as string[]).map(normalizePurposeCode).includes(normV);
+    if (op === "odrl:isNoneOf") return !(rhs as string[]).map(normalizePurposeCode).includes(normV);
+    return false;
+  }
+
+  if (left === "odrl:dateTime") {
+    if (Array.isArray(rhs)) {
+      const s = String(raw);
+      return op === "odrl:isAnyOf" ? rhs.includes(s) : op === "odrl:isNoneOf" ? !rhs.includes(s) : false;
+    }
+    const lhsMs = Date.parse(String(raw));
+    const rhsMs = Date.parse(rhs);
+    if (Number.isNaN(lhsMs) || Number.isNaN(rhsMs)) return false;
+    return compareNumbers(lhsMs, rhsMs, op);
+  }
+
+  if (left === "odrl:elapsedTime") {
+    if (Array.isArray(rhs)) return false;
+    const lhsMs = parseDurationMs(raw);
+    const rhsMs = parseDurationMs(rhs);
+    if (lhsMs === undefined || rhsMs === undefined) return false;
+    return compareNumbers(lhsMs, rhsMs, op);
+  }
+
+  const v = String(raw);
+  switch (op) {
     case "odrl:eq":
-      return v === rhs;
+      return !Array.isArray(rhs) && v === rhs;
     case "odrl:neq":
-      return v !== rhs;
+      return !Array.isArray(rhs) && v !== rhs;
     case "odrl:isAnyOf":
       return (rhs as string[]).includes(v);
     case "odrl:isNoneOf":
       return !(rhs as string[]).includes(v);
+    case "odrl:lt":
+      return !Array.isArray(rhs) && v < rhs;
+    case "odrl:lteq":
+      return !Array.isArray(rhs) && v <= rhs;
+    case "odrl:gt":
+      return !Array.isArray(rhs) && v > rhs;
+    case "odrl:gteq":
+      return !Array.isArray(rhs) && v >= rhs;
+    case "odrl:isA":
+      return !Array.isArray(rhs) && v === rhs;
+    default:
+      return false;
   }
+}
+
+function normalizeDutyAction(action: string): string {
+  return action.startsWith("odrl:") ? action.slice("odrl:".length) : action;
+}
+
+function recordMatchesDutyAction(rec: ProvDutyRecord, dutyAction: OdrlDutyAction): boolean {
+  const bare = normalizeDutyAction(dutyAction);
+  const kebab = bare.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+  const explicit = rec["odrl:action"] ?? rec.action;
+  if (explicit !== undefined) {
+    const normExplicit = normalizeDutyAction(explicit).toLowerCase();
+    return normExplicit === bare.toLowerCase() || normExplicit === kebab;
+  }
+  const plan = rec["prov:qualifiedAssociation"]?.["prov:hadPlan"];
+  if (plan !== undefined) {
+    const fragment = (plan.includes("#") ? plan.split("#")[1] : plan) ?? "";
+    const normTask = fragment.replace(/^(?:Task_|odrl[:._-])/i, "").toLowerCase();
+    if (normTask === bare.toLowerCase() || normTask === kebab) return true;
+  }
+  if (bare === "delete" && (rec["prov:invalidated"]?.length ?? 0) > 0) return true;
+  return false;
+}
+
+function dutyFulfilledByRecord(
+  duty: OdrlDuty,
+  rule: OdrlRule,
+  policyUids: ReadonlySet<string>,
+  rec: ProvDutyRecord,
+): boolean {
+  if (!recordMatchesDutyAction(rec, duty.action)) return false;
+  const obligated = duty.assignee ?? rule.assignee;
+  const agent = rec["prov:qualifiedAssociation"]?.["prov:agent"] ?? rec["prov:agent"];
+  if (obligated !== ANYONE && agent !== undefined && agent !== obligated) return false;
+  const under = rec["cat-harness:underPolicy"];
+  if (under !== undefined) {
+    const list = Array.isArray(under) ? under : [under];
+    if (!list.some((u) => policyUids.has(u))) return false;
+  }
+  const target = duty.target ?? rule.target;
+  if (target !== undefined) {
+    const entities = [
+      ...(rec["prov:used"] ?? []),
+      ...(rec["prov:invalidated"] ?? []),
+      ...(rec.target ? [rec.target] : []),
+    ];
+    if (entities.length > 0 && !entities.includes(target)) return false;
+  }
+  return true;
+}
+
+type DutyStatus = "satisfied" | "unmet" | "unknowable";
+
+function evaluateDuty(
+  duty: OdrlDuty,
+  rule: OdrlRule,
+  policyUids: ReadonlySet<string>,
+  scope: RequestScope,
+  records: readonly ProvDutyRecord[] | undefined,
+): DutyStatus {
+  if (records && records.some((rec) => dutyFulfilledByRecord(duty, rule, policyUids, rec))) {
+    return "satisfied";
+  }
+  const constraints = duty.constraint ?? [];
+  if (constraints.length > 0) {
+    if (constraints.some((c) => scopeValue(c.leftOperand, scope) === undefined)) {
+      return "unknowable";
+    }
+    // Inside the duty's window (e.g. elapsedTime <= P90D): the deadline has not
+    // passed yet, so the duty does not block the permission.
+    if (constraints.every((c) => constraintHolds(c, scope))) {
+      return "satisfied";
+    }
+  }
+  // Duty is now due (either immediate or past its deadline window): without
+  // PROV records its fulfilment is unknowable; with records and no match it is
+  // unmet.
+  return records === undefined ? "unknowable" : "unmet";
 }
 
 function ruleApplies(
@@ -257,6 +700,48 @@ function ruleApplies(
   if (!broaderOrSelf(action, graph).has(r.action)) return false;
   if (r.target !== undefined && r.target !== scope.target) return false;
   return (r.constraint ?? []).every((c) => constraintHolds(c, scope));
+}
+
+type PermissionOutcome = "no-match" | "permitted" | "violated" | "unknown";
+
+function evaluatePermissionRule(
+  r: OdrlRule,
+  who: string | null,
+  action: string,
+  scope: RequestScope,
+  graph: ActionGraph,
+  policyDuties: readonly OdrlDuty[],
+  policyUids: ReadonlySet<string>,
+  records: readonly ProvDutyRecord[] | undefined,
+): PermissionOutcome {
+  if (r.assignee !== ANYONE && r.assignee !== who) return "no-match";
+  if (!broaderOrSelf(action, graph).has(r.action)) return "no-match";
+  if (r.target !== undefined && r.target !== scope.target) return "no-match";
+
+  const constraints = r.constraint ?? [];
+  const bpmnConstraints = constraints.filter((c) => isBpmnScopeOperand(c.leftOperand));
+  if (!bpmnConstraints.every((c) => constraintHolds(c, scope))) return "no-match";
+
+  const usageConstraints = constraints.filter((c) => !isBpmnScopeOperand(c.leftOperand));
+  let usageUnknown = false;
+  for (const c of usageConstraints) {
+    if (scopeValue(c.leftOperand, scope) === undefined) {
+      usageUnknown = true;
+    } else if (!constraintHolds(c, scope)) {
+      return "violated";
+    }
+  }
+  if (usageUnknown) return "unknown";
+
+  const duties = [...policyDuties, ...(r.duty ?? [])];
+  let dutyUnknowable = false;
+  for (const d of duties) {
+    const status = evaluateDuty(d, r, policyUids, scope, records);
+    if (status === "unmet") return "violated";
+    if (status === "unknowable") dutyUnknowable = true;
+  }
+  if (dutyUnknowable) return "unknown";
+  return "permitted";
 }
 
 /**
@@ -274,6 +759,12 @@ export interface PermitRequest {
   actorRoles?: readonly string[];
   action: string;
   scope?: RequestScope;
+  /**
+   * PROV-O activity records used to verify whether duties on a matching
+   * permission have been fulfilled. When omitted (`undefined`) and a duty is
+   * due, `permits()` returns `"unknown"`.
+   */
+  provRecords?: readonly ProvDutyRecord[];
 }
 
 /**
@@ -281,10 +772,13 @@ export interface PermitRequest {
  * inherits.
  *
  * - A matching prohibition and no matching permission: `deny`.
- * - A matching permission and no prohibition: `permit`, unless the request
- *   names a `cat-harness:role` the actor is not eligible for. Performing a task in a
- *   lane needs both the permission and the role, as `role-model.md` keeps them
- *   apart.
+ * - A matching permission whose usage constraint (`purpose`, `dateTime`,
+ *   `elapsedTime`) is violated or whose due duty is unmet: `deny`.
+ * - A matching permission whose usage constraint or due duty cannot be
+ *   determined from the provided scope / PROV records: `unknown`.
+ * - A matching permission with all constraints and duties satisfied and no
+ *   prohibition: `permit`, unless the request names a `cat-harness:role` the
+ *   actor is not eligible for.
  * - Both: the policy's `conflict` decides (the folio default is
  *   `odrl:prohibit`); `odrl:invalid` voids the policy, which is `deny`.
  * - Neither: `unknown`.
@@ -296,16 +790,27 @@ export function permits(
   graph: ActionGraph,
 ): Decision {
   const scope = req.scope ?? {};
+  const records = req.provRecords ?? scope.provRecords;
   const { permission, prohibition } = effectiveRules(policy, all);
-  const permitted = permission.some((r) => ruleApplies(r, req.actor, req.action, scope, graph));
+  const policyUids = new Set<string>([policy.uid, ...(policy.inheritFrom ?? [])]);
+  const policyDuties = policy.obligation ?? [];
+
+  const outcomes = permission.map((r) =>
+    evaluatePermissionRule(r, req.actor, req.action, scope, graph, policyDuties, policyUids, records),
+  );
+  const permitted = outcomes.includes("permitted");
+  const violated = outcomes.includes("violated");
   const prohibited = prohibition.some((r) => ruleApplies(r, req.actor, req.action, scope, graph));
-  if (!permitted && !prohibited) return "unknown";
+
   if (prohibited && permitted) {
     const strategy = policy.conflict ?? FOLIO_DEFAULT_CONFLICT;
     if (strategy !== "odrl:perm") return "deny";
   } else if (prohibited) {
     return "deny";
+  } else if (!permitted) {
+    return violated ? "deny" : "unknown";
   }
+
   const role = scope["cat-harness:role"];
   if (role && req.actorRoles && req.actorRoles.length > 0 && !req.actorRoles.includes(role)) return "deny";
   return "permit";
@@ -323,7 +828,14 @@ export function unscopedGrants(
 ): Map<string, string[]> {
   const out = new Map<string, string[]>();
   for (const r of effectiveRules(policy, all).permission) {
-    if (r.assignee === ANYONE || r.target !== undefined || (r.constraint ?? []).length > 0) continue;
+    if (
+      r.assignee === ANYONE ||
+      r.target !== undefined ||
+      (r.constraint ?? []).length > 0 ||
+      (r.duty ?? []).length > 0
+    ) {
+      continue;
+    }
     const list = out.get(r.assignee) ?? [];
     if (!list.includes(r.action)) list.push(r.action);
     out.set(r.assignee, list);
