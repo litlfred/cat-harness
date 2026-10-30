@@ -14,8 +14,5 @@
   },
   "licence": "ISC",
   "licenceSource": "the installed package's own package.json (`license`)",
-  "usedBy": [
-    "schemas/kg/node-kind-nodes.ts",
-    "schemas/site-chrome.test.ts"
-  ]
+  "usedBy": []
 }

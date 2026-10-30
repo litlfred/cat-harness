@@ -19,7 +19,7 @@ This skill governs the execution of audited SPARQL 1.1 named queries against par
 
 ## 1. Formal I/O Specification
 
-The execution contract is defined in [`schemas/kg/nquads-distribution.ts`](../../../schemas/kg/nquads-distribution.ts):
+The execution contract is defined in [`schemas/kg/nquads-distribution.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/kg/nquads-distribution.ts):
 
 ### 1.1 Request Input (`NamedQueryRequest`)
 * `dataset`: Path or HTTP URL to `subgraph-manifest.json` or `.nq.gz` distribution root.

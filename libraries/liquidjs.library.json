@@ -14,7 +14,5 @@
   },
   "licence": "MIT",
   "licenceSource": "the installed package's own package.json (`license`)",
-  "usedBy": [
-    "schemas/site-chrome.test.ts"
-  ]
+  "usedBy": []
 }

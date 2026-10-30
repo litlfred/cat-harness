@@ -46,7 +46,39 @@
 import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
-import { directoryForGraph, instanceRootFor, readDeclaration } from "../schemas/kg/cat-harness.js";
+// ── The declaration, read as data ───────────────────────────────────────────
+//
+// This helper lives in cat-harness, and cat-harness imports nothing above
+// bootstrap — the schema code it once used moved up a layer (bean `8lcl`).
+// It needs only the instance's title and the directory declared for
+// the `folio` graph, so it reads the declaration JSON itself.
+
+interface Declared {
+  name?: string;
+  title?: string;
+  directories?: Array<{ path?: string; graphTypologies?: string[] }>;
+}
+
+/** The instance root this module sits in: the directory above `folio-render/`. */
+const INSTANCE_ROOT = resolve(import.meta.dir, "..");
+
+function readOwnDeclaration(root: string): Declared | undefined {
+  for (const name of readdirSync(root)) {
+    if (!name.endsWith(".json")) continue;
+    try {
+      const d = JSON.parse(readFileSync(join(root, name), "utf-8")) as Declared & { $schema?: string };
+      if (Array.isArray(d.directories) && typeof d.name === "string" && name === `${d.name}.json`) return d;
+    } catch {
+      // not a declaration
+    }
+  }
+  return undefined;
+}
+
+function folioDirectoryOf(root: string, decl: Declared | undefined): string | undefined {
+  const dir = decl?.directories?.find((d) => d.graphTypologies?.includes("folio") && typeof d.path === "string");
+  return dir ? join(root, dir.path!.replace(/\/$/, "")) : undefined;
+}
 
 /** The page {@link renderFolioPage} writes, relative to the folio directory. */
 export const FOLIO_PAGE = "index.md";
@@ -124,13 +156,13 @@ export function renderFolioPage(instanceTitle: string, files: readonly FolioFile
 function main(argv: string[]): number {
   // The folio is found through the instance's declaration, not by counting
   // `..` from where this module happens to sit.
-  const root = instanceRootFor(import.meta.dir);
-  const folioDir = directoryForGraph(root, "folio");
+  const root = INSTANCE_ROOT;
+  const decl = readOwnDeclaration(root);
+  const folioDir = folioDirectoryOf(root, decl);
   if (folioDir === undefined) {
     console.error(`no folio directory is declared by ${root}`);
     return 2;
   }
-  const decl = readDeclaration(root);
   const page = renderFolioPage(decl?.title ?? decl?.name ?? "folio", folioFileList(folioDir));
   const out = join(folioDir, FOLIO_PAGE);
   if (argv.includes("--check")) {
