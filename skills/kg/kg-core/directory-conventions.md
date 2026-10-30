@@ -1336,6 +1336,7 @@ and there cannot be one:
 |---|---|
 | `sushi-config.yaml` | SUSHI reads that exact name, and it is YAML |
 | `index.config.json` `contentTypes.dak` | **ours** — bean `cz17`. Was `dak.json`; the owner moved it into the index on 2026-10-24 ("WHO will adopt harness file"). It is a SECTION, not a file: the content type declares `{ indexSection: "dak" }` (`IndexSectionMarker`). WHO's SMART Base still writes and reads `dak.json`; that IG's build reads that file into the index for one build, with a warning, until an IG moves it |
+| `index.config.json` `contentTypes.ig` | **fhir-harness's**: bean `cz17`, item 3. On 2026-10-30 the owner chose "A. ig section in index.config" over treating `sushi-config.yaml` as the marker. A repository declares itself the source of a FHIR IG with this section, registered as `{ indexSection: "ig" }` by `fhir-harness/schemas/ig-content-type.ts`. Carrying `sushi-config.yaml` alone does not declare an IG. The section's `include` lists the paths the harness reads. See "A marker declares what is read", below |
 | `<name>.json`, `<name>.config.json` | ours |
 | `beans.json`, `todos.json` | ours, and named after the graph TYPOLOGY |
 
@@ -1380,6 +1381,27 @@ manufactures an `undeclared` finding somewhere else. The kind now names its own
 file, `BEAN_GRAPH_FILE` and `TODO_GRAPH_FILE` derive from it, and the
 directory-name convention remains only as a fallback for a kind that declares
 none.
+
+#### A marker declares what is read, and nothing else is (owner, 2026-10-30)
+
+> "a harness can point to a repo, but doesnt want to automatically slurpo up
+> all content in a repo. harness desclares what it it pays attention to in the
+> repo." (owner, 2026-10-30T12:41Z, bean `cz17`)
+
+A content-type section is the harness's explicit statement of which parts of
+the repository it reads. It is not a flag that brings in the whole repository.
+`contentTypes.ig` is the first section to carry such a statement: its
+`include` is a list of repository-relative POSIX paths, where an entry ending
+in `/` covers a directory. The rules:
+
+- `fhir-harness`'s `assertIgDeclares` refuses any path that is not on the list.
+- A section with no `include`, or an empty one, declares nothing. It is never
+  read as "everything".
+- The list bounds this harness only. SUSHI and the IG Publisher still read
+  their own inputs.
+
+A new section-shaped type should follow the same pattern: declare the paths
+it reads beside the marker, and read nothing else.
 
 ### `docs/<stub>/` — the site is packaged for the split (STRICT)
 
