@@ -11,8 +11,8 @@
       "kind": "implements",
       "prose": "cat-harness/processes/sdlc/qa-publish.bpmn",
       "code": ".github/workflows/qa-reports-prune.yml",
-      "prose_hash": "fa548fb281ba",
-      "code_hash": "b5cece2df4fc",
+      "prose_hash": "e3875df5a301",
+      "code_hash": "b9cf48c6041c",
       "by": "baseline"
     }
   ]
