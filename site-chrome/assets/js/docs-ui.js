@@ -8074,7 +8074,10 @@
           status.textContent = "The harness configuration could not be read. That is not the same as there being none.";
           return;
         }
-        status.textContent = c.harnesses.length + " harnesses here, " + c.associated.length + " associated.";
+        // `subscribed` (issue #1719) is absent from a harness.json built before
+        // the field existed; absent reads as none, never as an error.
+        var subscribed = c.subscribed || [];
+        status.textContent = c.harnesses.length + " harnesses here, " + c.associated.length + " associated, " + subscribed.length + " subscribed.";
         var wrap = el("div", { class: "fa-hc", "data-fa-hc-view": selected ? "detail" : "list" });
         var list = el("div", { class: "fa-hc-list" });
         var detail = el("div", { class: "fa-hc-detail", "aria-live": "polite" });
@@ -8139,7 +8142,28 @@
           h.appendChild(el("code", {}, item.name));
           detail.appendChild(h);
           var acts = el("p", { class: "fa-hc-actions" });
-          if (kind === "associated") {
+          if (kind === "subscribed") {
+            acts.appendChild(link(item.url, "Open at the pin ↗", "Open " + item.title + " at its pinned commit"));
+            acts.appendChild(editLink(link(item.editHref, "✎ Its repository", "Edit " + item.title + " in its own repository")));
+            detail.appendChild(acts);
+            var srows = [
+              { key: "name", value: item.name },
+              { key: "repository", value: item.repository },
+              { key: "ref", value: item.ref },
+              { key: "subscription", value: item.subscription },
+              { key: "harness", value: item.chosen ? "chosen, not yet instantiated" : "not chosen: referenced only" },
+            ];
+            if (item.note) srows.push({ key: "note", value: item.note });
+            srows.push({ key: "declared by", value: item.declaredBy.join(", ") });
+            var st = table(srows);
+            // The rows of a subscription are edited where it is DECLARED.
+            Array.prototype.forEach.call(st.querySelectorAll("tbody td.fa-hc-skills"), function (td) {
+              td.appendChild(link(withBase("/reference/skill-instructions/kg-subscription.html"), "kg-subscription"));
+            });
+            detail.appendChild(st);
+            detail.appendChild(el("p", { class: "fa-hc-note" },
+              "Subscribed: pinned, and not instantiated here. Its parts are copied only when chosen, through the five gates."));
+          } else if (kind === "associated") {
             acts.appendChild(link(item.url, "Open ↗", "Open " + item.title + " (its own site)"));
             if (item.editHref) acts.appendChild(editLink(link(item.editHref, "✎ Its repository", "Edit " + item.title + " in its own repository")));
             detail.appendChild(acts);
@@ -8181,6 +8205,7 @@
           { id: "instantiated", label: "Instantiated here", items: c.harnesses.filter(function (x) { return x.group === "instantiated"; }) },
           { id: "checkout", label: "In this checkout", items: c.harnesses.filter(function (x) { return x.group === "checkout"; }) },
           { id: "associated", label: "Associated ↗ remote", items: c.associated },
+          { id: "subscribed", label: "Subscribed ↗ remote", items: subscribed },
         ];
         var chosen = null;
         groups.forEach(function (g) {
@@ -8193,7 +8218,7 @@
             var li = el("li", {});
             var b = el("button", { type: "button", class: "fa-hc-item", "aria-current": "false" }, item.title);
             if (item.title !== item.name) b.appendChild(el("code", {}, item.name));
-            var kind = g.id === "associated" ? "associated" : "local";
+            var kind = g.id === "associated" || g.id === "subscribed" ? g.id : "local";
             b.addEventListener("click", function () { show(kind, item, b); });
             buttons.push(b);
             li.appendChild(b);
