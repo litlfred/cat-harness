@@ -1294,26 +1294,6 @@
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-tools/latexmk-compile",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-tools"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "LaTeX compilation (latexmk)"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Compile LaTeX source documents into PDF using latexmk with safe shell-escape isolation across CI events."
-        }
-      ],
-      "skos:notation": "latexmk-compile",
-      "dcterms:source": "cat-harness/tools/latexmk-compile/latexmk-compile.ts#latexmk-compile",
-      "skos:note": "candidate"
-    },
-    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-tools/library-viewer",
       "@type": "skos:Concept",
       "skos:inScheme": {
