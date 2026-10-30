@@ -2,7 +2,6 @@
   "id": "bpmn-authoring",
   "name": "BPMN Authoring",
   "description": "Author BPMN 2.0 business process diagrams for workflow modeling.",
-  "roles": ["business-analyst", "author", "admin"],
   "requiredCapabilities": [
     { "capabilityId": "graphviz", "degradation": "skip" }
   ],

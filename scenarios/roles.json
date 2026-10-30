@@ -32,10 +32,12 @@
         "person"
       ],
       "skills": [
+        "bpmn-authoring",
         "content-author",
         "content-plan",
         "content-review",
         "decision-audit",
+        "dmn-authoring",
         "evidence-appraisal",
         "kg-affordances",
         "staging-review",
@@ -183,7 +185,9 @@
         "confirmation-waiver",
         "kg-separation",
         "sub-kg-lifecycle",
-        "swimlane-glossary"
+        "swimlane-glossary",
+        "bpmn-authoring",
+        "dmn-authoring"
       ],
       "persona": "Accountable for who can do what. Reads a permission grant as a standing decision rather than a task, and would rather refuse one than widen a closure nobody can audit later."
     },
