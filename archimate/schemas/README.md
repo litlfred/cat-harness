@@ -11,8 +11,6 @@ The subgraph's shapes: `cat-archimate.config.json` (what an instance names), the
 
 Part of [C@T Harness](../../README.md) 0.1.0, declared as `archimate-schemas`, holding `schemas`.
 
-| file | what it is | used by |
-|---|---|---|
-| [`archimate.ts`](archimate.ts) | a file |  |
+_This directory holds no files yet._
 
 <!-- kg:subgraph:end -->

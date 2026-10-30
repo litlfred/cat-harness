@@ -14,8 +14,5 @@
   },
   "licence": "MIT",
   "licenceSource": "the installed package's own package.json (`license`)",
-  "usedBy": [
-    "archimate/schemas/archimate.ts",
-    "schemas/external-registry-contract.test.ts"
-  ]
+  "usedBy": []
 }
