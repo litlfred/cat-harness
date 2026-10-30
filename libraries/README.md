@@ -24,6 +24,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-libraries`, 
 | [`typescript.library.json`](typescript.library.json) | data |  |
 | [`typescript7.library.json`](typescript7.library.json) | data |  |
 | [`unified-latex__unified-latex-types.library.json`](unified-latex__unified-latex-types.library.json) | data |  |
-| [`zod.library.json`](zod.library.json) | data |  |
 
 <!-- kg:subgraph:end -->

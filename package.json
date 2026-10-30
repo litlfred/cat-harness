@@ -23,9 +23,6 @@
     "folio:render": "bun run folio-render/file-list.ts",
     "folio:render:check": "bun run folio-render/file-list.ts --check"
   },
-  "dependencies": {
-    "zod": "^4.6.5"
-  },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@hpcc-js/wasm-graphviz": "1.6.1",
