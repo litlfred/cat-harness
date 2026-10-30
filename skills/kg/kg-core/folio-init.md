@@ -21,7 +21,7 @@ branches) linked back to the harness.
 
 | | where |
 |---|---|
-| the Tool node | [`tools/folio-init/folio-init.ts`](../../../tools/folio-init/folio-init.ts) (`id: "folio-init"`, MCP `folio_init`, CLI `bun run cat init-folio`) |
+| the Tool node | [`tools/folio-init/folio-init.ts`](../../../tools/folio-init/folio-init.json) (`id: "folio-init"`, MCP `folio_init`, CLI `bun run cat init-folio`) |
 | the entry processes | `getting-started.bpmn` (`new-repo` and `add-folio` branches), `repo-conversion.bpmn` (`overlay` branch) |
 | companion skills | [`getting-started`](../../conduct/conduct-core/getting-started.md), [`repo-conversion`](../../conduct/conduct-core/repo-conversion.md), [`index-config`](index-config.md), [`remote-mount`](remote-mount.md) |
 
