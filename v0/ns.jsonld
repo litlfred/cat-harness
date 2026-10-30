@@ -1230,6 +1230,21 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:graphTypology/subscribed-harnesses",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "subscribed-harnesses",
+      "comment": "The state directories of each harness instantiated from a KG subscription, one home per subscription and harness, kept apart from the read-only snapshots.",
+      "prefLabel": "subscribed-harnesses",
+      "definition": "The state directories of each harness instantiated from a KG subscription, one home per subscription and harness, kept apart from the read-only snapshots.",
+      "notation": "cat-harness:graphTypology/subscribed-harnesses",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:graphTypology/substrate-snapshot",
       "@type": [
         "bootstrap:GraphTypology",
