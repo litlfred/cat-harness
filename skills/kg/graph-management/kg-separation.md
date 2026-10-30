@@ -49,6 +49,38 @@ bean before deciding:
 | wrong-direction **references** — the prose axis, not the import axis | `check:reference-direction` |
 | what the tools would drag along | the import cone of the would-be tools package (`check:tools-closure` once it exists) |
 
+## An example pointing up is a mention, not a dependency
+
+`check:reference-direction` holds that nothing names an instance that depends
+on it. One kind of pointer does not break that rule: a lower layer citing a
+source **as an example**, where the one copy of that source lives in a layer
+above it (owner, 2026-10-30, smart-ra thread: "one copy in smart-ra", then
+"A. Example is a mention").
+
+The case that settled it: smart-base's DTH document kind and DTH voice quote
+the draft DPI-H Reference Architecture as evidence for their rules. The draft's
+library entry is smart-ra's (the folio for that document, which builds on
+smart-base). smart-base used to carry a second copy, and two copies of one key
+broke the bibliography build. Now:
+
+- **One copy.** The source's library entry lives only in the layer that owns
+  it. The lower layer deletes its copy and never re-ingests it.
+- **The lower layer keeps a pointer.** A document-kind source's `ref` is a URL
+  to the owner's published library page (`DocumentKindSourceSchema` allows "a
+  library entry id or a URL"). A voice source names the owning repository in
+  `instance` and adds its `url`. A quote keeps its `libraryId` and
+  `sectionId`.
+- **It is checked where the copy is.** The lower layer cannot read the
+  sections, so its quote check reports such a quote as "an example held by
+  <repository>, not checked here". That is not a pass and not a failure
+  (`smart-base/scripts/gen-dth-term-findings.ts`, `EXAMPLE_POINTERS`).
+- **It is a mention.** The lower layer's build does not need the higher layer,
+  and nothing it runs reads through the pointer. The URL form is already an
+  address under `check:reference-direction`'s URL exemption ("a location is
+  where a thing is, not a dependency on it"). A pointer that something would
+  need to resolve in order to build is a dependency, and the content moves up
+  instead.
+
 ## Preconditions — each was learned from a failure
 
 1. **Names agree before the cut** — directory, declared `name`, package name.
