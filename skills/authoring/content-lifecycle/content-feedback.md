@@ -15,13 +15,13 @@ Gather and triage feedback on published content for future iterations.
 - Map feedback to specific content components
 - Create issues/tickets for actionable feedback
 - Prioritize feedback for next iteration
-- Coordinate with clinical SMEs for clinical feedback
+- Coordinate with domain subject-matter experts on domain feedback
 - Track feedback resolution across versions
 
 ## Actors
 - Technical Officer (triage lead)
 - Programme Manager (prioritization)
-- Clinical SME (clinical feedback assessment)
+- Domain SME (domain feedback assessment, supplied by the content-type layer)
 - Business Analyst (implementer feedback)
 
 ## Inputs

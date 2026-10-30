@@ -26,8 +26,8 @@ They diverge in both directions, legitimately: a formal layer invokes
 helpers nobody needs to read about; a claim is motivated by an example
 it never formally cites. **Never populate `uses[]` from a formal graph**
 — it destroys the editorial signal every heuristic below is computed
-from. For a paper folio, the formal relation is Lean's: see the science
-layer's `lean-formal-graph`.
+from. The layer that ships a formal content type defines its formal dependency
+graph and links down to this skill.
 
 The reorganisation heuristics in this skill (forward references,
 coupling, section balance) are **editorial-only** by design: reading
@@ -431,11 +431,11 @@ Directory names are **descriptive slugs** with NO chapter numbers:
 
 | After this skill | Use next |
 |-----------------|----------|
-| Block moves approved | `content-validation` — verify schema integrity |
+| Block moves approved | the content type's block validation skill — verify schema integrity |
 | Forward refs identified | `chapter-complexity-review` — block-level reorder within chapter |
-| Cross-chapter coupling found | `critical-path-analysis` — trace logical dependency chain |
+| Cross-chapter coupling found | the content type's critical-path analysis skill — trace logical dependency chain |
 | Sparse sections found | `editor` — add missing content blocks |
-| Dense sections found | `content-block-review` — audit individual blocks for splitting |
+| Dense sections found | `block-density` / the content type's block review skill — audit individual blocks for splitting |
 | Proposals generated | Approve with user, then implement via manifest edits + re-run |
 | New content proposed | Run placement checklist (PR1–PR7) before accepting |
 | Block too long / multi-topic | `block-density` — single-topic coherence audit |
@@ -459,7 +459,7 @@ Directory names are **descriptive slugs** with NO chapter numbers:
 [`graph-rendering`](../../kg/graph-management/graph-rendering.md) rules:
 - chapters as packages;
 - `uses[]` and `interprets` solid, the content type's formal edges dashed
-  purple (for a paper folio, Lean `type` and `value`: `lean-formal-graph`);
+  purple (supplied by the content type's formal-graph builder);
 - status fills from the content type's status file;
 - one diagram per chapter, with blocks in other chapters as dashed stubs;
 - portrait and landscape views, and a `--check` that needs no Java.

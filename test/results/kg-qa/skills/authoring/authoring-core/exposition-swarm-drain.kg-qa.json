@@ -5,7 +5,7 @@
     "id": "exposition-swarm-drain",
     "path": "skills/authoring/authoring-core/exposition-swarm-drain.md"
   },
-  "source_hash": "a69df845fd84",
+  "source_hash": "sha256:5a186abf1075893b598567dddc36226fc4bf51c8933d458cf2bec170de92aac4",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

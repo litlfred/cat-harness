@@ -5,7 +5,7 @@
     "id": "content-author",
     "path": "skills/authoring/content-lifecycle/content-author.md"
   },
-  "source_hash": "ea642ea8834d",
+  "source_hash": "sha256:70b19e440e7c9dcc616f46c8f54d28d8fd681330f7754f2b620130c42c60bff0",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

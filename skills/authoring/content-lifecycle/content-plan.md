@@ -23,7 +23,7 @@ Plan content development by defining scope, team, timeline, and sprint cadence.
 
 ## Inputs
 - Stakeholder requirements
-- Existing guidelines or source material
+- Existing content or source material
 - Resource constraints
 
 ## Outputs

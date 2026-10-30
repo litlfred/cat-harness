@@ -18,11 +18,10 @@ So: the folio declares the system. This skill covers what appraisal *is*, what
 it attaches to, and what has to survive as a record afterwards — the parts that
 are the same whichever system you have declared.
 
-One system is written down here to declare: `grade` (the DAK layer),
-for a WHO guideline folio, with its certainty levels, rating reasons, EtD
-criteria and recommendation direction and strength as code lists. It is
-available, not a default — a folio that declares nothing still gets the
-refusal above.
+Domain layers stacked on the harness supply concrete grading systems as
+refinement skills and code lists (with their certainty levels, rating reasons,
+and recommendation strength). Each is available when declared, never a
+default — a repository that declares nothing still gets the refusal above.
 
 ## Responsibilities
 
@@ -79,19 +78,16 @@ what was done.
 
 ## This has nothing to do with formal content
 
-A graded body of empirical evidence is **never** an input to a mathematical
-proof. In a paper folio, a `theorem`'s assertion is discharged by its `.lean`
-sibling and by nothing else; certainty grading belongs to guidance about the
-world, where the question is what the evidence supports. The two live in one
-platform and must not meet: an empirical grade appearing in a proof obligation
-would be a category error that the Lean build would not catch, because it never
-reaches Lean.
-
-If you are appraising evidence inside a paper folio, check first whether you
-are in the right repository at all.
+A graded body of empirical evidence is **never** an input to a formal
+deductive proof. In a content type with a formal proof layer, a formal claim's
+assertion is discharged by its machine-checked proof sibling and by nothing
+else; certainty grading belongs to empirical guidance about the world, where
+the question is what the evidence supports. The two live in one platform and
+must not meet: an empirical grade appearing in a formal proof obligation is a
+category error.
 
 ## Actors
 
 - Author / guideline developer (lead)
-- Clinical SME (domain judgement, where the question is clinical)
+- Domain SME (domain judgement, supplied by the content-type layer)
 - Content Reviewer (checks the grade's reasons survive, not the grade itself)

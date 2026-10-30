@@ -5,7 +5,7 @@
     "id": "canonical-watcher",
     "path": "skills/authoring/authoring-core/canonical-watcher.md"
   },
-  "source_hash": "c089d940d12e",
+  "source_hash": "sha256:bbe384d8304c4a5a48ccb7f6b3e14ea564dfac3d27ecf5f9701dd9e997f81923",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

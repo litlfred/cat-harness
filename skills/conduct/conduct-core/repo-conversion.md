@@ -48,40 +48,20 @@ read file contents, does not call a model, and is not trying to be clever —
 it is trying to be *fast, explicable and reversible*, so the author can
 disagree with any row of it in one word.
 
-### Outside-content math scanning — preserving evidence and refutations
+### Outside-content candidate scanning — preserving evidence and refutations
 
-In repositories with mathematical and scientific content, crucial mathematical evidence
-often lives **outside** the content tree (`content/` or `folio/`).
+In repositories with formal, analytical, or domain-specific content, crucial
+verification scripts, macros, and counterexamples often live **outside** the
+primary content tree (`content/` or `folio/`). A conversion that carries only
+the primary content tree drops the evidence that some claims are false.
 
-Recorded from the `qou` orphaned-content census (2026-10-04, session `01NdDGeP1SyShmoUssLuRZ91`, issue #2106):
-- 30 `docs/audits/*.lean` files (several are refutations of paper claims, e.g. `skein-mass-relation-is-false.lean`),
-- 68 `docs/audits/*.py` computations, and
-- 272 derivation notes
-lived outside `folio/` and were linked by no block.
-
-**A conversion that carries only the content tree drops the evidence that some claims are false.**
-
-The scanner scans outside the content tree and classifies these artifacts into **candidate classifications**, read-only, reporting source location, rationale, and link status:
-
-| classification | description | examples |
-|---|---|---|
-| `math_proof` | Formal proof or theorem outside content tree | `docs/audits/*.lean`, `math/*.lean`, Coq `.v`, Isabelle `.thy` |
-| `computation_script` | Numerical or symbolic calculation / verification script | `docs/audits/*.py`, `computations/*.py`, `.sage`, `.ipynb`, `.jl` |
-| `macro_definition` | TeX macros, custom commands, environments, or math tables | `macros.tex`, `tables/*.tex`, `preamble.tex`, `defs.tex` |
-| `audit_refutation` | Audit refutation or counterexample falsifying a claim | `docs/audits/*is-false*.lean`, `audits/counterexample.py` |
-| `derivation_note` | Informal mathematical derivation note or scratchpad | `docs/notes/derivation*.md`, `derivations/*.md`, `scratchpad.md` |
-
-#### Link status — detecting orphaned evidence
-
-Each candidate carries a `linkStatus`:
-- **`linked`**: Referenced by at least one block/manifest in the content tree (`linkedBy`).
-- **`unlinked`**: Orphaned evidence — not linked by any content block.
-
-An `unlinked` candidate is at immediate risk: if the conversion only imports blocks in `content/` or `folio/`, the unlinked evidence or refutation is left behind and lost to readers.
-
-#### Read-only candidate discipline
-
-Like the general scan, outside-content math candidate scanning **never writes, moves, or modifies files**. It presents the candidates to the author and agent so decisions can be made about linking, ingesting, or maintaining sidecars during the conversion.
+`scan-repo-content.ts` scans outside the content tree and classifies these
+artifacts into read-only candidate classifications (defined by the content-type
+layer's conversion refinement skill), reporting source location, rationale, and
+`linkStatus` (`linked` when referenced by at least one content block, or
+`unlinked` when orphaned). Like the general scan, candidate scanning **never
+writes, moves, or modifies files**; it presents the candidates to the author
+and agent so decisions can be made before importing.
 
 ## 2. Show, then ask — three questions, all as selections
 
@@ -163,19 +143,17 @@ commit on an instance that already exists.
 else could this harness declare?" is `--markers` on the instance's repository,
 then Q0. Rows already `declared` are shown for context and are not offered.
 
-`ig` is registered by fhir-harness (`schemas/ig-content-type.ts`). A scan that
-has not loaded that layer shows the `ig` row as a hint, with a `note` saying
-where the type lives. Declaring it is not a flag: the snippet's `include` list
-is everything fhir-harness's IG readers will read, so confirm it with the
-person and add any path the IG's site needs (`input/diagrams/`, say). A
-repository with no `contentTypes.ig` is read whole as a legacy IG, with a
-warning on every run; fhir-harness's `ig-build-pipeline` §"What this layer
-reads" has the rules and how to add a path later.
+A content type registered by a higher harness layer appears as a hint when that
+layer is not loaded, with a `note` saying where the type lives. Declaring a
+scoped content type is not a boolean flag: its `include` list states everything
+that layer's readers will read, so confirm the list with the person and consult
+that layer's build-pipeline skill for how additional paths are added later.
 
 ## 3. Dispatch the ingestion
 
-Ingestion proper is `document-intake` (the content core)
-and `processes/library/document-ingestion.bpmn`. What this skill decides is *how
+Ingestion proper is `processes/library/document-ingestion.bpmn` (and the
+content layer's document-intake refinement skill when converting into a content
+folio). What this skill decides is *how
 much parallelism*, and it is a question for the author because it spends their
 tokens:
 

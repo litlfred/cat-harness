@@ -5,11 +5,7 @@ description: >
   a document folio is, how a paper extends it, which distinction needs code and
   which needs only rules, and what profile enforcement catches that schema
   validation structurally cannot.
-adapters: [document, paper, dak]
-profiles: [document, paper]
 consulted: true
-graph-typologies:
-  - folio
 ---
 
 # Content types — `document` is the base, a paper extends it

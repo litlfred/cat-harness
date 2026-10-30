@@ -6,12 +6,11 @@ name: editor
 
 ## A content type's own editing discipline
 
-A content type with a formal layer adds rules the editor must follow: how a
-formal statement and its narrative move together, how proofs are filed, the
-sub-editors that route its formal requests, and its pre-merge audits. For a
-paper folio they are the science layer's `formal-layer-editing`
-(`skill_fetch formal-layer-editing`), and they are **mandatory** whenever that
-layer is present.
+A content type with a formal or domain layer adds rules the editor must
+follow: how a formal statement and its narrative move together, how proofs or
+domain artifacts are filed, the sub-editors that route its domain requests, and
+its pre-merge audits. Those rules live in the owning layer's editorial
+refinement skills and are **mandatory** whenever that layer is present.
 
 ## Role
 
@@ -78,14 +77,14 @@ them.
 | Build manuscript / render output | `docs-generation` | Content → output pipeline |
 | Domain question | `scientific-accuracy` + domain skill | Research, don't edit |
 | Write / run / review tests | `test-engineer` | |
-| Validate content objects | `content-validation` | Schema + constraints + AST |
-| Add / edit content block | `content-validation` + relevant skill | Create `.ts` + `.md` pair |
-| Glossary / terminology / naming | `ontologist` + `content-validation` | Glossary blocks |
+| Validate content objects | the content type's validation skill | Schema + constraints + AST |
+| Add / edit content block | the content type's validation + authoring skills | Create `.ts` + `.md` pair |
+| Glossary / terminology / naming | the content layer's terminology/ontology skill | Glossary blocks |
 | Work on todos / process feedback | `todo-review` | Context-aware selection |
-| Critical path / context audit | `critical-path-analysis` | Dependency tracing |
+| Critical path / context audit | the content type's critical-path skill | Dependency tracing |
 | Review / audit chapter or paper | See §External review | Tiered escalation |
-| Formal-layer request (prove, formalize, triage, fix the formal build) | the content type's routing rows | For a paper folio, `formal-layer-editing` |
-| **End-of-task review** (automatic) | `scientific-accuracy` + `readability-editing` + `content-validation` | **Mandatory** when any content changed |
+| Formal-layer request (prove, formalize, triage, fix the formal build) | the content type's formal-layer editing skill | Supplied by the layer shipping the formal layer |
+| **End-of-task review** (automatic) | `scientific-accuracy` + `readability-editing` + content validation | **Mandatory** when any content changed |
 
 ## External review (tiered model)
 
@@ -98,9 +97,9 @@ explicitly requests deeper review.**
 The project's own skills understand the content-object architecture,
 formal layer, notation conventions, and project-specific constraints.
 They run on every content change as the mandatory fallback:
-`scientific-accuracy`, `readability-editing`, `content-validation`,
-`content-block-review`, `remark-audit`, `chapter-complexity-review`,
-`critical-path-analysis`.
+`scientific-accuracy`, `readability-editing`, `chapter-complexity-review`,
+`block-density`, plus the active content type's block-validation, remark, and
+critical-path review skills.
 
 ### Tier 1 — General scientific-review skills (read from disk)
 
@@ -249,14 +248,15 @@ committed to the PR branch), **reply-only** (explain on the thread), or
 ## Witnessed values
 
 Any computed numerical literal in a block, whatever its kind, uses the
-value-citation directive, not a hard-coded number. See `witnessed-values`.
+project's value-citation directive rather than a hard-coded number (as
+defined by the content type's value-witnessing skill).
 
 ## Glossary routing
 
-When a new term is encountered: if it is a stdlib synonym, route to
-`ontologist` to create a glossary block; if it introduces new material,
-create a definition block; if unsure, ask the author. See `ontologist`
-§Glossary Block Policy.
+When a new term is encountered: if it is a terminology synonym, route to the
+content layer's terminology/ontology skill to create a glossary entry; if it
+introduces new domain material, create a definition block; if unsure, ask the
+author.
 
 ### Wrap-every-occurrence contract
 
@@ -269,10 +269,10 @@ this; the codemod backfills references; the builder emits the glossary.
 ## Bibliography workflow
 
 For adding, editing, or auditing references — or when a review comment
-flags a wrong-work / DOI / metadata mismatch — default to invoking
-`bib-qa` for any non-trivial bib work (key resolution, cross-check
-against the cited work, DOI/Crossref validation, paper intake). The
-editor handles only the immediate inline citation placement and
+flags a wrong-work / DOI / metadata mismatch — default to invoking the content
+layer's bibliography QA skill for any non-trivial bibliography work (key
+resolution, cross-check against the cited work, DOI/Crossref validation, source
+intake). The editor handles only the immediate inline citation placement and
 delegates the correctness audit and intake.
 
 ## Pre-merge checklist
@@ -280,4 +280,4 @@ delegates the correctness audit and intake.
 Before merging a branch: run content validation; run the witness-staleness
 audit (re-run/re-stamp stale witnesses); re-run affected compute scripts
 (new scripts use the structured-witness base); and run the content type's own
-pre-merge audits and build (for a paper folio, `formal-layer-editing`).
+pre-merge audits and build.
