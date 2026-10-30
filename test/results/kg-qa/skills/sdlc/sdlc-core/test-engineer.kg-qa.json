@@ -24,11 +24,11 @@
       "findings": []
     },
     "prose-reviewed-since-code-changed": {
-      "result": "pass",
+      "result": "n/a",
       "findings": []
     },
     "prose-claims-resolve": {
-      "result": "pass",
+      "result": "n/a",
       "findings": []
     },
     "skill-voice-review-current": {
@@ -42,9 +42,9 @@
     }
   },
   "totals": {
-    "pass": 6,
+    "pass": 4,
     "fail": 0,
-    "n/a": 0,
+    "n/a": 2,
     "unknown": 1
   }
 }
