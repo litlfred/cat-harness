@@ -20,7 +20,7 @@ One user request to classify: is it a feature request (a platform capability cha
 | `text` | string | **yes** | The request as the user wrote it — an issue title and body, or a chat turn. (minLength: 1) |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/crdm-detect/input.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/crdm-detect/input.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/crdm-detect/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/crdm-detect/input.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/crdm-detect/input.schema.json){: data-fa-link="source" data-src="schemas/skills/crdm-detect/input.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/crdm-detect/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/crdm-detect/input.schema.json" data-repo="litlfred/cat-harness" }
 
 ## Output
 
@@ -34,4 +34,4 @@ The verdict on one request. `fires` is the decision; `categories` and `excluded`
 | `stagingLinks` | any | no | The staging preview of the work this output asks a person to look at: one deep link per changed page, with the same page on main. Required whenever a preview exists; when it does not, say so in `missing`. Rule: cat-harness skills/sdlc/sdlc-core/staging-review.md §"The deep-link rule". |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/crdm-detect/output.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/crdm-detect/output.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/crdm-detect/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/crdm-detect/output.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/crdm-detect/output.schema.json){: data-fa-link="source" data-src="schemas/skills/crdm-detect/output.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/crdm-detect/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/crdm-detect/output.schema.json" data-repo="litlfred/cat-harness" }

@@ -21,7 +21,7 @@ The wireframe candidates to render, and where the screenshots and report go. Cal
 | `out` | string | no | Where the screenshots and report.json go: the asset directory's checks/ (wireframe-design-review, 'Where wireframes live'). Absent: .build/wireframes. |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/wireframe-viewport-check/input.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/wireframe-viewport-check/input.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/wireframe-viewport-check/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/wireframe-viewport-check/input.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/wireframe-viewport-check/input.schema.json){: data-fa-link="source" data-src="schemas/skills/wireframe-viewport-check/input.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/wireframe-viewport-check/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/wireframe-viewport-check/input.schema.json" data-repo="litlfred/cat-harness" }
 
 ## Output
 
@@ -49,4 +49,4 @@ Per candidate, per viewport (web 1280x800, mobile 390x844), a pass or fail entry
 | `mobile` | string | **yes** |  |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/wireframe-viewport-check/output.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/wireframe-viewport-check/output.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/wireframe-viewport-check/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/wireframe-viewport-check/output.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/wireframe-viewport-check/output.schema.json){: data-fa-link="source" data-src="schemas/skills/wireframe-viewport-check/output.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/wireframe-viewport-check/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/wireframe-viewport-check/output.schema.json" data-repo="litlfred/cat-harness" }

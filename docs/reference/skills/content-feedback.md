@@ -32,7 +32,7 @@ Input schema for feedback collection and triage.
 | `reporter` | string | no |  |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/content-feedback/input.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/content-feedback/input.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/content-feedback/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/content-feedback/input.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/content-feedback/input.schema.json){: data-fa-link="source" data-src="schemas/skills/content-feedback/input.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/content-feedback/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/content-feedback/input.schema.json" data-repo="litlfred/cat-harness" }
 
 ## Output
 
@@ -65,4 +65,4 @@ Output schema for triaged feedback.
 | `enhancement` | integer | no |  |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/content-feedback/output.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/content-feedback/output.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/content-feedback/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/content-feedback/output.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/content-feedback/output.schema.json){: data-fa-link="source" data-src="schemas/skills/content-feedback/output.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/content-feedback/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/content-feedback/output.schema.json" data-repo="litlfred/cat-harness" }

@@ -41,7 +41,7 @@ One question for a person, complete enough to answer without opening anything. T
 | `reversibility` | string | **yes** | minLength: 1 |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/ask-the-person/input.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/ask-the-person/input.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/ask-the-person/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/ask-the-person/input.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/ask-the-person/input.schema.json){: data-fa-link="source" data-src="schemas/skills/ask-the-person/input.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/ask-the-person/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/ask-the-person/input.schema.json" data-repo="litlfred/cat-harness" }
 
 ## Output
 
@@ -65,4 +65,4 @@ What the calling step gets back: proof the question went out twice, and the pers
 | `card` | string \| null | **yes** | Id of the card offered after it; null only when the host has no card tool, which the chat text then says. |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/ask-the-person/output.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/ask-the-person/output.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/ask-the-person/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/ask-the-person/output.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/ask-the-person/output.schema.json){: data-fa-link="source" data-src="schemas/skills/ask-the-person/output.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/ask-the-person/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/ask-the-person/output.schema.json" data-repo="litlfred/cat-harness" }
