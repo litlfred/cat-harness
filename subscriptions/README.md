@@ -14,5 +14,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `subscriptions`, holding 
 | file | what it is | used by |
 |---|---|---|
 | [`ihris.substrate.json`](ihris.substrate.json) | data |  |
+| [`ihris/`](ihris/) | _nothing declares what this holds_ | |
 
 <!-- kg:subgraph:end -->
