@@ -93,6 +93,24 @@
  * Its file is {@link vendoredLibraryFileName} — the version IS in the name,
  * because a layer may keep two versions of one bundle side by side, and a
  * vendored copy is never "bumped" in place: a new version is a new directory.
+ *
+ * ## A layer below the kind is held by the writer's layer (1.2.0)
+ *
+ * Bean `jbvi`, bootstrap-tools#44, owner 2026-10-30 ("A. Holder records,
+ * keyed by layer"). A layer that sits below this kind's layer (bootstrap-tools
+ * needs only bootstrap) may not name it, so it cannot declare a `libraries/`
+ * of its own. Its nodes are held instead by the layer that owns the writer,
+ * under `libraries/held/<layer>/`, the way core holds the glossary schemes of
+ * the layers below its `glossary` typology, keyed by their owning instance
+ * (bean `q3n9`).
+ *
+ * A held node says which layer it describes in `layer`: the instance name, as
+ * `needs` names it. That is the graph's edge from the library to the layer
+ * that imports it, and pages place the node under that layer. `usedBy` and
+ * `shim` stay relative to that layer, not to the holder. A layer's own nodes
+ * carry no `layer`: their directory's declaring instance is the layer, and
+ * stamping it on every node would churn every layer for nothing. So `layer` is
+ * present exactly on a held node, which is stamped 1.2.0 ({@link librarySchemaTag}).
  */
 import { z } from "zod";
 
@@ -114,10 +132,19 @@ import type { SpdxLicenseList } from "./spdx-license-expression";
 export const SOFTWARE_LIBRARY_SCHEMA_TAG = "software-library/1.0.0";
 
 /**
- * The kind's CURRENT version, 1.1.0, which added `vendored`: what a vendored
- * bundle's node is stamped with.
+ * 1.1.0, which added `vendored`: what a vendored bundle's node is stamped
+ * with. The kind's current version is {@link SOFTWARE_LIBRARY_HELD_TAG}.
  */
 export const SOFTWARE_LIBRARY_VENDORED_TAG = "software-library/1.1.0";
+
+/**
+ * 1.2.0, which added `layer`: what a node held for a layer below the kind is
+ * stamped with (§"A layer below the kind is held by the writer's layer").
+ */
+export const SOFTWARE_LIBRARY_HELD_TAG = "software-library/1.2.0";
+
+/** Where the writer's layer keeps the nodes it holds for a layer below the kind: `libraries/held/<layer>/`. */
+export const HELD_DIR = "held";
 
 /** The suffix a vendored bundle's node file ends in, before {@link LIBRARY_FILE_SUFFIX}. */
 export const VENDORED_INFIX = ".vendored";
@@ -135,6 +162,9 @@ export const LibraryNameSchema = z
     /^(@[a-z0-9][a-z0-9._-]*\/)?[a-z0-9][a-z0-9._-]*$/,
     "an npm package name: lowercase letters, digits, `.`, `_` and `-`, optionally scoped as `@scope/name`",
   );
+
+/** An instance name, as `needs` names it (`bootstrap-tools`). */
+export const LayerNameSchema = z.string().regex(/^[a-z0-9][a-z0-9-]*$/, "an instance name, as `needs` names it");
 
 /** A layer-relative POSIX path, never absolute and never above the layer. */
 const LayerPathSchema = z
@@ -155,14 +185,14 @@ export const VendoredSchema = z
 export type Vendored = z.infer<typeof VendoredSchema>;
 
 /**
- * One library a layer imports, as a `software-library/1.1.0` node kind: a
+ * One library a layer imports, as a `software-library/1.2.0` node kind: a
  * SUBCLASS of the {@link OutsideSoftwareKind} mixin, narrowing `name` and
  * `source` (declared in `overrides`, so neither shadows the core by accident)
  * and adding what only an imported library has. Strict, because its writer
  * emits exactly these keys and an extra one is a defect.
  */
 export const SoftwareLibraryKind = nodeKind(
-  SOFTWARE_LIBRARY_VENDORED_TAG,
+  SOFTWARE_LIBRARY_HELD_TAG,
   [OutsideSoftwareKind],
   {
     /** Narrowed from the core: an npm package name, as the layer's `package.json` names it. */
@@ -179,6 +209,8 @@ export const SoftwareLibraryKind = nodeKind(
     dev: z.boolean().optional(),
     /** 1.1.0: the library's bytes are kept in the layer, at this directory, rather than installed. */
     vendored: VendoredSchema.optional(),
+    /** 1.2.0: the layer this node describes, when it is held by another layer's `libraries/held/<layer>/`. Absent on a layer's own nodes. */
+    layer: LayerNameSchema.optional(),
     /** The layer's files that import it, layer-relative, sorted and unique. Empty for a library reached another way (a CLI, a `types` entry). */
     usedBy: z.array(LayerPathSchema),
     /** The ambient declaration that types it, when the package ships none of its own. */
@@ -191,6 +223,12 @@ export const SoftwareLibraryKind = nodeKind(
       const sorted = [...new Set(l.usedBy)].sort();
       if (sorted.length !== l.usedBy.length || sorted.some((p, i) => p !== l.usedBy[i])) {
         ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["usedBy"], message: "`usedBy` is sorted and names each file once, so a regeneration diffs cleanly" });
+      }
+      if (l.layer !== undefined) {
+        const t = parseSchemaTag(String(l.$schema));
+        if (t && t.major === 1 && t.minor < 2) {
+          ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["$schema"], message: "`layer` is a 1.2.0 field, so a held node is stamped `software-library/1.2.0` or newer" });
+        }
       }
       if (l.vendored) {
         for (const k of ["range", "dev"] as const) {
@@ -240,10 +278,12 @@ export function vendoredLibraryFileName(name: string, version: string): string {
 
 /**
  * The tag a node is stamped with: the OLDEST version that has every field it
- * uses. `software-library/1.1.0` for a vendored node, `software-library/1.0.0`
- * for any other, so gaining a field rewrites none of a layer's existing nodes.
+ * uses. `software-library/1.2.0` for a held node (it has `layer`), 1.1.0 for
+ * a vendored one, `software-library/1.0.0` for any other, so gaining a field
+ * rewrites none of a layer's existing nodes.
  */
-export function librarySchemaTag(l: { vendored?: unknown }): string {
+export function librarySchemaTag(l: { vendored?: unknown; layer?: unknown }): string {
+  if (l.layer !== undefined) return SOFTWARE_LIBRARY_HELD_TAG;
   return l.vendored !== undefined ? SOFTWARE_LIBRARY_VENDORED_TAG : SOFTWARE_LIBRARY_SCHEMA_TAG;
 }
 

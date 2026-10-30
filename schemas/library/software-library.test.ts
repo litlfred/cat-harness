@@ -22,6 +22,7 @@ import {
 } from "./outside-software.ts";
 import {
   LIBRARY_FILE_SUFFIX,
+  SOFTWARE_LIBRARY_HELD_TAG,
   SOFTWARE_LIBRARY_SCHEMA_TAG,
   SOFTWARE_LIBRARY_VENDORED_TAG,
   SoftwareLibrarySchema,
@@ -169,7 +170,8 @@ describe("software-library/1.0.0", () => {
   test("its `$schema` is the kind's tag, at no newer minor than the kind", () => {
     expect(ok(library({ $schema: "software-library/1.0.0" }))).toBe(true);
     expect(ok(library({ $schema: "software-library/1.1.0" }))).toBe(true);
-    expect(ok(library({ $schema: "software-library/1.2.0" }))).toBe(false);
+    expect(ok(library({ $schema: "software-library/1.2.0" }))).toBe(true);
+    expect(ok(library({ $schema: "software-library/1.3.0" }))).toBe(false);
     expect(ok(library({ $schema: "folio-library/v1" }))).toBe(false);
   });
 
@@ -225,6 +227,37 @@ describe("software-library/1.1.0 — a vendored bundle", () => {
   });
 });
 
+describe("software-library/1.2.0 — a node held for a layer below the kind", () => {
+  const held = (over: Record<string, unknown> = {}) => library({ $schema: SOFTWARE_LIBRARY_HELD_TAG, layer: "bootstrap-tools", ...over });
+
+  test("a held node parses, naming the layer it describes", () => {
+    const v = SoftwareLibrarySchema.safeParse(held());
+    expect(v.success ? "" : v.error.message).toBe("");
+  });
+
+  test("`layer` is a 1.2.0 field: a held node stamped 1.0.0 or 1.1.0 is refused", () => {
+    expect(ok(held({ $schema: SOFTWARE_LIBRARY_SCHEMA_TAG }))).toBe(false);
+    expect(ok(held({ $schema: SOFTWARE_LIBRARY_VENDORED_TAG }))).toBe(false);
+  });
+
+  test("`layer` is an instance name, as `needs` names it", () => {
+    expect(ok(held({ layer: "Bootstrap-Tools" }))).toBe(false);
+    expect(ok(held({ layer: "../bootstrap-tools" }))).toBe(false);
+    expect(ok(held({ layer: "" }))).toBe(false);
+  });
+
+  test("a held node keeps every other rule: range and dev are still required", () => {
+    const { range: _r, ...noRange } = held();
+    expect(ok(noRange)).toBe(false);
+  });
+
+  test("a held node is stamped 1.2.0, and nothing else is", () => {
+    expect(librarySchemaTag({ layer: "bootstrap-tools" })).toBe(SOFTWARE_LIBRARY_HELD_TAG);
+    expect(librarySchemaTag({ layer: "bootstrap-tools", vendored: { path: "vendor/x/1.0.0" } })).toBe(SOFTWARE_LIBRARY_HELD_TAG);
+    expect(librarySchemaTag(library())).toBe(SOFTWARE_LIBRARY_SCHEMA_TAG);
+  });
+});
+
 describe("one licence parser for both kinds", () => {
   const list = loadSpdxLicenseList(CHECKOUT);
 
@@ -249,9 +282,10 @@ describe("the software-library graph typology", () => {
     expect(isRenderable("software-library")).toBe(false);
   });
 
-  test("names both families — 1.0.0 and the vendored 1.1.0 — as generator output", () => {
+  test("names all three families — 1.0.0, the vendored 1.1.0 and the held 1.2.0 — as generator output", () => {
     const def = defaultGraphTypologies.get("software-library");
-    expect(Object.keys(def?.nodeSchemas ?? {}).sort()).toEqual([SOFTWARE_LIBRARY_SCHEMA_TAG, SOFTWARE_LIBRARY_VENDORED_TAG]);
-    for (const tag of [SOFTWARE_LIBRARY_SCHEMA_TAG, SOFTWARE_LIBRARY_VENDORED_TAG]) expect(def?.nodeSchemas?.[tag]?.generated).toBe(true);
+    const tags = [SOFTWARE_LIBRARY_SCHEMA_TAG, SOFTWARE_LIBRARY_VENDORED_TAG, SOFTWARE_LIBRARY_HELD_TAG];
+    expect(Object.keys(def?.nodeSchemas ?? {}).sort()).toEqual(tags);
+    for (const tag of tags) expect(def?.nodeSchemas?.[tag]?.generated).toBe(true);
   });
 });
