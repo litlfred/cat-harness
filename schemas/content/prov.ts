@@ -71,6 +71,56 @@ export const ProvAgreementRefSchema = z
 
 export type ProvAgreementRef = z.infer<typeof ProvAgreementRefSchema>;
 
+/**
+ * Citation of an IHE PCF / FHIR R4 `Consent` resource (`id` + `versionId`,
+ * PCF8, bean `2egb`, issue #2702). Every consent-based decision record names
+ * the logical `id` and `meta.versionId` of the Consent in force when the
+ * decision was made.
+ */
+export const ProvConsentRefSchema = z
+  .object({
+    id: z.string().min(1, "consent id must be non-empty"),
+    versionId: z.string().min(1, "consent versionId must be non-empty"),
+  })
+  .strict();
+
+export type ProvConsentRef = z.infer<typeof ProvConsentRefSchema>;
+
+/** Whether a policy UID names an IHE PCF / FHIR Consent policy (`urn:ihe:pcf:consent:*`). */
+export function isConsentPolicyUid(uid: string): boolean {
+  const lower = uid.toLowerCase();
+  return lower.startsWith("urn:ihe:pcf:consent:") || lower.includes(":consent:");
+}
+
+function recordUnderPolicies(rec: Record<string, unknown>): string[] {
+  const u = rec["cat-harness:underPolicy"];
+  if (typeof u === "string") return [u];
+  if (Array.isArray(u)) return u.filter((x): x is string => typeof x === "string");
+  return [];
+}
+
+/**
+ * Whether a PROV activity/decision record is consent-based and therefore must
+ * cite `cat-harness:consent` (`id` + `versionId`, PCF8, bean `2egb`).
+ */
+export function isConsentBasedRecord(
+  rec: Record<string, unknown>,
+  opts?: { requireConsent?: boolean; consentPolicyUids?: ReadonlySet<string> | readonly string[] },
+): boolean {
+  if (opts?.requireConsent === true) return true;
+  if (rec["cat-harness:consentBased"] === true) return true;
+  const under = recordUnderPolicies(rec);
+  if (under.some(isConsentPolicyUid)) return true;
+  if (opts?.consentPolicyUids) {
+    const set =
+      opts.consentPolicyUids instanceof Set
+        ? opts.consentPolicyUids
+        : new Set(opts.consentPolicyUids);
+    if (under.some((u) => set.has(u))) return true;
+  }
+  return false;
+}
+
 const Iso = z.string().datetime({ offset: true });
 
 export const ProvAssociationSchema = z
@@ -148,6 +198,19 @@ const ProvActivityObjectSchema = z
      */
     "cat-harness:grant": z.string().min(1).optional(),
     /**
+     * The IHE PCF / FHIR R4 `Consent` (`id` + `versionId`) cited when a
+     * decision is consent-based (PCF8, bean `2egb`). Required whenever the
+     * decision is consent-based (`cat-harness:consentBased: true` or under a
+     * consent policy).
+     */
+    "cat-harness:consent": ProvConsentRefSchema.optional(),
+    /**
+     * Marks a decision record as consent-based (evaluated under a policy with
+     * an `odrl:obtainConsent` duty). When `true`, `cat-harness:consent`
+     * (`id` + `versionId`) is required.
+     */
+    "cat-harness:consentBased": z.boolean().optional(),
+    /**
      * SHA-256 hex digest of the preceding record in the hash-chained log, or
      * `null` for the first (genesis) record in a chain.
      */
@@ -167,6 +230,15 @@ export const ProvActivitySchema = ProvActivityObjectSchema.refine(
     path: ["prov:endedAtTime"],
   },
 )
+  .refine(
+    (a) =>
+      !isConsentBasedRecord(a as unknown as Record<string, unknown>) ||
+      a["cat-harness:consent"] !== undefined,
+    {
+      message: "every consent-based decision record must name its Consent (cat-harness:consent with id + versionId)",
+      path: ["cat-harness:consent"],
+    },
+  )
   .refine(
     (a) =>
       a["cat-harness:recordHash"] === undefined ||
@@ -192,10 +264,44 @@ export type ProvActivity = z.infer<typeof ProvActivitySchema>;
  * A PROV decision record under a computable Data Sharing Agreement (DSA B4,
  * bean `3z44`): every decision record names its agreement (URL + SHA-256
  * digest, and optional grant id) and carries its hash-chain fields
- * (`cat-harness:previousHash` and `cat-harness:recordHash`).
+ * (`cat-harness:previousHash` and `cat-harness:recordHash`). When the decision
+ * is consent-based (PCF8, bean `2egb`), it must also name its Consent
+ * (`cat-harness:consent` with `id` + `versionId`).
  */
 export const ProvDecisionRecordSchema = ProvActivityObjectSchema.extend({
   "cat-harness:agreement": ProvAgreementRefSchema,
+  "cat-harness:previousHash": Sha256HexSchema.nullable(),
+  "cat-harness:recordHash": Sha256HexSchema,
+})
+  .strict()
+  .refine((a) => !a["prov:endedAtTime"] || a["prov:endedAtTime"] >= a["prov:startedAtTime"], {
+    message: "endedAtTime is before startedAtTime",
+    path: ["prov:endedAtTime"],
+  })
+  .refine(
+    (a) =>
+      !isConsentBasedRecord(a as unknown as Record<string, unknown>) ||
+      a["cat-harness:consent"] !== undefined,
+    {
+      message: "every consent-based decision record must name its Consent (cat-harness:consent with id + versionId)",
+      path: ["cat-harness:consent"],
+    },
+  )
+  .refine((a) => a["cat-harness:recordHash"] === computeProvRecordHash(a), {
+    message: "cat-harness:recordHash does not match the canonical SHA-256 digest of the record",
+    path: ["cat-harness:recordHash"],
+  });
+
+export type ProvDecisionRecord = z.infer<typeof ProvDecisionRecordSchema>;
+
+/**
+ * A consent-based PROV decision record (PCF8, bean `2egb`): requires both
+ * `cat-harness:agreement` (`url` + `sha256`) and `cat-harness:consent`
+ * (`id` + `versionId`), plus the hash-chain fields.
+ */
+export const ProvConsentDecisionRecordSchema = ProvActivityObjectSchema.extend({
+  "cat-harness:agreement": ProvAgreementRefSchema,
+  "cat-harness:consent": ProvConsentRefSchema,
   "cat-harness:previousHash": Sha256HexSchema.nullable(),
   "cat-harness:recordHash": Sha256HexSchema,
 })
@@ -209,7 +315,7 @@ export const ProvDecisionRecordSchema = ProvActivityObjectSchema.extend({
     path: ["cat-harness:recordHash"],
   });
 
-export type ProvDecisionRecord = z.infer<typeof ProvDecisionRecordSchema>;
+export type ProvConsentDecisionRecord = z.infer<typeof ProvConsentDecisionRecordSchema>;
 
 export type UnchainedProvActivity = Omit<
   ProvActivity,
@@ -298,6 +404,7 @@ export function appendProvDecisionRecord(
 export type ProvChainErrorKind =
   | "invalid-record"
   | "missing-agreement"
+  | "missing-consent"
   | "missing-hash"
   | "hash-mismatch"
   | "broken-link"
@@ -318,6 +425,20 @@ export interface ProvChainVerifyOptions {
    * agreement and hash).
    */
   requireAgreement?: boolean;
+  /**
+   * Whether every record in the chain is consent-based and must cite a
+   * `cat-harness:consent` (`id` + `versionId`, PCF8, bean `2egb`). Even when
+   * `false`/omitted, any record with `cat-harness:consentBased: true` or whose
+   * `cat-harness:underPolicy` names a consent policy in `consentPolicyUids`
+   * must cite its Consent.
+   */
+  requireConsent?: boolean;
+  /**
+   * Policy UIDs that require Consent (e.g. policies with an `odrl:obtainConsent`
+   * duty). Any record evaluated under one of these policies must cite
+   * `cat-harness:consent` (`id` + `versionId`).
+   */
+  consentPolicyUids?: ReadonlySet<string> | readonly string[];
   /** Expected `cat-harness:previousHash` on the first record (`null` by default). */
   expectedGenesisPreviousHash?: string | null;
   /**
@@ -384,6 +505,18 @@ export function verifyProvHashChain(
         kind: "missing-agreement",
         detail: `record[${i}] (${id ?? "unidentified"}) does not name a cat-harness:agreement (url + sha256)`,
       });
+    }
+
+    if (isConsentBasedRecord(rec, opts) || rec["cat-harness:consent"] !== undefined) {
+      const consentParsed = ProvConsentRefSchema.safeParse(rec["cat-harness:consent"]);
+      if (!consentParsed.success) {
+        errors.push({
+          index: i,
+          id,
+          kind: "missing-consent",
+          detail: `record[${i}] (${id ?? "unidentified"}) is a consent-based decision but does not name a valid cat-harness:consent (id + versionId)`,
+        });
+      }
     }
 
     const recordHash = rec["cat-harness:recordHash"];
