@@ -12,10 +12,13 @@ import {
   OdrlPolicySchema,
   actionGraph,
   broaderOrSelf,
+  decide,
   effectiveRules,
+  evaluatePcfConsent,
   permits,
   readPolicies,
   readPolicyGrants,
+  type FhirConsentLike,
   type OdrlPolicy,
 } from "./odrl.ts";
 import { ProvActivitySchema } from "./prov.ts";
@@ -471,6 +474,248 @@ describe("computable DSA constraints and duties (bean s4v2)", () => {
     expect(
       permits({ actor: "org:ministry", action: "read-dataset", provRecords: [attrProv, informProv] }, dsa, one(dsa), g),
     ).toBe("permit");
+  });
+});
+
+describe("odrl:obtainConsent duty met by a matching active PCF Consent (PCF6, bean a7c1)", () => {
+  const g = actionGraph([{ id: "read-dataset", includedIn: ["odrl:use"] }]);
+
+  const dsaWithConsentDuty = policy({
+    "@type": "Agreement",
+    uid: "urn:dsa:pcf6",
+    assigner: "org:who",
+    assignee: "org:ministry",
+    permission: [
+      {
+        assignee: "org:ministry",
+        action: "odrl:use",
+        target: "Patient/pat-1",
+        constraint: [{ leftOperand: "odrl:purpose", operator: "odrl:isA", rightOperand: "PurposeOfUse" }],
+        duty: [{ action: "odrl:obtainConsent" }],
+      },
+    ],
+  });
+
+  const activePermitConsentSet = policy({
+    "@type": "Set",
+    uid: "urn:ihe:pcf:consent:c-permit:v1",
+    profile: "https://profiles.ihe.net/ITI/PCF",
+    assigner: "Patient/pat-1",
+    permission: [
+      {
+        assignee: "org:ministry",
+        action: "odrl:use",
+        target: "Patient/pat-1",
+        constraint: [
+          { leftOperand: "odrl:purpose", operator: "odrl:isA", rightOperand: "TREAT" },
+          { leftOperand: "odrl:dateTime", operator: "odrl:gteq", rightOperand: "2026-01-01" },
+          { leftOperand: "odrl:dateTime", operator: "odrl:lteq", rightOperand: "2026-12-31" },
+        ],
+      },
+    ],
+  });
+
+  const activeDenyConsentSet = policy({
+    "@type": "Set",
+    uid: "urn:ihe:pcf:consent:c-deny:v1",
+    profile: "https://profiles.ihe.net/ITI/PCF",
+    assigner: "Patient/pat-1",
+    permission: [],
+    prohibition: [
+      {
+        assignee: ANYONE,
+        action: "odrl:use",
+        target: "Patient/pat-1",
+      },
+    ],
+  });
+
+  const inactiveEmptyConsentSet = policy({
+    "@type": "Set",
+    uid: "urn:ihe:pcf:consent:c-inactive:v1",
+    profile: "https://profiles.ihe.net/ITI/PCF",
+    assigner: "Patient/pat-1",
+    permission: [],
+    prohibition: [],
+  });
+
+  test("DSA + no Consent (or inactive/draft Consent) gives unknown, never permit or deny", () => {
+    const baseReq = {
+      actor: "org:ministry",
+      action: "read-dataset",
+      scope: {
+        target: "Patient/pat-1",
+        "odrl:purpose": "TREAT",
+        "odrl:dateTime": "2026-06-15T12:00:00Z",
+      },
+    };
+
+    // No Consent supplied at all -> unknown
+    expect(permits(baseReq, dsaWithConsentDuty, one(dsaWithConsentDuty), g)).toBe("unknown");
+    expect(decide(baseReq, one(dsaWithConsentDuty), g)).toBe("unknown");
+
+    // Explicit null / empty array -> unknown
+    expect(permits({ ...baseReq, consent: null }, dsaWithConsentDuty, one(dsaWithConsentDuty), g)).toBe("unknown");
+    expect(permits({ ...baseReq, consents: [] }, dsaWithConsentDuty, one(dsaWithConsentDuty), g)).toBe("unknown");
+
+    // Empty Set produced by consentToOdrl() for a non-active Consent -> unknown
+    expect(
+      permits({ ...baseReq, consent: inactiveEmptyConsentSet }, dsaWithConsentDuty, one(dsaWithConsentDuty), g),
+    ).toBe("unknown");
+
+    // Non-active FHIR R4 Consent (status: "inactive" or "draft") -> unknown
+    const inactiveFhirConsent: FhirConsentLike = {
+      resourceType: "Consent",
+      id: "c-inactive",
+      meta: { versionId: "1" },
+      status: "inactive",
+      patient: { reference: "Patient/pat-1" },
+      provision: {
+        type: "permit",
+        actor: [{ reference: { reference: "org:ministry" } }],
+        purpose: [{ system: "http://terminology.hl7.org/CodeSystem/v3-ActReason", code: "TREAT" }],
+      },
+    };
+    expect(
+      permits({ ...baseReq, consent: inactiveFhirConsent }, dsaWithConsentDuty, one(dsaWithConsentDuty), g),
+    ).toBe("unknown");
+    expect(
+      permits(
+        { ...baseReq, consent: { ...inactiveFhirConsent, status: "draft" } },
+        dsaWithConsentDuty,
+        one(dsaWithConsentDuty),
+        g,
+      ),
+    ).toBe("unknown");
+  });
+
+  test("DSA + deny Consent gives deny (explicit prohibition or violated Consent constraint)", () => {
+    const baseScope = {
+      target: "Patient/pat-1",
+      "odrl:purpose": "TREAT",
+      "odrl:dateTime": "2026-06-15T12:00:00Z",
+    };
+
+    // 1. Explicit prohibition in active Consent Set -> deny
+    expect(
+      permits(
+        { actor: "org:ministry", action: "read-dataset", scope: baseScope, consent: activeDenyConsentSet },
+        dsaWithConsentDuty,
+        one(dsaWithConsentDuty),
+        g,
+      ),
+    ).toBe("deny");
+
+    // Also when passed via the policy map `all` -> deny
+    const mapWithDeny = new Map<string, OdrlPolicy>([
+      [dsaWithConsentDuty.uid, dsaWithConsentDuty],
+      [activeDenyConsentSet.uid, activeDenyConsentSet],
+    ]);
+    expect(permits({ actor: "org:ministry", action: "read-dataset", scope: baseScope }, dsaWithConsentDuty, mapWithDeny, g)).toBe(
+      "deny",
+    );
+    expect(decide({ actor: "org:ministry", action: "read-dataset", scope: baseScope }, mapWithDeny, g)).toBe("deny");
+
+    // 2. Active permit Consent for TREAT, but request asks for HMARKT (purpose not permitted by Consent) -> deny
+    expect(
+      permits(
+        {
+          actor: "org:ministry",
+          action: "read-dataset",
+          scope: { ...baseScope, "odrl:purpose": "HMARKT" },
+          consent: activePermitConsentSet,
+        },
+        dsaWithConsentDuty,
+        one(dsaWithConsentDuty),
+        g,
+      ),
+    ).toBe("deny");
+
+    // 3. Active permit Consent expired at request dateTime -> deny
+    expect(
+      permits(
+        {
+          actor: "org:ministry",
+          action: "read-dataset",
+          scope: { ...baseScope, "odrl:dateTime": "2027-02-01T00:00:00Z" },
+          consent: activePermitConsentSet,
+        },
+        dsaWithConsentDuty,
+        one(dsaWithConsentDuty),
+        g,
+      ),
+    ).toBe("deny");
+
+    // 4. Active FHIR R4 Consent with root deny provision -> deny
+    const fhirDenyConsent: FhirConsentLike = {
+      resourceType: "Consent",
+      id: "c-dissent",
+      meta: { versionId: "2" },
+      status: "active",
+      patient: { reference: "Patient/pat-1" },
+      provision: {
+        type: "deny",
+      },
+    };
+    expect(
+      permits(
+        { actor: "org:ministry", action: "read-dataset", scope: baseScope, consent: fhirDenyConsent },
+        dsaWithConsentDuty,
+        one(dsaWithConsentDuty),
+        g,
+      ),
+    ).toBe("deny");
+  });
+
+  test("DSA + matching active permit Consent gives permit (for exact and subclass HL7 PurposeOfUse)", () => {
+    const reqForPurpose = (purpose: string) => ({
+      actor: "org:ministry",
+      action: "read-dataset",
+      scope: {
+        target: "Patient/pat-1",
+        "odrl:purpose": purpose,
+        "odrl:dateTime": "2026-06-15T12:00:00Z",
+      },
+    });
+
+    // Exact purpose TREAT and subclass ETREAT / BTG permitted by activePermitConsentSet
+    expect(
+      permits({ ...reqForPurpose("TREAT"), consent: activePermitConsentSet }, dsaWithConsentDuty, one(dsaWithConsentDuty), g),
+    ).toBe("permit");
+    expect(
+      permits({ ...reqForPurpose("ETREAT"), consent: activePermitConsentSet }, dsaWithConsentDuty, one(dsaWithConsentDuty), g),
+    ).toBe("permit");
+    expect(
+      permits({ ...reqForPurpose("BTG"), consent: activePermitConsentSet }, dsaWithConsentDuty, one(dsaWithConsentDuty), g),
+    ).toBe("permit");
+
+    // Also when the Consent Set is supplied in the policy map `all`
+    const mapWithPermit = new Map<string, OdrlPolicy>([
+      [dsaWithConsentDuty.uid, dsaWithConsentDuty],
+      [activePermitConsentSet.uid, activePermitConsentSet],
+    ]);
+    expect(permits(reqForPurpose("TREAT"), dsaWithConsentDuty, mapWithPermit, g)).toBe("permit");
+    expect(decide(reqForPurpose("TREAT"), mapWithPermit, g)).toBe("permit");
+
+    // Also when an active FHIR R4 Consent resource is supplied directly
+    const activeFhirConsent: FhirConsentLike = {
+      resourceType: "Consent",
+      id: "c-basic-treat",
+      meta: { versionId: "1" },
+      status: "active",
+      patient: { reference: "Patient/pat-1" },
+      provision: {
+        type: "permit",
+        period: { start: "2026-01-01", end: "2026-12-31" },
+        actor: [{ reference: { reference: "org:ministry" } }],
+        purpose: [{ system: "http://terminology.hl7.org/CodeSystem/v3-ActReason", code: "TREAT" }],
+        data: [{ meaning: "instance", reference: { reference: "Patient/pat-1" } }],
+      },
+    };
+    expect(
+      permits({ ...reqForPurpose("TREAT"), consent: activeFhirConsent }, dsaWithConsentDuty, one(dsaWithConsentDuty), g),
+    ).toBe("permit");
+    expect(evaluatePcfConsent(activeFhirConsent, reqForPurpose("TREAT"), g)).toBe("permit");
   });
 });
 

@@ -195,6 +195,10 @@ export const FOLIO_LEFT_OPERANDS = [
   "purpose",
   "dateTime",
   "elapsedTime",
+  "pcf:securityLabel",
+  "pcf:dataPeriod",
+  "pcf:author",
+  "pcf:encounter",
 ] as const;
 export type FolioLeftOperand = (typeof FOLIO_LEFT_OPERANDS)[number];
 
@@ -428,6 +432,64 @@ export interface ProvDutyRecord {
 }
 
 /** The scope a request is made in. Every field is optional, and an absent one satisfies no constraint on it. */
+/**
+ * Status codes of a FHIR R4 `Consent` resource (`http://hl7.org/fhir/ValueSet/consent-state-codes`).
+ * Only `"active"` satisfies an `odrl:obtainConsent` duty (PCF6, bean `a7c1`).
+ */
+export type PcfConsentStatus =
+  | "draft"
+  | "proposed"
+  | "active"
+  | "rejected"
+  | "inactive"
+  | "entered-in-error"
+  | (string & {});
+
+/**
+ * An ODRL `Set` policy representing a translated IHE PCF / FHIR R4 `Consent`
+ * (optionally annotated with `status`, `id`, and `versionId`).
+ */
+export interface PcfConsentPolicy extends OdrlPolicy {
+  status?: PcfConsentStatus;
+  id?: string;
+  versionId?: string;
+}
+
+export interface FhirConsentProvisionLike {
+  type?: "permit" | "deny";
+  period?: { start?: string; end?: string };
+  actor?: readonly { role?: unknown; reference?: { reference?: string; identifier?: { system?: string; value?: string } } }[];
+  action?: readonly { coding?: readonly { system?: string; code?: string }[] }[];
+  securityLabel?: readonly { system?: string; code?: string }[];
+  purpose?: readonly { system?: string; code?: string }[];
+  dataPeriod?: { start?: string; end?: string };
+  data?: readonly { meaning?: string; reference?: { reference?: string; identifier?: { system?: string; value?: string } } }[];
+  provision?: readonly FhirConsentProvisionLike[];
+}
+
+/**
+ * Minimal structural shape of a FHIR R4 `Consent` resource accepted directly
+ * when evaluating an `odrl:obtainConsent` duty (PCF6, bean `a7c1`).
+ */
+export interface FhirConsentLike {
+  resourceType: "Consent";
+  id?: string;
+  meta?: { versionId?: string; profile?: readonly string[] };
+  status: PcfConsentStatus;
+  patient?: { reference?: string; identifier?: { system?: string; value?: string } };
+  performer?: readonly { reference?: string; identifier?: { system?: string; value?: string } }[];
+  provision?: FhirConsentProvisionLike;
+}
+
+export type SingleConsentInput = PcfConsentPolicy | OdrlPolicy | FhirConsentLike;
+
+export type ConsentInput =
+  | SingleConsentInput
+  | readonly SingleConsentInput[]
+  | ReadonlyMap<string, SingleConsentInput>
+  | null
+  | undefined;
+
 export interface RequestScope {
   "cat-harness:process"?: string;
   "cat-harness:task"?: string;
@@ -438,9 +500,21 @@ export interface RequestScope {
   dateTime?: string;
   "odrl:elapsedTime"?: string | number;
   elapsedTime?: string | number;
+  "pcf:securityLabel"?: string | readonly string[];
+  securityLabel?: string | readonly string[];
+  "pcf:dataPeriod"?: string;
+  dataPeriod?: string;
+  "pcf:author"?: string;
+  author?: string;
+  "pcf:encounter"?: string;
+  encounter?: string;
   target?: string;
   /** Optional PROV-O records for duty verification when passed inside scope. */
   provRecords?: readonly ProvDutyRecord[];
+  /** Optional PCF Consent policy/resource (or collection) used to evaluate `odrl:obtainConsent` duties (PCF6, bean `a7c1`). */
+  consent?: ConsentInput;
+  /** Optional PCF Consent policies/resources used to evaluate `odrl:obtainConsent` duties (PCF6, bean `a7c1`). */
+  consents?: ConsentInput;
 }
 
 const DAY_MS = 86_400_000;
@@ -500,7 +574,10 @@ function canonicalOperator(op: OdrlOperator): string {
   return op.startsWith("odrl:") ? op : `odrl:${op}`;
 }
 
-function scopeValue(leftOperand: FolioLeftOperand, scope: RequestScope): string | number | undefined {
+function scopeValue(
+  leftOperand: FolioLeftOperand,
+  scope: RequestScope,
+): string | number | readonly string[] | undefined {
   switch (canonicalLeftOperand(leftOperand)) {
     case "odrl:purpose":
       return scope["odrl:purpose"] ?? scope.purpose;
@@ -508,6 +585,14 @@ function scopeValue(leftOperand: FolioLeftOperand, scope: RequestScope): string 
       return scope["odrl:dateTime"] ?? scope.dateTime;
     case "odrl:elapsedTime":
       return scope["odrl:elapsedTime"] ?? scope.elapsedTime;
+    case "pcf:securityLabel":
+      return scope["pcf:securityLabel"] ?? scope.securityLabel;
+    case "pcf:dataPeriod":
+      return scope["pcf:dataPeriod"] ?? scope.dataPeriod;
+    case "pcf:author":
+      return scope["pcf:author"] ?? scope.author;
+    case "pcf:encounter":
+      return scope["pcf:encounter"] ?? scope.encounter;
     case "cat-harness:process":
       return scope["cat-harness:process"];
     case "cat-harness:task":
@@ -567,23 +652,39 @@ function constraintHolds(c: OdrlConstraint, scope: RequestScope): boolean {
     return false;
   }
 
-  if (left === "odrl:dateTime") {
+  if (left === "odrl:dateTime" || left === "pcf:dataPeriod") {
     if (Array.isArray(rhs)) {
       const s = String(raw);
       return op === "odrl:isAnyOf" ? rhs.includes(s) : op === "odrl:isNoneOf" ? !rhs.includes(s) : false;
     }
-    const lhsMs = Date.parse(String(raw));
-    const rhsMs = Date.parse(rhs);
+    const parseBoundMs = (iso: string, endOfDay: boolean): number => {
+      const t = iso.trim();
+      if (/^\d{4}-\d{2}-\d{2}$/.test(t)) {
+        return Date.parse(endOfDay ? `${t}T23:59:59.999Z` : `${t}T00:00:00.000Z`);
+      }
+      return Date.parse(t);
+    };
+    const lhsMs = parseBoundMs(String(raw), false);
+    const rhsMs = parseBoundMs(rhs, op === "odrl:lteq");
     if (Number.isNaN(lhsMs) || Number.isNaN(rhsMs)) return false;
     return compareNumbers(lhsMs, rhsMs, op);
   }
 
   if (left === "odrl:elapsedTime") {
-    if (Array.isArray(rhs)) return false;
-    const lhsMs = parseDurationMs(raw);
+    if (Array.isArray(rhs) || Array.isArray(raw)) return false;
+    const lhsMs = parseDurationMs(raw as string | number);
     const rhsMs = parseDurationMs(rhs);
     if (lhsMs === undefined || rhsMs === undefined) return false;
     return compareNumbers(lhsMs, rhsMs, op);
+  }
+
+  if (left === "pcf:securityLabel") {
+    const tags = Array.isArray(raw) ? raw.map(String) : [String(raw)];
+    if (op === "odrl:eq") return !Array.isArray(rhs) && tags.includes(rhs);
+    if (op === "odrl:neq") return !Array.isArray(rhs) && !tags.includes(rhs);
+    if (op === "odrl:isAnyOf") return Array.isArray(rhs) && tags.some((t) => rhs.includes(t));
+    if (op === "odrl:isNoneOf") return Array.isArray(rhs) && !tags.some((t) => rhs.includes(t));
+    return false;
   }
 
   const v = String(raw);
@@ -660,15 +761,395 @@ function dutyFulfilledByRecord(
   return true;
 }
 
+function isFhirConsentLike(x: unknown): x is FhirConsentLike {
+  return Boolean(x && typeof x === "object" && (x as { resourceType?: unknown }).resourceType === "Consent");
+}
+
+function isOdrlPolicyLike(x: unknown): x is PcfConsentPolicy {
+  return Boolean(
+    x &&
+      typeof x === "object" &&
+      "@type" in (x as Record<string, unknown>) &&
+      Array.isArray((x as { permission?: unknown }).permission),
+  );
+}
+
+function fhirRefToString(
+  ref: { reference?: string; identifier?: { system?: string; value?: string } } | undefined,
+): string | undefined {
+  if (!ref) return undefined;
+  if (ref.reference && ref.reference.trim()) return ref.reference.trim();
+  if (ref.identifier?.value && ref.identifier.value.trim()) {
+    return ref.identifier.system
+      ? `${ref.identifier.system}|${ref.identifier.value.trim()}`
+      : ref.identifier.value.trim();
+  }
+  return undefined;
+}
+
+function fhirActionToOdrl(concept: { coding?: readonly { code?: string }[] }): string {
+  const code = concept.coding?.[0]?.code?.toLowerCase();
+  if (code === "read") return "odrl:display";
+  if (code === "correct") return "odrl:modify";
+  return "odrl:use";
+}
+
+function convertFhirConsentToSet(consent: FhirConsentLike): PcfConsentPolicy {
+  const id = consent.id?.trim() || "anonymous";
+  const versionId = consent.meta?.versionId?.trim();
+  const uid = versionId ? `urn:ihe:pcf:consent:${id}:v${versionId}` : `urn:ihe:pcf:consent:${id}`;
+  const assigner = fhirRefToString(consent.performer?.[0]) ?? fhirRefToString(consent.patient);
+  if (consent.status !== "active" || !consent.provision) {
+    return {
+      "@context": "http://www.w3.org/ns/odrl.jsonld",
+      "@type": "Set",
+      uid,
+      profile: "https://profiles.ihe.net/ITI/PCF",
+      conflict: FOLIO_DEFAULT_CONFLICT,
+      status: consent.status,
+      id,
+      ...(versionId ? { versionId } : {}),
+      ...(assigner ? { assigner } : {}),
+      permission: [],
+      prohibition: [],
+    };
+  }
+
+  const expand = (
+    prov: FhirConsentProvisionLike,
+    inheritedType: "permit" | "deny",
+  ): { permission: OdrlRule[]; prohibition: OdrlRule[] } => {
+    const t: "permit" | "deny" = prov.type ?? inheritedType;
+    const assignees = (prov.actor ?? [])
+      .map((a) => fhirRefToString(a.reference))
+      .filter((s): s is string => Boolean(s));
+    const effectiveAssignees = assignees.length > 0 ? assignees : [ANYONE];
+    const actions = (prov.action ?? []).map(fhirActionToOdrl);
+    const effectiveActions = actions.length > 0 ? actions : ["odrl:use"];
+    const targets = (prov.data ?? [])
+      .filter((d) => !d.meaning || d.meaning === "instance" || d.meaning === "related" || d.meaning === "dependents")
+      .map((d) => fhirRefToString(d.reference))
+      .filter((s): s is string => Boolean(s));
+    const effectiveTargets: (string | undefined)[] = targets.length > 0 ? targets : [undefined];
+
+    const shared: OdrlConstraint[] = [];
+    if (prov.period?.start) {
+      shared.push({ leftOperand: "odrl:dateTime", operator: "odrl:gteq", rightOperand: prov.period.start });
+    }
+    if (prov.period?.end) {
+      shared.push({ leftOperand: "odrl:dateTime", operator: "odrl:lteq", rightOperand: prov.period.end });
+    }
+    if (prov.dataPeriod?.start) {
+      shared.push({ leftOperand: "pcf:dataPeriod", operator: "odrl:gteq", rightOperand: prov.dataPeriod.start });
+    }
+    if (prov.dataPeriod?.end) {
+      shared.push({ leftOperand: "pcf:dataPeriod", operator: "odrl:lteq", rightOperand: prov.dataPeriod.end });
+    }
+    const labels = (prov.securityLabel ?? [])
+      .map((c) => c.code?.trim())
+      .filter((s): s is string => Boolean(s));
+    if (labels.length === 1) {
+      shared.push({ leftOperand: "pcf:securityLabel", operator: "odrl:eq", rightOperand: labels[0]! });
+    } else if (labels.length > 1) {
+      shared.push({ leftOperand: "pcf:securityLabel", operator: "odrl:isAnyOf", rightOperand: labels });
+    }
+
+    const purposes = (prov.purpose ?? [])
+      .map((p) => p.code?.trim())
+      .filter((s): s is string => Boolean(s));
+    const effectivePurposes: (string | undefined)[] = purposes.length > 0 ? purposes : [undefined];
+
+    const rules: OdrlRule[] = [];
+    for (const assignee of effectiveAssignees) {
+      for (const action of effectiveActions) {
+        for (const target of effectiveTargets) {
+          for (const purpose of effectivePurposes) {
+            const cList: OdrlConstraint[] = [
+              ...(purpose
+                ? [
+                    {
+                      leftOperand: "odrl:purpose" as const,
+                      operator: (isValidPurposeOfUse(purpose) ? "odrl:isA" : "odrl:eq") as OdrlOperator,
+                      rightOperand: purpose,
+                    },
+                  ]
+                : []),
+              ...shared,
+            ];
+            rules.push({
+              assignee,
+              action,
+              ...(target !== undefined ? { target } : {}),
+              ...(cList.length > 0 ? { constraint: cList } : {}),
+            });
+          }
+        }
+      }
+    }
+
+    const permission: OdrlRule[] = t === "permit" ? [...rules] : [];
+    const prohibition: OdrlRule[] = t === "deny" ? [...rules] : [];
+    for (const child of prov.provision ?? []) {
+      const childDefault: "permit" | "deny" = t === "permit" ? "deny" : "permit";
+      const sub = expand(child, childDefault);
+      permission.push(...sub.permission);
+      prohibition.push(...sub.prohibition);
+    }
+    return { permission, prohibition };
+  };
+
+  const rootType: "permit" | "deny" = consent.provision.type ?? "permit";
+  const { permission, prohibition } = expand(consent.provision, rootType);
+  const conflict = rootType === "deny" && permission.length > 0 ? "odrl:perm" : FOLIO_DEFAULT_CONFLICT;
+  return {
+    "@context": "http://www.w3.org/ns/odrl.jsonld",
+    "@type": "Set",
+    uid,
+    profile: "https://profiles.ihe.net/ITI/PCF",
+    conflict,
+    status: consent.status,
+    id,
+    ...(versionId ? { versionId } : {}),
+    ...(assigner ? { assigner } : {}),
+    permission,
+    prohibition,
+  };
+}
+
+function evaluateSingleConsentSet(
+  consentSet: PcfConsentPolicy,
+  req: PermitRequest,
+  scope: RequestScope,
+  graph: ActionGraph,
+): Decision {
+  if (consentSet.status !== undefined && consentSet.status !== "active") {
+    return "unknown";
+  }
+  if (consentSet.permission.length === 0 && consentSet.prohibition.length === 0) {
+    return "unknown";
+  }
+
+  const actorMatches = (assignee: string): boolean => {
+    if (assignee === ANYONE) return true;
+    if (req.actor !== null && req.actor !== undefined && assignee === req.actor) return true;
+    if (req.actorGroups && req.actorGroups.includes(assignee)) return true;
+    if (req.actorRoles && req.actorRoles.includes(assignee)) return true;
+    return false;
+  };
+  const hasActorIdentity =
+    (req.actor !== null && req.actor !== undefined) ||
+    Boolean(req.actorGroups?.length) ||
+    Boolean(req.actorRoles?.length);
+
+  const evalPerm = (r: OdrlRule): "permitted" | "violated" | "unknown" => {
+    if (!broaderOrSelf(req.action, graph).has(r.action)) return "violated";
+    let hasUnknown = false;
+    if (r.assignee !== ANYONE) {
+      if (!hasActorIdentity) hasUnknown = true;
+      else if (!actorMatches(r.assignee)) return "violated";
+    }
+    if (r.target !== undefined) {
+      if (scope.target === undefined) hasUnknown = true;
+      else if (scope.target !== r.target) return "violated";
+    }
+    for (const c of r.constraint ?? []) {
+      if (scopeValue(c.leftOperand, scope) === undefined) hasUnknown = true;
+      else if (!constraintHolds(c, scope)) return "violated";
+    }
+    return hasUnknown ? "unknown" : "permitted";
+  };
+
+  const evalProh = (r: OdrlRule): "prohibited" | "not-prohibited" | "unknown" => {
+    if (!broaderOrSelf(req.action, graph).has(r.action)) return "not-prohibited";
+    let hasUnknown = false;
+    if (r.assignee !== ANYONE) {
+      if (!hasActorIdentity) hasUnknown = true;
+      else if (!actorMatches(r.assignee)) return "not-prohibited";
+    }
+    if (r.target !== undefined) {
+      if (scope.target === undefined) hasUnknown = true;
+      else if (scope.target !== r.target) return "not-prohibited";
+    }
+    for (const c of r.constraint ?? []) {
+      if (scopeValue(c.leftOperand, scope) === undefined) hasUnknown = true;
+      else if (!constraintHolds(c, scope)) return "not-prohibited";
+    }
+    return hasUnknown ? "unknown" : "prohibited";
+  };
+
+  const permOutcomes = consentSet.permission.map(evalPerm);
+  const prohOutcomes = consentSet.prohibition.map(evalProh);
+
+  const permitted = permOutcomes.includes("permitted");
+  const permViolated = permOutcomes.includes("violated");
+  const permUnknown = permOutcomes.includes("unknown");
+  const prohibited = prohOutcomes.includes("prohibited");
+  const prohUnknown = prohOutcomes.includes("unknown");
+
+  if (prohibited && permitted) {
+    const strategy = consentSet.conflict ?? FOLIO_DEFAULT_CONFLICT;
+    return strategy === "odrl:perm" ? "permit" : "deny";
+  }
+  if (prohibited) {
+    if (consentSet.conflict === "odrl:perm" && permUnknown) return "unknown";
+    return "deny";
+  }
+  if (prohUnknown && (permitted || consentSet.permission.length === 0)) {
+    return "unknown";
+  }
+  if (permitted) return "permit";
+  if (permUnknown) return "unknown";
+  if (permViolated) return "deny";
+  return "unknown";
+}
+
+function collectConsentSets(input: ConsentInput): { activeSets: PcfConsentPolicy[]; hadExpiredActive: boolean } {
+  const items: SingleConsentInput[] = [];
+  if (input === null || input === undefined) {
+    // none
+  } else if (input instanceof Map) {
+    for (const v of input.values()) items.push(v);
+  } else if (Array.isArray(input)) {
+    items.push(...input);
+  } else if (isFhirConsentLike(input) || isOdrlPolicyLike(input)) {
+    items.push(input as SingleConsentInput);
+  }
+
+  const activeSets: PcfConsentPolicy[] = [];
+  for (const item of items) {
+    if (isFhirConsentLike(item)) {
+      if (item.status !== "active") continue;
+      const converted = convertFhirConsentToSet(item);
+      if (converted.permission.length > 0 || converted.prohibition.length > 0) {
+        activeSets.push(converted);
+      }
+    } else if (isOdrlPolicyLike(item)) {
+      if (item.status !== undefined && item.status !== "active") continue;
+      if (item.permission.length > 0 || item.prohibition.length > 0) {
+        activeSets.push(item);
+      }
+    }
+  }
+  return { activeSets, hadExpiredActive: false };
+}
+
+/**
+ * Evaluate one or more IHE PCF / FHIR R4 Consents (or translated ODRL `Set`
+ * policies) against a {@link PermitRequest} (PCF6, bean `a7c1`):
+ * - No active Consent → `"unknown"`.
+ * - Any active Consent evaluating to `"deny"` → `"deny"`.
+ * - Any active Consent evaluating to `"permit"` (and none `"deny"`) → `"permit"`.
+ */
+export function evaluatePcfConsent(
+  consentInput: ConsentInput,
+  req: PermitRequest,
+  graph: ActionGraph = actionGraph([]),
+): Decision {
+  const scope = req.scope ?? {};
+  const { activeSets } = collectConsentSets(consentInput);
+  if (activeSets.length === 0) return "unknown";
+  let anyPermit = false;
+  for (const set of activeSets) {
+    const d = evaluateSingleConsentSet(set, req, scope, graph);
+    if (d === "deny") return "deny";
+    if (d === "permit") anyPermit = true;
+  }
+  return anyPermit ? "permit" : "unknown";
+}
+
+function isConsentSetInPolicyMap(p: OdrlPolicy, dsaPolicy: OdrlPolicy, policyUids: ReadonlySet<string>): boolean {
+  if (p["@type"] !== "Set" || policyUids.has(p.uid)) return false;
+  if (dsaPolicy["@type"] === "Agreement") return true;
+  const prof = p.profile.toLowerCase();
+  const uid = p.uid.toLowerCase();
+  return prof.includes("pcf") || prof.includes("consent") || uid.includes("consent");
+}
+
 type DutyStatus = "satisfied" | "unmet" | "unknowable";
+
+function evaluateObtainConsentDuty(
+  duty: OdrlDuty,
+  rule: OdrlRule,
+  policy: OdrlPolicy,
+  policyUids: ReadonlySet<string>,
+  all: ReadonlyMap<string, OdrlPolicy>,
+  req: PermitRequest,
+  scope: RequestScope,
+  graph: ActionGraph,
+  records: readonly ProvDutyRecord[] | undefined,
+): DutyStatus {
+  const explicitConsent = req.consent ?? req.consents ?? scope.consent ?? scope.consents;
+  const hasExplicitConsentArg =
+    req.consent !== undefined ||
+    req.consents !== undefined ||
+    scope.consent !== undefined ||
+    scope.consents !== undefined;
+
+  let candidateInput: ConsentInput = explicitConsent;
+  if (!hasExplicitConsentArg) {
+    const mapConsents: OdrlPolicy[] = [];
+    for (const p of all.values()) {
+      if (duty.target && p.uid === duty.target && !policyUids.has(p.uid)) {
+        mapConsents.push(p);
+      } else if (duty.uid && p.uid === duty.uid && !policyUids.has(p.uid)) {
+        mapConsents.push(p);
+      } else if (isConsentSetInPolicyMap(p, policy, policyUids)) {
+        mapConsents.push(p);
+      }
+    }
+    if (mapConsents.length > 0) {
+      candidateInput = mapConsents;
+    }
+  }
+
+  const effectiveTarget =
+    scope.target ??
+    (duty.target && !all.has(duty.target) ? duty.target : undefined) ??
+    rule.target;
+  const effectiveScope: RequestScope =
+    effectiveTarget !== undefined && scope.target === undefined
+      ? { ...scope, target: effectiveTarget }
+      : scope;
+
+  const { activeSets } = collectConsentSets(candidateInput);
+  if (activeSets.length === 0) {
+    if (!hasExplicitConsentArg && records && records.some((rec) => dutyFulfilledByRecord(duty, rule, policyUids, rec))) {
+      return "satisfied";
+    }
+    // PCF6 (bean a7c1): DSA + no active Consent gives unknown, never permit or deny.
+    return "unknowable";
+  }
+
+  let anyPermit = false;
+  for (const set of activeSets) {
+    const d = evaluateSingleConsentSet(set, req, effectiveScope, graph);
+    if (d === "deny") return "unmet";
+    if (d === "permit") anyPermit = true;
+  }
+  if (!anyPermit) return "unknowable";
+
+  const constraints = duty.constraint ?? [];
+  for (const c of constraints) {
+    if (scopeValue(c.leftOperand, effectiveScope) === undefined) return "unknowable";
+    if (!constraintHolds(c, effectiveScope)) return "unmet";
+  }
+  return "satisfied";
+}
 
 function evaluateDuty(
   duty: OdrlDuty,
   rule: OdrlRule,
+  policy: OdrlPolicy,
   policyUids: ReadonlySet<string>,
+  all: ReadonlyMap<string, OdrlPolicy>,
+  req: PermitRequest,
   scope: RequestScope,
+  graph: ActionGraph,
   records: readonly ProvDutyRecord[] | undefined,
 ): DutyStatus {
+  if (normalizeDutyAction(duty.action) === "obtainConsent") {
+    return evaluateObtainConsentDuty(duty, rule, policy, policyUids, all, req, scope, graph, records);
+  }
   if (records && records.some((rec) => dutyFulfilledByRecord(duty, rule, policyUids, rec))) {
     return "satisfied";
   }
@@ -706,14 +1187,17 @@ type PermissionOutcome = "no-match" | "permitted" | "violated" | "unknown";
 
 function evaluatePermissionRule(
   r: OdrlRule,
-  who: string | null,
-  action: string,
+  req: PermitRequest,
+  policy: OdrlPolicy,
+  all: ReadonlyMap<string, OdrlPolicy>,
   scope: RequestScope,
   graph: ActionGraph,
   policyDuties: readonly OdrlDuty[],
   policyUids: ReadonlySet<string>,
   records: readonly ProvDutyRecord[] | undefined,
 ): PermissionOutcome {
+  const who = req.actor;
+  const action = req.action;
   if (r.assignee !== ANYONE && r.assignee !== who) return "no-match";
   if (!broaderOrSelf(action, graph).has(r.action)) return "no-match";
   if (r.target !== undefined && r.target !== scope.target) return "no-match";
@@ -736,7 +1220,7 @@ function evaluatePermissionRule(
   const duties = [...policyDuties, ...(r.duty ?? [])];
   let dutyUnknowable = false;
   for (const d of duties) {
-    const status = evaluateDuty(d, r, policyUids, scope, records);
+    const status = evaluateDuty(d, r, policy, policyUids, all, req, scope, graph, records);
     if (status === "unmet") return "violated";
     if (status === "unknowable") dutyUnknowable = true;
   }
@@ -757,6 +1241,8 @@ export interface PermitRequest {
   actor: string | null;
   /** The roles the actor may act as (`ActorDef.roles`); empty or absent means unconstrained. */
   actorRoles?: readonly string[];
+  /** Groups or organizations the actor belongs to (e.g. PCF `Group/ex-privilegedUsers`). */
+  actorGroups?: readonly string[];
   action: string;
   scope?: RequestScope;
   /**
@@ -765,6 +1251,17 @@ export interface PermitRequest {
    * due, `permits()` returns `"unknown"`.
    */
   provRecords?: readonly ProvDutyRecord[];
+  /**
+   * Active IHE PCF / FHIR R4 `Consent` resource or translated ODRL `Set` policy
+   * (or collection) consulted to evaluate an `odrl:obtainConsent` duty (PCF6,
+   * bean `a7c1`).
+   */
+  consent?: ConsentInput;
+  /**
+   * Collection of IHE PCF / FHIR R4 `Consent` resources or translated ODRL `Set`
+   * policies consulted to evaluate an `odrl:obtainConsent` duty (PCF6, bean `a7c1`).
+   */
+  consents?: ConsentInput;
 }
 
 /**
@@ -796,7 +1293,7 @@ export function permits(
   const policyDuties = policy.obligation ?? [];
 
   const outcomes = permission.map((r) =>
-    evaluatePermissionRule(r, req.actor, req.action, scope, graph, policyDuties, policyUids, records),
+    evaluatePermissionRule(r, req, policy, all, scope, graph, policyDuties, policyUids, records),
   );
   const permitted = outcomes.includes("permitted");
   const violated = outcomes.includes("violated");
@@ -885,13 +1382,31 @@ export const PERFORM_TASK = "perform-task" as const;
  * be outvoted by a permission in another); otherwise any `permit` permits; and
  * silence everywhere stays `unknown`, never permit.
  */
+function policyHasObtainConsentDuty(p: OdrlPolicy): boolean {
+  const duties = [
+    ...(p.obligation ?? []),
+    ...p.permission.flatMap((r) => r.duty ?? []),
+  ];
+  return duties.some((d) => normalizeDutyAction(d.action) === "obtainConsent");
+}
+
 export function decide(
   req: PermitRequest,
   all: ReadonlyMap<string, OdrlPolicy>,
   graph: ActionGraph,
 ): Decision {
+  const agreementsWithConsent = [...all.values()].filter(policyHasObtainConsentDuty);
   let permitted = false;
   for (const policy of all.values()) {
+    if (
+      agreementsWithConsent.length > 0 &&
+      agreementsWithConsent.some((ag) => {
+        const uids = new Set<string>([ag.uid, ...(ag.inheritFrom ?? [])]);
+        return isConsentSetInPolicyMap(policy, ag, uids);
+      })
+    ) {
+      continue;
+    }
     const d = permits(req, policy, all, graph);
     if (d === "deny") return "deny";
     if (d === "permit") permitted = true;
