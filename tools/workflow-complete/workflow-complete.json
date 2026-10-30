@@ -82,6 +82,15 @@
           "arg": {
             "stdin": true
           }
+        },
+        {
+          "name": "activities",
+          "schema": {
+            "$type": "ProvActivity"
+          },
+          "description": "PROV-O activities a Tool returned while doing this step, verbatim (e.g. skill_update's `activity`). Kept on the step's history entry; each must name this step as its plan.",
+          "required": false,
+          "repeated": true
         }
       ],
       "outputs": [
@@ -106,6 +115,10 @@
     {
       "at": "/io/inputs/6",
       "comment": "Free prose, and prose is not a command-line word — see\n`tool-types` on why `Markdown` is excluded from INJECTION_SAFE."
+    },
+    {
+      "at": "/io/inputs/7",
+      "comment": "Served since cat-harness-tools#887 (bean cat-tools-ycn6) and declared here\nsince bean w1gy (finding 2), owner option A of 2026-10-30. Structured,\nso it has no `arg`: `ProvActivity` is not in INJECTION_SAFE, like\n`DecisionFacts`. The engine also checks that each activity's\n`prov:qualifiedAssociation.prov:hadPlan` ends in `#<node>`."
     },
     {
       "at": "/satisfies",
