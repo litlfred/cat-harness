@@ -1,13 +1,13 @@
 ---
 name: repo-conversion
-description: Lay folio-assistant over a repository that already exists, without losing or silently moving what is in it. Scans the tree read-only, classifies candidate files into library (external source) and content (authored here) with an explicit third bucket for what it cannot classify, scans outside the content tree for mathematical evidence and refutations, puts the three questions the scan cannot answer to the author as selections, and hands ingestion to one agent or a small swarm. Use when a user wants an existing repo converted to a folio, asks to import what is already there, or asks whether their PDFs/notes/drafts can come along.
+description: Lay folio-assistant over a repository that already exists, without losing or silently moving what is in it. Scans the tree read-only, classifies candidate files into library (external source) and content (authored here) with an explicit third bucket for what it cannot classify, scans outside the content tree for mathematical evidence and refutations, lists the content markers (an IG, a DAK, processes, beans, library, Lean, folio manifests) the harness could declare and declares only the ones the person picks, puts the three questions the scan cannot answer to the author as selections, and hands ingestion to one agent or a small swarm. Use when a user wants an existing repo converted to a folio, asks to import what is already there, asks whether their PDFs/notes/drafts can come along, or asks what else in a repository an existing harness could declare.
 user_invocable: true
 ---
 
 # /repo-conversion — folio-assistant over a repo that already has a life
 
 Process: the content core's `processes/conduct/getting-started.bpmn`,
-`Task_ScanRepo` and `Task_ConfirmImport` (non-relaxable).
+`Task_ScanRepo`, `Task_ChooseHarnessed` and `Task_ConfirmImport` (both non-relaxable).
 Scanner: `bun run cat-harness-tools/scripts/scan-repo-content.ts`.
 
 ## 0. The one rule
@@ -111,6 +111,66 @@ with extra steps.
 
 Recommend **leave in place** by default and mean it. Decluttering is a
 preference; a broken relative link in somebody's README is a defect.
+
+## 2a. Markers — choose what the harness reads (declare, don't slurp)
+
+Owner, 2026-10-30T12:41Z: *"a harness can point to a repo, but doesnt want to
+automatically slurpo up all content in a repo. harness desclares what it it
+pays attention to in the repo."* The principle is
+[directory-conventions](../../kg/kg-core/directory-conventions.md) §"A marker
+declares what is read, and nothing else is".
+
+The scan's fourth section, `markers`, lists the content a harness COULD be
+told to read: a `sushi-config.yaml` (an IG: `contentTypes.ig`), a legacy
+`dak.json` (`contentTypes.dak`), `.bpmn` processes, a beans store, `library/`,
+`uploads/`, Lean (`contentType: paper`) and folio manifests
+(`contentType: document`). For each it gives the paths, whether it is already
+declared — `declared`, `not-declared`, or `unknown` when there is no readable
+`index.config.json` to ask — and the snippet that would declare it, with where
+it goes (`index.config.json#contentTypes`, or a local instance's
+`<name>.json#directories`). Content types come from the registry
+(`defaultContentTypes`; an `{ indexSection }` type is checked against
+`contentTypes.<id>`), directory facets are checked against the registered graph
+typologies, and only the evidence the registries cannot state is a short table
+in `cat-harness-tools/scripts/lib/content-markers.ts`. Where each kind of
+content lives is [directory-conventions](../../kg/kg-core/directory-conventions.md).
+
+```sh
+bun run cat-harness-tools/scripts/scan-repo-content.ts [dir] --markers          # the list
+bun run cat-harness-tools/scripts/scan-repo-content.ts [dir] --markers --json   # same, as facts
+```
+
+A plain command: any agent host (Claude Code, Gemini CLI, Antigravity, Cursor,
+Copilot) or a person at a shell runs it, with no MCP server. It writes nothing.
+
+**Q0 — which of these should the harness read?** (`Task_ChooseHarnessed`,
+non-relaxable). Ask it the [`interaction-modality`](interaction-modality.md)
+way — the full question in the chat, then a tap card where the host has one,
+otherwise a numbered pick-list with its default stated. Never a typed reply.
+Offer only the markers that are `not-declared` (or `unknown`), one option each:
+
+1. **None of these for now** *(the default)* — nothing is declared; the scan can be run again any time
+2. `contentTypes.ig` — `sushi-config.yaml`, `input/fsh/`, … (the FHIR IG)
+3. `directories: processes` — `processes/` (7 BPMN files)
+4. Let me pick several — the same options as a multi-select
+
+**The default declares nothing**, and the agent never declares a marker the
+person did not pick. Declare exactly the picks — the scan's `suggestion`
+snippet, at its `suggestion.at` — in the scaffolding commit, or in its own
+commit on an instance that already exists.
+
+**After setup, too.** The same question fits any instance at any time: "what
+else could this harness declare?" is `--markers` on the instance's repository,
+then Q0. Rows already `declared` are shown for context and are not offered.
+
+`ig` is registered by fhir-harness (`schemas/ig-content-type.ts`). A scan that
+has not loaded that layer shows the `ig` row as a hint, with a `note` saying
+where the type lives. Declaring it is not a flag: the snippet's `include` list
+is everything fhir-harness's IG readers will read, so confirm it with the
+person and add any path the IG's site needs (`input/diagrams/`, say). A
+repository with no `contentTypes.ig` is read whole as a legacy IG, with a
+warning on every run; fhir-harness's `ig-build-pipeline` §"What this layer
+reads" has the rules and how to add a path later.
 
 ## 3. Dispatch the ingestion
 
