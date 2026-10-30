@@ -33,7 +33,7 @@ function ctx(over: Record<string, unknown> = {}): Record<string, unknown> {
     },
     profile: { name: "default", sha256: SHA },
     releases: [
-      { state: "provisioned", release: "plantuml@1.2024.7", digest: { algorithm: "sha256", digest: SHA } },
+      { state: "provisioned", release: "plantuml@1.2026.9", digest: { algorithm: "sha256", digest: SHA } },
       { state: "provisioned", release: "temurin-jre@21.0.4+7", digest: { algorithm: "sha256", digest: "b".repeat(64) } },
     ],
     invoker: { kind: "system", id: "cat-harness/scripts/plantuml-render.ts", script_hash: "abcdef012345" },
@@ -72,11 +72,11 @@ describe("folio-run-context/v1", () => {
     });
 
     test("provisioned WITHOUT a digest is refused", () => {
-      expect(ok(ctx({ releases: [{ state: "provisioned", release: "plantuml@1.2024.7" }] }))).toBe(false);
+      expect(ok(ctx({ releases: [{ state: "provisioned", release: "plantuml@1.2026.9" }] }))).toBe(false);
     });
 
     test("one release listed twice is refused", () => {
-      const r = { state: "provisioned", release: "plantuml@1.2024.7", digest: { algorithm: "sha256", digest: SHA } };
+      const r = { state: "provisioned", release: "plantuml@1.2026.9", digest: { algorithm: "sha256", digest: SHA } };
       expect(ok(ctx({ releases: [r, r] }))).toBe(false);
     });
   });
@@ -145,13 +145,13 @@ describe("the reference a report carries (C1: by sha256)", () => {
     const c = RunContextSchema.parse(
       ctx({
         releases: [
-          { state: "provisioned", release: "fsh-sushi@3.13.0", digest: { algorithm: "sha256", digest: SHA } },
+          { state: "provisioned", release: "fsh-sushi@3.21.0", digest: { algorithm: "sha256", digest: SHA } },
           { state: "could-not-provision", release: "fhir-ig-publisher@1.6.20", reason: "offline" },
         ],
       }),
     ) as RunContext;
     expect(toolchainFromRunContext(c, { fhirVersion: "4.0.1" })).toEqual({
-      sushi: "3.13.0",
+      sushi: "3.21.0",
       fhirVersion: "4.0.1",
     });
   });
@@ -165,7 +165,7 @@ describe("the reference a report carries (C1: by sha256)", () => {
         target: "cat-harness/uml",
         outcome: "succeeded",
         inputFingerprint: "abcdef012345",
-        releases: [{ state: "provisioned", release: "plantuml@1.2024.7", digest: { algorithm: "sha256", digest: SHA } }],
+        releases: [{ state: "provisioned", release: "plantuml@1.2026.9", digest: { algorithm: "sha256", digest: SHA } }],
         runContext: ref,
       }).success,
     ).toBe(true);
@@ -244,8 +244,8 @@ describe("the reference a report carries (C1: by sha256)", () => {
   test("addressBook resolves tool-release refs (`<name>@<version>`) as `prov:Entity` IRIs for `prov:used` (Step 3)", () => {
     const repo = resolve(import.meta.dir, "..", "..", "..");
     const book = addressBook(repo);
-    const plantuml = book.resolve("entity", "plantuml@1.2024.7");
-    expect(plantuml).toEqual({ iri: "https://litlfred.github.io/cat-harness/v0/tool-releases/plantuml-1.2024.7" });
+    const plantuml = book.resolve("entity", "plantuml@1.2026.9");
+    expect(plantuml).toEqual({ iri: "https://litlfred.github.io/cat-harness/v0/tool-releases/plantuml-1.2026.9" });
     const jre17 = book.resolve("entity", "temurin-jre@17.0.12+7");
     expect(jre17).toEqual({ iri: "https://litlfred.github.io/cat-harness/v0/tool-releases/temurin-jre-17.0.12_7-linux-x64" });
     const act: ProvActivity = {
@@ -258,7 +258,7 @@ describe("the reference a report carries (C1: by sha256)", () => {
         "prov:hadPlan": "code-change-review#Task_ClaimBean",
       },
       "cat-harness:underPolicy": "https://litlfred.github.io/folio-assistant/policies/folio-defaults",
-      "prov:used": ["plantuml@1.2024.7", "temurin-jre@21.0.4+7"],
+      "prov:used": ["plantuml@1.2026.9", "temurin-jre@21.0.4+7"],
     } as ProvActivity;
     const { unaddressed } = provJsonldDocument("t--x", [act], book);
     expect(unaddressed).toEqual([]);
