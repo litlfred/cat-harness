@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://litlfred.github.io/cat-harness/v0/schemas/kinds/archimate.schema.json",
+  "_generated": "scripts/gen-kind-json-schemas.ts of cat-harness-tools — do not hand-edit; change the Zod and run `bun run cat kind:json-schemas`",
+  "title": "Archimate",
+  "description": "ArchiMate models an instance holds, as Archi `.archimate` files (plain XML or Archi's zipped archive), named by `cat-archimate.config.json` (cat-harness's `archimate` subgraph). Every view, element and relationship in a model is a node of its own: a page and an IRI, keyed by Archi's own id, and every view is drawn as SVG from the model's diagram.",
+  "anyOf": [
+    {
+      "$ref": "#/$defs/cat-archimate-config~1v1"
+    }
+  ],
+  "$defs": {
+    "cat-archimate-config/v1": {
+      "title": "cat-archimate-config/v1",
+      "type": "object",
+      "properties": {
+        "$schema": {
+          "type": "string",
+          "const": "cat-archimate-config/v1"
+        },
+        "directory": {
+          "type": "string",
+          "minLength": 1
+        },
+        "models": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9._-]+$"
+              },
+              "file": {
+                "type": "string",
+                "pattern": "\\.archimate$"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "file"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "$schema",
+        "directory",
+        "models"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
