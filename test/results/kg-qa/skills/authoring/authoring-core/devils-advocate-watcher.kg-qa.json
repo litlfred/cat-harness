@@ -5,7 +5,7 @@
     "id": "devils-advocate-watcher",
     "path": "skills/authoring/authoring-core/devils-advocate-watcher.md"
   },
-  "source_hash": "d974f75edbb6",
+  "source_hash": "sha256:0919199b7b08cdb94b2e274bb60b34afe44390447e8fcc8f14b94f4b964d85cb",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

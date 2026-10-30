@@ -19,7 +19,7 @@ description: >
 # /exposition-swarm-drain — Milnor-exposition audit→resolve drain
 
 Bring every narrative block up to the **Milnor exposition standard**
-(`milnor-exposition-standard` skill), at scale,
+(the active author-voice exposition standard skill), at scale,
 autonomously, without hand-editing block by block.
 
 ## 0. When to use
@@ -66,7 +66,7 @@ autonomously, without hand-editing block by block.
 Score each block on the eight Milnor hallmarks, 0–2 each
 (authoritative: `expo-milnor-clarity` spec,
 `docs/requirements/2026-07-04-folio-assistant-proof-narrative-checkers.md` §5A (no longer in this repository);
-author-facing: the science layer's `milnor-exposition-standard` skill):
+author-facing: the active author-voice exposition standard skill):
 
 | | Hallmark |
 |---|---|
@@ -216,7 +216,7 @@ of `needs_owner` blocks for the author.
 ## Cross-references
 
 - Rubric spec: `docs/requirements/2026-07-04-folio-assistant-proof-narrative-checkers.md` §5A
-- Author voice: the science layer's `milnor-exposition-standard` skill (`skill_fetch milnor-exposition-standard`)
+- Author voice: the active content layer's exposition-standard skill
 - Merge pipeline: `skills/sdlc/sdlc-core/prepare-merge-auto.md`
 - Sister drain: `.claude/skills/local/integration-backlog.md`
 - Flag guard: `pipeline/qa-flag-preservation-audit.ts`

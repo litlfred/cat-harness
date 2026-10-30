@@ -77,7 +77,7 @@ Where a row says "the content type's", the skill is supplied by the layer that s
 | the content type's value-citation check | any changed block quoting numerical literals | every literal uses the value-citation directive; no hardcoded drift |
 | `scientific-accuracy` | any changed provable block with numerical claims | claim is derived, not justified; no rationalization |
 | `one-voice-audit` | any changed block | status leaks, work-tracker words |
-| `ontologist` | any new symbol introduced | notation-register compliance |
+| the content layer's terminology/ontology skill | any new symbol introduced | notation-register compliance |
 
 ## Slot D — §4c finding taxonomy
 

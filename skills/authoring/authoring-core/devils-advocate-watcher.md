@@ -110,8 +110,7 @@ is_da_event=false
 
 # The content type supplies two patterns: KINDS, its claim-bearing block
 # kinds, and FORMAL, the path of its formal-layer siblings (empty when it
-# has none). For a paper folio see the science layer's
-# `devils-advocate-paper`.
+# has none), in its own devil's-advocate refinement skill.
 
 # (i) Any claim-bearing content block touched.
 for f in $(echo "$changed" | grep -E 'content/.*\.(md|ts)$'); do
@@ -459,8 +458,8 @@ respect axis boundaries):
 | `canonical-watcher` | no undisclosed parameters, no numerology (pattern-based) | *where exactly does this constant come from, and would a skeptic buy the derivation?* |
 | `one-voice-integration-watcher` | scholarly voice, AI-slop, fit | *strip the confident voice — does the argument still stand?* |
 
-A content type adds rows for its own watchers; for a paper folio, see
-`devils-advocate-paper`.
+A content type adds rows for its own watchers in its devil's-advocate
+refinement skill.
 
 Where a sibling already has a `pass` sidecar entry, the adversary may
 *cite* it as a rebuttal — but a `pass` on `framework-canonical` does not

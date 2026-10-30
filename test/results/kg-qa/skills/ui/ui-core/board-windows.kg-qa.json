@@ -5,7 +5,7 @@
     "id": "board-windows",
     "path": "skills/ui/ui-core/board-windows.md"
   },
-  "source_hash": "4e5eee88235d",
+  "source_hash": "sha256:da67a29d2b9b02bd8d08b5a5d6495865134c814c55165ee8dd6bd13b8ff4931a",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

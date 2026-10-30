@@ -21,7 +21,7 @@ humans, not generated.
 and a schema term's `uses` in bootstrap's `graph.schema.json`, say what a
 reader must know before the definition. Same discipline — AUTHORED, never
 inferred, with a text matcher kept only as a guard that list and prose agree
-(`glossary-terms` §"Ordered glossaries").
+(see the glossary ordering discipline, §"Ordered glossaries").
 
 It is **not** any machine-derived dependency graph. A content type with a
 formal layer also derives a formal relation, from what its proofs actually

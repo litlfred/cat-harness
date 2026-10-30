@@ -29,7 +29,7 @@ question — *give me an order that honours every `needs`*. `checkDeclaredOrder`
 answers an authored list's — *does the order as written keep its promise*, each
 item using only items above it and never itself. A glossary's order is the
 second kind: it is part of what the author said, so it is checked and never
-recomputed (`glossary-terms` §"Ordered glossaries").
+recomputed (see the glossary ordering discipline, §"Ordered glossaries").
 
 ## The four rules, and each is a decision rather than a default
 

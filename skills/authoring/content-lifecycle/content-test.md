@@ -11,11 +11,8 @@ End-to-end testing of content artifacts in realistic scenarios.
 
 ## Responsibilities
 - Execute test plans and test scripts
-- Verify StructureMap extraction output (FHIR)
-- Verify CQL execution and measure calculations (FHIR)
-- Run the content type's own build and verification — for a content type
-  with a formal layer, its layer's skill says which (for a paper folio, the
-  science layer's `lean-content-test`)
+- Run the content type's own build, extraction, and verification checks (as
+  specified by the layer that ships the content type)
 - **Dispatch the repo's CI workflow on your branch and fold the result into
   the PR** — see below; a local build is not CI green
 - Test cross-component integration
@@ -57,7 +54,7 @@ that it passed.
 
 ## Actors
 - QC Reviewer (lead)
-- FHIR Modeller (technical testing)
+- Technical Modeller / Verification Specialist (supplied by the content-type layer)
 - Business Analyst (scenario testing)
 
 ## Inputs

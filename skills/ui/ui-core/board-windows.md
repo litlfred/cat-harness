@@ -4,8 +4,6 @@ description: >
   Everything starts as its avatar; opening projects a window onto the board.
   The two mechanisms that must not be conflated, z-order, and the fixed chrome
   a content kind fills in.
-adapters: [document, paper, dak]
-profiles: [document, paper]
 ---
 
 # Start in the avatar, open into a window

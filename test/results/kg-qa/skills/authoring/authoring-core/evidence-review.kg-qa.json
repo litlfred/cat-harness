@@ -5,7 +5,7 @@
     "id": "evidence-review",
     "path": "skills/authoring/authoring-core/evidence-review.md"
   },
-  "source_hash": "9c3b3290f0cf",
+  "source_hash": "sha256:6cb8c589e69991d91d60ca8874c576465597ac249708930386827a485115a25b",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

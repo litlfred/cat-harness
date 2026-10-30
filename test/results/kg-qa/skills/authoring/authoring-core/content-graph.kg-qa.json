@@ -5,7 +5,7 @@
     "id": "content-graph",
     "path": "skills/authoring/authoring-core/content-graph.md"
   },
-  "source_hash": "6d5e106b17ce",
+  "source_hash": "sha256:cb025bbd61f4b9e6c5aa1dc5692454e9e2d5d8fd460165fa26e9362743def331",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

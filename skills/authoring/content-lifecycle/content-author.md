@@ -29,16 +29,15 @@ re-dispatch. If you lack `actions: write`, state that in the PR along with the
 command a maintainer should run.
 
 Check when that workflow **last ran**, too. A repo can carry a CI file that
-has not executed in months: qou's `lean_ci.yml` last ran 2026-04-25 and
-failed, and in the interval 37 Lean modules stopped compiling — some with
-parse errors, meaning they had never compiled. Nothing caught it because
-nothing ran.
+has not executed in months: when a verification workflow sits red and
+undispatched on `main`, dozens of modules can stop compiling — some with parse
+errors, meaning they never compiled at all — and nothing catches it because
+nothing runs.
 
 ## Actors
-- Business Analyst (L2 authoring lead)
-- FHIR Modeller (L3 authoring lead)
-- Terminologist (terminology governance)
-- Clinical SME (clinical validation)
+- Author / Content Developer (authoring lead)
+- Business Analyst (process and data-element modelling)
+- Domain / Technical Specialists (supplied by the active content-type layer)
 
 ## Inputs
 - Project plan
