@@ -1,0 +1,31 @@
+{
+  "id": "qa-report-signing",
+  "name": "QA report signing",
+  "description": "Attest a QA report's run hashes by one of two routes — an API signer, or a human release authority when the performing actor cannot reach out.",
+  "requiredCapabilities": [
+    {
+      "capabilityId": "signing-api",
+      "degradation": "fallback"
+    }
+  ],
+  "dependsOn": [
+    {
+      "ref": "content-test",
+      "kind": "skill",
+      "conformance": "SHALL"
+    }
+  ],
+  "routingPatterns": [
+    "sign",
+    "signing",
+    "attest",
+    "attestation",
+    "air-gapped"
+  ],
+  "tags": [
+    "qa",
+    "attestation",
+    "deployment",
+    "topology"
+  ]
+}

@@ -5,7 +5,7 @@
     "id": "corpus-grep",
     "path": "skills/kg/kg-core/corpus-grep.md"
   },
-  "source_hash": "fed1c8ac505b",
+  "source_hash": "aeca70c5afab",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",
@@ -24,13 +24,8 @@
       "findings": []
     },
     "prose-reviewed-since-code-changed": {
-      "result": "fail",
-      "findings": [
-        {
-          "where": "cat-harness/skills/kg/kg-core/corpus-grep.ts",
-          "detail": "cat-harness/skills/kg/kg-core/corpus-grep.ts changed since cat-harness/skills/kg/kg-core/corpus-grep.md was last seen, and the prose did not. Re-read it; if it still holds, run pairs:attest with a reason."
-        }
-      ]
+      "result": "n/a",
+      "findings": []
     },
     "prose-claims-resolve": {
       "result": "n/a",
@@ -48,8 +43,8 @@
   },
   "totals": {
     "pass": 4,
-    "fail": 1,
-    "n/a": 1,
+    "fail": 0,
+    "n/a": 2,
     "unknown": 1
   }
 }
