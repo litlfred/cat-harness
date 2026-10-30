@@ -27,7 +27,7 @@
  * | target | authoritative for | resolved against |
  * |---|---|---|
  * | `skos` | what a term MEANS | SKOS concept schemes — the instance's own authored terms, plus any external scheme it declares |
- * | `fhir` | a clinical code's OPERATIONAL semantics | a FHIR terminology service; Open Concept Lab is the one named for the WHO SMART Guidelines side |
+ * | `fhir` | a clinical code's OPERATIONAL semantics | the pinned published IG snapshot (`cat-harness/external-schemas/who-smart-base.terminology.json`, `who-smart-base@v1.0.0`, 12 CodeSystems / 585 concepts; owner ruling 2026-09-30, bean `ejug`: a published IG at a version, not a live collection; OCL remains the terminology-management tool for the SMART Guidelines side) |
  *
  * A term matched in SKOS and a term matched in FHIR are **different
  * assertions with different authorities**, so a result carries which target
@@ -42,12 +42,20 @@
  * recording silence as "no match" is bean `dh4f` — a consumer that reports a
  * clean run over a check that never ran.
  *
- * It is not hypothetical here. Measured 2026-09-30, this environment's network
- * policy refuses `api.openconceptlab.org:443` (the proxy logs
- * *"gateway answered 403 to CONNECT"*), so **every `fhir` result in this
- * checkout is `undetermined` with that reason**, while the `skos` half
- * resolves locally and returns real verdicts. One run, two targets, two
- * honest answers.
+ * Measured 2026-09-30 (`7wou`), cloud sessions are refused
+ * `api.openconceptlab.org:443` by network policy (`403 to CONNECT`); measured
+ * 2026-10-24 (`q7ds`) from an open internet connection, `api.openconceptlab.org`
+ * (`v2.3.234-3e606025`) itself answers HTTP 403 (`"Authentication required.
+ * Anonymous API access is disabled."`) on `/orgs/`, `/sources/`,
+ * `/collections/`, `/concepts/`, and `/orgs/WHO/*`. On the owner's 2026-09-30
+ * ruling (`ejug`), the `fhir` half resolves offline against the pinned
+ * `who-smart-base@v1.0.0` snapshot (`external-schemas/who-smart-base.terminology.json`,
+ * 12 code systems, 585 concepts), so both targets return determined verdicts
+ * (`0 undetermined`) whenever the pin and snapshot are present and valid, while
+ * an absent or unusable snapshot still yields `undetermined` with its reason.
+ * Probing all 33 published CodeSystems (1 892 concepts) across
+ * `smart.who.int/{base,trust,immunizations}` on 2026-10-24 (`q7ds`) likewise
+ * returned 0 matches against the extracted glossary candidates.
  *
  * ## `exact` and `concept` are a PAIR, from the start
  *
@@ -71,12 +79,13 @@
  *
  * ## Validated in memory, committed as a projection
  *
- * The full file — 5 188 rows here, two per candidate — is built and validated
+ * The full file — two rows per candidate — is built and validated
  * against this schema on every run, and then PROJECTED into
  * `test/results/term-mapping.qa-results.json`, which keeps the per-target
- * summaries and only the rows a reader can act on. Committing 5 188 rows of
- * which 2 594 say the same "OCL could not be reached" would bury the handful
- * that are findings, and the scope already states that fact once.
+ * summaries and only the rows a reader can act on. Committing thousands of
+ * per-candidate rows that all say `unmapped` (or, when a target is
+ * unreachable, the same `undetermined_reason`) would bury the handful that are
+ * findings, and the per-scheme counts and scope already state that fact once.
  *
  * The schema still earns its place: it is what refuses an `undetermined` row
  * with no reason, and that refusal runs before the projection rather than
