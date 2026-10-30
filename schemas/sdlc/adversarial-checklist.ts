@@ -67,7 +67,7 @@ export const AdversarialChecklistItemSchema = z.object({
   extendsSource: z.enum(["code-node-review", "devils-advocate-watcher", "kg-audit"]),
   defaultCategory: z.enum(RED_FLAG_CATEGORIES),
   defaultSeverity: z.enum(FINDING_SEVERITIES),
-  references: z.array(z.string().regex(/^(?:(?:skill|schema):[a-z0-9][a-z0-9-]*|code:[a-z0-9][a-z0-9-]*\/[\w./-]+\.ts)$/, "a reference is `skill:<name>`, `schema:<module>` or `code:<layer>/<module path>`")).default([]),
+  references: z.array(z.string().regex(/^(?:skill:[a-z0-9][a-z0-9-]*|schema:(?:[a-z0-9][a-z0-9-]*\/)?[a-z0-9][a-z0-9-]*|code:[a-z0-9][a-z0-9-]*\/[\w./-]+\.ts)$/, "a reference is `skill:<name>`, `schema:[<group>/]<module>` or `code:<layer>/<module path>`")).default([]),
 });
 
 // ── 1. Tool Adversarial Checklist ───────────────────────────────────────────
@@ -82,7 +82,7 @@ export const TOOL_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] = [
     extendsSource: "code-node-review",
     defaultCategory: "correctness",
     defaultSeverity: "critical",
-    references: ["skill:code-node-review", "schema:tool"],
+    references: ["skill:code-node-review", "schema:tools/tool"],
   },
   {
     id: "tool-unknown-on-failure",
@@ -142,7 +142,7 @@ export const SCHEMA_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] =
     extendsSource: "code-node-review",
     defaultCategory: "correctness",
     defaultSeverity: "major",
-    references: ["skill:code-node-review", "schema:vocabulary"],
+    references: ["skill:code-node-review", "schema:content/vocabulary"],
   },
   {
     id: "schema-docstring-fidelity",
@@ -229,7 +229,7 @@ export const PROCESS_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] 
     extendsSource: "kg-audit",
     defaultCategory: "correctness",
     defaultSeverity: "critical",
-    references: ["skill:bpmn-processes", "schema:kg-qa"],
+    references: ["skill:bpmn-processes", "schema:sdlc/kg-qa"],
   },
   {
     id: "process-no-context-write",
@@ -240,7 +240,7 @@ export const PROCESS_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] 
     extendsSource: "kg-audit",
     defaultCategory: "scope-breach",
     defaultSeverity: "critical",
-    references: ["skill:directory-conventions", "schema:cat-harness"],
+    references: ["skill:directory-conventions", "schema:kg/cat-harness"],
   },
   {
     id: "process-diagram-workflow-fidelity",
@@ -251,7 +251,7 @@ export const PROCESS_ADVERSARIAL_CHECKLIST: readonly AdversarialChecklistItem[] 
     extendsSource: "kg-audit",
     defaultCategory: "provenance",
     defaultSeverity: "major",
-    references: ["skill:bpmn-processes", "schema:kg-qa"],
+    references: ["skill:bpmn-processes", "schema:sdlc/kg-qa"],
   },
 ] as const;
 
