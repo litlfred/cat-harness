@@ -42,9 +42,12 @@
       "tagPattern": "^bun-v\\d+\\.\\d+\\.\\d+$",
       "tagPrefix": "bun-v",
       "binds": [
-        "Every `.github/workflows/*.yml` — 22 `oven-sh/setup-bun@v2` sites carry `bun-version` literals, and `check:bun-pin` fails if any disagrees with `.bun-version`. That gate is what makes this ONE answer rather than 23: without it the copies would be free to disagree, which is exactly what this registry's own note forbids.",
-        "cat-harness-tools/pipeline/qa-utils.ts — `saveQaScriptSidecar` skips the write unless a substantive field moved, and `engine_version` (`bun-${Bun.version}`) is one of them. An unpinned runtime therefore rewrites every script sidecar whenever the engine differs, which took `bun run cat gates`' tree-mutation detector to 'NOT clean' on every branch including pristine main (bean `3ozg`).",
-        "cat-harness-tools/pipeline/script-sidecars/*.script.json — 86 committed records whose `engine_version` is this pin's observable consequence. They held TWO values when the pin was added: 72 at bun-1.3.14 and 14 at bun-1.3.11."
+        "Every `.github/workflows/*.yml` of the composed checkout — 59 `oven-sh/setup-bun@v2` sites across folio-assistant's workflows on 2026-10-30 (22 when the pin was added) carry `bun-version` literals, and `check:bun-pin` fails if any disagrees with `.bun-version`. That gate is what makes this ONE answer rather than many: without it the copies would be free to disagree, which is exactly what this registry's own note forbids.",
+        "cat-harness-tools/pipeline/qa-utils.ts — `saveQaScriptSidecar` stamps `engine_version` (`bun-${Bun.version}`). It was a substantive field until #1452, so an unpinned runtime rewrote every script sidecar whenever the engine differed and took `bun run cat gates`' tree-mutation detector to 'NOT clean' on every branch (bean `3ozg`). It no longer triggers a write on its own, so a bump does not rewrite the sidecars; it records the engine of a sidecar's last CONTENT change.",
+        "cat-harness/test/results/script-sidecars/*.script.json — 86 committed records whose `engine_version` is this pin's observable consequence. They held TWO values when the pin was added: 72 at bun-1.3.14 and 14 at bun-1.3.11.",
+        "cat-harness/site-chrome/assets/js/navbar.js — minified by `Bun.build`, whose identifier choices change between releases; `navbar:assets:check` fails until it is regenerated (`bun run cat navbar:assets`) under the new pin.",
+        "Each layer's own workflows and workflow templates, which `check:bun-pin` does NOT read and so must be moved by hand: cat-harness, cat-harness-tools and folio-assistant-core `release-npm.yml`, cat-harness-tools' layer workflows, folio-assistant-core `templates/public-comment/github/workflows/*`, fhir-harness `ig-ast-refresh.yml` and `templates/ig-repo-site/site-publish.yml`, who-iris `checks.yml`.",
+        "folio-assistant test/workflows/merge-main-workflow.test.ts — asserts the `bun-version` literal of merge-main's `setup-bun` step."
       ]
     },
     {
