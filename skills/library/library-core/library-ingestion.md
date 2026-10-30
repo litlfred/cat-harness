@@ -105,6 +105,27 @@ down dep tree)"*.
 - **Further down the tree**, a dependency's declared `remoteGraphs` is what
   makes the second path reachable at all, inherited the way directories are.
 
+## A held PDF gets its page-1 cover BEFORE the upload is retired
+
+Owner, 2026-10-16 and again 2026-10-30: an entry with no cover showed its
+first figure as its picture, and for `arxiv-2404.04834v4` that was a
+near-black game screenshot from page 11, on the library row and the folio
+glass. The picture of a PDF entry is `library/<slug>/cover.png`, page 1
+rendered by `pdf-cover.py`. With no cover, the entry shows the book glyph,
+never a figure.
+
+- A new ingest writes it: `ingest-document`'s cover arm runs last.
+- An entry ingested before that arm gets it from `bun run cat library:covers`.
+  Run it **in the checkout that holds the PDF** (the composed index, whose
+  `uploads/` may be another repository's), and commit the cover into the
+  repository that holds the entry.
+- Run it **before the upload is retired**. Once the PDF moves to
+  `fsh-guts/uploads/`, `library:covers` no longer finds it and skips the entry
+  as "not held". Of cat-harness's 60 entries, 42 were retired with no cover
+  and still show the glyph (2026-10-30).
+- `bun run cat library:covers:check` fails on a held, unwithheld PDF that has
+  no cover.
+
 ## After ingestion the upload is RETIRED — never left, never deleted
 
 Owner, 2026-09-29: *"no, uploads is archival copy"*, then *"archival (once
