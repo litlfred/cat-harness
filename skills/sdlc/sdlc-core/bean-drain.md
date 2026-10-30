@@ -66,11 +66,13 @@ and the `coordinate` section above.
 
 ## 1. Build the queue — the `drain-queue` Tool
 
-Read **every** bean copy, not the one this checkout mounts. While the store has
-more than one copy (today the `cat/cat-harness/beans` branch on folio-assistant
-and on cat-harness, plus the tools layer's beans on `main`), the copies can
-disagree. Where they do, the newest `updated_at` wins and the disagreement is
-listed, so somebody can sync it.
+Read **every** bean store, not the one this checkout mounts. Since 2026-10-30
+each bean has one home ([`bean-coordination`](bean-coordination.md), "Each bean
+has one home"): the `cat/cat-harness/beans` branch on folio-assistant, plus the
+tools and core layers' beans on their `main`. The cat-harness copy of that
+branch keeps no beans any more. If two stores ever hold the same id again,
+`bun run cat check:bean-one-home` names it; the newest `updated_at` wins here
+and the disagreement is listed, so somebody can fix it.
 
 Leave out, each with its reason in the output so nothing vanishes silently:
 
