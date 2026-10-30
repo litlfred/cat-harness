@@ -3,505 +3,505 @@
   "entry": "qi-hessen-vanderheijden-2023-ca-vs-lsa",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 1860,
-    "terms": 11867,
+    "sections": 2140,
+    "terms": 14687,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "lsa raw",
-      "score": 27.7005,
+      "score": 27.5255,
       "evidence": []
     },
     {
       "term": "lsa nrowl",
-      "score": 22.1064,
+      "score": 22.3819,
       "evidence": []
     },
     {
       "term": "raw document-term",
-      "score": 20.5578,
+      "score": 20.201,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "lsa tfidf",
-      "score": 19.6671,
+      "score": 19.9311,
       "evidence": []
     },
     {
       "term": "raw matrix",
-      "score": 18.9852,
-      "evidence": [
-        "heading"
-      ]
-    },
-    {
-      "term": "weighting exponent",
-      "score": 18.1445,
+      "score": 18.4867,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "both lsa",
-      "score": 17.6118,
+      "score": 17.7686,
       "evidence": []
     },
     {
+      "term": "weighting exponent",
+      "score": 17.6856,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
       "term": "lsa involves",
-      "score": 17.4168,
+      "score": 17.651,
+      "evidence": []
+    },
+    {
+      "term": "ﬁrst dimensions",
+      "score": 16.1642,
       "evidence": []
     },
     {
       "term": "initial dimensions",
-      "score": 16.2119,
+      "score": 15.7356,
       "evidence": [
         "heading"
       ]
-    },
-    {
-      "term": "ﬁrst dimensions",
-      "score": 16.1107,
-      "evidence": []
-    },
-    {
-      "term": "intelligent information",
-      "score": 15.4603,
-      "evidence": []
     },
     {
       "term": "weighting elements",
-      "score": 15.2307,
+      "score": 14.8096,
       "evidence": [
         "heading"
       ]
+    },
+    {
+      "term": "intelligent information",
+      "score": 14.5677,
+      "evidence": []
     }
   ],
   "sections": {
     "sec-001-abstract": [
       {
         "term": "weighting exponent",
-        "score": 1.8385,
+        "score": 1.7961,
         "evidence": []
       },
       {
         "term": "value weighting",
-        "score": 1.4121,
+        "score": 1.3705,
         "evidence": []
       },
       {
         "term": "marginal effects",
-        "score": 1.3784,
+        "score": 1.3408,
         "evidence": []
       },
       {
         "term": "initial dimensions",
-        "score": 1.2511,
+        "score": 1.2066,
         "evidence": []
       },
       {
         "term": "singular value",
-        "score": 1.176,
+        "score": 1.1615,
         "evidence": []
       },
       {
         "term": "information retrieval",
-        "score": 1.1414,
+        "score": 1.1335,
         "evidence": []
       }
     ],
     "sec-002-1-introduction": [
       {
         "term": "southampton",
-        "score": 1.2624,
+        "score": 1.2646,
         "evidence": []
       },
       {
         "term": "hessen",
-        "score": 0.9447,
+        "score": 0.9475,
         "evidence": []
       },
       {
-        "term": "sciences",
-        "score": 0.6585,
+        "term": "heijden",
+        "score": 0.6356,
         "evidence": []
       }
     ],
     "sec-003-21-lsa": [
       {
         "term": "lsa",
-        "score": 2.9164,
+        "score": 2.9621,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "weighting exponent",
-        "score": 2.2921,
+        "score": 2.2403,
         "evidence": []
       },
       {
         "term": "bullinaria levy",
-        "score": 2.1152,
+        "score": 2.1273,
         "evidence": []
       },
       {
         "term": "initial dimensions",
-        "score": 2.0136,
+        "score": 1.9343,
         "evidence": []
       },
       {
         "term": "value weighting",
-        "score": 1.6879,
+        "score": 1.6379,
         "evidence": []
       },
       {
         "term": "word embeddings",
-        "score": 1.6144,
-        "evidence": []
-      },
-      {
-        "term": "yin shen",
-        "score": 1.6027,
+        "score": 1.5811,
         "evidence": []
       },
       {
         "term": "information retrieval",
-        "score": 1.4689,
+        "score": 1.4571,
+        "evidence": []
+      },
+      {
+        "term": "yin shen",
+        "score": 1.4493,
         "evidence": []
       }
     ],
     "sec-004-2-lsa-and-ca": [
       {
         "term": "lsa",
-        "score": 2.9164,
+        "score": 2.9621,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "raw document-term",
-        "score": 2.4144,
+        "score": 2.3854,
         "evidence": []
       },
       {
         "term": "document-term matrix",
-        "score": 2.1265,
+        "score": 2.1303,
         "evidence": []
       },
       {
         "term": "dot similarity",
-        "score": 1.7514,
+        "score": 1.7433,
         "evidence": []
       },
       {
         "term": "cosine similarity",
-        "score": 1.6146,
+        "score": 1.5852,
         "evidence": []
       },
       {
         "term": "weight ing",
-        "score": 1.5873,
+        "score": 1.5174,
         "evidence": []
       },
       {
         "term": "euclidean distance",
-        "score": 1.4931,
+        "score": 1.4753,
         "evidence": []
       },
       {
         "term": "ﬁrst columns",
-        "score": 1.3648,
+        "score": 1.3622,
         "evidence": []
       }
     ],
     "sec-005-22-ca": [
       {
         "term": "cheetah jaguar",
-        "score": 3.5825,
+        "score": 3.5878,
         "evidence": []
       },
       {
         "term": "jaguar porsche",
-        "score": 3.5825,
-        "evidence": []
-      },
-      {
-        "term": "lion tiger",
-        "score": 3.2987,
+        "score": 3.5878,
         "evidence": []
       },
       {
         "term": "porsche ferrari",
-        "score": 3.2987,
+        "score": 3.3039,
+        "evidence": []
+      },
+      {
+        "term": "tiger cheetah",
+        "score": 3.3039,
+        "evidence": []
+      },
+      {
+        "term": "lion tiger",
+        "score": 3.2334,
         "evidence": []
       },
       {
         "term": "car documents",
-        "score": 3.1501,
+        "score": 3.155,
         "evidence": []
       },
       {
         "term": "car terms",
-        "score": 3.0233,
+        "score": 3.0347,
         "evidence": []
       },
       {
         "term": "cat documents",
-        "score": 2.9375,
-        "evidence": []
-      },
-      {
-        "term": "k-dimensional subspace",
-        "score": 2.3723,
+        "score": 2.9164,
         "evidence": []
       }
     ],
     "sec-006-3-methodology": [
       {
         "term": "inﬂuence",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       },
       {
         "term": "document-term",
-        "score": 0.4822,
+        "score": 0.486,
         "evidence": []
       },
       {
         "term": "studied",
-        "score": 0.4054,
+        "score": 0.4037,
         "evidence": []
       }
     ],
     "sec-007-31-ca-of-a-document-term-matrix-of-weighted-freq": [
       {
         "term": "document-term matrix",
-        "score": 4.1262,
+        "score": 4.1312,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "weighted frequencies",
-        "score": 2.8179,
+        "score": 2.7936,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "raw document-term",
-        "score": 2.1992,
+        "score": 2.1734,
         "evidence": []
       },
       {
         "term": "weighting",
-        "score": 1.1235,
+        "score": 1.0818,
         "evidence": []
       }
     ],
     "sec-008-32-changing-the-contributions-of-the-initial-dim": [
       {
         "term": "initial dimensions",
-        "score": 3.2032,
+        "score": 3.0909,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "weighting exponent",
-        "score": 1.972,
+        "score": 1.9288,
         "evidence": []
       },
       {
         "term": "squared singular",
-        "score": 1.9013,
+        "score": 1.8497,
         "evidence": []
       },
       {
         "term": "coordinates instead",
-        "score": 1.6605,
+        "score": 1.6343,
         "evidence": []
       },
       {
         "term": "dimension accounts",
-        "score": 1.5951,
-        "evidence": []
-      },
-      {
-        "term": "singular values",
-        "score": 1.571,
+        "score": 1.6032,
         "evidence": []
       },
       {
         "term": "euclidean distances",
-        "score": 1.5569,
+        "score": 1.5686,
+        "evidence": []
+      },
+      {
+        "term": "singular values",
+        "score": 1.5611,
         "evidence": []
       },
       {
         "term": "ﬁrst dimension",
-        "score": 1.5352,
+        "score": 1.5479,
         "evidence": []
       }
     ],
     "sec-009-33-design": [
       {
         "term": "cheetah jaguar",
-        "score": 2.0326,
+        "score": 2.0356,
         "evidence": []
       },
       {
         "term": "jaguar porsche",
-        "score": 2.0326,
-        "evidence": []
-      },
-      {
-        "term": "lion tiger",
-        "score": 2.0226,
+        "score": 2.0356,
         "evidence": []
       },
       {
         "term": "porsche ferrari",
-        "score": 2.0226,
+        "score": 2.0258,
         "evidence": []
       },
       {
-        "term": "raw document-term",
-        "score": 1.825,
+        "term": "tiger cheetah",
+        "score": 2.0258,
+        "evidence": []
+      },
+      {
+        "term": "lion tiger",
+        "score": 1.9825,
         "evidence": []
       }
     ],
     "sec-010-34-datasets": [
       {
         "term": "wilhelmus dataset",
-        "score": 3.1088,
+        "score": 3.0073,
         "evidence": []
       },
       {
         "term": "bbcsport dataset",
-        "score": 2.6784,
+        "score": 2.5754,
         "evidence": []
       },
       {
         "term": "newsgroups dataset",
-        "score": 2.4753,
+        "score": 2.3727,
         "evidence": []
       },
       {
         "term": "bbcnews dataset",
-        "score": 2.467,
+        "score": 2.3645,
         "evidence": []
       },
       {
         "term": "dutch dataset",
-        "score": 2.4345,
+        "score": 2.3286,
         "evidence": []
       },
       {
         "term": "ﬁve categories",
-        "score": 2.163,
+        "score": 2.0873,
         "evidence": []
       },
       {
         "term": "english datasets",
-        "score": 1.9993,
+        "score": 1.8362,
         "evidence": []
       },
       {
         "term": "four categories",
-        "score": 1.9469,
+        "score": 1.8156,
         "evidence": []
       }
     ],
     "sec-011-35-evaluation": [
       {
         "term": "documents retrieved",
-        "score": 2.5739,
+        "score": 2.5192,
         "evidence": []
       },
       {
         "term": "euclidean distance",
-        "score": 2.1874,
+        "score": 2.1613,
         "evidence": []
       },
       {
         "term": "cosine similarity",
-        "score": 2.1347,
+        "score": 2.0962,
         "evidence": []
       },
       {
         "term": "ordered list",
-        "score": 1.9839,
+        "score": 1.9828,
         "evidence": []
       },
       {
         "term": "ﬁrst documents",
-        "score": 1.9765,
+        "score": 1.98,
         "evidence": []
       },
       {
         "term": "relevant documents",
-        "score": 1.97,
+        "score": 1.9165,
         "evidence": []
       },
       {
         "term": "query vector",
-        "score": 1.7341,
+        "score": 1.6619,
         "evidence": []
       },
       {
         "term": "maximum precision",
-        "score": 1.7333,
+        "score": 1.5447,
         "evidence": []
       }
     ],
     "sec-014-411-map-as-a-function-of-the-number-of-dimension": [
       {
         "term": "lsa nrowl",
-        "score": 3.8273,
+        "score": 3.8639,
         "evidence": []
       },
       {
         "term": "four versions",
-        "score": 3.6612,
+        "score": 3.4887,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "lsa raw",
-        "score": 3.37,
+        "score": 3.3445,
+        "evidence": []
+      },
+      {
+        "term": "lsa tfidf",
+        "score": 3.3355,
         "evidence": []
       },
       {
         "term": "weighting exponent",
-        "score": 3.3329,
+        "score": 3.25,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "lsa tfidf",
-        "score": 3.302,
-        "evidence": []
-      },
-      {
         "term": "map",
-        "score": 2.6521,
+        "score": 2.6806,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "both lsa",
-        "score": 2.1984,
+        "score": 2.2065,
         "evidence": []
       },
       {
         "term": "dimensions",
-        "score": 2.0953,
+        "score": 2.0995,
         "evidence": [
           "heading"
         ]
@@ -510,304 +510,304 @@
     "sec-015-412-map-as-a-function-of-the-weighting-exponent": [
       {
         "term": "dimensions",
-        "score": 3.1123,
+        "score": 3.1185,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "map",
-        "score": 2.5349,
+        "score": 2.5622,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "lsa-raw improves",
-        "score": 2.4376,
+        "score": 2.3958,
         "evidence": []
       },
       {
         "term": "initial dimensions",
-        "score": 2.1931,
+        "score": 2.1381,
         "evidence": []
       },
       {
         "term": "later dimensions",
-        "score": 2.1127,
+        "score": 2.1224,
         "evidence": []
       },
       {
         "term": "varying",
-        "score": 1.7126,
+        "score": 1.5839,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "optimal number",
-        "score": 1.6232,
+        "score": 1.5688,
         "evidence": []
       },
       {
         "term": "bbcnews dataset",
-        "score": 1.5127,
+        "score": 1.4791,
         "evidence": []
       }
     ],
     "sec-017-421-weighting-the-elements-of-the-raw-document-t": [
       {
         "term": "raw document-term",
-        "score": 5.5157,
+        "score": 5.3782,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "raw matrix",
-        "score": 5.1838,
+        "score": 5.0231,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "lsa raw",
-        "score": 3.682,
+        "score": 3.6336,
+        "evidence": []
+      },
+      {
+        "term": "table map",
+        "score": 2.1704,
         "evidence": []
       },
       {
         "term": "weighting",
-        "score": 2.2471,
+        "score": 2.1635,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "table map",
-        "score": 2.2214,
-        "evidence": []
-      },
-      {
         "term": "nrowl",
-        "score": 1.8402,
+        "score": 1.8468,
         "evidence": []
       },
       {
         "term": "bbcsport newsgroups",
-        "score": 1.7469,
+        "score": 1.7551,
         "evidence": []
       },
       {
         "term": "ca-raw",
-        "score": 1.5872,
+        "score": 1.5938,
         "evidence": []
       }
     ],
     "sec-018-422-map-as-a-function-of-the-weighting-exponent": [
       {
         "term": "map",
-        "score": 2.3261,
+        "score": 2.351,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "raw",
-        "score": 1.8301,
+        "score": 1.7613,
         "evidence": []
       },
       {
         "term": "initial dimensions",
-        "score": 1.4694,
+        "score": 1.4253,
         "evidence": []
       },
       {
         "term": "optimal number",
-        "score": 1.3942,
+        "score": 1.3491,
         "evidence": []
       },
       {
         "term": "ca-raw",
-        "score": 1.3127,
+        "score": 1.3182,
         "evidence": []
       },
       {
         "term": "function",
-        "score": 1.2518,
+        "score": 1.2254,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "lsa",
-        "score": 1.1831,
+        "score": 1.2017,
         "evidence": []
       },
       {
         "term": "euclidean",
-        "score": 1.0721,
+        "score": 1.082,
         "evidence": []
       }
     ],
     "sec-019-5-results-for-dot-similarity-and-cosine-similari": [
       {
         "term": "dot similarity",
-        "score": 5.3356,
+        "score": 5.3148,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "cosine similarity",
-        "score": 4.6662,
+        "score": 4.5809,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "euclidean distance",
-        "score": 2.3088,
+        "score": 2.2839,
         "evidence": []
       },
       {
         "term": "ca-raw",
-        "score": 1.5872,
+        "score": 1.5938,
         "evidence": []
       },
       {
         "term": "map",
-        "score": 0.9108,
+        "score": 0.9205,
         "evidence": []
       },
       {
         "term": "dimensions",
-        "score": 0.5915,
+        "score": 0.5927,
         "evidence": []
       }
     ],
     "sec-020-6-conclusions-and-discussions": [
       {
         "term": "euclidean distances",
-        "score": 2.9952,
+        "score": 3.0181,
         "evidence": []
       },
       {
         "term": "dot similarity",
-        "score": 2.4718,
+        "score": 2.4613,
         "evidence": []
       },
       {
         "term": "decomposed matrix",
-        "score": 2.301,
+        "score": 2.3004,
         "evidence": []
       },
       {
         "term": "cosine similarity",
-        "score": 2.2715,
+        "score": 2.2297,
         "evidence": []
       },
       {
         "term": "weighting elements",
-        "score": 2.1118,
+        "score": 2.0626,
         "evidence": []
       },
       {
         "term": "initial dimensions",
-        "score": 2.0629,
+        "score": 1.9904,
         "evidence": []
       },
       {
         "term": "weighting exponent",
-        "score": 1.9612,
+        "score": 1.9088,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 1.7747,
+        "score": 1.8025,
         "evidence": []
       }
     ],
     "sec-021-acknowledgements": [
       {
-        "term": "article creative",
-        "score": 2.4324,
+        "term": "commons licence",
+        "score": 2.747,
         "evidence": []
       },
       {
         "term": "author qianqian",
-        "score": 2.4096,
+        "score": 2.3239,
         "evidence": []
       },
       {
-        "term": "creative commons",
-        "score": 2.3453,
+        "term": "article creative",
+        "score": 2.3135,
         "evidence": []
       },
       {
         "term": "newsgroups dataset",
-        "score": 1.9613,
+        "score": 1.8882,
         "evidence": []
       },
       {
         "term": "author peter",
-        "score": 1.8706,
-        "evidence": []
-      },
-      {
-        "term": "wilhelmus dataset",
-        "score": 1.7825,
-        "evidence": []
-      },
-      {
-        "term": "der heijden",
-        "score": 1.7768,
+        "score": 1.8135,
         "evidence": []
       },
       {
         "term": "author david",
-        "score": 1.7759,
+        "score": 1.7226,
+        "evidence": []
+      },
+      {
+        "term": "der heijden",
+        "score": 1.7209,
+        "evidence": []
+      },
+      {
+        "term": "wilhelmus dataset",
+        "score": 1.7073,
         "evidence": []
       }
     ],
     "sec-022-references": [
       {
         "term": "international conference",
-        "score": 3.0003,
+        "score": 2.8124,
         "evidence": []
       },
       {
         "term": "correspondence analysis",
-        "score": 2.7676,
+        "score": 2.6233,
         "evidence": []
       },
       {
         "term": "international journal",
-        "score": 2.5676,
+        "score": 2.5247,
         "evidence": []
       },
       {
         "term": "latent semantic",
-        "score": 2.2911,
+        "score": 2.2833,
         "evidence": []
       },
       {
         "term": "text classiﬁcation",
-        "score": 1.9903,
-        "evidence": []
-      },
-      {
-        "term": "intelligent information",
-        "score": 1.9362,
+        "score": 1.9627,
         "evidence": []
       },
       {
         "term": "word embeddings",
-        "score": 1.9073,
+        "score": 1.8742,
         "evidence": []
       },
       {
-        "term": "expert systems",
-        "score": 1.8722,
+        "term": "information retrieval",
+        "score": 1.8458,
+        "evidence": []
+      },
+      {
+        "term": "intelligent information",
+        "score": 1.8189,
         "evidence": []
       }
     ]

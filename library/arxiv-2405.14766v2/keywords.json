@@ -1,0 +1,1134 @@
+{
+  "$schema": "folio-keywords/v1",
+  "entry": "arxiv-2405.14766v2",
+  "corpus": {
+    "library": "cat-harness/library",
+    "sections": 2140,
+    "terms": 14687,
+    "weighting": "log-entropy"
+  },
+  "document": [
+    {
+      "term": "public health",
+      "score": 34.846,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "health tasks",
+      "score": 34.5276,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "health text",
+      "score": 29.0375,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "health free",
+      "score": 28.2949,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "classification tasks",
+      "score": 27.9175,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "health evaluation",
+      "score": 27.1429,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "health causal",
+      "score": 26.9985,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "health advice",
+      "score": 26.9347,
+      "evidence": []
+    },
+    {
+      "term": "health interventions",
+      "score": 26.3707,
+      "evidence": []
+    },
+    {
+      "term": "health experts",
+      "score": 26.2668,
+      "evidence": []
+    },
+    {
+      "term": "health guidance",
+      "score": 26.2274,
+      "evidence": []
+    },
+    {
+      "term": "health burden",
+      "score": 24.9964,
+      "evidence": [
+        "heading"
+      ]
+    }
+  ],
+  "sections": {
+    "sec-000-introduction": [
+      {
+        "term": "public health",
+        "score": 2.1379,
+        "evidence": []
+      },
+      {
+        "term": "free text",
+        "score": 1.294,
+        "evidence": []
+      },
+      {
+        "term": "processing tasks",
+        "score": 1.0995,
+        "evidence": []
+      },
+      {
+        "term": "natural language",
+        "score": 0.974,
+        "evidence": []
+      },
+      {
+        "term": "llms",
+        "score": 0.905,
+        "evidence": []
+      },
+      {
+        "term": "experts",
+        "score": 0.828,
+        "evidence": []
+      },
+      {
+        "term": "potential",
+        "score": 0.7429,
+        "evidence": []
+      },
+      {
+        "term": "assessing",
+        "score": 0.6515,
+        "evidence": []
+      }
+    ],
+    "sec-001-methods": [
+      {
+        "term": "public health",
+        "score": 2.1379,
+        "evidence": []
+      },
+      {
+        "term": "evaluation tasks",
+        "score": 1.4459,
+        "evidence": []
+      },
+      {
+        "term": "sec",
+        "score": 1.1534,
+        "evidence": []
+      },
+      {
+        "term": "gpt series",
+        "score": 1.134,
+        "evidence": []
+      },
+      {
+        "term": "sub-domains",
+        "score": 0.9497,
+        "evidence": []
+      },
+      {
+        "term": "open-weight",
+        "score": 0.8779,
+        "evidence": []
+      },
+      {
+        "term": "datasets",
+        "score": 0.806,
+        "evidence": []
+      },
+      {
+        "term": "ranging",
+        "score": 0.7239,
+        "evidence": []
+      }
+    ],
+    "sec-002-public-health-evaluation-tasks-and-datasets": [
+      {
+        "term": "public health",
+        "score": 2.0401,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "tasks",
+        "score": 0.7664,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "sub-domains",
+        "score": 0.5992,
+        "evidence": []
+      }
+    ],
+    "sec-003-burden": [
+      {
+        "term": "gastrointestinal illness",
+        "score": 3.0306,
+        "evidence": []
+      },
+      {
+        "term": "disease extraction",
+        "score": 2.7003,
+        "evidence": []
+      },
+      {
+        "term": "ncbi disease",
+        "score": 2.67,
+        "evidence": []
+      },
+      {
+        "term": "headline classification",
+        "score": 2.3406,
+        "evidence": []
+      },
+      {
+        "term": "public health",
+        "score": 2.2706,
+        "evidence": []
+      },
+      {
+        "term": "binary classification",
+        "score": 2.2152,
+        "evidence": []
+      },
+      {
+        "term": "news headlines",
+        "score": 2.1862,
+        "evidence": []
+      },
+      {
+        "term": "restaurant reviews",
+        "score": 2.1308,
+        "evidence": []
+      }
+    ],
+    "sec-004-risk-factors": [
+      {
+        "term": "risk factors",
+        "score": 3.4124,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "free text",
+        "score": 1.6677,
+        "evidence": []
+      },
+      {
+        "term": "sexual activity",
+        "score": 1.5808,
+        "evidence": []
+      },
+      {
+        "term": "mmlu benchmark",
+        "score": 1.557,
+        "evidence": []
+      },
+      {
+        "term": "llm ability",
+        "score": 1.4609,
+        "evidence": []
+      },
+      {
+        "term": "llm basic",
+        "score": 1.456,
+        "evidence": []
+      },
+      {
+        "term": "prompted",
+        "score": 1.2217,
+        "evidence": []
+      },
+      {
+        "term": "nutrition",
+        "score": 1.212,
+        "evidence": []
+      }
+    ],
+    "sec-005-interventions": [
+      {
+        "term": "pharmaceutical interventions",
+        "score": 2.4121,
+        "evidence": []
+      },
+      {
+        "term": "non-pharmaceutical interventions",
+        "score": 2.0841,
+        "evidence": []
+      },
+      {
+        "term": "health interventions",
+        "score": 2.0692,
+        "evidence": []
+      },
+      {
+        "term": "public health",
+        "score": 1.6636,
+        "evidence": []
+      },
+      {
+        "term": "disease",
+        "score": 0.7025,
+        "evidence": []
+      }
+    ],
+    "sec-006-summary": [
+      {
+        "term": "health advice",
+        "score": 2.8099,
+        "evidence": []
+      },
+      {
+        "term": "pubmed article",
+        "score": 2.3782,
+        "evidence": []
+      },
+      {
+        "term": "health guidance",
+        "score": 2.3208,
+        "evidence": []
+      },
+      {
+        "term": "advice statement",
+        "score": 2.2902,
+        "evidence": []
+      },
+      {
+        "term": "public health",
+        "score": 2.2227,
+        "evidence": []
+      },
+      {
+        "term": "health topics",
+        "score": 2.0598,
+        "evidence": []
+      },
+      {
+        "term": "biomedical text",
+        "score": 1.898,
+        "evidence": []
+      },
+      {
+        "term": "llm ability",
+        "score": 1.6655,
+        "evidence": []
+      }
+    ],
+    "sec-009-sampling": [
+      {
+        "term": "internal api",
+        "score": 2.5178,
+        "evidence": []
+      },
+      {
+        "term": "openai api",
+        "score": 2.2521,
+        "evidence": []
+      },
+      {
+        "term": "meta",
+        "score": 1.0674,
+        "evidence": []
+      },
+      {
+        "term": "command-r",
+        "score": 1.0074,
+        "evidence": []
+      },
+      {
+        "term": "flan-t5-xxl",
+        "score": 0.9537,
+        "evidence": []
+      },
+      {
+        "term": "mistral",
+        "score": 0.8178,
+        "evidence": []
+      }
+    ],
+    "sec-010-large-language-models": [
+      {
+        "term": "models",
+        "score": 1.4622,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "billion",
+        "score": 0.8504,
+        "evidence": []
+      },
+      {
+        "term": "ukhsa",
+        "score": 0.782,
+        "evidence": []
+      },
+      {
+        "term": "evaluations",
+        "score": 0.6836,
+        "evidence": []
+      },
+      {
+        "term": "gpt",
+        "score": 0.6478,
+        "evidence": []
+      },
+      {
+        "term": "llama",
+        "score": 0.5977,
+        "evidence": []
+      },
+      {
+        "term": "run",
+        "score": 0.575,
+        "evidence": []
+      },
+      {
+        "term": "language",
+        "score": 0.5045,
+        "evidence": [
+          "heading"
+        ]
+      }
+    ],
+    "sec-011-results": [
+      {
+        "term": "prompting",
+        "score": 0.7139,
+        "evidence": []
+      },
+      {
+        "term": "templates",
+        "score": 0.5689,
+        "evidence": []
+      },
+      {
+        "term": "decoding",
+        "score": 0.5312,
+        "evidence": []
+      }
+    ],
+    "sec-013-evaluation-metrics": [
+      {
+        "term": "micro-f score",
+        "score": 2.3425,
+        "evidence": []
+      },
+      {
+        "term": "true positives",
+        "score": 2.0584,
+        "evidence": []
+      },
+      {
+        "term": "positives divided",
+        "score": 2.0291,
+        "evidence": []
+      },
+      {
+        "term": "food extraction",
+        "score": 1.8358,
+        "evidence": []
+      },
+      {
+        "term": "disease extraction",
+        "score": 1.8257,
+        "evidence": []
+      },
+      {
+        "term": "classification tasks",
+        "score": 1.8013,
+        "evidence": []
+      },
+      {
+        "term": "ncbi disease",
+        "score": 1.566,
+        "evidence": []
+      },
+      {
+        "term": "ground-truth label",
+        "score": 1.5319,
+        "evidence": []
+      }
+    ],
+    "sec-014-model-results": [
+      {
+        "term": "base model",
+        "score": 0.9809,
+        "evidence": []
+      },
+      {
+        "term": "llama-3-8b-instruct",
+        "score": 0.9497,
+        "evidence": []
+      },
+      {
+        "term": "micro-f",
+        "score": 0.8358,
+        "evidence": []
+      },
+      {
+        "term": "mmlu",
+        "score": 0.7672,
+        "evidence": []
+      },
+      {
+        "term": "llama",
+        "score": 0.7543,
+        "evidence": []
+      },
+      {
+        "term": "b-instruct",
+        "score": 0.7513,
+        "evidence": []
+      },
+      {
+        "term": "tasks",
+        "score": 0.6249,
+        "evidence": []
+      }
+    ],
+    "sec-015-task-results": [
+      {
+        "term": "micro-f",
+        "score": 1.0546,
+        "evidence": []
+      },
+      {
+        "term": "tasks like",
+        "score": 0.936,
+        "evidence": []
+      },
+      {
+        "term": "extraction",
+        "score": 0.5934,
+        "evidence": []
+      }
+    ],
+    "sec-016-few-shot-prompting": [
+      {
+        "term": "few-shot prompting",
+        "score": 4.7505,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "zero-shot prompt",
+        "score": 2.2675,
+        "evidence": []
+      },
+      {
+        "term": "baseline zero-shot",
+        "score": 2.1664,
+        "evidence": []
+      },
+      {
+        "term": "claims classification",
+        "score": 2.0708,
+        "evidence": []
+      },
+      {
+        "term": "shot prompt",
+        "score": 2.0258,
+        "evidence": []
+      },
+      {
+        "term": "contact classification",
+        "score": 1.9584,
+        "evidence": []
+      },
+      {
+        "term": "zero-shot setting",
+        "score": 1.8903,
+        "evidence": []
+      },
+      {
+        "term": "classification tasks",
+        "score": 1.8599,
+        "evidence": []
+      }
+    ],
+    "sec-017-gpt-4-and-gpt-4o-comparison": [
+      {
+        "term": "gpt-4o",
+        "score": 1.8855,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "mmlu genetics",
+        "score": 1.7737,
+        "evidence": []
+      },
+      {
+        "term": "open-weight models",
+        "score": 1.7168,
+        "evidence": []
+      },
+      {
+        "term": "gpt",
+        "score": 1.6744,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "micro-f score",
+        "score": 1.3225,
+        "evidence": []
+      },
+      {
+        "term": "extraction",
+        "score": 0.9678,
+        "evidence": []
+      }
+    ],
+    "sec-018-quantization-performance-impact": [
+      {
+        "term": "awq quantization",
+        "score": 3.202,
+        "evidence": []
+      },
+      {
+        "term": "int awq",
+        "score": 2.9245,
+        "evidence": []
+      },
+      {
+        "term": "impact",
+        "score": 1.3786,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "diff",
+        "score": 1.3117,
+        "evidence": []
+      },
+      {
+        "term": "llama",
+        "score": 1.1955,
+        "evidence": []
+      },
+      {
+        "term": "ppts",
+        "score": 1.1912,
+        "evidence": []
+      },
+      {
+        "term": "model parameters",
+        "score": 1.1197,
+        "evidence": []
+      },
+      {
+        "term": "classification",
+        "score": 0.8917,
+        "evidence": []
+      }
+    ],
+    "sec-019-discussion": [
+      {
+        "term": "public health",
+        "score": 2.6059,
+        "evidence": []
+      },
+      {
+        "term": "health tasks",
+        "score": 2.4662,
+        "evidence": []
+      },
+      {
+        "term": "health text",
+        "score": 2.217,
+        "evidence": []
+      },
+      {
+        "term": "extraction tasks",
+        "score": 1.956,
+        "evidence": []
+      },
+      {
+        "term": "manual annotation",
+        "score": 1.8508,
+        "evidence": []
+      },
+      {
+        "term": "drugs extraction",
+        "score": 1.7663,
+        "evidence": []
+      },
+      {
+        "term": "llm extracting",
+        "score": 1.7164,
+        "evidence": []
+      },
+      {
+        "term": "some public",
+        "score": 1.6996,
+        "evidence": []
+      }
+    ],
+    "sec-020-conclusion": [
+      {
+        "term": "arxiv preprint",
+        "score": 4.2917,
+        "evidence": []
+      },
+      {
+        "term": "public health",
+        "score": 3.204,
+        "evidence": []
+      },
+      {
+        "term": "health equity",
+        "score": 3.1497,
+        "evidence": []
+      },
+      {
+        "term": "hao zhang",
+        "score": 3.1383,
+        "evidence": []
+      },
+      {
+        "term": "health surveillance",
+        "score": 3.1147,
+        "evidence": []
+      },
+      {
+        "term": "delivering health",
+        "score": 2.9106,
+        "evidence": []
+      },
+      {
+        "term": "martin katz",
+        "score": 2.7974,
+        "evidence": []
+      },
+      {
+        "term": "health tasks",
+        "score": 2.7476,
+        "evidence": []
+      }
+    ],
+    "sec-021-appendix-literature-on-domain-specific-evaluatio": [
+      {
+        "term": "evaluations",
+        "score": 1.3673,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "public health",
+        "score": 1.02,
+        "evidence": []
+      },
+      {
+        "term": "domain",
+        "score": 0.6183,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "literature",
+        "score": 0.5797,
+        "evidence": [
+          "heading"
+        ]
+      }
+    ],
+    "sec-023-level-of-generality": [
+      {
+        "term": "domain evaluations",
+        "score": 2.2439,
+        "evidence": []
+      },
+      {
+        "term": "involved collecting",
+        "score": 1.7982,
+        "evidence": []
+      },
+      {
+        "term": "general domain",
+        "score": 1.6032,
+        "evidence": []
+      },
+      {
+        "term": "human evaluation",
+        "score": 1.5992,
+        "evidence": []
+      },
+      {
+        "term": "human assessments",
+        "score": 1.5477,
+        "evidence": []
+      },
+      {
+        "term": "nlg",
+        "score": 1.5044,
+        "evidence": []
+      },
+      {
+        "term": "generality",
+        "score": 1.4694,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "medicine",
+        "score": 1.1605,
+        "evidence": []
+      }
+    ],
+    "sec-024-outcome-of-interest": [
+      {
+        "term": "protected characteristics",
+        "score": 1.6055,
+        "evidence": []
+      },
+      {
+        "term": "nlu tasks",
+        "score": 1.292,
+        "evidence": []
+      },
+      {
+        "term": "bias",
+        "score": 1.2689,
+        "evidence": []
+      },
+      {
+        "term": "public health",
+        "score": 1.1701,
+        "evidence": []
+      },
+      {
+        "term": "carried out",
+        "score": 1.1127,
+        "evidence": []
+      },
+      {
+        "term": "interest",
+        "score": 1.1036,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "fairness",
+        "score": 1.0132,
+        "evidence": []
+      },
+      {
+        "term": "evaluations",
+        "score": 0.8836,
+        "evidence": []
+      }
+    ],
+    "sec-025-summary": [
+      {
+        "term": "broadest",
+        "score": 0.6305,
+        "evidence": []
+      },
+      {
+        "term": "nlu",
+        "score": 0.5101,
+        "evidence": []
+      },
+      {
+        "term": "assessments",
+        "score": 0.4534,
+        "evidence": []
+      }
+    ],
+    "sec-026-existing-evaluations-of-llms-in-public-health-an": [
+      {
+        "term": "evaluations",
+        "score": 1.5874,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "health",
+        "score": 0.7232,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "public",
+        "score": 0.5639,
+        "evidence": [
+          "heading"
+        ]
+      }
+    ],
+    "sec-027-disease-and-health-issue-classification-and-extr": [
+      {
+        "term": "rare diseases",
+        "score": 2.4946,
+        "evidence": []
+      },
+      {
+        "term": "health",
+        "score": 2.0303,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "zero-shot prompting",
+        "score": 1.8876,
+        "evidence": []
+      },
+      {
+        "term": "evaluate chatgpt",
+        "score": 1.6482,
+        "evidence": []
+      },
+      {
+        "term": "public health",
+        "score": 1.4621,
+        "evidence": []
+      },
+      {
+        "term": "gpt",
+        "score": 1.1985,
+        "evidence": []
+      },
+      {
+        "term": "classification",
+        "score": 1.0935,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "single label",
+        "score": 0.8183,
+        "evidence": []
+      }
+    ],
+    "sec-028-drug-and-intervention-extraction": [
+      {
+        "term": "one-shot prompting",
+        "score": 1.9137,
+        "evidence": []
+      },
+      {
+        "term": "evaluate gpt",
+        "score": 1.7299,
+        "evidence": []
+      },
+      {
+        "term": "medical reports",
+        "score": 1.6386,
+        "evidence": []
+      },
+      {
+        "term": "public health",
+        "score": 1.2865,
+        "evidence": []
+      },
+      {
+        "term": "ade",
+        "score": 1.2846,
+        "evidence": []
+      },
+      {
+        "term": "ground truth",
+        "score": 1.188,
+        "evidence": []
+      },
+      {
+        "term": "drug",
+        "score": 1.0417,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "llms ability",
+        "score": 1.0377,
+        "evidence": []
+      }
+    ],
+    "sec-029-relevant-sub-sets-of-general-evaluations": [
+      {
+        "term": "public health",
+        "score": 1.4943,
+        "evidence": []
+      },
+      {
+        "term": "relevant",
+        "score": 1.1821,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "evaluations",
+        "score": 1.0835,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "subsets",
+        "score": 1.0285,
+        "evidence": []
+      },
+      {
+        "term": "pubmedqa",
+        "score": 0.8283,
+        "evidence": []
+      },
+      {
+        "term": "general",
+        "score": 0.7842,
+        "evidence": [
+          "heading"
+        ]
+      }
+    ],
+    "sec-030-appendix-annotations": [
+      {
+        "term": "evalu ation",
+        "score": 2.884,
+        "evidence": []
+      },
+      {
+        "term": "health specialists",
+        "score": 2.8777,
+        "evidence": []
+      },
+      {
+        "term": "ond reviewer",
+        "score": 2.7634,
+        "evidence": []
+      },
+      {
+        "term": "annotation confidence",
+        "score": 2.6707,
+        "evidence": []
+      },
+      {
+        "term": "reviewer involved",
+        "score": 2.5823,
+        "evidence": []
+      },
+      {
+        "term": "manual annotation",
+        "score": 2.4905,
+        "evidence": []
+      },
+      {
+        "term": "spot checking",
+        "score": 2.4753,
+        "evidence": []
+      },
+      {
+        "term": "health experts",
+        "score": 2.4469,
+        "evidence": []
+      }
+    ],
+    "sec-031-appendix-example-prompts": [
+      {
+        "term": "shot prompt",
+        "score": 1.9346,
+        "evidence": []
+      },
+      {
+        "term": "zero shot",
+        "score": 1.749,
+        "evidence": []
+      },
+      {
+        "term": "ncbi disease",
+        "score": 1.566,
+        "evidence": []
+      }
+    ],
+    "sec-front-matter": [
+      {
+        "term": "public health",
+        "score": 2.1448,
+        "evidence": []
+      },
+      {
+        "term": "micro-f scores",
+        "score": 2.0327,
+        "evidence": []
+      },
+      {
+        "term": "open-weight llms",
+        "score": 1.6952,
+        "evidence": []
+      },
+      {
+        "term": "annotated datasets",
+        "score": 1.1521,
+        "evidence": []
+      },
+      {
+        "term": "free text",
+        "score": 1.1368,
+        "evidence": []
+      },
+      {
+        "term": "highest performing",
+        "score": 1.1037,
+        "evidence": []
+      },
+      {
+        "term": "risk factors",
+        "score": 0.9886,
+        "evidence": []
+      },
+      {
+        "term": "performing model",
+        "score": 0.9487,
+        "evidence": []
+      }
+    ]
+  }
+}

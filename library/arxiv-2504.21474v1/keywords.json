@@ -3,71 +3,71 @@
   "entry": "arxiv-2504.21474v1",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 1860,
-    "terms": 11867,
+    "sections": 2140,
+    "terms": 14687,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "subject tagging",
-      "score": 10.7143,
+      "score": 10.8873,
       "evidence": []
     },
     {
       "term": "subject alignment",
-      "score": 10.5328,
+      "score": 10.2412,
       "evidence": []
     },
     {
       "term": "subject indexing",
-      "score": 9.2195,
+      "score": 9.417,
       "evidence": []
     },
     {
       "term": "subject retrieval",
-      "score": 9.2179,
+      "score": 9.3602,
+      "evidence": []
+    },
+    {
+      "term": "subject categories",
+      "score": 7.9979,
       "evidence": []
     },
     {
       "term": "ontoaligner pipeline",
-      "score": 8.0625,
+      "score": 7.9743,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "babaei giglou",
-      "score": 8.0127,
-      "evidence": []
-    },
-    {
-      "term": "subject categories",
-      "score": 7.9768,
+      "score": 7.9033,
       "evidence": []
     },
     {
       "term": "subject classifications",
-      "score": 7.6681,
-      "evidence": []
-    },
-    {
-      "term": "ontology alignment",
-      "score": 7.6608,
+      "score": 7.6432,
       "evidence": []
     },
     {
       "term": "subject headings",
-      "score": 7.2259,
+      "score": 7.3652,
+      "evidence": []
+    },
+    {
+      "term": "ontology alignment",
+      "score": 7.2808,
       "evidence": []
     },
     {
       "term": "technical records",
-      "score": 6.8267,
+      "score": 6.7337,
       "evidence": []
     },
     {
       "term": "hamed babaei",
-      "score": 5.9821,
+      "score": 5.8517,
       "evidence": []
     }
   ],
@@ -75,329 +75,329 @@
     "sec-000-introduction": [
       {
         "term": "gnd taxonomy",
-        "score": 2.0538,
+        "score": 2.0481,
         "evidence": []
       },
       {
         "term": "subject tagging",
-        "score": 1.9185,
+        "score": 1.9449,
         "evidence": []
       },
       {
         "term": "ontology alignment",
-        "score": 1.7186,
+        "score": 1.6408,
         "evidence": []
       },
       {
         "term": "library systems",
-        "score": 1.401,
+        "score": 1.3957,
         "evidence": []
       },
       {
         "term": "technical records",
-        "score": 1.2626,
+        "score": 1.2435,
         "evidence": []
       },
       {
         "term": "shared task",
-        "score": 1.1576,
+        "score": 1.0664,
         "evidence": []
       },
       {
         "term": "ontologies",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
-        "term": "llms",
-        "score": 0.9085,
+        "term": "librarian",
+        "score": 0.9081,
         "evidence": []
       }
     ],
     "sec-001-dataset": [
       {
         "term": "ontoaligner",
-        "score": 1.0086,
+        "score": 1.0155,
         "evidence": []
       },
       {
         "term": "bottlenecks",
-        "score": 0.6293,
+        "score": 0.5727,
         "evidence": []
       },
       {
         "term": "retrieval-augmented",
-        "score": 0.5176,
+        "score": 0.4878,
         "evidence": []
       }
     ],
     "sec-002-related-work": [
       {
         "term": "controlled vocabularies",
-        "score": 1.4088,
+        "score": 1.3862,
         "evidence": []
       },
       {
         "term": "pirmann",
-        "score": 1.2827,
+        "score": 1.2846,
         "evidence": []
       },
       {
         "term": "social tagging",
-        "score": 1.2443,
+        "score": 1.2399,
         "evidence": []
       },
       {
         "term": "based indexing",
-        "score": 1.1315,
+        "score": 1.1285,
         "evidence": []
       },
       {
         "term": "library systems",
-        "score": 1.0937,
+        "score": 1.0893,
         "evidence": []
       },
       {
         "term": "gerolimos",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "ontology based",
-        "score": 0.9597,
+        "score": 0.9472,
         "evidence": []
       },
       {
         "term": "faces",
-        "score": 0.8204,
+        "score": 0.7912,
         "evidence": []
       }
     ],
     "sec-003-methodology": [
       {
         "term": "giglou",
-        "score": 0.8146,
+        "score": 0.8198,
         "evidence": []
       },
       {
         "term": "methodology",
-        "score": 0.812,
+        "score": 0.7903,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "rag",
-        "score": 0.7671,
+        "score": 0.7464,
         "evidence": []
       }
     ],
     "sec-004-ontoaligner-pipeline": [
       {
         "term": "ontoaligner",
-        "score": 2.8315,
+        "score": 2.8509,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "retriever module",
-        "score": 2.5014,
+        "score": 2.3727,
         "evidence": []
       },
       {
         "term": "librarian record",
-        "score": 2.0095,
+        "score": 2.0019,
         "evidence": []
       },
       {
         "term": "hierarchi cal",
-        "score": 1.921,
+        "score": 1.8956,
         "evidence": []
       },
       {
         "term": "sentence column",
-        "score": 1.8891,
+        "score": 1.8157,
         "evidence": []
       },
       {
         "term": "similarity score",
-        "score": 1.854,
-        "evidence": []
-      },
-      {
-        "term": "contrastive learning",
-        "score": 1.7937,
+        "score": 1.7463,
         "evidence": []
       },
       {
         "term": "textual similarity",
-        "score": 1.7409,
+        "score": 1.7097,
+        "evidence": []
+      },
+      {
+        "term": "relevant subjects",
+        "score": 1.7054,
         "evidence": []
       }
     ],
     "sec-005-results": [
       {
         "term": "higher precision",
-        "score": 2.1853,
+        "score": 1.938,
         "evidence": []
       },
       {
         "term": "record types",
-        "score": 1.5844,
+        "score": 1.5561,
         "evidence": []
       },
       {
         "term": "subjects across",
-        "score": 1.5352,
-        "evidence": []
-      },
-      {
-        "term": "performance across",
-        "score": 1.5225,
+        "score": 1.4377,
         "evidence": []
       },
       {
         "term": "fine tuning",
-        "score": 1.4209,
+        "score": 1.3589,
+        "evidence": []
+      },
+      {
+        "term": "performance across",
+        "score": 1.3153,
         "evidence": []
       },
       {
         "term": "recall",
-        "score": 1.2781,
+        "score": 1.3085,
         "evidence": []
       },
       {
-        "term": "across both",
-        "score": 1.1048,
+        "term": "dev",
+        "score": 1.0403,
         "evidence": []
       },
       {
         "term": "english",
-        "score": 1.0388,
+        "score": 1.0251,
         "evidence": []
       }
     ],
     "sec-006-qualitative-results": [
       {
         "term": "highest recall",
-        "score": 1.9636,
-        "evidence": []
-      },
-      {
-        "term": "subject classifications",
-        "score": 1.7965,
+        "score": 1.9234,
         "evidence": []
       },
       {
         "term": "qualitative",
-        "score": 1.7514,
+        "score": 1.729,
         "evidence": [
           "heading"
         ]
       },
       {
+        "term": "subject classifications",
+        "score": 1.7197,
+        "evidence": []
+      },
+      {
         "term": "subject categories",
-        "score": 1.6703,
+        "score": 1.6411,
         "evidence": []
       },
       {
         "term": "case studies",
-        "score": 1.5489,
-        "evidence": []
-      },
-      {
-        "term": "system performance",
-        "score": 1.1469,
+        "score": 1.4431,
         "evidence": []
       },
       {
         "term": "top-k values",
-        "score": 1.1099,
+        "score": 1.1014,
         "evidence": []
       },
       {
-        "term": "precision",
-        "score": 1.0332,
+        "term": "system performance",
+        "score": 1.0617,
+        "evidence": []
+      },
+      {
+        "term": "tec",
+        "score": 0.9081,
         "evidence": []
       }
     ],
     "sec-007-limitation-and-conclusion": [
       {
-        "term": "arxiv preprint",
-        "score": 2.6187,
-        "evidence": []
-      },
-      {
         "term": "hamed babaei",
-        "score": 2.6136,
+        "score": 2.5715,
         "evidence": []
       },
       {
         "term": "jennifer souza",
-        "score": 2.5906,
+        "score": 2.5529,
         "evidence": []
       },
       {
         "term": "sören auer",
-        "score": 2.4402,
+        "score": 2.4463,
         "evidence": []
       },
       {
         "term": "babaei giglou",
-        "score": 2.4198,
+        "score": 2.3813,
+        "evidence": []
+      },
+      {
+        "term": "arxiv preprint",
+        "score": 2.3561,
         "evidence": []
       },
       {
         "term": "subject tagging",
-        "score": 2.0048,
+        "score": 2.0344,
         "evidence": []
       },
       {
         "term": "oliver karras",
-        "score": 1.8782,
+        "score": 1.8159,
         "evidence": []
       },
       {
-        "term": "comprehen sive",
-        "score": 1.7926,
+        "term": "mathias begoin",
+        "score": 1.7847,
         "evidence": []
       }
     ],
     "sec-front-matter": [
       {
         "term": "subject tagging",
-        "score": 1.7973,
+        "score": 1.8226,
         "evidence": []
       },
       {
         "term": "semeval task",
-        "score": 1.3746,
+        "score": 1.3267,
         "evidence": []
       },
       {
         "term": "ontoaligner",
-        "score": 1.0086,
+        "score": 1.0155,
         "evidence": []
       },
       {
         "term": "mahsa",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "razmara",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "hamed",
-        "score": 0.9469,
+        "score": 0.9497,
         "evidence": []
       },
       {
         "term": "homa",
-        "score": 0.9118,
+        "score": 0.9153,
         "evidence": []
       }
     ]

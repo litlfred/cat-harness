@@ -3,69 +3,69 @@
   "entry": "rfc2119-key-words-requirement-levels",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 1860,
-    "terms": 11867,
+    "sections": 2140,
+    "terms": 14687,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "levels rfc",
-      "score": 4.6256,
-      "evidence": []
-    },
-    {
-      "term": "rfc key",
-      "score": 4.6173,
+      "score": 4.6744,
       "evidence": []
     },
     {
       "term": "rfc editor",
-      "score": 4.5867,
+      "score": 4.6517,
+      "evidence": []
+    },
+    {
+      "term": "rfc key",
+      "score": 4.5743,
       "evidence": []
     },
     {
       "term": "requirement levels",
-      "score": 3.9324,
+      "score": 3.8104,
       "evidence": []
     },
     {
       "term": "key words",
-      "score": 3.8052,
+      "score": 3.6958,
       "evidence": []
     },
     {
       "term": "indicate requirement",
-      "score": 3.762,
+      "score": 3.6559,
       "evidence": []
     },
     {
       "term": "words march",
-      "score": 3.4455,
+      "score": 3.4387,
       "evidence": []
     },
     {
       "term": "rfcs",
-      "score": 2.7941,
+      "score": 2.8138,
       "evidence": []
     },
     {
       "term": "harvard university",
-      "score": 1.942,
+      "score": 1.9061,
       "evidence": []
     },
     {
       "term": "phrase",
-      "score": 1.8755,
+      "score": 1.8436,
       "evidence": []
     },
     {
       "term": "bradner",
-      "score": 1.8105,
+      "score": 1.8228,
       "evidence": []
     },
     {
       "term": "security implications",
-      "score": 1.8034,
+      "score": 1.7553,
       "evidence": []
     }
   ],
@@ -73,113 +73,113 @@
     "page-001": [
       {
         "term": "requirement levels",
-        "score": 1.7136,
+        "score": 1.6579,
         "evidence": []
       },
       {
         "term": "indicate requirement",
-        "score": 1.6455,
+        "score": 1.5961,
         "evidence": []
       },
       {
         "term": "key words",
-        "score": 1.5183,
+        "score": 1.4788,
         "evidence": []
       },
       {
         "term": "phrase",
-        "score": 1.0463,
+        "score": 1.0285,
         "evidence": []
       },
       {
         "term": "rfcs",
-        "score": 1.0006,
+        "score": 1.0076,
         "evidence": []
       },
       {
         "term": "current practice",
-        "score": 1.0005,
+        "score": 0.9817,
         "evidence": []
       },
       {
         "term": "rfc",
-        "score": 0.9109,
+        "score": 0.9298,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "valid reasons",
-        "score": 1.1369,
+        "score": 1.0804,
         "evidence": []
       },
       {
         "term": "exist valid",
-        "score": 1.0252,
+        "score": 1.0207,
         "evidence": []
       },
       {
         "term": "full implications",
-        "score": 1.0193,
+        "score": 0.97,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "another implementation",
-        "score": 1.1853,
+        "score": 1.165,
         "evidence": []
       },
       {
         "term": "security implications",
-        "score": 1.1732,
+        "score": 1.1543,
         "evidence": []
       },
       {
         "term": "vendor",
-        "score": 1.0955,
+        "score": 1.0779,
         "evidence": []
       },
       {
         "term": "option",
-        "score": 1.0013,
+        "score": 0.944,
         "evidence": []
       },
       {
         "term": "interoperate",
-        "score": 0.8709,
+        "score": 0.875,
         "evidence": []
       },
       {
         "term": "key words",
-        "score": 0.8692,
+        "score": 0.8427,
         "evidence": []
       },
       {
-        "term": "robert",
-        "score": 0.8378,
+        "term": "rfcs",
+        "score": 0.7985,
         "evidence": []
       },
       {
         "term": "item",
-        "score": 0.8012,
+        "score": 0.7845,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "key words",
-        "score": 0.8692,
+        "score": 0.8427,
         "evidence": []
       },
       {
         "term": "rfc",
-        "score": 0.7534,
+        "score": 0.769,
         "evidence": []
       },
       {
         "term": "harvard",
-        "score": 0.7227,
+        "score": 0.7295,
         "evidence": []
       }
     ]

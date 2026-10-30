@@ -3,69 +3,69 @@
   "entry": "agent-skills---google-antigravity-docs",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 1860,
-    "terms": 11867,
+    "sections": 2140,
+    "terms": 14687,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "agent skills",
-      "score": 5.7061,
+      "score": 5.6432,
       "evidence": []
     },
     {
       "term": "google antigravity",
-      "score": 5.3786,
+      "score": 5.3704,
       "evidence": []
     },
     {
       "term": "antigravity docs",
-      "score": 5.2115,
+      "score": 5.263,
       "evidence": []
     },
     {
       "term": "antigravity ide",
-      "score": 5.0588,
+      "score": 5.053,
       "evidence": []
     },
     {
       "term": "antigravity cli",
-      "score": 4.7145,
+      "score": 4.7497,
       "evidence": []
     },
     {
       "term": "skill looks",
-      "score": 4.1076,
-      "evidence": []
-    },
-    {
-      "term": "available skills",
-      "score": 4.0441,
+      "score": 4.1716,
       "evidence": []
     },
     {
       "term": "skill instructions",
-      "score": 4.0415,
+      "score": 4.1122,
       "evidence": []
     },
     {
-      "term": "agent sees",
-      "score": 3.7923,
+      "term": "available skills",
+      "score": 4.076,
       "evidence": []
     },
     {
       "term": "required skill",
-      "score": 3.6561,
+      "score": 3.7281,
+      "evidence": []
+    },
+    {
+      "term": "agent sees",
+      "score": 3.647,
       "evidence": []
     },
     {
       "term": "agent reads",
-      "score": 3.6551,
+      "score": 3.4603,
       "evidence": []
     },
     {
-      "term": "keyboard arrow",
-      "score": 2.8672,
+      "term": "get started",
+      "score": 2.8694,
       "evidence": []
     }
   ],
@@ -73,138 +73,138 @@
     "page-001": [
       {
         "term": "agent skills",
-        "score": 1.7864,
+        "score": 1.7652,
         "evidence": []
       },
       {
         "term": "antigravity",
-        "score": 1.3442,
+        "score": 1.3523,
         "evidence": []
       },
       {
         "term": "required skill",
-        "score": 1.2122,
+        "score": 1.2314,
         "evidence": []
       },
       {
         "term": "scripts",
-        "score": 0.8037,
-        "evidence": []
-      },
-      {
-        "term": "instructions",
-        "score": 0.6475,
+        "score": 0.7983,
         "evidence": []
       },
       {
         "term": "optional",
-        "score": 0.6339,
+        "score": 0.6498,
+        "evidence": []
+      },
+      {
+        "term": "instructions",
+        "score": 0.6441,
         "evidence": []
       },
       {
         "term": "schemas",
-        "score": 0.6336,
+        "score": 0.6421,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "yaml frontmatter",
-        "score": 1.4094,
+        "score": 1.4291,
         "evidence": []
       },
       {
         "term": "skill",
-        "score": 0.8333,
-        "evidence": []
-      },
-      {
-        "term": "reviewing",
-        "score": 0.8031,
+        "score": 0.8536,
         "evidence": []
       },
       {
         "term": "code",
-        "score": 0.7613,
+        "score": 0.7663,
+        "evidence": []
+      },
+      {
+        "term": "reviewing",
+        "score": 0.7617,
         "evidence": []
       },
       {
         "term": "style",
-        "score": 0.6242,
+        "score": 0.6319,
         "evidence": []
       },
       {
         "term": "follow",
-        "score": 0.5981,
+        "score": 0.5828,
         "evidence": []
       },
       {
         "term": "agent",
-        "score": 0.5372,
+        "score": 0.5129,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "skill",
-        "score": 0.961,
-        "evidence": []
-      },
-      {
-        "term": "agent",
-        "score": 0.7686,
+        "score": 0.9843,
         "evidence": []
       },
       {
         "term": "decides",
-        "score": 0.7597,
+        "score": 0.7659,
+        "evidence": []
+      },
+      {
+        "term": "agent",
+        "score": 0.7338,
         "evidence": []
       },
       {
         "term": "surface",
-        "score": 0.634,
+        "score": 0.6207,
         "evidence": []
       },
       {
         "term": "descriptions",
-        "score": 0.6136,
-        "evidence": []
-      },
-      {
-        "term": "focused",
-        "score": 0.5707,
+        "score": 0.5702,
         "evidence": []
       },
       {
         "term": "scripts",
-        "score": 0.5486,
+        "score": 0.5449,
+        "evidence": []
+      },
+      {
+        "term": "focused",
+        "score": 0.5438,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "keyboard arrow",
-        "score": 1.758,
+        "score": 1.7241,
         "evidence": []
       },
       {
         "term": "antigravity",
-        "score": 1.56,
+        "score": 1.5695,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 0.8719,
+        "score": 0.8851,
         "evidence": []
       },
       {
         "term": "locations",
-        "score": 0.7193,
+        "score": 0.6577,
         "evidence": []
       },
       {
         "term": "workspaces",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       }
     ]

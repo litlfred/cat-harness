@@ -1,0 +1,679 @@
+{
+  "$schema": "folio-keywords/v1",
+  "entry": "arxiv-2607.00053v1",
+  "corpus": {
+    "library": "cat-harness/library",
+    "sections": 2140,
+    "terms": 14687,
+    "weighting": "log-entropy"
+  },
+  "document": [
+    {
+      "term": "llm routing",
+      "score": 14.7506,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "model routing",
+      "score": 14.686,
+      "evidence": []
+    },
+    {
+      "term": "resolved routing",
+      "score": 14.0697,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "temporal routing",
+      "score": 13.7781,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "multi-llm routing",
+      "score": 13.2924,
+      "evidence": []
+    },
+    {
+      "term": "routing curves",
+      "score": 13.0183,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "one-sided routing",
+      "score": 13.0085,
+      "evidence": []
+    },
+    {
+      "term": "harms routing",
+      "score": 12.9172,
+      "evidence": []
+    },
+    {
+      "term": "routing decision",
+      "score": 12.566,
+      "evidence": []
+    },
+    {
+      "term": "routing framework",
+      "score": 12.4216,
+      "evidence": []
+    },
+    {
+      "term": "routing every",
+      "score": 12.3146,
+      "evidence": []
+    },
+    {
+      "term": "per-instance routing",
+      "score": 12.2735,
+      "evidence": []
+    }
+  ],
+  "sections": {
+    "sec-000-abstract": [
+      {
+        "term": "partial trajectory",
+        "score": 1.4556,
+        "evidence": []
+      },
+      {
+        "term": "swe",
+        "score": 1.0547,
+        "evidence": []
+      },
+      {
+        "term": "cheap",
+        "score": 0.828,
+        "evidence": []
+      },
+      {
+        "term": "frontier",
+        "score": 0.7617,
+        "evidence": []
+      },
+      {
+        "term": "routing",
+        "score": 0.7495,
+        "evidence": []
+      },
+      {
+        "term": "agentic",
+        "score": 0.5659,
+        "evidence": []
+      }
+    ],
+    "sec-001-1-introduction": [
+      {
+        "term": "frontier",
+        "score": 0.7617,
+        "evidence": []
+      },
+      {
+        "term": "university",
+        "score": 0.7163,
+        "evidence": []
+      },
+      {
+        "term": "korea",
+        "score": 0.6305,
+        "evidence": []
+      },
+      {
+        "term": "wasteful",
+        "score": 0.6305,
+        "evidence": []
+      }
+    ],
+    "sec-002-22-llm-routing": [
+      {
+        "term": "jitkrittum",
+        "score": 0.875,
+        "evidence": []
+      },
+      {
+        "term": "swe",
+        "score": 0.8358,
+        "evidence": []
+      },
+      {
+        "term": "observations",
+        "score": 0.637,
+        "evidence": []
+      },
+      {
+        "term": "cheapest",
+        "score": 0.6305,
+        "evidence": []
+      },
+      {
+        "term": "multi-module",
+        "score": 0.6305,
+        "evidence": []
+      }
+    ],
+    "sec-003-3-value-based-temporal-routing": [
+      {
+        "term": "routing",
+        "score": 1.7403,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "partial trajectory",
+        "score": 1.4556,
+        "evidence": []
+      },
+      {
+        "term": "swe-router",
+        "score": 1.0309,
+        "evidence": []
+      },
+      {
+        "term": "value head",
+        "score": 1.0072,
+        "evidence": []
+      },
+      {
+        "term": "temporal",
+        "score": 0.864,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "conditioning",
+        "score": 0.6854,
+        "evidence": []
+      }
+    ],
+    "sec-005-swe-router-proposed": [
+      {
+        "term": "partial trajectory",
+        "score": 1.6066,
+        "evidence": []
+      },
+      {
+        "term": "swe-router",
+        "score": 1.0309,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "value head",
+        "score": 1.0072,
+        "evidence": []
+      },
+      {
+        "term": "cheap",
+        "score": 0.828,
+        "evidence": []
+      },
+      {
+        "term": "weak",
+        "score": 0.6581,
+        "evidence": []
+      }
+    ],
+    "sec-007-21-multi-turn-trajectories-in-agentic-tasks": [
+      {
+        "term": "one-sided routing",
+        "score": 1.8776,
+        "evidence": []
+      },
+      {
+        "term": "continue iff",
+        "score": 1.6659,
+        "evidence": []
+      },
+      {
+        "term": "agentic",
+        "score": 1.4282,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "binary reward",
+        "score": 1.2943,
+        "evidence": []
+      },
+      {
+        "term": "turns",
+        "score": 0.9639,
+        "evidence": []
+      },
+      {
+        "term": "pareto",
+        "score": 0.9497,
+        "evidence": []
+      },
+      {
+        "term": "trajectory",
+        "score": 0.8791,
+        "evidence": []
+      },
+      {
+        "term": "router",
+        "score": 0.8757,
+        "evidence": []
+      }
+    ],
+    "sec-009-4-theoretical-results": [
+      {
+        "term": "partial trajectory",
+        "score": 1.4556,
+        "evidence": []
+      },
+      {
+        "term": "strict whenever",
+        "score": 1.3762,
+        "evidence": []
+      },
+      {
+        "term": "expected utility",
+        "score": 1.0049,
+        "evidence": []
+      },
+      {
+        "term": "bayes",
+        "score": 0.875,
+        "evidence": []
+      },
+      {
+        "term": "routing",
+        "score": 0.8701,
+        "evidence": []
+      },
+      {
+        "term": "conditioning",
+        "score": 0.6854,
+        "evidence": []
+      },
+      {
+        "term": "turns",
+        "score": 0.658,
+        "evidence": []
+      },
+      {
+        "term": "conditional",
+        "score": 0.6224,
+        "evidence": []
+      }
+    ],
+    "sec-010-51-evaluation-metrics": [
+      {
+        "term": "return patch",
+        "score": 1.4995,
+        "evidence": []
+      },
+      {
+        "term": "value head",
+        "score": 1.2709,
+        "evidence": []
+      },
+      {
+        "term": "weak model",
+        "score": 1.0368,
+        "evidence": []
+      },
+      {
+        "term": "normalised",
+        "score": 0.9497,
+        "evidence": []
+      },
+      {
+        "term": "strong model",
+        "score": 0.8661,
+        "evidence": []
+      }
+    ],
+    "sec-011-52-experiment-setting": [
+      {
+        "term": "all-strong endpoints",
+        "score": 1.9634,
+        "evidence": []
+      },
+      {
+        "term": "per-instance routing",
+        "score": 1.8768,
+        "evidence": []
+      },
+      {
+        "term": "resolved rate",
+        "score": 1.6061,
+        "evidence": []
+      },
+      {
+        "term": "weak model",
+        "score": 1.5444,
+        "evidence": []
+      },
+      {
+        "term": "random-assignment reference",
+        "score": 1.464,
+        "evidence": []
+      },
+      {
+        "term": "routing decision",
+        "score": 1.4251,
+        "evidence": []
+      },
+      {
+        "term": "all-weak",
+        "score": 1.2846,
+        "evidence": []
+      },
+      {
+        "term": "swe-router",
+        "score": 1.1968,
+        "evidence": []
+      }
+    ],
+    "sec-012-does-conditioning-on-the-partial-trajectory-impr": [
+      {
+        "term": "routing curves",
+        "score": 2.0464,
+        "evidence": []
+      },
+      {
+        "term": "temporal routing",
+        "score": 1.8089,
+        "evidence": []
+      },
+      {
+        "term": "route-auc",
+        "score": 1.1751,
+        "evidence": []
+      },
+      {
+        "term": "passes above",
+        "score": 1.0952,
+        "evidence": []
+      },
+      {
+        "term": "baselines",
+        "score": 1.0895,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "both pairs",
+        "score": 1.0484,
+        "evidence": []
+      },
+      {
+        "term": "test split",
+        "score": 1.0357,
+        "evidence": []
+      },
+      {
+        "term": "swe-router",
+        "score": 1.0309,
+        "evidence": []
+      }
+    ],
+    "sec-013-6-related-work": [
+      {
+        "term": "equips",
+        "score": 0.6305,
+        "evidence": []
+      },
+      {
+        "term": "frugalgpt",
+        "score": 0.6305,
+        "evidence": []
+      },
+      {
+        "term": "routellm",
+        "score": 0.6305,
+        "evidence": []
+      },
+      {
+        "term": "chen",
+        "score": 0.604,
+        "evidence": []
+      }
+    ],
+    "sec-014-7-conclusion": [
+      {
+        "term": "swe-router",
+        "score": 1.1968,
+        "evidence": []
+      },
+      {
+        "term": "routing",
+        "score": 0.7495,
+        "evidence": []
+      },
+      {
+        "term": "bayes-optimality",
+        "score": 0.6305,
+        "evidence": []
+      }
+    ],
+    "sec-015-impact-statement": [
+      {
+        "term": "considering",
+        "score": 0.6198,
+        "evidence": []
+      },
+      {
+        "term": "routing",
+        "score": 0.594,
+        "evidence": []
+      },
+      {
+        "term": "misused",
+        "score": 0.5938,
+        "evidence": []
+      }
+    ],
+    "sec-016-references": [
+      {
+        "term": "arxiv preprint",
+        "score": 4.5393,
+        "evidence": []
+      },
+      {
+        "term": "multi-llm routing",
+        "score": 2.6714,
+        "evidence": []
+      },
+      {
+        "term": "international conference",
+        "score": 2.6118,
+        "evidence": []
+      },
+      {
+        "term": "url org",
+        "score": 2.406,
+        "evidence": []
+      },
+      {
+        "term": "org abs",
+        "score": 2.3229,
+        "evidence": []
+      },
+      {
+        "term": "url https",
+        "score": 2.2423,
+        "evidence": []
+      },
+      {
+        "term": "neu ral",
+        "score": 2.2393,
+        "evidence": []
+      },
+      {
+        "term": "url net",
+        "score": 2.2266,
+        "evidence": []
+      }
+    ],
+    "sec-018-a1-data-collection": [
+      {
+        "term": "swe-smith",
+        "score": 1.2026,
+        "evidence": []
+      },
+      {
+        "term": "trajectories",
+        "score": 0.8621,
+        "evidence": []
+      },
+      {
+        "term": "instances",
+        "score": 0.7979,
+        "evidence": []
+      },
+      {
+        "term": "swe-bench",
+        "score": 0.7011,
+        "evidence": []
+      }
+    ],
+    "sec-019-a2-experiment-designs": [
+      {
+        "term": "swe-smith",
+        "score": 1.0359,
+        "evidence": []
+      },
+      {
+        "term": "split",
+        "score": 0.8188,
+        "evidence": []
+      },
+      {
+        "term": "swe-bench",
+        "score": 0.7011,
+        "evidence": []
+      },
+      {
+        "term": "head",
+        "score": 0.6911,
+        "evidence": []
+      },
+      {
+        "term": "verified",
+        "score": 0.6436,
+        "evidence": []
+      }
+    ],
+    "sec-020-b-additional-experiment-results": [
+      {
+        "term": "swe-router fixed",
+        "score": 2.8588,
+        "evidence": []
+      },
+      {
+        "term": "embed knn",
+        "score": 2.7533,
+        "evidence": []
+      },
+      {
+        "term": "embed xgb",
+        "score": 2.7533,
+        "evidence": []
+      },
+      {
+        "term": "non-temporal router",
+        "score": 2.1642,
+        "evidence": []
+      },
+      {
+        "term": "swe-smith test",
+        "score": 1.8334,
+        "evidence": []
+      },
+      {
+        "term": "test split",
+        "score": 1.5815,
+        "evidence": []
+      },
+      {
+        "term": "route-auc",
+        "score": 1.5188,
+        "evidence": []
+      },
+      {
+        "term": "experiment",
+        "score": 1.5164,
+        "evidence": [
+          "heading"
+        ]
+      }
+    ],
+    "sec-021-c-proof-of-theorem-41": [
+      {
+        "term": "proof",
+        "score": 0.6412,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "iff",
+        "score": 0.5992,
+        "evidence": []
+      },
+      {
+        "term": "tower",
+        "score": 0.5938,
+        "evidence": []
+      }
+    ],
+    "sec-022-d-additional-related-work": [
+      {
+        "term": "software engineering",
+        "score": 1.0468,
+        "evidence": []
+      },
+      {
+        "term": "routers",
+        "score": 0.959,
+        "evidence": []
+      },
+      {
+        "term": "zhang",
+        "score": 0.9565,
+        "evidence": []
+      },
+      {
+        "term": "routing",
+        "score": 0.8701,
+        "evidence": []
+      },
+      {
+        "term": "wang",
+        "score": 0.813,
+        "evidence": []
+      },
+      {
+        "term": "deng",
+        "score": 0.7787,
+        "evidence": []
+      },
+      {
+        "term": "huang",
+        "score": 0.7041,
+        "evidence": []
+      },
+      {
+        "term": "ding",
+        "score": 0.7012,
+        "evidence": []
+      }
+    ]
+  }
+}

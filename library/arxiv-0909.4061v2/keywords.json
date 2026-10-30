@@ -3,69 +3,69 @@
   "entry": "arxiv-0909.4061v2",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 1860,
-    "terms": 11867,
+    "sections": 2140,
+    "terms": 14687,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "matrix approximation",
-      "score": 92.2894,
+      "score": 92.3023,
       "evidence": []
     },
     {
       "term": "random matrix",
-      "score": 87.8076,
+      "score": 86.656,
       "evidence": []
     },
     {
       "term": "randomized matrix",
-      "score": 83.5728,
+      "score": 83.2799,
       "evidence": []
     },
     {
       "term": "gaussian matrix",
-      "score": 81.1863,
-      "evidence": []
-    },
-    {
-      "term": "approximate matrix",
-      "score": 75.1112,
+      "score": 80.2222,
       "evidence": []
     },
     {
       "term": "matrix factorization",
-      "score": 75.0446,
+      "score": 74.709,
+      "evidence": []
+    },
+    {
+      "term": "approximate matrix",
+      "score": 74.5519,
       "evidence": []
     },
     {
       "term": "orthonormal matrix",
-      "score": 73.8554,
+      "score": 73.4934,
       "evidence": []
     },
     {
       "term": "basis matrix",
-      "score": 73.5955,
+      "score": 72.6303,
       "evidence": []
     },
     {
       "term": "matrix decomposition",
-      "score": 72.1057,
+      "score": 71.0755,
       "evidence": []
     },
     {
       "term": "standard matrix",
-      "score": 71.3662,
+      "score": 70.355,
       "evidence": []
     },
     {
       "term": "low-rank matrix",
-      "score": 70.6892,
+      "score": 70.2144,
       "evidence": []
     },
     {
       "term": "matrix analysis",
-      "score": 70.411,
+      "score": 69.4609,
       "evidence": []
     }
   ],
@@ -73,2983 +73,2983 @@
     "page-001": [
       {
         "term": "low-rank matrix",
-        "score": 1.856,
+        "score": 1.8511,
         "evidence": []
       },
       {
         "term": "matrix decompositions",
-        "score": 1.8312,
+        "score": 1.8156,
         "evidence": []
       },
       {
         "term": "classical algorithms",
-        "score": 1.8175,
+        "score": 1.7765,
         "evidence": []
       },
       {
         "term": "randomized algorithms",
-        "score": 1.7227,
+        "score": 1.7313,
         "evidence": []
       },
       {
         "term": "matrix approximation",
-        "score": 1.6748,
+        "score": 1.6752,
         "evidence": []
       },
       {
         "term": "randomized techniques",
-        "score": 1.5785,
+        "score": 1.5644,
         "evidence": []
       },
       {
         "term": "input matrix",
-        "score": 1.506,
+        "score": 1.4926,
         "evidence": []
       },
       {
         "term": "value decomposition",
-        "score": 1.3451,
+        "score": 1.3043,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "classical algorithms",
-        "score": 1.8843,
+        "score": 1.847,
         "evidence": []
       },
       {
         "term": "randomized algorithms",
-        "score": 1.821,
+        "score": 1.8285,
         "evidence": []
       },
       {
         "term": "numerical algorithms",
-        "score": 1.701,
+        "score": 1.6787,
         "evidence": []
       },
       {
         "term": "randomized methods",
-        "score": 1.4909,
+        "score": 1.4736,
         "evidence": []
       },
       {
         "term": "computational resources",
-        "score": 1.1514,
-        "evidence": []
-      },
-      {
-        "term": "information sciences",
-        "score": 0.9325,
+        "score": 1.1339,
         "evidence": []
       },
       {
         "term": "factorizations",
-        "score": 0.9071,
+        "score": 0.9158,
         "evidence": []
       },
       {
         "term": "eﬀective",
-        "score": 0.9042,
+        "score": 0.9078,
+        "evidence": []
+      },
+      {
+        "term": "rendered",
+        "score": 0.9078,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "matrix approximation",
-        "score": 1.9372,
+        "score": 1.9416,
         "evidence": []
       },
       {
         "term": "low-rank approximation",
-        "score": 1.7502,
-        "evidence": []
-      },
-      {
-        "term": "numerical rank",
-        "score": 1.5822,
+        "score": 1.7702,
         "evidence": []
       },
       {
         "term": "input matrix",
-        "score": 1.5261,
+        "score": 1.5125,
+        "evidence": []
+      },
+      {
+        "term": "numerical rank",
+        "score": 1.5123,
         "evidence": []
       },
       {
         "term": "standard factorization",
-        "score": 1.279,
+        "score": 1.2705,
         "evidence": []
       },
       {
         "term": "compute standard",
-        "score": 1.2431,
+        "score": 1.1997,
         "evidence": []
       },
       {
         "term": "pca",
-        "score": 0.9469,
+        "score": 0.9497,
         "evidence": []
       },
       {
-        "term": "low-dimensional",
-        "score": 0.9046,
+        "term": "least-squares",
+        "score": 0.8557,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "orthonormal columns",
-        "score": 1.4496,
+        "score": 1.4519,
         "evidence": []
       },
       {
         "term": "approximation problem",
-        "score": 1.3662,
+        "score": 1.3614,
         "evidence": []
       },
       {
         "term": "input matrix",
-        "score": 1.2333,
+        "score": 1.2224,
         "evidence": []
       },
       {
         "term": "singular value",
-        "score": 1.0924,
+        "score": 1.0788,
         "evidence": []
       },
       {
         "term": "random sampling",
-        "score": 1.0139,
+        "score": 0.99,
         "evidence": []
       },
       {
         "term": "stage",
-        "score": 1.0098,
+        "score": 0.9223,
         "evidence": []
       },
       {
         "term": "ﬁxed-precision",
-        "score": 0.8229,
+        "score": 0.828,
         "evidence": []
       },
       {
-        "term": "rank",
-        "score": 0.8101,
+        "term": "low-rank",
+        "score": 0.7865,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "random vectors",
-        "score": 1.78,
+        "score": 1.7528,
         "evidence": []
       },
       {
         "term": "sample vectors",
-        "score": 1.5374,
-        "evidence": []
-      },
-      {
-        "term": "initial subspace",
-        "score": 1.5143,
+        "score": 1.5179,
         "evidence": []
       },
       {
         "term": "ﬁxed-rank problem",
-        "score": 1.4791,
+        "score": 1.4714,
         "evidence": []
       },
       {
-        "term": "observation",
-        "score": 0.849,
+        "term": "initial subspace",
+        "score": 1.469,
         "evidence": []
       },
       {
         "term": "seek",
-        "score": 0.8447,
+        "score": 0.8126,
         "evidence": []
       },
       {
         "term": "basis",
-        "score": 0.8317,
+        "score": 0.8066,
+        "evidence": []
+      },
+      {
+        "term": "observation",
+        "score": 0.7807,
         "evidence": []
       },
       {
         "term": "perturbation",
-        "score": 0.8031,
+        "score": 0.7292,
         "evidence": []
       }
     ],
     "page-006": [
       {
         "term": "matrix whose",
-        "score": 1.66,
+        "score": 1.6381,
         "evidence": []
       },
       {
         "term": "matrix product",
-        "score": 1.5959,
+        "score": 1.5797,
         "evidence": []
       },
       {
         "term": "numerical rank",
-        "score": 1.4699,
+        "score": 1.4068,
         "evidence": []
       },
       {
         "term": "whose columns",
-        "score": 1.2778,
+        "score": 1.2604,
         "evidence": []
       },
       {
         "term": "proto-algorithm",
-        "score": 1.0946,
+        "score": 1.104,
         "evidence": []
       },
       {
         "term": "randomized",
-        "score": 0.8922,
+        "score": 0.9016,
         "evidence": []
       },
       {
         "term": "oversampling",
-        "score": 0.7959,
+        "score": 0.8015,
         "evidence": []
       },
       {
         "term": "treatment",
-        "score": 0.7671,
+        "score": 0.7225,
         "evidence": []
       }
     ],
     "page-007": [
       {
         "term": "krylov methods",
-        "score": 2.2445,
+        "score": 2.2147,
         "evidence": []
       },
       {
         "term": "krylov subspace",
-        "score": 2.1163,
+        "score": 2.1236,
         "evidence": []
       },
       {
         "term": "matrix vector",
-        "score": 1.9093,
+        "score": 1.8696,
         "evidence": []
       },
       {
         "term": "dense matrix",
-        "score": 1.8581,
+        "score": 1.8545,
         "evidence": []
       },
       {
         "term": "randomized schemes",
-        "score": 1.8064,
-        "evidence": []
-      },
-      {
-        "term": "slow memory",
-        "score": 1.7602,
+        "score": 1.8214,
         "evidence": []
       },
       {
         "term": "input matrix",
-        "score": 1.6714,
+        "score": 1.6566,
+        "evidence": []
+      },
+      {
+        "term": "slow memory",
+        "score": 1.6226,
         "evidence": []
       },
       {
         "term": "approximate svd",
-        "score": 1.3612,
+        "score": 1.35,
         "evidence": []
       }
     ],
     "page-008": [
       {
         "term": "test matrix",
-        "score": 1.4122,
+        "score": 1.3713,
         "evidence": []
       },
       {
         "term": "error bound",
-        "score": 1.348,
+        "score": 1.2996,
         "evidence": []
       },
       {
         "term": "proto-algorithm",
-        "score": 1.2186,
-        "evidence": []
-      },
-      {
-        "term": "gaussian test",
-        "score": 1.1166,
+        "score": 1.2291,
         "evidence": []
       },
       {
         "term": "singular values",
-        "score": 1.0892,
+        "score": 1.0814,
+        "evidence": []
+      },
+      {
+        "term": "gaussian test",
+        "score": 1.0722,
         "evidence": []
       },
       {
         "term": "simpliﬁed",
-        "score": 0.9469,
-        "evidence": []
-      },
-      {
-        "term": "min",
-        "score": 0.8002,
+        "score": 0.9497,
         "evidence": []
       },
       {
         "term": "oversampling",
-        "score": 0.7959,
+        "score": 0.8015,
+        "evidence": []
+      },
+      {
+        "term": "min",
+        "score": 0.7566,
         "evidence": []
       }
     ],
     "page-009": [
       {
         "term": "randomized svd",
-        "score": 1.9779,
+        "score": 1.9723,
         "evidence": []
       },
       {
         "term": "ﬂop count",
-        "score": 1.6409,
+        "score": 1.7029,
         "evidence": []
       },
       {
         "term": "singular vectors",
-        "score": 1.1919,
+        "score": 1.1785,
         "evidence": []
       },
       {
         "term": "matrix",
-        "score": 0.9237,
+        "score": 0.9152,
         "evidence": []
       },
       {
         "term": "tmult",
-        "score": 0.8828,
-        "evidence": []
-      },
-      {
-        "term": "incorporate",
-        "score": 0.8217,
+        "score": 0.8867,
         "evidence": []
       },
       {
         "term": "prototype",
-        "score": 0.8204,
+        "score": 0.8059,
+        "evidence": []
+      },
+      {
+        "term": "incorporate",
+        "score": 0.784,
         "evidence": []
       },
       {
         "term": "target number",
-        "score": 0.8191,
+        "score": 0.7774,
         "evidence": []
       }
     ],
     "page-010": [
       {
         "term": "matrix approximation",
-        "score": 1.47,
+        "score": 1.4748,
         "evidence": []
       },
       {
         "term": "singular vectors",
-        "score": 1.4369,
+        "score": 1.4208,
         "evidence": []
       },
       {
         "term": "error bound",
-        "score": 1.2499,
+        "score": 1.2056,
         "evidence": []
       },
       {
         "term": "randomized",
-        "score": 0.8922,
-        "evidence": []
-      },
-      {
-        "term": "outline",
-        "score": 0.8709,
+        "score": 0.9016,
         "evidence": []
       },
       {
         "term": "truncation",
-        "score": 0.8435,
+        "score": 0.8482,
         "evidence": []
       },
       {
         "term": "bracket",
-        "score": 0.8204,
+        "score": 0.8255,
+        "evidence": []
+      },
+      {
+        "term": "outline",
+        "score": 0.7886,
         "evidence": []
       },
       {
         "term": "trace",
-        "score": 0.7883,
+        "score": 0.7238,
         "evidence": []
       }
     ],
     "page-011": [
       {
         "term": "matrix approximation",
-        "score": 2.1108,
+        "score": 2.1176,
         "evidence": []
       },
       {
         "term": "sparsiﬁcation",
-        "score": 1.6845,
+        "score": 1.6865,
         "evidence": []
       },
       {
         "term": "input matrix",
-        "score": 1.4556,
+        "score": 1.4426,
         "evidence": []
       },
       {
         "term": "column selection",
-        "score": 1.4047,
+        "score": 1.3609,
         "evidence": []
       },
       {
         "term": "submatrix",
-        "score": 1.2207,
+        "score": 1.2278,
         "evidence": []
       },
       {
         "term": "leverage scores",
-        "score": 1.177,
+        "score": 1.1759,
         "evidence": []
       },
       {
         "term": "reﬁned",
-        "score": 0.9469,
+        "score": 0.9497,
         "evidence": []
       },
       {
-        "term": "squared",
-        "score": 0.8457,
+        "term": "quantization",
+        "score": 0.9012,
         "evidence": []
       }
     ],
     "page-012": [
       {
         "term": "dimension reduction",
-        "score": 2.3262,
+        "score": 2.2862,
         "evidence": []
       },
       {
         "term": "column sampling",
-        "score": 2.217,
+        "score": 2.1738,
         "evidence": []
       },
       {
         "term": "matrix approximation",
-        "score": 1.7664,
+        "score": 1.7724,
         "evidence": []
       },
       {
         "term": "error bounds",
-        "score": 1.1932,
+        "score": 1.1632,
         "evidence": []
       },
       {
         "term": "showed",
-        "score": 0.9877,
+        "score": 0.9282,
         "evidence": []
       },
       {
         "term": "rudelson",
-        "score": 0.9013,
+        "score": 0.905,
         "evidence": []
       },
       {
         "term": "vershynin",
-        "score": 0.8709,
+        "score": 0.875,
         "evidence": []
       },
       {
         "term": "submatrix",
-        "score": 0.8332,
+        "score": 0.8381,
         "evidence": []
       }
     ],
     "page-013": [
       {
         "term": "matrix approximation",
-        "score": 2.0916,
-        "evidence": []
-      },
-      {
-        "term": "dimension reduction",
-        "score": 2.0751,
+        "score": 2.0997,
         "evidence": []
       },
       {
         "term": "linkage matrix",
-        "score": 2.0589,
+        "score": 2.051,
+        "evidence": []
+      },
+      {
+        "term": "dimension reduction",
+        "score": 2.0376,
         "evidence": []
       },
       {
         "term": "interpolative decomposition",
-        "score": 2.0569,
+        "score": 2.0251,
         "evidence": []
       },
       {
         "term": "eﬃcient randomized",
-        "score": 1.8768,
+        "score": 1.8957,
         "evidence": []
       },
       {
         "term": "randomized algorithms",
-        "score": 1.7745,
+        "score": 1.7829,
         "evidence": []
       },
       {
         "term": "low-rank matrix",
-        "score": 1.6726,
+        "score": 1.6668,
         "evidence": []
       },
       {
         "term": "randomized methods",
-        "score": 1.6355,
+        "score": 1.6159,
         "evidence": []
       }
     ],
     "page-014": [
       {
         "term": "compressive sampling",
-        "score": 2.6196,
+        "score": 2.5436,
         "evidence": []
       },
       {
         "term": "overdetermined linear",
-        "score": 2.129,
+        "score": 2.0823,
         "evidence": []
       },
       {
         "term": "randomized matrix",
-        "score": 1.8249,
+        "score": 1.8273,
         "evidence": []
       },
       {
         "term": "least-squares problems",
-        "score": 1.8049,
+        "score": 1.7822,
         "evidence": []
       },
       {
         "term": "matrix approximation",
-        "score": 1.5529,
+        "score": 1.557,
         "evidence": []
       },
       {
         "term": "least squares",
-        "score": 1.4265,
+        "score": 1.4136,
         "evidence": []
       },
       {
         "term": "facility location",
-        "score": 1.4058,
+        "score": 1.41,
         "evidence": []
       },
       {
         "term": "dimension reduction",
-        "score": 1.2724,
+        "score": 1.2494,
         "evidence": []
       }
     ],
     "page-015": [
       {
         "term": "linear algebra",
-        "score": 1.9342,
-        "evidence": []
-      },
-      {
-        "term": "numerical linear",
-        "score": 1.7618,
-        "evidence": []
-      },
-      {
-        "term": "random embeddings",
-        "score": 1.7348,
+        "score": 1.8591,
         "evidence": []
       },
       {
         "term": "dimension reduction",
-        "score": 1.7268,
+        "score": 1.699,
+        "evidence": []
+      },
+      {
+        "term": "random embeddings",
+        "score": 1.681,
+        "evidence": []
+      },
+      {
+        "term": "numerical linear",
+        "score": 1.6711,
         "evidence": []
       },
       {
         "term": "euclidean space",
-        "score": 1.5949,
+        "score": 1.585,
         "evidence": []
       },
       {
         "term": "computational problems",
-        "score": 1.4985,
+        "score": 1.4455,
         "evidence": []
       },
       {
         "term": "randomized techniques",
-        "score": 1.3979,
+        "score": 1.377,
         "evidence": []
       },
       {
         "term": "gaussian matrix",
-        "score": 1.319,
+        "score": 1.3008,
         "evidence": []
       }
     ],
     "page-016": [
       {
         "term": "n-dimensional subspace",
-        "score": 2.113,
-        "evidence": []
-      },
-      {
-        "term": "monte carlo",
-        "score": 1.8005,
+        "score": 2.117,
         "evidence": []
       },
       {
         "term": "von neumann",
-        "score": 1.7422,
-        "evidence": []
-      },
-      {
-        "term": "linear algebra",
-        "score": 1.6322,
+        "score": 1.6867,
         "evidence": []
       },
       {
         "term": "scientiﬁc computing",
-        "score": 1.5941,
+        "score": 1.5914,
+        "evidence": []
+      },
+      {
+        "term": "linear algebra",
+        "score": 1.5699,
         "evidence": []
       },
       {
         "term": "banach space",
-        "score": 1.5837,
+        "score": 1.5687,
+        "evidence": []
+      },
+      {
+        "term": "monte carlo",
+        "score": 1.3996,
         "evidence": []
       },
       {
         "term": "carlo integration",
-        "score": 1.5451,
+        "score": 1.2875,
         "evidence": []
       },
       {
         "term": "starting vector",
-        "score": 1.2561,
+        "score": 1.2282,
         "evidence": []
       }
     ],
     "page-017": [
       {
         "term": "geometric analysis",
-        "score": 1.8625,
+        "score": 1.8502,
         "evidence": []
       },
       {
         "term": "random matrices",
-        "score": 1.6402,
+        "score": 1.629,
         "evidence": []
       },
       {
         "term": "studying random",
-        "score": 1.5559,
+        "score": 1.5289,
         "evidence": []
       },
       {
         "term": "ball",
-        "score": 1.1575,
+        "score": 1.1617,
         "evidence": []
       },
       {
         "term": "projection",
-        "score": 1.0057,
+        "score": 0.9497,
         "evidence": []
       },
       {
         "term": "rudelson",
-        "score": 0.9013,
+        "score": 0.905,
         "evidence": []
       },
       {
         "term": "norm",
-        "score": 0.8922,
+        "score": 0.8996,
         "evidence": []
       },
       {
         "term": "euclidean",
-        "score": 0.7318,
+        "score": 0.7385,
         "evidence": []
       }
     ],
     "page-018": [
       {
         "term": "orthonormal matrix",
-        "score": 2.3866,
+        "score": 2.3932,
         "evidence": []
       },
       {
         "term": "unitary matrix",
-        "score": 2.0548,
+        "score": 2.0526,
+        "evidence": []
+      },
+      {
+        "term": "rank admits",
+        "score": 1.3941,
         "evidence": []
       },
       {
         "term": "aip",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "decreasing",
-        "score": 0.8229,
+        "score": 0.7757,
         "evidence": []
       },
       {
         "term": "factorization",
-        "score": 0.6314,
+        "score": 0.6399,
         "evidence": []
       },
       {
         "term": "diagonal",
-        "score": 0.6212,
-        "evidence": []
-      },
-      {
-        "term": "norm",
-        "score": 0.609,
+        "score": 0.6155,
         "evidence": []
       }
     ],
     "page-019": [
       {
         "term": "partial decompositions",
-        "score": 1.5748,
+        "score": 1.4785,
         "evidence": []
       },
       {
         "term": "singular vectors",
-        "score": 1.1919,
+        "score": 1.1785,
         "evidence": []
       },
       {
         "term": "columns",
-        "score": 0.9715,
+        "score": 0.9643,
         "evidence": []
       },
       {
         "term": "computing",
-        "score": 0.9565,
+        "score": 0.9466,
         "evidence": []
       },
       {
         "term": "bounded",
-        "score": 0.8895,
+        "score": 0.8235,
         "evidence": []
       },
       {
         "term": "matrix",
-        "score": 0.8167,
+        "score": 0.8093,
         "evidence": []
       },
       {
         "term": "techniques",
-        "score": 0.7877,
+        "score": 0.7564,
         "evidence": []
       },
       {
         "term": "compute",
-        "score": 0.7608,
+        "score": 0.7366,
         "evidence": []
       }
     ],
     "page-020": [
       {
         "term": "partial factorization",
-        "score": 2.4914,
+        "score": 2.3643,
         "evidence": []
       },
       {
         "term": "compute partial",
-        "score": 2.3849,
+        "score": 2.2069,
         "evidence": []
       },
       {
         "term": "upper-triangular matrix",
-        "score": 1.8616,
+        "score": 1.8555,
         "evidence": []
       },
       {
         "term": "eisenstat algorithm",
-        "score": 1.5425,
+        "score": 1.5424,
         "evidence": []
       },
       {
         "term": "kmn",
-        "score": 1.1511,
+        "score": 1.1554,
         "evidence": []
       },
       {
         "term": "svd",
-        "score": 0.8693,
-        "evidence": []
-      },
-      {
-        "term": "rare",
-        "score": 0.7671,
+        "score": 0.8558,
         "evidence": []
       },
       {
         "term": "product",
-        "score": 0.7639,
+        "score": 0.7547,
+        "evidence": []
+      },
+      {
+        "term": "ﬂops",
+        "score": 0.7398,
         "evidence": []
       }
     ],
     "page-021": [
       {
         "term": "krylov subspace",
-        "score": 2.6739,
+        "score": 2.682,
         "evidence": []
       },
       {
         "term": "krylov methods",
-        "score": 2.3673,
+        "score": 2.3381,
         "evidence": []
       },
       {
         "term": "starting matrix",
-        "score": 1.7474,
+        "score": 1.7359,
         "evidence": []
       },
       {
         "term": "starting vector",
-        "score": 1.7264,
+        "score": 1.6929,
         "evidence": []
       },
       {
         "term": "randomized schemes",
-        "score": 1.4255,
-        "evidence": []
-      },
-      {
-        "term": "stage",
-        "score": 0.9298,
+        "score": 1.4377,
         "evidence": []
       },
       {
         "term": "tmult",
-        "score": 0.8828,
+        "score": 0.8867,
+        "evidence": []
+      },
+      {
+        "term": "stage",
+        "score": 0.8492,
         "evidence": []
       },
       {
         "term": "high-quality",
-        "score": 0.7554,
+        "score": 0.7066,
         "evidence": []
       }
     ],
     "page-022": [
       {
         "term": "random matrix",
-        "score": 1.8756,
+        "score": 1.847,
         "evidence": []
       },
       {
         "term": "orthonormal matrix",
-        "score": 1.7687,
+        "score": 1.7704,
         "evidence": []
       },
       {
         "term": "gaussian random",
-        "score": 1.6739,
+        "score": 1.6393,
         "evidence": []
       },
       {
         "term": "random number",
-        "score": 1.4758,
+        "score": 1.4258,
         "evidence": []
       },
       {
         "term": "input matrix",
-        "score": 1.2954,
+        "score": 1.2839,
         "evidence": []
       },
       {
         "term": "scheme",
-        "score": 0.9475,
+        "score": 0.9658,
         "evidence": []
       },
       {
         "term": "columns",
-        "score": 0.8946,
+        "score": 0.8879,
         "evidence": []
       },
       {
         "term": "ℓmatrix",
-        "score": 0.8454,
+        "score": 0.85,
         "evidence": []
       }
     ],
     "page-023": [
       {
         "term": "oversampling parameter",
-        "score": 2.4617,
+        "score": 2.4347,
         "evidence": []
       },
       {
         "term": "basis matrix",
-        "score": 1.6245,
+        "score": 1.5961,
         "evidence": []
       },
       {
         "term": "matrix approximation",
-        "score": 1.5813,
+        "score": 1.5826,
         "evidence": []
       },
       {
         "term": "test matrix",
-        "score": 1.5019,
+        "score": 1.4601,
         "evidence": []
       },
       {
         "term": "gaussian test",
-        "score": 1.4924,
+        "score": 1.4407,
         "evidence": []
       },
       {
         "term": "sample matrix",
-        "score": 1.4448,
+        "score": 1.4276,
         "evidence": []
       },
       {
         "term": "standard gaussian",
-        "score": 1.3537,
+        "score": 1.3195,
         "evidence": []
       },
       {
         "term": "target rank",
-        "score": 1.2897,
+        "score": 1.2169,
         "evidence": []
       }
     ],
     "page-024": [
       {
         "term": "error estimate",
-        "score": 1.7906,
+        "score": 1.681,
         "evidence": []
       },
       {
         "term": "random vector",
-        "score": 1.2829,
+        "score": 1.2429,
         "evidence": []
       },
       {
         "term": "basis",
-        "score": 0.9653,
+        "score": 0.9361,
         "evidence": []
       },
       {
         "term": "matrix",
-        "score": 0.773,
+        "score": 0.7659,
         "evidence": []
       },
       {
         "term": "algorithm",
-        "score": 0.7696,
+        "score": 0.7659,
         "evidence": []
       },
       {
         "term": "guess",
-        "score": 0.7648,
+        "score": 0.7476,
         "evidence": []
       },
       {
         "term": "samples",
-        "score": 0.675,
+        "score": 0.6286,
         "evidence": []
       },
       {
         "term": "integer",
-        "score": 0.6024,
+        "score": 0.6115,
         "evidence": []
       }
     ],
     "page-025": [
       {
         "term": "singular vectors",
-        "score": 1.6626,
+        "score": 1.6435,
         "evidence": []
       },
       {
         "term": "whose singular",
-        "score": 1.4631,
+        "score": 1.4399,
         "evidence": []
       },
       {
         "term": "singular values",
-        "score": 1.315,
+        "score": 1.3042,
         "evidence": []
       },
       {
         "term": "input matrix",
-        "score": 1.1979,
+        "score": 1.1873,
         "evidence": []
       },
       {
         "term": "overwrite",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "standard gaussian",
-        "score": 0.9779,
-        "evidence": []
-      },
-      {
-        "term": "draw standard",
-        "score": 0.956,
+        "score": 0.951,
         "evidence": []
       },
       {
         "term": "matrices whose",
-        "score": 0.9542,
+        "score": 0.9505,
+        "evidence": []
+      },
+      {
+        "term": "draw standard",
+        "score": 0.9228,
         "evidence": []
       }
     ],
     "page-026": [
       {
         "term": "algo rithm",
-        "score": 1.3843,
+        "score": 1.3992,
         "evidence": []
       },
       {
         "term": "singular values",
-        "score": 1.3237,
+        "score": 1.316,
         "evidence": []
       },
       {
         "term": "power iteration",
-        "score": 1.3016,
+        "score": 1.3141,
         "evidence": []
       },
       {
         "term": "approximation error",
-        "score": 1.2346,
+        "score": 1.2265,
         "evidence": []
       },
       {
         "term": "general dense",
-        "score": 1.1509,
-        "evidence": []
-      },
-      {
-        "term": "arithmetic",
-        "score": 0.9793,
-        "evidence": []
-      },
-      {
-        "term": "algorithm",
-        "score": 0.9493,
+        "score": 1.1432,
         "evidence": []
       },
       {
         "term": "optimum",
-        "score": 0.9469,
+        "score": 0.9497,
+        "evidence": []
+      },
+      {
+        "term": "algorithm",
+        "score": 0.9447,
+        "evidence": []
+      },
+      {
+        "term": "arithmetic",
+        "score": 0.9365,
         "evidence": []
       }
     ],
     "page-027": [
       {
         "term": "random matrix",
-        "score": 1.8252,
+        "score": 1.7987,
         "evidence": []
       },
       {
         "term": "fourier transform",
-        "score": 1.7133,
+        "score": 1.6983,
         "evidence": []
       },
       {
         "term": "matrix whose",
-        "score": 1.6163,
+        "score": 1.5947,
         "evidence": []
       },
       {
         "term": "sample matrix",
-        "score": 1.4945,
+        "score": 1.4768,
         "evidence": []
       },
       {
         "term": "test matrix",
-        "score": 1.4434,
+        "score": 1.408,
         "evidence": []
       },
       {
         "term": "structured random",
-        "score": 1.2508,
+        "score": 1.1997,
         "evidence": []
       },
       {
         "term": "subsampled",
-        "score": 1.1112,
+        "score": 1.1162,
         "evidence": []
       },
       {
         "term": "ﬂops",
-        "score": 1.074,
+        "score": 1.0838,
         "evidence": []
       }
     ],
     "page-028": [
       {
         "term": "random matrix",
-        "score": 2.0169,
+        "score": 1.9852,
         "evidence": []
       },
       {
         "term": "givens rotations",
-        "score": 1.8938,
+        "score": 1.8574,
         "evidence": []
       },
       {
         "term": "random matrices",
-        "score": 1.6819,
+        "score": 1.6664,
         "evidence": []
       },
       {
         "term": "structured random",
-        "score": 1.639,
+        "score": 1.5733,
         "evidence": []
       },
       {
         "term": "fft",
-        "score": 1.4353,
+        "score": 1.4418,
         "evidence": []
       },
       {
         "term": "test matrix",
-        "score": 1.3662,
+        "score": 1.3315,
         "evidence": []
       },
       {
         "term": "transforms",
-        "score": 1.0231,
+        "score": 0.9877,
         "evidence": []
       },
       {
         "term": "inexpensive",
-        "score": 0.9469,
+        "score": 0.9497,
         "evidence": []
       }
     ],
     "page-029": [
       {
         "term": "orthonormal matrix",
-        "score": 1.9288,
+        "score": 1.9291,
         "evidence": []
       },
       {
         "term": "matrix product",
-        "score": 1.7716,
+        "score": 1.7534,
         "evidence": []
       },
       {
         "term": "input matrix",
-        "score": 1.6714,
+        "score": 1.6566,
         "evidence": []
       },
       {
         "term": "standard factorizations",
-        "score": 1.467,
+        "score": 1.4534,
         "evidence": []
       },
       {
         "term": "forming",
-        "score": 0.8004,
+        "score": 0.7886,
         "evidence": []
       },
       {
         "term": "svd",
-        "score": 0.7809,
+        "score": 0.7687,
         "evidence": []
       },
       {
         "term": "uσv",
-        "score": 0.726,
+        "score": 0.7228,
         "evidence": []
       },
       {
         "term": "algorithm",
-        "score": 0.7202,
+        "score": 0.7167,
         "evidence": []
       }
     ],
     "page-030": [
       {
         "term": "singular values",
-        "score": 0.982,
+        "score": 0.9757,
         "evidence": []
       },
       {
         "term": "matrix",
-        "score": 0.9534,
+        "score": 0.9447,
         "evidence": []
       },
       {
         "term": "factorization",
-        "score": 0.9249,
+        "score": 0.9375,
         "evidence": []
       },
       {
         "term": "postprocessing",
-        "score": 0.8457,
+        "score": 0.8504,
         "evidence": []
       },
       {
         "term": "ﬂops",
-        "score": 0.7331,
+        "score": 0.7398,
         "evidence": []
       },
       {
         "term": "uσv",
-        "score": 0.726,
-        "evidence": []
-      },
-      {
-        "term": "rank",
-        "score": 0.6977,
+        "score": 0.7228,
         "evidence": []
       },
       {
         "term": "svd",
-        "score": 0.6726,
+        "score": 0.6621,
+        "evidence": []
+      },
+      {
+        "term": "rank",
+        "score": 0.655,
         "evidence": []
       }
     ],
     "page-031": [
       {
         "term": "orthonormal matrix",
-        "score": 1.6711,
+        "score": 1.6738,
         "evidence": []
       },
       {
         "term": "sample matrix",
-        "score": 1.4412,
+        "score": 1.4229,
         "evidence": []
       },
       {
         "term": "uσv",
-        "score": 0.9161,
+        "score": 0.912,
         "evidence": []
       },
       {
         "term": "submatrix",
-        "score": 0.8332,
+        "score": 0.8381,
         "evidence": []
       },
       {
         "term": "compute",
-        "score": 0.7608,
+        "score": 0.7366,
         "evidence": []
       },
       {
         "term": "algorithm",
-        "score": 0.6631,
+        "score": 0.6599,
         "evidence": []
       }
     ],
     "page-032": [
       {
         "term": "eigenvalue decomposition",
-        "score": 1.8891,
+        "score": 1.8664,
         "evidence": []
       },
       {
         "term": "hermitian matrix",
-        "score": 1.8274,
+        "score": 1.8301,
         "evidence": []
       },
       {
         "term": "aqq",
-        "score": 1.8006,
+        "score": 1.8032,
         "evidence": []
       },
       {
         "term": "less accurate",
-        "score": 1.093,
+        "score": 0.9807,
         "evidence": []
       },
       {
         "term": "nystr",
-        "score": 0.951,
+        "score": 0.9537,
         "evidence": []
       },
       {
         "term": "uλu",
-        "score": 0.9383,
+        "score": 0.9412,
         "evidence": []
       },
       {
         "term": "factorization",
-        "score": 0.9249,
+        "score": 0.9375,
         "evidence": []
       },
       {
         "term": "semideﬁnite",
-        "score": 0.8764,
+        "score": 0.8804,
         "evidence": []
       }
     ],
     "page-033": [
       {
         "term": "eigenvalue decomposition",
-        "score": 2.3543,
+        "score": 2.3241,
         "evidence": []
       },
       {
         "term": "approximate eigenvalue",
-        "score": 2.1507,
+        "score": 2.1623,
         "evidence": []
       },
       {
         "term": "semideﬁnite matrix",
-        "score": 2.0295,
+        "score": 2.0262,
         "evidence": []
       },
       {
         "term": "triangular solve",
-        "score": 1.4869,
+        "score": 1.4631,
         "evidence": []
       },
       {
         "term": "nystr",
-        "score": 1.2001,
+        "score": 1.2035,
         "evidence": []
       },
       {
         "term": "procedure computes",
-        "score": 1.1666,
+        "score": 1.1605,
         "evidence": []
       },
       {
         "term": "uλu",
-        "score": 0.9383,
+        "score": 0.9412,
         "evidence": []
       },
       {
         "term": "factorization",
-        "score": 0.9249,
+        "score": 0.9375,
         "evidence": []
       }
     ],
     "page-034": [
       {
         "term": "hermitian matrix",
-        "score": 2.1826,
+        "score": 2.1842,
         "evidence": []
       },
       {
         "term": "eigenvalue decomposition",
-        "score": 1.8404,
+        "score": 1.8125,
         "evidence": []
       },
       {
         "term": "reduced matrix",
-        "score": 1.5787,
+        "score": 1.55,
         "evidence": []
       },
       {
         "term": "sample matrix",
-        "score": 1.4173,
+        "score": 1.4003,
         "evidence": []
       },
       {
         "term": "test matrix",
-        "score": 1.3662,
+        "score": 1.3315,
         "evidence": []
       },
       {
         "term": "turns out",
-        "score": 1.1422,
-        "evidence": []
-      },
-      {
-        "term": "random test",
-        "score": 1.0276,
+        "score": 1.0568,
         "evidence": []
       },
       {
         "term": "aqq",
-        "score": 1.0166,
+        "score": 1.0181,
+        "evidence": []
+      },
+      {
+        "term": "random test",
+        "score": 0.9883,
         "evidence": []
       }
     ],
     "page-035": [
       {
         "term": "matrix approximation",
-        "score": 1.5813,
+        "score": 1.5826,
         "evidence": []
       },
       {
         "term": "random matrix",
-        "score": 1.4682,
-        "evidence": []
-      },
-      {
-        "term": "core memory",
-        "score": 0.9912,
+        "score": 1.4487,
         "evidence": []
       },
       {
         "term": "singular value",
-        "score": 0.9852,
+        "score": 0.973,
         "evidence": []
       },
       {
-        "term": "stage",
-        "score": 0.9298,
+        "term": "core memory",
+        "score": 0.9582,
         "evidence": []
       },
       {
         "term": "ﬂops",
-        "score": 0.9251,
+        "score": 0.9335,
         "evidence": []
       },
       {
         "term": "kmn",
-        "score": 0.9123,
+        "score": 0.9157,
+        "evidence": []
+      },
+      {
+        "term": "stage",
+        "score": 0.8492,
         "evidence": []
       },
       {
         "term": "costs",
-        "score": 0.8527,
+        "score": 0.8127,
         "evidence": []
       }
     ],
     "page-036": [
       {
         "term": "krylov method",
-        "score": 2.1837,
+        "score": 2.1553,
         "evidence": []
       },
       {
         "term": "ﬁxed-rank problem",
-        "score": 1.4791,
-        "evidence": []
-      },
-      {
-        "term": "computational cost",
-        "score": 1.4761,
+        "score": 1.4714,
         "evidence": []
       },
       {
         "term": "ﬁxed-precision problem",
-        "score": 1.4563,
+        "score": 1.449,
         "evidence": []
       },
       {
         "term": "tmult",
-        "score": 1.4397,
+        "score": 1.4462,
+        "evidence": []
+      },
+      {
+        "term": "computational cost",
+        "score": 1.4183,
         "evidence": []
       },
       {
         "term": "power method",
-        "score": 1.4356,
+        "score": 1.407,
         "evidence": []
       },
       {
         "term": "matrix vector",
-        "score": 1.2836,
+        "score": 1.2528,
         "evidence": []
       },
       {
         "term": "ﬂops",
-        "score": 0.9251,
+        "score": 0.9335,
         "evidence": []
       }
     ],
     "page-037": [
       {
         "term": "fast memory",
-        "score": 1.5109,
+        "score": 1.4629,
         "evidence": []
       },
       {
         "term": "matrix approximation",
-        "score": 1.4292,
+        "score": 1.4286,
         "evidence": []
       },
       {
         "term": "huge",
-        "score": 1.0166,
-        "evidence": []
-      },
-      {
-        "term": "signiﬁcant",
-        "score": 0.8709,
+        "score": 0.977,
         "evidence": []
       },
       {
         "term": "lanczos",
-        "score": 0.8679,
+        "score": 0.8721,
+        "evidence": []
+      },
+      {
+        "term": "signiﬁcant",
+        "score": 0.8482,
         "evidence": []
       },
       {
         "term": "matrices",
-        "score": 0.7993,
+        "score": 0.809,
         "evidence": []
       },
       {
         "term": "schemes",
-        "score": 0.7874,
+        "score": 0.7923,
         "evidence": []
       },
       {
-        "term": "complicated",
-        "score": 0.7528,
+        "term": "dense",
+        "score": 0.7511,
         "evidence": []
       }
     ],
     "page-038": [
       {
         "term": "decaying singular",
-        "score": 1.8235,
+        "score": 1.8186,
         "evidence": []
       },
       {
         "term": "randomized method",
-        "score": 1.5896,
+        "score": 1.5748,
         "evidence": []
       },
       {
         "term": "approximation error",
-        "score": 1.3919,
-        "evidence": []
-      },
-      {
-        "term": "singular values",
-        "score": 0.982,
+        "score": 1.3778,
         "evidence": []
       },
       {
         "term": "matrices",
-        "score": 0.9802,
+        "score": 0.9921,
+        "evidence": []
+      },
+      {
+        "term": "singular values",
+        "score": 0.9757,
         "evidence": []
       },
       {
         "term": "ﬂoating-point",
-        "score": 0.8457,
+        "score": 0.8504,
         "evidence": []
       },
       {
         "term": "illustrating",
-        "score": 0.8413,
+        "score": 0.8313,
         "evidence": []
       },
       {
-        "term": "smooth",
-        "score": 0.8004,
+        "term": "integral",
+        "score": 0.7557,
         "evidence": []
       }
     ],
     "page-039": [
       {
         "term": "actual error",
-        "score": 2.0391,
+        "score": 1.9847,
         "evidence": []
       },
       {
         "term": "error estimate",
-        "score": 1.7496,
+        "score": 1.6512,
         "evidence": []
       },
       {
         "term": "vector",
-        "score": 0.8859,
-        "evidence": []
-      },
-      {
-        "term": "estimator",
-        "score": 0.8709,
+        "score": 0.853,
         "evidence": []
       },
       {
         "term": "blue",
-        "score": 0.793,
+        "score": 0.8038,
         "evidence": []
       },
       {
         "term": "matrix",
-        "score": 0.7233,
+        "score": 0.7167,
         "evidence": []
       },
       {
         "term": "algorithm",
-        "score": 0.7202,
+        "score": 0.7167,
         "evidence": []
       },
       {
-        "term": "observations",
-        "score": 0.6938,
+        "term": "estimator",
+        "score": 0.6713,
+        "evidence": []
+      },
+      {
+        "term": "red",
+        "score": 0.6448,
         "evidence": []
       }
     ],
     "page-040": [
       {
         "term": "laplace integral",
-        "score": 1.8844,
+        "score": 1.8614,
         "evidence": []
       },
       {
         "term": "approximating laplace",
-        "score": 1.8113,
+        "score": 1.8236,
         "evidence": []
       },
       {
         "term": "integral operator",
-        "score": 1.763,
+        "score": 1.7331,
         "evidence": []
       },
       {
         "term": "minimal error",
-        "score": 1.4037,
+        "score": 1.3693,
         "evidence": []
       },
       {
         "term": "actual error",
-        "score": 1.3887,
+        "score": 1.3483,
         "evidence": []
       }
     ],
     "page-041": [
       {
         "term": "weight matrix",
-        "score": 1.4897,
+        "score": 1.4614,
         "evidence": []
       },
       {
         "term": "image processing",
-        "score": 1.3917,
-        "evidence": []
-      },
-      {
-        "term": "patches",
-        "score": 1.0057,
+        "score": 1.3544,
         "evidence": []
       },
       {
         "term": "laplacian",
-        "score": 0.9447,
+        "score": 0.9475,
         "evidence": []
       },
       {
         "term": "ring",
-        "score": 0.9123,
+        "score": 0.9157,
+        "evidence": []
+      },
+      {
+        "term": "patches",
+        "score": 0.8846,
         "evidence": []
       },
       {
         "term": "sparse",
-        "score": 0.8728,
+        "score": 0.8822,
         "evidence": []
       },
       {
         "term": "eigenvectors",
-        "score": 0.8709,
+        "score": 0.875,
         "evidence": []
       },
       {
-        "term": "noisy",
-        "score": 0.7424,
+        "term": "approximating",
+        "score": 0.7258,
         "evidence": []
       }
     ],
     "page-042": [
       {
         "term": "largest eigenvalues",
-        "score": 2.6645,
+        "score": 2.6694,
         "evidence": []
       },
       {
         "term": "power scheme",
-        "score": 1.3542,
+        "score": 1.3737,
         "evidence": []
       },
       {
         "term": "random samples",
-        "score": 1.2708,
+        "score": 1.2065,
         "evidence": []
       },
       {
         "term": "approximation error",
-        "score": 1.1231,
+        "score": 1.1191,
         "evidence": []
       },
       {
         "term": "number ℓof",
-        "score": 1.1065,
+        "score": 1.0941,
         "evidence": []
       },
       {
         "term": "exponent",
-        "score": 0.9628,
+        "score": 0.9571,
         "evidence": []
       },
       {
         "term": "eigenfaces",
-        "score": 0.9469,
+        "score": 0.9497,
         "evidence": []
       },
       {
         "term": "laplacian",
-        "score": 0.9447,
+        "score": 0.9475,
         "evidence": []
       }
     ],
     "page-043": [
       {
         "term": "matrix approximation",
-        "score": 1.7502,
+        "score": 1.7524,
         "evidence": []
       },
       {
         "term": "data matrix",
-        "score": 1.403,
+        "score": 1.3904,
         "evidence": []
       },
       {
         "term": "power scheme",
-        "score": 1.3542,
+        "score": 1.3737,
         "evidence": []
       },
       {
         "term": "full svd",
-        "score": 1.2584,
+        "score": 1.2247,
         "evidence": []
       },
       {
         "term": "random matrices",
-        "score": 1.1049,
+        "score": 1.0976,
         "evidence": []
       },
       {
         "term": "structured random",
-        "score": 1.071,
+        "score": 1.0238,
         "evidence": []
       },
       {
         "term": "singular values",
-        "score": 0.982,
+        "score": 0.9757,
         "evidence": []
       },
       {
         "term": "proximation",
-        "score": 0.9469,
+        "score": 0.9497,
         "evidence": []
       }
     ],
     "page-044": [
       {
         "term": "srft distribution",
-        "score": 2.1292,
+        "score": 2.0792,
         "evidence": []
       },
       {
         "term": "distribution deﬁned",
-        "score": 1.8234,
+        "score": 1.7716,
         "evidence": []
       },
       {
         "term": "test matrix",
-        "score": 1.3376,
+        "score": 1.2974,
         "evidence": []
       },
       {
         "term": "approximation error",
-        "score": 1.2952,
+        "score": 1.2795,
         "evidence": []
       },
       {
         "term": "random samples",
-        "score": 1.2487,
+        "score": 1.1965,
         "evidence": []
       },
       {
         "term": "standard gaussian",
-        "score": 1.1339,
+        "score": 1.104,
         "evidence": []
       },
       {
         "term": "ortho",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "singular values",
-        "score": 0.8438,
+        "score": 0.8394,
         "evidence": []
       }
     ],
     "page-045": [
       {
         "term": "gauss srft",
-        "score": 2.4976,
+        "score": 2.5129,
         "evidence": []
       },
       {
         "term": "srft direct",
-        "score": 2.016,
+        "score": 2.0087,
         "evidence": []
       },
       {
         "term": "random matrix",
-        "score": 1.9765,
+        "score": 1.9478,
         "evidence": []
       },
       {
         "term": "gaussian matrix",
-        "score": 1.8652,
+        "score": 1.8404,
         "evidence": []
       },
       {
         "term": "orthonormal matrix",
-        "score": 1.7596,
+        "score": 1.7577,
         "evidence": []
       },
       {
         "term": "test matrix",
-        "score": 1.6344,
+        "score": 1.5915,
         "evidence": []
       },
       {
         "term": "input matrix",
-        "score": 1.5451,
+        "score": 1.5314,
         "evidence": []
       },
       {
         "term": "approximation error",
-        "score": 1.2245,
+        "score": 1.2115,
         "evidence": []
       }
     ],
     "page-046": [
       {
+        "term": "acceleration factor",
+        "score": 1.4066,
+        "evidence": []
+      },
+      {
         "term": "linear algebra",
-        "score": 1.4633,
+        "score": 1.4019,
         "evidence": []
       },
       {
         "term": "test matrix",
-        "score": 1.3777,
+        "score": 1.3325,
         "evidence": []
       },
       {
         "term": "psd",
-        "score": 1.2993,
-        "evidence": []
-      },
-      {
-        "term": "curve",
-        "score": 0.9231,
+        "score": 1.305,
         "evidence": []
       },
       {
         "term": "semideﬁnite",
-        "score": 0.8764,
+        "score": 0.8804,
         "evidence": []
       },
       {
         "term": "brieﬂy",
-        "score": 0.8709,
+        "score": 0.875,
+        "evidence": []
+      },
+      {
+        "term": "curve",
+        "score": 0.8644,
         "evidence": []
       },
       {
         "term": "srft",
-        "score": 0.7808,
-        "evidence": []
-      },
-      {
-        "term": "hermitian",
-        "score": 0.7537,
+        "score": 0.7866,
         "evidence": []
       }
     ],
     "page-047": [
       {
         "term": "psd matrix",
-        "score": 2.2229,
+        "score": 2.2202,
         "evidence": []
       },
       {
         "term": "conjugation rule",
-        "score": 1.7016,
+        "score": 1.6776,
         "evidence": []
       },
       {
         "term": "resp",
-        "score": 0.9187,
+        "score": 0.922,
         "evidence": []
       },
       {
         "term": "inverse",
-        "score": 0.8774,
+        "score": 0.8343,
         "evidence": []
       },
       {
         "term": "density",
-        "score": 0.8672,
+        "score": 0.8322,
         "evidence": []
       },
       {
         "term": "empirical",
-        "score": 0.6891,
+        "score": 0.6513,
         "evidence": []
       }
     ],
     "page-048": [
       {
         "term": "orthogonal projector",
-        "score": 2.8773,
+        "score": 2.8723,
         "evidence": []
       },
       {
         "term": "psd matrix",
-        "score": 2.0226,
+        "score": 2.0217,
         "evidence": []
       },
       {
         "term": "spectral norm",
-        "score": 1.2614,
+        "score": 1.2417,
         "evidence": []
       },
       {
         "term": "sup",
-        "score": 1.0857,
+        "score": 1.0684,
         "evidence": []
       },
       {
         "term": "thm",
-        "score": 0.8435,
+        "score": 0.8482,
         "evidence": []
       },
       {
         "term": "proposition",
-        "score": 0.8403,
+        "score": 0.8146,
         "evidence": []
       },
       {
         "term": "hermitian",
-        "score": 0.7537,
+        "score": 0.76,
         "evidence": []
       }
     ],
     "page-049": [
       {
         "term": "orthogonal projector",
-        "score": 2.572,
+        "score": 2.5681,
         "evidence": []
       },
       {
         "term": "rdr",
-        "score": 1.4734,
+        "score": 1.4758,
         "evidence": []
       },
       {
         "term": "conjugation rule",
-        "score": 1.4644,
+        "score": 1.4395,
         "evidence": []
       },
       {
         "term": "inequality",
-        "score": 0.7978,
+        "score": 0.7853,
         "evidence": []
       },
       {
         "term": "conclude",
-        "score": 0.6796,
+        "score": 0.6794,
         "evidence": []
       },
       {
         "term": "proposition",
-        "score": 0.6659,
+        "score": 0.6456,
         "evidence": []
       },
       {
         "term": "proof",
-        "score": 0.6507,
+        "score": 0.6412,
         "evidence": []
       }
     ],
     "page-050": [
       {
         "term": "proto-algorithm depends",
-        "score": 1.8266,
+        "score": 1.8351,
         "evidence": []
       },
       {
         "term": "singular vectors",
-        "score": 1.3867,
+        "score": 1.3706,
         "evidence": []
       },
       {
         "term": "error bound",
-        "score": 1.3804,
-        "evidence": []
-      },
-      {
-        "term": "sample matrix",
-        "score": 1.2806,
+        "score": 1.3312,
         "evidence": []
       },
       {
         "term": "unitary factor",
-        "score": 1.2669,
+        "score": 1.2661,
+        "evidence": []
+      },
+      {
+        "term": "sample matrix",
+        "score": 1.2648,
         "evidence": []
       },
       {
         "term": "input matrix",
-        "score": 1.2483,
+        "score": 1.2373,
         "evidence": []
       },
       {
         "term": "test matrix",
-        "score": 1.2295,
+        "score": 1.1961,
         "evidence": []
       },
       {
         "term": "singular value",
-        "score": 1.18,
+        "score": 1.1652,
         "evidence": []
       }
     ],
     "page-051": [
       {
         "term": "error bound",
-        "score": 1.6152,
+        "score": 1.558,
         "evidence": []
       },
       {
         "term": "spectral norm",
-        "score": 1.4209,
-        "evidence": []
-      },
-      {
-        "term": "perturbation theory",
-        "score": 1.3416,
+        "score": 1.4025,
         "evidence": []
       },
       {
         "term": "sample matrix",
-        "score": 1.2806,
+        "score": 1.2648,
         "evidence": []
       },
       {
-        "term": "test matrix",
-        "score": 1.2295,
+        "term": "perturbation theory",
+        "score": 1.2427,
         "evidence": []
       },
       {
         "term": "σ1ω",
-        "score": 1.2001,
+        "score": 1.2035,
+        "evidence": []
+      },
+      {
+        "term": "test matrix",
+        "score": 1.1961,
         "evidence": []
       },
       {
         "term": "row rank",
-        "score": 1.1844,
+        "score": 1.1326,
         "evidence": []
       },
       {
         "term": "full row",
-        "score": 1.0205,
+        "score": 0.9825,
         "evidence": []
       }
     ],
     "page-052": [
       {
         "term": "orthogonal projector",
-        "score": 1.9887,
+        "score": 1.9881,
         "evidence": []
       },
       {
         "term": "right-hand side",
-        "score": 1.3829,
+        "score": 1.3407,
         "evidence": []
       },
       {
         "term": "column rank",
-        "score": 1.3125,
+        "score": 1.261,
         "evidence": []
       },
       {
         "term": "top block",
-        "score": 1.2516,
+        "score": 1.2149,
         "evidence": []
       },
       {
         "term": "full column",
-        "score": 1.1058,
+        "score": 1.0716,
         "evidence": []
       },
       {
         "term": "partitioning",
-        "score": 0.9447,
-        "evidence": []
-      },
-      {
-        "term": "auxiliary",
-        "score": 0.8004,
+        "score": 0.9475,
         "evidence": []
       },
       {
         "term": "formula",
-        "score": 0.7843,
+        "score": 0.7759,
+        "evidence": []
+      },
+      {
+        "term": "matrix",
+        "score": 0.7659,
         "evidence": []
       }
     ],
     "page-053": [
       {
         "term": "conjugation rule",
-        "score": 1.4644,
+        "score": 1.4395,
         "evidence": []
       },
       {
         "term": "singular values",
-        "score": 1.3762,
+        "score": 1.3689,
         "evidence": []
       },
       {
         "term": "proto-algorithm",
-        "score": 0.9428,
+        "score": 0.9509,
         "evidence": []
       },
       {
         "term": "projector",
-        "score": 0.8854,
+        "score": 0.8893,
         "evidence": []
       },
       {
         "term": "σ2ω2ω",
-        "score": 0.8679,
+        "score": 0.8721,
         "evidence": []
       },
       {
         "term": "matrix",
-        "score": 0.773,
+        "score": 0.7659,
         "evidence": []
       },
       {
         "term": "relation",
-        "score": 0.7565,
+        "score": 0.7641,
         "evidence": []
       },
       {
         "term": "block",
-        "score": 0.7277,
+        "score": 0.7199,
         "evidence": []
       }
     ],
     "page-054": [
       {
         "term": "pza",
-        "score": 1.9107,
+        "score": 1.9138,
         "evidence": []
       },
       {
         "term": "truncated svd",
-        "score": 1.7217,
+        "score": 1.6488,
         "evidence": []
       },
       {
         "term": "sample matrix",
-        "score": 1.5709,
+        "score": 1.5506,
         "evidence": []
       },
       {
         "term": "rank-k approximation",
-        "score": 1.4912,
+        "score": 1.5105,
         "evidence": []
       },
       {
         "term": "power scheme",
-        "score": 1.4635,
+        "score": 1.484,
         "evidence": []
       },
       {
         "term": "error bound",
-        "score": 1.1634,
+        "score": 1.1223,
         "evidence": []
       },
       {
         "term": "singular value",
-        "score": 0.9852,
+        "score": 0.973,
         "evidence": []
       },
       {
-        "term": "let",
-        "score": 0.8667,
+        "term": "theorem",
+        "score": 0.8318,
         "evidence": []
       }
     ],
     "page-055": [
       {
         "term": "gaussian matrix",
-        "score": 2.3284,
+        "score": 2.2931,
         "evidence": []
       },
       {
         "term": "standard gaussian",
-        "score": 2.0708,
+        "score": 2.0157,
         "evidence": []
       },
       {
         "term": "gaussian distribution",
-        "score": 2.0096,
+        "score": 1.9373,
         "evidence": []
       },
       {
         "term": "test matrix",
-        "score": 1.5019,
+        "score": 1.4601,
         "evidence": []
       },
       {
         "term": "pza",
-        "score": 1.2738,
+        "score": 1.2759,
         "evidence": []
       },
       {
         "term": "expected norm",
-        "score": 1.2073,
+        "score": 1.2082,
         "evidence": []
       },
       {
         "term": "error bound",
-        "score": 1.1634,
+        "score": 1.1223,
         "evidence": []
       },
       {
         "term": "sgt",
-        "score": 1.0004,
+        "score": 1.0022,
         "evidence": []
       }
     ],
     "page-056": [
       {
         "term": "gaussian matrix",
-        "score": 1.9834,
+        "score": 1.9536,
         "evidence": []
       },
       {
         "term": "standard gaussian",
-        "score": 1.6098,
+        "score": 1.5686,
         "evidence": []
       },
       {
         "term": "approximation error",
-        "score": 1.0999,
+        "score": 1.0848,
         "evidence": []
       },
       {
         "term": "proposition",
-        "score": 1.086,
+        "score": 1.0529,
         "evidence": []
       },
       {
         "term": "expected approximation",
-        "score": 1.0295,
+        "score": 1.0308,
         "evidence": []
       },
       {
         "term": "pseudo-inverted",
-        "score": 0.9447,
+        "score": 0.9475,
         "evidence": []
       },
       {
         "term": "dongarra",
-        "score": 0.9042,
+        "score": 0.9078,
         "evidence": []
       },
       {
         "term": "bounds",
-        "score": 0.8337,
+        "score": 0.8238,
         "evidence": []
       }
     ],
     "page-057": [
       {
         "term": "frobenius-norm error",
-        "score": 1.8989,
+        "score": 1.8654,
         "evidence": []
       },
       {
         "term": "spectral-norm error",
-        "score": 1.8382,
+        "score": 1.8058,
         "evidence": []
       },
       {
         "term": "polynomial factor",
-        "score": 1.8011,
+        "score": 1.7722,
         "evidence": []
       },
       {
         "term": "error bound",
-        "score": 1.7212,
+        "score": 1.6597,
         "evidence": []
       },
       {
         "term": "gaussian matrix",
-        "score": 1.6456,
+        "score": 1.6216,
         "evidence": []
       },
       {
         "term": "oversampling increases",
-        "score": 1.571,
+        "score": 1.5678,
         "evidence": []
       },
       {
         "term": "rank-k matrix",
-        "score": 1.4789,
+        "score": 1.479,
         "evidence": []
       },
       {
         "term": "ﬁrst term",
-        "score": 1.2929,
+        "score": 1.289,
         "evidence": []
       }
     ],
     "page-058": [
       {
         "term": "σ2ω2ω",
-        "score": 1.5373,
+        "score": 1.5448,
         "evidence": []
       },
       {
         "term": "approximation error",
-        "score": 1.1706,
+        "score": 1.1528,
         "evidence": []
       },
       {
         "term": "theorem",
-        "score": 0.9841,
+        "score": 0.9653,
         "evidence": []
       },
       {
         "term": "sition",
-        "score": 0.9042,
+        "score": 0.875,
         "evidence": []
       },
       {
         "term": "expectation",
-        "score": 0.8625,
+        "score": 0.8087,
         "evidence": []
       },
       {
-        "term": "deviation",
-        "score": 0.7262,
+        "term": "frobenius",
+        "score": 0.7258,
         "evidence": []
       }
     ],
     "page-059": [
       {
         "term": "spectral error",
-        "score": 1.7621,
+        "score": 1.6957,
         "evidence": []
       },
       {
         "term": "failure probability",
-        "score": 1.6578,
+        "score": 1.6083,
         "evidence": []
       },
       {
         "term": "deviation bounds",
-        "score": 1.4854,
+        "score": 1.3942,
         "evidence": []
       },
       {
         "term": "numerical constants",
-        "score": 1.229,
-        "evidence": []
-      },
-      {
-        "term": "assume further",
-        "score": 0.9866,
-        "evidence": []
-      },
-      {
-        "term": "theorem",
-        "score": 0.9841,
+        "score": 1.2224,
         "evidence": []
       },
       {
         "term": "corollary",
-        "score": 0.981,
+        "score": 0.9884,
+        "evidence": []
+      },
+      {
+        "term": "theorem",
+        "score": 0.9653,
+        "evidence": []
+      },
+      {
+        "term": "assume further",
+        "score": 0.9141,
         "evidence": []
       },
       {
         "term": "hypotheses",
-        "score": 0.8724,
+        "score": 0.7757,
         "evidence": []
       }
     ],
     "page-060": [
       {
         "term": "power scheme",
-        "score": 1.6609,
+        "score": 1.6853,
         "evidence": []
       },
       {
         "term": "σ2ω2ω",
-        "score": 1.2715,
+        "score": 1.2777,
         "evidence": []
       },
       {
         "term": "theorem",
-        "score": 0.848,
+        "score": 0.8318,
         "evidence": []
       },
       {
         "term": "inequality",
-        "score": 0.7978,
+        "score": 0.7853,
         "evidence": []
       },
       {
         "term": "norms",
-        "score": 0.7855,
+        "score": 0.7617,
         "evidence": []
       },
       {
         "term": "spectrum",
-        "score": 0.6881,
+        "score": 0.6581,
         "evidence": []
       }
     ],
     "page-061": [
       {
         "term": "frobenius norm",
-        "score": 1.9858,
+        "score": 2.0035,
         "evidence": []
       },
       {
         "term": "srft test",
-        "score": 1.9038,
+        "score": 1.8813,
         "evidence": []
       },
       {
         "term": "spectral norm",
-        "score": 1.7311,
+        "score": 1.7153,
         "evidence": []
       },
       {
         "term": "random matrix",
-        "score": 1.6797,
+        "score": 1.6536,
         "evidence": []
       },
       {
         "term": "fourier transform",
-        "score": 1.5332,
+        "score": 1.5223,
         "evidence": []
       },
       {
         "term": "structured random",
-        "score": 1.3191,
+        "score": 1.2666,
         "evidence": []
       },
       {
         "term": "error bound",
-        "score": 1.2641,
+        "score": 1.2197,
         "evidence": []
       },
       {
         "term": "test matrices",
-        "score": 1.1393,
+        "score": 1.114,
         "evidence": []
       }
     ],
     "page-062": [
       {
         "term": "ℓsrft matrix",
-        "score": 2.0123,
+        "score": 2.0049,
         "evidence": []
       },
       {
         "term": "orthonormal matrix",
-        "score": 1.8219,
+        "score": 1.8231,
         "evidence": []
       },
       {
         "term": "srft",
-        "score": 1.3829,
+        "score": 1.3932,
         "evidence": []
       },
       {
         "term": "logarithmic factor",
-        "score": 1.3465,
+        "score": 1.3442,
         "evidence": []
       },
       {
         "term": "failure probability",
-        "score": 1.2154,
+        "score": 1.1775,
         "evidence": []
       },
       {
         "term": "worst case",
-        "score": 1.1872,
+        "score": 1.1714,
         "evidence": []
       },
       {
         "term": "log",
-        "score": 1.1201,
+        "score": 1.1082,
         "evidence": []
       },
       {
         "term": "columns",
-        "score": 0.9715,
+        "score": 0.9643,
         "evidence": []
       }
     ],
     "page-063": [
       {
         "term": "spectral norm",
-        "score": 1.7154,
+        "score": 1.6915,
         "evidence": []
       },
       {
         "term": "failure probability",
-        "score": 1.6615,
+        "score": 1.6104,
         "evidence": []
       },
       {
         "term": "rank-k matrix",
-        "score": 1.4789,
+        "score": 1.479,
         "evidence": []
       },
       {
         "term": "matrix approximation",
-        "score": 1.2487,
+        "score": 1.2498,
         "evidence": []
       },
       {
         "term": "gaussian case",
-        "score": 1.1069,
+        "score": 1.0825,
         "evidence": []
       },
       {
         "term": "theorem",
-        "score": 0.848,
+        "score": 0.8318,
         "evidence": []
       },
       {
         "term": "srft",
-        "score": 0.7808,
+        "score": 0.7866,
         "evidence": []
       },
       {
         "term": "approximating",
-        "score": 0.7188,
+        "score": 0.7258,
         "evidence": []
       }
     ],
     "page-064": [
       {
         "term": "gaussian matrices",
-        "score": 2.0479,
+        "score": 2.0332,
         "evidence": []
       },
       {
         "term": "scaled gaussian",
-        "score": 2.034,
+        "score": 2.0154,
         "evidence": []
       },
       {
         "term": "gaussian matrix",
-        "score": 2.0215,
+        "score": 1.9901,
         "evidence": []
       },
       {
         "term": "spectral norm",
-        "score": 1.8164,
-        "evidence": []
-      },
-      {
-        "term": "standard gaussian",
-        "score": 1.7308,
+        "score": 1.7934,
         "evidence": []
       },
       {
         "term": "frobenius norm",
-        "score": 1.7121,
+        "score": 1.7273,
+        "evidence": []
+      },
+      {
+        "term": "standard gaussian",
+        "score": 1.6872,
         "evidence": []
       },
       {
         "term": "real matrices",
-        "score": 1.4337,
+        "score": 1.4048,
         "evidence": []
       },
       {
         "term": "sgt",
-        "score": 1.2624,
+        "score": 1.2646,
         "evidence": []
       }
     ],
     "page-065": [
       {
         "term": "pseudo-inverted gaussian",
-        "score": 1.9998,
+        "score": 1.982,
         "evidence": []
       },
       {
         "term": "gaussian matrix",
-        "score": 1.9465,
+        "score": 1.9177,
         "evidence": []
       },
       {
         "term": "frobenius norm",
-        "score": 1.7993,
+        "score": 1.8154,
         "evidence": []
       },
       {
         "term": "standard gaussian",
-        "score": 1.5374,
+        "score": 1.4976,
+        "evidence": []
+      },
+      {
+        "term": "inverted",
+        "score": 1.2646,
         "evidence": []
       },
       {
         "term": "trace",
-        "score": 1.1548,
-        "evidence": []
-      },
-      {
-        "term": "proposition",
-        "score": 0.9755,
+        "score": 1.0604,
         "evidence": []
       }
     ],
     "page-066": [
       {
         "term": "random variables",
-        "score": 1.3597,
-        "evidence": []
-      },
-      {
-        "term": "variate",
-        "score": 1.2605,
+        "score": 1.3085,
         "evidence": []
       },
       {
         "term": "gaussian matrices",
-        "score": 1.2418,
+        "score": 1.2331,
+        "evidence": []
+      },
+      {
+        "term": "variate",
+        "score": 1.1945,
         "evidence": []
       },
       {
         "term": "degrees",
-        "score": 0.9999,
+        "score": 0.9699,
         "evidence": []
       },
       {
         "term": "freedom",
-        "score": 0.9283,
+        "score": 0.9241,
         "evidence": []
       },
       {
         "term": "integral",
-        "score": 0.7767,
+        "score": 0.7557,
         "evidence": []
       },
       {
         "term": "proposition",
-        "score": 0.6659,
+        "score": 0.6456,
         "evidence": []
       }
     ],
     "page-067": [
       {
         "term": "chi-square variate",
-        "score": 2.4103,
+        "score": 2.2946,
         "evidence": []
       },
       {
         "term": "gamma",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "moments",
-        "score": 0.8457,
-        "evidence": []
-      },
-      {
-        "term": "inequality",
-        "score": 0.7978,
+        "score": 0.8085,
         "evidence": []
       },
       {
         "term": "geometric",
-        "score": 0.7944,
+        "score": 0.8,
+        "evidence": []
+      },
+      {
+        "term": "inequality",
+        "score": 0.7853,
         "evidence": []
       }
     ],
     "page-068": [
       {
         "term": "gaussian matrix",
-        "score": 1.3499,
-        "evidence": []
-      },
-      {
-        "term": "inequality",
-        "score": 0.6323,
+        "score": 1.3298,
         "evidence": []
       },
       {
         "term": "bidiagonal",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       },
       {
         "term": "summand",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       },
       {
         "term": "variates",
-        "score": 0.6293,
+        "score": 0.6305,
+        "evidence": []
+      },
+      {
+        "term": "inequality",
+        "score": 0.6223,
         "evidence": []
       }
     ],
     "page-069": [
       {
         "term": "acm symp",
-        "score": 2.1363,
+        "score": 2.0655,
         "evidence": []
       },
       {
         "term": "proc",
-        "score": 1.3491,
+        "score": 1.3383,
         "evidence": []
       },
       {
         "term": "ann",
-        "score": 1.2256,
+        "score": 1.2125,
         "evidence": []
       },
       {
         "term": "stoc",
-        "score": 1.1431,
+        "score": 1.1475,
         "evidence": []
       },
       {
         "term": "comput",
-        "score": 1.0331,
+        "score": 1.0001,
         "evidence": []
       },
       {
         "term": "achlioptas",
-        "score": 0.9469,
+        "score": 0.9497,
         "evidence": []
       },
       {
         "term": "ailon",
-        "score": 0.9042,
+        "score": 0.9078,
         "evidence": []
       },
       {
         "term": "fast",
-        "score": 0.8706,
+        "score": 0.8782,
         "evidence": []
       }
     ],
     "page-070": [
       {
         "term": "siam symp",
-        "score": 2.8912,
+        "score": 2.8108,
         "evidence": []
       },
       {
         "term": "acm siam",
-        "score": 2.5762,
+        "score": 2.5095,
         "evidence": []
       },
       {
         "term": "banach spaces",
-        "score": 2.0675,
+        "score": 2.0555,
         "evidence": []
       },
       {
         "term": "algebra appl",
-        "score": 2.0379,
+        "score": 2.0125,
         "evidence": []
       },
       {
         "term": "linear algebra",
-        "score": 1.7631,
-        "evidence": []
-      },
-      {
-        "term": "volume sampling",
-        "score": 1.6388,
+        "score": 1.7002,
         "evidence": []
       },
       {
         "term": "sampling algorithms",
-        "score": 1.6127,
+        "score": 1.5893,
+        "evidence": []
+      },
+      {
+        "term": "volume sampling",
+        "score": 1.5718,
         "evidence": []
       },
       {
         "term": "matrix approximation",
-        "score": 1.47,
+        "score": 1.4748,
         "evidence": []
       }
     ],
     "page-071": [
       {
         "term": "monte carlo",
-        "score": 2.9365,
+        "score": 2.2827,
         "evidence": []
       },
       {
         "term": "fast monte",
-        "score": 2.5208,
+        "score": 2.2159,
         "evidence": []
       },
       {
         "term": "carlo algorithms",
-        "score": 2.3601,
+        "score": 2.0186,
         "evidence": []
       },
       {
         "term": "johns hopkins",
-        "score": 2.0115,
+        "score": 1.9571,
         "evidence": []
       },
       {
         "term": "matrix approximation",
-        "score": 1.8815,
+        "score": 1.888,
         "evidence": []
       },
       {
         "term": "algebra appl",
-        "score": 1.7381,
-        "evidence": []
-      },
-      {
-        "term": "ieee trans",
-        "score": 1.586,
+        "score": 1.7142,
         "evidence": []
       },
       {
         "term": "drineas",
-        "score": 1.5646,
+        "score": 1.5716,
+        "evidence": []
+      },
+      {
+        "term": "convex bodies",
+        "score": 1.5336,
         "evidence": []
       }
     ],
     "page-072": [
       {
         "term": "cambridge univ",
-        "score": 2.5417,
+        "score": 2.5099,
         "evidence": []
       },
       {
         "term": "science dept",
-        "score": 1.9163,
+        "score": 1.8686,
         "evidence": []
       },
       {
         "term": "nearest neighbor",
-        "score": 1.8954,
+        "score": 1.8229,
         "evidence": []
       },
       {
         "term": "random projections",
-        "score": 1.7354,
+        "score": 1.6947,
         "evidence": []
       },
       {
         "term": "acm symp",
-        "score": 1.6123,
+        "score": 1.5591,
         "evidence": []
       },
       {
         "term": "approximate nearest",
-        "score": 1.5687,
+        "score": 1.5047,
         "evidence": []
       },
       {
         "term": "randomized algorithms",
-        "score": 1.4958,
+        "score": 1.5013,
         "evidence": []
       },
       {
         "term": "random start",
-        "score": 1.4016,
+        "score": 1.3842,
         "evidence": []
       }
     ],
     "page-073": [
       {
         "term": "acm symp",
-        "score": 2.2806,
+        "score": 2.2049,
         "evidence": []
       },
       {
         "term": "siam rev",
-        "score": 2.1817,
+        "score": 2.1049,
         "evidence": []
       },
       {
         "term": "proc",
-        "score": 1.7338,
+        "score": 1.7199,
         "evidence": []
       },
       {
         "term": "recognition algorithms",
-        "score": 1.674,
-        "evidence": []
-      },
-      {
-        "term": "face recognition",
-        "score": 1.5489,
+        "score": 1.6416,
         "evidence": []
       },
       {
         "term": "approximation algorithms",
-        "score": 1.5481,
+        "score": 1.5582,
         "evidence": []
       },
       {
         "term": "ann",
-        "score": 1.4818,
+        "score": 1.4659,
+        "evidence": []
+      },
+      {
+        "term": "face recognition",
+        "score": 1.4483,
         "evidence": []
       },
       {
         "term": "probabilistic analysis",
-        "score": 1.2448,
+        "score": 1.2364,
         "evidence": []
       }
     ],
     "page-074": [
       {
         "term": "numerical inverting",
-        "score": 1.6708,
+        "score": 1.5973,
         "evidence": []
       },
       {
         "term": "anal",
-        "score": 1.2428,
+        "score": 1.1845,
         "evidence": []
       },
       {
         "term": "amer",
-        "score": 1.2113,
+        "score": 1.1617,
         "evidence": []
       },
       {
         "term": "appl",
-        "score": 1.0933,
-        "evidence": []
-      },
-      {
-        "term": "math",
-        "score": 1.0036,
+        "score": 1.0727,
         "evidence": []
       },
       {
         "term": "soc",
-        "score": 0.9975,
+        "score": 0.9993,
+        "evidence": []
+      },
+      {
+        "term": "math",
+        "score": 0.9915,
         "evidence": []
       }
     ]

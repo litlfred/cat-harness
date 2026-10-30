@@ -3,69 +3,69 @@
   "entry": "github-docs-actions-secure-use-reference",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 1860,
-    "terms": 11867,
+    "sections": 2140,
+    "terms": 14687,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "github actions",
-      "score": 25.4276,
+      "score": 24.9868,
       "evidence": []
     },
     {
       "term": "github workflows",
-      "score": 24.3005,
+      "score": 23.89,
       "evidence": []
     },
     {
       "term": "github security",
-      "score": 20.9513,
-      "evidence": []
-    },
-    {
-      "term": "reference github",
-      "score": 20.2872,
+      "score": 20.7819,
       "evidence": []
     },
     {
       "term": "github docs",
-      "score": 20.2084,
+      "score": 20.0391,
+      "evidence": []
+    },
+    {
+      "term": "reference github",
+      "score": 19.9388,
       "evidence": []
     },
     {
       "term": "github advisory",
-      "score": 17.2697,
+      "score": 16.9065,
       "evidence": []
     },
     {
       "term": "github token",
-      "score": 17.0307,
+      "score": 16.7494,
       "evidence": []
     },
     {
       "term": "managing github",
-      "score": 16.7115,
+      "score": 16.322,
       "evidence": []
     },
     {
       "term": "limiting github",
-      "score": 16.2151,
+      "score": 15.9198,
       "evidence": []
     },
     {
       "term": "repository security",
-      "score": 16.2012,
+      "score": 15.6568,
       "evidence": []
     },
     {
       "term": "github offers",
-      "score": 15.5831,
+      "score": 15.2757,
       "evidence": []
     },
     {
       "term": "secure workflow",
-      "score": 14.1256,
+      "score": 14.2074,
       "evidence": []
     }
   ],
@@ -73,657 +73,657 @@
     "page-001": [
       {
         "term": "github token",
-        "score": 1.9948,
+        "score": 1.9734,
         "evidence": []
       },
       {
         "term": "writing workflows",
-        "score": 1.8741,
+        "score": 1.8724,
         "evidence": []
       },
       {
         "term": "sensitive information",
-        "score": 1.2806,
+        "score": 1.2759,
         "evidence": []
       },
       {
         "term": "sensitive data",
-        "score": 1.0481,
+        "score": 1.0534,
+        "evidence": []
+      },
+      {
+        "term": "mask",
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "secrets",
-        "score": 0.9968,
+        "score": 1.0039,
         "evidence": []
       },
       {
         "term": "read access",
-        "score": 0.94,
-        "evidence": []
-      },
-      {
-        "term": "repository",
-        "score": 0.7539,
+        "score": 0.9285,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "workflow logs",
-        "score": 2.8673,
+        "score": 2.8463,
         "evidence": []
       },
       {
         "term": "secret value",
-        "score": 2.6568,
+        "score": 2.6615,
         "evidence": []
       },
       {
         "term": "run logs",
-        "score": 2.4364,
+        "score": 2.3663,
         "evidence": []
       },
       {
         "term": "redacted",
-        "score": 1.7558,
+        "score": 1.7592,
         "evidence": []
       },
       {
         "term": "sensitive value",
-        "score": 1.3223,
+        "score": 1.3224,
         "evidence": []
       },
       {
         "term": "register",
-        "score": 1.2827,
+        "score": 1.2145,
         "evidence": []
       },
       {
         "term": "log output",
-        "score": 1.2171,
+        "score": 1.1827,
         "evidence": []
       },
       {
-        "term": "invalid inputs",
-        "score": 1.1922,
+        "term": "rotate",
+        "score": 1.1617,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "environment secrets",
-        "score": 2.2677,
-        "evidence": []
-      },
-      {
-        "term": "environment variable",
-        "score": 1.6634,
+        "score": 2.2824,
         "evidence": []
       },
       {
         "term": "script injection",
-        "score": 1.5651,
+        "score": 1.5723,
+        "evidence": []
+      },
+      {
+        "term": "environment variable",
+        "score": 1.5352,
         "evidence": []
       },
       {
         "term": "intermediate environment",
-        "score": 1.4381,
+        "score": 1.4306,
         "evidence": []
       },
       {
         "term": "pull request",
-        "score": 1.2009,
+        "score": 1.1942,
         "evidence": []
       },
       {
         "term": "octocat",
-        "score": 1.1551,
+        "score": 1.1593,
         "evidence": []
       },
       {
         "term": "title",
-        "score": 0.9814,
+        "score": 0.9964,
         "evidence": []
       },
       {
         "term": "github",
-        "score": 0.9326,
+        "score": 0.9146,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "code scanning",
-        "score": 2.3689,
+        "score": 2.3814,
         "evidence": []
       },
       {
         "term": "workflow templates",
-        "score": 1.7166,
+        "score": 1.6783,
         "evidence": []
       },
       {
         "term": "untrusted pull",
-        "score": 1.6628,
+        "score": 1.6521,
         "evidence": []
       },
       {
         "term": "pull request",
-        "score": 1.3942,
+        "score": 1.3864,
         "evidence": []
       },
       {
         "term": "script injection",
-        "score": 1.2991,
+        "score": 1.3047,
         "evidence": []
       },
       {
         "term": "github",
-        "score": 1.0823,
+        "score": 1.0614,
         "evidence": []
       },
       {
         "term": "codeql",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "checkout",
-        "score": 0.9128,
+        "score": 0.9162,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "workflow triggers",
-        "score": 2.2773,
+        "score": 2.2816,
         "evidence": []
       },
       {
         "term": "openssf scorecards",
-        "score": 2.1785,
+        "score": 2.1841,
         "evidence": []
       },
       {
         "term": "github actions",
-        "score": 1.7149,
+        "score": 1.6855,
         "evidence": []
       },
       {
         "term": "workflow run",
-        "score": 1.6564,
+        "score": 1.6384,
         "evidence": []
       },
       {
         "term": "pull request",
-        "score": 1.6389,
+        "score": 1.6281,
         "evidence": []
       },
       {
         "term": "untrusted code",
-        "score": 1.3864,
+        "score": 1.402,
         "evidence": []
       },
       {
         "term": "request target",
-        "score": 1.2461,
+        "score": 1.2281,
         "evidence": []
       },
       {
         "term": "default setup",
-        "score": 1.1997,
+        "score": 1.1433,
         "evidence": []
       }
     ],
     "page-006": [
       {
         "term": "commit sha",
-        "score": 2.8615,
+        "score": 2.935,
         "evidence": []
       },
       {
         "term": "action repository",
-        "score": 2.1361,
+        "score": 2.0473,
         "evidence": []
       },
       {
         "term": "github actions",
-        "score": 1.8625,
+        "score": 1.8305,
         "evidence": []
       },
       {
         "term": "pin actions",
-        "score": 1.751,
+        "score": 1.6873,
         "evidence": []
       },
       {
         "term": "later job",
-        "score": 1.5121,
+        "score": 1.4705,
         "evidence": []
       },
       {
         "term": "pinning",
-        "score": 1.2113,
+        "score": 1.2145,
         "evidence": []
       },
       {
         "term": "organization level",
-        "score": 1.173,
+        "score": 1.1592,
         "evidence": []
       },
       {
         "term": "secrets",
-        "score": 0.9968,
+        "score": 1.0039,
         "evidence": []
       }
     ],
     "page-007": [
       {
         "term": "github actions",
-        "score": 2.243,
+        "score": 2.204,
         "evidence": []
       },
       {
         "term": "github security",
-        "score": 1.9395,
+        "score": 1.9252,
         "evidence": []
       },
       {
         "term": "openid connect",
-        "score": 1.8565,
+        "score": 1.8529,
         "evidence": []
       },
       {
         "term": "code owners",
-        "score": 1.4893,
+        "score": 1.4956,
         "evidence": []
       },
       {
         "term": "cloud provider",
-        "score": 1.3854,
+        "score": 1.3494,
         "evidence": []
       },
       {
         "term": "security features",
-        "score": 1.3486,
+        "score": 1.3442,
         "evidence": []
       },
       {
         "term": "workflows",
-        "score": 1.0914,
+        "score": 1.0771,
         "evidence": []
       },
       {
         "term": "workflow files",
-        "score": 1.02,
+        "score": 1.0269,
         "evidence": []
       }
     ],
     "page-008": [
       {
         "term": "code scanning",
-        "score": 2.1331,
+        "score": 2.1443,
         "evidence": []
       },
       {
         "term": "github actions",
-        "score": 2.0598,
+        "score": 2.025,
         "evidence": []
       },
       {
         "term": "scorecards action",
-        "score": 2.0195,
+        "score": 2.0201,
         "evidence": []
       },
       {
         "term": "actions workflows",
-        "score": 1.8962,
+        "score": 1.8698,
         "evidence": []
       },
       {
         "term": "dependabot",
-        "score": 1.4938,
-        "evidence": []
-      },
-      {
-        "term": "chain practices",
-        "score": 1.4204,
+        "score": 1.4993,
         "evidence": []
       },
       {
         "term": "pull requests",
-        "score": 1.4196,
+        "score": 1.4076,
+        "evidence": []
+      },
+      {
+        "term": "chain practices",
+        "score": 1.2818,
         "evidence": []
       },
       {
         "term": "risky",
-        "score": 0.7828,
+        "score": 0.7731,
         "evidence": []
       }
     ],
     "page-009": [
       {
         "term": "github-hosted runners",
-        "score": 3.8984,
+        "score": 3.9081,
         "evidence": []
       },
       {
         "term": "self-hosted runners",
-        "score": 3.569,
+        "score": 3.5819,
         "evidence": []
       },
       {
         "term": "virtual machines",
-        "score": 1.4002,
-        "evidence": []
-      },
-      {
-        "term": "images maintained",
-        "score": 1.3333,
+        "score": 1.4034,
         "evidence": []
       },
       {
         "term": "sbom",
-        "score": 1.3261,
+        "score": 1.3374,
+        "evidence": []
+      },
+      {
+        "term": "images maintained",
+        "score": 1.3119,
         "evidence": []
       },
       {
         "term": "open pull",
-        "score": 1.0294,
+        "score": 1.0095,
         "evidence": []
       },
       {
         "term": "github",
-        "score": 1.0128,
+        "score": 0.9933,
         "evidence": []
       },
       {
         "term": "hosts",
-        "score": 0.9856,
+        "score": 0.9929,
         "evidence": []
       }
     ],
     "page-010": [
       {
         "term": "self-hosted runner",
-        "score": 4.1569,
+        "score": 4.1702,
         "evidence": []
       },
       {
         "term": "jit runners",
-        "score": 3.4099,
+        "score": 3.4191,
         "evidence": []
       },
       {
         "term": "same runner",
-        "score": 2.4978,
-        "evidence": []
-      },
-      {
-        "term": "sensitive information",
-        "score": 1.2034,
+        "score": 2.491,
         "evidence": []
       },
       {
         "term": "rest api",
-        "score": 1.2009,
+        "score": 1.1992,
+        "evidence": []
+      },
+      {
+        "term": "sensitive information",
+        "score": 1.1968,
         "evidence": []
       },
       {
         "term": "job",
-        "score": 1.1094,
-        "evidence": []
-      },
-      {
-        "term": "repositories",
-        "score": 0.8392,
+        "score": 1.0534,
         "evidence": []
       },
       {
         "term": "environment",
-        "score": 0.839,
+        "score": 0.8433,
+        "evidence": []
+      },
+      {
+        "term": "groups",
+        "score": 0.8167,
         "evidence": []
       }
     ],
     "page-011": [
       {
         "term": "self-hosted runners",
-        "score": 3.6353,
+        "score": 3.6485,
         "evidence": []
       },
       {
         "term": "organization level",
-        "score": 1.7083,
+        "score": 1.6894,
         "evidence": []
       },
       {
         "term": "openid connect",
-        "score": 1.4713,
+        "score": 1.4684,
         "evidence": []
       },
       {
         "term": "repository level",
-        "score": 1.3418,
+        "score": 1.2781,
         "evidence": []
       },
       {
         "term": "cloud provider",
-        "score": 1.2208,
+        "score": 1.1933,
         "evidence": []
       },
       {
         "term": "team",
-        "score": 1.0436,
-        "evidence": []
-      },
-      {
-        "term": "centralized",
-        "score": 0.9447,
+        "score": 0.9771,
         "evidence": []
       },
       {
         "term": "add",
-        "score": 0.9179,
+        "score": 0.9054,
+        "evidence": []
+      },
+      {
+        "term": "centralized",
+        "score": 0.85,
         "evidence": []
       }
     ],
     "page-012": [
       {
         "term": "audit log",
-        "score": 1.9942,
+        "score": 1.9808,
         "evidence": []
       },
       {
         "term": "log events",
-        "score": 1.9257,
+        "score": 1.9226,
         "evidence": []
       },
       {
         "term": "dependency graph",
-        "score": 1.5364,
+        "score": 1.4484,
         "evidence": []
       },
       {
         "term": "security log",
-        "score": 1.439,
+        "score": 1.4376,
         "evidence": []
       },
       {
         "term": "monitor activity",
-        "score": 1.3361,
+        "score": 1.3174,
         "evidence": []
       },
       {
         "term": "jobs",
-        "score": 0.8724,
+        "score": 0.8504,
         "evidence": []
       }
     ],
     "page-013": [
       {
         "term": "dependabot alerts",
-        "score": 2.6381,
+        "score": 2.648,
         "evidence": []
       },
       {
         "term": "github advisory",
-        "score": 2.3023,
+        "score": 2.2421,
         "evidence": []
       },
       {
         "term": "advisory database",
-        "score": 2.1481,
+        "score": 2.0853,
         "evidence": []
       },
       {
         "term": "security advisories",
-        "score": 1.8174,
+        "score": 1.831,
         "evidence": []
       },
       {
         "term": "dependency graph",
-        "score": 1.7837,
+        "score": 1.6815,
         "evidence": []
       },
       {
         "term": "actions",
-        "score": 1.047,
+        "score": 1.0317,
         "evidence": []
       },
       {
         "term": "repositories",
-        "score": 0.9743,
+        "score": 0.8934,
         "evidence": []
       },
       {
         "term": "workflows",
-        "score": 0.8493,
+        "score": 0.8381,
         "evidence": []
       }
     ],
     "page-014": [
       {
         "term": "dependabot alerts",
-        "score": 3.3399,
+        "score": 3.3524,
         "evidence": []
       },
       {
         "term": "dependency review",
-        "score": 2.5314,
+        "score": 2.3642,
         "evidence": []
       },
       {
         "term": "dependency changes",
-        "score": 2.3644,
+        "score": 2.2771,
         "evidence": []
       },
       {
         "term": "pull requests",
-        "score": 1.6842,
+        "score": 1.6658,
         "evidence": []
       },
       {
         "term": "review action",
-        "score": 1.5912,
+        "score": 1.5413,
         "evidence": []
       },
       {
         "term": "security impact",
-        "score": 1.0377,
+        "score": 1.0238,
         "evidence": []
       },
       {
         "term": "tab",
-        "score": 0.9042,
+        "score": 0.9078,
         "evidence": []
       },
       {
         "term": "vulnerable",
-        "score": 0.876,
+        "score": 0.8474,
         "evidence": []
       }
     ],
     "page-015": [
       {
         "term": "configure dependabot",
-        "score": 3.055,
+        "score": 3.071,
         "evidence": []
       },
       {
         "term": "dependabot version",
-        "score": 2.9829,
+        "score": 2.9977,
         "evidence": []
       },
       {
         "term": "dependabot security",
-        "score": 2.9051,
+        "score": 2.924,
         "evidence": []
       },
       {
         "term": "actions checkout",
-        "score": 2.5993,
+        "score": 2.5859,
         "evidence": []
       },
       {
         "term": "github actions",
-        "score": 2.4056,
+        "score": 2.3652,
         "evidence": []
       },
       {
         "term": "update actions",
-        "score": 2.083,
+        "score": 2.0547,
         "evidence": []
       },
       {
         "term": "updates open",
-        "score": 1.6533,
+        "score": 1.6463,
         "evidence": []
       },
       {
         "term": "reusable workflows",
-        "score": 1.3011,
+        "score": 1.2893,
         "evidence": []
       }
     ],
     "page-016": [
       {
         "term": "repository maintainers",
-        "score": 2.2083,
+        "score": 2.1113,
         "evidence": []
       },
       {
         "term": "security advisories",
-        "score": 2.0009,
+        "score": 2.0209,
         "evidence": []
       },
       {
         "term": "security advisory",
-        "score": 1.9965,
+        "score": 1.976,
         "evidence": []
       },
       {
         "term": "security vulnerability",
-        "score": 1.9592,
+        "score": 1.927,
         "evidence": []
       },
       {
         "term": "actions you've",
-        "score": 1.5095,
+        "score": 1.5042,
         "evidence": []
       },
       {
         "term": "github docs",
-        "score": 1.4714,
+        "score": 1.469,
         "evidence": []
       },
       {
         "term": "publish",
-        "score": 1.0073,
+        "score": 0.959,
         "evidence": []
       },
       {
         "term": "fix",
-        "score": 0.8275,
+        "score": 0.786,
         "evidence": []
       }
     ]
