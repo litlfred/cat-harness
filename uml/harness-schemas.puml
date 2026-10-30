@@ -138,9 +138,7 @@ package test {
     updated_at [1] : string
     plan.id [1] : string
     plan.version [1] : string
-    sut.actor [1] : string
-    sut.version [1] : string
-    sut.reach [1] : internet | egress-restricted | air-gapped | unknown
+    sut [0..1] : object
     runContext.sha256 [1] : string
   }
   class "KG QA Report" as KgQaReport <<json: KgQaReportSchema>> [[../../../en/folio-assistant-core/glossary/instance/cat-harness/#cat-harness--platform--kg-qa-report]] #f4e6e6 {
