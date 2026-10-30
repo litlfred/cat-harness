@@ -22,7 +22,7 @@ What the reader wants to look at, in their own words (kept verbatim; it narrows,
 | `pr` | integer | no | min: 1 |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/staging-review/input.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/staging-review/input.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/staging-review/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/staging-review/input.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/staging-review/input.schema.json){: data-fa-link="source" data-src="schemas/skills/staging-review/input.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/staging-review/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/staging-review/input.schema.json" data-repo="litlfred/cat-harness" }
 
 ## Output
 
@@ -35,4 +35,4 @@ The reviewable list: a narrative of what changed, where to start, and the stagin
 | `stagingLinks` | any | **yes** |  |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/staging-review/output.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/staging-review/output.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/staging-review/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/staging-review/output.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/staging-review/output.schema.json){: data-fa-link="source" data-src="schemas/skills/staging-review/output.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/staging-review/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/staging-review/output.schema.json" data-repo="litlfred/cat-harness" }

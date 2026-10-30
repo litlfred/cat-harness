@@ -23,7 +23,7 @@ Input schema for BPMN 2.0 business process authoring.
 | `participants` | array<string> | no | Actor/participant IDs involved in the process. |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/bpmn-authoring/input.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/bpmn-authoring/input.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/bpmn-authoring/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/bpmn-authoring/input.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/bpmn-authoring/input.schema.json){: data-fa-link="source" data-src="schemas/skills/bpmn-authoring/input.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/bpmn-authoring/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/bpmn-authoring/input.schema.json" data-repo="litlfred/cat-harness" }
 
 ## Output
 
@@ -39,4 +39,4 @@ Output schema for BPMN 2.0 business process authoring.
 | `stagingLinks` | any | no | The staging preview of the work this output asks a person to look at: one deep link per changed page, with the same page on main. Required whenever a preview exists; when it does not, say so in `missing`. Rule: cat-harness skills/sdlc/sdlc-core/staging-review.md §"The deep-link rule". |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/bpmn-authoring/output.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/bpmn-authoring/output.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/bpmn-authoring/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/bpmn-authoring/output.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/bpmn-authoring/output.schema.json){: data-fa-link="source" data-src="schemas/skills/bpmn-authoring/output.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/bpmn-authoring/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/bpmn-authoring/output.schema.json" data-repo="litlfred/cat-harness" }

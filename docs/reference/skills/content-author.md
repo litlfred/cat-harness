@@ -22,7 +22,7 @@ Input schema for general content authoring.
 | `outputDir` | string | no | Output directory for authored content. |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/content-author/input.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/content-author/input.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/content-author/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/content-author/input.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/content-author/input.schema.json){: data-fa-link="source" data-src="schemas/skills/content-author/input.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/content-author/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/content-author/input.schema.json" data-repo="litlfred/cat-harness" }
 
 ## Output
 
@@ -42,4 +42,4 @@ Output schema for general content authoring.
 | `status` | `"draft"` \| `"ready-for-validation"` | no |  |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/content-author/output.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/content-author/output.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/content-author/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/content-author/output.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/content-author/output.schema.json){: data-fa-link="source" data-src="schemas/skills/content-author/output.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/content-author/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/content-author/output.schema.json" data-repo="litlfred/cat-harness" }

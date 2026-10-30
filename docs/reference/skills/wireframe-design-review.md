@@ -35,7 +35,7 @@ What is to be wireframed and why: the use (design of a new or changed surface, o
 | `url` | string (uri) | no | The issue or pull request; absent for the conversation. |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/wireframe-design-review/input.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/wireframe-design-review/input.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/wireframe-design-review/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/wireframe-design-review/input.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/wireframe-design-review/input.schema.json){: data-fa-link="source" data-src="schemas/skills/wireframe-design-review/input.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/wireframe-design-review/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/wireframe-design-review/input.schema.json" data-repo="litlfred/cat-harness" }
 
 ## Output
 
@@ -89,4 +89,4 @@ The wireframe renderings and the choice: each candidate's source HTML and its we
 | `recordedAt` | string (uri) | no | Where the choice is recorded: the issue or pull request comment, or, when it was made in the conversation, the proposal section that records it. |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/wireframe-design-review/output.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/wireframe-design-review/output.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/wireframe-design-review/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/wireframe-design-review/output.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/wireframe-design-review/output.schema.json){: data-fa-link="source" data-src="schemas/skills/wireframe-design-review/output.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/wireframe-design-review/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/wireframe-design-review/output.schema.json" data-repo="litlfred/cat-harness" }

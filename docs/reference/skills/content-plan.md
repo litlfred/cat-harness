@@ -24,7 +24,7 @@ Input schema for content planning — scope, team, timeline, governance.
 | `sprintDuration` | `"1w"` \| `"2w"` \| `"3w"` \| `"4w"` | no | default: `"2w"` |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/content-plan/input.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/content-plan/input.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/content-plan/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/content-plan/input.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/content-plan/input.schema.json){: data-fa-link="source" data-src="schemas/skills/content-plan/input.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/content-plan/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/content-plan/input.schema.json" data-repo="litlfred/cat-harness" }
 
 ## Output
 
@@ -61,4 +61,4 @@ Output schema for content planning.
 | `responsibilities` | array<string> | no |  |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/content-plan/output.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/content-plan/output.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/content-plan/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/content-plan/output.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/content-plan/output.schema.json){: data-fa-link="source" data-src="schemas/skills/content-plan/output.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/content-plan/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/content-plan/output.schema.json" data-repo="litlfred/cat-harness" }

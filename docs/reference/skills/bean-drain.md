@@ -41,7 +41,7 @@ What a drain starts from: every bean copy to read, the agents that may hold a be
 | `self` | boolean | **yes** | true for the agent running this drain; its own recent commits do not block it. |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/bean-drain/input.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/bean-drain/input.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/bean-drain/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/bean-drain/input.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/bean-drain/input.schema.json){: data-fa-link="source" data-src="schemas/skills/bean-drain/input.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/bean-drain/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/bean-drain/input.schema.json" data-repo="litlfred/cat-harness" }
 
 ## Output
 
@@ -64,4 +64,4 @@ What a drain produces: the queue, one claim check per bean taken, and what each 
 | `question` | string (uri) | no | asked-owner only: the chat message holding the full question. |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/bean-drain/output.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/bean-drain/output.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/bean-drain/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/bean-drain/output.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/bean-drain/output.schema.json){: data-fa-link="source" data-src="schemas/skills/bean-drain/output.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/bean-drain/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/bean-drain/output.schema.json" data-repo="litlfred/cat-harness" }

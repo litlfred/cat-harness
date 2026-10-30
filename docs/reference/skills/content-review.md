@@ -24,7 +24,7 @@ Input schema for formal content review and approval workflow.
 | `stagingLinks` | any | no | The staging preview of the work under review, as the request for feedback carried it, so the reviewer opens the changed pages rather than rebuilding links. Rule: cat-harness skills/sdlc/sdlc-core/staging-review.md §"The deep-link rule". |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/content-review/input.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/content-review/input.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/content-review/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/content-review/input.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/content-review/input.schema.json){: data-fa-link="source" data-src="schemas/skills/content-review/input.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/content-review/input.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/content-review/input.schema.json" data-repo="litlfred/cat-harness" }
 
 ## Output
 
@@ -104,4 +104,4 @@ What a review produces: findings, a decision about them, and the audit notes tha
 | `id` | string | **yes** |  |
 
 
-[Raw schema](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/skills/content-review/output.schema.json){: data-fa-link="source" data-src="cat-harness/schemas/skills/content-review/output.schema.json" data-repo="litlfred/folio-assistant" } · [✎ Edit](https://github.com/litlfred/folio-assistant/edit/main/cat-harness/schemas/skills/content-review/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="cat-harness/schemas/skills/content-review/output.schema.json" data-repo="litlfred/folio-assistant" }
+[Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/content-review/output.schema.json){: data-fa-link="source" data-src="schemas/skills/content-review/output.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/content-review/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/content-review/output.schema.json" data-repo="litlfred/cat-harness" }
