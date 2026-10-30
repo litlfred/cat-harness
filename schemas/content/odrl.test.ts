@@ -280,4 +280,66 @@ describe("PROV-O activity", () => {
   test("it cannot end before it starts", () => {
     expect(ProvActivitySchema.safeParse({ ...run, "prov:endedAtTime": "2026-09-23T19:00:00Z" }).success).toBe(false);
   });
+  test("DSA B4 decision records cite agreement URL + SHA-256 (and optional grant) and enforce the hash chain (bean 3z44)", async () => {
+    const {
+      ProvDecisionRecordSchema,
+      buildProvHashChain,
+      appendProvDecisionRecord,
+      verifyProvHashChain,
+    } = await import("./prov.ts");
+    const agreement = {
+      url: "https://example.org/agreements/who-ministry-dsa-v1.pdf",
+      sha256: "a".repeat(64),
+      grant: "urn:uuid:grant-001",
+    };
+
+    // Every decision record must name its agreement (url + sha256) and hash
+    expect(ProvDecisionRecordSchema.safeParse(run).success).toBe(false);
+
+    const chain = buildProvHashChain([
+      { ...run, "@id": "urn:run:1", "cat-harness:agreement": agreement, "cat-harness:grant": "urn:uuid:grant-001" },
+      { ...run, "@id": "urn:run:2", "prov:startedAtTime": "2026-09-23T19:40:00Z", "cat-harness:agreement": agreement },
+    ]);
+    const fullChain = appendProvDecisionRecord(chain, {
+      ...run,
+      "@id": "urn:run:3",
+      "prov:startedAtTime": "2026-09-23T19:45:00Z",
+      "cat-harness:agreement": agreement,
+    });
+
+    expect(fullChain).toHaveLength(3);
+    expect(fullChain[0]!["cat-harness:previousHash"]).toBeNull();
+    expect(fullChain[1]!["cat-harness:previousHash"]).toBe(fullChain[0]!["cat-harness:recordHash"]);
+    expect(fullChain[2]!["cat-harness:previousHash"]).toBe(fullChain[1]!["cat-harness:recordHash"]);
+    expect(verifyProvHashChain(fullChain).valid).toBe(true);
+
+    // Editing any past record fails the chain check
+    const edited = [
+      { ...fullChain[0]!, "prov:used": ["tampered-dataset"] },
+      fullChain[1]!,
+      fullChain[2]!,
+    ];
+    const editRes = verifyProvHashChain(edited);
+    expect(editRes.valid).toBe(false);
+    expect(editRes.errors.some((e) => e.kind === "hash-mismatch")).toBe(true);
+
+    // Removing the first record fails the chain check (genesis previousHash !== null)
+    const removedFirst = [fullChain[1]!, fullChain[2]!];
+    const remFirstRes = verifyProvHashChain(removedFirst);
+    expect(remFirstRes.valid).toBe(false);
+    expect(remFirstRes.errors.some((e) => e.kind === "broken-link")).toBe(true);
+
+    // Removing a middle record fails the chain check (previousHash link mismatch)
+    const removedMiddle = [fullChain[0]!, fullChain[2]!];
+    const remMiddleRes = verifyProvHashChain(removedMiddle);
+    expect(remMiddleRes.valid).toBe(false);
+    expect(remMiddleRes.errors.some((e) => e.kind === "broken-link")).toBe(true);
+
+    // Removing a record when expectedHeadHash or expectedCount is pinned also fails
+    const removedLast = [fullChain[0]!, fullChain[1]!];
+    expect(
+      verifyProvHashChain(removedLast, { expectedHeadHash: fullChain[2]!["cat-harness:recordHash"] }).valid,
+    ).toBe(false);
+    expect(verifyProvHashChain(removedLast, { expectedCount: 3 }).valid).toBe(false);
+  });
 });
