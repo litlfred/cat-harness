@@ -106,10 +106,18 @@ Owner ruling, 2026-10-07:
 2. **Adjudication**: When all `[NEEDS CLARIFICATION]` markers are settled by
    human decision (never by agent judgement), the status moves from `Draft` to
    `Adjudicated`.
-3. **Graduation**: Upon feature completion, the accepted functional requirements
-   (`FR-NNN`) graduate into permanent, standing obligations in the knowledge
-   graph — as `req:*` statements under `cat-harness/skills/requirements/` or in the
-   governing skill — backed by automated tests.
+3. **Filing at adjudication** (owner, 2026-10-30, option E on cat-harness#686):
+   when the spec reaches `Adjudicated`, its accepted `FR-NNN` are filed as a
+   `req:*` file under `cat-harness/skills/requirements/` with
+   `status: proposed` and `proposedIn` naming the governing issue. Each
+   `SC-NNN` becomes a success criterion of the statement it shows, with the
+   `SC-NNN` as its key. A test plan can then cite
+   `req:<slug>#<statement>/SC-NNN` before the feature ships. There is one id
+   space: no `spec:` reference into an issue comment is minted, because an
+   issue can move or be renumbered and the reference would outlive it.
+4. **Graduation**: Upon feature completion, the requirement's `status` flips
+   from `proposed` to `in-force`. Nothing is renamed, so every test that
+   cited it still resolves.
 
 ## The change-size rule (FR-009)
 
