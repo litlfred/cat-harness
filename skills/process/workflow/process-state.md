@@ -127,8 +127,9 @@ instance) exits 2.
 ### Arriving without the sweep — a mid-session clone, a project thread
 
 **Measured 2026-10-30, the "Fix wonky minimap" thread.** A project thread
-started with no repository. It cloned smart-ra, cat-harness-tools and
-folio-assistant-core mid-session, fixed and merged cat-harness-tools#1025,
+started with no repository. It cloned smart-ra, the tools layer and the
+content core mid-session, fixed and merged
+https://github.com/litlfred/cat-harness-tools/pull/1025,
 and repinned smart-ra. It never named a process, never loaded
 `delivery-summary` or `staging-review`, and gave its first result with no
 staging link. Every route to this skill was closed:
