@@ -17,7 +17,7 @@
           "schema": {
             "$type": "Slug"
           },
-          "description": "The paper directory under the content root. Its default names one folio's paper, which is migration debt: pass it explicitly.",
+          "description": "The paper: a directory name under the folio directory, or a path to it. When omitted, the folio's only paper; required when the folio holds several.",
           "required": false,
           "arg": {
             "flag": "--paper"
