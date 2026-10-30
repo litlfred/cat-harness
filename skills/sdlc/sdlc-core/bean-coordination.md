@@ -621,7 +621,7 @@ head. When the claim is *"nobody has built this"*, check the open branches too;
 this session started building `ankg`, `s8nu` and a `viewer-prune` module that
 siblings had already landed or had in flight, **five times**, and the check that
 would have prevented each is one `git diff --name-only origin/main...<branch>`.
-That check is now the [`open-work-lookup`](../../../tools/open-work-lookup/open-work-lookup.ts)
+That check is now the [`open-work-lookup`](../../../tools/open-work-lookup/open-work-lookup.json)
 Tool: a path, a prefix or a bean id, against `main` and every open PR head
 (bean `pomp`, reopened 2026-10-24 after the f1e1 duplicate in
 [`bean-drain`](bean-drain.md) §"The measured case").

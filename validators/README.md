@@ -84,6 +84,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-validators`,
 | [`slice-sqlite.json`](slice-sqlite.json) | data |  |
 | [`slides-accessibility.json`](slides-accessibility.json) | data |  |
 | [`sme-case-verdict.json`](sme-case-verdict.json) | data |  |
+| [`software-library-held.json`](software-library-held.json) | data |  |
 | [`software-library-vendored.json`](software-library-vendored.json) | data |  |
 | [`software-library.json`](software-library.json) | data |  |
 | [`source-descriptor.json`](source-descriptor.json) | data |  |

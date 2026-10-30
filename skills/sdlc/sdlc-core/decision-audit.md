@@ -14,7 +14,7 @@ A **decision** is an act *about* a set of findings: approve, request changes,
 reject. The gate reads the decision; the record has to carry both, because the
 interesting cases are exactly where they disagree.
 
-Schema: [`schemas/sdlc/qa-review.ts`](../../../schemas/qa-review.ts).
+Schema: [`schemas/sdlc/qa-review.ts`](../../../schemas/sdlc/qa-review.ts).
 
 ## Overruling is recorded, not erased
 
