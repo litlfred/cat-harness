@@ -111,8 +111,8 @@ dyanmic state vsualizesrs)"*, which was an explicit uncertainty. Until a
 visualiser named its input, the step's position was fixed and its filename
 was not. **Settled 2026-10-29** (bean `6h47`, owner's option A): the workflow
 pages are the dynamic-state visualiser. `kg-dynamic` publishes
-`<site>/<harness>/state.jsonld` (`scripts/dynamic-state-export.ts` in
-cat-harness-tools), and each workflow instance page reads it when it loads.
+`<site>/<harness>/state.jsonld` (`scripts/dynamic-state-export.ts` in the
+tools layer), and each workflow instance page reads it when it loads.
 
 It is a different document from the stage-1 graph export, and a reader can
 tell them apart without the path: it is typed `cat-harness:DynamicState`, its
