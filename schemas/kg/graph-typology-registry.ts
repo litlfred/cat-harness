@@ -1016,6 +1016,10 @@ export const BASE_GRAPH_TYPOLOGIES: Readonly<Record<string, GraphTypologyDef>> =
       "folio-todo-index/v1": {},
       "folio-semantic-zoom/v1": {},
       "folio-qa-graph/v1": { shape: "cat-harness-tools:pipeline/qa-graph-index.ts#QaGraphIndex" },
+      // A block or page manifest written as data rather than a `.ts` module
+      // (bean `y9r6`): `{ builder, data }`, evaluated by calling the named
+      // cat-harness builder, so the builder's own schema validates the data.
+      "block-manifest/v1": { shape: "cat-harness-tools:pipeline/json-manifest.ts#JsonManifest" },
       // GENERATOR OUTPUT: the `translation:index` command writes the one file
       // of this family whole, `<site>/_data/translations.json`.
       "folio-translation-index/v1": { shape: "cat-harness-tools:pipeline/translation-index.ts#TranslationIndex", generated: true },
