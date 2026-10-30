@@ -45,6 +45,14 @@
       "operative": "Abstract summarizing the contents and findings of the publication."
     },
     {
+      "term": "dc.description.endpage",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.description.startpage",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "dc.description.tableofcontents",
       "operative": "Table of contents or section outline of the document."
     },
@@ -71,6 +79,54 @@
     {
       "term": "dc.publisher",
       "operative": "Organization or publisher responsible for distributing the resource."
+    },
+    {
+      "term": "dc.relation",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.haspart",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.hasversion",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.ispartofjournal",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.ispartofseries",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.issue",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.isversionof",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.volume",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.rights",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.rights.holder",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.rights.uri",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.subject",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
       "term": "dc.subject.mesh",
