@@ -6940,7 +6940,7 @@
       var href = place ? place.entry : safeHref(a.href);
       // WHERE A PRESS GOES: the entry page until the index names a visualizer,
       // or the external URL for a linked document (R28).
-      var opens = place ? place.entry : (isLibrary && href ? href : "");
+      var opens = place ? place.entry : (isLibrary ? href || "" : "");
       var card = el("article", {
         class: "fa-glass-asset",
         "data-fa-asset": key,
@@ -7901,7 +7901,10 @@
         var rawUrl = urlInput.value.trim();
         var rawTitle = titleInput.value.trim();
         var slug = resolvedSlug();
-        var safe = /^https?:\/\/\S+$/i.test(rawUrl) ? safeHref(rawUrl) : undefined;
+        // Bound straight from safeHref, so the `href: safe` below is checked by
+        // construction (scripts/tests/href-safety.test.ts); safeHref(undefined)
+        // is undefined, so a non-http(s) URL is still refused.
+        var safe = safeHref(/^https?:\/\/\S+$/i.test(rawUrl) ? rawUrl : undefined);
         if (!safe) {
           err.textContent = "Enter an http:// or https:// URL to link a document.";
           err.removeAttribute("hidden");
