@@ -207,7 +207,7 @@ explicit permission for that repository. Ask which mode they want, with
 | branch | do |
 |---|---|
 | `new-repo` | Ask for the name. Create or use the empty directory, then `folio_init`. |
-| `overlay` | Hand off to [`repo-conversion`](repo-conversion.md) — scan first, import second, and never in the other order. |
+| `overlay` | Hand off to [`repo-conversion`](repo-conversion.md) — scan first, import second, and never in the other order. The scan's `markers` are offered as picks (§2a, `Task_ChooseHarnessed`): the harness declares only what the person chose — declare, don't slurp. |
 | `add-folio` | `folio_init` against a new top-level slug in the existing instance. Do not re-link the platform; it is already linked. |
 | `new-content` | **Stop.** This process ends here. Hand off to `authoring-a-document` or `authoring-a-paper`. Scaffolding anything on this branch is the bug. |
 
