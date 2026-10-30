@@ -69,6 +69,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-validators`,
 | [`qa-report.json`](qa-report.json) | data |  |
 | [`qa-script.json`](qa-script.json) | data |  |
 | [`qa-translation-pages.json`](qa-translation-pages.json) | data |  |
+| [`recording.json`](recording.json) | data |  |
 | [`referenced-source.json`](referenced-source.json) | data |  |
 | [`remote-skill-record.json`](remote-skill-record.json) | data |  |
 | [`role-graph.json`](role-graph.json) | data |  |
@@ -82,9 +83,14 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-validators`,
 | [`slice-index.json`](slice-index.json) | data |  |
 | [`slice-sqlite.json`](slice-sqlite.json) | data |  |
 | [`slides-accessibility.json`](slides-accessibility.json) | data |  |
+| [`sme-case-verdict.json`](sme-case-verdict.json) | data |  |
+| [`software-library-vendored.json`](software-library-vendored.json) | data |  |
+| [`software-library.json`](software-library.json) | data |  |
 | [`source-descriptor.json`](source-descriptor.json) | data |  |
 | [`substrate-snapshot.json`](substrate-snapshot.json) | data |  |
 | [`sweep-marks-sweep-mark.json`](sweep-marks-sweep-mark.json) | data |  |
+| [`test-data-fixed.json`](test-data-fixed.json) | data |  |
+| [`test-data-generated.json`](test-data-generated.json) | data |  |
 | [`test-plan.json`](test-plan.json) | data |  |
 | [`test-report.json`](test-report.json) | data |  |
 | [`test-run.json`](test-run.json) | data |  |
@@ -96,6 +102,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-validators`,
 | [`tool-profile.json`](tool-profile.json) | data |  |
 | [`tool-release.json`](tool-release.json) | data |  |
 | [`tool-run-record.json`](tool-run-record.json) | data |  |
+| [`transcript.json`](transcript.json) | data |  |
 | [`translation-config.json`](translation-config.json) | data |  |
 | [`translation-status.json`](translation-status.json) | data |  |
 | [`validator-node.json`](validator-node.json) | data |  |

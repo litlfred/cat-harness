@@ -13,6 +13,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `processes`, holding `pro
 
 | file | what it is | used by |
 |---|---|---|
+| [`global-tasks.bpmn`](global-tasks.bpmn) | 8 global tasks, the steps several [Processes](https://litlfred.github.io/bootstrap/schemas/#process) share |  |
 | [`ns.jsonld`](ns.jsonld) | cat-harness's diagram elements |  |
 | [`processes.json`](processes.json) | data |  |
 | [`content/`](content/) | _nothing declares what this holds_ | |

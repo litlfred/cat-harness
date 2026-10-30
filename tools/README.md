@@ -20,6 +20,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`archimate-pages/`](archimate-pages/) | _nothing declares what this holds_ | |
 | [`auto-docs-viewer/`](auto-docs-viewer/) | _nothing declares what this holds_ | |
 | [`avatars-css/`](avatars-css/) | _nothing declares what this holds_ | |
+| [`bean-claim-check/`](bean-claim-check/) | _nothing declares what this holds_ | |
 | [`bean-query/`](bean-query/) | _nothing declares what this holds_ | |
 | [`beans-cli/`](beans-cli/) | _nothing declares what this holds_ | |
 | [`beans-manual/`](beans-manual/) | _nothing declares what this holds_ | |
@@ -39,6 +40,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`declaration-resolution/`](declaration-resolution/) | _nothing declares what this holds_ | |
 | [`discuss/`](discuss/) | _nothing declares what this holds_ | |
 | [`document-kinds-viewer/`](document-kinds-viewer/) | _nothing declares what this holds_ | |
+| [`drain-queue/`](drain-queue/) | _nothing declares what this holds_ | |
 | [`external-schemas-viewer/`](external-schemas-viewer/) | _nothing declares what this holds_ | |
 | [`feature-staging/`](feature-staging/) | _nothing declares what this holds_ | |
 | [`folio-init/`](folio-init/) | _nothing declares what this holds_ | |
@@ -58,7 +60,9 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`github-pr-view/`](github-pr-view/) | _nothing declares what this holds_ | |
 | [`gitlab-branches/`](gitlab-branches/) | _nothing declares what this holds_ | |
 | [`gitlab-mr-comment/`](gitlab-mr-comment/) | _nothing declares what this holds_ | |
+| [`gitlab-mr-files/`](gitlab-mr-files/) | _nothing declares what this holds_ | |
 | [`gitlab-mr-list/`](gitlab-mr-list/) | _nothing declares what this holds_ | |
+| [`gitlab-mr-request-review/`](gitlab-mr-request-review/) | _nothing declares what this holds_ | |
 | [`gitlab-mr-resolve-thread/`](gitlab-mr-resolve-thread/) | _nothing declares what this holds_ | |
 | [`gitlab-mr-view/`](gitlab-mr-view/) | _nothing declares what this holds_ | |
 | [`handover-screen/`](handover-screen/) | _nothing declares what this holds_ | |
@@ -91,6 +95,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`node-kind-pages/`](node-kind-pages/) | _nothing declares what this holds_ | |
 | [`npm/`](npm/) | _nothing declares what this holds_ | |
 | [`ns-vocabulary/`](ns-vocabulary/) | _nothing declares what this holds_ | |
+| [`open-work-lookup/`](open-work-lookup/) | _nothing declares what this holds_ | |
 | [`openapi-ingest-rendered/`](openapi-ingest-rendered/) | _nothing declares what this holds_ | |
 | [`openapi-ingest-source/`](openapi-ingest-source/) | _nothing declares what this holds_ | |
 | [`openapi-pages/`](openapi-pages/) | _nothing declares what this holds_ | |

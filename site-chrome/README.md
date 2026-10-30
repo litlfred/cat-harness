@@ -18,6 +18,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `site-chrome`, holding `d
 | [`_config.yml`](_config.yml) | a file |  |
 | [`_includes/`](_includes/) | _nothing declares what this holds_ | |
 | [`_layouts/`](_layouts/) | _nothing declares what this holds_ | |
+| [`_plugins/`](_plugins/) | _nothing declares what this holds_ | |
 | [`assets/`](assets/) | _nothing declares what this holds_ | |
 
 <!-- kg:subgraph:end -->

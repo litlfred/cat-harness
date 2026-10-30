@@ -14,13 +14,6 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `process`, holding `do
 | file | what it is | used by |
 |---|---|---|
 | [`crdm-methodology.md`](crdm-methodology.md) | CRDM methodology |  |
-| [`evidence.md`](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/evidence.html) | Evidence for a recommendation |  |
 | [`index.md`](index.md) | [Process](https://litlfred.github.io/bootstrap/schemas/#process) & methodology |  |
-| [`publication-workflow.md`](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) | Publication workflow |  |
-| [`ar/`](ar/) | _nothing declares what this holds_ | |
-| [`es/`](es/) | _nothing declares what this holds_ | |
-| [`fr/`](fr/) | _nothing declares what this holds_ | |
-| [`ru/`](ru/) | _nothing declares what this holds_ | |
-| [`zh/`](zh/) | _nothing declares what this holds_ | |
 
 <!-- kg:subgraph:end -->
