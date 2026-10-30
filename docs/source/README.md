@@ -19,14 +19,7 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `docs-source`, holding
 | [`concepts-harnessed-kg-overview/`](concepts-harnessed-kg-overview/) | _nothing declares what this holds_ | |
 | [`concepts-knowledge-graph/`](concepts-knowledge-graph/) | _nothing declares what this holds_ | |
 | [`guides-beans-and-todos/`](guides-beans-and-todos/) | _nothing declares what this holds_ | |
-| [`guides-document-ingestion/`](guides-document-ingestion/) | _nothing declares what this holds_ | |
 | [`guides-managing-agent-context/`](guides-managing-agent-context/) | _nothing declares what this holds_ | |
-| [`guides-who-smart-dak/`](guides-who-smart-dak/) | _nothing declares what this holds_ | |
-| [`guides-who-smart-ig/`](guides-who-smart-ig/) | _nothing declares what this holds_ | |
-| [`guides-writing-a-document/`](guides-writing-a-document/) | _nothing declares what this holds_ | |
-| [`guides-writing-a-paper/`](guides-writing-a-paper/) | _nothing declares what this holds_ | |
 | [`process-crdm-methodology/`](process-crdm-methodology/) | _nothing declares what this holds_ | |
-| [`process-evidence/`](process-evidence/) | _nothing declares what this holds_ | |
-| [`process-publication-workflow/`](process-publication-workflow/) | _nothing declares what this holds_ | |
 
 <!-- kg:subgraph:end -->
