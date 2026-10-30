@@ -25,15 +25,6 @@
       "graphTypologies": [
         "typologies"
       ]
-    },
-    {
-      "id": "openapi-schemas",
-      "path": "schemas/",
-      "subgraph": true,
-      "description": "The subgraph's shapes: `cat-openapi.config.json` (what an instance names), the ingest's provenance node, the subset of OpenAPI 3 the pages read, and how an operation's id is derived.",
-      "graphTypologies": [
-        "schemas"
-      ]
     }
   ]
 }
