@@ -31,7 +31,7 @@ Guidelines и руководств по реализации FHIR — на ба�
 Не сообщение в чате и не комментарий, а [beans]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }}) — хранилище под контролем версий, которое может прочитать любая сессия или агент. Займите задачу до начала работы, чтобы соседняя сессия не взяла её же; ненужный bean помечается `scrapped` с указанием причин и никогда не удаляется.
 
 ```sh
-cat-harness/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
+cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
 beans list                          # что открыто
 beans create "<title>"              # …проверив, что такого заголовка ещё нет
 beans <id> --status in-progress     # занять задачу, у всех на виду

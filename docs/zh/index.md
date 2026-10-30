@@ -36,7 +36,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 不是聊天消息，也不是评论——而是 [beans]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})，一个纳入版本管理、任何会话或智能体都能读取的存储。开始工作前先认领，以免并行会话领取同一项；最终不需要的 bean 标记为 `scrapped` 并写明原因，绝不删除。
 
 ```sh
-cat-harness/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
+cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
 beans list                          # 有哪些待办
 beans create "<title>"              # ……先确认该标题尚不存在
 beans <id> --status in-progress     # 认领它，让大家可见

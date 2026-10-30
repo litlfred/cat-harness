@@ -40,7 +40,7 @@ d'objets de contenu typé.
 Pas un message de discussion, pas un commentaire — des [beans]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }}), un dépôt versionné que toute session ou tout agent peut lire. Réservez avant de travailler, pour qu'une session voisine ne prenne pas le même élément ; un bean qui s'avère inutile est marqué `scrapped`, avec ses raisons, jamais supprimé.
 
 ```sh
-cat-harness/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
+cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
 beans list                          # ce qui est ouvert
 beans create "<title>"              # …après avoir vérifié que le titre n'existe pas
 beans <id> --status in-progress     # le réserver, visiblement
