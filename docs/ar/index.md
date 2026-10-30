@@ -44,7 +44,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 ليست رسالة دردشة ولا تعليقًا، بل [beans]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})، وهو مخزن خاضع لإدارة الإصدارات تستطيع أي جلسة أو أي وكيل قراءته. احجز العنصر قبل أن تعمل عليه كي لا تأخذه جلسة موازية؛ والـ bean الذي يتبيّن أنه غير مطلوب يُعلَّم `scrapped` مع أسبابه، ولا يُحذف أبدًا.
 
 ```sh
-cat-harness/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
+cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
 beans list                          # ما هو مفتوح
 beans create "<title>"              # …بعد التحقق من أن العنوان غير موجود
 beans <id> --status in-progress     # احجزه، بشكل مرئي
