@@ -5,5 +5,5 @@
     "kind": "archimate",
     "family": "cat-archimate-config/v1"
   },
-  "schema": "cat-harness:archimate/schemas/archimate.ts#ArchimateConfigSchema"
+  "schema": "cat-harness-tools:archimate/schemas/archimate.ts#ArchimateConfigSchema"
 }
