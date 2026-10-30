@@ -35,7 +35,7 @@ must issue grants or sign its own logs.
 |---|---|---|
 | **the signing skill** (this file) | who, what, which suite, key custody, route, what a verifier checks | `cat-harness`, a definition |
 | **verify** and **resolve-key** tool contracts | the Tool's input and output, naming this skill in `satisfies` | `cat-harness/tools/<id>/<id>.ts`, when written |
-| their code | a thin wrapper over a maintained library | `cat-harness-tools`, or the layer whose library it wraps (see *Where verification is implemented*) |
+| their code | a thin wrapper over a maintained library | the tools layer, or the layer whose library it wraps (see *Where verification is implemented*) |
 
 **Definitions there, implementations here.** Nothing in this skill is code,
 and it names no library as chosen. The cryptography is never written in this
@@ -193,7 +193,7 @@ lookup for **COSE/HCERT** documents and the **GDHCN trust list's
 VC-JOSE-COSE and the 2025 Data Integrity cryptosuites.
 
 This harness **does not import it**. smart-trust-tools sits above this layer
-and needs `fhir-harness`, and a lower layer naming a higher one is the wrong
+and needs the FHIR layer, and a lower layer naming a higher one is the wrong
 direction. This skill only names it. A `verify` Tool contract here would be
 implemented by whichever layer wraps the chosen library.
 
