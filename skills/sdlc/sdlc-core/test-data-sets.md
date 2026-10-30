@@ -25,16 +25,16 @@ Governs how test data sets are authored, discriminated, specialized per content 
 
 ## Two kinds of test data, two declared graph directories (`vm6m`)
 
-Fixed and generated test data sets do not have the same provenance or audit standing, so they live in **separately declared graph directories** (`test-data-fixed` vs `test-data-generated` in [`schemas/kg/graph-typology-registry.ts`](../../../schemas/kg/graph-typology-registry.ts)) and carry self-identifying `$schema` and `kind` tags in [`schemas/sdlc/test-data.ts`](../../../schemas/sdlc/test-data.ts):
+Fixed and generated test data sets do not have the same provenance or audit standing, so they live in **separately declared graph directories** (`test-data-fixed` vs `test-data-generated` in [`schemas/kg/graph-typology-registry.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/kg/graph-typology-registry.ts)) and carry self-identifying `$schema` and `kind` tags in [`schemas/sdlc/test-data.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/sdlc/test-data.ts):
 
 | Kind | Graph typology | `$schema` tag | Discriminator | What is stored | Audit standing |
 |---|---|---|---|---|---|
-| **Fixed** | `test-data-fixed` | `test-data-fixed/1.0.0` | `kind: "fixed"` | Committed `records`, optional `citations`, optional SME `review` sign-off | Usable as certification evidence (`isEvidence` in [`schemas/sdlc/test-plan.ts`](../../../schemas/sdlc/test-plan.ts)) once `review` is present |
+| **Fixed** | `test-data-fixed` | `test-data-fixed/1.0.0` | `kind: "fixed"` | Committed `records`, optional `citations`, optional SME `review` sign-off | Usable as certification evidence (`isEvidence` in [`schemas/sdlc/test-plan.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/sdlc/test-plan.ts)) once `review` is present |
 | **Generated** | `test-data-generated` | `test-data-generated/1.0.0` | `kind: "generated"` | Recipe only: `contentType`, `specialisation`, `template`, `params`, `seed`, and canonical `sha256` | **Never stored materialised**; synthesised at run time and hashed into `folio-test-run/v1` |
 
 ### Discriminate from the file content, never from the path
 
-A consumer reading a test data node must call `discriminateTestDataSet(doc)` in [`schemas/sdlc/test-data.ts`](../../../schemas/sdlc/test-data.ts), which inspects `$schema` and `kind` inside the JSON document rather than inferring the kind from the directory path:
+A consumer reading a test data node must call `discriminateTestDataSet(doc)` in [`schemas/sdlc/test-data.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/sdlc/test-data.ts), which inspects `$schema` and `kind` inside the JSON document rather than inferring the kind from the directory path:
 
 - `FixedTestDataSetSchema` is `.strict()` and refuses recipe fields (`template`, `params`, `seed`, `sha256`).
 - `GeneratedTestDataSetSchema` is `.strict()` and refuses materialised payload fields (`records`, `cases`, `path`, `review`), and verifies that `sha256` equals `computeGeneratedSetDigest({ contentType, specialisation, template, params, seed })`.
@@ -50,7 +50,7 @@ The general curation process is [`processes/sdlc/test-data-curation.bpmn`](../..
 
 ### FHIR templating is one specialisation, named as such, not the design
 
-`Call_ContentTypeSpecialisation` in `test-data-curation.bpmn` is parameterized by `contentType` and `specialisation` (`TestDataSpecialisationSchema` in [`schemas/sdlc/test-data.ts`](../../../schemas/sdlc/test-data.ts)):
+`Call_ContentTypeSpecialisation` in `test-data-curation.bpmn` is parameterized by `contentType` and `specialisation` (`TestDataSpecialisationSchema` in [`schemas/sdlc/test-data.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/sdlc/test-data.ts)):
 
 - **`fhir-templating` (`FHIR_TEMPLATING_SPECIALISATION`)** is **one named specialisation** for FHIR IG / DAK content (for example, Liquid or FSH/JSON templates producing synthetic patient bundles or MeasureReport cohorts).
 - Other content types supply their own specialisations — such as `markdown-fixture` for document folios, `lean-counterexample` for formal-proof folios, or `tabular-cohort` for aggregate indicator tables.
@@ -62,7 +62,7 @@ When a fixed test data set tests clinical or scientific **decision support** or 
 
 ### Two units of review in `sme-case-verdict/1.0.0`
 
-[`SmeCaseVerdictKind`](../../../schemas/sdlc/test-data.ts) (`$schema: "sme-case-verdict/1.0.0"`, graph typology `sme-case-verdict`) discriminates on `subjectKind`:
+[`SmeCaseVerdictKind`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/sdlc/test-data.ts) (`$schema: "sme-case-verdict/1.0.0"`, graph typology `sme-case-verdict`) discriminates on `subjectKind`:
 
 1. **`subjectKind: "decision-support"` — unit is a worked case (`case`)**:
    - `id`, `summary`, `decisionLogicRef`, structured `input`, `systemOutput`, and optional `expectedGuidance`.
