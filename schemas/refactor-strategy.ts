@@ -31,7 +31,7 @@
  * "concise-but-broken" is not progress.
  *
  * @module schemas/refactor-strategy
- * @graphNode none — moved to folio-assistant-sci/schemas/refactor-strategy.ts (bean f8wp); retained for one release while saqd #875 moves cat-harness-tools/pipeline/refactor-strategy.ts
+ * @graphNode none — moved to the sci layer (https://github.com/litlfred/folio-assistant-sci/blob/main/schemas/refactor-strategy.ts) (bean f8wp); retained for one release while saqd #875 moves cat-harness-tools/pipeline/refactor-strategy.ts
  */
 
 /**

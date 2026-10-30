@@ -111,7 +111,7 @@
   "$comment": [
     {
       "at": "",
-      "comment": "folio-assistant#875: a skill edit goes through a governed Tool node, not a\nraw file write. The spec is the spec-kit comment on #875, Adjudicated by\nthe owner 2026-10-29. Implemented in cat-harness-tools."
+      "comment": "folio-assistant#875: a skill edit goes through a governed Tool node, not a\nraw file write. The spec is the spec-kit comment on #875, Adjudicated by\nthe owner 2026-10-29. Implemented in the tools layer (https://github.com/litlfred/cat-harness-tools)."
     }
   ]
 }
