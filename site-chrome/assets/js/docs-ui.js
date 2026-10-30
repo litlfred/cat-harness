@@ -12453,7 +12453,7 @@
 
     var box = document.getElementById("fa-nav-open");
     // NO ☰ AND NO [x] (#1757 on the rail, ob3m finding 8 here). The avatar
-    // below is the one control: it pins the bar open and closes it.
+    // below pins a closed bar open, and goes home from an open one.
 
     /* THE AVATAR OPENS AND CLOSES THE BAR — owner, 2026-09-27: *"navbar
      * starts hidden, click avatar opens for a split second then returns to
@@ -12463,7 +12463,8 @@
      *
      * From 50rem up it is now the bar's toggle: pin open (lifting stay-closed),
      * or close (setting it, so the hover peek does not hold it open under the
-     * pointer). Home is still one click away, as ⌂ at the foot of the bar and
+     * pointer). (Superseded 2026-10-30, below: the ⌂ row is gone and an open
+     * bar's avatar goes home.) Home was one click away, as ⌂ at the foot and
      * as the first page. Below 50rem the theme's ☰ owns the menu and the
      * avatar stays the home link. With no script it is the home link too. */
     var avatar = bar.querySelector(".site-title");
@@ -12477,29 +12478,27 @@
         }
         avatar.setAttribute("aria-controls", bar.id || "");
         avatar.setAttribute("aria-expanded", box.checked ? "true" : "false");
-        avatar.title = box.checked ? "Close navigation" : "Open navigation";
+        avatar.title = box.checked ? "Go to the landing page" : "Open navigation, or go to the landing page once it is open";
       };
       if (!bar.id) bar.id = "fa-side-bar";
       label();
       box.addEventListener("change", label);
+      /* AN OPEN BAR'S AVATAR GOES HOME -- owner, 2026-10-30: *"who eblmen not
+       * clicable to go to landing page. also dont need home on bottomof
+       * harnes navbars."* The ⌂ row at the foot is gone, so the avatar is the
+       * way home. It still pins a CLOSED bar open, which is the touch case
+       * (no hover to peek it open); once the bar is open, by hover, focus or
+       * the pin, the click is the theme's home link. */
       avatar.addEventListener("click", function (e) {
         if (!wide.matches) return;
+        // `(hover: hover)`: a touch screen reports :hover on the tap itself,
+        // which would send its first tap home instead of opening the bar.
+        var canHover = window.matchMedia("(hover: hover)").matches;
+        if (box.checked || (canHover && bar.matches(":hover")) || bar.matches(":focus-visible, :has(:focus-visible)")) return;
         e.preventDefault();
-        box.checked = !box.checked;
-        // Closed under the pointer, the hover peek would hold it open, so the
-        // peek is withheld -- until the pointer leaves the bar, not for good.
-        applyNavPref(box.checked ? null : "closed");
-        if (!box.checked) {
-          bar.addEventListener("pointerleave", function release() {
-            bar.removeEventListener("pointerleave", release);
-            if (!box.checked) applyNavPref(null);
-          });
-        }
+        box.checked = true;
+        applyNavPref(null);
         label();
-        // Closing must drop focus too: the bar also opens on `:focus-within`
-        // (the keyboard path), so a focused avatar held it open after the
-        // click that closed it. Measured: 264px wide with the pointer away.
-        if (!box.checked) avatar.blur();
       });
     }
   }
