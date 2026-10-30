@@ -1,0 +1,973 @@
+{
+  "$schema": "folio-keywords/v1",
+  "entry": "arxiv-2402.02172v5",
+  "corpus": {
+    "library": "cat-harness/library",
+    "sections": 2140,
+    "terms": 14687,
+    "weighting": "log-entropy"
+  },
+  "document": [
+    {
+      "term": "codeagent across",
+      "score": 31.0923,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "codeagent effective",
+      "score": 29.4444,
+      "evidence": []
+    },
+    {
+      "term": "codeagent collaborating",
+      "score": 28.8468,
+      "evidence": []
+    },
+    {
+      "term": "codeagent outperforms",
+      "score": 28.7591,
+      "evidence": []
+    },
+    {
+      "term": "codeagent pipeline",
+      "score": 28.6316,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "demonstrate codeagent",
+      "score": 28.3715,
+      "evidence": []
+    },
+    {
+      "term": "codeagent demonstrated",
+      "score": 27.9141,
+      "evidence": []
+    },
+    {
+      "term": "code review",
+      "score": 27.8386,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "code vulnerabilities",
+      "score": 25.0842,
+      "evidence": []
+    },
+    {
+      "term": "code consistency",
+      "score": 23.2873,
+      "evidence": []
+    },
+    {
+      "term": "code revision",
+      "score": 21.4322,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "code original",
+      "score": 20.4371,
+      "evidence": []
+    }
+  ],
+  "sections": {
+    "sec-000-codeagent": [
+      {
+        "term": "codeagent",
+        "score": 1.477,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "code review",
+        "score": 1.3667,
+        "evidence": []
+      },
+      {
+        "term": "university",
+        "score": 0.9258,
+        "evidence": []
+      },
+      {
+        "term": "tegawendé",
+        "score": 0.6423,
+        "evidence": []
+      },
+      {
+        "term": "xunzhu",
+        "score": 0.6423,
+        "evidence": []
+      }
+    ],
+    "sec-002-introduction": [
+      {
+        "term": "codeagent outperforms",
+        "score": 2.7276,
+        "evidence": []
+      },
+      {
+        "term": "code review",
+        "score": 2.4337,
+        "evidence": []
+      },
+      {
+        "term": "code revision",
+        "score": 2.3077,
+        "evidence": []
+      },
+      {
+        "term": "review automation",
+        "score": 1.7896,
+        "evidence": []
+      },
+      {
+        "term": "review process",
+        "score": 1.5404,
+        "evidence": []
+      },
+      {
+        "term": "multi-agent systems",
+        "score": 1.4627,
+        "evidence": []
+      },
+      {
+        "term": "perfor mance",
+        "score": 1.454,
+        "evidence": []
+      },
+      {
+        "term": "detecting vulnerabilities",
+        "score": 1.4452,
+        "evidence": []
+      }
+    ],
+    "sec-003-pipeline": [
+      {
+        "term": "info sync",
+        "score": 3.3483,
+        "evidence": []
+      },
+      {
+        "term": "code alignment",
+        "score": 2.8875,
+        "evidence": []
+      },
+      {
+        "term": "code review",
+        "score": 2.8565,
+        "evidence": []
+      },
+      {
+        "term": "commit message",
+        "score": 2.6499,
+        "evidence": []
+      },
+      {
+        "term": "basic info",
+        "score": 2.5495,
+        "evidence": []
+      },
+      {
+        "term": "code doc",
+        "score": 2.5231,
+        "evidence": []
+      },
+      {
+        "term": "code revision",
+        "score": 2.474,
+        "evidence": []
+      },
+      {
+        "term": "code original",
+        "score": 2.3193,
+        "evidence": []
+      }
+    ],
+    "sec-004-role-card-definition": [
+      {
+        "term": "coder",
+        "score": 1.4321,
+        "evidence": []
+      },
+      {
+        "term": "reviewer",
+        "score": 1.3078,
+        "evidence": []
+      },
+      {
+        "term": "role",
+        "score": 1.1391,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "code review",
+        "score": 0.9953,
+        "evidence": []
+      },
+      {
+        "term": "card",
+        "score": 0.992,
+        "evidence": [
+          "heading"
+        ]
+      }
+    ],
+    "sec-005-self-improving-cot-with-qa-checker": [
+      {
+        "term": "checker",
+        "score": 2.5078,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "aai",
+        "score": 1.6372,
+        "evidence": []
+      },
+      {
+        "term": "qa-checker",
+        "score": 1.2206,
+        "evidence": []
+      },
+      {
+        "term": "task instruction",
+        "score": 1.1893,
+        "evidence": []
+      },
+      {
+        "term": "cot",
+        "score": 0.9116,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "question",
+        "score": 0.8872,
+        "evidence": []
+      },
+      {
+        "term": "attached",
+        "score": 0.8255,
+        "evidence": []
+      }
+    ],
+    "sec-008-datasets": [
+      {
+        "term": "merged closed",
+        "score": 1.8932,
+        "evidence": []
+      },
+      {
+        "term": "hit rate",
+        "score": 1.4654,
+        "evidence": []
+      },
+      {
+        "term": "pull requests",
+        "score": 1.0184,
+        "evidence": []
+      },
+      {
+        "term": "datasets",
+        "score": 0.9884,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "positives",
+        "score": 0.8313,
+        "evidence": []
+      },
+      {
+        "term": "recall",
+        "score": 0.73,
+        "evidence": []
+      },
+      {
+        "term": "edit",
+        "score": 0.7133,
+        "evidence": []
+      },
+      {
+        "term": "zhou",
+        "score": 0.6508,
+        "evidence": []
+      }
+    ],
+    "sec-009-state-of-the-art-tools-and-models": [
+      {
+        "term": "confirmed number",
+        "score": 1.5225,
+        "evidence": []
+      },
+      {
+        "term": "code revision",
+        "score": 1.3682,
+        "evidence": []
+      },
+      {
+        "term": "number divided",
+        "score": 1.2419,
+        "evidence": []
+      },
+      {
+        "term": "codeagent",
+        "score": 1.0819,
+        "evidence": []
+      },
+      {
+        "term": "ratecr",
+        "score": 1.0022,
+        "evidence": []
+      },
+      {
+        "term": "rateca",
+        "score": 0.9993,
+        "evidence": []
+      },
+      {
+        "term": "cot",
+        "score": 0.9116,
+        "evidence": []
+      },
+      {
+        "term": "codebert",
+        "score": 0.9044,
+        "evidence": []
+      }
+    ],
+    "sec-010-experimental-result-analysis": [
+      {
+        "term": "codeagent",
+        "score": 0.9319,
+        "evidence": []
+      },
+      {
+        "term": "discusses",
+        "score": 0.4815,
+        "evidence": []
+      },
+      {
+        "term": "analysis",
+        "score": 0.4698,
+        "evidence": [
+          "heading"
+        ]
+      }
+    ],
+    "sec-011-vulnerability-analysis": [
+      {
+        "term": "confirmed vulnerabilities",
+        "score": 2.7955,
+        "evidence": []
+      },
+      {
+        "term": "codebert",
+        "score": 2.0455,
+        "evidence": []
+      },
+      {
+        "term": "codeagent",
+        "score": 1.9045,
+        "evidence": []
+      },
+      {
+        "term": "gpt",
+        "score": 1.4651,
+        "evidence": []
+      },
+      {
+        "term": "ablation study",
+        "score": 1.4358,
+        "evidence": []
+      },
+      {
+        "term": "vulnerability detection",
+        "score": 1.4341,
+        "evidence": []
+      },
+      {
+        "term": "qa-checker",
+        "score": 1.3256,
+        "evidence": []
+      },
+      {
+        "term": "ratecr",
+        "score": 1.2646,
+        "evidence": []
+      }
+    ],
+    "sec-012-consistency-and-format-detection": [
+      {
+        "term": "closed commits",
+        "score": 3.0431,
+        "evidence": []
+      },
+      {
+        "term": "format consistency",
+        "score": 2.7084,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "codeagent",
+        "score": 1.9792,
+        "evidence": []
+      },
+      {
+        "term": "commits across",
+        "score": 1.8354,
+        "evidence": []
+      },
+      {
+        "term": "average improvement",
+        "score": 1.8312,
+        "evidence": []
+      },
+      {
+        "term": "codebert",
+        "score": 1.8087,
+        "evidence": []
+      },
+      {
+        "term": "f1-score",
+        "score": 1.7752,
+        "evidence": []
+      },
+      {
+        "term": "meth ods",
+        "score": 1.5772,
+        "evidence": []
+      }
+    ],
+    "sec-013-code-revision": [
+      {
+        "term": "code revision",
+        "score": 2.3843,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "codeagent",
+        "score": 1.0819,
+        "evidence": []
+      },
+      {
+        "term": "t5-review",
+        "score": 0.9497,
+        "evidence": []
+      },
+      {
+        "term": "bustness",
+        "score": 0.6305,
+        "evidence": []
+      },
+      {
+        "term": "sig",
+        "score": 0.6305,
+        "evidence": []
+      }
+    ],
+    "sec-014-related-work": [
+      {
+        "term": "automating code",
+        "score": 1.6837,
+        "evidence": []
+      },
+      {
+        "term": "code review",
+        "score": 1.5651,
+        "evidence": []
+      },
+      {
+        "term": "review activities",
+        "score": 1.3314,
+        "evidence": []
+      },
+      {
+        "term": "akata",
+        "score": 0.9475,
+        "evidence": []
+      },
+      {
+        "term": "siow",
+        "score": 0.9475,
+        "evidence": []
+      },
+      {
+        "term": "hellendoorn",
+        "score": 0.9078,
+        "evidence": []
+      },
+      {
+        "term": "tufano",
+        "score": 0.853,
+        "evidence": []
+      },
+      {
+        "term": "related",
+        "score": 0.8079,
+        "evidence": [
+          "heading"
+        ]
+      }
+    ],
+    "sec-015-conclusion": [
+      {
+        "term": "arxiv preprint",
+        "score": 4.1626,
+        "evidence": []
+      },
+      {
+        "term": "haoye tian",
+        "score": 2.9037,
+        "evidence": []
+      },
+      {
+        "term": "international conference",
+        "score": 2.8124,
+        "evidence": []
+      },
+      {
+        "term": "jacques klein",
+        "score": 2.7822,
+        "evidence": []
+      },
+      {
+        "term": "ming zhou",
+        "score": 2.5984,
+        "evidence": []
+      },
+      {
+        "term": "international symposium",
+        "score": 2.5476,
+        "evidence": []
+      },
+      {
+        "term": "code review",
+        "score": 2.5304,
+        "evidence": []
+      },
+      {
+        "term": "automating code",
+        "score": 2.4642,
+        "evidence": []
+      }
+    ],
+    "sec-017-complete-related-work": [
+      {
+        "term": "question-answer pair",
+        "score": 2.6686,
+        "evidence": []
+      },
+      {
+        "term": "optimal question-answer",
+        "score": 2.3651,
+        "evidence": []
+      },
+      {
+        "term": "iteration moves",
+        "score": 2.0118,
+        "evidence": []
+      },
+      {
+        "term": "implying convergence",
+        "score": 1.9033,
+        "evidence": []
+      },
+      {
+        "term": "qa-checker",
+        "score": 1.7473,
+        "evidence": []
+      },
+      {
+        "term": "code review",
+        "score": 1.7115,
+        "evidence": []
+      },
+      {
+        "term": "remainder term",
+        "score": 1.7085,
+        "evidence": []
+      },
+      {
+        "term": "convergence relies",
+        "score": 1.6409,
+        "evidence": []
+      }
+    ],
+    "sec-019-role-definition": [
+      {
+        "term": "code reviews",
+        "score": 2.2168,
+        "evidence": []
+      },
+      {
+        "term": "codeagent",
+        "score": 1.477,
+        "evidence": []
+      },
+      {
+        "term": "suggesting improvements",
+        "score": 1.2435,
+        "evidence": []
+      },
+      {
+        "term": "collaborating",
+        "score": 1.212,
+        "evidence": []
+      },
+      {
+        "term": "role involves",
+        "score": 1.1716,
+        "evidence": []
+      },
+      {
+        "term": "programming languages",
+        "score": 1.155,
+        "evidence": []
+      },
+      {
+        "term": "coder",
+        "score": 1.108,
+        "evidence": []
+      },
+      {
+        "term": "commit",
+        "score": 1.0054,
+        "evidence": []
+      }
+    ],
+    "sec-020-execute-time-across-languages": [
+      {
+        "term": "merged prs",
+        "score": 2.8195,
+        "evidence": []
+      },
+      {
+        "term": "closed prs",
+        "score": 2.7356,
+        "evidence": []
+      },
+      {
+        "term": "execution time",
+        "score": 1.5208,
+        "evidence": []
+      },
+      {
+        "term": "average execution",
+        "score": 1.4813,
+        "evidence": []
+      },
+      {
+        "term": "languages",
+        "score": 1.1317,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "codeagent across",
+        "score": 1.0492,
+        "evidence": []
+      },
+      {
+        "term": "qa-checker",
+        "score": 0.9444,
+        "evidence": []
+      },
+      {
+        "term": "self-improvement",
+        "score": 0.8846,
+        "evidence": []
+      }
+    ],
+    "sec-022-differences-and-implications": [
+      {
+        "term": "qa-checker",
+        "score": 0.9444,
+        "evidence": []
+      },
+      {
+        "term": "conversations",
+        "score": 0.7615,
+        "evidence": []
+      },
+      {
+        "term": "conversational",
+        "score": 0.7555,
+        "evidence": []
+      },
+      {
+        "term": "responses",
+        "score": 0.7214,
+        "evidence": []
+      },
+      {
+        "term": "differences",
+        "score": 0.6943,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "efficiency",
+        "score": 0.5981,
+        "evidence": []
+      }
+    ],
+    "sec-023-conclusion": [
+      {
+        "term": "code review",
+        "score": 1.113,
+        "evidence": []
+      },
+      {
+        "term": "codeagent",
+        "score": 1.0819,
+        "evidence": []
+      },
+      {
+        "term": "review tasks",
+        "score": 1.0505,
+        "evidence": []
+      },
+      {
+        "term": "qa-checker",
+        "score": 0.7484,
+        "evidence": []
+      },
+      {
+        "term": "nerability",
+        "score": 0.5938,
+        "evidence": []
+      }
+    ],
+    "sec-024-dataset": [
+      {
+        "term": "closed com",
+        "score": 3.1673,
+        "evidence": []
+      },
+      {
+        "term": "sample count",
+        "score": 3.0848,
+        "evidence": []
+      },
+      {
+        "term": "both merged",
+        "score": 2.6662,
+        "evidence": []
+      },
+      {
+        "term": "programming languages",
+        "score": 2.049,
+        "evidence": []
+      },
+      {
+        "term": "recursive self-improvement",
+        "score": 2.0194,
+        "evidence": []
+      },
+      {
+        "term": "neg ative",
+        "score": 1.9571,
+        "evidence": []
+      },
+      {
+        "term": "com mits",
+        "score": 1.8352,
+        "evidence": []
+      },
+      {
+        "term": "across languages",
+        "score": 1.7363,
+        "evidence": []
+      }
+    ],
+    "sec-025-key-factors-leading-to-vulnerabilities": [
+      {
+        "term": "factors",
+        "score": 1.0131,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "vulnerabilities",
+        "score": 0.7612,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "outlines",
+        "score": 0.5173,
+        "evidence": []
+      }
+    ],
+    "sec-026-data-leakage-statement": [
+      {
+        "term": "code review",
+        "score": 1.9906,
+        "evidence": []
+      },
+      {
+        "term": "codeagent pipeline",
+        "score": 1.9228,
+        "evidence": []
+      },
+      {
+        "term": "memory leaks",
+        "score": 1.8634,
+        "evidence": []
+      },
+      {
+        "term": "refined code",
+        "score": 1.8247,
+        "evidence": []
+      },
+      {
+        "term": "detailed experimental",
+        "score": 1.4907,
+        "evidence": []
+      },
+      {
+        "term": "allow unauthorized",
+        "score": 1.4891,
+        "evidence": []
+      },
+      {
+        "term": "vulnerabilities",
+        "score": 1.4491,
+        "evidence": []
+      },
+      {
+        "term": "sensitive data",
+        "score": 1.4419,
+        "evidence": []
+      }
+    ],
+    "sec-028-performance-on-9-languages": [
+      {
+        "term": "codeagent",
+        "score": 1.5478,
+        "evidence": []
+      },
+      {
+        "term": "commit",
+        "score": 0.7967,
+        "evidence": []
+      },
+      {
+        "term": "diffs",
+        "score": 0.6305,
+        "evidence": []
+      },
+      {
+        "term": "planation",
+        "score": 0.6305,
+        "evidence": []
+      }
+    ],
+    "sec-029-ablation-study": [
+      {
+        "term": "chatgpt",
+        "score": 3.1461,
+        "evidence": []
+      },
+      {
+        "term": "codebert",
+        "score": 2.9944,
+        "evidence": []
+      },
+      {
+        "term": "codeagent",
+        "score": 2.7294,
+        "evidence": []
+      },
+      {
+        "term": "confirmed divided",
+        "score": 2.3618,
+        "evidence": []
+      },
+      {
+        "term": "merged data",
+        "score": 1.9203,
+        "evidence": []
+      },
+      {
+        "term": "recall",
+        "score": 1.9014,
+        "evidence": []
+      },
+      {
+        "term": "closed data",
+        "score": 1.8382,
+        "evidence": []
+      },
+      {
+        "term": "across languages",
+        "score": 1.7741,
+        "evidence": []
+      }
+    ],
+    "sec-030-cost-statement": [
+      {
+        "term": "parsed args",
+        "score": 5.9249,
+        "evidence": []
+      },
+      {
+        "term": "args null",
+        "score": 4.9927,
+        "evidence": []
+      },
+      {
+        "term": "commit message",
+        "score": 4.9294,
+        "evidence": []
+      },
+      {
+        "term": "meta args",
+        "score": 4.8507,
+        "evidence": []
+      },
+      {
+        "term": "get posts",
+        "score": 4.7441,
+        "evidence": []
+      },
+      {
+        "term": "posts query",
+        "score": 4.2869,
+        "evidence": []
+      },
+      {
+        "term": "parse args",
+        "score": 4.2839,
+        "evidence": []
+      },
+      {
+        "term": "formatting inconsistencies",
+        "score": 4.2754,
+        "evidence": []
+      }
+    ]
+  }
+}

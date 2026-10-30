@@ -3,69 +3,69 @@
   "entry": "skill-authoring-best-practices---claude-platform-docs",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 1860,
-    "terms": 11867,
+    "sections": 2140,
+    "terms": 14687,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "claude platform",
-      "score": 40.1515,
-      "evidence": []
-    },
-    {
-      "term": "practices claude",
-      "score": 33.1457,
+      "score": 39.6756,
       "evidence": []
     },
     {
       "term": "platform docs",
-      "score": 33.0188,
+      "score": 33.251,
       "evidence": []
     },
     {
-      "term": "claude code",
-      "score": 28.9099,
+      "term": "practices claude",
+      "score": 32.8704,
       "evidence": []
     },
     {
       "term": "skill authoring",
-      "score": 28.2978,
+      "score": 28.9361,
       "evidence": []
     },
     {
-      "term": "cookie settings",
-      "score": 28.1734,
+      "term": "claude code",
+      "score": 28.597,
       "evidence": []
     },
     {
       "term": "cookie policy",
-      "score": 28.1352,
+      "score": 28.57,
+      "evidence": []
+    },
+    {
+      "term": "cookie settings",
+      "score": 28.0717,
       "evidence": []
     },
     {
       "term": "claude reads",
-      "score": 26.608,
+      "score": 26.0628,
       "evidence": []
     },
     {
       "term": "ask claude",
-      "score": 25.7874,
+      "score": 25.3997,
       "evidence": []
     },
     {
       "term": "claude loads",
-      "score": 25.2875,
+      "score": 24.8993,
       "evidence": []
     },
     {
       "term": "claude navigates",
-      "score": 25.0411,
+      "score": 24.6236,
       "evidence": []
     },
     {
       "term": "claude models",
-      "score": 24.7578,
+      "score": 24.2958,
       "evidence": []
     }
   ],
@@ -73,1065 +73,1065 @@
     "page-001": [
       {
         "term": "claude platform",
-        "score": 1.5686,
+        "score": 1.5491,
         "evidence": []
       },
       {
         "term": "skill authoring",
-        "score": 1.4968,
+        "score": 1.5303,
         "evidence": []
       },
       {
         "term": "conversation history",
-        "score": 1.3074,
+        "score": 1.254,
         "evidence": []
       },
       {
         "term": "cookie settings",
-        "score": 1.1884,
+        "score": 1.1807,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.1411,
+        "score": 1.1508,
         "evidence": []
       },
       {
         "term": "context window",
-        "score": 1.1103,
+        "score": 1.115,
         "evidence": []
       },
       {
         "term": "every token",
-        "score": 1.0212,
+        "score": 0.9936,
         "evidence": []
       },
       {
         "term": "concise",
-        "score": 0.9585,
+        "score": 0.9608,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "extract pdf",
-        "score": 1.9189,
+        "score": 1.7945,
         "evidence": []
       },
       {
         "term": "pdf text",
-        "score": 1.6886,
+        "score": 1.6093,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.0994,
+        "score": 1.0868,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "you'll",
-        "score": 0.9469,
+        "score": 0.9497,
         "evidence": []
       },
       {
         "term": "pdfplumber",
-        "score": 0.9447,
+        "score": 0.9475,
         "evidence": []
       },
       {
         "term": "freedom",
-        "score": 0.9283,
+        "score": 0.9241,
         "evidence": []
       },
       {
         "term": "libraries",
-        "score": 0.6457,
+        "score": 0.6418,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "claude platform",
-        "score": 1.0994,
+        "score": 1.0868,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "freedom",
-        "score": 0.7356,
+        "score": 0.7323,
         "evidence": []
       },
       {
         "term": "cookie",
-        "score": 0.5919,
+        "score": 0.6011,
         "evidence": []
       },
       {
         "term": "customize",
-        "score": 0.5881,
+        "score": 0.5974,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "skill structure",
-        "score": 1.4068,
+        "score": 1.4182,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.3955,
-        "evidence": []
-      },
-      {
-        "term": "cannot contain",
-        "score": 1.1404,
+        "score": 1.3785,
         "evidence": []
       },
       {
         "term": "xml tags",
-        "score": 1.1384,
+        "score": 1.1479,
+        "evidence": []
+      },
+      {
+        "term": "contain xml",
+        "score": 1.1298,
+        "evidence": []
+      },
+      {
+        "term": "cannot contain",
+        "score": 1.1114,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "haiku",
-        "score": 0.8435,
+        "score": 0.828,
         "evidence": []
       },
       {
         "term": "plan",
-        "score": 0.7637,
-        "evidence": []
-      },
-      {
-        "term": "opus",
-        "score": 0.7108,
+        "score": 0.7181,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "excel files",
-        "score": 1.575,
+        "score": 1.5391,
         "evidence": []
       },
       {
         "term": "process excel",
-        "score": 1.3354,
+        "score": 1.2789,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 0.9766,
-        "evidence": []
-      },
-      {
-        "term": "inconsistent",
-        "score": 0.8709,
+        "score": 0.9657,
         "evidence": []
       },
       {
         "term": "skill",
-        "score": 0.8333,
+        "score": 0.8536,
+        "evidence": []
+      },
+      {
+        "term": "inconsistent",
+        "score": 0.7915,
         "evidence": []
       },
       {
         "term": "naming",
-        "score": 0.6629,
+        "score": 0.6667,
         "evidence": []
       }
     ],
     "page-006": [
       {
         "term": "progressive disclosure",
-        "score": 1.4531,
+        "score": 1.4546,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.2726,
+        "score": 1.2574,
         "evidence": []
       },
       {
         "term": "skill",
-        "score": 1.0279,
+        "score": 1.0529,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
-        "evidence": []
-      },
-      {
-        "term": "excel",
-        "score": 0.771,
-        "evidence": []
-      },
-      {
-        "term": "git",
-        "score": 0.7697,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "commit",
-        "score": 0.7194,
+        "score": 0.7967,
+        "evidence": []
+      },
+      {
+        "term": "git",
+        "score": 0.7617,
+        "evidence": []
+      },
+      {
+        "term": "excel",
+        "score": 0.7417,
         "evidence": []
       },
       {
         "term": "tables",
-        "score": 0.697,
+        "score": 0.6878,
         "evidence": []
       }
     ],
     "page-007": [
       {
         "term": "claude platform",
-        "score": 1.0994,
+        "score": 1.0868,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "skill",
-        "score": 0.645,
+        "score": 0.6606,
         "evidence": []
       }
     ],
     "page-008": [
       {
         "term": "loaded",
-        "score": 1.0998,
+        "score": 1.1125,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 0.9766,
+        "score": 0.9657,
         "evidence": []
       },
       {
         "term": "script",
-        "score": 0.7357,
+        "score": 0.7341,
         "evidence": []
       }
     ],
     "page-009": [
       {
         "term": "claude platform",
-        "score": 1.1947,
+        "score": 1.1807,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "finance",
-        "score": 0.8459,
+        "score": 0.841,
         "evidence": []
       },
       {
         "term": "sales",
-        "score": 0.7767,
-        "evidence": []
-      },
-      {
-        "term": "forms",
-        "score": 0.7656,
+        "score": 0.7826,
         "evidence": []
       },
       {
         "term": "marketing",
-        "score": 0.7443,
+        "score": 0.7507,
+        "evidence": []
+      },
+      {
+        "term": "forms",
+        "score": 0.7302,
         "evidence": []
       },
       {
         "term": "reference",
-        "score": 0.6766,
+        "score": 0.6689,
         "evidence": []
       }
     ],
     "page-010": [
       {
         "term": "claude reads",
-        "score": 1.4557,
+        "score": 1.3996,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.3384,
+        "score": 1.3223,
         "evidence": []
       },
       {
         "term": "nested references",
-        "score": 1.2027,
+        "score": 1.1768,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "finance",
-        "score": 0.8459,
+        "score": 0.841,
         "evidence": []
       },
       {
         "term": "sales",
-        "score": 0.7767,
+        "score": 0.7826,
         "evidence": []
       },
       {
         "term": "files",
-        "score": 0.6704,
+        "score": 0.6715,
         "evidence": []
       }
     ],
     "page-011": [
       {
         "term": "advanced features",
-        "score": 1.4941,
+        "score": 1.3566,
         "evidence": []
       },
       {
         "term": "api reference",
-        "score": 1.2369,
+        "score": 1.2351,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.1947,
+        "score": 1.1807,
         "evidence": []
       },
       {
         "term": "reference files",
-        "score": 1.1643,
+        "score": 1.1564,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "core methods",
-        "score": 0.7741,
+        "score": 0.7592,
         "evidence": []
       },
       {
-        "term": "setup",
-        "score": 0.7155,
+        "term": "contents",
+        "score": 0.6841,
         "evidence": []
       }
     ],
     "page-012": [
       {
         "term": "synthesis workflow",
-        "score": 1.3939,
+        "score": 1.3678,
         "evidence": []
       },
       {
         "term": "research synthesis",
-        "score": 1.2385,
+        "score": 1.1595,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.0994,
+        "score": 1.0868,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "checklist",
-        "score": 0.9621,
+        "score": 0.9699,
         "evidence": []
       },
       {
         "term": "citations",
-        "score": 0.9046,
+        "score": 0.9081,
         "evidence": []
       },
       {
         "term": "claim",
-        "score": 0.7915,
+        "score": 0.7619,
         "evidence": []
       },
       {
-        "term": "complex",
-        "score": 0.6998,
+        "term": "step",
+        "score": 0.6792,
         "evidence": []
       }
     ],
     "page-013": [
       {
         "term": "claude platform",
-        "score": 1.1947,
+        "score": 1.1807,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
-        "evidence": []
-      },
-      {
-        "term": "run",
-        "score": 0.7827,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "checklist",
-        "score": 0.7625,
+        "score": 0.7686,
+        "evidence": []
+      },
+      {
+        "term": "run",
+        "score": 0.7432,
         "evidence": []
       },
       {
         "term": "step",
-        "score": 0.7568,
+        "score": 0.7376,
         "evidence": []
       },
       {
         "term": "cookie",
-        "score": 0.5919,
+        "score": 0.6011,
         "evidence": []
       }
     ],
     "page-014": [
       {
         "term": "validation loop",
-        "score": 1.5018,
-        "evidence": []
-      },
-      {
-        "term": "content review",
-        "score": 1.2115,
+        "score": 1.4289,
         "evidence": []
       },
       {
         "term": "document editing",
-        "score": 1.186,
+        "score": 1.1919,
+        "evidence": []
+      },
+      {
+        "term": "content review",
+        "score": 1.1844,
         "evidence": []
       },
       {
         "term": "style guide",
-        "score": 1.1657,
+        "score": 1.1403,
         "evidence": []
       },
       {
         "term": "editing process",
-        "score": 1.1376,
+        "score": 1.1062,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.0994,
+        "score": 1.0868,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "time-sensitive",
-        "score": 0.9469,
+        "score": 0.9497,
         "evidence": []
       }
     ],
     "page-015": [
       {
         "term": "api endpoint",
-        "score": 1.8848,
+        "score": 1.8992,
         "evidence": []
       },
       {
         "term": "old patterns",
-        "score": 1.392,
+        "score": 1.3621,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.0994,
+        "score": 1.0868,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "mix",
-        "score": 0.9619,
+        "score": 0.9247,
         "evidence": []
       },
       {
         "term": "extract",
-        "score": 0.6833,
+        "score": 0.6243,
         "evidence": []
       }
     ],
     "page-016": [
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "report structure",
-        "score": 1.003,
+        "score": 0.9671,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 0.9766,
+        "score": 0.9657,
         "evidence": []
       },
       {
         "term": "cookie",
-        "score": 0.5919,
+        "score": 0.6011,
         "evidence": []
       }
     ],
     "page-017": [
       {
         "term": "claude platform",
-        "score": 1.1947,
+        "score": 1.1807,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "commit",
-        "score": 0.7194,
+        "score": 0.7967,
         "evidence": []
       },
       {
         "term": "style",
-        "score": 0.6242,
+        "score": 0.6319,
         "evidence": []
       },
       {
-        "term": "jwt",
-        "score": 0.5974,
+        "term": "cookie",
+        "score": 0.6011,
         "evidence": []
       }
     ],
     "page-018": [
       {
         "term": "editing workflow",
-        "score": 1.6759,
+        "score": 1.6771,
         "evidence": []
       },
       {
         "term": "create evaluations",
-        "score": 1.548,
+        "score": 1.4256,
         "evidence": []
       },
       {
         "term": "creation workflow",
-        "score": 1.3922,
+        "score": 1.4043,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.2726,
+        "score": 1.2574,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "gaps",
-        "score": 0.9431,
+        "score": 0.8875,
         "evidence": []
       },
       {
         "term": "build",
-        "score": 0.7039,
+        "score": 0.6864,
         "evidence": []
       },
       {
         "term": "modification",
-        "score": 0.6993,
+        "score": 0.6814,
         "evidence": []
       }
     ],
     "page-019": [
       {
         "term": "ask claude",
-        "score": 2.0364,
+        "score": 2.0019,
         "evidence": []
       },
       {
         "term": "create skill",
-        "score": 1.7956,
+        "score": 1.8137,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.7418,
+        "score": 1.7198,
         "evidence": []
       },
       {
         "term": "claude models",
-        "score": 1.6301,
+        "score": 1.5652,
         "evidence": []
       },
       {
         "term": "pdf file",
-        "score": 1.4901,
+        "score": 1.452,
         "evidence": []
       },
       {
         "term": "bigquery analysis",
-        "score": 1.3461,
-        "evidence": []
-      },
-      {
-        "term": "test accounts",
-        "score": 1.034,
+        "score": 1.334,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
+        "evidence": []
+      },
+      {
+        "term": "test accounts",
+        "score": 1.0068,
         "evidence": []
       }
     ],
     "page-020": [
       {
         "term": "skill mentions",
-        "score": 2.091,
+        "score": 1.97,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.8275,
+        "score": 1.8042,
         "evidence": []
       },
       {
         "term": "skill loaded",
-        "score": 1.7596,
+        "score": 1.7937,
         "evidence": []
       },
       {
         "term": "test accounts",
-        "score": 1.3523,
+        "score": 1.3051,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "filter",
-        "score": 0.995,
-        "evidence": []
-      },
-      {
-        "term": "regional",
-        "score": 0.8724,
+        "score": 0.9753,
         "evidence": []
       },
       {
         "term": "prominent",
-        "score": 0.8435,
+        "score": 0.8255,
+        "evidence": []
+      },
+      {
+        "term": "struggles",
+        "score": 0.8255,
         "evidence": []
       }
     ],
     "page-021": [
       {
         "term": "windows-style paths",
-        "score": 1.8914,
+        "score": 1.8659,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.5686,
+        "score": 1.5491,
         "evidence": []
       },
       {
         "term": "scripts helper",
-        "score": 1.4528,
+        "score": 1.4527,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "reference guide",
-        "score": 1.0033,
-        "evidence": []
-      },
-      {
-        "term": "avoid",
-        "score": 0.7191,
+        "score": 0.965,
         "evidence": []
       },
       {
         "term": "skill",
-        "score": 0.7181,
+        "score": 0.7355,
         "evidence": []
       },
       {
         "term": "iterate",
-        "score": 0.7169,
+        "score": 0.7239,
+        "evidence": []
+      },
+      {
+        "term": "avoid",
+        "score": 0.7171,
         "evidence": []
       }
     ],
     "page-022": [
       {
         "term": "failing print",
-        "score": 1.5074,
+        "score": 1.4512,
         "evidence": []
       },
       {
         "term": "def process",
-        "score": 1.3612,
+        "score": 1.2626,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.2726,
+        "score": 1.2574,
         "evidence": []
       },
       {
         "term": "process file",
-        "score": 1.1566,
-        "evidence": []
-      },
-      {
-        "term": "path",
-        "score": 1.0432,
+        "score": 1.1408,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
+        "evidence": []
+      },
+      {
+        "term": "path",
+        "score": 1.0155,
         "evidence": []
       },
       {
         "term": "pdfplumber",
-        "score": 0.9447,
+        "score": 0.9475,
         "evidence": []
       },
       {
         "term": "defer",
-        "score": 0.9042,
+        "score": 0.9078,
         "evidence": []
       }
     ],
     "page-023": [
       {
         "term": "utility scripts",
-        "score": 1.2719,
+        "score": 1.2591,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.1947,
+        "score": 1.1807,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "retries",
-        "score": 0.9793,
+        "score": 0.9684,
         "evidence": []
       },
       {
         "term": "timeout",
-        "score": 0.9552,
+        "score": 0.9604,
         "evidence": []
       },
       {
         "term": "save",
-        "score": 0.8177,
+        "score": 0.8057,
         "evidence": []
       }
     ],
     "page-024": [
       {
         "term": "claude platform",
-        "score": 1.1947,
+        "score": 1.1807,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "analyze form",
-        "score": 0.9798,
+        "score": 0.955,
         "evidence": []
       },
       {
         "term": "script",
-        "score": 0.7357,
+        "score": 0.7341,
         "evidence": []
       },
       {
         "term": "cookie",
-        "score": 0.5919,
+        "score": 0.6011,
         "evidence": []
       }
     ],
     "page-025": [
       {
         "term": "claude platform",
-        "score": 1.2726,
+        "score": 1.2574,
         "evidence": []
       },
       {
         "term": "form fields",
-        "score": 1.0675,
+        "score": 1.0521,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "pdf",
-        "score": 0.9492,
+        "score": 0.9042,
         "evidence": []
       },
       {
         "term": "analyze",
-        "score": 0.803,
+        "score": 0.7808,
         "evidence": []
       }
     ],
     "page-026": [
       {
         "term": "create plan",
-        "score": 1.622,
+        "score": 1.5574,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.5315,
+        "score": 1.5125,
         "evidence": []
       },
       {
         "term": "signature date",
-        "score": 1.4552,
+        "score": 1.4303,
         "evidence": []
       },
       {
         "term": "catches errors",
-        "score": 1.4085,
+        "score": 1.3671,
         "evidence": []
       },
       {
         "term": "code execution",
-        "score": 1.3369,
+        "score": 1.3206,
         "evidence": []
       },
       {
         "term": "execution environment",
-        "score": 1.3049,
+        "score": 1.2875,
         "evidence": []
       },
       {
         "term": "error messages",
-        "score": 1.1213,
+        "score": 1.0973,
         "evidence": []
       },
       {
-        "term": "skills run",
-        "score": 1.03,
+        "term": "platform docs",
+        "score": 1.0165,
         "evidence": []
       }
     ],
     "page-027": [
       {
         "term": "reference finance",
-        "score": 2.0354,
+        "score": 2.0182,
         "evidence": []
       },
       {
         "term": "reference files",
-        "score": 1.746,
+        "score": 1.7363,
         "evidence": []
       },
       {
         "term": "docs file",
-        "score": 1.5181,
+        "score": 1.5448,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.4458,
+        "score": 1.4281,
         "evidence": []
       },
       {
         "term": "context penalty",
-        "score": 1.3919,
+        "score": 1.3488,
         "evidence": []
       },
       {
         "term": "tokens until",
-        "score": 1.3572,
+        "score": 1.3456,
         "evidence": []
       },
       {
         "term": "analyze form",
-        "score": 1.1466,
+        "score": 1.1182,
         "evidence": []
       },
       {
         "term": "bash",
-        "score": 1.0792,
+        "score": 1.0547,
         "evidence": []
       }
     ],
     "page-028": [
       {
         "term": "bigquery schema",
-        "score": 1.862,
+        "score": 1.8747,
         "evidence": []
       },
       {
         "term": "tool names",
-        "score": 1.5165,
+        "score": 1.5107,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.1947,
+        "score": 1.1807,
         "evidence": []
       },
       {
         "term": "create issue",
-        "score": 1.1596,
+        "score": 1.1036,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "mcp",
-        "score": 0.6553,
+        "score": 0.6727,
         "evidence": []
       },
       {
         "term": "cookie",
-        "score": 0.5919,
+        "score": 0.6011,
         "evidence": []
       }
     ],
     "page-029": [
       {
         "term": "progressive disclosure",
-        "score": 1.4531,
+        "score": 1.4546,
         "evidence": []
       },
       {
         "term": "xml tags",
-        "score": 1.1384,
+        "score": 1.1479,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 1.0994,
+        "score": 1.0868,
         "evidence": []
       },
       {
         "term": "skills overview",
-        "score": 1.0876,
+        "score": 1.0715,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "separate files",
-        "score": 0.9117,
+        "score": 0.9066,
         "evidence": []
       },
       {
         "term": "scripts",
-        "score": 0.6922,
+        "score": 0.6876,
         "evidence": []
       },
       {
-        "term": "characters",
-        "score": 0.6339,
+        "term": "frontmatter",
+        "score": 0.6217,
         "evidence": []
       }
     ],
     "page-030": [
       {
         "term": "claude platform",
-        "score": 1.4055,
+        "score": 1.3892,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.2739,
+        "score": 1.2826,
         "evidence": []
       },
       {
         "term": "claude code",
-        "score": 1.195,
+        "score": 1.1867,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 0.711,
+        "score": 0.7218,
         "evidence": []
       },
       {
         "term": "page",
-        "score": 0.6888,
+        "score": 0.6819,
         "evidence": [
           "heading"
         ]
@@ -1140,49 +1140,49 @@
     "page-031": [
       {
         "term": "claude platform",
-        "score": 1.2726,
+        "score": 1.2574,
         "evidence": []
       },
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "partners",
-        "score": 0.8709,
+        "score": 0.875,
         "evidence": []
       },
       {
         "term": "customer",
-        "score": 0.7209,
+        "score": 0.7081,
         "evidence": []
       },
       {
         "term": "policy",
-        "score": 0.6958,
+        "score": 0.7063,
         "evidence": []
       },
       {
         "term": "service",
-        "score": 0.6547,
+        "score": 0.6616,
         "evidence": []
       }
     ],
     "page-032": [
       {
         "term": "platform docs",
-        "score": 1.0096,
+        "score": 1.0165,
         "evidence": []
       },
       {
         "term": "claude platform",
-        "score": 0.9766,
+        "score": 0.9657,
         "evidence": []
       },
       {
         "term": "cookie",
-        "score": 0.5919,
+        "score": 0.6011,
         "evidence": []
       }
     ]

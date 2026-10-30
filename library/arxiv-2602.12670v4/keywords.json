@@ -3,77 +3,77 @@
   "entry": "arxiv-2602.12670v4",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 1860,
-    "terms": 11867,
+    "sections": 2140,
+    "terms": 14687,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "skills pass",
-      "score": 49.0813,
+      "score": 48.7307,
       "evidence": []
     },
     {
       "term": "curated skills",
-      "score": 46.3699,
+      "score": 46.7128,
       "evidence": []
     },
     {
       "term": "agent skills",
-      "score": 46.1741,
+      "score": 46.0481,
       "evidence": []
-    },
-    {
-      "term": "skills across",
-      "score": 41.1108,
-      "evidence": [
-        "heading"
-      ]
     },
     {
       "term": "skills condition",
-      "score": 41.0001,
+      "score": 41.2851,
       "evidence": [
         "heading"
       ]
     },
     {
-      "term": "task pass",
-      "score": 39.0607,
-      "evidence": []
+      "term": "skills across",
+      "score": 40.3555,
+      "evidence": [
+        "heading"
+      ]
     },
     {
       "term": "self-generated skills",
-      "score": 38.5645,
+      "score": 39.0995,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "environment skills",
-      "score": 38.2121,
-      "evidence": []
-    },
-    {
-      "term": "openhands gemini",
-      "score": 37.4259,
+      "score": 38.7327,
       "evidence": []
     },
     {
       "term": "task-specific skills",
-      "score": 37.1688,
+      "score": 37.5483,
       "evidence": []
     },
     {
       "term": "skills efficacy",
-      "score": 36.9639,
+      "score": 37.2039,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "skills lift",
-      "score": 36.6452,
+      "score": 37.1667,
+      "evidence": []
+    },
+    {
+      "term": "skills content",
+      "score": 37.0039,
+      "evidence": []
+    },
+    {
+      "term": "task pass",
+      "score": 36.0217,
       "evidence": []
     }
   ],
@@ -81,603 +81,603 @@
     "sec-000-introduction": [
       {
         "term": "harness",
-        "score": 0.8241,
+        "score": 0.8284,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 0.7722,
+        "score": 0.7838,
         "evidence": []
       },
       {
         "term": "anthropic",
-        "score": 0.5823,
-        "evidence": []
-      },
-      {
-        "term": "domain",
-        "score": 0.5412,
-        "evidence": []
-      },
-      {
-        "term": "task",
-        "score": 0.5396,
+        "score": 0.5586,
         "evidence": []
       },
       {
         "term": "agent",
-        "score": 0.5372,
+        "score": 0.5129,
+        "evidence": []
+      },
+      {
+        "term": "domain",
+        "score": 0.49,
+        "evidence": []
+      },
+      {
+        "term": "task",
+        "score": 0.4869,
         "evidence": []
       },
       {
         "term": "model",
-        "score": 0.4131,
+        "score": 0.3787,
         "evidence": []
       },
       {
         "term": "figure",
-        "score": 0.3724,
+        "score": 0.3375,
         "evidence": []
       }
     ],
     "sec-001-skillsbench": [
       {
         "term": "contribution",
-        "score": 0.9952,
+        "score": 0.9094,
         "evidence": []
       },
       {
         "term": "augmentation",
-        "score": 0.8672,
+        "score": 0.8322,
         "evidence": []
       },
       {
         "term": "benchflow",
-        "score": 0.8252,
+        "score": 0.8302,
         "evidence": []
       },
       {
         "term": "harness",
-        "score": 0.8241,
+        "score": 0.8284,
         "evidence": []
       }
     ],
     "sec-002-background": [
       {
         "term": "oracle verifier",
-        "score": 2.8607,
+        "score": 2.669,
         "evidence": []
       },
       {
         "term": "skill augmentation",
-        "score": 2.6344,
+        "score": 2.607,
         "evidence": []
       },
       {
         "term": "skillsbench task",
-        "score": 2.5329,
-        "evidence": []
-      },
-      {
-        "term": "oracle solution",
-        "score": 2.3896,
+        "score": 2.4477,
         "evidence": []
       },
       {
         "term": "curated skills",
-        "score": 2.3665,
-        "evidence": []
-      },
-      {
-        "term": "augmentation paradigms",
-        "score": 2.2852,
+        "score": 2.3742,
         "evidence": []
       },
       {
         "term": "skills bundle",
-        "score": 2.2805,
+        "score": 2.3109,
         "evidence": []
       },
       {
         "term": "deterministic pytest",
-        "score": 2.1805,
+        "score": 2.1922,
+        "evidence": []
+      },
+      {
+        "term": "oracle solution",
+        "score": 2.1365,
+        "evidence": []
+      },
+      {
+        "term": "augmentation paradigms",
+        "score": 2.133,
         "evidence": []
       }
     ],
     "sec-003-experiment": [
       {
         "term": "pass fail",
-        "score": 1.5622,
+        "score": 1.4861,
         "evidence": []
       },
       {
         "term": "task instruction",
-        "score": 1.3128,
+        "score": 1.222,
         "evidence": []
       },
       {
         "term": "latest aggregate",
-        "score": 1.2073,
+        "score": 1.1843,
         "evidence": []
       },
       {
         "term": "benchflow",
-        "score": 1.0413,
+        "score": 1.0476,
         "evidence": []
       },
       {
         "term": "passvanilla",
-        "score": 0.9975,
+        "score": 0.9993,
         "evidence": []
       },
       {
         "term": "packs",
-        "score": 0.9243,
+        "score": 0.9275,
         "evidence": []
       },
       {
         "term": "condition",
-        "score": 0.9085,
+        "score": 0.8865,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 0.7722,
+        "score": 0.7838,
         "evidence": []
       }
     ],
     "sec-006-main-results": [
       {
         "term": "openhands gemini",
-        "score": 3.817,
+        "score": 3.6074,
         "evidence": []
       },
       {
         "term": "claude opus",
-        "score": 2.5852,
-        "evidence": []
-      },
-      {
-        "term": "cli gemini",
-        "score": 2.5132,
+        "score": 2.5032,
         "evidence": []
       },
       {
         "term": "harness configurations",
-        "score": 2.5072,
+        "score": 2.4278,
+        "evidence": []
+      },
+      {
+        "term": "cli gemini",
+        "score": 2.3572,
         "evidence": []
       },
       {
         "term": "codex gpt",
-        "score": 2.4234,
+        "score": 2.2439,
         "evidence": []
       },
       {
-        "term": "pass rates",
-        "score": 2.3191,
-        "evidence": []
-      },
-      {
-        "term": "resolution rates",
-        "score": 2.2612,
+        "term": "skill invocation",
+        "score": 2.2172,
         "evidence": []
       },
       {
         "term": "invocation rate",
-        "score": 2.2537,
+        "score": 2.1686,
+        "evidence": []
+      },
+      {
+        "term": "pass rates",
+        "score": 2.168,
         "evidence": []
       }
     ],
     "sec-007-domain-level-analysis": [
       {
         "term": "pretraining",
-        "score": 1.0057,
+        "score": 0.9497,
         "evidence": []
       },
       {
         "term": "benefit",
-        "score": 0.8745,
+        "score": 0.8695,
         "evidence": []
       },
       {
         "term": "domains",
-        "score": 0.7795,
+        "score": 0.6743,
         "evidence": []
       }
     ],
     "sec-008-task-level-analysis": [
       {
         "term": "task-level",
-        "score": 1.184,
+        "score": 1.1877,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "skills",
-        "score": 0.9861,
-        "evidence": []
-      },
-      {
-        "term": "outperform",
-        "score": 0.7671,
-        "evidence": []
-      },
-      {
-        "term": "openhands",
-        "score": 0.7599,
+        "score": 1.001,
         "evidence": []
       },
       {
         "term": "exhaustive",
-        "score": 0.7554,
+        "score": 0.7489,
         "evidence": []
       },
       {
-        "term": "reaches",
-        "score": 0.7254,
+        "term": "openhands",
+        "score": 0.7459,
         "evidence": []
       },
       {
         "term": "no-skills",
-        "score": 0.7244,
+        "score": 0.7312,
         "evidence": []
       },
       {
         "term": "minimax",
-        "score": 0.7173,
+        "score": 0.7242,
+        "evidence": []
+      },
+      {
+        "term": "outperform",
+        "score": 0.7044,
+        "evidence": []
+      },
+      {
+        "term": "reaches",
+        "score": 0.6958,
         "evidence": []
       }
     ],
     "sec-009-discussion": [
       {
         "term": "skill authors",
-        "score": 1.3878,
+        "score": 1.3821,
         "evidence": []
       },
       {
         "term": "failure modes",
-        "score": 1.2469,
+        "score": 1.2321,
         "evidence": []
       },
       {
         "term": "harnesses",
-        "score": 0.9161,
+        "score": 0.8784,
         "evidence": []
       },
       {
         "term": "heavy",
-        "score": 0.8292,
+        "score": 0.8341,
         "evidence": []
       },
       {
         "term": "brittle",
-        "score": 0.8204,
+        "score": 0.7912,
         "evidence": []
       },
       {
         "term": "fallback",
-        "score": 0.6817,
+        "score": 0.6893,
         "evidence": []
       },
       {
         "term": "frontmatter",
-        "score": 0.6128,
+        "score": 0.6217,
         "evidence": []
       },
       {
         "term": "yields",
-        "score": 0.5867,
+        "score": 0.5556,
         "evidence": []
       }
     ],
     "sec-010-limitations-and-future-work": [
       {
         "term": "future work",
-        "score": 1.6816,
+        "score": 1.5878,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "determinism",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 0.9515,
+        "score": 0.9659,
         "evidence": []
       },
       {
         "term": "gui",
-        "score": 0.9341,
+        "score": 0.8909,
         "evidence": []
       },
       {
         "term": "effects",
-        "score": 0.7753,
+        "score": 0.7635,
         "evidence": []
       },
       {
         "term": "procedural",
-        "score": 0.6326,
-        "evidence": []
-      },
-      {
-        "term": "evaluate",
-        "score": 0.5011,
+        "score": 0.6411,
         "evidence": []
       },
       {
         "term": "agents",
-        "score": 0.4423,
+        "score": 0.4379,
+        "evidence": []
+      },
+      {
+        "term": "evaluate",
+        "score": 0.4312,
         "evidence": []
       }
     ],
     "sec-011-related-work": [
       {
         "term": "procedural augmentation",
-        "score": 1.8925,
+        "score": 1.8591,
         "evidence": []
       },
       {
         "term": "agent benchmarks",
-        "score": 1.6547,
+        "score": 1.5122,
         "evidence": []
       },
       {
         "term": "paired evaluation",
-        "score": 1.5775,
+        "score": 1.5027,
         "evidence": []
       },
       {
         "term": "evaluation methodology",
-        "score": 1.3124,
+        "score": 1.2223,
         "evidence": []
       },
       {
         "term": "skillsbench",
-        "score": 1.1767,
+        "score": 1.188,
         "evidence": []
       },
       {
-        "term": "zhou",
-        "score": 0.9265,
+        "term": "comparability",
+        "score": 0.875,
         "evidence": []
       },
       {
         "term": "terminal-bench",
-        "score": 0.8709,
+        "score": 0.875,
         "evidence": []
       },
       {
-        "term": "merrill",
-        "score": 0.8435,
+        "term": "benchflow",
+        "score": 0.8302,
         "evidence": []
       }
     ],
     "sec-012-conclusion": [
       {
         "term": "karthik narasimhan",
-        "score": 3.9068,
+        "score": 3.395,
         "evidence": []
       },
       {
         "term": "shunyu yao",
-        "score": 3.4492,
-        "evidence": []
-      },
-      {
-        "term": "arxiv preprint",
-        "score": 3.1388,
+        "score": 3.1242,
         "evidence": []
       },
       {
         "term": "shuyan zhou",
-        "score": 3.0414,
+        "score": 2.8684,
+        "evidence": []
+      },
+      {
+        "term": "arxiv preprint",
+        "score": 2.8279,
         "evidence": []
       },
       {
         "term": "graham neubig",
-        "score": 2.6954,
+        "score": 2.5426,
+        "evidence": []
+      },
+      {
+        "term": "denny zhou",
+        "score": 2.2721,
         "evidence": []
       },
       {
         "term": "alexander wettig",
-        "score": 2.4713,
-        "evidence": []
-      },
-      {
-        "term": "carlos jimenez",
-        "score": 2.4162,
+        "score": 2.2529,
         "evidence": []
       },
       {
         "term": "john yang",
-        "score": 2.3738,
+        "score": 2.1944,
         "evidence": []
       }
     ],
     "sec-013-skill-ecosystem-analysis": [
       {
         "term": "skills",
-        "score": 0.6387,
+        "score": 0.6483,
         "evidence": []
       },
       {
         "term": "ecosystem-wide",
-        "score": 0.6345,
+        "score": 0.6356,
         "evidence": []
       },
       {
         "term": "cloned",
-        "score": 0.592,
+        "score": 0.5938,
         "evidence": []
       }
     ],
     "sec-014-data-collection": [
       {
         "term": "construction snapshot",
-        "score": 1.4749,
+        "score": 1.4418,
         "evidence": []
       },
       {
         "term": "marketplace records",
-        "score": 1.3777,
+        "score": 1.3806,
         "evidence": []
       },
       {
         "term": "repo",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "upstream",
-        "score": 0.8764,
-        "evidence": []
-      },
-      {
-        "term": "apr",
-        "score": 0.8457,
-        "evidence": []
-      },
-      {
-        "term": "repositories",
-        "score": 0.8392,
+        "score": 0.8804,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 0.8252,
+        "score": 0.8376,
+        "evidence": []
+      },
+      {
+        "term": "apr",
+        "score": 0.828,
         "evidence": []
       },
       {
         "term": "partner",
-        "score": 0.8229,
+        "score": 0.828,
+        "evidence": []
+      },
+      {
+        "term": "repositories",
+        "score": 0.7695,
         "evidence": []
       }
     ],
     "sec-015-skill-characteristics": [
       {
         "term": "skill",
-        "score": 1.9219,
+        "score": 1.9686,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "bundle size",
-        "score": 1.88,
+        "score": 1.8683,
         "evidence": []
       },
       {
         "term": "total bundle",
-        "score": 1.638,
+        "score": 1.5928,
         "evidence": []
       },
       {
         "term": "long tail",
-        "score": 1.577,
+        "score": 1.5649,
         "evidence": []
       },
       {
         "term": "median",
-        "score": 1.467,
-        "evidence": []
-      },
-      {
-        "term": "percentile",
-        "score": 1.3031,
+        "score": 1.4567,
         "evidence": []
       },
       {
         "term": "testing security",
-        "score": 1.2968,
+        "score": 1.2883,
+        "evidence": []
+      },
+      {
+        "term": "percentile",
+        "score": 1.178,
         "evidence": []
       },
       {
         "term": "content media",
-        "score": 1.1466,
+        "score": 1.1341,
         "evidence": []
       }
     ],
     "sec-016-quality-indicators": [
       {
         "term": "quality",
-        "score": 1.2418,
+        "score": 1.0733,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "excluding metadata",
-        "score": 1.0916,
+        "score": 0.967,
         "evidence": []
       },
       {
         "term": "extensions",
-        "score": 0.8592,
-        "evidence": []
-      },
-      {
-        "term": "points",
-        "score": 0.7094,
+        "score": 0.8416,
         "evidence": []
       },
       {
         "term": "bundle",
-        "score": 0.6848,
+        "score": 0.6923,
+        "evidence": []
+      },
+      {
+        "term": "files",
+        "score": 0.6715,
         "evidence": []
       }
     ],
     "sec-017-implications-for-benchmark-design": [
       {
         "term": "ecosystem mean",
-        "score": 1.7756,
+        "score": 1.7276,
         "evidence": []
       },
       {
         "term": "benchmark",
-        "score": 1.2622,
+        "score": 1.0931,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "quality",
-        "score": 0.7208,
-        "evidence": []
-      },
-      {
         "term": "skill",
-        "score": 0.7181,
+        "score": 0.7355,
         "evidence": []
       },
       {
         "term": "informed",
-        "score": 0.7026,
+        "score": 0.671,
+        "evidence": []
+      },
+      {
+        "term": "confound",
+        "score": 0.6305,
         "evidence": []
       }
     ],
     "sec-018-task-specification-and-review-process": [
       {
-        "term": "task",
-        "score": 0.9296,
+        "term": "specification",
+        "score": 0.8579,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "specification",
-        "score": 0.8427,
+        "term": "task",
+        "score": 0.8388,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "process",
-        "score": 0.7251,
+        "score": 0.686,
         "evidence": [
           "heading"
         ]
@@ -686,169 +686,169 @@
     "sec-019-task-directory-structure": [
       {
         "term": "task",
-        "score": 0.9296,
+        "score": 0.8388,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "directory",
+        "score": 0.7288,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "oracle",
-        "score": 0.7291,
+        "score": 0.6356,
         "evidence": []
-      },
-      {
-        "term": "directory",
-        "score": 0.7166,
-        "evidence": [
-          "heading"
-        ]
       }
     ],
     "sec-020-task-configuration-taskmd-frontmatter": [
       {
         "term": "task",
-        "score": 0.9296,
+        "score": 0.8388,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "frontmatter",
-        "score": 0.7733,
+        "score": 0.7845,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "medium",
-        "score": 0.7139,
+        "score": 0.7129,
         "evidence": []
       }
     ],
     "sec-021-verification-infrastructure": [
       {
         "term": "logs verifier",
-        "score": 2.6516,
+        "score": 2.639,
         "evidence": []
       },
       {
         "term": "verifier reward",
-        "score": 2.3407,
+        "score": 2.3549,
         "evidence": []
       },
       {
         "term": "echo logs",
-        "score": 2.1181,
+        "score": 2.0844,
         "evidence": []
       },
       {
         "term": "pytest",
-        "score": 1.5151,
+        "score": 1.5202,
         "evidence": []
       },
       {
         "term": "test outputs",
-        "score": 1.214,
+        "score": 1.1327,
         "evidence": []
       }
     ],
     "sec-022-pr-review-process": [
       {
         "term": "review",
-        "score": 1.1908,
+        "score": 1.134,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "oracle",
-        "score": 1.0681,
+        "score": 0.9311,
         "evidence": []
       },
       {
         "term": "reviewers",
-        "score": 0.8204,
+        "score": 0.7986,
         "evidence": []
       },
       {
         "term": "bench",
-        "score": 0.7866,
+        "score": 0.7067,
         "evidence": []
       },
       {
-        "term": "benchmark",
-        "score": 0.6311,
+        "term": "ai-detection",
+        "score": 0.6305,
         "evidence": []
       }
     ],
     "sec-023-contributor-checklist": [
       {
         "term": "oracle",
-        "score": 0.7291,
+        "score": 0.6356,
         "evidence": []
       },
       {
         "term": "human-written",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       },
       {
         "term": "model-generated",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       }
     ],
     "sec-024-maintainer-review-policy": [
       {
         "term": "prs",
-        "score": 0.9042,
-        "evidence": []
-      },
-      {
-        "term": "multimodal",
-        "score": 0.9019,
+        "score": 0.9132,
         "evidence": []
       },
       {
         "term": "maintainers",
-        "score": 0.8539,
+        "score": 0.8358,
         "evidence": []
       },
       {
-        "term": "rejected",
-        "score": 0.7304,
-        "evidence": []
-      },
-      {
-        "term": "oracle",
-        "score": 0.7291,
+        "term": "multimodal",
+        "score": 0.8261,
         "evidence": []
       },
       {
         "term": "closed",
-        "score": 0.7193,
+        "score": 0.7633,
+        "evidence": []
+      },
+      {
+        "term": "rejected",
+        "score": 0.7262,
+        "evidence": []
+      },
+      {
+        "term": "oracle",
+        "score": 0.6356,
         "evidence": []
       }
     ],
     "sec-025-automated-ci-pipeline": [
       {
         "term": "oracle",
-        "score": 0.92,
+        "score": 0.802,
         "evidence": []
       },
       {
         "term": "checks",
-        "score": 0.7925,
+        "score": 0.7769,
         "evidence": []
       },
       {
         "term": "bench",
-        "score": 0.7866,
+        "score": 0.7067,
         "evidence": []
       },
       {
         "term": "pipeline",
-        "score": 0.7201,
+        "score": 0.6625,
         "evidence": [
           "heading"
         ]
@@ -857,651 +857,651 @@
     "sec-026-benchmark-report-template": [
       {
         "term": "approve",
-        "score": 0.8204,
+        "score": 0.8255,
+        "evidence": []
+      },
+      {
+        "term": "caveats",
+        "score": 0.5938,
         "evidence": []
       },
       {
         "term": "report",
-        "score": 0.6113,
+        "score": 0.5864,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "caveats",
-        "score": 0.592,
-        "evidence": []
-      },
-      {
-        "term": "timing",
-        "score": 0.5756,
+        "term": "skills",
+        "score": 0.5584,
         "evidence": []
       }
     ],
     "sec-027-review-lifecycle": [
       {
         "term": "review",
-        "score": 1.3825,
+        "score": 1.3166,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "change requested",
-        "score": 1.1919,
-        "evidence": []
-      },
-      {
-        "term": "reviewing",
-        "score": 0.8031,
+        "score": 1.1849,
         "evidence": []
       },
       {
         "term": "lifecycle",
-        "score": 0.794,
+        "score": 0.7722,
         "evidence": [
           "heading"
         ]
+      },
+      {
+        "term": "reviewing",
+        "score": 0.7617,
+        "evidence": []
       }
     ],
     "sec-028-task-quality-criteria": [
       {
         "term": "criteria",
-        "score": 1.0837,
+        "score": 1.0328,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "parsimony",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       },
       {
         "term": "skill-dependent",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       }
     ],
     "sec-029-the-taskmd-task-standard": [
       {
+        "term": "harbor",
+        "score": 1.3868,
+        "evidence": []
+      },
+      {
         "term": "task",
-        "score": 1.4733,
+        "score": 1.3294,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "harbor",
-        "score": 1.3826,
-        "evidence": []
-      },
-      {
         "term": "reference harness",
-        "score": 1.2859,
+        "score": 1.285,
         "evidence": []
       },
       {
         "term": "standard",
-        "score": 1.2467,
+        "score": 1.197,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "skillsbench",
-        "score": 1.1767,
+        "score": 1.188,
         "evidence": []
       },
       {
         "term": "verifier",
-        "score": 0.9043,
+        "score": 0.9131,
         "evidence": []
       },
       {
         "term": "team",
-        "score": 0.6399,
+        "score": 0.5991,
         "evidence": []
       },
       {
-        "term": "appendix",
-        "score": 0.5752,
+        "term": "format",
+        "score": 0.5584,
         "evidence": []
       }
     ],
     "sec-031-document-structure": [
       {
         "term": "medium",
-        "score": 0.7139,
+        "score": 0.7129,
         "evidence": []
       },
       {
         "term": "contributor",
-        "score": 0.6466,
+        "score": 0.6475,
         "evidence": []
       },
       {
         "term": "network",
-        "score": 0.6396,
-        "evidence": []
-      },
-      {
-        "term": "evolves",
-        "score": 0.6293,
+        "score": 0.629,
         "evidence": []
       },
       {
         "term": "frontmatter",
-        "score": 0.6128,
+        "score": 0.6217,
+        "evidence": []
+      },
+      {
+        "term": "evolves",
+        "score": 0.6073,
         "evidence": []
       }
     ],
     "sec-032-controlled-metadata-vocabulary": [
       {
         "term": "closed tier",
-        "score": 1.7733,
+        "score": 1.8065,
+        "evidence": []
+      },
+      {
+        "term": "free-form",
+        "score": 0.7322,
         "evidence": []
       },
       {
         "term": "controlled",
-        "score": 0.7383,
+        "score": 0.7079,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "free-form",
-        "score": 0.7254,
-        "evidence": []
-      },
-      {
-        "term": "difficulty",
-        "score": 0.7188,
+        "term": "modality",
+        "score": 0.6524,
         "evidence": []
       }
     ],
     "sec-033-explicit-network-policy": [
       {
         "term": "verifier strategies",
-        "score": 2.238,
+        "score": 2.1794,
         "evidence": []
       },
       {
         "term": "test-script",
-        "score": 1.6022,
+        "score": 1.6057,
         "evidence": []
       },
       {
         "term": "allowlist",
-        "score": 1.3628,
+        "score": 1.3673,
+        "evidence": []
+      },
+      {
+        "term": "egress",
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "network",
-        "score": 1.0138,
+        "score": 0.9969,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "egress",
-        "score": 1.0057,
-        "evidence": []
-      },
-      {
         "term": "reward",
-        "score": 0.9211,
+        "score": 0.922,
         "evidence": []
       },
       {
         "term": "declares",
-        "score": 0.8229,
+        "score": 0.828,
         "evidence": []
       },
       {
         "term": "txt",
-        "score": 0.81,
+        "score": 0.8152,
         "evidence": []
       }
     ],
     "sec-035-setup-overview": [
       {
         "term": "claude opus",
-        "score": 1.3982,
-        "evidence": []
-      },
-      {
-        "term": "pass fail",
-        "score": 1.2216,
+        "score": 1.3566,
         "evidence": []
       },
       {
         "term": "latest aggregate",
-        "score": 1.2073,
+        "score": 1.1843,
         "evidence": []
       },
       {
-        "term": "gemini",
-        "score": 1.0035,
+        "term": "pass fail",
+        "score": 1.1622,
         "evidence": []
       },
       {
         "term": "passvanilla",
-        "score": 0.9975,
+        "score": 0.9993,
+        "evidence": []
+      },
+      {
+        "term": "gemini",
+        "score": 0.8987,
         "evidence": []
       },
       {
         "term": "flash",
-        "score": 0.886,
+        "score": 0.7883,
         "evidence": []
       },
       {
-        "term": "gpt",
-        "score": 0.7587,
+        "term": "averaged",
+        "score": 0.6738,
         "evidence": []
       },
       {
-        "term": "pro",
-        "score": 0.7516,
+        "term": "configurations",
+        "score": 0.6692,
         "evidence": []
       }
     ],
     "sec-037-harness-descriptions": [
       {
         "term": "aws bedrock",
-        "score": 2.3974,
+        "score": 2.4043,
         "evidence": []
       },
       {
         "term": "anthropic aws",
-        "score": 2.2168,
+        "score": 2.177,
         "evidence": []
       },
       {
         "term": "azure openai",
-        "score": 2.0167,
+        "score": 1.9357,
         "evidence": []
       },
       {
         "term": "openhands",
-        "score": 1.9596,
+        "score": 1.9236,
         "evidence": []
       },
       {
         "term": "gemini cli",
-        "score": 1.8602,
+        "score": 1.7576,
         "evidence": []
       },
       {
         "term": "claude opus",
-        "score": 1.728,
+        "score": 1.6761,
         "evidence": []
       },
       {
         "term": "terminal agent",
-        "score": 1.4837,
+        "score": 1.435,
         "evidence": []
       },
       {
         "term": "agent harnesses",
-        "score": 1.4594,
+        "score": 1.3964,
         "evidence": []
       }
     ],
     "sec-038-agent-interface": [
       {
         "term": "obs",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "str",
-        "score": 0.9195,
+        "score": 0.9082,
         "evidence": []
       },
       {
         "term": "def",
-        "score": 0.5702,
+        "score": 0.5235,
         "evidence": []
       }
     ],
     "sec-039-skill-structure": [
       {
         "term": "skill",
-        "score": 1.6667,
+        "score": 1.7071,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "yaml frontmatter",
-        "score": 1.4094,
+        "score": 1.4291,
         "evidence": []
       },
       {
         "term": "skill name",
-        "score": 1.0836,
+        "score": 1.115,
         "evidence": []
       }
     ],
     "sec-040-self-generated-skills-condition": [
       {
         "term": "self-generated skills",
-        "score": 5.3541,
+        "score": 5.4101,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "self-generated condition",
-        "score": 4.7859,
+        "score": 4.7689,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "skill packs",
-        "score": 2.7714,
+        "score": 2.8002,
         "evidence": []
       },
       {
         "term": "generated packs",
-        "score": 2.6793,
+        "score": 2.6305,
         "evidence": []
       },
       {
         "term": "curated skills",
-        "score": 2.4359,
+        "score": 2.4382,
         "evidence": []
       },
       {
         "term": "dedicated-harness configurations",
-        "score": 2.4286,
+        "score": 2.347,
         "evidence": []
       },
       {
         "term": "gemini cli",
-        "score": 2.2853,
+        "score": 2.1651,
         "evidence": []
       },
       {
         "term": "solver context",
-        "score": 1.9005,
+        "score": 1.9131,
         "evidence": []
       }
     ],
     "sec-041-why-self-generated-skills-underperform-trajector": [
       {
         "term": "generated pack",
-        "score": 2.6285,
+        "score": 2.5696,
         "evidence": []
       },
       {
         "term": "curated skill",
-        "score": 2.044,
+        "score": 2.0493,
         "evidence": []
       },
       {
         "term": "pack content",
-        "score": 2.0196,
+        "score": 2.0287,
         "evidence": []
       },
       {
         "term": "self-generated",
-        "score": 1.9898,
+        "score": 2.0041,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "solver",
-        "score": 1.5157,
+        "score": 1.526,
         "evidence": []
       },
       {
         "term": "unit conversion",
-        "score": 1.3737,
+        "score": 1.3096,
         "evidence": []
       },
       {
         "term": "audit",
-        "score": 1.2544,
+        "score": 1.2506,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "gemini cli",
-        "score": 1.2258,
+        "score": 1.1704,
         "evidence": []
       }
     ],
     "sec-042-software-and-model-versions": [
       {
         "term": "openhands",
-        "score": 1.9177,
-        "evidence": []
-      },
-      {
-        "term": "openai gpt",
-        "score": 1.4686,
+        "score": 1.8824,
         "evidence": []
       },
       {
         "term": "claude opus",
-        "score": 1.3982,
+        "score": 1.3566,
+        "evidence": []
+      },
+      {
+        "term": "openai gpt",
+        "score": 1.2951,
         "evidence": []
       },
       {
         "term": "latest aggregate",
-        "score": 1.2073,
+        "score": 1.1843,
         "evidence": []
       },
       {
-        "term": "gemini",
-        "score": 1.1646,
+        "term": "deepseek",
+        "score": 1.1046,
         "evidence": []
       }
     ],
     "sec-043-container-environment": [
       {
         "term": "gpu",
-        "score": 0.9042,
+        "score": 0.9078,
         "evidence": []
       },
       {
         "term": "containers",
-        "score": 0.7697,
+        "score": 0.7757,
         "evidence": []
       },
       {
         "term": "cores",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       }
     ],
     "sec-044-inference-configuration": [
       {
         "term": "healthy",
-        "score": 0.8457,
+        "score": 0.828,
         "evidence": []
       },
       {
         "term": "backfill",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       },
       {
         "term": "exceeded",
-        "score": 0.5974,
+        "score": 0.5992,
         "evidence": []
       }
     ],
     "sec-045-experiment-orchestration": [
       {
-        "term": "slots",
-        "score": 0.6345,
-        "evidence": []
-      },
-      {
         "term": "conditions",
-        "score": 0.6328,
+        "score": 0.5999,
         "evidence": []
       },
       {
         "term": "rerun",
-        "score": 0.5655,
+        "score": 0.5678,
+        "evidence": []
+      },
+      {
+        "term": "rate-limited",
+        "score": 0.5477,
         "evidence": []
       }
     ],
     "sec-046-task-level-results": [
       {
         "term": "industrial",
-        "score": 3.2705,
+        "score": 3.1326,
         "evidence": []
       },
       {
         "term": "office",
-        "score": 3.1684,
+        "score": 3.1156,
         "evidence": []
       },
       {
         "term": "cyber",
-        "score": 2.6197,
-        "evidence": []
-      },
-      {
-        "term": "curated-skills pass",
-        "score": 2.5869,
+        "score": 2.6283,
         "evidence": []
       },
       {
         "term": "finance",
-        "score": 2.5656,
+        "score": 2.5508,
         "evidence": []
       },
       {
-        "term": "pass rate",
-        "score": 2.4546,
-        "evidence": []
-      },
-      {
-        "term": "deepseek pro",
-        "score": 2.394,
+        "term": "curated-skills pass",
+        "score": 2.5346,
         "evidence": []
       },
       {
         "term": "math",
-        "score": 2.3303,
+        "score": 2.3021,
+        "evidence": []
+      },
+      {
+        "term": "pass rate",
+        "score": 2.2825,
+        "evidence": []
+      },
+      {
+        "term": "deepseek pro",
+        "score": 2.2567,
         "evidence": []
       }
     ],
     "sec-048-skill-quantity": [
       {
         "term": "skills",
-        "score": 0.7722,
-        "evidence": []
-      },
-      {
-        "term": "conflicting",
-        "score": 0.5476,
+        "score": 0.7838,
         "evidence": []
       },
       {
         "term": "attached",
-        "score": 0.5282,
+        "score": 0.5209,
+        "evidence": []
+      },
+      {
+        "term": "conflicting",
+        "score": 0.5095,
         "evidence": []
       }
     ],
     "sec-049-skill-complexity": [
       {
         "term": "skill",
-        "score": 0.8805,
+        "score": 0.9019,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "complexity",
-        "score": 0.7028,
+        "score": 0.6808,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "comprehensive",
-        "score": 0.6326,
+        "term": "buckets",
+        "score": 0.5938,
         "evidence": []
       }
     ],
     "sec-050-failure-modes-when-skills-hurt": [
       {
-        "term": "out simpler",
-        "score": 1.1374,
+        "term": "skill points",
+        "score": 1.1156,
         "evidence": []
       },
       {
-        "term": "skill points",
-        "score": 1.1293,
+        "term": "out simpler",
+        "score": 1.0966,
         "evidence": []
       },
       {
         "term": "implication",
-        "score": 1.0491,
+        "score": 1.0553,
         "evidence": []
       },
       {
         "term": "debug",
-        "score": 0.8435,
+        "score": 0.7757,
         "evidence": []
       },
       {
         "term": "debugging",
-        "score": 0.7399,
+        "score": 0.7233,
         "evidence": []
       },
       {
-        "term": "tasks",
-        "score": 0.6077,
+        "term": "stronger",
+        "score": 0.5683,
         "evidence": []
       }
     ],
     "sec-051-skill-author-patterns-audit": [
       {
-        "term": "trajectories",
-        "score": 0.749,
+        "term": "verifier",
+        "score": 0.7236,
         "evidence": []
       },
       {
-        "term": "verifier",
-        "score": 0.7167,
+        "term": "trajectories",
+        "score": 0.6832,
         "evidence": []
       },
       {
         "term": "pat",
-        "score": 0.6345,
+        "score": 0.6356,
         "evidence": []
       },
       {
         "term": "terns",
-        "score": 0.6345,
+        "score": 0.6356,
         "evidence": []
       }
     ],
     "sec-052-confidence-interval-calculation": [
       {
-        "term": "intervals",
-        "score": 0.9564,
+        "term": "plotted",
+        "score": 0.9081,
         "evidence": []
       },
       {
-        "term": "plotted",
-        "score": 0.9046,
+        "term": "intervals",
+        "score": 0.819,
         "evidence": []
       },
       {
         "term": "confidence",
-        "score": 0.8441,
+        "score": 0.7737,
         "evidence": [
           "heading"
         ]
@@ -1510,203 +1510,203 @@
     "sec-054-comprehensive-results-summary": [
       {
         "term": "deepseek flash",
-        "score": 2.4766,
+        "score": 2.3362,
         "evidence": []
       },
       {
         "term": "deepseek pro",
-        "score": 2.3603,
+        "score": 2.2141,
         "evidence": []
       },
       {
         "term": "openhands",
-        "score": 1.9992,
+        "score": 1.9624,
         "evidence": []
       },
       {
         "term": "claude opus",
-        "score": 1.9464,
-        "evidence": []
-      },
-      {
-        "term": "flash lite",
-        "score": 1.9069,
-        "evidence": []
-      },
-      {
-        "term": "harness configurations",
-        "score": 1.8623,
+        "score": 1.8805,
         "evidence": []
       },
       {
         "term": "curated skills",
-        "score": 1.8503,
+        "score": 1.853,
         "evidence": []
       },
       {
-        "term": "model harness",
-        "score": 1.4166,
+        "term": "harness configurations",
+        "score": 1.8061,
+        "evidence": []
+      },
+      {
+        "term": "flash lite",
+        "score": 1.7777,
+        "evidence": []
+      },
+      {
+        "term": "normalized gain",
+        "score": 1.4107,
         "evidence": []
       }
     ],
     "sec-055-auxiliary-failure-mode-snapshot": [
       {
         "term": "openhands",
-        "score": 1.9177,
+        "score": 1.8824,
         "evidence": []
       },
       {
         "term": "claude opus",
-        "score": 1.5843,
+        "score": 1.5345,
         "evidence": []
       },
       {
         "term": "gemini",
-        "score": 1.0035,
+        "score": 0.8987,
         "evidence": []
       },
       {
         "term": "slot",
-        "score": 0.9469,
-        "evidence": []
-      },
-      {
-        "term": "flash",
-        "score": 0.886,
+        "score": 0.8589,
         "evidence": []
       },
       {
         "term": "condition",
-        "score": 0.8161,
+        "score": 0.7963,
+        "evidence": []
+      },
+      {
+        "term": "flash",
+        "score": 0.7883,
         "evidence": []
       }
     ],
     "sec-056-task-level-case-studies": [
       {
         "term": "task-level",
-        "score": 1.184,
+        "score": 1.1877,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "audits",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       },
       {
         "term": "pass-rate",
-        "score": 0.592,
+        "score": 0.5938,
         "evidence": []
       }
     ],
     "sec-057-success-case-studies": [
       {
         "term": "pivot table",
-        "score": 2.0524,
+        "score": 2.0083,
         "evidence": []
       },
       {
         "term": "pass rate",
-        "score": 2.0215,
+        "score": 1.8791,
         "evidence": []
       },
       {
         "term": "curated skill",
-        "score": 1.534,
+        "score": 1.537,
         "evidence": []
       },
       {
         "term": "comparison methodology",
-        "score": 1.4103,
+        "score": 1.3511,
         "evidence": []
       },
       {
         "term": "filings",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "failed",
-        "score": 0.9261,
+        "score": 0.9222,
         "evidence": []
       },
       {
         "term": "regulatory",
-        "score": 0.8484,
+        "score": 0.8363,
         "evidence": []
       },
       {
         "term": "agents",
-        "score": 0.7833,
+        "score": 0.7757,
         "evidence": []
       }
     ],
     "sec-058-qualitative-failure-examples": [
       {
         "term": "tests passed",
-        "score": 1.8469,
+        "score": 1.758,
         "evidence": []
       },
       {
         "term": "pivot",
-        "score": 1.2138,
+        "score": 1.2169,
         "evidence": []
       },
       {
         "term": "output file",
-        "score": 1.1876,
+        "score": 1.1499,
         "evidence": []
       },
       {
         "term": "formula",
-        "score": 1.149,
+        "score": 1.1366,
         "evidence": []
       },
       {
         "term": "excel",
-        "score": 1.1295,
+        "score": 1.0865,
         "evidence": []
       },
       {
         "term": "failed",
-        "score": 1.0752,
+        "score": 1.0707,
         "evidence": []
       },
       {
         "term": "failure",
-        "score": 1.0502,
+        "score": 1.027,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "domain-specific",
-        "score": 0.8491,
+        "term": "skills",
+        "score": 0.7838,
         "evidence": []
       }
     ],
     "sec-059-tasks-with-largest-skills-impact": [
       {
         "term": "skills",
-        "score": 1.5443,
+        "score": 1.5677,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "skills pass",
-        "score": 1.4463,
+        "score": 1.4237,
         "evidence": []
       },
       {
         "term": "pass rate",
-        "score": 1.3477,
+        "score": 1.2528,
         "evidence": []
       },
       {
         "term": "tasks",
-        "score": 1.2155,
+        "score": 1.1227,
         "evidence": [
           "heading"
         ]
@@ -1715,593 +1715,591 @@
     "sec-060-skill-invocation-rate": [
       {
         "term": "invocation rate",
-        "score": 2.8017,
+        "score": 2.6939,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "skill invocation",
-        "score": 2.5657,
+        "score": 2.6063,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "openhands",
-        "score": 1.9177,
+        "score": 1.8824,
         "evidence": []
       },
       {
         "term": "harness-bundled skills",
-        "score": 1.6444,
+        "score": 1.6557,
         "evidence": []
       },
       {
         "term": "claude opus",
-        "score": 1.5843,
+        "score": 1.5345,
         "evidence": []
       }
     ],
     "sec-061-token-cost-and-time-efficiency": [
       {
         "term": "per-trial cost",
-        "score": 1.6442,
+        "score": 1.617,
         "evidence": []
       },
       {
         "term": "token counts",
-        "score": 1.3151,
+        "score": 1.2604,
         "evidence": []
       },
       {
         "term": "litellm",
-        "score": 0.9975,
+        "score": 0.9993,
         "evidence": []
       },
       {
         "term": "priced",
-        "score": 0.9469,
+        "score": 0.9497,
         "evidence": []
       }
     ],
     "sec-062-token-usage-and-cost-by-configuration": [
       {
         "term": "openhands",
-        "score": 1.9177,
+        "score": 1.8824,
         "evidence": []
       },
       {
         "term": "claude opus",
-        "score": 1.728,
+        "score": 1.6761,
         "evidence": []
       },
       {
         "term": "claude code",
-        "score": 1.3734,
+        "score": 1.3649,
         "evidence": []
       },
       {
         "term": "mean total",
-        "score": 1.3357,
+        "score": 1.2243,
         "evidence": []
       },
       {
         "term": "cost",
-        "score": 1.2014,
+        "score": 1.1496,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "total tokens",
-        "score": 1.1708,
+        "score": 1.1266,
         "evidence": []
       },
       {
-        "term": "trial",
-        "score": 1.0069,
+        "term": "litellm",
+        "score": 0.9993,
         "evidence": []
       }
     ],
     "sec-063-outcome-and-runtime-diagnostics": [
       {
         "term": "runtime err",
-        "score": 1.7838,
+        "score": 1.7795,
         "evidence": []
       },
       {
         "term": "verifier error",
-        "score": 1.6589,
+        "score": 1.6396,
         "evidence": []
       },
       {
         "term": "public trials",
-        "score": 1.364,
+        "score": 1.2841,
         "evidence": []
       },
       {
         "term": "configuration aggregate",
-        "score": 1.2693,
+        "score": 1.2512,
         "evidence": []
       },
       {
         "term": "crash",
-        "score": 1.1362,
+        "score": 1.1408,
         "evidence": []
       }
     ],
     "sec-064-cost-performance-tradeoff": [
       {
-        "term": "openhands gemini",
-        "score": 2.8289,
+        "term": "openhands claude",
+        "score": 2.7165,
         "evidence": []
       },
       {
-        "term": "openhands claude",
-        "score": 2.7637,
+        "term": "openhands gemini",
+        "score": 2.6905,
         "evidence": []
       },
       {
         "term": "openhands gpt",
-        "score": 2.5841,
+        "score": 2.4395,
         "evidence": []
       },
       {
         "term": "claude opus",
-        "score": 2.1974,
+        "score": 2.1279,
         "evidence": []
       },
       {
         "term": "flash lite",
-        "score": 1.5492,
-        "evidence": []
-      },
-      {
-        "term": "configurations",
-        "score": 0.9056,
+        "score": 1.4595,
         "evidence": []
       },
       {
         "term": "trial",
-        "score": 0.8673,
+        "score": 0.8581,
+        "evidence": []
+      },
+      {
+        "term": "configurations",
+        "score": 0.8444,
         "evidence": []
       }
     ],
     "sec-065-timeperformance-tradeoff": [
       {
         "term": "fleet mean",
-        "score": 2.9964,
+        "score": 2.9164,
         "evidence": []
       },
       {
         "term": "skills fleet",
-        "score": 2.8005,
+        "score": 2.8149,
         "evidence": []
       },
       {
         "term": "deepseek flash",
-        "score": 2.3511,
+        "score": 2.2111,
         "evidence": []
       },
       {
         "term": "deepseek pro",
-        "score": 2.1625,
+        "score": 2.0257,
         "evidence": []
       },
       {
         "term": "gemini cli",
-        "score": 1.9535,
+        "score": 1.8221,
         "evidence": []
       },
       {
         "term": "flash lite",
-        "score": 1.9069,
+        "score": 1.7777,
         "evidence": []
       },
       {
         "term": "agent wall-clock",
-        "score": 1.6976,
+        "score": 1.6758,
         "evidence": []
       },
       {
         "term": "curated skills",
-        "score": 1.6679,
+        "score": 1.6713,
         "evidence": []
       }
     ],
     "sec-066-skillsbench-construction-details": [
       {
         "term": "construction",
-        "score": 0.7061,
+        "score": 0.6535,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "checklists",
-        "score": 0.592,
+        "score": 0.5938,
         "evidence": []
       },
       {
-        "term": "inspected",
-        "score": 0.5655,
+        "term": "appendices",
+        "score": 0.5642,
         "evidence": []
       }
     ],
     "sec-067-skill-definition-and-boundary": [
       {
         "term": "procedural content",
-        "score": 1.3748,
+        "score": 1.3923,
         "evidence": []
       },
       {
         "term": "skill",
-        "score": 1.29,
-        "evidence": [
-          "heading"
-        ]
-      },
-      {
-        "term": "factual",
-        "score": 1.2827,
-        "evidence": []
-      },
-      {
-        "term": "task class",
-        "score": 0.9577,
-        "evidence": []
-      },
-      {
-        "term": "boundary",
-        "score": 0.9396,
-        "evidence": [
-          "heading"
-        ]
-      },
-      {
-        "term": "definition",
-        "score": 0.9387,
+        "score": 1.3213,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "optional resources",
-        "score": 0.9169,
+        "score": 0.9367,
+        "evidence": []
+      },
+      {
+        "term": "definition",
+        "score": 0.9302,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "task class",
+        "score": 0.892,
+        "evidence": []
+      },
+      {
+        "term": "boundary",
+        "score": 0.864,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "factual",
+        "score": 0.8449,
         "evidence": []
       }
     ],
     "sec-068-task-package": [
       {
         "term": "task",
-        "score": 1.0792,
+        "score": 0.9738,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "oracle",
-        "score": 0.92,
+        "term": "verifier",
+        "score": 0.9131,
         "evidence": []
       },
       {
-        "term": "verifier",
-        "score": 0.9043,
+        "term": "oracle",
+        "score": 0.802,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 0.6387,
+        "score": 0.6483,
         "evidence": []
       },
       {
         "term": "containerization",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       }
     ],
     "sec-069-community-submission-model": [
       {
         "term": "community-driven",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       },
       {
         "term": "academia",
-        "score": 0.5974,
+        "score": 0.5727,
         "evidence": []
       },
       {
         "term": "maintainers",
-        "score": 0.5387,
+        "score": 0.5273,
         "evidence": []
       }
     ],
     "sec-070-contributing-principles": [
       {
         "term": "task instructions",
-        "score": 1.0225,
-        "evidence": []
-      },
-      {
-        "term": "verification",
-        "score": 0.6517,
+        "score": 0.9742,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 0.6387,
+        "score": 0.6483,
+        "evidence": []
+      },
+      {
+        "term": "verification",
+        "score": 0.6264,
         "evidence": []
       },
       {
         "term": "tests",
-        "score": 0.6118,
+        "score": 0.562,
         "evidence": []
       }
     ],
     "sec-072-human-review": [
       {
         "term": "human review",
-        "score": 2.093,
+        "score": 1.9631,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "oracle",
-        "score": 0.92,
+        "term": "verifier",
+        "score": 0.9131,
         "evidence": []
       },
       {
-        "term": "verifier",
-        "score": 0.9043,
+        "term": "oracle",
+        "score": 0.802,
         "evidence": []
       },
       {
         "term": "rejected",
-        "score": 0.7304,
-        "evidence": []
-      },
-      {
-        "term": "quality",
-        "score": 0.7208,
+        "score": 0.7262,
         "evidence": []
       },
       {
         "term": "input data",
-        "score": 0.6563,
+        "score": 0.6508,
         "evidence": []
       },
       {
         "term": "leakage",
-        "score": 0.6543,
+        "score": 0.6417,
         "evidence": []
       },
       {
-        "term": "benchmark",
-        "score": 0.6311,
+        "term": "quality",
+        "score": 0.6231,
+        "evidence": []
+      },
+      {
+        "term": "checks",
+        "score": 0.6157,
         "evidence": []
       }
     ],
     "sec-073-leakage-prevention": [
       {
         "term": "leakage",
-        "score": 1.3086,
+        "score": 1.2834,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "task-specific",
-        "score": 0.7568,
+        "score": 0.7386,
         "evidence": []
       },
       {
         "term": "procedural",
-        "score": 0.6326,
-        "evidence": []
-      },
-      {
-        "term": "benchmark",
-        "score": 0.6311,
+        "score": 0.6411,
         "evidence": []
       },
       {
         "term": "audits",
-        "score": 0.6293,
+        "score": 0.6305,
+        "evidence": []
+      },
+      {
+        "term": "skill-solution",
+        "score": 0.6305,
         "evidence": []
       }
     ],
     "sec-074-benchmark-composition": [
       {
         "term": "task difficulty",
-        "score": 1.5078,
+        "score": 1.3628,
         "evidence": []
       },
       {
         "term": "completion time",
-        "score": 1.1378,
+        "score": 1.1321,
         "evidence": []
       },
       {
-        "term": "estimates",
-        "score": 0.6701,
+        "term": "stratification",
+        "score": 0.6305,
         "evidence": []
       }
     ],
     "sec-075-domain-taxonomy-and-per-task-mapping": [
       {
         "term": "agentic coding",
-        "score": 3.5888,
-        "evidence": []
-      },
-      {
-        "term": "reasoning",
-        "score": 2.3208,
+        "score": 3.3281,
         "evidence": []
       },
       {
         "term": "multimodal",
-        "score": 2.2231,
+        "score": 2.0364,
         "evidence": []
       },
       {
         "term": "search research",
-        "score": 1.9032,
+        "score": 1.7417,
+        "evidence": []
+      },
+      {
+        "term": "reasoning",
+        "score": 1.7357,
         "evidence": []
       },
       {
         "term": "difficulty marker",
-        "score": 1.7163,
-        "evidence": []
-      },
-      {
-        "term": "released task",
-        "score": 1.4437,
+        "score": 1.5979,
         "evidence": []
       },
       {
         "term": "taxonomy",
-        "score": 1.3723,
+        "score": 1.346,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "continued",
-        "score": 1.3131,
+        "term": "released task",
+        "score": 1.3424,
+        "evidence": []
+      },
+      {
+        "term": "media content",
+        "score": 1.3011,
         "evidence": []
       }
     ],
     "sec-078-modelharness-configurations": [
       {
         "term": "harness",
-        "score": 1.6481,
+        "score": 1.6567,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "appendix table",
-        "score": 0.8391,
+        "score": 0.7665,
         "evidence": []
       },
       {
         "term": "model",
-        "score": 0.8262,
+        "score": 0.7575,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "harnesses",
-        "score": 0.726,
+        "score": 0.6961,
         "evidence": []
       }
     ],
     "sec-079-skills-conditions": [
       {
         "term": "skills",
-        "score": 1.422,
+        "score": 1.4435,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "environment skills",
-        "score": 1.1847,
+        "score": 1.1979,
         "evidence": []
       },
       {
-        "term": "conditions",
-        "score": 0.6328,
-        "evidence": [
-          "heading"
-        ]
+        "term": "two-condition",
+        "score": 0.6305,
+        "evidence": []
       }
     ],
     "sec-080-execution-protocol": [
       {
         "term": "pass fail",
-        "score": 1.2216,
+        "score": 1.1622,
         "evidence": []
       },
       {
         "term": "normalized gain",
-        "score": 1.105,
+        "score": 1.1179,
         "evidence": []
       },
       {
         "term": "verifier",
-        "score": 1.0499,
+        "score": 1.0601,
         "evidence": []
       },
       {
         "term": "healthy",
-        "score": 0.8457,
+        "score": 0.828,
         "evidence": []
       },
       {
         "term": "absolute",
-        "score": 0.7999,
+        "score": 0.7671,
         "evidence": []
       },
       {
         "term": "curated-skills",
-        "score": 0.7563,
+        "score": 0.7626,
         "evidence": []
       },
       {
         "term": "curated",
-        "score": 0.6679,
+        "score": 0.6607,
         "evidence": []
       },
       {
-        "term": "task",
-        "score": 0.6524,
+        "term": "skills",
+        "score": 0.6483,
         "evidence": []
       }
     ],
     "sec-front-matter": [
       {
         "term": "harness configurations",
-        "score": 1.7827,
+        "score": 1.7398,
         "evidence": []
       },
       {
         "term": "agent harness",
-        "score": 1.6631,
+        "score": 1.6417,
         "evidence": []
       },
       {
         "term": "curated skills",
-        "score": 1.5816,
+        "score": 1.5882,
         "evidence": []
       },
       {
         "term": "model harness",
-        "score": 1.4782,
+        "score": 1.4494,
         "evidence": []
       },
       {
         "term": "skills applications",
-        "score": 1.3447,
+        "score": 1.3327,
         "evidence": []
       },
       {
         "term": "wang",
-        "score": 1.3036,
+        "score": 1.2886,
         "evidence": []
       },
       {
         "term": "xiangyi",
-        "score": 1.2624,
+        "score": 1.2646,
         "evidence": []
       },
       {
         "term": "university",
-        "score": 1.2099,
+        "score": 1.1353,
         "evidence": []
       }
     ]

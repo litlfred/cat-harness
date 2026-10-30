@@ -3,69 +3,69 @@
   "entry": "kg-folio-asst-2026-09-30",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 1860,
-    "terms": 11867,
+    "sections": 2140,
+    "terms": 14687,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "images alt",
-      "score": 8.7278,
+      "score": 8.6988,
       "evidence": []
     },
     {
       "term": "test repos",
-      "score": 5.2842,
-      "evidence": []
-    },
-    {
-      "term": "public health",
-      "score": 5.2643,
+      "score": 5.1511,
       "evidence": []
     },
     {
       "term": "content repos",
-      "score": 4.84,
-      "evidence": []
-    },
-    {
-      "term": "world health",
-      "score": 4.8091,
+      "score": 4.8746,
       "evidence": []
     },
     {
       "term": "tool repos",
-      "score": 4.4368,
+      "score": 4.4686,
+      "evidence": []
+    },
+    {
+      "term": "public health",
+      "score": 4.185,
       "evidence": []
     },
     {
       "term": "missing",
-      "score": 4.1845,
+      "score": 4.1043,
       "evidence": []
     },
     {
       "term": "none",
-      "score": 3.918,
+      "score": 3.9383,
       "evidence": []
     },
     {
       "term": "ohs app",
-      "score": 3.893,
+      "score": 3.9146,
+      "evidence": []
+    },
+    {
+      "term": "world health",
+      "score": 3.811,
       "evidence": []
     },
     {
       "term": "bpmn execution",
-      "score": 3.6795,
-      "evidence": []
-    },
-    {
-      "term": "test data",
-      "score": 3.4041,
+      "score": 3.6605,
       "evidence": []
     },
     {
       "term": "knowledge assets",
-      "score": 3.3679,
+      "score": 3.2488,
+      "evidence": []
+    },
+    {
+      "term": "test data",
+      "score": 3.2485,
       "evidence": []
     }
   ],
@@ -73,160 +73,160 @@
     "slide-001": [
       {
         "term": "alt",
-        "score": 2.1568,
+        "score": 2.1669,
         "evidence": []
       },
       {
         "term": "smart guidelines",
-        "score": 1.7401,
+        "score": 1.7187,
         "evidence": []
       },
       {
         "term": "media post",
-        "score": 1.4045,
+        "score": 1.3869,
         "evidence": []
       },
       {
         "term": "missing",
-        "score": 1.2287,
+        "score": 1.2052,
         "evidence": []
       },
       {
         "term": "none",
-        "score": 1.1505,
+        "score": 1.1564,
         "evidence": []
       },
       {
         "term": "social media",
-        "score": 1.1415,
+        "score": 1.1172,
         "evidence": []
       },
       {
-        "term": "health",
-        "score": 0.9589,
+        "term": "screenshot",
+        "score": 0.828,
         "evidence": []
       },
       {
         "term": "recommendations",
-        "score": 0.8523,
+        "score": 0.7981,
         "evidence": []
       }
     ],
     "slide-002": [
       {
         "term": "world health",
-        "score": 1.6156,
+        "score": 1.3312,
         "evidence": []
       },
       {
         "term": "data hub",
-        "score": 1.2223,
+        "score": 1.1973,
         "evidence": []
       },
       {
         "term": "fees",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "cryptographic",
-        "score": 0.9469,
+        "score": 0.9497,
         "evidence": []
       },
       {
         "term": "knowledge graph",
-        "score": 0.9275,
+        "score": 0.8764,
         "evidence": []
       },
       {
         "term": "cloud",
-        "score": 0.7934,
+        "score": 0.752,
         "evidence": []
       },
       {
         "term": "signed",
-        "score": 0.7554,
+        "score": 0.7352,
         "evidence": []
       },
       {
         "term": "origin",
-        "score": 0.7492,
+        "score": 0.7322,
         "evidence": []
       }
     ],
     "slide-003": [
       {
         "term": "adaptation kit",
-        "score": 1.7581,
+        "score": 1.723,
         "evidence": []
       },
       {
         "term": "digital adaptation",
-        "score": 1.7273,
+        "score": 1.682,
         "evidence": []
       },
       {
         "term": "health",
-        "score": 0.9589,
+        "score": 0.7232,
         "evidence": []
       }
     ],
     "slide-006": [
       {
         "term": "alt",
-        "score": 1.2818,
+        "score": 1.2878,
         "evidence": []
       },
       {
         "term": "state management",
-        "score": 1.1063,
+        "score": 1.0685,
         "evidence": []
       },
       {
         "term": "missing",
-        "score": 0.8247,
+        "score": 0.8089,
         "evidence": []
       },
       {
         "term": "none",
-        "score": 0.7722,
+        "score": 0.7762,
         "evidence": []
       },
       {
         "term": "bpmn",
-        "score": 0.7633,
+        "score": 0.7695,
         "evidence": []
       },
       {
-        "term": "review",
-        "score": 0.5954,
+        "term": "skill",
+        "score": 0.569,
         "evidence": []
       }
     ],
     "slide-007": [
       {
         "term": "alt",
-        "score": 2.2082,
+        "score": 2.2185,
         "evidence": []
       },
       {
         "term": "bpmn execution",
-        "score": 1.8255,
+        "score": 1.814,
         "evidence": []
       },
       {
         "term": "missing",
-        "score": 1.4207,
+        "score": 1.3935,
         "evidence": []
       },
       {
         "term": "none",
-        "score": 1.3302,
+        "score": 1.3371,
         "evidence": []
       },
       {
         "term": "agentic",
-        "score": 1.1662,
+        "score": 1.1318,
         "evidence": [
           "heading"
         ]
@@ -235,81 +235,81 @@
     "slide-009": [
       {
         "term": "ohs",
-        "score": 1.5025,
+        "score": 1.5044,
         "evidence": []
       },
       {
         "term": "agentic workflows",
-        "score": 1.3749,
+        "score": 1.3429,
         "evidence": []
       },
       {
         "term": "repos",
-        "score": 1.2913,
-        "evidence": []
-      },
-      {
-        "term": "health",
-        "score": 0.9589,
+        "score": 1.2971,
         "evidence": []
       },
       {
         "term": "kenya",
-        "score": 0.9469,
+        "score": 0.9497,
+        "evidence": []
+      },
+      {
+        "term": "app",
+        "score": 0.8811,
         "evidence": []
       }
     ],
     "slide-010": [
       {
         "term": "test repos",
-        "score": 2.494,
+        "score": 2.4495,
         "evidence": []
       },
       {
         "term": "content repos",
-        "score": 2.2974,
+        "score": 2.312,
         "evidence": []
       },
       {
         "term": "contain test",
-        "score": 1.2394,
-        "evidence": []
-      },
-      {
-        "term": "test data",
-        "score": 1.2056,
+        "score": 1.1814,
         "evidence": []
       },
       {
         "term": "utilizes",
-        "score": 1.2046,
+        "score": 1.1595,
+        "evidence": []
+      },
+      {
+        "term": "test data",
+        "score": 1.1503,
         "evidence": []
       },
       {
         "term": "content types",
-        "score": 1.0606,
+        "score": 1.055,
         "evidence": []
       },
       {
         "term": "itb",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       }
     ],
     "slide-013": [
       {
         "term": "actor",
-        "score": 1.023,
+        "score": 1.0296,
         "evidence": []
       },
       {
         "term": "diagram",
-        "score": 0.7671,
+        "score": 0.7464,
         "evidence": []
       },
       {
         "term": "bean",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       }
     ]

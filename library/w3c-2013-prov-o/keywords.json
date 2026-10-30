@@ -3,83 +3,83 @@
   "entry": "w3c-2013-prov-o",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 1860,
-    "terms": 11867,
+    "sections": 2140,
+    "terms": 14687,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "entity prov",
-      "score": 66.3132,
+      "score": 66.6336,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "activity prov",
-      "score": 62.1036,
+      "score": 62.6034,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "prefix prov",
-      "score": 60.2523,
+      "score": 60.8973,
       "evidence": []
     },
     {
       "term": "wasattributedto prov",
-      "score": 53.5459,
+      "score": 54.1213,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "invalidation prov",
-      "score": 53.4031,
+      "score": 53.9948,
       "evidence": []
     },
     {
       "term": "derivation prov",
-      "score": 52.9806,
+      "score": 53.513,
       "evidence": []
     },
     {
       "term": "wasgeneratedby prov",
-      "score": 52.7195,
+      "score": 53.2935,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "wasassociatedwith prov",
-      "score": 52.557,
-      "evidence": [
-        "heading"
-      ]
-    },
-    {
-      "term": "agent prov",
-      "score": 52.4242,
+      "score": 53.1208,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "wasderivedfrom prov",
-      "score": 52.2052,
+      "score": 52.7748,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "agent prov",
+      "score": 52.4714,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "derek prov",
-      "score": 51.5992,
+      "score": 52.0771,
       "evidence": []
     },
     {
       "term": "wasinfluencedby prov",
-      "score": 51.0721,
+      "score": 51.6297,
       "evidence": [
         "heading"
       ]
@@ -89,151 +89,151 @@
     "sec-001-w3c-recommendation-30-april-2013": [
       {
         "term": "rensselaer polytechnic",
-        "score": 2.5382,
+        "score": 2.5425,
         "evidence": []
       },
       {
         "term": "polytechnic institute",
-        "score": 2.174,
+        "score": 2.0912,
         "evidence": []
       },
       {
         "term": "w3c",
-        "score": 1.299,
+        "score": 1.3154,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "university",
-        "score": 1.0715,
+        "score": 1.0055,
         "evidence": []
       },
       {
         "term": "usa",
-        "score": 1.0216,
+        "score": 0.9664,
         "evidence": []
       }
     ],
     "sec-002-abstract": [
       {
         "term": "prov ontology",
-        "score": 1.9936,
+        "score": 2.0181,
         "evidence": []
       },
       {
         "term": "owl",
-        "score": 1.0616,
+        "score": 1.0717,
         "evidence": []
       },
       {
         "term": "provenance information",
-        "score": 0.8931,
+        "score": 0.8946,
         "evidence": []
       },
       {
         "term": "prov-o",
-        "score": 0.6806,
+        "score": 0.6882,
         "evidence": []
       }
     ],
     "sec-003-status-of-this-document": [
       {
         "term": "status",
-        "score": 0.7335,
+        "score": 0.7257,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "document",
-        "score": 0.6905,
+        "score": 0.7079,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "w3c",
-        "score": 0.6495,
+        "score": 0.6577,
         "evidence": []
       }
     ],
     "sec-004-prov-family-of-documents": [
       {
         "term": "prov",
-        "score": 2.7939,
+        "score": 2.827,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "prov data",
-        "score": 1.7769,
+        "score": 1.7902,
         "evidence": []
       },
       {
         "term": "documents",
-        "score": 1.4048,
+        "score": 1.4031,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "prov-overview",
-        "score": 1.1059,
+        "score": 1.111,
         "evidence": []
       },
       {
         "term": "prov-constraints",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "prov-dc",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "prov-sem",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       }
     ],
     "sec-005-endorsed-by-w3c": [
       {
         "term": "w3c",
-        "score": 1.903,
+        "score": 1.9271,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "endorsed",
-        "score": 1.184,
+        "score": 1.1877,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "recommendation",
-        "score": 0.5864,
+        "score": 0.5819,
         "evidence": []
       }
     ],
     "sec-006-please-send-comments": [
       {
         "term": "w3c patent",
-        "score": 2.2581,
+        "score": 2.275,
         "evidence": []
       },
       {
         "term": "patent policy",
-        "score": 1.8652,
+        "score": 1.8781,
         "evidence": []
       },
       {
         "term": "comments",
-        "score": 1.3168,
+        "score": 1.228,
         "evidence": [
           "heading"
         ]
@@ -242,756 +242,756 @@
     "sec-012-2-prov-o-at-a-glance": [
       {
         "term": "prov ontology",
-        "score": 3.1055,
+        "score": 3.1438,
         "evidence": []
       },
       {
         "term": "prov-o",
-        "score": 2.9709,
+        "score": 3.0043,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "prov-o classes",
-        "score": 2.6341,
+        "score": 2.6148,
         "evidence": []
       },
       {
         "term": "represent provenance",
-        "score": 2.0287,
+        "score": 2.0355,
         "evidence": []
       },
       {
         "term": "prov data",
-        "score": 1.9509,
+        "score": 1.967,
         "evidence": []
       },
       {
         "term": "ontology language",
-        "score": 1.9179,
+        "score": 1.9236,
         "evidence": []
       },
       {
         "term": "namespace prefixes",
-        "score": 1.8967,
+        "score": 1.9201,
         "evidence": []
       },
       {
         "term": "provenance information",
-        "score": 1.8366,
+        "score": 1.8429,
         "evidence": []
       }
     ],
     "sec-013-31-starting-point-terms": [
       {
         "term": "aggregationactivity prov",
-        "score": 4.9263,
+        "score": 4.9673,
+        "evidence": []
+      },
+      {
+        "term": "wasattributedto prov",
+        "score": 4.8279,
+        "evidence": []
+      },
+      {
+        "term": "activity prov",
+        "score": 4.8266,
+        "evidence": []
+      },
+      {
+        "term": "entity prov",
+        "score": 4.8234,
         "evidence": []
       },
       {
         "term": "starting point",
-        "score": 4.8801,
+        "score": 4.7811,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "entity prov",
-        "score": 4.8012,
-        "evidence": []
-      },
-      {
-        "term": "activity prov",
-        "score": 4.7911,
-        "evidence": []
-      },
-      {
-        "term": "wasattributedto prov",
-        "score": 4.7805,
-        "evidence": []
-      },
-      {
         "term": "wasinformedby prov",
-        "score": 4.6969,
+        "score": 4.7421,
         "evidence": []
       },
       {
         "term": "wasassociatedwith prov",
-        "score": 4.5783,
+        "score": 4.6235,
         "evidence": []
       },
       {
         "term": "wasgeneratedby prov",
-        "score": 4.5229,
+        "score": 4.5691,
         "evidence": []
       }
     ],
     "sec-014-32-expanded-terms": [
       {
         "term": "derek prov",
-        "score": 5.6309,
+        "score": 5.6607,
         "evidence": []
       },
       {
         "term": "post sioc",
-        "score": 5.2246,
+        "score": 5.2139,
         "evidence": []
       },
       {
         "term": "post9821v sioc",
-        "score": 5.1714,
+        "score": 5.178,
         "evidence": []
       },
       {
         "term": "publicationactivity prov",
-        "score": 4.8458,
+        "score": 4.8855,
         "evidence": []
       },
       {
         "term": "aggregatedbyregions prov",
-        "score": 4.5959,
+        "score": 4.6402,
         "evidence": []
       },
       {
         "term": "datetime prov",
-        "score": 4.5323,
+        "score": 4.5961,
         "evidence": []
       },
       {
         "term": "inc prov",
-        "score": 4.4318,
+        "score": 4.4121,
         "evidence": []
       },
       {
         "term": "crimedata prov",
-        "score": 4.3435,
+        "score": 4.3822,
         "evidence": []
       }
     ],
     "sec-015-33-qualified-terms": [
       {
         "term": "entity prov",
-        "score": 5.5438,
+        "score": 5.5645,
         "evidence": []
       },
       {
         "term": "activity prov",
-        "score": 5.3845,
+        "score": 5.4224,
         "evidence": []
       },
       {
         "term": "qualify prov",
-        "score": 4.6696,
+        "score": 4.717,
         "evidence": []
       },
       {
         "term": "attime prov",
-        "score": 4.6481,
+        "score": 4.6983,
         "evidence": []
       },
       {
         "term": "wasassociatedwith prov",
-        "score": 4.5703,
+        "score": 4.6167,
         "evidence": []
       },
       {
         "term": "qualifiedassociation prov",
-        "score": 4.4594,
-        "evidence": []
-      },
-      {
-        "term": "association prov",
-        "score": 4.3857,
+        "score": 4.5045,
         "evidence": []
       },
       {
         "term": "usage prov",
-        "score": 4.3748,
+        "score": 4.4279,
+        "evidence": []
+      },
+      {
+        "term": "association prov",
+        "score": 4.3704,
         "evidence": []
       }
     ],
     "sec-016-41-starting-point-terms": [
       {
         "term": "aggregatedbyregions prov",
-        "score": 3.0409,
+        "score": 3.0686,
         "evidence": []
       },
       {
         "term": "illustrationactivity prov",
-        "score": 2.8936,
+        "score": 2.9199,
         "evidence": []
       },
       {
         "term": "newspaper inc",
-        "score": 2.0389,
+        "score": 2.006,
         "evidence": []
       },
       {
         "term": "national newspaper",
-        "score": 1.9319,
+        "score": 1.9004,
         "evidence": []
       },
       {
         "term": "bar chart",
-        "score": 1.704,
+        "score": 1.6565,
         "evidence": []
       },
       {
         "term": "derek",
-        "score": 1.0616,
+        "score": 1.0589,
         "evidence": []
       },
       {
         "term": "aggregated data",
-        "score": 0.9591,
+        "score": 0.9046,
         "evidence": []
       }
     ],
     "sec-017-42-expanded-terms": [
       {
         "term": "prefix prov",
-        "score": 6.513,
+        "score": 6.5782,
         "evidence": []
       },
       {
         "term": "forecast prov",
-        "score": 6.2853,
+        "score": 6.3296,
         "evidence": []
       },
       {
         "term": "invalidation prov",
-        "score": 5.5153,
+        "score": 5.5727,
         "evidence": []
       },
       {
         "term": "prefix rdfs",
-        "score": 5.4677,
-        "evidence": []
-      },
-      {
-        "term": "london forecast",
-        "score": 5.3567,
+        "score": 5.5103,
         "evidence": []
       },
       {
         "term": "wasattributedto prov",
-        "score": 5.3484,
+        "score": 5.4015,
         "evidence": []
       },
       {
         "term": "super-properties prov",
-        "score": 5.3065,
+        "score": 5.3559,
+        "evidence": []
+      },
+      {
+        "term": "london forecast",
+        "score": 5.3498,
         "evidence": []
       },
       {
         "term": "specializationof prov",
-        "score": 5.208,
+        "score": 5.2556,
         "evidence": []
       }
     ],
     "sec-018-43-qualified-terms": [
       {
         "term": "prefix prov",
-        "score": 7.1474,
+        "score": 7.2198,
         "evidence": []
       },
       {
         "term": "entity prov",
-        "score": 6.8696,
-        "evidence": []
-      },
-      {
-        "term": "activity prov",
-        "score": 6.5839,
+        "score": 6.8946,
         "evidence": []
       },
       {
         "term": "chart prov",
-        "score": 6.5805,
+        "score": 6.6379,
+        "evidence": []
+      },
+      {
+        "term": "activity prov",
+        "score": 6.6307,
         "evidence": []
       },
       {
         "term": "qualifies prov",
-        "score": 6.3525,
+        "score": 6.3711,
         "evidence": []
       },
       {
         "term": "invalidation prov",
-        "score": 6.2253,
+        "score": 6.2907,
         "evidence": []
       },
       {
         "term": "derivation prov",
-        "score": 6.221,
+        "score": 6.2745,
         "evidence": []
       },
       {
         "term": "derek prov",
-        "score": 5.9317,
+        "score": 5.9736,
         "evidence": []
       }
     ],
     "sec-019-60-property-provqualifiedprimarysource-opback-to": [
       {
         "term": "prov",
-        "score": 5.2548,
+        "score": 5.317,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "prefix prov",
-        "score": 4.7204,
+        "score": 4.7683,
         "evidence": []
       },
       {
         "term": "entity prov",
-        "score": 4.7121,
+        "score": 4.7274,
         "evidence": []
       },
       {
         "term": "qualifies prov",
-        "score": 3.9554,
+        "score": 3.9707,
         "evidence": []
       },
       {
         "term": "super-properties prov",
-        "score": 3.9034,
+        "score": 3.9406,
         "evidence": []
       },
       {
         "term": "nationalregionslist prov",
-        "score": 3.6387,
-        "evidence": []
-      },
-      {
-        "term": "domain prov",
-        "score": 3.51,
+        "score": 3.6714,
         "evidence": []
       },
       {
         "term": "draft prov",
-        "score": 3.446,
+        "score": 3.4916,
+        "evidence": []
+      },
+      {
+        "term": "domain prov",
+        "score": 3.4577,
         "evidence": []
       }
     ],
     "sec-020-64-property-provqualifiedinvalidation-opback-to": [
       {
         "term": "prov",
-        "score": 4.988,
+        "score": 5.0471,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "prefix prov",
-        "score": 4.3734,
+        "score": 4.418,
         "evidence": []
       },
       {
         "term": "activity prov",
-        "score": 4.2433,
+        "score": 4.2726,
         "evidence": []
       },
       {
         "term": "qualifies prov",
-        "score": 3.6379,
-        "evidence": []
-      },
-      {
-        "term": "checking prov",
-        "score": 3.6269,
+        "score": 3.6538,
         "evidence": []
       },
       {
         "term": "super-properties prov",
-        "score": 3.5931,
+        "score": 3.6279,
+        "evidence": []
+      },
+      {
+        "term": "checking prov",
+        "score": 3.59,
         "evidence": []
       },
       {
         "term": "domain prov",
-        "score": 3.1769,
+        "score": 3.1419,
         "evidence": []
       },
       {
         "term": "prefix rdfs",
-        "score": 3.0194,
+        "score": 3.0429,
         "evidence": []
       }
     ],
     "sec-021-67-property-provqualifiedcommunication-opback-to": [
       {
         "term": "prov",
-        "score": 6.9645,
+        "score": 7.047,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "prefix prov",
-        "score": 6.2721,
+        "score": 6.3356,
         "evidence": []
       },
       {
         "term": "activity prov",
-        "score": 5.8807,
+        "score": 5.9217,
         "evidence": []
       },
       {
         "term": "qualified properties",
-        "score": 5.8182,
+        "score": 5.8355,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "chart prov",
-        "score": 5.4538,
+        "score": 5.5029,
         "evidence": []
       },
       {
         "term": "derek prov",
-        "score": 5.3852,
+        "score": 5.4215,
         "evidence": []
       },
       {
         "term": "aggregatedbyregions prov",
-        "score": 5.2771,
+        "score": 5.3277,
         "evidence": []
       },
       {
         "term": "super-properties prov",
-        "score": 5.1308,
+        "score": 5.18,
         "evidence": []
       }
     ],
     "sec-022-44-term-index": [
       {
         "term": "entry",
-        "score": 3.087,
+        "score": 2.9765,
         "evidence": []
       },
       {
         "term": "cross reference",
-        "score": 1.2386,
+        "score": 1.1894,
         "evidence": []
       },
       {
         "term": "term",
-        "score": 0.8972,
+        "score": 0.8883,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "prov-o",
-        "score": 0.6806,
+        "score": 0.6882,
         "evidence": []
       },
       {
         "term": "index",
-        "score": 0.6583,
+        "score": 0.6595,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "entity",
-        "score": 0.655,
+        "score": 0.6501,
         "evidence": []
       },
       {
         "term": "activity",
-        "score": 0.6312,
+        "score": 0.6311,
         "evidence": []
       },
       {
         "term": "agent",
-        "score": 0.3667,
+        "score": 0.3501,
         "evidence": []
       }
     ],
     "sec-023-a-prov-o-owl-profile": [
       {
         "term": "owl",
-        "score": 3.8132,
+        "score": 3.8492,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "domain prov",
-        "score": 3.3661,
+        "score": 3.2716,
         "evidence": []
       },
       {
         "term": "activity prov",
-        "score": 2.8991,
+        "score": 2.9239,
         "evidence": []
       },
       {
         "term": "hadactivity rdfs",
-        "score": 2.8767,
+        "score": 2.8989,
         "evidence": []
       },
       {
         "term": "wasinfluencedby rdfs",
-        "score": 2.7885,
+        "score": 2.8083,
         "evidence": []
       },
       {
         "term": "hadrole rdfs",
-        "score": 2.6175,
-        "evidence": []
-      },
-      {
-        "term": "agent prov",
-        "score": 2.5653,
+        "score": 2.6351,
         "evidence": []
       },
       {
         "term": "atlocation rdfs",
-        "score": 2.5528,
+        "score": 2.5717,
+        "evidence": []
+      },
+      {
+        "term": "agent prov",
+        "score": 2.5693,
         "evidence": []
       }
     ],
     "sec-024-b-names-of-inverse-properties": [
       {
         "term": "entity prov",
-        "score": 5.2485,
+        "score": 5.2702,
         "evidence": []
       },
       {
         "term": "activity prov",
-        "score": 4.8556,
+        "score": 4.8929,
         "evidence": []
       },
       {
         "term": "union prov",
-        "score": 4.4905,
+        "score": 4.5279,
+        "evidence": []
+      },
+      {
+        "term": "invalidated prov",
+        "score": 4.2479,
         "evidence": []
       },
       {
         "term": "inverse",
-        "score": 4.4288,
+        "score": 4.2111,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "invalidated prov",
-        "score": 4.2041,
-        "evidence": []
-      },
-      {
         "term": "derivation prov",
-        "score": 4.0823,
+        "score": 4.1225,
         "evidence": []
       },
       {
         "term": "alternateof prov",
-        "score": 4.0419,
+        "score": 4.0834,
         "evidence": []
       },
       {
         "term": "wasinfluencedby prov",
-        "score": 3.9789,
+        "score": 4.0215,
         "evidence": []
       }
     ],
     "sec-025-c-changes-since-wd-prov-o-20120724": [
       {
         "term": "prov",
-        "score": 1.9022,
+        "score": 1.9248,
         "evidence": []
       },
       {
         "term": "wasinformedby",
-        "score": 1.0611,
+        "score": 1.0671,
         "evidence": []
       },
       {
         "term": "added",
-        "score": 0.9963,
+        "score": 0.9571,
         "evidence": []
       },
       {
         "term": "subproperty",
-        "score": 0.9469,
+        "score": 0.9497,
         "evidence": []
       },
       {
         "term": "instantaneousevent",
-        "score": 0.8448,
+        "score": 0.8494,
         "evidence": []
       },
       {
         "term": "trig",
-        "score": 0.7893,
+        "score": 0.795,
         "evidence": []
       },
       {
         "term": "qualifiedcommunication",
-        "score": 0.7842,
+        "score": 0.7899,
         "evidence": []
       },
       {
         "term": "owl",
-        "score": 0.7247,
+        "score": 0.7315,
         "evidence": []
       }
     ],
     "sec-026-d-changes-since-cr-prov-o-20121211": [
       {
         "term": "updated prov",
-        "score": 2.0916,
+        "score": 2.0898,
         "evidence": []
       },
       {
         "term": "cross reference",
-        "score": 1.2386,
+        "score": 1.1894,
         "evidence": []
       },
       {
         "term": "entity",
-        "score": 1.0683,
+        "score": 1.0602,
         "evidence": []
       },
       {
         "term": "exemplar",
-        "score": 0.9469,
+        "score": 0.9497,
         "evidence": []
       },
       {
         "term": "added",
-        "score": 0.8949,
+        "score": 0.8597,
         "evidence": []
       },
       {
         "term": "prov-dm",
-        "score": 0.7905,
+        "score": 0.8014,
         "evidence": []
       },
       {
         "term": "changed",
-        "score": 0.6575,
+        "score": 0.6599,
         "evidence": []
       }
     ],
     "sec-028-f-acknowledgements": [
       {
         "term": "invited expert",
-        "score": 3.9564,
+        "score": 3.6311,
         "evidence": []
       },
       {
         "term": "rensselaer polytechnic",
-        "score": 3.5628,
+        "score": 3.5688,
         "evidence": []
       },
       {
         "term": "polytechnic institute",
-        "score": 3.1388,
+        "score": 3.0143,
         "evidence": []
       },
       {
         "term": "ghent university",
-        "score": 2.5324,
+        "score": 2.44,
         "evidence": []
       },
       {
         "term": "w3c ercim",
-        "score": 2.0546,
+        "score": 2.0727,
         "evidence": []
       },
       {
         "term": "national archives",
-        "score": 1.9864,
+        "score": 1.94,
         "evidence": []
       },
       {
         "term": "w3c mit",
-        "score": 1.8871,
+        "score": 1.8812,
         "evidence": []
       },
       {
-        "term": "page cross",
-        "score": 1.7798,
+        "term": "working group",
+        "score": 1.7429,
         "evidence": []
       }
     ],
     "sec-030-g1-normative-references": [
       {
         "term": "paolo missier",
-        "score": 2.3512,
+        "score": 2.3589,
         "evidence": []
       },
       {
         "term": "w3c recommendation",
-        "score": 2.3377,
+        "score": 2.3461,
         "evidence": []
       },
       {
         "term": "luc moreau",
-        "score": 2.1481,
+        "score": 2.1595,
         "evidence": []
       },
       {
         "term": "april",
-        "score": 1.1469,
+        "score": 1.111,
         "evidence": []
       },
       {
         "term": "url",
-        "score": 1.0791,
+        "score": 1.0967,
         "evidence": []
       },
       {
         "term": "eds",
-        "score": 0.9833,
+        "score": 0.9568,
         "evidence": []
       }
     ],
     "sec-031-g2-informative-references": [
       {
         "term": "w3c note",
-        "score": 2.0918,
+        "score": 2.1041,
         "evidence": []
       },
       {
         "term": "w3c recommendation",
-        "score": 2.0041,
+        "score": 2.0175,
         "evidence": []
       },
       {
         "term": "luc moreau",
-        "score": 1.7023,
+        "score": 1.7114,
         "evidence": []
       },
       {
         "term": "paul groth",
-        "score": 1.6995,
+        "score": 1.6651,
         "evidence": []
       },
       {
         "term": "april",
-        "score": 1.5658,
+        "score": 1.5168,
         "evidence": []
       },
       {
         "term": "eds",
-        "score": 1.4749,
+        "score": 1.4351,
         "evidence": []
       },
       {
         "term": "url",
-        "score": 1.2597,
+        "score": 1.2802,
         "evidence": []
       },
       {
         "term": "prov",
-        "score": 1.087,
+        "score": 1.0999,
         "evidence": []
       }
     ]

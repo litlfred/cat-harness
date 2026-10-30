@@ -3,73 +3,73 @@
   "entry": "arxiv-2508.21620v2",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 1860,
-    "terms": 11867,
+    "sections": 2140,
+    "terms": 14687,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "regret bound",
-      "score": 14.8604,
+      "score": 14.7308,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "𝑥𝑡 argmax𝑥",
-      "score": 12.2538,
+      "score": 12.3037,
       "evidence": []
     },
     {
       "term": "point 𝑥𝑡",
-      "score": 12.0654,
+      "score": 12.0535,
       "evidence": []
     },
     {
       "term": "unknown function",
-      "score": 11.997,
+      "score": 11.7787,
       "evidence": []
     },
     {
       "term": "function 𝑓is",
-      "score": 11.9025,
+      "score": 11.7528,
       "evidence": []
     },
     {
       "term": "let 𝑋be",
-      "score": 11.7549,
-      "evidence": []
-    },
-    {
-      "term": "mean function",
-      "score": 11.5407,
+      "score": 11.4142,
       "evidence": []
     },
     {
       "term": "expected regret",
-      "score": 11.3194,
+      "score": 11.3814,
       "evidence": [
         "heading"
       ]
     },
     {
-      "term": "covariance function",
-      "score": 11.2911,
+      "term": "mean function",
+      "score": 11.0923,
       "evidence": []
     },
     {
       "term": "function space",
-      "score": 10.9275,
+      "score": 10.6787,
       "evidence": []
     },
     {
-      "term": "decision function",
-      "score": 10.5582,
+      "term": "covariance function",
+      "score": 10.6095,
       "evidence": []
     },
     {
       "term": "argmax𝑎 𝜇𝑡",
-      "score": 10.4429,
+      "score": 10.4864,
+      "evidence": []
+    },
+    {
+      "term": "decision function",
+      "score": 10.302,
       "evidence": []
     }
   ],
@@ -77,343 +77,341 @@
     "sec-000-decision-making": [
       {
         "term": "decision-making",
-        "score": 1.8658,
+        "score": 1.7662,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "theoretical analyses",
-        "score": 1.357,
+        "score": 1.3341,
         "evidence": []
       },
       {
         "term": "decision theory",
-        "score": 1.276,
+        "score": 1.2238,
         "evidence": []
       },
       {
         "term": "utility function",
-        "score": 1.0069,
+        "score": 0.9897,
         "evidence": []
       },
       {
         "term": "probability",
-        "score": 0.969,
-        "evidence": []
-      },
-      {
-        "term": "disease",
-        "score": 0.9447,
-        "evidence": []
-      },
-      {
-        "term": "drug",
-        "score": 0.9042,
+        "score": 0.932,
         "evidence": []
       },
       {
         "term": "frequentist",
-        "score": 0.8476,
+        "score": 0.8522,
+        "evidence": []
+      },
+      {
+        "term": "bayesian",
+        "score": 0.8301,
+        "evidence": []
+      },
+      {
+        "term": "drug",
+        "score": 0.8255,
         "evidence": []
       }
     ],
     "sec-001-bayesian-decision-theory": [
       {
         "term": "god doesn",
-        "score": 3.6418,
+        "score": 3.6501,
         "evidence": []
       },
       {
         "term": "god exists",
-        "score": 3.4567,
+        "score": 3.4329,
         "evidence": []
       },
       {
         "term": "don believe",
-        "score": 2.0531,
+        "score": 2.0281,
         "evidence": []
       },
       {
         "term": "posterior belief",
-        "score": 1.9402,
+        "score": 1.9437,
         "evidence": []
       },
       {
         "term": "utility function",
-        "score": 1.8562,
+        "score": 1.8251,
         "evidence": []
       },
       {
         "term": "bayesian",
-        "score": 1.3369,
+        "score": 1.3157,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "doctor",
-        "score": 1.2827,
+        "score": 1.2846,
         "evidence": []
       },
       {
         "term": "patient",
-        "score": 1.0057,
+        "score": 0.7154,
         "evidence": []
       }
     ],
     "sec-002-frequentist-decision-theory": [
       {
         "term": "decision theory",
-        "score": 2.462,
+        "score": 2.364,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "frequentist",
-        "score": 2.1391,
+        "score": 2.1506,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "decision function",
-        "score": 1.4492,
+        "score": 1.4093,
         "evidence": []
       },
       {
         "term": "worst-case risk",
-        "score": 1.2859,
+        "score": 1.2635,
         "evidence": []
       },
       {
         "term": "𝑢is",
-        "score": 1.0057,
-        "evidence": []
-      },
-      {
-        "term": "disease",
-        "score": 0.9447,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "guideline",
-        "score": 0.921,
+        "score": 0.9295,
         "evidence": []
       },
       {
         "term": "notice",
-        "score": 0.8738,
+        "score": 0.8611,
+        "evidence": []
+      },
+      {
+        "term": "bayesian",
+        "score": 0.8301,
         "evidence": []
       }
     ],
     "sec-003-concentration-inequalities": [
       {
         "term": "concentration inequalities",
-        "score": 5.1071,
+        "score": 5.0324,
         "evidence": [
           "heading"
         ]
       },
       {
+        "term": "chebyshev inequality",
+        "score": 2.4626,
+        "evidence": []
+      },
+      {
         "term": "markov inequality",
-        "score": 2.3479,
+        "score": 2.2941,
         "evidence": []
       },
       {
         "term": "random event",
-        "score": 2.2566,
+        "score": 2.2109,
         "evidence": []
       },
       {
         "term": "let 𝑋be",
-        "score": 2.1803,
+        "score": 2.1381,
         "evidence": []
       },
       {
         "term": "random student",
-        "score": 2.1287,
+        "score": 2.1003,
         "evidence": []
       },
       {
         "term": "tighter bound",
-        "score": 2.0359,
+        "score": 1.9685,
         "evidence": []
       },
       {
         "term": "event argument",
-        "score": 1.7894,
-        "evidence": []
-      },
-      {
-        "term": "var",
-        "score": 1.709,
+        "score": 1.7549,
         "evidence": []
       }
     ],
     "sec-004-gaussian-tail-bounds": [
       {
         "term": "gaussian tail",
-        "score": 3.7695,
+        "score": 3.738,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "𝑋be gaussian",
-        "score": 2.0081,
+        "score": 1.9901,
         "evidence": []
       },
       {
         "term": "let 𝑋be",
-        "score": 1.3385,
+        "score": 1.3223,
         "evidence": []
       }
     ],
     "sec-005-other-useful-inequalities": [
       {
         "term": "inequalities",
-        "score": 2.8603,
+        "score": 2.804,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "concentration inequalities",
-        "score": 2.2082,
-        "evidence": []
-      },
-      {
-        "term": "perfect grade",
-        "score": 1.7616,
-        "evidence": []
-      },
-      {
-        "term": "jensen inequality",
-        "score": 1.7447,
+        "score": 2.1726,
         "evidence": []
       },
       {
         "term": "𝐴𝑖",
-        "score": 1.6845,
+        "score": 1.6865,
+        "evidence": []
+      },
+      {
+        "term": "jensen inequality",
+        "score": 1.6603,
+        "evidence": []
+      },
+      {
+        "term": "perfect grade",
+        "score": 1.6548,
         "evidence": []
       }
     ],
     "sec-006-frequentist-bandits": [
       {
         "term": "expected regret",
-        "score": 1.6809,
+        "score": 1.6867,
         "evidence": []
       },
       {
         "term": "𝑎𝑡",
-        "score": 1.5378,
+        "score": 1.5424,
         "evidence": []
       },
       {
         "term": "expected reward",
-        "score": 1.4047,
+        "score": 1.3974,
         "evidence": []
       },
       {
         "term": "frequentist",
-        "score": 1.0695,
+        "score": 1.0753,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "𝑅𝑇",
-        "score": 1.061,
+        "score": 1.0669,
         "evidence": []
       }
     ],
     "sec-007-explore-then-exploit": [
       {
         "term": "argmax𝑎 ˆ𝜇",
-        "score": 4.2334,
+        "score": 4.2402,
         "evidence": []
       },
       {
         "term": "𝑟total 𝑟𝑡𝑎",
-        "score": 3.1783,
+        "score": 3.1876,
         "evidence": []
       },
       {
         "term": "𝐾𝑇 log𝑇",
-        "score": 3.0551,
+        "score": 3.0632,
         "evidence": []
       },
       {
         "term": "expected regret",
-        "score": 1.9887,
+        "score": 1.9967,
         "evidence": []
       },
       {
         "term": "union bound",
-        "score": 1.7834,
+        "score": 1.7469,
         "evidence": []
       },
       {
         "term": "regret during",
-        "score": 1.7548,
+        "score": 1.7455,
         "evidence": []
       },
       {
         "term": "𝑅𝑇",
-        "score": 1.5915,
+        "score": 1.6004,
         "evidence": []
       },
       {
-        "term": "expected reward",
-        "score": 1.4775,
+        "term": "frequentist bandits",
+        "score": 1.473,
         "evidence": []
       }
     ],
     "sec-008-upper-confidence-bound-ucb": [
       {
         "term": "𝑁𝑡",
-        "score": 2.6392,
+        "score": 2.6416,
         "evidence": []
       },
       {
         "term": "ucb",
-        "score": 2.463,
+        "score": 2.4769,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "𝑎𝑡",
-        "score": 2.4316,
+        "score": 2.439,
         "evidence": []
       },
       {
         "term": "ucb algorithm",
-        "score": 2.0011,
+        "score": 2.0043,
         "evidence": []
       },
       {
         "term": "ucb𝑡",
-        "score": 1.7814,
+        "score": 1.7844,
         "evidence": []
       },
       {
         "term": "log𝑇",
-        "score": 1.7772,
+        "score": 1.7828,
         "evidence": []
       },
       {
-        "term": "confidence",
-        "score": 1.6881,
-        "evidence": [
-          "heading"
-        ]
+        "term": "𝜇𝑡",
+        "score": 1.5668,
+        "evidence": []
       },
       {
         "term": "bound",
-        "score": 1.6176,
+        "score": 1.5633,
         "evidence": [
           "heading"
         ]
@@ -422,56 +420,56 @@
     "sec-009-gaussian-processes": [
       {
         "term": "covariance function",
-        "score": 1.9598,
+        "score": 1.7598,
         "evidence": []
       },
       {
         "term": "𝑥𝑖",
-        "score": 1.5523,
+        "score": 1.5595,
         "evidence": []
       },
       {
         "term": "gaussian",
-        "score": 1.5034,
+        "score": 1.4741,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "kernel",
-        "score": 1.3492,
+        "score": 1.3244,
         "evidence": []
       },
       {
         "term": "gaussian process",
-        "score": 1.1142,
+        "score": 1.08,
         "evidence": []
       },
       {
         "term": "probability distribution",
-        "score": 1.0719,
+        "score": 1.0144,
         "evidence": []
       },
       {
-        "term": "differentiable",
-        "score": 1.0057,
+        "term": "rasmussen",
+        "score": 1.0074,
         "evidence": []
       }
     ],
     "sec-010-posterior-inference": [
       {
         "term": "𝑥𝑖",
-        "score": 1.2839,
+        "score": 1.2898,
         "evidence": []
       },
       {
         "term": "𝑛𝐼",
-        "score": 1.0057,
+        "score": 1.0074,
         "evidence": []
       },
       {
         "term": "posterior",
-        "score": 0.9319,
+        "score": 0.9269,
         "evidence": [
           "heading"
         ]
@@ -480,30 +478,30 @@
     "sec-011-reproducing-kernel-hilbert-space": [
       {
         "term": "kernel",
-        "score": 2.0878,
+        "score": 2.0495,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "space",
-        "score": 1.559,
+        "score": 1.5163,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "function space",
-        "score": 1.3187,
-        "evidence": []
-      },
-      {
         "term": "𝑥𝑖",
-        "score": 1.2839,
+        "score": 1.2898,
         "evidence": []
       },
       {
-        "term": "posterior means",
+        "term": "function space",
+        "score": 1.2859,
+        "evidence": []
+      },
+      {
+        "term": "inner product",
         "score": 1.2233,
         "evidence": []
       }
@@ -511,277 +509,277 @@
     "sec-012-information-capacity": [
       {
         "term": "information capacity",
-        "score": 3.0602,
+        "score": 2.9715,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "covariance function",
-        "score": 1.721,
+        "term": "𝛾𝑇",
+        "score": 1.652,
         "evidence": []
       },
       {
         "term": "function 𝑓is",
-        "score": 1.6544,
-        "evidence": []
-      },
-      {
-        "term": "𝛾𝑇",
-        "score": 1.6494,
+        "score": 1.642,
         "evidence": []
       },
       {
         "term": "𝑥𝑡",
-        "score": 1.5656,
+        "score": 1.5726,
+        "evidence": []
+      },
+      {
+        "term": "covariance function",
+        "score": 1.5589,
         "evidence": []
       },
       {
         "term": "information gain",
-        "score": 1.4518,
+        "score": 1.4494,
         "evidence": []
       },
       {
         "term": "gain through",
-        "score": 1.4338,
+        "score": 1.4326,
         "evidence": []
       },
       {
         "term": "mutual information",
-        "score": 1.4112,
+        "score": 1.4002,
         "evidence": []
       }
     ],
     "sec-013-useful-inequalities": [
       {
         "term": "borell-tis inequality",
-        "score": 1.638,
-        "evidence": []
-      },
-      {
-        "term": "vaart",
-        "score": 0.6345,
+        "score": 1.6298,
         "evidence": []
       },
       {
         "term": "supremum",
-        "score": 0.6293,
+        "score": 0.6305,
+        "evidence": []
+      },
+      {
+        "term": "vaart",
+        "score": 0.5727,
         "evidence": []
       }
     ],
     "sec-014-discrete-bayesian-optimization": [
       {
         "term": "bayesian optimization",
-        "score": 2.8153,
+        "score": 2.7396,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "point 𝑥𝑡",
-        "score": 2.1182,
+        "score": 2.1075,
         "evidence": []
       },
       {
         "term": "acquisition function",
-        "score": 1.6626,
+        "score": 1.6357,
         "evidence": []
       },
       {
         "term": "unknown function",
-        "score": 1.5916,
+        "score": 1.5642,
         "evidence": []
       },
       {
         "term": "d𝑡",
-        "score": 1.4574,
+        "score": 1.4601,
         "evidence": []
       },
       {
         "term": "𝑅𝑇",
-        "score": 1.3713,
+        "score": 1.379,
         "evidence": []
       },
       {
         "term": "discrete",
-        "score": 1.2331,
+        "score": 1.2313,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "𝑟total",
-        "score": 1.1941,
+        "score": 1.1976,
         "evidence": []
       }
     ],
     "sec-015-gp-ucb-high-probability-regret-bound": [
       {
         "term": "regret bound",
-        "score": 4.3195,
+        "score": 4.2717,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "𝑥𝑡",
-        "score": 2.2307,
+        "score": 2.2407,
         "evidence": []
       },
       {
         "term": "confidence bound",
-        "score": 1.9658,
-        "evidence": []
-      },
-      {
-        "term": "union bound",
-        "score": 1.8226,
+        "score": 1.8577,
         "evidence": []
       },
       {
         "term": "gp-ucb",
-        "score": 1.8091,
+        "score": 1.8162,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "𝛽𝑡𝜎𝑡",
-        "score": 1.7927,
+        "score": 1.7979,
+        "evidence": []
+      },
+      {
+        "term": "union bound",
+        "score": 1.7849,
         "evidence": []
       },
       {
         "term": "𝐶𝑡",
-        "score": 1.7814,
+        "score": 1.7844,
         "evidence": []
       },
       {
         "term": "𝜇𝑡",
-        "score": 1.6668,
+        "score": 1.6744,
         "evidence": []
       }
     ],
     "sec-016-gp-ts-expected-regret-bound": [
       {
         "term": "regret bound",
-        "score": 3.8329,
+        "score": 3.8014,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "expected regret",
+        "score": 3.3734,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "d𝑡",
-        "score": 3.3627,
+        "score": 3.3691,
         "evidence": []
       },
       {
-        "term": "expected regret",
-        "score": 3.3619,
-        "evidence": [
-          "heading"
-        ]
-      },
-      {
         "term": "𝑥𝑡",
-        "score": 2.5227,
+        "score": 2.5339,
         "evidence": []
       },
       {
         "term": "𝛽𝑇",
-        "score": 1.6845,
+        "score": 1.6865,
         "evidence": []
       },
       {
         "term": "𝛽𝑡𝜎𝑡",
-        "score": 1.6775,
+        "score": 1.6825,
         "evidence": []
       },
       {
         "term": "𝜎𝑡",
-        "score": 1.5025,
+        "score": 1.5044,
         "evidence": []
       },
       {
         "term": "discrete bayesian",
-        "score": 1.4464,
+        "score": 1.4347,
         "evidence": []
       }
     ],
     "sec-017-continuous-bayesian-optimization": [
       {
         "term": "continuous bayesian",
-        "score": 4.5065,
+        "score": 4.2503,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "bayesian optimization",
-        "score": 3.1107,
+        "score": 3.0222,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "𝑥𝑡",
-        "score": 2.6214,
+        "score": 2.633,
         "evidence": []
       },
       {
         "term": "𝛽𝑡𝜎𝑡",
-        "score": 2.2751,
+        "score": 2.2818,
+        "evidence": []
+      },
+      {
+        "term": "x𝑡",
+        "score": 2.2108,
         "evidence": []
       },
       {
         "term": "regret bound",
-        "score": 2.1205,
-        "evidence": []
-      },
-      {
-        "term": "union bound",
-        "score": 1.9669,
+        "score": 2.0979,
         "evidence": []
       },
       {
         "term": "𝜇𝑡",
-        "score": 1.9221,
+        "score": 1.9308,
         "evidence": []
       },
       {
-        "term": "𝐸𝑐",
-        "score": 1.7599,
+        "term": "union bound",
+        "score": 1.9304,
         "evidence": []
       }
     ],
     "sec-018-acknowledgments": [
       {
-        "term": "der vaart",
-        "score": 1.7768,
+        "term": "aad van",
+        "score": 1.8407,
         "evidence": []
       },
       {
-        "term": "van der",
-        "score": 1.6296,
+        "term": "der vaart",
+        "score": 1.6213,
         "evidence": []
       },
       {
         "term": "cambridge university",
-        "score": 1.6204,
+        "score": 1.5518,
         "evidence": []
       },
       {
         "term": "university press",
-        "score": 1.5381,
+        "score": 1.4419,
         "evidence": []
       },
       {
         "term": "jon",
-        "score": 1.0057,
+        "score": 0.9081,
         "evidence": []
       },
       {
         "term": "statistics",
-        "score": 0.6581,
+        "score": 0.6584,
         "evidence": []
       }
     ]

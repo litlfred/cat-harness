@@ -1,0 +1,350 @@
+{
+  "$schema": "folio-keywords/v1",
+  "entry": "arxiv-2203.02010v1",
+  "corpus": {
+    "library": "cat-harness/library",
+    "sections": 2140,
+    "terms": 14687,
+    "weighting": "log-entropy"
+  },
+  "document": [
+    {
+      "term": "diﬀerent noise",
+      "score": 13.1791,
+      "evidence": []
+    },
+    {
+      "term": "ngse technique",
+      "score": 12.358,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "correlated noise",
+      "score": 12.2885,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "true noise",
+      "score": 12.2002,
+      "evidence": []
+    },
+    {
+      "term": "estimated noise",
+      "score": 11.7285,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "diﬀerent methods",
+      "score": 11.0529,
+      "evidence": []
+    },
+    {
+      "term": "imaging methods",
+      "score": 10.8615,
+      "evidence": []
+    },
+    {
+      "term": "noise standard",
+      "score": 10.3825,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "quantitative imaging",
+      "score": 9.6577,
+      "evidence": []
+    },
+    {
+      "term": "true nsr",
+      "score": 9.6536,
+      "evidence": []
+    },
+    {
+      "term": "true slope",
+      "score": 9.6457,
+      "evidence": []
+    },
+    {
+      "term": "gaussian-distributed noise",
+      "score": 9.1543,
+      "evidence": []
+    }
+  ],
+  "sections": {
+    "sec-000-2-methods": [
+      {
+        "term": "correlated noise",
+        "score": 2.0676,
+        "evidence": []
+      },
+      {
+        "term": "ngse technique",
+        "score": 2.0048,
+        "evidence": []
+      },
+      {
+        "term": "quantitative imaging",
+        "score": 1.769,
+        "evidence": []
+      },
+      {
+        "term": "methods",
+        "score": 1.383,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "washington university",
+        "score": 1.3026,
+        "evidence": []
+      },
+      {
+        "term": "covariance matrix",
+        "score": 1.1719,
+        "evidence": []
+      },
+      {
+        "term": "measured values",
+        "score": 1.0738,
+        "evidence": []
+      },
+      {
+        "term": "gold standard",
+        "score": 1.0668,
+        "evidence": []
+      }
+    ],
+    "sec-001-1-introduction": [
+      {
+        "term": "rwt technique",
+        "score": 2.2314,
+        "evidence": []
+      },
+      {
+        "term": "regional uptake",
+        "score": 1.9235,
+        "evidence": []
+      },
+      {
+        "term": "segmentation methods",
+        "score": 1.8013,
+        "evidence": []
+      },
+      {
+        "term": "metabolic tumor",
+        "score": 1.7804,
+        "evidence": []
+      },
+      {
+        "term": "gold standard",
+        "score": 1.6752,
+        "evidence": []
+      },
+      {
+        "term": "tumor volume",
+        "score": 1.4469,
+        "evidence": []
+      },
+      {
+        "term": "measurements obtained",
+        "score": 1.4141,
+        "evidence": []
+      },
+      {
+        "term": "noise term",
+        "score": 1.3552,
+        "evidence": []
+      }
+    ],
+    "sec-002-21-theory": [
+      {
+        "term": "pth patient",
+        "score": 1.902,
+        "evidence": []
+      },
+      {
+        "term": "ˆap",
+        "score": 1.8915,
+        "evidence": []
+      },
+      {
+        "term": "kth method",
+        "score": 1.793,
+        "evidence": []
+      },
+      {
+        "term": "true values",
+        "score": 1.7679,
+        "evidence": []
+      },
+      {
+        "term": "measured values",
+        "score": 1.4867,
+        "evidence": []
+      },
+      {
+        "term": "quantitative values",
+        "score": 1.3316,
+        "evidence": []
+      },
+      {
+        "term": "estimated parameters",
+        "score": 1.3118,
+        "evidence": []
+      },
+      {
+        "term": "fpbd",
+        "score": 1.2646,
+        "evidence": []
+      }
+    ],
+    "sec-003-22-evaluating-the-ngse-technique-using-numerical": [
+      {
+        "term": "ngse technique",
+        "score": 3.9823,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "correlated noise",
+        "score": 2.0759,
+        "evidence": []
+      },
+      {
+        "term": "true values",
+        "score": 1.3469,
+        "evidence": []
+      },
+      {
+        "term": "fpbd",
+        "score": 1.0022,
+        "evidence": []
+      },
+      {
+        "term": "diﬀerent",
+        "score": 0.9958,
+        "evidence": []
+      },
+      {
+        "term": "slope",
+        "score": 0.8835,
+        "evidence": []
+      },
+      {
+        "term": "covariance",
+        "score": 0.7672,
+        "evidence": []
+      }
+    ],
+    "sec-004-3-results": [
+      {
+        "term": "estimated nsr",
+        "score": 3.2038,
+        "evidence": []
+      },
+      {
+        "term": "resultant nsr",
+        "score": 3.1644,
+        "evidence": []
+      },
+      {
+        "term": "estimated noise",
+        "score": 2.8907,
+        "evidence": []
+      },
+      {
+        "term": "estimated slope",
+        "score": 2.8253,
+        "evidence": []
+      },
+      {
+        "term": "true nsr",
+        "score": 2.7539,
+        "evidence": []
+      },
+      {
+        "term": "ngse technique",
+        "score": 2.5921,
+        "evidence": []
+      },
+      {
+        "term": "correlated noise",
+        "score": 2.499,
+        "evidence": []
+      },
+      {
+        "term": "noise standard",
+        "score": 2.3896,
+        "evidence": []
+      }
+    ],
+    "sec-005-4-discussion-and-conclusion": [
+      {
+        "term": "spect imaging",
+        "score": 4.0096,
+        "evidence": []
+      },
+      {
+        "term": "quantitative imaging",
+        "score": 3.626,
+        "evidence": []
+      },
+      {
+        "term": "pet segmentation",
+        "score": 3.6007,
+        "evidence": []
+      },
+      {
+        "term": "imaging methods",
+        "score": 3.25,
+        "evidence": []
+      },
+      {
+        "term": "medical imaging",
+        "score": 3.1118,
+        "evidence": []
+      },
+      {
+        "term": "nuclear-medicine imaging",
+        "score": 3.0702,
+        "evidence": []
+      },
+      {
+        "term": "brain spect",
+        "score": 3.0052,
+        "evidence": []
+      },
+      {
+        "term": "ngse technique",
+        "score": 2.8355,
+        "evidence": []
+      }
+    ],
+    "sec-front-matter": [
+      {
+        "term": "medical imaging",
+        "score": 1.675,
+        "evidence": []
+      },
+      {
+        "term": "spie medical",
+        "score": 1.6263,
+        "evidence": []
+      },
+      {
+        "term": "med-ph",
+        "score": 0.6305,
+        "evidence": []
+      }
+    ]
+  }
+}

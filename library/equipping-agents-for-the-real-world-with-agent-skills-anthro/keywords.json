@@ -3,69 +3,69 @@
   "entry": "equipping-agents-for-the-real-world-with-agent-skills-anthro",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 1860,
-    "terms": 11867,
+    "sections": 2140,
+    "terms": 14687,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "skills anthropic",
-      "score": 12.4626,
+      "score": 12.3456,
       "evidence": []
     },
     {
       "term": "equipping agents",
-      "score": 11.0607,
+      "score": 11.0628,
       "evidence": []
     },
     {
       "term": "claude code",
-      "score": 10.9986,
+      "score": 10.9075,
       "evidence": []
     },
     {
       "term": "real world",
-      "score": 8.4833,
+      "score": 8.1244,
       "evidence": []
     },
     {
       "term": "pdf skill",
-      "score": 7.0597,
+      "score": 7.0554,
       "evidence": []
     },
     {
       "term": "general-purpose agents",
-      "score": 6.2623,
+      "score": 6.1708,
       "evidence": []
     },
     {
       "term": "specialized agents",
-      "score": 6.1247,
+      "score": 5.9763,
       "evidence": []
     },
     {
       "term": "skill author",
-      "score": 5.1446,
+      "score": 5.2481,
       "evidence": []
     },
     {
       "term": "code execution",
-      "score": 4.3671,
+      "score": 4.357,
       "evidence": []
     },
     {
       "term": "context window",
-      "score": 3.778,
+      "score": 3.7959,
       "evidence": []
     },
     {
       "term": "organized folders",
-      "score": 2.6691,
+      "score": 2.6685,
       "evidence": []
     },
     {
       "term": "additional files",
-      "score": 2.6311,
+      "score": 2.6064,
       "evidence": []
     }
   ],
@@ -73,334 +73,334 @@
     "page-001": [
       {
         "term": "equipping agents",
-        "score": 1.4492,
+        "score": 1.4489,
         "evidence": []
       },
       {
         "term": "agent skills",
-        "score": 1.1759,
+        "score": 1.1612,
         "evidence": []
       },
       {
         "term": "real world",
-        "score": 1.1367,
-        "evidence": []
-      },
-      {
-        "term": "oct",
-        "score": 0.6293,
+        "score": 1.0874,
         "evidence": []
       },
       {
         "term": "powerful",
-        "score": 0.6281,
+        "score": 0.6158,
+        "evidence": []
+      },
+      {
+        "term": "cross-platform",
+        "score": 0.5992,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "organized folders",
-        "score": 1.5702,
+        "score": 1.5643,
         "evidence": []
       },
       {
         "term": "agent skills",
-        "score": 1.2349,
+        "score": 1.2257,
         "evidence": []
       },
       {
         "term": "composable",
-        "score": 0.8435,
-        "evidence": []
-      },
-      {
-        "term": "abilities",
-        "score": 0.8204,
+        "score": 0.8482,
         "evidence": []
       },
       {
         "term": "claude",
-        "score": 0.7652,
+        "score": 0.7541,
+        "evidence": []
+      },
+      {
+        "term": "abilities",
+        "score": 0.7012,
         "evidence": []
       },
       {
         "term": "building",
-        "score": 0.7433,
-        "evidence": []
-      },
-      {
-        "term": "capabilities",
-        "score": 0.5856,
+        "score": 0.6903,
         "evidence": []
       },
       {
         "term": "directory",
-        "score": 0.5679,
+        "score": 0.5776,
+        "evidence": []
+      },
+      {
+        "term": "file",
+        "score": 0.5477,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "skill author",
-        "score": 1.6488,
+        "score": 1.6674,
         "evidence": []
       },
       {
         "term": "additional files",
-        "score": 0.9487,
+        "score": 0.9386,
         "evidence": []
       },
       {
         "term": "startup",
-        "score": 0.771,
+        "score": 0.777,
         "evidence": []
       },
       {
         "term": "forms",
-        "score": 0.7656,
-        "evidence": []
-      },
-      {
-        "term": "system prompt",
-        "score": 0.7049,
-        "evidence": []
-      },
-      {
-        "term": "claude",
-        "score": 0.6874,
+        "score": 0.7302,
         "evidence": []
       },
       {
         "term": "bundle",
-        "score": 0.6848,
+        "score": 0.6923,
+        "evidence": []
+      },
+      {
+        "term": "system prompt",
+        "score": 0.6784,
+        "evidence": []
+      },
+      {
+        "term": "claude",
+        "score": 0.6773,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "context window",
-        "score": 1.1103,
+        "score": 1.115,
         "evidence": []
       },
       {
         "term": "agent skills",
-        "score": 1.0054,
+        "score": 0.9984,
         "evidence": []
       },
       {
         "term": "entirety",
-        "score": 0.5655,
+        "score": 0.5678,
         "evidence": []
       },
       {
         "term": "unbounded",
-        "score": 0.5655,
+        "score": 0.5477,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "pdf skill",
-        "score": 1.5356,
+        "score": 1.5144,
         "evidence": []
       },
       {
         "term": "context window",
-        "score": 1.2256,
+        "score": 1.2306,
         "evidence": []
       },
       {
         "term": "code execution",
-        "score": 1.1124,
+        "score": 1.1026,
         "evidence": []
       },
       {
         "term": "sorting",
-        "score": 0.7855,
+        "score": 0.7912,
         "evidence": []
       },
       {
         "term": "triggered",
-        "score": 0.7207,
+        "score": 0.7184,
         "evidence": []
       },
       {
         "term": "system prompt",
-        "score": 0.7049,
+        "score": 0.6784,
         "evidence": []
       }
     ],
     "page-006": [
       {
         "term": "pdf",
-        "score": 0.8176,
+        "score": 0.7789,
         "evidence": []
       },
       {
         "term": "claude",
-        "score": 0.7652,
+        "score": 0.7541,
         "evidence": []
       },
       {
         "term": "script",
-        "score": 0.7357,
+        "score": 0.7341,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 0.711,
+        "score": 0.7218,
         "evidence": []
       },
       {
         "term": "code",
-        "score": 0.5424,
-        "evidence": []
-      },
-      {
-        "term": "real",
-        "score": 0.5027,
+        "score": 0.5459,
         "evidence": []
       },
       {
         "term": "separate",
-        "score": 0.5007,
+        "score": 0.4948,
+        "evidence": []
+      },
+      {
+        "term": "real",
+        "score": 0.4722,
         "evidence": []
       }
     ],
     "page-007": [
       {
         "term": "agent skills",
-        "score": 1.4488,
+        "score": 1.4428,
         "evidence": []
       },
       {
         "term": "claude",
-        "score": 1.1271,
+        "score": 1.1107,
         "evidence": []
       },
       {
         "term": "installing",
-        "score": 0.9447,
+        "score": 0.9475,
         "evidence": []
       },
       {
         "term": "attention",
-        "score": 0.7593,
+        "score": 0.7385,
         "evidence": []
       },
       {
         "term": "pay",
-        "score": 0.7319,
+        "score": 0.7278,
         "evidence": []
       },
       {
         "term": "code",
-        "score": 0.701,
+        "score": 0.7056,
         "evidence": []
       },
       {
         "term": "bundled",
-        "score": 0.6948,
+        "score": 0.7022,
         "evidence": []
       },
       {
         "term": "reusable",
-        "score": 0.644,
+        "score": 0.6409,
         "evidence": []
       }
     ],
     "page-008": [
       {
         "term": "developer newsletter",
-        "score": 1.6445,
+        "score": 1.6141,
         "evidence": []
       },
       {
         "term": "claude code",
-        "score": 1.195,
+        "score": 1.1867,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 0.711,
+        "score": 0.7218,
         "evidence": []
       },
       {
-        "term": "customized",
-        "score": 0.6345,
+        "term": "mahesh",
+        "score": 0.6305,
         "evidence": []
       },
       {
-        "term": "barry",
-        "score": 0.6293,
+        "term": "spotlights",
+        "score": 0.6305,
         "evidence": []
       }
     ],
     "page-009": [
       {
         "term": "claude",
-        "score": 0.831,
+        "score": 0.8189,
         "evidence": []
       },
       {
-        "term": "healthcare",
-        "score": 0.592,
+        "term": "mythos",
+        "score": 0.6305,
         "evidence": []
       },
       {
         "term": "teachers",
-        "score": 0.592,
+        "score": 0.5938,
         "evidence": []
       }
     ],
     "page-010": [
       {
         "term": "claude",
-        "score": 0.6874,
+        "score": 0.6773,
         "evidence": []
       },
       {
         "term": "plugins",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       },
       {
         "term": "connectors",
-        "score": 0.592,
+        "score": 0.5938,
         "evidence": []
       }
     ],
     "page-011": [
       {
         "term": "privacy policy",
-        "score": 1.5488,
+        "score": 1.5659,
         "evidence": []
       },
       {
         "term": "careers",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       },
       {
         "term": "futures",
-        "score": 0.6293,
+        "score": 0.6305,
         "evidence": []
       }
     ],
     "page-012": [
       {
         "term": "service",
-        "score": 0.6547,
+        "score": 0.6616,
         "evidence": []
       },
       {
         "term": "anthropic",
-        "score": 0.5823,
+        "score": 0.5586,
         "evidence": []
       },
       {
         "term": "terms",
-        "score": 0.5116,
+        "score": 0.5141,
         "evidence": []
       }
     ]

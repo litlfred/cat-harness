@@ -7,7 +7,7 @@ generated: "scripts/subgraph-readmes.ts of the bootstrap toolset (https://github
 
 # tools
 
-Tool definitions, one folder per Tool (tools/<id>/<id>.json, bean tdir). Data only since bean 8lcl (owner card "A. One coordinated move", 2026-10-30): the loader (toolsFromFolders) and the shared helpers moved to cat-harness-tools as schemas/tools/harness-tools.ts and schemas/tools/tool-helpers.ts, which is the path a consumer imports. The JSON-LD and JSON Schema renderings are generated.
+Tool definitions, one folder per Tool (tools/<id>/<id>.json, bean tdir). Data only since bean 8lcl (owner card "A. One coordinated move", 2026-10-30): the loader (toolsFromFolders) and the shared helpers moved to the tools layer (https://github.com/litlfred/cat-harness-tools/tree/main/schemas/tools) as schemas/tools/harness-tools.ts and schemas/tools/tool-helpers.ts, which is the path a consumer imports. The JSON-LD and JSON Schema renderings are generated.
 
 Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 
