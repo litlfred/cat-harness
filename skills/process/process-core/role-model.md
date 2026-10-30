@@ -37,9 +37,9 @@ to an Actor. The RA's system *realising* an actor maps to a mechanical Actor
 taking on that role. Owner, 2026-10-03 (#1984); the comparison is on
 the DAK layer's `findings/dth-terms.md`.
 
-Schema: [`schemas/process/role-graph.ts`](../../../schemas/role-graph.ts). Audit:
+Schema: [`schemas/process/role-graph.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/process/role-graph.ts). Audit:
 `scripts/kg-audit.ts`, sidecar schema
-[`schemas/sdlc/kg-qa.ts`](../../../schemas/kg-qa.ts).
+[`schemas/sdlc/kg-qa.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/sdlc/kg-qa.ts).
 
 ### Not every skill is PERFORMED — `consulted: true`
 

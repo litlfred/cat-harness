@@ -20,7 +20,7 @@ graph-typologies:
 Bean `2i5f`, leg 1, under `5yhm`. The owner ruled on 2026-10-02 (issue
 #1836): *"split: build leg 1 now as a skill + an outcome schema."* The outcome
 schema is
-[`schemas/content/term-adjudication.ts`](../../../schemas/term-adjudication.ts)
+[`schemas/content/term-adjudication.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/content/term-adjudication.ts)
 (`folio-term-adjudications/v1`). That file holds the table of what each
 outcome writes, as data. This skill says when to use it and how to choose.
 

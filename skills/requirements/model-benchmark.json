@@ -10,12 +10,12 @@
   "statements": [
     {
       "key": "system-names-model",
-      "label": "A system under test names its model and configuration",
+      "label": "An agent under test names its model and configuration",
       "conformance": "SHALL",
       "kind": "functional",
-      "requirement": "A folio-test-run/v1 record's system under test SHALL carry a model (a ModelIdSchema id) and a named configuration (at least \"harness\" or \"bare\"), and a run record without a model SHALL be refused (FR-001, FR-002).",
+      "requirement": "A folio-test-run/v1 record's system under test SHALL say its kind. An agent SHALL carry a model (a ModelIdSchema id) and a named configuration (at least \"harness\" or \"bare\"), and an agent's run record without a model SHALL be refused. A system of any other kind runs deterministic code and SHALL name no model (owner, 2026-10-30, FR-002 option A; FR-001, FR-002).",
       "successCriteria": [
-        { "key": "SC-002", "criterion": "Every run record without a model is refused when validated.", "verification": "test" }
+        { "key": "SC-002", "criterion": "Every agent run record without a model is refused when validated, and a model on any other kind is refused.", "verification": "test" }
       ]
     },
     {

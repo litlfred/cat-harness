@@ -2,7 +2,7 @@
   "$schema": "qa-results/v1",
   "producer": {
     "script": "cat-harness-tools/scripts/check-reference-direction.ts",
-    "script_hash": "1effbc00e81d"
+    "script_hash": "eccb20d7bd14"
   },
   "subject": {
     "kind": "reference-direction",
@@ -35,11 +35,11 @@
       "entries": [
         {
           "instances": 11,
-          "occurrences": 5969,
+          "occurrences": 4701,
           "allowed": 0,
           "wrongDirection": 0,
           "wrongDirectionFiles": 0,
-          "exempt": 5969,
+          "exempt": 4701,
           "namesRepository": 0,
           "undetermined": 0,
           "pendingFiles": 0,

@@ -5,26 +5,16 @@
     "moduleResolution": "bundler",
     "strict": true,
     "skipLibCheck": true,
-    "types": ["bun-types"],
+    "types": [
+      "bun-types"
+    ],
     "noEmit": true,
     "allowImportingTsExtensions": true
   },
   "include": [
-    "src/**/*.ts",
-    "schemas/**/*.ts",
-    "content/**/*.ts",
-    "scripts/**/*.ts",
-    "openapi/**/*.ts",
-    "archimate/**/*.ts",
-    "skills/**/*.ts",
-    "adapters/**/*.ts",
-    "test/**/*.ts",
-    "types/**/*.d.ts"
+    "folio-render/**/*.ts"
   ],
   "exclude": [
-    "schemas/block-qa-schema/tests",
-    "dist",
-    "node_modules",
-    "**/*.e2e.ts"
+    "node_modules"
   ]
 }

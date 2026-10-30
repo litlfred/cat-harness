@@ -31,7 +31,7 @@ Formal review and approval of validated content before publication.
 ## Outputs
 Findings and a decision — two things, not one. See
 [`decision-audit`](../../sdlc/sdlc-core/decision-audit.md) and
-[`schemas/sdlc/qa-review.ts`](../../../schemas/qa-review.ts).
+[`schemas/sdlc/qa-review.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/sdlc/qa-review.ts).
 
 - **Findings** — one per observation, each carrying the axis this reviewer can
   speak on: `blocking | suggestion | praise` for a person, `critical | major |

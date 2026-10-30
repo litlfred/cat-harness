@@ -5,7 +5,7 @@
     "id": "signing",
     "path": "skills/sdlc/sdlc-core/signing.md"
   },
-  "source_hash": "b1e386e4658f",
+  "source_hash": "e0e84ef91af8",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

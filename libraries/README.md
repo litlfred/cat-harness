@@ -13,43 +13,16 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-libraries`, 
 
 | file | what it is | used by |
 |---|---|---|
-| [`anthropic-ai__sdk.library.json`](anthropic-ai__sdk.library.json) | data |  |
 | [`axe-core__playwright.library.json`](axe-core__playwright.library.json) | data |  |
-| [`bpmn-moddle.library.json`](bpmn-moddle.library.json) | data |  |
 | [`bun-types.library.json`](bun-types.library.json) | data |  |
-| [`csl-json.library.json`](csl-json.library.json) | data |  |
-| [`dmn-moddle.library.json`](dmn-moddle.library.json) | data |  |
-| [`fast-xml-parser.library.json`](fast-xml-parser.library.json) | data |  |
-| [`glob.library.json`](glob.library.json) | data |  |
 | [`hpcc-js__wasm-graphviz.library.json`](hpcc-js__wasm-graphviz.library.json) | data |  |
-| [`jsonld.library.json`](jsonld.library.json) | data |  |
-| [`liquidjs.library.json`](liquidjs.library.json) | data |  |
-| [`lunr.library.json`](lunr.library.json) | data |  |
-| [`mdast-util-directive.library.json`](mdast-util-directive.library.json) | data |  |
-| [`mdast-util-gfm-strikethrough.library.json`](mdast-util-gfm-strikethrough.library.json) | data |  |
-| [`mdast-util-gfm-table.library.json`](mdast-util-gfm-table.library.json) | data |  |
-| [`mdast-util-math.library.json`](mdast-util-math.library.json) | data |  |
-| [`micromark-extension-gfm-strikethrough.library.json`](micromark-extension-gfm-strikethrough.library.json) | data |  |
-| [`micromark-extension-gfm-table.library.json`](micromark-extension-gfm-table.library.json) | data |  |
-| [`oxigraph.library.json`](oxigraph.library.json) | data |  |
 | [`playwright.library.json`](playwright.library.json) | data |  |
 | [`playwright__test.library.json`](playwright__test.library.json) | data |  |
-| [`remark-directive.library.json`](remark-directive.library.json) | data |  |
-| [`remark-gfm.library.json`](remark-gfm.library.json) | data |  |
-| [`remark-html.library.json`](remark-html.library.json) | data |  |
-| [`remark-math.library.json`](remark-math.library.json) | data |  |
-| [`remark.library.json`](remark.library.json) | data |  |
 | [`sqlite.org__sqlite-wasm.library.json`](sqlite.org__sqlite-wasm.library.json) | data |  |
 | [`types__jsonld.library.json`](types__jsonld.library.json) | data |  |
 | [`types__mdast.library.json`](types__mdast.library.json) | data |  |
 | [`typescript.library.json`](typescript.library.json) | data |  |
 | [`typescript7.library.json`](typescript7.library.json) | data |  |
 | [`unified-latex__unified-latex-types.library.json`](unified-latex__unified-latex-types.library.json) | data |  |
-| [`unified-latex__unified-latex-util-arguments.library.json`](unified-latex__unified-latex-util-arguments.library.json) | data |  |
-| [`unified-latex__unified-latex-util-parse.library.json`](unified-latex__unified-latex-util-parse.library.json) | data |  |
-| [`unified-latex__unified-latex-util-print-raw.library.json`](unified-latex__unified-latex-util-print-raw.library.json) | data |  |
-| [`unist-util-visit.library.json`](unist-util-visit.library.json) | data |  |
-| [`yaml.library.json`](yaml.library.json) | data |  |
-| [`zod.library.json`](zod.library.json) | data |  |
 
 <!-- kg:subgraph:end -->

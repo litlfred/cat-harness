@@ -7,14 +7,12 @@ generated: "scripts/subgraph-readmes.ts of the bootstrap toolset (https://github
 
 # tools
 
-Tool definitions, one folder per Tool (tools/<id>/<id>.ts, bean tdir), shared helpers in tools/lib.ts. tools/index.ts loads the folders (toolsFromFolders) and is the only path a consumer imports. Authored as .ts calling defineTool so a malformed node fails at tsc; the JSON-LD and JSON Schema renderings are generated.
+Tool definitions, one folder per Tool (tools/<id>/<id>.json, bean tdir). Data only since bean 8lcl (owner card "A. One coordinated move", 2026-10-30): the loader (toolsFromFolders) and the shared helpers moved to cat-harness-tools as schemas/tools/harness-tools.ts and schemas/tools/tool-helpers.ts, which is the path a consumer imports. The JSON-LD and JSON Schema renderings are generated.
 
 Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 
 | file | what it is | used by |
 |---|---|---|
-| [`index.ts`](index.ts) | a file |  |
-| [`lib.ts`](lib.ts) | a file |  |
 | [`agent-memory/`](agent-memory/) | _nothing declares what this holds_ | |
 | [`archimate-check/`](archimate-check/) | _nothing declares what this holds_ | |
 | [`archimate-pages/`](archimate-pages/) | _nothing declares what this holds_ | |
@@ -78,7 +76,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`kg-validate/`](kg-validate/) | _nothing declares what this holds_ | |
 | [`kg-viewer/`](kg-viewer/) | _nothing declares what this holds_ | |
 | [`l1-complete-check/`](l1-complete-check/) | _nothing declares what this holds_ | |
-| [`latexmk-compile/`](latexmk-compile/) | _nothing declares what this holds_ | |
 | [`library-viewer/`](library-viewer/) | _nothing declares what this holds_ | |
 | [`log-message/`](log-message/) | _nothing declares what this holds_ | |
 | [`lsi-index/`](lsi-index/) | _nothing declares what this holds_ | |

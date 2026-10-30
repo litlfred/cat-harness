@@ -85,6 +85,18 @@
     under the label `harness-tiles.ts` gave it. {%- endcomment -%}
     {%- assign open = t.visualisations | where_exp: "v", "v.path" | where_exp: "v", "v.sameAs == nil" -%}
     {%- comment -%}
+      A `publish: staging-only` viewer (fsh-guts) is withheld from the
+      canonical deploy, so it opens only on a staging preview: the rule
+      `gen-navbar-include.ts` already applies to the navbar, read from the
+      same `site.data.build.staging_slug`. Without it the home page linked
+      `/en/cat-harness/fsh-guts/`, which the canonical site never serves
+      (fa#2739).
+    {%- endcomment -%}
+    {%- assign _fa_staging = site.data.build.staging_slug | default: '' -%}
+    {%- if _fa_staging == '' -%}
+    {%- assign open = open | where_exp: "v", "v.stagingOnly != true" -%}
+    {%- endif -%}
+    {%- comment -%}
       The viewers, which are NOT the same thing as the tab's target and the
       split is the owner's: `/who-iris/` is who-iris presenting itself,
       `/library/who-iris/` is the cat-harness handler's default rendering of

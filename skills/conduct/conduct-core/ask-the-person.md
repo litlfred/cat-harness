@@ -28,7 +28,7 @@ and [`output.schema.json`](../../../schemas/skills/ask-the-person/output.schema.
   `label`, `does`, `pro`, `con`, `downstream` and `reversibility`, the
   `recommends` letter and `because`, `ifSilent`, the `question`,
   `othersPending` and whether the step is `reversible`. The fields match
-  `DecisionRequestSchema` in [`decision-request.ts`](../../../schemas/decision-request.ts),
+  `DecisionRequestSchema` in [`decision-request.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/process/decision-request.ts),
   plus the letter and the context. Nothing is optional.
 - **Out:** `asked.chat` and `asked.card` (the two copies), `outcome`
   (`answered`, `silent` or `dismissed`), `chosen` (a letter), `quote` (the

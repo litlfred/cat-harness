@@ -41,7 +41,7 @@ To prevent browser V8 heap exhaustion on edge devices, datasets are never delive
    * Loaded additively and on demand when an agent or user accesses that domain.
 
 ### 1.4 Partition Size Budget
-* **Budget Ceiling**: No partition may exceed **50,000 quads** or **5 MB gzipped** (enforced by `MAX_RECOMMENDED_PARTITION_BYTES` in [`schemas/kg/nquads-distribution.ts`](../../../schemas/nquads-distribution.ts)).
+* **Budget Ceiling**: No partition may exceed **50,000 quads** or **5 MB gzipped** (enforced by `MAX_RECOMMENDED_PARTITION_BYTES` in [`schemas/kg/nquads-distribution.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/kg/nquads-distribution.ts)).
 * Protects mobile Safari and Chromium from OOM crashes during WASM decompression.
 
 ### 1.5 Git Hygiene: No Binaries in Repo

@@ -5,5 +5,5 @@
     "kind": "openapi",
     "family": "cat-openapi-config/v1"
   },
-  "schema": "cat-harness:openapi/schemas/openapi.ts#OpenApiConfigSchema"
+  "schema": "cat-harness-tools:openapi/schemas/openapi.ts#OpenApiConfigSchema"
 }
