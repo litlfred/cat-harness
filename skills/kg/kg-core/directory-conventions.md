@@ -1399,6 +1399,13 @@ in `/` covers a directory. The rules:
   read as "everything".
 - The list bounds this harness only. SUSHI and the IG Publisher still read
   their own inputs.
+- A repository that declares no `contentTypes.ig` is a legacy IG: fhir-harness
+  reads it whole, as before, and warns once per repository per run that the
+  section is missing. The warning is the prompt to declare it, not noise to
+  silence.
+- Every IG reader in fhir-harness asks `scripts/ig-read-scope.ts` before it
+  reads a path. To make one see a path it skips, add the path to `include`;
+  fhir-harness's `ig-build-pipeline` §"What this layer reads" says how.
 
 A new section-shaped type should follow the same pattern: declare the paths
 it reads beside the marker, and read nothing else.
