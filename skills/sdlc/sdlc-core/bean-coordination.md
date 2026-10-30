@@ -879,6 +879,32 @@ The two are not alternatives. (1) prevents the blindness; (2) catches the
 branches that were already open when (1) landed — including #477, whose 12
 beans are still branch-only today.
 
+## Each bean has one home (STRICT)
+
+**Owner, 2026-10-30 ([cat-harness-tools#459](https://github.com/litlfred/cat-harness-tools/issues/459)).**
+Until then the same bean was kept in up to four stores, and sessions wrote each
+change to two of them seconds apart; on 2026-10-20 only 50 of 1,707 shared
+copies still matched. The copies were merged, and now each bean lives in
+exactly one store:
+
+| Bean | Its one home |
+|---|---|
+| `cat-tools-*`, and the beans cat-harness-tools took when it split off | `beans/defs` on `litlfred/cat-harness-tools` `main` |
+| `folio-core-*`, and the beans folio-assistant-core took | `beans/defs` on `litlfred/folio-assistant-core` `main` |
+| every other bean | `litlfred/folio-assistant`, branch `cat/cat-harness/beans` |
+
+`litlfred/cat-harness`'s own `cat/cat-harness/beans` branch keeps its notes,
+queue, surveys and workflows, but **no bean files**. Write a bean change once,
+to its home, and nowhere else. From a cat-harness checkout that means fetching
+the folio-assistant branch, not this repository's.
+
+The tools hold the rule too: `state:push` refuses to write a bean file to the
+retired branch (deleting one is allowed), `beans:claim` there names the home
+instead of reporting the bean missing, and `bun run cat check:bean-one-home`
+fails when any bean id is in two stores or in the retired one. Run it after
+editing beans by hand. The table it reads is `scripts/lib/bean-homes.ts` in
+cat-harness-tools.
+
 ## Which copy is canonical — `skills/sdlc/sdlc-core/`
 
 **This file.** A `.claude/skills/local/bean-coordination.md` existed until
