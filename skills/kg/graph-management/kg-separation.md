@@ -57,10 +57,10 @@ source **as an example**, where the one copy of that source lives in a layer
 above it (owner, 2026-10-30, smart-ra thread: "one copy in smart-ra", then
 "A. Example is a mention").
 
-The case that settled it: smart-base's DTH document kind and DTH voice quote
+The case that settled it: the base IG layer's DTH document kind and DTH voice quote
 the draft DPI-H Reference Architecture as evidence for their rules. The draft's
 library entry is smart-ra's (the folio for that document, which builds on
-smart-base). smart-base used to carry a second copy, and two copies of one key
+the base IG layer). The base IG layer used to carry a second copy, and two copies of one key
 broke the bibliography build. Now:
 
 - **One copy.** The source's library entry lives only in the layer that owns
@@ -73,7 +73,7 @@ broke the bibliography build. Now:
 - **It is checked where the copy is.** The lower layer cannot read the
   sections, so its quote check reports such a quote as "an example held by
   <repository>, not checked here". That is not a pass and not a failure
-  (`smart-base/scripts/gen-dth-term-findings.ts`, `EXAMPLE_POINTERS`).
+  (https://github.com/litlfred/smart-base/blob/main/scripts/gen-dth-term-findings.ts, `EXAMPLE_POINTERS`).
 - **It is a mention.** The lower layer's build does not need the higher layer,
   and nothing it runs reads through the pointer. The URL form is already an
   address under `check:reference-direction`'s URL exemption ("a location is
