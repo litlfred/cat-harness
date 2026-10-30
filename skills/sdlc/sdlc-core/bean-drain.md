@@ -181,9 +181,9 @@ the first agent, would have made step 2 catch it too.
 
 | Tool | answers | contract |
 |---|---|---|
-| [`drain-queue`](../../../tools/drain-queue/drain-queue.ts) | which open beans, grouped by owner, with what was left out and why | `definitions.queue` in the output schema |
-| [`bean-claim-check`](../../../tools/bean-claim-check/bean-claim-check.ts) | may I take this bean; if so, claim it on every copy | `definitions.claimCheck` |
-| [`open-work-lookup`](../../../tools/open-work-lookup/open-work-lookup.ts) | does a path, a path prefix or a bean id appear on `main` or any open PR head, and where (bean `pomp`) | `definitions.lookup` |
+| [`drain-queue`](../../../tools/drain-queue/drain-queue.json) | which open beans, grouped by owner, with what was left out and why | `definitions.queue` in the output schema |
+| [`bean-claim-check`](../../../tools/bean-claim-check/bean-claim-check.json) | may I take this bean; if so, claim it on every copy | `definitions.claimCheck` |
+| [`open-work-lookup`](../../../tools/open-work-lookup/open-work-lookup.json) | does a path, a path prefix or a bean id appear on `main` or any open PR head, and where (bean `pomp`) | `definitions.lookup` |
 
 Run from an index checkout, with one `--copy` per bean copy checkout:
 

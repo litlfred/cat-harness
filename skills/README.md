@@ -17,7 +17,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `skills`, holding `skills
 | [`authoring/`](authoring/) | How content is written, reviewed and validated: the content-type adapters, the content lifecycle, editorial and voice review, and domain authoring (math, WHO SMART guidelines). | |
 | [`conduct/`](conduct/) | How an agent behaves in the harness: interaction, confirmation, memory, security, and what it may and may not do on its own. | |
 | [`conventions/`](conventions/) | _nothing declares what this holds_ | |
-| [`framework/`](framework/) | _nothing declares what this holds_ | |
 | [`kg/`](kg/) | How the graph is declared, placed, read, restructured, exported and audited. | |
 | [`library/`](library/) | How sources are acquired, ingested, archived, catalogued and described. | |
 | [`permissions/`](permissions/) | _nothing declares what this holds_ | |
