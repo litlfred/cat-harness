@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // `{owner}` and `{repo}` are gh's own placeholders, filled by gh from the
 // current checkout's remote. They are words gh reads, not a template this

@@ -9,7 +9,7 @@ import { describe, expect, test } from "bun:test";
 
 import jsonld from "jsonld";
 
-import { CONTENT_CONTEXT, CONTENT_CONTEXT_URL, CONTENT_DOCUMENT_CONTEXT, ContentContextSchema, FOLIO_BASE } from "./jsonld.ts";
+import { CONTENT_CONTEXT, CONTENT_CONTEXT_URL, CONTENT_DOCUMENT_CONTEXT, ContentContextSchema, FOLIO_BASE } from "./kg/jsonld.ts";
 
 const FOREIGN = "https://example.org/somewhere/else/doc.jsonld";
 

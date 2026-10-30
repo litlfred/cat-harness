@@ -5,5 +5,5 @@
     "kind": "docs",
     "family": "folio-todo-index/v1"
   },
-  "schema": "schemas/todo-index.ts#TodoIndexSchema"
+  "schema": "schemas/sdlc/todo-index.ts#TodoIndexSchema"
 }

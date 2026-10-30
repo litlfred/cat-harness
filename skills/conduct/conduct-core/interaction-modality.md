@@ -166,7 +166,8 @@ It prints every identity the session can see, each bare and as
 | `github` | the auth Tool's own resolver: a token, or `GITHUB_ACTOR` in Actions | GitHub |
 | `gitlab` | `GITLAB_USER_LOGIN`, only inside GitLab CI | GitLab |
 | `claude` | the agent host's signed-in account | the agent host |
-| any | the user-level store's `identities` | nobody: the person says so |
+| any | `CAT_HARNESS_PERSON`, `provider:handle[,…]`, for this session only | nobody: the person says so |
+| any | the user-level store's `identities`, and the chosen entry of its `profiles` | nobody: the person says so |
 | `git` | `git config user.email`, then `user.name` | nobody: self-asserted |
 
 So an entry may list `gitlab:<handle>` or `claude:<email>` among its
@@ -181,6 +182,35 @@ enough to AUTHORIZE them.** Permissions take only what GitHub vouched for
 nor a guess. The session-start sweep says it could not determine who is
 typing, and applies the strictest profile on record until told otherwise, so
 an account switch never drops an accommodation.
+
+**Which agent host runs the session is reported too**
+(`cat-harness-tools/src/core/agent-host.ts`), because most hosts tell a
+command nothing about the person. Of Claude Code, Gemini CLI, Codex, Cursor,
+Antigravity and the Copilot CLI and coding agent, only Claude Code passes the
+account (`CLAUDE_CODE_USER_EMAIL`, in its cloud sessions). On the others the
+resolver adds a note saying the host passes no account, and the person is
+found from a forge token, `CAT_HARNESS_PERSON`, the user-level store or the git
+author. The markers are the ones two independent detectors agree on; a new
+host is one row in that file's table.
+
+**Several people.** On a shared machine each person has their own home
+directory, so their own user-level store. In a shared session or under a
+shared login, `CAT_HARNESS_PERSON` names who is typing now. A person with
+several accounts on one provider lists each one in the store, as entries or as
+`identities: { "github": ["litlfred", "litlfred-bot"] }`; every one is a match
+key, and an entry marked `active: true` comes first. When the keys match more
+than one person on record, the sweep says so and the session applies the
+**strictest** of their profiles, never the first one listed.
+
+**Several people in one store.** `identity.json` may hold named profiles,
+`profiles: { "<name>": { identities, interaction } }`. The one in use is the
+profile `CAT_HARNESS_PROFILE` names, else the store's `activeProfile`, else the
+one whose identities match `CAT_HARNESS_PERSON`, else the only one. With
+several profiles and nothing to choose between them, the resolver reports a
+third state, `ambiguous-multi-user`, and applies the **strictest** interaction
+profile on record until someone says who is typing. The same state is reported
+when the session matches several people in `interaction.json` whose profiles
+differ.
 
 **A preference that must not be committed** lives in the user-level store,
 `~/.config/cat-harness/identity.json` (or `$XDG_CONFIG_HOME/…`, or the path
@@ -441,7 +471,7 @@ tool's labels); and nothing sat between the agent and the question tool.
 |---|---|---|
 | `.claude/skills/interaction-modality/` | makes this skill **offerable by name**, which it was not — an agent looking for the rule found only the summary | triggering is probabilistic; it helps an agent already thinking about asking well |
 | `PreToolUse` on `AskUserQuestion` → `scripts/ask-well.sh` | prints the six parts at the one moment the rule certainly applies, on every agent and every session | it sees the tool call, not the prose written before it, so it REMINDS and never blocks — a gate that cannot tell must not refuse |
-| `schemas/decision-request.ts` | makes the comparison **unomittable**: no optionals, so a decision with two options and one comparison does not parse, and `renderDecision` emits the prose table and the selection from ONE object so they cannot drift | it cannot tell a good `con` from a lazy one, and does not try — it checks that the question was asked, never that the answer is honest |
+| `schemas/process/decision-request.ts` | makes the comparison **unomittable**: no optionals, so a decision with two options and one comparison does not parse, and `renderDecision` emits the prose table and the selection from ONE object so they cannot drift | it cannot tell a good `con` from a lazy one, and does not try — it checks that the question was asked, never that the answer is honest |
 
 | `Stop` → `scripts/decisions-named-not-asked.ts` | reads the turn that just ENDED and names the paragraph that handed decisions over bare — the one path the three above cannot see | it reads prose, so it is a heuristic; it reminds and never blocks, and a paragraph that happens to carry a comparison suppresses it |
 

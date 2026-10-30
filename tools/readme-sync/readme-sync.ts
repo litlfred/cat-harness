@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 import { bundled, inProcess } from "../lib.js";
 
 export default toolFactory((t) =>
@@ -7,7 +7,7 @@ export default toolFactory((t) =>
     id: "readme-sync",
     title: "Sync generated README sections",
     description:
-      "Rewrite each generated README region, and only where the README already carries that section's marker pair. Nothing outside a marked region is touched.",
+      "Rewrite each generated README region, and only where the README already carries that section's marker pair. Nothing outside a marked region is touched. The instance's AGENTS.md is synced too, for the `skills:index` index only: the skills the instance publishes, or, past 32 KiB, their directories with the full list in SKILLS.md (bean e0uk).",
     install: bundled,
     invoke: { ...inProcess("src/tools/readme-sync.ts", "readme_sync"), shell: "bun run cat readme:sync" },
     io: {

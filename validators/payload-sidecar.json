@@ -5,5 +5,5 @@
     "kind": "docs",
     "family": "cat-harness-payload/v1"
   },
-  "schema": "schemas/subgraph-manifest.ts#PayloadSidecarSchema"
+  "schema": "schemas/kg/subgraph-manifest.ts#PayloadSidecarSchema"
 }

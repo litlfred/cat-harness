@@ -16,8 +16,8 @@ import {
 import type { Block } from "./types.js";
 // Leaf module — importing the kind list from `types.js` would be a runtime
 // cycle, and `appliesTo` is built at module init, exactly when that bites.
-import { BLOCK_KIND_NODES, BLOCK_KINDS } from "./block-kinds.js";
-import { NarrativeSlotSchema } from "./narrative.ts";
+import { BLOCK_KIND_NODES, BLOCK_KINDS } from "./content/block-kinds.js";
+import { NarrativeSlotSchema } from "./content/narrative.ts";
 
 
 
@@ -25,7 +25,7 @@ import { NarrativeSlotSchema } from "./narrative.ts";
 // the package registry — moved to `skill-package.ts`, which is the harness's
 // own and carries no content-model dependency. Re-exported here so every
 // existing importer is unaffected; new harness code imports it directly.
-export * from "./skill-package.js";
+export * from "./kg/skill-package.js";
 
 
 

@@ -32,7 +32,7 @@ built on:
 | | where |
 |---|---|
 | the process | [`mount-dependency.bpmn`](../../../processes/kg/mount-dependency.bpmn); the per-subgraph view is the `remote` and `npm` flows of [`mount-subgraph.bpmn`](../../../processes/kg/mount-subgraph.bpmn) |
-| the schema | `cat-harness/schemas/remote-mount.ts`, plus the `remote` and `npm` members of `SubgraphSource` (`schemas/subgraph-source.ts`) |
+| the schema | `cat-harness/schemas/kg/remote-mount.ts`, plus the `remote`, `npm` and `hydrated` members of `SubgraphSource` (`schemas/kg/subgraph-source.ts`); the per-pin index package is `subgraphIndexPackage` in `schemas/kg/subgraph-manifest.ts` |
 | the tool | `bun run cat mount:remote` (`--plan` to resolve without writing), and `bun run cat mount:remote:check` (offline) |
 | the entry point | `bun run cat state:mount`, which the session-start hook already runs |
 
@@ -90,7 +90,7 @@ are [`index-config`](index-config.md)'s rule. This skill covers only what a
 
 The fields are a `remoteMounts` entry without its `harness`, because the
 instance's `name` is the harness (`RemoteSourceSchema` in
-`schemas/index-config.ts`). A folio with no index still reads `remoteMounts` on
+`schemas/kg/index-config.ts`). A folio with no index still reads `remoteMounts` on
 its declaration. **Declaring a mount in both places is an error**:
 `readDeclaredMounts` throws and names both files. `bun run cat
 index-config:migrate --write` moves the entries across.
@@ -101,9 +101,138 @@ index-config:migrate --write` moves the entries across.
 `overrides` is keyed by instance name, then by directory id:
 
 - `path` moves an instance.
-- `directories` replaces its default list. An id the instance does not declare
-  is refused, not dropped.
+- `directories` replaces its default list. An id may be one the instance
+  declares in its `<name>.json` **or from within** one of those directories
+  (a `"subgraph": true` entry of `skills/skills.json`, such as `voices`);
+  both are resolved at the pin through `instanceDirectories`, the resolver
+  every on-disk reader uses (bean `mo75` G3, after `2j2r`). A nested id mounts
+  its own path alone. An id declared in neither place is refused, not dropped,
+  and the refusal says where it looked. The same holds for the harness's own
+  `mountDefaults.directories`.
+  An id may also be a **concern name**, a code from
+  `code-lists/concern-group.json` such as `sdlc`. It expands to every
+  kind-first member the instance declares, such as `processes/sdlc/` and
+  `skills/sdlc/`, read from each grouping kind's own declaration file at the
+  pin. Each member is locked as `<directory id>/<code>`. A code that none of
+  the instance's kinds declares is refused like any other unknown id.
+- After a review of hydrated metadata, `mount:remote --choose
+  <harness>[:<instance>] --directories a,b --tools x,y` writes the choice
+  into `overrides.<instance>` (the choice, never the state), so a fresh clone
+  replays it. It ends the review: that instance mounts as files, so its
+  `hydrated` is dropped. The pin and consent do not move.
 - `skip` leaves it unmounted, and the lock records it as an answer.
+- `tools` names Tools this instance declares, by id, and mounts each one
+  **runnable**: its definition, its implementation and their import closure.
+  The next section but one says what that brings.
+- `hydrated: true` (here, or on the entry for its harness) mounts each chosen
+  directory as one file: its published `index.hydrated.jsonld` at the pin, a
+  `hydrated` source (bean `mo75`). Read what is there, then choose what to
+  mount as files. No declaration is laid down, and `needs` is not followed.
+  Where that file comes from is the next section. With no `directories`, a
+  hydrated mount offers **every** top-level in-checkout subgraph and ignores
+  `mountDefaults.directories` on purpose: that list chooses which FILES a
+  downstream gets, and a hydrated mount is the step before choosing ("hydrated
+  metadata first, then a chosen set"). Each top-level file already carries its
+  nested subgraphs inline (`hasSubgraph`), so a nested one is named only when
+  you want it on its own.
+
+## Hydrated: the index files are published per pin, in a package
+
+Owner, 2026-10-24 (decision card, option A): **a pin's subgraph index files
+(`index.jsonld`, `index.hydrated.jsonld` under `<docs>/subgraph/<HARNESS>/`)
+are published per pin in a package**, and a hydrated mount fetches them
+through the Tool its source names (the `hydrated` source's `tool`, which is
+`remote-mount` unless it says otherwise; bean `j9cs`).
+
+Why neither of the other two:
+
+- **Not committed in each repository (B).** The files are `builtAtPublish`:
+  they are computed over the checkout's other instances, so no commit can
+  hold them current, and a committed copy turns every re-pin's check red
+  (owner, 2026-10-14, "B1").
+- **Not generated at mount time (C).** The downstream would need the whole
+  index, kg-export and the framing toolchain to read one file of metadata,
+  which is the cost a hydrated mount exists to avoid, and two downstreams
+  could frame two different files for one pin.
+
+What that means in practice:
+
+| | |
+|---|---|
+| the package | `<harness>-subgraph-index@0.0.0-pin.<sha>`: the index files at their published paths, and `subgraph-index.json` (`folio-subgraph-index/v1`) giving each file's sha256 and the repository, pin and harness |
+| where | assets of the GitHub release `subgraph-index-<sha>` in the instance's repository, with the tarball's `folio-binary-release/v1` record beside it. Every name is computed (`subgraphIndexPackage` in `schemas/kg/subgraph-manifest.ts`) |
+| who publishes | the `subgraph-index-package` Tool, run on every push to `main` by the reusable workflow `layer-publish-subgraph-index.yml` (the tools layer); a harness opts in with one `uses:` line |
+| what a mount checks | the pin's git tree first (a commit that does carry the file still works); otherwise the package: the tarball against its record (size, sha256), the manifest against the repository, pin and harness asked for, each file against its sha256, then the same schema and subgraph-IRI check a tree file gets |
+| the lock | a directory that came from the package records the tarball's URL and sha256 and the file's path in it (`package`), so `mount:lock` fetches the same bytes and refuses any others |
+
+No release for the pin is `missing`, and the detail says the package was
+looked for. A package that fails a check is `missing`; one that could not be
+fetched is `could-not-determine`. Neither is ever an empty mount. The record
+travels with the tarball, so its digest proves the transfer, not the
+publisher: who may publish is the repository's write access, the same trust
+the git tree at the pin already rests on.
+
+## Tools: choose by id, mount runnable
+
+The owner's workflow (bean `mo75`): load the Tools' metadata, review it,
+then materialise a chosen set. The first step is a hydrated mount of the
+declaring instance's `tools` directory. Its `index.hydrated.jsonld` holds every
+Tool whole, and each Tool is its own `tools/<id>/` subgraph. The last step is
+`tools` on that instance's override:
+
+```json
+"overrides": { "cat-harness": { "tools": ["bean-query", "bpmn-checklist", "agent-memory"] } }
+```
+
+Owner, 2026-10-24 (decision card on
+[cat-harness-tools#744](https://github.com/litlfred/cat-harness-tools/issues/744), all four as
+recommended). Three of the rulings govern this step:
+
+1. **A Tool brings both halves.** Its **definition** is
+   `<tools dir>/<id>/<id>.ts` in the instance that declares it, by the folder
+   convention in `schemas/tools/tool-folders.ts`. Its **implementation** is what its
+   `invoke` names:
+   - `inProcess.module`, found in the declarer or in an instance whose `needs`
+     names it (`resolveImplementingPath`'s rule; two holders is refused);
+   - the script a `bun run cat <key>` command resolves to through the
+     instances' `checkoutScripts`.
+
+   A bare runtime command (`gh`, `beans`) or `manual` brings no code. Both
+   halves arrive **with their import closure**. A definition without its code
+   is not a Tool you can run, and code without the modules it imports does
+   not load: either way the checkout is half-working.
+2. **One closure walker.** The closure is bootstrap-tools' `importClosure`
+   (`scripts/check-closure.ts`). `check:tools-closure` and the staging cone
+   use the same walk. Do not write a second walker: two of them give two
+   answers to "what does this code load".
+3. **Directory granularity.** The mount brings every **declared** directory
+   the closure touches, whole. It takes the most specific declared directory
+   (a nested one such as `skills/voices` mounts alone) and never a single
+   file, so the lock schema is unchanged. A closure file in no declared
+   directory, and an import that resolves to nothing, are refused with the
+   file named. Neither is ever dropped.
+
+With `tools` named anywhere in a mount entry, each instance of that entry
+mounts the directories the closure touches, plus any its override names in
+`directories`. It does **not** mount its default list. A `whole` instance
+stays whole. A Tool id the instance does not declare at the pin is refused at
+plan time. `tools` together with `hydrated` is refused, because metadata
+brings no code.
+
+**What it costs, measured** on cat-harness main (2026-10-24). A Tool folder is
+not a declared directory: `tools/` is, and most definitions import its
+`lib.ts`. So a definition arrives with the whole `tools` directory, which
+holds every Tool's definition (about 170 folders, all of which load from
+`tools` + `schemas`). The cost that matters falls on the implementation side:
+
+| Tools | cat-harness | the tools layer | bootstrap-tools |
+|---|---|---|---|
+| `bean-query` | `schemas`, `tools` | `scripts`, `src` | whole |
+| `agent-memory` | `schemas`, `tools` | `scripts` | whole |
+
+Without `tools`, the tools layer mounts every in-checkout directory it declares.
+The end-to-end check is the `remote-mount` test "load tools metadata, choose
+three Tools, materialise them" in the tools layer.
 
 ## Why the default path is the home path
 
@@ -158,7 +287,7 @@ override lands at `<name>/` in the downstream root, beside the downstream's own
 directories, and its site routes sit beside the site-wide ones. To prevent collisions on disk
 and in route space:
 
-1. **Reserved names:** `RESERVED_ROOT_AND_ROUTE_NAMES` in `schemas/remote-mount.ts` declares
+1. **Reserved names:** `RESERVED_ROOT_AND_ROUTE_NAMES` in `schemas/kg/remote-mount.ts` declares
    the one authoritative list of reserved root directories and site route names:
    `["skills", "tools", "docs", "assets", "glossary", "api", "payload", "STAGING", "beans", "todos", "fsh-guts", "uploads", "test", "build", "_site", "_docs", "_kg"]`.
 2. **Mount path check:** `checkMountPathCollisions` (run during planning in `mount:remote`
@@ -190,6 +319,19 @@ Every instance ends in exactly one state:
 
 Could-not-determine outranks missing, and missing outranks mounted. **A fetch
 that failed is never an empty layer.**
+
+### Re-pinning: from a checkout mounted from the lock
+
+A re-pin is `mount:remote --seed <name>=<owner/repo>@<sha>` (it writes the
+pin and its consent into `index.config.json`), then `mount:remote` (it lays
+the bytes down and rewrites the lock). Do it in a checkout whose mounts match
+the lock: a fresh one, or one replayed by `.github/mount-from-lock.sh`. A
+mount with local edits is left untouched by the next mount, at its old
+commit, while the lock's top-level pin moves; CI mounts from the instance
+entries, so it kept testing the old layer (folio-assistant#2682). `--seed`
+now refuses while a mount it moves has such edits, and `mount:check` reports
+an instance entry behind its pin as `missing`. After the re-pin, check that
+the moved instance's `sha` in `index.lock.json` is the new pin.
 
 ## A changed lock re-renders the agent surface
 
@@ -225,7 +367,7 @@ between writing the lock and checking against it.
 ## Trust: what lets a mount proceed (H8)
 
 A real mount needs a person's consent for that pin (`trust.consent`); a
-`--staging` mount needs none. `schemas/mount-trust.ts` has the rules. Four
+`--staging` mount needs none. `schemas/kg/mount-trust.ts` has the rules. Four
 things to know (roast `1ygp` L4.2):
 
 - **The lock records the basis** for each instance: `staging`, or `consent`
@@ -236,7 +378,9 @@ things to know (roast `1ygp` L4.2):
   `overrides.<name>.trust`, for the gitlink's SHA.
 - **Who may consent.** Declare `mountApprovers` and a `consent.by` not on the
   list is refused. Without the list, mounts report `unverified-approver`: exit
-  0, but never shown as clean.
+  0, but never shown as clean. A checkout whose mounts `index.config.json`
+  lists declares the list there, as its top-level `mountApprovers`; declaring
+  it on the instance declaration as well is an error.
 - **A refused mount is not current.** Its old bytes stay on disk (an agent
   does not delete them). The lock records them under `unmounted` as
   `leftOnDisk`, and the check reports them as not mounted.

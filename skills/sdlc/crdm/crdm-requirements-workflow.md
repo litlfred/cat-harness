@@ -446,7 +446,7 @@ For each bean:
    branch and provides a "compare with main" link.
 5. **Post before/after comparison to issue** — use the `staging-review`
    skill. Every changed page gets a before (main) and after (staging)
-   URL pair in a Markdown table. See `schemas/staging.ts` for the
+   URL pair in a Markdown table. See `schemas/sdlc/staging.ts` for the
    `StagingComparison` schema:
    ```
    | Page | Before (main) | After (staging) | What changed |

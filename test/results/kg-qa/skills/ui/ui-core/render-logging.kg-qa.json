@@ -5,7 +5,7 @@
     "id": "render-logging",
     "path": "skills/ui/ui-core/render-logging.md"
   },
-  "source_hash": "cdcb6122896e",
+  "source_hash": "3bb12987616d",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

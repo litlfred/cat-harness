@@ -5,5 +5,5 @@
     "kind": "qa",
     "family": "viewer-nav-qa/v1"
   },
-  "schema": "schemas/viewer-nav-qa.ts#ViewerNavQaSchema"
+  "schema": "schemas/sdlc/viewer-nav-qa.ts#ViewerNavQaSchema"
 }

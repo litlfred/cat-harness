@@ -15,7 +15,7 @@ import { dirname, join } from "node:path";
 import { Liquid } from "liquidjs";
 import { parse as parseYaml } from "yaml";
 
-import { siteChromeDirFor, siteDirFor, siteFileFor, siteLayersFor } from "./cat-harness.js";
+import { siteChromeDirFor, siteDirFor, siteFileFor, siteLayersFor } from "./kg/cat-harness.js";
 
 const HARNESS = join(import.meta.dir, "..");
 

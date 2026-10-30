@@ -63,8 +63,8 @@ comprobación de capacidades:
 ```powershell
 git clone https://github.com/litlfred/folio-assistant.git
 cd folio-assistant
-.\cat-harness\scripts\bootstrap.ps1 -CheckOnly   # solo reporte, no instala nada
-.\cat-harness\scripts\bootstrap.ps1              # ejecutarlo
+.\cat-harness-tools\scripts\bootstrap.ps1 -CheckOnly   # solo reporte, no instala nada
+.\cat-harness-tools\scripts\bootstrap.ps1              # ejecutarlo
 ```
 
 Instala Bun y nada más — LaTeX, Lean, Java y el IG Publisher se mantienen
@@ -73,16 +73,16 @@ por tipo de contenido, reportados por `check-deps` con sugerencias de instalaci�
 Los scripts de shell de la plataforma son bash. En Windows se ejecutan bajo **Git Bash**,
 el cual es instalado por [Git para Windows](https://git-scm.com/download/win), por lo que `git`
 es el único prerrequisito adicional. Cada script que un usuario ejecuta manualmente o conecta a
-una configuración tiene un `.bat` a su lado — `cat-harness\scripts\install-beans.bat`,
-`cat-harness\scripts\start-folio-assistant.bat`, `cat-harness\scripts\git-hooks\install.bat`,
-`cat-harness\scripts\session-start-coord-sweep.bat` y así sucesivamente —, el cual localiza Git Bash
+una configuración tiene un `.bat` a su lado — `cat-harness-tools\scripts\install-beans.bat`,
+`cat-harness-tools\scripts\start-folio-assistant.bat`, `cat-harness-tools\scripts\git-hooks\install.bat`,
+`cat-harness-tools\scripts\session-start-coord-sweep.bat` y así sucesivamente —, el cual localiza Git Bash
 (nunca el iniciador de WSL en `System32`) y ejecuta el `.sh` hermano con los mismos
 argumentos. Utilízalos desde `cmd.exe`, PowerShell, el Programador de tareas o una entrada de
 configuración de MCP:
 
 ```bat
-cat-harness\scripts\install-beans.bat
-cat-harness\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
+cat-harness-tools\scripts\install-beans.bat
+cat-harness-tools\scripts\upload-to-uploads.bat https://example.org/guideline.pdf
 ```
 
 Cualquier cosa que necesite el archivo `.sh` — `bun`, `curl`, `gh`, `elan` — debe estar en el

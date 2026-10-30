@@ -5,5 +5,5 @@
     "kind": "document-kinds",
     "family": "document-kind-coverage/1.0.0"
   },
-  "schema": "schemas/document-kind.ts#DocumentKindCoverageKind"
+  "schema": "schemas/content/document-kind.ts#DocumentKindCoverageKind"
 }

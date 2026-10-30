@@ -25,7 +25,7 @@ should pull the next applicable backlog item and advance it.
 
 Walk the queue top-down; take the first item that is **applicable** (see below):
 
-1. **Right-scoped Beans** — run `beans list` to find pending beans (issues) whose scope overlaps with your current work or branch. The `beans` CLI natively supports hierarchies (epics, milestones, parents, dependencies).
+1. **Right-scoped Beans** — run `beans list` to find pending beans (issues) whose scope overlaps with your current work or branch. The `beans` CLI natively supports hierarchies (epics, milestones, parents, dependencies). When other agents are draining the same store, take beans from the drain queue and check each one first ([`bean-drain`](bean-drain.md)).
 2. **QA backlog for the project's audit axes** — if no beans are found, systematically work through the QA backlog for the project's defined audit axes. You must:
    - Run a stale refresh
    - Populate unpopulated items

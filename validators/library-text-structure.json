@@ -5,5 +5,5 @@
     "kind": "library",
     "family": "text-structure/v1"
   },
-  "schema": "schemas/document-structure.ts#TextStructureSchema"
+  "schema": "schemas/content/document-structure.ts#TextStructureSchema"
 }

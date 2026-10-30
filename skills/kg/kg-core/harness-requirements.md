@@ -68,7 +68,7 @@ That is `holds !== "content"`, and the wording is not a coincidence: `content`
 is defined as *"authored nodes a reader or a tool consumes as the subject
 matter… It stands on its own"*. A graph that stands on its own needs no viewer
 to be legible. Everything else does. `owesVisualiser()` in
-`schemas/cat-harness.ts` is that sentence as code.
+`schemas/kg/cat-harness.ts` is that sentence as code.
 
 ### The rule this is NOT, and the ten minutes that proved it
 
@@ -123,7 +123,7 @@ Case 3 is the owner's rule of 2026-10-09: *"`<base URL>/<harness>/<visualizer>`
 (which is for the full KG) and `<base URL>/<harness>/<visualizer>/<sub-graph>`,
 `<base URL>/<harness>/<visualizer>/<sub-graph>/<path to asset>`"*. The
 segments come from the harness's `visualisers` declaration and are computed by
-`visualiserRoute` (`schemas/visualiser-route.ts`) — never composed by a
+`visualiserRoute` (`schemas/kg/visualiser-route.ts`) — never composed by a
 generator, never claimed by a page. Two declarations on one route are a
 declaration error, refused by `check:visualiser-routes`; see
 [`harness-tiles`](../../ui/ui-core/harness-tiles.md) §"Where a tile goes".
@@ -281,7 +281,7 @@ Three rules for reading it, the same three every sweep here follows:
 - [`content-context-and-state-graphs`](content-context-and-state-graphs.md) —
   what `holds` means, and the one question that settles a kind
 - [`kg-viewer`](../../ui/ui-core/kg-viewer.md) — the viewer this repository already ships
-- `bun run cat check:subgraph-coverage` — the axis; `schemas/cat-harness.ts`
+- `bun run cat check:subgraph-coverage` — the axis; `schemas/kg/cat-harness.ts`
   `owesVisualiser()` — the visualiser obligation, and
   `SubgraphCoverageSchema.serialisations` — the one that takes no waiver
 - `url-space` — bean `o7eq` (`beans show folio-assistant-o7eq`) for where a

@@ -5,5 +5,5 @@
     "kind": "skills",
     "family": "folio-voice-skill/v1"
   },
-  "schema": "schemas/voice-skill.ts#VoiceSkillSchema"
+  "schema": "schemas/content/voice-skill.ts#VoiceSkillSchema"
 }

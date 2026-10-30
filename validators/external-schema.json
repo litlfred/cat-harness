@@ -4,5 +4,5 @@
   "validates": {
     "kind": "external-schema"
   },
-  "schema": "cat-harness:schemas/external-schema.ts#ExternalSchemaSchema"
+  "schema": "cat-harness:schemas/kg/external-schema.ts#ExternalSchemaSchema"
 }

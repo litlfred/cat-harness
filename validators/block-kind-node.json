@@ -5,5 +5,5 @@
     "kind": "block-kinds",
     "family": "folio-block-kind/v1"
   },
-  "schema": "schemas/block-kind-node.ts#BlockKindNodeSchema"
+  "schema": "schemas/kg/block-kind-node.ts#BlockKindNodeSchema"
 }

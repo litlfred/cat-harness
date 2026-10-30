@@ -80,7 +80,7 @@ missing rule is where it goes wrong.
 ## Why this directory exists at all
 
 Theming was spread across places that do not name themselves as theming:
-`schemas/themes.ts`, `schemas/theme.ts`, `schemas/landing-sticky.ts`, the
+`schemas/ui/themes.ts`, `schemas/ui/theme.ts`, `schemas/content/landing-sticky.ts`, the
 generated `docs-ui.css`, `themes:css`, `check:theme-art`, the scrim measurement
 rules and the avatar crop boxes — with the discipline recorded in one skill's
 prose and nowhere else. Bean `1hvo`.

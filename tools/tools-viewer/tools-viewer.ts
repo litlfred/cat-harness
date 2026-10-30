@@ -1,5 +1,5 @@
-import { defineTool } from "../../schemas/tool.js";
-import { toolFactory } from "../../schemas/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
 import { viewerTool } from "../lib.js";
 
 // A viewer generator (`viewerTool` in `../lib.ts` holds the ports every viewer shares).

@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 import { stub } from "../lib.js";
 
 export default toolFactory((t) =>
@@ -18,7 +18,7 @@ export default toolFactory((t) =>
     },
     satisfies: ["kg-export"],
     maintains: [
-      { source: "schemas/cat-harness.ts", artefact: `${stub()}.schema.json`, format: "json-schema" },
+      { source: "schemas/kg/cat-harness.ts", artefact: `cat-harness/${stub()}.schema.json`, format: "json-schema" },
     ],
   }),
 );

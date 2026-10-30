@@ -26,7 +26,7 @@ applies-when: >
 # PROV-O: provenance as a shared record, not a house log format
 
 **Adopted 2026-09-23** (issue #1180), on the owner's choice of *"W3C ODRL 2.2
-and W3C PROV-O for logging"* (quoted in `cat-harness/schemas/prov.ts`). This
+and W3C PROV-O for logging"* (quoted in `cat-harness/schemas/content/prov.ts`). This
 node was written 2026-10-01, after the Recommendation was ingested, so that the
 held source is cited by the node that rests on it.
 
@@ -85,18 +85,18 @@ That sentence is the QA/QC after-check, stated by the standard.
 
 | term (tier) | used for | where |
 |---|---|---|
-| `prov:Activity` (starting point) | one per BPMN task run | `cat-harness/schemas/prov.ts` `ProvActivitySchema` |
+| `prov:Activity` (starting point) | one per BPMN task run | `cat-harness/schemas/content/prov.ts` `ProvActivitySchema` |
 | `prov:startedAtTime`, `prov:endedAtTime` | the history entry's time; end optional, never before start | same, `.refine` |
 | `prov:qualifiedAssociation` → `prov:agent` | the actor that performed the task | same, `ProvAssociationSchema` |
 | `prov:hadRole` | the role the BPMN lane binds | same |
 | `prov:hadPlan` | the BPMN task, written `<process>#<task id>` (`PLAN_REF`) — a task is *"a set of actions or steps intended by one or more agents"* (entry (52)), so no term is minted | same |
 | `prov:used` | the content a step acted on | the tools layer's `src/workflow/prov-record.ts` |
-| `prov:Entity`, `prov:wasDerivedFrom` | the exported graph is an Entity derived from its source commit | `cat-harness-tools/scripts/kg-export.ts`; also `derivedFrom` in `cat-harness/schemas/jsonld.ts` |
+| `prov:Entity`, `prov:wasDerivedFrom` | the exported graph is an Entity derived from its source commit | `cat-harness-tools/scripts/kg-export.ts`; also `derivedFrom` in `cat-harness/schemas/kg/jsonld.ts` |
 | `prov:alternateOf` (expanded) | a preview graph → the canonical one: *"Two alternate entities present aspects of the same thing"* (§4.2, entry (20), `sections/sec-017-…md`) | `cat-harness-tools/scripts/kg-export.ts`, chosen over `owl:sameAs` because sameAs would merge their statements |
 
 **One extension, by the route the Abstract allows** ("specialized to create new
 classes and properties"): `cat-harness:underPolicy`, the ODRL policy uid(s) a
-run was under. `schemas/prov.ts` calls it *"the one non-PROV term"*. It is in the
+run was under. `schemas/content/prov.ts` calls it *"the one non-PROV term"*. It is in the
 `cat-harness:` namespace, never in `prov:`.
 
 ## What it refuses, with reasons
@@ -125,10 +125,10 @@ run was under. `schemas/prov.ts` calls it *"the one non-PROV term"*. It is in th
 
 Recorded so the next reader does not mistake them for adoption decisions:
 
-- **`PROV_CONTEXT` names the wrong namespace.** `schemas/prov.ts` exports
+- **`PROV_CONTEXT` names the wrong namespace.** `schemas/content/prov.ts` exports
   `"http://www.w3.org/ns/prov-o"`; the Abstract says `http://www.w3.org/ns/prov#`.
   Nothing imports it — the emitters use the correct `PROV_NS`
-  (`prov-qaqc.ts`, `schemas/jsonld.ts`, `kg-export.ts`) — so it is latent.
+  (`prov-qaqc.ts`, `schemas/kg/jsonld.ts`, `kg-export.ts`) — so it is latent.
 - **`prov:actedOnBehalfOf` is allowed on an Activity.** `ProvActivitySchema`
   accepts it there; §4.1 entry (12) gives it *"has domain prov:Agent / has
   range prov:Agent"* (`sections/sec-016-41-starting-point-terms.md`). Neither
@@ -152,7 +152,7 @@ Recorded so the next reader does not mistake them for adoption decisions:
 
 ## Where it runs
 
-- `cat-harness/schemas/prov.ts` — the adopted subset, as Zod.
+- `cat-harness/schemas/content/prov.ts` — the adopted subset, as Zod.
 - the tools layer's `src/workflow/prov-record.ts` — the engine writes the activity as
   each step is recorded (`InstanceState` history `prov`, `src/workflow/instance.ts`).
 - `cat-harness-tools/scripts/prov-qaqc.ts` — the after-check: derives or reads each

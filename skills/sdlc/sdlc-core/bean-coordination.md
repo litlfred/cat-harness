@@ -117,6 +117,12 @@ so:
 Always claim with `bun run cat beans:claim <id>`. Do not use `beans update --status in-progress`
 (which writes no holder note and does not push to the branch store).
 
+**When several agents drain at once, or the store has more than one copy**, the
+claim is [`bean-drain`](bean-drain.md) step 2 instead: check recent commits and
+open PRs first, then a plain commit on every copy (the `bean-claim-check`
+Tool). `beans:claim` writes one copy and reads status only, and on 2026-10-24
+that let two agents start f1e1 minutes apart.
+
 ### Linking PRs to beans with `Closes-bean:` and recording closure evidence
 
 Code changes on `main` and work-plan state on the state branch are separate git
@@ -150,7 +156,7 @@ and PR #1581 — not because anyone found the bean.
 **What the check reads, and what it must not — both measured over the whole store:**
 
 - **`status: draft` in front matter is the marker — claimed 2026-10-01, on the owner's ruling.**
-  It was already legal (`schemas/tool-types.ts` has
+  It was already legal (`schemas/tools/tool-types.ts` has
   `.enum(["draft", "todo", "in-progress", "completed", "scrapped"])`, and
   `beans create --status` offers it) and used by **0 of 542** beans. An enum
   member nothing uses is free to adopt, so a decision bean awaiting a ruling is
@@ -463,7 +469,7 @@ commit, which a pull request number is not. A date-plus-finding name was
 refused: two sessions on the same finding on the same day pick the same slug.
 A second note from the same branch is a new `##` section in that branch's own
 file — found by its front matter, not by today's date — so only that branch
-ever writes it. Reasoning in full: `cat-harness/schemas/bean-note.ts`.
+ever writes it. Reasoning in full: `cat-harness/schemas/sdlc/bean-note.ts`.
 
 **What still conflicts, and why that is acceptable.** The index is rewritten
 by every pull request that adds a note, so two of them conflict on it. It is a
@@ -615,6 +621,10 @@ head. When the claim is *"nobody has built this"*, check the open branches too;
 this session started building `ankg`, `s8nu` and a `viewer-prune` module that
 siblings had already landed or had in flight, **five times**, and the check that
 would have prevented each is one `git diff --name-only origin/main...<branch>`.
+That check is now the [`open-work-lookup`](../../../tools/open-work-lookup/open-work-lookup.ts)
+Tool: a path, a prefix or a bean id, against `main` and every open PR head
+(bean `pomp`, reopened 2026-10-24 after the f1e1 duplicate in
+[`bean-drain`](bean-drain.md) §"The measured case").
 
 **The cost is asymmetric, which is why this is STRICT.** A missed finding is a
 bean that stays open one more day. A false one about a sibling's work is a
@@ -652,7 +662,7 @@ $ beans update <id> --tag ready-to-close
 Updated <id>
 ```
 
-and `BeanStatusSchema` in `schemas/tool-types.ts` is defined as *"exactly what
+and `BeanStatusSchema` in `schemas/tools/tool-types.ts` is defined as *"exactly what
 `beans update --status` accepts"*. A sixth status here would desync the schema
 from the tool it documents on the next `beans` release.
 

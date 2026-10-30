@@ -5,7 +5,7 @@
     "id": "content-review",
     "path": "skills/authoring/content-lifecycle/content-review.md"
   },
-  "source_hash": "7d966d137eeb",
+  "source_hash": "36648dec8f3c",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

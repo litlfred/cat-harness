@@ -5,7 +5,7 @@
     "id": "uml-overview",
     "path": "skills/kg/kg-core/uml-overview.md"
   },
-  "source_hash": "1e759bffda95",
+  "source_hash": "23342b57046c",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

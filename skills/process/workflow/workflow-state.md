@@ -67,7 +67,12 @@ completing the step performs it:
 |---|---|
 | `claim` | status → `in-progress`, idempotent |
 | `note` | append the caller's note to the body |
-| `resolve` | status → `completed`, **only if the instance itself finished** |
+| `resolve` | status → `completed`, **only if the instance itself finished** (or only archive steps are left) |
+| `archive` | move a completed or scrapped bean into the archive, **only once the instance finished** |
+
+`claim` is drawn only in `Process_BeanOpen`, and `resolve` and `archive` only
+in `Process_BeanClose`; every process that works on a bean calls both (bean
+`m8gz`, `check:bean-calls`). `note` is drawn where the work happens.
 
 **`resolve` is the careful one, and the care is the point.** A bean is never
 closed on somebody else's judgement, so it does not fire on the caller's

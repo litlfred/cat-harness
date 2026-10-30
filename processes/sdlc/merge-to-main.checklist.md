@@ -85,7 +85,7 @@ Land ONE pull request on `main`, in any repository, as its own step with its own
 
 - Who: the `Merging session` lane (role `merge-steward`).
 - Skill: `merge-to-main`.
-- What: Before the merge, in the shape of `ReleaseSchema` (schemas/merge-queue.ts): verdict, decidedBy (the person), decidedAt, authority (explicit, standing ruling with its date, or waiver id), the quote verbatim with its source, releasedSha (the head approved; a later push voids it) and capturedBy (this s
+- What: Before the merge, in the shape of `ReleaseSchema` (schemas/sdlc/merge-queue.ts): verdict, decidedBy (the person), decidedAt, authority (explicit, standing ruling with its date, or waiver id), the quote verbatim with its source, releasedSha (the head approved; a later push voids it) and capturedBy (this s
 - Record it: `workflow_complete` with `node: "Task_RecordAuthorisation"`.
 - next: → `Task_Merge` (Merge, pinned to the evaluated head)
 

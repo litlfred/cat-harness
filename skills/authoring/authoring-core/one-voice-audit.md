@@ -123,7 +123,7 @@ violation. Common breakages:
       `(reformulated|reformulation) as`
     Exceptions: (i) the phrase IS the canonical term of art and
     removing it changes the claim (e.g. "essentially surjective" as a
-    category-theory term, "essentially zero" inside a results table);
+    category theory term, "essentially zero" inside a results table);
     (ii) the block has an explicit
     `tags: ["non-scholarly-voice-exception"]` opt-out.
 
@@ -238,7 +238,7 @@ Report back with:
 ## QA report integration
 
 The watcher persists every finding to the block's sibling
-`<block>.qa.json` file (schema: `schemas/block-qa.ts`).
+`<block>.qa.json` file (schema: `schemas/sdlc/block-qa.ts`).
 Per-criterion staleness is keyed by SHA-256 prefix of the source
 files at audit time — when the `.md` (or `.ts` / proof file) is later
 edited, the recorded `field_hash` no longer matches, and the
@@ -308,5 +308,7 @@ outrank agent entries; agent entries outrank script entries — but
 - `readability-editing` — broader prose tightening; one-voice is a
   subset.
 - `editor` — invokes this skill as a sub-pass on content changes.
-- `proof-conciseness` — for trimming proofs that contain work-tracker
-  language disguised as expository structure.
+- A content type's proof-trimming skill, where it has one: for trimming
+  proofs that contain work-tracker language disguised as expository
+  structure. The layer that ships the content type names this skill from
+  its side.

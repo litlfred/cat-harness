@@ -54,7 +54,7 @@ The three loop-backs into `A_Implement` — `_5` (increment rejected), `_7` (MVP
 
 Contrast `upstream-version-adoption`, where the loop DOES re-enter the analysis. There the loop-back returns to `A_Impact`, which re-gathers the evidence, so the second pass weighs genuinely different inputs. Here the loop returns to implementation with the evidence unchanged.
 
-`A_Implement` carries `cat-harness.processes:bean op="claim"`; this step carries no bean op, because `Process_OptionsAnalysis` ends with its own `decision-audit` note on the bean the caller claimed.</bpmn:documentation>
+`A_Implement` carries a `note` on the bean (its claim is the OPEN that `Process_CRDM` calls first); this step carries no bean op, because `Process_OptionsAnalysis` ends with its own `decision-audit` note on the bean the caller claimed.</bpmn:documentation>
     </bpmn:callActivity>
     <bpmn:task id="A_Implement" name="Phase 6: Implement
 (feature branch + PR)">
@@ -69,7 +69,7 @@ beside the after-screenshot, so the reviewer can see the build matches what was
 approved.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="prepare-merge"/>
-        <cat-harness.processes:bean op="claim"/>
+        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
     </bpmn:task>
     <bpmn:callActivity id="A_CodeAudit" name="Audit the code nodes&#10;the increment adds" calledElement="Process_Review">

@@ -18,7 +18,8 @@ this layer, so they are linked here rather than there:
 2. **Claim before you work.** `bun run cat beans:claim <id>` — not
    `beans update --status in-progress`, which writes no holder note. A claim
    announces rather than reserves until your PR exists — see
-   `bean-coordination`.
+   `bean-coordination`. When other agents drain the same beans, or there is
+   more than one bean copy, follow `bean-drain` step 2 instead.
 3. **Ask for the skill that governs the task** — `skill_list`, then
    `skill_fetch`. Do not open a path under `skills/` from memory: the graph an
    instance declares is what resolves, and a hardcoded path is how a skill
@@ -97,7 +98,7 @@ no MCP, resolve the `kg` graph from the declaration
 ([`kg-navigation`](skills/kg/kg-navigation/kg-navigation.md),
 [`directory-conventions`](skills/kg/kg-core/directory-conventions.md)).
 **A dependency's skills ARE reachable** — `resolveSkillDirs` in
-`schemas/harness-config.ts` computes the cross-instance overlay and
+`schemas/kg/harness-config.ts` computes the cross-instance overlay and
 `LOCAL_PACKAGES` in `scripts/skill-packages.ts` is built from it. Two nearby
 call sites stay root-only on purpose, and the reasons are on the overlay
 function itself: `kgDirectories` composes repo-relative skill ids, and
@@ -131,7 +132,7 @@ is not the gate set** ([`platform-gates`](skills/sdlc/sdlc-core/platform-gates.m
 ### Where the harness keeps its state — `beans/` is a graph
 
 `beans/` is a graph with named nodes, declared by `beans/beans.json` (schema
-`schemas/bean-graph.ts`), and a file declares what it is: a bean by its front
+`schemas/sdlc/bean-graph.ts`), and a file declares what it is: a bean by its front
 matter, a workflow instance by `"$schema": "folio-workflow-instance/v1"`.
 **Extension is a coincidence; a declaration inside the file is the contract.**
 The two duplicates of the layout that cannot be removed are both checked by
@@ -310,3 +311,32 @@ doing ([`opening-brief`](skills/sdlc/sdlc-core/opening-brief.md)).
 [`bootstrap/AGENTS.md`](../bootstrap/AGENTS.md). The checkout root's
 `AGENTS.md` quotes that file as its cold start, and is rendered rather than
 declared (`scripts/index-render.ts`). Issue #592.*
+
+## The skills this layer publishes
+
+<!-- skills:index:begin -->
+
+_249 skills in 18 directories. The full list, with what each skill is for, is in [`SKILLS.md`](SKILLS.md): here it would take this file past 32 KiB, the most of an `AGENTS.md` some agents read. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+
+| Directory | Skills |
+|---|---|
+| [`skills/authoring/authoring-core/`](skills/authoring/authoring-core/) | 24 |
+| [`skills/authoring/content-lifecycle/`](skills/authoring/content-lifecycle/) | 10 |
+| [`skills/conduct/conduct-core/`](skills/conduct/conduct-core/) | 16 |
+| [`skills/conduct/security/`](skills/conduct/security/) | 4 |
+| [`skills/kg/graph-management/`](skills/kg/graph-management/) | 10 |
+| [`skills/kg/kg-core/`](skills/kg/kg-core/) | 29 |
+| [`skills/kg/kg-navigation/`](skills/kg/kg-navigation/) | 1 |
+| [`skills/library/large-datasets/`](skills/library/large-datasets/) | 5 |
+| [`skills/library/library-core/`](skills/library/library-core/) | 11 |
+| [`skills/process/process-core/`](skills/process/process-core/) | 7 |
+| [`skills/process/raci/`](skills/process/raci/) | 1 |
+| [`skills/process/workflow/`](skills/process/workflow/) | 10 |
+| [`skills/sdlc/crdm/`](skills/sdlc/crdm/) | 7 |
+| [`skills/sdlc/sdlc-core/`](skills/sdlc/sdlc-core/) | 74 |
+| [`skills/sdlc/spec-kit/`](skills/sdlc/spec-kit/) | 3 |
+| [`skills/tools/folio-core/`](skills/tools/folio-core/) | 7 |
+| [`skills/ui/theming/`](skills/ui/theming/) | 8 |
+| [`skills/ui/ui-core/`](skills/ui/ui-core/) | 22 |
+
+<!-- skills:index:end -->

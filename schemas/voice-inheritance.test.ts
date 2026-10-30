@@ -18,7 +18,7 @@ import {
   voiceActiveIn,
   type VoiceProfile,
   type VoiceRef,
-} from "./voices.js";
+} from "./content/voices.js";
 
 function voice(id: string, rules: string[], rest: Partial<VoiceProfile> = {}): VoiceProfile {
   return VoiceProfileSchema.parse({
@@ -27,14 +27,14 @@ function voice(id: string, rules: string[], rest: Partial<VoiceProfile> = {}): V
     title: id,
     description: `the ${id} voice`,
     provenance: "assertion",
-    sources: [{ title: "a source", path: "schemas/voices.ts" }],
+    sources: [{ title: "a source", path: "schemas/content/voices.ts" }],
     rules: rules.map((r) => ({
       id: r,
       title: r,
       description: `rule ${r}`,
       category: "register",
       severity: "minor",
-      source: { path: "schemas/voices.ts", quote: "a quote long enough to check against" },
+      source: { path: "schemas/content/voices.ts", quote: "a quote long enough to check against" },
     })),
     ...rest,
   });

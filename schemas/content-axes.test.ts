@@ -18,9 +18,9 @@ import {
   CONTENT_INTERACTIVITY,
   CONTENT_PROFILES,
   type ContentInteractivity,
-} from "./block-kinds.js";
-import { ContentDirectorySchema, VISUALISER_KINDS } from "./cat-harness.js";
-import { HarnessConfigSchema } from "./harness-config.js";
+} from "./content/block-kinds.js";
+import { ContentDirectorySchema, VISUALISER_KINDS } from "./kg/cat-harness.js";
+import { HarnessConfigSchema } from "./kg/harness-config.js";
 
 describe("the four axes are four, and none is a synonym for another", () => {
   test("no value appears on two axes, except the ONE that is meant to", () => {

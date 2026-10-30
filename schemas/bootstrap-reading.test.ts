@@ -12,8 +12,8 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { CLASS_GLOSSES } from "./vocabulary.ts";
-import { BASE_GRAPH_TYPOLOGIES, graphTypologyLayer } from "./graph-typology-registry.ts";
+import { CLASS_GLOSSES } from "./content/vocabulary.ts";
+import { BASE_GRAPH_TYPOLOGIES, graphTypologyLayer } from "./kg/graph-typology-registry.ts";
 import { BOOTSTRAP_GRAPH_TYPOLOGIES, BOOTSTRAP_TERMS } from "@litlfred/bootstrap-tools/schemas/graph.ts";
 
 describe("the harness reads bootstrap's terms and kinds as bootstrap states them", () => {

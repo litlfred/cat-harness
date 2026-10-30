@@ -11,7 +11,7 @@
       "@type": "skos:ConceptScheme",
       "skos:prefLabel": "Bootstrap terms",
       "skos:definition": "The terms Bootstrap defines, in order: each is defined only by terms above it, and never itself. Read from the schema that defines them, bootstrap/schemas/graph.schema.json, so this glossary cannot say anything that schema does not.",
-      "dcterms:hasVersion": "0.1.0",
+      "dcterms:hasVersion": "0.1.1",
       "dcterms:source": "bootstrap/schemas/graph.schema.json"
     },
     {

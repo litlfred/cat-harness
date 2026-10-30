@@ -5,7 +5,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { ContentDirectorySchema } from "./cat-harness.ts";
+import { ContentDirectorySchema } from "./kg/cat-harness.ts";
 
 const dir = (extra: Record<string, unknown>) => ({ id: "ig-docs", path: "docs/", graphTypologies: ["docs"], ...extra });
 

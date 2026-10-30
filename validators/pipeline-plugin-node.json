@@ -5,5 +5,5 @@
     "kind": "pipeline-plugins",
     "family": "folio-pipeline-plugin/v1"
   },
-  "schema": "schemas/contribution-nodes.ts#PipelinePluginNodeSchema"
+  "schema": "schemas/kg/contribution-nodes.ts#PipelinePluginNodeSchema"
 }

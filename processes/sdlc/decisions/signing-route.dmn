@@ -11,7 +11,7 @@
   Two facts, and they answer different questions:
 
     reach                  effectiveReach(deployment, actor) from
-                           `schemas/actor-reach.ts` — CAN this participant
+                           `schemas/process/actor-reach.ts` — CAN this participant
                            call out at all. One of internet,
                            egress-restricted, air-gapped, unknown.
     signingApiConfigured   the `signing-api` capability probe — IS there an

@@ -17,7 +17,7 @@ import { describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
-import { readPolicyGrants } from "./odrl.ts";
+import { readPolicyGrants } from "./content/odrl.ts";
 
 const ROOT = resolve(import.meta.dir, "..");
 const json = <T = Record<string, unknown>>(rel: string): T => JSON.parse(readFileSync(join(ROOT, rel), "utf-8")) as T;

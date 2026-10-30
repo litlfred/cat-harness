@@ -53,7 +53,7 @@ WHAT THE LANE IS ACCOUNTABLE FOR, and where it ends. Choosing a route, writing t
         <bpmn:flowNodeRef>Task_Place</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_1" name="Ingestion Engine (agent, runs unattended)" partitionElementRef="ingestion-agent">
-        <bpmn:documentation>Runs the basic flow from the metadata step to the placement in library/, unattended: every decision in it is decidable from the material and its declarations. It asks one question — is the asset materialized? — and that is answered from the materialization state vocabulary (`schemas/materialization-state.ts`, placement PR5), not by judgement. It does NOT choose a reader for the bytes, derive sections or blocks, or describe images: those are a refining process's work, which calls this flow first.
+        <bpmn:documentation>Runs the basic flow from the metadata step to the placement in library/, unattended: every decision in it is decidable from the material and its declarations. It asks one question — is the asset materialized? — and that is answered from the materialization state vocabulary (`schemas/kg/materialization-state.ts`, placement PR5), not by judgement. It does NOT choose a reader for the bytes, derive sections or blocks, or describe images: those are a refining process's work, which calls this flow first.
 
 THE FLOW ENDS IN THIS LANE. The asset catalogued in library/ — held, or recorded as referenced — is the terminal state, and every knowledge-graph reference to it resolves through library/ from here; a refining process continues from it rather than being drawn into this one. There is no separate corpus lane: it would hold only the end event, and a lane with no activity has no performer to describe.</bpmn:documentation>
         <bpmn:flowNodeRef>Task_ExtractMetadata</bpmn:flowNodeRef>
@@ -94,7 +94,7 @@ WHY THE BEAN OP IS `note` AND NOT `claim`. Placing a file claims nothing; it add
     <bpmn:serviceTask id="Task_ExtractMetadata" name="Extract its metadata
 into the KG
 [asset-extraction]">
-      <bpmn:documentation>THE METADATA STEP. What enters the knowledge graph is the asset's INDEX — what it is, how big, what type, when it says it was written — and, for a container, what is in it; its contents do not go in unless somebody asks, with a reason. Owner, 2026-09-20: "make sure you have zip ingestion skills to extract metadata of assets into KG. don't extract contents unless explict ask by user." The tool is `cat-harness-tools/scripts/extract-assets.ts`, writing a `folio-extraction/v1` record (`schemas/extraction.ts`, moved down to this layer in placement PR5).
+      <bpmn:documentation>THE METADATA STEP. What enters the knowledge graph is the asset's INDEX — what it is, how big, what type, when it says it was written — and, for a container, what is in it; its contents do not go in unless somebody asks, with a reason. Owner, 2026-09-20: "make sure you have zip ingestion skills to extract metadata of assets into KG. don't extract contents unless explict ask by user." The tool is `cat-harness-tools/scripts/extract-assets.ts`, writing a `folio-extraction/v1` record (`schemas/content/extraction.ts`, moved down to this layer in placement PR5).
 
 The media type is sniffed from the leading bytes, never taken from the extension.</bpmn:documentation>
       <bpmn:extensionElements>
@@ -104,7 +104,7 @@ The media type is sniffed from the leading bytes, never taken from the extension
       <bpmn:outgoing>Flow_i3</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:exclusiveGateway id="Gateway_Materialized" name="Materialized?">
-      <bpmn:documentation>Answered from the materialization state (`schemas/materialization-state.ts`): `materialized` means the bytes are here; `referenced` means we know where they are and hold none. `unknown` is not a third branch here because a node must DECLARE its state — there is no default — and an asset this flow cannot classify is recorded as referenced-with-a-reason rather than placed as if held. Collapsing referenced into materialized is the failure the vocabulary exists to stop: corpus-grep searches library/ only, so a referenced node placed as held reads as present to every consumer.</bpmn:documentation>
+      <bpmn:documentation>Answered from the materialization state (`schemas/kg/materialization-state.ts`): `materialized` means the bytes are here; `referenced` means we know where they are and hold none. `unknown` is not a third branch here because a node must DECLARE its state — there is no default — and an asset this flow cannot classify is recorded as referenced-with-a-reason rather than placed as if held. Collapsing referenced into materialized is the failure the vocabulary exists to stop: corpus-grep searches library/ only, so a referenced node placed as held reads as present to every consumer.</bpmn:documentation>
       <bpmn:incoming>Flow_i3</bpmn:incoming>
       <bpmn:outgoing>Flow_held</bpmn:outgoing>
       <bpmn:outgoing>Flow_referenced</bpmn:outgoing>

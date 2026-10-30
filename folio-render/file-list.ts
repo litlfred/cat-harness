@@ -21,7 +21,7 @@
  *
  * ## Why this does not contradict "cat-harness is not self-documenting"
  *
- * `schemas/folio-graph-typology.ts` keeps the just-the-docs PIPELINE in core.
+ * `schemas/kg/folio-graph-typology.ts` keeps the just-the-docs PIPELINE in core.
  * This depends on none of it. It writes one markdown page with just-the-docs
  * front matter, which core's pipeline (or any Jekyll site) can serve, and
  * which reads as a plain file listing on GitHub without it. A layer that
@@ -46,7 +46,7 @@
 import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
-import { directoryForGraph, instanceRootFor, readDeclaration } from "../schemas/cat-harness.js";
+import { directoryForGraph, instanceRootFor, readDeclaration } from "../schemas/kg/cat-harness.js";
 
 /** The page {@link renderFolioPage} writes, relative to the folio directory. */
 export const FOLIO_PAGE = "index.md";

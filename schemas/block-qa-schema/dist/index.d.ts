@@ -8,7 +8,7 @@
  * schemas that validate against the same shapes, so any TypeScript / JavaScript
  * consumer can parse + type-check the QA sidecars emitted by the folio
  * qa-sweep pipeline (`pipeline/qa-sweep.ts`; producing types in
- * `schemas/block-qa.ts`).
+ * `schemas/sdlc/block-qa.ts`).
  *
  * @example
  * ```ts

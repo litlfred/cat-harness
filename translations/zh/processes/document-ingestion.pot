@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: document-ingestion\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.259Z\n"
+"POT-Creation-Date: 2026-10-29T13:02:26.468Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: processes/library/document-ingestion.bpmn:107
 #. Diagram element documentation
-msgid "Answered from the materialization state (`schemas/materialization-state.ts`): `materialized` means the bytes are here; `referenced` means we know where they are and hold none. `unknown` is not a third branch here because a node must DECLARE its state — there is no default — and an asset this flow cannot classify is recorded as referenced-with-a-reason rather than placed as if held. Collapsing referenced into materialized is the failure the vocabulary exists to stop: corpus-grep searches library/ only, so a referenced node placed as held reads as present to every consumer."
+msgid "Answered from the materialization state (`schemas/kg/materialization-state.ts`): `materialized` means the bytes are here; `referenced` means we know where they are and hold none. `unknown` is not a third branch here because a node must DECLARE its state — there is no default — and an asset this flow cannot classify is recorded as referenced-with-a-reason rather than placed as if held. Collapsing referenced into materialized is the failure the vocabulary exists to stop: corpus-grep searches library/ only, so a referenced node placed as held reads as present to every consumer."
 msgstr ""
 
 #: processes/library/document-ingestion.bpmn:134
@@ -91,7 +91,7 @@ msgstr ""
 
 #: processes/library/document-ingestion.bpmn:56
 #. Diagram element documentation
-msgid "Runs the basic flow from the metadata step to the placement in library/, unattended: every decision in it is decidable from the material and its declarations. It asks one question — is the asset materialized? — and that is answered from the materialization state vocabulary (`schemas/materialization-state.ts`, placement PR5), not by judgement. It does NOT choose a reader for the bytes, derive sections or blocks, or describe images: those are a refining process's work, which calls this flow first. THE FLOW ENDS IN THIS LANE. The asset catalogued in library/ — held, or recorded as referenced — is the terminal state, and every knowledge-graph reference to it resolves through library/ from here; a refining process continues from it rather than being drawn into this one. There is no separate corpus lane: it would hold only the end event, and a lane with no activity has no performer to describe."
+msgid "Runs the basic flow from the metadata step to the placement in library/, unattended: every decision in it is decidable from the material and its declarations. It asks one question — is the asset materialized? — and that is answered from the materialization state vocabulary (`schemas/kg/materialization-state.ts`, placement PR5), not by judgement. It does NOT choose a reader for the bytes, derive sections or blocks, or describe images: those are a refining process's work, which calls this flow first. THE FLOW ENDS IN THIS LANE. The asset catalogued in library/ — held, or recorded as referenced — is the terminal state, and every knowledge-graph reference to it resolves through library/ from here; a refining process continues from it rather than being drawn into this one. There is no separate corpus lane: it would hold only the end event, and a lane with no activity has no performer to describe."
 msgstr ""
 
 #: processes/library/document-ingestion.bpmn:80
@@ -106,7 +106,7 @@ msgstr ""
 
 #: processes/library/document-ingestion.bpmn:97
 #. Diagram element documentation
-msgid "THE METADATA STEP. What enters the knowledge graph is the asset's INDEX — what it is, how big, what type, when it says it was written — and, for a container, what is in it; its contents do not go in unless somebody asks, with a reason. Owner, 2026-09-20: \"make sure you have zip ingestion skills to extract metadata of assets into KG. don't extract contents unless explict ask by user.\" The tool is `cat-harness-tools/scripts/extract-assets.ts`, writing a `folio-extraction/v1` record (`schemas/extraction.ts`, moved down to this layer in placement PR5). The media type is sniffed from the leading bytes, never taken from the extension."
+msgid "THE METADATA STEP. What enters the knowledge graph is the asset's INDEX — what it is, how big, what type, when it says it was written — and, for a container, what is in it; its contents do not go in unless somebody asks, with a reason. Owner, 2026-09-20: \"make sure you have zip ingestion skills to extract metadata of assets into KG. don't extract contents unless explict ask by user.\" The tool is `cat-harness-tools/scripts/extract-assets.ts`, writing a `folio-extraction/v1` record (`schemas/content/extraction.ts`, moved down to this layer in placement PR5). The media type is sniffed from the leading bytes, never taken from the extension."
 msgstr ""
 
 #: processes/library/document-ingestion.bpmn:127

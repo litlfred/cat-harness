@@ -72,7 +72,7 @@
     },
     {
       "term": "skos:narrowMatch",
-      "operative": "The SKOS rendering of FHIR R5's `source-is-broader-than-target` in a vocabulary mapping table (`SKOS_MATCH_FOR`, schemas/vocab-mapping.ts, bean k74z): `A skos:narrowMatch B` says B is narrower."
+      "operative": "The SKOS rendering of FHIR R5's `source-is-broader-than-target` in a vocabulary mapping table (`SKOS_MATCH_FOR`, schemas/content/vocab-mapping.ts, bean k74z): `A skos:narrowMatch B` says B is narrower."
     },
     {
       "term": "skos:notation",

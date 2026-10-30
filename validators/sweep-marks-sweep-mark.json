@@ -5,5 +5,5 @@
     "kind": "sweep-marks",
     "family": "folio-sweep-mark/v1"
   },
-  "schema": "schemas/sweep-mark.ts#SweepMarkSchema"
+  "schema": "schemas/sdlc/sweep-mark.ts#SweepMarkSchema"
 }

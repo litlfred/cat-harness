@@ -84,7 +84,7 @@ never re-download.
 
 ## Before you enumerate anything
 
-`cat-harness/schemas/source-descriptor.ts` answers the question that comes
+`cat-harness/schemas/library/source-descriptor.ts` answers the question that comes
 *before* the gates: how to enumerate a corpus and ask it for a subset. Check
 `subsetIsSelfContained` first — when it is `false` (mathlib), close the request
 over its dependencies **before** gating, because the size being gated is the

@@ -6,14 +6,14 @@
 import { describe, expect, test } from "bun:test";
 import { join } from "node:path";
 
-import { BEAN_SCHEMA_TAG, BeanKind } from "./bean-graph";
+import { BEAN_SCHEMA_TAG, BeanKind } from "./sdlc/bean-graph";
 import {
   CAT_HARNESS_DECLARATION_SCHEMA_TAG,
   CatHarnessDeclarationKind,
   CatHarnessDeclarationSchema,
   defaultGraphTypologies,
-} from "./cat-harness";
-import { nodeKindIndex } from "./node-kind-index";
+} from "./kg/cat-harness";
+import { nodeKindIndex } from "./kg/node-kind-index";
 
 describe("the bean kind", () => {
   test("is `bean/1.0.0`, and the tag constant says the same", () => {

@@ -74,7 +74,7 @@ under-declaration.
 `render-pipeline.ts` is in the **harness** layer. Resolving a graph typology means
 `readDeclaration`, which validates **every** kind in the declaration — and this
 repository declares a `folio` directory whose kind is registered by **core**,
-on the argument (written on `schemas/folio-graph-typology.ts`) that a layer which
+on the argument (written on `schemas/kg/folio-graph-typology.ts`) that a layer which
 cannot render must not own the renderable kind. So the harness layer cannot
 resolve *any* kind in-process without importing core, which `check:partition`
 rejects.
@@ -169,8 +169,9 @@ everything `needs` its way back to `kg-current`. The bean row is what a
 narrower graph buys — `beans` reaches only `docs-pages` and `state-dashboards`.
 
 The two that always run are `bootstrap` (pending — nothing to cache yet) and
-`kg-dynamic` (`alwaysRun`: it exports the graph *after* stage 2 has
-contributed, so its input is that output rather than a source file).
+`kg-dynamic` (`alwaysRun`: it exports the running workflows' state, whose
+stuck states are measured against the clock, so no source hash could make
+caching it correct).
 
 **Report the cached steps as cached, never as a pass.** In this pipeline a
 "skip" already means *its input never rendered*, which is a much worse fact —

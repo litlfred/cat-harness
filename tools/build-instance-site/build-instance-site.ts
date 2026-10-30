@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // Owner, 2026-10-10: publishing is agent-run, never a GitHub Actions
 // workflow, and staging previews are agent-run too (bean `n3h9`). The

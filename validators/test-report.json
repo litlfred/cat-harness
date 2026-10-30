@@ -4,5 +4,5 @@
   "validates": {
     "kind": "test-report"
   },
-  "schema": "schemas/test-report.ts#TestReportSchema"
+  "schema": "schemas/sdlc/test-report.ts#TestReportSchema"
 }

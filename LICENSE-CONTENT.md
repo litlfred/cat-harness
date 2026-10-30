@@ -2,7 +2,7 @@
 
 Copyright 2026 Carl Leitner
 
-This file covers the **prose** in folio-assistant. The **source code** is
+This file covers the **prose** in cat-harness. The **source code** is
 licensed separately under the Apache License, Version 2.0 — see
 [`LICENSE`](./LICENSE) and [`NOTICE`](./NOTICE).
 
@@ -21,7 +21,7 @@ the prose around it is CC BY 3.0**. If you need one licence for the whole file,
 take Apache-2.0: it is the more permissive of the two for reuse in software.
 
 Content authored in a *folio* repository is **not** covered by either licence
-here. folio-assistant is the platform; a folio carries its own.
+here. cat-harness is part of the platform; a folio carries its own.
 
 **Third-party skills are not covered either.** A skill package that carries a
 `materialization.json` is somebody else's text, synced at a pinned commit

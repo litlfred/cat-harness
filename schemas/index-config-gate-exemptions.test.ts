@@ -5,8 +5,8 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { GateExemptionsSchema } from "./cat-harness";
-import { INDEX_CONFIG_SCHEMA, IndexConfigSchema, formatIndexConfig } from "./index-config";
+import { GateExemptionsSchema } from "./kg/cat-harness";
+import { INDEX_CONFIG_SCHEMA, IndexConfigSchema, formatIndexConfig } from "./kg/index-config";
 
 const base = { $schema: INDEX_CONFIG_SCHEMA, instances: [{ name: "a" }] };
 const exemptions = { steps: [{ match: "bun run cat state:push -- --id health", kind: "ci-only", reason: "a write, not a check" }] };

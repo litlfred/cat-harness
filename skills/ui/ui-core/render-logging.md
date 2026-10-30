@@ -194,7 +194,7 @@ So the check is on the value, not on where it came from.
 
 ## It is a specialisation of `folio-log/v1`, not a rival
 
-`schemas/log-entry.ts` already answers "what does an entry look like", and a
+`schemas/sdlc/log-entry.ts` already answers "what does an entry look like", and a
 render entry reuses those spellings: `id`, `at`, `summary`, `detail`,
 `references`, `capture`. Three things differ, each deliberately:
 
@@ -213,7 +213,7 @@ is on the publish branch belongs where its subject's absence can be seen.
 | | |
 |---|---|
 | the process | [`staging-render-log.bpmn`](../../../processes/ui/staging-render-log.bpmn) |
-| the entry shape it specialises | `schemas/log-entry.ts`, `skills/sdlc/sdlc-core/activity-log.md` |
+| the entry shape it specialises | `schemas/sdlc/log-entry.ts`, `skills/sdlc/sdlc-core/activity-log.md` |
 | why the publish branch loses things | bean `plj1`, `scripts/restore-staging.ts` |
 | why a closed PR is not an abandoned branch | bean `w2g5` |
 | the path hazard | bean `fuzm` |

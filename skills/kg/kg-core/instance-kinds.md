@@ -19,7 +19,7 @@ adds the wrong one:
 | | what it is | where it is declared |
 |---|---|---|
 | **instance kind** | what a repository *is* — `cat-harness`, `bootstrap`, the IRIS replica. It has a name, a prefix family, a `<name>.json`, and files it inherits from whatever it was bootstrapped off | a `<name>.json` at the instance root |
-| **graph typology** | what a declared DIRECTORY holds — `tools`, `docs`, `beans`, `library`. A value in the graph-typology registry, with `renderable`, `holds` and a summary | `defaultGraphTypologies` in `schemas/cat-harness.ts`, or a registration from a layer that owns it |
+| **graph typology** | what a declared DIRECTORY holds — `tools`, `docs`, `beans`, `library`. A value in the graph-typology registry, with `renderable`, `holds` and a summary | `defaultGraphTypologies` in `schemas/kg/cat-harness.ts`, or a registration from a layer that owns it |
 
 An instance kind gets a **name**. A graph typology gets a **declaration**. This
 skill covers both, and §"Most new things are not a new graph typology" first,
@@ -130,7 +130,7 @@ difference is the whole content of this section.
 
 ## What a new graph typology must declare
 
-The shape is `GraphTypologyDef` in `schemas/cat-harness.ts`. Read it there for the
+The shape is `GraphTypologyDef` in `schemas/kg/cat-harness.ts`. Read it there for the
 authoritative field list; what follows is what an author has to *decide*.
 
 | field | required | the question |
@@ -188,7 +188,7 @@ for a reason worth copying.
 
 | kind | declared where | why |
 |---|---|---|
-| `folio` | **registered by core**, on import (`schemas/folio-graph-typology.ts`) | the harness cannot serve it — block viewers, LaTeX, QA badges, translation overlays |
+| `folio` | **registered by core**, on import (`schemas/kg/folio-graph-typology.ts`) | the harness cannot serve it — block viewers, LaTeX, QA badges, translation overlays |
 | `docs` | **in the harness's own table** (`defaultGraphTypologies`) | the harness ships a plain just-the-docs renderer and can serve it |
 
 The rule in its true form is **a layer owns the kinds it can render** — not

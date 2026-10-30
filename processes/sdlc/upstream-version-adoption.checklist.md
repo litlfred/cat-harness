@@ -10,9 +10,24 @@ A REUSABLE SUBPROCESS, entered once per pinned upstream dependency that has fall
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_UpstreamAdoption"` and the subject this run is about; keep the instance id it returns.
-- next: → `A_Scope` (Scope the delta pinned → candidate)
+- next: → `Call_BeanOpen` (Open the bean)
 
-### 1. Scope the delta pinned → candidate (`A_Scope`)
+### 1. Open the bean (`Call_BeanOpen`)
+
+- Who: the `Agent` lane (role `authoring-agent`).
+- Skill: `bean-coordination`.
+- What: Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's.
+- A subprocess (`Process_BeanOpen`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `GW_BeanYours` (Bean claimed?)
+
+### Decide — Bean claimed? (`GW_BeanYours`)
+
+- Reads which end Process_BeanOpen reached.
+- Call `workflow_complete` with `node: "GW_BeanYours"` and `outcome` set to the label that holds:
+  - «claimed» → `A_Scope` (Scope the delta pinned → candidate)
+  - «not yours» → `End_BeanNotYours` (Not yours — left alone)
+
+### 2. Scope the delta pinned → candidate (`A_Scope`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `upstream-version-adoption`.
@@ -20,7 +35,11 @@ A REUSABLE SUBPROCESS, entered once per pinned upstream dependency that has fall
 - Record it: `workflow_complete` with `node: "A_Scope"`.
 - next: → `A_Impact` (Impact analysis what of ours binds it)
 
-### 2. Impact analysis what of ours binds it (`A_Impact`)
+## Done — Not yours — left alone (`End_BeanNotYours`)
+
+- The instance completes here: Someone else holds the bean; this run stops without touching it. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 3. Impact analysis what of ours binds it (`A_Impact`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `upstream-version-adoption`.
@@ -28,7 +47,7 @@ A REUSABLE SUBPROCESS, entered once per pinned upstream dependency that has fall
 - Record it: `workflow_complete` with `node: "A_Impact"`.
 - next: → `Task_Mvp` (MVP: build the candidate on a staging branch)
 
-### 3. MVP: build the candidate on a staging branch (`Task_Mvp`)
+### 4. MVP: build the candidate on a staging branch (`Task_Mvp`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `feature-staging`.
@@ -36,7 +55,7 @@ A REUSABLE SUBPROCESS, entered once per pinned upstream dependency that has fall
 - Record it: `workflow_complete` with `node: "Task_Mvp"`.
 - next: → `Task_Gates` (Run the row's gates tests · e2e · site-links)
 
-### 4. Run the row's gates tests · e2e · site-links (`Task_Gates`)
+### 5. Run the row's gates tests · e2e · site-links (`Task_Gates`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `content-test`.
@@ -44,7 +63,7 @@ A REUSABLE SUBPROCESS, entered once per pinned upstream dependency that has fall
 - Record it: `workflow_complete` with `node: "Task_Gates"`.
 - next: → `A_Evidence` (Post the MVP evidence staging URL + gate results)
 
-### 5. Post the MVP evidence staging URL + gate results (`A_Evidence`)
+### 6. Post the MVP evidence staging URL + gate results (`A_Evidence`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `delivery-summary`.
@@ -52,7 +71,7 @@ A REUSABLE SUBPROCESS, entered once per pinned upstream dependency that has fall
 - Record it: `workflow_complete` with `node: "A_Evidence"`.
 - next: → `R_Review` (Review the MVP against what we bind to)
 
-### 6. Review the MVP against what we bind to (`R_Review`)
+### 7. Review the MVP against what we bind to (`R_Review`)
 
 - Who: the `Reviewer / SME` lane (role `reviewer`).
 - Skill: `staging-review`.
@@ -67,14 +86,14 @@ A REUSABLE SUBPROCESS, entered once per pinned upstream dependency that has fall
   - «yes» → `A_Impact` (Impact analysis what of ours binds it)
   - «no» → `Call_OptionsAnalysis` (Options analysis adopt · hold · decline)
 
-### 7. Options analysis adopt · hold · decline (`Call_OptionsAnalysis`)
+### 8. Options analysis adopt · hold · decline (`Call_OptionsAnalysis`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - What: On the single edge into `PM_Decide`, and deliberately not earlier: the MVP build and its gates are HOW the options' costs are measured, so an analysis before `Task_Mvp` would weigh alternatives against no evidence.
 - A subprocess (`Process_OptionsAnalysis`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `PM_Decide` (Adopt, hold or decline)
 
-### 8. Adopt, hold or decline (`PM_Decide`)
+### 9. Adopt, hold or decline (`PM_Decide`)
 
 - Who: the `Publication manager` lane (role `publication-manager`).
 - Skill: `decision-audit`.
@@ -89,20 +108,28 @@ A REUSABLE SUBPROCESS, entered once per pinned upstream dependency that has fall
   - «yes» → `A_ApplyPin` (Move the pin and open the PR)
   - «no» → `A_RecordOutcome` (Record the hold or the decline)
 
-### 9. Move the pin and open the PR (`A_ApplyPin`)
+### 10. Move the pin and open the PR (`A_ApplyPin`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `prepare-merge`.
 - What: The pin literal moves in the one file `upstream-pins.json` declares, and the PR body says what the version range changed in RENDERED output — the evidence, not just the verdict.
 - Record it: `workflow_complete` with `node: "A_ApplyPin"`.
-- next: → `End_Adopt` (Decision recorded)
+- next: → `Call_BeanClose` (Close the bean)
 
-### 10. Record the hold or the decline (`A_RecordOutcome`)
+### 11. Record the hold or the decline (`A_RecordOutcome`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `upstream-version-adoption`.
 - What: A HOLD is a block with an expiry and a revisit trigger: a hold with neither cannot be told from abandoned work, and the next watcher run re-raises the same pin with no memory of why it was left.
 - Record it: `workflow_complete` with `node: "A_RecordOutcome"`.
+- next: → `Call_BeanClose` (Close the bean)
+
+### 12. Close the bean (`Call_BeanClose`)
+
+- Who: the `Agent` lane (role `authoring-agent`).
+- Skill: `todo-manager`.
+- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
+- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Adopt` (Decision recorded)
 
 ## Done — Decision recorded (`End_Adopt`)

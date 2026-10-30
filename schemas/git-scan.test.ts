@@ -25,7 +25,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 
-import { gitScan } from "./git-corpus.ts";
+import { gitScan } from "./sdlc/git-corpus.ts";
 
 /** A throwaway repository holding the given files, with a `.gitignore`. */
 function repo(files: Record<string, string>, ignore: string): { dir: string; cleanup: () => void } {

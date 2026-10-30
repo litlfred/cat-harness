@@ -121,7 +121,7 @@ example below.
 | the steer | where it landed | why there |
 |---|---|---|
 | *"THAT should be a skill, collision=coordinate, potentail colliosn by looking at beans = coordinate"* | [`coordinate`](../../sdlc/sdlc-core/coordinate.md), two new triggers | rule-level on all three questions, and the author named the destination outright — no offer to make |
-| *"voices should be associated to appropriate home semantically/by judgement"* | `schemas/voice-skill.ts`, replacing the ownership rule | question 3: it **contradicted** a standing mechanical rule (the instance that *derived* a voice owns it), which the corpus had already falsified twice. Additive filing would have left two answers |
+| *"voices should be associated to appropriate home semantically/by judgement"* | `schemas/content/voice-skill.ts`, replacing the ownership rule | question 3: it **contradicted** a standing mechanical rule (the instance that *derived* a voice owns it), which the corpus had already falsified twice. Additive filing would have left two answers |
 | *"harness handler wins."* | `gen-handler-index.ts`'s module doc and bean `8h42` — **and nowhere else, which was the defect** | question 2: it settles a collision between the TWO PATH RULES, so it belongs in [`schema-management`](../../kg/kg-core/schema-management.md) §"Where a viewer publishes" beside them. It was filed as a fact about one generator instead. Found by writing this section, and fixed in the same change |
 
 A fourth, made **after** this section existed and the first to be governed by
@@ -134,7 +134,7 @@ refused the recommended option and gave the reason —
 The *decision* was one field left alone. The **reason** is a durable claim
 about what a voice is, and it is what stops the next agent proposing the same
 refactor from the same corpus measurement. It went into
-`schemas/voices.ts`'s `VOICE_PROVENANCE` gloss, quoted and dated, in that turn.
+`schemas/content/voices.ts`'s `VOICE_PROVENANCE` gloss, quoted and dated, in that turn.
 
 **A refusal is a ruling.** An answer that declines your recommendation carries
 at least as much rule as one that accepts it — usually more, because it tells

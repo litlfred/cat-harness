@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 import { bundled, inProcess } from "../lib.js";
 
 export default toolFactory((t) =>
@@ -34,7 +34,7 @@ export default toolFactory((t) =>
       ],
       outputs: [{ name: "report", schema: t("Markdown"), description: "What was written, or what would have been under --dry-run." }],
     },
-    satisfies: ["repo-conversion", "getting-started"],
+    satisfies: ["repo-conversion", "getting-started", "folio-init"],
     requires: { network: false },
   }),
 );

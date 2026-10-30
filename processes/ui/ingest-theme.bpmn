@@ -73,7 +73,7 @@ stated?">
     </bpmn:exclusiveGateway>
     <bpmn:serviceTask id="Task_ReadStylesheet" name="Read the served
 stylesheet's declarations">
-      <bpmn:documentation>Read the ROLE, never the prettiest value. Bootstrap's --blue is a scale entry and --primary is the role; DSpace sets them differently, and taking the brand-looking one is the hardcoding schemas/theme.ts exists to end. Column widths come from declared columns, never from breakpoints: a breakpoint is a viewport.</bpmn:documentation>
+      <bpmn:documentation>Read the ROLE, never the prettiest value. Bootstrap's --blue is a scale entry and --primary is the role; DSpace sets them differently, and taking the brand-looking one is the hardcoding schemas/ui/theme.ts exists to end. Column widths come from declared columns, never from breakpoints: a breakpoint is a viewport.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="theme-art-intake" />
       </bpmn:extensionElements>

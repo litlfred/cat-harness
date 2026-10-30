@@ -62,7 +62,7 @@ Reviewed as nodes, the recurring defect is a file that does not say what it is:
    happens to a folio that does not set it, and whether the mirror (JSON
    Schema, the Python side, the interchange schema under `tools/`) moves with
    it.
-3. **A REMOVED field needs a reason in the file.** `schemas/translation.ts`
+3. **A REMOVED field needs a reason in the file.** `schemas/content/translation.ts`
    carries a comment where `roundTripQA` used to be, saying what it held and
    why it went. Without that, the next author re-adds it in good faith.
 4. **Defaults are policy.** `profiles` defaults to *every* profile while

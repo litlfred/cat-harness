@@ -5,7 +5,7 @@
     "id": "adjudication",
     "path": "skills/sdlc/sdlc-core/adjudication.md"
   },
-  "source_hash": "eed66c041239",
+  "source_hash": "6efdf29bdf63",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

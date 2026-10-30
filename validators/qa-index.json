@@ -5,5 +5,5 @@
     "kind": "qa",
     "family": "folio-qa-index/v1"
   },
-  "schema": "schemas/site-indexes.ts#QaIndexSchema"
+  "schema": "schemas/ui/site-indexes.ts#QaIndexSchema"
 }

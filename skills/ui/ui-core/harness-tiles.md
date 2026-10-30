@@ -53,7 +53,7 @@ So each visualiser is ONE declaration in the harness that owns it:
   directory of them in the checkout. A harness never names another instance's directory — that
   would be a lower layer naming a higher one.
 - **The URL is computed, never chosen.** `visualiserRoute` in
-  `schemas/visualiser-route.ts` is the ONE function every generator and reader
+  `schemas/kg/visualiser-route.ts` is the ONE function every generator and reader
   uses: `<harness>/<id>/` for the full KG, `<harness>/<id>/<sub-graph>/` for
   one sub-graph (`subgraphs: "instance"` — one per covered instance — or
   `"directory"`, nested under `subgraphUnder[kind]` where the visualiser
@@ -118,7 +118,7 @@ never the repository's name.
 Since 2026-10-07 the root `index.config.json` says it as `site.landing` — an
 instance name or `"hub"`. A folio without an index keeps the 2026-10-02
 per-config `site.landing` flag as its fallback. `resolveLandingInstance` in
-`schemas/harness-config.ts` is the one reader of both, and
+`schemas/kg/harness-config.ts` is the one reader of both, and
 `check:landing-instance` is the gate. Read the table of cases there, not a copy
 of it here.
 
@@ -313,7 +313,7 @@ what a tile IS, and the two kinds are not interchangeable:
 | what empty means | **a gap to report** — a skill nothing implements is unreachable | **a real state** — "nothing outstanding" is not "broken" |
 
 **A functional tile names the SKILL, never the tool**, and that is the
-operative rule rather than a distinction for its own sake. `schemas/tool-types.ts`
+operative rule rather than a distinction for its own sake. `schemas/tools/tool-types.ts`
 exists to make tools interchangeable — *"Two tools satisfying one skill —
 `beans-cli` and `beans-manual` — must declare the same input type, or 'these
 are interchangeable' is an assertion nothing can verify"* — so a tile bound to
@@ -481,7 +481,7 @@ landing one, because the ruling names the panel rather than a page.
 - **`board` stays a legal value in `TILE_SURFACES`, and nothing mounts it.**
   Retiring the value would turn every existing declaration that names it
   invalid on the commit that removed it — the cost the "every field but `ref`
-  is optional" rule in `schemas/cat-harness.ts` exists to avoid. A
+  is optional" rule in `schemas/kg/cat-harness.ts` exists to avoid. A
   declaration saying `["board"]` alone is valid and renders no tile; the
   graph-tiles e2e asserts both halves.
 - **A ruling that reverses an earlier one is cited where the old one was.**
@@ -529,7 +529,7 @@ once, for both passes (`compose-docs --shell --instance`, and
 | a kind nothing classifies | is treated as state | none |
 
 **Why the state row is unlinked rather than shown at zero or re-based.**
-`schemas/tile-count.ts` and §"A TILE IS ONE OF TWO KINDS" already settle it:
+`schemas/ui/tile-count.ts` and §"A TILE IS ONE OF TWO KINDS" already settle it:
 absent is a third state, never `0`. A folio that declares no `beans` graph has
 not said it has no beans; it has said nothing. Showing `0` would be a claim,
 and showing the platform's number, or a link to the platform's work plan
@@ -672,7 +672,7 @@ list, never inline.
 **A harness's sticky shows the same text.** The owner's ruling on `ob3m`
 finding 3 (2026-10-01): *"Stickies show the same text as the landing page"*.
 A sticky contribution declares `bodyFrom: "summary"`, and the card's words are
-`readerText` in `schemas/sticky-contribution.ts`: the `summary` (else the
+`readerText` in `schemas/content/sticky-contribution.ts`: the `summary` (else the
 description), then the `alsoWritten` spellings after "Also written:". That is
 the rule `docs/_includes/harness_details.html` applies, read from the same two
 declaration fields, so there is no copy of the text to keep in step. Before

@@ -21,7 +21,7 @@ external tool, or nothing at all. Publishing data does not make the harness
 self-documenting — it makes it *inspectable*, which is the thing that was
 missing.
 
-Per [`skills-and-tools`](../../folio-core/skills-and-tools.md):
+Per [`skills-and-tools`](../../tools/folio-core/skills-and-tools.md):
 
 | | |
 |---|---|
@@ -176,30 +176,31 @@ bootstrap states the same rule for its own graph, in its own terms, in
 [`bootstrap-graph-publication`](../../../../bootstrap/skills/bootstrap-graph-publication.md)
 §"Each subject's own address".
 
-### Today, and the migration
+### Today, and what is still a fragment
 
-**The existing generators still mint hash IRIs.** These include `makeIri` in
-the tools layer's `scripts/kg-export.ts`, the document base it is given
-(`renderingPath`, near the URL-space comment), the glossary export that
-reuses `makeIri`, bootstrap's own export
-(`bootstrap-tools/scripts/export-graph.ts`), and the directory-container `@id`
-in [`directory-conventions`](directory-conventions.md). The migration is
-tracked in [#435](https://github.com/litlfred/cat-harness/issues/435),
-which links the tools layer's migration issue and its plan: every minting
-site, every consumer that parses `#`, and the options. The migration is one
-replacement for `makeIri`, a page and a `.jsonld` per subject, the host's
-documents moved under `<site>/cat-harness/`, and a one-release tombstone for
-each published hash `@id` and each old root address
-([`instance-publication`](instance-publication.md) §"An `@id` that moved keeps
-a tombstone for ONE release"). Until it lands:
+**The tools layer mints paths.** Since
+[cat-harness-tools#620](https://github.com/litlfred/cat-harness-tools/pull/620),
+`makeIri` in `scripts/kg-export.ts` calls `subjectIri`
+(`scripts/lib/subject-iri.ts`), which mints `<doc dir>/<kind>/<id>`, and a
+process flow as `<doc dir>/process/P#flow/F`. The glossary export and the
+directory-container `@id` (`subgraphIri`) go through the same function.
 
-- **mint through the generator's one function** (`makeIri`), never by hand.
-  One function lets the migration change every IRI at once.
+Two things still mint fragments:
+
+- **bootstrap's own graph.** bootstrap-tools `scripts/export-graph.ts`
+  publishes it, so `subjectIri` keeps `bootstrap.jsonld#<kind>/<id>` for a link
+  into that document (`FRAGMENT_DOCUMENT_STUBS`). The entry goes in the PR that
+  moves that publisher to paths.
+- **own-canonical instances** (the SMART IGs and others), whose subject IRIs do
+  not load yet:
+  [cat-harness-tools#638](https://github.com/litlfred/cat-harness-tools/issues/638).
+
+So:
+
+- **mint through `subjectIri`** (or `makeIri`, which calls it), never by hand.
 - **do not add a new hash-IRI minter for subjects**, and do not hand-write a
-  `….jsonld#<kind>/<id>` IRI in new content. A new scheme takes the ruled form
-  and lands together with the files that serve it.
-- **remove this subsection** when the migration lands
-  ([#435](https://github.com/litlfred/cat-harness/issues/435)).
+  `….jsonld#<kind>/<id>` IRI in new content.
+- **remove this subsection** when bootstrap's publisher and #638 land.
 
 ## Declaring a term is a decision, not a line of context
 
@@ -247,9 +248,9 @@ Five questions, in this order. The worked call for each term is in
    uses the same IRIs, so the two graphs agree.
 
    **How, so it cannot drift:** a term that restated a standard keeps its
-   gloss in `schemas/vocabulary.ts` and gains `replacedBy`, a CURIE.
+   gloss in `schemas/content/vocabulary.ts` and gains `replacedBy`, a CURIE.
    `buildContext()` maps each such key through `propertyIri()`
-   (`schemas/namespaces.ts`), which reads that field, so the exporter cannot
+   (`schemas/kg/namespaces.ts`), which reads that field, so the exporter cannot
    name one IRI while the vocabulary names another. The published vocabulary
    keeps the old term, `owl:deprecated` and `dcterms:isReplacedBy` the
    standard property: data already holding the old IRI still dereferences to
@@ -353,7 +354,7 @@ where it should live for findability, the answer came from who reads it: a
 program follows a term's IRI to its layer document; a person looking for terms
 goes to the Glossary, which lists every term and publishes SKOS for every
 scheme. The union served neither, linked from no page, and was a third copy of
-the same terms — so it is gone, rather than moved. `NS_PREFIXES` in `schemas/namespaces.ts` is the one
+the same terms — so it is gone, rather than moved. `NS_PREFIXES` in `schemas/kg/namespaces.ts` is the one
 list; `stubOfNamespace()` reads the stub back off an IRI. The abbreviations
 `bs`, `cat` and `fac` were retired the same day, for a measured reason
 rather than taste.
@@ -388,7 +389,7 @@ separately on a document's own inline bindings:
    published one by URL, or an array of both. The published context's own
    term targets are checked too, whether or not a document uses them. Plain
    string VALUES are not read as CURIEs: `label: "def:foo"` is an authored
-   label, which is exactly the hazard `schemas/jsonld.ts` opens with.
+   label, which is exactly the hazard `schemas/kg/jsonld.ts` opens with.
 2. **Own namespace ⇒ stub spelling.** A binding onto a `…/<stub>/ns#`
    namespace of ours must be spelt `<stub>`, and `<stub>` must be declared by
    an instance (`<stub>/<stub>.json`).
@@ -422,7 +423,7 @@ instance's declared directories become nodes in `<stub>.jsonld`, so declaring
 rule has no destination — put its id, path and description into the published
 document.
 
-`UNPUBLISHED_GRAPH_TYPOLOGIES` in `schemas/cat-harness.ts` is the one list, read by
+`UNPUBLISHED_GRAPH_TYPOLOGIES` in `schemas/kg/cat-harness.ts` is the one list, read by
 every emitter, so two filters cannot disagree about what is excluded.
 
 **Three emitters had to be filtered, and the third was found only because the
@@ -715,7 +716,33 @@ Rules for the pair:
   writes `docs/subgraph/<HARNESS>/<PATH>/index[.hydrated].jsonld`, which Pages
   serves at the subgraph IRI, plus the context at `ns/subgraph/v1.jsonld`.
   `subgraph:jsonld:check` is the gate. The file shape is
-  `schemas/subgraph-manifest.ts`.
+  `schemas/kg/subgraph-manifest.ts`.
+
+### Published per pin, in a package
+
+**Owner, 2026-10-24 (decision card, option A; bean `mo75` G2b).** The files
+are built at publish (`builtAtPublish`: `docs/subgraph/`), so no commit holds
+them. For a consumer that reads them at a PIN rather than from the Pages site,
+**each pin's index files are published in a package**: an npm package,
+`<harness>-subgraph-index@0.0.0-pin.<sha>`, holding every `index.jsonld` and
+`index.hydrated.jsonld` under `<docs>/subgraph/<HARNESS>/` at the paths above
+and a `subgraph-index.json` manifest (`folio-subgraph-index/v1`: repository,
+pin, harness, each file's sha256). It is attached, with its
+`folio-binary-release/v1` record, to the GitHub release `subgraph-index-<sha>`.
+
+- **Not committed (B, rejected):** a committed copy of a build over other
+  instances is stale on the next re-pin.
+- **Not generated at mount (C, rejected):** reading one file of metadata must
+  not need the build toolchain, and one pin must have one set of files.
+- **Every name is computed** from repository, pin and harness
+  (`subgraphIndexPackage`, `schemas/kg/subgraph-manifest.ts`), so a consumer never
+  lists releases.
+- **Who builds it:** `layer-publish-subgraph-index.yml` (the tools layer),
+  on each push to `main`: `subgraph:jsonld`, then the `subgraph-index-package`
+  Tool. A release that already exists for a pin is never replaced.
+- **Who reads it:** a hydrated mount (`remote-mount`), when the pin's tree
+  holds no file. [`remote-mount`](remote-mount.md) §"Hydrated: the index files
+  are published per pin, in a package" has the checks.
 
 ### Membership is declared, not inferred
 
@@ -827,7 +854,7 @@ means what its pointers name:
 | Schema | `module` (.ts) | 161 | 2.5 MB | no — code, not content |
 
 No deep provenance is in the graph today, so none moves. The table that decides
-this is `HEAVY_POINTERS` in `schemas/subgraph-manifest.ts`, and adding a row
+this is `HEAVY_POINTERS` in `schemas/kg/subgraph-manifest.ts`, and adding a row
 there is the whole change to make a field heavy.
 
 ### Building and checking
@@ -844,7 +871,7 @@ there is the whole change to make a field heavy.
   - bytes that do not hash to their name;
   - a payload without its sidecar, or a sidecar without its payload.
 - The schema is `PayloadLinkSchema` and `PayloadSidecarSchema` in
-  `schemas/subgraph-manifest.ts`.
+  `schemas/kg/subgraph-manifest.ts`.
 
 ## Per-slice SQLite — a named subgraph as one file a browser mounts
 

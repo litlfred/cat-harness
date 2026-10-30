@@ -5,5 +5,5 @@
     "kind": "external-schema",
     "family": "folio-external-schema/v1"
   },
-  "schema": "schemas/external-schema.ts#ExternalSchemaSchema"
+  "schema": "schemas/kg/external-schema.ts#ExternalSchemaSchema"
 }

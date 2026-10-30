@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // Owner, 2026-10-12 (task 6): "a check that proves a repo's cutover from
 // the monorepo is complete — measure it, do not assume it". The gate after

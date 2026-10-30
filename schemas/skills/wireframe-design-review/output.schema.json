@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://litlfred.github.io/folio-assistant/skills/wireframe-design-review/output.schema.json",
+  "$id": "https://litlfred.github.io/folio-assistant/cat-harness/skills/wireframe-design-review/output.schema.json",
   "title": "Wireframe Design Review Output",
   "description": "The wireframe renderings and the choice: each candidate's source HTML and its web and mobile screenshots, its check and review entries, the chosen candidate and who chose it, the same files as changed assets of the branch, and the staging deep links the requester or BA reviewed them at.",
   "type": "object",
@@ -180,7 +180,7 @@
     },
     "changedAsset": {
       "title": "Changed asset",
-      "description": "One wireframe file the branch adds, changes or removes, in the record shape of a staging preview graph's `changedAssets` (cat-harness-tools scripts/kg-changed-assets.ts `ChangedAsset`; glosses in schemas/vocabulary.ts: assetChange, assetKind, beforeVersion, afterVersion, assetSource, renderedPage, renderedPagesUnknown).",
+      "description": "One wireframe file the branch adds, changes or removes, in the record shape of a staging preview graph's `changedAssets` (cat-harness-tools scripts/kg-changed-assets.ts `ChangedAsset`; glosses in schemas/content/vocabulary.ts: assetChange, assetKind, beforeVersion, afterVersion, assetSource, renderedPage, renderedPagesUnknown).",
       "type": "object",
       "required": [
         "change"
@@ -251,7 +251,7 @@
     },
     "stagingLinks": {
       "title": "Staging links",
-      "description": "The staging preview of the work a request for feedback is about: one deep link per changed page (the page and the anchor where the change sits) with the same page on main as `before`. Mirrors StagingComparison in schemas/staging.ts. The rule is skills/sdlc/sdlc-core/staging-review.md §\"The deep-link rule\". Copied inline as `definitions.stagingLinks` into every skill contract that carries it; schemas/staging.test.ts fails when a copy drifts.",
+      "description": "The staging preview of the work a request for feedback is about: one deep link per changed page (the page and the anchor where the change sits) with the same page on main as `before`. Mirrors StagingComparison in schemas/sdlc/staging.ts. The rule is skills/sdlc/sdlc-core/staging-review.md §\"The deep-link rule\". Copied inline as `definitions.stagingLinks` into every skill contract that carries it; schemas/staging.test.ts fails when a copy drifts.",
       "type": "object",
       "required": [
         "branch",

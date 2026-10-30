@@ -4,5 +4,5 @@
   "validates": {
     "kind": "translation-sources"
   },
-  "schema": "schemas/translation.ts#TranslationConfigSchema"
+  "schema": "schemas/content/translation.ts#TranslationConfigSchema"
 }

@@ -37,7 +37,7 @@ every renderer answers one question, and the PR shows the answer.
 
 ## The contract: `rendered-impact/v1`
 
-Declared in `cat-harness/schemas/rendered-impact.ts`. A renderer takes the
+Declared in `cat-harness/schemas/ui/rendered-impact.ts`. A renderer takes the
 changed input files and returns:
 
 | field | says |

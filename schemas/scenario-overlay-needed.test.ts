@@ -3,7 +3,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import type { RoleGraph } from "./role-graph";
+import type { RoleGraph } from "./process/role-graph";
 import {
   checkoutActors,
   checkoutPolicies,
@@ -12,7 +12,7 @@ import {
   onlyAdds,
   overlayRoleGraphs,
   scenarioLayersBelow,
-} from "./scenario-overlay";
+} from "./process/scenario-overlay";
 
 /**
  * An instance audit resolves actors from the platform, every instance the

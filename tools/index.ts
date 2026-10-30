@@ -2,7 +2,7 @@
  * This instance's Tool nodes — the `tools` graph.
  *
  * A **skill** states a capability generically; a **Tool** is one concrete way
- * to exercise it. See `skills/folio-core/skills-and-tools.md`.
+ * to exercise it. See `skills/tools/folio-core/skills-and-tools.md`.
  *
  * Authored as TypeScript calling `defineTool`, so a malformed node fails at
  * `tsc` and in the editor rather than at CI — the carrier decision applied to
@@ -26,8 +26,8 @@
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import type { ToolDefinition } from "../schemas/tool.js";
-import { toolsFromFolders } from "../schemas/tool-folders.js";
+import type { ToolDefinition } from "../schemas/tools/tool.js";
+import { toolsFromFolders } from "../schemas/tools/tool-folders.js";
 import { base } from "./lib.js";
 
 export function tools(baseUrl?: string): ToolDefinition[] {

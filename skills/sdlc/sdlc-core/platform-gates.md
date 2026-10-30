@@ -270,7 +270,7 @@ when they have not counted, and a gate counts.
 
 **`termIri("X")` MINTS a term, and a minted term needs a gloss.** Adding a new
 `@type` or a new property in `kg-export.ts` is therefore a TWO-file change:
-the emitter, and `schemas/vocabulary.ts` (`CLASS_GLOSSES` for a type,
+the emitter, and `schemas/content/vocabulary.ts` (`CLASS_GLOSSES` for a type,
 `PROPERTY_GLOSSES` for a property). `ns:check` is what refuses the half of it
 that was done alone, and it says so in one line.
 

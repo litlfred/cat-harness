@@ -5,5 +5,5 @@
     "kind": "qa-checkers",
     "family": "folio-qa-checker/v1"
   },
-  "schema": "schemas/contribution-nodes.ts#QaCheckerNodeSchema"
+  "schema": "schemas/kg/contribution-nodes.ts#QaCheckerNodeSchema"
 }

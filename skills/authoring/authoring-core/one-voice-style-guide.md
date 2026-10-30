@@ -97,8 +97,9 @@ chapter):
 ## The Milnor exposition standard — its own skill
 
 The eight hallmarks, their 0/1/2 rubric, and the three places the measurement
-contradicts the profile above now live in
-[`milnor-exposition-standard`](milnor-exposition-standard.md), because a standard
+contradicts the profile above now live in the science layer's
+`milnor-exposition-standard` skill (`skill_fetch milnor-exposition-standard`;
+it moved there on 2026-10-24, bean `syiq`), because a standard
 with its own voice profile (`voices/milnor.json`), its own strict QA gate
 (`expo-milnor-clarity`) and three inbound references is a skill, not a section of
 another one. Extracting it also cleared the `skill-is-brief` finding this file

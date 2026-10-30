@@ -5,5 +5,5 @@
     "kind": "tool-release",
     "family": "folio-tool-profile/v1"
   },
-  "schema": "schemas/tool-profile.ts#ToolProfileSchema"
+  "schema": "schemas/tools/tool-profile.ts#ToolProfileSchema"
 }

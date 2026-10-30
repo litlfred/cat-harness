@@ -22,7 +22,7 @@ skill is its **contract** — the shape of an entry and where it goes — and th
 
 ## The entry
 
-`schemas/log-entry.ts`. Every entry carries `$schema: folio-log/v1`, because
+`schemas/sdlc/log-entry.ts`. Every entry carries `$schema: folio-log/v1`, because
 a directory says what to EXPECT and the file says what it IS — without it, a
 log entry is told apart from a discarded proposal by its folder alone, which
 is the coincidence-not-contract problem the bean and workflow stores already

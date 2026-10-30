@@ -68,7 +68,7 @@ features being edited or shown"*, and the request it repeats, beans `u1os`,
    a request contains, not a list of places it must be posted.
 
 A skill whose output asks for feedback declares it: its output schema carries a
-`stagingLinks` field of type `StagingComparison` (`schemas/staging.ts`), and
+`stagingLinks` field of type `StagingComparison` (`schemas/sdlc/staging.ts`), and
 a skill that consumes feedback takes the same field as input, so the links
 travel with the request rather than being rebuilt.
 
@@ -510,7 +510,7 @@ at the top applies to every block:
   `localStorage`. A private window just gets the defaults.
 - **The renderers and the registry** are `cat-harness-tools/scripts/review-renderers.ts`,
   `cat-harness-tools/scripts/word-diff.ts` (no diff library; about forty lines,
-  tested) and `cat-harness/schemas/diff-renderers.ts`. To add one, declare it
+  tested) and `cat-harness/schemas/ui/diff-renderers.ts`. To add one, declare it
   in the registry with what it needs and which kinds it defaults for, add its
   function to `review-renderers.ts`, and add a case to the page's
   `renderInto`.

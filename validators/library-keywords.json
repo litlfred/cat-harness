@@ -5,5 +5,5 @@
     "kind": "library",
     "family": "folio-keywords/v1"
   },
-  "schema": "schemas/library-keywords.ts#KeywordsFileSchema"
+  "schema": "schemas/library/library-keywords.ts#KeywordsFileSchema"
 }

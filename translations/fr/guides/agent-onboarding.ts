@@ -1,4 +1,4 @@
-import type { TranslationNode } from "../../../schemas/translation";
+import type { TranslationNode } from "../../../schemas/content/translation";
 
 /**
  * French translation of the agent onboarding guide (docs/guides/agent-onboarding.md).

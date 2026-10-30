@@ -82,7 +82,7 @@ kinds declare `recordsWork: false`.
 
 ## A board declares what it SHOWS, and absent means everything
 
-`schemas/board.ts`: an optional `filter` over `pages` and `kinds`, OR within an
+`schemas/ui/board.ts`: an optional `filter` over `pages` and `kinds`, OR within an
 axis and AND across them. **Absent is the default and it means the whole
 folio** — a query rather than a stored list, because a list of content nodes
 needs something to notice that a listed node was renamed and that a new one was

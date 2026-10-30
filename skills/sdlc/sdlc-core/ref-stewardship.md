@@ -121,13 +121,13 @@ over, and the next steward then either waits for a window that will never close
 or opens a second one and double-pushes. **So the window is committed state, in
 the `workflow-state` graph under `beans/workflows/`, not a variable.**
 
-The four fields are `HoldSchema`'s, deliberately — `schemas/merge-queue.ts`
+The four fields are `HoldSchema`'s, deliberately — `schemas/sdlc/merge-queue.ts`
 already derived them for the hold case, from the same reasoning
 ([`bean-blocking`](bean-blocking.md)'s `## Blocked on`): *"a hold with no expiry
 cannot be told from an abandoned one."* Read that sentence with "window" in it
 and nothing needs re-deriving.
 
-`schemas/ref-window.ts` is the type. Three fields are `HoldSchema`'s verbatim
+`schemas/sdlc/ref-window.ts` is the type. Three fields are `HoldSchema`'s verbatim
 and the fourth is narrowed:
 
 | field | for a window | without it |
@@ -180,7 +180,7 @@ the number readable at all.
 - **No steward runs over the `cat/cat-harness/*` refs.** They are seeded and
   declared and, per their declarations, *"not authoritative"* until arc
   `fs43`'s flip. A steward over a ref nobody reads from would be ceremony.
-- **Nothing writes a window yet.** `schemas/ref-window.ts` types one and
+- **Nothing writes a window yet.** `schemas/sdlc/ref-window.ts` types one and
   `ref-window.test.ts` holds it to the handover rules, but no steward opens one,
   because there is nothing to coalesce until the producers stop pushing
   directly. The type lands first on purpose: a steward written before the state

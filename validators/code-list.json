@@ -4,5 +4,5 @@
   "validates": {
     "kind": "code-list"
   },
-  "schema": "schemas/code-list.ts#CodeListSchema"
+  "schema": "schemas/library/code-list.ts#CodeListSchema"
 }

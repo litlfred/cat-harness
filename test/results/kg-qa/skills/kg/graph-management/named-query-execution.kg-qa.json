@@ -5,7 +5,7 @@
     "id": "named-query-execution",
     "path": "skills/kg/graph-management/named-query-execution.md"
   },
-  "source_hash": "bf78500444d2",
+  "source_hash": "4c08b7951e26",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",

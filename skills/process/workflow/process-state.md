@@ -65,7 +65,7 @@ something to act on rather than a bare step name.
 
 **Say which permission you are acting under.** Entering a task in a lane
 means performing it as that lane's role, and since issue #1180 that needs an
-ODRL rule that permits it there (`permits()` in `schemas/odrl.ts`: the actor,
+ODRL rule that permits it there (`permits()` in `schemas/content/odrl.ts`: the actor,
 the action, and the process, task and role as scope). If the answer is
 `unknown` or `deny`, you are out of process for that task: route it to a lane
 whose actor holds the permission, or stop and ask. The engine enforces this
@@ -176,7 +176,7 @@ Steps 1–3 reconstruct **where you were**. They do not reconstruct **what you
 changed position of**, and for notes and stickies that is a separate problem
 with a sharper edge:
 
-> **A move is not self-documenting.** `moveNote` (`schemas/note-anchor.ts`)
+> **A move is not self-documenting.** `moveNote` (`schemas/ui/note-anchor.ts`)
 > returns the note with its new anchor and *nothing about the old one*. A note
 > that has been moved cannot say where it was.
 
@@ -216,7 +216,7 @@ audit trail has to be.
 Bean `5oai`, 2026-09-19, is one, and the episode is an agent's rather than a
 sticky's — which is the point: the mechanism does not care what moved.
 
-The bean opened by asserting *"`schemas/todo.ts` carries no block field at
+The bean opened by asserting *"`schemas/sdlc/todo.ts` carries no block field at
 all"*. That was wrong: `TodoNodeSchema` extends `CarriedNoteSchema`, which
 declares `targetLabel`, and `test/sticky-todos.e2e.ts` exercises it across two
 pages and an orphan label. The agent had grepped the file and not the base it

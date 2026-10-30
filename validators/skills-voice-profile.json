@@ -5,5 +5,5 @@
     "kind": "skills",
     "family": "folio-voice/v1"
   },
-  "schema": "schemas/voices.ts#VoiceProfileSchema"
+  "schema": "schemas/content/voices.ts#VoiceProfileSchema"
 }

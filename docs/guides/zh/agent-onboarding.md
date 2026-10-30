@@ -46,8 +46,8 @@ ls content/          # pipeline/ only  ⇒ platform;  paper dirs ⇒ folio
 
 ```sh
 beans prime && beans list      # the work-plan — see §6
-scripts/session-start-coord-sweep.sh   # CLI-independent equivalent
-bun run src/index.ts --check-deps      # what this environment can do
+cat-harness-tools/scripts/session-start-coord-sweep.sh  # CLI-independent equivalent
+bun run cat check-deps                     # what this environment can do
 ```
 
 `--check-deps` 的重要性远超表面。当缺少工具（无 Lean 工具链、无 Atlas、无 LaTeX）时，许多检查项会降级为 `n/a` 而不是直接报错。**`n/a` 并不代表通过。** 如果你在不清楚哪些检查被跳过的情况下报告“一切正常”，你实际上是将数据的缺失作为了测试结果。

@@ -184,7 +184,7 @@ with the PR open. Nothing is closed and nothing is deleted.
 
 **An authorisation nobody wrote down cannot be told from one that was never
 given.** `Task_RecordAuthorisation` writes it before the merge. The shape
-already exists: `ReleaseSchema` in `schemas/merge-queue.ts` (bean `ixmq`), and
+already exists: `ReleaseSchema` in `schemas/sdlc/merge-queue.ts` (bean `ixmq`), and
 this step reuses it rather than inventing a second one.
 
 **Where the repository has the merge queue**, record it with the command that

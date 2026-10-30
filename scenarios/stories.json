@@ -1,5 +1,5 @@
 {
-  "_comment": "User stories: what a reader acting in a role is trying to do. Each story points at its role (`role`); the role names none of them (#1168). Moved out of `Role.useCases`, where they were free text on the role. Schema: schemas/user-story.ts.",
+  "_comment": "User stories: what a reader acting in a role is trying to do. Each story points at its role (`role`); the role names none of them (#1168). Moved out of `Role.useCases`, where they were free text on the role. Schema: schemas/process/user-story.ts.",
   "name": "cat-harness",
   "stories": [
     {

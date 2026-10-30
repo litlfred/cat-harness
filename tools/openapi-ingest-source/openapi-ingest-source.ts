@@ -1,5 +1,5 @@
-import { toolFactory } from "../../schemas/tool-folders.js";
-import { defineTool } from "../../schemas/tool.js";
+import { toolFactory } from "../../schemas/tools/tool-folders.js";
+import { defineTool } from "../../schemas/tools/tool.js";
 
 // ── The two OpenAPI ingest tools — bean `folio-assistant-7jkp`, owner
 // ruling 2026-10-10: two tools, not one with a mode, because a repository

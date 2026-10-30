@@ -30,7 +30,7 @@ packaging and retrieval:
 |---|---|
 | the packaging tool | `pack-tarball` (`bun run cat-harness-tools/scripts/pack-tarball.ts`) |
 | the retrieval tool | `kg-retrieve-npm` (`bun run cat-harness-tools/scripts/kg-retrieve-npm.ts`) |
-| the release schema | `schemas/binary-release.ts` (`folio-binary-release/v1`) |
+| the release schema | `schemas/sdlc/binary-release.ts` (`folio-binary-release/v1`) |
 | asset verification | `cat-harness-tools/scripts/check-declared-assets.ts` |
 | related skills | [`remote-mount`](remote-mount.md), [`kg-export`](kg-export.md), [`package-release`](../../sdlc/sdlc-core/package-release.md), [`kg-subscription`](../../library/large-datasets/kg-subscription.md) |
 
@@ -86,7 +86,7 @@ The packaging process:
 ### The `folio-binary-release/v1` state node
 
 A published tarball is represented in the Knowledge Graph as a `folio-binary-release/v1`
-document (`schemas/binary-release.ts`). A release record captures the **publication event**,
+document (`schemas/sdlc/binary-release.ts`). A release record captures the **publication event**,
 never the binary payload itself:
 
 ```json
@@ -183,6 +183,16 @@ The complete, materialized Knowledge Graph artifacts and binary assets:
 - Ideal for read-only consumers, visualizers, semantic search engines, and portal
   deployments that require immediate access without installing compilation toolchains
   or running offline export pipelines.
+
+#### 3. The subgraph index package — one per pin
+
+A third, narrow package carries a pin's subgraph index files and nothing
+else: `<harness>-subgraph-index@0.0.0-pin.<sha>`, built by the
+`subgraph-index-package` Tool through `pack-tarball` and released as
+`subgraph-index-<sha>` on every push to `main` (owner, 2026-10-24, bean
+`mo75`). A hydrated remote mount reads it; see
+[`remote-mount`](remote-mount.md) §"Hydrated: the index files are published
+per pin, in a package".
 
 ### Using `kg-retrieve-npm`
 

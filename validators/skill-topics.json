@@ -5,5 +5,5 @@
     "kind": "skills",
     "family": "skill-topics/v1"
   },
-  "schema": "schemas/skill-topics.ts#SkillTopicsSchema"
+  "schema": "schemas/kg/skill-topics.ts#SkillTopicsSchema"
 }
