@@ -37,12 +37,12 @@
  * @module schemas/tool-folders
  * @graphNode none — the folder convention and its loader: the Tool node's schema is `tool.ts`
  */
-import { existsSync, readdirSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { join } from "node:path";
 
-import type { ToolDefinition } from "./tool.js";
-import { toolTypeIri, type ToolTypeName } from "./tool-types.js";
+import { defineTool, type ToolDefinition } from "./tool.js";
+import { TOOL_TYPES, toolTypeIri, type ToolTypeName } from "./tool-types.js";
 
 /**
  * The directory, beside an instance's published document, that holds one
@@ -98,6 +98,52 @@ export function toolFactory(f: ToolFactory): ToolFactory {
   return f;
 }
 
+/** The `$schema` value of a Tool declared as data: `<id>/<id>.json`. */
+export const TOOL_DEFINITION_SCHEMA = "tool-definition/v1";
+
+/**
+ * A Tool declared as data rather than as a `.ts` module (bean `y9r6`: a
+ * content repository holds no code). The file is
+ * `{ "$schema": "tool-definition/v1", "tool": { … } }`, where `tool` is the
+ * Tool definition with every shared type written `{ "$type": "<Name>" }`
+ * instead of `t("<Name>")`. Each one becomes the same IRI `t` would give, then
+ * `defineTool` validates the whole, exactly as for a `.ts` declaration.
+ */
+export interface ToolDefinitionFile {
+  $schema: typeof TOOL_DEFINITION_SCHEMA;
+  tool: unknown;
+}
+
+/** Read one `<id>/<id>.json` Tool declaration, resolving its type references through `t`. */
+export function toolFromJson(file: string, t: TypeIri): ToolDefinition {
+  let parsed: Partial<ToolDefinitionFile>;
+  try {
+    parsed = JSON.parse(readFileSync(file, "utf-8")) as Partial<ToolDefinitionFile>;
+  } catch (e) {
+    throw new Error(`${file}: not valid JSON — ${(e as Error).message}`);
+  }
+  if (parsed.$schema !== TOOL_DEFINITION_SCHEMA) {
+    throw new Error(`${file}: a Tool declared as data carries "$schema": "${TOOL_DEFINITION_SCHEMA}"`);
+  }
+  const resolve = (v: unknown): unknown => {
+    if (Array.isArray(v)) return v.map(resolve);
+    if (v && typeof v === "object") {
+      const o = v as Record<string, unknown>;
+      const keys = Object.keys(o);
+      if (keys.length === 1 && keys[0] === "$type") {
+        const name = o.$type;
+        if (typeof name !== "string" || !(name in TOOL_TYPES)) {
+          throw new Error(`${file}: unknown Tool type ${JSON.stringify(name)}`);
+        }
+        return t(name as ToolTypeName);
+      }
+      return Object.fromEntries(keys.map((k) => [k, resolve(o[k])]));
+    }
+    return v;
+  };
+  return defineTool(resolve(parsed.tool) as ToolDefinition);
+}
+
 /**
  * Every Tool under `dir`, one per folder, in folder order.
  *
@@ -112,15 +158,24 @@ export function toolsFromFolders(dir: string, base: string): ToolDefinition[] {
   const out: ToolDefinition[] = [];
   for (const entry of readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
     if (!entry.isDirectory()) continue;
+    const json = join(dir, entry.name, `${entry.name}.json`);
     const file = join(dir, entry.name, `${entry.name}.ts`);
-    if (!existsSync(file)) {
-      throw new Error(`${join(dir, entry.name)}: a folder in a tools directory is one Tool, declared in ${entry.name}/${entry.name}.ts — that file is missing`);
+    if (existsSync(json) && existsSync(file)) {
+      throw new Error(`${join(dir, entry.name)}: declares its Tool twice, in ${entry.name}.json and ${entry.name}.ts — keep one`);
     }
-    const f = (req(file) as { default?: unknown }).default;
-    if (typeof f !== "function") {
-      throw new Error(`${file}: must \`export default toolFactory((t) => defineTool({ … }))\``);
+    let tool: ToolDefinition;
+    if (existsSync(json)) {
+      tool = toolFromJson(json, t);
+    } else {
+      if (!existsSync(file)) {
+        throw new Error(`${join(dir, entry.name)}: a folder in a tools directory is one Tool, declared in ${entry.name}/${entry.name}.json (or .ts) — that file is missing`);
+      }
+      const f = (req(file) as { default?: unknown }).default;
+      if (typeof f !== "function") {
+        throw new Error(`${file}: must \`export default toolFactory((t) => defineTool({ … }))\``);
+      }
+      tool = (f as ToolFactory)(t, base);
     }
-    const tool = (f as ToolFactory)(t, base);
     if (tool.id !== entry.name) {
       throw new Error(`${file}: declares Tool \`${tool.id}\`, but its folder is \`${entry.name}\` — the folder, the file and the id are one name`);
     }
