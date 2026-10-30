@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_248 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_249 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -205,7 +205,7 @@ _248 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`crdm-requirements-template`](skills/sdlc/crdm/crdm-requirements-template.md) | Guide and template for CRDM Phase 3 — Requirements Definition. |
 | [`crdm-requirements-workflow`](skills/sdlc/crdm/crdm-requirements-workflow.md) | CRDM requirements workflow |
 
-**`skills/sdlc/sdlc-core/`** (74)
+**`skills/sdlc/sdlc-core/`** (75)
 
 | Skill | What it is for |
 |---|---|
@@ -268,6 +268,7 @@ _248 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`rendered-verification`](skills/sdlc/sdlc-core/rendered-verification.md) | Confirm a UI change by LOOKING at it in a browser and sending the screenshots to the author, rather than describing it. |
 | [`secrets`](skills/sdlc/sdlc-core/secrets.md) | Adding, rotating and revoking the credentials the harness's automation needs, one mechanism at a time, with the exact GitHub UI path for each step. |
 | [`session-intent`](skills/sdlc/sdlc-core/session-intent.md) | Session-start intent declaration + session-end results recording, against the goal-scoped master ledger and queue file. |
+| [`signing`](skills/sdlc/sdlc-core/signing.md) | What any signature in the harness must answer, whatever it covers: who signs, what bytes are signed, which signature suites are accepted and who decides that, where the key is kept, which route… |
 | [`specification-management`](skills/sdlc/sdlc-core/specification-management.md) | Governs the lifecycle, syntax, and traceability of specifications and requirements across the harness. |
 | [`staging-review`](skills/sdlc/sdlc-core/staging-review.md) | Staging preview and before/after comparison for content review. |
 | [`stalled-agent-triage`](skills/sdlc/sdlc-core/stalled-agent-triage.md) | Triage incoming work from stalled agents. |

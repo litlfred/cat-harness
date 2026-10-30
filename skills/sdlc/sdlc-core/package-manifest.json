@@ -62,6 +62,7 @@
     "rendered-verification",
     "secrets",
     "session-intent",
+    "signing",
     "specification-management",
     "staging-review",
     "stalled-agent-triage",

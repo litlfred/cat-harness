@@ -24,6 +24,13 @@ From the owner, 2026-09-20 on
 The subject is the **QA report** — owner, same day, answering what gets
 signed.
 
+**This skill builds on [`signing`](signing.md)** (owner, option B,
+2026-10-30). That skill holds what is true of any signature: who signs, what
+is signed, which suites a trust anchor accepts, key custody, the route, and
+what a verifier must check and record. This one keeps only what is particular
+to QA reports: the run hashes, the `qa-reports` branch, and the line between
+attestation and certification. Where the two overlap, `signing` is the rule.
+
 ## The process is executable — do not hand-roll the branch
 
 `processes/sdlc/qa-report-signing.bpmn`, with the branch computed by
@@ -103,7 +110,9 @@ what ran, and the declaration is the bug.
 
 ## Recording the attestation
 
-Record **which route signed it**, not only that it is signed. A reader who
+Record what [`signing`](signing.md) §6 requires (suite, key, anchor, result,
+when checked) and, above all, **which route signed it**, not only that it is
+signed. A reader who
 cannot tell an API signature from a human one cannot tell which trust
 assumption they are relying on — and the two are not interchangeable: one
 attests that a service with a key saw these hashes, the other that a person

@@ -10,6 +10,11 @@
   ],
   "dependsOn": [
     {
+      "ref": "signing",
+      "kind": "skill",
+      "conformance": "SHALL"
+    },
+    {
       "ref": "content-test",
       "kind": "skill",
       "conformance": "SHALL"
