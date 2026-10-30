@@ -13,7 +13,7 @@ _Generated from JSON Schema — do not edit by hand. Run `bun run cat-harness-to
 
 ## Input
 
-One question for a person, complete enough to answer without opening anything. The same fields as DecisionRequestSchema in schemas/decision-request.ts, plus a letter per option so the chat text and the card use the same handles. Every field is required: a question with no comparison, no recommendation or no default does not validate.
+One question for a person, complete enough to answer without opening anything. The same fields as DecisionRequestSchema in schemas/process/decision-request.ts, plus a letter per option so the chat text and the card use the same handles. Every field is required: a question with no comparison, no recommendation or no default does not validate.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|

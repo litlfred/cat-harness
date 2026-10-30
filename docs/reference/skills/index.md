@@ -14,7 +14,8 @@ published reference can never drift from what the framework actually validates.
 
 | Skill | Id | Description |
 |-------|----|-------------|
-| [Ask The Person](ask-the-person.html) | `ask-the-person` | One question for a person, complete enough to answer without opening anything. The same fields as DecisionRequestSchema in schemas/decision-request.ts, plus a letter per option so the chat text and the card use the same handles. Every field is required: a question with no comparison, no recommendation or no default does not validate. |
+| [Ask The Person](ask-the-person.html) | `ask-the-person` | One question for a person, complete enough to answer without opening anything. The same fields as DecisionRequestSchema in schemas/process/decision-request.ts, plus a letter per option so the chat text and the card use the same handles. Every field is required: a question with no comparison, no recommendation or no default does not validate. |
+| [Bean Drain](bean-drain.html) | `bean-drain` | What a drain starts from: every bean copy to read, the agents that may hold a bean and how each is recognised, what each owner already holds, the activity window, and where the queue is written. Skill skills/sdlc/sdlc-core/bean-drain.md, bean n7x7. |
 | [BPMN Authoring](bpmn-authoring.html) | `bpmn-authoring` | Input schema for BPMN 2.0 business process authoring. |
 | [Content Author](content-author.html) | `content-author` | Input schema for general content authoring. |
 | [Content Feedback](content-feedback.html) | `content-feedback` | Input schema for feedback collection and triage. |
