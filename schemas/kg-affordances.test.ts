@@ -11,8 +11,7 @@ import { join, resolve } from "node:path";
 import { AssetSourceSchema, KgAssetSchema } from "./kg/kg-node.ts";
 import { readRoleGraph, resolveRoleSkills } from "./process/role-graph.ts";
 import { toolTypeIri } from "./tools/tool-types.ts";
-import folioInitFactory from "../tools/folio-init/folio-init.ts";
-import declarationResolutionFactory from "../tools/declaration-resolution/declaration-resolution.ts";
+import { toolFromJson } from "./tools/tool-folders.ts";
 
 const INSTANCE = resolve(import.meta.dir, "..");
 const KG_CORE_DIR = join(INSTANCE, "skills", "kg", "kg-core");
@@ -44,8 +43,12 @@ describe("bean dp1j — KG affordances: browse, materialise, instantiate, copy-i
     expect(body).toContain("name: folio-init");
     expect(body).toContain("--dry-run");
 
-    const folioInitTool = folioInitFactory(mint, BASE);
-    const declarationResolutionTool = declarationResolutionFactory(mint, BASE);
+    // Tool definitions are JSON data (y9r6 step 3); read them as data.
+    const folioInitTool = toolFromJson(join(INSTANCE, "tools", "folio-init", "folio-init.json"), mint);
+    const declarationResolutionTool = toolFromJson(
+      join(INSTANCE, "tools", "declaration-resolution", "declaration-resolution.json"),
+      mint,
+    );
     expect(folioInitTool.id).toBe("folio-init");
     expect(folioInitTool.satisfies).toContain("folio-init");
     expect(declarationResolutionTool.satisfies).toContain("kg-affordances");
