@@ -114,9 +114,11 @@ preference; a broken relative link in somebody's README is a defect.
 
 ## 2a. Markers — choose what the harness reads (declare, don't slurp)
 
-Owner, 2026-10-30: *"a harness can point to a repo, but doesnt want to
-automatically slurp up all content in a repo. harness declares what it pays
-attention to in the repo."*
+Owner, 2026-10-30T12:41Z: *"a harness can point to a repo, but doesnt want to
+automatically slurpo up all content in a repo. harness desclares what it it
+pays attention to in the repo."* The principle is
+[directory-conventions](../../kg/kg-core/directory-conventions.md) §"A marker
+declares what is read, and nothing else is".
 
 The scan's fourth section, `markers`, lists the content a harness COULD be
 told to read: a `sushi-config.yaml` (an IG: `contentTypes.ig`), a legacy
@@ -161,8 +163,14 @@ commit on an instance that already exists.
 else could this harness declare?" is `--markers` on the instance's repository,
 then Q0. Rows already `declared` are shown for context and are not offered.
 
-`ig` is being registered by fhir-harness; until it is, the `ig` row is a hint
-and says so in its `note`.
+`ig` is registered by fhir-harness (`schemas/ig-content-type.ts`). A scan that
+has not loaded that layer shows the `ig` row as a hint, with a `note` saying
+where the type lives. Declaring it is not a flag: the snippet's `include` list
+is everything fhir-harness's IG readers will read, so confirm it with the
+person and add any path the IG's site needs (`input/diagrams/`, say). A
+repository with no `contentTypes.ig` is read whole as a legacy IG, with a
+warning on every run; fhir-harness's `ig-build-pipeline` §"What this layer
+reads" has the rules and how to add a path later.
 
 ## 3. Dispatch the ingestion
 
