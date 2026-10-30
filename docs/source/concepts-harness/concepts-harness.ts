@@ -1,4 +1,4 @@
-import { webpage } from "../../../schemas/webpage.ts";
+import { webpage } from "../../../schemas/ui/webpage.ts";
 
 export default webpage({
   slug: "concepts/harness",
