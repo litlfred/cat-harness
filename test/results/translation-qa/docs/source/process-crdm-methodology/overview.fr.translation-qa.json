@@ -5,12 +5,12 @@
   "locale": "fr",
   "paths": {
     "md": "docs/source/process-crdm-methodology/overview.md",
-    "ts": "docs/source/process-crdm-methodology/overview.ts"
+    "ts": "docs/source/process-crdm-methodology/overview.json"
   },
   "po": "translations/fr/process/crdm-methodology.po",
   "source_hashes": {
     "md": "b56349095158",
-    "ts": "c3c8a5e7ab3b",
+    "ts": "d41886b4eab0",
     "po": "bfedcdac3d49"
   },
   "criteria": {
@@ -18,7 +18,7 @@
       {
         "field_hash": {
           "md": "b56349095158",
-          "ts": "c3c8a5e7ab3b",
+          "ts": "d41886b4eab0",
           "po": "bfedcdac3d49"
         },
         "result": "pass",
@@ -43,7 +43,7 @@
       {
         "field_hash": {
           "md": "b56349095158",
-          "ts": "c3c8a5e7ab3b",
+          "ts": "d41886b4eab0",
           "po": "bfedcdac3d49"
         },
         "result": "pass",
@@ -71,7 +71,7 @@
       {
         "field_hash": {
           "md": "b56349095158",
-          "ts": "c3c8a5e7ab3b",
+          "ts": "d41886b4eab0",
           "po": "bfedcdac3d49"
         },
         "result": "pass",
@@ -95,7 +95,7 @@
       {
         "field_hash": {
           "md": "b56349095158",
-          "ts": "c3c8a5e7ab3b",
+          "ts": "d41886b4eab0",
           "po": "3b44eb0af5dd"
         },
         "result": "pass",
@@ -119,7 +119,7 @@
       {
         "field_hash": {
           "md": "b56349095158",
-          "ts": "c3c8a5e7ab3b",
+          "ts": "d41886b4eab0",
           "po": "3b44eb0af5dd"
         },
         "result": "n/a",

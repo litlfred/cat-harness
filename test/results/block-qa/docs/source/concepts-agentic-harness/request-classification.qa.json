@@ -3,19 +3,19 @@
   "label": "sec:harness-request_classification",
   "kind": "prose",
   "paths": {
-    "ts": "docs/source/concepts-agentic-harness/request-classification.ts",
+    "ts": "docs/source/concepts-agentic-harness/request-classification.json",
     "md": "docs/source/concepts-agentic-harness/request-classification.md"
   },
   "source_hashes": {
     "md": "794f4941feee",
-    "ts": "5cbfeca46f90"
+    "ts": "f15f5bc4b163"
   },
   "criteria": {
     "voice-status-leak": [
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -35,7 +35,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -55,7 +55,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -75,7 +75,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -95,7 +95,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -115,7 +115,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -135,7 +135,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -155,7 +155,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -176,7 +176,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -196,7 +196,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -217,7 +217,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -237,7 +237,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -257,7 +257,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -277,7 +277,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -297,7 +297,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -317,7 +317,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -339,7 +339,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -359,7 +359,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -379,7 +379,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -399,7 +399,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -419,7 +419,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -439,7 +439,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -459,7 +459,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -479,7 +479,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -499,7 +499,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90",
+          "ts": "f15f5bc4b163",
           "graph": "e3b0c44298fc"
         },
         "result": "n/a",
@@ -520,7 +520,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90",
+          "ts": "f15f5bc4b163",
           "graph": "e3b0c44298fc"
         },
         "result": "n/a",
@@ -541,7 +541,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90",
+          "ts": "f15f5bc4b163",
           "graph": "e3b0c44298fc"
         },
         "result": "n/a",
@@ -562,7 +562,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90",
+          "ts": "f15f5bc4b163",
           "graph": "e3b0c44298fc"
         },
         "result": "n/a",
@@ -584,7 +584,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90",
+          "ts": "f15f5bc4b163",
           "graph": "e3b0c44298fc"
         },
         "result": "n/a",
@@ -605,7 +605,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90",
+          "ts": "f15f5bc4b163",
           "graph": "e3b0c44298fc"
         },
         "result": "n/a",
@@ -626,7 +626,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90",
+          "ts": "f15f5bc4b163",
           "graph": "e3b0c44298fc"
         },
         "result": "n/a",
@@ -647,7 +647,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90",
+          "ts": "f15f5bc4b163",
           "graph": "e3b0c44298fc"
         },
         "result": "n/a",
@@ -668,7 +668,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -690,7 +690,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -712,7 +712,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -734,7 +734,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -756,7 +756,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -778,7 +778,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -800,7 +800,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -822,7 +822,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -843,7 +843,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -864,7 +864,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -885,7 +885,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -906,7 +906,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -927,7 +927,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -948,7 +948,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "pass",
         "reviewer": {
@@ -969,7 +969,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -987,7 +987,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -1005,7 +1005,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -1023,7 +1023,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -1041,7 +1041,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -1059,7 +1059,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -1077,7 +1077,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -1095,7 +1095,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -1113,7 +1113,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -1131,7 +1131,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -1149,7 +1149,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -1167,7 +1167,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -1185,7 +1185,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
@@ -1203,7 +1203,7 @@
       {
         "field_hash": {
           "md": "794f4941feee",
-          "ts": "5cbfeca46f90"
+          "ts": "f15f5bc4b163"
         },
         "result": "n/a",
         "reviewer": {
