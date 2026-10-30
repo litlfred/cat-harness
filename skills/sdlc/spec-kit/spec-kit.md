@@ -182,6 +182,51 @@ spans multiple increments:
    and posted. Feature beans and child PRs must reference the parent or sub-issue
    hierarchy verified by `check-spec.ts --spec-before-code`.
 
+### An increment, not a slice
+
+The usual mistake is to split by **file** or by **size** instead of by
+**reviewable unit**. Five PRs that make sense only when read together are worse
+than one PR. The reviewer has to hold five diffs in their head instead of one,
+and none of the five can be reverted on its own. Before opening a child, ask
+two questions:
+
+> Can a reviewer approve this child on its own, without opening its siblings?
+> Can it be reverted without breaking them?
+
+If the answer to either is no, the child is a **slice**, not an increment.
+Re-cut it along a requirement (an FR or a user journey), not along a directory.
+
+### Every PR names its increment (SC-006)
+
+A reviewer must be able to say, for any PR, which increment of which spec it
+discharges **without opening the branch**. This is a requirement on the PR body,
+and the agent that opens the PR is bound by it. The body names:
+- the parent issue that carries the spec;
+- the child issue that is the increment;
+- the FRs or SCs it discharges.
+
+For example: *"Increment 4/5 of #730's spec. Discharges FR-009, SC-005, SC-008
+(#754)."* The rest of the body follows the
+`pr-description` skill (`skill_fetch pr-description`).
+
+### Worked example: the #730 split
+
+#730 (adopt spec-kit) was split into five sub-issues:
+- #751: methodology node and ladder rung;
+- #752: spec template and its check;
+- #753: spec-before-code gate;
+- #754: change-size rule;
+- #755: these splitting mechanics.
+
+The reason to split was not size. #754 carried an open `[NEEDS CLARIFICATION]`
+about the threshold value and whether the gate blocks or reports. Unsplit, that
+one open question would have held up all five pieces of work. Split, #751 to #753
+could be reviewed and merged while #754 waited for the owner's ruling. Each
+child passed both questions above: #752's template check can be approved and
+reverted without #753's gate, and the other children are equally independent.
+The argument for splitting is that an open question on one increment does not
+block the others.
+
 ## A request for a plan reaches the gate (issue #2405)
 
 **A request for a plan is a detection signal here as in `crdm`** — "plan",
