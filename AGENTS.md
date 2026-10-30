@@ -316,12 +316,12 @@ declared (`scripts/index-render.ts`). Issue #592.*
 
 <!-- skills:index:begin -->
 
-_249 skills in 18 directories. The full list, with what each skill is for, is in [`SKILLS.md`](SKILLS.md): here it would take this file past 32 KiB, the most of an `AGENTS.md` some agents read. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_248 skills in 18 directories. The full list, with what each skill is for, is in [`SKILLS.md`](SKILLS.md): here it would take this file past 32 KiB, the most of an `AGENTS.md` some agents read. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 | Directory | Skills |
 |---|---|
 | [`skills/authoring/authoring-core/`](skills/authoring/authoring-core/) | 24 |
-| [`skills/authoring/content-lifecycle/`](skills/authoring/content-lifecycle/) | 10 |
+| [`skills/authoring/content-lifecycle/`](skills/authoring/content-lifecycle/) | 9 |
 | [`skills/conduct/conduct-core/`](skills/conduct/conduct-core/) | 16 |
 | [`skills/conduct/security/`](skills/conduct/security/) | 4 |
 | [`skills/kg/graph-management/`](skills/kg/graph-management/) | 10 |

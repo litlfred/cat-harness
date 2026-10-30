@@ -50,7 +50,6 @@ const BEFORE: Record<string, string[]> = {
   "clinical-sme": ["clinical-validation"],
   "content-reviewer": ["approval-authority", "adjudication"],
   "end-user": ["adjudication"],
-  "ig-publisher-service": ["qa-reporting"],
   "ingestion-agent": ["content-authoring"],
   librarian: ["content-authoring"],
   "local-sweep": ["qa-reporting"],

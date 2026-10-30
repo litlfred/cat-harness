@@ -55,10 +55,6 @@
       "action": "adjudication"
     },
     {
-      "assignee": "ig-publisher-service",
-      "action": "qa-reporting"
-    },
-    {
       "assignee": "ingestion-agent",
       "action": "content-authoring"
     },
