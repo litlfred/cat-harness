@@ -45,11 +45,13 @@ roles are `n/a`: nothing in them reads prose.
 
 The project speaks with **one voice**: an authoritative, scholarly,
 third-person voice making claims about its subject matter.
-**Scholarly voice is the default** for both narrative `.md` AND proof
-bodies (formal-proof docstrings, expository comments) — exceptions
+**Scholarly voice is the default** for narrative `.md` and any
+content-type sibling bodies that carry exposition — exceptions
 require an explicit author marker (`tags: ["non-scholarly-voice-exception"]`
 on the block's `.ts` manifest, with a `notes` field on the QA report
-recording the rationale). Anything that breaks that voice is a
+recording the rationale). Content types with a TeX or formal-proof layer
+supply their own voice-audit refinements and link down to this skill.
+Anything that breaks that voice is a
 violation. Common breakages:
 
 1. **Status markers** in body prose — `✅ Done`, `(TODO)`, `(TBD)`,
@@ -61,24 +63,24 @@ violation. Common breakages:
 3. **First-person work tone** — "we'll add X", "let me", "needs more
    work", "I'll fix this".
 4. **Time-stamped notes** — "as of 2025-…", "after the recent push",
-   "in the current draft" — signals draft state, not paper authority.
-5. **Unicode characters that don't compile** — `↦` U+21A6, `⁻` U+207B,
-   `√` U+221A, `─` U+2500, `✅` U+2705, etc. — even when intended,
-   they crash `pdflatex` unless mapped in the preamble.
+   "in the current draft" — signals draft state, not published authority.
+5. **Unicode characters that don't compile or render reliably** — `↦` U+21A6,
+   `⁻` U+207B, `√` U+221A, `─` U+2500, `✅` U+2705, etc. — outside
+   fenced code when the target rendering pipeline cannot map them.
 6. **AI / status-update phrasing (LLM tells)** — "Let me think about
    this", "Here's what I did", "I'll go ahead and", "Note that we
    should", "Great question", repeated First/Second/Third bullet
    cadence, over-use of "essentially" / "comprehensive" / "leverage"
    / "streamline" / "robust" / "delve into".
-7. **Non-scholarly default tone** — block prose or proof docstring
-   that drifts into lecturer cadence ("So what we're going to do is
+7. **Non-scholarly default tone** — block prose or expository sibling
+   comment that drifts into lecturer cadence ("So what we're going to do is
    …"), journalistic register ("In a surprising twist, …"), or
    second-person address ("You will see that …") without explicit
    author opt-out.
 8. **Block placement does not fit section/chapter** — a block whose
    topic, kind, or register is incongruent with its surrounding
    section. Symptoms: a `definition` in a "Discussion" section, a
-   `proposition` outside the chapter's proof chain, a `prose` block
+   statement block outside its chapter's dependency chain, a `prose` block
    that introduces a topic the chapter does not subsequently cover.
 9. **Deprecated notation usage** — any symbol or convention that the
    project's notation register marks as deprecated, used in place of
@@ -95,10 +97,10 @@ violation. Common breakages:
 11. **Hedging / "exposition simplifies" framing** — the project
     derives its results from its established arguments. It does not
     need "structural argument" / "morally correct" / "essentially the
-    X" / "heuristically" / "simplification for exposition" / "provides
-    the mathematical framework" / "broadly speaking" / "loosely
-    speaking" / "in some sense" / "conceptually analogous" patches as a
-    substitute for the actual argument. These are signs that either
+    X" / "heuristically" / "simplification for exposition" / "broadly
+    speaking" / "loosely speaking" / "in some sense" / "conceptually
+    analogous" patches as a substitute for the actual argument. These are
+    signs that either
     (a) the argument IS in the content and the hedge is length cruft,
     or (b) the block is asserting an unsupported analogy and should be
     demoted to a remark with `interprets:` or removed. Prefer (a) —
@@ -110,20 +112,15 @@ violation. Common breakages:
       `essentially complete`
     - `heuristically (replaced|exploitable|the)`
     - `simplification for exposition`,
-      `simplifies (the )?exposition`,
-      `simplifies the paper`
-    - `provides the (mathematical framework|natural setting|
-      canonical duality)`, `provides a canonical (framework|
-      duality|basis)`, `gives a canonical (functor|grading|
-      ordering)`
+      `simplifies (the )?exposition`
     - `for context`, `by way of background`,
       `broadly speaking`, `loosely speaking`, `in some sense`,
       `conceptually analogous`
     - `amounts to`, `amount(s|ed) to`,
       `(reformulated|reformulation) as`
     Exceptions: (i) the phrase IS the canonical term of art and
-    removing it changes the claim (e.g. "essentially surjective" as a
-    category theory term, "essentially zero" inside a results table);
+    removing it changes the claim (e.g. "essentially zero" inside a
+    results table, or a domain term of art defined by the content type);
     (ii) the block has an explicit
     `tags: ["non-scholarly-voice-exception"]` opt-out.
 
@@ -146,7 +143,7 @@ violation. Common breakages:
 ### 1. Sweep (greps)
 
 ```bash
-CONTENT=content/<paper>
+CONTENT=content/<folio-dir>
 
 # Status emoji + comparison markers in .md
 grep -rEn "[✅❌⚠⏳🔧🚧☑☒]|✓|✗|★" "$CONTENT" --include="*.md"
@@ -163,12 +160,12 @@ grep -rEn "\*\*Done\*\*|\*\*Completed\*\*|\bDONE\b|\bCOMPLETED\b" \
 grep -rEn "\b(we'll add|I'll add|let me|needs more work|note to self|we should fix)\b" \
   "$CONTENT" --include="*.md"
 
-# Unicode chars that crash pdflatex (or render unreliably)
+# Unicode chars that fail or render unreliably in target pipelines
 grep -rEn "↦|⁻|√|─|✅|·|²" "$CONTENT" --include="*.md"
 
 # Hedging / "essentially" / "morally" / "heuristically" (criterion 11)
 grep -rEni \
-  "structural argument|\bmorally\b|essentially (the |a |zero|complete|surjective|non-local)|heuristically (replaced|exploitable|the)|simplification for exposition|simplifies (the )?exposition|simplifies the paper|provides (the |a )(mathematical framework|natural setting|canonical (duality|basis|framework))|gives a canonical (functor|grading|ordering)|for context|by way of background|broadly speaking|loosely speaking|in some sense|conceptually analogous|amount(s|ed) to|(reformulated|reformulation) as" \
+  "structural argument|\bmorally\b|essentially (the |a |zero|complete)|heuristically (replaced|exploitable|the)|simplification for exposition|simplifies (the )?exposition|for context|by way of background|broadly speaking|loosely speaking|in some sense|conceptually analogous|amount(s|ed) to|(reformulated|reformulation) as" \
   "$CONTENT" --include="*.md"
 
 # Section / subsection / chapter TITLE coherence (chapter-scoped —
@@ -186,12 +183,12 @@ bun run pipeline/qa-section-title-audit.ts
 | **B. Comparison-table marker** | `✓` / `✗` in a results table (one cell wide, replaces redundant prose) | **Keep — but only in tables.** ✓/✗ in body prose → replace with words ("matches", "diverges"). |
 | **C. Warning callout** | `⚠ *…*`, `**⚠ WARNING:**` | **Replace** with `**Caveat.**` or `**Warning.**` (no symbol). |
 | **D. Star marker** `★` | "best fit", "preferred", "closure" | **Keep in tables when meaning is column-scoped.** In body prose → replace with explicit word. |
-| **E. Unicode crash** | `↦`, `⁻`, `√`, `─`, `✅`, `·`, `²` | Replace with LaTeX command in math (`\mapsto`, `^{-1}`, `\sqrt{}`, `\cdot`, `^{2}`) or strip box-drawing comments. Add to preamble's `\newunicodechar` list only if widely used. |
+| **E. Unicode crash** | `↦`, `⁻`, `√`, `─`, `✅`, `·`, `²` | Replace with the target pipeline's supported notation or strip box-drawing comments. |
 | **F. First-person work tone** | "we'll add", "I'll fix" | **Rewrite in passive/scholarly voice.** Often a sign the sentence shouldn't exist at all. |
-| **G. Hedging** | "structural argument", "morally correct", "essentially the X", "heuristically", "simplification for exposition", "provides the mathematical framework", "amounts to" | **Strip** if the actual argument IS in the content (most cases). **Demote** to `remark` with `interprets:` if the block is asserting an unsupported analogy. **Keep** only if (i) the phrase is a term of art (e.g. `essentially surjective`) or (ii) the block has `tags: ["non-scholarly-voice-exception"]`. |
-| **H. Banner-in-prose** | `> **Status: theorem (sorry-free)...**`, `> **Caveat (over-permissive...)...**`, `> **Status (May 2026):...**`, `> **Refined-framing note...**` | **Migrate to `authorNotes` field** on the block's `.ts` manifest. Author-tracking notes belong as metadata, not in scholarly prose. The render pipeline skips them by default; a `WITH_AUTHOR_NOTES=1` env var exposes them in working drafts. **EXCEPTION:** `**Theorem (conditional on [conj:X])**` banners that are STRUCTURAL parts of the theorem statement are not author notes — keep in prose. |
+| **G. Hedging** | "structural argument", "morally correct", "essentially the X", "heuristically", "simplification for exposition", "amounts to" | **Strip** if the actual argument IS in the content (most cases). **Demote** to `remark` with `interprets:` if the block is asserting an unsupported analogy. **Keep** only if (i) the phrase is a term of art or (ii) the block has `tags: ["non-scholarly-voice-exception"]`. |
+| **H. Banner-in-prose** | `> **Status: ...**`, `> **Caveat (over-permissive...)...**`, `> **Status (May 2026):...**`, `> **Refined-framing note...**` | **Migrate to `authorNotes` field** on the block's `.ts` manifest. Author-tracking notes belong as metadata, not in scholarly prose. The render pipeline skips them by default; a `WITH_AUTHOR_NOTES=1` env var exposes them in working drafts. **EXCEPTION:** structural condition banners defined by the content type that are part of the statement itself are not author notes — keep in prose. |
 | **I. Audit-doc reference in content** | `docs/audits/...`, `[audit](../../../docs/audits/...)`, `per audit`, `see audit doc` | **Remove.** Published content must NOT reference internal audit documents. If the audit contains a result needed in the content, promote the result to a content block and cite that block instead. Empirical observations belong in audit docs only, never in published `.md` blocks. |
-| **J. Empirical fit in scholarly prose** | "within X% of [reference value]", "matches to Y ppm", "≈ Z (close to...)", "near-match", "numerical observation" | **Remove from published content.** Empirical comparisons are audit-doc material. Published content states the derived result; the audit doc records how well it matches experiment. **EXCEPTION:** a content block may state a result's formal precision target if the block IS a proposition about precision. |
+| **J. Empirical fit in scholarly prose** | "within X% of [reference value]", "matches to Y ppm", "≈ Z (close to...)", "near-match", "numerical observation" | **Remove from published content.** Empirical comparisons are audit-doc material. Published content states the derived result; the audit doc records how well it matches experiment, unless the content type defines a formal precision-statement exception. |
 | **K. Title coherence** | section/subsection title ending in `" : vs"` / `" : generation"` / `" : characterisation"` / `" : comparison"`; a comma-list title of 3+ concepts; a title meaningless without its chapter | **Rewrite from the section's story** — read the section's intro block, make it short + coherent against its responsible parent (project→chapter→section→subsection) and distinct from the sibling. Surfaced by `qa-section-title-audit.ts`; conventions in `one-voice-style-guide` §Title Conventions. |
 
 ### 3. Apply mechanical fixes
@@ -201,8 +198,8 @@ These are safe to do without author approval:
 - Delete Category A status leaks.
 - Convert Category C warnings: `⚠ *X*` → `*Caveat: X*` or
   `**⚠ WARNING:** X` → `**Warning.** X`.
-- Fix Category E Unicode crashes (use LaTeX equivalents in math; strip
-  box-drawing).
+- Fix Category E Unicode crashes (use the target pipeline's equivalents;
+  strip box-drawing).
 - Replace clear-cut Category B/D markers in **body prose** (not
   tables) with words.
 - Remove Category I audit-doc references from published `.md` files.
@@ -210,7 +207,7 @@ These are safe to do without author approval:
 - Migrate Category H banners to `authorNotes` field (extract banner
   text → push as `{ kind, date?, body }` entry on the block's `.ts`
   manifest; remove blockquote from `.md`). Skip structural
-  conditional-theorem banners — those are part of the statement.
+  statement banners defined by the content type.
 
 ### 4. Kick back to author for items where:
 
@@ -219,9 +216,9 @@ These are safe to do without author approval:
 - A table is so dense with `★`/`✓`/`✗` markers that replacing them
   with words would balloon the table; author should decide whether
   the compact markers are acceptable scholarly form for that table.
-- Status updates inside **expository proofs** ("We have shown…",
-  "It remains to verify…") that look like work tracking but are
-  actually proof structure — author judgement on tone.
+- Transitional phrasing inside **expository derivations** ("We have
+  shown…", "It remains to verify…") that looks like work tracking but
+  is actually structural — author judgement on tone.
 
 For each kickback, post a work-plan item with:
 - `targetLabel` of the affected block
@@ -240,7 +237,7 @@ Report back with:
 The watcher persists every finding to the block's sibling
 `<block>.qa.json` file (schema: `schemas/sdlc/block-qa.ts`).
 Per-criterion staleness is keyed by SHA-256 prefix of the source
-files at audit time — when the `.md` (or `.ts` / proof file) is later
+files at audit time — when the `.md` (or `.ts` / content-type sibling) is later
 edited, the recorded `field_hash` no longer matches, and the
 criterion is stale.
 
@@ -251,7 +248,7 @@ criterion is stale.
 
   ```bash
   cd content
-  bun run pipeline/qa-sweep.ts <paper>/<chapter>
+  bun run pipeline/qa-sweep.ts <folio-dir>/<chapter>
   ```
 
 - **Staleness map** — reports which blocks have fresh / stale /
@@ -259,14 +256,14 @@ criterion is stale.
 
   ```bash
   cd content
-  bun run pipeline/qa-staleness.ts <paper>/<chapter>
+  bun run pipeline/qa-staleness.ts <folio-dir>/<chapter>
   ```
 
 - **CI gate** — fail the build if any block has critical findings
   or no sidecar:
 
   ```bash
-  bun run pipeline/qa-sweep.ts <paper> --ci
+  bun run pipeline/qa-sweep.ts <folio-dir> --ci
   ```
 
 ### Multi-reviewer writes (when an agent adjudicates)
@@ -283,7 +280,7 @@ An entry's shape:
 
 ```json
 {
-  "field_hash": { "md": "<12-char-sha>", "ts": "<…>", "lean": "<…>" },
+  "field_hash": { "md": "<12-char-sha>", "ts": "<…>" },
   "result": "pass" | "fail" | "warn" | "n/a",
   "severity": "critical" | "major" | "minor",
   "evidence": "<file:line: verbatim quote>",

@@ -5,7 +5,7 @@
     "id": "block-density",
     "path": "skills/authoring/authoring-core/block-density.md"
   },
-  "source_hash": "263c145a01d1",
+  "source_hash": "0a619b9e05b9",
   "criteria": {
     "skill-is-a-stub": {
       "result": "pass",
