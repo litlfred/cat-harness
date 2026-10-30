@@ -4,10 +4,6 @@
   "private": false,
   "license": "Apache-2.0",
   "type": "module",
-  "workspaces": [
-    "bootstrap-tool[s]",
-    "../bootstrap-tool[s]"
-  ],
   "files": [
     "schemas/",
     "skills/",
@@ -28,33 +24,6 @@
     "folio:render:check": "bun run folio-render/file-list.ts --check"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.127.0",
-    "@litlfred/bootstrap-tools": "0.1.0",
-    "@unified-latex/unified-latex-util-arguments": "^1.8.4",
-    "@unified-latex/unified-latex-util-parse": "^1.8.4",
-    "@unified-latex/unified-latex-util-print-raw": "^1.8.4",
-    "bpmn-moddle": "^10.2.0",
-    "csl-json": "^0.1.0",
-    "dmn-moddle": "^12.1.0",
-    "fast-xml-parser": "^5.10.1",
-    "glob": "^13.0.6",
-    "jsonld": "8",
-    "liquidjs": "^10.29.0",
-    "lunr": "2.3.9",
-    "mdast-util-directive": "^3.1.0",
-    "mdast-util-gfm-strikethrough": "^2.0.0",
-    "mdast-util-gfm-table": "^2.0.0",
-    "mdast-util-math": "^3.0.0",
-    "micromark-extension-gfm-strikethrough": "^2.1.0",
-    "micromark-extension-gfm-table": "^2.1.1",
-    "oxigraph": "^0.5.11",
-    "remark": "^15.0.1",
-    "remark-directive": "^4.0.0",
-    "remark-gfm": "^4.0.1",
-    "remark-html": "^16.0.1",
-    "remark-math": "^6.0.0",
-    "unist-util-visit": "^5.1.0",
-    "yaml": "^2.9.1",
     "zod": "^4.6.5"
   },
   "devDependencies": {
