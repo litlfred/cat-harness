@@ -188,11 +188,15 @@ bun run cat kg:materialize --nodes <subscription> <subgraph-path>   # e.g. --nod
 ## Instantiating a harness
 
 `kg:instantiate` writes the state directories the harness declares and its
-config. The state directories go under the subscriber's snapshot directory, at
-`<snapshot dir>/<subscription>/harnesses/<harness>/`. That is the layout
-materialised parts already use. They never go at the repository root, where a
-harness named after a staged instance would write into that instance's
-directory (gap G11, settled by the owner on 2026-10-30). **Where the checkout has a root `index.config.json`, the config goes
+config. The state directories go under the subscriber's own
+`subscribed-harnesses` directory (graph typology `subscribed-harnesses`,
+`holds: state`), at `<state dir>/<subscription>/<harness>/`; a subscriber that
+declares none is refused, with what to declare. They never go at the
+repository root, where a harness named after a staged instance would write
+into that instance's directory (gap G11, settled by the owner on 2026-10-30),
+and never under the snapshot directory, which holds upstream's bytes and is
+declared `readOnly` (owner, 2026-10-30, bean `w1gy` finding 1, option C:
+"split the directory"). **Where the checkout has a root `index.config.json`, the config goes
 INLINE in a new `instances[]` entry** and no `<harness>.config.json` is
 written (bean `ymvt`: the index is the one config, and it is then what reads
 as **instantiated**). Only a checkout with no index gets a root
