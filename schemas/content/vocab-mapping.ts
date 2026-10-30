@@ -377,6 +377,25 @@ export function applyVocabMapping(m: VocabMapping, record: Readonly<Record<strin
   return Object.fromEntries(out);
 }
 
+/** Prefixes a table may write a system with. Callers add an instance's own (`NS_PREFIXES`). */
+export const STANDARD_PREFIXES: Readonly<Record<string, string>> = {
+  skos: "http://www.w3.org/2004/02/skos/core#",
+  dcterms: "http://purl.org/dc/terms/",
+  rdfs: "http://www.w3.org/2000/01/rdf-schema#",
+  rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+  owl: "http://www.w3.org/2002/07/owl#",
+  prov: "http://www.w3.org/ns/prov#",
+  schema: "https://schema.org/",
+};
+
+/** Expand a CURIE whose prefix is known; anything else (an IRI, a URN) is returned as written. */
+export function expandCurie(v: string, prefixes: Readonly<Record<string, string>>): string {
+  const m = /^([A-Za-z][\w.-]*):(.*)$/.exec(v);
+  if (m === null || m[2]!.startsWith("//")) return v;
+  const ns = prefixes[m[1]!];
+  return ns === undefined ? v : `${ns}${m[2]}`;
+}
+
 /**
  * The JSON-LD `@context` bindings the given tables' rows imply: JSON key →
  * predicate IRI, in table order. A generator spreads this into its context
