@@ -98,6 +98,13 @@
             "$type": "Markdown"
           },
           "description": "Written or not, every gate's verdict with its reason, findings, and the PROV-O activity of an accepted write when a step was named."
+        },
+        {
+          "name": "activity",
+          "schema": {
+            "$type": "ProvActivity"
+          },
+          "description": "The PROV-O activity of an accepted write that named its process, task and role; absent otherwise. Pass it to workflow_complete's `activities` for that step."
         }
       ]
     },
