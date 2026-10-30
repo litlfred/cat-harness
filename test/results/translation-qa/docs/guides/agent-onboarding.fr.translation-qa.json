@@ -24,11 +24,11 @@
           "id": "pipeline/translation-block-qa.ts",
           "actor": "ci-pipeline",
           "version": "v1",
-          "script_hash": "46151d68efaa",
+          "script_hash": "0c49402e9cb2",
           "script_commit_sha": "unknown"
         },
-        "reviewed_at": "2026-10-21T08:48:35.959Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-30T16:27:17.618Z",
+        "reviewed_sha": "f82cbc6d5cbc2f17cbda6a0303eda5c81345a3f5",
         "severity": "major",
         "metrics": {
           "translated": 18,
@@ -74,11 +74,11 @@
           "id": "pipeline/translation-block-qa.ts",
           "actor": "ci-pipeline",
           "version": "v1",
-          "script_hash": "46151d68efaa",
+          "script_hash": "0c49402e9cb2",
           "script_commit_sha": "unknown"
         },
-        "reviewed_at": "2026-10-21T08:48:35.962Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-30T16:27:17.621Z",
+        "reviewed_sha": "f82cbc6d5cbc2f17cbda6a0303eda5c81345a3f5",
         "metrics": {
           "checked": 18,
           "missing": 0,
@@ -126,11 +126,11 @@
           "id": "pipeline/translation-block-qa.ts",
           "actor": "ci-pipeline",
           "version": "v1",
-          "script_hash": "46151d68efaa",
+          "script_hash": "0c49402e9cb2",
           "script_commit_sha": "unknown"
         },
-        "reviewed_at": "2026-10-21T08:48:35.964Z",
-        "reviewed_sha": "bb61e9b64a69ee9ed35376275403036903204173",
+        "reviewed_at": "2026-10-30T16:27:17.625Z",
+        "reviewed_sha": "f82cbc6d5cbc2f17cbda6a0303eda5c81345a3f5",
         "metrics": {
           "echoed": 0,
           "translated": 18
@@ -160,5 +160,5 @@
     ],
     "translation-semantic-roundtrip": []
   },
-  "updated_at": "2026-10-21T08:48:35.966Z"
+  "updated_at": "2026-10-30T16:27:17.626Z"
 }

@@ -1,13 +1,13 @@
 {
   "$schema": "folio-detangle-sidecar/v1",
   "group": "cat-harness/skills/ui/ui-core",
-  "size": 24,
+  "size": 23,
   "internal": 22,
-  "inbound": 55,
+  "inbound": 85,
   "outbound": 28,
-  "cohesion": 0.21,
-  "enforcedBoundary": 1,
-  "recordedBoundary": 82,
+  "cohesion": 0.16,
+  "enforcedBoundary": 0,
+  "recordedBoundary": 113,
   "proseMentions": 71,
   "wrongDirection": 0,
   "undeterminedDirection": 0

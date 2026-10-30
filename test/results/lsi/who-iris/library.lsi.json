@@ -5,7 +5,7 @@
   "graph": "library",
   "path": "who-iris/library",
   "docs": null,
-  "fingerprint": "e73703aee3c1bfd9737f3759482a359b58fd004b31cb0da27586fa557d817afc",
+  "fingerprint": "96ddd6188f03260ef74e93fe245eaaf822dbce4f0ebb3a6842c550cd9a6244c3",
   "options": {
     "k": 100,
     "weighting": "log-entropy",

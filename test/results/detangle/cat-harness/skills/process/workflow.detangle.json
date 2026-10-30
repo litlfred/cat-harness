@@ -1,14 +1,14 @@
 {
   "$schema": "folio-detangle-sidecar/v1",
   "group": "cat-harness/skills/process/workflow",
-  "size": 15,
-  "internal": 14,
-  "inbound": 40,
-  "outbound": 44,
-  "cohesion": 0.14,
+  "size": 11,
+  "internal": 10,
+  "inbound": 41,
+  "outbound": 30,
+  "cohesion": 0.12,
   "enforcedBoundary": 0,
-  "recordedBoundary": 84,
-  "proseMentions": 68,
+  "recordedBoundary": 71,
+  "proseMentions": 47,
   "wrongDirection": 1,
   "undeterminedDirection": 0
 }

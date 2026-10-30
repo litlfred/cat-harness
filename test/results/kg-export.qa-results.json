@@ -2,7 +2,7 @@
   "$schema": "qa-results/v1",
   "producer": {
     "script": "scripts/kg-export.ts",
-    "script_hash": "60e094daff83"
+    "script_hash": "3c0de9fa67fe"
   },
   "subject": {
     "kind": "graph",

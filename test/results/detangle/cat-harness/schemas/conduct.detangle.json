@@ -1,0 +1,14 @@
+{
+  "$schema": "folio-detangle-sidecar/v1",
+  "group": "cat-harness/schemas/conduct",
+  "size": 7,
+  "internal": 1,
+  "inbound": 3,
+  "outbound": 4,
+  "cohesion": 0.13,
+  "enforcedBoundary": 7,
+  "recordedBoundary": 0,
+  "proseMentions": 0,
+  "wrongDirection": 0,
+  "undeterminedDirection": 0
+}

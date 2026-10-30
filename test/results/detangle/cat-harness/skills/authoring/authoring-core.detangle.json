@@ -1,14 +1,14 @@
 {
   "$schema": "folio-detangle-sidecar/v1",
   "group": "cat-harness/skills/authoring/authoring-core",
-  "size": 31,
-  "internal": 27,
-  "inbound": 58,
-  "outbound": 15,
-  "cohesion": 0.27,
-  "enforcedBoundary": 3,
-  "recordedBoundary": 70,
-  "proseMentions": 154,
+  "size": 25,
+  "internal": 24,
+  "inbound": 55,
+  "outbound": 12,
+  "cohesion": 0.26,
+  "enforcedBoundary": 0,
+  "recordedBoundary": 67,
+  "proseMentions": 114,
   "wrongDirection": 0,
   "undeterminedDirection": 0
 }

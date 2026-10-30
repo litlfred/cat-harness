@@ -1,7 +1,7 @@
 {
   "$schema": "folio-detangle-sidecar/v1",
   "group": "folio-assistant-sci/skills/voices",
-  "size": 2,
+  "size": 5,
   "internal": 0,
   "inbound": 0,
   "outbound": 0,

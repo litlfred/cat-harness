@@ -2,7 +2,7 @@
   "$schema": "qa-results/v1",
   "producer": {
     "script": "cat-harness-tools/scripts/audit-coverage.ts",
-    "script_hash": "f5f17b1512b5"
+    "script_hash": "4443d25e5586"
   },
   "subject": {
     "kind": "audit-coverage",
@@ -10,8 +10,8 @@
   },
   "families": {
     "coverage-measured": {
-      "summary": "Every declared kind with its four counts and its state. Not findings: the measurement itself, so the committed record answers \"what audits this kind\" without rerunning anything. The file COUNTS are printed rather than recorded — a census moves on any commit and a gate keyed on it is stale by default; `hasFiles` carries the only thing it decides. 82 of 82 declared kind(s), 263 gate(s), 88 criteria.",
-      "count": 82,
+      "summary": "Every declared kind with its four counts and its state. Not findings: the measurement itself, so the committed record answers \"what audits this kind\" without rerunning anything. The file COUNTS are printed rather than recorded — a census moves on any commit and a gate keyed on it is stale by default; `hasFiles` carries the only thing it decides. 89 of 89 declared kind(s), 273 gate(s), 89 criteria.",
+      "count": 89,
       "entries": [
         {
           "kind": "archimate",
@@ -239,6 +239,7 @@
             "consulted-skill-not-performed",
             "content-instance-holds-code",
             "downstream-tool-declared",
+            "global-task-shared",
             "lake-target-lean-resolution",
             "manifest-skill-exists",
             "nested-instance-audited",
@@ -375,6 +376,10 @@
             "cat-harness-tools/templates",
             "cat-harness-tools/test",
             "cat-harness-tools/tools",
+            "cat-harness-tools/types",
+            "cat-harness-tools/ui",
+            "cat-harness-tools/upstream",
+            "cat-harness-tools/viewer",
             "cat-harness/folio-render",
             "cat-harness/upstream",
             "fhir-harness/pipeline",
@@ -383,8 +388,10 @@
             "folio-assistant-core/pipeline",
             "folio-assistant-core/scripts",
             "folio-assistant-core/src",
+            "folio-assistant-core/templates",
             "folio-assistant-sci/adapters",
             "folio-assistant-sci/scripts",
+            "folio-assistant-sci/templates",
             "smart-base/kg",
             "smart-base/pipeline",
             "smart-base/platform",
@@ -449,6 +456,17 @@
           "hasFiles": false
         },
         {
+          "kind": "conjectures",
+          "state": "no-directory",
+          "directories": [],
+          "criteria": [],
+          "subjectKinds": [],
+          "gates": [],
+          "typed": true,
+          "adversarial": "never",
+          "hasFiles": false
+        },
+        {
           "kind": "content-adapters",
           "state": "covered",
           "directories": [
@@ -466,24 +484,10 @@
           "hasFiles": true
         },
         {
-          "kind": "dak-annex",
-          "state": "no-directory",
-          "directories": [],
-          "criteria": [],
-          "subjectKinds": [],
-          "gates": [
-            "bun run cat check:dak-annexes"
-          ],
-          "typed": true,
-          "adversarial": "never",
-          "hasFiles": false
-        },
-        {
           "kind": "doc-group",
           "state": "covered",
           "directories": [
             "cat-harness/docs/concepts",
-            "cat-harness/docs/fhir",
             "cat-harness/docs/guides",
             "cat-harness/docs/process",
             "cat-harness/docs/start"
@@ -504,9 +508,16 @@
             "cat-harness/docs",
             "cat-harness/docs/source",
             "cat-harness/site-chrome",
+            "fhir-harness/docs",
+            "fhir-harness/docs/source",
             "folio-assistant-core/docs",
+            "folio-assistant-core/docs/source",
+            "folio-assistant-sci/docs",
+            "folio-assistant-sci/docs/source",
             "smart-base/docs",
             "smart-base/findings",
+            "smart-base/site-docs",
+            "smart-base/site-docs/source",
             "smart-trust/docs",
             "who-iris/docs",
             "who-iris/site"
@@ -559,7 +570,9 @@
           "kind": "document-kinds",
           "state": "covered",
           "directories": [
-            "smart-base/document-kinds"
+            "smart-base/document-kinds",
+            "smart-immunizations/document-kinds",
+            "smart-trust/document-kinds"
           ],
           "criteria": [],
           "subjectKinds": [],
@@ -591,8 +604,7 @@
           "kind": "external-schema",
           "state": "covered",
           "directories": [
-            "cat-harness/external-schemas",
-            "smart-base/external-schemas"
+            "cat-harness/external-schemas"
           ],
           "criteria": [],
           "subjectKinds": [],
@@ -615,6 +627,7 @@
           "subjectKinds": [],
           "gates": [
             "bun run cat check:artifact-index",
+            "bun run cat ig-index:build",
             "bun run cat p2:refusals:check",
             "bun run cat smart:pages",
             "bun run smart:pages"
@@ -668,7 +681,10 @@
           "kind": "glossary",
           "state": "covered",
           "directories": [
+            "fhir-harness/glossary",
             "folio-assistant-core/glossary",
+            "folio-assistant-sci/glossary",
+            "smart-base/glossary",
             "who-iris/glossary"
           ],
           "criteria": [],
@@ -690,14 +706,30 @@
           "state": "covered",
           "directories": [
             "cat-harness-tools/health",
-            "cat-harness/test/health/results",
             "folio-assistant-core/test/health/results",
+            "test/health/results",
             "who-iris/test/health/results"
           ],
           "criteria": [],
           "subjectKinds": [],
           "gates": [
             "bun run cat check:harness-state:check"
+          ],
+          "typed": true,
+          "adversarial": "never",
+          "hasFiles": true
+        },
+        {
+          "kind": "ig-annex",
+          "state": "covered",
+          "directories": [
+            "smart-immunizations/annexes"
+          ],
+          "criteria": [],
+          "subjectKinds": [],
+          "gates": [
+            "bun run cat check:artifact-index",
+            "bun run cat check:ig-annex-links"
           ],
           "typed": true,
           "adversarial": "never",
@@ -892,6 +924,21 @@
           "hasFiles": true
         },
         {
+          "kind": "merge-reviews",
+          "state": "covered",
+          "directories": [
+            "merge-reviews"
+          ],
+          "criteria": [],
+          "subjectKinds": [],
+          "gates": [
+            "bun run cat check:adversarial-review"
+          ],
+          "typed": true,
+          "adversarial": "never",
+          "hasFiles": true
+        },
+        {
           "kind": "methodology",
           "state": "covered",
           "directories": [
@@ -958,6 +1005,7 @@
           "state": "covered",
           "directories": [
             "fhir-harness/pipeline-plugins",
+            "folio-assistant-core/pipeline-plugins",
             "folio-assistant-sci/pipeline-plugins"
           ],
           "criteria": [],
@@ -997,7 +1045,8 @@
             "folio-assistant-core/processes",
             "folio-assistant-sci/processes",
             "smart-base/methodologies/processes",
-            "smart-base/processes"
+            "smart-base/processes",
+            "who-iris/processes"
           ],
           "criteria": [
             "activity-calls-skill-process",
@@ -1239,6 +1288,7 @@
             "bootstrap/schemas",
             "cat-harness-tools/schemas",
             "cat-harness/archimate/schemas",
+            "cat-harness/ns",
             "cat-harness/openapi/schemas",
             "cat-harness/schemas",
             "fhir-harness/schemas",
@@ -1356,6 +1406,35 @@
           "hasFiles": true
         },
         {
+          "kind": "sme-case-verdict",
+          "state": "no-directory",
+          "directories": [],
+          "criteria": [],
+          "subjectKinds": [],
+          "gates": [],
+          "typed": true,
+          "adversarial": "never",
+          "hasFiles": false
+        },
+        {
+          "kind": "software-library",
+          "state": "covered",
+          "directories": [
+            "cat-harness-tools/libraries",
+            "cat-harness/libraries",
+            "fhir-harness/libraries",
+            "folio-assistant-sci/libraries"
+          ],
+          "criteria": [],
+          "subjectKinds": [],
+          "gates": [
+            "bun run cat libraries:check"
+          ],
+          "typed": true,
+          "adversarial": "never",
+          "hasFiles": true
+        },
+        {
           "kind": "substrate-snapshot",
           "state": "covered",
           "directories": [
@@ -1380,7 +1459,9 @@
           ],
           "criteria": [],
           "subjectKinds": [],
-          "gates": [],
+          "gates": [
+            "bun run cat sweep:mark:check"
+          ],
           "typed": true,
           "adversarial": "never",
           "hasFiles": false
@@ -1401,6 +1482,28 @@
           "typed": true,
           "adversarial": "never",
           "hasFiles": true
+        },
+        {
+          "kind": "test-data-fixed",
+          "state": "no-directory",
+          "directories": [],
+          "criteria": [],
+          "subjectKinds": [],
+          "gates": [],
+          "typed": true,
+          "adversarial": "never",
+          "hasFiles": false
+        },
+        {
+          "kind": "test-data-generated",
+          "state": "no-directory",
+          "directories": [],
+          "criteria": [],
+          "subjectKinds": [],
+          "gates": [],
+          "typed": true,
+          "adversarial": "never",
+          "hasFiles": false
         },
         {
           "kind": "test-plan",
@@ -1720,6 +1823,21 @@
           "hasFiles": true
         },
         {
+          "kind": "web-annex",
+          "state": "covered",
+          "directories": [
+            "smart-immunizations/web-annexes"
+          ],
+          "criteria": [],
+          "subjectKinds": [],
+          "gates": [
+            "bun run cat check:web-annexes"
+          ],
+          "typed": true,
+          "adversarial": "never",
+          "hasFiles": true
+        },
+        {
           "kind": "workflow-state",
           "state": "covered",
           "directories": [
@@ -1740,8 +1858,16 @@
     },
     "gates-undeclared": {
       "summary": "A gate CI runs whose script carries no @covers line. Reported and never failed by default (--require-all fails it): the gap is real, and hiding it would render an unmeasured corpus as clean.",
-      "count": 0,
-      "entries": []
+      "count": 1,
+      "entries": [
+        {
+          "command": "bun run cat harness:state --out ./_site/assets/harnesses",
+          "scripts": [
+            "cat-harness-tools/scripts/harness-state.ts"
+          ],
+          "why": "no @covers line in its docblock"
+        }
+      ]
     },
     "kinds-empty": {
       "summary": "A directory of this kind exists and holds no countable file. A determined empty, not an absent answer.",
@@ -1758,7 +1884,7 @@
     },
     "kinds-no-directory": {
       "summary": "No instance declares a directory of this kind — a nested kind reached through its parent (`bean-defs` inside `beans/`), or one this repository does not have. Recorded so it cannot be read as a coverage gap, and so a kind that LOSES its directory shows up.",
-      "count": 14,
+      "count": 17,
       "entries": [
         {
           "kind": "archimate",
@@ -1781,11 +1907,9 @@
           "gates": []
         },
         {
-          "kind": "dak-annex",
+          "kind": "conjectures",
           "criteria": 0,
-          "gates": [
-            "bun run cat check:dak-annexes"
-          ]
+          "gates": []
         },
         {
           "kind": "ig-artifact-jsonld",
@@ -1828,6 +1952,21 @@
           "gates": []
         },
         {
+          "kind": "sme-case-verdict",
+          "criteria": 0,
+          "gates": []
+        },
+        {
+          "kind": "test-data-fixed",
+          "criteria": 0,
+          "gates": []
+        },
+        {
+          "kind": "test-data-generated",
+          "criteria": 0,
+          "gates": []
+        },
+        {
           "kind": "test-report",
           "criteria": 0,
           "gates": []
@@ -1840,7 +1979,7 @@
       "entries": []
     },
     "kinds-unaudited": {
-      "summary": "A declared kind whose directories hold files that NOTHING reaches — no kg-audit criterion, no gate declaring @covers, and no declared validator. All 263 gate(s) have declared, so this is a verdict rather than an upper bound (bean `3srh`).",
+      "summary": "A declared kind whose directories hold files that NOTHING reaches — no kg-audit criterion, no gate declaring @covers, and no declared validator. An UPPER bound while gates remain undeclared: 1 of 273 have not said what they cover.",
       "count": 0,
       "entries": []
     },
@@ -1858,5 +1997,5 @@
       ]
     }
   },
-  "total": 98
+  "total": 109
 }
