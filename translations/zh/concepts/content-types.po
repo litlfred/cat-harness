@@ -29,10 +29,6 @@ msgstr "内容类型"
 msgid "On this page"
 msgstr "本页目录"
 
-#: docs/concepts/content-types.md:25
-msgid "This page is generated from  — each section below links to its own source."
-msgstr "本页面生成自  — 下方每个小节都链接至其自身的源文件。"
-
 #: docs/concepts/content-types.md:29
 msgid "folio-assistant is content-agnostic: the platform knows nothing about any particular paper or guideline. Each kind of content is supported by a content adapter (code that knows how to validate/build/render that kind) and a skill package (the authoring formalism — what an author and the LLM do)."
 msgstr "folio-assistant 是与内容无关的：该平台对任何特定的论文或指南一无所知。每一种（kind）内容都由一个内容适配器（content adapter，懂得如何验证/构建/渲染该种内容的代码）和一个技能包（skill package，创作形式化体系——作者与大语言模型所做的工作）提供支持。"
@@ -45,29 +41,9 @@ msgstr "本页面描述了每种内容类型的形式化体系（formalism）。
 msgid "Scientific papers & books"
 msgstr "科学论文与专著"
 
-#: docs/concepts/content-types.md:144
-msgid "Skill package:  · Adapter:  · Guide: Writing a paper"
-msgstr "技能包：  · 适配器：  · 指南： 编写论文"
-
 #: docs/concepts/content-types.md:148
 msgid "Rigorous scientific papers and books where prose and mathematics are backed by a machine-checked Lean 4 formalization and rendered through LaTeX."
 msgstr "严谨的科学论文与专著，其中的散文和数学内容均有机器校验的 Lean 4 形式化作为后盾，并通过 LaTeX 进行排版渲染。"
-
-#: docs/concepts/content-types.md:151
-msgid "A paper is a document plus Lean-bearing blocks. Everything in the section above applies here: the same block tree, the same editorial  graph, the same QA sidecars, the same lifecycle — and the Markdown render path, which works while drafting on a machine with no TeX. The  adapter extends the  adapter in code, for exactly that reason. What a paper adds is the seven kinds below whose assertion is a formal claim, and the two toolchains that check and typeset them."
-msgstr "论文就是文档加上包含 Lean 的块。 上一节中的所有内容在此同样适用：相同的块树、相同的编辑  图、相同的 QA sidecar、相同的生命周期——以及 Markdown 渲染路径（在未安装 TeX 的机器上起草时即可工作）。正因如此， 适配器在代码上继承扩展了  适配器。论文所增加的是下方的七种断言为形式化主张的块类型，以及用于检查和排版它们的两个工具链。"
-
-#: docs/concepts/content-types.md:159
-msgid "Source model — content is a tree of typed blocks (, , , , , , …). See the TypeScript API reference for , , and ."
-msgstr "源模型（Source model）——内容是由类型化块（、、、、、 等）构成的树。有关 、 和 ，请参阅 TypeScript API 参考。"
-
-#: docs/concepts/content-types.md:162
-msgid "Formalization —  and  skills drive Lean; each theorem-like block can be tracked against its Lean counterpart, and every  is auditable."
-msgstr "形式化（Formalization）—— 和  技能驱动 Lean；每个类定理（theorem-like）块都可以对照其 Lean 对应项进行追踪，且每一个  均可审计。"
-
-#: docs/concepts/content-types.md:165
-msgid "Rendering —  plus the paper adapter's  /  tools."
-msgstr "渲染（Rendering）—— 加上论文适配器的  /  工具。"
 
 #: docs/concepts/content-types.md:168
 msgid "The seven kinds a document folio does not get, and the eight it shares:"
@@ -113,25 +89,9 @@ msgstr "共享 ()"
 msgid "n/a"
 msgstr "不适用"
 
-#: docs/concepts/content-types.md:180
-msgid "The four  rows are  in ; the  rows are , derived as the complement so a kind added later cannot go unclassified."
-msgstr "四个“仅限论文”（）行是  中的 ；而“共享”（）行则是 ，作为补集推导得出，以便后续添加的类型不会未经分类。"
-
-#: docs/concepts/content-types.md:185
-msgid "Two of those rows are worth a second look.  is the sharpest point of the whole split — it is the one kind whose  field is required rather than optional, so a document folio could not hold one even if the profile allowed it. And the  kinds still declare an optional : the type permits what the profile forbids, which is why  has a second rule beyond \"is this kind allowed\"."
-msgstr "其中有两行值得进一步审视。 是整个划分中最明确的分水岭——它是唯一一个其  字段为必需而非可选的类型，因此即便配置文件允许，文档 folio 也无法容纳它。而“共享”（）类型仍然声明了一个可选的 ：类型系统允许了配置文件所禁止的内容，这正是为什么  在“该类型是否被允许”之外还有第二条规则。"
-
-#: docs/concepts/content-types.md:192
-msgid "Relevant skill schemas: , , ."
-msgstr "相关的技能模式： 、 、 。"
-
 #: docs/concepts/content-types.md:265
 msgid "Others — extending folio-assistant"
 msgstr "其他——扩展 folio-assistant"
-
-#: docs/concepts/content-types.md:270
-msgid "New content types are first-class: add a content adapter and a skill package, and the lifecycle, RBAC, and MCP plumbing come for free. See Adding a content type."
-msgstr "新的内容类型是一等公民：添加一个内容适配器（adapter）和一个技能包（package），生命周期、RBAC 以及 MCP 底层管道即可直接获享。请参阅添加内容类型。"
 
 #~ msgid "Every content type moves through the same lifecycle, provided by the cross-cutting **** skill package:"
 #~ msgstr "每种内容类型都遵循相同的生命周期，该生命周期由通用的 **** 技能包提供："
@@ -306,3 +266,33 @@ msgstr "新的内容类型是一等公民：添加一个内容适配器（adapte
 
 #~ msgid "Quality control gates ()"
 #~ msgstr "质量控制——质控关卡（）"
+
+#~ msgid "This page is generated from  — each section below links to its own source."
+#~ msgstr "本页面生成自  — 下方每个小节都链接至其自身的源文件。"
+
+#~ msgid "Skill package:  · Adapter:  · Guide: Writing a paper"
+#~ msgstr "技能包：  · 适配器：  · 指南： 编写论文"
+
+#~ msgid "A paper is a document plus Lean-bearing blocks. Everything in the section above applies here: the same block tree, the same editorial  graph, the same QA sidecars, the same lifecycle — and the Markdown render path, which works while drafting on a machine with no TeX. The  adapter extends the  adapter in code, for exactly that reason. What a paper adds is the seven kinds below whose assertion is a formal claim, and the two toolchains that check and typeset them."
+#~ msgstr "论文就是文档加上包含 Lean 的块。 上一节中的所有内容在此同样适用：相同的块树、相同的编辑  图、相同的 QA sidecar、相同的生命周期——以及 Markdown 渲染路径（在未安装 TeX 的机器上起草时即可工作）。正因如此， 适配器在代码上继承扩展了  适配器。论文所增加的是下方的七种断言为形式化主张的块类型，以及用于检查和排版它们的两个工具链。"
+
+#~ msgid "Source model — content is a tree of typed blocks (, , , , , , …). See the TypeScript API reference for , , and ."
+#~ msgstr "源模型（Source model）——内容是由类型化块（、、、、、 等）构成的树。有关 、 和 ，请参阅 TypeScript API 参考。"
+
+#~ msgid "Formalization —  and  skills drive Lean; each theorem-like block can be tracked against its Lean counterpart, and every  is auditable."
+#~ msgstr "形式化（Formalization）—— 和  技能驱动 Lean；每个类定理（theorem-like）块都可以对照其 Lean 对应项进行追踪，且每一个  均可审计。"
+
+#~ msgid "Rendering —  plus the paper adapter's  /  tools."
+#~ msgstr "渲染（Rendering）—— 加上论文适配器的  /  工具。"
+
+#~ msgid "The four  rows are  in ; the  rows are , derived as the complement so a kind added later cannot go unclassified."
+#~ msgstr "四个“仅限论文”（）行是  中的 ；而“共享”（）行则是 ，作为补集推导得出，以便后续添加的类型不会未经分类。"
+
+#~ msgid "Two of those rows are worth a second look.  is the sharpest point of the whole split — it is the one kind whose  field is required rather than optional, so a document folio could not hold one even if the profile allowed it. And the  kinds still declare an optional : the type permits what the profile forbids, which is why  has a second rule beyond \"is this kind allowed\"."
+#~ msgstr "其中有两行值得进一步审视。 是整个划分中最明确的分水岭——它是唯一一个其  字段为必需而非可选的类型，因此即便配置文件允许，文档 folio 也无法容纳它。而“共享”（）类型仍然声明了一个可选的 ：类型系统允许了配置文件所禁止的内容，这正是为什么  在“该类型是否被允许”之外还有第二条规则。"
+
+#~ msgid "Relevant skill schemas: , , ."
+#~ msgstr "相关的技能模式： 、 、 。"
+
+#~ msgid "New content types are first-class: add a content adapter and a skill package, and the lifecycle, RBAC, and MCP plumbing come for free. See Adding a content type."
+#~ msgstr "新的内容类型是一等公民：添加一个内容适配器（adapter）和一个技能包（package），生命周期、RBAC 以及 MCP 底层管道即可直接获享。请参阅添加内容类型。"
