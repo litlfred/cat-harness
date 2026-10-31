@@ -52,14 +52,34 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/cloudflare-git": {
+      "prefLabel": "Cloudflare git (Artifacts)",
+      "firstSeen": "2026-10-31",
+      "retiredOn": null
+    },
+    "role/cloudflare-r2-cdn": {
+      "prefLabel": "Cloudflare R2 and CDN",
+      "firstSeen": "2026-10-31",
+      "retiredOn": null
+    },
     "role/code-reviewer": {
       "prefLabel": "Code reviewer",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/compute-authoring-agent": {
+      "prefLabel": "Compute authoring agent",
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
     "role/corpus": {
       "prefLabel": "Corpus",
       "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/deep-researcher": {
+      "prefLabel": "Deep researcher",
+      "firstSeen": "2026-09-23",
       "retiredOn": null
     },
     "role/docs-authoring-agent": {
@@ -77,6 +97,11 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/evidence-agent": {
+      "prefLabel": "Evidence agent",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
     "role/external-registry": {
       "prefLabel": "External registry",
       "firstSeen": "2026-09-21",
@@ -87,6 +112,16 @@
       "firstSeen": "2026-09-22",
       "retiredOn": null
     },
+    "role/fhir-modeller": {
+      "prefLabel": "FHIR modeller",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/ig-publisher-service": {
+      "prefLabel": "IG publisher + validator",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
     "role/ingestion-agent": {
       "prefLabel": "Ingestion engine",
       "firstSeen": "2026-09-21",
@@ -94,6 +129,31 @@
     },
     "role/integration-watcher": {
       "prefLabel": "Integration watcher",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/iris-cdn-exporter": {
+      "prefLabel": "IRIS CDN Exporter",
+      "firstSeen": "2026-10-31",
+      "retiredOn": null
+    },
+    "role/iris-cdn-owner": {
+      "prefLabel": "IRIS CDN owner",
+      "firstSeen": "2026-10-31",
+      "retiredOn": null
+    },
+    "role/l1-extraction-reviewer": {
+      "prefLabel": "L1 extraction reviewer",
+      "firstSeen": "2026-10-15",
+      "retiredOn": null
+    },
+    "role/lean-authoring-agent": {
+      "prefLabel": "Lean authoring agent",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/lean-toolchain": {
+      "prefLabel": "Lean toolchain",
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
@@ -117,6 +177,11 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/onboarding-agent": {
+      "prefLabel": "Onboarding agent",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
     "role/platform-authoring-agent": {
       "prefLabel": "Platform authoring agent",
       "firstSeen": "2026-09-21",
@@ -124,6 +189,11 @@
     },
     "role/programme-manager": {
       "prefLabel": "Programme manager",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/proof-review-agent": {
+      "prefLabel": "Proof review agent",
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
@@ -140,6 +210,11 @@
     "role/qc-reviewer": {
       "prefLabel": "QC reviewer",
       "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/release-signer": {
+      "prefLabel": "Release signer",
+      "firstSeen": "2026-10-31",
       "retiredOn": null
     },
     "role/review-coordinator": {
@@ -217,60 +292,15 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/verifier": {
+      "prefLabel": "IRIS CDN verifier",
+      "firstSeen": "2026-10-31",
+      "retiredOn": null
+    },
     "role/work-plan": {
       "prefLabel": "Work plan (beans)",
       "firstSeen": "2026-09-21",
       "retiredOn": null
-    },
-    "role/compute-authoring-agent": {
-      "prefLabel": "Compute authoring agent",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
-    },
-    "role/deep-researcher": {
-      "prefLabel": "Deep researcher",
-      "firstSeen": "2026-09-23",
-      "retiredOn": "2026-10-30"
-    },
-    "role/evidence-agent": {
-      "prefLabel": "Evidence agent",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
-    },
-    "role/fhir-modeller": {
-      "prefLabel": "FHIR modeller",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
-    },
-    "role/ig-publisher-service": {
-      "prefLabel": "IG publisher + validator",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
-    },
-    "role/l1-extraction-reviewer": {
-      "prefLabel": "L1 extraction reviewer",
-      "firstSeen": "2026-10-15",
-      "retiredOn": "2026-10-30"
-    },
-    "role/lean-authoring-agent": {
-      "prefLabel": "Lean authoring agent",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
-    },
-    "role/lean-toolchain": {
-      "prefLabel": "Lean toolchain",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
-    },
-    "role/onboarding-agent": {
-      "prefLabel": "Onboarding agent",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
-    },
-    "role/proof-review-agent": {
-      "prefLabel": "Proof review agent",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
     }
   }
 }
