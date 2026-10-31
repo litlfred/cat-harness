@@ -3,6 +3,10 @@
   "unkinded": [
     {
       "typology": "archimate",
+      "family": "archimate-model/v1"
+    },
+    {
+      "typology": "archimate",
       "family": "cat-archimate-config/v1"
     },
     {
